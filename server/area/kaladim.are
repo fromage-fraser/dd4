@@ -1,0 +1,846 @@
+#AREA Omega~ Kaladim~
+
+25 35 10 75
+
+#AREA_SPECIAL
+exp_mod 90
+$
+
+#MOBILES
+#9925
+small dragon~
+small dragon~
+A small dragon sits here waiting for his prey.
+~
+This dragon is not that big.  He must be very young, but
+looks to be just as deadly.
+~
+98 8192|524288 0 S
+42 0 0 0d0+0 0d0+0
+32 0
+8 8 1
+#9926
+undead elf~
+an undead elf~
+An elf has risen from the grave to serve the master.
+~
+An evil elven mage came to their land. He destroyed everything in his path.
+He used his magical fire to burn the flesh from the elves, then resurrected
+them to protect his land.
+~
+64 1024|262144 0 S
+32 0 0 0d0+0 0d0+0
+16|32|256 0
+8 8 1
+#9927
+master elf~
+the Master Elf~
+The master elf is an evil elf that wants to drink your blood.
+~
+The master elf has dominated all that you see before you.
+~
+2|32|64 8192 -1000 S
+40 0 0 0d0+0 0d0+0
+16 0
+8 8 1
+#9928
+Elf~
+Slave elf~
+The slave elf does what he is told.
+~
+The slave elf was imprisoned by the Master and will serve until
+he dies of mistreatment or is killed for the Master's amusement.
+~
+4|64|128 0 0 S
+28 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#9929
+child~
+an elf child~
+The child sits here playing with its toys.
+~
+The small child is an offspring of the Master.
+He is an innocent little lad and is harmless.
+~
+2|4|64|128 0 0 S
+25 0 0 0d0+0 0d0+0
+32 0
+8 8 1
+#9930
+black bat~
+A black bat~
+The bat hangs around waiting for its prey.
+~
+The bat sleeps on its perch, but yet waits for its prey to walk by.
+~
+2|64 524288 0 S
+34 0 0 0d0+0 0d0+0
+2|4|8|32 0
+8 8 0
+#9931
+elf maid spirit~
+an elf maid~
+The spirit of an elf maid cleans the house as if her life depended on it.
+~
+The maid cleans and cleans and cleans, and cleans some more.
+~
+4|64 0 400 S
+28 0 0 0d0+0 0d0+0
+64 0
+8 8 2
+#9932
+vase~
+An odd looking vase~
+A vase sits on its stool waiting, watching.
+~
+The vase sits on a wooden stool with red roses sticking out of the top.
+~
+2|64 0 -350 S
+32 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+#9933
+knife~
+A large knife~
+A large knife glimmers back at you.
+~
+The knife was once used to slay elves at one time.
+It was brought to life by some force, and empowered to
+fly so that it could serve the master.
+~
+32|64 0 0 S
+34 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 0
+#9934
+mirror~
+A thick glass mirror~
+The mirror that reflects your image is very mad.
+~
+The sight of your face enrages the mirror.
+It wants to attack you, but it is plastered to the wall.
+~
+2|64 0 0 S
+36 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|256 0
+8 8 1
+#9935
+small teddy bear~
+A small teddy bear~
+A cute teddy bear lies on the bed.
+~
+A little elf girl once owned the bear.
+~
+2|64 0 0 S
+27 0 0 0d0+0 0d0+0
+16|32|256 0
+8 8 1
+#9936
+beast~
+A cave beast~
+A cave beast rears before you.
+~
+The cave beast was sleeping, but now you have woken him!
+~
+2|32|64 8|32 0 S
+39 0 0 0d0+0 0d0+0
+32|128 0
+8 8 1
+#0
+
+
+#OBJECTS
+#9925
+old washer~
+a huge white washer~
+A old washer sits here once used, long ago.~
+~
+13 0 0
+0~ 0~ 0~ 0~ 
+155 0 0
+#9926
+ruins~
+ruins of a forgotten building.~
+Ruins of a forgotten building lie here.~
+~
+13 0 0
+0~ 0~ 0~ 0~ 
+50000 0 0
+#9927
+sink~
+a marble sink~
+A marble sink sits here.~
+~
+17 0 0
+255~ 255~ 1~ 1~ 
+55 0 0
+#9928
+sofa~
+a large sofa~
+A large sofa lies here, torn to shreds.~
+~
+12 0 0
+0~ 0~ 0~ 0~ 
+85 0 0
+#9929
+pillar~
+a tall pillar~
+A tall pillar lies here on the ground.~
+~
+13 0 0
+0~ 0~ 0~ 0~ 
+500 0 0
+#9930
+painting~
+a large painting~
+A large painting has been torn apart and stomped on.~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#9931
+chess board~
+a small chess board~
+A small chess board sits here on the ground, waiting for someone to play~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+2 0 0
+#9932
+welcoming mat~
+a welcoming mat~
+A mat sits here welcoming your arival.~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#9933
+jagged spear~
+a jagged spear~
+A jagged spear lies here.~
+~
+5 64 1|8192
+0~ 0~ 0~ 2~ 
+8 0 0
+A
+19 8
+A
+18 8
+A
+13 25
+#9934
+bracer black cat~
+bracer of the cat~
+A small black bracer lies here.~
+~
+9 2 1|4096
+0~ 0~ 0~ 3~ 
+5 0 0
+A
+2 2
+A
+17 -10
+#9935
+candy~
+a small piece of candy~
+A small half eaten piece of candy sits here.~
+~
+19 0 1
+5~ 0~ 0~ 4~ 
+1 0 0
+#9936
+masters barbed whip~
+The master's barbed whip~
+A barbed whip humming with evil rests here.~
+~
+5 2|16 1|8192
+0~ 0~ 0~ 4~ 
+5 0 0
+A
+19 6
+A
+18 6
+A
+17 15
+#9937
+cloth dragon scales~
+a cloth of dragon scales~
+Some scales lie on the ground.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+15 0 0
+A
+17 10
+A
+19 6
+#0
+
+
+#ROOMS
+#9925
+Entrance to Kaladim~
+You stand before the ruins of Kaladim.  Thousands of skeletons lie on the
+floor beside the walls.  You feel very frightened by this monstrosity.
+Two huge piles of corpses stand before the entrance as a warning sign
+to stay away.
+~
+0 0 2
+D1
+~
+~
+0 -1 9926
+D3
+~
+~
+0 -1 18418
+S
+#9926
+The ruins~
+The stench of decaying corpses rise about the floor as a deep green mist.
+There are scratch marks on the walls made by some unknown creature.
+~
+0 0 2
+D1
+~
+~
+0 -1 9927
+D3
+~
+~
+0 -1 9925
+S
+#9927
+The ruins~
+There are many destroyed structures on the ground made by some
+force of destruction.
+~
+0 0 2
+D1
+~
+~
+0 -1 9928
+D3
+~
+~
+0 -1 9926
+S
+#9928
+The ruins~
+There are many passageways that lead in many different directions,
+but only one will lead to the monster that created this mass destruction.
+~
+0 0 2
+D1
+The door to the east is made of sturdy oak.
+It seems that termites have eaten away most
+of it.
+~
+~
+1 -1 9929
+D3
+~
+~
+0 -1 9927
+S
+#9929
+A Shelter~
+There is a tiny shack still standing in this horrible place.  It looks
+like there might be refuge inside.
+~
+0 525 1
+D1
+This door was a makeshift, possibly created
+by creatures who were taking refuge from some
+dangerous being.
+~
+~
+1 -1 9930
+D3
+~
+~
+1 -1 9928
+S
+#9930
+The Shack~
+This is the living room of a tiny house. There is furniture scattered
+within this room, but it seems that it may have been torn by some creature.
+It still seems like the spirits of the city remain here.
+~
+0 9 0
+D0
+~
+~
+0 -1 9931
+D1
+~
+~
+0 -1 9933
+D2
+~
+~
+0 -1 9932
+D3
+~
+~
+1 -1 9929
+S
+#9931
+The Entertainment Room~
+There is a large pool table within this room and there are several paintings
+on the wall.  There is a dartboard set up in the corner of this room and
+several chairs set against the wall.
+~
+0 9 0
+D2
+~
+~
+0 -1 9930
+S
+#9932
+Dining Room~
+A huge dining table appears before you.  There are many places set up on
+the table, but it doesn't seem the company enjoyed their dinner.
+~
+0 9 0
+D0
+~
+~
+0 -1 9930
+S
+#9933
+The Kitchen~
+There are many knives left out on the table that appears in this room.
+There is a counter on one side and a dishwasher on the other.
+~
+0 9 0
+D2
+~
+~
+0 -1 9934
+D3
+~
+~
+0 -1 9930
+S
+#9934
+Stairwell~
+A huge spiral stairwell leads in two directions.  You could either
+go up to the second for or down to the basement it is your choice,
+but your fate is already sealed.
+~
+0 13 0
+D0
+~
+~
+0 -1 9933
+D4
+~
+~
+0 -1 9935
+D5
+~
+~
+0 -1 9945
+S
+#9935
+Top of the stairwell~
+There is a small door at the top of this stair well.  It seems like
+the owners of this house must have been small.
+~
+0 13 0
+D3
+This door is made of cast iron and 
+only the greatest lock smith could open it~
+~
+1 -1 9936
+D5
+~
+~
+0 -1 9934
+S
+#9936
+A Hallway~
+The isle is narrow and the walls are tiny.  It looks like this hallway
+continues for quite a long ways.
+~
+0 9 0
+D1
+~
+~
+1 -1 9935
+D3
+~
+~
+0 -1 9937
+S
+#9937
+The Hall~
+The hall continues for a while longer it seems like there is another
+door on the other side.
+~
+0 9 0
+D1
+~
+~
+0 -1 9936
+D3
+~
+~
+0 -1 9938
+S
+#9938
+The Hall~
+The hall continues for a while longer it seems like there is another
+door on the other side.
+~
+0 9 0
+D1
+~
+~
+0 -1 9937
+D3
+~
+~
+0 -1 9939
+S
+#9939
+The Hallway~
+The hall continues for a while longer it seems like there is another
+door on the other side.
+~
+0 9 0
+D1
+~
+~
+0 -1 9938
+D3
+~
+~
+0 -1 9940
+S
+#9940
+The Hall~
+You feel like you are starting to get closer to the door.
+You can feel it pulsate from your position.
+~
+0 9 0
+D1
+~
+~
+0 -1 9939
+D2
+~
+~
+0 -1 9941
+S
+#9941
+A Bend in the Hall~
+You come to a corner in the hall you are now uncertain where it leads,
+but you still can see the door.
+~
+0 9 0
+D0
+~
+~
+0 -1 9940
+D1
+~
+~
+0 -1 9942
+S
+#9942
+The Hall~
+A huge door lies ahead.  An enormous light is emanating from underneath.
+The light rises up and juts out from beneath the door.
+~
+0 9 0
+D1
+The door is made of a sturdy wood, only one
+tree in the jungle can produce such a wood.
+~
+~
+1 -1 9943
+D3
+~
+~
+0 -1 9941
+S
+#9943
+The Bathroom~
+You are depressed by your discovery of the bathroom,
+but discouraged you still continue forward.
+~
+0 9 0
+D2
+~
+~
+1 -1 9944
+D3
+The door is made of a sturdy wood, only one
+tree in the jungle can produce such a wood.
+~
+~
+1 -1 9942
+S
+#9944
+A Tiny Bedroom~
+There are three tiny beds that lie in this room.  They look as if no
+one has slept within them for centuries.
+~
+0 9 0
+D0
+~
+~
+1 -1 9943
+S
+#9945
+The Basement~
+It is deep, dark and dank down here.  A sensation occurs that somone
+is watching your every move.  You scan around and see the hallway
+leads in two directions, and the stairs lead back up.
+~
+0 13 0
+D1
+~
+~
+0 -1 9949
+D3
+~
+~
+0 -1 9946
+D4
+~
+~
+0 -1 9934
+S
+#9946
+The Basement~
+You see a screen door out to the porch to your west, but aren't
+sure what is to the south.  You'd better check it out.
+~
+0 9 0
+D1
+~
+~
+0 -1 9945
+D2
+~
+~
+0 -1 9948
+D3
+A screen door made of a wire mesh, wood and scrap.
+~
+~
+1 -1 9947
+S
+#9947
+The Porch~
+You stand on a wooden deck where you can see the sun set in the west.
+It is a beautiful sight that only some get to see.
+~
+0 9 0
+D1
+A screen door made of a wire mesh, wood and scrap.
+~
+~
+1 -1 9946
+S
+#9948
+A Crypt~
+There are many coffins in this area, it must be the family tomb.
+You sense the family is disturbed by your intrusion and
+must protect their house.
+~
+0 9 0
+D0
+~
+~
+0 -1 9946
+S
+#9949
+The Basement~
+This is a dark place where people haven't ventured in centuries.
+~
+0 9 0
+D1
+~
+~
+0 -1 9950
+D3
+~
+~
+0 -1 9945
+S
+#9950
+Dark Corridor~
+There are stalagmites and stalagtites rising and falling from the room.
+There are tiny black creatures hanging off of them, but you are uncertain
+what they are.
+~
+0 9 0
+D1
+~
+~
+0 -1 9951
+D3
+~
+~
+0 -1 9949
+S
+#9951
+A Cave~
+This room is lighted by a red glow, it seems to get brighter farther in.
+~
+0 9 0
+D1
+~
+~
+0 -1 9952
+D3
+~
+~
+0 -1 9950
+S
+#9952
+Dragon Cave~
+You are in a huge Dragon's cave, but there is no dragon? Perhaps deeper
+in the cave..
+~
+0 9 0
+D3
+~
+~
+0 -1 9951
+D5
+~
+~
+0 -1 9953
+S
+#9953
+Dragon's Lair~
+The dragon must have gone down to his lair for a snooze.
+Better catch him while he is sleeping.
+~
+0 9 0
+D1
+~
+~
+0 -1 9954
+D4
+~
+~
+0 -1 9952
+S
+#9954
+Dragons Lair~
+The lair is larger then you've ever seen, it is at least a mile long,
+but you sense that you are coming ever so close to the dragon.
+~
+0 9 0
+D2
+~
+~
+0 -1 9955
+D3
+~
+~
+0 -1 9953
+S
+#9955
+Dragons Lair~
+You found him, but he has risen from his nap and is not happy.
+~
+0 9 0
+D0
+~
+~
+0 -1 9954
+S
+#0
+
+
+#RESETS
+D 1 9928 1 1                    ; The ruins Close East
+D 1 9929 3 1                    ; A Shelter Close West
+D 1 9929 1 1                    ; A Shelter Close East
+D 1 9930 3 1                    ; The SHack Close West
+D 1 9935 3 1                    ; Top of the stair well Close West
+D 1 9936 1 1                    ; The Hallway close east
+D 1 9942 1 1                    ; The Hall Close East
+D 1 9943 3 1                    ; The Bathroom Close West
+D 1 9943 2 1                    ; The Bathroom Close South
+D 1 9944 0 1                    ; The tiny bedroom close north
+D 1 9946 3 1                    ; The Basement Close West
+D 1 9947 1 1                    ; The Porch Close East
+*
+M 1 9925 1 9955                 Small Dragon to Dragons Lair
+E 1 9937 100 12
+*
+M 1 9926 15 9926                 Undead Elves to The ruins
+E 1 9933 100 16
+*
+M 1 9926 15 9927                 Undead Elves to The ruins
+*
+M 1 9926 15 9928                 Undead Elves to The ruins
+*
+M 1 9927 1 9947                 Master Elf to The Porch
+E 1 9936 100 16
+*
+M 1 9926 15 9931                 Undead Elves to The Entertainment Room
+*
+M 1 9928 2 9947                 Slave elf to Dining Room
+E 1 9934 100 14
+*
+M 1 9926 15 9936                 Undead Elves to A Hallway
+*
+M 1 9926 15 9938                 Undead Elves to The Hall
+*
+M 1 9926 15 9939                 Undead Elves to The Hallway
+E 1 9933 100 16
+*
+M 1 9926 15 9942                 Undead Elves to The Hall
+*
+M 1 9929 3 9944                 An Elf child to A tiny bedroom
+E 1 9935 100 17
+*
+M 1 9926 15 9948                 Undead Elves to A Crypt
+E 1 9933 100 16
+*
+M 1 9930 4 9950                 A black bat to Dark corridor
+O 1 9925 100 9933               A huge white washer to The Kitchen
+O 1 9926 100 9927               Ruins of a forgotten building. to The ruins
+O 1 9926 100 9928               Ruins of a forgotten building. to The ruins
+*
+M 1 9933 1 9933                 A large knife to The Kitchen
+*
+M 1 9930 4 9934                 A black bat to Stair Well
+*
+M 1 9931 3 9937                 An Elf Maid to The Hall
+*
+M 1 9931 3 9940                 An Elf Maid to The Hall
+*
+M 1 9932 1 9941                 An odd looking Vase to A Bend in the Hall
+*
+M 1 9934 1 9943                 A thick glass mirror to The Bathroom
+*
+M 1 9935 1 9944                 A small teddy bear to A Tiny Bedroom
+*
+M 1 9936 1 9951                 A cave beast to A Cave
+O 1 9927 100 9943                       A marble sink to The Bathroom
+O 1 9930 100 9931                       A large television to The Entertainment Room
+O 1 9929 100 9928                       A tall pillar to The ruins
+O 1 9928 100 9931                       A large couch to The Entertainment Room
+O 1 9931 100 9947                       A small checker board to The Porch
+O 1 9932 100 9929                       A welcoming mat to A Shelter
+*
+S
+
+#SPECIALS
+M 9925 spec_breath_lightning		dragon
+M 9927 spec_cast_undead			master
+
+S
+
+#$

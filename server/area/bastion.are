@@ -1,0 +1,6171 @@
+#AREA Thorne~	Bastion of Shadows~
+80 100 0 100
+
+#AREA_SPECIAL
+exp_mod 110
+$
+
+#MOBILES
+#30600
+gargoyle stone~
+the Stone Gargoyle~
+A large stone gargoyle is guarding the bastion.
+~
+The stone gargoyle sits with its wings folded. Here and there you can see 
+cracks and chips on its body as if it has been here for eternity. It appears
+to be lifeless though you can't really be sure.
+~
+2|32|64 8|32|512|8192|524288|4194304|8388608 0 S
+85 0 0 0d0+0 0d0+0
+272 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30601
+hungry demon~
+the Hungry Demon~
+The hungry demon is scratching at the ground and scavenging for food.
+~
+The demon is howling and whining with hunger as it scratches and claws the
+ground looking for buried scraps of food.
+~
+32|64 8|32|512|8192|524288|8388608 0 S
+80 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30602
+dark demon~
+the Dark Demon~
+The Dark Demon fixes you with it's glowing red eyes.
+~
+The dark demon has smooth mottled grey flesh and sinister red eyes that 
+regard you with the look of death. It howls now and then, baring its sharp 
+fangs and flapping its bony wings.
+~
+2|131072 8|32|512|8192|524288|1048576|8388608 -1000 S
+80 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+>rand_prog 3~
+mpecho The dark demon screeches and howls.
+~
+|
+#30603
+mount~
+the Shadow Lord's mount~
+The Shadow Lord's personal mount howls in fury.
+~
+A large demon screeches and howls in a maddened frenzy and large globs of 
+saliva drip from its jaws. It rampages about the room scratching and clawing
+at the walls of its stall.
+~
+2|32|64|131072 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
+110 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+>rand_prog 25~
+mpasound {wLoud screeching and howling issues from somewhere nearby.{x
+~
+|
+#30604
+soul collector~
+the Soul Collector~
+The Soul Collector is heating a poker in a brazier of hot coals.
+~
+The Soul Collector regards you with cold silver eyes and you begin to feel 
+mesmerised by them as he advances slowly towards you.
+~
+2|64 8|32|512|524288|1048576|8388608 -1000 S
+100 0 0 0d0+0 0d0+0
+80 0
+8 8 1
+>all_greet_prog 100~
+mpecho {wA menacing voice says "Ah, another soul for the master..."{x
+~
+|
+#30605
+angel captive~
+a Captive Angel~
+A dishevelled looking angel is being held captive here.
+~
+This battered looking angel has obviously been tortured in more ways than 
+one and you don't get any response from trying to attract its attention.
+Either the ordeal it has suffered or something beyond your grasp has 
+drained it of its will to communicate.
+~
+2|64 8|256|512 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#30606
+captive angel~
+a Captive Angel~
+The pale figure of an  angel is being held captive here.
+~
+This battered looking angel has obviously been tortured in more ways than 
+one and you don't get any response from trying to attract its attention.
+Either the ordeal it has suffered or something beyond your grasp has drained 
+it of its will to communicate.
+~
+2|64 8|256|512 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#30607
+dark stalker assassin~
+the Dark Stalker~
+A dark assassin is hiding in the shadows.
+~
+The dark figure is crouched in a patch of shadow.
+It is very still, trying not to be detected.
+You see a brief glimmer of steel in the darkness.
+~
+64 8|32|512|32768|65536|524288|8388608 -1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30608
+dark stalker assassin~
+the Dark Stalker~
+A dark assassin is hiding in the shadows.
+~
+The dark figure is crouched in a patch of shadow.
+It is very still, trying not to be detected.
+You see a brief glimmer of steel in the darkness.
+~
+64 8|32|512|32768|65536|524288|8388608 -1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30609
+dark stalker assassin~
+the Dark Stalker~
+A dark assassin is hiding in the shadows.
+~
+The dark figure is crouched in a patch of shadow.
+It is very still, trying not to be detected.
+You see a brief glimmer of steel in the darkness.
+~
+64 8|32|512|32768|65536|524288|8388608 -1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30610
+dark stalker assassin~
+the Dark Stalker~
+A dark assassin is hiding in the shadows.
+~
+The dark figure is crouched in a patch of shadow.
+It is very still, trying not to be detected.
+You see a brief glimmer of steel in the darkness.
+~
+64 8|32|512|32768|65536|524288|8388608 -1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30611
+dark stalker assassin~
+the Dark Stalker~
+A dark assassin is hiding in the shadows.
+~
+The dark figure is crouched in a patch of shadow.
+It is very still, trying not to be detected.
+You see a brief glimmer of steel in the darkness.
+~
+2|64 8|32|512|32768|65536|524288|8388608 -1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30612
+dark stalker assassin~
+the Dark Stalker~
+A dark assassin is hiding in the shadows.
+~
+The dark figure is crouched in a patch of shadow.
+It is very still, trying not to be detected.
+You see a brief glimmer of steel in the darkness.
+~
+2|64 8|32|512|32768|65536|524288|8388608 -1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30613
+spectral figure minion~
+the Spectral Minion~
+A spectral figure shimmers before you.
+~
+The spectral figure shimmers and wavers like a mirage, it disappears then 
+reappears a moment later. With each visitation it issues an inhuman cry that 
+causes a shiver to run down your spine.
+~
+2|32|64 8|32|512|524288|1048576|8388608 0 S
+90 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30614
+spectral figure minion~
+the Spectral Minion~
+A spectral figure shimmers before you.
+~
+The spectral figure shimmers and wavers like a mirage, it disappears then 
+reappears a moment later. With each visitation it issues an inhuman cry that 
+causes a shiver to run down your spine.
+~
+2|32|64 8|32|512|524288|1048576|8388608 0 S
+90 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30615
+spectral figure minion~
+the Spectral Minion~
+A spectral figure shimmers before you.
+~
+The spectral figure shimmers and wavers like a mirage, it disappears then 
+reappears a moment later. With each visitation it issues an inhuman cry that 
+causes a shiver to run down your spine.
+~
+2|32|64 8|32|512|524288|1048576|8388608 0 S
+90 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30616
+spectral figure minion~
+the Spectral Minion~
+A spectral figure shimmers before you.
+~
+The spectral figure shimmers and wavers like a mirage, it disappears then 
+reappears a moment later. With each visitation it issues an inhuman cry 
+that causes a shiver to run down your spine.
+~
+2|32|64 8|32|512|524288|1048576|8388608 0 S
+90 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30617
+spectral figure minion~
+the Spectral Minion~
+A spectral figure shimmers before you.
+~
+The spectral figure shimmers and wavers like a mirage, it disappears then 
+reappears a moment later. With each visitation it issues an inhuman cry that 
+causes a shiver to run down your spine.
+~
+2|32|64 8|32|512|524288|1048576|8388608 0 S
+90 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30618
+spectral figure minion~
+the Spectral Minion~
+A spectral figure shimmers before you.
+~
+The spectral figure shimmers and wavers like a mirage, it disappears then 
+reappears a moment later. With each visitation it issues an inhuman cry that 
+causes a shiver to run down your spine.
+~
+2|32|64 8|32|512|524288|1048576|8388608 0 S
+90 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+>all_greet_prog 100~
+mpkill $n
+~
+|
+#30619
+Angel~
+the Angel~
+An Angel is sitting on a cloud playing a golden harp and singing softly.
+~
+The angel has a pale androgynous face that is set in an expression of 
+serenity. It is sitting gracefully on a nearby cloud, strumming a golden 
+harp and singing an enchanting song. Floating above the angel's head a 
+golden halo is shining in the sun and long white robes billow out around it.
+~
+2|64 8|32|128|512|524288|8388608 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#30620
+dark angel~
+the Dark Angel~
+The imposing figure of a dark angel is blocking your path. 
+~
+The angel has a pale complexion and jet black hair, the same colour as its 
+eyes. It spreads its large feathered wings and regards you with a menacing 
+look.
+~
+2|64 8|32|512|524288|4194304|8388608 -1000 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30621
+dark angel~
+the Dark Angel~
+The imposing figure of a dark angel is blocking your path. 
+~
+The angel has a pale complexion and jet black hair, the same colour as its 
+eyes. It spreads its large feathered wings and regards you with a menacing 
+look.
+~
+2|64 8|32|512|524288|4194304|8388608 -1000 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30622
+dark angel~
+the Dark Angel~
+The imposing figure of a dark angel stands before you. 
+~
+The angel has a pale complexion and jet black hair, the same colour as its 
+eyes. It spreads its large feathered wings and regards you with a menacing 
+look.
+~
+2|64 8|32|512|524288|4194304|8388608 -1000 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30623
+dark angel~
+the Dark Angel~
+The imposing figure of a dark angel stands before you reviewing documents. 
+~
+The angel has a pale complexion and jet black hair, the same colour as its 
+eyes. It spreads its large feathered wings and regards you with a menacing 
+look.
+~
+2|64 8|32|512|524288|4194304|8388608 -1000 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30624
+fallen angel~
+the Fallen Angel~
+A pale angel with lifeless grey eyes is wandering about the room.  
+~
+The angel doesn't seem to be interested in your presence. It has a vacant 
+expression on its pale face and there is no spark of life in its steely 
+grey eyes.
+~
+64 8|32|512|8388608 0 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30625
+fallen angel~
+the Fallen Angel~
+A pale angel with lifeless grey eyes is wandering about the room.  
+~
+The angel doesn't seem to be interested in your presence. It has a vacant 
+expression on its pale face and there is no spark of life in its steely 
+grey eyes.
+~
+64 8|32|512|8388608 0 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30626
+fallen angel~
+the Fallen Angel~
+A pale angel with lifeless grey eyes is wandering about the room.  
+~
+The angel doesn't seem to be interested in your presence. It has a vacant 
+expression on its pale face and there is no spark of life in its steely 
+grey eyes.
+~
+64 8|32|512|8388608 0 S
+100 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30627
+weapon smith~
+the Weapon Smith~
+The bastion's weapon smith is intently sharpening a longsword.
+~
+The weapon smith pauses long enough to inspect the blade he is sharpening 
+before continuing with his task. His muscles bunch and ripple as he
+skillfully runs the whetstone down the blade. He seems to be too intent 
+upon his work to notice you have arrived.
+~
+2|64 8|32|512 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#30628
+shadow lord~
+the Shadow Lord~
+The Shadow Lord is absently staring out one of the slits, lost in thought.
+~
+He is a terrifying being to behold, who appears to be half man and half 
+demon. His body is somewhat misshapen and standing upright he has to hunch 
+over. His feet seem to be human but his hands have long claws protruding 
+from the ends of his bony fingers. He grinds his teeth in his lumpy head 
+and seems to be regarding you as a tasty morsel.
+~
+2|32|64|512 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
+115 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+mpecho {wThe Shadow Lord turns towards you and shrieks, "You dare to disturb me!"{x  
+mpkill $n
+~
+|
+#30629
+giant owl~
+the Giant owl~
+A giant owl is sitting on a perch screeching loudly.
+~
+The huge owl is secured to its perch with a heavy thong that is tied 
+around one of its feet. Its head and eyes are covered by a leather hood 
+with black and red feathers sprouting from the top.
+~
+2|64|512 8|32|512|8192|524288|8388608 0 S
+95 0 0 0d0+0 0d0+0
+38 0
+8 8 0
+#0
+
+
+#OBJECTS
+#30600
+chipped stone wings~
+chipped stone wings~
+A large pair of heavy stone wings are lying here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
+15 0 0
+A
+1 -5
+A
+2 -10
+A
+14 -100
+A
+17 -100
+E
+chipped stone wings~
+The large stone wings are chipped and cracked in many places, They must be 
+very old.
+
+~
+#30601
+jade collar~
+a jade collar~
+A jade collar has been discarded here.~
+~
+9 1|64|4096 1|4
+0~ 0~ 0~ 0~
+3 0 0
+A
+18 8
+A
+19 8
+A
+5 4
+E
+jade collar~
+The jade collar doesn't seem to have an opening to allow you to put it on. 
+As you hold it in your hand it causes small tingling sensations in your skin 
+and you suspect it is being caused by the presence of magic.
+
+~
+#30602
+scraggly fur~
+scraggly patches of fur~
+Some scraggly patches of fur are scattered about.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 0
+#30603
+bony wings~
+bony wings~
+Large bony wings torn from the back of some creature are lying here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+E
+bony wings~
+Bones are poking out through the leathery surface of these wings. They are 
+ripped and torn in places as if their owner has been in more than one battle 
+for survival.
+
+~
+#30604
+scraps meat~
+scraps of meat~
+A few scraps of fresh meat are scattered about.~
+~
+19 16 1
+12~ 0~ 0~ 0~
+1 0 0
+E
+scraps meat~
+Scraps of white meat that you are unable to identify by looking at them.
+
+~
+#30605
+vial red ~
+a vial of red liquid ~
+A vile filled with bright red liquid is here.~
+~
+10 16|64 1
+100~ faerie fire~ curse~ hex~
+1 0 0
+#30606
+souls damned~
+souls of the Damned~
+Souls of the damned linger here.~
+~
+9 0 1|32768
+0~ 0~ 0~ 0~
+0 0 0
+A
+18 8
+A
+19 8
+A
+1 2
+#30607
+hot poker~
+a red hot poker~
+A charred poker has been left here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~
+2 0 0
+A
+18 15
+A
+19 15
+#30608
+amulet underworld~
+Amulet of the Underworld~
+An amulet inscribed with unfamiliar symbols has been discarded here. ~
+~
+9 2|32|64 1|4
+0~ 0~ 0~ 0~
+1 0 0
+A
+19 12
+A
+17 -10
+E
+amulet underworld~
+The amulet hangs on a heavy chain that is made from a mysterious black 
+metal you have not encountered before. It is etched with mystical symbols 
+you are unable to decipher and a soft humming is issuing from it.
+
+~
+#30609
+brazier coals~
+a brazier of hot coals~
+A brazier of hot coals is beginning to make you sweat.   ~
+~
+12 1 0
+0~ 0~ 0~ 0~
+10 0 0
+#30610
+grey robe~
+a long grey robe~
+A pile of grey fabric is in a heap on the floor.~
+~
+9 64 1|8
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -50
+A
+2 5
+E
+robe grey~
+The long grey robe trails on the floor giving the impression the wearer is 
+gliding rather than walking.
+
+~
+#30611
+torture rack~
+a torture rack~
+A torture rack used for stretching and tearing limbs dominates the space here.~
+~
+12 0 0
+0~ 0~ 0~ 0~
+5 0 0
+E
+rack torture~
+The torture rack is made from wrought iron and heavy chains and its ability 
+to rend and tear limbs from their sockets is well known to you. Contemplating 
+being a victim of its employment makes you feel more than a little uncomfortable.
+
+~
+#30612
+clipped wings~
+clipped wings~
+A pair of white feathered wings at lying here.~
+~
+9 1024 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+E
+clipped wings~
+A pair of snow white wings have had all their primary feathers roughly 
+clipped to prevent flight.
+
+~
+#30613
+shackles iron~
+iron shackles~
+A set of heavy iron shackles have been left here.~
+~
+9 2|64 1|256
+0~ 0~ 0~ 0~
+5 0 0
+A
+14 -200
+A
+2 -10
+A
+1 5
+E
+shackles iron~
+There is something very odd about these shackles. They are emitting a faint 
+blue glow and humming loudly.
+
+~
+#30614
+crown thorns~
+a crown of thorns~
+A tangle of thorns is here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~
+5 0 0
+A
+1 0
+E
+thorns crown~
+A crown has been made from tangles of sharp thorns. Some of the bigger 
+thorns have droplets of blood on the tips.
+
+~
+#30615
+grubby white robe~
+a grubby white robe~
+A pile of tattered cloth is in a heap on the floor.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+E
+grubby white robe~
+The robe is tattered and torn and singed in several places. It looks as if 
+it has been dragged through the mud. The remains of gold trim can be seen 
+in places, what a shame it's in such a terrible state.
+
+~
+#30616
+bastard sword~
+a black bastard sword~
+A long black sword is lying here.~
+~
+5 64|2048|1048576 1|8192
+0~ 0~ 0~ 11~
+4 0 0
+A
+19 20
+A
+18 10
+A
+17 -20
+E
+bastard sword~
+A long two-handed sword that has been well crafted and tempered black. 
+Etched in silver down the centre of the blade is a flowing gothik script 
+you are unable to read.
+
+~
+#30617
+gothik breastplate black~
+a black gothik breastplate ~
+A black gothik breastplate etched with silver has been left here.~
+~
+9 16 1|8
+0~ 0~ 0~ 0~
+5 0 0
+A
+19 10
+A
+18 5
+A
+1 2
+A
+23 -10
+E
+gothik black breastplate~
+The heavy steel breastplate has been well crafted and tempered black. There 
+is an intricate crest etched with silver in the centre of the chest plate. 
+It is depicting a bat with its wings spread across a gothik cross.
+
+~
+#30618
+wrought-iron weapon rack~
+a wrought-iron weapon rack~
+A black wrought-iron rack is hung with many weapons of war.~
+~
+15 0 0
+0~ 0~ 0~ 0~
+1000 0 0
+E
+wrought-iron weapon rack~
+A large weapons rack made from wrought-iron is bolted to the stone floor. 
+It is hung with many different weapons of maiming and war.
+
+~
+#30619
+wrought-iron armour rack~
+wrought-iron armour rack~
+A black wrought-iron rack is hung with many suits of plate steel armour.~
+~
+15 0 0
+0~ 0~ 0~ 0~
+1000 0 0
+E
+wrought-iron armour rack~
+A large armour rack made from wrought-iron is bolted to the stone floor. 
+It is hung with many full suits of plate steel armour.
+
+~
+#30620
+wrought-iron armour rack~
+wrought-iron armour rack~
+A black wrought-iron rack is hung with many suits of plate steel armour.~
+~
+15 0 0
+0~ 0~ 0~ 0~
+1000 0 0
+E
+wrought-iron armour rack~
+A large armour rack made from wrought-iron is bolted to the stone floor. 
+It is hung with many full suits of plate steel armour.
+
+~
+#30621
+wrought-iron weapon rack~
+wrought-iron weapon rack~
+A black wrought-iron rack is hung with many weapons of war.~
+~
+15 0 0
+0~ 0~ 0~ 0~
+1000 0 0
+E
+wrought-iron weapon rack~
+A large weapons rack made from wrought-iron is bolted to the stone floor. 
+It is hung with many different weapons of maiming and war.
+
+~
+#30622
+steel gauntlets~
+steel gauntlets~
+A pair of articulated steel gauntlets have been left here.~
+~
+9 128 1|128
+0~ 0~ 0~ 0~
+3 0 0
+A
+18 6
+A
+19 8
+A
+5 3
+A
+17 -15
+E
+steel gauntlets~
+A heavy pair of articulated steel gauntlets, that have been tempered black 
+and fitted with sharp spikes across the knuckle joints.
+
+~
+#30623
+heavy crossbow~
+a heavy crossbow~
+A heavy armour-piercing crossbow has been left here.~
+~
+5 2|1073741824 1|8192
+0~ 0~ 0~ 0~
+4 0 0
+A
+18 15
+A
+19 15
+A
+17 -10
+A
+5 2
+E
+heavy crossbow~
+The large crossbow has been made from a dark wood and heavy blackened 
+steel. Judging from its size and weight, there is little doubt it would 
+punch bolts straight through plate armour.
+
+~
+#30624
+displaced energy~
+displaced energy~
+There is a sudden rush of displaced air and energy.~
+~
+9 2|32 1|1024
+0~ 0~ 0~ 0~
+0 0 0
+#30625
+assassins dagger~
+an assassin's dagger~
+A long sharp dagger has been left here.~
+~
+5 8|64|4096|16384|65536|131072|262144|524288|268435456|536870912 1|8192
+0~ 0~ 0~ 11~
+1 0 0
+A
+18 10
+A
+19 15
+A
+12 100
+E
+assassin's dagger~
+A long dagger has been sharpened to a deadly point and the blade is coated 
+with poison.
+
+~
+#30626
+black leather jerkin~
+a black leather jerkin~
+A black leather jerkin has been abandoned here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+A
+19 10
+A
+17 -20
+A
+2 4
+E
+black leather jerkin~
+A loose fitting jerkin fashioned from soft black leather and fastened together 
+with thonging.
+
+~
+#30627
+black leather boots~
+black leather boots~
+A pair of soft leather boots have been left here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~
+1 0 0
+A
+2 3
+A
+14 100
+A
+17 -20
+E
+black leather boots~
+A pair of tight fitting, mid-calf length boots made from soft black leather.
+
+~
+#30628
+black pants~
+loose black pants~
+A pile of ink-black cloth has been discarded here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+A
+2 3
+A
+14 50
+A
+18 10
+A
+17 -15
+E
+black pants~
+A pair of loose-fitting ink-black pants the exact shade of night. Allowing 
+the wearer to blend invisibly into the evening shadows.
+
+~
+#30629
+hood~
+a concealing hood~
+A black hood has been left here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -5
+E
+hood~
+A deep hood designed to hide the face in shadow, concealing the wearer's 
+identity.
+
+~
+#30630
+throwing star~
+a throwing star~
+A sharp throwing star has been left here.~
+~
+9 16777216 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+A
+18 25
+A
+19 10
+E
+throwing star~
+The edges of the throwing star have been sharpened to a razor finish, you 
+must handle it carefully to avoid serious injury.
+
+~
+#30631
+flowing white gown~
+a flowing white gown~
+A bundle of white cloth embroidered with gold thread has been carelessly left here.~
+~
+9 64|1024|2048 1|8
+0~ 0~ 0~ 0~
+1 0 0
+A
+4 4
+A
+12 200
+A
+24 -10
+A
+23 -10
+A
+17 -20
+A
+13 50
+E
+flowing white robe~
+The long flowing robe is pure white and has an intricate vine embroidered 
+around the hem and cuffs with gold thread.
+
+~
+#30632
+golden harp~
+a golden harp~
+A beautiful golden harp has been left here. ~
+~
+36 1|64|1024 1|16384
+0~ 0~ 0~ 0~
+2 0 0
+A
+18 10
+A
+19 10
+A
+13 50
+A
+12 100
+E
+golden harp~
+The harp has been crafted from the finest gold and seems to be infused with 
+magical energies as it glows and pulses brightly.
+
+~
+#30633
+golden halo~
+a golden halo~
+A golden halo is hovering in the air.~
+~
+9 1|64|1024 1|32768
+0~ 0~ 0~ 0~
+1 0 0
+A
+3 2
+A
+4 2
+A
+24 -15
+A
+23 -10
+A
+17 -10
+E
+golden halo~
+The halo is hovering in the air shedding a brilliant golden light around it.
+
+~
+#30634
+feathered wings~
+feathered wings~
+A pair of white feathered wings are lying here.~
+~
+9 1024|4096 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 5
+A
+23 -15
+E
+feathered wings~
+The large snow white feathers are gently ruffled by the soft breeze blowing 
+through them.  
+
+~
+#30635
+feathered wings~
+feathered wings~
+A pair of black feathered wings are lying here.~
+~
+9 512|4096 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 2
+A
+23 -15
+E
+feathered wings~
+The glossy black feathers are ruffled from a gust of cold air and you notice 
+there are fluffy grey feathers underneath them. It looks like the sleek black 
+ones are growing in over them.   
+
+~
+#30636
+dark prayer ancient parchment~
+a dark prayer~
+An ancient parchment inscribed with mystical symbols has been left here.~
+~
+2 32|128|512 1|16384
+100~ stone skin~ biofeedback~ complete healing~
+1 0 0
+A
+9 100
+E
+prayer scroll parchment~
+An ancient parchment inscribed with mystical symbols is resonating with 
+menacing energy.
+
+~
+#30637
+feathered wings~
+feathered wings~
+A pair of grey feathered wings are lying here.~
+~
+9 512|1024|4096 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 2
+A
+23 -15
+E
+feathered wings~
+The fluffy grey feathers are ruffled from a gust of cold air and you notice 
+there are no primary flight feathers, just down. It looks like the large 
+feathers have recently been plucked as there are small droplets of blood 
+seeping from the skin.   
+
+~
+#30638
+longsword~
+a longsword~
+A longsword has been abandoned here.~
+~
+5 2|16777216 1|8192
+0~ 0~ 0~ 0~
+3 0 0
+A
+18 10
+A
+19 12
+A
+2 3
+E
+longsword~
+The longsword has recently been sharpened and oiled to protect it from rust.
+
+~
+#30639
+work boots~
+work boots~
+A pair of scuffed work boots have been left here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -20
+E
+work boots~
+These boots are old and scuffed.
+
+~
+#30640
+leather apron~
+a leather apron~
+An old leather apron has been left here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -20
+E
+leather apron~
+An old leather work apron that is grubby and scuffed.
+
+~
+#30641
+gloves~
+work gloves~
+A pair grubby work gloves have been left here.~
+~
+9 0 1|128
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -20
+E
+gloves~
+These work gloves are old and grubby.
+
+~
+#30642
+old trousers~
+old trousers~
+A pair of old trousers have been discarded here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -10
+E
+old trousers~
+They are old and grubby and singed in several places.~
+#30643
+candelabra~
+a candelabra~
+Candles are burning in a tall candelabra made from silver and gold.~
+~
+12 1 0
+0~ 0~ 0~ 0~
+30 0 0
+E
+candelabra~
+It is made from pure silver with a golden vine twisting up the stand. It is 
+probably worth a lot of money.  
+
+~
+#30644
+pedestal~
+a marble pedestal~
+A marble pedestal holding a clear crystal ball is standing near the wall.~
+~
+12 2 0
+0~ 0~ 0~ 0~
+150 0 0
+E
+marble crystal pedestal~
+A pedestal cut from black marble to form a clawed hand reaching up from the 
+floor. A clear crystal ball is held within its grasp.
+
+~
+#30645
+conference table~
+a conference table~
+A long conference table is surrounded by chairs.~
+~
+12 0 0
+0~ 0~ 0~ 0~
+400 0 0
+E
+conference table~
+The table is covered with large maps of all the major cities and surrounding 
+countryside.
+
+~
+#30646
+dark shadows~
+dark unnatural shadows~
+Dark unnatural shadows swirl before you.~
+~
+9 16 1|1024
+0~ 0~ 0~ 0~
+0 0 0
+A
+9 100
+A
+23 -25
+E
+dark shadows~
+The dark mass of shadows are writhing and swirling in a very disturbing way, 
+almost as if they alive.
+
+~
+#30647
+chainmail~
+chainmail~
+A pile of chainmail has been left here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+3 0 0
+A
+17 -20
+A
+1 2
+#30648
+coif chainmail~
+a chainmail coif~
+A small pile of chainmail has been left here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 0
+A
+18 10
+A
+13 250
+#30649
+gothik shield~
+a gothik shield~
+A black gothik shield has been discarded here.~
+~
+9 16 1|512
+0~ 0~ 0~ 0~
+4 0 0
+A
+17 -20
+A
+18 6
+A
+19 10
+A
+13 30
+E
+gothik shield~
+The heavy steel shield has been well crafted and tempered black. There is 
+an intricate crest etched with silver in the centre, depicting a bat with 
+its wings spread across a gothik cross.
+
+~
+#30650
+falconry hood~
+a falconry hood~
+A falconry hood with feathers sprouting from the top has been left here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -20
+E
+falconry hood~
+A very large falconry hood made from soft leather and adorned with black 
+and red feathers.
+
+~
+#30651
+leather thong~
+a leather thong~
+A leather thong has been discarded here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 -10
+#30652
+small iron key~
+a small iron key~
+A small iron key is lying here.~
+~
+18 0 1
+0~ 0~ 0~ 0~
+1 0 0
+#30653
+large iron key~
+a large iron key~
+A large iron key has been left here.~
+~
+18 0 1
+0~ 0~ 0~ 0~
+1 0 0
+#30654
+black key~
+a black key~
+A black key has been left here.~
+~
+18 0 1
+0~ 0~ 0~ 0~
+5 0 0
+#30655
+wardrobe~
+a mahogany wardrobe~
+A mahogany wardrobe stands against the wall.~
+~
+15 0 0
+0~ 5
+~ 0~ 0~
+500 0 0
+E
+mahogany wardrobe~
+A large mahogany wardrobe coated with clear lacquer stands against the wall 
+here. An intricate crest has been inlaid with silver on the double doors. 
+It is depicting a bat with its wings spread across a gothik cross.
+
+~
+#30656
+whetstone~
+a whetstone~
+A black whetstone used for sharpening swords lies here.~
+~
+39 0 1
+2~ 0~ 0~ 0~
+1 300 10
+E
+whetstone~
+The whetstone will be ideal for sharpening things.
+
+~
+#30657
+shadowy portal~
+a shadowy portal~
+~~
+33 0 0
+30489~ -1~ 0~ 100~ 
+1 0 0
+E
+shadowy portal~
+The shadowy portal shimmers before your eyes. {x
+
+~
+#30658
+clouded portal~
+a clouded portal~
+~~
+33 0 0
+30802~ -1~ 0~ 100~ 
+1 0 0
+E
+clouded portal~
+The clouded portal swims before your eyes. {x
+
+~
+#30659
+clouded portal~
+a clouded portal~
+~~
+33 0 0
+30792~ -1~ 0~ 100~ 
+1 0 0
+E
+clouded portal~
+The clouded portal swims before your eyes. {x
+
+~
+#30660
+vial dusty ~
+a dusty vial~
+A dust-covered vial of clear liquid is here.~
+~
+10 16|64 1
+100~ power heal~ remove curse~ energy containment~
+1 0 0
+#30661
+vial dusty ~
+a dusty vial~
+A dust-covered vial of clear liquid is here.~
+~
+10 16|64 1
+100~ power heal~ remove curse~ energy containment~
+1 0 0
+#0
+
+#ROOMS
+#30600
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. To the north and east the cliff drops away but 
+you are unable to tell how far down the ground is here as the shadows are 
+completely obscuring your view.
+
+A shadowy portal hangs in the air.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 30638
+D3
+~
+~
+0 -1 30601
+D5
+~
+stone~
+10 -1 30809
+S
+#30601
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. To the south the bastion wall towers high above 
+you. The surface of the stone is completely smooth allowing no chance of scaling 
+it. 
+
+To the north the cliff drops away but you are unable to tell how far down 
+the ground is here as the shadows are completely obscuring your view.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30600
+D3
+~
+~
+0 -1 30602
+S
+#30602
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. To the south the bastion wall towers high above 
+you. The surface of the stone is completely smooth allowing no chance of scaling 
+it. 
+
+To the north the cliff drops away but you are unable to tell how far down 
+the ground is here as the shadows are completely obscuring your view.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30601
+D3
+~
+~
+0 -1 30603
+S
+#30603
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west a tall spire stretches into the sky. To the south the bastion 
+wall towers high above you. The surface of the stone is completely smooth
+allowing no chance of scaling it.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30604
+D1
+~
+~
+0 -1 30602
+S
+#30604
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east the cliff drops away but you are unable to tell how far down the 
+ground is here as the shadows are completely obscuring your view. The tall spire 
+stretches into the sky. You hug the wall as you edge around it, trying not 
+to slip.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30639
+D2
+~
+~
+0 -1 30603
+D3
+~
+~
+0 -1 30605
+S
+#30605
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the cliff drops away but you are unable to tell how far down the 
+ground is here as the shadows are completely obscuring your view. To the south a 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30604
+D3
+~
+~
+0 -1 30606
+S
+#30606
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north and west the cliff drops away but you are unable to tell how far 
+down the ground is here as the shadows are completely obscuring your view. The 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30605
+D2
+~
+~
+0 -1 30607
+S
+#30607
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east a tall spire stretches into the sky. To the south the bastion wall 
+towers high above you. The surface of the stone is completely smooth allowing 
+no chance of scaling it.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30606
+D3
+~
+~
+0 -1 30608
+S
+#30608
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the south the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the north the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30607
+D3
+~
+~
+0 -1 30609
+S
+#30609
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the south the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the north the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30608
+D3
+~
+~
+0 -1 30610
+S
+#30610
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north and west the cliff drops away but you are unable to tell how far 
+down the ground is here as the shadows are completely obscuring your view.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30609
+D2
+~
+~
+0 -1 30611
+S
+#30611
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the west the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30610
+D2
+~
+~
+0 -1 30612
+S
+#30612
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the west the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30611
+D2
+~
+~
+0 -1 30613
+S
+#30613
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the south a tall spire stretches into the sky. To the east the bastion 
+wall towers high above you. The surface of the stone is completely smooth
+allowing no chance of scaling it.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30612
+D3
+~
+~
+0 -1 30614
+S
+#30614
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north and west the cliff drops away but you are unable to tell how far 
+down the ground is here as the shadows are completely obscuring your view. 
+The tall spire stretches into the sky. You hug the wall as you edge around it,
+trying not to slip.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30613
+D2
+~
+~
+0 -1 30615
+S
+#30615
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west the cliff drops away but you are unable to tell how far down the 
+ground is here as the shadows are completely obscuring your view. To the east a 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30614
+D2
+~
+~
+0 -1 30616
+S
+#30616
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west and south the cliff drops away but you are unable to tell how far 
+down the ground is here as the shadows are completely obscuring your view. The 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30615
+D1
+~
+~
+0 -1 30617
+S
+#30617
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north a tall spire stretches into the sky. To the east the bastion wall 
+towers high above you. The surface of the stone is completely smooth allowing 
+no chance of scaling it.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 30618
+D3
+~
+~
+0 -1 30616
+S
+#30618
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the west the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30617
+D2
+~
+~
+0 -1 30619
+S
+#30619
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the west the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30618
+D2
+~
+~
+0 -1 30620
+S
+#30620
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the south and west the cliff drops away but you are unable to tell how 
+far down the ground is here as the shadows are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30619
+D1
+~
+~
+0 -1 30621
+S
+#30621
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the south the cliff drops 
+away and far below you see nothing but mist. You'd better watch your step, a 
+fall from this height would definitely be fatal.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30622
+D3
+~
+~
+0 -1 30620
+S
+#30622
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the south the cliff drops 
+away and far below you see nothing but mist. You'd better watch your step, a 
+fall from this height would definitely be fatal.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30623
+D3
+~
+~
+0 -1 30621
+S
+#30623
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the south the cliff drops 
+away and far below you see nothing but mist. You'd better watch your step, a 
+fall from this height would definitely be fatal.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30624
+D3
+~
+~
+0 -1 30622
+S
+#30624
+Before the gate~
+You are standing Before a large iron gate set into the bastion wall. It is 
+completely solid allowing no view of what might dwell inside. To the south the 
+cliff drops away and far below you see nothing but mist. You'd better watch your 
+step, a fall from this height would definitely be fatal.
+~
+0 1|8 5
+D0
+~
+~
+8 -1 30684
+D1
+~
+~
+1 -1 30625
+D3
+~
+~
+0 -1 30623
+S
+#30625
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the south the cliff drops 
+away and far below you see nothing but mist. You'd better watch your step, a 
+fall from this height would definitely be fatal.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30626
+D3
+~
+~
+0 -1 30624
+S
+#30626
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the south the cliff drops 
+away and far below you see nothing but mist. You'd better watch your step, a 
+fall from this height would definitely be fatal.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30627
+D3
+~
+~
+0 -1 30625
+S
+#30627
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the south the cliff drops 
+away and far below you see nothing but mist. You'd better watch your step, a 
+fall from this height would definitely be fatal.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30628
+D3
+~
+~
+0 -1 30626
+S
+#30628
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the south and east the cliff drops away but you are unable to tell how 
+far down the ground is here as the shadows are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30629
+D3
+~
+~
+0 -1 30627
+S
+#30629
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the east the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30630
+D2
+~
+~
+0 -1 30628
+S
+#30630
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the east the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30631
+D2
+~
+~
+0 -1 30629
+S
+#30631
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north a tall spire stretches into the sky. To the west the bastion wall 
+towers high above you. The surface of the stone is completely smooth allowing no 
+chance of scaling it.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 30632
+D2
+~
+~
+0 -1 30630
+S
+#30632
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east and south the cliff drops away but you are unable to tell how far 
+down the ground is here as the shadows are completely obscuring your view. The 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30633
+D3
+~
+~
+0 -1 30631
+S
+#30633
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the east the cliff drops away but you are unable to tell how far down the 
+ground is here as the shadows are completely obscuring your view. To the west a 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30634
+D2
+~
+~
+0 -1 30632
+S
+#30634
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the north and east the cliff drops away but you are unable to tell how far 
+down the ground is here as the shadows are completely obscuring your view. The 
+tall spire stretches into the sky. You hug the wall as you edge around it, 
+trying not to slip.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 30633
+D3
+~
+~
+0 -1 30635
+S
+#30635
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the south a tall spire stretches into the sky. To the west the bastion wall 
+towers high above you. The surface of the stone is completely smooth allowing 
+no chance of scaling it.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30636
+D1
+~
+~
+0 -1 30634
+S
+#30636
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the east the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30637
+D2
+~
+~
+0 -1 30635
+S
+#30637
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the east the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30638
+D2
+~
+~
+0 -1 30636
+S
+#30638
+In the shadows~
+Dark shadows swirl and churn about you in an unnatural way. They seem to be 
+trying to cling to your body and you flail your arms about attempting to shake 
+them off. Now and then you see strange demonic faces form in the shadows only to 
+disappear again a moment later. 
+
+To the west the bastion wall towers high above you. The surface of the stone is 
+completely smooth allowing no chance of scaling it. To the east the cliff drops 
+away but you are unable to tell how far down the ground is here as the shadows 
+are completely obscuring your view.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 30600
+D2
+~
+~
+0 -1 30637
+S
+#30639
+Floating In the shadows~
+You are floating in the shadows which swirl and churn about you in an unnatural 
+way. They seem to be trying to cling to your body and you flail your arms about 
+attempting to shake them off. Now and then you see strange demonic faces form in 
+the shadows only to disappear again a moment later.
+~
+0 1|4|8 9
+D2
+~
+~
+0 -1 30604
+D5
+~
+~
+0 -1 30640
+S
+#30640
+Floating In the shadows~
+You are floating in the shadows which swirl and churn about you in an unnatural 
+way. They seem to be trying to cling to your body and you flail your arms about 
+attempting to shake them off. Now and then you see strange demonic faces form in 
+the shadows only to disappear again a moment later.
+~
+0 1|8 9
+D4
+~
+~
+0 -1 30639
+D5
+~
+~
+0 -1 30641
+S
+#30641
+Floating In the shadows~
+You are floating in the shadows which swirl and churn about you in an unnatural 
+way. They seem to be trying to cling to your body and you flail your arms about 
+attempting to shake them off. Now and then you see strange demonic faces form in 
+the shadows only to disappear again a moment later. To the south you see a solid 
+iron door set into the cliff face. It is a very odd place to put a door.
+~
+0 1|8 9
+D2
+~
+~
+4 30652 30642
+D4
+~
+~
+0 -1 30640
+S
+#30642
+Tunnel from the stables~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. 
+
+There is a solid iron door to the north and the tunnel stretches away into 
+darkness towards the south.
+~
+0 1|8 0
+D0
+~
+~
+4 30652 30641
+D2
+~
+~
+0 -1 30643
+S
+#30643
+Tunnel from the stables~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. 
+
+The tunnel stretches away into darkness towards the north and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30642
+D2
+~
+~
+0 -1 30644
+S
+#30644
+Tunnel from the stables~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. 
+
+The tunnel stretches away into darkness towards the north, while to the south 
+light can be seen.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30643
+D2
+~
+~
+0 -1 30645
+S
+#30645
+Stables~
+There are torches burning in sconces affixed to the stone walls of the chamber, 
+Allowing you to see a little better. The purpose of this area is unclear from 
+what you are able to see from here. You will have to take a better look around 
+if you wish to find out.
+~
+0 8 0
+D0
+~
+~
+0 -1 30644
+D3
+~
+~
+0 -1 30646
+S
+#30646
+Stables~
+There are torches burning in sconces affixed to the stone walls of the chamber 
+and your eyes are slowly adjusting to the light. The purpose of this area 
+remains unclear, you will have to take a better look around if you wish to find 
+out. 
+
+There are solid iron doors to the north and west, while the chamber continues 
+to the south.
+~
+0 8 0
+D0
+~
+~
+8 30652 30654
+D1
+~
+~
+0 -1 30645
+D2
+~
+~
+0 -1 30648
+D3
+~
+~
+1 -1 30647
+S
+#30647
+A chiller~
+You feel the sudden drop in temperature as you step into a large walk-in 
+chiller. As you look around you are horrified by the sight of many corpses 
+hanging from the roof on meat hooks. There is a table running along one side 
+that has scraps of meat scattered across it and there is a sharp looking hatchet 
+hanging on the wall.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 30646
+E
+corpses~
+Large chunks of flesh have been hacked from the bones.
+
+~
+E
+hatchet~
+It is covered with dried blood.
+
+~
+S
+#30648
+Stables~
+There are torches burning in sconces affixed to the stone walls of the chamber 
+and your eyes are slowly adjusting to the light. There are solid iron doors to 
+the west and east, while the chamber continues to the north and south.
+~
+0 8 0
+D0
+~
+~
+0 -1 30646
+D1
+~
+~
+1 -1 30649
+D2
+~
+~
+1 -1 30651
+D3
+~
+~
+1 -1 30650
+S
+#30649
+Stables~
+You are in a large stone chamber that appears to be used for housing mounts, 
+although you shudder to think who might own such a mount. There are a few scraps 
+of chewed meat on the floor, The remains of a meal by the look of it.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 30648
+E
+scraps meat~
+Scraps of white meat that you are unable to identify by looking at them.
+
+~
+S
+#30650
+Stables~
+You are in a large stone chamber that appears to be used for housing mounts, 
+Although this stall is presently empty. Someone must have taken the creature out 
+for some exercise. There are a few scraps of chewed meat on the floor, and some 
+straw has been strewn about.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 30648
+S
+#30651
+Stables~
+There are torches burning in sconces affixed to the stone walls of the chamber 
+and your eyes are slowly adjusting to the light. There are solid iron doors to 
+the west, east and south while the chamber continues north.
+
+There is a large sign affixed to the eastern door.
+~
+0 8 0
+D0
+~
+~
+1 -1 30648
+D1
+~
+~
+1 -1 30652
+D2
+~
+~
+4 30654 30801
+D3
+~
+~
+1 -1 30653
+E
+sign~
+WARNING:
+The shadow lords personal mount is highly battle trained and very aggressive. It 
+is advised that you throw his food in the door and do not attempt to handle him.
+
+~
+S
+#30652
+Stables~
+You are in a large stone chamber that appears to be used for housing mounts, 
+although you shudder to think who might own such a mount. The walls here are 
+deeply grooved and scored, it is clear the occupant doesn't like to be confined. 
+There are a few scraps of chewed meat on the floor, the remains of a meal by the 
+look of it.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 30651
+E
+scraps meat~
+Scraps of white meat that you are unable to identify by looking at them.
+
+~
+S
+#30653
+Stables~
+You are in a large stone chamber that appears to be used for housing mounts, 
+although you shudder to think who might own such a mount. There are a few scraps 
+of chewed meat on the floor, the remains of a meal by the look of it.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 30651
+E
+scraps meat~
+Scraps of white meat that you are unable to identify by looking at them.
+
+~
+S
+#30654
+Passage to the stables~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. 
+
+There is a solid iron door to the south and the tunnel stretches away into 
+darkness towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30655
+D2
+~
+~
+8 30652 30646
+S
+#30655
+Passage to the stables~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. A large archway has been cut 
+into the north section of the stone wall and the tunnel stretches away into 
+darkness towards the south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30656
+D2
+~
+~
+0 -1 30654
+S
+#30656
+Staircase in the spire~
+You appear to be in one of the bastion's spires, There are no windows here as 
+you are below ground level. There are torches burning in sconces affixed to the 
+circular walls of the chamber and there is a wrought iron staircase spiralling 
+upwards in the centre of the room. A large archway has been cut into the 
+southern section of the stone wall.
+~
+0 4|8 7
+D2
+~
+~
+0 -1 30655
+D4
+~
+~
+0 -1 30657
+S
+#30657
+Staircase in the spire~
+You appear to be in one of the bastion's spires, There are no windows here as 
+you are below ground level. There are torches burning in sconces affixed to the 
+circular walls of the chamber and there is a wrought iron staircase spiralling 
+both upwards and downwards in the centre of the room. A large archway has been 
+cut into the southern section of the stone wall.
+~
+0 4|8 0
+D2
+~
+~
+0 -1 30658
+D4
+~
+~
+0 -1 30669
+D5
+~
+~
+0 -1 30656
+S
+#30658
+Passage to the dungeon~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. A large archway has been cut 
+into the north section of the stone wall and the tunnel stretches away into 
+darkness towards the south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30657
+D2
+~
+~
+0 -1 30659
+S
+#30659
+Passage to the dungeon~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. The surface of the floor has been worn smooth with the passage of time, Or 
+possibly from the travel of whatever dwells within. There is a solid iron door 
+to the south and the tunnel stretches away into darkness towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30658
+D2
+~
+~
+4 30653 30660
+S
+#30660
+The dungeon~
+You are in a huge naturally formed cavern. There are small patches of light here 
+and there, but it is very dim, making visibility limited. From what you can see 
+it is definitely a torture chamber. The dungeon is filled with all manner of 
+devices for causing suffering and pain. You can hear faint movement from some of 
+the darker corners of the chamber.
+~
+0 4|8|8192 0
+D0
+~
+~
+4 30653 30659
+D1
+~
+~
+0 -1 30661
+D2
+~
+~
+0 -1 30663
+D3
+~
+~
+0 -1 30662
+S
+#30661
+The dungeon~
+It is ominously dark in this corner of the cavern, You can barely make out the 
+slumped figure that is chained to the wall. Your presence appears to be 
+unnoticed by the prisoner who hasn't moved an inch since you arrived. Bending 
+down for a closer look you discover the captive to be an angel who is in a 
+trance-like state.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30664
+D3
+~
+~
+0 -1 30660
+S
+#30662
+The dungeon~
+It is ominously dark in this corner of the cavern, You can barely make out the 
+slumped figure that is chained to the wall. Your presence appears to be 
+unnoticed by the prisoner who hasn't moved an inch since you arrived. Bending 
+down for a closer look you discover the captive to be an angel who is in a 
+trance-like state.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30660
+D2
+~
+~
+0 -1 30665
+S
+#30663
+The dungeon~
+You are in a huge naturally formed cavern. There are small patches of light here 
+and there, But it is very dim making visibility limited. From what you can see 
+it is definitely a torture chamber. The dungeon is filled with all manner of 
+devices for causing suffering and pain. You can hear faint movement from some of 
+the darker corners of the chamber.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30660
+D1
+~
+~
+0 -1 30664
+D2
+~
+~
+0 -1 30666
+D3
+~
+~
+0 -1 30665
+S
+#30664
+The dungeon~
+There is a torch burning in a sconce affixed to the cavern wall which allows you 
+to see a small distance around you, But also allowing anyone nearby to see you 
+silhouetted in its glow.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 30661
+D2
+~
+~
+0 -1 30667
+D3
+~
+~
+0 -1 30663
+S
+#30665
+The dungeon~
+There is a torch burning in a sconce affixed to the cavern wall which allows you 
+to see a small distance around you, But also allowing anyone nearby to see you 
+silhouetted in its glow.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 30662
+D1
+~
+~
+0 -1 30663
+D2
+~
+~
+0 -1 30668
+S
+#30666
+The dungeon~
+There is a torch burning in a sconce affixed to the cavern wall and you can see 
+in grim detail the stone altar beneath it. The top of the altar is neatly 
+arranged with many grisly devices of torture. Amongst them is an extensive 
+collection of whips, knives and clamps. In the centre is a crystal ball with 
+several vials of red liquid beside it.
+~
+0 4|8|8192 0
+D0
+~
+~
+0 -1 30663
+D1
+~
+~
+0 -1 30667
+D3
+~
+~
+0 -1 30668
+E
+stone altar~
+The stone altar has steel hoops embedded in the four corners of its surface, 
+which you assume are used to tether intended torture victims. Since no-one is 
+currently upon it many instruments of pain are arranged there. Amongst them a 
+deadly looking cat of nine tails stands out as it has spiked barbs of wire woven 
+in with the leather thongs.
+
+~
+E
+crystal ball~
+The crystal ball is clouded with swirling grey mist and you are unable to see 
+anything of significance inside it.
+
+~
+S
+#30667
+The dungeon~
+It is ominously dark in this corner of the cavern making it difficult to see 
+very far. You take comfort in thinking you should remain unseen by anything 
+hostile that might be lurking nearby.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30664
+D3
+~
+~
+0 -1 30666
+S
+#30668
+The dungeon~
+It is ominously dark in this corner of the cavern making it difficult to see 
+very far. You take comfort in thinking you should remain unseen by anything 
+hostile that might be lurking nearby.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30665
+D1
+~
+~
+0 -1 30666
+D2
+~
+~
+4 30654 30799
+S
+#30669
+Staircase in the spire~
+You appear to be in one of the bastion's spires, There are no windows here, 
+Preventing any view of the outside world. There are torches burning in sconces 
+affixed to the circular walls of the chamber and there is a wrought iron 
+staircase spiralling both upwards and downwards in the centre of the room. A 
+large archway has been cut into the southern section of the stone wall.
+~
+0 4|8 0
+D2
+~
+~
+0 -1 30670
+D4
+~
+~
+0 -1 30710
+D5
+~
+~
+0 -1 30657
+S
+#30670
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. A large archway has been cut into the north section of the 
+stone wall and there is a solid iron door to the south. The corridor stretches 
+away into darkness towards the west and east.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30669
+D1
+~
+~
+0 -1 30671
+D2
+~
+~
+1 -1 30698
+D3
+~
+~
+0 -1 30697
+S
+#30671
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30672
+D3
+~
+~
+0 -1 30670
+S
+#30672
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30673
+D3
+~
+~
+0 -1 30671
+S
+#30673
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+south.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30674
+D3
+~
+~
+0 -1 30672
+S
+#30674
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30673
+D2
+~
+~
+0 -1 30675
+S
+#30675
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30674
+D2
+~
+~
+0 -1 30676
+S
+#30676
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. A large archway has been cut into the east section of the stone 
+wall. The corridor stretches away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30675
+D1
+~
+~
+0 -1 30678
+D2
+~
+~
+0 -1 30679
+S
+#30677
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west.
+~
+0 1|8|8192 0
+D3
+~
+~
+1 -1 30705
+S
+#30678
+Staircase in the spire~
+You appear to be in one of the bastion's spires, There are no windows here, 
+Preventing any view of the outside world. There are torches burning in sconces 
+affixed to the circular walls of the chamber and there is a wrought iron 
+staircase spiralling both upwards and downwards in the centre of the room. A 
+large archway has been cut into the western section of the stone wall.
+~
+0 4|8 0
+D3
+~
+~
+0 -1 30676
+D4
+~
+~
+0 -1 30720
+S
+#30679
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30676
+D2
+~
+~
+0 -1 30680
+S
+#30680
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30679
+D2
+~
+~
+0 -1 30681
+S
+#30681
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+west.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30680
+D3
+~
+~
+0 -1 30682
+S
+#30682
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30681
+D3
+~
+~
+0 -1 30683
+S
+#30683
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30682
+D3
+~
+~
+0 -1 30684
+S
+#30684
+Inside the gate~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a large iron gate set into the southern section of the 
+bastion wall. It is completely solid allowing no view of what might lurk beyond. 
+The corridor stretches away into darkness towards the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 30683
+D2
+~
+~
+8 -1 30624
+D3
+~
+~
+0 -1 30685
+S
+#30685
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30684
+D3
+~
+~
+0 -1 30686
+S
+#30686
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30685
+D3
+~
+~
+0 -1 30687
+S
+#30687
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+east.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30688
+D1
+~
+~
+0 -1 30686
+S
+#30688
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30689
+D2
+~
+~
+0 -1 30687
+S
+#30689
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30690
+D2
+~
+~
+0 -1 30688
+S
+#30690
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. A large archway has been cut into the west section of the stone 
+wall. The corridor stretches away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30693
+D2
+~
+~
+0 -1 30689
+D3
+~
+~
+0 -1 30692
+S
+#30691
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 30706
+S
+#30692
+Staircase in the spire~
+You appear to be in one of the bastion's spires, There are no windows here, 
+Preventing any view of the outside world. There are torches burning in sconces 
+affixed to the circular walls of the chamber and there is a wrought iron 
+staircase spiralling both upwards and downwards in the centre of the room. A 
+large archway has been cut into the eastern section of the stone wall.
+~
+0 4|8 0
+D1
+~
+~
+0 -1 30690
+D4
+~
+~
+0 -1 30734
+S
+#30693
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30694
+D2
+~
+~
+0 -1 30690
+S
+#30694
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30695
+D2
+~
+~
+0 -1 30693
+S
+#30695
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the north and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30696
+D2
+~
+~
+0 -1 30694
+S
+#30696
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30697
+D3
+~
+~
+0 -1 30695
+S
+#30697
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. The corridor stretches away into darkness towards the west and 
+east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30670
+D3
+~
+~
+0 -1 30696
+S
+#30698
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There are solid iron doors in all the cardinal directions.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 30670
+D1
+~
+~
+1 -1 30699
+D2
+~
+~
+1 -1 30701
+D3
+~
+~
+8 30653 30700
+S
+#30699
+An empty room~
+You are in a bare stone chamber. There are no furnishings or decorations at all. 
+You wonder why this room would be kept empty and look around one more time. 
+Nope, nothing in here at all. As you turn to leave your foot catches on a stone 
+that is not sitting flush with the floor and you barely manage to prevent 
+yourself from sprawling onto the ground.
+~
+0 1|4|8 0
+D3
+~
+~
+1 -1 30698
+D5
+~
+stone~
+10 -1 30804
+E
+stone~
+The stone doesn't sit flush with the floor, maybe you could pry it loose.
+
+~
+S
+#30700
+A scrying chamber~
+You are in bare stone chamber. The only thing in the room is a marble pedestal 
+with a large crystal ball on top which is standing near the far wall. As you 
+walk over to it for a better look you notice that the wall behind it is not 
+completely stable, shimmering white energies ripple across the surface of the 
+stone. You absently rest your hand on the crystal ball as you lean against the 
+pedestal and think about how far from home you really are. Suddenly your 
+attention is draw back to the wall as in image begins to appear there -- it's your 
+home! You snatch your hand away from the crystal and take a step backwards, the 
+image disappears. The purpose of the room becomes clear to you, it is for remote 
+viewing. A chill runs down your spine at the thought of these creatures 
+possessing such a powerful tool.
+~
+0 4|8 0
+D1
+~
+~
+8 30653 30698
+E
+wall~
+Shimmering white energies ripple across the surface of the stone.
+
+~
+S
+#30701
+The war room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes.
+
+There is a solid iron door to the north.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 30698
+D1
+~
+~
+0 -1 30702
+D2
+~
+~
+0 -1 30704
+D3
+~
+~
+0 -1 30703
+E
+mural wall~
+Grisly battle scenes depicting whole fields of dismembered and maimed corpses. 
+One section of the mural that attracts your attention is of a figure with cold 
+silver eyes standing upon a hill with his hands out stretched. Spheres of white 
+light are rising from the slain and drifting across the battle field towards 
+him.
+
+~
+E
+documents maps~
+Large maps of all the major cities and surrounding countryside, some of them 
+have circles or crosses marked on them with red ink.
+
+~
+S
+#30702
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes.
+
+~
+0 1|8 0
+D2
+~
+~
+0 -1 30705
+D3
+~
+~
+0 -1 30701
+S
+#30703
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 30701
+D2
+~
+~
+0 -1 30706
+S
+#30704
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30701
+D1
+~
+~
+0 -1 30705
+D2
+~
+~
+0 -1 30707
+D3
+~
+~
+0 -1 30706
+E
+documents maps~
+Large maps of all the major cities and surrounding countryside, some of them 
+have circles or crosses marked on them with red ink.
+
+~
+S
+#30705
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes. There is a solid iron door to the east.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30702
+D1
+~
+~
+1 -1 30677
+D2
+~
+~
+0 -1 30708
+D3
+~
+~
+0 -1 30704
+S
+#30706
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes. There is a solid iron door to the west.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30703
+D1
+~
+~
+0 -1 30704
+D2
+~
+~
+0 -1 30709
+D3
+~
+~
+1 -1 30691
+S
+#30707
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30704
+D1
+~
+~
+0 -1 30708
+D3
+~
+~
+0 -1 30709
+E
+documents maps~
+Large maps of all the major cities and surrounding countryside, some of them 
+have circles or crosses marked on them with red ink.
+
+~
+S
+#30708
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30705
+D3
+~
+~
+0 -1 30707
+S
+#30709
+The War room~
+You are in a large chamber that appears to be used for military planning. There 
+is a long conference table running down the centre of the room and many chairs 
+are placed around it. The table is littered with maps and documents. The walls 
+of the chamber are completely covered by a large brightly painted mural 
+depicting bloody battle scenes. There is a solid iron door to the south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30706
+D1
+~
+~
+0 -1 30707
+D2
+~
+~
+8 30654 30798
+S
+#30710
+Staircase in the spire~
+You appear to be in one of the bastion's spires. There are small vertical slits 
+cut out of the northern section of the wall, Allowing a restricted view of the 
+outside world. There are torches burning in sconces affixed to the circular 
+walls of the chamber and there is a wrought iron staircase spiralling both 
+upwards and downwards in the centre of the room. There are solid iron doors to 
+the west and east and a large archway has been cut into the southern section of 
+the stone wall.
+~
+0 4|8 0
+D1
+~
+~
+1 -1 30713
+D2
+~
+~
+0 -1 30742
+D3
+~
+~
+1 -1 30741
+D4
+~
+~
+0 -1 30711
+D5
+~
+~
+0 -1 30669
+E
+north slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30711
+Staircase in the spire~
+You appear to be in one of the bastion's spires. There are small vertical slits 
+cut out of the northern section of the wall, Allowing a restricted view of the 
+outside world. There are torches burning in sconces affixed to the circular 
+walls of the chamber and there is a wrought iron staircase spiralling both 
+upwards and downwards in the centre of the room. A large archway has been cut 
+into the southern section of the stone wall.
+~
+0 4|8 0
+D2
+~
+~
+0 -1 30783
+D4
+~
+~
+0 -1 30712
+D5
+~
+~
+0 -1 30710
+E
+north slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30712
+Top of the spire~
+At last! You have reached the top of the spire. There are large slits cut out of 
+the wall in all the cardinal directions. You notice that the shadows obscuring 
+the bastion have thinned here. There are torches burning in sconces affixed to 
+the circular walls of the chamber and there is a wrought iron staircase 
+spiralling downwards in the centre of the room.
+~
+0 4|8 0
+D5
+~
+~
+0 -1 30711
+E
+north west east south slit~
+You seem to be above the shadows now and you can plainly see that they are 
+completely obscuring the bastion from the outside world. Only the tops of a 
+couple of spires are rising above the unnatural camouflage.
+
+~
+S
+#30713
+On the battlements~
+You are standing on the bastions battlements. Leaning out you try to establish 
+how far below the ground is but the swirling shadows that shroud the castle are 
+obscuring your view. There is no outside wall to prevent you from falling to 
+your death should you stumble and fall and you suffer a brief bout of vertigo as 
+you stagger back against the wall. You don't have to see the ground to know you 
+are high above it. There is a solid iron door to the west and the battlement 
+continues towards the east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30714
+D3
+~
+~
+1 -1 30710
+S
+#30714
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30715
+D3
+~
+~
+0 -1 30713
+S
+#30715
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30716
+D3
+~
+~
+0 -1 30714
+S
+#30716
+On the battlements~
+You have reached the corner of the battlement without falling over the edge. 
+There is a large stone gargoyle here, perched atop a jade ball. The battlement 
+continues towards the west and south.
+~
+0 1|8|8192|16384 0
+D2
+~
+~
+0 -1 30717
+D3
+~
+~
+0 -1 30715
+E
+jade ball~
+A large jade ball is secured to the cornerstone.
+
+~
+S
+#30717
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. There is a small window 
+cut into the wall here. The battlement continues towards the north and south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30716
+D2
+~
+~
+0 -1 30718
+S
+#30718
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. There is a small window 
+cut into the wall here and thick iron bars have been set into the frame. The 
+battlement continues towards the north and south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30717
+D2
+~
+~
+0 -1 30719
+S
+#30719
+On the battlements~
+You are standing on the bastion's battlements. Leaning out you try to establish 
+how far below the ground is but the swirling shadows that shroud the castle are 
+obscuring your view. There is no outside wall to prevent you from falling to 
+your death should you stumble and fall and you suffer a brief bout of vertigo as 
+you stagger back against the wall. You don't have to see the ground to know you 
+are high above it. There is a small window cut into the wall here and thick iron 
+bars have been set into the frame. There is a solid iron door to the south and 
+the battlement continues towards the north.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30718
+D2
+~
+~
+1 -1 30720
+S
+#30720
+Staircase in the spire~
+You appear to be in one of the bastion's spires. There are small vertical slits 
+cut out of the eastern section of the wall, Allowing a restricted view of the 
+outside world. There are torches burning in sconces affixed to the circular 
+walls of the chamber and there is a wrought iron staircase spiralling both 
+upwards and downwards in the centre of the room. There are solid iron doors to 
+the north and south and a large archway has been cut into the western section of 
+the stone wall.
+~
+0 4|8 0
+D0
+~
+~
+1 -1 30719
+D2
+~
+~
+1 -1 30721
+D3
+~
+~
+0 -1 30758
+D4
+~
+~
+0 -1 30782
+D5
+~
+~
+0 -1 30678
+E
+east slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30721
+On the battlements~
+You are standing on the bastions battlements. Leaning out you try to establish 
+how far below the ground is but the swirling shadows that shroud the castle are 
+obscuring your view. There is no outside wall to prevent you from falling to 
+your death should you stumble and fall and you suffer a brief bout of vertigo as 
+you stagger back against the wall. You don't have to see the ground to know you 
+are high above it. There is a small window cut into the wall here. There is a 
+solid iron door to the north and the battlement continues towards the south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+1 -1 30720
+D2
+~
+~
+0 -1 30722
+S
+#30722
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. There is a small window 
+cut into the wall here. The battlement continues towards the north and south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30721
+D2
+~
+~
+0 -1 30723
+S
+#30723
+On the battlements~
+You have reached the corner of the battlement without falling over the edge. 
+There is a large stone gargoyle here, perched atop a jade ball. The battlement 
+continues towards the north and west.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30722
+D3
+~
+~
+0 -1 30724
+E
+jade ball~
+A large jade ball is secured to the corner stone.
+
+~
+S
+#30724
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30723
+D3
+~
+~
+0 -1 30725
+S
+#30725
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30724
+D3
+~
+~
+0 -1 30726
+S
+#30726
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30725
+D3
+~
+~
+0 -1 30727
+S
+#30727
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30726
+D3
+~
+~
+0 -1 30728
+S
+#30728
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30727
+D3
+~
+~
+0 -1 30729
+S
+#30729
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30728
+D3
+~
+~
+0 -1 30730
+S
+#30730
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30729
+D3
+~
+~
+0 -1 30731
+S
+#30731
+On the battlements~
+You have reached the corner of the battlement without falling over the edge. 
+There is a large stone gargoyle here, perched atop a jade ball. The battlement 
+continues towards the north and east.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30732
+D1
+~
+~
+0 -1 30730
+E
+jade ball~
+A large jade ball is secured to the corner stone.
+
+~
+S
+#30732
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. There is a small window 
+cut into the wall here. The battlement continues towards the north and south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30733
+D2
+~
+~
+0 -1 30731
+S
+#30733
+On the battlements~
+You are standing on the bastions battlements. Leaning out you try to establish 
+how far below the ground is but the swirling shadows that shroud the castle are 
+obscuring your view. There is no outside wall to prevent you from falling to 
+your death should you stumble and fall and you suffer a brief bout of vertigo as 
+you stagger back against the wall. You don't have to see the ground to know you 
+are high above it. There is a small window cut into the wall here. There is a 
+solid iron door to the north and the battlement continues towards the south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+1 -1 30734
+D2
+~
+~
+0 -1 30732
+S
+#30734
+Staircase in the spire~
+You appear to be in one of the bastion's spires. There are small vertical slits 
+cut out of the western section of the wall, Allowing a restricted view of the 
+outside world. There are torches burning in sconces affixed to the circular 
+walls of the chamber and there is a wrought iron staircase spiralling both 
+upwards and downwards in the centre of the room. There are solid iron doors to 
+the north and south and a large archway has been cut into the eastern section of 
+the stone wall.
+~
+0 4|8 0
+D0
+~
+~
+1 -1 30735
+D1
+~
+~
+0 -1 30770
+D2
+~
+~
+1 -1 30733
+D4
+~
+~
+0 -1 30781
+D5
+~
+~
+0 -1 30692
+E
+west slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30735
+On the battlements~
+You are standing on the bastions battlements. Leaning out you try to establish 
+how far below the ground is but the swirling shadows that shroud the castle are 
+obscuring your view. There is no outside wall to prevent you from falling to 
+your death should you stumble and fall and you suffer a brief bout of vertigo as 
+you stagger back against the wall. You don't have to see the ground to know you 
+are high above it. There is a small window cut into the wall here and thick iron 
+bars have been set into the frame. There is a solid iron door to the south and 
+the battlement continues towards the north.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30736
+D2
+~
+~
+1 -1 30734
+S
+#30736
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. There is a small window 
+cut into the wall here and thick iron bars have been set into the frame. The 
+battlement continues towards the north and south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30737
+D2
+~
+~
+0 -1 30735
+S
+#30737
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. There is a small window 
+cut into the wall here. The battlement continues towards the north and south.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 30738
+D2
+~
+~
+0 -1 30736
+S
+#30738
+On the battlements~
+You have reached the corner of the battlement without falling over the edge. 
+There is a large stone gargoyle here, perched atop a jade ball. The battlement 
+continues towards the east and south.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30739
+D2
+~
+~
+0 -1 30737
+E
+jade ball~
+A large jade ball is secured to the corner stone.
+
+~
+S
+#30739
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement continues 
+towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30740
+D3
+~
+~
+0 -1 30738
+S
+#30740
+On the battlements~
+You hug the castle wall as you make your way along the battlement, resisting the 
+urge to lean over and look down. The thick swirling shadows that shroud the 
+bastion are obscuring your view of the surrounding area. The battlement 
+continues towards the west and east.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 30741
+D3
+~
+~
+0 -1 30739
+S
+#30741
+On the battlements~
+You are standing on the bastions battlements. Leaning out you try to establish 
+how far below the ground is but the swirling shadows that shroud the castle are 
+obscuring your view. There is no outside wall to prevent you from falling to 
+your death should you stumble and fall and you suffer a brief bout of vertigo as 
+you stagger back against the wall. You don't have to see the ground to know you 
+are high above it. There is a solid iron door to the east and the battlement 
+continues towards the west.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+1 -1 30710
+D3
+~
+~
+0 -1 30740
+S
+#30742
+A dark corridor~
+You are in a dark stone corridor. 
+There are cobwebs hanging from the roof thick with dust and the surface of the 
+ancient floor has been worn smooth with the passage of time. A large archway has 
+been cut into the north section of the stone wall and there are solid iron doors 
+to the west and east. The corridor stretches away into darkness towards south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30710
+D1
+~
+~
+1 -1 30743
+D2
+~
+~
+0 -1 30745
+D3
+~
+~
+1 -1 30744
+S
+#30743
+A Meditation chamber~
+You are in a large stone chamber with no furnishings. There are torches burning 
+in sconces affixed to the walls, allowing you to clearly see the arcane symbols 
+inscribed upon them. A large circle is drawn in the centre of the floor and 
+candles are burning at set intervals around it. Within the circle the stone floor 
+is glowing and pulsing with a cold blue light. 
+
+This chamber appears to be used for summoning dark powers.
+~
+0 4|8|8192|16384 0
+D3
+~
+~
+1 -1 30742
+E
+circle floor~
+The circle pulses with cold blue light.
+
+~
+E
+symbols arcane~
+Mysterious arcane symbols are etched on the stone wall, none of them look familiar.
+
+~
+S
+#30744
+A richly furnished room~
+You are in a large richly furnished chamber. There is a four poster bed with 
+black velvet drapes in the centre of the room and a tall candelabra stands on 
+either side, the candles flicker casting eerie light across the walls. To your 
+left is a beautifully crafted mahogany wardrobe. To your right an antique chair 
+sits in front of an open fireplace, the warmth coming from the roaring flames is 
+a welcome relief from the cold.
+~
+0 4|8 0
+D1
+~
+~
+1 -1 30742
+E
+candelabra~
+It is made from pure silver with a golden vine twisting up the stand. It is 
+probably worth a lot of money.  
+
+~
+E
+antique chair~
+A priceless antique made from the finest mahogany. It is upholstered in black 
+velvet printed with gold.
+
+~
+E
+bed~
+The heavy velvet drapes have been drawn back and secured to the corner posts 
+with a cord, a rug made from soft grey pelts covers the mattress.
+
+~
+E
+fire fireplace~
+A roaring fire is burning and crackling.
+
+~
+S
+#30745
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There are solid iron doors to the west, east and south. The corridor stretches away into darkness towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30742
+D1
+~
+~
+1 -1 30746
+D2
+~
+~
+1 -1 30748
+D3
+~
+~
+1 -1 30747
+S
+#30746
+An arcane library~
+The walls of this chamber are lined with bookcases. Most are packed with arcane 
+books but some are filled with wooden chests of varying sizes. There is a 
+candelabra standing beside a large desk in the centre of the room, the candles 
+flicker and drip wax onto the floor. You see an ink pot and quill on the desk 
+and several parchments lay beside them.
+~
+0 4|8 0
+D3
+~
+~
+1 -1 30745
+E
+candelabra~
+It is made from pure silver with a golden vine twisting up the stand. It is probably 
+worth a lot of money.  
+
+~
+E
+parchment~
+They are written in a language you can't understand.
+
+~
+E
+desk~
+The desk is made from varnished oak and has several splotches of ink spilt on it.
+
+~
+E
+bookcase~
+This bookcase is lined with leather bound books that look very old. A book with 
+a blood red cover draws your attention, printed down the spine in spidery gothik 
+script is the title "The dead shall rise".
+
+~
+E
+chest~
+You reach out to retrieve one of the smaller chests and a wave of hostile energy 
+washes over you. Drawing your hand back in shock you decide to leave them alone.
+
+~
+S
+#30747
+A trophy room.~
+There are torches burning in sconces affixed to the walls, but you would prefer 
+not to see the grisly contents of this chamber. The room is full of stuffed and 
+mounted trophies of war. A large goblin wielding a battle axe gives you a start, 
+until you realise it is long dead. Some of the heads mounted on the wall are 
+from creatures you have never seen and they have not had the blood cleaned from 
+their grisly faces.
+~
+0 4|8 0
+D1
+~
+~
+1 -1 30745
+E
+goblin trophy~
+The goblin is wielding a two handed battle axe that is beginning to rust and his 
+face has an expression of shock set upon it. It looks as if he died from 
+decapitation as his head was roughly sewn back on when he was stuffed and mounted.
+
+~
+S
+#30748
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+
+There is a solid iron door to the north.
+~
+0 8 0
+D0
+~
+~
+1 -1 30745
+D1
+~
+~
+0 -1 30749
+D2
+~
+~
+0 -1 30751
+D3
+~
+~
+0 -1 30750
+S
+#30749
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+~
+0 8 0
+D2
+~
+~
+0 -1 30752
+D3
+~
+~
+0 -1 30748
+S
+#30750
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+~
+0 8 0
+D1
+~
+~
+0 -1 30748
+D2
+~
+~
+0 -1 30753
+S
+#30751
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+~
+0 8 0
+D0
+~
+~
+0 -1 30748
+D1
+~
+~
+0 -1 30752
+D2
+~
+~
+0 -1 30754
+D3
+~
+~
+0 -1 30753
+S
+#30752
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+
+There is a solid iron door to the east.
+~
+0 8 0
+D0
+~
+~
+0 -1 30749
+D1
+~
+~
+1 -1 30757
+D2
+~
+~
+0 -1 30755
+D3
+~
+~
+0 -1 30751
+S
+#30753
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+
+There is a solid iron door to the west.
+~
+0 8 0
+D0
+~
+~
+0 -1 30750
+D1
+~
+~
+0 -1 30751
+D2
+~
+~
+0 -1 30756
+D3
+~
+~
+1 -1 30769
+S
+#30754
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+
+There is a solid iron door to the south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30751
+D1
+~
+~
+0 -1 30755
+D2
+~
+~
+1 -1 30803
+D3
+~
+~
+0 -1 30756
+S
+#30755
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30752
+D3
+~
+~
+0 -1 30754
+S
+#30756
+Armoury~
+You are in a large dimly lit chamber. There are many rows of weapons and armour 
+racks stretched out before you, enough to wage a full scale war. Everything is 
+highly polished and well maintained. Many of the suits of armour are of gothik 
+design, tempered black with elaborate fluting etched in silver.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 30753
+D1
+~
+~
+0 -1 30754
+S
+#30757
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west and the corridor stretches
+away into darkness towards the north, east and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30763
+D1
+~
+~
+0 -1 30758
+D2
+~
+~
+0 -1 30759
+D3
+~
+~
+1 -1 30752
+S
+#30758
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. A large archway has been cut into the east section of the stone 
+wall and the corridor stretches away into darkness towards west.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30720
+D3
+~
+~
+0 -1 30757
+S
+#30759
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east and the corridor stretches 
+away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30757
+D1
+~
+~
+1 -1 30760
+D2
+~
+~
+0 -1 30761
+S
+#30760
+A cold room~
+As you step into the room you feel a sudden drop in temperature. Strong gusts of 
+wind are blowing in through a small window that looks onto the battlement. The 
+only furnishings in the room are a sleeping pallet against one wall and a small 
+desk and chair against the opposite wall. You can only assume the resident of 
+this room doesn't spend a lot of time here, or has little need for creature comforts.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 30759
+E
+window~
+The window looks onto the battlement, you can't see anyone out there.
+
+~
+E
+pallet~
+It doesn't look very comfortable.
+
+~
+S
+#30761
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east and the corridor stretches 
+away into darkness towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30759
+D1
+~
+~
+1 -1 30762
+S
+#30762
+A cold room~
+As you step into the room you feel a sudden drop in temperature. Strong gusts of 
+wind are blowing in through a small window that looks onto the battlement. The 
+only furnishings in the room are a sleeping pallet against one wall and a small 
+desk and chair against the opposite wall. You can only assume the resident of 
+this room doesn't spend a lot of time here, or has little need for creature comforts.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 30761
+E
+window~
+The window looks onto the battlement, you can't see anyone out there.
+
+~
+E
+pallet~
+It doesn't look very comfortable.
+
+~
+S
+#30763
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east and the corridor stretches 
+away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30765
+D1
+~
+~
+8 30653 30764
+D2
+~
+~
+0 -1 30757
+S
+#30764
+A bare room~
+The room is completely bare, there are no furnishings at all. There is a small 
+window looking onto the battlement and thick iron bars have been set into the 
+frame. Actually, it resembles a cell more than a room. A very cold cell.
+~
+0 1|8 0
+D3
+~
+~
+8 30653 30763
+E
+window bars~
+The bars are set deep in the stone, there is no chance of prying them lose.
+
+~
+S
+#30765
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east and the corridor stretches 
+away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30767
+D1
+~
+~
+8 30653 30766
+D2
+~
+~
+0 -1 30763
+S
+#30766
+A bare room~
+The room is completely bare, there are no furnishings at all. There is a small 
+window looking onto the battlement and thick iron bars have been set into the 
+frame. Actually, it resembles a cell more than a room. A very cold cell.
+~
+0 1|8 0
+D3
+~
+~
+8 30653 30765
+E
+window bars~
+The bars are set deep in the stone, there is no chance of prying them lose.
+
+~
+S
+#30767
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east and the corridor stretches 
+away into darkness towards the south.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 30768
+D2
+~
+~
+0 -1 30765
+S
+#30768
+A cold room~
+As you step into the room you feel a sudden drop in temperature. Strong gusts of 
+wind are blowing in through a small window that looks onto the battlement. The 
+only furnishings in the room are a sleeping pallet against one wall and a small 
+desk and chair against the opposite wall. You can only assume the resident of 
+this room doesn't spend a lot of time here, or has little need for creature comforts.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 30767
+E
+window~
+The window looks onto the battlement, you can't see anyone out there.
+
+~
+E
+pallet~
+It doesn't look very comfortable.
+
+~
+S
+#30769
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the east and the corridor stretches 
+away into darkness towards the north, west and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30775
+D1
+~
+~
+1 -1 30753
+D2
+~
+~
+0 -1 30771
+D3
+~
+~
+0 -1 30770
+S
+#30770
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. A large archway has been cut into the west section of the stone 
+wall and the corridor stretches away into darkness towards east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30769
+D3
+~
+~
+0 -1 30734
+S
+#30771
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west and the corridor stretches 
+away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30769
+D2
+~
+~
+0 -1 30773
+D3
+~
+~
+1 -1 30772
+S
+#30772
+A cold room~
+As you step into the room you feel a sudden drop in temperature. Strong gusts of 
+wind are blowing in through a small window that looks onto the battlement. The 
+only furnishings in the room are a sleeping pallet against one wall and a small 
+desk and chair against the opposite wall. You can only assume the resident of 
+this room doesn't spend a lot of time here, or has little need for creature comforts.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 30771
+E
+window~
+The window looks onto the battlement, you can't see anyone out there.
+
+~
+E
+pallet~
+It doesn't look very comfortable.
+
+~
+S
+#30773
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west and the corridor stretches 
+away into darkness towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30771
+D3
+~
+~
+1 -1 30774
+S
+#30774
+A cold room~
+As you step into the room you feel a sudden drop in temperature. Strong gusts of 
+wind are blowing in through a small window that looks onto the battlement. The 
+only furnishings in the room are a sleeping pallet against one wall and a small 
+desk and chair against the opposite wall. You can only assume the resident of 
+this room doesn't spend a lot of time here, or has little need for creature comforts.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 30773
+E
+window~
+The window looks onto the battlement, you can't see anyone out there.
+
+~
+E
+pallet~
+It doesn't look very comfortable.
+
+~
+S
+#30775
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west and the corridor stretches 
+away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30777
+D2
+~
+~
+0 -1 30769
+D3
+~
+~
+8 30653 30776
+S
+#30776
+A bare room~
+The room is completely bare, there are no furnishings at all. There is a small 
+window looking onto the battlement and thick iron bars have been set into the 
+frame. Actually, it resembles a cell more than a room. A very cold cell.
+~
+0 1|8 0
+D1
+~
+~
+8 30653 30775
+E
+window bars~
+The bars are set deep in the stone, there is no chance of prying them lose.
+
+~
+S
+#30777
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west and the corridor stretches 
+away into darkness towards the north and south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30779
+D2
+~
+~
+0 -1 30775
+D3
+~
+~
+8 30653 30778
+S
+#30778
+A bare room~
+The room is completely bare, there are no furnishings at all. There is a small 
+window looking onto the battlement and thick iron bars have been set into the 
+frame. Actually, it resembles a cell more than a room. A very cold cell.
+~
+0 1|8 0
+D1
+~
+~
+8 30653 30777
+E
+window bars~
+The bars are set deep in the stone, there is no chance of prying them lose.
+
+~
+S
+#30779
+A dark corridor~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the west and the corridor stretches 
+away into darkness towards the south.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30777
+D3
+~
+~
+1 -1 30780
+S
+#30780
+A cold room~
+As you step into the room you feel a sudden drop in temperature. Strong gusts of 
+wind are blowing in through a small window that looks onto the battlement. The 
+only furnishings in the room are a sleeping pallet against one wall and a small 
+desk and chair against the opposite wall. You can only assume the resident of 
+this room doesn't spend a lot of time here, or has little need for creature comforts.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 30779
+E
+window~
+The window looks onto the battlement, you can't see anyone out there.
+
+~
+E
+pallet~
+It doesn't look very comfortable.
+
+~
+S
+#30781
+Top of the spire~
+At last! You have reached the top of the spire. There are large slits cut out 
+of the wall to the north, west and south. What a pity you can't see anything but 
+dark shadows beyond. There are torches burning in sconces affixed to the 
+circular walls of the chamber and there is a wrought iron staircase spiralling 
+downwards in the centre of the room.
+~
+0 4|8 0
+D5
+~
+~
+0 -1 30734
+E
+north west south slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30782
+Top of the spire~
+At last! You have reached the top of the spire. There are large slits cut out of 
+the wall to the north, west and south. What a pity you can't see anything but 
+dark shadows beyond. There are torches burning in sconces affixed to the 
+circular walls of the chamber and there is a wrought iron staircase spiralling 
+downwards in the centre of the room.
+~
+0 4|8 0
+D5
+~
+~
+0 -1 30720
+E
+north east south slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30783
+Corridor to the lords chambers~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. A large archway has been cut into the north section of the stone 
+wall and the corridor stretches away into darkness towards south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30711
+D2
+~
+~
+0 -1 30784
+S
+#30784
+Corridor to the lords chambers~
+You are in a dark stone corridor. There are cobwebs hanging from the roof thick 
+with dust and the surface of the ancient floor has been worn smooth with the 
+passage of time. There is a solid iron door to the south and the corridor 
+stretches away into darkness towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30783
+D2
+~
+~
+8 30654 30785
+S
+#30785
+Shadow lords chambers~
+You are in a large richly furnished living area, whomever resides here certainly 
+likes to live in style. There are many pieces of antique furniture and priceless 
+trinkets. Candelabras made from silver and gold shed a soft glow about the room.
+~
+0 8 0
+D0
+~
+~
+8 30654 30784
+D1
+~
+~
+0 -1 30786
+D2
+~
+~
+0 -1 30788
+D3
+~
+~
+0 -1 30787
+S
+#30786
+Shadow Lord's chambers~
+A huge wooden perch stands in this corner of the room. Littered about the floor 
+below it are several skeletons of small rodents that have been picked clean of flesh.
+~
+0 4|8 0
+D2
+~
+~
+0 -1 30789
+D3
+~
+~
+0 -1 30785
+S
+#30787
+Shadow Lord's chambers~
+A beautiful lounge suit is in this corner of the room. It is made from varnished 
+mahogany and upholstered in purple velvet printed with gold. A small table sits 
+before it and on the top is a leather bound book titled "Gateways to Beyond".
+~
+0 8 0
+D1
+~
+~
+0 -1 30785
+D2
+~
+~
+0 -1 30790
+E
+lounge suit~
+A beautiful lounge suit made from varnished mahogany and upholstered in purple 
+velvet printed with gold.
+
+~
+S
+#30788
+Shadow Lord's chambers~
+There is a black leopard skin rug covering the floor here. Looking about the 
+room you see many pieces of antique furniture and priceless trinkets. 
+Candelabras made from silver and gold are shedding soft light.
+~
+0 8 0
+D0
+~
+~
+0 -1 30785
+D1
+~
+~
+0 -1 30789
+D2
+~
+~
+0 -1 30791
+D3
+~
+~
+0 -1 30790
+E
+rug skin black~
+There is a black leopard skin rug covering the floor here.
+
+~
+S
+#30789
+Shadow Lord's chambers~
+A roaring fire is burning and crackling in an open fireplace here. A soft padded 
+chair has been placed before the hearth. Above the fireplace is an outcropping 
+stone ledge that has been adorned with valuable trinkets. In the centre is a 
+small statue of a horned beast that has been cut from black diamond.
+~
+0 8 0
+D0
+~
+~
+0 -1 30786
+D2
+~
+~
+0 -1 30792
+D3
+~
+~
+0 -1 30788
+E
+fire fireplace~
+A roaring fire is burning and crackling.
+
+~
+E
+statue horned beast~
+A small statue of a horned beast that has been cut from black diamond, it looks 
+like a dark idol.
+
+~
+E
+padded chair~
+The soft padded armchair looks very comfortable.
+
+~
+S
+#30790
+Shadow Lord's chambers~
+A large mahogany wardrobe coated with clear lacquer stands against the wall 
+here. An intricate crest has been inlaid with silver on the double doors. It is 
+depicting a bat with its wings spread across a gothik cross.
+~
+0 8 0
+D0
+~
+~
+0 -1 30787
+D1
+~
+~
+0 -1 30788
+D2
+~
+~
+0 -1 30793
+S
+#30791
+Shadow Lord's chambers~
+There is a black leopard skin rug covering the floor here. Looking about the 
+room you see many pieces of antique furniture and priceless trinkets. 
+Candelabras made from silver and gold are shedding soft light. 
+
+There is a solid iron door to the south.
+~
+0 8 0
+D0
+~
+~
+0 -1 30788
+D1
+~
+~
+0 -1 30792
+D2
+~
+~
+4 30654 30794
+D3
+~
+~
+0 -1 30793
+E
+black skin rug~
+There is a black leopard skin rug covering the floor here.
+
+~
+S
+#30792
+Shadow Lord's chambers~
+This corner of the room contains an extensive selection of weapons and armour 
+stored on a large rack. There is everything you would ever need to go into 
+battle. It looks well maintained and recently oiled.
+
+There is a clouded portal swirling in the air.
+~
+0 8 0
+D0
+~
+~
+0 -1 30789
+D3
+~
+~
+0 -1 30791
+E
+armour rack~
+A large armour rack made from wrought-iron is bolted to the stone floor. It is 
+hung with several full suits of plate steel armour and a wide variety of weapons.
+
+~
+S
+#30793
+Shadow Lord's chambers~
+A large four poster bed dominates this corner of the room. The heavy velvet 
+drapes are dark purple and printed with gold. They have been drawn back and 
+secured to the corner posts with a black cord. The mattress is covered by a rug 
+made from soft black pelts, possibly seal.
+~
+0 8 0
+D0
+~
+~
+0 -1 30790
+D1
+~
+~
+0 -1 30791
+E
+bed~
+The heavy velvet drapes have been drawn back and secured to the corner posts 
+with a black cord. The mattress is covered by a rug made from soft black pelts, 
+possibly seal.
+
+~
+S
+#30794
+Staircase in the spire~
+You appear to be in one of the bastion's spires. There are small vertical slits 
+cut out of the southern section of the wall, allowing a restricted view of the 
+outside world. There are torches burning in sconces affixed to the circular 
+walls of the chamber and there is a wrought iron staircase spiralling upwards in 
+the centre of the room. There are solid iron doors to the north and west.
+~
+0 4|8 0
+D0
+~
+~
+4 30654 30791
+D3
+~
+~
+4 30654 30796
+D4
+~
+~
+0 -1 30795
+E
+south slit~
+Dark shadows swirl before your eyes obscuring any view of the nearby surroundings.
+
+~
+S
+#30795
+Top of the spire~
+At last! You have reached the top of the spire. There are large slits cut out 
+of the wall in all the cardinal directions. You notice that the shadows 
+obscuring the bastion have thinned here. There are torches burning in sconces 
+affixed to the circular walls of the chamber and there is a wrought iron  
+staircase spiralling downwards in the centre of the room.
+~
+0 4|8 0
+D5
+~
+~
+0 -1 30794
+E
+north west east south slit~
+You seem to be above the shadows now and you can plainly see that they are 
+completely obscuring the bastion from the outside world. Only the tops of a 
+couple of spires are rising above the unnatural camouflage.
+
+~
+S
+#30796
+An access shaft~
+You are in the Shadow Lord's personal access shaft, used to move about the 
+bastion when he doesn't wish to encounter the lower minions. The room is thick 
+with cobwebs and you hope whatever is spinning them doesn't show itself. There 
+is a wrought iron staircase spiralling downwards in the centre of the room.
+~
+0 1|4|8 0
+D1
+~
+~
+4 30654 30794
+D5
+~
+~
+0 -1 30797
+S
+#30797
+An access shaft~
+You are in the Shadow Lord's personal access shaft, used to move about the 
+bastion when he doesn't wish to encounter the lower minions. The room is thick 
+with cobwebs and you hope whatever is spinning them doesn't show itself. There 
+is a wrought iron staircase spiralling both upwards and downwards in the centre 
+of the room.
+~
+0 1|4|8 0
+D4
+~
+~
+0 -1 30796
+D5
+~
+~
+0 -1 30798
+S
+#30798
+An access shaft~
+You are in the Shadow Lord's personal access shaft, used to move about the 
+bastion when he doesn't wish to encounter the lower minions. The room is thick 
+with cobwebs and you hope whatever is spinning them doesn't show itself. There 
+is a solid iron door to the north and a wrought iron staircase spiralling both 
+upwards and downwards in the centre of the room.
+~
+0 1|4|8 0
+D0
+~
+~
+8 30654 30709
+D4
+~
+~
+0 -1 30797
+D5
+~
+~
+0 -1 30799
+S
+#30799
+An access shaft~
+You are in the Shadow Lord's personal access shaft, used to move about the 
+bastion when he doesn't wish to encounter the lower minions. The room is thick 
+with cobwebs and you hope whatever is spinning them doesn't show itself. There 
+is a solid iron door to the north and a wrought iron staircase spiralling 
+upwards in the centre of the room.
+~
+0 1|4|8 0
+D0
+~
+~
+4 30654 30668
+D4
+~
+~
+0 -1 30798
+D5
+~
+~
+0 -1 30800
+S
+#30800
+An access shaft~
+You are in the Shadow Lord's personal access shaft, used to move about the 
+bastion when he doesn't wish to encounter the lower minions. The room is thick 
+with cobwebs and you hope whatever is spinning them doesn't show itself. There 
+is a wrought iron staircase spiralling upwards in the centre of the room and the 
+shaft continues to the east.
+~
+0 1|4|8 0
+D1
+~
+~
+0 -1 30801
+D4
+~
+~
+0 -1 30799
+S
+#30801
+An access shaft~
+You are in the Shadow Lord's personal access shaft, used to move about the 
+bastion when he doesn't wish to encounter the lower minions. The room is thick 
+with cobwebs and you hope whatever is spinning them doesn't show itself. There 
+is a solid iron door to the north and the
+shaft continues to the west.
+~
+0 1|4|8 0
+D0
+~
+~
+4 30654 30651
+D3
+~
+~
+0 -1 30800
+S
+#30802
+In the clouds~
+You are floating in soft white clouds. There is a peaceful serene atmosphere 
+here that lulls you into a sense of security. An angel in flowing white gowns is 
+sitting gracefully on a nearby cloud, singing the most entrancing song you've 
+ever heard.  
+
+There is a clouded portal swirling before you.
+~
+0 4|8|1024|65536 9
+S
+#30803
+The workshop~
+You are standing in a well organised workshop. There is a work bench along the 
+far wall with several pieces of unfinished armour on it. Various metal working 
+tools are hanging in neat rows above the bench. There is a large forge to your 
+right and a heavy anvil is in the centre of the room.
+~
+0 4|8 0
+D0
+~
+~
+1 -1 30754
+S
+#30804
+A hidden passage~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. There are cobwebs hanging from the roof thick with dust and the surface of 
+the ancient floor has been worn smooth with the passage of time.
+
+The tunnel stretches away into darkness towards the east.
+~
+0 1|4|8|8192 0
+D1
+~
+~
+0 -1 30805
+D4
+~
+stone~
+10 -1 30699
+S
+#30805
+A hidden passage~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. There are cobwebs hanging from the roof thick with dust and the surface of 
+the ancient floor has been worn smooth with the passage of time.
+
+The tunnel stretches away into darkness towards the west and east.
+~
+0 1|4|8|8192 0
+D1
+~
+~
+0 -1 30806
+D3
+~
+~
+0 -1 30804
+S
+#30806
+A hidden passage~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. There are cobwebs hanging from the roof thick with dust and the surface of 
+the ancient floor has been worn smooth with the passage of time.
+
+The tunnel stretches away into darkness towards the west and east.
+~
+0 1|4|8|8192 0
+D1
+~
+~
+0 -1 30807
+D3
+~
+~
+0 -1 30805
+S
+#30807
+A hidden passage~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. There are cobwebs hanging from the roof thick with dust and the surface of 
+the ancient floor has been worn smooth with the passage of time.
+
+The tunnel stretches away into darkness towards the north and west.
+~
+0 1|4|8|8192 0
+D0
+~
+~
+0 -1 30808
+D3
+~
+~
+0 -1 30806
+S
+#30808
+A hidden passage~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. There are cobwebs hanging from the roof thick with dust and the surface of 
+the ancient floor has been worn smooth with the passage of time.
+
+The tunnel stretches away into darkness towards the north and south.
+~
+0 1|4|8|8192 0
+D0
+~
+~
+0 -1 30809
+D2
+~
+~
+0 -1 30807
+S
+#30809
+A hidden passage~
+You are in a large stone tunnel that appears to have been chiselled from the 
+rock. A layer of fine dirt sifts down the from above and you brush it from your 
+hair as you try to decide where it came from, the roof is solid stone. 
+
+The tunnel stretches away into darkness towards the south.
+~
+0 1|4|8|8192 0
+D2
+~
+~
+0 -1 30808
+D4
+~
+stone~
+10 -1 30600
+S
+#0
+
+
+#RESETS
+*
+M 1 30600 5 30624			the Stone Gargoyle to Before the gate
+E 1 30600 100 12
+E 1 30601 100 4
+G 1 30652 100
+O 1 30619 100 30755			wrought-iron armour rack to armoury
+P 1 30617 100 30619			a black gothik breastplate  to container wrought-iron armour rack
+O 1 30620 100 30749			wrought-iron armour rack to armoury
+P 1 30622 100 30620			steel gauntlets to container wrought-iron armour rack
+O 1 30621 100 30756			wrought-iron weapon rack to armoury
+P 1 30623 100 30621			a heavy crossbow to container wrought-iron weapon rack
+*
+M 1 30600 5 30738			the Stone Gargoyle to On the battlements
+E 1 30601 100 4
+E 1 30600 100 12
+*
+M 1 30600 5 30716			the Stone Gargoyle to On the battlements
+E 1 30601 100 4
+E 1 30600 100 12
+*
+M 1 30600 5 30723			the Stone Gargoyle to On the battlements
+E 1 30601 100 4
+E 1 30600 100 12
+*
+M 1 30600 5 30731			the Stone Gargoyle to On the battlements
+E 1 30601 100 4
+E 1 30600 100 12
+*
+M 1 30601 3 30600			the Hungry Demon to In the shadows
+E 1 30602 100 5
+O 1 30655 100 30744		; a mahogany wardrobe to A richly furnished room
+P 1 30653 100 30655		; a large iron key to container wardrobe
+P 1 30660 100 30655		; a dusty vial to mahogany wardrobe
+P 2 30661 100 30655		; a dusty vial to mahogany wardrobe
+*
+M 1 30601 3 30613			the Hungry Demon to In the shadows
+E 1 30602 100 5
+*
+M 1 30601 3 30628			the Hungry Demon to In the shadows
+E 1 30602 100 5
+*
+M 1 30602 2 30649			the Dark Demon to Stables
+E 1 30603 100 12
+*
+M 1 30602 2 30653			the Dark Demon to Stables
+E 1 30603 100 12
+*
+M 1 30603 1 30652			the shadow lords mount to Stables
+E 1 30603 100 12
+G 1 30604 100
+O 1 30604 100 30647			scraps of meat to a chiller
+O 1 30604 100 30650			scraps of meat to Stables
+*
+M 1 30604 1 30666			the Soul Collector to The dungeon
+E 1 30608 100 4
+E 1 30606 100 19
+E 1 30607 100 16
+E 1 30610 100 5
+E 1 30636 100 17
+G 1 30605 100
+O 1 30609 100 30666			a brazier of hot coals to The dungeon
+O 1 30611 100 30665			a torture rack to The dungeon
+*
+M 1 30605 1 30661			a Captive Angel to The dungeon
+E 1 30612 100 12
+E 1 30613 100 10
+E 1 30614 100 6
+E 1 30615 100 5
+*
+M 1 30606 1 30662			a Captive angel to The dungeon
+E 1 30612 100 12
+E 1 30613 100 10
+E 1 30614 100 6
+E 1 30615 100 5
+*
+*
+M 1 30607 1 30773			the Dark Stalker to A dark corridor
+E 1 30625 100 16
+E 1 30626 100 5
+E 1 30629 100 6
+E 1 30628 100 7
+E 1 30627 100 8
+E 1 30630 100 17
+O 1 30618 100 30750			a wrought-iron weapon rack to armoury
+P 1 30616 100 30618			a black bastard sword to container wroughtironweaponrack
+*
+*
+M 1 30608 1 30751			the Dark Stalker to armoury
+E 1 30626 100 5
+E 1 30629 100 6
+E 1 30628 100 7
+E 1 30627 100 8
+E 1 30625 100 16
+E 1 30630 100 17
+*
+M 1 30611 1 30687			the Dark Stalker to Inside the bastion
+E 1 30625 100 16
+E 1 30626 100 5
+E 1 30629 100 6
+E 1 30628 100 7
+E 1 30627 100 8
+E 1 30630 100 17
+*
+M 1 30609 1 30695			the Dark Stalker to A dark corridor
+E 1 30625 100 16
+E 1 30626 100 5
+E 1 30629 100 6
+E 1 30628 100 7
+E 1 30627 100 8
+E 1 30630 100 17
+*
+M 1 30610 1 30675			the Dark Stalker to A dark corridor
+E 1 30625 100 16
+E 1 30626 100 5
+E 1 30629 100 6
+E 1 30628 100 7
+E 1 30627 100 8
+E 1 30630 100 17
+*
+M 1 30613 1 30654			the Spectral Minion to Passage to the stables
+E 1 30624 100 12
+*
+M 1 30614 1 30698			the Spectral Minion to A dark corridor
+E 1 30624 100 12
+*
+M 1 30615 1 30681			the Spectral Minion to A dark corridor
+E 1 30624 100 12
+*
+M 1 30616 1 30765			the Spectral Minion to A dark corridor
+E 1 30624 100 12
+*
+M 1 30617 1 30777			the Spectral Minion to A dark corridor
+E 1 30624 100 12
+*
+M 1 30618 1 30784			the Spectral Minion to corridor to the lords chambers
+E 1 30624 100 12
+*
+M 1 30619 1 30802			the Angel to In the clouds
+E 1 30631 100 5
+E 1 30632 100 17
+E 1 30633 100 19
+E 1 30634 100 12
+*
+M 1 30620 1 30784			the Dark Angel to corridor to the lords chambers
+E 1 30610 100 5
+E 1 30635 100 12
+E 1 30608 100 4
+E 1 30636 100 17
+G 1 30654 100
+*
+M 1 30621 1 30740			the Dark Angel to On the battlements
+E 1 30608 100 4
+E 1 30610 100 5
+E 1 30635 100 12
+E 1 30636 100 17
+*
+*
+M 1 30623 1 30708			the Dark Angel to The war room
+E 1 30608 100 4
+E 1 30610 100 5
+E 1 30635 100 12
+E 1 30636 100 17
+*
+M 1 30624 1 30778			the Fallen Angel to A room
+E 1 30610 100 5
+E 1 30637 100 12
+*
+M 1 30625 1 30772			the Fallen Angel to A room
+E 1 30610 100 5
+E 1 30637 100 12
+*
+M 1 30626 1 30766			the Fallen Angel to A room
+E 1 30610 100 5
+E 1 30637 100 12
+*
+*
+M 1 30612 1 30767			the Dark Stalker to A dark corridor
+*
+M 1 30622 1 30768			the Dark Angel to A cold room
+E 1 30608 100 4
+E 1 30610 100 5
+E 1 30635 100 12
+E 1 30636 100 17
+*
+M 1 30627 1 30803			the Weapon Smith to the workshop
+E 1 30640 100 5
+E 1 30642 100 7
+E 1 30639 100 8
+E 1 30641 100 9
+E 1 30638 100 16
+G 1 30656 100				whetstone to smith
+O 1 30643 100 30787			a candelabra to shadow lords chambers
+O 1 30643 100 30793			a candelabra to shadow lords chambers
+O 1 30643 100 30789			a candelabra to shadow lords chambers
+O 1 30644 100 30700			a marble pedestal to A scrying chamber
+O 1 30645 100 30701			a conference table to The war room
+O 1 30645 100 30704			a conference table to The war room
+O 1 30645 100 30707			a conference table to The war room
+*
+M 1 30628 1 30795			the Shadow Lord to Top of the spire
+E 1 30617 100 5
+E 1 30627 100 8
+E 1 30616 100 16
+E 1 30646 100 12
+E 1 30648 100 6
+E 1 30647 100 7
+E 1 30649 100 11
+G 1 30654 100
+*
+M 1 30629 1 30786			the Giant owl to shadow lords chambers
+E 1 30650 100 6
+E 1 30651 100 8
+D 1 30641 2 2			; Floating In the shadows Lock South
+D 1 30642 0 2			; Tunnel from the stables Lock North
+D 1 30648 1 1			; Stables Close East
+D 1 30648 3 1			; Stables Close West
+D 1 30649 3 1			; Stables Close West
+D 1 30650 1 1			; Stables Close East
+D 1 30646 3 1			; Stables Close West
+D 1 30647 1 1			; A chiller Close East
+D 1 30646 0 2			; Stables Lock North
+D 1 30654 2 2			; Passage to the stables Lock South
+D 1 30651 3 1			; Stables Close West
+D 1 30653 1 1			; Stables Close East
+D 1 30651 1 1			; Stables Close East
+D 1 30652 3 1			; Stables Close West
+D 1 30651 2 2			; Stables Lock South
+D 1 30801 0 2			; An access shaft Lock North
+D 1 30659 2 2			; Passage to the dungeon Lock South
+D 1 30660 0 2			; The dungeon Lock North
+D 1 30668 2 2			; The dungeon Lock South
+D 1 30799 0 2			; An access shaft Lock North
+D 1 30670 2 1			; A dark corridor Close South
+D 1 30698 0 1			; A dark corridor Close North
+D 1 30698 3 2			; A dark corridor Lock West
+D 1 30700 1 2			; A scrying chamber Lock East
+D 1 30698 1 1			; A dark corridor Close East
+D 1 30699 3 1			; An empty room Close West
+D 1 30698 2 1			; A dark corridor Close South
+D 1 30701 0 1			; The war room Close North
+D 1 30705 1 1			; The war room Close East
+D 1 30677 3 1			; A dark corridor Close West
+D 1 30706 3 1			; The war room Close West
+D 1 30691 1 1			; A dark corridor Close East
+D 1 30709 2 2			; The war room Lock South
+D 1 30798 0 2			; An access shaft Lock North
+D 1 30699 5 1			; An empty room Close Down
+D 1 30804 4 1			; A hidden passage Close Up
+D 1 30809 4 1			; A hidden passage Close Up
+D 1 30600 5 1			; In the shadows Close Down
+D 1 30624 0 2			; Before the gate Lock North
+D 1 30684 2 2			; Inside the gate Lock South
+D 1 30710 1 1			; Staircase in the spire Close East
+D 1 30713 3 1			; On the battlements Close West
+D 1 30710 3 1			; Staircase in the spire Close West
+D 1 30741 1 1			; On the battlements Close East
+D 1 30742 3 1			; A dark corridor Close West
+D 1 30744 1 1			; A richly furnished room Close East
+D 1 30742 1 1			; A dark corridor Close East
+D 1 30743 3 1			; A meditation chamber Close West
+D 1 30745 3 1			; A dark corridor Close West
+D 1 30747 1 1			; A trophy room. Close East
+D 1 30745 1 1			; A dark corridor Close East
+D 1 30746 3 1			; An arcane library Close West
+D 1 30745 2 1			; A dark corridor Close South
+D 1 30748 0 1			; armoury Close North
+D 1 30754 2 1			; armoury Close South
+D 1 30803 0 1			; The workshop Close North
+D 1 30753 3 1			; armoury Close West
+D 1 30769 1 1			; A dark corridor Close East
+D 1 30775 3 2			; A dark corridor Lock West
+D 1 30776 1 2			; A bare room Lock East
+D 1 30777 3 2			; A dark corridor Lock West
+D 1 30778 1 2			; A bare room Lock East
+D 1 30779 3 1			; A dark corridor Close West
+D 1 30780 1 1			; A cold room Close East
+D 1 30771 3 1			; A dark corridor Close West
+D 1 30772 1 1			; A cold room Close East
+D 1 30773 3 1			; A dark corridor Close West
+D 1 30774 1 1			; A cold room Close East
+D 1 30752 1 1			; armoury Close East
+D 1 30757 3 1			; A dark corridor Close West
+D 1 30763 1 2			; A dark corridor Lock East
+D 1 30764 3 2			; A bare room Lock West
+D 1 30765 1 2			; A dark corridor Lock East
+D 1 30766 3 2			; A bare room Lock West
+D 1 30767 1 1			; A dark corridor Close East
+D 1 30768 3 1			; A cold room Close West
+D 1 30759 1 1			; A dark corridor Close East
+D 1 30760 3 1			; A cold room Close West
+D 1 30761 1 1			; A dark corridor Close East
+D 1 30762 3 1			; A cold room Close West
+D 1 30734 0 1			; Staircase in the spire Close North
+D 1 30735 2 1			; On the battlements Close South
+D 1 30734 2 1			; Staircase in the spire Close South
+D 1 30733 0 1			; On the battlements Close North
+D 1 30720 0 1			; Staircase in the spire Close North
+D 1 30719 2 1			; On the battlements Close South
+D 1 30720 2 1			; Staircase in the spire Close South
+D 1 30721 0 1			; On the battlements Close North
+D 1 30784 2 2			; Corridor to the lords chambers Lock South
+D 1 30785 0 2			; Shadow lords chambers Lock North
+D 1 30791 2 2			; Shadow lords chambers Lock South
+D 1 30794 0 2			; Staircase in the spire Lock North
+D 1 30794 3 2			; Staircase in the spire Lock West
+D 1 30796 1 2			; An access shaft Lock East
+O 1 30657 100 30600		; shadowy portal to entrance
+O 1 30658 100 30792		; clouded portal to shadow lord's chambers
+O 1 30659 100 30802		; clouded portal to in the clouds
+S
+
+
+#SPECIALS
+M  30600 spec_cast_archmage			the Gargoyle
+M  30601 spec_fido				the Hungry Demon
+M  30603 spec_breath_fire			the Shadow Lords mount
+M  30604 spec_cast_undead			the Soul Collector
+M  30613 spec_spectral_minion			the Spectral Minion
+M  30614 spec_spectral_minion			the Spectral Minion
+M  30615 spec_spectral_minion			the Spectral Minion
+M  30616 spec_spectral_minion			the Spectral Minion
+M  30617 spec_spectral_minion			the Spectral Minion
+M  30618 spec_spectral_minion			the Spectral Minion
+M  30619 spec_cast_adept			the Angel
+M  30620 spec_cast_undead			the Dark Angel
+M  30621 spec_cast_undead			the Dark Angel
+M  30622 spec_cast_undead			the Dark Angel
+M  30623 spec_cast_undead			the Dark Angel
+M  30624 spec_cast_archmage			the Fallen Angel
+M  30625 spec_cast_archmage			the Fallen Angel
+M  30626 spec_cast_archmage			the Fallen Angel
+M  30628 spec_cast_psionicist			the Shadow Lord
+S
+
+
+#$

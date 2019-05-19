@@ -1,0 +1,5113 @@
+#AREA	Thorne~  The Frozen Lands~
+70 85 45 100
+
+
+#MOBILES
+#18600
+penguin fat~
+the Fat Penguin~
+A fat grey penguin waddles about on the ice.
+~
+The penguin looks obscenely fat and it waddles about on legs that are hidden below 
+its overhanging belly.
+
+~
+2|64 0 0 S
+70 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#18601
+fat penguin~
+the Fat Penguin~
+A fat grey penguin waddles about.
+~
+The penguin looks obscenely fat and it waddles about on legs that are hidden below 
+its overhanging belly.
+
+~
+64 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#18602
+fat penguin~
+the Fat Penguin~
+A fat grey penguin waddles about.
+~
+The penguin looks obscenely fat and it waddles about on legs that are hidden below 
+its overhanging belly.
+
+~
+64 0 0 S
+70 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#18603
+fat penguin~
+the Fat Penguin~
+A fat grey penguin is trying to catch a fish.
+~
+The obscenely fat penguin swims past you at a leisurely pace in pursuit of a fish.
+~
+64 524288 0 S
+70 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#18604
+large white wolf snow~
+the Snow Wolf~
+A large white wolf bares its teeth and growls menacingly.
+~
+The snow wolf has a thick coat of white fur and icy grey eyes. It is padding about,
+sniffing the ground as it searches for food. It bares its teeth and growls menacingly 
+when it notices your approach.
+
+~
+64 32768 1000 S
+75 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18605
+large white snow wolf~
+the Snow Wolf~
+A large white wolf bares its teeth and growls menacingly.
+~
+The snow wolf has a thick coat of white fur and icy grey eyes. It is padding about,
+sniffing the ground as it searches for food. It bares its teeth and growls menacingly 
+when it notices your approach.
+
+~
+64 32768 1000 S
+75 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18606
+large white snow wolf~
+the Snow Wolf~
+A large white wolf bares its teeth and growls menacingly.
+~
+The snow wolf has a thick coat of white fur and icy grey eyes. It is padding about,
+sniffing the ground as it searches for food. It bares its teeth and growls menacingly 
+when it notices your approach.
+
+~
+64 32768 1000 S
+75 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#18607
+large white snow wolf~
+the Snow Wolf~
+A large white wolf bares its teeth and growls menacingly.
+~
+The snow wolf has a thick coat of white fur and icy grey eyes. It is padding about,
+sniffing the ground as it searches for food. It bares its teeth and growls menacingly 
+when it notices your approach.
+
+~
+64 32768 1000 S
+75 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#18608
+ice fish~
+the Ice Fish~
+An ice fish is darting about unfazed by the freezing temperature.
+~
+The ice fish is almost completely translucent. It survives the below-zero temperatures 
+because it has natural anti-freeze flowing through its veins.
+
+It has a spiky spine running down its back and large, boggly eyes.
+
+~
+2|64 1048576 0 S
+70 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+#18609
+ice fish~
+the Ice Fish~
+An ice fish is darting about unfazed by the freezing temperature.
+~
+The ice fish is almost completely translucent. It survives the below-zero temperatures 
+because it has natural anti-freeze flowing through its veins.
+
+It has a spiky spine running down its back and large, boggly eyes.
+
+~
+2|64 1048576 0 S
+70 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+#18610
+ice fish~
+the Ice Fish~
+An ice fish is darting about unfazed by the freezing temperature.
+~
+The ice fish is almost completely translucent. It survives the below-zero temperatures 
+because it has natural anti-freeze flowing through its veins.
+
+It has a spiky spine running down its back and large, boggly eyes.
+
+~
+64 1048576 0 S
+70 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+#18611
+ice fish~
+the Ice Fish~
+An ice fish is darting about unfazed by the freezing temperature.
+~
+The ice fish is almost completely translucent. It survives the below-zero temperatures 
+because it has natural anti-freeze flowing through its veins.
+
+It has a spiky spine running down its back and large, boggly eyes.
+
+~
+64 1048576 0 S
+70 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+#18612
+leopard seal~
+the Leopard Seal~
+A spotted leopard seal is reclining on the ice.
+~
+The large carnivorous seal survives on a diet of penguins and fish. It has sleek 
+grey fur that is covered with black spots and its teeth are razor sharp. It would 
+not be wise to get too close or disturb its slumber.
+
+~
+2|64 0 0 S
+75 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#18613
+leopard seal~
+the Leopard Seal~
+A spotted leopard seal is reclining on the ice.
+~
+The large carnivorous seal survives on a diet of penguins and fish. It has sleek 
+grey fur that is covered with black spots and its teeth are razor sharp. It would 
+not be wise to get too close or disturb its slumber.
+
+~
+2|64 0 0 S
+75 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#18614
+leopard seal~
+the Leopard seal~
+A spotted leopard seal roars and bellows.
+~
+The large carnivorous seal survives on a diet of penguins and fish. It has sleek 
+grey fur that is covered with black spots and its teeth are razor sharp. It would 
+not be wise to get too close or disturb it.
+
+~
+64 0 0 S
+75 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#18615
+leopard seal~
+the Leopard Seal~
+A spotted leopard seal roars and bellows.
+~
+The large carnivorous seal survives on a diet of penguins and fish. It has sleek 
+grey fur that is covered with black spots and its teeth are razor sharp. It would 
+not be wise to get too close or disturb it.
+
+~
+64 0 0 S
+75 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#18616
+snow dragon~
+the Snow Dragon~
+A large white dragon is roaming about the cave.
+~
+A rather large dragon is shuffling about the cave investigating all the corners. 
+It seems to be looking for something. It has pearly white scales and eyes the colour 
+of a winter sky. The dragon regards you momentarily then continues with its search.
+
+~
+64 8|32|128|32768|524288|8388608 1000 S
+80 0 0 0d0+0 0d0+0
+128 0
+8 8 0
+>give_prog dragon gem~
+	if number($o) == 18605
+	 say Thank you for returning my precious egg to me.
+	 mpoload 18608
+	 mpecho The dragon pulls something from the snow.
+	 say I found this lying around, you can have it if you like.
+	 give silver $n
+	 mpjunk gem
+	 say I must go and hide my egg in a safe place so it wont be stolen again.
+	 mpecho The dragon shambles off.
+	else
+	 mpecho $I examines $O closely.
+	 mpecho $I looks disappointed.
+	 drop gem
+	endif
+	  if inroom($n) == 18698
+	   mpgoto 18699
+	  else
+	   mpgoto 18698
+	  endif
+~
+|
+#18617
+thief~
+the Thief~
+A thief is sneaking about looking for valuables to pilfer.
+~
+The little man is trying to hide himself from view as he goes about his thievery. 
+'Better hold onto your valuables tightly' you think to yourself.
+
+~
+4|64 8|32|512|32768|65536 0 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18618
+polar bear polarbear~
+the Polar bear~
+{WA large polar bear is ambling through the snow.{x
+~
+Although it might look cute and cuddly it has very sharp teeth and claws that could 
+rip you to shreds if you got too close. It growls now and then and seems to be deciding 
+whether or not you are food as it sidles back and forth in front of you.
+
+~
+64 4194304 1000 S
+80 0 0 0d0+0 0d0+0
+32 0
+8 8 1
+#18619
+polar bear polarbear~
+the Polar bear~
+{WA large polar bear is deep in slumber.{x
+~
+You almost overlooked the presence of the sleeping bear as its white fur blends 
+perfectly with the powdery snow. Only the restless noises of sleep that issue from 
+it alerted you it was there. Although it might look cute and cuddly it has very 
+sharp teeth and claws that could rip you to shreds if you got to close. It growls 
+and grunts in its slumber and its body twitches and shakes.
+
+~
+2|64 4194304 1000 S
+80 0 0 0d0+0 0d0+0
+32 0
+8 8 2
+#18620
+man hunter~
+the Seal Hunter~
+A large man dressed in furs raises his cudgel in a threatening manner.
+~
+The man is dressed completely in furs and carries a large wooden cudgel that is 
+covered in bloodstains and gore. A hunter you assume. From the look of rage on 
+his face you gather he is not impressed that you have burst into his home uninvited.
+
+~
+2|64 8|32|512|4194304|8388608 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+say What!? who are you?...how dare you burst into my home!
+~
+|
+#18621
+crazy old hermit~
+a Crazy Old Hermit~
+A crazy old hermit cackles to himself as he wanders about the room.
+~
+The old hermit seems to be completely insane judging from the constant rambling 
+of nonsense. He has probably spent too much time alone and it has driven him mad. 
+He wanders aimlessly about the room completely unaware of your arrival.
+
+~
+2|64 8|32|8388608 0 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18622
+killer whale~
+the Killer Whale~
+A very aggressive killer whale is being tossed about in the whirlpool.
+~
+The large whale is in a highly agitated state from being tossed about in the whirlpool. 
+It thrashes its huge tail attempting to stay upright. If you are thrown into its 
+path you will probably be crushed to death.
+
+~
+32|64 8|32|8388608 0 S
+90 0 0 0d0+0 0d0+0
+172 0
+8 8 0
+>all_greet_prog 100~
+em lashes out at you with its tail!
+mpkill $n
+~
+|
+#18623
+abominable snowman~
+the Abominable Snowman~
+An abominable snowman looks about fearfully.
+~
+The abominable snowman is covered with a thick coat of shaggy white fur. He looks 
+more beast than man, his wild, terrified eyes regarding you with fear and apprehension.
+
+Better not get too close.
+
+~
+32|64 8|32|128 1000 S
+85 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+#18624
+baby snow dragon~
+the baby Snow Dragon~
+A baby snow dragon is breathing clouds of frost into the air.
+~
+The baby snow dragon is still quite large considering it is not yet fully grown. 
+It has pearly white scales and eyes the colour of a winter sky. It looks at you 
+curiously, then breaths a cloud of frost into the air and seems to look pleased 
+with itself.
+
+~
+64|131072 8|32|128|32768|524288 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>rand_prog 5~
+mpecho The baby snow dragon breathes a cloud of frost into the air.
+~
+|
+#18625
+abominable snowman~
+the Abominable Snowman~
+An abominable snowman looks about fearfully.
+~
+The abominable snowman does not look fully grown, but is still quite large. It is 
+covered with a thick coat of shaggy white fur and looks more beast than man. His 
+wild, terrified eyes regard you with fear and apprehension.
+
+Better not get too close.
+
+~
+32|64 8|32|32768 1000 S
+70 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+#18626
+lady qswdefrt~
+the Lady of the Lake~
+The beautiful vision of a pale, enchanting lady appears before you.
+~
+The lady's appearance intrigues you. She is wearing a wispy silver garment with 
+tentacle-like strands that trail about her body as if they are alive. Around her 
+neck a strand of fish swim an eternal loop and in her hand is a shining silver 
+sword that reflects the colour of the ice.
+
+Her pale skin has a translucent quality and her sapphire blue eyes regard you with 
+interest and more than a hint of mischief.
+
+~
+2|64|512 8|32|128|512|8192|524288|1048576|8388608 1000 S
+85 0 0 0d0+0 0d0+0
+80 0
+8 8 2
+>hitprcnt_prog 33~
+mpecho {WThe Lady says 'May the earth turn black beneath your feet...'{x
+~
+>rand_prog 3~
+if isfight($i)
+break
+else
+mpecho {WThe Lady disappears beneath the ice.{x
+mpgoto 18747
+endif
+~
+|
+#18627
+witch~
+the White Witch~
+A beautiful woman with long golden hair is speaking in a soft, seductive voice. 
+~
+The woman gives you a warm smile and informs you that her healing skills are always 
+available if you need them. She is a true vision of beauty with long golden hair 
+and kind green eyes. The soft tones of her voice mesmerise and entrance you.
+
+~
+2|64 8|32|128|512|8192|524288|8388608 1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>all_greet_prog 100~
+if rand(50)
+ say You poor thing! You must be frozen!
+ say Please rest in the safety of my home until you have recovered from the cold.
+else
+ say You look like you need a nice cup of hot tea!
+ say Why don't you rest here and let me look after you for a while?
+ em smiles sweetly.
+endif
+~
+|
+#18628
+fox~
+the white fox~
+A large white fox is snarling and baring its teeth at you.
+~
+The large white fox has a thick winter coat that is burdened with snow. It must 
+have been sleeping here before you disturbed it. It bares it teeth and snarls in 
+a menacing fashion. The fox doesn't seem to be attacking you yet, maybe if you 
+move slowly it will let you leave without a fight. Its cold grey eyes stay fixed 
+on you and seem to contain more than animal intelligence.
+
+~
+2|64 8|32|512|8192|65536|8388608 1000 S
+80 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+>all_greet_prog 100~
+wake
+vis
+mpecho The fox raises its hackles and begins to growl.
+~
+>rand_prog 5~
+rest
+~
+|
+#18629
+man figure mage~
+the Weather Mage~
+A hooded figure with outstretched arms is standing on the edge of the glacier.
+~
+The hooded figure is standing on the edge of the glacier with outstretched arms. 
+As you get a little closer you can make out the trancelike countenance of an elderly 
+man. Furious gusts of wind and snow swirl about his body before rushing down into 
+the valley below. You begin to suspect that he has something to do with the relentless 
+storm you have been enduring since entering this area.
+
+~
+2|64 8|512|524288 1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18630
+wizinvisdewd~
+wisinvizdewd~
+~
+Look at me stuff.
+
+~
+2|64|512|4096|65536 4|8|16|32|512|32768|524288|8388608|1073741824 1000 S
+104 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+mpecho {WA shining silver sword cleaves upwards through the ice!{x
+mptransfer qswdefrt 
+~
+|
+#0
+
+
+#OBJECTS
+#18600
+sharp teeth~
+sharp teeth~
+Some sharp teeth are scattered about the ground here.~
+~
+5 67108864 1|8192
+0~ 0~ 0~ 10~
+2 0 0
+A
+19 10
+A
+18 10
+A
+17 -20
+E
+sharp teeth~
+The teeth are very sharp and look as if they came from some sort of carnivorous beast.
+
+~
+#18601
+spotted fur~
+sleek spotted fur~
+The sleek spotted pelt of a leopard seal has been discarded here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+3 0 0
+A
+17 -40
+A
+5 5
+E
+pelt spotted fur~
+A sleek grey pelt with black spots that has been removed from a leopard seal. The 
+fur is incredibly soft to touch and you imagine it would be very warm to wear.
+
+~
+#18602
+white fur~
+thick white fur~
+A pelt of thick white fur has been left here.~
+~
+9 67108864 8
+0~ 0~ 0~ 0~
+2 0 0
+A
+19 20
+A
+18 20
+A
+17 -50
+A
+23 -20
+A
+24 -10
+A
+13 200
+E
+white pelt fur~
+The thick white fur is soft to touch would be very warm to wear.
+
+~
+#18603
+tuft grass~
+{ya tuft of grass{x~
+{yA tuft of coarse grass is trying to grow in the snow.{x~
+~
+26 0 1|16384
+80~ detect good~ power heal~ enhanced strength~
+1 0 0
+E
+tuft coarse grass~
+A tuft of coarse grass that looks like it might provide you with some sustenance 
+if you ate it.
+~
+#18604
+pearly white scales~
+pearly white scales~
+Some pearly white dragon scales have been left here.~
+~
+9 1|67108864 8
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -100
+A
+19 50
+A
+18 50
+A
+24 -20
+A
+23 -20
+#18605
+dragon gem~
+a dragon gem~
+A large egg shaped gem has been left here.~
+~
+8 2|64 1|16384
+0~ 0~ 0~ 0~
+3 0 0
+A
+3 5
+A
+4 5
+E
+dragon gem~
+Wow! this looks like a legendary dragon gem. You have heard rumours that these 
+are very valuable to the dragons who possess them but no one has discovered why. 
+
+The gem vibrates, almost slipping from your hand.
+
+~
+#18606
+white book~
+{Wa large white book{x~
+{WA large white book has been discarded here.{x~
+~
+4 64 1|16384
+100~ 6~ 6~ prayer~
+5 0 0
+A
+3 3
+A
+4 3
+E
+white book~
+The book is rather large and bound with white leather. The title is embossed in 
+gold lettering and reads 'The path to enlightenment'.
+
+~
+#18607
+black tunic~
+a black tunic~
+A pile of black cloth has been left here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+A
+2 2
+A
+17 -20
+E
+black tunic~
+A baggy black tunic made from thick wool, that looks comfortable and warm. It has 
+drawstrings around the neck and waist to stop any drafts from getting inside it.
+
+~
+#18608
+silver sceptre~
+a silver sceptre~
+A silver sceptre has been left here.~
+~
+4 2048 1|16384
+80~ 25~ 25~ sanctuary~
+3 0 0
+E
+silver sceptre~
+The sceptre has delicate patterns and designs etched into the silver. 
+
+~
+#18609
+woolen pants~
+woolen pants~
+A pair of black woolen pants have been discarded here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+A
+5 3
+A
+17 -20
+E
+woolen pants~
+A pair of baggy black pants made from thick wool, that look comfortable and warm.
+
+~
+#18610
+leather cloak~
+a leather cloak~
+A pile of leather has been left here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+5 3
+A
+17 -20
+A
+23 -10
+E
+leather cloak~
+The heavy leather cloak is lined with soft black rabbit fur to keep the wearer 
+snug and warm. It looks as if it was designed to be worn in very cold climates 
+and has a drawstring to prevent the hood from blowing off.
+
+~
+#18611
+fur boots~
+fur lined boots~
+A pair of fur lined leather boots have been left here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 0
+E
+fur boots~
+The boots have been made from heavy black leather and lined in soft rabbit fur, 
+they would be perfect for sub-zero temperatures.
+
+~
+#18612
+silver dagger~
+a silver dagger~
+A small silver dagger has been discarded here.~
+~
+5 64|4096 1|8192
+0~ 0~ 0~ 11~
+1 0 0
+A
+19 15
+A
+18 15
+A
+2 3
+E
+silver dagger~
+The silver dagger has several small rubies set into the hilt and it is highly 
+polished and well-maintained. The owner is obviously quite fond of it.
+
+~
+#18613
+white fur~
+thick white fur~
+A pelt of thick white fur has been left here.~
+~
+9 67108864 8
+0~ 0~ 0~ 0~
+4 0 0
+A
+17 -40
+A
+19 15
+A
+18 15
+E
+white fur pelt~
+The thick white fur is soft to touch and would be very warm to wear.
+
+~
+#18614
+cudgel bloodstained~
+a bloodstained cudgel~
+A bloodstained cudgel has been left here.~
+~
+5 16 1|8192
+0~ 0~ 0~ 7~
+3 0 0
+A
+17 -10
+A
+19 12
+A
+18 12
+E
+bloodstained cudgel~
+The wooden cudgel has been well used and is dented in several places. It is covered 
+in old bloodstains and fresh gore.
+
+~
+#18615
+battered shield~
+a battered shield~
+A battered steel-plated shield has been discarded here.~
+~
+9 16 1|512
+0~ 0~ 0~ 0~
+5 0 0
+A
+1 2
+A
+13 25
+A
+17 -15
+A
+19 8
+A
+18 8
+E
+battered shield~
+The steel-plated shield is battered and dented. It is coated in dried blood and 
+gore that has not been cleaned off. Rust is beginning to take hold in several places.
+
+~
+#18616
+sharp knife~
+a sharp knife~
+A sharp knife has been discarded here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 1~
+1 0 0
+A
+17 -10
+A
+2 4
+E
+sharp knife~
+The small knife is very sharp and well maintained, it has been recently oiled to 
+prevent rust.
+
+~
+#18617
+fur tunic~
+a fur lined tunic~
+A fur lined tunic has been discarded here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+2 0 0
+A
+5 2
+A
+17 -20
+E
+fur tunic~
+The leather tunic is turned fur side in to protect the wearer from the cold.
+
+~
+#18618
+seal skin leggings~
+seal skin leggings~
+A pair of seal skin leggings have been left here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -15
+A
+13 60
+E
+seal skin leggings~
+The legging have been crafted from the skin of a leopard seal judging from the 
+black spots that mottle the grey fur. They look very warm and comfortable and 
+would probably keep the cold from your body at sub-zero temperatures. 
+
+~
+#18619
+white pearly scales~
+pearly white scales~
+Some pearly white dragon scales have been left here.~
+~
+9 1|67108864 8
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -20
+A
+23 -15
+#18620
+mouse carcass~
+a frozen mouse~
+The frozen carcass of a mouse is laying at your feet.~
+~
+19 0 1|16384
+4~ 0~ 0~ 0~
+1 0 0
+E
+mouse carcass~
+The small mouse obviously died from exposure to the cold as it is frozen solid. 
+Maybe if you got really desperate for food you might consider eating it.
+
+~
+#18621
+silver garment~
+{wa wispy silver garment{x~
+{wThere is a wispy silver garment here with trailing stands that flutter about.{x~
+~
+9 64|128 1|8
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -20
+A
+23 -10
+E
+silver garment~
+The wispy silver garment has trailing stands that flutter about as if they are 
+alive. It is imbued with a soft blue glow.
+
+~
+#18622
+frosty vapours~
+{wfrosty vapours{x~
+{wFrosty vapours hang in the air.{x~
+~
+9 32|64|2048 1|32768
+0~ 0~ 0~ 0~
+1 0 0
+A
+1 -1
+A
+13 60
+E
+frosty vapours~
+The frosty vapours hanging in the air here cause you to shiver and the cold is 
+sapping a little of your strength.
+
+~
+#18623
+silver sword~
+{wa shining silver sword{x~
+{wA shining silver sword has been discarded here.{x~
+~
+5 64|128|4096 1|8192
+0~ 0~ 0~ 11~
+3 0 0
+A
+17 -30
+A
+24 -10
+A
+23 -10
+A
+12 100
+A
+18 15
+A
+19 15
+E
+silver sword~
+The beautiful silver sword is shining brightly and emits a soft blue glow. There 
+are mystical symbols etched along the blade and as you wield the weapon in your 
+hand a surge of energy rushes up your arm. You feel invincible.
+
+~
+#18624
+white robe~
+a long white robe~
+A pile of white cloth has been left here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -20
+A
+12 80
+A
+13 30
+E
+white robe~
+The long white robe has mystical symbols embroidered in silver thread around the 
+neck, cuffs and hem.
+
+~
+#18625
+woolen cloak~
+a heavy woolen cloak~
+A heavy woolen cloak has been left in a pile here.~
+~
+9 2|64|1024 1|1024
+0~ 0~ 0~ 0~
+4 0 0
+A
+1 2
+A
+5 2
+A
+17 -20
+A
+24 -5
+A
+13 50
+A
+18 10
+A
+19 8
+E
+heavy woolen cloak~
+The heavy cloak has been tightly woven from thick soft wool. It is pale grey and 
+would hang to the floor on most people. As you touch the cloak you can feel a warmth 
+coming from it that couldn't possibly be natural.
+
+~
+#18626
+ritual dagger~
+a ritual dagger~
+A ritual dagger has been left here.~
+~
+5 1|64 1|8192
+0~ 0~ 0~ 0~
+9 0 0
+A
+17 -20
+A
+18 15
+A
+19 15
+E
+ritual dagger~
+A ritual dagger used by witches for magical ceremonies. It has a beautifully 
+crafted pommel - a snarling dragons head with blood red gems for eyes. The 
+wavy-edged blade on the dagger looks razor sharp. 
+
+~
+#18628
+ring light~
+the ring of light~
+A silver ring inlaid with pearl emanates brilliant shining light.~
+~
+9 1|64 1|2
+0~ 0~ 0~ 0~
+1 0 0
+A
+3 5
+A
+4 5
+E
+ring light~
+The silver ring has been inlaid with pale pink pearl and a brilliant shining 
+light is emanating from it.
+
+~
+#18629
+hooded leather cloak~
+a long hooded cloak~
+A leather cloak lined with fur has been left in a pile here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+17 -25
+A
+5 5
+E
+hooded cloak~
+The long hooded cloak is made from black leather and lined with soft grey fur. 
+
+~
+#18630
+amulet elements~
+the amulet of the elements~
+An amulet has been discarded here.~
+~
+9 64 1|4
+0~ 0~ 0~ 0~
+2 0 0
+A
+17 -10
+A
+23 -20
+E
+amulet elements~
+A large gem is hanging from a thick silver chain.
+
+The gem has been enchanted with the powers of the elements and the energies swirl 
+in patterns beneath the surface of the stone. The amulet pulses and changes colour 
+every few seconds.
+
+~
+#18631
+ancient parchment~
+an ancient parchment~
+A faded roll of parchment has been left here.~
+~
+2 64 1
+100~ complete heal~ inertial barrier~ bark skin~
+2 500 100
+E
+ancient parchment~
+The roll of parchment is faded and turning brown with age. It is sealed with black
+wax that has been stamped with the Celtic earth rune.
+
+~
+#18632
+secretknowledge~
+~
+~
+~
+2 64 0
+100~ meteor storm~ ultrablast~ ultrablast~ 
+900 500 100
+#18633
+snowy portal~
+~
+~~
+33 0 0
+18600~ -1~ 0~ 100~ 
+1 0 0
+E
+snowy portal~
+A terrible blizzard is spilling from the portal.
+~
+#18634
+snowy portal~
+~
+~~
+33 0 0
+18748~ -1~ 0~ 100~ 
+1 0 0
+E
+snowy portal~
+Wind and snow swirl within the portal.
+~
+#0
+
+
+#ROOMS
+#18600
+A ravine~
+You are in a narrow ravine with solid walls of ice towering high above you. The 
+only ways out are north into the blizzard and sheets of driving snow or through 
+the hazy portal hanging in air. You pull your clothing tightly about your body 
+and speculate on whether the temperature is below zero, you suspect that it is. 
+Flurries of snow swirl about in the freezing winds.
+
+{WA snowy portal hangs in the air.{x
+
+~
+0 4|8 2
+D0
+~
+~
+0 -1 18601
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18601
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape and to the south is a narrow ravine.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18614
+D1
+~
+~
+0 -1 18602
+D2
+~
+~
+0 -1 18600
+D3
+~
+~
+0 -1 18606
+S
+#18602
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18615
+D1
+~
+~
+0 -1 18603
+D3
+~
+~
+0 -1 18601
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18603
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18616
+D1
+~
+~
+0 -1 18604
+D3
+~
+~
+0 -1 18602
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+S
+#18604
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north a giant tree is blocking your path, 
+to the west and east sprawls a white snow-covered landscape, while to the south a 
+solid wall of ice towers high above you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18605
+D3
+~
+~
+0 -1 18603
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18605
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north and west sprawls a white snow 
+covered landscape, while to the east and south a solid wall of ice towers high 
+above you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18618
+D3
+~
+~
+0 -1 18604
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+S
+#18606
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18613
+D1
+~
+~
+0 -1 18601
+D3
+~
+~
+0 -1 18607
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+S
+#18607
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18612
+D1
+~
+~
+0 -1 18606
+D3
+~
+~
+0 -1 18608
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+S
+#18608
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18611
+D1
+~
+~
+0 -1 18607
+D3
+~
+~
+0 -1 18609
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18609
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north and east sprawls a white snow 
+covered landscape, while to the west and south a solid wall of ice towers high 
+above you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18610
+D1
+~
+~
+0 -1 18608
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+S
+#18610
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18627
+D1
+~
+~
+0 -1 18611
+D2
+~
+~
+0 -1 18609
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18611
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18626
+D1
+~
+~
+0 -1 18612
+D2
+~
+~
+0 -1 18608
+D3
+~
+~
+0 -1 18610
+S
+#18612
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18625
+D1
+~
+~
+0 -1 18613
+D2
+~
+~
+0 -1 18607
+D3
+~
+~
+0 -1 18611
+S
+#18613
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18624
+D1
+~
+~
+0 -1 18614
+D2
+~
+~
+0 -1 18606
+D3
+~
+~
+0 -1 18612
+S
+#18614
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18623
+D1
+~
+~
+0 -1 18615
+D2
+~
+~
+0 -1 18601
+D3
+~
+~
+0 -1 18613
+S
+#18615
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18622
+D1
+~
+~
+0 -1 18616
+D2
+~
+~
+0 -1 18602
+D3
+~
+~
+0 -1 18614
+S
+#18616
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the east a giant tree is blocking your path, 
+there is an opening in the base of the trunk. To the north, west and south 
+sprawls a white snow-covered landscape.
+~
+0 4|8|131072 2
+D0
+~
+~
+0 -1 18621
+D1
+~
+~
+0 -1 18617
+D2
+~
+~
+0 -1 18603
+D3
+~
+~
+0 -1 18615
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm. There is an opening in the base of the trunk. 
+
+~
+S
+#18617
+Inside the giant tree~
+You are inside the giant tree and you can feel a bit of warmth seeping back into 
+your body as you escape the chilling wind. A wooden staircase spirals round the 
+inside wall of the hollow tree and ascends far above your head.
+~
+0 1|8|8192 0
+D3
+~
+~
+0 -1 18616
+D4
+~
+~
+0 -1 18722
+S
+#18618
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west a giant tree is blocking your path, 
+to the north and south sprawls a white snow-covered landscape, while to the east 
+a solid wall of ice towers high above you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18619
+D2
+~
+~
+0 -1 18605
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18619
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18636
+D2
+~
+~
+0 -1 18618
+D3
+~
+~
+0 -1 18620
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+~
+S
+#18620
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the south a giant tree is blocking your 
+path, to the north, west and east sprawls a white snow-covered landscape.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18635
+D1
+~
+~
+0 -1 18619
+D3
+~
+~
+0 -1 18621
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+~
+S
+#18621
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18634
+D1
+~
+~
+0 -1 18620
+D2
+~
+~
+0 -1 18616
+D3
+~
+~
+0 -1 18622
+S
+#18622
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18633
+D1
+~
+~
+0 -1 18621
+D2
+~
+~
+0 -1 18615
+D3
+~
+~
+0 -1 18623
+S
+#18623
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18632
+D1
+~
+~
+0 -1 18622
+D2
+~
+~
+0 -1 18614
+D3
+~
+~
+0 -1 18624
+S
+#18624
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18631
+D1
+~
+~
+0 -1 18623
+D2
+~
+~
+0 -1 18613
+D3
+~
+~
+0 -1 18625
+S
+#18625
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18630
+D1
+~
+~
+0 -1 18624
+D2
+~
+~
+0 -1 18612
+D3
+~
+~
+0 -1 18626
+S
+#18626
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18629
+D1
+~
+~
+0 -1 18625
+D2
+~
+~
+0 -1 18611
+D3
+~
+~
+0 -1 18627
+S
+#18627
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and keep 
+your head tucked down. Flurries of snow swirl about in the freezing wind that rages 
+and howls around you. To the north, east and south sprawls a white snow-covered 
+landscape and to the west is a wide ravine.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18628
+D1
+~
+~
+0 -1 18626
+D2
+~
+~
+0 -1 18610
+D3
+~
+~
+0 -1 18726
+S
+#18628
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and keep 
+your head tucked down. Flurries of snow swirl about in the freezing wind that 
+rages and howls around you. To the north, east and south sprawls a white snow-covered 
+landscape, while to the west a solid wall of ice towers high above you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18645
+D1
+~
+~
+0 -1 18629
+D2
+~
+~
+0 -1 18627
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth, allowing 
+no chance of scaling it.
+
+~
+S
+#18629
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18644
+D1
+~
+~
+0 -1 18630
+D2
+~
+~
+0 -1 18626
+D3
+~
+~
+0 -1 18628
+S
+#18630
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the west and south sprawls a white snow-covered landscape, 
+while to the north and east the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18643
+D1
+~
+~
+0 -1 18631
+D2
+~
+~
+0 -1 18625
+D3
+~
+~
+0 -1 18629
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving below the ice.
+
+~
+S
+#18631
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the south sprawls a white snow-covered landscape, while to 
+the north, west and east the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18642
+D1
+~
+~
+0 -1 18632
+D2
+~
+~
+0 -1 18624
+D3
+~
+~
+0 -1 18630
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving below the ice.
+
+~
+S
+#18632
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the south sprawls a white snow-covered landscape, while to 
+the north, west and east the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18641
+D1
+~
+~
+0 -1 18633
+D2
+~
+~
+0 -1 18623
+D3
+~
+~
+0 -1 18631
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving below the ice.
+
+~
+S
+#18633
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the south sprawls a white snow-covered landscape, while to 
+the north, west and east the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18640
+D1
+~
+~
+0 -1 18634
+D2
+~
+~
+0 -1 18622
+D3
+~
+~
+0 -1 18632
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving below the ice.
+
+~
+S
+#18634
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the east and south sprawls a white snow-covered landscape, 
+while to the north and west the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18639
+D1
+~
+~
+0 -1 18635
+D2
+~
+~
+0 -1 18621
+D3
+~
+~
+0 -1 18633
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving below the ice.
+
+~
+S
+#18635
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18638
+D1
+~
+~
+0 -1 18636
+D2
+~
+~
+0 -1 18620
+D3
+~
+~
+0 -1 18634
+S
+#18636
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18637
+D2
+~
+~
+0 -1 18619
+D3
+~
+~
+0 -1 18635
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth allowing no chance of scaling it.
+
+~
+S
+#18637
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape and to the east is a wide ravine.
+~
+0 4|8|131072 2
+D0
+~
+~
+0 -1 18654
+D1
+~
+~
+0 -1 18727
+D2
+~
+~
+0 -1 18636
+D3
+~
+~
+0 -1 18638
+S
+#18638
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18653
+D1
+~
+~
+0 -1 18637
+D2
+~
+~
+0 -1 18635
+D3
+~
+~
+0 -1 18639
+S
+#18639
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the east sprawls a white snow-covered landscape, while to the 
+north, west and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18652
+D1
+~
+~
+0 -1 18638
+D2
+~
+~
+0 -1 18634
+D3
+~
+~
+0 -1 18640
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18640
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. The frozen lake stretches out in all directions.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18651
+D1
+~
+~
+0 -1 18639
+D2
+~
+~
+0 -1 18633
+D3
+~
+~
+0 -1 18641
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+~
+S
+#18641
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. The frozen lake stretches out in all directions.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18650
+D1
+~
+~
+0 -1 18640
+D2
+~
+~
+0 -1 18632
+D3
+~
+~
+0 -1 18642
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18642
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. The frozen lake stretches out in all directions.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18649
+D1
+~
+~
+0 -1 18641
+D2
+~
+~
+0 -1 18631
+D3
+~
+~
+0 -1 18643
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18643
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the west sprawls a white snow-covered landscape, while to the 
+north, east and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18648
+D1
+~
+~
+0 -1 18642
+D2
+~
+~
+0 -1 18630
+D3
+~
+~
+0 -1 18644
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18644
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18647
+D1
+~
+~
+0 -1 18643
+D2
+~
+~
+0 -1 18629
+D3
+~
+~
+0 -1 18645
+S
+#18645
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north a giant tree is blocking your 
+path, to the east and south sprawls a white snow-covered landscape, while to the 
+west a solid wall of ice towers high above you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18644
+D2
+~
+~
+0 -1 18628
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18646
+Inside the giant tree~
+You are inside the giant tree and you can feel a bit of warmth seeping back into 
+your body as you escape the chilling wind. A wooden staircase spirals round the 
+inside wall of the hollow tree and ascends far above your head.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 18647
+D4
+~
+~
+0 -1 18723
+S
+#18647
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west a giant tree is blocking your path, 
+there is an opening in the base of the trunk. To the north and south sprawls a 
+white snow-covered landscape, while to the east is a frozen lake.
+~
+0 4|8|131072 2
+D0
+~
+~
+0 -1 18662
+D1
+~
+~
+0 -1 18648
+D2
+~
+~
+0 -1 18644
+D3
+~
+~
+0 -1 18646
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm. There is an opening in the base of the 
+trunk. 
+
+~
+S
+#18648
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the west sprawls a white snow-covered landscape, while to the 
+north, east and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18661
+D1
+~
+~
+0 -1 18649
+D2
+~
+~
+0 -1 18643
+D3
+~
+~
+0 -1 18647
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18649
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. The frozen lake stretches out in all directions.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18660
+D1
+~
+~
+0 -1 18650
+D2
+~
+~
+0 -1 18642
+D3
+~
+~
+0 -1 18648
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and 
+moving below the ice.
+
+~
+S
+#18650
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. There is a wide crack in the ice here, better be 
+careful not to slip into the icy water. The frozen lake stretches out in all 
+directions.
+~
+0 4|8|131072 0
+D0
+~
+~
+0 -1 18659
+D1
+~
+~
+0 -1 18651
+D2
+~
+~
+0 -1 18641
+D3
+~
+~
+0 -1 18649
+D5
+~
+~
+8 -1 18702
+E
+crack ice~
+There is a wide crack in the ice here, better be careful not to slip into the 
+icy water.
+
+~
+S
+#18651
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. The frozen lake stretches out in all directions.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18658
+D1
+~
+~
+0 -1 18652
+D2
+~
+~
+0 -1 18640
+D3
+~
+~
+0 -1 18650
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and 
+moving below the ice.
+
+~
+S
+#18652
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the east sprawls a white snow-covered landscape, while to the 
+north, west and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18657
+D1
+~
+~
+0 -1 18653
+D2
+~
+~
+0 -1 18639
+D3
+~
+~
+0 -1 18651
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18653
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18656
+D1
+~
+~
+0 -1 18654
+D2
+~
+~
+0 -1 18638
+D3
+~
+~
+0 -1 18652
+S
+#18654
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18655
+D2
+~
+~
+0 -1 18637
+D3
+~
+~
+0 -1 18653
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18655
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18672
+D2
+~
+~
+0 -1 18654
+D3
+~
+~
+0 -1 18656
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18656
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18671
+D1
+~
+~
+0 -1 18655
+D2
+~
+~
+0 -1 18653
+D3
+~
+~
+0 -1 18657
+S
+#18657
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the north and east sprawls a white snow-covered landscape, 
+while to the west and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18670
+D1
+~
+~
+0 -1 18656
+D2
+~
+~
+0 -1 18652
+D3
+~
+~
+0 -1 18658
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and moving 
+below the ice.
+
+~
+S
+#18658
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the north sprawls a white snow-covered landscape, while to 
+the west, east and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18669
+D1
+~
+~
+0 -1 18657
+D2
+~
+~
+0 -1 18651
+D3
+~
+~
+0 -1 18659
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and 
+moving below the ice.
+
+~
+S
+#18659
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the north sprawls a white snow-covered landscape, while to 
+the west, east and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18668
+D1
+~
+~
+0 -1 18658
+D2
+~
+~
+0 -1 18650
+D3
+~
+~
+0 -1 18660
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and 
+moving below the ice.
+
+~
+S
+#18660
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the north sprawls a white snow-covered landscape, while to 
+the west, east and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18667
+D1
+~
+~
+0 -1 18659
+D2
+~
+~
+0 -1 18649
+D3
+~
+~
+0 -1 18661
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and 
+moving below the ice.
+~
+S
+#18661
+On the frozen lake~
+It is very slippery on the ice and your feet threaten to slide out from under 
+you every time you move. The lake is well and truly frozen and there is no need 
+to worry about cracking the ice with your weight. Below the ice, dark shadows 
+shift and move. To the north and west sprawls a white snow-covered landscape, 
+while to the east and south the frozen lake continues.
+~
+0 8|131072 6
+D0
+~
+~
+0 -1 18666
+D1
+~
+~
+0 -1 18660
+D2
+~
+~
+0 -1 18648
+D3
+~
+~
+0 -1 18662
+E
+lake ice~
+The lake is well and truly frozen but you glimpse dark shadows shifting and 
+moving below the ice.
+
+~
+S
+#18662
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18665
+D1
+~
+~
+0 -1 18661
+D2
+~
+~
+0 -1 18647
+D3
+~
+~
+0 -1 18663
+S
+#18663
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the south a giant tree is blocking your 
+path, to the north and east sprawls a white snow-covered landscape, while to the 
+west a solid wall of ice towers high above you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18664
+D1
+~
+~
+0 -1 18662
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18664
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18681
+D1
+~
+~
+0 -1 18665
+D2
+~
+~
+0 -1 18663
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18665
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18680
+D1
+~
+~
+0 -1 18666
+D2
+~
+~
+0 -1 18662
+D3
+~
+~
+0 -1 18664
+S
+#18666
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18679
+D1
+~
+~
+0 -1 18667
+D2
+~
+~
+0 -1 18661
+D3
+~
+~
+0 -1 18665
+S
+#18667
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18678
+D1
+~
+~
+0 -1 18668
+D2
+~
+~
+0 -1 18660
+D3
+~
+~
+0 -1 18666
+S
+#18668
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north a giant tree is blocking your 
+path, there is an opening in the base of the trunk. To the west and east sprawls 
+a white snow-covered landscape, while to the south is a frozen lake.
+~
+0 4|8|131072 2
+D0
+~
+~
+0 -1 18677
+D1
+~
+~
+0 -1 18669
+D2
+~
+~
+0 -1 18659
+D3
+~
+~
+0 -1 18667
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm. There is an opening in the base of the 
+trunk.
+
+ ~
+S
+#18669
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18676
+D1
+~
+~
+0 -1 18670
+D2
+~
+~
+0 -1 18658
+D3
+~
+~
+0 -1 18668
+S
+#18670
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and east sprawls a white 
+snow-covered landscape, while to the south is a frozen lake.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18675
+D1
+~
+~
+0 -1 18671
+D2
+~
+~
+0 -1 18657
+D3
+~
+~
+0 -1 18669
+S
+#18671
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18674
+D1
+~
+~
+0 -1 18672
+D2
+~
+~
+0 -1 18656
+D3
+~
+~
+0 -1 18670
+S
+#18672
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, west and south sprawls a white 
+snow-covered landscape, while to the east a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18673
+D2
+~
+~
+0 -1 18655
+D3
+~
+~
+0 -1 18671
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18673
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north a giant tree is blocking your 
+path, to the west and south sprawls a white snow-covered landscape, while to the 
+east a solid wall of ice towers high above you.
+~
+0 8|131072 2
+D2
+~
+~
+0 -1 18672
+D3
+~
+~
+0 -1 18674
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18674
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18689
+D1
+~
+~
+0 -1 18673
+D2
+~
+~
+0 -1 18671
+D3
+~
+~
+0 -1 18675
+S
+#18675
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18688
+D1
+~
+~
+0 -1 18674
+D2
+~
+~
+0 -1 18670
+D3
+~
+~
+0 -1 18676
+S
+#18676
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west a giant tree is blocking your path, 
+to the north, east and south sprawls a white snow-covered landscape.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18687
+D1
+~
+~
+0 -1 18675
+D2
+~
+~
+0 -1 18669
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18677
+Inside the giant tree~
+You are inside the giant tree and you can feel a bit of warmth seeping back into 
+your body as you escape the chilling wind. A wooden staircase spirals round the 
+inside wall of the hollow tree and ascends far above your head.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 18668
+D4
+~
+~
+0 -1 18724
+S
+#18678
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the east a giant tree is blocking your path, 
+to the north, west and south sprawls a white snow-covered landscape.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18685
+D2
+~
+~
+0 -1 18667
+D3
+~
+~
+0 -1 18679
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18679
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18684
+D1
+~
+~
+0 -1 18678
+D2
+~
+~
+0 -1 18666
+D3
+~
+~
+0 -1 18680
+S
+#18680
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. The white snow-covered landscape stretches out 
+in all directions.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18683
+D1
+~
+~
+0 -1 18679
+D2
+~
+~
+0 -1 18665
+D3
+~
+~
+0 -1 18681
+S
+#18681
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the north, east and south sprawls a white 
+snow-covered landscape, while to the west a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18682
+D1
+~
+~
+0 -1 18680
+D2
+~
+~
+0 -1 18664
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18682
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the east and south sprawls a white snow-
+covered landscape, while to the north and west a solid wall of ice towers high 
+above you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18683
+D2
+~
+~
+0 -1 18681
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18683
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18684
+D2
+~
+~
+0 -1 18680
+D3
+~
+~
+0 -1 18682
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18684
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape and to the north is a wide ravine.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18691
+D1
+~
+~
+0 -1 18685
+D2
+~
+~
+0 -1 18679
+D3
+~
+~
+0 -1 18683
+S
+#18685
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18686
+D2
+~
+~
+0 -1 18678
+D3
+~
+~
+0 -1 18684
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18686
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the south a giant tree is blocking your 
+path, to the west and east sprawls a white snow-covered landscape, while to the 
+north a solid wall of ice towers high above you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18687
+D3
+~
+~
+0 -1 18685
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm.
+
+~
+S
+#18687
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape, while to the north a solid wall of ice towers high above 
+you.
+~
+0 8|131072 2
+D1
+~
+~
+0 -1 18688
+D2
+~
+~
+0 -1 18676
+D3
+~
+~
+0 -1 18686
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18688
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the west, east and south sprawls a white 
+snow-covered landscape and to the north is a wide ravine.
+~
+0 8|131072 2
+D0
+~
+~
+0 -1 18730
+D1
+~
+~
+0 -1 18689
+D2
+~
+~
+0 -1 18675
+D3
+~
+~
+0 -1 18687
+S
+#18689
+Trudging through the snow~
+Trudging through the snow you pull your clothing tightly about your body and 
+keep your head tucked down. Flurries of snow swirl about in the freezing wind 
+that rages and howls around you. To the east a giant tree is blocking your path, 
+there is an opening in the base of the trunk. To the west and south sprawls a 
+white snow-covered landscape, while to the north a solid wall of ice towers high 
+above you.
+~
+0 4|8|131072 2
+D1
+~
+~
+0 -1 18690
+D2
+~
+~
+0 -1 18674
+D3
+~
+~
+0 -1 18688
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+tree~
+The giant tree towers above you, its limbs are reaching into the sky and shaking 
+violently in the winds of the storm. There is an opening in the base of the 
+trunk. 
+
+~
+S
+#18690
+Inside the giant tree~
+You are inside the giant tree and you can feel a bit of warmth seeping back into 
+your body as you escape the chilling wind. A wooden staircase spirals round the 
+inside wall of the hollow tree and ascends far above your head.
+~
+0 1|8|16384 0
+D3
+~
+~
+0 -1 18689
+D4
+~
+~
+0 -1 18725
+S
+#18691
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the west and 
+east. The only ways out are south into the blizzard and sheets of driving snow, 
+or deeper into the ravine towards the north.
+~
+0 8 2
+D0
+~
+~
+0 -1 18692
+D2
+~
+~
+0 -1 18684
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18692
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north 
+and east. The ravine continues to the west and south.
+~
+0 8 2
+D2
+~
+~
+0 -1 18691
+D3
+~
+~
+0 -1 18693
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18693
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the west and 
+south. The ravine continues to the north and east.
+~
+0 8 2
+D0
+~
+~
+0 -1 18694
+D1
+~
+~
+0 -1 18692
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18694
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the west and 
+east. The ravine continues to the north and south.
+~
+0 8 2
+D0
+~
+~
+0 -1 18695
+D2
+~
+~
+0 -1 18693
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18695
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north 
+and west. The ravine continues to the east and south.
+~
+0 8 2
+D1
+~
+~
+0 -1 18696
+D2
+~
+~
+0 -1 18694
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18696
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north 
+and south. The ravine continues to the west and east.
+~
+0 8 2
+D1
+~
+~
+0 -1 18697
+D3
+~
+~
+0 -1 18695
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18697
+Outside a cave~
+To the east you can see the entrance of a large cave in the ice, you try to peer 
+inside but it is too dark to see anything but nearby shadows. There are solid 
+walls of ice towards the north and south and the ravine continues to the west.
+~
+0 4|8 2
+D1
+~
+~
+0 -1 18698
+D3
+~
+~
+0 -1 18696
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18698
+A large cave in the ice~
+You are inside a large cave that has formed in the ice. Drifts of snow have been 
+blown in the entrance and piled around the walls and floor. As you look about 
+you notice several fresh paw prints in the snow. It seems this cave may have 
+inhabitants.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 18699
+D2
+~
+~
+0 -1 18701
+D3
+~
+~
+0 -1 18697
+E
+prints~
+There are large paw prints in the snow. They look as if a dragon may have made them.
+
+~
+S
+#18699
+A large cave in the ice~
+You are inside a large cave that has formed in the ice. Drifts of snow have been 
+blown in the entrance and piled around the walls and floor. As you look about 
+you notice several fresh paw prints in the snow. It seems this cave may have 
+inhabitants.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 18700
+D3
+~
+~
+0 -1 18698
+E
+prints~
+There are large paw prints in the snow. They look as if a dragon may have made them.
+
+~
+S
+#18700
+A large cave in the ice~
+You are inside a large cave that has formed in the ice. Drifts of snow have been 
+blown in the entrance and piled around the walls and floor. As you look about 
+you notice several fresh paw prints in the snow. It seems this cave may have 
+inhabitants.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 18699
+D3
+~
+~
+0 -1 18701
+E
+prints~
+There are large paw prints in the snow. They look as if a dragon may have made them.
+
+~
+S
+#18701
+A large cave in the ice~
+You are inside a large cave that has formed in the ice. Drifts of snow have been 
+blown in the entrance and piled around the walls and floor. As you look about 
+you notice several fresh paw prints in the snow. It seems this cave may have 
+inhabitants.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 18698
+D1
+~
+~
+0 -1 18700
+E
+prints~
+There are large paw prints in the snow. They look as if a dragon may have made them.
+
+~
+S
+#18702
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8 
+D0
+~
+~
+0 -1 18703
+D1
+~
+~
+0 -1 18707
+D2
+~
+~
+0 -1 18714
+D3
+~
+~
+0 -1 18711
+D4
+~
+~
+10 -1 18650
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18703
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D1
+~
+~
+0 -1 18704
+D2
+~
+~
+0 -1 18702
+D3
+~
+~
+0 -1 18708
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18704
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D1
+~
+~
+0 -1 18705
+D2
+~
+~
+0 -1 18707
+D3
+~
+~
+0 -1 18703
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18705
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D2
+~
+~
+0 -1 18706
+D3
+~
+~
+0 -1 18704
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18706
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18705
+D2
+~
+~
+0 -1 18716
+D3
+~
+~
+0 -1 18707
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18707
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18704
+D1
+~
+~
+0 -1 18706
+D2
+~
+~
+0 -1 18715
+D3
+~
+~
+0 -1 18702
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18708
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D1
+~
+~
+0 -1 18703
+D2
+~
+~
+0 -1 18711
+D3
+~
+~
+0 -1 18709
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18709
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D1
+~
+~
+0 -1 18708
+D2
+~
+~
+0 -1 18710
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18710
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18709
+D1
+~
+~
+0 -1 18711
+D2
+~
+~
+0 -1 18712
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18711
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18708
+D1
+~
+~
+0 -1 18702
+D2
+~
+~
+0 -1 18713
+D3
+~
+~
+0 -1 18710
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18712
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18710
+D1
+~
+~
+0 -1 18713
+D2
+~
+~
+0 -1 18717
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18713
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18711
+D1
+~
+~
+0 -1 18714
+D2
+~
+~
+0 -1 18718
+D3
+~
+~
+0 -1 18712
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18714
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18702
+D1
+~
+~
+0 -1 18715
+D2
+~
+~
+0 -1 18719
+D3
+~
+~
+0 -1 18713
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18715
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18707
+D1
+~
+~
+0 -1 18716
+D2
+~
+~
+0 -1 18720
+D3
+~
+~
+0 -1 18714
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18716
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18706
+D2
+~
+~
+0 -1 18721
+D3
+~
+~
+0 -1 18715
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18717
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake. There is a strong downward current 
+here, better be careful you don't get sucked into it.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18712
+D1
+~
+~
+0 -1 18718
+D5
+~
+~
+0 -1 18735
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18718
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18713
+D1
+~
+~
+0 -1 18719
+D3
+~
+~
+0 -1 18717
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18719
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18714
+D1
+~
+~
+0 -1 18720
+D3
+~
+~
+0 -1 18718
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18720
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18715
+D1
+~
+~
+0 -1 18721
+D3
+~
+~
+0 -1 18719
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18721
+In the icy water~
+You are submerged in the icy water below the lake and you are going to freeze to 
+death if you do not get out soon. Looking up towards the surface it is hard to 
+tell where the opening in the ice is and you begin to panic, thinking that you 
+might drown in the icy depths of the lake.
+~
+0 8|8192|131072 8
+D0
+~
+~
+0 -1 18716
+D3
+~
+~
+0 -1 18720
+E
+ice~
+The surface of the ice looks deceptive from below and you can no longer tell 
+where the opening is.
+
+~
+S
+#18722
+Inside the giant tree~
+You are in a spacious living area that has been built inside the hollow tree. 
+The room is softly lit with candles and it is cosy and warm in here. Looking 
+around you see a comfortable bed near the far side of the room and a table with 
+4 chairs stands in the centre. There is a small bookshelf containing books of a 
+mystical nature and what appears to be an altar that is adorned with tiny 
+bottles, jars of dried herbs and various tools of a magical practitioner.
+~
+0 8|1024|65536 0
+D5
+~
+~
+0 -1 18617
+E
+altar~
+The wooden altar has mystical symbols carved into the top and is littered with 
+tiny bottles and jars. There are also various tools of magical practice and a 
+musky smelling incense is burning in a bowl of glowing embers.
+
+~
+E
+table ~
+A simple table fashioned from wood.
+
+~
+E
+chair~
+A simple chair fashioned from wood.
+
+~
+E
+bed~
+A comfortable looking bed with a think mattress and simple wooden frame.
+
+~
+E
+bookshelf~
+There are many books that appear to be about the practice of magic. They are 
+bound in plain brown or black leather and embossed with green or gold lettering.
+
+~
+E
+candles~
+The candles flicker softly and make the room feel cosy and warm.
+
+~
+S
+#18723
+Inside the giant tree~
+You are in a crude dwelling that had been constructed inside the giant hollow tree. 
+The wooden furniture is old and battered. Towards the far side of the room is a 
+bed that must have been made for a very large person. The floor is covered with 
+a white fur rug and there are many pelts hanging from the roof to dry.
+~
+0 8 0
+D5
+~
+~
+0 -1 18646
+E
+bed~
+The simple wooden frame looks rickety and old and the tattered mattress has 
+several grubby skins piled on top of it.
+
+~
+E
+fur rug~
+The white fur rug appears to have come from a polar bear as it still has the 
+head attached. It is grubby and worn with age.
+
+~
+E
+pelts~
+Many pelts hang from the roof, they have been stretched and nailed onto boards 
+to dry. Most of them are seal and wolf skins but there are also several larger 
+pelts that may be polar bear.
+
+~
+S
+#18724
+Inside the giant tree~
+You are in a simple dwelling that has been constructed inside the giant hollow 
+tree. The wooden furniture has been arranged in a haphazard fashion that causes 
+the area to look chaotic and cluttered. There are disjointed ramblings scratched 
+into the walls in places but none of it seems to really make any sense.
+~
+0 8 0
+D5
+~
+~
+0 -1 18677
+E
+wall~
+Disjointed ramblings have been scratched into the wall but none of it seems to 
+really make any sense.
+
+~
+S
+#18725
+Inside the giant tree~
+You are in a well kept home that has been built inside the giant hollow tree, 
+there are no candles lit and it appears that the owner is not here at present. 
+Judging from the mystical nature of many of the artifacts and books about the 
+place you suspect that the occupant may be a practitioner of magic. You become 
+aware of a soft static hum in your ears and tingles of electricity run up and 
+down your spine.
+~
+0 1|8|8192|16384 0
+D5
+~
+~
+0 -1 18690
+E
+books~
+Stacks of books are piled about the room and several have been left open as if 
+the owner has been reading them. You examine the title of one of the open books 
+and discover it is called 'Advanced weather control'
+
+~
+S
+#18726
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a narrow ravine with solid walls of ice towards the north, 
+west and south. The only way out is to the east into the blizzard and sheets of 
+driving snow.
+~
+0 8 2
+D1
+~
+~
+0 -1 18627
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#18727
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north 
+and south. The only ways out are west into the blizzard and sheets of driving 
+snow or deeper into the ravine towards the east.
+
+There are several large paw prints in the snow.
+~
+0 8 2
+D1
+~
+~
+0 -1 18728
+D3
+~
+~
+0 -1 18637
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+prints~
+There are large paw prints in the snow. They look as if a polar bear may have made them.
+
+~
+S
+#18728
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north 
+and east. The ravine continues towards the west while to the south you can see a 
+cave in the ice.
+
+There are several large paw prints in the snow.
+~
+0 8 2
+D2
+~
+~
+0 -1 18729
+D3
+~
+~
+0 -1 18727
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+prints~
+There are large paw prints in the snow. They look as if a polar bear may have 
+made them.
+
+~
+S
+#18729
+A cave in the ice~
+You are inside a cave that has formed in the ice.
+Drifts of snow have been blown in the entrance and piled around the walls and 
+floor. As you look about you notice several rather large paw prints in the snow. 
+It seems this cave may have inhabitants.
+~
+0 8 0
+D0
+~
+~
+0 -1 18728
+E
+prints~
+There are large paw prints in the snow. They look as if a polar bear may have made them.
+
+~
+S
+#18730
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the west and 
+east. The only ways out are south into the blizzard and sheets of driving snow 
+or deeper into the ravine towards the north.
+
+There is a track of paw prints in the snow.
+~
+0 8 2
+D0
+~
+~
+0 -1 18731
+D2
+~
+~
+0 -1 18688
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+prints~
+There is a track of paw prints in the snow. They look as if a dragon could have 
+made them.
+
+~
+S
+#18731
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the west and 
+east. The ravine continues to the north and south.
+
+There is a track of paw prints in the snow.
+~
+0 8 2
+D0
+~
+~
+0 -1 18732
+D2
+~
+~
+0 -1 18730
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+prints~
+There is a track of paw prints in the snow. They look as if a dragon could have 
+made them.
+
+~
+S
+#18732
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north 
+and west. The ravine continues to the south and east.
+
+There is a track of paw prints in the snow.
+~
+0 8 2
+D1
+~
+~
+0 -1 18733
+D2
+~
+~
+0 -1 18731
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+prints~
+There is a track of paw prints in the snow. They look as if a dragon could have 
+made them.
+
+~
+S
+#18733
+A ravine~ The winds have died down in here and you are relieved to be out of the 
+worst of the storm. You are in a wide ravine with solid walls of ice towards the 
+east and south. The ravine continues to the north and west. Looking at the south 
+wall you notice there are quiet a few rocks poking through the ice that may 
+allow you enough of a grip to scale it.
+
+There is a track of paw prints in the snow.
+~
+0 8 2
+D0
+~
+~
+0 -1 18734
+D3
+~
+~
+0 -1 18732
+D4
+~
+~
+0 -1 18743
+E
+wall ice south~
+Looking at the south wall you notice there are quiet a few rocks poking through 
+the ice that may allow you enough of a grip to scale it.
+
+~
+E
+prints~
+There is a track of paw prints in the snow. They look as if a dragon could have 
+made them.
+
+~
+S
+#18734
+A ravine~
+The winds have died down in here and you are relieved to be out of the worst of 
+the storm. You are in a wide ravine with solid walls of ice towards the north, 
+west and east. The ravine continues to the south.
+
+There is a track of paw prints in the snow.
+~
+0 8 2
+D2
+~
+~
+0 -1 18733
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+E
+prints~
+There is a track of paw prints in the snow. They look as if a dragon could have 
+made them.
+
+~
+S
+#18735
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 4|8|16384|131072 8
+D5
+~
+~
+0 -1 18736
+S
+#18736
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D5
+~
+~
+0 -1 18737
+S
+#18737
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D2
+~
+~
+0 -1 18738
+S
+#18738
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D1
+~
+~
+0 -1 18739
+S
+#18739
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D5
+~
+~
+0 -1 18740
+S
+#18740
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D3
+~
+~
+0 -1 18741
+S
+#18741
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D2
+~
+~
+0 -1 18742
+S
+#18742
+sucked down a whirlpool~
+You have been sucked down a whirlpool and the current is too strong to resist, 
+you are unable to fight your way back to the surface and will soon drown if you 
+do not get air.
+~
+0 8|16384|131072 8
+D2
+~
+~
+0 -1 18736
+S
+#18743
+scaling the wall of ice~
+You cling precariously to the slippery rocks protruding from the wall of ice. 
+You try not to look down for fear you will suffer vertigo and fall to your 
+death. A sudden gust of strong wind threatens to dislodge you from the wall and 
+you question the wisdom of this perilous climb.
+~
+0 4|8 9
+D4
+~
+~
+0 -1 18744
+D5
+~
+~
+0 -1 18733
+S
+#18744
+A narrow ice ledge~
+You are huddled on a narrow ledge of ice high above the ravine. You are forced 
+to stay in a crouching position to avoid being blown off the slippery ledge. You 
+can descend the wall of ice to the ground below or you can take your chances and 
+continue along the ledge towards the south.
+~
+0 4|8|131072 9
+D2
+~
+~
+0 -1 18745
+D5
+~
+~
+0 -1 18743
+S
+#18745
+on top of the glacier.~
+You are on a large flat area near the top of the glacier. The wind is incredibly 
+strong up here and you are having trouble remaining on your feet. Your vision 
+has become limited by the driving sheets of snow being driven upon you by the 
+fury of the storm.
+~
+0 4|8|131072 5
+D0
+~
+~
+0 -1 18744
+D2
+~
+~
+0 -1 18746
+S
+#18746
+on top of the glacier.~
+You are on a large flat area near the top of the glacier. The wind is incredibly 
+strong up here and you are having trouble remaining on your feet. Your vision 
+has become limited by the driving sheets of snow being driven upon you by the 
+fury of the storm.
+~
+0 4|8|131072 5
+D0
+~
+~
+0 -1 18745
+S
+#18747
+The lady's ethereal chamber~
+You are in some sort of pocket in reality.
+Ethereal figures float about in your peripheral vision.
+~
+0 1|4|8|512|2048|8192|16384 0
+S
+#18748
+Sailing the Sea of Ice~
+You are sailing the sea of ice. The wind whips along unhindered across the flat 
+ice, chilling you to the core. There is a terrible blizzard spilling out of a
+snowy portal that is hanging in the air here.
+
+{WA snowy portal hangs in the air.{x
+
+~
+0 4|8 2
+D2
+~
+~
+0 -1 17272
+E
+wall ice~
+A solid wall of ice towers high above you. The surface is completely smooth 
+allowing no chance of scaling it.
+
+~
+S
+#0
+
+
+#RESETS
+*
+M 1 18600 1 18661			the Fat Penguin to On the frozen lake
+*
+M 1 18601 1 18654			the Fat Penguin to Trudging through the snow
+*
+M 1 18602 1 18645			the Fat Penguin to Trudging through the snow
+*
+M 1 18603 1 18706			the Fat Penguin to In the icy water
+*
+M 1 18604 1 18609			the Snow Wolf to Trudging through the snow
+E 1 18602 100 5
+*
+M 1 18605 1 18636			the Snow Wolf to Trudging through the snow
+E 1 18602 100 5
+*
+M 1 18606 1 18679			the Snow Wolf to Trudging through the snow
+E 1 18602 100 5
+*
+M 1 18607 1 18693			the Snow Wolf to A ravine
+E 1 18602 100 5
+*
+M 1 18608 1 18709			the Ice Fish to In the icy water
+*
+M 1 18609 1 18721			the Ice Fish to In the icy water
+*
+M 1 18610 1 18717			the Ice Fish to In the icy water
+*
+M 1 18611 1 18702			the Ice Fish to In the icy water
+*
+M 1 18612 1 18659			the Leopard Seal to On the frozen lake
+E 1 18600 100 16
+E 1 18601 100 5
+*
+M 1 18613 1 18657			the Leopard Seal to On the frozen lake
+E 1 18601 100 5
+E 1 18600 100 16
+*
+M 1 18614 1 18667			the Leopard seal to Trudging through the snow
+E 1 18601 100 5
+E 1 18600 100 16
+*
+M 1 18615 1 18622			the Leopard Seal to Trudging through the snow
+E 1 18601 100 5
+E 1 18600 100 16
+O 1 18603 100 18682			a tuft of grass to Trudging through the snow
+O 1 18603 100 18619			a tuft of grass to Trudging through the snow
+*
+M 1 18617 1 18725			the Thief to Inside the giant tree
+E 1 18607 100 5
+E 1 18609 100 7
+E 1 18611 100 8
+E 1 18610 100 12
+E 1 18612 100 16
+G 1 18605 100
+G 1 18606 100
+*
+M 1 18619 1 18729			the Polar bear to A ravine
+E 1 18613 100 5
+*
+M 1 18618 1 18727			the Polar bear to A ravine
+E 1 18613 100 5
+*
+M 1 18620 1 18723			the Seal Hunter to Inside the giant tree
+E 1 18614 100 16
+E 1 18615 100 11
+E 1 18611 100 8
+E 1 18617 100 5
+E 1 18618 100 7
+G 1 18616 100
+*
+M 1 18624 1 18734			the baby Snow Dragon to A ravine
+E 1 18619 100 5
+*
+M 1 18616 1 18699			the Snow Dragon to Inside a cave
+E 1 18604 100 5
+*
+M 1 18621 1 18724			a Crazy Old Hermit to Inside the giant tree
+O 1 18620 100 18679			a frozen mouse to Trudging through the snow
+O 1 18620 100 18611			a frozen mouse to Trudging through the snow
+*
+M 1 18623 2 18625			the Abominable Snowman to Trudging through the snow
+*
+M 1 18623 2 18667			the Abominable Snowman to Trudging through the snow
+*
+M 1 18625 2 18687			the Abominable Snowman to Trudging through the snow
+*
+M 1 18625 2 18620			the Abominable Snowman to Trudging through the snow
+*
+M 1 18626 1 18747			the Lady of the Lake to The lady's ethereal chamber
+E 1 18621 100 5
+E 1 18622 100 6
+E 1 18623 100 16
+E 1 18632 100 17
+*
+M 1 18627 1 18722			the White Witch to Inside the giant tree
+E 1 18624 100 5
+E 1 18625 100 12
+E 1 18626 100 16
+E 1 18631 100 17
+E 1 18628 100 1
+*
+M 1 18628 1 18616			the Familiar to Trudging through the snow
+E 1 18613 100 5
+*
+M 1 18629 1 18746			the Weather Mage to on top of the glacier.
+E 1 18607 100 5
+E 1 18609 100 7
+E 1 18611 100 8
+E 1 18629 100 12
+E 1 18630 100 3
+*
+M 1 18622 1 18736
+*
+O 1 18633 100 18748
+O 1 18634 100 18600
+*
+M 1 18630 1 18650			wizinvis mob
+S
+
+
+#SPECIALS
+M  18616 spec_breath_frost			the Snow Dragon
+M  18623 spec_breath_frost			the Abominable Snowman
+M  18624 spec_breath_frost			the baby Snow Dragon
+M  18626 spec_breath_frost			the Lady of the Lake
+M  18627 spec_cast_adept			the White Witch
+M  18629 spec_cast_archmage			the Weather Mage
+S
+
+
+#$

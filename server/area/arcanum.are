@@ -1,0 +1,5276 @@
+#AREA Samxin~ Arcanum Castle~
+75 100 0 100
+
+#MOBILES
+#26001
+guard castle~
+a castle door guard~
+A castle door guard smiles at you.
+~
+He's dressed in a standard issue uniform and doesn't appear to be concerned 
+about anything.	
+~
+2|512 8 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say What's the password?
+~
+>speech_prog p I don't know.~
+   say Exactly.
+   mpoload 26017
+   unlock north
+   open north
+   mpjunk key
+~
+|
+
+#26002
+small black critter~
+a small black critter~
+A small black critter scuttles around.
+~
+Standing just a foot tall and so dark it seems to absorb light, it's
+the most wicked little thing you've ever seen.	
+~
+2|512|32768 8|32|2048|8388608 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+   say {bRiddle! I have! Yes yes, I have! Want to hear?{x
+~
+>speech_prog p Yes.~
+   say {b'I am a Master Thief and am never caught. I am a Master Thief
+   say {b'and yet am always found. I am a Master Thief and yet I break	
+   say {b'no laws. I am?'......... Well? You know answer?
+~
+>speech_prog p Yeah.~
+   say {b'I am a Master Thief and am never caught. I am a Master Thief
+   say {b'and yet am always found. I am a Master Thief and yet I break	
+   say {b'no laws. I am?'......... Well? You know answer?
+~
+>speech_prog p Death.~
+   say {b And you go POOF!{x
+   cackle
+   mptransfer $n 26021
+~
+|
+
+#26003
+cloaked figure~
+a cloaked figure~
+A cloaked figure shifts slightly as you enter.
+~
+He is cloaked from head to foot in dark garb and you can't make out any of his features.	
+~
+2|32768 2048 0 S
+101 0 0 0d0+0 0d0+0
+64|256 0
+0 0 1
+>all_greet_prog 100~
+   mpecho Out of the silence a barely audible whisper rises up from the figure.
+   say {dThe Challenge awaits......
+   say {dIf you are a true Hero, speak the solution to this:
+   say {dI am a window, I am a lamp, I am clouded, I am shining, and I am 
+   say {dcolored. I say much, but I have no words. I am?{x
+~
+>speech_prog p Eye.~
+   if level($n) < 100
+   say {dYou have not earned the right to attempt the Test.{x
+   else
+   say {dGood luck wise one...you may wish to LOOK around in a second...
+   mptransfer $n 26081
+   endif
+~
+>speech_prog p A eye.~
+   if level($n) < 100
+   say {dYou have not earned the right to attempt the Test.{x
+   else
+   say {dGood luck wise one...you may wish to LOOK around in a second...
+   mptransfer $n 26081
+   endif	
+~
+>speech_prog p An eye.~
+   if level($n) < 100
+   say {dYou have not earned the right to attempt the Test.{x
+   else
+   say {dGood luck wise one...you may wish to LOOK around in a second...
+   mptransfer $n 26081
+   endif	
+~
+>speech_prog p Eyes.~
+   if level($n) < 100
+   say {dYou have not earned the right to attempt the Test.{x
+   else
+   say {dGood luck wise one...you may wish to LOOK around in a second...
+   mptransfer $n 26081
+   endif	
+endif
+~
+|
+
+#26004
+cyan guard~
+a cyan guard~
+A {Ccyan{x guard stands here, guarding the door.
+~
+Clad in sturdy {Ccyan{x armor from head to toe and with a sour expression
+on his face, he appears to take his job seriously.	
+~
+2|32 8|8388608 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26005
+purple guard~
+a purple guard~
+A {Mpurple{x guard stands here, guarding the door.
+~
+Clad in sturdy {Mpurple{x armor from head to toe and with a sour expression
+on his face, he appears to take his job seriously.	
+~
+2|32 8|8388608 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26006
+female servant~
+a female servant~
+A female servant is here doing her duties.
+~
+Dressed simply in a servants uniform, she doesn't look threatening.
+She looks busy and ignores you when you try and talk to her.	
+~
+0 0 0 S
+75 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#26007
+give up mob~
+giver upper mob~
+Transfers players out when they give up
+~
+blah blah cant see him (note to self: REMEMBER TO FLAG WIZINVIS!) 	
+~
+2|512|65536 0 0 S
+201 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog p I can not do it.~
+   mptransfer $n 26004
+~
+|
+
+#26008
+yellow guard~
+a yellow guard~
+A {Yyellow{x guard stands here, guarding the door.
+~
+Clad in sturdy {Yyellow{x armor from head to toe and with a sour expression
+on his face, he appears to take his job seriously.	
+~
+2|32 8|8388608 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26009
+orange guard~
+an orange guard~
+An {yorange{x guard stands here, guarding the door.
+~
+Clad in sturdy {yorange{x armor from head to toe and with a sour expression
+on his face, he appears to take his job seriously.	
+~
+2|32 8|8388608 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26010
+green guard~
+a green guard~
+A {Ggreen{x guard stands here, guarding the door.
+~
+Clad in sturdy {Ggreen{x armor from head to toe and with a sour expression
+on his face, he appears to take his job seriously.	
+~
+2|32 8|8388608 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26011
+male servant~
+a male servant~
+A male servant is here doing his duties.
+~
+Dressed in simple servants clothes he doesn't appear formidable.
+He looks busy and ignores you when you try and talk to him.	
+~
+0 0 0 S
+80 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26012
+beginning combatant~
+a beginning combatant~
+A beginning combatant is here training.
+~
+Clearly a student, he wields his weapons with determination.
+He doesn't appear too proficient in what he's doing, but seems
+to be learning quickly.	
+~
+2 0 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26073
+beginning combatant~
+a beginning combatant~
+A beginning combatant is here training.
+~
+Clearly a student, he wields his weapons with determination.
+He doesn't appear too proficient in what he's doing, but seems
+to be learning quickly.	
+~
+2 0 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26074
+beginning combatant~
+a beginning combatant~
+A beginning combatant is here training.
+~
+Clearly a student, he wields his weapons with determination.
+He doesn't appear too proficient in what he's doing, but seems
+to be learning quickly.	
+~
+0 0 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26075
+beginning combatant~
+a beginning combatant~
+A beginning combatant is here training.
+~
+Clearly a student, he wields his weapons with determination.
+He doesn't appear too proficient in what he's doing, but seems
+to be learning quickly.	
+~
+2 0 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26076
+beginning combatant~
+a beginning combatant~
+A beginning combatant is here training.
+~
+Clearly a student, he wields his weapons with determination.
+He doesn't appear too proficient in what he's doing, but seems
+to be learning quickly.	
+~
+0 0 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26013
+intermediate combatant~
+a intermediate combatant~
+An intermediate combatant is here training.
+~
+Surprisingly, she seems to be doing as well as the men.
+She appears slightly proficient in what she's doing and seems 
+to be learning just as quickly.	
+~
+0 0 0 S
+90 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#26014
+expert combatant~
+a expert combatant~
+An expert combatant is here training.
+~
+This person strikes and parries with a confident grace.
+He appears to be proficient in what he's doing and knows it.	
+~
+0 0 0 S
+95 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 42~
+   dirt $n
+~
+|
+
+#26015
+master combatant~
+a master combatant~
+A master combatant is here training.
+~
+His skill is, in a word, masterful.	
+~
+0 0 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26016
+beginning combatants teacher~
+the beginning combatant's teacher~
+The beginning combatant's teacher stands here looking fearsome.
+~
+Scars criss-cross his face and arms, and he doesn't look overly friendly.
+He looks big and tuff.	
+~
+2 8192 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26017
+intermediate combatants teacher~
+the intermediate combatant's teacher~
+The intermediate combatant's teacher rests against the wall..
+~
+Slightly smaller in stature then you'd expect, he has an unmistakable aura about
+him. You decide he looks intimidating after all.
+~
+2 8192|16777216 0 S
+102 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26018
+expert combatants teacher~
+the expert combatant's teacher~
+The expert combatant's teacher is going through fighting stances.
+~
+He looks like he could kill you without breaking the rhythm of his poses he's
+going through.
+~
+2 128|8192|16777216 0 S
+103 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26019
+master combatants teacher~
+the master combatant's teacher~
+The master combatant's teacher sits here meditating.
+~
+He looks..well, rather small. But he radiates...danger.
+~
+2|512 8192|16384 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 100~
+   mpecho {gThe master combatant's teacher guffaws at your 'victory'..{x 
+   mpgoto 26153
+   mpmload 26023
+   mpforce master mpoload 26090
+   mpforce master wield air
+   mpforce master mpgoto 26080
+~
+|
+
+#26020
+stable master~
+the stable master~
+The stable master is here doing business.
+~
+Dressed in a dingy uniform of unrecognizable origin, he appears to be the 
+one in charge of taking care of the mounts. 
+~
+2 2048 1000 S
+87 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26021
+scarren~
+a scarren~
+A scarren stands here, ready to kill you.
+~
+He appears humanoid, with an elongated skull like a dog and 
+claws. His skin appears to be scale-like and rather tuff.	
+~
+2|512 0 0 S
+95 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26022
+moogle~
+a moogle~
+A {wwhite{x moogle bobs up and down slightly.
+~
+A small {Wwhite{x creature with tiny wings. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.	
+~
+2|512 0 1000 S
+500 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say Solve the following 'word puzzle'
+   say (M.D. + M.D.)= ?
+~
+>speech_prog p A paradox.~
+   say Wisely done.
+   mpoload 26037
+   unlock east
+   open east
+   mpjunk key
+~
+>speech_prog p Paradox.~
+   say Wisely done.
+   mpoload 26037
+   unlock east
+   open east
+   mpjunk key
+~
+|
+
+#26023
+master combatants teacher~
+the master combatant's teacher~
+The master combatant's teacher sits here meditating.
+~
+He looks like death incarnate. He also looks like he's going to
+tear you apart, so why are you stopping to look at him? RUN!
+~
+2|32|16384 524288 0 S
+105 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 40~
+   cast 'dispel magic' $n
+~
+>fight_prog 20~
+   cast 'energy drain' $n
+~
+>fight_prog 30~
+   cast 'prismatic spray' $n
+~
+>fight_prog 30~
+   headbutt
+~
+>fight_prog 10~
+   cast blindness $n
+~
+|
+
+#26024
+crazed gerbil~
+a crazed gerbil~
+a crazed gerbil lunges!
+~
+A furry little rodent of surprisingly disturbing temperament.	
+~
+2|32|512 8|32|8388608 0 S
+90 0 0 0d0+0 0d0+0
+4 0
+0 0 2
+
+#26025
+raging stork~
+a raging stork~
+A raging stork tries to tear you apart!
+~
+Its all beak, claws and feathers.	
+~
+2|32|512 8|32|8388608 0 S
+91 0 0 0d0+0 0d0+0
+4 0
+0 0 1
+
+#26026
+bloodthirsty anteater~
+a bloodthirsty anteater~
+An anteater tries to devour you!
+~
+It's long nose and large body streak towards you with surprising speed.	
+~
+2|32|512 8|32|8388608 0 S
+92 0 0 0d0+0 0d0+0
+4 0
+0 0 2
+
+#26027
+budong~
+a budong~
+A HUGE monster tries to swallow you!
+~
+This thing is massive! It's bigger then the entire castle! How it's in here
+you don't have time to think about, as it's trying to swallow you!	
+~
+2|32|512 8|32|8388608 0 S
+95 0 0 0d0+0 0d0+0
+128 0
+0 0 0
+>death_prog 100~
+   mpoload 26038
+~
+|
+
+#26028
+explanation moogle~
+an explanation moogle~
+a {Rred{x moogle stands here.
+~
+A {Rred{x little creature with tiny wings. It stands only about a foot tall,
+has small eyes and hovers a little above the ground. 	
+~
+2|512|32768 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+say {RWe'll ask you riddles or explain certain things as you go. Answer
+say {Rthe riddles (like the one given to you here) to proceed and pay 
+say {Rattention to the explanations.{x 
+~
+|
+
+#26029
+moogle~
+a moogle~
+a {Yyellow{x moogle.
+~
+A {Yyellow{x one. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.	
+~
+2|512 0 0 S
+89 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say {YEnter the portal. And hope you end up at the next test.{x
+~
+|
+
+#26030
+moogle~
+a moogle~
+a {Ggreen{x moogle.
+~
+A {Ggreen{x one. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.
+~
+2|512 0 1000 S
+87 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say {YTo go on, you must answer this: When Hesad the illusionist dies
+   say {Ywhat do you and his body get sucked through?{x
+~
+>speech_prog p A gateway.~
+   say {YCorrect.{x
+   mpoload 26039
+   unlock east
+   open east
+   mpjunk key
+~
+>speech_prog p Gateway.~
+   say {YCorrect.{x
+   mpoload 26039
+   unlock east
+   open east
+   mpjunk key
+~
+|
+
+#26031
+a purple moogle~
+a purple moogle~
+a {Mpurple{x moogle flutters a bit.
+~
+A {Mpurple{x one. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.
+~
+2|512 0 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>all_greet_prog 100~
+   say {MLet your actions speak for you. Dispose of one of them.{x
+~
+|
+
+#26032
+moogle~
+a blue moogle~
+a {Bblue{x moogle watches you.
+~
+A {Bblue{x one. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.	
+~
+2|512 0 0 S
+81 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>all_greet_prog 100~
+   say {BTime to see how determined you are. Once you go east,
+   say {Byou will DIE. Yes, die. So, proceed if you're willing
+   say {Bto make the sacrifice.{x
+~
+|
+
+#26033
+healer moogle~
+a healer moogle~
+A healer moogle is here to refresh you.
+~
+Looks like the others, small with tiny wings. It stands only about a foot tall,
+has small eyes and hovers a little above the ground. This one is also 
+{Wwhite{x.
+~
+2|512 128 1000 S
+150 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#26034
+gray moogle~
+a gray moogle~
+A {dgray{x moogle hovers a tad.
+~
+A {dgray{x one. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.
+~
+2|512 0 1000 S
+95 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say {dOften talked of, never seen,
+   say {dEver coming, never been,
+   say {dDaily looked for, never here,
+   say {dStill approaching, coming near,
+   say {dThousands for its visit wait
+   say {dBut alas for their fate,
+   say {dTho' they expect me to appear,
+   say {dThey will never find me here.
+   say {d..................
+   say {dThis poem is about what?
+~
+>speech_prog p Tomorrow.~
+   say {dThat is right.{x
+   mpoload 26043
+   unlock east
+   open east
+   mpjunk key
+~
+|
+
+#26035
+a moogle~
+a moogle~
+a {Wmoogle{x flies over your shoulder and lands in front of you.
+~
+Yet another {Wwhite{x one. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.
+~
+2|512 0 789 S
+99 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say You're at the last test. It's a rather simple one.
+   say The gods and a certain individual gifted you with
+   say this bit of a journey. And you're about to get
+   say some pretty decent loot, too. So, some verbal
+   say appreciation would be welcome...
+~
+>speech_prog p Thank you.~
+   say You're welcome.
+   say Oh, you really want to MAKE SURE YOU HAVE AT LEAST 4 OPEN
+   say SPOTS IN YOUR INVENTORY before you ask for your rewards.
+   mpoload 26044
+   unlock east
+   open east
+   mpjunk key
+~
+>speech_prog p Thanks.~
+   say You're welcome.
+   say Oh, you really want to MAKE SURE YOU HAVE AT LEAST 4 OPEN
+   say SPOTS IN YOUR INVENTORY before you ask for your rewards.
+   mpoload 26044
+   unlock east
+   open east
+   mpjunk key
+~
+>speech_prog p Thanks a lot.~
+   say You're welcome.
+   say Oh, you really want to MAKE SURE YOU HAVE AT LEAST 4 OPEN
+   say SPOTS IN YOUR INVENTORY before you ask for your rewards.
+   mpoload 26044
+   unlock east
+   open east
+   mpjunk key
+~
+|
+
+#26036
+vorc~
+a vorc~
+A vorc stands here, it's pointy ears wobbling around a bit.
+~
+It's E.T.'ish, with big pointy ears, and pink. It occasionally makes some
+high pitched screech-like sounds.
+~
+2|512|32768 0 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+   say (roughly translated){c <Good job. You want prize now?>{x
+~
+>speech_prog 100 Yes.~
+   mpoload 26034
+   mpoload 26034
+   give ring $n
+   give ring $n
+   mpoload 26048
+   give plat $n
+   mpoload 26061
+   give crystal $n
+   mpecho {cThe vorc twitches its ears.{x
+   mptransfer $n 26002
+~
+>speech_prog 100 Yeah.~
+   mpoload 26034
+   mpoload 26034
+   give ring $n
+   give ring $n
+   mpoload 26048
+   give plat $n
+   mpoload 26061
+   give crystal $n
+   mpecho {cThe vorc twitches it's ears.{x
+   mptransfer $n 26002
+~
+|
+
+#26037
+king's guard~
+a kings guard~
+A king's guard patrols the halls.
+~
+Wielding sturdier weapons and armor then you've seen so far you notice
+he looks to be decently armed, if not really expecting any trouble.	
+~
+0 0 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 10~
+   say {rFor the king!{x
+~
+|
+
+#26038
+queen's guard~
+a queen's guard~
+A queen's guard patrols the halls.
+~
+Wielding sturdier weapons and armor then you've seen to far you notice
+she looks to be decently armed, if not really expecting any trouble.	
+~
+0 0 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>rand_prog 10~
+   say {rFor the queen!{x
+~
+|
+
+#26039
+king door guard~
+the kings door guard~
+The kings door guars stands here, guarding the kings and queens door.
+~
+He is even more heavily armed then the other guards you've seen so far.
+Looks like his function is to keep people from passing through the doors...
+~
+2 128 0 S
+103 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26040
+queen door guard~
+the queen door guard~
+The queen's door guards stand here, guarding the kings and queens door.
+~
+She is even more heavily armed then the other guards you've seen so far.
+Chances are she's here to keep you from using the doors she's standing
+in front of.
+~
+2 128 0 S
+103 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#26047
+visiting noble~
+a visiting noble~
+A visiting noble glares at you.
+~
+He looks rich. Expensive robe, rings and a really ugly hat.	
+~
+2 0 0 S
+84 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26048
+visiting noble~
+a visiting noble~
+A visiting noble stares at you.
+~
+She looks rich. Expensive dress, rings, necklace and everything else about her.
+~
+2 0 0 S
+84 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#26049
+king~
+the king~
+The king stands here looking kingly.
+~
+He's dressed in grand robes and a huge gold crown. He looks to hate wearing
+the crown, though. He occasionally fingers his side and you think you detect 
+the shape of a sword under his robes.
+~
+2 128|16777216 0 S
+89 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26050
+queen~
+the queen~
+The queen stands here looking queenly.
+~
+She's dressed in an extremely beautiful dress and a small gold crown. After a
+moment, you think you just see the hilt of a dagger sticking up from her bodice!
+~
+2 128|16777216 0 S
+87 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#26052
+reaper~
+The Reaper of the Dead~
+The Reaper of the Dead awaits here to decide your fate.
+~
+Ever smiling, he doesn't seem to mind being stuck here for eternity.
+~
+2 128 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26053
+scruffy rat~
+a scruffy rat~
+a scruffy rat scampers along.
+~
+It's small and rodent looking, nothing too exciting. You've seen one rat,
+you've seen them all. Except for the kind that breath fire or are 40 feet
+tall, etc...
+~
+4|512 32768 0 S
+1 0 0 0d0+0 0d0+0
+4|32 0
+0 0 0
+
+#26054
+scruffy rat~
+a scruffy rat~
+a scruffy rat scampers along.
+~
+It's small and rodent looking, nothing too exciting. You've seen one rat,
+you've seen them all. Except for the kind that breath fire or are 40 feet
+tall, etc...
+~
+4|512 32768 0 S
+1 0 0 0d0+0 0d0+0
+4|32 0
+0 0 0
+
+#26055
+disintegration monster~
+the disintegration monster~
+A {rdisintegration{x monster prepares to disintegrate you.
+~
+He isn't wearing anything. Nothing at all...except...except for some fine
+fine powder that occasionally falls off him. Could that be......old equipment?
+~
+2|512 0 0 S
+98 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>fight_prog 60~
+   mpecho The disintegration monster's disintegrate misses you.
+~
+>fight_prog 10~
+   cast disintegration $n
+~
+>death_prog 100~
+   mpoload 26042
+~
+|
+
+#26056
+poor tormented man~
+a poor tormented man~
+a poor tormented man lies here, being tortured by Krissy.
+~
+He looks half dead. Blood runs from numerous wounds on left side while his
+right looks to be in perfect condition. Seems Krissy is tormenting him for
+as long as possible.
+~
+2|512 256 1000 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 100~
+   mpecho {yYou are not worthy!{x
+   mppurge 
+   mptransfer all 26004
+~
+|
+
+#26057
+Krissy witch~
+Krissy the evil witch~
+Krissy the evil witch tortures a man here.
+~
+She has blond hair, blues eyes and is a total witch! She kicks at the
+man's left side as he lies bleeding.	
+~
+2|512 0 -1000 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>death_prog 100~
+   mpecho {rCurse you! You're worthy to go forward!{x
+   mpoload 26041
+~
+|
+
+#26058
+Dalag~
+Dalag~
+Dalag is here, pacing his cell.
+~
+He looks like he's been here awhile and doesn't plan on getting out soon.	
+~
+2 0 100 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26059
+Xyr~
+Xyr~
+Xyr sits in the middle of the cell.
+~
+He looks like he hasn't been here too long. He occasionally tries the door
+to his cell and when it doesn't give he kicks it.
+~
+2 0 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26060
+Isebada~
+Isebada~
+Isebada appears to have been half beaten to death.
+~
+He looks like he's half dead but not willing to give up. He ties another
+bandage around his head as you watch.	
+~
+2 0 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26061
+Nykkard~
+Nykkard~
+Nykkard seems to be just relaxing here, not worried at all.
+~
+He doesn't appear to be here against his will. In fact, it seems like
+he could leave at any time he wished.	
+~
+2 0 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 5~
+   mpecho Nykkard suddenly winks out of existence!
+   mpgoto 26118
+   mpecho Nykkard suddenly winks into existence!
+~
+>rand_prog 28~
+   mpecho Nykkard suddenly winks out of existence!
+   mpgoto 26130
+   mpecho Nykkard suddenly winks into existence!
+~
+|
+
+#26062
+Phzeg~
+Phzeg~
+Phzeg is in charge of making the prisoners lives hell.
+~
+He looks kinda like a cross between an umpaloompa and David Hasslehoff, with
+just a tad of Dwarf thrown in.
+~
+2 0 -1000 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 1~
+   yell Dwarves rule!
+~
+|
+
+#26063
+Rzzrdehcurfn~
+Rzzrdehcurfn~
+Rzzrdehcurfn cowers in fear as you open he door.
+~
+He looks like he seems to be scared, but you get the sense it's an act.	His
+gaze seems to challenge you to call the bluff.
+~
+2 0 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26064
+milo dungeon guard dog~
+Milo~
+Milo, the dungeon guard dog, snarls at Phzeg from across the dungeon.
+~
+It's a medium sized brown dog wearing a glowing collar.
+~
+2|512 0 1000 S
+198 0 0 0d0+0 0d0+0
+4|32 0
+0 0 1
+>all_greet_prog 100~
+   mpecho Milo wags his tail as he spots you.			
+   cast 'complete heal'
+~
+>give_prog tug war rope~
+   lick $n
+   mpoload 26047
+   give collar $n
+   mpjunk rope
+~
+|
+
+#26065
+65~
+a giant gold dragon~
+A giant {ygold{x dragon lies  here.
+~
+Covered in radiant {ygold{x scales, it's blinding to look at.	
+~
+2|131072 8192 0 S
+96 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#26066
+tweety bird~
+a tweety bird~
+A little tweety bird flutters around.
+~
+It's small and yellow and really cute. It flutters about as you try and
+swat it.
+~
+2|131072 8192|16777216 1000 S
+97 0 0 0d0+0 0d0+0
+4|32 0
+0 0 1
+
+#26067
+ice wibble~
+An Ice Wibble~
+An Ice Wibble sways back and forth wibbling here.
+~
+It has pearly white scales and eyes the color of a winter sky. It looks at you 
+curiously, then breaths a cloud of frost into the air that ices its 
+immediate surroundings slightly. It seems to look pleased with itself.
+~
+2|131072 128|8192|16777216 1000 S
+100 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+>rand_prog 15~
+   emote ices its immediate vicinity.
+~
+|
+
+#26068
+giant green caterpillar~
+A giant green caterpillar~
+A giant green caterpillar ripples along.
+~
+It's really big and really {ggreen{x. REALLY big and REALLY {Ggreen{x. 
+Otherwise, it's a normal old caterpillar.
+~
+2|131072 2048 0 S
+98 0 0 0d0+0 0d0+0
+4|8|32|128 0
+0 0 0
+>rand_prog 1~
+   mpecho Suddenly, the caterpillar goes crazy, thrashing the ground!
+   mpforce all sit
+~
+|
+
+#26070
+emerald guard~
+the emerald guard~
+The emerald guard protects the emerald.
+~
+He's clad in plenty of armor and weaponry. He doesn't appear
+to want to give up the emerald.
+~
+2 128|2048 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#26071
+moogle~
+a moogle~
+A moogle watches you enter.
+~
+It looks like the rest. It stands only about a foot tall,
+has small eyes and hovers a little above the ground.
+~
+2|512 0 0 S
+78 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say Choose. Go on or Gold. Pick up your choice and hand it to me.
+~
+>give_prog shiny key~
+   say You pass.
+   mpoload 26040
+   unlock east
+   open east
+   mpjunk key
+   mpjunk key
+~
+>give_prog pile gleaming gold~
+   say You have not the will to go on.
+   mptransfer $n 26004
+~
+|
+
+
+#26083
+king's guard~
+a kings guard~
+A king's guard patrols the halls.
+~
+Wielding sturdier weapons and armor then you've seen so far you notice
+he looks to be decently armed, if not really expecting any trouble.	
+~
+2 0 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 10~
+   say {rFor the king!{x
+~
+|
+#0
+
+#OBJECTS
+#26001
+yellow pedestal~
+A yellow pedestal~
+A {Yyellow{x pedestal sits here.~
+~
+15 0 0
+100~ 0~ -1~ ~
+1 0 0
+
+#26002
+purple pedestal~
+A purple pedestal~
+A {Mpurple{x pedestal sits here.~
+~
+15 0 0
+100~ 0~ -1~ ~
+1 0 0
+
+#26003
+cyan pedestal~
+A cyan pedestal~
+A {Ccyan{x pedestal sits here.~
+~
+15 0 0
+100~ 0~ -1~ ~
+1 0 0
+
+#26004
+orange pedestal~
+A orange pedestal~
+An {yorange{x pedestal sits here.~
+~
+15 0 0
+100~ 0~ -1~ ~
+1 0 0
+
+#26005
+green pedestal~
+A green pedestal~
+A {Ggreen{x pedestal sits here.~
+~
+15 0 0
+100~ 0~ -1~ ~
+1 0 0
+
+#26006
+red stone~
+a {Rred{x stone~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26007
+yellow stone~
+a {Yyellow{x stone~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26008
+blue stone~
+a {Bblue{x stone~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26009
+green stone~
+a {Ggreen{x stone~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26010
+yellow key~
+a {Yyellow{x key~
+A {Yyellow{x key sits here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26011
+purple key~
+a {Mpurple{x key~
+A {Mpurple{x key sits here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26012
+cyan key~
+a {Ccyan{x key~
+A {Ccyan{x key sits here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26013
+orange key~
+a {yorange{x key~
+An {yorange{x key sits here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26014
+green key~
+a {Ggreen{x key~
+A {Ggreen{x key sits here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26015
+emerald~
+a shining {Gemerald{x~
+A shining {Gemerald{x sits in the middle of the room, throwing off light.~
+~
+4 1|2|64 1|16384
+100~ 4~ 4~ protection~
+1 0 0
+
+#26016
+ancient tapestry~
+a ancient and rare tapestry~
+An ancient and rare tapestry hangs on the wall here.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#26017
+castle key~
+castle key~
+The castle key.~
+~
+18 32 1
+~ ~ ~ ~
+0 0 0
+
+#26018
+king queen room key~
+Key to the king and queens room~
+The key to the king and queens throne room.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26019
+small corroded key~
+a small corroded key~
+a small-corroded key has been lost here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26020
+portal~
+a portal~
+A softly glowing portal leads from the Underworld.~
+~
+33 1 0
+26096~ 25999~ 1~ 100~
+1 0 0
+
+#26021
+wand cleansing~
+a wand of cleansing~
+A wand of cleansing has been discarded here.~
+~
+3 64 1|16384
+100~ 4~ 4~ remove curse~
+1 0 0
+
+#26022
+dog collar~
+the best damn dog collar in the universe~
+THE dog collar of the universe.~
+~
+9 8|131072|524288|268435456|536870912 4
+~ ~ ~ ~
+1 0 0
+A
+1 50
+A
+3 50
+A
+4 50
+A
+5 50
+A
+2 50
+A
+13 60000
+A
+12 10000
+A
+14 10000
+A
+17 -1000
+A
+18 1000
+A
+19 1000
+A
+24 -1000
+A
+23 -1000
+A
+27 1
+A
+26 1
+A
+33 1
+A
+28 1
+A
+29 1
+A
+30 1
+A
+31 1
+A
+32 1
+A
+34 1
+A
+25 1
+
+#26023
+tug war rope~
+a tug of war rope~
+A tug of war rope has been thrown here.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#26024
+stone x~
+a stone with an "X" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26025
+stone e~
+a stone with an "e" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26026
+stone d~
+a stone with a "d" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26027
+stone d~
+a stone with a "d" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26028
+stone i~
+a stone with an "i" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26029
+stone c~
+a stone with a "c" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26030
+stone u~
+a stone with a "u" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26031
+stone s~
+a stone with an "s" marked on it~
+~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26032
+black powder~
+some black powder~
+Some black powder is here.~
+~
+34 0 1
+~ ~ ~ ~
+1 0 0
+
+#26084
+black powder~
+some black powder~
+Some black powder is here.~
+~
+34 0 1
+~ ~ ~ ~
+1 0 0
+
+#26085
+black powder~
+some black powder~
+Some black powder is here.~
+~
+34 0 1
+~ ~ ~ ~
+1 0 0
+
+#26033
+blue harmonica~
+a bright {Bblue{x harmonica~
+A bright {Bblue{x harmonica lies here.~
+~
+36 1 1|16384
+~ ~ ~ ~
+1 0 0
+A
+19 12
+A
+18 12
+
+#26034
+ethereal ring~
+an ethereal ring~
+An ethereal ring rests here, light passing through it.~
+~
+9 0 1|2
+~ ~ ~ ~
+1 0 0
+A
+13 151
+
+#26035
+dusty belt~
+a dusty belt~
+A dusty belt lies here, half buried in the ground.~
+~
+9 128|1024|2048 1|2048
+~ ~ ~ ~
+1 0 0
+A
+18 10
+A
+19 10
+A
+13 151
+
+#26036
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26037
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26038
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26039
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26040
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26041
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26042
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26043
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26044
+key next test~
+key to the next test~
+The key to the next test.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26045
+pile gleaming gold~
+a gleaming pile of gold~
+A gleaming pile of gold lies here.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#26046
+shiny key~
+a shiny key~
+The key to the next test lies here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#26047
+shard collar~
+shard of a collar {Y*The collar glows softly*{x~
+The shard of a collar glimmers here. {Y*The collar glows softly*{x~
+~
+9 1 1|4
+~ ~ ~ ~
+1 0 0
+E
+shard collar~
+It glows faintly as you touch it and fills you with the sense that it
+is part of something greater, that it will {Yunlock{x your {Rmind{x at
+the right time and place, that...the collar dims and these thoughts leave
+you.
+~
+A
+29 1
+A
+30 1
+A
+24 -50
+
+#26048
+platinum~
+some platinum~
+A bunch of platinum coins.~
+~
+20 0 1
+0~ 0~ 0~ 100~
+1 0 0
+
+#26049
+portal of chance~
+The portal of chance~
+The portal of chance has been erected here.~
+~
+33 1|2 0
+26088~ 26091~ 100~ 100~
+1 0 0
+
+#26050
+kings sword~
+a kings sword~
+A king's sword has been laid here.~
+~
+5 0 1|8192
+~ ~ ~ 15~
+1 0 0
+A
+19 10
+A
+18 -30
+
+#26051
+queen's sword~
+a queens sword~
+A queen's sword has been laid here.~
+~
+5 0 1|8192
+~ ~ ~ 15~
+1 0 0
+A
+19 -10
+A
+18 30
+
+#26052
+kings armor~
+kings armor~
+Some king's armor has been discarded here.~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+A
+19 10
+A
+18 -30
+
+#26053
+queen's armor~
+queens armor~
+Some queen's armor has been discarded here.~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+A
+19 -10
+A
+18 30
+
+#26054
+kings helm~
+kings helm~
+A kings helm has been tossed here.~
+~
+9 0 1|16
+~ ~ ~ ~
+1 0 0
+A
+19 11
+A
+18 -31
+
+#26055
+queens helm~
+queens helm~
+A queens helm has been tossed here.~
+~
+9 0 1|16
+~ ~ ~ ~
+1 0 0
+A
+19 -11
+A
+18 31
+
+#26056
+glimmering sword~
+a glimmering sword~
+A glimmering sword has been lost here.~
+~
+5 0 1|8192
+~ ~ ~ 1~
+1 0 0
+A
+19 17
+A
+18 20
+
+#26057
+glimmering breastplate~
+a glimmering breastplate~
+A glimmering breastplate rests here.~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+A
+18 5
+A
+19 5
+
+#26058
+glimmering leg guards~
+a pair of glimmering leg guards~
+A pair of glimmering leg guards have been dropped here.~
+~
+9 0 1|32
+~ ~ ~ ~
+1 0 0
+A
+18 5
+A
+19 5
+
+#26059
+Silver armor~
+silver {darmor{x~
+{dSome{x silver{d armor has been misplaced here.{x~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+A
+18 1
+A
+19 1
+
+#26060
+huge crescent battleaxe~
+a huge crescent battleaxe~
+A huge crescent battleaxe has been flung here.~
+~
+5 0 1|8192
+~ ~ ~ 1~
+1 0 0
+A
+19 1
+
+#26061
+crystal empyrosis~
+crystal of empyrosis~
+A crystal of empyrosis~
+~
+9 2048 1|32768
+~ ~ ~ ~
+1 0 0
+A
+13 125
+
+#26067
+dust pan~
+a dust pan~
+A dust pan has been dropped by a servant here.~
+~
+5 16777216 1|8192
+~ ~ ~ 7~
+5 0 0
+
+#26068
+servants uniform~
+a servants uniform~
+A servant must be running around naked, as a uniform lies here.~
+~
+9 0 1|1024
+~ ~ ~ ~
+1 0 0
+
+#26069
+servants pin~
+a servants pin~
+A servants pin is spinning around here.~
+~
+9 33554432 1|4
+~ ~ ~ ~
+1 0 0
+A
+19 10
+A
+18 10
+
+#26070
+dust rag~
+a dust rag~
+A dust rag is wadded up here.~
+~
+9 128|4096 1|16384
+~ ~ ~ ~
+1 0 0
+A
+2 10
+A
+3 -10
+
+#26071
+ring fortitude~
+a ring of fortititude~
+A ring of fortititude has been taken from it's rightful owner.~
+~
+9 1|2|32 1|2
+~ ~ ~ ~
+1 0 0
+A
+17 -200
+A
+19 -30
+A
+2 4
+A
+1 -10
+
+#26072
+pointy sword~
+a pointy sword~
+a pointy sword is being pointy here.~
+~
+5 256 1|8192
+~ ~ ~ 2~
+6 0 0
+A
+18 5
+A
+19 13
+
+#26073
+a dull sword~
+a dull sword~
+A dull sword rusts away here.~
+~
+5 16384|262144 0
+~ ~ ~ 15~
+7 0 0
+A
+19 -5
+A
+18 20
+
+#26074
+leather padding~
+a leather padding~
+Some leather padding has been discarded here.~
+~
+9 1|2|64 1|8
+~ ~ ~ ~
+10 0 0
+A
+14 -5000
+A
+17 -200
+
+#26075
+tin foil~
+some tin foil~
+A thin sheet of metal lies here.~
+~
+9 1 1|16
+~ ~ ~ ~
+1 0 0
+A
+24 -25
+A
+23 -25
+
+#26076
+metallic metal~
+some metallic metal~
+Some metallic metal is here being all metallic-like.~
+~
+9 2097152|33554432 1|2 4 100 1|32
+~ ~ ~ ~
+30 0 0
+
+#26078
+some scratches~
+some scratches~
+How can scratches be off a person you ask? Hell if I know.~
+~
+9 128|4096 0
+~ ~ ~ ~
+1 0 0
+A
+13 -1
+A
+17 1
+A
+2 1
+A
+19 5
+A
+18 5
+
+#26079
+bruise~
+a bruise~
+A bruise on the ground. Impressive, huh?~
+~
+9 128|4096 0
+~ ~ ~ ~
+1 0 0
+A
+25 1
+
+#26086
+glowing tablet~
+A {Yglowing{x tablet~
+A {Yglowing{x tablet calls to you from the shelf.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+E
+glowing tablet~
+{mThe consecution will occur. Upon the advent of The Genesis unlock your mind and the 
+domain of the setting sun to release the way from nothingness and breach the boundries 
+of non-existence.{x
+~
+
+#26087
+partizan~
+a blood-stained partizan flecked with gore~
+A blood-stained partizan flecked with gore has been stolen from Phzeg.~
+~
+5 0 1|8192
+~ ~ ~ 3~
+10 0 0
+A
+19 10
+
+#26088
+bindings~
+some kind of bindings~
+Some kind of bindings exist here.~
+~
+5 0 1|8192
+~ ~ ~ 7~
+10 0 0
+A
+19 10
+
+#26089
+aura confidence~
+an aura of confidence~
+An aura of confidence.~
+~
+9 0 1|2048
+~ ~ ~ ~
+1 0 0
+A
+18 20
+A
+19 6
+
+#26090
+air mastery~
+an air of mastery~
+An air of mastery.~
+~
+5 0 1|8192
+~ ~ ~ 0~
+1 0 0
+A
+18 6
+A
+19 6
+
+#26091
+fully functioning sword~
+a fully functioning sword~
+A fully functioning sword appears fully functional.~
+~
+5 0 1|8192
+~ ~ ~ 3~
+5 0 0
+A
+18 10
+A
+19 10
+
+#26092
+transparent red dirk~
+a transparent {Rred{x dirk~
+A transparent {Rred{x dirk sticks out of the ground.~
+~
+5 0 1|8192
+~ ~ ~ 3~
+5 0 0
+A
+18 10
+A
+19 10
+
+#26093
+king burden~
+a kings burden~
+A kings burden has been dropped.~
+~
+9 0 0
+~ ~ ~ ~
+100 0 0
+A
+18 40
+A
+19 5
+A
+14 -1000
+
+#26094
+queen concern~
+a queens concern~
+A queens concern has been dropped here.~
+~
+9 0 0
+~ ~ ~ ~
+100 0 0
+A
+18 40
+A
+19 5
+
+#26095
+gaping maw~
+a gaping maw~
+A gaping maw~
+~
+5 67108864 0
+~ ~ ~ 10~
+200 0 0
+A
+19 20
+A
+18 40
+
+#26096
+long nose~
+a long nose~
+A long nose.~
+~
+5 67108864 0
+~ ~ ~ 4~
+5 0 0
+A
+19 5
+A
+18 10
+
+#26097
+sharp beak~
+a sharp break~
+A sharp beak.~
+~
+5 67108864 0
+~ ~ ~ 2~
+3 0 0
+A
+19 10
+
+#26098
+prickly teeth~
+prickly teeth~
+A pricky set of teeth.~
+~
+5 67108864 0
+~ ~ ~ 10~
+1 0 0
+A
+19 2
+A
+18 30
+#26099
+impression expertise~
+an impression of expertise~
+An impression of expertise.~
+~
+9 1|64 1|512
+0~ 1~ 6~ 11~
+10 0 0
+A
+19 8
+#0
+
+#ROOMS
+#26001
+Entrance to the Castle~
+You have come to the entrance of a castle. A guard appears to be on duty and 
+there is a {Ysign{x next to the locked steel door.
+~
+0 0 2
+D 0
+~
+~
+8 26017 26002
+D 2
+~
+~
+0 -1 743
+D 3
+~
+~
+0 -1 26137
+E
+door~
+Read the sign.
+~
+E
+sign~
+The password is "I don't know."
+~
+S
+
+#26002
+Just inside the castle~
+It appears to be a fairly ancient castle. The walls are not crumbling or 
+anything, they looks freshly cleaned in fact. But they give off the sense
+of time, even so. You can go in all directions from here.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26005
+D 2
+~
+~
+1 -1 26001
+D 1
+~
+~
+0 -1 26004
+D 3
+~
+~
+0 -1 26003
+S
+
+#26003
+A black room~
+This room is bathed in {ddarkness{x. A single creature sits in the middle
+of it.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26002
+S
+
+#26004
+Some kind of room~
+This room is of simple design. Standing in the middle of it is a tall
+figure cloaked in...something. You just can't seem to make out his
+features.
+~
+0 8 0
+D 3
+~
+~
+0 -1 26002
+S
+
+#26005
+Stone walled~
+The walls of this hallway are made of cold gray stone. Your footsteps echo
+off the walls with each step.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26006
+D 2
+~
+~
+0 -1 26002
+S
+
+#26006
+More of the same~
+The hallway continues on, the echoes of your movements following. Or is that 
+guards coming to disembowel you?
+~
+0 8 0
+D 0
+~
+~
+0 -1 26007
+D 2
+~
+~
+0 -1 26005
+S
+
+#26007
+The {Ccyan{x door~
+A guard in a {Ccyan{x uniform stands at his post, slowly scanning
+the area before a {Ccyan{x door looking for trouble. (That would be you.)
+~
+0 8 0
+D 0
+~
+~
+1 -1 26084
+D 2
+~
+~
+0 -1 26006
+D 1
+~
+~
+0 -1 26009
+D 3
+~
+~
+0 -1 26008
+S
+
+#26008
+The {Mpurple{x door~
+A guard in a {Mpurple{x uniform stands at attention before a {Mpurple{x door. 
+He seems intent on not letting anyone pass.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26083
+D 1
+~
+~
+0 -1 26007
+D 3
+~
+~
+0 -1 26011
+S
+
+#26009
+The {yOrange{x door~
+A guard in an {yorange{x uniform patrols back and forth before an {yorange{x 
+door. 
+~
+0 8 0
+D 0
+~
+~
+1 -1 26085
+D 1
+~
+~
+0 -1 26010
+D 3
+~
+~
+0 -1 26007
+S
+
+#26010
+The {GGreen{x door~
+A guard in a {Ggreen{x uniform occupies the space in front of a {Ggreen{x 
+door, as you expected him to.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26086
+D 3
+~
+~
+0 -1 26009
+S
+
+#26082
+{YYellow{x door~
+Another guard has been posted here to guard yet another door. You briefly 
+wonder what is the point of all the colours.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26012
+D 2
+~
+~
+1 -1 26011
+S
+
+#26083
+{MPurple{x door~
+Yet another guard. They seem to be everywhere. Like the others, he seems to be 
+guarding a door.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26013
+D 2
+~
+~
+1 -1 26008
+S
+
+#26084
+{CCyan{x door~
+You come to another doorway and the now-common guard guarding it. Maybe
+this one will be more friendly... or not.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26014
+D 2
+~
+~
+1 -1 26007
+S
+
+#26085
+{yOrange{x door~
+Another guard does his duty here. This time he's in {yorange{x armor and 
+guarding an {yorange{x door.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26015
+D 2
+~
+~
+1 -1 26009
+S
+
+#26086
+{GGreen{x door~
+A {Ggreen{x door stands before you along with its attending {Ggreen{x guard.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26016
+D 2
+~
+~
+1 -1 26010
+S
+
+#26011
+The {Yyellow{x door~
+A guard in a {Yyellow{x uniform stands before a {Yyellow{x door. You're
+starting to really hate anything other than black and white.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26082
+D 1
+~
+~
+0 -1 26008
+S
+
+#26012
+{YYellow{x key room~
+In the center of the strangely bare room is a pedestal. A yellow key sits upon 
+it and glows with a strange light.
+~
+0 8 0
+D 2
+~
+~
+1 -1 26082
+S
+
+#26013
+{MPurple{x key room~
+In the center of the strangely bare room is a pedestal. A purple key sits upon 
+it and glows with an odd light.
+~
+0 8 0
+D 2
+~
+~
+1 -1 26083
+S
+
+#26014
+{CCyan{x key room~
+In the center of the strangely bare room is a pedestal. A cyan key sits upon 
+it and glows with an odd light.	
+~
+0 8 0
+D 0
+~
+~
+8 26014 26017
+D 2
+~
+~
+1 -1 26084
+S
+
+#26015
+{yOrange{x key room~
+In the center of the strangely bare room is a pedestal. An orange key sits 
+upon it and glows with an odd light.
+~
+0 8 0
+D 2
+~
+~
+1 -1 26085
+S
+
+#26016
+{GGreen{x key room~
+In the center of the strangely bare room is a pedestal. A green key sits upon 
+it and glows with an odd light.
+~
+0 8 0
+D 2
+~
+~
+1 -1 26086
+S
+
+#26017
+{CAnnoyingly{x locked room~
+A {Ccyan{x door blocks your way. It appears to be locked tight. Given its 
+color though, it's obvious the doors are color-coded with their keys.
+~
+0 8 0
+D 0
+~
+~
+8 26012 26018
+D 2
+~
+~
+0 -1 26014
+S
+
+#26018
+{MAnnoyingly{x locked room~
+A {Mpurple{x door blocks your way. It appears to be locked tight. Given its 
+color though, it's obvious the doors are color-coded with their keys.
+~
+0 8 0
+D 0
+~
+~
+8 26011 26019
+D 2
+~
+~
+1 -1 26017
+S
+
+#26019
+{YAnnoyingly{x locked room.~
+A {Yyellow{x door blocks your way. It appears to be locked tight. Given its 
+color though, it's obvious the doors are color-coded with their keys.
+~
+0 8 0
+D 0
+~
+~
+8 26010 26020
+D 2
+~
+~
+1 -1 26018
+S
+
+#26020
+{x{yAnnoyingly{x locked room~
+An {yorange{x door blocks your way. It appears to be locked tight. Given its 
+color though, it's obvious the doors are color-coded with their keys.
+~
+0 4|8 0
+D 0
+~
+~
+8 26013 26021
+D 2
+~
+~
+1 -1 26019
+S
+
+#26021
+A hallway~
+You've finally made it into the castle proper. Or at least a hallway. 
+Portraits line the walls and servants line the hall itself.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26020
+D 1
+~
+~
+0 -1 26022
+D 3
+~
+~
+0 -1 26023
+S
+
+#26022
+More hallway~
+The portraits and servants continue running east and west along the hallway.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26024
+D 3
+~
+~
+0 -1 26021
+S
+
+#26023
+More hallway~
+The castle runs east and west from here. It appears there is no shortage of 
+servants about the place, for they are at work here also.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26021
+D 3
+~
+~
+0 -1 26027
+S
+
+#26024
+The hallway goes on~
+The hallway is still here and still going. The servants are also continuing in 
+their duty.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26025
+D 3
+~
+~
+0 -1 26022
+S
+
+#26025
+The hallway continues~
+More servants go about the various tasks of their existence along this place.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26026
+D 3
+~
+~
+0 -1 26024
+S
+
+#26026
+Hallway again~
+Here the hallway turns north sharply. You wonder if there are more servants on 
+the other side. You bet there are.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26038
+D 3
+~
+~
+0 -1 26025
+S
+
+#26027
+The Hallway~
+It runs east and west and contains various people who appear to be servants of 
+the castle.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26023
+D 3
+~
+~
+0 -1 26028
+S
+
+#26028
+The Hallway~
+East and west, both directions seem to be full of more of this
+hallway and the frequent servants.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26027
+D 3
+~
+~
+0 -1 26029
+S
+
+#26029
+Another part of the hallway~
+The hallway turns to the north into even more hallway and even more servants, 
+you are certain.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26030
+D 1
+~
+~
+0 -1 26028
+S
+
+#26030
+Some more hallway~
+The hallway goes south and east, as do the servants. They seem to be 
+everywhere and it kind of creeps you out.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26029
+D 1
+~
+~
+0 -1 26031
+S
+
+#26031
+More hallway~
+Believe it or not, the hallway runs on. And unsurprisingly, so do all the 
+servants. They seem to be EVERYWHERE.
+~
+0 8 0
+D 0
+~
+~
+10 -1 26087
+D 1
+~
+~
+0 -1 26032
+D 3
+~
+~
+0 -1 26030
+S
+
+#26032
+The hallway rises slightly~
+The hallway starts to slope gently upwards here. You actually like this, as it 
+is a welcome change to the uniformity of the place thus far.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26033
+D 3
+~
+~
+0 -1 26031
+S
+
+#26033
+Rising continues~
+The hallway continues its upwards trek. There is a servant even here and you 
+wonder if there is a part of the castle they don't occupy.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26034
+D 3
+~
+~
+0 -1 26032
+S
+
+#26034
+End of the hallway~
+The hallway meets its other side here at the foot of some stairs that lead up 
+to the next floor. And thank God, there are no...oh wait, you see it. A 
+servant rubbing away at a wall...sigh...
+~
+0 8 0
+D 0
+~
+~
+0 -1 26039
+D 1
+~
+~
+0 -1 26035
+D 3
+~
+~
+0 -1 26033
+S
+
+#26035
+Hallway rises a bit~
+The hallway rises slightly and you think you spot a staircase ahead. This is a 
+welcome sight as it may provide a way out of Servant Hell.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26036
+D 3
+~
+~
+0 -1 26034
+S
+
+#26036
+Slight rise~
+The hallway starts to rise a little. You wonder if it's due to a geographical 
+feature or if they built it over the fallen bodies of past servants who worked 
+until they dropped here...
+~
+0 8 0
+D 1
+~
+~
+0 -1 26037
+D 3
+~
+~
+0 -1 26035
+S
+
+#26037
+The hallway goes on from here~
+The hallway goes on to more servants. East there are servants. West there are 
+servants. You just want to scream.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26038
+D 3
+~
+~
+0 -1 26036
+S
+
+#26038
+Turn in the hallway~
+The hallway goes south and west. And so do the damn servants! You look to the 
+south again then back to the west. Same thing still. You mutter a curse and 
+move on.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26026
+D 3
+~
+~
+0 -1 26037
+S
+
+#26039
+Stairs up~
+A staircase is here that leads to another floor of the castle.  You swear to 
+level this whole place if there's a servant anywhere  in sight once you reach 
+the next floor.
+~
+0 4|8 0
+D 2
+~
+~
+0 -1 26034
+D 4
+~
+~
+0 -1 26040
+D 5
+~
+~
+0 -1 26124
+S
+
+#26040
+On the top of the staircase~
+You reach the second floor, ready to cleave the first servant you see in 
+half...and stop dead. At first you can't understand what you're seeing, then 
+you figure it's better than more bloody servants and walk forward.
+~
+0 4|8 0
+D 0
+~
+~
+0 -1 26041
+D 5
+~
+~
+0 -1 26039
+S
+
+#26041
+Sparring arena~
+It appears almost the entire second level of the castle is a large open area
+used for dueling.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26054
+D 2
+~
+~
+0 -1 26040
+D 1
+~
+~
+0 -1 26043
+D 3
+~
+~
+0 -1 26046
+S
+
+#26042
+Another part of the arena~
+The large arena stretches far in every direction. Men and women and things you 
+can't name fight here and there. It's...odd.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26043
+D 3
+~
+~
+0 -1 26041
+S
+
+#26043
+Another part of the arena~
+The arena expands quite a distance in all directions. Most anyway. You don't 
+see a way to go up or down, but then you don't have time to really search as 
+people hack and slash and thrust and parry about you.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26056
+D 1
+~
+~
+0 -1 26044
+D 3
+~
+~
+0 -1 26042
+S
+
+#26044
+Another part of the arena~
+The arena goes on. That's not so bad, but so do all the people around you. 
+You've had to duck a number of times now from beginners losing their swords 
+and having the sword fly uncomfortably towards your head.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26045
+D 3
+~
+~
+0 -1 26043
+S
+
+#26045
+Corner of the arena~
+The arena finally comes to an end here but runs off to the north and west.
+The walls are covered in slash marks and gouges and you decide against
+resting in a corner for a moment.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26058
+D 3
+~
+~
+0 -1 26044
+S
+
+#26046
+The arena~
+You stand in the arena of the castle. You stand in the arena of the castle 
+that makes up the second story of this place. You go back to the first way of 
+thinking of it, otherwise it's too weird.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26041
+D 3
+~
+~
+0 -1 26047
+S
+
+#26047
+Arena in the castle~
+You almost have a sword driven through your back as someone rushes by. You 
+figure you must be around a bunch of learning students. Or else a lot of 
+people trying to assassinate you.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26052
+D 1
+~
+~
+0 -1 26046
+D3
+~
+~
+0 -1 26048
+S
+
+#26048
+Castle arena~
+The castle area is all around you. You glance up and are shocked
+not only to see the ceiling with various hack marks in it, but actual
+swords still stuck in it! You quickly move off in search of a safer
+spot.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26047
+D 3
+~
+~
+0 -1 26049
+S
+
+#26049
+Corner of the arena~
+The arena finally stops here but runs north and east. In the corner two people 
+practice parrying each other's attacks.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26050
+D 1
+~
+~
+0 -1 26048
+S
+
+#26050
+The arena goes on~
+The arena is massive. It continues on in all directions. You feel slightly 
+safer here as there are a few less hack marks all over the place.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26059
+D 2
+~
+~
+0 -1 26049
+D 1
+~
+~
+0 -1 26051
+S
+
+#26051
+More of the arena~
+The people in this place seem dedicated, you'll give them that. You watch as a 
+person loses his balance apparently trying to perform some kind of recovery 
+move a dozen times before finally getting it right.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26060
+D 1
+~
+~
+0 -1 26052
+D 3
+~
+~
+0 -1 26050
+S
+
+#26052
+The arena~
+The arena is everywhere. As are the people in it. Seems almost every inch of 
+it is occupied by someone training.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26047
+D 1
+~
+~
+0 -1 26053
+D 3
+~
+~
+0 -1 26051
+S
+
+#26053
+Arena in the castle~
+WHOA! You barely dodge in time as a dagger comes flying through the air. You 
+look back at the dagger as it sticks into the wall and vanishes! You turn to 
+see the man who threw it stab himself playfully with a twin of the vanished 
+dagger. It simply is gone where it touches him. Damn Mages!
+~
+0 8 0
+D 0
+~
+~
+0 -1 26062
+D 1
+~
+~
+0 -1 26054
+D 3
+~
+~
+0 -1 26052
+S
+
+#26054
+Castle arena~
+This time you are ready to dodge past whatever comes your way but nothing 
+does. You are sure this just means something bad is going to happen soon.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26041
+D 1
+~
+~
+0 -1 26055
+D 3
+~
+~
+0 -1 26053
+S
+
+#26055
+Arena in the castle~
+The size of this thing simply amazes you. You can barely make out
+the walls from side to side. Of course, all the people swinging 
+about with swords, axes and all kinds of weapons aren't helping any.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26064
+D 1
+~
+~
+0 -1 26056
+D 3
+~
+~
+0 -1 26054
+S
+
+#26056
+The arena~
+The arena runs all around in all directions, except of course up or down. The 
+arena appears to be flat to aid footing.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26043
+D 1
+~
+~
+0 -1 26057
+D 3
+~
+~
+0 -1 26055
+S
+
+#26057
+The continuing arena~
+You calmly walk by as someone tries to take the head off of their imagined 
+opponent.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26066
+D 1
+~
+~
+0 -1 26058
+D 3
+~
+~
+0 -1 26056
+S
+
+#26058
+East wall of the arena~
+You come to the east wall of the arena. Affixed to the wall is a huge target 
+that several bowmen fire at. Some of them appear to actually be hitting the 
+wall...
+~
+0 8 0
+D 0
+~
+~
+0 -1 26067
+D 2
+~
+~
+0 -1 26045
+D 3
+~
+~
+0 -1 26057
+S
+
+#26059
+West wall of the arena~
+The west wall of the arena runs along here. In various spots along it you spot 
+arrows, dirks and other throwing weapons stuck in it.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26076
+D 2
+~
+~
+0 -1 26050
+D 1
+~
+~
+0 -1 26060
+S
+
+#26060
+Arena~
+More people are engaged in combat here. They seem to know what they're doing 
+and the fighting is somewhat of a dance.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26074
+D 2
+~
+~
+0 -1 26051
+D 1
+~
+~
+0 -1 26061
+D 3
+~
+~
+0 -1 26059
+S
+
+#26061
+More fighting~
+A lot of people seem to take advantage of the impressive arena. You wonder 
+just exactly how many this place can hold.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26062
+D 3
+~
+~
+0 -1 26060
+S
+
+#26062
+A fighter practicing~
+A combatant trains here. He looks to be training with a staff weapon.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26072
+D 2
+~
+~
+0 -1 26053
+D 1
+~
+~
+0 -1 26063
+D 3
+~
+~
+0 -1 26061
+S
+
+#26063
+A {Rviscious{x warrior~
+A man who looks pissed and prepared to fight stares at you. You were wondering 
+when this would happen....
+~
+0 8 0
+D 0
+~
+~
+0 -1 26072
+D 1
+~
+~
+0 -1 26064
+D 3
+~
+~
+0 -1 26062
+D 5
+~
+dust hole~
+12 -1 26139
+S
+
+#26064
+Another fight, another part of the arena~
+Another person enjoying the arena. Well, not so much enjoying it as getting 
+the crap kicked out of themselves while in it.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26070
+D 2
+~
+~
+0 -1 26055
+D 1
+~
+~
+0 -1 26065
+D 3
+~
+~
+0 -1 26063
+S
+
+#26065
+Arena~
+The arena goes on, as do the combatants. The combatants especially seem to 
+go on and on, and you wonder how no one has been killed yet.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26066
+D 3
+~
+~
+0 -1 26064
+S
+
+#26066
+Another person in the arena~
+An individual wishing to learn the ways of combat practices here. You wonder 
+where exactly this place leads.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26068
+D 2
+~
+~
+0 -1 26058
+D 1
+~
+~
+0 -1 26067
+D 3
+~
+~
+0 -1 26065
+S
+
+#26067
+East wall of the arena~
+The east wall here is surprisingly smooth without mark. Maybe it's been 
+recently repaired.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26068
+D 2
+~
+~
+0 -1 26058
+D 3
+~
+~
+0 -1 26066
+S
+
+#26068
+Another corner of the arena.~
+The arena comes to a point here and runs south and west. In the corner a woman 
+twirls..something so fast and so nimbly you can't make it out.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26067
+D 3
+~
+~
+0 -1 26069
+S
+
+#26069
+The arena again~
+There are people everywhere in here. It's amazing. Almost as amazing as the 
+skill of the thing in front of you with that dagger he's throwing around with
+practiced ease.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26068
+D 3
+~
+~
+0 -1 26070
+S
+
+#26070
+A person in the arena~
+Yet again you find another person in here. This time though, they're not 
+fighting but sitting quietly.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26064
+D 1
+~
+~
+0 -1 26069
+D 3
+~
+~
+0 -1 26071
+S
+
+#26071
+The huge arena~
+This thing is simply HUGE. Whoever built it must have spent forever upon the 
+project.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26070
+D 3
+~
+~
+0 -1 26072
+S
+
+#26072
+Exit from the arena~
+You weren't sure if it even existed, but at last to the north you see a second 
+way out of the arena.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26077
+D 2
+~
+~
+0 -1 26063
+D 1
+~
+~
+0 -1 26071
+D 3
+~
+~
+0 -1 26073
+S
+
+#26073
+A man in the arena~
+The arena provides a place for many people to practice. The person here seems 
+to be taking advantage of this fact with great skill.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26072
+D 3
+~
+~
+0 -1 26074
+S
+
+#26074
+More of the huge arena~
+The arena is massive. As are some of the people in it. The thing in front of 
+you fits that bill. It seems to be crushing rocks with its hands.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26060
+D 1
+~
+~
+0 -1 26073
+D 3
+~
+~
+0 -1 26075
+S
+
+#26075
+A part of the arena~
+As large as this place is, it's packed. People are everywhere. But no one 
+seems to be getting seriously injured. It's weird.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26074
+D 3
+~
+~
+0 -1 26076
+S
+
+#26076
+Another corner of the arena~
+The arena corner stands before you, but the arena continues off to the east 
+and south. The corner is occupied by a woman with a short sword moving with an 
+air of mastery.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26059
+D 1
+~
+~
+0 -1 26075
+S
+
+#26077
+The teacher of the beginning combatants~
+The teacher of the beginning combatants stands here, surveying your every
+move.
+~
+0 4|8 0
+D 0
+~
+~
+0 -1 26078
+D 2
+~
+~
+0 -1 26072
+S
+
+#26078
+The teacher of the intermediate combatants~
+The teacher of the intermediate combatants watches you with eyes like a hawk.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26079
+D 2
+~
+~
+0 -1 26077
+S
+
+#26079
+The teacher of the expert combatants~
+The teacher of the expert combatants barely glances at you as you enter.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26080
+D 2
+~
+~
+0 -1 26078
+S
+
+#26080
+The teacher of the master combatants~
+The teacher of the master combatants doesn't even seem to notice you've even 
+entered the room. You do notice the stairway leading up he's resting upon, 
+though.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26079
+D 4
+~
+~
+0 -1 26101
+S
+
+#26081
+The Test~
+You appear in a simple room made of stone. On the wall is a sign that reads:
+{rIf at anytime you wish to abandon your try at completing the test simply
+say {x"{gI can not do it.{x"{r. This is the -ONLY- way to get out....other than 
+death, of course.{x
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 26088
+S
+
+#26087
+Secret stairwell~
+You've found a shortcut to the 3rd floor. A small staircase leads upwards.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26031
+D 4
+~
+~
+0 -1 26115
+S
+
+#26088
+Test of combat~
+The test of combat awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26036 26089
+S
+
+#26089
+Test of thought~
+The test of thought awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26037 26090
+S
+
+#26090
+Test of luck~
+The test of luck awaits you.
+~
+0 8|8192 0
+S
+
+#26091
+Test of endurance~
+The test of endurance awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26038 26092
+S
+
+#26092
+Test of knowledge~
+The test of knowledge awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26039 26093
+S
+
+#26093
+Test of will~
+The test of will awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26040 26094
+S
+
+#26094
+Test of morals~
+The test of morals awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26041 26095
+S
+
+#26095
+Test of determination~
+The test of determination awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 26132
+S
+
+#26096
+Healer~
+A room to briefly take a respite from the test. It's covered in
+a calming essence and even seems to have a healer.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 26097
+S
+
+#26097
+Test of disintegration~
+The test of disintegration awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26042 26098
+S
+
+#26098
+The test of deduction~
+The test of deduction awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26043 26099
+S
+
+#26099
+Test of gratitude~
+The test of gratitude awaits you.
+~
+0 8|8192 0
+D 1
+~
+~
+8 26044 26100
+S
+
+#26100
+The prize~
+You made it! Congratulations! Here are the rewards for your efforts.
+You earned them.	
+~
+0 8|8192 0
+S
+
+#26101
+Top of the stairs~
+You reach of the top of the stairs and the 3rd level of the
+Castle.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26102
+D 5
+~
+~
+0 -1 26080
+S
+
+#26102
+Third floor hallway~
+The third floor hallway runs north and south. To the east and west
+doors lead to rooms marked "Servants' Quarters" and "Armory" respectively. 
+~
+0 8 0
+D 0
+~
+~
+0 -1 26105
+D 2
+~
+~
+0 -1 26101
+D 1
+~
+~
+1 -1 26103
+D 3
+~
+~
+1 -1 26104
+S
+
+#26103
+Servants' quarters~
+This must be where the servants keep the various things they need
+to do their job. Rags and buckets lie around on shelves.
+~
+0 8 0
+D 3
+~
+~
+1 -1 26102
+S
+
+#26104
+Armory~
+This room holds the various weapons and armor the combatants
+use as they train in the arena.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26102
+S
+
+#26105
+Third floor hallway~
+The third floor hallway runs north and south while two more doors to the
+east and west are in each wall.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26142
+D 2
+~
+~
+0 -1 26102
+D 1
+~
+~
+1 -1 26107
+D 3
+~
+~
+1 -1 26106
+S
+
+#26106
+Combatant's quarters~
+This room is used to house the various pieces of equipment the combatant's use
+in the arena. Dented shields and knicked swords lie scattered about.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26140
+D 1
+~
+~
+1 -1 26105
+S
+
+#26107
+Combatant's quarters~
+This room must be used to store the weapons, armor and other things the people
+who train in the arena require.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26141
+D 3
+~
+~
+1 -1 26105
+S
+
+#26108
+Third floor hallway continues~
+The third floor hallway still goes on and there are more doors to the east and
+west. You momentarily have a servant flashback...
+~
+0 8 0
+D 0
+~
+~
+0 -1 26111
+D 2
+~
+~
+0 -1 26105
+D 1
+~
+~
+1 -1 26109
+D 3
+~
+~
+1 -1 26110
+S
+
+#26109
+Combatant's quarters~
+Yet another room for the patrons of the arena to keep equipment. This one
+doesn't look like it gets much use, though.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26141
+D 3
+~
+~
+1 -1 26108
+S
+
+#26110
+Combatant's quarters~
+This room is also used to store things. Swords, shields and various other 
+pieces of equipment are stacked along the walls.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26140
+D 1
+~
+~
+1 -1 26108
+S
+
+#26111
+End of the third floor hallway~
+You come to the end of the hallway. To the east and west are lavatories,
+while to the north you see a guard posted in front of a staircase that
+you assume leads up to another level.
+~
+0 4|8 0
+D 0
+~
+~
+0 -1 26114
+D 2
+~
+~
+0 -1 26108
+D 1
+~
+~
+1 -1 26113
+D 3
+~
+~
+1 -1 26112
+S
+
+#26112
+Lavatory~
+You enter the lavatory and notice nothing special about it.
+Simple design and nothing too fancy.
+~
+0 8 0
+D 1
+~
+~
+1 -1 26111
+S
+
+#26113
+Lavatory~
+You enter the lavatory and notice nothing special about it.
+Simple design and nothing too fancy.
+~
+0 8 0
+D 3
+~
+~
+1 -1 26111
+S
+
+#26114
+Stairs up~
+These stairs lead up to the private 4th level. A guard posted at the foot
+of them assures it stays private. At least, in theory.
+~
+0 4|8 0
+D 2
+~
+~
+0 -1 26111
+D 4
+~
+~
+0 -1 26116
+S
+
+#26115
+Secret stairwell~
+You reach the top of the secret stairwell to the 3rd floor. The north wall 
+seems to be able to open from this side...
+~
+0 8 0
+D 0
+~
+~
+1 -1 26101
+S
+
+#26116
+Fourth floor hallway~
+The fourth floor hallway is much more grand then the others. It also has 
+guards in it, unlike the others. Except for those rainbow boys out front, but 
+they weren't exactly in a hallway..
+~
+0 8 0
+D 0
+~
+~
+0 -1 26120
+D 1
+~
+~
+0 -1 26117
+D 3
+~
+~
+0 -1 26118
+D 5
+~
+~
+0 -1 26114
+S
+
+#26117
+Guard room~
+This room seems to be used by the guards to rest and relax. A table with cards 
+and a pitcher of some drink is in the middle of the room and a small fireplace 
+is set into the north wall.
+~
+0 0 0
+D 3
+~
+~
+0 -1 26116
+S
+
+#26118
+Guard room~
+Another room for the guards to do what they want to do in. This one has a 
+weapons rack in it to apparently hold the guards' weapons while they are off 
+duty.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26116
+S
+
+#26119
+Nobles room~
+This room is used to house visiting nobles and other important people.
+You assume so anyway, since it seems to be furnished with all the
+fancy useless adornment nobles and such seem to prefer.
+~
+0 8 0
+D 1
+~
+~
+1 -1 26120
+S
+
+#26120
+End of the fourth floor hallway.~
+The hallway ends here. A door to the king and queen's room stands before
+you, as do a few guards. To each side is a door.
+~
+0 8 0
+D 0
+~
+~
+1 26018 26122
+D 2
+~
+~
+0 -1 26116
+D 1
+~
+~
+1 -1 26121
+D 3
+~
+~
+1 -1 26119
+S
+
+#26121
+Nobles room~
+This room is where visiting nobles and such stay. In fact, there's a noble in 
+it right now and they don't look to happy to have you in here..
+~
+0 8 0
+D 3
+~
+~
+1 -1 26120
+S
+
+#26122
+King and Queen's room~
+This is where the king and queen take audience. In the middle of the room is a 
+large {Gemerald{x held by a guard along with a sign that reads: "{RDO NOT 
+TOUCH. PROPERTY OF THE KING AND QUEEN.{X"
+~
+0 8 0
+D 2
+~
+~
+1 -1 26120
+D 1
+~
+~
+1 -1 26123
+D 3
+~
+~
+11 26024 26143
+S
+
+#26123
+King and Queen's bedroom~
+This is where the king and queen retire to after an audience. It is 
+a lot...simpler than you were expecting. In fact, it's not as gaudy as the 
+rooms the nobles stay in.
+~
+0 8 0
+D 3
+~
+~
+1 -1 26122
+S
+
+#26124
+Dungeon entrance~
+The castles dungeon starts here. The only light is provided by a few torches 
+placed in brackets along with damp gray walls. You here coughs and echoes from 
+what you assume are prisoners.
+~
+0 8 0
+D 2
+~
+~
+0 -1 26125
+D 4
+~
+~
+0 -1 26039
+S
+
+#26125
+The dungeon~
+Two cells are to the east and west. The doors are closed and chances are, 
+locked. The dungeon continues to the south.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26124
+D 2
+~
+~
+0 -1 26129
+D 1
+~
+~
+8 26019 26127
+D 3
+~
+~
+8 26019 26126
+S
+
+#26126
+A cell in the dungeon~
+This is a smell cell in the dungeon. It's rather dingy and dank. A prisoner is 
+locked up here.
+~
+0 8 0
+D 1
+~
+~
+1 -1 26125
+S
+
+#26127
+Another cell~
+This is another cell occupied by another prisoner. A small pile of straw seems 
+to be the only bit of 'comfort'.
+~
+0 8 0
+D 3
+~
+~
+1 -1 26125
+S
+
+#26128
+Cell~
+The cell is small and in it is a captured prisoner. Markings on the wall seem 
+to indicate the passage of time as the prisoner has been stuck here.
+~
+0 8 0
+D 1
+~
+~
+1 -1 26129
+S
+
+#26129
+The dungeon~
+Three more cells are to the east, south and west. Rats scurry around at your 
+feet and you briefly wonder how many of them get eaten by the poor souls in 
+the cells.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26125
+D 2
+~
+~
+8 26019 26131
+D 1
+~
+~
+8 26019 26130
+D 3
+~
+~
+8 26019 26128
+S
+
+#26130
+Yet another cell~
+This cell is occupied too. Who could all these people be? Thieves? Murderers? 
+Mudders?
+~
+0 8 0
+D 3
+~
+~
+1 -1 26129
+S
+
+#26131
+The last cell~
+This is the last cell and also the last prisoner. You can barely see in this 
+cell as the torchlight doesn't reach back to here very well.
+~
+0 8 0
+D 0
+~
+~
+1 -1 26129
+S
+
+#26132
+The Purgatory~
+Clouds of white mist fill the whole place.  There's no telling where you
+are and what's around this area.  From a distance, you hear screams and 
+wails of other suffering souls. You feel cold, hungry and hopelessly lost.
+A small note is posted here.	
+~
+0 8 0
+D 0
+You can see nothing but more mist.
+~
+~
+0 -1 26135
+D 2
+You can see nothing but more mist.
+~
+~
+0 -1 26133
+D 1
+You can see nothing but more mist.
+~
+~
+0 -1 26134
+D 3
+You can barely make out a figure through the mist.
+~
+~
+0 -1 26136
+D 4
+You can see nothing but more mist.
+~
+~
+0 -1 26132
+D 5
+You can see nothing but more mist.
+~
+~
+0 -1 26132
+E
+note~
+Hint:
+
+Try going north!
+~
+S
+
+#26133
+The Purgatory~
+Clouds of white mist fill the whole place.  There's no telling where you
+are and what's around this area.  From a distance, you hear screams and 
+wails of other suffering souls. You feel cold, hungry and hopelessly lost.
+~
+0 8 0
+D 0
+You can see nothing but more mist.
+~
+~
+0 -1 26132
+D 2
+You can see nothing but more mist.
+~
+~
+0 -1 26133
+D 1
+You can see nothing but more mist.
+~
+~
+0 -1 26133
+D 3
+You can see nothing but more mist.
+~
+~
+0 -1 26133
+D 4
+You can see nothing but more mist.
+~
+~
+0 -1 26133
+D 5
+You can see nothing but more mist.
+~
+~
+0 -1 26133
+S
+
+#26134
+The Purgatory~
+Clouds of white mist fill the whole place.  There's no telling where you
+are and what's around this area.  From a distance, you hear screams and 
+wails of other suffering souls. You feel cold, hungry and hopelessly lost.
+~
+0 8 0
+D 0
+You can see nothing but more mist.
+~
+~
+0 -1 26134
+D 2
+You can see nothing but more mist.
+~
+~
+0 -1 26134
+D 1
+You can see nothing but more mist.
+~
+~
+0 -1 26134
+D 3
+You can see nothing but more mist.
+~
+~
+0 -1 26132
+D 4
+You can see nothing but more mist.
+~
+~
+0 -1 26134
+D 5
+You can see nothing but more mist.
+~
+~
+0 -1 26134
+S
+
+#26135
+The Purgatory~
+Clouds of white mist fill the whole place.  There's no telling where you
+are and what's around this area.  From a distance, you hear screams and 
+wails of other suffering souls. You feel cold, hungry and hopelessly lost.
+~
+0 8 0
+D 0
+You can see nothing but more mist.
+~
+~
+0 -1 26135
+D 2
+You can see nothing but more mist.
+~
+~
+0 -1 26132
+D 1
+You can see nothing but more mist.
+~
+~
+0 -1 26135
+D 3
+You can see nothing but more mist.
+~
+~
+0 -1 26135
+D 4
+You can see nothing but more mist.
+~
+~
+0 -1 26135
+D 5
+You can see nothing but more mist.
+~
+~
+0 -1 26135
+S
+
+#26136
+The Judgment Room~
+This is where you'll face your final judgment.  Your fate will depend on 
+your past karma. Silently, you cursed yourself for being such a jerk when
+you were alive.  Overwhelmed by anxiety and tears flowing, you beg for mercy
+and search desperately for your corpse.  Good Luck!
+~
+0 8 0
+S
+
+#26137
+The garden~
+You walk through the castles lush garden. Flowers and plants of all kinds 
+surround you. To the west you make out the stable.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26001
+D 3
+~
+~
+0 -1 26138
+S
+
+#26138
+The stable~
+You come to the stable. You see an array of animals. Standing out front is a 
+man who appears to be in charge of selling the animals.
+~
+0 0 2
+D 1
+~
+~
+0 -1 26137
+S
+
+#26139
+A shallow hole~
+You move some dirt and find a small shallow hole, more an indent really, in
+the arena.
+~
+0 8 0
+D 4
+~
+~
+0 -1 26063
+S
+
+#26140
+A kitchen area~
+This place is one of two rooms used to prepare meals for the various people who
+frequent the castle. Tables of raw ingredients cover the floor.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26110
+D 2
+~
+~
+0 -1 26106
+D 1
+~
+~
+0 -1 26142
+S
+
+#26141
+Another kitchen~
+This is the second area that is used to prepare food for guests. Some
+of those ever present and freaky servants scurry around here.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26109
+D 2
+~
+~
+0 -1 26107
+D 3
+~
+~
+0 -1 26142
+S
+
+#26142
+Dining hall~
+The hallway opens up into a large dining hall, complete with long table
+and glimmering chandelier. The chandelier seems a little out of place though,
+as it appears mostly fighters and such use the table after a workout in the
+arena. 
+~
+0 8 0
+D 0
+~
+~
+0 -1 26108
+D 2
+~
+~
+0 -1 26105
+D 1
+~
+~
+0 -1 26141
+D 3
+~
+~
+0 -1 26140
+S
+
+#26143
+Secret passageway in the castle~
+You step through the entrance in the wall and find yourself in a small
+passageway that runs a short way before coming to another locked door.
+A single torch provides light, but it's an oddly {wwhite{x light. You
+decide it must be magical.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26122
+D 3
+~
+~
+8 26025 26144
+S
+
+#26144
+Another short passageway~
+Again the passageway runs a short distance then comes to a locked door.
+A single torch provides light, but it's a oddly {wwhite{x light. You
+decide it must be magical.
+~
+0 8 0
+D 1
+~
+~
+0 -1 26143
+D 3
+~
+~
+8 26026 26145
+S
+
+#26145
+Continuing passageway-doors~
+Again the pattern repeats, except this time the passageway turns south
+before coming to a locked door. A single torch provides light, but it's 
+a oddly {wwhite{x light. You decide it must be magical.
+~
+0 8 0
+D 2
+~
+~
+8 26027 26146
+D 1
+~
+~
+0 -1 26144
+S
+
+#26146
+Southwards in the secret passageway~
+You walk south a bit before once again coming to another locked door.
+A single torch provides light, but it's a oddly {wwhite{x light. You
+decide it must be magical.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26145
+D 2
+~
+~
+8 26028 26147
+S
+
+#26147
+South some more and a door~
+You find, surprise, another locked door. A single torch provides light, but 
+it's a oddly {wwhite{x light. You decide it must be magical.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26146
+D 2
+~
+~
+8 26029 26148
+S
+
+#26148
+Finally, a door that {YISN'T{x locked....kidding. :)~
+Same thing as the last seven...you wonder if anyone has actually ever 
+made it to the end of these things. A single torch provides light, but 
+it's a oddly {wwhite{x light. You decide it must be magical.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26147
+D 2
+~
+~
+8 26030 26149
+S
+
+#26149
+The last door~
+Finally, you've made it to the last door. You know this because someone has 
+written "{cNote to self: One of these days, make the bloody secret passageway 
+shorter! Too many damn keys to get to this last door...{x" on the door. 
+Seems whoever wrote it still hasn't gotten to doing that yet. 
+~
+0 8 0
+D 0
+~
+~
+0 -1 26148
+D 2
+~
+~
+8 26031 26150
+S
+
+#26150
+A place~
+You open the last door and find...{RANOTHER DOOR!{x Just kidding. You see a 
+few shelves on the wall with various items sitting on them. After a moment
+you feel slightly dizzy and it becomes hard to focus. It clears up almost
+instantly, but your head feels slightly...fogged.
+~
+0 8 0
+D 0
+~
+~
+0 -1 26149
+S
+
+#26151
+Place for the emerald guard to sit so he wears eq~
+See title.
+~
+0 0 0
+S
+
+#26153
+Master Combatants Teacher's Room~
+This is where the master combatants teacher loads himself.
+~
+0 4|1024 0
+S
+#0
+
+#RESETS
+D 0 26001 0 2                   lock north in Entrance to the Castle
+D 0 26002 2 1                   close south in Just inside the castle
+D 0 26007 0 1                   close north in The {Ccyan{x door
+D 0 26008 0 1                   close north in The {Mpurple{x door
+D 0 26009 0 1                   close north in The {yOrange{x door
+D 0 26010 0 1                   close north in The {GGreen{x door
+D 0 26082 2 1                   close south in {YYellow{x door
+D 0 26082 0 1                   close north in {YYellow{x door
+D 0 26083 2 1                   close south in {MPurple{x door
+D 0 26083 0 1                   close north in {MPurple{x door
+D 0 26084 2 1                   close south in {CCyan{x door
+D 0 26084 0 1                   close north in {CCyan{x door
+D 0 26085 2 1                   close south in {yOrange{x door
+D 0 26085 0 1                   close north in {yOrange{x door
+D 0 26086 2 1                   close south in {GGreen{x door
+D 0 26086 0 1                   close north in {GGreen{x door
+D 0 26011 0 1                   close north in The {Yyellow{x door
+D 0 26012 2 1                   close south in {YYellow{x key room
+D 0 26013 2 2                   lock south in {MPurple{x key room
+D 0 26014 0 2                   lock north in {CCyan{x key room
+D 0 26014 2 1                   close south in {CCyan{x key room
+D 0 26015 2 1                   close south in {yOrange{x key room
+D 0 26016 2 1                   close south in {GGreen{x key room
+D 0 26017 0 2                   lock north in {CAnnoyingly{x locked room
+D 0 26018 0 2                   lock north in {MAnnoyingly{x locked room
+D 0 26018 2 1                   close south in {MAnnoyingly{x locked room
+D 0 26019 0 2                   lock north in {YAnnoyingly{x locked room.
+D 0 26019 2 1                   close south in {YAnnoyingly{x locked room.
+D 0 26020 0 2                   lock north in {yAnnoyingly{x locked room
+D 0 26020 2 1                   close south in {yAnnoyingly{x locked room
+D 0 26031 0 1                   close north in More hallway
+D 0 26088 1 2                   lock east in Test of combat
+D 0 26089 1 2                   lock east in Test of thought
+D 0 26091 1 2                   lock east in Test of endurance
+D 0 26092 1 2                   lock east in Test of knowledge
+D 0 26093 1 2                   lock east in Test of will
+D 0 26094 1 2                   lock east in Test of morals
+D 0 26097 1 2                   lock east in Test of disintegration
+D 0 26098 1 2                   lock east in The test of deduction
+D 0 26099 1 2                   lock east in Test of gratitude
+D 0 26102 1 1                   close east in 3rd floor hallway
+D 0 26102 3 1                   close west in 3rd floor hallway
+D 0 26103 3 1                   close west in Servants' quarters
+D 0 26105 1 1                   close east in Third floor hallway
+D 0 26105 3 1                   close west in Third floor hallway
+D 0 26106 1 1                   close east in Combatant's quarters
+D 0 26107 3 1                   close west in Combatant's quarters
+D 0 26108 1 1                   close east in Third floor hallway continues
+D 0 26108 3 1                   close west in Third floor hallway continues
+D 0 26109 3 1                   close west in Combatant's quarters
+D 0 26110 1 1                   close east in Combatant's quarters
+D 0 26111 1 1                   close east in End of the third floor hallway
+D 0 26111 3 1                   close west in End of the third floor hallway
+D 0 26112 1 1                   close east in Lavatory
+D 0 26113 3 1                   close west in Lavatory
+D 0 26115 0 1                   close north in Secret stairwell
+D 0 26119 1 1                   close east in Nobles room
+D 0 26120 0 2                   lock north in End of the fourth floor hallway.
+D 0 26120 1 1                   close east in End of the fourth floor hallway.
+D 0 26120 3 1                   close west in End of the fourth floor hallway.
+D 0 26121 3 1                   close west in Nobles room
+D 0 26122 2 1                   close south in King and Queen's room
+D 0 26122 1 1                   close east in King and Queen's room
+D 0 26122 3 2                   lock west in King and Queen's room
+D 0 26123 3 1                   close west in King and Queen's bedroom
+D 0 26125 1 2                   lock east in The dungeon
+D 0 26125 3 2                   lock west in The dungeon
+D 0 26126 1 1                   close east in A cell in the dungeon
+D 0 26127 3 1                   close west in Another cell
+D 0 26128 1 1                   close east in Cell
+D 0 26129 2 2                   lock south in The dungeon
+D 0 26129 1 2                   lock east in The dungeon
+D 0 26129 3 2                   lock west in The dungeon
+D 0 26130 3 1                   close west in Yet another cell
+D 0 26131 0 1                   close north in The last cell
+R 0 26132 6                     randomise exits in The Purgatory
+R 0 26133 6                     randomise exits in The Purgatory
+R 0 26134 6                     randomise exits in The Purgatory
+R 0 26135 6                     randomise exits in The Purgatory
+D 0 26143 3 2                   lock west in Secret passageway in the castle
+D 0 26144 3 2                   lock west in Another short passageway
+D 0 26145 2 2                   lock south in Continuing passageway-doors
+D 0 26146 2 2                   lock south in Southwards in the secret passageway
+D 0 26147 2 2                   lock south in South some more and a door
+D 0 26148 2 2                   lock south in Finally, a door that {YISN'T{x locked....kidding. :)
+D 0 26149 2 2                   lock south in The last door
+M 0 26001 1 26001               add a castle door guard to Entrance to the Castle
+M 0 26002 1 26003               add a small black critter to A black room
+M 0 26003 1 26004               add a cloaked figure to Some kind of room
+M 0 26004 2 26007               add a cyan guard to The {Ccyan{x door
+M 0 26004 2 26084               add a cyan guard to {CCyan{x door
+M 0 26005 2 26008               add a purple guard to The {Mpurple{x door
+M 0 26005 2 26083               add a purple guard to {MPurple{x door
+M 0 26006 5 26021               add a female servant to A hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26006 5 26023               add a female servant to More hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26006 5 26025               add a female servant to The hallway continues
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26006 5 26027               add a female servant to The Hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26006 5 26029               add a female servant to Another part of the hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26007 12 26081              add giver upper mob to The Test
+M 0 26007 12 26088              add giver upper mob to Test of combat
+M 0 26007 12 26089              add giver upper mob to Test of thought
+M 0 26007 12 26090              add giver upper mob to Test of luck
+M 0 26007 12 26091              add giver upper mob to Test of endurance
+M 0 26007 12 26092              add giver upper mob to Test of knowledge
+M 0 26007 12 26093              add giver upper mob to Test of will
+M 0 26007 12 26094              add giver upper mob to Test of morals
+M 0 26007 12 26095              add giver upper mob to Test of determination
+M 0 26007 12 26096              add giver upper mob to Healer
+M 0 26007 12 26097              add giver upper mob to Test of disintegration
+M 0 26007 12 26098              add giver upper mob to The test of deduction
+M 0 26007 12 26099              add giver upper mob to Test of gratitude
+M 0 26008 2 26011               add a yellow guard to The {Yyellow{x door
+M 0 26008 2 26082               add a yellow guard to {YYellow{x door
+M 0 26009 2 26009               add an orange guard to The {yOrange{x door
+M 0 26009 2 26085               add an orange guard to {yOrange{x door
+M 0 26010 2 26010               add a green guard to The {GGreen{x door
+M 0 26010 2 26086               add a green guard to {GGreen{x door
+M 0 26011 5 26030               add a male servant to Some more hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26069 0 3                       equip a servants pin (neck1)
+E 0 26068 0 5                       equip a servants uniform (body)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26011 5 26032               add a male servant to The hallway rises slightly
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26069 0 3                       equip a servants pin (neck1)
+E 0 26068 0 5                       equip a servants uniform (body)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26011 5 26034               add a male servant to End of the hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26069 0 3                       equip a servants pin (neck1)
+E 0 26068 0 5                       equip a servants uniform (body)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26011 5 26036               add a male servant to Slight rise
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26069 0 3                       equip a servants pin (neck1)
+E 0 26068 0 5                       equip a servants uniform (body)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26011 5 26038               add a male servant to Turn in the hallway
+E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26069 0 3                       equip a servants pin (neck1)
+E 0 26068 0 5                       equip a servants uniform (body)
+E 0 26067 0 16                      equip a dust pan (wield)
+E 0 26070 0 17                      equip a dust rag (hold)
+M 0 26012 1 26041               add a beginning combatant to Sparring arena
+E 0 26078 0 5                       equip some scratches (body)
+E 0 26072 0 16                      equip a pointy sword (wield)
+M 0 26073 1 26042               add a beginning combatant to Another part of the arena
+E 0 26075 0 6                       equip some tin foil (head)
+E 0 26079 0 7                       equip a bruise (legs)
+E 0 26073 0 16                      equip a dull sword (wield)
+M 0 26074 1 26043               add a beginning combatant to Another part of the arena
+E 0 26076 0 7                       equip some metallic metal (legs)
+E 0 26072 0 16                      equip a pointy sword (wield)
+M 0 26075 1 26044               add a beginning combatant to Another part of the arena
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26075 0 6                       equip some tin foil (head)
+E 0 26076 0 7                       equip some metallic metal (legs)
+E 0 26079 0 9                       equip a bruise (hands)
+M 0 26076 1 26045               add a beginning combatant to Corner of the arena
+E 0 26079 0 5                       equip a bruise (body)
+E 0 26072 0 16                      equip a pointy sword (wield)
+E 0 26073 0 18                      equip a dull sword (dual)
+M 0 26076 2 26046               add a beginning combatant to The arena
+E 0 26072 0 16                      equip a pointy sword (wield)
+M 0 26013 5 26050               add a intermediate combatant to The arena goes on
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26073 0 16                      equip a dull sword (wield)
+M 0 26013 5 26052               add a intermediate combatant to The arena
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26073 0 16                      equip a dull sword (wield)
+M 0 26013 5 26053               add a intermediate combatant to Arena in the castle
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26073 0 16                      equip a dull sword (wield)
+M 0 26013 5 26055               add a intermediate combatant to Arena in the castle
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26073 0 16                      equip a dull sword (wield)
+M 0 26013 5 26058               add a intermediate combatant to East wall of the arena
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26073 0 16                      equip a dull sword (wield)
+M 0 26014 5 26059               add a expert combatant to West wall of the arena
+E 0 26079 0 3                       equip a bruise (neck1)
+E 0 26076 0 7                       equip some metallic metal (legs)
+M 0 26014 5 26062               add a expert combatant to A fighter practicing
+E 0 26079 0 3                       equip a bruise (neck1)
+E 0 26076 0 7                       equip some metallic metal (legs)
+M 0 26014 5 26063               add a expert combatant to A {Rviscious{x warrior
+E 0 26079 0 3                       equip a bruise (neck1)
+E 0 26076 0 7                       equip some metallic metal (legs)
+M 0 26014 5 26066               add a expert combatant to Another person in the arena
+E 0 26079 0 3                       equip a bruise (neck1)
+E 0 26076 0 7                       equip some metallic metal (legs)
+M 0 26014 5 26067               add a expert combatant to East wall of the arena
+E 0 26079 0 3                       equip a bruise (neck1)
+E 0 26076 0 7                       equip some metallic metal (legs)
+M 0 26015 5 26068               add a master combatant to Another corner of the arena.
+E 0 26078 0 3                       equip some scratches (neck1)
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26079 0 10                      equip a bruise (arms)
+E 0 26072 0 16                      equip a pointy sword (wield)
+E 0 26073 0 18                      equip a dull sword (dual)
+M 0 26015 5 26070               add a master combatant to A person in the arena
+E 0 26078 0 3                       equip some scratches (neck1)
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26079 0 10                      equip a bruise (arms)
+E 0 26072 0 16                      equip a pointy sword (wield)
+E 0 26073 0 18                      equip a dull sword (dual)
+M 0 26015 5 26072               add a master combatant to Exit from the arena
+E 0 26078 0 3                       equip some scratches (neck1)
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26079 0 10                      equip a bruise (arms)
+E 0 26072 0 16                      equip a pointy sword (wield)
+E 0 26073 0 18                      equip a dull sword (dual)
+M 0 26015 5 26074               add a master combatant to More of the huge arena
+E 0 26078 0 3                       equip some scratches (neck1)
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26079 0 10                      equip a bruise (arms)
+E 0 26072 0 16                      equip a pointy sword (wield)
+E 0 26073 0 18                      equip a dull sword (dual)
+M 0 26015 5 26076               add a master combatant to Another corner of the arena
+E 0 26078 0 3                       equip some scratches (neck1)
+E 0 26074 0 5                       equip a leather padding (body)
+E 0 26079 0 10                      equip a bruise (arms)
+E 0 26072 0 16                      equip a pointy sword (wield)
+E 0 26073 0 18                      equip a dull sword (dual)
+M 0 26016 1 26077               add the beginning combatant's teacher to The teacher of the beginning combatants
+E 0 26089 0 12                      equip an aura of confidence (about)
+E 0 26090 0 16                      equip an air of mastery (wield)
+E 0 26099 0 11                      equip an impression of expertise (shield)
+M 0 26017 1 26078               add the intermediate combatant's teacher to The teacher of the intermediate combatants
+E 0 26089 0 12                      equip an aura of confidence (about)
+E 0 26090 0 16                      equip an air of mastery (wield)
+E 0 26099 0 11                      equip an impression of expertise (shield)
+M 0 26018 1 26079               add the expert combatant's teacher to The teacher of the expert combatants
+E 0 26089 0 12                      equip an aura of confidence (about)
+E 0 26090 0 16                      equip an air of mastery (wield)
+E 0 26099 0 11                      equip an impression of expertise (shield)
+G 0 26028 0                         carry a stone with an "i" marked on it
+M 0 26019 1 26080               add the master combatant's teacher to The teacher of the master combatants
+M 0 26020 1 26138               add the stable master to The stable
+M 0 26021 1 26088               add a scarren to Test of combat
+E 0 26072 0 16                      equip a pointy sword (wield)
+G 0 26036 0                         carry key to the next test
+M 0 26022 1 26089               add a moogle to Test of thought
+M 0 26024 1 26091               add a crazed gerbil to Test of endurance
+E 0 26098 0 16                      equip prickly teeth (wield)
+M 0 26025 1 26091               add a raging stork to Test of endurance
+E 0 26097 0 16                      equip a sharp break (wield)
+M 0 26026 1 26091               add a bloodthirsty anteater to Test of endurance
+E 0 26096 0 16                      equip a long nose (wield)
+M 0 26027 1 26091               add a budong to Test of endurance
+E 0 26095 0 16                      equip a gaping maw (wield)
+M 0 26028 1 26089               add a explanation moogle to Test of thought
+M 0 26029 1 26090               add a moogle to Test of luck
+M 0 26030 1 26092               add a moogle to Test of knowledge
+M 0 26031 1 26094               add a purple moogle to Test of morals
+M 0 26032 1 26095               add a blue moogle to Test of determination
+M 0 26033 1 26096               add a healer moogle to Healer
+M 0 26034 1 26098               add a gray moogle to The test of deduction
+M 0 26035 1 26099               add a moogle to Test of gratitude
+M 0 26036 1 26100               add a vorc to The prize
+M 0 26037 2 26114               add a kings guard to Stairs up
+E 0 26052 0 5                       equip kings armor (body)
+E 0 26050 0 16                      equip a kings sword (wield)
+M 0 26037 2 26116               add a kings guard to Fourth floor hallway
+E 0 26052 0 5                       equip kings armor (body)
+E 0 26050 0 16                      equip a kings sword (wield)
+M 0 26038 2 26114               add a queen's guard to Stairs up
+E 0 26053 0 5                       equip queens armor (body)
+E 0 26051 0 16                      equip a queens sword (wield)
+M 0 26038 2 26118               add a queen's guard to Guard room
+E 0 26053 0 5                       equip queens armor (body)
+E 0 26051 0 16                      equip a queens sword (wield)
+M 0 26039 1 26120               add the kings door guard to End of the fourth floor hallway.
+E 0 26052 0 5                       equip kings armor (body)
+E 0 26054 0 6                       equip kings helm (head)
+E 0 26050 0 16                      equip a kings sword (wield)
+G 0 26018 0                         carry Key to the king and queens room
+M 0 26040 1 26120               add the queen door guard to End of the fourth floor hallway.
+E 0 26053 0 5                       equip queens armor (body)
+E 0 26055 0 6                       equip queens helm (head)
+E 0 26051 0 16                      equip a queens sword (wield)
+G 0 26018 0                         carry Key to the king and queens room
+M 0 26047 1 26119               add a visiting noble to Nobles room
+M 0 26048 1 26121               add a visiting noble to Nobles room
+G 0 26029 0                         carry a stone with a "c" marked on it
+M 0 26049 1 26123               add the king to King and Queen's bedroom
+E 0 26093 0 5                       equip a kings burden (body)
+E 0 26091 0 16                      equip a fully functioning sword (wield)
+M 0 26050 1 26123               add the queen to King and Queen's bedroom
+E 0 26094 0 5                       equip a queens concern (body)
+E 0 26092 0 16                      equip a transparent {Rred{x dirk (wield)
+M 0 26052 1 26136               add The Reaper of the Dead to The Judgment Room
+M 0 26053 2 26125               add a scruffy rat to The dungeon
+M 0 26053 2 26128               add a scruffy rat to Cell
+M 0 26054 1 26129               add a scruffy rat to The dungeon
+G 0 26019 0                         carry a small corroded key
+M 0 26055 1 26097               add the disintegration monster to Test of disintegration
+M 0 26056 1 26094               add a poor tormented man to Test of morals
+M 0 26057 1 26094               add Krissy the evil witch to Test of morals
+E 0 26059 0 5                       equip silver {darmor{x (body)
+E 0 26060 0 16                      equip a huge crescent battleaxe (wield)
+M 0 26058 1 26126               add Dalag to A cell in the dungeon
+E 0 26088 0 16                      equip some kind of bindings (wield)
+M 0 26059 1 26127               add Xyr to Another cell
+E 0 26088 0 16                      equip some kind of bindings (wield)
+M 0 26060 1 26128               add Isebada to Cell
+E 0 26088 0 16                      equip some kind of bindings (wield)
+M 0 26061 1 26130               add Nykkard to Yet another cell
+E 0 26088 0 16                      equip some kind of bindings (wield)
+M 0 26062 1 26124               add Phzeg to Dungeon entrance
+E 0 26087 0 16                      equip a blood-stained partizan flecked with gore (wield)
+G 0 26027 0                         carry a stone with a "d" marked on it
+M 0 26063 1 26131               add Rzzrdehcurfn to The last cell
+E 0 26088 0 16                      equip some kind of bindings (wield)
+M 0 26064 1 26129               add Milo to The dungeon
+E 0 26022 0 3                       equip the best damn dog collar in the universe (neck1)
+M 0 26065 1 26138               add a giant gold dragon to The stable
+M 0 26066 1 26138               add a tweety bird to The stable
+M 0 26067 1 26138               add An Ice Wibble to The stable
+M 0 26068 1 26138               add A giant green caterpillar to The stable
+M 0 26070 1 26122               add the emerald guard to King and Queen's room
+E 0 26057 0 5                       equip a glimmering breastplate (body)
+E 0 26058 0 7                       equip a pair of glimmering leg guards (legs)
+E 0 26056 0 16                      equip a glimmering sword (wield)
+E 0 26015 0 17                      equip a shining {Gemerald{x (hold)
+M 0 26071 1 26093               add a moogle to Test of will
+M 0 26083 1 26114               add a kings guard to Stairs up
+E 0 26052 0 5                       equip kings armor (body)
+E 0 26050 0 16                      equip a kings sword (wield)
+I 26001 1 26012 1               A yellow pedestal to {YYellow{x key room
+I 26002 1 26013 1               A purple pedestal to {MPurple{x key room
+I 26003 1 26014 1               A cyan pedestal to {CCyan{x key room
+I 26004 1 26015 1               A orange pedestal to {yOrange{x key room
+I 26005 1 26016 1               A green pedestal to {GGreen{x key room
+I 26006 1 26011 1               a {Rred{x stone to The {Yyellow{x door
+I 26007 1 26008 1               a {Yyellow{x stone to The {Mpurple{x door
+I 26008 1 26009 1               a {Bblue{x stone to The {yOrange{x door
+I 26009 1 26010 1               a {Ggreen{x stone to The {GGreen{x door
+P 0 26010 0 26001               put a {Yyellow{x key inside A yellow pedestal
+P 0 26011 0 26002               put a {Mpurple{x key inside A purple pedestal
+P 0 26012 0 26003               put a {Ccyan{x key inside A cyan pedestal
+P 0 26013 0 26004               put a {yorange{x key inside A orange pedestal
+P 0 26014 0 26005               put a {Ggreen{x key inside A green pedestal
+I 26016 90 26021 1              a ancient and rare tapestry to A hallway
+I 26016 90 26022 1              a ancient and rare tapestry to More hallway
+I 26016 90 26023 1              a ancient and rare tapestry to More hallway
+I 26016 90 26024 1              a ancient and rare tapestry to The hallway goes on
+I 26016 90 26025 1              a ancient and rare tapestry to The hallway continues
+I 26016 90 26026 1              a ancient and rare tapestry to Hallway again
+I 26016 90 26027 1              a ancient and rare tapestry to The Hallway
+I 26016 90 26028 1              a ancient and rare tapestry to The Hallway
+I 26016 90 26029 1              a ancient and rare tapestry to Another part of the hallway
+I 26016 90 26030 1              a ancient and rare tapestry to Some more hallway
+I 26016 90 26031 1              a ancient and rare tapestry to More hallway
+I 26016 90 26032 1              a ancient and rare tapestry to The hallway rises slightly
+I 26016 90 26033 1              a ancient and rare tapestry to Rising continues
+I 26016 90 26034 1              a ancient and rare tapestry to End of the hallway
+I 26016 90 26035 1              a ancient and rare tapestry to Hallway rises a bit
+I 26016 90 26036 1              a ancient and rare tapestry to Slight rise
+I 26016 90 26037 1              a ancient and rare tapestry to The hallway goes on from here
+I 26016 90 26038 1              a ancient and rare tapestry to Turn in the hallway
+I 26020 1 26136 1               a portal to The Judgment Room
+I 26023 1 26123 1               a tug of war rope to King and Queen's bedroom
+I 26024 1 26112 1               a stone with an "X" marked on it to Lavatory
+I 26025 1 26023 1               a stone with an "e" marked on it to More hallway
+I 26026 1 26074 1               a stone with a "d" marked on it to More of the huge arena
+I 26030 1 26002 1               a stone with a "u" marked on it to Just inside the castle
+I 26031 1 26056 1               a stone with an "s" marked on it to The arena
+I 26032 1 26150 1               some black powder to A place
+I 26084 1 26150 1               some black powder to A place
+I 26085 1 26150 1               some black powder to A place
+I 26033 65 26123 1              a bright {Bblue{x harmonica to King and Queen's bedroom
+I 26035 100 26139 1             a dusty belt to A shallow hole
+I 26045 100 26093 1             a gleaming pile of gold to Test of will
+I 26046 100 26093 1             a shiny key to Test of will
+I 26049 100 26090 1             The portal of chance to Test of luck
+I 26086 100 26150 1             A {Yglowing{x tablet to A place
+S
+
+#SPECIALS
+M 26003 spec_breath_fire        a cloaked figure
+M 26015 spec_warrior            a master combatant
+M 26016 spec_warrior            the beginning combatant's teacher
+M 26017 spec_warrior            the intermediate combatant's teacher
+M 26018 spec_warrior            the expert combatant's teacher
+M 26019 spec_warrior            the master combatant's teacher
+M 26033 spec_cast_adept         a healer moogle
+M 26061 spec_breath_any         Nykkard
+M 26063 spec_cast_archmage      Rzzrdehcurfn
+S
+
+#$

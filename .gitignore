@@ -1,0 +1,8 @@
+*.swp
+*.iml
+.idea/
+
+*.o
+envy
+server/area/bugs.txt
+

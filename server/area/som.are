@@ -1,0 +1,433 @@
+#AREA Adrioth/Hestia~ SOM Headquarters~
+-4 -4 1 100
+
+#HELPS
+-1 SOM 'THE SHADOWS OF MIDNIGHT' SHADOW MIDNIGHT~
+The Shadows of Midnight (SOM)
+
+A long time ago, in a past age, 12 knights were assembled to save the 
+Kingdom of Clehrl, as the city was known then, from the evil invading drow 
+warlocks. The twelve knights were led by Myrithin, The strongest and best 
+trained Knight of the Kingdom.
+
+It is not well known when, or how, but an evil drow mage shifted himself to 
+look like one of the knights, and Sabotaged them on one of their legendary 
+journeys. Losing six knights in the quest, Myrithin and the five remaining 
+knights returned to Clehrl. Myrithin, Axion, Ocearus, Ogden, Gmork, And 
+Chaorid were the only six knights left. 
+
+Coming back to their beloved city, the Knights were hailed with distrust, and 
+hatred. The six knights fled the city, and hid themselves in the hills... 
+
+However, unable to leave their beloved city behind, The six knights made a 
+hidden, organized Clan...The Shadows of Midnight. Viewed by the people as 
+Evil, yet only valor running in their hearts, the clan was taken as demons,  
+because of how fast and silent they struck in the night...Through many lives 
+and generations the clan still exsists, though only Myrithin survives it 
+now...
+~
+0 $~
+
+#MOBILES
+#470
+manticore giant~
+a giant Manticore~
+A giant Manticore menaces the area.
+~
+A giant Manticore with the body of a lion and a human face prowls before you, 
+baring its sharp teeth and waving its barbed tail in a rather disturbing 
+manner.
+~
+2|512|4096|4194304 2|8|16|32|128|32768|65536 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>death_prog 100~
+	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+~
+|
+
+#471
+myrithin knight~
+Myrithin~
+Myrithin, last of the Shadows of Midnight, sits before you.
+~
+Myrithin, last of the Shadows of Midnight, sits before you on a large, gilded 
+chair, atop the dais.  He is young-looking, but his silver hair and serious 
+demeanor betray his true age.  He is armored as if for war, and wears a long 
+blue surcoat, bordered with gold.
+~
+2|512|4096 8|32|128|8388608 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog bless~
+        	if clan($n) == som                                                                           
+        		cast bless $n                                                                        
+        		break                                                                                
+        	else                                                                                         
+        		break;                                                                               
+        	endif	                                                                                     
+~
+>speech_prog bye~
+        	if clan($n) == som                                                                           
+        		mpecho Myrithin smiles at you, and you suddenly find yourself outside the clanhall. 
+        		mptransfer $n 18207                                                                    
+        		break                                                                                
+        	endif
+~
+|
+
+#473
+som wizinvis guy~
+SOM wizinvis guy~
+SOM wizinvis guy drops Crystal Sword.
+~
+I am sleepy....zzzzZZZZzzzz.....
+~
+2|512|4096|65536 8|32|8388608 0 S
+500 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 100~
+	drop som
+	mpgoto 537
+	meditate
+~
+|
+
+#472
+wolfstar sunsoar angel~
+WolfStar SunSoar~
+WolfStar SunSoar stands magestically before you.
+~
+WolfStar SunSoar is a large winged man with long black and silver wings.  He 
+has silver straks in his long black hair.
+~
+2|512|4096|1048756 8|32|8388608 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+#0
+
+#OBJECTS
+#470
+tooth razor sharp manticore~
+a razor-sharp manticore's tooth~
+A razor-sharp manticore's tooth lies here.~
+~
+18 0 1|16384
+~ ~ ~ ~
+10 0 0
+
+#471
+barbed tail~
+a manticore's barbed tail~
+A manticore's long, barbed tail has been chopped off here.~
+~
+5 0 0
+~ ~ ~ 3~
+15 0 0
+A
+18 50
+A
+19 50
+
+#472
+razor-sharp teeth~
+a manticore's teeth~
+A manticore's razor-sharp teeth have fallen out here.~
+~
+5 0 0
+~ ~ ~ 10~
+15 0 0
+A
+18 50
+A
+19 50
+
+#473
+sword crystal som~
+the Crystal Sword~
+The Crystal Sword that is not a sword rests here.~
+~
+32 1 1|16384
+~ ~ ~ ~
+50 0 0
+
+#474
+bread trencher~
+a trencher of bread~
+A trencher of bread has been discarded here.~
+~
+19 0 1|16384
+20~ ~ ~ 0~
+0 0 0
+
+#475
+mead flagon~
+a flagon of mead~
+A flagon of mead has been set down here.~
+~
+17 0 1|16384
+25~ 25~ 4~ 0~
+0 0 0
+
+#476
+shoulderpads shoulder pads spiked som~
+a set of spiked shoulder pads~
+A set of spiked shoulder pads rests here.~
+~
+9 0 1|256
+~ ~ ~ ~
+5 0 0
+A
+13 150
+
+#477
+wings angel black som~
+a pair of black angel wings~
+A pair of black angel wings lie here.~
+~
+9 0 1|256
+~ ~ ~ ~
+5 0 0
+A
+19 8
+A
+4 4
+
+#478
+beltpouch belt pouch drawstring som~
+a drawstring beltpouch~
+A drawstring beltpouch lies here.~
+~
+15 0 1|65536
+11~ 0~ -1~ ~
+1 0 0
+A
+19 5
+
+#479
+mriswith cloak som~
+a Mriswith cloak~
+A Mriswith cloak lies crumpled here.~
+~
+9 0 1|1024
+~ ~ ~ ~
+5 0 0
+A
+5 5
+A
+19 15
+#0
+
+#ROOMS
+#470
+Entrance~
+You enter this strange room, and as your eyes adjust you can see some 
+condensation on the walls from being so near water. A few scant torches adorn 
+the walls here. Further down the hall you notice the hallway continues. From 
+niches in the wall, you notice a few beady eyes staring at you, and some not 
+so beady...your mind sparks what could be here, and a soft, low growl makes 
+you wonder even more...
+~
+0 1|8 0
+D 0
+There is a door to the north.
+~
+door north~
+8 470 471
+D 1
+You see a waterfall to the east.
+~
+waterfall east~
+0 -1 18262
+S
+
+#471
+The Great Hall~
+You enter a great and grand hall, that extends back farther then you would  
+have imagined. The room opens up now, about thirty feet wide and about three 
+hundred feet back. The center of the hall is lined with pillars; upon closer 
+inspection you notice in the pillars are carved Giant Angels, their wings 
+turned up, and their faces looking skyward, calling a heavenly plea for all
+eternity. You notice a dais further on, and a door east.  Along the walls, 
+torches are evenly placed, except for one.
+~
+0 8 0
+D 0
+You see a dais to the north.
+~
+dais north~
+0 -1 474
+D 2
+There is a door to the south.
+~
+door south~
+8 470 470
+D 1
+There is a door to the east.
+~
+door east~
+8 -1 472
+D 4
+~
+torch~
+11 -1 473
+S
+
+#472
+The Grand Meeting Hall~
+You enter a grand meeting room. A long table is here, from the olden days of 
+when SOM had over fifty knights. The table is aged and refined, it looks to be 
+from some very rich wood. You notice a side table here, with some assorted 
+foods. Tapestries line the wall here, showing monsters and legendary beasts 
+that SOM has slayed in the past.
+~
+0 8 0
+D 3
+There is a door to the west.
+~
+door west~
+8 -1 471
+S
+
+#473
+Adrioth's Bedroom~
+You step up into the room and your breath leaves you, as you notice the many
+types of flowers and plants here, as many colors as you can imagine. The walls 
+are lined with tapestries that look so real you'd swear they were so, they
+depict waterfalls and rivers, is it your imagination...or are they flowing? Oh 
+well, must be the air. You notice a large painting over a fire place, showing 
+six very powerful looking knights on the wall here. The floor is black and 
+white tile, all along this room. A very large bed lays against the west wall.
+~
+0 8 0
+D 5
+There is a trapdoor in the floor below you.
+~
+trapdoor down~
+11 -1 471
+S
+
+#474
+The Great Hall, Dais~
+As you continue along the pillared walk way, you come upon a dais. As your 
+gaze slowly wanders up you look upon a young looking knight, sitting in a 
+chair here. He sits on a large gilded chair, decorated with Dragon designs all 
+over it. A giant tapestry hangs behind the chair, Showing a Sword, with a 
+Leviathan wrapped around it, The Ancient Symbol of Clehrl. A giant rug below 
+your feet shows a scene of night, with a full moon high in its sky, and 
+shadows among a few trees - The Shadows of Midnight. You notice an out of 
+color step on the dais.
+~
+0 8 0
+D 0
+~
+dais~
+11 -1 477
+D 2
+The Great Hall continues to the south.
+~
+south~
+0 -1 471
+D 1
+You see a door to the east.
+~
+door east~
+8 -1 475
+D 3
+You see a door to the west.
+~
+door west~
+8 -1 476
+S
+
+#475
+Xeno's Office~
+As you walk into the room you are struck by the fact that this room is much 
+different than the rest of them. You see tapestries of mighty warriors all 
+along the wall. A giant Statue of Hurin catches your interest, and you also 
+pick out a few skulls laying about the room, one of them seeming to be a large 
+dragon skull. A human skull adorns a giant oak desk here, a piece of paper 
+also catches your attention. Quickly scanning the paper you relize it is a 
+list of names. As realization hits you, you see your name at the bottom, and 
+every other name crossed off......
+~
+0 8 0
+D 3
+You see a door to the west.
+~
+door west~
+8 -1 474
+S
+
+#476
+Allurna's Room~
+You are almost blinded as you walk in here, various piles of treasure and 
+jewels gleam madly here, no doubt from Allurna's many travels, where things 
+just happened to fall into her pouches. The room is decorated with jewels and 
+daggers everywhere, you even notice a rag teddy bear on the bed, with jewels 
+for eyes and nose. While looking around you think you hear footsteps behind 
+you, is that the mistress returning...?
+~
+0 8 0
+D 1
+You see a door to the east.
+~
+door east~
+8 -1 474
+S
+
+#477
+The Vaults~
+This is where SOM keeps their supplies and weapons, various tools and items 
+are laying around here, tapestries and scrolls piled up to your eye level. 
+Various things hum and make weird metallic sounds, making you wonder what 
+they're used for. As you wonder what these various items do, You think you 
+hear the distinct sound of a vault door closing behind you...
+~
+0 1|8 0
+D 2
+~
+vault~
+11 -1 474
+S
+#0
+
+#RESETS
+D 0 470 0 2                     lock north in Entrance
+D 0 471 2 2                     lock south in The Great Hall
+D 0 471 1 1                     close east in The Great Hall
+D 0 471 4 1                     close up in The Great Hall
+D 0 472 3 1                     close west in The Grand Meeting Hall
+D 0 473 5 1                     close down in Adrioth's Bedroom
+D 0 474 0 1                     close north in The Great Hall, Dais
+D 0 474 1 1                     close east in The Great Hall, Dais
+D 0 474 3 1                     close west in The Great Hall, Dais
+D 0 475 3 1                     close west in Xeno's Office
+D 0 476 1 1                     close east in Allurna's Room
+D 0 477 2 1                     close south in The Vaults
+M 0 470 1 470                   add a giant Manticore to Entrance
+E 0 471 0 16                        equip a manticore's barbed tail (wield)
+E 0 472 0 18                        equip a manticore's teeth (dual)
+G 0 470 0                           carry a razor-sharp manticore's tooth
+M 0 471 1 474                   add Myrithin to The Great Hall, Dais
+M 0 473 1 474                   add SOM wizinvis guy to The Great Hall, Dais
+G 0 473 0                           carry the Crystal Sword
+M 0 472 1 472                   add WolfStar SunSoar to The Grand Meeting Hall
+G 0 474 0                           carry a trencher of bread
+G 0 475 0                           carry a flagon of mead
+S
+
+#SHOPS
+472 0 0 0 0 0 150 75 0 23       shop run by WolfStar SunSoar
+0
+
+#SPECIALS
+M 470 spec_clan_guard           a giant Manticore
+M 471 spec_cast_adept           Myrithin
+S
+
+#$

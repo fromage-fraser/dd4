@@ -1,0 +1,2205 @@
+#AREA	Istari~  Dark Wood~
+50 60 0 100
+
+
+#MOBILES
+#11200
+Mist~
+the strange mist~
+A figure forms out the mist.
+~
+The mist is very thick, it is impossible to
+see anything through it.
+~
+2|64 8|32|32768|65536|524288 0 S
+50 0 0 0d0+0 0d0+0
+127|256 0
+8 8 1
+>all_greet_prog 20~
+	mpecho The mist begins to stir up around you.
+   	mpechoat $n .
+   	mpechoat $n .
+   	mpechoat $n You slip and fall off the bridge!!
+   	mpechoat $n .
+   	mpechoat $n .
+   	mpechoat $n .
+   	mpechoat $n !!SPLASH!!
+   	mptrans $n 11213
+~
+|
+#11201
+Rocks~
+the sharp rocks~
+Sharp rocks protrude out of the water.
+~
+The rocks are rather large and they are very very sharp.
+~
+2|32|64 8|32|524288 0 S
+45 0 0 0d0+0 0d0+0
+256 0
+8 8 1
+>death_prog 100~
+mpecho The rock sinks into the river.
+mpgoto 11275
+~
+|
+#11202
+rocks~
+the large rocks~
+Some large rocks in the water.
+~
+The rocks are rather large and their smooth surface
+makes it difficult to get a rip on.
+~
+2|32|64 8|32|524288 0 S
+45 0 0 0d0+0 0d0+0
+256 0
+8 8 1
+>death_prog 100~
+mpecho The rock skins into the river.
+mpgoto 11275
+~
+|
+#11203
+crystal dragon~
+The crystal dragon~
+A crystal dragon sleeps quietly upon his treasure.
+~
+The near translucent dragon is sleek and slender but looks incredibly strong.
+~
+2|64 128|524288|1048576 0 S
+55 0 0 0d0+0 0d0+0
+128 0
+8 8 1
+>act_prog looks at you~
+mpecho the dragon opens his eye and looks at you.
+     grin
+     mpecho the dragon rises and attacks you.
+     murder $n
+~
+|
+#11204
+_nothing~
+The crystal chamber~
+.
+~
+The crystal walls beat as if they were alive.
+~
+2|64 8 0 S
+120 0 0 0d0+0 0d0+0
+127|256 0
+8 8 1
+>act_prog is surrounded ~
+mpecho You find yourself wishing for home....
+     mptrans $n 3001
+~
+>speech_prog p there's no place like home~
+mpecho You find yourself wishing for home....
+     mptrans $n 3001
+~
+|
+#11205
+rocks~
+the jagged rocks~
+The sharp rocks beckon you.
+~
+The rock are sharp and jagged.
+~
+2|32|64 8|32 0 S
+45 0 0 0d0+0 0d0+0
+127|256 0
+8 8 1
+>death_prog 100~
+mpecho The rock skins into the river.
+mpgoto 11275
+~
+|
+#11206
+Giant~
+the forest giant~
+A large giant wonders around looking lost.
+~
+The giant is well camouflaged in green leather, but he looks
+a little slow, he must have forgotten how to get home. He
+doesn't even notice you.
+~
+64 32768 0 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>entry_prog 100~
+mpecho A large giant stumbles through the forest.
+~
+|
+#11207
+giant~
+the forest giant~
+A large giant wonders around looking lost.
+~
+The giant is well camouflaged in green leather, but he looks
+a little slow, he must have forgotten how to get home. He
+doesn't even notice you.
+~
+64 32768 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>entry_prog 100~
+mpecho A large giant stumbles through the forest.
+~
+|
+#11208
+tiger~
+the tiger~
+A large tiger stalks the forest.
+~
+The large powerful beast snarls quietly and seeks its next victim.
+~
+32|64 32768 0 S
+55 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+>entry_prog 100~
+mpecho A tiger leaps out of the forest.
+~
+|
+#11209
+tiger~
+the tiger~
+A large tiger stalks the forest.
+~
+The large powerful beast snarls quietly and seeks its next victim.
+~
+32|64 32768 0 S
+54 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+>entry_prog 100~
+mpecho A large tiger leaps out from the trees.
+~
+|
+#11210
+darkone~
+the Darkone~
+A dark figure stand engulfed in dark fire.
+~
+The Darkone stands within a wall of fire, the fire itself give
+out no light whatsoever. In its center the Darkone watches you
+with two glowing red eye that stare at you from a dark hooded
+cape. This has been the Darkone's prison for centuries yet fresh
+blood stains his pale hands.
+~
+2|64 2048 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+say So you have come to kill me have you.
+    cackle
+~
+>death_prog 100~
+yell At last I am free!
+    mpecho .
+    mpecho A bright plume of light blasts out from the Darkone's body
+    mpecho and out through the roof...
+    mpecho A small object falls out of the light and onto the corpse.
+    mpoload 11211
+    mpecho .
+~
+|
+#11211
+vampire~
+the vampire~
+A shadowy form moves in the darkness.
+~
+The pale face of this figure brings a stab of fear into
+your chest, you recognize him for what he really is.
+~
+2|32|64 0 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#11212
+vampire~
+the vampire~
+A shadowy form moves in the darkness.
+~
+The pale face of this figure brings a stab of fear into
+your chest, you recognize him for what he really is.
+~
+2|32|64 0 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#11213
+demon~
+the demon~
+A large demon emerges from the shadows.
+~
+Its rotten flesh has small maggots wriggling through the
+dead skin, small blobs of pus leak out from various
+parts of its body.
+~
+2|32|64 0 0 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#11214
+morepork~
+the morepork~
+A small brown morepork watches you from a tree
+~
+The small brown morepork has large yellow eye, he 
+watches you as you make your way through the forest.
+~
+2|64 0 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+>death_prog 30~
+mpecho The morepork's wing is torn from its body.
+    mpoload 11215 15
+~
+|
+#0
+
+
+#OBJECTS
+#11200
+dagger~
+a crystal dagger~
+A shiny dagger emits a rainbow of colour.~
+~
+5 32|64 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+18 5
+A
+19 5
+#11201
+sleeves~
+crystal sleeves~
+Some crystal sleeves lay in a pile.~
+~
+9 32|64 1|256
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+#11202
+bracer~
+a crystal bracer~
+A gleaming bracer sits here.~
+~
+9 32 1|4096
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+1 1
+A
+2 1
+A
+13 20
+#11203
+crystals jewels~
+crystals~
+A pile of jewels lay here.~
+~
+20 0 1
+0~ 0~ 100~ 0~ 
+5 0 0
+#11204
+ruby slippers~
+a pair of ruby slippers~
+A  pair of ruby slippers have been left here.~
+~
+9 1|32|64 1|64
+6~ 1~ 6~ 11~ 
+5 0 0
+A
+12 150
+A
+13 150
+#11205
+key shard~
+a crystal shard~
+A crystal shard lies on the ground.~
+~
+18 32|64 1|16384
+5~ 1~ 6~ 11~ 
+5 0 0
+A
+3 3
+#11206
+crystal claws~
+a pair of crystal claws~
+Pieces of sharp looking crystal sit on the ground.~
+~
+5 64 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+18 10
+A
+19 10
+A
+23 -15
+A
+2 -2
+#11207
+the dirt~
+dirt~
+~
+~
+15 0 0
+40~ 0~ 0~ 11~ 
+5 0 0
+E
+Dirt~
+Something has been buried in the dirt here.
+~
+#11208
+chest~
+steel chest~
+~
+~
+15 0 0
+40~ 15~ 11210~ 11~ 
+5 0 0
+E
+chest~
+The small chest is made of solid steel and
+is covered in a thick layer of dust.
+~
+#11209
+Cross~
+a silver cross~
+A shiny cross sparkles in the light.~
+~
+9 1|64 1|16384
+100~ 1~ 1~ 0~ 
+5 0 0
+A
+12 50
+A
+17 -50
+A
+24 -15
+A
+13 50
+E
+Cross~
+The small silver cross gleams in the light.
+The other side of cross has a thin coating
+of what looks like wax, perhaps it was
+once used for a wax seal or something.
+~
+#11210
+Steel key~
+a steel key~
+A rusty old key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#11211
+beacon darkness~
+the beacon of darkness~
+A small dark mass draws in the darkness.~
+~
+1 2|16|64 1|16384
+0~ 1~ -1~ 11~ 
+5 0 0
+A
+12 150
+A
+13 150
+A
+4 -1
+A
+3 -1
+A
+17 -30
+A
+9 100
+#11212
+prayer~
+a prayer~
+A small scrap of paper lays here.~
+~
+2 0 1|16384
+80~ prayer~ ~ ~ 
+5 0 0
+E
+paper prayer~
+The tiny piece of paper is brown with
+age, on it is a short prayer you remember
+being taught in your childhood but had
+since forgotten.
+~
+#11213
+Dark Robe~
+the robe Darkness~
+A pile of dark cloth lies on the ground.~
+~
+9 16|64|512|2048 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+18 5
+A
+19 10
+A
+17 -30
+A
+13 80
+A
+5 2
+#11214
+green leather vest~
+a green leather vest~
+A leather vest is on the ground.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -10
+#11215
+brown wing~
+a morepork's wing~
+A small brown wing lies here bleeding.~
+~
+9 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+4 2
+#11216
+lagoon~
+the lagoon~
+~
+~
+25 0 0
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+lagoon water~
+The clear waters look refreshing,
+~
+#11217
+mushroom~
+a mushroom~
+a mushroom is growing here.~
+~
+19 0 1|8192
+60~ 1~ 6~ 0~ 
+5 0 0
+#0
+
+
+#ROOMS
+#11200
+The Light Forest~
+The tress loom all about you and although the forest isn't dark
+it feels very eerie and you find yourself looking over your should at
+the slightest of sounds. A strange breeze blows gently upon your
+face as you walk deeper into the forest.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 5274
+D3
+~
+~
+0 -1 11201
+S
+#11201
+The Light Forest~
+The tress loom all about you and although the forest isn't dark it feels
+very eerie and you find yourself looking over your should at the slightest
+of sounds. A strange breeze blows gently upon your face as you walk deeper
+into the forest.
+~
+0 1 3
+D0
+~
+~
+0 -1 11201
+D1
+~
+~
+0 -1 11200
+D2
+~
+~
+0 -1 11201
+D3
+~
+~
+0 -1 11202
+S
+#11202
+The Light Forest~
+The tress loom all about you and although the forest isn't dark it
+feels very eerie and you find yourself looking over your shoulder
+at the slightest of sounds. A strange breeze blows gently upon your
+face as you walk deeper into the forest.
+~
+0 1 3
+D0
+~
+~
+0 -1 11203
+D1
+~
+~
+0 -1 11201
+S
+#11203
+The darkening forest~
+The tress loom all about you and as the trees get thicker the forest
+becomes darker and more menacing. The path you follow is getting thinner
+and less worn, by the looks of things no-one has been this way for a while.
+A strange breeze blows gently upon your face as you walk deeper into
+the forest.
+~
+0 1 3
+D0
+~
+~
+0 -1 11204
+D1
+~
+~
+0 -1 11203
+D2
+~
+~
+0 -1 11202
+D3
+~
+~
+0 -1 11203
+S
+#11204
+The darkening forest~
+The tress loom all about you and as the trees get thicker the forest becomes
+darker and more menacing. The path you follow is getting thinner and less
+worn, by the looks of things no-one has been this way for a while. A strange
+breeze blows gently upon your face as you walk deeper into the forest.
+~
+0 1 3
+D0
+~
+~
+0 -1 11203
+D1
+~
+~
+0 -1 11204
+D2
+~
+~
+0 -1 11203
+D3
+~
+~
+0 -1 11205
+S
+#11205
+The misty forest~
+A fine mist now covers the forest floor and you can no-longer seen
+the ground beneath your feet.  The trees seem to be grabbing at you,
+pulling you back maybe, you have the sensation of being watched but it's
+too late to turn back now, you can only continue and hope it's just
+your imagination playing tricks with you.
+~
+0 1 3
+D0
+~
+~
+0 -1 11206
+D1
+~
+~
+0 -1 11205
+D2
+~
+~
+0 -1 11205
+D3
+~
+~
+0 -1 11206
+S
+#11206
+the misty forest~
+A fine mist now covers the forest floor and you can no-longer seen the ground
+beneath your feet.  The trees seem to be grabbing at you, pulling you
+back maybe, you have the sensation of being watched but it's too
+late to turn back now, you can only continue and hope it's just your
+imagination playing tricks with you.
+~
+0 1 3
+D0
+~
+~
+0 -1 11205
+D1
+~
+~
+0 -1 11206
+D2
+~
+~
+0 -1 11205
+D3
+~
+~
+0 -1 11207
+S
+#11207
+the misty forest~
+A fine mist now covers the forest floor and you can no-longer
+seen the ground beneath your feet.  The trees seem to be grabbing at
+you, pulling you back maybe, you have the sensation of being watched
+but it's too late to turn back now, you can only continue and hope
+it's just your imagination playing tricks with you. You hear sounds
+of a river to the north.
+~
+0 1 3
+D0
+~
+~
+0 -1 11208
+D1
+~
+~
+0 -1 11206
+D2
+~
+~
+0 -1 11206
+D3
+~
+~
+0 -1 11205
+S
+#11208
+Before a Bridge~
+You stand before a bridge which swings over a deep canyon, far below you
+can hear the sound of river. The bridge looks safe enough to walk across
+but the mist is thicker here and it covers the bridge, you can barely see
+want lies ahead of you let alone what lies on the other side of the bridge.
+Two large wooden post on either side of the bridge help support it, the post
+are covered in green stringy moss.
+~
+0 1 2
+D0
+~
+~
+0 -1 11209
+D2
+~
+~
+0 -1 11207
+E
+moss post wooden~
+You clear away some moss to reveal
+a message carved into the wooden post
+the message reads:
+                   "There's no place like home"
+
+                ~
+S
+#11209
+A misty bridge~
+A thick mist surrounds you as you slowly make your way across
+the bridge, you hear nothing but the distant sound of water from below.
+~
+0 1|512|8192 4
+D0
+~
+~
+0 -1 11210
+D2
+~
+~
+0 -1 11208
+S
+#11210
+A misty bridge~
+Your can see nothing but a thick mist, you tightly grip the sides
+of the bridge as you work your way across. far below you comes the
+sounds of a river.
+~
+0 1|512|8192 4
+D0
+~
+~
+0 -1 11211
+D2
+~
+~
+0 -1 11209
+S
+#11211
+A misty bridge~
+The mist becomes very cold and very thick, all of a sudden it
+begins to stir about you and seems to take on a form of some kind,
+as if it was alive.
+~
+0 1|512|8192 4
+D0
+~
+~
+0 -1 11212
+D2
+~
+~
+0 -1 11210
+S
+#11212
+The other side~
+The mist clears to reveal a thick entanglement of vines and trees,
+a path way has been carefully carved through the thick forest
+leaving a tunnel-like passage leading north. Behind you lies
+the bridge while ahead is the pathway through the jungle.
+~
+0 1 3
+D0
+~
+~
+0 -1 11233
+D2
+~
+~
+0 -1 11211
+S
+#11213
+A mighty river!~
+You have landed in a powerful river which runs deep within a 
+canyon, it begins to drag you down stream towards large rocks and
+boulders. You catch a glimpse of the bridge above you before it disappears
+in a thick cloud of mist.
+~
+0 1|8192 5
+D3
+~
+~
+0 -1 11214
+S
+#11214
+The mighty river~
+The rivers powerful current continues to force you down stream
+while driving you into sharp rock. There's nothing you can do
+but let the river take you. You do your best to stay alive.
+~
+0 1|8192 5
+D3
+~
+~
+0 -1 11215
+S
+#11215
+The mighty river~
+The rivers powerful current continues to force you down stream while
+driving you into sharp rock. There's nothing you can do but let
+the river take you. You do your best to stay alive.
+~
+0 1|8192 5
+D3
+~
+~
+0 -1 11216
+S
+#11216
+The mighty river~
+The rivers powerful current continues to force you down stream while driving
+you into sharp rock. There's nothing you can do but let the river take you.
+You do your best to stay alive, however the roaring of the river seems to
+be getting louder.
+~
+0 1|8192 5
+D3
+~
+~
+0 -1 11217
+S
+#11217
+The mighty river~
+The rivers powerful current continues to force you down stream while
+driving you into sharp rock. You do your best to stay alive. You
+notice a loud roaring of water and realize it must be a waterfall!
+~
+0 1|4|8192 5
+D3
+~
+~
+0 -1 11218
+S
+#11218
+The edge~
+Now you begin to fight against the current as you are at the edge
+of a large waterfall, you have battled far to hard for it to
+end like this. You hopelessly hold onto a rock but you know
+that you can't hold on to it for much longer, sooner or later
+you'll have to let go.
+~
+0 1|4|8192 5
+D5
+~
+~
+0 -1 11219
+S
+#11219
+...Falling~
+You are thrown over the edge of the waterfall. You close your eyes and 
+think of the good times as you whisper one last prayer to your God. 
+You loose consciousness, you must be dead.
+~
+0 1|4|8192 5
+D5
+~
+~
+0 -1 11220
+S
+#11220
+The lagoon~
+To your surprise you find yourself lying on a white sand beach beside a
+beautiful lagoon, you have no idea how you got here but you are glad to still
+be alive. The lagoon is set in a deep valley surrounded by steep cliffs, a
+waterfall runs into the lagoon, the crystal clear water looks fresh
+enough to drink . To the south you see a small path leading into the side
+of a mountain.
+~
+0 1|4|8192 5
+D2
+~
+~
+0 -1 11221
+S
+#11221
+A small path~
+You follow a small path leading towards the base of a mountain. The air 
+is fresh and somewhat silent, small bushes line the path which hasn't
+had much use by the looks of it.
+~
+0 1|4|8192 5
+D0
+~
+~
+0 -1 11220
+D3
+~
+~
+0 -1 11222
+S
+#11222
+A small path~
+You follow a small path leading towards the base of a mountain. The air is
+fresh and somewhat silent, small bushes line the path which hasn't had
+much use by the looks of it.
+~
+0 1|4|8192 5
+D1
+~
+~
+0 -1 11221
+D2
+~
+~
+0 -1 11223
+S
+#11223
+A small path~
+You follow a small path leading towards the base of a mountain. The air
+is fresh and somewhat silent, small bushes line the path which hasn't
+had much use by the looks of it.
+~
+0 1|4|8192 5
+D0
+~
+~
+0 -1 11222
+D2
+~
+~
+0 -1 11224
+S
+#11224
+Before the mountain~
+You reach the base of the mountain to find a large cave entrance. In 
+side the cave it looks dark but you can see no tracks on the ground 
+so you figure it's probably empty.
+~
+0 1|4|8192 5
+D0
+~
+~
+0 -1 11223
+D2
+~
+~
+0 -1 11225
+S
+#11225
+A tunnel~
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give 
+no clues to what could be in here.
+~
+0 1|4|8|8192 5
+D0
+~
+~
+0 -1 11224
+D1
+~
+~
+0 -1 11226
+S
+#11226
+A tunnel~
+The cool dark tunnel slopes upwards slightly. Its dark grey walls
+give no clues to what could be in here.
+~
+0 1|4|8|8192 5
+D2
+~
+~
+0 -1 11227
+D3
+~
+~
+0 -1 11225
+S
+#11227
+A tunnel~
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give
+no clues to what could be in here.
+~
+0 1|4|8|8192 5
+D0
+~
+~
+0 -1 11226
+D1
+~
+~
+0 -1 11228
+S
+#11228
+A tunnel~
+The cool dark tunnel slopes upwards slightly. Its dark grey walls
+give no clues to what could be in here.
+~
+0 1|4|8|8192 5
+D1
+~
+~
+0 -1 11229
+D3
+~
+~
+0 -1 11227
+S
+#11229
+A tunnel~
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give 
+no clues to what could be in here.
+~
+0 1|4|8|8192 5
+D2
+~
+~
+0 -1 11230
+D3
+~
+~
+0 -1 11228
+S
+#11230
+A tunnel~
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give 
+no clues to what could be in here. You see a bright light up ahead, could 
+it treasure!
+~
+0 1|4|8|8192 5
+D0
+~
+~
+0 -1 11229
+D3
+~
+~
+0 -1 11231
+S
+#11231
+The Crystal Cavern~
+The cave open out into a large cavern. The walls are covered in tiny
+crystals which reflect light begin beamed in from a small crystal
+window in the ceiling of the cavern. You glancing around the magnificent
+chamber you spot a horde of treasure! but guarding the treasure is a large
+dragon, it would be very unwise to disturb him.
+~
+0 1|8|8192 5
+D0
+There seems to be a door there.
+~
+crystal~
+8 11205 11232
+D1
+~
+~
+0 -1 11230
+S
+#11232
+The Crystal Chamber~
+The room has been carved out of a large crystal, who created it and
+how they created it you could only guess but why they created it will
+remain the biggest mystery. It smooth shiny walls gleam and sparkle in
+a light which seems to come from with the crystal walls itself. You
+gazed about the crystal room in wonder, then you realize the door you
+had entered from has now disappeared. It looks like there is no way
+out, how will you ever get back home
+~
+0 1|4|8|8192|16384 5
+E
+chamber crystal crystals wall walls~
+The crystal walls beast as if they were alive.
+~
+S
+#11233
+Dark Wood~
+You trudge your way through the tunnel-like path in the forest. The
+thick canopy of trees and vines overhead makes the forest look dark
+and sinister. You hear the occasional squawk of a forest bird as you
+continue on your way.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11234
+D2
+~
+~
+0 -1 11212
+S
+#11234
+Dark Wood~
+You make your way through the tunnel-like path in the forest. The thick
+canopy of trees and vines overhead makes the forest look dark and sinister.
+The forest is alive with wildlife.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11235
+D2
+~
+~
+0 -1 11233
+S
+#11235
+Dark Wood~
+The path stops and goes east and west. The thick canopy of
+trees and vines overhead makes the forest look dark and sinister. You spy
+a beady pair of eyes watching you from behind a tree.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11236
+D2
+~
+~
+0 -1 11234
+D3
+~
+~
+0 -1 11248
+S
+#11236
+Dark Wood~
+You make your way through the dark woods which are thick with trees and
+vines, if it wasn't for the path it would be almost impossible to
+walk through. The thick canopy of trees and vines overhead makes the
+forest dark and gloomy.
+~
+0 1 3
+D1
+~
+~
+0 -1 11237
+D3
+~
+~
+0 -1 11235
+S
+#11237
+Dark Wood~
+The Forest is alive with life, small animals can be seen scurrying through
+the trees and there cries echo through the forest.
+The path continues to the north.
+~
+0 1 3
+D0
+~
+~
+0 -1 11238
+D3
+~
+~
+0 -1 11236
+S
+#11238
+Dark Wood~
+The forest is alive with life, You hold you light high as you
+follow the path through Dark Wood. You can go either
+east or west.
+~
+0 1 3
+D1
+~
+~
+0 -1 11239
+D2
+~
+~
+0 -1 11237
+D3
+~
+~
+0 -1 11240
+S
+#11239
+Dark Wood~
+The path continues through Dark Wood, the thick trees and vines makes
+the forest difficult to see yet you notice many eyes gleaming at you
+through the trees.
+~
+0 1 3
+D3
+~
+~
+0 -1 11238
+S
+#11240
+Dark Wood~
+You make your way through the tunnel-like path in the forest. The
+thick canopy of trees and vines overhead makes the forest look
+dark and sinister. The forest is alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11238
+D3
+~
+~
+0 -1 11241
+S
+#11241
+Dark Wood~
+You make your way through the dark woods which are thick with trees and
+vines, if it wasn't for the path it would be almost impossible to
+walk through. The thick canopy of trees and vines overhead makes
+the forest dark and gloomy.
+~
+0 1 3
+D1
+~
+~
+0 -1 11240
+D3
+~
+~
+0 -1 11242
+S
+#11242
+Dark Wood~
+The Forest is alive with life, small animals can be seen scurrying through
+the trees and there cries echo through the forest. Another path leads
+off to the east.
+~
+0 1 3
+D0
+~
+~
+0 -1 11245
+D1
+~
+~
+0 -1 11241
+D2
+~
+~
+0 -1 11243
+S
+#11243
+Dark Wood~
+You make your way through the tunnel-like path in the forest. The
+thick canopy of trees and vines overhead makes the forest look
+dark and sinister. The forest is alive with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11242
+D1
+~
+~
+0 -1 11244
+S
+#11244
+Dark Wood~
+You make your way through the tunnel-like path in the forest. The
+thick canopy of trees and vines overhead makes the forest look dark
+and gloomy. The forest is alive with wildlife.
+~
+0 1 3
+D3
+~
+~
+0 -1 11243
+S
+#11245
+Dark Wood~
+You make your way through the dark woods which are thick with trees
+and vines, if it wasn't for the path it would be almost impossible to
+walk through. The thick canopy of trees and vines overhead makes the
+forest dark and gloomy.
+~
+0 1 3
+D0
+~
+~
+0 -1 11246
+D2
+~
+~
+0 -1 11242
+S
+#11246
+Dark Wood~
+The Forest is alive with life, small animals can be seen scurrying through
+the trees and there cries echo through the forest.
+~
+0 1 3
+D0
+~
+~
+0 -1 11295
+D1
+~
+~
+0 -1 11247
+D2
+~
+~
+0 -1 11245
+S
+#11247
+Dark Wood~
+You make your way through the tunnel-like path in the forest. The
+thick canopy of trees and vines overhead makes the forest look dark and
+sinister. The forest is alive with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11265
+D3
+~
+~
+0 -1 11246
+S
+#11248
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The forest is
+alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11235
+D3
+~
+~
+0 -1 11249
+S
+#11249
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The path
+continues west while another path can be seen heading north.
+~
+0 1 3
+D0
+~
+~
+0 -1 11253
+D1
+~
+~
+0 -1 11248
+D3
+~
+~
+0 -1 11250
+S
+#11250
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The forest is
+alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11249
+D3
+~
+~
+0 -1 11251
+S
+#11251
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees and
+vines overhead makes the forest look dark and gloomy. The forest is alive
+with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11252
+D1
+~
+~
+0 -1 11250
+S
+#11252
+Dark Wood~
+You make your way through the dark woods which are thick with trees and
+vines, if it wasn't for the path it would be almost impossible to walk
+through. The thick canopy of trees and vines overhead makes the
+forest dark and gloomy. Your foot hits something on the ground.
+~
+0 1 3
+D2
+~
+~
+0 -1 11251
+E
+ground~
+It looks like something has been buried in the dirt.
+~
+S
+#11253
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees and
+vines overhead makes the forest look dark and gloomy. The forest is alive
+with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11254
+D2
+~
+~
+0 -1 11249
+S
+#11254
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The forest
+is alive with wildlife.
+~
+0 1 3
+D2
+~
+~
+0 -1 11253
+D3
+~
+~
+0 -1 11255
+S
+#11255
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The forest is
+alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11254
+D3
+~
+~
+0 -1 11256
+S
+#11256
+Dark Wood~
+You make your way through the dark woods which are thick with trees
+and vines, if it wasn't for the path it would be almost impossible to
+walk through. The forest looks the same, one could easy get lost.
+~
+0 1 3
+D0
+~
+~
+0 -1 11257
+D1
+~
+~
+0 -1 11255
+D2
+~
+~
+0 -1 11259
+D3
+~
+~
+0 -1 11261
+S
+#11257
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees and
+vines overhead makes the forest look dark and gloomy. The forest is
+alive with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11258
+D2
+~
+~
+0 -1 11256
+S
+#11258
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees and
+vines overhead makes the forest look dark and gloomy. The forest
+is alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11262
+D2
+~
+~
+0 -1 11257
+D3
+~
+~
+0 -1 11273
+S
+#11259
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The forest is
+alive with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11256
+D3
+~
+~
+0 -1 11260
+S
+#11260
+Dark Wood~
+You make your way through the dark woods which are thick with trees
+and vines, if it wasn't for the path it would be almost impossible to
+walk through. The thick canopy of trees and vines overhead makes
+the forest dark and gloomy.
+~
+0 1 3
+D0
+~
+~
+0 -1 11261
+D1
+~
+~
+0 -1 11259
+S
+#11261
+Dark Wood~
+You make your way down the forest path. The thick canopy of
+trees and vines overhead makes the forest look dark and gloomy. The
+forest is alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11256
+D2
+~
+~
+0 -1 11260
+S
+#11262
+Dark Wood~
+You make your way down the forest path. The thick canopy of
+trees and vines overhead makes the forest look dark and gloomy.
+The forest is alive with wildlife.
+~
+0 1 3
+D1
+~
+~
+0 -1 11263
+D3
+~
+~
+0 -1 11258
+S
+#11263
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees
+and vines overhead makes the forest look dark and gloomy. The forest is
+alive with wildlife.
+~
+0 1 3
+D0
+~
+~
+0 -1 11264
+D3
+~
+~
+0 -1 11262
+S
+#11264
+Dark Wood~
+You make your way down the forest path. The thick canopy of trees and
+vines overhead makes the forest look dark and gloomy. The path turns
+to the west.
+~
+0 1 3
+D2
+~
+~
+0 -1 11263
+D3
+~
+~
+0 -1 11267
+S
+#11265
+A small hut~
+The path comes to an end before a small hut set into the surrounding
+foliage. The small dwelling is covered in green stringy moss, a
+small window next to the door is covered by a cloth, the door is 
+closed. The hut looks abandoned.
+~
+0 1 3
+D1
+~
+wooden~
+1 -1 11266
+D2
+~
+~
+0 -1 11247
+S
+#11266
+Inside a small hut~
+The small one room house has not been lived in for a long
+time, a table in the centre and a bed in the corner are
+both covered in a thick layer of dust. A pile of wood is
+stacked next an empty fireplace, each log as one end of
+it sharpened to a point. There is a steel chest in darkest
+corner of the room.
+~
+0 1|4|8 0
+D3
+~
+~
+1 -1 11265
+S
+#11267
+The Tower of Dark Wood~
+Before you is tall grey tower made of stone slabs. A sturdy
+looking door at the base of the tower has no handle but is sealed by
+magic of some kind. Thorny vines grow up the walls of the tower but
+the thorns prevent any attempt to climb the tower. This tower may be
+keeping something in or maybe it's trying to keep people out.. it
+could be full of treasure!
+~
+0 1|4 3
+D0
+The magical seal has an imprint shaped like a cross.
+~
+Seal~
+8 11209 11268
+D1
+~
+~
+0 -1 11264
+E
+seal~
+The magical seal has an imprint shaped like a cross
+~
+S
+#11268
+The Tower of Dark Wood~
+The interior of the tower is dim and moist, dry hay covers the floor and
+what looks like the remains of a pair of manacles has rusted to one wall.
+A ladder which once lead to the second floor now lays broken on the
+ground, the only way up there would be to fly.
+~
+0 1|8|8192 0
+D2
+~
+~
+8 -1 11267
+D4
+~
+~
+0 -1 11269
+S
+#11269
+The Tower of Dark Wood~
+The second floor is also covered in dry hay, droplets of moisture cling
+to the grey stone walls. There is a hole in the ceiling which must
+lead to the next floor, it's too high to reach so the only way up there
+would be to fly.
+~
+0 1|8|8192 9
+D4
+~
+~
+0 -1 11270
+D5
+~
+~
+0 -1 11268
+S
+#11270
+The Tower of Dark Wood~
+Dry hay covers the floor and the air is thin and musty, this floor is
+darker and it's difficult to see the walls, many shadows flicker
+around you light, a faint red glow can be see through a gap in
+the roof.
+~
+0 1|8|8192 9
+D4
+~
+~
+0 -1 11271
+D5
+~
+~
+0 -1 11269
+S
+#11271
+The Tower of Dark Wood~
+Darkness engulfs this room, even your light seems to fall back from the
+darkness leaving the corners of the room unseen. A gust of wind blows
+around you yet you have no idea where it comes from. You feel a dark
+presence in the room.
+~
+0 1|8|8192 9
+D5
+~
+~
+0 -1 11270
+S
+#11272
+Death~
+This is were mobs come to die after
+there job in the realm has finished.
+--------------- R I P --------------
+~
+0 4|8|8192|16384 1
+S
+#11273
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. The path heads north.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11274
+D1
+~
+~
+0 -1 11258
+S
+#11274
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick
+canopy of leaves and vines.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11275
+D2
+~
+~
+0 -1 11273
+S
+#11275
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11276
+D2
+~
+~
+0 -1 11274
+S
+#11276
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. The path continues east and west.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11280
+D2
+~
+~
+0 -1 11275
+D3
+~
+~
+0 -1 11277
+S
+#11277
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick canopy
+of leaves and vines. The path goes north and south.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11278
+D1
+~
+~
+0 -1 11276
+D2
+~
+~
+0 -1 11279
+S
+#11278
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of
+leaves and vines. The path ends suddenly leaving your only exit
+being south.
+~
+0 1|4 3
+D2
+~
+~
+0 -1 11277
+S
+#11279
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick
+canopy of leaves and vines. The path leads north only.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11277
+S
+#11280
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. The trail heads east and west.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11281
+D3
+~
+~
+0 -1 11276
+S
+#11281
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. Another trail heads north.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11282
+D1
+~
+~
+0 -1 11285
+D3
+~
+~
+0 -1 11280
+S
+#11282
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. You could easily get lost in this forest.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11283
+D2
+~
+~
+0 -1 11281
+S
+#11283
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick canopy
+of leaves and vines.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11284
+D3
+~
+~
+0 -1 11282
+S
+#11284
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick
+canopy of leaves and vines. The path stops, you can tell it once
+continued north but the forest has since taken  over the path making
+it impassable.
+~
+0 1|4 3
+D2
+~
+~
+0 -1 11283
+S
+#11285
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick canopy
+of leaves and vines. Cries of wild animals can be heard echoing
+through the forest.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11286
+D3
+~
+~
+0 -1 11281
+S
+#11286
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick canopy
+of leaves and vines.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11287
+D3
+~
+~
+0 -1 11285
+S
+#11287
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick canopy
+of leaves and vines. Trails lead east, west and south, you not
+sure which way you should go.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11288
+D2
+~
+~
+0 -1 11294
+D3
+~
+~
+0 -1 11286
+S
+#11288
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. You continue down the path.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11289
+D3
+~
+~
+0 -1 11287
+S
+#11289
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines.  Everything looks the same.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11290
+D2
+~
+~
+0 -1 11292
+D3
+~
+~
+0 -1 11288
+S
+#11290
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. You notice it's a lot lighter to the west.
+~
+0 1|4 3
+D2
+~
+~
+0 -1 11289
+D3
+~
+~
+0 -1 11291
+S
+#11291
+A Clearing~
+You stumble out into a small clearing surrounded by the giant trees of
+Dark Wood. here in this tranquil setting the forest looks beautifully
+peaceful, you listen the delightful sounds of forest birds glad in the
+fact this place is different from the doom and gloom of the rest of the
+forest.
+~
+0 1|4 3
+D1
+~
+~
+0 -1 11290
+S
+#11292
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow
+bigger and thicker, less light shines through the thick canopy
+of leaves and vines.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11289
+D1
+~
+~
+0 -1 11293
+S
+#11293
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. Large trees block the way ahead.
+~
+0 1|4 3
+D3
+~
+~
+0 -1 11292
+S
+#11294
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. The path goes north and south.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11287
+D2
+~
+~
+0 -1 11295
+S
+#11295
+Dark Wood~
+You are deep in the forest of Dark Wood, the trees here grow bigger
+and thicker, less light shines through the thick canopy of leaves
+and vines. You try to look deeper into the forest but it's just too dark
+and the trees are far to big.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 11294
+D2
+~
+~
+0 -1 11246
+S
+#0
+
+
+#RESETS
+R 1 11201 4			; Randomize The Light Forest
+R 1 11203 2			; Randomize The darkening forest
+R 1 11204 3			; Randomize The darkening forest
+R 1 11205 4			; Randomize The misty forest
+R 1 11206 2			; Randomize the misty forest
+*
+M 1 11200 1 11211			the strange mist to A misty bridge
+*
+*
+*
+*
+*
+*
+D 1 11231 0 2			; The Crystal Cavern Lock North
+*
+M 1 11203 1 11231              the crystal dragon to The crystal cavern
+E 1 11206 100 2
+*
+M 1 11204 1 11232              the crystal tree to A crystal chamber
+*
+M 1 11214 1 11239			the morepork to Dark Wood
+O 1 11200 100 11231            a crystal dagger to The crystal cavern
+O 1 11201 100 11231            crystal sleeves to The crystal cavern
+O 1 11202 100 11231            a crystal bracer to The crystal cavern
+O 1 11203 100 11231            crystals to The crystal cavern
+O 1 11205 100 11231      a crystal shard to The Crystal Cavern
+*
+M 1 11201 2 11214			the sharp rocks to The mighty river
+*
+M 1 11205 2 11216			the jagged rocks to The mighty river
+R 1 11256 4			; Randomize Dark Wood
+R 1 11242 2              ; Randomize Dark Wood
+D 1 11265 1 1			; A small hut Close East
+D 1 11267 0 2			; The Tower of Dark Wood Lock North
+*
+M 1 11211 1 11268			the vampire to The Tower of Dark Wood
+*
+M 1 11212 2 11269			the vampire to The Tower of Dark Wood
+*
+M 1 11213 1 11270			the demon to The Tower of Dark Wood
+*
+M 1 11210 1 11271			the Darkone to The Tower of Dark Wood
+E 1 11213 100 5
+*
+M 1 11202 2 11215             the large rocks to The mighty river
+O 1 11207 100 11252           dirt to Dark Wood
+O 1 11208 100 11266			steel chest to Inside a small hut
+P 1 11210 100 11207			a steel key to container Dirt
+P 1 11209 100 11208			a silver cross to container chest
+P 1 11212 100 11208            a prayer to container chest
+*
+M 1 11206 2 11237			the forest giant to Dark Wood
+E 1 11214 100 5
+*
+M 1 11208 2 11247			the tiger to Dark Wood
+*
+M 1 11207 2 11251			the forest giant to Dark Wood
+E 1 11214 100 5
+*
+M 1 11209 3 11256			the tiger to Dark Wood
+O 1 11204 100 11232      a pair of ruby slippers to A crystal chamber
+R 1 11276 2			; Randomize A room
+R 1 11287 2			; Randomize A room
+O 1 11216 100 11220			lagoon to The lagoon
+O 1 11217 100 11291			a mushroom to A Clearing
+S
+
+
+#SPECIALS
+M  11203 spec_breath_gas			the crystal dragon
+M  11204 spec_cast_orb			the crystal tree
+M  11210 spec_cast_undead			the Darkone
+M  11211 spec_cast_undead			the vampire
+M  11212 spec_cast_undead			the vampire
+M  11213 spec_cast_undead			the demon
+S
+
+
+#$
+
+

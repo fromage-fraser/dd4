@@ -1,0 +1,4779 @@
+#AREA Samxin~ Hinterland of Dole~
+60 70 1 100
+
+#HELPS
+-1 HOD HOD 'HINTERLAND OF DOLE'~
+Like the ascii art? Hate it? Don't look at me, I didn't do them. :)
+All due credit to those that did.
+
+A tip on the area:
+Do not put anything marked "{W({xThat you should {RKEEP!!!{W){x"
+in a container. Just keep them in your inventory for a bit. You'll
+run into problems if you don't.
+~
+0 $~
+
+#MOBILES
+#55045
+tiger Stripes~
+Stripes the Tiger~
+A large white tiger with shining blue eyes licks her lips at you.
+~
+{w                         __,,,,_
+{W          _ __..-;''`--/'/ /.',-`-.
+{w      (`/' ` |  \ \ \\ / / / / .-'/`,_
+{w     /'`\ \   |  \ | \| // // / -.,/_,'-,
+{w    /<7' ;  \ \  | ; ||/ /| | \/    |`-/,/-.,_,/')
+{w   /  _.-, `,-\,__|  _-| / \ \/|_/  |    '-/.;.\'
+{W   `-`  f/ ;      / __/ \__ `/ |__/ |
+{w        `-'      |  -| =|\_  \  |-' |
+{w              __/   /_..-' `  ),'  //
+{w             ((__.-'((___..-'' \__.'{x
+~
+2|64|131072 65536 0 S
+90 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>speech_prog p Stripes follow me.~
+follow $n
+~
+|
+
+#55046
+kangaroo Manuel~
+Manuel the Kangaroo~
+A red kangaroo bobs several times and looks around anxiously.
+~
+{r       (\-"""-/)
+{r        |     |
+{r        \ ^ ^ /  .-.
+{r         \_o_/  / /
+{r        /`   `\/  |
+{r       /       \  |
+{r       \ (   ) /  |
+{r      / \_) (_/ \ /
+{r     |   (\-/)   |
+{r     \  --^o^--  /
+{r      \ '.___.' /
+{r     .'  \-=-/  '.
+{r    /   /`   `\   \
+{r   (//./       \.\\)
+{r    `"`         `"`{x
+~
+2|64|131072 8|32 1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog p Manuel follow me.~
+follow $n
+~
+|
+
+#55047
+Giant Penguin Squeekers~
+Squeekers the Giant Penguin~
+A giant blue penguin is here, staring at you with one eye.
+~
+{b          ,888888b.
+{b        .d888888888b
+{b    _..-'.`*'_,88888b
+{b  ,'..-..`"ad88888888b.
+{b         ``-. `*Y888888b.
+{b             \   `Y888888b.
+{b             :     Y8888888b.
+{b             :      Y88888888b.
+{b             |    _,8ad88888888.
+{b             : .d88888888888888b.
+{b             \d888888888888888888
+{b             8888;'''`88888888888
+{b             888'     Y8888888888
+{b             `Y8      :8888888888
+{b              |`      '8888888888
+{b              |        8888888888
+{b              |        8888888888
+{b              |        8888888888
+{b              |       ,888888888P
+{b              :       ;888888888'
+{b               \      d88888888'
+{b              _.>,    888888P
+{b            <,--''`.._>8888(
+{b             `>__...--' `''`{x
+~
+2|64|131072 8192 -1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog p Squeekers follow me.~
+follow $n
+~
+|
+
+#55048
+Copper Dragon Arelith~
+Arelith the Copper Dragon~
+A Copper Dragon is here, waiting to take to the skies with its master.
+~
+{y                                 (`-..________....---''  ____..._.-`
+{y                                  \\`._______.._,.---'''     ,'
+{y                                  ; )`.      __..-'`-.      /
+{y                                 / /     _.-' _,.;;._ `-._,'
+{y                               / /   ,-' _.-'  //   ``--._``._
+{y                              ,','_.-' ,-' _.- (( =-    -. `-._`-._____
+{y                            ,;.''__..-'   _..--.\\.--'````--.._``-.`-._`.
+{y             _          |\,' .-''        ```-'`---'`-...__,._  ``-.`-.`-.`.
+{y  _     _.-,'(__)\__)\-'' `     ___  .          `     \      `--._
+{y,',)---' /|)          `     `      ``-.   `     /     /     `      `-.
+{y\_____--.  '`  `               __..-.  \     . (   < _...-----..._   `.
+{y \_,--..__. \\ .-`.\----'';``,..-.__ \  \      ,`_. `.,-'`--'`---''`.  )
+{y           `.\`.\  `_.-..' ,'   _,-..'  /..,-''(, ,' ; ( _______`___..'__
+{y                   ((,(,__(    ((,(,__,'  ``'-- `'`.(\  `.,..______  
+{y                                                     
+``--------..._``--.__{X
+~
+2|64|131072 8|32|128|2048|524288|16777216 0 S
+90 0 0 0d0+0 0d0+0
+128 0
+0 0 2
+>speech_prog p Arelith follow me.~
+follow $n
+~
+|
+
+#55049
+Pink Bunny Punnbinky~
+Punnbinky the Pink Bunny~
+A {mPink Bunny{x gazes at you and you see the universe in its eyes. Whoa.
+~
+{m                 _\_.                  ._/_
+{m              .\'    ```-`\|    |/'-'''    `/.
+{m            .\'            \|  |/            `/.
+{m         \.\'               \||/               `/./
+{m        .'              ._._ || _._.              `.
+{m       ./             ./'  | || |  `\.             \.
+{m      /'            .'\ \  / /\ \  / /`.            `\
+{m     /|            /|  \ \/ /..\ \/ /  |\            |\
+{m     /|            /  /'   .\||/.   `\  \            |\
+{m      /|          /` .'.---.    .---.`. '\          |\
+{m       '/-/|--|-/'  / /     \  /     \ \  `\-|--|\-\`
+{m                   | /       \/       \ |
+{m                   | `.   ._{y()(){m_.   .' |
+{m                _\_\|  `._\.    ./_.'  |/_/_
+{m            \_\`            \__/            '/_/
+{m          \`    ____     o   /\   o     ____    '/
+{m          =   .'`.   o    o /  \ o   o    .'`.   =
+{m          '/  |   `._____..'    `.._____.'   |  \`
+{m          -/        \                  /        \-
+{m           '/-       \       ..       /       -\`
+{m             '/     _.\      `'      /._     \`
+{m              '//-''   \     ||     /   ``-\\`
+{m                        \____/\____/{x
+~
+2|64|131072 8|32|32768|524288 1000 S
+90 0 0 0d0+0 0d0+0
+256 0
+0 0 1
+>speech_prog p Punnbinky follow me.~
+follow $n
+~
+|
+
+#55044
+jungle teleporter mob~
+The jungle teleporter mob~
+He's wizinvis so you see nothing.
+~
+See the long desc.
+~
+2|64|512|65536 8|32|8388608 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 26047
+mpecho The collar shard suddenly pulses wildly.
+mpecho A voice sounds in your mind as if from a vast distance.
+mpecho "{rDo you wish to harness the energies that lie within this gift?{x"
+else
+mpecho {GA voice sounds in your mind as if from a vast distance.{x
+mpecho "{rRetrieve a piece of the friend of man to deny"
+mpecho "{rthe wanderings of evil.{x"
+mpecho {GThat is all the voice says before falling silent.{x
+endif
+~
+>speech_prog p Yes.~
+if carrying($n) == 26047
+mpecho "{rVery well.{x"
+mpecho You instinctively grasp the shard as the voice guides your mind to
+mpecho working its energies.
+mptransfer $n 55060
+mpforce $n look
+endif
+~
+|
+
+#55035
+Silver wolf~
+a silver wolf~
+A silver wolf pads along.
+~
+{x{w                         ,/{}
+{w                       ,/  {|
+{w                   ,,,/    {|,
+{w             __--^^        {| ^-,
+{w       __--^^              {     `\
+{w                               ,__ \
+{w                              `,\{),\,
+{w                             __-^  `_ ^-_
+{w                          _-^        ^^-_`^-_
+{w                         '               `^-_`^-__
+{w                         `,                  `^-\_|
+{w                          `,      _-----___    _,'
+{w                          / /--__  ^^--__  `^,^
+{w                           /     ^^--__  ^-',
+{w                          /            ^^--'{x
+~
+64 32|8388608 0 S
+60 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#55036
+angel~
+an Angel~
+An Angel flits around soothing your wounds.
+~
+{x.                                        ,
+{x)).               {y-===-{x            ,((
+{x))).                                 ,(((
+{x))))).            .:::.           ,((((((
+{x))))))))).        :. .:        ,(((((((('
+{x`))))))))))).     : - :    ,((((((((((((
+{x ))))))))))))))))_:' ':_((((((((((((((('
+{x `)))))))))))).-' \___/ '-._(((((((((((
+{x  `))))_._.-' __)(     )(_  '-._._(((('
+{x   `))'---)___)))'\_ _/'((((__(---'(('
+{x     `))))))))))))|' '|(((((((((((('
+{x       `)))))))))/'   '\((((((((('
+{x         `)))))))|     |((((((('
+{x          `))))))|     |(((((('
+{x                /'     '\
+{x               /'       '\
+{x              /'         '\
+{x             /'           '\
+{x             '---..___..---'
+~
+64 8|32|128|8388608 1000 S
+70 0 0 0d0+0 0d0+0
+256 0
+0 0 2
+
+#55011
+ancient old imp~
+an ancient imp~
+An ancient looking imp mutters to itself.
+~
+It looks like an imp. A really, really, really, old imp.
+~
+2|64 8|32|524288|8388608 0 S
+63 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+say {mMaster Tynan WILL escape from Adonis'...interference, oh yes,{x
+say {mhe will...{x
+mpecho The Imps seems to have been talking to itself, but then it notices you.
+mpecho The Imp jumps slightly.
+say {mCreatures! People creatures. So long..been so long...was{X
+say {msupposed to do something....been so long...so long since{x
+say {mtalk{m, yes...talk?{m..or..{yAdonis{m ruined the trap and{x
+say {mtrapped Master Tynan, but they're stuck too, now, aren't{x
+say {ythey{m? Hehehe...hehe....so long...so so long...{x
+~
+>speech_prog p They?~
+mpecho At your prompting the little imp continues...
+say {mYes, THEY! Adonis and Vesta, oh, how Master Tynan hates th..{x
+say {mhates all.. Evil..great..but Master Tynan trusts ME, yes,{x
+say {mhe does..to..to...{x
+mpecho The Imp looks as if it's just remembered something.
+say {mTo KILL!{x
+mpkill $n
+~
+>speech_prog p Adonis?~
+mpecho At your prompting the little imp continues...
+say {mYes, THEY! Adonis and Vesta, oh, how Master Tynan hates th..hates
+all..{x
+say {mEvil..great..but Master Tynan trusts ME, yes, he does..to..to...{x
+mpecho The Imp looks as if it's just remembered something.
+say {mTo KILL!{x
+mpkill $n
+~
+|
+
+#55012
+chatty critter~
+a chatty critter~
+A chatty critter wants to tell you a lot.
+~
+{x                /(       )`
+{x                \ \__   / |
+{x                /- _ `-/  '
+{x               (/\/ \ \   /\
+{x               / /   | `    \ 
+{x               O O   )      |   
+{x               `-^--'`<     ' 
+{x              (_.)  _ )    /  
+{x               `.___/`    /  
+{x                 `-----' /
+{x    <----.     __ / __   \  
+{x    <----|====O)))==) \) /====0
+{x    <----'    `--' `.__,' \
+{x                 |         |
+{x                  \       / 
+{x              ____( (_   / \______
+{x            ,'  ,----'   |        \
+{x            `--{__________)       \/
+~
+2|64 8|32|8388608 1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55071
+say Save Adonis! Help Vesta! Help help!
+else
+say I got a story to tell, I do. You wanna hear it? Do you?
+mpecho The critter obviously wants to share it's tale very badly.
+endif
+~
+>speech_prog p Yes.~
+if carrying($n) == 55074
+say No time! Time time! Lot of time! Help Vesta!
+emote switches between glaring east and hopping up and down in excitement.
+else
+say OOOHhhhhhhhhhh, GOODY! You see, the evil Tynan wanted to be
+say BAD! He tried luring Adonis with Vesta, wanted to kill Adonis
+say he did! So he took Vesta, took her! Adonis came, fought Tynan's
+say things! Many many things! Got to Tynan, but Tynan had Vesta.
+say Did have, Did. Vesta took Tynan's slim blade she did. Stabbed
+say evil good! Tynan and Adonis fight, Adonis win, but Tynan have
+say a trap. BIG BIG trap. REALLY REALLY REALLY big big trap. But
+say Adonis stop it. Me not know how, Vesta not tell me...
+mpecho The critters seems to think about this for a moment.
+say But he DID stop it. But he trapped. With Tynan.
+say Vesta sad. And mad. Very very mad.
+mpecho The critter nods his confirmation of this.
+say So she send me! Me here. Some time some when
+say someone come she says. She says lots. Somes
+say is secret, but somes is talk. Like this. Talk
+say talk talk talk. Me to help. Me give this.
+mpoload 55074
+give stone $n
+frown
+say But..but but but...you need nother one. From him.
+emote points over towards the east.
+say Me not like him. He Tynan's. He evil. He try kill
+say me once. He keep trying. Me kill him soon, now.
+endif
+~
+>speech_prog p Yeah.~
+if carrying($n) == 55074
+say No time! Time time! Lot of time! Help Vesta!
+emote switches between glaring east and hopping up and down in excitement.
+else
+say OOOHhhhhhhhhhh, GOODY! You see, the evil Tynan wanted to be
+say BAD! He tried luring Adonis with Vesta, wanted to kill Adonis
+say he did! So he took Vesta, took her! Adonis came, fought Tynan's
+say things! Many many things! Got to Tynan, but Tynan had Vesta.
+say Did have, Did. Vesta took Tynan's slim blade she did. Stabbed
+say evil good! Tynan and Adonis fight, Adonis win, but Tynan have
+say a trap. BIG BIG trap. REALLY REALLY REALLY big big trap. But
+say Adonis stop it. Me not know how, Vesta not tell me...
+mpecho The critter seems to think about this for a moment.
+say But he DID stop it. But he trapped. With Tynan.
+say Vesta sad. And mad. Very very mad.
+mpecho The critter nods his confirmation of this.
+say So she send me! Me here. Some time some when
+say someone come she says. She says lots. Somes
+say is secret, but somes is talk. Like this. Talk
+say talk talk talk. Me to help. Me give this.
+mpoload 55074
+give stone $n
+frown
+say But..but but but...you need nother one. From him.
+emote points over towards the east.
+say Me not like him. He Tynan's. He evil. He try kill
+say me once. He keep trying. Me kill him soon, now.
+endif
+~
+|
+
+#55028
+hostile creature~
+a hostile creature~
+A hostile creature shoots dirty looks your way.
+~
+{x             ,      ,
+{x            /(.-""-.)\
+{x        |\  \/      \/  /|
+{x        | \ / =.  .= \ / |
+{x        \( \   o\/o   / )/
+{x         \_, '-/  \-' ,_/
+{x           /   \__/   \
+{x           \ \__/\__/ /
+{x         ___\ \|--|/ /___
+{x       /`    \      /    `\
+{x      /       '----'       \
+~
+2|64 8|32|8388608 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55075
+say {dI ssssaidsss to gossss! Raaaarghsss!{x
+mpkill $n
+else
+growl $n
+say {dTakessssssssss it. Tynan'sssss knowss you may helpssss{x
+say {dAdonisssssssssss. He readysssss. Readyssss asss he{x
+say {dwassss for Adonissss. Tynan willsssss getsss out.{x
+say {dNeeded to blocksss Adonisss, but Adonisss trapss them{x
+say {dalls. Vestasss almostsss get outs. Youss freesss Tynan.{X
+say {dNowssss go.{x
+mpoload 55075
+give stone $n
+endif
+~
+|
+
+#55004
+Hulking Beast~
+A hulking beast~
+A hulking {rbea{gst{x slathers as it tries to rip you apart.
+~
+{x           ,/         \,
+{x          ((__,-"""-,__))
+{x           `--)^   ^(--`
+{x          .-'(       )`-,
+{x          `^^`d\   /b`^^`
+{x              |     |
+{x              (6___6)
+
+{x               `---`	
+~
+32|64 8|32|32768|8388608 0 S
+64 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+>rand_prog 75~
+if inroom ($i) == 55095
+enter jungle
+else
+if isfight ($i)
+mpecho You feel yourself getting weaker.
+else
+mpgoto 55095
+enter jungle
+endif
+endif
+~
+>death_prog 100~
+mpecho The Hulking {rbea{gst{x falls apart and...{ythings{x crawl out of it!!!
+mpmload 55017
+mpmload 55017
+mpmload 55017
+~
+|
+
+#55017
+little monsters~
+little monsters~
+A little monster walks around.
+~
+These little horrors are hard to make out as well, as they too are
+trying to rip your eyes out.
+~
+32|64 0 0 S
+63 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55009
+solidified shadow~
+a solidified shadow~
+A {dshadow{x moves through the air.
+~
+It's {ddark{x and seems to waver in shape as you watch.
+~
+32|64 8|32|32768|65536|8388608 0 S
+64 0 0 0d0+0 0d0+0
+1|64|256 0
+0 0 0
+>rand_prog 75~
+if inroom ($i) == 55095
+enter jungle
+else
+if isfight ($i)
+mpecho You feel yourself getting weaker.
+else
+mpgoto 55095
+enter jungle
+endif
+endif
+~
+>fight_prog 40~
+cast 'energy drain' $n
+~
+>death_prog 100~
+mpecho The {dshadow{x dissolves into {yshafts{x!!
+mpmload 55018
+mpmload 55018
+mpmload 55018
+~
+|
+
+#55018
+shaft darkness~
+a shaft of darkness~
+A shaft of {ddarkness{x exists here.
+~
+It's just a darkness in the air, yet it seems to be alive.
+~
+32|64 8|32|32768|65536|8388608 0 S
+63 0 0 0d0+0 0d0+0
+1|64|256 0
+0 0 0
+
+#55010
+twitching vine~
+a twitching vine~
+A twitching {gvi{one{x thrashes about the ground.
+~
+It shoots out from the surrounding jungle like lightning so you have no time 
+to really discern any characteristics.
+~
+32|64 8|32|32768|8388608 0 S
+63 0 0 0d0+0 0d0+0
+1|4|8 0
+0 0 0
+>rand_prog 75~
+if inroom ($i) == 55095
+enter jungle
+else
+if isfight ($i)
+mpecho You feel yourself getting weaker.
+else
+mpgoto 55095
+enter jungle
+endif
+endif
+~
+>death_prog 100~
+mpecho The {gvi{one{x splits apart and {ysomething{x oozes out of it!!!
+mpmload 55019
+mpmload 55019
+mpmload 55019
+~
+|
+
+#55019
+strand flora~
+a strand of flora~
+A strand of flora writhes here.
+~
+As you gaze at it it tries to crawl down your throat!
+~
+32|64 8|32|8388608 0 S
+64 0 0 0d0+0 0d0+0
+1|4|8 0
+0 0 0
+
+#55029
+faerie fire mob~
+faerie fire mob~
+The faerie fire mob is here.
+~
+{mCan't see him.{x
+~
+2|64|512|65536 8|32|8388608 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 45~
+mpecho There is a {mflash{x in the air.
+cast 'faerie fire' $n
+~
+|
+
+#55030
+Trip mob~
+Trip mob~
+The Trip mob is here.
+~
+{mCan't see him.{x
+~
+2|64|512|65536 8|32|8388608 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 45~
+mpecho You trip over a vine.
+mpforce $n rest
+~
+|
+
+#55031
+Hex mob~
+Hex mob~
+The Hex mob is here.
+~
+{mCan't see him.{x
+~
+2|64|512|65536 8|32|8388608 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 10~
+mpecho Some kind of dust passes over you.
+cast hex $n
+~
+|
+
+#55032
+Rift mob~
+Rift mob~
+The rift mob is here.
+~
+{mCan't see him.{x
+~
+2|64|512|65536 8|32|8388608 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 5~
+mpecho {gSuddenly, you fall through a rift of energy!!{x
+mptransfer $n 3101
+~
+|
+
+#55034
+teleporter mob~
+Vesta Teleporter Mob~
+Vesta teleporter mob
+~
+Blah blah blah
+~
+2|64|512|65536 8|32|8388608 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55048
+mpat 55096 mptransfer Vesta 55055
+mpecho {YSuddenly, a woman appears! By her looks she must be Vesta.{x
+mpecho {yBut, she seems...misty.{x
+mpecho {yShe beckons to you and after a moment you realize she wants the lock
+of hair.{X
+mpecho {YFor some reason you reach out and hand it to her without thought.{x
+mpforce $n give lock Vesta
+endif
+~
+|
+
+#55025
+Tynan lackey~
+One of Tynan's lackeys~
+One of Tynan's lackeys that are trapped here with him walks around.
+~
+{x   .
+{x  / \
+{x  | |
+{X  |.|
+{X  |.|
+{X  |:|      __
+{x,_|:|_,   /  )
+{x  (Oo    / _I_
+{x   +\ \  || __|
+{x      \ \||___|
+{x        \ /.:.\-\
+{x         |.:. /-----\
+{x         |___|::oOo::|
+{x         /   |:<_T_>:|
+{x        |_____\ ::: /
+{x         | |  \ \:/
+{x         | |   | |
+{x         \ /   | \___
+{x         / |   \_____\
+{x         `-'
+~
+32|64 0 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55013
+metal muncher~
+a metal muncher~
+A creature rummages around picking up metallic objects and consuming them.
+~
+{x                    //////////////_              
+{x        __\\\\@   //^^        _-    \///////   
+{x  _____((_     \-/ ____/ /   {   { \\       }    
+{x 0__________\\\---//____/----//__|-^\\\\\\\\
+~
+2|64 0 0 S
+67 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>all_greet_prog 100~
+if ispc ($n)
+get key
+mpecho A {cmet{bal{x muncher eats a simple metal key.
+mpjunk key
+mpoload 55029
+drop shavings
+endif
+~
+|
+
+#55037
+frantic goblin~
+a frantic goblin~
+{Y(Frantic){x A frantic goblin runs around bouncing off of the walls and
+~
+{x              _____
+{x          .-,;='';_),-.
+{x           \_\(),()/_/
+{x             (,___,)
+{x            ,-/`^`\-,___
+{x           / /).:.('--._)
+{x          {_[ (_,_)
+{x              | Y |
+{x             /  |  \
+{x             """ """
+~
+2|64 0 0 S
+67 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55016
+frozen mist~
+a Frozen Mist~
+A {cFrozen{x Mist hovers around here.
+~
+        {c                                 
+                         (`  ).                   _          
+                        (     ).              .:(`  )`.      
+                       _(       '`.          :(   .    )     
+                   .=(`(      .   )     .--  `.  (    ) )     
+       .--.       ((    (..__.:'-'   .+(   )   ` _`  ) )                
+     _(    `.     `(       ) )       (   .  )     (   )  ._  
+    (        )      ` __.:'   )     (   (   ))     `-'.-(`  )
+   ( `  .  )  )  ( )       --'       `- __.'         :(      ))
+    `--(___.-'  (_.'          .')                    `(    )  ))
+                             (_  )                     ` __.:'  {x
+~
+2|64 524288 0 S
+63 0 0 0d0+0 0d0+0
+1|4|64|256 0
+0 0 0
+>death_prog 100~
+mpoload 55034 20
+mpoload 55034 20
+mpoload 55034 20
+~
+|
+
+#55015
+angry werewolf~
+an angry werewolf~
+An angry werewolf lunges at you!
+~
+{x                                 /\
+{x                                ( ;`^v/^^^ ;._
+{x                             ,/'"/^) ' < {ro{x\  '".^'\\\--,
+{x                           ,/",/W  u '`. ^  >,._..,   )'
+{x                          ,/'  w  ,U^v  ;//^)/')/^\;^)'
+{x                       ,/"'/   W` ^v  W |;         )/'
+{x                     ;''  |  v' v`" W }  \\
+{x                    "    .'\    v  `v/^W,) '\)\.)\/)
+{x                             `\   ,/,)'   ''')/^"-;'
+{x                                  \
+{x                                   '". _
+{x                                        \
+~
+2|32|64 8|32|8388608 0 S
+69 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#55039
+angry squirrel~
+an angry squirrel~
+An angry squirrel rips you apart with its eyes.
+~
+{x        Samxin
+{x .   ,/
+{x |\_/|   ,--.
+{x ({ro{x.{ro{x)  / __ |
+{x  `W'\ | /  `'
+{x  ((  ||/
+{x  ``( //
+{x   ^^^'
+~
+2|64 8|32|8388608|16777216 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55040
+angry squirrel~
+an angry squirrel~
+An angry squirrel rips you apart with its eyes.
+~
+{x        Dexx
+{x .   ,/
+{x |\_/|   ,--.
+{x ({ro{x.{ro{x)  / __ |
+{x  `W'\ | /  `'
+{x  ((  ||/
+{x  ``( //
+{x   ^^^'
+~
+2|64 8|32|128|8388608 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55041
+angry squirrel~
+an angry squirrel~
+An angry squirrel rips you apart with its eyes.
+~
+{x        Xedd
+{x .   ,/
+{x |\_/|   ,--.
+{x ({ro{x.{ro{x)  / __ |
+{x  `W'\ | /  `'
+{x  ((  ||/
+{x  ``( //
+{x   ^^^'
+~
+2|64 8|32|2048|8388608 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55038
+Manticore~
+a Manticore~
+A manticore rises up and speaks.
+~
+{X  
+{X   ((((()))))
+{X  ((( #  # )))   
+{X (((        )))    ROAR
+{X  ((( ++++ ))) ___/
+{X   ((((()))))
+{X     /    \
+~
+2|64 8|32|128|2048|8388608 0 S
+63 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+say {RBeware the ultimate horror beyond this point.{x
+say {RYour flesh shall be stripped from your bones{X
+say {Rand your soul consumed. Be warned, stranger.{x
+~
+|
+
+#55020
+blood minion~
+a Blood Minion~
+A {rBlood{x Minion lumbers toward you.
+~
+{r                                              {r,--,  ,.-.
+{r                ,                   \,       '-,-`,'-.' | ._
+{r               /|           \    ,   |\         }  )/  / `-,',
+{r               [ '          |\  /|   | |        /  \|  |/`  ,`
+{r               | |       ,.`  `,` `, | |  _,...(   (      _',
+{r               \  \  __ ,-` `  ,  , `/ |,'      Y     (   \_L\
+{r                \  \_\,``,   ` , ,  /  |         )         _,/
+{r                 \  '  `  ,_ _`_,-,<._.<        /         /
+{r                  ', `>.,`  `  `   ,., |_      |         /
+{r                    \/`  `,   `   ,`  | /__,.-`    _,   `\
+{r                -,-..\  _  \  `  /  ,  / `._) _,-\`       \
+{r                 \_,,.) /\    ` /  / ) (-,, ``    ,        |
+{r                ,` )  | \_\       '-`  |  `(               \
+{r               /  /```(   , --, ,' \   |`<`    ,            |
+{r              /  /_,--`\   <\  V /> ,` )<_/)  | \      _____)
+{r        ,-, ,`   `   (_,\ \    |   /) / __/  /   `----`
+{r       (-, \           ) \ ('_.-._)/ /,`    /
+{r       | /  `          `/ \\ V   V, /`     /
+{r    ,--\(        ,     <_/`\\     ||      /
+{r   (   ,``-     \/|         \-A.A-`|     /
+{r  ,>,_ )_,..(    )\          -,,_-`  _--`
+{r (_ \|`   _,/_  /  \_            ,--`
+{r  \( `   <.,../`     `-.._   _,-`
+{r   `                      ```{x
+~
+2|32|64 0 -1000 S
+63 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#55021
+valig~
+a Valig~
+A Valig sits on the ceiling.
+~
+{x              .-'"'-.
+{x            /; ^'-.``;\
+{x           .`,'     `,'.
+{x           .  __' '__  .
+{x     _ ,_._\.( d\_/b )./_._, _
+{x    ( '  '  ;'  .-.  ';  '  ` )
+{x    ' .' '. (_, /¯\ ,_) .' '. '
+{x   .  .\`--.,| _____ |,.--'/.  .
+{x   .  . '.   \ " """ /   .' .  .
+{x  ,  .   \'-.,'-._.-',.-'/   .  ,
+{x   ,  .   ,`'-., , ,.-'',   .  ,
+{x    ,  .  ,`'-..,,,..-'',  .  ,
+~
+2|32|64 2048|16777216 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55022
+god trader~
+a god-like trader~
+A god-like being awaits items of all kinds.
+~
+{x                                  _
+{X                               _ooOoo_
+{X                              o8888888o
+{X                              88" . "88
+{X                              (| -_- |)
+{X                              {yO{x\  =  /{yO{x
+{X                           ____/`---'\____
+{X                         .'  \\|     |//  `.
+{X                        /  \\|||  :  |||//  \
+{X                       /  _||||| -:- |||||_  \
+{X                       |   | \\\  -  /'| |   |
+{X                       | \_|  `\`---'//  |_/ |
+{X                       \  .-\__ `-. -'__/-.  /
+{X                     ___`. .'  /--.--\  `. .'___
+{X                  ."" '<  `.___\_<|>_/___.' _> \"".
+{X                 | | :  `- \`. ;`. _/; .'/ /  .' ; |
+{X                 \  \ `-.   \_\_`. _.'_/_/  -' _.' /
+{x       ===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
+{X                               `=--=-'
+~
+2|64|1048756 8|32|128|2048|8192|524288|8388608|16777216 1000 S
+150 0 0 0d0+0 0d0+0
+128|256 0
+0 0 1
+>all_greet_prog 100~
+if ispc ($n)
+say {cHowdy $n. You have anything you wanna trade?
+say {cHand it on over if you do and we'll see what I'll{x
+say {cgive you. If anything.{x
+smile
+say {cOh yes, I suppose I can do you a small favor,{x
+say {csince I'm here. If you want out of this place{x
+say {cjust say "Get me out of here."{x
+say {cand I'll do just that. Happy to help.{x
+say {cYou'd be surprised by the stuff that comes{x
+say {cthrough here. {cI've scored some great stuff.{x
+say {cI think it's the little scenario going on around{x
+say {chere that must draw you people.{x
+shrug
+say {cAs long as I end up with quality merchandise...{x
+endif
+~
+>speech_prog p Get me out of here.~
+if carrying($n) == 55076
+say {cSorry, but with all the activity going on around
+say {chere and all there's power of all kinds shifting
+say {caround. That being the case it's going to take me
+say {csome time to get through it. Afraid I can't help
+say {cfor a bit.{x
+else
+say {cCome back soon, now.{x
+mptransfer $n 3101
+mpat $n mpecho A voice drifts out of the air; "{cWith items, of course...{x"
+endif
+~
+>give_prog ruby eye~
+say {cYes, quite a fine piece here...lets see...ah, you can have this.{x
+mpjunk all
+mpoload 55070
+give plat $n
+~
+>give_prog simple metal key~
+say {cAh, it's the one true key...I'd think you'd want to find{x 
+say {cthe lock that matches it, if and when it exists anyway,{x 
+say {cbut you mortals are an odd bunch. Here you go.{x
+mpjunk all
+mpoload 55064 5
+give hammer $n
+~
+>give_prog pile jumble items~
+say {cOh, you've found items that I've -already{x
+say {cfound-...how nice of you...{x
+say {cThis is worth SO much to me- here!{x
+mpoload 55065 1
+give coin $n
+mpjunk all
+~
+>give_prog shard sword~
+say {cOh yes, this is quite a powerful number. Too bad about all 
+say {cthose {clittle conflicting powers on it, though. Perhaps I 
+say {ccan shave some of them off...{x
+mpecho The trader waves his hands over the shard.
+mpecho The shard breaks into 2 pieces with a {Yflash{X.
+say {cAh, Well, not exactly what I was going for... but here you 
+say {cgo{x.
+mpjunk all
+mpoload 55066 15
+give shard $n
+~
+>give_prog broken slim blade~
+mpecho The traders eyes light up at this item. Literally.
+mpecho They glow a bright {yyellow{x color. He must be pleased.
+say {cThis is excellent! The best find yet. You more than
+say {cdeserve this.{x
+mpjunk all
+mpoload 55068 75
+give star $n
+~
+>rand_prog 45~
+mpjunk all
+~
+>give_prog Adonis sword~
+say {cOh my. I can't take this, oh no. It already has a rightful{x
+say {cowner and I am certain he would like to have it back.{x
+give Adonis $n
+say {cBut please, come back with something else will you?{x
+~
+>give_prog flaring essence~
+say {cI'm afraid you'll want to keep this. It's of no use to me{x
+say {cbut YOU'LL really want to keep it, I think.{x
+give ess $n
+~
+|
+
+#55024
+torn apart creature~
+a torn apart creature~
+This creature has been torn almost to pieces, but it's still alive!
+~
+It's in pieces. Lots of pieces. Use your imagination.
+~
+2|64 1|64|256|16384 0 S
+64 0 0 0d0+0 0d0+0
+1|2|4|8|16|32 0
+0 0 2
+
+#55050
+Sword Essence Checker~
+Sword Checker~
+Checks to see if player has the sword/essence, then teleports.
+~
+Wizzy invis.
+~
+2|64|512|65536 0 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+if carrying($n) == 55001
+mptransfer $n 55103
+else
+if carrying($n) == 55076
+mptransfer $n 55103
+endif
+endif
+~
+|
+
+#55042
+stone teleporter~
+Stone teleporter mob~
+If you have Adonis' rock you get teleported.
+~
+Wizinvis.
+~
+2|64|512|65536 8|32|8388608 0 S
+101 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55051
+mpecho {YAs you enter the room the stone you picked up in the previous{x
+mpecho {Yroom flares brightly and you suddenly appear elsewhere.{x
+mptransfer $n 55098
+mpat $n mpforce $n look
+mpgoto 55096
+endif
+~
+|
+
+#55003
+Adonis(1Tynan1)~
+Adonis~
+Adonis stands here, gazing at you steadily.
+~
+{x                                 __)),
+{x                                //_ _)
+{x                                ( "\"
+{x                                 \_-/
+{x                             ,---/  '---.
+{x                            /     - -    \
+{x                           /  \_. _|__,/  \
+{x                          /  )\        )\_ \
+{x                         / _/  (   '  ) /  /
+{x                        / |     (_____) | /
+{x                       /,'      /     \/ /,
+{x                     _/(_      (   ._, )-'
+{x                    `--,/      |____|__|
+{x                               |    )  |
+{x                               |   /   |
+{x                               |  / \  |
+{x                              / `|  | _)
+{x                              |  |  |  |
+{x                              |  /  \  |
+{x                              | |    \ |
+{x                              | \    | \_
+{x                             /__(    '-._`,
+~
+2|64 8|32|2048|8388608 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55001
+say {dThe sword!{x
+say {dGive it to me! I need it...to save Vesttah!{x
+say {dI MUST have it!{x
+else
+say {dWelcome, $n. You must find me my sword.{x
+say {dThat bastard Tynan trapped Vesttah and I here.{x
+say {dWith my sword I can get out of here!{x
+say {dPlease, find it.{x 
+endif
+~
+>give_prog Adonis sword~
+say {dThank you... you FOOL!
+muhaha
+say {dIt was pitifully easy to beguile you.{x
+mpecho {RAdonis shivers for a moment and his appearance changes.{x
+say {dNow that I have Adonis' sword{x
+say {dI can free myself from this prison{x
+say {dand destoy them! But first, you must die.{x
+mpecho {RWith his powers fully unlocked Tynan is unstoppable.{x
+mptransfer $n 55097
+mpgoto 55084
+drop adonis
+mpgoto 55092
+~
+>death_prog 100~
+mpgoto 55097
+mpmload 55043
+mpforce Adonis(2Tynan2) mpoload 55011 62
+mpforce Adonis(2Tynan2) mpoload 55012 62
+mpforce Adonis(2Tynan2) mpoload 55013 62
+mpforce Adonis(2Tynan2) mpoload 55014 62
+mpforce Adonis(2Tynan2) wear all
+mptransfer Adonis(2Tynan2) 55092
+mpat 55092 mpforce Adonis(2Tynan2) say {dWhy do you attack me?{x
+endif
+~
+>rand_prog 100~
+mppurge
+~
+|
+
+#55043
+Adonis(2Tynan2)~
+Adonis~
+Adonis stands here, gazing at you steadily.
+~
+{x                                 __)),
+{x                                //_ _)
+{x                                ( "\"
+{x                                 \_-/
+{x                             ,---/  '---.
+{x                            /     - -    \
+{x                           /  \_. _|__,/  \
+{x                          /  )\        )\_ \
+{x                         / _/  (   '  ) /  /
+{x                        / |     (_____) | /
+{x                       /,'      /     \/ /,
+{x                     _/(_      (   ._, )-'
+{x                    `--,/      |____|__|
+{x                               |    )  |
+{x                               |   /   |
+{x                               |  / \  |
+{x                              / `|  | _)
+{x                              |  |  |  |
+{x                              |  /  \  |
+{x                              | |    \ |
+{x                              | \    | \_
+{x                             /__(    '-._`,
+~
+2|64 8|32|2048|8388608 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55001
+say {dThe sword!{x
+say {dGive it to me! I need it...to save Vesttah!{x
+say {dI MUST have it!{x
+else
+say {dWelcome, $n. You must find me my sword.{x
+say {dThat bastard Tynan trapped Vesta and I here.{x
+say {dWith my sword I can get out of here.{x
+say {dPlease, find it.{x 
+~
+>give_prog Adonis sword~
+say {dThank you... you FOOL!
+muhaha
+say {dIt was pitifully easy to beguile you.{x
+mpecho {RAdonis shivers for a moment and his appearance changes.{x
+say {dNow that I have Adonis' sword{x
+say {dI can free myself from this prison{x
+say {dand destoy them! But first, you must die.{x
+mpecho {RWith his powers fully unlocked Tynan is unstoppable.{x
+mptransfer $n 55097
+mpgoto 55084
+drop adonis
+mpgoto 55092
+~
+>death_prog 100~
+mpgoto 55097
+mpmload 55003
+mpforce Adonis(1Tynan1) mpoload 55011 62
+mpforce Adonis(1Tynan1) mpoload 55012 62
+mpforce Adonis(1Tynan1) mpoload 55013 62
+mpforce Adonis(1Tynan1) mpoload 55014 62
+mpforce Adonis(1Tynan1) wear all
+mptransfer Adonis(1Tynan1) 55092
+mpat 55092 mpforce Adonis(1Tynan1) say {dWhy do you attack me?{x
+endif
+~
+>rand_prog 100~
+mppurge
+~
+|
+
+#55001
+Adonis(Real)~
+Adonis~
+Adonis stands here looking grave yet hopeful.
+~
+{x                                 __)),
+{x                                //_ _)
+{x                                ( "\"
+{x                                 \_-/
+{x                             ,---/  '---.
+{x                            /     - -    \
+{x                           /  \_. _|__,/  \
+{x                          /  )\        )\_ \
+{x                         / _/  (   '  ) /  /
+{x                        / |     (_____) | /
+{x                       /,'      /     \/ /,
+{x                     _/(_      (   ._, )-'
+{x                    `--,/      |____|__|
+{x                               |    )  |
+{x                               |   /   |
+{x                               |  / \  |
+{x                              / `|  | _)
+{x                              |  |  |  |
+{x                              |  /  \  |
+{x                              | |    \ |
+{x                              | \    | \_
+{x                             /__(    '-._`,
+~
+2|64|512|32768 8|32|8388608 1000 S
+999 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if inroom($n) == 55093
+if carrying($n) == 55001
+if carrying($n) == 55051
+mpecho As you enter the room the man in the center seems mildly
+mpecho relieved. He seems to be talking to himself for a moment.
+say {YThe stone worked. Thank the heavens.
+mpecho Adonis glances at the sword you have.
+say {yYou have recovered my sword!{x
+say {yPlease, do not let Tynan trick you!{x
+say {yHe has taken my form in order to gain possession of my{X
+say {ysword in order to break free of his own trap Vesta and{x
+say {yI turned back on him. Please, return to him with my{x
+say {ysword in your possession and strike Tynan down. You do{x
+say {ynot have to wield it, and in fact should not so as to{x
+say {ynot alert Tynan, simply have it with you in your inventory.{X
+say {yDo not put it in a container, either. That will blunt its power.{X
+say {yI will need to retrieve it quickly from you as well.{X
+say {yYou will not be able to kill him even with my sword, but{x
+say {yit will disrupt what remains of his power enough to{x
+say {yallow me to free myself from here and deal with Tynan{x
+say {yonce and for all. Please, for Vesta.{x
+mpecho Adonis glances at the stone you picked up.
+say {yI couldn't risk Tynan seeing you brought here, so{x
+say {yI had to wait until you were out of his sight to bring{x
+say {yyou here through that. It will draw Tynan's attention{x
+say {yif you return with it now, however, so it's best if{x
+say {yyou place it in my keeping.{x
+mpforce $n give pulsing Adonis
+else
+if inroom($n) == 55093
+if carrying($n) == 55051
+mpecho As you enter the room the man in the center seems mildly
+mpecho relieved. He seems to be talking to himself for a moment.
+say {YThe stone worked. Thank the heavens.{x
+say {yDo not let Tynan trick you!{x
+say {y$n, please, help me. Help us.{x
+say {YHe has taken my form in order to gain possession of my{x
+say {ysword in order to break free of his own trap Vesta and{x
+say {yI turned back on him. Please, return to him with my{x
+say {ysword in your possession and strike Tynan down. I{x
+say {ydo not know where in the temple my sword lies, but it{x
+say {yIS somewhere nearby. I can feel it. But Tynan's trap{x
+say {yhas me confined here as long as Tynan retains some{x
+say {ypower.
+say {yYou will not be able to kill him even with my{x
+say {ysword, but it will disrupt what remains of his power{x
+say {yenough to allow me to free myself from here and deal{x
+say {ywith Tynan once and for all. You do not have to wield it, and{x
+say {yin fact should not so as to not alert Tynan, simply have{x
+say {yit with you in your inventory. Do not put it in a{x
+say {ycontainer, either. That will blunt it's power and{x
+say {yI will need to retrieve it quickly from you.{X
+say {yPlease, for Vesta.{x
+mpecho Adonis glances at the stone you picked up.
+say {yI couldn't risk Tynan seeing you brought here, so{x
+say {yI had to wait until you were out of his sight to bring{x
+say {yyou here through that. It will draw Tynan's attention{x
+say {yif you return with it now, however, so it's best if{x
+say {yyou place it in my keeping.{x
+mpforce $n give pulsing Adonis
+else
+if inroom($n) == 55093
+say {yPlease, find my sword. And remember, do not try to{x
+say {ywield it or put it in a container. That could kill{x
+say {yus all. Are you ready to go back and kill that bastard now?{x
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>give_prog pulsing stone rock~
+if inroom ($n) == 55093
+say {yNow, are you ready to go back and{x
+say {yslay that black hearted bastard?{x
+mpjunk rock
+endif
+~
+>speech_prog p Yes.~
+if inroom ($n) == 55093
+say {yGood luck to you, $n.{X
+mptransfer $n 55088
+mpat $n mpforce $n look
+mpat $n mpecho {yAdonis' image fades away.{x
+endif
+~
+>speech_prog p Yeah.~
+if inroom ($n) == 55093
+say {yGood luck to you, $n.{X
+mptransfer $n 55088
+mpat $n mpforce $n look
+mpat $n mpecho {yAdonis' image fades away.{x
+endif
+~
+>give_prog Adonis sword~
+if inroom ($n) == 55093
+say {yThis is of no use to me while I am trapped here.{x
+say {yThis room blocks most of my power. Take it and{x
+say {yslay Tynan. At that time I will be able to wield{X
+say {yit to destroy Tynan once and for all.{x
+give Adonis $n
+else
+wield Adonis
+mpecho Tynan is surprised by Adonis' appearance for only a moment
+mpecho and then quickly draws his own slim blade. It does
+mpecho him no good, however, as Adonis' mighty swing snaps Tynan's
+mpecho blade and then a moment later bites into Tynan's skull.
+mpecho Adonis seizes Tynan by the throat and slams him into the
+mpecho wall before driving his sword into Tynan's heart.
+mptransfer Tynan(Dazed) 55096
+mpgoto 55093
+mpoload 55067
+mpoload 55015
+put blade cor
+mpgoto 55102
+drop cor
+mpecho Vesta suddenly appears off to the side as Adonis drops
+mpecho Tynan's corpse. They look at each other for a moment
+mpecho before running to each other and embracing.
+mpat 55096 mptransfer Vesta 55102
+mpforce Vesta say {rThank you, $n! We're finally free!{x
+mpforce Vesta smile $n
+say {yYes, $n. Thank you. You have done a great and noble{x
+say {ydeed. I can never repay you for what you have done.{x
+say {yBut, maybe you would be interested in Tynan's weapon.{x
+say {yPerhaps now that he is dead his taint will be removed{x
+say {yfrom it. Or perhaps not.{x
+mpforce Vesta say {rBut we can give you a way out of here now.{x
+nod
+mpecho Adonis puts his hand out and energy coalesces in his palm.
+mpoload 55076 1
+give flaring $n
+say {yNow that you have that simply say "I would like to go." and{x
+say {ywe shall recall you to the start of all. Once you are{x
+say {yfree of this place you may discard that focus of power.{x
+say {yBut be warned, it is needed for you to escape. Do not lose{x
+say {yit.{x
+endif
+~
+|
+
+#55002
+Vesta~
+Vesta~
+Vesta stands before you.
+~
+{x                    _,,,_
+{x                  .'     `'.
+{x                 /     ____ \
+{x                |    .'_  _\/
+{x                /    ) a  a|
+{x               /    (    > |
+{x              (      ) ._  /
+{x              )    _/-.__.'`\
+{x             (  .-'`-.   \__ )
+{x              `/      `-./  `.
+{x               |    \      \  \
+{x               |     \   \  \  \
+{x               |\     `. /  /   \
+~
+2|64|512|32768 8|32|8388608|16777216 1000 S
+999 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>give_prog lock hair Vesta~
+if carrying($n) == 55046
+say Use the ke...get t...Ado...Pleas...
+mpecho Vesta slowly fades out of view.
+mpjunk lock
+mpgoto 55096
+else
+say {rPlease..I...give..lost....Adonis imbued it with pow..must hav..it.{x
+say {rTake th.......ill Tynan.{x
+mpoload 55046 15
+give key $n
+mpecho Vesta slowly fades out of view.
+mpgoto 55096
+mpjunk lock
+endif
+~
+>speech_prog p I would like to go.~
+if carrying($n) == 55076
+giggle
+say {rAgain, we thank you with all our hearts.{x
+say {rGood luck to you, $n.{x
+giggle
+mpoload 55070 1
+give plat $n
+giggle
+mpecho The world seems to stutter and fold in, and then you are elsewhere.
+mptransfer $n 3101
+get corpse
+mpjunk corpse
+mpforce Adonis(Real) rem sword
+mpforce Adonis(Real) give sword Vesta
+mptransfer Adonis(Real) 55093
+mpgoto 55094
+drop sword
+mpgoto 55096
+mppurge
+mpgoto 55088
+mpmload 55042
+mpgoto 55096
+endif
+~
+|
+
+#55023
+Tynan(real)~
+Tynan~
+Revealed, Tynan stands before you.
+~
+{x             _.-._
+{x           .' | | `.
+{x          /   | |   \
+{x         |    | |    |
+{x         |____|_|____|
+{x         |____(_)____|
+{x         {y/{x|({ro{x)| |({ro{x)|{y\
+{x        //{x|   | |   |{y\\
+{x        '/{x|  (|_|)  |{y\`
+{x         //.///|\\\.\\
+{X         /////{x---{y\\\\\
+{X         ////|||||\\\\
+{X         '//|||||||\\`
+{x           '|||||||`{x
+~
+2|32|64|512 8|32|128|2048|8388608|16777216 -1000 S
+1000 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#55033
+dispel magic mob~
+dispel magic mob~
+Dispel magic mob is wizinvis...
+~
+Can't see him. Hopefully.
+~
+2|64|512|65536 8|32|8388608 0 S
+110 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 43~
+mpecho A wave of {rene{grg{yy{x passes through you.
+cast 'dispel magic' $n
+~
+|
+
+#55051
+Adonis(3Tynan3)~
+Adonis~
+Adonis stands here, gazing at you steadily.
+~
+{x                                 __)),
+{x                                //_ _)
+{x                                ( "\"
+{x                                 \_-/
+{x                             ,---/  '---.
+{x                            /     - -    \
+{x                           /  \_. _|__,/  \
+{x                          /  )\        )\_ \
+{x                         / _/  (   '  ) /  /
+{x                        / |     (_____) | /
+{x                       /,'      /     \/ /,
+{x                     _/(_      (   ._, )-'
+{x                    `--,/      |____|__|
+{x                               |    )  |
+{x                               |   /   |
+{x                               |  / \  |
+{x                              / `|  | _)
+{x                              |  |  |  |
+{x                              |  /  \  |
+{x                              | |    \ |
+{x                              | \    | \_
+{x                             /__(    '-._`,
+~
+2|64 8|32|2048|8388608 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 55001
+say {dThe sword!{x
+say {dGive it to me! I need it...to save Vesttah!{x
+say {dI MUST have it!{x
+else
+say {dWelcome, $n. You must find me my sword.{x
+say {dThat bastard Tynan trapped Vesttah and I here.{x
+say {dWith my sword I can get out of here.{x
+say {dPlease, find it.{x
+endif
+~
+>give_prog Adonis sword~
+say {dThank you... you FOOL!
+muhaha
+say {dIt was pitifully easy to beguile you.{x
+mpecho {RAdonis shivers for a moment and his appearance changes.{x
+say {dNow that I have Adonis' sword{x
+say {dI can free myself from this prison{x
+say {dand destoy them! But first, you must die.{x
+mpecho {RWith his powers fully unlocked Tynan is unstoppable.{x
+mptransfer $n 55097
+mpgoto 55084
+drop adonis
+mpgoto 55102
+~
+>death_prog 100~
+mpat 55093 mptransfer Adonis(real) 55102
+mpforce Adonis(real) say {YQuickly, my sword!{x
+mpgoto 55096
+mpmload 55052
+mpoload 55011 62
+mpoload 55012 62
+mpoload 55013 62
+mpoload 55014 62
+drop all
+mpforce Tynan(Dazed) get all
+mpforce Tynan(Dazed) wear all
+mptransfer Tynan(Dazed) 55102
+~
+|
+
+#55052
+Tynan(Dazed)~
+Tynan~
+Tynan stumbles for a moment, dazed.
+~
+{x             _.-._
+{x           .' | | `.
+{x          /   | |   \
+{x         |    | |    |
+{x         |____|_|____|
+{x         |____(_)____|
+{x         {y/{x|({ro{x)| |({ro{x)|{y\
+{x        //{x|   | |   |{y\\
+{x        '/{x|  (|_|)  |{y\`
+{x         //.///|\\\.\\
+{x         /////{x---{y\\\\\
+{x         ////|||||\\\\
+{x         '//|||||||\\`
+{x           '|||||||`{x
+~
+2|64 2048 -1000 S
+66 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 100~
+mpmload 55052
+~
+|
+#0
+
+#OBJECTS
+#55001
+Adonis sword~
+{rAdonis{x' {ws{ywo{wrd{x {W({xThat you should {RKEEP!!!{W){x~
+{rAdonis{x' {ws{ywo{wrd{x is stuck in the ground here, hilt up.~
+~
+5 1|2|1024 1|8192
+~ ~ ~ 1~
+5 0 0
+A
+19 -100
+A
+18 -100
+
+#55057
+shredded boots~
+a pair of shredded boots~
+A pair of shredded boots are practically in pieces here.~
+~
+9 2 1|64
+~ ~ ~ ~
+1 0 0
+A
+19 8
+
+#55052
+three pronged spear~
+some kind of three pronged spear~
+Some kind of three pronged spear is stuck in the ground here.~
+~
+5 1024 1|8192
+~ ~ ~ 11~
+4 0 0
+A
+19 5
+
+#55074
+a glowing stone~
+a {rglowing{x stone~
+A {rglowing{x stone sits here.~
+~
+18 1 1
+~ ~ ~ ~
+1 0 0
+
+#55075
+a glowing stone~
+a {dglowing{x stone~
+A {dglowing{x stone sits here.~
+~
+18 1 1
+~ ~ ~ ~
+1 0 0
+
+#55017
+Jungle~
+the jungle~
+the jungle.~
+~
+33 0 0
+55000~ 55039~ 1~ 100~
+1000 0 0
+
+#55053
+deadly horns~
+deadly horns~
+A pair of deadly horns have been ripped out of some things head.~
+~
+5 67108864 8192
+~ ~ ~ 11~
+2 0 0
+
+#55054
+flashing claws~
+flashing claws~
+A set of claws have been severed from something.~
+~
+5 1048576|67108864 8192
+~ ~ ~ 3~
+2 0 0
+A
+19 5
+A
+18 5
+
+#55059
+slimy liquid~
+some slimy liquid~
+Some slimy liquid sits in a vial.~
+~
+28 0 1
+20~ infravision~ fly~ shield~
+1 0 0
+
+#55021
+rubble~
+some rubble~
+Some rubble lies in pieces here.~
+~
+13 0 1
+~ ~ ~ ~
+10 0 0
+
+#55024
+burning table~
+a burning table~
+{R(Burning){x A table is on fire here.~
+~
+12 0 0
+~ ~ ~ ~
+30 0 0
+
+#55047
+chunk of the ceiling~
+a chunk of a ceiling~
+A chunk of the ceiling has fallen here.~
+~
+15 0 1
+100~ 5~ -1~ ~
+1 0 0
+
+#55046
+flashing key~
+a {yflashing{x key~
+An oddly {yflashing{x key draws your attention.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#55048
+lock hair Vesta~
+a lock of Vesta's hair {W({xThat you should {RKEEP!!!{W){x~
+The lock of Vesta's hair that Adonis lost falls to the floor.~
+~
+8 1 1
+~ ~ ~ ~
+1 0 0
+
+#55036
+Flaming Vorpal Long sword of Power Strike~
+the Flaming Vorpal Long sword of Power Strike~
+The Flaming Vorpal Long sword of Power Strike~
+~
+5 1|2|128|256|1048576 1|8192
+~ ~ ~ 9~
+1 0 0
+A
+19 5
+A
+18 3
+
+#55050
+humming dagger~
+a humming {cd{bag{cger{x~
+A humming {cd{bag{cger{x is stuck in the ground.~
+~
+5 2 1|8192
+~ ~ ~ 2~
+1 0 0
+A
+19 5
+A
+18 1
+
+#55025
+simple metal key~
+a simple metal key~
+A simple metal key seems to have been gnawed on.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55026
+simple metal key~
+a simple metal key~
+A simple metal key seems to have been gnawed on.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55030
+simple metal key~
+a simple metal key~
+A simple metal key seems to have been gnawed on.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55031
+simple metal key~
+a simple metal key~
+A simple metal key seems to have been gnawed on.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55032
+simple metal key~
+a simple metal key~
+A simple metal key seems to have been gnawed on.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55029
+metal shavings~
+some metal shavings~
+Metal shavings from objects the beast has eaten litter the floor.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55027
+broken mirror~
+a broken mirror~
+A broken mirror sits on the wall.~
+~
+12 2097152 2 7 1 1
+~ ~ ~ ~
+1 0 0
+
+#55028
+shards glass~
+shards of glass~
+Shards of glass are sprinkled about the floor.~
+~
+13 2097152 2 7 1 1
+~ ~ ~ ~
+1 0 0
+
+#55058
+crumbling pants~
+crumbling pants~
+A pair of crumbling pants rot on the ground.~
+~
+9 1 1|32
+~ ~ ~ ~
+1 0 0
+A
+19 6
+A
+18 6
+
+#55034
+ice crystals~
+{cIc{be {wcrystals{x~
+Some {cic{be {wcrystals{x melt here.~
+~
+26 1 1
+25~ fly~ cure poison~ giant strength~
+1 0 0
+
+#55056
+werewolf fangs~
+a set of werewolf fangs~
+A set of fangs have been ripped out of the mouth of a werewolf.~
+~
+5 16777216|67108864 8192
+~ ~ ~ 10~
+3 0 0
+A
+19 5
+A
+18 2
+A
+13 5
+A
+14 50
+
+#55060
+ancient acorn~
+an ancient acorn~
+An ancient acorn has been set here. Will it grow into a tree?~
+~
+9 1|16384 1|16384
+~ ~ ~ ~
+1 0 0
+A
+13 150
+A
+14 -2000
+A
+2 -1
+A
+1 1
+A
+5 1
+A
+3 -1
+
+#55061
+clot blood~
+a clot of {Rblood{x~
+A clot of {Rblood{x bobs along in the air.~
+~
+9 2048 1|32768
+~ ~ ~ ~
+1 0 0
+A
+19 1
+A
+18 1
+
+#55055
+crack~
+the crack in the wall~
+{x~
+~
+33 0 0
+55099~ 54999~ 1~ 100~
+1000 0 0
+
+#55062
+pile money platinum~
+a pile of money~
+A pile of money is stacked in the middle of the room.~
+~
+20 0 1
+10~ 20~ 10~ 5~
+1 0 0
+
+#55063
+crack~
+the crack in the wall~
+{x~
+~
+33 0 0
+55078~ 54999~ 1~ 100~
+1000 0 0
+
+#55037
+broken statue~
+a broken statue~
+A broken statue lies toppled here.~
+~
+12 0 0
+~ ~ ~ ~
+200 0 0
+
+#55038
+broken statue~
+a broken statue~
+A broken statue lies toppled here.~
+~
+12 0 0
+~ ~ ~ ~
+200 0 0
+
+#55040
+pile jumble items~
+a jumbled pile of items~
+A jumbled pile of items is strewn here.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+
+#55068
+star cloak~
+a {yst{war{x cloak~
+a {yst{war{x cloak flutters in the breeze.~
+~
+9 1 1|1024
+~ ~ ~ ~
+1 0 0
+A
+13 200
+A
+4 2
+
+#55064
+ruby hammer~
+a {rruby{x hammer~
+A {rruby{x hammer catches your eye.~
+~
+5 256 1|8192
+~ ~ ~ 7~
+3 0 0
+A
+19 2
+A
+18 2
+A
+5 1
+
+#55065
+money copper coin~
+a shiny copper coin~
+A shiny copper coin spins around on the ground.~
+~
+20 1 1
+1~ 0~ 0~ 0~
+1 0 0
+
+#55066
+shard sword~
+a shard sword~
+A shard sword glitters mightily.~
+~
+5 1 1|8192
+~ ~ ~ 3~
+1 0 0
+A
+14 400
+A
+1 -1
+A
+19 -4
+A
+18 5
+A
+2 2
+A
+3 -4
+A
+12 -100
+
+#55070
+platinum money coins~
+some platinum coins~
+Some platinum coins! Quick, grab them!~
+~
+20 0 1
+0~ 0~ 0~ 15~
+1 0 0
+
+#55041
+blasted cabinet~
+a blasted apart cabinet~
+A blasted apart cabinet lies in pieces here.~
+~
+13 0 0
+~ ~ ~ ~
+6 0 0
+
+#55042
+shard sword~
+a {cshar{bd{x of a sword~
+A {cshar{bd{x of a sword is embedded into the ground here.~
+~
+5 8|524288|268435456 1
+~ ~ ~ 1~
+1 0 0
+A
+19 500
+A
+18 500
+A
+13 10000
+A
+34 1
+
+#55043
+shard sword~
+a {cshar{bd{x of a sword~
+A {cshar{bd{x of a sword is embedded into the ground here.~
+~
+5 8|524288|268435456 1
+~ ~ ~ 1~
+1 0 0
+A
+19 50
+A
+18 50
+A
+13 10000
+A
+34 1
+
+#55011
+white chain mail~
+some {wwhite{x chain mail~
+Some {wwhite{x chain mail is here.~
+~
+9 512 1|8
+~ ~ ~ ~
+6 0 0
+A
+19 5
+
+#55012
+white cloak~
+a snowy {wwhite{x cloak~
+A snowy {wwhite{x cloak is piled here.~
+~
+9 0 1|1024
+~ ~ ~ ~
+1 0 0
+A
+18 5
+A
+19 5
+A
+24 30
+A
+23 30
+
+#55013
+white hood~
+a pure {wwhite{x hood~
+A pure {wwhite{x hood has been set here.~
+~
+9 0 1|16
+~ ~ ~ ~
+1 0 0
+A
+18 5
+A
+19 8
+A
+12 50
+
+#55014
+slim blade~
+a slim blade~
+A slim blade sits here.~
+~
+5 0 1|8192
+~ ~ ~ 1~
+2 0 0
+A
+19 5
+A
+18 5
+A
+13 15
+
+#55051
+pulsing stone rock~
+a {rpulsing{x stone {W({xThat you should {RKEEP!!!{W){x~
+{x~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#55076
+flaring essence~
+a {wflar{ging {wess{gence{x {W({xThat you should {RKEEP!!!{W){x~
+a {Yflaring essence{x~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#55067
+Tynan's corpse~
+Tynan's corpse~
+Tynan's corpse lies here.~
+~
+15 16 1
+100~ 0~ -1~ ~
+1 0 0
+
+#55015
+broken slim blade~
+a broken slime blade~
+Tynan's broken blade lies here.~
+~
+13 16 1
+~ ~ ~ ~
+1 0 0
+
+#55002
+brown tunic~
+a sturdy brown tunic~
+Adonis' brown tunic lies here.~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+A
+19 5
+A
+18 5
+A
+14 100
+
+#55003
+thick black pants~
+thick black pants~
+A pair of thick black pants have been tossed here.~
+~
+9 1024 1|32
+~ ~ ~ ~
+1 0 0
+A
+19 3
+A
+18 3
+
+#55004
+sturdy black boots~
+a pair of sturdy {dblack{x boots.~
+A pair of sturdy {dblack{x boots have been discarded here.~
+~
+9 1024 1|64
+~ ~ ~ ~
+2 0 0
+A
+19 4
+A
+18 4
+
+#55005
+Adonis' scabbard~
+{rAdonis'{x {ws{ycabb{war{yd{x~
+{rAdonis'{x {ws{ycabb{war{yd{x is here.~
+~
+9 1024 1|2048
+~ ~ ~ ~
+1 0 0
+A
+19 5
+A
+18 8
+A
+1 3
+
+#55006
+red dress~
+a bright {Rred dress{x~
+Vesta's red dress is here.~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+
+#55007
+black laced boots~
+some {dblack{x laced boots~
+Some {dblack{x laced boots sit here.~
+~
+9 0 1|64
+~ ~ ~ ~
+1 0 0
+
+#55008
+silver pendant~
+a {wsi{ll{x{wv{le{x{wr{x pendant~
+A {wsi{ll{x{wv{le{x{wr{x pendant has been thrown away here.~
+~
+9 0 1|4
+~ ~ ~ ~
+1 0 0
+
+#55010
+small black belt~
+a small black belt~
+A small black belt has fallen here.~
+~
+9 0 1|2048
+~ ~ ~ ~
+1 0 0
+
+#55071
+sparkling twinkling~
+a spa{yrkl{xing {wtwinkling{x~
+*Sparkle, Twinkle.*~
+~
+1 1 1
+~ ~ -1~ ~
+1 0 0
+A
+13 250
+
+#55072
+dragonian neck brace~
+a Dragonian neck brace~
+A Dragonian neck brace spins around here.~
+~
+9 2 1|4
+~ ~ ~ ~
+1 0 0
+A
+13 25
+
+#55073
+Fairy Queen Face Mask~
+A Fairy Queen Face Mask~
+A Fairy Queen Face Mask grins at you.~
+~
+9 1|2|1024|2048 1|16
+~ ~ ~ ~
+1 0 0
+A
+17 -15
+A
+18 8
+A
+19 10
+A
+13 250
+
+#55035
+square buckler~
+a square buckler~
+A square buckler lies dented on the ground.~
+~
+9 0 1|512
+~ ~ ~ ~
+5 0 0
+A
+19 5
+A
+18 2
+A
+17 -50
+
+#55077
+void wand~
+a void wand~
+A void wand erases a bit of reality here.~
+~
+3 1 1
+100~ 10~ 10~ dispel magic~
+1 0 0
+
+#0
+
+#ROOMS
+#55000
+In the {gjungle{x~
+A jungle presses in all around you and things cry out in pain in the
+distance.	
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55010
+D 2
+~
+~
+0 -1 55101
+D 1
+~
+~
+0 -1 55001
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55101
+A sudden jungle~
+The swamp suddenly grows thicker here and a jungle springs up a short distance
+ahead.  There are some mounts tied to rotting logs, apparently left there by
+those who have previously ventured into the thick vegetation ahead. They
+must be well trained to sit here so long. Maybe they're waiting to follow
+someone out of here? You tell one of them to follow you and to your surprise
+they do!
+~
+0 4 3
+D 0
+~
+~
+0 -1 55000
+D 2
+~
+~
+0 -1 31426
+S
+
+#55001
+In the {gjungle{x~
+The {gjungle{x presses in around you, and you hear...something...moving.	
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55011
+D 1
+~
+~
+0 -1 55002
+D 3
+~
+~
+0 -1 55000
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55002
+In the {gjungle{x~
+Sounds whirl through the green landscape and shadows creep toward you.	
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55012
+D 1
+~
+~
+0 -1 55003
+D 3
+~
+~
+0 -1 55001
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55003
+In the {gjungle{x~
+Bugs crawl down the vines and leaves around you and larger {rthings{x keep 
+just out of view...for now.	
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55013
+D 1
+~
+~
+0 -1 55004
+D 3
+~
+~
+0 -1 55002
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55004
+In the {gjungle{x~
+The {ggreen{x is almost uninterrupted but for the flittering shadows that 
+streak by in a wave of apprehension.	
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55014
+D 1
+~
+~
+0 -1 55005
+D 3
+~
+~
+0 -1 55003
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55005
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55015
+D 1
+~
+~
+0 -1 55006
+D 3
+~
+~
+0 -1 55004
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55006
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55016
+D 1
+~
+~
+0 -1 55007
+D 3
+~
+~
+0 -1 55005
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55007
+In the {gjungle{x~
+You spot some {rblood{x splattered across the green of the all encompassing 
+jungle. What did that?
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55017
+D 1
+~
+~
+0 -1 55008
+D 3
+~
+~
+0 -1 55006
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55008
+In the {gjungle{x~
+Something seems to be following you up in the trees. You can hear it. However, 
+when you look up, there's nothing there...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55018
+D 1
+~
+~
+0 -1 55009
+D 3
+~
+~
+0 -1 55007
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55009
+In the {gjungle{x~
+It's eerily quiet...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55019
+D 3
+~
+~
+0 -1 55008
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55010
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55020
+D 2
+~
+~
+0 -1 55000
+D 1
+~
+~
+0 -1 55011
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55011
+In the {gjungle{x~
+You hear creatures growling just out of view. Of course, anything not right in 
+front of you is out of view...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55021
+D 2
+~
+~
+0 -1 55001
+D 1
+~
+~
+0 -1 55012
+D 3
+~
+~
+0 -1 55010
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55012
+In the {gjungle{x~
+Shadows unnaturally stretch across the landscape at all angles and you hear 
+things growl and roar, you think...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55022
+D 2
+~
+~
+0 -1 55002
+D 1
+~
+~
+0 -1 55013
+D 3
+~
+~
+0 -1 55011
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55013
+In the {gjungle{x~
+It's eerily quiet...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55023
+D 2
+~
+~
+0 -1 55003
+D 1
+~
+~
+0 -1 55014
+D 3
+~
+~
+0 -1 55012
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55014
+In the {gjungle{x~
+You spot some {rblood{x splattered across the green of the all encompassing 
+jungle. What did that?
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55024
+D 2
+~
+~
+0 -1 55004
+D 1
+~
+~
+0 -1 55015
+D 3
+~
+~
+0 -1 55013
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55015
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55025
+D 2
+~
+~
+0 -1 55005
+D 1
+~
+~
+0 -1 55016
+D 3
+~
+~
+0 -1 55014
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55016
+In the {gjungle{x~
+Something seems to be following you up in the trees, you can hear it. However, 
+when you look up, there's nothing there...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55026
+D 2
+~
+~
+0 -1 55006
+D 1
+~
+~
+0 -1 55017
+D 3
+~
+~
+0 -1 55015
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55017
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55027
+D 2
+~
+~
+0 -1 55007
+D 1
+~
+~
+0 -1 55018
+D 3
+~
+~
+0 -1 55016
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55018
+In the {gjungle{x~
+Shadows unnaturally stretch across the landscape in all angles, and you hear 
+things growl and roar, you think...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55028
+D 2
+~
+~
+0 -1 55008
+D 1
+~
+~
+0 -1 55019
+D 3
+~
+~
+0 -1 55017
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55019
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55029
+D 2
+~
+~
+0 -1 55009
+D 3
+~
+~
+0 -1 55018
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55020
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55030
+D 2
+~
+~
+0 -1 55010
+D 1
+~
+~
+0 -1 55021
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55021
+In the {gjungle{x~
+You see a trail of {rblood{x across the path you are trying to follow. You 
+don't see anything dead near by, but then, you don't see much of anything.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55031
+D 2
+~
+~
+0 -1 55011
+D 1
+~
+~
+0 -1 55022
+D 3
+~
+~
+0 -1 55020
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55022
+In the {gjungle{x~
+You see a lot of {ggreen{x, but not much else. This place is a huge maze, 
+apparently.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55032
+D 2
+~
+~
+0 -1 55012
+D 1
+~
+~
+0 -1 55023
+D 3
+~
+~
+0 -1 55021
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55023
+In the {gjungle{x~
+Something swoops by over head and you get the distinct impression it had nice 
+long razor-sharp claws.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55033
+D 2
+~
+~
+0 -1 55013
+D 1
+~
+~
+0 -1 55024
+D 3
+~
+~
+0 -1 55022
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55024
+In the {gjungle{x~
+Shadows unnaturally stretch across the landscape at all angles, and you hear 
+things growl and roar, you think...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55034
+D 2
+~
+~
+0 -1 55014
+D 1
+~
+~
+0 -1 55025
+D 3
+~
+~
+0 -1 55023
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55025
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55035
+D 2
+~
+~
+0 -1 55015
+D 1
+~
+~
+0 -1 55026
+D 3
+~
+~
+0 -1 55024
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55026
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55036
+D 2
+~
+~
+0 -1 55016
+D 1
+~
+~
+0 -1 55027
+D 3
+~
+~
+0 -1 55025
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55027
+In the {gjungle{x~
+It's eerily quiet...
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55037
+D 2
+~
+~
+0 -1 55017
+D 1
+~
+~
+0 -1 55028
+D 3
+~
+~
+0 -1 55026
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55028
+In the {gjungle{x~
+You spot some {rblood{x splattered across the green of the all encompassing 
+jungle. What did that?
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55038
+D 2
+~
+~
+0 -1 55018
+D 1
+~
+~
+0 -1 55029
+D 3
+~
+~
+0 -1 55027
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55029
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55039
+D 2
+~
+~
+0 -1 55019
+D 3
+~
+~
+0 -1 55028
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55030
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55020
+D 1
+~
+~
+0 -1 55031
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55031
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55021
+D 1
+~
+~
+0 -1 55032
+D 3
+~
+~
+0 -1 55030
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55032
+In the {gjungle{x~
+You sense...{bevil{x at this place. It seems to come from every direction...
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55022
+D 1
+~
+~
+0 -1 55033
+D 3
+~
+~
+0 -1 55031
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55033
+In the {gjungle{x~
+It almost seems like the {gvegetation{x is...{ypulling{x at you. In the corner
+of your eye it seems to shift towards you, but when you look there's nothing.
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55023
+D 1
+~
+~
+0 -1 55034
+D 3
+~
+~
+0 -1 55032
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55034
+In the {gjungle{x~
+You spot some {rblood{x splattered across the green of the all encompassing 
+jungle. What did that?
+~
+0 1|8192 3
+D 0
+The jungle things out ahead.
+~
+~
+0 -1 55040
+D 2
+~
+~
+0 -1 55024
+D 1
+~
+~
+0 -1 55035
+D 3
+~
+~
+0 -1 55033
+E
+south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55035
+In the {gjungle{x~
+The jungle sprawls in all directions and various guttural noises in the 
+distance make it to your ears...
+~
+0 1|8192 3
+D 0
+The jungle thins out ahead.
+~
+~
+0 -1 55041
+D 2
+~
+~
+0 -1 55025
+D 1
+~
+~
+0 -1 55036
+D 3
+~
+~
+0 -1 55034
+E
+south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55036
+In the {gjungle{x~
+Shadows unnaturally stretch across the landscape at all angles, and you hear 
+things growl and roar, you think...
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55026
+D 1
+~
+~
+0 -1 55037
+D 3
+~
+~
+0 -1 55035
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55037
+In the {gjungle{x~
+It's eerily quiet...
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55027
+D 1
+~
+~
+0 -1 55038
+D 3
+~
+~
+0 -1 55036
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55038
+In the {gjungle{x~
+Something seems to be following you up in the trees, you can hear it. However, 
+when you look up, there's nothing there...
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55028
+D 1
+~
+~
+0 -1 55039
+D 3
+~
+~
+0 -1 55037
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55039
+In the {gjungle{x~
+Something slams into your back, but when you whirl around you catch only a 
+glimpse of a dark shape disappearing into the dense jungle.
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55029
+D 3
+~
+~
+0 -1 55038
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55040
+Way out of the jungle~
+The jungle finally starts to thin out here, leading towards what looks like a 
+clearing to the north.
+~
+0 4|8192 2
+D 0
+~
+~
+0 -1 55042
+D 2
+~
+~
+0 -1 55034
+D 1
+~
+~
+0 -1 55041
+E
+north south east west up down~
+You see nothing but more jungle.
+~
+S
+
+#55041
+Way out of the jungle~
+The jungle finally starts to thin out here, leading towards what looks like a 
+clearing to the north.
+~
+0 4|8192 2
+D 0
+~
+~
+0 -1 55043
+D 2
+~
+~
+0 -1 55035
+D 3
+~
+~
+0 -1 55040
+S
+
+#55042
+A clearing~
+You emerge into a small clearing. It appears to be empty...mostly.
+~
+0 1|8192 2
+D 0
+~
+~
+0 -1 55045
+D 2
+~
+~
+0 -1 55040
+D 1
+~
+~
+0 -1 55043
+E
+clearing mostly~
+Three distinct sets of tracks are spread throughout the clearing.
+They appear to have been made by child-sized creatures, perhaps
+imps or goblins. Probably imps, as there's one standing in the middle
+of this otherwise empty clearing muttering to himself.
+~
+S
+
+#55043
+A clearing~
+You emerge into a small clearing. It appears to be empty, but you see
+something to the west. A child?
+~
+0 8192 2
+D 0
+~
+~
+0 -1 55046
+D 2
+~
+~
+0 -1 55041
+D 3
+You try making out what lies to the west, but all you can tell is that there's
+a child sized shape in the center of the clearing.
+~
+~
+0 -1 55042
+S
+
+#55044
+A small grove~
+You stumble upon a small creature who seems to want to tell you a tale. Very
+badly.
+~
+0 1 3
+D 1
+~
+~
+0 -1 55045
+S
+
+#55045
+A small grove~
+You step into a small grove of trees that spread east and west. To the north 
+you see a darkness that may be the opening to a cave or something.
+~
+0 1|8192 3
+D 0
+~
+~
+0 -1 55048
+D 2
+~
+~
+0 -1 55042
+D 1
+~
+~
+0 -1 55046
+D 3
+~
+~
+0 -1 55044
+S
+
+#55046
+A small grove~
+You step into a small grove of trees that spread east and west. To the north 
+you see a darkness that may be the opening to a cave or something.
+~
+0 1|8192 3
+D 2
+~
+~
+0 -1 55043
+D 1
+~
+~
+0 -1 55047
+D 3
+~
+~
+0 -1 55045
+S
+
+#55047
+A small grove~
+You come across a rather hostile creature, but not in the physical sense...for 
+now, anyway.
+~
+0 1|8192 3
+D 3
+~
+~
+0 -1 55046
+S
+
+#55048
+Large cavern~
+You step into a large open cavern. It LOOKS safe enough...the odd door towards 
+the back is {yglowing{x slightly, though.
+~
+0 1|8|8192 0
+D 0
+~
+~
+8 55074 55049
+D 2
+~
+~
+0 -1 55045
+S
+
+#55049
+Large cavern~
+You step into another large open cavern. This one has a glowing door in the 
+back as well.
+~
+0 1|8|8192 0
+D 0
+~
+~
+8 55075 55050
+D 2
+~
+~
+0 -1 55048
+S
+
+#55095
+Teleport Room~
+Mobs enter the portal thereby teleporting around the jungle.
+~
+0 8 0
+S
+
+#55050
+A skull statue and inside a temple~
+{x     _.--"""""--._
+{x   .'             '.
+{x  /                 \
+{x ;                   ;
+{x |                   |
+{x |                   |
+{x ;                   ;
+{x  \ (`'--,    ,--'`) /
+{x   \ \  {r_{x )  ( {r_{x  / /
+{x    ) ){r('){x/  \{r('){x( (
+{x   (_ `""` /\ `""` _)
+{x    \`"-, /  \ ,-"`/
+{x     `\ / `""` \ /`
+{x      |/\/\/\/\/\|
+{x      |\        /|
+{x      ; |/\/\/\| ;
+{x       \`-`--`-`/
+{x        \      /
+{x         ',__,'
+{x          q__p
+{x          q__p
+{x          q__p
+{x          q__p
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55053
+S
+
+#55051
+Stone steps~
+Stone steps rise up from here, apparently leading up to another floor of the 
+temple. If this is, in fact, a temple...
+~
+0 4|8|8192 0
+D 1
+~
+~
+0 -1 55052
+D 4
+~
+~
+0 -1 55060
+S
+
+#55052
+A temple hallway~
+The stone walls of the hallway appear to be in perfect condition here. Odd.
+You smell various fragrances -some good, some not so good- coming from the
+north.
+
+To the west is a stone door.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55056
+D 1
+~
+~
+0 -1 55053
+D 3
+~
+~
+8 55046 55051
+S
+
+#55053
+A temple hallway~
+It appears you're in some sort of temple. It seems to be in fairly good 
+condition, except for the slight slash marks here and there and a splatter of 
+{rblood{x...
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55057
+D 2
+~
+~
+0 -1 55050
+D 1
+~
+~
+0 -1 55054
+D 3
+~
+~
+0 -1 55052
+S
+
+#55054
+A temple hallway~
+The temple runs on, as do the signs that there's a battle taking place or has 
+recently done so. You don't hear the sound of fighting at the moment so maybe 
+it's over. For now.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55058
+D 1
+~
+~
+0 -1 55055
+D 3
+~
+~
+0 -1 55053
+S
+
+#55055
+A temple hallway~
+The hallway appears empty, yet you get a sense of not being alone...it's
+eerie.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55059
+D 3
+~
+~
+0 -1 55054
+S
+
+#55056
+Mixture room~
+This room seems to contain various ingredients someone used to make various 
+concoctions. Doubtless, some of them were pretty nasty. The different vials of 
+liquid line the walls on small shelves, while pots of different colors of 
+powder sit on a bench.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55052
+S
+
+#55057
+A destroyed room~
+There's a burning table in this room as well as rubble on the ground. This 
+appears to be a sure sign that something has gone on, and recently.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55053
+S
+
+#55058
+Among the rubble~
+Bits of rubble from some sort of explosion or impact litter the floor
+of this room.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55054
+S
+
+#55059
+Fallen in roof~
+Here there is a definite sign of a battle of some sort having been fought. 
+There are scorch marks on the top of the walls and the roof seems to have been 
+blasted apart and has fallen in.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55055
+S
+
+#55060
+A bright room~
+The walls of this room seem to be glowing with some sort of...energy. It's 
+much brighter than the other rooms so far, but then, the prior rooms aren't 
+that bright.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55061
+D 5
+~
+~
+0 -1 55051
+S
+
+#55061
+A stone hallway~
+A stone walled hallway runs along here, There are cracks and chips in it that 
+appear to be fresh.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55063
+D 3
+~
+~
+0 -1 55060
+S
+
+#55062
+Signs of battle~
+There's no mistaking the signs of battle this time. The room yields the fresh 
+corpse of... something and a burning table that hasn't been long aflame.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55063
+S
+
+#55063
+A stone hallway~
+A stone walled hallway runs along here, there are cracks and chips in it that 
+appear to be fresh.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55066
+D 2
+~
+~
+0 -1 55061
+D 1
+~
+~
+0 -1 55064
+D 3
+~
+~
+0 -1 55062
+S
+
+#55064
+Room of keys~
+This room contains some sort of bizarre creature that apparently feeds
+on metal...
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55063
+S
+
+#55065
+Dark hallway~
+The hallway suddenly turns near to {dpitch black{x here. It feels {ccolder{x, 
+as well. Something isn't right...
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55074
+D 1
+~
+~
+0 -1 55066
+S
+
+#55066
+A stone hallway~
+A stone walled hallway runs along here, there are cracks and chips in it that 
+appear to be fresh.
+
+A door with a large gouge in it sits to the east.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55063
+D 1
+~
+~
+1 -1 55067
+D 3
+~
+~
+0 -1 55065
+S
+
+#55067
+Broken mirrors~
+This room contains half a dozen mirrors, all smashed. A few of them look to 
+have been thrown...
+~
+0 8|8192 0
+D 0
+~
+~
+1 -1 55076
+D 3
+~
+~
+1 -1 55066
+S
+
+#55068
+A frantic goblin~
+A frantic goblin runs around here. He seems to be scared out of his mind or
+crazy. Or both.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55077
+D 1
+~
+~
+0 -1 55069
+S
+
+#55069
+A stone hallway~
+A stone walled hallway runs along here. There are cracks and chips in it that 
+appear to be fresh.
+~
+0 8|8192 0
+D 2
+~
+~
+1 -1 55070
+D 1
+~
+~
+0 -1 55071
+D 3
+~
+~
+0 -1 55068
+S
+
+#55070
+A frozen room~
+The temperature in this room seems to be somewhere in the {cc{wol{cd{x-as-hell
+range.
+
+After the shock of the cold starts to wear off you notice there is something
+drifting around the room...
+~
+0 8|8192|131072 0
+D 0
+~
+~
+1 -1 55069
+D 1
+~
+~
+0 -1 55094
+S
+
+#55071
+An angry werewolf~
+A large creature spins toward you as you enter the room and lunges at
+you, fangs glistening.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55069
+S
+
+#55072
+Death~
+My GOD! They're horrifying! They're ravenous! They're really {dANGRY 
+SQUIRRELS{x! Don't piss them off!
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55073
+S
+
+#55073
+A warning~
+Some kind of creature stands up from its resting position as you enter the 
+room. It towers over you and its voice booms out with a warning.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55074
+D 3
+~
+~
+0 -1 55072
+S
+
+#55074
+A sense of doom~
+Suddenly, a sense of...wrongness washes over you. You can just feel something 
+is wrong ahead. Your steps falter for a moment...
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55065
+D 3
+~
+~
+0 -1 55073
+S
+
+#55075
+Damaged hall~
+The hallway here is covered in hacks and slashes, while large holes are here 
+and there.
+~
+0 8|8192 0
+D 0
+~
+~
+1 -1 55081
+D 1
+~
+~
+0 -1 55076
+S
+
+#55076
+An unseen force~
+You get the feeling something’s watching you, but this room isn't very big and
+you see nothing...
+~
+0 8|8192 0
+D 2
+~
+~
+1 -1 55067
+D 3
+~
+~
+0 -1 55075
+S
+
+#55077
+A {rBlood{c Minion{x~
+This room is covered in {r{oblood{x! There's some kind of thing in the
+middle of it, trailing it as it moves.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55068
+D 1
+~
+~
+0 -1 55078
+S
+
+#55078
+A cracked wall~
+The east wall here has been struck by a tremendous force, apparently. There's 
+a huge crack running through the center and up out of the room. It looks large 
+enough to easily enter and climb.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55084
+D 3
+~
+~
+0 -1 55077
+S
+
+#55099
+Some kind of vault~
+Climbing out of the crack leads you to this room full of money. There doesn't 
+seem to be any other way out other than the same crack you followed in to 
+here.
+~
+0 8|8192 0
+S
+
+#55079
+Aged room~
+As you step into this room you almost fall as the floor gives away at your 
+feet. Looking around, the room appears to be....very old. It appears that 
+whatever happened to the rest of this place to hold it in time missed this 
+room for some reason. The room runs on to the east.
+~
+0 8|8192 0
+D 0
+~
+~
+1 -1 55085
+D 1
+~
+~
+0 -1 55080
+S
+
+#55080
+Rotted floor~
+In this part of the room the floor is almost completely gone, exposing beams 
+and holes to what most likely is the floor below. You pay extra attention to 
+your footing as you cross.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55086
+D 3
+~
+~
+0 -1 55079
+S
+
+#55081
+Toppled statues~
+Large statues of someone that is no longer recognizable lie toppled about the 
+floor in this room.
+~
+0 8|8192 0
+D 2
+~
+~
+1 -1 55075
+D 1
+~
+~
+1 -1 55082
+S
+
+#55082
+Stone hallway~
+A stone walled hallway runs along here. There are cracks and chips in it that 
+appear to be fresh.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55083
+D 3
+~
+~
+1 -1 55081
+S
+
+#55083
+A noise from the north~
+As you come to this intersection you faintly here a voice coming from the 
+north. You can't quite make out what it's saying.
+~
+0 8|8192 0
+D 0
+~
+~
+1 -1 55090
+D 1
+~
+~
+0 -1 55084
+D 3
+~
+~
+0 -1 55082
+S
+
+#55084
+Stone hallway~
+A stone walled hallway runs along here. There are cracks and chips in it that 
+appear to be fresh.
+
+A door hangs slightly ajar to the east.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55078
+D 1
+~
+~
+1 -1 55085
+D 3
+~
+~
+0 -1 55083
+S
+
+#55085
+An empty room~
+This room contains a few rugs, but it appears to be completely bare otherwise.
+~
+0 8|8192 0
+D 2
+~
+~
+1 -1 55079
+D 3
+~
+~
+1 -1 55084
+S
+
+#55086
+Piles of items~
+This part of the hallway seems to have kept with the flow of time, as well. 
+However, it appears only extremely dusty and old, rather than deteriorated. 
+Oddly, there is a pile of items strewn across the hall that look fairly new...
+~
+0 4|8|8192 0
+D 2
+~
+~
+0 -1 55080
+D 1
+~
+~
+0 -1 55087
+S
+
+#55087
+A trader~
+Well, this explains the items. Apparently some sort of God-like being has 
+taken up residence in this part of the temple and he's interested in Trade. 
+The logic of him being a God-like being wanting to trade items and him 
+choosing to do so here escapes you. It must be one of those things mere 
+mortals aren't meant to understand.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55086
+D 5
+You focus your attention on the floor and suddenly a door of some kind
+seems to snap into existence. Tugging on the door you discover it seems
+to be connected to the surrounding room and giving it a mighty thump
+further reveals it's connected to things in previous rooms, as things
+in said previous rooms rattle and shift. It's going to take some kind
+of detailed blueprint or some such to unlock this door...
+~
+Safe-Door Safe Room Door~
+11 28042 55100
+S
+
+#55088
+An obliterated room~
+This room has been totally obliterated. The walls are barely standing and
+anything the room held has been completely destroyed. Amazingly, there seems
+to be something alive in here. It's practically in multiple pieces, but alive.
+~
+0 8|8192 0
+D 0
+~
+~
+0 -1 55091
+D 1
+~
+~
+1 -1 55089
+S
+
+#55089
+The noise continues~
+As you enter this room you can clearly make out what sounds like a voice
+coming from the west. It sounds as if someone is calling for {yhelp{x and
+warning of {rdanger{x.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55090
+D 3
+~
+~
+1 -1 55088
+S
+
+#55090
+A wounded creature~
+A wounded creature of some kind lies against the wall. It seems to be healing
+itself some how.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55083
+D 3
+~
+~
+0 -1 55089
+S
+
+#55091
+A tranquil room~
+This room seems oddly...tranquil. There doesn't look to be much damage. There 
+seems to be old slashes and blast marks on the wall, but they're minor 
+compared to some of what you've seen so far.
+~
+0 4|8|8192 0
+D 0
+~
+~
+0 -1 55092
+D 2
+~
+~
+0 -1 55088
+S
+
+#55092
+Adonis~
+This room is in perfect condition. It's covered in a breathtaking {wwhite{x 
+everywhere you look. A figure stands in the middle of the room, in a blinding 
+outfit complete with a slim blade of the purest white that matches the room. 
+There seems to be a slight alcove to the east.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55091
+D 1
+~
+~
+0 -1 55104
+S
+
+#55093
+Adonis~
+The room is as simple as the previous one, with the exception of this
+one being occupied.
+~
+0 8|8192 0
+D 1
+~
+~
+0 -1 55098
+S
+
+#55094
+A turbulent room~
+The very fabric of reality seems to be shifting in this room. It's a chaotic 
+storm of madness. Everywhere you look forces seem to crash, split, shift. 
+There's a single spot of calmness- a small area around a sword that's sticking 
+out of the ground in the middle of the room.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55070
+S
+
+#55096
+Vesta's Room~
+Vesta sits in here.
+~
+0 8|8192 0
+S
+
+#55097
+Tynan~
+Tynan sits here.
+~
+0 8|8192 0
+S
+
+#55098
+Nice Room~
+You appear in a simple room that appears to be part of the temple you
+were just in. There doesn't seem to be a door or any other connection
+back, though.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55093
+S
+
+#55100
+Traders Safe Room~
+This must be where the god-like Trader keeps all his inventory. Some of the 
+stuff seems to have extra security measures and vanishes upon your entry, but 
+a few items remain.
+~
+0 8|8192 0
+D 4
+~
+~
+1 -1 55087
+S
+
+#55102
+Adonis~
+This room is in perfect condition. It's covered in a breath taking
+{wwhite{x everywhere you look. A figure stands in the middle of the
+room, in a blinding outfit complete with a slim blade of the purest
+white that matches the room. There seems to be a slight alcove to
+the east.
+~
+0 8|8192 0
+D 2
+~
+~
+0 -1 55091
+D 1
+~
+~
+0 -1 55105
+S
+
+#55103
+A tranquil room~
+This room seems oddly...tranquil. There doesn't look to be much damage. There 
+seems to be old slashes and blast marks on the wall, but they're minor 
+compared to some of what you've seen so far.
+~
+0 4|8|8192 0
+D 0
+~
+~
+0 -1 55102
+D 2
+~
+~
+0 -1 55088
+S
+
+#55104
+Alcove~
+This section of the room is covered in white as well. However, when you get 
+closer to the wall you feel a slight tingle. After a moment it goes away. 
+Nothing seems to be changed...The only thing that seems to stand out from all 
+the pure, holy whiteness is a softly {rp{xul{Rs{xing rock by the wall.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55092
+S
+
+#55105
+Alcove~
+This section of the room is covered in white as well. However, when you get 
+closer to the wall you feel a slight tingle. After a moment it goes away. 
+Nothing seems to be changed...The only thing that seems to stand out from all 
+the pure, holy whiteness is a softly {rp{xul{Rs{xing rock by the wall.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 55102
+S
+#0
+
+#RESETS
+R 0 55000 4                     randomise exits in In the {gjungle{x
+R 0 55001 4                     randomise exits in In the {gjungle{x
+R 0 55002 4                     randomise exits in In the {gjungle{x
+R 0 55003 4                     randomise exits in In the {gjungle{x
+R 0 55004 4                     randomise exits in In the {gjungle{x
+R 0 55005 4                     randomise exits in In the {gjungle{x
+R 0 55006 4                     randomise exits in In the {gjungle{x
+R 0 55007 4                     randomise exits in In the {gjungle{x
+R 0 55008 4                     randomise exits in In the {gjungle{x
+R 0 55009 4                     randomise exits in In the {gjungle{x
+R 0 55010 4                     randomise exits in In the {gjungle{x
+R 0 55011 4                     randomise exits in In the {gjungle{x
+R 0 55012 4                     randomise exits in In the {gjungle{x
+R 0 55013 4                     randomise exits in In the {gjungle{x
+R 0 55014 4                     randomise exits in In the {gjungle{x
+R 0 55015 4                     randomise exits in In the {gjungle{x
+R 0 55016 4                     randomise exits in In the {gjungle{x
+R 0 55017 4                     randomise exits in In the {gjungle{x
+R 0 55018 4                     randomise exits in In the {gjungle{x
+R 0 55019 4                     randomise exits in In the {gjungle{x
+R 0 55020 4                     randomise exits in In the {gjungle{x
+R 0 55021 4                     randomise exits in In the {gjungle{x
+R 0 55022 4                     randomise exits in In the {gjungle{x
+R 0 55023 4                     randomise exits in In the {gjungle{x
+R 0 55024 4                     randomise exits in In the {gjungle{x
+R 0 55025 4                     randomise exits in In the {gjungle{x
+R 0 55026 4                     randomise exits in In the {gjungle{x
+R 0 55027 4                     randomise exits in In the {gjungle{x
+R 0 55028 4                     randomise exits in In the {gjungle{x
+R 0 55029 4                     randomise exits in In the {gjungle{x
+R 0 55030 4                     randomise exits in In the {gjungle{x
+R 0 55031 4                     randomise exits in In the {gjungle{x
+R 0 55032 4                     randomise exits in In the {gjungle{x
+R 0 55033 4                     randomise exits in In the {gjungle{x
+R 0 55034 4                     randomise exits in In the {gjungle{x
+R 0 55035 4                     randomise exits in In the {gjungle{x
+R 0 55036 4                     randomise exits in In the {gjungle{x
+R 0 55037 4                     randomise exits in In the {gjungle{x
+R 0 55038 4                     randomise exits in In the {gjungle{x
+R 0 55039 4                     randomise exits in In the {gjungle{x
+D 0 55048 0 2                   lock north in Large cavern
+D 0 55049 0 2                   lock north in Large cavern
+D 0 55052 3 2                   lock west in A temple hallway
+D 0 55066 1 1                   close east in A stone hallway
+D 0 55067 0 1                   close north in Broken mirrors
+D 0 55067 3 1                   close west in Broken mirrors
+D 0 55069 2 1                   close south in A stone hallway
+D 0 55070 0 1                   close north in A frozen room
+D 0 55075 0 1                   close north in Damaged hall
+D 0 55076 2 1                   close south in An unseen force
+D 0 55079 0 1                   close north in Aged room
+D 0 55081 2 1                   close south in Toppled statues
+D 0 55081 1 1                   close east in Toppled statues
+D 0 55082 3 1                   close west in Stone hallway
+D 0 55083 0 1                   close north in A noise from the north
+D 0 55084 1 1                   close east in Stone hallway
+D 0 55085 2 1                   close south in An empty room
+D 0 55085 3 1                   close west in An empty room
+D 0 55087 5 2                   lock down in A trader
+D 0 55088 1 1                   close east in An obliterated room
+D 0 55089 3 1                   close west in The noise continues
+D 0 55100 4 1                   close up in Traders Safe Room
+M 0 55045 1 55101               add Stripes the Tiger to A sudden jungle
+M 0 55046 1 55101               add Manuel the Kangaroo to A sudden jungle
+M 0 55047 1 55101               add Squeekers the Giant Penguin to A sudden jungle
+M 0 55048 1 55101               add Arelith the Copper Dragon to A sudden jungle
+M 0 55049 1 55101               add Punnbinky the Pink Bunny to A sudden jungle
+M 0 55044 1 55000               add The jungle teleporter mob to In the {gjungle{x
+M 0 55035 1 55002               add a silver wolf to In the {gjungle{x
+M 0 55036 1 55030               add an Angel to In the {gjungle{x
+M 0 55011 1 55042               add an ancient imp to A clearing
+M 0 55012 1 55044               add a chatty critter to A small grove
+E 0 55052 0 16                      equip some kind of three pronged spear (wield)
+M 0 55028 1 55047               add a hostile creature to A small grove
+M 0 55004 3 55095               add A hulking beast to Teleport Room
+E 0 55053 0 16                      equip deadly horns (wield)
+E 0 55054 0 18                      equip flashing claws (dual)
+M 0 55004 3 55095               add A hulking beast to Teleport Room
+E 0 55053 0 16                      equip deadly horns (wield)
+E 0 55054 0 18                      equip flashing claws (dual)
+M 0 55004 3 55095               add A hulking beast to Teleport Room
+E 0 55053 0 16                      equip deadly horns (wield)
+E 0 55054 0 18                      equip flashing claws (dual)
+M 0 55009 3 55095               add a solidified shadow to Teleport Room
+M 0 55009 3 55095               add a solidified shadow to Teleport Room
+M 0 55009 3 55095               add a solidified shadow to Teleport Room
+M 0 55010 3 55095               add a twitching vine to Teleport Room
+M 0 55010 3 55095               add a twitching vine to Teleport Room
+M 0 55010 3 55095               add a twitching vine to Teleport Room
+M 0 55029 10 55000              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55004              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55008              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55012              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55016              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55020              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55024              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55028              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55032              add faerie fire mob to In the {gjungle{x
+M 0 55029 10 55036              add faerie fire mob to In the {gjungle{x
+M 0 55030 10 55001              add Trip mob to In the {gjungle{x
+M 0 55030 10 55005              add Trip mob to In the {gjungle{x
+M 0 55030 10 55009              add Trip mob to In the {gjungle{x
+M 0 55030 10 55013              add Trip mob to In the {gjungle{x
+M 0 55030 10 55017              add Trip mob to In the {gjungle{x
+M 0 55030 10 55021              add Trip mob to In the {gjungle{x
+M 0 55030 10 55025              add Trip mob to In the {gjungle{x
+M 0 55030 10 55029              add Trip mob to In the {gjungle{x
+M 0 55030 10 55033              add Trip mob to In the {gjungle{x
+M 0 55030 10 55037              add Trip mob to In the {gjungle{x
+M 0 55031 10 55002              add Hex mob to In the {gjungle{x
+M 0 55031 10 55006              add Hex mob to In the {gjungle{x
+M 0 55031 10 55010              add Hex mob to In the {gjungle{x
+M 0 55031 10 55014              add Hex mob to In the {gjungle{x
+M 0 55031 10 55018              add Hex mob to In the {gjungle{x
+M 0 55031 10 55022              add Hex mob to In the {gjungle{x
+M 0 55031 10 55026              add Hex mob to In the {gjungle{x
+M 0 55031 10 55030              add Hex mob to In the {gjungle{x
+M 0 55031 10 55034              add Hex mob to In the {gjungle{x
+M 0 55031 10 55038              add Hex mob to In the {gjungle{x
+M 0 55032 10 55003              add Rift mob to In the {gjungle{x
+M 0 55032 10 55007              add Rift mob to In the {gjungle{x
+M 0 55032 10 55011              add Rift mob to In the {gjungle{x
+M 0 55032 10 55015              add Rift mob to In the {gjungle{x
+M 0 55032 10 55019              add Rift mob to In the {gjungle{x
+M 0 55032 10 55023              add Rift mob to In the {gjungle{x
+M 0 55032 10 55027              add Rift mob to In the {gjungle{x
+M 0 55032 10 55031              add Rift mob to In the {gjungle{x
+M 0 55032 10 55035              add Rift mob to In the {gjungle{x
+M 0 55032 10 55039              add Rift mob to In the {gjungle{x
+M 0 55034 1 55055               add Vesta Teleporter Mob to A temple hallway
+M 0 55025 9 55061               add One of Tynan's lackeys to A stone hallway
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55063               add One of Tynan's lackeys to A stone hallway
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55066               add One of Tynan's lackeys to A stone hallway
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55069               add One of Tynan's lackeys to A stone hallway
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55075               add One of Tynan's lackeys to Damaged hall
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55082               add One of Tynan's lackeys to Stone hallway
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55084               add One of Tynan's lackeys to Stone hallway
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55025 9 55085               add One of Tynan's lackeys to An empty room
+E 0 55036 0 16                      equip the Flaming Vorpal Long sword of Power Strike (wield)
+E 0 55050 0 18                      equip a humming {cd{bag{cger{x (dual)
+M 0 55013 1 55064               add a metal muncher to Room of keys
+M 0 55037 1 55068               add a frantic goblin to A frantic goblin
+E 0 55035 0 11                      equip a square buckler (shield)
+G 0 55058 0                         carry crumbling pants
+M 0 55016 3 55070               add a Frozen Mist to A frozen room
+M 0 55015 1 55071               add an angry werewolf to An angry werewolf
+E 0 55056 0 16                      equip a set of werewolf fangs (wield)
+M 0 55039 1 55072               add an angry squirrel to Death
+M 0 55040 1 55072               add an angry squirrel to Death
+M 0 55041 1 55072               add an angry squirrel to Death
+E 0 55060 0 17                      equip an ancient acorn (hold)
+M 0 55038 1 55073               add a Manticore to A warning
+M 0 55020 1 55077               add a Blood Minion to A {rBlood{c Minion{x
+M 0 55021 1 55080               add a Valig to Rotted floor
+M 0 55022 1 55087               add a god-like trader to A trader
+M 0 55024 1 55088               add a torn apart creature to An obliterated room
+M 0 55050 1 55091               add Sword Checker to A tranquil room
+M 0 55042 1 55088               add Stone teleporter mob to An obliterated room
+M 0 55003 1 55092               add Adonis to Adonis
+E 0 55011 0 5                       equip some {wwhite{x chain mail (body)
+E 0 55013 0 6                       equip a pure {wwhite{x hood (head)
+E 0 55012 0 12                      equip a snowy {wwhite{x cloak (about)
+E 0 55014 0 16                      equip a slim blade (wield)
+M 0 55001 1 55093               add Adonis to Adonis
+E 0 55002 0 5                       equip a sturdy brown tunic (body)
+E 0 55003 0 7                       equip thick black pants (legs)
+E 0 55004 0 8                       equip a pair of sturdy {dblack{x boots. (feet)
+E 0 55005 0 13                      equip {rAdonis'{x {ws{ycabb{war{yd{x (waist)
+M 0 55002 1 55096               add Vesta to Vesta's Room
+E 0 55008 0 3                       equip a {wsi{ll{x{wv{le{x{wr{x pendant (neck1)
+E 0 55006 0 5                       equip a bright {Rred dress{x (body)
+E 0 55007 0 8                       equip some {dblack{x laced boots (feet)
+E 0 55010 0 13                      equip a small black belt (waist)
+M 0 55023 1 55097               add Tynan to Tynan
+E 0 55011 0 5                       equip some {wwhite{x chain mail (body)
+E 0 55013 0 6                       equip a pure {wwhite{x hood (head)
+E 0 55012 0 12                      equip a snowy {wwhite{x cloak (about)
+E 0 55014 0 16                      equip a slim blade (wield)
+M 0 55033 27 55060              add dispel magic mob to A bright room
+M 0 55033 27 55061              add dispel magic mob to A stone hallway
+M 0 55033 27 55062              add dispel magic mob to Signs of battle
+M 0 55033 27 55063              add dispel magic mob to A stone hallway
+M 0 55033 27 55065              add dispel magic mob to Dark hallway
+M 0 55033 27 55066              add dispel magic mob to A stone hallway
+M 0 55033 27 55067              add dispel magic mob to Broken mirrors
+M 0 55033 27 55068              add dispel magic mob to A frantic goblin
+M 0 55033 27 55069              add dispel magic mob to A stone hallway
+M 0 55033 27 55070              add dispel magic mob to A frozen room
+M 0 55033 27 55071              add dispel magic mob to An angry werewolf
+M 0 55033 27 55072              add dispel magic mob to Death
+M 0 55033 27 55074              add dispel magic mob to A sense of doom
+M 0 55033 27 55075              add dispel magic mob to Damaged hall
+M 0 55033 27 55076              add dispel magic mob to An unseen force
+M 0 55033 27 55077              add dispel magic mob to A {rBlood{c Minion{x
+M 0 55033 27 55078              add dispel magic mob to A cracked wall
+M 0 55033 27 55079              add dispel magic mob to Aged room
+M 0 55033 27 55080              add dispel magic mob to Rotted floor
+M 0 55033 27 55081              add dispel magic mob to Toppled statues
+M 0 55033 27 55082              add dispel magic mob to Stone hallway
+M 0 55033 27 55083              add dispel magic mob to A noise from the north
+M 0 55033 27 55084              add dispel magic mob to Stone hallway
+M 0 55033 27 55085              add dispel magic mob to An empty room
+M 0 55033 27 55086              add dispel magic mob to Piles of items
+M 0 55033 27 55089              add dispel magic mob to The noise continues
+M 0 55033 27 55090              add dispel magic mob to A wounded creature
+M 0 55051 1 55102               add Adonis to Adonis
+E 0 55011 0 5                       equip some {wwhite{x chain mail (body)
+E 0 55013 0 6                       equip a pure {wwhite{x hood (head)
+E 0 55012 0 12                      equip a snowy {wwhite{x cloak (about)
+E 0 55014 0 16                      equip a slim blade (wield)
+I 55057 65 55027 1              a pair of shredded boots to In the {gjungle{x
+I 55017 101 55095 1             the jungle to Teleport Room
+I 55059 5 55056 1               some slimy liquid to Mixture room
+I 55021 15 55057 1              some rubble to A destroyed room
+I 55024 1 55057 1               a burning table to A destroyed room
+I 55047 15 55059 1              a chunk of a ceiling to Fallen in roof
+P 0 55048 0 55047               put a lock of Vesta's hair {W({xThat you should {RKEEP!!!{W){x inside a chunk of a ceiling
+I 55025 15 55064 1              a simple metal key to Room of keys
+I 55026 15 55064 1              a simple metal key to Room of keys
+I 55030 15 55064 1              a simple metal key to Room of keys
+I 55031 15 55064 1              a simple metal key to Room of keys
+I 55032 15 55064 1              a simple metal key to Room of keys
+I 55027 14 55067 1              a broken mirror to Broken mirrors
+I 55028 14 55067 1              shards of glass to Broken mirrors
+I 55061 15 55077 1              a clot of {Rblood{x to A {rBlood{c Minion{x
+I 55055 101 55078 1             the crack in the wall to A cracked wall
+I 55062 1 55099 1               a pile of money to Some kind of vault
+I 55063 101 55099 1             the crack in the wall to Some kind of vault
+I 55037 25 55081 1              a broken statue to Toppled statues
+I 55038 25 55081 1              a broken statue to Toppled statues
+I 55040 1 55086 1               a jumbled pile of items to Piles of items
+I 55041 15 55088 1              a blasted apart cabinet to An obliterated room
+I 55042 15 55088 1              a {cshar{bd{x of a sword to An obliterated room
+I 55043 15 55088 1              a {cshar{bd{x of a sword to An obliterated room
+I 55051 60 55104 1              a {rpulsing{x stone {W({xThat you should {RKEEP!!!{W){x to Alcove
+I 55051 60 55105 1              a {rpulsing{x stone {W({xThat you should {RKEEP!!!{W){x to Alcove
+I 55001 31 55094 1              {rAdonis{x' {ws{ywo{wrd{x {W({xThat you should {RKEEP!!!{W){x to A turbulent room
+I 55071 70 55100 1              a spa{yrkl{xing {wtwinkling{x to Traders Safe Room
+I 55072 10 55100 1              a Dragonian neck brace to Traders Safe Room
+I 55073 99 55100 1              A Fairy Queen Face Mask to Traders Safe Room
+I 55077 99 55100 1              a void wand to Traders Safe Room
+S
+
+#SPECIALS
+M 55036 spec_cast_adept         an Angel
+M 55016 spec_breath_frost       a Frozen Mist
+M 55022 spec_cast_archmage      a god-like trader
+M 55003 spec_cast_mage          Adonis
+M 55043 spec_cast_mage          Adonis
+M 55023 spec_cast_mage          Tynan
+M 55051 spec_cast_mage          Adonis
+S
+
+#$
+

@@ -1,0 +1,4834 @@
+#AREA	Yaegar~ The City of Anon~
+-2 -2 0 100
+
+#AREA_SPECIAL
+safe
+no_quest
+$
+
+#HELPS
+0 City Anon~
+{x 
+ The City of Anon
+
+     Psionic                     Mage                      ShapeShifter
+      Guild     Merc    Magic    Guild              Pet    Guild
+        |       Hire    Shop       |       Sage     Shop     |
+        |________|________|________|________|________|_______|______Brawler
+                 |                                   |               Guild
+  Castellan _____|               Healer  Deathtrap   |_____ Armorer
+                 |                 |     Dungeon     |
+W. Gate _________|_______________Temple_____|________|_________ E. Gate
+                 |                 |                 |         
+      Smith _____|       Locksmith_|_Book Shop       |_____ Weapon Smith
+                 |                 |                 |
+        _________|_________________|_________________|________
+        |        |        |        |        |        |       |
+        |       Bank   Grocer      |      Baker     Bar      |
+        |                        Cleric                      |
+        |                        Guild                       |
+     Warrior                                                 Thief
+     Guild                                                   Guild
+
+~
+
+0 $~
+
+
+#MOBILES
+#31000
+~
+Gath the Healer~
+Gath, High Priest and Healer of Anon, greets you politely.
+~
+"Greetings, Fair Adventurer. How may I help thee?
+ To see how I may help thee, type HEAL, which will also
+ show you the cost of each service".
+~
+2|64|4096|8192|32768|16777216 8|128|2048|4194304|8388608|16777216 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31001
+Cleric guildmaster~
+the Cleric Guildmaster~
+The Cleric Guildmaster stands here, patiently watching you.
+~
+"Welcome, my child, to the Guild of the Clerics. Should you wish to 
+ practice a skill or spell that is within my area of expertise, simply 
+ type PRAC <skillname>. Typing PRAC without an argument will display what 
+ skills or spells you may learn here".
+~
+2|64|8192|16777216 128|8192 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'healing magiks'
+& 95 'harmful magiks'
+& 95 'protective magiks'
+& 95 'divination magiks'
+& 95 'curative magiks'
+& 95 'disease magiks'
+& 95 'summoning magiks'
+& 95 'divine magiks'
+& 95 'conjuration magiks'
+& 95 'enchantment magiks'
+& 95 'alteration magiks'
+& 95 'defense knowledge'
+& 95 'armed combat knowledge'
+& 95 'mana control'
+& 95 'advanced healing magiks'
+& 95 'inner force'
+& 95 'mana craft'
+& 95 'resistance magiks'
+& 95 'nature skills'
+& 30 'templar base'
+& 30 'cleric base'
+& 30 'druid base'
+
+#31002
+jolob smith blacksmith~
+Jolob the Blacksmith~
+Jolob the Blacksmith grunts a greeting as you enter.
+~
+This large man sweats profusely as he hunches over a fire,
+heating a breastplate to glowing heat so that it can be pounded
+into shape. He looks you up and down, but as none of your armor
+is damaged it hardly needs repair.
+~
+2|64|32768|16777216 4 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31003
+armorer~
+the Armorer~
+The Armorer offers to show you some of his wares.
+~
+"Welcome to my place of business, adventurer. Got something you're after?
+ Just type BUY <Item>. If you want to know WHAT you can buy (usually a wise
+ move) tpye LIST. If you're just after a specific type of item, say a shield,
+ type LIST shield, and I'll show you what I have that matches that 
+ description. If you want to sell me something, type SELL <item>. If you 
+ just want to know what it's worth, type VALUE <item> and I'll give you a 
+ free estimation".
+~
+2|64|32768|16777216 512 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 
+8 1
+#31004
+weaponsmith smith~
+the Weaponsmith~
+The Weaponsmith eyes you curiously.
+~
+"Greetings stranger, or have we met before? Never mind. Either way, to
+ see what I have for sale, type LIST. If you want to buy an item you see
+ there, type BUY <item> (simple, huh?). If you want me to buy something off
+ you, type SELL <item>. If you just want an estimation of the worth of your
+ item, type VALUE <item> and I'll let you know what its worth for free".
+~
+2|64|32768|16777216 2097152 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31005
+mercenary master~
+the Mercenary Master~
+The Mercenary Master grunts as you enter.
+~
+"Want a Mercenary? Then type LIST to see what I sell, then type BUY <name>
+ to hire 'im. That's it. If yer wantin a quest, type QUEST REQUEST and i'll
+ see what I can do.".
+~
+2|8|64|4096|32768|16777216 0 1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31006
+mage~
+the Mage~
+The Mage smiles sweetly and asks how she may be of service.
+~
+"To see what you can buy here," she begins sweetly, "type LIST. If you
+ see something you'd like, type BUY <item>. If you have something you
+ think I may like to buy, type SELL <item>. Alternatively I can give you
+ a free appraisal of the item- simply type VALUE <item>".
+~
+2|64|32768|16777216 8|16 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+& 35 'teacher base'
+& 95 'herb lore'
+& 95 'dowse'
+#31007
+mitzak sage~
+Mitzak the Sage~
+Mitzak the Sage waves at you feebly as you enter his home.
+~
+Mitzak the Sage greets you as you come in, and invites you to have a seat.
+He smiles dodderingly at you and asks if he can identify anything for you.
+He says 'If you would like me to identify an object, make sure you have it
+in your inventory, then type IDENTIFY <OBJECT>.  Or if you've just come to
+hear an old adventurer tell tales of their exploits, well, have I got a
+tale for you...'  You thank him quickly and rise to leave.
+~
+2|64|32768|1048576|16777216 4|8|16|32|128|8192 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31008
+pet owner~
+the Pet Shop Owner~
+The Pet Shop Owner smiles politely and waits for your request.
+~
+"Greetings. You wish to buy a pet? Well, to see what I have in stock, type
+ LIST. Be sure to note the Level of the items that interest you, as you can
+ not buy a pet of higher level than yourself. When you see one that you want
+ to buy, simply type BUY <pet>, and if you wish to name it, add the name that
+ you want it to have to the same line, i.e, BUY mouse harold".
+~
+2|64|32768|16777216 4 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31009
+Mage guildmaster~
+the Mage Guildmaster~
+The Mage Guildmaster welcomes you to his office.
+~
+"Welcome, friend, to the Guild of the Mages. Should you wish to practice
+ a skill or spell that is within my area of expertise, simply type PRAC
+ <skillname>. Typing PRAC without an argument will display what skills or
+ spells you may learn here".
+~
+2|64|1024|32768|16777216 8|16|32 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'protective magiks'
+& 95 'divination magiks'
+& 95 'summoning magiks'
+& 95 'divine magiks'
+& 95 'conjuration magiks'
+& 95 'enchantment magiks'
+& 95 'alteration magiks'
+& 95 'evocation magiks'
+& 95 'disease magiks'
+& 95 'mana control'
+& 95 'draconian magiks'
+& 95 'major protective magiks'
+& 95 'mana craft'
+& 95 'destructive magiks'
+& 95 'death magiks'
+& 95 'necro base'
+& 30 'warlock base'
+& 30 'mage base'
+#31010
+grocer~
+the Grocer~
+The Grocer smiles and welcomes you to her store.
+~
+"To see what you can buy here," she begins sweetly, "type LIST. If you
+ see something you'd like, type BUY <item>. If you have something you
+ think I may like to buy, type SELL <item>. Also I can give you
+ a free evaluation of the item- simply type VALUE <item>".
+~
+2|64|32768|16777216 4 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#31011
+dwarf baker~
+the Baker~
+The Baker, a rough-looking dwarf, demands your business.
+~
+"Bread? Course I got bread! Thats why it's called a BAKERY. I also
+ got pies, rolls an' sandwiches. If ya want an exact list, then type LIST.
+ If ya wanna buy something, then type BUY <item>. If ya think ya got sumptin'
+ I might wanna buy, type SELL <item>, but it better not be rotten.
+ Now buy up!"
+~
+2|64|32768|16777216 4 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31012
+bartender~
+the Bartender~
+The Bartender grins smugly as he cleans a glass.
+~
+"Want a drink, friend? Of COURSE you do. To see whats on tap, type LIST.
+ If you see something you fancy, well, then type BUY <item>. OK?"
+~
+2|64|32768|16777216 4 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31013
+Warrior Warrior guildmaster~
+the Warrior Guildmaster~
+The Warrior Guildmaster stares at you grimly.
+~
+"You want to train to fight? Good. You want to train to kill? Better. To
+ see if I can help you, type PRAC, and that will list what you can learn
+ currently. If you see something you want to learn, type PRAC <skill>.
+ Then you can kill Kill KILL!"
+~
+2|64|16777216 4 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'archery knowledge'
+& 95 'armed combat knowledge'
+& 95 'unarmed combat knowledge'
+& 95 'defense knowledge'
+& 95 'inner force'
+& 95 'advanced combat knowledge'
+& 95 'knowledge'
+& 95 'metal working techniques'
+& 95 'riding techniques'
+& 30 'knight base'
+& 30 'barbarian base'
+& 30 'ranger base'
+& 30 'thug base'
+& 30 'warrior base'
+#31014
+Thief guildmaster~
+the Thief Guildmaster~
+The Thief Guildmaster grins impishly at you.
+~
+"Sooooo... How can I help you? You want to learn how to steal? How
+ insulting! Are you insinuating that I am a- a thief? Listen, Thieves
+ do not steal! We borrow... Now with that out of the way, type PRAC to see
+ what you can learn, and PRAC <skill> to learn one of the skills shown."
+~
+2|4|64|16384|16777216 3276 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'armed combat knowledge'
+& 95 'unarmed combat knowledge'
+& 95 'defense knowledge'
+& 95 'stealth techniques'
+& 95 'thievery skills'
+& 95 'detect hidden'
+& 95 'detect sneak'
+& 95 'spellcraft'
+& 95 'inner force'
+& 95 'divination magiks'
+& 95 'poison arts'
+& 95 'advanced combat knowledge'
+& 95 'hunting arts'
+& 95 'knowledge'
+& 30 'thief base'
+& 30 'ninja base'
+& 30 'bounty base'
+#31015
+Cleric waiter~
+a Cleric Waiter~
+A Cleric Waiter is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous, except to
+dirty thieves who try to steal from him.
+~
+2|64|16777216 4 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31016
+Mage waiter~
+an Mage Waiter~
+An Mage Waiter is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous, except to
+dirty thieves who try to steal from him.
+~
+2|64|16777216 4 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31017
+Warrior waiter~
+a Warrior Waiter~
+A Warrior Waiter is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous, except to
+dirty thieves who try to steal from him.
+~
+2|64|16777216 4 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31018
+greasy bartender~
+a Greasy Bartender~
+A Greasy Bartender is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous (yeah right).
+~
+2|64|16777216 4 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31019
+mouse~
+the mouse~
+A small field mouse.
+~
+The mouse looks like a cute, little, mouse.
+~
+256|16777216 0 400 S
+4 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31020
+badger~
+the badger~
+A loyal, vicious badger growls at you.
+~
+The badger looks like a fierce fighter.
+~
+256|16777216 0 400 S
+10 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31021
+eagle~
+the eagle~
+A large, quick, loyal eagle is here.
+~
+The eagle looks like a fierce fighter.
+~
+256|16777216 524288 400 S
+15 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31022
+grizzly bear~
+the grizzly bear~
+A large, loyal grizzly bear is here.
+~
+The grizzly bear looks like a strong, fierce fighter.
+~
+256|16777216 0 0 S
+20 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31023
+elephant~
+the elephant~
+The elephant looks like a very large, yet fierce fighter.
+~
+The elephant is a rather large pet, careful not to anger it.
+~
+256|16777216 0 0 S
+30 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31024
+cuervo headsman~
+Cuervo the headsman~
+Cuervo the Headsman stands here eyeing you cautiously.
+~
+Cuervo has lopped more heads off with his trusty guillotine then you EVER
+will with your weapons.
+~
+2|64|16777216 128|512|8192 0 S
+69 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31025
+aod dealer~
+Aod the dealer~
+Aod the dealer stands in the shadows here.
+~
+Dressed in flashy clothes and covered in cheap jewelry, Aod struts the
+streets selling his home-made drugs to whomever he can. He will also
+attempt to sell any trash he can find laying on the ground for profit.
+~
+4|64|16777216 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31026
+Psionic guildmaster~
+the Psionic Guildmaster~
+The Psionic Guildmaster greets you telepathically.
+~
+"Greetings," intones the Guildmaster, his thoughts ringing in your head.
+"You wish to train in my arts? Very well. Type PRAC to see what you can
+ learn from me, then PRAC <skill> to learn the skill that you desire.
+ Say... you have a NICE cranium..."
+~
+2|16|64|16777216 128|8192 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'mental defense disciplines'
+& 95 'matter control disciplines'
+& 95 'energy control disciplines'
+& 95 'telepathy disciplines'
+& 95 'body control disciplines'
+& 95 'mana control disciplines'
+& 95 'evocation magiks'
+& 95 'divination magiks'
+& 95 'summoning magiks'
+& 95 'enchantment magiks'
+& 95 'advanced telepathy disciplines'
+& 95 'dark magiks'
+& 30 'satanist base'
+& 30 'psionic base'
+#31027
+brawler guildmaster~
+the Brawler Guildmaster~
+The Brawler Guildmaster bows before you.
+~
+"Welcome, honorable student, to the most honorable Guild of the brawler. If
+ you wish to learn here, type PRAC to see what I may teach you. If you see
+ a skill you'd like to learn, type PRAC <skill> to learn it. Practice well,
+ train hard, and dedicate yourself to the higher disciplines of the martial
+ arts, that you may crush your enemies."
+~
+2|64|32768|16777216 4194304 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 35 'teacher base'
+& 95 'combat knowledge'
+& 95 'unarmed combat knowledge'
+& 95 'defense knowledge'
+& 95 'pugalism knowledge'
+& 95 'inner force'
+& 95 'armed combat knowledge'
+& 95 'combination moves'
+& 95 'martial arts'
+& 30 'brawler base'
+& 30 'artist base'
+#31028
+shapeshifter guildmaster~
+the ShapeShifter Guildmaster~
+The phoenix form of the ShapeShifter Guildmaster welcomes you to her home.
+~
+"Welcome to the ShapeShifter guild. Type PRAC to see what I can
+ teach you, and if there is something I can teach you that you wish to learn,
+ type PRAC <skill>."
+~
+2|64|16777216 2048|16777216 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+& 35 'teacher base'
+& 95 'morphing knowledge'
+& 95 'lycanthropy skills'
+& 95 'vampyre skills'
+& 30 'vampire base'
+& 30 'shifter base'
+& 30 'werewolf base'
+#31029
+Psionic waiter~
+an Psionic Waiter~
+An Psionic Waiter is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous, except to
+dirty thieves who try to steal from him.
+~
+2|64|16777216 0 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#31030
+Brawler waiter~
+a Brawler Waiter~
+A Brawler Waiter is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous, except to
+dirty thieves who try to steal from him.
+~
+2|64|16777216 0 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31031
+ShapeShifter waitress~
+an ShapeShifter Waitress~
+An ShapeShifter Waitress is here serving drinks.
+~
+A prominent employee of the Guild.
+Honest, Reliable and Courteous, except to
+dirty thieves who try to steal from her.
+~
+2|64|16777216 0 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#31032
+castellan~
+the Castellan of Anon~
+The Castellan of Anon politely welcomes you to his city.
+~
+The Castellan is a tall, lean man of middle years with graying hair and 
+a sinewy frame. He is always polite and helpful, but is more than prepared
+to do what it takes to defend his city. A veteran of more than twenty years
+of combat, he is not a man to be toyed with.
+~
+64|16777216 4|8 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31033
+citizen~
+a citizen~
+A citizen of Anon passes by you.
+~
+Anon is not a huge city in terms of population, but there are a fair number
+of residents, such as this fellow.
+~
+1|64|16777216 0 0 S
+5 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31034
+citizen~
+a citizen~
+A citizen of Anon passes by you.
+~
+Anon is not a huge city in terms of population, but there are a fair number
+of residents, such as this lady.
+~
+1|64|16777216 0 0 S
+5 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#31035
+child~
+a child~
+A child frolics in the street here.
+~
+There are not that many children in Anon, so those that are present are
+treasured by the locals. However, this endearment certainly isn't shared by
+visitors, who find the spoiled brats insufferable.
+~
+1|64|16777216 0 0 S
+3 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31036
+janitor~
+the janitor~
+A janitor is walking around, cleaning up.
+~
+"Grumble grumble... you don't think I got anything better to do than pick up
+ YOUR crap? Corpses.. body parts... and these BLOODSTAINS! *SIGH*"
+~
+1|64|16777216 8 900 S
+6 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31037
+footpad~
+a footpad~
+A footpad stalks around looking for an easy victim.
+~
+The footpad skulks about, looking for someone to conk over the head.
+~
+4|64|16777216 0 -200 S
+6 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31038
+drunk~
+a drunk~
+A singing, happy drunk.
+~
+A drunk who seems to be too happy, and to carry too much money. He mumbles 
+something unintelligible and stumbles away.
+~
+64|16777216 0 400 S
+4 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31039
+beggar~
+a beggar~
+A beggar is here, well... begging.
+~
+"Hey mista! Spare a veteran a dime?"
+~
+2|64|16777216 0 400 S
+3 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31040
+thief~
+a thief~
+A thief adroitly cuts the strings of another fat merchant's purse.
+~
+This clever fellow has robbed dozens of unsuspecting visitors to Anon.
+~
+64|128|16777216 2|32768|65536|1048576 0 S
+10 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31041
+fido~
+a beastly fido~
+The beastly fido is here looking for food.
+~
+The beastly fido is foaming at the mouth. You smell the aroma of his latest kill.
+~
+64|128|16777216 0 0 S
+5 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31042
+rat~
+a huge sewer rat~
+A huge sewer rat that probably wouldn't taste like pumpkin pie.
+~
+Rats! Eeyew! They come up out of the sewer and steal the children of Anon.
+Good.
+~
+64|128|16777216 0 0 S
+3 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#31043
+cat~
+a cat~
+A stray cat rummages through some trash here.
+~
+The cat suddenly emerges, triumphant, with a half-eaten steak, and runs off.
+~
+64|128|16777216 0 0 S
+2 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#31044
+guard~
+a City Guard~
+A Member of the City Guard warns you to stay out of trouble.
+~
+This fellow is a member of one of the best Law Enforcement Agencies on the
+continent. Dedicated, loyal, efficient, he is the epitome of Truth, Justice
+and the Anon Way.
+~
+64|32768|16777216 4 1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31045
+guard~
+a City Guard~
+A Member of the City Guard warns you to stay out of trouble.
+~
+This lady is a member of one of the best Law Enforcement Agencies on the
+continent. Dedicated, loyal, efficient, she is the epitome of Truth, Justice
+and the Anon Way.
+~
+64|32768|16777216 4 1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#31046
+guard~
+a City Guard~
+A Member of the City Guard stands rigidly at attention here.
+~
+This fellow is a member of one of the best Law Enforcement Agencies on the
+continent. Dedicated, loyal, efficient, he is the epitome of Truth, Justice
+and the Anon Way.
+~
+2|64|32768|16777216 4 1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31047
+hobbit merc1~
+Hobbit Mercenary~
+A Hobbit Mercenary scowls menacingly at you.
+~
+This Merc looks big and tough. Better be careful.
+~
+256|16777216 32|512 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31048
+elven elf merc2~
+Elven Mercenary~
+An Elven Mercenary scowls menacingly at you.
+~
+This Merc looks big and tough. Better be careful.
+~
+256|16777216 8|512 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31049
+dwarf dwarven merc3~
+Dwarven Mercenary~
+A Dwarven Mercenary scowls menacingly at you.
+~
+This Merc looks big and tough. Better be careful.
+~
+256|16777216 512|8192 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31050
+troll trollish merc4~
+Trollish Mercenary~
+A Trollish Mercenary scowls menacingly at you.
+~
+This Merc looks big and tough. Better be careful.
+~
+256|16777216 512|8192 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31051
+giant merc5~
+Hill Giant Mercenary~
+A Hill Giant Mercenary scowls menacingly at you.
+~
+This Merc looks big and tough. Better be careful.
+~
+256|16777216 8192 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31052
+half-dragon dragon merc6~
+Half-Dragon Mercenary~
+A Half-Dragon Mercenary scowls menacingly at you.
+~
+This Merc looks big and tough. Better be careful.
+~
+256|16777216 8|32|512|524288 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31053
+salvatore~
+Salvatore~
+Salvatore says, in a broad accent, "What yer havin'?"
+~
+Salvatore is a broad man of Kerofkian descent in his middle years. He
+goes on to tell you that you can have anything you want, as long as it's
+deep-fried. That includes the pizza...
+~
+2|64|32768|16777216 0 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31054
+guard~
+a City Guard~
+A Member of the City Guard stands rigidly at attention here.
+~
+This fellow is a member of one of the best Law Enforcement Agencies on the
+continent. Dedicated, loyal, efficient, he is the epitome of Truth, Justice
+and the Anon Way.
+~
+2|64|32768|16777216 4 1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31055
+tracey owner co-owner~
+the co-owner Tracey~
+Tracey, Trace to her friends, waits to take your order.
+~
+Tracey is a cheerful, hard-working restauranteur who built this business
+up from scratch. It serves the best Cafe-style food on all of Anon, which
+isn't saying much as it is the only place that serves Cafe-style food in
+all of Anon...
+~
+2|64|32768|16777216 0 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#31057
+thaumaturgist alix~
+Alix the Thaumaturgist~
+Alix the Thaumaturgist is carefully studying a borrowed book.
+~
+Alix looks up as you enter, but quickly returns to his book.
+~
+2|64|32768|67108864|16777216 4|8|16|32|128|512|8192 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31058
+clea artificer~
+Clea the Artificer~
+Clea the Artificer is scribbling notes on a piece of parchment.
+~
+Clea looks up as you enter, and smiles at you, but returns to her
+scribbling and ignores you.
+~
+2|64|32768|67108864|16777216 4|8|16|32|128|512|8192 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#31059
+xanafax book seller~
+Xanafax~
+Xanafax, the ancient scholar and purveyor of ancient tomes, is here.
+~
+Xanafax is a dealer in rare and ancient books detailing the geography,
+history, social structure and legends of the many races of Anon. He is more
+than willing to sell you a book.
+~
+2|64|32768|16777216 8 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31060
+locksmith dwart~
+Dwart~
+Dwart the locksmith busily carves another key.
+~
+Dwart makes locks and keys, and he makes them well. For a Dwarf he is 
+surprisingly dexterous. He also purchases keys off of players. Try selling 
+him one!
+~
+2|64|32768|16777216 8 1000 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31061
+thom enhancer~
+Thom the Enhancer~
+Thom the Enhancer practices on a rabbit.
+~
+Thom seems to be trying to enhance the speed of this poor rabbit, but seems
+to be having little luck. Poor Thom! Keep studying!
+~
+2|64|512|32768|16777216 0 0 S
+99 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31062
+pharlas merchant~
+Pharlas~
+The merchant Pharlas sits in a booth, drinking beer.
+~
+Pharlas is a stout, well-dressed merchant in his mid-fifties.
+~
+2|64|16777216 0 0 S
+6 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#31063
+banker~
+the banker~
+The Anon Banker waits patiently.
+~
+The banker clears his throuat and points to the sign on the wall.
+~
+2|64|128|4096|524288|16777216 0 0 S
+300 0 0 0d0+0 0d0+0
+127|256 0
+8 8 1
+#31064
+minstrel wandering halifar~
+the wandering minstrel~
+A minstrel wanders the streets of Anon.
+~
+"Greetings friend! I am Halifar the bard, the wandering minstrel
+ of Anon. Mostly I travel from place to place, playing music and
+ entertaining, yet for the serious student there is much musical lore
+ I will impart. Good day!"
+~
+64|128|4096|32768|16777216 4|8|16|32|8192|8388608 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 30 'teacher base'
+& 95 'musicianship'
+#0
+
+
+#OBJECTS
+#31000
+key~
+a tasselled key~
+The Key to the City Gates.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+1 0 0
+#31001
+key~
+a bronze key~
+The Key to the City Dungeon.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+1 0 0
+#31002
+barrel beer~
+a Barrel of Mo-Hi's (TM) beer~
+A beer barrel has been left here.~
+~
+17 0 1
+30~ 30~ 1~ 0~ 
+60 300 0
+#31003
+bottle beer~
+a bottle of Mo-Hi's (TM) beer~
+A beer bottle has been left here.~
+~
+17 0 1
+4~ 4~ 1~ 0~ 
+10 20 0
+#31004
+bottle ale~
+a Bottle of Mo-Hi's (TM) ale~
+A dark bottle of Mo-Hi's (TM) ale has been left here.~
+~
+17 0 1
+5~ 5~ 3~ 0~ 
+10 10 0
+#31005
+bottle firebreather~
+a Bottle of firebreather~
+A firebreather has been left here.~
+~
+17 0 1
+8~ 8~ 7~ 0~ 
+10 50 0
+#31006
+bottle local~
+a bottle of Anon's specialty~
+A dark bottle has been left here.~
+~
+17 0 1
+8~ 8~ 8~ 0~ 
+10 20 0
+#31007
+torch~
+a torch~
+A large torch.~
+~
+1 0 1|16384
+0~ 0~ 24~ 0~ 
+1 10 0
+#31008
+lantern~
+a hooded brass lantern~
+A hooded brass lantern has been left here.~
+~
+1 0 1|16384
+0~ 0~ 100~ 0~ 
+4 60 0
+E
+lantern~
+It is a large and robust but somewhat battered oil lantern made from brass,
+equipped with a handle to make it handy and a hood to protect its flame.
+Some letters have been scratched on its bottom.
+~
+E
+letters~
+They say, "Use 'hold lantern' to activate."
+~
+#31009
+scroll identify~
+a scroll of identify~
+A scroll has carelessly been left here.~
+~
+2 64 1|16384
+12~ identify~ ~ ~ 
+1 2000 0
+#31010
+potion yellow~
+a yellow potion of see invisible~
+A small yellow potion has carelessly been left here.~
+~
+10 64 1|16384
+12~ detect invis~ ~ ~ 
+1 400 0
+E
+potion yellow~
+The potion has a small label 'Detect The Invisible'.~
+#31011
+skin water buffalo~
+a buffalo water skin~
+A buffalo water skin is on the floor.~
+~
+17 0 1|16384
+25~ 25~ 0~ 0~ 
+5 30 0
+#31012
+jug water~
+a jug of water~
+A large jug of water sloshes on the floor.~
+~
+17 1 1|16384
+60~ 60~ 0~ 0~ 
+85 0 0
+#31013
+club~
+a heavy lead-sheathed club~
+A heavy club sheathed in lead lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 8~ 
+30 0 0
+A
+18 -2
+A
+19 4
+#31014
+mace~
+a Sturdy Mace~
+A Sturdy Mace lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 7~ 
+20 0 0
+A
+18 1
+A
+19 1
+#31015
+dagger~
+a Dagger~
+A good backstabbing weapon, this.~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~ 
+15 0 0
+A
+18 4
+A
+19 -2
+#31016
+scimitar~
+a Wickedly-Curved Scimitar~
+A Wickedly-Curved Scimitar hums ominously here.~
+~
+5 2|16|64|512 1|8192
+0~ 0~ 0~ 3~ 
+25 0 0
+A
+18 4
+A
+19 4
+#31017
+boots~
+a pair of tough leather boots~
+A pair of tough leather boots lie here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+15 0 0
+A
+17 -5
+A
+5 1
+#31018
+belt~
+a narrow leather belt~
+A narrow leather belt is curled up here.~
+~
+9 0 1|2048
+0~ 0~ 0~ 0~ 
+2 0 0
+A
+2 1
+A
+23 -2
+#31019
+kamikaze headband~
+a kamikaze headband~
+A kamikaze headband.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+18 2
+#31020
+scarf~
+a Scarf~
+A scarf is here.~
+~
+9 0 1|4
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+18 1
+A
+19 1
+#31021
+fountain~
+a city fountain~
+This fountain has been kindly provided by the Castellan of Anon.~
+~
+25 0 0
+0~ 0~ 0~ 0~ 
+1000 0 0
+#31022
+ring~
+a gold ring~
+A GOLD RING!~
+~
+18 1 1|2
+0~ 0~ 0~ 0~ 
+1 0 0
+A
+14 20
+#31023
+cake ~
+a sweet cake~
+A sweet cake. Looks yummy.~
+~
+19 0 1|16384
+4~ 0~ 0~ 0~ 
+1 0 0
+#31024
+roll~
+a roll~
+A bread roll.~
+~
+19 0 1|16384
+5~ 0~ 0~ 0~ 
+1 0 0
+#31025
+sandwich~
+a sandwich~
+A sandwich would make the perfect snack.~
+~
+19 0 1|16384
+5~ 0~ 0~ 0~ 
+1 0 0
+#31026
+loaf bread~
+a large loaf of bread~
+This loaf of bread would fill you up for a day!~
+~
+19 0 1|16384
+24~ 0~ 0~ 0~ 
+3 0 0
+#31027
+coffee cup mug java~
+a cup of coffee~
+A mug o' hot java steams away here.~
+~
+17 0 1|16384
+1~ 1~ 12~ 0~ 
+1 0 0
+#31028
+psychedelic potion~
+a psychedelic potion~
+A psychedelic potion rolls around here.~
+~
+10 1|2|64 1|16384
+10~ change sex~ detect hidden~ bless~ 
+2 400 0
+#31029
+guillotine~
+a nasty guillotine~
+A Guillotine with a razor-sharp blade stands ready here.
+~
+~
+15 0 0
+100~ 1~ 0~ 0~ 
+1000 0 0
+#31030
+mask~
+a Headsman's Black Face Mask~
+The Headsman's mask is here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+75 0 0
+A
+13 250
+#31031
+sword longsword~
+the Castellan's Longsword~
+The Castellan's Longsword is lying here in the dirt.~
+~
+5 64 1|8192
+0~ 0~ 0~ 11~ 
+25 0 0
+A
+17 -15
+A
+18 6
+A
+19 6
+A
+23 -3
+#31032
+sap~
+a sap~
+A footpad's sap, used to stun victims.~
+~
+5 0 1|8192
+0~ 0~ 0~ 7~ 
+15 0 0
+#31033
+sword longsword~
+an Ornate Longsword~
+An Ornate Longsword is lying here.~
+~
+5 64 1|8192
+0~ 0~ 0~ 11~ 
+25 0 0
+A
+18 4
+A
+19 4
+#31034
+breastplate plate~
+an Ornate Breastplate~
+An Ornate Breastplate with a black and gold coat of arms is lying here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+20 0 0
+A
+5 2
+A
+17 -15
+#31035
+bracer~
+an Ornate Bracer~
+An Ornate Bracer with a black and gold coat of arms is lying here.~
+~
+9 0 1|4096
+0~ 0~ 0~ 0~ 
+15 0 0
+A
+2 2
+A
+18 2
+#31036
+cloak~
+a black cloak with gold trim~
+A Black Cloak with Gold Trim is lying here.~
+~
+9 0 1|4
+0~ 0~ 0~ 0~ 
+10 0 0
+A
+12 25
+A
+17 -15
+#31037
+helm~
+an Ornate Helm~
+An Ornate Helm bearing a black and gold coat of arms lies here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+10 0 0
+A
+3 1
+A
+4 1
+A
+17 -20
+#31038
+shield~
+an Ornate Shield~
+A Shield bearing the crest of the City of Anon lies here.~
+~
+9 0 1|512
+0~ 0~ 0~ 0~ 
+20 0 0
+A
+17 -20
+A
+23 -2
+A
+24 -2
+#31039
+spear~
+a Throwing Spear~
+A sturdy Throwing Spear has been thrust into the ground here.~
+~
+5 64|134217728 1|8192|16384
+0~ 0~ 0~ 0~ 
+20 0 0
+A
+18 2
+A
+19 2
+#31040
+scroll~
+a blank scroll~
+A blank scroll is here.~
+~
+2 0 1|16384
+0~ ~ ~ ~ 
+1 0 0
+#31041
+shimmering potion~
+a shimmering potion~
+A shimmering potion is here.~
+~
+10 64 1|16384
+5~ invis~ fly~ infravision~ 
+1 400 0
+#31043
+tent~
+a sturdy canvas tent~
+A sturdy canvas tent is here.~
+~
+15 262144 1
+1000~ 1~ 0~ 0~ 
+25 1000 0
+#31044
+rowboat~
+a sturdy wooden rowboat~
+A sturdy wooden rowboat is moored here.~
+~
+15 262144|524288 1
+1000~ 0~ 0~ 1~ 
+50 500 0
+#31045
+battered fried fish~
+a piece of battered fried fish~
+A piece of battered fish that has been fried to death.~
+~
+19 0 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31046
+pile steaming chips~
+a pile of steaming chips~
+(Steaming) These chips are wrapped in butcher's paper and look very tasty.~
+~
+19 0 1
+6~ 0~ 0~ 0~ 
+1 0 0
+#31047
+chips salt sauce~
+chips with salt and sauce~
+(Steaming) These chips are covered with salt and sauce.~
+~
+19 0 1
+7~ 0~ 0~ 0~ 
+1 0 0
+#31048
+black pudding~
+some black pudding~
+Some black pudding congeals here.~
+~
+19 0 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31049
+white pudding~
+some white pudding~
+Some white pudding, only slightly less disgusting than black pud, sits here.~
+~
+19 0 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31050
+pizza~
+a piece of pizza~
+This pizza looks like no pizza you have ever seen before.~
+~
+19 0 1
+5~ 0~ 0~ 0~ 
+1 0 0
+#31051
+lard~
+a lump of lard~
+This lard has been deep-fried.~
+~
+19 0 1
+1~ 0~ 0~ 0~ 
+1 0 0
+#31052
+potato scallop~
+a potato scallop~
+You wonder how long this potato scallop has been sitting here.~
+~
+19 0 1
+2~ 0~ 0~ 0~ 
+1 0 0
+#31053
+curry sauce~
+some curry sauce~
+This sauce is great with chips. Apparently.~
+~
+19 0 1
+1~ 0~ 0~ 0~ 
+1 0 0
+#31054
+chicken kiev~
+chicken kiev~
+This chicken Kiev didn't come from any Kiev you have ever heard of.~
+~
+19 0 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31055
+crumbed drumstick~
+a crumbed drumstick~
+A crumbed drumstick has been sitting here for a few hours.~
+~
+19 0 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31056
+battered sav~
+a battered sav~
+A battered sav lies here.~
+~
+19 0 1
+2~ 0~ 0~ 0~ 
+1 0 0
+#31057
+kabana~
+a kabana~
+A fried kabana looks truly disgusting.~
+~
+19 0 1
+3~ 0~ 0~ 0~ 
+1 0 0
+#31058
+fish cake~
+a fish cake~
+Yeah, SURE it's fish.~
+~
+19 0 1
+2~ 0~ 0~ 0~ 
+1 0 0
+#31059
+haggis~
+it's... HAGGIS~
+This conglomeration looks like a boiled foetus.~
+~
+19 0 1
+8~ 0~ 0~ 0~ 
+2 0 0
+E
+haggis~
+You DO know what's in haggis, don't you?
+~
+#31060
+tea~
+tetley's tea~
+A nice cup of Tetley's sits here.~
+~
+17 0 1|16384
+1~ 1~ 11~ 0~ 
+1 0 0
+#31061
+coffee~
+kenco coffee~
+A cup of Kenco coffee is surprisingly good for instant.~
+~
+17 0 1|16384
+1~ 1~ 12~ 0~ 
+1 0 0
+#31062
+shandy~
+a shandy~
+A shandy fizzes away here.~
+~
+17 0 1|16384
+1~ 1~ 1~ 0~ 
+1 0 0
+#31063
+irn bru~
+barr's Irn Bru~
+This bright orange beverage is made in Scotland from girders.~
+~
+17 2 1|16384
+2~ 2~ 6~ 0~ 
+1 0 0
+#31064
+chocolate milkshake~
+a chocolate milkshake~
+A delicious chocolate milkshake is here.~
+~
+17 0 1|16384
+2~ 2~ 10~ 0~ 
+1 0 0
+#31065
+strawberry milkshake~
+a strawberry milkshake~
+A frothy strawberry milkshake is here.~
+~
+17 0 1|16384
+2~ 2~ 10~ 0~ 
+1 0 0
+#31066
+caramel milkshake~
+a caramel milkshake~
+A tasty caramel milkshake is here.~
+~
+17 0 1|16384
+2~ 2~ 10~ 0~ 
+1 0 0
+#31067
+sticky bun~
+a sticky bun~
+A sweet sticky bun sits here.~
+~
+19 0 1
+1~ 0~ 0~ 0~ 
+1 0 0
+#31068
+fruit scone~
+a fruit scone~
+A buttered fruit scone sits here.~
+~
+19 0 1
+1~ 0~ 0~ 0~ 
+1 0 0
+#31069
+spamburger~
+a spamburger~
+A nasty spamburger sits here.~
+~
+19 0 1
+4~ 0~ 0~ 1~ 
+1 0 0
+#31070
+steak burger~
+a steak burger~
+A steak burger smells delicious!~
+~
+19 0 1
+6~ 0~ 0~ 0~ 
+1 0 0
+#31071
+hamburger~
+a hamburger~
+A hamburger is here.  What part of the animal is the burger?~
+~
+19 0 1
+5~ 0~ 0~ 0~ 
+1 0 0
+#31072
+ploughman's sandwich~
+a ploughman's sandwich~
+A ploughman's sandwich is here.  Okay, it's only cheese and Branston pickle.~
+~
+19 0 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31073
+cheese onion sandwich~
+a cheese and onion sandwich~
+A cheese and onion sandwich has lots of raw onion on it.~
+~
+19 2 1
+4~ 0~ 0~ 0~ 
+1 0 0
+#31074
+chicken tikka sandwich~
+a chicken tikka sandwich~
+Some pretentious git has added raisins to a chicken and mayonnaise sandwich.~
+~
+19 0 1
+5~ 0~ 0~ 0~ 
+1 0 0
+#31075
+baked potato cheese coleslaw~
+a baked potato with cheese and coleslaw~
+A baked potato with cheese and *coleslaw*?~
+~
+19 0 1
+6~ 0~ 0~ 0~ 
+1 0 0
+#31076
+baked potato chicken curry~
+a baked potato with chicken curry~
+A baked potato with chicken curry sounds tasty.~
+~
+19 0 1
+6~ 0~ 0~ 0~ 
+1 0 0
+#31077
+bacon eggs~
+bacon and eggs~
+A plate of overcooked bacon and undercooked eggs is here.~
+~
+19 0 1
+7~ 0~ 0~ 0~ 
+2 0 0
+#31078
+steak eggs chips~
+steak eggs and chips~
+A plate of tough steak, hard fried eggs and greasy chips is here.~
+~
+19 0 1
+8~ 0~ 0~ 0~ 
+2 0 0
+#31079
+spam eggs~
+spam and eggs~
+A plate of fried spam, swimming in lard, looks like it would make you chuck.~
+~
+19 0 1
+7~ 0~ 0~ 0~ 
+2 0 0
+#31080
+bacon spam eggs~
+bacon, spam and eggs~
+A plate of bacon spam and eggs coagulates here.  Don't touch the spam.~
+~
+19 0 1
+8~ 0~ 0~ 0~ 
+2 0 0
+#31081
+poison powder~
+some black poison powder~
+Some black poison powder has been scattered here.~
+~
+13 16 1
+0~ 0~ 0~ 0~ 
+1 4000 0
+#31082
+portal dark dirty~
+the dirty portal~
+A dark, shimmering portal glows before you.~
+~
+33 0 0
+14089~ -1~ 0~ 100~ 
+1 0 0
+#31083
+portal steamy~
+the steamy portal~
+Steam pours from a glowing portal that hovers before you.~
+~
+33 0 0
+30044~ -1~ 0~ 100~ 
+1 0 0
+#31084
+portal sandy~
+the sandy portal~
+A warm breeze flows from the glowing portal in front of you.~
+~
+33 0 0
+12009~ -1~ 0~ 100~ 
+1 0 0
+#31085
+key portal~
+a key to the portal chambers~
+A key to the portal chambers has been dropped here.~
+~
+18 1|2 1|16384
+0~ 0~ 0~ 0~ 
+1 200 0
+#31086
+tome political history~
+a Tome of Political History~
+This tome is titled- "THE POLITICAL STRUCTURE OF ANON", by Errit Meyer.~
+~
+13 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+tome politics political structure~
+THE POLITICAL STRUCTURE OF ANON-
+
+Although the races of Anon now mingle in relative harmony, each of them still
+has their own seperate states, most of these semi-independent city states.
+The major staes of each race are listed in the relevant chapters. Type read
+Human, Elf, Dwarf, and Dryad to read the
+organisation of the relevant races.
+~
+E
+Human~
+By far the most populous of the races, the Humans naturally have several
+states. These are-
+
+THE CITY OF ANON                           NEW THALOS
+THE CITY OF FREEPORT                       THE CITY OF OFCOL
+THE CITY OF SOLACE                         
+THE CITY OF MIDGAARD                       WHITE LOTUS TEMPLE
+
+
+For more information, type READ SOLACE, READ OFCOL, etc.
+~
+E
+Anon~
+THE CITY OF ANON- The most powerful of the Human states, the city
+is headed by the Castellan who is appointed by the Baron from a list of
+candidates nominated by the citizens of the Barony. This position is
+extremely important, as the Castellan is responsible for the defense and
+well-being of the city, and reports only to the Baron, who spends most of
+his time on his country estate to the north of the city.
+~
+E
+Freeport~
+THE CITY OF FREEPORT- A semi-democratic state- this port is a major trade
+center, and controls a large portion of the Sea of Anon. The city is
+responsible for maintaining order in this pirate-ridden region, a task it
+isn't always very good at. The city is ruled by a council comprised of the
+Admirals and chief merchants of the city, who are elected by members of
+their respective followers- the navy and the powerful merchants' guild.
+Corruption is rife in this organisation, with powerful pirate lords paying off
+prominent members in exchange for immunity from prosecution.
+~
+E
+Midgaard~
+THE CITY OF MIDGAARD- The oldest city on the continent, the city of Midgaard
+took its name for the native name of their home world, which they abandoned
+in favor of Anon centuries ago. It is a nominal democracy, with the city
+being ruled by elected officials such as the mayor and the constable. The
+city was once powerful, but sustained serious losses in the kinstrife wars
+and now has little control outside the bounds of the city.
+~
+E
+Solace~
+THE CITY OF SOLACE- The territory of Solace covers both the city and the
+surrounding lands, including Crystalmir Lake. The city is ruled by elected
+officials, and a powerful military. The city has little to do with other
+states, preferring to remain neutral.
+~
+E
+Ofcol~
+THE CITY OF OFCOL- The City of Ofcol rules over a large portion of the
+northlands, bordering on the Dwarven Kingdoms. It is a theocracy, ruled by
+an elite benevolent priesthood and its holy warriors. The people of Ofcol
+are somewhat xenophobic, and have little to do with other races. The city
+was constructed on the ruins of an ancient city populated by an unknown race,
+and it is rumored relics from this age can still be found.
+~
+E
+Thalos~
+NEW THALOS- New Thalos is what remains of Old Thalos, the most powerful
+state of Anon's distant past. It has become overrun by dangerous monsters
+such as the once-tame lamia pets of the ancient Thalosians, and mighty
+beholders. It is rumored that great treasure remains there still.
+~
+E
+White Lotus Temple~
+The Temple of the White Lotus is a small militaristic order of Monks who
+have a seperate community from the rest of Anon in their own right. The
+temple is actually a fortress, well-defended by elite monks and warriors.
+The holdings of the temple border on those of Midgaard and Solace, at the
+base of the Ringing Mountains.
+~
+E
+Elf~
+The elven race is smaller in number than the Humans, though it is almost as
+powerful. Its holdings consist of-
+
+THE VALLEY OF THE ELVES
+THE CITY OF THE DROW
+
+For more information, type READ VALLEY or READ DROW.
+~
+E
+Valley Elves~
+The Valley of the Elves is inhabited by the aggressive, xenophobic Valley
+Elves, who are ruled by a small tribal-style council. Much like their
+sylvan cousins, their government is nominal, controlling mainly the
+organisation of scouting and warrior parties.
+~
+E
+Drow~
+The Drow, or Dark Elves, are an evil, aggressive race that live in cities
+far beneath the world's surface. Only one is known by non-Drow, and it is
+so secretive even its name is not known. It is ruled by several noble houses,
+who are constantly battling to become First House, the house with the
+most say. Women hold all the positions of political power, and control the
+priesthood, which plays a vital role in Drow politics. This order answers
+only to their cruel and evil demon deity Lloth.
+~
+E
+Dwarf~
+The Dwarves of Anon are concentrated in one single kingdom, a remote, little-
+travelled place known simply as the Dwarven Kingdoms. Their system of
+Government is clan-based, with various clan chieftains taking turns ruling
+the kingdoms. The holdings of the Dwarves once extended as far south as
+lost Moria and as far west as the Northlands, but that was a long time ago.
+Some consider the Dwarves to be a dying race, though it is best not to say
+this within earshot of any Dwarves!
+~
+E
+Dryad~
+Dryads, being nomadic, free-spirited beings, have no organised habitats or
+political structure, though a small, independant community of these magical
+creatures has formed in the forest west of Haon-Dor.
+~
+#31087
+tome social history~
+a Tome of Social History~
+This tome is titled- "THE SOCIAL HISTORY OF ANON", by Gaspar duPont.~
+~
+13 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+tome social history~
+This tome attempts to give, in a brief outline, the social structure of
+the many races of Anon. For more information on the relevant races, type
+read Elf, Dwarf, Human, or Dryad.
+~
+E
+Elf~
+The Elves of Anon vary in their social structure according to the various
+sub-types of Elves. This chapter will focus on those Elves known as the
+High or True Elves, the Elves that deign to associate with humanity, and
+have a desire for adventure.
+
+High Elves come from a very rigid social structure, a complex feudal system
+where vertical ascension is very difficult. Basically, the path an Elf will
+take in life is determined to a very large extent by what their parents did-
+i.e, mages are the children of magicians, warriors the children of warriors,
+nobles the children of nobility, etc. Occasionally, young Elves who
+demonstrate an exceptional talent for a particular area, most particuarly
+the priesthood, but sometimes the Magical Arts, will be taken from their
+families and raised to become a member of that order. Other than that, an
+Elves fate in their very long lives is determined by their birth. While this
+may seem unfair to those used to a more flexible system, the Elves have no
+problem with the glass ceiling.
+
+There is perfect sexual equality in Elven society, though in general the
+males favor areas such as the warrior or magic arts, and females prefer the
+priesthood or healing arts. Adventuring Elves are most commonly those
+interested in the magical arts, though many also have significant martial
+experience.
+~
+E
+Dwarf~
+Dwarven social structure is totally clan-based, with the social standing
+of each Dwarf directly related to their clan. And while most clans have
+members of many professions, certain clans favor mining and engineering,
+such as the Chiselled Rune Clan, or fighting and exploration, such as the
+Whirling Axe Clan.
+
+Warriors hold the highest position in any clan, irrespective of focus. For
+it is the warriors who defend the beleagured Dwarves from their many enemies.
+The leader of each clan is generally the eldest and most experienced Dwarf.
+Adventuring Dwarves are always warriors, as the other Dwarves, such as
+healers, miners and bards, have little interest in such activities.
+
+Female Dwarves are highly prized in Dwarven society, as they comprise only
+about 20% of the race's numbers. And since Dwarves reproduce so infrequently,
+they are often more guarded than even the Dwarves' precious minerals. Thus
+female adventurers are much rarer than males, not due to any sexism but due
+to simple numbers.
+~
+E
+Human~
+It is extremely difficult to summarise human sociology, as there are as many
+types of social structures as there are independant communities of humanity.
+Generally, though, humans prefer vaguely deomcratic processes (they seem
+to enjoy electing their leaders), and prize the freedom of the individual
+above all else, though they always knuckle under to the pressure of
+authority.
+
+Human society is very flexible, with upward and downward mobility usually
+quite easy for those with enough power, money and ability. For example,
+wealthy humans can buy their children places in mage or priest academies,
+regardless of their offspring's aptitude, and a little money and a big stick
+can allow even the lowest human to attain very high offices.
+
+Adventuring humans are generally religous warriors, travelling worshippers of
+Buddha who seek to spread the word of their god and crack a few skulls along
+the way. Other humans have little desire to leave their environments, as
+many still harbour old prejudices against the other races.
+
+Sexism has been all but eliminated from Human society, after females
+demonstrated during the race wars that they were just as capable of
+casting spells and swinging swords as the males.
+~
+E
+Dryad~
+As Dryads rarely live together in communities it is difficult to assess
+social classes or structure. Generally, all Dryads of both sexes are
+considered equal. However, one can easily lose great status among fellow
+Dryads by showing a lack of proper respect or love for nature.
+
+Dryads that do live in communities usually have a central figure (always
+female), who decides on the general activities of the group.
+Dryads actually place a higher value on the life and well-being of flora
+and fauna than they do any sentient race, including their own.
+
+Dryad males are extremely rare, and are not often seen outside the breeding
+communities Dryads form every 7 years when they are fertile. Such males are
+in general inferior to the females, though this is due more to lack of
+proper training and experience rathr than any inherent flaw.
+~
+#31088
+book history~
+a History book~
+This book is titled- "THE HISTORY OF THE KNOWN RACES OF ANON", by Xanafax.~
+~
+13 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+history book~
+This slim tome contains a brief synopsis of the history of each of the major
+races of the Known World. These synopses have been gathered from extant
+primary sources by Xanafax and compiled here for the dilettante to peruse
+and learn a little about their fellow Anonians. For further information,
+try read elf, read human, etc.
+~
+E
+Dryad~
+Until very recently, the mysterious Dryads had lived apart from all other 
+races, inhabiting secret glades in the deepest forests of Anon. They lived
+simple, peaceful lives, attuning themselves to the majestic forces of nature,
+and drawing magical energy from them that they could turn to any usage they
+wished.
+
+The Drayds were ruled by a wise and gentle immortal named Xanibdar, who had
+come with them from their home world many centuries ago, stepping through
+a portal to emerge in Anon. They had fled their own world, the name of which
+has been forgotten, to escape war and enslavement, and on Anon they found
+peace. For a time.
+
+War broke out between Human, Dwarf and Elf, the cause of which was considered
+trivial and immaterial to the spiritual Dryads, as was the (to them) petty
+war itself. Then the Humans and Dwarves stormed the once-lush forests of
+Anon, in search of Elves, and many thousands of acres of woodland was turned
+to barren waste in their relentless march. The Dryads grew angry, and emerged
+from their hidden realm, proving their existence to startled mortals who had
+previously thought them to be legend.
+
+Using their great powers and reputation, the Dryads brought the war to a halt,
+a relatively easy task as the Humans and Dwarves were then still relatively
+small in numbers and weak in magical skills. They did not do so out of
+sympathy for the Elves, for the Elves had scorned the Dryads when they arrived
+as if they were but simple primitives living wild in the forests. They did so
+to preserve what was left of their sacred woodlands.
+
+Dryads remain reclusive however, and are rarely found in large groups.
+However, they have been known to emerge on occasion when the woodlands
+in which they live are threatened.
+~
+E
+Elf~
+Aeons ago, when the land of Anon first came into being, Elves were among the
+first races to emerge through the mystical portals that sprang up across the
+continent, and they quickly established themselves a powerful and extensive
+domain. They concentrated their settlements in the dense woodlands that then
+covered most of Anon, or build beautiful crystal fortresses high in the
+western mountains that seperate Anon from the Desert wastes.
+
+Centuries passed, and gradually the Elves fell from dominance, losing interest
+in the pursuit of power and wealth, and instead immersing themselves in the
+study of the magical arts. Generations of such research eventually resulted
+in the evolution of a race of Elves of which every member possessed latent
+magical talent, the ability to shape and mold the magical energies which
+flowed across Anon into whatever usage pleased them.
+
+Thus eventually the Elves became renowned mages, and kings and princes of all
+races sought them for their abilities, as well as their counsel, for Elves 
+were counted among the wisest of all races, save the Dryad. And the Elves
+prospered, and lived in relative harmony with their neighbors.
+
+Eventually, discord began to emerge, caused as is often the case by the
+jealousy of the "lesser" races, and war between Elves and the other races
+broke out. Combined armies of Dwarves and Humans drove Elves from their 
+forests and their crystal palaces, at the cost of countless lives on both
+sides, for the Elves did not surrender their lands easily.
+
+This war raged for thirty years, until it was ended by the coming of the
+Dryads, who were angered at the desecration of their beloved forests by Human
+and Dwarf, and a peace was negotiated, for the mysterious dryads were greatly 
+respected and feared. The races returned to their domains, and have since that
+day maintained an uneasy truce, though in truth many members of the warring 
+races still hold a deep hatred for the others. Some say the Elves' natural
+arrogance and condescension to the "lesser" races brought about the war- 
+others say it was the natural aggression of the Dwarves and Humans. Who is
+to say?
+~
+E
+Dwarf~
+Dwarves were the second race to emerge into the land of Anon, after the
+Elves. They quickly grew quite fond of this land, admiring the many tall,
+powerful mountain ranges which to their added delight they found were rich
+with valuable minerals. Soon Dwarven mines peppered every major mountain
+range on the continent, and some Dwarves had even crossed the Salt Sea to
+the New World in search of new ranges to mine.
+
+Dwarves paid little attention to the affairs of other races, save the Elves
+whom they kept a suspicious eye on, and the Kender, whom they banned upon
+threat of war of coming near their hoards of gems and metals. They continued
+to mine and smith, digging deep into the roots of the mountains of Anon,
+and discovering many wonders (and evils- the Dwarves warred long against
+tribes of Goblins who shared the mountain depths).
+
+When Humans arrived, they formed a close bond with the prosperous Dwarves,
+and an enduring alliance was forged that till this day remains unbroken by
+either side. And while this alliance benefited both Humans and Dwarves, it
+meant catastrophe for other races.
+
+Dwarves had long hated and feared Elves and their magical ways, for Dwarves
+detest magic, and Humans had been deeply jealous of the Elves' wealth and
+power. So both races made was against the Elves, and nearly succeeded in
+eradicating them. It was the intervention of the Dryads, who feared the
+loss of their deep forests in the war, who stopped the war, and made the
+Dwarves and Humans swear an oath to never again raise arms against any other
+race, or to ever again wantonly destroy the forests of Anon, as they had
+done during the war.
+
+The Dwarves agreed, and withdrew to their mountains. Gradually they succumbed
+to internal strife caused by boredom and isolation, and one by one the many
+Dwarven kingdoms collapsed and disappeared. Only a very few remain today, and
+they are but a shadow of the mighty kingdoms of their ancestors.
+~
+E
+Human~
+Humans are a young race, compared to Elf, Dwarf and Dryad, having come to
+Anon much later than them. The Humans of Anon came from many different
+worlds, as refugees, wanderers, explorers or fugitives. And, as Humans are 
+wont to do, they quickly built towns and cities, and farmed the land, and
+hunted the local animals, and they became quite comfortable in their new
+home.
+
+Kingdoms were established quickly, and just as quickly brought down by
+rebellions, feuds, or war with their neighbors. Eventually a kind of stability
+came into being, with individual city states (such as Anon, the largest,
+and Midgaard, the first kingdom formed on Anon) establishing themselves 
+domains independant of each other. 
+
+Peace became even more advantageous when the Dwarves offered the hand of
+friendship, and both sides soon prospered from a lucrative trade of the
+Human-produced food and goods for the products of the Dwarven mines. Both
+races enjoyed this situation, and soon a powerful aliance was formed.
+
+It was never known who suggested war upon the Elves, or why it was suggested,
+but it was, and both races eagerly agreed. For over thirty years, Humans
+and Dwarves mercilessly assaulted the Elven kingdoms, reducing most of them
+to ashes, along with much of the lush forests of eastern Anon. It was then
+the Dryads stepped in, and negotiated a treaty to save their forests, and the
+war was ended, though the prejudices remained.
+
+Humans, no longer diverted by war, channeled their energies in other directions,
+and begin to enhance the physical, mental and spiritual development of their
+race. Academies were established far and wide to teach Humans this new school
+of thought that had developed, the Martial Arts. Humans excelled at it, but
+other races found it too difficult or boring, especially the Dwarves.
+
+Now today, Humans are by far the most numerous of all races on Anon, and 
+also one of the most powerful, thanks to their mastery of the Martial Arts.
+~
+#31089
+geography text~
+a Geography text~
+This text is titled- "THE GEOGRAPHY OF THE WORLD, RELATIVE TO ANON"~
+~
+13 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+geography text~
+This book is in fine condition, except for one fact- all the maps have been
+unfortunately torn out, so you'll have to go by the text descriptions. The
+book is divided into four chapters- NORTH, SOUTH, EAST and WEST. For more
+information, try read north, read south etc.
+~
+E
+NORTH~
+The vast majority of the lands north of the City of Anon is dominated by
+the Dark Desert, covering a vast portion of the continent. Many adventurers
+have gone insane wandering in this God-forsaken realm, and little is known
+about what lies beyond it.
+~
+E
+SOUTH~
+The City of Anon rests on the north shore of the Sea of Anon, also
+called the Seas of the Pirate Lords because of the great number of
+pirates who have divided the vast sea among them to better rob
+sailing merchants of their wealth.
+
+Beyond the sea is a mountain range separating the town of
+Solace from the sea, and to the east of Solace is a broad grassy plain
+leading to Kerofk and ending at the Sea of Deception.
+~
+E
+EAST~
+Across the sea east of Anon lies the forest of the Haon-Dor, home to
+a den of spiders and a cave of lemmings, as well as a mystical cave
+inhabited by druids and other mystical creatures. Beyond this lies
+the great city of Midgaard, second in size only to Anon itself.
+Further east lies the Dwarven Kingdom, as well as the caves of Moria,
+and further south lies the ruined city of Thalos, and it is rumored that
+a city of Drow is located near there as well.
+
+North of Midgaard lie the plains of the north, where may be found the great
+tree of Yggdrasil as well as the valley of the elves, and it is rumored
+that the city of Olympus is situated at the top of a large mountain there.
+Northeast lies the town of Ofcol, which is ruled by a holy order of
+Dragonlords.
+~
+E
+WEST~
+To the west of Anon there is a large, grassy plain, with impassable
+mountains creating a wall to the far west. At the foot of these mountains
+lies the Warlock's Keep, and nearby is located Mount Doom, where daring
+adventurers may find Lord Krothgar's Fortress.
+
+Nearer to Anon and farther north is the Ghost Town, an abandoned town
+taken over by undead. Farther south lies the Ginnungagap, a magical
+rift that links this world and the city of Krondor in a nearby
+plane of existance.
+~
+#31090
+book compendium~
+xanafax's Compendium of Heroes~
+A dusty old book lies here.~
+~
+13 0 1|16384
+0~ 0~ 0~ 0~ 
+1 0 0
+E
+compendium book~
+This book contains excerpts from the biographies of some of the world's most
+famous Adventurers. To see if someone you know has an entry, try READ
+<character name>, i.e, read Daeron or read Githad, though neither are as
+yet in here.
+~
+#31091
+a gold piece~
+a gold piece~
+A single gold piece.~
+~
+20 0 1
+0~ 0~ 1~ 0~ 
+1 0 0
+#31093
+anvil~
+A Large Anvil~
+A Large Anvil sits in the corner of the room, waiting to be used.~
+~
+30 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
+#31094
+filling meat pie~
+a filling meat pie~
+A large meat pie has been left here.~
+~
+19 0 1
+40~ 0~ 0~ 0~ 
+5 0 0
+#31095
+potion pink~
+a pink potion of see invisible~
+A small pink potion has carelessly been left here.~
+~
+10 64 1|16384
+60~ detect invis~ ~ ~
+1 20 30
+E
+potion yellow~
+The potion has a small label 'Detect The Invisible'.
+~
+#31096
+blue dark potion~
+a dark blue potion~
+A dark blue potion bubbles within its flask.~
+~
+10 64 1
+60~ fly~ ~ ~
+1 0 30
+E
+potion dark blue~
+Fly like an eagle.
+~
+#0
+
+
+#ROOMS
+#31000
+The Temple of Anon~
+You are standing before the Temple of Anon, a truly majestic structure
+constructed from pure marble. Tall Corinthian columns flank an impressive
+set of bronze-bound oaken portals, which are never shut save in times of
+trouble. Through these doors you can glimpse the majestic interior of the
+Temple. Atop the pillars rests a plinth bearing an incredibly well-crafted
+frieze which depicts the Immortals at work creating the world. A broad,
+tree-lined avenue called "Victory Parade" runs past the Temple, and
+Glory Avenue leads off to the south. A small plaque is on a pillar.
+~
+0 4|1024 1
+E
+plaque~
+
+The City of Anon, created by Yaeger, Modified by Archon 4/14/2000
+~
+D0
+The Interior of the Temple
+~
+~
+1 0 31001
+D1
+Victory Parade East
+~
+~
+0 -1 31005
+D2
+Glory Avenue
+~
+~
+0 -1 31004
+D3
+Victory Parade West
+~
+~
+0 -1 31003
+S
+#31001
+The Interior of the Temple~
+Marvelously sculpted likenesses of the Immortals line the aisle of this
+sanctuary of the Gods. Tapestries on the walls depict their victories over
+their enemies, and many of the treasures they acquired on such campaigns
+are also displayed here. There is a magnificent altar fashioned of purest
+obsidian to the north, chased with gold and partially covered with white
+cloth. Behind this stands the healer, who will tell you how he can help you
+if you type 'heal'.
+~
+0 4|8|1024|65536 0
+E
+gath healer~
+"Greetings, Fair Adventurer. How may I help thee?
+ To see how I may help thee, type HEAL, which will also
+ show you the cost of each service".
+~
+D2
+The Temple of Anon
+~
+~
+1 0 31000
+S
+#31003
+Victory Parade West~
+You are walking along Victory Parade West. Guards, citizens and fellow
+adventurers pass you in both directions. Tall buildings rise in all
+directions, the most notable being the magnificent temple, towering high
+directly to the east of here.
+~
+0 8|1024 0
+D1
+The Temple of Anon
+~
+~
+0 -1 31000
+D3
+Victory Parade West
+~
+~
+0 -1 31006
+S
+#31004
+Glory Avenue~
+You are walking along Glory Avenue. Directly to the south it meets Valiant
+Street, and beyond that the Guild of the Clerics. To the north it 
+enters the grounds of the Temple.
+
+To the west lies a locksmith while to the east you can see a bookshop.
+~
+0 8|1024 0
+D0
+The Temple of Anon
+~
+~
+0 -1 31000
+D1
+The Book Shoppe.
+~
+~
+1 0 31321
+D2
+Glory Avenue
+~
+~
+0 -1 31007
+D3
+The Locksmith.
+~
+~
+1 0 31322
+S
+#31005
+Victory Parade East~
+You are walking along Victory Parade East. The houses of the more notable
+residents of the city line the road here. High fences and savage guard dogs
+deter you from trespassing however, as does the constant eye of the city
+guards. Stalwart Lane cuts across Victory Parade directly east of here.
+~
+0 8|1024 0
+D1
+Victory Parade East
+~
+~
+0 -1 31008
+D3
+The Temple of Anon
+~
+~
+0 -1 31000
+S
+#31006
+An Intersection in Victory Parade West~
+You have come to an intersection, where Victory Parade west meets with
+Liberty Lane. To the south you can hear the sounds of a hammer striking
+an anvil, while to the north you hear nothing. But clearly visible in
+both directions are the distinctive walls of Guildhalls.
+~
+0 8|1024 0
+D0
+Liberty Lane
+~
+~
+0 -1 31038
+D1
+Victory Parade West
+~
+~
+0 -1 31003
+D2
+Liberty Lane
+~
+~
+0 -1 31040
+D3
+Victory Parade West
+~
+~
+0 -1 31009
+S
+#31007
+Corner of Valiant Street and Glory Avenue~
+You have come to a crossroads, where the north-south running Glory Avenue
+meets the east-west running Valiant Street. Shops line Valiant to the east
+and west, while Glory Avenue runs south toward the Clerics' Guild.
+~
+0 8|1024 0
+D0
+Glory Avenue
+~
+~
+0 -1 31004
+D1
+Valiant Street
+~
+~
+0 -1 31067
+D2
+Glory Avenue
+~
+~
+0 -1 31010
+D3
+Valiant Street
+~
+~
+0 -1 31065
+S
+#31008
+Corner of Stalwart Lane and Victory Parade East~
+You have come to a crossroads, where Stalwart Lane meets Victory Parade
+east. Shops and residences line Stalwart Lane to the north and south, while
+the gates of the city loom far to the east. The Temple is just to the west
+of here.
+~
+0 8|1024 0
+D0
+Liberty Lane
+~
+~
+0 -1 31042
+D1
+Victory Parade East
+~
+~
+0 -1 31011
+D2
+Liberty Lane
+~
+~
+0 -1 31044
+D3
+Victory Parade East
+~
+~
+0 -1 31005
+S
+#31009
+Victory Parade West~
+You are walking along Victory Parade West. Tall houses line the road, as
+do small gardens and parks. White birds circle high overhead, their feathers
+dazzling in the sun. Surely they are magical creations of the Mages of the city.
+
+To the north of here lies the Thaumaturgist's house, while to the south you 
+can see the Artificer's workshop.
+~
+0 8|1024 0
+D0
+Alix the Thaumaturgist can be seen reading a book.
+~
+~
+0 -1 31199
+D1
+Victory Parade West
+~
+~
+0 -1 31006
+D2
+Clea the Artificer is sitting at a table.
+~
+~
+0 -1 31320
+D3
+Victory Parade West
+~
+~
+0 -1 31012
+S
+#31010
+Glory Avenue~
+You are walking along Glory Avenue. To the north Valiant Street meets Glory
+Avenue to the east and west, while to the south lies the Clerics' 
+Guild. The great Temple of the city lies to the north, and you are as 
+ever awed by its size and beauty.
+~
+0 8|1024 0
+D0
+Glory Avenue
+~
+~
+0 -1 31007
+D2
+Outside the Cleric Guild
+~
+~
+0 -1 31034
+S
+#31011
+Victory Parade East~
+You are walking along Victory Parade East. The massive, imposing walls of
+the city loom up ahead. Tall buildings with large, stained-glass windows
+line each side of the street here, and through them you can see the interiors
+of fabulously wealthy homes.
+
+A huge crowd seems to have gathered around a large building to the north. 
+Perhaps it is for the Trial of Champions, where select adventurers may 
+enter the city's dungeons in search of glory and loot?
+
+To the south you can see Thom the would-be Enhancer's place.
+~
+0 8|1024 0
+D0
+Trial of Champions
+~
+~
+0 -1 17700
+D1
+Victory Parade East
+~
+~
+0 -1 31013
+D2
+Wonder what Thom is doing...
+~
+~
+0 -1 31323
+D3
+Victory Parade East
+~
+~
+0 -1 31008
+S
+#31012
+Victory Parade West~
+At this point there is a small city square with a fountain and a statue in
+the center. The fountain is full of clear drinking water and is quite
+palatable. The statue is a likeness of the first Castellan, and it
+depicts him officially opening the city.
+
+A small cafe lies to the north.
+~
+0 8|1024 0
+D0
+A small cafe lies to the north.
+~
+~
+0 -1 31191
+D1
+Victory Parade West
+~
+~
+0 -1 31009
+D3
+Victory Parade West
+~
+~
+0 -1 31014
+S
+#31013
+Victory Parade East~
+You are walking along Victory Parade East. Children play and scamper at your
+feet, while their mothers watch patiently from the doorways of nearby houses.
+Guards occasionally wander by, keeping their eyes open for any sign of 
+disturbance.
+
+The portal chambers are situated south of here. You'll need to buy a key 
+from the Locksmith to get in, though.
+~
+0 8|1024 0
+D1
+Victory Parade East
+~
+~
+0 -1 31015
+D2
+The portal chambers lie to the south.
+~
+~
+1 31085 31195
+D3
+Victory Parade East
+~
+~
+0 -1 31011
+S
+#31014
+Approaching Gate at Victory Parade West~
+You are approaching the western gates of the city, which are constantly
+patrolled by guards.  Massive towers rise to either side, completing the
+gatehouse. You see guards patrolling the walls around it. There is no-one
+else about here, as the concentration of residences and shops is nearer to
+the Temple.
+~
+0 8|1024 0
+D1
+Victory Parade West
+~
+~
+0 -1 31012
+D3
+The Victory Parade West Gate
+~
+~
+0 -1 31016
+S
+#31015
+Approaching Gate at Victory Parade East~
+You are approaching the eastern gates of the city, which are constantly
+patrolled by guards. Massive towers rise to either side, completing the
+gatehouse. You see guards patrolling the walls around it. There is no-one
+else about here, as the concentration of residences and shops is nearer to
+the Temple.
+~
+0 1024 1
+D1
+The Victory Parade East Gate
+~
+~
+0 -1 31017
+D3
+Victory Parade East
+~
+~
+0 -1 31013
+S
+#31016
+Inside the Victory Parade West Gate~
+You have reached the westernmost extent of Victory Parade, the long road that
+bisects the city. Tall, mithril gates rise above you to the west, standing
+open as they always are, save in times of trouble. Guards nod politely at 
+you, but remain alert. Above you, you see murderholes in the floor of the
+gatehouse, allowing defenders to pour boiling oil upon any foolish enough
+to storm the gates.
+
+Doors to the north and south allow you to enter the towers flanking the
+gatehouse.
+~
+0 8|1024 1
+D0
+A door to the north leads into the walls of Anon.
+~
+~
+1 0 31200
+D1
+Victory Parade West
+~
+~
+0 -1 31014
+D2
+A door to the south leads into the walls of Anon.
+~
+~
+1 0 31201
+D3
+Outside the Gates
+~
+~
+1 31000 31018
+S
+#31017
+Inside the Victory Parade East Gate~
+You have reached the westernmost extent of Victory Parade, the long road that
+bisects the city. Tall, mithril gates rise above you to the west, standing
+open as they always are, save in times of trouble. Guards nod politely at 
+you, but remain alert. Above you, you see murderholes in the floor of the
+gatehouse, allowing defenders to pour boiling oil upon any foolish enough
+to storm the gates.
+
+Doors to the north and south allow you to enter the towers flanking the
+gatehouse.
+~
+0 8|1024 1
+D0
+A door to the north leads into the walls of Anon.
+~
+~
+1 0 31212
+D1
+Outside the Gates
+~
+~
+1 31000 31019
+D2
+A door to the south leads into the walls of Anon.
+~
+~
+1 0 31213
+D3
+Victory Parade East
+~
+~
+0 -1 31015
+S
+#31018
+Outside the Victory Parade West Gate~
+You are standing outside the Gates at the western end of town. They loom
+high above you, tall, gleaming mithril valves designed to keep the most
+persistent of intruders out. Guards wander back and forth both on the
+below and the battlements high above, where they are barely visible through
+the crenelations.
+
+Roads lead to the north, south and west.
+~
+0 4 2
+D0
+The Circuit Road
+~
+~
+0 -1 31020
+D1
+Victory Parade West
+~
+~
+1 31000 31016
+D2
+The Circuit Road
+~
+~
+0 -1 31033
+D3
+The Plains
+~
+~
+0 -1 18257
+S
+#31019
+Outside the Victory Parade East Gate~
+You are standing outside the Gates at the eastern end of town. They loom
+high above you, tall, gleaming mithril valves designed to keep the most
+persistent of intruders out. Guards wander back and forth both on the
+below and the battlements high above, where they are barely visible through
+the crenelations.
+
+Roads lead to the north and south.
+~
+0 4 2
+D0
+The Circuit Road
+~
+~
+0 -1 31026
+D2
+The Circuit Road
+~
+~
+0 -1 31027
+D3
+Victory Parade East
+~
+~
+1 31000 31017
+S
+#31020
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D0
+Northwest Corner of the Circuit Road
+~
+~
+0 -1 31021
+D2
+Outside the Victory Parade West Gates
+~
+~
+0 -1 31018
+S
+#31021
+Northwest Corner of the Circuit Road~
+You are travelling around the northwest corner of the Circuit Road, a broad, 
+paved path that circles the city, provided by the Castellan for the benefit of 
+travellers who wish to bypass the city on their journeys.
+~
+0 0 2
+D1
+The Circuit Road
+~
+~
+0 -1 31022
+D2
+The Circuit Road
+~
+~
+0 -1 31020
+S
+#31022
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D1
+A Path to the Plains
+~
+~
+0 -1 31023
+D3
+Northwest corner of the Circuit Road
+~
+~
+0 -1 31021
+S
+#31023
+A Path to the Wilderness~
+At this point in the Circuit Road, a narrow path wanders off north into
+an expansive, rocky plain.  Looking back directly south, you can see the
+gleaming rooftop of the magnificent Temple of Anon, towering above all else.
+~
+0 0 2
+D0
+~
+~
+0 -1 500
+D1
+The Circuit Road
+~
+~
+0 -1 31024
+D3
+The Circuit Road
+~
+~
+0 -1 31022
+S
+#31024
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D1
+Northeast Corner of the Circuit Road
+~
+~
+0 -1 31025
+D3
+A Path to the Desert
+~
+~
+0 -1 31023
+S
+#31025
+Northeast Corner of the Circuit Road~
+You are travelling around the northeast corner of the Circuit Road, a broad, 
+paved path that circles the city, provided by the Castellan for the benefit of 
+travellers who wish to bypass the city on their journeys.
+~
+0 0 2
+D2
+The Circuit Road
+~
+~
+0 -1 31026
+D3
+The Circuit Road
+~
+~
+0 -1 31024
+S
+#31026
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D0
+Northeast Corner of the Circuit Road
+~
+~
+0 -1 31025
+D2
+Outside the Victory Parade East Gates
+~
+~
+0 -1 31019
+S
+#31027
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels. You see a large Inn to the east.
+~
+0 0 2
+D0
+Outside the Victory Parade East Gates
+~
+~
+0 -1 31019
+D1
+A Large Inn
+~
+~
+0 -1 56101
+D2
+Southeast Corner of the City
+~
+~
+0 -1 31028
+S
+#31028
+Southeast Corner of the Circuit Road~
+You are travelling around the southeast corner of the Circuit Road, a broad, 
+paved path that circles the city, provided by the Castellan for the benefit of 
+travellers who wish to bypass the city on their journeys.
+
+The Anon Dock lies south of here.
+~
+0 0 2
+D0
+The Circuit Road
+~
+~
+0 -1 31027
+D2
+The dock of Anon
+~
+~
+0 -1 31275
+D3
+The Circuit Road
+~
+~
+0 -1 31029
+S
+#31029
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D1
+Southeast Corner of the Circuit Road
+~
+~
+0 -1 31028
+D3
+The Circuit Road
+~
+~
+0 -1 31030
+S
+#31030
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D1
+The Circuit Road
+~
+~
+0 -1 31029
+D3
+The Circuit Road
+~
+~
+0 -1 31031
+S
+#31031
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D1
+The Circuit Road
+~
+~
+0 -1 31030
+D3
+Southwest Corner of the Circuit Road
+~
+~
+0 -1 31032
+S
+#31032
+Southwest Corner of the Circuit Road~
+You are travelling around the southwest corner of the Circuit Road, a broad, 
+paved path that circles the city, provided by the Castellan for the benefit of 
+travellers who wish to bypass the city on their journeys.
+~
+0 0 2
+D0
+The Circuit Road
+~
+~
+0 -1 31033
+D1
+The Circuit Road
+~
+~
+0 -1 31031
+S
+#31033
+The Circuit Road~
+You are travelling along the Circuit Road, a broad, paved path that circles
+the city, provided by the Castellan for the benefit of travellers who wish to
+bypass the city on their travels.
+~
+0 0 2
+D0
+Outside the Victory Parade West Gates
+~
+~
+0 -1 31018
+D2
+The Circuit Road
+~
+~
+0 -1 31032
+S
+#31034
+Outside the Cleric Guild~
+You are standing outside an impressive wooden structure, surrounded by
+cleverly-pruned topiaries and tall ash, oak and elm trees. The faint scent
+of incense comes from within. The double doors ahead stand open- you may
+enter at any time.
+~
+0 1024 1
+D0
+Glory Avenue
+~
+~
+0 -1 31010
+D2
+Inside the Cleric Guild
+~
+~
+1 0 31035
+S
+#31035
+Inside the Cleric Guild~
+Stepping through the doors, you are suddenly overcome by a sense of peace
+and serenity that you have never felt before. All around you, everything
+seems to be in harmony with its environment- from the intricately carved
+wooden furniture to the carefully polished bronze fittings on the doors
+and windows, everything is in order. You may proceed east to the Cleric
+bar, or west to the Guildmaster himself.
+~
+0 8|1024 0
+D0
+Outside the Cleric Guild
+~
+~
+1 0 31034
+D1
+The Cleric Bar
+~
+~
+0 -1 31037
+D3
+The Guildmaster
+~
+~
+0 -1 31036
+S
+#31036
+The Guildmaster~
+You have entered the sanctum of the Cleric Guildmaster. He is always here,
+perpetually ready to impart what wisdom he may to any disciples of his
+faith that may visit, or students of other faiths that have an interest
+in Cleric magic. If you are not sure what to do, try looking at the
+Guildmaster.
+~
+0 8|1024 0
+D1
+Inside the Cleric Guild
+~
+~
+0 -1 31035
+S
+#31037
+The Cleric Bar~
+This is where Clerics of all ages and levels of experience come to meet,
+converse, drink and basically relax, free from the worries of the outside
+world for a short time. Polished oak tables are ringed by wooden stools,
+a few of which are currently filled.
+~
+0 8|1024 0
+D3
+Inside the Cleric Guild
+~
+~
+0 -1 31035
+S
+#31038
+Liberty Lane~
+You are heading along the northern half of Liberty Lane. To the south runs
+Victory Parade, while to the north lies Justice Street. The Castellan's
+office is to the west.
+~
+0 1024 1
+D0
+Justice Street
+~
+~
+0 -1 31046
+D2
+Victory Parade
+~
+~
+0 -1 31006
+D3
+The Castellan's Office
+~
+~
+1 0 31039
+S
+#31039
+The Castellan's Office~
+This is the office of the Castellan of the City of Anon, appointed by the
+rulers of the nation to be the steward of this city. He does an excellent
+job, too. The Castellan has no secretary, he does all his own paperwork.
+He also keeps no guards, because he can fend for himself in a fight.
+His desk is neat and orderly and all his papers are neatly stacked in
+labeled boxes. The door to the east leads back to Liberty Lane.
+~
+0 8|1024 0
+D1
+Liberty Lane
+~
+~
+1 0 31038
+S
+#31040
+Liberty Lane~
+You are heading south along Liberty Lane, towards where it meets up with
+Valiant Street. To the north, Victory Parade runs to the east and west,
+directly through the heart of the city. There is a Blacksmith to the west,
+and above it a fish and chips shop.
+~
+0 1024 1
+D0
+Victory Parade
+~
+~
+0 -1 31006
+D2
+Corner of Liberty Lane and Valiant Street
+~
+~
+0 -1 31062
+D3
+The Smithy
+~
+~
+0 -1 31041
+S
+#31041
+The Smithy~
+You are greeted with a sudden blast of heat from the furnace as you enter
+the smithy. Wiping sweat from your brow, you gaze about, taking the place
+in. Various items of armor in various stages of repair line the walls. A
+huge, muscular man is using a massive hammer to beat the dents out of a
+suit of rather battered-looking plate mail.
+
+There is a chippy upstairs from here.
+~
+0 8|1024 0
+D1
+Liberty Lane
+~
+~
+0 -1 31040
+D4
+Chippy
+~
+~
+0 -1 31190
+S
+#31042
+Stalwart Lane~
+You are marching along the northern half of Stalwart Lane. To the south lies
+Victory Parade, the main road of the City, while to the north runs Justice
+Street. There is an armory to the east here.
+~
+0 1024 1
+D0
+Corner of Justice Street and Stalwart Lane
+~
+~
+0 -1 31054
+D1
+The Armory
+~
+~
+0 -1 31043
+D2
+Victory Parade
+~
+~
+0 -1 31008
+S
+#31043
+The Armory~
+You have entered the Armory, an impressive place of business with a range
+of equipment unmatched on the whole continent. Piles of armor gather dust
+in the rear of the shop, while better items are displayed in glass cases
+or on racks. If you don't know what to do, try looking at the armorer.
+~
+0 8|1024 0
+D3
+Stalwart Lane
+~
+~
+0 -1 31042
+S
+#31044
+Stalwart Lane~
+You are advancing along the southern half of Stalwart Lane. To the north
+Victory Parade cuts through Stalwart Lane, dividing it into its two halves,
+while to the south Stalwart Lane ends in Valiant Street. There is a
+Weaponsmith directly east of here.
+~
+0 1024 1
+D0
+Victory Parade
+~
+~
+0 -1 31008
+D1
+The Weaponsmith
+~
+~
+0 -1 31045
+D2
+Corner of Stalwart Lane and Valiant Street
+~
+~
+0 -1 31069
+S
+#31045
+The Weaponsmith~
+You have entered the Weaponsmith, a crowded little premise loaded with
+military regalia of all types. The Weaponsmith is an avid collector of
+memorabilia, but his chief business is the buying and selling of weapons.
+If you are rather lost, try looking at him for help.
+~
+0 8|1024 0
+D3
+Liberty Lane
+~
+~
+0 -1 31044
+S
+#31046
+Corner of Liberty Lane and Justice Street~
+You are standing at the corner of Justice Street and Liberty Lane. There
+is a Smithy to the south, and various shops and guilds to the east. A
+dark lane runs to the west.
+~
+0 1024 1
+D0
+Mercenaries Unlimited
+~
+~
+0 -1 31047
+D1
+Justice Street
+~
+~
+0 -1 31049
+D2
+Liberty Lane
+~
+~
+0 -1 31038
+D3
+Psionic Guild
+~
+~
+0 -1 31086
+S
+#31047
+Mercenaries Unlimited~
+You have entered a hiring hall for mercenaries. A stout Mercenary Master
+grunts as you enter. If you don't know what to do, try looking at him.
+~
+0 4|8|1024|4096 0
+D2
+Justice Street
+~
+~
+0 -1 31046
+S
+#31048
+Merc Store~
+You shouldn't be here. Go Away. Or I'll Tell.
+
+
+
+
+
+
+
+NOW!
+~
+0 4|8 0
+S
+#31049
+Justice Street~
+Justice Street runs past several businesses here, heading west to a
+junction with Liberty Lane and east past several shops toward Stalwart
+Lane. There is a Magic Shop directly north of here.
+~
+0 1024 1
+D0
+The Magic Shop
+~
+~
+0 -1 31050
+D1
+Corner of Honor Avenue and Justice Street
+~
+~
+0 -1 31051
+D3
+Corner of Justice Street and Liberty Lane
+~
+~
+0 -1 31046
+S
+#31050
+The Magic Shop~
+This shop is cram-packed with magical artifacts, items and spell components
+of every type imaginable (and several unimaginable). Forcing your way through
+the clutter, you eventually find an assistant, a raven-haired mage who smiles
+sweetly and welcomes you to her shop. If you don't know what to do here, try
+looking at her.
+~
+0 8|1024 0
+D2
+Justice Street
+~
+~
+0 -1 31049
+S
+#31051
+Corner of Honor Avenue and Justice Street~
+You are standing at the corner of two of the lesser roads in the city. Honor
+Avenue is a short road that ends at a small tower to the north, while
+Justice Street heads east and west past a variety of shops and houses. Far
+to the north, past the tower, rise the impressive crenelated stone battlements
+of the city.
+~
+0 1024 1
+D0
+Honor Avenue
+~
+~
+0 -1 31057
+D1
+Justice Street
+~
+~
+0 -1 31052
+D3
+Justice Street
+~
+~
+0 -1 31049
+S
+#31052
+Justice Street~
+You are walking through the northeastern quarter of town, along Justice
+Street. People garbed in rich, colorful accoutrements hurry past, smiling
+briefly when they feel your gaze upon them. To the north there is an 
+important-looking building with a large sign that reads - "Mitzak the Sage".
+~
+0 1024 1
+D0
+The Sage
+~
+~
+0 -1 31053
+D1
+Corner of Honor Avenue and Justice Street
+~
+~
+0 -1 31054
+D3
+Justice Street
+~
+~
+0 -1 31051
+S
+#31053
+The Sage's Residence~
+You have entered the modest dwelling of Mitzak the Sage, an elderly, bearded
+gent who has seen almost anything you can imagine. Drawing on his extensive
+knowledge, he writes books that are duplicated and sold all over the world.
+He can also identify items for you.  If you're not sure how, try looking
+at him.
+~
+0 4|8|1024 0
+D2
+Justice Street
+~
+~
+0 -1 31052
+S
+#31054
+Justice Street~
+You are advancing along Justice Street, through a small city square where
+feasts are held every Spring. At other times of the year it is fairly
+deserted, save for the occasional guard or customer for the Pet Shop to the
+north. Stalwart Lane leads south out of the square, running past more shops.
+~
+0 1024 1
+D0
+The Pet Shop
+~
+~
+0 -1 31055
+D1
+Justice Street
+~
+~
+0 -1 31093
+D2
+Stalwart Lane
+~
+~
+0 -1 31042
+D3
+Justice Street
+~
+~
+0 -1 31052
+S
+#31055
+The Pet Shop~
+You have entered a virtual Zoo, a crowded shop packed with a menagerie of
+animals of every type, size, shape and description imaginable. However,
+only a few are for sale- the rest are the owner's personal collection, and
+are his pride and joy. To see what to do next, try looking at the owner.
+~
+0 8|1024|4096 0
+D2
+Justice Street
+~
+~
+0 -1 31054
+S
+#31056
+Pet Store Storage~
+You shouldn't be here. Go Away. Or I'll Tell.
+
+
+
+
+
+
+
+NOW!
+~
+0 4 0
+S
+#31057
+Honor Avenue~
+You are strolling alone Honor Avenue, a broad, tree-lined boulevard with
+several impressive-looking residences to either side. To the north lies the
+entrance to the small tower which you saw earlier and now recognize as the
+Mage Guild, and beyond that loom the magnificent city walls.
+~
+0 1024 1
+D0
+The Mage Guild
+~
+~
+0 -1 31058
+D2
+Corner of Honor Avenue and Justice Street
+~
+~
+0 -1 31051
+S
+#31058
+The Mage Guild~
+You are standing in the forecourt of the tower which holds the chambers
+of the Mage Guild. Here, practitioners of magical arts come to advance
+their knowledge of their art. Upstairs lie the offices of the Guild,
+while downstairs is the Mage Bar.
+~
+0 8|1024 0
+D2
+Honor Avenue
+~
+~
+0 -1 31057
+D4
+The Offices of the Guild
+~
+~
+0 -1 31059
+D5
+The Mage Bar
+~
+~
+0 -1 31061
+S
+#31059
+The Offices of the Guild~
+On this level, the various administrative personnel of the Guild rush to and
+fro, preparing documents and memorandums for the various officials of the
+city, as the Mages also act as the official Scribes' Guild, due to their
+fluency in tongue and their adroitness with the quill. Upstairs lies the
+office of the Guildmaster himself, while downstairs is the entrance.
+~
+0 8|1024 0
+D4
+The Office of the Guildmaster
+~
+~
+0 -1 31060
+D5
+The Mage Guild
+~
+~
+0 -1 31058
+S
+#31060
+The Office of the Mage Guildmaster~
+This spacious office is lined on every wall by tall bookcases crammed with
+books on magic and mystical lore, as well as treatises on history, science
+mathematics, philosophy and alchemy. The Guildmaster himself sits behind
+a large oak desk covered in scrolls, quills, papers and jars of ink. He 
+looks up as you enter and asks how he may be of service. If you don't know,
+try looking at him.
+~
+0 8|1024 0
+D5
+The offices of the guild
+~
+~
+0 -1 31059
+S
+#31061
+The Mage Bar~
+This must be the cleanest bar you have ever seen. Looking around, all the
+tables are spotless, the floors are freshly swept, and all the glasses
+are clean. As far as you can tell, there isn't even dust on any of the
+surfaces. The Mages must have either put a magical enchantment on the room,
+or hired a very good waiter.
+
+There is a mystical pattern drawn on the ground here.
+~
+0 8|1024 0
+D4
+The Mage Guild
+~
+~
+0 -1 31058
+S
+#31062
+The Corner of Liberty Lane and Valiant Street~
+You are standing at a tree-lined intersection in the southwest quarter of
+town. Liberty Lane runs north from here past shops toward Justice Street.
+There is a Bank to the south.
+~
+0 1024 1
+D0
+Liberty Lane
+~
+~
+0 -1 31040
+D1
+Valiant Street
+~
+~
+0 -1 31065
+D2
+The Bank
+~
+~
+0 -1 31063
+D3
+Valiant Street
+~
+~
+0 -1 31072
+S
+#31063
+The Bank~
+You have entered a building obviously built by someone who is fabulously 
+wealthy. From the gold handles in the doors to the obsidian service counter
+and platinum wall fittings, everything is expensive and luxurious. There is
+a set of stairs leading up to the business area of the bank, where the bankers
+are located.
+~
+0 4|8|1024 0
+D0
+Corner of Valiant Street and Liberty Lane
+~
+~
+0 -1 31062
+D4
+The Bankers Room
+~
+~
+0 -1 31064
+S
+#31064
+The Bankers Room~
+You ascend the stairs into the service area. You see that there is a long queue
+and curse loudly. A few heads turn to stare at you but most people who come here
+are used to such outbursts. Eventually its your turn. If you don't know what to
+do, look at the sign behind you.
+~
+0 8|1024|16384 0
+D5
+The Bank
+~
+~
+0 -1 31063
+E
+sign~
+A sign says-
+
+"Hello! Welcome to the Anon Bank! You may:
+
+ 1.To withdraw cash, type WITHDRAW <amount> <coin>, and your account
+   will be automatically debited while the money is transferred to you.
+ 2.To deposit cash, type DEPOSIT <amount> <coin>, and your account
+   will be automatically credited.
+ 3.To simply check your balance, type BALANCE.
+
+ Thank You and have a good day."
+
+~
+S
+#31065
+Valiant Street~
+You are walking along Valiant Street, which is met to the west and east by
+Liberty Lane and Glory Avenue respectively. To the south there is a Grocery
+Store.
+~
+0 1024 1
+D1
+Corner of Valiant Street and Glory Avenue
+~
+~
+0 -1 31007
+D2
+The Grocery Store
+~
+~
+0 -1 31066
+D3
+Corner of Valiant Street and Liberty Lane
+~
+~
+0 -1 31062
+S
+#31066
+The Grocery Store~
+You have entered a quaint Grocery Store, the shelves of which are lined with
+basic goods of every type. Backpacks, water skins, ropes, lanterns, torches
+and pouches are what the Grocer specialises in, though, and if you need any
+of those goods, you've come to the right place. If you don't know how to
+negotiate a transaction, simply look at the grocer.
+~
+0 8|1024 0
+D0
+Valiant Street
+~
+~
+0 -1 31065
+S
+#31067
+Valiant Street~
+You are walking along Valiant Street, which is met to the west and east by
+Stalwart Lane and Glory Avenue respectively. To the south there is a Bakery,
+from which a delicious aroma wafts.
+~
+0 1024 1
+D1
+Corner of Stalwart Street and Glory Avenue
+~
+~
+0 -1 31069
+D2
+The Bakery
+~
+~
+0 -1 31068
+D3
+Corner of Valiant Street and Glory Avenue
+~
+~
+0 -1 31007
+S
+#31068
+The Bakery~
+The delicious aroma you smelt outside pervades this entire store. Cakes,
+pies, rolls and loaves of freshly-baked bread line the racks behind the
+counter. Also behind the counter is a very mean-looking tattooed Dwarf with
+missing teeth and fingers, but with a talent for baking unsurpassed in the
+entire nation. If you don't know what to do next, try looking at the Dwarf
+(if you dare...).
+~
+0 8|1024 0
+D0
+Valiant Street
+~
+~
+0 -1 31067
+S
+#31069
+The Corner of Stalwart Lane and Valiant Street~
+You are standing at a tree-lined intersection in the southeast quarter of
+town. Stalwart Lane runs north from here past shops toward Justice Street.
+There is a seedy-looking Bar to the south.
+~
+0 1024 1
+D0
+Stalwart Lane
+~
+~
+0 -1 31044
+D1
+Valiant Street
+~
+~
+0 -1 31079
+D2
+The Bar
+~
+~
+0 -1 31070
+D3
+Valiant Street
+~
+~
+0 -1 31067
+S
+#31070
+The Bar~
+You have entered the main room of the Bar. A slick-looking Bartender with
+greasy black hair attempts to come on to the female patrons here. Seeing
+you he smiles and offers to make you a drink. To see what sort, try looking
+at him. Private booths are available to the south.
+~
+0 8|1024 0
+D0
+Corner of Valiant Street and Stalwart Lane
+~
+~
+0 -1 31069
+D2
+Private Booths
+~
+~
+0 -1 31071
+S
+#31071
+Private Booths~
+This is where the more unsavory customers come to negotiate drug deals,
+slave trading or prostitution. You get a few stares as you enter. Despite
+the rough characters here, no-one ever fights or even lays a blow on another
+as powerful magics prevent it.
+~
+0 1|8|1024 0
+D0
+The Bar
+~
+~
+0 -1 31070
+S
+#31072
+Valiant Street~
+You are heading into the Guard Sector of town. Guards wander here and there,
+as does the occasional prisoner, led by two guards of course. The road
+continues east and west.
+~
+0 1024 1
+D1
+Corner of Valiant Street and Liberty Lane
+~
+~
+0 -1 31062
+D3
+Valiant Street
+~
+~
+0 -1 31073
+S
+#31073
+Valiant Street~
+You are heading into the Guard Sector of town. Guards wander here and there,
+as does the occasional prisoner, led by two guards of course. The road
+continues east and west.
+~
+0 1024 1
+D1
+Valiant Street
+~
+~
+0 -1 31072
+D3
+A Bend in Valiant Street
+~
+~
+0 -1 31074
+S
+#31074
+A Bend in Valiant Street~
+At this point Valiant Street bends, with exits to the east and south. The
+prison lies to the south, as does the Warrior Guild.
+~
+0 1024 1
+D1
+Valiant Street
+~
+~
+0 -1 31073
+D2
+Valiant Street
+~
+~
+0 -1 31075
+S
+#31075
+Valiant Street~
+You are in the Guard Sector of town. Guards wander here and there,
+as does the occasional prisoner, led by two guards of course. You see
+the prison to the west, but the guards will not let you enter.
+To the south lies the impressive mini-fortress that is the Warrior's Guild.
+~
+0 1024 1
+D0
+Valiant Street
+~
+~
+0 -1 31074
+D2
+The Warrior Guild
+~
+~
+1 0 31076
+S
+#31076
+The Warrior Guild~
+Stone walls rise all around you as you enter the training grounds of the
+Warrior Guild. Several young Dwarves pile eagerly into the bar to the east,
+while other, more mature warriors patiently wait to train with the Master
+to the south.
+~
+0 1024 1
+D0
+Valiant Street
+~
+~
+1 0 31075
+D1
+The Warrior Bar
+~
+~
+0 -1 31078
+D2
+The Guildmaster
+~
+~
+0 -1 31077
+S
+#31077
+The Guildmaster's Room~
+A burly Warrior is here curtly issuing instructions to two trainees. You may
+wish to train as well. If so, and you don't know what to do, try looking at
+the Guildmaster.
+~
+0 8|1024 0
+D0
+The Warrior Guild
+~
+~
+0 -1 31076
+S
+#31078
+The Warrior Bar~
+About two dozen hardy Dwarves drink, smoke, fight and gamble here. The noise
+is only equalled in intensity by the acrid stench of stale beer and burning
+pipeweed. A smaller Warrior busies himself collecting empty steins and 
+replacing them with fresh ones, being rewarded with the occasional silver
+piece or kick in the rump for his efforts.
+~
+0 8|1024 0
+D3
+The Warrior Guild
+~
+~
+0 -1 31076
+S
+#31079
+Valiant Street~
+You have entered a rather seedy area of town, the slums that line the eastern
+half of Valiant Street being legendary the world over. A haven for thieves,
+assassins, backstabbers, footpads and murderers of every description, you
+keep on your toes and keep a close eye on your coin purse.
+~
+0 1|1024 1
+D1
+Valiant Street
+~
+~
+0 -1 31080
+D3
+Corner of Stalwart Lane and Valiant Street
+~
+~
+0 -1 31069
+S
+#31080
+Valiant Street~
+You have entered a rather seedy area of town, the slums that line the eastern
+half of Valiant Street being legendary the world over. A haven for thieves,
+assassins, backstabbers, footpads and murderers of every description, you
+had best not show weakness here, or you will be taken for everything you own.
+You quickly duck the contents of a chamber pot being emptied into the street
+by someone in a higher building, and, cursing, move on.
+~
+0 1|1024 1
+D1
+A Bend in Valiant Street
+~
+~
+0 -1 31081
+D3
+Valiant Street
+~
+~
+0 -1 31079
+S
+#31081
+A Bend in Valiant Street~
+You continue deeper into the rough part of town, trying not to draw
+attention to yourself. To the south you see the infamous Thieves Guild,
+where you will either be welcomed as a member or robbed for all your money.
+~
+0 1|1024 1
+D2
+Outside the Thief Guild
+~
+~
+0 -1 31082
+D3
+Valiant Street
+~
+~
+0 -1 31080
+S
+#31082
+Outside the Thief Guild~
+You are standing outside the house of learning for all the rogues of the 
+city previously mentioned. For of all rogues the Thieves are the masters.
+The entrance to this shady establishment is through a curtained archway
+to the south.
+~
+0 1|1024 1
+D0
+Valiant Street
+~
+~
+0 -1 31081
+D2
+A Curtained Archway
+~
+curtain~
+1 0 31083
+S
+#31083
+Inside the Guild~
+You are standing inside the Thief Guild, surrounded by whores, pimps, 
+thieves, muggers and vagabonds. What a nice place. The Guildmaster lurks
+to the south, while there is a Bar to the west...
+~
+0 1|1024|8 0
+D0
+Valiant Street
+~
+~
+1 0 31082
+D2
+The Guildmaster
+~
+~
+0 -1 31084
+D3
+The Bar
+~
+~
+0 0 31085
+S
+#31084
+The Guildmaster~
+You are in the quarters of the Thief Guildmaster. A veritable treasure 
+trove of items of every possible description is piled to the roof in here.
+The Guildmaster lounges on a settee and stares inquisitively at you. If you
+don't know what to do, try looking at him.
+~
+0 1|8|1024 0
+D0
+Inside the Guild
+~
+~
+0 -1 31083
+S
+#31085
+The Bar~
+You have entered a seedy bar full of low-lifes of the lowest common
+denominator. A greasy bartender serves drinks to the sullen patrons, while
+in the corner a couple of sailors are roughing up a Mage who refused to pay
+up upon losing the last hand in poker.
+~
+0 1|1024|8 0
+D1
+Inside the Guild
+~
+~
+0 -1 31083
+S
+#31086
+End of Justice Street~
+Justice Street ends in a small lane here that the Psionic Guild opens onto
+from the north. Back east several shops open onto Justice Avenue, and before
+that Liberty Lane cuts across this street.
+~
+0 1024 1
+D0
+The Psionic Guild
+~
+~
+0 -1 31090
+D1
+Justice Street
+~
+~
+0 -1 31046
+S
+#31087
+The Brawler Guild~
+You have entered a Martial Arts Dojo devoid of all furniture or decoration
+save several practice mats and some wooden weapons hung on hooks attached
+to the walls. Several students, clad in white Ghis practice basic Karate
+punches and Judo holds with each other, under the watchful eye of their
+instructor. The Guildmaster resides to the north, and the Guild relaxation
+chambers are to the south.
+~
+0 8|1024 0
+D0
+The Guildmaster
+~
+~
+0 -1 31088
+D2
+The Relaxation Room
+~
+~
+0 -1 31089
+D3
+Justice Street
+~
+~
+0 -1 31095
+S
+#31088
+The Guildmaster's Room~
+The Brawler Guildmaster is here, meditating. As you enter, his eyes flick open
+and he quickly leaps to his feet, bowing before you. If you don't know what
+to do next, try looking at him.
+~
+0 8|1024 0
+D2
+The Brawler Guild
+~
+~
+0 -1 31087
+S
+#31089
+The Relaxation Room~
+Rigid and disciplined as they are, the members of this Guild don't spend much
+time loafing around. However, when the mood takes them, few can outdrink them
+whatever the beverage, and this small bar lets them be comfortable while
+doing it. A door to the north leads back to the guild.
+~
+0 8|1024 0
+D0
+The Brawler Guild
+~
+~
+0 -1 31087
+S
+#31090
+Inside the Psionic Guild~
+You have entered the sparsely-furnished chambers of the Psionic Guildmaster
+of Anon. The Guildmaster himself resides to the north, while the Psionics'
+Bar is to the west.
+~
+0 8|1024 0
+D0
+The Guildmaster
+~
+~
+0 -1 31092
+D2
+Justice Street
+~
+~
+0 -1 31086
+D3
+The Bar
+~
+~
+0 -1 31091
+S
+#31091
+The Psionics' Bar~
+Not many Psionics reside in Anon, so this place is usually empty. Also,
+the general public has a quite understandable fear of a Psionics power
+to disintegrate, and thus there are very few non-Psionics in this place
+at any particular time... 
+~
+0 8|1024 0
+D1
+The Guild
+~
+~
+0 -1 31090
+S
+#31092
+The Guildmaster~
+You have entered a particuarly small, dark and cramped chamber that is 
+devoid of funiture- the powerful psionicist hovering in the center of the
+room has no need for any. If you don't know what to do, try looking at the
+Guildmaster and see what he has to think...
+~
+0 8|1024 0
+D2
+The Guild
+~
+~
+0 -1 31090
+S
+#31093
+Justice Street~
+You are strolling through the fairly deserted northeastern quarter of town.
+Up ahead lies the Dojo where the Brawler Guildmaster trains his students, and
+to the northeast looms the aerie of the ShapeShifter Guildmaster.
+~
+0 1024 1
+D1
+Justice Street
+~
+~
+0 -1 31094
+D3
+Corner of Justice Street and Stalwart Lane
+~
+~
+0 -1 31054
+S
+#31094
+Justice Street~
+You are strolling through the fairly deserted northeastern quarter of town.
+Up ahead lies the Dojo where the Brawler Guildmaster trains his students, and
+to the northeast looms the aerie of the ShapeShifter Guildmistress.
+~
+0 1024 1
+D1
+Justice Street
+~
+~
+0 -1 31095
+D3
+Justice Street
+~
+~
+0 -1 31093
+S
+#31095
+Outside the Brawler Dojo~
+At this bend in the road, you can head east into the Dojo, north toward the
+tall tower which holds the aerie of the ShapeShifter Guildmistress, or back west
+toward Stalwart Lane.
+~
+0 1024 1
+D0
+Outside the Tower
+~
+~
+0 -1 31096
+D1
+The Guild
+~
+~
+0 -1 31087
+D3
+Justice Street
+~
+~
+0 -1 31094
+S
+#31096
+Outside the Tower~
+You are standing beneath the wooden tower which houses the aerie of the
+ShapeShifter Guildmistress. Being generally solitary and outdoor-loving
+creatures, ShapeShifters do not congregate here tending instead to visit
+at odd hours so as to not be forced to endure a wait indoors for training.
+~
+0 1024 1
+D0
+Inside the Tower
+~
+~
+0 -1 31097
+D2
+Outside the Dojo
+~
+~
+0 -1 31095
+S
+#31097
+Inside the Tower~
+You have entered the grounds of the Guild. From here you may go up to the
+aerie, or downstairs to the Bar.
+~
+0 8|1024 0
+D2
+Outside the Tower
+~
+~
+0 -1 31096
+D4
+The Aerie
+~
+~
+0 -1 31099
+D5
+The Bar
+~
+~
+0 -1 31098
+S
+#31098
+The Bar~
+As mentioned, ShapeShifters aren't the most social of creatures, but they do enjoy
+a good drink like anyone else. However, they like it best when few other
+people are present, and what few ShapeShifters that are here now will probably get
+up and leave if you enter. A shining white portal lies against the western wall.
+~
+0 8|1024 0
+D3
+The portal flickers and crackles with magical energy.
+~
+~
+0 -1 25902
+D4
+Inside the Tower
+~
+~
+0 -1 31097
+E
+shining white portal~
+It flickers and crackles with magical energy.~
+S
+#31099
+The Aerie~
+Here the ShapeShifter Guildmistress rests, in her comfortable nest, waiting for
+new students. If you don't know what to do here, try looking at her.
+~
+0 8|1024 0
+D5
+Inside the Tower
+~
+~
+0 -1 31097
+S
+#31190
+Inside the Chippy~
+You have entered the local chippy. Your nostrils are almsot immediately
+assailed by a pleasant aroma- it's amazing how good hot fat smells, isn't
+it? You see a portly man standing behind a large glass counter full of
+fried food. It certainly smells a lot better than it looks. A customer
+standing next to you says- "It looks a lot better than it tastes...". Most
+of the food has probably been sitting under those hot lights for a couple
+of hours. The only thing you can be reasonably sure of is the chips.
+By the way, EVERYTHING is fried.
+~
+0 8|1024 0
+D5
+The Smithy
+~
+~
+0 -1 31041
+S
+#31191
+Inside Tracey's Cafe~
+You have entered a well-scrubbed cafe, with tables spread out around the
+room, each covered by a clean white tablecloth. You can proceed to the counter
+to place your order with Tracey, co-owner, and she will bring it to your table.
+~
+0 8|1024 0
+D2
+Victory Parade West
+~
+~
+0 -1 31012
+S
+#31195
+The Portal Chambers~
+These chambers house the three magical portals of the city of Anon.
+Proceed carefully, for you travel at your own risk!
+~
+0 8|1024 0
+D0
+~
+~
+1 31085 31013
+D1
+A Dirty Room
+~
+~
+0 -1 31196
+D2
+A Steamy Room
+~
+~
+0 -1 31197
+D3
+A Sandy Room
+~
+~
+0 -1 31198
+S
+#31196
+A Dirty Room~
+You have entered a dark, musty room with a hard stone floor and
+dirt and dust all around, so much it makes you sneeze. A few stones are
+scattered about on the floor.
+~
+0 8|1024 0
+D3
+The Portal Chambers
+~
+~
+0 -1 31195
+S
+#31197
+A Steamy Room~
+This room is totally clean and white, and filled with steam pouring
+from a portal that hovers in the center of the room. You quickly get
+covered in sweat, and you begin to feel uncomfortable standing here.
+~
+0 8|1024 0
+D0
+The Portal Chambers
+~
+~
+0 -1 31195
+S
+#31198
+A Sandy Room~
+You enter a room whose floor is covered in dark sand, and the ceiling
+cannot be seen. The room is illuminated by a brightly glowing portal that
+hovers in the center of the room. The sand is so hot that you burn your feet.
+~
+0 8|1024 0
+D1
+The Portal Chambers
+~
+~
+0 -1 31195
+S
+#31199
+The Thaumaturgist's House~
+This is where Alix the Thaumaturgist lives while he studies at the Cleric
+Guild. He is currently researching cursed items, how they are cursed, how
+to remove the curse etc.. evidently he wants to totally eliminate the
+curse from an item, if such a thing is possible.
+~
+0 8|1024 0
+D2
+Victory Parade West
+~
+~
+0 -1 31009
+S
+#31320
+The Artificer's Workshop~
+In here Clea, the beautiful Artificer from Ofcol, works on her
+simple artifacts, which she sells to the wealthy merchants and nobles
+of the city for their amusement. These artifacts are non-magical and
+relatively useless, and you feel no urge to buy one.
+~
+0 8|1024 0
+D0
+Victory Parade West
+~
+~
+0 -1 31009
+S
+#31321
+The Book Shoppe~
+This old shop is filled with old wooden shelves crammed with books, the
+furniture strained to breaking point by the many tomes stacked upon it. In
+front of these shelves an ancient man sits reading an ancient text. As you
+enter he welcomes you and offers to show you some of his stock- abridged
+versions of some of the greatest works of world literature.
+~
+0 8|1024 0
+D3
+Glory Avenue
+~
+~
+1 0 31004
+S
+#31322
+The Locksmith~
+In this shop sits a small fat dwarf who is busy making locks and keys. He 
+will also purchase your keys if you don't want them, for a good price. 
+You marvel at all the strange technology about you.
+~
+0 8|1024 0
+D1
+Glory Avenue
+~
+~
+1 0 31004
+S
+#31323
+The Enhancer's House~
+This is the home of Thom, who is studying at the Mage Guild and the Psionic
+Guild, trying to learn about how to improve body and mind using magic.
+He eventually wants to open a shop where he will improve peoples abilities
+with the magic he is currently studying.
+~
+0 8|1024 0
+D0
+Victory Parade East
+~
+~
+0 -1 31011
+S
+#0
+
+
+#RESETS
+*
+D 1 31013 2 2           Lock portal chambers from outside..
+D 1 31195 0 1              .. but only close the door from within
+D 1 31082 2 1           CLOSES CURTAIN TO Thief GUILD
+D 1 31016 0 1           ; Inside the Victory Parade West Gate Close North
+D 1 31016 2 1           ; Inside the Victory Parade West Gate Close South
+D 1 31017 0 1			; Inside the Victory Parade East Gate Close North
+D 1 31017 2 1			; Inside the Victory Parade East Gate Close South
+D 1 31004 1 1           ; Closes Bookshop door from outside
+D 1 31004 3 1           ; Closes Locksmith door from outside
+D 1 31321 3 1           ; Closes Bookshop door from inside
+D 1 31322 1 1           ; Closes Locksmith door from inside
+*
+M 1 31000 1 31001   LOADS GATH THE HEALER
+*
+M 1 31001 1 31036   LOADS Cleric GUILDMASTER
+*
+M 1 31032 1 31039   LOADS CASTELLAN
+E 1 31031 0 16      WIELDS LONGSWORD
+G 1 31001 0         Gives bronze key
+*
+M 1 31002 1 31041   LOADS BLACKSMITH
+O 1 31093 1 31041   Loads anvil
+*
+M 1 31003 1 31043   LOADS ARMORER
+G 1 31017 0			0
+G 1 31018 0			0
+G 1 31019 0			0
+G 1 31020 0			0
+G 1 31022 0			0
+*
+M 1 31004 1 31045   LOADS WEAPONSMITH
+G 1 31013 0			0
+G 1 31014 0			0
+G 1 31015 0			0
+G 1 31016 0			0
+*
+M 1 31005 1 31047   LOADS MERC MASTER
+M 1 31047 1 31048   LOADS MERCS
+M 1 31048 1 31048
+M 1 31049 1 31048  
+M 1 31050 1 31048
+M 1 31051 1 31048  
+M 1 31052 1 31048
+*
+M 1 31006 1 31050   LOADS MAGE
+G 1 3385  0         0
+G 1 3043  0         0
+G 1 3044  0         0
+G 1 31028 0			0
+G 1 31040 0			0
+G 1 31041 0			0
+G 1 31095 0         0
+G 1 31096 0			0
+*
+M 1 31007 1 31053   LOADS MITZAK THE SAGE
+*
+M 1 31008 1 31055   LOADS PET SHOP OWNER
+*
+M 1 31019 1 31056   pets
+M 1 31020 1 31056
+M 1 31021 1 31056
+M 1 31022 1 31056
+M 1 31023 1 31056
+*
+M 1 31009 1 31060   LOADS Mage GUILDMASTER
+*
+M 1 31010 1 31066   LOADS GROCER
+G 1 31007 0			0
+G 1 31008 0			0
+G 1 31011 0			0
+G 1 31012 0			0
+G 1 31043 0			0
+G 1 31044 0			0
+*
+M 1 31011 1 31068   LOADS BAKER
+G 1 31023 0			0
+G 1 31024 0			0
+G 1 31025 0			0
+G 1 31026 0			0
+G 1 31094 0			0
+*
+M 1 31012 1 31070   LOADS BARTENDER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+G 1 31027 0			0
+*
+M 1 31013 1 31077   LOADS Warrior GUILDMASTER
+*
+M 1 31014 1 31084   LOADS Thief GUILDMASTER
+*
+M 1 31027 1 31088   LOADS Brawler GUILDMASTER
+*
+M 1 31026 1 31092   LOADS Psionic GUILDMASTER
+*
+M 1 31028 1 31099   LOADS ShapeShifter GUILDMASTER
+*
+M 1 31015 1 31037   LOADS Cleric WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31016 1 31061   LOADS Mage WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31017 1 31078   LOADS Warrior WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31018 1 31085   LOADS Thief WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31029 1 31091   LOADS Psionic WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31030 1 31089   LOADS Brawler WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31031 1 31098   LOADS ShapeShifter WAITER
+G 1 31002 0			0
+G 1 31003 0			0
+G 1 31004 0			0
+G 1 31005 0			0
+G 1 31006 0			0
+*
+M 1 31024 1 31000   LOADS CUERVO
+E 1 31030 0 6       WEARS MASK
+O 1 31029 0 31000   LOADS GUILLOTINE
+O 1 31021 0 31000   LOADS FOUNTAIN
+O 1 31021 0 31012   LOADS FOUNTAIN
+*
+M 1 31025 1 31079   LOADS AOD
+G 1 31028 0         GIVES AOD PSYCHEDELIC POTION
+*
+M 1 31033 3 31074   LOADS CITIZENS
+M 1 31033 3 31094   LOADS CITIZENS
+M 1 31034 3 31065   LOADS CITIZENS
+M 1 31034 3 31014   LOADS CITIZENS
+M 1 31035 3 31013   LOADS KIDS
+*
+M 1 31036 6 31073   LOADS JANITORS
+*
+M 1 31037 8 31080   LOADS FOOTPADS
+E 1 31032 0 16      WIELDS SAP
+*
+M 1 31038 6 31071   LOADS DRUNKS
+*
+M 1 31039 3 31012   LOADS BEGGARS
+*
+M 1 31040 2 31082   LOADS THIEVES
+*
+M 1 31041 8 31051   LOADS FIDOS
+*
+M 1 31042 6 31081   LOADS RATS
+*
+M 1 31043 6 31007   LOADS CATS
+*
+M 1 31044 8 31000      LOADS GUARDS TO Cuervo
+E 1 31033 0 16         WIELDS SWORD        
+E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31035 0 14         WEARS BRACER
+E 1 31035 0 15         WEARS BRACER
+E 1 31036 0 3          WEARS CLOAK
+E 1 31037 0 6          WEARS HELM
+E 1 31038 0 11         HOLDS SHIELD
+E 1 31039 0 17         HOLDS SPEAR
+*
+M 1 31046 5 31016      LOADS SENTINEL GUARDS TO INSIDE WEST GATE     
+E 1 31033 0 16         WIELDS SWORD        
+E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31035 0 14         WEARS BRACER
+E 1 31035 0 15         WEARS BRACER
+E 1 31036 0 3          WEARS CLOAK
+E 1 31037 0 6          WEARS HELM
+E 1 31038 0 11         HOLDS SHIELD
+E 1 31039 0 17         HOLDS SPEAR
+*
+M 1 31054 8 31017      LOADS SENTINEL GUARDS TO INSIDE EAST GATE
+E 1 31033 0 16         WIELDS SWORD        
+E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31035 0 14         WEARS BRACER
+E 1 31035 0 15         WEARS BRACER
+E 1 31036 0 3          WEARS CLOAK
+E 1 31037 0 6          WEARS HELM
+E 1 31038 0 11         HOLDS SHIELD
+E 1 31039 0 17         HOLDS SPEAR
+*
+M 1 31044 8 31046      LOADS GUARDS TO NEAR MERC
+E 1 31033 0 16         WIELDS SWORD        
+E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31035 0 14         WEARS BRACER
+E 1 31035 0 15         WEARS BRACER
+E 1 31036 0 3          WEARS CLOAK
+E 1 31037 0 6          WEARS HELM
+E 1 31038 0 11         HOLDS SHIELD
+E 1 31039 0 17         HOLDS SPEAR
+*
+M 1 31045 8 31054      LOADS GUARDS TO NEAR PET SHOP
+E 1 31033 0 16         WIELDS SWORD        
+E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31035 0 14         WEARS BRACER
+E 1 31035 0 15         WEARS BRACER
+E 1 31036 0 3          WEARS CLOAK
+E 1 31037 0 6          WEARS HELM
+E 1 31038 0 11         HOLDS SHIELD
+E 1 31039 0 17         HOLDS SPEAR
+*
+M 1 31044 8 31069      LOADS GUARDS NEAR POOR DISTRICT
+E 1 31033 0 16         WIELDS SWORD        
+E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31035 0 14         WEARS BRACER
+E 1 31035 0 15         WEARS BRACER
+E 1 31036 0 3          WEARS CLOAK
+E 1 31037 0 6          WEARS HELM
+E 1 31038 0 11         HOLDS SHIELD
+E 1 31039 0 17         HOLDS SPEAR
+*
+M 1 31053 1 31190      LOADS SALVATORE
+G 1 31045 0            0 
+G 1 31046 0            0
+G 1 31047 0            0
+G 1 31048 0            0
+G 1 31049 0            0
+G 1 31050 0            0
+G 1 31051 0            0
+G 1 31052 0            0
+G 1 31053 0            0
+G 1 31054 0            0
+G 1 31055 0            0
+G 1 31056 0            0
+G 1 31057 0            0
+G 1 31058 0            0
+G 1 31059 0            0
+*
+M 1 31055 1 31191      LOADS TRACEY
+G 1 31060 0            0
+G 1 31061 0            0
+G 1 31062 0            0
+G 1 31063 0            0
+G 1 31064 0            0
+G 1 31065 0            0
+G 1 31066 0            0
+G 1 31067 0            0
+G 1 31068 0            0
+G 1 31069 0            0
+G 1 31070 0            0
+G 1 31071 0            0
+G 1 31072 0            0
+G 1 31073 0            0
+G 1 31074 0            0
+G 1 31075 0            0
+G 1 31076 0            0
+G 1 31077 0            0
+G 1 31078 0            0
+G 1 31079 0            0
+G 1 31080 0            0
+*
+O 1 31082 1 31196      LOADS cyclops PORTAL
+O 1 31083 1 31197      LOADS krondor PORTAL
+O 1 31084 1 31198      LOADS quake   PORTAL
+*
+M 1 31057 1 31199      loads alix thaumaturgist
+*
+M 1 31058 1 31320      loads clea artificer
+*
+M 1 31059 1 31321      loads xanafax
+*G 1 31086 0            0
+*G 1 31087 0            0
+*G 1 31088 0            0
+G 1 31089 0            0
+G 1 31090 0            0
+*
+M 1 31060 1 31322      loads dwart
+G 1 31001 0            0      BRONZE KEY
+G 1 31085 0            0      KEY FOR PORTAL CHAMBERS
+*
+M 1 31061 1 31323      loads thom the enhancer
+*
+M 1 31062 1 31071      loads merchant
+*
+M 1 31063 1 31064      loads ATM machine
+*
+M 1 31064 1 31086      loads bard trainer
+S
+
+
+#SHOPS
+31003  9 28  0  0  0 150 80 0 23
+31004  5 29 30  0  0 150 80 0 23
+31005  0  0  0  0  0 150 80 0 23
+31006  2  3  4 10 26 150 80 0 23
+31008  0  0  0  0  0 150 50 0 23
+31010 15 13  8  1 12 150 80 0 23
+31011 19  0  0  0  0 180 20 0 23
+31012 17  0  0  0  0 180 20 0 23
+31015 17  0  0  0  0 200  0 0 23
+31016 17  0  0  0  0 200  0 0 23
+31017 17  0  0  0  0 200  0 0 23
+31018 17  0  0  0  0 200  0 0 23
+31025  5  9 10 15 13 180 20 0 23
+31029 17  0  0  0  0 200  0 0 23
+31030 17  0  0  0  0 200  0 0 23
+31031 17  0  0  0  0 200  0 0 23
+31053 19  0  0  0  0 180 20 0 23
+31055  0  0  0  0  0 180 20 0 23
+31059  2  3  4 13 18 150 50 0 23
+31060 18  0  0  0  0 150 50 0 23
+0
+
+
+#SPECIALS
+M  31000 spec_cast_adept        Gath the Healer
+M  31005 spec_cast_psionicist   Mercenary Master
+M  31014 spec_thief             the Thief Guildmaster
+M  31018 spec_thief             a Greasy Bartender
+M  31024 spec_executioner       Cuervo the headsman
+M  31036 spec_janitor           the janitor
+M  31040 spec_thief             a thief
+M  31041 spec_fido              a beastly fido
+M  31042 spec_fido              a huge sewer rat
+M  31044 spec_guard             a City Guard
+M  31045 spec_guard             a City Guard
+M  31046 spec_guard             a City Guard
+M  31063 spec_cast_psionicist   ATM machine
+S
+
+
+#$

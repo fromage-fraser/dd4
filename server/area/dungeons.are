@@ -1,0 +1,4241 @@
+#AREA   Jammer/Madboy~  The Catacombs~
+50 -1 0 100
+
+#RECALL
+13441
+#MOBILES
+#13300
+blood reaper~
+a Blood Reaper~
+The Flesh Reaper snarls and salivates as it senses your blood.
+~
+The Blood Reaper appears to be a race of humanoids whose main diet is blood. Although, 
+apparently originating from human stock, this is where the similarity ends. Their 
+eyes are pale and slitted, their skin pink-white, and their jaw has rows of small 
+fangs with long canines. Their claws are covered with dried blood.
+~
+4|32|64|128|4096 8|32|512|32768|65536 -700 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13301
+thief~
+a thief~
+The thief stands here frowning at you.
+~
+The thief appears to be nothing more than any other thief found in the land.
+~
+4|128|2048 8|32|512|32768|65536 -100 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13302
+thief guard~
+a thief guard~
+The thief guard yells "INTRUDERS!" at your presence.
+~
+The thief guard appears to be nothing more than any other thief found in the land.
+~
+2|4|32|64|128 32|512|32768|65536 -100 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13303
+thief quarter master quartermaster~
+the Quartermaster~
+The Quartermaster says, angrily,  "New Recruits down the hall on the left!".
+~
+The Thief Quartermaster appears to be nothing more than any other thief found in the land
+~
+2|4|64|128 8|32|512|32768|65536 -300 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13304
+thief night master nightmaster~
+the Nightmaster~
+The Nightmaster looks up and says "Anything to report?".
+~
+The Nightmaster appears no different to any other thief found in the land.
+~
+2|4|64|128 32|512|32768|65536 -250 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13305
+thief guild master guildmaster~
+the guildmaster~
+The Guildmaster of the thieves stands here watching you.
+~
+The Guildmaster is dressed as a ninja.
+~
+2|4|64|128|1024|4096 2|8|32|512|32768|65536 -500 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#13306
+guardian mummy mummified~
+the Mummified Guardian~
+A Mummified Guardian shambles toward you.
+~
+The mummified guardian appears to be the preserved corpse of a large human 
+swathed in fine bandages. It's eyes have an evil red glow that seems to extend 
+around it's body.
+~
+4|32|64|4096 8|32|512 -750 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13307
+vampire guardian~
+Guardian Vampire~
+The Guardian Vampire stands in the darkness...
+~
+The Guardian Vampire stands here guarding the expensive-looking coffin of 
+another vampire. His eyes shine redly in the darkness as his gaze sweeps the 
+room.
+~
+2|4|32|64|128|4096 8|32|512|32768|65536|524288|1048576 -1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13308
+~
+Combination Lock~
+
+~
+The Combination Lock has a dial on it and numbers around the outside. It appears 
+that you must turn the dial to the correct numbers to open the door.
+~
+2|64|4096 0 0 S
+1 0 0 0d0+0 0d0+0
+127|256 0
+8 8 1
+>speech_prog 078340306~
+if ispc($n)^M
+mpechoat $n You hear a soft click.  The door swings open and you step through,  the door swinging shut behind you.
+ 
+mptransfer $n 13442
+mpechoaround $n The door opens,  $n steps through it and is gone.  The door swings closed behind $m
+endif^M
+~
+|
+#13309
+dhar kharneth kharneth-dhar~
+Kharneth-Dhar~
+Kharneth-Dhar looks at you and sneers...
+~
+The Lich-Lord, Kharneth-Dhar, wears rich, black robes made from the finest 
+velvet. His skin is stretched tautly over his bones and has even split in places 
+revealing skeletal whiteness.
+~
+2|4|64|128|4096 8|32|128|512|32768|1048576 -1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13310
+Troll~
+a troll~
+The Troll looks hungrily in your direction and licks his fat lips.
+~
+The troll stands about 9 feet tall and has green, warty skin. It's bottom fangs 
+protrude from it's mouth and it's dirty, yellow claws look amazingly sharp.
+~
+4|32 32|512|32768 -500 S
+33 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13311
+Rat ratman rat-man~
+a Rat-Man~
+The Rat-man squeaks loudly at your presence.
+~
+The Rat-Man looks like a thin rat standing on two legs. It stands about 5 feet tall.
+~
+4|32|128 8|32|512|32768|65536 -100 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13312
+lich retainer warrior~
+Lich Retainer~
+A Lich Warrior snarls at your arrival.
+~
+The Lich Retainer is a warrior who has become a lich by the power of his master.
+~
+2|4|32|64|128|4096 8|32|512|32768|65536|1048576 -750 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13313
+Vampire lord~
+a Vampire Lord~
+A Vampire Lord kneels here before Kharneth-Dhar.
+~
+The Vampire Lord is dressed in clothes befitting an emperor. It appears he is 
+swearing fealty to Kharneth-Dhar.
+~
+2|4|32|64|128|4096 8|32|512|32768|65536|1048576 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13314
+apprentice thief~
+Apprentice Thief~
+An Apprentice Thief practices his abilities here.
+~
+The Apprentice Thief appears no different from any other thief in the land.
+~
+4|128|2048 32768|65536 -100 S
+10 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13315
+Librarian~
+the Librarian~
+The Librarian waits to issue books
+~
+This bespectacled old man sits patiently reading a large book and waiting for 
+patrons of the library to bring books to be stamped.
+~
+2|4|64|128|4096 8|32 0 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13316
+suit samurai armour~
+Suit of O-Yoroi~
+A Samurai in full battle-dress stands here
+~
+On closer inspection, the armour appears to be unoccupied.
+~
+2|32|64|4096 8|32|512 0 S
+35 0 0 0d0+0 0d0+0
+127|256 0
+8 8 0
+#13317
+mad alchemist chemist~
+A mad alchemist~
+A mad alchemist is busy making potions here
+~
+The alchemist rushes from here to there around the room adjusting bits and 
+pieces, all the while mumbling to himself.  Every now and then he throws his 
+head back and cackles with glee whilst rubbing his hands together.
+~
+2|64|128 512 -150 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13318
+sentry thief~
+The Sentry~
+A thief sentry stands here...
+~
+The thief sentry appears to be an ordinary thief found anywhere in the land.
+~
+2|4|64|128 32|512|32768 -200 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13319
+Arch Wizard~
+the Archwizard~
+The Arch-Wizard sits here,  studying...
+~
+This wizened old man looks excitedly through an old libram,  his eyes glowing 
+like a school boy who has found the key to the pantry. He doesn't seem to notice you.
+~
+2|64|1024|4096 8|32|512 750 S
+59 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>act_prog $n snares you in $s trap!~
+grin $n
+mpechoat $n $I mutters,  then gestures towards you.
+mpechoaround $n $I mutters,  then gestures at $n.
+mpforce $n rem all
+mpforce $n drop all
+wave $n
+mptransfer $n 13300
+~
+|
+#13320
+Ethereal Servant~
+the Ethereal Servant~
+
+~
+
+~
+2|32|64|4096 2|8|32|32768|65536|524288 0 S
+35 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#13321
+Watch guard~
+the WatchGuard~
+The Watch looks for intruders...
+~
+The Elite Temple guard vigilantly keeps order here.
+~
+2|32|64|4096 8|32|512 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13322
+Mrinthain Monk~
+the Mrinthian Monk~
+The Monk quietly goes about his business
+~
+The initiates efficiently scurry around doing mundane duties.
+~
+2|64|128 0 100 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>fight_prog 100~
+mpechoat $n $I looks irritably at you.
+mpechoaround $n $I looks irritably at $n
+say Stop it!
+peace
+~
+|
+#13323
+Neo Otyugh~
+the Neo-Otyugh~
+The Neo-Otyugh rises up at attacks
+~
+This multi-tentacled creature smells of offal,  urine and excrement. It doesn't 
+look much better either.
+~
+2|4|64|128 8|32|512|65536 0 S
+38 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+#13324
+Guardian statue~
+the Guardian Statue~
+The Guardian statue senses your presence and attacks!
+~
+
+~
+2|32|64|4096 8|32|128|65536 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13325
+Zed Knight~
+the Zed Knight~
+The Knight stands here glowing of magic
+~
+This formidible warrior is battlescarred and has obviously seen plenty of action 
+in past campaigns.
+~
+2|32|64|4096 8|32|512|8192|8388608 350 S
+58 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#13300
+Scythe~
+a sharp scythe~
+A wicked looking scythe rests here.~
+~
+5 64|512 1|8192
+0~ 1~ 6~ 3~ 
+10 0 0
+A
+18 10
+A
+17 2
+#13301
+sword short~
+a short sword~
+A short sword rests here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 3~ 
+2 0 0
+A
+18 2
+A
+19 2
+#13302
+Coffin~
+a coffin~
+~
+~
+15 0 0
+0~ 1~ 6~ 11~ 
+20 0 0
+#13303
+Leathers Thiefs~
+thiefs leathers~
+A suit of leathers rests here.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -2
+#13304
+wand rod beguiling~
+a Rod of Beguiling~
+A short rod rests here.~
+~
+3 0 1|16384
+0~ 7~ 7~ ~ 
+5 0 0
+#13305
+Breast plate breastplate~
+a Breastplate~
+A breastplate lies here~
+~
+9 0 1|8
+12~ 1~ 6~ 11~ 
+2 0 0
+#13306
+Helmet crested~
+a crested helmet~
+A crested helmet rests here.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+2 0 0
+#13307
+Mace Mrinthian~
+a Mrinthian mace~
+A mace rests here.~
+~
+5 64|1024|2048 1|8192
+0~ 1~ 6~ 7~ 
+5 0 0
+A
+18 4
+A
+19 4
+#13308
+grey robes~
+some grey monks robes~
+Some grey robes lie here...~
+~
+9 64|1024|2048 1|1024
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+17 -5
+A
+12 20
+A
+13 10
+#13309
+spear mrinthian~
+a Mrinthian spear~
+A Mrinthian spear lies here.~
+~
+5 64|1024|2048|134217728 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+18 5
+A
+19 5
+A
+14 15
+#13310
+mask~
+the Guild Master's Mask~
+A black cloth mask rests here.~
+~
+9 512 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+13 10
+A
+3 2
+A
+4 2
+A
+12 -40
+A
+17 -4
+A
+24 3
+#13311
+Dagger~
+the Guild Master's Dagger~
+A long dagger rests here.~
+~
+5 64|512 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+18 10
+A
+19 8
+A
+2 1
+A
+12 -20
+#13312
+sword Mrinthian~
+a Mrinthian sword~
+A Mrinthian sword rests here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 3~ 
+5 0 0
+A
+13 10
+A
+19 5
+#13313
+Banded Staff~
+a Banded Staff~
+A Banded staff rests here.~
+~
+5 64|4096 1|8192
+0~ 1~ 6~ 7~ 
+5 0 0
+A
+13 20
+A
+12 50
+A
+19 8
+#13314
+Arch Mage Robes~
+the Archwizard's Robes~
+The Archwizards robes lie here~
+~
+9 64|4096 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 100
+A
+13 20
+A
+17 -20
+A
+24 -15
+#13315
+horned ring~
+a Horned ring~
+A Horned ring rests here.~
+~
+9 64 1|2
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+13 20
+A
+19 10
+A
+12 20
+A
+24 -10
+#13316
+Arch wizards jerkin~
+the Archwizards Jerkin~
+The Archwizards jerkin lies here...~
+~
+9 64 1|8
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+24 -5
+A
+23 -5
+A
+19 10
+A
+13 10
+#13317
+Necklace platinum~
+a platinum necklace~
+A small but finely wrought plainum necklace rests here.~
+~
+8 1 1|4
+0~ 1~ 6~ 11~ 
+1 0 0
+#13318
+Chalice cup silver~
+a silver chalice~
+A silver chalice has been discarded here.~
+~
+8 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#13319
+money gold coins pile~
+a pile of coins~
+A small pile of money lies here.~
+~
+20 0 1
+0~ 8~ 16~ 2~ 
+5 0 0
+#13320
+Rusted dagger~
+a rusted dagger~
+A rusted dagger rests here.~
+~
+13 64|128|4096 1|8192
+0~ 1~ 6~ 11~ 
+55 0 0
+A
+1 -3
+A
+2 -3
+A
+3 -3
+A
+4 -3
+A
+5 -3
+A
+12 -30
+A
+13 -30
+A
+14 -30
+A
+17 30
+A
+19 -10
+A
+18 -10
+A
+23 10
+A
+24 10
+#13321
+shield mrinthian~
+a Mrinthian Tower Shield~
+A Tower shield, used by Mrinthian Knights, rests here.~
+~
+9 64|1024 1|512
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+17 -10
+A
+5 3
+A
+13 50
+A
+19 5
+A
+24 -5
+#13322
+Chest~
+a chest~
+~
+~
+15 0 0
+10~ 1~ 0~ 11~ 
+50 0 0
+#13323
+Ring guild~
+a Guild ring~
+A ring with the Thieves Guild emblem on it lies here...~
+~
+8 64 1|2
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+24 -4
+A
+23 -4
+A
+14 10
+A
+13 10
+#13324
+Vault safe~
+a Vault Safe~
+A vault lies in the corner of the room~
+~
+15 0 0
+15~ 15~ 13351~ 11~ 
+60 0 0
+#13325
+vial potion elixir~
+potion~
+~
+~
+10 0 1
+55~ sanctuary~ shield~ protection~ 
+1 0 0
+#13326
+chesspiece knight black~
+a chess piece~
+A small black knight chess piece sits here...~
+~
+4 64|1024|2048 1|16384
+50~ 5~ 10~ gas breath~ 
+1 0 0
+#13327
+potion silver~
+a silver potion~
+A silvery potion rests here.~
+~
+10 1 1|16384
+30~ giant strength~ heal~ bless~ 
+1 0 0
+#13328
+greaves leather~
+leather Greaves~
+A pair of black leather greaves rests here.~
+~
+9 64 1|32
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+17 -5
+A
+14 20
+#13329
+fine leather gloves~
+leather Gloves~
+A pair of fine leather gloves lie here.~
+~
+9 64 1|128
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+19 5
+A
+2 2
+A
+17 -5
+#13330
+pistol crossbow bow cross~
+guildmaster's Pistol Crossbow~
+A finely made pistol-style crossbow rests here.~
+~
+3 1|64|512 1|16384
+50~ 50~ 25~ chain lightning~ 
+1 0 0
+A
+2 1
+A
+17 -5
+#13331
+chain mail vest chainmail~
+guildmaster's Chainmail Vest~
+A fine chainmail vest lies here.~
+~
+9 64|512 1|8
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+17 -5
+A
+23 -2
+A
+24 -2
+A
+2 1
+A
+13 25
+A
+5 1
+#13332
+robe robes black cloth~
+guildmaster's robes~
+A pile of black cloth lies here.~
+~
+9 64|512 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+4 1
+A
+17 -5
+A
+24 -2
+A
+12 25
+#13333
+Daeron's dearon bracer~
+daeron's Bracer~
+A silver-chased gold bracer lies here.~
+~
+9 64 1|4096
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+19 5
+A
+18 5
+A
+17 -10
+A
+13 10
+A
+9 0
+#13334
+skull cap skullcap~
+kharneth-Dhar's Skullcap~
+A black skullcap rests here.~
+~
+9 64|512 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+3 5
+A
+4 5
+A
+12 50
+A
+24 -5
+A
+29 -1
+#13335
+staff~
+kharneth-Dhar's Staff~
+A rune-carved, black staff rests here.~
+~
+5 2|32|64|128|512|4096 1|8192
+0~ 1~ 6~ 6~ 
+5 0 0
+A
+17 -100
+A
+19 15
+A
+18 10
+A
+9 200
+A
+1 -3
+A
+12 100
+#13336
+Robes robe~
+kharneth-Dhar's Robes~
+A pile of red cloth lies here.~
+~
+9 16|64|128|512|4096 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+9 100
+A
+5 -3
+A
+12 100
+A
+13 20
+A
+24 0
+A
+23 0
+#13337
+kas ring bone~
+the Ring of Kas~
+A ring made carved from bone lies here.~
+~
+9 1|2|16|64|128|512|1024|4096 1|2
+12~ 1~ 6~ 11~ 
+1 0 0
+A
+1 1
+A
+2 1
+A
+3 1
+A
+4 1
+A
+5 1
+A
+9 500
+A
+12 150
+A
+13 100
+A
+14 100
+A
+17 -10
+A
+18 1
+A
+19 1
+A
+23 -1
+A
+24 -1
+#13338
+sword shades ~
+sword of Shades~
+A shadowy sword rests here.~
+~
+5 1|16|64|128|512|2048|4096 1|8192
+0~ 1~ 6~ 3~ 
+0 0 0
+A
+1 3
+A
+18 10
+A
+19 10
+#13339
+plate shades breast breastplate~
+breastplate of the Shades~
+A shadowy beastplate lies here.~
+~
+5 1|16|64|128|512|2048|4096 1|8
+0~ 1~ 6~ 11~ 
+0 0 0
+A
+17 -10
+A
+13 10
+A
+5 3
+#13340
+helm helmet shades~
+helm of the Shades~
+A shadowy helm rests here.~
+~
+9 1|16|64|128|512|2048|4096 1|16
+0~ 1~ 6~ 11~ 
+0 0 0
+A
+3 3
+A
+17 -10
+A
+24 -5
+#13341
+Salted meat~
+some salted meat~
+Some salted meat lies here.~
+~
+19 0 1
+50~ 1~ 6~ 11~ 
+1 0 0
+#13342
+cheese hardened block hard~
+some hard cheese~
+A block of hardened cheese is lying here~
+~
+19 0 1
+30~ 1~ 6~ 11~ 
+1 0 0
+#13343
+bone scroll tube~
+a scroll tube~
+A carved bone scroll tube lies here.~
+~
+15 0 1
+5~ 1~ 0~ 11~ 
+1 0 0
+#13344
+scroll tube carved~
+a scroll tube~
+An intricately carved scroll tube lies here~
+~
+15 0 1
+5~ 1~ 6~ 11~ 
+2 0 0
+#13345
+scroll tattered~
+a tattered scroll~
+A tattered scroll lies here.~
+~
+2 64 1
+50~ armor~ sanctuary~ shield~ 
+1 0 0
+#13346
+scroll ancient~
+an ancient scroll~
+An ancient scroll lies here.~
+~
+2 64 1
+55~ earthquake~ fireball~ lightning bolt~ 
+5 0 0
+#13347
+iron rations~
+some iron rations~
+Some iron rations lie here.  ~
+~
+19 1|64 1
+80~ 1~ 6~ 11~ 
+5 0 0
+#13348
+bracers defence~
+some Bracers of Defence~
+Some Bracers of Defence lie here...~
+~
+9 64|1024|2048 1|4096
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+23 -5
+A
+24 -5
+A
+17 -10
+A
+14 10
+A
+13 10
+A
+12 15
+#13349
+reinforced chest iron~
+a reinforced iron chest~
+A reinforced iron chest sits in the corner of the room...~
+~
+15 0 0
+100~ 1~ 6~ 11~ 
+55 0 0
+#13350
+Mace zed ~
+the Mace of Zed~
+The Mace of Zed lies here.~
+~
+5 1|8|64|1024|2048|131072|262144|524288|268435456|536870912 1|8192
+0~ 9~ 22~ 8~ 
+1 0 0
+A
+12 50
+A
+13 50
+A
+19 6
+A
+18 6
+E
+mace Zed~
+This beautifully fashioned weapon radiates a power of Ultimate Good.  Used to 
+destroy vile creatures from other planes,  this Mace was last held by the High 
+Priest Zed.  It is said only the pure of heart can wield this wonderful weapon.~
+#13351
+key twisted iron~
+a twisted iron key~
+A twisted iron key~
+~
+18 128 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#13352
+Arch wizard hat~
+the Archwizards Hat~
+The Archwizards Hat has been carelessly discarded...~
+~
+9 64|1024|2048 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+12 15
+A
+13 15
+A
+24 -5
+A
+23 -5
+#13353
+desk~
+guildmaster's Desk~
+~
+~
+15 0 0
+5~ 5~ -1~ 11~ 
+5 0 0
+#13354
+deeds land scroll~
+deeds to some land~
+A rolled up scroll rests here...~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~ 
+1 0 0
+E
+Deed scroll~
+
+This formally gives title of the land, as set out by the formal boundaries, of 
+Northern Mahn-Tor.
+
+It is signed by Daeron Odessirion.~
+#13355
+wand metal curved nullifier~
+githad's ineffable nullifier~
+A small, curved, metal object rests here.~
+~
+3 2 1|16384
+0~ 8~ 8~ teleport~ 
+1 0 0
+#13356
+key~
+a key~
+~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#13357
+Rune Helm helmet~
+a Runed Helmet~
+A Rune covered Helmet lies here...~
+~
+9 64|1024|2048 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+13 5
+A
+19 5
+#13358
+Rune sleeves~
+some Runed sleeves~
+A pair of Rune covered Sleeves lie here.~
+~
+9 64|1024|2048 1|256
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+18 3
+A
+19 3
+#13359
+amulet zed~
+an amulet of Zed~
+A small rune covered amulet lies here~
+~
+9 64|1024|2048 1|4
+10~ 1~ 6~ 11~ 
+1 0 0
+A
+13 10
+A
+23 -5
+A
+24 -5
+#13360
+Rune vest~
+a Runed vest~
+A Rune covered vest lies here...~
+~
+9 64|1024|2048 1|8
+0~ 1~ 6~ 11~ 
+3 0 0
+A
+12 50
+A
+13 20
+#13361
+ring zed~
+a ring of Zed~
+A ring bearing the markings of the cult of Zed lies here...~
+~
+9 64|1024|2048 1|2
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+18 3
+A
+13 10
+A
+19 5
+#13362
+runed leggings~
+some Runed Leggings~
+Some rune covered Leggings lie here...~
+~
+9 64|1024|2048 1|32
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+12 10
+A
+13 10
+A
+24 -5
+#13363
+runed gloves~
+some Runed gloves~
+Some rune covered gloves lie here~
+~
+9 1|2|64|1024|2048 1|128
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+5 3
+A
+13 5
+A
+12 10
+#13364
+Runed Boots~
+a pair of Runed Boots~
+A pair of rune covered boots lie here...~
+~
+9 64|1024|2048 1|64
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+14 25
+A
+12 25
+A
+13 15
+#13365
+runed shield~
+a Rune covered shield~
+A rune covered shield lies here~
+~
+9 64|1024|2048 1|512
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+13 10
+A
+12 25
+A
+17 -10
+A
+19 5
+#13366
+Girdle Runed~
+a Runed girdle~
+A rune covered girdle lies here...~
+~
+9 64|1024|2048 1|2048
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+18 3
+A
+19 3
+A
+24 -3
+#13367
+runed bracer~
+a runed bracer~
+A rune covered bracer lies here...~
+~
+9 64|1024|2048 1|4096
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+4 1
+A
+5 2
+A
+18 1
+#13368
+Book~
+a small book~
+A book rests here.~
+~
+12 0 1|16384
+0~ 1~ 6~ 11~ 
+1 0 0
+E
+book~
+This book appears to be a journal on the possibilities and permutations of "Why 
+a chicken would cross a road".~
+#13369
+Book  tome~
+great book of Enchantments~
+A huge, leather bound  tome lies here.~
+~
+2 64 1|16384
+40~ enchant weapon~ identify~ ~ 
+5 0 0
+#13370
+Poetry  journal~
+journal of Mrinthian Poetry~
+A small journal rests here.~
+~
+8 0 1|16384
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+4 1
+E
+book poetry~
+This appears to be nothing more than a book full of ancient poetry written by 
+equally ancient monks form the Temple of Mrinthas.  The book could be very 
+valuable to a collector...~
+#13371
+scroll~
+a scroll~
+A scroll lies here.~
+~
+2 64 1|16384
+30~ protection~ giant strength~ heal~ 
+1 0 0
+#13372
+book tome~
+a Tome of Zed~
+A bound book sits here gathering dust...~
+~
+8 0 1|16384
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+3 1
+E
+read book~
+This tome tells the story of one of the former high priests of Mrinthas,  Zed.  
+His battles against undead creatures mighty in power armed only with his faith 
+and trusty mace are chronicled here in these pages.  You can see that this one 
+was favoured by t he gods,  and his life and deeds sparked off a number of 
+fanatic cults. On a scrap of paper wedged between the pages you read 078340306.
+~
+#13373
+book~
+a plain book~
+A plain book rests here.~
+~
+8 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 5
+E
+book zed~
+This book tells of one of the many cults of Zed.  A group of warriors pledged 
+themselves to uphold the principles of the fabled Cleric and they themselves 
+became favoured by the gods.  The Zed Knights were said to have knowledge unknown 
+to ordinary mortal warriors,  and possessed powers quite out of the ordinary.~
+#13374
+key~
+rusted key~
+A rusted key lies here...~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#13375
+nest~
+~
+~
+~
+15 0 0
+5~ 1~ -1~ 11~ 
+5 0 0
+#13376
+stone Zed~
+the stone of Zed~
+A black stone hovers in the air above the ground.~
+~
+9 2|64|128 1|32768
+0~ 0~ 0~ 0~
+0 0 0
+A
+19 8
+A
+18 8
+E
+stone Zed~
+The magical stone of Zed floats above the ground, humming and radiating powerful
+energies.~
+#13377
+stone archwizard~
+the stone of the Arch-Wizard~
+A blue stone hovers in the air above the ground.~
+~
+9 1|64|256 1|32768
+0~ 0~ 0~ 0~
+0 0 0
+A
+12 100
+E
+stone archwizard~
+The magical stone of the Arch-Wizard floats above the ground, glowing and radiating
+peaceful and harmonious energy.~
+#0
+
+
+#ROOMS
+#13300
+The Entrance to the Catacombs~
+You are standing in a grand hallway.  Alcoves line the sides as far as you can 
+see into the darkness.  Statues of past High Priests stare through you as you 
+examine them.  The floor is made of a curious mosaic of coloured tiles.  There 
+is a stairway leading up and the hall continues north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 13301
+S
+#13301
+Grand Hall~
+This hall continues on.  The pictures depict famous battles and major events in 
+the Temples lengthy history.  You can see events long past, forgotten kings 
+fighting over forgotten kingdoms.  As you walk onwards, time runs ahead,  
+unfolding before your eyes.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13302
+D2
+~
+~
+0 -1 13300
+S
+#13302
+Grand Hall~
+The Hall has a junction here.  The Hall continues North - South but there are a 
+set of double doors to the West and East of here.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13303
+D1
+~
+~
+1 -1 13317
+D2
+~
+~
+0 -1 13301
+D3
+~
+~
+1 -1 13316
+S
+#13303
+Grand Hall~
+The paintings are nearing present times - you recognise one of the statues as a 
+young looking MacKurian, the high-priest of the temple above.  Further north,  a 
+mighty knight stands on guard,  looking very formidible.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13315
+D2
+~
+~
+0 -1 13302
+S
+#13304
+The end of the road~
+The corridor ends here in a flight of stairs leading down into the darkness.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 13379
+D5
+~
+~
+1 -1 13305
+S
+#13305
+The Stairway~
+The stairs here lead through the darkness and finally end at a door.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13306
+D4
+~
+~
+1 -1 13304
+S
+#13306
+A room~
+You are standing in a small ante-room. Doors lead off in all cardinal directions.
+~
+0 1|4|8|8192 0
+D0
+~
+~
+1 -1 13388
+D1
+~
+~
+1 -1 13357
+D2
+~
+~
+1 -1 13305
+D3
+~
+~
+1 -1 13307
+S
+#13307
+A dark corridor~
+The sickly smell of death reaches your nostrils causing you to gag, involuntarily.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 13306
+D3
+~
+~
+0 -1 13308
+S
+#13308
+A dark corridor~
+The smell of death is quite strong here. There are small niches in the north and 
+south walls.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13307
+D3
+~
+~
+0 -1 13309
+S
+#13309
+A dark intersection~
+There is an intersection in the passage here. A small passage leads off to the 
+north here and the main passage continues on to the west. The smell of death is 
+strong here.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13339
+D1
+~
+~
+0 -1 13308
+D3
+~
+~
+0 -1 13310
+S
+#13310
+A dark corridor~
+The smell of death is quite strong here. There are small niches in the north and 
+south walls here.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13311
+D1
+~
+~
+0 -1 13309
+S
+#13311
+A dark corridor~
+The smell of death is faint here.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13312
+D2
+~
+~
+0 -1 13310
+S
+#13312
+A dark corridor~
+The smell of death is over-powered by the smell of fresh blood here.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13313
+D2
+~
+~
+0 -1 13311
+S
+#13313
+The Blood Reaper's Lair~
+There is blood everywhere and corpses scatter the room, large gashes cover their 
+bodies. The smell of putrefaction mingles with that of fresh blood. To the west 
+rubbish, corpses, and equipment is piled against the wall.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 -1 13312
+D3
+~
+~
+0 -1 13314
+S
+#13314
+The rubbish pile~
+You are standing amidst rubbish, corpses, pieces of flesh and other such 
+disgusting objects.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13313
+S
+#13315
+The Double Doors~
+You are standing in front of a huge set of double doors.  There is no doorway,  
+the doors receding up to the ceiling.  They are sculpted in brass and depict a 
+war between humans and creatures not of this world.  You see a figure standing 
+amongst the humans - a hero,  leading them onward in the conflict.  His nemesis 
+stands at the rear of the opposite side,  casting wicked spells of destruction.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13410
+D2
+~
+~
+0 -1 13303
+S
+#13316
+Corridor~
+You are standing in a corridor.  Up ahead you can see light coming from a number 
+of doorways lining this corridor as you make your way west.  To the East there 
+is a large set of double doors.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 13302
+D3
+~
+~
+0 -1 13332
+S
+#13317
+Library~
+You are standing inside the door to an enormous library.  Shelves line the walls 
+from floor to ceiling,  and they are bursting apart with books jammed between 
+old,  dusty bookends.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13318
+D1
+~
+~
+0 -1 13322
+D3
+~
+~
+1 -1 13302
+S
+#13318
+Library~
+Here is the issuing desk.  There is a sign covered with dust on the desk,  and 
+there seems to be no sign of the librarian.  The desk also has two books lying 
+on it in a tray marked "Returns".
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13319
+D2
+~
+~
+0 -1 13317
+E
+sign desk dusty~
+Back in five minutes - thank you for waiting.~
+S
+#13319
+Library~
+You are standing in an aisle with book shelves either side of you.  The 
+catalogue says something in some weird code you can't seem to decipher...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13320
+D3
+~
+~
+0 -1 13318
+E
+catalogue weird code~
+Aa 001 - Az 979~
+S
+#13320
+Library~
+You are standing in an aisle with bookshelves on either side of you. There is a 
+catalogue and again it's in a strange cypher...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13321
+D3
+~
+~
+0 -1 13319
+E
+catalogue strange cypher~
+Ba 001 - Bz 989~
+S
+#13321
+Library~
+You are standing at the end of a shelf.  There's a gap in the shelf South of you 
+and shelves begin to the East and the West..
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13330
+D2
+~
+~
+0 -1 13325
+D3
+~
+~
+0 -1 13320
+S
+#13322
+Library~
+You are standing amongst a neatly arranged set of reading desks and tables,  
+where people read their books and scrolls under the watchful eye of the 
+Librarian.  You can almost feel that cold stare raising hairs on your neck as 
+you recall you previous visits to a Library...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13323
+D3
+~
+~
+0 -1 13317
+S
+#13323
+Library~
+You are standing in an aisle,  with bookshelves lining both walls.  The 
+catalogue tags doesn't seem to make any sense to you.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13324
+D3
+~
+~
+0 -1 13322
+S
+#13324
+Library~
+You are standing in an aisle between two long shelves sagging with books.  Most 
+of the books subjects seem rather stupid or are written in tongues your cannot 
+read.  The tag reads something unintelligible.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13325
+D3
+~
+~
+0 -1 13323
+S
+#13325
+Library~
+You are standing at the end of the shelf to your north.  You see another aisle 
+north of you,  or you continue along the aisle you are standing in.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13321
+D1
+~
+~
+0 -1 13326
+D3
+~
+~
+0 -1 13324
+S
+#13326
+Library~
+There is a shelf to the north and the south of you.  They are lined with ancient 
+texts promising the wonders on knowledge to all who peruse their faded pages.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13327
+D3
+~
+~
+0 -1 13325
+S
+#13327
+Library~
+The shelves continue along north and south of you.  You begin to wonder where 
+the temple followers got all these books from...  Some of them are very old.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13328
+D3
+~
+~
+0 -1 13326
+S
+#13328
+Library~
+You are standing at the East wall of the library.  The shelf to the south neatly 
+slots into the shelf on the east wall.  The shelf to the north abruptly ends,  
+leaving you a gap to walk northwards.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13329
+D3
+~
+~
+0 -1 13327
+S
+#13329
+Library~
+Here the shelf to the north meets the eastern wall of the library.  The southern 
+shelf stops and there is room for you to follow the eastern wall southwards 
+looking at the various titles displayed.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 13328
+D3
+~
+~
+0 -1 13331
+S
+#13330
+Library~
+The shelves lining the wall north of you and standing freely south of you are 
+filled with yet more books,  all showing their age,  all covered with enough 
+dust to make reading the titles of some difficult.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13331
+D3
+~
+~
+0 -1 13321
+S
+#13331
+Library~
+The shelves continue along the wall north,  and the shelf south.  You wonder if 
+anyone actually takes these books on loan,  most appear not to have been touched 
+in centuries...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13329
+D3
+~
+~
+0 -1 13330
+S
+#13332
+Corridor~
+You are standing in a West-East corridor.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13316
+D3
+~
+~
+0 -1 13333
+S
+#13333
+Corridor~
+You are standing at a junction in the corridor.  To the south you can see a 
+bunkroom through the open door.  It is obviously where the temple followers 
+sleep.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13332
+D2
+~
+~
+0 -1 13337
+D3
+~
+~
+0 -1 13334
+S
+#13334
+Corridor~
+You are standing in a West-East corridor.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13333
+D3
+~
+~
+0 -1 13335
+S
+#13335
+Corridor~
+Here is a junction.  Through the doorway south you can see another bunkroom.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13334
+D2
+~
+~
+0 -1 13338
+D3
+~
+~
+0 -1 13336
+S
+#13336
+Corridor~
+Here the corridor bends.  You can either go North or East.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13356
+D1
+~
+~
+0 -1 13335
+S
+#13337
+Bunkroom~
+You couldn't fit more beds into this room if you tried.  All are unmade,  but 
+there is no-one here sleeping at present.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 13333
+S
+#13338
+Bunkroom~
+This bunkroom is better kept and has less beds and more space.  This must be 
+where the senior followers sleep.
+~
+0 1|8|8192|16384 0
+D0
+~
+~
+0 -1 13335
+D2
+~
+~
+2 13351 13372
+D3
+~
+~
+1 -1 13411
+S
+#13339
+A dark corridor~
+The smell of death is very strong here.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13340
+D1
+~
+~
+1 -1 13351
+D2
+~
+~
+0 -1 13309
+S
+#13340
+A dark corridor~
+Stairs lead down into the darkness here. The stench of death is so strong here 
+that you begin to cough
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 13339
+D5
+~
+~
+0 -1 13341
+S
+#13341
+A dark corridor~
+Stairs lead up into the darkness here. The overpowering stench of death makes 
+you gag and choke!
+~
+0 1|4|8|8192 0
+D0
+~
+~
+0 -1 13342
+D4
+~
+~
+0 -1 13340
+S
+#13342
+A dimly-lit chamber~
+The dim light in this chamber comes from torches burning in sconces on the walls 
+at regular intervals. The walls are covered in vividly realistic looking murals. 
+The stench of death is so overpowering that your stomach churns, your head reels 
+and you stagger.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13350
+D1
+~
+~
+0 -1 13343
+D2
+~
+~
+0 -1 13341
+D3
+~
+~
+0 -1 13349
+S
+#13343
+A dimly-lit chamber~
+The mural here depicts a man being held down on an altar by four robed figures 
+while one pulls the victim's entrails out on a hook. The stench of death here is 
+so overpowering your stomach churns, your head reels and you stagger.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13344
+D3
+~
+~
+0 -1 13342
+S
+#13344
+A dimly-lit chamber~
+The mural here depicts a man tied down to a chair and a robed figure pushing 
+what appears to be a red-hot poker into the victim's eye. The expression of pain 
+and terror on the man's face causes you to shiver involuntarily. The stench of 
+death here causes your stomach to churn, your head to reel and you stagger.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13345
+D2
+~
+~
+0 -1 13343
+D3
+~
+~
+0 -1 13350
+S
+#13345
+A dimly-lit chamber~
+The mural here depicts a man strapped to a table. A robed figure is at the end 
+of the table cutting the victim's feet off with a saw. The stench of death here 
+is so overpowering that your stomach churns, your head reels and you stagger.
+~
+0 8|8192 0
+D1
+~
+~
+1 -1 13393
+D2
+~
+~
+0 -1 13344
+D3
+~
+~
+0 -1 13346
+S
+#13346
+A dimly-lit chamber~
+The mural here depicts a thrashing, screaming man hanging from chains by his 
+arms as robed figures peel long strips of skin from his body as they flay him. 
+The stench of death here is so overpowering causing your stomach to churn, your 
+head to reel and you stagger.
+~
+0 8|8192 0
+D1
+~
+~
+0 -1 13345
+D2
+~
+~
+0 -1 13350
+D3
+~
+~
+0 -1 13347
+S
+#13347
+A dimly-lit chamber~
+The mural here depicts a man being impaled, by a long, sharp stake held by robed 
+figures, with his own body weight. The stench here is so overpowering that your 
+stomach churns, head reels and you stagger.
+~
+0 8|8192 0
+D1
+~
+~
+0 -1 13346
+D2
+~
+~
+0 -1 13348
+S
+#13348
+A dimly lit chamber~
+The mural here depicts a man in a gibbet, hanging by ropes, being lowered into a 
+huge vat of some boiling liquid. The stench of death here is so overpowering 
+that your stomach churns, head reels and you stagger.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13347
+D1
+~
+~
+0 -1 13350
+D2
+~
+~
+0 -1 13349
+S
+#13349
+A dimly-lit chamber~
+The mural here depicts a writhing man hanging by his arms and his legs are tied 
+as dogs rip the flesh from his body. The stench of death here is so overpowering 
+the your stomach churns, your head reel and you stagger.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13348
+D1
+~
+~
+0 -1 13342
+S
+#13350
+A dimly-lit chamber~
+You stand in the centre of the dimly-lit chamber. The stench of death here 
+causes you to vomit and you begin to feel faint.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13346
+D1
+~
+~
+0 -1 13344
+D2
+~
+~
+0 -1 13342
+D3
+~
+~
+0 -1 13348
+S
+#13351
+A small room~
+You are standing in a small, dark room.
+~
+0 1|4|8|8192 0
+D1
+~
+~
+1 -1 13352
+D3
+~
+~
+1 -1 13339
+S
+#13352
+A dark tunnel~
+You find yourself in a small, dark tunnel
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13353
+D3
+~
+~
+1 -1 13351
+S
+#13353
+The Crypt~
+You have found a small, musty crypt with two coffins.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13354
+D2
+~
+~
+0 -1 13352
+S
+#13354
+A small tunnel~
+You are in a small dark tunnel. The tunnel slopes downward here but continues in 
+a northerly direction.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13355
+D2
+~
+~
+1 -1 13353
+S
+#13355
+A small tunnel~
+The small tunnel here ends at a wall.
+~
+0 1|4|8|8192 0
+D0
+~
+~
+1 -1 13343
+D2
+~
+~
+0 -1 13354
+S
+#13356
+Corridor~
+The north - south passage opens out to the north.  To the south you can see a 
+bend to the west.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13360
+D2
+~
+~
+0 -1 13336
+S
+#13357
+Top of the Stairs~
+Stairs lead down into the darkness here.
+~
+0 1|8|8192 0
+D3
+~
+~
+1 -1 13306
+D5
+~
+~
+0 -1 13358
+S
+#13358
+Bottom of the stairs~
+Stairs lead up into the darkness here.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13359
+D4
+~
+~
+0 -1 13357
+S
+#13359
+A dark corridor~
+This corridor smells musty from disuse. There is a wooden door in the north wall.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13380
+D3
+~
+~
+0 -1 13358
+S
+#13360
+The Hall of History~
+This long room is similar to the grand hall but it displays a more recent period 
+of time in great detail.  In fact,  just the most recent decades are immortalised 
+in paint,  plaster and stone.  The story tells of dark times - evil sorcerers of 
+great power greedily conquering the surrounding lands and then rendering them 
+morbid in arguments in their petty affairs.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13361
+D2
+~
+~
+0 -1 13356
+S
+#13361
+The Hall of History~
+You read the story of the temple and the recent battles to win control of it.  
+The forces of good lead by MacKurian and his lieutenant, Dane, have managed to 
+secure the top levels.  There is still more than meets eye here, however.  You 
+read of a great rift in space and time being held in stasis, and the warping 
+effect it has had on the building.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13362
+D2
+~
+~
+0 -1 13360
+S
+#13362
+The Hall of History~
+The final chapter tells of the hero, Daeron.  His fabled deeds led to the 
+collapse of the Sorcerer King's empire and the rising of the masses under his 
+banner and shield.  Evil forces plotted to slay him, but the walls depict that 
+he returned from the dead to finally vanquish the evil Lich Lord, Kharneth Dhar 
+to another dimension. Northwards the story continues.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13363
+D1
+~
+~
+2 13351 13378
+D2
+~
+~
+0 -1 13361
+S
+#13363
+The Hall of History~
+Daeron was finally betrayed by his younger brother and slain.  The forces of 
+evil were desperate to be rid of him for eternity so the plot was hatched to 
+spread all traces of his existence far and wide.  His body and items were 
+scattered across the land. The mural ends on a strange picture - depicting the 
+rise of Daeron from the dead to remove evil from the land forever.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13364
+D2
+~
+~
+0 -1 13362
+S
+#13364
+East-West Passage~
+You are standing at a junction in the East West passage.  Southwards lies a great hall.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13369
+D2
+~
+~
+0 -1 13363
+D3
+~
+~
+0 -1 13365
+S
+#13365
+East-West Passage~
+The passage leads either East or West.  Eastwards you see a junction.  To the 
+West you can see the end of the passage.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13364
+D3
+~
+~
+0 -1 13366
+S
+#13366
+The passage end~
+To the east lies a passageway.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13368
+D1
+~
+~
+0 -1 13365
+D2
+~
+~
+8 13351 13367
+S
+#13367
+Armoury~
+This room is the temple armoury.  Weapon racks lie along all the walls and there 
+is a large assortment of weapons.  It seems that this store has seen recent use,  
+as some of the weapons appear in perfect order.
+~
+0 1|8|8192 0
+D0
+~
+~
+8 -1 13366
+S
+#13368
+The Quartermaster's~
+This room consists of a small counter near the doorway.  Behind the counter lies 
+a vast warehouse of food,  clothing and other mundane items.  A sign on the 
+counter says "Please Wait,  Someone will help you soon".  Some how you don't 
+think so...
+~
+0 1|8|8192 0
+D2
+~
+~
+1 -1 13366
+S
+#13369
+East-West Passage~
+You are standing in an East-West Passage.  To the West you see a junction in the 
+passage.  The passageway continues to the East.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13370
+D3
+~
+~
+0 -1 13364
+S
+#13370
+East-West Passage~
+This passageway runs either East or West.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13372
+D1
+~
+~
+0 -1 13371
+D3
+~
+~
+0 -1 13369
+S
+#13371
+Dead end~
+You have reached the end of the passage.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13373
+D3
+~
+~
+0 -1 13370
+E
+wall end east ~
+Careful inspection of the surrounding stonework shows clearly that the 
+passageway has been sealed - recently.  However,  you can find no way through.~
+S
+#13372
+Secret room~
+This small room holds a bed,  a small container of spoiled food,  and a jug of 
+stagnant water.  This room would be a good place to hide.
+~
+0 1|4|8|8192 0
+D2
+~
+~
+1 -1 13370
+S
+#13373
+The hidden passage~
+This narrow cramped passage appears not to have been used in quite a while.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13374
+D2
+~
+~
+0 -1 13371
+S
+#13374
+The hidden passage~
+The passage runs north-south.  You pick the cobwebs out of your hair.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13375
+D2
+~
+~
+0 -1 13373
+S
+#13375
+The hidden passage~
+The passage bends.  You can either go west or south.  You see a light off to the west.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 13374
+D3
+~
+~
+0 -1 13376
+S
+#13376
+The hidden trove~
+This room is a huge storeroom.  Weapons,  armour,  food,  all stored carefully 
+and maintained in excellent order.  You wonder over the motive for such a 
+cache...
+~
+0 8|8192 0
+D1
+~
+~
+0 -1 13375
+D5
+~
+Trapdoor~
+8 -1 13377
+S
+#13377
+The secret vault~
+This small square room contains a pile of treasure!
+~
+0 1|8|8192 0
+D4
+~
+~
+1 -1 13376
+S
+#13378
+The secret depository~
+This small room is filled with boxes of books and scroll tubes.  The air is 
+stale and it is very dark.  These books appear to be the remains of someones 
+private collection.
+~
+0 1|4|8|8192 0
+D0
+~
+~
+1 -1 13379
+D3
+~
+~
+2 -1 13362
+S
+#13379
+A short corridor~
+The short corridor extends a few feet before stairs lead downward into the 
+darkness.  Behind you, there is no trace of the secret door from the Secret 
+Depository.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13304
+S
+#13380
+A breeding room~
+This room appears to be huge for the simple fact that you can't see the walls 
+because they are black. The smell of rubbish and dirty animals reaches your 
+nostrils while the sounds of scrabbling reaches your ears.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13381
+D1
+~
+~
+0 -1 13387
+D2
+~
+~
+2 13374 13359
+S
+#13381
+A breeding room~
+The darkness here seems to close in on you as do the hunched, skinny figures 
+beyond your meagre light.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13382
+D1
+~
+~
+0 -1 13386
+D2
+~
+~
+0 -1 13380
+S
+#13382
+A breeding room~
+The sound of voices drifts from somewhere around you.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13383
+D1
+~
+~
+0 -1 13385
+D2
+~
+~
+0 -1 13381
+S
+#13383
+A breeding room~
+The sounds of furtive scrabbling can be heard to the east.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13384
+D2
+~
+~
+0 -1 13382
+S
+#13384
+A breeding room~
+There is a nest amidst a large rubbish pile here.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 13385
+D3
+~
+~
+0 -1 13383
+S
+#13385
+A breeding room~
+The smell of rotting rubbish wafts from the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13384
+D2
+~
+~
+0 -1 13386
+D3
+~
+~
+0 -1 13382
+S
+#13386
+A breeding room~
+You stumble over some bones here. Looking down you see the remains of a human. 
+Some of it's body parts are missing.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13385
+D1
+~
+Hidden passage~
+1 -1 13396
+D2
+~
+~
+0 -1 13387
+D3
+~
+~
+0 -1 13381
+S
+#13387
+A breeding room~
+The darkness in this corner is complete and your light hardly penetrates it.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13386
+D3
+~
+~
+0 -1 13380
+S
+#13388
+A dark corridor~
+A dim glow can be seen to the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13389
+D2
+~
+~
+1 -1 13306
+S
+#13389
+A dark corridor~
+A dim light eminates from the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13390
+D2
+~
+~
+0 -1 13388
+S
+#13390
+The guard-house?~
+This small room appears to serve as a guard-house to what appears to be a 
+Thieves' Guild.  To the east a corridor with a polished marble floor extends 
+into the darkness.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13391
+D1
+~
+~
+0 -1 13392
+D2
+~
+~
+0 -1 13389
+S
+#13391
+A dark corridor~
+The corridor extends north and south into the darkness.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13394
+D2
+~
+~
+0 -1 13390
+S
+#13392
+The trap!~
+As you head down the eastern passageway, the floor in front drops tilts 
+downwards, effectively creating a slide. You are uncermoniously dumped into a 
+very dark room.  The trap then resets as the piece of floor clicks back into 
+position.
+~
+0 1|4|8|8192|16384 0
+D5
+~
+~
+0 -1 13382
+S
+#13393
+A secret room~
+The secret door opens up into a tiny room about the size of a walk-in wardrobe.
+~
+0 1|4|8|8192|16384 0
+D1
+~
+~
+1 -1 13391
+S
+#13394
+A dark corridor~
+The corridor extends north and south into the darkness
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13395
+D2
+~
+~
+0 -1 13391
+S
+#13395
+A dark corridor~
+The corridor extends north and south into the darkness.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13408
+D2
+~
+~
+0 -1 13394
+S
+#13396
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|4|8|8192 0
+D1
+~
+~
+0 -1 13397
+D3
+~
+~
+1 -1 13386
+S
+#13397
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13398
+D3
+~
+~
+0 -1 13396
+S
+#13398
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13399
+D3
+~
+~
+0 -1 13397
+S
+#13399
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13400
+D3
+~
+~
+0 -1 13398
+S
+#13400
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13401
+D3
+~
+~
+0 -1 13399
+S
+#13401
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13402
+D3
+~
+~
+0 -1 13400
+S
+#13402
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13403
+D3
+~
+~
+0 -1 13401
+S
+#13403
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13404
+D3
+~
+~
+0 -1 13402
+S
+#13404
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13405
+D3
+~
+~
+0 -1 13403
+S
+#13405
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13406
+D3
+~
+~
+0 -1 13404
+S
+#13406
+A small tunnel~
+This tunnel is barely wide enough for you to fit into it and appears to carry on 
+forever into the darkness...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13407
+D3
+~
+~
+0 -1 13405
+S
+#13407
+The Laboratory~
+The tunnel ends, here, in what appears to be a small laboratory.  There is a 
+large work desk in the middle of this room covered with pipes, tubes, beakers, 
+flasks, burners and other alchemy paraphernalia.  There is a small cabinet on 
+one wall that appears to hold bottles and flasks.
+~
+0 1|8|8192 0
+D3
+~
+~
+0 -1 13406
+S
+#13408
+A dark corridor~
+The corridor turns east here.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13409
+D2
+~
+~
+0 -1 13395
+S
+#13409
+A dark corridor~
+The corridor ends here with a door in the north wall. Above you you see a ledge 
+where the wall does not reach the high roof. From the ledge you hear hushed 
+voices but cannot make out the words.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13412
+D3
+~
+~
+0 -1 13408
+D4
+~
+~
+0 -1 13423
+S
+#13410
+The Arch Wizards Study~
+This large but lavishly furnished room has all the essential items needed for 
+study.  A large fire roars in the hearth,  large glowing globes cast a brilliant 
+illumination over the room and there is what must be the biggest reading desk 
+you have ever seen!  The walls are lined with neatly stacked shelves containing 
+maps,  tomes and scrolls  of all nature and description.
+~
+0 8|8192 0
+D2
+~
+~
+1 -1 13315
+D3
+~
+Moving shelf~
+2 13351 13378
+S
+#13411
+The Privy~
+You are inside the private latrine of the higher ranking priests of Mrinthas.  
+However,  this appears not to have been used for some time as there is a layer 
+of dust coating everything and there is a total absence of any smell.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 13338
+D5
+This rather crude looking hole seems a bit strange.  You can't see,  hear or 
+even smell anything in it.~
+privy~
+0 -1 13314
+S
+#13412
+A short corridor~
+A short corridor leads north to a room. To the south is a door.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13413
+D2
+~
+~
+1 -1 13409
+S
+#13413
+Troll breeding room~
+You stand amidst a sea of troll urine and excrement and in one corner is a small 
+pile of straw. Light shines through a small feeding hole in the wall to the 
+east.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13414
+D2
+~
+~
+1 -1 13412
+S
+#13414
+Another short corridor~
+Another short corridor leads from here to a small room to the north. To the 
+south is a door.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 -1 13413
+D3
+~
+~
+0 -1 13415
+S
+#13415
+Troll breeding room~
+Here is another room in the same state as the last.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13414
+D3
+~
+~
+1 -1 13416
+S
+#13416
+Yet another short corridor~
+You find yet another short corridor leading to a room.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13417
+D1
+~
+~
+1 -1 13415
+S
+#13417
+Troll breeding room~
+This room contains discarded human remains.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13418
+D2
+~
+~
+1 -1 13416
+S
+#13418
+A dark corridor~
+You are standing in dark corridor.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13419
+D2
+~
+~
+1 -1 13417
+S
+#13419
+A dark corridor~
+You are standing in a dark corridor.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13420
+D3
+~
+~
+0 -1 13418
+S
+#13420
+A dark corridor~
+You are standing in a dark corridor. Stairs lead up to the south here.
+~
+0 1|8|8192 0
+D3
+~
+~
+0 -1 13419
+D4
+~
+~
+0 -1 13421
+S
+#13421
+A dark corridor~
+Stairs lead down to the north here. The corridor leads west here
+~
+0 1|8|8192 0
+D3
+~
+~
+0 -1 13422
+D5
+~
+~
+0 -1 13420
+S
+#13422
+The Check point~
+There are two alcoves in the north and south wall here. You surmise that this 
+must be a check point.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13423
+D1
+~
+~
+0 -1 13421
+D2
+~
+~
+0 -1 13424
+S
+#13423
+On the wall~
+You are at the top of the wall.
+~
+0 1|8|8192 9
+D2
+~
+~
+0 -1 13422
+D5
+~
+~
+0 -1 13409
+S
+#13424
+A dark corridor~
+You are standing in a dark corridor. To the east is a door
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13422
+D1
+~
+~
+1 -1 13425
+D2
+~
+~
+0 -1 13433
+S
+#13425
+Thieves' Barracks~
+This room appears to be a barracks of some kind for the theives guild.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 -1 13426
+D3
+~
+~
+1 -1 13424
+S
+#13426
+A dark corridor~
+You are standing in a dark corridor. To the west is a door
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13425
+D2
+~
+~
+0 -1 13428
+D3
+~
+~
+1 -1 13427
+S
+#13427
+Thieves' Barracks~
+This room appears to be a barracks for the thieves guild.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 13426
+S
+#13428
+A dark corridor~
+You are standing in a dark corridor. To the east is a door and to the west is a corridor.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13426
+D1
+~
+~
+1 -1 13429
+D2
+~
+~
+0 -1 13432
+D3
+~
+~
+0 -1 13435
+S
+#13429
+Thieves' Barracks~
+This room appears to be a barracks for the thieves guild.
+~
+0 1|8|8192 0
+D3
+~
+~
+1 -1 13428
+S
+#13430
+Another check point~
+There is an alcove in the east and west walls.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13432
+D2
+~
+~
+0 -1 13431
+S
+#13431
+The Night master's  office~
+This room is very sparsly decorated. There is an open chest on the floor and a 
+large desk.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13430
+D2
+~
+~
+1 -1 13436
+S
+#13432
+The Common room~
+This appears to be the room where the off-duty thieves come to for recreational 
+purposes.  Tables and chairs, bales of rotting straw and low-slung hammocks are 
+scattered around this smokey, ill-lit room.  Some of the inhabitants turn and 
+eye you up and down then turn back to their conversations.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 13428
+D2
+~
+~
+0 -1 13430
+S
+#13433
+A dark corridor~
+You are standing in a dark corridor.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13424
+D2
+~
+~
+0 -1 13434
+S
+#13434
+A dark corridor~
+You are standing in a dark corridor.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 13433
+D1
+~
+~
+0 -1 13435
+S
+#13435
+A dark corridor~
+You are standing in a dark corridor.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 13428
+D3
+~
+~
+0 -1 13434
+S
+#13436
+A narrow tunnel~
+You are standing in a dark, narrow tunnel.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13431
+D1
+~
+~
+1 -1 13437
+D2
+~
+~
+0 -1 13438
+S
+#13437
+The Quartermaster's office~
+This room is bare except for a desk and a chair.
+~
+0 8|8192 0
+D3
+~
+~
+1 -1 13436
+S
+#13438
+A narrow tunnel~
+You are standing in a dark narrow tunnel.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 13436
+D2
+~
+~
+1 -1 13439
+S
+#13439
+The Guildmaster's office~
+This room is plushly furnished with tapestries depicting landscapes, people, and 
+mythical creatures. A painting on the far wall has a picture of a young and 
+beautiful woman, possibly in her late teens. A long couch rests to your left and 
+a ebony desk and well-padded leather armchair is to your right. A fire burns in 
+the fireplace throwing dancing shadows around the room.
+~
+0 8|8192 0
+D0
+~
+~
+1 -1 13438
+D3
+~
+~
+0 -1 13440
+S
+#13440
+The Teleport Chamber~
+You find your self in a small room. There is a large pentagram here on the 
+floor. Large words on the far wall read "RECALL HERE".
+~
+0 4|8 0
+D1
+~
+~
+0 -1 13439
+S
+#13441
+Teleported!~
+You are standing in a short corridor that leads to a set of huge double doors. 
+Behind you is a blank wall
+~
+0 4|8|8192 0
+D0
+~
+~
+2 13356 13442
+S
+#13442
+The Throne room of Kharneth-Dhar.~
+This room is massive. The walls appear to be red-veined, black marble and 
+pillars of the same stone line a rich, blood-red carpet that leads to 
+Kharneth-Dhar's throne. Behind Khaneth-Dhar's throne is a large tapestry 
+depicting the Temple of Mrinthas, made from the same stone as the walls, 
+surrounded by hideous creatures under a blood-red sky.
+~
+0 8|8192 0
+D0
+~
+Tapestry~
+1 -1 13443
+D2
+~
+~
+2 -1 13441
+S
+#13443
+The Long Tunnel~
+As you pass through the tapestry you see a large, translucent, blue energy wall. 
+There appears to be noway around it yet passing through it could be dangerous. 
+The tunnel appears to carry on beyond.
+~
+0 1|4|8|8192 0
+D0
+~
+Tapestry~
+1 -1 13444
+D2
+~
+Tapestry~
+1 -1 13442
+S
+#13444
+The Spiral Staircase~
+The tunnel here ends at a spiral staircase with no rail that winds upward as far 
+as you can see.
+~
+0 1|4|8|8192 0
+D2
+~
+Tapestry~
+1 -1 13443
+D4
+~
+~
+0 -1 13445
+S
+#13445
+Top of the Staircase~
+You climb the staircase thinking that it will never end. Finally, after almost 
+an hour of climbing, you reach the top which ends at a door.
+~
+0 1|4|8|8192 0
+D2
+~
+~
+1 -1 13065
+D5
+~
+~
+0 -1 13444
+S
+#0
+
+
+#RESETS
+D 1 13306 2 1                   ; A room Close South
+D 1 13305 0 1                   ; The Stairway Close North
+*
+M 1 13300 10 13308            a Blood Reaper to A dark corridor
+E 1 13300 100 16
+*
+M 1 13300 10 13308            a Blood Reaper to A dark corridor
+E 1 13300 100 16
+*
+M 1 13300 10 13310            a Blood Reaper to A room
+E 1 13300 100 16
+*
+M 1 13300 10 13310            a Blood Reaper to A room
+E 1 13300 100 16
+*
+M 1 13300 10 13313            a Blood Reaper to The Blood Reaper's Lair
+E 1 13300 100 16
+*
+M 1 13300 10 13313            a Blood Reaper to The Blood Reaper's Lair
+E 1 13300 100 16
+*
+M 1 13300 10 13313            a Blood Reaper to The Blood Reaper's Lair
+E 1 13300 100 16
+*
+M 1 13300 10 13314            a Blood Reaper to The rubbish pile
+E 1 13300 100 16
+D 1 13316 1 1                  ; Corridor Close East
+D 1 13302 3 1                   ; Grand Hall Close West
+D 1 13317 3 1                  ; Library Close West
+*
+M 1 13316 1 13304                 Suit of O-Yoroi to The end of the road
+*
+M 1 13316 1 13304                 Suit of O-Yoroi to The end of the road
+D 1 13351 3 1                  ; A small room Close West
+D 1 13352 3 1              ; A dark tunnel Close West
+D 1 13351 1 1                  ; A small room Close East
+D 1 13339 1 1                   ; A dark corridor Close East
+D 1 13354 2 1              ; A small tunnel Close South
+D 1 13353 0 1                  ; The Crypt Close North
+D 1 13355 0 1                  ; A small tunnel Close North
+D 1 13357 3 1                   ; Top of the Stairs Close West
+D 1 13306 1 1                   ; A room Close East
+D 1 13376 5 2             ; The hidden trove Lock Down
+D 1 13377 4 1             ; The secret vault Close Up
+D 1 13366 0 1                  ; The passage end Close North
+D 1 13368 2 1             ; The Quartermaster's Close South
+D 1 13366 2 2                  ; The passage end Lock South
+D 1 13367 0 1             ; Armoury Close North
+D 1 13302 1 1                   ; Grand Hall Close East
+D 1 13338 2 2             ; Bunkroom Lock South
+D 1 13370 0 1             ; East-West Passage Close North
+D 1 13372 2 1         ; Secret room Close South
+D 1 13371 0 1             ; Dead end Close North
+*
+M 1 13315 1 13318                      the Librarian to Library
+D 1 13380 2 2                  ; A breeding room Lock South
+*
+M 1 13311 30 13380                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13381                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13381                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13381                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13381                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13382                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13382                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13382                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13383                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13383                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13383                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13383                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13383                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13387                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13387                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13387                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13386                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13386                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13386                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13385                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13385                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13385                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+*
+M 1 13311 30 13384                      a Rat-Man to A breeding room
+D 1 13306 0 1                   ; A room Close North
+D 1 13386 1 1                   ; A breeding room Close East
+*
+M 1 13317 1 13407             A mad alchemist to The Laboratory
+*
+M 1 13318 1 13390             The Sentry to The guard-house?
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13304 100 17
+D 1 13410 2 1             ; The Arch Wizards Study Close South
+D 1 13410 3 2             ; The Arch Wizards Study Lock West
+*
+M 1 13319 1 13410                 the Archwizard to The Arch Wizards Study
+E 1 13315 100 1
+E 1 13314 100 12
+E 1 13313 100 16
+E 1 13316 100 5
+E 1 13348 100 14
+E 1 13352 100 6
+E 1 13348 100 15
+E 1 13377 100 19
+*
+M 1 13320 2 13410                      the Ethereal Servant to The Arch Wizards Study
+D 1 13411 1 1           ; The Privy Close East
+D 1 13338 3 1             ; Bunkroom Close West
+*
+*
+M 1 13321 8 13302                      the WatchGuard to Grand Hall
+E 1 13305 100 5
+E 1 13306 100 6
+E 1 13309 100 16
+*
+M 1 13321 8 13302                      the WatchGuard to Grand Hall
+E 1 13305 100 5
+E 1 13306 100 6
+E 1 13312 100 16
+*
+*
+M 1 13321 8 13336                      the WatchGuard to Corridor
+*
+M 1 13321 8 13364                      the WatchGuard to East-West Passage
+E 1 13305 100 5
+E 1 13306 100 6
+E 1 13312 100 16
+*
+M 1 13321 8 13366                      the WatchGuard to The passage end
+*
+M 1 13321 8 13366                      the WatchGuard to The passage end
+*
+M 1 13322 10 13334                     the Mrinthian Monk to Corridor
+E 1 13308 100 12
+E 1 13307 100 16
+*
+M 1 13322 10 13337                     the Mrinthian Monk to Bunkroom
+E 1 13308 100 12
+*
+M 1 13322 10 13335                     the Mrinthian Monk to Corridor
+E 1 13308 100 12
+E 1 13307 100 16
+*
+M 1 13322 10 13322                     the Mrinthian Monk to Library
+*
+M 1 13322 10 13328                     the Mrinthian Monk to Library
+*
+M 1 13323 1 13314             the Neo-Otyugh to The rubbish pile
+*
+M 1 13300 1 13313             a Blood Reaper to The Blood Reaper's Lair
+E 1 13300 100 16
+O 1 13302 100 13353           a coffin to The Crypt
+O 1 13302 100 13353           a coffin to The Crypt
+D 1 13412 2 2                   ; A short corridor Lock South
+D 1 13409 0 1                   ; A dark corridor Close North
+*
+M 1 13310 6 13413
+D 1 13413 2 2                   ; Troll breeding room Lock South
+D 1 13414 2 2                   ; Another short corridor Lock South
+D 1 13413 0 1                   ; Troll breeding room Close North
+*
+M 1 13310 6 13415                      a troll to Troll breeding room
+D 1 13416 1 2                   ; Yet another short corridor Lock East
+D 1 13415 3 1                   ; Troll breeding room Close West
+*
+M 1 13310 6 13417
+*
+M 1 13310 6 13417
+*
+M 1 13310 6 13417
+*
+M 1 13310 6 13417
+D 1 13417 2 2                   ; Troll breeding room Lock South
+D 1 13418 2 2                   ; A dark corridor Lock South
+*
+M 1 13302 6 13422                      a thief guard to The Check point
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13302 6 13422             a thief guard to The Check point
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13420            a thief to A dark corridor
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13418            a thief to A dark corridor
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13302 6 13422             a thief guard to The Check point
+*
+M 1 13301 20 13395            a thief to A dark corridor
+E 1 13303 100 5
+E 1 13301 100 16
+D 1 13417 0 2                   ; Troll breeding room Lock North
+*
+M 1 13301 20 13425
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425
+E 1 13303 100 5
+E 1 13301 100 16
+D 1 13424 1 1                   ; A dark corridor Close East
+D 1 13425 3 1                   ; Thieves' Barracks Close West
+*
+M 1 13301 6 13426                      a thief to A dark corridor
+E 1 13303 100 5
+E 1 13301 100 16
+D 1 13427 1 1           ; Thieves' Barracks Close East
+D 1 13426 3 1                   ; A dark corridor Close West
+*
+M 1 13301 1 13429
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 1 13429
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 1 13429
+E 1 13303 100 5
+E 1 13301 100 16
+D 1 13429 3 1                   ; Thieves' Barracks Close West
+*
+M 1 13301 6 13428                      a thief to A dark corridor
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13302 6 13430               a thief guard to Another check point
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13323 100 1
+*
+M 1 13302 6 13430               a thief guard to Another check point
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13323 100 1
+*
+M 1 13301 20 13427            a thief to Thieves' Barracks
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13427            a thief to Thieves' Barracks
+*
+M 1 13301 20 13427            a thief to Thieves' Barracks
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425            a thief to Thieves' Barracks
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425            a thief to Thieves' Barracks
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425            a thief to Thieves' Barracks
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13301 20 13425            a thief to Thieves' Barracks
+E 1 13303 100 5
+E 1 13301 100 16
+*
+M 1 13302 6 13430               a thief guard to Another check point
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13323 100 1
+*
+M 1 13302 6 13430               a thief guard to Another check point
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13323 100 1
+*
+M 1 13304 1 13431               the Nightmaster to The Night master's  office
+E 1 13303 100 5
+E 1 13312 100 16
+E 1 13304 100 17
+E 1 13323 100 1
+E 1 13328 100 7
+E 1 13329 100 9
+G 1 13327 100
+O 1 13301 100 13367           a short sword to Armoury
+O 1 13305 100 13367           a Breastplate to Armoury
+O 1 13306 100 13367           a crested helmet to Armoury
+O 1 13307 100 13367           a Mrinthian mace to Armoury
+O 1 13307 100 13367           a Mrinthian mace to Armoury
+O 1 13307 100 13367           a Mrinthian mace to Armoury
+O 1 13309 100 13367           a Mrinthian spear to Armoury
+O 1 13309 100 13367           a Mrinthian spear to Armoury
+O 1 13309 100 13367           a Mrinthian spear to Armoury
+O 1 13312 100 13367           a Mrinthian sword to Armoury
+O 1 13312 100 13367           a Mrinthian sword to Armoury
+O 1 13312 100 13367           a Mrinthian sword to Armoury
+O 1 13301 100 13367           a short sword to Armoury
+O 1 13305 100 13367           a Breastplate to Armoury
+O 1 13312 100 13376           a Mrinthian sword to The hidden trove
+O 1 13312 100 13376           a Mrinthian sword to The hidden trove
+O 1 13312 100 13376           a Mrinthian sword to The hidden trove
+O 1 13312 100 13376           a Mrinthian sword to The hidden trove
+O 1 13309 100 13376           a Mrinthian spear to The hidden trove
+O 1 13309 100 13376           a Mrinthian spear to The hidden trove
+O 1 13309 100 13376           a Mrinthian spear to The hidden trove
+O 1 13307 100 13376           a Mrinthian mace to The hidden trove
+O 1 13307 100 13376           a Mrinthian mace to The hidden trove
+D 1 13428 1 1                   ; A dark corridor Close East
+O 1 13322 100 13431           a chest to The Night master's  office
+P 1 13321 100 13322           a Mrinthian Tower Shield to container Chest
+P 1 13320 100 13322           a rusted dagger to container Chest
+P 1 13319 100 13322           a pile of coins to container Chest
+P 1 13318 100 13322           a silver chalice to container Chest
+P 1 13317 100 13322           A platinum necklace to container Chest
+O 1 13324 100 13377           a Vault Safe to The secret vault
+P 1 13319 100 13324           a pile of coins to container Vault safe
+P 1 13323 100 13324           a Guild ring to container Vault safe
+P 1 13308 100 13324           some grey monks robes to container Vault safe
+P 1 13304 100 13324           a Rod of Beguiling to container Vault safe
+O 1 13319 100 13377           a pile of coins to The secret vault
+O 1 13319 100 13376           a pile of coins to The hidden trove
+*
+M 1 13321 8 13371                      the WatchGuard to Dead end
+E 1 13305 100 5
+E 1 13306 100 6
+E 1 13308 100 12
+E 1 13312 100 16
+D 1 13426 0 1                   ; A dark corridor Close North
+D 1 13425 2 1                   ; Thieves' Barracks Close South
+*
+M 1 13301 20 13432              a thief to The Common room
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13323 100 1
+*
+M 1 13301 20 13432              a thief to The Common room
+E 1 13303 100 5
+E 1 13301 100 16
+E 1 13323 100 1
+*
+D 1 13436 0 1                   ; A narrow tunnel Close North
+*
+M 1 13303 1 13437
+D 1 13437 3 1                   ; The Quartermaster's office Close West
+D 1 13436 1 1                   ; A narrow tunnel Close East
+D 1 13431 2 1                   ; The Night master's  office Close South
+*
+M 1 13303 1 13437               the Quartermaster to The Quartermaster's office
+E 1 13323 100 1
+E 1 13303 100 5
+E 1 13328 100 7
+E 1 13329 100 9
+E 1 13333 100 14
+E 1 13309 100 16
+D 1 13438 0 1                   ; A narrow tunnel Close North
+*
+M 1 13305 1 13439               the guildmaster to The Guildmaster's office
+E 1 13323 100 1
+E 1 13331 100 5
+E 1 13328 100 7
+E 1 13329 100 9
+E 1 13321 100 11
+E 1 13332 100 12
+E 1 13311 100 16
+E 1 13330 100 17
+D 1 13439 0 1                   ; The Guildmaster's office Close North
+D 1 13438 2 1                   ; A narrow tunnel Close South
+*
+M 1 13309 1 13442                 Kharneth-Dhar to The Throne room of Kharneth-Dhar.
+E 1 13337 100 1
+E 1 13334 100 6
+E 1 13336 100 12
+E 1 13335 100 16
+E 1 13323 100 2
+*
+M 1 13312 1 13442               Lich Retainer to The Throne room of Kharneth-Dhar.
+E 1 13339 100 5
+E 1 13340 100 6
+E 1 13338 100 16
+*
+M 1 13313 1 13442               a Vampire Lord to The Throne room of Kharneth-Dhar.
+D 1 13443 2 1                   ; The Long Tunnel Close South
+D 1 13442 0 1                   ; The Throne room of Kharneth-Dhar. Close North
+D 1 13444 2 2                   ; The Spiral Staircase Lock South
+O 1 13341 100 13368               some salted meat to The Quartermaster's
+O 1 13341 100 13368               some salted meat to The Quartermaster's
+O 1 13341 100 13368               some salted meat to The Quartermaster's
+O 1 13342 100 13368               some hard cheese to The Quartermaster's
+O 1 13342 100 13368               some hard cheese to The Quartermaster's
+O 1 13342 100 13368               some hard cheese to The Quartermaster's
+O 1 13343 100 13378               a scroll tube to The secret depository
+O 1 13344 100 13378               a scroll tube to The secret depository
+P 1 13345 100 13343               a tattered scroll to container bone scroll tube
+P 1 13345 100 13344               a tattered scroll to container scroll tube carved
+P 1 13346 100 13344               an ancient scroll to container scroll tube carved
+O 1 13347 100 13376               some iron rations to The hidden trove
+O 1 13347 100 13376               some iron rations to The hidden trove
+*
+M 1 13322 10 13336                     the Mrinthian Monk to Corridor
+E 1 13308 100 12
+E 1 13307 100 16
+O 1 13349 100 13378               a reinforced iron chest to The secret depository
+P 1 13350 100 13349               The Mace of Zed to container reinforced chest iron
+P 1 13325 100 13349               potion to container reinforced chest iron
+P 1 13325 100 13349               potion to container reinforced chest iron
+P 1 13345 100 13349               a tattered scroll to container reinforced chest iron
+D 1 13362 1 2             ; The Hall of History Lock East
+D 1 13378 3 1             ; The secret depository Close West
+*
+*
+M 1 13324 1 13376                 the Guardian Statue to The hidden trove
+G 1 13351 100
+*
+M 1 13322 10 13325                     the Mrinthian Monk to Library
+E 1 13308 100 12
+*
+M 1 13322 10 13326                     the Mrinthian Monk to Library
+E 1 13308 100 12
+*
+M 1 13322 10 13326                     the Mrinthian Monk to Library
+E 1 13308 100 12
+*
+M 1 13322 10 13331                     the Mrinthian Monk to Library
+E 1 13308 100 12
+*
+M 1 13321 8 13321                      the WatchGuard to Library
+E 1 13305 100 5
+E 1 13306 100 6
+E 1 13312 100 16
+O 1 13353 100 13439               Guildmaster's Desk to The Guildmaster's office
+P 1 13354 100 13353               Deeds to some land to container desk
+P 1 13355 100 13353               Githad's ineffable nullifier to container desk
+P 1 13342 100 13353               some hard cheese to container desk
+P 1 13345 100 13353               a tattered scroll to container desk
+*
+M 1 13308 1 13441                 Combination Lock to Teleported!
+E 1 13356 100 17
+D 1 13441 0 2                   ; Teleported! Lock North
+*
+M 1 13325 1 13315                      the Zed Knight to The Double Doors
+E 1 13361 100 1
+E 1 13323 100 2
+E 1 13359 100 3
+E 1 13317 100 4
+E 1 13360 100 5
+E 1 13357 100 6
+E 1 13362 100 7
+E 1 13364 100 8
+E 1 13363 100 9
+E 1 13358 100 10
+E 1 13365 100 11
+E 1 13308 100 12
+E 1 13366 100 13
+E 1 13367 100 14
+E 1 13367 100 15
+E 1 13312 100 16
+E 1 13304 100 17
+E 1 13376 100 19
+O 1 13342 100 13337               some hard cheese to Bunkroom
+O 1 13341 100 13338               some salted meat to Bunkroom
+O 1 13341 100 13338               some salted meat to Bunkroom
+O 1 13368 100 13322                  A small book to Library
+O 1 13369 100 13320                  Great book of Enchantments to Library
+O 1 13370 100 13319                  Journal of Mrinthian Poetry to Library
+O 1 13371 100 13330                  a scroll to Library
+O 1 13372 100 13329                  a Tome of Zed to Library
+O 1 13373 100 13328                  a plain book to Library
+O 1 13375 100 13384                    to A breeding room
+P 1 13374 100 13375                    rusted key to container nest
+*
+M 1 13307 1 13353                      Guardian Vampire to The Crypt
+E 1 13323 100 1
+E 1 13317 100 3
+E 1 13303 100 5
+E 1 13321 100 11
+E 1 13308 100 12
+E 1 13300 100 16
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+*
+M 1 13306 10 13350                     the Mummified Guardian to A dimly-lit chamber
+D 1 13306 3 1                   ; A room Close West
+D 1 13307 1 1                   ; A dark corridor Close East
+D 1 13388 2 1                   ; A dark corridor Close South
+D 1 13345 1 1                   ; A dimly-lit chamber Close East
+D 1 13393 1 1                   ; A secret room Close East
+D 1 13442 2 1                   ; The Throne room of Kharneth-Dhar. Close South
+D 1 13443 0 0                   ; The Long Tunnel Open North
+D 1 13396 3 1                   ; A small tunnel Close West
+S
+
+
+#SPECIALS
+M  13300 spec_poison                    a Blood Reaver
+M  13301 spec_thief                     a thief
+M  13302 spec_thief                     a thief guard
+M  13303 spec_thief                     the Quartermaster
+M  13305 spec_cast_mage                 the guildmaster
+M  13306 spec_poison                    the Mummified Guardian
+M  13307 spec_cast_undead                       Guardian Vampire
+M  13309 spec_cast_cleric                       Kharneth-Dhar
+M  13310 spec_poison                    a troll
+M  13312 spec_cast_mage                 a minor lich-lord
+M  13313 spec_cast_undead                       a Vampire Lord
+M  13314 spec_thief                     Apprentice Thief
+M  13315 spec_cast_mage                 the Librarian
+M  13317 spec_poison                    A mad alchemist
+M  13318 spec_thief                     The Sentry
+M  13319 spec_cast_mage                 the Archwizard
+M  13320 spec_cast_cleric                       the Ethereal Servant
+M  13321 spec_cast_cleric                       the WatchGuard
+M  13322 spec_cast_cleric                       the Mrinthian Monk
+M  13324 spec_breath_gas                        the Guardian Statue
+S
+
+
+#$

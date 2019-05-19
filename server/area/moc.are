@@ -1,0 +1,407 @@
+#AREA Samxin~ MOC Headquarters~
+-4 -4 0 100
+
+#HELPS
+1 MOC 'MERCENARIES OF CONQUEST'~
+For mutual benefit and the desire to reap vengeance on those who would draw 
+their wrath, certain members of KOS and AOD, along with certain other 
+individuals, formed a new alliance. 
+
+This alliance would strike down those who would try to impose their rule, try 
+and prey upon others, try and rule all. This alliance would adhere to no man's 
+laws but the just law of the right. This alliance would be labeled by the 
+weak, the simple minded, the inept. Labeled as common mercenaries. 
+
+But this alliance is not of common petty thugs. Nor of thieves or murderers. 
+Thus so, the alliance would embrace the moniker, but in a way none of them 
+would understand.
+
+They would be the Mercenaries of Conquest.
+~
+0 $~
+
+#MOBILES
+#360
+Filleg grunt~
+Filleg the grunt~
+Filleg attempts to disembowel you.
+~
+Wearing a much mended uniform he looks to be in good fighting shape as he 
+attempts to remove your limbs from your body.	
+~
+2|512|4096|4194304 2|8|16|32|128|32768|65536 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 100~
+	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+~
+|
+
+#362
+cognizant bat Tab~
+A cognizant bat~
+A cognizant bat informs you of your fate.
+~
+It appears to be an ordinary bat, except it can talk and make threats. Other 
+than that - totally ordinary.	
+~
+2|512|4096 8|32|2048|8388608 1000 S
+60 0 0 0d0+0 0d0+0
+4 0
+0 0 1
+>all_greet_prog 100~
+   say Nice to see you, $n. Dark in here, no?
+   say Probably a good thing - this way you wont see your blood all over the place.
+   mpecho The bat seems to grin at you and flex its little claws.	
+~
+|
+
+#363
+Dakar~
+Dakar~
+Dakar seems to make a quick appraisal of your gear.
+~
+Dakar has an extremely sharp eye and is keen on what's what and what's crap.	
+~
+2|512|4096|1048756 8|32|8388608|16777216 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#364
+Kooc~
+Kooc~
+Kooc offers you some refreshment.
+~
+Looking rather comfortable in this place Kooc moves around preparing this and 
+eating that.	
+~
+2|512|4096 8|32|8192|8388608 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#365
+magical spirit~
+a {Bmagical{X spirit~
+{d{x
+~
+You try to make something out, but just can't. You see only
+empty air, yet you KNOW it's there.
+~
+2|512|4096 8|32|8388608 0 S
+100 0 0 0d0+0 0d0+0
+256 0
+0 0 2
+>all_greet_prog 100~
+   mpecho You feel as if you're not alone...
+~
+>speech_prog bless~
+        	if clan($n) == moc                                                                           
+        		cast bless $n                                                                        
+        		break                                                                                
+        	else                                                                                         
+        		break;                                                                               
+        	endif	                                                                                     
+~
+>speech_prog bye~
+        	if clan($n) == moc                                                                           
+        		mpecho The world {ysh{Yim{x{ymers{x in your vision and then you find yourself outside the cave.
+        		mptransfer $n 507                                                                   
+        		break                                                                                
+        	endif
+~
+|
+
+#366
+moe wizinvis guy~
+MOC wizinvis guy~
+MOC wizinvis guy drops the Kris.
+~
+He's wizinvis, who cares?	
+~
+2|512|4096|65536 8|32|8388608 0 S
+500 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 100~
+	drop moc
+	mpgoto 537
+	meditate
+~
+|
+#0
+
+#OBJECTS
+#361
+door key~
+the door key	{Y<----{GYou want this.{x~
+The door key has been stolen from Filleg{Y<----{GYou want this.{x~
+~
+18 0 1|16384
+~ ~ ~ ~
+10 0 0
+
+#364
+broadsword~
+an expertly crafted broadsword~
+an expertly crafted broadsword has been stolen from Filleg.~
+~
+5 0 0
+~ ~ ~ 13~
+15 0 0
+A
+19 50
+A
+18 50
+
+#365
+crystal dagger~
+a crystal dagger~
+A crystal dagger has been stolen from Filleg.~
+~
+5 0 0
+~ ~ ~ 2~
+15 0 0
+A
+19 50
+A
+18 50
+
+#366
+mended uniform~
+a mended uniform~
+A mended uniform has been stolen from Filleg.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#362
+roasted duck~
+some roasted duck~
+Some roasted duck lies here going to waste.~
+~
+19 0 1
+20~ ~ ~ 0~
+0 0 0
+
+#363
+invigorating liquid~
+some invigorating liquid~
+Some invigorating liquid lies here going to waste.~
+~
+17 0 1
+25~ 25~ 15~ 0~
+0 0 0
+
+#367
+kris covenant moc~
+The {RKris{x of the {YCovenant{x~
+The {rKris{x of the {yCovenant{x has been thrust into the ceiling.~
+~
+32 1|2 1|16384
+~ ~ ~ ~
+50 0 0
+
+#368
+spiked therion bracers moc~
+spiked therion bracers~
+Spiked therion bracers are here.~
+~
+9 0 1|256
+~ ~ ~ ~
+5 0 0
+A
+13 150
+
+#369
+guards divinity moc~
+guards of divinity~
+Guards of divinity are here.~
+~
+9 64 1|256
+~ ~ ~ ~
+5 0 0
+A
+18 8
+A
+19 8
+
+#370
+leggings quorthon moc~
+leggings of quorthon~
+Leggings of quorthon have been taken from their owner.~
+~
+9 2 1|32
+~ ~ ~ ~
+1 0 0
+A
+19 15
+A
+13 250
+
+#371
+pouch arathorn moc~
+pouch of arathorn~
+A pouch of arathorn tumbles around.~
+~
+15 1 1|65536
+11~ 0~ -1~ ~
+1 0 0
+A
+19 5
+#0
+
+#ROOMS
+#360
+A pitch bright cave~
+The walls of this cave have been worn smooth by many years of use. Neat
+shelves are cut into the walls and a doorway has been set into the south
+wall.	
+~
+0 1|8 0
+D 0
+~
+~
+8 361 361
+S
+
+#361
+{dTotal darkness{x~
+You are engulfed in {dtotal darkness{x.	
+~
+0 1|8 0
+D 0
+~
+~
+8 -1 362
+D 2
+~
+~
+8 -1 360
+D 1
+~
+~
+8 -1 361
+D 3
+~
+~
+8 -1 361
+S
+
+#362
+Softly lit~
+You emerge into a softly lit part of the cave. Swords, gold, and various
+other things of interest are scattered about.	
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 365
+D 2
+~
+~
+0 -1 361
+D 1
+~
+~
+0 -1 364
+D 3
+~
+~
+0 -1 363
+E
+sword swords~
+They look to mainly be of fine quality. Except for the ones that look to
+be of fine quality and expensive as hell.
+~
+E
+gold~
+If you could somehow take all this out of here you'd be set for life!
+~
+S
+
+#363
+Inspector~
+A silent man with a keen eye toys with various items of apparent value.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 362
+E
+items item~
+Sword, lances, sheathes, cups, rocks, all sorts of objects are collected by 
+this man it seems.
+~
+S
+
+#364
+Kooc~
+Spit fires, stone ovens, tables, chairs. All the required items to prepare 
+food, relax and stuff your face are strewn throughout this hollowed out 
+section of the cave.
+~
+0 8 0
+D 3
+~
+~
+0 -1 362
+E
+spit fire stone oven table chair~
+It looks just like it should.
+~
+S
+
+#365
+Bunks~
+This cavern is HUGE. All sorts of bunks are scattered around, some even set 
+into the wall. Surprisingly, they all appear to be more like normal beds than 
+actual bunks. You suddenly get the sense of not being alone, then hear a sound 
+you can't describe, but it's rather...pleasant.
+~
+0 8 0
+D 2
+~
+~
+0 -1 362
+S
+#0
+
+#RESETS
+D 0 360 0 2                   lock north in A pitch bright cave
+R 0 361 4                     randomise exits in {dTotal darkness{x
+D 0 361 0 1                   close north in {dTotal darkness{x
+D 0 361 2 1                   close south in {dTotal darkness{x
+D 0 361 1 1                   close east in {dTotal darkness{x
+D 0 361 3 1                   close west in {dTotal darkness{x
+M 0 360 1 360               add Filleg the grunt to A pitch bright cave
+E 0 366 0 5                       equip a mended uniform (body)
+E 0 364 0 16                      equip an expertly crafted broadsword (wield)
+E 0 365 0 18                      equip a crystal dagger (dual)
+G 0 361 0	    carry the door key	{Y<----{GYou want this.{x
+M 0 362 1 361               add A cognizant bat to {dTotal darkness{x
+M 0 363 1 363               add Dakar to Inspector
+M 0 364 1 364               add Kooc to Kooc
+G 0 362 0                         carry some roasted duck
+G 0 363 0                         carry some invigorating liquid
+M 0 365 1 365               add a {Bmagical{X spirit to Bunks
+M 0 366 1 365               add MOC wizinvis guy to Bunks
+G 0 367 0                         carry The {RKris{x of the {YCovenant{x
+S
+
+#SHOPS
+364 0 0 0 0 0 150 75 0 23     shop run by Kooc
+0
+
+#SPECIALS
+M 360 spec_clan_guard         Filleg the grunt
+M 362 spec_repairman          A cognizant bat
+M 365 spec_cast_adept         a {Bmagical{X spirit
+S
+
+#$

@@ -1,0 +1,1700 @@
+#AREA	Jammer~  The Valley of Dreams~
+45 60 0 100
+
+#RECALL
+13609
+#MOBILES
+#13600
+Rhino rhinosaurus beetle~
+A Rhinosaurus Beetle~
+The Rhinosaurus beetle is crawling around looking for food
+~
+This huge armourplated insect is the size of a man and looks very mean.
+~
+64 0 0 S
+45 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#13601
+Bulette~
+the Bulette~
+The Bulette is on a neverending quest for food...
+~
+This bizarre creature looks like a cross between a rhinosaurus,  an armadillo and a shark.  Obviously not a natural looking creature,  you wonder at the insane intelligence that may have created this monster...
+~
+32|64 8|32|512 0 S
+58 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#13602
+Torba hermit healer shaman~
+Torba the Shaman Healer~
+Torba,  a hermit healer is Shaman of the forest.  He welcomes all who come in peace...
+~
+This hermit now in old age is deceptively strong and agile.  He has chosen this small forest as his home and tends to the adventurers and travellers that pass through this region.
+~
+2|64 8|32|128|512|8192 700 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13603
+giant croc crocodile~
+the Giant Crocodile~
+The giant Crocodile eyes you hungrily...
+~
+The crocodile stares back at you!
+~
+2|32|64 8|32 0 S
+45 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#13604
+black dragon~
+the Black Dragon~
+The Black Dragon has it's lair near here...
+~
+The Black Dragon has jet black scales that allow it to effectively blend into the surrounding shadows.
+~
+2|32|64 8|32 -200 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13605
+giant jaguar~
+the Giant Jaguar~
+The giant jaguar stares at you from the branch of a nearby tree...
+~
+This black cat looks every bit dangerous as it is beautiful.
+~
+64 8|32|65536 100 S
+45 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#13606
+Gargantua garg humanoid~
+the Humanoid Gargantua~
+The Humanoid Gargantua lumbers around squashing things...
+~
+This masssive humanoid is around 30 metres tall and must weigh at least as much as a stone house.
+~
+2|32|64 8|32|512 0 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13607
+lizard man guard~
+the Lizardman Guard~
+The Lizardman guard stands here,  keeping vigil.
+~
+This green scaled cross between a human and a lizard makes your skin crawl.  Small dorsal fins line his back and he also has a tail.
+~
+2|32|64 8|32|128|512 -250 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13608
+Lizard man Shaman~
+the Lizardman Shaman~
+The Lizardman Shaman looks for humans to sacrifice
+~
+This lizardman differs from others in that he wears a headress and carries a 
+rattle symbolizing some pagan religion.
+~
+32|64|128 8|32|512 -750 S
+54 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13609
+Kiqir Warrior Mage~
+Kiqir the Warrior Mage~
+Kiqir the mad Giant Warrior/ Mage floats meditating in his study...
+~
+This ugly giant man is incredibly muscled as well as possessing a magical skill 
+of legend.  This formidable fighting machine should not be reckoned lightly.
+~
+2|64|128 2|8|32|512|32768|65536|524288 -990 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13610
+rakasasha~
+Rakasasha the demon~
+A beautiful maiden lies here in a provocative pose...
+~
+In actuality,  the beautiful maiden is in fact a rakasasha,  a demon of 
+illusions.
+~
+2|32|64|128 8|32|512|524288 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#13611
+Hermit Jakor~
+Jakor the Hermit~
+A wizened old hermit sits here contemplating deep thoughts whilst levitating himself...
+~
+This man has a faint yellow tinge to his skin.  His hair,  white with age,  is 
+almost as long as his beard.  He is dressed in faded grey robes in station with 
+the simple life that he has chosen to live.  As you look upon him,  you somehow 
+know that he is definately aware of your presence...
+~
+2|64|1024 8|32|128|512|524288 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13612
+Giant servant~
+the Giant Servant~
+The Giant servant is looking after his masters needs.
+~
+This giant human looking creature is the construct of some crazed wizard.  You 
+can see the pale green tint in the skin,  the dull eyes and hairless body.  As 
+you look closer you can see small stitch marks in the major joint areas.
+~
+4|32|64 8|32 -300 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13613
+Giant Cook~
+the Giant Cook~
+A large giant cook stands waiting for some fresh meat to arrive
+~
+
+~
+2|4|32|64 8|32 -500 S
+54 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#13614
+Giant Maid~
+the Giant Maid~
+A huge giant maid is dusting and generally tidying up...
+~
+
+~
+4|32|64 8|32 -350 S
+53 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13615
+black phase beast~
+the Black Phasebeast~
+A black shape swirls up out of the dust
+~
+This black cloud reeks of death and dispair.  You feel nauseous and sick as you 
+breath in the cloud of gas.
+~
+2|32|64 2|8|32|32768|65536 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13616
+roc giant red~
+the Giant Red Roc~
+A giant red Roc has made its nest here...
+~
+This is a massive bird.  Differing from other Rocs in it's bright orange red 
+feathers and strangely shaped beak.
+~
+2|32|64 8|32|512|524288 0 S
+55 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#13617
+rabid ape~
+the Rabid Ape~
+A gorilla,  driven mad by some disease attacks you feverishly...
+~
+The Ape's eyes are reddened and have the look of total insanity about them.
+~
+32|64 8|32 0 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#0
+
+
+#OBJECTS
+#13600
+copper tub wash washing~
+a massive copper tub~
+A massive copper washing tub sits here.~
+~
+15 0 0
+100~ 1~ -1~ 11~ 
+900 0 0
+#13601
+shamans head dress headdress~
+a Shaman's Headdress~
+A Shamans headdress lies here...~
+~
+9 1|16|64|512 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+12 50
+A
+13 30
+A
+19 6
+#13602
+key~
+a weird looking key~
+A really weird looking key lies here.~
+~
+18 128 1|16384
+0~ 1~ 6~ 11~ 
+1 0 0
+#13603
+Finger bone~
+a fingerbone~
+A human's finger bone lies here~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#13604
+polished wooden key~
+a polished wooden key~
+A polished wooden key lies here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+1 0 0
+#13605
+desk~
+a desk~
+A reading desk sits by the fireplace.~
+~
+15 0 0
+50~ 15~ 13634~ 11~ 
+10 0 0
+#13606
+green spear~
+a green spear~
+A green spear rests here.~
+~
+5 64|512|134217728 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+#13607
+green shield~
+a green shield~
+A green shield rests here.~
+~
+9 16|64|512 1|512
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+19 1
+A
+17 -25
+A
+12 25
+#13608
+Kiqirs globe~
+kiqir's Globe~
+Kiqir's globe floats just above the ground...~
+~
+1 1|2|64 1
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+19 3
+A
+12 200
+A
+13 50
+A
+17 -40
+#13609
+kiqirs Helm~
+kiqir's Helm~
+Kiqir's helm lies here...~
+~
+9 1|64|128|4096 1|16
+0~ 1~ 6~ 11~ 
+3 0 0
+A
+13 35
+A
+5 2
+A
+18 7
+A
+19 6
+#13610
+kiqirs neck clasp~
+kiqir's Neckclasp~
+Kiqir's neckclasp lies here...~
+~
+9 1|32|64|128|4096 1|4
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+13 30
+A
+18 5
+#13611
+Kiqirs collar~
+kiqir's Collar~
+Kiqir's Collar rests here.~
+~
+9 32|64|128|4096 1|4
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+13 35
+A
+19 5
+#13612
+Kiqirs armbands arm bands~
+kiqir's Armbands~
+Kiqirs armbands lie here.~
+~
+9 64 1|256
+0~ 1~ 6~ 11~ 
+3 0 0
+A
+19 7
+A
+18 7
+#13613
+kiqirs ring signet~
+kiqir's Signet Ring~
+Kiqirs signet ring lies here...~
+~
+9 32|64 1|2
+3~ 1~ 6~ 11~ 
+1 0 0
+A
+23 -5
+A
+24 -5
+A
+14 100
+A
+1 3
+#13614
+kiqirs bracer~
+kiqir's Bracer~
+Kiqirs bracer lies here~
+~
+9 1|64 1|4096
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+19 1
+A
+13 30
+A
+12 50
+#13615
+kiqirs gloves~
+kiqir's Gloves~
+Kiqirs gloves lie here~
+~
+9 1|64 1|128
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+2 3
+A
+1 2
+A
+12 20
+#13616
+kiqirs chain armor mail~
+kiqir's Chainmail~
+A suit of finely woven chainmail lies here.  It is of outstanding quality.~
+~
+9 1|64 1|8
+15~ 1~ 6~ 11~ 
+6 0 0
+A
+5 5
+A
+13 50
+A
+17 -10
+A
+24 -5
+#13617
+sword kiqirs broad~
+kiqir's Broadsword~
+A well crafted broadsword rests here.~
+~
+5 1|32|64 1|8192
+0~ 1~ 6~ 1~ 
+5 0 0
+A
+1 2
+A
+4 2
+A
+5 2
+A
+19 5
+#13618
+Kiqirs girdle~
+kiqir's Girdle~
+Kiqirs girdle rests here.~
+~
+9 32|64 1|2048
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+13 30
+A
+19 7
+#13619
+Daeron shield~
+daeron's Shield~
+A finely made shield sits here.  It glows a hazy blue hue.~
+~
+9 1|64 1|512
+15~ 1~ 6~ 11~ 
+5 0 0
+A
+12 150
+A
+13 150
+A
+24 -15
+#13620
+Kiqirs gown~
+kiqir's Gown~
+A flowing yet richly embrodered robe lies here looking dishevelled...~
+~
+9 1|64 1|1024
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+13 50
+A
+12 100
+A
+17 -20
+#13621
+Kiqirs Greaves~
+kiqir's Greaves~
+A pair of black leggings lie here...~
+~
+9 32|64 1|32
+0~ 1~ 6~ 11~ 
+3 0 0
+A
+18 7
+A
+19 8
+#13622
+Kiqirs boots~
+kiqir's Boots~
+A pair of polished black leather boots lie here...~
+~
+9 64 1|64
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+14 100
+A
+13 30
+A
+12 75
+#13623
+Kiqirs staff~
+kiqir's Staff~
+A rod of black hardwood covered in glowing runes lies here.~
+~
+4 1|16|64 1|16384
+80~ 4~ 12~ disintegrate~ 
+1 0 0
+A
+12 50
+A
+13 50
+A
+19 9
+#13624
+dried meat salted~
+some meat~
+A side of dried,  salted meat lies here...~
+~
+19 0 1
+28~ 1~ 6~ 11~ 
+1 0 0
+#13625
+stones~
+rubble~
+Ruined rocks lie scattered across the clearing.~
+~
+13 0 0
+0~ 1~ 6~ 11~ 
+800 0 0
+#13626
+Tapestry~
+a fine tapestry~
+A beautiful tapestry which belongs in a hallowed gallery is here...~
+~
+8 0 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#13627
+Four poster bed~
+a Fourposter Bed~
+A bed carved out of a strange greyish wood sits majestically against the far wall~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#13628
+pile~
+a small pile of coins~
+A small pile of gold coins lies here...~
+~
+20 0 1
+25~ 17~ 3~ 0~ 
+5 0 0
+#13629
+glass sword~
+a glass sword~
+A sword made out of the most purest form of glass lies here.~
+~
+5 0 1|8192
+0~ 17~ 26~ 11~ 
+5 0 0
+A
+18 5
+A
+19 9
+#13630
+spring water pool pond river fountain~
+the spring~
+The spring gurgles merrily northwards,  it's sparkling clear waters offering 
+relief from the heat...~
+~
+25 0 0
+0~ 1~ 6~ 11~ 
+1000 0 0
+#13631
+clear bottle~
+a small clear bottle~
+A bottle filled with a browny yellow liquid has been carelessly left here...~
+~
+17 0 1
+10~ 8~ 20~ 0~ 
+1 0 0
+#13632
+fire fireplace embers small~
+a small fireplace~
+A small stone fireplace sits near the meat rack.~
+~
+15 0 0
+20~ 4~ -1~ 11~ 
+100 0 0
+#13633
+ring black~
+a black ring~
+A piece of black twisted metal sits here...~
+~
+9 1|64 1|2
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 100
+A
+13 50
+A
+19 5
+#13634
+key~
+a small key~
+A small key half hidden, lies here.~
+~
+18 128 1|16384
+0~ 1~ 6~ 11~ 
+1 0 0
+#0
+
+
+#ROOMS
+#13600
+The great Desert~
+The hot sand stretches out before your eyes as you ascend a large sand dune. 
+Rocky outcrops dot the landscape creating islands in this seemingly endless sea 
+of sand.
+~
+0 1024|8192 10
+D0
+~
+~
+0 -1 13603
+D1
+~
+~
+0 -1 13602
+D2
+~
+~
+0 -1 18137
+D3
+~
+~
+0 -1 13601
+S
+#13601
+The great Desert~
+The desert seems uniform in colour and texture as you make your way across it. 
+The only static thing in this bizarre landscape is the passing of the sun as it 
+makes its relentless journey across the sky.
+~
+0 1024|8192 10
+D1
+~
+~
+0 -1 13600
+D2
+~
+~
+0 -1 13602
+D3
+~
+~
+0 -1 13603
+S
+#13602
+The great Desert~
+Rocks and sand and very little else fill your vision as you scan the horizon.  
+The shifting sand makes trail blazing almost impossible as you trudge bleary 
+eyed and thirsty through the surrounding desert.
+~
+0 1024|8192 10
+D0
+~
+~
+0 -1 13601
+D1
+~
+~
+0 -1 13605
+D2
+~
+~
+0 -1 13606
+D3
+~
+~
+0 -1 13600
+S
+#13603
+The great Desert~
+The sun beats down hard on your head as you make your way through the sandy 
+terrain.  The air is very dry and you can feel the moisture evapourating from 
+your body.  Your tongue feels dry and you hope that soon you will find relief 
+from the elements.
+~
+0 1024|8192 10
+D1
+~
+~
+0 -1 13601
+D2
+~
+~
+0 -1 13600
+D3
+~
+~
+0 -1 13607
+S
+#13604
+The room between worlds~
+You are standing in a small,  cosy room.  There is a doorway in front of you to 
+the north,  and nothing else of any note in the room. The archway is filled with 
+a purple luminescent fog which sparkles and swirls within the arch...
+~
+0 1|4|8|1024|8192|16384 0
+D0
+~
+~
+0 -1 13600
+E
+north arch archway~
+This is a gate - an ancient piece of magical equipment thought lost by 
+contemporary scholars and sages.  Some of these gates are thought to be fixed 
+teleport devices.  Others are supposed to be random entrance ways to other 
+worlds and dimensions.~
+S
+#13605
+The great Desert~
+Ahead of you you can see a small valley to the north.  A natural spring flows 
+out of the side of the rock face to the east,  and has cut this oasis valley in 
+the middle of the desert.
+~
+0 1024|8192 10
+D0
+~
+~
+0 -1 13607
+D1
+~
+~
+0 -1 13607
+D3
+~
+~
+0 -1 13602
+S
+#13606
+The great Desert~
+This part of the desert has large rock formations reaching hundreds of feet into 
+the air from the sand beneath your feet.  These pinnacles have been blasted by 
+the winds over centuries to create this incredibly beautiful yet alien 
+landscape.
+~
+0 1024|8192 10
+D0
+~
+~
+0 -1 13602
+S
+#13607
+Entrance to Oasis Valley~
+Around you you can see the desert stretch as far as your vision reaches to the 
+horizon.  Ahead you see what appears to be a small ravine with a rough path 
+leading down into the valley.
+~
+0 4|1024|8192 10
+D1
+~
+~
+0 -1 13603
+D2
+~
+~
+0 -1 13605
+D3
+~
+~
+0 -1 13605
+D5
+~
+~
+0 -1 13608
+S
+#13608
+The Oasis Valley~
+After a long descent you step into the floor of what is now a wide canyon.  
+Around you the climate changes.  Thick steaming vegetation rises around you,  
+obscuring the walls of the valley from view.  It's like stepping into a new 
+world.
+~
+0 4|1024|8192 3
+D0
+~
+~
+0 -1 13610
+D3
+~
+~
+0 -1 13609
+D4
+~
+~
+0 -1 13607
+S
+#13609
+The Valley Spring~
+You are standing in a small grassy clearing.  About 3 metres above you,  a 
+spring gushes out of the wall of the canyon.  The air around you is rather cool,  
+and this looks like a pleasant place to rest.  There is a ramshackle shelter 
+from the rain that ha s been erected here.
+~
+0 1024|8192 2
+D1
+~
+~
+0 -1 13608
+S
+#13610
+The Hidden Jungle~
+You are following what looks to be a trail through the jungle.  Thick vegetation 
+obscures your lateral view while the tall trees and a thick jungle canopy 
+effectively shut out the light,  leaving you without a means of navigation.
+~
+0 1|1024|8192 3
+D0
+~
+~
+0 -1 13623
+D1
+~
+~
+0 -1 13612
+D2
+~
+~
+0 -1 13608
+D3
+~
+~
+0 -1 13611
+S
+#13611
+The Hidden Jungle~
+The trail leads off infront of you.  The stream gurgles merrily along side you 
+and then swings to the north.  All around you are signs of life,  insects and 
+birds mainly.  You feel hairs prickling on your neck...
+~
+0 1|1024|8192 3
+D0
+~
+~
+0 -1 13622
+D1
+~
+~
+0 -1 13610
+D2
+~
+~
+0 -1 13623
+D3
+~
+~
+0 -1 13624
+S
+#13612
+Along the Canyon wall~
+You are standing next to the wall of the canyon.  It towers up above you to the 
+desert on top.  It heads roughly in a northeast direction.
+~
+0 1|1024|8192 3
+D1
+~
+~
+0 -1 13613
+D3
+~
+~
+0 -1 13610
+S
+#13613
+The Canyon wall~
+You are next to the canyon wall.  The forest stretches out covering the floor of 
+the valley right up to the other side of the canyon.  There is a trail leading 
+west and north from here.  The jungle west looks to be inpenetrable.
+~
+0 1024|8192 3
+D0
+~
+~
+0 -1 13614
+D3
+~
+~
+0 -1 13612
+S
+#13614
+The Clearing~
+You are standing in a small clearing.  There is the ancient remains of a small 
+temple to an unknown god and what looks like the ruins of a small community that 
+lived here,  a long time ago...
+~
+0 1024|8192 3
+D0
+~
+~
+0 -1 13620
+D2
+~
+~
+0 -1 13613
+D5
+~
+~
+4 13603 13615
+S
+#13615
+The hidden tunnel~
+You are inside a small tunnel.  It leads downwards into darkness... The air is 
+dank and stagnant and there are cobwebs everywhere.
+~
+0 1|4|8|1024|8192 0
+D4
+~
+~
+4 13603 13614
+D5
+~
+~
+8 13603 13616
+S
+#13616
+The tomb~
+You are standing in a large cavern,  hewn from solid rock.  It is very old.  You 
+realise that this temple was a memorial to a civilisation long forgotten,  and 
+that their most revered leaders and heroes are buried here.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 13617
+D1
+~
+~
+0 -1 13619
+D4
+~
+~
+8 13603 13615
+S
+#13617
+The tomb~
+You are standing in the northwest corner of the tomb.  Along the walls are lined 
+enclaves where the bodies of the dead are buried.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 13618
+D2
+~
+~
+0 -1 13616
+S
+#13618
+The tomb~
+You are standing in the northeast corner of the tomb.  You would figure about 
+100 people were buried here.  How ever,  in the middle of the room is a massive 
+stone fixture.
+~
+0 1|8|1024|8192 0
+D2
+~
+~
+0 -1 13619
+D3
+~
+~
+0 -1 13617
+D5
+~
+~
+8 13604 13641
+S
+#13619
+The tomb~
+You are standing in the south east corner of the tomb.  Small depressions in the 
+walls are filled with the remains of a long forgotten race of people.  You are 
+in awe of the work which went into the intricate carvings and perfect stone work 
+of this mass g rave.  Markings above the graves mean little - most are worn away 
+and the ones you can make out are in a strange language,  long unused...
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 13618
+D3
+~
+~
+0 -1 13616
+S
+#13620
+The Canyon wall~
+The trail leads north and south from here.  The canyon wall is east of you and 
+the forest west.  The going is easy.
+~
+0 1|1024|8192 3
+D0
+~
+~
+0 -1 13621
+D2
+~
+~
+0 -1 13614
+S
+#13621
+The end of the trail~
+You round a bend in the trail and suddenly it's gone!  Whether it is due to 
+erosion of the canyon wall or other forces of nature,  all attempts to recover 
+the trail fail.
+~
+0 1|1024|8192 3
+D2
+~
+~
+0 -1 13620
+D4
+~
+~
+0 -1 13644
+S
+#13622
+The Hidden Jungle~
+The thick jungle impedes progress along the trail but with some effort you are 
+making progress.
+~
+0 1|1024|8192 3
+D0
+~
+~
+0 -1 13624
+D1
+~
+~
+0 -1 13623
+D2
+~
+~
+0 -1 13611
+D3
+~
+~
+0 -1 13625
+S
+#13623
+The Hidden Jungle~
+The terrain is fairly flat,  but the dense jungle plants and trees make for 
+tough going.
+~
+0 1|1024|8192 3
+D0
+~
+~
+0 -1 13611
+D1
+~
+~
+0 -1 13624
+D2
+~
+~
+0 -1 13610
+D3
+~
+~
+0 -1 13622
+S
+#13624
+The Hidden Jungle~
+You seem to be making little progress in your journey.  Most of your exhertion 
+is in clearing a trail through the bush and scrub around you.
+~
+0 1|1024|8192 3
+D0
+~
+~
+0 -1 13626
+D1
+~
+~
+0 -1 13611
+D2
+~
+~
+0 -1 13622
+D3
+~
+~
+0 -1 13623
+S
+#13625
+The Hidden Jungle~
+The jungle at this point seems to be at its thickest and most dense yet.  You 
+are having a hard time making any sense of direction.
+~
+0 1|1024|8192 3
+D1
+~
+~
+0 -1 13622
+S
+#13626
+The Large Clearing~
+You are standing at the edge of a large clearing.  Ahead of you is a small hut 
+standing on a small grassy hill.  The hut is a modest affair made of dried 
+grass,  and looks lived in.
+~
+0 1|1024|8192 2
+D2
+~
+~
+0 -1 13624
+D4
+~
+~
+0 -1 13627
+S
+#13627
+The grassy hill~
+You are standing on top of the grassy hill.  The hut is on stilts,  probably to 
+keep the floor from rotting away,  and to provide added protection from 
+predators.
+~
+0 1|1024|8192 2
+D4
+~
+~
+0 -1 13628
+D5
+~
+~
+0 -1 13626
+S
+#13628
+The Hut~
+You climb up the ladder and reach the entrance of the hut.  You see a swirly 
+cloud of gas hanging in the doorway...
+~
+0 1|4|1024|2048|8192 0
+D0
+~
+~
+0 -1 13629
+D5
+~
+~
+0 -1 13627
+S
+#13629
+The entrance~
+As you pass through the entrance your body feels like it has been wrenched apart 
+and put back together again.  You feel whole but you check the tip of your nose 
+just to make sure. You are standing at the end of a corridor.  There is a solid 
+wall at your b ack.  The walls are lavishly decorated and light comes from two 
+massive chandeliers hanging from the roof.
+~
+0 1|4|1024|8192 0
+D0
+~
+~
+0 -1 13630
+S
+#13630
+The corridor~
+The corridor stretches northwards.  There is no other exit here.  You notice 
+that this place is kept in immaculate order,  there is no tarnishing or fading,  
+no sign of dust,  even the air smells fresh.  The walls around you are made of 
+some plyable texti le,  and are spotlessly clean.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 13631
+S
+#13631
+The corridor ~
+The corridor runs northwards.  You can see a dead end to the south.  There are 
+doors west and east here.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 13632
+D1
+~
+~
+1 -1 13633
+D2
+~
+~
+0 -1 13630
+D3
+~
+~
+1 -1 13638
+S
+#13632
+The end~
+You are standing at a large archway.  Within the arch a glowing purple mist 
+swirls around inside...
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 13604
+D2
+~
+~
+0 -1 13631
+D3
+~
+~
+0 -1 13642
+S
+#13633
+The Staircase.~
+You are standing at the foot of a marvellous staircase.  The bannister has been 
+carvefully carved out of the trunk of a monsterous tree and the rail has an 
+assortment of tasteful designs on it.
+~
+0 1|8|1024|8192 0
+D3
+~
+~
+1 -1 13631
+D4
+~
+~
+0 -1 13634
+S
+#13634
+The Staircase~
+You are standing at the first landing.  There is a doorway to the west.  The 
+stairs continue up or downwards.  Abstract pictures of funny splotches of paint 
+line the wall here.  You could look for hours and still not make any sense of 
+them.
+~
+0 1|8|1024|8192 0
+D3
+~
+~
+0 -1 13636
+D4
+~
+~
+0 -1 13635
+D5
+~
+~
+0 -1 13633
+S
+#13635
+The top of the stairs~
+You are standing at the top of a flight of stairs.  They spiral downwards out of 
+sight and there is a door at the end of the landing to the west.
+~
+0 1|8|1024|8192 0
+D3
+~
+~
+8 13604 13637
+D5
+~
+~
+0 -1 13634
+S
+#13636
+The master bedroom~
+You are standing in a lavish bedroom.  Tapestries line one wall while a massive 
+bookshelf lines another.  A large four poster bed is the main feature however,  
+but it is immaculately kept and is also carved out of the same wood as the 
+staircase outside.  You wonder how all this fits into such a small hut...
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+8 13602 13639
+D1
+~
+~
+0 -1 13634
+S
+#13637
+The study~
+You are standing in a large study.  There is a comfortable looking sofa sitting 
+next to a rather modest fireplace,  and a small desk and bookcase lie within 
+handy reach of each other.  A small chest sits in one corner of the room,  and 
+there is ample ligh t from a large,  glowing orb floating just beneath the 
+ceiling.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+8 13602 13635
+S
+#13638
+The kitchen~
+You are standing in a massive kitchen.  Massive in the respect that everything 
+is big - the utensils,  the pots the pans and other cooking items.  This kitchen 
+is absolutely immaculately kept.  You start to feel uneasy...
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+1 -1 13631
+D2
+~
+~
+0 -1 13640
+D3
+~
+~
+0 -1 13643
+S
+#13639
+A small laboratory~
+You are standing in a room cluttered with strange equipment.  There are sights,  
+sounds and smells of which you have never encountered before.  A bench sits in 
+the middle of the room with a large glass contraption sitting on it.  Inside it,  
+boiling liqui d flows from one large bowl through copper pipes to another glass 
+bowl.  You are at a loss to explain it...
+~
+0 1|8|1024|8192 0
+D2
+~
+~
+8 13603 13636
+S
+#13640
+The pantry~
+You are standing in a large pantry.  There are pots of spices,  herbs and other 
+sundry food items stacked neatly and orderly in well labelled jars on the 
+various shelves.
+~
+0 1|8|1024 0
+D0
+~
+~
+0 -1 13638
+S
+#13641
+The crypt~
+This large stone monolith contains the remains of someone this tribe of people 
+definately revered and worshiped.  A pile of gems lies in one corner and a stone 
+altar lies in the middle with some skeletal remains lying in state.  The 
+skeleton has been decomposing for a very long time and most of the bones have 
+crumbled into dust.
+~
+0 1|1024|8192|16384 0
+D4
+~
+~
+8 -1 13618
+D5
+~
+~
+0 -1 13650
+S
+#13642
+The dining room~
+This large room contains a massive table used for dining.  It has 12 ornate 
+chairs,  sparklingly polished silverware,  clear crystal goblets,  and delicate 
+china plates.  The walls are covered in banners denoting houses of a forgotten 
+civilization.  You a lso notice that everything here is spotlessly clean.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 13651
+D1
+~
+~
+0 -1 13632
+S
+#13643
+The wash house~
+You are standing a white panelled room.  There is a gigantic copper tub in the 
+middle of the room.  It contains some lukewarm soapy water and some rags.  Along 
+another wall there is a pile of neatly stacked dinner dishes and cooking pots.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 13638
+D5
+There is a large round hole which disappears into eerie darkness.  The grate 
+over the hole is large and heavy but does not show the slightest sign of rust or 
+corrosion.~
+Drain~
+8 13603 13627
+S
+#13644
+The eastern canyon wall~
+You are climbing up the side of the canyon wall.  You can see a ledge above your 
+head.  The valley of lush green forest stretches away covering the valley floor 
+to the other side of the canyon,  which towers skyward from somewhere underneath 
+the undergrow th.  Below you,  you can see a clearing in the jungle.
+~
+0 1024|2048|8192 5
+D4
+~
+~
+0 -1 13645
+D5
+~
+~
+0 -1 13621
+S
+#13645
+The cave mouth~
+The ledge has a small lip on which you can rest.  The view from this height is 
+staggering.  The canyon wall still towers above you,  and to the north,  the 
+valley floor widens out considerably.  Behind you to the east,  the cave 
+disappears into darkness..
+.
+~
+0 4|1024|8192 0
+D1
+~
+~
+0 -1 13646
+D5
+~
+~
+0 -1 13644
+S
+#13646
+The cave~
+The entrance to the cave provides some much needed relief from the humid heat 
+you were experiencing down below.  The air here is fresh yet dry,  and the 
+temperature much more to your liking.  To the west you can see the mouth of the 
+cave.  To the east the tunnel continues further into darkness.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 13647
+D3
+~
+~
+0 -1 13645
+S
+#13647
+The large cave~
+The cave widens out.  You can see a smaller cave off to the north,  while the 
+passage swings southwards.  This cave has a small rack with dried meat hanging 
+off it sitting near the eastern wall.  A small fireplace sits nearby with small 
+embers still glowi ng hotly,  filling the cave with warmth.
+~
+0 1|4|8|1024|8192 0
+D0
+~
+~
+0 -1 13648
+D2
+~
+~
+0 -1 13649
+D3
+~
+~
+0 -1 13646
+S
+#13648
+The sleeping cave~
+You are standing a small room.  This has been carved out of the stone and is 
+precise in it's measurements and it's engineering.  A small fireplace sits in 
+the middle of the cave,  it's glowing embers flickering shapes on the cave 
+walls,  and in the dim gl ow you can make out a modest bed lying in the corner 
+of the room.
+~
+0 1|4|8|1024|8192 0
+D2
+~
+~
+0 -1 13647
+S
+#13649
+The hermits cave~
+You are standing a large cavern.  The walls are blackened with soot and large 
+hunks of rock have been blasted out of the wall.  In the middle of this 
+geological chaos,  you see a small wooden workbench and a small stand-alone 
+shelf filled with scrolls and tomes of various descriptions.
+~
+0 1|4|8|1024|8192 0
+D0
+~
+~
+0 -1 13647
+S
+#13650
+The gate room~
+Your world folds in around you as you descend the stairs.  Your eyes clear and 
+you find yourself standing in the middle of a small room.  There are four rune 
+covered archways,  each filled with a strange swirling purple mist.
+~
+0 1|4|8|1024 0
+E
+arch archways archway arches rune runes~
+Upon further examination,  you find that the markings on the arches seem 
+strangely familiar.  You remember stories from fellow adventurers telling of 
+strange archways under the Temple of Mrinthas...~
+S
+#13651
+The drawing room~
+You are standing in a small library.  Shelves line the walls up to the ceiling.  
+There is a nice comfortable sofa and a large polished wooden table in the middle 
+of the room.  Obviously,  this was the place where the hosts entertained guests 
+before dining .  But on what?  You shiver uncomfortably as your mind races over 
+the possibilities...
+~
+0 8|1024|8192 0
+D2
+~
+~
+0 -1 13642
+S
+#0
+
+
+#RESETS
+D 1 13615 4 1			; The hidden tunnel Close Up
+D 1 13614 5 2			; The Clearing Lock Down
+D 1 13616 4 1			; The tomb Close Up
+R 1 13610 4			; Randomize The Hidden Jungle
+R 1 13611 4			; Randomize The Hidden Jungle
+R 1 13623 4			; Randomize The Hidden Jungle
+R 1 13602 4			; Randomize The great Desert
+D 1 13637 1 2			; The study Lock East
+D 1 13635 3 2			; The top of the stairs Lock West
+D 1 13639 2 2			; A small laboratory Lock South
+D 1 13636 0 2			; The master bedroom Lock North
+*
+M 1 13602 1 13609			Torba the Shaman Healer to The Valley Spring
+*
+M 1 13603 1 13611			the Giant Crocodile to The Hidden Jungle
+G 1 13603 100
+*
+M 1 13605 1 13610			the Giant Jaguar to The Hidden Jungle
+*
+M 1 13607 1 13622			the Lizardman Guard to The Hidden Jungle
+E 1 13606 100 16
+E 1 13607 100 11
+*
+M 1 13607 1 13622			the Lizardman Guard to The Hidden Jungle
+E 1 13606 100 16
+E 1 13607 100 11
+*
+M 1 13608 1 13625			the Lizardman Shaman to The Hidden Jungle
+E 1 13601 100 6
+*
+M 1 13606 1 13626			the Humanoid Gargantua to The Large Clearing
+*
+M 1 13607 1 13624			the Lizardman Guard to The Hidden Jungle
+E 1 13606 100 16
+E 1 13607 100 11
+*
+M 1 13600 1 13622			A Rhinosaurus Beetle to The Hidden Jungle
+*
+M 1 13601 1 13623			the Bulette to The Hidden Jungle
+*
+M 1 13607 1 13625			the Lizardman Guard to The Hidden Jungle
+E 1 13606 100 16
+E 1 13607 100 11
+*
+M 1 13604 1 13614			the Black Dragon to The Clearing
+O 1 13600 100 13643			a massive copper tub to The wash house
+P 1 13602 100 13600			an ornate key to container copper tub wash washing
+D 1 13643 5 2			; The wash house Lock Down
+*
+M 1 13607 1 13613			the Lizardman Guard to The Canyon wall
+E 1 13607 100 11
+E 1 13606 100 16
+D 1 13618 5 2			; The tomb Lock Down
+O 1 13605 100 13636			a desk to The study
+P 1 13604 100 13605			a polished wooden key to container desk
+*
+M 1 13609 1 13637			Kiqir the Giant Wizard  to The study
+E 1 13608 100 0
+E 1 13609 100 6
+E 1 13613 100 1
+E 1 13613 100 2
+E 1 13610 100 3
+E 1 13611 100 4
+E 1 13616 100 5
+E 1 13615 100 9
+E 1 13612 100 10
+E 1 13618 100 13
+E 1 13614 100 14
+E 1 13614 100 15
+E 1 13617 100 16
+E 1 13621 100 7
+E 1 13622 100 8
+E 1 13620 100 12
+E 1 13623 100 17
+*
+M 1 13610 1 13636			rakasha to The master bedroom
+E 1 13634 100 1				key to rakasha
+O 1 13619 100 13641			Daeron's Shield to The crypt
+*
+M 1 13611 1 13649			Jakor the Hermit to The hermits cave
+*
+M 1 13612 1 13630			the Giant Servant to The corridor
+*
+M 1 13612 1 13633			the Giant Servant to The Staircase.
+*
+M 1 13612 1 13635			the Giant Servant to The top of the stairs
+*
+M 1 13614 1 13640			the Giant Maid to The pantry
+*
+M 1 13614 1 13642			the Giant Maid to The dining room
+*
+M 1 13614 1 13651			the Giant Maid to The drawing room
+*
+M 1 13613 1 13638			the Giant Cook to The kitchen
+*
+M 1 13612 1 13638			the Giant Servant to The kitchen
+O 1 13624 100 13640			some meat to The pantry
+O 1 13624 100 13640			some meat to The pantry
+O 1 13624 100 13640			some meat to The pantry
+O 1 13625 100 13614			Rubble to The Clearing
+O 1 13626 100 13636			A fine tapestry to The master bedroom
+O 1 13626 100 13636			A fine tapestry to The master bedroom
+O 1 13626 100 13636			A fine tapestry to The master bedroom
+O 1 13626 100 13636			A fine tapestry to The master bedroom
+O 1 13627 100 13636			A Fourposter Bed to The master bedroom
+O 1 13628 100 13639			a small pile of coins to A small laboratory
+O 1 13629 100 13639			to A small laboratory
+O 1 13628 100 13641			a small pile of coins to The crypt
+O 1 13613 100 13641			kiqir's Signet Ring to The crypt
+*
+M 1 13615 1 13641			the Black Phasebeast to The crypt
+O 1 13630 100 13609			the spring to The Valley Spring
+*
+M 1 13612 1 13632			the Giant Servant to The end
+*
+M 1 13612 1 13632			the Giant Servant to The end
+*
+M 1 13616 1 13646			the Giant Red Roc to The cave
+O 1 13624 100 13647			some meat to The large cave
+O 1 13632 100 13647			A small fireplace to The large cave
+P 1 13633 100 13632			a black ring to container fire fireplace embers small
+P 1 13633 100 13632			a black ring to container fire fireplace embers small
+D 1 13631 3 1			; The corridor  Close West
+*
+M 1 13617 2 13623			the Rabid Ape to The Hidden Jungle
+*
+M 1 13617 2 13624			the Rabid Ape to The Hidden Jungle
+D 1 13641 4 1			; The crypt Close Up
+D 1 13615 5 2			; The hidden tunnel Lock Down
+D 1 13633 3 1			; The Staircase. Close West
+D 1 13631 1 1			; The corridor  Close East
+D 1 13638 1 1			; The kitchen Close East
+S
+
+
+#SPECIALS
+M  13600 spec_breath_acid			A Rhinosaurus Beetle
+M  13601 spec_poison			the Bulette
+M  13602 spec_cast_adept			Torba the Shaman Healer
+M  13604 spec_breath_acid			the Black Dragon
+M  13608 spec_cast_psionicist			the Lizardman Shaman
+M  13609 spec_cast_psionicist			Kiqir the Giant Wizard 
+M  13610 spec_cast_mage  13611 spec_cast_psionicist			Jakor the Hermit
+M  13611 spec_cast_psionicist			Jakor the Hermit
+M  13612 spec_breath_lightning			the Giant Servant
+M  13613 spec_breath_fire			the Giant Cook
+M  13614 spec_cast_psionicist			the Giant Maid
+M  13615 spec_breath_gas			the Black Phasebeast
+M  13616 spec_breath_fire			the Giant Red Roc
+M  13617 spec_poison			the Rabid Ape
+S
+
+
+#$

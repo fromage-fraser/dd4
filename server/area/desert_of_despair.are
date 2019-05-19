@@ -1,0 +1,957 @@
+#AREA	Danath~  Desert of Despair~
+-2 -2 0 100
+
+#MOBILES
+#18100
+Bedouin man warrior~
+A Bedouin man.~
+A Bedouin man walks about doing his work.
+~
+Tall and straight this man is proud and strong.  Dark skin and hooded
+cloak make his features not all that easy to make out.
+~
+64 8|32|8192|32768 0 S
+10 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18101
+woman bedouin~
+the woman~
+A Bedouin woman carry's her day's work in a large basket here.
+~
+Tough and wry this woman could keep any man going,  although her skin is dry
+from the continuosly hot sun a bit of Elizabetth Arden would see her right.
+~
+4|64|128 0 100 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#18102
+snake~
+a snake~
+A King Viper slither's accross your path.
+~
+This snake has a deadly bite to it, large dark brown markings are striped across it's back.
+~
+32|64|128 32768 -700 S
+10 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#18103
+bedouin child~
+a Bedoiun child~
+A small child is here playing with his toy sword.
+~
+Dressed in loose robes this little child could probably beat up on most kids his age.
+~
+64|128 0 400 S
+3 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18104
+asp snake~
+an asp~
+A deadly asp snake is eyeing you up for tea.
+~
+Small but deadly this snake could kill you with it's venom easy.
+~
+32|64|128 32768 -900 S
+7 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#0
+
+
+#OBJECTS
+#18100
+sword~
+a sword~
+A black hilted sword, with a jewelled pommel lies here.~
+~
+5 0 1|8192
+0~ 6~ 25~ 3~ 
+10 0 0
+A
+18 2
+A
+19 1
+#18101
+cloak~
+a small cloak with pockets~
+A small pike of brown sacklike material.~
+~
+15 64 1|1024
+100~ 1~ -1~ 11~ 
+5 0 0
+A
+13 10
+A
+12 10
+#18102
+coins gold~
+gold coins~
+Some gold has been left here.~
+~
+20 1 1
+0~ 0~ 56~ 0~ 
+5 0 0
+#18103
+chest treasure~
+a treasure chest~
+A large chest is here.~
+~
+15 0 0
+1000~ 8~ 18104~ 11~ 
+5 0 0
+#18104
+key~
+a key~
+A rabbits foot on a small ring.~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#18105
+belt leather~
+a Leather Belt~
+A Leather Belt with a shiny silver buckle lies here.~
+~
+9 0 1|2048
+4~ 1~ 6~ 11~ 
+5 0 0
+#18106
+boots~
+a pair of low heeled boots.~
+A well made pair of boots is here on the ground.~
+~
+9 0 1|64
+3~ 1~ 6~ 11~ 
+5 0 0
+#0
+
+
+#ROOMS
+#18100
+Desert~
+You arrive at the edge of a desert.  You can return west back to the
+wastelands or move north through the dunes.
+~
+0 4 10
+D1
+~
+~
+0 -1 18101
+D3
+~
+~
+0 -1 509
+S
+#18101
+Desert~
+Shifting sands are whipped up by the winds that blow gently around here.  The shape of 
+the land is constantly changing.
+~
+0 0 10
+D0
+~
+~
+0 -1 18102
+D3
+~
+~
+0 -1 18100
+S
+#18102
+Desert~
+Shifting sands are whipped up by the winds that blow gently around here.
+The shape of the land is constantly changing.
+~
+0 0 10
+D0
+~
+~
+0 -1 18103
+D2
+~
+~
+0 -1 18101
+S
+#18103
+Desert~
+Shifting sands are whipped up by the winds that blow gently around here.
+The shape of the land is constantly changing.
+~
+0 0 10
+D1
+~
+~
+0 -1 18104
+D2
+~
+~
+0 -1 18102
+S
+#18104
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D2
+~
+~
+0 -1 18105
+D3
+~
+~
+0 -1 18103
+S
+#18105
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18104
+D1
+~
+~
+0 -1 18106
+S
+#18106
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18107
+D3
+~
+~
+0 -1 18105
+S
+#18107
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18108
+D2
+~
+~
+0 -1 18106
+S
+#18108
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.  A small adobe hut has been built here, you can see
+broken furniture inside.
+~
+0 0 10
+D1
+~
+~
+0 -1 18128
+D2
+~
+~
+0 -1 18107
+D3
+~
+~
+0 -1 18109
+S
+#18109
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18110
+D1
+~
+~
+0 -1 18108
+S
+#18110
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18111
+D2
+~
+~
+0 -1 18109
+S
+#18111
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18112
+D2
+~
+~
+0 -1 18110
+S
+#18112
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18138
+D1
+~
+~
+0 -1 18113
+D2
+~
+~
+0 -1 18111
+S
+#18113
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D2
+~
+~
+0 -1 18114
+D3
+~
+~
+0 -1 18112
+S
+#18114
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18113
+D1
+~
+~
+0 -1 18115
+S
+#18115
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18116
+D3
+~
+~
+0 -1 18114
+S
+#18116
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.  In the distance you can see a small Pyramid.
+~
+0 0 10
+D0
+~
+~
+0 -1 18117
+D2
+~
+~
+0 -1 18115
+S
+#18117
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.  Not very far away is a small Pyramid.
+~
+0 0 10
+D1
+~
+~
+0 -1 18118
+D2
+~
+~
+0 -1 18116
+S
+#18118
+Pyramid in desert~
+Sand has half buried the once huge pyramid that rests before your very
+eyes. Inside lay's great treasure according to legend, but beware of evil
+spirits, that haunt the long hallways.  If only you could see the
+entrance, maybe the gods are hiding it from you.
+~
+0 0 10
+D2
+~
+~
+0 -1 18119
+D3
+~
+~
+0 -1 18117
+S
+#18119
+Desert~
+Shifting sands wash over your feet as the wind steadily erodes away the
+high dunes above you.  To the north you can make out through the haze a
+Pyramid, with huge blocks etched together.
+~
+0 0 10
+D0
+~
+~
+0 -1 18118
+D2
+~
+~
+0 -1 18120
+S
+#18120
+Desert~
+Wandering around with sand everywhere, you are dis-orientated, the land is
+made up of dunes all look the same, only the odd rock makes it seem like
+your moving at all.
+~
+0 0 10
+D0
+~
+~
+0 -1 18119
+D1
+~
+~
+0 -1 18146
+D3
+~
+~
+0 -1 18121
+S
+#18121
+Desert~
+There doesn't seem to be anyway out of this desert.  You could probably
+wander around here for 40 years and never see the exits.  Your thirst
+becomes a major priority here. You could kill for a cool drink of water.
+~
+0 0 10
+D1
+~
+~
+0 -1 18120
+D3
+~
+~
+0 -1 18122
+S
+#18122
+Desert~
+You stumble as your feet tough a soft patch of sand, the heat of this
+place is astounding. Can anything live here?  To the south as you look
+around you can just make out a Bedouin camp.
+~
+0 0 10
+D1
+~
+~
+0 -1 18121
+D2
+~
+~
+0 -1 18123
+S
+#18123
+Outside a Bedouin camp~
+Immediately to the south is a large Bedouin camp.  Water is available
+there, and maybe something to eat.  Sand puffs up from your feet as you
+walk.
+~
+0 0 10
+D0
+~
+~
+0 -1 18122
+D2
+~
+~
+0 -1 18124
+S
+#18124
+Bedouin camp~
+This is a Tent village basically sort of a main street will tents off to
+either side, all carry weapons as intruders are common here.  You check to
+make sure your wallet is still with you.
+~
+0 0 10
+D0
+~
+~
+0 -1 18123
+D1
+~
+~
+0 -1 18125
+S
+#18125
+Bedouin camp~
+To the north you see a woman preparing food, the food is basic but
+nourishing, to the south is and oasis with cool running water and palm
+trees hanging to provide shelter from the beating sun.
+~
+0 0 10
+D0
+~
+~
+0 -1 18129
+D1
+~
+~
+0 -1 18126
+D2
+~
+~
+0 -1 18130
+D3
+~
+~
+0 -1 18124
+S
+#18126
+Bedouin camp~
+People brush past as they go about their business.  Although you are a
+stranger you are treated with respect.  The street goes North and West
+from here, with the edge of the camp leading off into the desert.
+~
+0 0 10
+D0
+~
+~
+0 -1 18127
+D3
+~
+~
+0 -1 18125
+S
+#18127
+Edge of a Bedouin camp~
+Just outside a small Bedouin camp you look and see quite a few people
+wandering about, the shade of the tent's looks like a welcome relief from
+the hot sun.  The smell of camel dug hangs in the air, what have you stood
+in?
+~
+0 0 10
+D0
+~
+~
+0 -1 18131
+D2
+~
+~
+0 -1 18126
+S
+#18128
+Adobe hut~
+This is a one room hut made of adobe.  Furniture once used long ago lies
+discarded here, a broken table and chairs.  With old shelves that once
+contained food.
+~
+0 0 1
+D3
+~
+~
+0 -1 18108
+S
+#18129
+Bedouin tent~
+You stand quietly as you watch the Bedouin woman cook waiting patiently
+for her to finish.  The noise from the street behind you is quite loud as
+there are lot's of people for such a small camp.
+~
+0 0 10
+D2
+~
+~
+0 -1 18125
+S
+#18130
+Oasis~
+Shade, aaahh the sun beating down mercilessly gives you a pounding
+headache, with the palm tree's overhead you sit down and relax, cool water
+gushes over your feet as you slip them into the spring.
+~
+0 0 10
+D0
+~
+~
+0 -1 18125
+D5
+~
+~
+1 -1 18140
+S
+#18131
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D0
+~
+~
+0 -1 18132
+D2
+~
+~
+0 -1 18127
+S
+#18132
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D0
+~
+~
+0 -1 18133
+D2
+~
+~
+0 -1 18131
+S
+#18133
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D1
+~
+~
+0 -1 18134
+D2
+~
+~
+0 -1 18132
+D3
+~
+~
+0 -1 18144
+S
+#18134
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D1
+~
+~
+0 -1 18135
+D3
+~
+~
+0 -1 18133
+S
+#18135
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D0
+~
+~
+0 -1 18136
+D3
+~
+~
+0 -1 18134
+S
+#18136
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D1
+~
+~
+0 -1 18137
+D2
+~
+~
+0 -1 18135
+S
+#18137
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 4 10
+D0
+~
+~
+0 -1 13600
+D3
+~
+~
+0 -1 18136
+S
+#18138
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 1
+D1
+~
+~
+0 -1 18142
+D2
+~
+~
+0 -1 18112
+D3
+~
+~
+0 -1 18139
+S
+#18139
+Break in the sand dunes~
+The size of the sand dunes, and the severity of the winds lessen the
+further you head north.  Soon you have reached the edge of the desert;
+grim, deserted plains spread north.  You can head northwards into the
+plains along a small overgrown trail, or head east back into the sand.
+~
+0 0 1
+D0
+~
+~
+0 -1 8800
+D1
+~
+~
+0 -1 18138
+S
+#18140
+Secret pool~
+Above you is an Oasis pool.  You look around and absorb the surroundings,
+a small tunnel is carved into the solid Rock beneath the Desert.
+~
+0 0 0
+D1
+~
+~
+0 -1 18141
+D4
+~
+~
+0 -1 18130
+S
+#18141
+Secret~
+Treasure!  Money, Gold, Gems, your hopes soar as you see sparkling
+treasures mount up around the walls.  A large chest is up against the
+wall.
+~
+0 0 0
+D3
+~
+~
+0 -1 18140
+S
+#18142
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D2
+~
+~
+0 -1 18143
+D3
+~
+~
+0 -1 18138
+S
+#18143
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in its way.  Small pockets
+of soft sand slow your passage here. Strewn rocks litter the landscape. You 
+see an opening in the rocks to the south.
+~
+0 0 10
+D0
+~
+~
+0 -1 18142
+D2
+~
+~
+0 -1 450
+S
+#18144
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D1
+~
+~
+0 -1 18133
+D2
+~
+~
+0 -1 18145
+S
+#18145
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D0
+~
+~
+0 -1 18144
+S
+#18146
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D2
+~
+~
+0 -1 18147
+D3
+~
+~
+0 -1 18120
+S
+#18147
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D0
+~
+~
+0 -1 18146
+D3
+~
+~
+0 -1 18148
+S
+#18148
+Desert~
+Wind howls as it sweeps across the giant sand dunes above you, down the
+long slopes shifting and moving the land shape in it's way.  Small pockets
+of soft sand slow your passage here.
+~
+0 0 10
+D1
+~
+~
+0 -1 18147
+S
+#0
+
+
+#RESETS
+D 1 18130 5 1			; Oasis. Close Down
+O 1 18103 100 18141			a treasure chest to Secret.
+P 1 18102 100 18103			gold coins to container chest treasure
+P 1 18102 100 18103			gold coins to container chest treasure
+*
+M 1 18100 6 18124			A Bedouin man. to Bedouin camp.
+E 1 18106 100 8
+E 1 18105 100 13
+E 1 18100 100 16
+*
+M 1 18101 4 18126			the woman to Bedouin camp.
+*
+M 1 18103 5 18125			a Bedoiun child to Bedouin camp.
+*
+M 1 18102 5 18119			a snake to Desert.
+*
+M 1 18104 8 18144			an asp to Desert.
+S
+
+
+#SPECIALS
+M  18100 spec_warrior			A Bedouin man.
+M  18102 spec_poison			a snake
+M  18104 spec_poison			an asp
+S
+
+
+#$

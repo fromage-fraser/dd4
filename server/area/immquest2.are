@@ -1,0 +1,1445 @@
+#AREA Samxin~ Immquest 2~
+0 100 0 100
+
+#AREA_SPECIAL
+no_quest hidden
+$
+
+#HELPS
+101 MOBQUEST~
+A trapper in the Plains of the South will accept skins/other such things from 
+special quest mobs. To activate the quest GOTO room 755 and say "Start a mob 
+quest.". The mob will then enter the portal and randomly choose mobs to load 
+to random rooms. He'll scatter 10 mobs at a time. He'll hand out tokens/pieces
+along with money as rewards. To see what each token/pieces is redeemable for 
+see: {WHELP IMMQUEST{x
+~
+0 $~
+
+#MOBILES
+#755
+Mob scatterer~
+the Mob Scatterer~
+The Mob Scatterer wants to scatter some mobs around.
+~
+To scatter mobs say "Start a mob quest.".
+~
+2|64|512|65536 8|32|512 0 S
+1 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+>speech_prog p Start a mob quest.~
+if rand(10)
+enter portal
+mpmload 756
+mpoload 754 1
+give skin morque
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 757
+mpoload 755 1
+give skin Falcor
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 758
+mpoload 756 1
+give soul roldin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 770
+mpoload 757 1
+give head pigmy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 759
+mpoload 758 1
+give foot chup
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 760
+mpoload 759 1
+give curls jeremy
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 761
+mpoload 760 1
+give brass erin
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 762
+mpoload 761 1
+give heart chel
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 763
+mpoload 762 1
+give head shil
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 764
+mpoload 763 1
+give bone golem
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 765
+mpoload 764 1
+give vial heather
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 766
+mpoload 765 1
+give clothes boggart
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 767
+mpoload 766 1
+give wing cock
+mpgoto 755
+else
+if rand(10)
+enter portal
+mpmload 768
+mpoload 767 1
+give teeth Hru
+mpgoto 755
+else
+enter portal
+mpmload 769
+mpoload 768 1
+give shit cretin
+mpgoto 755
+endif
+~
+|
+
+#756
+Morque~
+the Morque~
+{dThe Morque wants to rip your heart out.{x
+~
+It's {ddark{x with huge teeth.{x
+~
+0 8|32|512 0 S
+10 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#757
+Falcor~
+Falcor~
+{MFalcor buzzes you before flying off.{x
+~
+It's {Mpink{x. And a Dragon.
+~
+0 8|32|512 0 S
+20 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#758
+Roldin imaginary friend~
+Roldin the imaginary friend~
+{BRoldin the imaginary friend tries to strangle you.{x
+~
+You can't see him, he's not real.
+~
+0 8|32|512 0 S
+30 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#759
+chupacabra~
+a chupacabra~
+{GA chupacabra steals your breath.{x
+~
+He's really small and dangerous.
+~
+0 8|32|512 0 S
+50 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#760
+Jeremy incubus~
+Jeremy the incubus~
+{CJeremy the incubus lures you with promises.{x
+~
+He's breath-taking and deadly.
+~
+0 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#761
+Erinyes~
+an Erinyes~
+{MAn Erinyes claws at you.x
+~
+It's brass wings and sharp claws are the stuff of nightmares.
+~
+0 8|32|512 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#762
+Chelsea succubus~
+Chelsea the succubus~
+{YChelsea the succubus seduces you with ease.{x
+~
+She's very alluring.
+~
+0 8|32|512 0 S
+80 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#763
+Shiloh Siren~
+Shiloh the siren~
+{GShiloh the siren sings to you.{x
+~
+Her song works its way into your mind.
+~
+0 8|32|512 0 S
+90 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#764
+Bone Golem~
+a Bone Golem~
+{WA Bone Golem lumbers toward you.{x
+~
+It's large and deadly.
+~
+0 8|32|512 0 S
+100 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#765
+Heather banshee~
+Heather the banshee~
+{BHeather the banshee laughs at you.{x
+~
+Her voice is like needles.
+~
+0 8|32|512 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#766
+Boggart~
+A boggart~
+{GA boggart bobs around.{x
+~
+It changes forms as it sifts through your fears.
+~
+0 8|32|512 0 S
+5 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#767
+cockatrice~
+cockatrice~
+{RA cockatrice stares at you.{x
+~
+It's snake-like with wings.
+~
+0 8|32|512 0 S
+75 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#768
+hrulgin~
+hrulgin~
+{RA hrulgin tears at you.{x
+~
+A deadly flesh eating horse.
+~
+0 8|32|512 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#769
+Cretin~
+Cretin~
+{YCretin spouts off some nonsense.{x
+~
+He gibbers on about total nonsense and sounds like an utter fool.
+~
+0 8|32|512 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#770
+pigmy~
+a Pigmy~
+{RA pigmy tries to cut you up.{x
+~
+He's really small and dangerous.
+~
+0 8|32|512 0 S
+40 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+#0
+
+#OBJECTS
+#754
+morque skin~
+Morque's skin~
+Morque's skin has been ripped off his corpse.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#755
+Falcor skin~
+Falcor's skin~
+Falcor's skin has been ripped off his corpse.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#756
+Roldin soul~
+Roldin's soul~
+Roldin's soul has been torn from his non existing body.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#757
+pigmy head~
+a pigmy head~
+A pigmy's head spins around here.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#758
+chupacabra foot~
+a chupacabra's foot~
+A chupacabra's foot wiggles along.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#759
+jeremy blonde curls~
+Jeremy's blonde curls~
+Someone has scalped Jeremy and taken his blonde curls.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#760
+Erinyes brass wing~
+An Erinyes' brass wing~
+An Erinyes' brass wing clatters to the ground.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#761
+Chelsea black heart~
+Chelsea's black heart~
+Chelsea's black heart beats here.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#762
+Shiloh pretty little head~
+Shiloh's pretty little head~
+Shiloh's pretty little head rolls across the ground.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#763
+bone golem~
+a bone from a bone golem~
+A bone from a bone golem rattles on the ground.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#764
+voice vial~
+Heater's voice in a vial~
+Heater's voice is contained in this vial.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#765
+boggarts clothes~
+the boggart's clothes~
+The boggart's clothes smolder slightly.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#766
+cockatrice wings~
+the wings of the cockatrice~
+The wings of a the cockatrice flap slightly.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#767
+hrulgin teeth~
+a set of hruligin teeth~
+A set of Hruligin teeth have been torn out and thrown here.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#768
+Cretin pile shit~
+a pile of shit from Cretin~
+Cretin is so full of shit it's spilled out onto the ground.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#769
+quest mob light~
+the quest mobs light~
+it lights the way!~
+~
+1 1 1
+~ ~ -1~ ~
+1 0 0
+
+#770
+The Quest Portal~
+Where Will it GO?~
+The Quest Portal hangs in the air.~
+~
+33 1 0
+855~ 55859~ 0~ 100~
+100 0 0
+#0
+
+#ROOMS
+#755
+Mob Quest~
+The Mob Scatterer Mob sits in here until ordered to scatter mobs around the
+Domain for players to slaughter.
+~
+0 8 0
+S
+#0
+
+#RESETS
+M 0 755 1 755                   add the Mob Scatterer to Mob Quest
+E 0 769 0 0                         equip the quest mobs light (light)
+I 770 1 755 1                   Where Will it GO? to Mob Quest
+S
+
+#$

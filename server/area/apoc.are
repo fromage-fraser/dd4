@@ -1,0 +1,1906 @@
+#AREA	Steihl~  Apocalypse Now~
+55 100 0 100
+
+#MOBILES
+#5600
+Famine~
+Famine~
+A skeletal man is roaming the land.
+~
+Skin is stretched so tight over the frame of this tall man that you
+can count every bone in his body.  His eyes seem lifeless and are
+sunk deep within his skull.  Tattered and torn remnants of clothing
+hangs over his matchstick-like body.  You find yourself growing
+hungry as you stand near this starving man.
+~
+4|32|64 2|8|32|128|512|32768|65536 0 S
+85 0 0 0d0+0 0d0+0
+16|32|256 0
+8 8 1
+#5601
+War~
+War~
+A muscular woman is slaying all in her path.
+~
+Clad in armour the colour of freshly spilled blood, War quickly
+deals death to all who get in her way.  Large spikes cover her
+armour, perfect for impaling her enemies upon.  Even under her
+armour, you know that many a man would kill for muscles with her
+strength, and that any man would do anything for a woman of such
+beauty.  Her fiery red hair twirls about her body as she dances her
+ballet of death and destruction.  Finally, it is your turn.
+~
+4|32|64 2|8|32|128|512|32768|65536 0 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#5602
+Death~
+Death~
+Death himself stands before you collecting souls.
+~
+Few have ever seen the face of Death and lived.  Skeletal hands
+stick out of his long black robe.  Within the darkness of the cowl,
+two glowing red eyes stare back at you, peering deep within your
+soul and judging its worth.  His mere presence causes the hair on
+the back of your neck to stand on end and sends a chill down your
+spine.  Swift and strong, Death raises his scythe and prepares to
+take his next soul...YOURS!!!!
+~
+4|32|64 2|8|32|128|512|32768|65536 0 S
+100 0 0 0d0+0 0d0+0
+96 0
+8 8 1
+#5603
+Pestilence~
+Pestilence~
+A cloud of buzzing flies and gnats poisons all in his path.
+~
+From deep within the cloud of buzzing insects, you think that you
+can make out the dark shape of a man.  Two black eyes stare at you
+from the cloud.  Sweat begins to pour down your face, and you feel
+flushed and fevered as Pestilence approaches.  Bugs are flying
+everywhere, and once they are whipped into a frenzy, they attack
+viciously.
+~
+4|32|64 2|8|32|128|512|32768|65536 0 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#5604
+starving man~
+the starving man~
+A bone thin man is searching for food.
+~
+Ever since Famine came to the land, this man has spent all his days
+searching for even the tiniest scrap of food or drop of clear
+water.  Driven crazy by starvation, he wanders the fields
+endlessly.  At last he has spied some food.  Attacking, he hopes to
+make you his next meal.
+~
+4|32|64 8|32|512 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#5605
+rat rats~
+the pestilence filled rats~
+A large rat is spreading disease.
+~
+Unnatural red eyes sit atop the head of this amazingly large rat. 
+Brought forth by Pestilence, this is no ordinary rodent.  It
+spreads disease to all it touches.  Spying you, it decides that you
+would make a nice carrier for its pestilence.
+~
+4|32|64 8|32|512 0 S
+65 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#5606
+soldier wounded man~
+the wounded soldier~
+A wounded soldier is mourning his comrades in arms.
+~
+Despair has filled the eyes of this wounded soldier.  Many long
+battles has he fought, and this appears to be his last.  War has
+taken all that he ever held dear, and now, he has decided to throw
+caution to the wind and kill everything in his path until someone
+or something stops him.  Raising his sword in a bloody arm, he
+salutes you, and then runs to the attack screaming a fierce battle
+cry.
+~
+4|32|64 8|32|512 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#5607
+ghost spirit apparition~
+the ghost~
+A transparent ghost is haunting the graveyard.
+~
+Empty eyes stare at you as you wander through the graveyard.  The
+soul of this poor ghost has no rest.  It searches for one who can
+put it at rest and end its misery.  Hoping that you are the one,
+the ghost wails a sorrowful cry and attacks.
+~
+4|32|64 8|32|512|1048576 0 S
+75 0 0 0d0+0 0d0+0
+96 0
+8 8 1
+#5608
+horse white~
+The Horse of Death~
+A huge white horse is snorting at you.
+~
+This huge white steed belongs to Death.  He is a fierce and
+formidable foe, and can crush you with the slightest of effort. 
+With each breath he takes, fire and smoke leak from his nostrils,
+matching the fire that surrounds his feet.  Turning his head in
+your direction, he snorts and charges at you.
+~
+4|32|64 2|8|32|512|32768|65536 0 S
+95 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#5609
+horse red~
+The Horse of War~
+A huge red horse is snorting at you.
+~
+This huge red steed belongs to War.  He is a fierce and formidable
+foe, and can crush you with the slightest of effort.  With each
+breath he takes, fire and smoke leak from his nostrils, matching
+the fire that surrounds his feet.  Turning his head in your
+direction, he snorts and charges at you.
+~
+4|32|64 2|8|32|512|32768|65536 0 S
+90 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#5610
+horse brown~
+The Horse of Famine~
+A huge brown horse is snorting at you.
+~
+This huge brown steed belongs to Famine.  He is a fierce and
+formidable foe, and can crush you with the slightest of effort. 
+With each breath he takes, fire and smoke leak from his nostrils,
+matching the fire that surrounds his feet.  Turning his head in
+your direction, he snorts and charges at you.
+~
+4|32|64 2|8|32|512|32768|65536 0 S
+80 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#5611
+horse green~
+The Horse of Pestilence~
+A huge green horse is snorting at you.
+~
+This huge green steed belongs to Pestilence.  He is a fierce and
+formidable foe, and can crush you with the slightest of effort. 
+With each breath he takes, fire and smoke leak from his nostrils,
+matching the fire that surrounds his feet.  Turning his head in
+your direction, he snorts and charges at you.
+~
+4|32|64 2|8|32|512|32768|65536 0 S
+85 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#0
+
+
+#OBJECTS
+#5600
+boots barren famine~
+the Barren Boots of Famine~
+The ground withers beneath a pair of boots.~
+~
+9 32|64|4096 1|64
+15~ 1~ 6~ 11~ 
+13 0 0
+A
+19 10
+A
+5 -10
+#5601
+war armour armor bloody~
+the Bloody Armour of War~
+A bloody red breastplate with spikes on it is lying here.~
+~
+9 32|64|4096 1|8
+18~ 1~ 6~ 11~ 
+200 0 0
+A
+19 10
+A
+18 6
+A
+1 5
+#5602
+diseased gloves pestilence~
+the Diseased Gloves of Pestilence~
+A pair of gloves crawling with insects and disease lies here.~
+~
+9 32|64|4096 1|128
+15~ 1~ 6~ 11~ 
+10 0 0
+A
+1 -5
+A
+5 -5
+A
+19 5
+#5603
+robe black death~
+the Black Robe of Death~
+A black robe reeking of death is piled in the corner.~
+~
+9 32|64|4096 1|1024
+18~ 1~ 6~ 11~ 
+50 0 0
+A
+12 1000
+A
+13 150
+A
+19 10
+A
+1 -4
+A
+5 -7
+A
+9 100
+#5604
+scythe death~
+the Scythe of Death~
+A scythe radiating cold stands in the corner.~
+~
+5 64|128|4096 1|8192
+0~ 85~ 100~ 1~ 
+30 0 0
+A
+5 -5
+A
+19 6
+#5605
+sword war~
+the Bloody Sword of War~
+An enormous sword covered with blood is stuck in the ground.~
+~
+5 64|128|4096 1|8192
+0~ 85~ 100~ 3~ 
+30 0 0
+A
+19 9
+A
+18 9
+#5606
+sword~
+a sword~
+A sword rests here.~
+~
+5 0 1|8192
+0~ 50~ 70~ 3~ 
+5 0 0
+#5607
+key dirty~
+a dirty key~
+A dirty key rests here.~
+~
+18 32 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#5608
+belt apocalypse~
+the Belt of the Apocalypse~
+A belt of four colours swirling together lies here.~
+~
+9 32|64|4096 1|2048
+20~ 1~ 6~ 11~ 
+14 0 0
+A
+18 5
+A
+19 5
+A
+12 500
+A
+13 150
+#5609
+robe black death~
+the Black Robe of Death~
+A black robe reeking of death is piled in the corner.~
+~
+9 32|64|4096 1|1024
+18~ 1~ 6~ 11~ 
+50 0 0
+A
+12 500
+A
+13 150
+A
+19 10
+A
+1 -4
+A
+5 -7
+A
+9 100
+#5610
+belt apocalypse~
+the Belt of the Apocalypse~
+A belt of four colours swirling together lies here.~
+~
+9 32|64|4096 1|2048
+20~ 1~ 6~ 11~ 
+14 0 0
+A
+18 5
+A
+19 5
+A
+12 500
+A
+13 150
+#0
+
+
+#ROOMS
+#5600
+Standing before the mists.~
+A strange grey mist glows with an unearthly light.  A
+foreboding sense of doom seems to seep out of the mist.
+You have a strange feeling that the end of the world is
+near.  You can enter the mists to the east, or return to
+safety by going west.
+~
+0 1|4 2
+D1
+~
+~
+0 -1 5601
+D3
+~
+~
+0 -1 18846
+S
+#5601
+In the mists.~
+You are completely surrounded by a strange grey mist.
+An eerie silence seems to have fallen over the world.
+From out of nowhere, a shadowy figure appears carrying
+a sign over his shoulder.  Stopping, he pounds the sign
+into the mushy ground at your feet.  Then, just as
+suddenly as he appeared, he vanishes back into the mist.
+Perhaps you should read the sign.
+~
+0 1 2
+D1
+~
+~
+0 -1 5602
+D3
+~
+~
+0 -1 5600
+E
+sign~
+The end of the world as we know it is near!
+Beware!  The trial ahead of you is not for
+the weak of heart nor the low of level.  Once
+you begin your quest, there will be very few
+options to return!
+~
+S
+#5602
+Before the brown door.~
+A sturdy brown door rises to the east.  From behind it,
+you can only hear the cries of starving children.  Famine
+has struck the village that used to prosper where now
+there is only a door in a wall.  Prepare yourself for the
+battle of a lifetime.
+~
+0 1 2
+D1
+A sturdy brown door stands to the east.
+~
+~
+8 5607 5604
+D3
+~
+~
+0 -1 5601
+S
+#5603
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5604
+D1
+~
+~
+0 -1 5606
+D2
+~
+~
+0 -1 5611
+D3
+~
+~
+0 -1 5608
+S
+#5604
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5605
+D1
+~
+~
+0 -1 5607
+D2
+~
+~
+0 -1 5603
+D3
+~
+~
+0 -1 5610
+S
+#5605
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5612
+D1
+~
+~
+0 -1 5608
+D2
+~
+~
+0 -1 5604
+D3
+~
+~
+0 -1 5609
+S
+#5606
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5607
+D1
+~
+~
+0 -1 5609
+D2
+~
+~
+0 -1 5614
+D3
+~
+~
+0 -1 5603
+S
+#5607
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5608
+D1
+~
+~
+0 -1 5610
+D2
+~
+~
+0 -1 5606
+D3
+~
+~
+0 -1 5604
+S
+#5608
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5609
+D1
+~
+~
+0 -1 5611
+D2
+~
+~
+0 -1 5607
+D3
+~
+~
+0 -1 5605
+S
+#5609
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5610
+D1
+~
+~
+0 -1 5612
+D2
+~
+~
+0 -1 5605
+D3
+~
+~
+0 -1 5606
+S
+#5610
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5611
+D1
+~
+~
+0 -1 5613
+D2
+~
+~
+0 -1 5609
+D3
+~
+~
+0 -1 5607
+S
+#5611
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5606
+D1
+~
+~
+0 -1 5614
+D2
+~
+~
+0 -1 5610
+D3
+~
+~
+0 -1 5608
+S
+#5612
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5613
+D1
+~
+~
+0 -1 5611
+D2
+~
+~
+0 -1 5608
+D3
+~
+~
+0 -1 5609
+S
+#5613
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5614
+D1
+A putrid green door stands to the south.
+~
+~
+8 5600 5615
+D2
+~
+~
+0 -1 5612
+D3
+~
+~
+0 -1 5610
+S
+#5614
+The Famished Lands.~
+You are standing in an enormous field stretching as far
+as the eye can see.  But no grain grows in these fields.
+The barren land that lies beneath your feet is dry and
+cracked.  So poisoned is the land here that not even
+weeds can grow.  All about you, skeletons of starved
+people can be seen.  Famine has struck the land, and
+life may never again prosper here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5603
+D1
+~
+~
+0 -1 5606
+D2
+~
+~
+0 -1 5613
+D3
+~
+~
+0 -1 5611
+S
+#5615
+Before the green mist.~
+A putrid green mist lies east of here.  The smell of a
+disease filled city pours from the mist, and you hope
+that you do not catch anything.  Rest here for awhile
+before continuing on, or return to a doomed world now
+while you still can.
+~
+0 1|4 2
+D1
+~
+~
+0 -1 5616
+D3
+~
+~
+0 -1 -1
+S
+#5616
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5627
+D1
+~
+~
+0 -1 5617
+D2
+~
+~
+0 -1 5619
+D3
+~
+~
+0 -1 5621
+S
+#5617
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5623
+D1
+~
+~
+0 -1 5618
+D2
+~
+~
+0 -1 5620
+D3
+~
+~
+0 -1 5616
+S
+#5618
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5622
+D1
+~
+~
+0 -1 5625
+D2
+~
+~
+0 -1 5621
+D3
+~
+~
+0 -1 5617
+S
+#5619
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5616
+D1
+~
+~
+0 -1 5620
+D2
+~
+~
+0 -1 5622
+D3
+~
+~
+0 -1 5618
+S
+#5620
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5617
+D1
+~
+~
+0 -1 5621
+D2
+~
+~
+0 -1 5623
+D3
+~
+~
+0 -1 5619
+S
+#5621
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5618
+D1
+~
+~
+0 -1 5625
+D2
+~
+~
+0 -1 5624
+D3
+~
+~
+0 -1 5620
+S
+#5622
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5619
+D1
+~
+~
+0 -1 5623
+D2
+~
+~
+0 -1 5625
+D3
+~
+~
+0 -1 5627
+S
+#5623
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5620
+D1
+~
+~
+0 -1 5624
+D2
+~
+~
+0 -1 5626
+D3
+~
+~
+0 -1 5622
+S
+#5624
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5621
+D1
+~
+~
+0 -1 5616
+D2
+~
+~
+0 -1 5627
+D3
+~
+~
+0 -1 5623
+S
+#5625
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5622
+D1
+~
+~
+0 -1 5626
+D2
+~
+~
+0 -1 5621
+D3
+~
+~
+0 -1 5624
+S
+#5626
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5623
+D1
+~
+~
+0 -1 5627
+D2
+A door the colour of blood stands to the south.
+~
+red~
+8 5602 5628
+D3
+~
+~
+0 -1 5625
+S
+#5627
+The City of Pestilence.~
+The streets of this city are mostly devoid of people.
+Disease and death have taken almost everyone.  The only
+sounds that you can hear are those of disease carrying
+rats and people wailing in pain due to the sickness
+brought about by Pestilence and his rats.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5624
+D1
+~
+~
+0 -1 5619
+D2
+~
+~
+0 -1 5622
+D3
+~
+~
+0 -1 5626
+S
+#5628
+Before the red mists.~
+You have reached a safe spot in your journey.  A red mist
+blocks view of what lies to the east.  From deep within
+the mists, you hear the sounds of a raging battle.  Now
+is your last chance for awhile to turn back.  War awaits
+you in the plains ahead.
+~
+0 1|4 2
+D1
+~
+~
+0 -1 5629
+S
+#5629
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5640
+D1
+~
+~
+0 -1 5632
+D2
+~
+~
+0 -1 5630
+D3
+~
+~
+0 -1 5634
+S
+#5630
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5629
+D1
+~
+~
+0 -1 5633
+D2
+~
+~
+0 -1 5631
+D3
+~
+~
+0 -1 5635
+S
+#5631
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5630
+D1
+~
+~
+0 -1 5634
+D2
+~
+~
+0 -1 5638
+D3
+~
+~
+0 -1 5632
+S
+#5632
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5640
+D1
+~
+~
+0 -1 5635
+D2
+~
+~
+0 -1 5633
+D3
+~
+~
+0 -1 5629
+S
+#5633
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5632
+D1
+~
+~
+0 -1 5636
+D2
+~
+~
+0 -1 5634
+D3
+~
+~
+0 -1 5630
+S
+#5634
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5633
+D1
+~
+~
+0 -1 5637
+D2
+~
+~
+0 -1 5635
+D3
+~
+~
+0 -1 5631
+S
+#5635
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5638
+D1
+~
+~
+0 -1 5638
+D2
+~
+~
+0 -1 5636
+D3
+~
+~
+0 -1 5632
+S
+#5636
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5635
+D1
+~
+~
+0 -1 5639
+D2
+~
+~
+0 -1 5637
+D3
+~
+~
+0 -1 5633
+S
+#5637
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5636
+D1
+~
+~
+0 -1 5640
+D2
+~
+~
+0 -1 5632
+D3
+~
+~
+0 -1 5634
+S
+#5638
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5630
+D1
+~
+~
+0 -1 5631
+D2
+~
+~
+0 -1 5639
+D3
+~
+~
+0 -1 5635
+S
+#5639
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5638
+D1
+A door as black as the darkest night stands to the east.
+~
+black~
+8 5601 5641
+D2
+~
+~
+0 -1 5640
+D3
+~
+~
+0 -1 5636
+S
+#5640
+The Plains of War.~
+You are standing in what appears to be a huge field of
+battle.  The ground itself seems to bleed with the blood
+of many thousands.  Broken arrows, shattered swords, and
+dented shields litter the plains.  Corpses lie piled all
+around you.  Blood is still flowing from their lifeless
+bodies.  The sounds of battle fill the air.  Peace will
+never reign here.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5639
+D1
+~
+~
+0 -1 5632
+D2
+~
+~
+0 -1 5630
+D3
+~
+~
+0 -1 5637
+S
+#5641
+Before the black mist.~
+You have reached a safe spot in your journey.  A thick
+black mist blocks your view north.  The smell of death
+and decay eminates from the mist.  Rest here while you
+can, turn back if you will, go forward if you dare.
+Death awaits.
+~
+0 1|4 2
+D0
+~
+~
+0 -1 5642
+S
+#5642
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5645
+D1
+~
+~
+0 -1 5643
+D2
+~
+~
+0 -1 5646
+D3
+~
+~
+0 -1 5653
+S
+#5643
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5646
+D1
+~
+~
+0 -1 5644
+D2
+~
+~
+0 -1 5650
+D3
+~
+~
+0 -1 5642
+S
+#5644
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5647
+D1
+~
+~
+0 -1 5651
+D2
+~
+~
+0 -1 5645
+D3
+~
+~
+0 -1 5643
+S
+#5645
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5648
+D1
+~
+~
+0 -1 5646
+D2
+~
+~
+0 -1 5642
+D3
+~
+~
+0 -1 5650
+S
+#5646
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5649
+D1
+~
+~
+0 -1 5647
+D2
+~
+~
+0 -1 5643
+D3
+~
+~
+0 -1 5645
+S
+#5647
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5650
+D1
+~
+~
+0 -1 5648
+D2
+~
+~
+0 -1 5644
+D3
+~
+~
+0 -1 5646
+S
+#5648
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5651
+D1
+~
+~
+0 -1 5649
+D2
+~
+~
+0 -1 5645
+D3
+~
+~
+0 -1 5647
+S
+#5649
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5652
+D1
+~
+~
+0 -1 5650
+D2
+~
+~
+0 -1 5646
+D3
+~
+~
+0 -1 5648
+S
+#5650
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5653
+D1
+~
+~
+0 -1 5645
+D2
+~
+~
+0 -1 5647
+D3
+~
+~
+0 -1 5649
+S
+#5651
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5647
+D1
+~
+~
+0 -1 5652
+D2
+~
+~
+0 -1 5648
+D3
+~
+~
+0 -1 5644
+S
+#5652
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+A bright black door stands to the north.
+~
+black~
+8 5609 5654
+D1
+~
+~
+0 -1 5653
+D2
+~
+~
+0 -1 5649
+D3
+~
+~
+0 -1 5651
+S
+#5653
+The Cemetary of Death.~
+Graves and mausoleums rise all around the landscape.  The
+names of those who have gone before you are chiseled into
+the cold stones.  A chill breeze blows from the east
+causing a shiver to run down your spine.  A strange howl
+can be heard in the distance, and it seems as if Death
+himself is breathing down your neck.  So close does he
+feel that you almost feel the prick of his icy scythe on
+your neck.
+~
+0 1|8192 2
+D0
+~
+~
+0 -1 5648
+D1
+~
+~
+0 -1 5642
+D2
+~
+~
+0 -1 5650
+D3
+~
+~
+0 -1 5652
+S
+#5654
+The End of it All.~
+This is the end.  Your fearless efforts have saved the day...for
+now.  The horseman shall return sometime, and with them, the
+destruction of the world.  Unless some brave adventurers like
+yourself can stop them.  Claim your prize, go home, and rest.  You
+deserve it.
+~
+0 1|4 2
+S
+#0
+
+
+#RESETS
+D 1 5602 1 2            ; Before the brown mists. Lock East
+D 1 5613 1 2            ; A room Lock East
+D 1 5626 2 2            ; A room Lock South
+D 1 5639 1 2            ; A room Lock East
+O 1 5607 100 5601            a dirty key to In the mists.
+*
+*
+M 1 5604 10 5603             the starving man to The Famished 
+*Lands.
+*
+M 1 5604 10 5604             the starving man to A room
+*
+M 1 5604 10 5606             the starving man to A room
+*
+M 1 5604 10 5608             the starving man to A room
+*
+M 1 5604 1 5610              the starving man to A room
+*
+M 1 5610 1 5613              The Horse of Famine to A room
+*
+M 1 5600 1 5613              Famine to A room
+E 1 5600 100 8
+*
+M 1 5605 10 5616             the pestilence filled rats to The 
+*City of Pestilence.
+*
+M 1 5605 10 5618             the pestilence filled rats to A room
+*
+M 1 5605 10 5620             the pestilence filled rats to A room
+*
+M 1 5605 10 5622             the pestilence filled rats to A room
+*
+M 1 5605 10 5624             the pestilence filled rats to A room
+*
+M 1 5611 1 5626              The Horse of Pestilence
+*
+M 1 5603 1 5626              Pestilence to A room
+E 1 5602 100 9
+*
+M 1 5606 10 5629             the wounded soldier to The Plains of 
+E 1 5606 100 16
+*War.
+*
+M 1 5606 10 5631             the wounded soldier to A room
+E 1 5606 100 16
+*
+M 1 5606 10 5633             the wounded soldier to A room
+E 1 5606 100 16
+*
+M 1 5606 10 5635             the wounded soldier to A room
+E 1 5606 100 16
+*
+M 1 5606 10 5637             the wounded soldier to A room
+E 1 5606 100 16
+*
+M 1 5609 1 5639              The Horse of War to A room
+*
+M 1 5601 1 5639              War to A room
+E 1 5601 100 5
+E 1 5605 100 16
+*
+M 1 5607 10 5642             the ghost to The Cemetary of Death.
+*
+M 1 5607 10 5644             the ghost to A room
+*
+M 1 5607 10 5646             the ghost to A room
+*
+M 1 5607 10 5648             the ghost to A room
+*
+M 1 5607 10 5650             the ghost to A room
+*
+M 1 5608 1 5652              The Horse of Death to A room
+*
+M 1 5602 1 5652              Death to A room
+E 1 5609 100 12
+E 1 5604 100 16
+D 1 5652 0 2            ; A room Lock North
+O 1 5610 100 5654          The Belt of the Apocalypse to The  
+*                           End of it All.
+S
+
+
+#SPECIALS
+M  5600 spec_breath_any            Famine
+M  5601 spec_cast_priestess           War
+M  5602 spec_cast_archmage             Death
+M  5603 spec_cast_psionicist       Pestilence
+M  5605 spec_poison                the pestilence filled rats
+M  5608 spec_breath_any            The Horse of Death
+M  5609 spec_breath_fire           The Horse of War
+M  5610 spec_breath_acid           The Horse of Famine
+M  5611 spec_breath_gas            The Horse of Pestilence
+S
+
+
+#$

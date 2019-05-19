@@ -1,0 +1,2297 @@
+#AREA	Thorne~   The Eerie Woods~
+-2 -2 0 100
+
+#MOBILES
+#29000
+wolf~
+the wolf~
+A grey wolf moves through the shadows.
+~
+The wolf slips quietly through the forest searching for food.
+~
+64|128 32768|524288 0 S
+45 0 0 0d0+0 0d0+0
+50 0
+8 8 1
+#29001
+wolf cub~
+the wolf cub~
+A wolf cub is hiding in some straw.
+~
+The tiny wolf cub tries to escape your notice by burrowing in some straw.
+~
+2|4|64 8|32|8388608 0 S
+35 0 0 0d0+0 0d0+0
+40 0
+8 8 1
+>rand_prog 2~
+mpecho ::snuffle::
+~
+>rand_prog 2~
+mpecho ::whimper::
+~
+>rand_prog 2~
+mpecho ::sniffle::
+~
+>all_greet_prog 100~
+hide
+~
+|
+#29002
+wolf cub~
+the wolf cub~
+A wolf cub is hiding in some straw.
+~
+The tiny wolf cub tries to escape your notice by burrowing in some straw.
+~
+2|4|64 8|32|8388608 0 S
+35 0 0 0d0+0 0d0+0
+40 0
+8 8 2
+>rand_prog 2~
+mpecho ::snuffle::
+~
+>rand_prog 2~
+mpecho ::whimper::
+~
+>rand_prog 2~
+mpecho ::sniffle::
+~
+>all_greet_prog 100~
+hide
+~
+|
+#29003
+female wolf~
+the female wolf~
+A female wolf growls and prepares to defend her den.
+~
+You have stumbled into the territory of a nursing female wolf. She prepares to 
+defend her cubs with her life.
+~
+2|4|32|64 8|32|65536|8388608 0 S
+45 0 0 0d0+0 0d0+0
+45 0
+8 8 2
+#29004
+frantic bee~
+a frantic bee~
+A frantic bee is buzzing about your head.
+~
+The bee seems to be quite disturbed by your presence and flies wildly about your 
+head, buzzing loudly.
+~
+2|32|64|512 8|32|65536|524288|8388608 0 S
+30 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#29005
+frantic bee~
+a frantic bee ~
+A frantic bee is buzzing about your head.
+~
+The bee seems to be quite disturbed by your presence and flies wildly about your 
+head, buzzing loudly.
+~
+2|32|64|512 8|32|65536|524288|8388608 0 S
+30 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#29006
+frantic bee~
+a frantic bee ~
+A frantic bee is buzzing about your head.
+~
+The bee seems to be quite disturbed by your presence and flies wildly about your 
+head, buzzing loudly.
+~
+2|32|64 8|32|65536|524288|8388608 0 S
+30 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#29007
+tree~
+the tree~
+A gnarled oak tree towers above you, it's branches sway gently rustling the leaves.
+~
+The tree looks very ancient and must have taken many years to grow this large. 
+Its branches are all gnarled and twisted at odd angles. As you turn away from 
+it you catch a glimpse of movement out of the corner of your eye, or maybe it 
+was just your imagination.
+~
+64 8|32|32768|524288|8388608 1000 S
+100 0 0 0d0+0 0d0+0
+2|8|16|32|256 0
+8 8 0
+>rand_prog 3~
+mpecho ::rustle:: ::rustle::
+~
+>all_greet_prog 100~
+if ispc ($n)
+mpecho For no apparent reason you are suddenly overcome by weariness.
+mpforce $n rest
+endif
+~
+|
+#29008
+leprechaun~
+the leprechaun~
+A leprechaun sneaks about the forest.
+~
+This filthy, greedy leprechaun spends his days and nights stealing from 
+visitors to these woods and hoarding useless rubbish. He regards you with a 
+piercing gaze, and a wave of horror washes over you as you realize he is reading 
+your mind. He cackles hysterically.
+~
+64|128 2|8|32|128|512|32768|65536|524288|8388608 -400 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29009
+white horse~
+the enchanted horse~
+A beautiful white horse is grazing here.
+~
+A tall graceful mare is grazing on the foliage. You notice that ice crystals 
+form in the air and fall to the ground when it breathes.
+~
+64|131072 2|8|512|32768|524288|4194304 1000 S
+55 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#29010
+white horse~
+the enchanted horse~
+A beautiful white horse is grazing here.
+~
+A tall graceful stallion is grazing on the foliage. You notice that ice crystals 
+form in the air and fall to the ground when it breathes.
+~
+64|131072 2|8|512|32768|524288|4194304 1000 S
+55 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#29011
+bard elven~
+the elven bard~
+An elven bard is sitting here, playing an enchanting melody on a lute.
+~
+An elven bard sits here playing gracefully on a lute and singing in a high, 
+clear voice full of melancholy and wistfulness.
+~
+64 2|8|128|512|32768|524288 1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29012
+elf blond female~
+the female elf~
+A blond-headed elf is sitting here reading a red book.
+~
+This attractive female elf is sitting here in the hut quietly reading from a 
+large book bound in red leather. She seems to be taking some trouble to avoid 
+being seen, so it's probably a good idea to leave her to it.
+~
+2|64 2|8|32|128|512|65536|524288|8388608 1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>all_greet_prog 100~
+if ispc($n)
+mpecho $I utters the words, 'eugsraqzwunsoh'.
+mpecho $I shimmers and appears in a different location.
+hide
+endif
+~
+|
+#29013
+elderly elf male~
+the elderly elf~
+An elderly male elf is resting here.
+~
+The ancient-looking elf is resting here, having fallen asleep with a book in his 
+hand. He opens his eyes briefly and looks at you appraisingly, then returns to 
+his napping.
+~
+2|64 2|8|128|512|524288 1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 50~
+if ispc($n)
+wake
+mpecho $I looks at you appraisingly
+rest
+~
+>rand_prog 25~
+rest
+~
+|
+#0
+
+
+#OBJECTS
+#29000
+pipe~
+a pipe~
+A pipe smokes away here.~
+~
+1 1 1
+0~ 0~ -1~ 0~
+1 0 0
+A
+5 -4
+#29001
+brown belt~
+a brown belt with a gold buckle~
+A brown belt with a shiny gold buckle has been dropped here.~
+~
+9 2048 1|2048
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 -5
+A
+13 -130
+#29002
+green breeches~
+a pair of sturdy green breeches~
+A pair of sturdy green breeches have been neatly folded up here.~
+~
+9 2048 1|32
+0~ 0~ 0~ 0~
+5 0 0
+A
+5 -2
+A
+17 10
+#29003
+green hat~
+a green hat with a gold buckle~
+A green puritan style hat with a gold buckle sits here.~
+~
+9 2048 1|16
+0~ 0~ 0~ 0~
+3 0 0
+A
+3 -2
+A
+4 -2
+#29004
+green tunic~
+a bright green tunic~
+A homespun bright green tunic has been left here.~
+~
+9 2048 1|8
+0~ 0~ 0~ 0~
+4 0 0
+A
+12 -150
+A
+24 2
+A
+23 2
+#29005
+green boots~
+a pair of green boots~
+A pair of green boots with bright gold buckles have been left here.~
+~
+9 2048 1|64
+0~ 0~ 0~ 0~
+3 0 0
+A
+19 -8
+A
+2 -4
+#29006
+tattered green scroll~
+a tattered green scroll~
+A tattered green scroll has been left here.~
+~
+2 32|64|2048 1|16384
+100~ enchant weapon~ ~ ~
+1 0 70
+#29007
+silver bridle~
+a silver bridle~
+An ornate silver bridle is lying at your feet.~
+~
+9 2|32|64|128|1024|2048|4096 1|16
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 2
+A
+18 10
+A
+14 50
+A
+23 -10
+E
+silver bridle~
+The ornate silver bridle is etched with mystical symbols and you feel strong 
+magical energies coming from it.~
+#29008
+tiny daisies~
+{Wtiny daisies{x~
+{WSome tiny daisies are trying to grow here.{x~
+~
+26 32 1
+40~ faerie fog~ dispel magic~ ~
+5 0 0
+#29009
+red mushrooms~
+red mushrooms~
+{rThere are some red mushrooms growing here.{x~
+~
+26 64|128 1
+50~ poison~ blindness~ sleep~
+2 0 0
+#29010
+lute~
+a lute~
+A well crafted lute has been left here.~
+~
+36 64 1|16384
+0~ 0~ 0~ 0~
+3 0 0
+A
+24 -5
+A
+23 -5
+#29011
+red book~
+a red book~
+A red book has been carelessly discarded here.~
+~
+3 16|64 1|16384
+80~ 15~ 15~ teleport~
+3 0 0
+#29012
+bag holding~
+a bag of holding~
+A large black bag has been left here.~
+~
+15 0 1
+500~ 0~ 0~ 0~ 
+40 0 0
+#29013
+story book~
+a story book~
+A book of bedtime stories has been left here.~
+~
+3 64 1|16384
+75~ 15~ 15~ sleep~
+5 0 0
+A
+24 50
+A
+23 20
+A
+19 -30
+#29014
+green robe hooded~
+a green hooded robe~
+A green hooded robe lies on the ground at your feet.~
+~
+9 64 1|1024
+0~ 0~ 0~ 0~
+4 0 0
+A
+17 -45
+#29015
+silver bracelet~
+a silver bracelet~
+An exquisite silver bracelet lies here.~
+~
+9 64|1024 1|4096
+0~ 0~ 0~ 0~
+0 0 0
+A
+12 0
+#29016
+brown hooded robe~
+a brown hooded robe~
+A brown hooded robe lies on the ground at your feet.~
+~
+9 64 1|1024
+0~ 0~ 0~ 0~
+4 0 0
+A
+17 -45
+#29017
+amulet wisdom~
+the amulet of wisdom~
+The fabled elven amulet of wisdom lies at your feet.~
+~
+9 64|1024|2048 1|4
+0~ 0~ 0~ 0~
+1 0 0
+A
+4 6
+E
+amulet wisdom~
+You hold the legendary elven amulet of wisdom, the secret of its fabrication is 
+known only to the eldest and most venerable of the woodland elves and the 
+wearing of it is a token of high rank in their society.~
+#29018
+money pouch small~
+a small money pouch~
+A small pouch lies here.~
+~
+20 0 1
+15~ 32~ 17~ 3~
+6 0 0
+#29019
+chest small wooden~
+a small wooden chest~
+{R{X~
+~
+15 0 1
+300~ 15~ 29020~ 0~
+15000 0 0
+E
+chest small wooden~
+
+A small wooden chest almost escapes your notice.
+
+~
+#29020
+mystery key~
+a mystery key~
+A mysterious key lies here.~
+~
+18 0 1
+0~ 0~ 0~ 0~
+0 0 70
+#29021
+huge pile coins~
+a huge pile of coins~
+A huge pile of coins gleams here.~
+~
+20 1 1|8192
+10~ 75~ 42~ 35~
+200 0 0
+#0
+
+
+#ROOMS
+#29000
+Entering the Eerie Woods~
+You are at the beginning of a small trail leading into the woods, it is very dark 
+under the canopy and you can't make anything out as you peer down the trail. A 
+fell silence lies over the woods, it seems a place that the gods themselves would 
+shun.
+
+To the north the bustle and noise of Draagdim can still be heard, while to the 
+south the trail disappears into darkness.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 28125
+D2
+~
+~
+0 -1 29001
+E
+south~
+Nothing but darkness.~
+E
+north~
+The south gate of dragdim.~
+S
+#29001
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29000
+D2
+~
+~
+0 -1 29002
+E
+north~
+A small patch of light maybe it's a way out.~
+E
+south~
+Nothing but darkness.~
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+S
+#29002
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the east you hear a loud buzzing. To the west the undergrowth is too dense to 
+breach, while to the north and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29001
+D1
+~
+~
+0 -1 29003
+D2
+~
+~
+0 -1 29004
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+west~
+Brambles and dense undergrowth.~
+S
+#29003
+The beehive~
+You are standing in front of a tall rotten tree. Hanging in the branches above 
+you is a very large beehive.
+
+To the north, east and south the undergrowth is too dense to breach, while to the 
+west the trail disappears into darkness.
+~
+0 1|4|8 3
+D3
+~
+~
+0 -1 29002
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+S
+#29004
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29002
+D2
+~
+~
+0 -1 29005
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29005
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the south the undergrowth is too dense to breach, while to the north, west and 
+east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29004
+D1
+~
+~
+0 -1 29010
+D3
+~
+~
+0 -1 29006
+E
+south~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29006
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29005
+D3
+~
+~
+0 -1 29007
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+S
+#29007
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west the undergrowth is too dense to breach, while to the north, east and 
+south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29008
+D1
+~
+~
+0 -1 29006
+D2
+~
+~
+0 -1 29026
+E
+west~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29008
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and east the undergrowth is too dense to breach, while to the west 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D2
+~
+~
+0 -1 29007
+D3
+~
+~
+0 -1 29009
+E
+west~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+S
+#29009
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north, west and south the undergrowth is too dense to breach, while to 
+the east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29008
+D4
+~
+~
+0 -1 29051
+E
+up~
+A small hut nestled in the tree top.~
+E
+west~
+Brambles and dense undergrowth.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+S
+#29010
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29011
+D3
+~
+~
+0 -1 29005
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29011
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29012
+D3
+~
+~
+0 -1 29010
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29012
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+The trail disappears into darkness in all directions.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29013
+D1
+~
+~
+0 -1 29015
+D2
+~
+~
+0 -1 29019
+D3
+~
+~
+0 -1 29011
+E
+north~
+Nothing but darkness.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29013
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29014
+D2
+~
+~
+0 -1 29012
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29014
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north, west and east the undergrowth is too dense to breach, while to the 
+south the trail disappears into darkness.
+~
+0 1|4|8|8192 3
+D2
+~
+~
+0 -1 29013
+D4
+~
+~
+0 -1 29052
+E
+south~
+Nothing but darkness.~
+E
+up~
+A small hut nestled in the tree top.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+S
+#29015
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29016
+D3
+~
+~
+0 -1 29012
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29016
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and east the undergrowth is too dense to breach, while to the west 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D2
+~
+~
+0 -1 29017
+D3
+~
+~
+0 -1 29015
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29017
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29016
+D2
+~
+~
+0 -1 29018
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29018
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west, east and south the undergrowth is too dense to breach, while to the 
+north the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29017
+D4
+~
+~
+0 -1 29056
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+up~
+A small hut nestled in the tree top.~
+S
+#29019
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29012
+D2
+~
+~
+0 -1 29020
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29020
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the east and south the undergrowth is too dense to breach, while to the north 
+and west the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29019
+D3
+~
+~
+0 -1 29021
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+west~
+Nothing but darkness.~
+S
+#29021
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north the undergrowth is too dense to breach, while to the west east and 
+south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29020
+D2
+~
+~
+0 -1 29037
+D3
+~
+~
+0 -1 29022
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29022
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29021
+D3
+~
+~
+0 -1 29023
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29023
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north the undergrowth is too dense to breach, while to the west, east and 
+south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29022
+D2
+~
+~
+0 -1 29033
+D3
+~
+~
+0 -1 29024
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29024
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29023
+D3
+~
+~
+0 -1 29025
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Brambles and dense undergrowth.~
+S
+#29025
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the south the undergrowth is too dense to breach, while to north, west and 
+east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29026
+D1
+~
+~
+0 -1 29024
+D3
+~
+~
+0 -1 29027
+E
+south~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29026
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29007
+D2
+~
+~
+0 -1 29025
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29027
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29025
+D3
+~
+~
+0 -1 29028
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+S
+#29028
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the north and west the undergrowth is too dense to breach, while to the east 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29027
+D2
+~
+~
+0 -1 29029
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Brambles and dense undergrowth.~
+S
+#29029
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29028
+D2
+~
+~
+0 -1 29030
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+S
+#29030
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the east the undergrowth is too dense to breach, while to the north and south 
+the trail disappears into darkness.  A smaller path heads westwards.
+~
+0 1|8|8192 3
+D3
+~
+~
+0 -1 14800
+D0
+~
+~
+0 -1 29029
+D2
+~
+~
+0 -1 29031
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+S
+#29031
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and south the undergrowth is too dense to breach, while to the north 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29030
+D1
+~
+~
+0 -1 29032
+E
+north~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+west~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+S
+#29032
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north, east and south the undergrowth is too dense to breach, while to 
+the west the trail disappears into darkness.
+~
+0 1|8|8192 3
+D3
+~
+~
+0 -1 29031
+D4
+~
+~
+0 -1 29054
+E
+up~
+A small hut nestled in the tree top.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+S
+#29033
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29023
+D2
+~
+~
+0 -1 29034
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+S
+#29034
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the south the undergrowth is too dense to breach, while to the north west and 
+east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29033
+D1
+~
+~
+0 -1 29035
+D3
+~
+~
+0 -1 29039
+E
+south~
+Brambles and dense undergrowth.~
+S
+#29035
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the north the undergrowth is too dense to breach, while to the west east and 
+south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29036
+D2
+~
+~
+0 -1 29045
+D3
+~
+~
+0 -1 29034
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29036
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the south the undergrowth is too dense to breach, while to the north west and 
+east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29037
+D1
+~
+~
+0 -1 29038
+D3
+~
+~
+0 -1 29035
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+north~
+Nothing but darkness.~
+S
+#29037
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are suddenly very cold, 
+glancing above you the reason becomes apparent the canopy is shutting out any 
+light from the sun making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29021
+D2
+~
+~
+0 -1 29036
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29038
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night. High above you can 
+be seen a small hut nestled in the tree top.
+
+To the north, east and south the undergrowth is too dense to breach, while to 
+the west the trail disappears into darkness.
+~
+0 1|4|8|8192 3
+D3
+~
+~
+0 -1 29036
+D4
+~
+~
+0 -1 29055
+E
+up~
+A small hut nestled in the tree top.~
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+S
+#29039
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night. You can see a small 
+opening in the side of a large tree to your immediate west and soft scuffling 
+noises issue from it.
+
+To the north the undergrowth is too dense to breach, while to the south and east 
+the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29034
+D2
+~
+~
+0 -1 29041
+D3
+~
+~
+0 -1 29040
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29040
+A wolves den~
+You are crouched inside the cramped interior of the tree and from what you can 
+see in the darkness, it appears to be have been recently inhabited by wild 
+animals. An earthen burrow has been dug down into the ground at your feet and 
+the scuffling noises have grown louder.
+~
+0 1|4|8|2048 0
+D1
+~
+~
+0 -1 29039
+D5
+~
+~
+0 -1 29053
+S
+#29041
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29039
+D2
+~
+~
+0 -1 29042
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29042
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and south the undergrowth is too dense to breach, while to the north 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29041
+D1
+~
+~
+0 -1 29043
+E
+west~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+east~
+Nothing but darkness.~
+E
+north~
+Nothing but darkness.~
+S
+#29043
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and south the undergrowth is too dense to breach, while to the west 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D1
+~
+~
+0 -1 29044
+D2
+~
+~
+0 -1 29046
+D3
+~
+~
+0 -1 29042
+E
+north~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29044
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the east and south the undergrowth is too dense to breach, while to
+the north and west the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29045
+D3
+~
+~
+0 -1 29043
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+west~
+Nothing but darkness.~
+S
+#29045
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29035
+D2
+~
+~
+0 -1 29044
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29046
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29043
+D2
+~
+~
+0 -1 29047
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29047
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and south the undergrowth is too dense to breach, while to the north 
+and east the trail disappears into darkness.
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29046
+D1
+~
+~
+0 -1 29048
+E
+west~
+Brambles and dense undergrowth.~
+E
+south~
+Brambles and dense undergrowth.~
+E
+north~
+Nothing but darkness.~
+E
+east~
+Nothing but darkness.~
+S
+#29048
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the north and east the undergrowth is too dense to breach, while to
+the west and south the trail disappears into darkness.
+~
+0 1|8|8192 3
+D2
+~
+~
+0 -1 29049
+D3
+~
+~
+0 -1 29047
+E
+north~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+west~
+Nothing but darkness.~
+E
+south~
+Nothing but darkness.~
+S
+#29049
+Wandering in the woods~
+It's unnaturally quiet in these woods, you listen intently but can't even hear 
+the sound of a cricket. You also become aware that you are very cold - glancing 
+above you the reason becomes apparent. The canopy is shutting out any light from 
+the sun, making it impossible to tell if it is day or night.
+
+To the west and east the undergrowth is too dense to breach, while to the north 
+the trail disappears into darkness. To the south you can see a small patch of 
+light, maybe it's a way out...
+~
+0 1|8|8192 3
+D0
+~
+~
+0 -1 29048
+D2
+~
+~
+0 -1 29050
+E
+west~
+Brambles and dense undergrowth.~
+E
+east~
+Brambles and dense undergrowth.~
+E
+south~
+A small patch of light maybe it's a way out.~
+E
+north~
+Nothing but darkness.~
+S
+#29050
+Before a wrought-iron gate~
+You stand in a light clearing in the forest directly before a pair of tall iron 
+gates to the south. Daylight and warmth streams into the area from above, in 
+stark contrast to the cold and forbidding forest to the north. 
+
+To the west tall cliffs loom, while to the east the undergrowth is too dense to 
+breach. Peeking through the gate you see a vast hedged garden that stretches to 
+the horizon in all directions.
+~
+0 4|65536 2
+D0
+~
+~
+0 -1 29049
+E
+west~
+High cliffs towering above you.~
+E
+east~
+Brambles and dense undergrowth.~
+D2
+gate~
+~
+1 -1 11348
+E
+south iron gate~
+The tall gate swings easily on its hinges.~
+S
+#29051
+In a hut~
+You are inside a neatly kept hut that is perched in the top of a tree. There is 
+a wooden table and chairs and a neatly arranged book case.
+~
+0 1|4|8 0
+D5
+~
+~
+0 -1 29009
+E
+down~
+Nothing but darkness.~
+S
+#29052
+In a hut~
+You are inside a neatly kept hut that is perched in the top of a tree. There is 
+a wooden table and chairs and hanging in the corner of the room is a comfortable 
+looking hammock, perhaps this would be a good place to take a nap.
+~
+0 1|8|1024|8192|65536 0
+D5
+~
+~
+0 -1 29014
+E
+down~
+Nothing but darkness.~
+S
+#29053
+In a dark hole~
+You have fallen into a dark hole and the sides are too high for you to climb 
+back out of it. Guess you shouldn't have gone poking around in the dark after 
+all.
+~
+0 1 0
+D4
+~
+~
+0 -1 -1
+S
+#29054
+In a hut~
+You are inside a neatly kept hut that is perched in the top of a tree. There is 
+a wooden table and chairs and a small chest is in the corner of the room.~
+0 1|4|8 0
+D5
+~
+~
+0 -1 29032
+E
+down~
+Nothing but darkness.~
+S
+#29055
+In a hut~
+You are inside a neatly kept hut that is perched in the top of a tree. There is 
+a wooden table and chairs and a neatly arranged book case.
+~
+0 1|8 0
+D5
+~
+~
+0 -1 29038
+E
+down~
+Nothing but darkness.~
+S
+#29056
+In a hut~
+You are inside a neatly kept hut that is perched in the top of a tree. There is 
+a wooden table and chairs and a comfortable looking hammock is hanging in the 
+corner of the room.
+~
+0 1|4|8|512 0
+D5
+~
+~
+0 -1 29018
+E
+down~
+Nothing but darkness.~
+S
+#0
+
+
+#RESETS
+D 1 29050 2 1   ;close south entrance to magic garden
+*
+M 1 29001 1 29053			the wolf cub to In a dark hole
+*
+M 1 29002 1 29053			the wolf cub to In a dark hole
+*
+M 1 29003 1 29053			the female wolf to In a dark hole
+*
+M 1 29000 1 29033			the wolf to Wandering in the woods
+*
+M 1 29004 1 29003			a frantic bee to The bees hive
+*
+M 1 29005 1 29003			a frantic bee  to The bees hive
+*
+M 1 29006 1 29003			a frantic bee  to The bees hive
+O 1 29009 100 29039			red mushrooms to Wandering in the woods
+O 1 29009 100 29012			red mushrooms to Wandering in the woods
+O 1 29008 100 29043			{Wtiny daisies{x to Wandering in the woods
+O 1 29008 100 29028			{Wtiny daisies{x to Wandering in the woods
+O 1 29012 100 29055			a bag of holding to In a hut
+*
+M 1 29007 1 29016			the tree to Wandering in the woods
+E 1 11304 100 17
+E 1 11342 100 5
+*
+M 1 29008 1 29008			the leprechaun to Wandering in the woods
+E 1 29000 100 0
+E 1 29004 100 5
+E 1 29003 100 6
+E 1 29002 100 7
+E 1 29001 100 13
+E 1 29005 100 8
+G 1 29006 100
+G 1 29020 100
+*
+M 1 29009 1 29028			the enchanted horse to Wandering in the woods
+E 1 29007 100 6
+*
+M 1 29010 1 29046			the enchanted horse to Wandering in the woods
+E 1 29007 100 6
+*
+M 1 29011 1 29001			the dood to Wandering in the woods
+E 1 29014 100 12
+G 1 29018 100
+*
+M 1 29012 1 29051			the chick to In a hut
+E 1 29011 100 17
+E 1 29014 100 12
+E 1 29015 100 14
+*
+M 1 29013 1 29056			the elderly elf to In a hut
+E 1 29013 100 17
+E 1 29016 100 12
+E 1 29017 100 3
+O 1 29019 100 29054			a small wooden chest to In a hut
+P 1 29021 100 29019			a huge pile of coins to container chest small wooden
+S
+
+
+#SHOPS
+29008 13 8 2 18 0 100 200 0 23			(mobile is from another zone)
+0
+
+
+#SPECIALS
+M  29004 spec_poison			a frantic bee
+M  29005 spec_poison			a frantic bee 
+M  29006 spec_poison			a frantic bee 
+M  29008 spec_cast_psionicist			the leprechaun
+M  29009 spec_breath_frost			the enchanted horse
+M  29010 spec_breath_frost			the enchanted horse
+M  29011 spec_cast_cleric			the elven bard
+M  29007 spec_warrior                           the tree
+S
+
+
+#$

@@ -1,0 +1,3318 @@
+#AREA	Thorne~   The Magic Garden~
+80 100 60 100
+
+#MOBILES
+#11300
+drake water~
+The water drake~
+A huge drake thrashes about in the water.
+~
+This enormous lizard, a close relative of the dragon, has made his home 
+underneath the waterfall.
+
+He doesn't look pleased to see you.
+~
+2|32|64 8|32|512|8192|65536|524288|4194304|8388608 -1000 S
+105 0 0 0d0+0 0d0+0
+32 0
+8 8 1
+>all_greet_prog 100~
+if ispc ($n)
+mpkill $n
+endif
+~
+>rand_prog 25~
+mpasound ::grunnnt::
+~
+>rand_prog 25~
+mpasound ::groWWwWwlll::
+~
+>rand_prog 25~
+mpasound ::hiSSsssss::
+~
+|
+#11301
+sprite water~
+A water sprite~
+A sprite forms from the water and rises up before you.
+~
+This translucent being seems to be made from the very river itself.
+~
+64 8|512|32768|524288|1048576 -1000 S
+100 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#11302
+sprite water~
+A water sprite~
+A sprite forms from the water and rises up before you.
+~
+This translucent being seems to be made from the very river itself.
+~
+64 8|512|32768|524288|1048576 -1000 S
+100 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#11303
+sprite water~
+A water sprite~
+A sprite forms from the water and rises up before you.
+~
+This translucent being seems to be made from the very river itself.
+~
+64 8|512|32768|524288|1048576 -1000 S
+100 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#11304
+sprite water~
+A water sprite~
+A sprite forms from the water and rises up before you.
+~
+This translucent being seems to be made from the very river itself.
+~
+64 8|512|32768|524288|1048576 -1000 S
+100 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#11305
+sprite water~
+A water sprite~
+A sprite forms from the water and rises up before you.
+~
+This translucent being seems to be made from the very river itself.
+~
+64 8|512|32768|524288|1048576 -1000 S
+100 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#11306
+carnivorous plant~
+A carnivorous plant~
+A carnivorous plant roams the garden looking for food.
+~
+This magical plant stands seven feet tall, its writhing tendrils probe about as 
+it searches for something to devour.
+~
+32|64 8|32|512|524288|8388608 0 S
+90 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11307
+carnivorous plant~
+A carnivorous plant~
+A carnivorous plant roams the garden looking for food.
+~
+This magical plant stands seven feet tall, its writhing tendrils probe about as 
+it searches for something to devour.
+~
+32|64 8|32|512|524288|8388608 0 S
+90 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11308
+carnivorous plant~
+A carnivorous plant~
+A carnivorous plant roams the garden looking for food.
+~
+This magical plant stands seven feet tall, its writhing tendrils probe about as 
+it searches for something to devour.
+~
+32|64 8|32|512|524288|8388608 0 S
+90 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11309
+carnivorous plant~
+A carnivorous plant~
+A carnivorous plant roams the garden looking for food.
+~
+This magical plant stands seven feet tall, its writhing tendrils probe about as 
+it searches for something to devour.
+~
+32|64 8|32|512|524288|8388608 0 S
+90 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11310
+carnivorous plant~
+A carnivorous plant~
+A carnivorous plant roams the garden looking for food.
+~
+This magical plant stands seven feet tall, its writhing tendrils probe about as 
+it searches for something to devour.
+~
+32|64 8|32|512|524288|8388608 0 S
+90 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11311
+gnome gardener~
+The gardener~
+A homely looking gnome is here tending to the gardens.
+~
+The gardener is humming a pleasant tune and lovingly tending to the plants and flowers.
+~
+64|128 8|512|524288 0 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#11312
+vine~
+A vine~
+A large vine is protruding from the hedge and snaking across the ground.
+~
+The vine is very large and seems to be moving towards you.
+~
+2|64 8|512|524288 0 S
+95 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11313
+vine~
+A vine~
+A large vine is protruding from the hedge and snaking across the ground.
+~
+The vine is very large and seems to be moving towards you.
+~
+2|64 8|512|524288 0 S
+95 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11314
+vine~
+A vine~
+A large vine is protruding from the hedge and snaking across the ground.
+~
+The vine is very large and seems to be moving towards you.
+~
+2|64 8|512|524288 0 S
+95 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#11315
+fairy~
+The fairy~
+A pretty fairy with pink wings is flitting amongst the flowers trying to hide.
+~
+The fairy has long wispy hair into which a variety of pretty flowers have been 
+interwoven. She flits from flower to flower sampling the pollen from each.
+~
+64 8|512|65536 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#11316
+fairy~
+The fairy~
+A pretty fairy with purple wings is flitting amongst the flowers trying to hide.
+~
+The fairy has long wispy hair into which a variety of pretty flowers have been 
+interwoven. She flits from flower to flower sampling the pollen from each.
+~
+64 8|512|65536 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#11317
+fairy~
+The fairy~
+A pretty fairy with pale blue wings is flitting amongst the flowers trying to hide.
+~
+The fairy has long wispy hair into which a variety of pretty flowers have been 
+interwoven. She flits from flower to flower sampling the pollen from each.
+~
+64 8|512|65536 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#11318
+fairy~
+The fairy~
+A pretty fairy with pale yellow wings is flitting amongst the flowers trying to hide.
+~
+The fairy has long wispy hair into which a variety of pretty flowers have been 
+interwoven. She flits from flower to flower sampling the pollen from each.
+~
+64 8|512|65536 1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#11319
+tree~
+The tree~
+A gnarled oak tree towers above you, its branches sway gently rustling the leaves.
+~
+The tree looks very ancient and must have taken many years to grow this large. 
+Its branches are all gnarled and twisted at odd angles. As you turn away from 
+it you catch a glimpse of movement out of the corner of your eye, or maybe it 
+was just your imagination.
+~
+64 8|512|32768|524288|8388608 1000 S
+100 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+>rand_prog 3~
+mpecho ::rustle:: ::rustle::
+~
+>all_greet_prog 100~
+if ispc ($n)
+mpecho For no apparent reason you are suddenly overcome by weariness.
+mpforce $n rest
+endif
+~
+|
+#11320
+tree~
+The tree~
+A gnarled oak tree towers above you, its branches sway gently rustling the leaves.
+~
+The tree looks very ancient and must have taken many years to grow this large. 
+Its branches are all gnarled and twisted at odd angles. As you turn away from 
+it you catch a glimpse of movement out of the corner of your eye, or maybe it 
+was just your imagination.
+~
+64 8|512|32768|524288|8388608 1000 S
+100 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+>rand_prog 3~
+mpecho ::rustle:: ::rustle::
+~
+>all_greet_prog 100~
+if ispc ($n)
+mpecho For no apparent reason you are suddenly overcome by weariness.
+mpforce $n rest
+endif
+~
+|
+#11321
+fairy queen~
+the fairy queen~
+The fairy queen is here tending to the needs of her people.
+~
+The fairy queen has long golden hair that looks as if beams of sunlight have 
+been caught in it and tiny white flowers are entwined in its tresses. You recall 
+hearing rumours regarding her beauty though no tales you have heard accurately 
+described the enchantment of this breathtaking vision.
+~
+2|64 8|128|512|524288|4194304|16777216 1000 S
+110 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#11322
+pixie~
+the mischievous pixie~
+A mischievous pixie points at you and laughs.
+~
+Pixies look like miniature versions of elves yet are lacking in any of the 
+wisdom and culture of that great race. They spend most of their time using their 
+magical powers to tease and annoy others.
+~
+64 2|8|32|512|32768|8388608 0 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>all_greet_prog 50~
+if ispc ($n)
+poke $n
+em giggles.
+endif
+~
+|
+#11323
+pixie~
+the mischievous pixie~
+A mischievous pixie points at you and laughs.
+~
+Pixies look like miniature versions of elves yet are lacking in any of the 
+wisdom and culture of that great race. They spend most of their time using their 
+magical powers to tease and annoy others.
+~
+64 2|8|32|512|32768|8388608 0 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 50~
+if ispc ($n)
+poke $n
+em giggles.
+endif
+~
+|
+#11324
+pixie~
+the mischievous pixie~
+A mischievous pixie points at you and laughs.
+~
+Pixies look like miniature versions of elves yet are lacking in any of the 
+wisdom and culture of that great race. They spend most of their time using their 
+magical powers to tease and annoy others.
+~
+64 2|8|32|512|32768|8388608 0 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 50~
+if ispc ($n)
+poke $n
+em giggles.
+endif
+~
+|
+#11325
+leprechaun~
+the leprechaun~
+A leprechaun sneaks about the garden.
+~
+This filthy, greedy leprechaun spends his days and knights stealing from 
+visitors to this magical garden and hoarding useless rubbish.
+~
+64|128 2|8|32|512|8192|32768|65536|8388608 -400 S
+95 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#11300
+deadly talons~
+deadly talons~
+Sharp deadly looking talons have been hacked from some creature and left on the ground.~
+~
+5 2|16384|67108864 1|8192
+0~ 0~ 0~ 5~
+5 0 0
+A
+19 40
+A
+18 40
+A
+17 -15
+#11301
+fairy dust~
+fairy dust~
+A tiny vial of golden dust has been left here.~
+~
+10 1|64 1
+100~ detect hidden~ detect invis~ fly~
+5 0 0
+#11302
+staff fairy~
+a golden fairy staff~
+A small golden staff sparkles in the dust.~
+~
+4 1|64|1024 1|16384
+100~ 3~ 3~ power heal~
+5 0 0
+A
+24 -10
+A
+4 3
+#11303
+drake egg~
+a drakes egg~
+There is a rather large egg here that looks as if it may have come from a drake.~
+~
+26 16|2048 1
+90~ armor~ stone skin~ complete healing~
+5 0 0
+#11304
+gnarled branch~
+a gnarled branch~
+A gnarled and twisted branch is lying on the ground here.~
+~
+4 67108864 1|16384
+200~ 25~ 25~ earthquake~
+9 0 0
+#11305
+crown golden fairy~
+the crown of the fairy queen~
+A beautiful jewel encrusted crown has been carelessly dropped here.~
+~
+9 1|64|1024|2048 1|16
+0~ 0~ 0~ 0~
+8 0 0
+A
+19 10
+A
+18 8
+A
+17 -15
+E
+crown golden fairy~
+This beautiful golden crown has been inlaid with many precious jewels that are 
+all in the shape of tiny tear drops.~
+#11306
+flowing white gown cloth~
+a flowing white gown decorated with pearls~
+Lavish white cloth decorated with pearls has been dropped in a pile on the floor.~
+~
+9 64|2048 1|8
+0~ 0~ 0~ 0~
+3 0 0
+A
+12 400
+A
+13 100
+A
+24 -10
+A
+23 -10
+#11307
+crystal slippers~
+delicate crystal slippers~
+A pair of delicate crystal slippers have been left here.~
+~
+9 32|64|1024|2048 1|64
+0~ 0~ 0~ 0~
+5 0 0
+A
+13 100
+A
+12 50
+A
+24 -5
+#11308
+crystal scepter~
+a crystal scepter~
+A crystal scepter is lying abandoned here.~
+~
+4 2|64|2048|67108864 1|16384
+200~ 10~ 10~ ultrablast~
+5 0 0
+#11309
+crystal ball~
+a crystal ball~
+A crystal ball is hovering in the air here.~
+~
+5 1|32|64|67108864 1|8192
+0~ 0~ 0~ 6~
+5 0 0
+A
+19 20
+A
+18 20
+A
+24 -15
+#11310
+gold chain~
+a finely woven gold chain~
+A finely woven gold chain is lying on the ground.~
+~
+9 64 1|4
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 -10
+A
+9 -1000
+#11311
+shears~
+a pair of gardening shears~
+A pair of very sharp gardening shears have been left here.~
+~
+5 16777216 1|8192
+0~ 0~ 0~ 13~
+5 0 0
+A
+1 0
+#11312
+overalls green~
+a pair of green overalls~
+A pair of green overalls have been left on the ground here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+5 0 0
+A
+2 0
+#11313
+work boots~
+work boots~
+A pair of work boots have been left here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~
+5 0 0
+A
+14 100
+A
+17 -10
+#11314
+drake egg rotten~
+a rotten drakes egg~
+There is an egg here that looks as if it may have come from a drake although it 
+smells like it's gone off.~
+~
+26 64|16384 1|16384
+90~ hex~ curse~ blindness~
+5 0 0
+#11315
+sunflower petal~
+a sunflower petal~
+A petal that looks like it's from a sunflower is lying in the ground.~
+~
+26 64 1|16384
+90~ bless~ detect good~ detect hidden~
+2 0 0
+#11316
+water orb~
+a watery orb~
+This spherical orb seems to be made of water yet it still holds its shape.~
+~
+4 2|64|67108864 1|16384
+100~ 30~ 30~ ultrablast~
+5 0 0
+#11317
+pink wings~
+pretty pink wings~
+The hacked-off wings of some unfortunate fairy lie here.~
+~
+9 2|64|2048 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+27 -1
+#11318
+purple wings~
+pretty purple wings~
+The hacked-off wings of some unfortunate fairy lie here.~
+~
+9 2|64|2048 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+27 -1
+#11319
+pale blue wings~
+pretty pale-blue wings~
+The hacked-off wings of some unfortunate fairy lie here.~
+~
+9 2|64|2048 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+27 -1
+#11320
+pale yellow wings~
+pretty pale-yellow wings~
+The hacked-off wings of some unfortunate fairy lie here.~
+~
+9 2|64|2048 1|1024
+0~ 0~ 0~ 0~
+2 0 0
+A
+27 -1
+#11321
+ring enchantment~
+a ring of enchantment~
+A magical ring of enchantment lies at your feet.~
+~
+9 64 1|2
+0~ 0~ 0~ 0~
+0 0 0
+A
+17 -50
+A
+18 10
+A
+24 -10
+#11322
+hoard treasure~
+a treasure hoard~
+A sparkling pile of treasure lies here.~
+~
+20 1 1
+12~ 231~ 68~ 34~
+20 0 0
+#11323
+green stockings~
+green stockings~
+A pair of green stockings have been discarded here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+#11324
+buckled shoes~
+buckled shoes~
+A pair of buckled shoes are have been left here.~
+~
+9 64 1|64
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 0
+#11325
+cap peaked~
+a peaked cap~
+A peaked cap is on the ground here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~
+2 0 0
+#11326
+bright red tunic~
+a bright-red tunic~
+A bright-red tunic has been left here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+2 0 0
+#11327
+gloves~
+gardening gloves~
+A pair of gardening gloves are here.~
+~
+9 0 1|128
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 0
+#11328
+flowers~
+a garland of flowers~
+A garland of flowers lies on the ground.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~
+5 0 0
+#11329
+gown~
+a sparkly gown~
+A beautiful sparkly gown has been left here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+5 0 0
+#11330
+fountain~
+a fountain~
+The fountain stands here, gurgling merrily.~
+~
+25 1 8192
+0~ 0~ 0~ 0~
+5 0 0
+#11331
+wild orchid white~
+{Wa white orchid{x~
+{WA wild orchid grows here.{x~
+~
+26 0 1
+90~ adrenaline control~ ~ ~
+0 0 0
+#11332
+daffodils bunch~
+{Ya bunch of daffodils{x~
+{YA bunch of daffodils grow here.{x~
+~
+26 0 1
+90~ detect good~ ~ ~
+0 0 0
+#11333
+wild roses~
+{Rwild roses{x~
+{RWild roses grow here.{x~
+~
+26 0 1
+90~ infravision~ ~ ~
+0 0 0
+#11334
+purple tulips~
+{Mpurple tulips{x~
+{MA row of purple tulips are growing here.{x~
+~
+26 0 1
+90~ shield~ ~ ~
+0 0 0
+#11335
+green tunic~
+a bright green tunic~
+A homespun bright green tunic has been left here.~
+~
+9 64|2048 1|8
+0~ 0~ 0~ 0~
+4 0 0
+A
+23 2
+A
+24 2
+A
+12 150
+#11336
+green hat~
+a green hat with a gold buckle~
+A green puritan style hat with a gold buckle sits here.~
+~
+9 64|2048 1|16
+0~ 0~ 0~ 0~
+3 0 0
+A
+4 2
+A
+3 2
+#11337
+green breeches~
+a pair of sturdy green breeches~
+A pair of sturdy green breeches have been neatly folded up here.~
+~
+9 64|2048 1|32
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 -10
+A
+5 2
+#11338
+brown belt~
+a brown belt with a gold buckle~
+A brown belt with a shiny gold buckle has been dropped here.~
+~
+9 64|2048 1|2048
+0~ 0~ 0~ 0~
+2 0 0
+A
+13 130
+A
+2 5
+#11339
+pair green boots~
+a pair of green boots~
+A pair of green boots with bright gold buckles have been left here.~
+~
+9 64|2048 1|64
+0~ 0~ 0~ 0~
+3 0 0
+A
+27 -1
+#11340
+pipe~
+a pipe~
+A pipe smokes away here.~
+~
+1 1 1
+0~ 0~ -1~ 0~
+1 0 0
+A
+5 -4
+#11341
+ball light~
+a bright ball of light~
+{WA bright ball of light shimmers in the air.{x~
+~
+1 1 0
+0~ 0~ -1~ 0~ 
+1 0 0
+#11342
+tough bark~
+tough bark~
+A pile of tree bark lies here.~
+~
+9 67108864 1|8
+0~ 0~ 0~ 0~
+4 0 0
+A
+17 -200
+A
+24 -50
+#11343
+blue scales~
+large blue scales~
+The hide of a drake lies here.~
+~
+9 64|2048|67108864 1|8
+0~ 0~ 0~ 0~
+4 0 0
+A
+19 30
+A
+24 -40
+#11344
+dragon's prayer~
+a dragon's prayer~
+A dragon's prayer lies here.~
+~
+4 1|32|64|67108864 1|16384
+100~ 1~ 1~ complete healing~
+5 0 0
+#0
+
+
+#ROOMS
+#11300
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north and east the 
+garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11305
+D1
+~
+~
+0 -1 11301
+S
+#11301
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the south a thick hedge blocks your path while to the west and east the 
+garden continues. To the north you can see a patch of particularly large 
+sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11315
+D1
+~
+~
+0 -1 11302
+D3
+~
+~
+0 -1 11300
+S
+#11302
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the south a thick hedge blocks your path while to the west and east the 
+garden continues. To the north you can see a patch of particularly large 
+sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11322
+D1
+~
+~
+0 -1 11303
+D3
+~
+~
+0 -1 11301
+S
+#11303
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the south a thick hedge blocks your path while to the north, west and east 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11327
+D1
+~
+~
+0 -1 11304
+D3
+~
+~
+0 -1 11302
+S
+#11304
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north and east the ground drops away steeply to the river far below.
+To the south a thick hedge blocks your path while to the west the garden continues.
+~
+0 0 2
+D3
+~
+~
+0 -1 11303
+S
+#11305
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north and south the 
+garden continues. To the east you can see a patch of particularly large 
+sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11306
+D1
+~
+~
+0 -1 11315
+D2
+~
+~
+0 -1 11300
+S
+#11306
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north and south the 
+garden continues. To the east you can see a patch of particularly large 
+sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11307
+D1
+~
+~
+0 -1 11316
+D2
+~
+~
+0 -1 11305
+S
+#11307
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north, east and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11308
+D1
+~
+~
+0 -1 11317
+D2
+~
+~
+0 -1 11306
+S
+#11308
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north, east and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11309
+D1
+~
+~
+0 -1 11318
+D2
+~
+~
+0 -1 11307
+S
+#11309
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north, east and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11310
+D1
+~
+~
+0 -1 11319
+D2
+~
+~
+0 -1 11308
+S
+#11310
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north, east and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11311
+D1
+~
+~
+0 -1 11320
+D2
+~
+~
+0 -1 11309
+S
+#11311
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path while to the north, east and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11312
+D1
+~
+~
+0 -1 11321
+D2
+~
+~
+0 -1 11310
+S
+#11312
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west a thick hedge blocks your path. To the east the ground drops away 
+steeply to the river far below, while to the north and south the garden 
+continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11313
+D2
+~
+~
+0 -1 11311
+S
+#11313
+Beside the waterfall~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north and west a thick hedge blocks your path. To the east you can see a 
+mighty waterfall cascading down to the river, while to the south the garden 
+continues.
+~
+0 0 2
+D2
+~
+~
+0 -1 11312
+S
+#11315
+Under the giant sunflower~
+You are standing in the shadow of the biggest sunflower you have ever seen, 
+looking towards the sky you can barely make out the top of it. The stalk of the 
+giant flower is easily as big as a tree trunk. You decide that should you need 
+to rest it may be safer off the ground. Maybe you could climb it...
+~
+0 0 2
+D0
+~
+~
+0 -1 11316
+D1
+~
+~
+0 -1 11322
+D2
+~
+~
+0 -1 11301
+D3
+~
+~
+0 -1 11305
+D4
+~
+~
+10 -1 11404
+S
+#11316
+A sunflower patch~
+You are standing in a patch of very large sunflowers, even the smallest ones are 
+way over your head. You wonder how they could have grown so big and suspect the 
+answer must be magic.
+
+To the south you see a sunflower that is much bigger than all the rest. To the 
+east you see more sunflowers and to the north and west the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11317
+D1
+~
+~
+0 -1 11323
+D2
+~
+~
+0 -1 11315
+D3
+~
+~
+0 -1 11306
+S
+#11317
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north, west and east the garden continues. To the south you can see a 
+patch of particularly large sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11318
+D1
+~
+~
+0 -1 11324
+D2
+~
+~
+0 -1 11316
+D3
+~
+~
+0 -1 11307
+S
+#11318
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11319
+D1
+~
+~
+0 -1 11325
+D2
+~
+~
+0 -1 11317
+D3
+~
+~
+0 -1 11308
+S
+#11319
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11320
+D1
+~
+~
+0 -1 11326
+D2
+~
+~
+0 -1 11318
+D3
+~
+~
+0 -1 11309
+S
+#11320
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east the ground drops away steeply to the river far below. while to the 
+north, west and south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11321
+D2
+~
+~
+0 -1 11319
+D3
+~
+~
+0 -1 11310
+S
+#11321
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north and east the ground drops away steeply to the river far below. 
+while to the west and south the garden continues.
+~
+0 0 2
+D2
+~
+~
+0 -1 11320
+D3
+~
+~
+0 -1 11311
+S
+#11322
+A sunflower patch~
+You are standing in a patch of very large sunflowers, even the smallest ones are 
+way over your head. You wonder how they could have grown so big and suspect the 
+answer must be magic.
+
+To the west is you see a sunflower that is much bigger than all the rest. To the 
+north you see more sunflowers and to the east and south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11323
+D1
+~
+~
+0 -1 11327
+D2
+~
+~
+0 -1 11302
+D3
+~
+~
+0 -1 11315
+S
+#11323
+A sunflower patch~
+You are standing in a patch of very large sunflowers, even the smallest ones are 
+way over your head. You wonder how they could have grown so big and suspect the 
+answer must be magic.
+
+To the west and south you see more sunflowers and to the north and east the 
+garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11324
+D1
+~
+~
+0 -1 11328
+D2
+~
+~
+0 -1 11322
+D3
+~
+~
+0 -1 11316
+S
+#11324
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north, west and east the garden continues. To the south you can see a 
+patch of particularly large sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11325
+D1
+~
+~
+0 -1 11329
+D2
+~
+~
+0 -1 11323
+D3
+~
+~
+0 -1 11317
+S
+#11325
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north, west and east the garden continues. To the south you can see a 
+patch of particularly large sunflowers.
+~
+0 0 2
+D0
+~
+~
+0 -1 11326
+D1
+~
+~
+0 -1 11330
+D2
+~
+~
+0 -1 11324
+D3
+~
+~
+0 -1 11318
+S
+#11326
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north and east the ground drops away steeply to the river far below. 
+while to the west and south the garden continues.
+~
+0 0 2
+D2
+~
+~
+0 -1 11325
+D3
+~
+~
+0 -1 11319
+S
+#11327
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east the ground drops away steeply to the river far below. To the west 
+you can see a patch of particularly large sunflowers. while to the north and 
+south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11328
+D2
+~
+~
+0 -1 11303
+D3
+~
+~
+0 -1 11322
+S
+#11328
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east the ground drops away steeply to the river far below. To the west 
+you can see a patch of particularly large sunflowers. while to the north and 
+south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11329
+D2
+~
+~
+0 -1 11327
+D3
+~
+~
+0 -1 11323
+S
+#11329
+Before the bridge~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east is a wooden bridge arcing across the river. The bank looks as tho 
+you may be able to descend it here. while to the north, west and south the 
+garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11330
+D1
+~
+~
+0 -1 11331
+D2
+~
+~
+0 -1 11328
+D3
+~
+~
+0 -1 11324
+D5
+~
+~
+0 -1 11384
+S
+#11330
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north and east the ground drops away steeply to the river far below. 
+while to the west and south the garden continues.
+~
+0 0 2
+D2
+~
+~
+0 -1 11329
+D3
+~
+~
+0 -1 11325
+S
+#11331
+On the Bridge~
+You are standing on a wooden bridge high above the river below.
+
+To the west and east the garden sprawls out before you.
+~
+0 0 1
+D1
+~
+~
+0 -1 11346
+D3
+~
+~
+0 -1 11329
+S
+#11332
+Beside the waterfall~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north a thick hedge blocks your path. To the west you can see a mighty 
+waterfall cascading down to the river. To the south the ground drops away 
+steeply to the river far below. while to the east the garden continues.
+~
+0 0 2
+D1
+~
+~
+0 -1 11333
+S
+#11333
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north a thick hedge blocks your path while to the west, east and south 
+the garden continues.
+~
+0 0 2
+D1
+~
+~
+0 -1 11336
+D2
+~
+~
+0 -1 11334
+D3
+~
+~
+0 -1 11332
+S
+#11334
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west the ground drops away steeply to the river far below. while to the 
+north, east and south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11333
+D1
+~
+~
+0 -1 11337
+D2
+~
+~
+0 -1 11335
+S
+#11335
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west and south the ground drops away steeply to the river far below. 
+while to the north and east the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11334
+D1
+~
+~
+0 -1 11338
+S
+#11336
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north a thick hedge blocks your path while to the west, east and south 
+the garden continues.
+~
+0 0 2
+D1
+~
+~
+0 -1 11340
+D2
+~
+~
+0 -1 11337
+D3
+~
+~
+0 -1 11333
+S
+#11337
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11336
+D1
+~
+~
+0 -1 11341
+D2
+~
+~
+0 -1 11338
+D3
+~
+~
+0 -1 11334
+S
+#11338
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11337
+D1
+~
+~
+0 -1 11342
+D2
+~
+~
+0 -1 11339
+D3
+~
+~
+0 -1 11335
+S
+#11339
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west and south the ground drops away steeply to the river far below. 
+while to the north and east the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11338
+D1
+~
+~
+0 -1 11343
+S
+#11340
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north a thick hedge blocks your path while to the west, east and south 
+the garden continues.
+~
+0 0 2
+D1
+~
+~
+0 -1 11348
+D2
+~
+~
+0 -1 11341
+D3
+~
+~
+0 -1 11336
+S
+#11341
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11340
+D1
+~
+~
+0 -1 11349
+D2
+~
+~
+0 -1 11342
+D3
+~
+~
+0 -1 11337
+S
+#11342
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11341
+D1
+~
+~
+0 -1 11350
+D2
+~
+~
+0 -1 11343
+D3
+~
+~
+0 -1 11338
+S
+#11343
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11342
+D1
+~
+~
+0 -1 11351
+D2
+~
+~
+0 -1 11344
+D3
+~
+~
+0 -1 11339
+S
+#11344
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west the ground drops away steeply to the river far below. while to the 
+north, east and south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11343
+D1
+~
+~
+0 -1 11352
+D2
+~
+~
+0 -1 11345
+S
+#11345
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west the ground drops away steeply to the river far below. while to the 
+north, east and south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11344
+D1
+~
+~
+0 -1 11353
+D2
+~
+~
+0 -1 11346
+S
+#11346
+Before the bridge~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west is a wooden bridge arcing across the river. The bank looks as tho 
+you may be able to descend it here, while to the north, east and south the 
+garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11345
+D1
+~
+~
+0 -1 11354
+D2
+~
+~
+0 -1 11347
+D3
+~
+~
+0 -1 11331
+D5
+~
+~
+0 -1 11386
+S
+#11347
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west and south the ground drops away steeply to the river far below. 
+while to the north and east the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11346
+D1
+~
+~
+0 -1 11355
+S
+#11348
+Inside the gate~
+You stand inside the gate to a beautifully hedged garden with lush green grass. 
+It is planted with neatly arranged beds of exotic plants and flowers, some of 
+which you have never seen before. 
+
+Beyond the gate all you see is forest, to the west, east and south the garden 
+sprawls out before you.
+~
+0 4|65536 2
+D0
+gate~
+~
+1 -1 29050
+D1
+~
+~
+0 -1 11357
+D2
+~
+~
+0 -1 11349
+D3
+~
+~
+0 -1 11340
+S
+#11349
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions save north, where you see the 
+wrought-iron entrance gate to the garden.
+~
+0 0 2
+D0
+~
+~
+0 -1 11348
+D1
+~
+~
+0 -1 11358
+D2
+~
+~
+0 -1 11350
+D3
+~
+~
+0 -1 11341
+S
+#11350
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11349
+D1
+~
+~
+0 -1 11359
+D2
+~
+~
+0 -1 11351
+D3
+~
+~
+0 -1 11342
+S
+#11351
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11350
+D1
+~
+~
+0 -1 11360
+D2
+~
+~
+0 -1 11352
+D3
+~
+~
+0 -1 11343
+S
+#11352
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions..
+~
+0 0 2
+D0
+~
+~
+0 -1 11351
+D1
+~
+~
+0 -1 11361
+D2
+~
+~
+0 -1 11353
+D3
+~
+~
+0 -1 11344
+S
+#11353
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11352
+D1
+~
+~
+0 -1 11362
+D2
+~
+~
+0 -1 11354
+D3
+~
+~
+0 -1 11345
+S
+#11354
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11353
+D1
+~
+~
+0 -1 11363
+D2
+~
+~
+0 -1 11355
+D3
+~
+~
+0 -1 11346
+S
+#11355
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11354
+D1
+~
+~
+0 -1 11364
+D2
+~
+~
+0 -1 11356
+D3
+~
+~
+0 -1 11347
+S
+#11356
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west and south the ground drops away steeply to the river far below.
+while to the north and east the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11355
+D1
+~
+~
+0 -1 11365
+S
+#11357
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north a thick hedge blocks your path while to the west, east and south 
+the garden continues.
+~
+0 0 2
+D1
+~
+~
+0 -1 11366
+D2
+~
+~
+0 -1 11358
+D3
+~
+~
+0 -1 11348
+S
+#11358
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east you see a marble fountain, while to the north, west and south the 
+garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11357
+D1
+~
+~
+0 -1 11367
+D2
+~
+~
+0 -1 11359
+D3
+~
+~
+0 -1 11349
+S
+#11359
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11358
+D1
+~
+~
+0 -1 11368
+D2
+~
+~
+0 -1 11360
+D3
+~
+~
+0 -1 11350
+S
+#11360
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11359
+D1
+~
+~
+0 -1 11369
+D2
+~
+~
+0 -1 11361
+D3
+~
+~
+0 -1 11351
+S
+#11361
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11360
+D1
+~
+~
+0 -1 11370
+D2
+~
+~
+0 -1 11362
+D3
+~
+~
+0 -1 11352
+S
+#11362
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11361
+D1
+~
+~
+0 -1 11371
+D2
+~
+~
+0 -1 11363
+D3
+~
+~
+0 -1 11353
+S
+#11363
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11362
+D1
+~
+~
+0 -1 11372
+D2
+~
+~
+0 -1 11364
+D3
+~
+~
+0 -1 11354
+S
+#11364
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11363
+D1
+~
+~
+0 -1 11373
+D2
+~
+~
+0 -1 11365
+D3
+~
+~
+0 -1 11355
+S
+#11365
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the south the ground drops away steeply to the river far below. while to the 
+north, west and east the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11364
+D1
+~
+~
+0 -1 11374
+D3
+~
+~
+0 -1 11356
+S
+#11366
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north a thick hedge blocks your path while to the west and east the 
+garden continues. To the south you see a marble fountain.
+~
+0 0 2
+D1
+~
+~
+0 -1 11375
+D2
+~
+~
+0 -1 11367
+D3
+~
+~
+0 -1 11357
+S
+#11367
+At the fountain~
+You are standing in front of a beautiful marble fountain. The statue in the 
+center of it depicts cherubs in flight and the large, ornate bowl 
+sparkles with crystal clear water.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11366
+D1
+~
+~
+0 -1 11376
+D2
+~
+~
+0 -1 11368
+D3
+~
+~
+0 -1 11358
+S
+#11368
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north you see a marble fountain. while to the west, east and south the 
+garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11367
+D1
+~
+~
+0 -1 11377
+D2
+~
+~
+0 -1 11369
+D3
+~
+~
+0 -1 11359
+S
+#11369
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11368
+D1
+~
+~
+0 -1 11378
+D2
+~
+~
+0 -1 11370
+D3
+~
+~
+0 -1 11360
+S
+#11370
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11369
+D1
+~
+~
+0 -1 11379
+D2
+~
+~
+0 -1 11371
+D3
+~
+~
+0 -1 11361
+S
+#11371
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11370
+D1
+~
+~
+0 -1 11380
+D2
+~
+~
+0 -1 11372
+D3
+~
+~
+0 -1 11362
+S
+#11372
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11371
+D1
+~
+~
+0 -1 11381
+D2
+~
+~
+0 -1 11373
+D3
+~
+~
+0 -1 11363
+S
+#11373
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+The garden sprawls out in all directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 11372
+D1
+~
+~
+0 -1 11382
+D2
+~
+~
+0 -1 11374
+D3
+~
+~
+0 -1 11364
+S
+#11374
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns 
+and beds of exotic plants and flowers.
+
+To the south the ground drops away steeply to the river far below. while to the 
+north, west and east the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11373
+D1
+~
+~
+0 -1 11383
+D3
+~
+~
+0 -1 11365
+S
+#11375
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the north and east a thick hedge blocks your path, while to the west and 
+south the garden continues.
+~
+0 0 2
+D2
+~
+~
+0 -1 11376
+D3
+~
+~
+0 -1 11366
+S
+#11376
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the west you see a marble fountain. To the east a thick hedge blocks your 
+path while to the north and south the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11375
+D2
+~
+~
+0 -1 11377
+D3
+~
+~
+0 -1 11367
+S
+#11377
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path while to the north, west and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11376
+D2
+~
+~
+0 -1 11378
+D3
+~
+~
+0 -1 11368
+S
+#11378
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path while to the north, west and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11377
+D2
+~
+~
+0 -1 11379
+D3
+~
+~
+0 -1 11369
+S
+#11379
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path while to the north, west and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11378
+D2
+~
+~
+0 -1 11380
+D3
+~
+~
+0 -1 11370
+S
+#11380
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path while to the north, west and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11379
+D2
+~
+~
+0 -1 11381
+D3
+~
+~
+0 -1 11371
+S
+#11381
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path while to the north, west and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11380
+D2
+~
+~
+0 -1 11382
+D3
+~
+~
+0 -1 11372
+S
+#11382
+In the garden~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path while to the north, west and south 
+the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11381
+D2
+~
+~
+0 -1 11383
+D3
+~
+~
+0 -1 11373
+S
+#11383
+Beside the river~
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+plants and flowers.
+
+To the east a thick hedge blocks your path. To the south the ground drops away 
+steeply to the river far below, while to the north and west the garden continues.
+~
+0 0 2
+D0
+~
+~
+0 -1 11382
+D3
+~
+~
+0 -1 11374
+S
+#11384
+Under the bridge~
+You are standing on a rather steep incline beneath a wooden bridge and the river 
+is writhing and churning as it rushes past. 
+
+You can either ascend the bank or brave the churning river.
+~
+0 4 4
+D1
+~
+~
+0 -1 11385
+D4
+~
+~
+0 -1 11329
+S
+#11385
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and east it looks as tho you might be able to climb the bank while 
+to the north and south the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11395
+D1
+~
+~
+0 -1 11386
+D2
+~
+~
+0 -1 11396
+D3
+~
+~
+0 -1 11384
+S
+#11386
+Under the bridge~
+You are standing on a rather steep incline beneath a wooden bridge and the river 
+is writhing and churning as it rushes past. 
+
+You can either ascend the bank or brave the churning river.
+~
+0 4 4
+D3
+~
+~
+0 -1 11385
+D4
+~
+~
+0 -1 11346
+S
+#11387
+Beneath the waterfall~
+A mighty waterfall cascades down into the river before you. It is a truly 
+magnificent sight to behold as the water seems to be dancing when you gaze up at 
+it.
+
+To the west and east the bank ascends steeply preventing travel while to the 
+south the river winds out of sight.
+~
+0 0 7
+D2
+~
+~
+0 -1 11388
+S
+#11388
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north you can see a very high waterfall. To the west and south the bank 
+ascends steeply preventing travel while to the east the river winds out of 
+sight.
+
+There are very disturbing grunting noises coming from the north.
+~
+0 0 7
+D0
+~
+~
+0 -1 11387
+D1
+~
+~
+0 -1 11389
+S
+#11389
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and east the bank ascends steeply preventing travel while to the 
+west and south the river winds out of sight.
+~
+0 4 7
+D2
+~
+~
+0 -1 11390
+D3
+~
+~
+0 -1 11388
+S
+#11390
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and east the bank ascends steeply preventing travel while to the 
+north and south the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11389
+D2
+~
+~
+0 -1 11391
+S
+#11391
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and south the bank ascends steeply preventing travel while to the 
+north and east the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11390
+D1
+~
+~
+0 -1 11392
+S
+#11392
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and east the bank ascends steeply preventing travel while to the 
+west and south the river winds out of sight.
+~
+0 0 7
+D2
+~
+~
+0 -1 11393
+D3
+~
+~
+0 -1 11391
+S
+#11393
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and south the bank ascends steeply preventing travel while to the 
+north and east the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11392
+D1
+~
+~
+0 -1 11394
+S
+#11394
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and east the bank ascends steeply preventing travel while to the 
+west and south the river winds out of sight.
+~
+0 0 7
+D2
+~
+~
+0 -1 11395
+D3
+~
+~
+0 -1 11393
+S
+#11395
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and east the bank ascends steeply preventing travel while to the 
+north and south the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11394
+D2
+~
+~
+0 -1 11385
+S
+#11396
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and east the bank ascends steeply preventing travel while to the 
+north and south the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11385
+D2
+~
+~
+0 -1 11397
+S
+#11397
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and south the bank ascends steeply preventing travel while to the 
+north and east the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11396
+D1
+~
+~
+0 -1 11398
+S
+#11398
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and east the bank ascends steeply preventing travel while to the 
+west and south the river winds out of sight.
+~
+0 0 7
+D2
+~
+~
+0 -1 11399
+D3
+~
+~
+0 -1 11397
+S
+#11399
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the west and south the bank ascends steeply preventing travel while to the 
+north and east the river winds out of sight.
+~
+0 0 7
+D0
+~
+~
+0 -1 11398
+D1
+~
+~
+0 -1 11400
+S
+#11400
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and south the bank ascends steeply preventing travel while to the 
+west and east the river winds out of sight.
+~
+0 0 7
+D1
+~
+~
+0 -1 11401
+D3
+~
+~
+0 -1 11399
+S
+#11401
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and south the bank ascends steeply preventing travel while to the 
+west and east the river winds out of sight.
+~
+0 0 7
+D1
+~
+~
+0 -1 11402
+D3
+~
+~
+0 -1 11400
+S
+#11402
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and south the bank ascends steeply preventing travel while to the 
+west and east the river winds out of sight.
+~
+0 0 7
+D1
+~
+~
+0 -1 11403
+D3
+~
+~
+0 -1 11401
+S
+#11403
+In the river~
+The river is writhing and churning around you in a very unnatural manner and you 
+don't seem to be able to see beneath the surface.
+
+To the north and south the bank ascends steeply preventing travel while to the 
+west the river winds out of sight. To the east the river drops away suddenly and 
+you can hear the distinctive roar of a waterfall. Better not get to close...
+~
+0 0 7
+D1
+~
+~
+0 -1 11406
+D3
+~
+~
+0 -1 11402
+S
+#11404
+Climbing the giant sunflower~
+As you are climbing up the stalk of the giant sunflower you look around and 
+realize that the view is amazing from up here. You see the garden sprawled out 
+beneath you in all its glory and know that beauty such as this must have been 
+created by magical means.
+~
+0 4|2048 9
+D4
+~
+~
+0 -1 11405
+D5
+~
+~
+0 -1 11315
+S
+#11405
+On top of the sunflower~
+At last you have reached the top of the mighty flower, looking down the ground 
+seems very far away. Sitting in the center of the sunflower is a delicate 
+crystal throne  intricately carved and inlaid with tiny flecks of gold that 
+sparkle in the magical light that surrounds you. The mysterious light fills you 
+with a sense of peace and sanctuary.
+~
+0 1024|8192|65536 2
+D5
+~
+~
+0 -1 11404
+S
+#11406
+Clinging to a rock~
+You are dangling precariously from a slippery rock that is jutting out at the 
+top of a waterfall. Looking down all you see is water, it seems to drop away for 
+miles below you.
+~
+0 4 9
+D3
+~
+~
+0 -1 -1
+S
+#0
+
+
+#RESETS
+D 1 11348 0 1  ;close north in entrance room
+*
+M 1 11300 1 11387			The water drake to beneath the waterfall
+E 1 11300 100 16
+E 1 11344 100 17
+E 1 11300 100 18
+G 1 11314 100 
+E 1 11343 100 5
+G 1 11303 100
+G 1 11322 100
+*
+M 1 11301 1 11390			A water sprite to in the stream
+E 1 11316 100 17
+*
+M 1 11302 1 11392			A water sprite to in the stream
+E 1 11316 100 17
+*
+M 1 11303 1 11385			A water sprite to in the stream
+E 1 11316 100 17
+*
+M 1 11304 1 11398			A water sprite to in the stream
+E 1 11316 100 17
+*
+M 1 11305 1 11402			A water sprite to in the stream
+E 1 11316 100 17
+*
+M 1 11306 1 11313			A carnivorous plant to beside the waterfall
+*
+M 1 11307 1 11300			A carnivorous plant to Bottom left corner
+*
+M 1 11308 1 11332			A carnivorous plant to beside the waterfall
+*
+M 1 11309 1 11375			A carnivorous plant to A room
+*
+M 1 11310 1 11362			A carnivorous plant to A room
+*
+M 1 11311 1 11322			The gardener to A sunflower patch
+E 1 11311 100 16
+E 1 11312 100 5
+E 1 11313 100 8
+E 1 11327 100 9
+O 1 11315 100 11322			a sunflower petal to A sunflower patch
+*
+M 1 11312 1 11309			A vine to A room
+O 1 11331 100 11310			{Wa white orchid{x to In the garden
+*
+M 1 11313 1 11303			A vine to A room
+O 1 11332 100 11337			{Ya bunch of daffodils{x to In the garden
+*
+M 1 11314 1 11378			A vine to A room
+O 1 11333 100 11361			{Rwild roses{x to In the garden
+O 1 11330 1 11367                      ;fountain?
+*
+M 1 11315 1 11310			The fairy to In the garden.
+E 1 11302 100 17
+E 1 11310 100 4
+E 1 11317 100 12
+E 1 11321 100 1
+E 1 11329 100 5
+E 1 11328 100 6
+G 1 11301 100
+*
+M 1 11316 1 11337			The fairy to In the garden.
+E 1 11302 100 17
+E 1 11310 100 4
+E 1 11318 100 12
+E 1 11321 100 1
+E 1 11329 100 5
+E 1 11328 100 6
+G 1 11301 100
+*
+M 1 11317 1 11361			The fairy to In the garden.
+E 1 11302 100 17
+E 1 11310 100 4
+E 1 11319 100 12
+E 1 11321 100 1
+E 1 11329 100 5
+E 1 11328 100 6
+G 1 11301 100
+*
+M 1 11318 1 11356			The fairy to Beside the river.
+E 1 11302 100 17
+E 1 11310 100 4
+E 1 11320 100 12
+E 1 11321 100 1
+E 1 11329 100 5
+E 1 11328 100 6
+G 1 11301 100
+*
+M 1 11319 1 11308			The tree to In the garden.
+E 1 11304 100 17
+E 1 11342 100 5
+*
+M 1 11320 1 11380			The tree to In the garden.
+E 1 11304 100 17
+E 1 11342 100 5
+*
+M 1 11321 1 11405			the fairy queen to On top of the sunflower
+E 1 11305 100 6
+E 1 11306 100 5
+E 1 11307 100 8
+E 1 11308 100 17
+E 1 11309 100 16
+E 1 11310 100 4
+E 1 11321 100 1
+*
+M 1 11322 1 11325			the mischievous pixie to In the garden
+E 1 11326 100 5
+E 1 11325 100 6
+E 1 11323 100 7
+E 1 11324 100 8
+O 1 11334 100 11356			{Mpurple tulips{x to Beside the river
+*
+M 1 11323 1 11350			the mischievous pixie to In the garden
+E 1 11326 100 5
+E 1 11325 100 6
+E 1 11323 100 7
+E 1 11324 100 8
+*
+M 1 11324 1 11383			the mischievous pixie to Beside the river
+E 1 11326 100 5
+E 1 11325 100 6
+E 1 11323 100 7
+E 1 11324 100 8
+*
+M 1 11325 1 11331			the leprechaun to On the Bridge
+E 1 11335 100 5
+E 1 11336 100 6
+E 1 11337 100 7
+E 1 11338 100 13
+E 1 11340 100 0
+E 1 11339 100 8
+*
+O 1 11341 100 11405			ball of continual light to fairy queen's room
+
+S
+
+
+#SHOPS
+0
+
+
+#SPECIALS
+M  11321 spec_cast_adept			the fairy queen
+M  11325 spec_thief			the leprechaun
+M  11319 spec_warrior			the tree
+M  11320 spec_warrior			the tree
+M  11315 spec_cast_archmage		fairy
+M  11316 spec_cast_archmage		fairy
+M  11317 spec_cast_archmage		fairy
+M  11318 spec_cast_archmage		fairy
+S
+
+
+#$

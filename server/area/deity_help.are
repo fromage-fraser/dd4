@@ -1,0 +1,347 @@
+#HELPS
+
+
+-1 DEITY DEITIES 'DEITY SYSTEM' GODS PATRONS FAVOUR FAVOR PATRONAGE~
+{W
+The Dragons Domain Deity System{x
+
+Please consult the following online HELP entries for information on how
+the deity system works, and how you may use it:
+
+    help deity info             Background information
+    help deity pantheon         The Pantheon of Gods
+    help deity favour           Favour with Deities
+    help deity patron           Patron Deities
+    help deity prayers          Prayers to Deities
+
+The following commands may be used by players to gain information about
+and interact with deities; read the respective online HELP entires for
+each command for details.
+
+    pantheon                    View the Pantheon of Gods
+    pray                        Pray to the Gods
+
+The deity system is intended to be additional variety, and randomness to
+the domain, and is not intended to be applicable to all players.
+~
+
+
+-1 'DEITY INFORMATION'~
+{W
+Deity System Information{x
+
+The deity system was introduced to provide further variety, randomness and
+fun to the DD world.  The 'deity system' is a collection of pre-defined
+Gods that are able to interact with mortal characters in either good or
+bad ways.  These Gods are not creatures that players may deal with
+directly, and are very separate from the Immortals that run the Domain.
+
+To clarify: an 'Immortal' is a player that administers the Domain, a
+character with a set of special commands, who may not be killed in combat.
+A 'deity' is an immaterial divine being, controlled automatically by the
+MUD.  You will never be able to meet any of the deities; you can 'pray' to
+them (see below), and will sometimes be influenced or affected by their
+power.
+
+There are many deities, with individual personalities and characteristics.
+All together, they form the 'Pantheon': the complete group of divine
+beings.  Deities within the Pantheon compete for power and influence,
+affecting how they may interact with mortals (see 'HELP DEITY PANTHEON').
+
+Each of the deities closely watches the activity of mortal creatures
+within the Domain.  Depending on their characteristics and actions,
+characters gain or lose 'favour' with each of the deities (see 'HELP DEITY
+FAVOUR').  Characters that enjoy good favour with a deity will receive
+beneficial spells and effects, will have their prayers answered (see
+below) and will avoid punishment if a deity is angry.  Characters who are
+out of favour may suffer the terrible consequences of a deity's wrath!
+
+Characters have the opportunity to adopt one of the deities as their
+'patron' (see 'HELP DEITY PATRON').  Followers may 'pray' to their patron
+for rescue, empowerment or information (see 'HELP DEITY PRAYERS'),
+depending on the type of deity they worship.  The effects of prayers are
+powerful and are unable to be dispelled as normal magical effects are.  In
+order for prayers to be answered, a character must enjoy favour with their
+patron, otherwise bad things may happen!  The potency of a prayer's
+effects may also vary, depending on the position of deity within the
+Pantheon.
+
+For more information, read the help entries listed in 'HELP DEITY'.
+~
+
+
+-1 'DEITY PANTHEON'~
+{W
+The Pantheon of Gods{x
+
+The 'Pantheon' is the total collection of deities exisiting within the
+Domain.  There are many deities, good and evil natured, some warlike and
+others peaceful.  They vie constantly for dominance within the Pantheon.
+At any point in time, good, neutral or evil deities will be dominant.
+Deities who are dominant are able to exert powerful effects on their
+followers and can influence the followers of other deities in good or bad
+ways.  Deities who are not highly ranked within the Pantheon have much
+weaker powers, and answer the prayers of their worshipers less effectively.
+
+You may view the Pantheon by using the PANTHEON command.  It will list all
+of the deities, and the favour that you have with each.  Favour is ranked
+from 'strong favour' through to 'strong disfavour'.
+
+You may view a description of any deity within the Pantheon by entering
+'PANTHEON <deity name>'.
+
+With the exception of their patron deity, if they have one, characters can
+not know how individual deities are ranked within the Pantheon (i.e. how
+powerful each deity is).  If you have a patron, you can feel whether your
+deity is powerful or weak, and when their ranking changes significantly.
+
+The internal ranking of the Pantheon is set randomly when the MUD reboots,
+and changes slowly over time.  Player characters, including Immortals, 
+cannot influence or set the way the Pantheon is ranked.
+
+See 'HELP DEITY' for more information.
+~
+
+
+0 PANTHEON~
+Usage: pantheon
+Usage: pantheon <deity name>
+
+PANTHEON without argument lists the Pantheon of the Gods: their names and
+titles, and what favour you have with each.  It will also indicate your
+patron deity if you have one, and if your patron is particularly strong or
+weak within the Pantheon.
+
+'PANTHEON <deity name>' will give you a description of the deity, what
+sort of personality the deity has, and what races and classes the deity
+favours or disfavours.
+
+See 'HELP DEITY PANTHEON' for background, and 'HELP DEITY' for more
+information. 
+~
+
+
+-1 'DEITY FAVOUR' 'DEITY FAVOR'~
+{W
+Deity Favour{x
+
+Your 'favour' with a deity is a measure of how worthy of spirit that deity
+feels you are.  Your favour rates from 'strong favour' (good) through
+'indifference' (neither good nor bad) to 'strong disfavour' (bad).
+You have a favour rating for every deity within the Pantheon.
+
+Your favour with any deity is important if that deity is powerfully ranked
+within the Pantheon, or if that deity is your patron.  Deities that
+dominate the Pantheon occasionally reward those in favour or punish those
+out of favour; these rare events are known as 'Acts of God'.  Your favour
+with your patron is particularly important: you may only expect your
+patron to respond to your prayers if you are in favour (see 'HELP DEITY
+PRAYERS').
+
+How your favour with a particular deity is calculated depends on the
+personality of the deity and the way you behave in the Domain.  Important
+factors include your alignment relative to the deity's alignment, your
+race and your class.  Use the PANTHEON command for a description of the
+deity and a list of classes and races that they favour and disfavour
+(enter PANTHEON for a list of deities, and 'PANTHEON <deity name>' for
+specific information).  Depending on the nature of the deity, your
+aggressiveness or helpfulness will also influence your favour.
+
+You will always be out of favour with a least a proportion of the
+Pantheon; it is most important to maintain favour with your patron if you
+have one, otherwise your prayers will be unanswered or even punished.
+Generally, you need to be in favour with a deity if you want that deity to
+become your patron (see HELP DEITY PATRON).
+
+See 'HELP DEITY' for more information.
+~
+
+-1 'DEITY PATRON'~
+{W
+Patron Deities{x
+
+You have the option of selecting a deity within the Pantheon as your
+'patron'.  You will then be able to 'pray' for assistance or guidance from
+that deity.  There are certain restrictions placed on you successfully
+chosing a patron: you must be at least level 15, and you must be in
+favour, or at least close to favour, with that deity (determined by using
+the PANTHEON command).
+
+You must beg a deity for them to give you patronage by using the PRAY
+command: 'PRAY PATRONAGE <deity name>'.  The worst thing that can happen
+to you when you pray for patronage is that you will not be accepted as a
+follower.  Once you have a patron, you may then PRAY normally (see 'HELP
+DEITY PRAYERS' and 'HELP PRAY').
+
+Once you worship a deity, you can not easily leave service.  Many deities
+will not allow you to stop following them, let alone follow another.  If
+you stop following your patron, you will not be accepted by most other
+deities within the Pantheon.
+
+To stop following a deity, enter 'PRAY PATRONAGE RELEASE'.  If you abandon
+service, you will anger your patron and their allies within the Pantheon.
+Beware!
+
+See 'HELP DEITY' for more information.
+~
+
+
+-1 'DEITY PRAYERS'~
+{W
+Deities and Prayers{x
+
+(Note: the spell 'prayer' has nothing to do with the deity system and the
+command PRAY.)
+
+If you have a patron deity (see 'HELP DEITY PATRON'), you may 'pray' to
+them for assistance.  What you may pray for is determined by the type of
+deity you worship: for example, war and death Gods may injure or kill your
+enemies or cast powerful combat-enhancing enchantments on you; peaceful
+and protective Gods can rescue you from trouble or death or protect you
+from danger and injury.
+
+For a list of prayers available to you, enter PRAY without argument.
+Enter 'PRAY <prayer name>' or 'PRAY <prayer name> <target>' as necessary
+to channel your patron's power.
+
+Whether your prayers are answered depends on your current favour with your
+patron, the length of time since your last successful prayer, and whether
+your patron considers you have earned this latest prayer.  Generally, the
+longer you stay in favour with your patron, they more often they will grant
+you prayers.  You cannot know whether there are any prayers 'owing to you'.
+
+The effects of prayers depends upon the power of your patron within the
+Pantheon: the more highly ranked your patron is, the more powerful the
+prayer will be.  Many long-lasting effects of prayers cannot be removed by
+death or a 'dispel magic' spell: they can only wear off over time.
+
+See 'HELP DEITY' for more information.
+~
+
+
+0 PRAY~
+Usage: pray
+Usage: pray <prayer name>
+Usage: pray <prayer name> <target>
+Usage: pray patronage <deity name>
+Usage: pray patronage release
+
+Pray to a deity for patronage, or pray for assistance from your patron.
+
+Typing PRAY alone gives you a list of prayers available to you if you have
+chosen a patron.  Enter 'PRAY <prayer name>' or 'PRAY <prayer name>
+<target>' to use these prayers.
+
+If you don't have a patron, you can beg a deity to accept you as a follower
+by entering 'PRAY PATRONAGE <deity name>'.  You can attempt to leave the
+service of your patron by entering 'PRAY PATRONAGE RELEASE'.
+
+See 'HELP DEITY PATRON' and 'HELP DEITY PRAYERS' for background, and 'HELP
+DEITY' for more information.
+~
+
+
+0 'PRAYER DESTRUCTION'~
+Usage: pray destruction
+
+Channel your patron's destructive power to unleash armageddon throughout
+your current location.
+~
+
+
+0 'PRAYER COMBAT'~
+Usage: pray combat
+
+Pray to your patron for increased power and skill during melee.
+~
+
+
+0 'PRAYER LOCATE'~
+Usage: pray locate <target>
+
+Pray to your patron to reveal the whereabouts of any creature within the
+Domain.  You may locate other players.
+~
+
+
+0 'PRAYER WEAKEN'~
+Usage: pray weaken <target>
+
+Pray for your patron to weaken any creature, where ever they may reside.
+If you are clanned, you may target other players, so long as they are
+within your pkilling range.
+~
+
+
+0 'PRAYER REVEAL'~
+Usage: pray reveal <target>
+
+Pray for your patron to reveal information about any creature, where ever
+they may be in the Domain.  If you are clanned, you may target other
+players, so long as they are within your pkilling range. 
+~
+
+
+0 'PRAYER PROTECTION'~
+Usage: pray protection
+
+Pray to your patron for powerful protective magiks.
+~
+
+
+0 'PRAYER RESCUE'~
+Usage: pray rescue
+
+Beg your patron to return you to safety.  You may be rescued from any
+location, even if you are fighting.
+~
+
+
+0 'PRAYER HEALING'~
+Usage: pray healing
+
+Pray to your patron for restoration.
+~
+
+
+0 'PRAYER PLAGUE'~
+Usage: pray plague
+
+Pray for your patron to unleash terrible sickness upon the worshipers of
+false gods.
+~
+
+
+0 'PRAYER CHAOS'~
+Usage: pray chaos
+
+Pray for your patron to spread chaos amongst the worshipers of false gods.
+~
+
+
+0 'PRAYER PASSAGE'~
+Usage: pray passage
+
+Pray to your patron for safe passage through the dangerous wilderness.
+~
+
+
+0 'PRAYER TRANSPORT'~
+Usage: pray transport <target>
+
+Pray to your patron for transportation to any creature within the Domain.
+You will not be transported to other players.
+~
+
+
+0 'PRAYER DEATH'~
+Usage: pray death <target>
+
+Pray for your patron to deliver instant death to any creature at your
+location.  You may not target other players.
+~
+
+
+
+0 $~
+#$

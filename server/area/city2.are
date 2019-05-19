@@ -1,0 +1,828 @@
+#AREA	Jammer~  Draagdim Streets~
+-2 -2 0 100
+
+#RECALL
+28121
+#MOBILES
+#28100
+gate watch guard~
+the Gate Guard~
+The gate guard stands here,  proudly protecting the city...
+~
+These men are chosen for their tall menacing demeanour,  a necessary evil in the 
+current times of unrest and uncertainty.
+~
+2|64 8|32|512|8192 400 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28101
+elite guard watch~
+the Elite Guard~
+The Elite guard ignores you,  continuing to do his duty...
+~
+The hand picked elite of the Draagdim guard assumed the coveted position of 
+guarding the palace.  They are all veterans and remain alert.
+~
+2|64 8|32|512|8192 900 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#28100
+sword~
+an Elite Sword~
+A sword bearing the symbol of the Draagdim elite guard rests here.~
+~
+5 64|1024 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 10
+#28101
+breastplate~
+an Elite Breastplate~
+A breastplate bearing the symbol of the Draagdim Elite guard lies here...~
+~
+9 64|1024 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -20
+A
+13 20
+#28102
+helm~
+an Elite Helm~
+A helmet bearing the symbol of the Draagdim Elite guard lies here...~
+~
+9 64|1024 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+17 -10
+A
+18 10
+#28103
+axe battle battleaxe~
+a City Battleaxe~
+A large and carefully sharpened battleaxe rests here.~
+~
+5 64|2048 1|8192
+0~ 1~ 6~ 13~ 
+5 0 0
+A
+19 20
+#28104
+jerkin city leather~
+a City Leather Jerkin~
+A leather jerkin bearing the symbol of Draagdim lies here.~
+~
+9 64|1024 1|8
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+17 -10
+A
+5 2
+#28105
+shield~
+an Elite Shield~
+A shield bearing the symbol of the Draagdim elite guard lies here.~
+~
+9 64|1024|2048 1|512
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+17 -25
+A
+18 10
+#0
+
+
+#ROOMS
+#28100
+The North Gate~
+You are standing at the North Gate.  Southwards the sprawl of the
+city unfolds before your eyes.  Northwards,  you see the arch of the
+massive north gate.
+~
+0 1024 1
+D0
+~
+~
+0 -1 28124
+D2
+~
+~
+0 -1 28101
+S
+#28101
+The North Road~
+You are standing on the North Road.  To the East,  a wall runs
+southwards separating the rich exclusive high quarter from the rest
+of the city.  The North Gate is a short walk northwards and, to the
+south, the road runs further into the city.
+~
+0 4 1
+D0
+~
+~
+0 -1 28100
+D2
+~
+~
+0 -1 28102
+D3
+~
+~
+0 -1 28121
+S
+#28102
+The North Road~
+You are standing on the North Road.  The High Wall is to the east and
+the gateway is a short distance off to the north and the road 
+continues south into the heart of the city.
+~
+0 0 1
+D0
+~
+~
+0 -1 28101
+D2
+~
+~
+0 -1 28103
+D3
+~
+~
+0 -1 28122
+S
+#28103
+The North Road~
+You are standing on the North Road.  Eastwards,  the High Wall runs
+north-south alongside the road.  Northwards,  you can see the North
+Gate looming out of the massive city walls.  Southwards,  you can see
+the High Quarter gates as the road continues further into the heart
+of the city.
+~
+0 0 1
+D0
+~
+~
+0 -1 28102
+D2
+~
+~
+0 -1 28104
+D3
+~
+~
+0 -1 28123
+S
+#28104
+The Inner Gates~
+You are standing at the Inner Gate.  A gateway into the High Quarter
+stands to the east.  Southwards you can see the city palace emerging 
+out of the chaos of dwellings and shops that make up this huge city.
+Northwards,  the High Wall runs towards the North Gate.
+~
+0 4 1
+D0
+~
+~
+0 -1 28103
+D1
+~
+~
+0 -1 28000
+D2
+~
+~
+0 -1 28105
+S
+#28105
+The North Cross~
+You are standing at an intersection.  Northwards, the North Road
+leads to the North Gate.  West and East directions take you around
+the Palace Moat.
+~
+0 0|8192 1
+D0
+~
+~
+0 -1 28104
+D1
+~
+~
+0 -1 28112
+D3
+~
+~
+0 -1 28106
+S
+#28106
+The Palace Square~
+You are standing at the northwest corner of the Palace Square.  The
+road leads either east or south.
+~
+0 0|8192 1
+D1
+~
+~
+0 -1 28105
+D2
+~
+~
+0 -1 28107
+S
+#28107
+The West Cross~
+You are standing at an intersection.  Westwards,  the road leads
+towards the West Gate.  North and south roads take you around the
+city palace.
+~
+0 0|8192 1
+D0
+~
+~
+0 -1 28106
+D2
+~
+~
+0 -1 28108
+D3
+~
+~
+0 -1 28120
+S
+#28108
+The Palace Square~
+You are standing at the South Western corner of the Palace Square.
+The road leads either north or east.
+~
+0 0|8192 1
+D0
+~
+~
+0 -1 28107
+D1
+~
+~
+0 -1 28109
+S
+#28109
+The South Cross~
+You are standing at an intersection.  Southwards,  the road leads
+towards the South Gate.  East and west directions take you around the
+city palace.
+~
+0 0|8192 1
+D1
+~
+~
+0 -1 28110
+D2
+~
+~
+0 -1 28119
+D3
+~
+~
+0 -1 28108
+S
+#28110
+The Palace Square~
+You are standing at the Southeastern corner of the Palace Square.
+The road leads either north or west.
+~
+0 0|8192 1
+D0
+~
+~
+0 -1 28111
+D3
+~
+~
+0 -1 28109
+S
+#28111
+The East Cross~
+You are standing at an intersection.  The road leads Eastwards
+towards the East Gate or north-south around the city palace.
+~
+0 0|8192 1
+D0
+~
+~
+0 -1 28112
+D1
+~
+~
+0 -1 28113
+D2
+~
+~
+0 -1 28110
+S
+#28112
+The Palace Square~
+You are standing at the Northeastern corner of the Palace Square.
+The road leads either south or west.
+~
+0 0|8192 1
+D2
+~
+~
+0 -1 28111
+D3
+~
+~
+0 -1 28105
+S
+#28113
+The Inner Gates~
+You are standing on the East Road.  North of you is South Lock,  the
+so called back-door into the High Quarter yet it is no less heavily
+guarded.  Eastwards, the road follows the High Wall to the East Gate.
+Westwards, you can see the city palace rise out of the chaotic urban
+sprawl. Southwards, you can see the seedy streets of the port quarter.
+~
+0 4 1
+D0
+~
+~
+0 -1 28014
+D1
+~
+~
+0 -1 28114
+D2
+~
+~
+0 -1 28213
+D3
+~
+~
+0 -1 28111
+S
+#28114
+The East Road~
+You are standing on the East Road.  Eastwards, the High Wall follows
+the road towards the East Gate.  Westwards you can see a gateway in
+the High Wall.  Southwards,  the port quarter bustles with activity
+no matter what time of day.
+~
+0 0 1
+D1
+~
+~
+0 -1 28115
+D3
+~
+~
+0 -1 28113
+S
+#28115
+The East Road~
+You are standing on the High Road.  The East Gate is a short distance
+to the east.  The road leads westwards into the heart of the city.
+North of you is the wall surrounding the High Quarter and south is
+the port quarter, so you'd better watch your step!
+~
+0 0 1
+D1
+~
+~
+0 -1 28116
+D3
+~
+~
+0 -1 28114
+S
+#28116
+The East Road~
+You are standing on the East Road.  Westwards,  the road runs just
+south of the High Wall deep into the city depths.  Eastwards,  the
+road leads out to the East Gate.  The smell coming from the south can
+only be made by fish.  The port quarter lies south of you.
+~
+0 0 1
+D1
+~
+~
+0 -1 28117
+D3
+~
+~
+0 -1 28115
+S
+#28117
+The East Road~
+You are standing on the East Road.  Northwards,  a wall runs west
+from the city walls around the elite and exclusive High Quarter.  The
+road runs west alongside the wall or east towards the East Gate.
+~
+0 4 1
+D1
+~
+~
+0 -1 28118
+D3
+~
+~
+0 -1 28116
+S
+#28118
+The East Gate~
+You are standing at the massive East Gate.  Westwards the city rolls
+outstretched as far as your eyes can see.  Eastwards, you see the
+archway in the mighty city wall leading out into the surrounding
+wilderness.
+~
+0 0 1
+D1
+~
+~
+0 -1 700
+D3
+~
+~
+0 -1 28117
+S
+#28119
+The Inner Gates~
+You are on the south road.  Northwards,  you can see the splendor of
+the Draagdim Palace square.  Westwards,  the sprawl of small tents,
+stone fixtures and lean-to's all chaotically mix together to form
+the Draagdim Market.  The road south runs alongside the estuary and
+you can see large square rigged ships that ply the great ocean to the
+far east tied up.
+~
+0 4 1
+D0
+~
+~
+0 -1 28109
+D2
+~
+~
+0 -1 28125
+S
+#28120
+The Inner Gates~
+You are standing on the West Road.  To the east you can see the
+Palace square.  Southwards,  the area set aside as the marketplace is
+covered with a maze of tents and shops and stalls of all
+descriptions.  The road west runs along the edge of the mighty
+volcano Mt Supmylo as it makes its way west towards the west city
+gate.
+~
+0 4 1
+D1
+~
+~
+0 -1 28107
+D3
+~
+~
+0 -1 28131
+S
+#28121
+Temple of Brutus~
+You are standing in a small temple,  dedicated to the GOD of the MUD.
+Strange,  bizarre pictures adorn the walls depicting scenes from far
+off lands,  strange runic figures and the strangest four wheeled
+chariot you have ever seen.
+~
+0 8 0
+D1
+~
+~
+0 -1 28101
+S
+#28122
+Temple of Jammer~
+You are standing a small shrine dedicated to the GOD Jammer.  Soft
+music,  seemingly coming from inside your head,  calms you as you
+survey this rather plain looking room.  There are statues of various
+musical instruments, some easily recognised and others curiously
+familiar.  A large word hangs over the doorway leading to the street.
+It reads: "Marshall(tm)".  It's meaning escapes you.
+~
+0 8 0
+D1
+~
+~
+0 -1 28102
+S
+#28123
+Temple of the Gods~
+This room has a number of alcoves spotted around it.  Inside are
+small dedicated shrines to the other GODs in the MUD.  You see a
+small statue of a dwarf holding a small piece of cloth (obviously
+Geshp),  a cross-eyed rubbish bin (Madboy),  and others belonging 
+to Jihad,  Rufus and Sacrifis.
+~
+0 8 0
+D1
+~
+~
+0 -1 28103
+S
+#28124
+Gateway to the city~
+You are standing inside the city wall that surround the city of
+Draagdim.  Either side of the seemingly miniscule gate,  the mighty
+city wall,  renowned throughout the lands for it's steadfastness,
+stands as a rampart holding the wilderness of the surrounds at bay
+from the civility within.
+North you small swamp gas....
+~
+0 4|8 0
+D0
+~
+~
+0 -1 31400
+D2
+~
+~
+0 -1 28100
+S
+#28125
+The South Road~
+The south road runs north and south from here.  To the west you spot
+a small opening in the jumble of shops that is the Draagdim market.
+Southwards,  the road runs alongside the estuary to the east to the
+south gate.
+~
+0 0 1
+D0
+~
+~
+0 -1 28119
+D2
+~
+~
+0 -1 28126
+S
+#28126
+The South Road~
+You are standing on Draagdim's south road.  This is the major trade
+road that leads to Draagdims famous market.  To the east,  the
+estuary around which the port is situated winds into the heart of the
+city and to the north, you can see the spires of the city palace
+looming out of the urban sprawl.
+~
+0 0 1
+D0
+~
+~
+0 -1 28125
+D2
+~
+~
+0 -1 28127
+S
+#28127
+The South Road~
+The South Road runs straight from the south gate to the palace square
+alongside the tidal inlet that is the only entrance by sea into the
+mighty city.  You notice,  to the west,  a small entranceway into the
+massive shantytown that is the Draagdim market.
+~
+0 0 1
+D0
+~
+~
+0 -1 28126
+D2
+~
+~
+0 -1 28128
+S
+#28128
+The South Road~
+The South Road runs straight from the south gate to the palace square
+alongside the tidal inlet that is the only entrance by sea into the
+mighty city.
+~
+0 0 1
+D0
+~
+~
+0 -1 28127
+D2
+~
+~
+0 -1 28129
+S
+#28129
+The South Road~
+You are standing inside the huge city walls that surround the proud
+city of Draagdim.  To the east,  you see the fortified sea gate
+that is scrupulously guarded by the proud elite sea watch.  Westwards
+the confusion of stalls,  lean-to's and shops that are the Draagdim
+Market are so tightly jammed together in the space you cannot find a 
+space to get in.
+~
+0 4 1
+D0
+~
+~
+0 -1 28128
+D2
+~
+~
+0 -1 28130
+S
+#28130
+The South Gate~
+You are standing within the citywalls.  South,  the gate leads out into a dark
+and foreboding forest. North,  the sights,  sounds and smells of this continent's 
+largest city tempt the senses.
+~
+0 0 1
+D0
+~
+~
+0 -1 28129
+D2
+~
+~
+0 -1 29000
+S
+#28131
+The West Road~
+To the south,  you notice a small alley leading directly into the
+heart of the jumble of shops in the Marketplace.  The West road
+continues along the foot of Mt Supmylo west towards the West Gate,
+or east to the city palace.
+~
+0 0 1
+D1
+~
+~
+0 -1 28120
+D3
+~
+~
+0 -1 28132
+S
+#28132
+The West Road~
+The West Road heads east straight for the heart of the city or
+west towards the the entrance to the city gates, whilst carefully
+skirting the mass of shops that make up the famous Draagdim market.
+~
+0 0 1
+D1
+~
+~
+0 -1 28131
+D3
+~
+~
+0 -1 28133
+S
+#28133
+The West Road~
+The West Road runs westwards out the western side of the city and
+the troubled west trade road.  South is the Draagdim market,  a hive
+of activity any time of day.  East,  the tall spires of the city
+palace loom ominously.
+~
+0 0 1
+D1
+~
+~
+0 -1 28132
+D3
+~
+~
+0 -1 28134
+S
+#28134
+The West Road~
+The tall Volcano Mt Supmylo looms north of you as the road runs
+east-west from the heart of the city of Draagdim to the Western Gate.
+South of you the tents and shops open up to reveal a small road
+leading into their depths.
+~
+0 0 1
+D1
+~
+~
+0 -1 28133
+D3
+~
+~
+0 -1 28135
+S
+#28135
+The West Road~
+You are standing just inside the city walls.  The wall runs up the
+side of the mountain and then curves east around the foot of the
+huge landmark.  South,  you can see the scatter of shops that is the
+famous Draagdim market.  Through the middle of these two extremes,
+the West Road runs into the heart of the mighty city.
+~
+0 4 1
+D1
+~
+~
+0 -1 28134
+D3
+~
+~
+0 -1 28136
+S
+#28136
+The West Gate~
+You are standing inside the huge city walls.  You can see the Western
+Trade Road run west out from the city gates into the surrounding
+lands.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 28135
+D3
+~
+~
+0 -1 28150
+S
+#0
+
+
+#RESETS
+*
+M 1 28100 8 28100			the Gate Guard to The North Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 8 28100			the Gate Guard to The North Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 8 28118			the Gate Guard to The East Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 8 28118			the Elite Guard to The East Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 5 28130			the Gate Guard to The South Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 8 28130			the Gate Guard to The South Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 8 28136			the Gate Guard to The West Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28100 8 28136			the Gate Guard to The West Gate
+E 1 28104 100 5
+E 1 28103 100 16
+*
+M 1 28101 4 28109			the Elite Guard to The South Cross
+E 1 28101 100 5
+E 1 28102 100 6
+E 1 28105 100 11
+E 1 28100 100 16
+*
+M 1 28101 4 28105			the Elite Guard to The North Cross
+E 1 28101 100 5
+E 1 28102 100 6
+E 1 28105 100 11
+E 1 28100 100 16
+*
+M 1 28101 4 28107			the Elite Guard to The West Cross
+E 1 28101 100 5
+E 1 28102 100 6
+E 1 28105 100 11
+E 1 28100 100 16
+*
+M 1 28101 4 28111			the Elite Guard to The East Cross
+E 1 28101 100 5
+E 1 28102 100 6
+E 1 28105 100 11
+E 1 28100 100 16
+S
+
+
+#SPECIALS
+M  28100 spec_cast_psionicist			the Gate Guard
+M  28101 spec_cast_psionicist			the Elite Guard
+S
+
+
+#$

@@ -1,0 +1,1746 @@
+#AREA   Madboy/Jammer~  The Pit!~
+40 70 40 70
+
+#AREA_SPECIAL
+safe
+no_quest
+$
+
+#HELPS
+40 sentinel pit~
+"Now facing one another, the stand off eats at time.
+And all at once the silence falls as the bell ceases it's chime.
+Upon the sign, the challengers, with shreiks and cries, rush forth.
+The knives fly out like bullets, upon their deadly course.
+Screams of pain and agony rend the silent air.
+Amidst the dying bodies, blood runs everywhere.
+The figure stands expressionless, impassive and alone,
+unmoved by his victory and the seeds of death he's sown."
+
+Judas Priest - "The Sentinel"~
+
+0 $~
+
+
+#MOBILES
+#13700
+pit official~
+the Pit Official~
+The Pit Official stands here,  ready to help.
+~
+This human is dressed in a white robe and looks rather knowledgable.
+~
+2|64|4096 8|32|128|512 0 S
+39 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+   say Welcome, mighty adventurer.
+   smile
+   bow $n
+ endif
+~
+|
+#13701
+turbo~
+Turbo~
+Turbo smiles at you then attacks!
+~
+Turbo appears to be a pretty, young and unarmed girl.  But then 
+that's what she wants you to think coz she's gonna kick your arse!
+~
+4|32|64|128|4096 8|32|512|32768|65536 0 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>greet_prog 100~
+	if ispc($n)
+   smile $n
+   emote licks her lips
+   mpat 13703 mpecho Turbo reports: $n has arrived and has a couple of ticks to live!
+   mpkill $n
+endif
+~
+|
+#13702
+Defender faith paladin~
+The Defender of the Faith~
+An paladin in half-plate struggles through the mire here
+~
+The Defender of the Faith tries, unsuccessfully, to navigate his way 
+through this swampy area without getting his armour too dirty.  
+Poor bastard.
+~
+64|4096 8|32|512|8192 800 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+   say I hate this filthy morass!
+   grimace
+   mpat 13703 mpecho The Defnder of the Faith reports:  $n has arrived and is soon to be dead.
+endif
+~
+|
+#13703
+Painkiller~
+Painkiller~
+Painkiller stands here sharpening his bladed armour
+~
+Oh, dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
+~
+4|32|64|4096 8|32|512|8192 -650 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+   say Step into my parlour said the spider to the fly.
+   muha
+   mpat 13703 mpecho Painkiller reports:  $n is here and I pity $s foolish soul.
+   mpkill $n
+endif
+~
+|
+#13704
+sentinel~
+The Sentinel~
+
+~
+Madboy says 'Hi'
+~
+2|64|4096 8|32|128|512|524288 -200 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+    mpat 13703 mpecho The Sentinal reports:  $n has arrived
+    mpkill $n
+    endif
+~
+|
+#13705
+dealer arms~
+the arms dealer~
+An arms dealer tries to interest you in his wares.
+~
+The arms dealer grins toothily.... his teeth appear to be too sharp...
+~
+2|4|64|128|2048|4096 8|32|128|512|32768|524288 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13706
+valan rich~
+Valan the rich~
+Valan the rich stands here absorbed in the games
+~
+Valan takes no notice of you as he watches the events unfold below.
+~
+2|64|128|2048 0 0 S
+10 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13707
+Myra~
+Myra~
+Myra, Valan's wife, stands here looking bored
+~
+Myra appears not to have her husband's avid excitement for the battles in the pit
+~
+2|64|128 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13708
+osarr~
+Osarr the gambler~
+Osarr stands here trying to play dice with everyone
+~
+Osarr looks back at you and grins.  Want to bet on the action?
+~
+2|64|128|2048 0 0 S
+5 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13709
+Jakyra~
+a Jakyra~
+A bright orange beast stands heer stands here.
+~
+Oh, dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
+~
+4|32|64|4096 8|32|512|8192 -650 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+   emote screams and lunges at you with poisoned claws
+   mpat 13703 mpecho A Jakyra screams and attacks $n as they enter...
+   mpkill $n
+endif
+~
+|
+#13710
+biledemon~
+a Biledemon~
+A huge pile of pickish blubber rears as you enter the room.
+~
+Attatched to the site of this demons head are too massive spiked mases.
+~
+4|32|64|4096 8|32|512|8192 -650 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+	burp
+   muha
+   mpat 13703 mpecho a Bile demon bellows $n is about to start bleeding.
+   mpkill $n
+endif
+~
+|
+#13711
+mastadon~
+the mastadon~
+A great big hary beast snorts and stamps as you enter the room.
+~
+A cross between a rhino and an elephant with great amounts of hair this beast is gonna rip you
+apart.
+~
+4|32|64|4096 8|32|512|8192 -650 S
+55 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+    emote bellows and stampedes straight toward YOU!!!
+   mpat 13703 mpecho  a thundering blast deafens you as the Mastadon attacks $n.
+   mpkill $n
+endif
+~
+|
+#0
+
+
+#OBJECTS
+#13700
+desk~
+a desk~
+~
+~
+12 0 1
+0~ 1~ 6~ 11~ 
+100 0 0
+E
+desk~
+The large oaken desk is clear except for a stack of papers to one side.~
+#13701
+sword~
+a sword~
+A sword rests here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 1~ 
+5 0 0
+A
+18 2
+A
+19 4
+#13702
+spear~
+a spear~
+A spear rests here.~
+~
+5 64|134217728 1|8192
+0~ 1~ 6~ 2~ 
+5 0 0
+A
+18 4
+A
+19 2
+#13703
+axe~
+an axe~
+An axe rests here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 13~ 
+7 0 0
+A
+19 6
+#13704
+net~
+a weighted net~
+A pile of netting rests here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 9~ 
+10 0 0
+A
+18 10
+A
+19 -4
+#13705
+morning star morningstar~
+a morningstar~
+A morningstar rests here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 7~ 
+8 0 0
+A
+18 -2
+A
+19 8
+#13706
+rack weapon wapons~
+a weapon rack~
+~
+~
+15 0 0
+40~ 0~ -1~ 11~ 
+40 0 0
+#13707
+sword langthen~
+Sword of Langthen~
+A large, silver sword rests here.~
+~
+5 1|64 1|8192
+0~ 1~ 6~ 3~ 
+10 0 0
+A
+2 2
+A
+24 -3
+A
+19 12
+A
+18 7
+#13708
+darklaw wolf claws~
+Darklaw's Wolf-Claws~
+Some black steels claws rests here.~
+~
+5 2|64 1|8192
+0~ 1~ 6~ 5~ 
+2 0 0
+A
+5 2
+A
+18 10
+A
+19 9
+A
+13 20
+#13709
+Axe dwarves great~
+Great Axe of the Dwarves~
+A massive axe lies here.~
+~
+5 1|2|64|1024 1|8192
+0~ 1~ 6~ 13~ 
+15 0 0
+A
+1 1
+A
+5 3
+A
+2 -1
+A
+13 50
+A
+18 9
+A
+19 10
+A
+23 1
+A
+24 -2
+A
+14 -50
+#13710
+glaive laen~
+the Laen Glaive~
+A glaive with a glass blade rests here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 3~ 
+10 0 0
+A
+18 14
+A
+19 12
+A
+17 -5
+#13711
+turbo dagger~
+Turbo's Dagger~
+~
+~
+5 64|512 1|8192
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+2 3
+A
+14 75
+A
+18 15
+A
+19 5
+#13712
+turbo breastplate leather~
+Turbo's leather breastplate~
+~
+~
+13 64|512 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -20
+A
+13 40
+A
+24 -7
+#13713
+knife disintergrate~
+a glowing knife~
+A glowing knife hovers here.~
+~
+3 0 1|16384
+45~ 1~ 1~ disintegrate~ 
+1 0 0
+#13714
+knife ultrablast~
+a glowing knife~
+A glowing knife hovers here.~
+~
+3 0 1|16384
+45~ 1~ 1~ ultrablast~ 
+1 0 0
+#13715
+knife lightning~
+a glowing knife~
+A glowing knife hovers here.~
+~
+3 0 1|16384
+45~ 1~ 1~ lightning bolt~ 
+1 0 0
+#13716
+knife fireball~
+a glowing knife~
+A glowing knife hovers here.~
+~
+3 0 1|16384
+45~ 1~ 1~ fireball~ 
+1 0 0
+#13717
+turbo boots~
+turbo's boots of speed~
+~
+~
+13 64|512 1|64
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+2 2
+A
+14 100
+A
+17 -20
+#13718
+Painkiller breastplate bladed~
+Painkiller's bladed breastplate~
+A red breastplate with thin, sharp protrusions lies here~
+~
+9 64|512 1|8
+0~ 1~ 6~ 11~ 
+15 0 0
+A
+19 2
+A
+17 -5
+#13719
+Painkiller spiked boots~
+Painkiller's spiked boots~
+A pair of spike-toed boots rest here~
+~
+13 64|512 1|64
+0~ 1~ 6~ 11~ 
+9 0 0
+A
+19 2
+A
+17 -10
+#13720
+Painkiller blade shield~
+Painkiller's blade-edged shield~
+A round shield with an extremely sharp serrated edge rests here~
+~
+9 64|512 1|512|8192
+0~ 1~ 6~ 3~ 
+15 0 0
+A
+18 6
+A
+19 6
+A
+17 -10
+#13721
+Painkiller spiked bracer~
+Painkiller's spiked bracer~
+A bracer with sharp spikes lies here~
+~
+9 64|512 1|4096
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 3
+A
+17 -10
+#13722
+Painkiller spike chain leggings~
+Painkiller's spiked chainmail leggings~
+A spiked chainmail leggings rests here.~
+~
+9 64|512 1|32
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 2
+A
+17 -10
+#13723
+Painkiller spiked shoulder pads~
+Painkiller's spiked shoulder pads~
+A pair of spiked shoulder pads rest here.~
+~
+9 64|512 1|256
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 3
+A
+17 -10
+#13724
+Painkiller bladed gauntlets~
+Painkiller's bladed gauntlets~
+A pair of bladed gauntlets lie here~
+~
+9 64|512 1|128
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 2
+A
+17 -10
+#13725
+Painkiller serrated sword~
+Painkiller's serrated sword~
+A heavy, serrated sword lies here~
+~
+5 64|512 1|8192
+0~ 1~ 6~ 1~ 
+10 0 0
+A
+19 15
+A
+18 5
+#13726
+sword defender~
+Sword of the Defender~
+A white bladed sword rests here.~
+~
+5 64|1024 1|8192
+0~ 1~ 6~ 3~ 
+1 0 0
+A
+18 12
+A
+19 17
+A
+17 -15
+#13727
+shield faith~
+Shield of Faith~
+A white tower shield rests here.~
+~
+9 64|1024 1|512
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+5 2
+A
+13 50
+A
+17 -10
+A
+24 -10
+#13728
+plate defender armour breast breastplate~
+Breastplate of the Defender~
+A white breastplate rests here~
+~
+9 64|1024 1|8
+0~ 1~ 6~ 11~ 
+20 0 0
+A
+1 5
+A
+2 -2
+A
+13 30
+A
+17 -10
+#13729
+gauntlets~
+a pair of gauntlets~
+A pair of gauntlets rest here.~
+~
+9 64 1|128
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+19 5
+#13730
+cloak githad~
+Githad's Cloak of Protection~
+A pile of white cloth lies here.~
+~
+9 64 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+2 2
+A
+13 15
+A
+17 -15
+A
+23 -5
+A
+24 -5
+#13731
+belt titan~
+Belt of the Titans~
+A belt of leather and ornate gilt carvings rests here.~
+~
+9 1|64|1024 1|2048
+0~ 1~ 6~ 11~ 
+15 0 0
+A
+1 5
+A
+5 5
+A
+13 100
+A
+19 5
+A
+24 -5
+#13732
+greaves ~
+a pair of greaves~
+A pair of ornate greaves rests here~
+~
+9 64|1024 1|32
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -6
+#13733
+helm defender~
+Helm of the Defender~
+A white helm rests here~
+~
+9 64|1024 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -5
+A
+4 5
+#13734
+amulet magic proof~
+Amulet of proof against magic~
+A sword rests here.~
+~
+9 64|1024 1|4
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+24 -20
+#13735
+bag  holding~
+a Bag of Holding~
+A large pouch lies here~
+~
+8 64 1
+200~ 5~ -1~ 11~ 
+50 0 0
+#13736
+blast~
+~
+~
+~
+5 0 8192
+0~ 1~ 6~ 6~ 
+1 0 0
+A
+19 20
+A
+18 20
+#13737
+robe~
+a white robe~
+A pile of white cloth lies here.~
+~
+9 0 1|1024
+0~ 1~ 6~ 11~ 
+1 0 0
+#13738
+lantern daeron~
+Daeron's Lantern~
+A iron lantern rests here~
+~
+1 1|1024 1
+0~ 1~ -1~ 11~ 
+1 0 0
+A
+3 4
+A
+4 4
+A
+12 150
+A
+13 250
+A
+23 -5
+A
+24 -10
+A
+18 7
+#13739
+robes~
+some rich, golden robes~
+A pile of golden cloth rests here.~
+~
+12 0 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+#13740
+bottle~
+a bottle~
+A long, thin bottle sits here~
+~
+17 0 1
+5~ 2~ 18~ 0~ 
+5 0 0
+#13741
+velvet robes~
+some purple velvet robes~
+A pile of purple velvet lies here~
+~
+12 0 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+#13742
+money coins~
+some coins~
+A small pile of coins rests here~
+~
+20 0 1
+4~ 7~ 6~ 0~ 
+5 0 0
+#0
+
+
+#ROOMS
+#13700
+The dark tunnel~
+Darkness surrounds you.  There is a closed door above and a badly lit tunnel leading
+downwards. Although the tunnel is roughly hewn and looks as though it may collapse at 
+any moment, you notice that the tunnel has recent and heavy usage...
+~
+0 4|8|1024|8192 0
+D4
+~
+~
+0 -1 16219
+D5
+~
+~
+0 -1 13701
+S
+#13701
+The dark tunnel~
+The tunnel at this part is quite wide and better lit but you can see that the walls 
+are stained... with blood.  Your skin creeps as you ponder the fate of those whose lifeblood paints these walls.
+~
+0 4|8|1024|8192 0
+D2
+~
+~
+0 -1 13702
+D4
+~
+~
+0 -1 13700
+S
+#13702
+The mustering area~
+You are in a brightly lit chamber.  There is a passage off to the north.  There are
+also doors to the south and a small trapdoor leading downwards.  A small desk is 
+placed out of the way to the west.  Apart from a small couch in another corner of the 
+chamber, the room is rather uninteresting.  A large sign hangs from the ceiling.
+~
+0 4|8|1024|8192|16384 0
+D0
+~
+~
+0 -1 13701
+D2
+The description reads "Spectators Only".  No contestants allowed.  Invitation only.~
+Door~
+1 -1 13703
+D3
+~
+~
+0 -1 13705
+D5
+~
+~
+1 -1 13704
+E
+sign~
+All spectators please move through the southern door to the spectator's lounge.
+All challengers please take the stairway down to the changing barracks.  You will
+ recieve further instruction there.
+Both spectators and challengers please note:
+You are all safe from any of the authorities that would close down this establishment
+or incarcerate any spectator or challenger by a powerful magic-damping field.  This 
+will prevent scrying or teleportation into or out of "The Pit".
+
+The Pit thanks you for your patronage.~
+S
+#13703
+The spectators area~
+You are standing in a rather lushly presented reception area.  There is a well 
+stocked bar to one side, and comfortable chairs and tables dot the room.  People 
+are mingling and talking.  You notice there are some pretty rich and famous people here.
+~
+0 4|8|1024|8192|16384 0
+D0
+~
+~
+8 -1 13702
+D4
+~
+~
+0 0 3061
+S
+#13704
+The changing room~
+You are standing in a clean, tiled room.  There are wooden benches sitting in 
+rows on the floor, and pegs to hang items on along one wall.  On the other wall, 
+a large weapon rack sits loaded with weapons and armour. Another large sign 
+hangs from the ceiling.  A large gate stands in the southern wall.
+~
+0 4|8|1024|8192|16384 0
+D2
+~
+~
+0 -1 13706
+D4
+~
+~
+1 -1 13702
+E
+sign~
+The gate at the southern end of the room has a self-locking mechanism.  If you pass 
+through here you will be sent out into the waiting area before the arena proper.  
+Passing through the gate shall be taken as concent to enter the Pit.  We take no liability 
+for any damage caused in any way, shape of form by any being, spell or weapon within the arena.
+
+ENTER AT YOUR OWN RISK.
+
+Management.~
+S
+#13705
+Small ticketing room~
+This small, and now unused, room holds only a desk and a sign.
+~
+0 8|1024|8192|16384 0
+D1
+~
+~
+0 -1 13702
+E
+sign~
+Welcome, newcomer, to the 'Challenge of the Sentinel', named after 
+The Pit's longest running champion.  Here, you will learn ultimate glory
+or you will learn death. Good luck, challenger.  You will need it! ~
+S
+#13706
+The waiting area~
+You hear the click of the gate closing behind you.  You look around and notice 
+that you stand in a small waiting area.  Before you, to the south, is a massive 
+portcullis leading to the arena.  Looking through the portcullis you see a small landscape withi
+n the pit. Your portcullis opens out onto a real-looking savannah.  In the middle 
+you espy a small tower.  This, the official tells you, is your goal...to defeat 
+the Sentinel and claim the tower.  A rotten wooden sign hangs from the portcullis.
+~
+0 8|1024|8192|16384 0
+D0
+~
+~
+0 -1 13704
+D2
+~
+~
+8 -1 13707
+E
+sign rotten wooden~
+"Sworn to avenge.
+Condemned to hell.
+Turn back the blade
+or fear The Sentinel."
+
+Judas Priest~
+S
+#13707
+The grassy plain - The closed portcullis~
+You are standing in three foot long grass.  A small grassy plain stretches before you.  
+Behind you is a sheer wall with spikes near the top to stop would-be escapees from fleeing 
+the pit.  Above that is an amphitheatre filled with an impatient, blood thirsty crowd.  
+To the south you see a lone tower on an island surrounded by a moat. To the south-east 
+you see a swamp.  To the south-west is a rocky plateau.
+~
+0 8|1024|8192 2
+D0
+~
+~
+8 -1 13706
+D1
+~
+~
+0 -1 13711
+D2
+~
+~
+0 -1 13710
+D3
+~
+~
+0 -1 13708
+S
+#13708
+Grassy plain - At the wall~
+The grassy plain follows the curve if the octagonal arena wall.  Spikes near 
+the top of the wall prevent you from climbing up into the  crowd.  To the 
+south-east is a rocky plateau.  To the south west is a muddy bog.
+~
+0 8|1024|8192 2
+D1
+~
+~
+0 -1 13707
+D2
+~
+~
+0 -1 13709
+S
+#13709
+Grassy plain - At the moat~
+The moat appears to be filled with hot, bubbling mud.  A digusting stench 
+wafts up on the scalding air currents forcing you away from the edge.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13708
+D1
+~
+~
+0 -1 13710
+D3
+~
+~
+0 -1 13713
+S
+#13710
+Grassy plain - At the moat~
+You are standing before the moat of boiling mud.  Across the other side, 
+the single stone tower looms above you.  The heat and the smell force you 
+away from the edge and a rank mist almost envelops the small island.  
+There appears to be no way across the moat from here.  To the east you 
+see some swampy ground.  To the west is a plateau strewn with rocks.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13707
+D1
+~
+~
+0 -1 13712
+D3
+~
+~
+0 -1 13709
+S
+#13711
+Grassy plain - At the wall~
+The grassy plain follows the curve if the octagonal arena wall.  Spikes near 
+the top of the wall prevent you from climbing up into the  crowd.  To the 
+south-east is a rocky plateau.  To the south west is a muddy bog.
+~
+0 8|1024|8192 2
+D2
+~
+~
+0 -1 13712
+D3
+~
+~
+0 -1 13707
+S
+#13712
+Grassy plain - At the moat~
+The moat appears to be filled with hot, bubbling mud.  A digusting stench 
+wafts up on the scalding air currents forcing you away from the edge.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13711
+D1
+~
+~
+0 -1 13714
+D3
+~
+~
+0 -1 13710
+S
+#13713
+Grassy plains meets the plateau~
+This area appears to be the intervening ground where the savannah meets the 
+plateau.  The ground here rises up steeply to the plateau.  The climb looks 
+like it will be hard work but the sheer ruggedness of the rockface ensures 
+plenty of handholds.
+~
+0 4|8|1024|8192 4
+D1
+~
+~
+0 -1 13709
+D4
+~
+~
+0 -1 13722
+S
+#13714
+Grassy plains meets the swamp~
+This area appears to be an intervening ground between the swamp and the 
+grassy savannah.  The way down appears to be no more than a muddy slope 
+making the trip down fairly easy.  A way back up maybe out of the 
+question, though.
+~
+0 4|8|1024|8192 4
+D3
+~
+~
+0 -1 13712
+D5
+~
+~
+0 -1 13715
+S
+#13715
+The Bog - At the moat~
+The bog here is ankle waist deep and you feel the cold, muddy water trickling 
+into your boots and leggings making it difficult to move.  The moat here seems
+to overflow mud into the area thus creating the bogginess. To the west is the 
+tower on the island but you can see no way of getting there.  To the south you 
+see a large tree growing out of the bog.
+~
+0 8|1024|8192 10
+D1
+~
+~
+0 -1 13716
+D2
+~
+~
+0 -1 13720
+E
+e east~
+The muddy slope is too slippery to climb up and due to the magical nature 
+of this place you cannot fly up it.  It looks like you're stuck down here!~
+S
+#13716
+The Bog - At the wall~
+The bog here is thinner and more watery than at the moat.  However, the 
+reeds still impedes your progress.  Just as you are getting used to 
+the cold water, you feel something slither past your leg.  To the west 
+you see the tower in the centre.  Above you the spikes on the wall 
+prevent you from entertaining any ideas of escape.
+~
+0 8|1024|8192 10
+D2
+~
+~
+0 -1 13717
+D3
+~
+~
+0 -1 13715
+S
+#13717
+The Bog - The closed portcullis~
+The portcullis here is closed.  Above you, the spikes continue right 
+around the entire wall making escape impossible.  To the west is a lone 
+tower on an island and to the south you see a large tree growing out of 
+the swamp.
+~
+0 8|1024|8192 10
+D0
+~
+~
+0 -1 13716
+D1
+~
+portcullis~
+8 -1 13706
+D2
+~
+~
+0 -1 13718
+D3
+~
+~
+0 -1 13720
+S
+#13718
+The Bog - At the wall~
+The bog here appears to be alot muddier and stickier than anywhere else in 
+this fetid, smelly swamp.  Above you, the wall has spikes protruding from it 
+to prevent escape.  To the west, you see a tower on an island and to
+the south west is a large knotty tree.
+~
+0 8|1024|8192 10
+D0
+~
+~
+0 -1 13717
+D3
+~
+~
+0 -1 13719
+S
+#13719
+The Bog - At the moat~
+The mud from the moat overflows here and mixes with the water creating a dirty, 
+sticky mire that impedes your progree quite considerably.  To the west, past the 
+moat, a tower stands on an island.  To the south of you is a huge, knotty tree 
+growing next to a steep, muddy bank.
+~
+0 8|1024|8192 10
+D0
+~
+~
+0 -1 13720
+D1
+~
+~
+0 -1 13718
+D2
+~
+~
+0 -1 13721
+S
+#13720
+The Bog - At the moat~
+The moat here overflows into the bog creating a dirty mire.  Progress through here 
+is slow and tiresome going.  To the south you see a huge tree and to the west is a 
+lone tower standing upon an island across the moat.  To the east is a portcullis.
+~
+0 8|1024|8192 10
+D0
+~
+~
+0 -1 13715
+D1
+~
+~
+0 -1 13717
+D2
+~
+~
+0 -1 13719
+S
+#13721
+Where swamp meets the thick woods~
+A steep, muddy and treacherous-looking bank reaces up to the wooded area above you.  
+However, a huge, knotted oak stands here, it's branches reacing over and above the 
+top of the bank. The tree looks the better option.
+~
+0 4|8|1024|8192 4
+D0
+~
+~
+0 -1 13719
+D4
+~
+~
+0 -1 13732
+S
+#13722
+Rocky plateau - At the moat~
+The plateau stands about fifteen to twenty feet above the moat. The sheer ruggedness 
+of the top of the plateau means that there would be plenty of hiding places for any 
+assailants (should there be any) behind a multitude of rock outcroppings.  To the
+south the plateau drops away.  To the east across the moat is a lone tower.
+~
+0 8|1024|8192 5
+D2
+~
+~
+0 -1 13743
+D3
+~
+~
+0 -1 13723
+D5
+~
+~
+0 -1 13713
+S
+#13723
+Rocky plateau - At the wall~
+The wall here appears to be about ten feet high but has sharp spikes to prevent anyone climbing out of the pit.
+~
+0 8|1024|8192 5
+D1
+~
+~
+0 -1 13722
+D2
+~
+~
+0 -1 13724
+S
+#13724
+Rocky plateau - The closed portcullis~
+You stand here before a closed portcullis. To the east you see a lone tower.
+~
+0 8|1024|8192 5
+D0
+~
+~
+0 -1 13723
+D1
+~
+~
+0 -1 13743
+D2
+~
+~
+0 -1 13725
+D3
+~
+~
+8 -1 13706
+S
+#13725
+Rocky plateau - At the wall~
+The top of the wall is only ten feet above you but it is protected by a row of spikes thus 
+preventing escape from the pit. To the north you can see a huge tower. To the south east 
+you can see a scree slope descending down to a heavily wooded area.
+~
+0 8|1024|8192 5
+D0
+~
+~
+0 -1 13724
+D1
+~
+~
+0 -1 13726
+S
+#13726
+Rocky plateau - At the moat~
+The plateau stands about fiften to twenty feet above the moat which stands between 
+you and the  island with the tower.  To the south you see a slope of scree which 
+descends down to a heavily wooded area.
+~
+0 8|1024|8192 5
+D0
+~
+~
+0 -1 13743
+D2
+~
+~
+0 -1 13727
+D3
+~
+~
+0 -1 13725
+S
+#13727
+Where rocky plateau meets the thick woods~
+You stand looking out over a slope of scree. You guess it would be easy going on 
+the way down but getting back up would prove a fruitless task.
+~
+0 4|8|1024|8192 4
+D0
+~
+~
+0 -1 13726
+D5
+~
+~
+0 -1 13728
+S
+#13728
+Misty Woods~
+You stand here surrounded by trees and fog.
+~
+0 8|1024|8192 3
+D1
+~
+~
+0 -1 13733
+D2
+~
+~
+0 -1 13729
+S
+#13729
+Misty Woods~
+You stand here surrounded by trees and fog.
+~
+0 8|1024|8192 3
+D0
+~
+~
+0 -1 13728
+D1
+~
+~
+0 -1 13730
+S
+#13730
+Misty Woods - The closed portcullis~
+There is a portcullis here. You stand here surrounded by trees and fog.
+~
+0 8|1024|8192 3
+D0
+~
+~
+0 -1 13733
+D1
+~
+~
+0 -1 13731
+D2
+~
+~
+8 -1 13706
+D3
+~
+~
+0 -1 13729
+S
+#13731
+Misty Woods~
+You stand here surrounded by trees and fog.
+~
+0 8|1024|8192 3
+D0
+~
+~
+0 -1 13732
+D3
+~
+~
+0 -1 13730
+S
+#13732
+Misty Woods~
+You stand here surrounded by trees and fog.
+~
+0 8|1024|8192 3
+D2
+~
+~
+0 -1 13731
+D3
+~
+~
+0 -1 13733
+S
+#13733
+Misty Woods~
+You stand here surrounded by trees and fog
+~
+0 8|1024|8192 3
+D0
+~
+bushes~
+1 -1 13734
+D1
+~
+~
+0 -1 13732
+D2
+~
+~
+0 -1 13730
+D3
+~
+~
+0 -1 13728
+S
+#13734
+The Stone Bridge~
+This bridge spans the moat of boiling mud and is, all but, invisible to any of the 
+other areas because it has been made of a mud coloured rock. To the north you see 
+the small island and the tower.
+~
+0 4|8|1024|8192 1
+D0
+~
+~
+0 -1 13735
+D2
+~
+~
+1 -1 13733
+S
+#13735
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off 
+the moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D1
+~
+~
+0 -1 13742
+D2
+~
+~
+0 -1 13734
+D3
+~
+~
+0 -1 13736
+S
+#13736
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off 
+the moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13737
+D1
+~
+~
+0 -1 13735
+S
+#13737
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off the 
+moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13738
+D2
+~
+~
+0 -1 13736
+S
+#13738
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off the 
+moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D1
+~
+~
+0 -1 13739
+D2
+~
+~
+0 -1 13737
+S
+#13739
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off the 
+moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D1
+~
+~
+0 -1 13740
+D3
+~
+~
+0 -1 13738
+S
+#13740
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off the 
+moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D2
+~
+~
+0 -1 13741
+D3
+~
+~
+0 -1 13739
+S
+#13741
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off the 
+moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13740
+D2
+~
+~
+0 -1 13742
+D3
+~
+~
+1 -1 13744
+S
+#13742
+The Island of the Sentinel~
+The island is covered in sparse grass which is slippery from the steam rising off the 
+moat. Here you find the tower but no entrance can be seen.
+~
+0 8|1024|8192 2
+D0
+~
+~
+0 -1 13741
+D3
+~
+~
+0 -1 13735
+S
+#13743
+Rocky plateau - At the moat~
+The plateau stands about fifteen to twenty feet above the moat which stands between you 
+and the tower on the other side.  To the west is a closed portcullis.
+~
+0 0 1
+D0
+~
+~
+0 -1 13722
+D2
+~
+~
+0 -1 13726
+D3
+~
+~
+0 -1 13724
+S
+#13744
+Inside the tower~
+The walls inside the tower appear to be blank and the only thing of note is a stone 
+stairwell leading up into the roof.
+~
+0 4|8|1024|8192 0
+D4
+~
+~
+0 -1 13745
+S
+#13745
+The first story~
+The stairwell opens up on to a empty landing. The stairwell continues up.
+~
+0 8|1024|8192 0
+D4
+~
+~
+0 -1 13746
+D5
+~
+~
+0 -1 13744
+S
+#13746
+The King of the Castle~
+You have reached the top of the tower. Here is where the final battles for the 
+King of the Tower take place. In the middle of the room you see a small stairway 
+leading up to a platform but it is blocked off by a closed gate.
+~
+0 8|1024|8192 1
+D4
+~
+gate~
+5 -1 13747
+D5
+~
+~
+0 -1 13745
+S
+#13747
+The very top!~
+You are standing on a platform that all the crowd can see and you revel in the 
+glory they lavish upon you. You see a sign here.
+~
+0 4|8|1024 0
+E
+sign~
+You may recall here.~
+S
+#0
+
+
+#RESETS
+D 1 13702 2 2                ; The mustering area Lock South
+D 1 13704 4 1             ; The changing room Close Up
+D 1 13702 5 1                ; The mustering area Close Down
+*
+M 1 13700 1 13702                 the Pit Official to The mustering area
+E 1 13702 100 16
+E 1 13737 100 12
+*
+M 1 13700 1 13705                 the Pit Official to Small ticketing room
+E 1 13702 100 16
+E 1 13737 100 12
+O 1 13700 100 13705       a desk to Small ticketing room
+O 1 13706 100 13704       a weapon rack to The changing room
+P 1 13701 100 13706       a morningstar to container rack weapon wapons
+P 1 13702 100 13706       a weighted net to container rack weapon wapons
+P 1 13703 100 13706       an axe to container rack weapon wapons
+P 1 13704 100 13706       a spear to container rack weapon wapons
+P 1 13705 100 13706       a sword to container rack weapon wapons
+*
+M 1 13705 1 13704                 the arms dealer to The changing room
+*
+M 1 13700 1 13703                 the Pit Official to The spectators area
+E 1 13702 100 16
+E 1 13737 100 12
+D 1 13706 2 1             ; The waiting area Close South
+*
+M 1 13700 1 13706                 the Pit Official to The waiting area
+E 1 13702 100 16
+E 1 13737 100 12
+D 1 13707 0 2             ; The grassy plain - The closed portcullis Lock North
+*
+M 1 13702 1 13717              The Defender of the Faith to The Bog - At the portcullis
+E 1 13729 100 9
+E 1 13727 100 11
+E 1 13730 100 12
+E 1 13726 100 16
+E 1 13734 100 4
+E 1 13728 100 5
+E 1 13733 100 6
+E 1 13732 100 7
+E 1 13731 100 13
+G 1 13735 100
+*
+M 1 13701 1 13724
+D 1 13724 3 2            ; Rocky plateau - The closed portcullis Lock West
+*
+M 1 13701 1 13724              Turbo to The Rocky Plateau - The closed portcullis
+E 1 13712 100 5
+E 1 13717 100 8
+E 1 13711 100 16
+*
+M 1 13703 1 13730
+E 1 13718 100 5
+E 1 13722 100 7
+E 1 13719 100 8
+E 1 13724 100 9
+E 1 13723 100 10
+E 1 13720 100 11
+E 1 13721 100 14
+E 1 13721 100 15
+E 1 13725 100 16
+D 1 13730 2 2                ; Misty Woods - The closed portcullis Lock South
+R 1 13733 3            ; Randomize Misty Woods
+R 1 13732 1            ; Randomize Misty Woods
+R 1 13731 1            ; Randomize Misty Woods
+R 1 13729 1            ; Randomize Misty Woods
+R 1 13728 1            ; Randomize Misty Woods
+D 1 13741 3 1            ; The Island of the Sentinel Close West
+*
+M 1 13704 1 13746                The Sentinel to The King of the Castle
+E 1 13736 100 16
+*
+O 1 13738 1 13747              Daeron's Lantern to The very top!
+*
+M 1 13710 1 13718		biledemon
+E 1 13710 100 16 
+M 1 13709 1 13726		jakyra	
+E 1 13709 100 16
+M 1 13711 1 13733		mastadon
+E 1 13708 100 16
+*
+M 1 13706 1 13703                 Valan the rich to The spectators area
+E 1 13739 100 12
+G 1 13742 100
+*
+M 1 13707 1 13703                 Myra to The spectators area
+E 1 13739 100 12
+*
+M 1 13708 1 13703                 Osarr the gambler to The spectators area
+E 1 13741 100 12
+G 1 13742 100
+*
+D 1 13703 0 2             ; The spectators area Lock North
+D 1 13717 1 2                  ; The Bog - The closed portcullis Lock East
+S
+
+
+#SHOPS
+13705 5 9 8 0 0 75 150 0 23       (mobile is from another zone)
+0
+
+
+#SPECIALS
+M  13700 spec_breath_acid                   the Pit Official
+M  13701 spec_poison                    Turbo
+M  13702 spec_executioner                       The Defender of the Faith
+M  13703 spec_cast_psionicist                   Painkiller
+M  13704 spec_cast_psionicist                 The Sentinel
+M  13705 spec_breath_acid                       the arms dealer
+S
+
+
+#$

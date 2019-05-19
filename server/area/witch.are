@@ -1,0 +1,1957 @@
+#AREA Shade~ Witches Tower~
+25 35 1 100
+
+#MOBILES
+#10102
+brown bear~
+a brown bear~
+A Brown Bear moves through the woods here.
+~
+The bear is foraging for food amongst the low lying trees and bushes.  It
+ignores your presence.
+~
+64 0 250 S
+28 0 0 0d0+0 0d0+0
+32|128 0
+0 0 1
+>rand_prog 15~
+	mpecho The bear sniffs about in the trees looking for food.
+~
+|
+
+#10100
+black bear~
+a black bear~
+A Black Bear menaces you here.
+~
+A terrible Black Bear towers above you and roars!  The bear's eyes are
+bloodshot and it snarls and snaps at you angrily.
+~
+2|32|64 0 -250 S
+30 0 0 0d0+0 0d0+0
+32|128 0
+0 0 1
+
+#10101
+two hydra~
+a two headed hydra~
+A huge dark shape lurks here.
+~
+The Hydra has two heads, both of which hiss evilly at you.  It is
+massive, its sleek scales dripping water.  From its maw comes a
+frightening roar that fills your bones with terror.
+~
+2|32|64 8|65536|8388608 -500 S
+32 0 0 0d0+0 0d0+0
+32|128 0
+0 0 1
+>greet_prog 100~
+mpecho {x
+mpecho {RA massive form rises out from the pool roaring in anger!{x
+~
+|
+
+#10103
+ghostly nymph~
+a ghostly nymph~
+The ghostly form of a nymph wails quietly here.
+~
+The ghostly form looks very sad.  She drifts about the trees reaching out to
+touch each one.  She looks despairingly at you.
+~
+64 524288 250 S
+28 0 0 0d0+0 0d0+0
+32|64|256 0
+0 0 2
+>rand_prog 15~
+	mpasound A despairing wail echoes through the trees.
+~
+>rand_prog 15~
+	mpecho The nymph lets out a despairing wail.
+~
+|
+
+#10104
+spectral elf~
+a spectral elf~
+a spectral elf drifts about here.
+~
+The elf appears to have been male, although its outline is hazy and the
+features blurry, so it is hard to tell.  You can make out a general expression
+of sadness, this spirit is not resting peacefully.
+~
+64 524288 500 S
+30 0 0 0d0+0 0d0+0
+32|64|256 0
+0 0 0
+>rand_prog 15~
+	mpecho The spectral elf wails sadly.
+~
+|
+
+#10105
+black witch~
+a black witch~
+A black robed witch cackles insanely to herself.
+~
+The witch mutters and cackles away to herself.  She appears to be out of her
+mind, her eyes are glazed over and she looks right through you.  Her robes
+are almost compelely ruined, nothing but rags now.
+~
+2|64 8192 -350 S
+35 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#10107
+wraith~
+a ghostly wraith~
+A ghostly wraith drifts about here.
+~
+The wraith drifts aimlessly about with no apparent purpose.  It shrieks
+shrilly at you!
+~
+32|64 8|65536|524288 0 S
+30 0 0 0d0+0 0d0+0
+32|64|256 0
+0 0 2
+
+#10106
+imp small~
+a small imp~
+A small imp is here grinning at you.
+~
+The imp is about three feet tall, with reddish brown skin.  He wields a
+small trident, and his tail is cockily wrapped around the end.  The imp
+grins back at you.
+~
+2|32|64 8|32|8192|65536|524288 -600 S
+34 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 15~
+	mpecho The imp throws back his head and cackles with insane glee!
+~
+|
+
+#10108
+demon spirit aiseen~
+a demon spirit~
+The spirit of a demon floats malevolently here.
+~
+The demon is somehow only a spirit, or the spirit has the form of a demon
+you cannot tell which.  It appears to have once been a human woman but her
+features are pure malevolence and her eyes stab you like a knife when her
+gaze falls upon you.
+~
+2|32|64 8|32|8192|65536|524288 -1000 S
+36 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>death_prog 100~
+	mpecho Aiseen lets out a piercing wail, so great you are forced
+	mpecho to cover your ears in agony.  You hear voices in the air.
+	mpecho {W'Master it is done!'{x
+	mpecho {W'Yes apprentice, and at last we may rest.  Farewell Thanus.'{x
+	mpecho {W'Farewell and thanks Master.'{x
+	mpecho {x
+~
+|
+
+#10109
+wight~
+a wight~
+a long dead wight lurks here.
+~
+The wight is rotting, almost before your eyes, and has clearly been dead for
+a long time.  Its form is still humanoid but exactly what it was in life
+is impossible to tell.  The wight shifts about restlessly.
+~
+2|64 524288 -500 S
+34 0 0 0d0+0 0d0+0
+32|64|256 0
+0 0 0
+>rand_prog 15~
+	mpecho The wight shuffles about restlessly.
+~
+|
+#0
+
+#OBJECTS
+#10103
+teeth~
+teeth~
+A pair of teeth are here.~
+~
+5 67108864 0
+~ ~ ~ 10~
+5 0 0
+
+#10100
+claws~
+claws~
+A pair of claws drip with blood here.~
+~
+5 67108864 0
+~ ~ ~ 14~
+5 0 0
+
+#10101
+fangs~
+bloody fangs~
+Bloody Fangs.~
+~
+5 67108864 0
+~ ~ ~ 10~
+5 0 0
+
+#10102
+fire egg~
+a fire egg~
+A small egg glows softly here.~
+~
+26 64 1|16384
+30~ heal~ heal~ ~
+2 0 0
+
+#10104
+broom~
+broom stick~
+A plain wooden broom stick is here.~
+~
+5 0 1|8192
+~ ~ ~ 7~
+5 0 0
+A
+19 3
+A
+18 3
+
+#10105
+wicked trident~
+a wicked trident~
+A wicked looking trident is here.~
+~
+5 64|16777216 1|8192
+~ ~ ~ 11~
+10 0 0
+A
+19 5
+A
+18 5
+
+#10106
+tail~
+a tail~
+A pointy tail has been seperated from its owner.~
+~
+5 67108864 0
+~ ~ ~ 11~
+10 0 0
+
+#10107
+hunter bracers~
+bracers of the hunter~
+A pair of hunter's bracers are here.~
+~
+9 0 1|256
+~ ~ ~ ~
+5 0 0
+A
+13 50
+#0
+
+#ROOMS
+#10100
+A Woody Path~
+You move along a small woodland path.  You can hear the sounds of small
+animals and birds moving in the trees around you.  To the south the path
+continues into the woods, to the north the path ends in some low lying
+plains.
+~
+0 0 3
+D 0
+A Grassy Plain
+~
+~
+0 -1 18443
+D 2
+A Woody Path
+~
+~
+0 -1 10101
+S
+
+#10101
+A Woody Path~
+You move along a small woodland path.  The trees around you rustle in
+the gentle breeze.  Small birds can be seen flying from tree to tree
+above you.  To the north the path continues and in the distance you see
+plains, to the south the path continues into the woods.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10100
+D 2
+A Woody Path
+~
+~
+0 -1 10102
+S
+
+#10102
+A Woody Path~
+You move along a small woodland path.  The trees about you are thicker
+here, only a few rays of light filter down from above.  It is peaceful
+here, small animals look out from the trees at your passage.  To the
+north the trees around the path become thinner.  To the south is a
+junction in the path.
+~
+0 1 3
+D 0
+A Woody Path
+~
+~
+0 -1 10101
+D 2
+A Junction
+~
+~
+0 -1 10103
+S
+
+#10103
+A Junction~
+You arrive at a small junction in the path.  The trees have formed a
+natural clearing here and a T junction has formed in the path.  The
+path continues to the north, south and east.
+~
+0 4 3
+D 0
+A Woody Path
+~
+~
+0 -1 10102
+D 2
+A Woody Path
+~
+~
+0 -1 10108
+D 1
+A Woody Path
+~
+~
+0 -1 10104
+S
+
+#10104
+A Woody Path~
+You move along a small woodland path.  It is quiet in this part of the
+woods although you can still see signs of small animals moving about in
+the trees.  To the west the path arrives at a junction, to the east the
+path continues into the woods.
+~
+0 0 3
+D 1
+A Woody Path
+~
+~
+0 -1 10105
+D 3
+A Junction
+~
+~
+0 -1 10103
+S
+
+#10105
+A Woody Path~
+You move along a small woodland path.  It is very quiet in this part of
+the woods, only the occasional small animal or bird can be seen amoung
+the trees.  To the west the path continues and you can see a junction in
+the distance, to the north the path ends at what looks like a small cave.
+~
+0 0 3
+D 0
+Outside a Small Cave
+~
+~
+0 -1 10106
+D 3
+A Woody Path
+~
+~
+0 -1 10104
+S
+
+#10106
+Outside a Small Cave~
+You stand outside a small cave at the end of a woodland path.  There is
+an eerie silence here that sends a shiver along your spine.  To the north
+is the cave itself, the interior hidden in shadows.  To the south the
+path continues and turns to the west.
+~
+0 0 3
+D 0
+A Small Cave
+~
+~
+0 -1 10107
+D 2
+A Woody Path
+~
+~
+0 -1 10105
+S
+
+#10107
+A Black Cave~
+You stand in the shadows of a small cave.  The air is still and you can
+almost feel the walls of the cave bearing down on you.  A shape moves in
+the darkness in front of you.
+~
+0 0 0
+D 2
+Outside a Small Cave
+~
+~
+0 -1 10106
+S
+
+#10108
+A Woody Path~
+You move along a small woodland path.  The trees sway gently in the breeze
+and you hear faint sounds of wings fluttering above.  To the north the path
+widens and becomes a junction, to the south the path continues into the
+woods.
+~
+0 0 3
+D 0
+A Junction
+~
+~
+0 -1 10103
+D 2
+A Woody Path
+~
+~
+0 -1 10109
+S
+
+#10109
+A Woody Path~
+You move along a small woodland path.  The path is becoming more overgrown
+here as the trees encroach upon the path.  To the north the path continues,
+to the south the path opens into a small clearing.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10108
+D 2
+A Woodland Clearing
+~
+~
+0 -1 10110
+S
+
+#10110
+A Woodland Clearing~
+You have entered a small woodland clearing.  Here the forest has formed a
+natural clearing, with large trees forming a protective roof above.  Exits
+lead out of the clearing to the north, east and west.
+~
+0 4 3
+D 0
+A Woody Path
+~
+~
+0 -1 10109
+D 1
+An Overgrown Path
+~
+~
+0 -1 10111
+D 3
+An Overgrown Path
+~
+~
+0 -1 10115
+S
+
+#10111
+An Overgrown Path~
+You move along an overgrown woodland path.  Tree roots and small shrubs
+are scattered about the path making progress difficut.  To the west the
+path opens to a small woodland clearing, to the east the path continues
+and turns to the north.
+~
+0 0 3
+D 1
+An Overgrown Path
+~
+~
+0 -1 10112
+D 3
+A Woodland Clearing
+~
+~
+0 -1 10110
+S
+
+#10112
+An Overgrown Path~
+You move along an overgrown woodland path.  Tree roots and low hanging 
+branches make progress along the path difficult and you have to force 
+your way forward.  The path turns here and you can head either north or west.
+~
+0 0 3
+D 0
+An Overgrown Path
+~
+~
+0 -1 10113
+D 3
+An Overgrown Path
+~
+~
+0 -1 10111
+S
+
+#10113
+An Overgrown Path~
+You move along an overgrown woodland path.  The path is extremely overgrown
+here and your progress is slow.  To the north the path continues and you
+think you can make out a small tower.  To the south the path turns westward.
+~
+0 0 3
+D 0
+Tower Gates
+~
+~
+0 -1 10114
+D 2
+An Overgrown Path
+~
+~
+0 -1 10112
+S
+
+#10114
+Tower Gates~
+You stand before some blackened tower gates, partially hidden amongst the
+trees.  The tower is approximately 30 metres tall and made of what looks
+like black marble although it is heavily overgrown with moss and creeping
+plants.  To the north you may enter the tower through the gates, to the
+south an overgrown path leads through the woods.
+~
+0 4 3
+D 0
+A Black Tower
+~
+~
+1 -1 10130
+D 2
+An Overgrown Path
+~
+~
+0 -1 10113
+S
+
+#10115
+An Overgrown Path~
+You move along an overgrown woodland path.  Tree roots and low hanging 
+branches make your passage slow but steady.  To the east the path opens 
+to a small woodland clearing, to the west the path continues into the woods.
+~
+0 0 0
+D 1
+A Woodland Clearing
+~
+~
+0 -1 10110
+D 3
+An Overgrown Path
+~
+~
+0 -1 10116
+S
+
+#10116
+An Overgrown Path~
+You move along an overgrown woodland path.  The path is very narrow here
+and is badly overgrown with all manner of obstructions in your way.  To
+the west you can make out a small clearing, to the east the path continues
+through the woods.
+~
+0 0 3
+D 1
+An Overgrown Path
+~
+~
+0 -1 10115
+D 3
+A Woodland Clearing
+~
+~
+0 -1 10117
+S
+
+#10117
+A Woodland Clearing~
+You enter a small woodland clearing.  Here the trees have formed a small
+clearing and you can look up to see the open sky.  Paths lead north, south
+and east, the paths to the north and east are heavily overgrown.
+~
+0 4 3
+D 0
+A Woody Path
+~
+~
+0 -1 10122
+D 2
+A Woody Path
+~
+~
+0 -1 10118
+D 1
+An Overgrown Path
+~
+~
+0 -1 10116
+S
+
+#10118
+A Woody Path~
+You move along a small woodland path.  The woods are strangely quiet here
+and the air is thick and still.  To the north the path opens into a small
+clearing, to the south the path continues into the woods.
+~
+0 0 3
+D 0
+A Woodland Clearing
+~
+~
+0 -1 10117
+D 2
+A Woody Path
+~
+~
+0 -1 10119
+S
+
+#10119
+A Woody Path~
+You move along a small woodland path.  It is very humid here and you are
+labouring for breath.  There are no animals here and the woods are silent,
+deathly silent.  To the north the path continues, to the south the path
+continues and then turns to the east.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10118
+D 2
+A Woody Path
+~
+~
+0 -1 10120
+S
+
+#10120
+A Woody Path~
+You move along a small woodland path.  It is very humid and hot here, you
+struggle to draw breath.  The path turns here.  To the north the path
+eventually arrives at a small clearing, to the east the path moves down
+a gentle slope and ends at a small pool.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10119
+D 1
+A Black Pool
+~
+~
+0 -1 10121
+S
+
+#10121
+A Black Pool~
+You have arrived before a black pool some 30 metres in diameter.  Small
+wisps of smoke drift off the surface, and you can feel the heat rising from
+the pool.  To the west a small path leads up a gentle slope.
+~
+0 0 3
+D 3
+A Woody Path
+~
+~
+0 -1 10120
+S
+
+#10122
+A Woody Path~
+You move along a small woodland path.  Small animals and birds move about in
+the trees above and near the path.  To the south the path opens into a small
+clearing and to the north the path continues.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10123
+D 2
+A Woodland Clearing
+~
+~
+0 -1 10117
+S
+
+#10123
+A Woody Path~
+You move along a small woodland path.  The trees sway gently in the breeze
+and birds twitter in the trees above.  To the north and south the path
+continues and you can see a small clearing in the distance in both
+directions.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10124
+D 2
+A Woody Path
+~
+~
+0 -1 10122
+S
+
+#10124
+A Woody Path~
+You move along a small woodland path.  Here small squirrels can be seen
+running along branches above you chattering away to each other.  To the
+north the path opens into a small clearing, to the south the path continues.
+~
+0 0 3
+D 0
+A Woodland Clearing
+~
+~
+0 -1 10125
+D 2
+A Woody Path
+~
+~
+0 -1 10123
+S
+
+#10125
+A Woodland Clearing~
+You enter a small woodland clearing.  The trees have formed a natural
+clearing here, the trees open to the sky above.  Woodland paths leave the
+clearing to the west, south and east.
+~
+0 0 3
+D 2
+A Woody Path
+~
+~
+0 -1 10124
+D 1
+A Woody Path
+~
+~
+0 -1 10126
+D 3
+A Woody Path
+~
+~
+0 -1 10128
+S
+
+#10126
+A Woody Path~
+You move along a small woodland path.  Here the woods are much quieter with
+very few animals moving about.  There is a feeling of sadness here that you
+can't seem to shake off.  The path turns here, to the south the path opens
+into a glade, to the west the path opens into a small clearing.
+~
+0 0 3
+D 2
+A Woodland Glade
+~
+~
+0 -1 10127
+D 3
+A Woodland Clearing
+~
+~
+0 -1 10125
+S
+
+#10127
+A Woodland Glade~
+You enter a peaceful woodland glade.  There is an overwhelming feeling of
+sadness here, from the trees and from the creatures of the woods.  To the
+south of the glade is a cairn, surrounded with wild flowers.  You may exit
+the glade to the north.
+~
+0 4|1024 3
+D 0
+A Woody Path
+~
+~
+0 -1 10126
+E
+cairn~
+The cairn is small and has a simple cross marking its existence.  A small
+squirrel scampers from the trees and lays an acorn at the base of the cairn
+and then scurries back into the trees.  You can make out some faint markings
+etched into the cross.
+~
+E
+marking markings writing~
+The markings read,
+
+Mandolen Brightleaf, Friend and Mentor
+
+Here lies Mandolen Brightleaf of clan Brightleaf, the last protector of
+these woods.  Slain by the Witch Aiseen with dark magiks defending the
+animals and trees of these woods.  I, Thanus Windrunner, go now to try and
+avenge his death knowing I shall die.  To any elf or elf friend, I beg you
+cleanse these woods of the Witch's evil and avenge our deaths.
+~
+S
+
+#10128
+A Woody Path~
+You move along a small woodland path.  Songbirds twitter away in the trees
+above, and squirrels rush about looking for food.  The path turns here, you
+may head north or east.  To the north the path ends at a small rise, to the
+east the path opens into a small clearing.
+~
+0 0 3
+D 0
+A Woody Path
+~
+~
+0 -1 10129
+D 1
+A Woodland Clearing
+~
+~
+0 -1 10125
+S
+
+#10129
+A Woody Path~
+You stand at the end of a small woodland path.  Here the path ends at a
+small hillock which blocks further progress.  The long unused remains of a
+camp are here, overrun now by grass and weeds.  To the south the path
+continues and turns to the east.
+~
+0 0 3
+D 2
+A Woody Path
+~
+~
+0 -1 10128
+E
+camp~
+You examine the remains of the camp.  At best guess it was used by at most
+two people but there is a fairly large open area that is partially marked
+out. You also find several trees that have been cropped, evidence that the
+area was kept clear by humanoids.
+~
+S
+
+#10130
+Entrance Foyer~
+You stand in the tower's entrance foyer.  A large pentagram dominates the
+floor area, and small candle holders rest at the tip of each point.  Dried
+blood is sprayed across the walls and a shiver runs up your spine.  The
+wind whistles eerily through the gates to the south.  Narrow corridors exit
+to the north, east and west.
+~
+0 8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10141
+D 2
+Tower Gates
+~
+~
+0 -1 10114
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10131
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10142
+E
+pentagram~
+You examine the pentagram.  The pentagram's outline has been etched directly
+into the floor tiles and filled with blood.  Looking too closely makes you
+feel sick and you turn away in disgust.
+~
+E
+candles candleholder~
+The five candle holders are all identical.  They are made out of brass and
+are dull with age.  Layers of dried wax cover their bases, and none have any
+candles left in them.
+~
+S
+
+#10131
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The torches on the walls
+have long since burned out, and the walls are floor are dusty and dirty.  To
+the west the corridor opens into the entrance foyer, to the east the
+corridor opens into a small room.
+~
+0 1|8 0
+D 1
+A Library
+~
+~
+0 -1 10132
+D 3
+The Entrance Foyer
+~
+~
+0 -1 10130
+S
+
+#10132
+A Library~
+You stand in small library.  Reference books line the walls and there is a
+small desk in the south eastern corner.  Most of the room is covered in
+dust, evidence perhaps that the tower's occupants are not interested in
+literary pursuits.  Corridors exit to the north and west.
+~
+0 4|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10133
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10131
+E
+desk~
+The desk is badly damaged and is unusuable for its original intentions.  You
+have a quick search through its remains but find nothing of interest.
+~
+E
+book books~
+The books are in rather poor condition.  Those that are still at least semi-
+legible appear to be books on poetry and music.  The writing is mainly
+Elvish but there are a few in Common and even a few in some exotic languages
+you don't recognise.
+~
+S
+
+#10133
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The torches on the walls
+have long since burned out, and the walls and floor are dusty and dirty.  To
+the north is a small junction, to the south the corridor opens into a room.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10134
+D 2
+A Library
+~
+~
+0 -1 10132
+S
+
+#10134
+A Narrow Corridor~
+You stand at an intersection in the tower's corridors.  There is less dust
+here, although less is something of a relative term in here.  The corridor
+splits into three here, you may head north, west or south.  The corridor to
+the south is more dirty and dusty than the ones leading north and west.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10135
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10133
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10150
+S
+
+#10135
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  No torches burn here but
+the remains of a few burnt out torches litter the ground.  The walls and
+floor are dusty and dirty but show signs of semi-recent passage.  To the
+south is a small junction, to the north the corridor opens into a room.
+~
+0 1|8 0
+D 0
+A Library
+~
+~
+0 -1 10136
+D 2
+Narrow Corridor
+~
+~
+0 -1 10134
+S
+
+#10136
+A Library~
+You stand in a small library.  Reference books line the walls, in some cases
+stacked from floor to ceiling.  There is a writing desk in the north eastern
+corner, and a large stone table dominates the centre of the room.  Exits
+lead out to the west and south.
+~
+0 1|8 0
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10135
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10137
+E
+book books~
+The books appear mainly to be magical tomes, or writings on the theories of
+magic and the arcane.  None that you can find contain any spells but there
+are some interesting works on the theory of magic.  One in particular
+catches your eye by an author called Bolg who says when it comes to gathering
+mortal's souls you can't go past a spell called prismatic spray.
+~
+E
+desk~
+The desk is in reasonable condition: the surface is clean, tidy and even.
+You quickly search through the drawers but find nothing of any interest.
+~
+E
+table~
+The table is covered in stains, some of it blood, some of it other
+substances best left unmentioned.  There is nothing on it and there are no
+drawers of any kind, it is simply a large stone table.
+~
+S
+
+#10137
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  No torches burn here but
+the remains of a few burnt out torches litter the ground.  The walls and
+floor are dusty and dirty but show signs of passage.  The corridor opens
+into rooms to the east and west.
+~
+0 1|8 0
+D 1
+A Library
+~
+~
+0 -1 10136
+D 3
+A Lounge
+~
+~
+0 -1 10138
+S
+
+#10138
+A Lounge~
+You stand in an open lounge area.  A large fireplace dominates the northern
+wall, but it shows little sign of recent use and the mantlepiece is badly
+damaged.  The remains of couches and seats line the other three walls, all
+are moth eaten and dirty.  In the south eastern corner is what remains of a
+drinks cabinet, a lot of broken glass litters the floor around it.  Exits
+lead out of the room to the north, east and west.
+~
+0 1|8 0
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10139
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10137
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10149
+E
+couch couches seat seats~
+The couches and seats are in poor condition.  They are badly moth eaten and
+in some places have been eaten by something a little larger than a moth.  A
+cautious poke through the remains yields little of interest.
+~
+E
+fireplace~
+The fireplace hasn't been used in some time.  A few ashes fill the base of
+the fireplace, but there is no wood that you can see.
+~
+E
+mantlepiece~
+The mantlepiece is in pieces, the once fine wood chipped and broken.  Before
+its destruction, it looks to have been decorated in the form of a bow.
+~
+E
+drinks cabinet~
+The cabinet is almost completely destroyed, little of interest remains.
+~
+S
+
+#10139
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  No torches burn here but
+the remains of a few burnt out torches litter the ground.  The walls and
+floor are dusty and dirty but show signs of passage.  The corridor opens
+into a room to the north and into a grand stairway to the south.
+~
+0 1|8 0
+D 0
+A Lounge
+~
+~
+0 -1 10138
+D 2
+A Grand Stairway
+~
+~
+0 -1 10140
+S
+
+#10140
+A Grand Stairway~
+You stand at the base of a magnificent marble stairway.  Time has taken its
+toll but it is still an impressive structure, the hand rails sweep
+majestically upwards and covered by carvings and designs.  The floor here is
+mainly devoid of dust although its far from being clean.  Exits lead from
+the room in all cardinal directions.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10139
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10141
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10150
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10146
+D 4
+A Grand Stairway
+~
+~
+0 -1 10151
+E
+stairs stairway~
+The designs on the stairway are elven and depict a great hunt.  At the base
+of the stairs the hunt begins, and at the top the hunt ends with the slaying
+of a magnificent hart.  It is a truly beautiful piece of work and must have
+taken its builders an eternity to create.
+~
+S
+
+#10141
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  No torches burn here but
+the remains of a few burnt out torches litter the ground.  The walls and
+floor are dusty and dirty and show few signs of recent passage.  To the
+north the corridor opens into a room with a magnificent stairway, to the
+south the corridor opens into the main foyer.
+~
+0 1|8 0
+D 0
+A Grand Stairway
+~
+~
+0 -1 10140
+D 2
+Entrance Foyer
+~
+~
+0 -1 10130
+S
+
+#10142
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  No torches burn here, and
+the ground is dirty and dusty.  A small rat scurries about amongst rubbish
+on the ground but scuttles away at your approach.  To the east the corridor
+opens into the main foyer, to the west the corridor ends in a room.
+~
+0 1|8 0
+D 1
+Entrance Foyer
+~
+~
+0 -1 10130
+D 3
+A Guest Room
+~
+~
+0 -1 10143
+S
+
+#10143
+A Guest Room~
+You stand in what appears to be a small guest room.  A large double bed
+dominates the southern wall, the bed itself is in fair condition but the
+mattress and sheets have certainly seen better days.  On the western wall is
+a fireplace, it doesn't appear to have been used for some time.  Exits lead
+from the room to the north and east.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10144
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10142
+E
+bed double~
+The bed is of elegant design with sweeping head and foot boards.  They are
+carved in the shape of embracing lovers, the heads looking down onto the bed
+where the occupants would sleep.  A quick search of the matress and sheets
+yields nothing of interest.
+~
+E
+fireplace~
+The fireplace is in a poor state of repair, the ashes have been cold for
+many a year by the looks of it.
+~
+S
+
+#10144
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  No torches burn here, the
+ground is covered with dried blood and other unpleasantness.  A deformed
+looking rodent lurks in the shadows near the walls, showing no fear in your
+presence.  To the south the corridors opens into a room, to the north you
+see an intersection.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10145
+D 2
+A Guest Room
+~
+~
+0 -1 10143
+S
+
+#10145
+A Narrow Corridor~
+You stand at an intersection in the tower's corridors.  There is less dust
+here, although there are several old blood stains on the floor.  The
+corridor splits into three here, you may head north, east or south.  The
+corridor to the south is more dirty and dusty than the ones leading north
+and east.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10147
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10144
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10146
+S
+
+#10146
+A Narrow Corridor~
+You stand in a narror corridor within the tower.  The corridor is dirty but
+shows signs of recent passage.  The stub of a torch burns silently here
+lighting your way.  To the west the corridor reaches an intersection, to the
+east you see a grand stairway.
+~
+0 8 0
+D 1
+A Grand Stairway
+~
+~
+0 -1 10140
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10145
+S
+
+#10147
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The corridor feels
+foreboding here, the air is hot and stale.  The floor is dirty and you can
+see several old blood stains as if something has been dragged across the
+floor here.  To the south the corridor reaches an intersection, to the north
+the corridor opens into a room.
+~
+0 1|8 0
+D 0
+A Laboratory
+~
+~
+0 -1 10148
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10145
+S
+
+#10148
+A Laboratory~
+You stand in a large magical laboratory.  The room is dominated by a massive
+stone table in the centre of the room.  Along the northern and western walls
+are shelves reaching from ceiling to floor.  A pile of bones, some of them
+humanoid by the looks of it, rest in the south-eastern corner but what
+disturbs you more is the blood.  The ceiling, floor and walls are covered in
+dried blood and hair, and you can taste death in the air.  Exits lead from
+the room to the south and east.
+~
+0 1|8 0
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10147
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10149
+E
+shelf shelves~
+The shelves are covered with all manner of things, some interesting, some
+mundane, and some not all that pleasant.
+~
+E
+table stone~
+The table is also covered in blood, amongst other things.  You see many
+many nicks and chips, a great many creatures have perished on this table.
+~
+E
+bone bones~
+The bones are a mixture of humanoid and animal, old and new.  Many are still
+covered in blood and the smell is nauseating.  A tentative prod through
+them fails to turn up anything interesting.
+~
+S
+
+#10149
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The air here is hot and
+stale, the room seems to press in upon you.  The floor shows some signs of
+recent passage, you spot a couple of humanoid foot prints in the dust.  To
+the east and west the corridor opens into rooms.
+~
+0 1|8 0
+D 1
+A Lounge
+~
+~
+0 -1 10138
+D 3
+A Laboratory
+~
+~
+0 -1 10148
+S
+
+#10150
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The corridor is very dusty
+here and the only sign of passage is that of your own.  To the west you can
+see a grand stairway, to the east the corridor reaches an intersection.
+~
+0 1|4|8 0
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10134
+D 3
+A Grand Stairway
+~
+~
+0 -1 10140
+S
+
+#10151
+A Grand Stairway~
+You stand at the top of a magnificent marble stairway.  The walls are lined
+with the remains of murals, time and neglect reducing them to a memory of
+their original glory.  The staircase curves gracefully downwards, and exits
+lead off to the north and south.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10152
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10162
+D 5
+A Grand Stairway
+~
+~
+0 -1 10140
+E
+stairs stairway~
+The designs on the stairway are elven and depict a great hunt.  At the base
+of the stairs the hunt begins, and at the top the hunt ends with the slaying
+of a magnificent hart.  It is a truly beautiful piece of work and must have
+taken its builders an eternity to create.
+~
+E
+mural murals~
+You can make out little of the original design, save that it depicts a feast
+or banquet of some kind.  You presume that it is a continuation of the
+designs on the staircase, truly this would have been a beautiful sight in
+times gone by.
+~
+S
+
+#10152
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  To the north
+the corridor arrives at a junction, and to the south is the grand stairway.
+~
+0 1|8 0
+D 0
+A Small Junction
+~
+~
+0 -1 10153
+D 2
+A Grand Stairway
+~
+~
+0 -1 10151
+S
+
+#10153
+A Small Junction~
+You stand at a small junction of corridors within the tower.  The floor
+shows no signs of recent passage, the dust is inches thick.  The corridor
+continues to the west, south, and east.
+~
+0 1|8 0
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10152
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10154
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10169
+S
+
+#10154
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  To the west
+the corridor arrives at a junction, and to the east is a room.  You feel a
+terrible sense of evil coming from the room to the east.
+~
+0 1|8 0
+D 1
+A Shrine
+~
+~
+0 -1 10155
+D 3
+A Small Junction
+~
+~
+0 -1 10153
+S
+
+#10155
+A Shrine~
+You stand in a small room that can only be described as a shrine.  You feel
+a powerful sense of wrongness, of evil, and of terror.  In the north-eastern
+corner is a shrine, to what god or gods you don't know.  There is also a
+small stone bench along the eastern wall.  Exits lead from the room to the
+south and west.
+~
+0 1|8 0
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10156
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10154
+E
+shrine evil~
+You cannot put into words a description of the shrine, it is too evil for
+that.  This must be a totem to some dark power, it is a primitive and
+elemental sense of evil.  You suppress a shudder.
+~
+E
+bench stone table~
+The benchtop is clear of any objects, and is surprisingly clean all things
+considered.  You're relieved to think it is simply a space to store things on.
+~
+S
+
+#10156
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  To the south
+the corridor continues, and to the north is a room.  You feel a terrible
+sense of evil coming from the room to the north.
+~
+0 1|8 0
+D 0
+A Shrine
+~
+~
+0 -1 10155
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10157
+S
+
+#10157
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  The corridor
+continues to the north and south.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10156
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10158
+S
+
+#10158
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  The corridor
+continues to the north, to south is a small room.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10157
+D 2
+A Library
+~
+~
+0 -1 10159
+S
+
+#10159
+A Library~
+You stand in a small library.  Reference books line the walls, in some cases
+stacked from floor to ceiling.  There is a small desk in the south eastern
+corner, and a large stone table dominates the centre of the room.  Exits
+lead out to the north and west.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10158
+D 3
+~
+~
+0 -1 10160
+E
+book books reference~
+The books appear mainly to be magical tomes, or writings on the theories of
+magic and the arcane.  None that you can find contain any spells but there
+are some interesting works on the theory of magic.  One in particular
+catches your eye from a mage called Heretic about the virtues of blinding
+opposing warriors to stop them headbutting you.
+~
+E
+desk~
+The desk is in reasonable condition, the surface is clean, tidy and even.
+You quickly ruffle through the drawers, but find nothing of any particular
+interest or value.
+~
+E
+table~
+The table is cold and looks very heavy.  There is nothing on it and there
+are no drawers of any kind, it is simply a large stone table.
+~
+S
+
+#10160
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  The corridor
+continues to the west, to east is a small room.
+~
+0 1|8 0
+D 1
+A Library
+~
+~
+0 -1 10159
+D 3
+A Small Junction
+~
+~
+0 -1 10161
+S
+
+#10161
+A Small Junction~
+You stand at a small junction of corridors within the tower.  The floor
+shows no signs of recent passage, the dust is inches thick.  The corridor
+continues to the north, east, and west.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10162
+D 1
+~
+~
+0 -1 10160
+D 3
+A Narrow Corridor
+~
+~
+0 -1 10163
+S
+
+#10162
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  To the north
+the corridor arrives at a grand stairway, to the south is a small junction.
+~
+0 1|8 0
+D 0
+A Grand Stairway
+~
+~
+0 -1 10151
+D 2
+A Small Junction
+~
+~
+0 -1 10161
+S
+
+#10163
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  The corridor
+continues to the west, to east is a small room.
+~
+0 1|8 0
+D 1
+A Small Junction
+~
+~
+0 -1 10161
+D 3
+A Bedroom
+~
+~
+0 -1 10164
+S
+
+#10164
+A Bedroom~
+You stand in a small bedroom within the tower.  A large four-poster bed
+dominates the southern wall, a small set of drawers is beside the bed.
+Against the western wall is what was once a grand full length mirror, now it 
+is cracked and badly damaged.  Exits lead out to the north and east.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10165
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10163
+E
+drawers~
+The drawers are plain and simple.  You open each drawer in turn but find
+nothing of any particular interest, mainly old clothes and the odd novel.
+~
+E
+mirror~
+The mirror is badly cracked and damaged, you can't make out your reflection
+at all really.  Once it must have been a valuable item, the remaining
+decorations appear to be finely crafted but too little remains to make out
+any designs.
+~
+E
+bed~
+The bed can best be described as large.  The headboard is the mouth of a
+giant snake with rows of very life-like looking teeth.  The bed itself is
+unmade and, in your humble opinion, could do with a good clean.  You have a
+quick search through the sheets - with a piece of wood - but don't find
+anything exciting.
+~
+S
+
+#10165
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  The corridor
+continues to the north, to the south is a small room.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10166
+D 2
+A Bedroom
+~
+~
+0 -1 10164
+S
+
+#10166
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  The corridor
+continues to the north and south.
+~
+0 1|8 0
+D 0
+A Narrow Corridor
+~
+~
+0 -1 10167
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10165
+S
+
+#10167
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  Suddenly you
+come over all cold and you shiver uncontrollably.  The corridor continues to
+the south, to the north is a small room.
+~
+0 1|8 0
+D 0
+A Study
+~
+~
+0 -1 10168
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10166
+S
+
+#10168
+A Study~
+You stand in a small study.  The room is dominated by an elaborate writing
+desk against the western wall.  A small bookshelf stands against the
+northern wall, atop it is a small candelabra.  The scent of evil is strong
+in the air here and you feel the hairs on the back of your neck twitching.
+Exits lead out to the south and east.
+~
+0 1|8 0
+D 2
+A Narrow Corridor
+~
+~
+0 -1 10167
+D 1
+A Narrow Corridor
+~
+~
+0 -1 10169
+E
+desk~
+The desk is in good condition all things considered.  The surface is covered
+with half finished scrolls of some kind, strewn about at random.  The design
+and construction is elegant yet strong and in its original condition must
+have been magnificent to view.  You search through the papers and drawers but
+fail to find anything of interest.
+~
+E
+book bookshelf~
+The bookshelf contains several old and worn books but none that you
+recognise immediately.  A flick through some of the books show them to be in
+a language that you do not understand but you can feel the wrongness of the
+text and quickly put them down.
+~
+E
+candelabra~
+The candles show semi-recent signs of use, certainly within the last few
+days but none are currently lit.
+~
+S
+
+#10169
+A Narrow Corridor~
+You stand in a narrow corridor within the tower.  The floor shows no signs
+of recent passage, the only footprints in the dust are yours.  Suddenly you
+feel cold and a shiver runs up your spine.  To the east the corridor arrives
+at a junction, to the west is a small room.
+~
+0 1|8 0
+D 1
+A Small Junction
+~
+~
+0 -1 10153
+D 3
+A Study
+~
+~
+0 -1 10168
+S
+#0
+
+#RESETS
+D 0 10114 0 1                   close north in Tower Gates
+M 0 10102 3 10102               add a brown bear to A Woody Path
+E 0 10103 0 16                      equip teeth (wield)
+M 0 10102 3 10110               add a brown bear to A Woodland Clearing
+E 0 10103 0 16                      equip teeth (wield)
+M 0 10102 3 10113               add a brown bear to An Overgrown Path
+E 0 10103 0 16                      equip teeth (wield)
+M 0 10100 1 10107               add a black bear to A Black Cave
+E 0 10100 0 16                      equip claws (wield)
+M 0 10101 1 10121               add a two headed hydra to A Black Pool
+E 0 10101 0 16                      equip bloody fangs (wield)
+E 0 10101 0 18                      equip bloody fangs (dual)
+G 0 10102 0                         carry a fire egg
+G 0 10102 0                         carry a fire egg
+M 0 10103 2 10122               add a ghostly nymph to A Woody Path
+M 0 10103 2 10129               add a ghostly nymph to A Woody Path
+M 0 10104 2 10131               add a spectral elf to A Narrow Corridor
+M 0 10104 2 10139               add a spectral elf to A Narrow Corridor
+M 0 10105 1 10136               add a black witch to A Library
+E 0 10104 0 16                      equip broom stick (wield)
+M 0 10107 2 10149               add a ghostly wraith to A Narrow Corridor
+M 0 10106 1 10148               add a small imp to A Laboratory
+E 0 10107 0 10                      equip bracers of the hunter (arms)
+E 0 10105 0 16                      equip a wicked trident (wield)
+E 0 10106 0 18                      equip a tail (dual)
+M 0 10108 1 10155               add a demon spirit to A Shrine
+M 0 10109 1 10168               add a wight to A Study
+S
+
+#SPECIALS
+M 10101 spec_breath_fire        a two headed hydra
+M 10103 spec_cast_druid         a ghostly nymph
+M 10105 spec_cast_priestess     a black witch
+M 10107 spec_cast_undead        a ghostly wraith
+M 10106 spec_cast_mage          a small imp
+M 10108 spec_cast_undead        a demon spirit
+S
+
+#$

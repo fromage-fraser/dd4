@@ -1,0 +1,2170 @@
+#AREA   Madboy/Jammer~ Temple of Mrinthas~
+35 50 0 100
+
+#MOBILES
+#13001
+Fountain Beast eel creature~
+Fountain Beast~
+A large eel-like creature swims here.
+~
+An eel-like creature with large fangs swims menacingly before you.
+~
+2|32|64 512|16777216 0 S
+35 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#13002
+soldier Guard zombie undead~
+An undead Temple Guard~
+A long dead soldier stands here.
+~
+The rotting body of the zombie temple guard utters a low moan as it waves
+it's finely-crafted spear at you threateningly.It wears a bronze
+breastplate and appears to have superior fighting skills.
+~
+2|64 8|512|8192 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13003
+Temple Guard zombie undead~
+A wandering Temple Guard~
+An undead Temple Guard stands here.
+~
+The rotting temple guard utters a low moan as it waves it's spear
+threateningly. The spear appears to be of a superior quality as does it's
+bronze breastplate.
+~
+32|64 8|512|8192 0 S
+27 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13004
+Temple Sergeant guard undead zombie~
+Temple Sergeant~
+A Temple Sergeant stands here.
+~
+The Temple Sergeant resembles the Temple guards in every way with the
+exception that he wields a sword and wears a helmet.
+~
+2|64 8|32|512|8192 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13005
+mackurian high-priest undead zombie priest~
+A undead High-Priest~
+MacKurian the High-Priest gives a sermon here.
+~
+MacKurian, although clearly undead, seems to emit an aura of goodness and
+serenity. His robes are still crisp and white as if they had merely been
+donned moments earlier.
+MacKurian says "Rest...Be at peace. Train or practice here if you wish. But
+do not harm any in the temple or there shall be trouble."
+~
+2|64|512|1024 8|32|128|512|8192 750 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13006
+rat creature~
+An extremely large rat~
+A huge rat scrables around here for tidbits to eat.
+~
+The huge rat salivates as you stand looking at it. It looks hungry and you
+appear to be on it's menu.
+~
+32|64 32|32768 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#13007
+Shopkeeper~
+the shopkeeper~
+A wizened, old shopkeeper is here
+~
+The old shopkeeper looks back at you and asks "What can I do for you?"
+~
+2|4|64 8|32|512|8192 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13008
+Acolyte priest zombie undead~
+An undead Temple Acolyte~
+The long-dead, Temple Acolyte wears rotting robes.
+~
+The undead acolyte is nothing more than a skelton with skin stretched
+tautly over it's body giving it a mummified look. Rags hang where once
+plush robes did.
+~
+64 8|512|8192 750 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13009
+Dane Captain guard~
+Dane the Guard Captain~
+The Captain stands here watching the proceedings.
+~
+This man appears to have a slight golden sheen to his skin. Evidently he
+has seen a lot of action over the many years in his career.  Although
+getting a bit older, you notice that this man in no way is past his prime.
+Wisps of steam rise from his frost covered armour as he stands watching all
+that happens before him. The captain appears to be the only one of the
+entire Temple staff who has not been effected by the passage of time. You
+notice that nothing escapes the Guard Captain's gaze
+~
+2|64|128 8|32|128|512|8192 1000 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13010
+Temple Guard zombie undead~
+Ready Temple Guards~
+The Temple Guards stand to attention.
+~
+The rotting Temple Guard does not look happy with his fate.
+~
+64 8|512|8192 0 S
+29 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13011
+Temple Sergeant zombie undead~
+Ready Temple Sergeant~
+The Temple Sergeant stands to attention.
+~
+The Temple Sergeant does not look happy with his fate.
+~
+64 8|32|512|8192 0 S
+32 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13012
+Guardian Daemon demon creature~
+a Guardian Daemon~
+A huge Daemon guards this area.
+~
+The 12 foot tall daemon looks at you with a mixture of hunger and
+amusement. It's short elephant-like trunk snuffles in your direction
+splashing hissing, green acid as it flexes it's huge arms and clicks it's
+claws.
+~
+2|4|32|64 8|32|512|8192|32768|65536|524288 -500 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#0
+
+
+#OBJECTS
+#13001
+shiny key~
+a Shiny key~
+A shiny key lies here, seemingly untarnished by the ages.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+#13002
+Temple Guard Breastplate ~
+a bronze breastplate~
+A bronze breastplate from one of the long-dead Temple Guards~
+~
+9 64|1024 1|8
+3~ ~ ~ ~
+5 0 0
+#13003
+Spear~
+a spear~
+A finely-crafted, rune carved spear lies here.~
+~
+5 1024 1|8192
+0~ 3~ 8~ 2~
+3 0 0
+A
+18 1
+#13004
+Rock~
+a piece of rock~
+A large piece of granite broken from the wall lies here.~
+~
+13 0 1|16384
+~ ~ ~ ~
+2 0 0
+#13005
+Small scroll~
+a small scroll~
+A small scroll .~
+~
+13 0 1|16384
+~ ~ ~ ~
+1 0 0
+E
+Scroll~
+Your Grace,
+The Church of Karnethan are rallying the other churches against you. You
+must try to stop the Lich-Lords from joining this unholy alliance. I am
+sending this letter by the fastest courier I have though I fear it will
+arrive too late. Good Luck and Mrinthas protect you.
+
+Kaleb.~
+#13006
+Amulet~
+Githad's amulet~
+A small, glowing amulet rests here.~
+~
+1 1|64 1|4
+0~ 1~ -1~ 11~
+1 0 0
+A
+24 3
+A
+12 10
+E
+Amulet~
+Githad's Amulet is a small, decorative affair with small runes carved
+around the perimeter. A diamond in the middle emits light enough to see in
+a small area around the wearer.~
+#13007
+Robes~
+white robes~
+Long, flowing, white robes made from heavy linen.~
+~
+9 1024|2048 1|1024
+40~ ~ ~ ~
+10 0 0
+A
+4 3
+A
+12 10
+#13008
+Wand~
+a short, white wand~
+A short wand made of a substance similar to bone~
+~
+3 64 1|16384
+12~ 1~ 5~ 61~
+1 0 0
+#13009
+wood~
+bits of broken wood~
+Some pieces of broken wood that were probably furniture a few centuries ago.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+#13010
+Skeleton~
+a skeleton~
+A skeleton lies here in the corner. It is wearing mouldy, rotting robes. ~
+~
+13 0 1
+~ ~ ~ ~
+10 0 0
+E
+Robes~
+The robes are decayed beyond use and disintergrate as you move the skeleton.
+~
+#13011
+Gate~
+huge gate~
+A massive iron-bound, wooden gate rests here.~
+~
+5 0 1|8192
+0~ 10~ 40~ 8~
+3000 0 0
+A
+1 -10
+A
+2 -10
+A
+14 -30
+A
+18 -10
+A
+17 -20
+E
+Gate~
+This gate is huge and is extremely heavy. If you have lifted this item and
+are wielding it then you should not be coming in here because it will not
+be a challenge for you at all and you may spoil it for yourself (and
+possibly others)! So the gate has modifiers to keep your sort out!
+~
+#13012
+Sword~
+a fine sword~
+A finely crafted, single bladed sword rests here.~
+~
+5 1024 1|8192
+0~ 3~ 8~ 3~
+3 0 0
+A
+18 1
+E
+sword~
+The finely wrought sword appears to be made from some light, yet extremely
+strong metal. It's slightly dull surface has a single rune carved upon it
+in the centre of the blade. This blade is commonly wielded by the temple
+sergeants.~
+#13013
+Helm~
+a bronze helm~
+A bronze helm rests here.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~
+2 0 0
+A
+17 2
+E
+Helm~
+The bronze helm is a basinet-type affair with a short bronze chainmail neck
+guard and a nose guard. This helm is commonly worn by Temple Sergeants.~
+#13014
+Font~
+a font~
+A font containing, what appears to be, holy water~
+~
+25 0 0
+~ ~ ~ ~
+1000 0 0
+#13015
+Robe Robes~
+a grey robe~
+A plain grey robe rests here.~
+~
+9 0 1|1024
+8~ ~ ~ ~
+1 0 0
+A
+17 3
+A
+24 3
+E
+robe~
+The grey robes seem nothing more than that.~
+#13016
+shopkeeper's Ring~
+a ring~
+A plain steel ring rests here.~
+~
+3 0 1|16384
+20~ 1~ 6~ identify~
+1 0 0
+E
+ring~
+The steel band is featureless.~
+#13017
+Shopkeepers Axe~
+The shopkeepers axe~
+An axe rests here.~
+~
+5 0 1|8192
+0~ 1~ 8~ 13~
+5 0 0
+A
+4 -1 
+A
+18 3
+E
+axe~
+It seems to be a plain axe.~
+#13018
+Cupcake food~
+a cupcake~
+A cupcake rests here.~
+~
+19 0 1
+24~ 1~ 0~ 11~
+1 0 0
+#13019
+Firewater drink alcohol~
+a bottle of alcohol~
+A bottle of alcohol rests here.~
+~
+17 0 1
+0~ 1~ 20~ 0~
+1 0 0
+#13020
+Pews~
+some pews~
+Rows of pews are here.~
+~
+12 0 0
+~ ~ ~ ~
+1000 0 0
+E
+Pews~
+The Pews appear to be the only pieces of furniture to still be intact.
+~
+#13021
+Rags~
+some rotting rags~
+Some rotting rags that must be well over three centuries old.~
+~
+13 0 1|1024
+~ ~ ~ ~
+1 0 0
+#13022
+Holy Book of Mrinthas~
+leather-bound book~
+A large leather-bound book with yellowed pages lies here.~
+~
+4 1024|2048 1|16384
+20~ 1~ 20~ fireball~
+7 0 0
+A
+12 0
+#13023
+MacKurian's Robes~
+priest's White Robes~
+Plain white robes from the undead priest rests here.~
+~
+9 1024|2048 1|1024
+10~ 1~ ~ ~
+5 0 0
+A
+24 3
+A
+17 3
+A
+4 3
+#13024
+Temple Signet ring~
+a signet ring~
+A ring with the temple crest on it~
+~
+9 64|1024 1|2
+2~ ~ ~ ~
+1 0 0
+A
+24 3
+A
+18 2
+A
+4 1
+#13025
+Sword longsword daeron captain's~
+Sword of Daeron~
+A shiny new longsword has been carelessly discarded here...~
+~
+5 128|1024|2048|4096 1|8192
+0~ 9~ 24~ 3~
+25 0 0
+A
+4 3
+A
+13 -50
+A
+18 10
+A
+19 6 
+A
+24 25
+E
+longsword~
+Just above the hilt there is an inscription etched into the metal.  It
+reads - Daeron 1993
+The blade is otherwise in perfect condition.
+~
+#13026
+Captain's Plate platemail~
+the Captains Platemail~
+The Captains Platemail suit lies here~
+~
+9 64 1|8
+9~ ~ ~ ~
+10 0 0
+A
+18 2
+A
+17 -10
+#13027
+Captain's Boots~
+the Captain's Boots~
+A pair of Guard Captains Boots are lying here~
+~
+9 2|64 1|64
+6~ ~ ~ ~
+8 0 0
+A
+14 15
+#13028
+Captain's Sleeves~
+the Captain's Sleeves~
+The Captains Sleeves are lying here~
+~
+9 1|64 1|256
+3~ ~ ~ ~
+5 0 0
+A
+1 2
+A
+18 1
+#13029
+Captain's Leggings~
+the Captain's Leggings~
+The Captains Leggings are lying here~
+~
+9 64 1|32
+3~ ~ ~ ~
+5 0 0
+A
+12 10
+A
+18 2
+#13030
+MacKurian's Staff~
+a long, white staff~
+A long, white staff with many glyphs and sigils lies here~
+~
+4 64|1024|2048 1|8192
+50~ 1~ 1000~ 30~
+1 0 0
+A
+1 3
+A
+2 3
+A
+3 3
+A
+4 3
+A
+5 3
+A
+12 100
+A
+13 -50
+A
+14 -20
+A
+17 -30
+A
+24 5
+#13031
+Captain's Bracers~
+the Captains Bracers~
+A pair of Captains Bracers are lying here.~
+~
+9 64|1024|2048 1|4096
+8~ ~ ~ ~
+1 0 0
+A
+1 1
+A
+19 2
+#13032
+Captain's Helmet~
+the Captain's Helmet~
+A battle scarred helmet is lying here~
+~
+9 1|64|1024|2048|4096 1|16
+7~ ~ ~ ~
+7 0 0
+A
+4 2
+A
+18 1
+A
+14 -10
+#13033
+Captain's Gauntlets~
+the Captain's Gauntlets~
+A pair of heavy, spiked steel gauntlets lie here.~
+~
+9 64 1|128
+7~ ~ ~ ~
+5 0 0
+A
+18 1
+A
+1 1
+#13034
+Captain's shield~
+the Captain's shield~
+A silver shield rests here.~
+~
+9 64 1|512
+5~ ~ ~ ~
+2 0 0
+A
+17 3
+A
+23 5
+#13035
+Idol key~
+a featureless key~
+This key appears to be nothing more than a short, featureless rod.~
+~
+18 64 1
+~ ~ ~ ~
+2 0 0
+#13036
+scroll~
+a scroll~
+A rolled up,  rather non-descript scroll is lying in the corner of the room...~
+~
+2 1024|2048 1|8192
+50~ bless~ armor~ ~
+1 0 0
+#13037
+Tower Key~
+a small golden key~
+A small, golden key rests here.~
+~
+18 1024 1|16384
+~ ~ ~ ~
+1 0 0
+A
+12 50
+#0
+
+
+#ROOMS
+#13001
+The Path~
+The rocky path heads east toward the ruins of a temple to some long,
+forgotten god. A rocky path also heads down a slope to the west.
+~
+0 0 4
+D1
+~
+~
+0 -1 13002
+D3
+~
+~
+0 -1 501
+S
+#13002
+The Gate~
+The temple was once surrounded by a large wall which has since fallen to
+decay. Pieces of masonry lie on the ground where they have fallen from the
+walls. The huge gates lie rotting on the ground, smashed from their hinges
+by some massive force. The sound of silence here is almost deafening.
+~
+0 0 1
+D0
+~
+~
+0 -1 13003
+D3
+~
+~
+0 -1 13001
+E
+Writing on wall~
+TURN BACK!ONLY DEATH LIES IN THIS PLACE THAT THE GODS HAVE FORSAKEN!
+~
+E
+Gates~
+The gates appear to have been blasted by some considerable force. The
+scorch marks suggest that some kind of spell or magical effect has knocked
+these gates down.
+~
+S
+#13003
+The Fountain~
+You see a large fountain with brown, murky water.  Something stirs beneath
+the surface.
+~
+0 0 1
+D1
+~
+~
+0 -1 13007
+D2
+~
+~
+0 -1 13002
+D5
+~
+~
+0 -1 13004
+S
+#13004
+In the fountain~
+The brown, murky water of the fountain is obviously deeper than it seems
+and you cannot touch the bottom. Something slimy brushes your leg.
+~
+0 4|0 6
+D4
+~
+~
+0 -1 13003
+D5
+~
+~
+0 -1 13005
+E
+glimmer light~
+You see a glimmer of light deeper down.
+~
+S
+#13005
+The Bottom~
+Something glimmers in the murk at the bottom of the fountain.
+~
+0 1|0 8
+D4
+~
+~
+0 -1 13004
+S
+#13007
+The Entranceway to the Temple~
+This short passageway takes you not only inside the structure,  but back it
+time as well.  Through the archway ahead you can glimpse at the
+magnificence yet to come...
+There is an ancient poster on the other wall - reminescent of old times?
+~
+0 8|0 0
+D0
+~
+~
+0 -1 13008
+D3
+~
+~
+0 -1 13003
+E
+Plaque on wall~
+This area was designed by Dreamer and Fitharn 1995.
+Hope you like it.~
+E
+Poster~
+Manowar - Live at Midgaard
+on the 20th!
+
+Bring your steel!~
+S
+#13008
+A huge and magnificent ante-chamber~
+This huge and magnificent ante-chamber appears untouched by time. The wall
+hangings and tapestries remain intact and depict many of the temple rituals
+such as the anointing of oils on young men and women and sermons by
+white-robed priests and prayers to some unknown god. Even after these
+centuries the scent of death still lingers in the air.
+~
+0 8|0 0
+D0
+~
+~
+0 -1 13009
+D2
+~
+~
+0 -1 13007
+D3
+~
+~
+0 -1 13010
+S
+#13009
+A huge and magnificent ante-chamber~
+You are standing in a huge and magnificent ante-chamber
+~
+0 8|0 0
+D0
+~
+~
+0 -1 13030
+D2
+~
+~
+0 -1 13008
+D3
+~
+~
+0 -1 13011
+S
+#13010
+A huge and magnificent ante-chamber~
+You are standing in a huge, magnificent ante-chamber
+~
+0 8|0 0
+D0
+~
+~
+0 -1 13011
+D1
+~
+~
+0 -1 13008
+S
+#13011
+A huge and magnificent ante-chamber~
+You are standing in a huge and magnificent ante-chamber
+~
+0 8|0 0
+D0
+~
+~
+0 -1 13029
+D1
+~
+~
+0 -1 13009
+D2
+~
+~
+0 -1 13010
+D3
+~
+~
+2 13001 13013
+S
+#13013
+A passageway~
+You are standing in a dark passageway
+~
+0 1|8|0 0
+D1
+~
+~
+2 -1 13011
+D3
+~
+~
+0 -1 13014
+S
+#13014
+A passageway~
+You are standing in a dark east-west passageway.
+~
+0 1|8|0 0
+D1
+~
+~
+0 -1 13013
+D3
+~
+~
+0 -1 13015
+S
+#13015
+A passageway~
+You are standing in a dark east-west passageway. There is a door to the
+south and a side passage leads off to the north.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13017
+D1
+~
+~
+0 -1 13014
+D2
+~
+~
+1 -1 13016
+D3
+~
+~
+0 -1 13019
+S
+#13016
+A room~
+You are standing in an empty room. There is something written on the
+opposite wall
+~
+0 1|4|8|0 0
+D0
+~
+~
+1 -1 13015
+E
+Writing wall~
+Welcome to the Temple of Kharneth-Dhar, Kyng of all Lyches.  I have taken
+over thys temple and enslaved yt's worshippers to do my byddyng. For those
+who wysh to joyn my swelling ranks and bask in my glory and magnyfycence,
+this shall be your test to see yf you are worthy to kneel at my feet and
+ymplore me to ynduct you into my ranks. Those who fayl or those succeed but
+show ynsolence, shall only find death as I feed your soul to my mynyons. I
+awayt your arryval yn the crypts yf you have the courage to face me.
+
+Kharneth Dhar, Wytch-King 
+~
+S
+#13017
+A passageway~
+You are standing in a dark, north-south passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13018
+D2
+~
+~
+0 -1 13015
+S
+#13018
+A passageway~
+You are standing in a dark, north-south passageway. There is a door to the
+north.
+~
+0 1|8|0 0
+D0
+~
+~
+1 -1 13028
+D2
+~
+~
+0 -1 13017
+S
+#13019
+A passageway~
+You are standing in a dark passageway. The corridor turns north but a door
+lies to the west. There is a plaque on the door.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13020
+D1
+~
+~
+0 -1 13015
+D3
+~
+~
+1 -1 13021
+E
+Plaque~
+'Clergy only'~
+S
+#13020
+A passageway~
+You are standing in a dark, north-south passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13039
+D2
+~
+~
+0 -1 13019
+S
+#13021
+Another ante-chamber~
+You are standing in another large ante-chamber. This one, however, is bare
+except for the temple guard standing at a door in the west wall to the
+south-west of your current position.
+~
+0 1|8|0 0
+D1
+~
+~
+1 -1 13019
+D2
+~
+~
+0 -1 13022
+D3
+~
+~
+0 -1 13024
+S
+#13022
+Another ante-chamber~
+You are standing in another ante-chamber. To the west, in the western wall,
+is a door guarded by an undead Temple Guard. To the north there is a door
+in the eastern wall. The room is, otherwise, empty.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13021
+D3
+~
+~
+0 -1 13023
+S
+#13023
+Another ante-chamber~
+You are standing in another ante-chamber. There is a door, here, in the
+western wall guarded by a Temple Guard. There is another door in the
+eastern wall north-east of your current location.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13024
+D1
+~
+~
+0 -1 13022
+D3
+~
+~
+1 -1 13025
+S
+#13024
+Another ante-chamber~
+You are standing in another ante-chamber. A door lies to your east in the
+eastern wall and another lies in the south in the western wall and is
+guarded by one of the undead Temple Guards.
+~
+0 1|8|0 0
+D1
+~
+~
+0 -1 13021
+D2
+~
+~
+0 -1 13023
+S
+#13025
+A passageway~
+You are standing in a dark passageway that heads north.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13026
+D1
+~
+~
+1 -1 13023
+S
+#13026
+A passageway~
+You are standing in a dark north-south passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13027
+D2
+~
+~
+0 -1 13025
+S
+#13027
+A passageway~
+You are standing in a dark north-south passageway. There is a door in the wall to the east.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13031
+D1
+~
+~
+1 -1 13044
+D2
+~
+~
+0 -1 13026
+S
+#13028
+A small room~
+You are standing in a small, unadorned room. Broken pieces of rotting wood
+lie on the floor. There is a door to the south and one to the east
+~
+0 1|8|0 0
+D1
+~
+~
+1 -1 13033
+D2
+~
+~
+1 -1 13018
+S
+#13029
+A huge and magnificent ante-chamber~
+You are standing in a huge and magnificent ante-chamber.
+~
+0 8|0 0
+D1
+~
+~
+0 -1 13030
+D2
+~
+~
+0 -1 13011
+S
+#13030
+A huge and magnificent ante-chamber~
+You are standing in a huge and magnificent ante-chamber. There is a large
+fresco on the wall here.
+~
+0 8|0 0
+D2
+~
+~
+0 -1 13009
+D3
+~
+~
+0 -1 13029
+E
+Fresco~
+The Fresco seems to represent an old man wearing white robes standing in
+front of a large congregation of people. He is surrounded by a blue aura
+and appears to have a serene expression of vast enlightenment.~
+S
+#13031
+A passageway~
+You are standing in a dark north-south-down passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13032
+D2
+~
+~
+0 -1 13027
+D5
+Stairs leading to catacombs.~
+simple stairs leading down.~
+0 -1 13300
+S
+#13032
+A passageway~
+You are standing in a dark north-south passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13037
+D2
+~
+~
+0 -1 13031
+S
+#13033
+A passageway~
+You are standing in a dark passageway that leads off to the east. There is
+a door to the west.
+~
+0 1|8|0 0
+D1
+~
+~
+0 -1 13034
+D3
+~
+~
+1 -1 13028
+S
+#13034
+A passageway~
+You are standing in dark passageway. The passage here turns north.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13035
+D3
+~
+~
+0 -1 13033
+S
+#13035
+A passageway~
+You are standing in a dark north-south passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+1 -1 13036
+D2
+~
+~
+0 -1 13034
+S
+#13036
+A passageway~
+You are standing in a dark passageway. There is a set of large double doors
+to the west. The passage heads south.
+~
+0 1|8|0 0
+D2
+~
+~
+0 -1 13035
+D3
+~
+~
+1 -1 13056
+S
+#13037
+A passageway~
+You are standing in a dark north-south passageway.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13038
+D2
+~
+~
+0 -1 13032
+S
+#13038
+A passageway~
+You are standing in a dark passageway. The passage heads south. There are a
+pair of large double doors in the east wall.
+~
+0 1|8|0 0
+D1
+~
+~
+1 -1 13049
+D2
+~
+~
+0 -1 13037
+S
+#13039
+A wide passageway~
+The passage here widens out. An alcove stands to the left and right of the
+passageway. Each contains a Temple Guard.
+~
+0 1|8|0 0
+D0
+~
+~
+0 -1 13042
+D1
+~
+~
+0 -1 13041
+D2
+~
+~
+0 -1 13020
+D3
+~
+~
+0 -1 13040
+S
+#13040
+An alcove~
+You are standing in a small alcove.
+~
+0 1|8|0 0
+D1
+~
+~
+0 -1 13039
+S
+#13041
+An alcove~
+You are standing in a small alcove.
+~
+0 1|8|0 0
+D3
+~
+~
+0 -1 13039
+S
+#13042
+A wide passageway~
+You are standing in a wide, dark passageway. A pair of large double doors
+stand in front of you.
+~
+0 1|8|0 0
+D0
+~
+~
+1 -1 13043
+D2
+~
+~
+0 -1 13039
+S
+#13043
+The Temple~
+You are standing in the temple itself. There are many Temple guards in this
+room. Immediately to your left and right are rows of pews. To the north is
+an aisle leading up a low set of steps to a large altar and a lecturn with
+an undead priest giving a sermon to the undead congregation of Temple
+Guards, Temple Sergeants and acolytes. This light in this room seems to
+come from the very walls themselves bathing the room in bright light.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13051
+D1
+~
+~
+0 -1 13053
+D2
+~
+~
+1 -1 13042
+D3
+~
+~
+0 -1 13047
+S
+#13044
+A cloak-room~
+It appears that you are standing in a small cloak room where the clergy
+changed into their robes. Rotting robes hang on the far wall except for one
+which appears in excellent condition.
+~
+0 1|8|0 0
+D3
+~
+~
+1 -1 13027
+S
+#13046
+The Shop~
+You are standing in what appears to be some kind of extra-dimensional rift
+where someone has setup a shop. The shopkeeper seems delighted to have
+customers.
+~
+0 8|0 0
+D1
+~
+~
+0 -1 13016
+E
+shopkeeper~
+The shopkeeper is a short, wizened, old man who appears very fragile
+however after a few moments of watching him you notice that he is far from
+fragile and even though he appears cheerful, he has a mean glint in his
+eye.~
+S
+#13047
+The Temple~
+You are standing in the temple itself in among the rows of pews. Light
+seems to eminate from the very walls to light this chamber. To the north is
+the Altar. To the west in the corner is a font for holy water. To the
+north-west is a set of double doors. To the east is the aisle leading north
+to the altar and south to some double doors. Far to the east is another
+font and another set of double doors.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13050
+D1
+~
+~
+0 -1 13043
+D3
+~
+~
+0 -1 13052
+S
+#13049
+The Temple~
+You are standing in the temple itself. Light seems to eminate from the very
+walls themselves. To the south is a font. To the east are rows of pews.
+Over towards the north-east is an altar and a priest stands behind a
+lecturn giving a sermon to Temple Guards, Sergeants and acolytes. The
+temple seems to have a feel of peace and serenity.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13059
+D1
+~
+~
+0 -1 13050
+D2
+~
+~
+0 -1 13052
+D3
+~
+~
+1 -1 13038
+S
+#13050
+The Temple~
+You are standing in the temple. Light seems to eminate from the walls.
+Here, there are rows of pews. To the south are more pews. To the north are
+steps up to the altar. To the east is an aisle running from north to south.
+To the west is a pair of double doors.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13060
+D1
+~
+~
+0 -1 13051
+D2
+~
+~
+0 -1 13047
+D3
+~
+~
+0 -1 13049
+S
+#13051
+The Temple~
+You are standing in the aisle of the temple. Here a set of steps leading
+north up to an altar and an undead priest giving a sermon to an undead
+audience. To the east and west are rows of pews. Past the pews are sets of
+double doors. To the south the aisle ends at a set of double doors.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13061
+D1
+~
+~
+0 -1 13054
+D2
+~
+~
+0 -1 13043
+D3
+~
+~
+0 -1 13050
+S
+#13052
+The Temple~
+You are standing in the temple. There is a font here, presumably,
+containing holy water. To the north in the western wall are a set of double
+doors. To the east are rows of pews. To the far north-east a priest in
+white robes is giving a sermon to a large group of undead.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13049
+D1
+~
+~
+0 -1 13047
+S
+#13053
+The Temple~
+You are standing in the temple. Here, there are rows of pews. To the north
+you see more pews. To the east is a font for holy water. To the north-east
+is a set of double doors in the east wall. To the west is an aisle that
+runs south to a set of double doors and north to an altar. Far to the west
+is another font and another set of double doors.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13054
+D1
+~
+~
+0 -1 13055
+D3
+~
+~
+0 -1 13043
+S
+#13054
+The Temple~
+You are standing in the temple among the pews. To the south are more pews.
+To the east is a set of double doors. To the west is an aisle running north
+to the altar and south to another set of double doors. To the south-east is
+a font for holy water and to the far west is another set of double doors
+and more pews.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13058
+D1
+~
+~
+0 -1 13056
+D2
+~
+~
+0 -1 13053
+D3
+~
+~
+0 -1 13051
+S
+#13055
+The Temple~
+You are standing in the temple. There is a font here containing,
+presumably, holy water. To the north is a set of double doors in the east
+wall. To the west are rows of pews. To the far north west is an altar and a
+priest in white robes giving a sermon to a large group of undead.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13056
+D3
+~
+~
+0 -1 13053
+S
+#13056
+The Temple~
+You are standing in the temple. Light seems to eminate from the very walls
+lighting this room quite brightly. To the south you see a font for holy
+water. To the west and south-west are rows of pews. To the north-west is an
+altar. From there a priest gives a sermon from behind a lecturn to a large
+group of Temple guards, Sergeants and acolytes. There is a feel of peace
+and serenity here.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13057
+D1
+~
+~
+1 -1 13036
+D2
+~
+~
+0 -1 13055
+D3
+~
+~
+0 -1 13054
+S
+#13057
+The Temple~
+You are standing in the temple. To the south is a set of double doors in
+the eastern wall. To the west there are some small steps leading up to an
+altar. Just ahead of you to the west is a large group of undead. They seem
+transfixed by the undead priest wearing a white robe giving a sermon to
+them.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+1 -1 13063
+D2
+~
+~
+0 -1 13056
+D3
+~
+~
+0 -1 13058
+S
+#13058
+The Temple~
+You are standing on the steps leading up to the altar. Here stand many
+undead. Although none make any move toward you or try to stop your passage,
+you realize it would be foolish to begin a fight against so many dangerous
+opponents. To the west is the altar.
+~
+0 8|0|8192|16384 0
+D1
+~
+~
+0 -1 13057
+D2
+~
+~
+0 -1 13054
+D3
+~
+~
+0 -1 13061
+S
+#13059
+The Temple~
+You are standing in the temple. To the south are a set double doors in the
+west wall. To the east are some low steps which lead up to the altar. On
+the steps is a large group of undead.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+1 -1 13064
+D1
+~
+~
+0 -1 13060
+D2
+~
+~
+0 -1 13049
+S
+#13060
+The Temple~
+You are standing on the steps leading up to the altar. There is a large
+group of undead here. Although none make any move towards you or try to
+block your passage you realize it would be foolish to begin a fight here.
+~
+0 8|0|8192|16384 0
+D1
+~
+~
+0 -1 13061
+D2
+~
+~
+0 -1 13050
+D3
+~
+~
+0 -1 13059
+S
+#13061
+The Temple~
+You are standing at the top of the steps before the altar. Behind the altar
+is the lecturn where the sermons are read. A large group of undead stand
+here listening to the priest's sermon.
+~
+0 8|0|8192|16384 0
+D1
+~
+~
+0 -1 13058
+D2
+~
+~
+0 -1 13051
+D3
+~
+~
+0 -1 13060
+D4
+~
+~
+0 -1 13062
+S
+#13062
+Temple Altar~
+You are standing at the top of the stairs. Before you is a white marble
+altar. A granite lectern in front of it near the steps behind you. Beyond
+the altar stands a huge statue of an armoured man sitting on a throne. The
+man also has a massive stone sword at his side and a huge shield stands
+against his throne to the right. Evidently, this is an idol of the god they
+worship.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+0 -1 13065
+D5
+~
+~
+0 -1 13061
+E
+Altar~
+The large marble altar has a large X with a circle around it embossed on
+the front. A key lies on the altar~
+S
+#13063
+Temple Barracks~
+You are standing in the temple barracks. The furniture here has rotted over
+the centuries and lies in broken heaps. Many Temple Guards and Temple
+Sergeants stand to attention possibly awaiting the call to arms.
+~
+0 8|0 0
+D2
+~
+~
+1 -1 13057
+S
+#13064
+Temple Barracks~
+You are standing in the temple barracks. The furniture here lies in rotting
+heaps from centuries of decay. There are many Temple Guards and Temple
+Sergeants standing to attention possibly awaiting the call to arms.
+~
+0 8|0 0
+D2
+~
+~
+1 -1 13059
+S
+#13065
+The Idol~
+You are standing before the giant statue. The wall in front of you is the
+granite throne that the statue sits on. There is a plaque on the wall here.
+Just below the plaque you notice a small hole.
+~
+0 8|0|8192 0
+D0
+There is a hole in the statue but there doesn't appear to be a door ~
+statue~
+8 13035 13066
+D2
+~
+~
+0 -1 13062
+E
+Plaque~
+"I shall return and take vengeance on those who defile my house!"~
+S
+#13066
+Another Dark passageway~
+As you step into the dark passageway the door behind you silently swings
+shut. You look behind you to see a completely blank wall.
+~
+0 1|4|8|0|8192 0
+D0
+~
+~
+0 -1 13067
+D2
+~
+~
+0 -1 -1
+S
+#13067
+A Dark passageway~
+You are in a dark passage.  It seems as if the place has been untouched for
+centuries.
+This tunnel was roughly hewn from solid rock, and the floor is very uneven,
+making progress slow.
+~
+0 1|4|8|0|8192 0
+D0
+~
+~
+0 -1 13068
+D2
+~
+~
+0 -1 13066
+S
+#13068
+Dark passageway~
+The passageway continues onwards in a north-south direction
+~
+0 1|4|8|0|8192 0
+D0
+~
+~
+0 -1 13069
+D2
+~
+~
+0 -1 13067
+S
+#13069
+Dark passageway~
+The passage continues onwards in a north-south direction.
+~
+0 1|4|8|0|8192 0
+D0
+~
+~
+0 -1 13070
+D2
+~
+~
+0 -1 13068
+S
+#13070
+Dark passageway~
+The passage continues in a north-south direction
+~
+0 1|4|8|0|8192 0
+D0
+~
+~
+0 -1 13071
+D2
+~
+~
+0 -1 13069
+S
+#13071
+Dark passageway~
+The passage continues in a north-south direction.
+~
+0 1|4|8|0|8192 0
+D0
+~
+~
+0 -1 13072
+D2
+~
+~
+0 -1 13070
+S
+#13072
+Dark Junction~
+This room has a light source,  a dimly glowing aura surrounding a archway
+to the west.
+~
+0 8|0|8192 0
+D2
+~
+~
+0 -1 13071
+D3
+This archway is filled with an incandescence which fills the room
+with an eerie light.
+On the arch you can just make out tiny runes etched into the stone
+in a strange,  forgotten tongue...~
+Archway~
+0 -1 13046
+D4
+~
+~
+2  13037 13074
+D5
+~
+~
+2 -1 13073
+S
+#13073
+Entrance to the Underdominion~
+The stairs lead you to this room.  It has been carved out of stone to
+exacting standards.
+~
+0 1|4|8|0|8192|16384 0
+D4
+~
+~
+2 -1 13072
+D5
+~
+~
+8 13517 13100
+S
+#13074
+The entrance to Hel's Tower~
+You are standing at the base of a stairwell leading up into the roof. It
+appears that this leads into a large tower, yet you saw no towers from the
+outside...
+Just to the north a portal hangs in mid-air. It seems to lead to a huge door.
+~
+0 4|8|0|8192 0
+D0
+~
+~
+0 -1 13500
+D5
+~
+~
+2 13037 13072
+S
+#0
+
+
+#RESETS
+*
+*
+M 1 13002 15 13007    An undead Temple Guard to The Entrance way to temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+G 1 13001 100
+O 1 13004 100 13002                 a piece of rock to The Gate
+O 1 13005 100 13009                 A Small Scroll to A room
+O 1 13006 100 13005                 Amulet to The Bottom
+*
+M 1 13001 1 13005                   Fountain Beast to The Bottom
+*
+M 1 13003 1 13014                  An undead Temple Guard to A passageway
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+*
+*
+*
+M 1 13002 15 13023                  An undead Temple Guard to Another
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13002 15 13011                  An undead Temple Guard to A huge and
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+O 1 13010 100 13029               a skeleton to A huge and magnificent
+O 1 13010 100 13029               a skeleton to A huge and magnificent
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+*
+M 1 13006 1 13028                  An extremely large rat to A small room
+*
+M 1 13002 15 13040                  An undead Temple Guard to An alcove
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13002 15 13041                  An undead Temple Guard to An alcove
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+O 1 13011 100 13002                Huge Gate to The Gate
+*
+M 1 13002 15 13043                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+O 1 13007 100 13044                White Robes to A room
+*
+M 1 13002 15 13047                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13007 1 13046                  the shopkeeper to The Shop
+E 1 13016 100 1
+E 1 13015 100 12
+E 1 13017 100 16
+G 1 13018 100
+G 1 13019 100
+*
+*
+*
+*
+M 1 13002 15 13051                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+O 1 13020 100 13050               some pews to The Temple
+*
+M 1 13002 15 13050                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+O 1 13020 100 13047               some pews to The Temple
+*
+M 1 13002 15 13049                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+O 1 13014 100 13052               a font to A room
+*
+M 1 13002 15 13052                  An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+O 1 13014 100 13055               a font to The Temple
+O 1 13020 100 13053               some pews to The Temple
+*
+M 1 13002 15 13053                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+O 1 13020 100 13054               some pews to The Temple
+*
+M 1 13008 5 13058                  An undead Temple Acolyte to The Temple
+E 1 13021 100 12
+E 1 13024 100 1
+*
+M 1 13002 15 13058                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13004 10 13058                 Temple Sergeant to The Temple
+E 1 13002 100 5
+E 1 13013 100 6
+E 1 13012 100 16
+E 1 13024 100 1
+*
+M 1 13002 15 13057                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13002 15 13059                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13008 5 13060                  An undead Temple Acolyte to The Temple
+E 1 13021 100 12
+E 1 13024 100 1
+*
+M 1 13004 10 13060                 Temple Sergeant to The Temple
+E 1 13002 100 5
+E 1 13013 100 6
+E 1 13012 100 16
+E 1 13024 100 1
+*
+M 1 13008 10 13061                 An undead Temple Acolyte to The Temple
+E 1 13021 100 12
+E 1 13024 100 1
+*
+M 1 13005 1 13061                  An undead High-Priest to The Temple
+E 1 13022 100 17
+E 1 13023 100 12
+E 1 13024 100 1
+E 1 13030 100 16
+*
+M 1 13004 15 13061                 Temple Sergeant to The Temple
+E 1 13002 100 5
+E 1 13013 100 6
+E 1 13012 100 16
+E 1 13024 100 1
+*
+M 1 13002 15 13061                 An undead Temple Guard to The Temple
+E 1 13002 100 5
+E 1 13003 100 16
+E 1 13024 100 1
+*
+M 1 13004 1 13062                  Temple Sergeant to Temple Altar
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13013 100 6
+E 1 13012 100 16
+*
+M 1 13002 15 13062                  An undead Temple Guard to Temple Altar
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13003 100 16
+*
+M 1 13008 5 13062                  An undead Temple Acolyte to Temple Altar
+E 1 13024 100 1
+E 1 13021 100 12
+*
+*
+*
+*
+M 1 13010 20 13063                Ready Temple Guards to Temple Barracks
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13003 100 16
+*
+M 1 13010 20 13063                Ready Temple Guards to Temple Barracks
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13003 100 16
+*
+M 1 13011 20 13063                Ready Temple Sergeant to Temple Barracks
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13013 100 6
+E 1 13012 100 16
+*
+M 1 13010 20 13064                Ready Temple Guards to Temple Barracks
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13003 100 16
+*
+M 1 13010 20 13064                Ready Temple Guards to Temple Barracks
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13003 100 16
+*
+M 1 13011 20 13064                Ready Temple Sergeant to Temple Barracks
+E 1 13024 100 1
+E 1 13002 100 5
+E 1 13013 100 6
+E 1 13003 100 16
+*
+M 1 13009 1 13062                  the Guard Captain to Temple Altar
+E 1 13024 100 1
+E 1 13006 100 3
+E 1 13026 100 5
+E 1 13032 100 6
+E 1 13029 100 7
+E 1 13027 100 8
+E 1 13028 100 10
+E 1 13031 100 14
+E 1 13031 100 15
+E 1 13025 100 16
+E 1 13033 100 9
+E 1 13034 100 11
+D 1 13065 0 2                    ; The Idol Lock North
+D 1 13011 3 2                    ; A huge and magnificent ante-chamber Lock West
+D 1 13016 0 1                      ; A room Close North
+D 1 13015 2 1			 ; Outside shop close south 
+D 1 13019 3 1                    ; A passageway Close West
+D 1 13043 2 1
+D 1 13042 0 1                    ; A wide passageway Close North
+D 1 13036 3 1			 ; A passage-way close West
+D 1 13056 1 1                    ; The Temple Close East
+D 1 13049 3 1                    ; The Temple Close West
+D 1 13038 1 1			 ; A passageway close east
+D 1 13027 1 1                    ; A passageway Close East
+D 1 13025 1 1			 ; Another passage-way close east
+D 1 13023 3 1                    ; Another ante-chamber Close West
+D 1 13018 0 1			 ; A passage-way close north
+D 1 13028 1 1                    ; A small room Close East
+D 1 13033 3 1			 ; A passageway close west
+D 1 13028 2 1                    ; A small room Close South
+D 1 13021 1 1			 ; Ante-chamber close east
+D 1 13073 5 2			; somewhere lock down
+O 1 13035 100 13062               a featureless key to Temple Altar
+*
+M 1 13012 1 13072                   a Guardian Daemon to Dark Junction
+G 1 13037 100
+D 1 13074 5 2                      ; The entrance to Hel's Tower Lock Down
+D 1 13072 4 2			   ; Junction lock up
+*
+S
+
+
+#SHOPS
+13007 5 9 2 4 8 150 50 0 23               (mobile is from another zone)
+0
+
+
+#SPECIALS
+M  13002 spec_guard                 An undead Temple Guard
+M  13005 spec_cast_adept                    An undead High-Priest
+M  13006 spec_fido                  An extremely large rat
+M  13007 spec_cast_mage                    the shopkeeper
+M  13008 spec_cast_cleric                   An undead Temple Acolyte
+M  13009 spec_cast_undead                  the Guard Captain
+M  13010 spec_guard                        Ready Temple Guards
+M  13011 spec_guard                        Ready Temple Sergeant
+M  13012 spec_breath_acid                   a Guardian Daemon
+S
+
+
+#$
+
+

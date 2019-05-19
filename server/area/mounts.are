@@ -1,0 +1,99 @@
+#AREA	Brutus~  Gods Zone~
+5 35 0 100
+
+#AREA_SPECIAL
+hidden
+no_quest
+$
+
+#MOBILES
+#19900
+pony~
+the pony~
+A small pony stands here grazing.
+~
+You see a malll grey horse standing no higher that 4 feet. Although small, it
+looks very sturdy, and will be able to carry a heavy load.
+~
+131072|2097152 262144 0 S
+15 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#19901
+horse~
+the horse~
+A black horse chews on some cud.
+~
+This majestic animal, is easily as high as you. It will make a excellent mount,
+as you judge it to be very hard working.
+~
+131072|2097152 262144 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#19902
+pegasus~
+the pegasus~
+A white pegasus stands motionless here.
+~
+This mythical beast is pure white. Its large wings are tucked up into its 
+large muscular body. Being able to fly, will make this beast an excelent 
+mount.
+~
+131072|2097152 8|512|262144|524288 0 S
+40 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#19903
+silver dragon~
+the silver dragon~
+A silver dragon rests on its hind quarters here.
+~
+A large silver dragon returns your examination. Its huge muscular body is 
+covered by silver scales, it wings are currently folded into its body. Its
+large jaw is currently closed, however you notice a wisp of smoke escape from
+its nostrils.
+~
+131072|2097152 8|512|262144|524288 0 S
+60 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#19904
+HUGE wolf~
+the HUGE wolf~
+A HUGE wolf snarls as you approach.
+~
+A HUGE brown wolf, with a thick shaggy coat bears its powerful fangs. A 
+powerful ally this beast would make.
+~
+2097152 8|512|262144|524288 0 S
+45 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#19905
+greater demon~
+a greater demon~
+An evil greater demon menaces at you.
+~
+The demon is too evil to be looked upon by mortal eyes, you cower
+away in fear.
+~
+2097152 8|128|512|262144|524288 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#19906
+lesser demon~
+a lesser demon~
+An evil lesser demon menaces at you.
+~
+The demon is too evil to be looked upon by mortal eyes, you cower
+away in fear.
+~  
+2097152 8|512|262144|524288 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+#$

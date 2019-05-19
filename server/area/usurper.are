@@ -1,0 +1,4056 @@
+#AREA	Hestia~ Prince's Fortress~
+20 40 15 100
+
+#MOBILES
+#29800
+guard sleeping gate~
+the gate guard~
+The gate guard is asleep in a chair.
+~
+The gate guard is deeply asleep, and snoring loudly.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29801
+guard off-duty~
+the off-duty guard~
+The off-duty guard growls something unintelligible and attacks.
+~
+The off-duty guard is very annoyed that his beauty sleep has been disturbed.
+~
+2|32|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29802
+captain guard~
+the captain of the guard~
+The captain of the guard glares at you disdainfully.
+~
+The captain of the guard is dressed up for something important.
+~
+2|32|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29803
+merchant~
+the merchant~
+The merchant glares at you from beneath his cowl.
+~
+The merchant is robed and deeply cowled, and although you can't see his face,
+you feel chilled in his presence.
+~
+2|64 0 -500 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29804
+gate guard~
+the gate guard~
+The gate guard is asleep in a chair.
+~
+The gate guard is deeply asleep, and snoring loudly.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29805
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29806
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29807
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29808
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29809
+boy stable stableboy~
+the stableboy~
+The stableboy is here, sweeping out the stalls.
+~
+The stableboy is quite young, only about twelve years old, and very skinny.
+~
+2|64 0 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29810
+moonraker stallion mount~
+Moonraker~
+A beautiful black stallion stands here proudly.
+~
+Embroidery on the stallion's bridle proclaims him to be "Moonraker".
+~
+2|64|131072 0 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#29811
+sundancer palfrey mount~
+Sundancer~
+A beautiful white palfrey stands here demurely.
+~
+Embroidery on the palfrey's bridle proclaims her to be "Sundancer".
+~
+2|64|131072 0 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#29812
+pig~
+a pig~
+A pig lies here, wallowing in the mud.
+~
+The pig is dirty and smelly, but obviously very happy in its muddy home.
+~
+2|64 0 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#29813
+sinner man~
+the sinner~
+The sinner is sitting here, confessing his sins.
+~
+The sinner looks like a very evil man, who is dressed in a big coat to
+conceal his identity.
+~
+2|64 0 -1000 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29814
+priest~
+the priest~
+The priest sits here, taking confession from someone.
+~
+The priest looks very priestly and good.
+~
+2|64 128 1000 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29815
+choirboy boy choir~
+the choirboy~
+The choirboy stands here, singing a hymn.
+~
+The choirboy looks cherubic and is rapt in his hymn.
+~
+2|64 0 500 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29816
+gardener~
+the gardener~
+The gardener looks very unhappy that you trampled her vegetables.
+~
+The gardener is a young, skinny woman who obviously takes her job very
+seriously.
+~
+2|32|64 0 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#29817
+fletcher~
+the fletcher~
+The fletcher looks imploringly at you.
+~
+The fletcher is skinny and has definitely seen better days.  He begs you
+for some sustenance.
+~
+2|64 8|32|8388608 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>bribe_prog 1000~
+worship $n
+say oh thankyou, I am eternally grateful!  I lost my favourite treasure, a brass globe, behind the stables.  If you find it you can keep it.
+~
+>give_prog potpie pot pie~
+	if number ($o) == 3009
+            worship $n
+	    say Thanks!
+            eat pie
+ else
+  	mpecho The fletcher examines the pie closely
+         say get out of here with your counterfeit pie!
+	drop pie
+endif
+~
+|
+#29818
+smith~
+the smith~
+The smith stands here, hammering on something.
+~
+The smith is a big, powerfully-built man who looks like he could smash you to
+a pulp with that hammer of his.
+~
+2|32|64 0 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29819
+cook~
+the cook~
+The cook stands here, chopping meat.
+~
+The cook is a big beefy woman who will never win a beauty contest.
+~
+2|64 0 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#29820
+kitchenboy boy~
+the kitchenboy~
+The kitchenboy is here, cowering in the corner.
+~
+The kitchenboy seems to be terrified of something, the cook perhaps?
+~
+2|64 0 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29821
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29822
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29823
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29824
+guard~
+the guard~
+The guard wanders here, searching for intruders.
+~
+The guard looks competent, though not overly so.  You get the impression he
+is good at following orders but not much else.
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 25~
+say Halt! Who goes there?
+~
+|   
+#29825
+rudolf tutor~
+Rudolf~
+Rudolf the tutor stands here, looking knowledgeable.
+~
+Rudolf is obviously a learned man.  Just looking at him you can tell he is a
+scholar.  You guess that means he won't be a very good fighter.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29826
+Jeeves butler~
+Jeeves~
+Jeeves the butler bows aristocratically in your direction.
+~
+Jeeves is a butler to the core: immaculately presented, hair slicked
+down, he cuts a fine silhouette.  He must have been schooled at one of the
+top establishments.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29827
+mother dowager woman~
+the Dowager Mother~
+The Prince's Dowager mother stands here regally.
+~
+She is tall, plump, and aristocratic.  She looks like the sort of petty
+noblewoman who would believe anything she hears.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#29828
+snypre spy diplomat ambassador~
+Snypre~
+Snypre the ambassador stands furtively in the corner.
+~
+Snypre is dressed in white, with a red sash, the mark of an ambassador.  But
+you know as well as he does that an ambassador is really a spy.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29829
+drogar advisor~
+Drogar~
+Drogar the diplomatic advisor stands here nervously.
+~
+Drogar looks nervous, as if he has been caught doing something he shouldn't
+and wants to cover it up.  You wonder how he got in here without being seen.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29830
+traveller man~
+the traveller~
+The traveller sits on his bed, polishing his boots.
+~
+The traveller looks road-weary and travel-sore.  He looks like he has
+travelled a very long way, and just wants some peace and quiet.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29831
+wintergern magician~
+Wintergern~
+Wintergern the court mage stands here, looking very bogus.
+~
+Wintergern is obviously a swindler.  If you couldn't pick that up from his
+books or his clothes, you must be blind.  He is obviously a charlatan out for
+kicks or money.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29832
+Winster alchemist~
+Winster~
+Winster the alchemist stands here, holding a flask.
+~
+Winster looks like a typical mad alchemist type: frizzy white hair,
+wild eyes, white robe.
+~
+2|64 0 0 S
+32 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29833
+cousin man~
+the Prince's cousin~
+The Prince's cousin stands here, looking disdainfully at you.
+~
+The cousin looks very rich and very sure of himself.  He holds his rapier like
+he knows how to use it.
+~
+2|32|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29834
+Milli chirurgeon~
+Milli~
+Milli the Prince's chirurgeon stands here, looking comely.
+~
+Milli is one good-looking woman.  You deduce that the Prince probably thinks
+so too, and that the nice palfrey you saw in the stables probably belongs to
+her.  She looks sultrily at you.
+~
+2|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>bribe_prog 500~
+say Yeah baby, you know quality when you see it
+emote stretches out on the bed and beckons $n.
+~
+|
+#29835
+Rutger warplanner~
+Rutger~
+Rutger the War Planner stands here, glaring at you.
+~
+Rutger looks like one mean guy, and you decide its probably not a good idea to
+cross him in any way.
+~
+2|32|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29836
+Crinnan counsellor~
+Crinnan~
+Crinnan the Prince's chancellor stands here, scowling at you.
+~
+Crinnan is obviously not used to being interrupted, and he glares at you
+angrily, muttering something low under his breath.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29837
+minstrel man~
+the minstrel~
+The minstrel sits on his bed, composing a tune.
+~
+The minstrel mustn't be a very good one, judging by his scruffy clothes and
+shoes.  However, his lute is beautiful and finely crafted.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29838
+diplomat man~
+the diplomat~
+The guest diplomat stands here, preening.
+~
+The guest diplomat looks splendid in his diplomatic robe and sash, and he knows
+it.  He is preening himself in the mirror like a concubine.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29839
+secretary woman~
+the secretary~
+The secretary sits here, smiling at you.
+~
+The secretary is smiling and painfully cheerful.  Her demeanour changes very
+quickly when you pull your weapon on her.
+~
+2|64|128 8|32|8388608 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>bribe_prog 1000~
+say Well, rules ARE made to be broken...
+mpoload 29910
+give ticket $n
+unlock north
+~
+|
+#29840
+guard~
+the Prince's Own Guard~
+The Prince's Own Guard stands rigidly at attention here.
+~
+The Prince's Own looks like he won't take anything from anyone.  Tough, big
+and mean, he won't let anyone in without an appointment.
+~
+2|64 8|32|8388608 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>give_prog ticket appointment~
+say My apologies $n, I didn't recognise you.
+unlock north
+bow $n
+~
+|
+#29841
+guard~
+the Prince's Own Guard~
+The Prince's Own Guard stands rigidly at attention here.
+~
+The Prince's Own looks like he won't take anything from anyone.  Tough, big
+and mean, he won't let anyone in without an appointment.
+~
+2|64 8|32|8388608 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>give_prog ticket appointment~
+say My apologies $n, I didn't recognise you.
+unlock north
+bow $n
+~
+|
+#29842
+prince Makras~
+Makras the Prince~
+Prince Makras sits magestically on his throne.
+~
+Prince Makras is dressed to impress, and looks cool, calm and collected on the
+surface.  But you detect a slightly crazed look in his eye, and his fingers
+drum nervously on the arms of his throne.
+~
+2|64 0 -1000 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29843
+guard~
+the gate guard~
+The gate guard stands to attention here.
+~
+The gate guard looks slovenly and very bored, he hardly notices your existence
+before you attack him.
+~
+2|64 0 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29844
+guard~
+the gate guard~
+The gate guard stands to attention here.
+~
+The gate guard looks slovenly and very bored, he hardly notices your existence
+before you attack him.
+~
+2|64 0 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#29800
+well~
+the keep well~
+Clear water sparkles in the keep well.~
+~
+25 0 0
+0~ 0~ 0~ 0~ 
+999 0 0
+#29801
+locker chest foot footlocker~
+a locker~
+A foot locker is at the end of the bunk.~
+~
+15 0 1|16384
+100~ 5~ -1~ 0~ 
+5 0 0
+#29802
+nightshirt night shirt~
+a nightshirt~
+A rumpled nightshirt has been casually tossed in the locker.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29803
+sock socks~
+a pair of socks~
+A pair of woollen socks is folded neatly together.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+#29804
+bottle whisky~
+a bottle of whisky~
+A bottle of whisky is hidden under some stuff here.~
+~
+17 0 1|16384
+20~ 20~ 5~ 0~ 
+5 0 0
+#29805
+magazine girly~
+a girly magazine~
+A girly magazine is concealed under some clothes here.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+#29806
+fatigues crumpled~
+crumpled fatigues~
+A set of crumpled fatigues sits here in a heap.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29807
+army boots boot~
+army boots~
+A pair of army boots sits on the floor.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+#29808
+ring mail ringmail vest~
+a ringmail vest~
+A ringmail vest has been discarded here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29809
+ringmail ring mail hood~
+a ringmail hood~
+A ringmail hood lies here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+#29810
+broadsword sword~
+a broadsword~
+A broadsword has been dropped here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 1~ 
+5 0 0
+#29811
+mufti shirt~
+a mufti shirt~
+A mufti shirt is crumpled in a heap here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29812
+mufti pants~
+mufti pants~
+A pair of mufti pants lie here in a heap.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~ 
+5 0 0
+#29813
+ceremonial armor~
+ceremonial armor~
+A set of ceremonial armor lies here majestically.~
+~
+9 2 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+13 40
+A
+19 3
+#29814
+helmet plumed~
+a plumed helmet~
+A plumed helmet has been left here.~
+~
+9 2 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+5 2
+#29815
+sword ceremonial~
+a ceremonial sword~
+A ceremonial sword is dropped here.~
+~
+5 2 1|8192
+0~ 0~ 0~ 3~ 
+5 0 0
+A
+2 -2
+A
+1 4
+#29816
+gold shield~
+a gold-plated shield~
+A gold-plated shield is dropped here.~
+~
+9 2 1|512
+0~ 0~ 0~ 0~ 
+10 0 0
+A
+19 5
+#29817
+necklace merchant~
+a merchant's necklace~
+A gleaming gold necklace has been discarded here.~
+~
+9 0 1|4
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 3
+#29818
+cape green~
+a dark green cape~
+A dark, shapeless lump of velvet has been tossed here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29819
+hat shapeless~
+a shapeless hat~
+A shapeless hat is dropped here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+#29820
+boots boot traveller~
+traveller's boots~
+A pair of well-worn boots is sitting here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+14 30
+#29821
+locker chest foot footlocker~
+a locker~
+A foot locker is at the end of the bunk.~
+~
+15 0 1|16384
+100~ 5~ -1~ 0~ 
+5 0 0
+#29822
+locker chest foot footlocker~
+a locker~
+A foot locker is at the end of the bunk.~
+~
+15 0 1|16384
+100~ 5~ -1~ 0~ 
+5 0 0
+#29823
+locker chest foot footlocker~
+a locker~
+A foot locker is at the end of the bunk.~
+~
+15 0 1|16384
+100~ 5~ -1~ 0~ 
+5 0 0
+#29824
+greaves leather~
+leather greaves~
+A set of leather greaves has been casually tossed here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~ 
+5 0 0
+#29825
+leather bracers~
+leather bracers~
+A set of leather bracers has been dropped here.~
+~
+9 0 1|256
+0~ 0~ 0~ 0~ 
+5 0 0
+#29826
+broom~
+a broom~
+A broom is propped in the corner~
+~
+5 0 1|8192
+0~ 0~ 0~ 0~ 
+5 0 0
+#29827
+pants torn~
+torn pants~
+A pair of torn pants is crumpled here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~ 
+5 0 0
+#29828
+shirt ripped~
+a ripped shirt~
+A bundle of rags is tossed in the corner.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29829
+globe brass~
+a brass globe~
+A brass globe has been dropped in the dung here.~
+~
+8 1 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 2
+A
+4 2
+#29830
+halo red~
+a red halo~
+A red halo floats here.~
+~
+8 1|16|512 1|32768
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+4 1
+A
+3 1
+A
+5 -2
+#29831
+greatcoat great coat~
+a greatcoat~
+A greatcoat is hanging on a hook here.~
+~
+9 16 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29832
+hat floppy~
+a floppy hat~
+A floppy, shapeless hat has been dropped here.~
+~
+9 16 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+#29833
+boots boot black dusty~
+dusty black boots~
+A pair of dusty black boots is sitting here.~
+~
+9 16 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+#29834
+halo gold golden~
+a golden halo~
+A golden halo floats here.~
+~
+9 1|64|1024 1|32768
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+12 30
+#29835
+robe robes priest~
+white priest's robes~
+A set of white priestly robes is hanging on a hook here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29836
+mitre~
+a white and gold mitre~
+A white and gold priest's mitre has been left here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+#29837
+sandal sandals gold golden~
+golden sandals~
+A pair of golden sandals sits here neatly.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+14 50
+#29838
+staff priest~
+a priest's staff~
+A priest's staff is propped here.~
+~
+4 0 1|16384
+40~ 5~ 5~ bless~ 
+15 0 0
+A
+24 -10
+#29839
+robes robe choirboy choir~
+golden choirboy's robes~
+A set of golden choirboy's robes is hanging here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 2
+#29840
+spade~
+a spade~
+A spade is propped in the corner.~
+~
+5 0 1|8192
+0~ 0~ 0~ 0~ 
+5 0 0
+#29841
+glove gloves gardener~
+gardener's gloves~
+A pair of gardener's gloves has been dropped here.~
+~
+9 0 1|128
+0~ 0~ 0~ 0~ 
+5 0 0
+#29842
+dress peasant~
+a peasant dress~
+A peasant dress is crumpled here in a heap.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29843
+apron worker~
+a worker's apron~
+A worker's apron has been dropped carelessly here.~
+~
+9 0 1|2048
+0~ 0~ 0~ 0~ 
+5 0 0
+#29844
+gloves thick glove~
+thick gloves~
+A pair of thick gloves is dropped here.~
+~
+9 0 1|128
+0~ 0~ 0~ 0~ 
+5 0 0
+#29845
+mask face~
+a face mask~
+A protective face mask is dropped here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+#29846
+hammer smithy~
+a smithy's hammer~
+A smithy's hammer is dropped here.~
+~
+5 2|64 1|8192
+0~ 0~ 0~ 7~ 
+15 0 0
+A
+19 5
+A
+1 2
+A
+5 1
+A
+18 5
+#29847
+pants worn pant~
+worn pants~
+A pair of worn, scorched pants has been tossed here.~
+~
+9 1 1|32
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+13 50
+#29848
+anvil~
+an anvil~
+An anvil sits in the centre of the room.~
+~
+30 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#29849
+vegetables~
+vegetables~
+Some freshly-harvested vegetables sit here in a pile.~
+~
+19 0 1|16384
+20~ 0~ 0~ 0~ 
+5 0 0
+#29850
+altar~
+an altar~
+An altar stands at the front of the room.~
+~
+12 0 0
+0~ 0~ 0~ 0~ 
+5 0 0
+#29851
+cleaver meat~
+a meat cleaver~
+A bloody meat cleaver has been tossed here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 13~ 
+15 0 0
+#29852
+apron cook~
+a cook's apron~
+A cook's apron has been crumpled here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29853
+dirty overalls~
+dirty overalls~
+A set of dirty overalls is crumpled in a ball here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29854
+knife small~
+a small knife~
+A small knife is dropped here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~ 
+5 0 0
+#29855
+eyeglasses glasses~
+eyeglasses~
+A pair of eyeglasses sparkles here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+4 4
+#29856
+jerkin~
+a jerkin~
+A leather jerkin has been dropped here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29857
+shoes house soft~
+soft house shoes~
+A pair of soft house shoes is here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+#29858
+key fancy gold~
+a fancy gold key~
+A fancy gold key glints through the muck here.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+#29859
+tuxedo suit~
+a tuxedo~
+A tuxedo is hanging on a hook here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+2 2
+#29860
+dress hoop blue~
+a blue hoop dress~
+A blue hoop dress is folded on its hoop here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29861
+novel romance~
+a romance novel~
+A trashy romance novel has been dropped hastily here.~
+~
+3 64 1|16384
+30~ 6~ 6~ dispel magic~ 
+5 0 0
+#29862
+dagger small~
+a small dagger~
+A small dagger has been dropped here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~ 
+5 0 0
+#29863
+robe diplomat office~
+a diplomat's robe of office~
+A diplomat's robe of office is folded neatly here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 3
+#29864
+robe shapeless grey~
+a shapless grey robe~
+A shapeless grey robe is crumpled in a heap here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29865
+cape riding~
+a riding cape~
+A thick wool cape, suitable for riding, is crumpled here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29866
+sabre~
+a sabre~
+A wicked-looking sabre has been discarded here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 3~ 
+15 0 0
+#29867
+robe~
+a midnight-blue robe~
+A midnight-blue robe, decorated with gold stars and moons, is hanging here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29868
+hat pointy~
+a pointy hat~
+A blue pointy hat has been dropped here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 -2
+A
+4 -2
+#29869
+staff~
+a magical-looking staff~
+A magical-looking staff as been dropped here.~
+~
+4 1|64 1|16384
+30~ 4~ 4~ earthquake~ 
+5 0 0
+#29870
+flask~
+a flask~
+A flask full of swirling green liquid is here.~
+~
+10 0 1|16384
+30~ change sex~ curse~ poison~ 
+5 0 0
+#29871
+robe white~
+a white robe~
+A scorched-marked and badly stained white robe is crumpled here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+24 -10
+#29872
+rapier sword~
+a rapier~
+An elegant rapier is propped in the corner.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~ 
+5 0 0
+A
+2 3
+A
+19 6
+#29873
+cloak green~
+a green cloak~
+A thick green cloak is folded neatly here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29874
+boot boots riding~
+riding boots~
+A air of polished riding boots sits here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+5 3
+#29875
+jodhpurs pants~
+jodhpurs~
+A pair of jodhpurs is folded neatly here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~ 
+5 0 0
+#29876
+vest leather~
+a leather vest~
+A leather vest has been discarded here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+5 2
+#29877
+wrap silk skimpy~
+a skimpy silk wrap~
+A skimpy piece of silk has been casually dropped here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+2 2
+#29878
+pendant~
+a pendant~
+A gorgeous pendant on a chain has been carelessly left here.~
+~
+9 0 1|4
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+12 70
+#29879
+scarf~
+a head scarf~
+A brightly coloured piece of material is crumpled here.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 3
+#29880
+cape wool~
+a wool cape~
+A heavy woolen cape is hanging here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+10 0 0
+#29881
+hat boater~
+a boater hat~
+A boater hat is sitting here at a jaunty angle.~
+~
+9 0 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+#29882
+robe ermine~
+an ermine-trimmed robe~
+An ermine-trimmed robe hangs here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29883
+cape black~
+a black cape~
+A black cape has been tossed here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29884
+shoes black~
+black shoes~
+A pair of black shoes rests neatly here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+#29885
+lute~
+a lute~
+A beautifully crafted lute is propped in the corner.~
+~
+36 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+12 100
+#29886
+cloak travelling~
+a travelling cloak~
+A travelling cloak has been hung here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29887
+knife long~
+a long knife~
+A long knife has been dropped here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 1~ 
+5 0 0
+#29888
+knife small~
+a small knife~
+A small knife is glinting in the dirt here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~ 
+5 0 0
+#29889
+scroll introduction~
+a scroll of introduction~
+An interesting-looking scroll is curled around a stick here.~
+~
+9 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+scroll~
+The scroll reads:
+
+Greetings Most Honourable Prince Makras of the Great Marsh, from His Eminence
+the Lord of the Sunset Isles.
+
+We understand an alliance may be on offer, and wish to be advised what
+benefit we may get from such a deal.
+
+Please advise as soon as possible, as we are most interested in your terms so
+far.
+
+The Lord of the Sunset Isles.~
+#29890
+key small~
+a small key~
+A small key has been left here.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+10 0 0
+#29891
+dress~
+a dress~
+A dress is hanging here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29892
+key~
+a huge key~
+A huge key has been dropped on the floor.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+15 0 0
+#29893
+shield~
+a shield~
+A shield is propped against the wall.~
+~
+9 0 1|512
+0~ 0~ 0~ 0~ 
+20 0 0
+A
+17 -50
+#29894
+throne~
+a throne~
+Prince Makras' grand throne is raised on a dais in the centre of the room.~
+~
+12 0 0
+0~ 0~ 0~ 0~ 
+5 0 0
+#29896
+key~
+a monstrous key~
+A moustrous key is dropped here.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+20 0 0
+#29897
+pants black satin~
+black satin pants~
+A pair of black satin pants has been folded here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+18 4
+A
+19 4
+#29898
+main-gauche dagger~
+a main-gauche~
+A deadly-looking main-gauche has been dropped here~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~ 
+5 0 0
+A
+2 2
+#29899
+epee sword~
+an epee~
+A long-bladed epee is here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -10
+#29900
+staff glowing~
+a glowing staff~
+A staff which glows with an unearthly light is floating here.~
+~
+1 1|16 1|16384
+0~ 0~ -1~ 0~ 
+5 0 0
+#29901
+ring ostentatious~
+an ostentatious ring~
+A huge, ostentatious ring has been dropped here.~
+~
+9 0 1|2
+0~ 0~ 0~ 0~ 
+5 0 0
+#29902
+bracelet~
+a gold bracelet~
+A gold bracelet gleams here.~
+~
+9 0 1|4096
+0~ 0~ 0~ 0~ 
+5 0 0
+#29903
+shirt black~
+a black silk shirt~
+A black silk shirt has been hung here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+#29904
+mantle silk grey~
+a grey silk mantle~
+A grey silk mantle is hanging here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+#29905
+boots black leather~
+black leather boots~
+A pair of black leather boots is sitting here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+13 100
+#29906
+coins~
+a huge pile of coins~
+A huge pile of coins is here.~
+~
+20 0 1
+30~ 30~ 32~ 10~ 
+5 0 0
+#29907
+chalice gold jewelled~
+a jewel-encrusted gold chalice~
+A beautiful, priceless jewel-encrusted gold chalice is here among the treasures.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+jewel chalice~
+The jewelled chalice looks very expensive and beautiful.  You are sure
+it would be worth a lot to a collector; you might even get a reward.~
+#29908
+sword two-handed~
+a huge two-handed sword~
+A huge two-handed sword is propped here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 1~ 
+5 0 0
+A
+19 4
+#29909
+stone purple glowing~
+a glowing purple stone~
+A glowing purple stone is floating here.~
+~
+9 0 1|32768
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+18 2
+A
+19 3
+A
+13 25
+
+#29910
+ticket appointment~
+an appointment ticket~
+An appointment ticket has been discarded here.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+#29911
+lute~
+a lute~
+A beautifully crafted lute is propped in the corner.~
+~
+36 0 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+13 100
+
+#0
+
+#ROOMS
+#29800
+Inside the Portcullis~
+Once inside the bailey, you can get a better look at the fortress.  It broods
+over the countryside surrounding it (not that the countryside is particularly
+appealing, you think, remembering the stench of the Old Marsh).  You wonder
+who would live in such a hole.
+~
+0 4 2
+D0
+~
+~
+1 -1 8318
+D1
+~
+~
+0 -1 29822
+D2
+~
+~
+0 -1 29823
+D3
+~
+~
+0 -1 29801
+S
+#29801
+A guardhouse~
+This is where the guards nap or play cards during their shift, as guards all
+over the Domain do.  There is a table and two chairs in the centre of the
+room, and a cupboard on the far wall.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29800
+D3
+~
+cupboard~
+10 -1 29802
+E
+table chair chairs~
+You see a standard fortress-issue wooden table and two chairs, worn and
+scratched but otherwise fine.~
+E
+cupboard wardrobe~
+The cupboard is a big, roomy one.  You wonder what use guards would have for
+a big, roomy cupboard.~
+S
+#29802
+Inside the wall~
+Stepping into the cupboard, you realise that it is actually a secret
+passageway inside the wall of the fortress.  You wonder what it is used for,
+or rather, what it WAS used for, as there is a thick layer of dust on the
+floor.
+~
+0 1|8 0
+D1
+~
+~
+8 -1 29801
+D3
+~
+~
+0 -1 29803
+S
+#29803
+Inside the wall~
+The passage in the wall continues south and east.  There is a thick layer of
+dust on the floor.  Obviously no-one has been in here for years.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29802
+D2
+~
+~
+0 -1 29804
+S
+#29804
+Inside the wall~
+The passage continues north and south.  Still no disturbances in the dust
+other than those you are making yourself.  You realise that it is fairly
+obvious you have been in here, if someone was looking for you.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29803
+D2
+~
+~
+0 -1 29805
+S
+#29805
+Inside the wall~
+The light in this part of the passage seems different somehow, and you think
+You can just make out some sounds coming from the direction of the east wall.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29804
+D2
+~
+~
+0 -1 29806
+E
+wall east~
+You realise that the light in this section is different, because there are
+two holes in the wall at about eye level.~
+E
+hole holes eye eyes peep~
+Looking through the peepholes, you can just make out what seems to be the
+inside of a small cabin.  There are two people sitting at a table, one in
+full ceremonial battle array and one dressed like a common trader.
+
+You can just make out what they are saying: the one who looks like a merchant
+is heatedly telling the other person that they should "do it at the banquet
+tonight".  The one dressed in ceremonial armor is shaking his head violently
+as if he doesn't think that is a good idea at all.~
+S
+#29806
+Inside the wall~
+You wander on through the wall.  The dust is starting to make you sneeze.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29805
+D2
+~
+~
+0 -1 29807
+S
+#29807
+Inside the wall~
+You are still inside the wall, and there is still a thick layer of dust on
+the floor.  However, the passage seems to come to an abrupt end further
+south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29806
+D2
+~
+~
+0 -1 29808
+S
+#29808
+A corner in the wall~
+You realise that the passage doesn't actually come to an end here, but bends.
+The passage continues east and north.  There is still thick dust on the
+floor.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29807
+D1
+~
+~
+0 -1 29809
+S
+#29809
+Inside the wall~
+The passage seems to come to an end to the west.  Otherwise it is the same as
+ever: dusty, dark and deserted.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29810
+D3
+~
+~
+0 -1 29808
+S
+#29810
+Inside the wall~
+This passage seems to go on forever.  You're starting to wonder if you'll
+ever find a way out.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29811
+D3
+~
+~
+0 -1 29809
+S
+#29811
+Inside the wall~
+You are scuffing your feet as you walk, because you can't see very well, and
+you stub your toe on a heavy iron ring in the floor. There is also a locked
+and bolted door to the south.  You notice that there are some footprints in
+the dust here, that seem to lead out the southern door, but you can't open
+it.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29812
+D3
+~
+~
+0 -1 29810
+D5
+~
+~
+8 29858 29879
+E
+ring trapdoor trap floor~
+You see a large metal ring set into the floor, and wonder if it is attached
+to anything.  But you can't tell because it is covered in dust.~
+S
+#29812
+Inside the wall~
+You continue along the passage in the wall.  It leads west and east, and
+there are still no other signs of life.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29813
+D3
+~
+~
+0 -1 29811
+S
+#29813
+Inside the wall~
+The passage seems to come to an abrupt end to the east, but it continues to
+the west.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29814
+D3
+~
+~
+0 -1 29812
+S
+#29814
+A corner in the wall~
+You realise that the passage doesn't actually end, but bends.  It continues
+to the west and north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29815
+D3
+~
+~
+0 -1 29813
+S
+#29815
+Inside the wall~
+The passage continues north, but seems to come to an abrupt end to the south.
+The dust on the floor does not seem to have been disturbed for years.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29816
+D2
+~
+~
+0 -1 29814
+S
+#29816
+Inside the wall~
+You are still wandering in the passage in the wall.  There is still a layer
+of dust on the floor.  The passage still continues north and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29817
+D2
+~
+~
+0 -1 29815
+S
+#29817
+Inside the wall~
+You are starting to feel a bit claustrophobic, you feel as if the walls are
+starting to close in on you.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29818
+D2
+~
+~
+0 -1 29816
+S
+#29818
+Inside the wall~
+This passage seems to go on forever, and you are starting to feel very
+uncomfortable about being in here.  You hope you can find a way out soon.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29819
+D2
+~
+~
+0 -1 29817
+S
+#29819
+Inside the wall~
+The passage seems to come to an end to the north, but continues south, with
+the thick layer of dust as always.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29820
+D2
+~
+~
+0 -1 29818
+S
+#29820
+A corner in the wall~
+The passage doesn't come to an end, but bends.  It continues west and south.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 29819
+D3
+~
+~
+0 -1 29821
+S
+#29821
+Inside the wall~
+Stepping into the cupboard, you realise that it is actually a secret
+passageway inside the wall of the fortress.  You wonder what it is used for,
+or rather, what it WAS used for, as there is a thick layer of dust on the
+floor.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29820
+D3
+~
+~
+8 -1 29822
+S
+#29822
+A guardhouse~
+This is where the guards nap or play cards during their shift, as guards all
+over the Domain do.  There is a table and two chairs in the centre of the
+room, and a cupboard on the far wall.
+~
+0 1|8 0
+D1
+~
+cupboard~
+10 -1 29821
+D3
+~
+~
+0 -1 29800
+E
+table chair chairs~
+You see a standard fortress-issue wooden table and two chairs, worn and
+scratched but otherwise fine.~
+E
+cupboard wardrobe~
+The cupboard is a big, roomy one.  You wonder what use guards would have for
+a big, roomy cupboard.~
+S
+#29823
+In the courtyard~
+You enter the courtyard of the fortress warily, and glance around.  The
+fortress itself is to the south, and there are outbuildings to the west and
+east.
+~
+0 0 2
+D0
+~
+~
+0 -1 29800
+D1
+~
+~
+0 -1 29866
+D2
+~
+~
+0 -1 29865
+D3
+~
+~
+0 -1 29824
+S
+#29824
+Before the barracks~
+You stand before the barracks of the fortress.  You can hear the usual sounds
+coming from inside them: snoring, arguing, gambling.  It sounds like there
+are quite a few people in there.  They probably won't like being disturbed.
+~
+0 0 2
+D1
+~
+~
+0 -1 29823
+D2
+~
+~
+0 -1 29830
+D3
+~
+~
+1 -1 29825
+S
+#29825
+Inside the barracks~
+As soon as you step inside, you know you have made a mistake.  You are
+confronted by a horde of guards off-duty, angry that their break has been
+disturbed.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 29824
+D2
+~
+~
+0 -1 29828
+D3
+~
+~
+0 -1 29826
+S
+#29826
+Inside the barracks~
+Once past the raging horde in the entrance, you get a better look around.
+There are bunk beds lining the walls, a few tables and chairs, and lockers at
+the foot of each set of bunks.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29825
+D2
+~
+~
+0 -1 29827
+E
+bed bunk beds bunks~
+Most of the bunks are dirty and unmade.  Obviously the soldiers have to make
+their own beds.~
+E
+table chair tables chairs~
+You see fortress-issue tables and chairs.  These ones are particularly
+scratched and worn, and some seem to be missing legs, with splintered bits of
+wood supporting them instead.~
+S
+#29827
+Inside the barracks~
+You see bunk beds lining the walls, a few tables and chairs, and lockers at
+the foot of each set of bunks.  There is also a door marked "CAPTAIN" to the
+south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29826
+D1
+~
+~
+0 -1 29828
+D2
+~
+~
+1 -1 29829
+E
+bed bunk beds bunks~
+Most of the bunks are dirty and unmade.  Obviously the soldiers have to make
+their own beds.~
+E
+table chair table chairs~
+You see fortress-issue tables and chairs.  These ones are particularly
+scratched and worn, and some seem to be missing legs, with splintered bits of
+wood supporting them instead.~
+S
+#29828
+Inside the barracks~
+Once past the raging horde in the entrance, you get a better look around.
+There are bunk beds lining the walls, a few tables and chairs, and lockers at
+the foot of each set of bunks.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29825
+D3
+~
+~
+0 -1 29827
+E
+bed bunk beds bunks~
+Most of the bunks are dirty and unmade.  Obviously the soldiers have to make
+their own beds.~
+E
+table chair table chairs~
+You see fortress-issue tables and chairs.  These ones are particularly
+scratched and worn, and some seem to be missing legs, with splintered bits of
+wood supporting them instead.~
+S
+#29829
+The Captain's quarters~
+This room is scrupulously tidy and organised.  There is a table and two
+chairs in the centre of the room.  Seated at the table is a man in full
+ceremonial armor, who is obviously the captain, and another man who looks
+like a common merchant. The captain stands up angrily as you burst in.
+
+You also notice a picture of someone regal on the far wall, a bed in the
+corner, and a locker at the foot of the bed.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29827
+E
+table chairs tables chairs~
+This table and chairs is a lot fancier than the fortress-issue ones you have
+seen elsewhere.  It's made of solid oak and the chairs are very decorative.~
+E
+picture regal painting~
+The painting is of a young man with a very ostentatious crown perched on his
+head.  You notice that he doesn't seem to have any eyes.~
+E
+hole holes eye eyes~
+If you look through the holes where the subject of the painting eyes should
+be, you can barely make out a very dark, narrow passage.  You wonder how you
+would get to it.~
+E
+bed bunk~
+This bed is made with fresh linen.  Obviously the captain is a lot tidier
+than his subordinates.~
+S
+#29830
+In the courtyard~
+You see the barracks to your west, and the entrance to the keep itself to
+your east.  The courtyard continues north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29824
+D1
+~
+~
+0 -1 29865
+D2
+~
+~
+0 -1 29831
+S
+#29831
+In the courtyard~
+To the west you can see a small room off the barracks, which you guess to be
+The captains quarters.  Further south you see the stables, and there is a
+horrible smell wafting on the breeze.
+~
+0 0 2
+D0
+~
+~
+0 -1 29830
+D2
+~
+~
+0 -1 29839
+D3
+~
+~
+0 -1 29832
+S
+#29832
+Next to the captain's quarters~
+You approach the small room and peek through the window.  You see a man
+dressed in full ceremonial armor speaking with a man who looks like a
+common merchant.  You duck below the window before they notice you.
+~
+0 0 2
+D1
+~
+~
+0 -1 29831
+D2
+~
+~
+0 -1 29833
+S
+#29833
+Before the stables~
+You stand before the stables.  You see the outer wall to the west.  The
+stables are to the south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29832
+D1
+~
+~
+0 -1 29839
+D2
+~
+~
+1 -1 29835
+D3
+~
+~
+0 -1 29834
+S
+#29834
+In the courtyard~
+The outer wall is here to your west.  The wall of the captain's quarters is
+to the north, the stables to the south, and the entrance to the stables to
+the east.
+~
+0 0 2
+D1
+~
+~
+0 -1 29833
+S
+#29835
+Inside the stables~
+As you step inside, you realise that these stables are awfully small for such
+a big fortress.  There is a stall to your south, and the stable continues to
+the west.
+~
+0 1|8 2
+D0
+~
+~
+1 -1 29833
+D2
+~
+~
+1 -1 29836
+D3
+~
+~
+0 -1 29837
+S
+#29836
+A stall~
+There is a huge, black warhorse in this stall, and the plaque on the back
+wall proclaims him to be "Moonraker".  He must be the prince's own horse.
+~
+0 1|8 2
+D0
+~
+~
+1 -1 29835
+S
+#29837
+Inside the stables~
+Already, you have come to the end of the stables.  There is a stall to your
+south and the stables continue back east.
+~
+0 1|8 2
+D1
+~
+~
+0 -1 29835
+D2
+~
+~
+1 -1 29838
+S
+#29838
+A stall~
+In this stall, there is a beautiful white palfrey.  The plaque on the far
+wall names her as "Sundancer".  She is suitable for the wife of a Prince,
+and yet, you didn't know the Prince was married.  You wonder who she could
+belong to.
+~
+0 1|8 2
+D0
+~
+~
+1 -1 29837
+S
+#29839
+In the courtyard~
+The courtyard continues north, west and south.  You see the stables to the
+south-west, and a horrible smell seems to be coming from the south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29831
+D2
+~
+~
+0 -1 29840
+D3
+~
+~
+0 -1 29833
+S
+#29840
+By the stables~
+The smell you noticed before is now starting to get unbearable, and seems to
+be coming from somewhere to the south.  The wall of the stables is to the
+east, and the courtyard continues north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29839
+D2
+~
+~
+0 -1 29841
+S
+#29841
+In the courtyard~
+As you round the corner of the keep, you see what you could smell earlier.
+The dung heap behind the stables is to the southwest, and the pigpens are to
+the southeast.  The courtyard continues north and south, and you see the
+outer wall further south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29840
+D1
+~
+~
+0 -1 29846
+D2
+~
+~
+0 -1 29842
+S
+#29842
+By the dungheap and the pigpen~
+You have to hold your nose, the stench is so unbearable here.  The dungheap
+for the stables is to the west, and the fortress pigpen is to the east.
+~
+0 0 2
+D0
+~
+~
+0 -1 29841
+D1
+~
+~
+1 -1 29845
+D3
+~
+~
+0 -1 29843
+S
+#29843
+In the dungheap~
+Against your better judgement, you enter the dungheap.  And immediately
+regret it.  You are covered in horse dung up to your knees, and then you slip
+on something and are covered all over.  "This is going to be one of those
+days", you think to yourself.  You struggle to your feet and look around.
+The wall of the stables is to your north, the dungheap continues west, and
+the courtyard is back east.
+~
+0 0 5
+D1
+~
+~
+0 -1 29842
+D3
+~
+~
+0 -1 29844
+S
+#29844
+In the dungheap~
+You struggle across to the other side of the dungheap.  By now, you are
+covered in the stuff and don't really mind when you slip again.  But your
+perseverance has been rewarded: you glimpse a small, shiny object half buried
+in the mire.
+~
+0 0 5
+D1
+~
+~
+0 -1 29843
+S
+#29845
+In the pigpen~
+Pigs have never really appealed to you, and now you know why.  Living in
+their own muck, eating anything and everything, they are truly disgusting
+creatures.
+~
+0 0 4
+D0
+~
+~
+1 -1 29846
+D1
+~
+~
+1 -1 29848
+D3
+~
+~
+1 -1 29842
+S
+#29846
+In the courtyard~
+You hold your breath as you walk past the pigpens to the south, with the wall
+of the keep to your north and the courtyard west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 29847
+D2
+~
+~
+1 -1 29845
+D3
+~
+~
+0 -1 29841
+S
+#29847
+In the courtyard~
+You stand at a corner of the keep.  The pigpens are to the southwest, the
+courtyard continues north and south, and the wall of the keep chapel is to
+your east.
+~
+0 0 2
+D0
+~
+~
+0 -1 29849
+D2
+~
+~
+0 -1 29848
+D3
+~
+~
+0 -1 29846
+S
+#29848
+In the courtyard~
+You are against the south wall of the keep.  The stinking pigpen is to your
+west, the wall of the chapel to the east, the wall to the south and the
+courtyard continues to the north.
+~
+0 0 2
+D0
+~
+~
+0 -1 29847
+D3
+~
+~
+1 -1 29845
+S
+#29849
+In the courtyard~
+Standing against the east wall of the keep, you can smell something awful
+somewhere to the south.  The courtyard continues north, and the entrance to
+the chapel is east.
+~
+0 0 2
+D0
+~
+~
+0 -1 29856
+D1
+~
+~
+0 -1 29850
+D2
+~
+~
+0 -1 29847
+S
+#29850
+Before the chapel~
+Standing before the chapel, you realise you haven't been to church or even
+confession for a very long time.  You can repent your sins to the south, or
+continue wandering the courtyard to the west, east and north.
+~
+0 0 2
+D0
+~
+~
+0 -1 29857
+D1
+~
+~
+0 -1 29855
+D2
+~
+~
+1 -1 29851
+D3
+~
+~
+0 -1 29849
+S
+#29851
+Inside the chapel~
+Inside the chapel, you immediately feel a lot more comfortable and secure.
+"Surely nothing can harm me in this place of God," you think to yourself.
+You can enter the confessional box to the south, explore the church to the
+east, or exit to the north.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29850
+D1
+~
+~
+0 -1 29853
+D2
+~
+~
+1 -1 29852
+S
+#29852
+The confessional box~
+You pull aside the curtain and enter the confessional box.  Unfortunately,
+someone else beat you to it, and is quite annoyed that their confession has
+been interrupted.  There is a little window in the east wall, and the door is
+to the north.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29851
+E
+window~
+You can vaguely make out the face of the priest behind the grille in the
+window.~
+S
+#29853
+By the altar~
+You approach the altar reverentially, and your heart thrills to the sound of
+choir boys singing your favourite hymn.  You kneel and say a quick prayer,
+and catch sight of a small door marked "Private" to the south.
+~
+0 1|8 0
+D2
+~
+~
+1 -1 29854
+D3
+~
+~
+0 -1 29851
+E
+altar~
+The altar is very rich and ornate, with a statue of the God standing behind
+it.~
+S
+#29854
+The Priest's box~
+You enter open the private door and wander on in.  There is a Priest taking
+a confession sitting by a small window in the west wall.  The exit is back
+north.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29853
+E
+window~
+You can just make out a face through the grille covering the window.~
+S
+#29855
+In the courtyard~
+This part of the courtyard is more open than the rest.  The outer wall of
+the keep is to the east, the wall of the chapel to the south, and the
+courtyard continues west and north.
+~
+0 0 2
+D0
+~
+~
+0 -1 29858
+D3
+~
+~
+0 -1 29850
+S
+#29856
+In the courtyard~
+You sneak along against the wall of the keep.  The courtyard opens out to the
+south and east, and the vegetable garden is to the north.
+~
+0 0 2
+D0
+~
+~
+0 -1 29859
+D1
+~
+~
+0 -1 29857
+D2
+~
+~
+0 -1 29849
+S
+#29857
+In the courtyard~
+You stand in an open area of the courtyard.  You see a vegetable garden
+to the northwest, a small outbuilding to the northeast, and the courtyard
+continues north, south, east, and west.
+~
+0 0 2
+D0
+~
+~
+0 -1 29860
+D1
+~
+~
+0 -1 29858
+D2
+~
+~
+0 -1 29850
+D3
+~
+~
+0 -1 29856
+S
+#29858
+In the courtyard~
+You stand against the outer wall of the keep.  A small outbuilding is to
+the north, and the courtyard continues west and south.
+~
+0 0 2
+D2
+~
+~
+0 -1 29855
+D3
+~
+~
+0 -1 29857
+S
+#29859
+The vegetable garden~
+You callously enter the vegetable garden, trampling all the gardener's hard
+work under your boots.  She probably isn't very happy about that.
+~
+0 0 2
+D0
+~
+~
+0 -1 29862
+D1
+~
+~
+0 -1 29860
+D2
+~
+~
+0 -1 29856
+D3
+~
+~
+1 -1 29875
+S
+#29860
+In the courtyard~
+Standing in the courtyard, you can enter the vegetable garden to your west,
+a small outbuilding to the east, or continue exploring the courtyard to the
+north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29863
+D1
+~
+~
+1 -1 29861
+D2
+~
+~
+0 -1 29857
+D3
+~
+~
+0 -1 29859
+S
+#29861
+The fletcher's shed~
+This small shed is where the fletcher for the keep lives and makes his
+arrows. There is a small bed on the far wall, a firepit, and some fletching
+tools.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 29860
+E
+bed bunk~
+The bed is small and looks very uncomfortable, although it is made with
+fresh linen.  The fletcher seems to be trying to make the best of a bad
+lot.~
+E
+fire pit firepit~
+There is a small fire burning in the firepit, and a rabbit is roasting
+over it on a spit.~
+E
+tools fletching~
+There are various tools and implements hanging on one wall, presumably used
+for fletching.~
+S
+#29862
+In the courtyard~
+Standing at the northeast corner of the keep, you see the vegetable garden
+to the south, and the entrance to the keep itself to the west.  The courtyard
+continues north and east.
+~
+0 0 2
+D0
+~
+~
+0 -1 29866
+D1
+~
+~
+0 -1 29863
+D2
+~
+~
+0 -1 29859
+D3
+~
+~
+0 -1 29865
+S
+#29863
+In the courtyard~
+Standing out in the sun all day has made you thirsty, and you thankfully spy
+the keep well to your east.  The courtyard continues north, west and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 29867
+D1
+~
+~
+0 -1 29864
+D2
+~
+~
+0 -1 29860
+D3
+~
+~
+0 -1 29862
+S
+#29864
+By the well~
+The water in the well looks clear, clean and cool, just how you like it.  The
+courtyard is west, and there are outbuildings to the north and south. There
+is a door in the wall of the one to the north.
+~
+0 0 2
+D0
+~
+~
+1 -1 29868
+D3
+~
+~
+0 -1 29863
+S
+#29865
+Before the keep~
+The keep stands before you, huge and imposing.  You can avoid the front door
+to the south and go west or east into the courtyard, or north toward the
+gates.
+~
+0 0 2
+D0
+~
+~
+0 -1 29823
+D1
+~
+~
+0 -1 29862
+D2
+~
+~
+1 -1 29870
+D3
+~
+~
+0 -1 29830
+S
+#29866
+In the courtyard~
+You stand against the wall of one of the guardhouses.  The courtyard
+continues west, south and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 29867
+D2
+~
+~
+0 -1 29862
+D3
+~
+~
+0 -1 29823
+S
+#29867
+In the courtyard~
+You stand before a small outbuilding, the entrance of which is to the east.
+The courtyard continues west and south.
+~
+0 0 2
+D1
+~
+~
+1 -1 29868
+D2
+~
+~
+0 -1 29863
+D3
+~
+~
+0 -1 29866
+S
+#29868
+The smithy~
+You enter the sweltering smithy, and sweat immediately starts beading on
+your forehead.  It sure is hot in here!  The forge is fired up and red-hot.
+There is also a ladder leading up to the loft.
+~
+0 1|8 0
+D2
+~
+~
+1 -1 29864
+D3
+~
+~
+1 -1 29867
+D4
+~
+ladder~
+0 -1 29869
+E
+forge~
+There is a fire in the forge and it looks very, very hot~
+S
+#29869
+The loft~
+This is where the keep smith sleeps.  He is luckier than the fletcher, as he
+gets a proper loft rather than just a bed in the corner.  But you doubt you
+could sleep here anyway, it is hotter up here than it is down in the smithy.
+~
+0 1|8 0
+D5
+~
+~
+0 -1 29868
+E
+bed~
+The smith has a large, comfortable looking bed.  But it isn't made, and this
+whole room is quite messy.~
+S
+#29870
+Inside the keep~
+You stand inside the entry to the keep.  A door marked "Kitchen" is to the
+east, and you see a grand staircase to the west.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29865
+D1
+~
+~
+1 -1 29874
+D2
+~
+~
+0 -1 29873
+D3
+~
+~
+0 -1 29871
+S
+#29871
+The grand staircase~
+You approach the grand staircase with awe.  This is truly a work of art.
+Ornate, carved banisters curve gracefully up the sides of the marble steps.
+The stairs themselves are chequered black and deep purple.  The occupant must
+have a thing for staircases.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 29870
+D2
+~
+~
+0 -1 29872
+D4
+~
+~
+0 -1 29895
+S
+#29872
+Inside the keep~
+The inside of the keep is very grandiose, with rich tapestries on the walls
+and thick rugs on the floors.  The grand staircase is to the north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29871
+D1
+~
+~
+0 -1 29873
+D2
+~
+~
+0 -1 29877
+S
+#29873
+Inside the keep~
+You stand in the middle of the great hall of the keep.  The entryway is to
+the north.  There are thick carpets on the floor.  There is a grand staircase
+in the northwest corner of the hall.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29870
+D2
+~
+~
+0 -1 29876
+D3
+~
+~
+0 -1 29872
+S
+#29874
+The kitchen~
+The kitchen is a beehive of activity, with people running all over the place
+like headless chickens.  There must be a banquet or something being planned.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 29875
+D3
+~
+~
+1 -1 29870
+S
+#29875
+The kitchen~
+The southern end of the kitchen is occupied chiefly by a huge oven and an
+equally huge table.  There is a small door to the east.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29874
+D1
+~
+~
+1 -1 29859
+S
+#29876
+The servant's stairs~
+You stand at the foot of the servant's staircase.  There is a small gate
+across the opening with a sign reading "Staff Only".
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29873
+D3
+~
+~
+0 -1 29877
+D4
+~
+~
+1 -1 29880
+D5
+~
+~
+10 29858 29878
+S
+#29877
+Inside the keep~
+You see the grand staircase to your east.  There are tapestries on the wall,
+and thick carpets on the floors.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29872
+D1
+~
+~
+0 -1 29876
+S
+#29878
+Below the stairs~
+You have discovered a secret tunnel below the stairs, which you guess to
+be an escape exit from the keep in case it is under attack.  It is very
+dusty, however, and you deduce it hasn't been used for years.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 29879
+D4
+~
+~
+8 -1 29876
+S
+#29879
+Below the tunnel in the wall~
+The little tunnel is dark and dusty.  There is a trapdoor above you, or the
+tunnel comes to an end to the north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29878
+D4
+~
+~
+8 -1 29811
+S
+#29880
+The first floor landing~
+You have reached the first floor landing on the servant's stairs.  A hallway
+leads west and east, or the servant's stairs continues up or down.  There
+is a large window on the south wall.
+~
+0 8 0
+D1
+~
+~
+0 -1 29907
+D3
+~
+~
+0 -1 29881
+D4
+~
+~
+0 -1 29909
+D5
+~
+~
+1 -1 29876
+S
+#29881
+The hallway~
+The hallway has a long, plush carpet running the length of it.  There are
+beautiful paintings hanging on the walls.  The hallway runs to north, or you
+can reach the servant's stairs to the east.  There is also a door to the west
+marked "Rieley".
+~
+0 8 0
+D0
+~
+~
+0 -1 29883
+D1
+~
+~
+0 -1 29880
+D3
+~
+~
+1 -1 29882
+E
+painting picture paintings pictures~
+On closer inspection, the paintings appear to be all of the same person.
+How conceited.~
+S
+#29882
+Rieley's Room~
+This room looks very lived-in, so you guess the resident is a permanent one.
+There are green and brown clothes strewn all over the place, a bow discarded
+in one corner, and dirt everywhere.  From these clues, you guess this to be
+the residence of the Royal Forester.
+~
+0 8 0
+D1
+~
+~
+1 -1 29881
+S
+#29883
+The hallway~
+The beautifully furnished hallway continues to the north and south.  There
+are doors to the east and west.  The doors to the east is marked "Snypre",
+while the one to the west is marked "Rudolf".
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29886
+D1
+~
+~
+1 -1 29884
+D2
+~
+~
+0 -1 29881
+D3
+~
+~
+1 -1 29885
+S
+#29884
+Snypre's Room~
+This room is immaculately clean and very stark.  Its only occupants are a
+perfectly made bed, and a side-table with a candlestick and seal set on it.
+~
+0 1|8 0
+D1
+~
+~
+10 -1 29906
+D3
+~
+~
+1 -1 29883
+E
+seal sealset set~
+Upon examination, the seal reads "Snypre, Royal Ambassador".  But of course
+you know that "ambassador" really means "spy".~
+S
+#29885
+Rudolf's Room~
+This room is lined with bookshelves, filled with such exciting tomes as
+"Trollish for Beginners", and "Learn Dwarven in 60 Days".  You also notice a
+few Midgaard history books.  There is a sleeping pallet in one corner.
+~
+0 8 0
+D1
+~
+~
+1 -1 29883
+S
+#29886
+The hallway~
+The hallway continues north and south from here.  You notice the portraits in
+this part of the hall seem to be a lot older.  There is a door to the east
+marked "Rutger", and one to the west marked "Jeeves".
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29889
+D1
+~
+~
+1 -1 29887
+D2
+~
+~
+0 -1 29883
+D3
+~
+~
+1 -1 29888
+S
+#29887
+Rutger's Room~
+This room is very messy and cluttered.  There are a few bookshelves with war
+manuals on them, but the main feature of the room is a huge oak desk at one
+end.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 29886
+S
+#29888
+Jeeves' Room~
+This is obviously the head butler's room.  Tuxedos are hung in the open
+closet, and there are books on etiquette and household management on the
+small bookshelf.
+~
+0 8 0
+D1
+~
+~
+1 -1 29886
+S
+#29889
+The hallway~
+The hallway continues to the north, where you see it bend to the east, and
+to the south.  The long carpet runner is thick and soft under your feet.
+There are rooms marked "Guest" to the east and west, and a door with
+"Staff Only" on it to the south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29892
+D1
+~
+~
+1 -1 29891
+D2
+~
+~
+1 -1 29886
+D3
+~
+~
+1 -1 29890
+S
+#29890
+A Guest Room~
+This room is totally bare and obviously not in use.  The bed is stripped bare
+and the rugs rolled up in the corner.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 29889
+S
+#29891
+A Guest Room~
+This guest room reminds you of guest rooms everywhere.  The rug is slightly
+faded, the furniture a bit scratched, and there are no windows.  This room
+appears to be currently occupied, as the bed is made up and there are clothes
+hanging in the open closet.  The guest doesn't appear to be a particularly
+distinguished one, however, as the clothes all seem to belong to a simple
+traveller.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 29889
+S
+#29892
+The hallway~
+There is a bend in the hallway here.  It continues south or east.  A big
+window dominates the north wall.  There is also a door to the west marked
+"Guest", with a "Do not Disturb" sign hanging on the door knob.
+~
+0 8 0
+D1
+~
+~
+0 -1 29895
+D2
+~
+~
+0 -1 29889
+D3
+~
+~
+1 -1 29893
+S
+#29893
+A Guest Room~
+This room is the biggest and sunniest so far.  There are huge windows on two
+of the walls, and a gigantic four-poster bed on a dais in the centre of the
+room.  This room must be reserved for distinguished guests only.
+~
+0 8 0
+D1
+~
+~
+1 -1 29892
+S
+#29895
+The top of the grand staircase~
+The grand staircase comes to an end here.  You can either head down the grand
+staircase, or west and east into a richly decorated hallway.
+~
+0 8 0
+D1
+~
+~
+0 -1 29896
+D3
+~
+~
+0 -1 29892
+D5
+~
+~
+0 -1 29871
+S
+#29896
+The hallway~
+A large window dominates the north wall of this part of the hall.  There is a
+door to the east marked "Guest", and the hall continues to the west and south.
+~
+0 8 0
+D1
+~
+~
+1 -1 29897
+D2
+~
+~
+0 -1 29898
+D3
+~
+~
+0 -1 29895
+S
+#29897
+A Guest Room~
+This room is large and sunny, and is obviously reserved for important people
+only.  There are large windows on two walls, and a large, comfortable-looking
+bed in the middle of the room.  The bed is freshly made and there are elegant
+clothes in the closet.
+~
+0 8 0
+D3
+~
+~
+1 -1 29896
+S
+#29898
+The hallway~
+The hallway bends away to the north, or you can continue south.  There are
+paintings on the walls and a lush carpet runner on the floor.  Doors to the
+east and west have plaques on them which read "Guest", and there is one to
+the south marked "Staff Only".
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29896
+D1
+~
+~
+1 -1 29899
+D2
+~
+~
+1 -1 29901
+D3
+~
+~
+1 -1 29900
+S
+#29899
+A Guest Room~
+This guest room is inhabited, and is a bit of a mess.  There are clothes
+strewn all over the room, seemingly dropped where they were removed.  There
+is a huge pile of music manuscript on the floor, and the bed is unmade.
+~
+0 8 0
+D3
+~
+~
+1 -1 29898
+S
+#29900
+A Guest Room~
+As you enter this guest room, you realise that it is occupied by a very rich
+man.  Expensive velvet and silk clothing hangs in the wardrobe, and the bed
+is made up with thick animal skins and crisp linen sheets.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 29898
+S
+#29901
+The hallway~
+The hallway continues to the north and south, with beautiful paintings on
+the walls and thick carpet on the floor, which feels wonderful under your
+feet.  There is a door to the east marked "Crinnan", and one to the west
+with a plaque reading "Wintergern".
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29898
+D1
+~
+~
+1 -1 29902
+D2
+~
+~
+0 -1 29904
+D3
+~
+~
+1 -1 29903
+S
+#29902
+Crinnan's Room~
+This room is quite bare, with only a few bookshelves and a sleeping pallet.
+The books have such titles as "War and Peace in Midgaard", Solving Petty
+Peasant Disputes", and "Diversions: Pointless Quests for the Army When Not
+at War".
+~
+0 8 0
+D3
+~
+~
+1 -1 29901
+S
+#29903
+Wintergern's Room~
+As you open the door, you knock over a pile of books that was behind it.
+This room is overflowing with books: on shelves, under the bed, behind the
+door, on the floor.  There are books everywhere.  They have exciting titles
+such as "Sorcery for beginners", "How to Pretend You Are a Magician", and
+"Faking it: the Guide to Impressive Magic Affects".
+~
+0 1|8 0
+D1
+~
+~
+1 -1 29901
+S
+#29904
+The hallway~
+The hallway bends away to the south, or continues north.  There are large,
+elaborate paintings on the walls, all of which appear to be of the same
+person.  The carpet is thick and soft under your feet.  There is a door
+to the east marked "Milli", and one to the west marked "Drogar".
+~
+0 1|8 0
+D0
+~
+~
+0 -1 29901
+D1
+~
+~
+1 -1 29905
+D2
+~
+~
+0 -1 29907
+D3
+~
+~
+1 -1 29906
+S
+#29905
+Milli's Room~
+As you enter this room, you are almost overpowered by the strong smell of
+perfume.  The dresser against the wall is covered in perfume bottles.  There
+is a huge, and obviously expensive, full-length mirror next to the dresser,
+and the bed is large and made with rather expensive linen for a servant.
+~
+0 8 0
+D3
+~
+~
+1 -1 29904
+S
+#29906
+Drogar's Room~
+This room is empty other than a sleeping pallet in the far corner, which is
+made up with coarse sheets and undyed woollen blankets.  Either this person
+is a recent arrival, or they have little favour in the castle.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 29904
+D3
+~
+~
+10 -1 29884
+S
+#29907
+The hallway~
+The hallway leads north here, or you can head west to the landing of the
+servant's staircase.  The carpet is thick and luxuriant, and the south wall is
+dominated by a huge window which overlooks the back of the fortress. There
+is a door to the east marked "Winster".
+~
+0 8 0
+D0
+~
+~
+0 -1 29904
+D1
+~
+~
+1 -1 29908
+D3
+~
+~
+0 -1 29880
+S
+#29908
+Winster's room~
+This room stinks of chemicals and old smoke.  There are flasks and mortars
+all over the room, filled with an astounding variety of different coloured
+liquids.  Smoke belches from a fire against one wall.
+~
+0 8 0
+D3
+~
+~
+1 -1 29907
+S
+#29909
+The top of the stairs~
+The stairs come to an end here.  You can go back down, or there is a door to
+the north marked "Private".  Otherwise, the room is bare.  There are not
+even any windows.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 29910
+D5
+~
+~
+0 -1 29880
+S
+#29910
+The Secretary's Office~
+You enter the secretary's office and tip your hat politely to the woman behind
+the counter.  She says efficiently, "Do you have an appointment?"  When you
+reply to the negative she replies brightly "Well, we'd better organise one then
+hadn't we?"  Her cheerfulness is rather irritating.
+~
+0 1|8 0
+D0
+~
+~
+8 29890 29911
+D2
+~
+~
+1 -1 29909
+S
+#29911
+The Guard Room~
+The guards glare at you suspiciously, and ask for your appointment ticket.
+You DID make an appointment, didn't you?
+~
+0 1|8 0
+D0
+~
+~
+8 29892 29912
+D2
+~
+~
+8 -1 29910
+S
+#29912
+The Throne Room~
+You enter the throne room of the prince, and stand amazed.  There are huge,
+priceless hangings on the walls, and the carpet is pure Highland wool.  The
+throne itself sees to be made of solid gold, and the prince himself is
+dressed in exquisitely embroidered velvet.
+~
+0 1|8 0
+D0
+~
+~
+8 29896 29913
+D2
+~
+~
+8 -1 29911
+S
+#29913
+The Treasure Room~
+This room is filled to overflowing with treasure like you had never imagined.
+Chalices, staves, lanterns, bowls, hangings, carpets, you can't believe your
+eyes!  This room must contain the riches of a whole dynasty!
+~
+0 1|8 0
+D2
+~
+~
+8 -1 29912
+S
+#0
+
+
+#RESETS
+D 1 29801 3 1			; A guardhouse Close West
+D 1 29822 1 1			; A guardhouse Close East
+D 1 29824 3 1			; Before the barracks Close West
+D 1 29827 2 1			; Inside the barracks Close South
+D 1 29833 2 1			; Before the stables Close South
+D 1 29842 1 1			; By the dungheap and the pigpen Close East
+D 1 29846 2 1			; In the courtyard Close South
+D 1 29848 3 1			; In the courtyard Close West
+D 1 29850 2 1			; Before the chapel Close South
+D 1 29851 2 1			; Inside the chapel Close South
+D 1 29853 2 1			; By the altar Close South
+D 1 29860 1 1			; In the courtyard Close East
+O 1 29800 100 29864			the keep well to By the well
+D 1 29867 1 1			; In the courtyard Close East
+D 1 29868 2 1			; The smithy Close South
+*
+M 1 29800 1 29801			the gate guard to A guardhouse
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29807 100 8
+E 1 29810 100 16
+*
+M 1 29804 1 29822			the gate guard to A guardhouse
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29807 100 8
+E 1 29810 100 16
+*
+M 1 29801 3 29825			the off-duty guard to Inside the barracks
+E 1 29812 100 7
+E 1 29807 100 8
+E 1 29811 100 12
+*
+M 1 29802 1 29829			the captain of the guard to The Captain's quarters
+E 1 29813 100 5
+E 1 29814 100 6
+E 1 29807 100 8
+E 1 29816 100 11
+E 1 29815 100 16
+*
+M 1 29803 1 29829			the merchant to The Captain's quarters
+E 1 29817 100 4
+E 1 29819 100 6
+E 1 29820 100 8
+E 1 29818 100 12
+O 1 29801 100 29826			a locker to Inside the barracks
+P 1 29802 100 29801			a nightshirt to container locker chest foot footlocker
+P 1 29803 100 29801			a pair of socks to container locker chest foot footlocker
+O 1 29821 100 29827			a locker to Inside the barracks
+P 1 29804 100 29821			a bottle of whisky to container locker chest foot footlocker
+P 1 29805 100 29821			a girly magazine to container locker chest foot footlocker
+O 1 29822 100 29828			a locker to Inside the barracks
+P 1 29806 100 29822			crumpled fatigues to container locker chest foot footlocker
+O 1 29823 100 29829			a locker to The Captain's quarters
+P 1 29808 100 29823			a ringmail vest to container locker chest foot footlocker
+P 1 29809 100 29823			a ringmail hood to container locker chest foot footlocker
+*
+M 1 29805 1 29833			the guard to Before the stables
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+*
+M 1 29806 1 29865			the guard to Before the keep
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+*
+M 1 29807 1 29867			the guard to In the courtyard
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+*
+M 1 29808 1 29850			the guard to Before the chapel
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+*
+M 1 29809 1 29837			the stableboy to Inside the stables
+E 1 29827 100 7
+E 1 29828 100 12
+E 1 29826 100 16
+*
+M 1 29810 1 29836			moonraker to A stall
+*
+M 1 29811 1 29838			sundancer to A stall
+O 1 29829 100 29844			a brass globe to In the dungheap
+*
+M 1 29812 2 29845			a pig to In the pigpen
+*
+M 1 29813 1 29852			the sinner to The confessional box
+E 1 29832 100 6
+E 1 29833 100 8
+E 1 29831 100 12
+E 1 29830 100 19
+*
+M 1 29814 1 29854			the priest to The Priest's box
+E 1 29836 100 6
+E 1 29837 100 8
+E 1 29835 100 12
+E 1 29838 100 17
+E 1 29834 100 19
+*
+M 1 29815 3 29853			the choirboy to By the altar
+E 1 29837 100 8
+E 1 29839 100 12
+*
+M 1 29816 1 29859			the gardener to The vegetable garden
+E 1 29842 100 5
+E 1 29841 100 9
+E 1 29843 100 13
+E 1 29840 100 16
+O 1 29850 100 29853			an altar to By the altar
+O 1 29849 100 29859			vegetables to The vegetable garden
+*
+M 1 29818 1 29868			the smith to The smithy
+E 1 29845 100 6
+E 1 29847 100 7
+E 1 29844 100 9
+E 1 29843 100 13
+E 1 29846 100 16
+G 1 24 100
+O 1 29848 100 29868			an anvil to The smithy
+*
+M 1 29817 1 29861			the fletcher to The fletcher's shed
+E 1 29845 100 6
+E 1 29844 100 9
+E 1 29843 100 13
+D 1 29865 2 1			; Before the keep Close South
+D 1 29859 3 1			; The vegetable garden Close West
+*
+M 1 29819 1 29874			the cook to The kitchen
+E 1 29852 100 12
+E 1 29851 100 16
+*
+M 1 29820 2 29875			the kitchenboy to The kitchen
+E 1 29853 100 5
+E 1 29854 100 16
+*
+M 1 29821 1 29877			the guard to Inside the keep
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+*
+M 1 29822 1 29870			the guard to Inside the keep
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+D 1 29811 5 2			; Inside the wall Lock Down
+D 1 29881 3 1			; The hallway Close West
+D 1 29883 1 1			; The hallway Close East
+D 1 29883 3 1			; The hallway Close West
+D 1 29886 1 1			; The hallway Close East
+D 1 29886 3 1			; The hallway Close West
+D 1 29889 3 1			; The hallway Close West
+D 1 29889 1 1			; The hallway Close East
+D 1 29892 3 1			; The hallway Close West
+D 1 29896 1 1			; The hallway Close East
+D 1 29898 1 1			; The hallway Close East
+D 1 29898 3 1			; The hallway Close West
+D 1 29901 1 1			; The hallway Close East
+D 1 29901 3 1			; The hallway Close West
+D 1 29904 1 1			; The hallway Close East
+D 1 29904 3 1			; The hallway Close West
+D 1 29907 1 1			; The hallway Close East
+D 1 29889 2 1			; The hallway Close South
+D 1 29898 2 1			; The hallway Close South
+D 1 29876 4 1			; The servant's stairs Close Up
+D 1 29909 0 1			; The top of the stairs Close North
+D 1 29910 0 2			; The Secretary's Office Lock North
+D 1 29911 0 2			; The Guard Room Lock North
+D 1 29912 0 2			; The Throne Room Lock North
+*
+M 1 29823 1 29892			the guard to The hallway
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+*
+M 1 29824 1 29880			the guard to The first floor landing
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+D 1 29876 5 2			; The servant's stairs Lock Down
+*
+M 1 29828 1 29884			Snypre to Snypre's Room
+E 1 29863 100 12
+E 1 29862 100 16
+*
+M 1 29829 1 29884			Drogar to Snypre's Room
+E 1 29857 100 8
+E 1 29864 100 12
+*
+M 1 29825 1 29885			Rudolf to Rudolf's Room
+E 1 29856 100 5
+E 1 29855 100 6
+E 1 29857 100 8
+*
+M 1 29826 1 29888			Jeeves to Jeeves' Room
+E 1 29857 100 8
+E 1 29859 100 12
+E 1 29858 100 17
+*
+M 1 29830 1 29891			the traveller to A Guest Room
+E 1 29865 100 12
+E 1 29866 100 16
+G 1 29820 100
+*
+M 1 29827 1 29893			the Dowager Mother to A Guest Room
+E 1 29860 100 12
+E 1 29861 100 17
+*
+M 1 29838 1 29897			the diplomat to A Guest Room
+E 1 29863 100 12
+E 1 29888 100 16
+E 1 29889 100 17
+*
+M 1 29837 1 29899			the minstrel to A Guest Room
+E 1 29874 100 8
+E 1 29886 100 12
+E 1 29887 100 16
+E 1 29911 100 17
+*
+M 1 29833 1 29900			the Prince's cousin to A Guest Room
+E 1 29876 100 5
+E 1 29875 100 7
+E 1 29874 100 8
+E 1 29873 100 12
+E 1 29872 100 16
+*
+M 1 29831 1 29903			Wintergern to Wintergern's Room
+E 1 29867 100 5
+E 1 29868 100 6
+E 1 29857 100 8
+E 1 29869 100 17
+*
+M 1 29832 1 29903			Winster to Wintergern's Room
+E 1 29871 100 5
+E 1 29857 100 8
+E 1 29870 100 17
+E 1 29909 100 19
+*
+M 1 29835 1 29902			Rutger to Crinnan's Room
+E 1 29881 100 6
+E 1 29807 100 8
+E 1 29880 100 12
+*
+M 1 29836 1 29902			Crinnan to Crinnan's Room
+E 1 29882 100 5
+E 1 29884 100 8
+E 1 29883 100 12
+*
+M 1 29834 1 29905			Milli to Milli's Room
+E 1 29878 100 3
+E 1 29877 100 5
+E 1 29879 100 6
+*
+*
+M 1 29839 1 29910			the secretary to The Secretary's Office
+E 1 29891 100 5
+E 1 29890 100 17
+*
+M 1 29840 1 29911			the Prince's Own Guard to The Guard Room
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29908 100 16
+E 1 29892 100 17
+E 1 29893 100 11
+*
+M 1 29841 1 29911			the Prince's Own Guard to The Guard Room
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29908 100 16
+E 1 29892 100 17
+E 1 29893 100 11
+O 1 29894 100 29912			a throne to The Throne Room
+*
+M 1 29842 1 29912			Makras the Prince to The Throne Room
+E 1 29896 100 17
+E 1 29897 100 7
+E 1 29899 100 16
+E 1 29900 100 0
+E 1 29901 100 1
+E 1 29901 100 2
+E 1 29902 100 14
+E 1 29902 100 15
+E 1 29903 100 5
+E 1 29904 100 12
+E 1 29905 100 8
+E 1 29898 100 18
+O 1 29906 100 29913			a huge pile of coins to The Treasure Room
+O 1 29907 100 29913			a jewel-encrusted gold chalice to The Treasure Room
+D 1 29884 1 1			; Snypre's Room Close East
+D 1 29870 1 1			; Inside the keep Close East
+D 1 29837 2 1			; Inside the stables Close South
+D 1 29906 1 1			; Drogar's Room Close East
+D 1 29875 1 1			; The kitchen Close East
+M 0 29843 1 8318        gate guard
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+M 0 29844 1 8318        gate guard
+E 1 29808 100 5
+E 1 29809 100 6
+E 1 29824 100 7
+E 1 29807 100 8
+E 1 29825 100 10
+E 1 29810 100 16
+S
+
+
+#SPECIALS
+M  29803 spec_breath_frost			the merchant
+M  29814 spec_cast_cleric			the priest
+M  29832 spec_cast_psionicist			Winster
+M  29836 spec_cast_mage			Crinnan
+M  29834 spec_cast_hooker		Milli
+S
+
+
+#$

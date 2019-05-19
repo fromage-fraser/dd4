@@ -1,0 +1,385 @@
+#AREA Gezhp~ The Wastelands~
+-2 -2 0 100
+
+#ROOMS
+#500
+Wilderness~
+The country here is empty and exposed: rocky plains stretching endlessly
+northwards.  The wilderness is mostly dirt and stone; a few scraggly
+plants cling to small cliffsides or grow prostrate across the ground.  
+The air is thin and cold.  You wander alone through the wilderness, your
+only company some unidentified creatures circling in the sky far above.
+     The city of Anon can be seen to the south; you can continue either
+east or north through this wilderness.
+~
+0 4 2
+D 0
+~
+~
+0 -1 502
+D 2
+~
+~
+0 -1 31023
+D 1
+~
+~
+0 -1 501
+S
+
+#501
+Wilderness~
+You march through the flat wilderness.  As you head east you begin to
+enter a small valley lined with steep cliffs.  The cliffs are tall and
+would be too trecherous to climb.  The valley narrows the further you
+penetrate it.  Eventually you run up against an eastern cliff-face.
+     A small path continues east through the cliffs; your only other 
+option is to return westwards.
+~
+0 4 2
+D 1
+~
+~
+0 -1 13001
+D 3
+~
+~
+0 -1 500
+S
+
+#502
+Wilderness~
+The unchanging, desolate wilderness spreads out before you.  Massive and
+ugly boulders and spears of rock jut from the ground, covered in ancient
+lichen and weed.  Your travel is fairly easy but uneventful and
+unpleasant.
+     You can head north, south or west through the wilderness.
+~
+0 0 2
+D 0
+~
+~
+0 -1 503
+D 2
+~
+~
+0 -1 500
+D 3
+~
+~
+0 -1 504
+S
+
+#503
+Wilderness~
+The wilderness becomes progressively rockier the further you travel north.
+At times you have to pick your way between gigantic boulders or deep pits.
+You soon discover a line of cliffs to the north; the wilderness seems to
+be a desolate basin surrounded by an inpenetrable rocky barrier.
+     You can head west or south through the wilderness, or head east into
+a canyon lined with steep cliffs.
+~
+0 0 2
+D 2
+~
+~
+0 -1 502
+D 1
+~
+~
+0 -1 510
+D 3
+~
+~
+0 -1 505
+S
+
+#504
+Wilderness~
+The unchanging, desolate wilderness spreads out before you.  Massive
+boulders and ugly spears of rock jut from the ground, covered in ancient
+lichen and weed.  Your travel is fairly easy but uneventful and
+unpleasant.
+     You can head either north or east through the wilderness.
+~
+0 0 2
+D 0
+~
+~
+0 -1 505
+D 1
+~
+~
+0 -1 502
+S
+
+#505
+Wilderness~
+The wilderness becomes progressively rockier the further you travel north.
+At times you have to pick your way between gigantic boulders or deep pits.
+You soon discover a line of cliffs to the north; the wilderness seems to
+be a desolate basin surrounded by an inpenetrable rocky barrier.  To the
+west, the ground is perfectly flat and seems to gleam; it is a gigantic
+salt lake.
+     You can head east or south through the wilderness, or head west into
+the salt lake.
+~
+0 0 2
+D 2
+~
+~
+0 -1 504
+D 1
+~
+~
+0 -1 503
+D 3
+~
+~
+0 -1 506
+S
+
+#506
+Salt Lake~
+You are at the southern end of massive salt lake, the dried up grave of an
+ancient inland sea.  The salty earth is set like mortar; the air is acrid
+and makes your eyes sting.  You are the only living thing visible on the
+surface of the lake bed, which looks like ugly, cracked marble.
+     You can head north across the surface of the salt lake, or east back 
+into the rocky wilderness.
+~
+0 0 10
+D 0
+~
+~
+0 -1 507
+D 1
+~
+~
+0 -1 505
+S
+
+#507
+Salt Lake~
+You are at the northern end of massive salt lake, the dried up grave of an
+ancient inland sea.  The salty earth is set like mortar; the air is acrid
+and makes your eyes sting.  You are the only living thing visible on the
+surface of the lake bed, which looks like ugly, cracked marble.
+     You can return south across the salt lake, or head north into the
+rocky wilderness.     
+~
+0 0 10
+D 0
+~
+~
+0 -1 508
+D 2
+~
+~
+0 -1 506
+S
+
+#508
+Wasteland~
+The earth to the north of the salt lake looks churned and smashed.
+Massive chunks of sharp red rock thrust up from the stony ground or lay
+collapsed and smashed on their sides.  Rough boulders and slabs of stone
+lay piled on top of each other.  The wasteland is crowded and endless; it
+is a horrible, wounded place inhospitable to life.  Your travel here is
+tedious and dangerous as you try to pick a safe path through the uneven
+forest of rock.
+     You can head south back to the salt lake, or press eastwards through
+the waste.  The rock is just too dense to travel in any other direction.
+~
+0 0 10
+D 2
+~
+~
+0 -1 507
+D 1
+~
+~
+0 -1 509
+S
+
+#509
+Wasteland~
+You press into the heart of the wasteland.  Massive chunks of sharp red
+rock thrust up from the stony ground or lay collapsed and smashed on their
+sides.  Rough boulders and slabs of stone lay piled on top of each other.
+The wasteland is crowded and endless; it is a horrible, wounded place
+inhospitable to life.  Your travel here is tedious and dangerous as you
+try to pick a safe path through the uneven forest of rock.
+     Your travel becomes easier the further you head east.  The ugly
+formations of rock become more open and soon you are walking at a
+relatively quick pace.  The ground is becoming dustier and the air drier:
+you are approaching a sandy desert.
+     You can head east into the desert, or try to work back west into the
+wasteland. You also think you spy an opening in the rocks above you.     
+~
+0 0 10
+D 1
+~
+~
+0 -1 18100
+D 3
+~
+~
+0 -1 508
+S
+
+#510
+Canyon~
+You travel along a dried up river bed on the floor of this large canyon.
+High cliffs stand to the north and south, covered with short thorny desert
+plants.  Your path is littered with river stones worn smooth by countless
+centuries of churning river water; a river no longer flows here, and life
+here is desperate and harsh.
+     You may travel east or west along the floor of the canyon.
+~
+0 0 4
+D 1
+~
+~
+0 -1 511
+D 3
+~
+~
+0 -1 503
+S
+
+#511
+Rocky Pillars~
+You march along the floor of the canyon.  You soon notice a handful of
+strange stone pillars erected in the dried up bed of the river.  They
+consist of large smooth boulders piled on top of each other.  The stones
+at the base of each pillar are fairly massive and stand six feet tall.
+Some pillars have toppled over or have lost some of their upper stones.
+The pillars seem to be some sort of ancient monument; they now stand
+forgotten in the empty canyon.
+     You can head west through the canyon, or east into some scrub.
+~
+0 0 4
+D 1
+~
+~
+0 -1 512
+D 3
+~
+~
+0 -1 510
+S
+
+#512
+Scrub~
+The canyon walls lining the river bed slowly lower and the land becomes
+less rocky.  The tough, scrawny desert plants yield to larger, healthier
+looking bushes and grasses.  Looking about you can see woodland nestled in
+amongst the stony cliff walls.
+     You can head west to the canyon, or south or north through the woods.
+~
+0 4 3
+D 0
+~
+~
+0 -1 513
+D 2
+~
+~
+0 -1 14001
+D 3
+~
+~
+0 -1 511
+S
+
+#513
+Woodland~
+Narrow trees crowd this temperate woodland.  The air is alive with the
+chatter of birds and the cries of unseen animals.  Alert for movement, you
+pick your way along what appears to be a path used by some of the larger
+creatures that inhabit this woods.
+     You can head north, east and south through the trees.
+~
+0 0 3
+D 0
+~
+~
+0 -1 514
+D 2
+~
+~
+0 -1 512
+D 1
+~
+~
+0 -1 516
+S
+
+#514
+Woodland~
+Narrow trees crowd this temperate woodland.  The air is alive with the
+chatter of birds and the cries of unseen animals.  Alert for movement, you
+pick your way along what appears to be a path used by some of the larger
+creatures that inhabit this woods.
+     You can head east and south through the trees.
+~
+0 0 3
+D 2
+~
+~
+0 -1 513
+D 1
+~
+~
+0 -1 515
+S
+
+#515
+Woodland~
+Narrow trees crowd this temperate woodland.  The air is alive with the
+chatter of birds and the cries of unseen animals.  Alert for movement, you
+pick your way along what appears to be a path used by some of the larger
+creatures that inhabit this woods.
+     You can head north, south and west through the trees.
+~
+0 0 3
+D 0
+~
+~
+0 -1 25000
+D 2
+~
+~
+0 -1 516
+D 3
+~
+~
+0 -1 514
+S
+
+#516
+Woodland~
+Narrow trees crowd this temperate woodland.  The air is alive with the
+chatter of birds and the cries of unseen animals.  Alert for movement, you
+pick your way along what appears to be a path used by some of the larger
+creatures that inhabit this woods.
+     You can head north, west and south through the trees.
+~
+0 0 3
+D 0
+~
+~
+0 -1 515
+D 2
+~
+~
+0 -1 530
+D 3
+~
+~
+0 -1 513
+S
+#0
+
+#$

@@ -1,0 +1,2309 @@
+#AREA Samxin~ The Tabernacle of Coggery~
+40 65 0 100
+
+#MOBILES
+#39000
+executioner~
+the executioner~
+{W(White Aura) {R(Flaming) {Y(Globed){x The executioner is here polishing his blade.
+~
+A masked man with muscles bulging all over his body.  You can tell by
+the look in his eyes that he enjoys seeing you cower in his presence.
+~
+2 0 1000 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39001
+teleporter 1~
+The teleporter number 1 mob~
+The teleporter mob number 1 is here, but you can't see him (unless you're an immie).
+~
+Doing his teleporting job day in and day out.
+~
+2|512|65536 0 1000 S
+100 0 0 0d0+0 0d0+0
+64 0
+0 0 1
+>speech_prog p Hesad sent me~
+   mptransfer $n 39058 group
+~
+>speech_prog p Hesad sent me.~
+   mptransfer $n 39058 group
+~
+|
+
+#39002
+dryad~
+a dryad~
+A green-skinned dryad hides behind the trees.
+~
+This wood nymph flits between the large trees of the ancient forest, her
+eyes gleaming.  Deep in the impenetrable heart of the woods, an ancient
+oak serves as her home and feeds her the energy of the forest.
+~
+2 512 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>rand_prog 10~
+	mpecho Faint laughter floats through the air.
+~
+|
+#39003
+dying man~
+a dying man~
+A dying man lies here about to breathe his last breath.
+~
+This man has a ghastly wound across his chest. You can make out his
+soon to be stopped heart through the wound.
+~
+2 8|32|8388608 1000 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say Hesad...his magic....did..this...the illu..
+   emote chokes and gags.
+~
+|
+
+#39004
+sand worm~
+a sand worm~
+A huge sand worm burrows through the dunes.
+~
+It's BIG. REALLY big.
+~
+2 0 -1000 S
+45 0 0 0d0+0 0d0+0
+4|8|32|128 0
+0 0 0
+
+#39005
+green plant~
+a green plant~
+An enormous plant leans toward you.
+~
+A really big and really green plant.
+~
+2|32 8|32|512 0 S
+42 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|128 0
+0 0 0
+
+#39006
+knight~
+A painted knight~
+~
+He looks grand and determined as he faces a dragon.
+~
+2 0 1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39007
+dragon~
+A painted dragon~
+~
+It's huge body is posed in a stance striking at a knight.
+~
+2 0 -1000 S
+54 0 0 0d0+0 0d0+0
+4|32|128 0
+0 0 1
+
+#39008
+Dust dweller~
+a dust dweller~
+A dust dweller swims through the sand.
+~
+It looks a bit dusty.
+~
+2 65536 0 S
+50 0 0 0d0+0 0d0+0
+64 0
+0 0 1
+
+#39009
+unicorn~
+a unicorn~
+A unicorn is standing here gazing peacefully at you.
+~
+White, horn on the head, yep, it's a unicorn all right.
+~
+2|4096|32768 4|8|32|8388608|1073741824 1000 S
+99 0 0 0d0+0 0d0+0
+4|32 0
+0 0 2
+
+#39010
+burning wall~
+a burning wall~
+A wall engulfed in flames.
+~
+You know what a wall looks like? Ok then, this one looks like that
+but it's on fire too.
+~
+2 2048 0 S
+52 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|128|256 0
+0 0 1
+
+#39011
+tiny mouse~
+a tiny mouse~
+A tiny mouse glares at you.
+~
+This tiny little mouse looks awfully violent.
+~
+2 0 -1000 S
+48 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   say Squeak. Time to die you fool. Squeak.
+   emote draws its sword.
+~
+|
+
+#39012
+electric eel~
+an electric eel~
+An {cel{bec{ctr{bic{x eel swims along here.
+~
+It's long, black, and electrifies itself occasionally.
+~
+2 0 0 S
+41 0 0 0d0+0 0d0+0
+4|8|32 0
+0 0 1
+>rand_prog 41~
+   mpecho BZZzzz.
+~
+|
+
+#39013
+hulking beast~
+a hulking beast~
+A hulking beast flees in terror.
+~
+This thing looks mean, deadly and is very very large.
+~
+2 0 0 S
+65 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+>all_greet_prog 100~
+   yell MOMMY!
+~
+|
+
+#39014
+Asverna's baby~
+Asverna's baby~
+{rAsverna's{x baby sits here swishing its tail.
+~
+Looks a lot like Asverna only alot smaller.
+~
+2 0 -1000 S
+50 0 0 0d0+0 0d0+0
+4|32|128 0
+0 0 2
+
+#39015
+Zyklor's baby~
+Zyklor's baby~
+{WZyklor's{x baby stands on its hind legs as it tries to eat the wall.
+~
+Zyklor minus a few, well alot, of years.
+~
+2 0 -1000 S
+40 0 0 0d0+0 0d0+0
+4|32|128 0
+0 0 1
+
+#39016
+warrior~
+a warrior~
+A warrior stands here.
+~
+Armor, sword, looks like he wants to kill you, the standard
+warrior look.
+~
+2 0 -1000 S
+55 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39017
+psionic~
+a psionic~
+{xA psionic watches you closely with {revil{x eyes.
+~
+She used to look safe but now she looks like one mean bitch!
+~
+2 0 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#39018
+brawler~
+a brawler~
+A brawler stands here cracking his knuckles.
+~
+Tall, muscled and looking for a fight.
+~
+2 0 -1000 S
+57 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39019
+Thief~
+a thief~
+A thief stands here rolling a coin across his knuckles.
+~
+Dressed all in black, he looks exactly how you think a thief
+would.
+~
+2 0 -1000 S
+61 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39020
+Shapeshifter~
+a shapeshifter~
+A shapeshifter is here changing forms.
+~
+Since it is changing forms on a regular basis, it is
+impossible to give an accurate description.
+~
+2 0 -987 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39021
+cleric~
+a cleric~
+A cleric softly chants.
+~
+All you can make out is that she's about 6 feet tall
+and wearing a green robe.
+~
+2 0 -1000 S
+54 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#39022
+mage~
+a mage~
+A mage spots you and suddenly the air is alive with magic.
+~
+Through the waves of power emanating off of him, you make out a
+slender figure in a simple robe.
+~
+2 2048|524288|16777216 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>fight_prog 40~
+   say I'll {rburn{x you to ashes!
+~
+>fight_prog 35~
+   say You DARE challenge me!
+~
+|
+
+#39023
+Ranger~
+a ranger~
+A ranger resides here.
+~
+You attempt to get more details on the ranger, but all your
+attention is drawn to the arrow he's pointing at you.
+~
+2 0 -1000 S
+42 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+   mpecho The ranger draws his bow and trains his arrow on you.
+~
+|
+
+#39024
+baby kraken~
+a baby kraken~
+A baby kraken tries to take a bite out of you.
+~
+Slightly bigger then 3 men standing on each others shoulders,
+this thing scares the crap out of you.
+~
+2|32 0 -1000 S
+63 0 0 0d0+0 0d0+0
+4|8|128 0
+0 0 2
+
+#39025
+Hesad's guard~
+Hesad's guard~
+One of Hesad's guards patrols here.
+~
+Dressed in minimal armor and weaponry, it is apparent these guards
+aren't used to combat. Most intruders must never make it this far.
+~
+0 0 -100 S
+65 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#39026
+red light~
+a red shaft of light~
+A {rred{x shaft of light beams across the room.
+~
+It's....{rred{x.
+~
+2 2048 -1000 S
+62 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 0
+
+#39027
+cyan light~
+a cyan shaft of light~
+A {ccyan{x shaft of light beams across the room.
+~
+It's....{ccyan{x.
+~
+2 2 -1000 S
+63 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 0
+
+#39028
+yellow light~
+a yellow shaft of light~
+A {yyellow{x shaft of light beams across the room.
+~
+It's....{yyellow{x.
+~
+2 16777216 -1000 S
+64 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 0
+
+#39029
+green light~
+a green shaft of light~
+A {ggreen{x shaft of light beams across the room.
+~
+It's....{ggreen{x.
+~
+2 8192 -1000 S
+65 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 0
+
+#39030
+blue light~
+a blue shaft of light~
+A {bblue{x shaft of light beams across the room.
+~
+It's....{bblue{x.
+~
+2 524288|1048756 -1000 S
+66 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 0
+
+#39031
+multicolored light~
+a multicolored shaft of light~
+a {ym{cu{rl{bt{gi{yc{co{rl{yo{cr{re{bd{x shaft of light beams across the room.
+~
+It's....{ym{cu{rl{bt{gi{yc{co{rl{yo{cr{re{bd{x.
+~
+2|32 128|256|2048|524288|16777216 -1000 S
+70 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 0
+
+#39032
+Hesad illusionist~
+Hesad the Grand Illusionist~
+Hesad stands before you, strangely tranquil.
+~
+He looks at you calmly for a man who must know he's about to
+be attacked.
+~
+2 16777216 -1000 S
+60 0 0 0d0+0 0d0+0
+64 0
+0 0 1
+>death_prog 100~
+   mpecho Hesad says '{GHAHAHA. You think you've won do you?{x'
+   mpecho The room shimmers for a moment...
+   mpecho {x   
+   mptransfer all 39070
+   mpgoto 39070
+   mpforce all look
+   mpecho Hesad says '{GYou fool! You've only bested my shade.{x'
+   mpecho Hesad says '{G Go on, take your best shot, HAHAHAHAHA!{x'
+~
+|
+
+#39033
+Hesad illusionist~
+Hesad the Grand Illusionist~
+The REAL Hesad stands before you now. And he looks angry.
+~
+This one doesn't have the calm stance of the illusion, but
+a dangerous look of anger in his eyes.
+~
+2 128|2048|8192|524288|16777216 -1000 S
+75 0 0 0d0+0 0d0+0
+64 0
+0 0 1
+>death_prog 100~
+   mpecho Hesad says '{GI can not...believe...it...{x'
+   mpecho Hesad opens some kind of gateway to escape, but you strike him down.
+   mpecho As Hesad falls, his gateway goes wild and sucks you and his corpse through.
+   mpecho {x
+   mptransfer all 39059
+   mpat 39059 mpforce all look
+~
+|
+
+#39034
+featureless humanoid~
+a featureless humanoid~
+A featureless humanoid stares ahead blankly.
+~
+These must be what you were actually fighting before you got
+to the river....weird.
+~
+0 0 -1000 S
+55 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+
+#39035
+Water splashing mob~
+water splasher~
+Mpechoes water splashing. wizinvis.
+~
+Splash.
+~
+2|65536 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 35~
+   mpecho You think you hear....{cwater{x splashing...from below..
+~
+|
+
+#39036
+crazy man~
+a crazy man~
+A crazy man stands here mumbling to himself.
+~
+He looks dirty, ragged and old.
+~
+2 0 0 S
+33 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>rand_prog 25~
+   mpasound "Mummblemummble, rubies rubies yes yes"
+~
+>all_greet_prog 100~
+   say {mRubies rubies, must have rubies. Pretty yessss.{x
+   say {mGive me ruby, secret I tell you, rubies mine.{x
+~
+>give_prog ruby eye~
+   say {mRUBY MINE! Minemineminemineminemine.{x
+   say {mYou give mine ruby, I tell you secret.{x
+   say {mAt dragon, you say "Hesad sent me." mineruby...{x
+   say {mYou do that, and you van...vanish! yes, you do.{x
+   mpjunk ruby
+~
+|
+
+#39038
+living shadow~
+a living shadow~
+~
+It's pitch black. You can barely see it.
+~
+2 0 0 S
+43 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 1
+#0
+
+#OBJECTS
+#39000
+executioner's axe~
+an executioner's axe~
+An executioner's axe is here waiting to possess its next user.~
+~
+5 1024|2048 1|8192
+~ ~ ~ 1~
+1 0 0
+E
+axe~
+It shimmers ever so slightly.
+~
+
+#39001
+ruby eye~
+a ruby eye~
+{x~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#39014
+ruby eye~
+a ruby eye~
+~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#39002
+tiny sword~
+a tiny sword~
+A tiny sword belonging to the tiny mouse is here.~
+~
+5 512 1|8192
+~ ~ ~ 3~
+1 0 0
+
+#39003
+really big sword~
+a really really big sword~
+A really really big sword has been dropped here.~
+~
+5 16777216 1|8192
+~ ~ ~ 3~
+250 0 0
+A
+2 -10
+A
+18 -20
+A
+19 10
+
+#39004
+slab steel~
+a slab of steel~
+A slab of steel has fallen here.~
+~
+9 33554432 1|8
+~ ~ ~ ~
+400 0 0
+A
+2 -15
+A
+18 -10
+A
+17 -200
+
+#39005
+Hesad corpse~
+Hesad's corpse~
+Hesad's corpse lies here.~
+~
+15 0 0
+900~ 0~ -1~ ~
+1000 0 0
+
+#39006
+Red bow~
+a red bow~
+A red bow rests here.~
+~
+5 1073741824 1|8192
+~ ~ ~ 7~
+1 0 0
+
+#39007
+Ruby quartz bow~
+a ruby quartz bow~
+A ruby quartz bow sits here.~
+~
+5 1073741824 1|8192
+~ ~ ~ 3~
+1 0 0
+A
+19 5
+A
+18 5
+
+#39008
+Mallet of trickery~
+the Mallet of Trickery~
+The Mallet of Trickery has been dropped here.~
+~
+5 1|128 1|8192
+~ ~ ~ 8~
+5 0 0
+A
+18 12
+A
+19 12
+A
+3 1
+A
+4 1
+
+#39009
+fireplace~
+a fireplace~
+A large fireplace is set into the wall.~
+~
+15 0 0
+900~ 0~ -1~ ~
+2000 0 0
+
+#39010
+boiling potion~
+a boiling potion~
+A boiling potion bubbles here.~
+~
+10 2097152 2 1 1 1|16384
+60~ sanctuary~ infravision~ ~
+1 0 0
+E
+Boiling potion~
+It boils and bubbles.
+~
+
+#39011
+arm bands trickery~
+arm bands of trickery~
+Arm bands of trickery are here.~
+~
+9 2|128|1024|4096 1|256
+~ ~ ~ ~
+1 0 0
+A
+13 115
+A
+18 -15
+A
+19 -15
+A
+17 -50
+A
+3 8
+
+#39012
+shield trickery~
+the shield of trickery~
+The shield of trickery is here.~
+~
+9 1|2|64|1024 1|512
+~ ~ ~ ~
+5 0 0
+A
+19 9
+A
+18 9
+
+#39013
+a huge bed~
+a huge bed~
+A huge bed is in the center of the room.~
+~
+12 0 0
+~ ~ ~ ~
+1000 0 0
+
+#39015
+painted sword~
+a painted sword~
+A plain painted sword rests here.~
+~
+5 0 1|8192
+~ ~ ~ 3~
+5 0 0
+A
+18 5
+A
+19 5
+
+#39016
+painted shield~
+a painted shield~
+A painted shield lies here.~
+~
+9 0 1|512
+~ ~ ~ ~
+10 0 0
+
+#39017
+painted breastplate~
+a painted breastplate~
+A painted but battered breastplate is here.~
+~
+9 0 1|8
+~ ~ ~ ~
+15 0 0
+
+#39018
+plain shield~
+a plain shield~
+A plain shield lies here.~
+~
+9 0 1|512
+~ ~ ~ ~
+10 0 0
+
+#39019
+plain sword~
+a plain sword~
+A plain sword is here.~
+~
+5 0 1|8192
+~ ~ ~ 3~
+5 0 0
+A
+18 3
+A
+19 3
+
+#0
+
+#ROOMS
+#39000
+The entrance to the hut~
+{x{y
+                     ___====-_  _-====___
+              __--^^^      //     \\     ^^^--_
+             _-^         // (    ) \\         ^-_
+            -           //  |\^^/|  \\           -
+          _/           //   ({r0{y::{r0{y)   \\            \_
+         /            ((     \\//     ))             \
+       -               \\    (oo)    //               -
+      -                 \\  / \/ \  //                 -
+     -                   \\/      \//                   -
+   / /|           /\      (        )      /\           |\ \
+   |/ | /\_/\_/\_/  \_/\  (   /\   )  /\_/  \_/\_/\_/\ | \|
+   `  |/  V  V  `    V  \_(| |  | |)_/  V    '  V  V  \|  '
+      `   `  `       `   / | |  | | \   '       '  '   '
+                       <(  | |  | |  )>
+                      <__\_| |  | |_\__>
+                      ^^^^ ^^^  ^^^ ^^^^^{x
+~
+0 4 3
+D 1
+~
+~
+0 -1 39001
+D 3
+~
+~
+0 -1 18551
+E
+dragon statue~
+This statue is of an enormous dragon made of {ygold{x with {rruby{x eyes.
+~
+S
+
+#39001
+Just inside the castle~
+You step past the large statue of the dragon and into the dwelling.
+~
+0 0 1
+D 2
+~
+door~
+10 -1 39003
+D 1
+~
+~
+0 -1 39002
+D 3
+~
+~
+0 -1 39000
+S
+
+#39002
+A {gforest{W?{x~
+As you step into this room you find yourself suddenly in the depths of
+...a forest?!
+~
+0 1 1
+D 2
+~
+~
+0 -1 39004
+D 3
+~
+~
+0 -1 39001
+E
+tree trees woods forest~
+As you look at the surrounding forest, you think you notice it...flicker...
+occasionally at the edges of your vision.
+~
+S
+
+#39003
+What's this?~
+In the center of this room is a sphere of tumbling light.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39001
+E
+light tumbling~
+The sphere hums softly and appears to be turning every which way
+very rapidly.
+~
+S
+
+#39004
+A {ydesert{x~
+You find yourself suddenly surrounded by sand dunes.
+~
+0 262144 10
+D 0
+~
+~
+0 -1 39002
+D 2
+~
+~
+0 -1 39006
+D 1
+~
+~
+0 -1 39005
+D 3
+~
+~
+0 -1 39007
+E
+dunes dune desert~
+The dunes seem to shimmer ever so slightly as you gaze upon them.
+~
+S
+
+#39005
+A {GGreenery{x~
+It's {Ggreen{x in here. Lots of plants. Lots and lots of plants.
+~
+0 8 0
+D 3
+~
+~
+0 -1 39004
+E
+plants green~
+A few of the plants look they're moving, but this place doesn't seem to shimmer
+the way the rest do.
+~
+S
+
+#39006
+Room of paintings~
+This room is covered in wall to wall, floor to ceiling, paintings.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39004
+D 2
+~
+~
+0 -1 39010
+D 1
+~
+~
+0 -1 39008
+D 3
+~
+~
+0 -1 39009
+E
+paintings pictures wall floor ceiling~
+There are pictures of knights and dragons in these pictures. A couple of them
+seem to move as you look upon them.
+~
+S
+
+#39007
+Darkness~
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 39004
+E
+dark darkness black blackness~
+Everywhere you see darkness. Occasionaly, out of the corner of your eye, you see
+ripples of shadow.
+~
+S
+
+#39008
+Disconnected~
+{cConnected to host www.dragons-domain.org{w
+
+O---=<  Dragons Domain IV   >=---------------- __----^^^^^^^^^^^------__ ---O
+|          .              .         _//^    ^//====......          __--^^^  |
+|    )              -_       _..--+^o`\     ||_   ^^^^^^::::... /^    .     |
+| .              ___-==_     `--=;_`_  \   ||  -_             _/^^-         |
+|   ]=I==II==I=[^.==^|-_=_     ^-^ _/^ |-   _||   -_        _/]I-I-II-I-I[  |
+|   _((__||__))=^    |  -_-_       /  /-   / ||     -_     /   \_`   '__/   |
+|  =  |     +|       |    -_-_    /  /-   /   ||      -_  /     |     -|    |
+| /  _|__   #|       |      - ^-_/  /|- _/   .||        -/      |   '  |    |
+| |^^ |     +|^^^^--_|_     ^==-/   | \--===^^        ./        |-_ [],|  . |
+|     |- . '*|       ^|       /|    |-^\^       __--^^   .     _|______|_   |
+|     |     +|   +    |^^^^-_/ |  ]--I-[-]-I--[   .         /\<=-=-==-=-=>  |
+|  ___| _ '_*|___         __/ _-_ (-(-|---|-)-)              \ \__   _'_/   |
+|  I_I|_I__I_|I_I _   _  ((->/_   _|        ||            .   ^^|`    ||    |
+|  \-\--|--|--/-/' `-' `-' `-' `-' | []     #|------_-_-_-_-_-_-|_'   #|    |
+|   |     '     |=-=-=-=-=-=-=-=-=-|      []*|-----________- -`-- ]   *|    |
+|  .|  ` ` []   |    | | | | |     |-       #|      ,    ' ------['  _#|    |
+|.: | '  `  '   | [] | | | | |  []`|  []    *|   `    []    . `  |'  I*|.: .|
+|   /_'_v_.___  |.__,|_|_|_|_|     |   `  , *|          _.___,__/v_.._.|  ' |
+|   .        __----    _---^^^^^--/_._v_Y_,_v))-----^^^^       .        '   |
+|     :   ---          --        `                       `          `       |
+O---<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
+| DikuMud created by H.Starfeldt, K.Nyboe, T.Madsen, M.Seifert, & S.Hammer. |
+| Based on the original Merc 2.2 source written by Kahn, Hatchet and Furey. |
+| DD III code by Shade, Gezhp, Owl, Brutus, Jyhad, Tavolir, and Danath.     |
+| DD IV code by Shade, Owl, Gezhp and the rest of the team.                 |
+| DD IV hosted by Minimum Effort Limited see http://www.webhideout.com      |
+O-----< MobCode from Merc 2.2 >-----< Quest Code (c) 1996 Ryan Addams >-----O
+Enter thy Name:
+~
+0 8 0
+D 3
+~
+~
+0 -1 39006
+E
+joke disconnect disc dragon castle wall room writing~
+Scare you just a bit? :P
+~
+S
+
+#39009
+A dusty room~
+This room is covered in dust. Too much dust. You can tell immediately that
+it's not a natural accumulation. It's almost as thick as sand at a beach.
+~
+0 0 5
+D 1
+~
+~
+0 -1 39006
+E
+sand dirt dust~
+The dust is everywhere and there are...trails through it as if something
+often passes over it.
+~
+S
+
+#39010
+Backwards~
+.sdrawkcab smees moor ehT
+~
+0 0 0
+D 0
+~
+~
+0 -1 39006
+D 2
+~
+~
+12 -1 39071
+D 1
+~
+~
+0 -1 39011
+D 3
+~
+~
+0 -1 39012
+E
+room wall floor ceiling door~
+.sdrawkcaB .sdrawkcaB yllatoT
+~
+S
+
+#39011
+Forwards~
+Thisroomisablurofspacethatrushesalong.
+~
+0 65536 0
+D 1
+~
+~
+0 -1 39010
+D 3
+~
+~
+0 -1 39015
+E
+wall room floor ceiling door~
+Theroomblursalongandyoucan'tmakeoutanything.
+~
+S
+
+#39012
+Unicorn~
+A unicorn is here. Don't try to catch or even touch it.
+~
+0 0 2
+D 1
+~
+~
+0 -1 39013
+D 3
+~
+~
+0 -1 39010
+S
+
+#39013
+{RFire{x~
+This room is engulfed in {rflames{x. The heat instantly starts to {rburn{x
+you.
+~
+0 8|262144 0
+D 2
+~
+~
+0 -1 39014
+D 3
+~
+~
+0 -1 39012
+E
+fire flame heat flames~
+The flame's flicker and dance around the room and occassionly seem to..fade
+slightly.
+~
+S
+
+#39014
+Fight!~
+There's a tiny creature that resembles a small mouse walking on 2
+legs here. It spots you, draws its tiny sword, and informs you
+to kiss your ass good bye.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39013
+D 2
+~
+~
+0 -1 39018
+S
+
+#39015
+{BWater{x~
+Suddenly, you find yourself {bunderwater{x!
+~
+0 8 8
+D 2
+~
+~
+0 -1 39016
+D 1
+~
+~
+0 -1 39011
+E
+water~
+It looks wet.
+~
+S
+
+#39016
+Run!~
+The {ybiggest{x monster you've ever seen is here. It looks as if it could
+{rkill{x a 100 men with a single swipe of it's {gmassive{x claws, it seems
+as if it could {mtear{x you apart in the blink of an eye, it....sees you and
+screams like a little girl as it trys to flee.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39015
+D 2
+~
+~
+0 -1 39017
+S
+
+#39017
+Asverna's baby~
+How can this be?! You don't know. How do you know? You don't know that
+either. But the fact remains that Asverna's baby is lying here and you do
+in fact know it's hers.
+~
+0 0 1
+D 0
+~
+~
+0 -1 39016
+D 2
+~
+~
+0 -1 39019
+S
+
+#39018
+Zyklor's baby~
+Holy....what.......Zyklor's baby?!?!
+~
+0 0 1
+D 0
+~
+~
+0 -1 39014
+D 2
+~
+~
+0 -1 39034
+S
+
+#39019
+{x{MWarrior{x~
+One moment you step into an empty room, then the next there's a warrior
+in full armor standing there. He does not look happy to see you.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39017
+D 2
+~
+~
+0 -1 39020
+D 1
+~
+~
+0 -1 39021
+S
+
+#39020
+Warrior's room~
+This room is full of armor, swords and other pieces of equipment and
+treasure your average warrior would own.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39019
+E
+sword armor equipment treasure~
+As you study the objects in this room, you notice they all have a dull
+look to them. You try to touch some of the things, but your hand..passes
+right through!
+~
+S
+
+#39021
+{WPsionic{x~
+Yes, there's a psionic here. No, she can't disint. Yes, I know you don't
+believe that. No, I don't care. ;)
+~
+0 8 1
+D 2
+~
+~
+0 -1 39022
+D 1
+~
+~
+0 -1 39023
+D 3
+~
+~
+0 -1 39019
+E
+psionic room disint disintergrate woman~
+You have been DISINTERGRATED!
+
+Or not.
+Yet.
+~
+S
+
+#39022
+{WPsionic's{W room{x~
+There's psionicy stuff here.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39021
+E
+stuff~
+It looks psionicy. Trust me, it's a word.
+~
+S
+
+#39023
+{CBrawler{x~
+A brawler takes a swing at you as you enter.
+~
+0 8 1
+D 2
+~
+~
+0 -1 39024
+D 1
+~
+~
+0 -1 39025
+D 3
+~
+~
+0 -1 39021
+E
+room~
+Brass knuckles, 2X4's and various other crude instruments of pain lay
+about.
+~
+S
+
+#39024
+Brawler's room~
+A simple bed, a sack full of fur hung from a rope tied to a rafter and you
+is all this room contains.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39023
+E
+bed fur sack rope rafter~
+It looks real but not.
+~
+S
+
+#39025
+{BThief{x~
+There's a thief practicing backstabbing here.
+~
+0 8 1
+D 2
+~
+~
+0 -1 39026
+D 1
+~
+~
+0 -1 39027
+D 3
+~
+~
+0 -1 39023
+S
+
+#39026
+Thief's room~
+Gold! Lots of gold! You're rich!
+~
+0 8 1
+D 0
+~
+~
+0 -1 39025
+E
+gold~
+It's {yyellow{x and....wavy?! As you look at it it seems
+to ripple. When you go to scoop some up, it just vanishes!
+DAMN!
+~
+S
+
+#39027
+What's this!~
+A tumbling ball of light spins at high speeds here.
+~
+0 4|8 1
+D 1
+~
+~
+0 -1 39028
+D 3
+~
+~
+0 -1 39025
+D 5
+~
+~
+12 -1 39036
+E
+light ball~
+It spins so fast it blurs in your vision.
+~
+S
+
+#39028
+{RShapeshifter{x~
+You guessed it, there's a shapeshifter here.
+~
+0 8 1
+D 2
+~
+~
+0 -1 39029
+D 1
+~
+~
+0 -1 39030
+D 3
+~
+~
+0 -1 39027
+S
+
+#39029
+Shapeshifter's room~
+This room is empty.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39028
+S
+
+#39030
+{GCleric{x~
+A cleric wanders around the room.
+~
+0 8 1
+D 2
+~
+~
+0 -1 39031
+D 1
+~
+~
+0 -1 39032
+D 3
+~
+~
+0 -1 39028
+S
+
+#39031
+Cleric's Room~
+A holy symbol a simple robe and a small bed occupy this room.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39030
+E
+holy symbol bed robe~
+It..blinks..every once in awhile.
+~
+S
+
+#39032
+{YMage{x~
+Ohoh. You've stumbled upon a mages room....
+~
+0 8 1
+D 2
+~
+~
+0 -1 39033
+D 1
+~
+~
+0 -1 39034
+D 3
+~
+~
+0 -1 39030
+E
+room~
+"Go. Away. Now." is written on the wall.
+~
+S
+
+#39033
+Mage's room~
+All kinds of wonderous and mystifying objects lay around, but
+every time you reach for one you forget what you're doing or
+your hand just stops..
+~
+0 8 1
+D 0
+~
+~
+0 -1 39032
+E
+stuff items objects things~
+It all turns smokey for an instant as you watch it.
+~
+S
+
+#39034
+{wRanger{x~
+A ranger is here waiting for you.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39018
+D 2
+~
+~
+0 -1 39035
+D 3
+~
+~
+0 -1 39032
+S
+
+#39035
+Ranger's room~
+Bows and arrows lay scattered about.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39034
+S
+
+#39036
+An {bunderwater {clake{x~
+You jump down and suddenly find yourself wet. And it's {cC{bO{cL{bD{x.
+Hope you can swim.
+~
+0 131072 7
+D 2
+~
+~
+0 -1 39037
+D 4
+~
+~
+0 -1 39027
+E
+water lake~
+It looks cold and wet and...well, real. No flickering, blinking,
+shimmering etc etc.
+~
+S
+
+#39037
+The lake continues~
+The lake continues on for a short distance. You can make out the
+end ahead you think though.
+~
+0 131072 7
+D 0
+~
+~
+0 -1 39036
+D 2
+~
+~
+0 -1 39038
+E
+water lake~
+It still looks cold, wet and real.
+~
+S
+
+#39038
+End of the lake~
+As you come to the edge of the lake, you see a...hallway up ahead.
+~
+0 4|131072 7
+D 0
+~
+~
+0 -1 39037
+D 2
+~
+~
+0 -1 39039
+E
+water lake~
+Cold.Wet.Real.FREEZING.
+~
+S
+
+#39039
+A...hallway??~
+You step out of the lake and onto solid ground. In front of you is
+in fact an entrance to a hallway.
+~
+0 4|8 1
+D 0
+~
+~
+0 -1 39038
+D 2
+~
+~
+0 -1 39040
+S
+
+#39040
+A grand hallway~
+This hallway seems as if it belongs in a grand palace. The walls seem
+to be layered in thin gold and it just looks amazing.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39039
+D 2
+~
+~
+0 -1 39041
+D 1
+~
+~
+0 -1 39047
+D 3
+~
+~
+0 -1 39042
+S
+
+#39041
+A bend~
+The hallway bends here toward the west.
+~
+0 8 1
+D 0
+~
+~
+0 -1 39040
+D 3
+~
+~
+0 -1 39043
+S
+
+#39042
+A nice room~
+This room matches the hallway in elegance. The bed in the center of
+the room looks fit for a king.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39043
+D 1
+~
+~
+0 -1 39040
+D 3
+~
+~
+0 -1 39045
+S
+
+#39043
+More hallway~
+The hallway advances on toward the west.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39042
+D 1
+~
+~
+0 -1 39041
+D 3
+~
+~
+0 -1 39044
+S
+
+#39044
+Even more hallway~
+The hallway seems to be leading to a staircase.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39045
+D 1
+~
+~
+0 -1 39043
+D 3
+~
+~
+0 -1 39046
+S
+
+#39045
+A bad room~
+In contrast to the room to the east, this room is nothing but
+ordinary, if that. A simple table and a pallet of straw is all
+there is.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39044
+D 1
+~
+~
+0 -1 39042
+S
+
+#39046
+A grand staircase~
+A beautiful staircase winds its way up here.
+~
+0 8 0
+D 1
+~
+~
+0 -1 39044
+D 4
+~
+~
+0 -1 39053
+S
+
+#39047
+A {rred {Wroom{x~
+This room is bathed in {rred{x light.
+~
+0 4|262144 10
+D 1
+~
+~
+0 -1 39048
+D 3
+~
+~
+0 -1 39040
+E
+red light~
+The light seems to come from nowhere and everywhere.
+~
+S
+
+#39048
+The {ccyan {Wroom{x~
+This room is bathed in {ccyan{x light.
+~
+0 65536 6
+D 0
+~
+~
+0 -1 39049
+D 3
+~
+~
+0 -1 39047
+E
+cyan light~
+The light seems to come from nowhere and everywhere.
+~
+S
+
+#39049
+The {yyellow{W room{x~
+This room is bathed in {yyellow{x light.
+~
+0 0 2
+D 0
+~
+~
+0 -1 39050
+D 2
+~
+~
+0 -1 39048
+E
+yellow light~
+The light seems to come from nowhere and everywhere.
+~
+S
+
+#39050
+The {ggreen{W room{x~
+This room is bathed in {ggreen{x light.
+~
+0 0 3
+D 0
+~
+~
+0 -1 39051
+D 2
+~
+~
+0 -1 39049
+E
+green light~
+The light seems to come from nowhere and everywhere.
+~
+S
+
+#39051
+The {bblue{W room{x~
+This room is bathed in {bblue{x light.
+~
+0 0 8
+D 0
+~
+~
+0 -1 39052
+D 2
+~
+~
+0 -1 39050
+E
+red light~
+The light seems to come from nowhere and everywhere.
+~
+S
+
+#39052
+A {ym{cu{rl{bt{gi{yc{co{rl{yo{cr{re{bd{W light{x~
+This room is bathed in {ym{cu{rl{bt{gi{yc{co{rl{yo{cr{re{bd{x light.
+~
+0 4|8192|16384|65536|262144 0
+D 2
+~
+~
+0 -1 39051
+E
+multicolored light~
+The light seems to come from nowhere and everywhere.
+~
+S
+
+#39053
+A library~
+You exit the stairs and find yourself in the middle of a quiet library.
+~
+0 4|8 0
+D 0
+~
+~
+0 -1 39054
+D 3
+~
+~
+0 -1 39055
+D 5
+~
+~
+0 -1 39046
+E
+library books~
+Books that look as old as time and as new as the day line the walls.
+~
+S
+
+#39054
+An entertainment room~
+It seems this is where the entertainment is kept. Various musical
+instruments, games and other such things are here.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39053
+D 3
+~
+~
+0 -1 39056
+E
+musical instrument instruments games~
+They look very well kept.
+~
+S
+
+#39055
+A study~
+This room contains an elaborate desk a comfortable chair and small
+bookcase next to a fireplace.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39056
+D 2
+~
+~
+0 -1 39058
+D 1
+~
+~
+0 -1 39053
+E
+fireplace~
+It has a steady burning flame inside, but you see nothing burning to
+produce it.
+~
+S
+
+#39056
+A simple door~
+You come open a closed simple door leading north.
+~
+0 8 0
+D 0
+~
+~
+1 -1 39057
+D 2
+~
+~
+0 -1 39055
+D 1
+~
+~
+0 -1 39054
+E
+door~
+It looks simple.
+~
+S
+
+#39057
+Hesad's room~
+Items that you can't understand and items you wish you didn't line
+the shelves of this room. A worktable is against one wall and a
+large mirror is against the other.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39056
+S
+
+#39058
+An empty room~
+This room is bare except for an odd pattern in the middle of the floor.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39055
+E
+pattern~
+It looks almost like other patterns you've seen elsewhere.
+~
+S
+
+#39059
+What's this! Different...~
+You seem to be in the room above the lake that contains the glowing
+ball but..now, it's no longer glowing or spinning. It's just hanging
+in the air dim and motionless.
+~
+0 8 0
+D 1
+~
+~
+0 -1 39061
+D 3
+~
+~
+0 -1 39060
+E
+ball light~
+It's not tumbling or moving anymore.
+~
+S
+
+#39060
+A featureless room 1~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39062
+D 1
+~
+~
+0 -1 39059
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39061
+A featureless room 2~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39063
+D 3
+~
+~
+0 -1 39059
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39062
+A featureless room 3~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39060
+D 1
+~
+~
+0 -1 39064
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39063
+A featureless room 4~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39061
+D 3
+~
+~
+0 -1 39064
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39064
+A featureless room 5~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39065
+D 1
+~
+~
+0 -1 39063
+D 3
+~
+~
+0 -1 39062
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39065
+A featureless room 6~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39066
+D 2
+~
+~
+0 -1 39064
+D 1
+~
+~
+0 -1 39069
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39066
+A featureless room 7~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39065
+D 3
+~
+~
+0 -1 39067
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39067
+A featureless room 8~
+The rooms you passed through before seemed to have turned to..this.
+A featureless squareish room of stone. In fact, some of the rooms
+seemed to have just vanished altogether.
+~
+0 8 0
+D 2
+~
+~
+0 -1 39068
+D 1
+~
+~
+0 -1 39066
+D 3
+~
+~
+0 -1 39000
+E
+wall room~
+It's simple plain stone. Not a trace of anything else.
+~
+S
+
+#39068
+What's this.. changed~
+The ball in this room has stilled also. It appears they must have been
+the focal points of the magic used for the illusions you passed through
+and faced earlier.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39067
+E
+ball light~
+It's dark and unmoving.
+~
+S
+
+#39069
+Greenery~
+death.
+~
+0 8 0
+D 3
+~
+~
+0 -1 39065
+E
+plants green room~
+The plants are still here and they still seem to be moving.
+~
+S
+
+#39070
+Hesad's room~
+Items that you can't understand and items you wish you didn't line
+the shelves of this room. A worktable is against one wall and a
+large mirror is against the other.
+~
+0 8 0
+S
+
+#39071
+Crazy Man~
+You stumble upon a man who seems to have lost his mind
+in this wicked place.
+~
+0 8 0
+D 0
+~
+~
+0 -1 39010
+S
+#0
+
+#RESETS
+D 0 39001 2 1                   close south in Just inside the castle
+D 0 39056 0 1                   close north in A simple door
+M 0 39000 1 39001               add the executioner to Just inside the castle
+E 0 39000 0 16                      equip an executioner's axe (wield)
+M 0 39001 1 39000               add The teleporter number 1 mob to The entrance to the hut
+M 0 39002 2 39002               add a dryad to A {gforest{W?{x
+M 0 39003 1 39001               add a dying man to Just inside the castle
+M 0 39004 1 39004               add a sand worm to A {ydesert{x
+M 0 39005 2 39005               add a green plant to A {GGreenery{x
+M 0 39005 2 39069               add a green plant to Greenery
+M 0 39006 1 39006               add a painted knight to Room of paintings
+E 0 39015 0 16			    equip a painted sword
+E 0 39016 0 11			    equip a painted shield
+E 0 39017 0 5			    equip a painted breastplate
+M 0 39007 1 39006               add a painted dragon to Room of paintings
+M 0 39008 1 39009               add a dust dweller to A dusty room
+M 0 39009 1 39012               add a unicorn to Unicorn
+M 0 39010 1 39013               add a burning wall to {RFire{x
+M 0 39011 1 39014               add a tiny mouse to Fight!
+E 0 39002 0 16                      equip a tiny sword (wield)
+M 0 39012 1 39015               add an electric eel to {BWater{x
+M 0 39013 1 39016               add a hulking beast to Run!
+M 0 39014 1 39017               add Asverna's baby to Asverna's baby
+M 0 39015 1 39018               add Zyklor's baby to Zyklor's baby
+M 0 39016 1 39019               add a warrior to {x{MWarrior{x
+E 0 39004 0 5                       equip a slab of steel (body)
+E 0 39003 0 16                      equip a really really big sword (wield)
+M 0 39017 1 39021               add a psionic to {WPsionic{x
+M 0 39018 1 39023               add a brawler to {CBrawler{x
+M 0 39019 1 39025               add a thief to {BThief{x
+M 0 39020 1 39028               add a shapeshifter to {RShapeshifter{x
+M 0 39021 1 39030               add a cleric to {GCleric{x
+M 0 39022 1 39032               add a mage to {YMage{x
+M 0 39023 1 39034               add a ranger to {wRanger{x
+E 0 39006 0 21                      equip a red bow (ranged)
+M 0 39024 1 39037               add a baby kraken to The lake continues
+M 0 39025 6 39039               add Hesad's guard to A...hallway??
+E 0 39019 0 16			    equip a painted sword
+E 0 39018 0 11			    equip a painted shield
+M 0 39025 6 39040               add Hesad's guard to A grand hallway
+E 0 39019 0 16			    equip a painted sword
+E 0 39018 0 11			    equip a painted shield
+M 0 39025 6 39041               add Hesad's guard to A bend
+E 0 39019 0 16			    equip a painted sword
+E 0 39018 0 11			    equip a painted shield
+M 0 39025 6 39042               add Hesad's guard to A nice room
+E 0 39019 0 16			    equip a painted sword
+E 0 39018 0 11			    equip a painted shield
+M 0 39025 6 39043               add Hesad's guard to More hallway
+E 0 39019 0 16			    equip a painted sword
+E 0 39018 0 11			    equip a painted shield
+M 0 39025 6 39044               add Hesad's guard to Even more hallway
+E 0 39019 0 16			    equip a painted sword
+E 0 39018 0 11			    equip a painted shield
+M 0 39026 1 39047               add a red shaft of light to A {rred {Wroom{x
+M 0 39027 1 39048               add a cyan shaft of light to The {ccyan {Wroom{x
+M 0 39028 1 39049               add a yellow shaft of light to The {yyellow{W room{x
+M 0 39029 1 39050               add a green shaft of light to The {ggreen{W room{x
+M 0 39030 1 39051               add a blue shaft of light to The {bblue{W room{x
+M 0 39031 1 39052               add a multicolored shaft of light to A {ym{cu{rl{bt{gi{yc{co{rl{yo{cr{re{bd{W light{x
+G 0 39011 0                         carry arm bands of trickery
+M 0 39032 1 39057               add Hesad the Grand Illusionist to Hesad's room
+M 0 39033 1 39070               add Hesad the Grand Illusionist to Hesad's room
+O 0 39005 1 39059               Hesad's corpse to What's this! Different...
+P 0 39008 0 39005               put the Mallet of Trickery inside Hesad's corpse
+P 0 39012 0 39005               put the shield of trickery inside Hesad's corpse
+I 39009 70 39055 1              a fireplace to A study
+P 0 39010 0 39009               put a boiling potion in a fireplace
+M 0 39034 8 39060               add a featureless humanoid to A featureless room 1
+M 0 39034 8 39061               add a featureless humanoid to A featureless room 2
+M 0 39034 8 39062               add a featureless humanoid to A featureless room 3
+M 0 39034 8 39063               add a featureless humanoid to A featureless room 4
+M 0 39034 8 39064               add a featureless humanoid to A featureless room 5
+M 0 39034 8 39065               add a featureless humanoid to A featureless room 6
+M 0 39034 8 39066               add a featureless humanoid to A featureless room 7
+M 0 39034 8 39067               add a featureless humanoid to A featureless room 8
+M 0 39035 1 39027               add water splasher to What's this!
+M 0 39036 1 39071               add a crazy man to Crazy Man
+M 0 39038 2 39007               add a living shadow to Darkness
+I 39001 1 39000 1               a ruby eye to The entrance to the hut
+I 39014 1 39000 1               a ruby eye to The entrance to the hut
+I 39007 40 39035 1              a ruby quartz bow to Ranger's room
+I 39013 1 39042 1               a huge bed to A nice room
+S
+
+#SPECIALS
+M 39009 spec_cast_druid         a unicorn
+M 39002 spec_cast_druid		dryads
+M 39014 spec_breath_gas         Asverna's baby
+M 39007 spec_breath_lightning	a painted dragon
+M 39015 spec_poison             Zyklor's baby
+M 39016 spec_warrior            a warrior
+M 39017 spec_cast_psionicist    a psionic
+M 39018 spec_kungfu_poison      a brawler
+M 39019 spec_assassin           a thief
+M 39020 spec_breath_any         a shapeshifter
+M 39021 spec_cast_priestess     a cleric
+M 39022 spec_cast_archmage      a mage
+M 39023 spec_vampire            a ranger
+M 39024 spec_sahuagin		a kraken
+M 39026 spec_breath_fire        a red shaft of light
+M 39028 spec_breath_lightning	a yellow shaft of light
+M 39029 spec_breath_acid	a green shaft of light
+M 39030 spec_breath_frost	a blue shaft of light
+M 39031 spec_breath_any         a multicolored shaft of light
+M 39032 spec_cast_cleric        Hesad the Grand Illusionist
+M 39033 spec_cast_priestess     Hesad the Grand Illusionist
+S
+
+#$

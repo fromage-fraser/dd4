@@ -1,0 +1,1210 @@
+#AREA	Brant~ Dwarven Homestead~
+1 55 0 100
+
+#MOBILES
+#20500
+dwarf child~
+the dwarven child~
+A small dwarf eyes you with curiosity.
+~
+The dwarven child looks at you with baby blue eyes, and trails his eyes down  
+your body in awe of your equipment.
+~
+2|4|64|524288 8|8192 750 S
+1 0 0 2d6+10 1d4+0
+0 0
+8 8 1
+#20501
+dwarf teen~
+the dwarven teen~
+A dwarven teen eyes you warily.
+~
+The dwarf is only a teen, yet he looks at you with an air of snobbiness, as 
+though he thinks that he is better than you.
+~
+2|64|524288 8|512|8192 500 S
+5 0 0 2d6+75 1d6+20
+0 0
+8 8 1
+#20502
+dwarf blonde~
+the blonde dwarf~
+A blonde dwarf stands here.
+~
+The dwarf has very long, dirty blonde hair.  He stares at you with wary eyes,  
+watching your every move.
+~
+2|64|524288 8|512|8192 500 S
+8 10 0 2d7+96 1d7+10
+0 0
+8 8 1
+#20503
+dwarf caretaker~
+a dwarven caretaker~
+The caretaker of the children eyes you with suspicion.
+~
+The dwarf has been watching these young dwarves for many a moon.  There are 
+scars on her arms from when the children have played too roughly.
+~
+2|64|524288 8|512|8192|268435456 500 S
+10 15 0 2d7+130 2d4+2
+0 0
+8 8 2
+#20504
+dwarf nobleman~
+the dwarven nobleman~
+A dwarven nobleman watches you.
+~
+This dwarf is wearing a nice suit, looking his best for the party.
+~
+2|64|524288 8|512|8192 0 S
+13 15 0 2d10+170 2d5+5
+0 0
+8 8 1
+#20505
+dwarf servant~
+the dwarven servant~
+A dwarven servant is gathering the food which is to be served at the party.
+~
+The servant looks tired and overworked as he carries tray after tray from the  
+kitchen to be served to the guests of the grand party.
+~
+2|64|1024|524288 8|512|8192|268435456 750 S
+17 0 0 3d9+258 3d4+5
+0 0
+8 8 1
+#20506
+dwarf thief~
+a dwarven thief~
+A dwarf steps from the shadows and attacks!
+~
+The thief somehow slipped through the house guards and managed to get into the  
+keeping room, where all valuables are kept.
+~
+2|32|64|262144 8|512|32768|65536 500 S
+20 10 0 3d9+335 2d8+5
+0 0
+8 8 1
+#20507
+dwarf host~
+the host~
+The host of the party grins at you.
+~
+The host of the party grins at you, for he knows that he is becoming more 
+popular as he holds parties such as these.
+~
+2|64|524288 8|512|8192 300 S
+23 0 0 5d10+450 4d6+10
+0 0
+8 8 1
+#20508
+dwarf singer~
+a dwarven singer~
+A dwarf sings you a ballad.
+~
+The dwarf looks at you with wonderous eyes and begins to sing an enchanting  
+tune.
+~
+2|64|524288 8|512|8192 750 S
+25 0 0 5d10+600 2d10+7
+0 0
+8 8 1
+#20509
+dwarven bard~
+the bard~
+A bard playes her lute and sings a wondrous tune.
+~
+The bard is playing her little lute, and singing a tune about a young,
+brave adventurer and his many great adventures in the Fortress of Goblins.
+~
+2|64|512|524288 8|8192 700 S
+28 0 0 6d12+778 2d12+8
+0 0
+8 8 2
+& 35 'teacher base'
+& 95 'musicianship'
+#20510
+dwarf musician~
+the dwarven musician~
+A dwarven musician is playing a happy piece.
+~
+The dwarven musician is using some sort of string instrument, and is playing  
+a merry piece.
+~
+2|64|524288 8|512|8192 500 S
+33 0 0 10d10+1200 6d4+10
+0 0
+8 8 1
+#20511
+dwarf dwarven dancer~
+the dwarven dancer~
+A dancer is here, dancing a lively jig.
+~
+The dancer moves with the grace of a butterfly, and dances over to you where  
+she says 'Would you care to dance?'
+~
+2|64|524288 8|512|8192 300 S
+36 0 0 10d10+1500 3d10+11
+0 0
+8 8 2
+#20512
+dwarf chess player~
+the dwarf~
+A dwarf is here setting up a chessboard.
+~
+The dwarf looks quite intelligent, and he looks at you with keen, intelligent  
+eyes.  He is holding a bishop for the chessboard which he is setting up.
+~
+2|64|524288 8|512|8192 -750 S
+40 0 0 25d10+2000 4d8+13
+0 0
+8 8 1
+#20513
+dwarf handball player~
+the player~
+A dwarf is playing handball against the wall.
+~
+The dwarf is hitting a small blue ball against the far wall in a game of  
+handball.
+~
+2|64|524288 8|512|8192 0 S
+43 0 0 25d10+2750 3d12+15
+0 0
+8 8 1
+#20514
+dwarf puzzle~
+the dwarf~
+A dwarf sits here, putting a puzzle together.
+~
+This dwarf has a very serious, concentrated look in his eyes as he tries to  
+put together the pieces of this puzzle.
+~
+2|64|524288 8|512|8192 -1000 S
+46 0 0 25d10+3500 6d6+16
+0 0
+8 8 1
+#20515
+dwarf gambler~
+the dwarven gambler~
+A dwarf is standing here, gambling all of his money away.
+~
+The dwarf is standing before a game table, and he has a pile of chips in front 
+of him.  Everybody around the table has more chips than he does, and he 
+doesn't seem to be very happy about losing so much money.
+~
+2|64|524288 8|512|8192 -750 S
+49 0 0 50d10+4500 4d10+18
+0 0
+8 8 1
+#20516
+dwarf dwarven mistress~
+the mistress~
+The mistress of the house is standing here.
+~
+The mistress of the house is the person who runs most of the household 
+functions, including the parties and the gaming.  She is a large dwarf, with 
+long brown hair and a large stomach.
+~
+2|64|524288 8|512|8192 -1000 S
+53 0 0 50d10+6500 6d7+21
+0 0
+8 8 2
+#20517
+dwarf dwarven master~
+the master of the house~
+The master of the house stands here, watching over his home.
+~
+The master of the house leaves most of the work up to the mistress, he only  
+watches over the house to makes sure that everything is ok.  He is a very 
+large, muscular dwarf, with graying black hair and a long grey beard.
+~
+2|64|524288 8|512|8192 0 S
+55 0 0 50d10+7500 10d4+23
+0 0
+8 8 1
+#20518
+dwarf guest~
+a guest~
+A guest of the house is here.
+~
+The guest is wandering about the house, looking for anything interesting to  
+do.
+~
+64|524288 1048576 0 S
+20 0 0 4d10+360 4d4+5
+0 0
+8 8 0
+#20519
+dwarf maid~
+the maid~
+A maid cleans here.
+~
+The maid is cleaning every part of the house, if the entire house isn't 
+perfect, the master of the house will not be happy.
+~
+64|524288 1048576 100 S
+45 3 0 25d10+3250 8d4+16
+0 0
+8 8 2
+#0
+
+
+#OBJECTS
+#20500
+toy~
+a large toy~
+A large toy has been left here.~
+~
+5 2|16777216 1|8192
+0~ 1~ 10~ 0~ 
+100 25 0
+#20501
+dark spear~
+the Spear of Darkness~
+A Spear of Darkness lies here waiting or you to pick it up.~
+~
+5 2|16|512|4096|16777216|134217728 1|8192
+0~ 5~ 10~ 0~ 
+50 200 0
+#20502
+iq vine~
+an I.Q. Vine~
+An I.Q. Vine has been left here.~
+~
+9 1|2|16777216 1|16
+2~ 2~ 2~ 2~ 
+25 100 0
+A
+3 2
+A
+4 3
+#20503
+club mace~
+a large mace~
+A large mace has been dropped here.~
+~
+5 2|16777216 1|8192
+0~ 2~ 9~ 0~ 
+100 70 0
+#20504
+jagged little pill~
+a jagged little pill~
+A jagged little pille lies here.~
+~
+26 128 1
+10~ refresh~ pass door~ cure light~ 
+2 50 0
+#20505
+mace~
+a mace~
+A mace has been left here.~
+~
+5 65536|1048576|16777216 1|8192
+0~ 3~ 9~ 0~ 
+75 100 0
+#20506
+cane~
+a cane~
+A finely crafted cane rests against the wall.~
+~
+5 2 1|8192
+0~ 3~ 9~ 0~ 
+50 150 0
+A
+1 2
+#20507
+serving tray~
+a serving tray~
+A serving tray has been set down here.~
+~
+5 16777216 1|8192
+0~ 3~ 9~ 0~ 
+50 170 0
+#20508
+bishop~
+a bishop piece~
+A chess piece has been dropped here.~
+~
+5 16777216 1|8192
+0~ 5~ 9~ 11~ 
+20 220 0
+#20509
+dwarven dagger~
+a dwarven dagger~
+A dwarven dagger has been dropped here.~
+~
+5 128|512|131072 1|8192
+0~ 6~ 10~ 11~ 
+20 300 0
+A
+19 5
+#20510
+dancer suit~
+a dancer's suit~
+A dancer's suit has been dropped here.~
+~
+9 1|16777216 1|8
+20~ 20~ 20~ 20~ 
+15 100 0
+A
+2 2
+E
+tight white jumpsuit~
+The tight white jumpsuit almost blinds you as it reflects the sun!
+It is white with a thin stripe of blue going down the side, and looks
+very revealing.
+~
+#20511
+baby shirt~
+a baby shirt~
+A baby shirt has been left here.~
+~
+9 16777216 1|1024
+1~ 1~ 1~ 1~ 
+15 50 0
+E
+flannel jacket~
+The flannel jacket is blue with darker blue plaid on it.  It also
+looks very comfortable.
+~
+#20512
+tuxedo coat~
+a tuxedo~
+A nice looking tuxedo has been thrown here.~
+~
+9 16777216 1|1024
+-5~ -5~ -5~ -5~ 
+50 100 0
+E
+tuxedo coat~
+The tuxedo is black and white, with a huge collar.
+~
+#20513
+pants~
+a pair of nice pants~
+A pair of nice pants has been carelessly left here.~
+~
+9 16777216 1|32
+5~ 5~ 5~ 5~ 
+10 70 0
+E
+plaid shorts~
+The plaid shorts are horrendous!  They are red with yellow plaid,
+and come up to your mid thigh.
+~
+#20514
+servant uniform~
+a servant's uniform~
+A servant's uniform has been left here.~
+~
+9 16777216 1|1024
+10~ 10~ 10~ 10~ 
+5 50 0
+E
+zero shirt star~
+The shirt is black and has a silver star right in the center of it.
+~
+#20515
+leather shirt~
+a leather shirt~
+A leather shirt has been left here.~
+~
+9 16777216 1|1024
+5~ 5~ 5~ 5~ 
+5 75 0
+A
+13 10
+E
+lallapalooza t shirt~
+The shirt has a picture from the red hot chili peppers at the
+1996 lallapalooza.
+~
+#20516
+leather vest~
+a leather vest~
+A nice leather vest is lying here.~
+~
+9 16777216 1|1024
+-25~ -25~ -25~ -25~ 
+5 150 0
+A
+17 5
+E
+leather vest~
+The vest is a very tight fitting, black leather vest.
+~
+#20517
+leather whip~
+a leather whip~
+A leather whip has been left here.~
+~
+5 1|1048576 1|8192
+0~ 2~ 10~ 4~ 
+5 0 0
+A
+13 10
+A
+2 3
+#20518
+invitation~
+an invitation~
+An invitation has been dropped here.~
+~
+8 1|1048576 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+3 1
+A
+2 1
+A
+14 10
+#20519
+cleaning pick~
+a cleaning pick~
+A cleaning pick has been dropped here.~
+~
+5 16777216 1|8192
+0~ 4~ 14~ 2~ 
+5 0 0
+A
+1 2
+A
+2 2
+#20520
+log~
+a log~
+A maid's log has been left here.~
+~
+8 16777216 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+5 1
+A
+2 1
+#0
+
+
+#ROOMS
+#20500
+Entrance to the Dwarven Household~
+The house is very large, with wooden floors in the hallway and clean
+white walls.  There seems to be some sort of party tonight, as many dwarves
+are coming in and out quite often.  The hallway continues north, and west
+leads out of the house.
+~
+0 8 0
+D0
+~
+~
+0 -1 20501
+D3
+~
+~
+1 -1 18021
+S
+#20501
+In the Hallway~
+The hallway here is plain and quite ordinary.  There is a passage leading
+to the west, and the hallway continues north and south.
+~
+0 8 0
+D0
+~
+~
+0 -1 20502
+D2
+~
+~
+0 -1 20500
+D3
+~
+~
+0 -1 20519
+S
+#20502
+In the Hallway~
+As you walk further down the hallway you notice that it grows continually
+darker with each step that you take to the north.  There is a small statue
+near the east wall, staring at you with red eyes.
+~
+0 8 0
+D0
+~
+~
+0 -1 20503
+D2
+~
+~
+0 -1 20501
+E
+sculpture statue~
+The sculpture is of a strange being you think you recognize as a vampire.  
+The red eyes are actually rubies that seem to glow with a strange light 
+within them.
+~
+S
+#20503
+Intersection~
+As you continue to the north, the hallway continually grows darker and
+darker.  The hallway here is met by another heading to the east.  There is
+another statue here.
+~
+0 8 0
+D0
+~
+~
+0 -1 20517
+D1
+~
+~
+0 -1 20504
+D2
+~
+~
+0 -1 20502
+E
+statue sculpture~
+The statue here is the same as before...large, looks like a vampire, same 
+glowing red eyes...but here it also has fangs that look large enough to 
+suck the blood out of an elephant.
+~
+S
+#20504
+In the Bright Hallway~
+The hallway here is much brighter than that to the west, due to the many
+candles and torches which line the walls.  The sound of many people talking
+can be heard to the east, and west leads back into another hallway.
+~
+0 8 0
+D1
+~
+~
+0 -1 20505
+D3
+~
+~
+0 -1 20503
+S
+#20505
+In the Bright Hallway~
+The sounds of people laughing and talking are very loud here, all coming
+from the north.  Candles and torches line the walls of the hallway, which
+leads east and west.
+~
+0 8 0
+D0
+door~
+~
+1 -1 20506
+D1
+~
+~
+0 -1 20511
+D3
+~
+~
+0 -1 20504
+S
+#20506
+Entrance to the Party Room~
+The party room is where the master of the house holds all of his social
+events, or sometimes he rents it out to anybody who has money for them to
+hold their own party.  North leads farther into the party room, and south
+leads back into the hallway.
+~
+0 8 0
+D0
+~
+~
+0 -1 20507
+D2
+door~
+~
+1 -1 20505
+S
+#20507
+The Party Room~
+The party room is very large, and has huge tables covered with food lined
+up against the walls.  People dance and converse here with not a care in the
+world.  Exits lead in all directions.
+~
+0 8 0
+D0
+~
+~
+0 -1 20510
+D1
+~
+~
+0 -1 20509
+D2
+~
+~
+0 -1 20506
+D3
+~
+~
+0 -1 20508
+S
+#20508
+The Kitchen~
+This is the kitchen of the house, connected conviniently next to the
+party room.  Servants and cooks work hard to keep the food going into the
+party room where the hungry guests await.  East leads back into the party
+room.
+~
+0 8 0
+D1
+~
+~
+0 -1 20507
+S
+#20509
+The Storage Room~
+This is where the guests of the party come to put all of their valuable
+and coats for the night.  Jewelry lies everywhere upon table tops and
+chairs, quite an invitation to a thief.  West leads back into the party
+room.
+~
+0 8 0
+D3
+~
+~
+0 -1 20507
+S
+#20510
+The Host's Room~
+This is where the host of the party takes people to have private
+conversations with.  The only furniture in the room is a lone desk with
+chairs on either side of it.  South leads back into party room.
+~
+0 8 0
+D2
+~
+~
+0 -1 20507
+S
+#20511
+In the Bright Hallway~
+The hallway here is getting dimmer, and continues dimming to the east. 
+Here you see an opening leading off to the south, with the entertainment
+room beyond it.  The sound of singing can be heard to the south, and the
+sound of many people talking can be h eard to the west.
+~
+0 8 0
+D1
+~
+~
+0 -1 20518
+D2
+~
+~
+0 -1 20512
+D3
+~
+~
+0 -1 20505
+S
+#20512
+Entrance to the Entertainment Room~
+This is where the guests of the house come to hear the music and singing
+of the greatest performers in the lands.  The sound of wonderful music wafts
+through the air, enticing all in it's hypnotic rhythm.  North leads back
+into the hallway, and south lead s into the entertainment room.
+~
+0 8 0
+D0
+~
+~
+0 -1 20511
+D2
+~
+~
+0 -1 20513
+S
+#20513
+The Entertainment Room~
+People wander around here listening to all of the wonderful music from
+the musicians and the singers around the room.  Exits lead in all
+directions.
+~
+0 8 0
+D0
+~
+~
+0 -1 20512
+D1
+~
+~
+0 -1 20515
+D2
+~
+~
+0 -1 20514
+D3
+~
+~
+0 -1 20516
+S
+#20514
+The Bard's Room~
+This is where the bard of the household comes to play his lute and to
+make merry music.  People dance and sing along with his popular tunes as he
+playes his magical lute to create extraordinary music.  North leads back
+into the entertainment room.
+~
+0 4|8|1024 0
+D0
+~
+~
+0 -1 20513
+S
+#20515
+The Music Room~
+This is where the musician of the household goes to play his instrument
+and to make everybody happy.  He plays a beautiful, soft piece which floats
+through the air around you.  West leads back to the entertainment room.
+~
+0 8 0
+D3
+~
+~
+0 -1 20513
+S
+#20516
+The Ballroom~
+The ballroom is quite large, and is suited perfectly for fine dances. 
+Many people come here to hold popular dances, or just to come and dance with
+a partner.  East leads back into the entertainment room.
+~
+0 8 0
+D1
+~
+~
+0 -1 20513
+S
+#20517
+The Dark Hallway~
+The hallway here is so dark that you can barely see.  As your eyes adjust
+to the darkness, you can make out the outline of the walls as they head to
+the north, where you can see a light glowing.  There is also another stature
+here.
+~
+0 8 0
+D0
+~
+~
+0 -1 20524
+D2
+~
+~
+0 -1 20503
+E
+statue sculpture~
+The statue here is once again the same as before.  Wait!  You realize that 
+this statue also has a cape....strange.
+~
+S
+#20518
+End of the Bright Hallway~
+You have finally reached the end of the bright hallway, only to be
+confronted by another.  The bright hallway leads west, and the brick hallway
+lies to the east.
+~
+0 8 0
+D1
+~
+~
+0 -1 20534
+D3
+~
+~
+0 -1 20511
+S
+#20519
+Entrance to the Daycare~
+The daycare is where all of the house guests keep their children while
+they go to one of the many rooms of the household.  Children crawl around
+all about the room.  East leads back into the hallway, and west leads
+further into the daycare.
+~
+0 8 0
+D1
+~
+~
+0 -1 20501
+D3
+~
+~
+0 -1 20520
+S
+#20520
+In the Center of the Daycare~
+Toys are strewn about the room, and the sounds of children playing and
+crying can be heard everywhere.  Exits lead in all directions.
+~
+0 8 0
+D0
+~
+~
+0 -1 20522
+D1
+~
+~
+0 -1 20519
+D2
+~
+~
+0 -1 20523
+D3
+~
+~
+0 -1 20521
+S
+#20521
+Teen's Room~
+This is where all of the teens in the daycare gather.  They always feel
+better than the rest of the kids so they decide to gather into one room. 
+East leads back into the rest of the daycare.
+~
+0 8 0
+D1
+~
+~
+0 -1 20520
+S
+#20522
+The Playroom~
+This is where the children come to play their games.  Toys are strewn all
+about the room, giving hardly any room to move.  The children are
+practically covered in toys.  South leads back into the rest of the daycare.
+~
+0 8 0
+D2
+~
+~
+0 -1 20520
+S
+#20523
+The Caretaker's Room~
+This is where the caretaker of the nursery comes after a hard day of
+looking after all of those little dwarves.  The room is very tidy, with
+everything right where it should be.  North leads back into the rest of the
+daycare.
+~
+0 8 0
+D0
+~
+~
+0 -1 20520
+S
+#20524
+The Dark Hallway~
+This section of the hallway would be too dark to allow you to see
+anything, if not for the bright light shining from underneath the doorway to
+the north.  There is another statue here.
+~
+0 8 0
+D0
+~
+door~
+1 -1 20525
+D2
+~
+~
+0 -1 20517
+E
+statue sculpture~
+This time the statue has grown one poity ear.  If it wasn't for the one ear 
+that is missing, this would be a perfect rendition of a vampire.
+~
+S
+#20525
+Chamber of the Mistress~
+The room is very dark, except for one lone candle against the eastern
+wall.  This is where the mistress of the house comes to do her work in
+keeping the household together.  South leads back into the hallway.
+~
+0 8 0
+D2
+~
+door~
+0 -1 20524
+S
+#20526
+Dead End at the Brick Hallway~
+The brick hallway ends here, with a wall to the south.
+~
+0 8 0
+D0
+~
+~
+0 -1 20527
+S
+#20527
+Intersection of Bricks~
+You are standing in the brick hallway, and as you stare on in horror, an
+opening appears to the east!  You hear some very heavy music coming through
+the opening.
+~
+0 8 0
+D0
+~
+~
+0 -1 20533
+D1
+~
+~
+0 -1 20528
+D2
+~
+~
+0 -1 20526
+S
+#20528
+Entrance to the Game Room~
+This is where the guests of the household come to play games, from chess
+to handball.  A hallway lies to the west, and east lies the game room.
+~
+0 8 0
+D1
+~
+~
+0 -1 20529
+D3
+~
+~
+0 -1 20527
+S
+#20529
+The Game Room~
+The game room is full of many different types of games.  There are board
+games, balls if different sizes and materials, and many other pieces of
+gaming equipment.  Exits lead in all directions.
+~
+0 8 0
+D0
+~
+~
+0 -1 20532
+D1
+~
+~
+0 -1 20531
+D2
+~
+~
+0 -1 20530
+D3
+~
+~
+0 -1 20528
+S
+#20530
+The Chess Room~
+Chess boards and chess pieces are strewn about all over the room from the
+last chess tournament held here.  Various people are sitting at small table
+playing chess with one another.  North leads back to the game room.
+~
+0 8 0
+D0
+~
+~
+0 -1 20529
+S
+#20531
+The Gambling Room~
+This is where the guests of the house come to spend their money.  There
+are many different games here to gamble on, from card games to roulette
+machines.  West leads back to the game room.
+~
+0 8 0
+D3
+~
+~
+0 -1 20529
+S
+#20532
+The Handball Room~
+The room is bare of any furnishings, and the north wall is plain white,
+except for spots from where the balls have hit it.  People come here to play
+handball frequently.  South leads back into the game room.
+~
+0 8 0
+D2
+~
+~
+0 -1 20529
+S
+#20533
+In the Brick Hallway~
+The fine brick hallway continues north and south here.
+~
+0 8 0
+D0
+~
+~
+0 -1 20534
+D2
+~
+~
+0 -1 20527
+S
+#20534
+In the Brick Hallway~
+The hallway here is made of brick, giving it the appearance of being a
+recent addition to the house which you are in.  The brick hallway leads
+north and south, and the bright hallway leads to the west.
+~
+0 8 0
+D0
+~
+~
+0 -1 20535
+D2
+~
+~
+0 -1 20533
+D3
+~
+~
+0 -1 20518
+S
+#20535
+In the Brick Hallway~
+The hallway here is made of a fine brick, and the walls are lined with
+small torches.  The brick hallway leads north and south.
+~
+0 8 0
+D0
+~
+~
+0 -1 20536
+D2
+~
+~
+0 -1 20534
+S
+#20536
+End of the Brick Hallway~
+The fine brick hallway ends here, with a door to the north.  The hallway
+leads back to the south, and there is a door to your north.
+~
+0 8 0
+D0
+~
+~
+1 -1 20537
+D2
+~
+~
+0 -1 20535
+S
+#20537
+The Master's Room~
+This is where the master of the house comes to conduct his business.  The
+room is sparsely furnished, and has but a dim glow about it given off by the
+candles in the corners of the room.  South leads back to the hallway.
+~
+0 8 0
+D2
+~
+~
+1 -1 20536
+S
+#0
+
+
+#RESETS
+D 1 20500 3 1
+M 1 20519 8 20500
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20518 7 20501
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20519 8 20502
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20518 7 20505
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20519 8 20505
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20504 1 20506
+E 1 20506 0 16
+E 1 20513 0 7
+E 1 20512 0 12
+M 1 20505 1 20508
+E 1 20507 0 16
+E 1 20514 0 12
+M 1 20506 1 20509
+E 1 20515 0 12
+M 1 20507 1 20510
+M 1 20508 1 20512
+M 1 20518 7 20512
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20509 1 20514
+E 1 20502 0 6
+M 1 20519 8 20514
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20510 1 20515
+E 1 20516 0 12
+M 1 20511 1 20516
+E 1 20510 0 12
+M 1 20519 8 20517
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20500 1 20519
+E 1 20511 0 12
+M 1 20518 7 20520
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20501 1 20521
+E 1 20500 0 16
+M 1 20502 1 20522
+E 1 20503 0 16
+M 1 20503 1 20523
+E 1 20505 0 16
+G 1 20504 0
+M 1 20518 7 20524
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20516 1 20525
+E 1 20501 0 16
+M 1 20518 7 20526
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20512 1 20528
+E 1 20508 0 16
+M 1 20519 8 20529
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20514 1 20530
+M 1 20515 1 20531
+M 1 20513 1 20532
+M 1 20518 7 20533
+E 1 20517 0 16
+E 1 20518 0 17
+M 1 20519 8 20533
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20519 8 20534
+E 1 20519 0 16
+E 1 20520 0 17
+M 1 20517 1 20537
+E 1 20509 0 16
+S
+
+
+#SPECIALS
+M  20506 spec_thief			a dwarven thief
+S
+
+
+#$

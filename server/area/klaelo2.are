@@ -1,0 +1,1095 @@
+#AREA	Danath~    Forest~
+1 10 0 100 
+
+
+#MOBILES
+#18000
+Rabbit~
+Small rabbit~
+A small rabbit is here eating.
+~
+The rabbit is minding his own business so should you!
+~
+4|64|128 0 -500 S
+3 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#18001
+kodiak bear~
+a Giant Kodiak bear~
+A giant Kodiak bear stands here chewing on a carcass.
+~
+The bear is not pleased to see you.
+~
+32|64 0 0 S
+10 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18002
+Mosquito's~
+mosquito~
+A swarm of Mosquito's is hungrily looking at you.
+~
+The mosquito's look lean and in need of blood YOURS!
+~
+32|64 524288 -500 S
+10 0 0 0d0+0 0d0+0
+61 0
+8 8 1
+#18003
+wasps~
+a swarm of wasps~
+A swarm of wasps is here attacking anything that enters here.
+~
+The wasps look mean and those stings could really hurt.
+~
+32|64 524288 -500 S
+10 0 0 0d0+0 0d0+0
+61 0
+8 8 1
+#18004
+stag~
+a stag~
+A magnificent stag stands here proud and strong.
+~
+The stag is beautiful, a twelve pointer, he has a few scar's from many battles.
+~
+64 0 500 S
+8 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18005
+Badger~
+the badger~
+A small badger is shuffling about looking for food.
+~
+The badger looks like a fine specimen, a thick glossy coat on him.
+~
+64 0 0 S
+5 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18006
+Robyn~
+A Small Robin~
+A little bird flits from tree to tree getting insects for tea.
+~
+The robyn is tiny about the size of your thumb.
+~
+64|128 524288 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18007
+man medicine~
+a medicine man~
+A medicine man is here making potions.
+~
+The medicine man has a small necklace of tiny bones around his neck.
+~
+64|128 128|524288 -600 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18008
+lynx~
+the lynx~
+A lean cat prances around here, it seem surprised to see you.
+~
+The lynx has some scars from old battles and looks quite tough.
+~
+64 0 800 S
+6 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#0
+
+
+#OBJECTS
+#18000
+claws bears~
+a pair of bears claws~
+Two large claws lie here.~
+~
+5 2 1|8192
+0~ 6~ 12~ 11~
+5 0 0
+A
+18 3
+A
+24 -10
+#18001
+necklace~
+a bone necklace~
+A little pile of bones on a string is on the ground.~
+~
+9 0 1|4
+3~ 1~ 6~ 11~
+5 0 0
+#18002
+toe big~
+a big toe~
+A big toe has been cut off someone's foot.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~
+5 0 0
+#18003
+coins~
+gold coins~
+Gold coins~
+~
+20 0 1
+0~ 0~ 200~ 0~
+5 0 0
+#0
+
+
+#ROOMS
+#18000
+Shadow Vale~
+Giant trees tower above you,  deep shadow is cast from the heavy foliage 
+growing among the branches.  The pathway is worn from travelers boots as they 
+warily wind their way through.  To the north you can just make out ...
+~
+0 0 3
+D0
+~
+~
+0 -1 4513
+D2
+~
+~
+0 -1 18001
+S
+#18001
+Heavy Forest~
+You are standing in a heavy forest of old oaks.  There is a small spring 
+trickling slowly from a small rock formation into a clear deep pool.  A barn 
+owl has made his home above you.
+~
+0 0 3
+D0
+~
+~
+0 -1 18000
+D2
+~
+~
+0 -1 18002
+S
+#18002
+Heavy Forest~
+Strong tall trees going straight up surround you, the feeling of being
+insignificant overcomes you, small animals scuttle around in the
+under-growth.
+~
+0 0 3
+D0
+~
+~
+0 -1 18001
+D2
+~
+~
+0 -1 18003
+S
+#18003
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the tree.  The pathway is faint as little light is
+available to you.  Spider webs hand delicately down from low branches.
+~
+0 0 3
+D0
+~
+~
+0 -1 18002
+D2
+~
+~
+0 -1 18004
+S
+#18004
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  A small game trail is wound through the
+undergrowth leading to a small river that is just visible off to the east.
+~
+0 0 3
+D0
+~
+~
+0 -1 18003
+D1
+~
+~
+0 -1 18031
+D2
+~
+~
+0 -1 18034
+D3
+~
+~
+0 -1 18005
+S
+#18005
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the tree.  The pathway is faint as little light is
+available to you.  Dust is swirling here from a small draft.
+~
+0 0 3
+D1
+~
+~
+0 -1 18004
+D3
+~
+~
+0 -1 18006
+S
+#18006
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the tree.  The pathway is faint as little light is
+available to you.  Your feet make small puffs is the dust as you walk.
+~
+0 0 3
+D1
+~
+~
+0 -1 18005
+D2
+~
+~
+0 -1 18007
+S
+#18007
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the tree.  A hideous face has been carved into one
+of the trees here. It looks like a human face has been turned inside out.
+~
+0 0 3
+D0
+~
+~
+0 -1 18006
+D2
+~
+~
+0 -1 18008
+S
+#18008
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you. Small stones are scattered about here on the ground.
+~
+0 0 3
+D0
+~
+~
+0 -1 18007
+D2
+~
+~
+0 -1 18009
+S
+#18009
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.  A log has fallen here across the path you will have to
+crawl under it to proceed further.
+~
+0 0 3
+D0
+~
+~
+0 -1 18008
+D3
+~
+~
+0 -1 18010
+S
+#18010
+Heavy Forest~
+The forest floor here is matted with a thick blanket of leaves.  The
+undergrowth, has wound itself heavily throughout the base of the trees.
+The pathway is faint as little light is available to you.
+~
+0 0 3
+D1
+~
+~
+0 -1 18009
+D3
+~
+~
+0 -1 18011
+S
+#18011
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.
+~
+0 0 3
+D1
+~
+~
+0 -1 18010
+D2
+~
+~
+0 -1 18012
+S
+#18012
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.
+~
+0 0 3
+D0
+~
+~
+0 -1 18011
+D2
+~
+~
+0 -1 18013
+S
+#18013
+Heavy Forest~
+You are in a dark thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.
+~
+0 0 3
+D0
+~
+~
+0 -1 18012
+D1
+~
+~
+0 -1 18017
+D2
+~
+~
+0 -1 18014
+S
+#18014
+Light Forest~
+The growth here is mostly young saplings but a few older trees are
+prominent as well. A tree here is twisted and gnarled from a twister, that
+has changed it's appearance for good. Vines hang from above, sweeping down
+like hair from the branches.
+~
+0 0 3
+D0
+~
+~
+0 -1 18013
+D2
+~
+~
+0 -1 18015
+S
+#18015
+Low Foothills~
+Branches and deadfall litter the ground around your feet, it looks as if a
+storm has ravished the area recently.  The ground here is sloped quite
+steeply. Small rivulets from water run-off scar the trail.
+~
+0 0 3
+D0
+~
+~
+0 -1 18014
+D2
+~
+~
+0 -1 18016
+S
+#18016
+Low Foothills~
+The path you are standing on here is sloped quite heavily making the path
+difficult for the unprepared.  Tread warily so you don't fall as it is a
+bumpy ride to the bottom. The pathway is split here in a threeway
+intersection.
+~
+0 0 3
+D0
+~
+~
+0 -1 18015
+D1
+~
+~
+0 -1 18048
+D3
+~
+~
+0 -1 18047
+S
+#18017
+Thick Oaks~
+Giant oak trees stand here in all their glory. Making a magnificent sight
+for your eyes to behold.  Below the mighty giants are the new generation
+to stand when the older ones perish.
+~
+0 0 3
+D1
+~
+~
+0 -1 18018
+D3
+~
+~
+0 -1 18013
+S
+#18018
+Thick Oaks~
+The oaks trees around you seem to have scars on them as if a big battle
+was fought here that has now been long since forgotten. In the undergrowth
+you can see the remains of old rusted weaponry.
+~
+0 0 1
+D1
+~
+~
+0 -1 18019
+D3
+~
+~
+0 -1 18017
+S
+#18019
+Thick Oaks~
+The oaks trees around you seem to have scars on them as if a big battle
+was fought here that has now been long since forgotten. In the undergrowth
+you can see the remains of old rusted weaponry.
+~
+0 0 1
+D1
+~
+~
+0 -1 18020
+D3
+~
+~
+0 -1 18018
+S
+#18020
+Thick Oaks~
+Toadstool are growing alongside the trail here, taking your eyes away from
+the massive oaks, which tower above.  Squirrels dart from branch to branch
+collecting the acorns, storing them away for the approach of the colder
+months.
+~
+0 0 1
+D0
+~
+~
+0 -1 18021
+D3
+~
+~
+0 -1 18019
+S
+#18021
+Thick oaks~
+A large branch from one of the many oak tree's here hangs low down over
+the trail, if you wished you could just about reach it and climb up.  You
+hear acorns crunch under your feet as you walk.
+
+To the east you see a wooden homestead set amoungst the trees. The door
+is quite small, probably only 5 feet high. You cannot see any windows to
+look inside.
+~
+0 0 1
+D0
+~
+~
+0 -1 18022
+D1
+~
+~
+1 -1 20500
+D2
+~
+~
+0 -1 18020
+S
+#18022
+Thick Oaks~
+The oaks that have grown here are very close together, some of them look
+like one huge tree. Over the years they have grown closer together and
+some have even grafted themselves in different places to one another.  A
+few squirrels are cheekily chattering away above you.
+~
+0 0 1
+D0
+~
+~
+0 -1 18023
+D2
+~
+~
+0 -1 18021
+S
+#18023
+Intersection~
+You are standing in the middle of a fourway intersection, of a game trail.
+exits lead in all compass directions.  The forest here has made the trails
+quite narrow. Game makes it's way along here regularly.
+~
+0 0 3
+D0
+~
+~
+0 -1 18024
+D1
+~
+~
+0 -1 18027
+D2
+~
+~
+0 -1 18022
+D3
+~
+~
+0 -1 18025
+S
+#18024
+Dead End~
+Dead end.  The trails just stops here for some unknown reason, tree's and
+scrub are very thick here making going anywhere but south impossible.  The
+ground is covered in a thick blanket of leaves.
+~
+0 0 3
+D2
+~
+~
+0 -1 18023
+S
+#18025
+Forest~
+Sycamore vines are entangled in amongst the tree of the forest with small
+white flowers they make quite a pretty sight.  Seedlings try and make
+their presence know as the wind their way toward the sun.
+~
+0 0 3
+D1
+~
+~
+0 -1 18023
+D3
+~
+~
+0 -1 18026
+S
+#18026
+Forest~
+A small carcass has been left here making the area immediately surrounding
+smell quite unpleasant. A hollowed out log here would make a wonderful
+home for a giant Kodiak bear. Maybe that's his kill you see.
+~
+0 0 3
+D1
+~
+~
+0 -1 18025
+S
+#18027
+Forest~
+Down, down down you go, you have stepped onto a mossy slope and just slid
+down.  There is no way your goint to get back up there again you'll have
+to keep going.  Watch your step next time.  You just missed some sharp
+rocks that have collected at the bottom of the slope.
+~
+0 0 1
+D2
+~
+~
+0 -1 18028
+S
+#18028
+River bed~
+An old river bed, empty now except for little pools of rain water that
+have collected here, they are full of mosquitos, watch out as you might
+get malaria.  Better get the little beggars before they get you.
+~
+0 0 4
+D0
+~
+~
+0 -1 18027
+D2
+~
+~
+0 -1 18029
+S
+#18029
+River bed~
+Uh oh, Wasp's, hundreds of them look out!!!
+
+All around you is wasp's you must have stepped on their nest better run as
+they are very angry.
+~
+0 0 4
+D0
+~
+~
+0 -1 18028
+D2
+~
+~
+0 -1 18030
+S
+#18030
+River bed~
+The river bed you are standing in disappears underground here under solid
+rock. There is no way you can squeeze into that narrow shute the water
+used to race down. You had better go back the way you came.
+~
+0 0 4
+D0
+~
+~
+0 -1 18029
+S
+#18031
+Winding River~
+A Small Riverflows past here, it comes down from a steeply sloped valley
+from the north, and turns easterly. The stones are slick with moss and
+lichen.  The water is quite deep and moves very swiftly, there doesn’t
+seem to be anyway across here.
+~
+0 0 1
+D1
+~
+~
+0 -1 18032
+D3
+~
+~
+0 -1 18004
+S
+#18032
+Winding River~
+The sound of swiftly moving water is just loud enough to drown out sounds
+of the forest all around you.  The small stones make walking a little
+different here, you watch carefully as you place your feet.
+~
+0 0 1
+D1
+~
+~
+0 -1 18033
+D3
+~
+~
+0 -1 18031
+S
+#18033
+Winding River~
+A small ford is here that makes an easy crossing of a river that is
+flowing quite swiftly. The water is crystal clear you can see the small
+stones on the bottom, as the tumble gently along.
+~
+0 0 1
+D1
+~
+~
+0 -1 18054
+D3
+~
+~
+0 -1 18032
+S
+#18034
+Dark Forest~
+You are in a dark archway made of heavy foliage, with undergrowth wound
+heavily throughout the base of the trees.  The pathway is faint as little
+light is available to you.
+~
+0 0 1
+D0
+~
+~
+0 -1 18004
+D2
+~
+~
+0 -1 18035
+S
+#18035
+Dark Forest~
+With undergrowth very thick throughout the forest floor and the trees so
+thick above you, it's not clear where the exits are.  The pathway is faint
+as little light is available to you.
+~
+0 0 1
+D0
+~
+~
+0 -1 18034
+D2
+~
+~
+0 -1 18036
+S
+#18036
+Dark Forest~
+You are in a dark naturally made canopy, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.
+~
+0 0 1
+D0
+~
+~
+0 -1 18035
+D2
+~
+~
+0 -1 18037
+S
+#18037
+Dark Forest~
+You are in a dark thickly forested walkway, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is dark and made of rotting
+leaves faint as the little light is you can just make the prints of a
+large stag.
+~
+0 0 1
+D0
+~
+~
+0 -1 18036
+D1
+~
+~
+0 -1 18038
+S
+#18038
+Dark Forest~
+You are in a dark thickly forested area, the undergrowth is wound heavily
+throughout the base of the trees, making leaving the path impossible. The
+pathway is faint as little light is available to you.
+~
+0 0 1
+D1
+~
+~
+0 -1 18039
+D3
+~
+~
+0 -1 18037
+S
+#18039
+Dark forest~
+The tree's here look very old and are wilting from some kind of disease,
+this place feels creepy and seem's to reek of death.  There is a stench
+from the decomposing leaves all around you.
+~
+0 0 1
+D2
+~
+~
+0 -1 18040
+D3
+~
+~
+0 -1 18038
+S
+#18040
+Dying Forest~
+Death just hangs in the air here small game carcasses are here, rotting
+most of the tree's are dead but still standing. Something weird is killing
+everything that comes here.
+~
+0 0 1
+D0
+~
+~
+0 -1 18039
+D2
+~
+~
+0 -1 18041
+S
+#18041
+Dying Forest~
+You just about puke as the smell of rotting flesh and decomposing foliage
+hit's your nostrils.  A large stag is here with great holes punctured into
+his mighty body he has died, but put up a good fight.  Evil markings have
+been carved into into it's body.
+~
+0 0 1
+D0
+~
+~
+0 -1 18040
+D1
+~
+You see a huge tree that radiates evil.
+~
+0 -1 9900
+D2
+~
+~
+0 -1 18042
+D3
+~
+~
+0 -1 18043
+S
+#18042
+Medicine man's Lair~
+Strange carvings are here in the walls of the small cave that has been
+hewn out of solid rock.  A small bed is in one corner with small jars
+holding body parts, leaves, roots and all sorts for making potions with.
+~
+0 0 0
+D0
+~
+~
+0 -1 18041
+S
+#18043
+Forest~
+You are in a thickly forested area, with undergrowth wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.
+~
+0 0 1
+D1
+~
+~
+0 -1 18041
+D3
+~
+~
+0 -1 18044
+S
+#18044
+Forest~
+You are in a thickly forested area, with vines and creepers wound heavily
+throughout the base of the trees.  The pathway is faint as little light is
+available to you.  Small wisps of mist sway in the air before you.
+~
+0 0 1
+D0
+~
+~
+0 -1 18045
+D1
+~
+~
+0 -1 18043
+S
+#18045
+Forest~
+A large Oak towers before you here huge branches shoot of at right angles.
+The sound of birds floats down from the branches above.  The tree is so
+high you can't see the top.
+~
+0 0 1
+D2
+~
+~
+0 -1 18044
+D3
+~
+~
+0 -1 18046
+S
+#18046
+Forest~
+There is only one exit from here to the east A massive deadfall has
+blocked anyway there ever used to be to get past.  Someone has made use of
+the plentiful dead brush that is scattered about.
+~
+0 0 1
+D1
+~
+~
+0 -1 18045
+S
+#18047
+Light Forest~
+A low rugged hill covered in douglas fir is just off to the north the
+trail winds sort of up and around it.  You can see a burrow that probably
+is the home of a badger.
+~
+0 0 3
+D0
+~
+~
+0 -1 18049
+D1
+~
+~
+0 -1 18016
+S
+#18048
+Light Forest~
+An abandoned Hut is here with it's roof caved in, over the years the
+weather has got too much for the rotting wood.  A stone fireplace stands
+still at one end of the old hut. What remains of a sitting stool is half
+fallen from it's fastening on the wall.
+~
+0 0 3
+D3
+~
+~
+0 -1 18016
+S
+#18049
+Light Forest~
+A single huge tree stands out towering above the rest of the forest here.
+You look up at it and stare in wonder and amazement that just one tree is
+bigger by far than all else. A small sign has been hand carved into the
+side of the tree, although something has made it almost illegible.
+~
+0 0 3
+D2
+~
+~
+0 -1 18047
+D3
+~
+~
+0 -1 18050
+E
+Sign~
+The road to  .........   
+........ is .. place
+to rest their feet,
+...  ...  ......  .... ...
+fastest way    
+---------->
+~
+S
+#18050
+Light Forest~
+You stumble over the pile of rocks someone has placed right in the middle
+of the trail here. The are half hidden under moss and grass that is
+growing steadily up the sides.
+~
+0 0 3
+D1
+~
+~
+0 -1 18049
+D2
+~
+~
+0 -1 18051
+S
+#18051
+Light Forest~
+The forest trail is quite wide here making it very easy for travel, the
+tree's don't seem to have grown close at all probably due o a lot of
+wildlife making it's way through here.
+~
+0 0 3
+D0
+~
+~
+0 -1 18050
+D2
+~
+~
+0 -1 18052
+S
+#18052
+Light Forest~
+Small Conifer tree's grow in abundance here, the forest has a calm
+sensation about it. With the birds quietly singing away to each other.  A
+centipede has made it's home, in a log that is rotting away here.
+~
+0 0 3
+D0
+~
+~
+0 -1 18051
+D3
+~
+~
+0 -1 18053
+S
+#18053
+Light Forest~
+A small stand of kowhai trees has grown here.  Flowers all bright and
+yellow. Blackberry is thick here making it very painful to go anywhere but
+east or west.  To the south the plains seem to end abruptly.
+~
+0 0 3
+D1
+~
+~
+0 -1 18052
+D2
+~
+~
+0 -1 10001
+S
+#18054
+Cliff face~
+A sheer Clift face rise's straight up from here about 400 feet, there is
+no way past here. Rocks have cascaded down from about over the years,
+making quite a pile of stone here.
+~
+0 0 1
+D3
+~
+~
+0 -1 18033
+S
+#0
+
+
+#RESETS
+*
+M 1 18001 1 18026			a Giant Kodiak bear to Forest.
+E 1 18000 100 16
+*
+M 1 18002 3 18028			mosquito to River bed.
+*
+M 1 18003 5 18029			a swarm of wasps to River bed.
+*
+M 1 18005 1 18013			the badger. to Heavy Forest.
+O 1 18002 100 18042			a big toe to Medicine man' Lair.
+*
+M 1 18007 1 18042			a medicine man to Medicine man' Lair.
+E 1 18001 100 4
+G 1 18003 100
+*
+M 1 18006 2 18007			A Small Robin to Heavy Forest.
+*
+M 1 18008 1 18023			the lynx to Intersection.
+*
+D 1 18021 1 1
+S
+
+
+#SPECIALS
+M  18000 spec_breath_lightning			Small rabbit.
+M  18002 spec_poison			mosquito
+M  18003 spec_poison			a swarm of wasps
+M  18006 spec_breath_lightning			A Small Robin
+M  18007 spec_breath_any			a medicine man
+S
+
+
+#$

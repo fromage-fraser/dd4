@@ -1,0 +1,4110 @@
+#AREA   Brutus~  Cyclops Caves~
+35 55 20 100
+
+#AREA_SPECIAL
+exp_mod 110
+$
+
+#MOBILES
+#14001
+cyclops master beastmaster~
+The Beastmaster~
+The cyclops beastmaster is here.
+~
+The mighty cyclops laughs as you enter the room. He has spent his life worrying 
+about a vicious beast and is not worried by your intrusion.
+~
+2|4|64 8|128 -400 S
+44 0 -100 1d1+2000 1d20+60
+0 0
+8 8 1
+#14002
+master battlemaster cyclops~
+Battlemaster~
+The cyclops battlemaster.
+~
+As the battlemaster turns toward you, you notice the many scars on his face
+and body. This cyclops is very experianced and he is moving toward you 
+shouting " Ahhhh some REAL practice for me at last. MUHAHAHAHAHAHA."
+~
+2|32|64 8|16|32|128|512 -1000 S
+46 -2 -200 1d1+2000 1d50+50
+0 0
+8 8 1
+#14003
+cyclops worker~
+the cyclops worker~
+The cyclops worker is here gathering corn.
+~
+The cyclops worker is dressed in grubby overalls and uses a scythe to collect 
+the corn. He is far too busy to notice you enter his part fo the field.
+~
+64|128 0 -500 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14004
+supervisor cyclops~
+the supervisor~
+The workers supervisor sits in a chair here.
+~
+The supervisor is 10 feet tall and wields a nasty looking whip . He is also not 
+very happy to see you and springs to attack yelling "HUMAN SCUM MUST DIE!"
+~
+2|32|64 0 -1000 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14005
+guard cyclops~
+the cyclops guard~
+The cyclops guard stand here looking for intruders.
+~
+The guard towers over you, he is 9 feet tall, and you estimate him to be 500 
+pounds of pure muscle. His large eye in the centre of his head is pitch black 
+and eminates evil. The huge spiked club that he swings about like a toy is 
+something you would not like to be seeing coming your way.
+~
+2|32|64 0 -1000 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14006
+guard cyclops~
+the guard~
+The cyclops guard is asleep and snoring loudly
+~
+The guard towers over you, he is 9 feet tall, and you estimate him to be 500 
+pounds of pure muscle. His large eye in the centre of his head is pitch black 
+and eminates evil.
+~
+2|32|64 0 -1000 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14007
+cyclops fisherman~
+A cyclops fisherman~
+The cyclops fisherman lies here watching his net
+~
+The fisherman is clothed only in a pair of overalls, and lies on the bank half
+asleep.
+~
+4|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14008
+cyclops warrior~
+the cyclops warrior~
+A cyclops warrior is here preparing for battle
+~
+The cyclops warrior is dressed in banded armour, and is ready for battle. 
+He stands 10 feet tall and wields a rather large warhammer.
+~
+4|32|64 0 -1000 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14009
+elite guard cyclops~
+the elite cyclops guard~
+The elite guard charges you as you enter the room.
+~
+Looking at the huge guard you realise that he is trained not only is the art of 
+warfare, but also in the art of magic, as he holds in one of his hands a yellow 
+wand.
+~
+2|32|64 8|32|128|512 -1000 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14011
+king cyclops xoric~
+Xoric~
+The Cyclops King, Xoric is here in his throne room.
+~
+The king stands 15 feet tall and is the most nasty cyclops you have seen so 
+far. His face is covered with many scars from the hard fought battles that he 
+has come from victorious. You shudder as you see the mighty jaggered dagger he 
+holds in his right hand. The orb that he holds seem to draw you to it.
+~
+2|32|64 0 -1000 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14012
+goddess leia~
+Leia~
+You recognise this awesome creature as Leia, goddess of the next dimension.
+~
+You stare in awe at the beautiful goddess, her wonderous form covered only 
+by a translucent gown that covers her whole body. As you look she relates a 
+story to you:-                    
+  "I have watched your progress with great interest and I am in debt to you. 
+Four months ago an earthquake opened a fissure leading to the jewelled cave. 
+The cyclops king and the dark wizard that ruled with him knew that the void 
+that lied beyond the physical and magical barrier formed by my statue could 
+take them into the heart of any city in this great land. This would mean that 
+they could strike anywhere and at anytime. I watched the cyclops king summon 
+together the most evil leaders to these very caves to discuss the invasion 
+plans. They plotted together while clerics tried to dispel the magical 
+barriers into this void. My only hope rested on your sholders and I rejoiced 
+when I saw your slay the King for I knew that the good cities would no longer 
+be in danger. For this I am indebted to you.
+~
+2|8|64|128|1024|4096 8|32|128|512|2048|8192|524288 1000 S
+56 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+& 50 'teacher base'
+& 100 'astral vortex'
+#14013
+cyclops father male~
+a cyclops male~
+A cyclops male is here.
+~
+The cyclops male stands more than eight tall and is almost as twice as wide as 
+you.
+~
+32|64|128 0 -1000 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14014
+cyclops female woman~
+the cyclops female~
+The cyclops woman is here.
+~
+The cyclops female upon seeing you screams, and calls for help.
+~
+64|128 0 -1000 S
+33 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#14015
+cyclops child~
+a cyclops child~
+A cyclops child is here playing in the dirt.
+~
+A cyclops child quitely plays here in the dirt, upon seeing you he stands and 
+runs to a corner of the cave, hiding his face from you.
+~
+64|128 0 -200 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14016
+chimera head goat~
+A chimera's goat head~
+The first head of a chimera, that being a goat, turns towards you.
+~
+The first head of the great chimera, is that of a goat. It has an evil, angry 
+look in its eyes. It would be best to stay away from those nasty looking horns.
+~
+2|64 0 -500 S
+39 0 0 0d0+0 0d0+0
+4|8|16 0
+8 8 1
+#14017
+chimera lion head~
+A chimera's lion head~
+The second head of a chimera, that being a lion, roars as you enter.
+~
+The fearsome head of a lion is the second head of this great chimera. Its 
+fearsome roar sends a shiver down your spine.
+~
+2|64 0 -1000 S
+42 0 0 0d0+0 0d0+0
+4|8|16 0
+8 8 1
+#14018
+dragon head chimera~
+A chimera's dragon head~
+The third head of a chimera, that being a dragon, prepares to breath on you.
+~
+The fearsome dragons head alone would be a worthy adversary, but with the 
+other 2 heads, you might be lucky to escape alive.
+~
+2|32|64 8|32 -1000 S
+45 0 0 0d0+0 0d0+0
+4|8|16 0
+8 8 1
+#14019
+cyclops worker~
+the cyclops construction worker~
+The cyclops construction worker stands here
+~
+The worker looks as though he is thinking, and with that giant sledgehammer, 
+he can do all the thinking he wants.
+~
+4|64|128 8|32 -1000 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14020
+cyclops supervisor~
+the cyclops construction supervisor~
+The construction supervisor stands here ......... supervising.
+~
+The supervisor is one huge cyclops. He is almost as wide as he is tall and you 
+can see why as he carries a great log upon his shoulder.
+~
+2|4|32|64 0 -1000 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14021
+cleric cyclops~
+the cyclops cleric~
+The cleric is here, angry at your intrusion.
+~
+The Cleric tunrs to face you after dispelling the last of the magical barriers. 
+He does not seem pleased to see you.
+~
+2|4|32|64 8|32|128|512 -1000 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14022
+Mage cyclops~
+the cyclops mage~
+A cyclops mage is here training his students.
+~
+The mage turns to face the intruders, you notice a confident look in his eye as 
+he starts to gesture and pronounce unknown words, sparks leap from one finger to 
+another. He then attacks.
+~
+2|32|64|512 8|32|128 -1000 S
+46 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14023
+cyclops psionic~
+the cyclops psionic~
+The cyclops psionic is here focusing his thoughts.
+~
+The psionic seemed to be expecting you as he attacks immediately.
+~
+2|32|64|512 8|32|128 -1000 S
+46 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#14024
+torturer cyclops~
+the cyclops torturer~
+The torturer bends over another victim laughing.
+~
+The torturer wields a scorching hot iron and seems to be enjoying the fact that 
+he is inflicting so much pain to the poor prisoner. The cyclops is far too 
+engrossed in his work to notice you enter the room.
+~
+2|64 0 -1000 S
+44 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14025
+prisoner man victim~
+a torture victim~
+A skinny prisoner is chained to the wall here, near death.
+~
+The prisoner has burns covering most of his body and is near death. With the 
+last of his energy he whispers something to you. 
+The prisoner says " Th-the key to the palace is in the b-b-barrac.....". 
+And with that he collapses.
+~
+2|64|512 0 1000 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14026
+prisoner human~
+the human prisoner~
+A human prisoner is chained to the wall here
+~
+The prisoners face lites up as you enter the room. 
+The prisoner says " At last I am rescued, I feared the worse for my self as I 
+heard the screams to the west. I was in a party of bold adventurers that 
+ventured into the cave searching for the legendary jeweled cave. Most people 
+thought it was a legend, but it exists, it does, far to the south across an 
+underground river. In the cave is a most beatiful statue with a most powerful 
+artifact on its head. We nearly escaped with it but we were caught leaving the 
+cave, and have spent the last 3 months in this hell."                                                                                                                  With that you break his chains and let the prisoner go.
+~
+2|64|512 0 1000 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14027
+dwarf prisoner~
+the dwarven prisoner~
+A dwarf is here chained to the wall.
+~
+The dwarf stands only 4 feet tall but you know the fearsome fighting abilities 
+of this race. He stand up and greets you then relays to you this story. 
+" The jewelled cave has a mighty statue that is a gateway to other worlds, it 
+has two barriers, a physical barrier which can be unlocked by and orb, and a 
+magical one. Our party went to the cave to try and capture the orb, so that the 
+cyclops king could not use the gateway. We nearly escaped but were caught. I 
+fear now that the King has the Orb and is planning something." 
+With that you smash his chains and free the dwarf.
+~
+2|64|512 0 1000 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14028
+mage prisoner elf elven~
+the mage prisoner~
+An elven mage is chained to the wall here
+~
+The elven mage bows to you as you enter his cell. 
+He then speaks to you. "Thank-you for coming and setting me free, for that I 
+will tell you all I know about the King. Although a great and mighty warrior 
+the King has one weakness - he is very afraid of magic. For this reason he will 
+let no clerics cast sanctuary uopn him, nor will he let any mages shield him. 
+I hope this has been of help." 
+With that you break his chains.
+~
+2|64|512 0 1000 S
+10 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14029
+human psionic prisoner~
+a human psionic prisoner~
+A human psionic is chained to the wall here.
+~
+The human psionic smiles at you as you enter his cell. 
+He then speaks " These cells are made from an anti-magical material which 
+prevents us from casting spells so we can free our selves. The doors to the 
+palace and the king's chamber are also made from this material. No pass door 
+spell will work nor will the finest thief in this world be able to pick the 
+locks. There are many dangers between here and the King, The most fearsome 
+being his elite guard, trained in both the ways of battle and of magic. I hope 
+this has helped" 
+With that you smash his chains.
+~
+2|64|512 0 1000 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14030
+minotaur elite guard~
+the elite minotaur guard~
+The elite minotaur guard sees you and attacks!
+~
+This minotaur wields a huge morningstar and is clad in heavy crimson plate and 
+furs.
+~
+2|32|64 0 -1000 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14031
+trainee magician~
+the trainee magician~
+A trainee cyclops magician attempts to create a magic mushroom.
+~
+The cyclops is training to be a magician. Maybe you will be his first victim.
+~
+2|32|64 0 -1000 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14032
+cyclops smithy~
+the cyclops smithy~
+The cyclops smithy is here pounding on some armour
+~
+With the roar of the furnace and the banging of the hammer, the smithy did not 
+hear you come in. Just as well as this cyclops has muscles on his muscles.
+~
+2|64 0 -1000 S
+46 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14033
+secundus~
+secundus~
+Secundus, Viceroy of the quarter, is here.
+~
+The secundi appear as incredibly thin, tall humanoids with long, narrow faces 
+and deepset eyes.
+~
+2|32|64 8|32|128 -1000 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#14034
+fanatic priest~
+the fanatic priest~
+The fanatic priest is here, foretelling the destruction of Midgaard
+~
+No-one beleived the priest when he predicted the fall of Old Thalos, thats 
+mainly because he was the one responsible for letting in the cyclops who 
+quickly over-ran the city. For his co-operation he was rewarded by becoming 
+Xoric's right-hand man, the brains behind the brawn. He still wears his black 
+silk robe and demon-faced talisman, but your guess is that the have been 
+greatly enhanced. The priests right hand is covered in golden silk and he 
+clenches it at you as he attacks.
+~
+2|32|64|128 8|32|128 -1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14035
+old cyclops~
+the old cyclops~
+An old cyclops rests here, not bothering to acknowledge you.
+~
+The old cyclops is weather beaten and wrinkly. His one eye stares off into 
+space, probably recalling some past battle.
+~
+2|64 0 -1000 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14036
+cyclops trainee warrior~
+the cyclops trainee~
+A cyclops trainee warrior is here trying to emulate the battlemaster.
+~
+This cyclops isnt fully trained yet, but will put up a good fight.
+~
+2|64|128 0 -600 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14037
+cyclops cook~
+The Cook~
+The cook stands here stirring a pot on the stove
+~
+The cook is here, cooking something
+~
+2|4|64 0 0 S
+44 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#14038
+cyclops thief~
+The thief~
+A thief scans the area looking for victims.
+~
+This cyclops is smaller than other you have seen. Its small size lets
+it sneak in the shadows with great success. Its dual wielded weapons will be
+a great problem to overcome..
+~
+2|4|64|4096 2|8|128|2048|65536 -400 S
+45 0 0 0d0+0 0d0+0
+1000 0
+8 8 1
+#0
+
+
+#OBJECTS
+#14001
+human skin boots~
+a pair of humanskin boots~
+Boots made from human skin lie here.~
+~
+9 2|64 1|64
+8~ 0~ 0~ 0~ 
+15 1250 0
+A
+2 3
+#14002
+overalls workers~
+a pair of workers overalls~
+A huge pair of gruby overalls lie here needing a wash.~
+~
+9 0 1|8
+3~ 0~ 0~ 0~ 
+15 800 0
+#14003
+one-eyed whip~
+a one-eyed whip~
+The whip here seems to be staring at YOU!~
+~
+5 64 1|8192
+0~ 15~ 40~ 4~ 
+18 1200 0
+A
+18 5
+#14004
+rusty scythe~
+a rusty scythe~
+Someone has left their rusty scythe lying in the mud.~
+~
+5 0 1|8192
+0~ 10~ 30~ 3~ 
+20 100 0
+A
+2 -1
+A
+18 -2
+A
+19 2
+#14005
+Banded armour~
+some Banded Armour~
+Some very large , sturdy banded armour has been left here.~
+~
+9 0 1|8
+9~ 0~ 0~ 0~ 
+30 1500 0
+A
+17 -5
+#14006
+spiked club~
+a large spiked club~
+A VERY vicious spiked club leans against the wall here pulsating!~
+~
+5 16|64|512 1|8192
+0~ 20~ 40~ 7~ 
+30 2000 0
+A
+18 -2
+A
+19 10
+A
+2 -1
+#14008
+wooden large chest~
+a large wooden chest~
+A large wooden chest lies closed at your feet~
+~
+15 0 0
+1000~ 15~ 14010~ 0~ 
+1000 0 0
+#14010
+rusty key~
+a rusty key~
+The rusty key is -- rusty!~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~ 
+5 10 0
+#14011
+platemail plate silver~
+silver platemail~
+A large heap of finely crafted silver lies here.~
+~
+9 16|64|512 1|8
+14~ 0~ 0~ 0~ 
+30 0 0
+A
+13 50
+A
+18 2
+A
+19 2
+#14012
+polearm~
+a polearm~
+A huge polearm with intricate carvings leans against the wall.~
+~
+5 16|64|512|134217728 1|8192
+0~ 25~ 50~ 7~ 
+10 0 0
+A
+19 3
+A
+2 2
+#14013
+helm~
+the helm of accuracy~
+A very evil looking helmet glows as you look at it.~
+~
+9 1|16|64 1|16
+10~ 0~ 0~ 0~ 
+15 0 0
+A
+18 8
+#14014
+ring wizardy~
+the ring of wizardry~
+The ring of a powerful sorcerer looks like it needs a new home~
+~
+9 2|32|64|512 1|2
+6~ 0~ 0~ 0~ 
+5 0 0
+A
+12 100
+A
+4 1
+A
+3 1
+#14015
+mace ~
+mace of Damage~
+A HUGE mace capable of infliting great pain waits to maim another victim.~
+~
+5 1|16|64 1|8192
+0~ 25~ 45~ 7~ 
+25 0 0
+A
+19 7
+#14016
+bone staff~
+a staff made from bone~
+A staff made from animal bone gathers dust at your feet.~
+~
+4 16|64|512 1|16384
+45~ 7~ 7~ sanctuary~ 
+15 0 0
+#14017
+quarterstaff~
+the quarterstaff of protection~
+The quarterstaff hums quitely has you look at it.~
+~
+5 2|16|64 1|8192
+0~ 30~ 40~ 8~ 
+20 0 0
+A
+17 -40
+A
+2 2
+#14018
+bone wand~
+a bone wand~
+A thin wand carved from bone lies almost invisible at your feet.~
+~
+3 32|64|512 1|16384
+50~ 8~ 8~ dispel magic~ 
+5 0 0
+#14019
+spiked bracers~
+spiked bracers~
+Some bracers covered in spikes lie here, be careful not to stand on them!~
+~
+9 2|16|64 1|4096
+8~ 0~ 0~ 0~ 
+10 0 0
+A
+19 4
+A
+18 2
+#14020
+trident~
+a black trident~
+A HUGE black trident leans against the wall - waiting.~
+~
+5 16|64|512 1|8192
+0~ 40~ 60~ 5~ 
+30 0 0
+A
+18 -10
+A
+19 10
+#14021
+orb power~
+the orb of power~
+A mighty orb seems to draw you to it, as it glow eminates through the room.~
+~
+1 1|2|512|2048 1
+0~ 0~ -1~ 0~ 
+5 0 0
+A
+19 7
+A
+18 7
+#14022
+dagger jaggered~
+the jaggered dagger of pain~
+A vicious jaggered dagger is here, covered with the blood of its last victim.~
+~
+5 1|2|16|64|512|2048 1|8192
+0~ 40~ 65~ 11~ 
+30 0 0
+A
+18 8
+A
+19 12
+#14023
+belt jeweled~
+the kings jeweled belt~
+A jeweled belt of great splender lies before you~
+~
+9 64|128|512 1|2048
+13~ 0~ 0~ 0~ 
+20 0 0
+A
+12 75
+A
+13 75
+#14024
+crown~
+a crown of protection~
+A magnificent crown lies here radiating.~
+~
+9 1|2|64 1|16
+10~ 0~ 0~ 0~ 
+25 0 0
+A
+17 -25
+A
+2 3
+#14025
+lion mane~
+a lions mane~
+You recognise this as the mane from one of the heads of a great chimera.~
+~
+9 1|2 1|4
+15~ 0~ 0~ 0~ 
+15 0 0
+A
+18 8
+A
+5 1
+#14026
+goat horn~
+a goats horn~
+You recognise this as a goats horn from one of the heads of a great chimera.~
+~
+9 1 1|16
+8~ 0~ 0~ 0~ 
+10 0 0
+A
+19 5
+E
+horn~
+This horn has been ripped from the head of a chimera. Its pointed tip makes 
+it a great advantage in the heat of battle.~
+#14027
+tooth dragon~
+a dragons tooth~
+You recognise this yellow tooth as being that from a dragon's head.~
+~
+5 1|64 1|8192
+0~ 30~ 45~ 11~ 
+20 0 0
+A
+19 5
+A
+18 5
+A
+23 -10
+#14028
+chair shield~
+a chair~
+A chair sits in the corner but its last owner didnt use it to sit on.~
+~
+9 2|64 1|512
+8~ 0~ 0~ 0~ 
+40 0 0
+A
+2 -1
+A
+19 5
+A
+17 10
+#14029
+spiked armguards arm~
+spiked armguards~
+These armguards covered in spikes would greatly enhance your fighting ability.~
+~
+9 2|64|512 1|256
+10~ 0~ 0~ 0~ 
+20 0 0
+A
+19 3
+A
+17 -5
+#14030
+key obsidian~
+an obsidian key~
+A finely crafted obsidian key lies forgotten on the ground~
+~
+18 1 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+#14031
+immitation armor~
+immitation armor~
+This could be really cool armour but its just an illusion.~
+~
+18 0 1|8
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+19 45
+A
+18 40
+A
+17 -200
+#14032
+note~
+a folded note~
+A folded note is here. It may be of interest if you looked at the writing.~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+writing ~
+A piece of old, expensive paper covered in giant script:-                                                         
+Your Gracious Majesty Man-thor                                                                                               
+We have dicovered the 'gate' discussed previously and our clerics will soon 
+dispel the magic that surronds it. Therefore we should disscuss the plans 
+concerning Midgaard, Solace and of course Ofcol. Could you send therefore an 
+envoy to talk about operation 'bloody dagger' and our immenient victory.                                                                                  
+Yours in faith                                                                                                                             
+Xoric the Great,                                                                                                               
+Cyclops leader
+~
+#14033
+warhammer hammer~
+a large warhammer~
+A large warhammer lies here, it is doubtful you could wield such a large 
+weapon.~
+~
+5 16|64 1|8192
+0~ 15~ 35~ 8~ 
+50 0 0
+A
+19 8
+A
+18 -3
+#14034
+yellow wand~
+a yellow wand~
+A yellow wand engraved with symbols of fire and the sun, glows on the floor.~
+~
+3 1|64 1|16384
+40~ 5~ 5~ fireball~ 
+5 0 0
+#14035
+sledgehammer~
+a sledgehammer~
+A massive sledgehammer rests against the wall here~
+~
+5 0 1|8192
+0~ 20~ 30~ 8~ 
+55 0 0
+A
+2 -2
+A
+19 5
+#14036
+pickaxe axe pick~
+a pickaxe~
+A pickaxe used for digging up dirt or rocks lies against the wall~
+~
+5 0 1|8192
+0~ 20~ 30~ 2~ 
+55 0 0
+#14037
+hot branding iron~
+a hot branding iron~
+A red hot branding iron is burning a hole in the ground here~
+~
+5 1|64|512 1|8192
+0~ 25~ 45~ 6~ 
+5 0 0
+A
+19 0
+#14038
+green orb~
+a green translucent orb~
+An green see through orb lies sparking on the ground before you.~
+~
+4 1|16|32|2048 1|16384
+0~ 3~ 3~ power heal~ 
+5 0 0
+#14039
+visor crimson helm steel~
+a crimson steel helm and visor~
+A helm and visor made from crimson steel rests here.~
+~
+9 0 1|16
+10~ 0~ 0~ 0~ 
+8 0 0
+#14040
+steel breast plate~
+a steel breast plate~
+A breast plate of thick steel rests here.~
+~
+9 0 1|8
+6~ 0~ 0~ 0~ 
+10 0 0
+#14041
+note~
+a note~
+A note is on the desk. It may be of interest if you read the large writing.~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+writing script~
+A piece of old, expensive paper covered in giant script:-                                                         
+Your Gracious Majesty, Primus the worthy                                                                           
+We have dicovered the 'gate' discussed previously and our clerics will soon 
+dispel the magic that surronds it. Therefore we should disscuss the plans 
+concerning Midgaard, Solace and of course Ofcol. Could you send therefore an 
+envoy to talk about operation 'bloody dagger' and our immenient victory.                                                                             
+Yours in faith                                                                                                                             
+Xoric the Great,                                                                                                              
+Cyclops Leader
+~
+#14042
+axe~
+an axe~
+An axe used for chopping wood lies here.~
+~
+5 0 1|8192
+0~ 10~ 15~ 13~ 
+15 0 0
+#14043
+rope coil~
+a coil of rope~
+A thick coil of rope lies in the dust here~
+~
+13 0 1|8192
+0~ 0~ 0~ 0~ 
+5 0 0
+#14044
+saw~
+a saw~
+A saw designed for two people is here needing a sharpen~
+~
+5 0 1|8192
+0~ 10~ 15~ 1~ 
+55 0 0
+#14045
+rusty armor breastplate plate~
+rusty armour~
+Some rusty armor is here badly needing attention.~
+~
+9 0 1|8
+1~ 0~ 0~ 0~ 
+20 0 0
+#14046
+mace spiked broken~
+a broken spiked mace~
+The mace has been broken two-thirds the way up the handle, and many of the 
+spikes are now blunt~
+~
+5 0 1|8192
+0~ 10~ 20~ 7~ 
+15 0 0
+A
+19 -5
+A
+18 -10
+#14047
+log wood~
+a HUGE log of wood~
+A rather large piece of timber that has just been felled lies here.~
+~
+5 0 1|8192
+0~ 10~ 50~ 8~ 
+100 0 0
+#14048
+cart wooden~
+a wooden cart~
+A cart used for hauling logs is here still half laden.~
+~
+15 0 0
+1000~ 1~ 6~ 0~ 
+500 0 0
+#14049
+robe black~
+a pitch-black robe~
+The pitch-black robe eminates darkness.~
+~
+9 2|512 1|1024
+12~ 0~ 0~ 0~ 
+15 0 0
+A
+12 75
+#14050
+blunt hammer smithy's~
+a smithy's hammer~
+A smithy's hammer lies here waiting to pound some more metal~
+~
+37 64|512 1|8192
+0~ 40~ 45~ 7~ 
+30 0 0
+A
+19 5
+A
+5 2
+#14051
+gloves smithy's~
+smithy's gloves~
+A pair of smithy's gloves lie here.~
+~
+9 1 1|128
+12~ 0~ 0~ 0~ 
+15 0 0
+A
+23 -15
+A
+24 -15
+#14052
+apron smithy's~
+a smithy's apron~
+An apron belonging to a smithy lies here~
+~
+9 1 1|2048
+8~ 0~ 0~ 0~ 
+20 0 0
+A
+13 100
+A
+17 -20
+#14053
+padded gloves~
+a pair of padded gloves~
+Large padded gloves are here, you can only guess as to what they were used for.~
+~
+9 2|16 1|128
+10~ 0~ 0~ 0~ 
+20 0 0
+A
+2 2
+A
+18 3
+A
+19 4
+#14054
+padded sleeves~
+some padded sleeves~
+A large pair of padded sleeves are here, waiting to be worn.~
+~
+9 1|64 1|256
+9~ 0~ 0~ 0~ 
+18 0 0
+A
+2 2
+A
+5 2
+#14055
+spiked leggings~
+spiked leggings~
+A pair of silver leggings covered in huge metal spikes lean against the wall.~
+~
+9 1|16|64|512 1|32
+9~ 0~ 0~ 0~ 
+30 0 0
+A
+2 -2
+A
+19 5
+A
+18 3
+#14056
+plate platemail adamite~
+adamite platemail~
+Your eyes light up as you recognise a suit of adamite platemail.~
+~
+9 1|2|64|512 1|8
+15~ 0~ 0~ 0~ 
+40 0 0
+A
+18 8
+A
+19 8
+A
+24 -20
+#14057
+vambraces crimson steel~
+a pair of crimson steel vambraces~
+Some vambraces made of crimson steel rest here~
+~
+9 0 1|256
+10~ 0~ 0~ 0~ 
+8 0 0
+#14058
+greaves steel crimson~
+a pair of crimson steel greaves~
+Some greaves made from crimson steel rest here~
+~
+9 0 1|32
+10~ 0~ 0~ 0~ 
+8 0 0
+#14059
+star morning morningstar~
+a huge morningstar~
+A huge morning star rests here~
+~
+5 64 1|8192
+0~ 7~ 30~ 11~ 
+20 0 0
+A
+19 2
+A
+18 2
+E
+star morning morningstar~
+It looks damaging~
+#14060
+talisman demon~
+a demon-faced talisman~
+A demon-faced talisman glaers at you angrily.~
+~
+9 1|64 1|4
+5~ 0~ 0~ 0~ 
+11 0 0
+A
+2 -8
+A
+1 -10
+#14061
+black silk robe~
+a black silk robe~
+A black silk robe lies heaped in one corner~
+~
+9 0 1|1024
+15~ 0~ 0~ 0~ 
+6 0 0
+A
+17 -10
+A
+12 100
+#14062
+long slim dagger~
+a long slim dagger~
+A long slim dagger has been left here~
+~
+5 0 1|8192
+0~ 20~ 45~ 11~ 
+4 0 0
+A
+18 5
+A
+19 5
+#14063
+stone grey dull~
+a dull grey stone~
+You can barely make out a dull grey stone.~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~ 
+10 0 0
+A
+13 100
+A
+5 4
+#14064
+silk golden~
+golden silk~
+Some golden silk lies in a heap here~
+~
+9 1|2|64 1|128
+12~ 0~ 0~ 0~ 
+4 0 0
+A
+3 3
+A
+12 50
+A
+13 50
+#14065
+fish salmon~
+a fish~
+A salmon is here, ready to be eaten.~
+~
+19 0 1
+20~ 0~ 0~ 0~ 
+5 0 0
+#14066
+corn~
+a piece of corn~
+A piece of corn lies on the floor.~
+~
+19 0 1
+30~ 0~ 0~ 0~ 
+5 0 0
+#14067
+dark amulet~
+a dark amulet~
+A dark amulet eminates evil as you look at it.~
+~
+9 1|16|128|512 1|4
+6~ 0~ 0~ 0~ 
+5 0 0
+A
+12 150
+A
+18 -5
+A
+19 -5
+#14068
+cart~
+a cart~
+A rickety cart is here half full with wood.~
+~
+15 0 0
+2000~ 1~ -1~ 0~ 
+1000 0 0
+#14069
+padded armor~
+some padded armor~
+Some well padded armor lies forgotten in a heap~
+~
+9 512 1|8
+14~ 0~ 0~ 0~ 
+30 0 0
+A
+17 -20
+#14070
+club~
+a club~
+An ordinary club lies here~
+~
+5 0 1|8192
+0~ 10~ 15~ 8~ 
+20 0 0
+A
+18 4
+#14071
+robe translucent~
+a translucent robe~
+A translucent pile of cloth glows in the corner~
+~
+9 1|64|1024 1|1024
+14~ 0~ 0~ 0~ 
+10 0 0
+A
+12 250
+A
+13 150
+A
+14 250
+#14072
+deer skin~
+a deer skin~
+A skin of a deer is lying at your feet~
+~
+9 0 1|8
+3~ 0~ 0~ 0~ 
+5 0 0
+#14073
+knife hunting~
+a hunting knife~
+A hunting knife is here still covered in blood.~
+~
+5 0 1|8192
+0~ 10~ 25~ 2~ 
+15 0 0
+#14074
+potion indigo~
+an indigo potion~
+An indigo potion lies here~
+~
+10 1 1
+40~ shield~ energy containment~ inertial barrier~ 
+5 0 0
+#14075
+wooden spoon~
+a wooden spoon~
+A large wooden spoon is here~
+~
+5 64 1|8192
+0~ 30~ 40~ 7~ 
+20 0 0
+#14076
+net fishermans~
+a fishermans net~
+A net used for catching fish is here~
+~
+5 0 1|8192
+0~ 20~ 35~ 9~ 
+20 0 0
+A
+19 -5
+A
+18 12
+#14077
+staff dull~
+a dull staff~
+A dull staff inscribed with unknown writing is here.~
+~
+4 2|16 1|16384
+45~ 8~ 8~ earthquake~ 
+10 0 0
+#14078
+katana blade death~
+the katana of death~
+An katana lies here, its blade covered with runes of death.~ 
+~
+5 1|16|64|1048576 1|8192
+0~ 35~ 50~ 1~
+30 0 0
+A
+18 15
+A
+19 5 
+#0
+
+
+#ROOMS
+#14001
+Woodland~
+You travel through the dense woodland. You cannot see the sky as the limbs 
+of the huge trees that surrond you block the view and the light. To the 
+west you can just see a clearing; to get to it would mean pushing your way
+through the thick foliage.
+~
+0 1 3
+D0
+~
+~
+0 -1 512
+D3
+~
+~
+0 -1 14002
+S
+#14002
+The Clearing~
+A great path of distruction eminating from the south can be seen here. The 
+once peaceful forest has been distroyed. Great footprints and cart tracks can
+be seen leading off to the south. To the west you can see a field of corn.
+~
+0 4 2
+D1
+~
+~
+0 -1 14001
+D2
+~
+You see a hilly region to the south.
+~
+0 -1 14010
+D3
+~
+A field of corn
+~
+0 -1 14003
+S
+#14003
+Corn Field~
+Corn extends in every direction.
+~
+0 0 2
+D0
+~
+~
+0 -1 14005
+D1
+~
+A clearing
+~
+0 -1 14002
+D2
+~
+A corn field
+~
+0 -1 14008
+D3
+~
+A corn field
+~
+0 -1 14004
+S
+#14004
+Corn Field~
+Corn extends in every diection.
+~
+0 0 2
+D0
+~
+A corn field.
+~
+0 -1 14006
+D1
+~
+A corn field.
+~
+0 -1 14003
+D2
+~
+A corn field.
+~
+0 -1 14009
+S
+#14005
+Corn Field~
+Corn extends in every direction.
+~
+0 0 2
+D2
+A corn field
+~
+~
+0 -1 14003
+D3
+~
+A corn field.
+~
+0 -1 14006
+S
+#14006
+Corn Field~
+Corn extends in every direction. A shed lies to the north however.
+~
+0 0 2
+D0
+The rickity shed door looks as though it will fall off its hinges if you touch 
+it.
+~
+Shed door~
+1 -1 14007
+D1
+~
+A corn field.
+~
+0 -1 14005
+D2
+~
+A corn field.
+~
+0 -1 14004
+S
+#14007
+The small shed.~
+You step inside a very large smelly dark shed. You notice a variety of tools 
+and one very large chair which is taken.
+~
+0 1|8 0
+D2
+The rickety shed door will fall off its hinges if you touch it.
+~
+Shed door~
+1 -1 14006
+S
+#14008
+Corn Field~
+Corn extends in every direction.
+~
+0 0 2
+D0
+~
+A corn field
+~
+0 -1 14003
+D3
+~
+A corn field
+~
+0 -1 14009
+S
+#14009
+Corn Field~
+Corn extends in every direction. A well worn path extends to the west.
+~
+0 0 2
+D0
+~
+A corn field.
+~
+0 -1 14004
+D1
+~
+A corn field.
+~
+0 -1 14008
+D3
+~
+~
+0 -1 14136
+S
+#14010
+Path through the forest.~
+The tracks continue to the south where you can see hills rise from the 
+horizorn. To the north is a large clearing.
+~
+0 0 2
+D0
+~
+A clearing
+~
+0 -1 14002
+D2
+~
+Before the hills.
+~
+0 -1 14011
+S
+#14011
+Before the great cave.~
+You can see what looks like a large cave opening to the south. To the east 
+stands a guard house from which you can hear snoring eminate.
+~
+0 0 2
+D0
+~
+A path.
+~
+0 -1 14010
+D1
+~
+Guardhouse.
+~
+0 -1 14012
+D2
+~
+A large cave.
+~
+0 -1 14013
+S
+#14012
+Guardhouse.~
+If you were 10 foot tall then this would be a cramped guard house. The 
+inhabitant of this post does seem a little cramped. Thank god for you he is
+fast asleep.
+~
+0 1|8 0
+D3
+~
+Before the Great Cave.
+~
+0 -1 14011
+S
+#14013
+Entrance to the cave.~
+You stand at the entrance to a HUGE cave, the footprints and cart tracks 
+disappear into the darkness. You can sense an earie, evil feeling standing 
+here and it seems to be coming from the mouth of the cave. You wonder to 
+yourself whether it is wise to proceed or do you recall back to safety?
+~
+0 0 4
+D0
+~
+A path.
+~
+0 -1 14011
+D2
+~
+~
+0 -1 14014
+S
+#14014
+Inside the Great Cave.~
+You stand in a HUGE cave that extends to the west and south. As you look 
+around you notice the odd bat fly past your nose. On the wall at regular 10 
+foot intervals are large torches that light the cave. The cart tracks you saw 
+outside continue to the south. To the east you notice a smaller cave.
+~
+0 8 0
+D0
+~
+Outside the Great Cave.
+~
+0 -1 14013
+D1
+~
+Storage
+~
+0 -1 14015
+D2
+~
+The Great Cave.
+~
+0 -1 14019
+D3
+~
+The Great Cave.
+~
+0 -1 14022
+S
+#14015
+Storeroom.~
+You stumble into a storage cave. Numerous items are collected into piles 
+around the cave which extends to the east and south. Here you find many saws
+and axes used for chopping trees.
+~
+0 8 0
+D1
+~
+Storage
+~
+0 -1 14016
+D2
+~
+Storage
+~
+0 -1 14017
+D3
+~
+The Great Cave
+~
+0 -1 14014
+S
+#14016
+Storeroom.~
+In this part of the cave you find many building tools including great hammers,
+axes, saws and rope. All of it is oversized for your puny hands. There is a
+lack of lighting in this part of the cave.
+~
+0 1|8 0
+D2
+~
+Storeroom
+~
+0 -1 14018
+D3
+~
+Storeroom
+~
+0 -1 14015
+S
+#14017
+Storeroom.~
+More items of construction are held here. The cyclops MUST be building 
+something - but what?
+~
+0 8 0
+D0
+~
+Storeroom
+~
+0 -1 14015
+D1
+~
+Storeroom
+~
+0 -1 14018
+S
+#14018
+Storeroom.~
+Here lie the obviously useless weapons of the cyclops guard. Broken spiked 
+Maces and rusted armour litter the floor of the cave.
+~
+0 1|8 0
+D0
+~
+Storeroom
+~
+0 -1 14016
+D3
+~
+Storeroom
+~
+0 -1 14017
+S
+#14019
+The Great Cave.~
+The Massive cavern seems to taper off to the south even though the tracks 
+extend in that direction. This mighty Cavern extends to the north and the 
+west.
+~
+0 8 0
+D0
+~
+The Great Cave.
+~
+0 -1 14014
+D2
+~
+Before the Barracks.
+~
+0 -1 14020
+D3
+~
+The Great Cave.
+~
+0 -1 14023
+S
+#14020
+Entrance to the Barracks.~
+You stand before a smaller cave to the east. The entrance is covered by a 
+simple cloth. from which can hear the laughter of many voices - Deep , booming 
+voices , at least 3 of them. A newly dug tunnel is carved from the rock to the 
+south into which the tracks lead.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14019
+D1
+A simle cloth covers the entrance to the barracks
+~
+Cloth~
+1 -1 14021
+D2
+~
+~
+0 -1 14052
+S
+#14021
+Barracks.~
+Here is the resting place of the Cyclop guard. about 20 bunks line the cave 
+walls and tables and chairs stand in the middle. You notice a chest in the 
+corner of the room. It may be a little hard to reach with the cyclops guards
+currently charging you!!
+~
+0 1|8 0
+D3
+The cloth opens to a main tunnel.
+~
+Cloth~
+1 -1 14020
+S
+#14022
+The Great Cave.~
+The Massive Cavern extends to the west, east and south. Large bats continue 
+to fly around your head, alarmed at your intrusion.
+~
+0 0 0
+D1
+~
+~
+0 -1 14014
+D2
+~
+~
+0 -1 14023
+D3
+~
+~
+0 -1 14025
+S
+#14023
+The Great Cave.~
+As you shout you hear you echo continue down the huge cavern for a couple of
+seconds. Then you realise that the noise may bring extra attention to your
+presense. The massive cavern extends to the north, west and east.
+~
+0 8 0
+D0
+~
+~
+0 -1 14022
+D1
+~
+~
+0 -1 14019
+D3
+~
+~
+0 -1 14024
+S
+#14024
+The Great Cave.~
+The Great Cavern seems to taper off to the west. However you can see access
+tunnels to the south and further to the north.
+~
+0 0 0
+D0
+~
+~
+0 -1 14025
+D1
+~
+~
+0 -1 14023
+D2
+~
+~
+0 -1 14032
+S
+#14025
+The Great Cave.~
+You stand at an apparant intersection. Extending to the south and east is the
+large cavern that leads to the exit, however, tunnels lead of the the north
+and west. You notice movement in the tunnel to the west.
+~
+0 8 0
+D0
+~
+~
+0 -1 14026
+D1
+~
+~
+0 -1 14022
+D2
+~
+~
+0 -1 14024
+D3
+~
+~
+0 -1 14082
+S
+#14026
+Large tunnel~
+You stand in a large tunnel to the north of the great cave. This tunnel 
+extends to the north. To the west and east you see simple cloth skins 
+covering the entrances to smaller caves.
+~
+0 1|8 0
+D0
+You see the end of the tunnel
+~
+~
+0 -1 14029
+D1
+The cloth opens to a small cave.
+~
+Cloth~
+1 -1 14027
+D2
+You see the great cave here.
+~
+~
+0 -1 14025
+D3
+The cloth opens to the cave.
+~
+Cloth~
+1 -1 14031
+S
+#14027
+Cave Dwelling.~
+You burst in upon an unsuspecting family about to eat tea. The young child 
+screams seeing you in full battle gear while the farther reaches for a knife 
+to try and defend his family. The cave has a primitve fireplace in the corner
+from which the smoke rises to a small hole in the ceiling. A table sits in the
+middle of the room while 3 large mats lie to your left.
+~
+0 8 0
+D3
+The cloth opens to the cave.
+~
+Cloth~
+1 -1 14026
+E
+fireplace~
+The crude fireplace is made from stones and is currently smoldering.
+~
+S
+#14028
+Cave Dwelling~
+There is currently no-one home here - however you notice two very large mats
+to your left and a fireplace and table similar to the dwelling to the south.
+As you look up you can see a small ventilation hole.
+~
+0 0 0
+D3
+The cloth opens to a tunnel
+~
+Cloth~
+1 -1 14029
+E
+fireplace~
+The crude fireplace is made from stones and is currently smoldering.
+~
+S
+#14029
+T-intersection~
+The tunnel ends here abruptly. Again you can see cloth's covering caves to the
+west and east.
+~
+0 1|8 0
+D1
+A cloth opens to a small cave.
+~
+Cloth~
+1 -1 14028
+D2
+~
+~
+0 -1 14026
+D3
+A cloth opens to a small cave
+~
+Cloth~
+1 -1 14030
+S
+#14030
+Cave Dwelling.~
+You can see just one mat in this cave and the usual fireplace and table. 
+Sitting at the table you see an old cyclops male staring into space.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 14029
+E
+fireplace~
+The crude fireplace is made from stones and is currently smoldering.
+~
+S
+#14031
+Abandoned Dwelling.~
+There is an over turned table laying in the middle of the room and the 
+fireplace has long since been distroyed. Debris litters the floor and the 
+smell here is quite foul. There is nothing of interest here.
+~
+0 0 0
+D1
+The cloth opens to the cave
+~
+cloth door~
+1 -1 14026
+S
+#14032
+The Slimy Tunnel~
+No torches burn in this tunnel. As you hold you light source up to the wall 
+you are startled in the fact the walls are green with slime. To the south you 
+can see an opening with light eminating from it. Fom the west you can hear 
+cries of battle but can see nothing.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14024
+D2
+~
+~
+0 -1 14033
+D3
+~
+~
+0 -1 14042
+S
+#14033
+Arena Entrance.~
+You stand at the entrance to a circular 2-tier cave. To the south you can see
+a 20 foot drop into a pit. It would be unadvisable to enter this pit as the    
+walls are very smooth which could make climbing out very hard. To the the west 
+and east you can travel around this pit. It looks as though this is where the 
+cyclops bring their 'prisoners' to do battle with one another or something 
+else? Looking into the pit you can see assorted bones scattered on the floor 
+and what looks like a grate in the southern wall of the pit.
+~
+0 0 0
+D0
+~
+~
+0 -1 14032
+D1
+~
+~
+0 -1 14038
+D2
+~
+~
+0 -1 14037
+D3
+~
+~
+0 -1 14035
+S
+#14034
+The Lair.~
+This Lair is inhabited by a VERY nasty creature judging by the claw and 
+scorchmarks on the side of the wall. To the north you can enter the pit or 
+see if there is any way out to the south.
+~
+0 0 0
+D0
+~
+Grate~
+1 -1 14037
+D2
+~
+~
+0 -1 14036
+E
+chimera beast~
+The chimera has the hindquarters of a large, black goat and the forequarters 
+of a lion. Brownish black wings rise from its back and it possess three heads: 
+that of a goat, a lion and a fierce dragon.
+~
+S
+#14035
+Western part of the Arena~
+You are at on the western side of the cave just east from the pit. Here you   
+can get a better view of the pit the only exit from it seems to be a grate 
+in the south wall. Looking at the state of some of the bones it appears 
+unlikely that mere slaves could crush a mans skull like a pancake.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14033
+D1
+~
+~
+0 -1 14037
+D2
+~
+~
+0 -1 14039
+S
+#14036
+The Lair.~
+This part of the Lair is a mixture of shit, bones and decaying meat, and 
+the only exit is 20 feet above you. By using the great corpse of the Chimera 
+you can climb to safety above you.
+~
+0 1024 0
+D0
+~
+~
+0 -1 14034
+D4
+~
+~
+0 -1 14041
+S
+#14037
+The Pit.~
+You land with a crash on the pits floor. As you raise your head, a rat 
+jumps out of a smashed open skull and scampers away to the south. You 
+cannot possibly scale the 20 foot walls that surround you. The only 
+exit seems to be the grate you saw to the south.
+~
+0 1|4|8 0
+D2
+~
+Grate~
+1 -1 14034
+S
+#14038
+Eastern side of the Arena.~
+Looking to the west you see still more half-bodies and various limbs lying 
+on the ground of the pit. Soemthing very nasty must have done that much 
+damage. To the north and south, you can continue around the edge of the pit, 
+and if you are really game you can jump the 20 feet into the pit to the west.
+~
+0 0 0
+D0
+~
+~
+0 -1 14033
+D2
+~
+~
+0 -1 14039
+D3
+~
+~
+0 -1 14037
+S
+#14039
+Southern part of the Arena.~
+You stand at the southern part of the arena. This place must be able to hold 
+about 100 cyclops. You feel disgusted at all the lives that have been lost in
+this place and at the laughter and cheering the the cyclops gave while this 
+was going on. To the west and east, you can continue around the pit, or to the
+north you can jump right in. To the south you can see a cloth which covers an
+exit leading in that direction.
+~
+0 0 0
+D0
+~
+~
+0 -1 14037
+D1
+~
+~
+0 -1 14038
+D2
+You see a crude cloth hanging over the entrance
+~
+Cloth door~
+1 -1 14040
+D3
+~
+~
+0 -1 14035
+S
+#14040
+Connecting tunnel~
+This tunnel is fairly featureless apart from a very disgusting smell 
+originating from the south. To the north you can see a simple cloth door.
+~
+0 1|8 0
+D0
+~
+Cloth~
+1 -1 14039
+D2
+~
+~
+0 -1 14041
+S
+#14041
+Beastmaster Lair.~
+This room stinks like shit! Thats probably because of the HUGE 3-headed beast 
+25 feet below you. The sole inhabitant of the room is not happy to see you.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14040
+D5
+~
+~
+0 -1 14034
+S
+#14042
+Slimy tunnel~
+To the east is more slime. To the west the cries of battle are getting louder.
+~
+0 0 0
+D1
+~
+~
+0 -1 14032
+D3
+~
+~
+0 -1 14080
+S
+#14051
+The Basement~
+There are no exits here as there are no entrances! Funny that. This is just 
+a very big basement in the virtual space that is this mud. If you are reading 
+this you shouldnt be so recall now!
+~
+0 4 0
+S
+#14052
+The dimly lit tunnel~
+You continue to see the cark tracks lead off into the darkness to the south. 
+Looking around you can see a very large wooden door set in the archway of 
+another tunnel to the east.  To the south the tunnel continues, while to the 
+north you can head back to the great cave.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14020
+D1
+You can see a huge wooden door set into the mouth of the cave. Carved into 
+the door is the sign of a hammer.
+~
+door wooden~
+1 -1 14053
+D2
+~
+~
+0 -1 14055
+S
+#14053
+The smithy's cave~
+You stand in a cave belonging to the cyclops smithy. All around you can see 
+dented armour and broken weapons. To the east a huge metal door opens into 
+the furnace where the smithy heats his tool. You can exit the smithy's cave 
+to the west.
+~
+0 1|8 0
+D1
+Opening the furnace door you see embers glowing. The heat is intense and only 
+an idiot would want to go in there.
+~
+furnace iron door~
+1 -1 14054
+D3
+You see a huge wooden door
+~
+door wooden~
+1 -1 14052
+S
+#14054
+The furnace~
+As you enter the furnace youe hair quickly catches on fire, followed by your 
+skin. As you feel the fire burn you to ashes you figure it would be wise to 
+read discriptions of rooms and exits in the future.
+YOU ARE DEAD!!
+~
+0 1|4 0
+S
+#14055
+The long tunnel~
+The number of torches upon the walls are getting fewer and fewer, but the 
+cart tracks still disappear into the gloomy dark to the south. Heading north 
+here will take you back to the great cave.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14052
+D2
+~
+~
+0 -1 14056
+S
+#14056
+The long tunnel~
+Still the tunnel extends  both to the north and to the south, although it 
+gets lighter to the south. The cart tracks can still be seen on the ground.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14055
+D2
+~
+~
+0 -1 14057
+S
+#14057
+The intersection~
+Here the tunnel is intersected by another. The cart tracks lead of the the 
+north and south. You can make out doors both to the west and east. Screams 
+of agony can be heard to the west.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14056
+D1
+~
+~
+0 -1 14062
+D2
+~
+~
+0 -1 14066
+D3
+~
+~
+0 -1 14058
+S
+#14058
+Screams of terror~
+Both to the north and south, iron doors have been set into small caves that 
+have been dug out. The doors have no locks, just a latch that can easily be 
+opened. The screams you heard before seem to be coming from the iron door to 
+the west. To the east is the intersection.
+~
+0 1|8 0
+D0
+The iron door opens onto a small prison cave
+~
+door iron~
+1 -1 14059
+D1
+~
+~
+0 -1 14057
+D2
+The iron door opens onto a small prison cave
+~
+cave iron~
+1 -1 14060
+D3
+Screams come from here.
+~
+door iron~
+1 -1 14061
+S
+#14059
+Prison Cell~
+This cramped little cave houses captives that the cyclops guard find intruding 
+upon there existance. Let you fall not into the same fate.
+~
+0 1|8 0
+D2
+The iron door opens onto a small prison cave
+~
+door iron~
+1 -1 14058
+S
+#14060
+Prison Cave~
+This cramped little cave houses captives that the cyclops guard find intruding 
+upon there existance. Let you fall not into the same fate.
+~
+0 1|8 0
+D0
+The iron door opens back into a tunnel.
+~
+door iron~
+1 -1 14058
+S
+#14061
+The torturer chamber~
+What you see in here sickens you. A cyclops bends over a human with a hot 
+iron and presses the rod into his left leg causing the smell of burning flesh 
+and the mans screams to fill the cave. Looking around you can see half 
+decomposed corpses in cages apparently forgotten about, hammers, nails and 
+other various torturer devices lie scattered about the room. The only exit is 
+to the east.
+~
+0 1|8 0
+D1
+The iron door leads back to the corridor.
+~
+door iron~
+1 -1 14058
+S
+#14062
+The damp cave.~
+You stand in a blue cave in which the walls are coated with water - like it was 
+sweating, although the walls feel cool to the touch and you notice a drop in 
+the temperature. Your magical items seem too glow with less vigour and hum 
+less. It appears that you have stumbled into an anti-magical part of the cave 
+system - buy why?  You can see blue metal doors to the south and north and 
+this tunnel continues to the east.
+~
+0 1|8 0
+D0
+The blue iron door opens to a small cave
+~
+door blue iron~
+1 -1 14064
+D1
+~
+~
+0 -1 14065
+D2
+The blue iron door opens to a small cave.
+~
+door blue iron~
+1 -1 14063
+D3
+~
+~
+0 -1 14057
+S
+#14063
+The damp prison cave~
+This small cave is damp too and it continues to have an effect on your magical 
+items. You see some chains fixed to the wall and they seem to holding 
+somebody. To the north you can leave this prison.
+~
+0 1|8 0
+D0
+The door leads back to the damp cave.
+~
+blue iron door~
+1 -1 14062
+S
+#14064
+The damp prison cave.~
+You are stand in a small, damp, blue cave, that the cyclops apparently use 
+to hold there prisoners. You hear a faint cry from the corner and see a 
+prisoner chained to the wall. To the south you can exit this prison.
+~
+0 1|8 0
+D2
+The blue iron door opens to a small cave.
+~
+door blue iron~
+1 -1 14062
+S
+#14065
+The damp cave~
+The cave ends abruptly here. There is nothing of interest here and the only 
+exit is to the west.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 14062
+S
+#14066
+The tunnel~
+You stand in a non-discript tunnel. The cart tracks are still present. As you 
+stop to examine the tracks you think you can hear running water to the south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14057
+D2
+You see the tunnel open up to the south.
+~
+~
+0 -1 14067
+S
+#14067
+Before the bridge.~
+The tunnel opens up to reveal an underground river running in an east-west 
+direction 100 feet below you. The tunnel end abuptly here as you look over 
+the cliffs edge to the running water 100 feet below. A half constructed wooden 
+bridge attempts to span the 50 foot gap to the other side where you see the 
+tunnel continue. Looking around you notice about 15 carts laden with many 
+trees to the west. You now know why the Cyclops has destroyed the forest 
+before the entrance to the caves. To the east you can see a trail leading down 
+to the river at the bottom of the cliff.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14066
+D1
+~
+~
+0 -1 14071
+D2
+~
+~
+0 -1 14069
+D3
+~
+~
+0 -1 14068
+E
+bridge wooden~
+The Bridge seems to be well construscted although it spans only half the way 
+across the gap to the other side.
+~
+S
+#14068
+Storage~
+All of the carts laden with trees from the forest are brought here for storage 
+before the wood is used on the bridge. To the south you see the bridge 
+entrance.
+~
+0 1|8 0
+D1
+You see the bridge entrance
+~
+~
+0 -1 14067
+E
+Cart~
+The cart is crude in design but does its jobs of carrying the trees felled in 
+the forest nnorth of the cave entrance.
+~
+S
+#14069
+The bridge~
+You stand upon the first half of the bridge. The construction seems sound. 25 
+feet to the south the tunnel continues into the darkness but it would be 
+suicide to try to jump the gap. To the north you can see the tunnel that 
+brought you here, the many carts to the north-west and a trail that leads 
+down the cliffside to the river below.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14067
+D2
+There is a large gap between the end of the bridge and the other side. You 
+couldnt possibly jump it.
+~
+~
+0 -1 14070
+S
+#14070
+Mid-air~
+What a fool you are for thinking you could jump the gap. The rocks below see 
+to come towards you at a surprising rate of knots. If only I had gone down the 
+path to the rivers edge. This is the last thing you think of as your head 
+smashes against the jaggered rocks.
+~
+0 1|4 0
+S
+#14071
+Sloping trail~
+You stand above at 6 foot wide trail that zig-zags its way down the cliff 
+face. To the west you can see the entrance to the bridge and the carts beyond 
+that.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 14067
+D5
+~
+~
+0 -1 14072
+S
+#14072
+Base of the cliff.~
+You stand at the base of the cliff. To your south you see the river run past 
+you at a gentle pace. Looking across the river you see another path leading up 
+the cliff. You cannot enter the river here as there are large rocks 
+preventing you from doing this, however to the north you can see a entry point 
+to the 
+river.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 14073
+D4
+The top of the cliff
+~
+~
+0 -1 14071
+S
+#14073
+Next to the underground river.~
+You are able to get across this river by boat as it does not run very fast at 
+this point. Looking up you can see the bridge half-finished. To the east is 
+the base of the trail leading up the cliff.
+~
+0 1|8 0
+D1
+Below a steep cliff
+~
+~
+0 -1 14072
+D2
+~
+~
+0 -1 14074
+E
+river~
+The river is a light blue colour and you surmise it originates from the 
+glaciers and snow-topped mountains far to the North-West.
+~
+S
+#14074
+On the underground river~
+The river runs in a west-east direction. The current is too strong to head up 
+river to the west and you decided not to head east. The other side of the 
+river is to the south or you can get back to dry land just to your north.
+~
+0 1|4|8 7
+D0
+~
+~
+0 -1 14073
+D2
+~
+~
+0 -1 14075
+S
+#14075
+On the underground river.~
+The river runs in a west-east direction. The current is too strong to head up 
+river to the west and you decided not to head east. The other side of the 
+river is to the north or you can get back to dry land just to your south.
+~
+0 1|4|8 7
+D0
+~
+~
+0 -1 14074
+D2
+~
+~
+0 -1 14076
+S
+#14076
+Southern banks of the river~
+You stand on the southern banks of the river. Rocks west and east make 
+traveling in that direction impossible. There are large stone steps carved 
+into the cliff that rises up 100 feet above you.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14075
+D4
+~
+~
+0 -1 14077
+S
+#14077
+Top of the cliff~
+Looking to the north you see the half finished bridge, while south the tunnel 
+dissapppears into the darkness. The cyclops are building a bridge - but to 
+what?? You can head down here via steps carved into the cliff.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14078
+D5
+The river runs here.
+~
+~
+0 -1 14076
+S
+#14078
+Narrow Fissure~
+The tunnel narrows here to be just 2 feet wide and 6 feet high, just right for 
+you but a bit of a squeeze for a 10 foot cyclops. As you bend your head to 
+pass you notice that there are alot of hand-prints in the dust on the floor. 
+Obviously ALOT of cyclops have crawled on there hands and knees through here. 
+Looking southwards you see light, perhaps an exit? Heading north you can go 
+back towards the underground river.
+~
+0 1|4|8 0
+D0
+~
+~
+0 -1 14077
+D2
+~
+~
+0 -1 14079
+S
+#14079
+Jewelled Cave~
+The light you saw in the fissure was not daylight but from a magnificent 
+Jewelled cave.  The cave forms a half-cirlce in which you stand at the top of. 
+The walls glow from within with an awesome radiance. You have to cover your 
+eyes as they adjust to the light af the truely wonderous cave. Further to the 
+south you can make out a statue of a beautiful woman. Before you can admire 
+the beauty of this natural wonder you quickly realise you are not alone. You 
+can circle around the cave edge by going west or east or you can head towards 
+the statue by going south.
+~
+0 8 0
+D0
+~
+~
+0 -1 14078
+D1
+~
+~
+0 -1 14131
+D2
+~
+~
+0 -1 14130
+D3
+~
+~
+0 -1 14129
+S
+#14080
+Training Grounds~
+The tunnel widens into a large cave that extends to the west. It is well lit 
+by many torches that are attached to the walls. Many different type of weapons 
+lie against the walls of the cave. It seems that young warriors come here do 
+learn from the master of battle. You will soon know how good the master and 
+his trainees are.
+~
+0 8 0
+D1
+~
+~
+0 -1 14042
+D3
+~
+~
+0 -1 14081
+S
+#14081
+Training rooms~
+These taing grounds are far removed from the ones to the east for insted of 
+spiked clubs and armour, desks, scrolls, staffs and wands fill this rooms. 
+The master Magician and HIS trainees may prove to be tougher than the previous 
+ones.
+~
+0 8 0
+D1
+~
+~
+0 -1 14080
+S
+#14082
+Before the Great Doors~
+You stand before two large blue iron doors that have been crafted to fit 
+around the mouth of the tunnel leading to the west. There is a large lock in 
+the middle of the doors, locking them tight. You can only imagine that there 
+must be something important behind them as they are guarded. To the east you 
+can go back into the great cave.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14025
+D3
+The great doors stand here.
+~
+doors door great~
+8 14030 14083
+E
+door doors great~
+The great doors stand 30 feet high and art made from blue iron and covered 
+with mystical runes. No magic users can pass through these doors.
+~
+E
+lock~
+The large obsidian lock is of the finest quality and you think beyond the 
+skills of the best thief in the land. The only thing unlocking this lock 
+would be the key.
+~
+S
+#14083
+The Palace~
+Looking all around you, you cannot believe that you have left a cave behind 
+you and are now standing in what can only be discribed as a palace. The walls 
+and floors are not rough and grey but smooth and white, while the torches are 
+held by brass fittings. This part of the 'cave' must hold something or someone 
+very important.
+~
+0 8 0
+D1
+The great doors stand here.
+~
+great door doors~
+8 14030 14082
+D3
+The palace~
+~
+0 -1 14084
+S
+#14084
+The palace corridor.~
+You stand in another part of the palace. The many torches afixed to the wall 
+light the corridor well. To the north and south you can see elegant doors. 
+This main corridor in the palace extends west and east.
+~
+0 8 0
+D0
+The door opens into another room
+~
+door ~
+1 -1 14085
+D1
+The palace~
+~
+0 -1 14083
+D2
+A large door opens to a room
+~
+door~
+1 -1 14086
+D3
+The palace~
+~
+0 -1 14087
+S
+#14085
+Cleric quarters~
+This room belongs to the cyclops cleric judging by the arcane sysbols and the 
+small alter on the east side of the room. There is a 15 foot bed on the west 
+side of the room and a large table next to it. The cleric is however not here, 
+you can only wonder as to his whereabouts.
+~
+0 8 0
+D2
+The door open into the corridor
+~
+door~
+1 -1 14084
+S
+#14086
+Mage quarters.~
+This room belongs to the cyclops mage judging by the scrolls and wands upon 
+the desk. There is a 15 foot bed on the west side of the room and a large 
+table next to it. The mage is however is not currently here.
+~
+0 8 0
+D0
+The door opens into the corridor
+~
+door ~
+1 -1 14084
+S
+#14087
+The palace corridor. ~
+You stand in another part of the corodor. The many torches afixed to the wall 
+light the corridor well. To the north and south you can see elegant doors. 
+This main corridor in the palace extends west and east.
+~
+0 8 0
+D0
+A door opens to a room
+~
+door elegant~
+1 -1 14088
+D1
+The palace~
+~
+0 -1 14084
+D2
+A door opens to a room
+~
+door elegant~
+1 -1 14089
+D3
+~
+~
+0 -1 14090
+S
+#14088
+The Psionics' room~
+This room belongs to the cyclops psionic. You can tell as he is currently 
+snarling at you from the other side of the room. He is not happy at the 
+intrusion especially from mere humans!
+~
+0 8 0
+D2
+A large door opens to a corridor
+~
+door~
+1 -1 14087
+S
+#14089
+An elegant room~
+This room is empty except for a very large bed on the east wall. If you 
+closed the door it would probably be safe to rest here.
+~
+0 8 0
+D0
+A door opens to the corridor
+~
+door elegant~
+1 -1 14087
+S
+#14090
+The palace corridor.~
+You stand in another part of the corodor. The many torches afixed to the wall 
+light the corridor well. This main corridor in the palace extends west and 
+east. To the west the corridor appears to end.
+~
+0 8 0
+D1
+The palace
+~
+~
+0 -1 14087
+D3
+~
+~
+0 -1 14091
+S
+#14091
+A dead end?~
+The corridor appears to stop abrubtly here. However two things bug you. 
+Firstly you notice footprints dissappear under the western wall and secondly 
+there is a VERY big guard standing here. Why is a guard guarding a dead end 
+for?
+~
+0 8 0
+D1
+The palace~
+~
+0 -1 14090
+D3
+You can make out a door in the stone wall.
+~
+stone door~
+1 -1 14092
+S
+#14092
+Top of the stairwell.~
+The elite guard didnt do his job very well and you stand above a large spiral 
+stairway which circles downwards.
+~
+0 8 0
+D1
+You make out a stone door in the wall.
+~
+stone door~
+1 -1 14091
+D5
+~
+~
+0 -1 14093
+S
+#14093
+On the stariwell~
+This staiwell is carved straght from the rock itself. Each step is 1 foot high 
+and 6 feet long which makes negotiating this stair very difficult. The stair 
+extends up and down.
+~
+0 8 0
+D4
+~
+~
+0 -1 14092
+D5
+~
+~
+0 -1 14094
+S
+#14094
+Bottom of the stairwell~
+You are at the bottom of the stariwell and a corridor extends to your west. 
+Looking up the stairwell you cannot see anything.
+~
+0 8 0
+D3
+~
+~
+0 -1 14095
+D4
+A great stairwell
+~
+~
+0 -1 14093
+S
+#14095
+The Inner palace~
+You feel a chill run down your spine. You sense that you are very close to 
+your objective, that being the king. The place here seems that much colder 
+than the rest of the caves. A picture on the wall attracts your attention. To 
+the north a corridor leads as to does one to the west. To the east you can see 
+the bottom of a stairwell.
+~
+0 8 0
+D0
+~
+~
+0 -1 14099
+D1
+Bottom of the stairwell.
+~
+~
+0 -1 14094
+D3
+~
+~
+0 -1 14096
+E
+picture wall~
+You look at the picture on the wall. It shows a great army of heavily clad 
+cyclops walking out of their caves. There appears to be much jubilation as 
+woman and children cheer on the sides of the great column of soldiers. At 
+the head of the group a bulky cyclops holds high their banner in one hand and 
+in the other holds aloft a great jaggered dagger that seems to sparkle in the 
+sunlight.
+~
+S
+#14096
+The inner palace~
+The evil in the palace seems to ooze out of everything that you see or touch. 
+To the north you notice a door set into the wall of the cave. You notice 
+another picture on the south wall that you feel you must look at. There are 
+exits to the west and east.
+~
+0 8 0
+D0
+A guest room
+~
+~
+1 -1 14103
+D1
+The inner palace
+~
+~
+0 -1 14095
+D3
+The inner palace
+~
+~
+0 -1 14097
+E
+picture wall~
+This picture shows the cyclops army camped outside of a great city. There is a 
+half moon in the sky and the gates to the city are being opened by a figure 
+clad in black. The city looks very familar and you recognise it as...  THALOS!
+~
+S
+#14097
+The inner palace~
+The evil in the palace seems to ooze out of everything that you see or touch. 
+To the north you notice another door set into the wall of the cave. You notice 
+another picture on the south wall that you feel you must look at. The corridor 
+leads to the west and east.
+~
+0 8 0
+D0
+An elegant door opens to guest quarters.
+~
+~
+1 -1 14104
+D1
+The inner palace
+~
+~
+0 -1 14096
+D3
+~
+~
+0 -1 14098
+E
+picture wall~
+This picture depicts a great battle scene. In the dead of night the guards and 
+the great warrior Gordon the Brave, did not expect an attack and many galant 
+soldiers where killed in there beds before they had a chance to defend 
+themselves. The remaining guards and shopkeepers are armed with little and 
+appear to be outnumbered 3:1. The golems in the towers are locked in, and 
+there towers set alight. At the bottom of the picture you notice cyclops 
+bodies spread everywhere about Gordon who obviously has slain them with his 
+great two-handed sword. But Gordon is trapped in what you remember as a busy 
+shop and is fighting now, one on one, with the cyclops leader.
+~
+S
+#14098
+The inner palace~
+The evil in the palace seems to ooze out of everything that you see or touch. 
+To the north another corridor leads into a large room. You notice another 
+picture on the south wall. The corridor leads to the west and east.
+~
+0 0 0
+D0
+~
+~
+0 -1 14105
+D1
+The  inner palace
+~
+~
+0 -1 14097
+D3
+~
+~
+0 -1 14108
+E
+picture wall~
+This picture shows the final moments of the city of Thalos. The town has been 
+thoughourly looted by the cyclops warriors not slain by Gordon. Pet lamias 
+run around screaming and the baby beholder has also been spared. At the bottom 
+of the picture the cyclops leader has Gordon the Brave on his knees and is 
+dealing the fianl death blow, - he is decapitating poor Gordon with his 
+jaggered dagger. The cyclops warriors standing around him look on cheering.
+~
+S
+#14099
+Dining room~
+You are standing in a great dining room. The table itself is at least 100 feet 
+long and the chairs are 10 feet wide each. The walls are covered with pictures 
+of cyclops, but they all seem to look the same. Also attached to the walls are 
+decromental weapons such as polearms, shields and axes. You quickly recognise 
+they are there merely for decoration and would not perform in the heat of 
+battle. Exits lead to the north and south.
+~
+0 8 0
+D0
+~
+~
+0 -1 14100
+D2
+The inner palace
+~
+~
+0 -1 14095
+S
+#14100
+The kitchen~
+This is the kitchen. Two huge stoves are set in the north wall. Two pots boil 
+upon the stove. It seems a meal is about to be prepared. To the south you can 
+see the dining hall. There is a door to the east.
+~
+0 8 0
+D1
+The door opens to a small room.
+~
+door~
+1 -1 14101
+D2
+The inner palace
+~
+~
+0 -1 14099
+S
+#14101
+The pantry~
+Stored in here is a large amount of vegetables (mostly corn), and a fair 
+amount of timber used to fuel the fires. To the west is the kitchen, and you 
+notice a door to the north.
+~
+0 8 0
+D0
+~
+~
+1 -1 14102
+D3
+The door opens to the kitchen
+~
+door~
+1 -1 14100
+S
+#14102
+The steam room~
+As you enter the room, thick smoke consumes you, forcing you to cover your 
+mouth and eyes. It appears that this is where the cyclops store all there 
+meat. By using the smoke from the ovens next door, they smoke there meats 
+thus improving its 'shelf life'. You spy various wild animals inculding deer, 
+and a large number of fish. The only exit is to the south
+~
+0 1|8 0
+D2
+The pantry
+~
+door~
+1 -1 14101
+S
+#14103
+Guest room~
+You are standing in a spacious room, most probably allocated for guests of 
+the cyclops. This one seems to be used, but the occupier is not present at 
+the moment. A number of items have been left here including a minotaur helm 
+and visor? What would a minotaur be doing here??
+~
+0 8 0
+D2
+The inner palace
+~
+~
+1 -1 14096
+S
+#14104
+Guest quarters~
+You are standing in a spacious room, most probably allocated for guests of 
+the cyclops. This one seems to be used, but the occupier is not present at 
+the moment. There is a note on the desk that may hold some information.
+~
+0 1|8 0
+D2
+The inner palace
+~
+~
+1 -1 14097
+S
+#14105
+The confrence room.~
+Youe are standing in a large circular room with a very large round table in 
+the middle of it. Decorations are afixed to the walls and you notice a large 
+desk on the east side of the room. There are 3 figures in this room a 
+minotaur, a demon and a black robed figure. The minoatur and demon charge 
+toward you while the robed figure runs to the west wall and pulls a torch. 
+The wall opens, he runs through it, and it closes just as quickly.
+~
+0 8 0
+D2
+~
+~
+0 -1 14098
+D3
+A secret door lies here, operated by a light fitting on the wall.
+~
+secret door~
+1 -1 14106
+S
+#14106
+The secret passage~
+You enter a secret passage just in time to see the black robed figure run 
+futher down the corridor to your west. You give chase.
+~
+0 8 0
+D1
+A secret door lies here, operated by a light fitting on the wall.
+~
+secret door~
+1 -1 14105
+D3
+~
+~
+0 -1 14107
+S
+#14107
+The secret passage~
+You come to an apparent end to the musty tunnel and come upon the black robed 
+figure pulling framtically on a torch on the south wall. He turns and faces 
+you realising that you shall now fight to the death. The only apparant exit 
+is to the east.
+~
+0 8 0
+D1
+~
+~
+0 -1 14106
+D2
+The secret door leads to the throne room itself!
+~
+secret door~
+1 -1 14109
+S
+#14108
+Before the throne room.~
+Two large doors similar to the ones at the etrance to the palace block your 
+way to the west. Not only do the doors block your way but also an elite guard 
+currently charging toward you. The throne room you beleive lies beyond the 
+doors to the west while to the east is a corridor.
+~
+0 8 0
+D1
+The inner palace
+~
+~
+0 -1 14098
+D3
+Two great blue doors prevent you from progressing any further.
+~
+door great doors blue~
+8 -1 14109
+S
+#14109
+The Throne Room~
+This is the great throne room of the great cyclops leader Xoric. The walls 
+are covered with items of great battles such as helm, suits of armor and 
+various swords and axes. It makes an impressive sight looking around the 
+throne room. The great throne itself stands near the western wall and you 
+notice something strange about it. But you are not here to admire the beauty, 
+you have come here to kill a King.
+~
+0 8 0
+D0
+The door leads to a secret tunnel
+~
+secret door~
+1 -1 14107
+D1
+~
+door doors blue great~
+8 14031 14108
+D5
+The throne opens to a secret passage
+~
+throne~
+1 -1 14110
+E
+throne~
+The throne stands before you. Its massive construction belittling you. However
+you notice that it does not sit square on the ground. In fact you are sure 
+that you could move it.
+~
+S
+#14110
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the south
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14111
+D4
+~
+~
+1 -1 14109
+S
+#14111
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the north and 
+south
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14110
+D2
+~
+~
+0 -1 14112
+S
+#14112
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the north and 
+south
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14111
+D2
+~
+~
+0 -1 14113
+S
+#14113
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the north and 
+south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14112
+D2
+~
+~
+0 -1 14114
+S
+#14114
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the north and 
+south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14113
+D2
+~
+~
+0 -1 14115
+S
+#14115
+Bend in the dusty tunnel~
+You come to a bend in the tunnel. Exits are north and east.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14114
+D1
+~
+~
+0 -1 14116
+S
+#14116
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14117
+D3
+~
+~
+0 -1 14115
+S
+#14117
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14118
+D3
+~
+~
+0 -1 14116
+S
+#14118
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14119
+D3
+~
+~
+0 -1 14117
+S
+#14119
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14120
+D3
+~
+~
+0 -1 14118
+S
+#14120
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14121
+D3
+~
+~
+0 -1 14119
+S
+#14121
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14122
+D3
+~
+~
+0 -1 14120
+S
+#14122
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14123
+D3
+~
+~
+0 -1 14121
+S
+#14123
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14124
+D3
+~
+~
+0 -1 14122
+S
+#14124
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14125
+D3
+~
+~
+0 -1 14123
+S
+#14125
+Dusty Tunnel~
+You are in a dusty, seldom used tunnel. The tunnel extends to the west and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14126
+D3
+~
+~
+0 -1 14124
+S
+#14126
+Beneath the ladder~
+A ladder is here extending upwards. The only exit is to the west and of course 
+the ladder.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 14125
+D4
+~
+~
+0 -1 14127
+S
+#14127
+On the ladder~
+You are on a ladder. You can go up or down.
+~
+0 1|8 0
+D4
+~
+~
+0 -1 14128
+D5
+~
+~
+0 -1 14126
+S
+#14128
+On the ladder~
+You are on a ladder. Above you is a trapdoor, which is self locking from this 
+side.
+~
+0 1|8 0
+D4
+A quite sturdy trapdoor
+~
+trapdoor~
+1 -1 14057
+D5
+~
+~
+0 -1 14127
+S
+#14129
+The Jewelled Cave~
+The walls glow from within with an awesome radiance. You have to cover your 
+eyes as they adjust to the light of the truely wonderous cave. You can circle 
+around the great cave by heading to the north or you can head toward the 
+statue to the east.
+~
+0 8 0
+D0
+~
+~
+0 -1 14079
+D1
+~
+~
+0 -1 14130
+S
+#14130
+Before the statue~
+You are standing at the base of the half-circle jeweled cave. Before you stands 
+a magnificent statue , roughly 20 feet tall, of a woman in a long flowing gown. 
+The statue is of pure gold and the only other thing she wears is a crown upon 
+her head. It seems to be missing something.
+~
+0 8 0
+D0
+~
+~
+0 -1 14079
+D1
+~
+~
+0 -1 14131
+D2
+~
+~
+8 14021 14132
+D3
+~
+~
+0 -1 14129
+E
+crown head statue woman goddess~
+The statue glows and you feel a warmth from it. It seems to be the only good 
+thing in these caves. Why is it guarded and why are the cyclops workers 
+building a bridge to it? As you look over the beautiful statue, you notice 
+the the crown she is wearing is missing an orb which apparently fits on top 
+of the crown. Who has it you wonder and why do they have it?
+~
+S
+#14131
+Jewelled Cave~
+The walls glow from within with an awesome radiance. You have to cover your 
+eyes as they adjust to the light of the truely wonderous cave. You can circle 
+around the cave by heading to the north or you can head toward the statue to 
+the west.
+~
+0 8 0
+D0
+~
+~
+0 -1 14079
+D3
+~
+~
+0 -1 14130
+S
+#14132
+Before the Magical Barrier.~
+The statue opens up onto a glowing void. Before you a magical Green barrier 
+pulsates then dies as the Cyclops Cleric in front of it completes the last of 
+his chants and jesters, revealing a white void like tunnel to the south. This 
+must be the gateway to the parallel plane that the King was going to use to 
+launch his attacks on Midgaard, Ofcol and Solace. Exits are to the south and 
+north.
+~
+0 8 0
+D0
+~
+~
+8 14021 14130
+D2
+~
+~
+0 -1 14133
+S
+#14133
+The void~
+You stand in a completely white corridor. The whiteness is almost blinding as 
+you cannot see where the floor meets the walls, nor the walls the ceiling. 
+You constanly bang into the side of the walls which seem to guide you in a 
+north-south direction.
+~
+0 8 0
+D0
+~
+~
+0 -1 14132
+D2
+~
+~
+0 -1 14134
+S
+#14134
+The void~
+You stand in a completely white corridor. The whiteness is almost blinding as 
+you cannot see where the floor meets the walls, nor the walls the ceiling. 
+You constanly bang into the side of the walls which seem to guide you in a 
+north-south direction.
+~
+0 8 0
+D0
+~
+~
+0 -1 14133
+D2
+~
+~
+0 -1 14135
+S
+#14135
+The Chamber of a Goddess~
+You suddenly stumble into a white chamber. Time and space seemed to be warped 
+within this room. You can make many exits from here and you can recognise 
+where they lead to! As you look around the exits a figure of a woman 
+materialises before you. It is the same person as portrayed in the statue and 
+eminates a warm glow which seems to fill this void. As you look at her she 
+relates a story to you.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 14134
+D1
+You can see the main square in Mahn-Tor.
+~
+~
+0 -1 2367
+D3
+You can see an intersection in Ofcol.
+~
+~
+0 -1 601
+D4
+You can see the gateway to Solace.
+~
+~
+0 -1 10201
+D5
+You can see the Market Square in Midgaard!
+~
+~
+0 -1 3014
+S
+#14136
+Well worn path~
+This path extending west-east seems well used.
+~
+0 4 2
+D1
+~
+~
+0 -1 14009
+D3
+A well worn path
+~
+~
+0 -1 14137
+S
+#14137
+Well worn path~
+This well worn path seems well used. You can hear running water to the west.
+~
+0 4 2
+D1
+A well worn path
+~
+~
+0 -1 14136
+D3
+~
+~
+0 -1 14138
+S
+#14138
+Beside the river.~
+The path leads to a great river that runs north-south. There is a huge net 
+that extends into half of the river, obviously for catching fish. Far to the 
+north and west extends a great mountain range - the source of the river you 
+see before you. Looking south you can see a range of hills. The well worn 
+path turns south and follows the river.
+~
+0 0 2
+D1
+A well worn path
+~
+~
+0 -1 14137
+D2
+~
+~
+0 -1 14139
+E
+river water~
+The river runs to the south and eminates from the mountain range to the north.
+~
+S
+#14139
+End of the path.~
+The great river dissappears into a rather large cave just to the south. The 
+path also stops here as hills rise from the ground to the south. Another net 
+is set here.
+~
+0 0 2
+D0
+You see the banks of a river
+~
+~
+0 -1 14138
+E
+river water cave~
+The river runs to the south and eminates from the mountain range to the north. 
+The river dissappears into the cave mouth - its course unknown.
+~
+S
+#0
+
+
+#RESETS
+D 1 14101 3 1               ; The pantry Close West
+D 1 14100 1 1               ; The kitchen Close East
+D 1 14102 2 1               ; The steam room Close South
+D 1 14101 0 1               ; The pantry Close North
+D 1 14103 2 1               ; Guest room Close South
+D 1 14096 0 1               ; The inner palace Close North
+D 1 14104 2 1               ; Guest quarters Close South
+D 1 14106 1 1               ; The secret passage Close East
+D 1 14105 3 1               ; The confrence room. Close West
+D 1 14107 2 1               ; The secret passage Close South
+D 1 14109 0 1               ; The Throne Room Close North
+D 1 14128 4 1               ; On the ladder Close Up
+D 1 14132 0 2               ; Before the Magical Barrier. Lock North
+D 1 14130 2 2               ; Before the statue Lock South
+D 1 14082 3 2               ; Before the Great Doors Lock West
+*                    
+M 1 14003 3 14005             the cyclops worker to Corn Field
+E 1 14002 100 5                    
+E 1 14004 100 16                           
+G 1 14066 100                                               
+*
+M 1 14003 3 14009               the cyclops worker to Corn Field
+E 1 14002 100 5                           
+E 1 14004 100 16                              
+*
+M 1 14007 2 14138           A cyclops fisherman to Beside the river.
+E 1 14002 100 5                     
+E 1 14076 100 16                         
+G 1 14065 100                             
+D 1 14006 0 1                                     ; Corn Field Close North
+*
+M 1 14004 1 14007                    the supervisor to The small shed.
+E 1 14002 100 5                           
+E 1 14003 100 16                            
+D 1 14007 2 1                                 ; The small shed. Close South
+*
+M 1 14006 1 14012             the sleeping cyclops guard to Guardhouse.
+E 1 14005 100 5                        
+E 1 14006 100 16                           
+O 1 14035 100 14016                a sledgehammer to Storeroom.
+O 1 14036 100 14016                 a pickaxe to Storeroom.
+D 1 14020 1 1                      ; Entrance to the Barracks. Close East
+D 1 14021 3 1                      ; Barracks. Close West
+O 1 14008 100 14021               a large wooden chest  to Barracks.
+*
+M 1 14005 8 14021                    the cyclops guard to Barracks.
+E 1 14005 100 5                             
+E 1 14006 100 16                                   
+G 1 14010 100                             
+*
+M 1 14005 8 14021                    the cyclops guard to Barracks.
+E 1 14005 100 5                      
+E 1 14006 100 16                                  
+G 1 14010 100                        
+D 1 14058 0 1                               ; Screams of terror Close North
+D 1 14058 2 1                                ; Screams of terror Close South
+D 1 14058 3 1                                ; Screams of terror Close West
+D 1 14060 0 1                                ; Prison Cave Close North
+D 1 14059 2 1                                ; Prison Cell Close South
+*
+M 1 14024 1 14061        the cyclops torturer to The torturer chamber
+E 1 14037 100 16                               
+*
+M 1 14025 1 14061              a torture victim to The torturer chamber
+D 1 14061 1 1                      ; The torturer chamber Close East
+*
+M 1 14026 1 14059                    the human prisoner to Prison Cell
+*
+M 1 14027 1 14060                    the dwarven prisoner to Prison Cave
+D 1 14062 0 1                      ; The damp cave. Close North
+D 1 14062 2 1                      ; The damp cave. Close South
+*
+M 1 14028 1 14063            the mage prisoner to The damp prison cave
+D 1 14063 0 1                     ; The damp prison cave Close North
+*
+M 1 14029 1 14064       a human psionic prisoner to The damp prison cave.
+*
+M 1 14019 4 14068          the cyclops construction worker to Storage
+E 1 14002 100 5                                        
+E 1 14035 100 16                               
+*
+M 1 14020 1 14073  the cyclops supervisor to Next to the underground river.
+E 1 14002 100 5                             
+E 1 14001 100 8                                    
+E 1 14047 100 16                                                               
+*
+M 1 14019 4 14077      the cyclops construction worker to Top of the cliff
+E 1 14002 100 5                                                             
+E 1 14036 100 16                                             
+*
+M 1 14019 4 14069       the cyclops construction worker to The bridge
+E 1 14002 100 5                           
+E 1 14036 100 16                                    
+*
+M 1 14002 1 14080          battlemaster to Training Grounds
+E 1 14011 100 5                      
+E 1 14013 100 6                                  
+E 1 14001 100 8                                           
+E 1 14012 100 16            
+*
+M 1 14008 1 14080                the cyclops warrior to Training Grounds
+E 1 14005 100 5                      
+E 1 14033 100 16                                   
+*
+M 1 14022 1 14081                 the cyclops mage to Training rooms
+E 1 14017 100 16                            
+E 1 14018 100 17                            
+E 1 14014 100 1                   
+E 1 14001 100 8                     
+*
+M 1 14016 1 14034                    A chimera's goat head to The Lair.
+E 1 14026 100 6                    
+*
+M 1 14017 1 14034                    A chimera's lion head to The Lair.
+E 1 14025 100 3                   
+*
+M 1 14018 1 14034                    A chimera's dragon head to The Lair.
+E 1 14027 100 16                         
+*
+M 1 14001 1 14041                    beastmaster to Beastmaster Lair.
+E 1 14028 100 11                          
+E 1 14003 100 16                           
+E 1 14053 100 9                   
+E 1 14054 100 10                           
+G 1 14074 100                         
+D 1 14040 0 1                       ; Connecting tunnel Close North
+D 1 14039 2 1                   ; Southern part of the Arena. Close South
+*
+M 1 14005 8 14082              the cyclops guard to Before the Great Doors
+E 1 14005 100 5                  
+E 1 14006 100 16                           
+D 1 14026 1 1                        ; Large tunnel Close East
+D 1 14026 3 1                         ; Large tunnel Close West
+*
+M 1 14013 1 14027                    a cyclops male to Cave Dwelling.
+E 1 14072 100 5                   
+E 1 14073 100 16                         
+*
+M 1 14014 1 14027                    the cyclops female to Cave Dwelling.
+E 1 14072 100 5                     
+D 1 14027 3 1                                 ; Cave Dwelling. Close West
+*
+M 1 14015 1 14027                    a cyclops child to the cave dwelling
+*
+M 1 14015 5 14026                    a cyclops child to Large tunnel
+D 1 14029 1 1                        ; T-intersection Close East
+D 1 14028 3 1                        ; Cave Dwelling Close West
+D 1 14030 1 1                        ; Cave Dwelling. Close East
+D 1 14029 3 1                        ; T-intersection Close West
+*
+M 1 14038 1 14031			a cyclops thief to abandoned dwelling
+E 1 14028 100 11
+E 1 14053 100 9
+E 1 14003 100 16
+E 1 14078 100 18 
+*
+D 1 14031 1 1                        ; Abandoned Dwelling. Close East
+*
+M 1 14013 7 14024                    a cyclops male to The Great Cave.
+E 1 14072 100 5                    
+E 1 14073 100 16                           
+*
+M 1 14014 6 14014          the cyclops female to Inside the Great Cave.
+E 1 14072 100 5         
+D 1 14084 2 1                    ; The palace corridor. Close South
+D 1 14086 0 1                       ; Mage quarters. Close North
+D 1 14084 0 1                     ; The palace corridor. Close North
+D 1 14085 2 1                     ; Cleric quarters Close South
+D 1 14087 0 1                     ; The palace corridor.  Close North
+D 1 14087 2 1                 ; The palace corridor.  Close South
+*
+M 1 14023 1 14088               the cyclops psionic to The Psionics' room
+E 1 14038 100 17                           
+E 1 14067 100 3                    
+D 1 14088 2 1                     ; The Psionics' room Close South
+D 1 14089 0 1                     ; An elegant room Close North
+*
+M 1 14009 3 14091   the elite cyclops guard to A dead end?
+E 1 14011 100 5                  
+E 1 14001 100 8                    
+E 1 14019 100 15                         
+E 1 14020 100 16                          
+E 1 14077 100 17                           
+E 1 14055 100 7                    
+O 1 14039 100 14103          a crimson steel helm and visor to Guest room
+D 1 14097 0 1                  ; The inner palace Close North
+O 1 14041 100 14104            a note to Guest quarters
+D 1 14108 3 2                  ; Before the throne room. Lock West
+*
+M 1 14030 1 14105   the elite minotaur guard to The confrence room.
+E 1 14040 100 5                   
+E 1 14058 100 7                   
+E 1 14057 100 10                          
+E 1 14059 100 16                           
+G 1 14032 100                       
+*
+M 1 14011 1 14109   the Cyclops King to The Throne Room
+E 1 14021 100 0                    
+E 1 14024 100 6                   
+E 1 14023 100 13                         
+E 1 14022 100 16                           
+E 1 14056 100 5                    
+D 1 14109 5 1                            ; The Throne Room Close Down
+D 1 14110 4 1                            ; Dusty Tunnel Close Up
+*
+M 1 14009 3 14108   the elite cyclops guard to Before the throne room.
+E 1 14011 100 5                    
+E 1 14001 100 8                     
+E 1 14019 100 15                          
+E 1 14020 100 16                          
+E 1 14055 100 7                   
+E 1 14077 100 17                          
+O 1 14044 100 14015                         a saw to Storeroom.
+O 1 14042 100 14015                       an axe to Storeroom.
+O 1 14046 100 14018                   a broken spiked mace to Storeroom.
+O 1 14045 100 14018                      rusty armour to Storeroom.
+O 1 14043 100 14017                      a coil of rope to Storeroom.
+O 1 14048 100 14017                        a wooden cart to Storeroom.
+*
+M 1 14021 1 14132   the cyclops cleric to Before the Magical Barrier.
+E 1 14014 100 1                   
+E 1 14015 100 16                           
+E 1 14016 100 17                          
+O 1 14046 100 14053               a broken spiked mace to The smithy's cave
+O 1 14045 100 14053               rusty armour to The smithy's cave
+*
+M 1 14032 1 14053   the cyclops smithy to The smithy's cave
+E 1 14051 100 9                    
+E 1 14052 100 13                           
+E 1 14050 100 16                            
+G 1 24 100
+D 1 14053 1 1                          ; The smithy's cave Close East
+D 1 14053 3 1                          ; The smithy's cave Close West
+*
+M 1 14031 2 14081   the trainee magician to Training rooms
+E 1 14049 100 12                             
+E 1 14034 100 17                           
+*
+M 1 14033 1 14105   secundus to The confrence room.
+*
+M 1 14034 1 14107   the fanatic priest to The secret passage
+E 1 14060 100 3                   
+E 1 14064 100 9                     
+E 1 14061 100 12                          
+E 1 14062 100 16                            
+E 1 14063 100 17                             
+*
+M 1 14035 1 14030   the old cyclops to Cave Dwelling.
+O 1 14047 100 14101               a HUGE log of wood to The pantry
+O 1 14047 100 14101                a HUGE log of wood to The pantry
+O 1 14066 100 14101                a piece of corn to The pantry
+O 1 14065 100 14102              a fish to The steam room
+O 1 14065 100 14102                a fish to The steam room
+*
+M 1 14005 8 14079   the cyclops guard to Jewelled Cave
+E 1 14005 100 5                      
+E 1 14006 100 16                         
+*
+M 1 14009 3 14130   the elite cyclops guard to Before the statue
+E 1 14011 100 5                     
+E 1 14055 100 7                     
+E 1 14001 100 8                    
+E 1 14019 100 14                           
+E 1 14020 100 16                         
+E 1 14077 100 17                          
+O 1 14047 100 14068                 a HUGE log of wood to Storage
+O 1 14068 100 14068                 a cart to Storage
+P 1 14047 100 14068                a HUGE log of wood in a cart
+P 1 14030 100 14008                An obsidian key to a chest.
+*
+M 1 14008 12 14022    the cyclops warrior to The Great Cave.
+E 1 14005 100 5                   
+E 1 14033 100 16                          
+*
+M 1 14008 12 14038    the cyclops warrior to Eastern side of the Arena.
+E 1 14005 100 5                    
+E 1 14033 100 16                           
+*
+M 1 14008 12 14057    the cyclops warrior to The intersection
+E 1 14005 100 5                   
+E 1 14033 100 16                           
+D 1 14052 1 1                     ; The dimly lit tunnel Close East
+D 1 14064 2 1                     ; The damp prison cave. Close South
+D 1 14091 3 1                     ; A dead end? Close West
+D 1 14092 1 1                     ; Top of the stairwell. Close East
+D 1 14083 1 2                     ; The Palace Lock East
+*
+M 1 14036 2 14080         the cyclops trainee to Training Grounds
+E 1 14069 100 5                  
+E 1 14070 100 16                         
+*
+M 1 14005 8 14021         the cyclops guard to Barracks.
+E 1 14005 100 5                     
+E 1 14006 100 16                         
+G 1 14010 100                        
+*
+M 1 14005 8 14079         the cyclops guard to Jewelled Cave
+E 1 14005 100 5                    
+E 1 14006 100 16                          
+*
+M 1 14005 8 14082         the cyclops guard to Before the Great Doors
+E 1 14005 100 5                   
+E 1 14006 100 16                          
+*                       
+M 1 14005 8 14033         the cyclops guard to Arena Entrance.
+E 1 14005 100 5                  
+E 1 14006 100 16                           
+*
+M 1 14012 1 14135         Leia to The Chamber of a Goddess
+E 1 14071 100 12                           
+D 1 14037 2 1                                   ; The Pit. Close South
+D 1 14034 0 1                                   ; The Lair. Close North
+D 1 14109 1 2                                   ; The Throne Room Lock East
+*
+M 1 14037 1 14100             The Cook to The kitchen
+E 1 14075 100 16                           
+G 1 14066 100                      
+G 1 14065 100                       
+S
+
+
+#SPECIALS
+M 14011  spec_assassin
+M  14012 spec_cast_adept
+M  14018 spec_breath_any
+M  14021 spec_cast_cleric
+M  14022 spec_cast_mage
+M  14023 spec_cast_psionicist
+M  14029 spec_cast_psionicist
+M  14031 spec_cast_mage
+M  14032 spec_repairman
+M  14033 spec_cast_mage
+M  14034 spec_cast_archmage
+S
+
+
+#$

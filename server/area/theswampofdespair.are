@@ -1,0 +1,3708 @@
+#AREA	Thorne~  The Swamp of Despair~
+60 75 40 100
+
+#MOBILES
+#30400
+blood worm~
+the Blood Worm~
+A large red worm rears up and hisses at you.
+~
+A very large worm writhes before you, the bright red of its skin warns you that 
+it might be dangerous.
+~
+2|32|64 8|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#30401
+blood worm~
+the Blood Worm~
+A large red worm rears up and hisses at you.
+~
+A very large worm writhes before you, the bright red of its skin warns you that 
+it might be dangerous.
+~
+64 8|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#30402
+Blood worm~
+the Blood Worm~
+A small red worm wriggles about your feet.
+~
+A newly hatched worm wriggles about here. It doesn't seem to be of any threat to 
+you, however the bright red of its skin warns you that it might be dangerous.
+~
+2|64 8|524288 -1000 S
+65 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+>rand_prog 25~
+mpasound You hear something slithering in the darkness...
+~
+|
+#30403
+Blood worm~
+the Blood Worm~
+A small red worm wriggles about your feet.
+~
+A newly hatched worm wriggles about here. It doesn't seem to be of any threat to 
+you, however the bright red of its skin warns you that it might be dangerous.
+~
+64 8|524288 -1000 S
+65 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+>rand_prog 25~
+mpasound You hear something slithering in the darkness...
+~
+|
+#30404
+blood worm~
+the Blood Worm~
+A small red worm wriggles about your feet.
+~
+A newly hatched worm wriggles about here. It doesn't seem to be of any threat to 
+you, however the bright red of its skin warns you that it might be dangerous.
+~
+64 8|524288 -1000 S
+65 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+>rand_prog 25~
+mpasound You hear something slithering in the darkness...
+~
+|
+#30405
+lost~
+the Lost One~
+A lost one wanders aimlessly about, unaware of your presence.
+~
+As you look at this poor, pathetic creature you realize what will become of you 
+if the despair of this awful swamp manages to drain your will to live. There 
+seems to be no life left in its hollow eyes, just an empty void.
+~
+64 8|524288 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#30406
+lost~
+the Lost One~
+A lost one wanders aimlessly about, unaware of your presence.
+~
+As you look at this poor, pathetic creature you realize what will become of you 
+if the despair of this awful swamp manages to drain your will to live. There 
+seems to be no life left in its hollow eyes, just an empty void.
+~
+64 8|524288 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#30407
+lost~
+the Lost One~
+A lost one wanders aimlessly about unaware of your presence.
+~
+As you look at this poor pathetic creature you realize what will become of you 
+if the despair of this awful swamp manages to drain your will to live. There 
+seems to be no life left in it's hollow eyes just an empty void.
+~
+64 8|524288 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#30408
+mist wolf~
+the Mist Wolf~
+A large white wolf is almost obscured by the mist.
+~
+The wolf has cold silver eyes and a form that is not completely stable. 
+It fades in and out of the mist that it seems to be exhaling.
+~
+64|128 8|512|32768|65536|524288 0 S
+65 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#30409
+mist wolf~
+the Mist Wolf~
+A large white wolf is almost obscured by the mist.
+~
+The wolf has cold silver eyes and a form that is not completely stable. 
+It fades in and out of the mist that it seems to be exhaling.
+~
+64|128 8|512|32768|65536|524288 0 S
+65 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#30410
+mist wolf~
+the Mist Wolf~
+A large white wolf is almost obscured by the mist.
+~
+The wolf has cold silver eyes and a form that is not completely stable. 
+It fades in and out of the mist that it seems to be exhaling.
+~
+64|128 8|512|32768|65536|524288 0 S
+65 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#30411
+night hunter nighthunter~
+the Nighthunter~
+You sense that something sinister is watching you.
+~
+This hideous creature is leering at you as it crouches and prepares to 
+attack. There are sharp spikes protruding down its spine and its glowing yellow 
+eyes fix on your throat. It licks its lips with a long forked tongue. You 
+wonder if you might be having a nightmare, for where else could this terrible 
+vision come.
+~
+32|64 8|32|512|8192|32768|65536|524288|4194304|8388608 -1000 S
+75 0 0 0d0+0 0d0+0
+32 0
+8 8 1
+#30412
+dream shadow~
+the Dream Shadow~
+A dark and unnatural shadow seems to be drawing nearer.
+~
+As you look into the shadow strange visions fill your mind and you wonder 
+if you are suffering from hallucinations or going insane. You break into 
+a cold sweat before managing to tear your gaze away.
+~
+64 8|512|32768|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+127 0
+8 8 0
+#30413
+dream shadow~
+the Dream Shadow~
+A dark and unnatural shadow seems to be drawing nearer.
+~
+As you look into the shadow strange visions fill your mind and you wonder 
+if you are suffering from hallucinations or going insane. You break into 
+a cold sweat before managing to tear your gaze away.
+~
+64 8|512|32768|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+127 0
+8 8 0
+#30414
+dream shadow~
+the Dream Shadow~
+A dark and unnatural shadow seems to be drawing nearer.
+~
+As you look into the shadow strange visions fill your mind and you wonder 
+if you are suffering from hallucinations or going insane. You break into 
+a cold sweat before managing to tear your gaze away.
+~
+64 8|512|32768|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+127 0
+8 8 0
+#30415
+undead skeleton dog~
+the Undead Dog~
+The skeleton of a dog is standing guard over a pile of bones.
+~
+The undead creature seems to be guarding a pile of half-buried bones. It regards 
+you warily and issues a menacing growl as it crouches lower over its bone pile.
+~
+2|32|64 8|32|512|524288|8388608 -1000 S
+75 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#30416
+undead skeleton dog~
+the Undead Dog~
+The skeleton of a dog is standing guard over a pile of bones.
+~
+The undead creature seems to be guarding a pile of half-buried bones. It regards 
+you warily and issues a menacing growl as it crouches lower over its bone pile.
+~
+2|32|64 8|32|512|524288|8388608 -1000 S
+75 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#30417
+shadow crawler bug~
+the Shadow Crawler~
+A rather large bug is scurrying about in the shadows.
+~
+A rather large black bug with a hard chitinous shell snaps its sharp mandibles 
+and looks at you with its beady eyes before scurrying off to another pool of 
+shadow.
+~
+64 8|512|32768|65536|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#30418
+shadow crawler bug~
+the Shadow Crawler~
+A rather large bug is scurrying about in the shadows.
+~
+A rather large black bug with a hard chitinous shell snaps its sharp mandibles 
+and looks at you with its beady eyes before scurrying off to another pool of 
+shadow.
+~
+64 8|512|32768|65536|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#30419
+shadow crawler bug~
+the Shadow Crawler~
+A rather large bug is scurrying about in the shadows.
+~
+A rather large black bug with a hard chitinous shell snaps its sharp mandibles 
+and looks at you with its beady eyes before scurrying off to another pool of 
+shadow.
+~
+64 8|512|32768|65536|524288 -1000 S
+75 0 0 0d0+0 0d0+0
+52 0
+8 8 0
+#30420
+night wing demon nightwing~
+the Nightwing~
+A large bat-like demon is hovering in the air before you.
+~
+The strange creature hovering before you beats its wings furiously to keep its 
+large body airborne. Its lumpy misshapen face is contorted in rage and you have 
+to cover your ears to protect them from the shrill screeching issuing from it.
+~
+64 8|512 -1000 S
+70 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30421
+night wing~
+the Nightwing~
+A large bat-like demon is hovering in the air before you.
+~
+The strange creature hovering before you beats its wings furiously to keep its 
+large body airborne. Its lumpy misshapen face is contorted in rage and you have 
+to cover your ears to protect them from the shrill screeching issuing from it.
+~
+64 8|512 -1000 S
+70 0 0 0d0+0 0d0+0
+16 0
+8 8 0
+#30422
+mist horror~
+the Mist Horror~
+A ghastly vision of horror forms in the mist before you.
+~
+As you look deeper into the mist all your fears and nightmares from the past 
+come rushing back, crowding your mind and threatening to overthrow what remains 
+of your sanity. you clutch your head and begin to imagine that something is 
+actually trying to get inside it.
+~
+64 2|8|512|32768|524288 -1000 S
+70 0 0 0d0+0 0d0+0
+95 0
+8 8 0
+>rand_prog 3~
+mpecho You hear haunting voices whispering in your head...
+~
+|
+#30423
+mist horror~
+the Mist Horror~
+A ghastly vision of horror forms in the mist before you.
+~
+As you look deeper into the mist all your fears and nightmares from the past 
+come rushing back, crowding your mind and threatening to overthrow what remains 
+of your sanity. you clutch your head and begin to imagine that something is 
+actually trying to get inside it.
+~
+64 2|8|512|32768|524288 -1000 S
+70 0 0 0d0+0 0d0+0
+95 0
+8 8 0
+>rand_prog 3~
+mpecho You hear haunting voices whispering in your head...
+~
+|
+#30424
+shadow dragon black~
+the Shadow Dragon~
+The shadowy form of a black dragon watches you from the darkness where it hides.
+~
+The large dragon is standing very still so as not to be noticed. It is pitch 
+black and blends perfectly into the gloom and shadows that surround it. In fact, 
+the shadows seem to be a part of it somehow - as if they were emanating from its 
+body.
+~
+64 8|32|512|8192|32768|65536|524288|8388608 -1000 S
+80 0 0 0d0+0 0d0+0
+132 0
+8 8 0
+>rand_prog 15~
+mpecho Strange snuffling noises issue from the shadows...
+hide
+~
+>all_greet_prog 100~
+if rand(50)
+mpecho {wA raspy voice from the shadows says, "You better not try to steal my treasure..."{x
+else
+mpecho {wA raspy voice from the shadows says, "I'll eat you for lunch if you steal any of my treasure!"{x
+endif
+hide
+~
+|
+#30425
+genie~
+the Genie~
+A very cranky genie looks displeased that you have disturbed it.
+~
+The genie has a menacing look on its face as it hovers in the air before you. 
+Contrary to what knowledge you have about genies granting wishes, you gather 
+rather quickly that this one has no intentions of such niceties.
+~
+32|64 8|32|512|2048|8192|32768|524288|8388608|16777216 0 S
+80 0 0 0d0+0 0d0+0
+80 0
+8 8 0
+#0
+
+
+#OBJECTS
+#30400
+egg speckled~
+a speckled egg~
+A large speckled egg is here.~
+~
+26 16 1
+50~ cause serious~ chill touch~ poison~
+3 0 0
+E
+egg speckled~
+A rather large egg speckled with red spots is wobbling now and then. It seems to 
+have something alive inside it.
+~
+#30401
+rusty sword~
+a rusty sword~
+A rusty sword has been discarded here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 1~
+1 0 0
+A
+2 -5
+A
+17 10
+E
+rusty sword~
+The sword is almost completely destroyed. It 
+is so rusty it's certainly not fit for use.
+~
+#30402
+tattered rags~
+tattered rags~
+A pile of tattered cloth has been discarded here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+#30403
+ripped leggings~
+ripped leggings~
+A pair of ripped leggings lie on the ground here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+#30404
+faded cloak~
+a faded cloak~
+A pile faded cloth has been left here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
+5 0 0
+E
+faded cloak~
+This cloak is so old and faded that you can't 
+even tell what colour it might have been.
+~
+#30405
+rusty armor~
+rusty armor~
+A suit of rusted armor has been discarded here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 -3
+A
+17 10
+#30406
+rusty dagger~
+a rusty dagger~
+A rusty dagger has been left here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~
+2 0 0
+A
+2 -5
+A
+19 -5
+E
+rusty dagger~
+The dagger is almost completely destroyed. It 
+is so rusty it's certainly not fit for use.
+~
+#30407
+faded pants~
+faded pants~
+A pair of faded pants have been left here.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+#30408
+tarnished ring~
+a tarnished ring~
+A tarnished ring has been discarded here.~
+~
+9 0 1|2
+0~ 0~ 0~ 0~
+1 0 0
+A
+9 20
+#30409
+shroud mist~
+a shroud of mist~
+A shroud of mist is floating here.~
+~
+9 64 1|1024
+0~ 0~ 0~ 0~
+5 0 0
+A
+23 -15
+A
+24 -10
+E
+shroud mist~
+There seems to be something very odd about this mist and you suspect it might 
+not be natural.
+~
+#30410
+dead tree~
+a dead tree~
+A dead tree with twisted skeletal branches is here.~
+~
+12 0 0
+0~ 0~ 0~ 0~
+5 0 0
+E
+dead tree~
+This is a very spooky-looking tree. Its twisted bare branches are gnarled and 
+seem to be trembling with something other than wind.
+~
+#30411
+chitinous black armor~
+chitinous black armor~
+The shell of some kind of strange creature has been left here.~
+~
+23 16|2048 1|8
+0~ 0~ 0~ 0~
+5 0 0
+A
+17 -20
+A
+13 70
+A
+5 4
+E
+chitinous black armor~
+It appears to be the hard shell of some kind of large creature you can not 
+identify. A shiver of dread courses through you from contemplating what might 
+have shed it.
+~
+#30412
+talons~
+long talons~
+A pair of long talons ripped from some ghastly creature have been left here.~
+~
+9 16|2048|4096 1|64
+0~ 0~ 0~ 0~
+3 0 0
+A
+19 6
+#30413
+chewed bone~
+a chewed bone~
+A chewed bone is partially buried here.~
+~
+9 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+A
+19 15
+A
+18 15
+A
+1 3
+E
+chewed bone~
+A large bone from a creature you are unfamiliar with has been scored with 
+teethmarks and partially consumed.
+~
+#30414
+decaying flesh~
+pieces of decaying flesh~
+Pieces of decaying flesh are scattered about the ground.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+3 0 0
+E
+decaying flesh~
+Some pieces of rotten meat from a long-dead animal are beginning to attract 
+flies.
+~
+#30415
+large leathery wings~
+large leathery wings~
+A pair of large wings have been torn from some creature and left here.~
+~
+9 2 1|1024
+0~ 0~ 0~ 0~
+3 0 0
+A
+27 -1
+A
+14 0
+E
+large leathery wings~
+These wings look as if they could have come from a bat although it would have to 
+be a very large one.
+~
+#30416
+tail spiked~
+a spiked tail~
+A long thin tail with a spiked tip is lying at your feet.~
+~
+5 0 1|8192
+0~ 0~ 0~ 2~
+2 0 0
+A
+2 5
+A
+19 10
+A
+18 10
+E
+spiked tail~
+A long thin tail with wickedly sharp spikes at the tip, which are obviously 
+for the owners protection.
+~
+#30417
+swamp slime~
+{Gswamp slime{x~
+{GA glob of putrid swamp slime is trying to cling to your feet.{x~
+~
+26 1 1|16384
+75~ harm~ weaken~ energy drain~
+1 0 0
+E
+swamp slime~
+Eww.. it looks noxious and judging by its colour not something you really want 
+anything to do with.
+~
+#30418
+tadpole~
+a tadpole~
+A small tadpole is flopping about in the muck.~
+~
+19 0 1|16384
+3~ 0~ 0~ 0~
+1 0 0
+E
+tadpole~
+It's pretty slimy but it looks like it should be safe to eat if you get really 
+desperate.
+~
+#30419
+ripe cherry~
+{Ra ripe cherry{x~
+{RA ripe cherry has fallen to the ground.{x~
+~
+26 64 1|16384
+65~ infravision~ flesh armor~ protection~
+5 0 0
+E
+cherry~
+A plump ripe cherry looks good enough to eat.
+~
+#30420
+tree cherry~
+a cherry tree~
+A beautiful cherry tree is laden with fruit.~
+~
+12 64 0
+0~ 0~ 0~ 0~
+5 0 0
+E
+tree cherry~
+The most beautiful cherry tree you've ever seen,
+Is swaying gently in the breeze.
+~
+#30421
+dark shadows~
+dark unnatural shadows~
+Dark unnatural shadows are swirling before you.~
+~
+9 16 1|1024
+0~ 0~ 0~ 0~
+0 0 0
+A
+23 -25
+A
+9 100
+E
+dark unnatural shadows~
+The dark mass of shadows are writhing and swirling in a very disturbing way, 
+almost as if they alive.
+~
+#30422
+sharp claws~
+sharp claws~
+Sharp claws have ripped from a large beast and left here.~
+~
+5 4096|16777216|67108864 1|8192
+0~ 0~ 0~ 5~
+5 0 0
+A
+1 2
+A
+19 50
+A
+18 50
+E
+sharp claws~
+These claws are very long and wickedly sharp they 
+must have been severed from a mighty beast of some kind.
+~
+#30423
+sharp claws~
+sharp claws~
+Sharp claws have ripped from a large beast and left here.~
+~
+9 16777216 1|64
+0~ 0~ 0~ 0~
+5 0 0
+A
+18 2
+A
+19 9
+A
+1 2
+A
+2 2
+E
+sharp claws~
+These claws are very long and wickedly sharp they 
+must have been severed from a mighty beast of some kind.
+~
+#30424
+shiny black scales~
+shiny black scales~
+Some large black scales possibly from a dragon have been left here.~
+~
+9 64 1|8
+0~ 0~ 0~ 0~
+3 0 0
+A
+12 200
+A
+13 50
+E
+shiny black scales~
+These are very large scales they must have come from a very large beast. They 
+are very smooth to touch and you feel an odd tingling as you run your fingers 
+over them.
+~
+#30425
+flute golden~
+{Ya golden flute decorated with jewels{x~
+{YA beautiful golden flute inlaid with many precious jewels has been carelessly left here.{x~
+~
+36 1|64 1|16384
+0~ 0~ 0~ ~
+5 0 0
+A
+18 10
+A
+19 10
+A
+12 100
+A
+4 5
+A
+3 5
+E
+flute golden~
+This flute looks very valuable. As you turn it over in your hand it glows with a 
+bright golden light and the many jewels that decorate it sparkle like stars in 
+the sky.
+~
+#30426
+puffy black pants~
+puffy black pants~
+A pile of black cloth is in a heap on the floor.~
+~
+9 0 1|32
+0~ 0~ 0~ 0~
+1 0 0
+#30427
+baggy silk shirt~
+a baggy silk shirt~
+A small pile of silk has been left here.~
+~
+9 0 1|8
+0~ 0~ 0~ 0~
+1 0 0
+#30428
+slippers red~
+a pair of red slippers~
+A peculiar pair of red slippers have been left here.~
+~
+9 64 1|64
+0~ 0~ 0~ 0~
+1 0 0
+A
+12 100
+A
+14 500
+A
+13 100
+E
+slippers red~
+What odd looking slippers these are. They are made from bright red velvet and 
+they curl up at toes where they have tiny bells dangling on them.
+~
+#30429
+chain rope gold~
+a gold rope chain~
+A small golden chain is lying here.~
+~
+9 64|4096 1|4096
+0~ 0~ 0~ 0~
+1 0 0
+A
+12 100
+A
+13 100
+A
+18 10
+A
+19 8
+E
+gold rope chain~
+A beautifully crafted rope chain made from the finest gold.
+~
+#30430
+sphere sinister black~
+a sinister black sphere~
+A sinister looking sphere floats before you.~
+~
+9 16|64 1|32768
+0~ 0~ 0~ 0~
+0 0 0
+A
+18 8
+A
+19 8
+E
+sinister black sphere~
+Looking into this sphere you can see dark energies swirling within it and you 
+have to look away as you begin to feel mesmerized by it.
+~
+#30431
+the dirt~
+dirt~
+~
+~
+15 0 0
+40~ 0~ 0~ 11~ 
+5 0 0
+E
+Dirt~
+Several bones protrude from the dirt.
+~
+#30432
+corpse~
+a corpse~
+The corpse of an unfortunate adventurer is beginning to decay here.~
+~
+23 0 1|16384
+0~ 1~ 6~ 11~ 
+150 0 0
+E
+corpse~
+This unfortunate soul looks as if he died a horrible death, judging from the
+look of pain and anguish set upon his pale face.
+~
+#30433
+gem sapphire~
+a brilliant sapphire~
+A brilliant sapphire lies here twinkling.~
+~
+8 0 1
+22~ 0~ 0~ 0~   
+7 3500 1100
+#30434
+gem ruby~
+an opulent ruby~
+A dark red ruby catches your eye.~
+~
+8 0 1
+22~ 0~ 0~ 0~   
+7 3500 1100
+#30435
+pile coins gold~
+a pile of coins~
+~
+~
+20 0 1
+15~ 25~ 200~ 80~
+5 0 0
+#30436
+ring genie~
+ring of the Genie~
+A small gold ring has been discarded here.~
+~
+9 2 1|2
+0~ 0~ 0~ 0~
+1 0 0
+A
+17 -10
+A
+18 15
+A
+19 12
+E
+ring small gold genie~
+The small gold ring has been inscribed with strange mystical symbols whose
+meaning you cannot fathom. It hums and vibrates.
+~
+#30437
+talons~
+long talons~
+A pair of long talons ripped from some ghastly creature have been left here.~
+~
+5 16|2048|4096|67108864 1|8192
+0~ 0~ 0~ 5~
+3 0 0
+A
+18 10
+A
+19 10
+#30438
+ripe cherry~
+{Ra ripe cherry{x~
+{RA ripe cherry has fallen to the ground.{x~
+~
+26 64 1|16384
+65~ infravision~ flesh armor~ protection~
+5 0 0
+E
+cherry~
+A plump ripe cherry looks good enough to eat.~
+#30439
+ripe cherry~
+{Ra ripe cherry{x~
+{RA ripe cherry has fallen to the ground.{x~
+~
+26 64 1|16384
+65~ infravision~ flesh armor~ protection~
+5 0 0
+E
+cherry~
+A plump ripe cherry looks good enough to eat.~
+#30440
+egg speckled~
+a speckled egg~
+A large speckled egg is here.~
+~
+26 16 1
+50~ cause serious~ chill touch~ poison~
+3 0 0
+E
+egg speckled~
+A rather large egg speckled with red spots is wobbling now and then. It seems to 
+have something alive inside it.
+~
+#30441
+egg speckled~
+a speckled egg~
+A large speckled egg is here.~
+~
+26 16 1
+50~ cause serious~ chill touch~ poison~
+3 0 0
+E
+egg speckled~
+A rather large egg speckled with red spots is wobbling now and then. It seems to 
+have something alive inside it.
+~
+#30442
+misty portal~
+a misty portal~
+~~
+33 0 0
+31410~ -1~ 0~ 100~ 
+1 0 0
+E
+misty portal~
+The misty portal shimmers before your eyes.
+~
+#30443
+shadowy portal~
+a shadowy portal~
+~~
+33 0 0
+30600~ -1~ 0~ 100~
+1 0 0
+E
+shadowy portal~
+The shadowy portal shimmers before your eyes.
+~
+#30444
+ancient helm full-helm~
+an ancient helm~
+An ancient full-helm has been left here.~
+~
+9 2 1|16
+~ ~ ~ ~
+10 0 0
+E
+ancient helm full-helm~
+The ancient full-helm is humming with mystical power that tingles through
+your fingers as you run them across its surface.
+~
+A
+19 8
+A
+18 6
+A
+17 -10
+A
+14 100
+#0
+
+
+#ROOMS
+#30400
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the south a misty portal hangs in the air.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30405
+D1
+~
+~
+0 -1 30402
+D3
+~
+~
+0 -1 30401
+S
+#30401
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the west and south the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30406
+D1
+~
+~
+0 -1 30400
+D2
+~
+~
+0 -1 30491
+D3
+~
+~
+0 -1 30492
+S
+#30402
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the east and south the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30403
+D1
+~
+~
+0 -1 30501
+D2
+~
+~
+0 -1 30500
+D3
+~
+~
+0 -1 30400
+S
+#30403
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30411
+D1
+~
+~
+0 -1 30404
+D2
+~
+~
+0 -1 30402
+D3
+~
+~
+0 -1 30405
+S
+#30404
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the east and south the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30412
+D1
+~
+~
+0 -1 30502
+D3
+~
+~
+0 -1 30403
+S
+#30405
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30410
+D1
+~
+~
+0 -1 30403
+D2
+~
+~
+0 -1 30400
+D3
+~
+~
+0 -1 30406
+S
+#30406
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30409
+D1
+~
+~
+0 -1 30405
+D2
+~
+~
+0 -1 30401
+D3
+~
+~
+0 -1 30407
+S
+#30407
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the west and south the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30408
+D1
+~
+~
+0 -1 30406
+D2
+~
+~
+0 -1 30492
+D3
+~
+~
+0 -1 30493
+S
+#30408
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the west the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30420
+D1
+~
+~
+0 -1 30409
+D2
+~
+~
+0 -1 30407
+D3
+~
+~
+0 -1 30494
+S
+#30409
+Above a dark hole~
+You can see a dark hole opening in the ground here. Peering into it you are 
+unable to make out any details of what might lie below. It certainly doesn't 
+look inviting and you have to wonder what sort of creatures might be dwelling in 
+there...
+~
+0 4|8 6
+D0
+~
+~
+0 -1 30419
+D1
+~
+~
+0 -1 30410
+D2
+~
+~
+0 -1 30406
+D3
+~
+~
+0 -1 30408
+D5
+~
+~
+0 -1 30446
+S
+#30410
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30418
+D1
+~
+~
+0 -1 30411
+D2
+~
+~
+0 -1 30405
+D3
+~
+~
+0 -1 30409
+S
+#30411
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30417
+D1
+~
+~
+0 -1 30412
+D2
+~
+~
+0 -1 30403
+D3
+~
+~
+0 -1 30410
+S
+#30412
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30416
+D1
+~
+~
+0 -1 30413
+D2
+~
+~
+0 -1 30404
+D3
+~
+~
+0 -1 30411
+S
+#30413
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the south the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30414
+D1
+~
+~
+0 -1 30503
+D2
+~
+~
+0 -1 30502
+D3
+~
+~
+0 -1 30412
+S
+#30414
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30425
+D1
+~
+~
+0 -1 30415
+D2
+~
+~
+0 -1 30413
+D3
+~
+~
+0 -1 30416
+S
+#30415
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the east and south the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30426
+D1
+~
+~
+0 -1 30504
+D2
+~
+~
+0 -1 30503
+D3
+~
+~
+0 -1 30414
+S
+#30416
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30424
+D1
+~
+~
+0 -1 30414
+D2
+~
+~
+0 -1 30412
+D3
+~
+~
+0 -1 30417
+S
+#30417
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30423
+D1
+~
+~
+0 -1 30416
+D2
+~
+~
+0 -1 30411
+D3
+~
+~
+0 -1 30418
+S
+#30418
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30422
+D1
+~
+~
+0 -1 30417
+D2
+~
+~
+0 -1 30410
+D3
+~
+~
+0 -1 30419
+S
+#30419
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30421
+D1
+~
+~
+0 -1 30418
+D2
+~
+~
+0 -1 30409
+D3
+~
+~
+0 -1 30420
+S
+#30420
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the north and west the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30496
+D1
+~
+~
+0 -1 30419
+D2
+~
+~
+0 -1 30408
+D3
+~
+~
+0 -1 30495
+S
+#30421
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the west the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30432
+D1
+~
+~
+0 -1 30422
+D2
+~
+~
+0 -1 30419
+D3
+~
+~
+0 -1 30496
+S
+#30422
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30431
+D1
+~
+~
+0 -1 30423
+D2
+~
+~
+0 -1 30418
+D3
+~
+~
+0 -1 30421
+S
+#30423
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30430
+D1
+~
+~
+0 -1 30424
+D2
+~
+~
+0 -1 30417
+D3
+~
+~
+0 -1 30422
+S
+#30424
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30429
+D1
+~
+~
+0 -1 30425
+D2
+~
+~
+0 -1 30416
+D3
+~
+~
+0 -1 30423
+S
+#30425
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30428
+D1
+~
+~
+0 -1 30426
+D2
+~
+~
+0 -1 30414
+D3
+~
+~
+0 -1 30424
+S
+#30426
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the east the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30427
+D1
+~
+~
+0 -1 30505
+D2
+~
+~
+0 -1 30415
+D3
+~
+~
+0 -1 30425
+S
+#30427
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the east the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30437
+D1
+~
+~
+0 -1 30506
+D2
+~
+~
+0 -1 30426
+D3
+~
+~
+0 -1 30428
+S
+#30428
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30436
+D1
+~
+~
+0 -1 30427
+D2
+~
+~
+0 -1 30425
+D3
+~
+~
+0 -1 30429
+S
+#30429
+Dry Land~
+You emerge from the mist and are temporarily blinded by bright sunlight. You 
+squint and blink several times before realising you are standing on dry land. As 
+you turn in a circle you see the mist quivering all about the edge of the small 
+island, But it seems unable to advance further. Perhaps this would be a good 
+place to rest and gather your strength before pushing on again.
+~
+0 4|8|1024|65536 4
+D0
+~
+~
+0 -1 30435
+D1
+~
+~
+0 -1 30428
+D2
+~
+~
+0 -1 30424
+D3
+~
+~
+0 -1 30430
+S
+#30430
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, but a strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30434
+D1
+~
+~
+0 -1 30429
+D2
+~
+~
+0 -1 30423
+D3
+~
+~
+0 -1 30431
+S
+#30431
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30433
+D1
+~
+~
+0 -1 30430
+D2
+~
+~
+0 -1 30422
+D3
+~
+~
+0 -1 30432
+S
+#30432
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the north and west the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30498
+D1
+~
+~
+0 -1 30431
+D2
+~
+~
+0 -1 30421
+D3
+~
+~
+0 -1 30497
+S
+#30433
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the west the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30442
+D1
+~
+~
+0 -1 30434
+D2
+~
+~
+0 -1 30431
+D3
+~
+~
+0 -1 30498
+S
+#30434
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30441
+D1
+~
+~
+0 -1 30435
+D2
+~
+~
+0 -1 30430
+D3
+~
+~
+0 -1 30433
+S
+#30435
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30440
+D1
+~
+~
+0 -1 30436
+D2
+~
+~
+0 -1 30429
+D3
+~
+~
+0 -1 30434
+S
+#30436
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30439
+D1
+~
+~
+0 -1 30437
+D2
+~
+~
+0 -1 30428
+D3
+~
+~
+0 -1 30435
+S
+#30437
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive. 
+
+To the east the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30438
+D1
+~
+~
+0 -1 30507
+D2
+~
+~
+0 -1 30427
+D3
+~
+~
+0 -1 30436
+S
+#30438
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the north and east the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30509
+D1
+~
+~
+0 -1 30508
+D2
+~
+~
+0 -1 30437
+D3
+~
+~
+0 -1 30439
+S
+#30439
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30445
+D1
+~
+~
+0 -1 30438
+D2
+~
+~
+0 -1 30436
+D3
+~
+~
+0 -1 30440
+S
+#30440
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30444
+D1
+~
+~
+0 -1 30439
+D2
+~
+~
+0 -1 30435
+D3
+~
+~
+0 -1 30441
+S
+#30441
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30443
+D1
+~
+~
+0 -1 30440
+D2
+~
+~
+0 -1 30434
+D3
+~
+~
+0 -1 30442
+S
+#30442
+Lost in the mist~
+You are wading through mud and slime with no idea if you are actually getting 
+anywhere as visibility is almost none. All around you a mist thicker than any 
+you have previously encountered is hiding any trace of the landscape. You keep 
+moving anyway trying to keep your spirits up, But A strange kind of despondency 
+and hopelessness is trying to creep into your mind. Better not pay it any heed 
+or you might never get out of this swamp alive.
+
+To the north and west the mist looks almost solid and you sense that if you 
+stepped into it you might become more disorientated than you already are.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30510
+D1
+~
+~
+0 -1 30441
+D2
+~
+~
+0 -1 30433
+D3
+~
+~
+0 -1 30499
+S
+#30443
+before the cliff~
+It seems that you have been getting somewhere after all, looming up in front of 
+you is a sheer cliff wall. Unfortunately it looks unscalable. Towards the top of 
+the cliff a mass of black shadows are swirling and churning, and in their midst 
+tall spires rise from the darkness. 'Oh well, better keep looking for a way out' 
+you think, as you sigh wearily.
+
+To the west the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D1
+~
+~
+0 -1 30444
+D2
+~
+~
+0 -1 30441
+D3
+~
+~
+0 -1 30510
+S
+#30444
+before the cliff~
+It seems that you have been getting somewhere after all, looming up in front of 
+you is a sheer cliff wall. Unfortunately it looks unscalable. Towards the top of 
+the cliff a mass of black shadows are swirling and churning, and in their midst 
+tall spires rise from the darkness. Then you notice there is a deep crack in the 
+cliff face that is almost completely obscured by the tree.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30458
+D1
+~
+~
+0 -1 30445
+D2
+~
+~
+0 -1 30440
+D3
+~
+~
+0 -1 30443
+S
+#30445
+before the cliff~
+It seems that you have been getting somewhere after all, looming up in front of 
+you is a sheer cliff wall. Unfortunately it looks unscalable. Towards the top of 
+the cliff a mass of black shadows are swirling and churning, and in their midst 
+tall spires rise from the darkness. 'Oh well, better keep looking for a way out' 
+you think, as you sigh wearily.
+
+To the east the mist looks almost solid and you sense that if you stepped into 
+it you might become more disorientated than you already are.
+~
+0 1|8 6
+D1
+~
+~
+0 -1 30509
+D2
+~
+~
+0 -1 30439
+D3
+~
+~
+0 -1 30444
+S
+#30446
+A slimy burrow~
+Ewww it's muddy and slimy and very hard to remain standing in these treacherous 
+conditions. Here and there you can see what appears to be blood congealing in 
+the mud. It looks as if you can proceed north but retreat might be wiser.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30447
+D4
+~
+~
+0 -1 30409
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30447
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here. It looks as if you can proceed west.
+~
+0 1|8 6
+D2
+~
+~
+0 -1 30446
+D3
+~
+~
+0 -1 30448
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30448
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here. The passage seems to slope steeply downwards but you 
+are unable to see anything below.
+~
+0 1|8 6
+D1
+~
+~
+0 -1 30447
+D5
+~
+~
+0 -1 30449
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30449
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here. It looks as if you can proceed north.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30450
+D4
+~
+~
+0 -1 30448
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30450
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here. It looks as if you can proceed east.
+~
+0 1|8 6
+D1
+~
+~
+0 -1 30451
+D2
+~
+~
+0 -1 30449
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30451
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here. It looks as if you can proceed to the north or east.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30453
+D1
+~
+~
+0 -1 30452
+D3
+~
+~
+0 -1 30450
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30452
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here and the passage comes to an abrupt end. It seems you 
+can proceed no more in this direction and will have to retreat.
+~
+0 1|8 6
+D3
+~
+~
+0 -1 30451
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30453
+A slimy burrow~
+You're slipping about in the mud and slime and trying very hard to stay on your 
+feet in these treacherous conditions. There are more splatters of blood 
+congealing in the mud here. It looks as if you can proceed north.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30454
+D2
+~
+~
+0 -1 30451
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30454
+A slimy burrow~
+The passage seems to have opened into a large worm burrow and the muddy floor is 
+mixed with quite a bit of blood. Scattered about are several fresh corpses that 
+appear to have had all the blood drained out of them, which would probably 
+explain where the blood on the ground came from. The burrow extends to the 
+north, west and east.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 30457
+D1
+~
+~
+0 -1 30455
+D2
+~
+~
+0 -1 30453
+D3
+~
+~
+0 -1 30456
+E
+blood mud~
+The dark red blood that is congealing in this slimy muck appears to be fresh.~
+S
+#30455
+An Egg chamber~
+You are in a small slimy chamber that seems to be used for housing eggs until 
+they hatch (there are several lying at your feet). The eggs are quite odd in 
+appearance - their white shells are speckled with red spots.
+~
+0 1|8 6
+D3
+~
+~
+0 -1 30454
+S
+#30456
+An Egg chamber~
+You are in a small slimy chamber that seems to be used for housing eggs until 
+they hatch (there are several lying at your feet). The eggs are quite odd in 
+appearance - their white shells are speckled with red spots.
+~
+0 1|8 6
+D1
+~
+~
+0 -1 30454
+S
+#30457
+An Egg chamber~
+You are in a small slimy chamber that seems to be used for housing eggs until 
+they hatch (there are several lying at your feet). The eggs are quite odd in 
+appearance - their white shells are speckled with red spots.
+~
+0 1|8 6
+D2
+~
+~
+0 -1 30454
+S
+#30458
+A Dark cavern~
+You have entered a damp stone cavern from what you can make out in the almost 
+perfect darkness. As your eyes adjust to the gloom you realise you are standing 
+on the edge of a very deep hole, lucky you didn't fall in. Although the stone 
+seems somewhat slippery it looks safe enough to climb down if you are careful.
+~
+0 1|4|8|8192 0
+D2
+~
+~
+0 -1 30444
+D5
+~
+~
+0 -1 30459
+S
+#30459
+A Dark cavern~
+You cling to the slippery surface of the cavern wall, above and below you is 
+complete darkness.
+~
+0 1|4|8|8192 9
+D4
+~
+~
+0 -1 30458
+D5
+~
+~
+0 -1 30460
+S
+#30460
+A Dark cavern~
+The stone walls are wet to touch and rivulets of water run down them in places. 
+The cavern was probably formed from the water run offs over a long period of 
+time. You notice that it's very dark in here, and deep pools of shadows surround 
+you. You can continue deeper into the cavern towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30461
+D4
+~
+~
+0 -1 30459
+S
+#30461
+A Dark cavern~
+The damp dark cavern is making you cold and a little nervous, you begin to 
+wonder what might be hiding in the shadows that surround you. You can continue 
+deeper into the cavern towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30462
+D2
+~
+~
+0 -1 30460
+S
+#30462
+A Dark cavern~
+You have come to a large chamber with tunnels leading off in all directions. As 
+you walk around the perimeter of the room trying to decide which way to go you 
+notice a small opening in one corner. Bending down for a closer look you see 
+scatterings of dirt spread about the crack in the stone floor and you think you 
+can hear movement below.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30474
+D1
+~
+~
+0 -1 30467
+D2
+~
+~
+0 -1 30461
+D3
+~
+~
+0 -1 30464
+D5
+~
+~
+0 -1 30463
+S
+#30463
+The den of the Undead~
+You are standing in a large den that has deep shadows towards the outer walls. 
+The floor is marked with scores of deep grooves and fresh diggings and you can 
+see bones poking out of the dirt in places.
+~
+0 1|4|8 0
+D4
+~
+~
+0 -1 30462
+S
+#30464
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30462
+D3
+~
+~
+0 -1 30465
+S
+#30465
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30464
+D2
+~
+~
+0 -1 30466
+S
+#30466
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. The cavern 
+has come to an abrupt dead end you'll have to return the way you came.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30465
+S
+#30467
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30468
+D3
+~
+~
+0 -1 30462
+S
+#30468
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30469
+D3
+~
+~
+0 -1 30467
+S
+#30469
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30470
+D2
+~
+~
+0 -1 30468
+S
+#30470
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30469
+D3
+~
+~
+0 -1 30471
+S
+#30471
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30472
+D1
+~
+~
+0 -1 30470
+D3
+~
+~
+0 -1 30473
+S
+#30472
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. You can 
+see a crack in the ceiling above your head, Maybe if you prayed really loudly 
+the gods might hear your prayers from here, otherwise you'll have to return the 
+way you came as the cavern has come to an abrupt dead end.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 30471
+S
+#30473
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. Something 
+has been chiseled into the stone here.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30471
+D2
+~
+~
+0 -1 30474
+D3
+~
+~
+0 -1 30475
+E
+chiseled stone~
+The words  'Bliss was here' have been chiseled deep into the stone, How odd.~
+S
+#30474
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. You can 
+continue deeper into the cavern towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30473
+D2
+~
+~
+0 -1 30462
+S
+#30475
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30476
+D1
+~
+~
+0 -1 30473
+S
+#30476
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. The cavern 
+continues towards the west. It also looks as if you might be able to scale the 
+wall here, There seems to be an opening above you.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30475
+D3
+~
+~
+0 -1 30477
+D4
+~
+~
+0 -1 30478
+S
+#30477
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. The cavern 
+has come to an abrupt dead end you'll have to return the way you came.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30476
+S
+#30478
+A Dark cavern~
+You cling to the slippery surface of the cavern wall, above and below you is 
+complete darkness.
+~
+0 1|4|8|8192 9
+D4
+~
+~
+0 -1 30479
+D5
+~
+~
+0 -1 30476
+S
+#30479
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. You can 
+continue deeper into the cavern towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30480
+D5
+~
+~
+0 -1 30478
+S
+#30480
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30481
+D2
+~
+~
+0 -1 30479
+S
+#30481
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30482
+D3
+~
+~
+0 -1 30480
+S
+#30482
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. 
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30481
+D3
+~
+~
+0 -1 30483
+S
+#30483
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30484
+D1
+~
+~
+0 -1 30482
+S
+#30484
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 30485
+D2
+~
+~
+0 -1 30483
+S
+#30485
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. You can 
+continue deeper into the cavern towards the north.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30486
+D3
+~
+~
+0 -1 30484
+S
+#30486
+A Dark cavern~
+You are aware of the faint dripping of water down the stone walls but your main 
+attention is being held by the pools of shadows that surround you. Too much time 
+spent in this cold damp place is making your mind play tricks on you. You can 
+see a crack in the ceiling above your head, Maybe if you prayed really loudly 
+the gods might hear your prayers from here. 
+
+You can continue deeper into the cavern towards the north, However, there seems 
+to be some sort of scratching and snuffling coming from that direction.
+~
+0 1|4|8 0
+D0
+~
+~
+0 -1 30487
+D2
+~
+~
+0 -1 30485
+S
+#30487
+A Dark cavern~
+The cavern seems to have opened into a larger chamber. The walls are almost 
+completely smooth here and you find yourself wondering what could have worn them 
+away. The floor however is a different matter entirely, It has large grooves and 
+scores in it.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 30488
+D2
+~
+~
+0 -1 30486
+S
+#30488
+A Dragon's hoard~
+Wow, a treasure hoard! 
+You decide your unpleasant journey through this cavern might prove to be worth 
+the trouble after all. There's gold and gems piled all about the chamber and 
+many other trinkets catch your eye including the most beautiful golden lamp you 
+have ever seen. A strong gust of wind blows in from the west.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 30487
+D3
+~
+~
+0 -1 30489
+D5
+~
+lamp~
+10 -1 30490
+E
+lamp~
+What a beautiful lamp, It is etched in strange symbols that are unfamiliar to 
+you and it is sparkling in spite of the fact there is little to no light in this 
+room. There is a lid on the top of it that seems to be jammed on, But maybe you 
+could pry it lose to see if anything is hidden inside.
+~
+S
+#30489
+An opening in the cavern~
+There seems to be a rather large opening above your head and looking up you are 
+horrified by what you see out there. Black mist and shadows like you've never 
+seen before are swirling above and poring in through the hole. You stumble 
+backwards as you recoil in fear. You decide it might be best to return the way 
+you came rather than face whatever might be waiting beyond.
+
+A shadowy portal hangs in the air.
+~
+0 1|8192 0
+D1
+~
+~
+0 -1 30488
+S
+#30490
+Inside the lamp~
+Plush silk cushions are piled all over the fur rug that covers the floor beneath 
+your feet. There is black lace hung from the ceiling and draped about the many 
+beautiful statues that line the walls of the room. Incense is burning in a gold 
+dish suspended from the roof by a golden rope chain and many treasures of great 
+value sparkle before your eyes. But the thing that amazes you the most is the 
+fact that this room is somehow inside a lamp.
+~
+0 1|8|2048 0
+D4
+~
+~
+10 -1 30488
+S
+#30491
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30491
+D1
+~
+~
+0 -1 30402
+D2
+~
+~
+0 -1 30491
+D3
+~
+~
+0 -1 30402
+S
+#30492
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30492
+D1
+~
+~
+0 -1 30402
+D2
+~
+~
+0 -1 30492
+D3
+~
+~
+0 -1 30402
+S
+#30493
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30493
+D1
+~
+~
+0 -1 30404
+D2
+~
+~
+0 -1 30493
+D3
+~
+~
+0 -1 30404
+S
+#30494
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30494
+D1
+~
+~
+0 -1 30413
+D2
+~
+~
+0 -1 30494
+D3
+~
+~
+0 -1 30413
+S
+#30495
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30495
+D1
+~
+~
+0 -1 30415
+D2
+~
+~
+0 -1 30495
+D3
+~
+~
+0 -1 30415
+S
+#30496
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30496
+D1
+~
+~
+0 -1 30426
+D2
+~
+~
+0 -1 30496
+D3
+~
+~
+0 -1 30426
+S
+#30497
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30497
+D1
+~
+~
+0 -1 30427
+D2
+~
+~
+0 -1 30497
+D3
+~
+~
+0 -1 30427
+S
+#30498
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30498
+D1
+~
+~
+0 -1 30437
+D2
+~
+~
+0 -1 30498
+D3
+~
+~
+0 -1 30437
+S
+#30499
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30499
+D1
+~
+~
+0 -1 30438
+D2
+~
+~
+0 -1 30499
+D3
+~
+~
+0 -1 30438
+S
+#30500
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30500
+D1
+~
+~
+0 -1 30401
+D2
+~
+~
+0 -1 30500
+D3
+~
+~
+0 -1 30401
+S
+#30501
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30501
+D1
+~
+~
+0 -1 30401
+D2
+~
+~
+0 -1 30501
+D3
+~
+~
+0 -1 30401
+S
+#30502
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30502
+D1
+~
+~
+0 -1 30407
+D2
+~
+~
+0 -1 30502
+D3
+~
+~
+0 -1 30407
+S
+#30503
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30503
+D1
+~
+~
+0 -1 30408
+D2
+~
+~
+0 -1 30503
+D3
+~
+~
+0 -1 30408
+S
+#30504
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30504
+D1
+~
+~
+0 -1 30420
+D2
+~
+~
+0 -1 30504
+D3
+~
+~
+0 -1 30420
+S
+#30505
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30505
+D1
+~
+~
+0 -1 30421
+D2
+~
+~
+0 -1 30505
+D3
+~
+~
+0 -1 30421
+S
+#30506
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30506
+D1
+~
+~
+0 -1 30432
+D2
+~
+~
+0 -1 30506
+D3
+~
+~
+0 -1 30432
+S
+#30507
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30507
+D1
+~
+~
+0 -1 30433
+D2
+~
+~
+0 -1 30507
+D3
+~
+~
+0 -1 30433
+S
+#30508
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30508
+D1
+~
+~
+0 -1 30442
+D2
+~
+~
+0 -1 30508
+D3
+~
+~
+0 -1 30442
+S
+#30509
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30509
+D1
+~
+~
+0 -1 30402
+D2
+~
+~
+0 -1 30509
+D3
+~
+~
+0 -1 30402
+S
+#30510
+Impenetrable mist~
+The mist is so thick here that you can't even see your hand in front of your face.
+You can move in all the cardinal directions, but since you can't see anything one 
+way looks as good as another.
+~
+0 4|8|8192 6
+D0
+~
+~
+0 -1 30510
+D1
+~
+~
+0 -1 30401
+D2
+~
+~
+0 -1 30510
+D3
+~
+~
+0 -1 30401
+S
+#0
+
+
+#RESETS
+*
+M 1 30400 1 30454			the Blood Worm to A slimy burrow.
+*
+M 1 30401 1 30447			the Blood Worm to A slimy burrow.
+*
+M 1 30402 1 30456			the Blood Worm to A slimy burrow.
+*
+M 1 30403 1 30452			the Blood Worm to A slimy burrow.
+*
+M 1 30404 1 30448			the Blood worm to A slimy burrow.
+*
+M 1 30405 1 30420			the lost one to Lost in the mist
+E 1 30402 100 5
+E 1 30403 100 7
+E 1 30401 100 16
+
+O 0 30444 0 30490			Full-helm to Genie's Lamp
+
+M 1 30406 1 30414			the Lost One to Lost in the mist
+E 1 30408 100 1
+E 1 30405 100 5
+E 1 30407 100 7
+E 1 30406 100 16
+*
+M 1 30407 1 30442			the Lost One to Lost in the mist
+E 1 30402 100 5
+E 1 30403 100 7
+E 1 30404 100 12
+E 1 30401 100 16
+*
+M 1 30408 1 30401			the Mist Wolf to Lost in the mist
+E 1 30409 100 12
+*
+M 1 30409 1 30422			the Mist Wolf to Lost in the mist
+E 1 30409 100 12
+O 1 30419 100 30429			a ripe cherry to Dry Land
+O 1 30438 100 30429			a ripe cherry to Dry Land
+O 1 30439 100 30429			a ripe cherry to Dry Land
+O 1 30420 100 30429			a cherry tree to Dry Land
+O 1 30400 100 30456			a speckled egg to An Egg chamber
+O 1 30440 100 30456			a speckled egg to An Egg chamber
+O 1 30441 100 30456			a speckled egg to An Egg chamber
+O 1 30400 100 30457			a speckled egg to An Egg chamber
+O 1 30440 100 30457			a speckled egg to An Egg chamber
+O 1 30400 100 30455			a speckled egg to An Egg chamber
+O 1 30441 100 30455			a speckled egg to An Egg chamber
+O 1 30417 100 30401			swamp slime to Lost in the mist
+O 1 30417 100 30415			swamp slime to Lost in the mist
+O 1 30417 100 30442			swamp slime to Lost in the mist
+O 1 30418 100 30417			a tadpole to Lost in the mist
+O 1 30418 100 30440			a tadpole to Lost in the mist
+O 1 30418 100 30420			a tadpole to Lost in the mist
+*
+M 1 30410 1 30439			the Mist Wolf to Lost in the mist
+E 1 30409 100 12
+O 1 30410 100 30410			a dead tree to Lost in the mist
+O 1 30410 100 30424			a dead tree to Lost in the mist
+O 1 30410 100 30444			a dead tree to Lost in the mist
+*
+M 1 30411 1 30444			the Nighthunter to Lost in the mist
+E 1 30411 100 5
+E 1 30412 100 8
+E 1 30437 100 16
+*
+M 1 30412 1 30460			the Dream Shadow to A Dark cavern.
+*
+M 1 30413 1 30477			the Dream Shadow to A Dark cavern.
+*
+M 1 30414 1 30484			the Dream Shadow to A Dark cavern.
+O 1 30434 100 30488			a ruby to treasure room
+O 1 30433 100 30488			a sapphire to treasure room
+*
+M 1 30415 1 30463			the Undead Dog to A Dark cavern.
+E 1 30414 100 5
+*
+M 1 30416 1 30463			the Undead Dog to A Dark cavern.
+E 1 30414 100 5
+*
+M 1 30417 1 30466			the Shadow Crawler to A Dark cavern.
+E 1 30411 100 5
+*
+M 1 30418 1 30468			the Shadow Crawler to A Dark cavern.
+E 1 30411 100 5
+*
+M 1 30419 1 30479			the Shadow Crawler to A Dark cavern.
+E 1 30411 100 5
+*
+M 1 30420 1 30432			the Nightwing to Lost in the mist
+E 1 30415 100 12
+E 1 30416 100 16
+*
+M 1 30421 1 30427			the Nightwing to Lost in the mist
+E 1 30415 100 12
+E 1 30416 100 16
+*
+M 1 30422 1 30404			the Mist Horror to Lost in the mist
+E 1 30409 100 12
+*
+M 1 30423 1 30435			the Mist Horror to Lost in the mist
+E 1 30409 100 12
+*
+M 1 30424 1 30487			the shadow dragon to A Dark cavern
+E 1 30421 100 12
+E 1 30422 100 16
+E 1 30422 100 18
+E 1 30423 100 8
+E 1 30424 100 5
+O 1 30431 100 30463           		dirt to den of the undead
+P 1 30413 100 30431			a bone to container Dirt
+*
+M 1 30425 1 30490			the genie to inside the lamp
+E 1 30425 100 17
+E 1 30427 100 5
+E 1 30426 100 7
+E 1 30428 100 8
+E 1 30429 100 15
+E 1 30430 100 19
+O 1 30436 100 30490			ring to inside the lamp
+*
+
+O 1 30435 100 30488			coins to treasure room
+*
+O 1 30432 100 30449			a corpse to a room in the burrow
+O 1 30432 100 30454			a corpse to a room in the burrow
+*
+D 1 30488 5 1				close lamp from outside
+D 1 30490 4 1				close lamp from inside
+*
+O 1 30442 100 30400		misty portal to entrance
+O 1 30443 100 30489		shadowy portal to bastion
+S
+
+
+#SPECIALS
+M  30400 spec_bloodsucker
+M  30401 spec_bloodsucker
+M  30402 spec_bloodsucker
+M  30403 spec_bloodsucker
+M  30404 spec_bloodsucker
+M  30408 spec_breath_gas			the Mist Wolf
+M  30409 spec_breath_gas			the Mist Wolf
+M  30410 spec_breath_gas			the Mist Wolf
+M  30411 spec_fido				the Nighthunter
+M  30415 spec_cast_undead			the Undead Dog
+M  30416 spec_cast_undead			the Undead Dog
+M  30425 spec_cast_archmage			the Genie
+S
+
+
+#$

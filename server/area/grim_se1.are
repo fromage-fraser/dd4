@@ -1,0 +1,1122 @@
+#AREA	Grim~  The Sea of Deception~
+5 10 0 100
+
+#MOBILES
+#18800
+sailor young~
+a young sailor~
+A young sailor is here swimming through the ocean.
+~
+The sailor looks exausted.
+He must have been shipwrecked, or maybe he was made to walk the plank...
+~
+4|64 0 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18801
+seagull gull~
+a seagull~
+A seagull swoops down towards you for a closer look.
+~
+Duck !
+Hmm, a seagull on a mission.
+~
+64 524288 0 S
+15 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18802
+dolphin~
+a friendly dolphin~
+A friendly dolphin swims along beside you in the sea.
+~
+Dolphins are so playful, this one comes right up to you and nuzzles your hand.
+Perhaps there's some fish around here you could feed it.
+~
+64 0 0 S
+20 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#18803
+whale~
+a blue whale~
+A HUGE blue whale comes up for air beside you !
+~
+What a magnificent sight !
+The blue whale blasts air from it's blowhole 5 or 6 meters up into the air !
+~
+64 0 0 S
+30 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#18804
+hammer head shark~
+a hammerhead shark~
+A hammer head shark attacks you !
+~
+Arrg, what a hassel !
+Getting attacked by sharks is not a good idea.
+~
+2|32|64 0 -300 S
+15 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#18805
+small fish~
+a small fish~
+A small fish oggles you with it's big eyes.
+~
+The fish is looking at you as if to say "What are you doing down here".
+You wonder the same thing yourself.
+~
+2|64|128 0 100 S
+10 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#18806
+dahij man~
+Dahij the prophet~
+A mystical looking man in a brown robe watches you carefully.
+~
+The man speaks as you walk closer to look at him --
+"My name is Dahij. I can see into the future. I see you many years from now as a
+powerful adventurer, wreaking havok against the forces of evil."
+
+He points a finger at you and continues --
+"You have been chosen to perform a special deed. One that requires courage,
+strength, and more than a little cunning. All you have to do is say you will
+accept the quest, and it will begin."
+~
+2|8|64|4096 8|32|128|512 0 S
+250 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 28 'teacher base'
+& 85 'mental defense disciplines'
+& 85 'matter control disciplines'
+& 85 'energy control disciplines'
+& 85 'telepathy disciplines'
+& 85 'body control disciplines'
+& 85 'mana control disciplines'
+& 85 'evocation magiks'
+& 85 'divination magiks'
+& 85 'summoning magiks'
+& 85 'enchantment magiks'
+& 85 'dark magiks'
+& 85 'death magiks'
+& 30 'satanist base'
+#0
+
+
+#OBJECTS
+#18800
+herring fish~
+a tiny fish~
+A tiny fish flaps around.~
+~
+19 0 1|16384
+10~ 1~ 6~ 11~ 
+1 0 0
+#18801
+floating debris~
+debris from a ship~
+There is some floating debris from a ship here.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+10 0 0
+#18802
+hammer head~
+a hammer head~
+The head from a hammer head shark lies bleeding here.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+3 0 0
+A
+13 5
+#18803
+gold coin~
+an intricately carved gold coin~
+There is a gold coin here, sparkling in the light.~
+~
+8 64 1|16384
+0~ 0~ 1~ 0~ 
+1 0 0
+E
+gold coin~
+There is a picture of some sort of water creature on one side and that of a
+gleaming pair of gloves on the other.
+
+~
+#18804
+gold coin~
+a beautiful golden coin~
+A flash of gold catches the corner of your eye.~
+~
+8 64 1|16384
+0~ 0~ 1~ 0~ 
+5 0 0
+#0
+
+
+#ROOMS
+#18800
+The bustling port of~
+You are sailing out to sea.
+Be wary of unpredictable weather patterns and make sure you keen an eye on the
+sun to navigate your way over the ocean.
+The port opens up to the wide open ocean to the west.
+You can head back to the safety of terra-firma to the east.
+~
+0 8192 7
+D3
+~
+~
+0 -1 18801
+S
+#18801
+Caught in a rip !~
+You are being pulled further out to sea and there is nothing you can do 
+about it !
+The power of the rip is enormous.  It's as if some thing is pulling the sea out
+from under you just as they might pull out a rug.
+You're just going to have to ride it out and see where it leads.
+~
+0 0 7
+D3
+~
+~
+0 -1 18802
+S
+#18802
+Travelling along a great rip~
+You are racing westwards over the sea.  The rip has complete comtrol of your
+vessel and you just have to hang on for the ride.
+~
+0 0 7
+D3
+~
+~
+0 -1 18803
+S
+#18803
+Calmer waters~
+You have reached calmer waters.
+The sea here is unnaturally flat and placid.   Something is very wrong.  You
+can't even sea any sea birds - infact, there are no signs of life at all.
+You can head in any direction.  Although you can't see anything anywhere.
+~
+0 0 7
+D0
+~
+~
+0 -1 18806
+D1
+~
+~
+0 -1 18804
+D2
+~
+~
+0 -1 18818
+D3
+~
+~
+0 -1 18814
+S
+#18804
+Out to sea~
+Ahh, there's nothing like the smell of the sea air and a light sea breeze to
+make you realise just how good it is to be alive.
+~
+0 0 7
+D0
+~
+~
+0 -1 18805
+D1
+~
+~
+0 -1 18810
+D2
+~
+~
+0 -1 18819
+D3
+~
+~
+0 -1 18803
+S
+#18805
+Out to sea~
+Being out at sea was fun, until you realised you were completely lost.
+The sea extends in all directions.
+~
+0 0 7
+D1
+~
+~
+0 -1 18809
+D2
+~
+~
+0 -1 18804
+D3
+~
+~
+0 -1 18806
+S
+#18806
+Out to sea~
+You are completely lost at sea.
+The water here is fairly calm, but don't count on it staying that way for long.
+The weather out here can be fairly unpredictable.
+~
+0 0 7
+D1
+~
+~
+0 -1 18805
+D2
+~
+~
+0 -1 18803
+D3
+~
+~
+0 -1 18807
+S
+#18807
+Floating beside a dark Sloop~
+You pull up beside a ship-wrecked dark sloop.
+You can't see any movement onboard, nevertheless it would be wise to keep at a
+cautious distance incase the occupants are pirates.
+At the bow of the boat the is a wooden plaque, it must have the name of the ship
+engraved upon it.
+The sea continues in all directions apart from west where jaggard rocks prevent
+movement..
+~
+0 0 7
+D0
+~
+~
+0 -1 18806
+D1
+~
+~
+0 -1 18814
+D2
+~
+~
+0 -1 18808
+E
+wooden plaque~
+The plaque is made of some kind of dark wood and is emblazened with the name -
+
+             "SKARAE"
+~
+S
+#18808
+Lost at sea~
+You're completely lost.
+The sea can take your life if you don't respect it.  Do you respect it ?
+You can see nothing on the horizon but more sea.
+~
+0 0 7
+D1
+~
+~
+0 -1 18807
+D2
+~
+~
+0 -1 18813
+D3
+~
+~
+0 -1 18809
+S
+#18809
+Lost at sea~
+The sea extends in all directions, and none of them seem to lead to anywhere but
+to more sea.
+Nothing to do here but move on.
+~
+0 0 7
+D1
+~
+~
+0 -1 18808
+D2
+~
+~
+0 -1 18810
+D3
+~
+~
+0 -1 18805
+S
+#18810
+Out to sea~
+The sea here is...well...blue.
+It's very blue.   And very big.   And very wet.
+You're very lost.
+~
+0 0 7
+D0
+~
+~
+0 -1 18809
+D1
+~
+~
+0 -1 18813
+D2
+~
+~
+0 -1 18811
+D3
+~
+~
+0 -1 18804
+S
+#18811
+Out to sea~
+Gee, what a supprise you're still at sea.  Being lost at sea is not good for 
+your skin at all.
+You can head north, towards the sea.  East towards the sea.  West towards the
+sea.  Or for a change, South towards the sea.
+~
+0 0 7
+D0
+~
+~
+0 -1 18810
+D1
+~
+~
+0 -1 18816
+D2
+~
+~
+0 -1 18815
+D3
+~
+~
+0 -1 18819
+S
+#18812
+Out to sea~
+The horizon is completely devoid of any sign of land or sea vessel.
+The sky is a deep blue and the sea beneath you is only a fraction darker, giving
+you the impression that you are in a huge blue void with no way out.
+You can head in any direction.
+~
+0 0 7
+D0
+~
+~
+0 -1 18816
+D1
+~
+~
+0 -1 18828
+D2
+~
+~
+0 -1 18808
+D3
+~
+~
+0 -1 18815
+S
+#18813
+Out to sea~
+The horizon is completely devoid of any sign of land or sea vessel.
+The sky is a deep blue and the sea beneath you is only a fraction darker, giving
+you the impression that you are in a huge blue void with no way out.
+You can head in any direction.
+~
+0 0 7
+D0
+~
+~
+0 -1 18808
+D1
+~
+~
+0 -1 18814
+D2
+~
+~
+0 -1 18816
+D3
+~
+~
+0 -1 18810
+S
+#18814
+Out to sea~
+Gee, what a supprise you're still at sea.  Being lost at sea is not good for 
+your skin at all.
+You can head north, towards the sea.  East towards the sea.  West towards the
+sea.  Or for a change, South towards the sea.
+~
+0 0 7
+D0
+~
+~
+0 -1 18807
+D1
+~
+~
+0 -1 18803
+D2
+~
+~
+0 -1 18817
+D3
+~
+~
+0 -1 18813
+S
+#18815
+Out to sea~
+The sea extends in all directions, and none of them seem to lead to anywhere but
+to more sea.
+Nothing to do here but move on.
+~
+0 4 7
+D0
+~
+~
+0 -1 18811
+D1
+~
+~
+0 -1 18812
+D2
+~
+~
+0 -1 18809
+D3
+~
+~
+0 -1 18820
+S
+#18816
+A powerful whirlpool~
+You are floating right beside a deadly whirlpool !
+If you make a false move here you could be sucked into it and pulled down to
+your death at the bottom of the ocean.
+On the other hand, it could be a great ride !
+~
+0 0 7
+D0
+~
+~
+0 -1 18813
+D1
+~
+~
+0 -1 18817
+D2
+~
+~
+0 -1 18812
+D3
+~
+~
+0 -1 18811
+D5
+~
+~
+0 -1 18829
+S
+#18817
+Out to sea~
+The sea extends in all directions, and none of them seem to lead to anywhere but
+to more sea.
+Nothing to do here but move on.
+~
+0 0 7
+D0
+~
+~
+0 -1 18814
+D1
+~
+~
+0 -1 18818
+D2
+~
+~
+0 -1 18828
+D3
+~
+~
+0 -1 18816
+S
+#18818
+Out to sea~
+Ahh, there's nothing like the smell of the sea air and a light sea breeze to
+make you realise just how good it is to be alive.
+~
+0 0 7
+D0
+~
+~
+0 -1 18803
+D1
+~
+~
+0 -1 18819
+D2
+~
+~
+0 -1 18821
+D3
+~
+~
+0 -1 18817
+S
+#18819
+Out to sea~
+You are completely lost at sea.
+The water here is fairly calm, but don't count on it staying that way for long.
+The weather out here can be fairly unpredictable.
+~
+0 0 7
+D0
+~
+~
+0 -1 18804
+D1
+~
+~
+0 -1 18811
+D2
+~
+~
+0 -1 18820
+D3
+~
+~
+0 -1 18818
+S
+#18820
+Out to sea~
+You are completely lost at sea.
+The water here is fairly calm, but don't count on it staying that way for long.
+The weather out here can be fairly unpredictable.
+~
+0 0 7
+D0
+~
+~
+0 -1 18819
+D1
+~
+~
+0 -1 18843
+D2
+~
+~
+0 -1 18805
+D3
+~
+~
+0 -1 18821
+S
+#18821
+Above a hazy outline~
+The sea is unnaturally calm here.  You can almost make out your reflection on
+the surface.
+Something is is the water below you.
+It's about 8 feet long, and moving very rapidly towards you.
+~
+0 0 7
+D0
+~
+~
+0 -1 18818
+D1
+~
+~
+0 -1 18820
+D2
+~
+~
+0 -1 18806
+D3
+~
+~
+0 -1 18828
+D5
+~
+~
+0 -1 18824
+S
+#18822
+Being sucked down the whirlpool !~
+You are powerless to stop the force of the whirlpool as it spins you around and
+around, drawing you closer to the bottom of the ocean.
+You just have to ride with it and pray you don't end up as fish food.
+~
+0 4|8|8192 8
+D5
+~
+~
+0 -1 18823
+S
+#18823
+Ocean floor~
+You are standing directly below a raging whirlpool !
+The weight of your armour is keeping you from floating back up to the surface.
+The ground underfoot is quite hard, but it gets softer to the north, south and
+east. Going in those directions could prove fatal if you fell into a deep pool
+of mud.
+To the west a cliff face towers upwards for about 75 meters. However, there is a
+crack just large enough for you to walk through.
+~
+0 8|8192 8
+D0
+~
+~
+0 -1 18838
+D1
+~
+~
+0 -1 18836
+D2
+~
+~
+0 -1 18840
+D3
+~
+~
+0 -1 18825
+S
+#18824
+Diving Underwater~
+You hold your breath and dive underwater!
+The cold water splashes over your head as you swim down into the ocean.
+You open your eyes, but everything is blurry and the saltwater stings them. You
+quickly shut them again, but not before you glimse a huge grey shark about to 
+attack you !
+~
+0 4|8|8192 8
+D4
+~
+~
+0 -1 18821
+S
+#18825
+Exploring the ocean floor~
+You are following a faint path through the towering cliffs above you.
+You feel awed at natures power to be able to create such things far from mans
+reach. The sea bottom turns to a sandy yellow and you kick up clouds of it as
+you walk further between the cliffs.
+~
+0 0 8
+D1
+~
+~
+0 -1 18823
+D2
+~
+~
+0 -1 18826
+S
+#18826
+Exploring the ocean floor~
+You come to a strange hole in the ground.  Feeling the temperature of the water 
+go from cold to warm, you assume walm water must be coming from the hole in the
+ground. Although you can see nothing.
+If you like you could jump up into the stream of hot water and catch a ride to
+the surface.
+Or else you can continue following the trail.
+~
+0 0 8
+D0
+~
+~
+0 -1 18825
+D3
+~
+~
+0 -1 18827
+D4
+~
+~
+0 -1 18828
+S
+#18827
+Exploring the ocean floor~
+The twisting path straigtens out here.
+All sorts of underwater wildlife are swimming around you, wondering what you are
+doing down here.
+~
+0 0 8
+D1
+~
+~
+0 -1 18826
+D3
+~
+~
+0 -1 18833
+S
+#18828
+Out to sea~
+The deep blue sea beneath you is getting choppier.
+There must be land of some sort nearby to cause this to happen.
+Scan around and have a look.
+~
+0 0 7
+D0
+~
+~
+0 -1 18817
+D1
+~
+~
+0 -1 18821
+D2
+~
+~
+0 -1 18807
+D3
+~
+~
+0 -1 18834
+S
+#18829
+Being sucked down the whirlpool !~
+The whirlpool has you firmly in it's grasp as it pulls you down into the murky
+depths of the ocean.
+Whatever method you were using to cross the vast ocean above has been totally
+devastated.
+You are unable to swim back up, but you can see a weakening in the whirlpool to
+what you think is the east.
+~
+0 4|8 8
+D1
+~
+~
+0 -1 18830
+D5
+~
+~
+0 -1 18822
+S
+#18830
+Disorientated underwater~
+You are tossing and tumbling through the water, your heavy clothing making it
+difficult to swim.
+You can't tell up from down, you'll just have guess and hope you get it right
+before you have to gasp for breath underwater.
+~
+0 8 8
+D4
+~
+~
+0 -1 18831
+D5
+~
+~
+0 -1 18832
+S
+#18831
+Disorientated underwater~
+The swirling of the whirlpool nearby is making it impossible for you to get your
+bearing right.  Up could be up, or it could be down.  You can't tell at the
+moment.
+The one thing you are sure of is that you need oxygen, and the sooner the
+better.
+~
+0 8 8
+D4
+~
+~
+0 -1 18818
+D5
+~
+~
+0 -1 18830
+S
+#18832
+Disorientated underwater~
+The swirling of the whirlpool nearby is making it impossible for you to get your
+bearing right.  Up could be up, or it could be down.  You can't tell at the
+moment.
+The one thing you are sure of is that you need oxygen, and the sooner the
+better.
+~
+0 8 8
+D4
+~
+~
+0 -1 18830
+D5
+~
+~
+0 -1 18833
+S
+#18833
+Exploring the ocean floor~
+The ground is soft and gluggy here, making it difficult to walk so most of your
+movement is a kind of jump-swim.
+A huge crevace prevents your travel west, while to the north it gets to dark to
+see.
+A sudden updraft of warm water makes it possible to head to the surface from
+here.
+~
+0 8 8
+D1
+~
+~
+0 -1 18827
+D2
+~
+~
+0 -1 18842
+D4
+~
+~
+0 -1 18828
+S
+#18834
+A magical floating island~
+You have arrived on a beach of yellow sand.
+This tiny island is just floating around in the ocean, as it isn't attatched to
+any other landmass.
+You can head west into a circle of trees, or back east to try your luck in the
+sea.
+~
+0 4|1024 2
+D1
+~
+~
+0 -1 18828
+D3
+~
+~
+0 -1 18835
+S
+#18835
+A circle of trees~
+The trees surrounding you form a perfect circle.
+There is a pungent odour in the air, as if someone has been burning
+strange chemicals.
+You can't see any clear exit from the trees except for the one you
+came in from.
+~
+0 1|1024|8192 2
+D1
+~
+~
+0 -1 18834
+S
+#18836
+Stuck !~
+You're sinking into a pool of mud !
+You're heavy armour is pulling you further and further down into the depths of
+the pool. Maybe there is a bottom and you'll be saved.  If there isn't, you're
+surely doomed.
+~
+0 4|8192 10
+D5
+~
+~
+0 -1 18837
+S
+#18837
+Sinking into oblivion~
+You sink over your head and into the mud.
+You can't move at all as the mud is too thick and your armour is too bulky.
+You're doomed !
+~
+0 4 10
+S
+#18838
+Stuck !~
+You're sinking into a pool of mud !
+You're heavy armour is pulling you further and further down into the depths of
+the pool. Maybe there is a bottom and you'll be saved.  If there isn't, you're
+surely doomed.
+~
+0 4 10
+D5
+~
+~
+0 -1 18839
+S
+#18839
+The bottom of the mud pit~
+Your feet touch the bottom of the mud pit just as the mud rises about your
+shoulders.
+You can pull yourself out of the pit and head south.
+~
+0 4 10
+D2
+~
+~
+0 -1 18823
+S
+#18840
+Stuck !~
+You're sinking into a pool of mud !
+You're heavy armour is pulling you further and further down into the depths of
+the pool. Maybe there is a bottom and you'll be saved.  If there isn't, you're
+surely doomed.
+~
+0 4 10
+D5
+~
+~
+0 -1 18841
+S
+#18841
+The bottom of the mud pit~
+Your feet touch the bottom of the mud pit just as the mud rises about your
+shoulders.
+You can pull yourself out of the pit and head north.
+~
+0 4 10
+D0
+~
+~
+0 -1 18823
+S
+#18842
+Exploring the ocean floor~
+The path comes to a dead end.
+There is a giant wall of rock in front of you that climbs up almost to the
+surface.
+~
+0 0 8
+D0
+~
+~
+0 -1 18833
+S
+#18843
+Caught on a Tsunami!~
+From out of nowhere a tsunami forms and lifts you high in the air!
+The big wave is speeding east across the ocean, taking you along for the ride.
+You wonder where it came from, as the sea has been calm throughout your
+journey so far.
+~
+0 4 6
+D1
+~
+~
+0 -1 18844
+S
+#18844
+Riding a tsunami~
+Travelling at incredible speed of the surface of the sea is quite
+exhilerating, but your ride must end soon as you can see land looming up to the
+east.
+The wave is starting to break and foam is lashing your face.
+~
+0 4 6
+D1
+~
+~
+0 -1 18845
+S
+#18845
+Dumped by a tsunami~
+CRAAAAASH !!
+
+The tsunami curls over and slams you back into the sea with the force of a god.
+You gasp for your breath as you break the surface of the water in the wake of
+the wave.
+You are floating near a seaport to the east.
+~
+0 4 6
+D1
+~
+~
+0 -1 18846
+S
+#18846
+A misty landfall~
+You swim into a relative calm beach only the beach itself is covered in mist.
+All around the mist rolls. No vegetation of any description can be seen.
+Scanning the landscape, you see that this 'island' extends to the east and 
+the landscape disappears in a misty haze.
+~
+0 4 6
+D1
+~
+~
+0 -1 5600
+D3
+~
+~
+0 -1 18845
+S
+#0
+
+
+#RESETS
+R 1 18803 4                    ; Randomize Calmer Waters
+R 1 18804 4			; Randomize Out to sea
+R 1 18805 4			; Randomize Out to sea
+R 1 18806 4			; Randomize Out to sea
+R 1 18807 4			; Randomize Floating beside a dark Sloop
+R 1 18808 4			; Randomize Lost at sea
+R 1 18809 4			; Randomize Lost at sea
+R 1 18810 4			; Randomize Out to sea
+R 1 18811 4			; Randomize Out to sea
+R 1 18812 4			; Randomize Out to sea
+R 1 18813 4			; Randomize Out to sea
+R 1 18814 4			; Randomize Out to sea
+R 1 18815 4			; Randomize Out to sea
+R 1 18816 4                     ; Randomize A powerful whirlpool
+R 1 18817 4			; Randomize Out to sea
+R 1 18818 4			; Randomize Out to sea
+R 1 18819 4			; Randomize Out to sea
+R 1 18820 4			; Randomize Out to sea
+R 1 18821 4                    ; Randomize Above a hazy outline
+R 1 18828 4                     ; Randomize Out to sea
+*
+M 1 18804 1 18824			a hammerhead shark to Diving Underwater
+E 1 18802 100 6                        give head to hammerhead
+M 1 18800 1 18811			a young sailor to Out to sea
+M 1 18801 5 18805			a seagull to Out to sea
+M 1 18801 5 18805			a seagull to Out to sea
+M 1 18801 5 18818			a seagull to Out to sea
+E 1 18800 100 17                       give herring to seagull
+M 1 18801 5 18814			a seagull to Out to sea
+M 1 18801 5 18828			a seagull to Out to sea
+E 1 18800 100 17                       give herring to seagull
+*
+M 1 18802 2 18821			a friendly dolphin to Above a hazy outline
+M 1 18802 2 18810			a friendly dolphin to Out to sea
+M 1 18803 1 18819			a blue whale to Out to sea
+O 1 18801 100 18816			debris from a ship to A powerful whirlpool
+*
+R 1 18831 5                  ; Randomize Disorientated underwater
+R 1 18830 5                  ; Randomize Disorientated underwater
+R 1 18832 5                  ; Randomize Disorientated underwater
+M 1 18805 1 18830                      a small fish to Disorientated underwater
+*                              
+M 1 18806 1 18835                      Dahij the prophet to A circle of trees
+E 1 3031 0 0				give Dahij a light
+*
+O 1 18803 100 18826			an intricately carved gold coin to Exploring the ocean floor
+O 1 18804 100 18839                    a beautiful golden coin to The bottom of the mud pit
+M 1 18805 1 18827			a small fish to Exploring the ocean floor
+S
+
+#SPECIALS
+M 18806 spec_evil_evil_gezhp           Dahij is now a bad ass
+S
+
+#$

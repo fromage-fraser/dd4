@@ -1,0 +1,898 @@
+#AREA Hestia~ Gloomy Forest~
+-2 -2 0 100
+
+#MOBILES
+#250
+waif child dark~
+a waif child~
+A dark waif child slips through the shadows to one side of you.
+~
+The waif child is malnourished and dark-skinned.  They look as if they have
+never in their short life seen a decent meal.  Their eyes are wide and
+frightened as they try to slip past you.
+~
+4|64 256|32768|65536 500 S
+50 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#251
+starving woman dark~
+a starving woman~
+A dark starving woman slips through the shadows to one side of you.
+~
+The starving woman is malnourished and dark-skinned.  She tries to slip by
+you, but you grab her arm and demand to know why her village is almost empty
+and the people all live in fear.  She explains that they are a village of
+slaves for a nearby tower, and you gather their master is very cruel, but
+cannot get any further information out of her.
+~
+4|64 256|32768|65536 500 S
+55 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+#0
+
+#ROOMS
+#250
+The edge of the forest~
+You leave the comfort and safety of the city of Draagdim behind to
+the east and enter the forest.  The gloom overwhelms you, and you
+feel strangely pessimistic about your hopes of survival in such an
+oppressive place.  The forest thickens to the west, or you can
+return to Draagdim to the east.
+~
+0 1|4 3
+D 1
+The gates of Draagdim welcome you.
+~
+~
+0 -1 28018
+D 3
+A gloomy path enters the forest.
+~
+~
+0 -1 251
+S
+
+#251
+A path through the gloomy forest~
+The gloom of the forest closes in all about you, and you feel as if
+you are being crushed by the weight of it.  You have a deep sense
+of foreboding, and realise you can still retreat to the safety of
+Draagdim back along the path to the east.  Or you can brave the gloom
+of the forest to the south.
+~
+0 1 3
+D 2
+The gloom deepens.
+~
+~
+0 -1 252
+D 1
+The path retreats back to Draagdim.
+~
+~
+0 -1 250
+S
+
+#252
+A path through the gloomy forest~
+The forest crowds all around you.  You feel almost as if the forest
+itself is willing you to be woebegone.  The gloom deepens, if that
+is possible.  The path continues to the north and south, and you can
+see bends in the path in both directions.
+~
+0 1 3
+D 0
+The gloomy path winds before you.
+~
+~
+0 -1 251
+D 2
+The gloomy path winds before you.
+~
+~
+0 -1 253
+S
+
+#253
+A bend in the path~
+The path bends to the west here, where you spy the outskirts of a
+tiny village, or to the north, where all you see is gloom.  The
+forest around you is strangely quiet, considering the nearness of
+the village.  You cannot hear any normal village sounds, like
+lumberjacks or blacksmiths, and you wonder if the village has been
+deserted.
+~
+0 1 3
+D 0
+You see a gloomy path.
+~
+~
+0 -1 252
+D 3
+You see the entrance to a small village.
+~
+~
+0 -1 254
+S
+
+#254
+Entrance to a small village~
+A small village spreads out to the west.  It is very quiet, although
+you see forms slipping through the shadows between the huts, so you
+know there is life here.  There is a gloomy path through the forest
+to the east, or you can go north, west, or south into the village.
+~
+0 1 3
+D 0
+You see some small village huts.
+~
+~
+0 -1 258
+D 2
+You see some small village huts.
+~
+~
+0 -1 257
+D 1
+You see a gloomy path through the forest.
+~
+~
+0 -1 253
+D 3
+You see some small village huts.
+~
+~
+0 -1 255
+S
+
+#255
+A path through a village~
+The village seems deserted, although thin dark forms slip through
+the shadows between the buildings around you.  The inhabitants
+appear to be shy and scared, not to mention malnourished.  The
+village ends to your east, or you can head north, south, or west
+into other parts of it.
+~
+0 1 3
+D 0
+You see some small village huts.
+~
+~
+0 -1 259
+D 2
+You see some small village huts.
+~
+~
+0 -1 260
+D 1
+You see the edge of the village.
+~
+~
+0 -1 254
+D 3
+You see some small village huts.
+~
+~
+0 -1 256
+S
+
+#256
+A path through a village~
+The village seems deserted, although thin dark forms slip through
+the shadows between the buildings around you.  The inhabitants
+appear to be shy and scared, not to mention malnourished.  You can
+head north, south, or east into other parts of the village, or west
+to what looks to be the edge of the village.
+~
+0 1 3
+D 0
+You see some small village huts.
+~
+~
+0 -1 262
+D 2
+You see some small village huts.
+~
+~
+0 -1 261
+D 1
+You see some small village huts.
+~
+~
+0 -1 255
+D 3
+You see the edge of the village.
+~
+~
+0 -1 265
+S
+
+#257
+A path through a village~
+The village is very quiet, and you feel as if you are being watched.
+Slim dark forms slip through the shadows, just out of your line of
+vision.  The village continues west, and you see the entrance to the
+village to the north.
+~
+0 1 3
+D 0
+You see the entrance to the village.
+~
+~
+0 -1 254
+D 3
+You see some small village huts.
+~
+~
+0 -1 260
+S
+
+#258
+A path through a village~
+The village is very quiet, although there are faint rustlings as shapes,
+always on the edge of your vision, move through the shadows away from you.
+The entrance to the village is to the south, or you can venture further
+into it to the west.
+~
+0 1 3
+D 2
+You see the entrance to the village.
+~
+~
+0 -1 254
+D 3
+You see some small village huts.
+~
+~
+0 -1 259
+S
+
+#259
+A path through a village~
+You hear a bird call far off, it sounds mournful.  You also hear rustling
+in the huts and paths about you, but cannot seem to catch more than a fleeting
+glimpse of the inhabitants of the village.  The village continues west, east,
+and south.
+~
+0 1 3
+D 2
+You see some small village huts.
+~
+~
+0 -1 255
+D 1
+You see some small village huts.
+~
+~
+0 -1 258
+D 3
+You see some small village huts.
+~
+~
+0 -1 262
+S
+
+#260
+A path through a village~
+You wander through the (almost) deserted village.  There is movement and
+rustling in the shadows.  Everything is dark and dreary.  You can head
+west, east, or north into other parts of the village.
+~
+0 1 3
+D 0
+You see some small village huts.
+~
+~
+0 -1 255
+D 1
+You see some small village huts.
+~
+~
+0 -1 257
+D 3
+You see some small village huts.
+~
+~
+0 -1 261
+S
+
+#261
+A path through a village~
+The little, almost-deserted village depresses you somehow.  You wonder
+what has destroyed this place - destroyed both the village and the will
+of its inhabitants.  The village continues to the west, north and east.
+~
+0 1 3
+D 0
+You see some small village huts.
+~
+~
+0 -1 256
+D 1
+You see some small village huts.
+~
+~
+0 -1 260
+D 3
+You see some small village huts.
+~
+~
+0 -1 264
+S
+
+#262
+A path through a village~
+>From here, you think you an see what has all the inhabitants of this town
+scared out of their wits - a huge, dark tower rises out of the forest to the
+north.  Just looking at it makes you shiver uncomfortably.  You can enter
+the forest to the north and investigate the tower further, or continue
+east, west, or south through the village.
+~
+0 1 3
+D 0
+You see a trail through the gloomy forest leading to a dark tower.
+~
+~
+0 -1 284
+D 2
+You see some small village huts.
+~
+~
+0 -1 256
+D 1
+You see some small village huts.
+~
+~
+0 -1 259
+D 3
+You see some small village huts.
+~
+~
+0 -1 263
+S
+
+#263
+The edge of the village~
+The huts dwindle out here, and the gloom of the forest attempts to encroach
+on the relative safety of the village.  A small hunting trail leads west into
+the forest; you can also head east towards some more village huts, or south
+to the main entrance to the village.
+~
+0 1 3
+D 2
+You see the entrance to the village.
+~
+~
+0 -1 265
+D 1
+You see some small village huts.
+~
+~
+0 -1 262
+D 3
+You see a small hunting trail leading into the gloomy forest.
+~
+~
+0 -1 287
+S
+
+#265
+Entrance to a small village~
+You stand in the western entrance of a small village.  To the west, the gloomy
+forest closes in on a small path which winds away out of sight.  To the east,
+north, and south, you see small clusters of village huts.  The village is very
+quiet, although you can see slim dark forms slipping through the shadows all
+about you.  They seem frightened by your presence.
+~
+0 1 3
+D 0
+You see some small village huts.
+~
+~
+0 -1 263
+D 2
+You see some small village huts.
+~
+~
+0 -1 264
+D 1
+You see some small village huts.
+~
+~
+0 -1 256
+D 3
+You see a small path through the gloomy forest.
+~
+~
+0 -1 266
+S
+
+#264
+The edge of the village~
+The huts dwindle out here, and the gloom of the forest attempts to encroach
+on the relative safety of the village.  A small hunting trail leads west into
+the forest; you can also head east towards some more village huts, or north
+to the main entrance to the village.
+~
+0 1 3
+D 0
+You see the entrance to the village.
+~
+~
+0 -1 265
+D 1
+You see some small village huts.
+~
+~
+0 -1 261
+S
+
+#284
+A dark path through the gloomy forest~
+The path is dark, and trees crowd in on you to the west and east.  You almost
+feel as if you are being herded towards the tower which you can see above the
+trees to the north.  To the south, you can enter a small village.
+~
+0 1 3
+D 0
+You see a path leading to a dark tower.
+~
+~
+0 -1 285
+D 2
+You see the edge of a small village.
+~
+~
+0 -1 262
+S
+
+#285
+A dark path through the gloomy forest~
+The path is dark, and trees crowd in on you to the west and east.  You almost
+feel as if you are being herded towards the tower which you can see above the
+trees to the north.  To the south, the path leads to what appears to be a
+small village.
+~
+0 1 3
+D 0
+You see a path leading to a dark tower.
+~
+~
+0 -1 286
+D 2
+You see a path leading to a small village.
+~
+~
+0 -1 284
+S
+
+#286
+A dark path through the gloomy forest~
+The path through the forest begins to look swampy to your north, where you see
+a dark tower rising over the swamp, on top of a small hill.  The trees thin
+out around you, and the forest comes to an end to the north.  You can head
+back along the gloomy path to the south.
+~
+0 1|4 3
+D 0
+You see a path leading through a swamp.
+~
+~
+0 -1 14500
+D 2
+You see a gloomy path through a forest.
+~
+~
+0 -1 285
+S
+
+#287
+A dark path through the gloomy forest~
+Trees close in all around you, oppressing you with their closeness.  You
+have a great sense of dread as you look along the path to the west, where
+you see it splits and runs north and south.  You can also enter a small
+village to the east.
+~
+0 0 0
+D 1
+You see some small village huts.
+~
+~
+0 -1 263
+D 3
+You see a small path through the gloomy forest.
+~
+~
+0 -1 268
+S
+
+#266
+Before the entrance to a small village~
+The trees are thinner in this part of the forest, although you still feel
+their oppressiveness around you.  The path you are on leads east into a
+small village, or west into the forest, where you see it split and head north
+or south.  The area is strangely quiet, and you hear no normal village sounds;
+perhaps it has been deserted.
+~
+0 1 3
+D 1
+You see the entrance to a small village.
+~
+~
+0 -1 265
+D 3
+You see a gloomy path through the forest.
+~
+~
+0 -1 267
+S
+
+#267
+An intersection in the misty forest~
+You stand at an intersection of three gloomy paths in this dark, misty forest.
+To the east, you think you see the trees thin out, and glimpse some small
+huts, from which you deduce there must be a village in that direction.
+However, you cannot here any normal village sounds: no blacksmiths hammering,
+no children laughing.  You wonder why this is so.  There are also paths
+leading north and south.
+~
+0 1 3
+D 0
+You see a gloomy path.
+~
+~
+0 -1 268
+D 1
+You see a dark path and possibly a small village.
+~
+~
+0 -1 266
+S
+
+#268
+An interseciton in the misty forest~
+You stand at an intersection in the gloomy forest.  Tendrils of mist swirl
+about your feet.  To the south, the gloomy path continues into the forest.
+To the north, the path appears to widen into a dirt road. To the east, you
+think you can see some small huts through the thinning trees.
+~
+0 1 3
+D 0
+The path widens into a road.
+~
+~
+0 -1 269
+D 2
+The path continues into the trees.
+~
+~
+0 -1 267
+D 1
+You see a small path through the trees and maybe some huts.
+~
+~
+0 -1 287
+S
+
+#269
+The beginning of a road~
+The trees here and to the north thin out, and you see that the path widens
+into a dirt road.  To the south, the path leads into the gloomy forest.  To
+the north, the road widens even further, and you think you can see the
+edge of the forest.  You also think you see a side path.
+~
+0 1|4 3
+D 0
+The path widens into a dirt road.
+~
+~
+0 -1 270
+D 2
+You see a gloomy path through the forest.
+~
+~
+0 -1 268
+S
+
+#270
+A branching road~
+There is a dirt road here, which widens and becomes more defined to the
+north.  There is a side road to the west, and the road disappears into
+the forest to the south.
+~
+0 1 3
+D 0
+You see a dirt road.
+~
+~
+0 -1 271
+D 2
+You see a gloomy path through the forest.
+~
+~
+0 -1 269
+D 3
+You see a small dirt road.
+~
+~
+0 -1 273
+S
+
+#271
+A dirt road~
+The road you are following widens and becomes more defined to the north.  To
+the south, you see an intersection in the road.  Further north, you can see
+the tops of buildings through the trees which gather closely against the
+sides of the road.
+~
+0 1 3
+D 0
+You see a wide road leading to a city.
+~
+~
+0 -1 272
+D 2
+You see an intersection in the road.
+~
+~
+0 -1 270
+S
+
+#272
+A widening road~
+The road you are on runs north-south.  To the south, it disappears into
+the forest, while north you can just see the gates of a city, and the tops
+of buildings, through the trees.
+~
+0 1|4 3
+D 0
+You see a wide road leading to a city.
+~
+~
+0 -1 26700
+D 2
+You see a narrow dirt road.
+~
+~
+0 -1 271
+S
+
+#273
+A small dirt road~
+The small dirt road you are on seems to peter out to the west, where the
+trees of the forest overwhelm it.  You see small swirls of mist drift
+over the path.  To the east, you see an intersection in the road.
+~
+0 1 3
+D 1
+You see an intersection in the dirt road.
+~
+~
+0 -1 270
+D 3
+You see a misty forest path.
+~
+~
+0 -1 274
+S
+
+#274
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 2
+You see a misty forest path.
+~
+~
+0 -1 275
+D 1
+You see a misty forest path.
+~
+~
+0 -1 273
+S
+
+#275
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 0
+You see a misty forest path.
+~
+~
+0 -1 274
+D 3
+You see a misty forest path.
+~
+~
+0 -1 276
+S
+
+#276
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 1
+You see a misty forest path.
+~
+~
+0 -1 275
+D 3
+You see a misty forest path.
+~
+~
+0 -1 277
+S
+
+#277
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 1
+You see a misty forest path.
+~
+~
+0 -1 276
+D 3
+You see a misty forest path.
+~
+~
+0 -1 278
+S
+
+#278
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 2
+You see a misty forest path.
+~
+~
+0 -1 279
+D 1
+You see a misty forest path.
+~
+~
+0 -1 277
+S
+
+#279
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 0
+You see a misty forest path.
+~
+~
+0 -1 278
+D 2
+You see a misty forest path.
+~
+~
+0 -1 280
+S
+
+#280
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 0
+You see a misty forest path.
+~
+~
+0 -1 279
+D 1
+You see a misty forest path.
+~
+~
+0 -1 281
+S
+
+#281
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 1
+You see a misty forest path.
+~
+~
+0 -1 282
+D 3
+You see a misty forest path.
+~
+~
+0 -1 280
+S
+
+#282
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1 3
+D 1
+You see a misty forest path.
+~
+~
+0 -1 283
+D 3
+You see a misty forest path.
+~
+~
+0 -1 281
+S
+
+#283
+A misty forest path~
+The tiny path you are following is almost indistinguishable, and you examine
+the ground closely for the path markers.  You would not want to get lost in
+this foreboding forest.  Small tendrils of mist snake out of the trees and
+coin around your ankles, almost as if they are alive.
+~
+0 1|4 3
+D 0
+You see a misty forest path.
+~
+~
+0 -1 19207
+D 3
+You see a misty forest path.
+~
+~
+0 -1 282
+S
+#0
+
+#RESETS
+M 0 250 3 255               add a waif child to A path through a village
+M 0 250 3 265               add a waif child to Entrance to a small village
+M 0 250 3 261               add a waif child to A path through a village
+M 0 251 3 257               add a starving woman to A path through a village
+M 0 251 3 259               add a starving woman to A path through a village
+M 0 251 3 263               add a starving woman to The edge of the village
+S
+
+#SPECIALS
+M 250 spec_fido               a waif child
+M 251 spec_fido               a starving woman
+S
+
+#$
+

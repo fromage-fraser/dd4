@@ -1,0 +1,1921 @@
+#AREA Samxin~ Immquest~
+0 100 0 100
+
+#AREA_SPECIAL
+hidden no_quest
+$
+
+#HELPS
+101 IMMQUEST~
+To start a 'find the pieces and then turn them in for fabulous prizes' quest
+either GOTO room 372 or do an AT command there and then say the following:
+"Start a quest.". Slog (the quest mob sitting in there) will then enter the
+portal that will disperse him randomly to any part of the MUD except for 
+limbo. He will then drop a random quest piece/token and then go back to the 
+quest room. He'll scatter 20 pieces at a time. Repeat "Start a quest." to 
+scatter more pieces around the MUD.
+
+The possible tokens/pieces that are scattered are:
+
+A {g5{w point {wQuest Point{x token.  An {yequipment{w piece.{x [{r3{x]
+A {g10{w point {wQuest Point{x token. A {y3 intellectual practice{x {wpiece{x. [{r2{x]
+A {g15{w point {wQuest Point{x token. A {y20 platinum{x {wpiece{x [{r2{x]
+A {g20{w point {wQuest Point{x token. A {ypick two{x {wpiece{x [{r4{x]
+A {g30{w point {wQuest Point{x token. A {ypotion{x {wpiece{x [{r2{x]
+A {g15 {wFame Point {xtoken.        A {yrename 1 item{x {wpiece{x [{r4{x]
+                   A {yspecial{x {wpiece{x [{r5{x]
+
+The rewards for the tokens should be obvious. The ADDFAME command should be 
+handy for setting fame, the ADDQP command for setting quest points.
+
+The equipment pieces can be turned in for any {RCURRENTLY EXISTING ITEM WITH 
+'NORMAL' STATS{x. Such as a level 10 flamberge or a level 5 Amulet. But not a 
+level 1 IQ vine. It's helpful if you happen to know what stuff pops at :)
+
+Intellectual pracs should be obvious as well.
+
+Ditto with the platinum pieces.
+
+Pick two pieces earn you your pick of any 2 DIFFERENT rewards.
+
+A potion piece earns 10,000XP...err, no, a potion. :) The following spells
+are {Rdisallowed{x in potions: {WComplete heal, globe, power heal, haste, fireshield.{x
+
+A rename piece allows a non-Hero to have one item renamed. They now own that 
+item. (I.E. Set the owner flag to whatever character the item is for)
+
+A special piece earns you 1 each of each of the other rewards.
+
+Pieces/Tokens are named "/". They use vnums 372-384 (and 18405). If you notice 
+a token/piece with a different vnum do something nasty to everyone in the 
+immediate area. Actual tokens being renamed to another type are harder to 
+spot, so on the off chance you care enough to look here are vnums for each 
+piece:
+
+5 QP Token - 384       Eq Piece - 375
+10 QP Token - 372      Int Prac Piece - 376
+15 QP Token - 373      20 Plat Piece - 377
+20 QP Token - 374      Pick 2 Piece - 378
+30 QP Token - 380      Potion Piece - 379
+15 FP Token - 383      Rename Piece - 18405
+            Special Piece - 381
+
+Direct all questions/demands to Samxin. He may listen.
+
+See HELP MOBQUEST for a mob-type quest.
+~
+0 $~
+
+#MOBILES
+#371
+Slog quest mob~
+Slog The Quest Mob~
+Slog The Quest Mob eagerly awaits the order to start.
+~
+To start a 'find the pieces and then turn them in for fabulous prizes' type
+"say Start a quest."
+~
+2|64|65536 8|32|512 0 S
+999 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+>speech_prog p Start a quest.~
+if rand(10)
+mpoload 384 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 372 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 373 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 374 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 380 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 381 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 375 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 376 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 377 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 378 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+if rand(10)
+mpoload 379 1
+enter portal
+drop /
+mpgoto 372
+get /
+else
+mpoload 383 1
+enter portal
+drop /
+mpgoto 372
+get /
+endif
+~
+|
+#0
+
+#OBJECTS
+#372
+/~
+a {g10{w point {wQuest Point{x token~
+A {g10{w point {wQuest Point{x token.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#382
+The Quest Portal~
+Where Will it GO?~
+The Quest Portal hangs in the air.~
+~
+33 1 0
+472~ 55476~ 0~ 100~
+100 0 0
+
+#384
+/~
+a {g5{w point {wQuest Point{x token~
+A {g5{w point {wQuest Point{x token.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+
+
+#373
+/~
+a {g15{w point {wQuest Point{x token~
+A {g15{w point {wQuest Point{x token.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#374
+/~
+a {g20{w point {wQuest Point{x token~
+a {g20{w point {wQuest Point{x token.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#380
+/~
+a {y30{x {wQuest Point{x token~
+A {y30{x {wQuest Point{x token.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#375
+/~
+an {yequipment{w piece{x [{r3{x]~
+An {yequipment{w piece.{x [{r3{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#376
+/~
+an {yintellectual practice{x {wpiece{x [{r2{x]~
+An {yintellectual practice{x {wpiece{x. [{r2{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#377
+/~
+a {ymoney{x {wpiece{x [{r2{x]~
+A {ymoney{x {wpiece{x. [{r2{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#378
+/~
+a {ypick two{x {wpiece{x [{r4{x]~
+A {ypick two{x {wpiece{x. [{r4{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#379
+/~
+a {ypotion{x {wpiece{x [{r2{x]~
+A {ypotion{x {wpiece{x. [{r2{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#381
+/~
+A {yspecial{x {wpiece{x [{r5{x]~
+A {yspecial{x {wpiece{x. [{r5{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#383
+/~
+a {g15 {wFame Point {xtoken~
+A {g15 {wFame Point {xtoken.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+#0
+
+#ROOMS
+#372
+Quest Room~
+The Quest mob sits in here waiting for an imm to order him to start the quest.
+Exciting, no?
+~
+0 8192 1
+S
+#0
+
+#RESETS
+M 0 371 1 372                   add Slog The Quest Mob to Quest Room
+I 382 1 372 1                   Where Will it GO? to Quest Room
+S
+
+#$

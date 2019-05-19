@@ -1,0 +1,729 @@
+#AREA Klinga~ The Aesir Clanhall~
+-4 -4 0 100
+
+#HELPS
+1 AES 'CLAN AESIR'~
+He was aghast. He could not believe what he was hearing. Being at home for
+over two full moons with little else to do than eat food and sleep had made
+him extremely restless. And now, when something important had finally 
+happened, his father denied him even the slightest joy.
+
+Gripping Mjolner by its hilt as it hung in his belt, he paced in the middle of
+the great hall, back and forth.
+
+'Father, you must be reasonable! Surely this is something I can handle myself.
+I would take the wagon, find the threat and strike it down! If you only...'
+
+'No', his father replied solemnly from the throne. 'You will remain here with 
+your brothers and I.'
+
+'But I do not wish to sit here and rot anymore!!' Thor exclaimed. 'It is
+enough you do it. I grow restless of Valhal and all of its comfort! It is very 
+nice yes, but I have been here long enough.'
+
+Odin looked at his son with his one eye and sighed softly. Recognising the
+restlessness of youth, he remained calm even though matters were urgent.
+The visions that had overcome him two days ago had been scaring, even
+terrifying him. He had stayed up all day and night, thinking of what to do.
+Now he knew what must be done, and just because his son wanted some
+excitement, he would not change his mind.
+
+Giving Hugin on his shoulder a handful of corn, he said, 'Those in Valhal do
+not rot. Even though Aasgaard has been strangely peaceful these last moons,
+there will soon be a lot to do. Battle that you so much like, for example.
+There is always a calm before a storm, son.'
+
+Thor halted and stood before him, looking at him questioningly.
+
+'But father, if you send...'
+
+'No I will not.'
+
+'But think...'
+
+'No.'
+
+'But...'
+
+'No.'
+
+Thor swirled around and smashed his big arm into the pillar beside him.
+Pebbles of stone fell down from the ceiling as the echoing boom faded away.
+'I will not stand here and...'
+
+'No, you may leave,' Odin said calmly.
+
+With an angry snarl Thor gave the pillar another blow before storming out
+of the great Hall.
+
+Odin sighed and frowned before returning his attention to Hugin again.
+'It is not a lost cause, friend,' he murmured. 'I will summon them.'
+
+Later that night, fourteen of his finest Einherjars stood before him,
+fourteen of his own chosen warriors. Odin  eyed them all silently.  Ragnar
+the fierce, Tvoklash Threehands, Dagmar Tveulve, Orgur the Bold, and the
+others. All were well known and feared, but yet in front of him they stood
+uneasily, unsure of what was about to happen. He stood up and slowly began
+to speak.
+
+'Kin, friends, and allies. I have summoned you all because it is the time
+of great need. I have had foreboding visions, visions of things that must
+not happen. I have seen Ragnarok coming, and it would make every warrior
+shiver in fright. I know it will be upon us in a near future. How it began,
+I am uncertain. A time of chaos is soon upon our hands, and we must be ready.
+Aasgaard will be the last to fall, but its end is inevitable if the other
+realms fall. It is thus I lay this task upon you fourteen; to travel the
+realms and find our kin. Be ready when Chaos comes, and strike down any
+threats that arise. I will send you away, two by two, in pairs to the other
+seven realms, to be sure no realm stands without chance. It can be avoided,
+and by my will it shall.'
+
+Odin then called them to him in pairs, sending them of to each realm.
+Vanaheim, Alfheim, Niflheim, Jotunheim, Muspelheim, Svartalfheim and 
+Nidavellir, all got Aesir watchers who left from Aasgard the same night, ready 
+to fight the unseen threat that could mean the end of all worlds. The last 
+realm to get Aesir champions was Midgaard, and Odin assigned that last for a 
+reason. Truth was, Ragnarok had already begun there. Odin had seen factions of 
+power fighting each other with no thought of the realm itself, and the power 
+that surged through the realm was terrifying. If nothing would be done soon, 
+Midgaard would collapse on itself, and thus he gave this realm to care for to 
+his most loyal and trusted Einherjar; Griffin, and Snake, the only two left 
+before him.
+
+They were famous throughout all of Aasgaard , and if anyone could save 
+Midgaard from its fall, it would be them. Tall as any giant they stood before 
+him, and patiently waited. Their real names were for most men forgotten since 
+long ago, but Odin remembered since the day they came to Valhal.
+
+'Mordekai..Klinga..' he called out, and the two men stepped forward. 'Know
+that the other Einherjars do not need to work in such haste as you will.
+Ragnarok has already started in Midgaard, and thus I lay it upon you two,
+and no-one else. Find those of true blood and great skill, and guide them
+against anything that you might consider be the threat. Observe, and strike
+fast, and the end will not come tomorrow.' Slowly he sat down again, thinking.
+'I will send with you an Apple of Idun, to keep you young and strong even
+though you are away from Valhal. Go, and remember my words. I trust in you
+as if you were my sons.'
+
+As one, the two old warriors bent to one knee and raised their eyes to meet
+his gaze, and spoke, 'As it was given from time and time again, we will
+swiftly travel the river of blood. The claim will be great and our blades
+true, We hearby swear; your will shall be done.'
+
+And so it was, that the same night a new faction of power started to grow
+in the realm of Midgaard.
+~
+0 $~
+
+#MOBILES
+#960
+Hildveig~
+Hildveig the Valkyrie~
+A young woman is standing here guarding the gates.
+~
+You see a very beautiful young woman wearing a steel chainmail. Her fierce
+blue eyes and long blonde hair speak of her northern origin. As you step
+closer she grips her shield and spear more firmly and looks up at you with
+a grim expression on her face.
+~
+2|4|64|512|4096|4194304 2|8|32|128|512|8192|32768|65536|524288 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>death_prog 100~
+            mpecho CHAT Masters, I have failed you!  The Clan has been INVADED!
+~
+|
+
+#961
+eir heid~
+Eir the Heid~
+An old woman is sitting in front of the statue.
+~
+This old woman is dressed in animal hides and has many small bones tied to
+er long gray hair. She is singing quietly to herself in a strange tongue
+while she prepares some kind of foul smelling herbal concoction.
+~
+2|64|512|4096 8|32|128|512|32768 -500 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog bye~
+	     if clan($n) == aes
+             say Go forth $n and MURDER!
+             mptrans $n 960
+	     break
+	     else
+	     break
+	     endif
+~
+>speech_prog bless~
+	     if clan($n) == aes
+             cast bless $n
+	     break
+	     else
+	     break
+	     endif
+~
+|
+#962
+AES wizinvis guy~
+the AES Wizinvis Guy~
+The AES Wizinvis Guy is here.
+~
+Please don't kill me.  I need to sort out the AES healing item.
+~
+1|2|4|512|65536 8|32|8388608 0 S
+800 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>rand_prog 100~
+   drop Idun
+   mpgoto 537
+   meditate
+~
+|
+#963
+cook burly~
+a burly cook~
+A burly cook stands here, carving boar and pouring tankards of spring
+water.
+~
+The burly cook looks at you grimly, before passing you a plate
+of boar and a tankard of mead.
+~
+2|64|512|4096 8|32|128|512|524288 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+  
+#0
+
+
+#OBJECTS
+#960
+seat klinga~
+the Seat of Klinga~
+The Seat of Klinga is standing here to the right side of Odin.~
+~
+12 0 8192
+0~ 0~ 0~ 0~
+5 0 0
+E
+seat klinga~
+This appears to be a throne of some kind, made out of stone covered in the
+pelts of bears and wolves for added comfort. You notice some runes have been
+cut into it.
+~
+#961
+seat mordekai~
+the Seat of Mordekai~
+The Seat of Mordekai is standing here to the left side of Odin.~
+~
+12 0 8192
+0~ 0~ 0~ 0~
+5 0 0
+E
+seat mordekai~
+This appears to be a throne of some kind, made out of stone covered in the
+pelts of bears and wolves for added comfort. You notice some runes have been
+cut into it.
+~
+#962
+key~
+a strange wooden key~
+A strange wooden key lies here in the dirt.~
+~
+18 0 1
+0~ 0~ 0~ 0~
+5 0 0
+#963
+apple idun aes~
+an apple of Idun~
+A tasty looking apple lies here.~
+~
+32 4096 1
+77~ 0~ 0~ 0~
+300 0 0
+E
+idun~
+This must be one of the apples that the goddess Idun carries. It is said that
+those who eat from them will stay eternally young.
+~
+#964
+statue basket~
+a statue of Idun~
+A statue of Idun is standing here holding a basket.~
+~
+15 64 8192
+0~ 1~ 0~ 0~
+5 0 0
+E
+statue basket~
+This is a statue of the lovely goddess Idun carrying a basket. You think there
+might be something in it...
+~
+#965
+chainmail~
+a suit of steel chainmail~
+A shining suit of chainmail lies here.~
+~
+9 0 8
+0~ 0~ 0~ 0~
+50 0 0
+
+#966
+spear~
+a wooden spear~
+A finely crafted spear lies here.~
+~
+5 1|2|16|128 8192
+0~ 0~ 0~ 6~
+5 0 0
+A
+19 50
+A
+18 50
+
+#967
+greaves silver aes~
+Silver Greaves~
+A pair of greaves radiating silver light are lying here.~
+~
+9 1 1|32
+0~ 0~ 0~ 0~
+5 0 0
+A
+19 8
+
+#968
+greaves golden aes~
+Golden Greaves~
+A pair of greaves radiating golden light are lying here.~
+~
+9 1 1|32
+0~ 0~ 0~ 0~
+5 0 0
+A
+12 150
+A
+13 150
+
+#969
+vambraces golden aes~
+Golden Vambraces~
+Some vambraces radiating golden light are lying here.~
+~
+9 0 1|256
+0~ 0~ 0~ 0~
+5 0 0
+A
+19 15
+A
+13 250
+
+#970
+pouch oxskin aes~
+an oxskin pouch~
+A small oxskin pouch with a belt attachment is lying here.~
+~
+15 0 65537
+11~ 0~ -1~ 0~
+1 1 0
+A
+19 5
+
+#971
+tankard jewel~
+a jewel-encrusted tankard~
+A large tankard of purest spring water sits here.~
+~
+17 0 1|16384
+100~ 100~ 0~ 0~
+5 0 0
+
+#972
+mushroom small spotted~
+a small spotted mushroom~
+A small spotted mushroom grows here.~
+~
+19 0 1|16384
+40~ 0~ 0~ 0~
+5 0 0
+E
+mushroom~
+On closer inspection the mushroom appears to be Amantia Muscaria,
+commonly known as Fly Agaric.  This mushroom supposedly induces
+a frenzied, bloodthirsty state if consumed in small quantities.
+~
+#973
+boar platter~
+a platter of boar~
+A steaming platter of boar sits here.~
+~
+19 0 1|16384
+40~ 0~ 0~ 0~
+5 0 0
+
+#974
+scales waterserpent aes~
+Scales of the Waterserpent~
+Some Scales of the Waterserpent lay here.~
+~
+9 0 1|32
+~ ~ ~ ~
+10 0 0
+A
+13 150
+
+#975
+greaves war aes~
+Greaves of War~
+Some Greaves of War sit on the ground.~
+~
+9 0 1|32
+~ ~ ~ ~
+10 0 0
+A
+13 150
+A
+19 8
+
+#976
+bones nexus beast aes~
+Bones of the Nexus beast~
+The Bones of the Nexus beast lay here.~
+~
+9 0 1|256
+~ ~ ~ ~
+10 0 0
+A
+13 250
+A
+19 15
+
+#0
+
+
+#ROOMS
+#960
+The yard.~
+You are standing in the yard outside a great wooden building whose entrance
+can be seen to the north. Looking to your right you see an old oak tree from
+which the bodies of men, women, children and an ox hang. High in the air
+above, you notice the dark shapes of ravens moving around in circles silently.
+~
+0 8192 4
+D0
+Two large wooden doors covered in runes lead into the wooden hall.~
+door~
+8 962 962
+D2
+~
+~
+0 -1 18225
+E
+raven~
+As you gaze up towards the raven you get an eerie feeling that it is keeping a
+close eye on you.~
+E
+oak~
+You take a few steps closer to the oak and suddenly wish you had not. From its
+lower branches hangs the bodies of a man, woman and two children as well as an
+ox. You guess they are a family of thralls that have been sacrificed to some
+bloodthirsting god.~
+E
+ox~
+The ox has had its throat cut and is bled totally dry.~
+S
+#962
+Inside the wooden hall.~
+You are standing in the southern end of a dark wooden hall lit up only by a
+fireplace in the middle and a few torches around the walls. Shadows dance
+across the floor and the three large oak tables and benches that occupy this
+large room, and by the walls you can see pelts from various animals lying on
+the floor that people seem to sleep on. At the far end you can see the shape
+of a large stone statue and to your left and right there are doors leading to
+what you think might be the stables and the kitchen. To the south the large
+wooden doors lead out into the yard.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 963
+D2
+The doors lead out into the yard.~
+door~
+2 962 960
+S
+#963
+Inside the wooden hall.~
+You are standing in the middle of the dark wooden hall. You can feel the heat
+from the fireplace and the smell of sweat and men. The tables here are covered
+in the leftovers of roast boar and empty horns that once contained golden
+mead.
+You hear men talking closeby and also what might be snoring coming from a dark
+shape lying close to the western wall.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 964
+D1
+~
+~
+1 -1 967
+D2
+~
+~
+0 -1 962
+D3
+~
+~
+1 -1 966
+S
+#964
+Approaching the seat.~
+You are standing in the northern end of the hall. Looking south you realise
+this is the last table in line, and to your immediate north there is a large
+empty space before a platform where two thrones rest on each side of a giant
+statue of Odin.
+~
+0 8|8192 0
+D0
+~
+~
+0 -1 965
+D2
+~
+~
+0 -1 963
+S
+#965
+The seat of the Einherjar.~
+You are standing before a large stone statue of Odin the Allfather. There is a
+large seat on each side of it, both covered in the hides of wolves and other
+wild animals.
+~
+0 8192 0
+D1
+~
+~
+1 -1 969
+D2
+~
+~
+0 -1 964
+D3
+~
+~
+1 -1 968
+S
+#966
+The stables and the Thralls quarters.~
+As you enter the stables you hear someone snoring nearby. Straw covers the
+floor here and the air smells of horses. At the far end of room, a ladder
+can be seen going up to the loft, some thralls are obviuosly sleeping up
+there, and by the giggles a pair or two are less disciplined. A great war
+horse and a mare are beeing saddled by a young stable boy, probably for a
+scouting mission. The only visible way out is the door to the east from
+which you came.
+~
+0 8 0
+D1
+~
+~
+1 -1 963
+S
+#967
+By a great fireplace.~
+You are standing in room lit up by a gigantic firebed. Above the hot fireplace
+is a roasted boar staked, being rolled slowly by magiks.
+~
+0 8|8192 0
+D3
+~
+~
+1 -1 963
+S
+#968
+A treasure chamber.~
+You start to wonder what sort of people these nortern men are, as you look
+around you can see gilted equipment and weapons that must have been collected
+from a widly traveled world, probably on some crusade. At the far end of the
+room a throne stands, decorated with emeralds and other jewellery and a sturdy
+thing by the look of it. Behind it you can see two crossed broadswords hanging
+on the wall, below the skull of some great beast. The room is so filled with
+both gold and weapons it is hard to judge if it is a treasure room or a weapon
+storage room.... though  by the look of it, these weapons and equipments seem
+to hum and eminate an eerie glow that should not be mistaken for mere peasant
+weapons.
+~
+0 8|8192 0
+D1
+~
+~
+1 -1 965
+S
+#969
+Shrine of the greater gods.~
+This room is lit up only by two torches and you can see several stone statues
+standing about the walls. There seems to be one statue representing each of
+the greater gods of the Aesir, there is even a statue of Hel, the goddess of
+death.
+~
+0 8|8192 0
+D3
+~
+~
+1 -1 965
+E
+aegir~
+Aegir, the ruler of the oceans is one of the Vanir and of giant origin. His
+father is Mistarblindi and his brothers Logi and Kari. With his wife Ran he
+begat nine daugthers who are the waves.~
+E
+balder~
+Balder, the son of Odin and Frigg. A god of light and peace. Balder was
+believed to be immortal but Loki tricked Hod, one of Balders brothers into
+killing him with an arrow from a mistletoe. It is said the after Ragnarok,
+Balder will return from the dead.~
+E
+bragi~
+Bragi was the son of Odin and the giantess Gunlod, he is married to Idun.
+He is the chief poet of Odin and is said to be very wise and to have runes
+cut on his tounge.~
+E
+frey~
+Frey, one of the Vanir, the god of weather and fertility and the ruler of
+Alfheim. He is the son of Njord and Njords sister Ingun, Freya is his sister.
+Frey is the owner of the dwarven built ship Skidbladnir.~
+E
+freya~
+Freya, one of the Vanir, is a goddess of sex, fertility, war and wealth. She
+is the daugther os Njord and Frey is her brother, her daughters, by Od are
+Hnoss and Gersemi. Her chariot is drawn by male cats, she owns the precious
+Brisings necklace and a feather coat that she uses to fly between the worlds.~
+E
+frigg~
+Frigg, the goddess of marriage. She is married to Odin who always cheats on
+her.~
+E
+heimdall~
+Heimdall, the watcher of Bifrost, the rainbow bridge that lead between the
+nine worlds. At Ragnarok his horn Gjallar will sound and warn the Aesir of
+the frost giants. As Rig he begets Tral(Thrall), Karl(Carl) and Jarl(Earl),
+representing the three classes of man.~
+E
+hel~
+Hel, the goddess of the underworld. She is the daugther of Loki and the
+giant Angurboda and she is the sister of Fenrir and Jormungand. Her realm
+is Niflheim where she rules from her hall Elvidnir. Some say she is half
+white and half black.~
+E
+hermod~
+Hermod is the messenger of the gods. He rode to Niflheim to try and convince
+Hel of letting Balder come back from the dead after he was killed.~
+E
+hod~
+Hod, the blind god of winter. He is one of Odins many sons who Loki tricked
+nto killing Balder. Vali, another son of Odin avenged Balder's death by
+killing
+Hod.~
+E
+idun~
+Idun, the goddess of youth. She is married to Bragi and is the keeper of the
+apples which keep the gods eternally young.~
+E
+kvasir~
+Kvasir is said to be the wisest being. He was created when the Aesir and Vanir
+mix their spit in a peace making ritual.~
+E
+loki~
+Loki, the very cunning god of mischief. He is a giant who became a member of
+the Aesir when Odin made him his blood brother. After causing the death of
+Balder, he was bound by the gods until the Ragnarok, at which time, he will
+be freed.~
+E
+mimir~
+Mimir is said to be a very wise being. He was sent as a hostage by the Aesir
+to the Vanir. The Vanir became mad and cut his head off. Odin preserved his
+head so he could seek wisdom from it and placed it next to Mimir's well. ~
+E
+nanna~
+Nanna, the moon goddess. Wife of Balder and mother of Forseti. She dies of
+heartache after Balder's death and is burned with him on his funeral boat --
+along with his chopped up horse and an unfortunate dwarf who Thor kicked
+in at the last minute.~
+E
+njord~
+Njord, the god of the wind and sea, father of Frey and Freya. He is a member
+of the Vanir and his home is Noatun. His wife was the giantess Skadi. ~
+E
+ran~
+Ran, the sea goddess of storms. She is the wife of Aegir and collects drowned
+people in her net.~
+E
+sif~
+Sif, the goddess of crops and fertility. She is married to Thor. At one point,
+Loki stole her hair and had to replace it. He went to the dwarves and had them
+make her a new set of hair out of gold.~
+E
+thor~
+Thor, the god of thunder. He is the son of Odin and a member of the Aesir. His
+main enemy are the giants and he use to smash their heads in with his mighty
+hammer Mjollnir. To wield this awesome weapon he needs iron gloves and a belt
+of strength. He is foremost of the gods to the common man, who will call on
+him
+to ensure fertility, and is widely worshiped. ~
+E
+tyr~
+Tyr, the god of war. He was the only god brave enough to put his hand in the
+Fenrir wolf's mouth so the gods could bind it. The wolf bit off his right
+hand.~
+E
+ull~
+Ull, the god of archery and the hunt. He is called upon for help in duels and
+it is believed that at one time he was one of the highest gods. ~
+S
+#0
+
+
+#RESETS
+D 1 960 0 2			; The yard. Lock North
+D 1 962 2 2			; Inside the wooden hall. Lock South
+*
+M 1 960 1 960			Hildveig the valkyrie to The gate.
+E 1 965 100 5
+E 1 966 100 16
+E 1 966 100 18
+G 1 962 100
+*
+M 1 961 1 964			Eir the heid to Approaching the seat.
+M 1 962 1 964			Wizinvis guy to approaching the seat
+G 1 963 100
+*
+O 1 960 100 965
+O 1 961 100 965
+*
+M 1 963 1 967			cook
+G 1 971 100
+G 1 972 100
+G 1 962 100
+G 1 973 100
+S
+
+#SHOPS
+963 0 0 0 0 0 100 100 0 23                      cook
+0
+
+
+#SPECIALS
+M  960 spec_clan_guard                  valkyrie
+M  961 spec_cast_adept                  heid
+S
+
+
+#$

@@ -1,0 +1,1739 @@
+#AREA	Prozak~  Plains of the South~
+-2 -2 0 100
+
+#MOBILES
+#18400
+rolling rock boulder~
+The rolling rock~
+A large boulder rolls towards you....and it's NOT stopping!
+~
+This oversized pebble moves with a mind of its own.
+~
+32|64 0 0 S
+10 0 0 0d0+0 0d0+0
+63|256 0
+8 8 0
+#18401
+rolling rock boulder~
+The rolling rock~
+A large boulder rolls towards you....and it's NOT stopping!
+~
+This oversized pebble moves with a mind of its own.
+~
+32|64 0 0 S
+15 0 0 0d0+0 0d0+0
+63|256 0
+8 8 0
+#18402
+crazed rabbit~
+A crazed Rabbit~
+A crazed rabbit hurtles through the grass.
+~
+This rabbit is several orders of magnitude SMALLER than you and still he 
+attacks!  He must be on something.
+~
+32|64 0 0 S
+10 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18403
+crazed rabbit~
+A crazed Rabbit~
+A crazed rabbit hurtles through the grass.
+~
+This rabbit is several orders of magnitude SMALLER than you and still he 
+attacks!  He must be on something.
+~
+32|64 0 0 S
+15 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#18404
+king dead~
+The dead King~
+A long dead King moulders on his Bower.
+~
+This guy is not even skin and bones.... Dark magic ensures his eternal 
+existence.
+~
+32|64 2|8|32|128|4096|32768|65536 -1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#18405
+carnivorous grass~
+The carnivorous grass~
+A tall clump of grass growls at you and attacks!?
+~
+This strange creature looks like a big bunch of spring onions with lots of 
+litte legs..... and since it's chewing on you, it must have teeth too!?
+~
+32|64 32 0 S
+10 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#18406
+carnivorous grass~
+The carnivorous grass~
+A tall clump of grass growls at you and attacks!?
+~
+This strange creature looks like a big bunch of spring onions with lots of 
+litte legs..... and since it's chewing on you, it must have teeth too!?
+~
+32|64 32 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+
+#18407
+Ben trapper~
+Ben the Trapper~
+Ben the trapper hunts the plains.
+~
+Ben The Trapper looks to have fought a lot of battles and removed a lot of 
+dangers from the land. He appears to be on the hunt even now.
+~
+64|512|8388608|16777216 8|16|32|2048|65536|8388608|4194304 0 S
+300 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+>give_prog morque skin~
+if number($o) == 754
+mpjunk skin
+mpoload 384 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the skin closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog falcor skin~
+if number($o) == 755
+mpjunk skin
+mpoload 372 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the skin closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog Roldin soul~
+if number($o) == 756
+mpjunk soul
+mpoload 373 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the soul closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog pigmy head~
+if number($o) == 757
+mpjunk head
+mpoload 374 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the head closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog chupacabra foot~
+if number($o) == 758
+mpjunk foot
+mpoload 380 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the foot closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog jeremy blonde curls~
+if number($o) == 759
+mpjunk curls
+mpoload 374 1
+give / $n
+mpoload 380 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the curls closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog Erinyes brass wing~
+if number($o) == 760
+mpjunk wing
+mpoload 380 1
+mpoload 380 1
+give / $n
+give / $n
+mpoload 383 1
+give / $n
+mpoload 18403 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the wings closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog Chelsea black heart~
+if number($o) == 761
+mpjunk heart
+mpoload 383 1
+mpoload 383 1
+give / $n
+give / $n
+mpoload 380 1
+mpoload 380 1
+give / $n
+give / $n
+mpoload 28098 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the heart closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog Shiloh pretty little head~
+if number($o) == 762
+mpjunk head
+mpoload 374 1
+mpoload 374 1
+give / $n
+give / $n
+mpoload 383 1
+mpoload 383 1
+give / $n
+give / $n
+mpoload 28098 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the head closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog bone golem~
+if number($o) == 763
+mpjunk bone
+mpoload 380 1
+mpoload 380 1
+mpoload 380 1
+give / $n
+give / $n
+give / $n
+mpoload 383 1
+mpoload 383 1
+give / $n
+give / $n
+mpoload 28098 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the bone closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+endif
+~
+>give_prog voice vial~
+if number($o) == 764
+mpjunk vial
+mpoload 372 1
+give / $n
+else
+mpecho The trapper peers at the vial closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog boggarts clothes~
+if number($o) == 765
+mpjunk clothes
+mpoload 384 1
+give / $n
+else
+mpecho The trapper peers at the clothes closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog cockatrice wings~
+if number($o) == 766
+mpjunk wing
+mpoload 380 1
+mp0load 280 1
+give / $n
+give / $n
+mpoload 28098 1
+give plat $n
+drop all
+ if rand(7)
+mpoload 18405 1
+give / $n
+drop all
+endif
+else
+mpecho The trapper peers at the wings closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog hrulgin teeth~
+if number($o) == 767
+mpjunk teeth
+mpoload 374 1
+give / $n
+mpoload 373 1
+give / $n
+else
+mpecho The trapper peers at the teeth closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>give_prog Cretin pile shit~
+if number($o) == 768
+mpjunk pile
+mpoload 383 1
+give / $n
+else
+mpecho The trapper peers at the pile closely.
+say Trying to cheat me, eh?
+give $o $n
+endif
+~
+>all_greet_prog 100~
+say Careful! Move slowly, I am {Rhunting.{x
+~
+>speech_prog p What are you hunting?~
+say Dangerous, vile creatures. There seems to be no end to them.
+mpecho Ben seems to size you up briefly.
+say You look as if you can handle yourself. Want to help rid the
+say Domain of a few horrors?
+~
+>speech_prog Yes Yeah~
+say Good. Here, take this list. It'll help you identify the 
+say special dangers I'm looking for compared to the normal 
+say hazards of everyday adventuring.
+mpoload 18404 1
+give list $n
+say Return to me once you've destroyed something on the list.
+~
+|
+
+#0
+
+
+#OBJECTS
+#18400
+rock~
+a rock~
+A sturdy rock sits here.~
+~
+5 512|1024 1|8192
+0~ 1~ 6~ 8~ 
+5 0 0
+#18401
+coins~
+a gleaming pile of coins~
+A huge pile of gold bullion rests at the feet of the Kings Bower.~
+~
+20 0 1
+0~ 0~ 81~ 0~ 
+5 0 0
+#18402
+stone~
+a dull grey stone~
+A dull grey stone sits here and acts stonish.~
+~
+9 1|32|64|1024|2048 1|16384
+0~ 0~ 0~ 0~ 
+1 0 0
+A
+18 6
+A
+19 6
+A
+17 -50
+A
+13 100
+A
+1 5
+
+#18403
+platinum money~
+about 25 platinum coins~
+about 25 platinum coins rest here~
+~
+20 0 1
+0~ 0~ 0~ 25~
+1 0 0
+
+#18404
+hunters list~
+hunters list~
+A list of creatures to be hunted down.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+1 0 0
+E
+hunters list~
+This appears to be a list of creatures the trapper wants eliminated. It 
+indicates the trapper is willing to reward anyone who does so. Proof of the 
+kill will be required before any reward is given. The list is as follows:
+{W
+                The Morque               Chelsea the Succubus                  
+		Falcor                   Shiloh the Siren
+		Roldin                   A Bone Golem
+		A Pigmy                  Heather the Banshee
+		A Chupacabra             A Boggart
+		Jeremy the Incubus       A Cockatrice
+		The Erinyes              A Hrulgin
+{R				Cretin{x
+~
+
+#18405
+/~
+a {yrename 1 item{x {wpiece{x [{r4{x]~
+A {yrename 1 item{x {wpiece{x [{r4{x]~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#18406
+trappers senses~
+{x~
+{x~
+~
+1 1 1
+~ ~ -1~ ~
+1 0 0
+
+#0
+
+
+#ROOMS
+#18400
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks although the plains seem to 
+grow darker to the far north. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 20694
+D2
+~
+~
+0 -1 18401
+S
+#18401
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18400
+D2
+~
+~
+0 -1 18402
+S
+#18402
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18401
+D1
+~
+~
+0 -1 18403
+D2
+~
+~
+0 -1 18430
+D3
+~
+~
+0 -1 18429
+S
+#18403
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18404
+D3
+~
+~
+0 -1 18402
+S
+#18404
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18431
+D1
+~
+~
+0 -1 18405
+D2
+~
+~
+0 -1 18432
+D3
+~
+~
+0 -1 18403
+S
+#18405
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18406
+D3
+~
+~
+0 -1 18404
+S
+#18406
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18433
+D1
+~
+~
+0 -1 18434
+D2
+~
+~
+0 -1 18407
+D3
+~
+~
+0 -1 18405
+S
+#18407
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18406
+D2
+~
+~
+0 -1 18408
+S
+#18408
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18407
+D1
+~
+~
+0 -1 18435
+D2
+~
+~
+0 -1 18409
+D3
+~
+~
+0 -1 18436
+S
+#18409
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18408
+D2
+~
+~
+0 -1 18410
+S
+#18410
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18409
+D1
+~
+~
+0 -1 18439
+D2
+~
+~
+0 -1 18445
+D3
+~
+~
+0 -1 18411
+S
+#18411
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18410
+D3
+~
+~
+0 -1 18412
+S
+#18412
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18438
+D1
+~
+~
+0 -1 18411
+D2
+~
+~
+0 -1 18446
+D3
+~
+~
+0 -1 18413
+S
+#18413
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18412
+D3
+~
+~
+0 -1 18414
+S
+#18414
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18467
+D1
+~
+~
+0 -1 18413
+D2
+~
+~
+0 -1 18415
+D3
+~
+~
+0 -1 18419
+S
+#18415
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18414
+D2
+~
+~
+0 -1 18416
+S
+#18416
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18415
+D1
+~
+~
+0 -1 18447
+D2
+~
+~
+0 -1 18417
+D3
+~
+~
+0 -1 18448
+S
+#18417
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18416
+D2
+~
+~
+0 -1 18418
+S
+#18418
+Above the Cliffs~
+You stand atop a high cliff, below which stretches a broad fertile valley.  
+You glimpse a town in the distance, far across the valley floor.  
+To the east a large mountain range dominates the view. You spy a pass
+running between two peaks.
+~
+0 0 2
+D0
+~
+~
+0 -1 18417
+D1
+~
+~
+0 -1 9925
+S
+#18419
+A Steep Bank~
+The ground falls away suddenly beneath your feet, hidden by the lengthy 
+grass.  You tumble down a long slope.......
+~
+0 0 2
+D3
+~
+~
+0 -1 18469
+S
+#18420
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from the west, north and 
+south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18465
+D2
+~
+~
+0 -1 18466
+D3
+~
+~
+0 -1 18421
+S
+#18421
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18420
+D3
+~
+~
+0 -1 18422
+S
+#18422
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18423
+D1
+~
+~
+0 -1 18421
+D2
+~
+~
+0 -1 18449
+D3
+~
+~
+0 -1 18450
+S
+#18423
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18424
+D2
+~
+~
+0 -1 18422
+S
+#18424
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18425
+D1
+~
+~
+0 -1 18451
+D2
+~
+~
+0 -1 18423
+D3
+~
+~
+0 -1 18452
+S
+#18425
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18426
+D2
+~
+~
+0 -1 18424
+S
+#18426
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18459
+D1
+~
+~
+0 -1 18427
+D2
+~
+~
+0 -1 18425
+D3
+~
+~
+0 -1 18453
+S
+#18427
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18428
+D3
+~
+~
+0 -1 18426
+S
+#18428
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. Trails converge here from each of the cardinal 
+directions.
+~
+0 0 2
+D0
+~
+~
+0 -1 18460
+D1
+~
+~
+0 -1 18429
+D2
+~
+~
+0 -1 18461
+D3
+~
+~
+0 -1 18427
+S
+#18429
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and east.
+~
+0 0 2
+D1
+~
+~
+0 -1 18402
+D3
+~
+~
+0 -1 18428
+S
+#18430
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18402
+D2
+~
+~
+0 -1 18464
+S
+#18431
+Grassy Plain~
+The trail you are standing on heads south.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D2
+~
+~
+0 -1 18404
+S
+#18432
+Grassy Plain~
+The trail you are standing on heads north.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D0
+~
+~
+0 -1 18404
+S
+#18433
+Grassy Plain~
+The trail you are standing on heads south.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D2
+~
+~
+0 -1 18406
+S
+#18434
+Grassy Plain~
+The trail you are standing on heads west.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D3
+~
+~
+0 -1 18406
+S
+#18435
+Grassy Plain~
+The trail you are standing on heads east and west.  In all other
+directions stretches the featureless grasslands.  With no landmarks to
+set your course by, you decide not to leave the trail.
+~
+0 0 2
+D1
+~
+~
+0 -1 17500
+D3
+~
+~
+0 -1 18408
+S
+#18436
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and west.
+~
+0 0 2
+D1
+~
+~
+0 -1 18408
+D3
+~
+~
+0 -1 18437
+S
+#18437
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and south.
+~
+0 0 2
+D1
+~
+~
+0 -1 18436
+D2
+~
+~
+0 -1 18438
+S
+#18438
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18437
+D2
+~
+~
+0 -1 18412
+S
+#18439
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and west.
+~
+0 0 2
+D1
+~
+~
+0 -1 18440
+D3
+~
+~
+0 -1 18410
+S
+#18440
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and south.
+~
+0 0 2
+D2
+~
+~
+0 -1 18441
+D3
+~
+~
+0 -1 18439
+S
+#18441
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+A huge mountain range to the east blocks much light, however, you spy 
+a trail that winds its way through a pass, leading eastward.
+~
+0 0 2
+D0
+~
+~
+0 -1 18440
+D1
+~
+~
+0 -1 30346
+D2
+~
+~
+0 -1 18442
+S
+#18442
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  A copse of poppies is growing here and many of the flowers 
+look heavily chewed. The trail you are following heads north and west.
+~
+0 0 2
+D0
+~
+~
+0 -1 18441
+D3
+~
+~
+0 -1 18443
+S
+#18443
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and west,
+and there is a small trail leading to the south.
+~
+0 0 2
+D1
+~
+~
+0 -1 18442
+D2
+~
+~
+0 -1 10100
+D3
+~
+~
+0 -1 18444
+S
+#18444
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and east.
+~
+0 0 2
+D0
+~
+~
+0 -1 18445
+D1
+~
+~
+0 -1 18443
+S
+#18445
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18410
+D2
+~
+~
+0 -1 18444
+S
+#18446
+Grassy Plain~
+The trail you are standing on heads north.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D0
+~
+~
+0 -1 18412
+S
+#18447
+Grassy Plain~
+The trail you are standing on heads west.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D3
+~
+~
+0 -1 18416
+S
+#18448
+Grassy Plain~
+The trail you are standing on heads east.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D1
+~
+~
+0 -1 18416
+S
+#18449
+Grassy Plain~
+The trail you are standing on heads north.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D0
+~
+~
+0 -1 18422
+S
+#18450
+Grassy Plain~
+The trail you are standing on heads east.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D1
+~
+~
+0 -1 18422
+S
+#18451
+Grassy Plain~
+The trail you are standing on heads west.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D3
+~
+~
+0 -1 18424
+S
+#18452
+Grassy Plain~
+The trail you are standing on heads east-west.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D1
+~
+~
+0 -1 18424
+D3
+~
+~
+0 -1 10030
+S
+#18453
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and west.
+~
+0 0 2
+D1
+~
+~
+0 -1 18426
+D3
+~
+~
+0 -1 18454
+S
+#18454
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and east.
+~
+0 0 2
+D0
+~
+~
+0 -1 18455
+D1
+~
+~
+0 -1 18453
+S
+#18455
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18456
+D2
+~
+~
+0 -1 18454
+S
+#18456
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  A copse of poppies is growing here and many of the flowers 
+look heavily chewed. The trail you are following heads east and south.
+~
+0 0 2
+D1
+~
+~
+0 -1 18457
+D2
+~
+~
+0 -1 18455
+S
+#18457
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and west.
+~
+0 0 2
+D1
+~
+~
+0 -1 18458
+D3
+~
+~
+0 -1 18456
+S
+#18458
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads west and south.
+~
+0 0 2
+D2
+~
+~
+0 -1 18459
+D3
+~
+~
+0 -1 18457
+S
+#18459
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18458
+D2
+~
+~
+0 -1 18426
+S
+#18460
+Grassy Plain~
+The trail you are standing on heads south.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D2
+~
+~
+0 -1 18428
+S
+#18461
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18428
+D2
+~
+~
+0 -1 18462
+S
+#18462
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads north and east.  
+A deep ravine prevents you from heading south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18461
+D1
+~
+~
+0 -1 18463
+S
+#18463
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  There are no noticeable landmarks and the plains appear to 
+stretch to the horizon. The trail you are following heads east and west.  
+A deep ravine cuts off any travel to the south.
+~
+0 0 2
+D1
+~
+~
+0 -1 18464
+D3
+~
+~
+0 -1 18462
+S
+#18464
+Grassy Plain~
+You are walking through knee-high grass covering a gently undulating 
+landscape.  The trail you are following heads north and west. To the south 
+lies a deep ravine and the remains of a tension brige.  Only the tall 
+anchor stones and some rotten planks remain.  Looks like you'll have to 
+go around if you want to get to the other side.
+~
+0 0 2
+D0
+~
+~
+0 -1 18430
+D3
+~
+~
+0 -1 18463
+S
+#18465
+Grassy Plain~
+The trail you are standing on heads south.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D2
+~
+~
+0 -1 18420
+S
+#18466
+Grassy Plain~
+The trail you are standing on heads north.  In all other directions 
+stretches the featureless grasslands.  With no landmarks to set your 
+course by, you decide not to leave the trail.
+~
+0 0 2
+D0
+~
+~
+0 -1 18420
+S
+#18467
+Grassy Plain~
+The trail you are standing on heads south.  To the north lies a deep ravine 
+and the remains of a tension brige.  Only the tall anchor stones and some 
+rotten planks remain.  Looks like you'll have to go around if you want to 
+get to the other side.
+~
+0 0 2
+D2
+~
+~
+0 -1 18414
+S
+#18469
+Bottom of the Bank~
+Feeling a little worse-for-wear after your fall, you stagger to your feet.  
+The bank to the east is far to unsteady to be climbed.  Trails converge 
+here from the west, north and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 18465
+D2
+~
+~
+0 -1 18466
+D3
+~
+~
+0 -1 18421
+S
+#18470
+Barrow Mound~
+The interior of this barrow mound is dank and musty.  Over the centuries 
+since its comstruction any exterior sign of the mounds existence has been 
+eroded away.
+~
+0 4 2
+S
+#0
+
+
+#RESETS
+*
+O 1 18401 100 18470			A gleaming pile of coins to Barrow Mound
+*
+M 1 18402 4 18456			A crazed Rabbit to Grassy Plain
+*
+M 1 18403 4 18442			A crazed Rabbit to Grassy Plain
+*
+M 1 18403 4 18444			A crazed Rabbit to Grassy Plain
+*
+M 1 18403 4 18410			A crazed Rabbit to Grassy Plain
+*
+M 1 18403 4 18408			A crazed Rabbit to Grassy Plain
+*
+M 1 18402 4 18458			A crazed Rabbit to Grassy Plain
+*
+M 1 18402 4 18454			A crazed Rabbit to Grassy Plain
+*
+M 1 18405 4 18428			The carnivorous grass to Grassy Plain
+*
+M 1 18405 1 18404			The carnivorous grass to Grassy Plain
+*
+M 1 18406 2 18422			The carnivorous grass to Grassy Plain
+*
+M 1 18400 2 18420			The rolling rock to Grassy Plain
+E 1 18400 100 16
+*
+M 1 18401 4 18412			The rolling rock to Grassy Plain
+E 1 18400 100 16
+*
+M 1 18401 4 18408			The rolling rock to Grassy Plain
+E 1 18400 100 16
+*
+M 1 18401 4 18417			The rolling rock to Grassy Plain
+E 1 18400 100 16
+*
+M 1 18401 4 18467			The rolling rock to Grassy Plain
+*
+M 1 18404 1 18470			The dead King to Barrow Mound
+E 1 18402 100 17
+*
+M 1 18407 1 18400                       Ben the Trapper to Grassy Plains
+E 0 18406 0 0                           equip his light
+S
+
+
+#SPECIALS
+M  18404 spec_cast_psionicist			The dead King
+M  18405 spec_fido			The carnivorous grass
+M  18406 spec_fido			The carnivorous grass
+S
+
+
+#$
+

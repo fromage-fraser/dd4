@@ -1,0 +1,1512 @@
+#AREA Gezhp~ Draagdim Countryside~
+-2 -2 0 100
+
+#MOBILES
+#700
+dirty beggar~
+a dirty beggar~
+A dirty beggar holds out his hand as you pass.
+~
+The beggar is dirty and smells revolting, clothed in filthy woolen rags.
+He stands among the crowd and asks for a coin, his eyes glancing furtively
+over you as you force your way through.
+~
+4|128|512 0 250 S
+5 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#701
+peasant~
+a peasant~
+A peasant travels quickly along the road.
+~
+The peasant works in the fields outlying the city.  He hurries through the
+mass of beggars stationed outside the gate.
+~
+128|512 0 450 S
+8 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#702
+peasant~
+a peasant~
+A peasant carries sacks of grain and vegetables.
+~
+The peasant struggles with large sacks of produce, swearing and kicking at
+the throng of beggars and wretches amassed at the roadside.
+~
+128|512 0 500 S
+9 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#703
+gypsy~
+a gypsy~
+A gypsy casts his eyes over your possessions.
+~
+Dressed in colourful but dirty clothes, the gypsy manoeuvres through the
+crowd to get closer to you.  You spot a small knife tucked inside his
+fist.
+~
+4|128|512 32768 -100 S
+12 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#704
+halfgoblin half-goblin goblin~
+a half-goblin~
+A small half-goblin scrounges around in the mud.
+~
+The ugly, despised half-goblin squats in the dirt, avoiding your gaze.
+His mottley grey skin is covered in nasty sores.
+~
+4|128|512 0 -400 S
+6 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#705
+farmer~
+a farmer~
+A farmer heads along the road.
+~
+The farmer helps to tend the extensive network of fields that lie to the
+east of Draagdim.  He walks quickly along the road, trying to avoid
+contact with the rabble lurking outside the gate.
+~
+512 0 300 S
+14 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#706
+robed monk~
+a monk~
+A robed monk hands out bread to the starving crowd.
+~
+The monk distributes small hard loaves of bread to the greedy crowd.  He
+ventures out from the gate every day to distribute food and tend to the
+unwell and injured.
+~
+2|512 0 800 S
+25 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#707
+farmer~
+a farmer~
+A farmer walks briskly through the farmland.
+~
+The middle-aged farmer has worked many days in the harsh heat of the sun;
+his skin is brown and lined with scars.
+~
+128|512 0 500 S
+22 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#708
+field worker peasant~
+a field worker~
+A field worker stoops in the dirt, tending to the vegetables.
+~
+The peasant works tirelessly in this large patch of leafy vegetables,
+diligenty grubbing the earty and removing weeds and rubbish.
+~
+2|512 0 0 S
+17 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#709
+peasant~
+a peasant~
+A peasant relaxes in the sun.
+~
+The man lounges about in the pleasant environment of the hamlet, hands
+behind his head.  He watches you casually.
+~
+2|512 0 0 S
+23 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#710
+small spotted dog~
+a small spotted dog~
+Garbage is inspected by a small spotted dog.
+~
+The dirty mongrel trots through the area, sniffing piles of garbage and
+slops.
+~
+512 0 0 S
+4 0 0 0d0+0 0d0+0
+4|32 0
+0 0 1
+
+#711
+cow~
+a cow~
+A cow concentrates on eating the long grass here.
+~
+The cow looks well fed and in good condition.  Your presence doesn't seem
+to bother it as it eats mouthful after mouthful of grass.
+~
+512 0 0 S
+12 0 0 0d0+0 0d0+0
+4|32 0
+0 0 2
+
+#712
+bull~
+a bull~
+A fiesty bull looks like it wants to cause trouble.
+~
+The bull takes it job of watching the cows very seriously.  It constantly
+snorts and stomps as you wander about.
+~
+32|512 0 0 S
+23 0 0 0d0+0 0d0+0
+4|32 0
+0 0 1
+
+#713
+hill giant~
+a hill giant~
+A hill giant lurks in the vegetation.
+~
+The hill gaint is a least nine foot tall and incredibly muscular.  He has
+dirty brown skin and is covered in disgusting wiry hair.  His black eyes
+are full of hatred and rage; his maw is lined with evil yellow teeth.
+~
+2|4|32 32|65536|8388608 -400 S
+43 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#714
+stone giant~
+a stone giant~
+A stone giant hides by the roadside.
+~
+The hairless gray body of this gargantuan stands well over ten feet.  His
+muscles are as solid as rock, and his hands could easily grind your bones
+to dust!
+~
+2|32 8|65536 -250 S
+47 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#715
+hill giant priestess green robed~
+a hill giant priestess~
+Thick green robes cover a tall hill giant.
+~
+Tall but still quite solid, the hill giant priestess is cunning and
+skillful in the arts of woodland magic.  She has led her small band to the
+road to waylay travellers who stray too far east.
+~
+2|32 8|65536|8388608 -700 S
+50 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+#0
+
+#OBJECTS
+#700
+stone well~
+a stone well~
+Murky water can be seen within a small stone well.~
+~
+25 0 0
+~ ~ ~ ~
+10000 0 0
+
+#701
+loaf bread~
+a loaf of bread~
+You see a small, hard loaf of bread.~
+~
+19 0 1|16384
+3~ ~ ~ 0~
+1 0 0
+
+#702
+small knife~
+a small knife~
+A small knife would have trouble cutting through butter.~
+~
+5 0 1|8192
+~ ~ ~ 2~
+1 0 0
+
+#703
+sack vegetables~
+a sack of vegetables~
+A small sack is filled with vegetables.~
+~
+19 0 1|16384
+10~ ~ ~ 0~
+20 0 0
+
+#704
+sack grain~
+a sack of grain~
+Grain spills from a small sack.~
+~
+19 0 1|16384
+8~ ~ ~ 0~
+19 0 0
+
+#705
+crude iron bracers~
+some crude iron bracers~
+Crudely made iron bracers sit together.~
+~
+9 0 1|256
+~ ~ ~ ~
+25 0 0
+A
+17 -15
+A
+19 2
+
+#706
+tree branch~
+a thick tree branch~
+A club has been fashioned from a thick tree branch.~
+~
+5 0 1|8192
+~ ~ ~ 7~
+30 0 0
+A
+19 3
+A
+18 -3
+
+#707
+large rock~
+a large rock~
+A large rock is covered with dark blood stains.~
+~
+5 0 1|8192
+~ ~ ~ 8~
+45 0 0
+A
+19 4
+A
+17 15
+
+#708
+rigid leather armour~
+some rigid leather armour~
+Some rigid leather body armour looks in bad condition.~
+~
+9 0 1|8
+~ ~ ~ ~
+20 0 0
+
+#709
+green robes dirty material~
+some thick green robes~
+You see a large pile of dirty green material.~
+~
+9 0 1|1024
+~ ~ ~ ~
+5 0 0
+A
+13 45
+
+#710
+wiggly twig~
+a wiggly twig~
+A wiggly twig lies on the ground.~
+~
+3 64 1|16384
+45~ 4~ 3~ flamestrike~
+1 0 0
+
+#711
+ring amber~
+a thick ring made of amber~
+A ring has been crudely cut from a chunk of amber.~
+~
+9 0 1|2
+~ ~ ~ ~
+1 0 0
+A
+4 2
+A
+3 2
+A
+13 45
+#0
+
+#ROOMS
+#700
+Outside the East Gate~
+You stand outside the East Gate of the city of Draagdim.  The high stone
+walls of the great city rise unassailable, running to the north and south.
+The heavy iron gate stands open; it is guarded by suspicious looking
+soldiers who interrogate everyone who tries to enter.  Bowmen peer down
+from the battlements, alert for trouble makers.
+     The Eastern Road begins here; it is wide and well travelled.  The
+area immediately outside the gate is orderly enough, but further away from
+the soldiers a chaotic rabble of peasants, beggars and adventurers mills
+about.  The gate guards scare off the more miserable looking creatures,
+who harrass farmers and town-dwellers as they passage to and from the city.
+     The guards will let you head west into the city, otherwise you can head
+along the road as it travels east.
+~
+0 4 1
+D 1
+~
+~
+0 -1 701
+D 3
+~
+~
+0 -1 28034
+S
+
+#701
+The East Road~
+The East Gate of Draagdim can be seen to the west.  The road here has been
+turned into a makeshift campsite by a throng of beggars and travellers who
+have been denied access to the city.  You are hassled and insulted as you
+force yourself through the tight crowds, who are mostly filthy and
+destitute.
+     A large group of people have assembled to the south of the road, and
+canvas tents have been erected directly north.  The road heads east; more
+desperate people can be seen loitering there.
+~
+0 0 2
+D 0
+~
+~
+0 -1 703
+D 2
+~
+~
+0 -1 705
+D 1
+~
+~
+0 -1 702
+D 3
+~
+~
+0 -1 700
+S
+
+#702
+The East Road~
+The walls of the city of Draagdim can be seen to the west as you travel
+along the road.  A crowd of desperate beggars and derelicts has assembled
+here, haranguing people as they travel along the road.  The air is full of
+the babble of voices; trash and disgusting piles of filth litter the road
+side.  More canvas tents can be seen close to the roadside here.
+     You can head north from the road closer to the tents, or you can
+travel west and east along the road.
+~
+0 0 2
+D 0
+~
+~
+0 -1 704
+D 1
+~
+~
+0 -1 706
+D 3
+~
+~
+0 -1 701
+S
+
+#703
+Dirty Encampment~
+Canvas tents have been haphazardy raised along the northern edge of the
+road.  Most are in bad condition, sodden and covered in mold.  The sides
+of many tents have been rolled up, exposing forlorn groups of beggars and
+gypsies lying on straw pelts or sitting in despondent groups.  The once
+grassy roadside has been churned into thick mud; the squalid camp is
+depressing and smells terrible.  The wretches here watch you with combined
+hatred and fear. 
+     From here you can move east through the camp or south to the road.
+~
+0 0 2
+D 2
+~
+~
+0 -1 701
+D 1
+~
+~
+0 -1 704
+S
+
+#704
+Dirty Encampment~
+Canvas tents have been haphazardy raised along the northern edge of the
+road.  Most are in bad condition, sodden and covered in mold.  The sides
+of many tents have been rolled up, exposing forlorn groups of beggars and
+gypsies lying on straw pelts or sitting in despondent groups.  The once
+grassy roadside has been churned into thick mud; the squalid camp is
+depressing and smells terrible.  The wretches here watch you with combined
+hatred and fear. 
+     From here you can move west through the camp or south to the road.
+~
+0 0 2
+D 2
+~
+~
+0 -1 702
+D 3
+~
+~
+0 -1 703
+S
+
+#705
+Roadside Well~
+A large group of miserable beggars and gypsies surrounds a stone well dug
+not far from the road.  Some drink from bowls filled with the dirty water
+as it is hauled up from the ground, others feed greedily on loaves of
+bread and fruit handed out by robed monks.  To the north lies the East
+Road.
+~
+0 0 2
+D 0
+~
+~
+0 -1 701
+S
+
+#706
+The East Road~
+The road heads east through the grassy countryside surrounding Draagdim.
+A wretched group of gypsies and derelicts have made camp to the west, not
+far from the city walls.  The road to the east works between heavily 
+cultivated fields.
+~
+0 4 2
+D 1
+~
+~
+0 -1 707
+D 3
+~
+~
+0 -1 702
+S
+
+#707
+The East Road~
+The road east from Draagdim wanders through large cultivated fields.  To
+the north sway fields of wheat and barley; green, leafy vegetables have
+been plotted in the dark earth to the south.  As you scan west, you see
+the walls and eastern gate of the city.  The hard road heads east for
+quite some way.
+~
+0 4 2
+D 1
+~
+~
+0 -1 708
+D 3
+~
+~
+0 -1 706
+S
+
+#708
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  Fields of tall wheat sway in the gentle breeze to the north.
+Directly south, a wooden gate opens into a field of vegetables.  The road
+heads west and east from here.
+~
+0 0 2
+D 2
+~
+gate wooden~
+1 -1 720
+D 1
+~
+~
+0 -1 709
+D 3
+~
+~
+0 -1 707
+S
+
+#709
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  A wooden gate to the north leads into a large field of
+wheat.  The road turns south here, and heads west back towards the city.
+~
+0 0 2
+D 0
+~
+gate wooden~
+1 -1 716
+D 2
+~
+~
+0 -1 710
+D 3
+~
+~
+0 -1 708
+S
+
+#710
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  You can head north and south along the road.  A long
+vegetable plantation can be seen to the west, while a large paddock full
+of livestock lies east.
+~
+0 0 2
+D 0
+~
+~
+0 -1 709
+D 2
+~
+~
+0 -1 711
+S
+
+#711
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  The road bends here; you may head north or east.
+~
+0 0 2
+D 0
+~
+~
+0 -1 710
+D 1
+~
+~
+0 -1 712
+S
+
+#712
+The East Road near Dwimmermere Hamlet~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  The road wanders east and west.  The small but lively hamlet
+of Dwimmermere is settled south from here.  Smoke rises from low-walled
+houses in thin grey tendrils; laughter and shouts can be occassionally
+heard from the road.  A small dirt track heads south towards the buildings.
+~
+0 0 2
+D 2
+~
+~
+0 -1 724
+D 1
+~
+~
+0 -1 713
+D 3
+~
+~
+0 -1 711
+S
+
+#713
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  Dwimmermere hamlet lies directly south and can be accessed
+by a small road further west along the road.  A long grassy paddock sits
+to the north, nestled against the expansive fields of grain to the north-
+west.   You can head north into the paddock, or west or east along the
+road. 
+~
+0 0 2
+D 0
+~
+gate wooden~
+1 -1 722
+D 1
+~
+~
+0 -1 714
+D 3
+~
+~
+0 -1 712
+S
+
+#714
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  
+~
+0 4 2
+D 1
+~
+~
+0 -1 729
+D 3
+~
+~
+0 -1 713
+S
+
+#715
+Wheat Field~
+Ripe wheat sways about you in the gentle breeze.  The grain that will be
+harvested from this field is destined for the markets of Draagdim.  Small
+paths run north and east through the tall wheat.
+~
+0 0 2
+D 0
+~
+~
+0 -1 717
+D 1
+~
+~
+0 -1 716
+S
+
+#716
+Wheat Field~
+Ripe wheat sways about you in the gentle breeze.  The grain that will be
+harvested from this field is destined for the markets of Draagdim.  Small
+paths run north and west through the tall wheat, while a gate to the south
+leads back to the road.
+~
+0 0 2
+D 0
+~
+~
+0 -1 718
+D 2
+~
+gate wooden~
+1 -1 709
+D 3
+~
+~
+0 -1 715
+S
+
+#717
+Wheat Field~
+Ripe wheat sways about you in the gentle breeze.  The grain that will be
+harvested from this field is destined for the markets of Draagdim.  Small
+paths run south and east through the tall wheat.
+~
+0 0 2
+D 2
+~
+~
+0 -1 715
+D 1
+~
+~
+0 -1 718
+S
+
+#718
+Wheat Field~
+Ripe wheat sways about you in the gentle breeze.  The grain that will be
+harvested from this field is destined for the markets of Draagdim.  Small
+paths run south and west through the tall wheat, while you spot a small
+wooden hut to the east.
+~
+0 0 2
+D 2
+~
+~
+0 -1 716
+D 1
+~
+door wooden~
+1 -1 719
+D 3
+~
+~
+0 -1 717
+S
+
+#719
+Farmer's Hut~
+Scythes and other tools, wicker baskets and gear for horses are arranged
+within this small wooden hut.  The only way out is west through the small
+door.
+~
+0 8 0
+D 3
+~
+door wooden~
+1 -1 718
+S
+
+#720
+Vegetable Field~
+The rich earth of this field has been fully planted with vegetables.  You
+are surrounded by neat rows of cabbages, carrots, potatoes and turnips.
+You can head south to the other end of the field, or head north out of the
+gate back onto the road.
+~
+0 0 2
+D 0
+~
+gate wooden~
+1 -1 708
+D 2
+~
+~
+0 -1 721
+S
+
+#721
+Vegetable Field~
+The rich earth of this field has been fully planted with vegetables.  You
+are surrounded by neat rows of cabbages, carrots, potatoes and turnips.  
+A small shed is planted directly south.  You can head north back to the
+other end of the field, or head south into the shed.
+~
+0 0 2
+D 0
+~
+~
+0 -1 720
+D 2
+~
+door wooden~
+1 -1 728
+S
+
+#722
+Paddock~
+The bright green grass of this paddock looks well chewed.  Piles of manure
+lay hidden within the grass; large blowflies bask on the sloppy filth.
+Livestock eye you suspiciously as you tread carefully through the field.
+The paddock continues further north; you can return to the road through a
+gate to the south.
+~
+0 0 2
+D 0
+~
+~
+0 -1 723
+D 2
+~
+gate wooden~
+1 -1 713
+S
+
+#723
+Paddock~
+The bright green grass of this paddock looks well chewed.  Piles of manure
+lay hidden within the grass; large blowflies bask on the sloppy filth.
+Livestock eye you suspiciously as you tread carefully through the field.
+The paddock seems to end here; your only option is to head back south
+towards the road.
+~
+0 0 2
+D 2
+~
+~
+0 -1 722
+S
+
+#724
+Dwimmermere Hamlet~
+You approach the squat wooden buildings of the hamlet of Dwimmermere.  The
+smoke from small fires drifts lazily into the air; you hear distant voices
+and the occasional call of an animal.  The peasants who live here sit in
+small groups at outdoor tables, or slowly carry sacks or push barrows
+through the central road.  The atmosphere seems friendly enough... the 
+people of Dwimmermere nod politely to you as they pass by.
+     Groups of houses stand directly east and south-east.  A large barn
+and grain silo rise to the south.  North from here takes you back to the
+road.
+~
+0 0 2
+D 0
+~
+~
+0 -1 712
+D 2
+~
+~
+0 -1 726
+D 1
+~
+~
+0 -1 725
+S
+
+#725
+Farmers' Houses~
+Several large, low-set wooden buildings serve as home to the peasants who
+tend the surrounding fields.  Carts are parked in between the buildings,
+stacked with tools and containers.  Goats and dogs trot along the dirt
+paths travelling about the buildings.  Peasants smile at your approach,
+but don't invite you inside their homes.
+     The entrance to the hamlet lies due west.  More houses can be seen to
+the south, while to the south-west a large barn and silo are visible.
+~
+0 0 2
+D 2
+~
+~
+0 -1 727
+D 3
+~
+~
+0 -1 724
+S
+
+#727
+Farmers' Houses~
+Several large, low-set wooden buildings serve as home to the peasants who
+tend the surrounding fields.  Carts are parked in between the buildings,
+stacked with tools and containers.  Goats and dogs trot along the dirt
+paths travelling about the buildings.  Peasants smile at your approach,
+but don't invite you inside their homes.
+     More houses can be seen to the north, while to the west a large barn
+and silo are visible.
+~
+0 0 2
+D 0
+~
+~
+0 -1 725
+D 3
+~
+~
+0 -1 726
+S
+
+#726
+Barn and Grain Silo~
+A large communal barn dominates this part of the hamlet.  A tall grain
+silo stands close by.  The barn doors are wide open and the interior seems
+fairly empty: a few carts, sacks and wicker baskets can be seen.  Several
+men stand lazily by the entrance and occassionally talk.
+     Houses can be seen east from here, and the entrance to the hamlet
+lies directly north.
+~
+0 0 2
+D 0
+~
+~
+0 -1 724
+D 1
+~
+~
+0 -1 727
+S
+
+#728
+Farmer's Shed~
+This cluttered shed is used to store equipment for planting and
+maintaining the vegetable plots to the north.  The largest piece of
+equipment is a metal plow, while numerous wooden crates a filled with
+hoes, rakes and trowels.  Bags of seed are stacked at the rear of the
+shed.
+~
+0 8 0
+D 0
+~
+door wooden~
+1 -1 721
+S
+
+#729
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  To the east, the countryside begins to look a little more
+wild.  Round hills can be seen to the southeast.
+~
+0 0 2
+D 1
+~
+~
+0 -1 730
+D 3
+~
+~
+0 -1 714
+S
+
+#730
+The East Road~
+The east road travels through the rich and productive farmland to the east
+of Draagdim.  To the east, the countryside begins to look a little more
+wild.  Round hills can be seen to the southeast.
+~
+0 0 2
+D 1
+~
+~
+0 -1 731
+D 3
+~
+~
+0 -1 729
+S
+
+#731
+The East Road~
+You have left the fields of Draagdim behind to the west; the countryside
+here is untended, the road more overgrown.  The highway seems much less
+travelled.  You can head west towards the farmland or south into the
+wilderness.
+~
+0 0 2
+D 2
+~
+~
+0 -1 732
+D 3
+~
+~
+0 -1 730
+S
+
+#732
+The East Road~
+You have left the fields of Draagdim behind to the west; the countryside
+here is untended, the road more overgrown.  The highway seems much less
+travelled.  You may head north or east along the road as it begins to wind
+into the foothills.  Larger hills can be seen to the east.
+~
+0 0 2
+D 0
+~
+~
+0 -1 731
+D 1
+~
+~
+0 -1 733
+S
+
+#733
+The East Road~
+You travel along the road as it climbs gently into grassy foothills.  Many
+birds fly fast and low about you, and unseen animals rustle in the
+vegetation.  Few trees stand in this barren wilderness.  The road turns
+south here.
+~
+0 0 4
+D 2
+~
+~
+0 -1 734
+D 3
+~
+~
+0 -1 732
+S
+
+#734
+The East Road~
+You travel along the road as it climbs gently into grassy foothills.  Many
+birds fly fast and low about you, and unseen animals rustle in the
+vegetation.  Few trees stand in this barren wilderness.  The road head
+north and south.
+~
+0 0 4
+D 0
+~
+~
+0 -1 733
+D 2
+~
+~
+0 -1 735
+S
+
+#735
+The East Road~
+You travel along the road as it climbs gently into grassy foothills.  Many
+birds fly fast and low about you, and unseen animals rustle in the
+vegetation.  Few trees stand in this barren wilderness.  The road turns
+east here.
+~
+0 0 4
+D 0
+~
+~
+0 -1 734
+D 1
+~
+~
+0 -1 736
+S
+
+#736
+The East Road~
+The road is becoming more wild and overgrown as it winds its way through
+the round foothills.  Larger, steeper hills loom directly east.  The road
+returns west.
+~
+0 0 4
+D 1
+~
+~
+0 -1 737
+D 3
+~
+~
+0 -1 735
+S
+
+#737
+The East Road~
+The road is becoming more wild and overgrown as it winds its way through
+the round foothills.  Larger, steeper hills loom directly east.  The road
+returns west; you can head north or south into the hills.
+~
+0 4 4
+D 0
+~
+~
+0 -1 739
+D 2
+~
+~
+0 -1 745
+D 1
+~
+~
+0 -1 738
+D 3
+~
+~
+0 -1 736
+S
+
+#738
+End of the East Road~
+The road comes to a halt here; it travels no further into the hills.  The
+grassy mountains rise up around you, sparsely covered with small shrubs
+and bushes.  You can head back west, or else into the hills.
+~
+0 0 4
+D 0
+~
+~
+0 -1 740
+D 2
+~
+~
+0 -1 746
+D 1
+~
+~
+0 -1 753
+D 3
+~
+~
+0 -1 737
+S
+
+#739
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head east through
+the hills, or head south back to the road.
+~
+0 0 4
+D 2
+~
+~
+0 -1 737
+D 1
+~
+~
+0 -1 740
+S
+
+#740
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head west and east
+through the hills, or south to the road.
+~
+0 0 4
+D 2
+~
+~
+0 -1 738
+D 1
+~
+~
+0 -1 741
+D 3
+~
+~
+0 -1 739
+S
+
+#741
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head in every
+direction.
+~
+0 0 4
+D 0
+~
+~
+0 -1 744
+D 2
+~
+~
+0 -1 753
+D 1
+~
+~
+0 -1 742
+D 3
+~
+~
+0 -1 740
+S
+
+#742
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  The hills spread north and
+west.
+~
+0 0 4
+D 0
+~
+~
+0 -1 743
+D 3
+~
+~
+0 -1 741
+S
+
+#743
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head west and south
+from here.  To the north, a large castle rises from the hills.
+~
+0 0 4
+D 0
+~
+~
+0 -1 26001
+D 2
+~
+~
+0 -1 741
+D 3
+~
+~
+0 -1 744
+S
+
+#744
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head east through
+the hills, or head south back to the road.
+~
+0 0 4
+D 2
+~
+~
+0 -1 741
+D 1
+~
+~
+0 -1 743
+S
+
+#745
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  The road lays directly
+north; the hills roll eastwards.
+~
+0 0 4
+D 0
+~
+~
+0 -1 737
+D 1
+~
+~
+0 -1 746
+S
+
+#746
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can see the road to the
+north; the hills surround you everywhere else.
+~
+0 0 4
+D 0
+~
+~
+0 -1 738
+D 2
+~
+~
+0 -1 749
+D 1
+~
+~
+0 -1 747
+D 3
+~
+~
+0 -1 745
+S
+
+#747
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  The hills surround you.
+~
+0 0 4
+D 0
+~
+~
+0 -1 753
+D 2
+~
+~
+0 -1 750
+D 1
+~
+~
+0 -1 748
+D 3
+~
+~
+0 -1 746
+S
+
+#748
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head west or south
+through the hills.
+~
+0 0 4
+D 2
+~
+~
+0 -1 751
+D 3
+~
+~
+0 -1 747
+S
+
+#749
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  The hills loom to the north
+and west.
+~
+0 0 4
+D 0
+~
+~
+0 -1 746
+D 1
+~
+~
+0 -1 750
+S
+
+#750
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head in every
+direction.
+~
+0 0 4
+D 0
+~
+~
+0 -1 747
+D 2
+~
+~
+0 -1 752
+D 1
+~
+~
+0 -1 751
+D 3
+~
+~
+0 -1 749
+S
+
+#751
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  You can head north and west
+from here.
+~
+0 0 4
+D 0
+~
+~
+0 -1 748
+D 3
+~
+~
+0 -1 750
+S
+
+#752
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  
+     You climb to the top of a hill that is one of the tallest in the
+range; you can see the hills stretch for miles to the north.  The ground
+on the top of the hill seems poisoned; no grass grows here.  A large pit
+opens like a mouth near the centre of the summit.  Foul vapours rise from
+within.  You can head north down the hill, or carefully down into this
+evil cave.
+~
+0 4 4
+D 0
+~
+~
+0 -1 750
+D 5
+~
+~
+0 -1 21500
+S
+
+#753
+Barren Hills~
+You march cold and exposed through the grassy ranges.  The hills are
+barren and apparently empty of wildlife.  A few scraggly bushes cling to
+the topsoil, but the grass is long and thick.  Hills sit to the north and
+south, while you spot the road to the east.
+~
+0 0 4
+D 0
+~
+~
+0 -1 741
+D 2
+~
+~
+0 -1 747
+D 3
+~
+~
+0 -1 738
+S
+#0
+
+#RESETS
+D 0 708 2 1                     close south in The East Road
+D 0 709 0 0                     open north in The East Road
+D 0 713 0 1                     close north in The East Road
+D 0 716 2 0                     open south in Wheat Field
+D 0 718 1 1                     close east in Wheat Field
+D 0 719 3 1                     close west in Farmer's Hut
+D 0 720 0 1                     close north in Vegetable Field
+D 0 721 2 1                     close south in Vegetable Field
+D 0 722 2 1                     close south in Paddock
+D 0 728 0 1                     close north in Farmer's Shed
+M 0 700 3 703                   add a dirty beggar to Dirty Encampment
+M 0 700 3 704                   add a dirty beggar to Dirty Encampment
+M 0 700 3 705                   add a dirty beggar to Roadside Well
+M 0 701 2 701                   add a peasant to The East Road
+M 0 701 2 702                   add a peasant to The East Road
+M 0 701 2 701                   add a peasant to The East Road
+M 0 703 2 705                   add a gypsy to Roadside Well
+E 0 702 0 16                        equip a small knife (wield)
+M 0 703 2 704                   add a gypsy to Dirty Encampment
+E 0 702 0 16                        equip a small knife (wield)
+M 0 704 1 702                   add a half-goblin to The East Road
+M 0 705 2 702                   add a farmer to The East Road
+G 0 703 0                           carry a sack of vegetables
+G 0 704 0                           carry a sack of grain
+M 0 705 2 701                   add a farmer to The East Road
+G 0 703 0                           carry a sack of vegetables
+G 0 704 0                           carry a sack of grain
+M 0 706 2 705                   add a monk to Roadside Well
+G 0 701 0                           carry a loaf of bread
+G 0 701 0                           carry a loaf of bread
+M 0 706 2 705                   add a monk to Roadside Well
+G 0 701 0                           carry a loaf of bread
+G 0 701 0                           carry a loaf of bread
+M 0 707 2 708                   add a farmer to The East Road
+M 0 707 2 713                   add a farmer to The East Road
+M 0 708 3 721                   add a field worker to Vegetable Field
+M 0 708 3 721                   add a field worker to Vegetable Field
+M 0 708 3 720                   add a field worker to Vegetable Field
+M 0 709 3 724                   add a peasant to Dwimmermere Hamlet
+M 0 709 3 725                   add a peasant to Farmers' Houses
+M 0 709 3 726                   add a peasant to Barn and Grain Silo
+M 0 710 1 724                   add a small spotted dog to Dwimmermere Hamlet
+M 0 711 4 722                   add a cow to Paddock
+M 0 711 4 723                   add a cow to Paddock
+M 0 712 1 723                   add a bull to Paddock
+M 0 713 2 734                   add a hill giant to The East Road
+E 0 705 0 10                        equip some crude iron bracers (arms)
+E 0 706 0 16                        equip a thick tree branch (wield)
+M 0 713 2 734                   add a hill giant to The East Road
+E 0 708 0 5                         equip some rigid leather armour (body)
+E 0 706 0 16                        equip a thick tree branch (wield)
+M 0 714 1 734                   add a stone giant to The East Road
+E 0 708 0 5                         equip some rigid leather armour (body)
+E 0 707 0 16                        equip a large rock (wield)
+M 0 715 1 734                   add a hill giant priestess to The East Road
+E 0 711 0 1                         equip a thick ring made of amber (finger1)
+E 0 709 0 12                        equip some thick green robes (about)
+E 0 710 0 17                        equip a wiggly twig (hold)
+O 0 700 0 705                   a stone well to Roadside Well
+S
+
+#SPECIALS
+M 703 spec_thief                a gypsy
+M 706 spec_cast_cleric          a monk
+M 715 spec_cast_druid           a hill giant priestess
+S
+
+#$

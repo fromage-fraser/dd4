@@ -1,0 +1,158 @@
+#HELPS
+
+-1 'DD2 HEROES'~
+
+Here we honour those who attained the mighty rank of {WHERO{x on DD2:
+
+{WSeth{Y          (Mage)                  {wChadius{Y       (Mage){x
+{wJustice{M       (Warrior)               {wBremen{W        (Psionic){x
+{wRetzius{Y       (Mage)                  {wSojurn{M        (Warrior){x
+{wTarian{R        (Werewolf)              {wChimeisho{B     (Ninja){x
+{wMogur{C         (Martial Artist)        {wIshmael{M       (Warrior){x
+{wGodspeed{Y      (Mage)                  {wAlaior{B        (Ninja){x
+{wShamno{M        (Warrior)               {wAjax{M          (Warrior){x      
+{wWarchild{C      (Brawler)               {wDream{Y         (Mage){x
+{wHarbinger{Y     (Warlock)               {wZena{Y          (Mage){x
+{wGarsnik{M       (Warrior)               {wReno{C          (Martial Artist){x
+{wEchan{M         (Warrior)               {wACK{M           (Barbarian){x
+{wKlael{M         (Warrior)               {wNadir{C         (Monk){x
+{wFreddy{C        (Martial Artist)        {wNatas{G         (Cleric){x
+{wPych{B          (Ninja)                 {wBindusara{B     (Ninja){x
+{wToturi{M        (Warrior)               {wSifty{B         (Thief){x
+{wOwl{B           (Bounty Hunter)         {wHummel{B        (Ninja){x
+{wArika{Y         (Mage)                  {wZantor{W        (Psionic){x
+{wGumby{R         (Werewolf)              {wBliss{Y         (Mage){x
+{wCalinth{M       (Warrior)               {wMarz{M          (Warrior){x
+{wBolg{M          (Warrior)               {wArmand{G        (Druid){x
+{wAmaya{R         (Vampire)               {wNei{W           (Psionic){x
+{wRabishu{R       (Vampire)               {wSabre{R         (Shifter){x
+{wDorf{G          (Druid)                 {wLordP{M         (Barbarian){x
+{wMitakasi{M      (Warrior)               {wRevenge{R       (Werewolf){x
+{wKakita{G        (Cleric)                {wBleurgh{B       (Ninja){x
+{wSquee{R         (Werewolf)              {wMonopoly{M      (Barbarian){x
+{wDachau{W        (Witch)                 {wDragco{M        (Warrior){x
+{wVortigern{M     (Knight)                {wDarksol{W       (Satanist){x
+{wWarblade{B      (Thief)                 {wSherry{Y        (Necromancer){x
+{x
+
+See also HELP PAST HEROLIST.
+~
+
+-1 'PAST HEROLIST'~
+
+Here we honour those who attained the mighty rank of {WHERO{x on DD3
+(after the cataclysm):
+
+{WAmaya{x        {R(Vampire){x
+{WAnnoyed{x      {R(Vampire){x
+{WThoTh{x        {R(Vampire){x
+{WWhiteNIGHT{x   {B(Bounty Hunter){x
+{WAnfauglir{x    {B(Bounty Hunter){x
+{WLancelot{x     {G(Templar){x
+{WKieri{x        {Y(Warlock){x
+{WOmega{x        {W(Psionic){x
+{WSerra{x        {C(Brawler){x
+{WDrakkyn{x      {R(Shifter){x
+{WHeretic{x      {Y(Mage){x
+{WIshtar{x       {R(Shifter){x
+{WRogun{x        {Y(Mage){x
+{WOlof{x         {G(Templar){x
+{WXeddicus{x     {Y(Mage){x
+{WSoriki{x       {R(Shifter){x
+{WStress{x       {C(Monk){x
+{WLoong{x        {R(Werewolf){x
+{WDrand{x        {w(Ranger){x
+{WPakudaboy{x    {R(Vampire){x
+{WNOCTURNE{x     {M(Knight){x
+{WXzar{x         {Y(Mage){x
+{WGalad{x        {G(Templar){x
+{WSelfling{x     {Y(Warlock){x
+{WVolrath{x      {Y(Mage){x
+{WArmand{x       {G(Druid){x
+{WMalignant{x    {W(Witch){x
+{WWoodentoe{x    {G(Templar){x
+{WNfruchedrzzr{x {Y(Mage){x
+{WSigon{x        {Y(Warlock){x
+{WCommodus{x     {M(Warrior){x
+{WCassius{x      {C(Martial Artist){x
+{WKahn{x         {w(Ranger){x
+{WExorcist{x     {w(Ranger){x
+{WSonne{x        {R(Werewolf){x
+{WGreel{x        {M(Warrior){x
+{WRangor{x       {B(Ninja){x
+{WNazareh{x      {M(Warrior){x
+{WBelial{x       {W(Satanist){x
+
+See also HELP DD2 HEROES, HELP PAST LEGENDS, and HELP PAST PKILLERS.
+~
+
+-1 'PAST LEGENDS'~
+
+Here we honour those most legendary adventurers from DD3
+(after the cataclysm):
+
+{WRank    Name            Class       Greatest Fame
+{W-------------------------------------------------
+{W1st     Belial          Satanist        28181{x
+{Y2nd     Malignant       Witch           23169{x
+{G3rd     Soriki          Shifter         15466{x
+{G4th     Rogun           Mage            12890{x
+{C5th     Ishtar          Shifter         12862{x
+{C6th     OroChi          Warrior         10766{x
+{C7th     Stress          Monk            10263{x
+{c8th     Nfruchedrzzr    Mage            10057{x
+{c9th     Olof            Templar          9002{x
+{c10th    Heretic         Mage             8409{x
+{c11th    Kirchal         Brawler          7779{x
+{c12th    Loong           Werewolf         7768{x
+{w13th    Serra           Brawler          7179{x
+{w14th    Drakkyn         Shifter          7013{x
+{w15th    Darkmyst        Satanist         6718{x
+{w16th    Xeddicus        Mage             6312{x
+{w17th    Volrath         Mage             6185{x
+{w18th    Nimbus          Monk             5620{x
+{w19th    Xzar            Mage             5119{x
+{w20th    Inconnu         Mage             4917{x
+
+See also HELP PAST HEROLIST and HELP PAST PKILLERS.
+~
+
+-1 'PAST PKILLERS'~
+
+Here we honour the most deadly pkillers from DD3
+(after the cataclysm):
+                                                 Raw    Final
+Rank   Name         Class      Kills   Deaths   Score   Score     Rating
+---------------------------------------------------------------------------
+ 1st   {WStavros      {MThug{x         {C57       1      166     {Y164     {BStalker{x   
+ 2nd   {WBleurgh      {BNinja{x        {C37       3      155     {Y149   {R-=Predator=-{x
+ 3rd   {WRift         {RShifter{x      {C46       0      148     {Y148     {M-Hunter-{x  
+ 4th   {WBliss        {YMage{x         {C44       4      152     {Y144     {M-Hunter-{x  
+ 5th   {WChaos        {MWarrior{x      {C31       2      103      {Y99     {M-Hunter-{x  
+ 6th   {WSilenoz      {MWarrior{x      {C36       4      103      {Y95     {BStalker{x   
+ 7th   {WGrimloch     {RShifter{x      {C36       5      103      {Y93     {BStalker{x   
+ 8th   {WJarl         {MWarrior{x      {C27       2       91      {Y87     {M-Hunter-{x  
+ 9th   {WNephthys     {MWarrior{x      {C25       2       88      {Y84    {M<Assassin>{x 
+10th   {WKovac        {RShifter{x      {C28       0       84      {Y84     {BStalker{x   
+11th   {WAnnoyed      {RVampire{x      {C38       7       86      {Y72     {BBrigand{x   
+12th   {WGreel        {MWarrior{x      {C28       1       72      {Y70     {BStalker{x   
+13th   {WFate         {RWerewolf{x     {C21       0       67      {Y67     {M-Hunter-{x  
+14th   {WPayne        {RWerewolf{x     {C34       6       78      {Y66     {BBrigand{x   
+15th   {WKirchal      {CBrawler{x      {C17       1       65      {Y63    {M<Assassin>{x 
+16th   {WAvenger      {BNinja{x        {C16       0       62      {Y62    {M<Assassin>{x 
+17th   {WTalon        {RShifter{x      {C19       0       61      {Y61     {M-Hunter-{x  
+18th   {WDurnak       {BNinja{x        {C19       0       52      {Y52     {BStalker{x   
+19th   {WCarcharoth   {RWerewolf{x     {C16       2       50      {Y46     {M-Hunter-{x  
+20th   {WMasika       {RShifter{x      {C14       0       44      {Y44     {M-Hunter-{x  
+21st   {WCortese      {BB. Hunter{x    {C44       6       55      {Y43      {xCoward{x   
+22nd   {WKrasheva     {RWerewolf{x     {C19       4       50      {Y42     {BStalker{x   
+23rd   {WCapo         {RVampire{x      {C12       1       42      {Y40    {M<Assassin>{x 
+24th   {WCommodus     {MWarrior{x      {C16       3       46      {Y40     {BStalker{x   
+25th   {WLythande     {MWarrior{x      {C15       0       40      {Y40     {BStalker{x   
+
+See also HELP PAST HEROLIST and HELP PAST LEGENDS.
+~
+
+0 $~                       
+
+#$

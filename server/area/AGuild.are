@@ -1,0 +1,438 @@
+#AREA	GezSacWrath~  Adventurer's Guild~
+-2 -2 0 100
+
+#AREA_SPECIAL
+safe
+no_quest
+$
+
+#MOBILES
+#25300
+secretary guild~
+The Guild Secretary~
+The Guild Secretary tends to some paper work.
+~
+The secretary works diligently transcribing several papers and notices for
+the Guild's Questmasters.  She is small but well built, her expression
+giving you the impression that she does not suffer fools gladly.
+~
+2|64|512|32768 8|32|512|8388608 500 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#25301
+lord kurbistraht~
+Lord Kurbistraht~
+Lord Kurbistraht sits behind his large oak desk.
+~
+This stout dwarven warrior seems very pleased to have visitors, his bright
+blue eyes sparkling as he offers you a seat.
+~
+2|64|512|4096|32768 8|32|512|8388608 1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25302
+saint justinian~
+Saint Justinian~
+Saint Justinian looks at you sternly as you enter the room.
+~
+Surrounded in a mass of white robes and shawls, the Saint carries an air of
+authority.  He barely raises his head to greet you.
+~
+2|64|512|4096|32768 8|32|512|8388608 1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25303
+xiao tsu~
+Xiao Tsu~
+Xiao Tsu reads documents behind her desk.
+~
+Lean and muscular, this experienced warrior handles the most important and
+dangerous tasks offered to the guild.  She could reduce you to a pulp
+without raising a sweat.
+~
+2|64|4096|32768 8|32|512|8388608 1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#25304
+simons guard~
+the huge guard~
+A HUGE GUARD glares at you.
+~
+This guy is the largest mother you have ever laid eyes on....
+~
+2|64|512 8|32|128|524288|8388608 1000 S
+250 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>all_greet_prog 100~
+	if level($n) > 25
+		say I am sorry $n but you are banished from here!
+		mpechoaround $n is banished from here!
+		mptrans $n 25302
+		mpat $n mpforce $n look
+	else
+		nod $n
+	endif
+~
+|
+#25305
+suturb~
+Suturb~
+Suturb the questmaster looks back at you wisely.
+~
+Suturb is the wise questmaster of Midgaard.
+~
+2|8|64|512 8|32|524288|8388608 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+	say Greetings young one.  I am your questmaster, here to aid you in your glorious adventures.
+	say To ask for a quest type QUEST REQUEST.  For more information, try HELP QUEST.
+~
+|
+#0
+
+#MOBPROGS
+M 25300 AGsecret.prg
+M 25301 AGjunior.prg
+M 25302 AGinterm.prg
+M 25303 AGsenior.prg
+S
+
+#OBJECTS
+#25300
+coins gold platinum~
+some gold and platinum coins~
+A pile of gold and platinum coins sits on the ground.~
+~
+20 0 1|16384
+0~ 0~ 500~ 50~ 
+5 0 0
+#25301
+shield crusader's~
+crusader's shield~
+A large metal shield bears a holy symbol on its front face.~
+~
+9 1 1|512
+10~ 10~ 10~ 10~ 
+10 0 0
+A
+19 4
+A
+18 4
+A
+3 1
+A
+4 1
+A
+14 50
+E
+shield crusader's~
+This finely made shield has been enchanted by powerful Templar clerics for
+use by the Order's knights during their religious crusades.  The highly
+polished metal gleams brilliantly and carries no imperfections.
+~
+#25302
+scroll tattered~
+scroll of bless weapon~
+A tattered scroll is covered in faded ancient text.~
+~
+2 64 1|16384
+50~  bless weapon~ ~ ~
+5 0 0
+#25303
+emerald necklace~
+an emerald necklace~
+A shining emerald necklace lays on the ground.~
+~
+9 1|64 1|4
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+18 9
+A
+19 9
+A
+12 50
+#25304
+table~
+table~
+A long table runs the length of the room~
+~
+12 0 8192
+0~ 1~ 6~ 11~ 
+250 0 0
+#25305
+emerald necklace~
+an emerald necklace~
+A shining emerald necklace lays on the ground.~
+~
+9 1|64 1|4
+0~ 0~ 0~ 0~
+5 0 0
+A
+18 9
+A
+19 9
+A
+12 50
+#25306
+radiant vest magnificent~
+a radiant vest~
+You notice the intense glow of a magnificent vest.~
+~
+9 1|64 9
+0~ 0~ 0~ 0~
+30 0 0
+A
+18 2
+A
+19 2
+A
+1 3
+#25307
+mithril choker~
+a mithril choker~
+A shiny metal choker has been discarded here.~
+~
+9 2|64 1|4
+0~ 0~ 0~ 0~
+30 0 0
+A
+2 1
+A
+18 4
+A
+19 6
+E
+mithril choker~
+
+The choker is made of mithril, the hardest and most valuable metal known.
+You suspect it has been enchanted, as it hums softly when you examine it.
+
+~
+#25308
+talisman protective~
+a protective talisman~
+A talisman inscribed with runes has been dropped here.~
+~
+9 2|64 1|4
+0~ 0~ 0~ 0~
+8 0 0
+A
+37 1
+E
+protective talisman~
+
+The talisman is humming with magical energies and lends you a feeling of 
+protection when you fasten it around your neck.
+
+~
+#0
+
+#ROOMS
+#25300
+Entrance to the Adventurer's Guild~
+You are at the entrance to the majestic Adventurer's Guild, which offers
+great fame and rewards for the services of hardy adventurers.  The tall
+marble building opens to the east, with an expansive terrace leading
+westwards back to the main road.  A large SIGN has been bolted to the
+wall.
+~
+0 4|8|1024 0
+D1
+The Guild Lobby lays directly ahead.
+~
+~
+0 -1 25301
+D5
+The Grunting Boar inn is down from here.
+~
+~
+0 -1 3006
+E
+sign notice writing letters note~
+O===================================O
+| Welcome to the Adventurer's Guild |
+|                                   |
+|   Quests and Tasks Available for  |
+|      Travellers of all Levels     |
+|                                   |
+|         > Enquire within <        |
+|                                   |
+|     Gezhp and Sacrifis : 1996     |
+O===================================O
+~
+S
+#25301
+Guild Lobby~
+You stand in a large lobby, which is filled with people reading notices
+and having discussions.  A large central desk is occupied by a uniformed
+woman of some authority.  A large SIGN stands in front of the desk.
+~
+0 8|1024 0
+D0
+The Office for Junior Quests lays north.
+~
+~
+0 -1 25302
+D1
+The Office for Intermediate Quests lays east.
+~
+~
+0 -1 25303
+D2
+The Office for Senior Quests lays south.
+~
+~
+0 -1 25304
+D3
+~
+~
+0 -1 25300
+E
+sign notice writing letters note~
+O==========================================O
+|   Quests available for various levels    |
+|                                          |
+| Officer for Junior Quests:         North |
+| Officer for Intermediate Quests:    East |
+| Officer for Senior Quests:         South |
+|                                          |
+|      For further information please      |
+|     ask for HELP at the Central Desk     |
+O==========================================O
+~
+S
+#25302
+Lord Kurbistraht's Office~
+Bookcases and wooden cabinets line the walls of this office.  You also
+see that there are stairs leading down into a dark room.  The tiled 
+floor is dominated by a large wooden desk.  A large SIGN sits in front
+of the desk.
+~
+0 8|1024 0
+D2
+~
+~
+0 -1 25301
+D5
+~
+~
+0 -1 25305
+E
+note sign letter writing notice~
+O=============================O
+| Quests currently available: |
+|                             |
+|  1. Trouble in Gangland     |
+|  2. Legend of Xerces        |
+|  3. The Scourge Yevaud      |
+|                             |
+|  For more quests please     |
+|    use the stairs down      |
+O=============================O
+~
+S
+#25303
+Saint Justinian's Office~
+Oil paintings and religious idols sit about this plush room.  Scented 
+candles burn in ornate electrum holders.  A large SIGN contains elegant 
+handwriting.
+~
+0 8|1024 0
+D3
+~
+~
+0 -1 25301
+E
+note sign letter writing notice~
+O=============================O
+| Quests currently available: |
+|                             |
+|  1. Bane of the Dragons     |
+|  2. Drow City Infiltration  |
+|  3. The Stolen Artifact     |
+|  4. Chromatic Dragon Orb    |
+|                             |
+O=============================O
+~
+S
+#25304
+Xiao Tsu's Office~
+Stuffed heads and a selection of cruel and evil looking weapons hang on 
+the walls of this room, which contains no furnature except for a modest
+desk and a large SIGN on the wall.
+~
+0 8|1024 0
+D0
+~
+~
+0 -1 25301
+E
+note sign letter writing notice~
+O===============================O
+| Quests currently available:   |
+|                               |
+| 1. The Magician's Missing Gem |
+|         		        |
+O===============================O
+~
+S
+#25305
+the small corridor~
+You are standing in a dark, cramped corridor with a very large guard
+looking at you.   You feel the urge to move on.
+~
+0 1|4|8|512|1024|8192 0
+D4
+~
+~
+0 -1 25302
+D5
+~
+~
+0 -1 25306
+S
+#25306
+The Questmasters Home~
+This room is very untidy and looks as if the owner of this room hasnt
+lifted a finger to do anything about it.  You see a long table with
+empty bottles of ale and half eaten loaves of bread. The smell of the
+ale and the stale bread starts to make you feel queezy and you notice a
+rat hiding in the corner.
+~
+0 4|8|1024|8192 0
+D4
+~
+~
+0 -1 25305
+S
+#0
+
+
+#RESETS
+M 1 25300 1 25301
+M 1 25301 1 25302
+M 1 25302 1 25303
+M 1 25303 1 25304
+*
+M 1 25304 1 25305			the huge guard to the small corridor
+*
+M 1 25305 1 25306			Simon to Simons hideout
+O 1 25304 100 25306			table to Simons hideout
+S
+
+
+#SPECIALS
+M  25304 spec_cast_psionicist			the huge guard
+M  25305 spec_cast_psionicist		Simon
+S
+
+
+#$

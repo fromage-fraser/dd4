@@ -1,0 +1,4475 @@
+#AREA Samxin~ The Plane Inn~
+35 75 0 100
+
+#MOBILES
+#56051
+Sentinel Pure~
+Sentinel of the Pure~
+The Sentinel stands here radiating golden light.
+~
+{YThe light is too strong to make anything out.{x
+~
+2|64 8|32|2048|8388608 1000 S
+70 0 0 0d0+0 0d0+0
+256 0
+0 0 1
+>all_greet_prog 100~
+if isevil ($n)
+say {YYou shall not enter the Light!{x
+mpkill $n
+else
+if isgood ($n)
+say {YEnter the light, $n, and be welcome.{x
+cast bless $n
+mpoload 56051
+unlock up
+open up
+mpjunk citadel
+else
+say {YNeutrality allows the rise of evil, you must be vigilant.{x
+mpoload 56051
+unlock up
+open up
+mpjunk citadel
+endif
+~
+>death_prog 100~
+mpoload 56051
+~
+|
+
+#56052
+Essence Light~
+Essence of Light~
+The Essence of Light.
+~
+{YThe brightness is too strong to penetrate with your limited vision.{x
+~
+2|64 8|32|2048|8388608 1000 S
+71 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 2
+>all_greet_prog 100~
+if isevil ($n)
+mpecho {YThe light seems to intensify for a moment and then engulfs you!{x
+mpkill $n
+else
+if isgood ($n)
+mpecho {YThe light pulses as if in greeting.{x
+else
+mpecho {YThe light seems to dim slightly as you approach, but otherwise
+doesn't react.{X
+endif
+~
+|
+
+#56053
+Being Perfection~
+A being of Perfection~
+A being of Perfection glides through the light.
+~
+{YThe light is all encompassing.{x
+~
+2|64 8|32|2048|8388608 1000 S
+72 0 0 0d0+0 0d0+0
+256 0
+0 0 0
+>all_greet_prog 100~
+if isevil ($n)
+say {YYou shall not defile this place $n!{x
+mpkill $n
+else
+if isgood ($n)
+say {YWelcome to the light $n.{X
+say {YTake this and be one with the Light.{x
+mpoload 56053
+give sparkle $n
+else
+say {YThe forces of evil are ever present. Be one with the Light or be
+damned.{x
+mpoload 56053
+drop sparkle
+endif
+~
+>death_prog 100~
+mpoload 56053
+~
+|
+
+#56066
+Wrath Light~
+The Wrath of the Light~
+The Wrath of the Light burns radiantly.
+~
+{YYou risk your mortal vision trying to gaze at The Wrath of Light.{x
+~
+2|64 8|32|2048|8388608 1000 S
+73 0 0 0d0+0 0d0+0
+128|256 0
+0 0 1
+>all_greet_prog 100~
+if isevil ($n)
+say {YThe Light will scour your soul and cleanse you of Evil!{x
+mpkill $n
+else
+if isgood($n)
+say {YYou burn with the righteous wrath of the holy $n.{x
+else
+say {YThe weak fall pray to the Dark, the timid to{x
+say {Yindecision. Thou art timid $n. Pray thee it{x
+say {Ydoes not cost you your soul.{x
+endif
+~
+|
+
+#56055
+Sustainer Purity~
+The Sustainer of Purity~
+The Sustainer of Purity blazes across your vision.
+~
+{YEven with your eyes closed the light is painful.{x
+~
+2|64 8|32|2048|8388608 1000 S
+76 0 0 0d0+0 0d0+0
+128|256 0
+0 0 0
+>all_greet_prog 100~
+if isevil ($n)
+mpecho {RA voice sounds deep in your mind:{x
+mpecho {YYOU DARE INTRUDE UPON THE LIGHT!{x
+mpecho {YVILE CREATURE OF DARKNESS- PERISH!{x
+mpkill $n
+else
+if isgood($n)
+mpecho {RA voice sounds deep in your mind:{x
+mpecho {YThe Light embraces you $n. Your pure soul sings to me.{x
+mpecho {YMy blessings on thee my child, go with the Light.{x
+cast 'combat mind' $n
+cast 'detect evil' $n
+mpoload 56070
+give light $n
+else
+mpecho {RA voice sounds deep in your mind:{x
+mpecho {YThe Darkness preys upon the indecisive.{x
+mpecho {YYour soul is in the balance, let it not be consumed $n.{x
+mpoload 56070
+give light $n
+endif
+~
+>death_prog 100~
+mpoload 56070
+~
+|
+
+#56054
+Wrath Light~
+The Wrath of the Light~
+The Wrath of the Light burns radiantly.
+~
+{YYou risk your mortal vision trying to gaze at The Wrath of Light.{x
+~
+2|64 8|32|2048|8388608 1000 S
+73 0 0 0d0+0 0d0+0
+128|256 0
+0 0 2
+>all_greet_prog 100~
+if isevil ($n)
+say {YThe Light will scour your soul and cleanse you of Evil!{x
+mpkill $n
+else
+if isgood($n)
+say {YYou burn with the righteous wrath of the holy $n.{x
+else
+say {YThe weak fall pray to the Dark, the timid to{x
+say {Yindecision. Thou art timid $n. Pray thee it {x
+say {Ydoes not cost you your soul.{x
+endif
+~
+|
+
+#56056
+Inviting Shadow~
+An Inviting Shadow~
+An Inviting Shadow beckons from the darkness.
+~
+{dIt is simply a darker smudge amongst the darkness.{x
+~
+2|64 8|32|512|8192|524288|8388608 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if isgood ($n)
+mpkill $n
+else
+if isevil ($n)
+say {dWelcome $n. Let the Darkness fill you with strength.{x
+cast 'combat mind' $n
+else
+say {dThe Light is weak. The Darkness consumes all. Come to us, come...{x
+endif
+~
+|
+
+#56057
+Denizen Darkness~
+A Denizen of Darkness~
+A Denizen of Darkness floats within the shadows.
+~
+{dIt is much too dark to see.{x
+~
+2|64 8|32|512|8192|524288|8388608 -1000 S
+71 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>all_greet_prog 100~
+if isgood ($n)
+mpkill $n
+else
+if isevil ($n)
+mpecho {dThe Denizen darkens a moment and then passes through you.{x
+cast haste $n
+else
+if rand(50)
+mpecho{dThe Denizen's voice whispers into your mind, luring you to Darkness.{x
+else
+mpecho {dThe Denizen suddenly rushes at you!{x
+mpkill $n
+endif
+~
+|
+
+#56058
+Serpent Deceit~
+A Serpent of Deceit~
+A Serpent of Deceit glides through the dark.
+~
+{dThe darkness obscures your vision and smothers your soul.{x
+~
+2|64 8|32|512|8192|524288|8388608 -1000 S
+72 0 0 0d0+0 0d0+0
+4|8 0
+0 0 1
+>all_greet_prog 100~
+if isgood ($n)
+mpkill $n
+else
+if isevil($n)
+say {dSome coins or items freely given will bring a boon.{x
+else
+if rand(50)
+mpecho The serpent coils around you whispering the promise of power.
+else
+mpecho The serpent suddenly strikes!
+mpkill $n
+endif
+~
+>rand_prog 100~
+mpjunk all
+~
+|
+
+#56059
+Blackness~
+Blackness~
+Blackness.
+~
+{dBlackness.{x
+~
+2|64 8|32|512|8192|524288|8388608 -1000 S
+73 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 1
+>all_greet_prog 100~
+if isgood ($n)
+mpkill $n
+else
+if isevil ($n)
+cast weaken $n
+else
+cast fly $n
+endif
+~
+|
+
+#56068
+Blackness~
+Blackness~
+Blackness.
+~
+{dBlackness.{x
+~
+2|64 8|32|512|8192|524288|8388608 -1000 S
+73 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+0 0 2
+>all_greet_prog 100~
+if isgood ($n)
+mpkill $n
+else
+if isevil ($n)
+cast fly $n
+else
+cast weaken $n
+endif
+~
+|
+
+#56060
+Nature Wickedness~
+The Nature of Wickedness~
+The Nature of Wickedness emanates Darkness.
+~
+{dThe darkness pulls you in and drowns you.{x
+~
+2|64 8|32|512|8192|524288|8388608 -1000 S
+76 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+if isgood ($n)
+mpkill $n
+else
+if isevil ($n)
+cast 'giant strength' $n
+cast haste $n
+cast fly $n
+cast shield $n
+mpoload 56072
+give rod $n
+else
+if rand(50)
+mpoload 56072
+give rod $n
+else
+mpkill $n
+endif
+~
+>death_prog 100~
+mpoload 56072
+~
+|
+
+#56061
+Inviting Dissuader~
+An Inviting Dissuader~
+An Inviting Dissuader waves you on and pushes you away.
+~
+It weaves in and out of the fog and trees making it impossible
+to see clearly.
+~
+2|64 8|32|128|65536|8388608 0 S
+70 0 0 0d0+0 0d0+0
+256 0
+0 0 0
+>all_greet_prog 100~
+if rand (50)
+mpkill $n
+else
+cast heal $n
+endif
+~
+|
+
+#56062
+Existing Being~
+An Existing Being~
+An Existing Being spins in the fog.
+~
+The fog blocks most of your vision.
+~
+2|64 8|32|128|65536|8388608 0 S
+71 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+if rand (50)
+mpkill $n
+else
+cast bless $n
+endif
+~
+|
+
+#56063
+Grotesque Beauty~
+A Grotesque Beauty~
+A Grotesque Beauty draws you in and repels you.
+~
+The fog largely masks your view.
+~
+64 8|32|128|65536|8388608 0 S
+72 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+if rand (50)
+mpkill $n
+else
+cast shield $n
+endif
+~
+|
+
+#56065
+Nothing~
+Nothing~
+Nothing.
+~
+Nothing.
+~
+2|64 8|32|128|65536|8388608 0 S
+73 0 0 0d0+0 0d0+0
+1|2|4|8|16|256 0
+0 0 0
+>all_greet_prog 100~
+if rand (50)
+mpkill $n
+else
+cast 'giant strength' $n
+endif
+~
+|
+
+#56064
+Balance All~
+The Balance of All~
+The Balance of All lives and dies, creates and destroys.
+~
+The allness and nothingness of the Balance is All.
+~
+2|64 8|32|128|65536|8388608 0 S
+76 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>all_greet_prog 100~
+if rand (50)
+mpkill $n
+else
+mpoload 56071
+give shaft $n
+endif
+~
+>death_prog 100~
+mpoload 56071
+~
+|
+
+#56069
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+who have made their way through (or got forever lost in) the Maze.
+~
+2|64 1 0 S
+36 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56081
+Minsax~
+Minsax~
+Minsax searches for a way out of the maze.
+~
+He looks as if he's been wandering around the Maze for a long time.
+~
+64 524288 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+mpecho Minsax seems to be talking to himself...
+say {r"Check out the maze", he says. "There could be treasure", he{x
+say {rsays. "I'm sure you'll get through in no time", he says. Well,{x
+say {rXedd you bastard, it's only been 2,439 years...{x
+emote kicks the wall of the maze.
+~
+|
+
+#56070
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+who have made their way through (or got forever lost in) the Maze.
+~
+2|64 1 0 S
+34 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56082
+Athesi~
+Athesi~
+Athesi peers at walls as if looking for a hidden door.
+~
+She looks surprisingly good for being trapped in the Maze for centuries.
+~
+64 16777216 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#56071
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+who have made their way through (or got forever lost in) the Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56083
+Boo Pug~
+Boo the Pug~
+Boo sniffs around, looking cute and acting stupid.
+~
+Someone seems to have thrown this Pug here a few million years ago. Boo seems
+happy as can be, though. Probably because he doesn't realize where he is.
+~
+4|64 256 0 S
+40 0 0 0d0+0 0d0+0
+32 0
+0 0 1
+
+#56072
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the 
+Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56084
+Kirgo~
+Kirgo~
+Kirgo peers each direction before going anywhere.
+~
+He looks as if he's hunting for something specific.
+~
+64 512 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#56073
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the 
+Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56085
+Ryan~
+Ryan~
+Ryan makes his way through the maze.
+~
+A bent young fellow in dark clothes and a grey cloak. He darts from shadow to 
+shadow not knowing that you are watching.
+~
+64 32768 0 S
+40 0 0 0d0+0 0d0+0
+128 0
+0 0 1
+
+#56074
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56086
+Malagrith~
+Malagrith~
+Malagrith searches for a way out.
+~
+You interrupt his meal of rotting meat and he looks angry.
+~
+32|64 8192 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#56075
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|32|64 1 0 S
+34 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56087
+Enkrin~
+Enkrin~
+Enkrin stumbles his way through the maze.
+~
+He looks shabby, run down, dressed in the same rags as everyone else.
+~
+64 0 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#56076
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|64 1 0 S
+34 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56077
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56088
+Frep~
+Frep~
+Frep bangs his head against the wall, apparently in frustration.
+~
+The blood running down his face makes it hard to make out his features. He
+seems to be wearing the same thing as everyone else, though.
+~
+64 0 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#56078
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|64 1 0 S
+36 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56079
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56089
+Belle~
+Belle~
+Belle weeps softly as she lurches through the maze.
+~
+She's attired in the same drab rags as the other people who are real.
+~
+64 128 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#56080
+Maze Dweller~
+a maze dweller~
+A Maze Dweller sits here, having given up hope.
+~
+Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
+of the beings who have made their way through (or got forever lost in) the
+Maze.
+~
+2|64 1 0 S
+35 0 0 0d0+0 0d0+0
+64|256 0
+0 0 0
+
+#56090
+Rommie~
+Rommie~
+Rommie asks you if you happen to know the way out.
+~
+She looks very calm for being lost in a maze for a millennium.
+~
+64 0 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#56092
+Sit Mob~
+Sit Mob~
+Sit Mob makes Annoyed rest.
+~
+Player walks in, mob jumps north, forces Annoyed to rest.
+~
+2|64|512|65536 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+mpat 56177 mpforce Annoyedthemob rest
+~
+|
+
+#56091
+Annoyedthemob~
+Annoyed~
+Annoyed looks rather demented.
+~
+He stares at you crazily and mutters something about the maze that you can't
+quite make out.
+~
+2|64 8|32|8192|8388608|16777216 0 S
+45 0 0 0d0+0 0d0+0
+16 0
+0 0 1
+>all_greet_prog 100~
+stand
+say {dA ViSiToR! fRoM tHe MaZe! LoOk TaHlIa!
+say {dHoW lOnG dO yOu ThInK tHiS oNe WiLl
+say {dBlEeD?{x
+mpkill $n
+if rand(25)
+say {dTaHlIa! KiLl!{x
+mpforce Tahlia mpkill $n
+else
+if rand(25)
+say {dGuT $m TaHlIa!
+mpforce Tahlia mpkill $n
+else
+if rand(25)
+mpecho {RTahlia lunges at your throat!{x
+mpforce Tahlia mpkill $n
+else
+mpecho Tahlia snarls at you!
+mpforce Tahlia mpkill $n
+endif
+~
+|
+
+#56093
+Tahlia dog~
+Tahlia~
+Tahlia bares her teeth at you.
+~
+Black and white with wicked looking white paws, this Border Collie looks to
+have been the recipient of some of Annoyed's experiments. It looks as if she
+could tear your arms off without even trying.
+~
+2|64 128 9 S
+45 0 0 0d0+0 0d0+0
+128 0
+0 0 2
+>all_greet_prog 100~
+mpecho {rTahlia drops a bloody ball from her jaws and pins it with her paws.{x
+~
+|
+
+#56094
+blow up mob BOOM~
+{YBOOM!{x~
+This mob 'blows up' the player or pushes them out if they're under 75.
+~
+See long desc.
+~
+2|64|512|65536 8|32|8388608 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 56063
+if level($n) > 69
+mpecho {GThe Destabilizer suddenly glows brightly.{x
+mpecho {GYou feel titanic forces building around you.{x
+mpecho {GYou fight the forces until...{x
+mpecho {RK{YAB{ROO{YM{x!
+mptransfer $n 56051
+mpat 56051 mpforce $n look
+else
+if carrying($n) == 56063
+if level($n) < 70
+mpecho {GThe Destabilizer suddenly glows brightly.
+mpecho {GYou feel titanic forces building around you.
+mpecho {GYou fight the forces until...
+mpecho {MYou can't withstand it anymore and are thrown back!{x
+mpforce $n west
+endif
+~
+|
+
+#56101
+Gleag innkeeper bar keep~
+The innkeeper Gleag~
+The innkeeper, Gleag, is here serving customers.
+~
+The innkeeper looks like your standard issue person who runs an inn. Expect
+for that weird twinkle in his eyes.	
+~
+2|32768 8|32|8388608 0 S
+950 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>all_greet_prog 100~
+if carrying($n) == 56069
+if carrying($n) == 56063
+say {gRemember- {rEast from the lab{g and make sure you
+say {rdon't have the Destabilizer in a container{g.
+say {gGood Luck.{x
+else
+say {gWelcome $n! Welcome to my inn!{x
+mpecho Gleag gestures around.
+say {gRather cozy, no? But, see...{x
+mpecho The inn keeper goes silent for a moment.
+say {gI have a problem $n. I was wondering...{x
+say {gYou think you could do me a favor?{x
+endif
+~
+>speech_prog 100 Yes~
+if level($n) < 75
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I don't think you're{x
+say {gpoweful enough to use it yet, but it's worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+else
+if level($n) > 74
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of it{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I think you're{x
+say {gpoweful enough to use it, worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+endif
+~
+>speech_prog 100 Yeah~
+if level($n) < 75
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I don't think you're{x
+say {gpoweful enough to use it yet, but it's worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+else
+if level($n) > 74
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of it{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I think you're{x
+say {gpoweful enough to use it, worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+endif
+~
+>speech_prog 100 Yes.~
+if level($n) < 75
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I don't think you're{x
+say {gpoweful enough to use it yet, but it's worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+else
+if level($n) > 74
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of it{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I think you're{x
+say {gpoweful enough to use it, worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+endif
+~
+>speech_prog 100 Yeah.~
+if level($n) < 75
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I don't think you're{x
+say {gpoweful enough to use it yet, but it's worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+else
+if level($n) > 74
+say {gThanks! I'd do it myself, but I gotta mind the bar.{x
+say {gYou see, there's a lunatic under the inn. A long time{x
+say {gago someone or something built this maze, see. A magic{x
+say {gmaze that preserves your life for as long as you're stuck{x
+say {gin it. Well, eventually some twisted psycho moved in at{x
+say {gthe end of it, used the people trapped in it for weird{x
+say {gexperiments. I came along and built my inn on top of it{x
+say {gthe maze to trap him there, keep him from hurting anyone{x
+say {gelse. I tried to get the people lost in the maze out, but{x
+say {gno-one can leave unless they find their own way out. So,{x
+say {gall I could do was trap the lunatic in his laboratory.{x
+say {gBut, people still wander into him sometimes and they{x
+say {gusually don't live to tell about it. I'm sick of it.{x
+mpecho The innkeeper reaches into his pocket and brings out a key.
+mpoload 56069 1
+give key $n
+say {gTake that and go down to the cellar and kill the bastard,{x
+say {gwould you? The cellar is just through the door down the{x
+say {ghall and to the north. I'd do it myself but, like I said,{x
+say {gI gotta mind the bar. If I leave the main inn he'd be{x
+say {gable to escape. Good luck.{x
+say {gOh! One more thing. Take this, too. I think you're{x
+say {gpoweful enough to use it, worth a shot.{x
+mpoload 56063 1
+give dest $n
+say {gThis will destroy the Machine Room he has down there.{x
+say {gThe problem is there's a repulsion effect as the forces{x
+say {gbuild. If you're not powerful enough to withstand them{x
+say {gyou'll just be thrown out of the room as the reactions{x
+say {gstart. And if you do withstand the pressure, there's no{x
+say {gtelling what'll happen exactly when it blows, though you{x
+say {gwont be hurt, the same forces that destroy the machines{x
+say {gprotect you. If you want to try to destroy his machine{x
+say {groom it lies {Reast{g of his lab through a {rsecret door{g.{x
+say {gAll you need to do to use the Destabilizer is have it on{x
+say {gyou and {rnot concealed in a container{g when you walk into{x
+say {gthe room.{x
+endif
+~
+|
+
+#56102
+Igec De Elt Raltov~
+Igec De Elt Raltov~
+Igec De Elt Raltov stands here ready with his service.
+~
+He's dressed in a casual manner and seems trustworthy.
+~
+2|32768|1048756 0 1000 S
+150 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#56103
+Friy Dlisle~
+Friy Dlisle~
+{W(Flour Aura){x Friy Dlisle proffers her delicacies at you.
+~
+She's covered in flour. So much so it radiates out from her every time she
+moves.
+~
+2|32768 0 0 S
+150 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#56104
+Kaugh Boum~
+Kaugh Boum~
+Kaugh Boum stand behind the counter mixing stuff that occasionally
+~
+It's hard to make out what he's wearing, as it's all covered in black marks
+from explosions and various tears probably from the same culprit.	
+~
+2|32768 0 -1000 S
+150 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#56105
+Nam Dlo Ey Man~
+Nam Dlo Ey~
+The extremely elderly man in the un-describably white robes heals here.
+~
+He looks very, very old and very, very white.
+~
+2|32768 0 1000 S
+200 0 0 0d0+0 0d0+0
+64 0
+0 0 1
+#0
+
+#OBJECTS
+#56064
+blazing sword~
+a blazing sword~
+A blazing sword blinds you with its radiance.~
+~
+5 1|1024|2048 1|8192
+~ ~ ~ 11~
+1 0 0
+A
+19 7
+A
+18 10
+
+#56065
+blazing breastplate~
+a blazing breastplate~
+A blazing breastplate shines here.~
+~
+9 1|2|1024|2048 1|8
+~ ~ ~ ~
+1 0 0
+A
+19 11
+
+#56051
+citadel key~
+a citadel key~
+A citadel key is here.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56066
+Light~
+{YLight{x~
+{YLight.{x~
+~
+5 1|1024|2048 8192
+~ ~ ~ 0~
+1 0 0
+A
+19 7
+A
+18 10
+
+#56067
+Light~
+{YLight{x~
+{YLight.{x~
+~
+9 1|1024|2048 8
+~ ~ ~ ~
+1 0 0
+A
+19 11
+
+#56052
+Flare Light~
+a flare of light~
+{Y.{x~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56053
+sparkle light~
+a sparkle of light~
+{Y.{x~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56068
+shaft light~
+a shaft of light~
+A shaft of light blinds you.~
+~
+5 1024|2048|134217728 1|131072
+~ ~ ~ 0~
+1 0 0
+A
+19 17
+A
+18 17
+A
+13 10
+
+#56074
+Purity~
+Purity~
+Purity~
+~
+5 1|2|64|256|1024|2048 1|8192
+~ ~ ~ 11~
+1 0 0
+A
+19 13
+A
+18 13
+
+#56073
+protection light~
+the protection of the light~
+The protection of the light has been lost.~
+~
+9 1|1024|2048|67108864 8
+~ ~ ~ ~
+1 0 0
+A
+19 10
+A
+18 20
+A
+32 1
+A
+27 1
+
+#56070
+light~
+a solid piece of {Ylight{x~
+A solid piece of {Ylight{x shines here.~
+~
+18 1 1
+~ ~ ~ ~
+1 0 0
+
+#56079
+darkness blade~
+a blade of darkness~
+A blade of darkness absorbs the light.~
+~
+5 16|512|2048 1|8192
+~ ~ ~ 2~
+1 0 0
+A
+19 5
+A
+18 30
+
+#56080
+cover darkness~
+the cover of darkness~
+A black patch of reality blots out the light.~
+~
+9 16|512|2048 1|8
+~ ~ ~ ~
+1 0 0
+A
+19 11
+
+#56054
+spot darkness~
+a spot of darkness~
+{d.{x~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56055
+spot darkness~
+a spot of darkness~
+{d.{x~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56081
+curved fang~
+sharp curved fangs~
+Some sharp curved fangs have been ripped out of the mouth of a snake.~
+~
+5 8|16|512|2048|16384|262144|16777216|67108864 1|8192
+~ ~ ~ 10~
+1 0 0
+A
+18 20
+
+#56082
+coils Pitch black~
+pitch black coils~
+Pitch black coils.~
+~
+9 16|512|2048|67108864 1024
+~ ~ ~ ~
+1 0 0
+A
+2 3
+A
+24 -30
+A
+23 -30
+
+#56056
+spot darkness~
+a spot of darkness~
+{d.{x~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56083
+darkness~
+{ddarkness{x~
+{dDarkness.{x~
+~
+5 16|512|2048 8192
+~ ~ ~ 2~
+1 0 0
+A
+19 5
+A
+18 30
+
+#56084
+darkness~
+{ddarkness{x~
+{dDarkness.{x~
+~
+9 16|512|2048 8
+~ ~ ~ ~
+1 0 0
+A
+19 11
+
+#56086
+shaft darkness~
+a shaft of darkness~
+A shaft of darkness blinds you.~
+~
+5 512|2048|134217728 1|131072
+~ ~ ~ 0~
+1 0 0
+A
+19 17
+A
+18 17
+A
+13 10
+
+#56087
+Hatred~
+Hatred~
+Hatred.~
+~
+5 2|64|256|512|2048 1|8192
+~ ~ ~ 11~
+1 0 0
+A
+19 13
+A
+18 13
+
+#56085
+caress darkness~
+the caress of the darkness~
+The caress of the darkness has been lost.~
+~
+9 512|2048 8
+~ ~ ~ ~
+1 0 0
+A
+19 10
+A
+18 20
+A
+1 10
+
+#56072
+rod darkness~
+a rod of {ddarkness{X~
+A rod of {ddarkness{x spins slowly in the air.~
+~
+18 2 1
+~ ~ ~ ~
+1 0 0
+
+#56088
+ethereal dagger~
+an ethereal dagger~
+An ethereal dagger flickers in and out of existence.~
+~
+5 2|512|1024 1|8192
+~ ~ ~ 3~
+1 0 0
+A
+19 4
+A
+18 20
+A
+5 5
+A
+3 3
+
+#56089
+shell of existence~
+a shell of existence~
+A shell of existence awaits to be filled.~
+~
+9 2|512|1024 1|8
+~ ~ ~ ~
+1 0 0
+A
+24 -50
+A
+23 -50
+A
+5 -2
+
+#56090
+Emptiness~
+Emptiness~
+Emptiness.~
+~
+5 2|512|1024 8192
+~ ~ ~ 3~
+1 0 0
+A
+19 4
+A
+18 20
+A
+5 5
+A
+3 3
+
+#56091
+Emptiness~
+Emptiness~
+Emptiness.~
+~
+9 2|512|1024 8
+~ ~ ~ ~
+1 0 0
+A
+24 -50
+A
+23 -50
+A
+5 -2
+
+#56092
+shaft existence~
+a shaft of existence~
+A shaft of existence exists.~
+~
+5 2|512|1024|134217728 1|131072
+~ ~ ~ 0~
+1 0 0
+A
+19 17
+A
+18 17
+A
+13 10
+
+#56093
+Existing~
+Existing~
+Existing.~
+~
+5 2|64|256|512|1024 1|8192
+~ ~ ~ 11~
+1 0 0
+A
+19 13
+A
+18 13
+
+#56094
+strength being~
+the strength of being~
+The strength of being has been lost.~
+~
+9 2|512|1024|67108864 8
+~ ~ ~ ~
+1 0 0
+A
+19 10
+A
+18 20
+A
+1 10
+
+#56071
+shaft fog~
+a shaft of fog~
+A shaft of fog drifts here.~
+~
+18 16777216 1
+~ ~ ~ ~
+1 0 0
+
+#56099
+helm planes~
+helm of the planes~
+The helm of the planes twirls around in space.~
+~
+9 1|2|33554432 1|16
+~ ~ ~ ~
+1 0 0
+A
+19 10
+A
+18 10
+
+#56100
+piece planes~
+a piece of the planes~
+A piece of the planes floats here.~
+~
+9 1|2 1|32768
+~ ~ ~ ~
+1 0 0
+A
+18 6
+A
+19 9
+
+#56057
+Tattered rags~
+tattered rags of clothing~
+Some tattered rags of clothing decay here.~
+~
+9 0 1|1024
+~ ~ ~ ~
+1 0 0
+
+#56058
+Poisoned rose~
+a {RRed{x Rose~
+A Poisoned Red Rose blooms here.~
+~
+5 2|16384 8192
+~ ~ ~ 10~
+1 0 0
+A
+19 5
+A
+18 5
+
+#56059
+red black velvet robe~
+a red and black velvet robe~
+A red and black velvet robe lies crumpled here.~
+~
+9 1 1|1024
+~ ~ ~ ~
+1 0 0
+A
+2 3
+A
+24 -20
+A
+23 -20
+
+#56097
+black silk headscarf~
+a black silk headscarf~
+A black silk headscarf~
+~
+9 2 1|16
+~ ~ ~ ~
+1 0 0
+A
+13 50
+
+#56098
+antediluvian stone~
+an antediluvian stone~
+An antediluvian stone sparkles here.~
+~
+9 1|2|64 1|16384
+~ ~ ~ ~
+1 0 0
+A
+19 5
+A
+18 5
+
+#56096
+Antediluvian Loam~
+antediluvian loam~
+Antediluvian loam lines the floor of the maze.~
+~
+28 64 1
+31~ sanctuary~ infravision~ fly~
+1 0 0
+
+#56111
+contraption black powder~
+a contraption~
+A contraption churning out black powder sits against one wall.~
+~
+15 2 0
+900~ 0~ -1~ ~
+1000 0 0
+
+#56112
+black powder~
+some black powder~
+Some black powder is here.~
+~
+34 0 1
+~ ~ ~ ~
+1 0 0
+
+#56113
+black powder~
+some black powder~
+Some black powder is here.~
+~
+34 0 1
+~ ~ ~ ~
+1 0 0
+
+#56114
+black powder~
+some black powder~
+Some black powder is here.~
+~
+34 0 1
+~ ~ ~ ~
+1 0 0
+
+#56077
+bloody steel axe~
+a bloody steel axe~
+A bloody steel axe drips blood.~
+~
+5 1|2 1|8192
+~ ~ ~ 13~
+1 0 0
+E
+bloody steel axe~
+A razor sharp weapon, fresh blood dripping from its blade, it emanates an 
+eerie power.
+~
+A
+19 8
+A
+18 5
+
+#56078
+tattered T-shirt Tshirt~
+A tattered T-shirt~
+A tattered T-shirt rots here.~
+~
+9 0 1|8
+~ ~ ~ ~
+1 0 0
+A
+13 20
+A
+12 50
+
+#56095
+blood soaked dog leash~
+a blood soaked dog leash~
+A blood soaked dog leash.~
+~
+9 16 1|16384
+~ ~ ~ ~
+1 0 0
+A
+18 5
+A
+19 1
+
+#56060
+White Paw~
+a {wwhite{x paw~
+A {Wwhite{x paw has been severed from Tahlia!~
+~
+5 1|67108864 8192
+~ ~ ~ 14~
+1 0 0
+A
+19 2
+A
+17 -50
+
+#56061
+White Paw~
+a {wwhite{x paw~
+A {Wwhite{x paw has been severed from Tahlia!~
+~
+5 1|67108864 8192
+~ ~ ~ 14~
+1 0 0
+A
+18 10
+A
+24 -10
+
+#56075
+red dog collar~
+a {rred{x dog collar~
+A red dog collar rests here.~
+~
+9 2 1|4
+~ ~ ~ ~
+1 0 0
+A
+19 3
+
+#56076
+bloody ball~
+a bloody ball~
+A bloody ball rolls across the ground.~
+~
+13 0 1|16384
+~ ~ ~ ~
+1 0 0
+A
+18 20
+
+#56062
+mangled corpse~
+a mangled corpse~
+The mangled corpse of someone from the maze that Tahlia butchered.~
+~
+13 0 1
+~ ~ ~ ~
+120 0 0
+
+#56110
+twinkle~
+a twinkle in his eye~
+twinkle~
+~
+9 67108864 16
+~ ~ ~ ~
+1 0 0
+A
+19 500
+
+#56069
+scuffed key~
+a scuffed key~
+A key sticks out from the ground.~
+~
+18 0 1
+~ ~ ~ ~
+1 0 0
+
+#56063
+Destabilizer~
+a Destabilizer~
+A Destabilizer glitters in the light.~
+~
+8 1|2 1
+~ ~ ~ ~
+1 0 0
+
+#56109
+casual clothing~
+casual clothing~
+Casual clothing~
+~
+9 67108864 8
+~ ~ ~ ~
+1 0 0
+A
+19 500
+
+#56108
+flour covered apron~
+{W(Flour Aura){x an apron~
+Apron~
+~
+9 67108864 1024
+~ ~ ~ ~
+1 0 0
+A
+19 500
+
+#56107
+blackened robe~
+{d(Blackened){x a blackened robe~
+A blackened robe.~
+~
+9 67108864 8
+~ ~ ~ ~
+1 0 0
+A
+19 500
+
+#56101
+magically enhanced water~
+magically enhanced water~
+Magically enhanced water has magically been dropped here.~
+~
+17 0 1|16384
+9~ 9~ 7~ -1~
+1 0 0
+
+#56102
+wiggling meat~
+wiggling meat~
+Some wiggling meat is here.~
+~
+19 0 1|16384
+20~ ~ ~ -1~
+1 0 0
+
+#56103
+congealed liquid~
+congealed liquid~
+Congealed liquid has been spilled here.~
+~
+17 0 1|16384
+9~ 9~ 6~ 0~
+1 0 0
+
+#56104
+paint of potions~
+paint of potions~
+Some paint of potions has been smeared here.~
+~
+28 0 1|16384
+55~ protection~ displacement~ detect sneak~
+1 0 0
+
+#56105
+friendly looking concoction~
+a friendly looking concoction~
+A friendly looking concoction begs you to drink it.~
+~
+10 1|2|16|64 1|16384
+100~ disintegrate~ disintegrate~ disintegrate~
+1 0 0
+
+#56106
+really white robes~
+some really {wwhite robes{x~
+Some really {wwhite robes{x have been tossed here.~
+~
+9 256|33554432|67108864 1024
+~ ~ ~ ~
+1 0 0
+A
+19 500
+A
+25 1
+#0
+
+#ROOMS
+#56051
+Citadel of Aureola~
+You materialize some distance from a citadel that appears to be surrounded in 
+a spectacular light. It sits atop a massive mountain that you yourself now 
+stand upon.
+~
+0 8192 5
+D 4
+~
+~
+0 -1 56052
+E
+mountain~
+It's rather impressive. The light from the citadel bathes it all in a golden
+color that takes your breath away.
+~
+S
+
+#56052
+Entrance to the Citadel~
+After a short climb you come to the citadel itself. The light here is nearly
+blinding and because of this you can barely make out the... guard you guess it
+must be.
+~
+0 8192|262144 5
+D 4
+~
+~
+8 56051 56053
+D 5
+~
+~
+0 -1 56051
+S
+
+#56053
+Inside the Citadel~
+The light makes it hard to see any detail of this place, but it seems to be
+simple yet grand in a way that's hard to describe.
+~
+0 8192|262144 0
+D 0
+~
+~
+0 -1 56055
+D 5
+~
+~
+0 -1 56052
+S
+
+#56054
+Room in the Citadel~
+The room is splendid in its glory and elegant in its simplicity. It appears to
+be used to house the rare beings who are granted the privilege of witnessing
+the Light.
+~
+0 8192|262144 0
+D 1
+~
+~
+0 -1 56055
+E
+room~
+It truly is blinding. So much so you can not make anything out.
+~
+S
+
+#56055
+Hallway in the Citadel~
+As you gaze upon the hallway the simple purity and might of this place fills
+your heart. You suddenly feel as if you are a rare occurrence in this place, a
+being walking among the Light. The hallway ends in a dazzling stairway that
+leads upwards.
+~
+0 8192|262144 0
+D 2
+~
+~
+0 -1 56053
+D 1
+~
+~
+0 -1 56056
+D 3
+~
+~
+0 -1 56054
+D 4
+~
+~
+8 56052 56058
+S
+
+#56056
+Room in the Citadel~
+The room is splendid in its glory and elegant in its simplicity. It appears to
+be used to house the rare beings who are granted the privilege of witnessing
+the Light.
+~
+0 8192|262144 0
+D 3
+~
+~
+0 -1 56055
+E
+room~
+It truly is blinding. So much so you can not make anything out.
+~
+S
+
+#56057
+Blinding light~
+As you step into this room you are blinded by the light as it pours in through
+the window, completely obliterating your vision. It is insanely bright and the
+burning is worse than in the rest of the place.	
+~
+0 8192|262144 0
+D 1
+~
+~
+0 -1 56058
+S
+
+#56058
+Upper hallway~
+The hallway pulses with the brilliant light and leads to more strange and
+beautiful rooms in each direction.
+~
+0 8192|262144 0
+D 0
+~
+~
+0 -1 56061
+D 1
+~
+~
+0 -1 56059
+D 3
+~
+~
+0 -1 56057
+D 5
+~
+~
+0 -1 56055
+S
+
+#56059
+Blinding light~
+As you step into this room you are blinded by the light as it pours in through 
+the window, completely obliterating your vision. It is insanely bright and the 
+burning is worse than in the rest of the place.
+~
+0 8192|262144 0
+D 3
+~
+~
+0 -1 56058
+S
+
+#56060
+Bend~
+The hallway bends here and leads onwards towards a sense of power and pure
+righteousness.
+~
+0 8192|262144 0
+D 0
+~
+~
+0 -1 56063
+D 1
+~
+~
+0 -1 56061
+S
+
+#56061
+Upper hallway in the Citadel~
+The hallway runs east and west from this point. You feel the sense of
+dread and wonder increase as you gaze down each direction...
+~
+0 8192|262144 0
+D 2
+~
+~
+0 -1 56058
+D 1
+~
+~
+0 -1 56062
+D 3
+~
+~
+0 -1 56060
+S
+
+#56062
+Bend~
+The hallway bends to the north here and as you make the turn you are struck
+with the sudden feeling of...power.
+~
+0 8192|262144 0
+D 0
+~
+~
+0 -1 56065
+D 3
+~
+~
+0 -1 56061
+S
+
+#56063
+Entrance to the throne~
+The door to the east seems to be radiating light! After a moment you realize
+that the light is in fact coming from behind the door.
+~
+0 8192|262144 0
+D 2
+~
+~
+0 -1 56060
+D 1
+~
+~
+8 56053 56064
+E
+door~
+Light pours around its edges, giving it the appearance it is glowing even
+brighter than the rest of the citadel.
+~
+S
+
+#56064
+Seat of Power~
+The very fabric of reality seems to be ablaze. The pure light courses
+throughout the room and what feels like into your very soul.
+~
+0 8192|262144 0
+D 0
+~
+~
+8 56070 56096
+D 1
+~
+~
+0 -1 56065
+D 3
+~
+~
+0 -1 56063
+S
+
+#56065
+Entrance to throne~
+The door to the west seems to be radiating light! After a moment you realize
+that the light is in fact coming from behind the door.
+~
+0 8192|262144 0
+D 2
+~
+~
+0 -1 56062
+D 3
+~
+~
+8 56053 56064
+E
+door~
+Light pours around its edges, give it the appearance it is glowing even
+brighter than the rest of the citadel.
+~
+S
+
+#56066
+Alkali of Tenebrious~
+You appear upon a desolate plateau. It feels as if the air is freezing about
+you. Looking down off the edge you gaze down into the darkness of an ocean and
+it seems to pull at you.
+~
+0 8192 4
+D 5
+~
+~
+0 -1 56067
+S
+
+#56067
+Entering the Alkali~
+You plunge into the dark water and almost pass out from the shocking cold. The
+blackness is almost complete. You feel the life draining out of you.
+~
+0 1|8192|131072 6
+D 4
+~
+~
+0 -1 56066
+D 5
+~
+~
+0 -1 56068
+S
+
+#56068
+Into the darkness~
+It is totally pitch black. The water seems to be pulling the life from you as
+it presses in. You can see nothing but the darkness that could very well be
+your grave.
+~
+0 1|8192|131072 6
+D 0
+~
+~
+0 -1 56069
+S
+
+#56069
+In the grip of darkness~
+You move farther into the darkness and deeper into the grip of the biting
+cold.
+~
+0 1|8192|131072 6
+D 2
+~
+~
+0 -1 56068
+D 5
+~
+~
+0 -1 56071
+S
+
+#56070
+An underwater cave~
+You sense rather than see that the way opens up into a large cave. You stare
+into the nothingness but can't make anything out.
+~
+0 1|8192|131072 6
+D 1
+~
+~
+0 -1 56071
+S
+
+#56071
+The darkness intensifies~
+Unbelievably the darkness seems to deepen. The cold has gone beyond numbing
+and you feel frozen to your core.
+~
+0 1|8192|131072 6
+D 0
+~
+~
+0 -1 56073
+D 2
+~
+~
+0 -1 56069
+D 3
+~
+~
+0 -1 56070
+S
+
+#56072
+The current rushes on~
+You are pulled along the current into the awaiting darkness. It feels as if
+it is trying to crush the life out of you.
+~
+0 1|8192|131072 6
+D 0
+~
+~
+0 -1 56076
+D 1
+~
+~
+0 -1 56073
+S
+
+#56073
+A swirling current~
+The current swirls around the darkness, twisting you around in the blackness
+so that you lose all sense of direction.
+~
+0 1|8192|131072 6
+D 0
+~
+~
+0 -1 56075
+D 2
+~
+~
+0 -1 56071
+D 1
+~
+~
+0 -1 56074
+D 3
+~
+~
+0 -1 56072
+S
+
+#56074
+The current rushes on~
+You are pulled farther into the darkness and deeper into the crushing waters.
+~
+0 1|8192|131072 6
+D 0
+~
+~
+0 -1 56078
+D 3
+~
+~
+0 -1 56073
+S
+
+#56075
+Wall of a reef~
+You slam into a wall that looms out of the darkness. Your senses reel as you
+spin through the darkness and you wish for just a glimmer of light.	
+~
+0 1|8192|131072 6
+D 2
+~
+~
+0 -1 56073
+S
+
+#56076
+Current ends~
+The current suddenly lets you go and you sense something...near.
+~
+0 1|8192|131072 6
+D 2
+~
+~
+0 -1 56072
+D 1
+~
+~
+0 -1 56077
+S
+
+#56077
+A Hole Into Darkness~
+A hole opens up here, leading you don't know where. It seems to be pulling at
+you, slightly tugging at you to enter the blackest darkness yet.
+~
+0 1|8192|131072 6
+D 1
+~
+~
+0 -1 56078
+D 3
+~
+~
+0 -1 56076
+D 5
+~
+~
+8 56054 56079
+S
+
+#56078
+Current ends~
+The current suddenly lets you go and you sense something...near.
+~
+0 1|8192|131072 6
+D 2
+~
+~
+0 -1 56074
+D 3
+~
+~
+0 -1 56077
+S
+
+#56079
+Pitch black hole~
+The darkness is all here. You must have fallen into the blackest void of all.
+You can not imagine light ever have been here, nor ever coming.
+~
+0 1|8192|131072 6
+D 4
+~
+~
+0 -1 56077
+D 5
+~
+~
+8 56055 56080
+S
+
+#56080
+Hole widens~
+The hole widens here. You think. The darkness makes it impossible to tell for
+sure.
+~
+0 1|8192|131072 6
+D 4
+~
+~
+0 -1 56079
+D 5
+~
+~
+8 56056 56099
+S
+
+#56099
+Chamber of {d|||||||||||{x~
+The darkness is totally beyond your comprehension now. The water tears at
+your being and you feel your soul cry out in pain.
+~
+0 1|8192|131072 6
+D 0
+~
+~
+8 56072 56097
+D 4
+~
+~
+0 -1 56080
+S
+
+#56081
+Holt of Penumbra~
+A gray haze floats among the close set trees that rise up ahead of you. It
+curls around the trunk of the trees and waves lazily in the air as if
+searching for something.
+~
+0 8192 2
+D 0
+~
+~
+0 -1 56082
+S
+
+#56082
+Edge of the Holt~
+You step up to the edge of the haze and trees and try to peer in. All you can
+make out is more haze and trees. Exciting, no?
+~
+0 8192 2
+D 0
+~
+~
+0 -1 56083
+D 2
+~
+~
+0 -1 56081
+S
+
+#56083
+Trees in the haze~
+The haze and trees surround you and you feel lost and alone. Try as you might
+to get a sense of direction you stumble onward as lost as ever.
+~
+0 8192 3
+D 0
+You see a pile of leaves.
+~
+~
+0 -1 56086
+D 1
+You see more trees.
+~
+~
+0 -1 56084
+S
+
+#56084
+Among the trees~
+The haze and trees surround you and you feel lost and alone. Try as you might
+to get a sense of direction you stumble onward as lost as ever.	
+~
+0 8192 3
+D 0
+You see misted trees ahead.
+~
+~
+0 -1 56087
+D 2
+The edge of the holt is ahead.
+~
+~
+0 -1 56082
+D 1
+A section of the holt is ahead.
+~
+~
+0 -1 56085
+D 3
+Some trees are ahead.
+~
+~
+0 -1 56083
+S
+
+#56085
+Section of the Holt~
+The haze and trees surround you and you feel lost and alone. Try as you might
+to get a sense of direction you stumble onward as lost as ever.
+~
+0 8192 3
+D 0
+An open clearing is ahead.
+~
+~
+0 -1 56088
+D 3
+Some trees are ahead.
+~
+~
+0 -1 56084
+S
+
+#56086
+Pile of leaves~
+The haze and trees surround you and you feel lost and alone. Try as you might
+to get a sense of direction you stumble onward as lost as ever.
+~
+0 8192 3
+D 0
+A magnificent tree is ahead.
+~
+~
+0 -1 56089
+D 2
+Some trees in the haze are ahead.
+~
+~
+0 -1 56083
+D 1
+Some misted trees are ahead.
+~
+~
+0 -1 56087
+S
+
+#56087
+Misted trees~
+The haze and trees surround you and you feel lost and alone. Try as you might
+to get a sense of direction you stumble onward as lost as ever.
+~
+0 8192 3
+D 0
+A mediocre tree lies ahead.
+~
+~
+0 -1 56090
+D 2
+Some trees are ahead.
+~
+~
+0 -1 56084
+D 1
+An open clearing is head.
+~
+~
+0 -1 56088
+D 3
+A pile of leaves is ahead.
+~
+~
+0 -1 56086
+S
+
+#56088
+An open clearing~
+The trees are absent here, but the haze seems to be as thick as ever and you
+are therefore still very, very lost.	
+~
+0 8192 3
+D 0
+A blighted tree is ahead.
+~
+~
+0 -1 56091
+D 2
+A section of the holt is ahead.
+~
+~
+0 -1 56085
+D 3
+Some misted trees are ahead.
+~
+~
+0 -1 56087
+S
+
+#56089
+Magnificent tree~
+A magnificent tree rises up here, dominating your view. It rises up
+majestically, as if trying to push through the haze and into the heavens
+above.
+~
+0 8192 3
+D 0
+A hollow is ahead.
+~
+~
+0 -1 56092
+D 2
+A pile of leaves is ahead.
+~
+~
+0 -1 56086
+S
+
+#56090
+Mediocre tree~
+A regular, non impressive, yet not pathetic looking tree quietly grows here.
+~
+0 8192 3
+D 0
+n
+A hollow is ahead.
+~
+~
+0 -1 56093
+D 2
+Misted trees are ahead.
+~
+~
+0 -1 56087
+S
+
+#56091
+Blighted tree~
+A stunted, twisted tree curls in on itself and slowly seeps sap here. You can
+almost feel it dying as its blighted form rots before your eyes.
+~
+0 8192 3
+D 0
+A hollow is ahead.
+~
+~
+0 -1 56094
+D 2
+A clearing is ahead.
+~
+~
+0 -1 56088
+S
+
+#56092
+Hollow in the Holt~
+An opening appears out of the trees and haze, forming what can only be
+described as a...hollow...in the surrounding press of trees and haze.	
+~
+0 8192 3
+D 2
+A magnificent tree is ahead.
+~
+~
+0 -1 56089
+D 1
+A hollow is ahead.
+~
+~
+0 -1 56093
+S
+
+#56093
+Hollow in the Holt~
+An opening appears out of the trees and haze, forming what can only be
+described as a...hollow...in the surrounding press of trees and haze.
+~
+0 8192 3
+D 0
+A bright darkness is ahead.
+~
+~
+0 -1 56095
+D 2
+A mediocre tree is ahead.
+~
+~
+0 -1 56090
+D 1
+A hollow is ahead.
+~
+~
+0 -1 56094
+D 3
+A hollow is ahead.
+~
+~
+0 -1 56092
+S
+
+#56094
+Hollow in the Holt~
+An opening appears out of the trees and haze, forming what can only be
+described as a...hollow...in the surrounding press of trees and haze.
+~
+0 8192 3
+D 2
+A blighted tree is ahead.
+~
+~
+0 -1 56091
+D 3
+A hollow is ahead.
+~
+~
+0 -1 56093
+S
+
+#56095
+Brightest Darkness~
+Light and Dark seem to collide here creating the gray haze that spreads
+throughout the holt. You can not see this, yet you know it to be true
+none the less.
+~
+0 8192 3
+D 0
+~
+~
+8 56071 56098
+D 2
+~
+~
+0 -1 56093
+S
+
+#56096
+Good Transition~
+You step into a blindingly bright room with a murky gray door in the north
+wall.
+~
+0 8192|262144 0
+D 0
+~
+~
+1 -1 56081
+E
+door~
+It's murky gray and somehow feels...different than your surroundings.
+~
+S
+
+#56097
+Evil Transition~
+The Darkness is absolute immediately around you, but up ahead there seems to
+be a thinning of it. In fact, it looks as if there's a door made up of a
+soothing shift of soft colors. When you get closer you make out that it is
+indeed such a door.
+~
+0 8192|131072 0
+D 0
+~
+~
+1 -1 56179
+E
+door~
+It looks different than the places you've come through, yet somehow the same
+as well.
+~
+S
+
+#56098
+Neutral transition~
+The fog forms a solid wall in front of you, with what looks like a door with a
+keyhole in it in the middle. The door appears to be pitch-black and feels...
+darker than your surroundings.
+~
+0 8192 0
+D 0
+~
+~
+1 -1 56066
+E
+door~
+It's the blackest color you've ever seen and it's cold to the touch.
+~
+S
+
+#56179
+Outside the Planes~
+You are outside the planes. You feel forces flying freely to many
+destinations. Around you is a dazzling display of color and sound. Total
+darkness and blinding light mix to produce sights you can barely visualize.
+It's quite staggering.
+~
+0 0 0
+S
+
+#56101
+Outside the Inn~
+Before you stands a sturdy and most impressive looking inn. The weird 
+{ymagic{x field that seems to surround it doesn't worry you a bit. The Anon 
+Circuit Road is to the west.
+~
+0 4 2
+D 0
+~
+~
+0 -1 56102
+D 3
+~
+~
+0 -1 31027
+S
+
+#56102
+Foyer of the Inn~
+You take your first step into the inn and find yourself in the midst of what
+can only be described as bizarre. People talking in peace, people brawling,
+musicians all assault your senses. Luckily the inn seems to be quieter farther
+back into it to the north. Stairs to shops on the second floor are to the west
+and the bar is to the east.
+~
+0 8 0
+D 0
+~
+~
+0 -1 56105
+D 2
+~
+~
+0 -1 56101
+D 1
+~
+~
+0 -1 56104
+D 3
+~
+~
+0 -1 56103
+S
+
+#56103
+Stairs to the second floor of the Inn~
+The simple stairway leads up to the stores and services that are located on
+the second floor. You occasionally hear curses and explosions.	
+~
+0 8 0
+D 1
+~
+~
+0 -1 56102
+D 4
+~
+~
+0 -1 56106
+S
+
+#56104
+The bar~
+The bar of the inn is located here as is the innkeeper himself tending it.
+Both seem to have been here for longer than you can possibly imagine. The
+bar is shined to a high polish.
+~
+0 8 0
+D 3
+~
+~
+0 -1 56102
+S
+
+#56105
+Corridor in the Inn~
+This corridor of the inn leads to a door. The door looks ancient, even older
+than the inn. It appears to be quite sturdy, however.	
+~
+0 4|8 0
+D 0
+~
+~
+8 56069 56114
+D 2
+~
+~
+0 -1 56102
+S
+
+#56106
+Top of the Inn stairs~
+The stairs open up into the corridor of the second floor. You smell something
+cooking and feel another explosion run through the walls.
+~
+0 8 0
+D 1
+~
+~
+0 -1 56107
+D 5
+~
+~
+0 -1 56103
+S
+
+#56107
+Second floor corridor~
+The second floor corridor runs along here and connects to all the shops on
+the upper floor. The stairs back down to the first floor are to the west.
+~
+0 8 0
+D 0
+~
+~
+0 -1 56108
+D 3
+~
+~
+0 -1 56106
+S
+
+#56108
+Second floor corridor~
+The second floor corridor runs along here and connects to all the shops on the
+upper floor. To the east is F&D's Place and to the west is Deciphering Is Us.
+~
+0 8 0
+D 0
+~
+~
+0 -1 56109
+D 2
+~
+~
+0 -1 56107
+D 1
+~
+~
+0 -1 56110
+D 3
+~
+~
+0 -1 56111
+S
+
+#56109
+Second floor corridor~
+The second floor corridor runs along here and connects to all the shops on the
+upper floor. To the east is Bubble and Trouble, and to the west is Thee Ye
+Olde Healer.
+~
+0 8 0
+D 2
+~
+~
+0 -1 56108
+D 1
+~
+~
+0 -1 56112
+D 3
+~
+~
+0 -1 56113
+S
+
+#56110
+F&D place~
+This shop seems to sell items of sustenance. The pleasant aromas and frosty
+liquids certainly seem like they'd provide sustenance. Or they could quite
+possibly kill you, but it looks like it'll taste good doing it.
+~
+0 8 0
+D 3
+~
+~
+0 -1 56108
+S
+
+#56111
+Deciphering Is Us~
+This man seems to run an identify shop.	You get this impression since he
+starts digging through your items pronouncing must things as "Junk" and
+"Garbage". There is a {ysign{x on the wall that explains how to get him to
+identify a specific item. For a small fee, of course.
+~
+0 8 0
+D 1
+~
+~
+0 -1 56108
+E
+sign~
+To identify an item simply use the following syntax:
+{gidentify <item>{x
+Where <item> is the name of an item in your inventory.
+~
+S
+
+#56112
+Bubble and Trouble~
+Shelves full of things that seem to be exploding in their bottles and other
+things that you swear are trying to ooze out of their jars and strangle you
+are here.	
+~
+0 8 0
+D 3
+~
+~
+0 -1 56109
+S
+
+#56113
+Thee Ye Olde Healer~
+A very ancient man sits here in his mind-bogglingly white robes and performs
+the age old task of being a healer. He's very close to retirement.
+~
+0 8 0
+D 1
+~
+~
+0 -1 56109
+S
+
+#56114
+The Antediluvian Maze~
+You step through the door and appear in an ancient maze. It stretches out into
+the darkness and by the light of the torches on the walls you can make out
+several passageways leading off into each direction ahead. There doesn't
+appear to be any sign of life.
+~
+0 1|4|8 0
+D 0
+~
+~
+0 -1 56118
+D 2
+~
+~
+1 -1 56105
+S
+
+#56115
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56124
+D 1
+~
+~
+0 -1 56116
+S
+
+#56116
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56117
+D 3
+~
+~
+0 -1 56115
+S
+
+#56117
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56126
+D 1
+~
+~
+0 -1 56118
+D 3
+~
+~
+0 -1 56116
+S
+
+#56118
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56127
+D 2
+~
+~
+0 -1 56114
+D 1
+~
+~
+0 -1 56119
+D 3
+~
+~
+0 -1 56117
+S
+
+#56119
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56128
+D 1
+~
+~
+0 -1 56120
+D 3
+~
+~
+0 -1 56118
+S
+
+#56120
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56121
+D 3
+~
+~
+0 -1 56119
+S
+
+#56121
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56122
+D 3
+~
+~
+0 -1 56120
+S
+
+#56122
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling. You notice the water seems to be seeping into the south wall... 
+odd.
+~
+0 1|8 0
+D 2
+~
+~
+10 -1 56180
+D 1
+~
+~
+0 -1 56123
+D 3
+~
+~
+0 -1 56121
+S
+
+#56180
+A hidden room~
+As you walk into the wall you pass right through it and into this room. You
+spot a rock of some kind on the ground.
+~
+0 8 0
+D 0
+~
+~
+0 -1 56122
+S
+
+#56123
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 3
+~
+~
+0 -1 56122
+S
+
+#56124
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56115
+S
+
+#56125
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56126
+S
+
+#56126
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56117
+D 1
+~
+~
+0 -1 56127
+D 3
+~
+~
+0 -1 56125
+S
+
+#56127
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56136
+D 2
+~
+~
+0 -1 56118
+D 3
+~
+~
+0 -1 56126
+S
+
+#56128
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56119
+D 1
+~
+~
+0 -1 56129
+S
+
+#56129
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56138
+D 3
+~
+~
+0 -1 56128
+S
+
+#56130
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56139
+S
+
+#56131
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56140
+D 1
+~
+~
+0 -1 56132
+S
+
+#56132
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56141
+D 3
+~
+~
+0 -1 56131
+S
+
+#56133
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56142
+D 1
+~
+~
+0 -1 56134
+S
+
+#56134
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56135
+D 3
+~
+~
+0 -1 56133
+S
+
+#56135
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56144
+D 3
+~
+~
+0 -1 56134
+S
+
+#56136
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56145
+D 2
+~
+~
+0 -1 56127
+D 1
+~
+~
+0 -1 56137
+S
+
+#56137
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 3
+~
+~
+0 -1 56136
+S
+
+#56138
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56147
+D 2
+~
+~
+0 -1 56129
+S
+
+#56139
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56148
+D 2
+~
+~
+0 -1 56130
+D 1
+~
+~
+0 -1 56140
+S
+
+#56140
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56149
+D 2
+~
+~
+0 -1 56131
+D 3
+~
+~
+0 -1 56139
+S
+
+#56141
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56150
+D 2
+~
+~
+0 -1 56132
+S
+
+#56142
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56151
+D 2
+~
+~
+0 -1 56133
+S
+
+#56143
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56144
+S
+
+#56144
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56153
+D 2
+~
+~
+0 -1 56135
+D 3
+~
+~
+0 -1 56143
+S
+
+#56145
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56136
+S
+
+#56146
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56155
+D 1
+~
+~
+0 -1 56147
+S
+
+#56147
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56138
+D 3
+~
+~
+0 -1 56146
+S
+
+#56148
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56139
+S
+
+#56149
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56158
+D 2
+~
+~
+0 -1 56140
+S
+
+#56150
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56159
+D 2
+~
+~
+0 -1 56141
+S
+
+#56151
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56142
+D 1
+~
+~
+0 -1 56152
+S
+
+#56152
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56161
+D 3
+~
+~
+0 -1 56151
+S
+
+#56153
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56144
+D 1
+~
+~
+0 -1 56154
+S
+
+#56154
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56155
+D 3
+~
+~
+0 -1 56153
+S
+
+#56155
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56146
+D 1
+~
+~
+0 -1 56156
+D 3
+~
+~
+0 -1 56154
+S
+
+#56156
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 3
+~
+~
+0 -1 56155
+S
+
+#56157
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56166
+D 1
+~
+~
+0 -1 56158
+S
+
+#56158
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56149
+D 3
+~
+~
+0 -1 56157
+S
+
+#56159
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56168
+D 2
+~
+~
+0 -1 56150
+S
+
+#56160
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56161
+S
+
+#56161
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56152
+D 1
+~
+~
+0 -1 56162
+D 3
+~
+~
+0 -1 56160
+S
+
+#56162
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56163
+D 3
+~
+~
+0 -1 56161
+S
+
+#56163
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56164
+D 3
+~
+~
+0 -1 56162
+S
+
+#56164
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56165
+D 3
+~
+~
+0 -1 56163
+S
+
+#56165
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 1
+~
+~
+0 -1 56166
+D 3
+~
+~
+0 -1 56164
+S
+
+#56166
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56157
+D 3
+~
+~
+0 -1 56165
+S
+
+#56167
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56175
+D 1
+~
+~
+0 -1 56168
+S
+
+#56168
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56159
+D 1
+~
+~
+0 -1 56169
+D 3
+~
+~
+0 -1 56167
+S
+
+#56169
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 2
+~
+~
+0 -1 56170
+D 3
+~
+~
+0 -1 56168
+S
+
+#56170
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56169
+D 2
+~
+~
+0 -1 56171
+S
+
+#56171
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56170
+D 2
+~
+~
+0 -1 56172
+S
+
+#56172
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56171
+D 2
+~
+~
+0 -1 56173
+S
+
+#56173
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56172
+D 2
+~
+~
+0 -1 56174
+S
+
+#56174
+The Antediluvian Maze~
+The maze's blank walls reveal nothing about which direction you should go.
+Occasionally you hear the sound of dripping water; it seems to be seeping from
+the ceiling.
+~
+0 1|8 0
+D 0
+~
+~
+0 -1 56173
+S
+
+#56175
+The Antediluvian Maze Exit~
+Finally. You have found the exit to the maze. Ahead you see a door with lights
+flashing behind it and you smell a rather unique odor.
+~
+0 4|8 0
+D 0
+~
+~
+0 -1 56176
+D 2
+~
+~
+0 -1 56167
+S
+
+#56176
+Before A Door (At The End of the Maze)~
+You stand before the door at the end of the maze. You hear things boiling and
+exploding on the other side. Colored light flares around the edges of the door
+on occasion and the smell of some kind of powder you've smelled before is
+stronger now.
+~
+0 8 0
+D 0
+~
+~
+1 -1 56177
+D 2
+~
+~
+0 -1 56175
+S
+
+#56177
+Annoyed's Laboratory~
+This is some kind of laboratory apparently. Devices and parts are piled all
+over the place, cages of creatures sit on tables and Annoyed himself sits
+hunched over something his dog looks to have recently killed, studying it.
+When he hears you enter he rises up and turns to you.
+~
+0 8 0
+D 2
+~
+~
+1 -1 56176
+D 1
+~
+~
+11 -1 56178
+S
+
+#56178
+{RMachine Room{x~
+Annoyed's vile machines line these walls. All kinds of sick devices that you
+thankfully can't name hang from the ceiling. Dried and fresh blood seems to be
+everywhere and there appear to be dead bodies of various creatures and people
+in a number of the vile things!
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 56177
+S
+#0
+
+#RESETS
+D 0 56052 4 2                   lock up in Entrance to the Citadel
+D 0 56055 4 2                   lock up in Hallway in the Citadel
+D 0 56063 1 2                   lock east in Entrance to the throne
+D 0 56064 0 2                   lock north in Seat of Power
+D 0 56065 3 2                   lock west in Entrance to throne
+D 0 56077 5 2                   lock down in A Hole Into Darkness
+D 0 56079 5 2                   lock down in Pitch black hole
+D 0 56080 5 2                   lock down in Hole widens
+D 0 56099 0 2                   lock north in Chamber of {d|||||||||||{x
+R 0 56083 4                     randomise exits in Trees in the haze
+R 0 56084 4                     randomise exits in Among the trees
+R 0 56085 4                     randomise exits in Section of the Holt
+R 0 56086 4                     randomise exits in Pile of leaves
+R 0 56087 4                     randomise exits in Misted trees
+R 0 56088 4                     randomise exits in An open clearing
+R 0 56089 4                     randomise exits in Magnificent tree
+R 0 56090 4                     randomise exits in Mediocre tree
+R 0 56091 4                     randomise exits in Blighted tree
+R 0 56092 4                     randomise exits in Hollow in the Holt
+R 0 56093 4                     randomise exits in Hollow in the Holt
+R 0 56094 4                     randomise exits in Hollow in the Holt
+D 0 56095 0 2                   lock north in Brightest Darkness
+D 0 56096 0 1                   close north in Good Transition
+D 0 56097 0 1                   close north in Evil Transition
+D 0 56098 0 1                   close north in Neutral transition
+D 0 56105 0 2                   lock north in Corridor in the Inn
+D 0 56114 2 1                   close south in The Antediluvian Maze
+D 0 56122 2 1                   close south in The Antediluvian Maze
+D 0 56176 0 1                   close north in Before A Door (At The End of the Maze)
+D 0 56177 2 1                   close south in Annoyed's Laboratory
+D 0 56177 1 1                   close east in Annoyed's Laboratory
+M 0 56051 1 56052               add Sentinel of the Pure to Entrance to the Citadel
+E 0 56065 0 5                       equip a blazing breastplate (body)
+E 0 56064 0 16                      equip a blazing sword (wield)
+M 0 56052 1 56055               add Essence of Light to Hallway in the Citadel
+E 0 56067 0 5                       equip {YLight{x (body)
+E 0 56066 0 16                      equip {YLight{x (wield)
+M 0 56053 1 56057               add A being of Perfection to Blinding light
+E 0 56065 0 5                       equip a blazing breastplate (body)
+E 0 56064 0 16                      equip a blazing sword (wield)
+M 0 56066 1 56063               add The Wrath of the Light to Entrance to the throne
+E 0 56065 0 5                       equip a blazing breastplate (body)
+E 0 56064 0 16                      equip a blazing sword (wield)
+E 0 56064 0 18                      equip a blazing sword (dual)
+M 0 56055 1 56064               add The Sustainer of Purity to Seat of Power
+E 0 56073 0 5                       equip the protection of the light (body)
+E 0 56074 0 16                      equip Purity (wield)
+E 0 56068 0 21                      equip a shaft of light (ranged)
+M 0 56054 1 56065               add The Wrath of the Light to Entrance to throne
+E 0 56065 0 5                       equip a blazing breastplate (body)
+E 0 56064 0 16                      equip a blazing sword (wield)
+E 0 56064 0 18                      equip a blazing sword (dual)
+M 0 56056 1 56067               add An Inviting Shadow to Entering the Alkali
+E 0 56080 0 5                       equip the cover of darkness (body)
+E 0 56079 0 16                      equip a blade of darkness (wield)
+M 0 56057 1 56070               add A Denizen of Darkness to An underwater cave
+E 0 56080 0 5                       equip the cover of darkness (body)
+E 0 56079 0 16                      equip a blade of darkness (wield)
+M 0 56058 1 56075               add A Serpent of Deceit to Wall of a reef
+E 0 56082 0 12                      equip pitch black coils (about)
+E 0 56081 0 16                      equip sharp curved fangs (wield)
+M 0 56059 1 56079               add Blackness to Pitch black hole
+E 0 56084 0 5                       equip {ddarkness{x (body)
+E 0 56083 0 16                      equip {ddarkness{x (wield)
+E 0 56083 0 18                      equip {ddarkness{x (dual)
+M 0 56068 1 56080               add Blackness to Hole widens
+E 0 56084 0 5                       equip {ddarkness{x (body)
+E 0 56083 0 16                      equip {ddarkness{x (wield)
+E 0 56083 0 18                      equip {ddarkness{x (dual)
+M 0 56060 1 56099               add The Nature of Wickedness to Chamber of {d|||||||||||{x
+E 0 56085 0 5                       equip the caress of the darkness (body)
+E 0 56087 0 16                      equip Hatred (wield)
+E 0 56086 0 21                      equip a shaft of darkness (ranged)
+M 0 56061 1 56082               add An Inviting Dissuader to Edge of the Holt
+E 0 56089 0 5                       equip a shell of existence (body)
+E 0 56088 0 16                      equip an ethereal dagger (wield)
+M 0 56062 1 56087               add An Existing Being to Misted trees
+E 0 56089 0 5                       equip a shell of existence (body)
+E 0 56088 0 16                      equip an ethereal dagger (wield)
+M 0 56063 1 56089               add A Grotesque Beauty to Magnificent tree
+E 0 56089 0 5                       equip a shell of existence (body)
+E 0 56088 0 16                      equip an ethereal dagger (wield)
+E 0 56088 0 18                      equip an ethereal dagger (dual)
+M 0 56065 1 56093               add Nothing to Hollow in the Holt
+E 0 56091 0 5                       equip Emptiness (body)
+E 0 56090 0 16                      equip Emptiness (wield)
+M 0 56064 1 56095               add The Balance of All to Brightest Darkness
+E 0 56094 0 5                       equip the strength of being (body)
+E 0 56093 0 16                      equip Existing (wield)
+E 0 56092 0 21                      equip a shaft of existence (ranged)
+M 0 56069 1 56115               add a maze dweller to The Antediluvian Maze
+M 0 56081 1 56117               add Minsax to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56070 1 56119               add a maze dweller to The Antediluvian Maze
+M 0 56082 1 56121               add Athesi to The Antediluvian Maze
+E 0 56097 0 6                       equip a black silk headscarf (head)
+E 0 56059 0 12                      equip a red and black velvet robe (about)
+E 0 56058 0 16                      equip a {RRed{x Rose (wield)
+M 0 56071 1 56122               add a maze dweller to The Antediluvian Maze
+M 0 56083 1 56127               add Boo the Pug to The Antediluvian Maze
+M 0 56072 1 56128               add a maze dweller to The Antediluvian Maze
+M 0 56084 1 56131               add Kirgo to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56073 1 56136               add a maze dweller to The Antediluvian Maze
+M 0 56085 1 56139               add Ryan to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56074 1 56143               add a maze dweller to The Antediluvian Maze
+M 0 56086 1 56146               add Malagrith to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56075 1 56149               add a maze dweller to The Antediluvian Maze
+M 0 56087 1 56151               add Enkrin to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56076 1 56153               add a maze dweller to The Antediluvian Maze
+M 0 56077 1 56156               add a maze dweller to The Antediluvian Maze
+M 0 56088 1 56159               add Frep to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56078 1 56162               add a maze dweller to The Antediluvian Maze
+M 0 56079 1 56166               add a maze dweller to The Antediluvian Maze
+M 0 56089 1 56168               add Belle to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56080 1 56173               add a maze dweller to The Antediluvian Maze
+M 0 56090 1 56174               add Rommie to The Antediluvian Maze
+E 0 56057 0 12                      equip tattered rags of clothing (about)
+M 0 56092 1 56176               add Sit Mob to Before A Door (At The End of the Maze)
+M 0 56091 1 56177               add Annoyed to Annoyed's Laboratory
+E 0 56078 0 5                       equip A tattered T-shirt (body)
+E 0 56077 0 16                      equip a bloody steel axe (wield)
+E 0 56095 0 17                      equip a blood soaked dog leash (hold)
+M 0 56093 1 56177               add Tahlia to Annoyed's Laboratory
+E 0 56075 0 3                       equip a {rred{x dog collar (neck1)
+E 0 56060 0 16                      equip a {wwhite{x paw (wield)
+E 0 56076 0 17                      equip a bloody ball (hold)
+E 0 56061 0 18                      equip a {wwhite{x paw (dual)
+M 0 56094 1 56178               add {YBOOM!{x to {RMachine Room{x
+M 0 56101 1 56104               add The innkeeper Gleag to The bar
+E 0 56110 0 6                       equip a twinkle in his eye (head)
+G 0 56101 0                         carry magically enhanced water
+M 0 56102 1 56111               add Igec De Elt Raltov to Deciphering Is Us
+E 0 56109 0 5                       equip casual clothing (body)
+M 0 56103 1 56110               add Friy Dlisle to F&D place
+E 0 56108 0 12                      equip {W(Flour Aura){x an apron (about)
+G 0 56102 0                         carry wiggling meat
+G 0 56103 0                         carry congealed liquid
+M 0 56104 1 56112               add Kaugh Boum to Bubble and Trouble
+E 0 56107 0 5                       equip {d(Blackened){x a blackened robe (body)
+G 0 56104 0                         carry paint of potions
+G 0 56105 0                         carry a friendly looking concoction
+M 0 56105 1 56113               add Nam Dlo Ey to Thee Ye Olde Healer
+E 0 56106 0 12                      equip some really {wwhite robes{x (about)
+I 56052 1 56056 1               a flare of light to Room in the Citadel
+I 56054 99 56068 1              a spot of darkness to Into the darkness
+I 56055 100 56070 1             a spot of darkness to An underwater cave
+I 56056 100 56075 1             a spot of darkness to Wall of a reef
+I 56099 70 56179 1              helm of the planes to Outside the Planes
+I 56100 70 56179 1              a piece of the planes to Outside the Planes
+I 56098 35 56180 1              an antediluvian stone to A hidden room
+I 56096 30 56114 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56116 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56118 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56120 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56122 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56124 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56126 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56128 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56130 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56132 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56133 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56134 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56136 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56138 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56140 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56142 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56144 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56146 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56148 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56150 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56152 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56154 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56156 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56158 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56160 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56162 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56164 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56166 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56168 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56170 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56172 1              antediluvian loam to The Antediluvian Maze
+I 56096 30 56174 1              antediluvian loam to The Antediluvian Maze
+I 56111 101 56177 1             a contraption to Annoyed's Laboratory
+I 56112 1 56177 1               some black powder to Annoyed's Laboratory
+P 0 56112 0 56111               put some black powder inside a contraption
+I 56113 1 56177 1               some black powder to Annoyed's Laboratory
+I 56114 1 56177 2               some black powder to Annoyed's Laboratory
+I 56114 1 56177 2               some black powder to Annoyed's Laboratory
+I 56062 1 56177 1               a mangled corpse to Annoyed's Laboratory
+S
+
+#SHOPS
+56101 17 0 0 0 0 100 100 0 23    shop run by The innkeeper Gleag
+56103 19 17 0 0 0 100 100 0 23   shop run by Friy Dlisle
+56104 10 28 0 0 0 100 100 0 23   shop run by Kaugh Boum
+0
+
+#SPECIALS
+M 56066 spec_cast_mage          The Wrath of the Light
+M 56054 spec_cast_mage          The Wrath of the Light
+M 56059 spec_cast_mage          Blackness
+M 56068 spec_cast_mage          Blackness
+M 56060 spec_warrior            The Nature of Wickedness
+M 56063 spec_warrior            A Grotesque Beauty
+M 56064 spec_cast_undead        The Balance of All
+M 56101 spec_cast_archmage      The innkeeper Gleag
+M 56105 spec_cast_adept         Nam Dlo Ey
+S
+
+#$

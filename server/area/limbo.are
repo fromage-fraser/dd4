@@ -1,0 +1,1453 @@
+#AREA	Diku~    Limbo~
+-3 -3 0 100
+
+#AREA_SPECIAL
+hidden
+no_quest
+safe
+$
+
+#MOBILES
+#1
+Puff~
+Puff~
+Puff the Fractal Dragon is here, contemplating a higher reality.
+~
+It is impossible to look closely at Puff.  The swirling light around you 
+flashes off her fractal scales, creating a sparkling ignis fatuus that 
+confuses your senses and disorientates you.
+~
+1 0 1000 S
+826 1 -1 5d10+550 4d6+3
+0 0
+8 8 2
+>greet_prog 100~
+	if carrying($n) == 3005
+		mpecho Puff says '{WNice axe you have there!{x'
+	else
+		mpecho Puff says '{WHi there.{x'
+	endif
+~
+>rand_prog 20~
+if rand(20)
+say See http://www.dragons-domain.org/faq/ for A's to all your Q's.
+else
+if rand(10)
+say No, I'm not THAT Puff. Stupid "magic dragon"...
+else
+if rand(10)
+say Welcome to My Domain. You did wonder who the dragon was in "Dragons 
+say Domain", didn't you?
+else
+if rand(10)
+say Asverna is a chump. You want to see a REAL dragon in action? Take me on.
+else
+if rand(10)
+say Psst...Grail sleeps with a teddy bear.  Pass it on.
+else
+if rand(10)
+say AHA! That's it! Higher reality...
+emote goes back to contemplating a higher reality silently.
+else
+if rand(10)
+say Beware the wicked LAG. It takes many forms and will seize you before you 
+say know it.
+else
+if rand(10)
+say Tip #1: Try not to die.
+else
+if rand(10)
+say Tip #2: Do not fight in healing gear. Related tips: Tip #1.
+else
+if rand(10)
+say Tip #3: Listening to Puff's tips may save your life.
+else
+if rand(1)
+say Tip #4: When Hestia has PMS, run for cover.
+else
+if rand(10)
+say Tip #5: Ignore immortals and be disemboweled with a rusty keyboard!
+else
+if rand(1)
+say Samxin prefers "Personal Assistant." Remember that. Or he'll smite you.
+else
+if rand(1)
+say Has Torment thought of anything YET?
+else
+if rand(1)
+say If you play with limbo too much you'll go blind...or disconnect.
+endif
+~
+>bribe_prog 1~
+say Can't you read?
+emote points to the sign on the wall.
+mpforce $n chat I can't read! Woe is me!
+~
+|
+#2
+darkside~
+The Mighty Darkside~
+Here floats a god so evil, you cannot bear to look at it.
+~
+It has a large central eye that projects an anti-magic ray and ten
+eyestalks atop the round body which can do anything from charm you
+to disintegrate you.  Beholders are not known for their personality.
+~
+1|2|32|128 8 -870 S
+25 6 0 25d25+250 6d6+5
+12 0
+8 8 0
+#3
+apprentice mouldy~
+Gezhp's Apprentice~
+Gezhp's Apprentice, Mouldy, works diligently transcribing several scrolls.
+~
+A hobbled old dwarf, Gezhp's Apprentice struggles to get through all the work
+his master has given him.  He is balding with a huge, yellowing beard.  His
+features look crazed and it is more than likely that he is mad.
+~
+2|64 8|32|512|8192|524288 1000 S
+500 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog hello mouldy greetings hi hiya lo 'lo~
+if name($n) == gezhp
+    smile $n
+    say Master! Thank goodness you've returned!
+else
+    if isimmort($n)
+	if rand(50)
+	    bow $n
+	    say My Lord
+	else
+	    shake $n
+	    say Make yourself comfortable
+	endif
+    endif
+endif
+~
+>rand_prog 10~
+if rand(25)
+    emote mutters incomprehensively
+    mpecho ..mumble mumble.. ..large breasted girlies.. ..murmur mutter..
+else
+    if rand(25)
+	scream
+	say There's just too much for me to handle!
+    else
+	if rand(25)
+	    puke
+	    emote mutters 'Damn prawns'
+	endif
+    endif
+endif
+~
+>speech_prog piss cunt shit fuck ass arse asshole bastard dick fucking shitty shitter fart bum bummer faggot~
+say Hey - mind your language, will you $n?
+~
+>hitprcnt_prog 5~
+shout Curse you, $n! I'm done for! I'm done-diddily-done for! I'm done-diddily-done-diddily-diddily-done for!
+ cast flame $n
+cast gas $n
+cast wrath $n
+~
+>fight_prog 30~
+if rand(30)
+    shout Gadzooks! $n is killing me!
+else
+    if rand(30)
+	scream
+	shout Gezhp! Save me!
+	pray
+    else
+	cast wrath $n
+	shout Say your prayers, $n
+	muhaha
+    endif
+endif
+~
+|
+& 30 'necro base'
+& 30 'warlock base'
+& 30 'templar base'
+& 30 'druid base'
+& 30 'ninja base'
+& 30 'bounty base'
+& 30 'thug base'
+& 30 'knight base'
+& 30 'satanist base'
+& 30 'witch base'
+& 30 'werewolf base'
+& 30 'vampire base'
+& 30 'monk base'
+& 30 'artist base'
+& 30 'teacher base'
+
+#4
+soul~
+a tormented soul~
+A tormented soul writhes in agony.
+~
+The wraith-like form of one of Torment's victims looks piteously at you.
+~
+512 2048 0 S
+5 0 0 0d0+0 0d0+0
+32|64 0
+8 8 1
+
+#5
+gulgorthil ancient wyrm dragon~
+Gulgorthil~
+The ancient wyrm Gulgorthil twists and heaves.
+~
+Captured and tamed by the Dwarven Lord Gezhp, this ancient black dragon
+radiates power and terror so thickly that your pulse races and belly
+freezes.  His eyes gleam like emerald suns, his gaze capturing your mind.
+~
+2|512|4096|131072 8|32|8388608|524288|16777216 0 S
+105 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog heel~
+if name($n) == gezhp
+	emote growls and snorts
+endif
+~
+>speech_prog clan~
+if clan($n) == aod
+	'you're AOD
+else
+	'you're not AOD
+endif	
+endif	
+~
+>rand_prog 10~
+if rand(25)
+    emote flexes his massive wings
+else
+    if rand(25)
+	emote releases a deafening ROAR!
+    endif
+endif
+~
+|
+
+#6
+winged monkey flying~
+a winged monkey~
+A winged monkey inspects the area.
+~
+The winged monkey hovers in the air, furtive eyes scanning for broken
+doors and portals.
+~
+512|4096|32768 8|16|32|512|8192|32768|524288 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>rand_prog 10~
+if rand(25)
+    emote flaps his leathery wings
+endif
+~
+|
+
+#75
+hunter grail~
+Grail the Hunter~
+Grail the Hunter stands here, looking for his prey.
+~
+This blue-skinned man, still branded as a slave, now wanders endlessly 
+bringing justice to the deserved.  Body corded with muscle, eyes still sharp 
+and alert, this man is more than a match for most mortals.  
+~
+0 8|32|128|512 0 S
+185 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>fight_prog 100~
+	    if rand(8)
+	       mpecho CHAT Watch as I deal death to $n!
+	    else
+	    if rand(8)
+	       mpecho CHAT $n shall taste my steel and DIE!
+	    else
+	    endif
+	    endif
+~
+>death_prog 100~
+	    mpecho CHAT Masters, I have been defeated!
+~
+|
+#76
+watcher~
+The Watcher~
+{RThe Watcher sees all.{x
+~
+{RThe Watcher watches you.{x
+~
+1 0 1000 S
+826 1 -1 5d10+550 4d6+3
+0 0
+8 8 2
+#77
+chicken doom~
+the Chicken of Doom~
+The Chicken of Doom stands here, pecking at the ground.
+~
+The Chicken of Doom is a HUGE white chicken, with deadly-looking claws on
+its feet.  It eyes you with its beady eyes, and squawks.
+~
+2|512|4096|131072 128 0 S
+105 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>rand_prog 10~
+if rand(25)
+    emote flaps its feathery wings
+    else
+    if rand(25)
+	emote squawks and pecks at the ground
+    else
+	if rand(25)
+	    sratches at the ground with its huge claws
+	endif
+    endif
+endif
+~
+|
+#78
+Ducky duck~
+Ducky the duck~
+A duck waddles around the desk.
+~
+It looks like a duck. It also seems to be wearing a collar.	
+~
+2 128 1000 S
+600 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog p Want a cracker?~
+   bonk $n
+   say Stop asking and just give me a damn cracker!
+~
+|
+
+#0
+
+#OBJECTS
+#2
+coin~
+a coin~
+One miserable coin.~
+~
+20 0 1
+1~ ~ ~ ~ 
+1 0 0
+#3
+coins~
+some coins~
+A pile of coins.~
+~
+20 0 1
+0~ 0~ 0~ 0~ 
+1 0 0
+#10
+corpse~
+corpse of %s~
+The corpse of %s is lying here.~
+~
+23 0 1
+0~ 0~ 0~ 1~ 
+100 0 0
+#11
+corpse~
+corpse of %s~
+The corpse of %s is lying here.~
+~
+24 0 0
+0~ 0~ 0~ 1~ 
+100 0 0
+#12
+head~
+head of %s~
+The severed head of %s is lying here.~
+~
+19 0 1
+10~ 0~ 0~ 0~ 
+5 0 0
+#13
+heart~
+heart of %s~
+The torn-out heart of %s is lying here.~
+~
+19 0 1
+16~ 0~ 0~ 0~ 
+2 0 0
+#14
+arm~
+arm of %s~
+The sliced-off arm of %s is lying here.~
+~
+19 0 1
+20~ 0~ 0~ 0~ 
+5 0 0
+#15
+leg~
+leg of %s~
+The sliced-off leg of %s is lying here.~
+~
+19 0 1
+20~ 0~ 0~ 0~ 
+5 0 0
+#16
+turd~
+steaming turd~
+The steaming turds of %s assail your nostrils.~
+~
+13 0 0
+5~ 0~ 0~ 1~ 
+1 0 0
+#20
+mushroom~
+a Magic Mushroom~
+A delicious magic mushroom is here.~
+~
+19 0 1
+5~ 0~ 0~ 0~ 
+1 10 0
+#21
+ball light~
+a bright ball of light~
+A bright ball of light shimmers in the air.~
+~
+1 0 1
+0~ 0~ -1~ 0~ 
+1 0 0
+#22
+spring~
+a magical spring~
+A magical spring flows from the ground here.~
+~
+25 64 0
+100000~ 100000~ 0~ 0~ 
+5000 10 0
+#23
+mob~
+%s~
+%s is here, struggling to escape!~
+~
+29 64|256 1|8192 0
+0~ 0~ 0~ 0~
+5 0 0
+#24
+whetstone~
+a whetstone~
+A black whetstone used for sharpening swords lies here.~
+~
+39 0 1
+2~ 0~ 0~ 0~
+1 300 10
+E
+whetstone~
+The whetstone will be ideal for sharpening things.
+~
+#25
+hammer~
+an armourer's hammer~
+A well crafted armourer's hammer lies on the ground.~
+~
+37 0 1
+2~ 0~ 0~ 0~
+1 300 10
+#26
+portal~
+a portal~
+A misty portal beckons you to the unknown.~
+~
+33 64 0
+0~ -1~ 0~ 100~
+100 10 1
+#30
+the magical barrier~
+the magical barrier~
+~
+~
+34 0 0
+0~ 1~ 6~ 11~
+100 0 0
+E
+forcefield force field barrier~
+The barrier looks impenetrable.
+~
+#31
+blood trail~
+blood trail~
+A trail of blood leads north.~
+~
+20 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#32
+blood trail~
+blood trail~
+A trail of blood leads south.~
+~
+20 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#33
+blood trail~
+blood trail~
+A trail of blood leads east.~
+~
+20 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#34
+blood trail~
+blood trail~
+A trail of blood leads west.~
+~
+20 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#35
+blood trail~
+blood trail~
+A trail of blood leads down.~
+~
+20 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#36
+blood trail~
+blood trail~
+A trail of blood leads up.~
+~
+20 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#38
+lockpick pick brass~
+a brass lockpick~
+A brass lockpick lies here.~
+~
+35 0 1
+0~ 0~ 0~ 0~
+1 1000 0
+E
+lockpick pick brass~
+The lockpick device is made of brass and doesn't look especially robust.~
+#50
+talons~
+talons~
+Your talons are attached to your feet.~
+~
+5 2|67108864 0
+0~ 10~ 15~ 11~
+1 10000 7500
+A
+2 2
+A
+3 1
+
+#51
+tail sting~
+tail sting~
+The sting is attached to your tail.~
+~
+5 1|2|16384|67108864 0
+0~ 10~ 15~ 11~
+1 10000 7500
+A
+2 2
+
+#52
+mandibles~
+mandibles~
+Your strong mandibles are attached to your face.~
+~
+5 16384|67108864 0
+0~ 15~ 20~ 10~
+1 10000 7500
+A
+2 1
+A
+1 -1
+
+#53
+sftclaws~
+claws~
+Your claws extend the end of your paws.~
+~
+5 67108864 0
+0~ 15~ 20~ 15~
+1 10000 7500
+A
+1 5
+
+#54
+teeth~
+teeth~
+Your sharp teeth are located within your jaw.~
+~
+5 67108864 0
+0~ 15~ 20~ 10~
+1 10000 7500
+A
+3 2
+A
+4 -1
+
+#55
+sftclaws~
+claws~
+Your claws clack on the floor as you walk along.....~
+~
+5 2|67108864 0
+0~ 15~ 20~ 14~
+1 10000 7500
+A
+1 2
+A
+2 2
+
+#56
+sftfangs~
+fangs~
+Sharp fangs extrude from your huge jaw.~
+~
+5 67108864 0
+0~ 15~ 20~ 10~
+1 10000 7500
+A
+3 2
+A
+4 -1
+ 
+#57
+sftclaws~
+claws~
+Your claws clack on the floor as you walk along.....~
+~
+5 2|67108864 0
+0~ 15~ 20~ 14~
+1 10000 7500
+A
+1 2
+A
+2 2
+
+#58
+teeth~
+teeth~
+Your teeth protrude from your mouth......~
+~
+5 2|67108864 0
+0~ 15~ 20~ 14~
+1 10000 7500
+
+#70
+guitar ibanez jpm 100~
+jammer's Guitar~
+Jammer's Ibanez is lying here...~
+~
+5 2|64 1|8192
+0~ 1~ 6~ 13~ 
+5 0 0
+A
+18 0
+E
+inscription~
+This guitar is the property of Jammer.  Please return to the Builders Room
+Up,  North and East of the Healer in Midgaard.  Thank you.~
+E
+Guitar~
+This is a limited edition custom designed electric guitar.  It is black
+and has the latest in tremelo and pickup technology.  It obviously does not
+belong to any mortal!~
+#71
+madboy's straight jacket~
+madboy's Straight Jacket~
+~
+~
+9 1|64 1|1024
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+23 -5
+A
+4 -5
+A
+12 100
+A
+17 20
+A
+19 10
+E
+Straight Jacket~
+This straight jacket has seen better days!~
+#72
+Box crayons~
+madboy's Crayons~
+~
+~
+19 0 1|16384
+1~ 1~ 6~ 11~ 
+0 0 0
+#73
+desk~
+a desk~
+An old walnut desk stands propped up against the wall.~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+100 0 0
+E
+desk old walnut~
+Gezhp's desk is rickety and too small for him to work comfortably on.
+~
+#74
+books pile~
+a pile of books~
+A pile of old books is stacked next to the fireplace.~
+~
+8 0 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+books pile~
+The books are a selection of magical texts discovered by Geshp during his
+many travels throughout the world.  Included are, 'The Key of Solomon', 'The
+Black Codex', 'Playdwarf', 'How to Make Friends and Influence People', and
+'Would All the Dwarves Here Please Stand Up, Oh, You Are Standing'.
+~
+#75
+coin amaros~
+the coin of Amaros~
+A magnificent golden coin glitters in the sun~
+~
+8 1 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#76
+amulet thagg ivory~
+the amulet of Thagg~
+A huge ivory amulet pulses gently.~
+~
+8 2 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#77
+bowl wooden zackera~
+the bowl of Zackera~
+A small wooden bowl lies in the dirt.~
+~
+8 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#78
+book fretya~
+the book of Fretya~
+Fretya's book of knowledge lies open on the ground.~
+~
+8 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#79
+scroll ripped city cities ancient~
+the City's ancient scroll~
+A ripped scroll lies in tatters before you.~
+~
+8 0 1
+0~ 0~ 0~ 0~ 
+5 0 0
+#80
+light hunter globe~
+a small glowing globe~
+A globe of light lies here.  It seems to be missing something...~
+~
+1 1|64 1
+0~ 1~ -1~ 11~ 
+1 0 0
+A
+17 -20
+A
+19 25
+A
+24 -20
+#81
+rod hunter~
+a small rod~
+A small metallic rod lies here.~
+~
+3 1|64|512|1024 1|16384
+100~ 10~ 10~ disintegrate~ 
+1 0 0
+#82
+sword hunter~
+a long sword~
+A sword rests here.  It is covered in a runes twisting in a spiral pattern around the blade.~
+~
+5 1|2|64|512|1024 1|8192
+0~ 1~ 6~ 13~ 
+5 0 0
+A
+13 50
+A
+17 -25
+A
+18 3
+A
+19 3
+#83
+hunter leather~
+a leather vest~
+A non descript leather vest lies here...~
+~
+9 64|512|1024 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+13 100
+A
+17 -50
+A
+18 5
+A
+19 5
+A
+1 5
+#84
+ring~
+a smallish wooden ring~
+A small wooden ring lies here...~
+~
+8 32|64|128|512|1024|4096 1|2
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+2 4
+A
+13 30
+A
+17 -30
+A
+18 2
+A
+19 2
+A
+23 -20
+A
+24 -20
+#85
+hunter necklace~
+a skull necklace~
+A necklace of shrunken skulls lies here...~
+~
+8 32|64|128|1024|2048|4096 1|4
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+4 6
+A
+5 6
+A
+13 50
+A
+17 -50
+A
+18 5
+A
+19 5
+#86
+hunter helm helmet~
+a small leather cap~
+A leather cap lies here...~
+~
+9 1|2|32|64|128|512|1024|4096 1|16
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+23 -20
+A
+24 -20
+A
+17 -50
+A
+19 3
+#87
+leather bracers hunter~
+a leather bracer~
+A sword rests here.~
+~
+9 64|128|512|1024|4096 1|4096
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+19 2
+A
+18 2
+#88
+hunter leggings~
+some leather leggings~
+Some leather leggings lie here.~
+~
+9 64|128|512|1024 1|32
+0~ 1~ 6~ 11~ 
+3 0 0
+A
+17 -30
+A
+13 30
+#89
+hunter boots~
+some leather boots~
+Some leather boots sit here.~
+~
+9 64|128|512|1024|4096 1|64
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+14 200
+A
+13 75
+#90
+hunter gloves~
+a pair of leather gloves~
+A pair of ordinary leather gloves lie here...~
+~
+9 64|128|512|1024|4096 1|128
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+2 3
+A
+13 20
+A
+19 1
+#91
+hunters bands arm armbands~
+a pair of metal armbands~
+A pair of metal armbands lie here.~
+~
+9 64|512|1024 1|256
+0~ 1~ 6~ 11~ 
+2 0 0
+A
+23 -20
+A
+24 -20
+A
+17 -25
+#92
+hunter shield~
+a shield~
+A worn and beaten metal shield lies here...~
+~
+9 64|512|1024 1|512
+0~ 1~ 6~ 11~ 
+4 0 0
+A
+17 -30
+A
+18 20
+A
+19 20
+#93
+hunter cloak~
+cloak of the Hunter~
+A plain grey cloak lies here...~
+~
+9 64|128|512|1024|4096 1|1024
+0~ 1~ 6~ 11~ 
+1 0 0
+A
+3 4
+A
+4 4
+A
+13 150
+A
+17 -50
+A
+19 5
+#94
+belt hunter~
+a belt~
+A small belt with some pockets in it lies here~
+~
+15 32|64 1|2048
+10~ 0~ -1~ 11~ 
+1 0 0
+A
+19 3
+A
+18 2
+A
+17 -40
+#95
+a donut~
+a yummy donut~
+A yummy jelly filled donut rests here~
+~
+19 1|2 1
+99~ 1~ 6~ 11~ 
+1 0 0
+#96
+donutmaker~
+a Donut Robot~
+a small Donut Robot is making donuts here, lots of donuts.~
+~
+15 1|2 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#97
+magical stat item~
+the amazing magical stat item~
+The amazing magical stat item lies here.~
+This item was created by Owl to test some stuff on the 4000 port, please
+don't delete it. I'll do it myself when I've finished with it.
+
+-Owl
+~
+9 1|64 1|64
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+1 30
+A
+2 30
+A
+3 30
+A
+4 30
+A
+5 30
+
+#98
+sulfurous sulfuric pool~
+a sulfurous pool~
+Acrid steam wafts from a churning, sulfuric hot pool.~
+This sulfurous pool must be where Torment cavorts with his handmaidens
+in his time off.
+~
+25 16 0
+0~ 0~ 0~ 0~
+0 0 0
+E
+pool sulfurous~
+This sulfurous pool must be where Torment cavorts with his handmaidens
+in his time off.
+~
+
+#100
+herb~
+some herbs~
+There are some herbs here.~
+~
+26 0 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+
+#99
+potion brew wizbrew~
+a wizbrew~
+A wizbrew lies here.~
+~
+10 64 1|16384
+0~ 0~ 0~ 0~
+1 0 0
+
+#1
+magical resistance item~
+the amazing magical resistance item~
+The amazing magical resistance item lies here.~
+~
+9 1|128 1|64
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+36 -1
+A
+37 -1
+A
+38 -1
+A
+39 -1
+
+#60
+psychiatrist couch~
+a {rred{x psychiatrist's couch~
+A {rred{x psychiatrist's couch is here to rest on.~
+~
+12 0 0
+~ ~ ~ ~
+1 0 0
+
+#61
+Samxins desk~
+Samxins desk~
+Samxins desk.~
+~
+15 0 0
+50~ 5~ -1~ ~
+1 0 0
+
+#62
+duck collar~
+a duck collar~
+A duck collar has been dropped here.~
+~
+9 0 1|4
+~ ~ ~ ~
+1 0 0
+E
+duck collar~
+The collar has a tag that reads "{rDucky{x."
+~
+
+#63
+note to Samxin~
+a note to Samxin~
+A note to Samxin is inside the desk.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+E
+note Samxin~
+Note to self:{RTEST ALL YOUR AREAS CAREFULLY! AND MAKE SURE MOBS THAT
+ARE SUPPOSED TO BE WIZINVIS -ARE- WIZINVIS!.{x
+~
+
+#0
+
+#ROOMS
+#1
+The Void~
+You are floating in nothing.
+~
+0 4|8|1024 1
+S
+#2
+Limbo~
+You are floating in a formless void, detached from all sensation of physical
+matter, surrounded by swirling glowing light, which fades into the relative
+darkness around you without any trace of edges or shadow.
+   There is a "No Tipping" notice pinned to the darkness.
+~
+0 4|8|1024|8192 1
+S
+#69
+Frag's Hovel~
+You are in a small, miserable, dwelling (for those of you nincompoops who
+don't know what a HOVEL is).  It's dark, dank, and cold.  At one end of the
+room, you see a sorry excuse of a rusty, squeaky bunkbed.  Obviously, neither
+of the beds are made.  A dirty, ragtorn teddy bear sleeps heavily on the
+lower bunk.  You see, to your dismay, TWO clock radios, both of which are
+ringing, which shows that this room was made for TWO people to sleep in,
+although it's barely 10 X 12 feet.  Papers, books, and laundry are thrown
+everywhere, with two computers astrally linked to the world of Envy.
+~
+0 4|8|1024|8192 1
+S
+#70
+Jammer's Studio~
+This room,  or two rooms rather,  consists of a large,  angular sound
+studio and a small control room.
+
+Various examples of musical equipment lie scattered around,  but the
+seemingly endless sea of cables appears to have some order to it. The small
+control room has even more music gear crammed into it,  and a large mixing
+desk.  A small computer sits looking out of place in one corner and there is a 
+doorway out of this chaos to the East.
+~
+0 4|8|8192 0
+S
+#71
+Madboy's Cell~
+The walls in this room are padded with crayon scrawled all over them.
+
+The door to the West has been ripped off it's hinges and a shredded
+straightjacket lies in one corner.  Various broken syringes lie about,  and
+in the northern corner,  there is a box of crayons.
+~
+0 4|8|8192 0
+S
+#72
+Gezhp's Study~
+You stand in Gezhp's murky study, a small room lined with half toppled book
+cases and magical charts.  A small but bright fire casts a warm glow across
+the chamber, and there are several plump sedan chairs for you to relax in.
+~
+0 4|8|512|1024|8192 0
+S
+#73
+Torment's Lair~
+You stumble upon a cavernous chamber.  The fires of Hell burn hotter here
+and the stench of sulfur permeates the air.  The skulls of challengers
+ruthlessly destroyed line the walls, while their tormented souls hover in
+eternal servitude.  
+
+Torment is here relaxing in a bubbling pool of sulfur.  Your blood runs
+cold as he turns his fiery eyes upon you and intones in a thunderous
+voice, 'What foolish mortal dares to enter my lair?'
+
+~
+0 4|8|8192 0
+S
+#75
+Lair of the Hunter~
+This square room contains all necessities for a subsistent existance.  The 
+Hunter devotes his life to bringing THIEVES and KILLERS to justice.
+~
+0 1|4|8|1024|8192 0
+S
+#76
+Sassinak's Cupboard~
+You are standing in Sassinak's small secluded sanctuary. One entire wall of 
+this room is a HUGE big screen tv. Sitting on the other side of this room 
+is a small compact PC. Sitting next to the PC is a donut robot(tm) 
+constantly making donuts.
+~
+0 4|8|512|1024|2048|8192|16384 0
+S
+#77
+Inside a bottle~
+You have somehow made your way into this, rather nice looking
+bottle, you know its a bottle by its shape as it curves up to
+a piece of what looks like cork protruding from the ceiling.
+The walls are covered in sparking gems and the floor is covered
+with cusions. You notice a small sign on the side of the wall.
+~
+0 4|8|8192|65536 0
+E
+sign wall~
+Istari lives here.
+~ 
+S
+#78
+Owl's dungeon~
+This room is very dark, lit only by a few candles. Through the shadows you 
+can make out many metal tools and implements hanging on the wall, but you
+doubt the room's owner is a gardener. An air of despondency and gloom hangs
+over the room.
+~
+0 1|8|8192 0
+E
+candles~
+Blood red, dripping with hot wax.
+~ 
+S
+#79
+Hestia's Hideaway~
+This is where Hestia goes when she wants a break from pestering mortals.  
+There is an ornately-patterned, deep pile rug on the polished wooden floor, 
+and paintings of rugged landscapes on the walls.  Hard rock blasts from the 
+stereo, a jarring sound in the otherwise peaceful room.  Next to the stereo 
+is a tower of CDs.  One whole wall is lined with bookshelves, which are 
+filled with everything from texts on Greek mythology, to fantasy novels, to 
+the latest Stephen King bestseller.  You spy a couple of volumes of erotica 
+nestled discreetly at one end of a shelf.  There is a window on the far side 
+of the room, through which you can see small city on the banks of a wide 
+river.  The desk under the window is covered with books, notepads, pens, and 
+empty coffee cups and coke cans.  Amidst the clutter is a framed picture of 
+two beings, who look vaguely familiar to you.  Next to the desk is a small 
+kitchenette, with a kettle and coffee supplies, a microwave, a sink, a 
+cupboard, and a small refridgerator. There is a big squishy armchair in one 
+corner, with a book open on one arm.  Next to the armchair is a large beanbag.
+~
+0 4|8|1024|8192 0
+E
+notepads~
+The notepads seem to have plans for new areas, and changes to existing ones, 
+scribbled on them.  The plans are incomprehensible to your untrained eye.
+~
+E
+books bookshelf bookshelves~
+You see a vast selection of books of different kinds, reflecting Hestia's 
+wide reading tastes and interests.
+~
+E
+rug floor~
+The rug is ornately patterned in rich, dark colours.  The pile is deep, and it 
+feels soft beneath your feet.
+~
+E
+painting landscape wall~
+The paintings appear to be by a selection of artists, and depict landscapes 
+from wide red deserts, to dry forests, to snow-capped mountains.
+~
+E
+stereo~
+The stereo is a fairly new, but well-used, Sony.  As you listen, the music 
+changes from Smashing Pumpkins to Pearl Jam.
+~
+E
+cd tower~
+Examining the CD tower, you see a huge range of music - from classics such as 
+Vivaldi, to seventies rock such as Meat Loaf, Jim Steinman, and Led Zeppelin, 
+to modern rock such as Smashing Pumpkins, Pearl Jam, and Linkin Park.
+~
+E
+armchair arm chair~
+The armchair is a rather faded orange-brown, and very worn.  It looks very 
+comfortable, however.  The book on the arm is a tourism book about Tasmania.
+~
+E
+window~
+The window shows a small city on the banks of a wide river.
+~
+E
+picture framed~
+The framed picture is of a towering, diabolical demon and a tall, ethereal, 
+scantily-dressed being, who are passionately embracing.  Both of the figures 
+look vaguely familiar to you, but you cannot seem to place them.
+~
+E
+beanbag bean bag~
+The beanbag is covered in furry tiger-striped material, and looks very 
+comfortable.
+~
+E
+desk~
+The desk is dark mahogany, but you can barely see it under the clutter.  It is 
+clearly frequently used.
+~
+E
+kitchenette fridge coffee microwave kettle cupboard microwave sink~
+The small kitchenette is clearly designed for Hestia's convenience while she 
+works on areas.  The coffee is strong and aromatic.  In the fridge you find 
+non-fat milk with added calcium, and a variety of items to drink such as cans 
+of Coke, bottles of Tui beer, bottles of vodka pre-mixed drinks, a number of 
+bottles of wine, and bottles of iced tea.  There is also a huge box of mixed 
+chocolates, which is about a quarter empty.
+~
+E
+erotica~
+You see a couple of anthologies of female-oriented erotica, which look rather 
+interesting.
+~
+S
+#80
+The Watcher's domain~
+You seem to stand in the midst of a huge constellation of stars, yet you can 
+breathe comfortably and feel neither unusually hot nor cold.
+~
+0 1|8192 9
+S
+#81
+Archon's Room~
+    The room is very cluttered, with a large couch against the wall
+with two large pillows and a huge blanket tossed over it.. evidently
+the couch doubles as a bed. In the corner is a massive desk covered in
+scribbled on papers and printouts, half-used notebooks, and empty cans of
+Mountain Dew (tm).
+    A rack of CD's stands between the computer and the stereo, and a small
+refrigerator stands next to the couch with a clear path between it and the
+desk, presumably for easy access on the rolling-reclining-swiveling chair.
+Taped to the wall above the couch is an odd-looking mural with many
+familiar-looking faces.
+~
+0 4|8|1024|8192 0
+E
+wall mural collage picture faces~
+
+Heroes of the Dragons Domain
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[Human   {GCleric    {YPLS{x] {C[Leader]{x Solias {Wlikes cute little
+kitties{x
+[Giant   {MWarrior   {x   ] Duo - The Great Destroyer
+[Human   {WWitch     {YPLS{x] [{WChampion{x] Takaros {rImmortal Everlasting{x
+
+Mortals in the Dragons Domain
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+[Elf     {W61 {YNecromncr {YPLS{x] Shirak {bMaster of Undeath{x
+[Human   {W66 {RShpShftr  {YPLS{x] Saen - I luv Demondium
+[Dwarf   {W44 {BNinja     {YPLS{x] Amar wishes he had decapitate
+[Alaghi  {W46 {RVampire   {YPLS{x] Dargoth the {Rblood{x-thirsty
+[Giant   {W20 {CBrawler   {YPLS{x] Steel of Fists
+[Alaghi  {W38 {YMage      {YPLS{x] Moloch the heavy judger of men!
+[Dwarf   {W66 {BB. Hunter {YPLS{x] Reihl, Apprentice Assassinmaster
+You see 10 players in the game. The most this session was 10 players.
+
+~
+S
+#82
+Samxin's Reality~
+{xYou appear in a spot of solidity. Around you energy collides with itself and 
+large bolts of flashing {Rc{Yo{Gl{Bo{Mr{Cs{x roll by. Around you seems to be an invisible 
+wall or something such as that, for the energy just stops at a certain point. 
+On what is the 'floor' a red shrink's couch rests next to a large lamp and 
+desk full of ancient scrolls and tablets. A duck walks around on the desk, 
+occasionally asking you if you have any crackers.
+~
+0 4|1024|8192 0
+S
+
+#0
+
+
+#RESETS
+O 1 70 100 70               Jammer's Guitar to Jammer's Studio
+O 1 72 100 71                 Madboy's Crayons to Madboy's Cell
+M 1 1 1 2                     Puff
+O 1 73 100 72                 a desk to Geshp's Study
+O 1 74 100 72                 a pile of books to Geshp's Study
+M 1 75 1 75                   the Hunter to Lair of the Hunter
+E 1 80 100 0
+E 1 84 100 1
+E 1 84 100 2
+E 1 83 100 5
+E 1 86 100 6
+E 1 88 100 7
+E 1 89 100 8
+E 1 90 100 9
+E 1 91 100 10
+E 1 92 100 11
+E 1 93 100 12
+E 1 94 100 13
+E 1 87 100 14
+E 1 87 100 15
+E 1 82 100 16
+E 1 81 100 17
+G 1 81 100
+M 1 76 1 80			The Watcher to the Watcher's domain
+O 1 96 100 76			a Donut Robot to Sassinak's Cupboard
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+P 1 95 100 96			a yummy donut to container donutmaker
+
+M 1 4 3 73			Souls to Torment's lair
+O 1 98 100 73			Sulfuric pool to Torment's lair
+
+M 1 6 2 75 			Monkeys to Grail's lair (2 now, were 3)
+
+
+M 0 78 1 82               	add Ducky the duck to Samxin's Reality
+E 0 62 0 3                       equip a duck collar (neck1)
+I 61 1 82 1               Samxins desk to Samxin's Reality
+I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's Reality
+P 0 63 0 61               put a note to Samxin inside Samxins desk
+S
+
+
+#SPECIALS
+M  75 spec_grail                the Hunter
+M   1 spec_warrior		puff
+M   6 spec_celestial_repairman	monkey squadron
+M  5 spec_poison		gulgorthil
+S
+
+
+#$

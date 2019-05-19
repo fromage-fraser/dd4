@@ -1,0 +1,3326 @@
+#AREA   Gezhp~   Argentium~
+15 25 0 100
+
+#MOBILES
+#25200
+bandit thief~
+a bandit~
+A shifty looking bandit eyes your possessions.
+~
+The bandit looks ragged and underfed.  His eyes gleam as they float over your
+clothing and possessions.  "Spare a coin, friend?" he grins.
+~
+64|128 0 -100 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25201
+bandit thief~
+a bandit~
+A bandit fingers her sharp dagger.
+~
+This robber stares at you eagerly, her sharp stiletto in hand.  She winks and
+blows you a kiss, and you unconsciously protect your purse with your hand.
+~
+64|128 0 -100 S
+16 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#25202
+bandit thief leader~
+the bandit leader~
+The bandit leader demands you hand over your gold.
+~
+The bandit leader is muscular and tall.  His dirty clothes are somewhat finer
+than those of his ragged band.  He grins widely.
+~
+64 0 -200 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 15 'teacher base'
+& 75 'thievery skills'
+& 75 'armed combat knowledge'
+#25203
+guard outpost~
+an outpost guard~
+An outpost guard stands by the gate.
+~
+The guard stands by the gate, eyeing you carefully.  It is unlikely that you
+will ever become friends.  "What's the password?" he grunts.
+~
+2|64 0 1000 S
+16 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25204
+soldier outpost~
+an outpost soldier~
+An outpost soldier patrols the area.
+~
+The soldier strolls throughout the outpost.  He looks young and inexperienced,
+holding his sword awkwardly in his slightly oversized suit of armour.
+~
+64 0 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25205
+commander outpost~
+the outpost commander~
+The outpost commander watches you carefully.
+~
+The commander is an immense man, yelling orders to his troops, who scatter at
+his command.  He watches you attentively, suspicion growing clearly across his
+features.
+~
+64 0 50 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25206
+soldier outpost~
+an outpost soldier~
+An outpost soldier struggles to repel the attackers.
+~
+The terrified soldier tries his hardest to defend the fort against the invading
+legionaries, who he realises are better equipped and superior fighters.
+~
+64 0 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25207
+legionnaire soldier~
+a legionnaire~
+A legionnaire has forced his way into the courtyard.
+~
+The finely armoured legionnaire engages his opponents with studied precision.
+~
+64 0 -10 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25208
+centurion~
+a centurion~
+A centurion barks orders at his troops.
+~
+The centurion towers above his men, relishing the battle and issuing orders
+between hearty laughs.  He considers you for a moment before dismissing you
+as rabble.  "Onwards, boys!" he roars.  "Let's clean up this rat hole!"
+~
+64 0 -100 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25209
+mammoth~
+a mammoth~
+A huge mammoth trumpets before you.
+~
+The woolly mammoth is gigantic, two impressive tusks curling from his maw.  
+The animal looks crazed and has been illkept and tortured.
+~
+64 0 0 S
+21 0 0 0d0+0 0d0+0
+128|36 0
+8 8 1
+#25210
+jailor suetonius~
+Suetonius~
+Suetonius the jailor grins evilly as he leans towards you...
+~
+Suetonius drools as he leans over you, his obese body oozing sweat and covered
+in grime.  He giggles like a little girl.  "On your knees," he gloats.  "You're
+gonna hurt in the morning!"
+~
+2|64 0 -200 S
+18 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25211
+prisoner miserable~
+a miserable prisoner~
+A miserable prisoner looks dejected and wretched.
+~
+The prisoner cowers at your approach.  When questioned, he whimpers and mutters
+something unintelligible.
+~
+64|128 0 100 S
+12 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25212
+guard prison~
+a prison guard~
+A prison guard patrols the corridors.
+~
+The guard looks mean and scowls as you advance.
+~
+32|64 0 -15 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25213
+gladiator~
+a gladiator~
+A gladiator stands ready for combat.
+~
+The gladiator has his sword ready as he carefully skirts to your flank.  The
+crowd cheers him on as he formulates his attack.
+~
+64 0 -50 S
+18 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25214
+levisticus~
+Levisticus~
+Levisticus deftly swings his barbed net for the cheering crowd.
+~
+Levisticus raises a fist and the bloodthirsty crowd roars!  His large net looks
+viscious: he can wield it with great skill, and deadly efficiency.
+~
+2|64 0 100 S
+21 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25215
+lion starved~
+a starved lion~
+A starved lion eyes you hungrily.
+~
+The wild eyed lion is skin and bone, having been starved into a mad frenzy
+that provides maximum entertainment for the crowd.
+~
+32|64 0 0 S
+17 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#25216
+pagan terrified~
+a terrified pagan~
+A terrified pagan runs for cover.
+~
+The hapless pagan prays fervently for his god to rescue him from the
+surrounding madness.  Meanwhile, god cheers on Levisticus.
+~
+64|128 0 0 S
+8 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25217
+griffin~
+a griffin~
+A gigantic griffin beats off her attackers.
+~
+This magnificent beast is part lion, part dragon and part eagle.  Captured
+from its mountain nest, this exotic creature enthralls the crowd as it 
+massacres its opponents.
+~
+64 524288 0 S
+20 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#25218
+werepanther panther~
+a werepanther~
+A werepanther looks crazed and distraught.
+~
+The werepanther morphs from its human form into a sleek black wildcat, and
+pounces!
+~
+32|64 0 -150 S
+18 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25219
+gorgon~
+a gorgon~
+A gorgon hisses at you.
+~
+This hideously ugly hag bears her jagged fangs at you, her head of serpents
+writhing in agony - each snake has been beheaded to prevent the monster from
+turning her captors into stone.
+~
+64 8 -200 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#25220
+rhinoceros rhino~
+a rhinoceros~
+A rhinoceros grunts loudly.
+~
+The rhino charges headlong across the sand, horns lowered.
+~
+64 8 0 S
+19 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#25221
+weretiger tiger~
+a weretiger~
+A muscular weretiger growls from the shadows.
+~
+The weretiger has become enraged after being captive and starved for so long.
+~
+64 8 0 S
+22 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25222
+catullus animal keeper~
+Catullus~
+Catullus the animal keeper inspects some scrolls.
+~
+The animal keeper is a cruel and sadistic man.  He sits at his desk and reads
+some scrolls - you notice his lips sounding each word as he reads.  After
+hearing the door open he says, "Go give der tigerman some of der meat, den
+give him a good hittin."  He looks up and does a double take.  "Hey!  You
+not Androcles!"
+~
+2|64 0 -400 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25223
+merchant~
+a merchant~
+A merchant goes about his business.
+~
+The merchant wanders about the streets looking for a good bargain, expertly
+weighing up prices and eventual profits.
+~
+64|128 0 150 S
+18 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25224
+nobleman noble~
+a nobleman~
+A nobleman frowns at you.
+~
+Clad in a luxuriant toga, the nobleman sums you up a lowly plebeian.  He avoids
+having to even look at you, and keeps one hand on his money belt.
+~
+64 0 0 S
+19 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25225
+senator~
+a senator~
+A senator rushes past you.
+~
+The esteemed senator hurries to the next sitting of the senate, most likely
+to discuss important matters of state, and the repainting of his summer villa.
+~
+64 0 -200 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25226
+athocles orator~
+Athocles~
+Athocles the orator lectures the crowd.
+~
+Athocles is surrounded by an attentive crowd, who listen silently to his deep
+and clear voice as he discusses life in the city.  The militia watch him
+uneasily, as the crowd is becoming increasingly restless as Athocles reveals
+several incidents of injustice against common folk performed by the ruling
+noble class.
+~
+2|64 8192 400 S
+23 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25227
+watchman watch~
+a watchman~
+A watchman adjusts his armour.
+~
+The watchman is muscular and sports several ugly scars.
+~
+64 0 50 S
+21 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25228
+captain watch~
+the captain of the watch~
+The captain of the watch inspects his men.
+~
+Stocky and balding, the captain is an experienced war veteran having fought
+in many campaigns.  He inspects his men carefully, adjusting straps and
+positioning armour, all the time joking but having complete authority.
+~
+64 0 200 S
+24 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25229
+charger horse~
+a charger~
+A large and well groomed horse snorts at you.
+~
+The charger is a magnificent beast, muscular and with a smooth, gleaming coat.
+It whinnies and snorts ferociously as you wander about the stables.
+~
+2|131072 0 0 S
+17 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#25230
+pirate scurvy~
+a scurvy pirate~
+A scurvy pirate hacks left and right with his cutlass.
+~
+The pirate is sunburned and rough cut, running about the deck with an insane,
+toothless grin.  With nothing to lose, he hacks at the merchant ship's crew
+with reckless abandon.
+~
+4|64 0 -350 S
+22 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25231
+redbeard red beard pirate captain~
+Redbeard~
+Redbeard the pirate captain cackles gleefully.
+~
+The pirate captain stands hands on hips amid the chaos of the battle.  He yells
+and screams to his men amid hearty bellows of laughter.  He spots you in the
+throng and shouts, "Yes, my friends, watch the lads cut these dogs like corn:
+you'll be next!  Hahahar!"
+~
+64 0 -500 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25232
+sailor~
+a sailor~
+A sailor tries desperately to defend the merchant ship.
+~
+The terrified sailor does his best to beat of the pirates' attack, although 
+the battle is all but lost for the crew of the merchant ship.
+~
+64 0 100 S
+16 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25233
+oarsman~
+an oarsman~
+An oarsman tries desperately to escape his shackles.
+~
+The grubby oarsman is thin and grubby, trying in vian to escape his chains.
+~
+2|64 0 0 S
+14 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25234
+hydra~
+a hydra~
+A monstrous hydra rises above the waves.
+~
+The hydra is enormous, rising out of the choppy sea and making quickly for you
+as you flounder in the waves.  Not less than four heads belong to this monster,
+each baring rows of razor sharp teeth.
+~
+2|64 0 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25235
+fury ~
+a fury~
+A fury floats before you.
+~
+The sight of this beast fills you with terror.  The fury floats in the air
+above you, her dirty robes blood stained and covered with nameless filth.
+Her tortured face moans as you step into the cave, her eyes jet black, her
+mouth lined with teeth like needles.  She curses you, and tightens her grip
+about her brilliant, gleaming sword.
+~
+2|64|512 524288 -200 S
+25 0 0 0d0+0 0d0+0
+96 0
+8 8 2
+#25236
+harpy~
+a harpy~
+A ferocious harpy swoops down out of the sky.
+~
+Part woman and part dragon, the harpy dives out of the clouds, screeching
+awfully.
+~
+64 524288 -200 S
+23 0 0 0d0+0 0d0+0
+4 0
+8 8 2
+#25237
+giant~
+a giant~
+A giant towers above you.
+~
+The giant is at least nine feet tall, and built like a dragon.  His skin is
+a dull gray colour, and there is not one hair on his body.  He wears a make
+shift tunic and wields a gigantic hammer.
+~
+64 0 0 S
+24 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25238
+lizard dragon~
+a dragon lizard~
+A monstrous dragon lizard crawls towards you.
+~
+This flightless lizard carries a heavy set of jaws, and lumbers through the
+jungle in search of offal and rotting carcasses.
+~
+64 0 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#25239
+legionnaire soldier~
+a legionnaire~
+A legionnaire patrols the city.
+~
+The legionnaire eyes you suspiciously.
+~
+64 0 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#25200
+armour leather~
+some leather armour~
+Some leather armour lays here.~
+~
+9 0 1|8
+5~ 1~ 6~ 11~ 
+5 0 0
+E
+armour leather~
+The leather armour is patchy and of poor workmanship.
+~
+#25201
+knife~
+a knife~
+A small knife sits on the ground.~
+~
+5 0 1|8192
+0~ 5~ 10~ 11~ 
+5 0 0
+E
+knife small~
+This knife is sharp but quite small, barely functioning as an effective weapon.
+~
+#25202
+shortsword short sword~
+a shortsword~
+You spot a shortsword on the floor.~
+~
+5 0 1|8192
+0~ 6~ 14~ 3~ 
+10 0 0
+E
+shortsword short sword~
+Although small, this blade is sharp, light and easily wielded.
+~
+#25203
+pouch leather~
+a leather pouch~
+A small leather pouch sits here.~
+~
+15 0 1|16384
+20~ 5~ -1~ 11~ 
+5 0 0
+E
+pouch leather~
+This leather pouch serves as a small purse, able to be closed by pulling two
+opposing leather straps.
+~
+#25204
+pass key city~
+a city pass~
+You notice a small square of parchment here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+pass key city~
+The pass is a small piece of vellum carrying some elegant writing.  According
+to the text, this pass will let you gain entrance to 'The City' or 'Surrounding
+Outposts' with 'Merchantman Access and Privileges'.
+~
+#25205
+chainmail chain mail~
+some chainmail armour~
+A flimsy suit of chainmail lies in a heap.~
+~
+9 0 1|8
+6~ 1~ 6~ 11~ 
+10 0 0
+E
+chainmail chain mail~
+The chainmail will serve as adequate protection, although the mail is uneven
+and poorly joined.
+~
+#25206
+shield wooden~
+a small wooden shield~
+A small, round wooden shield lays on the ground.~
+~
+9 0 1|512
+5~ 1~ 6~ 11~ 
+5 0 0
+E
+shield wooden~
+This hardwood shield can be moved quickly and is quite solid.
+~
+#25207
+pomegranate fruit~
+a pomegranate~
+You smell a ripe pomegranate.~
+~
+26 0 1|16384
+15~ giant strength~ cure serious~ ~ 
+5 0 0
+E
+pomegranate fruit~
+This fruit smells delicious, the soft flesh juicy and sickly sweet.
+~
+#25208
+shield square~
+a square shield~
+A decorative square shield rests here.~
+~
+9 0 1|512
+9~ 1~ 6~ 11~ 
+15 0 0
+E
+shield square~
+The square shield is plate metal on a wooden frame, designed to allow a series
+of shields to be held to form a continuous wall.
+~
+#25209
+broadsword broad sword~
+a broadsword~
+A sharp broadsword lays on the floor.~
+~
+5 0 1|8192
+0~ 8~ 16~ 11~ 
+10 0 0
+E
+broadsword broad sword~
+This broadsword carries two keen edges and is extremely effective for fighting
+at close quarters.
+~
+#25210
+helmet legionnaire's~
+a legionnaire's helmet~
+A legionnaire's helmet sits on the ground here.~
+~
+9 0 1|16
+8~ 1~ 6~ 11~ 
+5 0 0
+E
+helmet legionnaire's~
+The helmet is made of iron and has a red plume mounted on its crest.
+~
+#25211
+seal imperial~
+an imperial seal~
+A small scroll contains an elegant script.~
+~
+2 0 1|16384
+18~ bless~ cure light~ ~ 
+5 0 0
+E
+seal imperial~
+The seal has a flying dragon with wings outstretched engraved within a circle.
+Stately writing surrounds the dragon, which reads, "May the Gods Protect the
+Emperor for a Thousand Years."
+~
+#25212
+cape red~
+a red cape~
+You spy a luxuriant red cape.~
+~
+9 0 1|1024
+8~ 1~ 6~ 11~ 
+5 0 0
+A
+18 1
+E
+cape red~
+The cape is fashioned from a hard wearing red cloth, with several gold thread
+engravings.
+~
+#25213
+bowl fruit~
+a fruit bowl~
+A fruit bowl sits here.~
+~
+15 0 1|16384
+40~ 0~ -1~ 11~ 
+5 0 0
+E
+bowl fruit~
+The fruit bowl is made of solid boxwood.  An outdoor scene has been carved
+about its outer face.
+~
+#25214
+key jailor's~
+the jailor's key~
+A small iron key lays here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key jailor's~
+The key looks small and well worn.  A label is attached to the handle, reading
+"IX - XII".
+~
+#25215
+greaves arm~
+some arm greaves~
+The jailor's arm greaves are here.~
+~
+9 0 1|256
+8~ 1~ 6~ 11~ 
+10 0 0
+A
+19 1
+A
+1 1
+E
+greaves arm~
+The greaves are grubby but well made, constructed of hard cured leather
+reinforced with iron bands and studs.
+~
+#25216
+gloves studded leather~
+some studded leather gloves~
+There are a pair of studded leather gloves here.~
+~
+9 0 1|128
+8~ 1~ 6~ 11~ 
+5 0 0
+A
+18 1
+E
+gloves studded leather~
+The gloves are worn but still strong and flexible.  Large, brutal metal studs
+protrude from the knuckles.
+~
+#25217
+milestone~
+a milestone~
+A milestone stands at the edge of the path.~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+100 0 0
+E
+milestone stone writing sign~
+O======================================O
+|                                      |
+|       <-- Midgaard  LXI Miles        |
+| Ovtpost of Argentivm  VIII Miles --> |
+|                                      |
+|   For Adventvrers Level XV to XXV    |
+|                                      |
+|       Geshp : Febrvary MCMXCVI       |
+|                                      |
+O======================================O
+~
+#25218
+banana~
+a banana~
+You spy a delicious banana.~
+~
+19 0 1|16384
+2~ 1~ 6~ 11~ 
+5 0 0
+E
+banana~
+The banana is firm and smells delicious.
+~
+#25219
+fig~
+a fig~
+You smell an over-ripe fig.~
+~
+19 0 1|16384
+1~ 1~ 6~ 11~ 
+5 0 0
+E
+fig~
+This fig smells strongly but looks safe to eat.
+~
+#25220
+shortsword short sword~
+a gladiator's shortsword~
+A viscious shortsword lays here.~
+~
+5 0 1|8192
+0~ 10~ 20~ 11~ 
+10 0 0
+A
+18 1
+E
+shortsword short sword~
+The blade of this weapon is shorter than most, but is wide and honed razor
+sharp.
+~
+#25221
+armour leather~
+some leather armour~
+Some leather armour has been left here.~
+~
+9 0 1|8
+10~ 1~ 6~ 11~ 
+5 0 0
+A
+2 2
+E
+armour leather~
+This armour is of reasonable quality, the leather well used but hard cured.
+~
+#25222
+net barbed~
+a barbed net~
+A large net is lined with sharp barbs.~
+~
+5 0 1|8192
+0~ 12~ 22~ 9~ 
+10 0 0
+A
+19 2
+E
+net barbed~
+This vicious fighting net has its edges lined with thick metal barbs.  Once
+cast over your body, the barbs make escape painful and difficult, and leave
+you prone to attack.
+~
+#25223
+belt leather~
+a thick leather belt~
+A thick leather belt lays on the ground.~
+~
+9 0 1|2048
+8~ 1~ 6~ 11~ 
+10 0 0
+A
+14 -25
+A
+5 1
+E
+belt leather~
+The leather belt is stout and wide, the metal buckle cast as a lion's head.
+~
+#25224
+bullwhip whip~
+a bullwhip~
+A nasty bullwhip lays here.~
+~
+5 0 1|8192
+0~ 12~ 22~ 4~ 
+10 0 0
+A
+18 2
+A
+19 1
+E
+bullwhip whip~
+A score of leather tails tipped with metal balls allow this whip to inflict
+terrible pain.
+~
+#25225
+facemask leather~
+a leather facemask~
+On the floor lays a leather facemask.~
+~
+9 0 1|16
+10~ 1~ 6~ 11~ 
+5 0 0
+A
+19 1
+A
+2 -1
+E
+facemask leather~
+The black leather mask covers most of the head, with two small eyeholes and
+a row of large holes over the mouth.  The leather is strong and would afford 
+good protection from headstrikes.
+~
+#25226
+key house~
+a house key~
+A small key rests on the floor here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key house~
+The key is attached to a thin metal plate, on which a name is engraved:
+"Marcus Scipicus Aquillus".
+~
+#25227
+key steel~
+a steel key~
+There is a small steel key here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key steel~
+The key is made of clean steel.
+~
+#25228
+dagger~
+a dagger~
+A thick-bladed dagger lays here.~
+~
+5 0 1|8192
+0~ 8~ 18~ 11~ 
+5 0 0
+A
+19 1
+A
+18 1
+E
+dagger~
+This robust weapon has a thick single-edged blade which curves outwards towards
+the tip.  The long handle of this thieves' weapon is long enough to allow two
+handed stabs to the back and solid swings to the body.
+~
+#25229
+robes hemp~
+some hemp robes~
+Some robes made of hemp fibre are here.~
+~
+9 0 1|1024
+8~ 1~ 6~ 11~ 
+5 0 0
+A
+24 -2
+A
+13 10
+E
+robes hemp~
+The hemp fibre is rough but heavy and warm.  The robes wrap around most of your
+body and have a wide hood.
+~
+#25230
+toga~
+a toga~
+A large white toga lays in a bundle.~
+~
+9 0 1|1024
+5~ 1~ 6~ 11~ 
+5 0 0
+A
+3 1
+E
+toga~
+The toga is a large sheet of thin cotton that is skillfully wrapped around your
+trunk.  Designed for comfort, the toga hinders arm movement and is too light
+to offer serious protection as armour.
+~
+#25231
+cudgel club~
+a cudgel~
+You spot a small cudgel here.~
+~
+5 0 1|8192
+0~ 2~ 12~ 7~ 
+5 0 0
+E
+cudgel~
+The cudgel is heavy and can effectively knock anything senseless.
+~
+#25232
+coins gold silver~
+some coins~
+Some gold and silver coins lay here.~
+~
+20 0 1|16384
+0~ 45~ 16~ 0~ 
+5 0 0
+#25233
+scroll old~
+an old scroll~
+An old scroll sits on the floor.~
+~
+2 0 1|16384
+20~ cure serious~ cure critical~ cure critical~ 
+5 0 0
+E
+scroll old~
+The scroll contains incantations in a language you can not recognize, although
+some words are vaguely familiar.
+~
+#25234
+rod senator's ivory~
+a senator's rod~
+An ornate ivory rod rests here.~
+~
+4 0 1|16384
+20~ 5~ 5~ thought shield~ 
+10 0 0
+E
+rod senator's ivory~
+The ivory rod is exquisitely carved, with a large amber jewel mounted in the
+end of the instrument.  A large seal with a dragon in flight has been engraved
+on one face of the rod, along with various names and inscriptions.
+~
+#25235
+ticket red~
+a red ticket~
+A small red ticket has been cast here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+ticket small red~
+The ticket has a large fish printed at the top of it.  Below follow the words,
+"Admit One. Cyprises Bay.".
+~
+#25236
+box chest small~
+a small box~~
+~
+15 2097152 512 8 1 0
+10~ 5~ -1~ 11~ 
+5 0 0
+E
+box chest small~
+The flimsy box lies tossed on a dresser.
+~
+#25237
+javelin~
+a javelin~
+A javelin stands in the ground.~
+~
+5 134217728 1|8192
+0~ 8~ 20~ 2~ 
+15 0 0
+A
+2 1
+A
+18 2
+E
+javelin~
+A standard infantry weapon for the City's armies, the javelin is light and able
+to be thrown or wielded in hand.
+~
+#25238
+leggings imperial~
+some imperial leggings~
+Some decorative brass leggings are here.~
+~
+9 0 1|32
+10~ 1~ 6~ 11~ 
+15 0 0
+A
+14 25
+#25239
+breastplate imperial brass breast plate~
+an imperial breastplate~
+A brass breastplate rests on the ground.~
+~
+9 0 1|8
+10~ 1~ 6~ 11~ 
+5 0 0
+A
+4 1
+E
+breastplate brass imperial breast plate~
+Of solid construction, this breastplate is strong and comfortable to wear.
+A large imperial seal decorates the centre of the piece.
+~
+#25240
+cutlass sword~
+a cutlass~
+You spy a sharp cutlass here.~
+~
+5 0 1|8192
+0~ 8~ 20~ 3~ 
+5 0 0
+A
+19 3
+E
+cutlass sword~
+The cutlass has been crudely fashioned and is in very bad conditioned, yet can
+still inflict serious damage.
+~
+#25241
+sash pirate's silk~
+a pirate's sash~
+A silk sash lays on the ground.~
+~
+9 0 1|2048
+6~ 1~ 6~ 11~ 
+5 0 0
+A
+5 1
+A
+18 1
+E
+sash pirate's silk~
+This grubby red sash was once worn by a pirate to show his allegiance to his
+ferocious captain.
+~
+#25242
+ring gold~
+a gold ring~
+A simple gold ring glints from the flagstones.~
+~
+9 0 1|2
+4~ 1~ 6~ 11~ 
+5 0 0
+A
+19 3
+A
+18 2
+A
+3 -2
+E
+ring gold~
+This simple ring would look magnificent if given a good polish.
+~
+#25243
+sword xerces~
+the sword of Xerces~
+A gleaming sword floats in the air before you.~
+~
+5 1|64|1024 1|8192
+0~ 20~ 30~ 11~ 
+10 0 0
+A
+18 5
+A
+19 5
+A
+2 2
+A
+1 2
+E
+sword xerces~
+Carried by the ancient hero Xerces, this blade has many powerful enchantments.
+The sword's workmanship is faultless, made of solid steel with a silver handle
+and pommel.  Legend has it that Xerces won the sword after defeating the
+chimera that guarded the king Hagian's tomb, who had become a powerful lich.
+Although gaining favour with several gods, the immortal Ares became jealous
+of Xerces' increasing popularity as a great warrior, and sent the Furies to 
+slaughter him in his sleep.
+~
+#25244
+oar wooden~
+a wooden oar~
+A large wooden oar stands here.~
+~
+5 0 1|8192
+0~ 5~ 10~ 7~ 
+5 0 0
+A
+18 -3
+E
+oar wooden~
+The wooden oar is large and unwieldy as a weapon.
+~
+#25245
+club wooden~
+a wooden club~
+A gigantic wooden club lays here.~
+~
+5 0 1|8192
+0~ 12~ 24~ 7~ 
+45 0 0
+A
+19 3
+E
+club wooden~
+Roughly carved from a tree trunk or limb, the hammer is a crude but devastating
+weapon.
+~
+#25246
+scroll vellum~
+a vellum scroll~
+You see a vellum scroll.~
+~
+2 0 1|16384
+25~ intellect fortress~ adrenaline control~ ~ 
+5 0 0
+E
+scroll vellum~
+Unrecognisable symbols cover the face of this tattered vellum.
+~
+#25247
+well water~
+a well~
+Water sparkles from within the well.~
+~
+25 0 0
+0~ 0~ 0~ 0~ 
+100 0 0
+E
+well water~
+The water in the well is cool and clean, and perfectly drinkable.
+~
+#25250
+crystal tear~
+a crystal tear~
+A crystal tear glitters on the floor.~
+~
+4 64 16385
+50~ 3~ 3~ prayer~
+5 0 0
+#25251
+tankard~
+Geshp's mithril tankard~
+Geshp's mithril tankard has been left here.~
+~
+17 0 16385
+5~ 0~ 0~ 0~
+5 0 0
+#25252
+pictures~
+Geshp's pictures~
+Geshp's pictures of his cousin have been left here.~
+~
+13 0 16385
+0~ 0~ 0~ 0~
+5 0 0
+
+#0
+
+
+#ROOMS
+#25200
+Rocky Path~
+A rough path wanders through the scrub in an east-west direction.  Small shrubs
+sit in isolated groups amongst the tall grasses here.  The northerly wind
+thrashes the vegetation and makes your travel unpleasant.
+~
+0 4 4
+D1
+~
+~
+0 -1 25201
+D3
+~
+~
+0 -1 1720 
+S
+#25201
+Rocky Path~
+The rocky path stretches east and west.  To the east, some sort of plantation
+or clump of trees is visible.
+~
+0 4 4
+D1
+~
+~
+0 -1 25202
+D3
+~
+~
+0 -1 25200
+S
+#25202
+Olive Grove~
+Magnificent olive trees rise above you in rough rows.  The sun glints through
+the swaying canopy and you are less exposed to the wind.  The olive grove
+continues east and south, while the path leads back west.
+~
+0 0 2
+D1
+~
+~
+0 -1 25203
+D2
+~
+~
+0 -1 25204
+D3
+~
+~
+0 -1 25201
+S
+#25203
+Olive Grove~
+Olive trees stand about you, the air ripe with the smell of their fruit.
+The grove spreads west and south, while a path winds east into the open.
+~
+0 0 2
+D1
+~
+~
+0 -1 25206
+D2
+~
+~
+0 -1 25205
+D3
+~
+~
+0 -1 25202
+S
+#25204
+Olive Grove~
+Olive trees tower about you, the air ripe with the smell of their fruit.
+The grove spreads north and east from here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25202
+D1
+~
+~
+0 -1 25205
+S
+#25205
+Olive Grove~
+Olive trees tower about you, the air ripe with the smell of their fruit.
+The grove spreads north and west from here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25203
+D3
+~
+~
+0 -1 25204
+S
+#25206
+Stony Path~
+A stony path winds through the wilderness.  The olive grove is visible to your
+west, while a large wooden structure rises to the east.
+~
+0 4 2
+D1
+~
+~
+0 -1 25207
+D3
+~
+~
+0 -1 25203
+S
+#25207
+Outpost Gates~
+You march to the gates of a large wooden outpost: the wooden portals are firmly
+shut.  Two towers rise to the north and south of your position, from which
+burly soldiers train their weapons on you and wait for your next move.  The
+stony path winds back to the west.
+~
+0 0 1
+D1
+~
+gate door~
+2 25204 25208
+D3
+~
+~
+0 -1 25206
+S
+#25208
+Guard Post~
+Wooden booths line the path from the gates into the outpost.  The lumber roof
+contains many hatch covered holes that allow the defenders to hurl rocks and
+pour oil onto invading footmen.  An expansive courtyard opens out to the east.
+~
+0 8 1
+D1
+~
+~
+0 -1 25209
+D3
+~
+gate door~
+2 25204 25207
+S
+#25209
+The Courtyard~
+You enter a large courtyard filled with soldiers and workmen.  Equipment stands
+in piles and sacks are being hauled by men under the watchful eye of their
+commander.  The courtyard stretches north, east and south of here, while the
+gates can be accessed via a passage to the west.
+~
+0 0 1
+D0
+~
+~
+0 -1 25210
+D1
+~
+~
+0 -1 25212
+D2
+~
+~
+0 -1 25214
+D3
+~
+~
+0 -1 25208
+S
+#25210
+The Courtyard~
+Soldiers work busily with their equipment in this large courtyard, which
+spreads to the east and south.  A ladder near the wall leads up onto one of
+the outpost's towers.
+~
+0 0 1
+D1
+~
+~
+0 -1 25211
+D2
+~
+~
+0 -1 25209
+D4
+~
+~
+0 -1 25215
+S
+#25211
+The Courtyard~
+Soldiers work busily with their equipment in this large courtyard, which
+spreads to the west and south.  A door stands to the east.
+~
+0 0 1
+D1
+~
+~
+1 -1 25218
+D2
+~
+~
+0 -1 25212
+D3
+~
+~
+0 -1 25210
+S
+#25212
+The Courtyard~
+Soldiers work busily with their equipment in this large courtyard, which
+spreads to the north, west and south.  A well is visible east of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 25211
+D1
+~
+~
+0 -1 25217
+D2
+~
+~
+0 -1 25213
+D3
+~
+~
+0 -1 25209
+S
+#25213
+The Courtyard~
+Soldiers work busily with their equipment in this large courtyard, which
+spreads to the north and west.  There is a door to the east.
+~
+0 0 1
+D0
+~
+~
+0 -1 25212
+D1
+~
+~
+1 -1 25219
+D3
+~
+~
+0 -1 25214
+S
+#25214
+The Courtyard~
+Soldiers work busily with their equipment in this large courtyard, which
+spreads to the north and east.  A climbs up into one of the outpost's towers.
+~
+0 0 1
+D0
+~
+~
+0 -1 25209
+D1
+~
+~
+0 -1 25213
+D4
+~
+~
+0 -1 25216
+S
+#25215
+Watchtower~
+You climb through an open hatch onto the floor of the watchtower.  The view
+from here is impressive, you can see most of the countryside for miles around.
+~
+0 0 1
+D5
+~
+~
+0 -1 25210
+S
+#25216
+Watchtower~
+You climb through an open hatch onto the floor of the watchtower.  The view
+from here is impressive, you can see most of the countryside for miles around.
+~
+0 0 1
+D5
+~
+~
+0 -1 25214
+S
+#25217
+The Well~
+A low set brick well sinks into the ground of the courtyard.  The water is
+clear and rises to about a foot below the edge of the well.  Wooden buildings
+lay to the north and south, although you may only gain entrance to them from
+the courtyard, which opens west from here.
+~
+0 0 1
+D3
+~
+~
+0 -1 25212
+S
+#25218
+Barracks~
+This room serves as living quarters for the outpost's soldiers.  Several solid
+bunks line the walls, and a large table and bench sits and the end of the room.
+~
+0 0 0
+D3
+~
+~
+1 -1 25211
+S
+#25219
+Armoury~
+As you step into the armoury you hear shouts ring out from the courtyard, then
+a trumpet sounds an ear-piercing alarm.  "INVADERS!" cries a man from one of
+the watchtowers.  "We're being attacked!"  The outpost soldiers snatch their
+weapons and scramble into formation, as arrows and small boulders rain down
+upon the fort.  "Bowmen!  Ready the bowmen!" yells one of the captains.
+"Brace the gates!" yells another, "Quickly!"  A second later you hear a loud
+CRACK and the splintering of wood.  "Man the gates!  By the gods, hurry!"
+You hesistate before joining the fracas.
+~
+0 4 0
+D3
+~
+~
+0 -1 25220
+S
+#25220
+The Courtyard~
+Madness greets you in the courtyard.  The walls of the outpost are on fire in
+several places, and the ground is a mess of broken arrows, boulders, discarded
+weapons and lifeless bodies.  Several invaders have breached the gates, and
+fierce hand to hand combat has broken out about you.  Yelling fills the air
+as the outpost commander tries to regroup his panicking men, who are severely
+outnumbered and outclassed.  You can duck north and west from here.
+~
+0 0 1
+D0
+~
+~
+0 -1 25223
+D3
+~
+~
+0 -1 25221
+S
+#25221
+The Courtyard~
+Fierce melee breaks out about you as more invaders pour into the outpost.  You
+can force your way north and east from here.
+~
+0 0 1
+D0
+~
+~
+0 -1 25222
+D1
+~
+~
+0 -1 25220
+S
+#25222
+The Courtyard~
+Fierce melee breaks out about you as more invaders pour into the outpost.  You
+can force your way north, south and east from here.  The gate hangs broken on
+its hinges to the west.
+~
+0 0 1
+D0
+~
+~
+0 -1 25225
+D1
+~
+~
+0 -1 25223
+D2
+~
+~
+0 -1 25221
+D3
+~
+~
+0 -1 25226
+S
+#25223
+The Courtyard~
+Fierce melee breaks out about you as more invaders pour into the outpost.  You
+can force your way north, south and west from here.
+~
+0 0 1
+D0
+~
+~
+0 -1 25224
+D2
+~
+~
+0 -1 25220
+D3
+~
+~
+0 -1 25222
+S
+#25224
+The Courtyard~
+Fierce melee breaks out about you as more invaders pour into the outpost.  You
+can force your way south and west from here.
+~
+0 0 1
+D2
+~
+~
+0 -1 25223
+D3
+~
+~
+0 -1 25225
+S
+#25225
+The Courtyard~
+Fierce melee breaks out about you as more invaders pour into the outpost.  You
+can force your way south and east from here.
+~
+0 0 1
+D1
+~
+~
+0 -1 25224
+D2
+~
+~
+0 -1 25222
+S
+#25226
+Outpost Gate~
+You quickly head for the open gate, hoping to escape the surrounding commotion.
+As you near the doors, several figures emerge from the shadows.  A gruff voice
+says, "Well, what do we have here?  Rats fleeing the sinking ship, eh boys?"
+Several of the figures snicker, and you hear sheathes ring as metal blades are
+drawn.  As you ready for battle, something whacks the back of your head and you
+see stars.  Falling to the ground, the snickers turn into cruel laughter. "A
+present for my dear uncle," you hear the first voice sneer.  You quickly fall
+unconscious.  You wake periodically as you a carried over a soldier's back.
+What seems like hours later, you are hauled to your feet and shoved roughly
+to the east, a door clanging shut behind you.
+~
+0 4 1
+D1
+~
+~
+0 -1 25227
+S
+#25227
+Dank Prison Cell~
+You are in a tiny cell.  The walls are covered with slime, while dirty straw
+layers the floor.  The room is filthy and smells absolutely disgusting.  A tiny
+grilled window near the ceiling lets sunlight penetrate the gloom, as well as
+allowing storm water pour into the cell when it rains in the streets above.
+~
+0 1 0
+D3
+~
+~
+2 25214 25232
+S
+#25228
+Prison Cell~
+The cell is grubby and wet.  Dirty straw covers the ground and disgusting slime
+oozes down the stone walls.
+~
+0 1 0
+D3
+~
+~
+1 -1 25231
+S
+#25229
+Prison Cell~
+The cell is grubby and wet.  Dirty straw covers the ground and disgusting slime
+oozes down the stone walls.
+~
+0 1 0
+D3
+~
+~
+1 -1 25233
+S
+#25230
+Prison Cell~
+The cell is grubby and wet.  Dirty straw covers the ground and disgusting slime
+oozes down the stone walls.
+~
+0 1 0
+D2
+~
+~
+1 -1 25231
+S
+#25231
+Dungeon~
+The dungeon is well equipped to serve as a prison and torture room.  Manacles
+hang in neat rows and a rack has seen recent use.  A small bed of coals casts
+a warm glow through this terrible chamber.  Stout doors open to the north and
+east, and the dungeon returns south.
+~
+0 0 0
+D0
+~
+~
+1 -1 25230
+D1
+~
+~
+1 -1 25228
+D2
+~
+~
+0 -1 25232
+S
+#25232
+Dungeon~
+The dungeon is well equipped to serve as a prison and torture room.  Manacles
+hang in neat rows and a rack has seen recent use.  A small bed of coals casts
+a warm glow through this terrible chamber.  A stout door opens east, while the
+dungeon stretches north and south from here.
+~
+0 0 0
+D0
+~
+~
+0 -1 25231
+D1
+~
+~
+2 25214 25227
+D2
+~
+~
+0 -1 25233
+S
+#25233
+Dungeon~
+The dungeon is well equipped to serve as a prison and torture room.  Manacles
+hang in neat rows and a rack has seen recent use.  A small bed of coals casts
+a warm glow through this terrible chamber.  Stout doors open to the east and
+west, while an archway leads south.  The dungeon returns north.
+~
+0 0 0
+D0
+~
+~
+0 -1 25232
+D1
+~
+~
+1 -1 25229
+D2
+~
+~
+0 -1 25234
+D3
+~
+~
+1 -1 25235
+S
+#25234
+Jailor's Room~
+Although a mess, the jailor's quarters are comparative luxury when compared to
+the rest of the dungeon.  An oil lamps lights the room, which contains sparse
+items of furniture.
+~
+0 0 0
+D0
+~
+~
+0 -1 25233
+S
+#25235
+Tunnel~
+Water drips steadily from the ceiling of this dank tunnel, which winds to the
+west.  The door to the dungeon is directly east.
+~
+0 1 0
+D1
+~
+~
+1 -1 25233
+D3
+~
+~
+0 -1 25236
+S
+#25236
+Tunnel~
+The tunnel branches north here, with bright daylight streaming in from a large
+open area.  You can head west and east along the gloomy tunnel.
+~
+0 1|4 0
+D0
+~
+~
+0 -1 25237
+D1
+~
+~
+0 -1 25235
+D3
+~
+~
+0 -1 25246
+S
+#25237
+The Arena~
+You emerge into a large, sand covered arena.  Men and beasts are locked in
+fierce combat as a tremendous crowd packed into surrounding terraces roars and
+chants.  "Up Levisticus!" yells a man above you.  "Get him!  Skewer him!"
+screeches a woman.  The arena opens north, west and east, while you can retreat
+back into the tunnel to the south.
+~
+0 0 2
+D0
+~
+~
+0 -1 25245
+D1
+~
+~
+0 -1 25238
+D2
+~
+~
+0 -1 25236
+D3
+~
+~
+0 -1 25244
+S
+#25238
+The Arena~
+Madness consumes the crowd.  You are pelted with rotten fruit from the stands.
+A group of boys chant obscenities of which the most polite is, "May you be
+eaten by the lions."  The arena opens west and north.
+~
+0 0 2
+D0
+~
+~
+0 -1 25239
+D3
+~
+~
+0 -1 25237
+S
+#25239
+The Arena~
+The roar of the crowd is deafening as combat unfolds about you.  Dead and dying
+creatures are dragged from the arena on hooks by nervous looking slaves.  You
+can head north, west and south.
+~
+0 0 2
+D0
+~
+~
+0 -1 25240
+D2
+~
+~
+0 -1 25238
+D3
+~
+~
+0 -1 25245
+S
+#25240
+The Arena~
+Men and beasts fight desperately in combat to the death, as the crowd screams
+and yells.  The arena stretches west and south from here.
+~
+0 0 2
+D2
+~
+~
+0 -1 25239
+D3
+~
+~
+0 -1 25241
+S
+#25241
+The Arena~
+A metal gate covers the entrance to a small passage leading north from the
+arena.  High above you in a covered stand, a nobleman surrounded by soldiers
+presides over the combat.  He looks down at you scornfully.  With an upraised
+fist, he points his thumb down at you.  The arena opens to the west, south and
+east.
+~
+0 0 2
+D0
+~
+gate door~
+2 25227 25255
+D1
+~
+~
+0 -1 25240
+D2
+~
+~
+0 -1 25245
+D3
+~
+~
+0 -1 25242
+S
+#25242
+The Arena~
+Men and beasts fight desperately in combat to the death, as the crowd screams
+and yells.  The arena stretches east and south from here.  "Up the lions!"
+yells a man old enough to be your great grandfather.
+~
+0 0 2
+D1
+~
+~
+0 -1 25241
+D2
+~
+~
+0 -1 25243
+S
+#25243
+The Arena~
+Men and beasts fight desperately in combat to the death, as the crowd screams
+and yells.  The arena stretches north, west and south from here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25242
+D1
+~
+~
+0 -1 25245
+D2
+~
+~
+0 -1 25244
+S
+#25244
+The Arena~
+The surrounding chaos and the din made by the bloodthirsty crowd excites and
+confuses you at the same time.  The roar of animals pierces the air, with the
+pathetic screams of the less successful fighters intermingling the cries.
+In the stands above you, soldiers hurl citizens that are not making enough
+noise into the arena with the gladiators.  Anxious people nearby make as much
+commotion as they can.  "Kill the swine!  Up Levisiticus!"  You can head north
+and east from here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25243
+D1
+~
+~
+0 -1 25237
+S
+#25245
+The Arena~
+You have made it to the centre of the arena, which stretches about you in every
+direction.  The scene is chaotic: body parts and broken weapons litter the
+ground, and there must be at least two thousand maddened spectators cheering
+from the stands.
+~
+0 0 2
+D0
+~
+~
+0 -1 25241
+D1
+~
+~
+0 -1 25239
+D2
+~
+~
+0 -1 25237
+D3
+~
+~
+0 -1 25243
+S
+#25246
+Tunnel~
+The dim tunnel opens into a large chamber to the west, while stretching back
+further east.
+~
+0 1 0
+D1
+~
+~
+0 -1 25236
+D3
+~
+~
+1 -1 25247
+S
+#25247
+Holding Cells~
+Cages line the perimeter of this large chamber, which is poorly lit and smells
+very bad.  Trapped animals growl and whimper from cages to the west and south,
+while the room continues north.
+~
+0 0 0
+D0
+~
+~
+0 -1 25248
+D1
+~
+~
+1 -1 25246
+D2
+~
+gate door~
+1 -1 25254
+D3
+~
+gate door~
+1 -1 25253
+S
+#25248
+Holding Cells~
+Cages line the perimeter of this large chamber, which is poorly lit and smells
+very bad.  Noises come from a closed cage to the west, while the room continues
+north and south.
+~
+0 0 0
+D0
+~
+~
+0 -1 25249
+D2
+~
+~
+0 -1 25247
+D3
+~
+gate door~
+1 -1 25252
+S
+#25249
+Holding Cells~
+Cages line the perimeter of this large chamber, which is poorly lit and smells
+very bad.  Trapped animals growl and whimper from a cage to the west, and a
+solid door stands to the north.  The chamber opens south.
+~
+0 0 0
+D0
+~
+~
+1 -1 25250
+D2
+~
+~
+0 -1 25248
+D3
+~
+gate door~
+1 -1 25251
+S
+#25250
+Animal Master's Quarters~
+This small chamber is very untidy: stools lay upended, papers lay all over the
+floor and half-eaten food attracts a selection of insects.
+~
+0 0 0
+D2
+~
+~
+1 -1 25249
+S
+#25251
+Animal Pen~
+Excrement and nameless filth cover the floor of this pen, that has been used
+recently to store animals for combat in the arena.
+~
+0 1 0
+D1
+~
+gate door~
+1 -1 25249
+S
+#25252
+Animal Pen~
+Excrement and nameless filth cover the floor of this pen, that has been used
+recently to store animals for combat in the arena.
+~
+0 1 0
+D1
+~
+gate door~
+1 -1 25248
+S
+#25253
+Animal Pen~
+Excrement and nameless filth cover the floor of this pen, that has been used
+recently to store animals for combat in the arena.
+~
+0 1 0
+D1
+~
+gate door~
+1 -1 25247
+S
+#25254
+Animal Pen~
+Excrement and nameless filth cover the floor of this pen, that has been used
+recently to store animals for combat in the arena.
+~
+0 1 0
+D0
+~
+gate door~
+1 -1 25247
+S
+#25255
+Dark Passage~
+A wide passage leads out of the arena into an orderly city street.  The noise
+from the arena is muffled and much quieter.  You thank the gods that you have
+survived the circus and gladly leave the madness behind you.  You turn your
+attention towards avoiding the authorities and escaping from this foreign city.
+~
+0 0 0
+D0
+~
+gate door~
+0 -1 25256
+D2
+~
+~
+2 25227 25241
+S
+#25256
+City Street~
+You stand in the street of a majestic city.  Tall, columned buildings rise
+many stories above you, and stalls and shops crowd the edges of the road.  
+Many people hurry across the flagstones and the air is alive with chatter
+and laughter.  The street runs in an east-west direction, and some sort of
+market is visible directly north.
+~
+0 0 1
+D0
+~
+~
+0 -1 25262
+D1
+~
+~
+0 -1 25257
+D3
+~
+~
+0 -1 25266
+S
+#25257
+City Street~
+You wander through the wide streets of the city.  Closed doors lead inside
+buildings to the south and east, with the road running north and west.
+~
+0 0 1
+D0
+~
+~
+0 -1 25258
+D1
+~
+~
+1 -1 25269
+D2
+~
+~
+1 -1 25271
+D3
+~
+~
+0 -1 25256
+S
+#25258
+City Street~
+The street runs north and south through the crowded city.  A stout door opens
+into a private house to the east.
+~
+0 0 1
+D0
+~
+~
+0 -1 25259
+D1
+~
+~
+1 25226 25268
+D2
+~
+~
+0 -1 25257
+S
+#25259
+City Street~
+Stalls line the footpaths here, while a large crowd can be seen in a market
+or square to the west.  The street continues south, while a tall aqueduct rises
+to the east.
+~
+0 0 1
+D1
+~
+~
+0 -1 25267
+D2
+~
+~
+0 -1 25258
+D3
+~
+~
+0 -1 25260
+S
+#25260
+The Forum~
+The market place is alive with people and trained beasts.  Packed stalls sell
+everything from fruit and clothing to livestock and magical elixirs.  Street
+performers dance about and fill the air with cheerful music.  The authorities
+watch you carefully - you stick out like a sore thumb in the throng.  The Forum
+stretches west and south, while you can gain access to the main street by
+leaving east.
+~
+0 0 1
+D1
+~
+~
+0 -1 25259
+D2
+~
+~
+0 -1 25261
+D3
+~
+~
+0 -1 25263
+S
+#25261
+The Forum~
+The market place is alive with people and trained beasts.  Packed stalls sell
+everything from fruit and clothing to livestock and magical elixirs.  Street
+performers dance about and fill the air with cheerful music.  The authorities
+watch you carefully - you stick out like a sore thumb in the throng.  The Forum
+stretches west and north.
+~
+0 0 1
+D0
+~
+~
+0 -1 25260
+D3
+~
+~
+0 -1 25262
+S
+#25262
+The Forum~
+The market place is alive with people and trained beasts.  Packed stalls sell
+everything from fruit and clothing to livestock and magical elixirs.  Street
+performers dance about and fill the air with cheerful music.  The authorities
+watch you carefully - you stick out like a sore thumb in the throng.  The Forum
+stretches north and east, while the street is visible to the south.
+~
+0 0 1
+D0
+~
+~
+0 -1 25263
+D1
+~
+~
+0 -1 25261
+D2
+~
+~
+0 -1 25256
+S
+#25263
+The Forum~
+The market place is alive with people and trained beasts.  Packed stalls sell
+everything from fruit and clothing to livestock and magical elixirs.  Street
+performers dance about and fill the air with cheerful music.  The authorities
+watch you carefully - you stick out like a sore thumb in the throng.  The Forum
+stretches east and south, while you spy the street to the west.
+~
+0 0 1
+D1
+~
+~
+0 -1 25260
+D2
+~
+~
+0 -1 25262
+D3
+~
+~
+0 -1 25264
+S
+#25264
+City Street~
+You travel along the city street, which travels south.  A large market lays to
+the east, while a waterfront can been seen to the west.
+~
+0 0 1
+D1
+~
+~
+0 -1 25263
+D2
+~
+~
+0 -1 25265
+D3
+~
+~
+0 -1 25276
+S
+#25265
+City Street~
+A pair of beggars grovel for a few coins before you chase them off.  A large
+building can be entered through a door directly west, while the street travels
+north and south.
+~
+0 0 1
+D0
+~
+~
+0 -1 25264
+D2
+~
+~
+0 -1 25266
+D3
+~
+~
+1 -1 25275
+S
+#25266
+City Street~
+The street makes a turn here leading west and north.  Large horses are being
+lead by small boys into a long stable via a gate to the west.  A small door
+stands to the south, leading into a tall building.
+~
+0 0 1
+D0
+~
+~
+0 -1 25265
+D1
+~
+~
+0 -1 25256
+D2
+~
+~
+1 -1 25272
+D3
+~
+~
+1 -1 25273
+S
+#25267
+Aqueduct~
+A feat of engineering, this magnificent structure pipes fresh water from miles
+around into a system that supplies every residence with a constant stream of
+fresh water.  The aqueduct is at least a hundred feet high, and winds eastwards
+into the distant mountains.
+~
+0 0 1
+D3
+~
+~
+0 -1 25259
+S
+#25268
+House~
+Boxes and crates filled with goods are stacked against the walls of this house.
+Most of the wares are cheap ornaments and pottery, or large floor mats or
+engravings.  A small box lays on top of a cabinet, and a fireplace is stuffed
+with rubbish.  You find nothing else of interest in the building.
+~
+0 8 0
+D3
+~
+~
+1 25226 25258
+S
+#25269
+Garrison~
+The city garrison is well lit and kept sparkling clean by the watch.  Polished
+weapons stand in their racks and several beds are neatly arranged against the
+eastern wall.
+~
+0 8 0
+D2
+~
+~
+0 -1 25270
+D3
+~
+~
+1 -1 25257
+S
+#25270
+Garrison~
+The city garrison is well lit and kept sparkling clean by the watch.  Polished
+weapons stand in their racks and several beds are neatly arranged against the
+eastern wall.
+~
+0 8 0
+D0
+~
+~
+0 -1 25269
+S
+#25271
+House~
+This residence has been elegantly furnished.  Several couches are organised
+about a low set table still covered with food and jugs of sweet wine.
+~
+0 8 0
+D0
+~
+~
+1 -1 25257
+S
+#25272
+House~
+Musical instruments lay about the living room and atrium of this house.  Sheet
+music and play manuscripts sit in heaps, next to shelves stacked with books.
+~
+0 8 0
+D0
+~
+~
+1 -1 25266
+S
+#25273
+Stables~
+The spacious stables are used to keep finely bred stallions belonging to the
+city noblemen.  Several youths run about with buckets of feed and water.
+~
+0 8 0
+D0
+~
+~
+0 -1 25274
+D1
+~
+~
+1 -1 25266
+S
+#25274
+Stables~
+The spacious stables are used to keep finely bred stallions belonging to the
+city noblemen.  Several youths run about with buckets of feed and water.
+~
+0 8 0
+D2
+~
+~
+0 -1 25273
+S
+#25275
+House~
+This house is sparsely furnished and appears to have been abandoned.
+~
+0 8 0
+D1
+~
+~
+1 -1 25265
+S
+#25276
+Waterfront~
+The waterfront is alive with merchentmen and sailors, who organize the carting
+of goods off several vessels which have just docked.  A ships captain stands
+on the wharf as men load equipment onto his ship.  "Boarding now!" he yells.
+"Those leaving for Cyprises must board now.  Have your tickets ready, we leave
+shortly!"  The gangway lays directly behind the captain to the north, while
+you can return east to the city centre.
+~
+0 0 1
+D0
+~
+gangway~
+6 25235 25277
+D1
+~
+~
+0 -1 25264
+S
+#25277
+Merchant Ship~
+You board the ship, and soon the captain casts off.  He approaches you warmly.
+"It should be a pleasant journey.  The weather is warm and the winds gentle.
+We will dock in Cyprises in less than three days."  You settle down on the deck
+and relax in the sun, glad to leave the city behind.  You wave to the soldiers
+that watch you suspiciously from the wharf; they scowl.  The wind dies a little
+and the captain instructs the oarsmen to row the vessel out of the harbour.  
+The ship makes rapid progress away from the mainland, heading in an easterly
+direction.  After several hours, a sailor reports from the crow's nest high
+above the deck.  "Captain!" he yells.  "There's a ship approaching from the
+south."  You all scan the southern horizon: a tiny specks sits in the distance.
+The captain mutters to himself.  "Stay on course."
+~
+0 4 1
+D1
+~
+~
+0 -1 25278
+S
+#25278
+Pirates!~
+The strange vessel makes rapid headway, and it soon becomes apparent the ship
+is charging strait for yours.  The captain is anxious and orders his men to
+row harder, but it is no use: the ship closes in fast.  From about half a mile
+distant, a volley of flaming arrows is shot from the vessel, which the crew
+have identified as belonging to the dreaded pirate Redbeard, who they believe
+impales his captured victims on spikes lining his galleon.  The pirate vessel
+comes up against the merchant ship and the swarthy bandits quickly board the
+deck.
+~
+0 4 1
+D1
+~
+~
+0 -1 25279
+S
+#25279
+Main Deck~
+The ship's crew try their best to repel the pirates as they clamber over the
+side of the vessel.  The battle is fierce and viscious - the pirates have 
+little to lose and enjoy a bloodbath.  The ship's mainsail is tattered and
+on fire in several places; boulders hurled from catapults on the pirate's
+galleon have breached the hull and the ship is listing to the side.  You can
+fight your way north and south along the main deck or can press east towards
+the bow of the ship.  A hatch opens downwards here into the hull.
+~
+0 0 1
+D0
+~
+~
+0 -1 25280
+D1
+~
+~
+0 -1 25282
+D2
+~
+~
+0 -1 25281
+D5
+~
+hatch door~
+1 -1 25283
+S
+#25280
+Main Deck~
+Spilled oil burns on the deck here, ignited during the battle.  The ship is
+listing heavily and you struggle to keep your balance as the deck rises beneath
+you.  You can slide back south or clamber east to the bow of the vessel.
+~
+0 0 1
+D1
+~
+~
+0 -1 25282
+D2
+~
+~
+0 -1 25279
+S
+#25281
+Main Deck~
+The deck and hull has been smashed in several places here and sea water pours
+in beneath you.  You can climb northwards up the deck or head east along the
+bow.
+~
+0 0 1
+D0
+~
+~
+0 -1 25279
+D1
+~
+~
+0 -1 25282
+S
+#25282
+Fore Deck~
+Chaos erupts about the deck - the ship is on fire in places and beginning to
+sink.  A ladder leads up into the forecastle from here, or you can force your
+way back west.
+~
+0 0 1
+D3
+~
+~
+0 -1 25279
+D4
+~
+~
+0 -1 25284
+S
+#25283
+Below Deck~
+You climb below deck to find it half underwater.  Hysterical oarsmen attempt
+desperately to escape from the manacles that chain them to the deck - half of
+them have drowned already.  You can still climb upwards onto the deck.
+~
+0 0 1
+D4
+~
+hatch door~
+1 -1 25279
+S
+#25284
+Forecastle~
+You clamber up into the forecastle.  The merchant ship is in trouble: it is
+sinking and on fire in several places.  The crew are all but slaughtered, and
+the pirates try to salvage as much of the goods from below deck as they can.
+The rogues swarm from the ship as the main deck begins to slide under the
+rough waves, and the galleon pulls away.  You realise you are in desperate
+trouble.  You step up onto the edge of the forecastle and peer over the bow.
+The sea is rough and in one spot foaming and trashing.  You say a prayer and
+dive into the water as the merchant ship sinks to its grave.
+~
+0 4 1
+D5
+~
+~
+0 -1 25285
+S
+#25285
+Turbulent Ocean~
+You plummet into the waves, which are becoming rougher by the minute.  The
+bubbling foam subsides for a moment, before several serpentine heads rise from
+the water...
+~
+0 0 4
+D1
+~
+~
+0 -1 25286
+S
+#25286
+Beach~
+You are tossed about by the waves and try desperately to stay afloat.  After
+clinging to pieces of wreckage and flotsam for several hours, you are washed
+up upon a hot sandy beach.  After resting for a moment, you decide whether to
+travel north or south along the beach, or head east into some jungle.
+~
+0 0 2
+D0
+~
+~
+0 -1 25287
+D1
+~
+~
+0 -1 25290
+D2
+~
+~
+0 -1 25292
+S
+#25287
+Beach~
+The beach is clean and golden, the sun oppressively hot.  You can follow the
+sand to the east or south.
+~
+0 0 2
+D1
+~
+~
+0 -1 25288
+D2
+~
+~
+0 -1 25286
+S
+#25288
+Beach~
+The hot beach stretches to the west and south.  A steep cliff juts out to the
+north.
+~
+0 0 2
+D0
+~
+~
+0 -1 25289
+D2
+~
+~
+0 -1 25290
+D3
+~
+~
+0 -1 25287
+S
+#25289
+Cliff~
+You tread carefully out onto a cliff top. The waves thrash about jagged rocks
+about ten feet below you.  Scanning the horizon, you see nothing but endless
+ocean... you pray that there is a way off the island.
+~
+0 0 2
+D2
+~
+~
+0 -1 25288
+S
+#25290
+Jungle~
+Tall palms and long, spiky leafed bushes abound in this cool and spacious
+jungle.  The air is alive with the calls of birds and animals, although you can
+see little movement in the branches.
+~
+0 0 3
+D0
+~
+~
+0 -1 25288
+D1
+~
+~
+0 -1 25293
+D2
+~
+~
+0 -1 25291
+D3
+~
+~
+0 -1 25286
+S
+#25291
+Beach~
+The beach is a little rockier here, and the ocean stretches around to the
+east.  You can travel north and west along the sand.
+~
+0 0 2
+D0
+~
+~
+0 -1 25290
+D3
+~
+~
+0 -1 25292
+S
+#25292
+Beach~
+The sun leaves you sweltering and you consider taking cover in the jungle to
+the northeast.  You can travel north and east along the beach.
+~
+0 0 2
+D0
+~
+~
+0 -1 25286
+D1
+~
+~
+0 -1 25291
+S
+#25293
+Lagoon~
+You emerge into a shallow lagoon.  Its waters are warm and clean, and contain
+diverse animal and plant life.  Jungle spreads from the west and east, with a
+waterfall feeding the lagoon's eastern end.
+~
+0 4 2
+D1
+~
+~
+0 -1 25294
+D3
+~
+~
+0 -1 25290
+S
+#25294
+Waterfall~
+A small waterfall is fed by streams that run down the face of a small rocky
+hill that rises to the east.  You can circle around the hill through the jungle
+to the north and south, or head west into the lagoon.
+~
+0 0 3
+D0
+~
+~
+0 -1 25295
+D2
+~
+~
+0 -1 25296
+D3
+~
+~
+0 -1 25293
+S
+#25295
+Jungle~
+The jungle is thicker and damper on this side of the island.  You can head
+to the south or west.  Monkeys growl high above you from the canopy.
+~
+0 0 3
+D1
+~
+~
+0 -1 25297
+D2
+~
+~
+0 -1 25294
+S
+#25296
+Jungle~
+The thick jungle is alive with noise and the trashing of branches.  You can
+force a path through the bushes to the east, or head back to the waterfall to
+the north.
+~
+0 0 3
+D0
+~
+~
+0 -1 25294
+D1
+~
+~
+0 -1 25298
+S
+#25297
+Jungle~
+The thick vegetation makes it impossible to move any further eastwards.  You
+can return to the west, as movement in all other directions is too difficult.
+~
+0 0 3
+D3
+~
+~
+0 -1 25295
+S
+#25298
+Jungle~
+The trees become a little more spacious here, almost forming a small clearing.
+The familiar cries of the jungle creatures are more distant and less frequent.
+A small cave mouth opens up in the side of the hill to the north.  You can
+return through the jungle to the west.
+~
+0 4 3
+D0
+~
+~
+0 -1 25299
+D3
+~
+~
+0 -1 25296
+S
+#25299
+Dark Cavern~
+This dank cavern is littered with bones and carcasses.  The air smells awful
+and is unbearably stuffy; large insects swarm about piles of offal, with one
+chunk of meat roughly resembling an arm of some sort.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 25298
+S
+#0
+
+
+#RESETS
+*
+M 1 25200 2 25202                       a bandit to Olive Grove
+E 1 25200 100 5
+E 1 25201 100 16
+*
+M 1 25201 2 25203                       a bandit to Olive Grove
+E 1 25200 100 5
+E 1 25201 100 16
+*
+M 1 25200 2 25204                       a bandit to Olive Grove
+E 1 25200 100 5
+E 1 25201 100 16
+*
+M 1 25201 2 25205                       a bandit to Olive Grove
+E 1 25200 100 5
+E 1 25201 100 16
+*
+M 1 25202 1 25205                       the bandit leader to Olive Grove
+E 1 25200 100 5
+E 1 25202 100 16
+G 1 25203 100
+P 1 25204 100 25203                     a city pass to leather pouch
+D 1 25207 1 2                   ; Outpost Gates Lock East
+D 1 25208 3 2                   ; Guard Post Lock West
+D 1 25227 3 2                   ; Dank Prison Cell Lock West
+D 1 25232 1 2                   ; Dungeon Lock East
+D 1 25231 0 2                   ; Dungeon Lock North
+D 1 25230 2 2                   ; Prison Cell Lock South
+D 1 25231 1 2                   ; Dungeon Lock East
+D 1 25228 3 2                   ; Prison Cell Lock West
+D 1 25233 1 2                   ; Dungeon Lock East
+D 1 25229 3 1                   ; Prison Cell Close West
+D 1 25233 3 1                   ; Dungeon Close West
+D 1 25246 3 1                   ; Tunnel Close West
+D 1 25247 1 1                   ; Holding Cells Close East
+D 1 25247 2 1                   ; Holding Cells Close South
+D 1 25254 0 1                   ; Animal Pen Close North
+D 1 25247 3 1                   ; Holding Cells Close West
+D 1 25248 3 1                   ; Holding Cells Close West
+D 1 25249 0 1                   ; Holding Cells Close North
+D 1 25249 3 1                   ; Holding Cells Close West
+D 1 25250 2 1                   ; Animal Master's Quarters Close South
+D 1 25241 0 2                   ; The Arena Lock North
+D 1 25255 2 2                   ; Dark Passage Lock South
+*
+*
+M 1 25203 2 25207                       an outpost guard to Outpost Gates
+E 1 25205 100 5
+E 1 25202 100 16
+*
+M 1 25203 2 25207                       an outpost guard to Outpost Gates
+E 1 25205 100 5
+E 1 25202 100 16
+*
+M 1 25204 5 25209                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25204 5 25210                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25204 5 25211                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25204 5 25213                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25204 5 25214                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25205 1 25212                       the outpost commander to The Courtyard
+E 1 25205 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+G 1 25207 100
+*
+M 1 25206 4 25220                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25206 4 25221                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25206 4 25222                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25206 4 25223                       an outpost soldier to The Courtyard
+E 1 25200 100 5
+E 1 25206 100 11
+E 1 25202 100 16
+*
+M 1 25207 4 25222                       a legionnaire to The Courtyard
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+*
+M 1 25207 4 25223                       a legionnaire to The Courtyard
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+*
+M 1 25207 4 25224                       a legionnaire to The Courtyard
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+*
+M 1 25207 4 25225                       a legionnaire to The Courtyard
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+*
+M 1 25208 1 25222                       a centurion to The Courtyard
+E 1 25205 100 5
+E 1 25212 100 12
+E 1 25209 100 16
+E 1 25211 100 17
+*
+M 1 25210 1 25227                       Suetonius the jailor to Dank Prison Cell
+E 1 25215 100 10
+E 1 25216 100 9
+G 1 25214 100
+O 1 25217 100 25201                     a milestone to Rocky Path
+*
+M 1 25211 1 25230                       a miserable prisoner to Prison Cell
+*
+M 1 25212 2 25234                       a prison guard to Jailor's Room
+E 1 25209 100 16
+E 1 25205 100 5
+*
+M 1 25212 2 25234                       a prison guard to Jailor's Room
+E 1 25205 100 5
+E 1 25209 100 16
+O 1 25213 100 25234                     a fruit bowl to Jailor's Room
+*
+M 1 25213 3 25237                       a gladiator to The Arena
+E 1 25221 100 5
+E 1 25220 100 16
+*
+M 1 25213 3 25240                       a gladiator to The Arena
+E 1 25221 100 5
+E 1 25220 100 16
+*
+M 1 25213 3 25242                       a gladiator to The Arena
+E 1 25221 100 5
+E 1 25220 100 16
+*
+M 1 25214 1 25245                       Levisticus to The Arena
+E 1 25221 100 5
+E 1 25223 100 13
+E 1 25222 100 16
+*
+M 1 25215 3 25241                       a starved lion to The Arena
+*
+M 1 25215 3 25241                       a starved lion to The Arena
+*
+M 1 25216 2 25243                       a terrified Christian to The Arena
+*
+M 1 25216 2 25243                       a terrified Christian to The Arena
+*
+M 1 25217 1 25239                       a griffin to The Arena
+*
+M 1 25209 1 25238                       a mammoth to The Arena
+*
+M 1 25218 1 25244                       a werepanther to The Arena
+*
+*
+D 1 25253 1 1                   ; Animal Pen Close East
+D 1 25252 1 1                   ; Animal Pen Close East
+D 1 25251 1 1                   ; Animal Pen Close East
+*
+M 1 25220 1 25252                       a rhinoceros to Animal Pen
+*
+M 1 25221 1 25253                       a weretiger to Animal Pen
+*
+*
+*
+M 1 25219 1 25254                       a gorgon to Animal Pen
+*
+M 1 25215 3 25251                       a starved lion to Animal Pen
+*
+M 1 25222 1 25250                       Catullus to Animal Master's Quarters
+E 1 25225 100 6
+E 1 25224 100 16
+G 1 25227 100
+D 1 25266 2 1                   ; City Street Close South
+D 1 25266 3 1                   ; City Street Lock West
+D 1 25272 0 1                   ; House Close North
+D 1 25273 1 1                   ; Stables Close East
+D 1 25257 2 1                   ; City Street Close South
+D 1 25271 0 1                   ; House Close North
+D 1 25257 1 1                   ; City Street Lock East
+D 1 25269 3 1                   ; Garrison Close West
+D 1 25258 1 2                   ; City Street Lock East
+D 1 25265 3 1                   ; City Street Close West
+D 1 25279 5 1                   ; Main Deck Close Down
+D 1 25283 4 1                   ; Below Deck Close Up
+*
+*
+*
+M 1 25223 2 25258                       a merchant to City Street
+E 1 25229 100 12
+E 1 25228 100 16
+G 1 25232 100
+*
+M 1 25223 2 25264                       a merchant to City Street
+E 1 25229 100 12
+E 1 25228 100 16
+G 1 25226 100
+G 1 25232 100
+D 1 25268 3 2                   ; House Lock West
+*
+M 1 25224 4 25259                       a nobleman to City Street
+E 1 25230 100 12
+E 1 25231 100 16
+*
+*
+M 1 25224 4 25261                       a nobleman to The Forum
+E 1 25230 100 12
+E 1 25231 100 16
+*
+M 1 25225 2 25262                       a senator to The Forum
+E 1 25230 100 12
+E 1 25231 100 16
+G 1 25232 100
+*
+M 1 25226 1 25263                       Athecles to The Forum
+E 1 25230 100 12
+E 1 25228 100 16
+E 1 25234 100 17
+G 1 25233 100
+G 1 25233 100
+G 1 25233 100
+G 1 25232 100
+*
+*
+M 1 25224 4 25266                       a nobleman to City Street
+E 1 25230 100 12
+E 1 25231 100 16
+G 1 25232 100
+*
+M 1 25224 4 25267                       a nobleman to Viaduct
+E 1 25230 100 12
+E 1 25231 100 16
+G 1 25232 100
+O 1 25236 100 25268                     a small box to House
+*
+*
+*
+M 1 25227 4 25269                       a watchman to Garrison
+E 1 25205 100 5
+E 1 25238 100 7
+E 1 25208 100 11
+E 1 25237 100 16
+*
+M 1 25227 4 25269                       a watchman to Garrison
+E 1 25205 100 5
+E 1 25238 100 7
+E 1 25208 100 11
+E 1 25237 100 16
+*
+M 1 25228 1 25270                       the captain of the watch to Garrison
+E 1 25239 100 5
+E 1 25238 100 7
+E 1 25208 100 11
+E 1 25212 100 12
+E 1 25237 100 16
+*
+M 1 25227 4 25270                       a watchman to Garrison
+E 1 25205 100 5
+E 1 25238 100 7
+E 1 25208 100 11
+E 1 25237 100 16
+*
+M 1 25229 2 25273                       a charger to Stables
+*
+M 1 25229 2 25274                       a charger to Stables
+*
+M 1 25230 3 25279                       a scurvy pirate to Main Deck
+E 1 25241 100 13
+E 1 25240 100 16
+*
+M 1 25230 3 25280                       a scurvy pirate to Main Deck
+E 1 25241 100 13
+E 1 25240 100 16
+*
+M 1 25230 3 25281                       a scurvy pirate to Main Deck
+E 1 25241 100 13
+E 1 25240 100 16
+*
+M 1 25231 1 25282                       Redbeard to Fore Deck
+E 1 25242 100 1
+E 1 25241 100 13
+E 1 25240 100 16
+*
+M 1 25232 3 25280                       a sailor to Main Deck
+E 1 25209 100 16
+*
+M 1 25232 3 25281                       a sailor to Main Deck
+E 1 25209 100 16
+*
+M 1 25232 3 25279                       a sailor to Main Deck
+E 1 25209 100 16
+*
+M 1 25233 4 25283                       an oarman to Below Deck
+E 1 25244 100 16
+*
+M 1 25233 4 25283                       an oarman to Below Deck
+E 1 25244 100 16
+*
+M 1 25233 4 25283                       an oarman to Below Deck
+E 1 25244 100 16
+*
+M 1 25233 4 25283                       an oarman to Below Deck
+E 1 25244 100 16
+*
+M 1 25234 1 25285                       a hydra to Turbulent Ocean
+*
+M 1 25235 1 25299                       a fury to Dark Cavern
+E 1 25243 100 16
+*
+M 1 25236 3 25286                       a harpy to Beach
+*
+M 1 25236 3 25287                       a harpy to Beach
+*
+M 1 25236 3 25292                       a harpy to Beach
+G 1 25246 100
+*
+M 1 25237 2 25289                       a giant to Cliff
+E 1 25245 100 16
+*
+M 1 25237 2 25290                       a giant to Jungle
+E 1 25245 100 16
+*
+M 1 25238 2 25294                       a dragon lizard to Waterfall
+*
+M 1 25238 2 25295                       a dragon lizard to Jungle
+*
+M 1 25227 4 25256                       a watchman to City Street
+E 1 25205 100 5
+E 1 25238 100 7
+E 1 25208 100 11
+E 1 25237 100 16
+O 1 25247 100 25217                     a well to The Well
+*
+M 1 25239 3 25257                       a legionnaire to City Street
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+*
+M 1 25239 3 25260                       a legionnaire to The Forum
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+*
+M 1 25239 3 25265                       a legionnaire to City Street
+E 1 25205 100 5
+E 1 25210 100 6
+E 1 25208 100 11
+E 1 25209 100 16
+D 1 25276 0 2                   ; Waterfront Lock North
+*
+M 1 25225 2 25262                       a senator to The Forum
+E 1 25231 100 16
+G 1 25232 100
+P 1 25235 100 25236             ticket to box
+P 1 25207 100 25213             pomegranate to bowl
+P 1 25218 100 25213             banana to bowl
+P 1 25219 100 25213             fig to bowl
+S
+
+
+#SPECIALS
+M  25200 spec_thief                     a bandit
+M  25201 spec_thief                     a bandit
+M  25202 spec_thief                     the bandit leader
+M  25217 spec_breath_fire                       a griffin
+M  25219 spec_cast_mage                 a gorgon
+M  25234 spec_poison                    a hydra
+M  25235 spec_cast_undead                       a fury
+M  25203 spec_repairman				gate guard
+M  25212 spec_repairman				prison guard
+S
+
+
+#$

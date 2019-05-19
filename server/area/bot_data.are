@@ -1,0 +1,278 @@
+#AREA Gezhp~ Arena Bots~
+-3 -3 0 100
+
+#MOBILES
+#11000
+reserved vnum for arena bots~
+reserved vnum for arena bots~
+reserved vnum for arena bots
+~
+reserved vnum for arena bots
+~
+0 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+#0
+
+#OBJECTS
+#11000
+the black lotus blade~
+the black lotus blade~
+The black lotus blade lies here.~
+~
+5 4096|16384 0
+~ ~ ~ 11~
+10 0 0
+A
+18 1
+A
+19 1
+
+#11001
+lethal steel sword~
+a lethal steel sword~
+A lethal steel sword lies here.~
+~
+5 0 0
+~ ~ ~ 3~
+10 0 0
+A
+19 1
+
+#11002
+steel visor~
+a steel visor~
+A steel visor lies here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11003
+steel breastplate~
+a steel breastplate~
+A steel breastplate lies here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11004
+black leather pants~
+some black leather pants~
+Some black leather pants lie here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11005
+black leather boots~
+some black leather boots~
+Some black leather boots sit here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11006
+black leather gloves~
+some black leather gloves~
+Some black leather gloves lie here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11007
+double-headed axe~
+a double-headed axe~
+A double-headed axe sits here.~
+~
+5 0 0
+~ ~ ~ 13~
+10 0 0
+A
+1 10
+A
+19 1
+
+#11008
+fur skins~
+some fur skins~
+Some fur skins lie here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11009
+horned helmet~
+a horned helmet~
+A horned helmet sits here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11010
+amulet protection~
+an amulet of protection~
+An amulet of protection sits here.~
+~
+9 0 0
+~ ~ ~ ~
+1 0 0
+A
+24 -20
+
+#11011
+ivory bracer~
+an ivory bracer~
+An ivory bracer lies here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11012
+black hood~
+a black hood~
+A black hood lies here.~
+~
+9 0 0
+~ ~ ~ ~
+2 0 0
+
+#11013
+black robes~
+some black robes~
+Some black robes lie here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11014
+padded boots~
+some padded boots~
+Some padded boots sit here.~
+~
+9 0 0
+~ ~ ~ ~
+10 0 0
+
+#11015
+tiger claws~
+some tiger claws~
+Some tiger claws sit here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+A
+19 1
+
+#11016
+silk belt~
+a silk belt~
+A silk belt sits here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11017
+dragon tooth dagger~
+a dragon tooth dagger~
+A dragon tooth dagger lies here.~
+~
+5 0 0
+~ ~ ~ 11~
+5 0 0
+
+#11018
+willow wand~
+a willow wand~
+A willow wand lies here.~
+~
+3 0 0
+1~ 5~ 5~ dispel magic~
+1 0 0
+
+#11019
+amulet magi~
+the Amulet of the Magi~
+The Amulet of the Magi rests here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+A
+24 -50
+
+#11020
+deep purple robes~
+some deep purple robes~
+Some deep purple robes rest here.~
+~
+9 0 0
+~ ~ ~ ~
+15 0 0
+
+#11021
+ring wizardry~
+a ring of wizardry~
+A wind of wizardry lies here.~
+~
+9 0 0
+~ ~ ~ ~
+1 0 0
+A
+3 15
+A
+4 15
+
+#11022
+cape~
+a flowing cape~
+A flowing cape lies here.~
+~
+9 0 0
+~ ~ ~ ~
+5 0 0
+
+#11023
+teeth~
+teeth~
+Some teeth lie here.~
+~
+5 4096|67108864 0
+~ ~ ~ 10~
+5 0 0
+A
+19 1
+
+#11024
+breastplate~
+a breastplate~
+A breastplate sits here.~
+~
+9 0 0
+~ ~ ~ ~
+10 0 0
+
+#11025
+bloodstone ring~
+a bloodstone ring~
+A bloodstone ring sits here.~
+~
+9 0 0
+~ ~ ~ ~
+1 0 0
+A
+24 -10
+#0
+
+#$

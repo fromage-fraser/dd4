@@ -1,0 +1,3786 @@
+#AREA Madboy~  Hel's Tower~
+30 60 0 100
+
+#RECALL 13073
+
+#MOBILES
+#13500
+Griffon Griff~
+a griffon~
+The Griffon flys here looking for prey.
+~
+The griffon flys down at you with a loud shriek, claws extended.
+~
+2|32|64|128 32|524288 0 S
+37 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#13501
+Pteranodon~
+a pteranodon~
+A pteranodon hovers here.
+~
+A large pteranodon glides out of the mist toward you.
+~
+2|32|64|128 32|524288 0 S
+25 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#13502
+psi-beast psi beast~
+a Psi-beast~
+A Psi-beast scampers here.
+~
+The Psi-beast is an overly-muscled monkey with clawed hands and red,
+slavering jaws. As you look at this beast you feel your temples pound as it
+psionically probes your mind.
+~
+4|32|64|128 32768|65536 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#13503
+Flamewing Flame Wing~
+a flamewing~
+A flamewing flys here.
+~
+The fiery, bat-like creature erupts from the sea of flames hurtle towards you.
+~
+32|64 256|524288 0 S
+30 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+#13504
+giant~
+the Fire Giant~
+The Fire Giant stands here hefting a massive club.
+~
+The Giant looks down at you, slowly it grins and says "Fooood!". It picks
+up it's club and gets ready to squash you.
+~
+2|4|32|64 32 -500 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13505
+Shark~
+a shark~
+A massive shark swims here
+~
+The huge shark swims towards you with frightening speed. It's jaws open to
+reveal row upon row of razor sharp teeth.
+~
+4|32|64|128 8|32|32768 0 S
+30 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+#13506
+Death old lady Hag~
+Death Hag~
+An old lady tends some roses. Upon seeing you she shrieks and attacks...
+~
+The Death Hag looks like an emaciated, old lady with dirty, 8 inch talons,
+and fangs.
+~
+2|32|64|128 8|32|512 -500 S
+37 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#13507
+fire elemental~
+a Fire Elemental~
+A Fire Elemental erupts from the flames.
+~
+The Elemental appears to be a massive, humanoid inferno.
+~
+64 32768|65536 0 S
+49 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+
+#13508
+Water Elemental~
+an Water Elemental~
+A Water Elemental is here.
+~
+The Water Elemental appears to be a large humanoid made completely of water.
+~
+64 2|32768 0 S
+42 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+
+#13509
+Air Elemental~
+an Air Elemental~
+An Air Elemental is here.
+~
+The Air Elemental looks like a mini-tornado.
+~
+64 2|32768|524288 0 S
+42 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+
+#13510
+Earth Elemental~
+an Earth Elemental~
+An Earth Elemental erupts from the ground here.
+~
+The Earth Elemental looks like a large humanoid made from rocks and
+emerges from the ground before your very eyes
+~
+64 32768|65536|524288 0 S
+54 0 0 0d0+0 0d0+0
+48|256 0
+8 8 0
+
+#13511
+Hel~
+Hel~
+Hel sits on a throne here. 'Ahhh...Visitors' she says.
+~
+The Hel stares back at you and laughs.
+
+"If this is what you're after," she askes dangling a key, "Then come and get 
+it!"
+
+She draws a longsword whose palpable evil washes over you sending you
+stumbling back involuntarily.
+~
+2|64 8|32|128|512|524288 -900 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#13512
+Tentacle~
+Tentacle~
+A tentacle snakes out at you.
+~
+The Tentacle appears to be attached to some large creature living in the 
+coral.
+~
+2|32|64|128 8 0 S
+30 0 0 0d0+0 0d0+0
+63 0
+8 8 1
+
+#13513
+Leviathan squid giant creature~
+Leviathan~
+A giant squid-like creature lives in the coral.
+~
+A giant squid has a nest in the coral, it's long tenticles snaking out at
+any movement.
+~
+2|4|32|64 8|65536 0 S
+42 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+
+#13514
+Fire~
+The Fire~
+
+~
+
+~
+2|32|64 2|8|32|512|8192 0 S
+100 0 0 0d0+0 0d0+0
+127|256 0
+8 8 0
+
+#13515
+_Mad_jammer~
+The Soul Gem~
+The Soul Gem floats in the centre of the room. 
+~
+The Soul Gem appears to be a large, milky gem that glows with a soft
+light. Small shadows can be seen moving around inside it's cloudy depths.
+~
+2|64|512 8|32|128|512|8192 0 S
+70 0 0 0d0+0 0d0+0
+127|256 0
+8 8 1
+
+#0
+
+
+#OBJECTS
+
+#13500
+
+Mace~
+
+Mace of the Priest~
+
+A silver mace rests here.~
+
+~
+
+5 1 1|8192
+
+0~ 6~ 11~ 7~
+
+5 0 0
+
+A
+
+12 50
+
+A
+
+18 3
+
+A
+
+19 3
+
+A
+
+4 4
+
+#13501
+
+Dagger~
+
+Shadow Dagger~
+
+A inky-black dagger rests here.~
+
+~
+
+5 0 1|8192
+
+0~ 5~ 9~ 11~
+
+5 0 0
+
+A
+
+14 40
+
+A
+
+2 3
+
+A
+
+18 3
+
+A
+
+19 3
+
+#13502
+
+Black potion~
+
+a black potion~
+
+A black potion rests here.~
+
+~
+
+10 0 1
+
+50~ power heal~ ~ ~
+
+1 0 0
+
+#13503
+
+treasure~
+
+a small pile of treasure~
+
+A small pile of treasure rests here.~
+
+~
+
+8 0 1
+
+0~ 1~ 6~ 11~
+
+20 0 0
+
+#13504
+
+gauntlets might~
+
+Gauntlets of Might~
+
+A pair of mithril gauntlets rest here.~
+
+~
+
+9 32 1|128
+
+0~ 1~ 6~ 11~
+
+5 0 0
+
+A
+1 3
+A
+5 2
+A
+18 5 
+A
+19 5 
+A
+2 -2
+A
+4 -2
+
+#13505
+
+potion clear~
+
+a clear potion~
+
+A clear potion rests here.~
+
+~
+
+10 0 1
+
+30~ refresh~ cure poison~ ~
+
+1 0 0
+
+#13506
+
+club~
+
+a massive club~
+
+The Fire Giant's massive club rests here.~
+
+~
+
+5 0 1|8192
+
+0~ 2~ 20~ 8~
+
+150 0 0
+
+A
+
+2 -3
+
+A
+
+14 -50
+
+A
+
+19 5
+
+#13507
+
+money~
+
+small pile of coins~
+
+A small pile of coins rests here.~
+
+~
+
+20 0 1
+
+45~ 26~ 6~ 0~
+
+20 0 0
+
+#13508
+
+crown~
+
+a platinum crown~
+
+A platinum crown rests here.~
+
+~
+
+8 0 1|16
+
+0~ 1~ 6~ 11~
+
+10 0 0
+
+#13509
+
+Ring~
+
+Ring of the Shadow~
+
+A small .~
+
+~
+
+3 0 1|2
+
+20~ 1~ 30~ shadow form~
+
+5 0 0
+
+#13510
+
+staff daeron~
+Staff of Daeron~
+A rune-carved staff floats here.~
+~
+4 1|64 1|16384
+30~ 50~ 50~ fireball~
+1 0 0
+A
+12 50
+A
+17 5
+A
+24 -5
+A
+3 2
+
+#13511
+
+~
+
+Orb's Blast~
+
+~
+
+~
+
+5 32|128 8192
+
+0~ 4~ 40~ 6~
+
+0 0 0
+
+#13512
+
+chest~
+
+Hel's Chest~
+
+~
+
+~
+
+15 0 0
+
+50~ 1~ -1~ 11~
+
+50 0 0
+
+#13513
+
+Torc~
+
+Hel's Torc~
+
+A platinum torc rests here.~
+
+~
+
+9 0 1|16
+
+0~ 1~ 6~ 11~
+
+5 0 0
+
+A
+
+1 1
+
+A
+
+2 1
+
+A
+
+3 1
+
+A
+
+4 1
+
+A
+
+5 1
+
+A
+
+12 100
+
+A
+
+13 30
+
+A
+
+17 -10
+
+A
+
+18 2
+
+A
+
+19 2
+
+#13514
+
+sword~
+
+Hel's sword~
+
+A long, slim, black bladed sword rests here.~
+
+~
+
+5 32|64 1|8192
+
+0~ 2~ 16~ 11~
+
+5 0 0
+
+A
+
+18 4
+
+A
+
+19 1
+
+A
+
+17 -5
+
+A
+
+1 1
+
+#13515
+
+Hel's Robe~
+
+a long, black robe~
+
+A long, black robe rests here.~
+
+~
+
+9 64 1|1024
+
+0~ 1~ 6~ 11~
+
+5 0 0
+
+A
+
+17 -5
+
+#13516
+
+rose~
+
+a red rose~
+
+A beautiful, red rose lies here.~
+
+~
+
+13 16384 1|16384
+
+0~ 1~ 6~ 11~
+
+1 0 0
+
+#13517
+
+key~
+
+a silver key~
+
+A silver key rests here.~
+
+~
+
+18 0 1
+
+0~ 1~ 6~ 11~
+
+1 0 0
+
+#13518
+
+body~
+
+a dead body~
+
+The body of a dead adventurer lies here.~
+~
+23 0 1
+0~ 1~ 6~ 11~
+165 0 0
+E
+body corpse dead~
+It appears he died from third degree burns!~
+
+#13519
+
+teeth~
+
+teeth~
+
+~
+~
+5 32|4096 16
+
+0~ 0~ 0~ 10~
+
+1 0 0
+
+#0
+
+
+
+#ROOMS
+
+#13500
+The Portal~
+You are standing before a huge, 10 foot by 4 foot, mithril-bound door. The
+frame and lintil appear to be made from blood-red marble. There is a plaque
+on the door.
+~
+
+0 4|8|4096 0
+
+D0
+
+~
+
+~
+
+8 13037 13501
+
+E
+
+Plaque~
+
+From here on this area is a NO RECALL zone from here on, making it
+potentially deadly for anyone who enters. Turn back now or enter at your
+own risk!
+
+
+
+You have been warned!
+
+Fitharn.
+~
+
+S
+
+#13501
+
+The Entryway~
+You are standing in a short corridor that ends in a wall with a metal
+ladder attached to it. The ladder leads up into a chute in the roof.
+~
+0 4|8|8192 0
+
+D2
+
+~
+
+~
+
+8 -1 13500
+
+D4
+
+~
+
+~
+
+0 -1 13502
+
+S
+
+#13502
+
+The Mist~
+
+As you emerge from the chute, the air is full of a warm, thick, rolling
+mist that limits your vision to a few feet. The ground is broken and
+uneven, with loose rock all around. You can see no ceiling, but the entire
+area is dimly lit from above. Looking back you cannot make out the chute
+anywhere.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13503
+
+D4
+
+~
+
+~
+
+0 -1 13509
+
+S
+
+#13503
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13504
+
+D1
+
+~
+
+~
+
+0 -1 13506
+
+D2
+
+~
+
+~
+
+0 -1 13502
+
+D3
+
+~
+
+~
+
+0 -1 13505
+
+D4
+
+~
+
+~
+
+0 -1 13508
+
+S
+
+#13504
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13518
+
+D1
+
+~
+
+~
+
+0 -1 13512
+
+D2
+
+~
+
+~
+
+0 -1 13503
+
+D3
+
+~
+
+~
+
+0 -1 13514
+
+D4
+
+~
+
+~
+
+0 -1 13507
+
+S
+
+#13505
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13514
+
+D1
+
+~
+
+~
+
+0 -1 13503
+
+D4
+
+~
+
+~
+
+0 -1 13511
+
+S
+
+#13506
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13512
+
+D3
+
+~
+
+~
+
+0 -1 13503
+
+D4
+
+~
+
+~
+
+0 -1 13510
+
+S
+
+#13507
+
+The Mist~
+
+You are flying in the mist. The roof, above, is made of stone. A small
+portion of the roof glows, emitting an eerie light that illuminates this
+room.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13524
+
+D1
+
+~
+
+~
+
+0 -1 13521
+
+D2
+
+~
+
+~
+
+0 -1 13508
+
+D3
+
+~
+
+~
+
+0 -1 13528
+
+D5
+
+~
+
+~
+
+0 -1 13504
+
+S
+
+#13508
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13507
+
+D1
+
+~
+
+~
+
+0 -1 13510
+
+D2
+
+~
+
+~
+
+0 -1 13509
+
+D3
+
+~
+
+~
+
+0 -1 13511
+
+D5
+
+~
+
+~
+
+0 -1 13503
+
+S
+
+#13509
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13508
+
+D5
+
+~
+
+~
+
+0 -1 13502
+
+S
+
+#13510
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13521
+
+D3
+
+~
+
+~
+
+0 -1 13508
+
+D5
+
+~
+
+~
+
+0 -1 13506
+
+S
+
+#13511
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13528
+
+D1
+
+~
+
+~
+
+0 -1 13508
+
+D5
+
+~
+
+~
+
+0 -1 13505
+
+S
+
+#13512
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13520
+
+D1
+
+~
+
+~
+
+0 -1 13513
+
+D2
+
+~
+
+~
+
+0 -1 13506
+
+D3
+
+~
+
+~
+
+0 -1 13504
+
+D4
+
+~
+
+~
+
+0 -1 13521
+
+S
+
+#13513
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D3
+
+~
+
+~
+
+0 -1 13512
+
+D4
+
+~
+
+~
+
+0 -1 13522
+
+S
+
+#13514
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13517
+
+D1
+
+~
+
+~
+
+0 -1 13504
+
+D2
+
+~
+
+~
+
+0 -1 13505
+
+D3
+
+~
+
+~
+
+0 -1 13515
+
+D4
+
+~
+
+~
+
+0 -1 13528
+
+S
+
+#13515
+
+The Mist~
+
+You are surrounded by a thick mist. A large, metal stairway goes up into
+the mist here. On the stairway is a large nest.
+~
+
+0 8|8192 0
+
+D1
+
+~
+
+~
+
+0 -1 13514
+
+D4
+
+~
+
+~
+
+0 -1 13516
+
+S
+
+#13516
+
+The Stairway~
+
+You are standing on a metal stairway that winds upward until the mist
+completely hides it from view. Mist surrounds you.
+~
+
+0 4|8|8192 0
+
+D1
+
+~
+
+~
+
+0 -1 13528
+
+D4
+
+~
+
+~
+
+0 -1 13527
+
+D5
+
+~
+
+~
+
+0 -1 13515
+
+S
+
+#13517
+
+The Mist~
+
+You are surrounded by a thick mist. There is a large outcropping of rock here.
+~
+
+0 8|8192 0
+
+D1
+
+~
+
+~
+
+0 -1 13518
+
+D2
+
+~
+
+~
+
+0 -1 13514
+
+D4
+
+~
+
+~
+
+0 -1 13526
+
+S
+
+#13518
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13519
+
+D1
+
+~
+
+~
+
+0 -1 13520
+
+D2
+
+~
+
+~
+
+0 -1 13504
+
+D3
+
+~
+
+~
+
+0 -1 13517
+
+D4
+
+~
+
+~
+
+0 -1 13524
+
+S
+
+#13519
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D2
+
+~
+
+~
+
+0 -1 13518
+
+D4
+
+~
+
+~
+
+0 -1 13525
+
+S
+
+#13520
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 0
+
+D2
+
+~
+
+~
+
+0 -1 13512
+
+D3
+
+~
+
+~
+
+0 -1 13518
+
+D4
+
+~
+
+~
+
+0 -1 13523
+
+S
+
+#13521
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13523
+
+D1
+
+~
+
+~
+
+0 -1 13522
+
+D2
+
+~
+
+~
+
+0 -1 13510
+
+D3
+
+~
+
+~
+
+0 -1 13507
+
+D5
+
+~
+
+~
+
+0 -1 13512
+
+S
+
+#13522
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D3
+
+~
+
+~
+
+0 -1 13521
+
+D5
+
+~
+
+~
+
+0 -1 13513
+
+S
+
+#13523
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D2
+
+~
+
+~
+
+0 -1 13521
+
+D3
+
+~
+
+~
+
+0 -1 13524
+
+D5
+
+~
+
+~
+
+0 -1 13520
+
+S
+
+#13524
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13525
+
+D1
+
+~
+
+~
+
+0 -1 13523
+
+D2
+
+~
+
+~
+
+0 -1 13507
+
+D3
+
+~
+
+~
+
+0 -1 13526
+
+D5
+
+~
+
+~
+
+0 -1 13518
+
+S
+
+#13525
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D2
+
+~
+
+~
+
+0 -1 13524
+
+D5
+
+~
+
+~
+
+0 -1 13519
+
+S
+
+#13526
+
+The Mist~
+
+You are surrounded by a thick mist.
+~
+
+0 8|8192 9
+
+D1
+
+~
+
+~
+
+0 -1 13524
+
+D2
+
+~
+
+~
+
+0 -1 13528
+
+D5
+
+~
+
+~
+
+0 -1 13517
+
+S
+
+#13527
+
+The Wooded Maze~
+
+The staircase leads upward to a large, well lit area full of trees and
+dense undergrowth. The groung is rich loam, soft and brown. A narrow paths
+leads east through the otherwise impenetrable undergrowth. The air is hot
+and humid and the ceiling is about 10 feet above your head restricting
+movement to ground level. Looking back, again, the entryway has
+disappeared.
+~
+
+0 8|8192 3
+
+D1
+
+~
+
+~
+
+0 -1 13529
+
+S
+
+#13528
+
+The Mist~
+
+You are surrounded in a thick mist.
+~
+
+0 8|8192 9
+
+D0
+
+~
+
+~
+
+0 -1 13526
+
+D1
+
+~
+
+~
+
+0 -1 13507
+
+D2
+
+~
+
+~
+
+0 -1 13511
+
+D3
+
+~
+
+~
+
+0 -1 13516
+
+D5
+
+~
+
+~
+
+0 -1 13514
+
+S
+
+#13529
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. There are paths
+leading in all cardinal directions.
+~
+
+0 8|8192 3
+
+D0
+
+~
+
+~
+
+0 -1 13531
+
+D1
+
+~
+
+~
+
+0 -1 13530
+
+D2
+
+~
+
+~
+
+0 -1 13540
+
+D3
+
+~
+
+~
+
+0 -1 13527
+
+S
+
+#13530
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. There are paths
+leading in all cardinal directions.
+~
+
+0 8|8192 3
+
+D0
+
+~
+
+~
+
+0 -1 13532
+
+D1
+
+~
+
+~
+
+0 -1 13535
+
+D2
+
+~
+
+~
+
+0 -1 13538
+
+D3
+
+~
+
+~
+
+0 -1 13529
+
+S
+
+#13531
+
+The Wooded Maze~
+
+You are standing a maze of trees and undergrowth. Paths lead off to the
+east and south.
+~
+
+0 8|8192 3
+
+D1
+
+~
+
+~
+
+0 -1 13532
+
+D2
+
+~
+
+~
+
+0 -1 13529
+
+S
+
+#13532
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. Paths lead off in all
+cardinal directions.
+~
+
+0 8|8192 3
+
+D0
+
+~
+
+~
+
+0 -1 13533
+
+D1
+
+~
+
+~
+
+0 -1 13534
+
+D2
+
+~
+
+~
+
+0 -1 13530
+
+D3
+
+~
+
+~
+
+0 -1 13531
+
+S
+
+#13533
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. The path here is a
+dead end and the only exit is south.
+~
+
+0 8|8192 3
+
+D2
+
+~
+
+~
+
+0 -1 13532
+
+S
+
+#13534
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. Paths lead off to the
+west and south.
+~
+
+0 8|8192 3
+
+D2
+
+~
+
+~
+
+0 -1 13535
+
+D3
+
+~
+
+~
+
+0 -1 13532
+
+S
+
+#13535
+
+The Hag's Garden~
+You are standing in a beautiful garden filled with red roses. Paths lead
+off in all cardinal directions.
+~
+0 8|8192 3
+D0
+~
+~
+0 -1 13534
+D1
+~
+~
+0 -1 13536
+D2
+~
+~
+0 -1 13537
+D3
+~
+~
+0 -1 13530
+S
+
+#13536
+The Stairway~
+A wrought iron staircase leads upward through a hole in the low ceiling...
+~
+
+0 4|8|8192 3
+
+D3
+
+~
+
+~
+
+0 -1 13535
+
+D4
+
+~
+
+~
+
+0 -1 13541
+
+S
+
+#13537
+The Wooded Maze~
+You are standing in a maze of trees and undergrowth. Paths lead off to the
+west and north.
+~
+0 8|8192 3
+D0
+
+~
+
+~
+
+0 -1 13535
+
+D3
+
+~
+
+~
+
+0 -1 13538
+
+S
+
+#13538
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. Paths lead off in all
+cardinal directions.
+~
+
+0 8|8192 3
+
+D0
+
+~
+
+~
+
+0 -1 13530
+
+D1
+
+~
+
+~
+
+0 -1 13537
+
+D2
+
+~
+
+~
+
+0 -1 13539
+
+D3
+
+~
+
+~
+
+0 -1 13540
+
+S
+
+#13539
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. The path ends in a
+dead-end. The only exit is north.
+~
+
+0 8|8192 3
+
+D0
+
+~
+
+~
+
+0 -1 13538
+
+S
+
+#13540
+
+The Wooded Maze~
+
+You are standing in a maze of trees and undergrowth. Paths lead off to the
+east and north.
+~
+
+0 8|8192 3
+
+D0
+
+~
+
+~
+
+0 -1 13529
+
+D1
+
+~
+
+~
+
+0 -1 13538
+
+S
+
+#13541
+
+The Sea of Fire~
+
+The Staircase leads upward to a stone landing with two pathways projecting
+from it, north and south. the pathways are about a foot above the surface
+of what seems to be a sea of fire. Over the far side of the huge, circular
+chamber is a large giant and to his right is a large pile of corpses.
+Flying here would be impossible as you would burn to a crisp before getting
+halfway across the chamber
+~
+
+0 8|8192 0
+
+D3
+
+~
+
+~
+
+0 -1 13542
+
+S
+
+#13542
+
+The Pathway~
+
+You are standing on a pathway above the sea of fire. The air is hot and it
+is hard to breathe. The path splits here, one going north and one, south.
+Going west, into the sea of fire, would be suicide!
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13549
+
+D1
+
+~
+
+~
+
+0 -1 13541
+
+D2
+
+~
+
+~
+
+0 -1 13544
+
+D3
+
+~
+
+~
+
+0 -1 13543
+
+S
+
+#13543
+
+In the Sea of Fire~
+
+You are burning!
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13550
+
+D1
+
+~
+
+~
+
+0 -1 13542
+
+D2
+
+~
+
+~
+
+0 -1 13545
+
+D3
+
+~
+
+~
+
+0 -1 13548
+
+S
+
+#13544
+
+The Pathway~
+
+You are standing on the pathway above the sea of fire. Here the path bends
+around to the west.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13542
+
+D3
+
+~
+
+~
+
+0 -1 13545
+
+S
+
+#13545
+
+The Pathway~
+
+You are standing on the pathway above the sea of fire. The path continues
+west. To the north and south the sea of fire rages and entering this would
+be suicide!
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13543
+
+D1
+
+~
+
+~
+
+0 -1 13544
+
+D2
+
+~
+
+~
+
+0 -1 13546
+
+D3
+
+~
+
+~
+
+0 -1 13547
+
+S
+
+#13546
+
+In the Sea of Fire~
+
+You are burning!
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13545
+
+S
+
+#13547
+
+The Pathway~
+
+You are standing on a pathway above the sea of fire.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13548
+
+D1
+
+~
+
+~
+
+0 -1 13545
+
+S
+
+#13548
+
+The Pathway~
+
+You are standing on the pathway above the sea of fire. To the north and
+south, the path continues circling back to where you came from. To the west
+a wide path leads to the giant. There is a stairway behind him. To the east
+is the sea of fire. Heading in this direction would be suicide!
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13551
+
+D1
+
+~
+
+~
+
+0 -1 13543
+
+D2
+
+~
+
+~
+
+0 -1 13547
+
+D3
+
+~
+
+~
+
+0 -1 13553
+
+S
+
+#13549
+
+The Pathway~
+
+You are standing on a pathway above the sea of fire. Here the path curves
+around to the west.
+~
+
+0 8|8192 0
+
+D2
+
+~
+
+~
+
+0 -1 13542
+
+D3
+
+~
+
+~
+
+0 -1 13550
+
+S
+
+#13550
+
+The Pathway~
+
+You are standing on the pathway above the sea of fire. Here the pathway
+leads west. To the north and south, the sea of fire rages. Entering this
+would be suicide!
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13552
+
+D1
+
+~
+
+~
+
+0 -1 13549
+
+D2
+
+~
+
+~
+
+0 -1 13543
+
+D3
+
+~
+
+~
+
+0 -1 13551
+
+S
+
+#13551
+
+The Pathway~
+
+You are standing on the pathway above the sea of fire. The path here
+curves around to the south.
+~
+
+0 8|8192 0
+
+D1
+
+~
+
+~
+
+0 -1 13550
+
+D2
+
+~
+
+~
+
+0 -1 13548
+
+S
+
+#13552
+
+In the Sea of Fire~
+
+You are burning!
+~
+
+0 8|8192 0
+
+D2
+
+~
+
+~
+
+0 -1 13550
+
+S
+
+#13553
+
+The Bodies~
+
+You are standing before a huge pile of bodies. Most have been smashed to
+pulp by the giant's huge club. To the west is the staircase. However, you
+can't get there because your feet have left the ground and you are slowly
+floating toward a hole in the roof.
+~
+
+0 8|8192 0
+
+D4
+
+~
+
+~
+
+0 -1 13554
+
+S
+
+#13554
+
+Falling Upwards!~
+
+You are falling upwards toward the hole in the roof! The staircase must
+have been a ruse!
+~
+
+0 4|8|8192 0
+
+D4
+
+~
+
+~
+
+0 -1 13555
+
+S
+
+#13555
+
+Splash!!~
+
+You have fallen into warm, deep, salty, sea green water! How?, you think,
+I was falling UPWARDS! Struggling to stay on the surface you can see ahead
+of you a small island and a small reef of coral protrudes from the water.
+The hole you came through closes up behind you, leaving you trapped in this
+room.
+~
+
+0 4|8|8192 6
+
+D0
+
+~
+
+~
+
+0 -1 13563
+
+D1
+
+~
+
+~
+
+0 -1 13556
+
+D2
+
+~
+
+~
+
+0 -1 13560
+
+S
+
+#13556
+
+In the water~
+
+You are swimming in the water. To the south is a small beach on a very
+small island.
+~
+0 8|8192 6
+D2
+~
+~
+0 -1 13558
+D5
+~
+~
+0 -1 13568
+S
+
+#13557
+In the water~
+You are swimming in the water. To the east is a small beach on a very
+small island.
+~
+0 8|8192 6
+D1
+~
+~
+0 -1 13558
+D2
+~
+~
+0 -1 13561
+D5
+~
+~
+0 -1 13569
+S
+
+#13558
+On the island~
+You are standing on a small island built upon a reef. Looking around you
+you notice shark fins in the water. To the south is more of the small
+island. Other than that you are surrounded by water.
+~
+0 4|8|8192 10
+D0
+~
+~
+0 -1 13556
+D1
+~
+~
+0 -1 13559
+D2
+~
+~
+0 -1 13562
+D3
+~
+~
+0 -1 13557
+S
+
+#13559
+In the water~
+You are swimming in the water. To the west is a small beach to a very
+small island and to the south is a coral reef which is has some extremely
+sharp protrusions making it impossible to climb.
+~
+
+0 8|8192 6
+
+D3
+
+~
+
+~
+
+0 -1 13558
+
+D5
+
+~
+
+~
+
+0 -1 13570
+
+S
+
+#13560
+
+In the water~
+
+You are swimming in the water. Over to the east you see a small island.
+~
+
+0 8|8192 6
+
+D1
+
+~
+
+~
+
+0 -1 13561
+
+D5
+
+~
+
+~
+
+0 -1 13571
+
+S
+
+#13561
+
+In the water~
+
+You are swimming in the water. To the east is a small beach on a very
+small island. All other directions are water.
+~
+
+0 8|8192 6
+
+D0
+
+~
+
+~
+
+0 -1 13557
+
+D1
+
+~
+
+~
+
+0 -1 13562
+
+D2
+
+~
+
+~
+
+0 -1 13564
+
+D3
+
+~
+
+~
+
+0 -1 13560
+
+D5
+
+~
+
+~
+
+0 -1 13572
+
+S
+
+#13562
+
+On the island~
+
+You are standing on the island built upon a reef. There is a palm tree
+here. Typical!, you think to yourself as you look upon this material
+cliche. To the east is a small, yet impassible reef of sharp, pink coral.
+To the north is more of the small island. South and west go back into the
+water.
+~
+
+0 4|8|8192 10
+
+D0
+
+~
+
+~
+
+0 -1 13558
+
+D2
+
+~
+
+~
+
+0 -1 13565
+
+D3
+
+~
+
+~
+
+0 -1 13561
+
+S
+
+#13563
+
+In the water~
+
+You are swimming in the water. Before you is an impassible reef of
+razor-sharp coral. The only exit is down underwater.
+~
+
+0 8|8192 6
+
+D5
+
+~
+
+~
+
+0 -1 13573
+
+S
+
+#13564
+
+In the water~
+
+You are swimming in the water.
+~
+
+0 8|8192 6
+
+D0
+
+~
+
+~
+
+0 -1 13561
+
+D1
+
+~
+
+~
+
+0 -1 13565
+
+D5
+
+~
+
+~
+
+0 -1 13574
+
+S
+
+#13565
+
+In the water~
+
+You are swimming in the water. To the north is a small beach on a very
+small island.
+~
+
+0 8|8192 6
+
+D0
+
+~
+
+~
+
+0 -1 13562
+
+D1
+
+~
+
+~
+
+0 -1 13566
+
+D2
+
+~
+
+~
+
+0 -1 13567
+
+D3
+
+~
+
+~
+
+0 -1 13564
+
+D5
+
+~
+
+~
+
+0 -1 13575
+
+S
+
+#13566
+
+In the water~
+
+You are swimming in the water. To the north is an impassible, razor-sharp
+coral reef
+~
+
+0 8|8192 6
+
+D3
+
+~
+
+~
+
+0 -1 13565
+
+D5
+
+~
+
+~
+
+0 -1 13576
+
+S
+
+#13567
+
+In the water~
+
+You are swimming in the water. Over to the north you see an island.
+~
+
+0 8|8192 6
+
+D0
+
+~
+
+~
+
+0 -1 13565
+
+D5
+
+~
+
+~
+
+0 -1 13577
+
+S
+
+#13568
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is impared
+by the murky water. To the south is an impassible reef of coral.
+~
+
+0 8|8192|16384 8
+
+D4
+
+~
+
+~
+
+0 -1 13556
+
+S
+
+#13569
+
+Underwater~
+
+You are swimming beneath the surface of the water. The vision is impared
+slightly by the murky water. To the east is an impassible reef of coral.
+~
+
+0 8|8192|16384 8
+
+D2
+
+~
+
+~
+
+0 -1 13572
+
+D4
+
+~
+
+~
+
+0 -1 13557
+
+S
+
+#13570
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water. To the west is an impassible reef of coral. To
+the south the coral has been hollowed out underneath.
+~
+
+0 8|8192|16384 8
+
+D2
+
+~
+
+~
+
+0 -1 13578
+
+D4
+
+~
+
+~
+
+0 -1 13559
+
+S
+
+#13571
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water.
+~
+
+0 8|8192|16384 8
+
+D1
+
+~
+
+~
+
+0 -1 13572
+
+D4
+
+~
+
+~
+
+0 -1 13560
+
+S
+
+#13572
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water. To the east is an impassible reef of coral.
+~
+
+0 8|8192|16384 8
+
+D0
+
+~
+
+~
+
+0 -1 13569
+
+D2
+
+~
+
+~
+
+0 -1 13574
+
+D3
+
+~
+
+~
+
+0 -1 13571
+
+D4
+
+~
+
+~
+
+0 -1 13561
+
+S
+
+#13573
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water.
+~
+
+0 8|8192|16384 8
+
+D3
+
+~
+
+~
+
+0 -1 13578
+
+D4
+
+~
+
+~
+
+0 -1 13563
+
+S
+
+#13574
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water.
+~
+
+0 8|8192|16384 8
+
+D0
+
+~
+
+~
+
+0 -1 13572
+
+D1
+
+~
+
+~
+
+0 -1 13575
+
+D4
+
+~
+
+~
+
+0 -1 13564
+
+S
+
+#13575
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water. To the north is an impassible reef of coral.
+~
+
+0 8|8192|16384 8
+
+D1
+
+~
+
+~
+
+0 -1 13576
+
+D2
+
+~
+
+~
+
+0 -1 13577
+
+D3
+
+~
+
+~
+
+0 -1 13574
+
+D4
+
+~
+
+~
+
+0 -1 13565
+
+S
+
+#13576
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slightly
+impared by the murky water.
+~
+
+0 8|8192|16384 8
+
+D0
+
+~
+
+~
+
+0 -1 13578
+
+D3
+
+~
+
+~
+
+0 -1 13575
+
+D4
+
+~
+
+~
+
+0 -1 13566
+
+S
+
+#13577
+
+Underwater~
+
+You are swimming beneath the surface of the water. Your vision is slighly
+impared by the murky water.
+~
+
+0 8|8192|16384 8
+
+D0
+
+~
+
+~
+
+0 -1 13575
+
+D4
+
+~
+
+~
+
+0 -1 13567
+
+S
+
+#13578
+
+The Leviathan's Lair~
+
+You are swimming beneath the coral reef. To the west is the entrance to a
+small underwater cavern formed of coral.
+~
+
+0 1|8|8192|16384 8
+
+D0
+
+~
+
+~
+
+0 -1 13570
+
+D1
+
+~
+
+~
+
+0 -1 13573
+
+D2
+
+~
+
+~
+
+0 -1 13576
+
+D3
+
+~
+
+~
+
+0 -1 13579
+
+S
+
+#13579
+
+The Underwater Cavern~
+
+The cavern here bends to the north.
+~
+
+0 1|8|8192|16384 8
+
+D0
+
+~
+
+~
+
+0 -1 13580
+
+D1
+
+~
+
+~
+
+0 -1 13578
+
+S
+
+#13580
+
+The Hatchway~
+
+The cavern ends here. Set in the floor of the cavern is an iron hatchway.
+~
+
+0 1|8|8192|16384 8
+
+D2
+
+~
+
+~
+
+0 -1 13579
+
+D5
+
+~
+
+~
+
+1 -1 13581
+
+S
+
+#13581
+
+Hel's Chamber~
+
+You climb out of the hatchway as if you were climbing up in to this room.
+It occurs to you that the last room was upside-down. As you move away from
+the hatchway it slams shut and you notive there doesn't appear to be a way
+to reopen it. Looking north, a beautiful woman steps from her throne. She
+dangles a key before you and says "Step forward and claim your prize" as
+she draws a huge sword.
+~
+
+0 8|8192 0
+
+D0
+
+~
+
+~
+
+0 -1 13582
+
+D4
+
+~
+
+~
+
+8 -1 13580
+
+S
+
+#13582
+
+Hel's Chamber~
+
+Here you see an open chest to the right and a staircase leads up into the roof.
+~
+
+0 8|8192 0
+
+D2
+
+~
+
+~
+
+0 -1 13581
+
+D4
+
+~
+
+~
+
+0 -1 13583
+
+S
+
+#13583
+
+The Fane of the Soul Gem~
+
+You see a huge circular chamber with a high domed ceiling. In the centre
+of the room floats a milky white orb about the size of a melon - The Soul
+Gem. A voice eminates from the orb saying in a soothing voice, "Rest here
+and I shall heal thy wounds as best as I am allowed when you are ready,
+RECALL and I shall send you to the next part of your quest. Until then,
+rest and bathe in my healing aura."
+~
+
+0 4|8|1024 0
+
+D5
+
+~
+
+~
+
+0 -1 13582
+E
+soul gem~
+The Soul Gem draws you to it as it pulses periodically.
+~
+S
+
+#0
+
+
+
+
+
+#RESETS
+
+*
+
+*
+
+M 1 13501 1 13515                       a pteranodon to The Mist
+
+*
+
+M 1 13509 1 13510                       an Air Elemental to The Mist
+
+*
+
+M 1 13509 1 13505                       an Air Elemental to The Mist
+
+*
+
+M 1 13500 1 13517                       a griffon to The Mist
+
+D 1 13500 0 2                   ; The Portal Lock North
+
+*
+
+M 1 13506 1 13535                       Death Hag to The Hag's Garden
+
+E 1 13509 100 1
+
+*
+
+M 1 13510 1 13534                       an Earth Elemental to The Wooded Maze
+
+*
+
+M 1 13502 6 13531                       a Psi-beast to The Wooded Maze
+
+*
+
+M 1 13502 3 13534                       a Psi-beast to The Wooded Maze
+
+*
+
+M 1 13502 5 13530                       a Psi-beast to The Wooded Maze
+
+*
+
+M 1 13502 8 13539                       a Psi-beast to The Wooded Maze
+
+R 1 13531 2                     ; Randomize The Wooded Maze
+
+R 1 13532 4                     ; Randomize The Wooded Maze
+
+R 1 13534 2                     ; Randomize The Wooded Maze
+
+R 1 13530 4                     ; Randomize The Wooded Maze
+
+R 1 13538 4                     ; Randomize The Wooded Maze
+
+R 1 13537 2                     ; Randomize The Wooded Maze
+
+R 1 13540 2                     ; Randomize The Wooded Maze
+
+*
+
+M 1 13503 8 13542                       a flamewing to A room
+
+*
+
+M 1 13514 1 13543                       The Flames to In the flames
+
+*
+
+M 1 13503 1 13544
+
+*
+
+M 1 13514 1 13546
+
+*
+
+*
+
+M 1 13507 1 13547                       a Fire Elemental to The Pathway
+
+*
+
+M 1 13507 1 13550
+
+*
+
+M 1 13514 1 13552
+
+*
+
+M 1 13503 1 13551                       a flamewing to A room
+
+*
+
+M 1 13504 1 13553                       the Fire Giant to The Bodies
+
+E 1 13506 100 16
+
+*
+
+M 1 13505 1 13565                       a shark to In the water
+
+E 1 13519 100 6
+
+*
+
+M 1 13505 1 13575                       a shark to Underwater
+
+E 1 13519 100 6
+
+*
+
+M 1 13505 1 13573                       a shark to Underwater
+
+E 1 13519 100 6
+
+*
+
+M 1 13505 1 13567                       a shark to In the water
+
+E 1 13519 100 6
+
+*
+
+M 1 13505 1 13560                       a shark to In the water
+
+E 1 13519 100 6
+
+*
+
+M 1 13508 1 13564                       an Water Elemental to In the water
+
+*
+
+M 1 13508 1 13571                       an Water Elemental to Underwater
+
+*
+
+M 1 13508 1 13559                       an Water Elemental to In the water
+
+*
+
+M 1 13512 1 13573                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13573                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13576                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13576                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13576                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13570                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13570                       Tenticle to Underwater
+
+*
+
+M 1 13512 1 13570                       Tenticle to Underwater
+
+*
+
+M 1 13513 1 13578
+
+*
+
+M 1 13512 1 13578
+
+*
+
+M 1 13512 1 13578
+
+D 1 13580 5 1                   ; The Hatchway Close Down
+
+D 1 13581 4 2                   ; Hel's Chamber Lock Up
+
+*
+
+M 1 13511 1 13582                       Hel to Hel's Chamber
+
+E 1 13513 100 6
+
+E 1 13504 100 9
+
+E 1 13515 100 12
+
+E 1 13514 100 16
+
+G 1 13517 100
+
+*
+
+M 1 13515 1 13583
+
+O 1 13503 100 13517                     a small pile of treasure to The Mist
+
+O 1 13505 100 13517                     a clear potion to The Mist
+
+O 1 13516 100 13535                     a red rose to The Hag's Garden
+
+O 1 13501 100 13541                     Shadow Dagger to The Sea of Fire
+
+O 1 13518 100 13544                     a dead body to The Pathway
+
+*
+
+M 1 13513 1 13578                       Leviathan to The Leviathan's Lair
+
+*
+
+M 1 13512 1 13578                       Tenticle to The Leviathan's Lair
+
+*
+
+M 1 13512 1 13578                       Tenticle to The Leviathan's Lair
+
+O 1 13505 100 13578                     a clear potion to The Leviathan's Lair
+
+O 1 13512 100 13582                     Hel's Chest to Hel's Chamber
+
+P 1 13505 100 13512                     a clear potion to container chest
+
+P 1 13507 100 13512                     small pile of coins to container chest
+
+P 1 13501 100 13512                     Shadow Dagger to container chest
+
+P 1 13508 100 13512                     a platinum crown to container chest
+
+O 1 13510 3 13583            Staff of Daeron to The Fane of the Soul Gem
+*
+
+M 1 13515 1 13583                       Soul Gem to The Fane of the Soul Gem
+
+E 1 13511 100 16
+
+S
+
+
+
+
+
+#SPECIALS
+
+M  13500 spec_fido                      a griffon
+
+M  13502 spec_cast_psionicist                   a Psi-beast
+
+M  13503 spec_breath_fire                       a flamewing
+
+M  13504 spec_fido                      the Fire Giant
+
+M  13505 spec_fido                      a shark
+
+M  13506 spec_cast_undead                       Death Hag
+
+M  13507 spec_breath_fire                        a Fire Elemental
+
+M  13508 spec_breath_frost                      an Water Elemental
+
+M  13509 spec_breath_gas                        an Air Elemental
+
+M  13511 spec_cast_psionicist           Hel
+
+M  13513 spec_fido                      Leviathan
+
+M  13514 spec_breath_fire                       The Flames
+
+M  13515 spec_cast_orb                        Soul Gem
+
+S
+
+
+
+
+
+#$
+
+
+

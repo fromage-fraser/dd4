@@ -1,0 +1,579 @@
+#AREA Kiaransalee/Samxin~ COB HQ~
+-4 -4 0 100
+
+#AREA_SPECIAL
+no_quest
+$
+
+#HELPS
+-1 COB 'COVEN OF BONE'~
+{x
+	Ages ago, those who practiced the Dark Arts were hunted and brutally 
+executed. Those who managed to practice and live did so in extreme secrecy. 
+Even the cautious practitioners were eventually discovered and slain. For 
+safety, the necromancers, witches, and others who learned the ways of the Dark 
+Arts banned together in small groups they called covens. Although these covens 
+did survive longer than the individuals could, a handful of spell casters 
+simply could not stand up against the number of soldiers and hunters cities 
+could send against them. The covens were dispersed and destroyed one by one. 
+Alenkia, head of the last remaining coven and possibly the most powerful witch 
+of her time, sat in her underground chamber anticipating the moment the 
+soldiers would storm their house. Without other option, she decided to use her 
+dangerous trump card. She began carving a circle in the dirt, then carved 
+arcane runes along the circumference. After her preparations were complete, 
+she began chanting. After an hour of chanting, a wind swept through her 
+chamber and a dark figure came into existence within the circle. The figure 
+then revealed itself from the shadows. It stood about 7' tall, was completely 
+covered by its black robe, and wielded an even taller scythe. Alenkia knew of 
+this creature and recognized it to be the God of Death. Infuriated, Death 
+screamed, demanding to know the reason for its summoning into the Prime 
+Material Plane. Alenkia explained the situation calmly, and then asked for the 
+power to overcome those who sought to destroy the practitioners of the Dark 
+Arts. Death cackled and explained his offer...
+        
+	That night, as expected, the clan house was attacked. A score of 
+soldiers charged into the tunnel system, swords waving. A single man stood 
+calmly at the end of the entrance hall. Beside him lay two corpses, those of 
+other members of the coven. With a chant and a gesture, the corpse rose and 
+charged at the attackers. Another spell  and the second corpse did the same. 
+With each soldier slain by the powerful Vampires, a new one was raised. A single 
+soldier stood out from the group, obviously more experienced and a better 
+fighter. The fighter managed to fight his way through the crowd and charge at 
+Alenkia. She threw a single spell and his body twisted to deformity as he 
+dropped to the ground. 
+
+	The newly empowered witch approached the helpless hero, and with a 
+touch withered what little life was left away from him. That night all were 
+slain except for one boy who was tortured then allowed free to tell his people 
+of the power they now stood against. Many would-be bands of soldiers attacked 
+the coven, but none prevailed. Many other practitioners of the Dark Arts 
+learned the secrets that Alenkia had, and they now stood as a force to be 
+reckoned with. The coven eventually dispersed through the generations, but the 
+legends of their power endured. Rumors that they were simply hiding also 
+endured. No more covens were ever formed, but every once in a while a 
+practitioner of the Dark Arts was discovered, but rarely hunted or sought 
+after. 
+         
+	Blackbane, the surviving ruler of the long dead Coven of Bone and a 
+powerful Lich, sat contemplating in his chamber. He decided it was now time to 
+bring back the legendary Coven of Bone. He informed Ythguan, an illithid lich, 
+and they searched the realms for those who follow the Dark Arts...
+~
+0 $~
+
+#MOBILES
+#480
+Ythguan Alhoon~
+Ythguan the Alhoon~
+Ythguan the Alhoon awaits your arrival.
+~
+A mauve-skinned humanoid. It has four mouth-tentacles and three-fingered
+hands. Its skin rots as though it were a corpse. Its ancient robes and
+garments have decayed to rags. One prominent symbol still endures the ages on
+its primary robe, however.
+~
+2|512|4096|4194304 2|8|16|32|128|512|65536|8388608 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 100~
+mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+~
+|
+
+#481
+Blackbane~
+Blackbane~
+Blackbane the Lich stands here motionless.
+~
+The skin of this lich has completely decayed, leaving nothing but a skeleton.
+He has been adorned with many intricate garments and rich jewelry. The weight
+of a twisted staff, carved from petrified mushrooms, is held in Blackbane's
+hand. You catch a glint off something on his face...upon closer inspection
+you realize that several of his teeth have already been replaced with
+expensive gems. Several teeth are missing, leaving empty slots. Blackbane 
+moves suddenly, scaring the hell out of you.
+~
+2|64|1048756 8|32 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#482
+Anatomist~
+Anatomist~
+The Anatomist works here, administering to the injured.
+~
+Although a powerful necromancer, he puts his powers of death to use to heal
+his fellow coven members. He is a tall, unnaturally thin human. He heals the
+injured, and animates those who die under his care. The light color of his
+robes covers most shades of gray.
+~
+2|64 8|32|128 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog bless~
+if clan($n) == cob
+cast bless $n
+else
+break
+endif
+~
+>speech_prog bye~
+if clan($n) == cob
+mpecho The Anatomist waves a thin hand at you and suddenly you are outside.
+mptransfer $n 18201
+else
+break
+endif
+~
+|
+
+#483
+COB wizinvis guy~
+COB wizinvis guy~
+COB wizinvis guy
+~
+He's invis. Wizinvis.
+~
+2|64|65536 8|32 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>rand_prog 100~
+drop skull
+mpgoto 537
+meditate
+~
+|
+
+#484
+Nroba~
+Nroba~
+The ancient witch Nroba oversees the clan here.
+~
+Probably the only Drow you've ever seen to show true hints of old age, Nroba
+tends to what remains of the ancient coven. Nroba appears malnourished and
+unclean. She rests patiently as if waiting for something, although these old
+tunnels doubtfully see any excitement. As you enter she glances at you with
+little interest, then returns to her reclusive meditation.
+~
+2|64 8|32 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+
+#485
+smitte zombie~
+Smittie the Zombie~
+Smittie the Zombie lugs a chest around here.
+~
+A rotting corpse wanders aimlessly about the coven house. He is, for some 
+reason, dressed in ragged clothes. A faded nametag reads 'Smittie'. An 
+encumberingly large chest rests on his back.
+~
+64 8|32 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+#0
+
+#OBJECTS
+#480
+Psionic force~
+Psionic force~
+Psionic force is here.~
+~
+5 1 8192
+~ ~ ~ 8~
+1 0 0
+A
+19 50
+A
+18 50
+
+#481
+Tentacles~
+Tentacles~
+Tentacles.~
+~
+5 1 8192
+~ ~ ~ 12~
+1 0 0
+A
+18 50
+A
+19 50
+
+#482
+adamantite chrysanthemum~
+an adamantite chrysanthemum~
+An adamantite chrysanthemum.~
+~
+18 2 1
+~ ~ ~ ~
+1 0 0
+
+#483
+Rights Enlightened~
+The Rights of the Enlightened~
+The Rights of the Enlightened flutter in the air.~
+~
+8 0 1
+~ ~ ~ ~
+1 0 0
+
+#484
+cob Ebony Skull~
+an Ebony Skull~
+An Ebony Skull sits among the injured.~
+~
+32 0 1|16384
+~ ~ ~ ~
+50 0 0
+
+#485
+brown mushrooms~
+brown mushrooms~
+Some brown mushrooms have been smashed here.~
+~
+19 0 1
+24~ ~ ~ 0~
+1 0 0
+
+#486
+Drider's silk water skins~
+Drider's silk water skins~
+Drider's silk water skins hang here.~
+~
+17 0 1
+10~ 10~ 0~ 0~
+1 0 0
+
+#487
+Ivory Skull~
+Ivory Skull~
+An Ivory Skull rests among the rubble.~
+~
+13 0 0
+~ ~ ~ ~
+1 0 0
+
+#488
+cob black stockings~
+some black stockings~
+Some black stockings lie crumpled here.~
+~
+9 0 1|32
+~ ~ ~ ~
+1 0 0
+A
+13 150
+
+#489
+cob Drider's Silk Leggings~
+Drider's Silk Leggings~
+Drider's Silk Leggings are folded here.~
+~
+9 0 1|32
+~ ~ ~ ~
+1 0 0
+A
+19 8
+A
+5 4
+
+#490
+cob Velvet sack Coven Emblem~
+a Velvet sack with a Coven Emblem~
+A Velvet sack with a Coven Emblem has been tossed here.~
+~
+15 0 1|65536
+11~ 0~ -1~ ~
+1 0 0
+A
+19 5
+
+#491
+cob Vines Ivy~
+Vines of Ivy~
+Some Vines of Ivy are here.~
+~
+9 0 1|256
+~ ~ ~ ~
+1 0 0
+A
+19 15
+A
+13 250
+#0
+
+#ROOMS
+#480
+Through the Hidden Tunnels...~
+Several empty tunnels are revealed behind recently collapsed earth. The walls
+are filled with un-mined ore. A deep mist has settled among the fungus on the
+floor, obscuring vision. When you reach a certain point, a dark figure emerges
+from the shadows, eyes glowing through the darkness. Behind the figure rests
+an ancient doorway which is inscribed with countless arcane symbols.
+~
+0 4|8 0
+D 0
+~
+~
+8 482 481
+D 4
+~
+~
+0 -1 18261
+S
+
+#481
+In the Misty Cavern~
+Vision in this room is minimal. You manage to discern a large sarcophagus on
+the eastern wall. A long tunnel extends to the west. The smell of rotting
+flesh is thick about this room; it seems there is no sign of life anywhere.
+The ground is, oddly enough, soft and spongy.
+~
+0 8 0
+D 2
+~
+~
+1 -1 480
+D 1
+~
+sarcophagus~
+1 -1 482
+D 3
+~
+~
+0 -1 488
+S
+
+#482
+In the Lich's Lair~
+The sarcophagus leads to a secret tunnel, and then to a large open cavern. No
+fungus grows here and the ground is hard. In the back rests a skeletal figure,
+robed and adorned. Thick shadows conceal the north wall. You realize this to
+be a lich, a feared and ancient undead mage. He stands idle against the wall,
+giving no recognition of your intrusion.
+~
+0 8 0
+D 0
+~
+~
+0 -1 483
+D 3
+~
+sarcophagus~
+1 -1 481
+S
+
+#483
+A Narrow Tunnel~
+Upon closer inspection of the northern wall in the liches lair, you
+discovered a narrow tunnel leading into the blackness. For some reason you
+decided to see where it led. To your dismay, you discover that the fungi and
+insects have returned now to discomfort you as you squeeze through this
+unknown tunnel.
+~
+0 8 0
+D 0
+~
+~
+0 -1 484
+D 2
+~
+~
+0 -1 482
+S
+
+#484
+The Anatomist's Cavern~
+The anatomist administers to the wounded in this small cavern. Cots and large
+blankets substitute as beds for those resting under the aid of the anatomist.
+The rodents, insects, fungus, and other minor inconveniences are held at bay
+by magical warding.
+~
+0 8 0
+D 2
+~
+~
+0 -1 483
+D 3
+~
+~
+0 -1 485
+S
+
+#485
+A Secret Tunnel~
+A narrow hallway that was hidden among the pattern in the east wall of the
+room leads to the west. A dim light illuminates the way westward. The walls 
+are stone, although run-down, and the ceiling is low. The ground is soft and 
+spongy.
+~
+0 8 0
+D 1
+~
+~
+0 -1 484
+D 3
+~
+~
+1 -1 486
+S
+
+#486
+End of the Hallway~
+The musty hallway ends here, with only a door to the west. The north end of
+the hallway seems to have been sealed off by a cave-in. No light escapes from
+the cracks of the crude wooden door to the east. The stones that make up the
+western wall seem to shift slightly as you progress down the hallway.
+~
+0 8 0
+D 2
+~
+~
+0 -1 487
+D 1
+~
+~
+1 -1 485
+D 3
+~
+~
+1 -1 489
+S
+
+#487
+The Musty Corridor~
+This corridor is musty and unused. The structure has deteriorated and doesn't
+look very sturdy. There are doors leading into unknown chambers to the east
+and the west. The corridor stretches north into the darkness, and south
+towards Nroba, the ancient witch and caretaker of the coven.
+~
+0 8 0
+D 0
+~
+~
+0 -1 486
+D 2
+~
+~
+0 -1 488
+D 1
+~
+~
+1 -1 491
+D 3
+~
+~
+1 -1 490
+S
+
+#488
+The Coven House~
+A furnished stone structure built into the mysterious caverns houses the
+ancient Coven of Bone. It is run-down and appears as if it could collapse at
+any moment. Most other hallways and corridors that branch off from this main
+room have collapsed, blocking the exit, excluding only one, which leads
+directly north. The ancient witch, Nroba, makes her home in this solitary
+room. The majority of her time is spent in contemplation or meditation. Rags
+upon the floor serve as a bed and the rodents and fungus growing about are a
+source of food.
+~
+0 8 0
+D 0
+~
+~
+0 -1 487
+D 1
+~
+~
+0 -1 481
+S
+
+#489
+The Library~
+This is a very large room, with rows upon rows of tattered and aged tomes and
+scrolls. The topics of the books range from 'History of Solace' to spell
+scrolls labeled 'Spiritwrack'. You eventually become lost among the towering
+shelves and vast knowledge held within a single room.  A crude wooden door
+to the east leads back into the hallway.
+~
+0 8 0
+D 1
+~
+~
+1 -1 486
+S
+
+#490
+The Summoning Chamber~
+This small chamber consists of nothing other than arcane symbols carved
+and etched onto the floor. The small individual symbols together form a
+pentagram when viewed from overhead. This chamber is obviously used for
+summoning - more specifically, summoning the denizens of the Lower Planes.
+~
+0 8 0
+D 1
+~
+~
+1 -1 487
+S
+
+#491
+Storage~
+Although the coven is indeed a messy place, covered with rubble and near
+collapsing, this room by far is the worst. There is no apparent floor under
+the endless clutter. Anything and everything that coven members don't want on
+themselves is kept in this small room.
+~
+0 8 0
+D 3
+~
+~
+1 -1 487
+S
+#0
+
+#RESETS
+D 0 480 0 2                     lock north in Through the Hidden Tunnels...
+D 0 481 2 1                     close south in In the Misty Cavern
+D 0 481 1 1                     close east in In the Misty Cavern
+D 0 482 3 1                     close west in In the Lich's Lair
+D 0 485 3 1                     close west in A Secret Tunnel
+D 0 486 1 1                     close east in End of the Hallway
+D 0 486 3 1                     close west in End of the Hallway
+D 0 487 1 1                     close east in The Musty Corridor
+D 0 487 3 1                     close west in The Musty Corridor
+D 0 489 1 1                     close east in The Library
+D 0 490 1 1                     close east in The Summoning Chamber
+D 0 491 3 1                     close west in Storage
+M 0 480 1 480                   add Ythguan the Alhoon to Through the Hidden Tunnels...
+E 0 480 0 16                        equip Psionic force (wield)
+E 0 481 0 18                        equip Tentacles (dual)
+G 0 482 0                           carry an adamantite chrysanthemum
+M 0 481 1 482                   add Blackbane to In the Lich's Lair
+M 0 482 1 484                   add Anatomist to The Anatomist's Cavern
+M 0 483 1 484                   add COB wizinvis guy to The Anatomist's Cavern
+G 0 484 0                           carry an Ebony Skull
+M 0 484 1 488                   add Nroba to The Coven House
+G 0 485 0                           carry brown mushrooms
+G 0 486 0                           carry Drider's silk water skins
+M 0 485 1 481                   add Smittie the Zombie to In the Misty Cavern
+I 487 1 488 1                   Ivory Skull to The Coven House
+S
+
+#SHOPS
+484 19 17 0 0 0 125 75 1 23     shop run by Nroba
+0
+
+#SPECIALS
+M 480 spec_clan_guard           Ythguan the Alhoon
+M 482 spec_cast_adept           Anatomist
+S
+
+#$

@@ -1,0 +1,10582 @@
+#AREA	Jago~   Demondium~
+60 90 0 100
+
+
+#RECALL
+21644
+
+#HELPS
+-1 demondium~
+Welcome to the pits of Demondium!
+
+Here lies 7 levels of evil, banished by the efforts of Absulom and Zrack.
+
+Each level requires that you complete a task before you can proceed.
+
+The known levels are:
+
+Level 1: Pits of Demondium
+Level 2: Mines of Demondium
+
+It is not known what lies beyond those, as no adventurer has returned alive.~
+
+0 $~
+
+
+#MOBILES
+#21500
+lost adventurer~
+the lost adventurer~
+The lost adventurer stands here, completely clueless.
+~
+The lost adventurer looks completely lost.
+He also looks half starved from lack of food.
+~
+64|128 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21501
+spectral wraith~
+the spectral wraith~
+The spectral wraith roams freely here.
+~
+The spectral wraith is an insubstantial, almost invisible haunted figure of an 
+adventurer who became lost here some hundreds of years ago.
+~
+64|128 2|1048576 0 S
+75 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 1
+#21502
+goblin~
+the goblin~
+The goblin mills about here.
+~
+The goblin sees you and thinks dinner!
+~
+2|4|64 0 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21503
+goblin~
+the goblin leader~
+A tall goblin stands here yelling orders.
+~
+This goblin looks pretty smart - for a goblin.
+~
+2|64 0 -1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21504
+goblin~
+the goblin~
+The goblin is running around, following orders.
+~
+The goblin glares at you with hunger in his eyes.
+~
+2|4|64 0 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21505
+baby black dragon~
+the baby black dragon~
+The baby black dragon is practicing her acid breath on the wall.
+~
+The baby black dragon looks cute and not too strong, but watch out for that 
+acid!
+~
+64|128 0 0 S
+85 0 0 0d0+0 0d0+0
+4|32|128 0
+8 8 2
+#21506
+hound dog~
+the rabid dog~
+The rabid dog is here foaming at the mouth.
+~
+The rabid dog makes Cujo look friendly.
+~
+4|32|64 0 -1000 S
+45 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#21507
+ghast~
+the ghast~
+The ghastly ghast assails your senses.
+~
+The ghastly ghast is a decaying creature of some kind, animated after death by 
+some unknown power.
+~
+64 1048576 -500 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21508
+snake~
+the green snake~
+The green snake slithers past your feet.
+~
+This snake is actually a baby naga snake, the most deadly species of snake known.
+~
+64|128 0 0 S
+4|8|32 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#21509
+troll~
+the troll~
+The troll wanders around looking for things to beat up.
+~
+The troll sees you and grins evilly.
+~
+64 0 -125 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21510
+stray cat~
+the stray cat~
+The stray cat prowls around here.
+~
+The stray cat will eat anything, even you if you give it a chance!
+~
+64|128 0 -1000 S
+10 0 0 0d0+0 0d0+0
+4|32 0
+8 8 2
+#21511
+small rat~
+the small rat~
+The small rat scurries around.
+~
+The small rat lives on the detritus of the pits.
+~
+4|32 0 -1000 S
+30 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#21512
+large rat~
+the large rat~
+The large rat nibbles on your boots.
+~
+The large rat will eat anything that moves, including you!
+~
+4|32 0 -1000 S
+30 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#21513
+carak atar~
+Carak Atar~
+Carak Atar the Wolf Father stands here appraising you coolly.
+~
+Carak Atar is the father of all wolves, his lupine form hulks over you.
+~
+2|64 128 -250 S
+77 0 0 0d0+0 0d0+0
+4|32 0
+8 8 1
+#21514
+bragol sereg~
+Bragol Sereg~
+Bragol Sereg crouches in a corner.
+~
+Bragol Sereg is a deadly fast dark elf.  He is swift and deadly, limber and 
+light, sudden death.
+~
+2|64 128 -125 S
+88 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21515
+kemen hith~
+Kemen Hith~
+Kemen Hith rises from the floor to great you.
+~
+Kemen Hith, the earth mist rises from the ground
+and confidently stares you in the eye.
+~
+2|64 128 -50 S
+89 0 0 0d0+0 0d0+0
+4|8|16|64 0
+8 8 1
+#21516
+kano thoron~
+Kano Thoron~
+Kano Thoron the great black eagle is perched here.
+~
+Kano Thoron the eagle lord glares back at you!
+~
+2|64 128 0 S
+80 0 0 0d0+0 0d0+0
+4|32 0
+8 8 1
+#21517
+wolf black~
+the black wolf~
+The black wolf prowls around here.
+~
+The black wolf growls at you and attacks!
+~
+4|32|64|128 0 0 S
+20 0 0 0d0+0 0d0+0
+4|32 0
+8 8 0
+#21518
+elf dark~
+the dark elf~
+The dark elf hides here in the shadows.
+~
+This dark elf has turned to evil, black arts in search of power.
+~
+64 0 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21519
+mist~
+the mist~
+The mist floats slowly by.
+~
+The mist is insubstantial...but alive!
+~
+64 0 0 S
+70 0 0 0d0+0 0d0+0
+16|32|64 0
+8 8 0
+#21520
+dwarf~
+the dwarf~
+The stout dwarf is here digging deeper and deeper.
+~
+The dwarf stops swinging his pick at the floor and swings at you instead!
+~
+2|64 0 -50 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21521
+dark dwarf~
+the dark dwarf~
+The dark dwarf is here, using black magic to find the hidden banes.
+~
+The dark dwarf has turned to the black arts.
+~
+2|64 0 -125 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21522
+dwarf mine leader~
+the dwarf mine leader~
+The dwarf mine leader is here, leading.
+~
+The dwarf mine leader got to his position by being tough, and smart.
+~
+2|64 0 -115 S
+73 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21523
+dwarf~
+the dwarf~
+The dwarf works hard at digging a hole.
+~
+The dwarf seems to have one purpose in life...to
+dig holes.
+~
+2|64 0 0 S
+71 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21524
+young white dragon~
+the young white dragon~
+The young white dragon is here, radiating coldness.
+~
+The dragon glares at you icily.  Crystallized ice forms all
+over its body.
+~
+64 0 0 S
+75 0 0 0d0+0 0d0+0
+4|32|128 0
+8 8 2
+#21525
+troll~
+the large troll~
+The large troll is here, trolling for victims.
+~
+The large troll grunts and swings at you.
+~
+64 0 0 S
+78 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21526
+drunk dwarf~
+the drunk dwarf~
+The dwarf is staggering around in circles here.
+~
+This dwarf is totally and utterly DRUNK!
+~
+4|64|128 0 -125 S
+66 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21527
+baby naga~
+the baby naga~
+The baby black naga slithers across the floor. 
+~
+The baby black naga is kinda cute...for a snake.
+~
+64|128 0 0 S
+65 0 0 0d0+0 0d0+0
+4|8|32 0
+8 8 1
+#21528
+giant~
+the giant~
+The giant crawls through the tunnels on his hands and knees.
+~
+The giant is too tall to fit in the mines,
+and he doesn't seem to be too pleased about it.
+~
+64|128 0 -125 S
+78 0 0 0d0+0 0d0+0
+128 0
+8 8 1
+#21529
+apprentice psionic~
+the apprentice psionic~
+The apprentice psionic is levitating here in the lotus position.
+~
+The apprentice psionic stares deep into your eyes, and you feel your willpower 
+draining away!
+~
+64 2|8|524288 -300 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21530
+apprentice necromancer~
+the apprentice necromancer~
+The apprentice necromancer stands over an animated corpse.
+~
+The necromancer cackles madly and turns towards you, magical energies flying 
+from her fingertips!
+~
+64 2|8 -1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21531
+cavewight~
+the cavewight~
+The cavewight scuttles madly around the cave walls and roof.
+~
+The cavewight is pitch black, and has no eyes from living its entire life 
+underground. The cavewight is evil and insane, but holds strange magical 
+powers...
+~
+2|64 2|8 -1000 S
+77 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21532
+cavewight~
+the cavewight~
+The cavewight cackles and brandishes an evil bane at you.
+~
+This cavewight has long known the secrets of the rocks all around you has a 
+fragment of the Amarth stone, a bane of unimaginable power that was destroyed 
+and scattered many centuries ago.  Just the small fragment the cavewight holds 
+radiates powers that you can not even begin to imagine.
+~
+2|64 8|32768|65536 -1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21533
+animated skeleton~
+the animated skeleton~
+The animated skeleton of a lost adventurer rattles around.
+~
+The skeleton has been animated by evil arts, cursing it to wander forever 
+seeking death for others.
+~
+32|64 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21534
+skeletal warrior~
+the skeletal warrior~
+The skeletal warrior waves a broken sword at you.
+~
+The skeletal warrior has been animated by evil arts and doomed to wander 
+here forever....
+~
+64 0 -1000 S
+68 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21535
+rock slug~
+the rock slug~
+The rock slug is here, chewing on the wall.
+~
+The rock slug doesn't seem to notice you, but you feel it must be pretty 
+powerful to be able to dissolve the walls so easily.
+~
+64|128 0 0 S
+70 0 0 0d0+0 0d0+0
+4|8|32 0
+8 8 0
+#21536
+petty dwarf~
+the petty dwarf~
+The petty dwarf is here, cursing.
+~
+The petty dwarf eyes your money pouch greedily.
+~
+64 0 -175 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21537
+rice paddy worker~
+the rice paddy worker~
+The rice paddy worker is totally lost.
+~
+The rice paddy worker entered the shrine some while ago, and has been lost 
+here ever since.
+~
+64|128 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21538
+orc~
+the orc~
+The twisted orc glares at you.
+~
+The orc is a twisted creature made by using evil arts and powers on natural 
+creatures.
+~
+64|128 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21539
+goblin~
+the goblin~
+The goblin strolls by whistling happily...not!
+~
+The goblin looks happy, but maybe that's just to lull you into a false sense 
+of security.
+~
+64 0 -300 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21540
+Ered Wethrin~
+Ered Wethrin~
+Ered Wethrin, the shadow master is here.
+~
+Ered Wethrin is a sub lieutenant of the cult of Thrasher, assigned to watch 
+over the mines and report all that happens.
+~
+2|64 2|8|128|512|8192|32768|65536 -1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21541
+portal keeper~
+the portal keeper~
+The portal keeper stands here, controlling access to the portals.
+~
+The portal keeper has the power to open any of the portals here for you.
+~
+2|64 8|32|8388608 0 S
+999 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>speech_prog p price~
+say I'm glad you asked!
+say Each portal leads to a different level of Demondium
+say These are my prices:
+say Level 1 for 1 gold.
+say Level 2 for 5 gold.
+say Level 3 for 1 platinum.
+say Level 4 for 2 platinum.
+say Level 5 for 5 platinum.
+say Level 6 for 10 platinum.
+say Level 7 for 20 platinum.
+say then you will need the key to all doors
+say this will cost you the modest sum of 100 platinum..
+~
+>bribe_prog 100000~
+say you have purchased the key to all doors
+say don't lose it!
+mpoload 21511 1
+give key $n
+~
+>bribe_prog 20000~
+say Thank you for your business!
+mptrans $n 21901
+mpat $n mpforce $n look
+emote has transferred $n to the Seventh Level of Demondium
+mpechoat $n Thrasher says 'I will not have you entering my domain in this way!!'
+mpechoat $n A huge hand grabs you and throws you back to where you came from!
+mpat $n mptrans $n 21644
+mpforce $n look
+say ACK!
+say It seems that Thrasher does not like anyone using that portal.
+say Perhaps you would like to choose another one?
+~
+>bribe_prog 10000~
+say Thank you for your business!
+mptrans $n 21766
+mpat $n mpforce $n look
+emote has transferred $n to the Sixth Level of Demondium
+mpat $n say Good luck in your travels $n!
+~
+>bribe_prog 5000~
+say Thank you for your Business!
+mptrans $n 21705
+mpat $n say Good Luck in your journey $n!
+~
+>bribe_prog 2000~
+say Thank You!
+mptrans $n 21667
+mpat $n say Good Luck $n!
+~
+>bribe_prog 1000~
+say Thanks.
+mptrans $n 21647
+mpat $n say Good luck $n!
+~
+>bribe_prog 500~
+smile
+mptrans $n 21554
+mpat $n say Have fun, $n.
+~
+>bribe_prog 100~
+say Geez, you might as well walk.
+mptrans $n 21522
+mpat $n say Bye $n.
+~
+>speech_prog p refund~
+say Refund? I have not head of that word before.
+snicker
+~
+|
+#21542
+swamp ogre~
+the swamp ogre~
+The swamp ogre emerges from the mists.
+~
+The swamp ogre is huge, over 11 feet tall, and he has muscles on his muscles.
+~
+32|64 0 0 S
+75 0 0 0d0+0 0d0+0
+128 0
+8 8 1
+>greet_prog 25~
+fart $n
+~
+|
+#21543
+swamp thing~
+the swamp thing~
+The swamp thing slithers around stealthily.
+~
+The swamp thing is like a huge snake, or at least the part that you can see is...
+~
+32|64 32768|65536 0 S
+68 0 0 0d0+0 0d0+0
+4|8|32 0
+8 8 0
+#21544
+bog dweller~
+the bog dweller~
+The bog dweller sifts through the decay in search of food.
+~
+The bog dweller looks like a reject from an evil magic experiment gone wrong.
+~
+4|64 0 -1000 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21545
+swamp lord~
+the Swamp Lord~
+The Swamp Lord rears up towards you!
+~
+The Swamp Lord is bigger than Jabba, and uglier than a mutant beastly 
+fido...and stronger than the executioner.  He does not seem to like you 
+intruding upon his domain.
+~
+2|32|64 8 -1000 S
+78 0 0 0d0+0 0d0+0
+128 0
+8 8 1
+#21546
+Aros~
+Aros~
+Aros smiles brightly at you.
+~
+Aros smiles at you and asks you what you would like to order.
+~
+2|64|2048 8|32|128|512|8192 1000 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21547
+nomad~
+the nomad~
+The nomad walks by searching for water.
+~
+The nomad has lived his entire life under this harsh sun and looks like old leather.
+~
+64 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21548
+bedouin~
+the bedouin~
+The bedouin is looking for his camel.
+~
+The bedouin looks like he has had sun stroke
+all his life.
+~
+64 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21549
+camel~
+the camel~
+The camel looks warily at you.
+~
+The camel is very wary of strangers.
+~
+2|32|64 0 0 S
+38 0 0 0d0+0 0d0+0
+4|32 0
+8 8 0
+#21550
+lawrence traveller arabia~
+the traveller~
+The weathered traveller stands here looking at you.
+~
+The man looks as if he has spent his entire life travelling these deserts and 
+knows them well.
+~
+2|64 8|128|8192 1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21551
+nomad~
+the nomad~
+The nomad stands here watching you suspiciously.
+~
+The nomad is naturally suspicious of strangers wandering around his campsite.
+~
+2|64 0 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21552
+nomad guard~
+the nomad guard~
+The nomad guard protects his leader from harm.
+~
+The guard yells a bloodcurdling warcry and attacks!
+~
+2|32|64 0 400 S
+71 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21553
+bedouin~
+the bedouin~
+The bedouin stands here, feeding his camel.
+~
+The bedouin looks back at you with suspicion.
+~
+2|64 0 0 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21554
+bedouin guard~
+the bedouin guard~
+The bedouin guard is protecting his leader.
+~
+The guard screams at you and attacks!
+~
+2|32|64 0 0 S
+71 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21555
+nomad leader~
+the nomad leader~
+The nomad leader is here planning an attack on the bedouins.
+~
+The nomad leader looks at you then ignores you.
+~
+2|64 0 -1000 S
+77 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21556
+harem girl~
+the harem girl~
+The harem girl flutters her eyelashes at you seductively.
+~
+The harem girl is very beautiful, and scantily dressed.  She belongs to the 
+leader, but perhaps you should make her yours instead?
+~
+2|64|128 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21557
+bedouin leader~
+the bedouin leader~
+The bedouin leader stands here, planning his attack on the nomads.
+~
+The bedouin leader looks up briefly, but ignores
+you.
+~
+2|64 0 -1000 S
+77 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21558
+sandgorgon~
+the sandgorgon~
+A mighty sandgorgon stands in front of you, its huge fists poised to attack.
+~
+The sandgorgon is the size of a giant, but looks far stronger. It has huge 
+fists and meaty arms. It stands on two strong legs with viscous claws, and 
+uses its tail for balance and attack.
+~
+2|32|64 8|32|512|8192|32768|65536 -1000 S
+75 0 0 0d0+0 0d0+0
+128 0
+8 8 0
+#21559
+osiris~
+Osiris~
+Osiris stands here watching over the Underworld.
+~
+Osiris is the protector of the Underworld, and as such knows everything that 
+happens or has happened here. Perhaps he may be able to help you.
+~
+2|64 8|32|128 1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21560
+pharaoh undead~
+the undead pharaoh~
+The undead pharaoh is angry you disturbed his rest.
+~
+The undead pharaoh has been sleeping here for thousands of years and now you 
+have disturbed him and he is not very happy about it.
+~
+2|32|64 8|32|128 -1000 S
+79 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21561
+queen undead~
+the undead queen~
+The undead queen rises from her tomb.
+~
+The undead queen has been sleeping here for thousands of years and now you 
+have disturbed her and she is not very happy about it.
+~
+2|32|64 8|32|128 -1000 S
+79 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21562
+osiris~
+Osiris~
+Osiris is here, judging your soul.
+~
+Osiris is the protector of this realm.  He also decides where the souls that 
+come through here will go next.  What will he decide about you?
+~
+2|32|64 8|32|128 1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21563
+mummy~
+the mummy~
+The mummy lurches past you.
+~
+The mummy is thousands of years old, and covered in rotting bandages.
+~
+64 0 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21564
+servant undead~
+the undead servant~
+The undead servant protects its masters belongings.
+~
+The undead servant was killed and mummified when its master died so that it 
+could protect its master's treasures in the Underworld.
+~
+2|32|64 0 -1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21565
+lost soul~
+the lost soul~
+The lost soul searches for a way out of here.
+~
+The lost soul was refused judgement by Osiris and now wanders these halls 
+forever...
+~
+64 0 0 S
+65 0 0 0d0+0 0d0+0
+16|64 0
+8 8 0
+#21566
+lost soul~
+the lost soul~
+The lost soul is trapped in limbo.
+~
+The lost soul has been trapped in limbo for thousands of years.
+~
+32|64 0 -1000 S
+16|64 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21567
+mummy~
+the mummy~
+The mummy stands in the corner.
+~
+The mummy has been standing here for thousands of years.
+~
+2|64 0 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21568
+wind demon~
+the wind demon~
+A small twisting tornado rushes towards you!
+~
+This is a wind demon, originally a being of chaos, but it has been controlled 
+by dark dark magic and set here to stop anyone from entering the mountain.
+~
+2|32|64 8|32 -1000 S
+75 0 0 0d0+0 0d0+0
+16|64 0
+8 8 0
+#21569
+quasit~
+the quasit~
+The quasit blinks in and out of this dimension.
+~
+The quasit is blacker than black, and has the ability to blink in and out of 
+other dimensions at will.
+~
+2|32|64 2|8|32 0 S
+75 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64|256 0
+8 8 1
+#21570
+nightcrawler~
+the nightcrawler~
+The nightcrawler crawls in the night.
+~
+The nightcrawler is an evil powerful wraith. Dead for at least 1000 years it 
+seeks to destroy any life forms it encounters.
+~
+2|32|64 2|8|32 -1000 S
+75 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 1
+#21571
+evil iggy~
+evil Iggy~
+Evil Iggy insults your mother.
+~
+Evil Iggy is like the playground bully, except this is not any playground you 
+would let your kids play in.
+~
+2|64 2|8|32|128|512|8192 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21572
+akmar~
+Akmar~
+Akmar the Dark Knight looks at you and laughs.
+~
+Akmar is the first guardian of the hall of Thrasher.  He once was chief deputy 
+under Redferne, but came here after being bewitched by Primus.
+~
+2|64 8|32|128|512|8192 -1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21573
+chaymi~
+Chaymi~
+Chaymi the priestess of Hell glares at you.
+~
+Chaymi is a powerful priestess from the region of Hell who was sent here to 
+teach black magic to the followers of Thrasher.
+~
+2|64 8|32|128|512|8192|524288 -1000 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21574
+jaguar~
+Jaguar~
+The master of disguise prowls around here.
+~
+Jaguar is the master of disguise, and appears to be a large feline with huge 
+fangs and claws.  Maybe it is a disguise.  Then again maybe not.
+~
+2|64 8|32|128|512|8192 -1000 S
+87 0 0 0d0+0 0d0+0
+4|32 0
+8 8 1
+#21575
+shadow master~
+the master of shadows~
+
+~
+
+~
+2|64 2|8|32|128|512|8192|32768|65536 -1000 S
+93 0 0 0d0+0 0d0+0
+1|2|4|8|32|64|256 0
+8 8 1
+#21576
+ancient enemy~
+the ancient enemy~
+A huge ancient protoplasmic blob covers the floor.
+~
+The ancient enemy is a protoplasmic blob that feeds by absorbing its prey.  
+Right now it looks very hungry.
+~
+2|64 8|32|128|512|8192 -1000 S
+84 0 0 0d0+0 0d0+0
+1|2|4|8|32 0
+8 8 0
+#21577
+zrack spirit~
+the undead spirit of Zrack~
+The undead spirit of the mage Zrack is trapped here.
+~
+Zrack was once a mighty mage, and he along with Absulom was responsible for 
+banishing Thrasher to Demondium.  But Thrasher has enslaved his soul for 
+eternity and forced him into eternal servitude.
+~
+2|64 2|8|32|128|256|512|8192 -1000 S
+75 0 0 0d0+0 0d0+0
+16|64 0
+8 8 1
+#21578
+zarcnor~
+Zarcnor the mage~
+Zarcnor the mage cackles at you with insane glee!
+~
+Zarcnor the mage took over from Zrack, but has been corrupted - not by 
+Thrasher, but by someone else.  He now serves Thrasher willingly.
+~
+2|64 8|32|128|512|8192 -1000 S
+76 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21579
+wraith soldier~
+the wraith soldier~
+The wraith patrols the tunnels of the netherworld.
+~
+The wraith has been enslaved and corrupted. Now it patrols the tunnels of the 
+netherworld seeking out intruders.
+~
+2|16|64|256 0 -1000 S
+75 0 0 0d0+0 0d0+0
+64 0
+8 8 0
+#21580
+raver~
+the raver~
+The raver careens madly towards you!
+~
+The raver is insane and evil. Driven by a hunger for flesh that it does not 
+often get a chance to feed, it has smelt you out and hunted you down.
+~
+32|64 0 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#21581
+berserker~
+the berserker~
+The berserker crushes rocks on his forehead.
+~
+The berserker is a corrupted giant, now truly insane and full of hatred. So 
+much hatred that it is enraged by the mere sight of living creatures.
+~
+32|64 0 -1000 S
+77 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21582
+wraith commander~
+the wraith commander~
+The wraith commander silently directs his troops.
+~
+The wraith commander is a powerful wraith, placed in charge of a platoon of 
+wraith soldiers and charged with protecting the tunnels from intruders.
+~
+32|64 8|32|8192|32768|65536 -1000 S
+79 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 1
+#21583
+dancing wraith~
+the dancing wraith~
+The wraith dances from place to place.
+~
+The wraith dances from place to place in some unfathomable pattern.
+~
+2|64|512 0 1000 S
+30 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 0
+#21584
+dancing wraith~
+the dancing wraith~
+The wraith flickers, twists and spins.
+~
+The wraith dances in an unfathomable pattern.
+~
+2|64|512 0 1000 S
+30 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 0
+#21585
+wraith~
+the dancing wraith~
+The wraith flickers and changes colour.
+~
+The wraith is dancing in an unfathomable pattern.
+~
+2|64|512 0 1000 S
+10 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 0
+#21586
+soul~
+the soul~
+The soul awaits cleansing.
+~
+The soul has been judged and now awaits cleansing and the ultimate reward - 
+reincarnation.
+~
+2|64|512 0 0 S
+30 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 0
+#21587
+soul~
+the cleansed soul~
+The cleansed soul awaits reincarnation.
+~
+The soul is pure white and awaits reincarnation.
+~
+2|64|512 0 0 S
+30 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 0
+#21588
+cleaner~
+the cleaner of souls~
+The fire of cleansing burns brightly.
+~
+The fire is used to cleanse souls so that they may pass back into the land of 
+the living.
+~
+2|64|512 0 1000 S
+30 0 0 0d0+0 0d0+0
+2|16|64|256 0
+8 8 0
+#21589
+tree law~
+the tree of law~
+The tree of law radiates healthiness.
+~
+The tree of law is ancient, as old as the land itself.  It is the source of 
+vitality and healing powers for all the land.  Just being in its aura makes 
+you feel good.
+~
+2|64 8|32 1000 S
+100 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|128 0
+8 8 0
+#21590
+red sorcerer~
+the red sorcerer~
+The red sorcerer levitates in mid air.
+~
+The red sorcerer looks at you benignly.  'How may I help you?' he says.
+~
+2|64 8|32|128|8192 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21591
+acolyte red~
+the red acolyte~
+The red robed acolyte of Thrasher spits curses.
+~
+The red robed acolyte spits curses and invocations to make the sacrifice more
+powerful.
+~
+2|64 8|32 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21592
+acolyte yellow~
+the yellow acolyte~
+The yellow robed acolyte holds down the sacrifice victim.
+~
+The yellow robed acolyte holds down the pretty sacrifice victim and glares at 
+her with mad lust in his eyes.
+~
+2|64 8|32 -1000 S
+69 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21593
+acolyte black~
+the black acolyte~
+The black robed acolyte prepares to make the sacrifice to Thrasher.
+~
+The black robed acolyte is preparing for the final gory moment of sacrifice.  
+He raises a bloodied cursed spike above his head...
+~
+2|64 8|32 -1000 S
+69 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21594
+priest red~
+the red priest~
+The red robed priest stands here spitting curses.
+~
+The red robed priest spits curses and invocations to make the sacrifice more
+powerful.
+~
+2|64 8|32 -1000 S
+69 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21595
+priest yellow~
+the yellow priest~
+The yellow robed priest holds down the sacrifice victim.
+~
+The yellow robed priest holds down the pretty sacrifice victim and glares at 
+her with mad lust in his eyes.
+~
+2|64 8|32 -1000 S
+69 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21596
+priest black~
+the black priest~
+The black robed priest prepares to make the sacrifice.
+~
+The black robed priest is preparing for the final gory moment of sacrifice.  
+He raises a bloodied cursed spike above his head...
+~
+2|64 8|32 -1000 S
+69 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21597
+victim sacrifice~
+the sacrifice victim~
+A very pretty girl is tied to the sacrificial table.
+~
+She is very beautiful, only 21, and destined to be a victim on Thrashers 
+sacrificial tables.
+~
+2|64|512 0 1000 S
+21 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21598
+victim sacrifice~
+the sacrifice victim~
+A very pretty girl is tied to the sacrificial table.
+~
+The pretty girl looks at you with pleading eyes. "Please get me out of here" 
+she cries.  As you get closer she beckons you to come nearer still
+and then she whispers in your ear "There is a way out of here, I know it!  I 
+was in the cells when I discovered a tunnel, but they came and got me, and I 
+did not get to flee..." With that she breaks down into uncontrollable
+weeping and you motion to the black priest to get on with it just to shut her 
+up.
+~
+2|64|512 0 1000 S
+21 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#21599
+recruiter~
+the cult recruiter~
+The cult of Thrasher's recruiter stands here trying to "persuade" you to join.
+~
+The cult recruiter uses all the old tricks and some new ones too.  Brain 
+washing, torture, starvation and much much more are the stock tools of this 
+unholy fiend.
+~
+2|64 0 -1000 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#21600
+thrasher~
+Thrasher~
+The Demon Lord Thrasher radiates power.
+~
+The Demon Lord Thrasher.  The Greater God of Evil.  These and many other names 
+he bears. Trapped here by Zrack and Absulom, he plans revenge with the 
+patience of the immortal being that he is.  He flicks out a small
+burst of power from his mind and you are instantly frozen to the spot!
+~
+2|64 128 -1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>fight_prog 75~
+if ispc($n)
+   trip $n
+   endif
+~
+|
+#21601
+dead tree~
+the dead tree~
+A long dead tree sits here, only its trunk and a few old branches remaining.
+~
+The tree lived for thousands of years and now it is taking thousands of years to 
+slowly decompose.
+~
+2|64 0 -1000 S
+100 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|128 0
+8 8 0
+#0
+
+
+#OBJECTS
+#21500
+goblin sword~
+a goblin's short sword~
+A short sword, well suited for a goblin lies here~
+~
+5 16|512 1|8192
+0~ 2~ 10~ 3~ 
+5 0 0
+#21501
+goblin leather vest~
+a goblin's leather vest~
+A leather vest, well suited to a goblin lies here~
+~
+9 16 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+#21502
+silver bullet~
+a silver bullet~
+A silver bullet glistens on the floor~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+9 99
+#21503
+burnt wand~
+a burnt wand~
+A burnt out wand lies here~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21504
+rock~
+a rock~
+A rock trips you up~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21505
+feather~
+a feather~
+A feather floats on the air currents~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21506
+emerald gem~
+an emerald gem~
+An emerald gem shines brightly here!~
+~
+8 0 1|16384
+5000~ 5000~ 5000~ 5000~ 
+10 0 0
+A
+5 3
+#21507
+coins pile~
+a huge pile of gold goins~
+A huge pile of gold coins is lying here, just waiting to be taken!~
+~
+20 0 1
+0~ 500~ 100~ 5~ 
+5 0 0
+#21508
+map atlantis demondium~
+a map to the realms of Atlantis~
+The map has some drawings on it...~
+~
+13 0 0
+0~ 1~ 6~ 11~ 
+1 0 0
+E
+drawing~
+Seek out the Dragon that lives underwater...
+He has created an entrance to a previously
+hidden passageway.
+
+Find also, amongst the workers, a shrine...
+it is rumoured that the Demons may be at work
+in Atlantis....~
+#21509
+amarth stone fragment~
+a fragment of the Amarth stone~
+A small shard of a stone attracts your attention.~
+~
+4 2|16 1|16384
+40~ 1~ 10~ domination~ 
+1 0 0
+A
+12 -5
+#21510
+amarth stone fragment~
+a fragment of the Amarth stone~
+It is covered in strange runes.~
+~
+4 2|16 1|16384
+40~ 1~ 5~ ultrablast~ 
+5 0 0
+A
+13 -10
+E
+runes~
+You can not decipher the runes.~
+#21511
+key~
+the key~
+A shiny key~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21512
+amarth stone fragment~
+a fragment of the Amarth stone~
+The fragment has a strange inner glow.~
+~
+4 2|16 1|16384
+0~ 1~ 6~ intellect fortress~ 
+5 0 0
+A
+13 -5
+#21513
+heart amarth stone~
+the heart of the Amarth stone~
+The heart of the Amarth stone glows and pulses with power.~
+~
+4 0 1|16384
+40~ 1~ 15~ disintegrate~ 
+5 0 0
+A
+13 25
+#21514
+broken sword~
+a broken sword~
+The sword has broken in the middle of the blade, and is rusted.~
+~
+5 128|4096 1|8192
+0~ 1~ 6~ 1~ 
+30 0 0
+A
+13 -50
+A
+19 -8
+A
+18 -20
+#21515
+rusted helmet~
+a rusty helmet~
+The helmet is rusted through.~
+~
+9 128|4096 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 25
+A
+13 -25
+A
+12 -88
+#21516
+ring thrasher~
+a cult of Thrasher ring~
+A ring  rests here.~
+~
+9 0 1|2
+-5~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -10
+A
+19 4
+#21517
+wolf hide~
+a wolf hide~
+A thick warm wolf hide lies here.~
+~
+9 16|512 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -15
+#21518
+elven belt~
+an elven shadow belt~
+A grey belt is barely discernible here.~
+~
+9 16|512 1|2048
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+13 20
+A
+5 1
+#21519
+feathered headdress~
+a feathered headdress~
+A feathered headdress hangs here.~
+~
+9 16|512 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 25
+#21520
+earth amulet~
+an earth amulet~
+An amulet made of powerful banes glows here.~
+~
+9 1|16|512 1|4
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 40
+#21521
+orb seeing~
+an orb of seeing~
+A crystal orb shines out from within the garbage heap.~
+~
+4 1|16 1|16384
+0~ 1~ 50~ heighten senses~ 
+5 0 0
+A
+3 2
+#21522
+slimy bracers~
+slimy bracers~
+A pair of slimy bracers lie here untouched.~
+~
+9 16 1|4096
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 5
+A
+17 -10
+#21523
+rotten corpse~
+a rotten corpse~
+A corpse lies half buried in the swamp.~
+~
+5 16|512 1|8192
+0~ 10~ 25~ 9~ 
+40 0 0
+A
+19 2
+A
+18 2
+#21524
+swamp key~
+a swamp key~
+A key made of swamp materials lies here.~
+~
+18 16 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21525
+golden cup~
+a golden cup~
+A shiny golden cup sits here, filled with a mysterious liquid.~
+~
+10 1|64 1
+50~ heighten senses~ sanctuary~ heal~ 
+1 0 0
+#21526
+sandy key~
+a sandy key~
+A key made of sand lies here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#21527
+silver spoon~
+a silver spoon~
+A tarnished silver spoon lies here, bearing the crest of Atlantis.~
+~
+13 0 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#21528
+saddle~
+a leather saddle~
+A leather saddle designed for a camel is here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~ 
+5 0 0
+#21529
+nomad scimitar~
+a nomad's short scimitar~
+A sharp curved scimitar lies here.~
+~
+5 64 1|8192
+0~ 5~ 10~ 3~ 
+10 0 0
+#21530
+bedouin sword~
+a bedouin's short sword~
+A bedouin's short sword rests here.~
+~
+5 64 1|8192
+0~ 5~ 10~ 1~ 
+10 0 0
+#21531
+harem sash~
+a harem sash~
+A harem sash with bells tinkles in the wind.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+2 0
+#21532
+nomad robe flowing~
+a nomad's flowing robe~
+A sandy old robe lies here.~
+~
+9 0 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 0
+#21533
+bedouin headwrap~
+a bedouin's head wrap~
+A pile of sandy rags lie here.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+4 3
+A
+12 10
+#21534
+traveller dagger~
+a traveller's dagger~
+A small dagger rests here.~
+~
+5 0 1|8192
+0~ 10~ 15~ 11~ 
+5 0 0
+A
+19 5
+A
+18 8
+#21535
+boots~
+sandy boots~
+A pair of old sand coloured boots sit here waiting to be claimed.~
+~
+9 0 1|64
+0~ 1~ 6~ 11~ 
+5 0 0
+#21536
+mummy bandage~
+mummy's bandages~
+Some old rags lie in a corner.~
+~
+9 16|128|512|1024|2048|4096 1|4096
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+13 -25
+#21537
+egyptian curved sword~
+an egyptian curved sword~
+A curved sword covered in hieroglyphs lies here.~
+~
+5 0 1|8192
+0~ 5~ 9~ 13~ 
+15 0 0
+A
+19 2
+#21538
+mummy arm~
+a mummy's arm~
+An arm of a mummy lies on the floor.~
+~
+5 0 1|8192
+0~ 10~ 15~ 7~ 
+5 0 0
+A
+9 5000
+A
+14 -15
+A
+19 5
+#21539
+staff osiris~
+the staff of Osiris~
+A magical staff lies in the dust.~
+~
+1 64 1
+0~ 1~ -1~ 11~ 
+5 0 0
+A
+12 50
+A
+17 -15
+A
+9 250
+#21540
+scales~
+scales of judgement~
+Osiris' scales of judgement sit quietly here.~
+~
+9 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+A
+13 100
+#21541
+mummy leg~
+a mummy's leg~
+A mummy's leg...~
+~
+5 16 1|8192
+0~ 1~ 6~ 0~ 
+25 0 0
+#21542
+belt Underworld~
+belt of the Underworld~
+A strange black belt lies here.~
+~
+9 512 1|2048
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+5 3
+A
+1 3
+A
+17 -10
+#21543
+Underworld symbol~
+an Underworld symbol~
+A symbol of the Underworld hangs on a chain~
+~
+9 16|512 1|4
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 25
+#21544
+golden crown~
+a golden crown~
+An ice cold golden crown sits here.~
+~
+9 128|4096 1|16|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+1 -3
+A
+2 -3
+A
+3 -3
+A
+4 -3
+A
+5 -3
+A
+17 100
+#21545
+ancient parchment~
+an ancient parchment~
+An ancient parchment has strange glyphs scrawled all over it.~
+~
+2 0 1
+45~ weaken~ faerie fire~ fireball~ 
+1 0 0
+#21546
+divining rod~
+a divining rod~
+This divining rod has the power to find water.~
+~
+4 0 1|16384
+0~ 15~ 15~ create spring~ 
+5 0 0
+A
+24 -10
+#21547
+silver flask~
+a silver flask~
+A silver flask sits on the floor.~
+~
+10 0 1|8192
+45~ heal~ ~ ~ 
+5 0 0
+#21548
+osiris Underworld sword~
+osiris's whip of the Underworld~
+Osiris' powerful sword shines here.~
+~
+5 1 1|8192
+0~ 20~ 35~ 4~ 
+5 0 0
+A
+19 5
+A
+9 2000
+#21549
+soul ferry~
+the soul ferry~
+A boat for carrying souls down the River Styx is here.~
+~
+22 0 0
+0~ 1~ 6~ 11~ 
+50 0 0
+#21550
+resurrection spell key~
+a spell of resurrection~
+A spell of resurrection is here.~
+~
+26 0 1
+10~ heal~ sanctuary~ giant strength~ 
+1 0 0
+#21551
+bone sword~
+a bone sword~
+A bone sword rests here.~
+~
+5 0 1|8192
+0~ 10~ 19~ 3~ 
+5 0 0
+#21552
+bone helmet~
+a bone helmet~
+A helmet made from a skull grins at you.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -20
+#21553
+bony bracers~
+a pair of bony bracers~
+A pair of bracers made from a thick piece of bone sit here.~
+~
+9 16 1|4096
+10~ 1~ 6~ 11~ 
+5 0 0
+A
+19 6
+A
+18 3
+A
+17 -10
+#21554
+bone shield~
+a bone shield~
+A shield made from a large bone sits here.~
+~
+9 0 1|512
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+#21555
+black papyrus~
+a black papyrus~
+A black papyrus sits here.~
+~
+2 0 1
+0~ detect poison~ detect hidden~ detect magic~ 
+1 0 0
+#21556
+licorice strap~
+a licorice strap~
+A licorice strap sits here enticing you.~
+~
+5 0 1|8192
+0~ 11~ 25~ 10~ 
+5 0 0
+A
+19 4
+A
+18 10
+#21557
+Akmar ring~
+akmar's Ring~
+Akmar's Ring should be on his finger.~
+~
+9 16 1|2
+25~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+#21558
+cursed ring~
+an ancient cursed ring~
+A small black ring hums quietly to itself.~
+~
+9 1|2|16 1|2
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+13 -2000
+#21559
+broadsword~
+a wide broadsword~
+A huge broadsword gleams here.~
+~
+5 0 1|8192
+0~ 15~ 30~ 3~ 
+35 0 0
+A
+19 5
+A
+18 10
+#21560
+mace spiked huge~
+a huge spiked mace~
+A huge spiked mace is covered in dried blood.~
+~
+5 0 1|8192
+0~ 10~ 19~ 7~ 
+35 0 0
+#21561
+tooth jaguar~
+a jaguar's tooth~
+A large jaguars tooth has been removed from a jaw.~
+~
+5 16 1|8192
+0~ 20~ 30~ 11~ 
+5 0 0
+A
+19 5
+#21562
+shadow cloak~
+a shadow cloak~
+A grey cloak lies quietly in a corner.~
+~
+9 0 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+2 3
+A
+13 33
+A
+17 -15
+#21563
+mage gloves~
+a pair of mage's gloves~
+These fine gloves would be very good for a mage.~
+~
+9 0 1|128
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+12 100
+A
+17 -15
+A
+24 -15
+A
+23 -10
+A
+19 5
+#21564
+medallion atlantis~
+the medallion of Atlantis~
+A medallion with the symbol of Atlantis on it has been discarded here.~
+~
+9 0 1|4
+10~ 1~ 6~ 11~ 
+1 0 0
+A
+12 50
+A
+13 25
+A
+19 9
+#21565
+wand bedevilment~
+a wand of bedevilment~
+A shimmering wand lies here, you feel confused.~
+~
+3 0 1|16384
+10~ 15~ 15~ energy drain~ 
+1 0 0
+#21566
+dead adventurer corpse~
+a corpse of a dead adventurer~
+A corpse of an unfortunate adventurer lies crumpled here.~
+~
+23 0 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#21567
+water statue~
+a water statue~
+A small statue sits here with water flowing continually from it.~
+~
+25 1|64 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#21568
+vial blood~
+a vial of blood~
+A vial full of a thick red liquid sits here.~
+~
+17 0 1
+0~ 1~ 13~ 1~ 
+5 0 0
+#21569
+jaguar boots~
+a pair of jaguar skin boots~
+A pair of boots made from the skin of a jaguar stand here.~
+~
+9 1|16 1|64
+18~ 1~ 6~ 11~ 
+5 0 0
+A
+14 100
+A
+19 6
+A
+13 25
+#21570
+black armband~
+a black armband~
+A black armband lies here.~
+~
+9 16 1|256
+15~ 1~ 6~ 11~ 
+5 0 0
+A
+12 50
+A
+13 75
+A
+19 7
+A
+18 5
+#21571
+black leggings~
+a pair of black leggings~
+A pair of leggings made from some unknown black metal sits here.~
+~
+9 16 1|32
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+2 2
+A
+14 33
+A
+24 -10
+A
+19 4
+A
+18 4
+A
+13 15
+#21572
+shadowy shield~
+a shadowy shield~
+There seems to be something lying in the shadows nearby.~
+~
+9 2 1|512
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -20
+A
+5 2
+#21573
+bodysuit~
+a black PVC bodysuit~
+A shiny black PVC bodysuit lies here...kinky.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+3 2
+A
+19 5
+A
+17 -15
+#21574
+bottle black~
+a small black bottle~
+A small black bottle sits here.~
+~
+10 0 1
+0~ change sex~ teleport~ blindness~ 
+5 0 0
+#21575
+magic mushroom~
+a HUGE magic mushroom~
+A huge delicious looking magic mushroom is here.~
+~
+19 0 1|8192
+100~ 0~ 0~ 0~ 
+5 0 0
+#21576
+coke ~
+a can of coke~
+A refreshing can of coke.~
+~
+17 0 1
+100~ 100~ 15~ 0~ 
+1 0 0
+#21577
+tattered scrap~
+a scrap of paper~
+A piece of paper with strange writings on it.~
+~
+2 0 1
+0~ identify~ ~ ~ 
+1 0 0
+#21578
+ribbed body armour~
+ribbed body armour~
+Some ribbed body armour sits here.~
+~
+9 1|16 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+A
+19 7
+A
+13 25
+#21579
+hat wizard~
+a wizard's hat~
+A tall white hat sits here.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+3 3
+A
+4 3
+A
+12 125
+A
+13 50
+A
+17 -20
+A
+24 -20
+A
+19 5
+A
+18 5
+#21580
+finger puppet~
+a demonic faced finger puppet~
+An evil looking finger puppet grins evilly at you.~
+~
+9 16 1|2
+13~ 1~ 6~ 11~ 
+1 0 0
+A
+12 50
+A
+13 50
+A
+19 10
+#21581
+lucky star~
+a lucky star~
+A star like object burns brightly here, almost blinding you with its brilliance.~
+~
+1 1 1
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+13 77
+A
+19 7
+A
+18 7
+#21582
+twisted dagger~
+a twisted dagger~
+A twisted dagger is embedded into the floor.~
+~
+5 16|32 1|8192
+0~ 15~ 35~ 11~ 
+5 0 0
+A
+12 25
+A
+19 5
+A
+18 5
+#21583
+red belt bloody~
+a bloody red belt~
+A belt soaked in the blood of sacrifice victims hangs from a hook.~
+~
+9 16 1|2048
+10~ 1~ 6~ 11~ 
+1 0 0
+A
+17 -10
+A
+23 -10
+A
+24 -10
+A
+13 150
+A
+19 10
+#21584
+yellow bracelet~
+an evil yellow bracelet~
+An evil looking yellow bracelet has been given special powers by being used in sacrifices.~
+~
+9 16 1|4096
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -10
+A
+18 10
+A
+19 10
+#21585
+black shield~
+a midnight black shield~
+A shield the colour of midnight sits here.~
+~
+9 0 1|512
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -20
+A
+13 25
+#21586
+robe red~
+a red sacrificial robe~
+A blood red sacrificial robe hums with evil power.~
+~
+9 16|32|64|512|2048|4096 1|1024
+15~ 1~ 6~ 11~ 
+5 0 0
+#21587
+yellow robe~
+a yellow sacrificial robe~
+A evil looking yellow sacrificial robe hums with power.~
+~
+9 16|32|64|512|2048|4096 1|1024
+10~ 1~ 6~ 11~ 
+5 0 0
+#21588
+black robe~
+a black sacrificial robe~
+An evil looking black sacrificial robe hums with power.~
+~
+9 16|32|64|512|2048|4096 1|1024
+10~ 1~ 6~ 11~ 
+5 0 0
+#21589
+red boots bloody~
+a pair of bloody boots~
+A pair of boots sit here dripping blood.~
+~
+9 16 1|64
+15~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -10
+A
+19 9
+A
+14 100
+#21590
+yellow gloves~
+sacrificial gloves~
+A pair of yellow gloves, just great for keeping blood of your hands when making 
+sacrifices lie here.~
+~
+9 16|512|2048 1|128
+10~ 1~ 6~ 11~ 
+5 0 0
+#21591
+cursed spike~
+an ancient cursed spike~
+An ancient cursed spike sits here waiting to possess someone.~
+~
+5 16|64|128|512|2048|4096 1|8192
+0~ 15~ 21~ 11~ 
+5 0 0
+A
+19 5
+#21592
+cursed spike~
+a old cursed spike~
+An old, but not ancient cursed spike waits to possess someone.~
+~
+5 16|64|128|512|2048|4096 1|8192
+0~ 10~ 19~ 11~ 
+5 0 0
+A
+19 4
+#21593
+emeter e-meter~
+(Cursed) an e-meter~
+The favourite weapon of cult recruiters all around the universe, the e-meter, sits here.~
+~
+5 1|2|16|64|128|512|2048|4096 1|8192
+0~ 1~ 1~ 12~ 
+5 0 0
+A
+3 -20
+A
+4 -20
+A
+19 -1
+A
+18 -50
+#21594
+thrasher dagger doom~
+Thrasher's Dagger of Doom~
+An evil, powerful artifact lies just beyond your grasp.~
+~
+5 2|16 1|8192
+0~ 25~ 50~ 11~ 
+15 0 0
+A
+19 15
+A
+18 15
+A
+1 3
+A
+5 3
+A
+13 100
+#21595
+beating heart~
+a beating heart~
+A human heart pulsates grotesquely.~
+~
+1 2|16 1
+0~ 1~ -1~ 11~ 
+5 0 0
+A
+13 100
+A
+17 -20
+A
+23 -20
+A
+24 -20
+A
+19 7
+A
+18 7
+#21596
+dead victim~
+a dead sacrifice victim~
+A very pretty young lady has been sacrificed to please Thrasher, how sad.~
+~
+9 1|16|512|2048|4096 1|1024
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -20
+A
+13 25
+A
+12 25
+A
+12 0
+#21597
+demon chain~
+a demon on a chain~
+A tiny live demon is on the end of a gold chain.~
+~
+9 1|16 1|4|8192
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -15
+A
+23 -10
+A
+24 -10
+A
+12 100
+A
+13 100
+A
+18 10
+A
+19 10
+#21598
+romper stomper boots~
+{R(Flaming){x Thrasher's Boots~
+A pair of flaming boots scorch the air around you.~
+~
+9 16 1|64|8192
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+14 500
+A
+17 -25
+A
+23 -10
+A
+24 -25
+A
+18 10
+A
+19 10
+A
+13 50
+#21599
+drop droplet black~
+a black droplet~
+A small black droplet drips from the roof.~
+~
+10 0 1
+60~ heal~ heal~ heal~ 
+5 0 0
+#21600
+treasure thrasher~
+thrasher's treasure~
+A massive pile of coins lies here.~
+~
+8 0 1
+2000~ 100~ 35~ 45~ 
+5 0 0
+#21601
+ruined scroll~
+a ruined scroll~
+This scroll can barely be read, better not use it, it may be dangerous.~
+~
+2 16 1
+60~ disintegrate~ ~ ~ 
+5 0 0
+#21602
+blackened wand~
+a blackened wand~
+This wand looks burned out and useless.~
+~
+3 16|64 1|16384
+100~ 10~ 10~ enchant weapon~ 
+5 0 0
+#21603
+heart dead victim~
+a sacrifice victim's heart~
+The heart of a sacrifice victim has been cut out and then carelessly tossed aside.~
+~
+26 1 1
+5~ heal~ ~ ~ 
+5 0 0
+#21604
+bones pile~
+a pile of old bones~
+A pile of old bones have been discarded here.~
+~
+13 0 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#21605
+key~
+a key~
+A key with a small symbol on it~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21606
+key wood~
+a wooden key~
+A small, plain wooden key~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#21607
+key bronze~
+a bronze key~
+A small bronzed key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#21608
+key iron~
+an iron key~
+A small iron key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21609
+key silver~
+a silver key~
+A small silver key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#21610
+key gold~
+a golden key~
+A golden key shines brightly!~
+~
+18 1|2 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21611
+key mithril~
+a mithril key~
+A shiny mithril key lies here.~
+~
+18 1|2|32|64 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#21612
+key adamantium~
+an adamantium key~
+A key made of valuable adamantium lies here.~
+~
+18 1|2|64|1024 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#21613
+key platinum~
+a platinum key~
+A platinum key sits here.~
+~
+18 1|2|32|64|1024|2048 1
+0~ 1~ 6~ 11~ 
+1 0 0
+#0
+
+
+#ROOMS
+#21500
+A small tunnel~
+This tunnel is awash with emanations of pure evil, its walls pulse with hatred 
+and almost seem to be seeking to crush your puny form between the harsh granite.  
+There is a small plaque set into the wall.  You notice some graffiti scrawled 
+on the wall below the plaque.
+~
+0 1|4|8|1024 5
+D1
+~
+~
+0 -1 21501
+D4
+~
+~
+0 -1 752
+D5
+There is a large flat, round stone lying across the floor here.~
+stone~
+1 -1 21644
+E
+plaque~
+This area designed by Jago, 1996.
+Travellers Beware! Here lies death
+incarnate!  Remember this: only the
+news will help you find the Demondium.~
+E
+graffiti~
+'Vukodlak was here' is scrawled on the wall.  Below this is a number of marks 
+that seem to indicate days; there are an awful lot of them.
+~
+S
+#21501
+A small tunnel~
+The tunnel closes in on you even more as 
+you struggle to walk through the air which is thick with hatred and power.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21502
+D3
+~
+~
+0 -1 21500
+S
+#21502
+A small tunnel~
+The tunnel closes in on you even more as 
+you struggle to walk through the air which is thick with 
+hatred and power. You can barely see 2 metres ahead.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 21503
+D3
+~
+~
+0 -1 21501
+S
+#21503
+A dark tunnel~
+Suddenly the tunnel plunges into darkness! Not even your 
+feeble light can make much impression.  The evilness 
+chokes you and makes it hard to breathe.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21504
+D3
+~
+~
+0 -1 21502
+S
+#21504
+Darkness~
+Your torch flickers and succumbs to the power around you.  
+You can not see anything at all.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21505
+D3
+~
+~
+0 -1 21503
+S
+#21505
+Emptiness~
+You are lost in what seems to be an infinite void.  You are 
+surrounded by inky blackness in all directions.  You 
+cannot find any walls to guide yourself by.  
+Exits lead in most directions.
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21506
+D1
+~
+~
+0 -1 21511
+D2
+~
+~
+0 -1 21511
+D3
+~
+~
+0 -1 21504
+D5
+~
+~
+0 -1 21511
+S
+#21506
+Emptiness~
+You are lost in what seems to be an infinite void.  
+You are surrounded by inky blackness in all 
+directions.  You cannot find any walls to guide 
+yourself by.  Exits lead in most directions.
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21511
+D1
+~
+~
+0 -1 21507
+D2
+~
+~
+0 -1 21505
+D3
+~
+~
+0 -1 21511
+D5
+~
+~
+0 -1 21511
+S
+#21507
+Emptiness~
+You are lost in what seems to be an infinite void. 
+You are surrounded by inky blackness in all 
+directions.  You cannot find any walls to guide 
+yourself by.  Exits lead in most directions.
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21511
+D1
+~
+~
+0 -1 21511
+D2
+~
+~
+0 -1 21511
+D3
+~
+~
+0 -1 21508
+D5
+~
+~
+0 -1 21511
+S
+#21508
+Emptiness~
+You are lost in what seems to be an infinite void.  
+You are surrounded by inky blackness in all 
+directions.  You cannot find any walls to guide 
+yourself by.  Exits lead in most directions.
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21512
+D1
+~
+~
+0 -1 21507
+D2
+~
+~
+0 -1 21509
+D3
+~
+~
+0 -1 21512
+D5
+~
+~
+0 -1 21512
+S
+#21509
+Edge of a crevice~
+You stop suddenly as one foot finds no 
+ground beneath it!  You seem to be on the 
+edge of a crevice of some sort.  Just how 
+deep and how wide it is, you can not tell.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21508
+D5
+~
+~
+0 -1 21510
+S
+#21510
+Bottom of the crevice~
+You tumble down the crevice!
+
+You fall.....
+
+and fall.....
+
+and fall.....
+
+and fall.....
+
+*CRUNCH!!*
+
+You have landed on something cold and 
+slimy, but soft enough to break your fall, 
+and until you landed on it, it was alive.  
+You can see a stone archway in the distance 
+to the west.
+~
+0 1|8 5
+D3
+~
+~
+0 -1 21522
+S
+#21511
+Twisted tunnels~
+Your light flickers back into life and you find yourself 
+in a maze of twisting tunnels.  The evil you felt has ceased.
+~
+0 1|8 5
+D3
+~
+~
+0 -1 21512
+S
+#21512
+Twisted tunnels~
+You wander through a seemingly endless series of 
+twisted tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21515
+D1
+~
+~
+0 -1 21511
+D2
+~
+~
+0 -1 21514
+D3
+~
+~
+0 -1 21516
+S
+#21513
+Twisted tunnels~
+You wander through a seemingly endless series of 
+twisted tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21519
+D1
+~
+~
+0 -1 21512
+D2
+~
+~
+0 -1 21512
+D3
+~
+~
+0 -1 21514
+S
+#21514
+Twisted tunnels~
+You wander through a seemingly endless series of twisted 
+tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21518
+D1
+~
+~
+0 -1 21513
+D2
+~
+~
+0 -1 21516
+D3
+~
+~
+0 -1 21515
+S
+#21515
+Twisted tunnels~
+You wander through a seemingly endless series of 
+twisted tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21515
+D1
+~
+~
+0 -1 21514
+D2
+~
+~
+0 -1 21515
+D3
+~
+~
+0 -1 21516
+S
+#21516
+Twisted tunnels~
+You wander through a seemingly endless series of twisted 
+tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21513
+D1
+~
+~
+0 -1 21515
+D2
+~
+~
+0 -1 21520
+D3
+~
+~
+0 -1 21517
+S
+#21517
+Twisted tunnels~
+You wander through a seemingly endless series of 
+twisted tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21518
+D1
+~
+~
+0 -1 21516
+D2
+~
+~
+0 -1 21516
+D3
+~
+~
+0 -1 21518
+S
+#21518
+Twisted tunnels~
+You wander through a seemingly endless series of twisted 
+tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21518
+D1
+~
+~
+0 -1 21517
+D2
+~
+~
+0 -1 21518
+D3
+~
+~
+0 -1 21519
+S
+#21519
+Twisted tunnels~
+You wander through a seemingly endless series of 
+twisted tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21512
+D1
+~
+~
+0 -1 21518
+D2
+~
+~
+0 -1 21512
+D3
+~
+~
+0 -1 21520
+S
+#21520
+Twisted tunnels~
+You wander through a seemingly endless series 
+of twisted tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21512
+D1
+~
+~
+0 -1 21519
+D2
+~
+~
+0 -1 21512
+D3
+~
+~
+0 -1 21521
+S
+#21521
+Twisted tunnels~
+You wander through a seemingly endless series of twisted 
+tunnels.  The walls are of a featureless granite.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21513
+D1
+~
+~
+0 -1 21520
+D2
+~
+~
+0 -1 21513
+D3
+~
+~
+0 -1 21522
+S
+#21522
+Entrance to Demondium~
+You stop in awe before a huge stone archway. You have 
+found the lost entrance to Demondium! There is 
+some writing around the edges of the arch.
+~
+0 1|4|8 5
+D1
+~
+~
+0 -1 21521
+D5
+~
+~
+0 -1 21523
+E
+writing~
+Here within this archway lies the Demondium of Thrasher, 
+where once I banished them.  Do not wake this demon 
+from his slumber!  Else all the lands of the world will regret it severely!
+
+-Absolum the Cleric (in memory of Zrack the Mage)
+~
+S
+#21523
+First Level of Demondium~
+You walk down a set of cold stone stairs, 
+with mist swirling all around you, into 
+the first level of Demondium.  From within 
+the pits you can hear the cries of a multitude of beasts.
+~
+0 1|4|8 5
+D2
+~
+~
+0 -1 21524
+D4
+~
+~
+0 -1 21522
+S
+#21524
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21523
+D1
+~
+~
+0 -1 21528
+D3
+~
+~
+0 -1 21525
+E
+sign~
+The sign says "To continue any further in your journey, 
+you must collect four keys from four guardians."
+~
+S
+#21525
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21524
+D2
+~
+~
+0 -1 21531
+D3
+~
+~
+0 -1 21526
+S
+#21526
+Outside a cave in the Pits of Demondium~
+Mist swirls around you, obscuring your vision.  The 
+air is foul and rank and hard to breathe in. To the 
+north a dark cave entrance beckons.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21527
+D1
+~
+~
+0 -1 21525
+S
+#21527
+1st Lair~
+This unnatural cave houses one of the guardians of 
+the First level of Demondium.  The guardian seems 
+to think that you shouldn't be here...
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21526
+S
+#21528
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21529
+D2
+~
+~
+0 -1 21533
+D3
+~
+~
+0 -1 21524
+S
+#21529
+Outside a cave in the Pits of Demondium~
+Mist swirls around you, obscuring you vision.  
+The air is foul and rank and hard to breathe in.
+To the north a cave beckons.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21530
+D3
+~
+~
+0 -1 21528
+S
+#21530
+2nd Lair~
+This unnatural cave houses one of the guardians of the 
+First level of Demondium.  The guardian seems to think 
+that you shouldn't be here...
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21529
+S
+#21531
+Pits of Demondium~
+Mist swirls around you, obscuring you vision.  The air 
+is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21525
+D2
+~
+~
+0 -1 21532
+S
+#21532
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+
+The only way south is through a huge pit, seething with activity.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21531
+D2
+~
+~
+0 -1 21535
+S
+#21533
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21528
+D2
+~
+~
+0 -1 21534
+S
+#21534
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+
+The only way west is through a huge pit, seething with activity.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21533
+D3
+~
+~
+0 -1 21535
+S
+#21535
+Goblin Pit~
+You have jumped right into a pit of goblins! These warped 
+creatures are only 4 feet tall, but they are many and you 
+are just one.  If you survive you may climb out of the pit
+to the west or south.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21532
+D1
+~
+~
+0 -1 21534
+D2
+~
+~
+0 -1 21539
+D3
+~
+~
+0 -1 21536
+S
+#21536
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21535
+D2
+~
+~
+0 -1 21537
+S
+#21537
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21536
+D2
+~
+~
+0 -1 21538
+S
+#21538
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21537
+D1
+~
+~
+0 -1 21542
+D3
+~
+~
+0 -1 21546
+S
+#21539
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21535
+D2
+~
+~
+0 -1 21540
+S
+#21540
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21539
+D2
+~
+~
+0 -1 21541
+S
+#21541
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21540
+D1
+~
+~
+0 -1 21546
+D3
+~
+~
+0 -1 21544
+S
+#21542
+Outside a cave in the Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+
+To the south a dark cave entrance beckons.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21543
+D3
+~
+~
+0 -1 21538
+S
+#21543
+3rd Lair~
+This unnatural cave houses one of the guardians of the 
+First level of Demondium.  The guardian seems to think 
+that you shouldn't be here...
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21542
+S
+#21544
+Outside a cave in the Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+
+To the south a dark cave entrance beckons.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21541
+D2
+~
+~
+0 -1 21545
+S
+#21545
+4th Lair~
+This unnatural cave houses one of the guardians of the 
+First level of Demondium.  The guardian seems to think 
+that you shouldn't be here...
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21544
+S
+#21546
+Pits of Demondium~
+Mist swirls around you, obscuring your 
+vision.  The air is foul and rank and hard to breathe in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21538
+D2
+~
+~
+0 -1 21547
+D3
+~
+~
+0 -1 21541
+S
+#21547
+Escape from the Pits of Demondium~
+You finally stumble out of the mist into a wide cavern, 
+softly lit by some luminescent force. Stalagmites and 
+stalactites glisten in the eerie light.  To the south 
+you can see an archway.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 21546
+D2
+~
+~
+0 -1 21548
+S
+#21548
+First Ward~
+In front of you lies a magical ward, that 
+stops any further progress.  The powerful magic 
+that binds the ward forbids passing by magical 
+or physical means.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 21547
+D2
+The way is blocked by a magical forbidding.~
+ward~
+8 21502 21549
+S
+#21549
+Second Ward~
+In front of you lies a magical ward, 
+that stops any further progress.
+~
+0 1|4|8 5
+D0
+~
+~
+8 -1 21548
+D2
+The way is blocked by a magical forbidding.
+~
+ward~
+8 21503 21550
+S
+#21550
+Third Ward~
+In front of you lies a magical ward, that stops any further progress.
+~
+0 1|4|8 5
+D0
+~
+~
+8 -1 21549
+D2
+The way is blocked by a magical forbidding.~
+ward~
+8 21504 21551
+S
+#21551
+Fourth Ward~
+In front of you lies a magical ward, that stops any further progress.
+~
+0 1|4|8 5
+D0
+~
+~
+8 -1 21550
+D2
+The way is blocked by a magical forbidding.~
+ward~
+8 21505 21552
+S
+#21552
+Treasure of the First level of Demondium~
+This room glows yellow with riches beyond your wildest 
+dreams!  This must be your reward for completing the 
+first level of Demondium!
+There is a dark gap in the south wall, leading downwards...
+~
+0 1|4|8 5
+D0
+~
+~
+8 -1 21551
+D5
+~
+~
+0 -1 21553
+S
+#21553
+Mineshaft~
+You clamber down a grimy, rickety ladder 
+into the pitch black depths of a mine.  
+Coal dust chokes your lungs...
+~
+0 1|4|8|512|1024 5
+D5
+~
+~
+0 -1 21554
+S
+#21554
+Mines of Demondium~
+You have reached the second level of Demondium - Mines 
+of Demondium... The mines are cramped grimy, dusty 
+tunnels, and you have a feeling that if you had have 
+remembered to bring a canary, it would have died.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21559
+D2
+~
+~
+0 -1 21591
+D3
+~
+~
+0 -1 21555
+D4
+~
+~
+0 -1 21553
+S
+#21555
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21554
+D3
+~
+~
+0 -1 21556
+S
+#21556
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21555
+D3
+~
+~
+0 -1 21557
+S
+#21557
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21558
+D1
+~
+~
+0 -1 21556
+S
+#21558
+Dead end...~
+This room is a dead end in more ways than
+one...you have a feeling that this may well be your own 'dead' end.
+~
+0 1|8|8192 5
+D2
+~
+~
+0 -1 21557
+S
+#21559
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21560
+D3
+~
+~
+0 -1 21554
+S
+#21560
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21561
+D3
+~
+~
+0 -1 21559
+S
+#21561
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21562
+D3
+~
+~
+0 -1 21560
+S
+#21562
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21563
+D2
+~
+~
+0 -1 21561
+S
+#21563
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21564
+D2
+~
+~
+0 -1 21562
+S
+#21564
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21565
+D2
+~
+~
+0 -1 21563
+S
+#21565
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21566
+D3
+~
+~
+0 -1 21564
+S
+#21566
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21567
+D3
+~
+~
+0 -1 21565
+S
+#21567
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21568
+D3
+~
+~
+0 -1 21566
+S
+#21568
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21569
+D3
+~
+~
+0 -1 21567
+S
+#21569
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21570
+D3
+~
+~
+0 -1 21568
+S
+#21570
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21571
+D3
+~
+~
+0 -1 21569
+S
+#21571
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21570
+D2
+~
+~
+0 -1 21572
+S
+#21572
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21571
+D2
+~
+~
+0 -1 21573
+S
+#21573
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21572
+D2
+~
+~
+0 -1 21574
+S
+#21574
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21573
+D2
+~
+~
+0 -1 21575
+S
+#21575
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21574
+D2
+~
+~
+0 -1 21576
+S
+#21576
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21575
+D3
+~
+~
+0 -1 21577
+S
+#21577
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21576
+D3
+~
+~
+0 -1 21578
+S
+#21578
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21577
+D3
+~
+~
+0 -1 21579
+S
+#21579
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21578
+D3
+~
+~
+0 -1 21580
+S
+#21580
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21579
+D3
+~
+~
+0 -1 21581
+S
+#21581
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21580
+D3
+~
+~
+0 -1 21582
+S
+#21582
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21583
+D1
+~
+~
+0 -1 21581
+S
+#21583
+Mine Tunnels~
+This tunnel in the mines looks exactly like 
+all the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21584
+D2
+~
+~
+0 -1 21582
+S
+#21584
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21585
+D2
+~
+~
+0 -1 21583
+S
+#21585
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21586
+D3
+~
+~
+0 -1 21584
+S
+#21586
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21587
+D3
+~
+~
+0 -1 21585
+S
+#21587
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21588
+D3
+~
+~
+0 -1 21586
+S
+#21588
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21587
+D3
+~
+~
+0 -1 21589
+S
+#21589
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21588
+D3
+~
+~
+0 -1 21590
+S
+#21590
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21589
+D3
+~
+~
+0 -1 21561
+S
+#21591
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21554
+D2
+~
+~
+0 -1 21592
+S
+#21592
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21591
+D1
+~
+~
+0 -1 21602
+D2
+~
+~
+0 -1 21593
+D3
+~
+~
+0 -1 21595
+S
+#21593
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21592
+D2
+~
+~
+0 -1 21594
+S
+#21594
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.  There is 
+a pit dug deep in the mine floor to the south.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21593
+D2
+~
+~
+0 -1 21609
+S
+#21595
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21592
+D3
+~
+~
+0 -1 21596
+S
+#21596
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21597
+D1
+~
+~
+0 -1 21595
+D2
+~
+~
+0 -1 21601
+S
+#21597
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21596
+D3
+~
+~
+0 -1 21598
+S
+#21598
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21597
+D2
+~
+~
+0 -1 21599
+S
+#21599
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21598
+D2
+~
+~
+0 -1 21600
+S
+#21600
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21599
+D1
+~
+~
+0 -1 21601
+S
+#21601
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21596
+D3
+~
+~
+0 -1 21600
+S
+#21602
+Mine Tunnels~
+This tunnel in the mines looks exactly like 
+all the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21603
+D3
+~
+~
+0 -1 21592
+S
+#21603
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21604
+D2
+~
+~
+0 -1 21608
+D3
+~
+~
+0 -1 21602
+S
+#21604
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21605
+D2
+~
+~
+0 -1 21603
+S
+#21605
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21606
+D3
+~
+~
+0 -1 21604
+S
+#21606
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21605
+D2
+~
+~
+0 -1 21607
+S
+#21607
+Mine Tunnels~
+This tunnel in the mines looks exactly like 
+all the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21606
+D3
+~
+~
+0 -1 21608
+S
+#21608
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21603
+D1
+~
+~
+0 -1 21607
+S
+#21609
+Dwarven Pit~
+A large group of dwarves is here digging
+furiously...and the don't seem to like
+you interrupting them!
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21594
+D2
+~
+~
+0 -1 21610
+S
+#21610
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21609
+D1
+~
+~
+0 -1 21615
+D2
+~
+~
+0 -1 21636
+D3
+~
+~
+0 -1 21611
+S
+#21611
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21610
+D2
+~
+~
+0 -1 21612
+S
+#21612
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21611
+D2
+~
+~
+0 -1 21613
+S
+#21613
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21612
+D3
+~
+~
+0 -1 21614
+S
+#21614
+Dead end...~
+This room is a dead end in more ways than
+one...you have a feeling that this may well be 
+your own 'dead' end.
+~
+0 1|8|8192 5
+D1
+~
+~
+0 -1 21613
+S
+#21615
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21616
+D3
+~
+~
+0 -1 21610
+S
+#21616
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21615
+D2
+~
+~
+0 -1 21617
+S
+#21617
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21616
+D1
+~
+~
+0 -1 21618
+S
+#21618
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21619
+D3
+~
+~
+0 -1 21617
+S
+#21619
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21620
+D1
+~
+~
+0 -1 21621
+D3
+~
+~
+0 -1 21618
+S
+#21620
+Cave~
+You are in a small pitch black cave.  But 
+the cave is not the only dark thing here...
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21619
+S
+#21621
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21623
+D2
+~
+~
+0 -1 21622
+D3
+~
+~
+0 -1 21619
+S
+#21622
+Cave~
+You are in a small pitch black cave.  But the 
+cave is not the only dark thing here...
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21621
+S
+#21623
+Mine Tunnels~
+This tunnel in the mines looks exactly like 
+all the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21624
+D3
+~
+~
+0 -1 21621
+S
+#21624
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21629
+D2
+~
+~
+0 -1 21625
+D3
+~
+~
+0 -1 21623
+S
+#21625
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21624
+D2
+~
+~
+0 -1 21626
+S
+#21626
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21625
+D3
+~
+~
+0 -1 21627
+S
+#21627
+Mine Tunnels~
+This tunnel in the mines looks exactly like 
+all the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21626
+D2
+~
+~
+0 -1 21628
+S
+#21628
+Dead end...~
+This room is a dead end in more ways than
+one...you have a feeling that this may well be your own 'dead' end.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21627
+S
+#21629
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21630
+D2
+~
+~
+0 -1 21624
+S
+#21630
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21631
+D2
+~
+~
+0 -1 21629
+S
+#21631
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21630
+D3
+~
+~
+0 -1 21632
+S
+#21632
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21631
+D3
+~
+~
+0 -1 21633
+S
+#21633
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21632
+D2
+~
+~
+0 -1 21634
+S
+#21634
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21633
+D2
+~
+~
+0 -1 21635
+S
+#21635
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21634
+D2
+~
+~
+0 -1 21621
+S
+#21636
+Mine Tunnels~
+This tunnel in the mines looks exactly like all 
+the others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21610
+D2
+~
+~
+0 -1 21637
+S
+#21637
+Mine Tunnels~
+This tunnel in the mines looks exactly like all the 
+others...sooty, grimy, cramped and dark.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21636
+D2
+~
+~
+0 -1 21638
+S
+#21638
+Wide tunnel~
+The mine suddenly widens out, and the air becomes 
+clearer.  You can see a faint glow from the south.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21637
+D2
+~
+~
+0 -1 21639
+S
+#21639
+Escape from the mines of Demondium~
+You finally stumble out of the mist into a wide 
+cavern, softly lit by some luminescent force. 
+Stalagmites and stalactites glisten in the eerie
+light.  To the south you can see an archway.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 21638
+D2
+~
+~
+0 -1 21640
+S
+#21640
+1st Ward~
+In front of you lies a magical ward, that 
+stops any further progress.  The powerful magic 
+that binds the ward forbids passing by magical or physical means.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 21639
+D2
+~
+~
+8 21509 21641
+S
+#21641
+2nd Ward~
+In front of you lies a magical ward, that 
+stops any further progress.
+~
+0 1|8 5
+D0
+~
+~
+8 -1 21640
+D2
+~
+~
+8 21510 21642
+S
+#21642
+3rd Ward~
+In front of you lies a magical ward, that 
+stops any further progress.
+~
+0 1|8 5
+D0
+~
+~
+8 -1 21641
+D2
+~
+~
+8 21512 21643
+S
+#21643
+Treasure of the Second Level of Demondium~
+This room glows yellow with riches beyond your 
+wildest dreams!  This must be your reward for 
+completing the second level of Demondium! 
+There is a wooden trapdoor set in the floor.
+~
+0 1|8 5
+D0
+~
+~
+8 -1 21642
+D5
+The trapdoor leads to the next level of 
+demondium.~
+trapdoor~
+1 -1 21645
+S
+#21644
+The Hall of Portals~
+You are standing in a void, grey, featureless, 
+with 8 portals lined up like a corridor ahead of you.
+~
+0 1|4|8|1024 0
+D4
+~
+~
+1 -1 21500
+S
+#21645
+Wet mineshaft~
+You clamber down a slippery old wooden ladder 
+into the depths.  The air around you is moist, 
+wet and humid.
+~
+0 1|4|8 5
+D5
+~
+~
+0 -1 21646
+S
+#21646
+Mudslide~
+Suddenly you lose you grip on the ladder!
+You slide down the mineshaft, causing the
+sides to crumble and slide too - you have 
+started a mudslide!
+~
+0 1|4|8 5
+D5
+~
+~
+0 -1 21647
+S
+#21647
+Ancient swamps~
+You are standing knee deep in the swamps of 
+the third level of Demondium.  The air is humid, 
+and there is a perpetual fog all around you. You 
+have a feeling that you are being watched.
+Something slimy brushes past your leg...
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21650
+D2
+~
+~
+0 -1 21652
+D3
+~
+~
+0 -1 21648
+D4
+~
+~
+0 -1 21646
+S
+#21648
+Ancient swamps~
+You are standing knee deep in the swamps. 
+The air is humid, and there is a perpetual 
+fog all around you. You feel somewhat lost.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21647
+D3
+~
+~
+0 -1 21649
+S
+#21649
+Ancient swamps~
+You are standing knee deep in the swamps. 
+The air is humid, and there is a perpetual fog 
+all around you. You feel somewhat lost. Debris 
+in the swamp blocks any further progress.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21648
+S
+#21650
+Ancient swamps~
+You are standing knee deep in the swamps. 
+The air is humid, and there is a perpetual fog 
+all around you. You feel somewhat lost.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21651
+D3
+~
+~
+0 -1 21647
+S
+#21651
+Ancient swamps~
+You are standing knee deep in the swamps. 
+The air is humid, and there is a perpetual fog 
+all around you. You feel somewhat lost. Debris 
+in the swamp blocks any further progress.
+~
+0 1|8 5
+D3
+~
+~
+0 -1 21650
+S
+#21652
+Ancient swamps~
+You are standing knee deep in the swamps. 
+The air is humid, and there is a perpetual fog 
+all around you. You feel somewhat lost.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21647
+D2
+~
+~
+0 -1 21653
+S
+#21653
+Ancient swamps~
+You are standing knee deep in the swamps. 
+The air is humid, and there is a perpetual fog 
+all around you. You feel somewhat lost.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21652
+D2
+~
+~
+0 -1 21654
+S
+#21654
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of 
+organic material, both plant and animal. 
+You are having great difficulty breathing 
+in this stench.  This place looks and 
+smells like a garbage dump.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 21653
+D1
+~
+~
+0 -1 21661
+D3
+~
+~
+0 -1 21655
+S
+#21655
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of 
+organic material, both plant and animal. 
+You are having great difficulty breathing 
+in this stench.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21654
+D2
+~
+~
+0 -1 21656
+S
+#21656
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of 
+organic material, both plant and animal. 
+You are having great difficulty breathing 
+in this stench.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21655
+D2
+~
+~
+0 -1 21657
+S
+#21657
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of 
+organic material, both plant and animal. 
+You are having great difficulty breathing 
+in this stench.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21656
+D1
+~
+~
+0 -1 21658
+S
+#21658
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of 
+organic material, both plant and animal. 
+You are having great difficulty breathing 
+in this stench.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 21659
+D2
+~
+~
+0 -1 21662
+D3
+~
+~
+0 -1 21657
+S
+#21659
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of 
+organic material, both plant and animal. 
+You are having great difficulty breathing 
+in this stench.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21660
+D3
+~
+~
+0 -1 21658
+S
+#21660
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains 
+of organic material, both plant and animal. 
+You are having great difficulty breathing in this stench.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21661
+D2
+~
+~
+0 -1 21659
+S
+#21661
+Fetid swamps~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of organic 
+material, both plant and animal. You are having 
+great difficulty breathing in this stench.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 21660
+D3
+~
+~
+0 -1 21654
+S
+#21662
+Fetid bog~
+You are standing knee deep in the swamps. 
+All around you lies the decaying remains of organic material, 
+both plant and animal. You are having great difficulty breathing 
+in this stench.  Here, the swamp becomes worse, almost a bog.  
+You are having difficulty wading through the thick mud that clutches 
+at your legs.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21658
+D2
+~
+~
+0 -1 21663
+S
+#21663
+Fetid bog~
+The stench of the bog is almost overwhelming, 
+and you are barely able to move southwards 
+between two large piles of decay.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21662
+D2
+~
+~
+0 -1 21664
+S
+#21664
+Fetid bog~
+The stench of the bog is almost overwhelming, 
+and you are barely able to move southwards between 
+two large piles of decay. You have a sense of 
+foreboding about this place, although what could 
+possibly live here you do not know.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 21663
+D2
+~
+~
+0 -1 21665
+S
+#21665
+Lair of the Swamp Lord~
+The huge pile of decaying matter beside you bursts 
+suddenly, showering you in the most unimaginable 
+filth and stench. A hideous creature emerges from 
+the bog and heads right at you!
+~
+0 1|8 5
+D0
+~
+~
+0 -1 21664
+D2
+~
+~
+8 21524 21666
+S
+#21666
+Treasure of the Third Level of Demondium~
+This room glows yellow with riches beyond your 
+wildest dreams! This must be your reward for 
+completing the third level of Demondium!
+~
+0 1|4|8 5
+D0
+~
+~
+8 -1 21665
+S
+#21667
+Desolate Desert~
+You fall and land softly in warm sands. All around you lies 
+a great desert, its sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats down harshly upon 
+you. There is a path leading southwards.
+~
+0 0 2
+D2
+~
+~
+0 -1 21668
+S
+#21668
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21667
+D2
+~
+~
+0 -1 21669
+S
+#21669
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21668
+D2
+~
+~
+0 -1 21670
+S
+#21670
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat.  There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21669
+D2
+~
+~
+0 -1 21671
+S
+#21671
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat.  There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21670
+D2
+~
+~
+0 -1 21672
+S
+#21672
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21671
+D2
+~
+~
+0 -1 21673
+S
+#21673
+Crossroads in a desolate desert~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you. The track branches 
+off to the east and west.
+~
+0 4 1
+D0
+~
+~
+0 -1 21672
+D1
+~
+~
+0 -1 21679
+D2
+~
+~
+0 -1 21674
+D3
+~
+~
+0 -1 21677
+S
+#21674
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat.  There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21673
+D2
+~
+~
+0 -1 21675
+S
+#21675
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21674
+D2
+~
+~
+0 -1 21676
+S
+#21676
+Fork in a desolate desert track~
+All around you lies a great desert, its sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats down harshly upon you. The track 
+forks here and goes east and west. The wind picks up and you feel that a sandstorm 
+may be on the way.  You hope that you choose the correct branch in the path to 
+take, as one wrong step here could leave you here forever lost...
+~
+0 4 1
+D0
+~
+~
+0 -1 21675
+D1
+~
+~
+0 -1 21703
+D3
+~
+~
+0 -1 21701
+S
+#21677
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D1
+~
+~
+0 -1 21673
+D3
+~
+~
+0 -1 21678
+S
+#21678
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D0
+~
+~
+0 -1 21691
+D1
+~
+~
+0 -1 21677
+D2
+~
+~
+0 -1 21699
+S
+#21679
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat. There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you.
+~
+0 0 1
+D1
+~
+~
+0 -1 21680
+D3
+~
+~
+0 -1 21673
+S
+#21680
+Desolate desert track~
+All around you lies a great desert, its 
+sands shimmering in the heat.  There is 
+absolutely no wind at all and the sun beats 
+down harshly upon you. The shimmering clears 
+for a moment and you see you have reached 
+an encampment of some sort.
+~
+0 0 1
+D0
+~
+~
+0 -1 21681
+D2
+~
+~
+0 -1 21689
+D3
+~
+~
+0 -1 21679
+S
+#21681
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.  There is a large tent to the
+east, but you cannot see any entrance to it.
+~
+0 0 1
+D0
+~
+~
+0 -1 21682
+D2
+~
+~
+0 -1 21680
+S
+#21682
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.
+~
+0 0 1
+D1
+~
+~
+0 -1 21683
+D2
+~
+~
+0 -1 21681
+S
+#21683
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.  There is a large tent to the
+south, but you cannot see any entrance to it.
+~
+0 0 1
+D1
+~
+~
+0 -1 21684
+D3
+~
+~
+0 -1 21682
+S
+#21684
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.
+~
+0 0 1
+D2
+~
+~
+0 -1 21685
+D3
+~
+~
+0 -1 21683
+S
+#21685
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.  There is a large tent to the
+west, and the tent flaps are open, allowing free access.
+~
+0 0 1
+D0
+~
+~
+0 -1 21684
+D2
+~
+~
+0 -1 21686
+D3
+~
+~
+0 -1 21690
+S
+#21686
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.
+~
+0 0 1
+D0
+~
+~
+0 -1 21685
+D3
+~
+~
+0 -1 21687
+S
+#21687
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.  There is a large tent to the
+north, but you cannot see any entrance to it.
+~
+0 0 1
+D1
+~
+~
+0 -1 21686
+D3
+~
+~
+0 -1 21688
+S
+#21688
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.
+~
+0 0 1
+D0
+~
+~
+0 -1 21689
+D1
+~
+~
+0 -1 21687
+S
+#21689
+Nomad camp~
+You wander around a nomad camp, avoiding
+camel dung.
+~
+0 0 1
+D0
+~
+~
+0 -1 21680
+D2
+~
+~
+0 -1 21688
+S
+#21690
+Nomad's tent~
+You are inside the tent of the Nomad leader. It is dirty and dimly lit. The nomad 
+leader rises to greet you...
+~
+0 1|8 1
+D1
+~
+~
+0 -1 21685
+S
+#21691
+Bedouin camp~
+You wander around a bedouin camp, avoiding 
+camel dung. There is a large tent to the west, 
+but you cannot see any entrance to it.
+~
+0 0 1
+D0
+~
+~
+0 -1 21692
+D2
+~
+~
+0 -1 21678
+S
+#21692
+Bedouin camp~
+You wander around a bedouin camp, avoiding camel dung.
+~
+0 0 1
+D2
+~
+~
+0 -1 21691
+D3
+~
+~
+0 -1 21693
+S
+#21693
+Bedouin camp~
+You wander around a bedouin camp, avoiding 
+camel dung. There is a large tent to the south, 
+but you cannot see any entrance to it.
+~
+0 0 1
+D1
+~
+~
+0 -1 21692
+D3
+~
+~
+0 -1 21694
+S
+#21694
+Bedouin camp~
+You wander around a bedouin camp, avoiding camel dung.
+~
+0 0 1
+D1
+~
+~
+0 -1 21693
+D2
+~
+~
+0 -1 21695
+S
+#21695
+Bedouin camp~
+You wander around a bedouin camp, avoiding 
+camel dung. There is a large tent to the east, 
+and the tent flaps are open, allowing free access.
+~
+0 0 1
+D0
+~
+~
+0 -1 21694
+D1
+~
+~
+0 -1 21700
+D2
+~
+~
+0 -1 21696
+S
+#21696
+Bedouin camp~
+You wander around a bedouin camp, avoiding camel dung.
+~
+0 0 1
+D0
+~
+~
+0 -1 21695
+D1
+~
+~
+0 -1 21697
+S
+#21697
+Bedouin camp~
+You wander around a bedouin camp, avoiding 
+camel dung. There is a large tent to the 
+north, but you cannot see an entrance to it.
+~
+0 0 1
+D1
+~
+~
+0 -1 21698
+D3
+~
+~
+0 -1 21696
+S
+#21698
+Bedouin camp~
+You wander around a bedouin camp, avoiding camel dung.
+~
+0 0 1
+D0
+~
+~
+0 -1 21699
+D3
+~
+~
+0 -1 21697
+S
+#21699
+Bedouin camp~
+You wander around a bedouin camp, avoiding camel dung.
+~
+0 0 1
+D0
+~
+~
+0 -1 21678
+D2
+~
+~
+0 -1 21698
+S
+#21700
+Bedouin's tent~
+You are inside the tent of the Bedouin 
+leader.  It is dirty and dimly lit.  The 
+Bedouin leader rises to greet you...
+~
+0 1|8 1
+D3
+~
+~
+0 -1 21695
+S
+#21701
+Sand Vortex~
+Suddenly the wind picks up and you are lost 
+in a whirling vortex....you instantly lose 
+track of the path you were following and 
+stagger through the viscous winds. A gap in 
+the wind and sand momentarily opens to the south.
+
+You wonder if you have followed the right 
+Arab's advice...but there is little choice
+left now.
+~
+0 1 10
+D2
+~
+~
+0 -1 21702
+S
+#21702
+Lair of the Sandgorgon~
+You suddenly feel that you have followed the wrong Arab's advice...standing in 
+front of you is a monster you had thought mythical - Nom the Sandgorgon.
+~
+0 1|8 10
+D0
+~
+~
+0 -1 21701
+D1
+~
+~
+0 -1 21676
+S
+#21703
+Sand Vortex~
+Suddenly the wind picks up and you are lost 
+in a whirling vortex....you instantly lose 
+track of the path you were following and 
+stagger through the viscous winds.  A gap 
+in the wind and sand momentarily opens to the south.
+
+If you had followed the right Arab's advice,
+you would have the key for the door that
+stands mysteriously in the vortex to the south.
+~
+0 0 10
+D2
+An anonymous grey door stands here, easily
+resisting the force of the vortex.~
+door~
+8 21526 21704
+S
+#21704
+Treasure of the fourth level of Demondium~
+This room glows yellow with riches beyond 
+your wildest dreams! This must be your reward 
+for completing the fourth level of Demondium!
+~
+0 1|8 0
+D0
+~
+~
+8 -1 21703
+D5
+The wooden trapdoor leads to the next level of 
+Demondium.~
+trapdoor~
+1 -1 21705
+S
+#21705
+Entrance to the Underworld~
+You stand underneath a great arch - the
+entrance to the Underworld, fifth level
+of Demondium.  Ancient powers over life
+and death inhabit this place.  All around
+you is grey, the perfectly smooth walls 
+and floors.  To the south flows the River
+Styx - where all souls travel to their
+judgement after death.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 21729
+D2
+~
+~
+0 -1 21706
+D3
+~
+~
+0 -1 21721
+S
+#21706
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway.  The walls are sloped and almost 
+impossible to climb.
+~
+0 1|8 7
+D0
+~
+~
+0 -1 21705
+D2
+~
+~
+0 -1 21707
+S
+#21707
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway.  The walls are sloped and almost 
+impossible to climb.
+~
+0 1|8 7
+D0
+~
+~
+0 -1 21706
+D2
+~
+~
+0 -1 21708
+S
+#21708
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway.  The walls are sloped and almost 
+impossible to climb.
+~
+0 1|8 7
+D0
+~
+~
+0 -1 21707
+D2
+~
+~
+0 -1 21709
+S
+#21709
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway.  The walls are sloped and almost 
+impossible to climb.
+~
+0 0 7
+D0
+~
+~
+0 -1 21708
+D1
+~
+~
+0 -1 21747
+D2
+~
+~
+0 -1 21710
+D3
+~
+~
+0 -1 21746
+S
+#21710
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 7
+D0
+~
+~
+0 -1 21709
+D2
+~
+~
+0 -1 21711
+S
+#21711
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 7
+D0
+~
+~
+0 -1 21710
+D2
+~
+~
+0 -1 21712
+S
+#21712
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 7
+D0
+~
+~
+0 -1 21711
+D2
+~
+~
+0 -1 21713
+S
+#21713
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21712
+D2
+~
+~
+0 -1 21714
+S
+#21714
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 7
+D0
+~
+~
+0 -1 21713
+D2
+~
+~
+0 -1 21715
+S
+#21715
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21714
+D1
+~
+~
+8 -1 21754
+D2
+~
+~
+0 -1 21716
+S
+#21716
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21715
+D2
+~
+~
+0 -1 21717
+S
+#21717
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21716
+D2
+~
+~
+0 -1 21718
+D3
+~
+~
+8 -1 21759
+S
+#21718
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21717
+D2
+~
+~
+0 -1 21719
+S
+#21719
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21718
+D2
+~
+~
+0 -1 21720
+S
+#21720
+The River Styx~
+The River Styx flows fast through a narrow 
+causeway. The walls are sloped and almost 
+impossible to climb.
+~
+0 0 1
+D0
+~
+~
+0 -1 21719
+D5
+~
+~
+0 -1 21764
+S
+#21721
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21705
+D3
+~
+~
+0 -1 21722
+S
+#21722
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21721
+D3
+~
+~
+0 -1 21723
+S
+#21723
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21722
+D2
+~
+~
+0 -1 21724
+S
+#21724
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21723
+D2
+~
+~
+0 -1 21725
+S
+#21725
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21724
+D1
+~
+~
+8 21511 21742
+D2
+~
+~
+0 -1 21726
+S
+#21726
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21725
+D2
+~
+~
+0 -1 21727
+S
+#21727
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 21726
+D2
+~
+~
+8 21511 21728
+S
+#21728
+Burial Chamber~
+You have stumbled upon the burial chamber of a pharaoh - here lies all the necessary 
+items he needs in his journey into the afterlife. The pharaoh is not entombed here, 
+but his servants are!
+~
+0 1|8 0
+D0
+~
+~
+8 -1 21727
+S
+#21729
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21730
+D3
+~
+~
+0 -1 21705
+S
+#21730
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21731
+D2
+~
+~
+1 -1 21739
+D3
+~
+~
+0 -1 21729
+S
+#21731
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21732
+D3
+~
+~
+0 -1 21730
+S
+#21732
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D2
+~
+~
+0 -1 21733
+D3
+~
+~
+0 -1 21731
+S
+#21733
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21732
+D2
+~
+~
+0 -1 21734
+S
+#21734
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21733
+D2
+~
+~
+0 -1 21735
+S
+#21735
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21734
+D2
+~
+~
+0 -1 21736
+S
+#21736
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21735
+D2
+~
+~
+0 -1 21737
+S
+#21737
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D0
+~
+~
+0 -1 21736
+D2
+~
+~
+8 21511 21738
+S
+#21738
+Burial Chamber~
+You have stumbled upon the burial chamber of a Queen - here lies all the necessary 
+items she needs in her journey into the afterlife. The Queen is not entombed here, 
+but her servants are!
+~
+0 0 1
+D0
+~
+~
+8 -1 21737
+S
+#21739
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D0
+~
+~
+1 -1 21730
+D2
+~
+~
+0 -1 21740
+S
+#21740
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D0
+~
+~
+0 -1 21739
+D2
+~
+~
+0 -1 21741
+S
+#21741
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D0
+~
+~
+0 -1 21740
+S
+#21742
+Hall of Osiris~
+You have stumbled upon a long unused 
+hall, its floor covered in dust that 
+has lay undisturbed for centuries.  
+The walls are covered in hieroglyphs
+showing the glory of the great god 
+Osiris.
+~
+0 1|4|8 1
+D2
+~
+~
+0 -1 21743
+D3
+~
+~
+8 -1 21725
+S
+#21743
+Hall of Osiris~
+You have stumbled upon a long unused 
+hall, its floor covered in dust that 
+has lay undisturbed for centuries.  
+The walls are covered in hieroglyphs
+showing the glory of the great god 
+Osiris.
+~
+0 0 1
+D0
+~
+~
+0 -1 21742
+D2
+~
+~
+0 -1 21744
+S
+#21744
+Hall of Osiris~
+You have stumbled upon a long unused 
+hall, its floor covered in dust that 
+has lay undisturbed for centuries.  
+The walls are covered in hieroglyphs
+showing the glory of the great god 
+Osiris.
+~
+0 0 1
+D0
+~
+~
+0 -1 21743
+D2
+~
+~
+0 -1 21745
+S
+#21745
+Osiris' Chamber~
+You have entered the presence of an ancient power - Osiris, God of the Underworld.  
+The room is covered in hieroglyphs honouring the god who watches over the Underworld 
+and guides the spirits of the dead to their Judgement.
+~
+0 1|8|8192 1
+D0
+~
+~
+0 -1 21744
+S
+#21746
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21709
+S
+#21747
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 0 1
+D1
+~
+~
+0 -1 21748
+D3
+~
+~
+0 -1 21709
+S
+#21748
+Underworld~
+You are walking through a grey featureless tunnel in the Underworld.
+~
+0 4 1
+D0
+~
+~
+0 -1 21749
+D2
+~
+~
+0 -1 21753
+D3
+~
+~
+0 -1 21747
+S
+#21749
+Limbo~
+The world around you is featureless and void. 
+You are in Limbo, and you feel hopelessly lost.
+~
+0 1|4|8 1
+D1
+~
+~
+0 -1 21750
+D2
+~
+~
+0 -1 21748
+S
+#21750
+Limbo~
+The world around you is featureless and void. 
+You are in Limbo, and you feel hopelessly lost.
+~
+0 1|8 1
+D2
+~
+~
+0 -1 21751
+D3
+~
+~
+0 -1 21749
+S
+#21751
+Limbo~
+The world around you is featureless and void. 
+You are in Limbo, and you feel hopelessly lost.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 21750
+D2
+~
+~
+0 -1 21752
+S
+#21752
+Limbo~
+The world around you is featureless and void. 
+You are in Limbo, and you feel hopelessly lost.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 21751
+D3
+~
+~
+0 -1 21753
+S
+#21753
+Limbo~
+The world around you is featureless and void. 
+You are in Limbo, and you feel hopelessly lost.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 21748
+D1
+~
+~
+0 -1 21752
+S
+#21754
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21755
+D3
+~
+~
+8 -1 21715
+S
+#21755
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21756
+D3
+~
+~
+0 -1 21754
+S
+#21756
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21757
+D3
+~
+~
+0 -1 21755
+S
+#21757
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D2
+~
+~
+8 21511 21758
+D3
+~
+~
+0 -1 21756
+S
+#21758
+pharaoh's Tomb~
+This chamber has lain undisturbed for centuries, as the long-dead pharaoh rested 
+in the Underworld where none could desecrate his tomb. However now you have 
+disturbed his final sleeping place...
+~
+0 1|8 1
+D0
+~
+~
+8 21511 21757
+S
+#21759
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+8 -1 21717
+D3
+~
+~
+0 -1 21760
+S
+#21760
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21759
+D3
+~
+~
+0 -1 21761
+S
+#21761
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21760
+D3
+~
+~
+0 -1 21762
+S
+#21762
+Halls of the Underworld~
+Your footfalls echo softly as you walk further and further and further into the 
+Underworld. You wonder if you will ever get out of here.
+~
+0 0 1
+D1
+~
+~
+0 -1 21761
+D2
+~
+~
+8 21511 21763
+S
+#21763
+Queen's Tomb~
+This chamber has lain undisturbed for centuries, as the long dead Queen rested 
+in the Underworld where none could desecrate her tomb.  However now you have 
+disturbed her final sleeping place...
+~
+0 1|8 1
+D0
+~
+~
+8 21511 21762
+S
+#21764
+Judgement~
+Here the River Styx splits suddenly into two paths - the right to the Netherworld
+where all souls are tormented forever, and the left to the afterlife, where all 
+souls may find rest and peace. However the choice of a path is not yours...your 
+time of Judgement has arrived.
+~
+0 1|8|8192 0
+D2
+~
+~
+8 21609 21765
+D4
+~
+~
+0 -1 21720
+S
+#21765
+Treasure of the fifth level of Demondium~
+This room glows yellow with riches beyond 
+your wildest dreams! This must be your reward 
+for completing the fifth level of Demondium!
+~
+0 1|8 1
+D0
+~
+~
+8 -1 21764
+S
+#21766
+Entrance to the Netherworld~
+You are standing on a windswept plateau in front of a vast and foreboding mountain.  
+A  strong gust chills you to the bone.  The mountain is Karem Soulbiter, and this 
+is the Netherworld.  All around you is grey, from the many shades of grey rock, to 
+the chilling grey clouds that cover all the skies.  The summit of Karem Soulhunter 
+is hidden in the clouds, yet it is there you feel you must go to have any hope of 
+escaping this place...
+~
+0 1|4|8|8192 4
+D2
+~
+~
+0 -1 21767
+S
+#21767
+Small Trail~
+You are walking down a small trail towards 
+the foot of Karem Soulbiter. The mountain 
+looms ominously, filling the entire horizon.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21766
+D2
+~
+~
+0 -1 21768
+S
+#21768
+Small Trail~
+You are walking down a small trail towards 
+the foot of Karem Soulbiter. The mountain 
+looms ominously, filling the entire horizon.  
+
+You can see a little further to the south 
+the makings of a trail up the mountain.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21767
+D2
+~
+~
+0 -1 21769
+S
+#21769
+Small trail at the foot of the mountain~
+You pick your way carefully up a small 
+trail that leads around the mountain 
+heading eventually towards the summit.
+You have a feeling that this will be a
+long hard journey.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21768
+D1
+~
+~
+0 -1 21770
+S
+#21770
+Windy trail~
+The trail rises gently around the mountain 
+as the wind whips at you, chilling you 
+and almost threatening to cause you to fall.
+~
+0 1|8|8192 5
+D1
+~
+~
+0 -1 21771
+D3
+~
+~
+0 -1 21769
+S
+#21771
+Windy trail~
+The trail rises slowly around the mountain 
+as the wind whips at you. The trail is 
+rough and covered with loose stones that make 
+keeping your balance difficult.
+~
+0 1|8|8192 5
+D2
+~
+~
+0 -1 21772
+D3
+~
+~
+0 -1 21770
+S
+#21772
+Windy trail~
+The trail rises slowly around the mountain 
+as the wind whips at you.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21771
+D1
+~
+~
+0 -1 21773
+S
+#21773
+Windy trail~
+The trail begins to rise more steeply 
+around the mountain, and the wind drops
+for a minute as you enter its lee.
+~
+0 1|8|8192 5
+D2
+~
+~
+0 -1 21774
+D3
+~
+~
+0 -1 21772
+S
+#21774
+Trail along a cliff face~
+The trail thins out to become only wide
+enough for single file as it passes over
+a sheer cliff face.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21773
+D2
+~
+~
+0 -1 21775
+S
+#21775
+Trail along a cliff face~
+The trail is only wide enough for you to 
+walk single file as it passes over a sheer cliff face.  
+The wind picks up ferocity again as you walk this exposed path.
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21774
+D2
+~
+~
+0 -1 21776
+S
+#21776
+Trail along a cliff face~
+The trail is only wide enough for you to 
+walk single file as it passes over a sheer cliff face.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21775
+D2
+~
+~
+0 -1 21777
+S
+#21777
+Trail along a cliff face~
+The trail is only wide enough for you to 
+walk single file as it passes over a sheer cliff face.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21776
+D2
+~
+~
+0 -1 21778
+S
+#21778
+Mountain ridge~
+You have climbed to a ridge on the mountain, 
+and the winds threaten to blow you off this 
+exposed place. You can continue to follow 
+the ridge to the south.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21777
+D3
+~
+~
+0 -1 21779
+S
+#21779
+Mountain ridge~
+As you climb the ridge on the mountain,
+the winds pick up intensity, and rage
+around you, making progress very 
+difficult.  To the south the mountain
+ridge is hard to see through the dust 
+cloud that the winds have raised.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21778
+D2
+~
+~
+0 -1 21780
+S
+#21780
+Wind Demon on a Mountain ridge~
+The dust cloud you saw earlier now seems
+alive! Evil and malevolent it seeks only to
+block any further passage.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21779
+D3
+~
+~
+0 -1 21782
+S
+#21782
+Mountain ridge~
+The mountain ridge you are following ends
+soon against the harsh granite cliff ahead of you.
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21783
+D1
+~
+~
+0 -1 21780
+S
+#21783
+Ridge~
+You are at the end of a ridge at the bottom 
+of a vast granite cliff. The sheer size of it 
+makes you feel lonely, cold and powerless.
+
+It would be unclimbable, were it not for 
+the stairs carved into the granite to your north.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21784
+D2
+~
+~
+0 -1 21782
+S
+#21784
+1000 Stairs~
+You start out on the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21785
+D2
+~
+~
+0 -1 21783
+S
+#21785
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|4|8|8192 4
+D0
+~
+~
+0 -1 21786
+D2
+~
+~
+0 -1 21784
+S
+#21786
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|4|8|8192 4
+D0
+~
+~
+0 -1 21787
+D2
+~
+~
+0 -1 21785
+S
+#21787
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8 4
+D0
+~
+~
+0 -1 21788
+D2
+~
+~
+0 -1 21786
+S
+#21788
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21789
+D2
+~
+~
+0 -1 21787
+S
+#21789
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21788
+D4
+~
+~
+0 -1 21790
+S
+#21790
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|4|8|8192 4
+D4
+~
+~
+0 -1 21791
+D5
+~
+~
+0 -1 21789
+S
+#21791
+Mountain Ridge~
+You are on a mountain ridge, high above 
+the plateau you started from. From here 
+you can once again see that plateau, all 
+though it is a long, long way down.
+~
+0 1|4|8|8192 4
+D0
+~
+~
+0 -1 21792
+D5
+~
+~
+0 -1 21790
+S
+#21792
+Mountain Ridge~
+You are on a mountain ridge, high above 
+the plateau you started from.
+~
+0 1|4|8|8192 4
+D2
+~
+~
+0 -1 21791
+D3
+~
+~
+0 -1 21793
+S
+#21793
+Windy Ledge~
+You are on a windy ledge, high above the 
+plateau you started from.  The trail here
+is very thin and exposed to the wind which 
+is making walking hard.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21792
+D3
+~
+~
+0 -1 21794
+S
+#21794
+Mountain Ridge~
+You are on a mountain ridge, high above the plateau you started from.
+~
+0 1|4|8|8192 4
+D1
+~
+~
+0 -1 21793
+D3
+~
+~
+0 -1 21795
+S
+#21795
+Mountain Ridge~
+You are on a mountain ridge, high above the plateau you started from.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21794
+D3
+~
+~
+0 -1 21796
+S
+#21796
+Mountain Ridge~
+You are on a mountain ridge, high above the plateau you started from.
+~
+0 1|4|8|8192 4
+D1
+~
+~
+0 -1 21795
+D3
+~
+~
+0 -1 21797
+S
+#21797
+Windy Ledge~
+The wind whips fiercely around you on this thin, unsafe looking ledge high on the 
+mountain. Far below you you can see the path you took from the entrance to the Netherworld.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21796
+D2
+~
+~
+0 -1 21815
+D5
+~
+~
+0 -1 21798
+S
+#21798
+Landslide!~
+You slip and fall on the loose slate!
+
+You tumble downwards, faster and faster!!
+You land with a bang and dust and rubble 
+swiftly covers you.  You are right at the
+bottom of Karem Soulbiter.  To the north
+lies the path at the foot of the mountain. 
+You realise with a groan that you must 
+start all over again...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21799
+S
+#21799
+Small trail at the foot of the mountain~
+You pick your way carefully up a small 
+trail that leads around the mountain 
+heading eventually towards the summit.
+You have a feeling that this will be a
+long hard journey.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21800
+D1
+~
+~
+0 -1 21770
+D2
+~
+~
+0 -1 21798
+S
+#21800
+Small Trail~
+You are walking down a small trail towards the foot of Karem Soulbiter. The 
+mountain looms ominously, filling the entire horizon. You can see a little 
+further to south the makings of a trail up the mountain.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21801
+D2
+~
+~
+0 -1 21799
+S
+#21801
+Small Trail~
+You are walking down a small trail towards the foot of Karem Soulbiter. The 
+mountain looms ominously, filling the entire horizon.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21802
+D2
+~
+~
+0 -1 21800
+S
+#21802
+Entrance to the Netherworld~
+You are standing on a windswept plateau in front of a vast and foreboding 
+mountain.  A strong gust chills you to the bone.  The mountain is Karem 
+Soulbiter, and this is the Netherworld.  All around you is grey, from the 
+many shades of grey rock, to the chilling grey clouds that cover all the 
+skies.  The summit of Karem Soulhunter is hidden in the clouds, yet it is 
+there you feel you must go to have any hope of escaping this place...
+
+To the west you can see a small trail that you didn't notice the first 
+time you were here.  There is a ward blocking the entrance to the path 
+however.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21801
+D3
+~
+~
+8 21511 21803
+S
+#21803
+Secret Path~
+You walk down a thin path from the plateau. You wonder why you didn't see it 
+before, and where it leads to.
+~
+0 1|8|8192 5
+D1
+~
+~
+8 -1 21802
+D3
+~
+~
+0 -1 21804
+S
+#21804
+Secret Path~
+The path leads gently downwards and westward, towards what you cannot guess.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21803
+D3
+~
+~
+0 -1 21805
+S
+#21805
+Secret Path~
+The path here turns to the south, and you
+can feel magic power in th air...
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21804
+D2
+~
+~
+0 -1 21806
+S
+#21806
+Secret Path~
+The path continues towards the south.  
+To the east you can hear strange chanting...
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21805
+D1
+~
+~
+0 -1 21810
+D2
+~
+~
+0 -1 21807
+S
+#21807
+Secret Path~
+The path continues towards the south.  
+To the east you can hear strange music...
+~
+0 1|8|8192 5
+D0
+~
+~
+0 -1 21806
+D1
+~
+~
+0 -1 21812
+D2
+~
+~
+0 -1 21808
+S
+#21808
+Secret Path~
+The path continues towards the south. To 
+the east you can feel strange vitality...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21807
+D1
+~
+~
+0 -1 21813
+D2
+~
+~
+0 -1 21809
+S
+#21809
+Secret Path~
+The path ends abruptly here, and to the 
+east you can sense a being of great power.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21808
+D1
+~
+~
+0 -1 21814
+S
+#21810
+Ritual of Cleansing~
+You walk into a small hollow and witness
+a great power - it is the ritual of cleansing 
+where souls may pass back into the world 
+through reincarnation. You realise that 
+this is where souls are sent if they pass 
+their judgement in the Underworld.
+~
+0 1|8|1024|8192|16384 4
+D3
+~
+~
+0 -1 21806
+S
+#21812
+Dance of the Wraiths~
+As you push your way through a bracken 
+hedge to a small clearing, you find 
+yourself surrounded by dancing spirit 
+like wraiths. The wraiths are only a foot 
+tall and flit around in a pattern that 
+you could never guess the purpose of.
+~
+0 1|8|8192 4
+D3
+~
+~
+0 -1 21807
+S
+#21813
+The Tree of Law~
+You walk underneath the branches of a tall 
+ancient tree, and feel its wellbeing pass 
+through you, regenerating you, making 
+you feel young again.
+~
+0 1|8|8192 4
+D3
+~
+~
+0 -1 21808
+S
+#21814
+Sorcery~
+You walk into a small hut and see a small man 
+meditating while levitating off the floor.
+~
+0 1|8|8192 4
+D2
+A large rock is rolled across a cave entrance
+to the south.  It looks too heavy to move.~
+stone rock~
+8 21605 21952
+D3
+~
+~
+0 -1 21809
+E
+stone rock~
+A large rock has been rolled across a cave
+entrance to the south.  It looks far too heavy
+to move yourself.~
+S
+#21815
+Mountain Ridge~
+You are at the end of a ridge at the bottom 
+of a vast granite cliff. The sheer size of 
+it makes you feel lonely, cold and powerless.
+
+It would be unclimbable, were it not for 
+the stairs carved into the granite to your north.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21797
+D1
+~
+~
+0 -1 21816
+S
+#21816
+1000 Stairs~
+You start out on the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D3
+~
+~
+0 -1 21815
+D4
+~
+~
+0 -1 21817
+S
+#21817
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21818
+D5
+~
+~
+0 -1 21816
+S
+#21818
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21819
+D3
+~
+~
+0 -1 21817
+S
+#21819
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21818
+D1
+~
+~
+0 -1 21820
+S
+#21820
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21821
+D3
+~
+~
+0 -1 21819
+S
+#21821
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21822
+D3
+~
+~
+0 -1 21820
+S
+#21822
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21823
+D3
+~
+~
+0 -1 21821
+S
+#21823
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21822
+D2
+~
+~
+0 -1 21824
+S
+#21824
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21823
+D2
+~
+~
+0 -1 21825
+S
+#21825
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21824
+D2
+~
+~
+0 -1 21826
+S
+#21826
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21825
+D4
+~
+~
+0 -1 21827
+S
+#21827
+Cliff trail~
+You are on a windy ledge, high above the 
+plateau you started from.  The trail here
+is very thin and exposed, and the harsh 
+wind is making walking hard.
+~
+0 1|8|8192 4
+D3
+~
+~
+0 -1 21828
+D5
+~
+~
+0 -1 21826
+S
+#21828
+Cliff trail~
+You are on a windy ledge, high above the 
+plateau you started from.  The trail here
+is very thin and exposed, and the harsh 
+wind is making walking hard.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21829
+D1
+~
+~
+0 -1 21827
+S
+#21829
+Cliff trail~
+You are on a windy ledge, high above the 
+plateau you started from.  The trail here
+is very thin and exposed, and the harsh 
+wind is making walking hard.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21830
+D2
+~
+~
+0 -1 21828
+S
+#21830
+Ledge~
+You are on a windy ledge, high above the 
+plateau you started from.  The trail here
+is very thin and exposed, and the harsh 
+wind is making walking hard.  A few pieces 
+of stone from the ledge you are standing 
+on crumble and fall...you had better move quick!
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21831
+D2
+~
+~
+0 -1 21829
+S
+#21831
+Ledge~
+You are on a windy ledge, high above the 
+plateau you started from.  The trail here
+is very thin and exposed, and the harsh 
+wind is making walking hard.  Just above
+you there is another set of stairs.  The
+wind is thin and hard to breath...you must 
+be near the top now.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21830
+D4
+~
+~
+0 -1 21832
+S
+#21832
+More stairs~
+You start out on the long granite staircase. 
+It seems to stretch away steeply up into the distance forever...
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21833
+D5
+~
+~
+0 -1 21831
+S
+#21833
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21834
+D5
+~
+~
+0 -1 21832
+S
+#21834
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21835
+D5
+~
+~
+0 -1 21833
+S
+#21835
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21836
+D5
+~
+~
+0 -1 21834
+S
+#21836
+Stone stairs~
+You travel along the long granite staircase. 
+It seems to stretch away into the distance forever...
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21837
+D5
+~
+~
+0 -1 21835
+S
+#21837
+Stone stairs~
+You travel along the long granite staircase. 
+It seems you have almost reached the summit!
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21838
+D5
+~
+~
+0 -1 21836
+S
+#21838
+Summit of Karem Soulbiter~
+You have finally made it to the summit of
+this great harsh mountain!  The summit is
+a mere 2m wide, but from here you can see
+all the lands around you - and everything
+looks grey, harsh and cold.  The only way
+off is back down, however there now seems
+to be a ward blocking your way in that 
+direction. This is also the last place 
+where you can recall ... the only other 
+way out lies in killing Thrasher.
+~
+0 1|8 4
+D5
+Somehow a ward of warding has sprung up 
+behind you.  You sense somehow that Thrasher 
+has defeated you without you even getting a
+fair chance in battle.  You can recall from
+here.~
+ward warding~
+8 21608 21839
+E
+ward~
+Somehow a ward of warding has sprung up 
+behind you.  You sense somehow that Thrasher 
+has defeated you without you even getting a
+fair chance in battle.  You can recall from
+here.~
+S
+#21839
+Inside the mountain~
+You go down the staircase, but instead of
+climbing down the outside of the mountain
+you are climbing downwards into the mountain 
+itself!  You feel that perhaps this is the 
+hiding place of the Demon Lord Thrasher himself...
+~
+0 1|8|8192 4
+D4
+~
+~
+8 21608 21838
+D5
+~
+~
+0 -1 21840
+S
+#21840
+Inside the mountain~
+As you descend deeper into the mountain,
+you begin to feel claustrophobic, and you
+can almost sense a great power ahead...
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21839
+D5
+~
+~
+0 -1 21841
+S
+#21841
+Inside the mountain~
+You climb further down the set of stairs 
+into the hearth of the mountain. The stairs 
+end here and to your east you can sense 
+a great source of power...
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21842
+D4
+~
+~
+0 -1 21840
+S
+#21842
+Gateway in the Netherworld~
+You are standing in front of a large portal deep in the netherworld. The portal 
+sizzles with magical energies, and almost burns your hand when you touch it. 
+There is a sign set in the wall.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21843
+D1
+~
+~
+0 -1 21848
+D2
+~
+~
+0 -1 21855
+D3
+~
+~
+0 -1 21841
+E
+sign~
+Hear me stranger - do not attempt to breach
+the portal.  Once it has been used by a 
+living creature, then all the undead hordes
+lead by Thrasher will be unleashed.  Instead
+your path lies in the tunnels around you.
+You must visit all three tunnels to continue.
+I strongly advise you to take the south tunnel
+last.
+  -> Absulom The Cleric.
+~
+S
+#21843
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21844
+D2
+~
+~
+0 -1 21842
+S
+#21844
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21845
+D2
+~
+~
+0 -1 21843
+S
+#21845
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21846
+D2
+~
+~
+0 -1 21844
+S
+#21846
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21847
+D2
+~
+~
+0 -1 21845
+S
+#21847
+Netherworld Lair~
+The tunnel widens out into a small cavern. Visibility here is just as low, but 
+there is a smell in the air...the smell of an inhabiting creature!
+~
+0 1|8|8192 4
+D3
+~
+~
+0 -1 21846
+S
+#21848
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21849
+D3
+~
+~
+0 -1 21842
+S
+#21849
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21850
+D3
+~
+~
+0 -1 21848
+S
+#21850
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21851
+D3
+~
+~
+0 -1 21849
+S
+#21851
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21852
+D3
+~
+~
+0 -1 21850
+S
+#21852
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21853
+D3
+~
+~
+0 -1 21851
+S
+#21853
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld. The walls seem to 
+suck all your meagre light, and visibility is very low.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21852
+D1
+~
+~
+0 -1 21854
+D3
+~
+~
+0 -1 21842
+S
+#21854
+Netherworld Lair~
+The tunnel widens out into a small cavern. Visibility here is just as low, but 
+there is a smell in the air...the smell of an inhabiting creature!
+~
+0 1|8|8192 4
+D3
+~
+~
+0 -1 21853
+S
+#21855
+Netherworld Cavern~
+You wander through a small cavern deep in the netherworld.  The walls seem to 
+suck all your meagre light, and visibility is very low. The tunnel cants sharply 
+downwards, deeper into the netherworld.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21842
+D5
+~
+~
+0 -1 21856
+S
+#21856
+Deeper into the heart of the Netherworld~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21857
+D4
+~
+~
+0 -1 21855
+S
+#21857
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21856
+D2
+~
+~
+0 -1 21858
+S
+#21858
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21857
+D2
+~
+~
+0 -1 21859
+S
+#21859
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.  
+You can continue to follow the tunnel to the east or to go down a small set of 
+stairs.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21858
+D1
+~
+~
+0 -1 21860
+D5
+~
+~
+0 -1 21869
+S
+#21860
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21861
+D3
+~
+~
+0 -1 21859
+S
+#21861
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21862
+D2
+~
+~
+0 -1 21863
+D3
+~
+~
+0 -1 21860
+S
+#21862
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21866
+D2
+~
+~
+0 -1 21861
+S
+#21863
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21861
+D1
+~
+~
+0 -1 21864
+S
+#21864
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21865
+D3
+~
+~
+0 -1 21863
+S
+#21865
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21868
+D3
+~
+~
+0 -1 21864
+S
+#21866
+A wide cave~
+You are standing in a wide cave.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21867
+D3
+~
+~
+0 -1 21862
+S
+#21867
+A wide cave~
+You are in an ancient tunnel.  It looks like it has not been disturbed for many 
+centuries. The air is cool and dry, but carries a faint scent of power on it.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21868
+D3
+~
+~
+0 -1 21866
+S
+#21868
+Lair~
+The tunnel widens out into a small cavern. Visibility here is just as low, but 
+there is a smell in the air...the smell of an inhabiting creature!
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21867
+D2
+~
+~
+0 -1 21865
+D4
+~
+~
+0 -1 21842
+S
+#21869
+Even deeper in the heart of the netherworld~
+You climb down a short set of stairs into an even older tunnel.  This tunnel is 
+only wide enough to permit travel single file, and there is a feeling of ancient 
+malice lingering in the air.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21870
+D4
+~
+~
+0 -1 21859
+S
+#21870
+Small tunnel~
+This tunnel is only wide enough to permit travel single file, and there is a 
+feeling of ancient malice lingering in the air.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21869
+D2
+~
+~
+0 -1 21871
+S
+#21871
+Small tunnel~
+This tunnel is only wide enough to permit travel single file, and there is a 
+feeling of ancient malice lingering in the air.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21870
+D3
+~
+~
+0 -1 21872
+S
+#21872
+Small tunnel~
+This tunnel is only wide enough to permit travel single file, and there is a 
+feeling of ancient malice lingering in the air.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21873
+D1
+~
+~
+0 -1 21871
+S
+#21873
+Small tunnel~
+This tunnel is only wide enough to permit travel single file, and there is a 
+feeling of ancient malice lingering in the air.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21874
+D2
+~
+~
+0 -1 21872
+S
+#21874
+Small tunnel~
+You climb down a short set of stairs into an even older tunnel. This tunnel is 
+only wide enough to permit travel single file, and there is a feeling of ancient 
+malice lingering in the air. There is a small set of stairs leading back upwards
+here.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21873
+D3
+~
+~
+0 -1 21875
+D4
+~
+~
+0 -1 21858
+S
+#21875
+Lair~
+The tunnel widens out into a small cavern. Visibility here is just as low, but 
+there is a smell in the air...the smell of an inhabiting creature! This creature 
+appears to be guarding a small ladder leading downwards.
+~
+0 1|8|8192 4
+D1
+~
+~
+0 -1 21874
+D5
+~
+~
+0 -1 21876
+S
+#21876
+Depths of the Netherworld~
+As you clamber down the ladder and stand
+in a very thin tunnel, a huge blast of 
+warmth hits you and makes you stagger.  
+Your lights flicker and go out. The air 
+here is warm and humid.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21877
+D4
+~
+~
+0 -1 21875
+S
+#21877
+Depths of the Netherworld~
+You squeeze through the very thin tunnel,
+sweating in the hot humid air.  In the
+distance you can feel and almost hear
+a rhythmic, deep bass sound.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21876
+D2
+~
+~
+0 -1 21878
+S
+#21878
+Depths of the Netherworld~
+You squeeze through the very thin tunnel,
+sweating in the hot humid air.  In the
+distance you can feel and almost hear
+a rhythmic, deep bass sound.  The sound 
+is getting louder...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21877
+D2
+~
+~
+0 -1 21879
+S
+#21879
+Depths of the Netherworld~
+You squeeze through the very thin tunnel,
+sweating in the hot humid air.  In the
+distance you can feel and almost hear
+a rhythmic, deep bass sound.  The sound 
+is getting louder...
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21878
+D2
+~
+~
+0 -1 21880
+S
+#21880
+Depths of the Netherworld~
+You squeeze through the very thin tunnel, 
+sweating in the hot humid air. In the 
+distance you can feel and almost hear a 
+rhythmic, deep bass sound. The sound is 
+very loud here. A huge blast of heat 
+erupts from the hole that covers the 
+entire width of the tunnel just ahead.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21879
+D5
+~
+~
+0 -1 21881
+S
+#21881
+The heart of the Netherworld~
+You climb down an ancient staircase that spirals around the edges of this deep 
+hole that leads directly to the heart of the Netherworld.  Far beneath you you 
+can see the source of the heat and sound - a large pool of molten lava that is 
+pulsing rhythmically as if it were alive, and occasionally sending out blasts of 
+hot air as lava bubbles burst on its surface.
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21880
+D5
+~
+~
+0 -1 21882
+S
+#21882
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep 
+hole that leads directly to the heart of 
+the Netherworld.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21889
+D4
+~
+~
+0 -1 21881
+D5
+~
+~
+0 -1 21883
+S
+#21883
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep 
+hole that leads directly to the heart of 
+the Netherworld.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21890
+D4
+~
+~
+0 -1 21882
+D5
+~
+~
+0 -1 21884
+S
+#21884
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep 
+hole that leads directly to the heart of 
+the Netherworld.
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21883
+D5
+~
+~
+0 -1 21885
+S
+#21885
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep 
+hole that leads directly to the heart of 
+the Netherworld.
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21884
+D5
+~
+~
+0 -1 21886
+S
+#21886
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep 
+hole that leads directly to the heart of 
+the Netherworld.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21891
+D4
+~
+~
+0 -1 21885
+D5
+~
+~
+0 -1 21887
+S
+#21887
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep 
+hole that leads directly to the heart of 
+the Netherworld.
+~
+0 1|8|8192 4
+D0
+~
+~
+0 -1 21892
+D4
+~
+~
+0 -1 21886
+D5
+~
+~
+0 -1 21888
+S
+#21888
+The heart of the Netherworld~
+You climb down an ancient staircase that
+spirals around the edges of this deep hole 
+that leads directly to the heart of the 
+Netherworld. You have almost reached the 
+lava below - the staircase ends soon.
+~
+0 1|8|8192 4
+D4
+~
+~
+0 -1 21887
+D5
+~
+~
+0 -1 21893
+S
+#21889
+A chamber in the Heart of the Netherworld~
+This is a small chamber leading off from 
+the spiral descent into the heart of the 
+netherworld.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21882
+S
+#21890
+A chamber in the Heart of the Netherworld~
+This is a small chamber leading off from 
+the spiral descent into the heart of the 
+netherworld.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21883
+S
+#21891
+A chamber in the Heart of the Netherworld~
+This is a small chamber leading off from 
+the spiral descent into the heart of the 
+netherworld.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21886
+S
+#21892
+A chamber in the Heart of the Netherworld~
+This is a small chamber leading off from 
+the spiral descent into the heart of the 
+netherworld.
+~
+0 1|8|8192 4
+D2
+~
+~
+0 -1 21887
+S
+#21893
+The Hall of Thrasher~
+The staircase ends here, in a wide hall.
+Set in the floor is the emblem of Thrasher. 
+You can not go any further down, as the 
+heat is too great. A large wooden door is 
+to the west. There is a small sign on the wall.
+~
+0 1|8 0
+D3
+~
+~
+8 21606 21894
+D4
+~
+~
+0 -1 21888
+E
+sign~
+I have removed the heavy curse of this place, it should be safe to recall from here.
+
+-- Absolum~
+S
+#21894
+1st Guardian of Thrasher~
+The hall of Thrasher is blocked by two things:
+a door, and the door's guardian.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 21606 21893
+D3
+~
+~
+8 21607 21895
+S
+#21895
+2nd Guardian of Thrasher~
+The hall of Thrasher is blocked by two things:
+a door, and the door's guardian.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 -1 21894
+D3
+~
+~
+8 21609 21896
+S
+#21896
+3rd Guardian of Thrasher~
+The hall of Thrasher is blocked by two things:
+a door, and the door's guardian.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 -1 21895
+D3
+~
+~
+8 21610 21897
+S
+#21897
+4th Guardian of Thrasher~
+The hall of Thrasher is blocked by two things: 
+a door, and the door's guardian.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 -1 21896
+D3
+~
+~
+8 21611 21898
+S
+#21898
+5th Guardian of Thrasher~
+The hall of Thrasher is blocked by two things: 
+a door, and the door's guardian.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 -1 21897
+D3
+~
+~
+8 21612 21899
+S
+#21899
+6th Guardian of Thrasher~
+The hall of Thrasher is blocked by two things: 
+a door, and the door's guardian.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 -1 21898
+D3
+~
+~
+8 21613 21900
+S
+#21900
+7th Guardian of Thrasher~
+You have made it to the end of the Hall 
+of Thrasher. Here you may collect your 
+reward and continue to the final goal: 
+Thrasher himself.
+~
+0 1|8|8192 0
+D1
+~
+~
+8 -1 21899
+D5
+The trapdoor leads downwards - towards your
+ultimate goal perhaps?~
+trapdoor~
+8 21613 21901
+S
+#21901
+Entrance to the Temple of Thrasher~
+You feel a strange distortion as if you have entered a new dimension. Then the 
+evil power of this place hits you and you gag involuntarily. The symbol of 
+Thrasher has been drawn all over the walls, floor and ceiling.
+
+You feel as if you are being watched.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 21902
+S
+#21902
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher. You feel 
+revulsion at the evil that surrounds you. To the south you can faintly hear the 
+sounds of worship.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21901
+D2
+~
+~
+0 -1 21903
+S
+#21903
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher. You feel 
+revulsion at the evil that surrounds you. To the south you can faintly hear the 
+sounds of worship.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21902
+D2
+~
+~
+0 -1 21904
+S
+#21904
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher. You feel 
+revulsed by the evil that surrounds you. To the south you can clearly hear the 
+sounds of worship.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21903
+D2
+~
+~
+0 -1 21905
+S
+#21905
+Room of Worship~
+You are in a small, circular room. It is normally packed with black clad 
+worshippers of Thrasher. In the center a circular stone table has fresh blood 
+stains on it from a recent sacrifice.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21904
+D1
+~
+~
+0 -1 21916
+D3
+~
+~
+0 -1 21906
+S
+#21906
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21905
+D2
+~
+~
+0 -1 21907
+S
+#21907
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21906
+D2
+~
+~
+0 -1 21908
+S
+#21908
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21907
+D1
+~
+~
+0 -1 21917
+D2
+~
+~
+0 -1 21909
+D3
+~
+~
+0 -1 21922
+S
+#21909
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21908
+D2
+~
+~
+0 -1 21910
+S
+#21910
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21909
+D1
+~
+~
+0 -1 21911
+S
+#21911
+3rd Room of Worship~
+You are in a large, circular room. It is packed with black clad worshippers of 
+Thrasher. In the center a circular stone table has a naked female strapped to it. 
+Standing above her are three priests.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21912
+D2
+~
+~
+0 -1 21918
+D3
+~
+~
+0 -1 21910
+S
+#21912
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21913
+D3
+~
+~
+0 -1 21911
+S
+#21913
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21914
+D2
+~
+~
+0 -1 21912
+S
+#21914
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21915
+D1
+~
+~
+0 -1 21921
+D2
+~
+~
+0 -1 21913
+D3
+~
+~
+0 -1 21917
+S
+#21915
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21916
+D2
+~
+~
+0 -1 21914
+S
+#21916
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 21915
+D3
+~
+~
+0 -1 21905
+S
+#21917
+2nd Room of Worship~
+You are in a medium sized, circular room. It is packed with black clad 
+worshippers of Thrasher. In the center a circular stone table has a naked 
+female strapped to it. Standing above her are three acolytes.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21914
+D3
+~
+~
+0 -1 21908
+S
+#21918
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21911
+D2
+~
+~
+0 -1 21919
+S
+#21919
+Temple Halls~
+You walk down a wide hall, adorned freely with the symbol of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21918
+D2
+~
+~
+0 -1 21920
+S
+#21920
+Before the Altar of Thrasher~
+This small circular chamber is dominated by two things - the single large symbol 
+of Thrasher that covers much of the floor, and the jet black door set in the south wall.
+
+A huge wave of evil power washes over you, you feel very ill.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21919
+D2
+~
+~
+8 -1 21950
+S
+#21921
+Acolyte's quarters~
+This small circular room houses the acolytes
+of the Cult of Thrasher.  The room stinks
+and none of the bunk beds are made.
+~
+0 1|8|8192 0
+D3
+~
+~
+0 -1 21914
+D5
+The bunk can be slid sideways to reveal a
+secret tunnel!~
+bunk~
+8 -1 21923
+S
+#21922
+Priest's quarters~
+This small circular room houses the six priests of the Cult of Thrasher. The room 
+has a residual smell of sacrificial blood, making you gag. Some old floorboards
+squeak when you stand on them.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21908
+D5
+The floorboards squeak and move when you stand
+on them.~
+floorboards~
+8 -1 21939
+S
+#21923
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher. You wonder 
+what it is used for, because it is obviously used often.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21924
+D4
+~
+~
+8 -1 21921
+S
+#21924
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 21925
+D3
+~
+~
+0 -1 21923
+S
+#21925
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21924
+D2
+~
+~
+0 -1 21926
+S
+#21926
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21925
+D1
+~
+~
+0 -1 21927
+S
+#21927
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 21928
+D3
+~
+~
+0 -1 21926
+S
+#21928
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21927
+D2
+~
+~
+0 -1 21929
+S
+#21929
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21928
+D3
+~
+~
+0 -1 21930
+S
+#21930
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21929
+D2
+~
+~
+0 -1 21931
+S
+#21931
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher. 
+To the west lies a prison cell.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21930
+D2
+~
+~
+0 -1 21932
+D3
+~
+~
+1 -1 21934
+S
+#21932
+Dirty Tunnel~
+You are in a small grimy tunnel underneath the Temple of Thrasher. 
+A small door leads south.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21931
+D2
+~
+~
+1 -1 21933
+S
+#21933
+Recruiting Room~
+This is where captured citizens of Atlantis are taken to be "converted" to the 
+worship of Thrasher. The pure unmitigated evilness of this place almost causes 
+you to lose consciousness. The room is packed with various kinds of torture and 
+brainwashing equipment.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 -1 21932
+S
+#21934
+Prison Cell~
+This cramped grimy cell houses captured citizens of Atlantis before they are either 
+converted or sacrificed.
+~
+0 1|8|8192 0
+D1
+~
+~
+1 -1 21931
+D5
+A stone in the corner of the cell appears to be
+loose.~
+stone~
+1 -1 21935
+S
+#21935
+Escape tunnel~
+You crawl on your hands and knees through
+a tunnel that has obviously been dug as a
+means of escaping from the Cult of Thrasher. 
+You wonder what they used to dig the tunnel with.
+~
+0 1|8|8192 0
+D3
+~
+~
+0 -1 21936
+D4
+~
+~
+1 -1 21934
+S
+#21936
+Escape tunnel~
+You crawl on your hands and knees through
+a tunnel that has obviously been dug as a
+means of escaping from the Cult of Thrasher.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21935
+D2
+~
+~
+0 -1 21937
+S
+#21937
+Escape tunnel~
+You crawl on your hands and knees through
+a tunnel that has obviously been dug as a
+means of escaping from the Cult of Thrasher.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21936
+D2
+~
+~
+0 -1 21938
+S
+#21938
+End of the Escape tunnel~
+The escape tunnel ends abruptly here, although it is unclear why.  Perhaps the 
+escapee was caught.  You can see the digging implement used lying on the dirt floor.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21937
+S
+#21939
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 21940
+D4
+~
+~
+8 -1 21922
+S
+#21940
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21939
+D2
+~
+~
+0 -1 21941
+S
+#21941
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21940
+D2
+~
+~
+0 -1 21942
+S
+#21942
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21941
+D1
+~
+~
+0 -1 21943
+S
+#21943
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D2
+~
+~
+0 -1 21944
+D3
+~
+~
+0 -1 21942
+S
+#21944
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21943
+D3
+~
+~
+0 -1 21945
+S
+#21945
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21944
+D3
+~
+~
+0 -1 21946
+S
+#21946
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. 
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21945
+D3
+~
+~
+0 -1 21947
+S
+#21947
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 21946
+D2
+~
+~
+0 -1 21948
+S
+#21948
+Secret tunnel~
+You are standing in a roughly carved tunnel 
+beneath the Temple of Thrasher. The tunnel 
+leads further into darkness. You think you 
+hear sounds to the south, but are not sure.
+~
+0 1|8|8192 0
+D0
+~
+~
+0 -1 21947
+D2
+~
+~
+0 -1 21949
+S
+#21949
+Secret Chamber~
+The rough tunnel ends here in a small round chamber. The chamber is very dark 
+and smells of death.  There is a small round sacrificial table in the center of 
+the room. You feel that the Gods would answer you if you prayed for transportation 
+from this room.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 21948
+D4
+There is a grate in the small chamber leading
+upwards.~
+grate~
+8 21527 21950
+S
+#21950
+Thrasher's Altar~
+You stop suddenly, shocked at where you have dared enter.  The room is circular 
+and huge evil magical powers race around the circumference of the circle 
+incessantly. Dominating the room is a round, jet black sacrificial table in its 
+center. Dominating the table is a being of such immense evil the sight of whom 
+shocks you deeply, making you unable to move.
+
+The Demon Lord Thrasher says 'I have been watching you, peasant.'
+~
+0 1|8|8192 0
+D0
+~
+~
+8 -1 21920
+D5
+~
+~
+8 21527 21949
+S
+#21951
+Jago's Fireside Lounge~
+You have been transported to Jago's Fireside Lounge - The most exclusive lounge 
+bar on the mud.  The decor is tasteful and warm, and a fire crackles in a hearth 
+in the center of the room.
+~
+0 4|8|1024|8192|16384 0
+S
+#21952
+A wide cave entrance~
+You are just inside the entrance to a wide cave. The cave is just high enough 
+for a tall person to stand up in. The cave looks like it was dug out of the side 
+of the mountain, rather than having formed naturally. The walls are liberally 
+covered by symbols, and you notice one that seems to be repeated many times.
+
+There is a plaque set into the wall.
+~
+0 8192 1
+D0
+A large rock is rolled across a cave entrance
+to the south.  It looks too heavy to move.~
+stone rock~
+8 -1 21814
+E
+symbol~
+You look closer at the symbol and realise that
+it is the symbol of a great and powerful clan!~
+E
+plaque~
+Traveller Beware!
+
+Do not enter this place without my permission!
+
+-Jago, King of Westernesse.~
+S
+#0
+
+
+#RESETS
+*
+M 1 21500 1 21512			the lost adventurer to Twisted tunnels
+*
+M 1 21500 1 21517			the lost adventurer to Twisted tunnels
+*
+M 1 21500 1 21520			the lost adventurer to Twisted tunnels
+*
+M 1 21501 1 21516			the spectral wraith to Twisted tunnels
+*
+M 1 21500 1 21503			the lost adventurer to A dark tunnel
+*
+M 1 21501 1 21521			the spectral wraith to Twisted tunnels
+*
+M 1 21502 5 21535			the goblin to Goblin Pit
+*
+M 1 21503 1 21535			the goblin leader to Goblin Pit
+E 1 21501 100 5
+E 1 21500 100 16
+*
+M 1 21504 3 21535			the goblin to Goblin Pit
+*
+M 1 21505 1 21539			the baby black dragon to Pits of Demondium
+*
+M 1 21506 3 21532			the rabid dog to Pits of Demondium
+*
+M 1 21506 3 21536			the rabid dog to Pits of Demondium
+*
+M 1 21506 3 21540			the rabid dog to Pits of Demondium
+*
+M 1 21506 2 21538			the rabid dog to Pits of Demondium
+*
+M 1 21507 1 21537			the ghast to Pits of Demondium
+*
+M 1 21507 1 21531			the ghast to Pits of Demondium
+*
+M 1 21508 1 21529			the green snake to Outside a cave in the Pits of Demondium
+*
+M 1 21508 1 21535			the green snake to Goblin Pit
+*
+M 1 21508 1 21542			the green snake to Outside a cave in the Pits of Demondium
+*
+M 1 21509 1 21531			the troll to Pits of Demondium
+*
+M 1 21509 1 21537			the troll to Pits of Demondium
+*
+M 1 21509 1 21528			the troll to Pits of Demondium
+*
+M 1 21502 1 21533			the goblin to Pits of Demondium
+*
+*
+M 1 21514 1 21530			Bragol Sereg to 2nd Lair
+E 1 21518 100 13
+G 1 21503 100
+*
+M 1 21515 1 21543			Kemen Hith to 3rd Lair
+E 1 21520 100 3
+G 1 21504 100
+*
+M 1 21519 3 21543			the mist to 3rd Lair
+*
+M 1 21516 1 21545			Kano Thoron to 4th Lair
+E 1 21519 100 6
+G 1 21505 100
+*
+M 1 21518 3 21530			the dark elf to 2nd Lair
+*
+M 1 21513 1 21527			Carak Atar to 1st Lair
+E 1 21517 100 12
+G 1 21502 100
+D 1 21548 2 2			; First Ward Lock South
+D 1 21549 2 2			; Second Ward Lock South
+D 1 21550 2 2			; Third Ward Lock South
+D 1 21551 2 2			; Fourth Ward Lock South
+O 1 21506 100 21552			an emerald gem to Treasure of the First level of Demondium
+O 1 21507 100 21552			a huge pile of gold goins to Treasure of the First level of Demondium
+*
+M 1 21512 2 21544			the large rat to Outside a cave in the Pits of Demondium
+*
+M 1 21508 1 21544			the green snake to Outside a cave in the Pits of Demondium
+*
+M 1 21518 1 21544			the dark elf to Outside a cave in the Pits of Demondium
+*
+M 1 21507 2 21544			the ghast to Outside a cave in the Pits of Demondium
+D 1 21640 2 2			; 1st Ward Lock South
+D 1 21641 2 2			; 2nd Ward Lock South
+D 1 21642 2 2			; 3rd Ward Lock South
+*
+M 1 21521 1 21609			the dark dwarf to Dwarven Pit
+*
+M 1 21522 1 21609			the dwarf mine leader to Dwarven Pit
+E 1 21500 100 16
+*
+M 1 21520 1 21609			the dwarf to Dwarven Pit
+*
+M 1 21523 2 21609			the dwarf to Dwarven Pit
+*
+M 1 21523 3 21557			the dwarf to Mine Tunnels
+*
+M 1 21523 2 21561			the dwarf to Mine Tunnels
+*
+M 1 21505 1 21564			the baby black dragon to Mine Tunnels
+*
+M 1 21518 2 21564			the dark elf to Mine Tunnels
+*
+M 1 21540 1 21554			Ered Wethrin to Mines of Demondium
+E 1 21516 100 1
+*
+M 1 21532 2 21558			the cavewight to Dead end...
+G 1 21509 100
+*
+M 1 21532 2 21614			the cavewight to Dead end...
+G 1 21510 100
+*
+M 1 21531 3 21620			the cavewight to Cave
+*
+M 1 21531 3 21622			the cavewight to Cave
+*
+M 1 21531 3 21628			the cavewight to Dead end...
+G 1 21512 100
+O 1 21513 100 21643			the heart of the Amarth stone to Treasure of the Second Level of Demondium
+O 1 21507 100 21643			a huge pile of gold goins to Treasure of the Second Level of Demondium
+*
+M 1 21534 1 21632			the skeletal warrior to Mine Tunnels
+E 1 21515 100 6
+E 1 21514 100 16
+*
+M 1 21535 1 21635			the rock slug to Mine Tunnels
+*
+M 1 21518 3 21624			the dark elf to Mine Tunnels
+*
+M 1 21529 1 21624			the apprentice psionic to Mine Tunnels
+*
+M 1 21530 1 21624			the apprentice necromancer to Mine Tunnels
+*
+M 1 21526 1 21611			the drunk dwarf to Mine Tunnels
+*
+M 1 21524 1 21605			the young white dragon to Mine Tunnels
+*
+M 1 21527 1 21605			the baby naga to Mine Tunnels
+*
+M 1 21528 3 21605			the giant to Mine Tunnels
+*
+M 1 21525 1 21591			the large troll to Mine Tunnels
+E 1 21514 100 16
+*
+M 1 21537 1 21591			the rice paddy worker to Mine Tunnels
+*
+M 1 21533 1 21591			the animated skeleton to Mine Tunnels
+*
+M 1 21538 1 21591			the orc to Mine Tunnels
+*
+M 1 21533 1 21556			the animated skeleton to Mine Tunnels
+*
+M 1 21533 1 21559			the animated skeleton to Mine Tunnels
+*
+M 1 21527 1 21559			the baby naga to Mine Tunnels
+*
+M 1 21528 1 21559			the giant to Mine Tunnels
+*
+M 1 21539 1 21559			the goblin to Mine Tunnels
+*
+M 1 21523 3 21573			the dwarf to Mine Tunnels
+*
+M 1 21520 3 21573			the dwarf to Mine Tunnels
+*
+M 1 21521 3 21573			the dark dwarf to Mine Tunnels
+*
+M 1 21525 3 21573			the large troll to Mine Tunnels
+*
+M 1 21528 3 21573			the giant to Mine Tunnels
+*
+M 1 21536 3 21573			the petty dwarf to Mine Tunnels
+*
+M 1 21526 1 21573			the drunk dwarf to Mine Tunnels
+*
+M 1 21505 1 21596			the baby black dragon to Mine Tunnels
+*
+M 1 21507 1 21596			the ghast to Mine Tunnels
+*
+M 1 21501 2 21596			the spectral wraith to Mine Tunnels
+*
+M 1 21525 2 21596			the large troll to Mine Tunnels
+*
+M 1 21518 1 21594			the dark elf to Mine Tunnels
+*
+M 1 21518 1 21594			the dark elf to Mine Tunnels
+*
+M 1 21536 1 21609			the petty dwarf to Dwarven Pit
+*
+M 1 21521 1 21609			the dark dwarf to Dwarven Pit
+*
+M 1 21534 3 21637			the skeletal warrior to Mine Tunnels
+E 1 21515 100 6
+E 1 21514 100 16
+*
+M 1 21541 1 21644			the portal keeper to The Hall of Portals
+D 1 21500 5 1			; A small tunnel Close Down
+*
+M 1 21545 1 21665			the Swamp Lord to Lair of the Swamp Lord
+E 1 21522 100 15
+E 1 21523 100 16
+E 1 21516 100 1
+G 1 21524 100
+D 1 21665 2 2			; Lair of the Swamp Lord Lock South
+O 1 21507 100 21666			a huge pile of gold coins to Treasure of the Third Level of 
+O 1 21525 100 21666			a golden vial to Treasure of the Third Level of Demondium.
+O 1 21525 100 21666			a golden vial to Treasure of the Third Level of Demondium.
+O 1 21613 100 21765			platinum key to fifth level of demondium.
+D 1 21643 5 1			; Treasure of the Second Level of Demondium Close Down
+D 1 21704 5 1			; Treasure of the fourth level of Demondium Close Down
+D 1 21730 2 1			; Underworld Close South
+D 1 21725 1 2			; Halls of the Underworld Lock East
+D 1 21715 1 2			; The River Styx Lock East
+D 1 21717 3 2			; The River Styx Lock West
+D 1 21703 2 2			; Sand Vortex Lock South
+D 1 21764 2 2			; Judgement Lock South
+D 1 21727 2 2			; Halls of the Underworld Lock South
+D 1 21737 2 2			; Halls of the Underworld Lock South
+D 1 21920 2 2			; Before the Altar of Thrasher Lock South
+D 1 21950 0 2			; Thrasher's Altar Lock North
+D 1 21949 4 2			; Secret Chamber Lock Up
+D 1 21950 5 2			; Thrasher's Altar Lock Down
+D 1 21893 3 2			; The Hall of Thrasher Lock West
+D 1 21894 1 2			; 1st Guardian of Thrasher Lock East
+D 1 21894 3 2			; 1st Guardian of Thrasher Lock West
+D 1 21895 1 2			; 2nd Guardian of Thrasher Lock East
+D 1 21895 3 2			; 2nd Guardian of Thrasher Lock West
+D 1 21896 1 2			; 3rd Guardian of Thrasher Lock East
+D 1 21896 3 2			; 3rd Guardian of Thrasher Lock West
+D 1 21897 1 2			; 4th Guardian of Thrasher Lock East
+D 1 21897 3 2			; 4th Guardian of Thrasher Lock West
+D 1 21898 1 2			; 5th Guardian of Thrasher Lock East
+D 1 21899 1 2			; 6th Guardian of Thrasher Lock East
+D 1 21899 3 2			; 6th Guardian of Thrasher Lock West
+D 1 21900 1 2			; 7th Guardian of Thrasher Lock East
+D 1 21900 5 2			; 7th Guardian of Thrasher Lock Down
+D 1 21921 5 1			; Acolyte's quarters Close Down
+D 1 21922 5 1			; Priest's quarters Close Down
+D 1 21939 4 1			; Secret tunnel Close Up
+D 1 21932 2 1			; Dirty Tunnel Close South
+D 1 21931 3 1			; Dirty Tunnel Close West
+D 1 21934 5 1			; Prison Cell Close Down
+D 1 21934 1 1			; Prison Cell Close East
+*
+M 1 21550 1 21668			the traveller to Desolate desert track
+E 1 21535 100 8
+E 1 21532 100 12
+E 1 21534 100 16
+*
+M 1 21547 2 21681			the nomad to Nomad camp
+E 1 21535 100 8
+E 1 21532 100 12
+E 1 21529 100 16
+*
+M 1 21547 3 21685			the nomad to Nomad camp
+E 1 21535 100 8
+E 1 21532 100 12
+E 1 21529 100 16
+*
+M 1 21552 1 21690			the nomad guard to Nomad's tent
+E 1 21535 100 8
+E 1 21532 100 12
+E 1 21529 100 16
+*
+M 1 21555 1 21690			the nomad leader to Nomad's tent
+E 1 21529 100 16
+*
+M 1 21556 1 21690			the harem girl to Nomad's tent
+*
+M 1 21551 1 21688			the nomad to Nomad camp
+E 1 21529 100 16
+*
+M 1 21549 1 21688			the camel to Nomad camp
+E 1 21528 100 13
+*
+M 1 21557 1 21700			the bedouin leader to Bedouin's tent
+E 1 21533 100 6
+E 1 21535 100 8
+E 1 21530 100 16
+*
+M 1 21554 2 21700			the bedouin guard to Bedouin's tent
+E 1 21530 100 16
+*
+M 1 21556 1 21700			the harem girl to Bedouin's tent
+*
+M 1 21548 3 21695			the bedouin to Bedouin camp
+E 1 21533 100 6
+E 1 21535 100 8
+E 1 21530 100 16
+*
+M 1 21549 1 21698			the camel to Bedouin camp
+E 1 21528 100 13
+*
+M 1 21553 1 21698			the bedouin to Bedouin camp
+E 1 21533 100 6
+E 1 21535 100 8
+E 1 21530 100 16
+*
+M 1 21558 1 21702			the sandgorgon to Lair of the Sandgorgon
+G 1 21526 100
+D 1 21704 0 2			; Treasure of the fourth level of Demondium Lock North
+*
+M 1 21563 1 21705			the mummy to Entrance to the Underworld
+E 1 21541 100 16
+D 1 21728 0 2			; Burial Chamber Lock North
+*
+M 1 21564 1 21728			the undead servant to Burial Chamber
+E 1 21537 100 16
+E 1 21546 100 17
+*
+M 1 21567 1 21728			the mummy to Burial Chamber
+E 1 21536 100 15
+E 1 21538 100 16
+O 1 21547 100 21728			a silver flask to Burial Chamber
+O 1 21546 100 21728			a divining rod to Burial Chamber
+O 1 21507 100 21728			a huge pile of gold goins to Burial Chamber
+*
+M 1 21564 1 21738			the undead servant to Burial Chamber
+E 1 21536 100 14
+E 1 21537 100 16
+E 1 21546 100 17
+*
+M 1 21567 1 21738			the mummy to Burial Chamber
+E 1 21536 100 14
+E 1 21538 100 16
+O 1 21545 100 21738			an ancient parchment to Burial Chamber
+O 1 21544 100 21738			a golden crown to Burial Chamber
+O 1 21507 100 21738			a huge pile of gold goins to Burial Chamber
+*
+M 1 21563 2 21733			the mummy to Halls of the Underworld
+E 1 21536 100 14
+E 1 21541 100 16
+D 1 21742 3 2			; Hall of Osiris Lock West
+*
+M 1 21559 1 21745			Osiris to Osiris' Chamber
+E 1 21539 100 0
+E 1 21516 100 1
+E 1 21516 100 2
+E 1 21543 100 3
+E 1 21543 100 4
+E 1 21540 100 17
+E 1 21548 100 16
+*
+M 1 21562 1 21764			Osiris to Judgement
+E 1 21539 100 0
+E 1 21516 100 1
+E 1 21516 100 2
+E 1 21543 100 3
+E 1 21543 100 4
+E 1 21548 100 16
+E 1 21540 100 17
+G 1 21610 100
+*
+M 1 21566 1 21752			the lost soul to Limbo
+E 1 21536 100 15
+*
+M 1 21566 1 21750			the lost soul to Limbo
+*
+M 1 21565 1 21713			the lost soul to The River Styx
+*
+M 1 21565 1 21718			the lost soul to The River Styx
+E 1 21536 100 15
+*
+M 1 21560 1 21758			the undead pharaoh to pharaoh's Tomb
+E 1 21542 100 13
+E 1 21536 100 14
+E 1 21536 100 15
+E 1 21537 100 16
+G 1 21547 100
+G 1 21507 100
+*
+M 1 21561 1 21763			the undead queen to Queen's Tomb
+E 1 21542 100 13
+E 1 21536 100 14
+E 1 21536 100 15
+E 1 21537 100 16
+D 1 21757 2 2			; Halls of the Underworld Lock South
+D 1 21758 0 2			; pharaoh's Tomb Lock North
+D 1 21762 2 2			; Halls of the Underworld Lock South
+D 1 21763 0 2			; Queen's Tomb Lock North
+O 1 21507 100 21765			a huge pile of gold goins to Treasure of the fifth level of Demondium
+O 1 21547 100 21765			a silver flask to Treasure of the fifth level of Demondium
+O 1 21547 100 21765			a silver flask to Treasure of the fifth level of Demondium
+O 1 21549 100 21706			the soul ferry to The River Styx
+O 1 21550 100 21765			a spell of resurrection to Treasure of the fifth level of Demondium
+*
+M 1 21568 1 21780			the wind demon to Wind Demon on a Mountain ridge
+*
+M 1 21583 1 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21584 1 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21585 1 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21583 1 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21584 2 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21585 3 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21583 3 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21584 2 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21585 1 21812			the dancing wraith to Dance of the Wraiths
+*
+M 1 21586 2 21810			the soul to Ritual of Cleansing
+*
+M 1 21587 1 21810			the cleansed soul to Ritual of Cleansing
+*
+M 1 21588 1 21810			the cleaner of souls to Ritual of Cleansing
+*
+M 1 21589 1 21813			the tree of law to The Tree of Law
+*
+M 1 21569 1 21847			the quasit to Netherworld Lair
+G 1 21555 100
+*
+M 1 21570 1 21854			the nightcrawler to Netherworld Lair
+*
+M 1 21571 1 21868			evil Iggy to Lair
+E 1 21516 100 2
+E 1 21552 100 6
+E 1 21554 100 11
+E 1 21556 100 16
+G 1 21566 100
+G 1 21611 100
+*
+M 1 21582 1 21875			the wraith commander to Lair
+E 1 21552 100 6
+E 1 21553 100 14
+E 1 21551 100 16
+E 1 21516 100 2
+E 1 21554 100 11
+E 1 21501 100 5
+E 1 21517 100 12
+G 1 21612 100
+*
+M 1 21590 1 21814			the red sorcerer to Sorcery
+G 1 21521 100
+G 1 21525 100
+G 1 21550 100
+*
+M 1 21581 1 21851			the berserker to Netherworld Cavern
+*
+M 1 21581 2 21859			the berserker to A wide cave
+*
+M 1 21579 1 21865			the wraith soldier to A wide cave
+*
+M 1 21580 1 21871			the raver to Small tunnel
+*
+M 1 21579 1 21863			the wraith soldier to A wide cave
+E 1 21551 100 16
+*
+M 1 21579 1 21850			the wraith soldier to Netherworld Cavern
+E 1 21551 100 16
+*
+M 1 21579 3 21858			the wraith soldier to A wide cave
+E 1 21551 100 16
+*
+M 1 21579 4 21870			the wraith soldier to Small tunnel
+E 1 21551 100 16
+*
+M 1 21579 3 21879			the wraith soldier to Depths of the Netherworld
+E 1 21551 100 16
+*
+M 1 21572 1 21894			Akmar to 1st Guardian of Thrasher
+E 1 21557 100 1
+E 1 21559 100 16
+E 1 21578 100 5
+*
+M 1 21573 1 21895			Chaymi to 2nd Guardian of Thrasher
+E 1 21543 100 3
+E 1 21560 100 16
+E 1 21516 100 1
+E 1 21573 100 5
+*
+M 1 21574 1 21896			Jaguar to 3rd Guardian of Thrasher
+E 1 21569 100 8
+E 1 21561 100 16
+*
+M 1 21575 1 21897			the master of shadows to 4th Guardian of Thrasher
+E 1 21562 100 12
+E 1 21572 100 11
+E 1 21571 100 7
+E 1 21570 100 10
+*
+M 1 21576 1 21898			the ancient enemy to 5th Guardian of Thrasher
+*
+M 1 21577 1 21899			the undead spirit of Zrack to 6th Guardian of Thrasher
+E 1 21579 100 6
+E 1 21563 100 9
+E 1 21534 100 16
+*
+M 1 21578 1 21900			Zarcnor the mage to 7th Guardian of Thrasher
+E 1 21516 100 1
+E 1 21564 100 3
+E 1 21563 100 9
+E 1 21565 100 17
+E 1 21579 100 6
+G 1 21568 100
+O 1 21567 100 21900			a water statue to 7th Guardian of Thrasher
+O 1 21574 100 21890			a small black bottle to A chamber in the Heart of the Netherworld
+O 1 21575 100 21892			a HUGE magic mushroom to A chamber in the Heart of the Netherworld
+D 1 21814 2 2			; Sorcery Lock South
+D 1 21952 0 2			; A wide cave entrance Lock North
+D 1 21898 3 2			; 5th Guardian of Thrasher Lock West
+*
+M 1 21597 1 21917			the sacrifice victim to 2nd Room of Worship
+*
+M 1 21591 1 21917			the red acolyte to 2nd Room of Worship
+E 1 21586 100 12
+E 1 21583 100 13
+*
+M 1 21592 1 21917			the yellow acolyte to 2nd Room of Worship
+E 1 21587 100 12
+E 1 21584 100 15
+*
+M 1 21593 1 21917			the black acolyte to 2nd Room of Worship
+E 1 21585 100 11
+E 1 21588 100 12
+E 1 21592 100 16
+*
+M 1 21598 1 21911			the sacrifice victim to 3rd Room of Worship
+*
+M 1 21594 1 21911			the red priest to 3rd Room of Worship
+E 1 21589 100 8
+E 1 21586 100 12
+*
+M 1 21595 1 21911			the yellow priest to 3rd Room of Worship
+E 1 21590 100 9
+E 1 21587 100 12
+*
+M 1 21596 1 21911			the black priest to 3rd Room of Worship
+E 1 21588 100 12
+E 1 21591 100 16
+*
+M 1 21600 1 21950			Thrasher to Thrasher's Altar
+E 1 21595 100 0
+E 1 21597 100 3
+E 1 21598 100 8
+E 1 21596 100 12
+E 1 21594 100 16
+*
+M 1 21599 1 21933			the cult recruiter to Recruiting Room
+E 1 21593 100 16
+D 1 21838 5 2			; Summit of Karem Soulbiter Lock Down
+D 1 21802 3 2			; Entrance to the Netherworld Lock West
+D 1 21644 4 1			; The Hall of Portals Close Up
+O 1 21606 100 21552			a wooden key to Treasure of the First level of Demondium
+O 1 21607 100 21643			a bronze key to Treasure of the Second Level of Demondium
+O 1 21608 100 21666			an iron key to Treasure of the Third Level of Demondium
+O 1 21507 100 21704			a huge pile of gold goins to Treasure of the fourth level of Demondium
+O 1 21507 100 21704			a huge pile of gold goins to Treasure of the fourth level of Demondium
+O 1 21507 100 21704			a huge pile of gold goins to Treasure of the fourth level of Demondium
+O 1 21608 100 21704			an iron key to Treasure of the fourth level of Demondium
+O 1 21609 100 21704			a silver key to Treasure of the fourth level of Demondium
+O 1 21610 100 21765			a goldn key to Treasure of the fifth level of Demondium
+D 1 21839 4 2			; Inside the mountain Lock Up
+*
+M 1 21579 1 21842			the wraith soldier to Gateway in the Netherworld
+E 1 21551 100 16
+*
+M 1 21579 1 21849			the wraith soldier to Netherworld Cavern
+*
+M 1 21579 1 21855			the wraith soldier to Netherworld Cavern
+E 1 21551 100 16
+*
+M 1 21570 1 21860			the nightcrawler to A wide cave
+*
+M 1 21579 1 21860			the wraith soldier to A wide cave
+E 1 21551 100 16
+*
+M 1 21569 1 21860			the quasit to A wide cave
+*
+M 1 21581 1 21860			the berserker to A wide cave
+*
+M 1 21580 1 21860			the raver to A wide cave
+*
+M 1 21534 3 21866			the skeletal warrior to A wide cave
+E 1 21551 100 16
+*
+M 1 21579 10 21866			the wraith soldier to A wide cave
+E 1 21501 100 5
+E 1 21554 100 11
+E 1 21517 100 12
+E 1 21551 100 16
+*
+M 1 21581 3 21872			the berserker to Small tunnel
+*
+M 1 21580 1 21873			the raver to Small tunnel
+*
+M 1 21579 1 21873			the wraith soldier to Small tunnel
+*
+M 1 21579 5 21875			the wraith soldier to Lair
+E 1 21501 100 5
+E 1 21554 100 11
+E 1 21551 100 16
+O 1 21527 100 21938			a silver spoon to End of the Escape tunnel
+S
+
+
+#SPECIALS
+M  21506 spec_fido			the rabid dog
+M  21508 spec_poison			the green snake
+M  21518 spec_cast_mage			the dark elf
+M  21521 spec_cast_mage			the dark dwarf
+M  21524 spec_breath_frost			the young white dragon
+M  21526 spec_thief			the drunk dwarf
+M  21527 spec_poison			the baby naga
+M  21529 spec_cast_psionicist			the apprentice psionic
+M  21531 spec_poison			the cavewight
+M  21532 spec_poison			the cavewight
+M  21535 spec_breath_acid			the rock slug
+M  21541 spec_cast_psionicist			the portal keeper
+M  21550 spec_poison			the traveller
+M  21556 spec_poison			the harem girl
+M  21559 spec_cast_undead	Osiris
+M  21560 spec_cast_undead			the undead pharaoh
+M  21561 spec_cast_undead			the undead queen
+M  21562 spec_cast_psionicist			Osiris
+M  21566 spec_poison			the lost soul
+M  21571 spec_cast_undead			evil Iggy
+M  21572 spec_poison			Akmar
+M  21573 spec_cast_priestess			Chaymi
+M  21574 spec_poison			Jaguar
+M  21575 spec_poison			the master of shadows
+M  21576 spec_poison			the ancient enemy
+M  21577 spec_cast_mage			the undead spirit of Zrack
+M  21578 spec_cast_mage			Zarcnor the mage
+M  21579 spec_guard			the wraith soldier
+M  21582 spec_guard			the wraith commander
+M  21589 spec_cast_cleric			the tree of law
+M  21590 spec_cast_mage			the red sorcerer
+M  21600 spec_cast_archmage			Thrasher
+S
+
+
+#$

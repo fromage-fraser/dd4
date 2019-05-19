@@ -1,0 +1,2850 @@
+#AREA	Yaegar~  Ghost Town~
+55 80 0 100
+
+#HELPS
+0 'GHOST TOWN'~
+This is purely a simple hack-n-slash area with the interesting added feature
+that you can't recall... You have to fight your way through the many powerful
+high level undead that populate this place. To a good mudder its heaven. To
+someone who flees when fighting the children in Mud School, its probably gonna
+be considered impossible. Either way, have fun.
+
+- Yaegar Dec 1995
+
+~
+
+0 $~
+
+
+#MOBILES
+#8800
+spectre~
+a spectre~
+A Spectre shrieks and cackles.
+~
+The spirit of some former minion of this place, this foul Undead creature
+will do its best you meet the same fate as all previous intruders in this
+fell domain- DEATH.
+~
+32|64 8|32|128|524288 -250 S
+64 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#8801
+wraith~
+a wraith~
+A Wraith strides  silently toward you, death in its glowing red eyes.
+~
+The spirit of some former minion of this place, this foul Undead creature
+will do its best you meet the same fate as all previous intruders in this
+fell domain- DEATH.
+~
+64 8|32|512|524288 -125 S
+63 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#8802
+wight~
+a wight~
+A ghastly wight, still clad in the armor it wore in life, lopes towards you.
+~
+The spirit of some former minion of this place, this foul Undead creature
+will do its best you meet the same fate as all previous intruders in this
+fell domain- DEATH.
+~
+64 8|32|128|512 -25 S
+60 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#8803
+ghost~
+a ghost~
+The ghost of some long-dead adventurer howls maniacally at you.
+~
+The spirit of some former minion of this place, this foul Undead creature
+will do its best you meet the same fate as all previous intruders in this
+fell domain- DEATH.
+~
+64 8|32|128|524288|1048576 250 S
+64 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#8804
+vampire~
+a vampire~
+An evil vampire rises from the sarcophagus, baring its fangs.
+~
+The Evil Baron and his two brothers were vampires imprisoned here by Xanan
+centuries ago, who had not the power to slay them utterly, and now thanks
+to your disturbance they have risen again!
+~
+2|32|64|4096 8|32|128|512|8192 -1000 S
+72 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8805
+lich~
+a lich~
+An insane Lich cackles hideously and unleashes a volley of spells.
+~
+This powerful Undead is actually Xantharus' former master, whom he betrayed
+and slew. But he underestimated his master's power, and now he as returned
+as a Lich, seeking revenge!
+~
+2|32|64|4096 8|32|128|524288 -130 S
+77 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8806
+demon~
+a lesser demon~
+A Lesser Demon slobbers, drools and cackles insanely!
+~
+This grotesque is a minion of the lower planes drawn here by the intense
+concentration of negative material energy.
+~
+32 8|32|128|512 -1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8807
+spirit revenant~
+a revenant~
+The spirit of a mortal horribly wronged has returned as a Revenant.
+~
+This poor soul was once a powerful, good priest of Soleil who was betrayed
+by agents of the evil Gomez and tortured and slain by them. His spirit has
+returned here, seeking out the long-dead fellows who slew him. He will 
+ignore all else in his quest, but will not hesitate to attack you if you
+interfere.
+~
+64|4096 8|32|128|512|8192 0 S
+75 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#8808
+spirit haunt~
+a haunt~
+The spirit of an adventurer slain here long ago is now bound here as a Haunt.
+~
+This spirit was once a powerful warrior who, on a wager, entered Ghost Town.
+He was quickly slain by the inhabitants, but such was his distress at his
+death, his spirit remained behind to haunt the area where he met his end.
+~
+2|64 8|32|128|524288|1048576 0 S
+64 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#8809
+crypt thing~
+a crypt thing~
+A Crypt Thing cackles evilly and taunts you.
+~
+This fell creature will not attack you, despite its evil- it will merely
+taunt you, though it will not hesitate to defend itself.
+~
+2|64|4096 8|32|128|512|8192 -400 S
+73 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8810
+greater demon~
+a greater demon~
+A Greater demon spews forth fire and gas!
+~
+This grotesque is a minion of the lower planes drawn here by the intense
+concentration of negative material energy.
+~
+2|64 8|32|128|512|8192|524288 -1000 S
+77 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8811
+undead dragon~
+an undead dragon~
+An Undead Dragon belches forth poisonous fumes!
+~
+This foul Dracolich is the undead spirit of a dragon that served Xantharus
+so well in life that he animated it to continue serving him after its
+death.
+~
+2|32|64 8|32|128|512|524288 -1000 S
+81 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8812
+undead monster~
+an undead monster~
+An undead monster shambles forth and attacks!
+~
+The spirit of some former minion of this place, this foul Undead creature
+will do its best you meet the same fate as all previous intruders in this
+fell domain- DEATH.
+~
+64 8|32 -125 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8813
+giant rat~
+a giant rat~
+A GIANT Rat savagely charges you!
+~
+When I say GIANT, I am talking ten feet high...
+~
+4|32|64 8|32|65536 15 S
+55 0 0 0d0+0 0d0+0
+32|128 0
+8 8 0
+#8814
+giant spider~
+a giant spider~
+A GIANT Spider drops down on you!
+~
+When I say GIANT, I am talking ten feet high...
+~
+4|32|64 8|32|65536 -15 S
+60 0 0 0d0+0 0d0+0
+52|128 0
+8 8 0
+#8815
+lurker above~
+a lurker above~
+A Lurker Above seeks to enfold and suffocate you!
+~
+This foul abberration feeds on any and all that enter its lair- even the
+corporeal undead avoid it...
+~
+2|32|64 512|524288 0 S
+66 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#8816
+succubus~
+a succubus~
+A beautiful female smiles charmingly at you, revealing sharp fangs...
+~
+OUCH! Its a Succubus. She will charm you, then waste you. FIGHT!
+~
+2|64 8|32|128|512|524288 -200 S
+66 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#8817
+necromancer xantharus~
+Xantharus~
+A timid-looking Necromancer begs to be freed.
+~
+This pathetic wretch is none other than Xantharus, the evil mage that brought
+the Undead to this town, destroying it, before losing control of them. He
+has fled here, in the hopes that they won't find him before he finds a way
+to escape his terrible mistake.
+~
+2|64|128|4096 1024 -400 S
+66 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#8818
+rotting corpse~
+a rotting corpse~
+A Rotting Corpse staggers clumsily toward you.
+~
+This thing and its fellows are what remains of the citizens of this once-
+fine town, reduced to a horrid state of undeath. Slaying them would be the
+best thing you could do for them...
+~
+64 512 0 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8819
+master~
+the master~
+The Master surveys his domain and laughs evilly.
+~
+Little is known of this mysterious stranger who came here and took control
+after the weak Xantharus lost control of his creations. He is a powerful,
+diabolically evil mage, and will not hesitate to destroy you.
+~
+2|32|64|4096 4|8|16|32|128|8192 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#8820
+shambling mound~
+a shambling mound~
+A Shambling Mound... well... shambles toward you.
+~
+RUN! A twelve-foot high pile of garbage is attacking you!
+~
+64 8192 0 S
+60 0 0 0d0+0 0d0+0
+63|128 0
+8 8 0
+#8821
+kampflut~
+a kampflut~
+A Kampflut searches for food in the garden.
+~
+This hideous, animated tree resembles an ancient oak with tentacle-like
+branches and a huge toothed maw. Despite its nasty demeanour, it is not
+evil- it is simply hungry.
+~
+64 8192 0 S
+66 0 0 0d0+0 0d0+0
+2|8|16|32|256 0
+8 8 0
+#8822
+black pudding~
+a black pudding~
+A Black Pudding slowly rolls toward you.
+~
+This huge black blob will dissolve weapons and armor it gets the chance,
+then it will devour you!
+~
+64 8192 0 S
+70 0 0 0d0+0 0d0+0
+63|128 0
+8 8 0
+#8823
+green slime~
+green slime~
+A patch of Green Slime drips on you, burning your skin!
+~
+Green Slime can dissolve even metal, so imagine what it would do to your
+skin...
+~
+2|64 0 0 S
+54 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#8824
+gray ooze~
+a gray ooze~
+A pile of gray liquid oozes toward you.
+~
+"Oh," I hear you say. "How threatening". Well, just you wait!
+~
+64 128|512|8192 0 S
+77 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#8825
+animated tree~
+an animated tree~
+An Animated Tree bashes you with its branches.
+~
+This tree is bad and evil- it is an anti-treant :)
+~
+64 0 0 S
+60 0 0 0d0+0 0d0+0
+2|8|16|32|256 0
+8 8 0
+#8826
+tree spirit~
+a tree spirit~
+A Tree Spirit offers you shelter in this place of evil.
+~
+This spirit is the only truly good creature in this place. She can guard you
+while you rest, and perhaps heal your wounds if you pay her enough...
+~
+2|64|2048 2|4|8|32|128|512|8192 400 S
+87 0 0 0d0+0 0d0+0
+96 0
+8 8 2
+#8827
+death knight~
+a death knight~
+A Death Knight salutes you then attacks!
+~
+This is the spirit of a Paladin corrupted by the evil of the Master, doomed
+to an eternity as an undead servant. Clad in ornate, ancient armor and 
+wielding a shiny silver sword, he would look as he did in life save for his
+rotting face...
+~
+2|32|64 8|32|128|512 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#8828
+nightmare~
+a nightmare~
+A Nightmare, loyal steed of the denizens of the Lower Planes, rests here.
+~
+This black, winged equine hell-steed waits patiently for its master to finish 
+its business here before bearing it to its next destination.
+~
+2|64|131072 32|512|524288 -300 S
+60 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#8829
+retriever~
+a retriever~
+A retriever rears on four of its legs and strikes.
+~
+This demonic steed resembles a huge spider with razor sharp blades for legs
+and glowing gems for eyes.
+~
+2|64 8|32|128|512 -400 S
+77 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#8830
+cambion scout~
+a cambion scout~
+A Cambion Scout eyes you cautiously.
+~
+This half-man, half-demon creature is a scout for Orcus, Prince of the 
+Undead. He is here on a covert mission, and thus will avoid trouble if at
+all possible. He is attempting to ascertain the degree of power of the
+master, and inform his master if the strange man poses a significant threat
+to his domination of all things Undead.
+~
+4|64|128 8|16|32|128|512|65536 -1000 S
+66 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#8831
+orcus~
+Orcus~
+Orcus, Prince of the Undead, glowers menacingly at you.
+~
+Whoa. You are standing before Orcus. He resembles a bloated man twenty
+feet tall with a bull's nose and eyes, and goat's horns and hooves. He
+grips a rod with a goat's head in one hoof, and glares suspiciously at you.
+He is not really meant to be here, and thus will avoid attracting attention
+of the powers of the Prime Material Plane by avoiding combat.
+~
+2|64|128 2|4|8|16|32|128|512|8192 -1000 S
+87 0 0 0d0+0 0d0+0
+128 0
+8 8 0
+#8832
+water weird~
+a water weird~
+A Water Weird lunges at you!
+~
+This watery snake resides in the well, which it will fight to defend.
+~
+2|32|64 128|8192 0 S
+66 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#8833
+giant spider~
+a giant spider~
+A GIANT Spider drops down on you!
+~
+When I say GIANT, I am talking ten feet high...
+~
+2|4|64|128 8|32|65536 0 S
+64 0 0 0d0+0 0d0+0
+52|128 0
+8 8 0
+#8834
+baron vampire~
+a baron vampire~
+The Baron vampire rises from the sarcophagus, bares its fangs and attacks!
+~
+The Evil Baron and his two brothers were vampires imprisoned here by Xanan
+centuries ago, who had not the power to slay them utterly, and now thanks
+to your disturbance they have risen again!
+~
+2|32|64|4096 8|32|128|512|8192 -1000 S
+80 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#0
+
+
+#OBJECTS
+#8800
+rod orcus~
+the Rod of Orcus~
+The Rod of Orcus glows evilly here.
+~
+~
+4 2|16|64|128 1|16384
+60~ 15~ 15~ invis~ 
+20 0 0
+A
+12 100
+A
+17 -10
+A
+18 15
+A
+19 20
+A
+23 -10
+A
+24 -10
+#8801
+hand vecna~
+the Hand of Vecna~
+The Hand of Vecna lies here.
+~
+~
+9 16|128|512|4096|65536 1|128
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+2 3
+A
+3 3
+A
+12 100
+A
+18 3
+A
+19 3
+A
+24 -3
+#8802
+eye vecna~
+the Eye of Vecna~
+The Eye of Vecna glows evilly here.
+~
+~
+9 1|16|512|4096 1|16
+0~ 0~ 0~ 0~ 
+1 0 0
+A
+3 3
+A
+4 3
+A
+12 50
+#8803
+sword kas~
+the Sword of Kas~
+The Sword of Kas beckons to you!
+~
+~
+5 2|8|16|64|512|4096|16384|131072|262144 1|8192
+0~ 0~ 0~ 11~ 
+20 0 0
+A
+12 100
+A
+17 20
+A
+18 10
+A
+19 15
+#8804
+circlet~
+a circlet~
+A Circlet lies here, gathering dust.
+~
+~
+9 64|4096 1|16
+0~ 0~ 0~ 0~ 
+25 0 0
+A
+3 -3
+A
+4 -3
+#8805
+hoard~
+a treasure hoard~
+A treasure hoard is scattered here.
+~
+~
+8 0 1|16384
+0~ 0~ 0~ 0~ 
+150 0 0
+#8806
+chest~
+a chest~
+A chest sits here.
+~
+~
+15 0 1
+150~ 8~ 8120~ 0~ 
+100 0 0
+#8807
+robes flesh~
+robes of Flesh~
+Robes made of human flesh are piled here.
+~
+~
+9 16|512 1|1024
+0~ 0~ 0~ 0~ 
+25 0 0
+A
+12 150
+A
+13 25
+A
+24 -3
+#8808
+rod bone~
+a Rod of Bone~
+A Rod fashioned from a human femur lies here.
+~
+~
+5 16|512 1|8192
+0~ 0~ 0~ 8~ 
+25 0 0
+A
+12 15
+A
+17 -10
+A
+18 4
+A
+19 4
+#8809
+bones~
+a pile of bones~
+A pile of bones lies here.
+~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+50 0 0
+#8810
+gem~
+a Power Gem~
+A Mana Power Gem pulses strongly here.
+~
+~
+4 1|64 1|16384
+50~ 20~ 20~ sanctuary~ 
+10 0 0
+A
+12 150
+#8811
+cloak~
+a black cloak~
+A black cloak is piled here.
+~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~ 
+10 0 0
+#8812
+sword~
+(Diabolical) a Dark Sword~
+A Dark Sword hums evilly here.
+~
+~
+5 2|16|512 1|8192
+0~ 0~ 0~ 0~ 
+35 0 0
+A
+1 1
+A
+5 1
+A
+17 -20
+A
+18 12
+A
+19 4
+#8813
+armor~
+a Suit of Dark Armor~
+A Suit of Dark Armor lies here.
+~
+~
+9 16|512 1|8
+0~ 0~ 0~ 0~ 
+25 0 0
+A
+17 -10
+A
+18 6
+A
+19 6
+#8814
+helm~
+a Dark Helm~
+A Dark Helm seeks to possess you!
+~
+~
+9 128|4096 1|16
+0~ 0~ 0~ 0~ 
+75 0 0
+A
+3 -3
+A
+4 -3
+#8815
+jar~
+a jar~
+A glass jar sits here.
+~
+~
+15 0 1|16384
+25~ 1~ 0~ 0~ 
+10 0 0
+#8816
+poison~
+some poison~
+Some poison lies here.
+~
+~
+19 0 1
+1~ 0~ 0~ 1~ 
+1 0 0
+#8817
+unholy symbol~
+an Unholy Symbol~
+The Unholy Symbol of some priest devoted to evil lies here.
+~
+~
+1 16|512 1
+0~ 0~ -1~ 0~ 
+5 0 0
+A
+2 3
+#8818
+holy symbol~
+a holy Symbol~
+The Holy Symbol of some priest devoted to good lies here.
+~
+~
+1 1|1024 1
+0~ 0~ -1~ 0~ 
+5 0 0
+A
+5 3
+#8819
+corpse~
+a corpse~
+The corpse of some unfortunate adventurer is lying here.
+~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+75 0 0
+#8820
+key~
+a key~
+A black key is here.
+~
+~
+18 2 1|16384
+0~ 0~ 0~ 0~ 
+5 0 0
+#8821
+jar blood~
+a jar of human blood~
+A jar of human blood sits here.
+~
+~
+10 2|16|512 1|16384
+50~ poison~ weaken~ curse~ 
+5 0 0
+#8822
+portal~
+a shimmering portal~
+A shimmering portal rests here.~
+~
+33 1 0
+10412~ -1~ 0~ 100~ 
+1 0 0
+#8823
+ethereal sword~
+an ethereal sword~
+A translucent sword lies on the ground, shimmering.
+~
+~
+5 64|512|16777216 1|8192
+0~ 0~ 0~ 0~ 
+35 0 0
+A
+17 -20
+A
+18 10
+A
+19 10
+#0
+
+
+#ROOMS
+#8800
+A Dusty Trail~
+You walk along a dusty trail leading towards a small town to the north. The 
+horrid stench in the air makes you struggle to control your gag reflex. 
+You see a sign up ahead.
+~
+0 4 2
+D0
+~
+~
+0 -1 8801
+D2
+~
+~
+0 -1 18139
+E
+sign~
+{x         W E L C O M E    T O    G H O S T T O W N
+
+                       Population : 0
+
+--- This area brought to you by Yaegar on behalf of AnonyMud ---
+
+~
+S
+#8801
+The Town~
+You have reached the Ghost Town, a place rumored to be inhabited by the
+most ghastly of undead, as well as their fell minions. Should you proceed,
+you may find yourself unable to return home by conventional means, and
+instead have to travel through until you find another means of escape. Your
+choice.
+~
+0 4 1
+D0
+~
+~
+0 -1 8802
+D2
+~
+~
+0 -1 8800
+S
+#8802
+The Main Street~
+Stepping onto this street, you immediately feel a wave of fear and dread
+wash over you. Shaking, you collect yourself and prepare to advance into
+this literally god-forsaken area. Houses line the street to the left and
+right. Up ahead lies a small town square.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8806
+D1
+~
+~
+1 0 8804
+D3
+~
+~
+1 0 8803
+S
+#8803
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D1
+~
+~
+1 0 8802
+S
+#8804
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D3
+~
+~
+1 0 8802
+S
+#8805
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square. This corner of the Town Square 
+feels a little less cursed and evil than the rest of it, and you think that 
+the Gods might perhaps hear your prayers here.
+~
+0 0 1
+D0
+~
+~
+0 -1 8808
+D1
+~
+~
+0 -1 8806
+S
+#8806
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8809
+D1
+~
+~
+0 -1 8807
+D2
+~
+~
+0 -1 8802
+D3
+~
+~
+0 -1 8805
+S
+#8807
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8810
+D3
+~
+~
+0 -1 8806
+S
+#8808
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8811
+D1
+~
+~
+0 -1 8809
+D2
+~
+~
+0 -1 8805
+D3
+~
+~
+0 -1 8814
+S
+#8809
+The Well in the Town Square~
+You are standing in the middle of the town square, at the well. Paths stretch
+past houses and shops in every direction. There must still be some water in
+the well, as a small amount of grass has managed to grow around it.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8812
+D1
+~
+~
+0 -1 8810
+D2
+~
+~
+0 -1 8806
+D3
+~
+~
+0 -1 8808
+S
+#8810
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8813
+D1
+~
+~
+0 -1 8824
+D2
+~
+~
+0 -1 8807
+D3
+~
+~
+0 -1 8809
+S
+#8811
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D1
+~
+~
+0 -1 8812
+D2
+~
+~
+0 -1 8808
+S
+#8812
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8834
+D1
+~
+~
+0 -1 8813
+D2
+~
+~
+0 -1 8809
+D3
+~
+~
+0 -1 8811
+S
+#8813
+The Town Square~
+You have come to the Town Square. You can proceed in several directions from
+here across the square, which is now nothing more than a flat square of
+scorched earth and decimated vegetation, or down one of the side streets.
+There is a well in the middle of the square.
+~
+0 8192 1
+D2
+~
+~
+0 -1 8810
+D3
+~
+~
+0 -1 8812
+S
+#8814
+A Side Street~
+You are advancing along a side street that runs west away from the Town
+Square. Houses lie to the north and south.
+~
+0 8192 1
+D0
+~
+~
+1 0 8815
+D1
+~
+~
+0 -1 8808
+D2
+~
+~
+1 0 8816
+D3
+~
+~
+0 -1 8817
+S
+#8815
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D2
+~
+~
+1 0 8814
+S
+#8816
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8814
+S
+#8817
+A Side Street~
+You are advancing along a side street that runs west away from the Town
+Square. Houses lie to the north and south.
+~
+0 8192 1
+D0
+~
+~
+1 0 8818
+D1
+~
+~
+0 -1 8814
+D2
+~
+~
+1 0 8819
+D3
+~
+~
+0 -1 8820
+S
+#8818
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D2
+~
+~
+1 0 8817
+S
+#8819
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8817
+S
+#8820
+A Side Street~
+You have reached the end of a side street that runs west away from the Town
+Square. Houses lie to the north, west and south.
+~
+0 8192 1
+D0
+~
+~
+1 0 8821
+D1
+~
+~
+0 -1 8817
+D2
+~
+~
+1 0 8822
+D3
+~
+~
+1 0 8823
+S
+#8821
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D2
+~
+~
+1 0 8820
+S
+#8822
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8820
+S
+#8823
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D1
+~
+~
+1 0 8820
+S
+#8824
+A Side Street~
+You are advancing along a side street that runs east away from the Town
+Square. Houses lie to the north and south.
+~
+0 8192 1
+D0
+~
+~
+1 0 8825
+D1
+~
+~
+0 -1 8827
+D2
+~
+~
+1 0 8826
+D3
+~
+~
+0 -1 8810
+S
+#8825
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D2
+~
+~
+1 0 8824
+S
+#8826
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8824
+S
+#8827
+A Side Street~
+You are advancing along a side street that runs east away from the Town
+Square. Houses lie to the north and south.
+~
+0 8192 1
+D0
+~
+~
+1 0 8828
+D1
+~
+~
+0 -1 8830
+D2
+~
+~
+1 0 8829
+D3
+~
+~
+0 -1 8824
+S
+#8828
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D2
+~
+~
+1 0 8827
+S
+#8829
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8827
+S
+#8830
+A Side Street~
+You have reached the end of a side street that runs east away from the Town
+Square. Houses lie to the north, east and south.
+~
+0 8192 1
+D0
+~
+~
+1 0 8831
+D1
+~
+~
+1 0 8833
+D2
+~
+~
+1 0 8832
+D3
+~
+~
+0 -1 8827
+S
+#8831
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8 0
+D2
+~
+~
+1 0 8830
+S
+#8832
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8830
+S
+#8833
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D3
+~
+~
+1 0 8830
+S
+#8834
+Main Street~
+You are heading along Main Street, which heads south to the Town Square and
+North toward an intersection. Houses line the street.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8837
+D1
+~
+~
+1 0 8836
+D2
+~
+~
+0 -1 8812
+D3
+~
+~
+1 0 8835
+S
+#8835
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D1
+~
+~
+1 0 8834
+S
+#8836
+A Ruined House~
+The interior of this house reeks of death. The dried blood smeared on the
+walls and the piles of bones on the floor bespeak of the fate of the former
+inhabitants of this residence. The current inhabitants may not be so easy
+to kill...
+~
+0 8|8192 0
+D3
+~
+~
+1 0 8834
+S
+#8837
+An Intersection~
+You are standing at an intersection devoid of houses. A park looms to the
+northwest of here, while the former residences of the Mayor lie directly
+west. You aren't sure where the northern path goes, as that area is
+enshrouded in dark fog...
+~
+0 8192 1
+D0
+~
+~
+0 -1 8855
+D2
+~
+~
+0 -1 8834
+D3
+~
+~
+0 -1 8838
+S
+#8838
+The Road to the Mayor's House~
+This road was at one time spacious and beautiful, but is now cluttered with
+debris and overgrown with tough, gray weeds that have sprouted through the
+carefully-laid cobblestones. There are junctions to the east and west of
+here.
+~
+0 8192 1
+D1
+~
+~
+0 -1 8837
+D3
+~
+~
+0 -1 8839
+S
+#8839
+A Junction~
+At this point, a dirt track runs north toward a dismal-looking garden that
+once flourished with the most beautiful flora on the continent, but is now
+home to the same sickly-gray weeds that sprout through the footpath, as well
+as some very tall, sinister-looking trees.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8871
+D1
+~
+~
+0 -1 8838
+D3
+~
+~
+0 -1 8840
+S
+#8840
+Outside the Mayor's House~
+The path ends at a decrepit manse that once served as home for the Mayor
+of this town. Since the incursion of the undead, it has fallen into
+disrepair, though not to the state that the other dwellings have, leading
+you to suspect that perhaps someone (or thing) important now resides here...
+~
+0 8192 1
+D1
+~
+~
+0 -1 8839
+D3
+~
+~
+1 0 8841
+S
+#8841
+The Hallway~
+You are advancing along a dimly-lit hall lined with garish paintings depicting
+rather macabre-looking members of some decadent family. To the west lies
+a crooked stairway that leads up to the next level. Doors lie to the north and
+south of here.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8843
+D1
+~
+~
+1 0 8840
+D2
+~
+~
+1 0 8842
+D3
+~
+~
+0 -1 8844
+S
+#8842
+A Room in the Mayor's Manse~
+This room reeks of decay, perhaps mainly due to the decaying corpses lying
+about. Blood has been smeared all over the walls, and a sickly-looking vine
+has crawled in through the broken panes of the windows. You gag and try
+not to vomit.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8841
+S
+#8843
+A Room in the Mayor's Manse~
+This room reeks of decay, perhaps mainly due to the decaying corpses lying
+about. Blood has been smeared all over the walls, and a sickly-looking vine
+has crawled in through the broken panes of the windows. You gag and try
+not to vomit.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 0 8841
+S
+#8844
+The Hallway~
+You are advancing along a dimly-lit hall lined with garish paintings depicting
+rather macabre-looking members of some decadent family. To the west lies
+a crooked stairway that leads up to the next level. Doors lie to the north and
+south of here.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8846
+D1
+~
+~
+0 0 8841
+D2
+~
+~
+1 0 8845
+D3
+~
+~
+0 -1 8847
+S
+#8845
+A Room in the Mayor's Manse~
+This room reeks of decay, perhaps mainly due to the decaying corpses lying
+about. Blood has been smeared all over the walls, and a sickly-looking vine
+has crawled in through the broken panes of the windows. You gag and try
+not to vomit.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8844
+S
+#8846
+A Room in the Mayor's Manse~
+This room reeks of decay, perhaps mainly due to the decaying corpses lying
+about. Blood has been smeared all over the walls, and a sickly-looking vine
+has crawled in through the broken panes of the windows. You gag and try
+not to vomit.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 0 8844
+S
+#8847
+The Stairway~
+This crooked staircase looks very unstable, and this, coupled with the 
+dreadful stench emanating from upstairs, makes you reluctant to proceed...
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 8844
+D4
+~
+~
+0 -1 8848
+S
+#8848
+The Stairway~
+At the top of the stairs you pause to catch your breath, and are immediately
+sorry as horrid-smelling air fills your lungs. Coughing, you fight to 
+breathe, and steel yourself to continue.
+~
+0 1|8|8192 0
+D1
+~
+~
+0 -1 8849
+D5
+~
+~
+0 -1 8847
+S
+#8849
+The Hallway~
+You are advancing along a dimly-lit hall lined with garish paintings depicting
+rather macabre-looking members of some decadent family. Doors lie to the north 
+and south of here. The hall ends at an impressive portal to the east.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8850
+D1
+~
+~
+1 0 8852
+D2
+~
+~
+1 0 8851
+D3
+~
+~
+0 -1 8848
+S
+#8850
+A Room in the Mayor's Manse~
+This room reeks of decay, perhaps mainly due to the decaying corpses lying
+about. Blood has been smeared all over the walls, and a sickly-looking vine
+has crawled in through the broken panes of the windows. You gag and try
+not to vomit.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 0 8849
+S
+#8851
+A Room in the Mayor's Manse~
+This room reeks of decay, perhaps mainly due to the decaying corpses lying
+about. Blood has been smeared all over the walls, and a sickly-looking vine
+has crawled in through the broken panes of the windows. You gag and try
+not to vomit.
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8849
+S
+#8852
+The Mayor's Study~
+As you enter this room, you are amazed to notice a complete absence of the
+stench you detected earlier. In addition, you are further amazed to notice
+the surprisingly good condition of this study, a comfortable den lined with
+shelves full of ancient texts. A large oak desk dominates the room, and
+behind this sits a plush leather chair. Wonder whose domain this is...?
+~
+0 8|8192 0
+D0
+~
+~
+1 0 8853
+D2
+~
+~
+1 0 8854
+D3
+~
+~
+1 0 8849
+S
+#8853
+A Bedroom~
+In this room lies an ornately-carved four poster bed with satin sheets. 
+Opposite it lies a comfortable divan, upon which the maidens of the master
+of this domain usually recline. A painting on one wall catches your eye.
+~
+0 1|8|8192 0
+D2
+~
+~
+1 0 8852
+E
+painting~
+It is a painting of one Count Philippe Gaspar duGascoigne, a handsome but
+evil-looking gentleman of middle years.
+~
+S
+#8854
+A Bedroom~
+This bedroom is as ruinous as its northern counterpart was lavish, as 
+decayed and despoiled as it was well-presented and comfortable. The furniture,
+while obviously once fine, is now ruined beyond repair. Blood stains coat
+the walls, and a corpse hangs by a rope from the chandelier in the center
+of the room. Whoever lives here must have a disagreeable personality to say
+the very least...
+~
+0 1|8|8192 0
+D0
+~
+~
+1 0 8852
+S
+#8855
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart.
+~
+0 1|8192 1
+D1
+~
+~
+0 -1 8856
+D2
+~
+~
+0 -1 8837
+S
+#8856
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8859
+D2
+~
+~
+0 -1 8857
+D3
+~
+~
+0 -1 8855
+S
+#8857
+A Small House~
+The mist clears suddenly, and you find yourself standing outside a rather
+creepy little stone dwelling, with no windows, but a stout oak door 
+directly to the east.
+~
+0 8192 1
+D0
+~
+~
+0 -1 8856
+D1
+~
+~
+1 0 8858
+S
+#8858
+Temporary Residence of a Demon~
+OH NO!
+
+You have inadvertently stumbled upon the temporary Prime Material Plane lair
+of ORCUS! If he isn't here, leave quickly. If he is...
+
+There is a shimmering portal to his home dimension to the east.
+~
+0 8|8192 0
+D3
+~
+~
+1 0 8857
+S
+#8859
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8863
+D1
+~
+~
+0 -1 8860
+D2
+~
+~
+0 -1 8856
+S
+#8860
+A Clearing~
+You have reached an area devoid of mist, the front yard of a ruined cottage
+whose door lies to the east. Peering through the windows, you imagine you
+can see shapes moving about.
+~
+0 8192 1
+D1
+~
+~
+1 0 8861
+D3
+~
+~
+0 -1 8859
+S
+#8861
+The Interior of the Cottage~
+This cottage is, as all the other residences of this place, a ruined mess.
+Broken furniture and decaying corpses litter the floor. To the east, you
+can see a staircase leading down.
+~
+0 1|8192 0
+D1
+~
+~
+0 -1 8862
+D3
+~
+~
+1 0 8860
+S
+#8862
+A Staircase~
+This staircase is an ancient stone structure that looks far older than the
+other structures in the village. You peer down in an attempt to ascertain
+what may below, but can see only darkness.
+~
+0 1|4|8192 0
+D3
+~
+~
+0 -1 8861
+D5
+~
+~
+0 -1 -1
+S
+#8863
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8864
+D2
+~
+~
+0 -1 8859
+S
+#8864
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart. You think you can make out a small stone building
+to the east.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8895
+D1
+~
+~
+0 -1 8865
+D2
+~
+~
+0 -1 8863
+S
+#8865
+Outside The Crypt~
+The small stone building is actually a crypt, which is in good condition,
+not surprising considering the nature of the current inhabitants of this
+ghoulish town. A large iron door looms to the east, and you notice runes
+inscribed into its surface in silver.
+~
+0 4|8192 1
+D1
+~
+~
+1 0 8866
+D3
+~
+~
+0 -1 8864
+E
+runes door~
+The runes on the door read-
+
+  "Here is the final resting place of the Evil Baron Shereck, former
+   tyrant of the Barony of Palem, and his two foul brothers. Imprisoned
+   here by the powerful magic of Xanad, the ArchMage of Anon, their
+   rest may not be disturbed by their undead allies. Pray, whoever reads
+   this, do not breach this portal, for you will once again unleash their
+   undead madness upon the world."
+~
+S
+#8866
+Inside The Crypt~
+The interior of the crypt is dark, damp and cramped. It looks as though
+no-one has been here in centuries. A layer of dust ankle-deep makes progress
+difficult, as do the hanging cobwebs, with strands as thick as your wrist.
+You hope you don't run into the spinner of these webs.
+~
+0 1|128|8192 0
+D3
+~
+~
+1 0 8865
+D5
+~
+~
+0 -1 8867
+S
+#8867
+The Crypt Proper~
+Three doors and a staircase allow escape from this area, and that is a
+prominent urge you have right now as you glance about the hellish murals
+on the walls, and the rotting corpses hanging in metal frames from the 
+arched ceiling.
+~
+0 1|128|8192 0
+D0
+~
+~
+1 0 8868
+D1
+~
+~
+1 0 8870
+D2
+~
+~
+1 0 8869
+D4
+~
+~
+0 -1 8866
+S
+#8868
+A Room In the Crypt~
+These three resting places that lead off the Crypt's main chamber are all
+identical- a raised stone sarcophagus with a bas-relief of the image of its
+occupant in life embossed on the lid. Other than that, the place is bare. Or
+is it...?
+~
+0 1|128|8192 0
+D2
+~
+~
+1 0 8867
+S
+#8869
+A Room In the Crypt~
+These three resting places that lead off the Crypt's main chamber are all
+identical- a raised stone sarcophagus with a bas-relief of the image of its
+occupant in life embossed on the lid. Other than that, the place is bare. Or
+is it...?
+~
+0 1|128|8192 0
+D0
+~
+~
+1 0 8867
+S
+#8870
+A Room In the Crypt~
+These three resting places that lead off the Crypt's main chamber are all
+identical- a raised stone sarcophagus with a bas-relief of the image of its
+occupant in life embossed on the lid. Other than that, the place is bare. Or
+is it...?
+~
+0 1|128|8192 0
+D3
+~
+~
+1 0 8867
+S
+#8871
+The Path To The Garden~
+This path runs past some very ugly, dead plants that look like they've had
+the life drained from them by some disturbingly healthy looking plants with
+thorns that look like teeth...
+~
+0 8192 3
+D0
+~
+~
+0 -1 8872
+D2
+~
+~
+0 -1 8839
+S
+#8872
+The Path To The Garden~
+This path runs past some very ugly, dead plants that look like they've had
+the life drained from them by some disturbingly healthy looking plants with
+thorns that look like teeth. You suddenly curse as you nearly fall into a
+small hole in the center of the path which was partially covered by a nest
+of branches.
+~
+0 4|8192 3
+D0
+~
+~
+0 -1 8873
+D2
+~
+~
+0 -1 8871
+D5
+~
+~
+0 -1 8874
+S
+#8873
+The Path To The Garden~
+This path runs past some very ugly, dead plants that look like they've had
+the life drained from them by some disturbingly healthy looking plants with
+thorns that look like teeth. The garden gates are directly ahead... Peering
+through, you become reluctant to enter. It looks like a virtual maze...
+~
+0 4|8192 3
+D0
+~
+~
+1 0 8877
+D2
+~
+~
+0 -1 8872
+S
+#8874
+A Bolthole~
+Here the cowardly necromancer Xantharus lurks, terrified of the evil he
+brought to his village. He would do anything to escape, but is currently
+too petrified to leave his hole.
+~
+0 1|8192 0
+D4
+~
+~
+0 -1 8872
+S
+#8875
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8880
+D1
+~
+~
+0 -1 8876
+S
+#8876
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8881
+D1
+~
+~
+0 -1 8877
+D3
+~
+~
+0 -1 8875
+S
+#8877
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8882
+D1
+~
+~
+0 -1 8878
+D3
+~
+~
+0 -1 8876
+S
+#8878
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8883
+D1
+~
+~
+0 -1 8879
+D3
+~
+~
+0 -1 8877
+S
+#8879
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8884
+D3
+~
+~
+0 -1 8878
+S
+#8880
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8885
+D1
+~
+~
+0 -1 8881
+D2
+~
+~
+0 -1 8875
+S
+#8881
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8886
+D1
+~
+~
+0 -1 8882
+D2
+~
+~
+0 -1 8876
+D3
+~
+~
+0 -1 8880
+S
+#8882
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8887
+D1
+~
+~
+0 -1 8883
+D2
+~
+~
+0 -1 8877
+D3
+~
+~
+0 -1 8881
+S
+#8883
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8888
+D1
+~
+~
+0 -1 8884
+D2
+~
+~
+0 -1 8878
+D3
+~
+~
+0 -1 8882
+S
+#8884
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8889
+D2
+~
+~
+0 -1 8879
+D3
+~
+~
+0 -1 8883
+S
+#8885
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8890
+D1
+~
+~
+0 -1 8886
+D2
+~
+~
+0 -1 8880
+S
+#8886
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8891
+D1
+~
+~
+0 -1 8887
+D2
+~
+~
+0 -1 8881
+D3
+~
+~
+0 -1 8885
+S
+#8887
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8892
+D1
+~
+~
+0 -1 8888
+D2
+~
+~
+0 -1 8882
+D3
+~
+~
+0 -1 8886
+S
+#8888
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8893
+D1
+~
+~
+0 -1 8889
+D2
+~
+~
+0 -1 8883
+D3
+~
+~
+0 -1 8887
+S
+#8889
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D0
+~
+~
+0 -1 8894
+D2
+~
+~
+0 -1 8884
+D3
+~
+~
+0 -1 8888
+S
+#8890
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D1
+~
+~
+0 -1 8891
+D2
+~
+~
+0 -1 8885
+S
+#8891
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D1
+~
+~
+0 -1 8892
+D2
+~
+~
+0 -1 8886
+D3
+~
+~
+0 -1 8890
+S
+#8892
+The Garden~
+You suddenly enter a brightly-lit glade full of towering oaks and fresh,
+green grass. Here the powers of good have managed to create a foothold in 
+this realm of darkness, to aid those stranded or trapped here. You may rest
+in peace (if you'll pardon the inappropriate euphemism) for as long as you
+wish here.
+~
+0 4|1024|65536 3
+D1
+~
+~
+0 -1 8893
+D2
+~
+~
+0 -1 8887
+D3
+~
+~
+0 -1 8891
+S
+#8893
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D1
+~
+~
+0 -1 8894
+D2
+~
+~
+0 -1 8888
+D3
+~
+~
+0 -1 8892
+S
+#8894
+The Garden~
+You find yourself lost in a tangled maze of thorny bushes and rotted trees
+that all seem to move as if with a life of their own. Howls and screams of
+pain and delight occasionally rent the still air- otherwise you are engulfed
+by a silent dimness that only exaggerates the already-eerie quality of
+your surroundings.
+~
+0 1|8192 3
+D2
+~
+~
+0 -1 8889
+D3
+~
+~
+0 -1 8893
+S
+#8895
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart. You think you can make out a small stone building
+to the east. A gaping hole looms out of the fog in the ground to the right.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8897
+D2
+~
+~
+0 -1 8864
+D5
+~
+~
+0 -1 8896
+S
+#8896
+The Dragon's Lair~
+Dragons of all types, alive or undead, keep certain habits, and one of them
+is how they decorate their lair. So when you enter and see treasure splashed
+everywhere, along with a generous helping of blood and fried corpses, you are
+at least 90% sure you have entered the lair of one...
+~
+0 1|8192 0
+D4
+~
+~
+0 -1 8895
+S
+#8897
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart. You think you can make out a small stone building
+to the east.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8898
+D2
+~
+~
+0 -1 8895
+S
+#8898
+A Murky Mist~
+You are plowing through a thick mist that has suddenly enshrouded the trail.
+You can still make it out beneath your feet, but only barely. Howls, screams
+and shouts of anger and terror ring out on all sides, and you feel fear 
+clutching at your heart. You think you can make out a small stone building
+to the east. You aren't sure, but you think you can see a dark tunnel up
+ahead.
+~
+0 1|8192 1
+D0
+~
+~
+0 -1 8899
+D2
+~
+~
+0 -1 8897
+S
+#8899
+A Dark Tunnel~
+Can it be? YES! An escape route! From this tunnel emanates the sweet smell 
+of green grass and fresh air. You can clamber through and escape, though
+the tunnel is so narrow you doubt you'd be able to return through it.
+~
+0 1|4|8192 1
+D0
+~
+~
+0 -1 8812
+D2
+~
+~
+0 -1 8898
+S
+#0
+
+
+#RESETS
+*
+O 1 8822 1 8858
+*
+D 1 8802 1 1
+D 1 8802 3 1
+D 1 8803 1 1
+D 1 8804 3 1
+D 1 8814 0 1
+D 1 8814 2 1
+D 1 8815 2 1
+D 1 8816 0 1
+D 1 8817 0 1
+D 1 8817 2 1
+D 1 8818 2 1
+D 1 8819 0 1
+D 1 8820 0 1
+D 1 8820 2 1
+D 1 8820 3 1
+D 1 8821 2 1
+D 1 8822 0 1
+D 1 8823 1 1
+D 1 8824 0 1
+D 1 8824 2 1
+D 1 8825 2 1
+D 1 8826 0 1
+D 1 8827 0 1
+D 1 8827 2 1
+D 1 8828 2 1
+D 1 8829 0 1
+D 1 8830 0 1
+D 1 8830 2 1
+D 1 8830 1 1
+D 1 8831 2 1
+D 1 8832 0 1
+D 1 8833 3 1
+D 1 8834 1 1
+D 1 8834 3 1
+D 1 8835 1 1
+D 1 8836 3 1
+D 1 8840 3 1
+D 1 8841 0 1
+D 1 8841 1 1
+D 1 8841 2 1
+D 1 8842 0 1
+D 1 8843 2 1
+D 1 8844 0 1
+D 1 8844 2 1
+D 1 8845 0 1
+D 1 8846 2 1
+D 1 8849 0 1
+D 1 8849 1 1
+D 1 8849 2 1
+D 1 8850 2 1
+D 1 8851 0 1
+D 1 8852 0 1
+D 1 8852 2 1
+D 1 8852 3 1
+D 1 8853 2 1
+D 1 8854 0 1
+D 1 8857 1 1
+D 1 8858 3 1
+D 1 8860 1 1
+D 1 8861 3 1
+D 1 8865 1 1
+D 1 8866 3 1
+D 1 8867 0 1
+D 1 8867 1 1
+D 1 8867 2 1
+D 1 8868 2 1
+D 1 8869 0 1			; A Room In the Crypt Close North
+D 1 8870 3 1
+*
+O 1 8809 0 8803   LOADS BONES
+O 1 8809 0 8804
+O 1 8809 0 8815   LOADS BONES
+O 1 8809 0 8816
+O 1 8809 0 8818   LOADS BONES
+O 1 8809 0 8819
+O 1 8809 0 8821   LOADS BONES
+O 1 8809 0 8822
+O 1 8809 0 8823   LOADS BONES
+O 1 8809 0 8825
+O 1 8809 0 8826   LOADS BONES
+O 1 8809 0 8828
+O 1 8809 0 8829   LOADS BONES
+O 1 8809 0 8831
+O 1 8809 0 8832   LOADS BONES
+O 1 8809 0 8833
+*
+M 1 8802 1 8804   LOADS WIGHT
+M 1 8802 1 8819   LOADS WIGHT
+M 1 8802 1 8821   LOADS WIGHT
+*
+M 1 8832 1 8809   LOADS WIERD
+*
+M 1 8808 1 8831   LOADS HAUNT
+O 1 8819 0 8831   LOADS CORPSE
+*
+M 1 8814 3 8815   LOADS GIANT SPIDERS
+M 1 8813 3 8816   LOADS GIANT RATS
+M 1 8814 3 8822   LOADS GIANT SPIDERS
+M 1 8813 3 8818   LOADS GIANT RATS
+M 1 8814 3 8829   LOADS GIANT SPIDERS
+M 1 8813 3 8825   LOADS GIANT RATS
+*
+M 1 8806 2 8823   LOADS LESSER DEMONS
+M 1 8806 2 8833   LOADS LESSER DEMONS
+*
+M 1 8801 3 8826   LOADS WRAITH
+E 1 8823 0 16     WIELDS ETHEREAL SWORD
+M 1 8801 3 8828   LOADS WRAITH
+E 1 8823 0 16     WIELDS ETHEREAL SWORD
+M 1 8801 3 8832   LOADS WRAITH
+E 1 8823 0 16     WIELDS ETHEREAL SWORD
+*
+M 1 8818 4 8806   LOADS ANIMATED CORPSES
+*
+M 1 8812 4 8812   LOADS UNDEAD MONSTERS
+*
+M 1 8803 1 8834   LOADS GHOST
+*
+M 1 8800 1 8835   LOADS SPECTRE
+M 1 8800 1 8836   LOADS SPECTRE
+*
+M 1 8830 1 8839   LOADS CAMBION SCOUT
+E 1 8803 0 16     WIELDS SWORD OF KAS
+E 1 8817 0 17     HOLDS SYMBOL
+*
+M 1 8828 1 8842   LOADS NIGHTMARE
+*
+M 1 8829 1 8843   LOADS RETRIEVER
+*
+M 1 8827 1 8845   LOADS DEATH KNIGHT
+E 1 8812 0 16     WIELDS SWORD
+E 1 8813 0 5      WEARS ARMOR
+E 1 8814 0 6      WEARS HELM
+*
+M 1 8815 1 8846   LOADS LURKER
+*
+M 1 8809 1 8850   LOADS CRYPT THING
+E 1 8804 0 6      LOADS CIRCLET
+*
+M 1 8810 1 8851   LOADS GREATER DEMON
+*
+M 1 8819 1 8852   LOADS MASTER
+E 1 8807 0 12     LOADS ROBES
+E 1 8808 0 16     WIELDS BONE
+E 1 8810 0 17     HOLDS GEM
+G 1 8820 0			0          GIVES KEY
+*
+M 1 8816 1 8853   LOADS SUCCUBUS
+O 1 8815 0 8853   LOADS JAR
+P 1 8815 0 8816   PUTS POISON IN JAR
+O 1 8806 0 8853   LOADS CHEST
+P 1 8805 0 8806   PUTS HOARD IN CHEST
+*
+M 1 8805 1 8854   LOADS LICH
+E 1 8801 0 9      LOADS HAND
+E 1 8802 0 6      LOADS EYE
+*
+M 1 8831 1 8858   LOADS ORCUS
+E 1 8800 0 17     HOLDS ROD
+*
+M 1 8823 2 8865   LOADS SLIME
+M 1 8833 2 8866   LOADS SPIDERS
+M 1 8823 2 8867   LOADS SLIME
+M 1 8804 2 8868   LOADS VAMPIRE
+E 1 8811 0 12     WEARS CLOAK
+G 1 8821 0			0          GIVES BLOOD
+M 1 8804 2 8868   LOADS VAMPIRE
+E 1 8811 0 12     WEARS CLOAK
+G 1 8821 0			0          GIVES BLOOD
+M 1 8834 1 8870   LOADS BARON
+E 1 8811 0 12     WEARS CLOAK
+G 1 8821 0			0          GIVES BLOOD
+*
+M 1 8817 1 8874   LOADS XANTHARUS
+G 1 8818 0			0          GIVES HOLY SYMBOL
+*
+M 1 8820 4 8875   LOADS MOUNDS
+M 1 8821 4 8878   LOADS KAMPFLUTS
+M 1 8822 2 8881   LOADS PUDDINGS
+M 1 8824 2 8884   LOADS OOZES
+M 1 8825 8 8887   LOADS TREES
+M 1 8826 1 8892   LOADS SPIRIT
+M 1 8807 1 8890   LOADS REVENANT
+*
+M 1 8811 1 8896   LOADS DRAGON
+O 1 8805 0 8896   LOADS HOARD
+*
+R 1 8875 4        RANDOM EXITS IN MAZE
+R 1 8876 4
+R 1 8877 4
+R 1 8878 4
+R 1 8879 4
+R 1 8880 4
+R 1 8881 4
+R 1 8882 4
+R 1 8883 4
+R 1 8884 4
+R 1 8885 4
+R 1 8886 4
+R 1 8887 4
+R 1 8888 4
+R 1 8889 4
+R 1 8890 4
+R 1 8891 4
+S
+
+#SPECIALS
+M  8804 spec_mast_vampire             	Baron Vampire dude
+M  8805 spec_cast_archmage		The Lich
+M  8810 spec_breath_gas 		Greater Demon
+M  8811 spec_breath_gas			The dragon
+M  8819 spec_cast_mage 			The Master
+M  8826 spec_cast_adept			The Tree Spirit
+M  8831 spec_cast_psionicist		Orcus
+M  8834 spec_vampire			Other Baron Vampire dude
+M  8814 spec_poison			spider
+M  8812 spec_cast_undead		undead monster
+S
+
+#$

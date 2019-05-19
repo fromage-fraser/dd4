@@ -1,0 +1,4871 @@
+#AREA	Gezhp~   TenTusks~
+20 40 0 100
+
+#MOBILES
+#25400
+dryad~
+a dryad~
+A green-skinned dryad hides behind the trees.
+~
+This wood nymph flits between the large trees of the ancient forest, her
+eyes gleaming.  Deep in the impenetrable heart of the woods, an ancient oak
+serves as her home and feeds her the energy of the forest.
+~
+64 32768|524288 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>rand_prog 10~
+	mpecho Faint laughter floats through the air.
+~
+|
+#25401
+treant~
+a treant~
+A gnarled treant watches over the forest.
+~
+The bark-skinned tree man, spawned from the enchantments of the forest
+Ents, watches over the forest as his masters sleep.
+~
+64 512 0 S
+22 0 0 0d0+0 0d0+0
+4|16|256 0
+8 8 1
+#25402
+cave beast~
+a cave beast~
+A cave beast rears before you.
+~
+This enormous, scaled beast charges down the stone corridor and attacks
+with bared fangs!
+~
+32|64 512 -250 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25403
+tunnel worm~
+a tunnel worm~
+The slimy body of a gigantic worm oozes past you.
+~
+The slime covered worm burrows throughout the mountain, devouring every
+piece of refuse in its path.
+~
+4|64 512 0 S
+27 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25404
+stone beard rock giant~
+Stone Beard~
+Stone Beard the ancient rock giant snarls at your approach.
+~
+Stone Beard the rock giant has made this ancient mountain dungeon his home,
+patrolling its corridors and the outlying forests.  He is muscular and
+quite enormous, clad in a suit of armour made from solid rock, and wielding
+an evil looking mithril axe.
+~
+64 512 -100 S
+29 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25405
+octopus~
+an octopus~
+A huge blue octopus sits curled against the stone.
+~
+The octopus sits in a tight ball in between some sunken rubble.  Something
+appears to be clutched by the creature's mass of tentacles.
+~
+2|64 0 0 S
+26 0 0 0d0+0 0d0+0
+4|16|32 0
+8 8 0
+#25406
+water nymph~
+a water nymph~
+A beautiful water nymph rises from the water.
+~
+The form of a elfin woman has emerged from the turgid waters.  She is very
+beautiful and smiles widely at you, ripples spreading gently across her
+features.
+~
+2|64 8192|524288 250 S
+25 0 0 0d0+0 0d0+0
+96 0
+8 8 2
+>death_prog 100~
+	mpecho The nymph dissolves into the air, hands gesturing.
+	mpecho The water about you begins to froth violently: elementals appear!
+	mpmload 25448
+	mpmload 25448
+	mpmload 25448
+	mpmload 25448
+~
+|
+#25407
+water demon~
+a water demon~
+A water demon forms from the flooded floor.
+~
+A huge formless mass of liquid spurts from the water before you, tortured
+and screaming faces appearing instantaneously across its body.
+~
+64 524288 -500 S
+27 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#25408
+broken statue~
+a broken statue~
+A broken statue stands against the northern door.
+~
+The golem stands rigidly in by the portal to the north.  It is badly
+chipped and damaged: half of one arm is gone and the head is missing
+completely.  The statue shifts slightly at your approach.
+~
+2|64 8192 750 S
+60 0 0 0d0+0 0d0+0
+304 0
+8 8 1
+>give_prog badly chipped stone head~
+	mpoload 25405
+	unlock n
+	mprecho The statue turns and unlocks the door to the north.
+	mpjunk head
+	mpjunk key
+~
+|
+#25409
+swamp ogre~
+a swamp ogre~
+A swamp ogre lumbers through the tepid water.
+~
+The greenish blue hide of this monster is covered in the disgusting slime
+that fills this swamp.
+~
+32|64 8|32|512 -200 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25410
+marsh glider~
+a marsh glider~
+A marsh glider sails through the air.
+~
+The bulbous mass of this beast's body is carried through the air by a pair
+of thin leathery wings.  Teeth like needles surround its gaping maw.
+~
+32|64|128 32768|524288 0 S
+28 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25411
+mud worm mudworm~
+a mudworm~
+A mudworm slides about your ankles.
+~
+Huge and tough, the sinewy body of this giant worm slithers about your
+submerged legs.
+~
+4|64|128 32768 0 S
+32 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25412
+gethgul~
+a gethgul~
+A gethgul eyes you and snarls.
+~
+This humanoid monster will feed of the rotting carcasses it finds in the
+swamps, but will eagerly slice you to pieces for your tastier flesh.
+~
+64 0 -350 S
+34 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25413
+green slime~
+some green slime~
+Green slime oozes and bubbles.
+~
+This disgusting mound of bubbling green filth slowly oozes over the surface
+of the mire.
+~
+4|64 0 0 S
+30 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#25414
+putrid filth mound~
+some putrid filth~
+A mound of putrid filth lays piled before you.
+~
+Composed of rotting vegetation and nameless filth, this reeking pile of
+swamp garbage heaves and steams.
+~
+2|64 0 0 S
+37 0 0 0d0+0 0d0+0
+63 0
+8 8 1
+#25415
+swamp serpent~
+a swamp serpent~
+A scaled swamp serpent lays coiled here.
+~
+The swamp dragon sits high above the muddy landscape in its comfortable
+nest.  Several small skeletons lay scattered about the roost, along with
+some large skulls and torn apart rib cages,
+~
+2|64 8|32|512 -250 S
+36 0 0 0d0+0 0d0+0
+60 0
+8 8 2
+#25416
+gortholsa marsh lord~
+Gortholsa~
+Gortholsa the Marsh Lord stands here.
+~
+Gortholsa the hobgoblin has claimed this swamp as his own, jealously
+patrolling its waters and chasing off intruders.  He leers at you evilly.
+~
+2|64 0 -150 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25417
+smoke demon~
+a smoke demon~
+The vague outline of a smoke demon floats before you.
+~
+The demon appears as a thicker, darker patch of smoke within the vapour.
+Two intense pinholes of light peer at you through the haze.
+~
+32|64 128|512|32768|524288 -200 S
+26 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#25418
+xabashu fog beast~
+Xabashu~
+Xabashu the fog beast emerges from the haze.
+~
+The gigantic four legged Xabashu sniffs out his prey through the thick
+smoke.  Thick limbed and covered in shaggy fur, he bares his teeth and
+growls.
+~
+64 0 300 S
+29 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#25419
+fortress trooper~
+a fortress trooper~
+A fortress trooper rushes at you.
+~
+The dark skinned warrior is heavily armoured and a fierce fighter.
+~
+32|64 8192 100 S
+29 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25420
+fortress mage~
+a fortress mage~
+A fortress mage glares at you.
+~
+The wizard frowns at you, surrounded by a flowing cape. 'You don't belong
+here...' he sneers, before sending for the fortress guards.
+~
+4|64 0 -150 S
+32 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#25421
+mist dragon~
+a mist dragon~
+A mist dragon hangs in the vapour.
+~
+The sleek white dragon curls like a snake through the air.
+~
+64 8192|524288 100 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25422
+weathermonger weather monger~
+the Weathermonger~
+Crackling electricity surrounds the Weathermonger.
+~
+The powerful wizard is surrounded in an expansive robe that hides his
+tungsten armour.  His hair is pure white and his skin pale; blue lightning
+crackles about his body as he floats through the corridors.
+~
+64 0 -350 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25423
+astrologer~
+the Astrologer~
+The Astrologer notes the positions of the stars.
+~
+The old conjurer peers carefully through his telescope, periodically
+recording astrological data in a tattered notebook.  He appears not to have
+noticed your entry.
+~
+2|64 8192 350 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25424
+mudman mud man~
+a mud man~
+A mud man wades through the mud towards you.
+~
+Made from wet, solid mud, this elemental is slow but strong and well
+armoured.  It's tortured features constantly warp and altar as his skin
+oozes and drips.
+~
+32|64 0 0 S
+25 0 0 0d0+0 0d0+0
+304 0
+8 8 0
+#25425
+ooze beast mound oozing mud~
+an ooze beast~
+A mound of oozing mud bubbles here.
+~
+A sloppy pile of yellow-brown clag, the oozing mud scours the surface of
+the mudflats for organic material to digest.  Small, wet feelers seem to
+turn in your direction as the beast moves closer.
+~
+64 0 0 S
+29 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#25426
+clay giant~
+a clay giant~
+The huge form of a clay giant appears.
+~
+The cracked yellow body of this giant is as hard as brick and very tough.
+Two tiny black eyes glare at you from within the monster's triangular head.
+~
+64 0 -200 S
+33 0 0 0d0+0 0d0+0
+304 0
+8 8 1
+#25427
+akshashi devil horned warrior~
+an Akshashi Devil~
+A horned warrior flies with a spear in hand.
+~
+Spawned in some foul netherworld, the Akshashi travel the elemental realms
+performing the perverse tasks of their masters.  This warrior is clad in
+strange armour and dress, terrible points of light burning in the sockets
+of its dark fleshy skull.
+~
+64 524288 -250 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25428
+geyser water boiling~
+boiling water~
+The geyser is filled with scalding hot water.
+~
+The superhot waters of the geyser quickly overcome you.
+~
+2|32|64 8|32|512 0 S
+100 0 0 0d0+0 0d0+0
+511 0
+8 8 0
+#25429
+mormogol four legged beast~
+a mormogol~
+A large four legged beast wallows in a pool of filth.
+~
+These gentle creatures, squat and covered in thick scales, graze through
+the sludge of the mud flats.
+~
+64 0 100 S
+40 0 0 0d0+0 0d0+0
+36 0
+8 8 2
+#25430
+black mud beetle~
+a mud beetle~
+A large black beetle crawls through the tunnels.
+~
+The beetle is gigantic, with two enormous sets of jaws: one pair to hold
+you prone while the other tears your flesh to shreds.
+~
+64 8|32|512 0 S
+28 0 0 0d0+0 0d0+0
+52 0
+8 8 1
+#25431
+horned mud beetle~
+a horned mud beetle~
+A horned mud beetle patrols the burrow.
+~
+Brilliant red stripes mark the carapace of this monstrous beetle, which has
+several sharp horns protruding from the plates above its head.
+~
+32|64 8|32|512 0 S
+32 0 0 0d0+0 0d0+0
+52 0
+8 8 2
+#25432
+slimy white beetle larva~
+a beetle larva~
+A slimy white beetle larva squirms in the mud.
+~
+Squirming and undulating, this disgusting, fleshy larva gropes for filth
+to devour.
+~
+2|64 8|32|512 0 S
+20 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25433
+burrow worm~
+a burrow worm~
+A burrow worm slides past you.
+~
+The thick wet body of the tunnel worm almost crushes you against the walls
+of the burrow.
+~
+2|4|64 0 0 S
+35 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25434
+black mud beetle~
+a mud beetle~
+A large black beetle tends to the nest.
+~
+The huge beetle watches over any larvae in the nest.
+~
+2|64 8|32|512 0 S
+30 0 0 0d0+0 0d0+0
+60 0
+8 8 1
+#25435
+mud beetle queen~
+a mud beetle queen~
+The bloated body of a queen beetle fills this corner of the nest.
+~
+Truly enormous, the queen beetle's belly is swollen with eggs as she pumps
+forth her offspring into the nests of the burrow.  Covered in brilliant red
+stripes, her horned forelegs lash out in your direction.
+~
+2|64 0 0 S
+42 0 0 0d0+0 0d0+0
+128|52 0
+8 8 2
+#25436
+jket j'ket volcano beast~
+J'ket~
+J'ket the Volcano Beast rises from the frothing lava.
+~
+The terrifying form of J'ket sprouts from the lava sea filling the volcanic
+crater.  Roughly humanoid, its malformed arms reach out to grasp and crush
+you.
+~
+2|64 8|32|512 -450 S
+45 0 0 0d0+0 0d0+0
+256|16|8 0
+8 8 1
+#25437
+llewllokin high druid~
+Llewllokin~
+Llewllokin the High Druid chants and gestures.
+~
+Clad in pale white robes, the High Druid conducts some obscene pagan rite.
+~
+64 128|8192 0 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25438
+druid berserker~
+a druid berserker~
+A druid draws his long scimitar.
+~
+The pagan warrior wields a sharp, pale white scimitar, and will willingly
+give his life to protect his masters.
+~
+64 8|32|512 0 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25439
+white robed druid spellcaster~
+a druid spellcaster~
+A white robed druid watches you intently.
+~
+The druid's skin is covered in lines of pale blue paint, magical symbols
+anointed upon his palms.  His lips move silently as he recites his pagan
+magicks.
+~
+64 8|32|512 0 S
+32 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25440
+fire serpent~
+a fire serpent~
+A fire serpent dives from the smoke filled air.
+~
+Leathery wings carry this fiery red wyrm through the barren volcanic
+landscape.  Dozens of razor sharp fangs fill this beast's open maw.
+~
+32|64 524288 -100 S
+27 0 0 0d0+0 0d0+0
+4 0
+8 8 2
+#25441
+molten uzuz creature~
+a molten uzuz~
+A small molten creature wallows in the lava.
+~
+This elemental imp wades slowly through the streams of lava covering the
+rocky ground.  Its single red eye glares at you.
+~
+64 32768 0 S
+31 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#25442
+fire giant~
+a fire giant~
+A fire giant approaches.
+~
+Nine feet tall, with bronze skin and wild red hair, the fire giant lowers
+his trident in an effort to skewer you.
+~
+64 0 -50 S
+34 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25443
+winged terror beast~
+a winged terror~
+A winged beast circles above you.
+~
+The monstrous dragon glides above the wastelands to swoop down and devour
+anything that moves.
+~
+64 524288 0 S
+37 0 0 0d0+0 0d0+0
+4 0
+8 8 1
+#25444
+one tusk~
+One Tusk~
+One Tusk patrols the Nexus.
+~
+The weakest of the Nexus Beasts is hideous to behold, a large black skinned
+humanoid with one blazing eye and a single black horn sprouting from his
+forehead.
+~
+2|64 128|1048576 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>hitprcnt_prog 30~
+	snicker
+	circle
+~
+|
+#25445
+two tusks~
+Two Tusks~
+Two Tusks emerges from the void.
+~
+Larger and uglier than One Tusk, this demon stands ten feet tall, two
+thick ram's horns curling from the sides of his head.
+~
+2|64 128|1048576 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>hitprcnt_prog 30~
+	head
+~
+>hitprcnt_prog 60~
+	kick
+~
+|
+#25446
+three tusks~
+Three Tusks~
+Three Tusks stands before you.
+~
+This twelve foot giant dissolves from the ether of the Nexus, stooping over
+you and roaring terribly.
+~
+2|64 128|1048576 0 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>hitprcnt_prog 50~
+	head
+~
+|
+#25447
+four tusks~
+Four Tusks~
+Four Tusks towers before you.
+~
+The most powerful of the Nexus beasts has four gleaming white tusks
+growing from each side of his head, and stands fifteen feet tall.  His very
+presence fills you with complete terror.
+~
+2|64 128|1048576 0 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+>hitprcnt_prog 30~
+	if rand(40)
+		smash
+		say Feel the pain, insect...
+	endif
+~
+>hitprcnt_prog 60~
+	if rand(20)
+		say You fool, I shall drink your blood!
+	endif
+~
+>hitprcnt_prog 90~
+	berserk
+~
+|
+#25448
+water elemental~
+a water elemental~
+A water elemental has been summoned.
+~
+~
+2|32|64 8|16|32|128 0 S
+35 0 0 0d0+0 0d0+0
+64 0
+8 8 0
+#0
+
+
+#OBJECTS
+#25400
+stone stones circle~
+stone circle~
+The weathered stones stand as they have for centuries.~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+100 0 0
+E
+stones sign writing stone circle lichen~
+The upright stones stand roughly     O====================================O
+five feet high, and are about two    |       T  e  n  T  u  s  k  s       |
+feet in diameter.  Lichen covers     |                >--<                |
+the weathered runes inscribed        |   For Adventurers levels 25 - 45   |
+about their sides: the text is       |          Geshp : Feb 1996          |
+ancient and unrecognisable.          O====================================O
+~
+#25401
+dew drop vial~
+a dew drop~
+A small vial of dew has been left here.~
+~
+10 0 1|16384
+20~ heal~ ~ ~ 
+5 0 0
+E
+dew drop vial~
+A small glass vial contains a single drop of forest dew.
+~
+#25402
+mithril axe~
+a mithril axe~
+Stone Beard's mithril axe lays before you.~
+~
+5 4096 1|8192
+0~ 1~ 6~ 13~ 
+35 0 0
+A
+18 2
+A
+5 2
+E
+mithril axe~
+Forged by dwarven smithies, this axe has been crafted from the finest
+mithril alloys.
+~
+#25403
+stone armour~
+some stone armour~
+Heavy stone armour rests here.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+35 0 0
+A
+17 -10
+A
+14 -25
+E
+stone armour~
+The enormous breast plate is made from solid black granite.
+~
+#25404
+badly chipped stone head~
+a stone head~
+A badly chipped stone head sits here.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+25 0 0
+E
+stone head~
+This stone humanoid head is badly damaged and chipped; its nose and one
+ear have been completely severed.
+~
+#25405
+stone key~
+a stone key~
+A stone key lays here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key stone~
+This key has been hewn from hard granite.
+~
+#25406
+crude stone axe~
+a crude stone axe~
+A crudely made stone axe has been abandoned here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 8~ 
+15 0 0
+A
+2 -1
+A
+18 -1
+E
+crude stone axe~
+This weapon has been carved from a crumbly grey stone and inexpertly tied
+to a wooden handle, from which small twigs and leaves still sprout.
+~
+#25407
+steel rapier~
+a steel rapier~
+A steel rapier has been left here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+20 0 0
+A
+18 2
+A
+19 2
+E
+steel rapier~
+Well made and in good condition, this sleek, thin bladed rapier makes a
+powerful and easily wielded weapon.
+~
+#25408
+slime armour~
+some slime armour~
+A suit of slime armour lays here.~
+~
+9 1|4096 1|8
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+23 -4
+A
+24 -4
+E
+slime armour~
+This breast plate is constructed of one of the strangest materials you have
+ever encountered: a thick and hardened green slime.  The armour is soft and
+pliable, yet incredibly tough and resilient.
+~
+#25409
+metal lightning rod~
+a lightning rod~
+A metal lightning rod lays on the ground.~
+~
+3 64 1|16384
+30~ 5~ 5~ ultrablast~ 
+5 0 0
+E
+metal lightning rod~
+The thin metal spike can be used to summon lightning from the heavens.
+The bluish metal throbs between your fingers.
+~
+#25410
+swamp slime~
+some swamp slime~
+A small glop of swamp slime site here.~
+~
+26 0 1|16384
+25~ cure poison~ heal~ ~ 
+5 0 0
+E
+swamp slime~
+The ball of slime spreads across your palm, its ripe odour filling the air.
+~
+#25411
+serpent teeth~
+serpent teeth~
+You spy some sharp serpent teeth.~
+~
+5 0 1|8192
+0~ 1~ 6~ 10~ 
+5 0 0
+E
+serpent teeth~
+The teeth are large, triangular and very sharp, small serrations running
+down the inside edges of the fangs.
+~
+#25412
+steel polearm pole arm~
+a steel polearm~
+A long steel polearm lays on the floor.~
+~
+5 134217728 1|8192
+0~ 1~ 6~ 2~ 
+25 0 0
+A
+1 2
+E
+steel polearm~
+Solidly constructed, the steel shaft of the polearm is strong and the
+thin blade extremely sharp.  The handle has been shortened to allow the
+weapon to be more easily wielded during close combat.
+~
+#25413
+cast iron shield~
+a cast iron shield~
+You spot a large, cast iron shield.~
+~
+9 64 1|512
+0~ 1~ 6~ 11~ 
+35 0 0
+A
+17 -10
+A
+13 50
+E
+cast iron shield~
+This circular iron shield has been battered but not ruined.  Although
+heavy, the shield can be worn comfortably and moved with speed.
+~
+#25414
+grey thimble~
+a grey thimble~
+A tiny grey thimble rests here.~
+~
+9 32|64 1|2
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+A
+3 2
+A
+12 25
+E
+grey thimble~
+The tiny grey thimble glows faintly in the gloom.  It has been made from a
+soft, almost metallic fibre; a picture of an arrowhead has been woven onto
+the fingertip.
+~
+#25415
+white cloud dagger~
+a cloud dagger~
+A white bladed dagger rests on the floor.~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+14 50
+A
+19 1
+E
+white cloud dagger~
+This dagger has a wide, gleaming white blade, inscribed with unfamiliar
+symbols and writing.  It is practically weightless.
+~
+#25416
+tungsten mail shirt~
+a tungsten mail shirt~
+A shirt of mail made of tungsten lays here.~
+~
+9 0 1|1024
+0~ 1~ 6~ 11~ 
+20 0 0
+E
+tungsten mail shirt~
+Strong and light, tungsten alloys have been fashioned into a protective
+mail shirt.
+~
+#25417
+tungsten boots~
+some tungsten boots~
+There is a pair of tungsten boots here.~
+~
+9 0 1|64
+0~ 1~ 6~ 11~ 
+15 0 0
+E
+boots tungsten~
+The knee high tungsten plated boots are hard and slightly bulky, but very
+light.
+~
+#25418
+cloud magic wisp cloudy matter~
+cloud magic~
+A wisp of cloudy matter hangs in the air.~
+~
+4 1|128 1|16384
+30~ 4~ 4~ lightning bolt~ 
+5 0 0
+E
+cloud magic wisp cloudy matter~
+A small fluffy white cloud hangs in the air about four feet from the
+ground.  It pulses and continually warps it form before you.
+~
+#25419
+lightning sword blue longsword~
+a lightning sword~
+The gleaming blue blade of a longsword attracts your attention.~
+~
+5 64|2048 1|8192
+0~ 1~ 6~ 3~ 
+20 0 0
+A
+18 4
+A
+19 4
+A
+13 40
+E
+lightning sword blue longsword~
+The long blade of this sword is pale blue, small white flecks gleaming like
+stars from deep within the metal.
+~
+#25420
+thunder magic dark cloud~
+thunder magic~
+A small dark cloud floats here.~
+~
+4 1|4096 1|16384
+30~ 5~ 5~ frost breath~ 
+5 0 0
+E
+thunder magic dark cloud~
+A tiny, inky black cloud floats in the air here.  It is surrounded by a
+deep blue halo and crackles with electricity.
+~
+#25421
+cloak protection grey~
+a cloak of protection~
+A faded grey cloak lays tossed in a heap.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -50
+E
+cloak protection grey~
+Woven from thick grey woollen fibres, this garment carries strong protective
+enchantments.
+~
+#25422
+telescope~
+a telescope~
+A gigantic telescope is aimed at the heavens.~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+500 0 0
+E
+telescope~
+The telescope is an enormous instrument, the main barrel at least three
+feet in diameter and ten feet long, pointed almost straight up towards the
+night sky.  It is mounted on a small wheeled cart, from which a bundle of
+wires winds across the ground into a small hut to the east.
+~
+#25423
+gold tusk~
+a gold tusk~
+A gold tusk lays here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+gold tusk~
+This small tusk has been fashioned from solid gold.
+~
+#25424
+silver tusk~
+a silver tusk~
+A silver tusk stands on the ground.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+silver tusk~
+The small tusk is made of solid silver.
+~
+#25425
+copper tusk~
+a copper tusk~
+You spot a polished copper tusk.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+copper tusk~
+This brightly polished tusk has been made from solid copper.
+~
+#25426
+leather sling~
+a leather sling~
+A thick leather sling sits on the ground.~
+~
+5 0 1|8192
+0~ 1~ 6~ 0~ 
+5 0 0
+A
+18 -1
+A
+19 -1
+E
+leather sling~
+This thick leather sling could be used to hurl a good sized stone a fair
+distance.
+~
+#25427
+mud stone hardened ball~
+a mud stone~
+You spot a small ball of hardened mud.~
+~
+3 128 1|16384
+40~ 1~ 1~ high explosive~ 
+5 0 0
+E
+mud stone hardened ball~
+The mud stone is roughly spherical and quite heavy for its size.
+~
+#25428
+mud hammer dried clay~
+a mud hammer~
+A large hammer made of dried clay rests here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 7~ 
+20 0 0
+E
+mud hammer dried clay~
+The head of this hammer is made of solid mud, a stout wooden handle forced
+through its centre.
+~
+#25429
+rusted iron girth~
+a rusted iron girth~
+A rusted iron girth lays before you.~
+~
+9 4096 1|2048
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+9 50
+E
+rusted iron girth~
+The metal belt is badly rusted yet still able to be used.
+~
+#25430
+rusted iron neck chain~
+a rusted iron neck chain~
+You spot a rusted iron neck chain.~
+~
+9 4096 1|4
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+17 -10
+E
+rusted iron neck chain~
+The iron necklace is badly rusted, and has almost fallen to pieces.
+~
+#25431
+short green rod demon's breath~
+a rod of demon's breath~
+A short green rod sits here.~
+~
+4 2 1|16384
+40~ 3~ 3~ gas breath~ 
+10 0 0
+E
+short green rod demon's breath~
+The bright green rod is crowned with the open maw of a serpent, sharp fangs
+circling a pulsing jewel that is mounted within.  A faint odour rises from
+this end of the rod, an unpleasant, burnt smell.
+~
+#25432
+skullchain skull chain~
+a skullchain~
+Two gleaming snake skulls hang from a silver chain.~
+~
+1 1 1|16384
+0~ 1~ -1~ 11~ 
+5 0 0
+E
+skullchain skull chain~
+Two polished skulls about the size of your fist have been threaded along an
+elegant silver chain.
+~
+#25433
+jet black spear~
+jet black spear~
+An evil looking black spear has been thrown to the ground.~
+~
+5 134217728 1|8192
+0~ 1~ 6~ 2~ 
+15 0 0
+A
+19 3
+E
+jet black spear~
+The spear is constructed of a dull black metal, and has been well nicked
+and scratched.  Strange symbols and designed have been engraved along the
+handle of the weapon.
+~
+#25434
+strong smelling fungus~
+some strong smelling fungus~
+Some strong smelling fungus makes you wince.~
+~
+26 0 1|16384
+30~ flesh armor~ biofeedback~ heal~ 
+5 0 0
+E
+strong smelling fungus~
+The yellow fungus smells like off meat, and is covered with a layer of
+sticky slime.
+~
+#25435
+brown mushroom~
+a brown mushroom~
+A small brown mushroom lays here.~
+~
+19 0 1|16384
+48~ 1~ 6~ 0~ 
+5 0 0
+E
+brown mushroom~
+The small brown mushroom is fleshy and odourless, and looks similar to the
+common garden variety.
+~
+#25436
+beetle beetle's insect carapace~
+a beetle's carapace~
+A giant black insect carapace sits on the floor.~
+~
+9 0 1|1024
+30~ 5~ 0~ 11~ 
+15 0 0
+A
+17 -10
+A
+23 -3
+A
+24 -3
+E
+insect beetle beetle's carapace~
+The solid black shell of a giant beetle is lightweight, flexible and
+extremely resilient.  You would be able to mount the carapace on your back
+for use as effective armour.
+~
+#25437
+mace death bringer deathbringer~
+Deathbringer~
+A gleaming silver mace glows intensely.~
+~
+5 1|64|128|4096 1|8192
+0~ 1~ 6~ 8~ 
+30 0 0
+A
+18 6
+A
+19 6
+A
+12 100
+A
+4 3
+A
+2 -3
+A
+24 3
+E
+mace death bringer deathbringer~
+The bright silver mace gleams intensely and is in perfect condition.  Large
+runes have been carefully engraved along the handle of the weapon, which
+has obviously been enchanted.
+~
+#25438
+moon armour pale white chain mail chainmail~
+a suit of moon armour~
+Pale white chainmail lays in a bundle here.~
+~
+9 1 1|8
+0~ 1~ 6~ 11~ 
+15 0 0
+A
+3 3
+A
+4 3
+E
+moon armour pale white chain mail chainmail~
+The pale chainmail is light and strong, made from a strange white metal
+that you have never encountered before.
+~
+#25439
+white metal crescent moon torc~
+a moon torc~
+A thin white metal crescent sits on the floor.~
+~
+9 0 1|4
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+13 75
+A
+12 25
+E
+white metal crescent moon torc~
+The thin torc made of a curious, white metal sits weightlessly about your
+neck.  A woodland scene has been engraved onto its front face.
+~
+#25440
+ball molten lava~
+some molten lava~
+You see a ball of molten lava here.~
+~
+4 0 1|16384
+30~ 7~ 7~ magic missile~ 
+5 0 0
+E
+ball molten lava~
+A strange glow surrounds this unusual ball of molten rock.
+~
+#25441
+platinum tusk~
+a platinum tusk~
+A platinum tusk rests here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+platinum tusk~
+A small ornate tusk has been constructed from platinum of the finest
+quality.
+~
+#25442
+molten lava arm plates armplates~
+some molten arm plates~
+Some arm plates have been constructed from molten lava.~
+~
+9 0 1|256
+0~ 1~ 6~ 11~ 
+15 0 0
+E
+molten lava arm plates armplates~
+The armoured plates seem to be made of thick, molten magma, but radiate
+very little heat and are safe to touch, such is the curious nature of their
+enchantment.
+~
+#25443
+white scimitar~
+a white scimitar~
+A scimitar's blade is pale white.~
+~
+5 0 1|8192
+0~ 1~ 6~ 1~ 
+15 0 0
+A
+18 3
+E
+white scimitar~
+A strange white metal has been used to fashion this long, sweeping weapon.
+~
+#25444
+small pale red vial fire water firewater~
+a vial of firewater~
+A small vial a pale red liquid lays here.~
+~
+10 0 1|16384
+30~ heal~ heal~ ~ 
+5 0 0
+E
+small pale red vial fire water firewater~
+The small glass vial is half filled with a pale, watery liquid.
+~
+#25445
+stone sacrificial table~
+a stone table~
+Dried blood covers the surface of the stone table.~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+1000 0 0
+E
+stone sacrificial table~
+The stone table is immense and low set, deep grooves cut      |  Geshp  |
+into its surface to allow blood to drain into a stone         |   was   |
+basin at its head.  Strange runes line the edge of the        | here in |
+table, while chains and manacles hang from its corners.       |  20372  |
+~
+#25446
+leather tunic~
+a leather tunic~
+A large leather tunic sits here.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+leather tunic~
+This piece of armour has been made for someone far larger than yourself,
+although with a little adjustment, may be able to be used effectively.
+~
+#25447
+leather boots~
+some leather boots~
+A pair of leather boots sit on the floor.~
+~
+9 0 1|64
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+leather boots~
+The leather boots are well made but very large and heavy.
+~
+#25448
+long flaming trident~
+a flaming trident~
+Flames lick off the prongs of a long trident.~
+~
+5 0 1|8192
+0~ 1~ 6~ 2~ 
+5 0 0
+A
+19 3
+E
+long flaming trident~
+The black metal trident is hot to the touch, evil red flames dancing on the
+tips of its four short prongs.
+~
+#25449
+flaming metal shield~
+a flaming shield~
+A metal shield is surrounded by magical fire.~
+~
+9 64 1|512
+0~ 1~ 6~ 11~ 
+15 0 0
+A
+17 -20
+A
+18 5
+A
+19 5
+E
+flaming metal shield~
+Bright orange flames flicker upon the face of this steel shield, although
+they only give off a small amount of heat.
+~
+#25450
+emerald kris knife~
+an emerald kris~
+A kris knife made of pure emerald sits here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 11~ 
+35 0 0
+A
+19 4
+A
+1 2
+E
+emerald kris knife~
+The green, curly blade of this sharp dagger is as strong as the hardest
+steel, and twice as light.
+~
+#25451
+ruby broad sword red broadsword~
+a ruby broadsword~
+A red broadsword lays on the ground.~
+~
+5 2 1|8192
+0~ 1~ 6~ 1~ 
+25 0 0
+A
+13 60
+A
+18 5
+E
+ruby broad sword red broadsword~
+The blade of this silver broadsword has been carved from perfectly formed
+ruby, speckled with gold and electrum.
+~
+#25452
+onyx mace~
+an onyx mace~
+An onyx mace floats before you.~
+~
+5 1 1|8192
+0~ 1~ 6~ 8~ 
+35 0 0
+A
+4 3
+A
+3 3
+A
+5 3
+E
+onyx crush~
+A polished black head of this mace sits on a tarnished iron handle.
+~
+#25453
+diamond sphere~
+a diamond sphere~
+A diamond sphere floats two feet from the floor.~
+~
+5 64 1|8192
+0~ 1~ 6~ 6~ 
+5 0 0
+A
+19 10
+A
+17 -10
+E
+diamond sphere~
+This perfectly smooth diamond sphere, about eight inches in diameter,
+hovers in the air, crackling with strange energy.
+~
+#25454
+small gold mystery key~
+the Mystery Key~
+A small gold key lays in the dirt.~
+~
+18 0 16385
+0~ 0~ 0~ 0~
+5 0 0
+E
+small gold mystery key~
+This small, nondescript gold key has been won from the great Nexus Beast,
+Four Tusks.  What door does it open, and where does this door lead...?
+~
+#0
+
+
+#ROOMS
+#25400
+Forest Path~
+Dense forest covers the hilly wilderness, gigantic trees towering into the
+air about you.  A narrow, overgrown path winds through the firs and oaks in
+a westerly direction.
+~
+0 4 2
+D1
+~
+~
+0 -1 6137
+D3
+~
+~
+0 -1 25401
+S
+#25401
+Forest Path~
+The overgrown path winds east and south through the trees.  The under
+growth and scrub grows steadily denser as you travel into the forest.
+~
+0 0 2
+D1
+~
+~
+0 -1 25400
+D2
+~
+~
+0 -1 25402
+S
+#25402
+Forest Path~
+You make your way up a gentle rise, hacking the bramble that crowds the
+forest floor.  You may head north or south from here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25401
+D2
+~
+~
+0 -1 25403
+S
+#25403
+Forest Path~
+You stand on the top of a forested hill.  The trees here are more widely
+spaced and a steady wind blows from the west.  You can head north and west
+down the hill; the forest is too dense for you to travel in any other
+direction.
+~
+0 0 2
+D0
+~
+~
+0 -1 25402
+D3
+~
+~
+0 -1 25404
+S
+#25404
+Forest Path~
+The path winds through the ancient trees.  You can head east and south from
+here.
+~
+0 0 2
+D1
+~
+~
+0 -1 25403
+D2
+~
+~
+0 -1 25405
+S
+#25405
+Forest Path~
+The path through the forest begins to rise sharply to the south.  You can
+head north from here, or climb up the forested hill south of here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25404
+D2
+~
+~
+0 -1 25406
+S
+#25406
+Circle of Stones~
+You emerge from the tree line on to the top of a modest hill, the forest a
+green ocean spreading away from you in every direction.  Five large stones
+organised into a rough circle jut from the grass; they are very weathered
+and stand covered with lichen.  You can head down the northern and southern
+faces of the hill.
+~
+0 0 1
+D0
+~
+~
+0 -1 25405
+D2
+~
+~
+0 -1 25407
+S
+#25407
+Forest Path~
+You hack your way through the dense forest.  You travel east and north from
+here.
+~
+0 0 2
+D0
+~
+~
+0 -1 25406
+D1
+~
+~
+0 -1 25408
+S
+#25408
+Forest Path~
+The forest is dark and damp, the trees truly monstrous.  An overgrown cliff
+rises directly east, or you can head back into lighter forest to the west.
+~
+0 0 2
+D1
+~
+~
+0 -1 25409
+D3
+~
+~
+0 -1 25407
+S
+#25409
+Granite Cliffs~
+A shear cliff face rises to the east.  Crawling plants cling to the bare
+rock, which is smooth, solid granite.  Certain areas of stone are
+remarkably flat and perfectly smooth, so much so that it is unlikely to
+have been the result of natural weathering.
+~
+0 4 2
+D1
+~
+~
+1 -1 25410
+D3
+~
+~
+0 -1 25408
+E
+writing cliff rock face east~
+Closer inspection of the cliff face reveals the outline of a wide portal or
+gate.  The portal is practically invisible from more than a few feet away,
+with no external handles, locks or hinges.  It may be possible to force it
+open by pushing into the cliff face.
+~
+S
+#25410
+Musty Tunnel~
+A narrow tunnel has been carved into the granite mountain, and disappears
+eastwards into the gloom.  The air is stale and musty, and thick dust
+covers the rough floor.  Empty torch brackets are bolted to the walls at
+regular intervals.  The westward portal will return you to the wilderness.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25411
+D3
+~
+~
+1 -1 25409
+S
+#25411
+Musty Tunnel~
+The dank tunnel continues into the mountain, opening into a larger chamber
+east from here and returning westwards.  Water dribbles down the walls of
+the passage from several long fissures.
+~
+0 1|4 0
+D1
+~
+~
+0 -1 25412
+D3
+~
+~
+0 -1 25410
+S
+#25412
+Musty Chamber~
+You stand in a large room cut from the rock.  The walls are featureless
+apart from several vacant torch brackets.  A door lays off its hinges in
+front of a small passage leading south from the chamber; a wider tunnel can
+be entered through an archway in the northern wall.  The air is thick and
+stale, and you are beginning to pant and sweat.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25416
+D2
+~
+~
+0 -1 25413
+D3
+~
+~
+0 -1 25411
+S
+#25413
+Narrow Tunnel~
+A narrow tunnel connects the large chamber to the north with a smaller room
+through an archway to the south.
+~
+0 1 0
+D0
+~
+~
+0 -1 25412
+D2
+~
+~
+0 -1 25414
+S
+#25414
+Small Chamber~
+This small chamber appears to have served as some sort of guard room.
+Weapon racks stand empty against the walls, and broken furniture is piled
+in one corner.  A tiny bell hangs from the ceiling near the archway, a wire
+attached to the hammer leads into a small hole in the wall.  The outline of
+a stone trapdoor can be traced in the centre of the floor, although no
+latches or handles are visible.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25413
+D5
+~
+~
+8 -1 25415
+S
+#25415
+Dark Room~
+This is a dummy room, you should not be able to read this.  If you can, I'm
+sure you immortals have better things to do than to play What's Behind This
+Door... or do you?  I suggest switching into a fido and terrorising players
+at the Temple Altar.  Hehe, the look on their faces... <cackle>
+Love and kisses, Geshp ;)  (p.s. and where ARE my hankies?)
+~
+0 1|4 0
+S
+#25416
+Wide Tunnel~
+This wide passage wanders roughly northwards.  You can return to the first
+chamber through an archway south of here.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25417
+D2
+~
+~
+0 -1 25412
+S
+#25417
+Wide Tunnel~
+The passage opens into another chamber to the north, while returning south.
+The floor of the tunnel is covered in several shallow puddles.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25418
+D2
+~
+~
+0 -1 25416
+S
+#25418
+Chamber~
+Splintered wooden and rusted metal junk litter the floor of this small
+room.  Water streams down from the ceiling in several places, and the air
+is dank and cold.  A small door has been cut into the east wall, and a
+tunnel leads south.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 25419
+D2
+~
+~
+0 -1 25417
+S
+#25419
+Passage~
+This small connecting tunnel opens west through a solid door and east
+through a wide archway.  Water up to a foot deep in places covers the 
+floor.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25420
+D3
+~
+~
+1 -1 25418
+S
+#25420
+Damp Chamber~
+Running water can be heard faintly from below as you stand in this cold,
+damp chamber.  A circular shaft has been cut into the floor of the room;
+the rusted top of an iron ladder can be seen above the gloom of the tunnel.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 25419
+D5
+~
+ladder down~
+0 -1 25421
+S
+#25421
+Ladder~
+Water flows from cracks in the walls of this narrow shaft.  The iron ladder
+you are clinging to is badly rusted but appears to take your weight easily.
+You can climb back out of the shaft into the chamber above, or down into
+the gloom below.
+~
+0 1|4|8|2048 0
+D4
+~
+~
+0 -1 25420
+D5
+~
+~
+0 -1 25422
+S
+#25422
+Submerged Hall~
+You stand at the northern end of a large hall.  The room south of here is
+completely submerged, with water dribbling down from dozens of holes and
+fissures in the vaulted ceiling.  The floor slopes downwards to the south,
+and you guess that the water is quite deep at the end the chamber, hidden
+in the gloom before you.  You can head back up the ladder, east through a
+small archway, or south into the submerged hall.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25427
+D2
+The water looks shallow enough for you to wade through.
+~
+water south~
+0 -1 25423
+D4
+~
+~
+0 -1 25421
+S
+#25423
+Murky Water~
+You wade through the murky water covering the hall.  Dry ground lays north,
+while you can continue into the water to the south, although it looks to be
+a lot deeper there.
+~
+0 1|8 6
+D0
+~
+~
+0 -1 25422
+D2
+The water looks to be quite deep to the south.
+~
+water south~
+0 -1 25424
+S
+#25424
+Murky Water~
+Water pours into the ancient hall through large cracks in the ceiling,
+which is becoming lower the further south you progress.  The hall returns
+northwards and appears to end just south from here.
+~
+0 1|8 6
+D0
+The water looks quite deep to the north.
+~
+water north~
+0 -1 25423
+D2
+The water looks very deep to the south.
+~
+water south~
+0 -1 25425
+S
+#25425
+Murky Water~
+You have reached the southern end of the submerged hall.  The cracked
+ceiling lays not more than a few feet above you.  You can head back north
+or risk diving down into the water below you.
+~
+0 1|8 6
+D0
+The water looks quite deep to the north.
+~
+water north~
+0 -1 25424
+D5
+The water is too murky to make out what lays beneath you.
+~
+water down~
+0 -1 25426
+S
+#25426
+Murky Water~
+You dive under the water to the bottom of the hall.  You can vaguely make
+out pieces of stone rubble and rusted metal laying on the floor.
+~
+0 1|8 8
+D4
+~
+~
+0 -1 25425
+S
+#25427
+Flooded Passage~
+This connecting passage has become flooded.  The submerged hall lays west,
+and you can make out a stone door directly east.
+~
+0 1|8 7
+D1
+~
+~
+1 -1 25428
+D3
+~
+~
+0 -1 25422
+S
+#25428
+Great Hall~
+You stand in a large hall, smooth pillars rising stoutly to the vaulted
+ceiling far above you.  The sound of dripping water echoes loudly
+throughout the room, which spreads north.  A door to the west returns you
+to the flooded passage.
+~
+0 1|4|8 0
+D0
+~
+~
+0 -1 25429
+D3
+~
+~
+1 -1 25427
+S
+#25429
+Great Hall~
+You stand at the northern end of the hall.  A gigantic iron door stands
+closed to the north: the portal has no handles or locks, but is covered in
+glyphs and strange writing.
+~
+0 1|8 0
+D0
+~
+~
+8 25405 25430
+D2
+~
+~
+0 -1 25428
+S
+#25430
+Hall of the Portals~
+This corridor appears to have remained undisturbed for centuries, thick
+dust carpets the floor and a mess of spiders webs hangs from the roof.  
+Archways lead west and east of here, with a faint light spreading into the
+corridor from each.  The hall continues to the north, with the great door
+directly south.
+~
+0 4|8 0
+D0
+~
+~
+0 -1 25432
+D1
+A smoky haze can be seen to the east.
+~
+east~
+0 -1 25435
+D2
+~
+~
+8 -1 25429
+D3
+A sickly smell rises from the western arch.
+~
+west~
+0 -1 25436
+S
+#25431
+Hall of the Portals~
+The great hall continues north and south.  Two archways head west and east,
+faint light throbbing from each.
+~
+0 4|8 0
+D0
+~
+~
+0 -1 25432
+D1
+Mud and dirt lay within the eastern portal.
+~
+east~
+0 -1 25434
+D2
+~
+~
+0 -1 25430
+D3
+Thin vapours spread from the western arch.
+~
+west~
+0 -1 25437
+S
+#25432
+Hall of the Portals~
+You have reached the northern end of the great hall.  The northern wall is
+dominated by a large door: no handles or latches can be seen, although a 
+large keyhole lays in its centre.  Archways open west and east, with the 
+hall returning to the south.  A crackling portal rises to the north.
+~
+0 4|8 0
+D0
+~
+portal~
+8 25425 25556
+D1
+Mud and dirt lay within the eastern portal.
+~
+east~
+0 -1 25434
+D2
+~
+~
+0 -1 25430
+D3
+The air to the west is increasingly warmer.
+~
+west~
+0 -1 25438
+S
+#25433
+The Snow Gate~
+You stand before an oval mirror, it's surface rippling like liquid and
+clouded over.  A cold wind gusts from the portal, with snow and ice 
+spreading into the room.  You may step east into the gate or return 
+westwards to the main hall.
+~
+0 4|8 0
+D3
+~
+~
+0 -1 25432
+S
+#25434
+The Mud Gate~
+An ugly stone archway has been set into the eastern wall.  Foul smelling
+mud oozes between the rock pillars, dribbling onto the floor and 
+occasionally bubbling.  You can step eastwards into the gate or return
+westwards to the main hall.
+~
+0 4|8 0
+D1
+~
+~
+0 -1 25489
+D3
+~
+~
+0 -1 25432
+S
+#25435
+The Smoke Gate~
+An ancient oak doorway is filled with thick, grey smoke.  Wisps of vapour
+spread slowly into the room from the portal; your throat begins to burn and
+it is becoming increasingly harder to breathe.  You may step east into the
+gate or return west to the main hall.
+~
+0 4|8 0
+D1
+~
+~
+0 -1 25466
+D3
+~
+~
+0 -1 25430
+S
+#25436
+The Slime Gate~
+Putrid green and brown filth oozes from the ancient wooden door frame that
+dominates the western wall.  The smell is unbearable and makes you gag, so
+bad is the smell of rot and death.  You may head westwards into the gate or
+return east to the corridor.
+~
+0 4|8 0
+D1
+~
+~
+0 -1 25430
+D3
+~
+~
+0 -1 25439
+S
+#25437
+The Gas Gate~
+An immense metal portal rises westwards, surrounded by an intense glowing
+field of magical energies.  The air is charged with electricity, and
+gaseous vapours spill out into the room.  You can head west into the gate
+or return eastwards to the corridor.
+~
+0 4|8 0
+D1
+~
+~
+0 -1 25431
+S
+#25438
+The Magma Gate~
+The heat radiating from a gigantic wall of molten rock to the west is
+intense and almost unbearable.  A rusted iron frame borders a rippling
+window of magma that undulates and bubbles before you.  You can force 
+yourself westwards into the gate or return east to the corridor.
+~
+0 4|8 0
+D1
+~
+~
+0 -1 25432
+D3
+~
+~
+0 -1 25539
+S
+#25439
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads out forever in every direction.
+~
+0 4 3
+D0
+~
+~
+0 -1 25456
+D1
+~
+~
+0 -1 25440
+D2
+~
+~
+0 -1 25444
+D3
+~
+~
+0 -1 25454
+S
+#25440
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads out forever in every direction.
+~
+0 0 3
+D0
+~
+~
+0 -1 25457
+D1
+~
+~
+0 -1 25441
+D2
+~
+~
+0 -1 25445
+D3
+~
+~
+0 -1 25439
+S
+#25441
+Quagmire~
+Thick, putrid filth rises almost to your waist, the smell of rot 
+overwhelming in this horrible quagmire.  The mire spreads north, west and
+south.
+~
+0 0 3
+D0
+~
+~
+0 -1 25458
+D2
+~
+~
+0 -1 25446
+D3
+~
+~
+0 -1 25440
+S
+#25442
+Mangroves~
+A dense forest of mangroves surrounds you, a tangled mass of tough and 
+twisted roots making it difficult to move quickly.  Rotting mangrove fruits
+fill the air with a sickly sweet odour that makes you feel ill.  You can 
+travel east and north from here; the trees to the west and south are so 
+dense that you can not progress any further in those directions.
+~
+0 0 3
+D0
+~
+~
+0 -1 25453
+D1
+~
+~
+0 -1 25443
+S
+#25443
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The 
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads out forever in every direction, with a forest of gnarled mangroves
+rising to the west.
+~
+0 0 3
+D0
+~
+~
+0 -1 25454
+D1
+~
+~
+0 -1 25444
+D2
+~
+~
+0 -1 25447
+D3
+~
+~
+0 -1 25442
+S
+#25444
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads out forever in every direction.
+~
+0 0 3
+D0
+~
+~
+0 -1 25439
+D1
+~
+~
+0 -1 25445
+D2
+~
+~
+0 -1 25448
+D3
+~
+~
+0 -1 25443
+S
+#25445
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads out forever in every direction.
+~
+0 0 3
+D0
+~
+~
+0 -1 25440
+D1
+~
+~
+0 -1 25446
+D2
+~
+~
+0 -1 25449
+D3
+~
+~
+0 -1 25444
+S
+#25446
+Quagmire~
+Thick, putrid filth rises almost to your waist, the smell of rot
+overwhelming in this horrible quagmire.  The mire spreads north and west.
+~
+0 0 3
+D0
+~
+~
+0 -1 25441
+D3
+~
+~
+0 -1 25445
+S
+#25447
+Marsh~
+Swamp grasses and masses of tall reeds emerge from the muddy surface of the
+marsh.  Unseen creatures hoot and growl from the distance.  You can travel
+north, east and south from here.
+~
+0 0 3
+D0
+~
+~
+0 -1 25443
+D1
+~
+~
+0 -1 25448
+D2
+~
+~
+0 -1 25450
+S
+#25448
+Marsh~
+Swamp grasses and masses of tall reeds emerge from the muddy surface of the
+marsh.  Unseen creatures hoot and growl from the distance.  You can travel
+north, east and west from here.
+~
+0 0 3
+D0
+~
+~
+0 -1 25444
+D1
+~
+~
+0 -1 25449
+D3
+~
+~
+0 -1 25447
+S
+#25449
+Marsh~
+Swamp grasses and masses of tall reeds emerge from the muddy surface of the
+marsh.  Unseen creatures hoot and growl from the distance.  You can travel
+north, west and south from here.
+~
+0 0 3
+D0
+~
+~
+0 -1 25445
+D2
+~
+~
+0 -1 25451
+D3
+~
+~
+0 -1 25448
+S
+#25450
+Marsh~
+Swamp grasses and masses of tall reeds emerge from the muddy surface of the
+marsh.  Unseen creatures hoot and growl from the distance.  You can return
+northwards towards the centre of the marsh.  An intense circular light
+hangs in the air to the west, an ancient stone hallway is barely visible on
+the other side of this portal.
+~
+0 0 3
+D0
+~
+~
+0 -1 25447
+D3
+~
+~
+0 -1 25436
+S
+#25451
+Marsh~
+Swamp grasses and masses of tall reeds emerge from the muddy surface of the
+marsh.  Unseen creatures hoot and growl from the distance.  Marsh lays to
+the north, while a huge, twisted tree rises to the east.
+~
+0 0 3
+D0
+~
+~
+0 -1 25449
+D1
+~
+~
+0 -1 25452
+S
+#25452
+Giant Tree~
+A truly monstrous tree grows from a mound of solid earth rising from the
+marsh.  Its twisted and gnarled trunk is covered with slime and lichen;
+naked branches rise like withered hands into the air, with only a few dry
+and dying leaves hanging from the thinner twigs.  You can head west into
+the marsh, or climb up the tree into the thick nest of branches above you.
+~
+0 0 3
+D3
+~
+~
+0 -1 25451
+D4
+~
+~
+0 -1 25464
+S
+#25453
+Mangroves~
+A dense forest of mangroves surrounds you, a tangled mass of tough and
+twisted roots making it difficult to move quickly.  Rotting mangrove fruits
+fill the air with a sickly sweet odour that makes you feel ill.  You can
+travel east and south from here; the trees to the west and north are so
+dense that you can not progress any further in those directions.
+~
+0 0 3
+D1
+~
+~
+0 -1 25454
+D2
+~
+~
+0 -1 25442
+S
+#25454
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads out forever in every direction, with gnarled mangroves rising to
+the west.
+~
+0 0 3
+D0
+~
+~
+0 -1 25455
+D1
+~
+~
+0 -1 25439
+D2
+~
+~
+0 -1 25443
+D3
+~
+~
+0 -1 25453
+S
+#25455
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads east and south, with a small patch of mangrove forest to the north.
+~
+0 0 3
+D0
+~
+~
+0 -1 25460
+D1
+~
+~
+0 -1 25456
+D2
+~
+~
+0 -1 25454
+S
+#25456
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads west, south and east.
+~
+0 0 3
+D1
+~
+~
+0 -1 25457
+D2
+~
+~
+0 -1 25439
+D3
+~
+~
+0 -1 25455
+S
+#25457
+Swamp~
+You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
+brown clumps, and green slimes spread across the surface of the mire.  The
+air is thick with gigantic insects, and it is oppressively hot.  The swamp
+spreads west, south and east; a tall cliff rises to the north.
+~
+0 0 3
+D0
+~
+~
+0 -1 25461
+D1
+~
+~
+0 -1 25458
+D2
+~
+~
+0 -1 25440
+D3
+~
+~
+0 -1 25456
+S
+#25458
+Quagmire~
+Thick, putrid filth rises almost to your waist, the smell of rot
+overwhelming in this horrible quagmire.  The mire spreads to the west and
+south, while steep cliffs rise north and east of here.
+~
+0 0 3
+D0
+~
+~
+0 -1 25462
+D1
+~
+~
+0 -1 25459
+D2
+~
+~
+0 -1 25441
+D3
+~
+~
+0 -1 25457
+S
+#25459
+Cliff Face~
+Steep, smooth cliffs tower to the east; they rise sharply and disappear
+into the low clouds above you.  It would be impossible for you to climb
+more than a dozen feet.  You can head north and west from here.
+~
+0 0 3
+D0
+~
+~
+0 -1 25463
+D3
+~
+~
+0 -1 25458
+S
+#25460
+Mangroves~
+A dense forest of mangroves surrounds you, a tangled mass of tough and
+twisted roots making it difficult to move quickly.  Rotting mangrove fruits
+fill the air with a sickly sweet odour that makes you feel ill.  The 
+vegetation is so dense that you can only return south into the swamp.
+~
+0 0 3
+D2
+~
+~
+0 -1 25455
+S
+#25461
+Cliff Face~
+Steep, smooth cliffs tower to the north; they rise sharply and disappear 
+into the low clouds above you.  It would be impossible for you to climb 
+more than a dozen feet.  You can head south and east from here.
+~
+0 0 3
+D1
+~
+~
+0 -1 25462
+D2
+~
+~
+0 -1 25457
+S
+#25462
+Cliff Face~
+Steep, smooth cliffs tower to the north; they rise sharply and disappear
+into the low clouds above you.  It would be impossible for you to climb
+more than a dozen feet.  You can head east, south and west from here, and
+the entrance to a small cave lays north.
+~
+0 0 3
+D0
+~
+~
+0 -1 25465
+D1
+~
+~
+0 -1 25463
+D2
+~
+~
+0 -1 25458
+D3
+~
+~
+0 -1 25461
+S
+#25463
+Cliff Face~
+Steep, smooth cliffs tower to the east; they rise sharply and disappear
+into the low clouds above you.  It would be impossible for you to climb
+more than a dozen feet.  You can head north and west from here.
+~
+0 0 3
+D2
+~
+~
+0 -1 25459
+D3
+~
+~
+0 -1 25462
+S
+#25464
+Gnarled Branches~
+Covered with scratches, you force your way up through the mass of branches
+and sharp twigs.  Near the top of the tree, you step out onto a large, 
+horizontal branch.  A large nest of twigs, grasses and weeds about 6 feet
+in diameter has been made here: it is filled with filth and small
+skeletons.
+~
+0 0 3
+D5
+~
+~
+0 -1 25452
+S
+#25465
+Slimy cave~
+You stand in a small, dark cave.  The rough rock walls are covered in 
+slime, and water trickles from stalactites hanging from the roof.  The only
+exit is through the opening to the south.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25462
+S
+#25466
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D0
+~
+~
+0 -1 25468
+D1
+~
+~
+0 -1 25471
+D2
+~
+~
+0 -1 25473
+D3
+~
+~
+0 -1 25470
+S
+#25467
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.  An intense circle of light hangs in the air to
+the north; you define the inside of an ancient hallway in its murky depths.
+~
+0 1 3
+D0
+~
+~
+0 -1 25435
+D1
+~
+~
+0 -1 25468
+D2
+~
+~
+0 -1 25470
+S
+#25468
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D1
+~
+~
+0 -1 25469
+D2
+~
+~
+0 -1 25466
+D3
+~
+~
+0 -1 25467
+S
+#25469
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D2
+~
+~
+0 -1 25471
+D3
+~
+~
+0 -1 25468
+S
+#25470
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D0
+~
+~
+0 -1 25467
+D1
+~
+~
+0 -1 25466
+D2
+~
+~
+0 -1 25472
+S
+#25471
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D0
+~
+~
+0 -1 25469
+D2
+~
+~
+0 -1 25474
+D3
+~
+~
+0 -1 25466
+S
+#25472
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D0
+~
+~
+0 -1 25470
+D1
+~
+~
+0 -1 25473
+S
+#25473
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D0
+~
+~
+0 -1 25466
+D1
+~
+~
+0 -1 25474
+D3
+~
+~
+0 -1 25472
+S
+#25474
+Impenetrable Fog~
+A thick, grey fog envelopes you; you can see no more than a few feet in
+front of you.  As you stumble through the thick clouds, you hear distant,
+eerie shrieks and calls.
+~
+0 1 3
+D0
+~
+~
+0 -1 25471
+D2
+~
+~
+0 -1 25475
+D3
+~
+~
+0 -1 25473
+S
+#25475
+Stone Fortress~
+Stumbling through the fog, you come suddenly against a large iron door to
+the south.  It appears to be the entrance to a large stone fortress which
+rises up through the smoky gloom.  A strange, circular symbol surrounded
+by runic writings has been engraved on the surface of the metal gate.
+~
+0 1|4 3
+D0
+~
+~
+0 -1 25474
+D2
+~
+~
+1 -1 25476
+S
+#25476
+Entrance Chamber~
+You stand in the foyer of the fortress, a small, bare room made somewhat
+smaller by the low height of the wooden ceiling.  Haze filled archways lead
+west, south and east, while the main door opens north into the fog.
+~
+0 1|8 0
+D0
+~
+~
+1 -1 25475
+D1
+~
+~
+0 -1 25478
+D2
+~
+~
+0 -1 25479
+D3
+~
+~
+0 -1 25477
+S
+#25477
+Guard Room~
+Weapon racks flank a small wooden desk propped against the west wall of
+this small guardroom.  A muted alarm bell hangs connected to a small rope
+that is threaded through a hole in the eastern wall.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25476
+S
+#25478
+Barracks~
+Several low wooden bunks have been arranged in a row within this barracks.
+A small fire burns in a grate, filling the room with pungent smoke.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 25476
+S
+#25479
+Great Hall~
+A wide wooden table stands in the middle of this large hall.  It is covered
+with toppled tankards, dirty plates and cutlery.  A staircase leads up 
+through an archway to the east, while the main entrance to the fortress is
+north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25476
+D1
+~
+~
+0 -1 25480
+S
+#25480
+Stairwell~
+Narrow stone stairs spiral upwards here, while a large hall lays west.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 25479
+D4
+~
+~
+0 -1 25481
+S
+#25481
+Stairwell~
+A narrow spiral staircase winds down from here, while an archway north 
+opens into a large, narrow common room.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 25482
+D5
+~
+~
+0 -1 25480
+S
+#25482
+Common Room~
+You step into a comfortably furnished common room, filled with soft sedan
+chairs and several small tables.  Tattered rugs and skins cover the wooden
+floor, and a smoky fire blazes from a bronze fire place.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25484
+D1
+~
+~
+0 -1 25481
+D2
+~
+~
+0 -1 25483
+D3
+~
+~
+0 -1 25485
+S
+#25483
+Armoury~
+Weapon cabinets stand against the wall of this armoury, and several items
+of armour and weaponry are scattered about the floor.  Faded maps and
+tables have been attached to the walls: you cannot understand the jagged
+text.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25482
+S
+#25484
+Laboratory~
+Metal junk and glassware clutters a large bench that spreads about the 
+west, north and east sides of the room.  Many books and pamphlets lay 
+stacked in piles, and many charts have been plastered to the walls.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25482
+S
+#25485
+Stairwell~
+A spiral staircase winds up into the gloom.  A large common room lays
+eastwards through an arch.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25482
+D4
+~
+~
+0 -1 25486
+S
+#25486
+Stairwell~
+The spiral staircase winds down below.  An archway to the south opens out
+into a large observatory with a ceiling made entirely of glass.
+~
+0 1|4|8 0
+D2
+~
+~
+0 -1 25487
+D5
+~
+~
+0 -1 25485
+S
+#25487
+Observatory~
+You stand on the roof of the fortress, which has been converted into a huge
+observatory.  The walls and ceiling are made entirely of metal framed glass
+panels.  The observatory is surrounded by a sea of dense fog, the night sky
+is an intense, solid black, pinholed with a thousand stars and planets.  A
+stairwell to the north leads down into the building, while a small hut with
+a closed door stands to the east.
+~
+0 8 2
+D0
+~
+~
+0 -1 25486
+D1
+~
+~
+1 -1 25488
+S
+#25488
+Control Room~
+This small hut serves as a control room of some sort, with a small panel
+lined with buttons and knobs controlling the positioning of the huge
+telescope in the observatory.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 25487
+S
+#25489
+Mudflats~
+You stand knee deep in an expansive mud flat that stretches about you every
+direction.  Thin, sickly grasses grow through the clag in pathetic clumps,
+and the odour of the mudflats is truly disgusting.  The barren mudscape
+continues north and west, while several mudpools lay directly south.  An
+enormous geyser spurts hot water high into the air to the east.
+~
+0 4 4
+D0
+~
+~
+0 -1 25494
+D1
+~
+~
+0 -1 25498
+D2
+~
+~
+0 -1 25500
+D3
+~
+~
+0 -1 25497
+S
+#25490
+Burrow Entrance~
+The mud here smells worse than ever.  Dominating this area of the mudflats
+is an enormous opening to some sort of burrow leading directly downwards.
+Several trails of strange footprints lead in many directions from the rim
+of the opening, while small skeletons litter the surrounding flats.  You
+can head east of south along the flats, or dare to head down into the
+burrow.
+~
+0 0 4
+D1
+~
+~
+0 -1 25491
+D2
+~
+~
+0 -1 25493
+D5
+~
+~
+0 -1 25502
+S
+#25491
+Mudflats~
+You wade through the thick, stinking mud, which steams in several places.
+Dirty puddles float of the surface of the filth.  You can travel west and
+south along the flats, or eastwards to several mudpools.
+~
+0 0 4
+D1
+~
+~
+0 -1 25492
+D2
+~
+~
+0 -1 25494
+D3
+~
+~
+0 -1 25490
+S
+#25492
+Hot Pools~
+Steams rises from the surface of several greenish hotpools sitting in stone
+beds amongst the mud.  The air is rich with sulfur and it is very hot: the
+water must be boiling.  You can head west or south from here along the
+mudflats.
+~
+0 0 4
+D2
+~
+~
+0 -1 25495
+D3
+~
+~
+0 -1 25491
+S
+#25493
+Mudflats~
+You wade through the thick, stinking mud, which steams in several places.
+Dirty puddles float of the surface of the filth.  You can travel north, 
+east and south along the flats.
+~
+0 0 4
+D0
+~
+~
+0 -1 25490
+D1
+~
+~
+0 -1 25494
+D2
+~
+~
+0 -1 25497
+S
+#25494
+Mudflats~
+You wade through the thick, stinking mud, which steams in several places.
+Dirty puddles float of the surface of the filth.  You can travel north,
+south, east and west along the flats.
+~
+0 0 4
+D0
+~
+~
+0 -1 25491
+D1
+~
+~
+0 -1 25495
+D2
+~
+~
+0 -1 25489
+D3
+~
+~
+0 -1 25493
+S
+#25495
+Mudflats~
+You wade through the thick, stinking mud, which steams in several places.
+Dirty puddles float of the surface of the filth.  The flats return west,
+while mud pools bubble to the north.  A large pond can be seen to the east,
+while a gigantic geyser spurts water high into the air to the south.
+~
+0 0 4
+D0
+~
+~
+0 -1 25492
+D1
+~
+~
+0 -1 25496
+D2
+~
+~
+0 -1 25498
+D3
+~
+~
+0 -1 25494
+S
+#25496
+Grimy Pond~
+You arrive at a large body of still, dirty water, clouded with mud and
+filled with rubbish.  The surface heaves in slow, gentle ripples, while a
+thousand insects swarm about its fetid surface.  You can head west and
+south along the flats.
+~
+0 0 6
+D2
+~
+~
+0 -1 25499
+D3
+~
+~
+0 -1 25495
+S
+#25497
+Mudflats~
+You wade through the thick, stinking mud, which steams in several places.
+Dirty puddles float of the surface of the filth.  You can travel north and
+east along the flats.
+~
+0 0 4
+D0
+~
+~
+0 -1 25493
+D1
+~
+~
+0 -1 25489
+S
+#25498
+Geyser~
+An impressive geyser shoots torrents of scalding hot water high into the
+air, at least two dozen feet.  Steaming spray scalds you as you approach
+the mouth of the geyser, which is large enough for you to climb into.  The
+water within the geyser itself looks extremely hot, and the geyser pauses
+only briefly before sending another breath of water into the air above.
+You can head west, north and east along the flats, or south towards some
+hot pools; the basin of the geyser beckons from below.
+~
+0 0 4
+D0
+~
+~
+0 -1 25495
+D1
+~
+~
+0 -1 25499
+D2
+~
+~
+0 -1 25501
+D3
+~
+~
+0 -1 25489
+D5
+The pool of water below looks boiling hot; it would be dangerous to
+climb down into the heart of the geyser, in fact, it would be unlikely
+that you would survive...
+~
+~
+0 -1 25527
+S
+#25499
+Mudflats~
+You wade through the thick, stinking mud, which steams in several places.
+Dirty puddles float of the surface of the filth.  You can travel north to a
+large body of water, or westwards towards a gigantic geyser.
+~
+0 0 4
+D0
+~
+~
+0 -1 25496
+D3
+~
+~
+0 -1 25498
+S
+#25500
+Hot Pools~
+Steams rises from the surface of several greenish hotpools sitting in stone
+beds amongst the mud.  The air is rich with sulfur and it is very hot: the
+water must be boiling.  A large white circle of light hangs in the air to
+the west, the dark outline of a dungeon corridor framed within.  You can
+head west through the portal, or travel north or east along the flats.
+~
+0 0 4
+D0
+~
+~
+0 -1 25489
+D1
+~
+~
+0 -1 25501
+D3
+A circle of white light hangs in the air before you.
+~
+~
+0 -1 25434
+S
+#25501
+Hot Pools~
+Steams rises from the surface of several greenish hotpools sitting in stone
+beds amongst the mud.  The air is rich with sulfur and it is very hot: the
+water must be boiling.  You can head west along the pools, or north towards
+a large geyser.
+~
+0 0 4
+D0
+~
+~
+0 -1 25498
+D3
+~
+~
+0 -1 25500
+S
+#25502
+Mud Burrow~
+You stand in the central shaft of a large subterranean burrow, which
+disappears down into the gloom.  Muffled noises and shuffling echo along
+the tunnel, the smooth mud walls covered in a strange, sticky fungus.
+~
+0 1|4|8 0
+D4
+~
+~
+0 -1 25490
+D5
+~
+~
+0 -1 25503
+S
+#25503
+Mud Burrow~
+You stand in the central shaft of a large subterranean burrow, which
+disappears down into the gloom.  Muffled noises and shuffling echo along
+the tunnel, the smooth mud walls covered in a strange, sticky fungus.
+A small tunnel can be accessed through an opening in the east wall here.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25504
+D4
+~
+~
+0 -1 25502
+D5
+~
+~
+0 -1 25509
+S
+#25504
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head west or east.
+~
+0 1|4|8 0
+D1
+~
+~
+0 -1 25505
+D3
+~
+~
+0 -1 25503
+S
+#25505
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head west or east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25506
+D3
+~
+~
+0 -1 25504
+S
+#25506
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head west or down from here.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 25505
+D5
+~
+~
+0 -1 25507
+S
+#25507
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head up or south from here.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25508
+D4
+~
+~
+0 -1 25506
+S
+#25508
+Nest~
+Stinking filth lines the walls of this small chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+You can return through a small opening in the north wall.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25507
+S
+#25509
+Mud Burrow~
+You stand in the central shaft of a large subterranean burrow, which
+disappears down into the gloom.  Muffled noises and shuffling echo along
+the tunnel, the smooth mud walls covered in a strange, sticky fungus.
+A small tunnel opens in the western wall here.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 25511
+D4
+~
+~
+0 -1 25503
+D5
+~
+~
+0 -1 25510
+S
+#25510
+Mud Burrow~
+You stand in the central shaft of a large subterranean burrow, which
+disappears down into the gloom.  Muffled noises and shuffling echo along
+the tunnel, the smooth mud walls covered in a strange, sticky fungus.
+You can enter a smaller tunnel running horizontally from an opening in the
+southern wall here.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25519
+D4
+~
+~
+0 -1 25509
+D5
+~
+~
+0 -1 25518
+S
+#25511
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head west or east from here.
+~
+0 1|4|8 0
+D1
+~
+~
+0 -1 25509
+D3
+~
+~
+0 -1 25512
+S
+#25512
+Tunnel Junction~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head north, south or east from here.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25516
+D1
+~
+~
+0 -1 25511
+D2
+~
+~
+0 -1 25513
+S
+#25513
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can travel north or upwards.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25512
+D4
+~
+~
+0 -1 25514
+S
+#25514
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head downwards or to the south.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25515
+D5
+~
+~
+0 -1 25513
+S
+#25515
+Nest~
+Stinking filth lines the walls of this small chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+You can return through a small opening in the north wall.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25514
+S
+#25516
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can travel north or south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25517
+D2
+~
+~
+0 -1 25512
+S
+#25517
+Nest~
+Stinking filth lines the walls of this small chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+You can return through a small opening in the south wall.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25516
+S
+#25518
+Mud Burrow~
+You stand in the central shaft of a large subterranean burrow, which
+disappears down into the gloom.  Muffled noises and shuffling echo along
+the tunnel, the smooth mud walls covered in a strange, sticky fungus.
+~
+0 1|8 0
+D4
+~
+~
+0 -1 25510
+D5
+~
+~
+0 -1 25522
+S
+#25519
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head north or south from here.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25510
+D2
+~
+~
+0 -1 25520
+S
+#25520
+Muddy Tunnel~
+Thick, stinking mud oozes from the rounded walls of this muddy passageway.
+Sloppy, knee deep filth covering the floor makes your passage slow and
+tiring.  You can head north or south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25519
+D2
+~
+~
+0 -1 25521
+S
+#25521
+Nest~
+Stinking filth lines the walls of this small chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+You can return through a small opening in the north wall.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25520
+S
+#25522
+Mud Burrow~
+You stand in the central shaft of a large subterranean burrow, which
+disappears down into the gloom.  Muffled noises and shuffling echo along
+the tunnel, the smooth mud walls covered in a strange, sticky fungus.
+~
+0 1|4|8 0
+D4
+~
+~
+0 -1 25518
+D5
+~
+~
+0 -1 25523
+S
+#25523
+Central Nest~
+Stinking filth lines the walls of this larger chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+The nest continues east and west from here, while a small opening is
+visible in the roof.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25524
+D2
+~
+~
+0 -1 25525
+D4
+~
+~
+0 -1 25522
+S
+#25524
+Central Nest~
+Stinking filth lines the walls of this larger chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+The nest continues west and south from here.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 25526
+D3
+~
+~
+0 -1 25523
+S
+#25525
+Central Nest~
+Stinking filth lines the walls of this larger chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+The nest continues north and east from here.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25523
+D1
+~
+~
+0 -1 25526
+S
+#25526
+Central Nest~
+Stinking filth lines the walls of this larger chamber hollowed from the
+surrounding mud.  All manner of carcasses and mounds of rot and offal have
+been collected and arranged into piles; the smell is simply unbearable.
+The nest continues west and north from here.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25524
+D3
+~
+~
+0 -1 25525
+S
+#25527
+Steaming Hot Pool~
+Scalding hot water boils furiously in this hot water basin, heated from
+volcanic fires inside caverns far beneath the surface of the landscape.
+~
+0 1|4 0
+S
+#25528
+Wastelands~
+Sharp and jagged rock juts upwards in rough, uneven formation, making your
+progress slow and often painful.  Tall, closely knit spires of scoria and
+ancient lava rise twenty feet, the wind whipping through the narrow valleys
+that you must march through.  You can head south and east from here.
+~
+0 0 4
+D1
+~
+~
+0 -1 25529
+D2
+~
+~
+0 -1 25533
+S
+#25529
+Wastelands~
+Sharp and jagged rock juts upwards in rough, uneven formation, making your
+progress slow and often painful.  Tall, closely knit spires of scoria and
+ancient lava rise twenty feet, the wind whipping through the narrow valleys
+that you must march through.  You can head west and east through the
+wastelands, or begin to climb a large volcano that rises to the south.
+~
+0 0 10
+D1
+~
+~
+0 -1 25530
+D2
+~
+~
+0 -1 25534
+D3
+~
+~
+0 -1 25528
+S
+#25530
+Wastelands~
+Sharp and jagged rock juts upwards in rough, uneven formation, making your
+progress slow and often painful.  Tall, closely knit spires of scoria and
+ancient lava rise twenty feet, the wind whipping through the narrow valleys
+that you must march through.  You can head west and east through the
+wastelands, or begin to climb a large volcano that rises to the south.
+~
+0 0 10
+D1
+~
+~
+0 -1 25531
+D2
+~
+~
+0 -1 25535
+D3
+~
+~
+0 -1 25529
+S
+#25531
+Sea of Magma~
+A gigantic sea of magma and molten clag heaves and swells to the north; it
+stretches out for many miles, and is covered in a smoky haze.  Gigantic
+forms move in and out of the magma in the distant horizon.  You can head
+west, south or east from here.
+~
+0 0 2
+D1
+~
+~
+0 -1 25532
+D2
+~
+~
+0 -1 25536
+D3
+~
+~
+0 -1 25530
+S
+#25532
+Sea of Magma~
+A gigantic sea of magma and molten clag heaves and swells to the north; it
+stretches out for many miles, and is covered in a smoky haze.  Gigantic
+forms move in and out of the magma in the distant horizon.  You can head
+west or south from here.  A curious circle of white light hangs in the air
+to the east.
+~
+0 0 2
+D1
+A circle of white light hangs in the air.
+~
+~
+0 -1 25438
+D2
+~
+~
+0 -1 25537
+D3
+~
+~
+0 -1 25531
+S
+#25533
+Wastelands~
+Sharp and jagged rock juts upwards in rough, uneven formation, making your
+progress slow and often painful.  Tall, closely knit spires of scoria and
+ancient lava rise twenty feet, the wind whipping through the narrow valleys
+that you must march through.  You can head north and south through the
+wastelands, or begin to climb a large volcano that rises to the east.
+~
+0 0 10
+D0
+~
+~
+0 -1 25528
+D1
+~
+~
+0 -1 25534
+D2
+~
+~
+0 -1 25538
+S
+#25534
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt east and south about the face of the volcano, or head north
+or west into the wastelands.
+~
+0 0 5
+D0
+~
+~
+0 -1 25529
+D1
+~
+~
+0 -1 25535
+D2
+~
+~
+0 -1 25539
+D3
+~
+~
+0 -1 25533
+S
+#25535
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt west and east about the face of the volcano, head north
+into the wastelands or south up to the crater.
+~
+0 0 5
+D0
+~
+~
+0 -1 25530
+D1
+~
+~
+0 -1 25536
+D2
+~
+~
+0 -1 25540
+D3
+~
+~
+0 -1 25534
+S
+#25536
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt west and south about the face of the volcano, or head north
+or east into the wastelands.
+~
+0 0 5
+D0
+~
+~
+0 -1 25531
+D1
+~
+~
+0 -1 25537
+D2
+~
+~
+0 -1 25541
+D3
+~
+~
+0 -1 25535
+S
+#25537
+Magma River~
+A thick magma river roles slowly from the massive sea of larva in the
+north.  You can travel north and south along the banks of the river, or
+head west up the face of a large volcano.
+~
+0 0 2
+D0
+~
+~
+0 -1 25532
+D2
+~
+~
+0 -1 25542
+D3
+~
+~
+0 -1 25536
+S
+#25538
+Wastelands~
+Sharp and jagged rock juts upwards in rough, uneven formation, making your
+progress slow and often painful.  Tall, closely knit spires of scoria and
+ancient lava rise twenty feet, the wind whipping through the narrow valleys
+that you must march through.  You can head north and south through the
+wastelands, or begin to climb a large volcano that rises to the east.
+~
+0 0 10
+D0
+~
+~
+0 -1 25533
+D1
+~
+~
+0 -1 25539
+D2
+~
+~
+0 -1 25543
+S
+#25539
+Volcanic Slopes~
+You stand on the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt north and south about the face of the volcano, head west
+into the wastelands or climb east up to the crater.
+~
+0 0 5
+D0
+~
+~
+0 -1 25534
+D1
+~
+~
+0 -1 25540
+D2
+~
+~
+0 -1 25544
+D3
+~
+~
+0 -1 25538
+S
+#25540
+Mouth of the Volcano~
+You reach the summit of the volcano, which is very active, pouring out
+smoke.  The crater is full of bubbling lava, which foams and shoots flaming
+boulders miles into the air.
+~
+0 0 5
+D0
+~
+~
+0 -1 25535
+D1
+~
+~
+0 -1 25541
+D2
+~
+~
+0 -1 25545
+D3
+~
+~
+0 -1 25539
+S
+#25541
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt north and south about the face of the volcano, head south
+into the wastelands or climb west up to the crater.
+~
+0 0 5
+D0
+~
+~
+0 -1 25536
+D1
+~
+~
+0 -1 25542
+D2
+~
+~
+0 -1 25546
+D3
+~
+~
+0 -1 25540
+S
+#25542
+Magma River~
+A thick magma river roles slowly from the massive sea of larva in the
+north.  You can travel north and south along the banks of the river, or
+head west up the face of a large volcano.
+~
+0 0 2
+D0
+~
+~
+0 -1 25537
+D2
+~
+~
+0 -1 25547
+D3
+~
+~
+0 -1 25541
+S
+#25543
+Wastelands~
+Sharp and jagged rock juts upwards in rough, uneven formation, making your
+progress slow and often painful.  Tall, closely knit spires of scoria and
+ancient lava rise twenty feet, the wind whipping through the narrow valleys
+that you must march through.  You can head north through the wastelands,
+or begin to climb a large volcano that rises to the east.
+~
+0 0 10
+D0
+~
+~
+0 -1 25538
+D1
+~
+~
+0 -1 25544
+S
+#25544
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt north and east about the face of the volcano, or head west
+or south into the wastelands.
+~
+0 0 5
+D0
+~
+~
+0 -1 25539
+D1
+~
+~
+0 -1 25545
+D2
+~
+~
+0 -1 25548
+D3
+~
+~
+0 -1 25543
+S
+#25545
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt west and east about the face of the volcano, head south
+into the wastelands or climb north up to the crater.
+~
+0 0 5
+D0
+~
+~
+0 -1 25540
+D1
+~
+~
+0 -1 25546
+D2
+~
+~
+0 -1 25549
+D3
+~
+~
+0 -1 25544
+S
+#25546
+Volcanic Slopes~
+You march up the sides of a titanic cone volcano.  Thick black smoke
+billows from the crater and the air is thick with the smell of sulfur.
+You can skirt west and north about the face of the volcano, or head east
+or south into the wastelands.
+~
+0 0 5
+D0
+~
+~
+0 -1 25541
+D1
+~
+~
+0 -1 25547
+D2
+~
+~
+0 -1 25550
+D3
+~
+~
+0 -1 25545
+S
+#25547
+Magma River~
+A thick magma river roles slowly from the massive sea of larva in the
+north.  You can travel north along the banks of the river, or head west up
+the face of a large volcano.
+~
+0 0 2
+D0
+~
+~
+0 -1 25542
+D3
+~
+~
+0 -1 25546
+S
+#25548
+Canyon~
+A deep west-east running canyon falls steeply to the south; it drops many
+hundreds of feet below and is quite wide.  It would be impossible to
+travel down here, although you see a long wooden bridge to the east.
+~
+0 0 10
+D0
+~
+~
+0 -1 25544
+D1
+~
+~
+0 -1 25549
+S
+#25549
+Wooden Bridge~
+A wooden bridge extends across a deep west-east running canyon, reaching a
+large solidified lava flow that spills from the other side of the canyon.
+~
+0 0 1
+D0
+~
+~
+0 -1 25545
+D1
+~
+~
+0 -1 25550
+D2
+~
+~
+0 -1 25551
+D3
+~
+~
+0 -1 25548
+S
+#25550
+Canyon~
+A deep west-east running canyon falls steeply to the south; it drops many
+hundreds of feet below and is quite wide.  It would be impossible to
+travel down here, although you see a long wooden bridge to the west.
+~
+0 0 10
+D0
+~
+~
+0 -1 25546
+D3
+~
+~
+0 -1 25549
+S
+#25551
+Lava Flow~
+An ancient, eroded lava flow spills into the barren valley.  A large rock
+plateau is visible south from here, above more of the flow.  A long wooden
+bridge returns north across the canyon.
+~
+0 0 10
+D0
+~
+~
+0 -1 25549
+D2
+~
+~
+0 -1 25552
+S
+#25552
+Lava Flow~
+The lava flow rises up against a rock plateau to the south.  A ring of
+upright stones stands upon the plateau, while the lava flow returns north.
+~
+0 4 10
+D0
+~
+~
+0 -1 25551
+D2
+~
+~
+0 -1 25553
+S
+#25553
+Stone Circle~
+Several large stone uprights have been arranged upon the uneven surface of
+the rocky plateau; wooden torches thrust into the ground flicker brightly.
+A small path wanders westwards up a sharp rise, while a blazing wicker
+statue in the shape of a man burns fiercely to the east.
+~
+0 8192 2
+D0
+~
+~
+0 -1 25552
+D1
+~
+~
+0 -1 25555
+D3
+~
+~
+0 -1 25554
+S
+#25554
+Sacrificial Table~
+A low set stone table stands within a rough circle of small boulders; lines
+of burning torches arranged about its perimeter.
+~
+0 8192 2
+D1
+~
+~
+0 -1 25553
+S
+#25555
+Wicker Man~
+A twenty foot tall wicker cage in the shape of a man has been erected and
+set alight here.  Charred and burning bodies can be seen within the body
+and head of the sacrificial offering.
+~
+0 8192 2
+D3
+~
+~
+0 -1 25553
+S
+#25556
+The Nexus~
+The blue-green haze of the Nexus surrounds you like thick, cloying smoke.
+Crackling portals rise to the north and south.
+~
+0 0 0
+D0
+~
+portal~
+8 25424 25557
+D2
+~
+portal~
+8 25425 25432
+S
+#25557
+The Nexus~
+The blue-green haze of the Nexus surrounds you like thick, cloying smoke.
+Crackling portals rise to the north and south.
+~
+0 0 0
+D0
+~
+portal~
+8 25423 25558
+D2
+~
+portal~
+8 25424 25556
+S
+#25558
+The Nexus~
+The blue-green haze of the Nexus surrounds you like thick, cloying smoke.
+Crackling portals rise to the north and south.
+~
+0 0 0
+D0
+~
+portal~
+8 25441 25559
+D2
+~
+portal~
+8 25423 25557
+S
+#25559
+The Nexus~
+The blue-green haze of the Nexus surrounds you like thick, cloying smoke.
+A crackling portals rises to the south.
+~
+0 0 0
+D2
+~
+portal~
+8 25441 25558
+S
+#0
+
+
+#RESETS
+D 1 25409 1 1			; Granite Cliffs Close East
+D 1 25410 3 1			; Musty Tunnel Close West
+D 1 25418 1 1			; Chamber Close East
+D 1 25419 3 1			; Passage Close West
+D 1 25427 1 1			; Flooded Passage Close East
+D 1 25428 3 1			; Great Hall Close West
+D 1 25429 0 2			; Great Hall Lock North
+D 1 25430 2 2			; Hall of the Portals Lock South
+*
+O 1 25400 100 25406			stones to Circle of Stones
+*
+M 1 25400 4 25402			a dryad to Forest Path
+*
+M 1 25400 4 25403			a dryad to Forest Path
+*
+M 1 25401 2 25404			a treant to Forest Path
+G 1 25401 100
+*
+M 1 25400 1 25405			a dryad to Forest Path
+*
+M 1 25401 1 25407			a treant to Forest Path
+G 1 25401 100
+*
+M 1 25400 1 25408			a dryad to Forest Path
+*
+M 1 25402 2 25412			a cave beast to Musty Chamber
+*
+M 1 25402 2 25418			a cave beast to Chamber
+*
+M 1 25403 2 25416			a tunnel worm to Wide Tunnel
+*
+M 1 25403 2 25414			a tunnel worm to Small Chamber
+*
+M 1 25404 1 25420			Stone Beard to Damp Chamber
+E 1 25403 100 5
+E 1 25402 100 16
+*
+M 1 25405 1 25426			an octopus to Murky Water
+G 1 25404 100
+*
+M 1 25406 1 25425			a water nymph to Murky Water
+*
+M 1 25407 2 25424			a water demon to Murky Water
+*
+M 1 25407 2 25423			a water demon to Murky Water
+*
+M 1 25408 1 25429			a headless statue to Great Hall
+D 1 25414 5 2			; Small Chamber Lock Down
+R 1 25466 4			; Randomize Impenetrable Fog
+R 1 25472 4			; Randomize Impenetrable Fog
+R 1 25469 4			; Randomize Impenetrable Fog
+D 1 25476 0 1			; Entrance Chamber Close North
+D 1 25487 1 1			; Observatory Close East
+D 1 25488 3 1			; Control Room Close West
+D 1 25475 2 1			; Stone Fortress Close South
+*
+M 1 25416 1 25465			Gortholsa to Slimy cave
+E 1 25413 100 11
+E 1 25412 100 16
+*
+M 1 25415 1 25464			a swamp serpent to Gnarled Branches
+E 1 25411 100 16
+G 1 25423 100
+*
+M 1 25414 3 25460			some putrid filth to Mangroves
+*
+M 1 25414 3 25449			some putrid filth to Marsh
+*
+M 1 25414 3 25458			some putrid filth to Quagmire
+*
+M 1 25409 5 25455			a swamp ogre to Swamp
+E 1 25406 100 16
+*
+M 1 25410 3 25456			a marsh glider to Swamp
+*
+M 1 25411 5 25457			a mudworm to Swamp
+*
+M 1 25412 3 25459			a gethgul to Cliff Face
+E 1 25408 100 5
+E 1 25407 100 16
+E 1 25409 100 17
+*
+M 1 25412 3 25461			a gethgul to Cliff Face
+E 1 25408 100 5
+E 1 25407 100 16
+*
+M 1 25410 3 25463			a marsh glider to Cliff Face
+*
+M 1 25411 3 25440			a mudworm to Swamp
+*
+M 1 25413 3 25441			some green slime to Quagmire
+G 1 25410 100
+*
+M 1 25409 5 25442			a swamp ogre to Mangroves
+E 1 25406 100 16
+*
+M 1 25409 5 25443			a swamp ogre to Swamp
+E 1 25406 100 16
+*
+M 1 25411 5 25445			a mudworm to Swamp
+*
+M 1 25412 3 25447			a gethgul to Marsh
+E 1 25408 100 5
+E 1 25407 100 16
+E 1 25409 100 17
+*
+M 1 25413 3 25448			some green slime to Marsh
+G 1 25410 100
+*
+M 1 25411 5 25450			a mudworm to Marsh
+*
+M 1 25409 5 25451			a swamp ogre to Marsh
+E 1 25406 100 16
+*
+M 1 25411 5 25454			a mudworm to Swamp
+*
+M 1 25410 3 25444			a marsh glider to Swamp
+*
+M 1 25409 5 25446			a swamp ogre to Quagmire
+E 1 25406 100 16
+*
+M 1 25413 3 25453			some green slime to Mangroves
+G 1 25410 100
+*
+M 1 25417 3 25468			a smoke demon to Impenetrable Fog
+*
+M 1 25418 1 25470			Xabashu to Impenetrable Fog
+E 1 25414 100 1
+*
+M 1 25417 3 25471			a smoke demon to Impenetrable Fog
+*
+M 1 25417 3 25473			a smoke demon to Impenetrable Fog
+*
+M 1 25419 4 25477			a fortress trooper to Guard Room
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+*
+M 1 25419 4 25478			a fortress trooper to Barracks
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+*
+M 1 25420 2 25479			a fortress mage to Great Hall
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+E 1 25418 100 17
+*
+M 1 25421 2 25478			a mist dragon to Barracks
+*
+M 1 25419 4 25482			a fortress trooper to Common Room
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+*
+M 1 25420 2 25483			a fortress mage to Armoury
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+E 1 25418 100 17
+*
+M 1 25419 4 25484			a fortress trooper to Laboratory
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+*
+M 1 25421 2 25482			a mist dragon to Common Room
+*
+*
+M 1 25422 1 25480			the Weathermonger to Stairwell
+E 1 25421 100 4
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25420 100 17
+E 1 25419 100 16
+*
+M 1 25423 1 25487			the Astrologer to Observatory
+E 1 25421 100 3
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25419 100 16
+E 1 25420 100 17
+G 1 25424 100
+O 1 25422 100 25487			a telescope to Observatory
+*
+M 1 25424 4 25491			a mud man to Mudflats
+E 1 25426 100 16
+G 1 25427 100
+G 1 25427 100
+*
+*
+M 1 25429 2 25492			a mormogol to Hot Pools
+G 1 25435 100
+G 1 25434 100
+G 1 25435 100
+*
+M 1 25425 3 25493			an ooze beast to Mudflats
+*
+M 1 25426 3 25494			a clay giant to Mudflats
+E 1 25430 100 3
+E 1 25429 100 13
+E 1 25428 100 16
+*
+M 1 25424 4 25495			a mud man to Mudflats
+E 1 25426 100 16
+G 1 25427 100
+G 1 25427 100
+*
+M 1 25427 2 25496			an Akshashi Devil to Grimy Pond
+E 1 25432 100 0
+E 1 25433 100 16
+E 1 25431 100 17
+*
+M 1 25424 4 25497			a mud man to Mudflats
+E 1 25426 100 16
+G 1 25427 100
+G 1 25427 100
+*
+M 1 25426 3 25498			a clay giant to Geyser
+E 1 25430 100 3
+E 1 25428 100 16
+*
+M 1 25425 3 25499			an ooze beast to Mudflats
+*
+M 1 25427 2 25500			an Akshashi Devil to Mud Pools
+E 1 25432 100 0
+E 1 25433 100 16
+G 1 25431 100
+*
+M 1 25424 4 25501			a mud man to Mud Pools
+E 1 25426 100 16
+G 1 25427 100
+G 1 25427 100
+*
+M 1 25425 3 25493			an ooze beast to Mudflats
+*
+M 1 25426 3 25496			a clay giant to Grimy Pond
+E 1 25429 100 13
+E 1 25428 100 16
+*
+M 1 25429 2 25494			a mormogol to Mudflats
+G 1 25435 100
+G 1 25434 100
+*
+M 1 25430 6 25503			a mud beetle to Mud Burrow
+E 1 25436 100 12
+*
+M 1 25431 6 25505			a horned mud beetle to Muddy Tunnel
+E 1 25436 100 12
+*
+M 1 25430 6 25506			a mud beetle to Muddy Tunnel
+E 1 25436 100 12
+*
+*
+M 1 25434 4 25508			a mud beetle to Nest
+E 1 25436 100 12
+*
+M 1 25432 9 25508			a beetle larva to Nest
+*
+M 1 25432 9 25508			a beetle larva to Nest
+*
+M 1 25432 9 25508			a beetle larva to Nest
+*
+*
+M 1 25431 6 25512			a horned mud beetle to Tunnel Junction
+E 1 25436 100 12
+*
+M 1 25431 6 25513			a horned mud beetle to Muddy Tunnel
+E 1 25436 100 12
+*
+M 1 25430 6 25514			a mud beetle to Muddy Tunnel
+E 1 25436 100 12
+*
+M 1 25434 4 25515			a mud beetle to Nest
+E 1 25436 100 12
+*
+M 1 25432 9 25515			a beetle larva to Nest
+*
+M 1 25432 9 25515			a beetle larva to Nest
+*
+M 1 25430 6 25516			a mud beetle to Muddy Tunnel
+E 1 25436 100 12
+*
+M 1 25433 2 25517			a burrow worm to Nest
+*
+*
+M 1 25431 6 25518			a horned mud beetle to Mud Burrow
+E 1 25436 100 12
+*
+M 1 25430 6 25520			a mud beetle to Muddy Tunnel
+E 1 25436 100 12
+*
+M 1 25434 4 25521			a mud beetle to Nest
+E 1 25436 100 12
+*
+M 1 25432 9 25521			a beetle larva to Nest
+*
+M 1 25432 9 25521			a beetle larva to Nest
+*
+M 1 25434 4 25521			a mud beetle to Nest
+*
+M 1 25432 9 25521			a beetle larva to Nest
+*
+M 1 25431 6 25523			a horned mud beetle to Central Nest
+E 1 25436 100 12
+*
+M 1 25431 6 25524			a horned mud beetle to Central Nest
+E 1 25436 100 12
+*
+M 1 25431 6 25525			a horned mud beetle to Central Nest
+E 1 25436 100 12
+*
+M 1 25435 1 25526			a mud beetle queen to Central Nest
+E 1 25436 100 12
+G 1 25425 100
+*
+M 1 25433 2 25519			a burrow worm to Muddy Tunnel
+*
+M 1 25428 1 25527			boiling water to Steaming Hot Pool
+*
+*
+M 1 25436 1 25540			J'ket to Mouth of the Volcano
+*
+M 1 25437 1 25554			Llewllokin to Sacrificial Table
+E 1 25437 100 16
+E 1 25439 100 3
+E 1 25438 100 5
+E 1 25440 100 17
+E 1 25442 100 10
+G 1 25441 100
+G 1 25444 100
+*
+M 1 25438 3 25554			a druid berserker to Sacrificial Table
+E 1 25438 100 5
+E 1 25443 100 16
+*
+*
+M 1 25438 3 25553			a druid berserker to Stone Circle
+E 1 25438 100 5
+E 1 25443 100 16
+*
+M 1 25439 2 25553			a druid spellcaster to Stone Circle
+E 1 25438 100 5
+E 1 25443 100 16
+G 1 25444 100
+*
+M 1 25439 2 25555			a druid spellcaster to Wicker Man
+E 1 25438 100 5
+E 1 25443 100 16
+G 1 25444 100
+*
+M 1 25438 3 25555			a druid berserker to Wicker Man
+E 1 25438 100 5
+E 1 25443 100 16
+O 1 25445 100 25554			a stone table to Sacrificial Table
+*
+M 1 25440 4 25528			a fire serpent to Lofty Crags
+*
+M 1 25441 4 25529			a molten uzuz to Wastelands
+*
+M 1 25442 3 25531			a fire giant to Sea of Magma
+E 1 25446 100 5
+E 1 25447 100 8
+E 1 25448 100 16
+*
+M 1 25443 2 25533			a winged terror to Wastelands
+*
+M 1 25441 4 25534			a molten uzuz to Volcanic Slopes
+*
+M 1 25440 4 25536			a fire serpent to Volcanic Slopes
+*
+M 1 25440 4 25537			a fire serpent to Magma River
+*
+M 1 25443 2 25538			a winged terror to Wastelands
+*
+M 1 25441 4 25541			a molten uzuz to Volcanic Slopes
+*
+M 1 25442 3 25542			a fire giant to Magma River
+E 1 25446 100 5
+E 1 25447 100 8
+E 1 25448 100 16
+*
+M 1 25442 3 25543			a fire giant to Wastelands
+E 1 25446 100 5
+E 1 25447 100 8
+E 1 25448 100 16
+*
+M 1 25441 4 25545			a molten uzuz to Volcanic Slopes
+*
+M 1 25440 4 25547			a fire serpent to Magma River
+D 1 25432 0 2			; Hall of the Portals Lock North
+D 1 25556 2 2			; The Nexus Lock South
+D 1 25556 0 2			; The Nexus Lock North
+D 1 25557 0 2			; The Nexus Lock North
+D 1 25558 0 2			; The Nexus Lock North
+*
+M 1 25444 1 25556			One Tusk to The Nexus
+E 1 25450 100 16
+*
+M 1 25445 1 25557			Two Tusks to The Nexus
+E 1 25451 100 16
+*
+M 1 25446 1 25558			Three Tusks to The Nexus
+E 1 25452 100 16
+*
+M 1 25447 1 25559			Four Tusks to The Nexus
+E 1 25449 100 11
+E 1 25453 100 16
+E 1 25454 100 17
+*
+D 1 25558 2 2			; The Nexus Lock South
+D 1 25559 2 2			; The Nexus Lock South
+S
+
+
+#SPECIALS
+M  25400 spec_cast_druid		a druid
+M  25401 spec_cast_mage			a treant
+M  25406 spec_breath_frost		a water nymph
+M  25410 spec_poison			a marsh glider
+M  25413 spec_breath_acid		some green slime
+M  25415 spec_breath_acid		a swamp serpent
+M  25420 spec_cast_mage			a fortress mage
+M  25429 spec_breath_gas		a mormogol
+M  25435 spec_breath_fire		a mud beetle queen
+M  25436 spec_breath_fire		J'ket
+M  25437 spec_cast_psionicist		Llewllokin
+M  25439 spec_cast_druid		a druid spellcaster
+M  25441 spec_thief			a molten uzuz
+M  25443 spec_breath_fire		a winged terror
+M  25444 spec_poison			One Tusk
+M  25445 spec_breath_lightning	Two Tusks
+M  25446 spec_cast_mage			Three Tusks
+M  25447 spec_breath_gas		Four Tusks
+S
+
+
+#$

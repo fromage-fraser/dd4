@@ -1,0 +1,1076 @@
+#AREA  Brutus~  The Arena~
+-2 -2 0 100
+
+#ROOMS
+#14200
+Path to the Arena~
+You stand on a stone path that leads to the Arena.  All around there is
+waste.  Withered trees hang bent beside the path and there is no sound apart
+from your footsteps.  The path extends to the west toward a large black
+building with no windows.  As you head toward the building a scream of agony
+echoes across the wasteland.
+~
+0 4|8|32768 0
+D3
+A huge black building.
+~
+~
+0 -1 14246
+S
+
+#14201
+Junction~
+An entrance-way leads to a bridge just to the east.  The bridge runs over a
+moat of acid that surronds a square battlefield.  You can head east across
+the bridge or north-south along a red hallway.
+~
+0 8|32768 0
+D0
+A red hallway.
+~
+~
+0 -1 14202
+D1
+A wooden bridge.
+~
+~
+0 -1 14225
+D2
+A red hallway.
+~
+~
+0 -1 14224
+S
+
+#14202
+Hall of the Magi~
+You stand in a red hallway.  On both sides of the hall there is a picture
+depicting a battle scene.  Looking closer you see a mage conjure a fireball
+and hurl it at a gigantic warrior, whose scorched body lies before the mage.
+The mural has many slashes and claw marks on it from obviously angry
+warriors who feel outrage at this site.
+~
+0 8|32768 0
+D0
+A red hallway.
+~
+~
+0 -1 14203
+D2
+An intersection.
+~
+~
+0 -1 14201
+S
+#14203
+Hall of the Magi~
+You stand in a red hallway.  On both sides of the hall there is a picture
+depicting a battle scene.  Looking closer you see a mage conjure a fireball
+and hurl it at a gigantic warrior, whose scorched body lies before the mage.
+The mural has many slashes and claw marks on it from obviously angry
+warriors who feel outrage at this site.
+~
+0 8|32768 0
+D0
+A corner
+~
+~
+0 -1 14204
+D2
+A red hallway.
+~
+~
+0 -1 14202
+S
+#14204
+Corner~
+You stand on a corner in the Castle of Death.  Looking both south and east,
+the hall extends as far as you can see.  You sense another presence here, and
+hear death cries echo through the castle.  The only way out is to kill or be
+killed.
+~
+0 8|32768 0
+D1
+A white hallway.
+~
+~
+0 -1 14205
+D2
+A red hallway.
+~
+~
+0 -1 14203
+S
+#14205
+Hallway of the Holy~
+This hall seems to commemorate the victories of the most holy of clerics. 
+A painting is etched here on the wall.  It depicts a fight between the great
+Cleric Vyana and a huge giant warrior. T he warrior is surronded by a pink
+aura, and the cleric by a white aura.  The giant seems scorched , probably
+by a column of flame called to earth by the cleric.  Vyana with her huge
+mace is now finishing off the giant with a strike to the crotch.
+~
+0 8|32768 0
+D1
+A white hallway.
+~
+~
+0 -1 14206
+D3
+A corner
+~
+~
+0 -1 14204
+S
+
+#14206
+Hallway of the Holy~
+This hall seems to commemorate the victories of the most holy of clerics. 
+A painting is etched here on the wall.  It depicts a fight between the great
+Cleric Vyana and a huge giant warrior. T he warrior is surronded by a pink
+aura, and the cleric by a white aura.  The giant seems scorched , probably
+by a column of flame called to earth by the cleric.  Vyana with her huge
+mace is now finishing off the giant with a strike to the crotch.
+~
+0 8|32768 0
+D1
+An intersection
+~
+~
+0 -1 14207
+D3
+A white hallway.
+~
+~
+0 -1 14205
+S
+#14207
+Junction~
+An entrance-way leads to a bridge just to the south.  The bridge runs over a
+moat of acid that surronds a square battlefield.  You can head south across
+the bridge or west-east along a white hallway.
+~
+0 8|32768 0
+D1
+A white hallway.
+~
+~
+0 -1 14208
+D2
+A wooden bridge.
+~
+~
+0 -1 14230
+D3
+A white hallway.
+~
+~
+0 -1 14206
+S
+#14208
+Hallway of the Holy~
+You stand in a white hallway dedicated to the galant clerics who have
+triumphed in this hell-hole.  Depicted on the wall is a battle of magic. 
+A human cleric and an elven mage exchange spells from across a large square
+surronded by a green liquid.  The mage is down on one knee clutching his
+chest as a harm spell rips through him.  The fireball he has just sent
+injures the cleric, but the white aura that surounds him prevents much of
+the damage.
+~
+0 8|32768 0
+D1
+A white hallway.
+~
+~
+0 -1 14209
+D3
+An intersection.
+~
+~
+0 -1 14207
+S
+#14209
+Hallway of the Holy~
+You stand in a white hallway dedicated to the galant clerics who have
+triumphed in this hell-hole.  Depicted on the wall is a battle of magic. 
+A human cleric and an elven mage exchange spells from across a large square
+surronded by a green liquid.  The mage is down on one knee clutching his
+chest as a harm spell rips through him.  The fireball he has just sent
+injures the cleric, but the white aura that surounds him prevents much of
+the damage.
+~
+0 8|32768 0
+D1
+A corner.
+~
+~
+0 -1 14210
+D3
+A white hallway.
+~
+~
+0 -1 14208
+S
+#14210
+Corner~
+You stand on a corner in the Castle of Death.  Looking both south and west,
+the hall extends as far as you can see.  You sense another presence here, and
+hear death cries echo through the castle.  The only way out is to kill or be
+killed.
+~
+0 8|32768 0
+D2
+A blue hallway.
+~
+~
+0 -1 14211
+D3
+A white hallway.
+~
+~
+0 -1 14209
+S
+#14211
+Hallway of the Warrior~
+You stand in a blue hall dedicated to the legendary warriors who have
+overcome immense obstacles and triumped in this Castle of Death.  A massive
+mural covers the wall here and to the north.  It shows a great battle
+between a group of warriors and magic-users.  Fireballs leap from one magic
+user's hand just as he is slain by a fighter dressed in obsidian.  Another
+fighter dressed in mithril slays a cleric whose column of flame shoots down
+from the Heavens above.  It seems the fighters are winning this war.
+~
+0 8|32768 0
+D0
+A corner
+~
+~
+0 -1 14210
+D2
+A blue hallway.
+~
+~
+0 -1 14212
+S
+#14212
+Hallway of the Warrior~
+You stand in a blue hall dedicated to the legendary warriors who have
+overcome immense obstacles and triumped in this Castle of Death.  A massive
+mural covers the wall here and to the north.  It shows a great battle
+between a group of warriors and magic-users.  Fireballs leap from one magic
+user's hand just as he is slain by a fighter dressed in obsidian.  Another
+fighter dressed in mithril slays a cleric whose column of flame shoots down
+from the Heavens above.  It seems the fighters are winning this war.
+~
+0 8|32768 0
+D0
+A blue hallway.
+~
+~
+0 -1 14211
+D2
+An intersection
+~
+~
+0 -1 14213
+S
+#14213
+Four-way Junction~
+An entrance-way leads to a bridge just to the west.  The bridge runs over a
+moat of acid that surrounds a square battlefield.  You can head west across
+the bridge or west-east along a blue hallway.  To the east a tunnel leads
+out of this hell-hole.
+~
+0 8|32768 0
+D0
+A blue hallway.
+~
+~
+0 -1 14212
+D1
+A dark tunnel.
+~
+~
+0 -1 14247
+D2
+A blue hallway.
+~
+~
+0 -1 14214
+D3
+A wooden bridge.
+~
+~
+0 -1 14229
+S
+#14214
+Hallway of the Warrior~
+You stand in a blue hall dedicated to the legendary warriors who have
+overcome immense obstacles and triumped in this Castle of Death.  A huge
+mural covers the wall, depicting a battle between three magic-users and a
+solitary dwarven warrior.  The fighter wields a large two-headed axe, and
+systematically slays the magic-users whilst taking damage from their
+fireballs.  This mural seems to be blackened, probably from a magic-user's
+fireball trying to erase this obviously embarrasing scene.
+~
+0 8|32768 0
+D0
+An intersection
+~
+~
+0 -1 14213
+D2
+A blue hallway.
+~
+~
+0 -1 14215
+S
+#14215
+Hallway of the Warrior~
+You stand in a blue hall dedicated to the legendary warriors who have
+overcome immense obstacles and triumped in this Castle of Death.  A huge
+mural covers the wall, depicting a battle between three magic-users and a
+solitary dwarven warrior.  The fighter wields a large two-headed axe, and
+systematically slays the magic-users whilst taking damage from their
+fireballs.  This mural seems to be blackened, probably from a magic-user's
+fireball trying to erase this obviously embarrasing scene.
+~
+0 8|32768 0
+D0
+A blue hallway.
+~
+~
+0 -1 14214
+D2
+A corner.
+~
+~
+0 -1 14216
+S
+#14216
+Corner~
+You stand on a corner in the Castle of Death.  Looking both north and west,
+the hall extends as far as you can see.  You sense another presence here,
+and hear death cries echo through the castle.  The only way out is to kill or
+be killed.
+~
+0 8|32768 0
+D0
+~
+~
+0 -1 14215
+D3
+~
+~
+0 -1 14217
+S
+#14217
+Hallway of the Cunning~
+You are standing in a pitch-black hallway dedicated to the great thieves who
+have triumphed in this castle.  The mural on this wall shows Venom's epic
+battle with the great ogre warrior Hothu.  Having injured Hothu with his
+backstab, Venom dodges the attacks of the larger slower warrior, tiring him
+and leaving him open for the finishing blows of the swift thief.  All
+thieves throughout the land pay tribute to this great battle as it proves
+that the cunning and swift can outdo the strong.
+~
+0 1|8|32768 0
+D1
+A corner.
+~
+~
+0 -1 14216
+D3
+~
+~
+0 -1 14218
+S
+#14218
+Hallway of the Cunning~
+You are standing in a pitch-black hallway dedicated to the great thieves who
+have triumphed in this castle.  The mural on this wall shows Venom's epic
+battle with the great ogre warrior Hothu.  Having injured Hothu with his
+backstab, Venom dodges the attacks of the larger slower warrior, tiring him
+and leaving him open for the finishing blows of the swift thief.  All
+thieves throughout the land pay tribute to this great battle as it proves
+that the cunning and swift can outdo the strong.
+~
+0 1|8|32768 0
+D1
+~
+~
+0 -1 14217
+D3
+~
+~
+0 -1 14219
+S
+#14219
+Junction~
+An entrance-way leads to a bridge just to the north.  The bridge runs over a
+moat of acid that surronds a square battlefield.  You can head north across
+the bridge or west-east along a black hallway.
+~
+0 1|8|32768 0
+D0
+A wooden bridge.
+~
+~
+0 -1 14233
+D1
+~
+~
+0 -1 14218
+D3
+~
+~
+0 -1 14220
+S
+#14220
+Hallway of the Cunning~
+You are standing in a pitch-black hallway dedicated to the great thieves who
+have triumphed in this castle.  Casting your light upon the walls you see a
+large mural of how Jonty the Sly, triumphed over two magic-users by swiftly
+placing his twin daggers in their backs simultaneously.  The detail of the
+painting is exquisite, and you take note of the pain shown in both the magic
+user's faces.
+~
+0 1|8|32768 0
+D1
+~
+~
+0 -1 14219
+D3
+~
+~
+0 -1 14221
+S
+#14221
+Hallway of the Cunning~
+You are standing in a pitch-black hallway dedicated to the great thieves who
+have triumphed in this castle.  Casting your light upon the walls you see a
+large mural of how Jonty the Sly, triumphed over two magic-users by swiftly
+placing his twin daggers in their backs simultaneously.  The detail of the
+painting is exquisite, and you take note of the pain shown in both the magic
+user's faces.
+~
+0 1|8|32768 0
+D1
+~
+~
+0 -1 14220
+D3
+A corner
+~
+~
+0 -1 14222
+S
+#14222
+The Corner~
+You stand on a corner in the Castle of Death.  Looking both south and east,
+the hall extends as far as you can see.  You sense another presence here, and
+hear death cries echo through the castle.  The only way out is to kill or be
+killed.
+~
+0 8|32768 0
+D0
+A red hallway.
+~
+~
+0 -1 14223
+D1
+~
+~
+0 -1 14221
+S
+#14223
+Hall of the Magi~
+You stand in a red hallway.  A tremendous multicoloured picture is spread
+across the wall here and just to the south.  It depicts a battle between two
+magic-users, one a cleric, the other a mage.  The mage's hands are spread
+wide and from them issues a spray of many colours, which strikes the cleric,
+sending him sprawling onto the ground.  The clerics eyes are black, blinded
+by the powerful mage, who seems to be enjoying the pain he is inflicting
+upon the cleric.
+~
+0 8|32768 0
+D0
+A red hallway.
+~
+~
+0 -1 14224
+D2
+A corner.
+~
+~
+0 -1 14222
+S
+#14224
+Hall of the Magi~
+You stand in a red hallway.  A tremendous multicoloured picture is spread
+across the wall here and just to the south.  It depicts a battle between two
+magic-users, one a cleric, the other a mage.  The mage's hands are spread
+wide and from them issues a spray of many colours, which strikes the cleric,
+sending him sprawling onto the ground.  The clerics eyes are black, blinded
+by the powerful mage, who seems to be enjoying the pain he is inflicting
+upon the cleric.
+~
+0 8|32768 0
+D0
+An intersection.
+~
+~
+0 -1 14201
+D2
+A red hallway.
+~
+~
+0 -1 14223
+S
+#14225
+Wooden Bridge~
+You stand on a wooden bridge.  It runs over a stream of acid that completely
+encircles an open square battle field to the west.  Looking down, you notice
+the thick green acid, slowly comsuming a corpse.  The acid hisses and a
+lucid green smoke rises from the corpse, burning your eyes and throat.  You
+can proceed to the east to meet your maker, or back to the junction to the
+west.
+~
+0 32768 1
+D1
+The Arena.
+~
+~
+0 -1 14226
+D3
+An intersection.
+~
+~
+0 -1 14201
+S
+#14226
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around.  The odd weapon can
+be seen as well as many corpses and limbs...  Just before you lies the
+smoking remains of a warrior, burnt to a crisp by a magic-user's fireball.
+~
+0 32768 2
+D0
+The Arena.
+~
+~
+0 -1 14237
+D1
+The center of the Arena.
+~
+~
+0 -1 14227
+D2
+The Arena.
+~
+~
+0 -1 14234
+D3
+A wooden bridge
+~
+~
+0 -1 14225
+S
+#14227
+Centre of the Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around.  The odd weapon can
+be seen as well as many corpses and limbs...  Lying in front of you you see
+two halves of a body which has been sliced in two by someone of immense
+strength.  In the centre of this arena you see a ladder leading down into a
+dark hole.
+~
+0 32768 2
+D0
+The Arena.
+~
+~
+0 -1 14231
+D1
+The Arena.
+~
+~
+0 -1 14228
+D2
+The Arena.
+~
+~
+0 -1 14232
+D3
+The Arena.
+~
+~
+0 -1 14226
+D5
+Too dark to tell, but it stinks down there.
+~
+~
+0 -1 14239
+S
+#14228
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around.  The odd weapon can
+be seen as well as many corpses and limbs...  Lying in a heap on the ground
+are the remains of a warrior with a dagger still lodged in his back.
+~
+0 32768 2
+D0
+The Arena.
+~
+~
+0 -1 14236
+D1
+A wooden bridge
+~
+~
+0 -1 14229
+D2
+The Arena.
+~
+~
+0 -1 14235
+D3
+The center of the arena.
+~
+~
+0 -1 14227
+S
+#14229
+Wooden Bridge~
+You stand on a wooden bridge.  It runs over a stream of acid that completely
+encircles an open square battle field to the west.  Looking down, you notice
+a human skull bobbing up and down in the green liquid.  You can proceed to
+the west to meet your maker, of back to the junction to the east.
+~
+0 32768 1
+D1
+An intersection.
+~
+~
+0 -1 14213
+D3
+The Arena.
+~
+~
+0 -1 14228
+S
+#14230
+Wooden Bridge~
+You stand on a wooden bridge.  It runs over a stream of acid that completely
+encircles an open square battle field to the west.  Looking down, you notice
+the blade of a long sword float by.  You can proceed to the south to meet
+your maker, or back to the junction to the north.
+~
+0 32768 1
+D0
+An interestion.
+~
+~
+0 -1 14207
+D2
+The Arena.
+~
+~
+0 -1 14231
+S
+#14231
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scatterd around.  The odd weapon can
+be seen as well as many corpses and limbs...  You feel your stomach moves as
+you trip over a body, half of which has been eated away by a blast of acid.
+~
+0 32768 2
+D0
+A wooden bridge.
+~
+~
+0 -1 14230
+D1
+The Arena.
+~
+~
+0 -1 14236
+D2
+The center of the arena.
+~
+~
+0 -1 14227
+D3
+The Arena.
+~
+~
+0 -1 14237
+S
+#14232
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scatterd around.  The odd weapon can
+be seen as well as many corpses and limbs...  There is a black crispy
+substance lying at your feet surronded by alot of armor.  It seems some poor
+warrior has been disintergrated.
+~
+0 32768 2
+D0
+The centre of the arena.
+~
+~
+0 -1 14227
+D1
+The Arena.
+~
+~
+0 -1 14235
+D2
+A wooden bridge
+~
+~
+0 -1 14233
+D3
+The Arena.
+~
+~
+0 -1 14234
+S
+#14233
+Wooden Bridge~
+You stand on a wooden bridge.  It runs over a stream of acid that completely
+encircles an open square battle field to the west.  Looking down, you notice
+the robes of a magic-user slowly submerse in the think green acid.  You can
+proceed to the north to meet your maker, or back to the junction to the
+south.
+~
+0 32768 1
+D0
+The Arena.
+~
+~
+0 -1 14232
+D2
+An intersection
+~
+~
+0 -1 14219
+S
+#14234
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around.  The odd weapon can
+be seen as well as many corpses and limbs...  Squish!!  Looking down you see
+what you have stood in.  Some poor cleric has been disemboweled, and you have
+got intestine all over your boots.
+~
+0 32768 2
+D0
+The Arena.
+~
+~
+0 -1 14226
+D1
+The Arena.
+~
+~
+0 -1 14232
+S
+#14235
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around. The odd weapon can
+be seen as well as many corpses and limbs...  Your foot kicks someone's
+decapitated shrivelled head--you think it would make a great soccer ball.
+~
+0 32768 1
+D0
+The Arena.
+~
+~
+0 -1 14228
+D3
+The Arena.
+~
+~
+0 -1 14232
+S
+#14236
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around.  The odd weapon can
+be seen as well as many corpses and limbs...  You tred carefully, trying not
+to stand in the brains leaking from a gaping wound in a thieve's skull.
+~
+0 32768 2
+D2
+The Arena.
+~
+~
+0 -1 14228
+D3
+The Arena.
+~
+~
+0 -1 14231
+S
+#14237
+The Arena~
+You stand in the arena of this mighty castle.  Many a battle has been fought
+on this very ground.  Looking around the dirt beneath your feet has been
+stained a dark red, and many bones lie scattered around.  The odd weapon can
+be seen as well as many corpses and limbs...  Some thief went berserk here,
+judging by the amount of puncture wounds in the back of the mage lying at
+your feet.
+~
+0 32768 2
+D1
+The Arena.
+~
+~
+0 -1 14231
+D2
+The Arena.
+~
+~
+0 -1 14226
+S
+#14238
+The Pit~
+You stand in a dark, damp smelly pit.
+~
+0 4 1
+S
+#14239
+The Pit~
+You stand in a dark, damp smelly pit.  You can head in any direction, except
+down.  There is a ladder leading upto the arena.
+~
+0 1|8|512|32768 0
+D0
+~
+~
+0 -1 14241
+D1
+~
+~
+0 -1 14243
+D2
+~
+~
+0 -1 14240
+D3
+~
+~
+0 -1 14242
+D4
+~
+~
+0 -1 14227
+S
+#14240
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D0
+~
+~
+0 -1 14239
+D1
+~
+~
+0 -1 14244
+D3
+~
+~
+0 -1 14249
+S
+#14241
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D1
+~
+~
+0 -1 14245
+D2
+~
+~
+0 -1 14239
+D3
+~
+~
+0 -1 14250
+S
+#14242
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D0
+~
+~
+0 -1 14250
+D1
+~
+~
+0 -1 14239
+D2
+~
+~
+0 -1 14249
+S
+#14243
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D0
+~
+~
+0 -1 14245
+D2
+~
+~
+0 -1 14244
+D3
+~
+~
+0 -1 14239
+S
+#14244
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D0
+~
+~
+0 -1 14243
+D3
+~
+~
+0 -1 14240
+S
+#14245
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D2
+~
+~
+0 -1 14243
+D3
+~
+~
+0 -1 14241
+S
+#14246
+Entrance-way~
+You stand at the entrance to the building.  To the west a small passage
+leads to the Arena itself.  Now might be a good time to turn back.  There
+is a large sign attached to the side of the building.
+~
+0 4|32768 1
+D3
+~
+~
+0 -1 14247
+E
+sign~
+{x                      Welcome to the Arena
+		In these four walls , anything goes.
+		 Here your firends are your enemies.
+		   Complaining is frowned upon
+	 		    And lastly:
+		May your stay here be ....... brief!
+~
+S
+#14247
+Tunnel to the Arena~
+You are standing in a small black tunnel.  You see nothing except a light
+from either end.  Looking east, you see a stone path. To the west an
+intersection.
+~
+0 4|32768 1
+D1
+A small path
+~
+~
+0 -1 14246
+D3
+An intersection
+~
+~
+0 -1 14213
+S
+#14249
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D0
+~
+~
+0 -1 14242
+D1
+~
+~
+0 -1 14240
+S
+#14250
+The Pit~
+This dark smely hell hole churns your stomach.  Rats scurry beneath your
+feet, trying to escape with what they can.  This pit has been designed with
+one thing in mind... so that you can meet one-on-one with your opponent
+with no chance of double teaming.
+~
+0 1|8|512|32768 0
+D1
+~
+~
+0 -1 14241
+D2
+~
+~
+0 -1 14242
+S
+#0
+
+
+#$

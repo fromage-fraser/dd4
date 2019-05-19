@@ -1,0 +1,2357 @@
+#AREA	Shade~  Smugglers Ship~
+35 45 0 100
+
+#AREA_SPECIAL
+exp_mod 115
+$
+
+#HELPS
+100 smuggler_area~
+This little file is mainly to describe what the area is about and how it all
+works. There are (will) be two parts, the smugglers ship and the base
+in the caves under the cliff face.
+
+I have used the descriptions to hint to players what is coming up and a little
+bit to the nature of the ship with the hints about what the ship is doing
+there so far away from settlements etc... but they may or may not pick up
+on these. The purpose of these hints is to get the players to board the ship
+from behind by climbing up the anchor rather than foolishly boarding from in
+front where they will be seen by the pirates.
+
+The wandering mobs are there to make sleeping on the ship a little more risky
+but there are only 4 of them.~
+
+100 smuggler_cast~
+The names and numbers of all the mobs in this area is as follows. Note that
+the mob is unique unless otherwise stated.
+
+
+The Captain "Snake Eyes"
+Punjak the ships Mage
+Egor the first mate
+Harvy the Bosun
+One Eye the look out
+Serge the helmsman
+Rolf the cook
+Arnold a senior crewman
+Arthur a senior crewman
+Wandering crewmen (4)
+Sleeping crewmen (3)
+Sailors (4)
+Bucaneers (2)
+Gamblers (3)
+Captians Concubine
+Bodyguard
+
+There are only 4 mobs that wander - and you'll never guess which ones ;-) The
+rest are all meant to be in their respective places to tie in with the room
+description. All are armed which makes the area dangerous in that respect but
+only Punjak and the concubine have spells.
+
+~
+
+100 smuggler_locations~
+Well i thought i had done this but it seems otherwise.
+~
+0 $~
+
+
+#MOBILES
+#17500
+lookout oneeye~
+One-eye the lookout~
+One-Eye the lookout rests idly here.
+~
+One-eye is a short stocky man who wears a black eye patch accross the eye that
+he has lost.
+~
+2|32|64 8|32|65536 -300 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17501
+gambler man~
+A gambler~
+The shifty looking man smiles viciously at you.
+~
+The gambler wears white gloves and has his hair slicked back. You don't think
+stacking the cards would be something that he would consider below him.
+~
+2|32|64 0 -100 S
+32 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17502
+captain snake-eyes~
+Captain Snake-eyes~
+Captain Snake-Eyes stands arrogantly here.
+~
+Snake-eyes is a tall black haired man in his early thirties. He has the rough
+look of one who has spent their life at sea with tanned, weathered looking
+skin. His features are noble and handsome in a rugged sort of a way, you guess
+he is a bastard or poor nobleman.
+~
+2|32|64|16384 8|32|128 -700 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17503
+pirate~
+A Wandering Crewman~
+A crewman wanders aimlessly here.
+~
+He looks fit and healthy from climbing the riggings in high seas and
+strong winds. At his belt, his hand rests lightly on the hilt of
+his sabre. He is ready for action in whatever form it takes.
+~
+32|64 0 -300 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17504
+cook rolf man~
+Rolf the Cook~
+A big man with an apron works busily here.
+~
+Rolf the cook looks pretty pissed that you have entered his kitchen, you're
+probably cramping his style a bit too much.
+~
+2|32|64 8|32 -220 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17505
+Egor mate~
+Egor the Mate~
+Egor the first mate stands ready here.
+~
+Egor is a middle aged man his face and skin tanned and weather beaten from
+many years of sailing. He looks at you calmly, confident in his ability to 
+deal with you should you prove troublesome.
+~
+2|64 8|32|128 0 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17506
+Harvey Bosun~
+Harvey the Bosun~
+Harvey the Bosun directs loading of the cargo here.
+~
+Harvey is an ugly brute of a man and clearly one to be feared. The muslces
+in his arms and chest are huge and covered in scars, evidence perhaps that
+he is used to trouble.
+~
+2|32|64 0 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17507
+smuggler~
+A smuggler~
+The smuggler is doing his best to kill you!
+~
+The smuggler glares evilly at you and aims another blow at you while you're 
+not paying attention!
+~
+2|32|64 8|32 -400 S
+36 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17508
+crew~
+The Crew~
+The Crew of the Ship rush at you!!
+~
+The Crew number some twenty rough looking men and they come at you from all
+sides.  They are using an assortment of weapons, mainly sabres and knives 
+which, as you can relate to, are all sharp and of high quality. Perhaps it 
+would be a good idea in later life to not attack the crew all at once....
+~
+2|32|64 8|32|128|8192 -1000 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#17509
+serge helmsman~
+Serge the Helmsman~
+Serge the ships Helmsman rests casually here.
+~
+He looks just like what you would expect from someone who has spent years at
+the helm of a sailing ship. Serge's upper torso is huge and you can see the
+muslces flexing as he moves.
+~
+2|64 0 -200 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17510
+pirate~
+Resting pirate~
+A pirate rests in his hammock here.
+~
+The pirate looks tired and none to clean.
+~
+2|64 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17511
+concubine woman~
+The Captains Concubine~
+A beautiful, seductive woman lounges here.
+~
+The concubine is breathtakingly beautiful but there is an arrogant look on her
+face, how dare you come into her divine presence.
+~
+2|64 8|32|128|8192|524288 -400 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#17512
+bodyguard~
+Concubines Bodyguard~
+The concubines bodyguard waits calmly here.
+~
+The bodyguard is a large man, well over 6 feet tall with rippling muscles. He
+looks back at you calmly even as he whistles his blade toward you.
+~
+2|32|64 8 0 S
+38 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17513
+Arnold pirate~
+Arnold the 1st Officer~
+Arnold the 1st Officer is here.
+~
+Arnold is one of the two senior officers on board. Although in his early
+forties he still looks in good shape and the scars on his hands and arms
+indicate that the sabre at his hip has had a fair amount of use.
+~
+2|64 0 -200 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17514
+Arthur pirate~
+Arthur the 2nd Officer~
+Arthur the 2nd Officer slouches here.
+~
+Arthur is the most unlikely looking sailor you have ever seen. His hands are
+smooth, evidence that he doesn't do much hard work hauling cargo about. He
+looks lean and not all that strong but you sense that he has a power about him
+that makes other crewmen obey his orders.
+~
+2|64 0 -500 S
+41 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17515
+sailor~
+A sailor~
+The sailor is carefully loading the longboat here.
+~
+The sailor looks bored and not particularly bright. The easy way he
+maintains his balance in the stormy conditions suggest a life spent at
+sea.
+~
+2|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17516
+sailor~
+A sailor~
+A sailor is moving cargo here.
+~
+The sailor looks bored but seems to be handling his tasks easily. Despite
+the rocking of the ship in the high seas he easily keeps his footing, you
+guess he has spent most of his life at sea.
+~
+2|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17517
+Crewman~
+A Wandering Crewman~
+The crewman wanders aimlessly here.
+~
+He looks bored with life in general and seems to want to take it out on you.
+~
+32|64 0 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17518
+buccaneer~
+A Buccaneer~
+A buccaneer leans on the rail here.
+~
+The buccaneer looks calmy back at you assessing your strengths with an
+experienced eye.
+~
+2|64 8192 -200 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#17519
+Punjak~
+Punjak the Mage~
+Punjak looks arrogantly back at you.
+~
+Punjak is a crual and vain man, the world will be a better place without
+his presence.
+~
+2|32|64 2|8|32|128|524288 -500 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#17500
+draw drawer~
+a desk drawer~
+~
+~
+15 0 0
+20~ 5~ -1~ 11~
+5 0 0
+E
+draw drawer~
+The draw is stuck, you will have to force it to open it.
+~
+#17501
+diary~
+the mates diary~
+The mates diary rests here.~
+~
+8 0 1
+0~ 1~ 6~ 11~
+5 0 0
+E
+diary~
+Flicking through the diary, theres not much of interest. Few funny romantic
+adventures he's had, looks like he was quite a stud. Reading the last entry
+he mentions picking up the weapons from the dealer without any problems,
+you wonder what that is all about.
+~
+#17502
+cloth bolt~
+a cloth bolt~
+A large roll of cloth is stacked neatly here.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+15 0 0
+E
+cloth bolt~
+The cloth looks in fact to be silk wrapped in protective material which
+you presume protects from the salt water. It looks to be fairly valuable.
+~
+#17503
+cask wine~
+a wine cask~
+A small cask of wine is stacked here.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+10 0 0
+E
+wine cask~
+The wine cask looks to hold about a quart of wine. It is fairly sturdy
+in construction and is stoppered tightly.
+~
+#17504
+floorboard board~
+a loose floorboard~
+~
+~
+15 0 0
+20~ 5~ -1~ 11~
+5 0 0
+E
+floorboard floorboards~
+This floorboard appears to be loose, you think you can pull it up!
+~
+#17505
+ruby~
+a beautiful ruby~
+A breathtaking ruby rests in a padded leather cushion.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+5 0 0
+E
+~
+~
+#17506
+jewelled dagger~
+a jewelled dagger~
+A fine looking jewelled dagger rests here.~
+~
+5 0 1|8192
+0~ 8~ 28~ 11~
+15 0 0
+A
+19 4
+A
+18 10
+A
+2 1
+A
+14 20
+#17507
+pouch leather~
+a leather pouch~
+A leather pouch is folded neatly here.~
+~
+15 0 1
+10~ 5~ -1~ 11~
+5 0 0
+#17508
+wicked sabre~
+a wicked Sabre~
+A wicked looking curved blade lies here~
+~
+5 64 1|8192
+0~ 8~ 26~ 3~
+18 0 0
+A
+18 2
+A
+19 6
+#17509
+eye patch eyepatch~
+a black eye patch~
+A small black patch lies here~
+~
+9 1|64 1|16
+8~ 1~ 6~ 11~
+5 0 0
+A
+2 -1
+A
+18 -2
+A
+17 -6
+A
+19 4
+#17510
+cloth pants~
+cloth pants~
+A heap of cloth lies in a heap here~
+~
+9 0 1|32
+0~ 1~ 6~ 11~
+15 0 0
+#17511
+shirt ripped~
+a ripped shirt~
+A well worn ripped shirt lies in a heap here~
+~
+9 0 1|8
+0~ 1~ 6~ 11~
+8 0 0
+A
+2 1
+A
+13 20
+#17512
+sabre~
+snake-Eyes Sabre~
+A long sharp sabre lies here~
+~
+5 1|2|16|64 1|8192
+0~ 1~ 6~ 11~
+15 0 0
+A
+18 7
+A
+19 7
+#17513
+plain gold ring~
+a plain gold ring~
+An ordinary looking gold ring lies here~
+~
+9 1 1|2
+0~ 1~ 6~ 11~
+5 0 0
+A
+2 2
+A
+18 3
+A
+19 6
+#17514
+main-gauche~
+a Main-Gauche~
+A fencers main-gauche gleams brighty in the light~
+~
+5 2 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+A
+18 8
+A
+17 -30
+A
+2 3
+#17515
+tunic~
+a rich tunic~
+A neatly folded tunic is here~
+~
+9 64 1|8
+0~ 1~ 6~ 11~
+15 0 0
+A
+17 -5
+#17516
+belt~
+a Fine belt~
+A fine looking belt is coiled here~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+5 0 0
+#17517
+bandana black~
+a Black Bandana~
+A small piece of black cloth rests here~
+~
+9 0 1|16
+0~ 1~ 6~ 11~
+8 0 0
+A
+18 6
+A
+19 6
+A
+17 -10
+#17518
+amulet locket~
+a Gold Locket~
+A gold amulet with a locket lies here~
+~
+9 0 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+24 -5
+E
+locket~
+Inside the locket is a picture of a beautiful young woman, probably the
+captains
+mistress. You feel a momentary twinge of guilt knowing you have just killed
+her
+lover but then again what was a pretty girl like her associating with a
+pirate captain anyway?~
+#17519
+shirt white~
+a white silk shirt~
+A fine silk shirt is neatly folded here.~
+~
+9 1 1|8
+0~ 1~ 6~ 11~
+8 0 0
+A
+9 -8
+A
+17 -6
+A
+3 3
+#17520
+ring jeweled~
+a jeweled ring~
+An expensive looking ring lies on the ground~
+~
+9 64 1|2
+0~ 1~ 6~ 11~
+4 0 0
+A
+24 -5
+A
+2 3
+#17521
+pants black~
+black Silk Pants~
+A pair of black silk pants lie here~
+~
+9 0 1|32
+0~ 1~ 6~ 11~
+12 0 0
+A
+17 -6
+#17522
+poniard dagger~
+a sharp poniard~
+A sharp poniard lies hidden in the shadows~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~
+12 0 0
+A
+18 8
+A
+19 3
+#17523
+apron~
+a white cook's apron~
+A crumpled white apron lies here.~
+~
+9 0 1|1024
+0~ 1~ 6~ 11~
+10 0 0
+A
+5 3
+#17524
+skillet~
+a huge metal skillet~
+The biggest, heaviest skillet you ever saw is here~
+~
+5 64 1|8192
+0~ 1~ 6~ 11~
+60 0 0
+A
+19 12
+A
+18 -12
+#17525
+White Knife ~
+a White Throwing Knife~
+A beautifully balanced white hilted throwing knife rests here~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+A
+18 8
+A
+19 4
+A
+2 2
+#17526
+Black Knife~
+a Black Throwing Knife~
+A beautifully balanced black hilted throwing knife rests here~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~
+8 0 0
+A
+19 6
+A
+18 6
+A
+2 2
+#17527
+Blue Shirt~
+a pale blue shirt~
+A stylish looking blue shirt lies crumpled on the ground~
+~
+9 64 1|8
+0~ 1~ 6~ 11~
+16 0 0
+A
+18 6
+#17528
+pants silk~
+black cloth pants~
+A pair of expensive looking black pants has been discarded here~
+~
+9 64 1|32
+0~ 1~ 6~ 11~
+16 0 0
+A
+17 -8
+A
+18 4
+#17529
+headband~
+a scruffy headband~
+A not so clean headband has been tossed to the deck here~
+~
+9 64 1|16
+0~ 1~ 6~ 11~
+5 0 0
+A
+2 2
+A
+17 -6
+#17530
+sparking stone~
+a sparkling stone~
+A sparkling stone glows brightly here~
+~
+8 64 32769
+0~ 0~ 0~ 0~
+0 0 0
+A
+19 5
+A
+18 5
+#17531
+white gloves~
+white Gloves~
+A pair of elegant white gloves lie neatly here~
+~
+9 0 1|128
+0~ 1~ 6~ 11~
+8 0 0
+A
+2 1
+#17532
+belaying pin~
+a Belaying Pin~
+An ugly looking belaying pin rests here~
+~
+5 64 1|8192
+0~ 1~ 6~ 8~
+16 0 0
+A
+18 -6
+A
+2 -2
+A
+19 12
+E
+pin~
+Although cumbersome to use and difficult to control, it is clear that if the
+spike
+actually connects with anything it is going to do a lot of damage.~
+#17533
+rope belt~
+a rope belt~
+A coil of ragged looking rope rests here~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+8 0 0
+#17534
+waistcoat stained~
+a Scruffy Waistcoat~
+What remains of a once fine waistcoat lies here~
+~
+9 64 1|1024
+0~ 1~ 6~ 11~
+12 0 0
+A
+1 2
+A
+5 2
+E
+coat waistcoat~
+This old waistcoat appears to have been exposed to violent weather and the odd
+sharp object. Although retaining it's approximate shape, all the buttons are
+gone and it now has to be worn open which on a well muscled chest such as your
+own
+will look quite good.~
+#17535
+sabre~
+a sabre~
+A plain sabre lies here~
+~
+5 0 1|8192
+0~ 1~ 6~ 3~
+5 0 0
+#17536
+blade~
+a blade~
+A well used blade is here~
+~
+5 0 1|8192
+0~ 1~ 6~ 3~
+25 0 0
+A
+18 5
+A
+19 5
+#17537
+linen pants~
+linen pants~
+A pair of linen pants is here~
+~
+9 0 1|32
+0~ 1~ 6~ 11~
+12 0 0
+A
+1 2
+A
+5 1
+#17538
+linen shirt~
+a linen shirt~
+A linen shirt lies here~
+~
+9 0 1|8
+0~ 1~ 6~ 11~
+10 0 0
+A
+17 -8
+#17539
+leather boots~
+leather boots~
+A comfortable pair of leather boots stand here~
+~
+9 0 1|64
+0~ 1~ 6~ 11~
+8 0 0
+A
+2 2
+#17540
+silk gown~
+a silk gown~
+An expensive gown of silk is here~
+~
+9 64 1|8
+0~ 1~ 6~ 11~
+15 0 0
+A
+12 60
+A
+3 2
+#17541
+sash lavender~
+a lavender sash~
+A lavender sash rests here~
+~
+9 64 1|2048
+0~ 1~ 6~ 11~
+10 0 0
+A
+17 -10
+A
+12 50
+A
+24 -5
+#17542
+ring diamond~
+a diamond ring~
+A ring sparkles in the light~
+~
+9 1|64 1|2
+0~ 1~ 6~ 11~
+5 0 0
+A
+9 -10
+A
+3 3
+A
+12 45
+#17543
+diamond bracelet~
+a diamond bracelet~
+A bracelet sparkles in the light here~
+~
+9 1|64 1|4096
+0~ 1~ 6~ 11~
+12 0 0
+A
+12 25
+A
+17 -15
+A
+24 -5
+#17544
+diamond stone~
+a diamond stone~
+A stone of sparkling diamond floats here~
+~
+8 64 32769
+0~ 1~ 6~ 11~
+0 0 0
+A
+12 50
+A
+24 -5
+#17545
+main-gauche~
+a main-guache~
+A fencers main-gauche is here~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~
+5 0 0
+A
+17 -10
+A
+2 2
+#17546
+armguard silver~
+silver armguard~
+A silver armguard lies here~
+~
+9 0 1|256
+0~ 1~ 6~ 11~
+12 0 0
+A
+17 -10
+#17547
+dirk~
+a heavy dirk~
+A short heavy bladed dirk lies here~
+~
+5 0 1|8192
+0~ 1~ 6~ 2~
+5 0 0
+#17548
+boots leather~
+hard leather boots~
+A pair of hard leather boots stand here~
+~
+9 0 1|64
+0~ 1~ 6~ 11~
+5 0 0
+#17549
+knife~
+a short knife~
+A short knife with a keen edge lies here~
+~
+5 0 1|8192
+0~ 1~ 6~ 2~
+7 0 0
+#17550
+shirt cotton white~
+a cotton shirt~
+A white cotton shirt lies here~
+~
+9 0 1|8
+0~ 1~ 6~ 11~
+12 0 0
+#17551
+blue pants~
+blue cotton pants~
+A stylish looking pair of blue pants lie here~
+~
+9 0 1|32
+0~ 1~ 6~ 11~
+12 0 0
+A
+13 25
+#17552
+rapier~
+a light Rapier~
+A thin, sharp rapier rests on the ground here~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~
+12 0 0
+A
+18 8
+A
+19 2
+#17553
+pearl cufflink~
+a pearl cufflink~
+A small pearl cufflink is here~
+~
+9 0 1|4096
+0~ 1~ 6~ 11~
+5 0 0
+A
+2 1
+A
+24 -5
+#17554
+key~
+a small key~
+A small key is here~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~
+2 0 0
+#17555
+dagger~
+A sharp dagger~
+A small but sharp dagger is here.~
+~
+5 64 1|8192
+0~ 1~ 6~ 11~
+12 0 0
+A
+18 2
+A
+19 2
+#17556
+robes~
+grey mages robes~
+Torn grey robes lie here~
+~
+9 64 1|1024
+0~ 1~ 6~ 11~
+12 0 0
+A
+24 -8
+#17557
+boots riding~
+soft leather riding boots~
+A pair of elegant riding boots stand neatly here~
+~
+9 0 1|64
+0~ 1~ 6~ 11~
+15 0 0
+A
+14 50
+A
+12 30
+#17558
+hat~
+A wizards hat~
+A pointed ridiculous looking hat is here~
+~
+9 64 1|16
+0~ 1~ 6~ 11~
+12 0 0
+A
+3 2
+A
+4 2
+#17559
+wand~
+A Melted Wand~
+A battered wands lies on the ground here~
+~
+3 64 1|16384
+40~ 5~ 5~ acid blast~
+12 0 0
+#0
+
+
+#ROOMS
+#17500
+A game Trail~
+The trail winds slowly through the bush here. On both sides of the trial the
+forest thickens and in the distance you catch the faint smell of salt water
+in the air. The trail continues to the east and west.
+~
+0 0 3
+D1
+~
+~
+0 -1 17501
+D3
+~
+~
+0 -1 18435
+S
+#17501
+A game Trail~
+The trees begin to thin out as you continue along. The scent of the sea
+is getting closer now but you cant make anything out in the distance. The
+trail continues to the east and west.
+~
+0 0 3
+D1
+~
+~
+0 -1 17502
+D3
+~
+~
+0 -1 17500
+S
+#17502
+Sand Dunes~
+You are closing in on the sea now, you arrive at a collection of rolling sand
+dunes which stretch out in all directions. You can hear waves breaking to the
+east.
+~
+0 0 2
+D0
+~
+~
+0 -1 17503
+D1
+~
+~
+0 -1 17507
+D2
+~
+~
+0 -1 17505
+D3
+~
+~
+0 -1 17501
+S
+#17503
+Sand Dunes~
+You walk amoung the sand dunes using tussock grass for hand grips as you
+struggle to climb the steep hills. Looking around you notice that for a
+place so close ot the sea there is very little noise from wild life and sea
+birds.
+~
+0 0 2
+D0
+~
+~
+0 -1 17504
+D2
+~
+~
+0 -1 17502
+S
+#17504
+Cliff Face~
+After a long struggle through the sand dunes you finally come out onto
+a grassy bank. Carefully moving along it, you come to the edge and look
+over; its a goodly way down. As you look out you can see a ship rocking gently
+at anchorage. You wonder why a ship would be here, there are no towns
+about for quite some distance.
+~
+0 0 2
+D2
+~
+~
+0 -1 17503
+S
+#17505
+Sand Dunes~
+You struggle up and down the dunes for a little while but you dont seem to
+be getting anywhere in a hurry. Further to the south you can see the
+forest once more but its hard work slugging through these dunes and you think
+it might be best not to head that way. You can head back towards the trial to
+the north or head off towards the beach to the east.
+~
+0 0 2
+D0
+~
+~
+0 -1 17502
+D1
+~
+~
+0 -1 17506
+S
+#17506
+The Beach~
+You slide down the last dune to arrive in an undignified sort of way on the
+beach. Its a nice beach though, smooth sand, quite sheltered, a nice spot
+for a bit of sun bathing and a few quiet ones. To the north the beach
+continues but the way is blocked by a build up of timber and other sea
+debris. Looking past it you think you can just make out a ship but when you
+look closer you cant see anything, guess you must have imagined it since
+theres no reason for a ship to be out here is there?
+~
+0 0 2
+D3
+~
+~
+0 -1 17505
+S
+#17507
+The Beach~
+After a struggle you finally crest the last sand dune and look over the sea.
+Its a picturesque view from here, smooth white sand, the sun shining brightly
+and not a breath of wind. As you stand admiring the view, you trip over your
+own feet and fall down the bank and land in a heap at the bottom, more than
+a bit embarrased! You quickly look around to check that no one saw anything,
+luckily there's no one about. But in the distance you thought you heard
+laughter quickly stiffled. The beach continues to the north and
+the sea looks inviting enough for a quick dip.
+~
+0 0 2
+D0
+~
+~
+0 -1 17508
+D1
+~
+~
+0 -1 17509
+D3
+~
+~
+0 -1 17502
+S
+#17508
+A rocky wall~
+Strolling along the beach you soak up a few rays and do some work on your
+tan. After a few minutes you arrive at a rocky bank. Looking up, you can
+see that the rocks go up for quite a goodly way, probably not a good idea to
+try climbing them just in case you slip. In front of you the rocks head
+out to sea and then curve around the rock face. They look a bit slippery but
+you think you could climb them without too much difficulty if your careful.
+~
+0 0 2
+D0
+~
+~
+0 -1 17511
+D1
+~
+~
+0 -1 17510
+D2
+~
+~
+0 -1 17507
+S
+#17509
+The Sea~
+You slowly wade out into the water. Its quite warm nice and with little
+wind and plenty of sun you relax and swim about for a while and soak up
+some rays. Looking about, the water looks a bit more choppy to the south
+and not nearly as pleasant as here. To the north the water looks as good as it
+is here, you cant see anything to the east further out to sea so decide
+it would be best to stay close to the shore for the meantime just in case
+theres a rip.
+~
+0 0 6
+D0
+~
+~
+0 -1 17510
+D3
+~
+~
+0 -1 17507
+S
+#17510
+The Sea~
+The water is nice and warm here and you enjoy a pleasant swim and lounge
+about in the water. To the north is a rocky looking peninsula, to
+the south the water looks pleasant. You decide against going further
+out to sea as you cant see much out there.
+~
+0 0 6
+D2
+~
+~
+0 -1 17509
+D3
+~
+~
+0 -1 17508
+S
+#17511
+Rocky Peninsula~
+You move carefully accross the rocks and out towards the end of the
+peninsula. The rocks are quite slippery and its tough going You notice that
+there are a few seagulls out here and a few more heading in shore. You are
+about half way along the peninsula at this point and you can probably make
+it all the way without too much difficulty.
+~
+0 0 5
+D1
+~
+~
+0 -1 17512
+D2
+~
+~
+0 -1 17508
+S
+#17512
+End of the Peninsula~
+You have made it almost to the end of the peninsula when you look about
+and realise that its getting a lot colder. With all your concentration going
+on where you where going you didnt notice that its getting really windy now
+and it looks like a storm is brewing. Looking back towards the beach you
+realise that the tide is rising very quickly and you arent going to be
+able to make it all the way back before the storm hits. But wait in the
+distance
+you can see a ship, maybe its there to wait out the storm. Its not that far
+out you could probably swim out to it. Alternatively you could keep moving
+along
+the peninsula and see where it leads and hope that there is some shelter
+about.
+~
+0 0 5
+D0
+~
+~
+0 -1 17519
+D1
+~
+~
+0 -1 17513
+S
+#17513
+Cold Sea~
+Brrrr! The water is icy when you hit and pretty choppy. You can hardly make
+out the ship in the distance its just a patch of black in the storm. Hang on,
+you see a light flash once, then again and then once more. Its hard to tell if
+the ships signal to something, perhaps they saw you and are trying to
+guide you in. You can make straight for the ship by swimming to the north
+or you could head out to sea further before heading towards it. You dont
+think that you will be able to make it back to the rocks, the sea is dashing
+against them firmly and you dont feel like getting squashed today.
+~
+0 1|8192 6
+D0
+~
+~
+0 -1 17517
+D1
+~
+~
+0 -1 17514
+S
+#17514
+Cold Sea~
+Its getting real rough out here now! But you are getting close to the ship
+now, you can turn north and come at it from behind. Your arms are
+starting to feel the strain of the swim and your muscles are getting sore
+in the cold so heading further out to sea would be suicide.
+~
+0 1 6
+D0
+~
+~
+0 -1 17515
+D3
+~
+~
+0 -1 17513
+S
+#17515
+Behind the Ship~
+You finally make it to the ship and rest against the hull. The storm is
+raging fully now and you think its a good idea to get aboard as quick
+as you can. Up close to the ship you notice that it is built for speed
+and only has a small cargo hold. You can hear voices above calling
+out occasionaly. Strangely there are no rungs up the side of the ship
+to board her and something warns you that calling out might not
+be a good idea. You can climb up the anchor to have a closer look.
+~
+0 1 6
+D2
+~
+~
+0 -1 17514
+D4
+~
+~
+0 -1 17516
+S
+#17516
+The Top of the Anchor~
+You strain and haul yourself up the length of the anchor. Resting weary
+muscles, you look out accross the ship. The deck is almost devoid of people
+but there are two men leaning against the rail looking towards shore. One
+of them has a lantern that he is using to make the flashes. Its then that
+you realise that there is an answering flash coming from shore. Looks
+like some communication is going on here, but what is this all about?
+You can hop over the rail and climb onto the main deck from here.
+~
+0 1|4 2
+D0
+~
+~
+0 -1 17529
+S
+#17517
+Front of the Ship~
+You swim out towards the ship as the storm worsens and the rain starts
+really coming down. As you approach the ship, a rope ladder is lowered
+down for you to climb up on board. Gratefully you reach the for the rope
+and grab hold of it, getting ready to climb up.
+~
+0 1 6
+D4
+~
+~
+0 -1 17518
+S
+#17518
+Main-Deck  StarBoard~
+You haul yourself up the ladder painfully and finally reach the top.
+Looking up as you climb over you hear a gasp of surprise, "Hey this aint
+Harry!" There are three rough looking characters here and by the looks of
+it they arent happy to see you. The biggest of them says:
+"Kill the bastard! No witness's"
+Uh oh....
+~
+0 1 1
+D3
+~
+~
+0 -1 17551
+S
+#17519
+Clinging to the Rocks~
+You ease your way along the rocks being careful not to slip into the
+water. As you move along you see a flash of light about 50 metres in
+front of you. Pressing yourself against the rock to avoid being seen you
+wonder what is out there?
+You can see that theres no way forward as the rocks are already almost
+covered by the tide and with the strong wind climbing would be dangerous.
+You are beginning to feel a little bit desperate as your options run out.
+~
+0 1 5
+D2
+~
+~
+0 -1 17512
+S
+#17520
+Main Deck Port~
+You stand on the main deck of the ship just below the forecastle on
+the port side of the ship. You can make out several figures leaning on
+the starboard rail looking over towards the shore. Several are readying
+the long boat to take to shore. There is a door to the west here and the main
+deck continues to the north and east.
+~
+0 1 2
+D0
+~
+~
+0 -1 17521
+D1
+~
+~
+0 -1 17523
+D3
+~
+~
+1 -1 17534
+D4
+~
+~
+0 -1 17529
+S
+#17521
+Centre of the Main Deck~
+You stand in roughly the middle of the main deck. Towards starboard you
+can see men talking quietly amoungst themselves and further along the rail
+crewmen are loading the long boat with what looks like rolls of cloth
+of some kind. To the east is the main mast and the main deck continues to
+the north and south. A ladder leads down into the cargo hold.
+~
+0 1 2
+D0
+~
+~
+0 -1 17522
+D1
+~
+~
+0 -1 17524
+D2
+~
+~
+0 -1 17520
+D5
+~
+ladder~
+1 -1 17547
+S
+#17522
+Main Deck Starboard~
+You quietly slide up to several feet away from the men. As yet they dont
+seem to be aware of your presence. The three men are talking quielty amoungst
+themselves, in the wind and rain you can't catch any of the words. To the
+east there are two men loading the long boat with cloth bales and small
+casks of what look like wine or perhaps ale. There is also a door to the
+west and stairs lead up to the forecastle.
+~
+0 1 2
+D1
+~
+~
+0 -1 17525
+D2
+~
+~
+0 -1 17521
+D3
+~
+~
+1 -1 17532
+D4
+~
+~
+0 -1 17526
+S
+#17523
+Main Deck Port~
+You are just below the Poop deck by the port rail. Stairs lead up to
+the deck and there is also a door in the east wall. To the north is the
+main mast.
+~
+0 1 2
+D0
+~
+~
+0 -1 17524
+D1
+~
+~
+1 -1 17542
+D3
+~
+~
+0 -1 17520
+D4
+~
+~
+0 -1 17543
+S
+#17524
+By the Mast~
+You stand next to the ships main mast. Looking up you can see it is about
+fifty feet up to the crows nest. In the wind and rain you cant make out if
+anyone is up there or not but a rope ladder is attached to the mast, you
+guess for use in windy conditions such as these. To the north is the long
+boat and the deck continues west and south.
+~
+0 1 2
+D0
+~
+~
+0 -1 17525
+D2
+~
+~
+0 -1 17523
+D3
+~
+~
+0 -1 17521
+D4
+~
+~
+0 -1 17545
+S
+#17525
+Loading the Longboat~
+You move along to the starboard rail, where two men are loading the long
+boat. They are carrying cloth bolts and stacking them neatly in the boat
+along with several casks of wine. The two men are staggering with a large
+bolt of cloth and dont seem to have noticed you just yet. To the east is a
+door, to the south is the main mast and to the west the rail continues.
+~
+0 1 2
+D1
+~
+~
+1 -1 17549
+D2
+~
+~
+0 -1 17524
+D3
+~
+~
+0 -1 17522
+D4
+~
+~
+0 -1 17544
+S
+#17526
+Star Board Rail~
+You come up quietly behind the two men. They havent heard you as yet
+and dont look particulary aware of whats going on, this may have something
+to do with the bottle they are passing between them. To the south the
+forecastle continues or you can go down the stairs to the maindeck
+where a few men are talking amoungst themselves.
+~
+0 1 2
+D2
+~
+~
+0 -1 17527
+D5
+~
+~
+0 -1 17522
+S
+#17527
+The Forecastle~
+You stand in the centre of the forecastle. To the south is the main anchor
+where you climbed up, to the west is the prow of the ship and to the north
+you can see the two men leaning on the rail. Looking over the main deck
+you can see several men leaning on the starboard rail and another couple
+loading up a longboat. All up you can see about six men, seven counting the
+lookout at the top of the main mast.
+~
+0 1 2
+D0
+~
+~
+0 -1 17526
+D2
+~
+~
+0 -1 17529
+D3
+~
+~
+0 -1 17528
+S
+#17528
+The Prow~
+This is the prow of the ship. A large ballista is here, bolted securely to
+the deck. Looking over the rail you can see a large ram, clearly this ship
+is built for combat. The wind and rain are getting worse and you are
+starting to feel cold.
+~
+0 1 2
+D1
+~
+~
+0 -1 17527
+S
+#17529
+Port Side of the Forecastle~
+You hop over the rail and stand on the port side of the forecastle. The men
+are to the north in front of you, they still havent heard you yet. From
+here you can move accross the forecastle or climb down some stairs onto
+the main deck.
+~
+0 1 2
+D0
+~
+~
+0 -1 17527
+D5
+~
+~
+0 -1 17520
+S
+#17530
+The Galley~
+You have entered the ships galley. The room is extensively furnished with
+cooking equipment, several large cooking pots and a large open fire on the
+east wall. Roasting on the fire is what smells like roast boar, and tending
+the evening meal is a large man. The man turns to look at you...
+~
+0 8 0
+D1
+~
+~
+1 -1 17534
+S
+#17531
+A Small Corridor~
+You have entered a narrow corridor that seperates the port and starboard
+cabins. The corridor continues to the west and doors lead north and south.
+~
+0 8 0
+D0
+~
+~
+1 -1 17532
+D2
+~
+~
+1 -1 17534
+D3
+~
+~
+0 -1 17533
+S
+#17532
+The Storeroom~
+You enter a large room. The walls are lined with shelves and there are several
+racks and stands arranged in an orderly fashion around the room. A quick look
+at the shelves reveals mainly sailing equipment, spare lines, a couple of
+spare
+sails and other assorted equipment. The racks and stands hold weapons, mainly
+short swords with the occasinal heavier weapon. They also contain a selection
+of ranged weapons both cross bows and bows. Lastly you come accross a
+dozen ballista bolts and some barrels of what you guess is some sort of
+explosive liquid possibly pitch. A large door opens to the east and a small
+door opens to the south.
+~
+0 8 0
+D1
+~
+~
+1 -1 17522
+D2
+~
+~
+1 -1 17531
+S
+#17533
+A Small Corridor~
+The corridor continues here. There is a door in the north wall and the
+corridor continues east and west.
+~
+0 8 0
+D0
+~
+~
+1 -1 17535
+D1
+~
+~
+0 -1 17531
+D3
+~
+~
+0 -1 17539
+S
+#17534
+The Mess Hall~
+You have entered the ships mess hall. A large table with seats for around
+twenty people takes up most of the room. Further to the west is a large door
+which by the sound of it leads to the galley. There is also a small door
+leading north.
+~
+0 8 0
+D0
+~
+~
+1 -1 17531
+D1
+~
+~
+1 -1 17520
+D3
+~
+~
+1 -1 17530
+S
+#17535
+Senior Crew Quarters~
+This is a small but comfortable looking cabin. There are four bunks against
+the wall, two on the west and east walls. In the centre of the room is a
+small table with a deck of cards and a few dice resting on top of it. It
+appears that no one is here.
+~
+0 8 0
+D2
+~
+~
+1 -1 17533
+E
+Dice~
+The dice are ordinary poker dice but are of a high quality. Or at least
+were originally, years of use has diminshed them in value.
+~
+E
+Bunk Bunks~
+The bunks are fairly solid with comfortable looking mattresses. It looks
+like these quarters are for senior crew members of some kind.
+~
+E
+cards~
+Just a standard deck of 52 cards.
+~
+E
+table~
+The table is in fair condition and is securly bolted to the floor.
+~
+S
+#17536
+End of the Corridor~
+The corridor comes to and end here. Looking out the small port hole you can
+see the storm is gaining in ferocity. There are doors to the north and south.
+~
+0 8 0
+D0
+~
+~
+1 -1 17538
+D1
+~
+~
+0 -1 17539
+D2
+~
+~
+1 -1 17537
+S
+#17537
+Guest Quarters~
+You have entered a stylish looking cabin. On each the the walls is a
+large bunk with what look like silk sheets. Under each rests what look
+like sea chests or lockers. There is a desk against the southern wall
+and a small book case against the western wall. There is no one in the room.
+~
+0 8 0
+D0
+~
+~
+1 -1 17536
+E
+Bunk Bunks~
+These bunks are much more upmarket than others you have seen, clearly the
+crew take on paying passengers occasionally.
+~
+E
+chest chests~
+The chests all contain personal items, nothing of any real interest.
+~
+E
+book case bookcase~
+Looking at the book case you see the books are mainly to do with sailing,
+several on navigation and the odd one on naval battles of the past.
+~
+E
+desk~
+The desk appears to be unused but is of good quaility and appears to be
+stocked with writing implements and paper.
+~
+S
+#17538
+Crew Quarters~
+This room is similar to the last crew cabin. There are two hammocks on
+each wall other than the south, and under each hammock is a sea chest. The
+table in the middle of the room is much tidier than the last, the bottles
+are stacked in a much neater fashion. You cant see anyone here.
+~
+0 8 0
+D2
+~
+~
+1 -1 17536
+E
+Chest Chests~
+A quick search of the chest reveals nothing or particular value. Each one
+contains personal objects and cloths which are none to clean.
+~
+E
+Table~
+The table is wooden and bolted to the floor. Cups and bottles are spread
+about, most are empty.
+~
+E
+Hammock Hammocks~
+The hammocks are fairly sturdy but are distinctly unclean and
+are emitting a rather unpleasent odor.
+~
+S
+#17539
+A Small Corridor~
+The corridor continues east and west here. There are doors north and south.
+~
+0 8 0
+D0
+~
+~
+1 -1 17540
+D1
+~
+~
+0 -1 17533
+D2
+~
+~
+1 -1 17541
+D3
+~
+~
+0 -1 17536
+S
+#17540
+Crew Quarters~
+This is a slightly larger cabin. On each of the north, east and west walls
+are two hammocks. Underneath each hammock is a sea chest, all are closed. In
+the centre of the room is a table with various cups and bottles scattered
+about in an untidy manner. Three of the hammocks appear to be occupied.
+~
+0 8 0
+D2
+~
+~
+1 -1 17539
+E
+chest sea~
+A brief search of the chests reveals little of interest, they contian only
+personal items and clothes.
+~
+E
+Table~
+Cups and bottles are scattered about the table, it looks like some heavy
+drinking as been taking place.
+~
+E
+hammock hammocks~
+The hammocks apear sturdy but uncomfortable, but then one could say that
+about all hammocks.
+~
+E
+bottle bottles cups cup~
+The cups and bottles are spread about in a very untidy fashion. By the looks
+of how much has been drunk, this is hardly surprising.
+~
+S
+#17541
+Mates Cabin~
+The door opens into a rough looking room. There are two unmade bunks, one
+against each of the east and west walls. On the south wall are a large desk
+and a cabinet with a drinks tray. Against the north wall, just along from
+the door is a thick dart board which has several throwing knives stuck into
+it. Standing in the centre of the room is a rugged looking man, holding
+a throwing knife poised for a throw. He looks up as you enter.~
+0 8 0
+D0
+~
+~
+1 -1 17539
+E
+Knife Board~
+The knife board has three knives embedded in it. They are of average quality,
+rubbing your wounds you guess the Mate was holding his best ones.
+~
+E
+Desk~
+This is a writing desk of poor quality but has been lovingly restored and
+cared for. A flick through the papers reveals nothing of particular
+interest. Opening all the draws you find only writing implements, but
+one draw looks like you will have to force open.
+~
+S
+#17542
+The Captains Quarters~
+You open the door and look into a lavishly furnished room about 30 feet
+long. There is a large elegant writing desk against the south wall with
+several charts and maps stowed neatly beside it. There is a table in the
+centre of the room with a bottle of wine and two wine glasses, both are
+full. In the south-east corner is a large double bed and lying upon it is
+a very attractive looking young woman. Beside her is a hulk of a man who
+makes even your well developed physique look tiny. To your dismay the
+woman purrs to her bodyguard, "I dont want to be disturbed". A door leads
+to the north into the twin of this cabin.
+~
+0 8 0
+D0
+~
+~
+1 -1 17549
+D1
+~
+~
+1 17554 17550
+D3
+~
+~
+1 -1 17523
+E
+desk~
+The desk contains little of any interest. You do find a scribbled note
+about purchasing a something for delivery to the lizards but you can't
+really make it out.
+~
+E
+wine glass glasses bottle~
+The wine is a classy red, slightly over ten years old. A quick sample
+proves that it is an excellent bottle, pity that the bottle is opened.
+~
+S
+#17543 At the Helm~
+You have arrived by the ships helm. Manning the helm is a brute of a man,
+his muslces ripple as he moves his arms. He is resting against the helm and
+does not appear to have seen you. To the north the Poop deck continues and
+there are stairs leading down to the main deck as well.
+~
+0 1 2
+D0
+~
+~
+0 -1 17544
+D5
+~
+~
+0 -1 17523
+S
+#17544
+The Poop Deck~
+You stand in the centre of the poop deck. Looking around you cant see
+anyone, but it is dark and its difficult to see in the rain. To the south
+you can see the helm and a man standing by it. Stairs also lead down to the
+main deck.
+~
+0 1 2
+D2
+~
+~
+0 -1 17543
+D5
+~
+~
+0 -1 17525
+S
+#17545
+Up the Mast~
+You cling to the rope ladder tightly as you are thrown roughly about in the
+wind! The crows nest is another few metres you think you can make it without
+being blown off.
+~
+0 1 2
+D4
+~
+~
+0 -1 17546
+D5
+~
+~
+0 -1 17524
+S
+#17546
+The Crows Nest~
+You haul yourself over the edge of the crows nest. You think you should
+be able to get a good view of the ship from here. You are about to
+collaspe in exhaustion but before you do a wicked sabre comes whistling
+towards you!
+~
+0 1 2
+D5
+~
+~
+0 -1 17545
+E
+ship over boat~
+Looking over the ship, you can make out an approximate layout. Below
+you and to the east lies the poop deck and the helm. To the west lies the
+forecastle and the prow of the ship. You can see the longboat being loaded
+just to the north of the mast. You can see several doors leading under
+the forecastle and the poop deck.~
+S
+#17547
+The Cargo Hold~
+You slide down the last few rungs to land in the main cargo deck. You can see
+a large number of silk bolts stacked against the southern wall. On the
+northern
+wall, casks of wine are stacked neatly. Beside the wine casks are a number
+of large caskets, sealed very tightly. There are three men here carrying
+wine casks and getting them ready to transport up to the main deck. The
+men appear to pre-occupied with their duties to notice you. To the west
+you can see a small curtained off section.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 17548
+D4
+~
+~
+1 -1 17521
+E
+cloth bolts~
+Looking at the cloth bolts you make a ball park guess at there being about
+fifty bolts all up, most are about 1-2 metres in length.
+~
+E
+wine casks winecasks~
+The wine casks are all sealed tightly and stacked neatly. You judge
+there are about thirty to forty stacked here.
+~
+S
+#17548
+Gamblers Quarters~
+You pull aside the curtain to reveal a small living area. There are three
+beds and a small table here. Seated at the table are three men playing cards,
+they rise as you enter and move towards you. You hear the floor creak as they
+come towards you, perhaps this area of the boat is not safe in more ways than
+one.
+~
+0 1|8 0
+D1
+~
+~
+1 -1 17547
+E
+bed beds~
+The beds look very uncomortable and have little in the way of padding. Other
+than that they appear ordinary.
+~
+E
+floor~
+The floor looks safe but looking carefully it seems one of the floorboards
+may be loose.
+~
+S
+#17549
+Punjaks Quarters~
+The door opens into a lavishly furnished room of roughly thirty five feet
+in length. A large bed takes up most of the eastern wall and next to
+it is a ornate bedside table. On the northern wall is a large bookcase
+and shelving unit. On the southern wall is large desk unit with many
+containers and books stacked neatly. Sitting at the desk is thin man. With
+an arrogant raise of his eyebrows he enquires what you are doing in his
+quarters.
+To the south is a door leading to the twin of this cabin.
+~
+0 8 0
+D2
+~
+~
+1 -1 17542
+D3
+~
+~
+1 -1 17525
+S
+#17550
+A Hidden Chamber!~
+You slide the wall aside to reveal a weapons cache! There are stacks of
+spears and javelins which on inspection appear to be of very high quality.
+All are polished and have a faint odor of oil, a bit like oil used on things
+that are going to be kept underwater. There are also a stack of shields, all
+wrapped individually and emitting the same odor. Finally there is a large
+collection of swords all with there blades wrapped to keep them queit.
+~
+0 1|8 0
+D3
+~
+~
+1 -1 17542
+E
+swords~
+Looking at the swords you can see they are also of high quality. A rough
+estimate tells you there are about thirty of them.
+~
+E
+spears~
+Looking at the spears  you estimate there are about thirty. A quick test
+shows they are very sharp indeed but also very light with broad heads as
+if they aren't made for throwing.
+~
+E
+javelins javelin~
+Looking at the javelins you see that they in fact aren't covered in the
+same oil as the spears and swords. They are fairly heavy with longish
+blades on them and you think that a human or elf would have some trouble
+throwing one.
+~
+E
+shields~
+The shields are all strong metal, and all are coated in oil. All up you
+guess there are going on fifty or perhaps sixty of them.
+~
+S
+#17551
+In a tight spot~
+Having dealt easily with the three toughs who waylaid you as you got on board,
+you move carefully towards the sound of the rest of the crew. You can hear
+shouted orders and the sounds of many men rushing to get arms ready for an
+attack. Suddenly the crew come into view, there must be at least twenty of
+them
+and they are all coming for you!! Quickly looking round you see a small
+rowboat
+which you could use to make your escape. Looking west towards the crew, if
+today
+is a good day to die you could rush them and take a few with you!
+~
+0 0 1
+D1
+~
+~
+0 -1 17553
+D3
+~
+~
+0 -1 17552
+S
+#17552
+Facing the Crew!~
+You stand before the assembled crew, they don't look happy... Boldly striding
+forth you easily cut down the first couple as they come towards you but then
+the rest arrive and the battle royal is joined. As they slash at you, you
+consider the wisdom of your choice to encounter the ship head on rather
+than scoping out the situation first....
+~
+0 1 1
+S
+#17553
+Escape!~
+With a running jump you hurl yourself into the rowboat, seconds ahead of the
+crew. Your weight causes the ropes holding the rowboat to snap and the
+rowboat drops violently into the sea. You land with a crash, your head
+bouncing nicely off the wooden seat scrambling your brain nicely. You fumble
+for the oars, wiping away water and blood from your eyes, and finally manage
+to start rowing towards shore.
+~
+0 1 1
+D1
+~
+~
+0 -1 17554
+S
+#17554
+On the beach~
+You manage to row to shore after a tough struggle against the force of
+nature. Wearily you haul yourself out of the rowboat and stagger onto the
+shore. You lie exhausted on the shore for some moments thinking over your
+experience against the smugglers ship.
+~
+0 1 1
+S
+#0
+
+
+#RESETS
+*
+D 1 17520 3 1			; Main Deck Port Close West
+D 1 17522 3 1         ; Main Deck Starboard Close West
+D 1 17531 2 1			; A Small Corridor Close South
+D 1 17532 2 1			; The Storeroom Close South
+D 1 17522 3 1			; Main Deck Starboard Close West
+D 1 17531 0 1			; A Small Corridor Close North
+D 1 17532 1 1			; The Storeroom Close East
+D 1 17534 0 1			; The Mess Hall Close North
+D 1 17534 3 1			; The Mess Hall Close West
+D 1 17533 0 1			; A Small Corridor Close North
+D 1 17537 0 1			; Guest Quarters Close North
+D 1 17536 0 1			; End of the Corridor Close North
+D 1 17536 2 1			; End of the Corridor Close South
+D 1 17539 2 1			; A Small Corridor Close South
+O 1 17500 100 17541           A desk drawer. to Mates Cabin
+D 1 17523 1 1			; Main Deck Port Close East
+D 1 17547 3 1			; The Cargo Hold Close West
+M 1 17501 3 17548			A gambler to Gamblers Quarters
+E 1 17520 100 1
+E 1 17519 100 5
+E 1 17521 100 7
+E 1 17522 100 16
+E 1 17531 100 9
+O 1 17504 100 17548           A loose floorboard to Gamblers Quarters
+D 1 17542 0 1			; The Captains Quarters Close North
+D 1 17549 3 1			; Punjaks Quarters Close West
+D 1 17542 1 2			; The Captains Quarters Lock East
+D 1 17539 0 1			; A Small Corridor Close North
+D 1 17534 1 1			; The Mess Hall Close East
+D 1 17525 1 1			; Loading the Longboat Close East
+D 1 17549 2 1			; Punjaks Quarters Close South
+*
+M 1 17500 1 17546             One-eye the lookout to The Crows Nest
+E 1 17509 100 6
+E 1 17508 100 16
+E 1 17510 100 7
+*
+*
+*
+M 1 17502 1 17522		Captain Snake-eyes to Main Deck Starboard
+E 1 17513 100 1
+E 1 17518 100 4
+E 1 17515 100 5
+E 1 17517 100 6
+E 1 17510 100 7
+E 1 17516 100 13
+E 1 17512 100 16
+E 1 17530 100 19
+E 1 17514 100 18
+G 1 17554 100
+*
+M 1 17504 1 17530			The Cook to The Galley
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17523 100 12
+E 1 17524 100 16
+*
+M 1 17505 1 17541			Egor the Mate to Mates Cabin
+E 1 17525 100 16
+E 1 17527 100 5
+E 1 17529 100 6
+E 1 17528 100 7
+E 1 17526 100 18
+*
+M 1 17507 3 17518			A smuggler to Main-Deck  StarBoard
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17508 100 16
+*
+M 1 17508 1 17552			The Crew to Facing the Crew!
+*
+M 1 17509 1 17543			Serge the Helmsman to At the Helm
+E 1 17510 100 7
+E 1 17534 100 12
+E 1 17533 100 13
+E 1 17532 100 16
+*
+M 1 17510 3 17540			resting pirate to Crew Quarters
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17535 100 16
+*
+M 1 17512 1 17542		Concubines Bodyguard to The Captains Quarters
+E 1 17538 100 5
+E 1 17537 100 7
+E 1 17539 100 8
+E 1 17536 100 16
+*
+M 1 17511 1 17542	The Captains Concubine to The Captains Quarters
+E 1 17542 100 1
+E 1 17542 100 2
+E 1 17541 100 13
+E 1 17540 100 5
+E 1 17543 100 14
+E 1 17543 100 15
+*
+M 1 17513 1 17526			Arnold the Pirate to Star Board Rail
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17533 100 13
+E 1 17535 100 16
+E 1 17546 100 10
+*
+M 1 17514 1 17526			Arthur the Pirate to Star Board Rail
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17533 100 13
+E 1 17547 100 16
+E 1 17548 100 8
+*
+M 1 17515 2 17525			A sailor to Loading the Longboat
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17549 100 16
+*
+M 1 17516 2 17547			A sailor to The Cargo Hold
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17549 100 16
+*
+M 1 17506 1 17547			Harvey the Bosun to The Cargo Hold
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17532 100 16
+*
+M 1 17503 1 17536		A Wandering Crewman to End of the Corridor
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17535 100 16
+*
+M 1 17503 1 17528			A Wandering Crewman to The Prow
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17535 100 16
+*
+M 1 17517 2 17521	A Wandering Crewman to Centre of the Main Deck
+E 1 17511 100 5
+E 1 17510 100 7
+E 1 17535 100 16
+*
+*
+M 1 17519 1 17549			Punjak the Mage to Punjaks Quarters
+E 1 17558 100 6
+E 1 17557 100 8
+E 1 17556 100 12
+E 1 17555 100 16
+E 1 17559 100 17
+E 1 17544 100 19
+*
+M 1 17518 2 17522			A Buccaneer to Main Deck Starboard
+E 1 17550 100 5
+E 1 17551 100 7
+E 1 17553 100 14
+E 1 17553 100 15
+E 1 17552 100 16
+P 1 17501 100 17500		the mates diary to container draw drawer
+P 1 17505 100 17504		a beautiful ruby to container floorboard board
+P 1 17506 100 17504	a jewelled dagger to container floorboard board
+O 1 17502 100 17525           A Cloth Bolt to Loading the Longboat
+O 1 17503 100 17525           A wine cask to Loading the Longboat
+S
+
+
+#SPECIALS
+M  17511 spec_cast_archmage			The Captains Concubine
+M  17514 spec_cast_psionicist			Arthur the Pirate
+M  17519 spec_cast_archmage			Punjak the Mage
+M  17502 spec_warrior				Captain Snake-eyes
+S
+
+
+#$

@@ -1,0 +1,3274 @@
+#AREA   Brutus~  The Portal~
+80 95 70 100
+
+#MOBILES
+#14800
+_mobprog1 zyklor~
+_MOBPROG1 - zyklor~
+
+~
+This guy will transfer people to 14845 when they say zyklor (wizinvis mob)
+~
+2|64|65536 0 0 S
+1000 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog zyklor~
+if ispc($n)
+        mpecho MUHAHAHA.... And you thought he was dead!!!
+        mpecho You shall meet him again, that is certain
+        mptransfer $n group 14845
+ endif
+~
+|
+#14801
+_mob_prog2 drynax~
+_MOBPROG2 drynax~
+
+~
+This guy will trasfer them to 14846 when they say drynax
+~
+2|64|65536 0 0 S
+1000 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog drynax~
+if ispc($n)
+        mpecho Excellent.... 
+        mpecho You will need his help to reclaim what is lost
+        mptransfer $n group 14846 
+ endif
+~
+|
+#14802
+_mobprog3 dragontail~
+_mobprog3 dragons tail~
+
+~
+This guy will give them the dragons tail when they say tail or dragon
+~
+2|64|65536 0 0 S
+1000 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog tail dragon dragons~
+if ispc($n)
+	mpoload 14817
+	drop tail 
+	mpecho The End of the beast is the key to the beginning of it.
+endif
+~
+|
+#14803
+_mob_prog4 ~
+_mob_prog4 rod in hole~
+The mob stands here, completely clueless.
+~
+This is tricky - will unlock door, when they put the rod in the hole.
+possibly have to transfer them to another room.
+~
+2|64|65536 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14804
+mob_prog5~
+mob_prog5 transfer for egg~
+The mob stands here, completely clueless.
+~
+Thsi guy will transfer them to the first bridge when given the egg
+(What ivory shrine encases a golden sun in clear liquid)
+~
+2|64|65536 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14805
+titan statue~
+the titan~
+A Huge titan turns to face you, and attacks.
+~
+A huge titan faces you, its eyes a searing blue, pierces your soul.
+~
+2|32|64 8|32|128|512|8192 -1000 S
+83 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14806
+statue hydra~
+the hydra~
+A Hydra turns to attack with all of its serpent heads.
+~
+A feared opponent, the hydra is capable of breathing any number
+of attacks with its many heads.
+~
+2|32|64 8|32|128|512|8192 -1000 S
+87 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#14807
+dragon~
+the 3-headed dragon~
+The 3-headed dragon roars as you enter
+~
+A normal dragon brings fear into the heart of any adventurer, but
+one with 3 heads must surely be dealth a wide berth, for this beast
+will rip any opponent in half.
+~
+2|32|64 8|32|128|512|8192|524288 -1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14808
+statue medussa~
+the medussa~
+The medussa hisses violonetly as you approach
+~
+The twining mass of snakes on this beasts head seems to hypnotise
+you. However the pain inflicted by this witch soon brings you to
+your senses.
+~
+2|32|64 8|32|128|512|8192 -100 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#14809
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|4|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#14810
+mob_prog6~
+mob_prog6 transfer stoneslab~
+
+~
+This fulla will mprecho *Click*
+then mptansfer to 14834
+~
+2|4|32|64|65536 8|32|512|8192 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+	mprecho *Click*
+	mptransfer $n group 14834 
+endif
+~
+|
+#14811
+mob_prrg7~
+mobprog7 ankh~
+
+~
+This guy will mpecho "As the Ankh is lifted from its stand, the earth
+begins to shake, defeaning screaming can be heard, and he will 
+mptransfer to  14888
+~
+2|4|32|64|65536 8|32|512|8192 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>speech_prog obsidian~
+if ispc($n)
+        mpecho The walls begin to shake. Cracks appear below your feet.
+        mpecho Blue Smoke starts to shoot from the floows and walls
+        mpecho Suddenly the Red Anhk before turns Blue, and breaks from the mound
+ holding it
+        mptransfer $n group 14888 
+ endif
+~
+|
+#14812
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14813
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14814
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14815
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14816
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14817
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14818
+acid worm mass gelatonous huge~
+the acid-worm~
+A huge gelatonous mass sqiurms toward you
+~
+This huge mutant creature is an acid-worm. These creatures use acid
+to disolve rock, inorder to create sub-terranian higways. As it
+approaches, it leaves a trail of slimy acid, which sends acidic 
+fumes rising from the rock it is disolving.
+~
+2|32|64 8|32|512|8192 0 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#14819
+hobbit old withered~
+the old hobbit~
+An old hobbit hobbles toward you
+~
+The old hobbit looks as though he has seen better times.
+He seems to be waiting for a response to his question
+~
+2|64|512 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 100~
+if ispc($n)
+        mprecho An old hobbit exits a tree just to your north, and hobbles towar
+        say Hello there.
+endif
+~
+>speech_prog hi hello hey greetings~
+if ispc($n)
+        say So you have come to get to the other side have you?
+        say The ultimate evil is beyond these caves,
+          say but first you must conquer the caves.
+          say Lots of traps are waiting for the unweary.
+          say Not only strong you must be, but wise, and observant
+          say For the caves guard the portal, and the portal will take you to evil
+          say Are you ready to tackle the caves?
+ endif
+~
+>speech_prog yes ready yup yip~
+if ispc($n)
+        say Be warned, many of the rooms will not allow you to recall to safety.
+          say I have been guarding this entrance, ever since I saw someone crawl
+          say from the entrance way many moons ago. He was carrying this book.
+          mpoload 14827
+          give book $n
+          say Hold onto it, for it contains more information than you realise.
+          say good luck, and may all the gods you worship, be with you.
+        mpoload 14830
+          unlock west
+          open west
+	    mpjunk all
+ endif
+~
+|
+#14820
+3 three dragon~
+the 3-headed dragon~
+The 3-headed dragon roars as you enter
+~
+A normal dragon brings fear into the heart of any adventurer, but
+one with 3 heads must surely be dealth a wide berth, for this beast
+will rip any opponent in half.
+~
+2|32|64 8|32|128|512|8192|524288 -1000 S
+90 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#14800
+skeleton skeletons pile~
+a skeleton~
+Dusty skeletons lie scatterd around the room..~
+~
+23 0 0
+0~ 0~ 0~ 0~ 
+5 0 0
+E
+skeleton skeletons pile~
+Skeletons lie scattered around the room.
+The most complete skeleton, with jaw wide open seems to point to 
+some markings on the wall.
+~
+#14801
+stone fist~
+a stone fist~
+A huge stone fist gathers dust on the ground.~
+~
+5 0 1|8192
+0~ 20~ 50~ 7~ 
+5 0 0
+A
+19 5
+E
+stone fist~
+The huge clenched stone fist would make an excellent weapon.~
+#14802
+stone breastplate plate~
+a stoney breastplate~
+A giant sontey breastplate rests on the ground~
+~
+9 0 1|8
+10~ 0~ 0~ 0~ 
+50 0 0
+A
+17 -50
+#14803
+stone stoney bracers~
+stone bracers~
+A pair of stone bracers rest here.~
+~
+9 2 1|4096
+10~ 0~ 0~ 0~ 
+20 0 0
+A
+1 4
+A
+19 4
+E
+stone stoney bracers~
+These bracers look very study.~
+#14804
+stone ring~
+a stone ring~
+A dull stone ring rests in the corner.~
+~
+9 1|128 1|2
+10~ 0~ 0~ 0~ 
+5 0 0
+A
+2 3
+A
+18 6
+E
+stone ring~
+The ring has mysterious symbols embedded in it.~
+#14805
+rope~
+a rope~
+A short length of rope dangles here.~
+~
+27 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#14806
+egg~
+an egg~
+A small egg lies here~
+~
+19 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#14807
+candle~
+a candle~
+A small red candle is afixed to the wall.~
+~
+1 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+candle~
+Made of a red wax, this candle seems very slow burning.~
+#14808
+statue titan~
+titan Statue~
+A Towering statue of a titan impedes your way~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+statue titan~
+the detail in this statue is very impressive, almost life-like.
+From its massive tree-trunk like legs to its huge brow, the titan
+seems to know of your presence.~
+#14809
+Hydra statue~
+hydra statue~
+A statue of a hydra stands here~
+~
+13 0 0
+0~ 1~ 6~ 11~ 
+1000 0 0
+E
+hydra statue~
+This multi-headded beast is an impressive site. No moss nor
+mould covers this rocky staute, even though the walls are thick
+with moss. It is warm to the touch. A little un-nerving.~
+#14810
+statue medussa~
+statue medussa~
+A statue of a medussa~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+statue medussa~
+Fear is eteched into the stone face of this queen of evil.
+The stoen snakes a-top the head are so fine in detail, you spy
+a stop drop of venom from one of the snakes fangs. ~
+#14811
+mirror~
+a mirror~
+A small mirror lies in the dust~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+mirror~
+You realise you need to take a break, the lines on your face 
+brought on by the stresses of monster slaying are beginning to
+show.~
+#14812
+statue three headed dragon~
+statue three headed dragon~
+A Huge statue of a three-headed dragons stands in the centre of the corridor~
+~
+12 0 0
+0~ 1~ 6~ 11~ 
+1000 0 0
+E
+statue three headed dragon~
+You are awe-struck at the size, and detail of this great beast.
+Mnay mortals have run in fear at the sight of such a beast.
+to stands so close to such a details work of art sets your 
+heart racing~
+#14813
+bridge~
+a bridge~
+~
+~
+15 0 0
+100~ 0~ 0~ 0~ 
+1005 0 0
+E
+bridge~
+the rickerty bridge is about to give way. The boards and rope 
+which make up the structure are shaking loose. A large rope 
+dangles from the wooden board in front of you, it may be useful.
+~
+#14814
+stone slab~
+a stone slab~
+A stone slab.~
+~
+23 0|2097152 1|4|8|16|32|64 1 100 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#14815
+stone rod~
+a stone rod~
+A smooth stone rod rests here.~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#14816
+hole stone door~
+a stone door~
+A stone hole? ( put the stone rod in here - mob-prog will figure out to open door?)~
+~
+15 0 0
+0~ 1~ 6~ 11~ 
+50 0 0
+#14817
+dragons tail~
+a dragons tail~
+An intricate stone carving of a dragons tail~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#14818
+rope ladder~
+a rope ladder~
+A rope ladder dangles here~
+~
+15 0 0
+0~ 1~ 6~ 11~ 
+5000 0 0
+E
+rope ladder~
+While very old, it should still be able to support your wieght.
+There is a length of rope dangling from it, not serving a purpose.
+It may be useful~
+#14819
+portal black~
+black portal~
+A Portal stands here, glowing gently.~
+~
+33 1 0
+14804~ -1~ 0~ 100~ 
+5 0 0
+#14820
+parts~
+body Parts~
+Various body parts lay scattered around the room~
+~
+23 0|2097152 1|4|16|32|64 4 100 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#14821
+body parts~
+body Parts~
+Various body parts lay scattered around the room~
+~
+23 0|2097152 1|4|8|32|64 4 100 0 
+0~ 1~ 6~ 11~ 
+5 0 0
+#14822
+body parts~
+body Parts~
+Various body parts lay scattered around the room~
+~
+23 0|2097152 1|4|8|16|64 4 100 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#14823
+Body Parts~
+body Parts~
+Various body parts lay scattered around the room~
+~
+23 0|2097152 1|4|8|16|32 4 100 0 
+0~ 1~ 6~ 11~ 
+5 0 0
+#14824
+body parts~
+body Parts~
+Various body parts lay scattered around the room~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+#14825
+ankh red~
+a red ankh~
+A red lumious ankh glows here.~
+~
+8 1|2|64 0
+0~ 1~ 6~ 11~ 
+5 0 0
+#14826
+red ankh blue~
+a blue ankh~
+A blue lumious ankh glows here.~
+~
+12 1|2|64 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#14827
+book bound~
+a roughly bound book~
+A Roughly bound book rests here in the dust.~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+book roughly bound~
+Opening the book, you take a step back. It is written in blood. There
+are only 5 pages to the book. The first page, is an index of sorts,
+roughly written it states the following:
+
+       Page 1 - Dragons Domain
+       Page 2 - The Castle
+       Page 3 - The 4 Sons
+       Page 4 - The Master
+       Page 5 - The Portal
+~
+E
+1 one dragons domain~
+You make out the follwing:
+
+   If you are reading this, then you must use all the information 
+contained in this book to use, for without it, your quest for
+peace will fail. My name is Achros. I was captured along with most
+of my village and taken to another domain - the Dragons Domain
+where we live as slaves. I have taken to documenting as much 
+information as possible so that one day it can be used by our
+saviours to free us, and destroy the tyranny that theatens to 
+invade our home-land. If Zyklor has made it to our home-realm, then I 
+fear you may be too late. We currently live in a small make-shift
+village just to the south west of the Master's castle. 
+Our village leader - Drynax, tries to keep our moral high, but he
+and the more senior villagers, of which I am one, know that our
+time is soon running out, for the invasion of our home land will
+soon be upon us. If you meet Drynax, mention my name.
+The master of whom I spoke of earlier is the Dragons leader,
+no-one knows his name, he is just refered to as the Master.
+The Dragons he commands keep us here to do their 
+bidding. We tend their crops, fish their river, and clean their
+stables. They allow us only limited access to their castle, so
+I will tell you what I know if it on the next page.~
+E
+2 two castle~
+The Dragons Castle is huge. Obviously it would have to be in order 
+to house so many large vile beasts. The main and only entrance is
+on the south of the castle. Upon entering there is a vast courtyard.
+Many of our villagers work within the courtyard, pedling food and
+clothing carts. The Stables are on the eastern side of the courtyard.
+Within our people tend the Dragons pets. On each corner of the
+main coutyard stands a tower. Each tower is 3 levels high, although
+the barracks to the northwest also has a basement, where prisoners
+are kept. Each tower has a special role to play in the Masters plans
+to conquer our home-realm. The NorthWestern Tower is the barracks for
+all the Dragon warriors. The NorthEastern is essentially a weapons
+factory. The SouthEastern a armour factory, and to date no one knows
+what the SouthWestern tower does. Reports of strange lights on its
+top floor have been made.
+In the center of the courtyard is the main tower. This is 5 levels 
+high, and is thought to be where the Master resides. It is rumored
+that you cannot gain access to the main tower without 4 items from
+the 4 surrounding towers. these 4 items are kept by the Masters 4
+sons who each work on the top level of their respective tower.
+The sons are the subject of page 3.~
+E
+3 three sons~
+The Master has 4 sons.
+Zyklew. He lives in the Southeastern tower. It is understood he is
+a master armor maker. Not much else is known about him.
+Zynrack. A master weapons maker, he lives in the northeastern tower.
+It is understood that he takes great delight in seeing his weapons
+at work, especially on our kind. It is believed he has perfected a
+weapon that can kill in one blow.
+Zyklor. 14 Full moons ago Zyklor appeared within our village, and 
+took us back to his realm. It was this date that the Master had 
+perfected his portal into our realm. Zyklor was sent to our realm
+to capture us, and also to get a foothoold so that when the invasion
+came, the Master and his hordes would know when and where to attack.
+Zynranth. Very little information is known about this dragon, apart
+from the fact that he works in the South-Western Tower.~
+E
+4 four master~
+The Master
+An ancient Dragon. He has come to power by destroying all before him.
+Links to the ancient druids have been made. The druids upon fearing
+his uprise banished the ONE to the 4 portals.
+He is ruthless. It is believed he killed his own wife as she did not
+agree with his plans to invade our realm. He will not waste anytime
+in turning you to dust. His Name is a mystery, it is only know to his
+4 sons. There is a very good reason why it is secret. It is almost
+as though he fears hearing his own name. the Master is on the verge
+of sending his massive army into our realm to conquer it. You
+must stop him..
+~
+E
+5 five portal~
+Knowing that the Master and his sons had developed the means to
+get to the other worlds, I had to get through there portal and
+warn our homeland and all who lived there. I managed to get a job
+serving The Masters minions in the main castle. The advantage of
+this, is that I heard things. I overhead Zyklor and one 
+of his brothers talking. They had been through to the portal
+to a world where "puny mortals" roamed looking for fame and fortune.
+These mortals often had a inquisitive nature, and so the portal 
+on there realm was set up in such a away as to allow easy access
+from the Dragons realm to our realm, but coming back, if you did not
+have the right key, it contained a series of monsters, and traps
+that would surely end the un-weary. The did mention a word that 
+should be uttered to gain an Ankh, one of the keys to the portals
+inner door. That word was obsidian. I took it upon my self to 
+warn the people on the other side of the portal. One night, when all
+was quite, I was able to gain access to the portal chamber.
+thinning all was quiet, I stepped toward the portal, just as I
+was about to enter, the roar of a fireball was heard, and I was
+hit in the side, the force of the blast sent me through the
+portal into my home realm. As I crawled toward the light
+of the cave mouth a hobbit seing my pain, took me in and aided me. 
+He was able to provide a little healing, enough for me to finish
+this book. Take heed of what is written within these pages, as it
+will surely aid you in your quest to get to the other side.
+~
+#14828
+skeleton~
+a rotting skeleton~
+A rotting skeleton is curled up before you.~
+~
+23 0 1
+0~ 1~ 6~ 11~ 
+100 0 0
+E
+rotting skeleton~
+The skelton is curled up in the fetus position. 
+~
+#14829
+portal~
+a green portal~
+A Huge green portal towers above you~
+~
+33 1|2|16|64 0
+14839~ -1~ 0~ 100~ 
+5 0 0
+#14830
+stone key~
+a stone key~
+A stone key rests here~
+~
+18 0 1
+0~ 1~ 6~ 11~ 
+5 0 0
+#14831
+claw dragon~
+a dragons claw~
+A huge Dragons claw.~
+~
+5 0 1|8192
+0~ 1~ 6~ 5~ 
+5 0 0
+#14832
+dragons tooth~
+a dragons tooth~
+A drgaons tooth~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+15 0 0
+A
+12 0
+#14833
+dragon scale~
+a dragons scale~
+A large dragons scale~
+~
+5 2 1|512
+0~ 1~ 6~ 11~ 
+20 0 0
+A
+23 10
+A
+24 10
+A
+17 -30
+#14834
+robe~
+robe of the medusa~
+A robe decorated with snakes lies here.~
+~
+9 2 1|1024
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+24 20
+A
+13 100
+#14835
+curved dagger~
+a curved dagger~
+A curved dagger~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+18 0
+#14836
+Hydra claws~
+hydra claws~
+A set of hydra claws lie here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 5~ 
+5 0 0
+#0
+
+
+#ROOMS
+#14800
+The Entrance~
+A large grantie entranceway looms directly west of your present
+position. Its rectangular shape is criss-crossed with leafy
+vines and mystic sysmbols that circle the monoliths. A large tree 
+stands to the north, its hollowed truck seems to be home for someone.
+A dark path wanders east back into the heart of the woods.
+~
+0 0 4
+D1
+~
+~
+0 -1 29030
+D3
+A huge Stone door blocks progress. Covered in mystic symbols and 
+large vines, it appears not to have been used since ancient times.
+~
+stone monolith~
+8 14830 14801
+E
+tree~
+A large oak tree stands here. Near the base a small hole allows
+access to within. A yellow glow eminates from the hole, its seems
+someone lives here. Above the hole a small inscription can be seen.
+~
+E
+inscription~
+Daegor.
+~
+S
+#14801
+Narrow Tunnel~
+A Narrow tunnel runs west-east. To the east you see daylight. To the 
+west your light source revelals nothing but darkness. The walls feel 
+furry to the touch, a green mold-like substance covers its surface.
+~
+0 1|8 0
+D1
+A large rectangular stone door.
+~
+stone monolith~
+8 -1 14800
+D3
+~
+~
+0 -1 14802
+S
+#14802
+A Narrow Tunnel~
+A Narrow tunnel runs west-east. To the east and west your light source revelals nothing but
+darkness. The walls feel furry to the touch, a green mold-like substance covers its surface.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14801
+D3
+~
+~
+0 -1 14803
+S
+#14803
+Large Rough Cavern.~
+A basic cavern extends eastward from your current posiion. A narrow
+tunnel leads east. The cavern seems big, from the sounds of the 
+echos. A green mossy substance clings to the walls of the cavern.
+You can head in any direction.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14806
+D1
+~
+~
+0 -1 14802
+D2
+~
+~
+0 -1 14807
+D3
+~
+~
+0 -1 14804
+S
+#14804
+Before the Pillars.~
+Two Huge stone doors stand afixed in the western wall. From between 
+the cracks in the floor and celing, a green light pulsates at regular
+intervals.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14805
+D1
+~
+~
+0 -1 14803
+D2
+~
+~
+0 -1 14808
+D3
+~
+~
+8 -1 14847
+E
+door doors stone huge~
+The doors are fashioned in the shape of a Huge Two-headed dragon.
+Its wings make up the doors proper, while its body is neatly
+seperated in perfect symmerty down the middle, where the two doors 
+meet.
+~
+S
+#14805
+Cavern Entrance.~
+A dark musty Cavern extends to the south and east. To the south, a
+green light eminates from the right hand side. It seems to pulsate at
+regular intervals. The cavern walls have a green moss growing from 
+it. A narrow tunnel leads south into blackness.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14809
+D1
+~
+~
+0 -1 14806
+D2
+~
+~
+0 -1 14804
+S
+#14806
+Corner of a Cavern.~
+You stand in a corner of a large cavern. Your light source does
+nothing to reveal the contents to the south and west. A green mossy
+substance clings to the walls of the cavern. You can explorer to
+the south and west.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14803
+D3
+~
+~
+0 -1 14805
+S
+#14807
+Corner of a Cavern.~
+You stand in a corner of a large cavern. Your light source does
+nothing to reveal the contents to the north and west. A green mossy
+substance clings to the walls of the cavern. You can explorer to
+the north and west.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14803
+D3
+~
+~
+0 -1 14808
+S
+#14808
+A Cavern Entrance.~
+A dark musty Cavern extends to the north and east. To the north, a
+green light eminates from the left hand side. It seems to pulsate at
+regular intervals. The cavern walls have a green moss growing from 
+it. A narrow tunnel leads south into blackness.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14804
+D1
+~
+~
+0 -1 14807
+D2
+~
+~
+0 -1 14828
+S
+#14809
+A Tight Tunnel.~
+The tunnel here is less well defined. Beneath the mossy exterior, 
+jaggered boulders and rocks protrude from the tunnel walls at oblique
+angels. It is as though this cave was chiseled from the earth in a
+hurried manner. The tunnel heads south or west.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14805
+D3
+~
+~
+0 -1 14810
+S
+#14810
+A Rough Tunnel.~
+The Jaggered tunnel winds in an east-west direction. Both ways look
+un-inviting as your light source fails to reveal the secrets futher
+ahead.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14809
+D3
+~
+~
+0 -1 14811
+S
+#14811
+The Huge Stone Wheel.~
+A Huge stone wheel blocks the way west. The tunnel turns abruptly
+here to the north and east. Blackness desends to the east while
+northward, a flicker of torchlight dances on the cavern walls.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14812
+D1
+~
+~
+0 -1 14810
+D3
+~
+stone door~
+8 14815 14856
+E
+stone wheel~
+The stone wheel seems to meld into the western wall. No cracks can
+be found, it is seamless. Long green mossy strand dangly from the 
+roof. In the center of the wheel, a large mosssy ball grows.
+~
+E
+moss center centre ball mossy~
+Pulling the moss from the center of the wheel reveals a round hole,
+roughly the size of your index finger. The hole seems smooth, as 
+though something could slide inside.
+~
+S
+#14812
+Entrance to Pain~
+This room is well lit. Two torches burn on either side of the tunnel.
+They seem to burn with a greenish haze, somewhat un-natural. Around
+the torches lie rocks, and varying angles. The light escaping from 
+these rocks forms an image onto the roof. The tunnel extends to the
+north and south both into darkness. The air here is somewhat stale,
+almost foul.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14813
+D2
+~
+~
+0 -1 14811
+E
+torch torches green roof ~
+The light given off by the torches projects an image onto the roof.
+Above you, dancing as the light flickers, is written one word.
+                          PAIN.
+~
+S
+#14813
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14816
+D1
+~
+~
+0 -1 14814
+D2
+~
+~
+0 -1 14812
+D3
+~
+~
+0 -1 14915
+S
+#14814
+The Maze of Pain~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14815
+D1
+~
+~
+0 -1 14916
+D2
+~
+~
+0 -1 14825
+D3
+~
+~
+0 -1 14813
+S
+#14815
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14826
+D1
+~
+~
+0 -1 14820
+D2
+~
+~
+0 -1 14814
+D3
+~
+~
+0 -1 14816
+S
+#14816
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14817
+D1
+~
+~
+0 -1 14815
+D2
+~
+~
+0 -1 14813
+D3
+~
+~
+0 -1 14819
+S
+#14817
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14824
+D1
+~
+~
+0 -1 14826
+D2
+~
+~
+0 -1 14816
+D3
+~
+~
+0 -1 14818
+S
+#14818
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14823
+D1
+~
+~
+0 -1 14817
+D2
+~
+~
+0 -1 14819
+D3
+~
+~
+0 -1 14821
+S
+#14819
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14818
+D1
+~
+~
+0 -1 14816
+D2
+~
+~
+0 -1 14915
+D3
+~
+~
+0 -1 14820
+S
+#14820
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14821
+D1
+~
+~
+0 -1 14819
+D2
+~
+~
+0 -1 14916
+D3
+~
+~
+0 -1 14815
+S
+#14821
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14822
+D1
+~
+~
+0 -1 14818
+D2
+~
+~
+0 -1 14820
+D3
+~
+~
+0 -1 14826
+S
+#14822
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14916
+D1
+~
+~
+0 -1 14823
+D2
+~
+~
+0 -1 14821
+D3
+~
+~
+0 -1 14827
+S
+#14823
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14915
+D1
+~
+~
+0 -1 14824
+D2
+~
+~
+0 -1 14818
+D3
+~
+~
+0 -1 14822
+S
+#14824
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14813
+D1
+~
+~
+0 -1 14825
+D2
+~
+~
+0 -1 14817
+D3
+~
+~
+0 -1 14823
+S
+#14825
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14814
+D1
+~
+~
+0 -1 14822
+D2
+~
+~
+0 -1 14826
+D3
+~
+~
+0 -1 14824
+S
+#14826
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14825
+D1
+~
+~
+0 -1 14821
+D2
+~
+~
+0 -1 14815
+D3
+~
+~
+0 -1 14817
+S
+#14827
+Black Portal.~
+A small circular room reveals itself from the darkness. The walls are
+smooth and absent of moss totally unlike what you have seen before.
+In the center of the room, a light source of imense intensity fills 
+the room with brilliant color. The walls reveal a beautiful, 
+color filled mosaic.
+~
+0 1|8|8192|16384 0
+D1
+~
+~
+0 -1 14822
+E
+mosaic wall walls~
+The wall is covered in a huge mosaic. It depicts and enormous two-
+headed dragon. The dragon is 3 fold the size of the other dragons.
+Four Dragons, Fly at the four compass points around the great 2-
+headed dragon, about to enter 4 glowing portals.
+Thre is text beneath the 2-headed dragon.
+    "And so the Master sent 4 scouts to the 4 known realms
+that existed in that era. His four sons, Zynnrack, Zyklor, Zyklew 
+and Zyrath would report back to the Master, and
+prepare for the invasion of the worlds"
+~
+S
+#14828
+A Tight Tunnel.~
+The tunnel here is less well defined. Beneath the mossy exterior, 
+jaggered boulders and rocks protrude from the tunnel walls at oblique
+angels. It is as though this cave was chiseled from the earth in a
+hurried manner. The tunnel heads north or west.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14808
+D3
+~
+~
+0 -1 14829
+S
+#14829
+The Jaggered Tunnel.~
+The Jaggered tunnel winds in an east-west direction. Both ways look
+un-inviting as your light source fails to reveal the secrets futher
+ahead.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14828
+D3
+~
+~
+0 -1 14830
+S
+#14830
+Huge Stone Wheel~
+A Huge stone wheel blocks the way west. The tunnel turns abruptly
+here to the north and east. Blackness desends to the east while
+southward, a flicker of torchlight dances on the cavern walls.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14829
+D3
+~
+stone wheel door~
+8 14815 14862
+E
+stone wheel~
+The stone wheel seems to meld into the western wall. No cracks can
+be found, it is seamless. Long green mossy strand dangly from the 
+roof. In the center of the wheel, a large mosssy ball grows.
+~
+E
+center centre ball moss mossy~
+Pulling the moss from the center of the wheel reveals a round hole,
+roughly the size of your index finger. The hole seems smooth, as 
+though something could slide inside.
+~
+S
+#14831
+Entrance to the Maze.~
+This room is well lit. Two torches burn on either side of the tunnel.
+They seem to burn with a greenish haze, somewhat un-natural. Around
+the torches lie rocks, at varying angles. The light escaping from 
+these rocks forms an image onto the roof. The tunnel extends to the
+north and south both into darkness.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14862
+D2
+~
+~
+0 -1 14832
+E
+torch torches roof rocks image~
+The light given off by the torches projects an image onto the roof.
+Above you, dancing as the light flickers, is written one word.
+                          CHAOS.
+~
+S
+#14832
+The Entrance-way~
+The air is still here, almost peaceful. The small cavern you stand in
+is neatly form from the earth. The floor is regular in design, like
+a coblestone highway, with slabs of a grey-brown stone forming 
+together perfectly. Exits appear to be to the west east and north, 
+from which a firely light flickers.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14831
+D1
+~
+~
+0 -1 14833
+D3
+~
+~
+0 -1 14837
+E
+slab stone grey brown floor~
+The floor seems regular. On closer examination one of the slabs
+seems slightly discolored than the rest. It appears to have some
+markings on it.
+~
+E
+markings~
+The markings appear to be the symbol for fire. Beneath the slab,
+a small lever protrudes. It appears that this slab is trapped!
+~
+S
+#14833
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the west and south.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14834
+D3
+~
+~
+0 -1 14832
+E
+grey moss wall~
+The moss thrives in the damp conditions.
+~
+S
+#14834
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the north ans west.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14833
+D3
+~
+~
+0 -1 14835
+E
+moss grey wall~
+The moss thrives in the damp conditions.
+~
+S
+#14835
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the west south and east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14834
+D2
+~
+~
+0 -1 14834
+D3
+~
+~
+0 -1 14836
+E
+moss grey wall~
+The moss thrives in the damp conditions.
+~
+S
+#14836
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the north and east.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14837
+D1
+~
+~
+0 -1 14835
+D2
+~
+~
+12 -1 14838
+E
+moss grey~
+The moss on the south wall seems to be thinner in some places than others. 
+In fact the moss seems to be partially covering a hole in the wall.
+~
+E
+hole wall~
+Parting the moss in the southern wall, you find a hole about 3 feet 
+high, by 1 foot big. You may be able to crawl through to the other 
+side. 
+~
+S
+#14837
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the east and south.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14832
+D2
+~
+~
+0 -1 14836
+E
+moss grey wall~
+The moss thrives in the damp conditions.
+~
+S
+#14838
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the east and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14836
+D1
+Its is hard to focus on the exit.
+~
+~
+0 -1 14834
+D2
+~
+~
+0 -1 14843
+E
+moss grey~
+Moss in this part of the maze seems to be thinner than in other parts. Looking 
+at the moss you find it is covering a small hole.
+~
+E
+maze wall hole~
+Parting the moss on the north wall reveals a small hole that you
+are sure you can climb through.
+~
+S
+#14839
+Congrats.~
+You made it through
+Well done
+Unfortunately the next part of the are isnt complete yet.
+however know this.
+that book you hold is going to be important.
+Keep it with you.
+Also be aware that there will be things , although not obvious, that will
+be important to completing the are - be aware of everything.
+Brutus
+~
+0 1|4|8 0
+S
+#14840
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the west and south.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14844
+D2
+~
+~
+0 -1 14841
+D3
+Its is hard to focus on the exit.
+~
+~
+0 -1 14834
+S
+#14841
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the north and west.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14840
+D3
+~
+~
+0 -1 14842
+S
+#14842
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the east, north and west.
+~
+0 1|8 0
+D0
+Its is hard to focus on the exit.
+~
+~
+0 -1 14834
+D1
+~
+~
+0 -1 14841
+D3
+~
+~
+0 -1 14843
+S
+#14843
+Still tunnel~
+The air is still here, almost peacful. The floor is cobbled stone
+coverd with a thick layer of dust. A Grey moss like substance clings
+to the walls, obviously this place has not been disturbed for 
+centuries. Exits lie to the north and east.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14838
+D1
+~
+~
+0 -1 14842
+S
+#14844
+The room of skeletons~
+Mouldy skeletons coverd in dust scatter the floor. The room is only 5
+feet by 5 feet, you begin to feel clautroophobic. 
+There are no exits here.
+~
+0 1|4|8|16384 0
+E
+markings wall marking~
+             ONE TO THE LEFT
+dsu yjr mszr pg yjr ftshpn upi mrrf yp loaa yeovr 
+~
+S
+#14845
+More Skeletons~
+Another small cold squalid room. The room is approximately 5 feet by
+5 feet. Mould covers what is left of many of the corpses piled in the 
+corner.
+There are no exits here..
+~
+0 1|4|8|16384 0
+E
+wall markings~
+I once had 4 children - they were all boys.
+
+18,115,101,26,15,77  54,15,64,20 11,40,29,4
+54,94,27,17 53,6 75,111,3,69,9 21,8,71,66,35,52
+~
+S
+#14846
+The Question.~
+A voice booms out from seemingly nowhere.
+
+  "If thou knows what thou want, ask and you shall receive"
+~
+0 1|4|8|16384 0
+S
+#14847
+Glowing Hall.~
+The hallway here runs north south. To the west a wooden door, covered
+in ancient symbols pulsates with a green glow.
+~
+0 1|8|16384 0
+D0
+~
+~
+0 -1 14848
+D1
+~
+~
+8 -1 14804
+D2
+~
+~
+0 -1 14854
+D3
+The symbols that cover the door are of a time long ago. You cannot
+make sense of them however you know they are there for a purpose.
+~
+door wooden symbols~
+1 -1 14855
+S
+#14848
+Glowing Hallway~
+A green hue dominates the hall way. It is coming from the south-west.
+~
+0 1|8|16384 0
+D2
+~
+~
+0 -1 14847
+D3
+~
+~
+0 -1 14849
+S
+#14849
+Glowing hall ~
+The hallway runs west-east. To the south a wooden door pulsates with 
+a green hue.
+~
+0 1|8|16384 0
+D1
+~
+~
+0 -1 14848
+D2
+The symbols that cover the door are of a time logn ago. You cannot
+make sense of them however you know they are there for a purpose.
+~
+door wooden symbols~
+1 -1 14855
+D3
+~
+~
+0 -1 14850
+S
+#14850
+Glowing Hallway~
+A green hue dominates the hall way. It is coming from the south-west.
+~
+0 1|8|16384 0
+D1
+~
+~
+0 -1 14849
+D2
+~
+~
+0 -1 14851
+S
+#14851
+Glowing Hall~
+The hallway here runs north south. To the east a wooden door, covered
+in ancient symbols pulsates with a green glow. To the west a Huge set
+of double doors fashion in the shape of a dragon dominates the exit.
+~
+0 1|8|16384 0
+D0
+~
+~
+0 -1 14850
+D1
+~
+door wooden symbols~
+1 -1 14855
+D2
+~
+~
+0 -1 14852
+D3
+~
+dragon dragons door wings~
+8 -1 14914
+S
+#14852
+Glowing Hallway~
+A green hue dominates the hall way. It is coming from the north-east.
+~
+0 1|8|16384 0
+D0
+~
+~
+0 -1 14851
+D1
+~
+~
+0 -1 14853
+S
+#14853
+Glowing Hall~
+The hallway here runs north south. To the north a wooden door covered
+in ancient symbols pulsates with a green glow.
+~
+0 1|8|16384 0
+D0
+~
+wooden door symbols~
+1 -1 14855
+D1
+~
+~
+0 -1 14854
+D3
+~
+~
+0 -1 14852
+S
+#14854
+Glowing Hallway~
+A green hue dominates the hall way. It is coming from the north-west.
+~
+0 1|8|16384 0
+D0
+~
+~
+0 -1 14847
+D3
+~
+~
+0 -1 14853
+S
+#14855
+The PORTAL~
+A Huge portal dominates the room. Its green glow is so bright, 
+your eyes have difficulty adjusting.
+~
+0 1|8 0
+D0
+The symbols that cover the door are of a time long ago. You cannot
+make sense of them however you know they are there for a purpose.
+~
+wooden door symbols~
+1 -1 14849
+D1
+The symbols that cover the door are of a time long ago. You cannot
+make sense of them however you know they are there for a purpose.
+~
+wooden door symbols~
+1 -1 14847
+D2
+The symbols that cover the door are of a time long ago. You cannot
+make sense of them however you know they are there for a purpose.
+~
+door wooden symbols~
+1 -1 14853
+D3
+The symbols that cover the door are of a time long ago. You cannot
+make sense of them however you know they are there for a purpose.
+~
+door wooden symbols~
+1 -1 14851
+S
+#14856
+Smooth Tunnel~
+A humid tunnel extends into blackness to the west. A Huge stone wheel
+forms a door to the east. The tunnel walls are smooth stone.
+~
+0 1|8|16384 0
+D1
+~
+~
+8 14815 14811
+D3
+~
+~
+0 -1 14857
+S
+#14857
+Smooth Tunnel~
+A humid tunnel extends into blackness to the east. The tunnel
+alters course to the south here, a faint glow eminates from the
+southward branch. The tunnel walls are smooth stone.
+~
+0 1|8|16384 0
+D1
+~
+~
+0 -1 14856
+D2
+~
+~
+0 -1 14858
+S
+#14858
+Smooth Tunnel~
+A humid tunnel extends to the south, where a faint red glow
+eminates. Northwards the tunnel seems darker. The tunnel walls are
+smooth to the touch. A huge stone door in the form of a dragon 
+dominates the passage to the south.
+~
+0 1|8|16384 0
+D0
+~
+~
+0 -1 14857
+D2
+An intracately carved dragon has been eteched into a huge stone 
+door. The dragon is missing its tail.
+~
+stone dragon door~
+8 14817 14859
+S
+#14859
+A Way Down~
+The room is dominated by a large hole in the floor. A ladder rests
+against the side of the hole, and dissappears into a red hue below.
+The north and south walls are dominated by a door in the form of a
+Huge Dragon.
+~
+0 1|8 0
+D0
+~
+~
+8 -1 14858
+D2
+~
+~
+8 -1 14860
+D5
+~
+~
+0 -1 14863
+E
+door dragon stone~
+The door is intracately carved in the form of a dragon.
+The carving show intracate detail, although it seems strange that
+the dragons tail should be missing.
+~
+S
+#14860
+Smooth Tunnel~
+A humid tunnel extends to the south, but aburptly ends looking north.
+Southwards the tunnel seems darker. The tunnel walls are
+smooth to the touch. A huge stone door in the form of a dragon 
+dominates the passage to the north.
+~
+0 1|8 0
+D0
+The door is intracately carved in the form of a dragon.
+The carving show intracate detail, although it seems strange that
+the dragons tail should be missing.
+~
+door dragon doors~
+8 14817 14859
+D2
+~
+~
+0 -1 14861
+S
+#14861
+Smooth Tunnel~
+A humid tunnel extends into blackness to the east. The tunnel
+alters course to the north here, a faint glow eminates from the
+northward branch. The tunnel walls are smooth stone.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14860
+D1
+~
+~
+0 -1 14862
+S
+#14862
+Smooth Tunnel~
+A humid tunnel extends into blackness to the west. A Huge stone wheel
+forms a door to the east. The tunnel walls are smooth stone.
+~
+0 1|8 0
+D1
+~
+~
+8 14815 14830
+D2
+~
+~
+0 -1 14831
+D3
+~
+~
+0 -1 14861
+S
+#14863
+Bottom of the Ladder~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In the distance you think
+you hear running water, except in slow motion. Leading up you see
+a rickerty wooden ladder. The only exit on this level appears to be
+north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14864
+D4
+~
+~
+0 -1 14859
+S
+#14864
+Steamy Tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. The tunnel continues to the north
+and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14865
+D2
+~
+~
+0 -1 14863
+S
+#14865
+Steamy tunnnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. A red glow eminates from the east.
+The other exit is to the south and darkness.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14866
+D2
+~
+~
+0 -1 14864
+S
+#14866
+Before the swing bridge~
+You stand at the edge of a huge chasme. Looking over to the edge to 
+the east, a strong current of hot air rushes to meet you. A river 
+of Lava bubbles at least 100 feet below. Across the chasme swings a 
+rickerty bridge. Its entrance is blocked by a huge rock form.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14867
+D3
+~
+~
+0 -1 14865
+E
+bridge~
+The bridge is made from decaying wood. It looks very unstable, and 
+it is doubtfull if it could support more than 1 person at a time.
+~
+S
+#14867
+On the bridge.~
+A rickerty bridge bridges the gap between two sides of a chasme.
+Beneath you, a river of lava flows, currents of hot dry rush up to
+meet you, swinging the bridge precariously.
+~
+0 1|4|8 0
+D1
+~
+~
+0 -1 14868
+D3
+~
+~
+0 -1 14866
+S
+#14868
+Before the Chasme.~
+You stand at the edge of a huge chasme. Looking over the edge, a 
+strong current of hot air rushes to meet you. A river of lava
+bubbles at least 100 feet below. Across the chasme to the east swings a 
+rickerty bridge.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14869
+D3
+~
+~
+0 -1 14867
+S
+#14869
+Steamy tunnel.~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. A red glow eminates from the west.
+The other exit is to the south and darkness.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14870
+D3
+~
+~
+0 -1 14868
+S
+#14870
+Steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. 
+The tunnel leads north and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14869
+D2
+~
+~
+0 -1 14871
+S
+#14871
+Steamy tunnel.~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam.
+The tunnel extends to the north and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14870
+D2
+~
+~
+0 -1 14872
+S
+#14872
+Steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam.
+The tunnel extends to the north and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14871
+D2
+~
+~
+0 -1 14873
+S
+#14873
+Bend in the steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. A red glow eminates from the west.
+The other exit is to the north and darkness
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14872
+D3
+~
+~
+0 -1 14874
+S
+#14874
+Before the Chasme~
+A huge chasme lies to the west. Peering over the cliff face, you see 
+a molten river of lava. Currents of hot steamy air rush up to greet
+you as you watch the river run slowly southwards. Bridging the chasme
+is a rickerty wooden bridge.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14873
+D3
+~
+~
+0 -1 14875
+E
+bridge wooden~
+The bridge is made from old rotting wood. It looks very unstable.
+~
+S
+#14875
+On the Bridge~
+A rather old wooden bridges the too cliffs. Below you 
+a river of molten lava flows steadily south. Looking North, you can 
+see four such bridges emerging from tunnels in the cliff face. Above
+you the hot steam rises to a vent several miles above youre head.~
+0 1|4|8 0
+D1
+~
+~
+0 -1 14874
+D3
+~
+~
+0 -1 14876
+S
+#14876
+Before the chasme~
+You are standing at the entrace to a tunnel which leads west. East a 
+rickerty wooden bridge streaches over a chasme and molten lava.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14875
+D3
+~
+~
+0 -1 14877
+S
+#14877
+Bend in the steamy tunnel.~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. A red glow eminates from the east.
+The other exit is to the north and darkness.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14878
+D1
+~
+~
+0 -1 14876
+S
+#14878
+Bend in the steamy tunnel.~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. A red glow eminates from the east.
+The other exit is to the south and darkness.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14879
+D2
+~
+~
+0 -1 14877
+S
+#14879
+Before the chasme~
+You stand at the entrance to a tunnel whihc leads into darkenss to
+the west. To the east a rickerty wooden bridge leads over a chasme.
+Looking down, a river of molten lava can be seen. Hot currents of air 
+rush up to meet you.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14880
+D3
+~
+~
+0 -1 14878
+E
+bridge wooden~
+The bridge is made from rotting wood. It looks unstable.
+~
+S
+#14880
+Wooden Bridge~
+The wooden bridge that you stand on bridges two sides of a gapping
+chasme which runs north-south.. Looking down a river of molten lava 
+moves slowly southwards. Looking south, another bridge streches
+across gap. Northward, 2 more bridges do the same.~
+0 1|4|8 0
+D1
+~
+~
+0 -1 14881
+D3
+~
+~
+0 -1 14879
+S
+#14881
+Before the Chasme~
+You stand at the entrance to a tunnel which leads into darkenss to
+the north. To the west a rickerty wooden bridge leads over a chasme.
+Looking down, a river of molten lava can be seen. Hot currents of air 
+rush up to meet you.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14882
+D3
+~
+~
+0 -1 14880
+E
+bridge wooden~
+The bridge looks frail and weak.
+~
+S
+#14882
+Steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam.
+The tunnel extends to the north and south.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14883
+D2
+~
+~
+0 -1 14881
+S
+#14883
+Before the chasme~
+You stand at the entrance to a tunnel whihc leads into darkenss to
+the south. To the west a rickerty wooden bridge leads over a chasme.
+Looking down, a river of molten lava can be seen. Hot currents of air 
+rush up to meet you.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 14882
+D3
+~
+~
+0 -1 14884
+S
+#14884
+Rickery Bridge~
+You stand on an old wooden bridge that spans a chasme. The bridge
+leads to 2 dark tunnels at either end. Looking down, a river of
+molten lava flows slowly southward. To the south, you can see 2 more
+bridges and to the north another bridge dissappears into 2 similar
+tunnels.~
+0 1|4|8 0
+D1
+~
+~
+0 -1 14883
+D3
+~
+~
+0 -1 14885
+S
+#14885
+Before the chasme~
+You stand at the entrance to a tunnel which leads into darkenss to
+the south. To the east a rickerty wooden bridge leads over a chasme.
+Looking down, a river of molten lava can be seen. Hot currents of air 
+rush up to meet you.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 14884
+D2
+~
+~
+0 -1 14886
+S
+#14886
+Above the pit~
+The dark tunnel ends abrubtly. In the center of the ground lies a 
+hole, about 2 feet wdie. A redish smoke seems to ooze from the hole, 
+covering the floor. The only exit apart from the hole is to the north.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14885
+D5
+~
+~
+0 -1 14887
+S
+#14887
+The Ankh.~
+Wafting red gasses makes in hard to see in this hole. The walls that
+surround you, the floor, even your hands seem red. A Red Ankh 
+dominates the centre of the room. It seems to bathe your in a aura
+of goodness amidst the evil that surrounds you. The ankh seems firmly
+afixed to a huge red rock beneath it.
+~
+0 1|8|16384 0
+D4
+~
+~
+0 -1 14886
+S
+#14888
+Blue Ankh~
+Blue streaking gasses makes in hard to see in this hole. The walls
+that surround you, the floor, even your hands seem blue. A Blue Ankh 
+dominates the centre of the room. It is cracked, blue glasses
+are streaming from its core. The earth beneath your feet is shaking
+horribly. The earth seems to be twisting, and squirming at your
+actions. Your senses warn you of impending evil.....
+~
+0 1|8|1024|8192 0
+D4
+~
+~
+0 -1 14890
+S
+#14890
+Above the pit~
+The drak tunnel shakes violently. Masonary falls from the ceiling. In 
+the center of the ground lies a hole, about 2 feet wide 
+A blue smoke streams from the hole covering the floor 
+The only exit apart from the hole is to the north.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14891
+D5
+~
+~
+0 -1 14888
+S
+#14891
+Before the chasme~
+The Blues smoke follows you from the south. the rickerty wooden 
+bridge is falling apart! Below the bridge, the lava seems to be
+rising.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14892
+D2
+~
+~
+0 -1 14890
+S
+#14892
+The rickerty Bridge~
+The bridge is swinging violently from side to side. The ancient
+ropes that hold it together are breaking. Looking down, a river of
+molten lava seesm to be rising. To the south, you can see 2 more
+bridges and to the north another bridge dissappears into 2 similar
+tunnels.~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14893
+D3
+~
+~
+0 -1 14891
+S
+#14893
+Before the Chasme~
+The Bridge to the west collapses. Masonary and rock continue to rain
+down upon you, your only exit is south.
+~
+0 1|8|1024|8192 0
+D2
+~
+~
+0 -1 14894
+S
+#14894
+A steamy tunnel~
+The voilent earth shaking intensifies. The steamy tunnel is being
+filled with a bluish gas eminating from the north. Your sense tell
+tell you to head south.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14893
+D2
+~
+~
+0 -1 14895
+S
+#14895
+Before the chasme~
+You stand at the entrance to a tunnel which leads into darkenss to
+the north. To the west a rickerty wooden bridge swings violently
+over a deep chamse.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14894
+D3
+~
+~
+0 -1 14896
+S
+#14896
+The shaking bridge~
+The wooden bridge that you stand on bridges two sides of a gapping
+chasme which runs north-south. The bridge is collapsing beneath your
+feet. A burst of flame from the steadily rising lava shoots upward
+just to your left! Looking south, another bridge streches
+across gap. Northward, 2 more bridges do the same. A blue gas ooozes
+from the tunnel mouth to the east.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14895
+D3
+~
+~
+0 -1 14897
+S
+#14897
+Acrid tunnel~
+The bridge to the east is consumed in a fireball. A blueish gas
+fills the room. Its acrid order and taste burns your throat.
+The only way forward is west.
+~
+0 1|8|1024|8192 0
+D3
+~
+~
+0 -1 14898
+S
+#14898
+Bend in the tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. Masonary continues to fall from the
+roof, pummelling you.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14897
+D2
+~
+~
+0 -1 14899
+S
+#14899
+Bend in the Tunnel~
+The earth here feels hot underfoot. The walls are bare rock, hot to
+the touch, and hence no moss grows on them. In fact the walls seem
+to breath as they give off steam. Masonary continues to fall from the
+roof, pummelling you.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14898
+D1
+~
+~
+0 -1 14900
+S
+#14900
+Before the chasme~
+You are standing at the entrace to a tunnel which leads west. East a 
+rickerty wooden bridge is partially on fire. The earth tremors
+continue to strengthen.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14901
+D3
+~
+~
+0 -1 14899
+S
+#14901
+Firey Bridge~
+You stand on a partially burning bridge bridge too cliffs. Below you
+the stream of molten lava is rising rapidly, now only bout 20 feet
+beneath you. You can feel its heat burning your feet.~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14902
+D3
+~
+~
+0 -1 14900
+S
+#14902
+Before a chasme~
+The Bridge to the west is consumed in fire. Lookinh back, the river
+of lava continues to rise. The rumblings of the earth are almost
+deafening. Debris contines to fall from the roof.
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14903
+D3
+~
+~
+0 -1 14901
+S
+#14903
+Tunnel Bend~
+The shaking ground tears a hole is the east wall, sending a vent of
+blue gas towards you. The rumblings of the earth continue to
+strengthen.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14904
+D3
+~
+~
+0 -1 14902
+S
+#14904
+Steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, they
+emit great heat. You being to cook from the intense heat. 
+The tunnel leads north and south.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14913
+D2
+~
+~
+0 -1 14903
+S
+#14905
+The steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, they
+emit great heat. You being to cook from the intense heat. 
+The falling debris batters you.
+The tunnel leads north and south.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14906
+D2
+~
+~
+0 -1 14913
+S
+#14906
+shake - bend in tunnel~
+The earth here feels hot underfoot. The walls are bare rock, they
+emit great heat. You being to cook from the intense heat. 
+A red glow eminates from the west, while a blue gas creeps forward
+from the south.
+~
+0 1|8|1024|8192 0
+D2
+~
+~
+0 -1 14905
+D3
+~
+~
+0 -1 14907
+S
+#14907
+Before the chasme~
+A mighty river of lava races southward just to the west. It is only
+5 feet below the cliff you stand on, and rising. Both the rope
+supports of the bridge spannig it are ablaze. The intense heat 
+amost drives you back, but you must proceed!
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14906
+D3
+~
+~
+0 -1 14908
+S
+#14908
+Firey Doom~
+the intense heats seems to dull your senses. Your are aware of the 
+heat, your ears beging to melt, your eyebrows burn off, your feet
+blister from the mass of lava now just inches below you. You run to
+the safetey of the cliff face, the bridge collapses, the lava
+sonsumes it... you dive for the cliff face...
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14907
+D3
+~
+~
+0 -1 14909
+S
+#14909
+Firey cavern.~
+The lava begins to enter the tunnel you are in. Its intense heat 
+beats on your back. the violent earth shaking intensifies once more.
+Boulders fall around you, and into the lava and consumed in a
+burst of flame. The blue gas filling this underworld hell-hole begins 
+to eat your skin, your eyes..
+~
+0 1|8|1024|8192 0
+D3
+~
+~
+0 -1 14910
+S
+#14910
+Firey Cavern~
+The lava begins to enter the tunnel you are in. Its intense heat 
+beats on your back. the violent earth shaking intensifies once more.
+Boulders fall around you, and into the lava and consumed in a
+burst of flame. The blue gas filling this underworld hell-hole begins 
+to eat your skin, your eyes..
+~
+0 1|8|1024|8192 0
+D1
+~
+~
+0 -1 14909
+D2
+~
+~
+0 -1 14911
+S
+#14911
+Firey Cavern~
+The lava begins to enter the tunnel you are in. Its intense heat 
+beats on your back. the violent earth shaking intensifies once more.
+Boulders fall around you, and into the lava and consumed in a
+burst of flame. The blue gas filling this underworld hell-hole begins 
+to eat your skin, your eyes..
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14910
+D2
+~
+~
+0 -1 14912
+S
+#14912
+Beneath the Ladder~
+Your reach the end of the line... a hole extends upwards, however the
+ladder that was once here is gone.. Lava and blue smoke prevent
+any possible exit northward. The rock face is rough, it may be 
+possible to climb... if you had a rope.
+~
+0 1|8|1024|8192|16384 0
+D0
+~
+~
+0 -1 14911
+D4
+A jaggered rock face. Many protrusions may make it easy to climb.
+~
+wall~
+9 -1 14914
+S
+#14913
+The steamy tunnel~
+The earth here feels hot underfoot. The walls are bare rock, they
+emit great heat. You being to cook from the intense heat. 
+The tunnel leads north and south.
+~
+0 1|8|1024|8192 0
+D0
+~
+~
+0 -1 14905
+D2
+~
+~
+0 -1 14904
+S
+#14914
+Escape from Hell~
+Suddenly all is quiet. The red glow from the hole in the floor slowly
+subsides, as the lava stops just beneath teh gaping hole in the floor
+beneath you. The acrid burning blue smoke slowly dissapates.
+The two huge Dragon doors to the north and south have collapsed into
+the hallway, making them impassable. The only way out are the huge
+double doors to the east.
+~
+0 8192 1
+D1
+~
+dragon dragons door wings~
+8 14826 14851
+E
+door double dragon~
+The doors are fashioned in the shape of a Huge Two-headed dragon.
+Its wings make up the doors proper, while its body is neatly
+seperated in perfect symmerty down the middle, where the two doors 
+meet.
+~
+S
+#14915
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14819
+D1
+~
+~
+0 -1 14813
+D2
+~
+~
+0 -1 14823
+D3
+~
+~
+0 -1 14916
+S
+#14916
+The Maze of Pain.~
+The room smells foul. Decaying corpses, and skeletons litter the
+floor. The walls are covered by a red/green colored moss.
+Exits lead in all directions.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 14820
+D1
+~
+~
+0 -1 14915
+D2
+~
+~
+0 -1 14822
+D3
+~
+~
+0 -1 14814
+S
+#14917
+The end?~
+Congratulations ou have made it to the end. there will be another
+area after this, that is currently in construction.
+~
+0 4 1
+S
+#14918
+A room~
+You are standing in room #14918.
+~
+0 4 1
+S
+#0
+
+
+#RESETS
+D 1 14847 1 2			; Glowing Hall. Lock East
+D 1 14804 3 2			; Before the Pillars. Lock West
+O 1 14800 100 14844			a skeleton to The room of skeletons
+O 1 14800 100 14845			a skeleton to More Skeletons
+D 1 14858 2 2			; Smooth Tunnel Lock South
+D 1 14859 0 2			; A Way Down Lock North
+D 1 14830 3 2			; Huge Stone Wheel Lock West
+D 1 14862 1 2			; Smooth Tunnel Lock East
+O 1 14813 100 14896			a bridge to shakeing on the bridge
+P 7 14805 100 14813
+O 1 14813 100 14867			a bridge to On the bridge.
+P 7 14805 100 14813
+O 1 14813 100 14875			a bridge to On the Bridge
+P 7 14805 100 14813
+O 1 14813 100 14880			a bridge to Wooden Bridge
+P 7 14805 100 14813
+O 1 14813 100 14884			a bridge to Rickery Bridge
+P 7 14805 100 14813
+O 1 14813 100 14892			a bridge to The rickerty Bridge
+P 7 14805 100 14813
+O 1 14813 100 14901			a bridge to Firey Bridge
+P 7 14805 100 14813
+D 1 14847 3 1			; Glowing Hall. Close West
+D 1 14849 2 1			; Glowing hall  Close South
+D 1 14853 0 1			; Glowing Hall Close North
+D 1 14851 1 1			; Glowing Hall Close East
+D 1 14855 0 1			; The PORTAL Close North
+D 1 14855 1 1			; The PORTAL Close East
+D 1 14855 2 1			; The PORTAL Close South
+D 1 14855 3 1			; The PORTAL Close West
+D 1 14914 1 2			; Escape from Hell Lock East
+D 1 14851 3 1			; Glowing Hall Close West
+*
+M 1 14800 1 14844			_MOBPROG1 - pray to The room of skeletons
+*
+M 1 14801 1 14845			_MOBPROG2 idle to More Skeletons
+*
+M 1 14802 1 14846			_mobprog3 dragons tail to The Question.
+*
+O 1 14810 100 14865			statue medussa to Steamy tunnnel
+O 1 14808 100 14869			titan Statue to Steamy tunnel.
+O 1 14809 100 14873			hydra statue to Bend in the steamy tunnel
+O 1 14812 100 14877			statue three headed dragon to Bend in the steamy tunnel.
+O 1 14812 100 14887			statue three headed dragon to The Ankh.
+*
+M 1 14809 1 14891			the acid-worm to Before the chasme
+*
+*
+*
+*
+M 1 14807 1 14899			the 3-headed dragon to Bend in the Tunnel
+E 1 14831 100 16
+*
+M 1 14806 1 14903			the hydra to Tunnel Bend
+E 1 14836 100 16
+*
+M 1 14805 1 14906			the titan to shake - bend in tunnel
+E 1 14804 100 1
+E 1 14804 100 2
+E 1 14802 100 5
+E 1 14803 100 14
+E 1 14803 100 15
+E 1 14801 100 16
+*
+M 1 14808 1 14910			the medussa to Firey Cavern
+E 1 14834 100 12
+E 1 14835 100 16
+*
+M 1 14811 1 14887			mobprog7 ankh to The Ankh.
+*
+O 1 14818 100 14859			a rope ladder to A Way Down
+P 2 14805 100 14818
+O 1 14818 100 14863			a rope ladder to Bottom of the Ladder
+O 1 14814 100 14832			a stone slab to The Entrance-way
+O 1 14815 100 14827			a stone rod to Black Portal.
+O 1 14819 100 14827			black portal to Black Portal.
+O 1 14819 100 14846			black portal to the question.
+O 1 14821 100 14813			Body Parts to The Maze of Pain.
+O 1 14820 100 14814			Body Parts to The Maze of Pain
+O 1 14823 100 14815			Body Parts to The Maze of Pain.
+O 1 14820 100 14816			Body Parts to The Maze of Pain.
+O 1 14823 100 14817			Body Parts to The Maze of Pain.
+O 1 14822 100 14818			Body Parts to The Maze of Pain.
+O 1 14823 100 14819			Body Parts to The Maze of Pain.
+O 1 14820 100 14820			Body Parts to The Maze of Pain.
+O 1 14820 100 14821			Body Parts to The Maze of Pain.
+O 1 14823 100 14822			Body Parts to The Maze of Pain.
+O 1 14824 100 14823			Body Parts to The Maze of Pain.
+O 1 14824 100 14824			Body Parts to The Maze of Pain.
+O 1 14824 100 14825			Body Parts to The Maze of Pain.
+O 1 14824 100 14826			Body Parts to The Maze of Pain.
+O 1 14824 100 14916			Body Parts to The Maze of Pain.
+O 1 14824 100 14915			Body Parts to The Maze of Pain.
+O 1 14825 100 14887			a red ankh to The Ankh.
+O 1 14826 100 14888			a blue ankh to Blue Ankh
+*
+*
+M 1 14812 1 14893			the acid-worm to Before the Chasme
+*
+M 1 14813 1 14895			the acid-worm to Before the chasme
+*
+M 1 14814 1 14897			the acid-worm to Acrid tunnel
+*
+M 1 14815 1 14902			the acid-worm to Before a chasme
+*
+M 1 14816 1 14913			the acid-worm to The steamy tunnel
+*
+M 1 14817 1 14907			the acid-worm to Before the chasme
+*
+M 1 14818 1 14911			the acid-worm to Firey Cavern
+O 1 14828 100 14803			a rottig skeleton to Large Rough Cavern.
+O 1 14829 100 14855			a green portal to The PORTAL
+D 1 14860 0 2			; Smooth Tunnel Lock North
+D 1 14859 2 2			; A Way Down Lock South
+D 1 14856 1 2			; Smooth Tunnel Lock East
+*
+M 1 14819 1 14800			the old hobbit to The Entrance
+D 1 14800 3 2			; The Entrance Lock West
+D 1 14811 3 2			; The Huge Stone Wheel. Lock West
+*
+M 1 14820 1 14888			the 3-headed dragon to Blue Ankh
+E 1 14832 100 6
+E 1 14833 100 11
+E 1 14831 100 16
+S
+
+
+#SPECIALS
+M  14805 spec_breath_acid			the titan
+M  14806 spec_breath_any			the hydra
+M  14807 spec_breath_any			the 3-headed dragon
+M  14808 spec_cast_psionicist			the medussa
+M  14809 spec_breath_acid			the acid-worm
+M  14812 spec_breath_acid			the acid-worm
+M  14813 spec_breath_acid			the acid-worm
+M  14814 spec_breath_acid			the acid-worm
+M  14815 spec_breath_acid			the acid-worm
+M  14816 spec_breath_acid			the acid-worm
+M  14817 spec_breath_acid			the acid-worm
+M  14818 spec_breath_acid			the acid-worm
+M  14820 spec_breath_any			the 3-headed dragon
+S
+
+
+#$

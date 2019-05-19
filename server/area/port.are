@@ -1,0 +1,1496 @@
+#AREA	Madboy~  The Port of Draagdim~
+-2 -2 0 100
+
+#AREA_SPECIAL
+no_quest
+$
+
+#HELPS
+-1 Madboy~
+Madboy really does need help!~
+
+0 $~
+
+
+#MOBILES
+#28200
+butler~
+Madboy's butler~
+An old butler stands looking down his long nose at you.
+~
+Why are you looking at this guy.  He has nothing you want!
+~
+64 8|32|128|512|8192 1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28201
+armourer~
+The armourer~
+A massive hulk of a man stands behind the counter here.
+~
+The armourer looks back at you.
+~
+2|64 32|512|8192 100 S
+45 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28202
+shopkeeper woman silvre blayde~
+Silvre Blayde~
+A beautiful, middle-aged woman stands behind the counter smiling warmly.
+~
+Silvre Blayde smiles at you and asks "What can I do you for?".
+~
+2|64|1024 8|32|512 300 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28203
+shopkeeper alvyn~
+Alvyn~
+Alvyn looks at you over his glasses.
+~
+Alvyn is a small wizened, old half-elf.  He seems to take pride in
+his little shop as he continually pores over his latest stock.
+~
+2|64 8|32|512 0 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28204
+guardian sentinel~
+The Guardian~
+
+~
+The guardian has no items and silvery skin and he's going to knock
+your block off if you don't watch out
+~
+2|32|64 8|32|512|32768 0 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28205
+sailor~
+a sailor~
+A sailor strolls here
+~
+What the hell do you want to look a sailor for?
+~
+64|2048 0 0 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28206
+worker dock~
+a dock worker~
+A dock worker is hefting boxes here
+~
+Have you never seen a dock worker before?  Brawn in dungerees.
+~
+2|64|128 0 300 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28207
+citizen~
+a citizen~
+A citizen strolls about here
+~
+The citizen smiles warmly and says "Hello"
+~
+64|128 0 500 S
+5 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28208
+thief~
+a thief~
+A citizen strolls about here
+~
+The thief tries to hurry away from you
+~
+64|128 32|32768 -100 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28209
+thief~
+a thief~
+
+~
+The thief looks back at you.
+~
+2|64|128 32|32768 -100 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28210
+guildmaster thief~
+The guildmaster~
+The guildmaster practices his fighting skills here
+~
+The guildmaster looks back at you as if noticing you for the first time.
+~
+2|64|128|512|1024 32|32768 -500 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28211
+watch watchman~
+a watchman~
+A watchman strolls around keeping the peace
+~
+The watchman nods to you and says " Good day to you, citizen"
+~
+2|64|128|512|1024 32|32768 300 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28212
+barkeep~
+a Barkeep~
+The fat barkeep barks " Whaddya want?" 
+~
+The barkeep is a huge fat man with a perpetual nasty expression. He
+looks down at you from the bar as you are vermin. He wipes his sweaty
+brow with a meaty hand and asks "Do you want a drink or what?"
+~
+64 0 0 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#28200
+sword crysomer~
+crysomer~
+A silver, great-sword rests here.~
+~
+5 1|2|64|1024|2048 1|8192
+0~ 30~ 72~ 13~ 
+1 0 0
+A
+1 2
+A
+2 2
+A
+5 2
+A
+13 50
+A
+14 50
+A
+24 -20
+E
+crysomer~
+This is the fabled sword carried by the half-dragon hero, Fitharn 
+and protected him from the Disintergration spells cast by Xoric
+in the apocalyptic God's War when Madboy truly did lose his bickies
+and led the forces of darkness against Midgaard and it's heroes.~
+#28201
+ring~
+a thieves ring~
+A small steel ring lies here~
+~
+18 512 1|2
+0~ 1~ 6~ 11~ 
+1 0 0
+#28202
+scale~
+a scale shirt~
+A metal scale shirt lies here.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+7 0 0
+#28203
+~
+.44 Magnum Desert Eagle~
+~
+~
+5 0 8192
+0~ 100~ 600~ 6~ 
+5 0 0
+A
+18 100
+A
+19 100
+#28204
+Dagger~
+a dagger~
+A blunt dagger rests here~
+~
+5 0 1|8192
+0~ 1~ 6~ 11~ 
+5 0 0
+A
+19 -1
+#28205
+sword~
+a sword~
+A sword rests here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 3~ 
+5 0 0
+#28206
+flamberge sword~
+a flamberge~
+A long, wavy-bladed sword lies here~
+~
+5 64 1|8192
+0~ 1~ 6~ 1~ 
+5 15 10
+A
+2 1
+A
+19 4
+#28207
+mace~
+a mace~
+A heavy mace rests here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 7~ 
+8 0 0
+A
+19 3
+A
+18 -1
+#28208
+axe battle~
+a battle axe~
+A battle axe rests here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 13~ 
+5 0 0
+A
+19 4
+A
+18 -1
+A
+17 -2
+#28209
+helm helmet~
+a steel helm~
+A steel helm rests here.~
+~
+9 0 1|16
+0~ 1~ 6~ 11~ 
+2 0 0
+#28210
+gauntlets leather~
+leather gauntlets~
+A pair of leather gauntlets lie here~
+~
+9 0 1|128
+0~ 1~ 6~ 11~ 
+1 0 0
+#28211
+plate platemail breast breastplate~
+a platemail breastplate~
+A shiny breastplate lies here.~
+~
+9 0 1|8
+0~ 1~ 6~ 11~ 
+10 0 0
+A
+2 -1
+A
+17 -15
+#28212
+greaves~
+leather greaves~
+A pair of leather greaves rest here.~
+~
+9 0 1|32
+0~ 1~ 6~ 11~ 
+5 0 0
+#28213
+beer~
+a pint of beer~
+A pint of flat, stale beer sits here~
+~
+17 0 1
+0~ 1~ 1~ 0~ 
+1 0 0
+#28214
+whiskey~
+a glass of whiskey~
+A glass of rough whiskey rests here.~
+~
+17 0 1
+0~ 1~ 5~ 0~ 
+1 0 0
+#28215
+strong cider~
+a pint of strong cider~
+A pint of extra-strong cider rests here.~
+~
+17 0 1
+0~ 1~ 20~ 0~ 
+1 0 0
+#28216
+talisman~
+a talisman of enlightenment~
+A small silver talisman lies here~
+~
+1 0 1
+0~ 1~ -1~ 11~ 
+1 0 0
+A
+4 1
+#28217
+cloak alvesayth~
+a cloak of Alvesayth~
+A cloak rests here.~
+~
+9 64 1|1024
+0~ 1~ 6~ 11~ 
+5 0 5
+A
+2 1
+A
+17 -5
+A
+14 10
+A
+12 20
+A
+24 -5
+#28218
+nildaeth ~
+a nildaeth~
+A nildaeth rests here~
+~
+5 1 1|8192
+0~ 1~ 6~ 11~ 
+1 0 10
+A
+1 1
+A
+19 4
+E
+nildaeth~
+A nildaeth is a small charm that is worn around the waists of Alaghi to give them strength in combat~
+#0
+
+
+#ROOMS
+#28200
+The Western Docks~
+You are standing at the docks which gave the Port Quarter it's title.  
+This quarter of the city is the only part which is truly busy all the 
+time as sailors, both drunk and sober pass you by and men unload 
+large containers from the huge ships.  To the north the docks carry on.  
+To the south is the entrance to a seedy tavern called "The Rusty Anchor". 
+To the west is a jetty. To the east an alleyway called "The
+Links" runs down around the Rusty Anchor to the Southern Docks.
+~
+0 0 1
+D0
+~
+~
+0 -1 28201
+D1
+~
+~
+0 -1 28215
+D2
+~
+~
+1 -1 28202
+D3
+~
+~
+0 -1 28214
+S
+#28201
+The Western Docks~
+You are standing at the docks which gave the Port Quarter it's title.
+This quarter of the city is the only part which is truly busy all the
+time as sailors, both drunk and sober pass you by and men unload
+large containers from the huge ships.  To the north and south the
+docks carry on. To the west is an empty jetty.
+~
+0 0 1
+D0
+~
+~
+0 -1 28205
+D2
+~
+~
+0 -1 28200
+D3
+~
+~
+0 -1 28204
+S
+#28202
+The Rusty Anchor Tavern~
+The smell of unwashed bodies, stale beer and vomit assaults your
+nostrils as you enter the low ceilinged tavern.  The large, smoky
+common room is wall to wall with sailors, in various states of
+drunkeness, all yelling to be heard over each other and a large,
+buxom barmaid serves leering sailors with an air of indifference at
+the bar.  To the south you see a heavy bead curtain hanging before a
+doorway.
+~
+0 8|0 0
+D0
+~
+~
+1 -1 28200
+D2
+A heavy curtain of beads hangs here.~
+curtain~
+1 -1 28203
+S
+#28203
+The small gambling room.~
+This dark room is separated by a heavy bead curtain and is much
+quieter than the common room. Before you, you see a small round table
+and some chairs.
+~
+0 8|0 0
+D0
+A heavy curtain of beads hangs here.~
+curtain~
+1 -1 28202
+S
+#28204
+A jetty~
+The old but sturdy timbers of the jetty creak as you walk over them
+and seaspray lightly coats your face as it is caried by the light sea
+breeze. Overhead, gulls wheel on the prevailing westerly gusts and a
+sense of calm and serenity washes over you. There are no boats moored
+at his jetty.
+~
+0 0 1
+D1
+~
+~
+0 -1 28201
+S
+#28205
+The Western Docks~
+You are standing at the docks which gave the Port Quarter it's title.
+This quarter of the city is the only part which is truly busy all the
+time as sailors, both drunk and sober pass you by and men unload
+large containers from the huge ships.  To the north the docks
+continues. To the west is a jetty. A large avenue called North-Wall
+leads of to the east from here.
+~
+0 0 1
+D1
+~
+~
+0 -1 28207
+D2
+~
+~
+0 -1 28201
+D3
+~
+~
+0 -1 28206
+S
+#28206
+A jetty~
+This jetty is very crowded as sailors shove past you and dock workers
+load crates, boxes and barrels onto the large, magnificent ship.
+Neither the workers nor the sailors acknowledge your presence as they
+move to and fro about you.
+~
+0 0 1
+D1
+~
+~
+0 -1 28205
+E
+ship~
+The huge frigate bears the king's coat of arms on the hull. She seems 
+to be being prepared for war.~
+E
+boxes crates~
+The crates and boxes bear the king's coat of arms on the sides. They 
+are large and too heavy for one man to lift.~
+E
+Barrels~
+The barrels bear the kings coat of arms on the sides and appear to 
+contain foodstuffs.~
+S
+#28207
+North-Wall~
+North-Wall stretches out before you. To the north the city wall runs
+parallel to the street. To the south you see a small archway closed
+off by a wrought-iron gate and further along to the east you see the
+north gate.
+~
+0 0 1
+D1
+~
+~
+0 -1 28211
+D2
+~
+~
+7 -1 28208
+D3
+~
+~
+0 -1 28205
+E
+gate~
+The wrought-iron gate has the number 1 on it and a sign that reads 
+"Beware of the Dog".~
+S
+#28208
+Stairs~
+A set of stairs leads up to a set of french-doors and the gate north
+onto the street.
+~
+0 4|512|0|16384 1
+D0
+~
+~
+7 -1 28207
+D4
+~
+~
+1 -1 28209
+S
+#28209
+Madboy's sea-veiw apartment.~
+You have entered Madboy's private little apartment. The walls are
+covered with expensive tapestries and hangings and the floor is
+scattered with deep, plush wool rugs and cushions. The windows face
+west overlooking the docks and give an expansive view of the bay.
+~
+0 8|0 0
+D2
+~
+~
+1 -1 28210
+D5
+~
+~
+1 -1 28208
+S
+#28210
+The kitchen~
+You find yourself standing in a small, tidy kitchen.  Large bay
+windows take up most of the eastern wall affording a brilliant view
+of the harbour, rivaling that of the lounge.  To the south a door
+leads to the butler's quarters and a door in the north leads back out
+into the lounge area.  To the west is a pantry.
+~
+0 8|0 0
+D0
+~
+~
+1 -1 28209
+S
+#28211
+North-Wall~
+North-Wall leads to the east and west.  To the east you see the north
+gate.
+~
+0 0 1
+D1
+~
+~
+0 -1 28212
+D3
+~
+~
+0 -1 28207
+S
+#28212
+North-Wall~
+North-Wall leads east and west from here.  To the east you can see
+the north gate.
+~
+0 0 1
+D1
+~
+~
+0 -1 28213
+D3
+~
+~
+0 -1 28211
+S
+#28213
+North-Wall at the North Gate~
+North-Wall leads east and west of here.  To the north the North Gate
+connects this city quarter to the rest of the city.  To the south a
+road leads to a large square.
+~
+0 0 1
+D0
+~
+~
+0 -1 28113
+D1
+~
+~
+0 -1 28228
+D2
+~
+~
+0 -1 28223
+D3
+~
+~
+0 -1 28212
+S
+#28214
+A jetty~
+A large ship is moored here readying for voyage.  Men rush backward
+and forward loading cargo onboard.
+~
+0 0 1
+D1
+~
+~
+0 -1 28200
+S
+#28215
+The Links~
+You stand in a narrow alleyway that links the Western Docks to the
+Southern Docks (hence the name).  You hear the sounds of a lot of
+people coming from the walls of the Rusty Anchor.  To the west is the
+Western Docks and to the south is the Southern Docks.
+~
+0 0 1
+D2
+~
+~
+0 -1 28216
+D3
+~
+~
+0 -1 28200
+S
+#28216
+The Southern Docks~
+You are standing at the western-most end of the Southern Docks. 
+Thousands of boats are tethered here along the five jetties that jut
+out across the water. Many buildings both shops and warehouses
+(mainly the latter) face the waterfront along the docks and people
+move to and fro here.
+~
+0 0 1
+D0
+~
+~
+0 -1 28215
+D1
+~
+~
+0 -1 28217
+S
+#28217
+The Southern Docks~
+A fresh breeze blows in from across the water carrying with it the 
+tangy odour of brine. Many people crowd this wide street some
+strolling and other carrying heavy loads from the boats moored here.
+There is a jetty here to the south.
+~
+0 0 1
+D1
+~
+~
+0 -1 28220
+D2
+~
+~
+0 -1 28218
+D3
+~
+~
+0 -1 28216
+S
+#28218
+A jetty~
+You are standing on a long jetty.  Boats ranging from small dinghies
+to enormous merchantmen are moored here.  To the north is the
+Southern Docks and to the south the jetty continues.
+~
+0 0 1
+D0
+~
+~
+0 -1 28217
+D2
+~
+~
+0 -1 28219
+S
+#28219
+A jetty~
+You are standing a jetty.  Many boats are moored here.
+~
+0 0 1
+D0
+~
+~
+0 -1 28218
+S
+#28220
+The Southern Docks~
+The Southern Docks is crowded with people looking, shopping and
+carrying heavy loads of all sorts of items bound for the Market
+Quarter. To the north is a shop with a suit of platemail emblazoned 
+above the door and a sign hangs next to it. To the south are a
+number of small jetties and docks but all are very crowded making
+passing impossible.
+~
+0 0 1
+D0
+~
+~
+1 -1 28221
+D1
+~
+~
+0 -1 28222
+D3
+~
+~
+0 -1 28217
+E
+sign~
+The Armorie
+
+Opene alle hours~
+S
+#28221
+The Armorie~
+You have entered an enormous, warehouse sized armour shop. All around
+you see manniquins wearing various types of plain and ordinary armour
+through to elaborate and exotic types of armour. At the end of the 
+room you see a counter and a massive forge.
+~
+0 8|0 0
+D2
+~
+~
+1 -1 28220
+S
+#28222
+South-Wall~
+The south wall begins here running around the southern side of this
+quarter. To the west you see the bustle of the Southern Docks.  To
+the north a road leads up to a square with a large statue in the
+centre of it.  To the east is a huge iron gate.
+~
+0 0 1
+D0
+~
+~
+0 -1 28239
+D1
+~
+~
+8 -1 28210
+D3
+~
+~
+0 -1 28220
+E
+gate~
+The gate has no lock and no apparent opening mechanism nor any hinges. The 
+beautifully worked gates scrollwork, upon closerexamination is razor sharp 
+to prevent anyone climbing it.~
+S
+#28223
+Gate Road~
+You stand in a little joining street between the gate and the square.
+On either side stand old, weather-beaten houses made of faded stone
+blocks.  To the north you see the gate and to the south you see the
+square.
+~
+0 0 1
+D0
+~
+~
+0 -1 28213
+D2
+~
+~
+0 -1 28224
+S
+#28224
+The Square~
+You stand in a large square who's centre is dominated by a large
+statue.  To the north you see the North Gate road.  The square
+continues to the east and west.
+~
+0 0 1
+D0
+~
+~
+0 -1 28223
+D1
+~
+~
+0 -1 28232
+D3
+~
+~
+0 -1 28225
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28225
+The Square~
+You stand in a large square who's centre is dominated by a large
+statue. To the south you espy a shop sign and to the east you see the
+North Gate road.
+~
+0 0 1
+D1
+~
+~
+0 -1 28224
+D2
+~
+~
+0 -1 28226
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28226
+The Square~
+You are standing in a large square who's centre is dominated by a
+large statue. To the west is a heavy, iron-bound door.  To the north
+and south the square continues. A sign hangs here.
+~
+0 0 1
+D0
+~
+~
+0 -1 28225
+D2
+~
+~
+0 -1 28238
+D3
+~
+~
+4 -1 28227
+E
+sign~
+Silvre Blayde's Qualitie Armes~
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28227
+Silvre Blayde's Qualitee Armes~
+The sea breeze blows in as you open the door then the door swings
+silently shut behind you as you enter the dark shop.  The meager
+light of the torches on the walls gleams off the highly polished
+weapons arrayed around this room. The sound of a hammer stiking
+metal beats in the background.
+~
+0 8|0|16384 0
+D1
+~
+~
+1 -1 28226
+S
+#28228
+North-Wall~
+North-Wall leads east and west from here.  To the west you can see
+the north gate and to the east you see another wharf in the distance.
+~
+0 0 1
+D1
+~
+~
+0 -1 28229
+D3
+~
+~
+0 -1 28213
+S
+#28229
+North-Wall~
+North-Wall continues both east and west from here.  To the east you
+see the Eastern Wharf.
+~
+0 0 1
+D1
+~
+~
+0 -1 28230
+D3
+~
+~
+0 -1 28228
+S
+#28230
+The Eastern Wharf~
+The Eastern Wharf is crowded with new arrivals to the city.  Docked,
+here, is a beautiful passenger liner with four masts and gilded 
+scrollwork on the bowsprit. Debarked passengers move to and fro as
+they try to locate thier luggage. To the south you spot a ticketing
+office.
+~
+0 0 1
+D2
+~
+~
+1 -1 28231
+D3
+~
+~
+0 -1 28229
+S
+#28231
+The Ticketing Office~
+Before you, you see a heavy wooden desk with a sign on it and a
+name-plate.  Otherwise, the office is empty.
+~
+0 8|0 0
+D0
+~
+~
+1 -1 28230
+D2
+~
+~
+4 28201 28240
+E
+sign~
+The sign reads 'Out to Lunch'. ~
+E
+name plate name-plate~
+The name-plate reads 'Okol Wond'~
+E
+south~
+At first you see nothing, but then you notice a small indentation
+in the wall.~
+S
+#28232
+The Square~
+You stand in a large sqaure who's centre is dominated by a large
+statue. To the south and west the square continues.
+~
+0 0 1
+D2
+~
+~
+0 -1 28233
+D3
+~
+~
+0 -1 28224
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28233
+The Square~
+You are standing in a large square who's centre is dominated by a
+large statue. To the north and south, the square continues. To the
+east is an alleyway.
+~
+0 0 1
+D0
+~
+~
+0 -1 28232
+D1
+~
+~
+0 -1 28234
+D2
+~
+~
+0 -1 28236
+S
+#28234
+An alleyway~
+This dark alley ends at a brick wall.  To the south you see a door.
+A sign hangs here.
+~
+0 1|0 1
+D2
+~
+~
+1 -1 28235
+D3
+~
+~
+0 -1 28233
+S
+#28235
+Alvyn's Curio's~
+This shop is surprisingly well lit. Arranged around you are all sorts
+of nik-naks, curios and antiques but very few items catch your eye.
+~
+0 8|0|16384 0
+D0
+~
+~
+1 -1 28234
+S
+#28236
+The Square~
+You stand in a large square who's centre is dominated by a large
+statue. To the west and north the square continues.
+~
+0 0 1
+D0
+~
+~
+0 -1 28233
+D3
+~
+~
+0 -1 28237
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28237
+The Square~
+You are standing in a large square who's centre is dominated by a
+large statue. To the east and west the square continues.
+~
+0 0 1
+D1
+~
+~
+0 -1 28236
+D3
+~
+~
+0 -1 28238
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28238
+The Square~
+You stand in a large square who's centre is dominated by a large
+statue. To the north you see a sign and to the south you see the
+Southern Docks.
+~
+0 0 1
+D0
+~
+~
+0 -1 28226
+D1
+~
+~
+0 -1 28237
+D2
+~
+~
+0 -1 28239
+E
+Statue~
+The statue depicts two figures, one a massive, half-dragon
+barbarian wielding a Greatsword, and the other, a human warrior
+holding an ornate lantern aloft.
+
+There is a small plaque at the base of the statue.~
+E
+small plaque~
+Fitharn and Dreamer:  The founders and creators of our fine city,
+Draagdim.~
+S
+#28239
+South-Dock Way~
+You find yourself in a short alley between the Square and the
+Southern Docks. There is little of interest here.
+~
+0 0 1
+D0
+~
+~
+0 -1 28238
+D2
+~
+~
+0 -1 28222
+S
+#28240
+Welcome home?~
+You stand in a small room with a hole in the floor and a rope ladder
+leading downward. To the north is a door.
+~
+0 1|4|8|512|0 0
+D0
+~
+~
+4 -1 28231
+D5
+~
+~
+0 -1 28241
+S
+#28241
+Down, you go~
+Darkness.
+~
+0 1|4|8|0|2048 0
+D4
+~
+~
+0 -1 28240
+D5
+~
+~
+0 -1 28242
+S
+#28242
+The sewer~
+You gag at the stench as you take stock of your surroundings. To the
+east you see a hole where the sewage passes through and to the west
+is a well lit chamber. Above you, a rope ladder leads up into
+darkness.
+~
+0 1|4|8|0 0
+D1
+~
+~
+0 -1 28244
+D3
+~
+~
+0 -1 28243
+D4
+~
+~
+0 -1 28241
+S
+#28243
+The Thieves'  Guild~
+As you step into this room, all manner of beings turn to stare at
+you as you enter. Most turn back to thier games, sleep or practice
+almost immediately although eye you with suspicion and mistrust.
+The room is huge with makeshift beds lining the walls almost every
+nook and cranny.
+~
+0 8|0 0
+D1
+~
+~
+0 -1 28242
+S
+#28244
+The Sewer~
+You dive into the foul morass that sloshes sluggishly. The putrid 
+stench causes bile to flood your mouth and your gorge to rise. The
+hideous stream winds for, what seems like, miles before coming to
+a lit area.
+~
+0 1|4|8|512|0 6
+D0
+~
+~
+0 -1 28245
+D3
+~
+~
+0 -1 28242
+S
+#28245
+Tomb of the Kings~
+You are standing in a brightly lit chamber lined on each side with
+statues of dead kings. To the north you see a pedistal with a glowing 
+sword resting upon it.
+~
+0 4|8|0 0
+D0
+~
+~
+0 -1 28246
+D2
+~
+~
+0 -1 28244
+S
+#28246
+The Fane of the Crysomer~
+You are standing before a pedistal with a glowing sword resting upon
+it. The room here is not so brightly lit and you see movements in the
+shadows.
+~
+0 8|0 0
+D2
+~
+~
+0 -1 28245
+S
+#0
+
+
+#RESETS
+*
+D 1 28209 5 1			; Madboy's sea-veiw apartment. Close Down
+D 1 28208 0 1			; Stairs Close North
+D 1 28208 4 1			; Stairs Close Up
+D 1 28207 2 2			; North-Wall Lock South
+*
+* M 1 28200 1 28209		Madboy's butler to Madboy's sea-veiw apartment.
+* E 1 28203 100 16
+D 1 28220 0 1			; The Southern Docks Close North
+D 1 28202 0 1			; The Rusty Anchor Tavern Close North
+D 1 28203 0 1			; The small gambling room. Close North
+D 1 28202 2 1			; The Rusty Anchor Tavern Close South
+D 1 28200 2 1			; The Western Docks Close South
+D 1 28209 2 1			; Madboy's sea-veiw apartment. Close South
+D 1 28210 0 1			; The kitchen Close North
+D 1 28231 0 1			; The Ticketing Office Close North
+D 1 28230 2 1			; The Eastern Wharf Close South
+D 1 28226 3 1			; The Square Close West
+D 1 28227 1 1			; Silvre Blayde's Qualitee Armes Close East
+D 1 28235 0 1			; Alvyn's Curio's Close North
+D 1 28234 2 1			; An alleyway Close South
+D 1 28222 1 2			; South-Wall Lock East
+D 1 28240 0 1			; Welcome home? Close North
+*
+M 1 28202 1 28227			Silvre Blayde to Silvre Blayde's Qualitee Armes
+E 1 28208 100 16
+G 1 28204 100
+G 1 28205 100
+G 1 28206 100
+G 1 28207 100
+G 1 28208 100
+D 1 28231 2 2			; The Ticketing Office Lock South
+O 1 28200 100 28246			crysomer to The Fane of the Crysomer
+*
+M 1 28204 1 28246			The Guardian to The Fane of the Crysomer
+*
+M 1 28205 11 28200			a sailor to The Western Docks
+E 1 28204 100 16
+*
+M 1 28205 11 28200			a sailor to The Western Docks
+E 1 28204 100 16
+*
+M 1 28205 11 28202			a sailor to The Rusty Anchor Tavern
+E 1 28204 100 16
+*
+M 1 28205 11 28202			a sailor to The Rusty Anchor Tavern
+E 1 28204 100 16
+*
+M 1 28206 11 28202			a dock worker to The Rusty Anchor Tavern
+*
+M 1 28207 15 28202			a citizen to The Rusty Anchor Tavern
+*
+M 1 28206 11 28203			a dock worker to The small gambling room.
+*
+M 1 28207 15 28203			a citizen to The small gambling room.
+*
+M 1 28206 11 28204			a dock worker to A jetty
+*
+M 1 28205 11 28205			a sailor to The Western Docks
+*
+M 1 28206 11 28206			a dock worker to A jetty
+*
+M 1 28206 11 28206			a dock worker to A jetty
+*
+M 1 28206 11 28206			a dock worker to A jetty
+*
+M 1 28207 15 28212			a citizen to North-Wall
+*
+M 1 28211 7 28213			a watchman to North-Wall at the North Gate
+*
+M 1 28206 11 28214			a dock worker to A jetty
+*
+M 1 28205 11 28214			a sailor to A jetty
+E 1 28204 100 16
+*
+M 1 28206 11 28214			a dock worker to A jetty
+*
+M 1 28208 4 28215			a thief to The Links
+E 1 28204 100 16
+*
+M 1 28205 11 28216			a sailor to The Southern Docks
+E 1 28204 100 16
+*
+M 1 28208 4 28216			a thief to The Southern Docks
+*
+M 1 28207 15 28216			a citizen to The Southern Docks
+*
+M 1 28207 15 28216			a citizen to The Southern Docks
+*
+M 1 28207 15 28216			a citizen to The Southern Docks
+*
+M 1 28206 11 28217			a dock worker to The Southern Docks
+*
+M 1 28206 11 28218			a dock worker to A jetty
+*
+M 1 28205 11 28219			a sailor to A jetty
+E 1 28204 100 16
+*
+M 1 28207 15 28220			a citizen to The Southern Docks
+*
+M 1 28207 15 28220			a citizen to The Southern Docks
+*
+M 1 28208 4 28220			a thief to The Southern Docks
+*
+M 1 28201 1 28221			The armourer to The Armorie
+G 1 28209 100
+G 1 28210 100
+G 1 28211 100
+G 1 28212 100
+*
+M 1 28207 15 28222			a citizen to South-Wall
+*
+M 1 28208 4 28224			a thief to The Square
+E 1 28204 100 16
+*
+M 1 28207 15 28226			a citizen to The Square
+*
+M 1 28207 15 28228			a citizen to North-Wall
+*
+M 1 28207 15 28230			a citizen to The Eastern Wharf
+*
+M 1 28205 11 28230			a sailor to The Eastern Wharf
+E 1 28204 100 16
+*
+M 1 28205 11 28230			a sailor to The Eastern Wharf
+E 1 28204 100 16
+*
+M 1 28206 11 28230			a dock worker to The Eastern Wharf
+*
+M 1 28205 11 28233			a sailor to The Square
+E 1 28204 100 16
+*
+M 1 28203 1 28235			Alvyn to Alvyn's Curio's
+G 1 28218 100
+G 1 28217 100
+*
+M 1 28207 15 28237			a citizen to The Square
+*
+M 1 28210 1 28243			The guildmaster to The Thieves'  Guild
+E 1 28206 100 16
+*
+M 1 28209 4 28243			a thief to The Thieves'  Guild
+E 1 28205 100 16
+*
+M 1 28209 4 28243			a thief to The Thieves'  Guild
+E 1 28204 100 16
+*
+M 1 28209 4 28243			a thief to The Thieves'  Guild
+E 1 28205 100 16
+*
+M 1 28209 4 28243			a thief to The Thieves'  Guild
+E 1 28205 100 16
+*
+M 1 28211 7 28237			a watchman to The Square
+E 1 28202 100 5
+E 1 28205 100 16
+*
+M 1 28211 7 28232			a watchman to The Square
+E 1 28202 100 5
+E 1 28205 100 16
+*
+M 1 28211 7 28229			a watchman to North-Wall
+E 1 28202 100 5
+E 1 28205 100 16
+*
+M 1 28211 7 28223			a watchman to Gate Road
+E 1 28202 100 5
+E 1 28205 100 16
+*
+M 1 28211 7 28217			a watchman to The Southern Docks
+E 1 28202 100 5
+E 1 28205 100 16
+*
+M 1 28211 7 28203			a watchman to The small gambling room.
+E 1 28202 100 5
+E 1 28205 100 16
+*
+M 1 28212 1 28202			a Barkeep to The Rusty Anchor Tavern
+E 1 28207 100 16
+G 1 28215 100
+G 1 28214 100
+G 1 28213 100
+S
+
+
+#SHOPS
+28201 9 8 0 0 0 85 125 0 23			(mobile is from another zone)
+28202 5 8 0 0 0 70 130 0 23			(mobile is from another zone)
+28203 1 12 15 13 8 70 145 0 23			(mobile is from another zone)
+28212 0 0 0 0 0 100 200 0 23			(mobile is from another zone)
+28208 5 8 10 3 2 45 250 0 23			(mobile is from another zone)
+28210 5 3 2 10 8 35 250 0 23			(mobile is from another zone)
+0
+
+
+#SPECIALS
+M  28200 spec_cast_orb			Madboy's butler
+M  28201 spec_breath_fire			The armourer
+M  28202 spec_cast_mage			Silvre Blayde
+M  28203 spec_cast_psionicist			Alvyn
+M  28208 spec_thief			a thief
+S
+
+
+#$

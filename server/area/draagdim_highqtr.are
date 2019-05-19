@@ -1,0 +1,3513 @@
+#AREA	Jammer~     The High Quarter~
+-2 -2 0 100
+
+#AREA_SPECIAL
+no_quest
+$
+
+#MOBILES
+#28000
+butler~
+the Butler~
+The Butler stands here,  ready if needed...
+~
+The butler is impeccably dressed in servants clothes and smiles pleasantly at
+you as he keeps a careful eye on the other servants of the house
+~
+2|4|64 8|32 200 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28001
+High Quarter Guard~
+the High Quarter Guard~
+The High Quarter Guard stands here,  proudly defending his precinct...
+~
+The high quarter guards are hand picked from the city watch,  and are
+fearsome in their appearance.  Better keep on the right side of the law in
+this town!
+~
+4|64|4096 8|32 300 S
+28 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28002
+templar~
+the Warden Templar~
+The Templar Warden of this quarter proudly surveys his domain...
+~
+You see a note from Jammer.
+It reads:  DO NOT ATTACK THIS MOB
+You have been warned.
+
+Jammer 96.
+~
+64|128|4096 8|32|128 1000 S
+200 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28003
+Janitor~
+the Janitor~
+The Janitor stands here,  wiping his brow...
+~
+The janitor looks at you and says "What the hell are you staring at?"
+~
+4|128 8|32 0 S
+21 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28004
+Groundskeeper~
+the Groundskeeper~
+The Groundskeeper hurries about his work keeping the park beautiful...
+~
+The groundskeeper ignores you completely...
+~
+4|64|128 8|32 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28005
+receptionist hotel~
+the Receptionist~
+The Hotels receptionist will sell you a room if you want one...
+~
+
+~
+2|64|128|4096 0 0 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+>greet_prog 100~
+if ispc($n)
+  if isimmort($n)
+    hug $n
+    french $n
+    say I've always wanted to do that
+    sigh $n
+    swoon $n
+    break
+  endif
+  nod $n
+  say How can I be of assistance?
+endif
+~
+|
+#28006
+citizen high quarter~
+the Citizen~
+The Citizen of the High Quarter stands here, looking completely clueless.
+~
+The Citizen looks back at you!
+~
+4|64|128 0 100 S
+4 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28007
+baker~
+the Baker~
+The Baker stands here,  behind the counter
+~
+This powerfully built man (obviously a former adventurer like yourself) is
+covered with flour and whistles  cheerily as he waits for your order.
+~
+2|64|4096 32|128 750 S
+72 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28008
+Jeweller high quarter~
+the Jeweller~
+The Jeweller of the High Quarter proudly hordes his wares...
+~
+This snivelling little man radiates magic and you can see that his store is
+well defended.  Better not steal from him
+~
+2|4|64|128|4096 32|128|8192 500 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28009
+Wizard Mage Shopkeeper~
+the Wizard~
+The Wizard smiles benignly at you,  hoping you'll buy something.
+~
+This old looking human hides well the fact that he is a powerful sorcerer.
+~
+2|64|128|4096 32|128 1000 S
+81 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28010
+Bar barkeep barman bartender~
+the Barkeep~
+The Barkeep stands here, efficiently cleaning glasses...
+~
+
+~
+2|64|128|4096 128|8192 750 S
+54 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28011
+Deak~
+Deak the Millionaire~
+Deak looks like any other filthy rich person, fat and smug.
+~
+
+~
+2|64|128|4096 0 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28012
+Waiter~
+the waiter~
+The waiter is between orders at the moment.
+~
+The Waiter looks back at you.  "Care to order?"
+~
+2|64|128 0 0 S
+8 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28013
+Eva~
+Eva the Warden's Wife~
+Eva the Warden's wife looks like the beautiful woman you have ever laid eyes
+on...
+~
+Eva has eyes of emerald green,  a body like an hourglass and legs that go on
+and on and on and on...
+Make no mistake,  this woman is built!
+~
+2|64|128|4096 128|8192 500 S
+61 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#28014
+Rene Chef~
+Rene the Chef~
+Rene the Chef twirls knives like a juggler as he creates a new culinary
+masterpiece...
+~
+Dressed impeccably in white chefs uniform,  this culinary genius is fabled
+throughout the land as the best chef of ALL time.
+~
+2|64|128|4096 128|8192 250 S
+25 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28015
+Spectre ghost ghostly~
+the Ghostly Spectre~
+A thin mist floats nearby...
+~
+
+~
+2|64|4096|16777216 8|32|524288 0 S
+88 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#28016
+Jasmir~
+Jasmir the Armourer~
+Jasmir stands over his hearth,  banging on some metal...
+~
+This well muscled man is not from these parts,  you feel that he is probably
+from the Eastern Desert or thereabouts,  but there is no mistaking his trade.
+His fame as an armourer and blacksmith are legendary.  Rumors tell of his
+hand in the construction of the fabled "Armour of Daeron",  but they are just
+rumours...
+~
+2|64|4096 128|8192 900 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28017
+apprentice blacksmith smith~
+the Apprentice~
+Jasmir's apprentice stands near Jasmir,  eagerly learning his trade...
+~
+
+~
+2|4|64|128|4096 0 500 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28018
+black mage magus~
+A Black robed figure~
+The Black robed figure stands silently here.
+~
+The figure stares into your soul, judging your character.
+~
+2|64|128|512|1024|4096|16777216 128|8192 360 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 60 'teacher base'
+& 105 'joust'
+& 105 'death magiks'
+& 105 'martial arts'
+& 105 'dark magiks'
+& 105 'armed combat knowledge'
+& 105 'combat knowledge'
+& 105 'archery knowledge'
+& 105 'unarmed combat knowledge'
+& 105 'defense knowledge'
+& 105 'riding techniques'
+& 105 'inner force'
+& 105 'advanced combat knowledge'
+& 105 'metal working techniques'
+& 30 'knight base'
+& 30 'thug base'
+& 30 'warrior base'
+& 30 'barbarian base'
+& 30 'ranger base'
+& 105 'stealth techniques'
+& 105 'thievery skills'
+& 105 'poison arts'
+& 105 'hunting arts'
+& 105 'knowledge'
+& 30 'thief base'
+& 30 'ninja base'
+& 30 'bounty base'
+& 105 'pugalism knowledge'
+& 30 'brawler base'
+& 30 'artist base'
+& 30 'bard base'
+& 105 'combination moves'
+& 105 'morphing knowledge'
+& 105 'lycanthropy skills'
+& 105 'vampyre skills'
+& 30 'vampire base'
+& 30 'shifter base'
+& 30 'werewolf base'
+& 105 'herb lore'
+& 105 'healing magiks'
+& 105 'harmful magiks'
+& 105 'protective magiks'
+& 105 'divination magiks'
+& 105 'curative magiks'
+& 105 'disease magiks'
+& 105 'summoning magiks'
+& 105 'divine magiks'
+& 105 'conjuration magiks'
+& 105 'enchantment magiks'
+& 105 'alteration magiks'
+& 105 'defense knowledge'
+& 105 'armed combat knowledge'
+& 105 'mana control'
+& 105 'advanced healing magiks'
+& 105 'inner force'
+& 105 'mana craft'
+& 30 'templar base'
+& 30 'cleric base'
+& 105 'evocation magiks'
+& 105 'disease magiks'
+& 105 'draconian magiks'
+& 105 'major protective magiks'
+& 105 'destructive magiks'
+& 30 'warlock base'
+& 30 'mage base'
+& 105 'mental defense disciplines'
+& 105 'matter control disciplines'
+& 105 'energy control disciplines'
+& 105 'telepathy disciplines'
+& 105 'body control disciplines'
+& 105 'mana control disciplines'
+& 105 'advanced telepathy disciplines'
+& 30 'psionic base'
+& 0 'astral vortex'
+& 105 'nature skills'
+& 105 'animate weapon'
+& 105 'kiai'
+& 105 'spellcraft'
+& 105 'dowse'
+& 105 'resistance magiks'
+& 105 'musicianship'
+#28019
+green mage~
+the Green Mage~
+The green mage stands here admiring the colour that is his name...
+~
+
+~
+2|64|128|512|4096 8|32|128|8192|524288 0 S
+28 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28020
+red Mage~
+the Red Mage~
+The Red Mage stands here admiring the colour that is his name...
+~
+
+~
+2|64|128|512|4096 8|32|128|8192|524288 0 S
+28 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28021
+blue Mage~
+the Blue Mage~
+The Blue Mage stands here admiring the colour that is his name
+~
+
+~
+2|64|128|512|4096 8|32|128|8192|524288 0 S
+28 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28022
+minstrel~
+the Minstrel~
+The Minstrel wanders through the city, singing...
+~
+
+~
+4|128 2|8|32|512 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 60 'teacher base'
+& 105 'musicianship'
+#28023
+gold orb~
+The Gold Heal Orb~
+A gold sphere floats unonbtrusively near the ceiling
+~
+
+~
+2|64|4096 0 0 S
+107 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#28024
+silver orb~
+the Silver Heal Orb~
+A silver sphere floats in mid air,  pulsing warmly.
+~
+
+~
+2|64|4096 0 0 S
+61 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#28025
+jailor~
+the Jailor~
+The Jailor stands here,  keeping an eye on his prisoners...
+~
+This huge,  muscled man is the pride of the High Quarter Elite Guards.  A
+former Gateman,  he has found the ultimate honor among the military forces of
+this city by being appointed Jailor.  He prides this position,  and takes
+extra care in his duties.
+NO ONE ESCAPES.
+~
+2|64|4096 8|32 275 S
+98 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28026
+merchant~
+the fat merchant~
+The fat merchant waddles along,  thinking about his money...
+~
+This man is opulently dressed,  and his pockets jingle heavily.
+~
+4|64|128 0 0 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#28027
+~
+Jamuir the Masseur~
+Jamuir waits patiently for you to lie back and relax.
+Jamuir says type 'heal' to see what I offer.
+~
+~
+2|64|4096|8192|32768|16777216 8|128|2048|4194304|8388608|16777216 1000 S
+80 -10 -20 1d1+29999 2d4+30
+0 0
+8 8 1
+#28028
+soul~
+a tormented soul~
+A tormented soul writhes in agony.
+~
+The wraith-like form of one of Shroud's victims looks piteously at you.
+~
+2|64|512 2048 0 S
+5 0 0 0d0+0 0d0+0
+32|64 0
+8 8 1
+#28029
+firetongue alaghi warlock~
+Firetongue~
+{rFiretongue{x, Alaghi, Warlock, Leader of the {YAesir{x is standing here.
+~
+As you look at this Alaghi, you notice that he is not as large as the usual 
+members of this race, although his face is twisted into the permanent sneer 
+that is a trademark of these beastmen. Twin weapons hang at his sides, both 
+defying definition of form, but seemingly made out of darkness and shadows. 
+Brown-black hair covers most of his visible scar-adorned body, and black eyes 
+with red pupil stare out from his deep sunken eyesockets. You are just about 
+to dismiss him as a regular mercenary when you notice a faint tendril of fire 
+playing along his arm, and a small drop of acid dripping from his fist, tools 
+of the trade for a warlock.
+
+The tattoo of Xuul, God of Destruction crowning his forehead looks as if it
+belongs there, as if he was born with it.
+
+Firetongue is using:
+<floating nearby>   {Y(Glowing){x {C(Humming){x {rpure hatred{x
+<worn on head>      {rDeceit{x
+<worn around neck>  {Y(Glowing){x {ban Elder sign{x
+<worn around neck>  {Y(Glowing){x {ban Elder sign{x
+<worn on arms>      {dBones of the Nexus beast{x
+<worn around wrist> {r(Cursed){x {dshackles of the damned{x
+<worn around wrist> {r(Cursed){x {dshackles of the damned{x
+<worn on hands>     {dsome black velvet gloves{x
+<worn on finger>    {c(Invis){x {bring of the Dark Path{x
+<worn on finger>    {c(Invis){x {bring of the Dark Path{x
+<worn on body>      {C(Humming){x {da rune covered breastplate{x
+<worn about body>   {c(Invis){x {bshadows{x
+<worn about waist>  {ra belt of thorns{x
+<secured to belt>   {ban oxskin pouch{x
+<worn on legs>      {rGreaves of War{x
+<worn on feet>      {C(Humming){x {bsome boots of searing shadows{x
+[used as light]     {Y(Glowing){x {dan oath of Vengeance{x
+[held in hand]      {C(Humming){x {drune of warding{x
+[weapon]            {c(Invis){x {Y(Glowing){x {C(Humming){x {M(Poisoned){x {bShadow's Edge{x
+[second weapon]     {M(Poisoned){x {ba Shard of Darkness{x
+
+~
+2|64|512 2048 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+
+#0
+
+
+#OBJECTS
+#28000
+roast meal~
+a Roast meal~
+A roast meal sits here,  waiting to be eaten.~
+~
+19 0 1
+40~ 0~ 0~ 0~
+1 0 0
+#28001
+Bread roll~
+a bread roll~
+A bread roll lies here.~
+~
+19 0 1
+20~ 0~ 0~ 0~
+1 0 0
+#28002
+water flask~
+a Flask of Water~
+A flask of water lies here.~
+~
+17 0 1
+30~ 25~ 0~ 0~
+1 0 0
+#28003
+tankard beer~
+a tankard of beer~
+A tankard of beer sits here~
+~
+17 0 1
+10~ 7~ 1~ 0~
+5 0 0
+#28004
+stone rune~
+a stone rune~
+A small runestone lies here...~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28005
+jade key~
+a jade key~
+A small key made of jade lies here...~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28006
+tasty bun~
+a tasty bun~
+A tasty bun lies here...~
+~
+19 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28007
+glass juice~
+a glass of juice~
+A glass of juice sits here...~
+~
+17 0 1
+2~ 2~ 6~ 0~
+1 0 0
+#28008
+gem opaque~
+an opaque gem~
+An opaque gem lies here...~
+~
+8 0 1
+0~ 1~ 6~ 11~
+2 0 0
+#28009
+zed holy symbol~
+a Holy Symbol~
+A Holy Symbol of Zed has been carelessly discarded here...~
+~
+8 1024|2048 1|4
+0~ 1~ 6~ 11~
+2 0 0
+A
+17 -5
+A
+12 10
+#28010
+greenstone token~
+a token~
+A greenstone token bearing a strange design lies here...~
+~
+8 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28011
+eyes eagle~
+eyes of the Eagle~
+A pair of perfectly matched and flawlessly faceted clear gemstones lie
+here...~
+~
+4 1024|4096 1|16
+60~ 20~ 12~ heighten senses~
+2 0 0
+A
+2 0
+E
+Clear~
+These are called "Eye's of the Eagle".  They are supposed to be quite rare.~
+#28012
+purse~
+a purse~
+A purse has been dropped here.~
+~
+20 0 1
+50~ 30~ 5~ 0~
+50 0 0
+#28013
+black robes robe~
+some Black Robes~
+Some Black Robes lie here...~
+~
+9 1|64 1|1024
+12~ 1~ 6~ 11~
+1 0 0
+A
+17 -25
+A
+23 -20
+A
+24 -20
+A
+18 10
+#28014
+Flames Wisdom~
+the Flames of Wisdom~
+A small globe floats here...~
+~
+1 1|64|128|4096 1|16384
+0~ 1~ 6~ 11~
+1 0 0
+A
+12 30
+A
+4 3
+A
+23 -10
+A
+24 -10
+#28015
+red key~
+a red key~
+A red key lies here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~
+1 0 0
+#28016
+blue key~
+a blue key~
+A blue key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28017
+green key~
+a green key~
+A green key  lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28018
+sword high~
+a high quarter sword~
+A sword rests here.  It's inscriptions tell you it belongs to the high quarter
+watch...~
+~
+5 64|1024 1|8192
+0~ 1~ 6~ 3~
+2 0 0
+A
+18 2
+A
+19 2
+#28019
+high armour~
+a suit of high quarter armour~
+A suit of high quarter armour lies here.  You wonder where it's owner is...~
+~
+9 64|1024 1|8
+0~ 1~ 6~ 11~
+5 0 0
+A
+23 -4
+A
+24 -6
+#28020
+high boots~
+a pair of high quarter boots~
+A pair of high quarter boots lie here...~
+~
+9 64 1|64
+0~ 1~ 6~ 11~
+2 0 0
+A
+14 0
+A
+5 3
+#28021
+high shield~
+a high quarter shield~
+A high quarter shield rests here.~
+~
+9 64 1|512
+0~ 1~ 6~ 11~
+6 0 5
+A
+19 3
+A
+17 -10
+A
+23 -2
+A
+24 -1
+#28022
+high leggings~
+a pair of high quarter leggings~
+A pair of high quarter leggings lie here.~
+~
+9 64 1|32
+8~ 1~ 6~ 11~
+3 0 0
+A
+13 10
+A
+14 20
+A
+12 20
+A
+4 -3
+#28023
+high bracers bracer~
+a high quarter bracer~
+A high quarter bracer lies here.~
+~
+9 64 1|4096
+0~ 1~ 6~ 11~
+1 0 0
+A
+19 1
+A
+2 2
+A
+3 -1
+#28024
+high signet ring~
+a high quarter signet ring~
+A ring bearing the seal of the High Quarter Warden lies here.~
+~
+4 64 1|2
+60~ 15~ 9~ mental barrier~
+1 0 0
+A
+24 -3
+#28025
+high cloak~
+a high quarter cloak~
+A high quarter cloak lies here.~
+~
+9 64 1|1024
+0~ 1~ 6~ 11~
+3 0 10
+A
+4 1
+A
+3 1
+A
+12 25
+#28026
+high sleeves~
+a pair of high quarter sleeves~
+A pair of high quarter sleeves lie here.~
+~
+9 64 1|256
+0~ 1~ 6~ 11~
+5 0 0
+A
+17 -5
+A
+24 -5
+#28027
+high gloves~
+a pair of high quarter gloves~
+A sword rests here.~
+~
+9 64 1|128
+0~ 1~ 6~ 11~
+1 0 0
+A
+2 2
+A
+1 2
+#28028
+high helmet helm~
+a high quarter helmet~
+A helmet bearing the crest of the High Quarter Warden lies here.~
+~
+9 64 1|16
+0~ 1~ 6~ 11~
+4 0 0
+A
+13 10
+A
+17 -10
+#28029
+jasmir apron~
+jasmir's apron~
+Jasmir's apron lies here...~
+~
+9 1|64|1024|2048 1|2048
+0~ 1~ 6~ 11~
+5 0 0
+A
+19 2
+A
+13 15
+A
+5 -2
+#28030
+staff black magus~
+the Magus Blackstaff~
+A shiny staff made from a hard black wood lies here...~
+~
+4 32|64|1024|2048 1|16384
+80~ 10~ 7~ ultrablast~
+5 0 0
+#28031
+key~
+a key~
+A key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28032
+key~
+a key~
+A key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28033
+key~
+a small copper key~
+A small copper key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28034
+key ~
+a shiny metal key~
+A shiny metal key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28035
+robes silk robe rich~
+a silk robe~
+A fine silk robe lies here...~
+~
+9 128 1|1024
+0~ 1~ 6~ 11~
+2 0 0
+A
+24 -3
+#28036
+key plain~
+a plain key~
+A plain key lies here.~
+~
+18 0 1
+0~ 1~ 6~ 11~
+1 0 0
+#28037
+bed~
+a king-sized bed~
+You see a huge king-sized bed here.~
+~
+12 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#28038
+computer~
+a computer~
+A "Pentium 4" computer is on the desk.~
+~
+12 0 0
+0~ 1~ 6~ 11~
+20 0 0
+#28039
+magazines~
+a pile of magazines~
+A pile of Porsche magazines is here.~
+~
+12 0 1|16284
+0~ 1~ 6~ 11~
+5 0 0
+#28040
+fridge refridgerator~
+a fridge full of beers~
+A fridge full of beers is in the corner.~
+~
+12 0 0
+0~ 1~ 6~ 11~
+100 0 0
+#28041
+desk~
+a desk~
+A desk is against the wall.~
+~
+12 0 0
+0~ 1~ 6~ 11~
+50 0 0
+#28042
+areas schematic~
+An areas schematic~
+An areas schematic flutters around the room.~
+~
+8 64 1
+~ ~ ~ ~
+0 0 0
+E
+areas schematic~
+Holy crap. This is a schematic for one {Yhuge{x area. Maybe multiple areas,
+even. This will come in handy someday, you know it.
+~
+#28043
+Pink Bunny~
+a pink bunny~
+A {mpink bunny{x blinks at you and twitches its ears.~
+~
+13 1 0
+~ ~ ~ ~
+1 0 0
+E
+pink bunny~
+It's pink and a little furry. You think you've seen a few like this
+elsewhere, possibly a few different places. One spot may even be
+fairly close by.
+~
+
+#28044
+sulfurous sulfuric pool~
+a sulfurous pool~
+Acrid steam wafts from a churning, sulfuric hot pool.~
+~
+25 16 0
+0~ 0~ 0~ 0~
+0 0 0
+E
+pool sulfurous~
+This sulfurous pool must be where Shroud cavorts with his handmaidens
+in his time off.
+~
+#28045
+portal fiery~
+a fiery portal~
+{R(Flaming){x The {Rfiery{x portal hangs in the air to the north.~
+~
+33 0 0
+28140~ -1~ 0~ 100~
+0 0 0
+
+#28046
+portal fiery~
+a fiery portal~
+{R(Flaming){x A {Rfiery{x portal hangs in the air.~
+~
+33 0 0
+28099~ -1~ 0~ 100~
+0 0 0
+
+#28047
+longsword broken~
+a broken longsword~
+{d(dull){x A broken longsword lies here.~
+~
+5 0 8192
+~ ~ ~ 3~
+20 0 0
+
+#28048
+armor plate full~
+pitted full plate armor~
+{g(etched){x A set of pitted full plate armor is here.~
+~
+9 0 8
+~ ~ ~ ~
+50 0 0
+
+#28049
+shield kite~
+a burnt kite shield~
+{R(scorched){x A burnt kite shield has been discarded here.~
+~
+9 0 512
+~ ~ ~ ~
+20 0 0
+
+#0
+
+#ROOMS
+#28000
+High Street~
+This is the main road into the High Quarter.  It has trees lining the
+road on both sides, and you can see that a concerted effort is kept in
+maintaining the cleanliness and beauty in this part of the city.
+~
+0 0 1
+D0
+~
+~
+0 -1 28066
+D1
+~
+~
+0 -1 28001
+D2
+~
+~
+0 -1 28067
+D3
+~
+~
+0 -1 28104
+S
+#28001
+High Street~
+The road heads Eastwards into the heart of the High Quarter.  To the West
+you can see the Main Street.
+~
+0 0 1
+D0
+~
+~
+0 -1 28035
+D1
+~
+~
+0 -1 28002
+D3
+~
+~
+0 -1 28000
+S
+#28002
+High Street~
+The immaculately paved street leads further in an East West direction.  To the
+East in the distance you can see the Fabled Magus Tower.  To the West the
+road leads westwards back to the main street.
+~
+0 0 1
+D1
+~
+~
+0 -1 28092
+D2
+Above the sturdy iron bound door is a slowly swinging sign with the head of a
+dragon painted on it.~
+~
+1 -1 28052
+D3
+~
+~
+0 -1 28001
+S
+#28092
+The Crossing~
+Here is the main crossroads in the High Quarter.  East lies the Magus's Tower
+West,  the road leads back to the main street.  North,  the road leads north
+to
+the Mayors house.  South,  the road winds towards the Market Quarter.
+A large granite statue stands here.
+~
+0 4|1024 1
+D0
+~
+~
+0 -1 28004
+D1
+~
+~
+0 -1 28008
+D2
+~
+~
+0 -1 28010
+D3
+~
+~
+0 -1 28002
+E
+granite statue~
+The tall statue is of a human in armor standing in a salute with a huge sword. 
+The plaque at the bottom reads:  Daeron,  Hero of the People,  servant of
+Good.~
+S
+#28004
+Titan Avenue~
+Titan Avenue is a pleasant lane leading in a North South direction.  Its name
+however,  belies a gentle less travelled road.  People in this area are
+usually here for pleasure,  not war or business.  Young couples can be seen
+walking the streets here at any hour of the day or night.
+~
+0 0 1
+D0
+~
+~
+0 -1 28005
+D2
+~
+~
+0 -1 28092
+S
+#28005
+Titan Avenue~
+Rich houses line both sides of the road here.  The road leads in a North
+South direction.
+~
+0 0 1
+D0
+~
+~
+0 -1 28006
+D2
+~
+~
+0 -1 28004
+D3
+~
+~
+0 -1 28084
+S
+#28006
+Northwall~
+The road here takes a sharp bend as it's northward progress is impeded by
+the city wall.  To the east you can see the North East Guardtower and to
+the West is the Mayors House.
+~
+0 0 1
+D1
+~
+~
+0 -1 28007
+D2
+~
+~
+0 -1 28005
+D3
+~
+~
+8 28005 28017
+S
+#28007
+East Way~
+The road narrows here as it winds its way between bulging houses and the
+sturdy city wall.
+~
+0 0 1
+D1
+~
+~
+0 -1 28015
+D3
+~
+~
+0 -1 28006
+S
+#28008
+Mystic Lane~
+Here is the area of the High Quarter where the people in tune with the realm
+of magic make both their home and living under the shadow of the Magus Tower.
+To the West,  you can see the Crossing.  To the East,  there is a large wall,
+almost rivalling the city wall in stature.  A large gate in the wall lets the
+lane through.
+~
+0 0 1
+D0
+~
+~
+0 -1 28033
+D1
+~
+~
+0 -1 28009
+D3
+~
+~
+0 -1 28092
+S
+#28009
+The Courtyard~
+You are standing in the courtyard of the Magus's Tower.  A solid wooden door
+in the tower is in front of you.  The walls around are high and unclimbable.
+There is a street leading westwards out of the courtyard.
+~
+0 0 1
+D1
+An inscription in ancient script says,  "Abandon hope,  all ye who might
+enter here..." Followed by a list of numbers.~
+door solid wooden~
+8 28004 28068
+D3
+~
+~
+0 -1 28008
+E
+list numbers~
+Some cryptic list of letters and numbers reads:
+
+W1-5/6/1-12-6
+W6-5/9-10-3/9/1
+W5-4-13-14-3/7-27~
+S
+#28010
+Saturn Promanade~
+You are standing on Saturn Promanade,  a road which leads you through the
+heart of the High Quarter.  Like other streets in this area,  it is
+meticulously maintained,  and is always well lit.
+~
+0 0 1
+D0
+~
+~
+0 -1 28092
+D2
+~
+~
+0 -1 28011
+S
+#28011
+Saturn Promanade~
+Saturn Promanade leads in a North South direction.
+~
+0 0 1
+D0
+~
+~
+0 -1 28010
+D2
+~
+~
+0 -1 28012
+D3
+~
+~
+0 -1 28034
+S
+#28012
+Saturn Promanade~
+The road bends leaving you to go either North or East.  To the west is the
+High Quarter's beautiful park.
+~
+0 0 1
+D0
+~
+~
+0 -1 28011
+D1
+~
+~
+0 -1 28013
+D3
+This wrought iron gate is magnificantly kept shining black.  It holds inside
+the entrance to the city park.~
+Gate~
+1 -1 28022
+S
+#28013
+Saturn Promanade~
+The road bends.  You may head South or West.
+~
+0 0 1
+D0
+~
+~
+1 -1 28047
+D2
+~
+~
+0 -1 28014
+D3
+~
+~
+0 -1 28012
+S
+#28014
+Southlock~
+You are standing at the southern entrance to the High Quarter.  Through a
+gateway to the south you can see the East road head from the centre of the
+city to the East gate.  The road heads north into the heart of the High
+Quarter.
+~
+0 0 1
+D0
+~
+~
+0 -1 28013
+D1
+~
+~
+1 -1 28051
+D2
+~
+~
+0 -1 28113
+D3
+~
+~
+1 -1 28050
+S
+#28015
+East Way~
+This stretch of road is hardly used,  and seems more like an alley way.  To
+the east you can see the northeastern corner of the citywall,  and the guard
+tower that stands there.  To the west,  the road wanders back toward the
+hustle of the main streets.
+~
+0 0 1
+D1
+~
+~
+0 -1 28016
+D2
+~
+~
+1 -1 28085
+D3
+~
+~
+0 -1 28007
+S
+#28016
+The Corner~
+You are standing at the North East corner of the city.  A small tower stands
+joining the huge city walls together.  A small office is at the bottom of the
+tower but it appears locked.  The road heads back west.
+~
+0 0 1
+D3
+~
+~
+0 -1 28015
+D4
+~
+~
+1 -1 28036
+S
+#28017
+The entry hall~
+You are standing in the hallway of the Wardens home.  Stairs lead up,  and a
+door is to the east.
+~
+0 8|0 0
+D1
+~
+~
+8 -1 28006
+D4
+~
+~
+0 -1 28018
+S
+#28018
+The living area~
+This is simply the most opulent self indulgent house you have ever laid your
+feet in!  Rich tapestries line one wall,  all around you are statuettes made
+out of many different and precious metals.  A huge cabinet encrusted in gold
+and gems sits next to an extremely comfotable sofa.
+~
+0 8|0 0
+D2
+~
+~
+1 -1 28019
+D3
+~
+~
+0 -1 28020
+D4
+~
+~
+1 -1 28021
+D5
+~
+~
+0 -1 28017
+S
+#28019
+The bedroom~
+This room has an exquisite four poster bed taking up most of it,  and  very
+little else of interest.
+~
+0 8|0 0
+D0
+~
+~
+1 -1 28018
+S
+#28020
+The kitchen~
+This room contains an immaculately kept kitchen.  The wooden benches are
+spotless, as is the floor and everything is kept neatly in its place.
+~
+0 8|0 0
+D1
+~
+~
+0 -1 28018
+S
+#28021
+Loft~
+You are standing inside the loft of the Warden's home.  Assorted dusty
+heirlooms and old furniture lie about,  and nothing much else of interest.
+~
+0 8|0 0
+D5
+~
+~
+1 -1 28018
+S
+#28022
+The City Park~
+You are standing just inside the entrance to the city park.  To the East you
+can see Saturn street.  To the west,  the park makes a delightfully airy
+contrast to the congestion and hustle and bustle of the city outside.
+~
+0 0 2
+D1
+~
+~
+1 -1 28012
+D3
+~
+~
+0 -1 28023
+S
+#28023
+The City Park~
+You are standing inside the city park.
+~
+0 0 2
+D0
+~
+~
+0 -1 28024
+D1
+~
+~
+0 -1 28022
+D3
+~
+~
+0 -1 28027
+S
+#28024
+The City Park~
+The park is quite old,  and has some fine examples of trees.  This particular
+avenue heads northwards to a small bandstand,  and south to the southern edge
+of the park.
+~
+0 0 2
+D0
+~
+~
+0 -1 28025
+D2
+~
+~
+0 -1 28023
+D3
+~
+iron gate fence~
+4 28036 28029
+S
+#28025
+The City Park~
+Ahead to the north you can see a small band stand.  South leads down a
+magestic avenue of aged trees.
+~
+0 0 2
+D0
+~
+~
+0 -1 28026
+D2
+~
+~
+0 -1 28024
+S
+#28026
+The Gazebo~
+You are standing in a small Gazebo.  People come here to take time out from
+city living,  or to mediate,  or even to romance a loved one.  You pause and
+think of times past in the peace.
+~
+0 8|0|16384 0
+D2
+~
+~
+0 -1 28025
+D3
+~
+~
+0 -1 28032
+S
+#28027
+The City Park~
+There is a small lake here to the north.  The path leads east back to the
+entrance or westwards into the park.
+~
+0 0 2
+D0
+~
+iron gate fence~
+4 28036 28029
+D1
+~
+~
+0 -1 28023
+D3
+~
+~
+0 -1 28028
+S
+#28028
+The City Park~
+Standing in the corner of the park.  There is a small bench here you can rest
+on,  and a small fountain splashes merrily to itself.
+~
+0 0 2
+D0
+~
+~
+0 -1 28030
+D1
+~
+~
+0 -1 28027
+S
+#28029
+The Park Lake~
+You are standing knee deep in water in the park lake.  There is an iron fence
+circling the lake, to keep people from doing what you're doing.  Better get
+out before one of the groundstaff sees you.
+~
+0 0|8192|16384 6
+D0
+~
+~
+4 28036 28032
+D1
+~
+iron gate fence~
+4 28036 28024
+D2
+~
+~
+4 28036 28027
+D3
+~
+~
+4 28036 28030
+D5
+~
+~
+0 -1 28088
+S
+#28030
+The City Park~
+The path leads north south along the western wall of the park.
+~
+0 0 2
+D0
+~
+~
+0 -1 28031
+D1
+~
+gate iron fence~
+4 28036 28029
+D2
+~
+~
+0 -1 28028
+S
+#28031
+The City Park~
+You are standing in a corner of the city park.  There is a bench here where
+you can rest,  and a small fountain.
+~
+0 0 2
+D1
+~
+~
+0 -1 28032
+D2
+~
+~
+0 -1 28030
+S
+#28032
+The City Park~
+The path leads in a west east direction.
+~
+0 0 2
+D1
+~
+~
+0 -1 28026
+D2
+~
+iron gate fence~
+4 28036 28029
+D3
+~
+~
+0 -1 28031
+S
+#28033
+The Store of Wonders~
+This shop is filled with curios from forgotten realms and ancient times.  A
+low mutter can be heard from among the many shelves as the shopkeeper tries
+vainly to restore order to the great many items stocked here.
+~
+0 8|0|16384 0
+D2
+~
+~
+0 -1 28008
+S
+#28034
+The Jewellery~
+A clean and cozy store assaults your vision as you enter the Jewellers store.
+In glass cases around the store there are examples of the jewellers
+handiwork,  all of exquisite design and precise construction.
+~
+0 8|0 0
+D1
+~
+~
+0 -1 28011
+S
+#28035
+The Bakery~
+You are standing in a flour covered room.  A tall tray laden stand sits in the
+corner,  letting the loaves cool.  That warm moist smell of freshly baked
+bread makes your mouth water.
+~
+0 8|0|16384 0
+D2
+~
+~
+0 -1 28001
+S
+#28036
+North East Tower~
+Here is the watch tower for the High Quarter.  From here, a  good view over
+this part of the city is afforded,  and there is a ladder in the corner
+leading up to the city wall.
+~
+0 8|0 0
+D4
+~
+~
+8 -1 28037
+D5
+~
+~
+1 -1 28016
+S
+#28037
+The City Wall~
+You are standing on the Corner of the city wall.  From here you can see Mount
+Mokh'lar,  the huge extinct volcano that the city is built around.  To the
+north,  the red sands of the shifting desert shimmer in the haze.  Not far to
+the east,  you can make
+out the delta of the Nozama river as it punches a hole in the blue sea.
+Southwards,  the Kirhyran plains run south and west,  spreading outwards like
+an eagles wing feathers.  Far off in the distance,  you can see the mighty
+Jangaran Forest
+~
+0 0|16384 1
+D5
+~
+~
+8 28004 28036
+S
+#28038
+The Entrance to the Magus's Tower~
+You are standing in a small anteroom.  It is bare apart from two wooden
+chairs.  A stair case leads up.
+~
+0 8|0 0
+D4
+~
+~
+0 -1 28039
+D5
+~
+~
+1 -1 28046
+S
+#28039
+The Red Room~
+You arrive in a monochromatic room.  Red is the only colour you see.
+~
+0 8|0|8192 0
+D0
+~
+~
+0 -1 28040
+D5
+~
+~
+0 -1 28038
+S
+#28040
+The Red Room~
+This room is similar to the one south,  but you can see a subtle change in
+the hue.  It appears darker than the red in the last room.
+~
+0 8|0|8192 0
+D2
+~
+~
+0 -1 28039
+D4
+~
+~
+8 28015 28041
+S
+#28041
+The Blue Room~
+A light blue colour
+~
+0 8|0|8192 0
+D3
+~
+~
+0 -1 28042
+S
+#28042
+The Blue Room~
+You are standing in a room which has a very impressive navy blue colour.
+~
+0 8|0|8192 0
+D1
+~
+~
+0 -1 28041
+D4
+~
+~
+8 28016 28043
+S
+#28043
+The Green Room~
+This emerald green room looks very soothing.
+~
+0 8|0|8192 0
+D2
+~
+~
+0 -1 28044
+S
+#28044
+The Green Room~
+
+~
+0 8|0|8192 0
+D0
+~
+~
+0 -1 28043
+D4
+~
+~
+8 28017 28045
+S
+#28045
+The Black Room~
+This room is only painted black on all the wooden areas.  A brass reading
+lantern sits on the black desk.
+~
+0 4|8|0 0
+S
+#28046
+The Basement~
+This room has not been disturbed for years.  There are items here that
+stockpile for use in a siege,  but that threat has long since past.
+~
+0 1|8|0 0
+D4
+~
+~
+1 -1 28038
+S
+#28047
+The Millionaires Club~
+You are standing in the foyer of a lavishly furnished and decorated anteroom.
+There is a small office adjoining the entrance to the clubrooms,  and there
+is a door to the south connecting this exclusive club to the outside world.
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28048
+D2
+~
+~
+1 -1 28013
+D3
+~
+~
+1 -1 28090
+S
+#28048
+The loungeroom~
+This expansive room, filled with tasteful works of art, both modern and
+contemporary, is where the rich and famous mix and socialise.  Small tables
+and quiet booths section off the room.  To the north is the kitchen, to the
+east are the bathrooms, and to the west is the massage room.  Stairs lead up
+to the private rooms on the second floor.
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28064
+D1
+~
+~
+1 -1 28049
+D2
+~
+~
+1 -1 28047
+D3
+~
+~
+0 -1 28089
+D4
+~
+~
+0 -1 28091
+S
+#28049
+The toilets~
+Odourless and spotlessly maintained,  the toilets here have the latest in
+plumbing technology.  This place has had a lot of money invested here!
+~
+0 8|1024 0
+D3
+~
+~
+1 -1 28048
+S
+#28050
+Watch post~
+You are standing in a small cramped guard post.  There is nothing here of much
+interest.
+~
+0 8|0 0
+D1
+~
+~
+1 -1 28014
+S
+#28051
+Watch post~
+You are standing in a small guard post.  There is nothing of much interest
+here.
+~
+0 8|0 0
+D3
+~
+~
+1 -1 28014
+S
+#28052
+Dragonshead Hotel~
+You are standing in the lobby of the high quarters finest lodgings.  The
+prices are high,  but the quality is first rate, and the customers here are
+pampered.
+~
+0 8|0 0
+D0
+~
+~
+1 -1 28002
+D2
+~
+~
+0 -1 28053
+D3
+~
+closet~
+1 -1 28065
+D4
+~
+~
+0 -1 28054
+S
+#28053
+The public bar~
+You are standing in a quaint looking bar,  with patrons sitting quietly
+drinking amongst themselves.  This is a happy place,  and everyone is
+cheerful.
+~
+0 8|0 0
+D0
+~
+~
+0 -1 28052
+S
+#28054
+The hotel reception~
+You are standing at the reception of the Dragonshead Hotel.
+~
+0 8|0 0
+D2
+~
+~
+0 -1 28055
+D5
+~
+~
+0 -1 28052
+S
+#28055
+Corridor~
+The red carpet flows richly southwards down the hallway.  North is the hotels
+reception desk.
+~
+0 8|0 0
+D0
+~
+~
+0 -1 28054
+D1
+~
+~
+1 -1 28062
+D2
+~
+~
+0 -1 28056
+D3
+~
+~
+1 -1 28063
+S
+#28056
+Corridor~
+The passage continues southwards and northwards.
+~
+0 8|0 0
+D0
+~
+~
+0 -1 28055
+D1
+~
+~
+1 -1 28060
+D2
+~
+~
+0 -1 28057
+D3
+~
+~
+1 -1 28061
+S
+#28057
+The passage end~
+You are standing at the south end of the passage.
+~
+0 8|0 0
+D0
+~
+~
+0 -1 28056
+D1
+The sign reads:  Deluxe suite.  Pay 50000 coins at reception~
+sign door~
+8 28031 28058
+D3
+The sign reads:  Royale Suite.  Pay 100000 coins at reception~
+door sign~
+8 28032 28059
+S
+#28058
+A room~
+You are standing in a small but cosy hotel suite.  A silver heal orb sits
+suspended in the air above the bed.
+~
+0 8|0 0
+D3
+~
+~
+8 28031 28057
+S
+#28059
+A room~
+You are standing in a small but cosy hotel suite.  This is fully equiped with
+the latest in heal orbs.  Your own private healer.
+~
+0 8|0 0
+D1
+~
+~
+8 -1 28057
+S
+#28060
+A room~
+You are standing a small but cosy hotel suite.
+~
+0 8|0 0
+D3
+~
+~
+1 -1 28056
+S
+#28061
+A room~
+You are standing in a small but cosy hotel suite.
+~
+0 8|0 0
+D1
+~
+~
+1 -1 28056
+S
+#28062
+A room~
+You are standing in a small but cosy hotel suite.
+~
+0 8|0 0
+D3
+~
+~
+1 -1 28055
+S
+#28063
+A room~
+You are standing in a small but cosy hotel suite.
+~
+0 8|0 0
+D1
+~
+~
+1 -1 28055
+S
+#28064
+The kitchen~
+This large kitchen prepares food for the rich patrons of this elite club.
+Pots boil merrily on the stoves and the rich smell of good food assails your
+nostrils.
+~
+0 8|1024 0
+D2
+~
+~
+1 -1 28048
+S
+#28065
+A closet~
+This is a closet where customers keep their clothing whilst they enjoy the
+hospitatlity of the inn.
+~
+0 8|0 0
+D1
+~
+~
+1 -1 28052
+S
+#28066
+Watchpost~
+You are standing in a small guardhouse.  There is nothing of great interest
+here except the door to the south.
+~
+0 8|0 0
+D2
+~
+~
+0 -1 28000
+S
+#28067
+Watchpost~
+You are standing in a small guardhouse.  There is nothing of interest here
+except the doorway to the north.
+~
+0 8|0 0
+D0
+~
+~
+0 -1 28000
+S
+#28068
+Magic Vortex~
+This is a kind of null space,  a nothingness into which you have suddenly
+found yourself.  There are no walls,  no cohesive plane,  just... nothing.
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28069
+D1
+~
+~
+0 -1 28073
+D2
+~
+~
+0 -1 28070
+D3
+~
+~
+0 -1 28074
+S
+#28069
+Magic Vortex~
+Since you appear to be the only physical being existing here,  it is very
+hard to orient yourself.  You feel nauseous and dizzy...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28070
+D1
+~
+~
+0 -1 28072
+D2
+~
+~
+0 -1 28068
+D3
+~
+~
+0 -1 28075
+S
+#28070
+Magic Vortex~
+You wander aimlessly.  Your senses confused,  you mind disoriented,  time
+appears to have slown to a standstill...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28068
+D1
+~
+~
+0 -1 28071
+D2
+~
+~
+0 -1 28069
+D3
+~
+~
+0 -1 28076
+D4
+~
+~
+0 -1 28079
+D5
+~
+~
+0 -1 28080
+S
+#28071
+Magic Vortex~
+As you drift on,  you begin to see some order in the chaos,  shapes in the
+formlessness,  colour in the stygian darkness...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28073
+D1
+~
+~
+0 -1 28076
+D2
+~
+~
+0 -1 28072
+D3
+~
+~
+0 -1 28070
+S
+#28072
+Magic Vortex~
+Shapes flow and ebb,  colours mix and swirl in seemingly random fashion.  You
+think you are going insane...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28071
+D1
+~
+~
+0 -1 28075
+D2
+~
+~
+0 -1 28073
+D3
+~
+~
+0 -1 28069
+D4
+~
+~
+0 -1 28077
+D5
+~
+~
+0 -1 28078
+S
+#28073
+Magic Vortex~
+There is nothing here except you
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28072
+D1
+~
+~
+0 -1 28074
+D2
+~
+~
+0 -1 28071
+D3
+~
+~
+0 -1 28068
+S
+#28074
+Magic Vortex~
+It seems to you that you have stepped out of a third dimension into another.
+What it is you just do not know,  and are having difficulty adjusting to.
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28075
+D1
+~
+~
+0 -1 28068
+D2
+~
+~
+0 -1 28076
+D3
+~
+~
+0 -1 28073
+D4
+~
+~
+0 -1 28081
+D5
+~
+~
+0 -1 28082
+S
+#28075
+Magic Vortex~
+Nothing to see,  nothing to feel,  nothing to hear,  nothing to taste and
+nothing to touch.  You keep pinching yourself to make sure you are still a
+physical shape,  and also to prove your own sanity...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28076
+D1
+~
+~
+0 -1 28069
+D2
+~
+~
+0 -1 28074
+D3
+~
+~
+0 -1 28072
+S
+#28076
+Magic Vortex~
+You are floating in nothing
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28074
+D1
+~
+~
+0 -1 28070
+D2
+~
+~
+0 -1 28075
+D3
+~
+~
+0 -1 28071
+S
+#28077
+Magic Vortex~
+You are nowhere,  no time...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28081
+D1
+~
+~
+0 -1 28079
+D2
+~
+~
+0 -1 28079
+D3
+~
+~
+0 -1 28081
+D4
+~
+~
+0 -1 28078
+D5
+~
+~
+0 -1 28072
+S
+#28078
+Magic Vortex~
+The blackness here is disturbing.  There is nothing.  You are nothing. There
+was,  is and always will be nothing here.  You shiver at the thought.
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28080
+D1
+~
+~
+0 -1 28080
+D2
+~
+~
+0 -1 28082
+D3
+~
+~
+0 -1 28082
+D4
+~
+~
+0 -1 28072
+D5
+~
+~
+0 -1 28077
+S
+#28079
+Magic Vortex~
+Enternity passes in an instant.  Forms twist and fold themselves into nothing. 
+Void fills up the largest space. Chaos overthrows logic.  Madness beats sanity
+into submission.  You feel your being is being tested severely by your mere
+presence here...
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28077
+D1
+~
+~
+0 -1 28081
+D2
+~
+~
+0 -1 28081
+D3
+~
+~
+0 -1 28077
+D4
+~
+~
+0 -1 28080
+D5
+~
+~
+0 -1 28070
+S
+#28080
+Magic Vortex~
+Magic passes through this void,  making you see things that aren't there,
+hear voices from your past and future,  people calling your name.  You'd
+better get out before you surely lose your mind!
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28082
+D1
+A training room~
+~
+0 -1 28083
+D2
+~
+~
+0 -1 28078
+D3
+~
+~
+0 -1 28078
+D4
+~
+~
+0 -1 28070
+D5
+~
+~
+0 -1 28079
+S
+#28081
+Magic Vortex~
+Space fills you.  You are like a Klein jug.  Your being changes.  You are
+both inside out and normal.  You feel nothing.  Your mind expands across the
+space time dimension.  You feel nothing.  Noise and silence surround you.  You
+feel nothing.
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28079
+D1
+~
+~
+0 -1 28077
+D2
+~
+~
+0 -1 28077
+D3
+~
+~
+0 -1 28079
+D4
+~
+~
+0 -1 28082
+D5
+~
+~
+0 -1 28074
+S
+#28082
+Magic Vortex~
+What is this place?  Where is this place?  When is this place?  All these
+questions occupy your thoughts as you wander through the void.
+~
+0 1|8|0|8192 0
+D0
+~
+~
+0 -1 28078
+D1
+~
+~
+0 -1 28078
+D2
+~
+~
+0 -1 28080
+D3
+A training room
+~
+~
+0 -1 28083
+D4
+~
+~
+0 -1 28074
+D5
+~
+~
+0 -1 28081
+S
+#28083
+A training room~
+You exit the vortex and arrive in featureless stone room. It is here where
+the most experienced adventurers come to hone their skills.
+~
+0 4|8|1024 0
+S
+#28084
+Jasmir's Armoury~
+The room you are standing in is almost beyond belief.  Although it holds a
+hearth and assorted equipment and items are on display here,  it is almost
+spotlessly clean.  From the outside of the building,  you could swear that it
+is just another house,  like the rest in the street.
+~
+0 8|0|16384 0
+D1
+~
+~
+0 -1 28005
+S
+#28085
+The Jail~
+You are standing in the office of the Warden.  Apart from a tidy desk neatly
+tucked away in the corner of the room,  there are doors to the south and
+east
+~
+0 8|0|8192 0
+D0
+~
+~
+1 -1 28015
+D1
+~
+store~
+8 28034 28087
+D2
+~
+cell~
+8 28033 28086
+S
+#28086
+The cell~
+You find yourself standing in a rather drab,  grey cell.  The only exit is
+blocked by a study iron bound door.
+~
+0 8|0|8192|16384 0
+D0
+~
+~
+8 28033 28085
+S
+#28087
+A room~
+You are standing in a small strong room.  This is obviously used to store
+items confiscated from foolish adventurers stupid enough to break the towns
+laws.
+~
+0 1|8|0|2048|8192|16384 0
+D3
+~
+~
+8 28034 28085
+S
+#28088
+Bottom of the lake~
+You find a small feeder pipe, channelling fresh water into the park lake.
+This High Quarter is obviously very rich,  as water is a precious commodity
+in this land.
+~
+0 1|8|0 8
+D4
+~
+~
+0 -1 28029
+S
+#28089
+The Massage Room~
+This is the where the rich and famous come to rest and relax.  Small benches
+line the walls, and several tables are spread throughout the room.  You may
+sit and relax on the benches, or lie on the tables for a relaxing massage.
+~
+0 4|8|1024|65536 0
+D1
+~
+~
+0 -1 28048
+S
+#28090
+Sifircas' Office~
+The office from which Sifircas manages the Draagdim Millionaire's Club is
+small and cluttered.  Files overflow from the filing cabinet onto the desk and
+guest chairs.  There appears to be a file on every hero that has ever existed
+in the Domain.  Sifircas himself does not appear to be present at this time.
+~
+0 8|1024 0
+D1
+~
+~
+0 -1 28047
+S
+#28091
+The Hallway~
+This hallway is richly panelled and carpeted.  Doors lead off on either side
+along the hall, with names on gold plaques on the doors.  The hallway seems to
+go on forever; it is clearly magical, as the Millionaire's Club does not seem
+to be this big from the outside.  The door to the north is larger than the
+others, and ornately carved; the plaque reads "Arrivals".
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28003
+D1
+~
+~
+0 -1 28093
+D5
+~
+~
+0 -1 28048
+S
+#28003
+Millionaire's Club Arrivals Room~
+You are standing in the Arrivals Room in the Draagdim Millionaires Club.
+Chairs and couches are scattered around the room; you see people sitting
+singly or in small groups, relaxing.  The door to the south will take you into
+the upstairs hallway; from there you can head down and west to the Massage
+Room for healing.
+
+There is a mystical pattern drawn on the ground here.
+~
+0 8|1024 0
+D2
+~
+~
+0 -1 28091
+S
+#28093
+The Hallway~
+This hallway is richly panelled and carpeted.  Doors lead off on either side
+along the hall, with names on gold plaques on the doors.  The hallway seems to
+go on forever; it is clearly magical, as the Millionaire's Club does not seem
+to be this big from the outside.  The plaque on the door to the north reads 
+"Sonne"; the plaque on the southern door reads "Xeddicus".
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28094
+D1
+~
+~
+0 -1 28096
+D2
+~
+~
+1 -1 28095
+D3
+~
+~
+0 -1 28091
+S
+#28094
+Sonne's Room~
+You enter Sonne's room.  As your eyes flash over the room, you see many
+Porsche posters on the walls.  You start thinking that maybe Sonne is a big
+Porsche fan.  As you look around, you notice some equipment left on the
+ground.  Make sure you ask Sonne before you take anything.  You feel like
+someone is watching you in this room at this very moment.
+~
+0 8|1024 0
+D2
+~
+~
+1 -1 28093
+S
+#28095
+{rXeddicus'{W chamber{x~
+As you step into this room a tingle runs across your body and you feel dizzy
+for a moment. Once the feeling passes you think it must have been what it
+feels liketo go insane. You can make very little sense out of anything you
+see. Holes open up in the air and {Mpink{x{w bunnies run out of them onto a
+desk. The desk itself is covered in grass one moment, then plain sturdy wood,
+then {Mpink{x{w bunnies the next. The rabbits run into another hole as it
+opens up, which is fortunate, as the whole desk bursts into {Rfla{yme{rs{x{w a
+moment after they make their exit. Against what is the east wall, at the
+moment anyway, is a {yglo{Ywi{x{yng{x{w surface that seems to ripple with your
+movements. The west wall seems to decide it would rather be the ceiling at
+this moment, as it and the former ceiling switch places as you watch and
+think about gouging your eyes out. You are distracted from that thought,
+though, as the floor vanishes from out beneath your feet and a sea of
+{Yblinding light{x{w takes its place. Once your vision returns you notice the
+floor seems to have done the same. The glow in the east wall seems to be gone
+now, too. Wait- there it is on the north wall. Or maybe the east wall became
+the north wall and the north wall became the east wall. It's possible you got
+turned around in the flash of the floor disappearing and becoming a blinding
+sea of light, too. You risk a peek at the ceiling (or is it the west wall?)
+and thankfully only see a rather large {dengraving{x{w in it. At this point
+you figure there's nothing left to lose, so you start taking inventory of the
+various objects in the room. A moving dart board walks along the walls. Funny
+that you missed that before.
+(LOOK at REST or CONTINUE or MORE or SECOND HALF to see the rest of the room)
+~
+0 8|1024 0
+D 0
+~
+~
+4 -1 28093
+E
+con continue rest more second half~
+Perhaps it was hiding behind the preserved carcass of {RAsverna{x.{w Or
+maybe it came out of one of the constantly opening and closing holes in
+reality that just dumped a few dozen warring {Wballs of wool{x{w around you.
+They scream horrible battle cries as you hurriedly look away. Your eye is
+caught by a common looking bookshelf in the middle of the room. It contains
+thankfully normal looking books. That is, they look normal until you take one
+out and open it up. Oh well. There are {Rb{Ga{Br{ys{x{w of some sort lying on
+the ground off to the side and...suddenly the whole room seems to
+{Ybl{Wi{Ynk{x{w and everything is different. Totally different. And even more
+bizarre. You do the smart thing and shut your eyes.
+~
+E
+holes hole~
+The holes spring open and close at all different paces and are of all
+different sizes. Some are big enough for 2 men to walk through and open and
+close in a blink, others are barely big enough to see but remain open for the
+entire time you're in the room. Some of them produce lifeforms, some of them
+spew out air, others things you don't want to think about. They provide a view
+of a wide variety of things, including a purple sunset, a gremlin throwing a
+soda can at something, and, worst of all, what you get the distinct impression
+is the inside of {WYOU{x.
+~
+E
+bunnies bunny~
+These soft bundles of {Mpink{x joy are carrying what appear to be tubes of
+chap stick and are wearing army boots. They give the desk quite a beating
+briefly. You get smacked on the top of your head all of the sudden, then a
+bunny plops to the ground in front of you before bounding back into the group.
+~
+E
+desk~
+The desk seems to be one of the many focal points of magical or just really
+damn weird energy streaming throughout the room. It changes states of being
+often and even winks at you once, you think. When it bursts into colored
+flames and turns into some kind of a shape-keeping liquid are especially
+intriguing moments.
+~
+E
+glowing surface~
+It isn't bright enough to make you squint, but is fairly noticable
+nonetheless. Every time you make a move the wall ripples in roughly the spot
+that you're standing in front of. You lean closer and something seems to reach
+for you! A moment later there's a huge ripple all along the wall, then all is
+still. You think. Was that a ripple over there?
+~
+E
+ceiling~
+Which ones the ceiling now? Wait, don't even bother trying. Your head will
+explode and I don't want the mess all over the glowing wall. It hates when
+that happens.
+~
+E
+floor light~
+It's pale stone/red rugs one moment then {YBRIGHT LIGHT{x the next. It appears
+to be solid, however, as you are quite clearly standing on it. You appear to
+be standing on it, anyway. You can't be sure about anything in here. The floor
+returns a few moments later. You think...
+~
+E
+engraving~
+Upon closer examination there are actually numerous engravings. They are just
+set close together. Some of them read; "East then sign, west and death, east
+then eye.", "Wibble!", "The bunnies agreed to it. Should be great.",
+"<Unreadable>", "The Scifi channel is run by idiots. Here's to their
+bankruptcy.", "If you can't beat em, shoot 'em instead.", "Microsft Messenger
+is a damn virus. A virus, I say!", "brutus.fractured.org 4000" "Have you
+hugged your friendly Immie today?", "Nina is the traitor? That's bullcrap
+both logically and otherwise.", "Hells Bells and surgical procedures.", and
+"http://xeddicus.homestead.com/files/DD4.avi". "Addendum: Sigh, damnit."
+~
+E
+dart board~
+It looks just like a normal dart board (except for the legs and the moving)
+until it notices you looking at it and sprouts some hands, pulls the darts
+from out of its body, and lobs them at you. And it figures, the darts seem to
+magically replenish themselves on the things body. Incoming!
+~
+E
+carcass asverna corpse~
+It's been perfectly preserved it appears. Next to the body is a picture. After
+a moment you realize that you're looking at what the body looked like before
+it was put back together and apparently healed up with some magic. There isn't
+much in the picture but some fangs, a set of claws. and a big red spot...
+~
+E
+wool balls ball~
+They appear to be totally crazed maniacal wool balls. They holler blinding
+insults at each other as they collide in an awesome fury of violence. Being
+wool balls, however, they harmlessly bounce off each other. This doesn't seem
+to stop them, though, as they get back up and vow to do something with their
+enemies' cat, a plastic pencil, a bowl full of gerbils and their enemies' 
+great great grandmother. You thankfully don't quite make out whatever it is,
+however.
+~
+E
+bookshelf~
+It appears to be made of plywood. You expect it to try and kill you at any
+moment. It deftly just sits there holding books, instead, slowly lulling you
+into a false sense of security.
+~
+E
+book books~
+They look like typical books on the outside, but when you open them up some of
+them appear to be writing themselves as you read. Others contain some of those
+damn holes that are all over the room. Yet others appear to be ALIVE and not
+books at all. One of them tells you to kiss its ass or put it down. Nice...
+~
+E
+bars bar~
+{R[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+{Y[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+{G[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+{B[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+{M[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+{C[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+{d[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]{x
+~
+E
+flame flames~
+They're red and orange and hot. This is where you'd get burned for some damage
+if act progs were working, so count yourself lucky. :)
+~
+E
+room~
+Trying to look at the whole room at once eh? Sadly, that's a mistake.
+Your mind just can't handle the load and-
+
+{RYou have been KILLED!!{x
+
+Your vision clouds, your senses become dulled.  Strange vapours
+gather about your twitching and bleeding body, and there is the
+sensation of flight.  Dazzling lights flicker within your mind
+and strange whispers are heard from all directions.
+
+After an age, your head clears.  You sit bewildered in the hazy
+gloom of the Underworld...and then you fall into one of those
+bloody holes back into the room...
+~
+S
+#28096
+The Hallway~
+This hallway is richly panelled and carpeted.  Doors lead off on either side
+along the hall, with names on gold plaques on the doors.  The hallway seems to
+go on forever; it is clearly magical, as the Millionaire's Club does not seem
+to be this big from the outside.  The plaque on the door to the north reads 
+"Adrioth"; the plaque on the southern door reads "Dexx".
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28097
+D1
+~
+~
+0 -1 28099
+D2
+~
+~
+1 -1 28098
+D3
+~
+~
+0 -1 28093
+S
+#28097
+Adrioth's Elysian Fields~
+You step through the door and suddenly sunlight hits you, you wonder if you 
+died and are in heaven or some such thing...The door behind you leads back to 
+the club hallway, but the door itself is floating in midair; all around you is 
+a field of flowers and grass, and you slowly begin to remember stories of this 
+place...It is very peaceful here and all you see is flowers, gentle streams, 
+and soft hued mountains in the distance; butterflies float around you, and in 
+the distance you see large golden gates.  Welcome, To the Elysian fields...
+~
+0 8|1024 2
+D2
+~
+~
+1 -1 28096
+S
+#28098
+Dexx's Armory~
+Weapons of all kinds line the walls. Shields and armor are hanging 
+from rafters and on stands. Among the devices of war are tables and 
+chairs, apparently for such bizzare activities as eating. There
+appear to be more rooms, possibly bedrooms and the like, in the back.
+The door leading there, however, informs you to stay the hell out when
+you try to open it. You notice a strange pattern drawn on the ground
+to one side and a sign hanging above it that reads "If you hear a
+chime: MOVE! Or else.". There are a few daggers and a battleaxe
+embedded in the back wall next to the door that refuses to let you
+past. This is somewhat impressive since the walls are solid stone.
+Oh, and there's an animal of some kind looking at you too. Try
+not to make any sudden moves, it looks vicious.
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28096
+E
+weapons~
+Swords, axes, spears, everything you can think of is here.
+Some of them even appear to have been used recently, judging
+by the blood and gore covering a few.
+~
+E
+shields~
+They are of all sizes and shapes. Some of them seem to reflect
+more light than there is in the room. Others appear to be only
+partially here.
+~
+E
+table~
+They're covered with a lot of nothing at the moment.
+~
+E
+chairs~
+They seem to be made out of solid pieces of wood, all of
+one piece. Picking one up confirms this.
+~
+E
+door~
+Amazingly, it seems this door is somehow giving you the finger
+despite having no hands or arms.
+~
+E
+pattern~
+It looks exactly like the ones that mages use to pop into existence
+all of the sudden in different places.
+~
+E
+daggers~
+They all appear to be normal daggers, except for the fact they're sunk
+up to their hilts in a stone wall. So it's possible the blades are
+glowing or on fire or something, but you'll never know.
+~
+E
+battleaxe~
+It's battleaxe-like. Trust me.
+~
+E
+Stone wall~
+It's solid stone. So solid it must be reinforced with magic. The slight
+glow it gives off when you see it out of the corner of you eyes lends 
+weight to this idea.
+~
+S
+#28099
+The Hallway~
+This hallway is richly panelled and carpeted.  The hallway seems to go on 
+forever; it is clearly magical, as the Millionaire's Club does not seem to be 
+this big from the outside.  This section of the hallway seems warmer to you, 
+and yet you shiver all the same.  You feel an evil presence somewhere nearby.  
+Instead of a door to the north there is a fiery portal. You can faintly hear 
+tormented screams coming through the portal, and you shudder in terror.  Above 
+the portal there is a plaque that reads "Shroud".  There is a door to the 
+south; a plaque above the door reads "Firetongue".
+~
+0 8|1024 0
+D1
+~
+~
+0 -1 28142
+D2
+~
+~
+1 -1 28141
+D3
+~
+~
+0 -1 28096
+S
+#28140
+Shroud's Lair~
+You stumble upon a cavernous chamber.  The fires of Hell burn hotter here
+and the stench of sulfur permeates the air.  The skulls of challengers
+ruthlessly destroyed line the walls, while their tormented souls hover in
+eternal servitude.  
+
+Shroud is here relaxing in a bubbling pool of sulfur.  Your blood runs
+cold as he turns his fiery eyes upon you and intones in a thunderous
+voice, 'What foolish mortal dares to enter my lair?'
+~
+0 8|1024 0
+S
+#28141
+Firetongue's Room~
+Tredipation courses through your body as you enter the room of Firetongue, 
+Alaghi, Aesir, Warlock. Crude wooden logs atop heavy granite blocks make up 
+the walls of this square, dark room. The room is dominated by a huge  
+fireplace, located in the very center. Sitting in front of the fire with his 
+back turned against you is a medium sized Alaghi. He stares intently into the 
+fire, and you think you can hear some vague murmuring coming from him. You 
+carefully pick a path between the spoils of war that litter the room, anxious 
+not to disturb anything as you make your way towards the middle of the room.
+Curiously enough gold, gems and other commonly valuable items seems to be held 
+in little regard here, lying strewn all over the hard-packed dirt floor, while 
+items like swords and common armor are stacked more or less neatly along the 
+walls.  On closer inspection you realize that many of the weapons are broken, 
+and the armors are scarred by weapon marks, fire scorching and acid burns.
+You are now close enough to overhear some of the sounds comming from the 
+Alaghi. "Mordekai is dead...Klinga gone..." "My lord...war...rages". 
+
+Intrigued, curiosity overcoming your sense of caution, you edge a bit closer, 
+managing to catch the last phrases of the spiritual conversation. "Yes my 
+Lord, if it is your will, I will take on the mantle as leader of the Aesir in 
+this world!" The alaghi rises as he speaks the last words, and is greeted by a 
+sudden roaring from the fire. He turns and speaks to you, as if he knew that 
+you where here all the time.
+
+"Even though you have snuck into my home I shall let you live. You shall be my 
+harbinger, to spread the word that the war continues, and that the Aesir has a 
+new leader, Firetongue!"
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28099
+S
+#28142
+The Hallway~
+This hallway is richly panelled and carpeted.  Doors lead off on either side
+along the hall, with names on gold plaques on the doors.  The hallway seems to
+go on forever; it is clearly magical, as the Millionaire's Club does not seem
+to be this big from the outside.  The plaque on the door to the north reads 
+"Truk".
+~
+0 8|1024 0
+D0
+~
+~
+1 -1 28143
+D3
+~
+~
+0 -1 28099
+S
+#28143
+Truk's Bachelor Pad~
+As you step through the door you notice that it is about ten times your size. 
+In fact looking around you can see that everything is ten times your size. In 
+the far corner you see an enormous four posted bed. Taking a closer look you 
+can see that the bed is not empty. As a matter of fact it is quite full. You 
+can't quite make out faces but you can see several shapes moving around. You 
+can also hear the deep booming laughter of the man who must own this place and 
+several different tones of female giggles. Thinking it better not to disturb 
+them you look at the rest of the room. You can see that each wall has at least 
+one picture of a fierce battle. Some cover the entire wall and some are not as 
+large. There are scattered clothes in amongst random pieces of armor. A large 
+fancy glass table lines the wall opposite the bed. Atop the table are various 
+maps and construction plans. A shelf next to the table contains glass jars 
+filled with a black powder, a few water skins, and what looks to be a pair 
+of dragon's eggs. After having your fill of the room you think it best to 
+leave before you are noticed.
+~
+0 8|1024 0
+D 2
+~
+~
+1 -1 28142
+E
+bed~
+You see an enormous four posted bed made out of what looks like large 
+smooth bones. Centered on the footboard is an engraved dragon's head. It looks 
+vaguely familiar but when you think about it all you can remember is the 
+dragon's head lying in a circle of trees.
+~
+E
+west wall~
+Painted on the western wall you see a giant cloaked figure holding 
+a sword dripping with poison. All around him are the scorched corpses of what 
+used to be vampires. The only thing left standing in the room is a very large, 
+very muscular vampire surrounded by a white aura and flames. The vampire is 
+wielding a cruelly spiked gothik mace and a shield with a large bat on it.
+~
+E
+north wall~
+Painted on the north wall is a glorious battle between two large 
+powerful men. One is heavily armored and holding and giant sword, coated with 
+poison, that seems to vibrate, while the other appears to be a hunter of some 
+sort.
+~
+E
+east wall~
+Along the east wall above the table shows a picture of conquest. It 
+shows a large man waving a poison coated sword in the air over the corpse of a 
+large dragon. The wings have been severed as well as the claws. There is also 
+a large orb glowing red and white.
+~
+E
+south wall~
+Other than the large door, the south wall has some small 
+paintings. One is with a giant cloaked figure with a large sword coated in 
+poison fighting an enormous dragon in the void. Another shows the same cloaked 
+figure fighting a man in the midst of a room of portals. Yet another shows 
+the cloaked figure fighting a large dragon atop a tower.
+~
+E
+clothes~
+Looking at the clothes scattered around the room you notice that they 
+don't all belong to the same person. There are various under garments, 
+dresses, skirts, as well as some pants and shirts.
+~
+E
+armor~
+Looking among the armor scattered across the floor you can tell that 
+most of it is shaped for females except for the large set of armor next to the 
+bed.
+~
+E
+table~
+As you peer into the glass table you notice a swirling of colors and 
+see a reflection of the past. You can see many mighty hero's roaming the land 
+helping new adventurers. You also notice big wars between many of the various 
+clans. And that's when at the height of this Domain that the GODS sent their 
+fury. Fire rained, the seas boiled, and storms appeared everywhere casting 
+their bolts of lightning. Elementals sprang up  from every crack and destroyed 
+the Domain to make it anew.
+~
+E
+maps~
+The maps here are of various cities. Anon, Midgaard, Kerofk, Solace, and 
+Ofcol. Looking over the plans laid out next to them, it seems like the 
+beginnings of a new city. One of a scale no one has seen before.
+~
+E
+shelf shelves~
+The shelf contains glass jars filled with a black powder, a few water 
+skins, and what looks to be a pair of dragon's eggs.
+~
+S
+#0
+
+
+#RESETS
+D 1 28017 1 2         ; The entry hall Lock East
+D 1 28021 5 1			; Loft Close Down
+D 1 28019 0 1         ; The bedroom Close North
+D 1 28012 3 1         ; Saturn Promanade Close West
+D 1 28024 3 2			; The City Park Lock West
+D 1 28030 1 2			; The City Park Lock East
+D 1 28027 0 2			; The City Park Lock North
+D 1 28048 1 1         ; The loungeroom close east
+D 1 28048 0 1         ; The loungeroom close north
+D 1 28050 1 1         ; Watch post Close East
+D 1 28051 3 1         ; Watch post Close West
+D 1 28016 4 1         ; The Corner Close Up
+D 1 28002 2 1			; High Street Close South
+D 1 28058 3 2         ; A room Lock West
+D 1 28059 1 1         ; A room Close East
+D 1 28060 3 1			; A room Close West
+D 1 28061 1 1			; A room Close East
+D 1 28062 3 1			; A room Close West
+D 1 28063 1 1			; A room Close East
+D 1 28065 1 1			; A closet Close East
+*
+M 1 28004 3 28031             the Groundskeeper to The City Park
+*
+M 1 28005 1 28054  the Receptionist to The hotel reception
+*
+M 1 28004 3 28028             the Groundskeeper to The City Park
+*
+M 1 28004 3 28026             the Groundskeeper to The Gazebo
+*
+M 1 28007 1 28035             the Baker to The Bakery
+G 1 28001 100
+G 1 28006 100
+*
+M 1 28010 1 28053             the Barkeep to The public bar
+G 1 28002 100
+G 1 28003 100
+G 1 28007 100
+*
+M 1 28009 1 28033             the Wizard to The Store of Wonders
+G 1 28009 100
+G 1 28004 100
+*
+M 1 28008 1 28034             the Jeweller to The Jewellery
+G 1 28010 100
+G 1 28008 100
+G 1 28011 100
+*
+M 1 28011 1 28048             Deak the Millionaire to The loungeroom
+*
+M 1 28014 1 28064             Rene the Chef to The kitchen
+D 1 28009 1 1         ; The Courtyard Close East
+D 1 28006 3 2         ; Northwall Lock West
+D 1 28055 1 1         ; Corridor Close East
+D 1 28055 3 1         ; Corridor Close West
+D 1 28056 1 1         ; Corridor Close East
+D 1 28056 3 1         ; Corridor Close West
+D 1 28057 1 2         ; The passage end Lock East
+D 1 28057 3 2         ; The passage end Lock West
+*
+M 1 28012 1 28048             the waiter to The loungeroom
+G 1 28000 100
+G 1 28001 100
+G 1 28002 100
+G 1 28003 100
+G 1 28007 100
+*
+M 1 28027 1 28089			; the massuer to the massage room
+*
+M 1 28006 4 28032             the Citizen to The City Park
+G 1 28012 100
+*
+M 1 28006 4 28025             the Citizen to The City Park
+G 1 28012 100
+*
+M 1 28006 4 28010             the Citizen to Saturn Promanade
+G 1 28012 100
+*
+M 1 28015 1 28083             the Ghostly Spectre to A room
+*
+M 1 28016 1 28084             Jasmir the Armourer to Jasmir's Armoury
+E 1 28024 100 1
+E 1 28009 100 3
+E 1 28018 100 16
+E 1 28029 100 13
+G 1 28021 100
+G 1 28025 100
+*
+M 1 28017 4 28084             the Apprentice to Jasmir's Armoury
+E 1 28018 100 16
+*
+*
+M 1 28017 4 28084             the Apprentice to Jasmir's Armoury
+E 1 28018 100 16
+*
+M 1 28017 4 28084             the Apprentice to Jasmir's Armoury
+E 1 28018 100 16
+*
+M 1 28017 4 28084             the Apprentice to Jasmir's Armoury
+E 1 28018 100 16
+*
+M 1 28006 4 28004             the Citizen to Titan Avenue
+G 1 28012 100
+*
+M 1 28018 1 28083             the Black robed Mage to training room
+E 1 28009 100 3
+E 1 28011 100 6
+E 1 28013 100 12
+E 1 28024 100 1
+E 1 28030 100 17
+G 1 28012 100
+D 1 28040 4 2         ; The Red Room Lock Up
+D 1 28042 4 2         ; The Blue Room Lock Up
+D 1 28044 4 2         ; The Green Room Lock Up
+O 1 28014 100 28045           The Flames of Wisdom to The Black Room
+*
+M 1 28020 1 28040             the Red Mage to The Red Room
+*
+M 1 28021 1 28042             the Blue Mage to The Blue Room
+*
+M 1 28019 1 28044             the Green Mage to The Green Room
+*
+M 1 28022 1 28012             the Minstrel to Saturn Promanade
+E 1 28009 100 3
+G 1 28012 100
+G 1 28006 100
+*
+M 1 28001 6 28050             the High Quarter Guard to Watch post
+E 1 28024 100 1
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28026 100 10
+E 1 28021 100 11
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+E 1 28028 100 6
+E 1 28027 100 9
+G 1 28012 100
+*
+M 1 28001 6 28051             the High Quarter Guard to Watch post
+E 1 28024 100 1
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28026 100 10
+E 1 28021 100 11
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+E 1 28028 100 6
+E 1 28027 100 9
+G 1 28012 100
+*
+M 1 28001 6 28066             the High Quarter Guard to Watchpost
+E 1 28024 100 1
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28026 100 10
+E 1 28021 100 11
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+E 1 28028 100 6
+E 1 28027 100 9
+G 1 28012 100
+*
+M 1 28001 6 28067             the High Quarter Guard to Watchpost
+E 1 28024 100 1
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28026 100 10
+E 1 28021 100 11
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+E 1 28028 100 6
+E 1 28027 100 9
+G 1 28012 100
+*
+M 1 28001 6 28092            the High Quarter Guard to The Crossing
+E 1 28024 100 1
+E 1 28009 100 3
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28026 100 10
+E 1 28021 100 11
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+E 1 28028 100 6
+E 1 28027 100 9
+G 1 28012 100
+*
+M 1 28001 6 28092             the High Quarter Guard to The Crossing
+E 1 28024 100 1
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28026 100 10
+E 1 28021 100 11
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+E 1 28028 100 6
+E 1 28027 100 9
+G 1 28012 100
+*
+M 1 28023 1 28059             The Gold Heal Orb to A room
+*
+M 1 28024 1 28058             the Silver Heal Orb to A room
+D 1 28085 2 2            ; The Jail Lock South
+D 1 28086 0 2         ; The cell Lock North
+D 1 28085 1 2            ; The Jail Lock East
+D 1 28087 3 2         ; A room Lock West
+R 1 28069 3           ; Randomize Magic Vortex
+R 1 28070 3           ; Randomize Magic Vortex
+R 1 28071 3           ; Randomize Magic Vortex
+R 1 28072 5           ; Randomize Magic Vortex
+R 1 28073 3           ; Randomize Magic Vortex
+R 1 28075 3           ; Randomize Magic Vortex
+R 1 28076 3           ; Randomize Magic Vortex
+R 1 28074 5           ; Randomize Magic Vortex
+R 1 28077 5           ; Randomize Magic Vortex
+R 1 28078 5           ; Randomize Magic Vortex
+R 1 28079 5           ; Randomize Magic Vortex
+R 1 28080 5           ; Randomize Magic Vortex
+R 1 28081 5           ; Randomize Magic Vortex
+R 1 28082 5           ; Randomize Magic Vortex
+*
+*
+M 1 28025 1 28053                the Jailor to The public bar
+E 1 28024 100 1
+E 1 28019 100 5
+E 1 28022 100 7
+E 1 28020 100 8
+E 1 28027 100 9
+E 1 28026 100 10
+E 1 28025 100 12
+E 1 28023 100 14
+E 1 28023 100 15
+E 1 28018 100 16
+G 1 28033 100
+G 1 28034 100
+D 1 28052 0 1			; Dragonshead Hotel Close North
+D 1 28015 2 1			; East Way Close South
+D 1 28085 0 1            ; The Jail Close North
+D 1 28013 0 1		;Close north to Millionaire's Club
+D 1 28047 3 1		; Millionaire's Club close west
+D 1 28091 0 1		;Upstairs Hallway close north to Arrivals Room
+D 1 28093 0 1		;Upstairs Hallway close north to Sonne's Room
+D 1 28093 2 1 		;Upstairs Hallway close south to Xedd's Room
+D 1 28096 0 1		;Upstairs Hallway close north to Adrioth's Room
+D 1 28096 2 1		;Upstairs Hallway close south to Dexx's Room
+D 1 28099 2 1		;Upstairs Hallway close south to Firetongue's Room
+D 1 28142 0 1		;Upstairs Hallway close north to Truk's Room
+I 28037 100 28094 1	;bed to Sonne's Room
+I 28038 100 28094 1	;computer to Sonne's Room
+I 28039 100 28094 1	;magazines to Sonne's Room
+I 28040 100 28094 1	;fridge to Sonne's Room
+I 28041 100 28094 1	;desk to Sonne's Room
+I 28042 100 28095 1       ;An areas schematic to {rXeddicus'{W chamber{x
+I 28043 100 28098 1           a pink bunny to Dexx's Armory
+M 1 28028 3 28140			;Souls to Shroud's lair
+O 1 28044 100 28140			;Sulfuric pool to Shroud's lair
+O 0 28045 1 28099			;Portal to Shroud's lair
+O 0 28046 1 28140			;Portal from Shroud's lair
+I 28047 100 28141 1			;broken longsword to Firetongue's Room
+I 28048 100 28141 1			;pitted full plate armor to Firetongue's Room
+I 28049	100 28141 1			;burnt kite shield to Firetongue's Room
+M 1 28029 1 28141			;Firetongue to Firetongue's Room
+*
+M 1 28026 3 28010			the fat merchant to Saturn Promanade
+E 1 28035 100 12
+G 1 28012 100
+*
+M 1 28026 3 28004			the fat merchant to Titan Avenue
+E 1 28035 100 12
+G 1 28012 100
+*
+M 1 28026 1 28002			the fat merchant to High Street
+E 1 28035 100 12
+G 1 28012 100
+D 1 28052 3 1			; Dragonshead Hotel Close West
+D 1 28037 5 2			; The City Wall Lock Down
+D 1 28032 2 2			; The City Park Lock South
+D 1 28029 0 2			; The Park Lake Lock North
+D 1 28029 1 2			; The Park Lake Lock East
+D 1 28029 2 2			; The Park Lake Lock South
+D 1 28029 3 2			; The Park Lake Lock West
+S
+
+
+#SHOPS
+28007 19 0 0 0 0 200 100 8 19			the Baker
+28008 8 0 0 0 0 175 80 9 17			The Jeweller
+28009 2 4 3 10 0 185 95 0 23			Wizard
+28010 17 0 0 0 0 105 10 0 23			Bartender
+28016 5 9 0 0 0 190 35 7 19			Jasmir
+28012 0 0 0 0 0 110 100 0 23			Waiter
+0
+
+
+#SPECIALS
+M  28001 spec_guard                     the High Quarter Guard
+M  28003 spec_janitor                   the Janitor
+M  28004 spec_repairman                 the Groundskeeper
+M  28007 spec_cast_cleric                       the Baker
+M  28008 spec_cast_mage                 the Jeweller
+M  28010 spec_cast_psionicist                   the Barkeep
+M  28013 spec_cast_mage                 Eva the Wardens Wife
+M  28014 spec_cast_cleric                       Rene the Chef
+M  28016 spec_cast_psionicist                   Jasmir the Armourer
+M  28017 spec_guard                     the Apprentice
+M  28019 spec_cast_mage                 the Green Mage
+M  28020 spec_cast_mage                 the Red Mage
+M  28021 spec_cast_mage                 the Blue Mage
+M  28022 spec_thief                     the Minstrel
+M  28027 spec_cast_adept				Jamuir
+S
+
+
+#$

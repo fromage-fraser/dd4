@@ -1,0 +1,1043 @@
+#AREA Solias~ The Lemming Caves~
+5 15 0 100
+
+#MOBILES
+#29950
+Small lemming~
+a small lemming~
+A small lemming scurries about you, jabbering in an incomprehensible voice.
+~
+The lemming looks harmless, but who can tell? However, his voice is
+really grating on your nerves...
+~
+32|128 0 0 S
+5 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#29951
+Large lemming~
+a large lemming~
+A large lemming blinks at you curiously.
+~
+Much larger than the smaller lemmings, still he only comes to about waist height.
+~
+128 32 0 S
+9 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#29952
+Lemming Carpenter~
+the lemming carpenter~
+A lemming carpenter busily saws at boards, but you cannot tell what they are for.
+~
+The creature barely reacts as you enter the room,
+but you can tell that it did see you...
+~
+2|128 8|32|8192 200 S
+11 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#29953
+Lemming smithy~
+the lemming smithy~
+The lemming smithy busily hammers away at a new pickaxe
+~
+It appears to be making a new pickaxe... maybe the lemmings are
+digging a new tunnel somewhere deeper in the cave.
+~
+2|128 8|32|8192 250 S
+13 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#29954
+miner~
+a miner lemming~
+A lemming miner stands here, looking frightened.
+~
+The lemming looks around nervously, and unsuccessfully
+tries to hide in the shadows.
+~
+4 32|8192 800 S
+11 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#29955
+Lemming Doctor~
+the lemming doctor~
+The lemming doctor stands here, tending the wounded
+~
+The doctor seems rather busy today, with quite a few wounded
+lemmings laying on cots, all with various claw wounds, and
+most bleeding.
+~
+2 8|32|128|8192 950 S
+14 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#29956
+a lemming~
+a lemming~
+A lemming walks around you in circles.
+~
+This average lemming looks pretty harmless...
+~
+4 0 0 S
+7 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29957
+wounded lemming~
+a wounded lemming~
+A wounded lemming lies here, moaning.
+~
+This seems to be one of the larger lemmings, but whatever
+attacked it was much larger than it. The lemming seems
+rather less friendly and cute than the others.
+~
+2|128 0 -400 S
+10 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29958
+The Beast~
+the Beast~
+The Beast rests in the shadows, waiting for more unsuspecting lemmings.
+~
+A large creature, it seems a cross between a wolf and a bear,
+with large, fearsome claws, a muscular body, and a lupine head.
+~
+2|32 8|32|512|65536 -850 S
+20 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#29959
+Shadowy figure mage~
+a lemming mage~
+A lemming in black robes glares at you.
+~
+The lemming's robes are decorated in arcane runes,
+and looking at them makes you dizzy, so you turn
+your gaze to its face, but it is in the shadow cast
+by its hood, all you can see are two glowing red eyes.
+~
+2 512 -450 S
+12 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#0
+
+
+#OBJECTS
+#29950
+pickaxe~
+a lemming pickaxe~
+A tiny pickaxe lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 5~ 
+2 0 0
+A
+18 -2
+A
+1 1
+A
+19 3
+#29951
+hammer~
+a lemming hammer~
+A small hammer lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 7~ 
+5 0 0
+A
+19 5
+A
+2 -1
+#29952
+axe~
+a lemming axe~
+A small axe lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 13~ 
+10 0 0
+A
+5 1
+A
+13 15
+#29953
+body bandages~
+bloody bandages~
+A pile of bloody bandages lies in the corner.~
+~
+13 0 1|1024
+0~ 0~ 0~ 0~ 
+2 0 0
+A
+5 3
+A
+2 -2
+#29954
+head bandages~
+bloody bandages~
+A pile of bloody cloth lies in the corner.~
+~
+13 0 1|16
+0~ 0~ 0~ 0~ 
+2 0 0
+A
+5 3
+A
+2 -2
+#29955
+arm bandages~
+bloody bandages~
+A pile of bloody cloth lies in the corner.~
+~
+13 0 1|256
+0~ 0~ 0~ 0~ 
+2 0 0
+A
+5 3
+A
+2 -2
+#29956
+leg bandages~
+bloody bandages~
+A pile of bloody cloth lies in the corner.~
+~
+13 0 1|32
+0~ 0~ 0~ 0~ 
+2 0 0
+A
+5 3
+A
+2 -2
+#29957
+beasts bedding~
+a stinky Beast Bed~
+A pile of straw stinking of Beast lies in the corner.~
+~
+15 0 0
+600~ 5~ 0~ 0~ 
+800 0 0
+E
+bed straw~
+You think you see something hidden inside the straw...~
+#29958
+chewed bone~
+a heavily gnawed lemming bone~
+The leg bone of a lemming lies here, looking gross.~
+~
+13 0 1
+0~ 0~ 0~ 0~ 
+3 0 0
+E
+bone leg~
+Probably from one of those poor lemming miners that dug into this
+beast's cave originally, poor little guy.~
+#29959
+hero helm~
+a heroic helm~
+The dented helm of a lemming hero lies here.~
+~
+9 2|1024 1|16
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+19 3
+A
+18 2
+A
+13 20
+E
+helm heroic~
+This helm used to belong to the hero of the lemmings,
+who attempted to slay the beast who menaced their settlement,
+but he failed.. it now belongs to you, for you have slayed
+the dreaded beast and saved the settlement.
+~
+#29960
+beast claws~
+claws of the Beast~
+Claws of the beast have been severed and deposited here.~
+~
+5 64|512|2048|4096 1|8192
+0~ 0~ 0~ 5~ 
+5 0 0
+A
+18 5
+#29961
+scalpel~
+a lemming scalpel~
+A small gleaming scalpel lies here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 11~ 
+2 0 0
+A
+18 5
+A
+17 -10
+#29962
+robes~
+runed robes~
+A pile of cloth covered in arcane runes lies here.~
+~
+9 16|64|512 1|1024
+0~ 0~ 0~ 0~ 
+5 0 0
+A
+4 2
+A
+17 -10
+A
+12 25
+#29963
+skeleton~
+a lemming skeleton~
+A pile of small bones lies on the ground.~
+~
+13  0
+0~ 0~ 0~ 0~ 
+50 0 0
+#29964
+key~
+a small key~
+A small gold key has been dropped on the ground.~
+~
+18 0 1|16384
+0~ 0~ 0~ 0~
+10 0 0
+#0
+
+#ROOMS
+#29950
+Entrance to a cave~
+A rather small, dark hole opens downward here, partially hidden
+by the brush surrounding it. You see small footprints everywhere.
+~
+0 4 3
+D0
+A small path leads north into the trees.~
+north path~
+0 -1 6006
+D5
+The tunnel looks just large enough for you to enter..
+Looks kinda dark down there though... ~
+down tunnel cave~
+0 -1 29951
+E
+footprints~
+Tiny little footprints.... you cannot tell if the creature was wearing
+shoes or not.~
+E
+dark hole~
+The hole looks large enough for you to enter.~
+S
+#29951
+A dark tunnel~
+The tunnel continues downward here. It is quite dark but you can
+still make out the little footprints, seeming to cover the entire floor.
+You think you see a light below you.
+~
+0 4|8 0
+D4
+The tunnel looks just large enough for you to enter..
+Looks kinda dark down there though... ~
+down tunnel cave~
+0 -1 29950
+D5
+You think you can see daylight (nightlight?) above you..~
+up tunnel~
+0 -1 29952
+E
+footprints floor~
+Yup, more footprints... a LOT of footprints.~
+S
+#29952
+The central cave~
+You are now standing in the main chamber of the cavern. Looking
+around, you see... lemmings? Scurrying everywhere, the little 
+critters run about madly, seemingly without purpose.
+~
+0 8 0
+D0
+You see more cavern to the north. Maybe you can find some lemmings there.~
+north~
+0 -1 29957
+D1
+To the east you think you can see a door set in the northern wall.~
+east~
+0 -1 29958
+D2
+To the south you can see the exit to the carpenters workshop.~
+south~
+0 -1 29960
+D3
+A smaller side cave lies to the west.~
+west~
+0 -1 29953
+D4
+You think you can see daylight (nightlight?) above you..~
+up tunnel~
+0 -1 29951
+E
+lemmings~
+Wow they're fast..
+~
+S
+#29953
+A side cave~
+You see more lemmings running around, seemingly without purpose.
+You can make out the upward tunnel somewhere to the east, another
+cave to the north, and to the west the floor appears to drop off
+suddenly...
+~
+0 8 0
+D0
+To the north there is a dark cave.~
+north dark~
+0 -1 29956
+D1
+You can see the entrance in the central cave to the east.~
+east~
+0 -1 29952
+D3
+Standing at the edge, you see nothing but darkness below you..
+There doesn't appear to be a safe way to descend, nor does there
+seem to be any way to climb out of the pit.~
+west ledge drop~
+0 -1 29954
+E
+west ledge drop~
+Standing on the edge, you can see nothing but blackness below..
+There doesn't appear to be anyway to safely descend, nor does
+there look to be a way to get back out from the pit.~
+S
+#29954
+The bottom of the pit..~
+Well, you fell down into the pit.. Ouchie!  Hope nothings broken..
+Standing and looking around you see many lemming corpses in various
+stages of decay..
+~
+0 4|8 0
+D4
+You dont think you could climb out, but maybe if you could fly...~
+up~
+0 -1 29955
+E
+corpses~
+Yuck, looks pretty gross.. stinks too..
+You'd best find a way out before you lose your lunch.~
+S
+#29955
+Above the pit~
+You are hovering above the pit.. below you is darkness and
+to the east you see solid ground.
+~
+0 4|8 9
+D1
+To the east you can see solid ground, safety, and lemmings.~
+east cave~
+0 -1 29953
+D5
+~
+~
+0 -1 -1
+S
+#29956
+The rear of the cave~
+You are in a darker part of the cave. It continues to the east
+and to the south.  The lemmings dont seem to come to this area of
+the cave as often, perhaps because it is so dark.
+~
+0 1|8 0
+D1
+To the east you see more lemmings running around the cavern.~
+east~
+0 -1 29957
+D2
+To the south you can see a side cave, and the edge of the pit.~
+south~
+0 -1 29953
+S
+#29957
+A side cave~
+More lemmings.. you begin to wonder where the all came from.
+Where DO lemmings come from, anyway? Is there some queen lemming
+deeper in the cave? Or is there a portal to the lemming planet
+and this is merely an outpost from which they plan to take over
+the world? Nah, lemmings are too cute to take over the world.
+~
+0 8 0
+D2
+To the south you can see the entrance to the lemming cave.~
+south~
+0 -1 29952
+D3
+To the west you can see a darker cavern~
+west~
+0 -1 29956
+E
+lemmings~
+Hmm.. one of them looks rather suspicious however..
+Perhaps this one DOES want to take over the world!
+~
+S
+#29958
+Before the carpenter's workshop~
+You see a door to the north, and a small sign on the wall.
+A lemming emerges from the building with an armful of wood,
+and shuts the door behind itself.
+~
+0 8 0
+D0
+The door looks big enough to enter.
+~
+north door~
+1 -1 29959
+D3
+To the west you can see the entrance to the lemming cave.~
+west~
+0 -1 29952
+E
+lemming~
+Before you get a chance to see him he zips off to his destination.
+~
+E
+sign~
+A small sign with a message written on it in lemming-ese..
+too bad they don't offer that course at your local mud-school.
+~
+S
+#29959
+The carpenter's workshop~
+Sawdust covers the floor, and many tiny footprints trail through
+the dust.  A rather large lemming saws away at a board set across
+a table in the center of the room.. There is a pile of boards
+off to the sides, but you see no use in lugging around boards.
+~
+0 8 0
+D2
+To the south you can see the exit to the carpenters workshop.~
+south~
+1 -1 29958
+E
+pile boards~
+Yes, its a big pile of boards, probably more than you can
+carry anyway. Besides, what do you need boards for? Building
+a new house? Making your own trireme? Why? Do you even know
+HOW to build a trireme? Just go steal one from
+a pirate or something..
+~
+E
+dust~
+Man thats a lotta dust.. just looking at it makes your nose itch.
+The air is filled with dust as well and it gets in your eyes and
+irritates them.. best just to leave before you're blinded by dust.
+~
+S
+#29960
+The top of the stairs~
+Here is a stairway leading down into a darker area of the
+lemming cave.. hope you have a light with you.
+~
+0 8 0
+D0
+The central cavern and exit lies just to the north of you~
+north~
+0 -1 29952
+D5
+Downward you can't really see anything but darkness.
+~
+down~
+0 -1 29961
+E
+stairway stairs~
+The stairs are rather small.. appropriate for lemmings but
+rather difficult to descend for someone your size.
+~
+S
+#29961
+Another floor of lemmings~
+Looking around, you see more lemmings running about.
+Raising your light, you look around and see that the
+cavern expands to the north and east, and the stairway
+continues downward into the ground, or back up towards
+the surface.
+~
+0 1|8 0
+D0
+To the north the cavern continues, with more lemmings of course.
+~
+north~
+0 -1 29962
+D1
+~
+~
+0 -1 29964
+D4
+The stairway continues up through the ceiling~
+up~
+0 -1 29960
+D5
+The stairway continues down through the floor.
+~
+down~
+0 -1 29968
+E
+light~
+You shouldn't look directly at the light, you could hurt your eyes.
+~
+S
+#29962
+A cavern of lemmings~
+More lemmings run around here. They are starting to get on your
+nerves. Wherever you go, more lemmings. Maybe you need to cut
+down the lemming population. The cave continues to the east, 
+and you see an alcove to the west, where a shadowy figure stands.
+~
+0 1|8 0
+D1
+The the cavern also continues east.
+~
+east~
+0 -1 29965
+D2
+The stairway lies to the south.
+~
+south~
+0 -1 29961
+D3
+A dark figure stands in the alcove, looking at you.
+~
+west alcove figure~
+0 -1 29963
+S
+#29963
+The shadowy alcove~
+Looking around, you see a small ledge with a few miscellaneous
+items on it, but nothing useful for adventuring.  Empty drink
+containers and scraps of food lie on the floor.
+~
+0 1|8 0
+D1
+You can return to the lemming cavern to the east.
+~
+east~
+0 -1 29962
+S
+#29964
+The lemming cavern~
+There are more lemmings here, of all sorts.
+To the north is more cavern, the stairway lies
+to the west, and to the east is a door with a
+small sign on it.
+~
+0 1|8 0
+D0
+To the north is the north-eastern corner of the cavern.
+~
+north~
+0 -1 29965
+D1
+A door lies to the east~
+east~
+1 -1 29966
+D3
+The staircase lies to the west.~
+west~
+0 -1 29961
+E
+sign~
+The sign is illegible, you can't read lemming-ese!~
+S
+#29965
+The north-east corner of the lemming cave's second floor~
+This seems to be where the lemming climbers practice their
+proffesion, by competing against each other, climbing up a
+wall into a hole in the ceiling. You think you could climb up
+the wall here fairly easily.
+~
+0 1|8 0
+D2
+The cavern continues to the south.~
+south~
+0 -1 29964
+D3
+The cavern also continues west.
+~
+west~
+0 -1 29962
+D4
+Peering upwards you think you see a small room.~
+up~
+0 -1 29967
+E
+wall~
+The wall looks well suited to climbing.
+~
+S
+#29966
+The lemming smithy~
+This is the workshop of the lemming smithy. He is the only
+lemming that knows how to work metal, and as such is a very
+important lemming. Were he to die, they would be unable
+to make nails or pickaxe heads or those little umbrellas.
+~
+0 1|8 0
+D3
+The exit west goes out into the cavern.
+~
+west door~
+1 -1 29964
+S
+#29967
+A small room~
+This is a rather small room, although it must seem rather
+spacious for the lemmings. Speaking of which, you see
+the two lemmings who last competed descending on small red
+and white parachutes.
+~
+0 1|4|8 0
+D5
+You can return downwards to the lemming cavern.
+~
+down~
+0 -1 29965
+S
+#29968
+The bottom of the stairway~
+It's real dark down here, and there are no lemmings running about
+like on the previous two floors. A corridor goes to the east and
+west, but you cannot see what's down either direction.
+~
+0 1|8 0
+D1
+You think you see a door to the east.
+~
+east~
+0 -1 29969
+D3
+~
+~
+0 -1 29971
+D4
+The stairway continues up through the ceiling~
+up~
+0 -1 29961
+S
+#29969
+The corridor turns~
+Here the corridor turns to the south.  A door lies to the east, and
+torches are set into the wall on either side of it.
+~
+0 8 0
+D1
+A door is set into the east wall.~
+east~
+1 29964 29970
+D2
+The corridor returns to darkness to the south.
+~
+south~
+0 -1 29973
+D3
+The staircase lies to the west.~
+west~
+0 -1 29968
+S
+#29970
+A storage room~
+Here you see piles of lemming tools, a pile of boards,
+and stores of food. There are also a few racks of weapons.
+Weapons? Since when do lemmings use weapons?
+~
+0 1|8 0
+D3
+The exit lies to the west.~
+west~
+1 -1 29969
+S
+#29971
+The corridor ends~
+The corridor comes to an end here, and you see a door
+with a small sign on it in the north wall.
+~
+0 1|8 0
+D0
+A wide door is to the north.
+~
+north~
+1 -1 29972
+D1
+The corridor continues to the east.
+~
+east~
+0 -1 29968
+E
+sign~
+This sign is illegible too. You'd probably do better
+to enter the room to find out whats inside.
+~
+S
+#29972
+The lemming doctor~
+In this medium-sized room are rows of beds, many with lemmings
+lying in them. To your surprise, most of the lemmings have
+deep, bleeding wounds. Wonder what sort of trouble lemmings run into?
+~
+0 1|8 0
+D2
+You can reenter the corridor by heading south.
+~
+south~
+1 -1 29971
+E
+wounds~
+The wounds seem to have been made by a set of large claws...
+~
+S
+#29973
+The corridor descends~
+Here the corridor slopes downward into even deeper darkness.
+To the west is a heavy steel door with a large, red sign on it.
+~
+0 1|8 0
+D0
+The corridor continues to the north.
+~
+north~
+1 -1 29969
+D3
+A steel door with a large sign written in red letters
+is to the west.
+~
+west~
+1 -1 29974
+D5
+The corridor descends downward into darkness.
+~
+down~
+0 -1 29975
+E
+door sign~
+Even though the sign is much larger than the others, you still
+cannot read lemming-ese. The red letters make you think it might
+be dangerous to enter, however.~
+S
+#29974
+Ohno! You are fried!~
+It seems your intuition was right. It WAS dangerous to enter here.
+But it's too late now, you are dead! Maybe if you pray really nicely,
+a god will bring you back.
+~
+0 1|4|8 0
+S
+#29975
+A dark corner~
+You can hardly see in this darkness, where the corridor turns east.
+You see a few pickaxes resting against the wall where they were
+left by the tunneling lemmings, they must have gone for a break.
+~
+0 1|8 0
+D1
+The dark corridor continues to the east.
+~
+east~
+0 -1 29976
+D4
+The corridor gets lighter back up the slope.
+~
+up~
+0 -1 29973
+S
+#29976
+The dark corridor~
+You continue down the dark corridor as it continues eastwards.
+A few solid beams hold up the ceiling, and you hope they don't
+collapse, at least not until you get out of here.
+~
+0 1|8 0
+D1
+The dark corridor continues to the east.
+~
+east~
+0 -1 29977
+D3
+The dark corridor continues to the west.
+~
+west~
+0 -1 29975
+S
+#29977
+The dark corridor ends~
+Here the corridor ends.. there are several places
+where the dirt floor has been greatly scuffled and disturbed,
+and you hear a deep grumbling noise through a hole in the
+southern wall. It sounds like a great beast has a lair there,
+and the lemmings unknowingly tunneled into a deathtrap.
+
+You'd best leave, before you become it's meal as well.
+~
+0 1|4|8 0
+D2
+~
+~
+0 -1 29978
+D3
+The dark corridor continues to the west.
+~
+west~
+0 -1 29976
+E
+dirt floor~
+It looks like many tiny feet, fleeing for their lives.
+~
+S
+#29978
+The beast's lair~
+A small hole opens into this small, beast-made cave.
+Gnawed-up bones litter the floor, and in one corner is a
+stinking pile of dead grasses the beast must have dragged
+into it's lair to sleep on. To the south you think you
+see a bit of light, and you feel a gentle breeze.
+~
+0 1|8 0
+D0
+North leads back to the lemming caverns.
+~
+north~
+0 -1 29977
+D2
+~
+~
+0 -1 29979
+E
+bones~
+Yuck, they look very bacteria-covered.
+~
+S
+#29979
+A path to the surface.~
+A small tunnel leads north into the beasts lair,
+or up to the surface. The tunnel seems rather
+clean compared to the litter in the lair.
+~
+0 1|8 0
+D0
+North leads back to the lemming caverns.
+~
+north~
+0 -1 29978
+D4
+~
+~
+0 -1 29980
+S
+#29980
+An entrance to a cave~
+You are in a grassy area, standing in front of the 
+mouth of a small cave. You see slight claw marks around 
+the edges of the entrance.
+~
+0 1|8 0
+D5
+~
+~
+0 -1 29979
+S
+#0
+
+
+#RESETS
+*
+D 1 29958 0 1			; Before the carpenter's workshop Close North
+D 1 29966 3 1			; The lemming smithy Close West
+D 1 29964 1 1			; The lemming cavern Close East
+D 1 29970 3 1			; A storage room Close West
+D 1 29969 1 2			; The corridor turns Lock East
+D 1 29972 2 1			; The lemming doctor Close South
+D 1 29971 0 1			; The corridor ends Close North
+D 1 29973 3 1	                ; The corridor descends Close West
+D 1 29973 3 2			; The corridor descends Lock West
+*
+M 1 29950 8 29952			a small lemming to The central cave
+*
+M 1 29950 8 29953			a small lemming to A side cave
+*
+M 1 29950 8 29957			a small lemming to A side cave
+*
+M 1 29956 7 29960			a lemming to The top of the stairs
+*
+M 1 29952 1 29959			the lemming carpenter to The carpenter's workshop
+E 1 29952 100 16
+*
+M 1 29950 8 29961			a small lemming to Another floor of lemmings
+*
+M 1 29956 7 29961			a small lemming to Another floor of lemmings
+*
+M 1 29956 7 29956			a lemming to The rear of the cave
+*
+M 1 29956 7 29962			a lemming to A cavern of lemmings
+*
+M 1 29951 4 29965			a large lemming to The north-east corner of the lemming cave's second floor
+*
+M 1 29951 4 29964			a large lemming to The lemming cavern
+*
+M 1 29959 1 29963			a lemming mage to The shadowy alcove
+E 1 29962 100 12
+*
+O 1 29963 1 29954       skeleton in the pit
+*
+M 1 29953 1 29966			the lemming smithy to The lemming smithy
+E 1 29951 100 16
+*
+M 1 29956 7 29968			a lemming to The bottom of the stairway
+*
+M 1 29951 4 29968			a large lemming to The bottom of the stairway
+*
+M 1 29954 4 29969			a miner lemming to The corridor turns
+E 1 29950 100 16
+*
+M 1 29955 1 29972			the lemming doctor to The lemming doctor
+E 1 29961 100 16
+*
+O 1 29957 1 29978       the beasts bed
+P 1 29958 1 29957       leg bone inside the bed
+P 1 29959 1 29957       helm inside the bed
+*
+M 1 29957 4 29972			a wounded lemming to The lemming doctor
+E 1 29953 100 12
+*
+M 1 29957 4 29972			a wounded lemming to The lemming doctor
+E 1 29954 100 6
+*
+M 1 29957 4 29972			a wounded lemming to The lemming doctor
+E 1 29956 100 7
+*
+M 1 29957 4 29972			a wounded lemming to The lemming doctor
+E 1 29955 100 10
+*
+M 1 29954 3 29975			a miner lemming to A dark corner
+E 1 29950 100 16
+*
+M 1 29954 3 29976			a miner lemming to The dark corridor
+E 1 29950 100 16
+*
+M 1 29958 1 29978			the Beast to The beast's lair
+E 1 29960 100 16
+*
+O 1 29964 1 29967			key to the top of the climbing wall
+S
+
+
+#SPECIALS
+M  29955 spec_cast_cleric			the lemming doctor
+M  29959 spec_cast_mage			a lemming mage
+S
+
+
+#$

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  server:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./server/area:/dd4/external/area
+      - ./server/player:/dd4/external/player
+    restart: always

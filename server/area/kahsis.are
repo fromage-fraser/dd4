@@ -1,0 +1,5067 @@
+#AREA   Gezhp~   Kahsis~
+35 60 0 100
+
+#AREA_SPECIAL
+exp_mod 115
+$
+
+#MOBILES
+#25000
+keeper guard sentry~
+a Keeper of the Seal~
+A Keeper of the Seal stands rigidly by the great door.
+~
+This huge creature was created with powerful enchantments, and exists only to
+fulfill its given task: in this case, to destory any intruders.  The guardian
+raises its great warhammer...
+~
+2|32|64 2|8|32|512|32768|65536 0 S
+40 0 0 0d0+0 0d0+0
+304 0
+8 8 0
+#25001
+skah makuit wizard mage~
+Skah Makuit~
+Skah Makuit the wizard turns to you, and smiles...
+~
+The wizard floats over a large book, quickly scanning the pages.  His slitted
+eyes immediatey sense a presence in the room.  He smiles horribly.  "I mussst
+thank you for what you have done for usss... it hasss been too long a sssleep
+and we have much to plan."  He gives you a cursory glance, and snickers.  "You
+are lucky that I am tired after being trapped for ssso long.  I have errandsss
+to run, now: begone!"
+~
+2|64 8|512|524288 -500 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25002
+pain warrior armoured huge~
+Pain~
+A huge armoured warrior sends stabs of pain through your body.
+~
+The warrior is simply enormous, and he is covered in robust armour.  An ugly
+looking spiked axe rests in his hands.  Two eyes peer at you from under his
+heavy brow.  He is clearly not human, but some foul spawn of evil magicks.
+He bares his fangs and raises three fingers of his hand, and your body writhes
+in agony.
+~
+2|64 0 0 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25003
+snakeman snake~
+a snakeman~
+A snakeman clutches his scimitar.
+~
+This humanoid snake has been created from the dying body of some hapless
+human wretch.  The snakeman has been asleep for many years, but is quickly
+regaining his health.
+~
+4|32|64 512|32768 -500 S
+42 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25004
+lizardman lizard~
+a lizardman~
+A lizardman rasps and hisses.
+~
+This eight foot tall humanoid has teeth that could tear your flesh to pieces
+in a second.  His slitted eyes reveal a malice that chills your bones.
+~
+4|32|64 512|32768 -500 S
+40 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25005
+kahsis knight~
+a Kahsis knight~
+A Kahsis knight is regrouping the awakening horde.
+~
+This warrior looks to be a fearsome opponent.  Strong and intelligent, these
+reptilian knights are the Kahsis Commanders' most trusted and valued fighters.
+Upon spotting you, the knight engages you with studied precision.
+~
+32|64 512|32768 -500 S
+44 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25006
+mehk sektat cleric ~
+Mehk Sektat~
+Mehk Sektat the cleric kneels before a serpentine idol.
+~
+The cleric hisses incantations in some obscene language.  Without turning
+around he stops chanting and addresses you.  "It hasss been ssso long, sssince
+I have killed outsssidersss..."  He begins to laugh.
+~
+2|64 512|524288 -600 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25007
+kahsis footsoldier foot soldier~
+a Kahsis footsoldier~
+A Kahsis footsoldier prepares for battle.
+~
+The lizardman footsoldier is muscular and skilled at combat.  It fingers its
+long scimitar.
+~
+4|32|64 512|32768 -500 S
+43 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25008
+kahsis necromancer mage wizard~
+a Kahsis necromancer~
+A robed necromancer floats before you.
+~
+Snakemen proved adept at mastering the perverse arts of necromancy, and the
+Kahsis magicians grew to become a powerful sect feared by many reptiles.
+The necromancer floats high above you, surrounded by luxuriant robes.
+~
+4|32|64 512|32768|524288 -800 S
+44 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25009
+serpent snake~
+a Serpent~
+An immense serpent lies coiled before the altar.
+~
+This black and red ribboned serpent is simply enormous, and lays coiled on the
+floor before the dust covered idol.  A yellow eye stares unblinking towards
+you, the slitted pupil becoming increasingly wider.
+~
+2|64 0 0 S
+46 0 0 0d0+0 0d0+0
+60|128 0
+8 8 0
+#25010
+makis fighter warrior~
+Makis~
+Makis stands here watching the stairs.
+~
+The Lieutenant seems unconcerned with your arrival, but utters something down
+the stairs behind him.  His plated armour is covered in symbols and writing,
+and a large tatoo of a winged serpent adorns his left arm.  He raises his
+sword and waits for your charge.  "Foolsss, you have cursssed your peoplesss
+for an eternity..."
+~
+2|64 512 -500 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25011
+geth mektis engineer serpent~
+Geth Mektis~
+A serpent engineer tends to his equipment.
+~
+The engineer is huge and powerfully built.  He stands over pieces of piping and
+metal fittings, banging away with his iron hammer.  He might not be aware of
+your presence in the room.
+~
+2|64 512 -400 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#25012
+anguish skeleton~
+Anguish~
+A huge skeleton stands motionless in the centre of the room.
+~
+The skeleton is gigantic, the roughly humaniod bones yellowed and cracked.
+Dim lights within the eye sockets betray some evil magic or enchancement has
+animated this beast.  It carries a huge bone spear, and watches you patiently,
+a gruesome skull in a perpetual grin.
+~
+2|64 0 0 S
+55 0 0 0d0+0 0d0+0
+16|32|256 0
+8 8 0
+#25013
+crocodileman crocodile~
+a crocodileman~
+A crocodileman bares rows of sharp teeth at you.
+~
+The most powerful of the reptilemen, these serpents are employed as troop
+sergeants, keeping Kahsis's soldiers in strict order.  Smart and extremely
+strong, the crocodileman's jaws could swallow your head whole: a position that
+he has all intention of getting you into.
+~
+4|32|64 512|32768 -500 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25014
+bat cave~
+a cave bat~
+A large bat hangs from the roof of the tunnel.
+~
+The bat is large and hairy, hanging from the rocky roof of the tunnel, flimsy
+wings wrapped tightly about its body.
+~
+2|64 65536|524288 0 S
+20 0 0 0d0+0 0d0+0
+32 0
+8 8 0
+#25015
+crocodile~
+a crocodile~
+A gigantic crocodile watches you intently.
+~
+The crocodile stares at you as you move about, waiting for the right moment to
+crack your spine and half and drag you down for the death-roll.  Large,
+extremely tough and devoid of emotion or affection, these crocs make excellent
+pets for the serpent horde.
+~
+64|128 0 0 S
+46 0 0 0d0+0 0d0+0
+36 0
+8 8 0
+#25016
+snake water~
+a water snake~
+A glistening water snake slithers away from you.
+~
+The water snake is brightly coloured and glossy.  It speeds through the water
+here like a living arrow.
+~
+64|128 0 0 S
+35 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25017
+viper snake~
+a viper~
+A viper rests here.
+~
+The viper carries large red stripes on its back.  It lays coiled lazily,
+watching for danger.
+~
+64|128|512 0 0 S
+25 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25018
+python snake~
+a python~
+A python crawls slowly by.
+~
+This serpent is thick and very long, with a skull almost as large as your own.
+These snakes are not venomous, but prefer to squeeze their prey to death.
+~
+64|128 0 0 S
+35 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25019
+asp snake~
+an asp~
+An asp hisses at you.
+~
+This small, dark coloured snake carries an impressive set of fangs.
+~
+64|128|512 0 0 S
+20 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25020
+cobra snake~
+a cobra~
+A hooded cobra rears before you.
+~
+Black scales on the inside of the snake's hood give the appearance of eyes.
+The snake is much larger than what you'd expect normal reptiles to grow to.
+~
+64|128 0 0 S
+35 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25021
+snake weed~
+a weed snake~
+A weed snake races by.
+~
+The weed snake is small and harmless.  It races away at your approach.
+~
+64|128|512 0 0 S
+15 0 0 0d0+0 0d0+0
+60 0
+8 8 0
+#25022
+burbis ~
+Burbis~
+Burbis sharpens his cleaver at the other side of this chamber.
+~
+The crocodileman is truly a goliath, thick sweet oozing down his muscular green
+body as he works busily with a whetstone.  After a few moments, he begins to
+make a horrible rasping sound.  You slowly realise that this monster is
+laughing at you.
+~
+2|64 0 -600 S
+52 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25023
+steam jet~
+a jet of steam~
+A boiling jet of steam bursts through a broken pipe.
+~
+A thick, strong jet of steam fires downwards onto the floor.  Some sort of
+object can just be made out in its midst.  You are likely to get hurt eihter
+trying to retreive the object or blocking the broken pipe.
+~
+2|64 524288 0 S
+45 0 0 0d0+0 0d0+0
+63|64|256 0
+8 8 0
+#25024
+seht haskahsisk~
+Seht Haskahsisk~
+Seht Haskahsisk the necomancer carefully reads some diagrams.
+~
+The necromancer looks up at you, studies you for a second, then returns to his
+work.  "Your not allowed in here..." he lectures, a wide grin forming across
+his face.  "I sssussspect that you have ssseen far too much for your own good."
+You are unsure whether the veiled threat should be taken seriously, but ready
+for battle.  Seht does not make a move, and continues.  "Off with you... I have
+thingsss to do, and have no time for petty squabblesss with adventurersss who
+have bitten off more that they can chew."  The smile disappears, and a talonned
+hand moves nearer to a large sheathed dagger.
+~
+2|64 8|32|512|524288 -500 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25025
+brass robot machinery~
+a brass robot~
+A pile of brass-plated machinery and pipes looks like an enormous snakeman.
+~
+This mechanical serpent is a mess of steam pumps, tubes, valves and pistons.
+Bursts of vapour regularly escape from exhaust ports, and the robot constantly
+wobbles and jiggles.  Enchanted mirrors watch you carefully, hidden circuitry
+wrestling with what action should be taken against you.
+~
+2|64 512 0 S
+50 0 0 0d0+0 0d0+0
+304 0
+8 8 0
+#25026
+stormtrooper storm trooper~
+a Kahsis stormtrooper~
+A Kahsis stormtrooper hisses at you.
+~
+The warrior is heavily armoured and armed.  Mild enchantments make these
+serpentmen fearsome opponents, their very presence terrifying.  Red skulls
+painted on their plate armour represent individual kills in battle... this
+warrior has slaughtered more people than you've had hot dinners.
+~
+4|32|64 32768 -500 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 0
+#25027
+agony knight~
+Agony~
+A gigantic knight stands surrounded by a halo of fire.
+~
+Magic flames lick about the form of this knight, whose features are masked by
+dull, shifting clouds that cloak his body.  Two points of intense light have
+replaced his eyes, and for a second you feel you hear a horrible screaming.
+~
+2|64 512 0 S
+60 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#25028
+kahsis queen~
+Kahsis~
+Kahsis, Queen of the Serpents, sneers at you.  
+~
+The Queen appears to be human, or at least has assumed a human form.  She is
+darkly beautiful and lounges naked between her serpent attendants, smiling at
+you.  Her musical voice fills your mind, her lips frozen in a cruel grin.
+"Your progresss hasss been amusssing to watch... although you have now become
+a ssseriousss problem which I will have to deal with ssseverely."  Her smile
+falls and her face becomes terrifying to behold.  "Have no illusssionsss, I
+will easssily dessstroy you.  The pagan godsss can not help you now, even if
+they gathered the courage to do ssso.  Prepare..."
+~
+2|64 8|32|128|512|524288 -1000 S
+70 0 0 0d0+0 0d0+0
+96 0
+8 8 2
+#25029
+kahsis serpent snake~
+Kahsis~
+A gigantic serpent coils over you!
+~
+Kahsis has returned in a last effort to defeat you.  The gigantic serpent is
+covered in scales as strong as steel and as large as your hand, her fangs are
+razor sharp and filed with vile poisons.  Screeching and bellowing foul
+incantations you now no longer understand, Kahsis rears for her final victory.
+~
+2|64 8|32|512 -1000 S
+60 0 0 0d0+0 0d0+0
+60|128 0
+8 8 0
+#0
+
+
+#OBJECTS
+#25000
+vial potion~
+a glass vial full of clear liquid~
+A thin glass vial full of a viscous clear liquid sits here.~
+~
+10 0 1|16384
+40~ heal~ heal~ giant strength~ 
+5 0 0
+E
+vial potion bottle~
+The thin glass vial is stoppered with wax and contains a thick, clear liquid.
+The seal is preserved although the vial is slightly damaged and covered with
+filth.
+~
+#25001
+warhammer hammer~
+a Keeper's warhammer~
+A collosal warhammer rests on the floor, glowing faintly.~
+~
+5 1|64 1|8192
+45~ 25~ 40~ 8~ 
+40 0 0
+A
+18 3
+A
+19 3
+E
+warhammer hammer~
+The warhammer has a heavy steel head and long handle, runes etched in both.
+Glowing faintly, the enchanted weapon sparks and fizzes as you touch the 
+metal.
+~
+#25002
+armband arm band~
+a Keeper's armband~
+A thick armband gleams below you.~
+~
+9 1|64 1|4096
+12~ 1~ 6~ 11~ 
+5 0 0
+A
+19 1
+A
+18 3
+E
+armband arm band~
+The thick metal armband glows faintly and is engraved with runes.
+~
+#25003
+scimitar sword~
+a Kahsis scimitar~
+A long curved scimitar ending in a snake's head lies here.~
+~
+5 0 1|8192
+40~ 25~ 35~ 3~ 
+10 0 0
+A
+2 2
+A
+18 4
+E
+scimitar sword~
+Light and very sharp, the scimitar can be wielded with deadly efficiency.
+~
+#25004
+mail shirt~
+a Kahsis mail shirt~
+A green mail shirt lies here.~
+~
+9 0 1|8
+10~ 1~ 6~ 11~ 
+15 0 0
+A
+2 2
+E
+mail shirt~
+The Kahsis mail is fashioned from large green scales, no doubt shedded by some
+foul serpent.  The scales are extremely light and tough; the skirt oozes like
+water when thrown to the floor, and feels like silk when run through the
+fingers.
+~
+#25005
+shield~
+a Kahsis shield~
+A circular shield carrying the design of a snake sits on the ground.~
+~
+9 0 1|512
+12~ 1~ 6~ 11~ 
+10 0 0
+E
+shield~
+This round shield is made from hardwood trimmed with steel.  Although not
+particularly robust, the shield is small and light, and easily moved about
+during combat.
+~
+#25006
+mace~
+a Kahsis mace~
+A long handled mace rests here.~
+~
+5 0 1|8192
+0~ 25~ 40~ 8~ 
+25 0 0
+A
+18 5
+A
+19 3
+E
+mace kahsis~
+This ugly looking weapon has blunt spikes raised off its cylinderical head.
+One good swing could smash your skull into a grisly pulp.
+~
+#25007
+skin serpent~
+a serpent skin~
+A skin of the serpent lies on the floor.~
+~
+9 0 1|1024
+14~ 1~ 6~ 11~ 
+5 0 0
+A
+2 3
+A
+17 -15
+A
+23 -5
+A
+18 3
+E
+skin serpent~
+Tiny snake scales have been meshed to form a soft jerkin that is incredibly
+light, but also very strong.  Intricate patterns in the skin have been created
+using different coloured scales, and the material glistens beautifully.
+~
+#25008
+helmet~
+a Kahsis helmet~
+You spot an oddly shaped helmet and visor here.~
+~
+9 0 1|16
+12~ 1~ 6~ 11~ 
+10 0 0
+E
+helmet~
+This brass helmet and visor are shaped for a head other than a humans...
+~
+#25009
+axe spiked~
+pain's spiked axe~
+A gigantic double headed and spiked axe hovers in the air before you.~
+~
+5 1|64|512|1024 1|8192
+0~ 40~ 50~ 1~ 
+50 0 0
+A
+19 10
+A
+18 5
+E
+axe spiked~
+Pulsing with blue light, Pain's axe floats in mid-air, crackling.  Two opposing
+razor sharp blades flank a tremendous central spike.
+~
+#25010
+symbol pain neckchain~
+a symbol of pain~
+A throbbing steel symbol hangs from a neckchain.~
+~
+9 2|64 1|4
+15~ 1~ 6~ 11~ 
+5 0 0
+A
+19 7
+E
+symbol pain neckchain~
+A steel circle containing an inverted traingle hangs from a bulky neckchain.
+Arcane script is engraved around the outer ring of the symbol: it is in a
+language far too ancient for you to comprehend.  The triangle depicts a face
+writhing in agony, an expression you are able to understand fully well after
+your encounter with Pain...
+~
+#25011
+totem blood stone~
+a totem of blood seeking~
+A brilliant red stone is set on an ivory handle.~
+~
+4 2|64|4096 1|16384
+50~ 2~ 2~ fire breath~ 
+15 0 0
+A
+18 10
+A
+13 -200
+E
+totem blood stone~
+Yellowed ivory clutches a perfectly spherical blood stone.  The rock shines
+brilliantly and has a flawless surface.  As you weild the totem, your temples
+throb, and you feel slightly drained of energy.
+~
+#25012
+robes robe~
+some flowing robes~
+Luxuriant robes lay on the floor.~
+~
+9 0 1|8
+14~ 1~ 6~ 11~ 
+10 0 0
+A
+23 -5
+A
+24 -5
+E
+robes robe~
+These dark robes are made from soft leather and some kind of fine black animal
+fur.  The material seems to absorb light and appears subtle, dull.
+~
+#25013
+ring snake~
+a ring of the snake~
+A snake biting its own tail forms a silver ring.~
+~
+9 0 1|2
+12~ 1~ 6~ 11~ 
+5 0 0
+A
+12 50
+A
+13 25
+E
+ring snake~
+Fine silver has been worked into a curly serpent that loops around to bite its
+own tail.  Two tiny green jewels are set as the snake's eyes.
+~
+#25014
+staff granite~
+a granite staff~
+A length of granite has been fashioned into a weighty staff.~
+~
+4 0 1|16384
+45~ 3~ 3~ lightning bolt~ 
+25 0 0
+A
+19 4
+A
+12 50
+E
+wavy staff~
+This heavy staff has been crafted from solid granite.  The worksmanship is
+extraordinary: the staff has a clawed foot similar to a bird's and a large
+open mouth surrounding a comfortable handle.  The staff is virtually 
+weightless and almost certainly enchanted.
+~
+#25015
+corpse body~
+a bloated corpse~~
+~
+15 0 0
+100~ 0~ -1~ 11~ 
+50 0 0
+E
+corpse body bloated~
+The corpse is rotting and fly blown.  The smell is terrible, and you gag.  
+Makeshift leather armour and rusty mail are stil wrapped around the body of 
+this unfortunate adventurer.
+~
+#25016
+rubble rock~
+some stone rubble~
+Rubble and masonry litter the floor.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+30 0 0
+E
+rubble rock~
+The rubble consists mostly of smashed bricks and masonry, crumbling stone and
+rubbish.
+~
+#25017
+shelf shelves~
+some shelves~~
+~
+15 0 0
+100~ 0~ -1~ 11~ 
+100 0 0
+E
+shelves shelf shelving~
+The shelves are almost toppled and lean dangerously forwards.  Several rusted
+tools are visible on it's planks, including a chisel, hammer and spanner.
+~
+#25018
+hammer~
+a rusty hammer~
+A rusty tack hammer lies here.~
+~
+5 0 1|8192
+0~ 1~ 6~ 7~ 
+5 0 0
+E
+hammer~
+The hammer is fragile and all but useless.  In desperate circumstances it could
+serve as a weapon.
+~
+#25019
+chisel~
+an blunt chisel~
+An ancient chisel wouldn't cut through butter in the summer.~
+~
+5 0 1|8192
+0~ 1~ 6~ 2~ 
+5 0 0
+E
+chisel~
+The chisel's blade is nicked and completely blunted.
+~
+#25020
+spanner~
+a rusty spanner~
+You spot a rusty spanner here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+spanner~
+The spanner is rusty but usable, being made of solid iron that has resisted
+serious deteriation.
+~
+#25021
+bones bone~
+some bones~
+Yellowed bones lie scattered on the ground.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+bones bone~
+These fragile and yellowed bones once belonged to a living humanoid.  A large
+skull contains large eye sockets and a saggital crest, two fangs pointing from
+its grinning jaw.
+~
+#25022
+furniture~
+some broken furniture~
+Broken furniture lies on the ground.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+50 0 0
+E
+furniture~
+These broken tables and chairs are of no use or value.
+~
+#25023
+junk trash~
+some junk~
+Many items of junk sit here.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+20 0 0
+E
+junk trash~
+These broken vials and flasks are corroded and covered in colourful stains.
+You surmise they were once used in alchemical processes, or the creation of
+enchanted potions.
+~
+#25024
+key iron~
+an iron key~
+An iron key sits attached to a short chain.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key iron~
+The key is small and very intricately moulded.
+~
+#25025
+amulet passing~
+an amulet of passing~
+A brass amulet lays here.~
+~
+18 1 1|4
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+amulet passing~
+The amulet is spherical and featureless, hanging from a plain iron chain.
+~
+#25026
+seal pain metal silvery~
+the Seal of Pain~
+You spy a curiously shaped piece of silvery metal.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+seal pain~
+The Seal is made of a weightless metal, shaped into an intricate circular
+pattern.
+~
+#25027
+lockers locker wooden~
+a locker~
+~
+~
+15 0 0
+100~ 5~ -1~ 11~ 
+100 0 0
+E
+lockers locker wooden~
+The wooden lockers are adorned with simply symbols.
+~
+#25028
+idol snake~
+an idol of the snake~
+A golden idol shaped as a rearing cobra stands here.~
+~
+4 64 1|16384
+45~ 5~ 5~ intellect fortress~ 
+15 0 0
+A
+3 4
+A
+4 4
+A
+12 100
+A
+24 -4
+E
+idol snake~
+The idol radiates magic and gleams brightly.  When you hold it, your mind is
+cleared and you become extremely focused and attentive.
+~
+#25029
+vellum scroll~
+a vellum scroll~
+A piece of vellum has been burnt at the edges.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+vellum scroll~
+The parchment has escaped extensive fire damage and contains readable text.
+Some words are faded or burnt away.
+
+"...as this is immediately necessary.  I have already explained this to
+ Mesgeil although he assured me that little danger is posed to th...
+ ...ty... ...warves as well.  Maggard has taken the threat seriously and had
+ demanded action from the King, although the King refused and had him flogged
+ alo..  ..his attaches.  I fear that the King has come under the infl..ce of
+ evil forces, although my companions remain unconvinced.  I tell you this as
+ I am being watched by the High Guard, though Lord Gurjief is sympathetic a...
+ fe...      ...that he will personally see that..."
+
+The rest is unreadable.
+~
+#25030
+journal book leather bound~
+a leather bound journal~
+A small, leather bound jounal rests here.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+journal book leather bound~
+The journal is well used and dog-eared.  The entries are written in the 
+common language, although several scrawled in foreign script are marked in 
+the margins, and notes have been made.  You read selected entries of certain
+interest:
+
+"4.12  The war is going very badly.  Although the major outposts of the
+       serpents have been destroyed, our armies are decimated and we can
+       still not locate their central nest.  Maggard has asked that Aesthesiel
+       be summoned for his counsel at once, now that the King has been executed
+       and all the wizards released from prison."
+
+"11.7  Mord Maggard is worried that the Queen will use the bodies of the 
+       3rd battalion for further transformations.  Aesthesiel has completed
+       preparations for raising the seal at the great door to the hive, but
+       has asked for the protection of the 5th under Gurjief.  Mord realises
+       that this will be the last chance he has to secure victory."
+~
+#25031
+dagger~
+a curved dagger~
+A curved dagger is serrated on both edges.~
+~
+5 64 1|8192
+0~ 25~ 45~ 11~ 
+20 0 0
+A
+18 6
+A
+19 6
+E
+dagger~
+Sharp serrations along the curved blade of this dagger make it a dangerous
+and damaging weapon.
+~
+#25032
+ring copper~
+a ring of protection~
+A copper ring gleams from the floor.~
+~
+9 64 1|2
+10~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -25
+A
+24 -5
+E
+ring copper~
+The simple ring is made of greenish copper.
+~
+#25033
+leggings snakescale~
+some snakescale leggings~
+On the floor lays a pair of green snakescale leggings.~
+~
+9 0 1|32
+14~ 1~ 6~ 11~ 
+25 0 0
+A
+14 50
+A
+17 -10
+A
+5 1
+A
+18 4
+E
+leggings snakescale~
+Made from polished snakescale that gleams brilliantly in the light, these
+leggings feel like silk and seem to mould themselves about your calves.
+~
+#25034
+plate kahsis amour~
+some Kahsis plate armour~
+Robust plate armour stands here.~
+~
+9 0 1|8
+15~ 1~ 6~ 11~ 
+40 0 0
+A
+17 -10
+A
+18 -2
+E
+plate armour~
+The Kahsis plate armour is made of thick metal and is very heavy.  Gold and
+silver patterns and images cover the breastplate and shoulders.
+~
+#25035
+sabre golden~
+a golden sabre~
+A sleek golden sabre lays here.~
+~
+5 64 1|8192
+0~ 30~ 50~ 11~ 
+35 0 0
+A
+19 7
+A
+18 7
+E
+sabre golden~
+Makis's golden sabre carries powerful enchantments and is of extremely fine
+quality.  The razor sharp blade never becomes blunt or nicked, no matter how
+many human skulls it cleaves through.
+~
+#25036
+sektahsis keth figurine~
+the Sektahsis Keth~
+Brilliant white light streams from a pulsing crystal figurine.~
+~
+1 1 1|16384
+0~ 1~ -1~ 11~ 
+25 0 0
+A
+19 5
+A
+18 5
+A
+24 -5
+A
+23 -5
+A
+13 50
+E
+sektahsis keth figurine~
+The crystal figurine is fashioned as a serpent.  Strong white light throbs
+from within the smooth glass, which is practically weightless.
+~
+#25037
+hammer~
+an engineer's hammer~
+A solid iron engineer's hammer rests here.~
+~
+5 64 1|8192
+0~ 30~ 60~ 7~ 
+50 0 0
+A
+19 10
+A
+14 -50
+A
+18 -5
+E
+hammer engineer's~
+The hammer has been made from a single cast, the solid iron is smooth and has
+very few nicks or dents.  The hammer is also far lighter than its gigantic size
+warrants.
+~
+#25038
+skullcap cap green~
+a green skullcap~
+An emerald green skullcap lays here.~
+~
+9 0 1|16
+20~ 1~ 6~ 11~ 
+5 0 0
+A
+17 -10
+A
+5 3
+A
+3 3
+A
+18 4
+E
+skullcap cap green~
+The skullcap is made of soft snakeskin and is curiously decorated with sequins
+and tassles.  You imagine that the small label covered in short writing on the
+inside of the cap is some sort of name tag.
+~
+#25039
+leggings emerald~
+some emerald leggings~
+A pair of sturdy, emerald leggings sit here.~
+~
+9 0 1|32
+16~ 1~ 6~ 11~ 
+30 0 0
+A
+13 50
+A
+14 50
+A
+19 3
+E
+leggings emerald~
+The leggings are bulky but quite flexible, the hard metal coated with a
+gleaming emerald finish.
+~
+#25040
+egg crocodile~
+a crocodile egg~
+A small white egg sits here.~
+~
+26 0 1|16384
+45~ sanctuary~ heal~ refresh~ 
+5 0 0
+E
+egg crocodile~
+The large spherical egg is soft and moist, carrying a faint odour.
+~
+#25041
+spear bone~
+anguish's bone spear~
+You spy a large, bone handled spear.~
+~
+5 64|128|134217728 1|8192
+0~ 35~ 60~ 11~ 
+45 0 0
+A
+12 50
+A
+19 10
+A
+18 10
+A
+17 10
+E
+spear bone~
+The spear is long with a thin, damaging head.  The bone shaft is yellowed and
+in bad condition, but still as strong as steel.  The weapon vibrates as you
+hold it.
+~
+#25042
+seal anguish~
+the Seal of Anguish~
+A bronze template lays on the ground.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+seal anguish~
+The template carries the outline of a large rune.  This curious object is much
+heavier than it looks.
+~
+#25043
+skulls snake~
+some snake skulls~
+Snake skulls are threaded on a metal chain.~
+~
+9 0 1|2048
+18~ 1~ 6~ 11~ 
+15 0 0
+A
+9 100
+A
+3 4
+A
+12 40
+E
+skulls snake~
+Small snake skulls, jaws open and fangs bared, hang from a metal chain.  The
+chain contains buckles at each end and serves as some sort of belt.
+~
+#25044
+totem bone ivory~
+a totem of bone seeking~
+An ivory rod lays here.~
+~
+3 2 1|16384
+50~ 3~ 3~ high explosive~ 
+15 0 0
+A
+19 6
+E
+totem bone ivory~
+The ivory rod has been beautifully carved and decorated, with many animals such
+as lions and horses fashioned into its handle.  An amber gem crowns the staff.
+~
+#25045
+lance~
+a Kahsis lance~
+A long, bulky lance stands here.~
+~
+5 134217728 1|8192
+0~ 25~ 45~ 11~ 
+35 0 0
+A
+18 5
+A
+19 5
+E
+lance~
+This metal lance has been made short enough for unmounted troops to use
+effectively in close combat.
+~
+#25046
+cleaver~
+a cleaver~
+A viscious cleaver lays on the floor.~
+~
+5 0 1|8192
+0~ 30~ 50~ 1~ 
+40 0 0
+A
+19 8
+A
+18 8
+A
+3 -4
+E
+cleaver~
+The cleaver is large and has a thick wedged blade that is razor sharp, perfect
+for splitting skulls and intact limbs.
+~
+#25047
+pipe metal~
+a piece of metal pipe~
+A short piece of metal pipe has been tossed here.~
+~
+13 0 1|16384
+0~ 1~ 6~ 11~ 
+15 0 0
+E
+pipe metal~
+This segment of pipe appears to have been detached from the main group of
+piping fixed to the wall.  Steam bursts from where it used to be mounted.
+~
+#25048
+key cast iron~
+a cast iron key~
+A cast iron key is on the ground near your feet.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key cast iron~
+This long iron key appears to open an intricate lock.
+~
+#25049
+bottle black oil machine~
+some machine oil~
+You spy a bottle of thick black oil.~
+~
+10 0 1|16384
+40~ cause serious~ poison~ blindness~ 
+5 0 0
+E
+bottle black oil~
+Thick oil lolls in this glass bottle.  It smells sharp and acidic, and is
+unlikely to have been made with human consumption in mind.
+~
+#25050
+brass claws~
+some brass claws~
+A pair of brass hydrolic claws lay here.~
+~
+9 0 1|128
+18~ 1~ 6~ 11~ 
+40 0 0
+A
+1 4
+A
+19 5
+E
+claws brass~
+The brass claws are extremely sharp and hard, hydrolic pistons able to pinch
+opposing digits together for a vice-like grip.
+~
+#25051
+egg reptile~
+a reptillian egg~
+A small slimy egg lays here.~
+~
+26 0 1|16384
+45~ cure critical~ cure poison~ cure critical~ 
+5 0 0
+E
+egg reptillian~
+This small white egg is layered in thick slime, and smells awful.
+~
+#25052
+bracelet snake~
+a bracelet of the snake~
+On the ground lays a tarnished silver bracelet.~
+~
+9 0 1|4096
+20~ 1~ 6~ 11~ 
+10 0 0
+A
+18 4
+A
+19 4
+A
+13 50
+A
+12 50
+E
+bracelet snake~
+The silver bracelet, fashioned as two snakes winding about eachother, is badly
+tarnished and worn.
+~
+#25053
+wand wrath~
+a wand of wrath~
+A twisted wooden twig has been thrown to the ground.~
+~
+3 0 1|16384
+50~ 5~ 5~ earthquake~ 
+5 0 0
+E
+wand wrath~
+The twig is gnarled and has been scorched by fire.
+~
+#25054
+key ivory~
+an ivory key~
+There is a tiny ivory key here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key ivory~
+Shiny ivory has been carved into a key.
+~
+#25055
+armguards arm guards~
+some emerald armguards~
+Deep green armguards lay in a pair.~
+~
+9 0 1|256
+20~ 1~ 6~ 11~ 
+20 0 0
+A
+17 -10
+E
+armguards arm guards~
+The armguards have been made from a deep green metal, and cover strange icons
+and runes.
+~
+#25056
+sword bastard~
+Agony's bastard sword~
+A glowing bastard sword hovers in the air before your eyes.~
+~
+5 1|2|64 1|8192
+0~ 40~ 60~ 3~ 
+35 0 0
+A
+18 8
+A
+19 8
+A
+1 4
+A
+24 -4
+E
+sword bastard~
+Agony's sword is a frightening weapon to behold.  It floats in the air before
+you and gleams faintly, the atmosphere feeling electrically charged.
+~
+#25057
+totem green jewel spider~
+a totem of soul seeking~
+A brilliant green jewel has been carved into a rearing spider.~
+~
+4 1 1|16384
+50~ 3~ 3~ frost breath~ 
+10 0 0
+A
+17 -15
+A
+12 100
+E
+totem green jewel spider~
+The jewelled spider has been masterfully crafted from emerald or some such
+gemstone.
+~
+#25058
+amulet dwarven~
+a dwarven amulet~
+A small amulet lays on the flagstones.~
+~
+9 0 1|4
+22~ 1~ 6~ 11~ 
+5 0 0
+A
+18 8
+A
+19 7
+E
+amulet dwarven~
+A circular symbol hangs from a simlpe chain.  The amulet is made from steel
+inlaid with silver and mithril, but is weathered and unpolished.
+~
+#25059
+seal agony~
+the Seal of Agony~
+A golden tablet gleams from below.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+seal agony~
+The plate of solid gold is covered in scripture on both sides.  You can not
+decipher any of the text.
+~
+#25060
+key ruby~
+a ruby key~
+A ruby and gold key sits here.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+key ruby~
+A golden key carries a small ruby in the handle.
+~
+#25061
+rod destructor~
+the Rod of the Destructor~
+You spot a magnificent rod, inlaid with gems and gold, upon the floor.~
+~
+4 64 1|16384
+55~ 10~ 10~ earthquake~ 
+30 0 0
+A
+3 10
+A
+19 10
+A
+18 15
+E
+rod destructor~
+This heavy rod is studded with gleaming gems and patterned with fine gold.
+A large snake's head with ruby eyes sits at the top of the staff.
+~
+#25062
+coins gold platinum~
+some gold and platinum coins~
+Gold and platinum coins lay scattered over the floor.~
+~
+20 0 1|16384
+0~ 0~ 114~ 8~ 
+20 0 0
+#25063
+tooth snake~
+a snakes tooth~
+A huge snake tooth lays on the ground.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+E
+tooth snake~
+This white tooth is indestructable and extremely sharp.
+~
+#25064
+axe dwarven~
+a dwarven axe~
+A doubled headed dwarven axe stands here.~
+~
+5 2|64 1|8192
+50~ 40~ 60~ 1~ 
+45 0 0
+A
+18 12
+A
+19 12
+A
+17 -20
+A
+13 100
+E
+axe dwarven~
+The two heads of this axe are solid mithril and cannot be blunted or nicked.
+Dwarvish runes cover each blade and the oak shaft and handle.  "Thengatholin"
+is scribed in large runes across the axe's pommel.
+~
+#25065
+mound mounds nest~
+a nest~
+~
+~
+15 0 0
+100~ 0~ -1~ 11~ 
+100 0 0
+E
+mound mounds nest~
+This stinking mound of rotting vegetation serves as some sort of reptillian
+nest.
+~
+#25066
+coins~
+some coins~
+A pile of gold coins sits here.~
+~
+20 0 1|8192
+0~ 0~ 89~ 0~ 
+20 0 0
+#25067
+crown golden~
+a golden crown~
+You spy a golden crown, encrusted with jewels.~
+~
+8 0 1|16
+0~ 1~ 6~ 11~ 
+5 0 0
+#25068
+egg crocodile~
+a crocodile egg~
+A small white egg sits here.~
+~
+26 0 1|16384
+25~ sanctuary~ heal~ refresh~
+5 0 0
+E
+egg crocodile~
+The large spherical egg is soft and moist, carrying a faint odour.
+~
+#0
+
+
+#ROOMS
+#25000
+Dark Forest~
+Thick, matted vines and clinging undergrowth make your passage through the
+forest difficult and unpleasant.  The air is moist and smells ripe.  Columns
+of sunlight that stream through the canopy dance before you as the great
+forest shudders in the wind.  You are able to force your way north as you
+hack through the surrounding bramble.
+~
+0 4 4
+D0
+Dense forest lies to the north.
+~
+~
+0 -1 25001
+D2
+~
+~
+0 -1 515
+S
+#25001
+Dark Forest~
+The forest remains frustratingly dense as you push forward.  The only sound is
+the whine of the steady wind through the trees.
+~
+0 0 4
+D0
+Dense forest lies to the north.
+~
+~
+0 -1 25002
+D2
+Dense forest lies to the south.
+~
+~
+0 -1 25000
+S
+#25002
+Dark Forest~
+A smooth and very tall cliff rises to the north.  It is completely unpassable.
+You might be able to force a trail east through the undergrowth, which is
+becoming a little less clinging and matted.  The cliff face contains some
+weathered engravings, organized into what appears to be archaic hand writing.
+~
+0 0 4
+D1
+You are able to make your way east through the trees.
+~
+~
+0 -1 25003
+D2
+Dense forest lies to the south.
+~
+~
+0 -1 25001
+E
+cliff face engravings writing sign~
+O========================O
+|         Kahsis         |
+|  Lair of the Serpent   |
+|           <>           |
+|  Death awaits all who  |
+|    disturb Her rest    |
+|           <>           |
+|    For experienced     |
+|    Travellers only     |
+|           <>           |
+|  Those below level 40  |
+|    prepare to greet    |
+|       the Reaper       |
+|           <>           |
+|    Geshp : Jan 1996    |
+O========================O
+~
+S
+#25003
+Dark Forest~
+Passage through the forest is slow and exhausting.  Cliffs jut impressively
+high to the north.  You can continue west and east through the forest.
+~
+0 0 4
+D1
+A large pool is visible to the east.
+~
+~
+0 -1 25004
+D3
+You are able to make your way west through the trees.
+~
+~
+0 -1 25002
+S
+#25004
+Stagnant Pool~
+You emerge abruptly into a clearing.  The air is pungent and filled with
+swarming insects that cloud your face.  A large, murky brown pool dominates
+the open grass.  It is filled with rotting forest litter, and thousands of
+flies and wasps buzz about the surface of the turgid water.  You can make 
+your way north and west through the forest.
+~
+0 0 2
+D0
+Dense forest lies to the north.
+~
+~
+0 -1 25005
+D3
+Dense forest lies to the west.
+~
+~
+0 -1 25003
+E
+pool water~
+The water is murky and stagnant.  Rotting forest litter stands frozen at its
+muddy bottom, and it is a home for a thousand insects and their larvae.  Near
+the far edge, a bloated corpse peeks from the surface of the water, covered
+with blowflies as large as mice.
+~
+S
+#25005
+Dark Forest~
+The dense forest seems endless.  You can head north and south.
+~
+0 0 4
+D0
+Lighter forest lies to the north.
+~
+~
+0 -1 25006
+D2
+A large pool is visible in a clearing to the south.
+~
+~
+0 -1 25004
+S
+#25006
+Light Forest~
+The forest is much lighter here and you can travel relatively easier.  Your
+spirits lift as you march through the sunny woods.  You can travel north and
+south from here.
+~
+0 0 3
+D0
+Light forest lies to the north.
+~
+~
+0 -1 25007
+D2
+Denser forest lies south of here.
+~
+~
+0 -1 25005
+S
+#25007
+Light Forest~
+The trees become more widely spaced and the undergrowth begins to disappear as
+you travel through this part of the woods.
+~
+0 0 3
+D0
+There is a clearing directly north.
+~
+~
+0 -1 25008
+D2
+Light forest lies to the south.
+~
+~
+0 -1 25006
+S
+#25008
+Grassy Clearing~
+You emerge into a large grassy clearing.  It is filled with upright stones,
+huge pillars of roughly hewn granite organized into two opposing rows.  They
+are covered in lichen and weeds, and look extremely weathered.  A larger,
+rounder formation can been seen to the north: it appears at first to be a
+huge snake's head with open jaws.  The wind howls through the stones, and you
+consider returning south through the forest, to somewhere less sinister.
+~
+0 0 2
+D0
+A strange stone monument rises out of the ground to the north.
+~
+~
+0 -1 25009
+D2
+Light forest lies south of here.
+~
+~
+0 -1 25007
+E
+pillars granite stones~
+The stone pillars are truly ancient.  They carry carved messages in an archaic
+yet readable script.  One warns, "Death will follow you into the Snake, turn
+back!"  Another reads, "Flee - to disturb Kahsis is to invite Eternal
+Suffering!  The Queen will drink your blood a thousand times before your body
+reaches Hell."  A larger stone asks, "May the Horde be sealed for a thousand
+years, and the glory of Mord Maggard shine forever."  You feel uneasy.
+~
+S
+#25009
+The Serpent's Jaws~
+A gigantic snake's head pushes through the ground of the clearing, its stone
+jaws open wide, and two fangs bearing down and piercing the earth.  Its mouth
+is hollow, and serves as some sort of doorway.  The doorway, however, has
+almost been sealed: stone rubble spills from inside the head of the snake and
+out onto the grass.  There is a small gap between the roof of the mouth and
+the rubble, large enough for you to squeeze through.  The serpent's dull eyes
+watch you as you consider your next move.
+~
+0 0 2
+D0
+A small tunnel extends through the serpent's jaws.
+~
+~
+0 -1 25010
+D2
+The clearing streches south of here.
+~
+~
+0 -1 25008
+E
+rubble doorway jaws snake serpent head~
+Large chunks of masonry spew out from within the snake's mouth, apparently in
+an effort to seal the doorway.  The stones are very large and far too heavy to
+move out of the way, although you notice that there is a small gap between the
+top of the rubble and the roof of the snake's mouth.  The pile of stones forms
+a staircase that will enable to to penetrate the gloom beyond.
+~
+S
+#25010
+Dim Tunnel~
+A poorly lit tunnel extends from the serpent' mouth, and is filled with rubble
+and stone debris.  It is long and drops sharply.  You make out the outline of
+a sturdy door at the northern end of the passage.  You must now be well under
+ground.
+~
+0 8 1
+D0
+A closed door is directly north of here. It is covered in writing.
+~
+~
+1 -1 25011
+D2
+Daylight peeks at you from the south.
+~
+~
+0 -1 25009
+S
+#25011
+The Seal~
+You emerge into a large room.  It is layered in dust, and the air is stale and
+musty.  A huge door stands to the north: it is made of iron and is covered in
+symbols and writing.  As you step into the room the floor throbs with faint
+blue light.  A large seal has been painted on the tiles, and is surrounded 
+with more writing.  The air becomes charged with static as the seal glows then
+fades, and you feel a distant rumbling.  Ornate doors lead west and east from
+here; they appear to be covered with paintings and decorations.
+~
+0 1|8 0
+D0
+A gigantic door covers most of the north wall.
+~
+~
+8 -1 25030
+D1
+A door leads east.
+~
+~
+1 -1 25012
+D2
+There is a door to the south.
+~
+~
+1 -1 25010
+D3
+A door leads west.
+~
+~
+1 -1 25017
+E
+door huge iron north~
+The sturdy door seems impenetrable.  There is no handle or obvious lock, 
+although an immense iron bar spans the middle and is bolted to the walls both
+sides of the door: to keep those on the inside from coming out, you realise
+uneasily.  The metal is covered in writing, most of which is unreadable and
+very likely magical intonements and spells.  Several figures are engraved in
+the panels, including an armoured human woman weilding two swords and fighting
+a gigantic humanoid serpent, and a stout demihuman opposed to a horde of flying
+dragons.  "Mord Protect Us," cites some intricate script; "Avenger of those of
+Good who have died by the Poisoned Fang," appears below.
+~
+E
+seal tiles writing symbols~
+A glowing seal dominates the floor of the chamber.  Its design is two concent-
+ric circles containing scripture and unfamiliar symbols.  A square touches the
+inner circle at each of its corners and contains further symbols.  The seal
+throbs and emanates an energy that charges the air of the room, and you begin
+to develop a firm headache.  The power of the seal fills you with awe and an
+involuntary fear - you have the urge to flee, to escape the dark chamber.
+"Death to those who Desecrate the Holy Seal," reads some script.  "Only the
+Power of the Seal may keep the Serpent at Bay."
+~
+S
+#25012
+Side Chamber~
+You stand in a smaller side chamber.  There are doors on each wall.  A circular
+pit occupies the centre of the floor, and appears to be quite deep.
+~
+0 1|8 0
+D0
+There is a door in the corner of the north wall.
+~
+~
+1 -1 25014
+D1
+A doors leads east.
+~
+~
+1 -1 25016
+D2
+There is a door to the south.
+~
+~
+1 -1 25013
+D3
+A door leads west.
+~
+~
+1 -1 25011
+D5
+A large circular pit has been made in the centre of the room.
+~
+~
+0 -1 25015
+E
+pit well~
+A wide pit has been dug in the centre of the floor.  Although not very deep,
+you cannot make out the bottom of the hole very well.  Dark stains cover the
+edges of the stones that line this well.  You can only imagine what lies
+below you.
+~
+S
+#25013
+Empty Room~
+This room is small and appears to contain nothing but small pieces of refuse.
+Writing is scrawled across the southern wall.
+~
+0 1|8 0
+D0
+There is a door to the north.
+~
+~
+1 -1 25012
+E
+writing~
+"Only until the last Wyrm falls shall the World be safe from Evil.  May the
+Mighty Gods curse this Place of Death."
+~
+S
+#25014
+Empty Room~
+This small room is empty.  Rubble litters the floor.  Empty torch racks line
+the walls and there is a small grill near the ceiling.
+~
+0 1|8 0
+D0
+A metal grill covers a small vent in the corner of the wall.
+~
+grill grate plate vent~
+8 25020 25021
+D2
+There is a door in the south wall.
+~
+~
+1 -1 25012
+E
+grill grate plate door~
+A metal grill covers a small vent through the wall.  It is firmly bolted into
+the stone bricks at each of its corners.
+~
+S
+#25015
+The Pit~
+You climb carefully down the face of the pit, which contains many protruding
+bricks and several bolts.  It is much shallower than you thought, and after a
+few yards you jump to the bottom.  The pit is filled with skeletons, with
+skulls either lolling to one side or completely severed.
+~
+0 1|8 0
+D4
+You can climb back up to the dim chamber above you.
+~
+~
+0 -1 25012
+E
+skeletons skulls floor~
+Over a dozen skeletons carpet the floor of the hole, their necks half snapped
+or completed severed.  Arm and leg bones lay crushed or broken; spines are
+bent backwards.  Skulls stare up with silent screams, protruding canines at
+least an inch long and razor sharp.
+~
+S
+#25016
+Offering~
+This long room is filled with skeletons, heaped into several piles.  Most are
+humanoid, but there are several monstrous skeletons and bones resembling no
+creatures you have ever seen or heard of before.  Gigantic skulls hang from
+the ceiling by chains, barbed hooks pierced through the crania.  Dried flowers
+surround the doorway.
+~
+0 1|8 0
+D3
+A doors leads west.
+~
+~
+1 -1 25012
+E
+skeletons bones skulls~
+Thousands of bones are heaped into piles, some recognisable as being almost
+human, some having belonged to gigantic four-legged beasts and crawling worms.
+Almost all are crushed and broken.
+~
+E
+flowers dried~
+Dried and pressed flowers form a ring about the doorway, perhaps to ward off
+evil spirits escaping from this place of death.
+~
+S
+#25017
+Side Chamber~
+Doors lead in every direction from this side chamber.  Several skeletons are
+hung by the neck from the ceiling, rib cages pulled open.
+~
+0 1|8 0
+D0
+A door opens northwards.
+~
+~
+1 -1 25018
+D1
+A door leads east.
+~
+~
+1 -1 25011
+D2
+There is a door to the south.
+~
+~
+1 -1 25019
+D3
+A door leads west.
+~
+~
+1 -1 25020
+E
+skeletons~
+Large humanoid skeletons are hung from the ceiling by hooks that reach far into
+their skulls.  Jaws hang open in muted agony, pointed fangs protruding into the
+air.  You shiver.
+~
+S
+#25018
+Empty Room~
+This room is empty, save small pieces of rubble.  An inscription is scrawled
+on the western wall.
+~
+0 1|8 0
+D2
+A door leads south.
+~
+~
+1 -1 25017
+E
+inscription writing west~
+"In Memory and Honour of the 5th Battalion, who were slaughtered defending the
+ Seal as it was Raised.  May every Soul find Peace with the One.
+					      Gurjief, Lord High under Maggard"
+~
+S
+#25019
+Musty Room~
+This chamber is particularly musty and thick with dust.  Metal pipes run up
+from the floor against the southern wall.
+~
+0 1|8 0
+D0
+There is a door to the north.
+~
+~
+1 -1 25017
+E
+pipes metal~
+Rusted pipes rise vertically through the floor and penetrate the ceiling.  
+Holes are visible in many places, and water slowly dribbles along their length.
+~
+S
+#25020
+Trashed Storeroom~
+This room is piled with junk.  Pieces of metal and wood are strewn about the
+floor.  Several boxes and a large set of shelves are covered with trash.  One
+chest is filled with bones, another contains nails and bolts.  Broken tiles
+and bricks form an uneven pyramid in the northwestern corner.
+~
+0 1|8 0
+D1
+A door leads back east.
+~
+~
+1 -1 25017
+E
+junk metal wood~
+Junk lies strewn about the room.  Broken swords, rusted tools and pieces of
+ruined armour lay thrown everywhere you glance.  All are useless.  Chains and
+tools lay on dusty shelves.
+~
+E
+boxes chest box~
+Boxes are filled with junk and dumped against the walls.  One is filled with
+broken pottery and pieces of stone masonry.  An open chest if packed with
+yellowing bones, another with nails and bolts, layered with rust.
+~
+S
+#25021
+Vent~
+You squeeze yourself through the narrow air vent.  It runs north and south.
+You feel claustrophobic and almost begin to panic.
+~
+0 1|4|8|2048 4
+D0
+Another grill hangs open at the end of the vent.
+~
+grill grate plate door~
+1 -1 25022
+D2
+~
+grill grate plate door~
+8 25020 25014
+S
+#25022
+Corridor of the Sword~
+You stand in a roomy corridor.  A fresco is painted on the walls, and strange
+armour and weapons hang from the stone.  There is a door directly north of
+here, and the corridor continues west and east.
+~
+0 1|8 0
+D0
+A sturdy door stands directly north.
+~
+~
+1 -1 25028
+D1
+The corridor leads east.
+~
+~
+0 -1 25024
+D2
+A grill hangs open high on the wall.
+~
+grill grate plate door~
+1 -1 25021
+D3
+The corridor leads west.
+~
+~
+0 -1 25023
+E
+fresco painting wall~
+The faded fresco depicts a large snake or serpent rising above a vast landscape
+of castles and towns, rays of light streaming from its gargantuan head.  Armies
+of serpentmen run before this monster, and ragged human bands are routed or
+fleeing in terror.  Obscene writing bordering the scene is completely unread-
+able.  Dark storm clouds brew from distant mountains and winged monsters rise
+from tracts of swamp and jungle.
+~
+S
+#25023
+Corridor of the Sword~
+You are at the end of the passage.  There are doors to the north and west, and
+the corridor stretches east.  A faded fresco lines the southern wall.
+~
+0 1|8 0
+D0
+A sturdy door stands directly north.
+~
+~
+1 -1 25029
+D1
+The corridor leads east.
+~
+~
+0 -1 25022
+D3
+An ornate door leads westwards.
+~
+~
+1 -1 25030
+E
+fresco painting wall~
+The wall painting shows the might of a serpent army as it carves through a
+legion of dwarven warriors three times its size.  Terror lies on the face of
+every demihuman as the snakemen decapitate and skewer their ranks with little
+resistance.  One serpent dominates them all, robed creatures at its side
+launching foul magicks at the disorganised and panicked opposition.
+~
+S
+#25024
+Corridor of the Sword~
+The corridor heads both east and west, and there is a door to the north.  
+A fresco covers the southern wall.
+~
+0 1|8 0
+D0
+A sturdy door stands directly north.
+~
+~
+1 -1 25027
+D1
+The corridor leads east.
+~
+~
+0 -1 25025
+D3
+The corridor leads west.
+~
+~
+0 -1 25022
+E
+fresco painting wall~
+A beautiful woman with fangs and slitted eyes has beguiled a crowned human
+knight, magical vapours rising from her fingers and into the knight's eyes.
+Human courtiers are dismayed and confused as the charmed king sends them to
+their deaths with an outstretched finger, while dwarven princes are flogged 
+on a wheel behind them.
+~
+S
+#25025
+Corridor of the Sword~
+You arrive at the eastern end of the corridor.  There is a sturdy door to the
+north.
+~
+0 1|8 0
+D0
+A sturdy door stands directly north.
+~
+~
+1 -1 25026
+D3
+The corridor leads west.
+~
+~
+0 -1 25024
+S
+#25026
+Trashed Armoury~
+You surmise that this chamber once served as an armoury.  The few items that
+remain appear destroyed.
+~
+0 1|8 0
+D2
+A sturdy door stands directly south.
+~
+~
+1 -1 25025
+E
+trash items junk armour weapons~
+All of the articles of armour and weaponary are broken and rusted, completely
+unusable in combat.
+~
+S
+#25027
+Ancient Barracks~
+This room was once a barracks; wooden bunks are still propped up against the
+walls.
+~
+0 1|8 0
+D2
+A sturdy door stands leads south back into the corridor.
+~
+~
+1 -1 25024
+E
+bunks wooden~
+The bunks are layered in dust, their moth-eaten matresses hanging from their
+edges.
+~
+S
+#25028
+Ancient Barracks~
+This room once served to house soldiers of some kind.  Their beds and a crude
+table still remain, covered in thick dust.
+~
+0 1|8 0
+D2
+A sturdy door stands directly south.
+~
+door~
+1 -1 25022
+E
+beds table furniture~
+The furnature is layered in thick dust, unused for centuries.
+~
+S
+#25029
+Ancient Guardroom~
+The guardroom is small and sparsely furnished.
+~
+0 1|8 0
+D2
+A sturdy door stands directly north.
+~
+~
+1 -1 25023
+S
+#25030
+The Great Door~
+You stand at the southern end of an immense chamber that continues northwards.
+The southern wall is filled with a large iron door that is annoited with
+symbols and writing.  Decorative doors open west and east from here.  Another
+large door is visible further northwards.
+~
+0 1|4|8 0
+D0
+A huge door stands to the north.
+~
+~
+0 -1 25031
+D1
+An ornate door leads eastwards.
+
+~
+~
+1 -1 25023
+D2
+A gigantic door covers most of the southern wall.
+~
+~
+8 -1 25011
+D3
+An ornate door opens west.
+~
+~
+1 -1 25035
+E
+door great iron symbols writing~
+You recognize the large iron door to the south as the one leading to the room
+containing the magical seal at the entrance to the complex.  Enchanted scripts
+cover its panels.
+~
+S
+#25031
+The Door of Pain~
+The door against the north wall is covered in scripture.  It's metal finish
+gleams and carries no imperfection.  Ornate doors open west and east from
+here, and this large chamber stretches south.
+~
+0 1|4|8 0
+D0
+This large chamber continues north.
+~
+~
+8 25026 25053
+D1
+An ornate door open east.
+~
+~
+1 -1 25032
+D2
+The hall stretches south.
+~
+~
+0 -1 25030
+D3
+An ornate door stands westwards.
+~
+~
+1 -1 25041
+E
+door pain scripture metal north~
+This flawless door has no visible handles or locks.  A large metal plate in the
+centre of the portal contains the outline of a circular symbol, and is covered
+in incantations.  "Turn back!  If the Seal is broken only weak barriers remain.
+Flee!  The Guardian of Pain will crush any attempt to enter beyond!  Fly!"
+~
+S
+#25032
+Corridor~
+This corridor is wide and very high.
+~
+0 1|8 0
+D0
+A small door is north of here.
+~
+~
+1 -1 25048
+D1
+The corridor continues to the east.
+~
+~
+0 -1 25033
+D3
+An ornate door open west.
+~
+~
+1 -1 25031
+S
+#25033
+Corridor~
+This corridor is hugh and very wide.  You may continue west, and doors open
+here to the north and east.  The eastern door is heavy and carrys the outline
+of a skull.
+~
+0 1|8 0
+D0
+A small door is north of here.
+~
+~
+1 -1 25049
+D1
+A heavy iron door leads east.
+~
+~
+8 25025 25034
+D3
+The corridor continues to the west.
+~
+~
+0 -1 25032
+S
+#25034
+Chamber~
+This room is very dim and musty, and there are no furnature or fittings.  Bits
+of masonry and rubble litter the floor.
+~
+0 1|8 0
+D3
+A heavy iron door leads back into the corridor.
+~
+~
+8 25025 25033
+S
+#25035
+Corridor of Magic~
+This hallway is covered with a bare carpet, now itself carpeted in thick dust.
+Heads are mounted on the walls as trophies.  You realise some are human heads,
+their faces grimaced in glassy-eyed agony.
+~
+0 1|8 0
+D1
+An ornate door opens east.
+~
+~
+1 -1 25030
+D2
+A door opens to the south.
+~
+~
+1 -1 25051
+D3
+The corridor continues west.
+~
+~
+0 -1 25036
+S
+#25036
+Corridor of Magic~
+The hallway continues both east and west from here.  Stuffed heads hang from
+the walls, and light fittings hang in mid air near the ceiling.
+~
+0 1|8 0
+D1
+The corridor continues east.
+~
+~
+0 -1 25035
+D3
+The corridor continues west.
+~
+~
+0 -1 25037
+S
+#25037
+Corridor of Magic~
+The corridor ends here and returns east.  There are doors to the west and south
+of here.
+~
+0 1|8 0
+D1
+The corridor continues east.
+~
+~
+0 -1 25036
+D2
+A door leads south.
+~
+~
+1 -1 25052
+D3
+There is a door directly to the west.
+~
+~
+1 -1 25038
+S
+#25038
+Side Chamber~
+The side chamber is thin and long, and houses many instruments of alchemy or
+some such science: burners and metal pipes stand rusted on tables, and broken
+vials and bottles are scattered on the floor.  The room extends west and a
+door to the east returns you to the corridor.
+~
+0 1|8 0
+D1
+A door open east.
+~
+~
+1 -1 25037
+D3
+The side chamber extends westwards.
+~
+~
+0 -1 25039
+S
+#25039
+Side Chamber~
+You are at the western end of what was possibly once a laboratory or workshop.
+Charts hang from the southern wall, and a door opens north.
+~
+0 1|8 0
+D0
+There is a door to the north.
+~
+~
+1 -1 25040
+D1
+The side chamber extends eastwards.
+~
+~
+0 -1 25038
+E
+charts chart south southern~
+The charts appear to be complex scientific tables, covered in a scrawling
+script that you cannot decipher.  You recognise the depiction of the the four
+elements in a circular diagram, and a large tree with many branches standing
+to the south of a great river.
+~
+S
+#25040
+Wizard's Study~
+You have entered a very tidy study, well lit and free from dust and rubbish.
+Vaporous entities scurry to the corners of the room at your approach, returning
+an upset candle holder to its proper position.  A large desk and book case
+dominate the chamber.  Several scrolls and books lie open on the desk, and have
+received recent attention.
+~
+0 8 0
+D2
+This door leads south back into the side chamber.
+~
+~
+1 -1 25039
+E
+scrolls desk books~
+The large desk is layered in scrolls and open manuals.  Most of the text is
+unreadable, written in some ugly, unrecognizable language.
+~
+E
+bookcase~
+The bookcase is large and ornately carved.  Large tomes and scrolls are
+organized neatly on its shelves.
+~
+S
+#25041
+Ancient Guardroom~
+This room has been trashed and contains much rubbish.
+~
+0 1|8 0
+D1
+An ornate door leads eastwards.
+~
+~
+1 -1 25031
+D3
+A plain door opens west.
+~
+~
+1 -1 25042
+S
+#25042
+Corridor of the Hammer~
+The walls of this corridor have large metal and wooden symbols hung from them,
+and are strangely beautiful.  A bright mural decorates the southern wall.  You
+may head west along the corridor or leave east through a door to the guardroom.
+~
+0 1|8 0
+D0
+A solid door leads north.  A large symbol is emboised on the wood.
+~
+~
+1 -1 25045
+D1
+A plain door opens east.
+
+~
+~
+1 -1 25041
+D3
+The corridor extends westwards.
+~
+~
+0 -1 25043
+E
+mural south~
+The mural shows a cleric or priest opening a tomb and brandishing a dark symbol
+shaped like a crawling snake towards a robed corpse.  Lightning crackles in the
+background as demons emerge from the ground to carry the awakening body from
+it's sarcophagus.
+~
+S
+#25043
+Corridor of the Hammer~
+The corridor ends here and returns east.  Doors stand to the north and west.
+~
+0 1|8 0
+D0
+A solid door leads north.
+~
+~
+1 -1 25046
+D1
+The corridor extends eastwards.
+~
+~
+0 -1 25042
+D3
+There is a door to the west.
+~
+~
+1 -1 25044
+S
+#25044
+Cleric's Chamber~
+This chamber contains plush couches and thick rugs, once of fine quality but
+now covered in thick dust.  A small shrine has been erected against the far
+side of the room, and foul smelling incense has been lit.
+~
+0 1|8 0
+D1
+There is a door to the east.
+~
+~
+1 -1 25043
+E
+shrine small incense~
+The shrine gleams and is studded with many jewels.  A statuette of a small
+golden snake rears from its apex, surrounded by small bowls of lit incense.
+The room is beginning to become full of awfully smelling smoke.
+~
+S
+#25045
+Vestry~
+The vestry is lined with small wooden lockers.  They contain richy embroidered
+robes and tunics of a shiny, unfamiliar material.  The only exit appears to be
+through the door to the south.
+~
+0 1|8 0
+D2
+A solid door stands south.
+~
+~
+1 -1 25042
+S
+#25046
+Empty Fountain~
+An empty stone fountain is fitted to the northern wall, water once pouring from
+the mouth of a rearing serpent, but now dry and covered with stains.  A pair of
+double doors leads to the west, and the southern door will take you back out
+into the corridor.
+~
+0 1|8 0
+D2
+A solid door leads south into the corridor.
+~
+~
+1 -1 25043
+D3
+A pair of double doors leads west.
+~
+~
+1 25024 25047
+E
+fountain~
+The fountain has been empty for centuries, and is in bad condition.  A small
+drain pipe disappears from beneath the bowl into the wall.
+~
+S
+#25047
+Small Chapel~
+Stark stone benches are organised before a small guilded idol.  Tapestries
+hang from the walls, displaying large silver symbols.
+~
+0 1|8 0
+D1
+A pair of double doors leads back out east.
+~
+~
+1 25024 25046
+E
+tapestries tapestry~
+Depicted in the tapestries are various serpents and snakemen, all hissing and
+bearing their fangs.  Light and power radiate from them as they tower above a
+swampy landscape.  Small but unrecognisable writing borders the artwork.
+~
+S
+#25048
+Bedroom~
+These living quaters are filled with rubbish.  A wooden bed stands dejectedly
+in the far corner.
+~
+0 1|8 0
+D2
+A small door is south of here.
+~
+~
+1 -1 25032
+S
+#25049
+Bedroom~
+Two sets of bunks are aligned on opposite walls of this bedroom.
+~
+0 1|8 0
+D1
+A small door leads east.
+~
+~
+1 -1 25050
+D2
+A small door is south of here.
+~
+~
+1 -1 25033
+E
+bunks furniture~
+The bunks are in bad condition, and have almost fallen apart.
+~
+S
+#25050
+Trashed Library~
+Shelves line the walls of this library, stretching from the floor to the
+ceiling.  Books and scrolls lay discarded upon the floor, pulled from the
+shelving: most of the writings have been badly burnt, others have been ripped
+or slashed to pieces.  One of the bookcases has been toppled and lays on a
+pile of books to the south; the furniture has also been taken to with a lit
+torch, and a thin layer of ash covers the room's trashed remains.
+~
+0 1|8 0
+D3
+A small door leads back west.
+~
+~
+1 -1 25049
+S
+#25051
+Broken Furnature~
+Tables and chairs lay broken and upended.
+~
+0 1|8 0
+D0
+A door to the north leads back into the corridor.
+~
+~
+1 -1 25035
+S
+#25052
+Abandonned Room~
+Probably serving as some sort of meeting room or general quarters, this room
+contains a large table and several stools.  Bones lie in the southwest corner.
+~
+0 1|8 0
+D0
+A door to the north leads back into the corridor.
+~
+~
+1 -1 25037
+S
+#25053
+Grand Hall~
+Stone serpents spiral up the huge collums standing in rows to the west and east
+of this lofty hall.  A large staircase disappears downwards to the north, and
+side chambers open west and east.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 25056
+D1
+~
+~
+0 -1 25055
+D2
+This large chamber continues north.
+~
+~
+8 -1 25031
+D3
+~
+~
+0 -1 25054
+S
+#25054
+Side Chamber~
+Only rubble sits on the floor of this large chamber.  The ceiling is very high
+and several wooden chandeliers hang from metal chains.
+~
+0 1|8 0
+D1
+An ornate door open east.
+~
+~
+0 -1 25053
+S
+#25055
+Side Chamber~
+Only rubble sits on the floor of this large chamber.  The ceiling is very high
+and several wooden chandeliers hang from metal chains.
+~
+0 1|8 0
+D3
+The Grand Hall lies west.
+~
+~
+0 -1 25053
+S
+#25056
+The Stairs~
+Wide granite steps lead down into the gloom, the air stale and difficult to
+breathe.
+~
+0 1|4|8 0
+D2
+~
+~
+0 -1 25053
+D5
+The stairs lead downwards.
+~
+~
+0 -1 25057
+S
+#25057
+Hall of Serpents~
+This hall is enormous, the vaulted ceiling held above you by magnificently
+decorated marble columns, decorative snakes carved so as to spiral about them
+towards the roof.  The polished walls have many torch racks and grills; several
+thick pipes run horizontally across them in many places, emerging and
+disappearing into oddly placed metal fittings.  The hall continues north, and
+two doors lead west and east from here.
+~
+0 1|4|8 0
+D0
+The corridor continues north.
+~
+~
+0 -1 25058
+D1
+A door opens east.
+~
+~
+1 -1 25081
+D3
+A door opens west.
+~
+~
+1 -1 25060
+D4
+The stairs lead upwards.
+~
+~
+0 -1 25056
+S
+#25058
+Hall of Serpents~
+Statues of disturbingly strange beasts stand in the center of the wide hall,
+their bright paint faded and replaced by dust and grim.  You may head north and
+south along the hall; doors open west and east of here.
+~
+0 1|4|8 0
+D0
+A large door stands in the room to the north.
+~
+~
+0 -1 25059
+D1
+A door opens east.
+~
+~
+1 -1 25087
+D2
+The hall continues to the south.
+~
+~
+0 -1 25057
+D3
+A door stands directly west.
+~
+~
+1 -1 25075
+S
+#25059
+The Door of Anguish~
+A mighty iron door rises to the north, covered in ancient scripts and symbols.
+Small wooden doors open to the west and east.
+~
+0 1|4|8 0
+D0
+The Door of Anguish stands directly north.
+~
+~
+8 25042 25099
+D1
+A door stands in the east wall.
+~
+~
+1 -1 25096
+D2
+The chamber stretches south.
+~
+~
+0 -1 25058
+D3
+A door open west.
+~
+~
+1 -1 25080
+S
+#25060
+Arched Hallway~
+This smaller side corridor heads east.  A fresco scrolls along the northern
+wall, its paint long since faded.  Thick pipes rise through the floor and into
+the ceiling.  Hot water dribbles from loose fittings, steam rising from them
+in several places.  Open archways are visible to the north and south.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25065
+D1
+A door leads eastwards.
+~
+~
+1 -1 25057
+D2
+An archway opens south.
+~
+~
+0 -1 25068
+D3
+The corridor heads west.
+~
+~
+0 -1 25061
+E
+fresco painting~
+Thousands of snakes pour from the hand of a gigantic snakeman, who towers above
+a sleeping city.  The snakes swarm into every house, crawling into the ears,
+noses and mouths of sleeping human wretches.
+~
+S
+#25061
+Arched Hallway~
+The corridor continues west and east.  Archways open north and south.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25064
+D1
+The corridor heads east.
+~
+~
+0 -1 25060
+D2
+An archway opens south.
+~
+~
+0 -1 25067
+D3
+The corridor heads west.
+~
+~
+0 -1 25062
+S
+#25062
+Arched Hallway~
+The corridor terminates to the west with a solid wooden door with two handles.
+Archways lead north and south.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25063
+D1
+The corridor returns east.
+~
+~
+0 -1 25061
+D2
+An archway opens south.
+~
+~
+0 -1 25066
+D3
+A sturdy door stands to the west.
+~
+~
+1 -1 25069
+S
+#25063
+Servants' Quarters~
+You stand in an abandoned dormatory.  The sparse furniture - several rickety
+bunds and a few stools - lays tossed or in pieces about the room.
+~
+0 1|8 0
+D2
+An archway opens south.
+~
+~
+0 -1 25062
+S
+#25064
+Servants' Quarters~
+Broken furniture and garbage are all that occupy this abbandonned dormatory.
+~
+0 1|8 0
+D2
+An archway opens south.
+~
+~
+0 -1 25061
+S
+#25065
+Burnt Out Room~
+The burnt and twisted remains of bunks, tables and chairs stand in thick dust
+and ash.  The stone walls are covered in soot, and several charred skeletons
+peek from above the destruction.
+~
+0 1|8 0
+D2
+An archway opens south.
+~
+~
+0 -1 25060
+S
+#25066
+Servants' Quarters~
+Rubbish and rubble cover the floor of this abandonned room.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25062
+S
+#25067
+Servant's Quarters~
+Little remains in this area apart from trashed wooden furniture.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25061
+S
+#25068
+Trashed Common Room~
+Two large tables and several long benches have been overturned and heaped into
+a pile in the centre of the floor.  Someone had attempted to set fire to the
+furniture, although only a small proportion of the wood has been damaged.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25060
+S
+#25069
+Eating Pits~
+Several shallow, circular pits have been dug into the ground in an orderly row
+against the western wall.  Crunched bones litter the bottom of these pits.
+~
+0 1|8 0
+D0
+A closed panel is barely visible.
+~
+panel door~
+1 -1 25078
+D1
+The door east returns you to the corridor.
+~
+~
+1 -1 25062
+D2
+A door opens south.
+~
+~
+1 -1 25070
+E
+pits~
+The shallow pits appear to have been used for communal meals; the pits contain
+many bones and partial skeletons.
+~
+S
+#25070
+Dim Tunnel~
+This narrow tunnel has been clawed from the bedrock: the air is foul and very
+hot, and you soon begin to sweat, your clothing clinging unbearably to your 
+skin.  Dull noises echo through the passage, that wanders roughly eastwards.
+~
+0 1|8 0
+D0
+A door opens north.
+~
+~
+1 -1 25069
+D1
+The corridor wanders east.
+~
+~
+0 -1 25071
+S
+#25071
+Dim Tunnel~
+Sweat oozes from your skin as you force your way through the narrowing passage,
+which stretches further east, and back west.
+~
+0 1|8 0
+D1
+The tunnel heads east.
+~
+~
+0 -1 25072
+D3
+The corridor wanders west.
+~
+~
+0 -1 25070
+S
+#25072
+Dim Tunnel~
+The tunnel turns south, the door back to the complex back west from here.
+The heat teaches you new levels of irritation and discomfort.
+~
+0 1|8 0
+D2
+The tunnel heads south.
+~
+~
+0 -1 25073
+D3
+The tunnel heads west.
+~
+~
+0 -1 25071
+S
+#25073
+Dim Tunnel~
+A stone door stands to the west.  Symbols or some sort of writing have been
+carved haphazardly into the door's surface.  The tunnel here is still very hot.
+~
+0 1|8|512 0
+D0
+The tunnel returns north.
+~
+~
+0 -1 25072
+D3
+A heavy door stands directly west.
+~
+~
+8 25048 25074
+S
+#25074
+Air Vents~
+A wave of heat swamps you as you enter the room, which is more accurately a
+roughly hewn cavern.  Huge pipes stretch from wall to wall, or disappear into
+the ground.  Several large vents open up in the ground near the west wall.
+One in particular is quite large, large enough for you to climb down it if you
+wished too.  The waves of heat and occassional bursts of flames that arrive
+from the opening of these vents indicate that if you were inclined to enter
+these holes, you might not be alive long enough to get out of them again...
+~
+0 1|8 0
+D1
+A heavy door stands directly east.
+~
+~
+8 25048 25073
+D5
+A shaft disappears into the ground.  It looks dangerous.
+~
+~
+0 -1 25098
+E
+vent vents~
+The vents have been roughly cut downwards into the rock.  Hot air wafts from
+them so that the room feels like an oven.  A climb down these chutes would be
+dangerous as well as uncomfortable.
+~
+S
+#25075
+Guard Hall~
+This guard post is in disarray, with furniture upended and smashed to pieces.
+A door to the east returns you to the main hall, while the narrow room
+continues to the west.
+~
+0 1|8 0
+D1
+A door stands directly east.
+~
+~
+1 -1 25058
+D3
+The hall stretches west.
+~
+~
+0 -1 25076
+S
+#25076
+Guard Hall~
+Trash covers the floor of this room.  The hall returns east.
+~
+0 1|8 0
+D1
+The hall stretches east.
+~
+~
+0 -1 25075
+S
+#25077
+Swamp~
+You sink into a fetid marsh as the ripe smell of rot rises from below you.
+This large chamber has been converted into an indoor swamp - the floor is
+completely covered in thick, stinking mud, and all manner of swamp plants grow
+in isolated clumps.  Open vents about a foot from the surface of the bog allow
+warm water to trickle in, and let steam escape into the air, which is moist
+and very warm.  Large palms and mangroves grow to the west of this chamber
+behind a wide, low arch that bisects the room.  A door to the east will take
+you back to dry land.
+~
+0 1|8 0
+D1
+A door leads east.
+~
+~
+1 -1 25079
+D3
+Swamp oozes to the west.
+~
+~
+0 -1 25078
+E
+mud swamp marsh~
+The mud is thick and smells bad.  Foul water bubbles up through the muck in
+many places, amd the air is alive with flies.
+~
+S
+#25078
+Swamp~
+The quagmire becomes a little more solid on this side of the swampy chamber,
+and many tall palms and twisted mangroves rise above the slime.  A wooden
+stake stands between several large trees, several skulls skewered over its
+sharpened tip.
+~
+0 1|8 0
+D1
+Swamp oozes to the east.
+~
+~
+0 -1 25077
+D2
+A closed panel is barely visible.
+~
+panel door~
+1 -1 25069
+E
+stake skulls skull~
+Several human and reptillian skulls decorate this spike.  The bones are also
+crushed and pierced in many places.
+~
+S
+#25079
+Boggy Corridor~
+Fetid water covers the flagstones of this corridor by as much as an inch, foul
+slime and filth floating on its surface in several places.  A ripe smell issues
+from the west, and you notice a few insects whining through the humid
+atmosphere.
+~
+0 1|8 0
+D1
+The corridor continues east.
+~
+~
+0 -1 25080
+D3
+A door stands in the west wall.
+~
+~
+1 -1 25077
+S
+#25080
+Boggy Corridor~
+Water seeps from underneath a wooden door directly west.  Mud and grim also
+cover the floor at this end of the corridor, which stretches east.
+~
+0 1|8 0
+D1
+A door open east.
+~
+~
+1 -1 25059
+D3
+The corridor continues west.
+~
+~
+0 -1 25079
+S
+#25081
+Snake Pit~
+The floor of this spacious chamber glistens and heaves before you: the ground
+is a writhing mass of snakes, some tiny, most several feet in length, with some
+absolutely gigantic specimens crawling lazily through their smaller brothers.
+The pit continues east and south, while a door leads west back into the great
+hall.
+~
+0 1|8 0
+D1
+The pit stretches east.
+~
+~
+0 -1 25082
+D2
+The pit stretches south.
+~
+~
+0 -1 25083
+D3
+A door opens west.
+~
+~
+1 -1 25057
+S
+#25082
+Snake Pit~
+Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+the ground a sea of fanged worms and heaving pythons.  The pit continues to
+the west and south.
+~
+0 1|8 0
+D2
+The pit stretches south.
+~
+~
+0 -1 25084
+D3
+The pit stretches west.
+~
+~
+0 -1 25081
+S
+#25083
+Snake Pit~
+Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+the ground a sea of fanged worms and heaving pythons.  The pit continues to
+the north, east and south.
+~
+0 1|8 0
+D0
+The pit stretches north.
+~
+~
+0 -1 25081
+D1
+The pit stretches east.
+~
+~
+0 -1 25084
+D2
+The pit stretches south.
+~
+~
+0 -1 25085
+S
+#25084
+Snake Pit~
+Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+the ground a sea of fanged worms and heaving pythons.  The pit continues to
+the west and north.
+~
+0 1|8 0
+D0
+The pit stretches north.
+~
+~
+0 -1 25082
+D3
+The pit stretches west.
+~
+~
+0 -1 25083
+S
+#25085
+Snake Pit~
+Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+the ground a sea of fanged worms and heaving pythons.  The stretches back to
+the north, and there is a door directly east.
+~
+0 1|8 0
+D0
+The pit stretches south.
+~
+~
+0 -1 25083
+D1
+A door opens east.
+~
+~
+1 -1 25086
+S
+#25086
+Slaughter Room~
+Ugly billhooks hang by heavy chains from the ceiling, and many sharp spikes
+stand thrust from the ground.  A large drain sits near the middle of the floor,
+which is sloped downwards into the hole.  Many bones and partial skeletons lay
+about the stones, crushed and mutilated.
+~
+0 1|8 0
+D3
+A door opens west.
+~
+~
+1 -1 25085
+E
+hooks billhooks hook~
+The rusted hooks once held dead or dying bodies as the serpent flesh handlers
+went about their work.  Rough barbs prevent any pinned body from wriggling
+free.
+~
+E
+spikes spike~
+Thick spikes rise from the floor in regular order, evidently to impale and hold
+steady carcasses for butchering.
+~
+S
+#25087
+Metal Pipes~
+The north wall and ceiling are covered by a layer of horizontally running metal
+pipes, made of bronze or some such alloy.  Water drips from many fittings and
+small jets of steam occasionally burst from valves above you.  It is warm and
+stuffy in this passage, which continues to the east along with the pipes.  
+Doors open to the west and south of here.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 25089
+D2
+A door opens south.
+~
+~
+1 -1 25088
+D3
+A door stands west.
+~
+~
+1 -1 25058
+E
+pipes pipe~
+The pipes are rusted in many places yet still function to carry hot water
+throughout the complex.
+~
+S
+#25088
+Machinery~
+A bizarre sight greets you as you enter this chamber - rows of metal boilers
+and ovens, mounted with dials and gauges.  Large levers stand from a brass
+bench or cabinet that appears to function as some sort of control panel.  The
+air is hot and humid, and large pipes above you hum and shiver as water drips
+from their metal fittings.
+~
+0 1|8 0
+D0
+A door opens north.
+~
+~
+1 -1 25087
+E
+cabinet bench control panel~
+Guages and dials are mounted in the walls of this low set cabinet.  Pipes and
+tubes lead from the rear of the control panel and into the wall.  Murky water
+sits inside many of the dials, and control levers and switches have been badly
+rusted and no longer move easily.
+~
+S
+#25089
+Steam~
+The pipes continue into this chamber and swing south, following the corridor.
+One of the large pipes to the north seems to have burst, and a boiling jet of
+steam fires downwards onto the flagstones.  An object is hardly visible at the
+heart of the escaping steam, although you will certainly be injured trying to
+retrieve it.  A door opens to the east.
+~
+0 1|8 0
+D1
+A door opens east.
+~
+~
+1 -1 25091
+D2
+The corridor turns south.
+~
+~
+0 -1 25090
+D3
+~
+~
+0 -1 25087
+S
+#25090
+Dripping Pipes~
+Water dribbles from the deteriorating pipes in several places.  Large puddles
+spread across the floor of this corridor, which runs north and south.
+~
+0 1|8 0
+D0
+The corridor heads north.
+~
+~
+0 -1 25089
+D2
+The corridor turns south.
+~
+~
+0 -1 25092
+S
+#25091
+Cramped Workshop~
+A large wooden bench against the east wall lays covered in pieces of broken
+pipe, plumbing, dials and valves.  Tools stand on the floor and on an extensive
+rack above the workbench and pipes layer the ceiling, spurting steam and water
+into the southern end of the chamber.  An open furnace in the southwest corner
+burns brighly and radiates heat throughout the room.  A large set of plans or
+blueprints is stretched out across a pair of adjacent stools near the door.
+~
+0 1|8 0
+D3
+A door opens west.
+~
+~
+1 -1 25089
+E
+plans plan diagram blueprints~
+Diagrams and tiny script cover these vellum scrolls.  Pictured in the diagrams
+are several humanoid figures, many notes and arrows pointing to various body
+parts.  Arms and legs are pictured seperately in detail.
+~
+E
+tools rack workbench~
+Tools hang from nails on a rack above the cluttered workbench.  Piping and
+rubbish cover the table; also visible are several snakeman manuals and scrolls,
+and interestingly enough, a human book, titled "Art and Application of the
+Magick Study of Hydrolics and Engineering of the Elements of Fire and Air."
+~
+S
+#25092
+Generator Room~
+A throbbing whine fills the air, which is hot and very humid.  A collosal
+boiler or burner occupies the bulk of this large chamber, which stretches east
+and south.  Pipes and valves rise out of the ground and disappear through the
+walls in every direction.
+~
+0 1|8 0
+D0
+The corridor heads north.
+~
+~
+0 -1 25090
+D1
+The chamber stretches east.
+~
+~
+0 -1 25093
+D2
+The chamber heads south.
+~
+~
+0 -1 25094
+S
+#25093
+Generator Room~
+A throbbing whine fills the air, which is hot and very humid.  A collosal
+boiler or burner occupies the bulk of this large chamber, which stretches west
+and south.  Pipes and valves rise out of the ground and disappear through the
+walls in every direction.
+~
+0 1|8 0
+D2
+The chamber stretches south.
+~
+~
+0 -1 25095
+D3
+The chamber stretches west.
+~
+~
+0 -1 25092
+E
+boiler burner~
+The boiler is cranking into action again, a bit worse for wear after being
+unused for so long.  Steam escapes from safety valves as the burner boils
+incoming water carried by several pipes.
+~
+S
+#25094
+Generator Room~
+A throbbing whine fills the air, which is hot and very humid.  A collosal
+boiler or burner occupies the bulk of this large chamber, which stretches east
+and north.  Pipes and valves rise out of the ground and disappear through the
+walls in every direction.
+~
+0 1|8 0
+D0
+The chamber heads north.
+~
+~
+0 -1 25092
+D1
+The chamber stretches west.
+~
+~
+0 -1 25095
+S
+#25095
+Generator Room~
+A throbbing whine fills the air, which is hot and very humid.  A collosal
+boiler or burner occupies the bulk of this large chamber, which stretches west
+and north.  Pipes and valves rise out of the ground and disappear through the
+walls in every direction.
+~
+0 1|8 0
+D0
+The chamber stretches north.
+~
+~
+0 -1 25093
+D3
+The chamber stretches west.
+~
+~
+0 -1 25094
+S
+#25096
+Antechamber~
+A fresco covers the walls of this small antechamber.  Ornate furniture stands
+intact but dirty; a small table bears an empty vase.  Doors lead east and west
+from this chamber.
+~
+0 1|8 0
+D1
+A door stands in the east wall.
+~
+~
+1 -1 25097
+D3
+A door opens west.
+~
+~
+1 -1 25059
+E
+fresco painting~
+The painting shows two worlds separated by a large glowing portal.  Endless
+armies of snakemen file through the gate and into the sunny fields containing
+human settlements.
+~
+E
+vase empty~
+The vase is cracked and dirty.  It is fitted to the small wooden table on
+which it stands.
+~
+S
+#25097
+Room of Mirrors~
+Three upright mirrors stand in a curved row in this crescent-shaped chamber.
+The mirrors are all cracked, the glass still held in intricately carved wooden
+frames covered in writing and symbols.  Some sort of diagram or drawing covers
+the ceiling about each mirror.  Unlike the rest of the complex, this room is
+quite chilly.
+~
+0 1|8 0
+D3
+A door stands in the west wall.
+~
+~
+1 -1 25096
+E
+mirrors mirror~
+The mirrors have been smashed, the dull grey glass still hanging from the
+wooden frames, which stand larger than a man.
+~
+S
+#25098
+Air Shaft~
+You climb carefully down the roughly cut shaft.  The air is very hot and dry,
+and you perspire heavily.  Ten feet into the shoot you feel a deep rumble from
+below.  A dim light grows beneath you, and the rumble turns into a terrific 
+roar.  A little voice talks to you inside your head.  It says, "If I were you,
+I'd start climbing out of this hole, right now..."  You whole-heartedly agree.
+~
+0 1|8 0
+D4
+The vent open upwards.
+~
+~
+0 -1 25131
+S
+#25099
+The Stairs~
+A wide stone staircase disappears into the gloom below.
+~
+0 1|4|8 0
+D2
+The Door of Anguish stands directly south.
+~
+~
+8 25042 25059
+D5
+The stairs lead downwards.
+~
+~
+0 -1 25100
+S
+#25100
+The Grand Hall~
+Your footsteps echo loudly as you step into this magnificent hall, its high
+ceiling vaulted with decorative arches.  Dust covered chandeliers hang at
+intevals on long chains, and grotesque statues rise from short pillars.  
+Doors open west and east from here, and the hall continues north.
+~
+0 1|4|8 0
+D0
+The hall continues north.
+~
+~
+0 -1 25105
+D1
+A door opens east.
+~
+~
+1 -1 25101
+D3
+A door stands westwards.
+~
+~
+1 -1 25106
+D4
+The stairs lead up from here.
+~
+~
+0 -1 25099
+S
+#25101
+Egg Chamber~
+Small metal grills covering vents in the walls allow warm, moist air to breathe
+into this large room, which is covered in a layer of rotting muck.  Large
+mounds of decaying plant matter and filth rise haphazardly before you; you
+count at least two dozen in the room.  Further inspection reveals that these
+mounds contain reptilian eggs.  Movement about you draws your attention to
+several beasts the comb the muck.  You may head further north and east, while
+the door west will take you back into the Grand Hall.
+~
+0 1|8 0
+D0
+The chamber stretches northwards.
+~
+~
+0 -1 25103
+D1
+The chamber stretches east.
+~
+~
+0 -1 25104
+D3
+A door opens west.
+~
+~
+1 -1 25100
+S
+#25102
+Egg Chamber~
+Stinking mounds of filth cover serpent eggs as they incubate.  The swampy
+chamber stretches west and south.
+~
+0 1|8 0
+D2
+The chamber stretches southwards.
+~
+~
+0 -1 25104
+D3
+The chamber stretches west.
+~
+~
+0 -1 25103
+S
+#25103
+Egg Chamber~
+Stinking mounds of filth cover serpent eggs as they incubate.  The swampy
+chamber stretches east and south.
+~
+0 1|8 0
+D1
+The chamber stretches east.
+~
+~
+0 -1 25102
+D2
+The chamber stretches southwards.
+~
+~
+0 -1 25101
+S
+#25104
+Egg Chamber~
+Stinking mounds of filth cover serpent eggs as they incubate.  The swampy
+chamber stretches west and north.
+~
+0 1|8 0
+D0
+The chamber stretches northwards.
+~
+~
+0 -1 25102
+D3
+The chamber stretches west.
+~
+~
+0 -1 25101
+S
+#25105
+The Door of Agony~
+A inpenetrable iron door towers to the north, covered in symbols and arcane
+writing.  Doors open to the west and east, while the Grand Hall returns south.
+~
+0 1|4|8 0
+D0
+A solid door stands north.
+~
+~
+8 25059 25119
+D1
+A door stands to east.
+~
+~
+1 -1 25115
+D2
+The hall continues south.
+~
+~
+0 -1 25100
+D3
+A door stands westwards.
+~
+~
+1 -1 25111
+S
+#25106
+Hallway~
+This grimy passage contains nothing but a few metal pipes running across the
+southern wall.
+~
+0 1|8 0
+D1
+A door stands eastwards.
+~
+~
+1 -1 25100
+D3
+A door stands westwards.
+~
+~
+1 -1 25107
+S
+#25107
+Transformation Laboratory~
+Metal benches and stools stand in rows across this chamber, along with several
+boilers, burners and furnaces.  Pipes lead everywhere, and the air is humid and
+warm.  Chains and hooks hang from the roof, and the corners of each bench have
+a cruel manacles bolted to them.  Ancient blood stains cover parts of the
+floor, and a pit in one corner is filled with bones.  A desk sits against the
+wall to the north; several manuals and surgical instruments are visible on its
+surface.  You can move west and south throughout the laboratory, or return to
+the hallway via a door to the east.
+~
+0 1|8 0
+D1
+A door stands eastwards.
+~
+~
+1 -1 25106
+D2
+The chamber stretches southwards.
+~
+~
+0 -1 25110
+D3
+The chamber stretches west.
+~
+~
+0 -1 25108
+E
+manuals books instruments desk~
+Several thick books lay on the desk top along with about a dozen cruel looking
+surgical instruments.  The writings are all written in unreadable script.
+~
+S
+#25108
+Transformation Laboratory~
+The grisly remains of some creature still lays strapped to a bench here.  The
+skeleton's ribs lie torn outwards, the spine crushed and mangled.  The chamber
+stretches east and south.
+~
+0 1|8 0
+D1
+The chamber stretches east.
+~
+~
+0 -1 25107
+D2
+The chamber stretches southwards.
+~
+~
+0 -1 25109
+S
+#25109
+Transformation Laboratory~
+Benches stand littered with bones, jets of steam bursting from thick pipes
+rising from the floor.  You may head north or east.
+~
+0 1|8 0
+D0
+The chamber stretches northwards.
+~
+~
+0 -1 25108
+D1
+The chamber stretches east.
+~
+~
+0 -1 25110
+S
+#25110
+Transformation Laboratory~
+Benches stand littered with bones, jets of steam bursting from thick pipes
+rising from the floor.  You may head to the north or west.
+~
+0 1|8 0
+D0
+The chamber stretches southwards.
+~
+~
+0 -1 25107
+D3
+The chamber stretches west.
+~
+~
+0 -1 25109
+S
+#25111
+Hall of the Tooth~
+This passage is narrow and filled with rubble.  A archway opens west, and doors
+lead to the north, east and south of here.
+~
+0 1|8 0
+D0
+A door stands to the north.
+~
+~
+1 -1 25112
+D1
+A door stands eastwards.
+~
+~
+1 -1 25105
+D2
+A door stands to the south.
+~
+~
+1 -1 25113
+D3
+The hall carries on westwards.
+~
+~
+0 -1 25114
+S
+#25112
+Side Chamber~
+This alcove is now empty, choked with dust and grim.
+~
+0 1|8 0
+D2
+A door stands to the south.
+~
+~
+1 -1 25111
+S
+#25113
+Side Chamber~
+This alcove is now empty, choked with dust and grim.
+~
+0 1|8 0
+D0
+A door stands to the north.
+~
+~
+1 -1 25111
+S
+#25114
+Hall of the Tooth~
+The hall end here with a sturdy door directly west.  Archways are visible to
+the north and south, while the corridor returns east.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25129
+D1
+The hall returns eastwards.
+~
+~
+0 -1 25111
+D2
+An archway opens south.
+~
+~
+0 -1 25130
+D3
+An ornate door opens west.
+~
+~
+1 -1 25128
+S
+#25115
+Baths~
+The walls and floor of this room are covered in small granite tiles.  Moist
+air rolls out of several vents near to ceiling; the room is hot and humid. A
+large empty pool swallows most of the floor, the tiny drain holes rusted and
+the surface of the bath stained.  Archways open north and east.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25116
+D1
+An archway opens east.
+~
+~
+0 -1 25117
+D3
+A door stands to west.~
+~
+1 -1 25105
+S
+#25116
+Empty Pool~
+The pool in this room is also empty.  A mural of swamps and marsh, with tall
+palms and sharp leaved shrubs, has been painted on the walls, perhaps in an
+effort to make the pool seem more homely...
+~
+0 1|8 0
+D2
+An archway opens south.
+~
+~
+0 -1 25115
+S
+#25117
+Hot Pool~
+A hot bath bubbles in the centre of the room, steam rising from it and clouding
+your vision.  The water looks slimy and uninviting.  A door on the far wall is
+just visible through the haze.
+~
+0 1|8 0
+D1
+A door is visible to the east.
+~
+~
+8 25054 25118
+D3
+An archway opens west.
+~
+~
+0 -1 25115
+S
+#25118
+Cold Pool~
+Slimy muck floats over the surface of the water in a cold pool.
+~
+0 1|8 0
+D3
+A door is visible to the west.
+~
+~
+8 25054 25117
+S
+#25119
+Apparition~
+As you move through this antechamber a pinpoint of intense blue light develops
+to the north.  It grows suddenly and blazes - you cover your eyes as the light
+becomes stronger and stronger.  When it dies down, the flickering blue form 
+of a robed maiden floats above you.  The woman is unbelievably beautiful, her
+clothes exquisitely emboidered.  She speaks to your mind.  "I can not stay
+long my friend, the power of the queen is too great, and many of the other
+gods refuse to interfere."  She seems distracted momentarily.  "However, I
+must warn you - you are in great peril.  You have refused to heed the warnings
+set by wiser and braver men who sealed this place thousands of years before."
+A great rumbling rocks the room, and you hear crashing from the north.  The
+maiden continues, "Kahsis lies directly ahead.  She will crush you, her power
+is too great.  Recall now - save your soul!"  Her voice becomes sterner as her
+form begins to waver and fade.  "Save yourself, I beg you!  You can never
+defeat the queen, never!"  Then she is gone, and you are badly shaken.  The 
+noise from ahead softens then stops.  Faint laughter echos through the air, 
+and seems to invade your mind.  A darkened archway rears to the north.
+~
+0 1|4|8 0
+D0
+A solid door stands north.
+~
+~
+1 -1 25120
+D2
+~
+~
+8 25059 25105
+S
+#25120
+Crash!~
+An almighty crash rings out as rubble pours from the roof behind you - you are
+sealed in!  A wide arch opens north, through which you see a wide dias.  A slim
+woman lounges on a luxuriant thone, several courtiers about her.  She calls out
+to you: "Welcome, I have been waiting for ssso long to meet you!"  Her voice 
+is radiant and musical, and her gaze pierces you even from a great distance.  
+"I have much to thank you for," she continues.  "I have been asssleep for many
+yearsss, more yearsss than I can bear to remember..."  She laughs cruelly.
+A clear voice fills your mind.  "Quickly!  I can still rescue you - recall to
+safety!  The queen's magic is too great from here onwards - we could not rescue
+you if you pray for help.  Quickly," she pleads, "she is forcing me away..."
+~
+0 1|4|8 0
+D0
+~
+~
+0 -1 25121
+S
+#25121
+Lair of the Queen~
+You step into the throne room.  Kahsis lounges naked before you, surrounded by
+her royal guards.  Her slitted eyes pierce your innards.  "Foolsss," she roars,
+her voice now rumbling and deep.  She stands up.  "I WILL DESTROY YOU."  She
+snickers as crackling light begins to stream from her finger tips.
+~
+0 1|8|8192 0
+D3
+~
+~
+8 25060 25122
+S
+#25122
+Treasure Room~
+You burst into a small room with golden walls.  Coins litter the floor; many
+guilded chests sit open, overflowing with treasures.  You quickly take what you 
+can, as the complex begins to rumble and heave, tremendous noises coming from
+the throne room.  Above the din you hear a piercing, tormented scream.  A dark
+portal flickers with light to the west, the ancient gateway crackling into
+activity.
+~
+0 1|4|8|8192 0
+D3
+~
+~
+0 -1 25123
+S
+#25123
+Through the Gate~
+You flee westwards through the opening gate, which then seals behind you.  
+The ground heaves violently as you emerge into a narrow cavern.  Soil and 
+rocks pour from cracks in the roof as the earth twists and bellows.
+~
+0 1|4|8|8192 0
+D2
+~
+~
+0 -1 25124
+S
+#25124
+Running~
+You run as fast as your legs will allow as the cavern collapses behind you.
+Screeching echoes above the incredible din.
+~
+0 1|4|8|8192 0
+D3
+~
+~
+0 -1 25125
+S
+#25125
+Explosions~
+Titanic explosions rock the passage as you hurredly escape.  A chilling wind
+sweeps past you as you flee the approaching destruction.
+~
+0 1|4|8|8192 0
+D2
+~
+~
+0 -1 25126
+S
+#25126
+The Last Stand~
+Daylight streams from above you - you have almost escaped!  As you scramble up
+the rocky passage, the exit from the collapsing city is blocked suddenly by a
+huge serpent.  The Queen has returned.  She screeches at you; you can no longer
+understand what she is saying.  An unholy fire lights her tortured eyes, green
+blood pouring from large open wounds in her body.
+~
+0 1|8|8192 0
+D4
+~
+~
+8 25063 25127
+S
+#25127
+Sunny Field~
+You scramble out of the ground and onto a sunny field of grass.  A huge cloud
+of dust and rubble escapes from the hole before it finally collapses in on
+itself.  You lay exhausted in the warm sun, and thank the gods that you have
+survived.  A brilliant light blazes in the sky above you, and the ghostly
+outline of the maiden and a stout dwarven warrior stand before you.  You
+scramble to your feet.  The maiden cries tears of joy, and reaches forward to
+kiss your cheek and hug you.  Her very presence refreshes you and you feel fit
+and well.  The dwarf's eyes glow, and he grins widely.  He bows before you.
+"You have earned a place in heaven, my friend," he says.  Mord Maggard wipes
+a tear from his eye, and seems embarassed.  "You have achieved what a whole
+army could not... may Kahsis never escape from hell again. Finally now, my
+brothers and I may rest, rest knowing that this evil has been vanquished."  He
+stands before you and kneels, offering you his great axe.  "I pray that the
+gods may protect you forever more.  You are truly a hero."  The maiden places
+a hand on Mord's shoulder and waves.  "Goodbye, my friend," she beams, as they
+slowly fade.  You kneel on the ground, and pray for the gods to take you home.
+You have earned their respect, Hero of Kahsis, and the immortals scramble to
+your call.  The earth now trembles with your approach... and rightly so.
+~
+0 4|1024 2
+S
+#25128
+Dead Portal~
+A dull portal with a surface like liquid stands closed against the western
+wall.  Symbols surround the gate, although you can decipher little of what they
+say.
+~
+0 1|8 0
+D1
+An ornate door opens east.
+~
+~
+1 -1 25114
+S
+#25129
+Animal Pens~
+Several pens and cages are organised about this room, which is full of litter
+and splintered bones.
+~
+0 1|8 0
+D2
+An archway opens south.
+~
+~
+0 -1 25114
+S
+#25130
+Guard House~
+This guard house stands empty and abandonned.
+~
+0 1|8 0
+D0
+An archway opens north.
+~
+~
+0 -1 25114
+S
+#25131
+Roasted and Toasted~
+Panic-stricken you attempt to clamber up the shaft, but the fireball is too 
+fast and it quickly envelopes you: with your flesh on fire you fall from the 
+rock face screaming.  Fortunately the intense agony is short lived, as you are
+vapourised in a pool of molten rock at the bottom of the vent.  Perhaps in
+your next life, you will behave with a little more common sense.
+~
+0 1|4|8 0
+S
+#0
+
+
+#RESETS
+D 1 25011 0 2                   ; The Seal Lock North
+D 1 25011 1 1                   ; The Seal Close East
+D 1 25011 2 1                   ; The Seal Close South
+D 1 25011 3 1                   ; The Seal Close West
+D 1 25010 0 1                   ; Dim Tunnel Close North
+D 1 25012 0 1                   ; Side Chamber Close North
+D 1 25012 1 1                   ; Side Chamber Close East
+D 1 25012 2 1                   ; Side Chamber Close South
+D 1 25012 3 1                   ; Side Chamber Close West
+D 1 25014 0 2                   ; Empty Room Lock North
+D 1 25017 0 1                   ; Side Chamber Close North
+D 1 25017 1 1                   ; Side Chamber Close East
+D 1 25017 2 1                   ; Side Chamber Close South
+D 1 25017 3 1                   ; Side Chamber Close West
+D 1 25021 0 0                   ; Vent Open North
+D 1 25022 0 1                   ; Corridor of the Sword Close North
+D 1 25024 0 1                   ; Corridor of the Sword Close North
+D 1 25025 0 1                   ; Corridor of the Sword Close North
+D 1 25023 0 1                   ; Corridor of the Sword Close North
+D 1 25023 3 1                   ; Corridor of the Sword Close West
+D 1 25030 2 2                   ; The Great Door Lock South
+D 1 25037 3 1                   ; Corridor of Magic Close West
+D 1 25038 1 1                   ; Side Chamber Close East
+D 1 25022 2 0                   ; Corridor of the Sword Open South
+D 1 25039 0 1                   ; Side Chamber Close North
+D 1 25040 2 1                   ; Wizard's Study Close South
+D 1 25041 1 1                   ; Ancient Guardroom Close East
+D 1 25031 3 1                   ; The Door of Pain Close West
+D 1 25041 3 1                   ; Ancient Guardroom Close West
+D 1 25045 2 1                   ; Vestry Close South
+D 1 25042 1 1                   ; Corridor of the Hammer Close East
+D 1 25042 0 1                   ; Corridor of the Hammer Close North
+D 1 25043 0 1                   ; Corridor of the Hammer Close North
+D 1 25043 3 1                   ; Corridor of the Hammer Close West
+D 1 25046 3 2                   ; Empty Fountain Lock West
+D 1 25031 1 1                   ; The Door of Pain Close East
+D 1 25032 0 1                   ; Corridor Close North
+D 1 25032 3 1                   ; Corridor Close West
+D 1 25048 2 1                   ; Bedroom Close South
+D 1 25033 0 1                   ; Corridor Close North
+D 1 25033 1 2                   ; Corridor Lock East
+D 1 25049 1 1                   ; Bedroom Close East
+*
+M 1 25000 2 25011                       the Guardian of the Seal to The Seal
+E 1 25002 100 14
+E 1 25001 100 16
+*
+M 1 25000 2 25011                       the Guardian of the Seal to The Seal
+E 1 25002 100 14
+E 1 25001 100 16
+*
+M 1 25001 1 25040                       Skah Makuit to Wizard's Study
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25013 100 1
+E 1 25032 100 2
+E 1 25031 100 16
+E 1 25014 100 17
+G 1 25025 100
+*
+M 1 25006 1 25044                       Mehk Sektat to Cleric's Chamber
+E 1 25032 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+E 1 25033 100 7
+G 1 25024 100
+*
+M 1 25002 1 25034                       Pain to Chamber
+E 1 25010 100 3
+E 1 25009 100 16
+E 1 25011 100 17
+G 1 25026 100
+*
+*
+M 1 25003 14 25024                      a Snakeman to Corridor of the Sword
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+*
+M 1 25007 12 25029                      a Kahsis Footsoldier to Ancient Guardroom
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25007 12 25027                      a Kahsis Footsoldier to Ancient Barracks
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+*
+*
+*
+*
+*
+M 1 25004 17 25042                      a Lizardman to Corridor of the Hammer
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+*
+M 1 25005 8 25046                       a Kahsis Knight to Empty Fountain
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+*
+M 1 25004 17 25032                      a Lizardman to Corridor
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25032                      a Snakeman to Corridor
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25007 12 25033                      a Kahsis Footsoldier to Corridor
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+D 1 25051 0 1                   ; Broken Furnature Close North
+D 1 25052 0 1                   ; Abandonned Room Close North
+D 1 25037 2 1                   ; Corridor of Magic Close South
+*
+M 1 25004 17 25022                      a Lizardman to Corridor of the Sword
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25004 17 25023                      a Lizardman to Corridor of the Sword
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25025                      a Snakeman to Corridor of the Sword
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25007 12 25026                      a Kahsis Footsoldier to Trashed Armoury
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25003 14 25028                      a Snakeman to Ancient Barracks
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25004 17 25035                      a Lizardman to Corridor of Magic
+E 1 25005 100 11
+E 1 25003 100 16
+E 1 25004 100 5
+*
+M 1 25004 17 25036                      a Lizardman to Corridor of Magic
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25037                      a Snakeman to Corridor of Magic
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25008 7 25039                       a Kahsis Necromancer to Side Chamber
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25003 14 25041                      a Snakeman to Ancient Guardroom
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25041                      a Snakeman to Ancient Guardroom
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25043                      a Snakeman to Corridor of the Hammer
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25004 17 25043                      a Lizardman to Corridor of the Hammer
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25009 1 25047                       a Serpent to Small Chapel
+*
+M 1 25003 14 25048                      a Snakeman to Bedroom
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25005 8 25050                       a Kahsis Knight to Trashed Library
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25004 17 25050                      a Lizardman to Trashed Library
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25007 12 25051                      a Kahsis Footsoldier to Broken Furnature
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25004 17 25052                      a Lizardman to Abandonned Room
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+D 1 25035 2 1                   ; Corridor of Magic Close South
+*
+*
+*
+M 1 25010 1 25053                       Makis to Grand Hall
+E 1 25008 100 6
+E 1 25032 100 1
+E 1 25034 100 5
+E 1 25033 100 7
+E 1 25005 100 11
+E 1 25035 100 16
+E 1 25036 100 0
+G 1 25000 100
+D 1 25031 0 2                   ; The Door of Pain Lock North
+O 1 25016 100 25018                     some stone rubble to Empty Room
+D 1 25020 1 1                   ; Trashed Storeroom Close East
+P 1 25000 100 25015                     a vial to bloated corpse
+O 1 25015 100 25004                     a bloated corpse to Stagnant Pool
+O 1 25017 100 25020                     some shelves to Trashed Storeroom
+O 1 25021 100 25020                     some bones to Trashed Storeroom
+D 1 25019 0 1                   ; Musty Room Close North
+D 1 25018 2 1                   ; Empty Room Close South
+D 1 25014 2 1                   ; Empty Room Close South
+O 1 25016 100 25013                     some stone rubble to Empty Room
+D 1 25013 0 1                   ; Empty Room Close North
+O 1 25021 100 25016                     some bones to Offering
+D 1 25016 3 1                   ; Offering Close West
+D 1 25021 2 2                   ; Vent Lock South
+D 1 25026 2 1                   ; Trashed Armoury Close South
+D 1 25027 2 1                   ; Ancient Barracks Close South
+D 1 25028 2 1                   ; Ancient Barracks Close South
+D 1 25029 2 1                   ; Ancient Guardroom Close South
+D 1 25030 1 1                   ; The Great Door Close East
+D 1 25030 3 1                   ; The Great Door Close West
+D 1 25035 1 1                   ; Corridor of Magic Close East
+O 1 25022 100 25051             some broken furniture to Broken Furnature
+O 1 25022 100 25026             some broken furniture to Trashed Armoury
+O 1 25021 100 25052             some bones to Abandonned Room
+O 1 25023 100 25038             some junk to Side Chamber
+O 1 25022 100 25041             some broken furniture to Ancient Guardroom
+O 1 25021 100 25041             some bones to Ancient Guardroom
+O 1 25027 100 25045             a locker to Vestry
+D 1 25044 1 1                   ; Cleric's Chamber Close East
+D 1 25046 2 1                   ; Empty Fountain Close South
+D 1 25047 1 2                   ; Small Chapel Lock East
+O 1 25028 100 25047             an idol of the snake to Small Chapel
+O 1 25016 100 25048             some stone rubble to Bedroom
+D 1 25034 3 2                   ; Chamber Lock West
+D 1 25049 2 1                   ; Bedroom Close South
+O 1 25029 100 25050                     a vellum scroll to Trashed Library
+O 1 25000 100 25049                     a glass vial full of clear liquid to Bedroom
+O 1 25023 100 25038                     some junk to Side Chamber
+O 1 25022 100 25041                     some broken furniture to Ancient Guardroom
+O 1 25021 100 25041                     some bones to Ancient Guardroom
+O 1 25027 100 25045                     a locker to Vestry
+O 1 25028 100 25047                     an idol of the snake to Small Chapel
+O 1 25016 100 25048                     some stone rubble to Bedroom
+O 1 25016 100 25049                     some stone rubble to Bedroom
+*
+M 1 25008 7 25054                       a Kahsis Necromancer to Side Chamber
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25005 8 25055                       a Kahsis Knight to A room
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+*
+M 1 25004 17 25023                      a Lizardman to Corridor of the Sword
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25004 17 25025                      a Lizardman to Corridor of the Sword
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25004 17 25035                      a Lizardman to Corridor of Magic
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+O 1 25030 100 25040                     a leather bound journal to Wizard's Study
+P 1 25018 100 25017
+P 1 25019 100 25017                     tools to shelves
+P 1 25020 100 25017
+P 1 25012 100 25027
+P 1 25012 100 25027                     robes to locker
+P 1 25012 100 25027
+D 1 25057 1 1                   ; Hall of Serpents Close East
+D 1 25057 3 1                   ; Hall of Serpents Close West
+D 1 25060 1 1                   ; Arched Hallway Close East
+D 1 25062 3 1                   ; Arched Hallway Close West
+D 1 25069 0 1                   ; Eating Pits Close North
+D 1 25069 1 1                   ; Eating Pits Close East
+D 1 25069 2 1                   ; Eating Pits Close South
+D 1 25070 0 1                   ; Dim Tunnel Close North
+D 1 25074 1 2                   ; Air Vents Lock East
+D 1 25073 3 2                   ; Dim Tunnel Lock West
+D 1 25081 3 1                   ; Snake Pit Close West
+D 1 25085 1 1                   ; Snake Pit Close East
+D 1 25086 3 1                   ; Slaughter Room Close West
+D 1 25058 3 1                   ; Hall of Serpents Close West
+D 1 25075 1 1                   ; Guard Hall Close East
+D 1 25078 2 1                   ; Swamp Close South
+D 1 25058 1 1                   ; Hall of Serpents Close East
+D 1 25087 3 1                   ; Metal Pipes Close West
+D 1 25087 2 1                   ; Metal Pipes Close South
+D 1 25088 0 1                   ; Machinery Close North
+D 1 25059 3 1                   ; The Door of Anguish Close West
+D 1 25077 1 1                   ; Swamp Close East
+D 1 25059 1 1                   ; The Door of Anguish Close East
+D 1 25096 1 1                   ; Antechamber Close East
+D 1 25096 3 1                   ; Antechamber Close West
+D 1 25099 2 2                   ; The Stairs Lock South
+D 1 25059 0 2                   ; The Door of Anguish Lock North
+D 1 25106 1 1                   ; Hallway Close East
+D 1 25100 3 1                   ; The Grand Hall Close West
+D 1 25106 3 1                   ; Hallway Close West
+D 1 25100 1 1                   ; The Grand Hall Close East
+D 1 25101 3 1                   ; Egg Chamber Close West
+D 1 25105 3 1                   ; The Door of Agony Close West
+D 1 25112 2 1                   ; Side Chamber Close South
+D 1 25111 0 1                   ; Hall of the Tooth Close North
+D 1 25111 2 1                   ; Hall of the Tooth Close South
+D 1 25111 1 1                   ; Hall of the Tooth Close East
+D 1 25114 3 1                   ; Hall of the Tooth Close West
+D 1 25128 1 1                   ; Dead Portal Close East
+D 1 25105 1 1                   ; The Door of Agony Close East
+D 1 25117 1 2                   ; Hot Pool Lock East
+D 1 25118 3 2                   ; Cold Pool Lock West
+D 1 25105 0 2                   ; The Door of Agony Lock North
+D 1 25121 3 2                   ; Lair of the Queen Lock West
+D 1 25126 4 2                   ; The Last Stand Lock Up
+D 1 25091 3 1                   ; Cramped Workshop Close West
+D 1 25089 1 1                   ; Steam Close East
+*
+M 1 25007 12 25060                      a Kahsis Footsoldier to Arched Hallway
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25004 17 25060                      a Lizardman to Arched Hallway
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25011 1 25091                       Geth Mektis to Cramped Workshop
+E 1 25038 100 6
+E 1 25039 100 7
+E 1 25007 100 12
+E 1 25037 100 16
+G 1 25040 100
+G 1 25048 100
+*
+M 1 25012 1 25074                       Anguish to Air Vents
+E 1 25041 100 16
+E 1 25043 100 13
+E 1 25044 100 17
+G 1 25042 100
+*
+M 1 25007 12 25061                      a Kahsis Footsoldier to Arched Hallway
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25003 14 25061                      a Snakeman to Arched Hallway
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25062                      a Snakeman to Arched Hallway
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25005 8 25062                       a Kahsis Knight to Arched Hallway
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25004 17 25063                      a Lizardman to Servants' Quarters
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25007 12 25066                      a Kahsis Footsoldier to Servants' Quarters
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25004 17 25068                      a Lizardman to Trashed Common Room
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25003 14 25067                      a Snakeman to Servant's Quarters
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25013 5 25069                       a Crocodileman to Eating Pits
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25040 100
+*
+M 1 25013 5 25069                       a Crocodileman to Eating Pits
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25040 100
+*
+M 1 25014 9 25070                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25070                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25070                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25071                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25071                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25072                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25072                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25072                       a cave bat to Dim Tunnel
+*
+M 1 25014 9 25073                       a cave bat to Dim Tunnel
+*
+M 1 25007 12 25075                      a Kahsis Footsoldier to Guard Hall
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25008 7 25076                       a Kahsis Necromancer to Guard Hall
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25015 8 25077                       a crocodile to Swamp
+G 1 25040 100
+*
+M 1 25015 8 25078                       a crocodile to Swamp
+G 1 25040 100
+*
+M 1 25016 5 25078                       a water snake to Swamp
+*
+M 1 25003 14 25079                      a Snakeman to Boggy Corridor
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25004 17 25080                      a Lizardman to Boggy Corridor
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25003 100 16
+*
+M 1 25021 7 25081                       a weed snake to Snake Pit
+*
+M 1 25021 7 25081                       a weed snake to Snake Pit
+*
+M 1 25020 6 25081                       a cobra to Snake Pit
+*
+M 1 25019 8 25081                       an asp to Snake Pit
+*
+M 1 25017 6 25081                       a viper to Snake Pit
+*
+M 1 25019 8 25081                       an asp to Snake Pit
+*
+M 1 25021 7 25081                       a weed snake to Snake Pit
+*
+M 1 25020 6 25082                       a cobra to Snake Pit
+*
+M 1 25019 8 25082                       an asp to Snake Pit
+*
+M 1 25018 2 25082                       a python to Snake Pit
+*
+M 1 25019 8 25082                       an asp to Snake Pit
+*
+M 1 25021 7 25082                       a weed snake to Snake Pit
+*
+M 1 25016 5 25082                       a water snake to Snake Pit
+*
+M 1 25016 5 25083                       a water snake to Snake Pit
+*
+M 1 25018 2 25083                       a python to Snake Pit
+*
+M 1 25017 6 25083                       a viper to Snake Pit
+*
+M 1 25021 7 25083                       a weed snake to Snake Pit
+*
+M 1 25017 6 25083                       a viper to Snake Pit
+*
+M 1 25020 6 25083                       a cobra to Snake Pit
+*
+M 1 25021 7 25083                       a weed snake to Snake Pit
+*
+M 1 25016 5 25084                       a water snake to Snake Pit
+*
+M 1 25017 6 25084                       a viper to Snake Pit
+*
+M 1 25020 6 25084                       a cobra to Snake Pit
+*
+M 1 25019 8 25084                       an asp to Snake Pit
+*
+M 1 25020 6 25085                       a cobra to Snake Pit
+*
+M 1 25019 8 25085                       an asp to Snake Pit
+*
+M 1 25019 8 25085                       an asp to Snake Pit
+*
+M 1 25021 6 25085                       a weed snake to Snake Pit
+*
+M 1 25017 6 25085                       a viper to Snake Pit
+*
+M 1 25022 1 25086                       Burbis to Slaughter Room
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25033 100 7
+E 1 25007 100 12
+E 1 25046 100 16
+G 1 25000 100
+*
+M 1 25005 8 25087                       a Kahsis Knight to Metal Pipes
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25023 1 25089                       jet of steam to Steam
+G 1 25047 100
+*
+M 1 25003 14 25092                      a Snakeman to Generator Room
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25006 100 16
+*
+M 1 25004 17 25092                      a Lizardman to Generator Room
+E 1 25004 100 5
+E 1 25005 100 11
+E 1 25006 100 16
+*
+M 1 25008 7 25093                       a Kahsis Necromancer to Generator Room
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25007 12 25093                      a Kahsis Footsoldier to Generator Room
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25025 2 25094                       a brass robot to Generator Room
+E 1 25050 100 9
+G 1 25049 100
+*
+M 1 25025 2 25095                       a brass robot to Generator Room
+E 1 25050 100 9
+G 1 25049 100
+*
+M 1 25008 7 25097                       a Kahsis necromancer to Room of Mirrors
+E 1 25013 100 1
+E 1 25032 100 2
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25040 100
+*
+M 1 25015 8 25101                       a crocodile to Egg Chamber
+*
+M 1 25015 8 25101                       a crocodile to Egg Chamber
+*
+M 1 25015 8 25102                       a crocodile to Egg Chamber
+*
+M 1 25015 8 25102                       a crocodile to Egg Chamber
+*
+M 1 25015 8 25103                       a crocodile to Egg Chamber
+*
+M 1 25013 5 25104                       a crocodileman to Egg Chamber
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25040 100
+*
+M 1 25015 8 25104                       a crocodile to Egg Chamber
+G 1 25040 100
+*
+M 1 25013 5 25103                       a crocodileman to Egg Chamber
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25040 100
+*
+M 1 25024 1 25109                       Seht Haskahsisk to Transformation Laboratory
+E 1 25032 100 2
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25033 100 7
+E 1 25007 100 12
+E 1 25031 100 16
+E 1 25052 100 15
+E 1 25053 100 17
+G 1 25040 100
+G 1 25054 100
+O 1 25021 100 25109                     some bones to Transformation Laboratory
+O 1 25021 100 25110                     some bones to Transformation Laboratory
+*
+M 1 25007 12 25107                      a Kahsis footsoldier to Transformation Laboratory
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25006 100 16
+E 1 25007 100 12
+*
+M 1 25005 8 25107                       a Kahsis knight to Transformation Laboratory
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25008 7 25108                       a Kahsis necromancer to Transformation Laboratory
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+O 1 25021 100 25108                     some bones to Transformation Laboratory
+*
+M 1 25007 12 25110                      a Kahsis footsoldier to Transformation Laboratory
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25006 100 16
+*
+M 1 25005 8 25110                       a Kahsis knight to Transformation Laboratory
+E 1 25004 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+*
+M 1 25026 5 25111                       a Kahsis stormtrooper to Hall of the Tooth
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+E 1 25055 100 10
+G 1 25051 100
+G 1 25051 100
+*
+M 1 25013 5 25111                       a crocodileman to Hall of the Tooth
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+*
+M 1 25026 5 25114                       a Kahsis stormtrooper to Hall of the Tooth
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25055 100 10
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25051 100
+G 1 25051 100
+*
+M 1 25026 5 25115                       a Kahsis stormtrooper to Baths
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25055 100 10
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+G 1 25051 100
+G 1 25051 100
+*
+M 1 25008 7 25116                       a Kahsis necromancer to Empty Pool
+E 1 25013 100 1
+E 1 25012 100 5
+E 1 25007 100 12
+E 1 25006 100 16
+E 1 25053 100 17
+*
+M 1 25005 8 25117                       a Kahsis knight to Hot Pool
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25045 100 16
+*
+M 1 25027 1 25118                       Agony to Cold Pool
+E 1 25056 100 16
+E 1 25057 100 17
+E 1 25058 100 3
+G 1 25059 100
+*
+M 1 25028 1 25121                       Kahsis to Lair of the Queen
+E 1 25061 100 17
+G 1 25060 100
+*
+M 1 25026 5 25121                       a Kahsis stormtrooper to Lair of the Queen
+E 1 25032 100 1
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25052 100 15
+E 1 25045 100 16
+*
+M 1 25026 5 25121                       a Kahsis stormtrooper to Lair of the Queen
+E 1 25032 100 1
+E 1 25034 100 5
+E 1 25008 100 6
+E 1 25005 100 11
+E 1 25007 100 12
+E 1 25052 100 15
+E 1 25045 100 16
+O 1 25062 100 25122                     coins to Treasure Room
+*
+M 1 25029 1 25126                       Kahsis to The Last Stand
+G 1 25063 100
+O 1 25064 100 25127                     a dwarven axe to Sunny Field
+O 1 25022 100 25063                     some broken furniture to Servants' Quarters
+O 1 25016 100 25064                     some stone rubble to Servants' Quarters
+O 1 25021 100 25065                     some bones to Burnt Out Room
+O 1 25016 100 25066                     some stone rubble to Servants' Quarters
+O 1 25022 100 25067                     some broken furniture to Servant's Quarters
+O 1 25016 100 25076                     some stone rubble to Guard Hall
+O 1 25065 100 25101                     a nest to Egg Chamber
+O 1 25065 100 25102                     a nest to Egg Chamber
+O 1 25065 100 25103                     a nest to Egg Chamber
+O 1 25065 100 25104                     a nest to Egg Chamber
+O 1 25021 100 25129                     some bones to Animal Pens
+O 1 25066 100 25122                     some coins to Treasure Room
+O 1 25040 100 25122                     a crocodile egg to Treasure Room
+O 1 25051 100 25122                     a reptillian egg to Treasure Room
+O 1 25067 100 25122                     a golden crown to Treasure Room
+O 1 25028 100 25122                     idol to treasure room
+O 1 25066 100 25122                     some coins to Treasure Room
+O 1 25051 100 25101                     a reptillian egg to Egg Chamber
+O 1 25040 100 25102                     a crocodile egg to Egg Chamber
+
+D 1 25053 2 2                   ; Grand Hall Lock South
+D 1 25119 0 1                   ; Apparition Close North
+D 1 25119 2 2                   ; Apparition Lock South
+S
+
+
+#SPECIALS
+M  25001 spec_cast_archmage                 Skah Makuit
+M  25002 spec_poison                    Pain
+M  25006 spec_cast_cleric                       Mehk Sektat
+M  25008 spec_cast_mage                 a Kahsis Necromancer
+M  25009 spec_poison                    a Serpent
+M  25010 spec_warrior                    Makis
+M  25011 spec_poison                    Geth Mektis
+M  25012 spec_breath_gas                        Anguish
+M  25017 spec_poison                    a viper
+M  25019 spec_poison                    an asp
+M  25020 spec_poison                    a cobra
+M  25023 spec_breath_gas                        a jet of steam
+M  25024 spec_cast_archmage                 Seht Haskahsisk
+M  25025 spec_cast_judge                        a brass robot
+M  25026 spec_sahuagin                       a Kahsis stormtrooper
+M  25027 spec_breath_any                        Agony
+M  25028 spec_cast_priestess                 Kahsis
+M  25029 spec_breath_fire                    Kahsis
+S
+
+
+#$

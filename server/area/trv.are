@@ -1,0 +1,394 @@
+#AREA Shade and Gezhp~ The Gypsy Camp~
+-4 -4 0 100
+
+#HELPS
+-1 TRV 'THE TRAVELLERS' TRAVELLERS~
+{x
+The Travellers (Clan TRV)
+
+The Travellers are a fellowship of wayfarers, wanderers, explorers and
+hunters who roam the great expanses of the 'Domain.  The libraries of the
+Travellers are vast and they are always looking for new maps, new magical
+items, and wonderous creations of magic and nature. They maintain centres
+of learning throughout the domain, and members freely pass on their
+knowledge in their areas of expertise.
+
+The Travellers' members pursue their own interests and are as diverse as
+nature itself, from explorers to librarians to barbarians.  They are bound
+together by interests in exploration, discovery and a love of the wild.
+~
+0 $~
+
+#MOBILES
+#531
+bidshika gypsy man rogue~
+Bidshika the Gypsy Rogue~
+A rugged and unkempt gypsy man lurks in the shadows.
+~
+The gypsy is tall with bronze skin and long black hair.  He has rugged
+features and gleaming eyes; his clothes are dirty and torn in places.  
+Two sharp looking knives are tucked into his thick leather belt.
+~
+2|512|4096|4194304 2|8|16|32|128|512|65536|8388608 0 S
+60 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>death_prog 100~
+	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+~
+|
+
+#530
+lyanka gypsy woman~
+Lyanka the Gypsy Witch~
+Lyanka's soft singing soothes you to sleep.
+~
+Old and hunched, eyes sunken into her skull, Lyanka is eldest of the
+Travellers.  Far she has wandered, and deep is her lore and counsel.  
+She sings the soft, sad songs of her displaced people.
+~
+2|512|4096 128|8|32|8388608 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 2
+>speech_prog bless~
+	if clan($n) == trv
+		cast bless $n
+		break
+	else
+		break;
+	endif	
+~
+>speech_prog bye~
+	if clan($n) == trv
+		mpecho The old woman reveals a secret opening in the tent wall and smuggles you out.
+		mptransfer $n 514
+		break
+	endif	
+~
+|
+
+#532
+brishen gypsy man~
+Brishen the Gypsy Loremaster~
+Brishen rummages through a container of junk.
+~
+The middle-aged and thin-bodied gypsy has extensive lore and is keen to
+examine any article you bring him.  He can barely resist rummaging through
+your backback.
+~
+2|512|4096|1048756 0 0 S
+100 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#533
+trv wizinvis guy~
+TRV wizinvis guy~
+TRV wizinvis guy will drop the healing item
+~
+Sleepy time for me.
+~
+2|512|4096|65536 0 0 S
+500 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>rand_prog 100~
+	drop trv
+	mpgoto 537
+	meditate
+~
+|
+
+#534
+trv transfer guy~
+TRV transfer guy~
+{x
+~
+{x
+~
+2|512|4096|65536 0 0 S
+500 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>speech_prog friend~
+	mpecho The Gypsy nods and returns to his seat.
+	mptransfer $n 532
+~
+>speech_prog foe~
+	mpecho The Gypsy looks angry and utters a harsh-sounding chant!
+	mpecho Your head spins and you feel disoriented.
+	mptransfer $n 506
+~
+|
+
+#535
+trv close door guy~
+TRV close door guy~
+{x
+~
+{x
+~
+2|512|4096|65536 0 0 S
+500 0 0 0d0+0 0d0+0
+0 0
+0 0 0
+>rand_prog 10~
+	close north
+	close south
+	close east
+	close west
+~
+|
+#0
+
+#OBJECTS
+#530
+trv lined fur-lined trousers~
+some fur-lined trousers~
+Fur-lined trousers sit in a heap on the ground.~
+~
+9 0 1|32
+~ ~ ~ ~
+5 0 0
+A
+13 150
+
+#531
+trv leg bindings leather~
+some leather leg bindings~
+A pair of leather leg bindings has been left here.~
+~
+9 0 1|32
+~ ~ ~ ~
+5 0 0
+A
+19 8
+A
+1 4
+
+#532
+trv gypsy brightly charms~
+some brightly coloured gypsy charms~
+Beautiful, brightly coloured gypsy charms lay here.~
+~
+9 0 1|256
+~ ~ ~ ~
+5 0 0
+A
+19 15
+A
+13 250
+
+#533
+trv handwoven pouch woven beltpouch~
+a handwoven pouch~
+You spot an attractive handwoven pouch.~
+~
+15 0 1|65536
+11~ 0~ -1~ ~
+1 0 0
+A
+19 5
+
+#534
+trv crystal ball~
+the Gypsy Witch's crystal ball~
+A flawless crystal ball shimmers and gleams.~
+~
+32 0 1|16384
+~ ~ ~ ~
+50 0 0
+
+#535
+sharp steel dagger~
+a sharp steel dagger~
+A sharp steel dagger sticks blade-first into the dirt.~
+~
+5 0 0
+~ ~ ~ 2~
+15 0 0
+A
+19 50
+A
+18 50
+
+#536
+hatchett~
+a small hatchett~
+You see a small hatchett on the ground.~
+~
+18 0 1|16384
+~ ~ ~ ~
+20 0 0
+#0
+
+#ROOMS
+#530
+Approaching the Gypsy Encampment~
+Heading further into the woods you hear voices and the crackle of open
+fires further south.  Pushing aside thick branches you see a small grassy
+clearing in the distance; it is filled with brightly coloured tents.  You
+wonder whether to press further into the open.  Dark shadows move slowly
+amongst the trees nearby.
+~
+0 0 3
+D 0
+~
+~
+0 -1 516
+D 2
+~
+foliage branches~
+8 536 531
+S
+
+#531
+Gypsy Encampment~
+Four large tents are clustered together here at the centre of this grassy
+clearing.  A few tired horses are tethered to a nearby tree.  Smoke drifts
+lazily through vents in several of the tents, and you hear the deep murmur
+of voices within.  The ground is muddy in parts and you see many different
+footprints.
+     A bright fire burns between the lodgings; thick tree trunks have been
+arranged about it as seating.  A few ragged looking gypsies relax in front
+of the flames and talk quietly.  An older man with wild black hair stands
+up at your approach and asks, "Are you friend or foe?"
+~
+0 0 2
+D 0
+~
+~
+0 -1 530
+S
+
+#532
+Gypsy Encampment~
+Four large tents are clustered together here at the centre of this grassy
+clearing.  A few tired horses are tethered to a nearby tree.  Smoke drifts
+lazily through vents in several of the tents, and you hear the deep murmur
+of voices within.  The ground is muddy in parts and you see many different
+footprints.
+     A bright fire burns between the lodgings; thick tree trunks have been
+arranged about it as seating.  A few ragged looking gypsies relax in front
+of the flames and talk quietly.  You can see entrances to the tents in
+every direction.
+~
+0 0 2
+D 0
+~
+tent door _healer~
+1 -1 533
+D 2
+~
+tent door _identify~
+1 -1 535
+D 1
+~
+tent door _food~
+1 -1 536
+D 3
+~
+tent door _home~
+1 -1 534
+S
+
+#533
+Inside the Gypsy's Tent~
+The inside of Lyanka's tent is warm and filled with the pungent aroma of
+burning incense.  Plump cushions and soft furs cover the floor, and the
+atmosphere is very calm and relaxing.  The soft orange light from a small
+fire makes you want to curl up and go to sleep.  The door south will take
+you back to the clearing.
+~
+0 8 0
+D 2
+~
+tent door~
+1 -1 532
+S
+
+#534
+Inside the Gypsy's Tent~
+Small unkempt children lay asleep under brightly woven blankets, the dying
+embers of a small fire casting a gentle heat throughout the tent.  An old
+gypsy woman sits quietly, watching over them.  Her keen eyes glance over
+you as you enter; her gaze is deep and steady.  You can leave through the
+door to the east.
+~
+0 8 0
+D 1
+~
+tent door~
+1 -1 532
+S
+
+#535
+Inside the Gypsy's Tent~
+Sacks, small wooden chests, woven bags, baskets and pots are haphazardly
+stacked throughout the whole of this tent; there is barely room to move
+about.  Piles of apparent trash cover the floor.  Who could tell how
+valuable the contents of this storeroom might be, and where it was all
+stolen from?  You can head north back into the clearing from here.
+~
+0 8 0
+D 0
+~
+tent door~
+1 -1 532
+S
+
+#536
+Inside the Gypsy's Tent~
+This tent is used for preparing and cooking food.  A large fire has been
+made in the centre of the floor, think tendrils of grey smoke rising
+through vents in the roof of the tent.  Blackened pots sit perched in the
+flames, releasing rich, savoury aromas.  A small group of gypsy women tend
+the meal and talk quietly, laughing and occasionally singing.  The only
+way out appears to be to the west.
+~
+0 8 0
+D 3
+~
+tent door~
+1 -1 532
+S
+
+#537
+Wizinvis Guy's Room~
+Wizinvis guy sleeps here after dropping item.
+~
+0 8192 0
+S
+#0
+
+#RESETS
+D 0 530 2 2                     lock south in Approaching the Gypsy Encampment
+R 0 532 4                       randomise exits in Gypsy Encampment
+D 0 532 0 1                     close north in Gypsy Encampment
+D 0 532 2 1                     close south in Gypsy Encampment
+D 0 532 1 1                     close east in Gypsy Encampment
+D 0 532 3 1                     close west in Gypsy Encampment
+D 0 533 2 0                     open south in Inside the Gypsy's Tent
+D 0 534 1 0                     open east in Inside the Gypsy's Tent
+D 0 535 0 0                     open north in Inside the Gypsy's Tent
+D 0 536 3 0                     open west in Inside the Gypsy's Tent
+M 0 530 1 533                   add Lyanka the Gypsy Witch to Inside the Gypsy's Tent
+M 0 531 1 530                   add Bidshika the Gypsy Rogue to Approaching the Gypsy Encampment
+E 0 535 0 16                        equip a sharp steel dagger (wield)
+E 0 535 0 18                        equip a sharp steel dagger (dual)
+G 0 536 0                           carry a small hatchett
+M 0 532 1 535                   add Brishen the Gypsy Loremaster to Inside the Gypsy's Tent
+M 0 534 1 531                   add TRV transfer guy to Gypsy Encampment
+M 0 533 1 533                   add TRV wizinvis guy to Inside the Gypsy's Tent
+G 0 534 0                           carry the Gypsy Witch's crystal ball
+M 0 535 1 532                   add TRV close door guy to Gypsy Encampment
+S
+
+#SPECIALS
+M 531 spec_clan_guard           Bidshika the Gypsy Rogue
+M 530 spec_cast_adept           Lyanka the Gypsy Witch
+M 532 spec_cast_psionicist      Brishen the Gypsy Loremaster
+S
+
+#$

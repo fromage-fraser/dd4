@@ -1,0 +1,4745 @@
+#AREA     Steihl~  The Yitrite Mines~
+50 75 40 100
+
+#MOBILES
+#24000
+wyrm dragon~
+The Dragon~
+An ancient wyrm is wandering the mines.
+~
+She is.  She always has been.  She was here before these mines,
+even before this mountain.  She has no name, there was no one to
+give her one.  Wise yellow eyes glare at you evilly.  Smoke pours
+from her nostrils and flame shoots from her mouth.  Razor sharp
+talons scrape and click along the rocky floor of the mines.  Even
+after all these ages, each scale on her body has remained in place.
+You think that one of them would make an excellent shield.  She
+rears her head and attacks.
+~
+4|32|64 2|8|32|128|512|2048|8192|32768|65536 -1000 S
+100 0 0 0d0+0 0d0+0
+128 0
+8 8 2
+#24001
+demon fiery~
+the fiery demon~
+A fiery demon rises before you.
+~
+A flaming aura surrounds this muscular demon.  A wicked gleam fills
+his eyes as he sees you coming.  Black wings attached to his broad
+back unfurl and his barbed tail whips back and forth.  Summoned by
+the Dragon to oversee the workers, he hastens to attack.
+~
+32|64 8|32|512|8192|32768 -1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24002
+hound war hell~
+the war hound from hell~
+A fiery hound of war prowls the tunnels.
+~
+Acidic saliva drips from the fangs of this powerful beast.  Pools
+of flame surround his hooves, charring the ground he walks upon. 
+The Dragon called this hound from the depths of hell to watch the
+mines while construction finishes.
+~
+32|64 8|32|512|32768 -1000 S
+70 0 0 0d0+0 0d0+0
+36 0
+8 8 1
+#24003
+dwarven worker slave~
+the dwarven worker~
+A chained miner is widening the tunnels.
+~
+Shackles cover the wrists and ankle of this poor dwarf.  The evil
+minions of the Dragon captured him and have forced him into
+slavery.  Pitiful eyes beg you for freedom in one form or another.
+~
+2|64 512|8192 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24004
+large fire elemental~
+the fire elemental~
+A large fire elemental is clearing the tunnel.
+~
+Eight feet tall and made entirely of flame, this elemental has
+taken humanoid form.  The Dragon created him to help ease his
+passage out of the mines and back into the world of men.
+~
+32|64 8|32|512 -1000 S
+65 0 0 0d0+0 0d0+0
+96 0
+8 8 0
+#24005
+guard dwarf~
+the dwarven guard~
+A dwarven guard is here seeking out the Dragon.
+~
+Even though this brave dwarf volunteered to search the mines for
+the Dragon and slay her, the fear in his dark eyes is evident.
+Sweat drips down his face into his black beard and his hands
+nervously grip his weapon.
+~
+64 512|8192 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24006
+captain erich guard dwarf~
+Erich, Captain of the Cobresh Guard~
+The captain of the Cobresh guard is searching for the Dragon.
+~
+Flaming red hair covers Erich's head, and even though his hair and
+beard are covered in mine dirt, it still seems to shine with a
+fiery light.  Strong and wise, you see no fear in the caring grey
+eyes.  Erich is hunting the Dragon for his people rather than
+glory.  Not only is he the captain of the guard, but he is also
+Prince Erich, second born to King Guntharson.
+~
+64 8|32|128|512|2048|8192 1000 S
+85 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24007
+dwarf king guntharson~
+Guntharson, King of Cobresh~
+Guntharson, King of Cobresh is pacing around the throne room.
+~
+The first thing that you notice about King Guntharson is his eyes.
+They are grey and filled with worry, worry for the safety of his
+people.  Nervous hands fiddle with his white beard.  He has been
+king since before the RockBreaker wars, and still wears the same
+armour that he wore back then.  A large hammer hangs at his side.
+Try as you might to talk, he will not listen.
+~
+2|64 8|32|128|512|2048|8192 1000 S
+80 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24008
+ivan prince dwarf~
+Prince Ivan~
+Prince Ivan stands here packing some bags.
+~
+Prince Ivan is the first-born and heir apparent to King Guntharson.
+Older than Erich by only a few minutes, he has the same read hair
+as his twin.  But looks are all that these brothers share.  Ivan is
+cowardly, and in no way ready to rule the Kingdom of Cobresh.  For
+some reason, he seems in a hurry to leave, and you hear him mumble
+something about a dragon as he hastily packs.
+~
+2|64|128 512|8192 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24009
+hanson white dwarf~
+Hanson~
+A white bearded dwarf is standing here.
+~
+Hanson is the most trusted advisor of King Guntharson.  Bags are
+under his weary eyes, and wrinkles cover his face.  His back is
+slightly stooped, making him even shorter than most dwarves.  He is
+old and wise, but also strong.  At one time, he lead the Paladins
+of Cobresh into battle.
+~
+2|64 8|32|128|512|2048|8192 1000 S
+75 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24010
+olaf dwarf barrel~
+Olaf the Dwarf~
+A barrel-chested dwarf is pacing here.
+~
+Olaf is a member of the King's council.  Lines of worry cover the
+bald head of this black bearded dwarf.  In battle, he was known for
+his calm and patience.  But now, he walks back and forth, eyes full
+of worry.
+~
+2|64 8|32|512|8192 1000 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24011
+Bjorn dwarf healer~
+Bjorn the Dwarf~
+A fair-haired dwarf sits in the field.
+~
+An aura of peace surrounds Bjorn.  A holy man, he is a trusted
+member of King Guntharson's council.  But the aura of peace seems
+to only be a facade, for you can see worry creeping into his face
+as he heals the assembled masses.
+~
+2|64 8|32|512|8192 1000 S
+70 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24012
+Adolf dwarf mage~
+Adolf the Dwarf~
+A wizened dwarf is here, peering into his scrying bowl.
+~
+Adolf is one of the few dwarven mages.  Deep blue eyes seem to glow
+as he searches an ornate scrying bowl for some answers.  His white
+hair is thinning, and age is beginning to take its toll on his old
+bones.  As you enter, he jumps and loses his concentration.  He
+nervously strokes his white beard while he asks you what you have
+come here for.
+~
+2|64 8|32|512|8192 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24013
+dwarf guard bulky~
+the dwarven guard~
+A bulky dwarven guard is standing by the mine entrance.
+~
+Silently and stoically, this dark bearded dwarf stands guard.  He
+is as broad as he is tall, and you have no doubt that this compact
+man could have put that boulder there by himself.  He speaks
+crisply saying only "Halt!  The mines are closed.  Leave."
+~
+2|64 128|512|2048 1000 S
+58 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24014
+dwarf smith~
+the dwarven smith~
+A bare chested dwarf is sitting idly.
+~
+Muscles ripple across the arms and chest of this bald headed dwarf.
+Soot and ash normally cover the black beard of this short dwarf.
+But the mines are closed and the smithy has been closed for weeks.
+He absentmindedly tosses his hammer from hand to hand, waiting for
+more work to do.
+~
+2|64 512 1000 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24015
+dwarf friedreich~
+Friedreich the Dwarf~
+A muscular dwarf is here shadowboxing.
+~
+Friedreich, like everyone it seems, is very worried about the
+mines.  This veteran warriour keeps his body in shape and his mind
+occupied with physical activity.  Sweat drips from his bushy grey
+brow.  Grabbing a towel, he stops and dries off before turning his
+brown eyes toward you.
+~
+2|64 512|8192 1000 S
+58 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24016
+dwarf scout guard~
+the dwarven scout~
+A dwarven scout blends in with the caves.
+~
+What you first thought was part of the cavern turns out to be a
+small dwarven guard watching the entrance to the cave.  Dressed to
+blend in with the cave, he notes your presence and then returns to
+hiding.
+~
+2|64 8|32|512|8192|65536 1000 S
+55 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24017
+guard dwarf~
+the dwarven guard~
+A dwarven guard patrols the streets of Cobresh.
+~
+Dressed in the red and silver armour of Cobresh, this dark haired
+dwarf patrols the streets in silence.  Dark eyes scour the area,
+always ready for trouble, but even more so now than usual it
+appears.
+~
+64 8|32|512|8192 1000 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24018
+dwarf citizen resident~
+the dwarf~
+A small dwarf is scurrying about the city.
+~
+Scared eyes look at you, wondering what strangers are doing in
+their city.  Hastily, the stout fellow looks away, not wanting to
+draw attention.  The cave-ins have greatly scared the people of
+Cobresh, and he is no exception.
+~
+64|128 512 1000 S
+56 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24019
+dwarf baker~
+the dwarven baker~
+A dwarven baker is standing here, waiting to take your order.
+~
+Covered with flour, this grey-haired dwarf seems to be the only one
+in the whole city of Cobresh who is not worried.  A jolly chuckle
+comes from him, and his large belly shakes with laughter.  The
+baker welcomes you into his shop, hoping to hear news from upside.
+~
+2|64|128 8|32|512|8192 1000 S
+57 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24020
+stain thief tom~
+Stain, master thief~
+Stain is sitting here drinking some whiskey.
+~
+Stain is a tall and thin man.  One of only two outsiders accepted
+in Cobresh.  Years ago, he saved the life of King Guntharson.  When
+he decided to settle down, he came to live in the relatively safe
+city of Cobresh.  Stain is so respected among the dwarves that he
+is now a member of the King's council.  Taking a long sip from his
+whiskey, he lights an emerald pipe and turns his green eyes to you.
+With a big smile he begins, " They say that the mines are closed
+due to cave-ins.  But it doesn't make sense, these are the best
+miners in the world.  It would take them days to solve this
+problem, not weeks.  So, one night, I went back into business and
+took a look around.  It seems that they found something down there,
+something big.  They sent Erich down to check it out, but I fear he
+will not be enough.  Check it out for yourself if you dare, but I
+assure you, it is not cave-ins. "  Turning back to his whiskey and
+pipe, Stain grows silent.
+~
+2|64|128 8|32|128|512|2048|8192|32768|65536 0 S
+65 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#24021
+mazzy peggy kid~
+Mazzy~
+A cute kid is relaxing in the field.
+~
+Black curly hair falls down the back of this slender beauty.  But
+you'd best keep your hands off.  Not only is she a dangerous
+fighter in her own right, but she is also the teen-aged sister of
+Stain and cherished by all of the dwarves of Cobresh.  If Stain
+heard you touched her, he would put an end to you fast.
+~
+2|64|128 8|32|128|512|2048|8192 1000 S
+59 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#24022
+dwarven dwarf guard royal~
+the royal dwarven guard~
+A royal dwarven guard is standing here.
+~
+He stands quietly at his post.  Small strong hands rest firmly on
+the end of his double-bladed battle axe.  He is clad from head to
+toe in the red and silver armour of Cobresh.  Ever at the ready, he
+stands silently, ready to protect his King and city at any risk,
+even that of his own life.
+~
+2|64 8|32|128|512|8192 1000 S
+60 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#24000
+scale dragon~
+a Scale of The Dragon~
+A large, ancient dragon scale lies here.~
+~
+9 1|2|16|64|512 1|512
+16~ 1~ 6~ 11~ 
+13 0 0
+A
+13 50
+A
+19 10
+A
+23 -10
+A
+18 7
+#24001
+talon dragon~
+a Talon of The Dragon~
+The talon of an ancient dragon lies here.~
+~
+5 16|64|512|2048|4096 1|8192
+0~ 70~ 70~ 11~ 
+15 0 0
+A
+13 30
+A
+19 3
+#24002
+eye dragon light~
+The Eye of The Dragon~
+A glowing dragons eye rolls around here.~
+~
+1 1|16|512|2048 1
+0~ 1~ -1~ 11~ 
+12 0 0
+A
+12 400
+A
+13 60
+A
+19 8
+#24003
+tail demon~
+a demons tail~
+The tail of a demon lies here.~
+~
+9 512|2048 1|32
+12~ 1~ 6~ 11~ 
+12 0 0
+#24004
+shackles chain~
+some chain shackles~
+Some chain shackles lie here.~
+~
+9 128|4096 1|64
+1~ 1~ 6~ 11~ 
+37 0 0
+A
+14 -200
+#24005
+shackles chain~
+some chain shackles~
+Some chain shackles lie here.~
+~
+9 128|4096 1|4096
+1~ 1~ 6~ 11~ 
+37 0 0
+A
+14 -200
+#24006
+mining pick~
+a mining pick~
+A mining pick sticks out of the wall here.~
+~
+5 1024 1|8192
+0~ 30~ 50~ 11~ 
+35 0 0
+#24007
+belt fire~
+a belt of fire~
+A circle of fire burns brightly here.~
+~
+9 16|64|512|2048 1|2048
+12~ 1~ 6~ 11~ 
+14 0 0
+A
+13 -25
+A
+19 3
+A
+12 30
+#24008
+Yitrite platemail~
+Yitrite platemail~
+A piece of red platemail lies here.~
+~
+9 1024 1|8
+12~ 1~ 6~ 11~ 
+25 0 0
+A
+1 5
+A
+5 5
+A
+19 2
+#24009
+yitrite sword~
+a Yitrite sword~
+A sword of red metal lies here.~
+~
+5 1024 1|8192
+0~ 60~ 80~ 3~ 
+15 0 0
+#24010
+yitrite club~
+a Yitrite club~
+A club made of red metal lies here.~
+~
+5 1024 1|8192
+0~ 60~ 80~ 8~ 
+20 0 0
+#24011
+yitrite axe~
+a Yitrite axe~
+An axe made of red metal lies here.~
+~
+5 1024 1|8192
+0~ 60~ 80~ 13~ 
+23 0 0
+#24012
+royal yitrite plate~
+Royal Yitrite Plate~
+A red and silver piece of platemail lies here.~
+~
+9 1|64|1024|2048 1|8
+14~ 1~ 6~ 11~ 
+20 0 0
+A
+19 7
+A
+18 6
+A
+5 5
+A
+1 5
+A
+13 65
+#24013
+yitrite battle axe~
+a Yitrite Battle Axe~
+A red and silver battle axe lies on the ground.~
+~
+5 64|1024|2048 1|8192
+0~ 70~ 100~ 13~ 
+25 0 0
+A
+18 15
+A
+19 -2
+#24014
+key rocky~
+a rocky key~
+A rocky key lies on the ground.~
+~
+18 0 1|16384
+0~ 1~ 6~ 11~ 
+5 0 0
+#24015
+ring crystal~
+a crystal ring~
+A ring made of fine crystal rolls around here.~
+~
+9 1024|2048 1|2
+5~ 1~ 6~ 11~ 
+13 0 0
+A
+19 5
+A
+18 5
+A
+12 100
+#24016
+robe blue flowing~
+a flowing blue robe~
+A blue robe is piled on the ground.~
+~
+9 1024 1|1024
+13~ 1~ 6~ 11~ 
+25 0 0
+#24017
+yitrite ring~
+a Yitrite ring~
+A ring of red metal rolls around here.~
+~
+9 1024|2048 1|2
+13~ 1~ 6~ 11~ 
+12 0 0
+A
+1 3
+#24018
+yitrite helmet~
+a Yitrite helmet~
+A red metal helmet sits on the ground.~
+~
+9 1024|2048 1|16
+13~ 1~ 6~ 11~ 
+26 0 0
+A
+5 3
+#24019
+silver cloak~
+a silver cloak~
+A silver cloak has been thrown here.~
+~
+9 1024|2048 1|4
+13~ 1~ 6~ 11~ 
+12 0 0
+A
+1 2
+#24020
+yitrite armguards~
+Yitrite armguards~
+A pair of red metal armguards lie here.~
+~
+9 1024|2048 1|256
+13~ 1~ 6~ 11~ 
+15 0 0
+A
+5 2
+#24021
+yitrite plate~
+Yitrite plate~
+A piece of red plate armour lies here.~
+~
+9 1024|2048 1|8
+13~ 1~ 6~ 11~ 
+40 0 0
+A
+5 1
+A
+1 1
+A
+13 65
+#24022
+yitrite greaves~
+Yitrite greaves~
+A pair of red metal greaves lie here.~
+~
+9 1024|2048 1|32
+13~ 1~ 6~ 11~ 
+23 0 0
+A
+5 1
+#24023
+silver belt~
+a silver belt~
+A belt made of silver lies here.~
+~
+9 1024|2048 1|2048
+13~ 1~ 6~ 11~ 
+12 0 0
+A
+1 1
+#24024
+silver boots~
+silver boots~
+A pair of silver boots stands here.~
+~
+9 1024|2048 1|64
+13~ 1~ 6~ 11~ 
+12 0 0
+A
+14 100
+#24025
+yitrite shield~
+a Yitrite shield~
+A red metal shield lies here.~
+~
+9 1024|2048 1|512
+13~ 1~ 6~ 11~ 
+20 0 0
+A
+5 1
+#24026
+cloak cavern~
+a cavern cloak~
+A rocky looking cloak lies on the ground.~
+~
+9 1024|2048 1|1024
+12~ 1~ 6~ 11~ 
+23 0 0
+#24027
+gleaming mithril breastplate~
+a gleaming mithril breastplate~
+A breastplate of mithril gleams here.~
+~
+9 1|64|1024|2048 1|8
+14~ 1~ 6~ 11~ 
+25 0 0
+A
+1 3
+A
+13 100
+#24028
+crown mithril~
+a mithril crown~
+A gleaming mithril crown lies here.~
+~
+9 1024|2048 1|16
+13~ 1~ 6~ 11~ 
+15 0 0
+A
+4 4
+A
+3 4
+#24029
+hammer kings~
+The Hammer of Kings~
+A royal looking hammer lies on the ground.~
+~
+5 1024|2048 1|8192
+0~ 60~ 80~ 8~ 
+50 0 0
+A
+1 3
+A
+18 6
+A
+19 6
+#24030
+holy armour paladin~
+The Holy Armour of the Paladin~
+A gleaming gold breastplate sits here, radiating a holy aura.~
+~
+9 1|32|64|1024|2048|4096 1|8
+20~ 1~ 6~ 11~ 
+30 0 0
+A
+12 300
+A
+18 6
+A
+19 8
+#24031
+cane oak oaken~
+an oaken cane~
+A thick cane made of oak lies here.~
+~
+5 1024|2048 1|8192
+0~ 60~ 80~ 7~ 
+13 0 0
+A
+9 30
+#24032
+emerald pipe~
+an emerald pipe~
+A jewel encrusted pipe made of emerald lies here.~
+~
+5 1|1024 1|8192
+0~ 60~ 60~ 11~ 
+12 0 0
+A
+2 5
+#24033
+loaf bread~
+a loaf of bread~
+A loaf of bread sits here.~
+~
+19 0 1
+5~ 1~ 6~ 11~ 
+5 0 0
+#24034
+stein ale~
+a stein of ale~
+A stein of ale foams here.~
+~
+17 0 1|16384
+4~ 4~ 3~ 0~ 
+7 0 0
+#24035
+glow glowsteel~
+a glowsteel~
+A glowing length of steel is here.~
+~
+1 1|1024 1
+0~ 1~ -1~ 11~ 
+14 0 0
+A
+18 7
+A
+19 7
+#24036
+shot whiskey~
+a shot of whiskey~
+A small glass of whiskey lies here.~
+~
+10 0 1|16384
+40~ heal~ heal~ heal~
+12 0 0
+#0
+
+
+#ROOMS
+#24000
+The throne room.~
+Sitting atop a small platform, you see a shining mithril throne.
+The floor beneath your feet is made of tightly fitted marble tiles.
+Hanging above the throne you see a large pennant.  It bears the
+picture of a large silver hammer striking an anvil on a field of
+red, the family crest of King Guntharson.  The only exit is the
+large golden doors to the south.
+~
+0 1|8 0
+D2
+~
+golden doors~
+1 -1 24001
+S
+#24001
+At the golden doors.~
+A large dragon is emblazoned on the large set of golden double
+doors that stand to the north.  Beneath your feet are closely
+fitted marble tiles.  The long corridor stretches off to the south.
+~
+0 1|8 0
+D0
+You see some large golden doors.
+~
+golden doors~
+1 -1 24000
+D2
+~
+~
+0 -1 24002
+S
+#24002
+The marble tiled corridor.~
+Solid stone walls line this large corridor.  Exquisite marble
+tiles are fitted so tightly that you can barely detect any seams in
+them.  The corridor leads north.  There is a thick oaken door set
+into the south wall.
+~
+0 1|8 0
+D0
+~
+~
+0 -1 24001
+D2
+You see a silver door.
+~
+silver door~
+1 -1 24003
+S
+#24003
+The council chamber.~
+You are standing in an enormous circular room.  Hundreds of feet in
+diameter, and just as high.  It looks as if the whole population of
+Cobresh could sit in the rows of seats that circle the round
+chamber and rise to the ceiling.  A round platform with doors set
+in three of the four directions sits in the middle of the floor. 
+The craftsmanship of this room is amazing, for even the quietest
+whisper on the stage can be heard from the highest seat.
+~
+0 1|8 0
+D0
+You see a small silver door.
+~
+silver door~
+1 -1 24002
+D1
+You see a small marble door.
+~
+marble door~
+1 -1 24006
+D2
+~
+~
+1 -1 24008
+D3
+You think that you can detect a sliding panel.
+~
+panel~
+1 -1 24004
+S
+#24004
+The secret tunnel.~
+You are standing in a rather plain stone tunnel.  A thick layer of
+dust covers the floor.  But a few footsteps have recently disturbed
+the thick layer of dust that lies on the floor.  The tunnel is kept
+dark and you wonder where it leads.  A faint glow comes from the
+west.
+~
+0 1|8 0
+D1
+~
+panel~
+1 -1 24003
+D3
+~
+~
+0 -1 24005
+S
+#24005
+The secret meeting room.~
+A plain, round wooden table sits in the middle of the room
+surrounded by eight small chairs.  A small glowsteel sits upon the
+table, faintly illuminating the room.  Dust covers the floor and
+most of the table, but the chairs are clean where someone would sit
+upon them.
+~
+0 8 0
+D1
+~
+~
+0 -1 24004
+S
+#24006
+The stone corridor.~
+You are standing in a smooth stone corridor.  Like the rest of the
+town, it is usually kept dark.  A wooden door lies set in the west
+wall, and you can see a small room off to the east.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 24007
+D3
+~
+marble door~
+1 -1 24003
+S
+#24007
+The waiting chamber.~
+A soft glow fills this room.  Smooth stone walls surround the
+circular room.  A small couch and desk are the only furniture in
+the room.  This is where visiting guests wait to address the king
+or the council.
+~
+0 8 0
+D3
+~
+~
+0 -1 24006
+S
+#24008
+Inside the palace.~
+You are standing inside of the palace of Cobresh from which King
+Guntharson rules.  The floor is made of closely packed marble
+tiles.  A long staircase rises to the west, leading to the second
+floor.
+~
+0 1|8 0
+D0
+You see a large wooden door.
+~
+wooden door~
+1 -1 24003
+D2
+~
+~
+1 -1 24010
+D3
+~
+~
+0 -1 24009
+S
+#24009
+The bottom of the stairs.~
+Short steps made to be climbed by the short legs of dwarves lead
+upward to the second floor of the palace.  There, you can find the
+living quarters of the dwarven royal family.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 24008
+D4
+~
+~
+0 -1 24057
+S
+#24010
+The palace gates.~
+Large mithril gates are set in the palace wall to the north.  This
+is the palace of King Guntharson.  The smooth stone road leads
+south, back towards the heart of Cobresh.
+~
+0 1|8 1
+D0
+You see a set of large mithril gates.
+~
+mithril gate~
+1 -1 24008
+D2
+~
+~
+0 -1 24017
+S
+#24011
+The entrance to Cobresh.~
+You are standing on a smooth stone road in the dwarven city of
+Cobresh.  The road leads north into the city, or you can follow the
+trail back up to the ledge.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24012
+D4
+~
+~
+0 -1 24052
+S
+#24012
+A turn in the road.~
+You are standing on the smooth stone road of Cobresh.  Looking up,
+you are unable to see the top of this enormous cavern.  Following
+the road east will take you into the city.  Going south will head
+back into the mountain.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24013
+D2
+~
+~
+0 -1 24011
+S
+#24013
+Granite Road.~
+Granite Road is the main thoroughfare through Cobresh.  Far to the
+north, you can see the silver palace of King Guntharson.  Nearer,
+you see the town square.  The road west leads out of the town, back
+into the mountain.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24014
+D3
+~
+~
+0 -1 24012
+S
+#24014
+Granite Road.~
+The floor of this giant cavern has been smoothed to form this road
+leading through Cobresh.  Citizens scatter at your approach, almost
+as if you scared them away.  Few if any outsiders it seems, ever
+come here.  The road runs north and south.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24015
+D2
+~
+~
+0 -1 24013
+S
+#24015
+The Ruby Square.~
+You are standing in Ruby Square, the town square of Cobresh.It is
+obviously named for the large fountain of a dragon spitting water
+into the air that has been hewn from one enormous ruby.  Roads run
+in each direction from here.  The road north leads to the palace of
+King Guntharson.  To the east lies the heart of the city.  The
+mines are off to the west.  South, the road leads out of Cobresh.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24016
+D1
+~
+~
+0 -1 24030
+D2
+~
+~
+0 -1 24014
+D3
+~
+~
+0 -1 24018
+S
+#24016
+Granite Road.~
+You are travelling on Granite Road.  Directly south of here lies
+the town square.  Nearby to the north, you can make out the gates
+of the palace rising in the darkness.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24017
+D2
+~
+~
+0 -1 24015
+S
+#24017
+Granite Road.~
+You are standing on Granite Road, a smooth stone street that runs
+north and south through Cobresh.  Directly to the north, you see
+the palace gates rising in the darkness.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24010
+D2
+~
+~
+0 -1 24016
+S
+#24018
+The path to the mines.~
+The floor of the cavern here has been worn smooth by much travel.
+A loud roar can be heard to the south-west.  Off to the west, you
+see the path splits.  Directly east of here is the town square.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24015
+D3
+~
+~
+0 -1 24019
+S
+#24019
+The split in the path.~
+You have reached a split in the path.  Going east down the path
+will take you back to town.  Off to the north, you believe the
+mines lay.  Down the path to the south, you can hear a loud roar.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24026
+D1
+~
+~
+0 -1 24018
+D2
+~
+~
+0 -1 24020
+S
+#24020
+The stone path.~
+You are walking down a stone path that runs north and east.  Going
+north will take you back in the direction of town, while the roar
+is even louder to the west.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24019
+D3
+~
+~
+0 -1 24021
+S
+#24021
+The stone path.~
+The smooth stone path that you are standing on leads both east and
+west.  A loud roar can be heard off to the west, and a fine mist
+cools your face.  The path also leads east back to town.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24020
+D3
+~
+~
+0 -1 24022
+S
+#24022
+The peaceful field.~
+Some strong magic has created a soft field of grass.  A large
+waterfall roars to the west, forming a crystal clear pool.  The
+feeling of calm and peace that washes over you is wonderful, and
+you never want to have to leave here.
+~
+0 1|8 2
+D1
+~
+~
+0 -1 24021
+S
+#24023
+The Cobresh Smithy.~
+Usually, a fire would burn in the large furnace on the back wall.
+And usually, a dwarven smith would be pounding the Yitrite ore into
+weapons and armours.  But times here are strange and something is
+going on that has shut the mines.  You wonder what it could be.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 24028
+S
+#24024
+The storage shed.~
+At one time, piles of ore filled this shed, waiting to be forged by
+the dwarven smiths.  But now, it lies empty.  Something has caused
+the dwarves of Cobresh to halt their mining.  But what?
+~
+0 1|8 0
+D2
+~
+~
+0 -1 24029
+S
+#24025
+The entrance to the mines.~
+A large gaping hole opens to the west.  Or at least it did until
+someone rolled a large boulder in front of it to seal it up.  A
+large barricade that bears the words "KEEP OUT!  CAVE-IN DANGER!"
+sits in front of the boulder.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24029
+D5
+A large boulder blocks the way down into the mines.
+~
+boulder~
+8 24014 24062
+S
+#24026
+The path to the mines.~
+You are standing on a smooth worn stone path.  Normally, it is an
+area full of activity, but today, it is strangely quiet.  The path
+runs both south and west.
+~
+0 1|4|8 1
+D2
+~
+~
+0 -1 24019
+D3
+~
+~
+0 -1 24027
+S
+#24027
+The path to the mines.~
+Oddly quiet, this east-west running stone path leads from the heart
+of Cobresh to the mines of the city.  Something big must have
+happened for the Yitrite mines to be shut down.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24026
+D3
+~
+~
+0 -1 24028
+S
+#24028
+In front of the smithy.~
+A large stone building rises north of the path.  It is strangely
+quiet inside the dark building.  The smooth stone path runs east to
+west below your feet.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24023
+D1
+~
+~
+0 -1 24027
+D3
+~
+~
+0 -1 24029
+S
+#24029
+Before the shed.~
+A large stone shed sits off the path to the north.  Piled alongside
+the shed, you see empty carts and wagons.  You wonder why no one
+seems to be working as you walk the stone path that runs east and
+west.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24024
+D1
+~
+~
+0 -1 24028
+D3
+~
+~
+0 -1 24025
+S
+#24030
+Toward the city.~
+Beneath your feet, a well-worn path leads between the town square
+and the houses of the people of Cobresh.  The road leading north
+and south will take you around the residential area of Cobresh.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24039
+D2
+~
+~
+0 -1 24031
+D3
+~
+~
+0 -1 24015
+S
+#24031
+Marble Avenue.~
+The smooth stone paths that dominate the cavern city of Cobresh run
+north and east here.  Strangely, the residents of the city stare at
+you and whisper amongst themselves before scurrying back into the
+darkness.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24030
+D1
+~
+~
+0 -1 24032
+S
+#24032
+Marble Avenue.~
+You are standing on Marble Avenue, one of the main streets of
+Cobresh.  The smooth stone under your feet runs east and west past
+the stalagmites through the cavern.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24033
+D3
+~
+~
+0 -1 24031
+S
+#24033
+Marble Avenue.~
+You are standing on the smooth stone road that is Marble Avenue. 
+A stone house lies north off of the road.  The road continues on
+east and west.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24046
+D1
+~
+~
+0 -1 24034
+D3
+~
+~
+0 -1 24032
+S
+#24034
+Marble Avenue.~
+The smooth stone road turns here, going both west and south. 
+Dwarven citizens quickly move away to the darkness as you approach.
+~
+0 1|8 1
+D2
+~
+~
+0 -1 24035
+D3
+~
+~
+0 -1 24033
+S
+#24035
+Marble Avenue.~
+A large house stands to the west at this corner of Marble Avenue.
+The smooth path winds its way north and east through the
+stalagmites of the cavern.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24034
+D1
+~
+~
+0 -1 24036
+D3
+~
+~
+0 -1 24048
+S
+#24036
+Marble Avenue.~
+You are standing on a corner of Marble Avenue.  The smooth path
+beneath your feet runs west and north.  The people of Cobresh seem
+strangely on edge, as if something other than your presence is
+wrong here.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24037
+D3
+~
+~
+0 -1 24035
+S
+#24037
+Marble Avenue.~
+You are standing on Marble Avenue, a smooth stone path that winds
+its way through Cobresh.  The path leads both north and south.  You
+see few dwarves wandering around the city in the darkness.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24038
+D2
+~
+~
+0 -1 24036
+S
+#24038
+In front of the bakery.~
+The smooth stone path you are on runs north and south past a large
+stone building that lies off the path to the east.  It is also the
+intersection of Slate Street and Marble Avenue.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24045
+D1
+~
+~
+0 -1 24047
+D2
+~
+~
+0 -1 24037
+S
+#24039
+Slate Street.~
+You are standing on Slate Street.  It is the smooth stone path that
+runs through the north side of the residential district of Cobresh.
+You can follow the path south or east.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24040
+D2
+~
+~
+0 -1 24030
+S
+#24040
+Slate Street.~
+Slate Street runs east and west through the residential area of the
+cavern city of Cobresh.  The smooth stone path is hard beneath your
+feet.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24041
+D3
+~
+~
+0 -1 24039
+S
+#24041
+Slate Street.~
+You are standing on a corner of Slate Street.  The smooth stone
+path winds its way through the cavern.  A house made of stone sits
+off the road to the east.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24042
+D1
+~
+~
+0 -1 24049
+D3
+~
+~
+0 -1 24040
+S
+#24042
+Slate Street.~
+You are walking along a smooth stone path that winds its way
+through the cavern city of Cobresh.  The path runs south and east
+past stalagmites.  Small dwarves scatter as they spy you.
+~
+0 1|8 1
+D1
+~
+~
+0 -1 24044
+D2
+~
+~
+0 -1 24041
+S
+#24043
+Slate Street.~
+The smooth stone path that you are standing on runs both west and
+south through the residential area of Cobresh.  The way the
+citizens of Cobresh are acting, you deduce that something is going
+on here.
+~
+0 1|8 1
+D2
+~
+~
+0 -1 24045
+D3
+~
+~
+0 -1 24044
+S
+#24044
+Slate Street.~
+You are standing on a well-worn path that leads east and west
+through the dwarven city.  A large house rises to the north off of
+the path.  Some dwarves hustle past you, eyeing you suspiciously.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24050
+D1
+~
+~
+0 -1 24043
+D3
+~
+~
+0 -1 24042
+S
+#24045
+Slate Street.~
+You are standing upon a worn stone path that winds its way through
+the cavern.  A large house sits off of the path to the east.  The
+stone path leads north and south.
+~
+0 1|8 1
+D0
+~
+~
+0 -1 24043
+D2
+~
+~
+0 -1 24038
+D3
+~
+~
+0 -1 24051
+S
+#24046
+Friedreich's House.~
+Richly decorated, you notice that this councilor has spared no
+expense in furnishings.  Finely carved furniture fills the room.
+A soft carpet greets your feet.  But you notice a worn path in the
+carpet, and it looks as if the bed has not been used in ages.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 24033
+S
+#24047
+The Bakery.~
+The bakery is filled with enormous ovens.  The smell of freshly
+baked bread fills the room.  This small bakery provides food for
+all of the residents of Cobresh.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 24038
+S
+#24048
+Olaf's House.~
+This grizzly old warrior's home is sparsely furnished.  The bed
+seems as if it hasn't been used in weeks.  Looking through the
+house, you notice no food in the cupboards.  You wonder what is
+making Olaf so sleepless.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 24035
+S
+#24049
+Stain's House.~
+Oddly, this is the only lighted room that you have seen in the
+whole city.  You also notice that the furniture is made to a
+slightly larger scale.  As a matter of fact, the two beds in the
+room are human sized.  You notice something scratched in one of the
+bed frames.
+~
+0 1|8 0
+D3
+~
+~
+0 -1 24041
+E
+scratches~
+To Stain and Mazzy...
+     You're like family to me guys, I luv ya...
+          /Steihl
+~
+S
+#24050
+Adolf's House.~
+The only furniture in this small house is an old, small cot.
+Magical symbols cover the floor and walls of this stone house.  A
+small podium standing in the middle of the room holds a small
+scrying bowl.
+~
+0 1|8 0
+D2
+~
+~
+0 -1 24044
+E
+scrying bowl~
+Looking in the bowl, you catch a glimpse of a large dragon
+wandering in some smooth tunnels.  But it suddenly fades away.
+~
+S
+#24051
+Bjorn's House.~
+Humble furnishings decorate the room.  And though it appears as if
+Bjorn has not used his bed in ages, the rug before the small altar
+has two worn places from many days of prayer.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 24045
+S
+#24052
+The path down.~
+A small, slightly worn trail leads down from the ledge into the
+cavern city of Cobresh.  You see no lights at all in the city, so
+you have no idea how much activity there is in the city.
+~
+0 1|8 5
+D4
+~
+~
+0 -1 24053
+D5
+~
+~
+0 -1 24011
+S
+#24053
+The ledge.~
+From this vantage point, you can see an enormous, dark cavern.  You
+think that you can hear the sounds of civilization from in the
+cavern.  A small trail leads down into the cavern, while the path
+south leads out of the mountain.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24054
+D5
+~
+~
+0 -1 24052
+S
+#24054
+Inside the dark cave.~
+Darkness surrounds this large black cave.  A small tunnel leads
+deeper into the mountain.  You wonder what could be in there.  The
+cave opening lies west and leads out to fresh air.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24053
+D3
+~
+~
+0 -1 24055
+S
+#24055
+Near the cave.~
+A dark cave opens up in the side of this large mountain.  Passage
+upward is no longer possible.  Pebbles tumble by you, as you stand
+on the mountainside.  Your only options are the cave or down the
+mountain.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24054
+D5
+~
+~
+0 -1 24056
+S
+#24056
+The base of the mountain.~
+You are standing at the foot of a tremendously large mountain.  The
+snow-capped peak reaches high into the sky.  Piles of rubble and
+some large boulders lie at the foot of the mountain.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 18240
+D4
+~
+~
+0 -1 24055
+S
+#24057
+Atop the stairs.~
+You have easily climbed the short stairs that have led up to the
+second floor of the palace.  A small room lies to the east.  The
+common rooms of the palace lie down the stairs.
+~
+0 1|8 0
+D1
+~
+~
+0 -1 24058
+D5
+~
+~
+0 -1 24009
+S
+#24058
+The round room.~
+You are standing in a small round room.  Three doors are set into
+the stone walls of this room.  You imagine that they lead to the
+quarters of the royal family.
+~
+0 1|8 0
+D0
+You see a large golden door in front of you.
+~
+golden door~
+1 -1 24059
+D1
+You see a small bronze door.
+~
+bronze door~
+1 -1 24061
+D2
+You see a large silver door.
+~
+silver door~
+1 -1 24060
+D3
+~
+~
+0 -1 24057
+S
+#24059
+King Guntharson's Room.~
+A plush red carpet covers the floor of this large bedroom.  The
+soft bed lies made, but it has not been used in days.  A small
+picture of his departed wife sits on the stand beside his bed.
+~
+0 1|8 0
+D2
+~
+golden door~
+1 -1 24058
+S
+#24060
+Prince Ivan's Room.~
+A thick red carpet softens the floor of this stone room.  The soft
+bed in this chamber is not made.  A large window opens to the
+south.  It is too dark for human eyes to see anything, but it
+provides Prince Ivan a splendid view of the city he one day hopes
+to rule.
+~
+0 1|8 0
+D0
+~
+silver door~
+1 -1 24058
+S
+#24061
+Prince Erich's Room.~
+The floors of this room are made of hard, cold stone.  A wooden
+dummy stands in the corner upon a small wrestling mat.  The bed is
+covered with a small layer of dust.  The dust on the bed and floor
+makes you realize that no one has been in here in weeks.
+~
+0 1|8 0
+D3
+~
+bronze door~
+1 -1 24058
+S
+#24062
+The mines.~
+You have entered the large Yitrite mines of Cobresh.  From these
+mines, the dwarves gather the red metal and forge it into all sorts
+of items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D3
+~
+~
+0 -1 24087
+D4
+~
+boulder~
+8 24014 24025
+S
+#24063
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24064
+D3
+~
+~
+0 -1 24088
+S
+#24064
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24065
+D3
+~
+~
+0 -1 24063
+S
+#24065
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24067
+D3
+~
+~
+0 -1 24064
+S
+#24066
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24088
+D2
+~
+~
+0 -1 24071
+S
+#24067
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24065
+D1
+~
+~
+0 -1 24068
+S
+#24068
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24069
+D3
+~
+~
+0 -1 24067
+S
+#24069
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24072
+D3
+~
+~
+0 -1 24068
+S
+#24070
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24071
+D2
+~
+~
+0 -1 24073
+S
+#24071
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24066
+D3
+~
+~
+0 -1 24070
+S
+#24072
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24069
+D2
+~
+~
+0 -1 24077
+S
+#24073
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 8 5
+D0
+~
+~
+0 -1 24070
+D1
+~
+~
+0 -1 24074
+D2
+~
+~
+0 -1 24081
+S
+#24074
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24075
+D3
+~
+~
+0 -1 24073
+S
+#24075
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24082
+D3
+~
+~
+0 -1 24074
+S
+#24076
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24077
+D2
+~
+~
+0 -1 24085
+S
+#24077
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24072
+D1
+~
+~
+0 -1 24078
+D3
+~
+~
+0 -1 24076
+S
+#24078
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24079
+D3
+~
+~
+0 -1 24077
+S
+#24079
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24086
+D3
+~
+~
+0 -1 24078
+S
+#24080
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24081
+D2
+~
+~
+0 -1 24090
+S
+#24081
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24073
+D3
+~
+~
+0 -1 24080
+S
+#24082
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24075
+D1
+~
+~
+0 -1 24083
+S
+#24083
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24084
+D2
+~
+~
+0 -1 24091
+D3
+~
+~
+0 -1 24082
+S
+#24084
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24085
+D3
+~
+~
+0 -1 24083
+S
+#24085
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24076
+D3
+~
+~
+0 -1 24084
+S
+#24086
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24079
+D1
+~
+~
+0 -1 24087
+D2
+~
+~
+0 -1 24094
+S
+#24087
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24062
+D3
+~
+~
+0 -1 24086
+S
+#24088
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24063
+D2
+~
+~
+0 -1 24066
+S
+#24089
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24090
+D2
+~
+~
+0 -1 24095
+S
+#24090
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24080
+D3
+~
+~
+0 -1 24089
+S
+#24091
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24083
+D2
+~
+~
+0 -1 24099
+S
+#24092
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24093
+D2
+~
+~
+0 -1 24100
+S
+#24093
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24094
+D3
+~
+~
+0 -1 24092
+S
+#24094
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24086
+D2
+~
+~
+0 -1 24101
+D3
+~
+~
+0 -1 24093
+S
+#24095
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24089
+D2
+~
+~
+0 -1 24102
+D5
+~
+~
+0 -1 24156
+S
+#24096
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24097
+D2
+~
+~
+0 -1 24104
+S
+#24097
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24098
+D3
+~
+~
+0 -1 24096
+S
+#24098
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24099
+D3
+~
+~
+0 -1 24097
+S
+#24099
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24091
+D2
+~
+~
+0 -1 24105
+D3
+~
+~
+0 -1 24098
+S
+#24100
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24092
+D2
+~
+~
+0 -1 24108
+S
+#24101
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24094
+D2
+~
+~
+0 -1 24109
+S
+#24102
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24095
+D1
+~
+~
+0 -1 24103
+S
+#24103
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24104
+D2
+~
+~
+0 -1 24110
+D3
+~
+~
+0 -1 24102
+S
+#24104
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24096
+D3
+~
+~
+0 -1 24103
+S
+#24105
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24099
+D1
+~
+~
+0 -1 24106
+S
+#24106
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24107
+D3
+~
+~
+0 -1 24105
+S
+#24107
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24108
+D2
+~
+~
+0 -1 24113
+D3
+~
+~
+0 -1 24106
+S
+#24108
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24100
+D3
+~
+~
+0 -1 24107
+S
+#24109
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24101
+D2
+~
+~
+0 -1 24115
+S
+#24110
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24103
+D1
+~
+~
+0 -1 24111
+S
+#24111
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24112
+D3
+~
+~
+0 -1 24110
+S
+#24112
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24116
+D3
+~
+~
+0 -1 24111
+S
+#24113
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24107
+D2
+~
+~
+0 -1 24120
+S
+#24114
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24115
+D2
+~
+~
+0 -1 24122
+S
+#24115
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24109
+D3
+~
+~
+0 -1 24114
+S
+#24116
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24112
+D1
+~
+~
+0 -1 24117
+S
+#24117
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24118
+D2
+~
+~
+0 -1 24123
+D3
+~
+~
+0 -1 24116
+S
+#24118
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24119
+D3
+~
+~
+0 -1 24117
+S
+#24119
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24120
+D3
+~
+~
+0 -1 24118
+S
+#24120
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24113
+D1
+~
+~
+0 -1 24121
+D3
+~
+~
+0 -1 24119
+S
+#24121
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24122
+D2
+~
+~
+0 -1 24125
+D3
+~
+~
+0 -1 24120
+S
+#24122
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24114
+D3
+~
+~
+0 -1 24121
+S
+#24123
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24117
+D1
+~
+~
+0 -1 24124
+S
+#24124
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24126
+D3
+~
+~
+0 -1 24123
+S
+#24125
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24121
+D2
+~
+~
+0 -1 24129
+S
+#24126
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24124
+D1
+~
+~
+0 -1 24127
+S
+#24127
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24128
+D3
+~
+~
+0 -1 24126
+S
+#24128
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24129
+D3
+~
+~
+0 -1 24127
+S
+#24129
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24125
+D3
+~
+~
+0 -1 24128
+S
+#24130
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24131
+D2
+~
+~
+0 -1 24134
+S
+#24131
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24132
+D3
+~
+~
+0 -1 24130
+S
+#24132
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24133
+D3
+~
+~
+0 -1 24131
+S
+#24133
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24135
+D3
+~
+~
+0 -1 24132
+S
+#24134
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24130
+D2
+~
+~
+0 -1 24139
+S
+#24135
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24133
+D1
+~
+~
+0 -1 24136
+S
+#24136
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24137
+D3
+~
+~
+0 -1 24135
+S
+#24137
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24140
+D3
+~
+~
+0 -1 24136
+S
+#24138
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24139
+D2
+~
+~
+0 -1 24141
+S
+#24139
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24134
+D3
+~
+~
+0 -1 24138
+S
+#24140
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24137
+D2
+~
+~
+0 -1 24145
+S
+#24141
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24138
+D1
+~
+~
+0 -1 24142
+D2
+~
+~
+0 -1 24149
+S
+#24142
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24143
+D3
+~
+~
+0 -1 24141
+S
+#24143
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24150
+D3
+~
+~
+0 -1 24142
+S
+#24144
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24145
+D2
+~
+~
+0 -1 24153
+S
+#24145
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24140
+D1
+~
+~
+0 -1 24146
+D3
+~
+~
+0 -1 24144
+S
+#24146
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24147
+D3
+~
+~
+0 -1 24145
+S
+#24147
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24154
+D3
+~
+~
+0 -1 24146
+S
+#24148
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24149
+D2
+~
+~
+0 -1 24158
+S
+#24149
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24141
+D3
+~
+~
+0 -1 24148
+S
+#24150
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24143
+D1
+~
+~
+0 -1 24151
+S
+#24151
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24152
+D2
+~
+~
+0 -1 24159
+D3
+~
+~
+0 -1 24150
+S
+#24152
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24153
+D3
+~
+~
+0 -1 24151
+S
+#24153
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24144
+D3
+~
+~
+0 -1 24152
+S
+#24154
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24147
+D1
+~
+~
+0 -1 24155
+D2
+~
+~
+0 -1 24162
+S
+#24155
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24156
+D3
+~
+~
+0 -1 24154
+S
+#24156
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D3
+~
+~
+0 -1 24155
+D4
+~
+~
+0 -1 24095
+S
+#24157
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24158
+D2
+~
+~
+0 -1 24163
+S
+#24158
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24148
+D3
+~
+~
+0 -1 24157
+S
+#24159
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24151
+D2
+~
+~
+0 -1 24167
+S
+#24160
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24161
+D2
+~
+~
+0 -1 24168
+S
+#24161
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24162
+D3
+~
+~
+0 -1 24160
+S
+#24162
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24154
+D2
+~
+~
+0 -1 24169
+D3
+~
+~
+0 -1 24161
+S
+#24163
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24157
+D2
+~
+~
+0 -1 24170
+S
+#24164
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24165
+D2
+~
+~
+0 -1 24172
+S
+#24165
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24166
+D3
+~
+~
+0 -1 24164
+S
+#24166
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24167
+D3
+~
+~
+0 -1 24165
+S
+#24167
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24159
+D2
+~
+~
+0 -1 24173
+D3
+~
+~
+0 -1 24166
+S
+#24168
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24160
+D2
+~
+~
+0 -1 24176
+S
+#24169
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24162
+D2
+~
+~
+0 -1 24177
+S
+#24170
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24163
+D1
+~
+~
+0 -1 24171
+S
+#24171
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24172
+D2
+~
+~
+0 -1 24178
+D3
+~
+~
+0 -1 24170
+S
+#24172
+The charred mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
+items.  The tunnel here has been made much larger than those that
+you were in before, and the walls have been smoothed.  An intense
+flame has charred the walls of the tunnel.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24164
+D3
+~
+~
+0 -1 24171
+S
+#24173
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24167
+D1
+~
+~
+0 -1 24174
+S
+#24174
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24175
+D3
+~
+~
+0 -1 24173
+S
+#24175
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24176
+D2
+~
+~
+0 -1 24181
+D3
+~
+~
+0 -1 24174
+S
+#24176
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24168
+D3
+~
+~
+0 -1 24175
+S
+#24177
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24169
+D2
+~
+~
+0 -1 24183
+S
+#24178
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24171
+D1
+~
+~
+0 -1 24179
+S
+#24179
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24180
+D3
+~
+~
+0 -1 24178
+S
+#24180
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1 5
+D2
+~
+~
+0 -1 24184
+D3
+~
+~
+0 -1 24179
+S
+#24181
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|4|8 5
+D0
+~
+~
+0 -1 24175
+D2
+~
+~
+0 -1 24188
+S
+#24182
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24183
+D2
+~
+~
+0 -1 24197
+S
+#24183
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24177
+D3
+~
+~
+0 -1 24182
+S
+#24184
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24180
+D1
+~
+~
+0 -1 24185
+S
+#24185
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24186
+D2
+~
+~
+0 -1 24190
+D3
+~
+~
+0 -1 24184
+S
+#24186
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24187
+D3
+~
+~
+0 -1 24185
+S
+#24187
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24188
+D3
+~
+~
+0 -1 24186
+S
+#24188
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24181
+D1
+~
+~
+0 -1 24189
+D3
+~
+~
+0 -1 24187
+S
+#24189
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24197
+D2
+~
+~
+0 -1 24192
+D3
+~
+~
+0 -1 24188
+S
+#24190
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24185
+D1
+~
+~
+0 -1 24191
+S
+#24191
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D2
+~
+~
+0 -1 24193
+D3
+~
+~
+0 -1 24190
+S
+#24192
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24189
+D2
+~
+~
+0 -1 24196
+S
+#24193
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24191
+D1
+~
+~
+0 -1 24194
+S
+#24194
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24195
+D3
+~
+~
+0 -1 24193
+S
+#24195
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D1
+~
+~
+0 -1 24196
+D3
+~
+~
+0 -1 24194
+S
+#24196
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24192
+D3
+~
+~
+0 -1 24195
+S
+#24197
+The mines.~
+You are in the large Yitrite mines of Cobresh.  From these mines, 
+the dwarves gather the red metal and forge it into all sorts of 
+items.  You see no signs of the alleged cave in.
+~
+0 1|8 5
+D0
+~
+~
+0 -1 24182
+D3
+~
+~
+0 -1 24189
+S
+#0
+
+
+#RESETS
+*
+*
+*
+*
+*
+*------------------------DOOR RESETS--------------
+D 1 24058 0 1             ; The round room. Close North
+D 1 24058 1 1             ; The round room. Close East
+D 1 24058 2 1             ; The round room. Close South
+D 1 24010 0 1             ; The palace gates. Close North
+D 1 24008 0 1             ; Inside the palace. Close North
+D 1 24003 3 1             ; The council chamber. Close West
+D 1 24001 0 1             ; At the golden doors. Close North
+D 1 24025 5 2             ; The entrance to the mines. Lock Down
+D 1 24062 4 2             ; The mines. Lock Up
+*
+*
+*------------------------MOB RESETS---------------
+*
+*------------------------The Good Mobs------------
+*
+*-----------------------------ROYAL GUARDS--------
+M 1 24022 6 24000               the royal dwarven guard to The throne
+*                                  room.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24021 100 5                Yitrite Plate
+E 1 24018 100 6                A Yitrite Helmet
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24023 100 13               A Silver Belt
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24022 6 24000               the royal dwarven guard to The throne
+*                                  room.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24021 100 5                Yitrite Plate
+E 1 24018 100 6                A Yitrite Helmet
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24023 100 13               A Silver Belt
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24022 6 24003               the royal dwarven guard to The
+*                                  council chamber.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24021 100 5                Yitrite Plate
+E 1 24018 100 6                A Yitrite Helmet
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24023 100 13               A Silver Belt
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24022 6 24009               the royal dwarven guard to The bottom
+*                                  of the stairs.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24021 100 5                Yitrite Plate
+E 1 24018 100 6                A Yitrite Helmet
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24023 100 13               A Silver Belt
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24022 6 24058               the royal dwarven guard to The round
+*                                  room.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24021 100 5                Yitrite Plate
+E 1 24018 100 6                A Yitrite Helmet
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24023 100 13               A Silver Belt
+E 1 24009 100 16               A Yitrite Sword
+*
+*-----------------------------DWARVEN GUARDS------
+M 1 24017 8 24010               the dwarven guard to The palace
+*                                  gates.
+E 1 24008 100 5                Yitrite Platemail
+*
+M 1 24017 8 24042               the dwarven guard to Slate Street.
+E 1 24008 100 5                Yitrite Platemail
+*
+M 1 24017 8 24015               the dwarven guard to The Ruby Square.
+*
+M 1 24017 8 24020               the dwarven guard to The stone path.
+E 1 24008 100 5                Yitrite Platemail
+*
+M 1 24017 8 24032               the dwarven guard to Marble Avenue.
+E 1 24008 100 5                Yitrite Platemail
+*
+M 1 24017 8 24037               the dwarven guard to Marble Avenue.
+E 1 24008 100 5                Yitrite Platemail
+*
+M 1 24017 8 24011               the dwarven guard to The entrance to
+*                                  Cobresh.
+E 1 24008 100 5                Yitrite Platemail
+*
+M 1 24017 8 24011               the dwarven guard to The entrance to
+*                                  Cobresh.
+E 1 24008 100 5                Yitrite Platemail
+*
+*-----------------------------MINE GUARDS---------
+M 1 24013 2 24025               the dwarven guard to The entrance to
+*                                  the mines.
+E 1 24021 100 5                Yitrite Plate
+*
+M 1 24013 2 24025               the dwarven guard to The entrance to
+*                                  the mines.
+E 1 24021 100 5                Yitrite Plate
+*
+*-----------------------------SCOUTS--------------
+M 1 24016 2 24055               the dwarven scout to Near the cave.
+E 1 24026 100 12               A Cavern Cloak
+*
+M 1 24016 2 24055               the dwarven scout to Near the cave.
+E 1 24026 100 12               A Cavern Cloak
+*
+*-----------------------------THE POPULACE OF COBRESH
+M 1 24018 7 24016               the dwarf to Granite Road.
+*
+M 1 24018 7 24014               the dwarf to Granite Road.
+*
+M 1 24018 7 24020               the dwarf to The stone path.
+*
+M 1 24018 7 24022               the dwarf to The peaceful field.
+*
+M 1 24018 7 24034               the dwarf to Marble Avenue.
+*
+M 1 24018 7 24038               the dwarf to In front of the bakery.
+*
+M 1 24018 7 24045               the dwarf to Slate Street.
+*
+M 1 24019 1 24047               the dwarven baker to The Bakery.
+G 1 24033 100                  A Loaf of Bread
+G 1 24034 100                  A Stein of Ale
+*
+M 1 24021 1 24022               Mazzy to The peaceful field.
+E 1 24015 100 1                A Crystal Ring
+E 1 24016 100 12               A Flowing Blue Robe
+E 1 24035 100 0                A Glowsteel
+*
+M 1 24014 1 24023               the dwarven smith to The Cobresh
+*                                  Smithy.
+*
+*-----------------------------THE ADVISORS AND KING
+M 1 24010 1 24005               Olaf the Dwarf to The secret meeting
+*                                  room.
+*
+M 1 24012 1 24050               Adolf the Dwarf to Adolf's House.
+*
+M 1 24015 1 24046               Friedreich the Dwarf to Friedreich's
+*                                  House.
+*
+M 1 24011 1 24022               Bjorn the Dwarf to The peaceful
+*                                  field.
+*
+M 1 24020 1 24049               Stain, master thief to Stain's House.
+E 1 24032 100 16               An Emerald Pipe
+E 1 24035 100 0                A Glowsteel
+E 1 24036 100 17               A Shot of Whiskey
+*
+M 1 24009 1 24000               Hanson to The throne room.
+E 1 24030 100 5                Holy Armour of the Paladin
+E 1 24031 100 16               An Oaken Cane
+*
+M 1 24008 1 24060               Prince Ivan to Prince Ivan's Room.
+*
+M 1 24007 1 24000               Guntharson, King of Cobresh to The
+*                                  throne room.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24027 100 5                A Gleaming Mithril Breastplate
+E 1 24028 100 6                A Mithril Crown
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24023 100 13               A Silver Belt
+E 1 24029 100 16               The Hammer of Kings
+E 1 24014 100 17               A Rocky Key
+*
+*------------------------In The Mines-------------
+M 1 24006 1 24158              Erich, Captain of the Cobresh Guard
+*                                  to The charred mines.
+E 1 24017 100 1                A Yitrite Ring
+E 1 24017 100 2                A Yitrite Ring
+E 1 24019 100 3                A Silver Cloak
+E 1 24019 100 4                A Silver Cloak
+E 1 24012 100 5                Royal Yitrite Plate
+E 1 24018 100 6                A Yitrite Helmet
+E 1 24022 100 7                Yitrite Greaves
+E 1 24024 100 8                Silver Boots
+E 1 24020 100 10               Yitrite Armguards
+E 1 24025 100 11               A Yitrite Shield
+E 1 24026 100 12               A Cavern Cloak
+E 1 24023 100 13               A Silver Belt
+E 1 24013 100 16               A Yitrite Battle Axe
+*
+*-----------------------------GUARDS IN THE MINES-
+M 1 24005 20 24086              the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24109             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24005 20 24125             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24005 20 24072              the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24005 20 24128             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24099              the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24005 20 24066              the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24104             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24110             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24005 20 24123             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24005 20 24134             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24005 20 24140             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24154             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24167             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24005 20 24172             the dwarven guard to The charred
+*                                  mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+M 1 24005 20 24177             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24005 20 24178             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24010 100 16               A Yitrite Club
+*
+M 1 24005 20 24190             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24005 20 24192             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24011 100 16               A Yitrite Axe
+*
+M 1 24005 20 24194             the dwarven guard to The mines.
+E 1 24008 100 5                Yitrite Platemail
+E 1 24009 100 16               A Yitrite Sword
+*
+*-----------------------------THE DWARVEN SLAVES--
+M 1 24003 20 24066              the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24068              the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24072              the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24073              the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24082              the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24091              the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24101             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24112             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24122             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24124             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24134             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24136             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24140             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24141             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24150             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24157             the dwarven worker to The charred
+*                                  mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24169             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24180             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24191             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+M 1 24003 20 24197             the dwarven worker to The mines.
+E 1 24004 100 8                Some Chain Shackles
+E 1 24005 100 14               Some Chain Shackles
+E 1 24005 100 15               Some Chain Shackles
+E 1 24006 100 16               A Mining Pick
+*
+*------------------------The Evil Mobs------------
+*
+*-----------------------------FIRE ELEMENTALS-----
+M 1 24004 20 24065              the fire elemental to The mines.
+E 1 24007 100 13               A Belt of Fire
+*
+M 1 24004 20 24071              the fire elemental to The mines.
+E 1 24007 100 13               A Belt of Fire
+*
+M 1 24004 20 24081              the fire elemental to The mines.
+*
+M 1 24004 20 24083              the fire elemental to The mines.
+*
+M 1 24004 20 24099              the fire elemental to The mines.
+*
+M 1 24004 20 24101             the fire elemental to The mines.
+*
+M 1 24004 20 24112             the fire elemental to The mines.
+*
+M 1 24004 20 24113             the fire elemental to The mines.
+E 1 24007 100 13               A Belt of Fire
+*
+M 1 24004 20 24126             the fire elemental to The mines.
+*
+M 1 24004 20 24129             the fire elemental to The mines.
+*
+M 1 24004 20 24133             the fire elemental to The mines.
+*
+M 1 24004 20 24139             the fire elemental to The mines.
+*
+M 1 24004 20 24149             the fire elemental to The mines.
+*
+M 1 24004 20 24151             the fire elemental to The mines.
+E 1 24007 100 13               A Belt of Fire
+*
+M 1 24004 20 24169             the fire elemental to The mines.
+*
+M 1 24004 20 24167             the fire elemental to The mines.
+*
+M 1 24004 20 24180             the fire elemental to The mines.
+*
+M 1 24004 20 24181             the fire elemental to The mines.
+*
+M 1 24004 20 24193             the fire elemental to The mines.
+*
+M 1 24004 20 24196             the fire elemental to The mines.
+E 1 24007 100 13               A Belt of Fire
+*
+*-----------------------------FIERY DEMONS--------
+M 1 24001 24 24088              the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24067              the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24070              the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24077              the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24079              the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24080              the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24102             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24111             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24114             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24117             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24124             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24125             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24130             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24135             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24138             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24145             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24147             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24148             the fiery demon to The charred mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24170             the fiery demon to The charred mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24179             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24182             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24185             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24191             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+M 1 24001 24 24192             the fiery demon to The mines.
+E 1 24003 100 7                A Demons Tail
+*
+*-----------------------------THE WAR HOUNDS------
+M 1 24002 24 24065              the war hound from hell to The mines.
+*
+M 1 24002 24 24066              the war hound from hell to The mines.
+*
+M 1 24002 24 24085              the war hound from hell to The mines.
+*
+M 1 24002 24 24090              the war hound from hell to The mines.
+*
+M 1 24002 24 24095              the war hound from hell to The mines.
+*
+M 1 24002 24 24096              the war hound from hell to The mines.
+*
+M 1 24002 24 24098              the war hound from hell to The mines.
+*
+M 1 24002 24 24100             the war hound from hell to The mines.
+*
+M 1 24002 24 24109             the war hound from hell to The mines.
+*
+M 1 24002 24 24116             the war hound from hell to The mines.
+*
+M 1 24002 24 24122             the war hound from hell to The mines.
+*
+M 1 24002 24 24127             the war hound from hell to The mines.
+*
+M 1 24002 24 24133             the war hound from hell to The mines.
+*
+M 1 24002 24 24134             the war hound from hell to The mines.
+*
+M 1 24002 24 24153             the war hound from hell to The mines.
+*
+M 1 24002 24 24158             the war hound from hell to The
+*                                  charred mines.
+*
+M 1 24002 24 24163             the war hound from hell to The
+*                                  charred mines.
+*
+M 1 24002 24 24164             the war hound from hell to The
+*                                  charred mines.
+*
+M 1 24002 24 24166             the war hound from hell to The
+*                                  charred mines.
+*
+M 1 24002 24 24168             the war hound from hell to The mines.
+*
+M 1 24002 24 24177             the war hound from hell to The mines.
+*
+M 1 24002 24 24184             the war hound from hell to The mines.
+*
+M 1 24002 24 24194             the war hound from hell to The mines.
+*
+M 1 24002 24 24197             the war hound from hell to The mines.
+*
+*-----------------------------THE DRAGON----------
+M 1 24000 1 24163              The Dragon to The charred mines.
+E 1 24002 100 0                The Eye of The Dragon
+E 1 24000 100 11               A Scale of The Dragon
+E 1 24001 100 16               A Talon of The Dragon
+S
+
+#SHOPS
+24019
+0 0 0 0 0 0 0 0 23
+0
+
+#SPECIALS
+M  24000 spec_breath_any            The Dragon
+M  24001 spec_breath_fire           the fiery demon
+M  24002 spec_breath_fire           the war hound from hell
+M  24004 spec_breath_fire           the fire elemental
+M  24005 spec_guard            the dwarven guard
+M  24006 spec_guard            Erich, Captain of the Cobresh Guard
+M  24007 spec_guard            Guntharson, King of Cobresh
+M  24009 spec_cast_cleric           Hanson
+M  24011 spec_cast_adept            Bjorn the Dwarf
+M  24012 spec_cast_archmage             Adolf the Dwarf
+M  24013 spec_guard            the dwarven guard
+M  24016 spec_guard            the dwarven scout
+M  24017 spec_guard            the dwarven guard
+M  24020 spec_thief            Stain, master thief
+M  24021 spec_cast_cleric           Mazzy
+M  24022 spec_guard            the royal dwarven guard
+S
+
+
+#$
+

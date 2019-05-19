@@ -1,0 +1,1905 @@
+#AREA	Gezhp~ 	Mud School~
+1 5 0 100
+
+#AREA_SPECIAL
+school
+no_quest
+safe
+$
+
+#MOBILES
+
+#3700
+trainer loremaster master~
+the Loremaster~
+The Loremaster patiently trains new recruits.
+~
+The Loremaster is an impressive man, dressed in fine fur-trimmed robes
+and fairly handsome.  He sits at his desk, surrounded by manuals and
+books.  Young recruits wait patiently for him to dispense his vast
+knowledge.
+~
+2|64|1024|4096|32768|1048576 8|128 1000 S
+30 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+& 60 'combat knowledge'
+& 60 'defense knowledge'
+& 60 'stealth techniques'
+& 60 'illusion magiks'
+& 60 'thievery skills'
+& 60 'pugalism knowledge'
+& 60 'armed combat knowledge'
+& 60 'unarmed combat knowledge'
+& 60 'inner force'
+& 60 'healing magiks'
+& 60 'harmful magiks'
+& 60 'protective magiks'
+& 60 'divination magiks'
+& 60 'curative magiks'
+& 60 'disease magiks'
+& 60 'summoning magiks'
+& 60 'divine magiks'
+& 60 'conjuration magiks'
+& 60 'enchantment magiks'
+& 60 'alteration magiks'
+& 60 'evocation magiks'
+& 60 'mental defense disciplines'
+& 60 'matter control disciplines'
+& 60 'energy control disciplines'
+& 60 'telepathy disciplines'
+& 60 'body control disciplines'
+& 60 'mana control disciplines'
+& 60 'morphing knowledge'
+
+#3701
+manservant~
+Thorne's manservant~
+Thorne's manservant is here to do her bidding.
+~
+A mysterious-looking man in a long brown robe is here tending to Thorne's 
+affairs and offering assistance to newbies who require it. 
+
+If you would like some assistance please say 'I need help'. If Thorne or one
+of her mortal characters is currently on the mud he will inform them of your
+request.
+
+You sense he is stronger than he looks. If you do not need help, bothering him
+would probably not be a good idea.
+~
+2 8|32|512|4194304|8388608 0 S
+300 18 8 2d4+30 1d6+1
+0 100
+8 8 0
+>all_greet_prog 100~
+if name ($n) == Amaya
+break
+else
+if name ($n) == Thorne
+break
+else
+if name ($n) == Eternity
+break
+else
+if name ($n) == Brachah
+break
+else
+if name ($n) == Arika
+break
+else
+if level($n) < 2
+say I think you should try to get to level 2 so you can save, $n. If you would like some help after that you're welcome to come and speak to me.
+mpechoat $n The manservant gently but firmly escorts you out of the room.
+mptrans $n 3725
+mpecho The manservant gently but firmly escorts $n out of the room.
+mpat 3725 mpforce $n look
+mpat 3725 mpecho Thorne's manservant leaves west.
+emote has arrived.
+break
+else
+if level ($n) > 1
+say Welcome to Thorne's office $n.
+break
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>speech_prog p I need help~
+if level ($n) > 15
+say At your level you can probably chat to get help from people.
+break
+else
+tell Amaya {C$n needs help!{x
+tell Thorne {C$n needs help!{X
+tell Eternity {C$n needs help!{X
+tell Brachah {C$n needs help!{X
+tell Arika {C$n needs help!{x
+nod
+say If Thorne or one of her mortal characters is available they will be along momentarily.
+endif
+~
+>speech_prog begone~
+if name ($r) == Amaya
+mpforce $n say begone
+break
+else
+if name ($r) == Thorne
+mpforce $n say begone
+break
+else
+if name ($r) == Eternity
+mpforce $n say begone
+break
+else
+if name ($r) == Brachah
+mpforce $n say begone
+break
+else
+if name ($r) == Arika
+mpforce $n say begone
+break
+else
+if name ($r) == Dash
+mpforce $n say begone
+break
+else
+if name ($r) == Nme
+mpforce $n say begone
+break
+else
+if name ($r) == Mitakasi
+mpforce $n say begone
+break
+else
+if name ($r) == Vortigern
+mpforce $n say begone
+break
+else
+if name ($r) == Ishtar
+mpforce $n say begone
+break
+else
+mpechoat $r {WYou are flung into a vortex of flashing lights and magical energies.{x
+mpechoat $r {B::SPLASH::{x
+tell $r This is the only polite warning you will get.
+mptrans $r 3030
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>speech_prog perish~
+if name ($r) == Amaya
+mpforce $n say perish
+break
+else
+if name ($r) == Thorne
+mpforce $n say perish
+break
+else
+if name ($r) == Eternity
+mpforce $n say perish
+break
+else
+if name ($r) == Brachah
+mpforce $n say perish
+break
+else
+if name ($r) == Arika
+mpforce $n say perish
+break
+else
+if name ($r) == Nme
+mpforce $n say perish
+break
+else
+if name ($r) == Ishtar
+mpforce $n say perish
+break
+else
+tell $r I did warn you.. guess you should have listened.
+mpechoat $r {WYou are flung into a vortex of flashing lights and magical energies.{x
+mptrans $r 19200
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+|
+
+#3702
+wild dog~
+a wild dog~
+A wild dog barks and growls.
+~
+The crazed dog bares its evil fangs and growls visciously.
+~
+2|512 0 0 S
+1 0 0 0d0+0 0d0+0
+36 0
+0 0 1
+
+#3703
+mountain lion~
+a mountain lion~
+A mountain lion spits and scratches at you.
+~
+The mountain lion looks young but dangerous.
+~
+2|512 0 0 S
+1 0 0 0d0+0 0d0+0
+36 0
+0 0 2
+
+#3704
+cobra snake~
+a cobra~
+A large snake sits in a tight coil.
+~
+The cobra is venomous and unusually large.  It raises its head from the
+ground, forked tongue darting in and out.
+~
+2|512 0 0 S
+1 0 0 0d0+0 0d0+0
+44 0
+0 0 0
+
+#3705
+wolf~
+a wolf~
+A wolf circles as far as its chain will let it.
+~
+The wolf looks formidable and desperate.  Its body is covered in evil
+scars.
+~
+2|512 0 0 S
+2 0 0 0d0+0 0d0+0
+36 0
+0 0 0
+
+#3706
+goblin~
+a goblin~
+A small goblin cringes and scowls.
+~
+The goblin is small and starved, his body covered in bruises.  His eyes
+are wild and long, yellow fangs protrude from his mouth.
+~
+2|512 0 0 S
+2 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3707
+kobold~
+a kobold~
+A kobold tries desperately to escape.
+~
+Small and stooped, the kobold should be easily dispatched.
+~
+2|512 0 0 S
+2 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3708
+man human prisoner~
+a human prisoner~
+A human prisoner nervously circles you.
+~
+A convicted criminal, this human will be used as fodder to test the new
+recruits.
+~
+2|512 0 0 S
+2 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3709
+lizardman man~
+a lizardman~
+A tall lizardman waits for you to charge.
+~
+The lizardman is a lot taller than you, but is not in good health.
+~
+2|512 0 0 S
+2 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3710
+cleric priest healer~
+a Cleric~
+A Cleric's soft chants and prayers fill you with warmth and hope.
+~
+Dressed in an elegant silver robe, the young Cleric casts healing prayers
+and protective magiks on the tired and injured recruits.
+~
+2|8192|512|4096|32768 128|16777216 500 S
+30 0 0 0d0+0 0d0+0
+0 0 
+0 0 2
+>all_greet_prog 100~
+	if level($n) < 6
+		say Greetings $n, I am here to assist you.
+		mpecho {WA Cleric says 'If you say "fly" I will cast fly on you, this will aid you in your adventures.'
+		break
+	else
+		break
+	endif
+~
+>speech_prog p fly~
+	if level($n) < 6
+		say One moment $n.
+		cast fly $n
+		break
+	else
+		say I'm afraid I am no longer of help to you $n.
+		break
+	endif
+~
+|
+
+#3711
+quartermaster master~
+the Quartermaster~
+The Quartermaster will sell you provisions and equipment.
+~
+The garrison's Quartermaster is dressed in a simple tunic and is unarmed.
+He is muscular, and looks asthough he'll tolerate no nonsense in his
+store.
+~
+2|8192|512|4096|32768 128 500 S
+30 0 0 0d0+0 0d0+0
+0 0 
+0 0 1
+
+#3712
+gladiator fighter~
+a gladiator~
+A gladiator prepares to fight you.
+~
+The gladiator circles you warily, readying himself for combat.
+~
+2|64|512 0 500 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3713
+wild boar~
+a wild boar~
+A wild boar grunts and snorts at you.
+~
+The boar has razor sharp tusks and looks agitated.
+~
+64 0 0 S
+3 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3714
+giant lizard~
+a giant lizard~
+A giant lizard makes a horrible rasping sound.
+~
+The lizard is almost 6 feet long and is covered in vivid red
+scales.  Its blue tongue flicks out at your approach.
+~
+64 0 0 S
+1 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#3715
+wolf~
+a wolf~
+A wolf prowls the arena.
+~
+The wolf bares its fangs and emits a fearsome low growl.
+~
+64 0 0 S
+2 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+
+#0
+
+
+#OBJECTS
+
+#3700
+iron mace~
+a heavy iron mace~
+A heavy iron mace lays at your feet.~
+~
+5 64 1|8192
+0~ 2~ 3~ 7~
+5 0 5
+E
+iron mace~
+
+The mace is a quality piece of craftsmanship, 
+well-suited to the rigours of exploration and 
+combat in the Domain. 
+
+~
+A
+18 5 
+A
+19 5 
+#3701
+jewel-studded dagger~
+a jewel-studded dagger~
+A dagger whose hilt is inlaid with jewels of many varieties lies here.~
+~
+5 64|16777216 1|8192
+0~ 2~ 3~ 11~
+5 0 5
+E
+jewel-studded dagger~
+
+The dagger is a quality piece of midgaardian
+craftsmanship with a hilt inlaid with a variety 
+of precious and semi-precious stones and a blade 
+that has been tempered and sharpened to a fine edge.
+
+~
+A
+18 5 
+A
+19 5 
+#3702
+sharp steel sword broadsword~
+a sharp steel broadsword~
+A steel broadsword lies at your feet.~
+~
+5 64 1|8192
+0~ 2~ 3~ 3~
+5 0 5
+E
+sharp steel sword broadsword~
+
+The broadsword is a quality piece of craftsmanship 
+with a sturdy iron pommel and a wide, flat blade
+that has been sharpened with a whetstone to a fine 
+cutting edge on both sides..
+
+~
+A
+18 5 
+A
+19 5 
+#3703
+chainmail vest~
+a chainmail vest~
+A vest of chainmail lies on the ground. It seems to be almost new.~
+~
+9 0 1|8
+2~ 0~ 0~ 0~
+5 0 5
+E
+chainmail vest~
+
+The gleaming chainmail vest covers the torso
+from the neck down to the waist with thousands 
+of interconnected tempered-steel links.
+
+~
+#3704
+dragon shield dragonshield~
+The dragonshield~
+A shield emblazoned with the visage of a dragon stands against the wall here.~
+~
+9 0 1|512
+2~ 0~ 0~ 0~
+5 0 5
+E
+dragon shield dragonshield~
+
+The shield is of solid construction, crafted from some
+exotic hardwood you do not recognise. The dragon whose
+fearsome head adorns the shield's face is Zyklor, the 
+great drake whose shadow falls long over Midgaard from
+his remote realm beyond the eastern sea. Commonly his
+image or some corruption of it is taken as a device in
+the belief that so great is his evil that he himself fears 
+to look upon it, even in likeness.
+
+~
+#3705
+dark-blue dark blue cloak~
+a dark-blue cloak~
+A dark-blue cloak lies in a heap.~
+~
+9 0 1|4
+2~ 0~ 0~ 0~
+5 0 5
+E
+dark blue dark-blue cloak~
+
+The cloak is made of a thick, warm fabric and 
+feels pleasant against your skin.
+
+~
+#3706
+steel barrel helm barrel-helm~
+a steel barrel-helm~
+A steel helm sits on the ground at your feet.~
+~
+9 0 1|16
+2~ 0~ 0~ 0~
+5 0 5
+E
+steel barrel helm barrel-helm~
+
+The helm is of a `barrel' style, with a removeable
+facepiece which provides better visibility and
+ventilation when conditions allow.
+
+~
+#3707
+leather studded leggings~
+studded leather leggings~
+A pair of leather leggings dotted with brass studs lies on the ground.~
+~
+9 0 1|32
+2~ 0~ 0~ 0~
+5 0 5
+E
+leather studded leggings~
+
+The tough leather leggings have had hundreds 
+of small bronze studs affixed to them with a
+resinous glue in order to provide additional
+protection against injury.
+
+~
+#3708
+black leather boots~
+a pair of black leather boots~
+A pair of black leather boots has been stacked neatly against the wall here.~
+~
+9 0 1|64
+2~ 0~ 0~ 0~
+5 0 5
+E
+black leather boots~
+
+The boots are sturdy and waterproof and
+the leather used in their construction
+is of rare quality.
+
+~
+#3709
+deerhide gloves~
+a pair of deerhide gloves~
+Gloves made from the skin of a deer lie here, neatly folded.~
+~
+9 0 1|128
+2~ 0~ 0~ 0~
+5 0 5
+E
+deerhide gloves~
+
+The gloves have been fashioned from the hide 
+of a deer with the fur side turned inwards for
+warmth.
+
+~
+#3710
+green scalemail sleeves~
+a pair of green scalemail sleeves~
+A pair of green scalemail sleeves has been discarded here.~
+~
+9 0 1|256
+2~ 0~ 0~ 0~
+5 0 5
+E
+green scalemail sleeves~
+
+The leather in the sleeves has been soaked
+in a dye made from grass pulp, lending it an
+curious greenish tinge.
+
+~
+#3711
+velvet cape~
+a luxuriant velvet cape~
+A velvet cape has been tossed carelessly here.~
+~
+9 0 1|1024
+2~ 0~ 0~ 0~
+5 0 5
+E
+velvet cape~
+
+The cape has been fashioned from a rich purple
+velvet of a sort worn normally only by nobility
+and the very wealthy.
+
+~
+#3712
+belt silver leather~
+a black belt with a silver buckle~
+A thick leather belt with a silver buckle lays here.~
+~
+9 0 1|2048
+2~ 0~ 0~ 0~
+5 0 5
+E
+belt silver leather~
+
+The buckle appears to be genuine silver
+and the thickness of the leather strap implies
+it was meant to last its wearer a long time.
+
+~
+#3713
+copper bracer~
+a copper bracer~
+A wrist bracer fashioned from copper lies here.~
+~
+9 0 1|4096
+2~ 0~ 0~ 0~
+5 0 5
+E
+copper bracer~
+
+The bracer has been fashioned from burnished 
+copper and protects the wrists and lower 
+forearms well from injury.
+
+~
+#3714
+key~
+an iron key~
+You spy a heavy iron key.~
+~
+18 0 1
+0~ 0~ 0~ 0~
+1 0 0
+#3715
+diploma~
+a Mud School diploma~
+You see a Mud School diploma here.~
+~
+8 64 1|16384
+0~ 0~ 0~ 0~
+1 0 5
+E
+diploma~
+This document shows that you have graduated from Mud School.
+It also has magical effects on your abilities if you hold it!
+~
+A
+5 1
+A
+4 1
+#3716
+banner illumination~
+banner of illumination~
+A brightly-glowing banner lies at your feet.~
+~
+1 1|64 1
+0~ 0~ -1~ 0~
+1 0 5
+E
+banner illumination~
+
+The banner shines brightly with a light that doesn't fade or falter. 
+It has plainly had a magical enchantment cast upon it.
+
+~
+A
+24 -1
+A
+17 -1
+#3717
+brown robe~
+{ya long brown robe{x~
+A long brown robe lies neatly folded on the ground here.
+~
+~
+9 0 1|8
+2~ 0~ 0~ 0~
+5 0 5
+
+#3718
+portal blue light magical~
+a magical portal~
+The portal hangs in the air.~
+~
+33 1 0
+3711~ -1~ 0~ 100~
+0 0 0
+
+#3719
+portal blue light magical~
+a magical portal~
+The portal hangs in the air.~
+~
+33 1 0
+3724~ -1~ 0~ 100~
+0 0 0
+
+#3720
+portal blue light magical~
+a magical portal~
+The portal hangs in the air.~
+~
+33 1 0
+3725~ -1~ 0~ 100~
+0 0 0
+
+#0
+
+
+#ROOMS
+
+#3700
+Floating in Space~
+You float in the inky darkness of space.  Far beneath you sits an immense
+planet, cloaked in brilliant white cloud.  A distant sun flames above you; 
+a lifeless moon swings slowly around its parent.
+
+                 {WWelcome to the Dragons Domain MUD!{x
+                 ----------------------------------
+You are about to arrive in the Domain and begin your basic training.
+
+If you are an experienced Envy-style Mud player, it won't take you too
+long to get yourself up to speed.  If you are not an experienced player,
+then things may seem a little bewildering: but don't worry!  There is
+plenty of helpful advice for new players.
+
+To leave the Domain, enter QUIT.  Beware: if you quit before you gain a
+level, your new character will not be saved.
+
+           We hope you enjoy your time here...  Good luck!
+                         <The DD Immortals>	  
+
+Enter LOOK to re-read this message; enter DOWN to begin your descent...
+~
+0 1024|8192 0
+D 5
+A beautiful planet floats beneath you.
+~
+~
+0 0 3701
+S
+
+#3701
+Falling through Space~
+You are beginning to be pulled towards the planet far below.
+
+{WGetting Help{x
+
+The Dragons Domain has a website posted at <{Bwww.dragons-domain.org{x>: you are
+encouraged to check it out!  If this is the first time you have visited
+the Domain, you should also read the `Frequently Asked Questions' at
+<{Bwww.dragons-domain.org/faq{x>.
+
+Help is available online by using the HELP command.  If online help
+cannot answer your question, try reading the FAQ.  Also read HELP NEWBIE.
+
+Head DOWN to approach the planet below.
+~
+0 1024|8192 0
+D 5
+A beautiful planet floats beneath you.  It is covered in lush forest.
+~
+~
+0 0 3702
+S
+
+#3702
+Hurtling towards Earth~
+You plummet towards the forested surface of the planet, the roaring wind
+deafening you.
+
+{WConfiguration{x
+
+There are many configuration options that you may set.  If your terminal
+can support ANSI colour, enter the command COLOR to toggle colour on or
+off.  Enter the command AUTO to bring up a list of options.  Your prompt
+can also be changed using the PROMPT command.
+
+Enter `HELP ANSI', `HELP ANSI2', `HELP AUTO' and `HELP PROMPT' for more
+information.
+
+You fly DOWN towards a vast, forested continent.
+~
+0 1024|8192 0
+D 5
+Forest stretches out beneath you.
+~
+~
+0 0 3703
+S
+
+#3703
+Approaching a City~
+Freefalling through the bright sky, a small city settled within the
+forests comes into view.  A large Temple rises from its midst.  Crackling
+blue energy sparks from its tall spire: you can feel this energy pulling
+you closer to the Temple's heart.
+
+A small {RImp{x appears from nowhere and flies alongside you.
+
+{WTraining{x
+
+You are about to begin your training.  Pay close attention, and you will
+graduate without too much trouble.  The magical {RImp{x will guide you
+throughout: enter LOOK IMP to ask it for advice.  When you raise a level
+of experience, you will be able to SAVE your character.
+~
+0 1024|8192 0
+D 5
+A magnificent temple lies below.
+~
+~
+0 0 3704
+E
+imp~
+The Imp is a small, red-skinned demon, summoned as a magical familiar.
+It grins at you as it flies alongside, its eyes warm and friendly.
+
+The Imp says "Head DOWN my friend: my Master awaits you!"
+~
+S
+
+#3704
+Training Begins~
+You stand in a bare stone courtyard.  High stone walls topped with evil
+looking spikes line the perimeter.  Bits of trash and rubble lay
+scattered about; it's fairly bleak and exposed here.
+     Apart from a narrow hole in the middle of the northern wall, you can
+see no exit from this courtyard.
+
+An {RImp{x hovers next to you.  Remember to `LOOK IMP' for advice.
+~
+0 1024|8192 0
+D 0
+A hole disappears into the northern wall.
+~
+~
+0 0 3705
+E
+imp~
+The Imp says "You are about to begin your basic training.  The first
+thing you'll need to complete is the obstacle course.  There are a few
+commands that let you observe your environment and move about it.
+
+"The command LOOK describes your current location.  You can also enter
+`LOOK <creature>', `LOOK <object>', `LOOK IN <container>' and `LOOK
+<direction>' for specific information.  The command SCAN will let you
+survey the area.  EXITS will list visible exits.
+
+"To move, you simply enter the direction you wish to move: NORTH, SOUTH,
+EAST, WEST, UP or DOWN.  You can also enter the command RECALL to be
+magically transported back to the City from anywhere in the world: but
+you won't be able to do that until you've finished your training.
+
+"The obstacle course begins through that hole in the north wall."
+~
+S
+
+#3705
+Obstacle Course~
+You have to stoop to move along this dark, circular tunnel.  Dirty water
+trickles along the bottom of this pipe and its walls are covered in
+slime.  After about ten feet the tunnel turns sharply to the east.
+
+The {RImp{x follows you along the length of the tunnel.
+~
+0 8|1024|8192 0
+D 2
+The south tunnel returns you to the courtyard.~
+~
+0 0 3704
+D 1
+The tunnel heads east into the gloom.~
+~
+0 0 3706
+E
+imp~
+The Imp motions you to head EAST along the tunnel.
+~
+S
+
+#3706
+Obstacle Course~
+The tunnel opens up into a small room.  Narrow windows let in a little
+light.  The room is empty and dirty.  A small hole in the ceiling can be
+accessed by climbing up a thick, knotted rope that hangs down near the
+northern wall.
+
+The {RImp{x waits for you to continue.
+~
+0 8|1024|8192 0
+D 3
+The tunnel to the courtyard leaves west from the room.
+~
+~
+0 0 3705
+D 4
+A rope lets you climb up through the ceiling.
+~
+~
+0 0 3707
+E
+hole~
+You'll be able to get through the hole by climbing up the rope.
+~
+E
+imp~
+The Imp points UP to the hole in the ceiling.
+~
+E
+knotted rope ladder ropeladder~
+The rope looks strong and has thick knots at regular intervals.
+It shouldn't be too hard to climb up it.
+~
+S
+
+#3707
+Obstacle Course~
+You clamber into another small room.  A hole in the floor exposes a rope
+ladder into the room below.  A small iron hatch dominates the western wall.
+
+The {RImp{x pirches on the floor.
+~
+0 8|1024|8192 0
+D 5
+A hole in the floor leads down.
+~
+~
+0 0 3706
+D 3
+An iron hatch opens west.
+~
+hatch iron~
+1 0 3708
+E
+imp~
+The Imp says "Type OPEN WEST to open the hatch, then leave WEST to
+continue the course.  You can CLOSE the hatch from the other side if you
+like."
+~
+E
+iron hatch~
+The hatch is about 2 feet square.  It is rusted but solid-looking.
+~
+S
+
+#3708
+Obstacle Course~
+You enter another circular tunnel, covered in slime and muck.  At the
+western end, a trapdoor offers a way south.
+
+The {RImp{x has followed you through the tunnel.
+~
+0 8|1024|8192 0
+D 1
+A hatch opens east.
+~
+hatch iron~
+1 0 3707
+D 2
+A trapdoor opens south.
+~
+trapdoor door~
+1 0 3709
+E
+trapdoor door~
+A trapdoor in the wall will take you south from the end of the tunnel.
+~
+E
+imp~
+The Imp points to the trapdoor to the SOUTH.
+~
+S
+
+#3709
+Obstacle Course~
+You reach another bare room.  The mouth of a steep tunnel opens up in the
+centre of the floor.  Slime and mud cover everything.
+
+The {RImp{x hovers nearby.
+~
+0 8|1024|8192 0
+D 0
+A trapdoor will return you north to the tunnel.
+~
+~
+1 0 3708
+D 5
+A slippery tunnel disappears down through the floor.
+~
+tunnel steep~
+0 0 3710
+E
+tunnel steep slippery~
+You'll be able to slide down the tunnel without too much worry.
+~
+E
+imp~
+The Imp grins widely.  "You'll have to slide DOWN from here."
+~
+S
+
+#3710
+End of the Obstacle Course~
+You slip down the short tunnel and land in a puddle of dirty water.  You
+sit in a dank room illuminated by the soft glow of a magical portal: a
+sheet of blue light that hovers near the northern wall.  The face of the
+portal flickers and swirls.
+
+The {RImp{x will tell you what to do next.
+~
+0 8|1024|8192 0
+E
+imp~
+The Imp says "Well done, you've made it through the obstacle course.
+You should type ENTER PORTAL to complete this stage of your training."
+~
+S
+
+#3711
+Exercise Yard~
+You step from the portal into a stone yard similar to the one before the
+obstacle course.  About half-a-dozen feeble looking recruits are being
+put through exercises by several muscular soldiers.  The ranking officer
+yells and barks at the recruits, most whom look asthough they're about to
+collapse. 
+     A few solid looking doors lead from the yard, but are guarded by
+soldiers that prevent your exit.  A wide tunnel leads through the
+northern wall.
+
+The {RImp{x has some helpful advice for you.
+~
+0 1024|8192 1
+E
+imp~
+The Imp says "You're about to begin your combat training.  Before you go,
+there are some commands that will report your status and progress. 
+
+"Type SCORE to bring up your scoresheet: it contains a lot of
+information, and more information will be revealed as you increase in
+level.  Type AFFECT to list any spells that you are affected by: you
+probably won't be affected by anything yet.  Type WIMPY to set your wimpy
+value: this will make you automatically try to escape combat if the
+battle is going badly for you.
+
+"If you find this all a little too confusing, then you should really read
+the beginners' sections of the FAQ for more detailed help: try HELP FAQ.
+
+"When you are ready, leave through the northern tunnel."
+~
+D 0
+A wide tunnel leads north.
+~
+~
+0 0 3721
+S
+
+#3712
+Combat Training~
+You emerge from the tunnel into another yard, covered with sandy earth.
+The implements of combat training are everywhere: racks of weapons,
+scaffolds mounted with shields and counterweights, targets for archery,
+bales of straw arranged as enemy soldiers.
+     Miserable recruits are being taught the basics of hand-to-hand 
+combat by lightly armoured soldiers, who regard them with a mix of
+derision and pity.
+     The yard is quite large, with areas to the west and east.  In these
+areas, the more advanced recruits are attempting live combat with
+ferocious forest animals chained to pegs in the ground.  A shut gate is
+visible in the northern wall.
+     A tunnel southwards leads back to the Cleric, who can heal you.
+
+The {RImp{x hovers nearby, enjoying the spectacle.
+~
+0 1024|8192 1
+D 3
+The yard stretches west.
+~
+~
+0 0 3714
+D 1
+The yard stretches east.
+~
+~
+0 0 3713
+D 0
+A gate leads northwards.
+~
+gate~
+1 0 3715
+D 2
+A tunnel leads south.
+~
+tunnel~
+0 0 3721
+E
+imp~
+The Imp says "You'll get your first taste of melee here!  To the west and
+east are a range of captured beasts: try your hand at dispatching them.
+
+"It is always a good idea to determine how strong your opponent will be,
+by LOOKing to see if they are carrying weapons and armour, and by
+entering `CONSIDER <target>' for an estimate of your relative strengths.
+
+"To start a fight, enter `KILL <target>'.  If things are going badly for
+you, you can attempt to escape by entering FLEE.  If you have set your
+WIMPY, you will automatically try to flee when your hit points reach your
+`wimpy' value.  You can `SACRIFICE <corpse>' when you're done.
+
+"Don't try to gain a level here: there will be more beasts for you to
+kill later.  When you are done, exit through the northern gate."
+~
+S
+
+#3713
+Combat Training~
+You make your way to the eastern end of the yard.  Several distressed
+animals, captured from the surrounding woodlands, have been chained up
+for use as live targets for the recruits.  The recruits look even more
+distressed than the animals.  A soldier indicates a couple of animals for
+you to try to kill.
+     The yard returns to the west.
+     
+The {RImp{x sits nearby.
+~
+0 1024|8192 1
+D 3
+The yard returns west.
+~
+~
+0 0 3712
+E
+imp~
+The Imp tells you to KILL the captured animals.
+~
+S
+
+#3714
+Combat Training~
+You make your way to the western end of the yard.  Several distressed
+animals, captured from the surrounding woodlands, have been chained up
+for use as live targets for the recruits.  The recruits look even more
+distressed than the animals.  A soldier indicates a couple of animals for
+you to try to kill.
+     The yard returns to the east.
+     
+The {RImp{x waits for you patiently.
+~
+0 1024|8192 1
+D 1
+The yard returns east.
+~
+~
+0 0 3712
+E
+imp~
+The Imp tells you to KILL the captured animals.
+~
+S
+
+#3715
+Advanced Combat Training~
+You enter a large stone hall with a high ceiling.  The eastern and
+western ends of the hall have been sectioned off into cages, each
+accessible from a central north-south corridor.  The cages contain
+humanoid slaves; their screams of pain and rage fill the air.  Soldiers
+are forcing reluctant recruits into the cages to fight the captives.
+     You can head west or east into some caged compartments, or head
+north to the other end of the hall.
+
+The {RImp{x has some important advice for you.
+~
+0 1024|8192|4|8 0
+D 0
+The hall continues north.
+~
+~
+0 0 3716
+D 1
+A gate opens east into a caged compartment.
+~
+gate~
+1 0 3718
+D 2
+A door opens south into the courtyard.
+~
+door~
+1 0 3712
+D 3
+A gate opens west into a caged compartment.
+~
+gate~
+1 0 3717
+E
+imp~
+The Imp says "You will now fight some stronger opponents: humanoid slaves
+and criminals that this garrison has captured.  They will be stronger and
+carry some equipment.
+
+"Once you have killed them, you can loot their corpses by typing `GET ALL
+CORPSE'.  You can wear any equipment by typing `WEAR <item>' or `WEAR ALL'
+to wear everything.  You can take off equipment by typing `REMOVE <item>'
+or `REMOVE ALL'.  Type EQUIPMENT to view what you are wearing, and
+INVENTORY to see what you are carrying.  If you type EQUIPMENT and then
+any text as an argument (e.g. `EQUIPMENT FOO'), your unfilled equipment
+slots are also shown.
+
+"You can look inside a container by typing `LOOK IN <item>', e.g. `LOOK
+IN POUCH'.  To put something inside a container, enter `PUT <object>
+<container>'.  To get something out, type `GET <object> <container>'.
+You can GET ALL and PUT ALL.  To drop an item on the floor, enter `DROP
+<object>'.
+
+"You should kill all four creatures in this hall, loot their corpses and
+wear their equipment.  You should then leave through the northern exit."
+~
+S
+
+#3716
+Advanced Combat Training~
+You make your way to the northern end of the hall.  There are cages to
+the west and east that you may enter, and a door to the north leading
+from the hall.  You can return south to the first two cages.
+
+The {RImp{x hovers nearby.
+~
+0 4|8|1024|8192 0
+D 2
+More cages can be accessed to the south.
+~
+~
+0 0 3715
+D 1
+A gate opens east into a caged compartment.
+~
+gate~
+1 0 3720
+D 3
+A gate opens west into a caged compartment.
+~
+gate~
+1 0 3719
+D 0
+A solid door opens north.
+~
+door~
+1 0 3722
+E
+imp~
+The Imp says "Enter the cages to the west and east, kill the captives and
+wear their equipment.  You can leave north when you've finished."
+~
+S
+
+#3717
+Advanced Combat Training~
+You enter a caged compartment.  Various humanoid creatures sit in chains
+and are harassed by their captors.  Soldiers have unleashed a prisoner
+for you to fight to the death.
+
+The {RImp{x rests on the bars of the cage.
+~
+0 4|8|1024|8192 0
+D 1
+A gate exits east.
+~
+gate~
+1 0 3715
+E
+imp~
+The Imp says "Kill this wretch and take its equipment."
+~
+S
+
+#3718
+Advanced Combat Training~
+You enter a caged compartment.  Various humanoid creatures sit in chains
+and are harassed by their captors.  Soldiers have unleashed a prisoner
+for you to fight to the death.
+
+The {RImp{x floats nearby.
+~
+0 4|8|1024|8192 0
+D 3
+A gate exits west.
+~
+gate~
+1 0 3715
+E
+imp~
+The Imp says "Kill this wretch and take its equipment."
+~
+S
+
+#3719
+Advanced Combat Training~
+You enter a caged compartment.  Various humanoid creatures sit in chains
+and are harassed by their captors.  Soldiers have unleashed a prisoner
+for you to fight to the death.
+
+The {RImp{x flies nearby.
+~
+0 4|8|1024|8192 0
+D 1
+A gate exits east.
+~
+gate~
+1 0 3716
+E
+imp~
+The Imp says "Kill this wretch and take its equipment."
+~
+S
+
+#3720
+Advanced Combat Training~
+You enter a caged compartment.  Various humanoid creatures sit in chains
+and are harassed by their captors.  Soldiers have unleashed a prisoner
+for you to fight to the death.
+
+The {RImp{x waits patiently for you.
+~
+0 4|8|1024|8192 0
+D 3
+A gate exits west.
+~
+gate~
+3 0 3716
+E
+imp~
+The Imp says "Kill this wretch and take its equipment."
+~
+S
+
+#3721
+Sanctuary~
+You travel through the tunnel into a well lit room.  There are beds and
+chairs against the walls, and several recruits sit quietly or rest.  A
+tunnel leads north from here.
+
+The {RImp{x has some advice for you.
+~
+0 4|8|1024|8192 0
+D 0 
+A tunnel leaves north into a large yard.
+~
+~
+0 0 3712
+E
+imp~
+The Imp smiles and says "You may rest here for a while if you want.  The
+Cleric will heal and protect you.  You may also return here to recover
+during your combat training if you are hurt.
+
+"Enter REST or SLEEP to speed your recovery.  You remain aware of your
+surroundings while resting, but do not heal as quickly as if you were
+sleeping.  Type WAKE or STAND to get ready for travel again."
+~
+S
+
+#3722
+Final Combat~
+You enter a large room that has been converted into a fighting pit.  High
+ranking soldiers carefully scrutinize recruits as they square off with
+experienced gladiators.  If you succeed against your opponent, you will
+have completed your combat training.
+     A door to the south takes you back to the cage room.  In the centre
+of the northern wall stands an iron door with a solid lock.
+
+The {RImp{x flies nearby.
+~
+0 4|8|8192|1024 0
+D 0
+An iron door leads north.
+~
+door iron~
+1 3714 3723
+D 2
+A door opens south.
+~
+~
+1 0 3716
+E
+imp~
+The Imp tells you "Kill the gladiator and loot his corpse.  He has two
+important pieces of equipment: a Mud School diploma, which has magical
+effects if you hold it in your hand, and a large key.  Use the key to
+unlock the northern door: enter `UNLOCK NORTH'.  After that, leave north
+to the next room."
+~
+S
+
+#3723
+Victory~
+You leave the gladiators and enter a small chamber where it is quieter
+and warmer.  Another portal shimmers in the centre of the room.
+
+The {RImp{x smiles broadly.
+~
+0 4|8|1024|8192 0
+D 2
+The door south returns you to the gladiator room.
+~
+~
+1 3714 3722
+E
+imp~
+The Imp says "Congratulations!  You have completed your combat training,
+and are nearly ready to leave the School and begin adventuring.
+
+"You will now have the opportunity to purchase some basic supplies, and
+practice any skills you want to.  You will also have access to more
+creatures to practice killing.
+
+"ENTER the portal to continue."
+~
+S
+
+#3724
+General Supplies~
+New recruits can buy basic supplies from this store.  A wooden staircase
+opposite the counter leads downwards.
+
+The {RImp{x waits to answer your questions.
+~
+0 8|1024 0
+D 5
+The stairs lead down from the store.
+~
+stairs staircase wooden~
+0 0 3725
+E
+imp~
+The Imp tells you "Type LIST to find out what this store is selling.
+Enter `BUY <item>' to purchase something; enter `BUY <number> <item>' to
+make multiple purchases.  You might also SELL objects here too.
+
+"You'll want to buy food and drink from here.  When you are hungry or
+thirsty, enter `EAT <food>' or `DRINK <water container>'.  When you are
+near a fountain, you may simply DRINK, and can also FILL any water
+containers you have.
+
+"Head down from here when you have finished."
+~
+S
+
+#3725
+The Entrance to the Mud School~
+You stand at the entrance to the Domain's training ground for new
+recruits.  The foyer is a spacious stone room with a high vaulted
+ceiling; many fabulous trophies, painted shields and weapons hang on the
+walls.
+     The door to the north will take you through to the obstacle course 
+and combat training grounds, if you wish to repeat that training.
+     The gate to the south will take you into a small arena, where you can
+improve your fighting skills and gain your first level of experience.
+     To the east you will find the Loremaster, who will train you until
+you reach level ten.
+     The staircase up will take you to the School's General Stores.
+     The staircase down will take you the Temple of Midgaard.
+
+The {RImp{x has some important advice for fresh recruits.
+~
+0 4|8|1024 0
+D 0
+This door leads north to the School's training grounds.
+~
+door~
+1 0 3704
+D 1
+The Loremaster can be found east from here.
+~
+~
+1 0 3726
+D 2
+This gate will take you to the School's Arena.
+~
+gate~
+1 0 3728
+D 4
+Stairs lead up to the General Store.
+~
+stairs staircase wooden~
+0 0 3724
+D 5
+Stairs lead down to the Temple of Midgaard.
+~
+~
+0 0 3001
+E
+imp~
+The Imp says "If you have just come back from training for the first
+time, then you should head east to see the Loremaster.  Then you can
+return here and head south to practice your combat skills until you raise
+a level.  Once you have levelled, you'll be able to SAVE.
+
+"If you head down and north, you can rest at the Altar of the Temple,
+where the Healer will restore you.  You can return to the School whenever
+you wish.
+
+"Once you are ready to leave, the FAQ has several suggestions for where
+new adventurers can start exploring."
+~
+S
+
+#3726
+The Loremaster~
+This chamber is large and cluttered with bookcases, shelves, models,
+scientific apparatus, armor and weapons.  Several large tables fill the
+centre of the room, and the walls are lined with simple benches.  The
+central tables are covered with what looks like ancient junk.
+     The Loremaster works here to train new recruits.  He has a diverse
+band of assistants who help him to improve the knowledge and technique of
+young adventurers.  Young recruits sit patiently on the side benches
+waiting for him to call them towards his desk.
+
+The {RImp{x dutifully follows you into the chamber.
+~
+0 4|8|1024 0
+D 3
+The foyer of the School lies westwards.
+~
+~
+0 0 3725
+E
+imp~
+The Imp tells you "The Loremaster will train you until you are able to
+learn from your Guildmaster at level ten.  You increase your attributes
+automatically as raise in level: enter `TRAIN <attribute>' to select
+which attribute you wish to be improved.
+
+"Type PRACTICE to list what skills you have and which skills you may
+learn.  Enter SLIST for a list of skills you may eventually learn.  Enter
+`PRACTICE <skill name>' to ask the Loremaster to train you.  It is wise
+to spell out the name skill you want in full, as he is easily confused!
+
+"You will need to have the correct type of practice point in order to be
+successfully trained.  See online HELP entries for PRACTICE and TRAIN,
+and read the FAQ for more information.
+
+"The practice system is not hard to master, but may bewilder players new
+to Mudding and experienced EnvyMud players alike."
+~
+S
+
+#3728
+The Mud School Arena~
+You jump down through the door from the School into a small arena.  You
+appear to be at its northern end.  The walls are steep and high, but
+contain numerous footholes for you to clamber up to safety.
+
+The {RImp{x watches you closely.
+~
+0 4|8|1024 0
+D 1
+~
+~
+0 0 3730
+D 2
+~
+~
+0 0 3732
+D 3
+~
+~
+0 0 3729
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+E
+imp~
+The Imp says "You can practice your fighting skills here in this small
+arena.  You can escape at any time by heading up from any section of
+wall.  I will wait here and join you when you decide to leave."
+~
+S
+
+#3729
+The Mud School Arena~
+You stand in the northwestern corner of the arena.  You can head up from
+here to escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 1
+~
+~
+0 0 3728
+D 2
+~
+~
+0 0 3731
+S
+
+#3730
+The Mud School Arena~
+You stand in the northeastern corner of the arena.  You can head up from
+here to escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 2
+~
+~
+0 0 3733
+D 3
+~
+~
+0 0 3728
+S
+
+#3731
+The Mud School Arena~
+You stand at the western edge of the arena.  You can head up from here to
+escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 0
+~
+~
+0 0 3729
+D 1
+~
+~
+0 0 3732
+D 2
+~
+~
+0 0 3734
+S
+
+#3732
+The Mud School Arena~
+You stand in the centre of the arena.  You can head to any of the walls
+and head upwards to escape.
+~
+0 4|8|1024 0
+D 0
+~
+~
+0 0 3728
+D 1
+~
+~
+0 0 3733
+D 2
+~
+~
+0 0 3735
+D 3
+~
+~
+0 0 3731
+S
+
+#3733
+The Mud School Arena~
+You stand at the eastern edge of the arena.  You can head up from here to
+escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 0
+~
+~
+0 0 3730
+D 2
+~
+~
+0 0 3736
+D 3
+~
+~
+0 0 3732
+S
+
+#3734
+The Mud School Arena~
+You stand in the southwestern corner of the arena.  You can head up from
+here to escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 0
+~
+~
+0 0 3731
+D 1
+~
+~
+0 0 3735
+S
+
+#3735
+The Mud School Arena~
+You stand at the south edge of the arena.  You can head up from here to
+escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 0
+~
+~
+0 0 3732
+D 1
+~
+~
+0 0 3736
+D 3
+~
+~
+0 0 3734
+S
+
+#3736
+The Mud School Arena~
+You stand in the southeastern corner of the arena.  You can head up from
+here to escape.
+~
+0 4|8|1024 0
+D 4
+Footholes will take you up out of the arena.
+~
+~
+0 0 3737
+D 0
+~
+~
+0 0 3733
+D 3
+~
+~
+0 0 3735
+S
+
+#3737
+Safety~
+You clamber up the walls of the arena and through a trapdoor in its
+wooden ceiling.  It is safe here above the arena.  The comforting glow of
+another portal lights the area.
+
+The {RImp{x appears through the portal.
+~
+0 4|8|1024 0
+E
+imp~
+The Imp says "Enter the portal to return to the Mud School."
+~
+S
+#0
+
+
+#SPECIALS
+
+M 3710	spec_cast_adept		Cleric
+M 3700	spec_cast_psionicist	Loremaster
+
+S
+
+
+#RESETS
+
+D 0 3707 3 1		Close hatch in obstacle course
+D 0 3708 2 1		Close trapdoor in obstacle course
+O 0 3718 1 3710		Portal to obstacle course
+
+M 0 3702 1 3714		Animals to combat training yard
+M 0 3703 1 3714
+M 0 3704 1 3713
+M 0 3705 1 3713
+
+D 0 3712 0 1		Close gate in combat training yard
+
+M 0 3706 1 3717		Goblin to cages
+G 0 3708 0			boots
+G 0 3705 0			cloak
+
+M 0 3707 1 3718		Kobold to cages
+G 0 3706 0			helm
+G 0 3705 0			cloak
+
+M 0 3708 1 3719		Human prisoner to cages
+G 0 3707 0			leggings
+G 0 3712 0			belt
+
+M 0 3709 1 3720		Lizardman to cages
+G 0 3711 0			cape
+G 0 3713 0			bracer
+
+D 0 3715 1 1		close cage gates
+D 0 3715 3 1
+D 0 3716 1 1
+D 0 3716 3 1
+
+D 0 3716 0 1		close door to gladiators
+D 0 3722 0 2		lock door to victory
+
+M 0 3710 1 3721		Cleric to sanctuary
+
+M 0 3712 1 3722		Gladiator to final combat
+G 0 3713 0
+G 0 3715 0
+G 0 3714 0
+G 0 3710 0 
+
+O 0 3719 1 3723		Portal to victory
+O 0 3720 1 3737		Portal to safety
+
+D 0 3725 2 1		close door to arena
+D 0 3725 0 1		close door to obstacle course
+
+M 0 3711 1 3724		Quartermaster to store
+G 0 3138 0
+G 0 3009 0
+G 0 3373 0
+G 0 3031 0
+
+M 0 3700 1 3726		Loremaster
+
+M 0 3713 2 3729		a "board"
+M 0 3713 2 3736
+M 0 3714 4 3730		lizzy lizzy
+M 0 3714 4 3732
+M 0 3715 2 3734		woofpalBITE --[ DOGGY STYLE ]-- you!
+S
+
+
+#SPECIALS
+S
+
+
+#SHOPS
+
+3711	1 15 17 19 9 100 100 0 23
+0
+
+#$

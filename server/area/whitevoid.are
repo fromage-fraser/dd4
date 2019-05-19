@@ -1,0 +1,178 @@
+#AREA	Owl~   The White Void~
+-2 -2 70 100
+
+
+
+#ROOMS
+#25900
+In the White Void~
+You float in thin air in a completely white landscape, where you can see nothing 
+but a dazzling white light in any direction you look. It's quite unnerving and you
+probably don't want to spend a lot of time here if you can avoid it.
+~
+0 4|8192 9
+D0
+~
+~
+0 -1 30033
+D1
+~
+~
+0 -1 25715
+D2
+~
+~
+0 -1 30033
+D3
+~
+~
+0 -1 25715
+D4
+~
+~
+0 -1 30033
+D5
+~
+~
+0 -1 25715
+S
+#25901
+In the White Void~
+You float in thin air in a completely white landscape, where you can see nothing 
+but a dazzling white light in any direction you look. It's quite unnerving and you
+probably don't want to spend a lot of time here if you can avoid it.
+~
+0 4|8192 9
+D0
+~
+~
+0 -1 30257
+D1
+~
+~
+0 -1 25716
+D2
+~
+~
+0 -1 30257
+D3
+~
+~
+0 -1 25716
+D4
+~
+~
+0 -1 30257
+D5
+~
+~
+0 -1 25716
+S
+#25902
+In the White Void~
+You float in thin air in a completely white landscape, where you can see nothing 
+but a dazzling white light in any direction you look. It's quite unnerving and you
+probably don't want to spend a lot of time here if you can avoid it.
+~
+0 4|8192 9
+D0
+~
+~
+0 -1 31098
+D1
+~
+~
+0 -1 25711
+D2
+~
+~
+0 -1 31098
+D3
+~
+~
+0 -1 25711
+D4
+~
+~
+0 -1 31098
+D5
+~
+~
+0 -1 25711
+S
+#25903
+In the White Void~
+You float in thin air in a completely white landscape, where you can see nothing 
+but a dazzling white light in any direction you look. It's quite unnerving and you
+probably don't want to spend a lot of time here if you can avoid it.
+~
+0 4|8192 9
+D0
+~
+~
+0 -1 25710
+D1
+~
+~
+0 -1 3138
+D2
+~
+~
+0 -1 25710
+D3
+~
+~
+0 -1 3138
+D4
+~
+~
+0 -1 25710
+D5
+~
+~
+0 -1 3138
+S
+#25904
+In the White Void~
+You float in thin air in a completely white landscape, where you can see nothing 
+but a dazzling white light in any direction you look. It's quite unnerving and you
+probably don't want to spend a lot of time here if you can avoid it.
+~
+0 4|8192 9
+D0
+~
+~
+0 -1 25818
+D1
+~
+~
+0 -1 3001
+D2
+~
+~
+0 -1 25818
+D3
+~
+~
+0 -1 3001
+D4
+~
+~
+0 -1 25818
+D5
+~
+~
+0 -1 3001
+S
+#0
+
+#RESETS
+
+R 1 25900 5			Randomize all exits in void
+R 1 25901 5			Randomize all exits in void
+R 1 25902 5			Randomize all exits in void
+R 1 25903 5			Randomize all exits in void
+R 1 25904 5			Randomize all exits in void
+S
+
+#$
