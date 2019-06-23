@@ -1,4 +1,4 @@
-.PHONY: build up down
+.PHONY: build up down logs
 
 build:
 	docker-compose build --no-cache
