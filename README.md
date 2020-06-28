@@ -104,6 +104,13 @@ if you don't want this behaviour.
     Areas can be modified and characters saved.
 
 
+## FAQ
+
+An HTML FAQ for new players was hosted on the MUD's original website.
+There was a script and source files to generate the FAQ pages, but I no longer have it.
+The rendered FAQ pages can be found in the [faq](faq) directory: [view the FAQ index](faq/dd-faq.html).
+
+
 ## Immortals
 
 Three original immortals are provided. Log in as one of the following; passwords are blank.
@@ -144,8 +151,6 @@ If you want to create your own immortal:
 
     Probably.
     
--   There used to be an HTML FAQ that explained a lot for new players, but I no longer have a copy of it.
-
 -   I used [tinyfugue](http://tinyfugue.sourceforge.net/) as a game client.
 
 -   The server seems to crash hard if directories it expects to exist do not. E.g. subdirectories of `/server/player`.
