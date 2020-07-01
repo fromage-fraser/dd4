@@ -110,12 +110,12 @@ if you don't want this behaviour.
 
 An HTML FAQ for new players was hosted on the MUD's original website.
 There was a script and source files to generate the FAQ pages, but I no longer have it.
-The rendered FAQ pages can be found in the [faq](faq) directory: [view the FAQ index](faq/dd-faq.html).
+The rendered FAQ pages can be found in the `faq` directory: [view the FAQ index](faq/dd-faq.html).
 
 
 ## Maps
 
-Maps generated from MUD areas can be found in the [maps](maps) directory.
+Maps generated from MUD areas can be found in the `maps` directory.
 
 | File                                  | Notes
 | ---                                   | ---
