@@ -2544,10 +2544,13 @@ void do_warcry (CHAR_DATA *ch, char *argument)
 		act ("$n cries an ancient chant in preparation for battle.",
 		     ch, NULL, NULL, TO_ROOM);
 		send_to_char("You cry an ancient warchant in preparation for battle.\n\r", ch);
+
+		WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
 		return;
 	}
 
 	send_to_char("This time the warchant doesn't inspire you for battle...\n\r",ch);
+	WAIT_STATE(ch, PULSE_VIOLENCE);
 	return;
 }
 
