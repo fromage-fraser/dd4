@@ -36,7 +36,7 @@ Sergeant Arms~
 Sergeant at Arms~
 The Sergeant at Arms is here polishing his hammer.
 ~
-This is the tough and burly Sergeant at Arms. He wears the red armor of 
+This is the tough and burly Sergeant at Arms. He wears the red armor of
 war. He is a middle age man with graying hair that pokes out from under
 his helmet. He is always waiting for a fight.
 ~
@@ -153,7 +153,7 @@ ghost waiter~
 ghost of waiter~
 a ghost of a waiter is here waiting to serve you.
 ~
-This is the ghost of a long dead waiter. Probably one of the many that 
+This is the ghost of a long dead waiter. Probably one of the many that
 Jander killed for spilling a drink or something.
 ~
 2 0 900 S
@@ -291,7 +291,7 @@ Lexie~
 Lexie~
 Lexie is here.
 ~
-Lexie is an accomplished diver. But he seems to have problems keeping 
+Lexie is an accomplished diver. But he seems to have problems keeping
 students.
 ~
 2|32768 0 800 S
@@ -315,7 +315,7 @@ otik sandath bartender~
 Otik Sandath~
 Otik sandath is here tending the bar
 ~
-Otik is an older man with a gift for cooking. 
+Otik is an older man with a gift for cooking.
 
 Otik whispers, "A magical staff! I bet it was forged by demons from the
 terrible Darken Wood. There are terrible mysteries in that place, there are."
@@ -1762,7 +1762,7 @@ a talisman of enlightenment~
 A small silver talisman lies here~
 ~
 1 0 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 1 0 0
 A
 4 1
@@ -2166,7 +2166,7 @@ You are walking down a small alleyway along the north wall of the town.
 ~
 102 0 1
 D1
-You see the gateway to the town. 
+You see the gateway to the town.
 ~
 ~
 0 -1 10201
@@ -2182,12 +2182,12 @@ You are walking down a small alleyway along the north wall of the town.
 ~
 102 0 1
 D0
-You see an old boarded up building. 
+You see an old boarded up building.
 ~
 door~
 1 -1 10247
 D1
-You see a small alleyway. 
+You see a small alleyway.
 ~
 ~
 0 -1 10217
@@ -2203,7 +2203,7 @@ You are walking down a small alleyway along the north wall of the town.
 ~
 102 0 1
 D1
-You see a small alleyway. 
+You see a small alleyway.
 ~
 ~
 0 -1 10218
@@ -2257,7 +2257,7 @@ fill the air.
 ~
 102 0 1
 D0
-You see Harvest Road. 
+You see Harvest Road.
 ~
 ~
 0 -1 10222
@@ -2280,17 +2280,17 @@ fill the air.
 ~
 102 0 1
 D0
-You see Harvest Road. 
+You see Harvest Road.
 ~
 ~
 0 -1 10223
 D1
-You see a house. 
+You see a house.
 ~
 door~
 1 -1 10249
 D2
-You see Harvest Road. 
+You see Harvest Road.
 ~
 ~
 0 -1 10221
@@ -2303,12 +2303,12 @@ fill the air.
 ~
 102 0 1
 D0
-You see the corner of West Gullen Way and Harvest Road. 
+You see the corner of West Gullen Way and Harvest Road.
 ~
 ~
 0 -1 10224
 D2
-You see Harvest Road. 
+You see Harvest Road.
 ~
 ~
 0 -1 10222
@@ -2321,12 +2321,12 @@ To the east are various small shops and houses.
 ~
 102 0 1
 D1
-You see West Gullen Way. 
+You see West Gullen Way.
 ~
 ~
 0 -1 10225
 D2
-You see Harvest Road. 
+You see Harvest Road.
 ~
 ~
 0 -1 10223
@@ -2424,7 +2424,7 @@ To the East is the Townguard Administration Building.
 ~
 102 0 1
 D0
-You see a cobblestone path. 
+You see a cobblestone path.
 ~
 ~
 0 -1 10272
@@ -2482,7 +2482,7 @@ Any sort of shady actions will be punishable by death.
 
 
 -Captain of the Guard-
-~ 
+~
 S
 #10231
 Marketplace~
@@ -2568,7 +2568,7 @@ S
 #10234
 Jhen's Vegetable Cart~
 This is where Jhen the farmer comes to sell his crops. His wooden vegtable
-cart stands here filled with all sorts of vegetables. All his vegtables are 
+cart stands here filled with all sorts of vegetables. All his vegtables are
 unusually large. What kind of plant food does he use anyway...?
 There is a small sign nailed to the cart.
 ~
@@ -2640,9 +2640,9 @@ S
 #10237
 Nisi's Frozen Food~
 This is one of the oddest venders in the marketplace. Nisi claims to have
-various fresh frozen types of vegetables. They are frozen all right. In 
+various fresh frozen types of vegetables. They are frozen all right. In
 fact they are hard enough to stop an axe swing...go figure..
-And just how does she keep them from melting... 
+And just how does she keep them from melting...
 There is a small sign on the wall in the back of the shop.
 ~
 102 8 1
@@ -2803,7 +2803,7 @@ S
 #10244
 a House~
 This is a small house off of West Gullen Way. It is sparsely furnished and
-very tidy. a small fire burns warmly in the fireplace. The sweet smell of 
+very tidy. a small fire burns warmly in the fireplace. The sweet smell of
 flowers is present. Ahhh....what a nice home.
 ~
 102 8 1
@@ -2834,7 +2834,7 @@ S
 #10246
 a House~
 This is a small house off of the main street. It is well furnished and
-very tidy. a small fire burns warmly in the fireplace. The sweet smell of 
+very tidy. a small fire burns warmly in the fireplace. The sweet smell of
 flowers is present. Ahhh....what a nice home.
 ~
 102 8 1
@@ -2883,7 +2883,7 @@ S
 #10249
 a House~
 This is a small house off of the main street. It is well furnished and
-very tidy. a small fire burns warmly in the fireplace. The sweet smell of 
+very tidy. a small fire burns warmly in the fireplace. The sweet smell of
 flowers is present. Ahhh....what a nice home.
 ~
 102 8 1
@@ -2986,7 +2986,7 @@ Jander's Poolhall~
    Jander's bar used to be a very popular bar in Solace. For some reason or
 another it is now empty. Dust and cobwebs cover everything. It looks as if
 nobody has tread here in years. The bar is to the east. The pooltables are
-broken in half and lie in a heap on the floor. 
+broken in half and lie in a heap on the floor.
 There is a sign on the door to Jander's office.
 A backdoor to the alley is to the south.
 ~
@@ -3046,9 +3046,9 @@ S
 Death's Chambers~
    This is the Chamber of Death. If you are lucky, he isn't here right now.
 The walls are covered with twisted faces of a countless tortured
-souls crying out in agony. The floor is made of black marble as is the 
+souls crying out in agony. The floor is made of black marble as is the
 ceiling. The air smells of brimstone and makes your lungs burn with
-every breath. 
+every breath.
 There is a sign floating in front of you.
 ~
 102 8|512 1
@@ -3091,7 +3091,7 @@ here you are likely to be in BIG trouble...
 ~
 102 8 1
 D5
-You see stairs leading down to the guardpost. 
+You see stairs leading down to the guardpost.
 ~
 ~
 0 -1 10213
@@ -3106,7 +3106,7 @@ here you are likely to be in BIG trouble...
 ~
 102 8 1
 D5
-You see stairs leading down to the guardpost. 
+You see stairs leading down to the guardpost.
 ~
 ~
 0 -1 10220
@@ -3118,12 +3118,12 @@ Administration Building.
 ~
 102 0 1
 D1
-You see the Townguard Administration Building. 
+You see the Townguard Administration Building.
 ~
 ~
 0 -1 10263
 D3
-You see the end of Main road. 
+You see the end of Main road.
 ~
 ~
 0 -1 10229
@@ -3132,7 +3132,7 @@ S
 Townguard Administration Building~
 Before you stands the Townguard Administration Building. This is a large
 building with various statues and other artwork decorating the building.
-There is an imposing door to the east, while a narrow alleyway runs along 
+There is an imposing door to the east, while a narrow alleyway runs along
 the side of the building, to the north.
 ~
 102 0 1
@@ -3141,12 +3141,12 @@ D0
 ~
 0 -1 25811
 D1
-You see entrance hall. 
+You see entrance hall.
 ~
 door~
 1 -1 10264
 D3
-You see a dusty road. 
+You see a dusty road.
 ~
 ~
 0 -1 10262
@@ -3162,7 +3162,7 @@ The entrance door is to the west.
 ~
 102 8 1
 D1
-You see a pair of heavy double doors. 
+You see a pair of heavy double doors.
 ~
 doors~
 1 -1 10270
@@ -3172,7 +3172,7 @@ You see a marble corridor.
 ~
 0 -1 10265
 D3
-You see the entrance to the building. 
+You see the entrance to the building.
 ~
 door~
 1 -1 10263
@@ -3184,18 +3184,18 @@ columns line the walls. Crystal chandeliers hang from the ceiling.
 A door to the Town Clerk's office is to the west.
 ~
 102 8 1
-D0 
-You see the entrance hallway. 
+D0
+You see the entrance hallway.
 ~
 ~
 0 -1 10264
-D1 
-You see marble corridor. 
+D1
+You see marble corridor.
 ~
 ~
 0 -1 10268
 D3
-You see the door to the Town Clerk's Office. 
+You see the door to the Town Clerk's Office.
 ~
 door officedoor~
 1 -1 10266
@@ -3210,13 +3210,13 @@ The hallway is to the east.
 A heavy metal depository door is to the west.
 ~
 102 8 1
-D1 
-You see a marble corridor. 
+D1
+You see a marble corridor.
 ~
 ~
 1 -1 10265
 D3
-You see a heavy metal door. 
+You see a heavy metal door.
 ~
 safe~
 1 10305 10267
@@ -3229,8 +3229,8 @@ boxes set into them.
 The safe door is to the east.
 ~
 102 8 1
-D1 
-You see Town Clerks Office. 
+D1
+You see Town Clerks Office.
 ~
 safe~
 1 10305 10266
@@ -3243,17 +3243,17 @@ A pair of heavy double doors lie to the north.
 ~
 102 8 1
 D0
-You see a pair of heavy double doors. 
+You see a pair of heavy double doors.
 ~
 doors~
 1 -1 10270
-D1 
-You see a fountain. 
+D1
+You see a fountain.
 ~
 ~
 0 -1 10269
 D3
-You see a marble corridor. 
+You see a marble corridor.
 ~
 ~
 0 -1 10265
@@ -3266,36 +3266,36 @@ fountain.
 ~
 102 8 1
 D3
-You see marble corridor. 
+You see marble corridor.
 ~
 ~
 0 -1 10268
 S
 #10270
 Hallway Intersection~
-This is the intersection of four large hallways. Light streams in from the 
+This is the intersection of four large hallways. Light streams in from the
 stainglass skylight above. Large double doors close off each hallway.
 The doors are made of oak and encrusted with gold patterns.
 A pair of double doors are in each direction.
 ~
 102 8 1
 D0
-You see a pair of double doors. 
+You see a pair of double doors.
 ~
 doors~
 1 -1 10276
 D1
-You see a pair of double doors. 
+You see a pair of double doors.
 ~
 doors~
 1 -1 10271
 D2
-You see a pair of double doors. 
+You see a pair of double doors.
 ~
 doors~
 1 -1 10268
 D3
-You see a pair of double doors. 
+You see a pair of double doors.
 ~
 doors~
 1 -1 10264
@@ -3308,12 +3308,12 @@ A pair of double doors lie to the west.
 ~
 102 8 1
 D1
-You see a long hallway. 
+You see a long hallway.
 ~
 ~
 0 -1 10277
 D3
-You see a pair of double doors. 
+You see a pair of double doors.
 ~
 doors~
 1 -1 10270
@@ -3325,12 +3325,12 @@ north.
 ~
 102 0 1
 D0
-You see a large building ahead. 
+You see a large building ahead.
 ~
 ~
 0 -1 10282
 D2
-You see the end of Main road. 
+You see the end of Main road.
 ~
 ~
 0 -1 10229
@@ -3346,12 +3346,12 @@ The door to the hallway is on the east wall.
 ~
 102 8 1
 D0
-You see an Iron bound door. 
+You see an Iron bound door.
 ~
 door~
 1 -1 10283
 D1
-You see a hallway. 
+You see a hallway.
 ~
 door~
 1 -1 10274
@@ -3366,17 +3366,17 @@ The Sergeant's waiting room is to the west.
 ~
 102 8 1
 D0
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10284
 D1
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10275
 D3
-You see a reception area. 
+You see a reception area.
 ~
 door~
 1 -1 10273
@@ -3391,17 +3391,17 @@ There is an oak door to the north.
 ~
 102 8 1
 D0
-You see an oak door. 
+You see an oak door.
 ~
 oak door~
 1 -1 10285
 D1
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10276
 D3
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10274
@@ -3416,17 +3416,17 @@ A pair of double doors are south of you.
 ~
 102 8 1
 D0
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10286
 D2
-You see double doors. 
+You see double doors.
 ~
 doors~
 1 -1 10270
 D3
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10275
@@ -3440,12 +3440,12 @@ the only hallway that doesn't have large amounts of gold and other artifacts.
 ~
 102 8 1
 D0
-You see a long hallway. 
+You see a long hallway.
 ~
 ~
 0 -1 10287
 D2
-You see the end of the hallway. 
+You see the end of the hallway.
 ~
 ~
 0 -1 10271
@@ -3458,7 +3458,7 @@ pay for a private room. The room continues to the East.
 ~
 102 8 1
 D1
-You see more of a very large room. 
+You see more of a very large room.
 ~
 ~
 0 -1 10279
@@ -3472,12 +3472,12 @@ A door to the hallway is to the north.
 ~
 102 8 1
 D0
-You see a large hallway. 
+You see a large hallway.
 ~
 door~
 1 -1 10289
 D3
-You see more of a very large room. 
+You see more of a very large room.
 ~
 ~
 0 -1 10278
@@ -3489,7 +3489,7 @@ less seems to occur. Maybe a beer and a nap would be nice.
 ~
 102 8 1
 D1
-You see main bar. 
+You see main bar.
 ~
 ~
 0 -1 10281
@@ -3504,12 +3504,12 @@ The carved door to the Inn is to the east.
 ~
 102 8 1
 D0
-You see north end of the bar. 
+You see north end of the bar.
 ~
 ~
 0 -1 10291
 D1
-You see a carved door. 
+You see a carved door.
 ~
 door~
 1 -1 10282
@@ -3542,7 +3542,7 @@ You see a cobblestone path.
 ~
 0 -1 10272
 D3
-You see a carved door. 
+You see a carved door.
 ~
 door~
 1 -1 10281
@@ -3556,7 +3556,7 @@ You see an Iron bound door to the south.
 ~
 102 8 1
 D2
-You see an Iron bound door. 
+You see an Iron bound door.
 ~
 door~
 1 -1 10273
@@ -3570,12 +3570,12 @@ more like a palace.
 ~
 102 8 1
 D0
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10294
 D2
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10274
@@ -3588,7 +3588,7 @@ You see an oak door to the south.
 ~
 102 8 1
 D2
-You see an oak door. 
+You see an oak door.
 ~
 door~
 1 -1 10275
@@ -3602,12 +3602,12 @@ more like a palace.
 ~
 102 8 1
 D0
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10296
 D2
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10276
@@ -3621,12 +3621,12 @@ the only hallway that doesn't have large amounts of gold and other artifacts.
 ~
 102 8 1
 D0
-You see a long hallway. 
+You see a long hallway.
 ~
 ~
 0 -1 10297
 D2
-You see a long hallway. 
+You see a long hallway.
 ~
 ~
 0 -1 10277
@@ -3637,12 +3637,12 @@ You are standing in an old vallenwood hallway.
 ~
 102 8 1
 D0
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10298
 D1
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10289
@@ -3655,17 +3655,17 @@ The door to the common room lies to the south.
 ~
 102 8 1
 D1
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10290
 D2
-You see the common room. 
+You see the common room.
 ~
 door~
 1 -1 10279
 D3
-You see a hallway. 
+You see a hallway.
 ~
 ~
 0 -1 10288
@@ -3693,7 +3693,7 @@ A smoky fire struggles in the blackened stove, feebly challenging
 the gloom in the town. In sharp contrast to the usual lively crowd,
 the few patrons present are lost in their own thoughts. No one
 smiles, nor does anyone seem interested in the arrival of a few
-more customers. 
+more customers.
 ~
 102 8 1
 D2
@@ -3891,7 +3891,7 @@ You are standing in the meeting room of the Captain of the Guard. This
 is where he holds his administrative meetings and other official functions.
 A large meeting tables sits in the middle of the room.
 There is a pair of glass double doors to the north.
-There is a pair of heavy metal doors with the emblem of the 
+There is a pair of heavy metal doors with the emblem of the
 townguard to the south.
 ~
 102 8 1
@@ -4077,7 +4077,7 @@ S
 #10312
 Captain's Waiting Room~
 This is the Reception area for the the Captain of the Guard. A large portrait
-of the Captain is on the north wall. With the amount of extravagance and 
+of the Captain is on the north wall. With the amount of extravagance and
 expensive items that decorate this room you wonder how he gets away with
 it. The title Sultan would be more appropriate than Captain of the Guard.
 You see an oak door to the east.
@@ -4579,17 +4579,17 @@ E 1 10285 1 17              hold travellers holy symbol
 E 1 10291 1 16              wield travellers hammer
 E 1 10282 1 12              wear travellers robe
 *
-M 0 10233 5 10281       Mage traveller Bar 
+M 0 10233 5 10281       Mage traveller Bar
 E 1 10282 1 12              wear travellers robe
 E 1 10283 1 16              wield travellers dagger
 E 1 10284 1 17              hold travellers spellbook
 *
-M 0 10234 5 10281       Thief traveller Bar 
+M 0 10234 5 10281       Thief traveller Bar
 E 1 10283 1 16              wield travellers dagger
 E 1 10286 1 5                wear travellers vest
 E 1 10287 1 3                wear travellers cloak
 *
-M 0 10235 5 10281       Warrior traveller Bar 
+M 0 10235 5 10281       Warrior traveller Bar
 E 1 10288 1 16              wield travellers sword
 E 1 10289 1 5                wear travellers scalemail
 E 1 10290 1 11              wear travellers shield

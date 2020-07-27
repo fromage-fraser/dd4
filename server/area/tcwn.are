@@ -8,7 +8,7 @@ $
 
 #HELPS
 0 City Anon~
-{x 
+{x
  The City of Anon
 
      Psionic                     Mage                      ShapeShifter
@@ -19,7 +19,7 @@ $
   Castellan _____|               Healer  Deathtrap   |_____ Armorer
                  |                 |     Dungeon     |
 W. Gate _________|_______________Temple_____|________|_________ E. Gate
-                 |                 |                 |         
+                 |                 |                 |
       Smith _____|       Locksmith_|_Book Shop       |_____ Weapon Smith
                  |                 |                 |
         _________|_________________|_________________|________
@@ -54,9 +54,9 @@ Cleric guildmaster~
 the Cleric Guildmaster~
 The Cleric Guildmaster stands here, patiently watching you.
 ~
-"Welcome, my child, to the Guild of the Clerics. Should you wish to 
- practice a skill or spell that is within my area of expertise, simply 
- type PRAC <skillname>. Typing PRAC without an argument will display what 
+"Welcome, my child, to the Guild of the Clerics. Should you wish to
+ practice a skill or spell that is within my area of expertise, simply
+ type PRAC <skillname>. Typing PRAC without an argument will display what
  skills or spells you may learn here".
 ~
 2|64|8192|16777216 128|8192 1000 S
@@ -109,15 +109,15 @@ The Armorer offers to show you some of his wares.
 "Welcome to my place of business, adventurer. Got something you're after?
  Just type BUY <Item>. If you want to know WHAT you can buy (usually a wise
  move) tpye LIST. If you're just after a specific type of item, say a shield,
- type LIST shield, and I'll show you what I have that matches that 
- description. If you want to sell me something, type SELL <item>. If you 
- just want to know what it's worth, type VALUE <item> and I'll give you a 
+ type LIST shield, and I'll show you what I have that matches that
+ description. If you want to sell me something, type SELL <item>. If you
+ just want to know what it's worth, type VALUE <item> and I'll give you a
  free estimation".
 ~
 2|64|32768|16777216 512 1000 S
 99 0 0 0d0+0 0d0+0
 0 0
-8 
+8
 8 1
 #31004
 weaponsmith smith~
@@ -580,7 +580,7 @@ castellan~
 the Castellan of Anon~
 The Castellan of Anon politely welcomes you to his city.
 ~
-The Castellan is a tall, lean man of middle years with graying hair and 
+The Castellan is a tall, lean man of middle years with graying hair and
 a sinewy frame. He is always polite and helpful, but is more than prepared
 to do what it takes to defend his city. A veteran of more than twenty years
 of combat, he is not a man to be toyed with.
@@ -654,7 +654,7 @@ drunk~
 a drunk~
 A singing, happy drunk.
 ~
-A drunk who seems to be too happy, and to carry too much money. He mumbles 
+A drunk who seems to be too happy, and to carry too much money. He mumbles
 something unintelligible and stumbles away.
 ~
 64|16777216 0 400 S
@@ -903,8 +903,8 @@ locksmith dwart~
 Dwart~
 Dwart the locksmith busily carves another key.
 ~
-Dwart makes locks and keys, and he makes them well. For a Dwarf he is 
-surprisingly dexterous. He also purchases keys off of players. Try selling 
+Dwart makes locks and keys, and he makes them well. For a Dwarf he is
+surprisingly dexterous. He also purchases keys off of players. Try selling
 him one!
 ~
 2|64|32768|16777216 8 1000 S
@@ -971,7 +971,7 @@ a tasselled key~
 The Key to the City Gates.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #31001
 key~
@@ -979,7 +979,7 @@ a bronze key~
 The Key to the City Dungeon.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #31002
 barrel beer~
@@ -987,7 +987,7 @@ a Barrel of Mo-Hi's (TM) beer~
 A beer barrel has been left here.~
 ~
 17 0 1
-30~ 30~ 1~ 0~ 
+30~ 30~ 1~ 0~
 60 300 0
 #31003
 bottle beer~
@@ -995,7 +995,7 @@ a bottle of Mo-Hi's (TM) beer~
 A beer bottle has been left here.~
 ~
 17 0 1
-4~ 4~ 1~ 0~ 
+4~ 4~ 1~ 0~
 10 20 0
 #31004
 bottle ale~
@@ -1003,7 +1003,7 @@ a Bottle of Mo-Hi's (TM) ale~
 A dark bottle of Mo-Hi's (TM) ale has been left here.~
 ~
 17 0 1
-5~ 5~ 3~ 0~ 
+5~ 5~ 3~ 0~
 10 10 0
 #31005
 bottle firebreather~
@@ -1011,7 +1011,7 @@ a Bottle of firebreather~
 A firebreather has been left here.~
 ~
 17 0 1
-8~ 8~ 7~ 0~ 
+8~ 8~ 7~ 0~
 10 50 0
 #31006
 bottle local~
@@ -1019,7 +1019,7 @@ a bottle of Anon's specialty~
 A dark bottle has been left here.~
 ~
 17 0 1
-8~ 8~ 8~ 0~ 
+8~ 8~ 8~ 0~
 10 20 0
 #31007
 torch~
@@ -1027,7 +1027,7 @@ a torch~
 A large torch.~
 ~
 1 0 1|16384
-0~ 0~ 24~ 0~ 
+0~ 0~ 24~ 0~
 1 10 0
 #31008
 lantern~
@@ -1035,7 +1035,7 @@ a hooded brass lantern~
 A hooded brass lantern has been left here.~
 ~
 1 0 1|16384
-0~ 0~ 100~ 0~ 
+0~ 0~ 100~ 0~
 4 60 0
 E
 lantern~
@@ -1053,7 +1053,7 @@ a scroll of identify~
 A scroll has carelessly been left here.~
 ~
 2 64 1|16384
-12~ identify~ ~ ~ 
+12~ identify~ ~ ~
 1 2000 0
 #31010
 potion yellow~
@@ -1061,7 +1061,7 @@ a yellow potion of see invisible~
 A small yellow potion has carelessly been left here.~
 ~
 10 64 1|16384
-12~ detect invis~ ~ ~ 
+12~ detect invis~ ~ ~
 1 400 0
 E
 potion yellow~
@@ -1072,7 +1072,7 @@ a buffalo water skin~
 A buffalo water skin is on the floor.~
 ~
 17 0 1|16384
-25~ 25~ 0~ 0~ 
+25~ 25~ 0~ 0~
 5 30 0
 #31012
 jug water~
@@ -1080,7 +1080,7 @@ a jug of water~
 A large jug of water sloshes on the floor.~
 ~
 17 1 1|16384
-60~ 60~ 0~ 0~ 
+60~ 60~ 0~ 0~
 85 0 0
 #31013
 club~
@@ -1088,7 +1088,7 @@ a heavy lead-sheathed club~
 A heavy club sheathed in lead lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 8~ 
+0~ 0~ 0~ 8~
 30 0 0
 A
 18 -2
@@ -1100,7 +1100,7 @@ a Sturdy Mace~
 A Sturdy Mace lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 20 0 0
 A
 18 1
@@ -1112,7 +1112,7 @@ a Dagger~
 A good backstabbing weapon, this.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 15 0 0
 A
 18 4
@@ -1124,7 +1124,7 @@ a Wickedly-Curved Scimitar~
 A Wickedly-Curved Scimitar hums ominously here.~
 ~
 5 2|16|64|512 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 25 0 0
 A
 18 4
@@ -1136,7 +1136,7 @@ a pair of tough leather boots~
 A pair of tough leather boots lie here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 17 -5
@@ -1148,7 +1148,7 @@ a narrow leather belt~
 A narrow leather belt is curled up here.~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 1
@@ -1160,7 +1160,7 @@ a kamikaze headband~
 A kamikaze headband.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 2
@@ -1170,7 +1170,7 @@ a Scarf~
 A scarf is here.~
 ~
 9 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 1
@@ -1182,7 +1182,7 @@ a city fountain~
 This fountain has been kindly provided by the Castellan of Anon.~
 ~
 25 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1000 0 0
 #31022
 ring~
@@ -1190,7 +1190,7 @@ a gold ring~
 A GOLD RING!~
 ~
 18 1 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 14 20
@@ -1200,7 +1200,7 @@ a sweet cake~
 A sweet cake. Looks yummy.~
 ~
 19 0 1|16384
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31024
 roll~
@@ -1208,7 +1208,7 @@ a roll~
 A bread roll.~
 ~
 19 0 1|16384
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 0 0
 #31025
 sandwich~
@@ -1216,7 +1216,7 @@ a sandwich~
 A sandwich would make the perfect snack.~
 ~
 19 0 1|16384
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 0 0
 #31026
 loaf bread~
@@ -1224,7 +1224,7 @@ a large loaf of bread~
 This loaf of bread would fill you up for a day!~
 ~
 19 0 1|16384
-24~ 0~ 0~ 0~ 
+24~ 0~ 0~ 0~
 3 0 0
 #31027
 coffee cup mug java~
@@ -1232,7 +1232,7 @@ a cup of coffee~
 A mug o' hot java steams away here.~
 ~
 17 0 1|16384
-1~ 1~ 12~ 0~ 
+1~ 1~ 12~ 0~
 1 0 0
 #31028
 psychedelic potion~
@@ -1240,7 +1240,7 @@ a psychedelic potion~
 A psychedelic potion rolls around here.~
 ~
 10 1|2|64 1|16384
-10~ change sex~ detect hidden~ bless~ 
+10~ change sex~ detect hidden~ bless~
 2 400 0
 #31029
 guillotine~
@@ -1249,7 +1249,7 @@ A Guillotine with a razor-sharp blade stands ready here.
 ~
 ~
 15 0 0
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 1000 0 0
 #31030
 mask~
@@ -1257,7 +1257,7 @@ a Headsman's Black Face Mask~
 The Headsman's mask is here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 75 0 0
 A
 13 250
@@ -1267,7 +1267,7 @@ the Castellan's Longsword~
 The Castellan's Longsword is lying here in the dirt.~
 ~
 5 64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 25 0 0
 A
 17 -15
@@ -1283,7 +1283,7 @@ a sap~
 A footpad's sap, used to stun victims.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 15 0 0
 #31033
 sword longsword~
@@ -1291,7 +1291,7 @@ an Ornate Longsword~
 An Ornate Longsword is lying here.~
 ~
 5 64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 25 0 0
 A
 18 4
@@ -1303,7 +1303,7 @@ an Ornate Breastplate~
 An Ornate Breastplate with a black and gold coat of arms is lying here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 5 2
@@ -1315,7 +1315,7 @@ an Ornate Bracer~
 An Ornate Bracer with a black and gold coat of arms is lying here.~
 ~
 9 0 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 2 2
@@ -1327,7 +1327,7 @@ a black cloak with gold trim~
 A Black Cloak with Gold Trim is lying here.~
 ~
 9 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 12 25
@@ -1339,7 +1339,7 @@ an Ornate Helm~
 An Ornate Helm bearing a black and gold coat of arms lies here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 3 1
@@ -1353,7 +1353,7 @@ an Ornate Shield~
 A Shield bearing the crest of the City of Anon lies here.~
 ~
 9 0 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 17 -20
@@ -1367,7 +1367,7 @@ a Throwing Spear~
 A sturdy Throwing Spear has been thrust into the ground here.~
 ~
 5 64|134217728 1|8192|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 18 2
@@ -1379,7 +1379,7 @@ a blank scroll~
 A blank scroll is here.~
 ~
 2 0 1|16384
-0~ ~ ~ ~ 
+0~ ~ ~ ~
 1 0 0
 #31041
 shimmering potion~
@@ -1387,7 +1387,7 @@ a shimmering potion~
 A shimmering potion is here.~
 ~
 10 64 1|16384
-5~ invis~ fly~ infravision~ 
+5~ invis~ fly~ infravision~
 1 400 0
 #31043
 tent~
@@ -1395,7 +1395,7 @@ a sturdy canvas tent~
 A sturdy canvas tent is here.~
 ~
 15 262144 1
-1000~ 1~ 0~ 0~ 
+1000~ 1~ 0~ 0~
 25 1000 0
 #31044
 rowboat~
@@ -1403,7 +1403,7 @@ a sturdy wooden rowboat~
 A sturdy wooden rowboat is moored here.~
 ~
 15 262144|524288 1
-1000~ 0~ 0~ 1~ 
+1000~ 0~ 0~ 1~
 50 500 0
 #31045
 battered fried fish~
@@ -1411,7 +1411,7 @@ a piece of battered fried fish~
 A piece of battered fish that has been fried to death.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31046
 pile steaming chips~
@@ -1419,7 +1419,7 @@ a pile of steaming chips~
 (Steaming) These chips are wrapped in butcher's paper and look very tasty.~
 ~
 19 0 1
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 1 0 0
 #31047
 chips salt sauce~
@@ -1427,7 +1427,7 @@ chips with salt and sauce~
 (Steaming) These chips are covered with salt and sauce.~
 ~
 19 0 1
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 1 0 0
 #31048
 black pudding~
@@ -1435,7 +1435,7 @@ some black pudding~
 Some black pudding congeals here.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31049
 white pudding~
@@ -1443,7 +1443,7 @@ some white pudding~
 Some white pudding, only slightly less disgusting than black pud, sits here.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31050
 pizza~
@@ -1451,7 +1451,7 @@ a piece of pizza~
 This pizza looks like no pizza you have ever seen before.~
 ~
 19 0 1
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 0 0
 #31051
 lard~
@@ -1459,7 +1459,7 @@ a lump of lard~
 This lard has been deep-fried.~
 ~
 19 0 1
-1~ 0~ 0~ 0~ 
+1~ 0~ 0~ 0~
 1 0 0
 #31052
 potato scallop~
@@ -1467,7 +1467,7 @@ a potato scallop~
 You wonder how long this potato scallop has been sitting here.~
 ~
 19 0 1
-2~ 0~ 0~ 0~ 
+2~ 0~ 0~ 0~
 1 0 0
 #31053
 curry sauce~
@@ -1475,7 +1475,7 @@ some curry sauce~
 This sauce is great with chips. Apparently.~
 ~
 19 0 1
-1~ 0~ 0~ 0~ 
+1~ 0~ 0~ 0~
 1 0 0
 #31054
 chicken kiev~
@@ -1483,7 +1483,7 @@ chicken kiev~
 This chicken Kiev didn't come from any Kiev you have ever heard of.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31055
 crumbed drumstick~
@@ -1491,7 +1491,7 @@ a crumbed drumstick~
 A crumbed drumstick has been sitting here for a few hours.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31056
 battered sav~
@@ -1499,7 +1499,7 @@ a battered sav~
 A battered sav lies here.~
 ~
 19 0 1
-2~ 0~ 0~ 0~ 
+2~ 0~ 0~ 0~
 1 0 0
 #31057
 kabana~
@@ -1507,7 +1507,7 @@ a kabana~
 A fried kabana looks truly disgusting.~
 ~
 19 0 1
-3~ 0~ 0~ 0~ 
+3~ 0~ 0~ 0~
 1 0 0
 #31058
 fish cake~
@@ -1515,7 +1515,7 @@ a fish cake~
 Yeah, SURE it's fish.~
 ~
 19 0 1
-2~ 0~ 0~ 0~ 
+2~ 0~ 0~ 0~
 1 0 0
 #31059
 haggis~
@@ -1523,7 +1523,7 @@ it's... HAGGIS~
 This conglomeration looks like a boiled foetus.~
 ~
 19 0 1
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 2 0 0
 E
 haggis~
@@ -1535,7 +1535,7 @@ tetley's tea~
 A nice cup of Tetley's sits here.~
 ~
 17 0 1|16384
-1~ 1~ 11~ 0~ 
+1~ 1~ 11~ 0~
 1 0 0
 #31061
 coffee~
@@ -1543,7 +1543,7 @@ kenco coffee~
 A cup of Kenco coffee is surprisingly good for instant.~
 ~
 17 0 1|16384
-1~ 1~ 12~ 0~ 
+1~ 1~ 12~ 0~
 1 0 0
 #31062
 shandy~
@@ -1551,7 +1551,7 @@ a shandy~
 A shandy fizzes away here.~
 ~
 17 0 1|16384
-1~ 1~ 1~ 0~ 
+1~ 1~ 1~ 0~
 1 0 0
 #31063
 irn bru~
@@ -1559,7 +1559,7 @@ barr's Irn Bru~
 This bright orange beverage is made in Scotland from girders.~
 ~
 17 2 1|16384
-2~ 2~ 6~ 0~ 
+2~ 2~ 6~ 0~
 1 0 0
 #31064
 chocolate milkshake~
@@ -1567,7 +1567,7 @@ a chocolate milkshake~
 A delicious chocolate milkshake is here.~
 ~
 17 0 1|16384
-2~ 2~ 10~ 0~ 
+2~ 2~ 10~ 0~
 1 0 0
 #31065
 strawberry milkshake~
@@ -1575,7 +1575,7 @@ a strawberry milkshake~
 A frothy strawberry milkshake is here.~
 ~
 17 0 1|16384
-2~ 2~ 10~ 0~ 
+2~ 2~ 10~ 0~
 1 0 0
 #31066
 caramel milkshake~
@@ -1583,7 +1583,7 @@ a caramel milkshake~
 A tasty caramel milkshake is here.~
 ~
 17 0 1|16384
-2~ 2~ 10~ 0~ 
+2~ 2~ 10~ 0~
 1 0 0
 #31067
 sticky bun~
@@ -1591,7 +1591,7 @@ a sticky bun~
 A sweet sticky bun sits here.~
 ~
 19 0 1
-1~ 0~ 0~ 0~ 
+1~ 0~ 0~ 0~
 1 0 0
 #31068
 fruit scone~
@@ -1599,7 +1599,7 @@ a fruit scone~
 A buttered fruit scone sits here.~
 ~
 19 0 1
-1~ 0~ 0~ 0~ 
+1~ 0~ 0~ 0~
 1 0 0
 #31069
 spamburger~
@@ -1607,7 +1607,7 @@ a spamburger~
 A nasty spamburger sits here.~
 ~
 19 0 1
-4~ 0~ 0~ 1~ 
+4~ 0~ 0~ 1~
 1 0 0
 #31070
 steak burger~
@@ -1615,7 +1615,7 @@ a steak burger~
 A steak burger smells delicious!~
 ~
 19 0 1
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 1 0 0
 #31071
 hamburger~
@@ -1623,7 +1623,7 @@ a hamburger~
 A hamburger is here.  What part of the animal is the burger?~
 ~
 19 0 1
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 0 0
 #31072
 ploughman's sandwich~
@@ -1631,7 +1631,7 @@ a ploughman's sandwich~
 A ploughman's sandwich is here.  Okay, it's only cheese and Branston pickle.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31073
 cheese onion sandwich~
@@ -1639,7 +1639,7 @@ a cheese and onion sandwich~
 A cheese and onion sandwich has lots of raw onion on it.~
 ~
 19 2 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #31074
 chicken tikka sandwich~
@@ -1647,7 +1647,7 @@ a chicken tikka sandwich~
 Some pretentious git has added raisins to a chicken and mayonnaise sandwich.~
 ~
 19 0 1
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 0 0
 #31075
 baked potato cheese coleslaw~
@@ -1655,7 +1655,7 @@ a baked potato with cheese and coleslaw~
 A baked potato with cheese and *coleslaw*?~
 ~
 19 0 1
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 1 0 0
 #31076
 baked potato chicken curry~
@@ -1663,7 +1663,7 @@ a baked potato with chicken curry~
 A baked potato with chicken curry sounds tasty.~
 ~
 19 0 1
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 1 0 0
 #31077
 bacon eggs~
@@ -1671,7 +1671,7 @@ bacon and eggs~
 A plate of overcooked bacon and undercooked eggs is here.~
 ~
 19 0 1
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 2 0 0
 #31078
 steak eggs chips~
@@ -1679,7 +1679,7 @@ steak eggs and chips~
 A plate of tough steak, hard fried eggs and greasy chips is here.~
 ~
 19 0 1
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 2 0 0
 #31079
 spam eggs~
@@ -1687,7 +1687,7 @@ spam and eggs~
 A plate of fried spam, swimming in lard, looks like it would make you chuck.~
 ~
 19 0 1
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 2 0 0
 #31080
 bacon spam eggs~
@@ -1695,7 +1695,7 @@ bacon, spam and eggs~
 A plate of bacon spam and eggs coagulates here.  Don't touch the spam.~
 ~
 19 0 1
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 2 0 0
 #31081
 poison powder~
@@ -1703,7 +1703,7 @@ some black poison powder~
 Some black poison powder has been scattered here.~
 ~
 13 16 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 4000 0
 #31082
 portal dark dirty~
@@ -1711,7 +1711,7 @@ the dirty portal~
 A dark, shimmering portal glows before you.~
 ~
 33 0 0
-14089~ -1~ 0~ 100~ 
+14089~ -1~ 0~ 100~
 1 0 0
 #31083
 portal steamy~
@@ -1719,7 +1719,7 @@ the steamy portal~
 Steam pours from a glowing portal that hovers before you.~
 ~
 33 0 0
-30044~ -1~ 0~ 100~ 
+30044~ -1~ 0~ 100~
 1 0 0
 #31084
 portal sandy~
@@ -1727,7 +1727,7 @@ the sandy portal~
 A warm breeze flows from the glowing portal in front of you.~
 ~
 33 0 0
-12009~ -1~ 0~ 100~ 
+12009~ -1~ 0~ 100~
 1 0 0
 #31085
 key portal~
@@ -1735,7 +1735,7 @@ a key to the portal chambers~
 A key to the portal chambers has been dropped here.~
 ~
 18 1|2 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 200 0
 #31086
 tome political history~
@@ -1743,7 +1743,7 @@ a Tome of Political History~
 This tome is titled- "THE POLITICAL STRUCTURE OF ANON", by Errit Meyer.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 tome politics political structure~
@@ -1762,7 +1762,7 @@ states. These are-
 
 THE CITY OF ANON                           NEW THALOS
 THE CITY OF FREEPORT                       THE CITY OF OFCOL
-THE CITY OF SOLACE                         
+THE CITY OF SOLACE
 THE CITY OF MIDGAARD                       WHITE LOTUS TEMPLE
 
 
@@ -1877,7 +1877,7 @@ a Tome of Social History~
 This tome is titled- "THE SOCIAL HISTORY OF ANON", by Gaspar duPont.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 tome social history~
@@ -1977,7 +1977,7 @@ a History book~
 This book is titled- "THE HISTORY OF THE KNOWN RACES OF ANON", by Xanafax.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 history book~
@@ -1989,7 +1989,7 @@ try read elf, read human, etc.
 ~
 E
 Dryad~
-Until very recently, the mysterious Dryads had lived apart from all other 
+Until very recently, the mysterious Dryads had lived apart from all other
 races, inhabiting secret glades in the deepest forests of Anon. They lived
 simple, peaceful lives, attuning themselves to the majestic forces of nature,
 and drawing magical energy from them that they could turn to any usage they
@@ -2037,23 +2037,23 @@ magical talent, the ability to shape and mold the magical energies which
 flowed across Anon into whatever usage pleased them.
 
 Thus eventually the Elves became renowned mages, and kings and princes of all
-races sought them for their abilities, as well as their counsel, for Elves 
+races sought them for their abilities, as well as their counsel, for Elves
 were counted among the wisest of all races, save the Dryad. And the Elves
 prospered, and lived in relative harmony with their neighbors.
 
 Eventually, discord began to emerge, caused as is often the case by the
 jealousy of the "lesser" races, and war between Elves and the other races
-broke out. Combined armies of Dwarves and Humans drove Elves from their 
+broke out. Combined armies of Dwarves and Humans drove Elves from their
 forests and their crystal palaces, at the cost of countless lives on both
 sides, for the Elves did not surrender their lands easily.
 
 This war raged for thirty years, until it was ended by the coming of the
 Dryads, who were angered at the desecration of their beloved forests by Human
-and Dwarf, and a peace was negotiated, for the mysterious dryads were greatly 
+and Dwarf, and a peace was negotiated, for the mysterious dryads were greatly
 respected and feared. The races returned to their domains, and have since that
-day maintained an uneasy truce, though in truth many members of the warring 
+day maintained an uneasy truce, though in truth many members of the warring
 races still hold a deep hatred for the others. Some say the Elves' natural
-arrogance and condescension to the "lesser" races brought about the war- 
+arrogance and condescension to the "lesser" races brought about the war-
 others say it was the natural aggression of the Dwarves and Humans. Who is
 to say?
 ~
@@ -2096,7 +2096,7 @@ E
 Human~
 Humans are a young race, compared to Elf, Dwarf and Dryad, having come to
 Anon much later than them. The Humans of Anon came from many different
-worlds, as refugees, wanderers, explorers or fugitives. And, as Humans are 
+worlds, as refugees, wanderers, explorers or fugitives. And, as Humans are
 wont to do, they quickly built towns and cities, and farmed the land, and
 hunted the local animals, and they became quite comfortable in their new
 home.
@@ -2104,8 +2104,8 @@ home.
 Kingdoms were established quickly, and just as quickly brought down by
 rebellions, feuds, or war with their neighbors. Eventually a kind of stability
 came into being, with individual city states (such as Anon, the largest,
-and Midgaard, the first kingdom formed on Anon) establishing themselves 
-domains independant of each other. 
+and Midgaard, the first kingdom formed on Anon) establishing themselves
+domains independant of each other.
 
 Peace became even more advantageous when the Dwarves offered the hand of
 friendship, and both sides soon prospered from a lucrative trade of the
@@ -2125,7 +2125,7 @@ race. Academies were established far and wide to teach Humans this new school
 of thought that had developed, the Martial Arts. Humans excelled at it, but
 other races found it too difficult or boring, especially the Dwarves.
 
-Now today, Humans are by far the most numerous of all races on Anon, and 
+Now today, Humans are by far the most numerous of all races on Anon, and
 also one of the most powerful, thanks to their mastery of the Martial Arts.
 ~
 #31089
@@ -2134,7 +2134,7 @@ a Geography text~
 This text is titled- "THE GEOGRAPHY OF THE WORLD, RELATIVE TO ANON"~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 geography text~
@@ -2195,7 +2195,7 @@ xanafax's Compendium of Heroes~
 A dusty old book lies here.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 compendium book~
@@ -2210,7 +2210,7 @@ a gold piece~
 A single gold piece.~
 ~
 20 0 1
-0~ 0~ 1~ 0~ 
+0~ 0~ 1~ 0~
 1 0 0
 #31093
 anvil~
@@ -2226,7 +2226,7 @@ a filling meat pie~
 A large meat pie has been left here.~
 ~
 19 0 1
-40~ 0~ 0~ 0~ 
+40~ 0~ 0~ 0~
 5 0 0
 #31095
 potion pink~
@@ -2339,7 +2339,7 @@ S
 #31004
 Glory Avenue~
 You are walking along Glory Avenue. Directly to the south it meets Valiant
-Street, and beyond that the Guild of the Clerics. To the north it 
+Street, and beyond that the Guild of the Clerics. To the north it
 enters the grounds of the Temple.
 
 To the west lies a locksmith while to the east you can see a bookshop.
@@ -2477,7 +2477,7 @@ You are walking along Victory Parade West. Tall houses line the road, as
 do small gardens and parks. White birds circle high overhead, their feathers
 dazzling in the sun. Surely they are magical creations of the Mages of the city.
 
-To the north of here lies the Thaumaturgist's house, while to the south you 
+To the north of here lies the Thaumaturgist's house, while to the south you
 can see the Artificer's workshop.
 ~
 0 8|1024 0
@@ -2505,8 +2505,8 @@ S
 #31010
 Glory Avenue~
 You are walking along Glory Avenue. To the north Valiant Street meets Glory
-Avenue to the east and west, while to the south lies the Clerics' 
-Guild. The great Temple of the city lies to the north, and you are as 
+Avenue to the east and west, while to the south lies the Clerics'
+Guild. The great Temple of the city lies to the north, and you are as
 ever awed by its size and beauty.
 ~
 0 8|1024 0
@@ -2528,8 +2528,8 @@ the city loom up ahead. Tall buildings with large, stained-glass windows
 line each side of the street here, and through them you can see the interiors
 of fabulously wealthy homes.
 
-A huge crowd seems to have gathered around a large building to the north. 
-Perhaps it is for the Trial of Champions, where select adventurers may 
+A huge crowd seems to have gathered around a large building to the north.
+Perhaps it is for the Trial of Champions, where select adventurers may
 enter the city's dungeons in search of glory and loot?
 
 To the south you can see Thom the would-be Enhancer's place.
@@ -2586,10 +2586,10 @@ S
 Victory Parade East~
 You are walking along Victory Parade East. Children play and scamper at your
 feet, while their mothers watch patiently from the doorways of nearby houses.
-Guards occasionally wander by, keeping their eyes open for any sign of 
+Guards occasionally wander by, keeping their eyes open for any sign of
 disturbance.
 
-The portal chambers are situated south of here. You'll need to buy a key 
+The portal chambers are situated south of here. You'll need to buy a key
 from the Locksmith to get in, though.
 ~
 0 8|1024 0
@@ -2653,7 +2653,7 @@ S
 Inside the Victory Parade West Gate~
 You have reached the westernmost extent of Victory Parade, the long road that
 bisects the city. Tall, mithril gates rise above you to the west, standing
-open as they always are, save in times of trouble. Guards nod politely at 
+open as they always are, save in times of trouble. Guards nod politely at
 you, but remain alert. Above you, you see murderholes in the floor of the
 gatehouse, allowing defenders to pour boiling oil upon any foolish enough
 to storm the gates.
@@ -2687,7 +2687,7 @@ S
 Inside the Victory Parade East Gate~
 You have reached the westernmost extent of Victory Parade, the long road that
 bisects the city. Tall, mithril gates rise above you to the west, standing
-open as they always are, save in times of trouble. Guards nod politely at 
+open as they always are, save in times of trouble. Guards nod politely at
 you, but remain alert. Above you, you see murderholes in the floor of the
 gatehouse, allowing defenders to pour boiling oil upon any foolish enough
 to storm the gates.
@@ -2796,8 +2796,8 @@ Outside the Victory Parade West Gates
 S
 #31021
 Northwest Corner of the Circuit Road~
-You are travelling around the northwest corner of the Circuit Road, a broad, 
-paved path that circles the city, provided by the Castellan for the benefit of 
+You are travelling around the northwest corner of the Circuit Road, a broad,
+paved path that circles the city, provided by the Castellan for the benefit of
 travellers who wish to bypass the city on their journeys.
 ~
 0 0 2
@@ -2872,8 +2872,8 @@ A Path to the Desert
 S
 #31025
 Northeast Corner of the Circuit Road~
-You are travelling around the northeast corner of the Circuit Road, a broad, 
-paved path that circles the city, provided by the Castellan for the benefit of 
+You are travelling around the northeast corner of the Circuit Road, a broad,
+paved path that circles the city, provided by the Castellan for the benefit of
 travellers who wish to bypass the city on their journeys.
 ~
 0 0 2
@@ -2931,8 +2931,8 @@ Southeast Corner of the City
 S
 #31028
 Southeast Corner of the Circuit Road~
-You are travelling around the southeast corner of the Circuit Road, a broad, 
-paved path that circles the city, provided by the Castellan for the benefit of 
+You are travelling around the southeast corner of the Circuit Road, a broad,
+paved path that circles the city, provided by the Castellan for the benefit of
 travellers who wish to bypass the city on their journeys.
 
 The Anon Dock lies south of here.
@@ -3010,8 +3010,8 @@ Southwest Corner of the Circuit Road
 S
 #31032
 Southwest Corner of the Circuit Road~
-You are travelling around the southwest corner of the Circuit Road, a broad, 
-paved path that circles the city, provided by the Castellan for the benefit of 
+You are travelling around the southwest corner of the Circuit Road, a broad,
+paved path that circles the city, provided by the Castellan for the benefit of
 travellers who wish to bypass the city on their journeys.
 ~
 0 0 2
@@ -3399,7 +3399,7 @@ S
 Justice Street~
 You are walking through the northeastern quarter of town, along Justice
 Street. People garbed in rich, colorful accoutrements hurry past, smiling
-briefly when they feel your gaze upon them. To the north there is an 
+briefly when they feel your gaze upon them. To the north there is an
 important-looking building with a large sign that reads - "Mitzak the Sage".
 ~
 0 1024 1
@@ -3559,7 +3559,7 @@ The Office of the Mage Guildmaster~
 This spacious office is lined on every wall by tall bookcases crammed with
 books on magic and mystical lore, as well as treatises on history, science
 mathematics, philosophy and alchemy. The Guildmaster himself sits behind
-a large oak desk covered in scrolls, quills, papers and jars of ink. He 
+a large oak desk covered in scrolls, quills, papers and jars of ink. He
 looks up as you enter and asks how he may be of service. If you don't know,
 try looking at him.
 ~
@@ -3617,7 +3617,7 @@ Valiant Street
 S
 #31063
 The Bank~
-You have entered a building obviously built by someone who is fabulously 
+You have entered a building obviously built by someone who is fabulously
 wealthy. From the gold handles in the doors to the obsidian service counter
 and platinum wall fittings, everything is expensive and luxurious. There is
 a set of stairs leading up to the business area of the bank, where the bankers
@@ -3915,7 +3915,7 @@ S
 The Warrior Bar~
 About two dozen hardy Dwarves drink, smoke, fight and gamble here. The noise
 is only equalled in intensity by the acrid stench of stale beer and burning
-pipeweed. A smaller Warrior busies himself collecting empty steins and 
+pipeweed. A smaller Warrior busies himself collecting empty steins and
 replacing them with fresh ones, being rewarded with the occasional silver
 piece or kick in the rump for his efforts.
 ~
@@ -3986,7 +3986,7 @@ Valiant Street
 S
 #31082
 Outside the Thief Guild~
-You are standing outside the house of learning for all the rogues of the 
+You are standing outside the house of learning for all the rogues of the
 city previously mentioned. For of all rogues the Thieves are the masters.
 The entrance to this shady establishment is through a curtained archway
 to the south.
@@ -4005,7 +4005,7 @@ curtain~
 S
 #31083
 Inside the Guild~
-You are standing inside the Thief Guild, surrounded by whores, pimps, 
+You are standing inside the Thief Guild, surrounded by whores, pimps,
 thieves, muggers and vagabonds. What a nice place. The Guildmaster lurks
 to the south, while there is a Bar to the west...
 ~
@@ -4028,7 +4028,7 @@ The Bar
 S
 #31084
 The Guildmaster~
-You are in the quarters of the Thief Guildmaster. A veritable treasure 
+You are in the quarters of the Thief Guildmaster. A veritable treasure
 trove of items of every possible description is piled to the roof in here.
 The Guildmaster lounges on a settee and stares inquisitively at you. If you
 don't know what to do, try looking at him.
@@ -4153,7 +4153,7 @@ The Psionics' Bar~
 Not many Psionics reside in Anon, so this place is usually empty. Also,
 the general public has a quite understandable fear of a Psionics power
 to disintegrate, and thus there are very few non-Psionics in this place
-at any particular time... 
+at any particular time...
 ~
 0 8|1024 0
 D1
@@ -4164,7 +4164,7 @@ The Guild
 S
 #31092
 The Guildmaster~
-You have entered a particuarly small, dark and cramped chamber that is 
+You have entered a particuarly small, dark and cramped chamber that is
 devoid of funiture- the powerful psionicist hovering in the center of the
 room has no need for any. If you don't know what to do, try looking at the
 Guildmaster and see what he has to think...
@@ -4451,8 +4451,8 @@ Glory Avenue
 S
 #31322
 The Locksmith~
-In this shop sits a small fat dwarf who is busy making locks and keys. He 
-will also purchase your keys if you don't want them, for a good price. 
+In this shop sits a small fat dwarf who is busy making locks and keys. He
+will also purchase your keys if you don't want them, for a good price.
 You marvel at all the strange technology about you.
 ~
 0 8|1024 0
@@ -4520,9 +4520,9 @@ G 1 31016 0			0
 M 1 31005 1 31047   LOADS MERC MASTER
 M 1 31047 1 31048   LOADS MERCS
 M 1 31048 1 31048
-M 1 31049 1 31048  
+M 1 31049 1 31048
 M 1 31050 1 31048
-M 1 31051 1 31048  
+M 1 31051 1 31048
 M 1 31052 1 31048
 *
 M 1 31006 1 31050   LOADS MAGE
@@ -4662,8 +4662,8 @@ M 1 31042 6 31081   LOADS RATS
 M 1 31043 6 31007   LOADS CATS
 *
 M 1 31044 8 31000      LOADS GUARDS TO Cuervo
-E 1 31033 0 16         WIELDS SWORD        
-E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31033 0 16         WIELDS SWORD
+E 1 31034 0 5          WEARS BREASTPLATE
 E 1 31035 0 14         WEARS BRACER
 E 1 31035 0 15         WEARS BRACER
 E 1 31036 0 3          WEARS CLOAK
@@ -4671,9 +4671,9 @@ E 1 31037 0 6          WEARS HELM
 E 1 31038 0 11         HOLDS SHIELD
 E 1 31039 0 17         HOLDS SPEAR
 *
-M 1 31046 5 31016      LOADS SENTINEL GUARDS TO INSIDE WEST GATE     
-E 1 31033 0 16         WIELDS SWORD        
-E 1 31034 0 5          WEARS BREASTPLATE        
+M 1 31046 5 31016      LOADS SENTINEL GUARDS TO INSIDE WEST GATE
+E 1 31033 0 16         WIELDS SWORD
+E 1 31034 0 5          WEARS BREASTPLATE
 E 1 31035 0 14         WEARS BRACER
 E 1 31035 0 15         WEARS BRACER
 E 1 31036 0 3          WEARS CLOAK
@@ -4682,8 +4682,8 @@ E 1 31038 0 11         HOLDS SHIELD
 E 1 31039 0 17         HOLDS SPEAR
 *
 M 1 31054 8 31017      LOADS SENTINEL GUARDS TO INSIDE EAST GATE
-E 1 31033 0 16         WIELDS SWORD        
-E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31033 0 16         WIELDS SWORD
+E 1 31034 0 5          WEARS BREASTPLATE
 E 1 31035 0 14         WEARS BRACER
 E 1 31035 0 15         WEARS BRACER
 E 1 31036 0 3          WEARS CLOAK
@@ -4692,8 +4692,8 @@ E 1 31038 0 11         HOLDS SHIELD
 E 1 31039 0 17         HOLDS SPEAR
 *
 M 1 31044 8 31046      LOADS GUARDS TO NEAR MERC
-E 1 31033 0 16         WIELDS SWORD        
-E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31033 0 16         WIELDS SWORD
+E 1 31034 0 5          WEARS BREASTPLATE
 E 1 31035 0 14         WEARS BRACER
 E 1 31035 0 15         WEARS BRACER
 E 1 31036 0 3          WEARS CLOAK
@@ -4702,8 +4702,8 @@ E 1 31038 0 11         HOLDS SHIELD
 E 1 31039 0 17         HOLDS SPEAR
 *
 M 1 31045 8 31054      LOADS GUARDS TO NEAR PET SHOP
-E 1 31033 0 16         WIELDS SWORD        
-E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31033 0 16         WIELDS SWORD
+E 1 31034 0 5          WEARS BREASTPLATE
 E 1 31035 0 14         WEARS BRACER
 E 1 31035 0 15         WEARS BRACER
 E 1 31036 0 3          WEARS CLOAK
@@ -4712,8 +4712,8 @@ E 1 31038 0 11         HOLDS SHIELD
 E 1 31039 0 17         HOLDS SPEAR
 *
 M 1 31044 8 31069      LOADS GUARDS NEAR POOR DISTRICT
-E 1 31033 0 16         WIELDS SWORD        
-E 1 31034 0 5          WEARS BREASTPLATE        
+E 1 31033 0 16         WIELDS SWORD
+E 1 31034 0 5          WEARS BREASTPLATE
 E 1 31035 0 14         WEARS BRACER
 E 1 31035 0 15         WEARS BRACER
 E 1 31036 0 3          WEARS CLOAK
@@ -4722,7 +4722,7 @@ E 1 31038 0 11         HOLDS SHIELD
 E 1 31039 0 17         HOLDS SPEAR
 *
 M 1 31053 1 31190      LOADS SALVATORE
-G 1 31045 0            0 
+G 1 31045 0            0
 G 1 31046 0            0
 G 1 31047 0            0
 G 1 31048 0            0

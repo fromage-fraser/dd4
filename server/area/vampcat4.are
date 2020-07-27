@@ -8,7 +8,7 @@ shadowbeast~
 the shadowbeast~
 {b{x
 ~
-You can dimly perceive the form of a large clawed cat-like creature in the 
+You can dimly perceive the form of a large clawed cat-like creature in the
 moving shadow that attacks you.
 ~
 2|32|64|4096 8|32|512|32768|524288|8388608 0 S
@@ -20,8 +20,8 @@ giant rat~
 a giant rat~
 A giant rat scuttles about.
 ~
-The rat has grown huge feeding off the refuse and food waste in the sewer 
-system. It regards you steadily with its beady eyes, its whiskers bristling in 
+The rat has grown huge feeding off the refuse and food waste in the sewer
+system. It regards you steadily with its beady eyes, its whiskers bristling in
 fury at your intrusion into its territory.
 ~
 64 8|512 0 S
@@ -41,8 +41,8 @@ giant rat rodent~
 a giant rat~
 A huge rodent bustles past you.
 ~
-The enormous rat's beady red eyes flit over you as it first appraises you as a 
-potential food source and then sniffs and continues on its way, deciding you not 
+The enormous rat's beady red eyes flit over you as it first appraises you as a
+potential food source and then sniffs and continues on its way, deciding you not
 worth the trouble.
 ~
 64 8|512|32768 0 S
@@ -62,7 +62,7 @@ giant bat vampire form~
 A giant vampire bat~
 A giant winged form looms out of the darkness.
 ~
-The giant vampire bat hisses and screeches as it swoops through the air on its 
+The giant vampire bat hisses and screeches as it swoops through the air on its
 great leathery wings.
 ~
 64 8|32|512|524288 0 S
@@ -82,7 +82,7 @@ giant vampire bat~
 A giant vampire bat~
 A giant vampire bat swoops down from the ceiling.
 ~
-You catch a glimpse of the huge bat's hideous leering visage as it swoops past 
+You catch a glimpse of the huge bat's hideous leering visage as it swoops past
 your head. You recoil in horror.
 ~
 64 8|32|512|524288 0 S
@@ -207,7 +207,7 @@ spymaster executioner~
 the Spymaster~
 The executioner is here polishing his blade.
 ~
-It seems to be the well-bemuscled executioner from Midgaard's Temple Square, 
+It seems to be the well-bemuscled executioner from Midgaard's Temple Square,
 yet something about him that you cannot put your finger on strikes you as odd.
 ~
 2|64|4096 8|32|128|512|2048|32768|16777216 -1000 S
@@ -219,7 +219,7 @@ fido dog spy~
 the spy recruit~
 Beastly Fido is here.
 ~
-This is Fido, the small, foul-smelling dog often seen mooching about 
+This is Fido, the small, foul-smelling dog often seen mooching about
 Midgaard looking for food - or is it?
 ~
 2|64|4096 0 -1000 S
@@ -242,7 +242,7 @@ spy officer imperial cityguard guard~
 the spy officer~
 An imperial cityguard is here, keeping the peace of Krondor.
 ~
-He is dressed for the desert, and he looks quite formidable.  The guard 
+He is dressed for the desert, and he looks quite formidable.  The guard
 regards you with cold contempt.
 ~
 64|4096 8|32|128|512|8192 0 S
@@ -254,7 +254,7 @@ shadowbeast~
 the shadowbeast~
 {r{x
 ~
-You can dimly perceive the form of a large clawed cat-like creature in the 
+You can dimly perceive the form of a large clawed cat-like creature in the
 moving shadow that attacks you.
 ~
 2|32|64|4096 8|32|512|32768|524288|8388608 0 S
@@ -266,7 +266,7 @@ shifter background shimmer presence spy elder~
 the spy elder~
 The background shimmers before your eyes, you feel a presence...
 ~
-Out of nowhere a shapeshifter materializes. He regards you blankly, as if 
+Out of nowhere a shapeshifter materializes. He regards you blankly, as if
 waiting for you to announce the reason for your intrusion.
 ~
 64|4096 8|32|512|32768 0 S
@@ -278,7 +278,7 @@ cuervo headsman spy elder~
 the spy elder~
 Cuervo the Headsman stands here eyeing you cautiously.
 ~
-Cuervo has lopped more heads off with his trusty guillotine than you EVER 
+Cuervo has lopped more heads off with his trusty guillotine than you EVER
 will with your weapons. He smiles at you slyly.
 ~
 64|4096 8|32|128|512 -750 S
@@ -290,8 +290,8 @@ spy officer nidhogg dragon~
 the spy officer~
 Nidhogg, a captured dragon, growls at your approach.
 ~
-Nidhogg the dragon eyes you warily. He appears more intelligent than the 
-mad beast that struggles against its chains in the Temple of Krondor and a 
+Nidhogg the dragon eyes you warily. He appears more intelligent than the
+mad beast that struggles against its chains in the Temple of Krondor and a
 dark malice glistens in the depths of his hooded reptilian eyes..
 ~
 2|64|4096 8|32|128|512|524288 63 S
@@ -303,7 +303,7 @@ alix thaumaturgist~
 the spy officer~
 Alix the Thaumaturgist is here to help rid you of unwanted items.
 ~
-Alix sneers and does not ask you to tell him the name of the item you wish to be 
+Alix sneers and does not ask you to tell him the name of the item you wish to be
 rid of, as he normally would.
 ~
 2|64|4096 8|32|128|512 -250 S
@@ -382,7 +382,7 @@ thief master thiefmaster~
 the Thiefmaster~
 {w{x
 ~
-The figure in the heart of the shadows is barely visible to you even with 
+The figure in the heart of the shadows is barely visible to you even with
 your enhanced sensory powers, she seems no more than the fading memory of a woman.
 ~
 2|4|32|64|4096 2|8|32|512|32768|65536|524288|1048576|8388608 -400 S
@@ -410,10 +410,10 @@ spy recruit joining~
 the spy recruit~
 A Joining stands here waiting for its next command.
 ~
-This appears to be a creature which was once human, but is now a magical 
-combination of man and beast.  Most Joinings are designed for warfare, 
-domestic, or exotic uses.  The most popular forms are those combined with 
-panthers, wolves, bears, or horses. For some reason, this particular Joining 
+This appears to be a creature which was once human, but is now a magical
+combination of man and beast.  Most Joinings are designed for warfare,
+domestic, or exotic uses.  The most popular forms are those combined with
+panthers, wolves, bears, or horses. For some reason, this particular Joining
 strikes you as odd.
 ~
 128|4096 8|32|512 0 S
@@ -438,8 +438,8 @@ hound master large man spy recruit~
 the spy recruit~
 A large man is here mumbling and scratching his crotch.
 ~
-The master appears to be close to his trade. He is wearing durable leather 
-breeches and a heavily-padded, long-sleeve tunic. Noticing your interest in 
+The master appears to be close to his trade. He is wearing durable leather
+breeches and a heavily-padded, long-sleeve tunic. Noticing your interest in
 him he smiles slyly.
 ~
 64|4096 8|32|128|512 -450 S
@@ -474,7 +474,7 @@ huge sewer rat spy recruit~
 the spy recruit~
 A huge sewer rat that probably WOULDN'T taste like pumpkin pie.
 ~
-Rats! Eeyew! They come up out of the sewer and steal the children of Anon. 
+Rats! Eeyew! They come up out of the sewer and steal the children of Anon.
 This one regards you curiously, as if waiting for you to explain your presence.
 ~
 64|4096 8|32|512 -175 S
@@ -486,7 +486,7 @@ bookstore owner spy recruit~
 the spy recruit~
 The Bookstore Owner looks up from a paperback as you come in.
 ~
-The Bookstore Owner looks very bored.  From the way his fingers twitch and 
+The Bookstore Owner looks very bored.  From the way his fingers twitch and
 his eyes dart, you wonder if he really is what he appears...
 ~
 2|64|4096 8|32|512 135 S
@@ -525,7 +525,7 @@ bogmonster~
 the Bogmonster~
 Something dangerous lurks in the filth...
 ~
-Horror of horrors! A creature that lives, nay THRIVES on raw filth and effluent. 
+Horror of horrors! A creature that lives, nay THRIVES on raw filth and effluent.
 It's BIG, it's DIRTY, it's UGLY and it has YOU on its dinner menu!
 ~
 2|4|32|64 8|32|512|32768|65536|1048576 -1000 S
@@ -542,7 +542,7 @@ bogmonster~
 the Bogmonster~
 Something dangerous lurks in the filth...
 ~
-Horror of horrors! A creature that lives, nay THRIVES on raw filth and effluent. 
+Horror of horrors! A creature that lives, nay THRIVES on raw filth and effluent.
 It's BIG, it's DIRTY, it's UGLY and it has YOU on its dinner menu!
 ~
 2|4|32|64 8|32|512|32768|65536|1048576 -1000 S
@@ -559,9 +559,9 @@ guard~
 the hive guard~
 A guard sits here, yawning and rubbing sleep from his eyes.
 ~
-The guard appears to be human and unremarkable but for his physical size. He fits 
-the stereotypical picture of a hired thug, all jawline and broken nose. He seems 
-relatively unperturbed by your appearance, it must be a common mistake for people 
+The guard appears to be human and unremarkable but for his physical size. He fits
+the stereotypical picture of a hired thug, all jawline and broken nose. He seems
+relatively unperturbed by your appearance, it must be a common mistake for people
 to wander into this room accidentally.
 ~
 2|64|4096 8|32|512|8388608 -600 S
@@ -613,9 +613,9 @@ guard~
 the hive guard~
 A guard sits here, scratching his head.
 ~
-The guard appears to be human and unremarkable but for his physical size. He fits 
-the stereotypical picture of a hired thug, all jawline and broken nose. He seems 
-relatively unperturbed by your appearance, it must be a common mistake for people 
+The guard appears to be human and unremarkable but for his physical size. He fits
+the stereotypical picture of a hired thug, all jawline and broken nose. He seems
+relatively unperturbed by your appearance, it must be a common mistake for people
 to wander into this room accidentally.
 ~
 2|64|4096 8|32|512|8388608 -350 S
@@ -667,8 +667,8 @@ assassin officers man~
 the assassin officer~
 A grim man clad in black emerges from the shadows..
 ~
-These specially-trained assassin officers respond to the guards' alarm, which is 
-wired directly to their sleeping quarters. They regard their positions very seriously 
+These specially-trained assassin officers respond to the guards' alarm, which is
+wired directly to their sleeping quarters. They regard their positions very seriously
 and take a dim view of intruders.
 ~
 2|32|64|4096 2|8|32|512|32768|8388608 -125 S
@@ -690,9 +690,9 @@ assassin officer man~
 the assassin officer~
 A grim man clad in black trains recruits in hand-to-hand combat.
 ~
-This assassin officer has spent long years mastering the martial arts and is 
-passing on his knowledge and skill to new recruits to the Hive. So confident 
-is he of his abilities he has had his fangs ground down to demonstrate his 
+This assassin officer has spent long years mastering the martial arts and is
+passing on his knowledge and skill to new recruits to the Hive. So confident
+is he of his abilities he has had his fangs ground down to demonstrate his
 freedom from reliance on them.
 ~
 2|64|4096 8|32|512 0 S
@@ -704,7 +704,7 @@ assassin officer woman~
 the assassin officer~
 A grim woman clad in black trains recruits in the art of stealth.
 ~
-This assassin officer is highly skilled in the art of avoiding detection and is 
+This assassin officer is highly skilled in the art of avoiding detection and is
 passing on her knowledge and skill to new recruits.
 ~
 64|4096 2|8|32|512|32768|65536|1048576 -120 S
@@ -716,7 +716,7 @@ assassin recruit man~
 the assassin recruit~
 A young man clad in black practices sparring with a mock-weapon.
 ~
-This assassin recruit is brushing up on his skill with a polearm, using a plain 
+This assassin recruit is brushing up on his skill with a polearm, using a plain
 length of wood to practice with.
 ~
 2|64|4096 8|32|512 0 S
@@ -728,7 +728,7 @@ assassin recruit man~
 the assassin recruit~
 A young man clad in black pants and puffs as he lifts weights above his head.
 ~
-The young assassin recruit strains and grunts as he struggles to heave the dumbbell 
+The young assassin recruit strains and grunts as he struggles to heave the dumbbell
 above his head.
 ~
 2|64|4096 8|32|512 -50 S
@@ -740,7 +740,7 @@ assassin recruit woman~
 the assassin recruit~
 A young woman clad in black practices with a dagger.
 ~
-This recruit is practicing her daggerwork, slicing and jabbing at her shadow 
+This recruit is practicing her daggerwork, slicing and jabbing at her shadow
 on the wall.
 ~
 2|64|4096 8|32|512 -115 S
@@ -752,7 +752,7 @@ assassin recruit man~
 the assassin recruit~
 A young man clad in black roams about the barracks.
 ~
-This recruit wanders about the barracks looking for ways to spend his time 
+This recruit wanders about the barracks looking for ways to spend his time
 profitably while he waits for his next job.
 ~
 64|4096 8|32|512|32768 0 S
@@ -764,7 +764,7 @@ assassin recruit woman~
 the assassin recruit~
 A young woman clad in black roams about the barracks.
 ~
-This recruit wanders about the barracks looking for ways to spend her time 
+This recruit wanders about the barracks looking for ways to spend her time
 profitably while she waits for her next job.
 ~
 64|4096 8|32|512|32768 60 S
@@ -776,7 +776,7 @@ assassin officer man~
 the assassin officer~
 A grim man clad in black marches about with an intense expression.
 ~
-The assassin officer returns your stare with a distinctly unfriendly look and 
+The assassin officer returns your stare with a distinctly unfriendly look and
 wonders out loud whether they're still teaching good manners in the spy barracks.
 ~
 64|4096 8|32|512|32768 -400 S
@@ -788,8 +788,8 @@ assassin officer woman~
 the assassin officer~
 A grim black-clad woman arches her eyebrows at you.
 ~
-The assassin officer looks far from pleased to see you in her quarters but 
-doesn't behave in an overtly hostile manner. You wonder if perhaps she's mistaken 
+The assassin officer looks far from pleased to see you in her quarters but
+doesn't behave in an overtly hostile manner. You wonder if perhaps she's mistaken
 you for someone else.
 ~
 2|64|4096 8|32|512|32768 125 S
@@ -801,8 +801,8 @@ assassin elder~
 the assassin elder~
 A tall man clad in black regards you with barely contained fury.
 ~
-The assassin elder is furious at your unannounced intrusion but, assuming you 
-are a messenger from the spy wing, represses his obvious desire to separate your 
+The assassin elder is furious at your unannounced intrusion but, assuming you
+are a messenger from the spy wing, represses his obvious desire to separate your
 head from your neck.
 ~
 2|64|4096 8|32|512|32768 -450 S
@@ -814,7 +814,7 @@ assassin elder~
 the assassin elder~
 A tall man clad in black strolls about the room examining the maps.
 ~
-This elder barely pays you any attention as he scrutinizes the maps, making marks 
+This elder barely pays you any attention as he scrutinizes the maps, making marks
 and notes on them with a pencil.
 ~
 64|4096 8|32|512 -35 S
@@ -838,8 +838,8 @@ the Assassinmaster~
 The Assassinmaster rises to his feet, furious at your intrusion.
 ~
 The Assassinmaster stands seven and a half feet high, slender but muscular
-with eyes that burn with quiet intensity. He looks at you rather as a spider 
-might regard a struggling fly that has just become entangled in its web. Hope 
+with eyes that burn with quiet intensity. He looks at you rather as a spider
+might regard a struggling fly that has just become entangled in its web. Hope
 your life insurance is paid up.
 ~
 2|64|4096 8|32|512|8192 -750 S
@@ -851,9 +851,9 @@ assassin recruit man vampire~
 the wounded vampire~
 A young man wanders about the sewers looking confused and disorientated.
 ~
-The man has obviously been in a serious fight, he is covered in burns and cuts 
-and his clothes are no better than rags. He regards you with a look of dazed 
-incomprehension and as he turns you catch a glimpse of fangs in his mouth - a vampire! 
+The man has obviously been in a serious fight, he is covered in burns and cuts
+and his clothes are no better than rags. He regards you with a look of dazed
+incomprehension and as he turns you catch a glimpse of fangs in his mouth - a vampire!
 He then shrugs vaguely and returns to his stumbling and burbling...
 ~
 64|128|4096 8|32|256|512 -125 S
@@ -940,8 +940,8 @@ thief recruit shape darkness~
 the thief recruit~
 A dark shape flits about in the darkness.
 ~
-A dark male figure skirts the walls cautiously, seeming at times to disappear at 
-will into the inky shadows only to re-emerge from them suddenly on the opposite 
+A dark male figure skirts the walls cautiously, seeming at times to disappear at
+will into the inky shadows only to re-emerge from them suddenly on the opposite
 side of the room, grinning.
 ~
 64|128|4096 8|32|512|32768|65536|8388608 32 S
@@ -953,7 +953,7 @@ thief recruit tall woman~
 the thief recruit~
 A tall woman in a black bodysuit wanders about the barracks.
 ~
-The woman regards you loftily, considering it beneath her dignity to engage in 
+The woman regards you loftily, considering it beneath her dignity to engage in
 conversation with mortals .
 ~
 64|4096 8|32|512|8388608 0 S
@@ -965,7 +965,7 @@ thief recruit tall man~
 the thief recruit~
 A tall man in a black bodysuit rises from a copper coffin.
 ~
-The tall vampire's preternatural senses have detected that you are no ordinary 
+The tall vampire's preternatural senses have detected that you are no ordinary
 visitor and he turns on you with cold fury.
 ~
 32|64|4096 8|32|512|8388608 -69 S
@@ -977,8 +977,8 @@ thief recruit tall woman~
 the thief recruit~
 A tall woman in a black bodysuit wanders about the barracks.
 ~
-The tall woman regards you with a certain amount of nervousness and 
-apprehension, displaying none of the aggression or thinly-disguised contempt you 
+The tall woman regards you with a certain amount of nervousness and
+apprehension, displaying none of the aggression or thinly-disguised contempt you
 encounter with vampires of the more combative orders.
 ~
 2|32|64|128|4096 8|32|512|8388608 135 S
@@ -990,7 +990,7 @@ thief officer whispering shadows~
 the thief officer~
 There is whispering in the shadows.
 ~
-You strain to see a tall black male figure concealed in the darkness, he looks 
+You strain to see a tall black male figure concealed in the darkness, he looks
 to be whispering behind his hand to someone else nearby.
 ~
 2|64|4096 2|8|32|512|32768|65536|8388608 0 S
@@ -1013,8 +1013,8 @@ thief officer~
 the thief officer~
 A tall pale man sleeps in a silver coffin.
 ~
-This vampire looks almost peaceful in repose, yet you know only too well with 
-what speed his demeanor might be turned to one of savage ferocity and 
+This vampire looks almost peaceful in repose, yet you know only too well with
+what speed his demeanor might be turned to one of savage ferocity and
 bloodthirsty terror.
 ~
 2|64|4096 8|32|512|131072|8388608 0 S
@@ -1026,8 +1026,8 @@ dwarf disemboweled female~
 the disemboweled dwarf~
 A female dwarf in a state of partial disembowelment still twitches and quivers.
 ~
-The female dwarf looks at you desperately for help through pain-crazed eyes as 
-she clings hopelessly to her ebbing life. It would be charity to end her 
+The female dwarf looks at you desperately for help through pain-crazed eyes as
+she clings hopelessly to her ebbing life. It would be charity to end her
 suffering.
 ~
 2|128|4096 256|8192 600 S
@@ -1039,8 +1039,8 @@ thief officer tall woman~
 the thief officer~
 A tall pale woman sleeps in a silver coffin.
 ~
-This vampire looks almost peaceful in repose, yet you know only too well with 
-what speed her demeanor might be turned to one of savage ferocity and 
+This vampire looks almost peaceful in repose, yet you know only too well with
+what speed her demeanor might be turned to one of savage ferocity and
 bloodthirsty terror.
 ~
 2|4096 8|32|512|131072 -350 S
@@ -1052,7 +1052,7 @@ thief officer~
 the thief officer~
 A tall man with an intense expression stalks about.
 ~
-This vampire is an intensely serious looking individual and stalks about the 
+This vampire is an intensely serious looking individual and stalks about the
 corridor with an air of confidence and authority.
 ~
 64|4096 8|32|512|8388608 -125 S
@@ -1075,9 +1075,9 @@ thief elder tall man~
 the thief elder~
 A tall man clad in black leather armour studies maps and diagrams.
 ~
-This imposing figure of a man studies maps and diagrams, taking notes and making 
-observations with an air of cool and logical detachment. He seems unperturbed by 
-your presence, evidently he does not think it possible you could have arrived 
+This imposing figure of a man studies maps and diagrams, taking notes and making
+observations with an air of cool and logical detachment. He seems unperturbed by
+your presence, evidently he does not think it possible you could have arrived
 here without having good reason.
 ~
 64|4096 8|32|512|8388608 -213 S
@@ -1089,9 +1089,9 @@ thief elder tall woman~
 the thief elder~
 A tall woman clad in black leather armour studies maps and diagrams.
 ~
-This strikingly attractive woman studies maps and diagrams, taking notes and 
-making observations with an air of cool and logical detachment. She seems 
-unperturbed by your presence, evidently not thinking it possible you could have 
+This strikingly attractive woman studies maps and diagrams, taking notes and
+making observations with an air of cool and logical detachment. She seems
+unperturbed by your presence, evidently not thinking it possible you could have
 arrived here without having good reason.
 ~
 64|4096 8|32|512|32768|8388608 -700 S
@@ -1103,7 +1103,7 @@ thief elder pale woman~
 the thief elder~
 A pale woman sleeps in a golden coffin.
 ~
-The vampire is calm and beautiful in repose, but you remind yourself of the 
+The vampire is calm and beautiful in repose, but you remind yourself of the
 bloodthirsty monster that lurks beneath her pale flesh and are repulsed.
 ~
 2|64|4096 8|32|512|131072|8388608 200 S
@@ -1115,7 +1115,7 @@ thief officer vampire~
 the thief officer~
 You have disturbed a vampire while they were feeding.. oops..
 ~
-The vampire here feasting on a fresh corpse turns on you savagely when you 
+The vampire here feasting on a fresh corpse turns on you savagely when you
 interrupt her meal..
 ~
 2|4|32|64|4096 8|32|512|524288|8388608 0 S
@@ -1132,9 +1132,9 @@ woman secretary~
 the Spymaster's secretary~
 A powerfully built woman in black is writing a letter.
 ~
-The woman appears human. You recall hearing of high-ranking vampires taking 
-women as thralls/blood slaves and forcing them to perform menial tasks in return 
-for sharing a small portion of their vampyric powers with them. You wonder if 
+The woman appears human. You recall hearing of high-ranking vampires taking
+women as thralls/blood slaves and forcing them to perform menial tasks in return
+for sharing a small portion of their vampyric powers with them. You wonder if
 this might be an example of such a case.
 ~
 2|64 8|32|128|512 -350 S
@@ -1146,7 +1146,7 @@ frozen troll~
 the frozen troll~
 A frozen troll corpses squirms and writhes.
 ~
-The huge frozen troll's nervous system doesn't quite seem to realize it's dead 
+The huge frozen troll's nervous system doesn't quite seem to realize it's dead
 yet and its limbs thrash wildly, devoid of mind or reason.
 ~
 2|32|64 8|32|256|512 0 S
@@ -1158,9 +1158,9 @@ female elf semiconscious~
 the female elf~
 A semiconscious female elf is chained to the wall here.
 ~
-The female elf is filthy and clothed in rags. She appears to have been 
-extensively tortured and abused and you doubt she will survive much longer. You 
-get an odd tingling feeling when you come closer to her, she may be a magic-user 
+The female elf is filthy and clothed in rags. She appears to have been
+extensively tortured and abused and you doubt she will survive much longer. You
+get an odd tingling feeling when you come closer to her, she may be a magic-user
 of some sort...
 ~
 2|64|128|4096 8|32|128|256|512|8192 35 S
@@ -1171,7 +1171,7 @@ of some sort...
 shadowbeast~
 the shadowbeast~
 {y{x~
-You can dimly perceive the form of a huge clawed cat-like creature in the 
+You can dimly perceive the form of a huge clawed cat-like creature in the
 moving shadow that attacks you.
 ~
 32|64|4096 8|32|512|524288|8388608 0 S
@@ -1194,10 +1194,10 @@ the Overseer~
 A tall pale man glares at you with cold fury.
 ~
 This must be him - the legendary and elusive figure responsible for the overall
-running and operation of the Hive. The Overseer stands perhaps 7 foot tall and 
-wears a black leather breastplate over long dark robes. A large shield emblazoned 
-with the image of a giant bat covers one pale but muscular arm while a cruelly 
-spiked gothic mace is slung casually from the other. He turns to face you, his 
+running and operation of the Hive. The Overseer stands perhaps 7 foot tall and
+wears a black leather breastplate over long dark robes. A large shield emblazoned
+with the image of a giant bat covers one pale but muscular arm while a cruelly
+spiked gothic mace is slung casually from the other. He turns to face you, his
 face an iconic vision of anger and barely contained rage.
 ~
 64|4096|16384 2|8|32|128|512|2048|8192|32768|65536|524288|1048576|8388608 -1000 S
@@ -1256,7 +1256,7 @@ A
 17 -40
 E
 paws claws~
-The claws must have been hacked off some sort of large feline carnivore, 
+The claws must have been hacked off some sort of large feline carnivore,
 though not one you've ever seen or heard about.~
 #25601
 silver collar~
@@ -1268,8 +1268,8 @@ A silver collar inlaid with a pulsating  black stone lies at your feet.~
 2 0 0
 E
 silver collar stone black~
-The silver collar is set with a large black stone. Gazing at the stone you 
-perceive a dark intelligence within it and the collar seems to beckon to you 
+The silver collar is set with a large black stone. Gazing at the stone you
+perceive a dark intelligence within it and the collar seems to beckon to you
 to fasten it around your neck..~
 #25602
 scrap parchment~
@@ -1366,7 +1366,7 @@ A key might be here.~
 0 0 0
 E
 translucent key~
-The key is made of a remarkable magic material that lets light pass 
+The key is made of a remarkable magic material that lets light pass
 through it. Without the aid of magic it cannot even be seen in most light.~
 #25611
 dagger hunters~
@@ -1498,8 +1498,8 @@ A
 19 0
 E
 chains nehdru~
-These closely resemble the chains which were fashioned by the famous sorcerer 
-Nehdru sometime in the fifth millennium to hold the dragon Nihogg, yet there 
+These closely resemble the chains which were fashioned by the famous sorcerer
+Nehdru sometime in the fifth millennium to hold the dragon Nihogg, yet there
 is a feeling about them that is different.
 ~
 #25622
@@ -1512,7 +1512,7 @@ Piles of precious jewels lie heaped on the floor.~
 5 0 0
 E
 piles jewels~
-Diamonds, sapphires and emeralds glisten amongst the dozens of precious and 
+Diamonds, sapphires and emeralds glisten amongst the dozens of precious and
 semi-precious stones in the pile.~
 #25623
 stout chest gold coins~
@@ -1536,7 +1536,7 @@ A
 13 100
 E
 blood amulet chain golden~
-The gem on the chain pulsates with a soft red light, as you contemplate it 
+The gem on the chain pulsates with a soft red light, as you contemplate it
 hideous visions of evil flood your mind.~
 #25625
 scepter resurrection~
@@ -1602,7 +1602,7 @@ A
 18 15
 E
 obsidian dagger~
-The dagger blade has been skillfully flaked from the volcanic glass, 
+The dagger blade has been skillfully flaked from the volcanic glass,
 resulting in a deadly sharp cutting edge.~
 #25630
 cloak concealment~
@@ -1628,7 +1628,7 @@ A
 23 -10
 E
 padded leather jerkin~
-The jerkin is of fine and sturdy construction, and feels to have had a mild 
+The jerkin is of fine and sturdy construction, and feels to have had a mild
 dweomer of protection laid on it.~
 #25632
 black cloth trousers~
@@ -1652,7 +1652,7 @@ A
 2 2
 E
 cloth footbindings bindings~
-The foot-bindings have been padded and worked so as to produce as little 
+The foot-bindings have been padded and worked so as to produce as little
 sound as possible.~
 #25634
 small sword~
@@ -1690,7 +1690,7 @@ A thick green book lies abandoned at your feet.~
 3 0 0
 E
 book herbal lore~
-This book is full of fascinating and useful information about medicinal 
+This book is full of fascinating and useful information about medicinal
 uses for common plants and extracts.~
 #25638
 staff memory~
@@ -1762,7 +1762,7 @@ A
 19 7
 E
 red stone~
-The stone hovers above the ground by some magical means. You wonder what 
+The stone hovers above the ground by some magical means. You wonder what
 purpose its creator might have had in mind for it..~
 #25643
 purple stone~
@@ -1776,7 +1776,7 @@ A
 12 80
 E
 purple stone~
-The stone hovers above the ground by some magical means. You wonder what 
+The stone hovers above the ground by some magical means. You wonder what
 purpose its creator might have had in mind for it..~
 #25644
 dark blue stone~
@@ -1798,8 +1798,8 @@ A glob of purple slime wobbles about on the floor.~
 1 0 0
 E
 glob purple slime~
-This blubbery nugget of offensive-smelling 
-slime came from somewhere in the Bogmonster's 
+This blubbery nugget of offensive-smelling
+slime came from somewhere in the Bogmonster's
 innards, perhaps an organ of some sort?~
 #25646
 handful brown slime~
@@ -1811,9 +1811,9 @@ A handful of brown slime has been smeared on the floor.~
 1 0 0
 E
 handful brown slime~
-The brown slime was scooped from the chest cavity 
-of the Bogmonster - perhaps it might be its heart? 
-It smells absolutely repulsive and you can't imagine 
+The brown slime was scooped from the chest cavity
+of the Bogmonster - perhaps it might be its heart?
+It smells absolutely repulsive and you can't imagine
 it tasting any better. Ergh.~
 #25647
 desk wooden~
@@ -1860,8 +1860,8 @@ A plain wooden chair is here.~
 10 0 0
 E
 plain wooden chair~
-The chair is of sturdy and robust construction yet unadorned and seems designed 
-only to play a utilitarian role. It has a small dark blue insignia stamped on 
+The chair is of sturdy and robust construction yet unadorned and seems designed
+only to play a utilitarian role. It has a small dark blue insignia stamped on
 its backboard.~
 E
 insignia blue~
@@ -1884,7 +1884,7 @@ An ebony sabre lies at your feet.~
 4 0 0
 E
 ebony sabre~
-The sword has a wide sharp blade and is a dull black colour. There is an odd 
+The sword has a wide sharp blade and is a dull black colour. There is an odd
 insignia in the hilt.~
 E
 insignia~
@@ -1913,7 +1913,7 @@ A
 24 -4
 E
 black leather armour~
-The leather armour is of rugged and durable construction. It has a small insignia 
+The leather armour is of rugged and durable construction. It has a small insignia
 stamped into it.~
 E
 insignia~
@@ -1946,7 +1946,7 @@ A
 19 0
 E
 razor-sharp dagger~
-The dagger has been honed to an unusually fine edge. Not the sort of thing you'd 
+The dagger has been honed to an unusually fine edge. Not the sort of thing you'd
 like stuck between your ribs, really.~
 #25656
 night robes~
@@ -1958,7 +1958,7 @@ A suit of night robes such as those used by ninja lie here.~
 4 0 0
 E
 night robes~
-These robes cover the entire body and render the wearer almost invisible in 
+These robes cover the entire body and render the wearer almost invisible in
 darkness or dim light.~
 #25657
 mock fighting-stick~
@@ -1974,7 +1974,7 @@ A
 18 -5
 E
 mock fighting stick~
-The stick is made of softwood and is not really designed for effective combat, 
+The stick is made of softwood and is not really designed for effective combat,
 more for practicing techniques.~
 #25658
 sharp fangs~
@@ -2026,7 +2026,7 @@ A long golden coffin stands against the wall.{w{X~
 5 0 0
 E
 golden coffin~
-The coffin is somewhat larger than man-sized, potentially allowing the occupant 
+The coffin is somewhat larger than man-sized, potentially allowing the occupant
 to be as tall as 7 foot.~
 #25662
 golden coffin~
@@ -2038,7 +2038,7 @@ A long golden coffin stands against the wall.{Y{x~
 5 0 0
 E
 golden coffin~
-The coffin is somewhat larger than man-sized, potentially allowing the occupant 
+The coffin is somewhat larger than man-sized, potentially allowing the occupant
 to be as tall as 7 foot.~
 #25663
 leather bag~
@@ -2069,7 +2069,7 @@ A long golden coffin stands against the wall.{R{x~
 5 0 0
 E
 golden coffin~
-The coffin is somewhat larger than man-sized, potentially allowing the occupant 
+The coffin is somewhat larger than man-sized, potentially allowing the occupant
 to be as tall as 7 foot.~
 #25666
 padded chainmail~
@@ -2087,8 +2087,8 @@ A
 17 -35
 E
 padded chainmail~
-This chainmail has cloth tightly weaved into its underside in order to prevent 
-the chinking and rustling noises that would normally be created by someone wearing 
+This chainmail has cloth tightly weaved into its underside in order to prevent
+the chinking and rustling noises that would normally be created by someone wearing
 such armour.~
 #25667
 tiger claws~
@@ -2104,7 +2104,7 @@ A
 18 -5
 E
 tiger claws~
-This weapon is ideal for close quarters combat and quite lethal in the hands of 
+This weapon is ideal for close quarters combat and quite lethal in the hands of
 a skilled fighter.~
 #25668
 pencil~
@@ -2138,8 +2138,8 @@ A
 18 5
 E
 diamond dagger~
-The diamond dagger is a dagger whose blade is made of magically reinforced diamond. 
-It is perfectly balanced for throwing, has an adamantite hilt and the name "Throatslitter" 
+The diamond dagger is a dagger whose blade is made of magically reinforced diamond.
+It is perfectly balanced for throwing, has an adamantite hilt and the name "Throatslitter"
 has been affectionately etched into the hilt.~
 #25671
 robes stealth~
@@ -2151,7 +2151,7 @@ Grey robes lie in a heap here.~
 2 0 0
 E
 robes stealth~
-These robes radiate dark magical energy, they have obviously had a dweomer of 
+These robes radiate dark magical energy, they have obviously had a dweomer of
 some kind placed upon them.~
 #25672
 rod annulment~
@@ -2163,7 +2163,7 @@ A short black rod with a smooth finish rolls about on the ground.~
 2 0 0
 E
 rod annulment~
-A popular tool for the experienced assassin, this allows them to attempt hits on 
+A popular tool for the experienced assassin, this allows them to attempt hits on
 powerful magic-users.~
 #25673
 silk cord~
@@ -2217,8 +2217,8 @@ A lectern stands on the podium.~
 200 0 0
 E
 lectern~
-An upright wooden lecturing stand. It has a flat surface on top at about chest 
-height for the speaker to rest their hands on while they speak and a small alcove 
+An upright wooden lecturing stand. It has a flat surface on top at about chest
+height for the speaker to rest their hands on while they speak and a small alcove
 just below it in which documents may be stored while not in use.~
 #25677
 notes pile papers documents~
@@ -2230,21 +2230,21 @@ A pile of documents lies here.~
 0 0 0
 E
 notes pile papers documents~
-The briefing documents make for interesting reading. Essentially it seems that 
-this complex (`the Hive') is a large clan of vampires that support themselves 
-through selling their spying, stealing and murdering services to the highest 
-bidder. For a vampire clan they seem to have an unusual emphasis on discipline 
-and order, having arranged themselves into three distinct divisions with each 
-division having a number of ranks and being segregated into their own special 
-`wing' in the hive. In each division the most able and skilled individual is 
-elected by consensus to be in charge of their operations and report to an 
-`Overseer' about whom little is mentioned in these documents although it is 
-implied in places that he is responsible for decisions which affect the entire 
-group, as well as the clans' diplomatic dealings with other vampire groups and 
-organizations (some of whom seem to be among the most frequent contractors of 
-the clan's services). 
-	Flipping through the list of murder contracts taken out by vampires against 
-members of rival clans you grin, realizing humans are not alone amongst the sentient 
+The briefing documents make for interesting reading. Essentially it seems that
+this complex (`the Hive') is a large clan of vampires that support themselves
+through selling their spying, stealing and murdering services to the highest
+bidder. For a vampire clan they seem to have an unusual emphasis on discipline
+and order, having arranged themselves into three distinct divisions with each
+division having a number of ranks and being segregated into their own special
+`wing' in the hive. In each division the most able and skilled individual is
+elected by consensus to be in charge of their operations and report to an
+`Overseer' about whom little is mentioned in these documents although it is
+implied in places that he is responsible for decisions which affect the entire
+group, as well as the clans' diplomatic dealings with other vampire groups and
+organizations (some of whom seem to be among the most frequent contractors of
+the clan's services).
+	Flipping through the list of murder contracts taken out by vampires against
+members of rival clans you grin, realizing humans are not alone amongst the sentient
 creatures of this world in being their own worst enemies.~
 #25678
 suit stealth bodysuit~
@@ -2262,8 +2262,8 @@ A
 17 15
 E
 suit stealth bodysuit~
-This tight-fitting black velvet garment makes appropriate nightwear for 
-discriminating thieves and lurkers the realm over, providing both cover and 
+This tight-fitting black velvet garment makes appropriate nightwear for
+discriminating thieves and lurkers the realm over, providing both cover and
 comfort.~
 #25679
 assortment gold valuables money~
@@ -2448,8 +2448,8 @@ A
 4 10
 E
 rod dominion~
-This legendary magical item gives the user psionic powers and increases their 
-combat effectiveness dramatically. It seems disproportionately heavy for its 
+This legendary magical item gives the user psionic powers and increases their
+combat effectiveness dramatically. It seems disproportionately heavy for its
 size.~
 #25696
 platinum coffin~
@@ -2487,7 +2487,7 @@ A
 5 2
 E
 maroon bodysuit~
-The bodysuit throbs with a heavy negative energy, it seems to have had some sort 
+The bodysuit throbs with a heavy negative energy, it seems to have had some sort
 of dweomer or spell cast upon it.~
 #25699
 stiletto heels~
@@ -2503,7 +2503,7 @@ A
 2 -4
 E
 stiletto heels high-heels high~
-The heel on these shoes has been sharpened somewhat, allowed it to be used 
+The heel on these shoes has been sharpened somewhat, allowed it to be used
 fairly effectively as a weapon.~
 #25700
 silver waistchain~
@@ -2528,7 +2528,7 @@ A large wooden desk stands against the eastern wall.~
 5 0 0
 E
 large wooden desk~
-The desk is covered in papers detailing various arrangements and correspondences 
+The desk is covered in papers detailing various arrangements and correspondences
 between the Spymaster's associates and clients.~
 #25702
 cask red wine~
@@ -2589,8 +2589,8 @@ The exsanguinated corpse of a dryad lies at your feet.~
 5 0 0
 E
 corpse dryad~
-The poor defenseless dryad, cut down in the prime of her life by monstrously 
-evil vampires for them to consume like some witless beast at their leisure. It 
+The poor defenseless dryad, cut down in the prime of her life by monstrously
+evil vampires for them to consume like some witless beast at their leisure. It
 just makes you so gosh-darn MAD.
 
 ~
@@ -2639,8 +2639,8 @@ A
 18 6
 E
 orb overseer black~
-You have slain the Overseer and stolen his magical orb, with which he controlled 
-his shadowbeast pets. You now possess a part of his power. Be vigilant lest you 
+You have slain the Overseer and stolen his magical orb, with which he controlled
+his shadowbeast pets. You now possess a part of his power. Be vigilant lest you
 fall prey to its dark murmurings.~
 #25712
 ring dark path small black object~
@@ -2675,9 +2675,9 @@ A
 24 -5
 E
 shield vampyre black painted~
-The shield is flamboyantly decorated with a stylized giant bat captured in mid 
-flight as it swoops down on an unsuspecting human. It has sharp metallic 
-protrusions around its circumference, making it look as much a device of offense 
+The shield is flamboyantly decorated with a stylized giant bat captured in mid
+flight as it swoops down on an unsuspecting human. It has sharp metallic
+protrusions around its circumference, making it look as much a device of offense
 as defense.~
 #25714
 elegant black cane~
@@ -2703,7 +2703,7 @@ A
 1 2
 E
 gothic mace black silver~
-The large and heavy mace has many studs and spikes extruding from its head, some 
+The large and heavy mace has many studs and spikes extruding from its head, some
 of them glint with an oily green sheen - hemlock!~
 #25716
 mace purity~
@@ -2725,11 +2725,11 @@ A
 32 -1
 E
 mace purity~
-The legendary mace of Purity - you have heard many legends of this artifact, 
-which has belonged to a large number of vampyre leaders in the centuries since 
-it was first stolen from Henrig Olsten, one time champion of the Domain's 
-paladin order. It appears it will only allow itself to be wielded by the most 
-righteous of individuals but should they grasp it, it will hold fast to their 
+The legendary mace of Purity - you have heard many legends of this artifact,
+which has belonged to a large number of vampyre leaders in the centuries since
+it was first stolen from Henrig Olsten, one time champion of the Domain's
+paladin order. It appears it will only allow itself to be wielded by the most
+righteous of individuals but should they grasp it, it will hold fast to their
 hand.~
 #25717
 silver boots black leather toecaps~
@@ -2754,8 +2754,8 @@ A great casket made of fine crystal sits on a raised podium.~
 5 0 0
 E
 casket coffin crystal~
-The coffin is breathtakingly beautiful and looks quite delicate and fragile, closer 
-inspection reveals the crystal is very thick indeed and it seems unlikely that even 
+The coffin is breathtakingly beautiful and looks quite delicate and fragile, closer
+inspection reveals the crystal is very thick indeed and it seems unlikely that even
 a serious fall would cause it great damage.~
 #25719
 crystal key~
@@ -2781,7 +2781,7 @@ painting~
 a painting~
 ~~
 33 0 0
-25772~ 0~ 0~ 100~ 
+25772~ 0~ 0~ 100~
 1 0 0
 E
 odd magical painting~
@@ -2792,7 +2792,7 @@ painting~
 a painting~
 ~~
 33 0 0
-25771~ 0~ 0~ 100~ 
+25771~ 0~ 0~ 100~
 1 0 0
 E
 odd magical painting~
@@ -2813,11 +2813,11 @@ A shapeless grey garment lies on the floor at your feet.~
 #ROOMS
 #25600
 Inside a sewerage drain~
-You stand barely crouched inside a concrete sewerage pipe that lets out into a 
-stinking pool of liquidified waste to the immediate east. Raw effluent laps 
-against your ankles and it is a struggle to fight back the nausea that threatens 
-to bring you to your knees. You may travel east into the bog or continue further 
-into the pipe westward, hanging around here doesn't seem an attractive 
+You stand barely crouched inside a concrete sewerage pipe that lets out into a
+stinking pool of liquidified waste to the immediate east. Raw effluent laps
+against your ankles and it is a struggle to fight back the nausea that threatens
+to bring you to your knees. You may travel east into the bog or continue further
+into the pipe westward, hanging around here doesn't seem an attractive
 proposition.
 ~
 0 4|8|512 0
@@ -2832,9 +2832,9 @@ D3
 S
 #25601
 Inside the sewerage drain~
-You stand inside a narrow east-west concrete sewer drain, ankle deep in 
-effluent. The stench threatens to overpower your senses, but you manage to fight 
-back the nausea and keep your footing. In both directions the tunnel recedes 
+You stand inside a narrow east-west concrete sewer drain, ankle deep in
+effluent. The stench threatens to overpower your senses, but you manage to fight
+back the nausea and keep your footing. In both directions the tunnel recedes
 into darkness and either way seems as good as the other.
 ~
 0 1|4|8|512 0
@@ -2849,8 +2849,8 @@ D3
 S
 #25602
 Inside a sewerage drain~
-You crouch inside a dark east-west concrete sewerage drain, knee deep in 
-effluent. To the east you can make out nothing but more drain, to the west lies 
+You crouch inside a dark east-west concrete sewerage drain, knee deep in
+effluent. To the east you can make out nothing but more drain, to the west lies
 a steel filter grill.
 ~
 0 1|4|8|512 0
@@ -2865,9 +2865,9 @@ D3
 S
 #25603
 At the filter grill~
-You crouch inside an east-west concrete sewerage drain, waist deep in effluent. 
-To your immediate west an iron filter grill has been installed, presumably to 
-prevent passage further along the drain in this direction. Eastward you see 
+You crouch inside an east-west concrete sewerage drain, waist deep in effluent.
+To your immediate west an iron filter grill has been installed, presumably to
+prevent passage further along the drain in this direction. Eastward you see
 nothing but more drain and darkness.
 ~
 0 1|4|8|512 6
@@ -2876,28 +2876,28 @@ D1
 ~
 0 -1 25602
 D3
-The grill is heavy, iron and choked with filth. 
-Brute force or magic would seem to be the answer 
+The grill is heavy, iron and choked with filth.
+Brute force or magic would seem to be the answer
 here.~
 grill~
 2 -1 25604
 E
 filter grill~
-The grill is heavy, iron and choked with filth. 
-Brute force or magic would seem to be the answer 
+The grill is heavy, iron and choked with filth.
+Brute force or magic would seem to be the answer
 here.~
 S
 #25604
 Western end of the sewer drain~
-You stand inside the western end of a dark concrete waste drain, waist-deep 
-in sewage. To your east lies a filter grill, preventing the flow of solid 
-waste matter in that direction while southward lies the sewer tunnel that 
+You stand inside the western end of a dark concrete waste drain, waist-deep
+in sewage. To your east lies a filter grill, preventing the flow of solid
+waste matter in that direction while southward lies the sewer tunnel that
 lets out into this drain.
 ~
 0 1|4|8|512 6
 D1
-The grill is heavy, iron and choked with filth. 
-Brute force or magic would seem to be the answer 
+The grill is heavy, iron and choked with filth.
+Brute force or magic would seem to be the answer
 here.~
 grill~
 2 -1 25603
@@ -2909,9 +2909,9 @@ S
 #25605
 Tunnel in the Sewers~
 You stand at the eastern end of a long east-west
-sewer tunnel. Untreated sewage congeals about your feet and the stench of 
-filth and decay is overpowering. There is a small opening at the base of 
-the northern wall leading to a run-off pipe and westwards the sewer tunnel 
+sewer tunnel. Untreated sewage congeals about your feet and the stench of
+filth and decay is overpowering. There is a small opening at the base of
+the northern wall leading to a run-off pipe and westwards the sewer tunnel
 disappears into blackness.
 ~
 0 1|8 0
@@ -2926,8 +2926,8 @@ D3
 S
 #25606
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
 You can make out nothing of interest in either direction.
 ~
 0 1|8 0
@@ -2942,8 +2942,8 @@ D3
 S
 #25607
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
 You can make out nothing of interest in either direction.
 ~
 0 1|8 0
@@ -2958,10 +2958,10 @@ D3
 S
 #25608
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-To the west you can make out a junction in the sewer tunnel, while eastwards 
-it disappears into impenetrable darkness. A feeling of terror and dread hangs 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+To the west you can make out a junction in the sewer tunnel, while eastwards
+it disappears into impenetrable darkness. A feeling of terror and dread hangs
 in the foul black air.
 ~
 0 1|4|8 0
@@ -2976,9 +2976,9 @@ D3
 S
 #25609
 Junction in the sewer tunnels~
-You stand at a four-way junction in a dank concrete sewer tunnel. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-The air is heavy with a feeling of malevolent evil and menace and a part of 
+You stand at a four-way junction in a dank concrete sewer tunnel. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+The air is heavy with a feeling of malevolent evil and menace and a part of
 your mind is screaming at you to flee madly into the darkness.~
 0 1|4|8|8192 0
 D0
@@ -3004,9 +3004,9 @@ D4
 S
 #25610
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-Further along to both the east and the west you see four-way junctions in the 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+Further along to both the east and the west you see four-way junctions in the
 tunnel network. A feeling of terror and dread hangs in the foul air.
 ~
 0 1|4|8 0
@@ -3025,8 +3025,8 @@ D3
 S
 #25611
 Junction in the sewer tunnels~
-You stand at a four-way junction in a dank concrete sewer tunnel. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
+You stand at a four-way junction in a dank concrete sewer tunnel. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
 A feeling of terror and dread hangs in the foul air.
 ~
 0 1|4|8 0
@@ -3049,9 +3049,9 @@ D3
 S
 #25612
 Tunnel in the sewers~
-You stand at the western end of a dank concrete sewer tunnel that runs east-west. 
-Untreated sewage congeals about your feet and the stench of filth and decay 
-is overpowering. A four-way sewer junction lies to your immediate east while 
+You stand at the western end of a dank concrete sewer tunnel that runs east-west.
+Untreated sewage congeals about your feet and the stench of filth and decay
+is overpowering. A four-way sewer junction lies to your immediate east while
 a manhole cover opens down from here into one of the sewer's service ducts.
 ~
 0 1|8 0
@@ -3060,18 +3060,18 @@ D1
 ~
 0 -1 25611
 D5
-The cover of the service duct lifts off to reveal 
-a short ladder leading down to another tunnel 
-running west. This tunnel is appreciably cleaner 
-and less foul-smelling than the sewer drain in 
+The cover of the service duct lifts off to reveal
+a short ladder leading down to another tunnel
+running west. This tunnel is appreciably cleaner
+and less foul-smelling than the sewer drain in
 which you stand now.~
 cover~
 4 -1 25613
 S
 #25613
 Bottom of the ladder~
-You stand at the bottom of a short ladder leading upward in a dark tunnel 
-that runs west. The ground beneath you is firm and earthen and the temperature 
+You stand at the bottom of a short ladder leading upward in a dark tunnel
+that runs west. The ground beneath you is firm and earthen and the temperature
 pleasant, yet you sense an odd atmosphere of hostility lingering in the air.
 ~
 0 1|4|8|8192 0
@@ -3086,10 +3086,10 @@ D4
 S
 #25614
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs north-south. The floor 
-is slick with filth and slime and the stench of raw sewage is enough to make 
-concentration difficult. Further along to the south you see a four-way junction 
-in the tunnel network while a sharp turn to the west is just visible in the 
+You stand inside a dank concrete sewer tunnel that runs north-south. The floor
+is slick with filth and slime and the stench of raw sewage is enough to make
+concentration difficult. Further along to the south you see a four-way junction
+in the tunnel network while a sharp turn to the west is just visible in the
 gloom to your north. A feeling of terror and dread hangs in the foul air.
 ~
 0 1|4|8 0
@@ -3104,9 +3104,9 @@ D2
 S
 #25615
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs north-south. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-A short distance away to the north you make out a four-way junction, there 
+You stand inside a dank concrete sewer tunnel that runs north-south. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+A short distance away to the north you make out a four-way junction, there
 appears to be a turn southwards too, but it is hard to be sure in this gloom.
 ~
 0 1|4|8 0
@@ -3121,9 +3121,9 @@ D2
 S
 #25616
 Bend in the sewer tunnel~
-You stand at a south-west bend in a dank concrete sewer tunnel, deep underground. 
-Strange sounds issue forth from the gloom and a chill wind blows through the 
-tunnel, sending a shiver of apprehension down your spine. Such is the darkness 
+You stand at a south-west bend in a dank concrete sewer tunnel, deep underground.
+Strange sounds issue forth from the gloom and a chill wind blows through the
+tunnel, sending a shiver of apprehension down your spine. Such is the darkness
 here that you can make out nothing in either direction.
 ~
 0 1|8 0
@@ -3138,9 +3138,9 @@ D3
 S
 #25617
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-To the east the tunnel curves around to the south yet west it grows unusually 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+To the east the tunnel curves around to the south yet west it grows unusually
 dark and you cannot make out anything.
 ~
 0 1|8 0
@@ -3155,9 +3155,9 @@ D3
 S
 #25618
 Junction in the sewer tunnels~
-You stand at a three-way junction in a sewer tunnel deep underground, up to 
-your ankles in raw effluent. The darkness here is absolute and your light 
-provide illumination sufficient only for your immediate area. Strange splashing 
+You stand at a three-way junction in a sewer tunnel deep underground, up to
+your ankles in raw effluent. The darkness here is absolute and your light
+provide illumination sufficient only for your immediate area. Strange splashing
 sounds issue from the gloom.
 ~
 0 1|8 0
@@ -3176,9 +3176,9 @@ D2
 S
 #25619
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs north-south. The floor 
-is slick with filth and slime and the stench of it is enough to make concentration 
-difficult. Further along to the south you see a four-way junction in the tunnel 
+You stand inside a dank concrete sewer tunnel that runs north-south. The floor
+is slick with filth and slime and the stench of it is enough to make concentration
+difficult. Further along to the south you see a four-way junction in the tunnel
 network, north it grows too dark to discern anything of the tunnel's course.
 ~
 0 1|8 0
@@ -3193,8 +3193,8 @@ D2
 S
 #25620
 Junction in the sewer tunnels~
-You stand at a three-way junction in a dank concrete sewer tunnel, deep underground. 
-Strange sounds issue forth from the gloom and a chill wind blows through the 
+You stand at a three-way junction in a dank concrete sewer tunnel, deep underground.
+Strange sounds issue forth from the gloom and a chill wind blows through the
 tunnel, sending a shiver of apprehension down your spine. More filth and
 slime lies to the north, south and west.
 ~
@@ -3214,9 +3214,9 @@ D3
 S
 #25621
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs north-south. The floor 
-is slick with filth and slime and the stench of it is enough to make concentration 
-difficult. A short distance to the south lies a three-way junction in the tunnel 
+You stand inside a dank concrete sewer tunnel that runs north-south. The floor
+is slick with filth and slime and the stench of it is enough to make concentration
+difficult. A short distance to the south lies a three-way junction in the tunnel
 network while northwards it grows too dark to discern anything in the oppressive gloom.
 ~
 0 1|8 0
@@ -3231,9 +3231,9 @@ D2
 S
 #25622
 Junction in the sewer tunnels~
-You stand at a three-way junction in a dank concrete sewer tunnel, deep underground. 
-Splashing sounds issue forth from the gloom and a chill wind blows through the 
-tunnel, sending a shiver of apprehension down your spine. To the south  the 
+You stand at a three-way junction in a dank concrete sewer tunnel, deep underground.
+Splashing sounds issue forth from the gloom and a chill wind blows through the
+tunnel, sending a shiver of apprehension down your spine. To the south  the
 gloom is impenetrable while to the north and west the tunnel dives into a
 shallow decline and the water level rises sharply above your waist.
 ~
@@ -3253,8 +3253,8 @@ D3
 S
 #25623
 Tunnel in the Sewers~
-You stand waist-deep in the filth and bog of an underground sewer, the stench 
-is revolting and nausea threatens to overwhelm you. You can wade north 
+You stand waist-deep in the filth and bog of an underground sewer, the stench
+is revolting and nausea threatens to overwhelm you. You can wade north
 further into the muck or head south where it appears to be only shin-deep.
 ~
 0 1|8 6
@@ -3269,10 +3269,10 @@ D2
 S
 #25624
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-Further along to both the east and the west you see three-way junctions in the 
-tunnel network. 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+Further along to both the east and the west you see three-way junctions in the
+tunnel network.
 
 You are a long way from home.
 ~
@@ -3288,9 +3288,9 @@ D3
 S
 #25625
 Bend in the sewer tunnel~
-You stand inside the curve of a dank concrete sewer tunnel that runs north-east. 
-Untreated effluent congeals about your ankles and the stench of filth and decay 
-is overpowering. To the north the sewer becomes even damper and less inviting, 
+You stand inside the curve of a dank concrete sewer tunnel that runs north-east.
+Untreated effluent congeals about your ankles and the stench of filth and decay
+is overpowering. To the north the sewer becomes even damper and less inviting,
 while some distance to the east you can make out a junction in the network.
 ~
 0 1|8 0
@@ -3305,10 +3305,10 @@ D1
 S
 #25626
 Tunnel in the Sewers~
-You stand in a dank concrete sewer tunnel, deep underground.  Splashing sounds 
-issue forth from the darkness and a chill wind blows through the tunnel, sending 
-a shiver of apprehension down your spine. To the south the gloom thickens, 
-becoming impenetrable while to the north the tunnel dives into a shallow decline 
+You stand in a dank concrete sewer tunnel, deep underground.  Splashing sounds
+issue forth from the darkness and a chill wind blows through the tunnel, sending
+a shiver of apprehension down your spine. To the south the gloom thickens,
+becoming impenetrable while to the north the tunnel dives into a shallow decline
 and the water level rises sharply to above your waist.
 ~
 0 1|8 0
@@ -3324,7 +3324,7 @@ S
 #25627
 Junction in the sewer tunnels~
 You stand waist-deep in the filth and bog of an underground sewer, at a three-way
-junction in the sewer tunnel network.  You can wade north, where the muck grows 
+junction in the sewer tunnel network.  You can wade north, where the muck grows
 deeper or head south or east towards shallower passages.
 ~
 0 1|8 6
@@ -3343,10 +3343,10 @@ D2
 S
 #25628
 Tunnel in the Sewers~
-You stand chest-deep in the filth and bog of an underground sewer, the stench 
+You stand chest-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overpower you. Northwards the water level
 rises to higher than your head and you will be forced to swim to stay afloat
-in the sucking mire, while to the south the river of effluent continues, 
+in the sucking mire, while to the south the river of effluent continues,
 becoming only slightly more shallow.
 ~
 0 1|8 6
@@ -3361,11 +3361,11 @@ D2
 S
 #25629
 Swimming in raw sewage~
-You are swimming in a deep pool of raw effluent. It requires some effort to keep 
+You are swimming in a deep pool of raw effluent. It requires some effort to keep
 your head above the water level due to the sucking action and moist viscosity
 of the caliginous bog (similar in texture to porridge though somewhat less edible).
-To the south and east the tunnel inclines and the mire becomes more shallow, 
-permitting you to wade. If you get out of here alive you might consider having 
+To the south and east the tunnel inclines and the mire becomes more shallow,
+permitting you to wade. If you get out of here alive you might consider having
 your adventuring equipment professionally cleaned.
 ~
 0 1|4|8 8
@@ -3380,9 +3380,9 @@ D2
 S
 #25630
 Tunnel in the Sewers~
-You stand waist-deep in the filth and bog of an underground sewer, the stench 
+You stand waist-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overwhelm you. You can wade west towards
-a junction further along in the muck or head to the east where it appears to 
+a junction further along in the muck or head to the east where it appears to
 become only shin-deep.
 ~
 0 1|8 6
@@ -3397,9 +3397,9 @@ D3
 S
 #25631
 Tunnel in the Sewers~
-You stand chest-deep in the filth and bog of an underground sewer, the stench 
+You stand chest-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overpower you. Westwards the water level
-rises to higher than your head and you will be forced to swim to stay afloat in 
+rises to higher than your head and you will be forced to swim to stay afloat in
 the sucking mire, while east the water level is a little shallower and should
 allow to you move more freely.
 ~
@@ -3415,8 +3415,8 @@ D3
 S
 #25632
 Bend in the sewer tunnel~
-You stand waist-deep in the filth and bog of an underground sewer, the stench 
-is revolting and nausea threatens to overpower you. You can wade west, where the 
+You stand waist-deep in the filth and bog of an underground sewer, the stench
+is revolting and nausea threatens to overpower you. You can wade west, where the
 muck grows deeper or head south towards shallower passages.
 ~
 0 1|8 6
@@ -3431,8 +3431,8 @@ D3
 S
 #25633
 Junction in the sewer tunnels~
-You stand at a three-way junction in a dank concrete sewer tunnel deep underground. 
-Untreated sewage congeals about your feet and the stench of filth and decay is 
+You stand at a three-way junction in a dank concrete sewer tunnel deep underground.
+Untreated sewage congeals about your feet and the stench of filth and decay is
 overpowering. The tunnel continues in all the cardinal directions save east.
 ~
 0 1|8 0
@@ -3451,8 +3451,8 @@ D3
 S
 #25634
 Bend in the sewer tunnel~
-You stand at a bend in a dank concrete sewer tunnel, deep underground. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
+You stand at a bend in a dank concrete sewer tunnel, deep underground. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
 The tunnel continues north and east from here.
 ~
 0 1|8 0
@@ -3467,9 +3467,9 @@ D1
 S
 #25635
 Tunnel in the Sewers~
-You stand at in a dank concrete sewer tunnel running north-south. Untreated sewage 
-congeals about your feet and the stench of filth and decay is overpowering. To the 
-north lies a four-way junction in the tunnel while to your south the path turns to 
+You stand at in a dank concrete sewer tunnel running north-south. Untreated sewage
+congeals about your feet and the stench of filth and decay is overpowering. To the
+north lies a four-way junction in the tunnel while to your south the path turns to
 the east and disappears into darkness.
 ~
 0 1|8 0
@@ -3484,10 +3484,10 @@ D2
 S
 #25636
 Junction in the sewer tunnels~
-You stand at a three-way junction in a dank concrete sewer tunnel deep underground. 
-Untreated sewage congeals about your feet and the stench of filth and decay is 
-overpowering. A short distance away to the north you can make out another three-way 
-junction, but to the south and east the tunnel grows too dark to make out further 
+You stand at a three-way junction in a dank concrete sewer tunnel deep underground.
+Untreated sewage congeals about your feet and the stench of filth and decay is
+overpowering. A short distance away to the north you can make out another three-way
+junction, but to the south and east the tunnel grows too dark to make out further
 details.
 ~
 0 1|8 0
@@ -3506,9 +3506,9 @@ D2
 S
 #25637
 Junction in the sewer tunnels~
-You stand at a three-way junction in a dank concrete sewer tunnel deep underground. 
-Untreated effluent laps against your ankles and the stench of filth and decay is 
-overpowering. The tunnel continues in all the cardinal directions save east, with 
+You stand at a three-way junction in a dank concrete sewer tunnel deep underground.
+Untreated effluent laps against your ankles and the stench of filth and decay is
+overpowering. The tunnel continues in all the cardinal directions save east, with
 further junctions apparent to both the north and south.
 ~
 0 1|8 0
@@ -3527,9 +3527,9 @@ D3
 S
 #25638
 Junction in the sewer tunnels~
-You stand at a three-way junction in a sewer tunnel deep underground, up to your 
-ankles in raw effluent. The darkness here is absolute and your light provide 
-illumination sufficient only for your immediate area. Strange splashing sounds 
+You stand at a three-way junction in a sewer tunnel deep underground, up to your
+ankles in raw effluent. The darkness here is absolute and your light provide
+illumination sufficient only for your immediate area. Strange splashing sounds
 issue from the gloom.
 ~
 0 1|8 0
@@ -3548,8 +3548,8 @@ D2
 S
 #25639
 Tunnel in the Sewers~
-You stand waist-deep in the filth and bog of an underground sewer, the stench is 
-revolting and nausea threatens to overwhelm you. You can wade south further into 
+You stand waist-deep in the filth and bog of an underground sewer, the stench is
+revolting and nausea threatens to overwhelm you. You can wade south further into
 the muck or head north where it appears to be only shin-deep.
 ~
 0 1|8 6
@@ -3564,8 +3564,8 @@ D2
 S
 #25640
 Bend in the sewer tunnel~
-You stand waist-deep in the filth and bog of an underground sewer, the stench is 
-revolting and nausea threatens to overpower you. You can wade east, where the muck 
+You stand waist-deep in the filth and bog of an underground sewer, the stench is
+revolting and nausea threatens to overpower you. You can wade east, where the muck
 grows deeper or strike out north towards shallower passages.
 ~
 0 1|8 6
@@ -3580,9 +3580,9 @@ D1
 S
 #25641
 Tunnel in the Sewers~
-You stand chest-deep in the filth and bog of an underground sewer, the stench is 
+You stand chest-deep in the filth and bog of an underground sewer, the stench is
 nauseating and your lunch threatens to revisit you. Eastwards the water level
-rises to higher than your head and you will be forced to swim to stay afloat in 
+rises to higher than your head and you will be forced to swim to stay afloat in
 the sucking mire, while to the west the sewer passage curves around north, though
 the bog appears to become no more shallow.
 ~
@@ -3598,10 +3598,10 @@ D3
 S
 #25642
 Swimming in raw sewage~
-You are swimming in a deep pool of raw effluent. It requires some effort to keep 
-your head above the water level due to the sucking action and viscosity of the 
-evil filth. To the north and west the tunnel inclines and the mire becomes somewhat 
-more shallow, permitting you to wade. Your mother never told you there would be 
+You are swimming in a deep pool of raw effluent. It requires some effort to keep
+your head above the water level due to the sucking action and viscosity of the
+evil filth. To the north and west the tunnel inclines and the mire becomes somewhat
+more shallow, permitting you to wade. Your mother never told you there would be
 days like this.
 ~
 0 1|4|8 8
@@ -3616,10 +3616,10 @@ D3
 S
 #25643
 Tunnel in the Sewers~
-You stand chest-deep in the filth and bog of an underground sewer, the stench 
+You stand chest-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overpower you. Southwards the water level
 rises to higher than your head and you will be forced to swim to stay afloat
-in the sucking mire, while to the north the bog is of a similar depth and the 
+in the sucking mire, while to the north the bog is of a similar depth and the
 tunnel looks to branch off to the west.
 ~
 0 1|8 6
@@ -3635,7 +3635,7 @@ S
 #25644
 Junction in the sewer tunnels~
 You stand waist-deep in the filth and bog of an underground sewer, at a three-way
-junction in the sewer tunnel network.  You can wade south, where the muck grows 
+junction in the sewer tunnel network.  You can wade south, where the muck grows
 deeper or head north or west towards shallower passages.
 ~
 0 1|8 6
@@ -3654,10 +3654,10 @@ D3
 S
 #25645
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs north-south. The floor 
-is slick with filth and slime and the stench of raw sewage is enough to make 
-concentration difficult. Further along to the south you see a three-way junction 
-in the tunnel network which appears to be wholly submerged in effluent, while a 
+You stand inside a dank concrete sewer tunnel that runs north-south. The floor
+is slick with filth and slime and the stench of raw sewage is enough to make
+concentration difficult. Further along to the south you see a three-way junction
+in the tunnel network which appears to be wholly submerged in effluent, while a
 sharp westward turn is just visible in the gloom to your north.
 ~
 0 1|8 0
@@ -3672,9 +3672,9 @@ D2
 S
 #25646
 Bend in the sewer tunnel~
-You stand inside the curve of a dank concrete sewer tunnel that runs south and 
-west. Untreated effluent congeals about your ankles and the stench of filth and 
-decay is overpowering. To the south the sewer becomes even damper and less inviting, 
+You stand inside the curve of a dank concrete sewer tunnel that runs south and
+west. Untreated effluent congeals about your ankles and the stench of filth and
+decay is overpowering. To the south the sewer becomes even damper and less inviting,
 while some distance to the west you can make out a junction in the tunnel network.
 ~
 0 1|8 0
@@ -3689,8 +3689,8 @@ D3
 S
 #25647
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
 To the east the tunnel curves around to the south while to the west the tunnel
 lets out into a three-way junction permitting passage to the north and south.
 ~
@@ -3706,9 +3706,9 @@ D3
 S
 #25648
 Tunnel in the Sewers~
-You stand waist-deep in the filth and bog of an underground sewer, the stench 
+You stand waist-deep in the filth and bog of an underground sewer, the stench
 is revolting and nausea threatens to overwhelm you. You can wade east towards
-a junction further along in the muck or head to the west where it appears to 
+a junction further along in the muck or head to the west where it appears to
 become only shin-deep.
 ~
 0 1|8 6
@@ -3723,9 +3723,9 @@ D3
 S
 #25649
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
-A north-south junction lies east, while westwards the tunnel curves around to the 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
+A north-south junction lies east, while westwards the tunnel curves around to the
 north, into darkness.
 ~
 0 1|8 0
@@ -3740,8 +3740,8 @@ D3
 S
 #25650
 Dry earthen tunnel~
-You stand in a short east-west earthen tunnel deep underground. To the west 
-a heavy iron door seals off the tunnel while eastwards the tunnel ends at the 
+You stand in a short east-west earthen tunnel deep underground. To the west
+a heavy iron door seals off the tunnel while eastwards the tunnel ends at the
 foot of a ladder leading up into a service duct.
 ~
 0 1|4|8|8192 0
@@ -3756,9 +3756,9 @@ D3
 S
 #25651
 At the iron gate~
-You stand at the end of a short earthen tunnel deep underground. Blocking your 
-further passage west is a heavy wrought-iron door set into a sheer rockface. Surely 
-something of great importance must lie behind it to warrant such stringent security 
+You stand at the end of a short earthen tunnel deep underground. Blocking your
+further passage west is a heavy wrought-iron door set into a sheer rockface. Surely
+something of great importance must lie behind it to warrant such stringent security
 measures being taken. It appears to have no handle or knocker on this side.
 
 ~
@@ -3768,27 +3768,27 @@ D1
 ~
 0 -1 25650
 D3
-The iron door is powerfully built and set in dense stone. Surely there 
+The iron door is powerfully built and set in dense stone. Surely there
 can be no way to pass it except if it is opened from the other side.~
 door~
 8 25607 25652
 S
 #25652
 Reception room ~
-You stand in a small room in an underground burrow or hive, such as those 
-fashioned by giant burrowing beetles but with a clearly more human intelligence 
-responsible for the decor and general aesthetic. Pale green light-orbs have been 
-fastened strategically about the walls, illuminating the room with a dim glow, 
-sufficient to enable you to see clearly without the aid of your own 
-light-source. 
+You stand in a small room in an underground burrow or hive, such as those
+fashioned by giant burrowing beetles but with a clearly more human intelligence
+responsible for the decor and general aesthetic. Pale green light-orbs have been
+fastened strategically about the walls, illuminating the room with a dim glow,
+sufficient to enable you to see clearly without the aid of your own
+light-source.
 
-This appears to be a reception area of some sort, evidenced by the plain wooden 
-chairs set about the room and the small room lying to the south into which you 
-can see courtesy of a hole (window?) that has been dug into it. The small room 
-can be walked into via a opening to the southwest, while a door has been set into 
-the far western wall, presumably leading farther into the complex. 
+This appears to be a reception area of some sort, evidenced by the plain wooden
+chairs set about the room and the small room lying to the south into which you
+can see courtesy of a hole (window?) that has been dug into it. The small room
+can be walked into via a opening to the southwest, while a door has been set into
+the far western wall, presumably leading farther into the complex.
 
-The door through which you entered to the east has mysteriously disappeared, leaving 
+The door through which you entered to the east has mysteriously disappeared, leaving
 only a handle in the wall which seems to do nothing. There is magic at work here.
 ~
 0 8|8192 0
@@ -3798,15 +3798,15 @@ D3
 0 -1 25663
 E
 south room~
-It appears to be a guard or receptionist room of some sort. You can make out a 
-desk and chairs but the light is too dim to perceive more detail from this distance. 
+It appears to be a guard or receptionist room of some sort. You can make out a
+desk and chairs but the light is too dim to perceive more detail from this distance.
 You could try walking around to the southwest if you're really curious.~
 S
 #25653
 Crack in the tunnel wall~
-The crack in the wall is large enough here that a half-dozen people might 
-squeeze inside it, yet it narrows to the west, eventually becomes too thin 
-to allow further passage. Odd scuffling and squeaking noises emanate from 
+The crack in the wall is large enough here that a half-dozen people might
+squeeze inside it, yet it narrows to the west, eventually becomes too thin
+to allow further passage. Odd scuffling and squeaking noises emanate from
 the darkness.
 ~
 0 1|8|8192 0
@@ -3817,7 +3817,7 @@ D1
 S
 #25654
 Bat cave~
-The inch-thick guano on the ground in this underground cave indicate it is 
+The inch-thick guano on the ground in this underground cave indicate it is
 frequented by bats, by the size of some of the droppings very large ones.
 ~
 0 1|8|8192 0
@@ -3828,8 +3828,8 @@ D3
 S
 #25655
 Tunnel in the Sewers~
-You stand inside a dank concrete sewer tunnel that runs east-west. Untreated 
-sewage congeals about your feet and the stench of filth and decay is overpowering. 
+You stand inside a dank concrete sewer tunnel that runs east-west. Untreated
+sewage congeals about your feet and the stench of filth and decay is overpowering.
 A north-south junction lies east, while westwards the becomes darker and more narrow.
 ~
 0 1|8 0
@@ -3844,8 +3844,8 @@ D3
 S
 #25656
 Tunnel in the Sewers~
-The east-west tunnel in which you stand is uncommonly narrow and somewhat drier 
-here than it is further to the east. To the west it grows narrower still before 
+The east-west tunnel in which you stand is uncommonly narrow and somewhat drier
+here than it is further to the east. To the west it grows narrower still before
 coming to a complete end at a grimy concrete wall.
 ~
 0 1|8 0
@@ -3860,8 +3860,8 @@ D3
 S
 #25657
 End of a sewer tunnel~
-You stand at the western end of a long and narrow east-west tunnel in the sewer 
-network. Examining the filthy concrete walls closely you come across the entrance 
+You stand at the western end of a long and narrow east-west tunnel in the sewer
+network. Examining the filthy concrete walls closely you come across the entrance
 to a small access shaft in the southwestern corner of the room, its protective
 metal lid long since lost or stolen. Odd hissing sounds percolate up from the depths.
 ~
@@ -3877,8 +3877,8 @@ D5
 S
 #25658
 In the access shaft~
-The access shaft is more of a long downward slide than anything else as 
-the iron ladder which once stood against the northern face has long since 
+The access shaft is more of a long downward slide than anything else as
+the iron ladder which once stood against the northern face has long since
 rusted away. The walls are covered with slime and thick moss and there is no
 way to avoid being slathered with the muck as you travel through here.
 
@@ -3897,9 +3897,9 @@ D5
 S
 #25659
 In the Snake Pit~
-You float shoulder-deep in muddy water in the northeastern corner of a small 
-(perhaps 20' square) grimy concrete chamber, deep underground. You may paddle 
-south or west from here. About 15 feet above you see the bottom end of a small 
+You float shoulder-deep in muddy water in the northeastern corner of a small
+(perhaps 20' square) grimy concrete chamber, deep underground. You may paddle
+south or west from here. About 15 feet above you see the bottom end of a small
 rounded access shaft leading upwards, the chamber's only exit.
 ~
 0 1|8 6
@@ -3918,7 +3918,7 @@ D4
 S
 #25660
 In the Snake Pit~
-You float shoulder-deep in muddy water in the southwestern corner of a small 
+You float shoulder-deep in muddy water in the southwestern corner of a small
 grimy concrete chamber, deep underground. You may paddle north or east from here.
 ~
 0 1|8 6
@@ -3933,7 +3933,7 @@ D1
 S
 #25661
 In the Snake Pit~
-You float shoulder-deep in muddy water in the southeastern corner of a small 
+You float shoulder-deep in muddy water in the southeastern corner of a small
 grimy concrete chamber, deep underground. You may paddle north or west from here.
 ~
 0 1|8 6
@@ -3948,7 +3948,7 @@ D3
 S
 #25662
 In the Snake Pit~
-You float shoulder-deep in muddy water in the northeastern corner of a small 
+You float shoulder-deep in muddy water in the northeastern corner of a small
 grimy concrete chamber, deep underground. You may paddle south or west from here.
 ~
 0 1|8 6
@@ -3963,9 +3963,9 @@ D3
 S
 #25663
 Reception room ~
-This is the western end of a small reception room in an earthen burrow deep 
-underground. An opening in the southern wall affords direct access to another 
-room around to the southeast while a solid oak door lies to your immediate west, 
+This is the western end of a small reception room in an earthen burrow deep
+underground. An opening in the southern wall affords direct access to another
+room around to the southeast while a solid oak door lies to your immediate west,
 leading deeper into the heart of the hive.
 ~
 0 4|8|8192 0
@@ -3984,8 +3984,8 @@ door~
 S
 #25665
 Reception room~
-This is the southwestern corner of a small reception room in an earthen burrow 
-deep underground. To the east lies what you can now recognize as a guardpost, 
+This is the southwestern corner of a small reception room in an earthen burrow
+deep underground. To the east lies what you can now recognize as a guardpost,
 replete with desk, chairs and miscellaneous items of lowbrow entertainment.
 ~
 0 8|8192 0
@@ -4000,10 +4000,10 @@ D1
 S
 #25666
 In the Guardroom~
-Here the doorkeepers (read: hired thugs) keep an eye on the comings and goings 
-of the Hive and keep out the curious and unwelcome. The small room contains a 
-wooden desk, a couple of chairs and assorted card and board games. It looks like 
-someone may have been playing poker as the desk has a pack of cards and several 
+Here the doorkeepers (read: hired thugs) keep an eye on the comings and goings
+of the Hive and keep out the curious and unwelcome. The small room contains a
+wooden desk, a couple of chairs and assorted card and board games. It looks like
+someone may have been playing poker as the desk has a pack of cards and several
 piles of small change on it. A window north allows you to see into the waiting area.
 
 A large red button that says ALARM on it is set into the east wall at eye-level.
@@ -4022,12 +4022,12 @@ Gee, wonder what that's for.~
 S
 #25667
 Corridor in the Hive~
-You stand in a long earthen tunnel running north-south, deep underground. 
-Pale-green light-orbs are set into the walls at regular intervals, providing 
-enough dim light for you to perceive your surroundings with reasonable acuity. 
-South the tunnel disappears into darkness while it seems to fork off westwards a 
-little farther north. A feeling of gloom and hopelessness that is not entirely 
-subjective in nature permeates the air, this seems a place that the gods 
+You stand in a long earthen tunnel running north-south, deep underground.
+Pale-green light-orbs are set into the walls at regular intervals, providing
+enough dim light for you to perceive your surroundings with reasonable acuity.
+South the tunnel disappears into darkness while it seems to fork off westwards a
+little farther north. A feeling of gloom and hopelessness that is not entirely
+subjective in nature permeates the air, this seems a place that the gods
 themselves would spurn.
 ~
 0 8|8192 0
@@ -4049,9 +4049,9 @@ Clearly magical in operation, but unremarkable in function. Pretty though.~
 S
 #25668
 Corridor in the Hive~
-You stand in a long earthen tunnel running north-south, deep underground. 
-Pale-green light-orbs are set into the walls at regular intervals, providing 
-enough dim light for you to perceive your surroundings with reasonable acuity. 
+You stand in a long earthen tunnel running north-south, deep underground.
+Pale-green light-orbs are set into the walls at regular intervals, providing
+enough dim light for you to perceive your surroundings with reasonable acuity.
 The tunnel disappears into gloom and blackness to both the north and south.
 ~
 0 8|8192 0
@@ -4066,10 +4066,10 @@ D2
 S
 #25669
 Corridor in the Hive~
-You stand in a long earthen tunnel running north-south, deep underground. 
-Pale-green light-orbs are set into the walls at regular intervals, providing 
-enough dim light for you to perceive your surroundings with reasonable acuity. 
-To the north the tunnel disappears into darkness, while a little farther south 
+You stand in a long earthen tunnel running north-south, deep underground.
+Pale-green light-orbs are set into the walls at regular intervals, providing
+enough dim light for you to perceive your surroundings with reasonable acuity.
+To the north the tunnel disappears into darkness, while a little farther south
 the tunnel comes to an abrupt end before a doorway set in the eastern wall.
 ~
 0 8|8192 0
@@ -4084,10 +4084,10 @@ D2
 S
 #25670
 Corridor in the Hive~
-You stand at the southern end of a long earthen tunnel running north-south, 
-deep underground. Pale-green light-orbs are set into the walls at regular 
-intervals, providing enough dim light for you to perceive your surroundings with 
-reasonable acuity. A robust-looking door of oak construction is set into a 
+You stand at the southern end of a long earthen tunnel running north-south,
+deep underground. Pale-green light-orbs are set into the walls at regular
+intervals, providing enough dim light for you to perceive your surroundings with
+reasonable acuity. A robust-looking door of oak construction is set into a
 doorway arch lying to your immediate east.
 ~
 0 4|8|8192 0
@@ -4102,10 +4102,10 @@ D1
 S
 #25671
 Training area~
-You stand at the northern end of a long rectangular room in an earthen burrow, 
-deep underground. From the equipment lying about you would guess this area is 
-used for training warriors of some sort. There is a door in the eastern wall, 
-about half-way along and a hole in the ground with the top of a ladder poking 
+You stand at the northern end of a long rectangular room in an earthen burrow,
+deep underground. From the equipment lying about you would guess this area is
+used for training warriors of some sort. There is a door in the eastern wall,
+about half-way along and a hole in the ground with the top of a ladder poking
 out of it in the southwestern corner of the room.
 ~
 0 8|8192 0
@@ -4130,10 +4130,10 @@ Nothing useful or saleable.~
 S
 #25672
 Training area~
-You stand at the northern end of a long rectangular room in an earthen burrow, 
-deep underground. From the equipment lying about you would guess this area is 
-used for training warriors of some sort. Doors lie just southeast and a little 
-further to the west, while a hole in the ground can be seen in the extreme southwest 
+You stand at the northern end of a long rectangular room in an earthen burrow,
+deep underground. From the equipment lying about you would guess this area is
+used for training warriors of some sort. Doors lie just southeast and a little
+further to the west, while a hole in the ground can be seen in the extreme southwest
 of the room.
 ~
 0 8|8192 0
@@ -4154,10 +4154,10 @@ Nothing saleable or useful.~
 S
 #25673
 Training area~
-You stand in the middle of a long rectangular room in an earthen burrow, deep 
-underground. From the equipment lying about you would guess this area is used for 
-training warriors of some sort. There is a door to your immediate east with a 
-plaque visible above the handle while other exits can be seen to the northwest 
+You stand in the middle of a long rectangular room in an earthen burrow, deep
+underground. From the equipment lying about you would guess this area is used for
+training warriors of some sort. There is a door to your immediate east with a
+plaque visible above the handle while other exits can be seen to the northwest
 and southwest.
 ~
 0 8|8192 0
@@ -4189,10 +4189,10 @@ Nothing saleable or useful.~
 S
 #25674
 Training area~
-You stand in the southeastern corner of a long rectangular room in an earthen 
-burrow, deep underground. From the equipment lying about you would guess this area 
-is used for training warriors of some sort. There are doors to the northeast and 
-extreme northwest while the top of a ladder can be seen poking out of a hole just 
+You stand in the southeastern corner of a long rectangular room in an earthen
+burrow, deep underground. From the equipment lying about you would guess this area
+is used for training warriors of some sort. There are doors to the northeast and
+extreme northwest while the top of a ladder can be seen poking out of a hole just
 to the west of here.
 ~
 0 8|8192 0
@@ -4213,10 +4213,10 @@ Nothing useful or saleable.~
 S
 #25675
 Training area~
-You stand in the southwest corner of a long rectangular room in an earthen 
-burrow, deep underground. From the equipment lying about you would guess this 
-area is used for training warriors of some sort. Doors lie to the north and 
-northeast, but your attention is drawn more immediately to the ladder just 
+You stand in the southwest corner of a long rectangular room in an earthen
+burrow, deep underground. From the equipment lying about you would guess this
+area is used for training warriors of some sort. Doors lie to the north and
+northeast, but your attention is drawn more immediately to the ladder just
 beside you leading down into darkness.
 ~
 0 8|8192 0
@@ -4244,10 +4244,10 @@ Nothing saleable or useful~
 S
 #25676
 Training area~
-You stand in the middle of a long rectangular room in an earthen burrow, deep 
-underground. From the equipment lying about you would guess this area is used 
-for training warriors of some sort. There are doors to the east and northwest 
-and a you can see a hole in the ground with the top of a ladder poking out of 
+You stand in the middle of a long rectangular room in an earthen burrow, deep
+underground. From the equipment lying about you would guess this area is used
+for training warriors of some sort. There are doors to the east and northwest
+and a you can see a hole in the ground with the top of a ladder poking out of
 it a short distance to the south.
 ~
 0 8|8192 0
@@ -4272,10 +4272,10 @@ Nothing useful or saleable.~
 S
 #25677
 the Assassinmaster's quarters~
-This sparsely furnished office/living quarters is where the Assassinmaster lives 
-and conducts his business. It contains only a desk and a few chairs, with his 
-personal coffin propped against the east wall of the room. The Assassinmaster is 
-notorious for his irrational hatred of unannounced visitors and like as not, that 
+This sparsely furnished office/living quarters is where the Assassinmaster lives
+and conducts his business. It contains only a desk and a few chairs, with his
+personal coffin propped against the east wall of the room. The Assassinmaster is
+notorious for his irrational hatred of unannounced visitors and like as not, that
 will mean YOU.
 ~
 0 8|8192 0
@@ -4286,10 +4286,10 @@ D3
 S
 #25678
 Corridor in the barracks~
-You stand at the northern end of a long north-south corridor in an earthen 
-burrow deep underground. A ladder is affixed to the north wall here, leading 
-upwards into another room. The corridor is lined with east-west doorways and 
-lit by pale green light-orbs in brackets running its length. The door to the 
+You stand at the northern end of a long north-south corridor in an earthen
+burrow deep underground. A ladder is affixed to the north wall here, leading
+upwards into another room. The corridor is lined with east-west doorways and
+lit by pale green light-orbs in brackets running its length. The door to the
 east has a plaque above its handle.
 ~
 0 8|8192 0
@@ -4319,8 +4319,8 @@ plaque~
 S
 #25679
 Corridor in the barracks~
-You stand in a long north-south corridor in an earthen burrow deep underground. 
-The corridor is lined with east-west doorways and lit by pale green light-orbs 
+You stand in a long north-south corridor in an earthen burrow deep underground.
+The corridor is lined with east-west doorways and lit by pale green light-orbs
 in brackets running its length.
 ~
 0 8|8192 0
@@ -4343,8 +4343,8 @@ D3
 S
 #25680
 Corridor in the barracks~
-You stand in a long north-south corridor in an earthen burrow deep underground. 
-The corridor is lined with east-west doorways and lit by pale green light-orbs 
+You stand in a long north-south corridor in an earthen burrow deep underground.
+The corridor is lined with east-west doorways and lit by pale green light-orbs
 in brackets running its length.
 ~
 0 8|8192 0
@@ -4367,8 +4367,8 @@ D3
 S
 #25681
 Corridor in the barracks~
-You stand in a long north-south corridor in an earthen burrow deep underground. 
-The corridor is lined with east-west doorways and lit by pale green light-orbs 
+You stand in a long north-south corridor in an earthen burrow deep underground.
+The corridor is lined with east-west doorways and lit by pale green light-orbs
 in brackets running its length. The corridor ends a short distance further south.
 ~
 0 8|8192 0
@@ -4391,8 +4391,8 @@ D3
 S
 #25682
 Corridor in the barracks~
-You stand at the southern end of a long north-south corridor in an earthen 
-burrow deep underground. The corridor is lined with east-west doorways and lit 
+You stand at the southern end of a long north-south corridor in an earthen
+burrow deep underground. The corridor is lined with east-west doorways and lit
 by pale green light-orbs in brackets running its length.
 ~
 0 8|8192 0
@@ -4412,7 +4412,7 @@ S
 #25683
 Recruit quarters~
 These are living quarters used by some of the assassin recruits. The room contains
-several empty copper-coloured coffins and little else, as items of personal meaning 
+several empty copper-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 8|8192 0
@@ -4427,7 +4427,7 @@ S
 #25684
 Recruit quarters~
 These are living quarters used by some of the assassin recruits. The room contains
-several empty copper-coloured coffins and little else, as items of personal meaning 
+several empty copper-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 8|8192 0
@@ -4442,7 +4442,7 @@ S
 #25685
 Recruit quarters~
 These are living quarters used by some of the assassin recruits. The room contains
-several empty copper-coloured coffins and little else, as items of personal meaning 
+several empty copper-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 8|8192 0
@@ -4457,7 +4457,7 @@ S
 #25686
 Recruit quarters~
 These are living quarters used by some of the assassin recruits. The room contains
-several empty copper-coloured coffins and little else, as items of personal meaning 
+several empty copper-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 8|8192 0
@@ -4472,7 +4472,7 @@ S
 #25687
 Recruit quarters~
 These are living quarters used by some of the assassin recruits. The room contains
-several empty copper-coloured coffins and little else, as items of personal meaning 
+several empty copper-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 1|8|8192 0
@@ -4487,7 +4487,7 @@ S
 #25688
 Recruit quarters~
 These are living quarters used by some of the assassin recruits. The room contains
-several empty copper-coloured coffins and little else, as items of personal meaning 
+several empty copper-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 1|8|8192 0
@@ -4502,7 +4502,7 @@ S
 #25689
 Officer quarters~
 These are living quarters used by some of the assassin officers. The room contains
-several empty silver-coloured coffins and little else, as items of personal meaning 
+several empty silver-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 8|8192 0
@@ -4514,7 +4514,7 @@ S
 #25690
 Officer quarters~
 These are living quarters used by some of the assassin officers. The room contains
-several empty silver-coloured coffins and little else, as items of personal meaning 
+several empty silver-coloured coffins and little else, as items of personal meaning
 or bespeaking of individualism are frowned upon by the group.
 ~
 0 8|8192 0
@@ -4525,9 +4525,9 @@ D3
 S
 #25691
 Entrance-guard quarters~
-These are the living quarters of the specially trained assassin officers 
-responsible for the immediate security of the Hive entrance. It contains 
-several empty silver-coloured coffins and a large alarm bell centrally 
+These are the living quarters of the specially trained assassin officers
+responsible for the immediate security of the Hive entrance. It contains
+several empty silver-coloured coffins and a large alarm bell centrally
 located above them, attached to the ceiling.
 ~
 0 1|8 0
@@ -4541,9 +4541,9 @@ Nothing especially interesting about them.~
 S
 #25692
 Elder quarters~
-You stand in the living quarters of the assassin elders. This spacious room is 
-sparse and unadorned save for the large maps of all the major cities in the domain 
-that are plastered on the walls.  Looks as if this place also serves as a briefing 
+You stand in the living quarters of the assassin elders. This spacious room is
+sparse and unadorned save for the large maps of all the major cities in the domain
+that are plastered on the walls.  Looks as if this place also serves as a briefing
 room for the whole wing.
 ~
 0 4|8|8192 0
@@ -4561,17 +4561,17 @@ D3
 8 -1 25678
 E
 maps~
-They have rooms belonging to important officials marked and notes regarding 
-various entry and exit points and good hiding places affixed to them. 
+They have rooms belonging to important officials marked and notes regarding
+various entry and exit points and good hiding places affixed to them.
 Curiouser and curiouser.~
 S
 #25693
 Corridor in the Hive~
-You stand in a long earthen tunnel running north-south, deep underground. 
-Pale-green light-orbs are set into the walls at regular intervals, providing 
-enough dim light for you to perceive your surroundings with reasonable acuity. 
-South the tunnel disappears into darkness while north you can make out a fork 
-west a short distance further up. A door constructed of red pine with a small 
+You stand in a long earthen tunnel running north-south, deep underground.
+Pale-green light-orbs are set into the walls at regular intervals, providing
+enough dim light for you to perceive your surroundings with reasonable acuity.
+South the tunnel disappears into darkness while north you can make out a fork
+west a short distance further up. A door constructed of red pine with a small
 metal plaque fastened to it is set into the wall here to your immediate west.
 ~
 0 8|8192 0
@@ -4595,9 +4595,9 @@ red pine door small metal plaque west~
 S
 #25694
 Corridor in the Hive~
-You stand at a three-way junction in a long earthen tunnel, deep underground. 
-Pale-green light-orbs are set into the walls at regular intervals, providing 
-enough dim light for you to perceive your surroundings with reasonable acuity. 
+You stand at a three-way junction in a long earthen tunnel, deep underground.
+Pale-green light-orbs are set into the walls at regular intervals, providing
+enough dim light for you to perceive your surroundings with reasonable acuity.
 You may proceed further down the corridor in any cardinal direction save east.
 ~
 0 8|8192 0
@@ -4616,10 +4616,10 @@ D3
 S
 #25695
 Corridor in the Hive~
-You stand in an earthen tunnel running east-west, deep underground. Pale-green 
-light-orbs are set into the walls at regular intervals, providing enough dim 
-light for you to perceive your surroundings with reasonable acuity. You see a 
-doorway set in the wall a little farther west, while to the east this tunnel 
+You stand in an earthen tunnel running east-west, deep underground. Pale-green
+light-orbs are set into the walls at regular intervals, providing enough dim
+light for you to perceive your surroundings with reasonable acuity. You see a
+doorway set in the wall a little farther west, while to the east this tunnel
 ends as it intersects with another running north-south.
 ~
 0 8|8192 0
@@ -4634,10 +4634,10 @@ D3
 S
 #25696
 Corridor in the Hive~
-You stand in an earthen tunnel running east-west, deep underground. Pale-green 
-light-orbs are set into the walls at regular intervals, providing enough dim 
-light for you to perceive your surroundings with reasonable acuity. A door 
-constructed of red pine with a small metal plaque fastened to it is set into the 
+You stand in an earthen tunnel running east-west, deep underground. Pale-green
+light-orbs are set into the walls at regular intervals, providing enough dim
+light for you to perceive your surroundings with reasonable acuity. A door
+constructed of red pine with a small metal plaque fastened to it is set into the
 wall here to your immediate south.
 ~
 0 8|8192 0
@@ -4659,10 +4659,10 @@ small metal plaque door south red pine~
 S
 #25697
 Corridor in the Hive~
-You stand in an earthen tunnel running east-west, deep underground. Pale-green 
-light-orbs are set into the walls at regular intervals, providing enough dim 
-light for you to perceive your surroundings with reasonable acuity. This tunnel 
-appears to have a number of doorways set into it, including the one containing 
+You stand in an earthen tunnel running east-west, deep underground. Pale-green
+light-orbs are set into the walls at regular intervals, providing enough dim
+light for you to perceive your surroundings with reasonable acuity. This tunnel
+appears to have a number of doorways set into it, including the one containing
 the heavy brass door to your north.
 ~
 0 8|8192 0
@@ -4684,10 +4684,10 @@ The door has a plaque on it which reads "Intelligence Center".~
 S
 #25698
 Corridor in the Hive~
-You stand at the far western end of an east-west running earthen tunnel, deep 
-underground. Pale-green light-orbs are set into the walls at regular intervals, 
-providing enough dim light for you to perceive your surroundings with reasonable 
-acuity. This tunnel has a number of doorways set into it, including the ones 
+You stand at the far western end of an east-west running earthen tunnel, deep
+underground. Pale-green light-orbs are set into the walls at regular intervals,
+providing enough dim light for you to perceive your surroundings with reasonable
+acuity. This tunnel has a number of doorways set into it, including the ones
 here to your west and south.
 ~
 0 8|8192 0
@@ -4705,20 +4705,20 @@ D3
 1 25609 25786
 E
 south plate steel~
-The door to your south is thick plate steel and has no label, handle, knocker or 
+The door to your south is thick plate steel and has no label, handle, knocker or
 opening mechanism of any kind that you can find. Odd.~
 E
 west plain wooden~
-There is a well-worn recession in the packed-earth floor leading to the western 
+There is a well-worn recession in the packed-earth floor leading to the western
 door, suggesting it enjoys frequent use.~
 S
 #25699
 The briefing and co-ordination center~
 You stand at the northeastern end of an underground mission debriefing center,
-of a kind frequently found in military compounds and other intelligence-based 
-organizations. Chairs are liberally distributed about the floorspace and at the 
-southern end of the room you can see a podium and lectern in front of a large 
-chalkboard covered in maps. 
+of a kind frequently found in military compounds and other intelligence-based
+organizations. Chairs are liberally distributed about the floorspace and at the
+southern end of the room you can see a podium and lectern in front of a large
+chalkboard covered in maps.
 
 A doorway leading out of here lies to your immediate east.
 ~
@@ -4738,10 +4738,10 @@ D3
 S
 #25700
 The briefing and co-ordination center~
-You stand in an underground mission debriefing center, of a kind frequently found 
-in military compounds and other intelligence-based organizations. Chairs are 
-liberally distributed about the floorspace and a short distance away to the south 
-you see a podium and lectern in front of a large chalkboard covered in maps. 
+You stand in an underground mission debriefing center, of a kind frequently found
+in military compounds and other intelligence-based organizations. Chairs are
+liberally distributed about the floorspace and a short distance away to the south
+you see a podium and lectern in front of a large chalkboard covered in maps.
 
 Room exits lie northwest and north.
 ~
@@ -4761,11 +4761,11 @@ D3
 S
 #25701
 The briefing and co-ordination center~
-You stand on a raised podium at the southern end of an underground mission 
-debriefing center, of a kind frequently found in military compounds and other 
-intelligence-based organizations. Chairs are liberally distributed about the 
-floorspace to the north while immediately behind you is a large chalkboard 
-covered in maps. 
+You stand on a raised podium at the southern end of an underground mission
+debriefing center, of a kind frequently found in military compounds and other
+intelligence-based organizations. Chairs are liberally distributed about the
+floorspace to the north while immediately behind you is a large chalkboard
+covered in maps.
 
 Exits from the room lie in the far north and northwest corners of the room.
 ~
@@ -4780,15 +4780,15 @@ D3
 0 -1 25702
 E
 chalkboard maps~
-It is covered in maps of the major cities of the realms with strategic locations 
+It is covered in maps of the major cities of the realms with strategic locations
 marked and annotated.~
 S
 #25702
 The briefing and co-ordination center~
-You stand on a raised podium at the southern end of an underground mission debriefing 
-center, of a kind frequently found in military compounds and other intelligence-based 
-organizations. Chairs are liberally distributed about the floorspace to the north, 
-while immediately behind you is a large chalkboard covered in maps. 
+You stand on a raised podium at the southern end of an underground mission debriefing
+center, of a kind frequently found in military compounds and other intelligence-based
+organizations. Chairs are liberally distributed about the floorspace to the north,
+while immediately behind you is a large chalkboard covered in maps.
 
 Exits from the room lie in the far north and northeast corners of the room.
 ~
@@ -4803,15 +4803,15 @@ D1
 0 -1 25701
 E
 chalkboard maps~
-It is covered in maps of the major cities of the realms with strategic locations 
+It is covered in maps of the major cities of the realms with strategic locations
 marked and annotated.~
 S
 #25703
 The briefing and co-ordination center~
-You stand in an underground mission debriefing center, of a kind frequently found 
-in military compounds and other intelligence-based organizations. Chairs are 
-liberally distributed about the floorspace and a short distance away to the south 
-you see a podium and lectern in front of a large chalkboard covered in maps. 
+You stand in an underground mission debriefing center, of a kind frequently found
+in military compounds and other intelligence-based organizations. Chairs are
+liberally distributed about the floorspace and a short distance away to the south
+you see a podium and lectern in front of a large chalkboard covered in maps.
 
 Room exits lie north and northeast.
 ~
@@ -4831,13 +4831,13 @@ D2
 S
 #25704
 The briefing and co-ordination center~
-You stand at the northwestern end of an underground mission debriefing center, 
-of a kind frequently found in military compounds and other intelligence-based 
-organizations. Chairs are liberally distributed about the floorspace and at the 
-southern end of the room you can see a podium and lectern in front of a large 
-chalkboard covered in maps. 
+You stand at the northwestern end of an underground mission debriefing center,
+of a kind frequently found in military compounds and other intelligence-based
+organizations. Chairs are liberally distributed about the floorspace and at the
+southern end of the room you can see a podium and lectern in front of a large
+chalkboard covered in maps.
 
-A doorway leading out of here lies to your immediate north, with another a short 
+A doorway leading out of here lies to your immediate north, with another a short
 distance away to the east.
 ~
 0 8|8192 0
@@ -4856,9 +4856,9 @@ D2
 S
 #25705
 Intelligence Center~
-You stand at the southern end of a large burrow containing many rooms separated 
-by high wooden partitions, each partitioned-off area having a doorway entrance 
-alcove into it, marked by a plaque on the door at eye level. Two such doorway 
+You stand at the southern end of a large burrow containing many rooms separated
+by high wooden partitions, each partitioned-off area having a doorway entrance
+alcove into it, marked by a plaque on the door at eye level. Two such doorway
 alcoves lie to the west and east of here.
 ~
 0 4|8|8192 0
@@ -4890,9 +4890,9 @@ Which plaque do you want to look at? The one on the east or west door?~
 S
 #25706
 Intelligence Center~
-You stand in the middle of a large burrow containing many rooms separated by 
-high wooden partitions, each partitioned-off area having a doorway entrance 
-alcove into it, marked by a plaque on the door at eye level. Two such doorway 
+You stand in the middle of a large burrow containing many rooms separated by
+high wooden partitions, each partitioned-off area having a doorway entrance
+alcove into it, marked by a plaque on the door at eye level. Two such doorway
 alcoves lie to the west and east of here.
 ~
 0 8|8192 0
@@ -4924,10 +4924,10 @@ Which one do you want to look at? The one to the east or west?~
 S
 #25707
 Intelligence Center~
-You stand in the middle of a large burrow containing many rooms separated by 
-high wooden partitions, each partitioned-off area having a doorway entrance 
-alcove into it, marked by a plaque on the door at eye level. One such doorway 
-lies east while to the west you see a hole leading into the ground through the 
+You stand in the middle of a large burrow containing many rooms separated by
+high wooden partitions, each partitioned-off area having a doorway entrance
+alcove into it, marked by a plaque on the door at eye level. One such doorway
+lies east while to the west you see a hole leading into the ground through the
 top of which a ladder emerges.
 ~
 0 8|8192 0
@@ -4952,14 +4952,14 @@ east plaque~
 The plaque says "Anon Elder's Office"~
 E
 west hole ladder~
-The hole leads into the ground. The ladder appears the only mode of 
+The hole leads into the ground. The ladder appears the only mode of
 transportation short of falling or flying.~
 S
 #25708
 Above a hole in the ground~
-A ladder leads down into a hole directly before you, in this large flat part of 
-the earthen burrow. Peering down the hole you see a long north-south corridor, 
-well lit and with many doors on each side. Footprints are everywhere in the 
+A ladder leads down into a hole directly before you, in this large flat part of
+the earthen burrow. Peering down the hole you see a long north-south corridor,
+well lit and with many doors on each side. Footprints are everywhere in the
 packed earth around you, the hole is much-used.
 ~
 0 4|8|8192 0
@@ -4974,10 +4974,10 @@ D5
 S
 #25709
 Intelligence Center~
-You stand at the northern end of a large burrow containing many rooms separated 
-by high wooden partitions, each partitioned-off area having a doorway entrance 
-alcove into it, marked by a plaque on the door at eye level. Two such doorway 
-alcoves lie to the west and east of here, while a third, somewhat more imposing 
+You stand at the northern end of a large burrow containing many rooms separated
+by high wooden partitions, each partitioned-off area having a doorway entrance
+alcove into it, marked by a plaque on the door at eye level. Two such doorway
+alcoves lie to the west and east of here, while a third, somewhat more imposing
 door lies north.
 ~
 0 4|8|8192 0
@@ -5008,15 +5008,15 @@ plaque~
 Which one? To the east or west?~
 E
 north~
-The northern door is of somewhat more solid and robust construction than the 
+The northern door is of somewhat more solid and robust construction than the
 others in this room, you do not think you could force it.~
 S
 #25710
 Portal to Midgaard~
-This partitioned off area is dominated by a huge arch set into the western wall 
-whose surface flickers and glows with strange magical light. There are a lot of 
-footprints on the ground as well as other signs suggesting this room sees a lot 
-of traffic. Surely something this obviously magical and powerful ought to be 
+This partitioned off area is dominated by a huge arch set into the western wall
+whose surface flickers and glows with strange magical light. There are a lot of
+footprints on the ground as well as other signs suggesting this room sees a lot
+of traffic. Surely something this obviously magical and powerful ought to be
 guarded?~
 0 8|8192 0
 D1
@@ -5030,10 +5030,10 @@ D3
 S
 #25711
 Portal to Anon~
-This partitioned off area is dominated by a huge arch set into the eastern wall 
-whose surface flickers and glows with strange magical light. There are a lot of 
-footprints on the ground as well as other signs suggesting this room sees a lot 
-of traffic. Surely something this obviously magical and powerful ought to be 
+This partitioned off area is dominated by a huge arch set into the eastern wall
+whose surface flickers and glows with strange magical light. There are a lot of
+footprints on the ground as well as other signs suggesting this room sees a lot
+of traffic. Surely something this obviously magical and powerful ought to be
 guarded?~
 0 8|8192 0
 D1
@@ -5047,7 +5047,7 @@ D3
 S
 #25712
 Anon Elder's Office~
-This partitioned area appears to be used as office space, replete 
+This partitioned area appears to be used as office space, replete
 with a couple of chairs and a desk covered with papers and diagrams.
 ~
 0 8|8192 0
@@ -5061,7 +5061,7 @@ Mostly to do with the comings and goings of important citizens in Anon.~
 S
 #25713
 Krondorian Elder's office~
-This partitioned area appears to be used as office space, replete 
+This partitioned area appears to be used as office space, replete
 with a couple of chairs and a desk covered with papers and diagrams.
 ~
 0 8|8192 0
@@ -5075,7 +5075,7 @@ Mostly to do with the comings and goings of important citizens in Krondor.~
 S
 #25714
 Kerofkian Elder's Office~
-This partitioned area appears to be used as office space, replete 
+This partitioned area appears to be used as office space, replete
 with a couple of chairs and a desk covered with papers and diagrams.
 ~
 0 8|8192 0
@@ -5089,10 +5089,10 @@ Mostly to do with the comings and goings of important citizens in Kerofk.~
 S
 #25715
 Portal to Krondor~
-This partitioned off area is dominated by a huge arch set into the western wall 
-whose surface flickers and glows with strange magical light. There are a lot of 
-footprints on the ground as well as other signs suggesting this room sees a lot 
-of traffic. Surely something this obviously magical and powerful ought to be 
+This partitioned off area is dominated by a huge arch set into the western wall
+whose surface flickers and glows with strange magical light. There are a lot of
+footprints on the ground as well as other signs suggesting this room sees a lot
+of traffic. Surely something this obviously magical and powerful ought to be
 guarded?~
 0 8|8192 0
 D1
@@ -5106,10 +5106,10 @@ D3
 S
 #25716
 Portal to Kerofk~
-This partitioned off area is dominated by a huge arch set into the eastern wall 
-whose surface flickers and glows with strange magical light. There are a lot of 
-footprints on the ground as well as other signs suggesting this room sees a lot 
-of traffic. Surely something this obviously magical and powerful ought to be 
+This partitioned off area is dominated by a huge arch set into the eastern wall
+whose surface flickers and glows with strange magical light. There are a lot of
+footprints on the ground as well as other signs suggesting this room sees a lot
+of traffic. Surely something this obviously magical and powerful ought to be
 guarded?~
 0 8|8192 0
 D1
@@ -5123,9 +5123,9 @@ D3
 S
 #25717
 Corridor in the barracks~
-You stand at the northern end of a long north-south corridor in an earthen 
-burrow deep underground. Before you a ladder leads directly up into a dark hole 
-in the roof. The corridor is lined with east-west doorways and lit by pale green 
+You stand at the northern end of a long north-south corridor in an earthen
+burrow deep underground. Before you a ladder leads directly up into a dark hole
+in the roof. The corridor is lined with east-west doorways and lit by pale green
 light-orbs in brackets running its length.
 ~
 0 8|8192 0
@@ -5140,10 +5140,10 @@ D4
 S
 #25718
 A Secretary's Office~
-You stand in a large sparsely furnished and decorated office in an earthen 
-burrow deep underground. This office is somewhat larger and more solidly 
-constructed than the others that lie nearby and the solid steel door leading 
-north from here looks to be all but impassable by dint of physical force or 
+You stand in a large sparsely furnished and decorated office in an earthen
+burrow deep underground. This office is somewhat larger and more solidly
+constructed than the others that lie nearby and the solid steel door leading
+north from here looks to be all but impassable by dint of physical force or
 magical arts. You notice a small plaque on the door.
 ~
 0 8|8192 0
@@ -5164,10 +5164,10 @@ The plaque reads "Spymaster's office"~
 S
 #25719
 The Spymaster's office~
-This large cavernous room, hewn from the very bedrock of the earth has been 
-turned into a military-style office. It contains of a huge cast-iron desk that 
-stands against the north wall as well as several steel-framed sitting chairs 
-that lie strewn about somewhat haphazardly. Huge cast-iron doors lie east and 
+This large cavernous room, hewn from the very bedrock of the earth has been
+turned into a military-style office. It contains of a huge cast-iron desk that
+stands against the north wall as well as several steel-framed sitting chairs
+that lie strewn about somewhat haphazardly. Huge cast-iron doors lie east and
 west while a reinforced steel door leads out southward.
 ~
 0 8|8192 0
@@ -5189,8 +5189,8 @@ The door in this direction looks awfully solid and imposing.~
 S
 #25720
 Corridor in the barracks~
-You stand near the northern end of a long north-south corridor in an earthen 
-burrow deep underground. The corridor is lined with east-west doorways and lit 
+You stand near the northern end of a long north-south corridor in an earthen
+burrow deep underground. The corridor is lined with east-west doorways and lit
 by pale green light-orbs in brackets running its length.
 ~
 0 8|8192 0
@@ -5213,8 +5213,8 @@ D3
 S
 #25721
 Corridor in the barracks~
-You stand in the middle of a long north-south corridor in an earthen burrow 
-deep underground. The corridor is lined with east-west doorways and lit by pale 
+You stand in the middle of a long north-south corridor in an earthen burrow
+deep underground. The corridor is lined with east-west doorways and lit by pale
 green light-orbs in brackets running its length.
 ~
 0 8|8192 0
@@ -5237,9 +5237,9 @@ D3
 S
 #25722
 Corridor in the barracks~
-You stand toward the southern end of a long north-south corridor in an earthen 
-burrow deep underground. The corridor is lined with east-west doorways and lit 
-by pale green light-orbs in brackets running its length. You can see that the 
+You stand toward the southern end of a long north-south corridor in an earthen
+burrow deep underground. The corridor is lined with east-west doorways and lit
+by pale green light-orbs in brackets running its length. You can see that the
 tunnel curves around to the east a little farther south.
 ~
 0 8|8192 0
@@ -5262,9 +5262,9 @@ D3
 S
 #25723
 Corridor in the barracks~
-You stand in the western elbow of a long L-shaped corridor in an earthen burrow 
-deep underground. The corridor is lined with doorways and lit by pale green 
-light-orbs in brackets running all along its length. You may continue along the 
+You stand in the western elbow of a long L-shaped corridor in an earthen burrow
+deep underground. The corridor is lined with doorways and lit by pale green
+light-orbs in brackets running all along its length. You may continue along the
 hall to the north or east here.
 ~
 0 8|8192 0
@@ -5283,9 +5283,9 @@ D3
 S
 #25724
 Corridor in the barracks~
-You stand in the middle of a long corridor running east-west in an earthen 
-burrow deep underground. The corridor is lined with doorways and lit by pale 
-green light-orbs in brackets running all along its length. You may continue 
+You stand in the middle of a long corridor running east-west in an earthen
+burrow deep underground. The corridor is lined with doorways and lit by pale
+green light-orbs in brackets running all along its length. You may continue
 along the hall to the east or west here.
 ~
 0 8|8192 0
@@ -5300,9 +5300,9 @@ D3
 S
 #25725
 Corridor in the barracks~
-You stand at the eastern end of a short corridor running east-west in an 
-earthen burrow deep underground. The corridor is lined with doorways and lit by 
-pale green light-orbs in brackets running all along its length. You may continue 
+You stand at the eastern end of a short corridor running east-west in an
+earthen burrow deep underground. The corridor is lined with doorways and lit by
+pale green light-orbs in brackets running all along its length. You may continue
 along the hall to the west here.
 ~
 0 4|8|8192 0
@@ -5321,8 +5321,8 @@ D3
 S
 #25726
 Training area~
-You stand in the northwestern corner of a long rectangular room in an earthen 
-burrow, deep underground. This room seems to be used mainly for socialising, as 
+You stand in the northwestern corner of a long rectangular room in an earthen
+burrow, deep underground. This room seems to be used mainly for socialising, as
 evidenced by all the chairs and rubbish strewn about.
 ~
 0 8|8192 0
@@ -5341,8 +5341,8 @@ D2
 S
 #25727
 Training area~
-You stand halfway along the western wall of a long rectangular room in an 
-earthen burrow, deep underground. This room seems to be used mainly for 
+You stand halfway along the western wall of a long rectangular room in an
+earthen burrow, deep underground. This room seems to be used mainly for
 socialising, as evidenced by all the chairs and rubbish strewn about.
 ~
 0 8|8192 0
@@ -5361,8 +5361,8 @@ D2
 S
 #25728
 Training area~
-You stand halfway along the eastern wall of a long rectangular room in an 
-earthen burrow, deep underground. This room seems to be used mainly for 
+You stand halfway along the eastern wall of a long rectangular room in an
+earthen burrow, deep underground. This room seems to be used mainly for
 socialising, as evidenced by all the chairs and rubbish strewn about.
 ~
 0 8|8192 0
@@ -5381,8 +5381,8 @@ D3
 S
 #25729
 Training area~
-You stand in the northeastern corner of a long rectangular room in an earthen 
-burrow, deep underground. This room seems to be used mainly for socialising, as 
+You stand in the northeastern corner of a long rectangular room in an earthen
+burrow, deep underground. This room seems to be used mainly for socialising, as
 evidenced by all the chairs and rubbish strewn about.
 ~
 0 8|8192 0
@@ -5397,10 +5397,10 @@ D3
 S
 #25730
 Abattoir~
-This large room is the abattoir/meat freezer for this division. Humanoid corpses 
-in various stages of butchery for consumption are liberally spread about the 
-preparatory surfaces while their blood has been collected in a variety of 
-storage containers and neatly stockpiled. A large walk-in freezer lies to the 
+This large room is the abattoir/meat freezer for this division. Humanoid corpses
+in various stages of butchery for consumption are liberally spread about the
+preparatory surfaces while their blood has been collected in a variety of
+storage containers and neatly stockpiled. A large walk-in freezer lies to the
 north.
 ~
 0 8|8192 0
@@ -5415,9 +5415,9 @@ D2
 S
 #25731
 Inside the chiller~
-You stand inside a medium sized walk in freezer. Humanoid carcasses in various 
-stages of dismemberment hang on huge iron hooks. A few saws and carving knives 
-lay handy to assist the peckish vampire in the consumption of their ghoulish 
+You stand inside a medium sized walk in freezer. Humanoid carcasses in various
+stages of dismemberment hang on huge iron hooks. A few saws and carving knives
+lay handy to assist the peckish vampire in the consumption of their ghoulish
 feast. The only exit is back south, into the abattoir.
 ~
 0 8|512|8192 0
@@ -5428,8 +5428,8 @@ D2
 S
 #25732
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two copper coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the east. The walls have been painted an appealing shade of blue-grey.
 ~
 0 8|8192 0
@@ -5440,8 +5440,8 @@ D1
 S
 #25733
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two copper coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the west. The walls have been painted an appealing shade of blue-grey.
 ~
 0 8|8192 0
@@ -5452,8 +5452,8 @@ D3
 S
 #25734
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two copper coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the east. The walls have been painted an appealing shade of blue-grey.
 ~
 0 8|8192 0
@@ -5464,8 +5464,8 @@ D1
 S
 #25735
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two copper coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the west. The walls have been painted an appealing shade of blue-grey.
 ~
 0 8|8192 0
@@ -5476,9 +5476,9 @@ D3
 S
 #25736
 Officer Quarters~
-This room is dimly lit and sparsely furnished, dominated by two silver coffins 
-which lie against the western wall. A door leads out from here into a corridor 
-to the east. You are struck by an odd feeling of peace and restfulness as you 
+This room is dimly lit and sparsely furnished, dominated by two silver coffins
+which lie against the western wall. A door leads out from here into a corridor
+to the east. You are struck by an odd feeling of peace and restfulness as you
 enter this room.
 ~
 0 8|1024|8192|65536 0
@@ -5488,15 +5488,15 @@ D1
 1 -1 25722
 E
 feeling peacefulness odd~
-Waves of peace and relaxation course through your body. Just being in this room 
-makes you feel safe and secure, feelings that are at odds with the somewhat 
-stark and clinical look of this place.  Perhaps it was once home to a powerful 
+Waves of peace and relaxation course through your body. Just being in this room
+makes you feel safe and secure, feelings that are at odds with the somewhat
+stark and clinical look of this place.  Perhaps it was once home to a powerful
 cleric.~
 S
 #25737
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two copper coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the west. The walls have been painted an appealing shade of blue-grey.
 ~
 0 8|8192 0
@@ -5507,8 +5507,8 @@ D3
 S
 #25738
 Officer Quarters~
-This room is dimly lit and sparsely furnished, dominated by two silver coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two silver coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the east.
 ~
 0 8|8192 0
@@ -5519,12 +5519,12 @@ D1
 S
 #25739
 Corridor in the Hive~
-You stand in a long earthen tunnel running north-south, deep underground. 
-Pale-green light-orbs are set into the walls at regular intervals, providing 
-enough dim light for you to perceive your surroundings with reasonable acuity. A 
-door fashioned from polished ebony is set into a doorway arch lying to your 
-immediate east. A feeling of peace and security seems to emanate from it, which, 
-given the generally oppressive and gloomy atmosphere of your environ, strikes 
+You stand in a long earthen tunnel running north-south, deep underground.
+Pale-green light-orbs are set into the walls at regular intervals, providing
+enough dim light for you to perceive your surroundings with reasonable acuity. A
+door fashioned from polished ebony is set into a doorway arch lying to your
+immediate east. A feeling of peace and security seems to emanate from it, which,
+given the generally oppressive and gloomy atmosphere of your environ, strikes
 you as almost perverse.
 ~
 0 8|8192 0
@@ -5542,16 +5542,16 @@ D2
 0 -1 25694
 E
 door polished ebony doorway arch east~
-The door is smooth and polished, cool to the touch. The word `Sanctuary' has 
-been inscribed in a spidery script on a small plaque attached to the left side 
+The door is smooth and polished, cool to the touch. The word `Sanctuary' has
+been inscribed in a spidery script on a small plaque attached to the left side
 of the arch. ~
 S
 #25740
 Corridor in the Hive~
-You stand at the southern end of a long earthen tunnel running north-south, 
-deep underground. Pale-green light-orbs are set into the walls at regular 
-intervals, providing enough dim light for you to perceive your surroundings with 
-reasonable acuity. A robust-looking door of oak construction is set into a 
+You stand at the southern end of a long earthen tunnel running north-south,
+deep underground. Pale-green light-orbs are set into the walls at regular
+intervals, providing enough dim light for you to perceive your surroundings with
+reasonable acuity. A robust-looking door of oak construction is set into a
 doorway arch lying to your immediate north.
 ~
 0 4|8|8192 0
@@ -5566,10 +5566,10 @@ D2
 S
 #25741
 The Sanctuary~
-The large dome-shaped room in which you stand has been painted white and 
-decorated minimalistically. Couches and sitting chairs line the walls, while at 
-the center of the room a small dark podium rises from the floor and an object 
-you recognize as a magical healing-stone floats above it, generating an 
+The large dome-shaped room in which you stand has been painted white and
+decorated minimalistically. Couches and sitting chairs line the walls, while at
+the center of the room a small dark podium rises from the floor and an object
+you recognize as a magical healing-stone floats above it, generating an
 atmosphere of well-being and conviviality. Perhaps a waiting room for guests?
 ~
 0 4|8|1024|65536 0
@@ -5580,9 +5580,9 @@ D3
 S
 #25742
 Training Zone~
-You stand at the southwestern end of a long rectangular room in an earthen 
-burrow, deep underground. The room is not well-lit and you have difficulty 
-making out much detail in any direction. You do however see a door in the 
+You stand at the southwestern end of a long rectangular room in an earthen
+burrow, deep underground. The room is not well-lit and you have difficulty
+making out much detail in any direction. You do however see a door in the
 northern wall, a little to the northeast.
 ~
 0 1|8|8192 0
@@ -5601,10 +5601,10 @@ D2
 S
 #25743
 Training Zone~
-You stand at the northwestern end of a long rectangular room in an earthen 
-burrow, deep underground. The room is not well-lit and you have difficulty 
-making out much detail in any direction. You do however see a door in the 
-northern wall a short distance to the east. There are odd stirrings and 
+You stand at the northwestern end of a long rectangular room in an earthen
+burrow, deep underground. The room is not well-lit and you have difficulty
+making out much detail in any direction. You do however see a door in the
+northern wall a short distance to the east. There are odd stirrings and
 rustlings in the darkness.
 ~
 0 1|8|8192 0
@@ -5619,9 +5619,9 @@ D2
 S
 #25744
 Training Zone~
-You stand in the middle of a long rectangular room in an earthen burrow, deep 
-underground. The room is not well-lit and you have difficulty making out much 
-detail in any direction. You hear the chink of coin on coin somewhere in the 
+You stand in the middle of a long rectangular room in an earthen burrow, deep
+underground. The room is not well-lit and you have difficulty making out much
+detail in any direction. You hear the chink of coin on coin somewhere in the
 darkness.
 ~
 0 1|8|8192 0
@@ -5640,8 +5640,8 @@ D3
 S
 #25745
 Training Zone~
-You stand at the eastern end of a long rectangular room in an earthen burrow, 
-deep underground. The room is not well-lit and you have difficulty making out 
+You stand at the eastern end of a long rectangular room in an earthen burrow,
+deep underground. The room is not well-lit and you have difficulty making out
 much detail in any direction. You can hear breathing.
 ~
 0 1|8|8192 0
@@ -5656,8 +5656,8 @@ D3
 S
 #25746
 Training Zone~
-You stand at the eastern end of a long rectangular room in an earthen burrow, 
-deep underground. Light radiates from a hole in the ground directly before you. 
+You stand at the eastern end of a long rectangular room in an earthen burrow,
+deep underground. Light radiates from a hole in the ground directly before you.
 You notice it has a ladder poking out of it.
 ~
 0 1|8|8192 0
@@ -5679,8 +5679,8 @@ You can't tell much abut where it leads to, but it does seem to be better-lit.~
 S
 #25747
 Training Zone~
-You stand before a thick polished wooden door in the middle of a long 
-rectangular room in an earthen burrow. A small plaque above the door handle 
+You stand before a thick polished wooden door in the middle of a long
+rectangular room in an earthen burrow. A small plaque above the door handle
 catches your eye.
 ~
 0 1|8|8192 0
@@ -5709,8 +5709,8 @@ It's a very sturdy door.~
 S
 #25748
 Office of the Thiefmaster~
-This sparsely furnished office/living quarters is where the Thiefmaster lives 
-and conducts her business. It contains only a desk and a few chairs, while her 
+This sparsely furnished office/living quarters is where the Thiefmaster lives
+and conducts her business. It contains only a desk and a few chairs, while her
 personal coffin is propped against the east wall of the room.
 ~
 0 1|8|8192 0
@@ -5721,9 +5721,9 @@ D2
 S
 #25749
 Hallway in the barracks~
-You stand at the western end of a long east-west corridor at the foot of a 
-ladder that leads up a hole into darkness. The corridor is well lit and you can 
-see doors are set into either side of the earthen walls all the way down its 
+You stand at the western end of a long east-west corridor at the foot of a
+ladder that leads up a hole into darkness. The corridor is well lit and you can
+see doors are set into either side of the earthen walls all the way down its
 length. Time to do some exploring.
 ~
 0 4|8|8192 0
@@ -5746,9 +5746,9 @@ D4
 S
 #25750
 Abattoir~
-This large room is the abattoir/meat freezer for this division. Humanoid corpses 
-in various stages of butchery for consumption are liberally spread about the 
-preparatory surfaces while their blood has been collected in a variety of 
+This large room is the abattoir/meat freezer for this division. Humanoid corpses
+in various stages of butchery for consumption are liberally spread about the
+preparatory surfaces while their blood has been collected in a variety of
 storage containers and neatly stockpiled. A large walk-in freezer lies to the north.
 ~
 0 8|8192 0
@@ -5763,8 +5763,8 @@ D2
 S
 #25751
 Elder Quarters~
-You stand in a large square room, its walls decorated with maps and diagrams and 
-its aspect dominated by three large golden coffins in the chamber's northwestern 
+You stand in a large square room, its walls decorated with maps and diagrams and
+its aspect dominated by three large golden coffins in the chamber's northwestern
 corner.
 ~
 0 8|8192 0
@@ -5782,15 +5782,15 @@ D3
 0 -1 25814
 E
 walls maps diagrams~
-These seem mostly to deal with tracking the movements of rich and powerful 
+These seem mostly to deal with tracking the movements of rich and powerful
 individuals and planning combined effort raids on banks and wealthy merchants.~
 S
 #25752
 Hallway in the barracks~
-You stand toward the western end of a long east-west corridor in an earthen 
-burrow deep underground. The corridor is well lit and you can see doors are set 
-into either side of the walls all the way down its length. It's exceptionally 
-damp and chilly here and it seems surprising that anything remotely humanoid 
+You stand toward the western end of a long east-west corridor in an earthen
+burrow deep underground. The corridor is well lit and you can see doors are set
+into either side of the walls all the way down its length. It's exceptionally
+damp and chilly here and it seems surprising that anything remotely humanoid
 should prefer it thus.
 ~
 0 8|8192 0
@@ -5813,8 +5813,8 @@ D3
 S
 #25753
 Hallway in the barracks~
-You stand in the middle of a long east-west corridor in an earthen burrow deep 
-underground. The corridor is well lit and you can see doors are set into either 
+You stand in the middle of a long east-west corridor in an earthen burrow deep
+underground. The corridor is well lit and you can see doors are set into either
 side of the walls all the way down its length.
 ~
 0 8|8192 0
@@ -5837,9 +5837,9 @@ D3
 S
 #25754
 Hallway in the barracks~
-You stand toward the eastern end of a long east-west corridor in an earthen 
-burrow deep underground. The corridor is well lit and you can see doors are set 
-into either side of the walls all the way down its length. A small note hangs 
+You stand toward the eastern end of a long east-west corridor in an earthen
+burrow deep underground. The corridor is well lit and you can see doors are set
+into either side of the walls all the way down its length. A small note hangs
 from the door handle of the door to the south.
 ~
 0 8|8192 0
@@ -5865,9 +5865,9 @@ The note says "Please do not disturb unless urgent"~
 S
 #25755
 Hallway in the barracks~
-You stand at the eastern end of a long east-west corridor in an earthen burrow 
-deep underground. The corridor is well lit and you can see doors are set into 
-either side of the walls all the way down its length. A small note hangs from 
+You stand at the eastern end of a long east-west corridor in an earthen burrow
+deep underground. The corridor is well lit and you can see doors are set into
+either side of the walls all the way down its length. A small note hangs from
 the door handle of the door to the north.
 ~
 0 8|8192 0
@@ -5889,8 +5889,8 @@ The note says "Please do not disturb unless urgent"~
 S
 #25756
 Officer Quarters~
-This room is dimly lit and sparsely furnished, dominated by two silver coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two silver coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the south.
 ~
 0 8|8192 0
@@ -5901,8 +5901,8 @@ D2
 S
 #25757
 Officer Quarters~
-This room is dimly lit and sparsely furnished, dominated by two silver coffins 
-which lie against the western wall. A door leads out from here into a corridor 
+This room is dimly lit and sparsely furnished, dominated by two silver coffins
+which lie against the western wall. A door leads out from here into a corridor
 to the north.
 ~
 0 8|8192 0
@@ -5913,8 +5913,8 @@ D0
 S
 #25758
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper-coloured 
-coffins which lie against the western wall. A door leads out from here into a 
+This room is dimly lit and sparsely furnished, dominated by two copper-coloured
+coffins which lie against the western wall. A door leads out from here into a
 corridor to the south.
 ~
 0 8|8192 0
@@ -5925,8 +5925,8 @@ D2
 S
 #25759
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper-coloured 
-coffins which lie against the western wall. A door leads out from here into a 
+This room is dimly lit and sparsely furnished, dominated by two copper-coloured
+coffins which lie against the western wall. A door leads out from here into a
 corridor to the north.
 ~
 0 8|8192 0
@@ -5937,8 +5937,8 @@ D0
 S
 #25760
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper-coloured 
-coffins which lie against the western wall. A door leads out from here into a 
+This room is dimly lit and sparsely furnished, dominated by two copper-coloured
+coffins which lie against the western wall. A door leads out from here into a
 corridor to the south.
 ~
 0 8|8192 0
@@ -5949,8 +5949,8 @@ D2
 S
 #25761
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper-coloured 
-coffins which lie against the western wall. A door leads out from here into a 
+This room is dimly lit and sparsely furnished, dominated by two copper-coloured
+coffins which lie against the western wall. A door leads out from here into a
 corridor to the north.
 ~
 0 8|8192 0
@@ -5961,8 +5961,8 @@ D0
 S
 #25762
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper-coloured 
-coffins which lie against the western wall. A door leads out from here into a 
+This room is dimly lit and sparsely furnished, dominated by two copper-coloured
+coffins which lie against the western wall. A door leads out from here into a
 corridor to the south.
 ~
 0 8|8192 0
@@ -5973,8 +5973,8 @@ D2
 S
 #25763
 Recruit Quarters~
-This room is dimly lit and sparsely furnished, dominated by two copper-coloured 
-coffins which lie against the western wall. A door leads out from here into a 
+This room is dimly lit and sparsely furnished, dominated by two copper-coloured
+coffins which lie against the western wall. A door leads out from here into a
 corridor to the north.
 ~
 0 8|8192 0
@@ -5985,8 +5985,8 @@ D0
 S
 #25764
 Training area~
-You stand in the southeastern corner of a long rectangular room in an earthen 
-burrow, deep underground. This room seems to be used mainly for socialising, as 
+You stand in the southeastern corner of a long rectangular room in an earthen
+burrow, deep underground. This room seems to be used mainly for socialising, as
 evidenced by all the chairs and rubbish strewn about.
 ~
 0 8|8192 0
@@ -6001,8 +6001,8 @@ D3
 S
 #25765
 Training area~
-You stand in the southwestern corner of a long rectangular room in an earthen 
-burrow, deep underground. This room seems to be used mainly for socialising, as 
+You stand in the southwestern corner of a long rectangular room in an earthen
+burrow, deep underground. This room seems to be used mainly for socialising, as
 evidenced by all the chairs and rubbish strewn about.
 ~
 0 8|8192 0
@@ -6017,7 +6017,7 @@ D1
 S
 #25766
 The Archives~
-This long rectangular vault is full of shelves stacked with documents and files. 
+This long rectangular vault is full of shelves stacked with documents and files.
 You stand now at its southern end, it continues northward.
 ~
 0 8|8192 0
@@ -6037,16 +6037,16 @@ A wide variety of documents are stored here, neatly archived and indexed. One
 that catches your attention regards the mayor of Midgaard - an excerpt:
 
 "...the mayor, now faced with a major budget shortfall, has convinced his
- somewhat attractive secretary to make it up by soliciting visitors to his 
+ somewhat attractive secretary to make it up by soliciting visitors to his
  office.. a useful tidbit of information if we go ahead with our plan to run
  a candidate in the next election. The conservative Midgaardian voters will
  never support a man displaying such weak moral fibre.."
- 
+
 ~
 S
 #25767
 The Archives~
-This long rectangular vault is full of shelves stacked with documents and files. 
+This long rectangular vault is full of shelves stacked with documents and files.
 You stand in the middle of it, it continues to both the north and the south.
 ~
 0 8|8192 0
@@ -6066,7 +6066,7 @@ A wide variety of documents are stored here, neatly archived and indexed. One
 that catches your attention regards the sorcerer Herne - an excerpt:
 
 "...has cursed another servant.. apparently he often turns them into horses ravenous
- with a hunger that can only be sated by hay from his own personal stables.. we 
+ with a hunger that can only be sated by hay from his own personal stables.. we
  understand the idea of them being perpetually hungry for something they will never
  have is particularly amusing to him.. regardless, if these most recent curses are
  similar in character to previous ones of his we've studied then the breaking of them
@@ -6074,12 +6074,12 @@ that catches your attention regards the sorcerer Herne - an excerpt:
  in the vale has communicated reports of their activity in that area.. recommend
  to the Spymaster for possible investigation, perhaps we could send an agent in to
  infiltrate their forest in the guise of a wolf?"
- 
+
 ~
 S
 #25768
 The Archives~
-This long rectangular vault is full of shelves stacked with documents and files. 
+This long rectangular vault is full of shelves stacked with documents and files.
 You stand at its northern end, it continues south.
 ~
 0 8|8192 0
@@ -6095,15 +6095,15 @@ A wide variety of documents are stored here, neatly archived and indexed. One
 that catches your attention regards Krondor's Head hunter - an excerpt:
 
 ".. impersonating him have been able to gain the confidence of many of Krondor's
- most important and powerful individuals and we are well on our way to being ready 
- to start construction of a new hive close to there.. while Solace is meeting our 
+ most important and powerful individuals and we are well on our way to being ready
+ to start construction of a new hive close to there.. while Solace is meeting our
  food requirements at the present moment, with current growth figures we look to be
- overkilling this area within 5 years and will require a city of greater 
- population density to support us. As you know, various alternative sites have been 
- proposed, of which Krondor is only one, but in both my personal opinion and in the 
+ overkilling this area within 5 years and will require a city of greater
+ population density to support us. As you know, various alternative sites have been
+ proposed, of which Krondor is only one, but in both my personal opinion and in the
  opinion of the entire spy division it is the superior in every meaningful respect.."
 
-It starts into a long tirade detailing the perceived advantages of Krondor over 
+It starts into a long tirade detailing the perceived advantages of Krondor over
 various other cities in the realm as regards food quality, the relative difficulty
 in obtaining it etc. You lose interest and put the file back.
 
@@ -6111,7 +6111,7 @@ in obtaining it etc. You lose interest and put the file back.
 S
 #25769
 The Archives~
-This long rectangular vault is full of shelves stacked with documents and files. 
+This long rectangular vault is full of shelves stacked with documents and files.
 You stand now at its southern end, it continues northward.
 ~
 0 8|8192 0
@@ -6133,16 +6133,16 @@ that catches your attention regards Kerofk's jailer - an excerpt:
 ".. have convinced him to pass on information overheard from prisoners that may
  interest us and have put him on the standard mortal retainer wage plan with performance
  bonuses. I expect there will come a time when we will wish to replace him with
- one of our own, but for now we must conserve our resources and focus clearly on 
- the more immediate problems of the Hive. I have however recommended that no trust 
- nor confidence be placed in him. As you well know, mortals do not have our talent 
+ one of our own, but for now we must conserve our resources and focus clearly on
+ the more immediate problems of the Hive. I have however recommended that no trust
+ nor confidence be placed in him. As you well know, mortals do not have our talent
  for discretion."
 
 ~
 S
 #25770
 The Archives~
-This long rectangular vault is full of shelves stacked with documents and files. 
+This long rectangular vault is full of shelves stacked with documents and files.
 You stand in the middle of it, it continues to both the north and the south.
 ~
 0 8|8192 0
@@ -6162,19 +6162,19 @@ A wide variety of documents are stored here, neatly archived and indexed. One
 that catches your attention regards clans - an excerpt:
 
 ".. the squabbling mortal clans present throughout this part of the world have
- troubled us little. Their poor organizational skills and lack of ability to 
+ troubled us little. Their poor organizational skills and lack of ability to
  cooperate make it seem unlikely that they will ever seriously threaten our dominance,
- however it would be a grave mistake to cease monitoring their activities altogether 
- as the amount of raw power represented by the clans is not inconsiderable. My strategic 
- recommendation is that of divide and conquer. If we continue to cultivate discord 
+ however it would be a grave mistake to cease monitoring their activities altogether
+ as the amount of raw power represented by the clans is not inconsiderable. My strategic
+ recommendation is that of divide and conquer. If we continue to cultivate discord
  and disagreement amongst them we should be able to avoid their attentions altogether."
 
 ~
 S
 #25771
 The Archives~
-This long rectangular vault is full of shelves stacked with documents and files. 
-You stand at its northern end, it continues south. There is an odd painting on 
+This long rectangular vault is full of shelves stacked with documents and files.
+You stand at its northern end, it continues south. There is an odd painting on
 the northern wall.~
 0 8|8192 0
 D2
@@ -6204,9 +6204,9 @@ that catches your attention regards Faraq - an excerpt:
 S
 #25772
 The Magical Vault~
-You stand in a strange otherdimensional place, the rainbow-coloured walls 
-shimmer and flicker as magical energies play across their surface. The ground 
-you are standing on at least seems to be solid, oak perhaps, and the magical 
+You stand in a strange otherdimensional place, the rainbow-coloured walls
+shimmer and flicker as magical energies play across their surface. The ground
+you are standing on at least seems to be solid, oak perhaps, and the magical
 painting that serves as the room's only entrance remains hanging on the southern
 wall, though you cannot see the means of its attachment.~
 0 4|8|8192 0
@@ -6217,9 +6217,9 @@ adrift in some sort of magical plane.~
 S
 #25773
 Second room of passing~
-You stand in darkness in a small square room, large enough only for two to be 
-able to stand in comfortably. Huge metal doors close off the small room to both 
-the north and south, neither of them appear to have any visible opening 
+You stand in darkness in a small square room, large enough only for two to be
+able to stand in comfortably. Huge metal doors close off the small room to both
+the north and south, neither of them appear to have any visible opening
 mechanism.
 ~
 0 1|8 0
@@ -6233,11 +6233,11 @@ D2
 8 25643 25774
 E
 south~
-The door to your south is thick and made of iron. It has no label, handle, 
+The door to your south is thick and made of iron. It has no label, handle,
 knocker or opening mechanism of any kind that you can find. Odd.~
 E
 north~
-The door to your north is thick and made of plate steel. It has no label, 
+The door to your north is thick and made of plate steel. It has no label,
 handle, knocker or opening mechanism of any kind that you can find. Odd.~
 E
 huge metal door~
@@ -6245,9 +6245,9 @@ Which door do you want to look at, the north or south?~
 S
 #25774
 Third room of passing~
-You stand in darkness in a small square room, large enough only for two to be 
-able to stand in comfortably. Huge metal doors close off the small room to both 
-the north and south, neither of them appear to have any visible opening 
+You stand in darkness in a small square room, large enough only for two to be
+able to stand in comfortably. Huge metal doors close off the small room to both
+the north and south, neither of them appear to have any visible opening
 mechanism.
 ~
 0 1|8 0
@@ -6261,12 +6261,12 @@ D2
 8 25644 25775
 E
 north~
-The door to your north is thick and made of iron. It has no label, handle, 
+The door to your north is thick and made of iron. It has no label, handle,
 knocker or opening mechanism of any kind that you can find. Odd.~
 E
 south~
-The door to your south is impressive in size and is made of some kind of metal 
-alloy you have not seen before.. It has no label, handle, knocker or opening 
+The door to your south is impressive in size and is made of some kind of metal
+alloy you have not seen before.. It has no label, handle, knocker or opening
 mechanism of any kind that you can find. Odd.~
 E
 huge metal doors~
@@ -6274,8 +6274,8 @@ Which door do you want to look at, the north or south?~
 S
 #25775
 Overseer's Office~
-This spacious office must surely belong to a person of great status, every item 
-and piece of furniture in it appears to be made of solid gold! Golden doorways 
+This spacious office must surely belong to a person of great status, every item
+and piece of furniture in it appears to be made of solid gold! Golden doorways
 lead out of this room in every cardinal direction save south.
 ~
 0 4|8|8192 0
@@ -6294,10 +6294,10 @@ D3
 S
 #25776
 The Overseer's Abattoir~
-This large room is the Overseer's  personal abattoir/meat freezer. Humanoid 
-corpses in various stages of butchery for consumption are liberally spread about 
-the preparatory surfaces while their blood has been collected in a variety of 
-storage containers and neatly stockpiled. A huge walk-in freezer lies to the 
+This large room is the Overseer's  personal abattoir/meat freezer. Humanoid
+corpses in various stages of butchery for consumption are liberally spread about
+the preparatory surfaces while their blood has been collected in a variety of
+storage containers and neatly stockpiled. A huge walk-in freezer lies to the
 south.
 ~
 0 8|8192 0
@@ -6312,8 +6312,8 @@ D2
 S
 #25777
 Inside the Chiller~
-You stand inside a large and well-stocked walk-in freezer. Perhaps a dozen 
-humanoid carcasses in various stages of dismemberment hang on huge iron hooks.  
+You stand inside a large and well-stocked walk-in freezer. Perhaps a dozen
+humanoid carcasses in various stages of dismemberment hang on huge iron hooks.
 The only exit is north into the abattoir.
 ~
 0 8|8192 0
@@ -6324,7 +6324,7 @@ D0
 S
 #25778
 Dark corridor~
-You stand in a darkness so thick your light barely penetrates it and you must 
+You stand in a darkness so thick your light barely penetrates it and you must
 grope blindly along the walls.
 ~
 0 1|8|8192 0
@@ -6339,7 +6339,7 @@ D3
 S
 #25779
 Dark corridor~
-You stand in a darkness so thick your light barely penetrates it and you must 
+You stand in a darkness so thick your light barely penetrates it and you must
 grope blindly along the walls.
 ~
 0 1|8|8192 0
@@ -6354,7 +6354,7 @@ D2
 S
 #25780
 Dark corridor~
-You stand in a darkness so thick your light barely penetrates it and you must 
+You stand in a darkness so thick your light barely penetrates it and you must
 grope blindly along the walls.
 ~
 0 1|8|8192 0
@@ -6369,8 +6369,8 @@ D2
 S
 #25781
 Dark corridor~
-You stand in a darkness so thick your light barely penetrates it and you must 
-grope blindly along the walls. Your hand strikes a door handle on the wall to 
+You stand in a darkness so thick your light barely penetrates it and you must
+grope blindly along the walls. Your hand strikes a door handle on the wall to
 the east.
 ~
 0 1|8|8192 0
@@ -6385,9 +6385,9 @@ D1
 S
 #25782
 Overseer's Living Quarters~
-You stand in the northwestern corner of a large room that glitters with lavish gold 
-and crystal fittings and ornaments. To the east you see a raised podium upon which 
-a crystal casket rests, while a strange magical light plays across the wall just 
+You stand in the northwestern corner of a large room that glitters with lavish gold
+and crystal fittings and ornaments. To the east you see a raised podium upon which
+a crystal casket rests, while a strange magical light plays across the wall just
 to the southeast. A very heavy feeling of menace lies in the air.
 ~
 0 4|8|16384 0
@@ -6406,9 +6406,9 @@ D3
 S
 #25783
 Overseer's Living Quarters~
-You stand in the northeastern corner of a large room that glitters with lavish gold 
-and crystal fittings and ornaments. There is a raised podium here, upon which a 
-crystal casket rests, while a strange magical light can be seen playing across 
+You stand in the northeastern corner of a large room that glitters with lavish gold
+and crystal fittings and ornaments. There is a raised podium here, upon which a
+crystal casket rests, while a strange magical light can be seen playing across
 the wall just to the south. A very heavy feeling of menace lies in the air.
 ~
 0 8|1024 0
@@ -6423,8 +6423,8 @@ D3
 S
 #25784
 Overseer's Living Quarters~
-You stand in the southeastern corner of a large room that glitters with lavish 
-gold and crystal fittings and ornaments. A raised podium upon which a crystal 
+You stand in the southeastern corner of a large room that glitters with lavish
+gold and crystal fittings and ornaments. A raised podium upon which a crystal
 casket rests lies just to the north, while a shining white light issues from the
 southern wall face just to your east. A very heavy feeling of menace lies in the air.
 ~
@@ -6444,10 +6444,10 @@ D3
 S
 #25785
 Overseer's Living Quarters~
-You stand in the southwestern corner of a large room that glitters with lavish gold 
-and crystal fittings and ornaments. A raised podium upon which a crystal casket 
-rests lies in the room's northeastern corner, while a strange magical light can 
-be seen playing across the wall just to the east. A very heavy feeling of menace 
+You stand in the southwestern corner of a large room that glitters with lavish gold
+and crystal fittings and ornaments. A raised podium upon which a crystal casket
+rests lies in the room's northeastern corner, while a strange magical light can
+be seen playing across the wall just to the east. A very heavy feeling of menace
 lies in the air.
 ~
 0 8|1024 0
@@ -6462,8 +6462,8 @@ D1
 S
 #25786
 Portal room~
-This small room is dominated by a huge arch set into the southern wall whose 
-surface flickers and glows with a strange magical light. There are a lot of 
+This small room is dominated by a huge arch set into the southern wall whose
+surface flickers and glows with a strange magical light. There are a lot of
 footprints on the ground around here, not all of them humanoid.
 ~
 0 8|8192 0
@@ -6480,14 +6480,14 @@ huge arch south southern portal magical energies surface~
 Best guess is it's a teleportational device of some sort. Question is, to where?~
 E
 footprints ground~
-There are a wide variety of animals' and non-humanoid intelligent species' 
+There are a wide variety of animals' and non-humanoid intelligent species'
 footprints in the dirt here.~
 S
 #25787
 Elder quarters~
-You stand in the living quarters of the assassin elders. This spacious room is 
-sparse and unadorned save for the large maps of all the major cities in the domain 
-that are plastered on the walls. Just to the north you can see three gold coffins 
+You stand in the living quarters of the assassin elders. This spacious room is
+sparse and unadorned save for the large maps of all the major cities in the domain
+that are plastered on the walls. Just to the north you can see three gold coffins
 laid in a row, presumably belonging to the elders themselves.
 ~
 0 8|8192 0
@@ -6501,15 +6501,15 @@ D3
 0 -1 25692
 E
 maps~
-They have rooms belonging to important officials marked and notes regarding 
-various entry and exit points and good hiding places affixed to them. 
+They have rooms belonging to important officials marked and notes regarding
+various entry and exit points and good hiding places affixed to them.
 Curiouser and curiouser.~
 S
 #25788
 Elder quarters~
-You stand in the living quarters of the assassin elders. This spacious room is 
-sparse and unadorned save for the large maps of all the major cities in the 
-domain that are plastered on the walls. The long golden coffins in this part 
+You stand in the living quarters of the assassin elders. This spacious room is
+sparse and unadorned save for the large maps of all the major cities in the
+domain that are plastered on the walls. The long golden coffins in this part
 of the room would indicate this is the elders' sleeping area proper.
 ~
 0 8 0
@@ -6523,15 +6523,15 @@ D3
 0 -1 25789
 E
 maps~
-They have rooms belonging to important officials marked and notes regarding 
-various entry and exit points and good hiding places affixed to them. Curiouser 
+They have rooms belonging to important officials marked and notes regarding
+various entry and exit points and good hiding places affixed to them. Curiouser
 and curiouser.~
 S
 #25789
 Elder quarters~
-You stand in the living quarters of the assassin elders. This spacious room is 
-sparse and unadorned save for the large maps of all the major cities in the domain 
-that are plastered on the walls. Just to the east you can see three gold coffins 
+You stand in the living quarters of the assassin elders. This spacious room is
+sparse and unadorned save for the large maps of all the major cities in the domain
+that are plastered on the walls. Just to the east you can see three gold coffins
 laid in a row, presumably belonging to the elders themselves.
 ~
 0 8|8192 0
@@ -6545,12 +6545,12 @@ D2
 0 -1 25692
 E
 maps~
-They have rooms belonging to important officials marked and notes regarding various 
+They have rooms belonging to important officials marked and notes regarding various
 entry and exit points and good hiding places affixed to them. Curiouser and curiouser.~
 S
 #25790
 At the end of a dark tunnel~
-You stand at the end of a dark tunnel in an underground sewer. A wall of packed 
+You stand at the end of a dark tunnel in an underground sewer. A wall of packed
 earth blocks progress north, leaving you only the option of traveling south from here.
 ~
 0 1|8 0
@@ -6564,9 +6564,9 @@ It is bedrock, digging would be difficult and utterly futile.~
 S
 #25791
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6581,9 +6581,9 @@ D2
 S
 #25792
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6598,9 +6598,9 @@ D1
 S
 #25793
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6615,9 +6615,9 @@ D3
 S
 #25794
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6632,9 +6632,9 @@ D3
 S
 #25795
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6649,9 +6649,9 @@ D3
 S
 #25796
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6666,9 +6666,9 @@ D3
 S
 #25797
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6683,9 +6683,9 @@ D3
 S
 #25798
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6700,9 +6700,9 @@ D3
 S
 #25799
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6717,9 +6717,9 @@ D3
 S
 #25800
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6734,9 +6734,9 @@ D3
 S
 #25801
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6751,9 +6751,9 @@ D3
 S
 #25802
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6768,9 +6768,9 @@ D3
 S
 #25803
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6785,9 +6785,9 @@ D3
 S
 #25804
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 
 Your foot strikes something metallic.~
@@ -6806,15 +6806,15 @@ grate~
 10 -1 25609
 E
 something metallic grate~
-There is a metallic grate set in the concrete at your feet through which you can 
-feel the filth and sludge of the sewer draining. It feels rusty and loose and you 
+There is a metallic grate set in the concrete at your feet through which you can
+feel the filth and sludge of the sewer draining. It feels rusty and loose and you
 think a good yank would pull it out.~
 S
 #25805
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6829,9 +6829,9 @@ D2
 S
 #25806
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6846,9 +6846,9 @@ D2
 S
 #25807
 A dark tunnel~
-You slosh through a foul-smelling sewer tunnel in darkness so absolute that 
-even with a light source you cannot see more than a few inches in front of 
-your face and are forced to grope your way blindly, determining the tunnel's 
+You slosh through a foul-smelling sewer tunnel in darkness so absolute that
+even with a light source you cannot see more than a few inches in front of
+your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 ~
 0 1|8 0
@@ -6863,12 +6863,12 @@ D2
 S
 #25808
 A dark tunnel~
-You stand at the foot of a ladder at the beginning of what judging by the 
-smell and dampness can only be a sewer tunnel. This area is dimly lit by 
-the light from the opening above, revealing a large circular tunnel made 
-of concrete that enters immediately into impenetrable darkness as soon as 
-you move north of the area in which you now stand. Cold air blows through 
-the tunnel, bringing with it a feeling of hostility and menace so intense 
+You stand at the foot of a ladder at the beginning of what judging by the
+smell and dampness can only be a sewer tunnel. This area is dimly lit by
+the light from the opening above, revealing a large circular tunnel made
+of concrete that enters immediately into impenetrable darkness as soon as
+you move north of the area in which you now stand. Cold air blows through
+the tunnel, bringing with it a feeling of hostility and menace so intense
 as to be almost tangible.
 ~
 0 8 0
@@ -6883,8 +6883,8 @@ D4
 S
 #25809
 A narrow alleyway~
-You stand at the northern end of a narrow alleyway full of graffiti, garbage and 
-household refuse. The smell here is positively stomach-churning. Something metal 
+You stand at the northern end of a narrow alleyway full of graffiti, garbage and
+household refuse. The smell here is positively stomach-churning. Something metal
 catches your eye amongst all the rubbish and decay strewn about.
 ~
 0 0 1
@@ -6898,11 +6898,11 @@ cover~
 1 -1 25808
 E
 rubbish decay garbage household refuse metal glint~
-There's a manhole cover under some bags of rubbish, perhaps a forgotten entrance 
+There's a manhole cover under some bags of rubbish, perhaps a forgotten entrance
 to the city's old sewer system?~
 E
 manhole cover~
-Peeking under the manhole cover you see the rungs of an old rusty ladder leading 
+Peeking under the manhole cover you see the rungs of an old rusty ladder leading
 down into darkness. Might be worth a look-see.~
 E
 graffiti~
@@ -6913,9 +6913,9 @@ BLEEEEEEEEEEEEEECH. Your lunch threatens to revisit you.~
 S
 #25810
 A narrow alleyway~
-You stand half-way along a narrow alleyway full of graffiti, garbage and 
-household refuse. It seems very run-down and derelict and you doubt many 
-people venture into this part of the city, especially not at night. 
+You stand half-way along a narrow alleyway full of graffiti, garbage and
+household refuse. It seems very run-down and derelict and you doubt many
+people venture into this part of the city, especially not at night.
 
 It really smells pretty bad here.
 ~
@@ -6940,8 +6940,8 @@ Toilet humour. Appropriate given the general olfactory ambiance of the locale.~
 S
 #25811
 A narrow alleyway~
-You stand at the entrance to a narrow alleyway full of graffiti, garbage and 
-household refuse. It seems very run-down and derelict and you doubt many people 
+You stand at the entrance to a narrow alleyway full of graffiti, garbage and
+household refuse. It seems very run-down and derelict and you doubt many people
 venture into this part of the city, especially not at night.
 ~
 0 0 1
@@ -6966,8 +6966,8 @@ Um don't really want to go poking around in food scraps and dirty nappies, thank
 S
 #25812
 Elder Quarters~
-You stand in a large square room, its walls decorated with maps and diagrams and 
-its aspect dominated by three large golden coffins in the chamber's northwestern 
+You stand in a large square room, its walls decorated with maps and diagrams and
+its aspect dominated by three large golden coffins in the chamber's northwestern
 corner.
 ~
 0 8|8192 0
@@ -6982,8 +6982,8 @@ D3
 S
 #25813
 Elder Quarters~
-You stand in a large square room, its walls decorated with maps and diagrams and 
-its aspect dominated by three large golden coffins in the chamber's northwestern 
+You stand in a large square room, its walls decorated with maps and diagrams and
+its aspect dominated by three large golden coffins in the chamber's northwestern
 corner.
 ~
 0 8|8192 0
@@ -6997,13 +6997,13 @@ D1
 0 -1 25812
 E
 walls maps diagrams~
-These seem mostly to deal with tracking the movements of rich and powerful 
+These seem mostly to deal with tracking the movements of rich and powerful
 individuals and planning combined effort raids on banks and wealthy merchants.~
 S
 #25814
 Elder Quarters~
-You stand in the northwestern corner of a large square room. This part of the 
-chamber is devoid of maps and diagrams, being devoted to the presentation of the 
+You stand in the northwestern corner of a large square room. This part of the
+chamber is devoid of maps and diagrams, being devoted to the presentation of the
 three golden coffins that stand before you on a raised dias.
 ~
 0 4|8|8192 0
@@ -7018,9 +7018,9 @@ D2
 S
 #25815
 In the chiller~
-You stand inside a medium sized walk in freezer. Humanoid carcasses in various 
-stages of dismemberment hang on huge iron hooks. A few saws and carving knives 
-lay handy to assist the peckish vampire in the consumption of their ghoulish 
+You stand inside a medium sized walk in freezer. Humanoid carcasses in various
+stages of dismemberment hang on huge iron hooks. A few saws and carving knives
+lay handy to assist the peckish vampire in the consumption of their ghoulish
 feast. The only exit is back south into the abattoir.
 ~
 0 8|512|8192 0
@@ -7031,9 +7031,9 @@ D2
 S
 #25816
 The Abattoir~
-This large room is the abattoir/meat freezer for this division. Humanoid corpses 
-in various stages of butchery for consumption are liberally spread about the 
-preparatory surfaces while their blood has been collected in a variety of 
+This large room is the abattoir/meat freezer for this division. Humanoid corpses
+in various stages of butchery for consumption are liberally spread about the
+preparatory surfaces while their blood has been collected in a variety of
 storage containers and neatly stockpiled. A large walk-in freezer lies to the north.
 ~
 0 8|8192 0
@@ -7048,9 +7048,9 @@ D2
 S
 #25817
 In the chiller~
-You stand inside a medium sized walk in freezer. Humanoid carcasses in various 
-stages of dismemberment hang on huge iron hooks. A few saws and carving knives 
-lay handy to assist the peckish vampire in the consumption of their ghoulish 
+You stand inside a medium sized walk in freezer. Humanoid carcasses in various
+stages of dismemberment hang on huge iron hooks. A few saws and carving knives
+lay handy to assist the peckish vampire in the consumption of their ghoulish
 feast. The only exit is back south, into the abattoir.
 ~
 0 8|512|8192 0
@@ -7345,10 +7345,10 @@ M 1 25635 1 25642			the Bogmonster to Swimming in raw sewage
 O 1 25647 100 25666			a wooden desk to In the Guardroom
 P 1 25648 100 25647			a pile of small change to container desk wooden
 P 1 25649 100 25647			a pile of small change to container desk wooden
-O 1 25651 100 25652			a plain wooden chair to Reception room 
-O 1 25651 100 25663			a plain wooden chair to Reception room 
-O 1 25651 100 25663			a plain wooden chair to Reception room 
-O 1 25651 100 25652			a plain wooden chair to Reception room 
+O 1 25651 100 25652			a plain wooden chair to Reception room
+O 1 25651 100 25663			a plain wooden chair to Reception room
+O 1 25651 100 25663			a plain wooden chair to Reception room
+O 1 25651 100 25652			a plain wooden chair to Reception room
 O 1 25651 100 25666			a plain wooden chair to In the Guardroom
 O 1 25651 100 25666			a plain wooden chair to In the Guardroom
 *

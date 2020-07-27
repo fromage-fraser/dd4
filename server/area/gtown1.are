@@ -114,7 +114,7 @@ The spirit of a mortal horribly wronged has returned as a Revenant.
 ~
 This poor soul was once a powerful, good priest of Soleil who was betrayed
 by agents of the evil Gomez and tortured and slain by them. His spirit has
-returned here, seeking out the long-dead fellows who slew him. He will 
+returned here, seeking out the long-dead fellows who slew him. He will
 ignore all else in his quest, but will not hesitate to attack you if you
 interfere.
 ~
@@ -358,7 +358,7 @@ a death knight~
 A Death Knight salutes you then attacks!
 ~
 This is the spirit of a Paladin corrupted by the evil of the Master, doomed
-to an eternity as an undead servant. Clad in ornate, ancient armor and 
+to an eternity as an undead servant. Clad in ornate, ancient armor and
 wielding a shiny silver sword, he would look as he did in life save for his
 rotting face...
 ~
@@ -371,7 +371,7 @@ nightmare~
 a nightmare~
 A Nightmare, loyal steed of the denizens of the Lower Planes, rests here.
 ~
-This black, winged equine hell-steed waits patiently for its master to finish 
+This black, winged equine hell-steed waits patiently for its master to finish
 its business here before bearing it to its next destination.
 ~
 2|64|131072 32|512|524288 -300 S
@@ -395,7 +395,7 @@ cambion scout~
 a cambion scout~
 A Cambion Scout eyes you cautiously.
 ~
-This half-man, half-demon creature is a scout for Orcus, Prince of the 
+This half-man, half-demon creature is a scout for Orcus, Prince of the
 Undead. He is here on a covert mission, and thus will avoid trouble if at
 all possible. He is attempting to ascertain the degree of power of the
 master, and inform his master if the strange man poses a significant threat
@@ -466,7 +466,7 @@ The Rod of Orcus glows evilly here.
 ~
 ~
 4 2|16|64|128 1|16384
-60~ 15~ 15~ invis~ 
+60~ 15~ 15~ invis~
 20 0 0
 A
 12 100
@@ -487,7 +487,7 @@ The Hand of Vecna lies here.
 ~
 ~
 9 16|128|512|4096|65536 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 2 3
@@ -508,7 +508,7 @@ The Eye of Vecna glows evilly here.
 ~
 ~
 9 1|16|512|4096 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 3 3
@@ -523,7 +523,7 @@ The Sword of Kas beckons to you!
 ~
 ~
 5 2|8|16|64|512|4096|16384|131072|262144 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 20 0 0
 A
 12 100
@@ -540,7 +540,7 @@ A Circlet lies here, gathering dust.
 ~
 ~
 9 64|4096 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 0 0
 A
 3 -3
@@ -553,7 +553,7 @@ A treasure hoard is scattered here.
 ~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 150 0 0
 #8806
 chest~
@@ -562,7 +562,7 @@ A chest sits here.
 ~
 ~
 15 0 1
-150~ 8~ 8120~ 0~ 
+150~ 8~ 8120~ 0~
 100 0 0
 #8807
 robes flesh~
@@ -571,7 +571,7 @@ Robes made of human flesh are piled here.
 ~
 ~
 9 16|512 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 0 0
 A
 12 150
@@ -586,7 +586,7 @@ A Rod fashioned from a human femur lies here.
 ~
 ~
 5 16|512 1|8192
-0~ 0~ 0~ 8~ 
+0~ 0~ 0~ 8~
 25 0 0
 A
 12 15
@@ -603,7 +603,7 @@ A pile of bones lies here.
 ~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 50 0 0
 #8810
 gem~
@@ -612,7 +612,7 @@ A Mana Power Gem pulses strongly here.
 ~
 ~
 4 1|64 1|16384
-50~ 20~ 20~ sanctuary~ 
+50~ 20~ 20~ sanctuary~
 10 0 0
 A
 12 150
@@ -623,7 +623,7 @@ A black cloak is piled here.
 ~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 #8812
 sword~
@@ -632,7 +632,7 @@ A Dark Sword hums evilly here.
 ~
 ~
 5 2|16|512 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 35 0 0
 A
 1 1
@@ -651,7 +651,7 @@ A Suit of Dark Armor lies here.
 ~
 ~
 9 16|512 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 0 0
 A
 17 -10
@@ -666,7 +666,7 @@ A Dark Helm seeks to possess you!
 ~
 ~
 9 128|4096 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 75 0 0
 A
 3 -3
@@ -679,7 +679,7 @@ A glass jar sits here.
 ~
 ~
 15 0 1|16384
-25~ 1~ 0~ 0~ 
+25~ 1~ 0~ 0~
 10 0 0
 #8816
 poison~
@@ -688,7 +688,7 @@ Some poison lies here.
 ~
 ~
 19 0 1
-1~ 0~ 0~ 1~ 
+1~ 0~ 0~ 1~
 1 0 0
 #8817
 unholy symbol~
@@ -697,7 +697,7 @@ The Unholy Symbol of some priest devoted to evil lies here.
 ~
 ~
 1 16|512 1
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 0 0
 A
 2 3
@@ -708,7 +708,7 @@ The Holy Symbol of some priest devoted to good lies here.
 ~
 ~
 1 1|1024 1
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 0 0
 A
 5 3
@@ -719,7 +719,7 @@ The corpse of some unfortunate adventurer is lying here.
 ~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 75 0 0
 #8820
 key~
@@ -728,7 +728,7 @@ A black key is here.
 ~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #8821
 jar blood~
@@ -737,7 +737,7 @@ A jar of human blood sits here.
 ~
 ~
 10 2|16|512 1|16384
-50~ poison~ weaken~ curse~ 
+50~ poison~ weaken~ curse~
 5 0 0
 #8822
 portal~
@@ -745,7 +745,7 @@ a shimmering portal~
 A shimmering portal rests here.~
 ~
 33 1 0
-10412~ -1~ 0~ 100~ 
+10412~ -1~ 0~ 100~
 1 0 0
 #8823
 ethereal sword~
@@ -754,7 +754,7 @@ A translucent sword lies on the ground, shimmering.
 ~
 ~
 5 64|512|16777216 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 35 0 0
 A
 17 -20
@@ -768,8 +768,8 @@ A
 #ROOMS
 #8800
 A Dusty Trail~
-You walk along a dusty trail leading towards a small town to the north. The 
-horrid stench in the air makes you struggle to control your gag reflex. 
+You walk along a dusty trail leading towards a small town to the north. The
+horrid stench in the air makes you struggle to control your gag reflex.
 You see a sign up ahead.
 ~
 0 4 2
@@ -861,8 +861,8 @@ The Town Square~
 You have come to the Town Square. You can proceed in several directions from
 here across the square, which is now nothing more than a flat square of
 scorched earth and decimated vegetation, or down one of the side streets.
-There is a well in the middle of the square. This corner of the Town Square 
-feels a little less cursed and evil than the rest of it, and you think that 
+There is a well in the middle of the square. This corner of the Town Square
+feels a little less cursed and evil than the rest of it, and you think that
 the Gods might perhaps hear your prayers here.
 ~
 0 0 1
@@ -1599,7 +1599,7 @@ D2
 S
 #8847
 The Stairway~
-This crooked staircase looks very unstable, and this, coupled with the 
+This crooked staircase looks very unstable, and this, coupled with the
 dreadful stench emanating from upstairs, makes you reluctant to proceed...
 ~
 0 1|8|8192 0
@@ -1615,7 +1615,7 @@ S
 #8848
 The Stairway~
 At the top of the stairs you pause to catch your breath, and are immediately
-sorry as horrid-smelling air fills your lungs. Coughing, you fight to 
+sorry as horrid-smelling air fills your lungs. Coughing, you fight to
 breathe, and steel yourself to continue.
 ~
 0 1|8|8192 0
@@ -1631,7 +1631,7 @@ S
 #8849
 The Hallway~
 You are advancing along a dimly-lit hall lined with garish paintings depicting
-rather macabre-looking members of some decadent family. Doors lie to the north 
+rather macabre-looking members of some decadent family. Doors lie to the north
 and south of here. The hall ends at an impressive portal to the east.
 ~
 0 1|8|8192 0
@@ -1702,7 +1702,7 @@ D3
 S
 #8853
 A Bedroom~
-In this room lies an ornately-carved four poster bed with satin sheets. 
+In this room lies an ornately-carved four poster bed with satin sheets.
 Opposite it lies a comfortable divan, upon which the maidens of the master
 of this domain usually recline. A painting on one wall catches your eye.
 ~
@@ -1719,7 +1719,7 @@ evil-looking gentleman of middle years.
 S
 #8854
 A Bedroom~
-This bedroom is as ruinous as its northern counterpart was lavish, as 
+This bedroom is as ruinous as its northern counterpart was lavish, as
 decayed and despoiled as it was well-presented and comfortable. The furniture,
 while obviously once fine, is now ruined beyond repair. Blood stains coat
 the walls, and a corpse hangs by a rope from the chandelier in the center
@@ -1736,7 +1736,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart.
 ~
 0 1|8192 1
@@ -1753,7 +1753,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart.
 ~
 0 1|8192 1
@@ -1773,7 +1773,7 @@ S
 #8857
 A Small House~
 The mist clears suddenly, and you find yourself standing outside a rather
-creepy little stone dwelling, with no windows, but a stout oak door 
+creepy little stone dwelling, with no windows, but a stout oak door
 directly to the east.
 ~
 0 8192 1
@@ -1805,7 +1805,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart.
 ~
 0 1|8192 1
@@ -1874,7 +1874,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart.
 ~
 0 1|8192 1
@@ -1891,7 +1891,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart. You think you can make out a small stone building
 to the east.
 ~
@@ -1958,7 +1958,7 @@ S
 The Crypt Proper~
 Three doors and a staircase allow escape from this area, and that is a
 prominent urge you have right now as you glance about the hellish murals
-on the walls, and the rotting corpses hanging in metal frames from the 
+on the walls, and the rotting corpses hanging in metal frames from the
 arched ceiling.
 ~
 0 1|128|8192 0
@@ -2474,7 +2474,7 @@ S
 #8892
 The Garden~
 You suddenly enter a brightly-lit glade full of towering oaks and fresh,
-green grass. Here the powers of good have managed to create a foothold in 
+green grass. Here the powers of good have managed to create a foothold in
 this realm of darkness, to aid those stranded or trapped here. You may rest
 in peace (if you'll pardon the inappropriate euphemism) for as long as you
 wish here.
@@ -2537,7 +2537,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart. You think you can make out a small stone building
 to the east. A gaping hole looms out of the fog in the ground to the right.
 ~
@@ -2572,7 +2572,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart. You think you can make out a small stone building
 to the east.
 ~
@@ -2590,7 +2590,7 @@ S
 A Murky Mist~
 You are plowing through a thick mist that has suddenly enshrouded the trail.
 You can still make it out beneath your feet, but only barely. Howls, screams
-and shouts of anger and terror ring out on all sides, and you feel fear 
+and shouts of anger and terror ring out on all sides, and you feel fear
 clutching at your heart. You think you can make out a small stone building
 to the east. You aren't sure, but you think you can see a dark tunnel up
 ahead.
@@ -2607,7 +2607,7 @@ D2
 S
 #8899
 A Dark Tunnel~
-Can it be? YES! An escape route! From this tunnel emanates the sweet smell 
+Can it be? YES! An escape route! From this tunnel emanates the sweet smell
 of green grass and fresh air. You can clamber through and escape, though
 the tunnel is so narrow you doubt you'd be able to return through it.
 ~

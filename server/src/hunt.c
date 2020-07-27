@@ -90,7 +90,7 @@ void destroy_hash_table(struct hash_header *ht,void (*gman)())
 {
 	int			i;
 	struct hash_link	*scan,*temp;
-	
+
 	for(i=0;i<ht->table_size;i++)
 	{
 		for(scan=ht->buckets[i];scan;)
@@ -101,7 +101,7 @@ void destroy_hash_table(struct hash_header *ht,void (*gman)())
 			scan = temp;
 		}
 	}
-	
+
 	free(ht->buckets);
 	free(ht->keylist);
 }
@@ -112,19 +112,19 @@ void _hash_enter(struct hash_header *ht,int key,void *data)
 	/* precondition: there is no entry for <key> yet */
 	struct hash_link	*temp;
 	int			i;
-	
+
 	temp		= (struct hash_link *)malloc(sizeof(struct hash_link));
 	temp->key	= key;
 	temp->next	= ht->buckets[HASH_KEY(ht,key)];
 	temp->data	= data;
 	ht->buckets[HASH_KEY(ht,key)] = temp;
-	
+
 	if(ht->klistlen>=ht->klistsize)
 	{
 		ht->keylist = (void*)realloc(ht->keylist,sizeof(*ht->keylist)*
 					     (ht->klistsize*=2));
 	}
-	
+
 	for(i=ht->klistlen;i>=0;i--)
 	{
 		if(ht->keylist[i-1]<key)
@@ -147,12 +147,12 @@ ROOM_INDEX_DATA *room_find(ROOM_INDEX_DATA *room_db[],int key)
 void *hash_find(struct hash_header *ht,int key)
 {
 	struct hash_link *scan;
-	
+
 	scan = ht->buckets[HASH_KEY(ht,key)];
-	
+
 	while(scan && scan->key!=key)
 		scan = scan->next;
-	
+
 	return scan ? scan->data : NULL;
 }
 
@@ -160,9 +160,9 @@ void *hash_find(struct hash_header *ht,int key)
 int room_enter(ROOM_INDEX_DATA *rb[],int key,ROOM_INDEX_DATA *rm)
 {
 	ROOM_INDEX_DATA *temp;
-   
+
 	temp = room_find(rb,key);
-	
+
 	if(temp) return(0);
 
 	rb[key] = rm;
@@ -173,10 +173,10 @@ int room_enter(ROOM_INDEX_DATA *rb[],int key,ROOM_INDEX_DATA *rm)
 int hash_enter(struct hash_header *ht,int key,void *data)
 {
 	void *temp;
-	
+
 	temp = hash_find(ht,key);
 	if(temp) return 0;
-	
+
 	_hash_enter(ht,key,data);
 	return 1;
 }
@@ -185,13 +185,13 @@ int hash_enter(struct hash_header *ht,int key,void *data)
 ROOM_INDEX_DATA *room_find_or_create(ROOM_INDEX_DATA *rb[],int key)
 {
 	ROOM_INDEX_DATA *rv;
-	
+
 	rv = room_find(rb,key);
 	if(rv) return rv;
-	
+
 	rv = (ROOM_INDEX_DATA *)malloc(sizeof(ROOM_INDEX_DATA));
 	rb[key] = rv;
-	
+
 	return rv;
 }
 
@@ -199,13 +199,13 @@ ROOM_INDEX_DATA *room_find_or_create(ROOM_INDEX_DATA *rb[],int key)
 void *hash_find_or_create(struct hash_header *ht,int key)
 {
 	void *rval;
-	
+
 	rval = hash_find(ht, key);
 	if(rval) return rval;
-	
+
 	rval = (void*)malloc(ht->rec_size);
 	_hash_enter(ht,key,rval);
-	
+
 	return rval;
 }
 
@@ -213,7 +213,7 @@ void *hash_find_or_create(struct hash_header *ht,int key)
 int room_remove(ROOM_INDEX_DATA *rb[],int key)
 {
 	ROOM_INDEX_DATA *tmp;
-	
+
 	tmp = room_find(rb,key);
 	if(tmp)
 	{
@@ -227,36 +227,36 @@ int room_remove(ROOM_INDEX_DATA *rb[],int key)
 void *hash_remove(struct hash_header *ht,int key)
 {
 	struct hash_link **scan;
-	
+
 	scan = ht->buckets+HASH_KEY(ht,key);
-	
+
 	while(*scan && (*scan)->key!=key)
 		scan = &(*scan)->next;
-	
+
 	if(*scan)
 	{
 		int		i;
 		struct hash_link	*temp, *aux;
-		
+
 		temp	= (*scan)->data;
 		aux	= *scan;
 		*scan	= aux->next;
 		free(aux);
-		
+
 		for(i=0;i<ht->klistlen;i++)
 			if(ht->keylist[i]==key)
 				break;
-		
+
 		if(i<ht->klistlen)
 		{
 			bcopy((char *)ht->keylist+i+1,(char *)ht->keylist+i,(ht->klistlen-i)
 			      *sizeof(*ht->keylist));
 			ht->klistlen--;
 		}
-		
+
 		return temp;
 	}
-	
+
 	return NULL;
 }
 
@@ -264,11 +264,11 @@ void *hash_remove(struct hash_header *ht,int key)
 void room_iterate(ROOM_INDEX_DATA *rb[],void (*func)(),void *cdata)
 {
 	register int i;
-	
+
 	for(i=0;i<WORLD_SIZE;i++)
 	{
 		ROOM_INDEX_DATA *temp;
-		
+
 		temp = room_find(rb,i);
 		if(temp) (*func)(i,temp,cdata);
 	}
@@ -278,16 +278,16 @@ void room_iterate(ROOM_INDEX_DATA *rb[],void (*func)(),void *cdata)
 void hash_iterate(struct hash_header *ht,void (*func)(),void *cdata)
 {
 	int i;
-	
+
 	for(i=0;i<ht->klistlen;i++)
 	{
 		void		*temp;
 		register int	key;
-		
+
 		key = ht->keylist[i];
 		temp = hash_find(ht,key);
 		(*func)(key,temp,cdata);
-		if(ht->keylist[i]!=key) 
+		if(ht->keylist[i]!=key)
 			i--;
 	}
 }
@@ -296,11 +296,11 @@ void hash_iterate(struct hash_header *ht,void (*func)(),void *cdata)
 int exit_ok( EXIT_DATA *pexit )
 {
 	ROOM_INDEX_DATA *to_room;
-	
+
 	if ( ( pexit == NULL )
 	    ||   ( to_room = pexit->to_room ) == NULL )
 		return 0;
-	
+
 	return 1;
 }
 
@@ -311,7 +311,7 @@ void donothing()
 }
 
 
-int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch, 
+int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch,
 	      int depth, int in_zone )
 {
 	struct room_q		*tmp_q, *q_head, *q_tail;
@@ -320,7 +320,7 @@ int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch,
 	ROOM_INDEX_DATA	*herep;
 	ROOM_INDEX_DATA	*startp;
 	EXIT_DATA		*exitp;
-	
+
 	if ( depth <0 )
 	{
 		thru_doors = TRUE;
@@ -330,18 +330,18 @@ int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch,
 	{
 		thru_doors = FALSE;
 	}
-	
+
 	startp = get_room_index( in_room_vnum );
-	
+
 	init_hash_table( &x_room, sizeof(int), 2048 );
 	hash_enter( &x_room, in_room_vnum, (void *) - 1 );
-	
+
 	/* initialize queue */
 	q_head = (struct room_q *) malloc(sizeof(struct room_q));
 	q_tail = q_head;
 	q_tail->room_nr = in_room_vnum;
 	q_tail->next_q = 0;
-	
+
 	while(q_head)
 	{
 		herep = get_room_index( q_head->room_nr );
@@ -367,14 +367,14 @@ int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch,
 						{
 							count++;
 							/* mark room as visted and put on queue */
-							
+
 							tmp_q = (struct room_q *)
 								malloc(sizeof(struct room_q));
 							tmp_q->room_nr = tmp_room;
 							tmp_q->next_q = 0;
 							q_tail->next_q = tmp_q;
 							q_tail = tmp_q;
-							
+
 							/* ancestor for first layer is the direction */
 							hash_enter( &x_room, tmp_room,
 								   ((intptr_t)hash_find(&x_room,q_head->room_nr)
@@ -405,7 +405,7 @@ int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch,
 						{
 							/* else return the ancestor */
 							int i;
-							
+
 							i = (intptr_t)hash_find(&x_room,tmp_room);
 							if (x_room.buckets)
 							{
@@ -418,20 +418,20 @@ int find_path( int in_room_vnum, int out_room_vnum, CHAR_DATA *ch,
 				}
 			}
 		}
-		
+
 		/* free queue head and point to next entry */
 		tmp_q = q_head->next_q;
 		free(q_head);
 		q_head = tmp_q;
 	}
-	
+
 	/* couldn't find path */
 	if( x_room.buckets )
 	{
 		/* junk left over from a previous track */
 		destroy_hash_table( &x_room, donothing );
 	}
-	
+
 	return -1;
 }
 
@@ -445,23 +445,23 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 	bool fArea = 0;
 	bool no_exits = TRUE;
 	bool exit_exists[6];
-	
+
 	if ( !IS_NPC( ch ) && !CAN_DO(ch, gsn_hunt) )
 	{
 		send_to_char("You do not know how to hunt.\n\r",ch);
 		return;
 	}
-	
+
 	one_argument( argument, arg );
-	
+
 	if( arg[0] == '\0' )
 	{
 		send_to_char( "Whom are you trying to hunt?\n\r", ch );
 		return;
 	}
-	
+
 	victim = get_char_world( ch, arg );
-	
+
 	if( victim == NULL || !can_see(ch,victim))
 	{
 		send_to_char("No-one around by that name.\n\r", ch );
@@ -473,13 +473,13 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 		send_to_char("They are not in your pkill range.\n\r", ch);
 		return;
 	}
-		
+
 	if( ch->in_room == victim->in_room )
 	{
 		act( "$N is here!", ch, NULL, victim, TO_CHAR );
 		return;
 	}
-	
+
 	for (direction = 0; direction < 6; direction++)
 	{
 		if (ch->in_room->exit[direction] && ch->in_room->exit[direction]->to_room)
@@ -490,7 +490,7 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 		else
 			exit_exists[direction] = FALSE;
 	}
-	
+
 	/*
 	 * Deduct some movement.
 	 */
@@ -501,24 +501,24 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 		send_to_char( "You're too exhausted to hunt anyone!\n\r", ch );
 		return;
 	}
-	
+
 	act( "$n carefully sniffs the air.", ch, NULL, NULL, TO_ROOM );
 	WAIT_STATE( ch, skill_table[gsn_hunt].beats );
 	direction = find_path( ch->in_room->vnum, victim->in_room->vnum, ch, -40000, fArea );
-	
+
 	if( direction == -1)
 	{
 		if (no_exits)
 		{
-			act("You couldn't find a path to $N from here.", 
+			act("You couldn't find a path to $N from here.",
 			    ch, NULL, victim, TO_CHAR);
 			return;
 		}
-		
+
 		while (TRUE)
 		{
 			direction = number_range(0, 5);
-			
+
 			if (exit_exists[direction])
 			{
 				sprintf( buf, "$N is %s from here.", directions[direction].name );
@@ -527,13 +527,13 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 			}
 		}
 	}
-	
+
 	if( direction < 0 || direction > 5 )
 	{
 		send_to_char( "Hmm... Something seems to be wrong.\n\r", ch );
 		return;
 	}
-	
+
 	/*
 	 * Give a random direction if the player misses the die roll.
 	 */
@@ -548,13 +548,13 @@ void do_hunt( CHAR_DATA *ch, char *argument )
 		while( ( ch->in_room->exit[direction] == NULL )
 		      || ( ch->in_room->exit[direction]->to_room == NULL) );
 	}
-	
+
 	/*
 	 * Display the results of the search.
 	 */
 	sprintf( buf, "$N is %s from here.", directions[direction].name );
 	act( buf, ch, NULL, victim, TO_CHAR );
-	
+
 	return;
 }
 
@@ -564,24 +564,24 @@ void hunt_victim( CHAR_DATA *ch )
 	int		dir;
 	bool		found;
 	CHAR_DATA	*tmp;
-	
+
 	if( ch == NULL || ch->hunting == NULL || !IS_NPC(ch) )
 		return;
-	
+
 	/*
 	 * Make sure the victim still exists.
 	 */
 	for( found = 0, tmp = char_list; tmp && !found; tmp = tmp->next )
 		if( ch->hunting == tmp )
 			found = 1;
-	
+
 	if( !found || !can_see( ch, ch->hunting ) )
 	{
 		do_say( ch, "Damn!  My prey is gone!!" );
 		ch->hunting = NULL;
 		return;
 	}
-	
+
 	if( ch->in_room == ch->hunting->in_room )
 	{
 		act( "$n glares at $N and says, 'Ye shall DIE!'",
@@ -594,18 +594,18 @@ void hunt_victim( CHAR_DATA *ch )
 		ch->hunting = NULL;
 		return;
 	}
-	
+
 	WAIT_STATE( ch, skill_table[gsn_hunt].beats );
 	dir = find_path( ch->in_room->vnum, ch->hunting->in_room->vnum,
 			ch, -40000, TRUE );
-	
+
 	if( dir < 0 || dir > 5 )
 	{
 		act( "$n says 'Damn!  Lost $M!'", ch, NULL, ch->hunting, TO_ROOM );
 		ch->hunting = NULL;
 		return;
 	}
-	
+
 	/*
 	 * Give a random direction if the mob misses the die roll.
 	 */
@@ -618,14 +618,14 @@ void hunt_victim( CHAR_DATA *ch )
 		while( ( ch->in_room->exit[dir] == NULL )
 		      || ( ch->in_room->exit[dir]->to_room == NULL ) );
 	}
-	
-	
+
+
 	if( IS_SET( ch->in_room->exit[dir]->exit_info, EX_CLOSED ) )
 	{
 		do_open( ch, (char *) directions[dir].name );
 		return;
 	}
-	
+
 	move_char( ch, dir );
 	return;
 }

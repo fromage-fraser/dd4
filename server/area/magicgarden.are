@@ -7,7 +7,7 @@ drake water~
 The water drake~
 A huge drake thrashes about in the water.
 ~
-This enormous lizard, a close relative of the dragon, has made his home 
+This enormous lizard, a close relative of the dragon, has made his home
 underneath the waterfall.
 
 He doesn't look pleased to see you.
@@ -91,7 +91,7 @@ carnivorous plant~
 A carnivorous plant~
 A carnivorous plant roams the garden looking for food.
 ~
-This magical plant stands seven feet tall, its writhing tendrils probe about as 
+This magical plant stands seven feet tall, its writhing tendrils probe about as
 it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
@@ -103,7 +103,7 @@ carnivorous plant~
 A carnivorous plant~
 A carnivorous plant roams the garden looking for food.
 ~
-This magical plant stands seven feet tall, its writhing tendrils probe about as 
+This magical plant stands seven feet tall, its writhing tendrils probe about as
 it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
@@ -115,7 +115,7 @@ carnivorous plant~
 A carnivorous plant~
 A carnivorous plant roams the garden looking for food.
 ~
-This magical plant stands seven feet tall, its writhing tendrils probe about as 
+This magical plant stands seven feet tall, its writhing tendrils probe about as
 it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
@@ -127,7 +127,7 @@ carnivorous plant~
 A carnivorous plant~
 A carnivorous plant roams the garden looking for food.
 ~
-This magical plant stands seven feet tall, its writhing tendrils probe about as 
+This magical plant stands seven feet tall, its writhing tendrils probe about as
 it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
@@ -139,7 +139,7 @@ carnivorous plant~
 A carnivorous plant~
 A carnivorous plant roams the garden looking for food.
 ~
-This magical plant stands seven feet tall, its writhing tendrils probe about as 
+This magical plant stands seven feet tall, its writhing tendrils probe about as
 it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
@@ -195,7 +195,7 @@ fairy~
 The fairy~
 A pretty fairy with pink wings is flitting amongst the flowers trying to hide.
 ~
-The fairy has long wispy hair into which a variety of pretty flowers have been 
+The fairy has long wispy hair into which a variety of pretty flowers have been
 interwoven. She flits from flower to flower sampling the pollen from each.
 ~
 64 8|512|65536 1000 S
@@ -207,7 +207,7 @@ fairy~
 The fairy~
 A pretty fairy with purple wings is flitting amongst the flowers trying to hide.
 ~
-The fairy has long wispy hair into which a variety of pretty flowers have been 
+The fairy has long wispy hair into which a variety of pretty flowers have been
 interwoven. She flits from flower to flower sampling the pollen from each.
 ~
 64 8|512|65536 1000 S
@@ -219,7 +219,7 @@ fairy~
 The fairy~
 A pretty fairy with pale blue wings is flitting amongst the flowers trying to hide.
 ~
-The fairy has long wispy hair into which a variety of pretty flowers have been 
+The fairy has long wispy hair into which a variety of pretty flowers have been
 interwoven. She flits from flower to flower sampling the pollen from each.
 ~
 64 8|512|65536 1000 S
@@ -231,7 +231,7 @@ fairy~
 The fairy~
 A pretty fairy with pale yellow wings is flitting amongst the flowers trying to hide.
 ~
-The fairy has long wispy hair into which a variety of pretty flowers have been 
+The fairy has long wispy hair into which a variety of pretty flowers have been
 interwoven. She flits from flower to flower sampling the pollen from each.
 ~
 64 8|512|65536 1000 S
@@ -243,9 +243,9 @@ tree~
 The tree~
 A gnarled oak tree towers above you, its branches sway gently rustling the leaves.
 ~
-The tree looks very ancient and must have taken many years to grow this large. 
-Its branches are all gnarled and twisted at odd angles. As you turn away from 
-it you catch a glimpse of movement out of the corner of your eye, or maybe it 
+The tree looks very ancient and must have taken many years to grow this large.
+Its branches are all gnarled and twisted at odd angles. As you turn away from
+it you catch a glimpse of movement out of the corner of your eye, or maybe it
 was just your imagination.
 ~
 64 8|512|32768|524288|8388608 1000 S
@@ -267,9 +267,9 @@ tree~
 The tree~
 A gnarled oak tree towers above you, its branches sway gently rustling the leaves.
 ~
-The tree looks very ancient and must have taken many years to grow this large. 
-Its branches are all gnarled and twisted at odd angles. As you turn away from 
-it you catch a glimpse of movement out of the corner of your eye, or maybe it 
+The tree looks very ancient and must have taken many years to grow this large.
+Its branches are all gnarled and twisted at odd angles. As you turn away from
+it you catch a glimpse of movement out of the corner of your eye, or maybe it
 was just your imagination.
 ~
 64 8|512|32768|524288|8388608 1000 S
@@ -291,9 +291,9 @@ fairy queen~
 the fairy queen~
 The fairy queen is here tending to the needs of her people.
 ~
-The fairy queen has long golden hair that looks as if beams of sunlight have 
-been caught in it and tiny white flowers are entwined in its tresses. You recall 
-hearing rumours regarding her beauty though no tales you have heard accurately 
+The fairy queen has long golden hair that looks as if beams of sunlight have
+been caught in it and tiny white flowers are entwined in its tresses. You recall
+hearing rumours regarding her beauty though no tales you have heard accurately
 described the enchantment of this breathtaking vision.
 ~
 2|64 8|128|512|524288|4194304|16777216 1000 S
@@ -305,8 +305,8 @@ pixie~
 the mischievous pixie~
 A mischievous pixie points at you and laughs.
 ~
-Pixies look like miniature versions of elves yet are lacking in any of the 
-wisdom and culture of that great race. They spend most of their time using their 
+Pixies look like miniature versions of elves yet are lacking in any of the
+wisdom and culture of that great race. They spend most of their time using their
 magical powers to tease and annoy others.
 ~
 64 2|8|32|512|32768|8388608 0 S
@@ -325,8 +325,8 @@ pixie~
 the mischievous pixie~
 A mischievous pixie points at you and laughs.
 ~
-Pixies look like miniature versions of elves yet are lacking in any of the 
-wisdom and culture of that great race. They spend most of their time using their 
+Pixies look like miniature versions of elves yet are lacking in any of the
+wisdom and culture of that great race. They spend most of their time using their
 magical powers to tease and annoy others.
 ~
 64 2|8|32|512|32768|8388608 0 S
@@ -345,8 +345,8 @@ pixie~
 the mischievous pixie~
 A mischievous pixie points at you and laughs.
 ~
-Pixies look like miniature versions of elves yet are lacking in any of the 
-wisdom and culture of that great race. They spend most of their time using their 
+Pixies look like miniature versions of elves yet are lacking in any of the
+wisdom and culture of that great race. They spend most of their time using their
 magical powers to tease and annoy others.
 ~
 64 2|8|32|512|32768|8388608 0 S
@@ -365,7 +365,7 @@ leprechaun~
 the leprechaun~
 A leprechaun sneaks about the garden.
 ~
-This filthy, greedy leprechaun spends his days and knights stealing from 
+This filthy, greedy leprechaun spends his days and knights stealing from
 visitors to this magical garden and hoarding useless rubbish.
 ~
 64|128 2|8|32|512|8192|32768|65536|8388608 -400 S
@@ -442,7 +442,7 @@ A
 17 -15
 E
 crown golden fairy~
-This beautiful golden crown has been inlaid with many precious jewels that are 
+This beautiful golden crown has been inlaid with many precious jewels that are
 all in the shape of tiny tear drops.~
 #11306
 flowing white gown cloth~
@@ -543,7 +543,7 @@ A
 #11314
 drake egg rotten~
 a rotten drakes egg~
-There is an egg here that looks as if it may have come from a drake although it 
+There is an egg here that looks as if it may have come from a drake although it
 smells like it's gone off.~
 ~
 26 64|16384 1|16384
@@ -803,7 +803,7 @@ a bright ball of light~
 {WA bright ball of light shimmers in the air.{x~
 ~
 1 1 0
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 1 0 0
 #11342
 tough bark~
@@ -843,10 +843,10 @@ A dragon's prayer lies here.~
 #ROOMS
 #11300
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north and east the 
+To the west a thick hedge blocks your path while to the north and east the
 garden continues.
 ~
 0 0 2
@@ -861,11 +861,11 @@ D1
 S
 #11301
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the south a thick hedge blocks your path while to the west and east the 
-garden continues. To the north you can see a patch of particularly large 
+To the south a thick hedge blocks your path while to the west and east the
+garden continues. To the north you can see a patch of particularly large
 sunflowers.
 ~
 0 0 2
@@ -884,11 +884,11 @@ D3
 S
 #11302
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the south a thick hedge blocks your path while to the west and east the 
-garden continues. To the north you can see a patch of particularly large 
+To the south a thick hedge blocks your path while to the west and east the
+garden continues. To the north you can see a patch of particularly large
 sunflowers.
 ~
 0 0 2
@@ -907,10 +907,10 @@ D3
 S
 #11303
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the south a thick hedge blocks your path while to the north, west and east 
+To the south a thick hedge blocks your path while to the north, west and east
 the garden continues.
 ~
 0 0 2
@@ -929,7 +929,7 @@ D3
 S
 #11304
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 To the north and east the ground drops away steeply to the river far below.
@@ -943,11 +943,11 @@ D3
 S
 #11305
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north and south the 
-garden continues. To the east you can see a patch of particularly large 
+To the west a thick hedge blocks your path while to the north and south the
+garden continues. To the east you can see a patch of particularly large
 sunflowers.
 ~
 0 0 2
@@ -966,11 +966,11 @@ D2
 S
 #11306
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north and south the 
-garden continues. To the east you can see a patch of particularly large 
+To the west a thick hedge blocks your path while to the north and south the
+garden continues. To the east you can see a patch of particularly large
 sunflowers.
 ~
 0 0 2
@@ -989,10 +989,10 @@ D2
 S
 #11307
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north, east and south 
+To the west a thick hedge blocks your path while to the north, east and south
 the garden continues.
 ~
 0 0 2
@@ -1011,10 +1011,10 @@ D2
 S
 #11308
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north, east and south 
+To the west a thick hedge blocks your path while to the north, east and south
 the garden continues.
 ~
 0 0 2
@@ -1033,10 +1033,10 @@ D2
 S
 #11309
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north, east and south 
+To the west a thick hedge blocks your path while to the north, east and south
 the garden continues.
 ~
 0 0 2
@@ -1055,10 +1055,10 @@ D2
 S
 #11310
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north, east and south 
+To the west a thick hedge blocks your path while to the north, east and south
 the garden continues.
 ~
 0 0 2
@@ -1077,10 +1077,10 @@ D2
 S
 #11311
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path while to the north, east and south 
+To the west a thick hedge blocks your path while to the north, east and south
 the garden continues.
 ~
 0 0 2
@@ -1099,11 +1099,11 @@ D2
 S
 #11312
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west a thick hedge blocks your path. To the east the ground drops away 
-steeply to the river far below, while to the north and south the garden 
+To the west a thick hedge blocks your path. To the east the ground drops away
+steeply to the river far below, while to the north and south the garden
 continues.
 ~
 0 0 2
@@ -1118,11 +1118,11 @@ D2
 S
 #11313
 Beside the waterfall~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north and west a thick hedge blocks your path. To the east you can see a 
-mighty waterfall cascading down to the river, while to the south the garden 
+To the north and west a thick hedge blocks your path. To the east you can see a
+mighty waterfall cascading down to the river, while to the south the garden
 continues.
 ~
 0 0 2
@@ -1133,9 +1133,9 @@ D2
 S
 #11315
 Under the giant sunflower~
-You are standing in the shadow of the biggest sunflower you have ever seen, 
-looking towards the sky you can barely make out the top of it. The stalk of the 
-giant flower is easily as big as a tree trunk. You decide that should you need 
+You are standing in the shadow of the biggest sunflower you have ever seen,
+looking towards the sky you can barely make out the top of it. The stalk of the
+giant flower is easily as big as a tree trunk. You decide that should you need
 to rest it may be safer off the ground. Maybe you could climb it...
 ~
 0 0 2
@@ -1162,11 +1162,11 @@ D4
 S
 #11316
 A sunflower patch~
-You are standing in a patch of very large sunflowers, even the smallest ones are 
-way over your head. You wonder how they could have grown so big and suspect the 
+You are standing in a patch of very large sunflowers, even the smallest ones are
+way over your head. You wonder how they could have grown so big and suspect the
 answer must be magic.
 
-To the south you see a sunflower that is much bigger than all the rest. To the 
+To the south you see a sunflower that is much bigger than all the rest. To the
 east you see more sunflowers and to the north and west the garden continues.
 ~
 0 0 2
@@ -1189,10 +1189,10 @@ D3
 S
 #11317
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north, west and east the garden continues. To the south you can see a 
+To the north, west and east the garden continues. To the south you can see a
 patch of particularly large sunflowers.
 ~
 0 0 2
@@ -1215,7 +1215,7 @@ D3
 S
 #11318
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1240,7 +1240,7 @@ D3
 S
 #11319
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1265,10 +1265,10 @@ D3
 S
 #11320
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east the ground drops away steeply to the river far below. while to the 
+To the east the ground drops away steeply to the river far below. while to the
 north, west and south the garden continues.
 ~
 0 0 2
@@ -1287,10 +1287,10 @@ D3
 S
 #11321
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north and east the ground drops away steeply to the river far below. 
+To the north and east the ground drops away steeply to the river far below.
 while to the west and south the garden continues.
 ~
 0 0 2
@@ -1305,11 +1305,11 @@ D3
 S
 #11322
 A sunflower patch~
-You are standing in a patch of very large sunflowers, even the smallest ones are 
-way over your head. You wonder how they could have grown so big and suspect the 
+You are standing in a patch of very large sunflowers, even the smallest ones are
+way over your head. You wonder how they could have grown so big and suspect the
 answer must be magic.
 
-To the west is you see a sunflower that is much bigger than all the rest. To the 
+To the west is you see a sunflower that is much bigger than all the rest. To the
 north you see more sunflowers and to the east and south the garden continues.
 ~
 0 0 2
@@ -1332,11 +1332,11 @@ D3
 S
 #11323
 A sunflower patch~
-You are standing in a patch of very large sunflowers, even the smallest ones are 
-way over your head. You wonder how they could have grown so big and suspect the 
+You are standing in a patch of very large sunflowers, even the smallest ones are
+way over your head. You wonder how they could have grown so big and suspect the
 answer must be magic.
 
-To the west and south you see more sunflowers and to the north and east the 
+To the west and south you see more sunflowers and to the north and east the
 garden continues.
 ~
 0 0 2
@@ -1359,10 +1359,10 @@ D3
 S
 #11324
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north, west and east the garden continues. To the south you can see a 
+To the north, west and east the garden continues. To the south you can see a
 patch of particularly large sunflowers.
 ~
 0 0 2
@@ -1385,10 +1385,10 @@ D3
 S
 #11325
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north, west and east the garden continues. To the south you can see a 
+To the north, west and east the garden continues. To the south you can see a
 patch of particularly large sunflowers.
 ~
 0 0 2
@@ -1411,10 +1411,10 @@ D3
 S
 #11326
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north and east the ground drops away steeply to the river far below. 
+To the north and east the ground drops away steeply to the river far below.
 while to the west and south the garden continues.
 ~
 0 0 2
@@ -1429,11 +1429,11 @@ D3
 S
 #11327
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east the ground drops away steeply to the river far below. To the west 
-you can see a patch of particularly large sunflowers. while to the north and 
+To the east the ground drops away steeply to the river far below. To the west
+you can see a patch of particularly large sunflowers. while to the north and
 south the garden continues.
 ~
 0 0 2
@@ -1452,11 +1452,11 @@ D3
 S
 #11328
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east the ground drops away steeply to the river far below. To the west 
-you can see a patch of particularly large sunflowers. while to the north and 
+To the east the ground drops away steeply to the river far below. To the west
+you can see a patch of particularly large sunflowers. while to the north and
 south the garden continues.
 ~
 0 0 2
@@ -1475,11 +1475,11 @@ D3
 S
 #11329
 Before the bridge~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east is a wooden bridge arcing across the river. The bank looks as tho 
-you may be able to descend it here. while to the north, west and south the 
+To the east is a wooden bridge arcing across the river. The bank looks as tho
+you may be able to descend it here. while to the north, west and south the
 garden continues.
 ~
 0 0 2
@@ -1506,10 +1506,10 @@ D5
 S
 #11330
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north and east the ground drops away steeply to the river far below. 
+To the north and east the ground drops away steeply to the river far below.
 while to the west and south the garden continues.
 ~
 0 0 2
@@ -1540,11 +1540,11 @@ D3
 S
 #11332
 Beside the waterfall~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north a thick hedge blocks your path. To the west you can see a mighty 
-waterfall cascading down to the river. To the south the ground drops away 
+To the north a thick hedge blocks your path. To the west you can see a mighty
+waterfall cascading down to the river. To the south the ground drops away
 steeply to the river far below. while to the east the garden continues.
 ~
 0 0 2
@@ -1555,10 +1555,10 @@ D1
 S
 #11333
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north a thick hedge blocks your path while to the west, east and south 
+To the north a thick hedge blocks your path while to the west, east and south
 the garden continues.
 ~
 0 0 2
@@ -1577,10 +1577,10 @@ D3
 S
 #11334
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west the ground drops away steeply to the river far below. while to the 
+To the west the ground drops away steeply to the river far below. while to the
 north, east and south the garden continues.
 ~
 0 0 2
@@ -1599,10 +1599,10 @@ D2
 S
 #11335
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west and south the ground drops away steeply to the river far below. 
+To the west and south the ground drops away steeply to the river far below.
 while to the north and east the garden continues.
 ~
 0 0 2
@@ -1617,10 +1617,10 @@ D1
 S
 #11336
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north a thick hedge blocks your path while to the west, east and south 
+To the north a thick hedge blocks your path while to the west, east and south
 the garden continues.
 ~
 0 0 2
@@ -1639,7 +1639,7 @@ D3
 S
 #11337
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1664,7 +1664,7 @@ D3
 S
 #11338
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1689,10 +1689,10 @@ D3
 S
 #11339
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west and south the ground drops away steeply to the river far below. 
+To the west and south the ground drops away steeply to the river far below.
 while to the north and east the garden continues.
 ~
 0 0 2
@@ -1707,10 +1707,10 @@ D1
 S
 #11340
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north a thick hedge blocks your path while to the west, east and south 
+To the north a thick hedge blocks your path while to the west, east and south
 the garden continues.
 ~
 0 0 2
@@ -1729,7 +1729,7 @@ D3
 S
 #11341
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1754,7 +1754,7 @@ D3
 S
 #11342
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1779,7 +1779,7 @@ D3
 S
 #11343
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1804,10 +1804,10 @@ D3
 S
 #11344
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west the ground drops away steeply to the river far below. while to the 
+To the west the ground drops away steeply to the river far below. while to the
 north, east and south the garden continues.
 ~
 0 0 2
@@ -1826,10 +1826,10 @@ D2
 S
 #11345
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west the ground drops away steeply to the river far below. while to the 
+To the west the ground drops away steeply to the river far below. while to the
 north, east and south the garden continues.
 ~
 0 0 2
@@ -1848,11 +1848,11 @@ D2
 S
 #11346
 Before the bridge~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west is a wooden bridge arcing across the river. The bank looks as tho 
-you may be able to descend it here, while to the north, east and south the 
+To the west is a wooden bridge arcing across the river. The bank looks as tho
+you may be able to descend it here, while to the north, east and south the
 garden continues.
 ~
 0 0 2
@@ -1879,10 +1879,10 @@ D5
 S
 #11347
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west and south the ground drops away steeply to the river far below. 
+To the west and south the ground drops away steeply to the river far below.
 while to the north and east the garden continues.
 ~
 0 0 2
@@ -1897,11 +1897,11 @@ D1
 S
 #11348
 Inside the gate~
-You stand inside the gate to a beautifully hedged garden with lush green grass. 
-It is planted with neatly arranged beds of exotic plants and flowers, some of 
-which you have never seen before. 
+You stand inside the gate to a beautifully hedged garden with lush green grass.
+It is planted with neatly arranged beds of exotic plants and flowers, some of
+which you have never seen before.
 
-Beyond the gate all you see is forest, to the west, east and south the garden 
+Beyond the gate all you see is forest, to the west, east and south the garden
 sprawls out before you.
 ~
 0 4|65536 2
@@ -1924,10 +1924,10 @@ D3
 S
 #11349
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-The garden sprawls out in all directions save north, where you see the 
+The garden sprawls out in all directions save north, where you see the
 wrought-iron entrance gate to the garden.
 ~
 0 0 2
@@ -1950,7 +1950,7 @@ D3
 S
 #11350
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -1975,7 +1975,7 @@ D3
 S
 #11351
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2000,7 +2000,7 @@ D3
 S
 #11352
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions..
@@ -2025,7 +2025,7 @@ D3
 S
 #11353
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2050,7 +2050,7 @@ D3
 S
 #11354
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2075,7 +2075,7 @@ D3
 S
 #11355
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2100,7 +2100,7 @@ D3
 S
 #11356
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 To the west and south the ground drops away steeply to the river far below.
@@ -2118,10 +2118,10 @@ D1
 S
 #11357
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north a thick hedge blocks your path while to the west, east and south 
+To the north a thick hedge blocks your path while to the west, east and south
 the garden continues.
 ~
 0 0 2
@@ -2140,10 +2140,10 @@ D3
 S
 #11358
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east you see a marble fountain, while to the north, west and south the 
+To the east you see a marble fountain, while to the north, west and south the
 garden continues.
 ~
 0 0 2
@@ -2166,7 +2166,7 @@ D3
 S
 #11359
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2191,7 +2191,7 @@ D3
 S
 #11360
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2216,7 +2216,7 @@ D3
 S
 #11361
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2241,7 +2241,7 @@ D3
 S
 #11362
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2266,7 +2266,7 @@ D3
 S
 #11363
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2291,7 +2291,7 @@ D3
 S
 #11364
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2316,10 +2316,10 @@ D3
 S
 #11365
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the south the ground drops away steeply to the river far below. while to the 
+To the south the ground drops away steeply to the river far below. while to the
 north, west and east the garden continues.
 ~
 0 0 2
@@ -2338,10 +2338,10 @@ D3
 S
 #11366
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north a thick hedge blocks your path while to the west and east the 
+To the north a thick hedge blocks your path while to the west and east the
 garden continues. To the south you see a marble fountain.
 ~
 0 0 2
@@ -2360,8 +2360,8 @@ D3
 S
 #11367
 At the fountain~
-You are standing in front of a beautiful marble fountain. The statue in the 
-center of it depicts cherubs in flight and the large, ornate bowl 
+You are standing in front of a beautiful marble fountain. The statue in the
+center of it depicts cherubs in flight and the large, ornate bowl
 sparkles with crystal clear water.
 
 The garden sprawls out in all directions.
@@ -2386,10 +2386,10 @@ D3
 S
 #11368
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north you see a marble fountain. while to the west, east and south the 
+To the north you see a marble fountain. while to the west, east and south the
 garden continues.
 ~
 0 0 2
@@ -2412,7 +2412,7 @@ D3
 S
 #11369
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2437,7 +2437,7 @@ D3
 S
 #11370
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2462,7 +2462,7 @@ D3
 S
 #11371
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2487,7 +2487,7 @@ D3
 S
 #11372
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2512,7 +2512,7 @@ D3
 S
 #11373
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
 The garden sprawls out in all directions.
@@ -2537,10 +2537,10 @@ D3
 S
 #11374
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns 
+You stand in a vast hedged garden with carefully tended lawns
 and beds of exotic plants and flowers.
 
-To the south the ground drops away steeply to the river far below. while to the 
+To the south the ground drops away steeply to the river far below. while to the
 north, west and east the garden continues.
 ~
 0 0 2
@@ -2559,10 +2559,10 @@ D3
 S
 #11375
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the north and east a thick hedge blocks your path, while to the west and 
+To the north and east a thick hedge blocks your path, while to the west and
 south the garden continues.
 ~
 0 0 2
@@ -2577,10 +2577,10 @@ D3
 S
 #11376
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the west you see a marble fountain. To the east a thick hedge blocks your 
+To the west you see a marble fountain. To the east a thick hedge blocks your
 path while to the north and south the garden continues.
 ~
 0 0 2
@@ -2599,10 +2599,10 @@ D3
 S
 #11377
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path while to the north, west and south 
+To the east a thick hedge blocks your path while to the north, west and south
 the garden continues.
 ~
 0 0 2
@@ -2621,10 +2621,10 @@ D3
 S
 #11378
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path while to the north, west and south 
+To the east a thick hedge blocks your path while to the north, west and south
 the garden continues.
 ~
 0 0 2
@@ -2643,10 +2643,10 @@ D3
 S
 #11379
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path while to the north, west and south 
+To the east a thick hedge blocks your path while to the north, west and south
 the garden continues.
 ~
 0 0 2
@@ -2665,10 +2665,10 @@ D3
 S
 #11380
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path while to the north, west and south 
+To the east a thick hedge blocks your path while to the north, west and south
 the garden continues.
 ~
 0 0 2
@@ -2687,10 +2687,10 @@ D3
 S
 #11381
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path while to the north, west and south 
+To the east a thick hedge blocks your path while to the north, west and south
 the garden continues.
 ~
 0 0 2
@@ -2709,10 +2709,10 @@ D3
 S
 #11382
 In the garden~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path while to the north, west and south 
+To the east a thick hedge blocks your path while to the north, west and south
 the garden continues.
 ~
 0 0 2
@@ -2731,10 +2731,10 @@ D3
 S
 #11383
 Beside the river~
-You stand in a vast hedged garden with carefully tended lawns and beds of exotic 
+You stand in a vast hedged garden with carefully tended lawns and beds of exotic
 plants and flowers.
 
-To the east a thick hedge blocks your path. To the south the ground drops away 
+To the east a thick hedge blocks your path. To the south the ground drops away
 steeply to the river far below, while to the north and west the garden continues.
 ~
 0 0 2
@@ -2749,8 +2749,8 @@ D3
 S
 #11384
 Under the bridge~
-You are standing on a rather steep incline beneath a wooden bridge and the river 
-is writhing and churning as it rushes past. 
+You are standing on a rather steep incline beneath a wooden bridge and the river
+is writhing and churning as it rushes past.
 
 You can either ascend the bank or brave the churning river.
 ~
@@ -2766,10 +2766,10 @@ D4
 S
 #11385
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and east it looks as tho you might be able to climb the bank while 
+To the west and east it looks as tho you might be able to climb the bank while
 to the north and south the river winds out of sight.
 ~
 0 0 7
@@ -2792,8 +2792,8 @@ D3
 S
 #11386
 Under the bridge~
-You are standing on a rather steep incline beneath a wooden bridge and the river 
-is writhing and churning as it rushes past. 
+You are standing on a rather steep incline beneath a wooden bridge and the river
+is writhing and churning as it rushes past.
 
 You can either ascend the bank or brave the churning river.
 ~
@@ -2809,11 +2809,11 @@ D4
 S
 #11387
 Beneath the waterfall~
-A mighty waterfall cascades down into the river before you. It is a truly 
-magnificent sight to behold as the water seems to be dancing when you gaze up at 
+A mighty waterfall cascades down into the river before you. It is a truly
+magnificent sight to behold as the water seems to be dancing when you gaze up at
 it.
 
-To the west and east the bank ascends steeply preventing travel while to the 
+To the west and east the bank ascends steeply preventing travel while to the
 south the river winds out of sight.
 ~
 0 0 7
@@ -2824,11 +2824,11 @@ D2
 S
 #11388
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north you can see a very high waterfall. To the west and south the bank 
-ascends steeply preventing travel while to the east the river winds out of 
+To the north you can see a very high waterfall. To the west and south the bank
+ascends steeply preventing travel while to the east the river winds out of
 sight.
 
 There are very disturbing grunting noises coming from the north.
@@ -2845,10 +2845,10 @@ D1
 S
 #11389
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and east the bank ascends steeply preventing travel while to the 
+To the north and east the bank ascends steeply preventing travel while to the
 west and south the river winds out of sight.
 ~
 0 4 7
@@ -2863,10 +2863,10 @@ D3
 S
 #11390
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and east the bank ascends steeply preventing travel while to the 
+To the west and east the bank ascends steeply preventing travel while to the
 north and south the river winds out of sight.
 ~
 0 0 7
@@ -2881,10 +2881,10 @@ D2
 S
 #11391
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and south the bank ascends steeply preventing travel while to the 
+To the west and south the bank ascends steeply preventing travel while to the
 north and east the river winds out of sight.
 ~
 0 0 7
@@ -2899,10 +2899,10 @@ D1
 S
 #11392
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and east the bank ascends steeply preventing travel while to the 
+To the north and east the bank ascends steeply preventing travel while to the
 west and south the river winds out of sight.
 ~
 0 0 7
@@ -2917,10 +2917,10 @@ D3
 S
 #11393
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and south the bank ascends steeply preventing travel while to the 
+To the west and south the bank ascends steeply preventing travel while to the
 north and east the river winds out of sight.
 ~
 0 0 7
@@ -2935,10 +2935,10 @@ D1
 S
 #11394
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and east the bank ascends steeply preventing travel while to the 
+To the north and east the bank ascends steeply preventing travel while to the
 west and south the river winds out of sight.
 ~
 0 0 7
@@ -2953,10 +2953,10 @@ D3
 S
 #11395
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and east the bank ascends steeply preventing travel while to the 
+To the west and east the bank ascends steeply preventing travel while to the
 north and south the river winds out of sight.
 ~
 0 0 7
@@ -2971,10 +2971,10 @@ D2
 S
 #11396
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and east the bank ascends steeply preventing travel while to the 
+To the west and east the bank ascends steeply preventing travel while to the
 north and south the river winds out of sight.
 ~
 0 0 7
@@ -2989,10 +2989,10 @@ D2
 S
 #11397
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and south the bank ascends steeply preventing travel while to the 
+To the west and south the bank ascends steeply preventing travel while to the
 north and east the river winds out of sight.
 ~
 0 0 7
@@ -3007,10 +3007,10 @@ D1
 S
 #11398
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and east the bank ascends steeply preventing travel while to the 
+To the north and east the bank ascends steeply preventing travel while to the
 west and south the river winds out of sight.
 ~
 0 0 7
@@ -3025,10 +3025,10 @@ D3
 S
 #11399
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the west and south the bank ascends steeply preventing travel while to the 
+To the west and south the bank ascends steeply preventing travel while to the
 north and east the river winds out of sight.
 ~
 0 0 7
@@ -3043,10 +3043,10 @@ D1
 S
 #11400
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and south the bank ascends steeply preventing travel while to the 
+To the north and south the bank ascends steeply preventing travel while to the
 west and east the river winds out of sight.
 ~
 0 0 7
@@ -3061,10 +3061,10 @@ D3
 S
 #11401
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and south the bank ascends steeply preventing travel while to the 
+To the north and south the bank ascends steeply preventing travel while to the
 west and east the river winds out of sight.
 ~
 0 0 7
@@ -3079,10 +3079,10 @@ D3
 S
 #11402
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and south the bank ascends steeply preventing travel while to the 
+To the north and south the bank ascends steeply preventing travel while to the
 west and east the river winds out of sight.
 ~
 0 0 7
@@ -3097,11 +3097,11 @@ D3
 S
 #11403
 In the river~
-The river is writhing and churning around you in a very unnatural manner and you 
+The river is writhing and churning around you in a very unnatural manner and you
 don't seem to be able to see beneath the surface.
 
-To the north and south the bank ascends steeply preventing travel while to the 
-west the river winds out of sight. To the east the river drops away suddenly and 
+To the north and south the bank ascends steeply preventing travel while to the
+west the river winds out of sight. To the east the river drops away suddenly and
 you can hear the distinctive roar of a waterfall. Better not get to close...
 ~
 0 0 7
@@ -3116,9 +3116,9 @@ D3
 S
 #11404
 Climbing the giant sunflower~
-As you are climbing up the stalk of the giant sunflower you look around and 
-realize that the view is amazing from up here. You see the garden sprawled out 
-beneath you in all its glory and know that beauty such as this must have been 
+As you are climbing up the stalk of the giant sunflower you look around and
+realize that the view is amazing from up here. You see the garden sprawled out
+beneath you in all its glory and know that beauty such as this must have been
 created by magical means.
 ~
 0 4|2048 9
@@ -3133,10 +3133,10 @@ D5
 S
 #11405
 On top of the sunflower~
-At last you have reached the top of the mighty flower, looking down the ground 
-seems very far away. Sitting in the center of the sunflower is a delicate 
-crystal throne  intricately carved and inlaid with tiny flecks of gold that 
-sparkle in the magical light that surrounds you. The mysterious light fills you 
+At last you have reached the top of the mighty flower, looking down the ground
+seems very far away. Sitting in the center of the sunflower is a delicate
+crystal throne  intricately carved and inlaid with tiny flecks of gold that
+sparkle in the magical light that surrounds you. The mysterious light fills you
 with a sense of peace and sanctuary.
 ~
 0 1024|8192|65536 2
@@ -3147,8 +3147,8 @@ D5
 S
 #11406
 Clinging to a rock~
-You are dangling precariously from a slippery rock that is jutting out at the 
-top of a waterfall. Looking down all you see is water, it seems to drop away for 
+You are dangling precariously from a slippery rock that is jutting out at the
+top of a waterfall. Looking down all you see is water, it seems to drop away for
 miles below you.
 ~
 0 4 9
@@ -3167,7 +3167,7 @@ M 1 11300 1 11387			The water drake to beneath the waterfall
 E 1 11300 100 16
 E 1 11344 100 17
 E 1 11300 100 18
-G 1 11314 100 
+G 1 11314 100
 E 1 11343 100 5
 G 1 11303 100
 G 1 11322 100

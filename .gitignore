@@ -5,4 +5,5 @@
 *.o
 envy
 server/area/bugs.txt
-
+server/src/shutdown.txt
+server/player/

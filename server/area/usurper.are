@@ -73,7 +73,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29806
 guard~
 the guard~
@@ -89,7 +89,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29807
 guard~
 the guard~
@@ -105,7 +105,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29808
 guard~
 the guard~
@@ -121,7 +121,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29809
 boy stable stableboy~
 the stableboy~
@@ -289,7 +289,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29822
 guard~
 the guard~
@@ -305,7 +305,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29823
 guard~
 the guard~
@@ -321,7 +321,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29824
 guard~
 the guard~
@@ -337,7 +337,7 @@ is good at following orders but not much else.
 >greet_prog 25~
 say Halt! Who goes there?
 ~
-|   
+|
 #29825
 rudolf tutor~
 Rudolf~
@@ -616,7 +616,7 @@ the keep well~
 Clear water sparkles in the keep well.~
 ~
 25 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 999 0 0
 #29801
 locker chest foot footlocker~
@@ -624,7 +624,7 @@ a locker~
 A foot locker is at the end of the bunk.~
 ~
 15 0 1|16384
-100~ 5~ -1~ 0~ 
+100~ 5~ -1~ 0~
 5 0 0
 #29802
 nightshirt night shirt~
@@ -632,7 +632,7 @@ a nightshirt~
 A rumpled nightshirt has been casually tossed in the locker.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29803
 sock socks~
@@ -640,7 +640,7 @@ a pair of socks~
 A pair of woollen socks is folded neatly together.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29804
 bottle whisky~
@@ -648,7 +648,7 @@ a bottle of whisky~
 A bottle of whisky is hidden under some stuff here.~
 ~
 17 0 1|16384
-20~ 20~ 5~ 0~ 
+20~ 20~ 5~ 0~
 5 0 0
 #29805
 magazine girly~
@@ -656,7 +656,7 @@ a girly magazine~
 A girly magazine is concealed under some clothes here.~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29806
 fatigues crumpled~
@@ -664,7 +664,7 @@ crumpled fatigues~
 A set of crumpled fatigues sits here in a heap.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29807
 army boots boot~
@@ -672,7 +672,7 @@ army boots~
 A pair of army boots sits on the floor.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29808
 ring mail ringmail vest~
@@ -680,7 +680,7 @@ a ringmail vest~
 A ringmail vest has been discarded here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29809
 ringmail ring mail hood~
@@ -688,7 +688,7 @@ a ringmail hood~
 A ringmail hood lies here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29810
 broadsword sword~
@@ -696,7 +696,7 @@ a broadsword~
 A broadsword has been dropped here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 5 0 0
 #29811
 mufti shirt~
@@ -704,7 +704,7 @@ a mufti shirt~
 A mufti shirt is crumpled in a heap here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29812
 mufti pants~
@@ -712,7 +712,7 @@ mufti pants~
 A pair of mufti pants lie here in a heap.~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29813
 ceremonial armor~
@@ -720,7 +720,7 @@ ceremonial armor~
 A set of ceremonial armor lies here majestically.~
 ~
 9 2 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 40
@@ -732,7 +732,7 @@ a plumed helmet~
 A plumed helmet has been left here.~
 ~
 9 2 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 5 2
@@ -742,7 +742,7 @@ a ceremonial sword~
 A ceremonial sword is dropped here.~
 ~
 5 2 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 5 0 0
 A
 2 -2
@@ -754,7 +754,7 @@ a gold-plated shield~
 A gold-plated shield is dropped here.~
 ~
 9 2 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 19 5
@@ -764,7 +764,7 @@ a merchant's necklace~
 A gleaming gold necklace has been discarded here.~
 ~
 9 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 3
@@ -774,7 +774,7 @@ a dark green cape~
 A dark, shapeless lump of velvet has been tossed here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29819
 hat shapeless~
@@ -782,7 +782,7 @@ a shapeless hat~
 A shapeless hat is dropped here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29820
 boots boot traveller~
@@ -790,7 +790,7 @@ traveller's boots~
 A pair of well-worn boots is sitting here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 14 30
@@ -800,7 +800,7 @@ a locker~
 A foot locker is at the end of the bunk.~
 ~
 15 0 1|16384
-100~ 5~ -1~ 0~ 
+100~ 5~ -1~ 0~
 5 0 0
 #29822
 locker chest foot footlocker~
@@ -808,7 +808,7 @@ a locker~
 A foot locker is at the end of the bunk.~
 ~
 15 0 1|16384
-100~ 5~ -1~ 0~ 
+100~ 5~ -1~ 0~
 5 0 0
 #29823
 locker chest foot footlocker~
@@ -816,7 +816,7 @@ a locker~
 A foot locker is at the end of the bunk.~
 ~
 15 0 1|16384
-100~ 5~ -1~ 0~ 
+100~ 5~ -1~ 0~
 5 0 0
 #29824
 greaves leather~
@@ -824,7 +824,7 @@ leather greaves~
 A set of leather greaves has been casually tossed here.~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29825
 leather bracers~
@@ -832,7 +832,7 @@ leather bracers~
 A set of leather bracers has been dropped here.~
 ~
 9 0 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29826
 broom~
@@ -840,7 +840,7 @@ a broom~
 A broom is propped in the corner~
 ~
 5 0 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29827
 pants torn~
@@ -848,7 +848,7 @@ torn pants~
 A pair of torn pants is crumpled here.~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29828
 shirt ripped~
@@ -856,7 +856,7 @@ a ripped shirt~
 A bundle of rags is tossed in the corner.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29829
 globe brass~
@@ -864,7 +864,7 @@ a brass globe~
 A brass globe has been dropped in the dung here.~
 ~
 8 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 2
@@ -876,7 +876,7 @@ a red halo~
 A red halo floats here.~
 ~
 8 1|16|512 1|32768
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 4 1
@@ -890,7 +890,7 @@ a greatcoat~
 A greatcoat is hanging on a hook here.~
 ~
 9 16 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29832
 hat floppy~
@@ -898,7 +898,7 @@ a floppy hat~
 A floppy, shapeless hat has been dropped here.~
 ~
 9 16 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29833
 boots boot black dusty~
@@ -906,7 +906,7 @@ dusty black boots~
 A pair of dusty black boots is sitting here.~
 ~
 9 16 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29834
 halo gold golden~
@@ -914,7 +914,7 @@ a golden halo~
 A golden halo floats here.~
 ~
 9 1|64|1024 1|32768
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 12 30
@@ -924,7 +924,7 @@ white priest's robes~
 A set of white priestly robes is hanging on a hook here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29836
 mitre~
@@ -932,7 +932,7 @@ a white and gold mitre~
 A white and gold priest's mitre has been left here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29837
 sandal sandals gold golden~
@@ -940,7 +940,7 @@ golden sandals~
 A pair of golden sandals sits here neatly.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 14 50
@@ -950,7 +950,7 @@ a priest's staff~
 A priest's staff is propped here.~
 ~
 4 0 1|16384
-40~ 5~ 5~ bless~ 
+40~ 5~ 5~ bless~
 15 0 0
 A
 24 -10
@@ -960,7 +960,7 @@ golden choirboy's robes~
 A set of golden choirboy's robes is hanging here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 2
@@ -970,7 +970,7 @@ a spade~
 A spade is propped in the corner.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29841
 glove gloves gardener~
@@ -978,7 +978,7 @@ gardener's gloves~
 A pair of gardener's gloves has been dropped here.~
 ~
 9 0 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29842
 dress peasant~
@@ -986,7 +986,7 @@ a peasant dress~
 A peasant dress is crumpled here in a heap.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29843
 apron worker~
@@ -994,7 +994,7 @@ a worker's apron~
 A worker's apron has been dropped carelessly here.~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29844
 gloves thick glove~
@@ -1002,7 +1002,7 @@ thick gloves~
 A pair of thick gloves is dropped here.~
 ~
 9 0 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29845
 mask face~
@@ -1010,7 +1010,7 @@ a face mask~
 A protective face mask is dropped here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29846
 hammer smithy~
@@ -1018,7 +1018,7 @@ a smithy's hammer~
 A smithy's hammer is dropped here.~
 ~
 5 2|64 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 15 0 0
 A
 19 5
@@ -1034,7 +1034,7 @@ worn pants~
 A pair of worn, scorched pants has been tossed here.~
 ~
 9 1 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 50
@@ -1044,7 +1044,7 @@ an anvil~
 An anvil sits in the centre of the room.~
 ~
 30 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29849
 vegetables~
@@ -1052,7 +1052,7 @@ vegetables~
 Some freshly-harvested vegetables sit here in a pile.~
 ~
 19 0 1|16384
-20~ 0~ 0~ 0~ 
+20~ 0~ 0~ 0~
 5 0 0
 #29850
 altar~
@@ -1060,7 +1060,7 @@ an altar~
 An altar stands at the front of the room.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29851
 cleaver meat~
@@ -1068,7 +1068,7 @@ a meat cleaver~
 A bloody meat cleaver has been tossed here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 13~ 
+0~ 0~ 0~ 13~
 15 0 0
 #29852
 apron cook~
@@ -1076,7 +1076,7 @@ a cook's apron~
 A cook's apron has been crumpled here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29853
 dirty overalls~
@@ -1084,7 +1084,7 @@ dirty overalls~
 A set of dirty overalls is crumpled in a ball here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29854
 knife small~
@@ -1092,7 +1092,7 @@ a small knife~
 A small knife is dropped here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 5 0 0
 #29855
 eyeglasses glasses~
@@ -1100,7 +1100,7 @@ eyeglasses~
 A pair of eyeglasses sparkles here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 4 4
@@ -1110,7 +1110,7 @@ a jerkin~
 A leather jerkin has been dropped here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29857
 shoes house soft~
@@ -1118,7 +1118,7 @@ soft house shoes~
 A pair of soft house shoes is here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29858
 key fancy gold~
@@ -1126,7 +1126,7 @@ a fancy gold key~
 A fancy gold key glints through the muck here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29859
 tuxedo suit~
@@ -1134,7 +1134,7 @@ a tuxedo~
 A tuxedo is hanging on a hook here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 2 2
@@ -1144,7 +1144,7 @@ a blue hoop dress~
 A blue hoop dress is folded on its hoop here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29861
 novel romance~
@@ -1152,7 +1152,7 @@ a romance novel~
 A trashy romance novel has been dropped hastily here.~
 ~
 3 64 1|16384
-30~ 6~ 6~ dispel magic~ 
+30~ 6~ 6~ dispel magic~
 5 0 0
 #29862
 dagger small~
@@ -1160,7 +1160,7 @@ a small dagger~
 A small dagger has been dropped here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 #29863
 robe diplomat office~
@@ -1168,7 +1168,7 @@ a diplomat's robe of office~
 A diplomat's robe of office is folded neatly here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 3
@@ -1178,7 +1178,7 @@ a shapless grey robe~
 A shapeless grey robe is crumpled in a heap here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29865
 cape riding~
@@ -1186,7 +1186,7 @@ a riding cape~
 A thick wool cape, suitable for riding, is crumpled here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29866
 sabre~
@@ -1194,7 +1194,7 @@ a sabre~
 A wicked-looking sabre has been discarded here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 3~ 
+0~ 1~ 6~ 3~
 15 0 0
 #29867
 robe~
@@ -1202,7 +1202,7 @@ a midnight-blue robe~
 A midnight-blue robe, decorated with gold stars and moons, is hanging here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29868
 hat pointy~
@@ -1210,7 +1210,7 @@ a pointy hat~
 A blue pointy hat has been dropped here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 -2
@@ -1222,7 +1222,7 @@ a magical-looking staff~
 A magical-looking staff as been dropped here.~
 ~
 4 1|64 1|16384
-30~ 4~ 4~ earthquake~ 
+30~ 4~ 4~ earthquake~
 5 0 0
 #29870
 flask~
@@ -1230,7 +1230,7 @@ a flask~
 A flask full of swirling green liquid is here.~
 ~
 10 0 1|16384
-30~ change sex~ curse~ poison~ 
+30~ change sex~ curse~ poison~
 5 0 0
 #29871
 robe white~
@@ -1238,7 +1238,7 @@ a white robe~
 A scorched-marked and badly stained white robe is crumpled here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 24 -10
@@ -1248,7 +1248,7 @@ a rapier~
 An elegant rapier is propped in the corner.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 5 0 0
 A
 2 3
@@ -1260,7 +1260,7 @@ a green cloak~
 A thick green cloak is folded neatly here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29874
 boot boots riding~
@@ -1268,7 +1268,7 @@ riding boots~
 A air of polished riding boots sits here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 5 3
@@ -1278,7 +1278,7 @@ jodhpurs~
 A pair of jodhpurs is folded neatly here.~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29876
 vest leather~
@@ -1286,7 +1286,7 @@ a leather vest~
 A leather vest has been discarded here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 5 2
@@ -1296,7 +1296,7 @@ a skimpy silk wrap~
 A skimpy piece of silk has been casually dropped here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 2 2
@@ -1306,7 +1306,7 @@ a pendant~
 A gorgeous pendant on a chain has been carelessly left here.~
 ~
 9 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 12 70
@@ -1316,7 +1316,7 @@ a head scarf~
 A brightly coloured piece of material is crumpled here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 3
@@ -1326,7 +1326,7 @@ a wool cape~
 A heavy woolen cape is hanging here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 #29881
 hat boater~
@@ -1334,7 +1334,7 @@ a boater hat~
 A boater hat is sitting here at a jaunty angle.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29882
 robe ermine~
@@ -1342,7 +1342,7 @@ an ermine-trimmed robe~
 An ermine-trimmed robe hangs here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29883
 cape black~
@@ -1350,7 +1350,7 @@ a black cape~
 A black cape has been tossed here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29884
 shoes black~
@@ -1358,7 +1358,7 @@ black shoes~
 A pair of black shoes rests neatly here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29885
 lute~
@@ -1366,7 +1366,7 @@ a lute~
 A beautifully crafted lute is propped in the corner.~
 ~
 36 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 12 100
@@ -1376,7 +1376,7 @@ a travelling cloak~
 A travelling cloak has been hung here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29887
 knife long~
@@ -1384,7 +1384,7 @@ a long knife~
 A long knife has been dropped here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 5 0 0
 #29888
 knife small~
@@ -1392,7 +1392,7 @@ a small knife~
 A small knife is glinting in the dirt here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 5 0 0
 #29889
 scroll introduction~
@@ -1400,7 +1400,7 @@ a scroll of introduction~
 An interesting-looking scroll is curled around a stick here.~
 ~
 9 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 scroll~
@@ -1422,7 +1422,7 @@ a small key~
 A small key has been left here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 #29891
 dress~
@@ -1430,7 +1430,7 @@ a dress~
 A dress is hanging here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29892
 key~
@@ -1438,7 +1438,7 @@ a huge key~
 A huge key has been dropped on the floor.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 #29893
 shield~
@@ -1446,7 +1446,7 @@ a shield~
 A shield is propped against the wall.~
 ~
 9 0 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 17 -50
@@ -1456,7 +1456,7 @@ a throne~
 Prince Makras' grand throne is raised on a dais in the centre of the room.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29896
 key~
@@ -1464,7 +1464,7 @@ a monstrous key~
 A moustrous key is dropped here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 #29897
 pants black satin~
@@ -1472,7 +1472,7 @@ black satin pants~
 A pair of black satin pants has been folded here.~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 4
@@ -1484,7 +1484,7 @@ a main-gauche~
 A deadly-looking main-gauche has been dropped here~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 2 2
@@ -1494,7 +1494,7 @@ an epee~
 A long-bladed epee is here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -10
@@ -1504,7 +1504,7 @@ a glowing staff~
 A staff which glows with an unearthly light is floating here.~
 ~
 1 1|16 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 0 0
 #29901
 ring ostentatious~
@@ -1512,7 +1512,7 @@ an ostentatious ring~
 A huge, ostentatious ring has been dropped here.~
 ~
 9 0 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29902
 bracelet~
@@ -1520,7 +1520,7 @@ a gold bracelet~
 A gold bracelet gleams here.~
 ~
 9 0 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29903
 shirt black~
@@ -1528,7 +1528,7 @@ a black silk shirt~
 A black silk shirt has been hung here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29904
 mantle silk grey~
@@ -1536,7 +1536,7 @@ a grey silk mantle~
 A grey silk mantle is hanging here.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29905
 boots black leather~
@@ -1544,7 +1544,7 @@ black leather boots~
 A pair of black leather boots is sitting here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 100
@@ -1554,7 +1554,7 @@ a huge pile of coins~
 A huge pile of coins is here.~
 ~
 20 0 1
-30~ 30~ 32~ 10~ 
+30~ 30~ 32~ 10~
 5 0 0
 #29907
 chalice gold jewelled~
@@ -1562,7 +1562,7 @@ a jewel-encrusted gold chalice~
 A beautiful, priceless jewel-encrusted gold chalice is here among the treasures.~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 jewel chalice~
@@ -1574,7 +1574,7 @@ a huge two-handed sword~
 A huge two-handed sword is propped here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 5 0 0
 A
 19 4
@@ -1584,7 +1584,7 @@ a glowing purple stone~
 A glowing purple stone is floating here.~
 ~
 9 0 1|32768
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 2
@@ -1607,7 +1607,7 @@ a lute~
 A beautifully crafted lute is propped in the corner.~
 ~
 36 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 100

@@ -7,7 +7,7 @@ wolf~
 A wolf~
 A wolf is here bearing his teeth.
 ~
-He is about two foot and a half foot long and has dingy white fur. He does 
+He is about two foot and a half foot long and has dingy white fur. He does
 not look look to happy to see you, maybe it is time to go.
 ~
 32|64 8|32|512 -1000 S
@@ -135,7 +135,7 @@ Elpmi~
 Elpmi~
 Elpmi is here gaurding Gildra.
 ~
-He is quite a bit bigger than Gildra, standing about six foot tall and 
+He is quite a bit bigger than Gildra, standing about six foot tall and
 weighing close to two hundred pounds. I am not to sure I would mess with him.
 ~
 2 8|32 1000 S
@@ -147,7 +147,7 @@ Kira~
 Kira~
 Kira is here minding his bar.
 ~
-He looks at you with kind eyes, imploring you to tell him your life story. 
+He looks at you with kind eyes, imploring you to tell him your life story.
 Just imagine the stories he has heard.
 ~
 2 8|32 1000 S
@@ -170,7 +170,7 @@ Yram~
 Yram~
 Yram is here mourning the loss of her daughter.
 ~
-She looks terrible. She looks like she has not groomed herself in weeks. 
+She looks terrible. She looks like she has not groomed herself in weeks.
 Maybe you should put her out of her misery.
 ~
 2 8|32 1000 S
@@ -215,9 +215,9 @@ into the ball with her.
 #26718
 horse~
 A horse~
-A horse is trotting along here. 
+A horse is trotting along here.
 ~
-He is quite a large horse, standing about six foot at the shoulders. He is 
+He is quite a large horse, standing about six foot at the shoulders. He is
 jet black. What a beautiful specimen.
 ~
 2 8|32 1000 S
@@ -321,7 +321,7 @@ gaurdian of sorrow~
 A gaurdian of sorrow~
 The gaurdian of sorrow is here making you sad.
 ~
-He stands about twenty foot tall. He does not look to happy about you waking 
+He stands about twenty foot tall. He does not look to happy about you waking
 him from his nap. I would get out of here.
 ~
 2 8|32 -1000 S
@@ -333,7 +333,7 @@ Fiel~
 Fiel~
 Fiel is here doing some paperwork.
 ~
-He is a nerdy looking man, complete with coke bottle glasses. Maybe you 
+He is a nerdy looking man, complete with coke bottle glasses. Maybe you
 should kill him for simply being a geek.
 ~
 2 8|32 1000 S
@@ -381,7 +381,7 @@ witch~
 A witch~
 A witch is here looking for lizards tails.
 ~
-She looks nothing like a witch is fabled to look. She looks like a normal 
+She looks nothing like a witch is fabled to look. She looks like a normal
 person that has just gone insane.
 ~
 2 8|32 -1000 S
@@ -405,7 +405,7 @@ shadow demon~
 A shadow demon~
 A demon is standing here in the shadows.
 ~
-He looks like your typical, everyday, run of the mill demon; complete with 
+He looks like your typical, everyday, run of the mill demon; complete with
 sharp teeth and claws.
 ~
 2 8|32 -1000 S
@@ -428,7 +428,7 @@ iron golem~
 An iron golem~
 An iron golem is solemly standing here.
 ~
-He looks like a man, an iron man. He appears to be gaurding against 
+He looks like a man, an iron man. He appears to be gaurding against
 something.
 ~
 2 8|32 1000 S
@@ -563,7 +563,7 @@ a lantern~
 A lantern is lying here.~
 ~
 1 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 10 0
 #26701
 torch~
@@ -571,7 +571,7 @@ a torch~
 A torch is lying here.~
 ~
 1 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 10 0
 #26702
 bread~
@@ -579,7 +579,7 @@ a piece of bread~
 A piece of bread is lying here.~
 ~
 19 0 1
-40~ 0~ 0~ 0~ 
+40~ 0~ 0~ 0~
 1 10 0
 #26703
 water flask~
@@ -587,7 +587,7 @@ a water flask~
 A water flask is lying here.~
 ~
 17 0 1
-10~ 10~ 0~ 0~ 
+10~ 10~ 0~ 0~
 5 15 0
 #26704
 sword~
@@ -595,7 +595,7 @@ a sword~
 A nice looking sword is lying here.~
 ~
 5 1 1|8192
-0~ 3~ 6~ 3~ 
+0~ 3~ 6~ 3~
 10 1000 0
 A
 18 4
@@ -607,7 +607,7 @@ a shield~
 A shield is lying here.~
 ~
 9 1 1|512
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 500 0
 #26706
 shotglass~
@@ -615,7 +615,7 @@ a shotglass~
 A shotglass is lying here.~
 ~
 17 0 1
-2~ 2~ 5~ 0~ 
+2~ 2~ 5~ 0~
 1 0 0
 #26707
 wine glass~
@@ -623,7 +623,7 @@ a wine glass~
 A wine glass is lying here.~
 ~
 17 0 1
-5~ 5~ 2~ 0~ 
+5~ 5~ 2~ 0~
 1 0 0
 #26708
 beer mug~
@@ -631,7 +631,7 @@ a beer mug~
 A beer mug is lying here.~
 ~
 17 0 1
-5~ 5~ 1~ 0~ 
+5~ 5~ 1~ 0~
 1 0 0
 #26709
 beer~
@@ -639,7 +639,7 @@ a beer~
 A beer is lying here.~
 ~
 17 0 1
-5~ 5~ 1~ 0~ 
+5~ 5~ 1~ 0~
 1 0 0
 #26710
 bible~
@@ -647,7 +647,7 @@ a bible~
 A bible is lying here.~
 ~
 13 1 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 #26711
 incense stick~
@@ -655,7 +655,7 @@ an incense stick~
 An incense stick is lying here.~
 ~
 1 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 50 0
 #26712
 crystal ball~
@@ -663,7 +663,7 @@ a crystal ball~
 A crystal ball is lying here.~
 ~
 13 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 50 0
 #26713
 scales dragon~
@@ -671,7 +671,7 @@ the scales of a dragon~
 The scales of a dragon are lying here.~
 ~
 9 1 1|512
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 5 1000 0
 A
 2 5
@@ -681,7 +681,7 @@ the head of a dragon~
 The head of a dragon is lying here.~
 ~
 9 1 1|16
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 5 1000 0
 #26715
 tail dragon~
@@ -689,7 +689,7 @@ the tail of a dragon~
 The tail of a dragon is lying here.~
 ~
 9 1 1|32
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 5 1000 0
 A
 19 6
@@ -699,7 +699,7 @@ the wings of a gargoyle~
 The wings of a gargoyle are lying here.~
 ~
 9 1 1|1024
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 5 1000 0
 #26717
 calculator~
@@ -707,7 +707,7 @@ a calculator~
 A scientific calculator is lying here.~
 ~
 9 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 500 0
 A
 3 1
@@ -719,7 +719,7 @@ a pencil~
 A pencil is lying here.~
 ~
 5 1 1|8192
-0~ 3~ 6~ 11~ 
+0~ 3~ 6~ 11~
 5 1000 0
 #26719
 vampire teeth~
@@ -727,7 +727,7 @@ the teeth of a vampire~
 The teeth of a vampire are lying here.~
 ~
 5 1|67108864 1|8192
-0~ 3~ 6~ 10~ 
+0~ 3~ 6~ 10~
 5 1000 0
 #26720
 black cape~
@@ -735,7 +735,7 @@ a black cape~
 A black cape is lying here.~
 ~
 9 1 1|1024
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 3 1000 0
 #26721
 broom~
@@ -743,7 +743,7 @@ a broom~
 A broom is lying here.~
 ~
 5 1 1|8192
-0~ 3~ 6~ 5~ 
+0~ 3~ 6~ 5~
 5 1000 0
 #26722
 cauldron~
@@ -751,7 +751,7 @@ a cauldron~
 A cauldron is bubbling here.~
 ~
 13 1 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 50 0
 #26723
 serving tray~
@@ -759,7 +759,7 @@ a serving tray~
 A serving tray is lying here.~
 ~
 5 1 1|8192
-0~ 3~ 6~ 7~ 
+0~ 3~ 6~ 7~
 5 1000 0
 #26724
 ring truth~
@@ -767,7 +767,7 @@ a ring of truth~
 A beautiful ring is lying here.~
 ~
 5 1 1|2
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 2 1000 0
 A
 18 3
@@ -779,7 +779,7 @@ a ring of honor~
 A beautiful ring is lying here.~
 ~
 9 1 1|2
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 2 1000 0
 A
 18 3
@@ -791,7 +791,7 @@ a sword of vengeance~
 A beautifully crafted sword is lying here.~
 ~
 5 1 1|8192
-0~ 6~ 8~ 3~ 
+0~ 6~ 8~ 3~
 10 5000 0
 A
 18 3
@@ -803,7 +803,7 @@ the boots of striding~
 A pair of boots is lying here.~
 ~
 9 1 1|64
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 3
@@ -817,7 +817,7 @@ a chest plate of valor~
 A chest plate is lying here.~
 ~
 9 1 1|8
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 3
@@ -829,7 +829,7 @@ the gloves of power~
 A pair of gloves is lying here.~
 ~
 9 1 1|128
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 3
@@ -841,7 +841,7 @@ the shield of courage~
 A shield is lying here.~
 ~
 9 1 1|512
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 3
@@ -853,7 +853,7 @@ a cape of invulnerability~
 A cape is lying here.~
 ~
 9 1 1|1024
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 3
@@ -865,7 +865,7 @@ a belt of strength~
 A belt is lying here.~
 ~
 9 1 1|2048
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -879,7 +879,7 @@ a bracelet of love~
 A bracelet is lying here.~
 ~
 9 1 1|4096
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -891,7 +891,7 @@ a bracelet of hate~
 A bracelet is lying here.~
 ~
 9 1 1|4096
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -903,7 +903,7 @@ a sceptre of wisdom~
 A sceptre is lying here.~
 ~
 9 1 1|16384
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -919,7 +919,7 @@ the arm plates of striking~
 A set of arm plates is lying here.~
 ~
 9 1 1|256
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -931,7 +931,7 @@ a silver ankh~
 A silver ankh is lying here.~
 ~
 9 1 1|4
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -943,7 +943,7 @@ a golden cross~
 A golden cross is lying here.~
 ~
 9 1 1|4
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 9
@@ -955,7 +955,7 @@ a candle of divine light~
 A candle is lying here.~
 ~
 1 1 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 1000 0
 A
 18 5
@@ -967,7 +967,7 @@ a helm of intelligence~
 A helm is lying here.~
 ~
 9 1 1|16
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -981,7 +981,7 @@ the leggings of doom~
 A pair of leggings are lying here.~
 ~
 9 1 1|32
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 1000 0
 A
 18 5
@@ -993,7 +993,7 @@ a treasure chest~
 A treasure chest is lying here.~
 ~
 15 0 0
-0~ 0~ 100~ 0~ 
+0~ 0~ 100~ 0~
 0 0 0
 #26743
 pile coins~
@@ -1001,7 +1001,7 @@ a pile of coins~
 A pile of coins is lying here.~
 ~
 20 0 1
-500~ 50~ 20~ 7~ 
+500~ 50~ 20~ 7~
 0 0 0
 #0
 
@@ -1009,7 +1009,7 @@ A pile of coins is lying here.~
 #ROOMS
 #26700
 Syrus Road~
-You are travelling along the road that leads to the city of Thoran. To the 
+You are travelling along the road that leads to the city of Thoran. To the
 north you see the gates of Thoran.
 ~
 0 0 1
@@ -1024,7 +1024,7 @@ D2
 S
 #26701
 Gates of Thoran~
-Jutting from the inpenetrable woods on both sides of the road, high stone 
+Jutting from the inpenetrable woods on both sides of the road, high stone
 buttresses look up gray in the fog. Huge iron gates hang on the stonework.
 To the north and south Syrus Road continues.
 ~
@@ -1064,7 +1064,7 @@ D3
 S
 #26703
 Gildra's Mercantile~
-The sparse light from this building spills out from behind drawn heavy 
+The sparse light from this building spills out from behind drawn heavy
 curtains. A sign on the door creaks on its hinges, proclaiming this Gildra's
 Mercantile. To the east you see Syrus Road.
 ~
@@ -1137,7 +1137,7 @@ D3
 S
 #26708
 Syrus Road~
-You are continuing along Syrus Road. To the north and south the road 
+You are continuing along Syrus Road. To the north and south the road
 continues. To the east you see a church and to the west you see a guest house.
 ~
 0 0 1
@@ -1214,7 +1214,7 @@ S
 #26713
 Syrus Road~
 You are continuing along Syrus Road. To the north you see the intersection
-with Denar Road, to the south Syrus Road continues, to the east and west 
+with Denar Road, to the south Syrus Road continues, to the east and west
 you see old, rundown houses.
 ~
 0 0 1
@@ -1339,7 +1339,7 @@ D2
 S
 #26721
 Denar Road~
-You are continuing along the east west route of the city. To the north you 
+You are continuing along the east west route of the city. To the north you
 see Madam Ave's Tent and to the east you see Denar Road.
 ~
 0 0 1
@@ -1354,7 +1354,7 @@ D1
 S
 #26722
 Madam Ave's Tent~
-This tent is dimly illuminated in pools of red light. A small, low table 
+This tent is dimly illuminated in pools of red light. A small, low table
 stands across from the doorway covered in a black velvet cloth. To the
 south you see Denar Road.
 ~
@@ -1381,7 +1381,7 @@ D2
 S
 #26724
 Courtyard~
-This is a very beautiful courtyard. It is line with pretty red and blue 
+This is a very beautiful courtyard. It is line with pretty red and blue
 flowers and in the center there is a large granite fountain. To the south
 you see Syrus Road, to the east you see a beutiful garden, and to the
 north you see the entry to the castle.
@@ -1438,7 +1438,7 @@ D3
 S
 #26727
 Guest Hall~
-This is a neatly kept room with two small beds one one side of the room, a 
+This is a neatly kept room with two small beds one one side of the room, a
 desk with two chairs on another side of the room, and a large fireplace on
 yet another side of the room. To the north you see the dining hall, to the
 south you see the garden, and to the west you see the entry room.
@@ -1472,7 +1472,7 @@ S
 #26729
 Carriage House~
 This is a small neatly kept room and not a house at all. You wonder why it
-is called a house when it is inside the castle walls. To the north you see 
+is called a house when it is inside the castle walls. To the north you see
 the entry room and to the east you see a chapel.
 ~
 0 8 0
@@ -1487,7 +1487,7 @@ D3
 S
 #26730
 Chapel~
-Thin colored light filters through broken and boarded up stained glass 
+Thin colored light filters through broken and boarded up stained glass
 windows, illuminating the ancient chapel. Pews and benches like about the
 floor in jumbled disarray, coated with centuries of dust. To the north
 you see the audience hall, to the west you see the carriage house and up
@@ -1510,7 +1510,7 @@ S
 #26731
 High Tower Stairs~
 The large gray flagstones of this spiraling staircase lead up around a twenty
-foot wide stone core. Cobwebs fill the staircase, making it difficult to see 
+foot wide stone core. Cobwebs fill the staircase, making it difficult to see
 even the ceiling. Heavy beams sag overhead from the centuries of weight. To
 the north you see the grand landing and down you see the chapel.
 ~
@@ -1572,7 +1572,7 @@ Audience Hall~
 Dim light falls into this room in jagged shafts through the broken glass and
 iron frames of a large window in the west wall. Cobwebs span the entire
 length of the room. To the north you see the king's worship place, to the
-east you see the office of the accountant, and to the south you see the 
+east you see the office of the accountant, and to the south you see the
 chapel.
 ~
 0 8 0
@@ -1603,7 +1603,7 @@ D2
 S
 #26737
 Office of the Accountant~
-Dusty scroll and tomes line the walls of this room and are scattered across 
+Dusty scroll and tomes line the walls of this room and are scattered across
 the floor. In the center of all this clutter stands a huge accountant's desk.
 To the east you see the maid's hall and to the west you see the audience
 hall.
@@ -1641,7 +1641,7 @@ S
 #26739
 Study~
 Three of the walls are lined with ancient books and the fourth wall contains
-a large firplace. To the north you see a bedchamber and to the south you 
+a large firplace. To the north you see a bedchamber and to the south you
 see the maid's hall.
 ~
 0 8 0
@@ -1668,7 +1668,7 @@ S
 #26741
 Bedchamber~
 Windows on the west wall are covered by bright red draperies, hanging stiffly
-from the high ceiling. In the center of the room there is a large bed 
+from the high ceiling. In the center of the room there is a large bed
 canopied in velvet. To the east you see the lounge and to the south you
 see the study.
 ~
@@ -1702,7 +1702,7 @@ S
 Guest Room~
 A huge bed sits in the center of this room, its four corner posts rising to a
 black canopy trimmed with gold tassels. Several comfortable divans are placed
-about the room. To the north you see a hallway, to the south you see the 
+about the room. To the north you see a hallway, to the south you see the
 lounge, and up you seea creepy room.
 ~
 0 8 0
@@ -1733,7 +1733,7 @@ D5
 S
 #26745
 Hallway~
-This hallway leads to the rooms of the servnats. To the north the hallway 
+This hallway leads to the rooms of the servnats. To the north the hallway
 continues, to the east you see the servant's hall, to the west you see the
 wine cellar, and to the south you see the guest room.
 ~
@@ -1769,7 +1769,7 @@ D3
 S
 #26747
 Wine Cellar~
-Arched frames of stone form a low wet ceiling over this wine cellar. Great 
+Arched frames of stone form a low wet ceiling over this wine cellar. Great
 casks of wine line the walls, their bands rusting and their contents long
 since spilled on the floor. To the east you see the hallway.
 ~
@@ -1830,7 +1830,7 @@ S
 #26751
 Hallway~
 This is the hallway leading to the rooms most often used by the servants. To
-the east you see the guard's quarters, to the west you see an office, and 
+the east you see the guard's quarters, to the west you see an office, and
 down you see the dungeon hall.
 ~
 0 8 0
@@ -2320,7 +2320,7 @@ S
 #26783
 Dungeon Hallway~
 This is the hallway leading to the crypts. A shiver runs up your spine as you
-realize what you might see. East and west are crypts and north the hallway 
+realize what you might see. East and west are crypts and north the hallway
 continues.
 ~
 0 8 0
@@ -2363,7 +2363,7 @@ S
 Xanax's Hideout~
 Yes, this is where Xanax goes to hide when the puny mortals start to get on
 her nerves. There is a large desk strewn with papers in one corner of the
-room. Another corner is occupied with a TV and VCR, so she will have 
+room. Another corner is occupied with a TV and VCR, so she will have
 something to do when she is bored or too stressed out to mud.
 ~
 0 4|8 0

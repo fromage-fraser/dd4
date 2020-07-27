@@ -1,6 +1,6 @@
 #AREA   Sandman~ Dragon Cult~
 5 25 0 100
- 
+
 #MOBILES
 #9800
 receptionist~
@@ -221,8 +221,8 @@ He has rotten teeth.
 0 400
 0 0 1
 #0
- 
- 
+
+
 #OBJECTS
 #9825
 black key~
@@ -483,8 +483,8 @@ the brochure reads:
       |__________________________________|
 ~
 #0
- 
- 
+
+
 #ROOMS
 #9850
 The Reception Area~
@@ -566,7 +566,7 @@ Tourist Office~
 Brochures every where!  Wow..... you wonder where they printed all of
 this because printing hasn't been invented yet. To the South you see Dragon
 Hall, there is a room to the west and a door to the east.
- 
+
 There is a very prominent plaque on the wall.
 ~
 98 8 0
@@ -595,14 +595,14 @@ plaque~
 The Dragon Cult Temple was created by Sandman,
 late one night, when he should have been studying
 for finals.  12/13/93
- 
+
 Dragon Cult Temple revised & expanded
 Spring Break '94 by Sandman when he
 should have been his paper.
 ~
 E
 brochures~
-The brochure reads: 
+The brochure reads:
       ____________________________________
       | C U L T  O F  T H E  D R A G O N |
       |                                  |
@@ -958,7 +958,7 @@ The Waiting Room~
 This room is filled with chairs, coffee tables and magazines.  You may
 sit and rest here until your appointment.  The office has a number of
 sales represenatives that can help you, provided you made an
-appointment.  You did make an appointment didn't you? 
+appointment.  You did make an appointment didn't you?
 The tourist office is to the east and you see the main offices to the north.
 ~
 98 8 0
@@ -1408,7 +1408,7 @@ S
 #9898
 Morpheus's Study~
 You have the rare pleasure of seeing Sandman's study.  The room is
-small but not cramped.  There are lazy boy recliners about the room. 
+small but not cramped.  There are lazy boy recliners about the room.
 The walls are composed of bookshelves which are filled with texts from
 far off lands.
 ~
@@ -1424,8 +1424,8 @@ far off lands.
 99 4|8|512|1024|2048 0
 S
 #0
- 
- 
+
+
 #RESETS
 * DOORS
 D 0 9850 0 2
@@ -1526,14 +1526,14 @@ O 0 9840 1 9877     coffee
 * removed some silly super eq
 * Hatchet 4/21/94
 S
- 
- 
+
+
 #SHOPS
 9817       0  0  0  0  0         400 400         0  23 ; The Old Monk
 0
- 
- 
- 
+
+
+
 #SPECIALS
 M  9804  spec_cast_mage
 M  9806  spec_breath_acid
@@ -1544,9 +1544,9 @@ M  9816  spec_cast_mage
 M  9816  spec_cast_cleric
 M  9816  spec_fido
 S
- 
- 
- 
+
+
+
 #$
 
 

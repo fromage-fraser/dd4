@@ -178,7 +178,7 @@ Terror fills your heart as you view this master of the undead.
 4|64 138 -1000 S
 19 2 -8 19d19+190 8d3+7
 96 30000
-8 8 1 
+8 8 1
 
 #1702
 trapper~
@@ -292,7 +292,7 @@ He appears to be blocking entrance to the next room.
 2 2 200 S
 10 12 1 10d10+100 2d4+3
 0 4000
-8 8 1 
+8 8 1
 #1716
 centaur chief~
 the centaur chief~
@@ -360,7 +360,7 @@ A fine steel broad sword is lying on the ground.~
 A
 18 1
 A
-19 1            
+19 1
 #1606
 rod might~
 the rod of might~
@@ -370,9 +370,9 @@ A Rod of Might is lying here.~
 0~ 2~ 7~ 6~
 13 4000 550
 A
-18 2	
+18 2
 A
-1 1            
+1 1
 #1612
 black kite shield~
 a black kite shield~
@@ -405,8 +405,8 @@ A magical bracer made from mithril lies on the ground!~
 6~ 0~ 0~ 0~
 2 6500 1000
 A
-1 1	
-#1616   
+1 1
+#1616
 dark blue cloak~
 a dark blue cloak~
 A valuable cloak of dark blue cloth lies on the floor.~
@@ -415,9 +415,9 @@ A valuable cloak of dark blue cloth lies on the floor.~
 1~ 0~ 0~ 0~
 2 1600 1500
 A
-17 -6	
+17 -6
 A
-12 5	
+12 5
 #1621
 dark red potion~
 a dark red potion~
@@ -425,7 +425,7 @@ A dark red potion rests on the ground.~
 ~
 10 65 16385
 9~ cure blindness~ cure critical~ ~
-1 450 150 
+1 450 150
 #1651
 bronze chest~
 a bronze chest~
@@ -461,7 +461,7 @@ There is a very strange-looking key on the ground here.~
 E
 strange key~
 This key is of an unusual shape ... must go to an unusual lock!~
-A                        			
+A
 17 -5
 
 #1701
@@ -509,7 +509,7 @@ An ancient long sword has been left here.~
 0~ 2~ 8~ 3~
 10 10000 4000
 A
-18 3 
+18 3
 A
 19 3
 #1711
@@ -602,7 +602,7 @@ S
 West Side of Moat~
 You stand on the west side of a moat that encircles two towers, each
 over 50 feet high. You will need a boat to go east across the moat. A
-rugged path heads west, and another one heads north to a cluster of low 
+rugged path heads west, and another one heads north to a cluster of low
 buildings.
 ~
 16 0 2
@@ -705,7 +705,7 @@ S
 Minotaur's Room~
 You have entered a secret chamber under the empty room. In this room is
 the worn but cared-for gear and trappings of some large humanoid.
-~ 
+~
 16 13 0
 D4
 ~
@@ -762,7 +762,7 @@ D0
 S
 #1623
 Tower Foyer~
-You are on a foyer on the west side of the structure. The moat is west of 
+You are on a foyer on the west side of the structure. The moat is west of
 here. There is also a large door eastward into the structure.  You notice that
 the walls are ornately decorated with very life-like stone gargoyles.
 ~
@@ -1038,9 +1038,9 @@ D0
 S
 #1640
 Second Level of the Western Tower~
-You are in the center of the western tower's second floor.  A large spiral 
+You are in the center of the western tower's second floor.  A large spiral
 staircase of 29 steps connects this level with the third.  There are doors
-to the east and west.  Except for a torch bracket in each corner, the 
+to the east and west.  Except for a torch bracket in each corner, the
 room is barren.
 ~
 16 8 1
@@ -1071,7 +1071,7 @@ D1
 S
 #1642
 The Spiral Stairs~
-You are on a large spiral staircase of 29 steps, leading between the 
+You are on a large spiral staircase of 29 steps, leading between the
 second and third floors.  You can go up or down.
 ~
 16 8 2
@@ -1117,7 +1117,7 @@ D2
 ~
 ~
 1 -1 1646
-D3        
+D3
 ~
 ~
 1 -1 1643
@@ -1186,7 +1186,7 @@ D5
 S
 #1649
 On the Catwalk~
-You are outdoors on a catwalk between the turrets of the eastern and 
+You are outdoors on a catwalk between the turrets of the eastern and
 western towers.  There is a 40 foot drop to the north and south.  You have
 a fabulous view of the surrounding countryside, which consists of a bleak
 wilderness.  At the east end of the catwalk is a small opening leading
@@ -1196,7 +1196,7 @@ leads into the western turret.
 16 0 3
 D1
 ~
-~ 
+~
 0 0 1648
 D3
 A mirror-like portal glimmers, allowing entry into the western turret.
@@ -1274,7 +1274,7 @@ You are at a crossroads to the wilderness areas east and north of here,
 and the more civilized areas to the west. The main road is west, an
 older road continues east, and a simple trail heads north.  To the south,
 an old ram-shackle building is being used as a trading post for the
-surrounding wilderness. 
+surrounding wilderness.
 ~
 17 4 3
 D0
@@ -1556,7 +1556,7 @@ D1
 There is a curtain here separating this room from the front of the hut.
 ~
 ~
-0 0 1716 
+0 0 1716
 S
 #1720
 Eastern Path in Dark Forest~
@@ -1605,10 +1605,10 @@ M 0 1602 6 1631		;Load a Stone gargoyle
 M 0 1603 1 1630		;Load Angry gargoyle
 M 0 1603 2 1632		;Load Angry gargoyle
 M 0 1603 3 1637		;Load Angry gargoyle
-M 0 1604 2 1636		;Load 2 Elite gargoyles 
+M 0 1604 2 1636		;Load 2 Elite gargoyles
 E 1 1604 10 16			;Equip them large spear
 M 0 1604 2 1636
-E 1 1604 10 16				
+E 1 1604 10 16
 M 0 1604 2 1639		;Load 2 Elite gargoyles
 M 0 1604 2 1639
 M 0 1605 1 1638		;Load Gargoyle Shaman
@@ -1642,7 +1642,7 @@ M 0 1702 2 1703		;Load 2 trappers
 E 1 1711 5 6			;Equip them cap
 M 0 1702 2 1703
 E 1 1711 5 6
-M 0 1704 2 1703		;Load 2 Hunters	
+M 0 1704 2 1703		;Load 2 Hunters
 M 0 1704 2 1703
 E 1 1701 10 16			;Equip one a short bow
 M 0 1706 1 1703		;Load the Ranger
@@ -1664,8 +1664,8 @@ M 0 1714 3 1715		;Load Centaur Elder
 M 0 1715 2 1716		;Load 2 Centaur Guards
 E 1 1604 10 16			;Equip them large spear
 M 0 1715 2 1716
-E 1 1604 10 16		
-M 0 1716 1 1717		;Load the Centaur Chief	
+E 1 1604 10 16
+M 0 1716 1 1717		;Load the Centaur Chief
 E 1 1713 1 2			;Equip him Bronze ring
 S
 

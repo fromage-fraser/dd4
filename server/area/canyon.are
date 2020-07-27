@@ -84,8 +84,8 @@ earth elemental ruler~
 the Earth Ruler~
 The Ruler of the earth elementals.
 ~
-He looks as old as the earth itself.  He seems to know all the 
-secrets and knowledge of the Earth.  You can't really tell where 
+He looks as old as the earth itself.  He seems to know all the
+secrets and knowledge of the Earth.  You can't really tell where
 he begins and the rock wall ends.
 ~
 2 128 0 S
@@ -228,7 +228,7 @@ The magical mud monster is a cross between water and earth.
 8 8 0
 #9222
 mist elemental~
-an elemental mist~ 
+an elemental mist~
 The air is magically misty here.
 ~
 The magical mist is a cross between water and air.
@@ -275,7 +275,7 @@ blue flame~
 the Blue Flame~
 The Blue Flame burns mysteriously here.
 ~
-As you look you see what seems to be a face and almost a 
+As you look you see what seems to be a face and almost a
 humanoid figure somehow trapped in the fire.
 ~
 66 0 -100 S
@@ -343,7 +343,7 @@ rainbow warrior~
 a rainbow warrior~
 A warrior of the Rainbow Cult swears his loyalty.
 ~
-The Rainbow Cult has received special powers for their service to 
+The Rainbow Cult has received special powers for their service to
 the elemental forces.
 ~
 64 0 150 S
@@ -352,7 +352,7 @@ the elemental forces.
 8 8 0
 #9233
 illusionist~
-an illusionist~	
+an illusionist~
 The illusionist seeks the aid of the elemental forces.
 ~
 He seeks their aid for a powerful new spell of deception.
@@ -777,7 +777,7 @@ S
 Mountainside Tombs~
 There are a few stone heaps here and there, the tombs of those who did not
 last the arduous journey up the mountain.  Curiously you notice a few
-uncovered bodies which don't seem to have died of exhaustion.  A vendor 
+uncovered bodies which don't seem to have died of exhaustion.  A vendor
 stands here, leaning on his cart. The path curves east around the mountain.
 ~
 92 0 5
@@ -1750,7 +1750,7 @@ S
 #9259
 Windy Tunnel~
 A tunnel leads east.  To the west you can enter a portal. The wind in
-this tunnel is quite fierce, it seems as if it's forced.  
+this tunnel is quite fierce, it seems as if it's forced.
 ~
 92 0 4
 D1
@@ -1802,7 +1802,7 @@ S
 *
 * Geography:  The entrance is to the north, the map then proceeds up a
 * mountain and then down into the canyon on the other side.
-* 
+*
 * Suggestions:  For an added "spark" you can make the lightning sword cast
 * lightning bolt every few rounds (doing this you might decrease its
 * damage to 3d4 or something).  Also, to "turn up the heat" a bit the
@@ -1810,13 +1810,13 @@ S
 * spell)  The elemental rulers are tough and are meant to be that way.  If
 * you wish to change them don't make them TOO easy please.  They also work
 * nicely if they breathe appropriate dragon breath or cast appropriate
-* spells. 
-* 
-* thanks 
+* spells.
+*
+* thanks
 * -Raff the Mud Trivia Master and Patron God of Warriors
 M 0 9201 3 9201
 M 0 9201 3 9202
-G 1 9231 30 
+G 1 9231 30
 M 0 9201 3 9203
 M 0 9238 1 9203
 G 1 9231 30

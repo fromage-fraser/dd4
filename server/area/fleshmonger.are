@@ -7,7 +7,7 @@ guard patrolling hybrid~
 the patrolling guard~
 The patrolling guard greets you as you enter the room.
 ~
-The patrolling guard is an aberration, an insane cross between a human and a 
+The patrolling guard is an aberration, an insane cross between a human and a
 goblin.  He is well-armoured and intent on stopping you entering the tower.
 ~
 2|64 8|32|8388608 -500 S
@@ -24,9 +24,9 @@ guard hybrid duty~
 the on-duty guard~
 The on-duty guard hulks across the room towards you.
 ~
-The on-duty guard was apparently doing some work at a rickety table before he 
-saw you enter the tower through the opening in the door.  Now he wants to stop 
-you getting any further into his master's domain.  Like his partner in the 
+The on-duty guard was apparently doing some work at a rickety table before he
+saw you enter the tower through the opening in the door.  Now he wants to stop
+you getting any further into his master's domain.  Like his partner in the
 foyer, he is some sort of goblin/human hybrid.
 ~
 2|64 0 -500 S
@@ -39,8 +39,8 @@ guard hybrid mufti~
 the mufti guard~
 The mufti guard rises from his bunk as he sees you.
 ~
-The off-duty guard, dressed simply in mufti pants, seems to have been having 
-a nap.  Your presence has awoken him, however, and he probably isn't too happy 
+The off-duty guard, dressed simply in mufti pants, seems to have been having
+a nap.  Your presence has awoken him, however, and he probably isn't too happy
 about that.  He appears to be a cross between a human and an orc.
 ~
 2|64 0 -500 S
@@ -53,8 +53,8 @@ cook~
 the cook~
 The cook bends over a pot on the stove.
 ~
-The cook appears to be human, one of the few in residence in this tower.  He 
-is completely absorbed in his duties, and does not look up as you enter the 
+The cook appears to be human, one of the few in residence in this tower.  He
+is completely absorbed in his duties, and does not look up as you enter the
 kitchen.
 ~
 2|64 0 0 S
@@ -67,8 +67,8 @@ boy cooks~
 the cook's boy~
 The cook's boy peels vegetables into a bin.
 ~
-The cook's boy is human, like his boss.  When you enter the room, he glances 
-up at you, then at the cook; when he realises the cook is ignoring you, he 
+The cook's boy is human, like his boss.  When you enter the room, he glances
+up at you, then at the cook; when he realises the cook is ignoring you, he
 ignores you too.
 ~
 2|64|128 0 0 S
@@ -81,9 +81,9 @@ guard hybrid duty~
 the on-duty guard~
 The on-duty guard oversees the prisoners.
 ~
-This on-duty guard is responsible for overseeing the prisoners.  Even though 
-he appears to be playing some sort of crude card game with his partner, he 
-keeps one eye on the stairwell outside the room.  He seems to be some sort of 
+This on-duty guard is responsible for overseeing the prisoners.  Even though
+he appears to be playing some sort of crude card game with his partner, he
+keeps one eye on the stairwell outside the room.  He seems to be some sort of
 human/goblin hybrid.
 ~
 2|32|64 8|32|8388608 -500 S
@@ -96,9 +96,9 @@ prisoner hybrid~
 a hybrid prisoner~
 A hybrid prisoner cowers in the corner here.
 ~
-This prisoner is clearly a result of some sort of experiment, probably the 
-same experiment that produced the guards in the foyer and guard room.  He 
-seems to be a cross between a human and a goblin, but is not as well-trained 
+This prisoner is clearly a result of some sort of experiment, probably the
+same experiment that produced the guards in the foyer and guard room.  He
+seems to be a cross between a human and a goblin, but is not as well-trained
 as his guards.  He doesn't appear to be able to talk.
 ~
 2|64|128 0 -500 S
@@ -111,9 +111,9 @@ prisoner hybrid~
 a hybrid prisoner~
 A hybrid prisoner flinches away from you.
 ~
-This prisoner appears to be the result of some sort of experiment, most likely 
-the same experiment that produced the guards in the barracks upstairs.  He 
-appears to be a cross between a human and an orc, but is not as well trained 
+This prisoner appears to be the result of some sort of experiment, most likely
+the same experiment that produced the guards in the barracks upstairs.  He
+appears to be a cross between a human and an orc, but is not as well trained
 as the guards above.  He doesn't appear to be able to talk.
 ~
 2|64|128 0 -500 S
@@ -126,8 +126,8 @@ prisoner human~
 a human prisoner~
 A human prisoner crawls in the dirt here.
 ~
-This human prisoner is absolutely filthy.  Pity wells up inside you as you 
-look at him.  He is covered in dirt and grime, and his hair is long, matted, 
+This human prisoner is absolutely filthy.  Pity wells up inside you as you
+look at him.  He is covered in dirt and grime, and his hair is long, matted,
 and very dirty.  He appears to have been treated very badly.
 ~
 2|64|128 0 0 S
@@ -140,8 +140,8 @@ prisoner orc~
 an orc prisoner~
 An orc prisoner mumbles at you from the floor.
 ~
-This orc prisoner is covered in caked-on dirt.  He is grasping a bunch of 
-rushes from the floor in one hand.  Covered in bruises and festering cuts, he 
+This orc prisoner is covered in caked-on dirt.  He is grasping a bunch of
+rushes from the floor in one hand.  Covered in bruises and festering cuts, he
 appears to have been treated very badly.
 ~
 2|64|128 0 -1000 S
@@ -154,8 +154,8 @@ prisoner goblin~
 a goblin prisoner~
 A goblin prisoner prostrates himself before you.
 ~
-This goblin prisoner is covered in mud and rushes, as if he has tried to 
-clothe himself in his disgusting bedding.  He grovels in the dirt before you, 
+This goblin prisoner is covered in mud and rushes, as if he has tried to
+clothe himself in his disgusting bedding.  He grovels in the dirt before you,
 unsure if you are his saviour or executioner.
 ~
 2|64|128 0 -1000 S
@@ -168,8 +168,8 @@ servant hobgoblin~
 a hobgoblin servant~
 A hobgoblin servant looks at you fearfully.
 ~
-This hobgoblin servant appears very frightened.  He peers at you, curious but 
-confused: what are you doing in his master's chambers?  He is uncertain what 
+This hobgoblin servant appears very frightened.  He peers at you, curious but
+confused: what are you doing in his master's chambers?  He is uncertain what
 he should do about you.
 ~
 2|64|128 0 500 S
@@ -182,9 +182,9 @@ guard senior hybrid~
 the senior guard~
 The senior guard charges you.
 ~
-The guard is obviously more senior than the others, as indicated by his 
-presence in his master's inner sanctum.  He is also a lot bigger, and a lot 
-angrier.  He appears to be some sort of strange combination of human, orc, and 
+The guard is obviously more senior than the others, as indicated by his
+presence in his master's inner sanctum.  He is also a lot bigger, and a lot
+angrier.  He appears to be some sort of strange combination of human, orc, and
 goblin.
 ~
 2|64 0 -750 S
@@ -197,8 +197,8 @@ fleshmonger mage man~
 the Fleshmonger~
 The Fleshmonger stands before you in fury.
 ~
-The Fleshmonger is furious that you have intruded in his secret laboratory, 
-and orders his guard to attack.  He is human, but is so twisted and evil that 
+The Fleshmonger is furious that you have intruded in his secret laboratory,
+and orders his guard to attack.  He is human, but is so twisted and evil that
 he is barely recognisable as such.
 ~
 2|64 8|32|8388608 -1000 S
@@ -412,7 +412,7 @@ S
 
 #9401
 A Guard Room~
-As you step through the door, you notice a large guard hulking towards you. 
+As you step through the door, you notice a large guard hulking towards you.
 You also notice the stink of this room.  There is dirty straw strewn across
 the floor, and a rickety table and chairs in the middle of the room.  The door
 to the foyer is south.
@@ -456,8 +456,8 @@ S
 The Kitchens and Mess Hall~
 Delicious smells waft on the air in here.  A cook is bent over a pot on
 the stove, and his boy peels vegetables into a bin.  There is a row of ovens
-on the far wall, and two straw pallets in the corner.  There are also two 
-tables, each with four chairs.  There are more chairs stacked in one corner.  
+on the far wall, and two straw pallets in the corner.  There are also two
+tables, each with four chairs.  There are more chairs stacked in one corner.
 The door to the foyer is west.
 ~
 0 8 0
@@ -634,16 +634,16 @@ door east~
 1 9400 9404
 E
 floor mat excrement~
-The mat is plain and woven from low-quality rushes.  The cell's inhabitant has 
-attempted to keep his area clean by pushing the piles of excrement into the 
+The mat is plain and woven from low-quality rushes.  The cell's inhabitant has
+attempted to keep his area clean by pushing the piles of excrement into the
 corners.
 ~
 S
 
 #9409
 A Cell~
-This cell is rather dirty.  There is a small, lumpy sleeping pallet in one 
-corner, but the floor is bare.  There are no other furnishings.  Excrement is 
+This cell is rather dirty.  There is a small, lumpy sleeping pallet in one
+corner, but the floor is bare.  There are no other furnishings.  Excrement is
 smeared on the floor and walls, and even the ceiling.
 ~
 0 1|8 0
@@ -654,16 +654,16 @@ door east~
 1 9400 9405
 E
 floor excrement walls ceiling~
-Excrement is smeared in big loops on the walls, floor, and ceiling.  The 
-inhabitant of this cell is obviously disgusting.  You cannot tell if it is in 
+Excrement is smeared in big loops on the walls, floor, and ceiling.  The
+inhabitant of this cell is obviously disgusting.  You cannot tell if it is in
 protest at the conditions, or for some other reason.
 ~
 S
 
 #9410
 A Cell~
-This cell is dirty, but does not appear to have a current inhabitant.  It 
-smells slightly musty, rather than gaggingly disgusting.  You wonder what 
+This cell is dirty, but does not appear to have a current inhabitant.  It
+smells slightly musty, rather than gaggingly disgusting.  You wonder what
 happened to its occupant.
 ~
 0 1|8 0
@@ -676,9 +676,9 @@ S
 
 #9411
 A Cell~
-This cell is messy and dirty.  Items of clothing and bedding are strewn across 
-the floor.  The bedpan is overturned to one side of the doorway, and the 
-bedding pallet seems to have been torn to shreds.  The rushes from the floor 
+This cell is messy and dirty.  Items of clothing and bedding are strewn across
+the floor.  The bedpan is overturned to one side of the doorway, and the
+bedding pallet seems to have been torn to shreds.  The rushes from the floor
 are mixed up with everything else.
 ~
 0 1|8 0
@@ -693,15 +693,15 @@ The floor is a total mess.  It appears that someone threw a tantrum in here.
 ~
 E
 bed pallet~
-The bed pallet has either been shredded by a knife, or a creature with sharp 
+The bed pallet has either been shredded by a knife, or a creature with sharp
 teeth or claws.
 ~
 S
 
 #9412
 The Stairwell~
-You appear to be at the bottom of a stairwell.  The stairs wind up above you 
-into darkness.  There are cells to the north, south, west, and east.  The 
+You appear to be at the bottom of a stairwell.  The stairs wind up above you
+into darkness.  There are cells to the north, south, west, and east.  The
 cells are unlit, and there is a terrible stench in the air.
 ~
 0 1|8 0
@@ -738,9 +738,9 @@ S
 
 #9413
 A Cell~
-The cells on the first level of these dungeons are fairly disgusting, but 
-nothing compared to this.  You have never seen anything so bad, and you feel 
-your gorge rising.  You cannot believe that any creature could live in such 
+The cells on the first level of these dungeons are fairly disgusting, but
+nothing compared to this.  You have never seen anything so bad, and you feel
+your gorge rising.  You cannot believe that any creature could live in such
 filth.
 ~
 0 1|8 0
@@ -757,9 +757,9 @@ S
 
 #9414
 A Cell~
-This cell is appalling.  You don't think you have seen anything so disgusting.  
-You cannot believe that anything could live in such filth as this.  You hold 
-your nose and try to restrain yourself from running back out and bringing up 
+This cell is appalling.  You don't think you have seen anything so disgusting.
+You cannot believe that anything could live in such filth as this.  You hold
+your nose and try to restrain yourself from running back out and bringing up
 your last meal.
 ~
 0 1|8 0
@@ -776,8 +776,8 @@ S
 
 #9415
 A Cell~
-The state of this cell disgusts you.  You think you've seen bad, but you've 
-never seen anything as terrible as this.  You don't allow yourself to believe 
+The state of this cell disgusts you.  You think you've seen bad, but you've
+never seen anything as terrible as this.  You don't allow yourself to believe
 that anything could live in this state.
 ~
 0 1|8 0
@@ -794,9 +794,9 @@ S
 
 #9416
 A Cell~
-This cell is the most disgusting room you have ever been in.  There is refuse 
-and waste all over the floor.  As you wade through it you hold your nose and 
-try not to bring up your last meal.  You cannot believe that any creature 
+This cell is the most disgusting room you have ever been in.  There is refuse
+and waste all over the floor.  As you wade through it you hold your nose and
+try not to bring up your last meal.  You cannot believe that any creature
 could survive in conditions like this.
 ~
 0 1|8 0
@@ -813,64 +813,64 @@ S
 
 #9417
 The Library~
-You find yourself in a large, round tower room.  The entire wall is lined with 
-curving bookshelves, floor to ceiling.  There are no gaps for windows.  A 
-wooden ladder on wheels stands against one shelf.  A spiral staircase winds up 
-through the ceiling and down through the floor in the centre of the room.  
-Around the staircase are arranged four small sidetables, curved to fit neatly.  
+You find yourself in a large, round tower room.  The entire wall is lined with
+curving bookshelves, floor to ceiling.  There are no gaps for windows.  A
+wooden ladder on wheels stands against one shelf.  A spiral staircase winds up
+through the ceiling and down through the floor in the centre of the room.
+Around the staircase are arranged four small sidetables, curved to fit neatly.
 Some of the tables have books lying on them, both open and closed.
 ~
 0 8 0
 D 4
-The stairs are made of iron, and wind further up into the tower or down into 
+The stairs are made of iron, and wind further up into the tower or down into
 the tower foyer.
 ~
 stairs up stairwell~
 0 -1 9418
 D 5
-The stairs are made of iron, and wind further up into the tower or down into 
+The stairs are made of iron, and wind further up into the tower or down into
 the tower foyer.
 ~
 stairs up stairwell~
 0 -1 9400
 E
 books book shelf shelves bookshelf bookshelves table tables~
-The books appear to have a variety of subjects, none of which sound pleasant.  
-You get a bad feeling just looking at them, and decide not to look too 
+The books appear to have a variety of subjects, none of which sound pleasant.
+You get a bad feeling just looking at them, and decide not to look too
 closely.
 ~
 E
 stairs stairwell~
-The stairs are made of iron, and wind further up into the tower or down into 
+The stairs are made of iron, and wind further up into the tower or down into
 the tower foyer.
 ~
 S
 
 #9418
 The Study~
-You find yourself in a large, round tower room.  A desk runs all the way 
-around the room.  Positioned at intervals along it are uncomfortable-looking, 
-stiff-backed chairs.  There are books everywhere.  Near each chair, a lamp is 
-positioned on the desk.  Some of the lamps are lit.  There are no windows, and 
-no decoration on the bare walls.  A spiral staircase winds up through a 
+You find yourself in a large, round tower room.  A desk runs all the way
+around the room.  Positioned at intervals along it are uncomfortable-looking,
+stiff-backed chairs.  There are books everywhere.  Near each chair, a lamp is
+positioned on the desk.  Some of the lamps are lit.  There are no windows, and
+no decoration on the bare walls.  A spiral staircase winds up through a
 trapdoor in the ceiling and down through the floor in the centre of the room.
 ~
 0 8 0
 D 4
-The stairs are made of iron, and wind up through a trapdoor in the ceiling or 
+The stairs are made of iron, and wind up through a trapdoor in the ceiling or
 down through the floor.
 ~
 stairs up stairwell trapdoor~
 1 -1 9419
 D 5
-The stairs are made of iron, and wind up through a trapdoor in the ceiling or 
+The stairs are made of iron, and wind up through a trapdoor in the ceiling or
 down through the floor.
 ~
 stairs down stairwell~
 0 -1 9417
 E
 stairs stairwell~
-The stairs are made of iron, and wind up through a trapdoor in the ceiling or 
+The stairs are made of iron, and wind up through a trapdoor in the ceiling or
 down through the floor.
 ~
 S
@@ -878,18 +878,18 @@ S
 #9419
 The Laboratory~
 
-You find yourself in a large, round tower room.  A desk runs all the way 
-around the room.  It is a mess.  There are dirty cages with small animals in 
-them under the desk, all around the room.  On the surface of the desk, you see 
-strange-looking scientific apparatus and bits of equipment.  Lamps are 
-stationed here and there.  Books are scattered on every other available 
-surface.  There are no windows.  In two places under the desk, there are 
-sleeping pallets.  One is more luxurious than the other.  There is a stairwell 
+You find yourself in a large, round tower room.  A desk runs all the way
+around the room.  It is a mess.  There are dirty cages with small animals in
+them under the desk, all around the room.  On the surface of the desk, you see
+strange-looking scientific apparatus and bits of equipment.  Lamps are
+stationed here and there.  Books are scattered on every other available
+surface.  There are no windows.  In two places under the desk, there are
+sleeping pallets.  One is more luxurious than the other.  There is a stairwell
 in the middle of the floor, which winds down through a trapdoor.
 ~
 0 8 0
 D 5
-The stairwell is made of iron, and the stairs wind down through a trapdoor  
+The stairwell is made of iron, and the stairs wind down through a trapdoor
 into the tower.
 ~
 stairs down stairwell~
@@ -900,7 +900,7 @@ The desk is filthy, and every inch of its surface is covered.
 ~
 E
 cage cages animal animals small~
-The cages all have dirty straw in the bottom.  The animals in the cages appear 
+The cages all have dirty straw in the bottom.  The animals in the cages appear
 to be underfed, dirty, and miserable.
 ~
 E
@@ -909,17 +909,17 @@ The scientific apparatus is baffling to you.
 ~
 E
 book books~
-The books are scattered everywhere, some open, some closed.  You cannot make 
+The books are scattered everywhere, some open, some closed.  You cannot make
 out what subject they are on.
 ~
 E
 stairs stairwell~
-The stairwell is made of iron, and the stairs wind down through a trapdoor 
+The stairwell is made of iron, and the stairs wind down through a trapdoor
 into the tower.
 ~
 E
 pallet pallets sleeping~
-The pallets look slightly more comfortable than others elsewhere in the tower.  
+The pallets look slightly more comfortable than others elsewhere in the tower.
 One is particularly luxurious, and has a heavy fur throw on the top.
 ~
 S

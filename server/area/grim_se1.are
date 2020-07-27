@@ -116,7 +116,7 @@ a tiny fish~
 A tiny fish flaps around.~
 ~
 19 0 1|16384
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 1 0 0
 #18801
 floating debris~
@@ -124,7 +124,7 @@ debris from a ship~
 There is some floating debris from a ship here.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 #18802
 hammer head~
@@ -132,7 +132,7 @@ a hammer head~
 The head from a hammer head shark lies bleeding here.~
 ~
 9 0 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 3 0 0
 A
 13 5
@@ -142,7 +142,7 @@ an intricately carved gold coin~
 There is a gold coin here, sparkling in the light.~
 ~
 8 64 1|16384
-0~ 0~ 1~ 0~ 
+0~ 0~ 1~ 0~
 1 0 0
 E
 gold coin~
@@ -156,7 +156,7 @@ a beautiful golden coin~
 A flash of gold catches the corner of your eye.~
 ~
 8 64 1|16384
-0~ 0~ 1~ 0~ 
+0~ 0~ 1~ 0~
 5 0 0
 #0
 
@@ -178,7 +178,7 @@ D3
 S
 #18801
 Caught in a rip !~
-You are being pulled further out to sea and there is nothing you can do 
+You are being pulled further out to sea and there is nothing you can do
 about it !
 The power of the rip is enormous.  It's as if some thing is pulling the sea out
 from under you just as they might pull out a rug.
@@ -384,7 +384,7 @@ D3
 S
 #18811
 Out to sea~
-Gee, what a supprise you're still at sea.  Being lost at sea is not good for 
+Gee, what a supprise you're still at sea.  Being lost at sea is not good for
 your skin at all.
 You can head north, towards the sea.  East towards the sea.  West towards the
 sea.  Or for a change, South towards the sea.
@@ -459,7 +459,7 @@ D3
 S
 #18814
 Out to sea~
-Gee, what a supprise you're still at sea.  Being lost at sea is not good for 
+Gee, what a supprise you're still at sea.  Being lost at sea is not good for
 your skin at all.
 You can head north, towards the sea.  East towards the sea.  West towards the
 sea.  Or for a change, South towards the sea.
@@ -704,7 +704,7 @@ Diving Underwater~
 You hold your breath and dive underwater!
 The cold water splashes over your head as you swim down into the ocean.
 You open your eyes, but everything is blurry and the saltwater stings them. You
-quickly shut them again, but not before you glimse a huge grey shark about to 
+quickly shut them again, but not before you glimse a huge grey shark about to
 attack you !
 ~
 0 4|8|8192 8
@@ -732,7 +732,7 @@ D2
 S
 #18826
 Exploring the ocean floor~
-You come to a strange hole in the ground.  Feeling the temperature of the water 
+You come to a strange hole in the ground.  Feeling the temperature of the water
 go from cold to warm, you assume walm water must be coming from the hole in the
 ground. Although you can see nothing.
 If you like you could jump up into the stream of hot water and catch a ride to
@@ -1048,7 +1048,7 @@ S
 A misty landfall~
 You swim into a relative calm beach only the beach itself is covered in mist.
 All around the mist rolls. No vegetation of any description can be seen.
-Scanning the landscape, you see that this 'island' extends to the east and 
+Scanning the landscape, you see that this 'island' extends to the east and
 the landscape disappears in a misty haze.
 ~
 0 4 6
@@ -1106,7 +1106,7 @@ R 1 18831 5                  ; Randomize Disorientated underwater
 R 1 18830 5                  ; Randomize Disorientated underwater
 R 1 18832 5                  ; Randomize Disorientated underwater
 M 1 18805 1 18830                      a small fish to Disorientated underwater
-*                              
+*
 M 1 18806 1 18835                      Dahij the prophet to A circle of trees
 E 1 3031 0 0				give Dahij a light
 *

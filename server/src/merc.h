@@ -131,7 +131,7 @@ typedef struct 	auction_data		AUCTION_DATA;
 typedef struct  coin_data               COIN_DATA;
 
 /*
- * Tables - geoff 
+ * Tables - geoff
  */
 typedef struct  fame_data               FAME_TABLE;
 typedef struct  clan_pkill_data         CLAN_PKILL_TABLE;
@@ -139,7 +139,7 @@ typedef struct  clan_vanquished_data    CLAN_VANQ_TABLE;
 typedef struct  clan_member_data        CLAN_MEMBER_TABLE;
 
 /*
- * Extra tables - Tavolir 
+ * Extra tables - Tavolir
  */
 typedef struct  hero_data               HERO_DATA;
 typedef struct  legend_data             LEGEND_DATA;
@@ -166,9 +166,9 @@ typedef void SPELL_FUN                  args( ( int sn, int level, CHAR_DATA *ch
 /*
  * Herb info for ranger skill 'gather
  */
-struct HERB 
+struct HERB
 {
-	char	*name;		
+	char	*name;
 	int	type;
 	char	*spell;
 	int	min_skill;
@@ -179,19 +179,19 @@ struct HERB
 	char	*action;
 };
 
-#define MAX_HERBS 11 
+#define MAX_HERBS 11
 
 
 /*
- * Songs for bards 
+ * Songs for bards
  */
-struct song 
+struct song
 {
 	char	*name;
 	char	*long_desc;
 	char	*affect;
 	int	apply;
-};	
+};
 
 #define MAX_SONGS 7
 int remove_songs (CHAR_DATA *ch);
@@ -203,7 +203,7 @@ bool has_tranquility (CHAR_DATA *ch);
  */
 #define	MAX_KEY_HASH		 1024	/* 1024 */
 #define MAX_STRING_LENGTH	 8192	/* 4096 */
-#define MAX_INPUT_LENGTH	  256 
+#define MAX_INPUT_LENGTH	  256
 
 
 /*
@@ -212,14 +212,14 @@ bool has_tranquility (CHAR_DATA *ch);
  * Adjust the pulse numbers to suit yourself.
  */
 #define MAX_CLASS		    8
-#define MAX_SUB_CLASS		   17 /* thats 16 plus 'none' - Brutus */ 
+#define MAX_SUB_CLASS		   17 /* thats 16 plus 'none' - Brutus */
 #define MAX_RACE		   18 /* thats 17 races plus 'none' - Brutus*/
 #define MAX_STAT                   32 /* 0->31  - Shade */
-#define MAX_CLAN		   7 
-#define MAX_CLAN_LEVEL		   3 
+#define MAX_CLAN		   7
+#define MAX_CLAN_LEVEL		   3
 #define MAX_FORM		   20
 #define MAX_COLORS		   11
-#define MAX_LEVEL		   106 
+#define MAX_LEVEL		   106
 #define MAX_TRADE	           5
 #define MAX_DAMAGE		   3000
 #define FULL_AIR_SUPPLY            2 /* ticks before drowning; Gez */
@@ -230,7 +230,7 @@ bool has_tranquility (CHAR_DATA *ch);
 #define L_JUN	        	  ( L_SEN - 1 )
 #define L_APP                     ( L_JUN - 1 )
 #define L_BUI			  ( L_APP - 1 )
-#define L_HER			  ( L_BUI - 1 ) 
+#define L_HER			  ( L_BUI - 1 )
 #define LEVEL_IMMORTAL		  L_BUI
 #define LEVEL_HERO		  ( LEVEL_IMMORTAL - 1 )
 
@@ -259,7 +259,7 @@ bool has_tranquility (CHAR_DATA *ch);
 
 DECLARE_DO_FUN(do_review);
 
-struct review_data 
+struct review_data
 {
 	char	buffer [REVIEW_BUFFER_SIZE];
 	time_t	timestamp;
@@ -273,8 +273,8 @@ void	add_to_clan_review_buffer	(CHAR_DATA *ch, int clan, char *text);
 
 
 /*
- * Includes for board system 
- * This is version 2 of the board system, (c) 1995-96 erwin@pip.dknet.dk 
+ * Includes for board system
+ * This is version 2 of the board system, (c) 1995-96 erwin@pip.dknet.dk
  */
 #define CON_NOTE_TO                                     16
 #define CON_NOTE_SUBJECT                                17
@@ -288,14 +288,14 @@ void	add_to_clan_review_buffer	(CHAR_DATA *ch, int clan, char *text);
 #define DEF_INCLUDE 1 /* 'names' MUST be included (only ONE name!)    */
 #define DEF_EXCLUDE 2 /* 'names' must NOT be included (one name only) */
 
-#define MAX_BOARD  5 
+#define MAX_BOARD  5
 
 #define DEFAULT_BOARD 0 /* default board is board #0 in the boards      */
                         /* It should be readable by everyone!           */
-                        
+
 #define MAX_LINE_LENGTH 80 /* enforce a max length of 80 on text lines, reject longer lines */
-                           /* This only applies in the Body of the note */      
-                                                   
+                           /* This only applies in the Body of the note */
+
 #define MAX_NOTE_TEXT (4*MAX_STRING_LENGTH - 1000)
 
 #define BOARD_NOTFOUND -1 /* Error code from board_lookup() and board_number */
@@ -316,8 +316,8 @@ struct board_data
 
         NOTE_DATA *note_first; /* pointer to board's first note */
         bool changed;          /* currently unused */
-	
-	bool announce_post; 
+
+	bool announce_post;
 };
 
 typedef struct board_data BOARD_DATA;
@@ -386,7 +386,7 @@ DECLARE_DO_FUN (do_board        );
 
 
 /*  Quest recall point info struct;  Gezhp 2000  */
-struct quest_recall 
+struct quest_recall
 {
 	int	slot;
 	int	cost;
@@ -395,14 +395,14 @@ struct quest_recall
 };
 
 
-/* 
+/*
  * table structures - geoff
- * 
+ *
  * changed lengths so tables don't do silly things and forget when people
  * go walkies off the end, added the print lengths so only a certain
  * number of things are shown rather than having squeaps dumped on screen
  * Umgook 7/5/98
- * 
+ *
  * Also added extra non-printed pkscore table rows to accomodate new
  * pkscore system; Gezhp 2000
  */
@@ -423,33 +423,33 @@ struct quest_recall
  * Classes and subclasses
  */
 #define SUB_CLASS_NONE               0
-#define SUB_CLASS_NECROMANCER        1 
-#define SUB_CLASS_WARLOCK            2 
-#define SUB_CLASS_TEMPLAR            3 
-#define SUB_CLASS_DRUID              4 
-#define SUB_CLASS_NINJA              5       
-#define SUB_CLASS_BOUNTY             6       
-#define SUB_CLASS_THUG               7       
-#define SUB_CLASS_KNIGHT             8       
-#define SUB_CLASS_SATANIST           9 
-#define SUB_CLASS_WITCH              10 
+#define SUB_CLASS_NECROMANCER        1
+#define SUB_CLASS_WARLOCK            2
+#define SUB_CLASS_TEMPLAR            3
+#define SUB_CLASS_DRUID              4
+#define SUB_CLASS_NINJA              5
+#define SUB_CLASS_BOUNTY             6
+#define SUB_CLASS_THUG               7
+#define SUB_CLASS_KNIGHT             8
+#define SUB_CLASS_SATANIST           9
+#define SUB_CLASS_WITCH              10
 #define SUB_CLASS_WEREWOLF	     11
 #define SUB_CLASS_VAMPIRE  	     12
 #define SUB_CLASS_MONK	             13
 #define SUB_CLASS_MARTIAL_ARTIST     14
-#define SUB_CLASS_BARBARIAN          15      
+#define SUB_CLASS_BARBARIAN          15
 #define SUB_CLASS_BARD               16
 
 #define CLASS_WARLOCK 		SUB_CLASS_WARLOCK
 
-#define PRE_MAGE		CLASS_MAGE + 1            
-#define PRE_CLERIC		CLASS_CLERIC + 1          
-#define PRE_THIEF		CLASS_THIEF + 1           
-#define PRE_WARRIOR		CLASS_WARRIOR + 1         
-#define PRE_PSIONIC		CLASS_PSIONICIST + 1      
-#define PRE_SHIFTER		CLASS_SHAPE_SHIFTER + 1    
-#define PRE_BRAWLER		CLASS_BRAWLER + 1         
-#define PRE_RANGER 		CLASS_RANGER + 1         
+#define PRE_MAGE		CLASS_MAGE + 1
+#define PRE_CLERIC		CLASS_CLERIC + 1
+#define PRE_THIEF		CLASS_THIEF + 1
+#define PRE_WARRIOR		CLASS_WARRIOR + 1
+#define PRE_PSIONIC		CLASS_PSIONICIST + 1
+#define PRE_SHIFTER		CLASS_SHAPE_SHIFTER + 1
+#define PRE_BRAWLER		CLASS_BRAWLER + 1
+#define PRE_RANGER 		CLASS_RANGER + 1
 
 #define PRE_NECRO		SUB_CLASS_NECROMANCER + MAX_CLASS
 #define PRE_WARLOCK		SUB_CLASS_WARLOCK + MAX_CLASS
@@ -579,7 +579,7 @@ struct  auction_data
 
 
 #define MAX_CONNECTIONS 256   /* Maximum number of descriptors */
-extern int connection_count; 
+extern int connection_count;
 extern DESCRIPTOR_DATA *initiative_list [MAX_CONNECTIONS];
 
 
@@ -605,10 +605,10 @@ struct	descriptor_data
     char *		outbuf;
     int			outsize;
     int			outtop;
-	
+
     /* ident stuff */
     int                 ifd;
-    pid_t               ipid; 
+    pid_t               ipid;
     char *              ident;
     int                 port;
     int                 ip;
@@ -716,7 +716,7 @@ struct coin_data
 struct	class_type
 {
     char 	who_name	[ 4 ];	/* Three-letter name for 'who'	*/
-    char	show_name	[ 9 ];  /* Full name of class for 'who' */ 
+    char	show_name	[ 9 ];  /* Full name of class for 'who' */
     int 	attr_prime;		/* Prime attribute		*/
     int 	weapon;			/* First weapon			*/
     int 	guild;			/* Vnum of guild room		*/
@@ -734,16 +734,16 @@ struct	class_type
 };
 
 
-struct clan_type                                                                
+struct clan_type
 {
 	char    *name;
 	char    who_name [4];
 	int    	hall;
-	int	guard_room; 
+	int	guard_room;
 	int 	heal_room;
 	bool    independent; /* true for loners */
 	char    colour_code;
-}; 
+};
 
 
 struct clan_items
@@ -772,8 +772,8 @@ struct  sub_class_type
 
 
 /*
- * wearing restrictions, body parts for form, types for wear 
- * and skills for each form..... - geoff. 
+ * wearing restrictions, body parts for form, types for wear
+ * and skills for each form..... - geoff.
  */
 struct   form_skill_struct
 {
@@ -813,14 +813,14 @@ struct race_struct
 {
     char	*who_name;
     char	*race_name;
-    int		str_bonus;	
-    int		int_bonus;	
-    int		wis_bonus;	
+    int		str_bonus;
+    int		int_bonus;
+    int		wis_bonus;
     int 	dex_bonus;
     int		con_bonus;
     int		hp_regen;
     int		mana_regen;
-    int		move_regen; 
+    int		move_regen;
     char	*spell_one;    /* First spell for that race */
     char	*spell_two;    /* Second spell for that race */
     int         size;          /* Char sizes are Small (1), med (2) and Large (3) */
@@ -940,7 +940,7 @@ struct pkscore_data
 	char name[15];
 	int pkills;
 	int pkscore;
-	int pdeaths;	
+	int pdeaths;
 	int class;
 	bool subclassed;
 	char clan[6];
@@ -1003,7 +1003,7 @@ struct clan_member_data
  *	deity system code being called during the game.
  *
  * 	All code sits in 'deity.c'.
- * 
+ *
  *	Gezhp and Shade, 2000-2001
  */
 
@@ -1011,10 +1011,10 @@ struct clan_member_data
 
 #define DEITY_TYPE_PEACEFUL	0
 #define DEITY_TYPE_WARLIKE	1
-#define DEITY_TYPE_DEATH	2	
+#define DEITY_TYPE_DEATH	2
 #define DEITY_TYPE_CHAOTIC	3
 #define DEITY_TYPE_LAWFUL	4
-#define DEITY_TYPE_NATURE	5	
+#define DEITY_TYPE_NATURE	5
 #define DEITY_NUMBER_TYPES	6
 
 #define DEITY_PERSONALITY_HELPFUL	0
@@ -1064,28 +1064,28 @@ struct clan_member_data
 #define DEITY_PFLAG_RELEASE_ATTEMPT	BIT_7
 #define DEITY_PFLAG_GRANT_ACCESS        BIT_8  /* temporary for testing */
 
-#define DEITY_DEFAULT_PLAYER_TIMER	360	
+#define DEITY_DEFAULT_PLAYER_TIMER	360
 #define DEITY_PRAYER_TIME_PENALTY	480
 #define	DEITY_MAX_FAVOUR		1000
 #define	DEITY_MAX_POWER			1000
-#define DEITY_PANTHEON_UPDATE_TIMER	10	
+#define DEITY_PANTHEON_UPDATE_TIMER	10
 
 #define DEITY_TIMER_MAX                 480
 
 #define SET_DEITY_TYPE_TIMER(ch, type, value) \
 	((ch)->pcdata->deity_type_timer[(type)] \
 	 = URANGE(0, ((ch)->pcdata->deity_type_timer[(type)] + (value)), DEITY_TIMER_MAX))
-			  
+
 #define SET_DEITY_PERSONALITY_TIMER(ch, type, value) \
 	((ch)->pcdata->deity_personality_timer[(type)] \
 	 = URANGE(0, ((ch)->pcdata->deity_personality_timer[(type)] + (value)), DEITY_TIMER_MAX))
-			  
+
 DECLARE_DO_FUN	(do_pantheoninfo);
 DECLARE_DO_FUN	(do_pantheonrank);
 DECLARE_DO_FUN	(do_pantheon);
 DECLARE_DO_FUN	(do_pray);
 
-struct deity_info 
+struct deity_info
 {
 	char	*name;
 	char	*title;
@@ -1100,13 +1100,13 @@ struct deity_info
 	int	race_favour [MAX_RACE];
 };
 
-struct pantheon_status 
+struct pantheon_status
 {
 	int	timer;
 	int	atmosphere;
 	int	ranking [NUMBER_DEITIES];
 	int 	power [NUMBER_DEITIES];
-	
+
 	/* These variables for logging pantheon movements */
 	double  average_rank [NUMBER_DEITIES];
 	long    total_power [NUMBER_DEITIES];
@@ -1154,7 +1154,7 @@ void	prayer_death		(CHAR_DATA *ch, char *text);
 
 
 /*
- * Log last command before crash 
+ * Log last command before crash
  */
 extern char last_command [MAX_STRING_LENGTH];
 extern char last_function [MAX_STRING_LENGTH];
@@ -1210,7 +1210,7 @@ struct tournament_team
 #define TOURNAMENT_TYPE_TEAM           1
 #define TOURNAMENT_TYPE_TAG            2
 
-extern struct tournament_entrant tournament_entrants [TOURNAMENT_MAX_TEAMS] 
+extern struct tournament_entrant tournament_entrants [TOURNAMENT_MAX_TEAMS]
 	[TOURNAMENT_MAX_ENTRANTS];
 extern struct tournament_team tournament_teams [TOURNAMENT_MAX_TEAMS];
 extern CHAR_DATA *tournament_banned [TOURNAMENT_MAX_BANNED];
@@ -1251,8 +1251,8 @@ bool tournament_action_illegal         (CHAR_DATA *ch, int flag);
 #define BOT_MAX_TARGETS		25
 #define BOT_VNUM		11000	/* Reserved vnum for all bots */
 
-#define BOT_TYPE_STATIC		0	
-#define BOT_TYPE_CAUTIOUS	1	
+#define BOT_TYPE_STATIC		0
+#define BOT_TYPE_CAUTIOUS	1
 #define BOT_TYPE_HUNTER		2
 
 #define BOT_FLAG_TEAMS_UP		BIT_0
@@ -1290,7 +1290,7 @@ struct bot_template
 	int	bot_type;
 	int	bot_flags;
 	int 	speed;
-	int	sight;	
+	int	sight;
 	int	affect_flags;
 	int	body_form;
 	int	sex;
@@ -1312,7 +1312,7 @@ struct bot_status
 	int		move_direction;
 	int		move_distance;
 	bool		few_targets;
-};	
+};
 
 extern struct bot_template	bot_template_table [BOT_TEMPLATE_NUMBER];
 extern struct bot_status	bot_status_table [BOT_MAX_ENTRANTS];
@@ -1426,12 +1426,12 @@ DECLARE_DO_FUN(do_initiative);
  */
 #define CLEAR           NTEXT       /* Resets Colour        */
 #define C_RED           RED         /* Normal Colours       */
-#define C_GREEN         GREEN 
-#define C_YELLOW      	YELLOW 
-#define C_BLUE         	BLUE 
-#define C_MAGENTA      	PURPLE 
-#define C_CYAN         	CYAN 
-#define C_WHITE         "\x1b[37m" 
+#define C_GREEN         GREEN
+#define C_YELLOW      	YELLOW
+#define C_BLUE         	BLUE
+#define C_MAGENTA      	PURPLE
+#define C_CYAN         	CYAN
+#define C_WHITE         "\x1b[37m"
 #define C_D_GREY        GREY      /* Light Colors         */
 #define C_B_RED         "\x1b[1m\x1b[31m"
 #define C_B_GREEN       "\x1b[1m\x1b[32m"
@@ -1505,7 +1505,7 @@ DECLARE_DO_FUN(do_initiative);
 #define ACT_MOUNTABLE		BIT_17	/* mob can be ridden */
 #define ACT_free		BIT_18	/* FREE :) was ACT_MOUNTED */
 #define ACT_BANKER		BIT_19	/* Banker Mobs  - Brutus */
-#define ACT_IDENTIFY		BIT_20	/* mob can ID things */ 
+#define ACT_IDENTIFY		BIT_20	/* mob can ID things */
 #define ACT_DIE_IF_MASTER_GONE	BIT_21	/* destroy mob if master not in room; Gezhp */
 #define ACT_CLAN_GUARD          BIT_22  /* protects from some combat skills; Gezhp */
 #define ACT_NO_SUMMON           BIT_23  /* Mob may not be summoned; Gezhp */
@@ -1539,13 +1539,13 @@ DECLARE_DO_FUN(do_initiative);
 #define AFF_PASS_DOOR		BIT_20
 #define AFF_DETECT_TRAPS	BIT_21
 #define AFF_BATTLE_AURA		BIT_22
-#define AFF_DETECT_SNEAK 	BIT_23	
+#define AFF_DETECT_SNEAK 	BIT_23
 #define AFF_GLOBE		BIT_24
-#define AFF_DETER		BIT_25	
+#define AFF_DETER		BIT_25
 #define AFF_SWIM		BIT_26
-#define AFF_PRAYER_PLAGUE	BIT_27	
+#define AFF_PRAYER_PLAGUE	BIT_27
 #define AFF_NON_CORPOREAL	BIT_28	/* Mist Walk, Astral Sidestep, Fly form */
-#define AFF_BIT_29		BIT_29	
+#define AFF_BIT_29		BIT_29
 #define AFF_DETECT_GOOD		BIT_30	/* last */
 
 
@@ -1556,12 +1556,12 @@ DECLARE_DO_FUN(do_initiative);
 #define FORM_CAT                3
 #define FORM_SNAKE              4
 #define FORM_SCORPION           5
-#define FORM_SPIDER             6 
-#define FORM_BEAR               7 
-#define FORM_TIGER              8 
+#define FORM_SPIDER             6
+#define FORM_BEAR               7
+#define FORM_TIGER              8
 
 /* level 30 sft */
-#define FORM_GHOST              9 
+#define FORM_GHOST              9
 #define FORM_HYDRA              10
 #define FORM_PHOENIX            11
 #define FORM_DEMON              12
@@ -1606,7 +1606,7 @@ DECLARE_DO_FUN(do_initiative);
 #define SEX_FEMALE		      2
 
 
-/* 
+/*
  * Money is now defined
  */
 #define COINS_ADD		0	/* This is for function coins_to_char */
@@ -1662,13 +1662,13 @@ DECLARE_DO_FUN(do_initiative);
 #define TRAP_DAM_BLUNT      5
 #define TRAP_DAM_PIERCE     6
 #define TRAP_DAM_SLASH      7
-#define TRAP_DAM_POISON	    8	
- 
+#define TRAP_DAM_POISON	    8
+
 #define TRAP_EFF_MOVE       BIT_0	/* trigger on movement */
 #define TRAP_EFF_OBJECT     BIT_1	/* trigger on get or put */
 #define TRAP_EFF_ROOM       BIT_2	/* affect all in room */
 #define TRAP_EFF_NORTH      BIT_3	/* movement in this direction */
-#define TRAP_EFF_EAST       BIT_4	
+#define TRAP_EFF_EAST       BIT_4
 #define TRAP_EFF_SOUTH      BIT_5
 #define TRAP_EFF_WEST       BIT_6
 #define TRAP_EFF_UP         BIT_7
@@ -1705,12 +1705,12 @@ DECLARE_DO_FUN(do_initiative);
 #define	ITEM_MOB			29
 #define ITEM_ANVIL			30
 #define ITEM_AUCTION_TICKET		31
-#define ITEM_CLAN_OBJECT		32	 
+#define ITEM_CLAN_OBJECT		32
 #define ITEM_PORTAL			33
 #define ITEM_POISON_POWDER		34
 #define ITEM_LOCK_PICK          	35
 #define ITEM_INSTRUMENT         	36
-#define ITEM_ARMOURERS_HAMMER		37	
+#define ITEM_ARMOURERS_HAMMER		37
 #define ITEM_MITHRIL			38
 #define ITEM_WHETSTONE			39
 
@@ -1795,10 +1795,10 @@ DECLARE_DO_FUN(do_initiative);
 #define BIT_WEAR_HEAD		      5
 #define BIT_WEAR_LEGS		      6
 #define BIT_WEAR_FEET		      7
-#define BIT_WEAR_HANDS		      8 
+#define BIT_WEAR_HANDS		      8
 #define BIT_WEAR_ARMS		      9
 #define BIT_WEAR_SHIELD	             10
-#define BIT_WEAR_ABOUT		     11 
+#define BIT_WEAR_ABOUT		     11
 #define BIT_WEAR_WAIST		     12
 #define BIT_WEAR_WRIST		     13
 #define BIT_WIELD		     14
@@ -1900,11 +1900,11 @@ DECLARE_DO_FUN(do_initiative);
 #define ROOM_LABEL_CLAN         -4
 #define ROOM_LABEL_NOTELEPORT	-5
 
-#define ROOM_VNUM_DONATION  	3216 
-#define ROOM_VNUM_DONATION_1	3208 
-#define ROOM_VNUM_DONATION_2	3209 
+#define ROOM_VNUM_DONATION  	3216
+#define ROOM_VNUM_DONATION_1	3208
+#define ROOM_VNUM_DONATION_2	3209
 #define ROOM_VNUM_DONATION_3	3210
-#define ROOM_VNUM_DONATION_4	3211 
+#define ROOM_VNUM_DONATION_4	3211
 #define ROOM_VNUM_DONATION_5	3212
 
 
@@ -2035,15 +2035,15 @@ extern DIR_DATA directions[MAX_DIR];
 /*
  * Positions.
  */
-#define POS_DEAD		  0 
-#define POS_MORTAL		  1 
-#define POS_INCAP		  2 
-#define POS_STUNNED		  3 
-#define POS_SLEEPING		  4 
-#define POS_RESTING		  5   
-#define POS_FIGHTING 		  6  
+#define POS_DEAD		  0
+#define POS_MORTAL		  1
+#define POS_INCAP		  2
+#define POS_STUNNED		  3
+#define POS_SLEEPING		  4
+#define POS_RESTING		  5
+#define POS_FIGHTING 		  6
 #define POS_STANDING		  7
- 
+
 /*
  * ACT bits for players.
  */
@@ -2082,7 +2082,7 @@ extern DIR_DATA directions[MAX_DIR];
 #define PLR_KILLER                    1
 #define PLR_THIEF                     2
 #define PLR_RONIN                     4
-#define PLR_HUNTED                    8                                      
+#define PLR_HUNTED                    8
 #define PLR_LEFT_CLAN                16
 
 
@@ -2111,7 +2111,7 @@ struct wear_struct
   int can_wear[MAX_ITEM_TYPE+1];
 };
 
-struct loc_wear_struct 
+struct loc_wear_struct
 {
   int can_wear[ITEM_BIT_COUNT];
 };
@@ -2122,7 +2122,7 @@ const int eq_slot_to_wear_bit[MAX_WEAR];
 /* learned struct for practicers - geoff */
 struct  learned_data {
     int 		learned		[ MAX_SKILL ];
-};  
+};
 
 
 /*
@@ -2135,7 +2135,7 @@ struct	mob_index_data
     MOB_INDEX_DATA *	next;
     SPEC_FUN *		spec_fun;
     SHOP_DATA *		pShop;
-    MPROG_DATA *	mobprogs; 
+    MPROG_DATA *	mobprogs;
     LEARNED_DATA *	skills;  /* used by practicers only */
     char *		player_name;
     char *		short_descr;
@@ -2182,13 +2182,13 @@ struct	char_data
     char *		short_descr;
     char *		long_descr;
     char *		description;
-    char *              prompt; 
+    char *              prompt;
     int 		sex;
     int 		class;
-    int			sub_class; 
+    int			sub_class;
     int 		race;
-    int			clan; 
-    int			clan_level; 
+    int			clan;
+    int			clan_level;
     int 		level;
     int  		trust;
     bool                wizbit;
@@ -2206,7 +2206,7 @@ struct	char_data
     int 		move;
     int 		max_move;
     int			rage;      /* rage and blood */
-    int			max_rage; 
+    int			max_rage;
     int			plat;
     int			gold;
     int			silver;
@@ -2227,21 +2227,21 @@ struct	char_data
     int 		wimpy;
     int 		deaf;
     int		        silent_mode;
-    int			colors [MAX_COLORS]; 
-    int			mpactnum; 
+    int			colors [MAX_COLORS];
+    int			mpactnum;
     bool                deleted;
     int			form;
     int 		gag;
     int			backstab;
     int                 edrain;
-    int			body_form; 
+    int			body_form;
     int                 tournament_team;  /* mobs can use this too */
     int			exp_modifier;
-	
+
     /*
      *  Does the variable you're about to add belong here or in 'pcdata'?
      */
-	
+
 };  /* charobj mark */
 
 
@@ -2283,7 +2283,7 @@ bool	MOBtrigger;
  * Data which only PC's have.
  */
 
-struct	pc_data 
+struct	pc_data
 {
 	PC_DATA *	next;
 	char *		pwd;
@@ -2308,9 +2308,9 @@ struct	pc_data
 	int 		learned	[MAX_SKILL];
 	bool            switched;
 	bool		confirm_delete;
-	bool		confirm_leave; 
-	bool		choose_subclass; 
-	int             spell_attacks; 
+	bool		confirm_leave;
+	bool		choose_subclass;
+	int             spell_attacks;
 	int		dam_bonus;
 	int		fame;
 	int		pkscore; /* Used to track pkill points for individuals */
@@ -2397,7 +2397,7 @@ struct	obj_index_data
     int 		level;
     int			cost;
     int			value	[ 4 ];
-    int                 trap_eff;   
+    int                 trap_eff;
     int                 trap_dam;
     int                 trap_charge;
     int                 ego_flags;
@@ -2431,7 +2431,7 @@ struct	obj_data
     int 		timer;
     int			value	[ 4 ];
     bool                deleted;
-    int     		trap_eff;    
+    int     		trap_eff;
     int     		trap_dam;
     int     		trap_charge;
     char                owner [32];
@@ -2478,13 +2478,13 @@ struct	area_data
     RESET_DATA *	reset_last;
     char *		author;
     char *		name;
-	
-    int                 low_level;           
+
+    int                 low_level;
     int                 high_level;
     int                 low_enforced;
     int                 high_enforced;
 
-    int                 low_r_vnum;   
+    int                 low_r_vnum;
     int                 hi_r_vnum;
     int                 low_o_vnum;
     int                 hi_o_vnum;
@@ -2494,7 +2494,7 @@ struct	area_data
     int                 recall;
     int 		age;
     int 		nplayer;
-	
+
     int                 container_reset_timer;  /* Poor little cpu; Gezhp */
     int                 area_flags;
     int			exp_modifier;
@@ -2534,12 +2534,12 @@ struct	room_index_data
  *  Target types.
  */
 #define TAR_IGNORE		    0
-#define TAR_CHAR_OFFENSIVE	    1  
+#define TAR_CHAR_OFFENSIVE	    1
 #define TAR_CHAR_DEFENSIVE	    2
 #define TAR_CHAR_SELF		    3
 #define TAR_OBJ_INV		    4
 #define TAR_OBJ_ROOM		    5
-#define TAR_CHAR_OFFENSIVE_SINGLE   6  
+#define TAR_CHAR_OFFENSIVE_SINGLE   6
 
 
 /*
@@ -2578,7 +2578,7 @@ extern  int 	gsn_bounty_base;
 extern  int	gsn_thug_base;
 extern  int     gsn_knight_base;
 extern	int	gsn_satanist_base;
-extern  int     gsn_witch_base;  
+extern  int     gsn_witch_base;
 extern	int	gsn_werewolf_base;
 extern	int	gsn_vampire_base;
 extern	int	gsn_monk_base;
@@ -2617,13 +2617,13 @@ extern  int	gsn_disable;
 extern  int	gsn_disarm;
 extern  int     gsn_poison_weapon;
 extern	int	gsn_bladethirst;
-extern  int	gsn_dual; 
+extern  int	gsn_dual;
 extern  int	gsn_stun;
 extern  int	gsn_transfix;
 extern  int     gsn_trap;
 extern  int	gsn_trip;
 extern	int	gsn_advanced_consider;
-extern  int     gsn_bash;  
+extern  int     gsn_bash;
 extern  int 	gsn_berserk;
 extern  int	gsn_enhanced_hit;
 extern	int	gsn_enhanced_damage;
@@ -2890,7 +2890,7 @@ extern	int	gsn_steal_strength;
 extern  int	gsn_hand_of_lucifer;
 extern	int	gsn_satans_fury;
 extern	int	gsn_steal_soul;
-extern  int     gsn_summon_demon; 
+extern  int     gsn_summon_demon;
 
 extern  int        gsn_gate;
 extern  int        gsn_levitation;
@@ -3145,14 +3145,14 @@ extern  int     gsn_prayer_plague;
 #define replace_string( pstr, nstr ) \
                    { free_string( (pstr) ); pstr=str_dup( (nstr) ); }
 
-#define IS_NULLSTR(str)       ((str)==NULL || (str)[0]=='\0') 
+#define IS_NULLSTR(str)       ((str)==NULL || (str)[0]=='\0')
 #define CH(d)         ((d)->original ? (d)->original : (d)->character )
 
 
 /*
  * Character macros.
  */
-#define IS_QUESTOR(ch)          ( IS_SET((ch)->act, PLR_QUESTOR) ) 
+#define IS_QUESTOR(ch)          ( IS_SET((ch)->act, PLR_QUESTOR) )
 #define IS_NPC( ch )		( IS_SET( ( ch )->act, ACT_IS_NPC ) )
 #define IS_TRUE_IMMORTAL( ch )	( ch->level >= L_SEN )
 #define IS_IMMORTAL( ch )	( get_trust( ch ) >= LEVEL_IMMORTAL )
@@ -3252,7 +3252,7 @@ extern	const	struct	con_app_type	con_app		[ MAX_STAT ];
 extern	const	struct	class_type	class_table	[ MAX_CLASS   ];
 extern  const   struct  sub_class_type  sub_class_table [ MAX_SUB_CLASS ];
 extern 	const   struct  clan_items	clan_item_list	[MAX_CLAN];
-extern  const   struct  clan_type       clan_table	[MAX_CLAN]; 
+extern  const   struct  clan_type       clan_table	[MAX_CLAN];
 extern  const   struct  color_data	color_table	[ ];
 extern	const	struct	cmd_type	cmd_table	[ ];
 extern	const	struct	liq_type	liq_table	[ LIQ_MAX     ];
@@ -3307,7 +3307,7 @@ extern		WEATHER_DATA		weather_info;
 extern          char              *     down_time;
 extern          char              *     warning1;
 extern          char              *     warning2;
-extern          AUCTION_DATA      *     auction; 
+extern          AUCTION_DATA      *     auction;
 
 /* geoff's tables */
 extern          FAME_TABLE              fame_table[FAME_TABLE_LENGTH];
@@ -3328,7 +3328,7 @@ extern          PKSCORE_DATA            pkscore_table[PKSCORE_TABLE_LENGTH];
  */
 DECLARE_DO_FUN( do_ansi		);      /* ansi color */
 DECLARE_DO_FUN( do_color	);      /* toggles color on and off */
-DECLARE_DO_FUN( do_addfame	);   	/* for adding fame */ 
+DECLARE_DO_FUN( do_addfame	);   	/* for adding fame */
 DECLARE_DO_FUN( do_addqp	);
 DECLARE_DO_FUN(	do_advance	);
 DECLARE_DO_FUN( do_advice       );
@@ -3339,7 +3339,7 @@ DECLARE_DO_FUN( do_allow_look	);	/* toggle for viewing equipment */
 DECLARE_DO_FUN(	do_answer	);
 DECLARE_DO_FUN(	do_areas	);
 DECLARE_DO_FUN( do_arena	);	/* for arena ( like recall ) */
-DECLARE_DO_FUN( do_assassinate  );	/* assassinate skill */ 
+DECLARE_DO_FUN( do_assassinate  );	/* assassinate skill */
 DECLARE_DO_FUN(	do_at		);
 DECLARE_DO_FUN( do_atemi	);	/*martial artist - Brutus */
 DECLARE_DO_FUN( do_attack	);	/* sets number of magic attacks */
@@ -3380,7 +3380,7 @@ DECLARE_DO_FUN(	do_channels	);
 DECLARE_DO_FUN(	do_chat		);
 DECLARE_DO_FUN( do_choke	);	/* choke for brawlers - Brutus */
 DECLARE_DO_FUN( do_clantalk	);	/* clan talking - brutus */
-DECLARE_DO_FUN( do_climb	);	/* Climb skill - Brutus */ 
+DECLARE_DO_FUN( do_climb	);	/* Climb skill - Brutus */
 DECLARE_DO_FUN(	do_close	);
 DECLARE_DO_FUN( do_coil         );      /* coil - for snakes */
 DECLARE_DO_FUN( do_constrict    );      /* constrict - for snakes */
@@ -3394,7 +3394,7 @@ DECLARE_DO_FUN(	do_credits	);
 DECLARE_DO_FUN( do_cscore	);	/* clan score - Brutus */
 DECLARE_DO_FUN( do_decapitate	);	/* New ninja skill - Brutus */
 DECLARE_DO_FUN( do_delet	);
-DECLARE_DO_FUN( do_delete	);    	/* For self Deleteion ( ROM code ) */ 
+DECLARE_DO_FUN( do_delete	);    	/* For self Deleteion ( ROM code ) */
 DECLARE_DO_FUN(	do_deny		);
 DECLARE_DO_FUN( do_deposit	);	/* deposit money */
 DECLARE_DO_FUN(	do_description	);
@@ -3451,7 +3451,7 @@ DECLARE_DO_FUN( do_hero         );      /* hero table - Tavolir */
 DECLARE_DO_FUN(	do_hide		);
 DECLARE_DO_FUN(	do_holylight	);
 DECLARE_DO_FUN( do_home		);	/* clan recall - Brutus */
-DECLARE_DO_FUN( do_hunt		);	/* Ranger skill */ 
+DECLARE_DO_FUN( do_hunt		);	/* Ranger skill */
 DECLARE_DO_FUN(	do_idea		);
 DECLARE_DO_FUN(	do_immtalk	);
 DECLARE_DO_FUN( do_dirtalk	);
@@ -3468,11 +3468,11 @@ DECLARE_DO_FUN( do_kiai		);	/* monk skill */
 DECLARE_DO_FUN(	do_kick		);
 DECLARE_DO_FUN(	do_kill		);
 DECLARE_DO_FUN( do_killsocket   );
-DECLARE_DO_FUN( do_leader	);      /* for the clan leaders */ 
+DECLARE_DO_FUN( do_leader	);      /* for the clan leaders */
 DECLARE_DO_FUN( do_leav		);
 DECLARE_DO_FUN( do_leave	);      /* for leavign a clan */
 DECLARE_DO_FUN( do_legend       );      /* Legend table - Tavolir */
-DECLARE_DO_FUN( do_bounty	);	/* Bounty setup - Danath */ 
+DECLARE_DO_FUN( do_bounty	);	/* Bounty setup - Danath */
 DECLARE_DO_FUN( do_levels	);      /* levels command for new exp system */
 DECLARE_DO_FUN(	do_look_coins	);
 DECLARE_DO_FUN(	do_list		);
@@ -3482,7 +3482,7 @@ DECLARE_DO_FUN(	do_look		);
 DECLARE_DO_FUN( do_lunge	);	/* for VAMPS - Brutus */
 DECLARE_DO_FUN(	do_map		);	/* Main mapping func - Tavolir */
 DECLARE_DO_FUN( do_maul		);	/* tiger skill */
-DECLARE_DO_FUN( do_mawasigeri	);      /* Martial artist - brutus */ 
+DECLARE_DO_FUN( do_mawasigeri	);      /* Martial artist - brutus */
 DECLARE_DO_FUN( do_meditate	);
 DECLARE_DO_FUN(	do_memory	);
 DECLARE_DO_FUN(	do_mfind	);
@@ -3544,7 +3544,7 @@ DECLARE_DO_FUN(	do_poison_weapon);
 DECLARE_DO_FUN(	do_pose		);
 DECLARE_DO_FUN(	do_practice	);
 DECLARE_DO_FUN( do_pugalism	);	/* for brawlers */
-DECLARE_DO_FUN( do_shuto	);	/* Martial artist - brutus */ 
+DECLARE_DO_FUN( do_shuto	);	/* Martial artist - brutus */
 DECLARE_DO_FUN( do_swim         );      /* hmmmm i wonder ?? */
 DECLARE_DO_FUN( do_spy          );      /* for the sfter */
 DECLARE_DO_FUN( do_strangle     );      /* for the sfter */
@@ -3560,7 +3560,7 @@ DECLARE_DO_FUN(	do_question	);
 DECLARE_DO_FUN(	do_qui		);
 DECLARE_DO_FUN( do_quiet	);	/* Silent play mode */
 DECLARE_DO_FUN(	do_quit		);
-DECLARE_DO_FUN( do_rage		);	/* werewolves */ 
+DECLARE_DO_FUN( do_rage		);	/* werewolves */
 DECLARE_DO_FUN( do_ravage       );      /* maul for werewolves */
 DECLARE_DO_FUN(	do_reboo	);
 DECLARE_DO_FUN(	do_reboot	);
@@ -3599,7 +3599,7 @@ DECLARE_DO_FUN(	do_slay		);
 DECLARE_DO_FUN(	do_sleep	);
 DECLARE_DO_FUN( do_slist        );
 DECLARE_DO_FUN(	do_slookup	);
-DECLARE_DO_FUN( do_smash	);	/* Smash skill (WS) */ 
+DECLARE_DO_FUN( do_smash	);	/* Smash skill (WS) */
 DECLARE_DO_FUN( do_smear        );
 DECLARE_DO_FUN( do_snap_neck	);	/* brawler goodie - brutus */
 DECLARE_DO_FUN(	do_sneak	);
@@ -3621,7 +3621,7 @@ DECLARE_DO_FUN(	do_switch	);
 DECLARE_DO_FUN( do_tailwhip	);	/* Dragon form */
 DECLARE_DO_FUN(	do_tell		);
 DECLARE_DO_FUN( do_tellmode	);	/* No tells */
-DECLARE_DO_FUN( do_tetsui	);	/* Martial artist - Brutus */ 
+DECLARE_DO_FUN( do_tetsui	);	/* Martial artist - Brutus */
 DECLARE_DO_FUN(	do_time		);
 DECLARE_DO_FUN(	do_title	);
 DECLARE_DO_FUN(	do_train	);
@@ -3644,7 +3644,7 @@ DECLARE_DO_FUN(	do_value	);
 DECLARE_DO_FUN( do_vanquished   );
 DECLARE_DO_FUN(	do_visible	);
 DECLARE_DO_FUN(	do_wake		);
-DECLARE_DO_FUN( do_warcry	); 
+DECLARE_DO_FUN( do_warcry	);
 DECLARE_DO_FUN(	do_wear		);
 DECLARE_DO_FUN(	do_weather	);
 DECLARE_DO_FUN( do_web		);	/* spider skill - Brutus */
@@ -3660,7 +3660,7 @@ DECLARE_DO_FUN( do_wizify       );
 DECLARE_DO_FUN( do_wizlist      );
 DECLARE_DO_FUN(	do_wizlock	);
 DECLARE_DO_FUN(	do_yell		);
-DECLARE_DO_FUN( do_yokogeri	);	 /* Martial artist - brutus */ 
+DECLARE_DO_FUN( do_yokogeri	);	 /* Martial artist - brutus */
 DECLARE_DO_FUN( do_class	);	 /* new class channel */
 DECLARE_DO_FUN(	do_zap		);
 DECLARE_DO_FUN( do_zones	);
@@ -3921,7 +3921,7 @@ char *	crypt		args( ( const char *key, const char *salt ) );
 #define OID	OBJ_INDEX_DATA
 #define RID	ROOM_INDEX_DATA
 #define SF	SPEC_FUN
-#define ED      EXIT_DATA 
+#define ED      EXIT_DATA
 
 
 /* act_comm.c */
@@ -3960,7 +3960,7 @@ void	move_char	args( ( CHAR_DATA *ch, int door ) );
 int     find_door       args( ( CHAR_DATA *ch, char *arg ) );
 ED *    get_exit        args( ( ROOM_INDEX_DATA *room, int dir ) );
 
-/* act_obj.c */ 
+/* act_obj.c */
 void    do_auction 	        args( (CHAR_DATA *ch, char *argument)  );
 void	calc_coin_weight	args( ( CHAR_DATA *ch ) );
 void	coins_to_char	        args( ( int numcoins, CHAR_DATA *ch, int mode ) );
@@ -4163,7 +4163,7 @@ char*	mprog_type_to_name	args( ( int type ) );
 #ifdef DUNNO_STRSTR
 char * strstr	args ( (const char *s1, const char *s2 ) );
 #endif
-void 	mprog_wordlist_check	args((char * arg, CHAR_DATA *mob, CHAR_DATA* actor, 
+void 	mprog_wordlist_check	args((char * arg, CHAR_DATA *mob, CHAR_DATA* actor,
 				      OBJ_DATA* object, void* vo, int type ) );
 void	mprog_percent_check	args(( CHAR_DATA *mob, CHAR_DATA* actor,
 				      OBJ_DATA* object, void* vo, int type ) );

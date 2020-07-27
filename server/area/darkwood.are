@@ -249,7 +249,7 @@ morepork~
 the morepork~
 A small brown morepork watches you from a tree
 ~
-The small brown morepork has large yellow eye, he 
+The small brown morepork has large yellow eye, he
 watches you as you make your way through the forest.
 ~
 2|64 0 0 S
@@ -271,7 +271,7 @@ a crystal dagger~
 A shiny dagger emits a rainbow of colour.~
 ~
 5 32|64 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 18 5
@@ -283,7 +283,7 @@ crystal sleeves~
 Some crystal sleeves lay in a pile.~
 ~
 9 32|64 1|256
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -25
@@ -293,7 +293,7 @@ a crystal bracer~
 A gleaming bracer sits here.~
 ~
 9 32 1|4096
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 1 1
@@ -307,7 +307,7 @@ crystals~
 A pile of jewels lay here.~
 ~
 20 0 1
-0~ 0~ 100~ 0~ 
+0~ 0~ 100~ 0~
 5 0 0
 #11204
 ruby slippers~
@@ -315,7 +315,7 @@ a pair of ruby slippers~
 A  pair of ruby slippers have been left here.~
 ~
 9 1|32|64 1|64
-6~ 1~ 6~ 11~ 
+6~ 1~ 6~ 11~
 5 0 0
 A
 12 150
@@ -327,7 +327,7 @@ a crystal shard~
 A crystal shard lies on the ground.~
 ~
 18 32|64 1|16384
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 A
 3 3
@@ -337,7 +337,7 @@ a pair of crystal claws~
 Pieces of sharp looking crystal sit on the ground.~
 ~
 5 64 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 18 10
@@ -353,7 +353,7 @@ dirt~
 ~
 ~
 15 0 0
-40~ 0~ 0~ 11~ 
+40~ 0~ 0~ 11~
 5 0 0
 E
 Dirt~
@@ -365,7 +365,7 @@ steel chest~
 ~
 ~
 15 0 0
-40~ 15~ 11210~ 11~ 
+40~ 15~ 11210~ 11~
 5 0 0
 E
 chest~
@@ -378,7 +378,7 @@ a silver cross~
 A shiny cross sparkles in the light.~
 ~
 9 1|64 1|16384
-100~ 1~ 1~ 0~ 
+100~ 1~ 1~ 0~
 5 0 0
 A
 12 50
@@ -401,7 +401,7 @@ a steel key~
 A rusty old key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #11211
 beacon darkness~
@@ -409,7 +409,7 @@ the beacon of darkness~
 A small dark mass draws in the darkness.~
 ~
 1 2|16|64 1|16384
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 5 0 0
 A
 12 150
@@ -429,7 +429,7 @@ a prayer~
 A small scrap of paper lays here.~
 ~
 2 0 1|16384
-80~ prayer~ ~ ~ 
+80~ prayer~ ~ ~
 5 0 0
 E
 paper prayer~
@@ -444,7 +444,7 @@ the robe Darkness~
 A pile of dark cloth lies on the ground.~
 ~
 9 16|64|512|2048 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 18 5
@@ -462,7 +462,7 @@ a green leather vest~
 A leather vest is on the ground.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -10
@@ -472,7 +472,7 @@ a morepork's wing~
 A small brown wing lies here bleeding.~
 ~
 9 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 4 2
@@ -482,7 +482,7 @@ the lagoon~
 ~
 ~
 25 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 lagoon water~
@@ -494,7 +494,7 @@ a mushroom~
 a mushroom is growing here.~
 ~
 19 0 1|8192
-60~ 1~ 6~ 0~ 
+60~ 1~ 6~ 0~
 5 0 0
 #0
 
@@ -782,7 +782,7 @@ D2
 S
 #11213
 A mighty river!~
-You have landed in a powerful river which runs deep within a 
+You have landed in a powerful river which runs deep within a
 canyon, it begins to drag you down stream towards large rocks and
 boulders. You catch a glimpse of the bridge above you before it disappears
 in a thick cloud of mist.
@@ -858,8 +858,8 @@ D5
 S
 #11219
 ...Falling~
-You are thrown over the edge of the waterfall. You close your eyes and 
-think of the good times as you whisper one last prayer to your God. 
+You are thrown over the edge of the waterfall. You close your eyes and
+think of the good times as you whisper one last prayer to your God.
 You loose consciousness, you must be dead.
 ~
 0 1|4|8192 5
@@ -885,7 +885,7 @@ D2
 S
 #11221
 A small path~
-You follow a small path leading towards the base of a mountain. The air 
+You follow a small path leading towards the base of a mountain. The air
 is fresh and somewhat silent, small bushes line the path which hasn't
 had much use by the looks of it.
 ~
@@ -933,8 +933,8 @@ D2
 S
 #11224
 Before the mountain~
-You reach the base of the mountain to find a large cave entrance. In 
-side the cave it looks dark but you can see no tracks on the ground 
+You reach the base of the mountain to find a large cave entrance. In
+side the cave it looks dark but you can see no tracks on the ground
 so you figure it's probably empty.
 ~
 0 1|4|8192 5
@@ -949,7 +949,7 @@ D2
 S
 #11225
 A tunnel~
-The cool dark tunnel slopes upwards slightly. Its dark grey walls give 
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give
 no clues to what could be in here.
 ~
 0 1|4|8|8192 5
@@ -1009,7 +1009,7 @@ D3
 S
 #11229
 A tunnel~
-The cool dark tunnel slopes upwards slightly. Its dark grey walls give 
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give
 no clues to what could be in here.
 ~
 0 1|4|8|8192 5
@@ -1024,8 +1024,8 @@ D3
 S
 #11230
 A tunnel~
-The cool dark tunnel slopes upwards slightly. Its dark grey walls give 
-no clues to what could be in here. You see a bright light up ahead, could 
+The cool dark tunnel slopes upwards slightly. Its dark grey walls give
+no clues to what could be in here. You see a bright light up ahead, could
 it treasure!
 ~
 0 1|4|8|8192 5
@@ -1618,7 +1618,7 @@ S
 A small hut~
 The path comes to an end before a small hut set into the surrounding
 foliage. The small dwelling is covered in green stringy moss, a
-small window next to the door is covered by a cloth, the door is 
+small window next to the door is covered by a cloth, the door is
 closed. The hut looks abandoned.
 ~
 0 1 3

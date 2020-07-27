@@ -3,17 +3,17 @@
 
 #HELPS
 1 MOC 'MERCENARIES OF CONQUEST'~
-For mutual benefit and the desire to reap vengeance on those who would draw 
-their wrath, certain members of KOS and AOD, along with certain other 
-individuals, formed a new alliance. 
+For mutual benefit and the desire to reap vengeance on those who would draw
+their wrath, certain members of KOS and AOD, along with certain other
+individuals, formed a new alliance.
 
-This alliance would strike down those who would try to impose their rule, try 
-and prey upon others, try and rule all. This alliance would adhere to no man's 
-laws but the just law of the right. This alliance would be labeled by the 
-weak, the simple minded, the inept. Labeled as common mercenaries. 
+This alliance would strike down those who would try to impose their rule, try
+and prey upon others, try and rule all. This alliance would adhere to no man's
+laws but the just law of the right. This alliance would be labeled by the
+weak, the simple minded, the inept. Labeled as common mercenaries.
 
-But this alliance is not of common petty thugs. Nor of thieves or murderers. 
-Thus so, the alliance would embrace the moniker, but in a way none of them 
+But this alliance is not of common petty thugs. Nor of thieves or murderers.
+Thus so, the alliance would embrace the moniker, but in a way none of them
 would understand.
 
 They would be the Mercenaries of Conquest.
@@ -26,8 +26,8 @@ Filleg grunt~
 Filleg the grunt~
 Filleg attempts to disembowel you.
 ~
-Wearing a much mended uniform he looks to be in good fighting shape as he 
-attempts to remove your limbs from your body.	
+Wearing a much mended uniform he looks to be in good fighting shape as he
+attempts to remove your limbs from your body.
 ~
 2|512|4096|4194304 2|8|16|32|128|32768|65536 0 S
 60 0 0 0d0+0 0d0+0
@@ -43,8 +43,8 @@ cognizant bat Tab~
 A cognizant bat~
 A cognizant bat informs you of your fate.
 ~
-It appears to be an ordinary bat, except it can talk and make threats. Other 
-than that - totally ordinary.	
+It appears to be an ordinary bat, except it can talk and make threats. Other
+than that - totally ordinary.
 ~
 2|512|4096 8|32|2048|8388608 1000 S
 60 0 0 0d0+0 0d0+0
@@ -53,7 +53,7 @@ than that - totally ordinary.
 >all_greet_prog 100~
    say Nice to see you, $n. Dark in here, no?
    say Probably a good thing - this way you wont see your blood all over the place.
-   mpecho The bat seems to grin at you and flex its little claws.	
+   mpecho The bat seems to grin at you and flex its little claws.
 ~
 |
 
@@ -62,7 +62,7 @@ Dakar~
 Dakar~
 Dakar seems to make a quick appraisal of your gear.
 ~
-Dakar has an extremely sharp eye and is keen on what's what and what's crap.	
+Dakar has an extremely sharp eye and is keen on what's what and what's crap.
 ~
 2|512|4096|1048756 8|32|8388608|16777216 1000 S
 60 0 0 0d0+0 0d0+0
@@ -74,8 +74,8 @@ Kooc~
 Kooc~
 Kooc offers you some refreshment.
 ~
-Looking rather comfortable in this place Kooc moves around preparing this and 
-eating that.	
+Looking rather comfortable in this place Kooc moves around preparing this and
+eating that.
 ~
 2|512|4096 8|32|8192|8388608 0 S
 60 0 0 0d0+0 0d0+0
@@ -98,18 +98,18 @@ empty air, yet you KNOW it's there.
    mpecho You feel as if you're not alone...
 ~
 >speech_prog bless~
-        	if clan($n) == moc                                                                           
-        		cast bless $n                                                                        
-        		break                                                                                
-        	else                                                                                         
-        		break;                                                                               
-        	endif	                                                                                     
+        	if clan($n) == moc
+        		cast bless $n
+        		break
+        	else
+        		break;
+        	endif
 ~
 >speech_prog bye~
-        	if clan($n) == moc                                                                           
+        	if clan($n) == moc
         		mpecho The world {ysh{Yim{x{ymers{x in your vision and then you find yourself outside the cave.
-        		mptransfer $n 507                                                                   
-        		break                                                                                
+        		mptransfer $n 507
+        		break
         	endif
 ~
 |
@@ -119,7 +119,7 @@ moe wizinvis guy~
 MOC wizinvis guy~
 MOC wizinvis guy drops the Kris.
 ~
-He's wizinvis, who cares?	
+He's wizinvis, who cares?
 ~
 2|512|4096|65536 8|32|8388608 0 S
 500 0 0 0d0+0 0d0+0
@@ -259,7 +259,7 @@ A
 A pitch bright cave~
 The walls of this cave have been worn smooth by many years of use. Neat
 shelves are cut into the walls and a doorway has been set into the south
-wall.	
+wall.
 ~
 0 1|8 0
 D 0
@@ -270,7 +270,7 @@ S
 
 #361
 {dTotal darkness{x~
-You are engulfed in {dtotal darkness{x.	
+You are engulfed in {dtotal darkness{x.
 ~
 0 1|8 0
 D 0
@@ -294,7 +294,7 @@ S
 #362
 Softly lit~
 You emerge into a softly lit part of the cave. Swords, gold, and various
-other things of interest are scattered about.	
+other things of interest are scattered about.
 ~
 0 1|8 0
 D 0
@@ -335,15 +335,15 @@ D 1
 0 -1 362
 E
 items item~
-Sword, lances, sheathes, cups, rocks, all sorts of objects are collected by 
+Sword, lances, sheathes, cups, rocks, all sorts of objects are collected by
 this man it seems.
 ~
 S
 
 #364
 Kooc~
-Spit fires, stone ovens, tables, chairs. All the required items to prepare 
-food, relax and stuff your face are strewn throughout this hollowed out 
+Spit fires, stone ovens, tables, chairs. All the required items to prepare
+food, relax and stuff your face are strewn throughout this hollowed out
 section of the cave.
 ~
 0 8 0
@@ -359,9 +359,9 @@ S
 
 #365
 Bunks~
-This cavern is HUGE. All sorts of bunks are scattered around, some even set 
-into the wall. Surprisingly, they all appear to be more like normal beds than 
-actual bunks. You suddenly get the sense of not being alone, then hear a sound 
+This cavern is HUGE. All sorts of bunks are scattered around, some even set
+into the wall. Surprisingly, they all appear to be more like normal beds than
+actual bunks. You suddenly get the sense of not being alone, then hear a sound
 you can't describe, but it's rather...pleasant.
 ~
 0 8 0

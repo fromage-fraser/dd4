@@ -545,7 +545,7 @@ a maze dweller~
 A Maze Dweller sits here, having given up hope.
 ~
 Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
-of the beings who have made their way through (or got forever lost in) the 
+of the beings who have made their way through (or got forever lost in) the
 Maze.
 ~
 2|64 1 0 S
@@ -571,7 +571,7 @@ a maze dweller~
 A Maze Dweller sits here, having given up hope.
 ~
 Pale and weak, the Maze Dwellers appear to be the manifestations of the beings
-of the beings who have made their way through (or got forever lost in) the 
+of the beings who have made their way through (or got forever lost in) the
 Maze.
 ~
 2|64 1 0 S
@@ -584,7 +584,7 @@ Ryan~
 Ryan~
 Ryan makes his way through the maze.
 ~
-A bent young fellow in dark clothes and a grey cloak. He darts from shadow to 
+A bent young fellow in dark clothes and a grey cloak. He darts from shadow to
 shadow not knowing that you are watching.
 ~
 64 32768 0 S
@@ -859,7 +859,7 @@ The innkeeper Gleag~
 The innkeeper, Gleag, is here serving customers.
 ~
 The innkeeper looks like your standard issue person who runs an inn. Expect
-for that weird twinkle in his eyes.	
+for that weird twinkle in his eyes.
 ~
 2|32768 8|32|8388608 0 S
 950 0 0 0d0+0 0d0+0
@@ -1233,7 +1233,7 @@ Kaugh Boum~
 Kaugh Boum stand behind the counter mixing stuff that occasionally
 ~
 It's hard to make out what he's wearing, as it's all covered in black marks
-from explosions and various tears probably from the same culprit.	
+from explosions and various tears probably from the same culprit.
 ~
 2|32768 0 -1000 S
 150 0 0 0d0+0 0d0+0
@@ -1794,7 +1794,7 @@ A bloody steel axe drips blood.~
 1 0 0
 E
 bloody steel axe~
-A razor sharp weapon, fresh blood dripping from its blade, it emanates an 
+A razor sharp weapon, fresh blood dripping from its blade, it emanates an
 eerie power.
 ~
 A
@@ -2009,8 +2009,8 @@ A
 #ROOMS
 #56051
 Citadel of Aureola~
-You materialize some distance from a citadel that appears to be surrounded in 
-a spectacular light. It sits atop a massive mountain that you yourself now 
+You materialize some distance from a citadel that appears to be surrounded in
+a spectacular light. It sits atop a massive mountain that you yourself now
 stand upon.
 ~
 0 8192 5
@@ -2122,7 +2122,7 @@ S
 Blinding light~
 As you step into this room you are blinded by the light as it pours in through
 the window, completely obliterating your vision. It is insanely bright and the
-burning is worse than in the rest of the place.	
+burning is worse than in the rest of the place.
 ~
 0 8192|262144 0
 D 1
@@ -2157,8 +2157,8 @@ S
 
 #56059
 Blinding light~
-As you step into this room you are blinded by the light as it pours in through 
-the window, completely obliterating your vision. It is insanely bright and the 
+As you step into this room you are blinded by the light as it pours in through
+the window, completely obliterating your vision. It is insanely bright and the
 burning is worse than in the rest of the place.
 ~
 0 8192|262144 0
@@ -2430,7 +2430,7 @@ S
 #56075
 Wall of a reef~
 You slam into a wall that looms out of the darkness. Your senses reel as you
-spin through the darkness and you wish for just a glimmer of light.	
+spin through the darkness and you wish for just a glimmer of light.
 ~
 0 1|8192|131072 6
 D 2
@@ -2587,7 +2587,7 @@ S
 #56084
 Among the trees~
 The haze and trees surround you and you feel lost and alone. Try as you might
-to get a sense of direction you stumble onward as lost as ever.	
+to get a sense of direction you stumble onward as lost as ever.
 ~
 0 8192 3
 D 0
@@ -2684,7 +2684,7 @@ S
 #56088
 An open clearing~
 The trees are absent here, but the haze seems to be as thick as ever and you
-are therefore still very, very lost.	
+are therefore still very, very lost.
 ~
 0 8192 3
 D 0
@@ -2762,7 +2762,7 @@ S
 #56092
 Hollow in the Holt~
 An opening appears out of the trees and haze, forming what can only be
-described as a...hollow...in the surrounding press of trees and haze.	
+described as a...hollow...in the surrounding press of trees and haze.
 ~
 0 8192 3
 D 2
@@ -2904,8 +2904,8 @@ S
 
 #56101
 Outside the Inn~
-Before you stands a sturdy and most impressive looking inn. The weird 
-{ymagic{x field that seems to surround it doesn't worry you a bit. The Anon 
+Before you stands a sturdy and most impressive looking inn. The weird
+{ymagic{x field that seems to surround it doesn't worry you a bit. The Anon
 Circuit Road is to the west.
 ~
 0 4 2
@@ -2949,7 +2949,7 @@ S
 #56103
 Stairs to the second floor of the Inn~
 The simple stairway leads up to the stores and services that are located on
-the second floor. You occasionally hear curses and explosions.	
+the second floor. You occasionally hear curses and explosions.
 ~
 0 8 0
 D 1
@@ -2978,7 +2978,7 @@ S
 #56105
 Corridor in the Inn~
 This corridor of the inn leads to a door. The door looks ancient, even older
-than the inn. It appears to be quite sturdy, however.	
+than the inn. It appears to be quite sturdy, however.
 ~
 0 4|8 0
 D 0
@@ -3105,7 +3105,7 @@ S
 Bubble and Trouble~
 Shelves full of things that seem to be exploding in their bottles and other
 things that you swear are trying to ooze out of their jars and strangle you
-are here.	
+are here.
 ~
 0 8 0
 D 3
@@ -3283,7 +3283,7 @@ S
 The Antediluvian Maze~
 The maze's blank walls reveal nothing about which direction you should go.
 Occasionally you hear the sound of dripping water; it seems to be seeping from
-the ceiling. You notice the water seems to be seeping into the south wall... 
+the ceiling. You notice the water seems to be seeping into the south wall...
 odd.
 ~
 0 1|8 0

@@ -105,7 +105,7 @@ a creek~
 A creek trickles quietly~
 ~
 25 0 8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #18201
 billy~
@@ -113,7 +113,7 @@ a billy~
 There is a fire crackilng with a billy boiling away~
 ~
 25 0 8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #18202
 pitch fork~
@@ -121,7 +121,7 @@ a Pitch Fork~
 A Pitch fork lies here stuck in a stack of hay~
 ~
 5 0 1|8192
-0~ 1~ 6~ 2~ 
+0~ 1~ 6~ 2~
 5 0 0
 A
 18 0
@@ -131,7 +131,7 @@ a pitch fork~
 A pitch fork is stuck here in the haystack~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 13 0
@@ -141,7 +141,7 @@ a hay stack~
 A HUGE Hay stack~
 ~
 13 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 50000 0 0
 #18206
 sword beast hideout~
@@ -149,7 +149,7 @@ the sword of the beast~
 A sword carried behind your back is sheathed here.~
 ~
 5 1 1|8192
-10~ 50~ 0~ 3~ 
+10~ 50~ 0~ 3~
 5 0 0
 A
 1 1
@@ -163,7 +163,7 @@ a wand~
 A small stick with claw marks in it.~
 ~
 3 64 1|16384
-60~ 10~ 10~ dispel magic~ 
+60~ 10~ 10~ dispel magic~
 5 0 0
 #18208
 ring bone~
@@ -171,7 +171,7 @@ a bone ring~
 A small piece of bone with a hole in the middle.~
 ~
 9 2|64 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 15
@@ -185,7 +185,7 @@ a pile of gold coins~
 A pile of gold coins.~
 ~
 20 0 1
-0~ 0~ 300~ 0~ 
+0~ 0~ 300~ 0~
 5 0 0
 #18210
 bracer large bone~
@@ -193,7 +193,7 @@ a large bone bracer~
 A large chunk of bone.~
 ~
 9 0 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 150
@@ -209,7 +209,7 @@ A
 #ROOMS
 #18200
 Plains~
-Long grass blow gently in the wind, as the breeze sweeps through it the 
+Long grass blow gently in the wind, as the breeze sweeps through it the
 seeds are picked up and drift across in the air.
 The haze created by dust and small seeds impedes your vison.
 ~
@@ -343,7 +343,7 @@ D3
 S
 #18208
 4-way junction~
-You are at a junction where the path extends in all major directions of the compass.  A parere dog 
+You are at a junction where the path extends in all major directions of the compass.  A parere dog
 has chosen this place to dig his home and you can hear something scuttling about underneath
 your feet.  While south of here a creek is trickling into a small pond.
 ~
@@ -573,7 +573,7 @@ S
 #18220
 a Pond~
 The creek trickles into the pond that has been overgrown with weeds, small tadpoles swim
-merrily around as they wait to become full grown frogs.  A small sign in the middle of the pond 
+merrily around as they wait to become full grown frogs.  A small sign in the middle of the pond
 stands out a little.
 ~
 0 0 2
@@ -625,7 +625,7 @@ D4
 S
 #18223
 underwater~
-You are in a small tunnel that goes up and south, it seems not many people have been here before. 
+You are in a small tunnel that goes up and south, it seems not many people have been here before.
 The floor is covered with a thick slime.
 ~
 0 1|8|512|8192 6
@@ -1021,8 +1021,8 @@ D2
 S
 #18248
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked 
-up and drift across in  the air.  The haze created by dust and small seeds impedes 
+Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked
+up and drift across in  the air.  The haze created by dust and small seeds impedes
 your vison. A dirt track winds east tne north, to a very large imposing mountain.
 Howls of terror drift across the plains followed by blood curdling screams.
 ~
@@ -1176,7 +1176,7 @@ Entrance to Anon~
 You are standing outside the entrance to Anon. The City walls stand before
 you, there weather beaten exterior, surely hold many tales to attempted
 attacks and defenses. the noise of a busy markey comes from within these
-walls. A place to rest, drink, food and women seems to draw you in. 
+walls. A place to rest, drink, food and women seems to draw you in.
 ~
 0 0 1
 D1
@@ -1221,8 +1221,8 @@ D5
 S
 #18262
 Behind the Waterfall~
-Behind you, a creek trickles over a small ledge, about the height of a man.  
-You can comfortably stand in this small recess behind the waterfall.  Further 
+Behind you, a creek trickles over a small ledge, about the height of a man.
+You can comfortably stand in this small recess behind the waterfall.  Further
 on, the recess seems to open up in to a small room.
 ~
 0 1|8 0

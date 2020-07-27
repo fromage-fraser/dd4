@@ -20,8 +20,8 @@ wizard~
 An Ancient Wizard~
 An Ancient Wizard stands here as to prevent you from entering the caves.
 ~
-You realize as you look upon this wizened Wizard, that you must defeat him in 
-combat before you can enter the caves.  Why waste the effort, you should really 
+You realize as you look upon this wizened Wizard, that you must defeat him in
+combat before you can enter the caves.  Why waste the effort, you should really
 take the easy way out and leave..
 ~
 2 8192 0 S
@@ -214,8 +214,8 @@ captive creature~
 Captive of the Goblins~
 A poor defenseless creature is here, urging you to look at it.
 ~
-The Creature tells you, 'Please kill me, my life is over and i can't take the 
-torture anymore.  In return i shall give you the key to a secret doorway that 
+The Creature tells you, 'Please kill me, my life is over and i can't take the
+torture anymore.  In return i shall give you the key to a secret doorway that
 leads to the king.  This door is .....'.  The poor creature faints.
 ~
 2 8192 0 S
@@ -381,8 +381,8 @@ D2
 S
 #20006
 At the entrance~
-Before you stands the entrance to the Imfamous Goblin Caves.  Legend has it 
-that many a brave adventurer has set foot within, but few have ever returned.  
+Before you stands the entrance to the Imfamous Goblin Caves.  Legend has it
+that many a brave adventurer has set foot within, but few have ever returned.
 However, you think to yourself "Yeah as if!!"...
 ~
 0 0 0
@@ -416,7 +416,7 @@ Door~
 2 20000 20006
 E
 door~
-A huge granite door is here providing your only escape out, until you finish 
+A huge granite door is here providing your only escape out, until you finish
 off the Goblin King.
 ~
 S
@@ -440,7 +440,7 @@ D2
 S
 #20009
 Hallway~
-You come to a turn in the hall, it goes in a southward direction to what 
+You come to a turn in the hall, it goes in a southward direction to what
 appears to be a door.
 In the distance you hear a mumbling that sounds very much like voices......
 ~
@@ -456,8 +456,8 @@ D3
 S
 #20010
 End of the Hallway~
-You have finally reached the end of the hallway.  And although it appears to 
-be a dead end, there seems to be something very odd about the east wall...  
+You have finally reached the end of the hallway.  And although it appears to
+be a dead end, there seems to be something very odd about the east wall...
 Also there are sounds coming from that direction as well.
 ~
 0 9 0
@@ -473,9 +473,9 @@ wall~
 S
 #20011
 Armory~
-I don't know how you did it, but you have reached the armory of the Goblins, 
-there are several useful (albeit basic) pieces of armor on the floor.  Against 
-the east wall there is a huge fire burning steadily, obviously for the 
+I don't know how you did it, but you have reached the armory of the Goblins,
+there are several useful (albeit basic) pieces of armor on the floor.  Against
+the east wall there is a huge fire burning steadily, obviously for the
 ironworking.
 ~
 0 9 0
@@ -512,7 +512,7 @@ S
 Hallway~
 You are walking down a narrow hallway made of stone.  Slime coats the walls,
 as well as blood stains.  Some of the blood on the walls is very fresh!  As
-if someone had been through here today!  To the west you see a cell door, and 
+if someone had been through here today!  To the west you see a cell door, and
 to the east, you can see an intersection.
 ~
 0 9 0
@@ -550,7 +550,7 @@ S
 Guard Room~
 You have entered a guard room.  Its furnishings are crude, and unimpressive.
 In general, there are a few tables, a couple chairs but nothing much else that
-seems important.  There is a large pile of dung in the corner of the room, 
+seems important.  There is a large pile of dung in the corner of the room,
 which smells particularly bad.  Rusted swords lay about, and it seems that a
 strange game involving sticks had been played upon the table.
 ~
@@ -595,7 +595,7 @@ S
 Alcove~
 You have reached a small alcove in the dungeon.  There is nothing interesting
 to be said here.  It's a small, oddly-carved niche in the wall, which has been
-smoothed out, and used as storage.  There is a small bench against the north 
+smoothed out, and used as storage.  There is a small bench against the north
 wall, and a few strange rocks, but other than that, there is nothing strange.
 ~
 0 9 0
@@ -814,7 +814,7 @@ Large Cave~
 You have reached a large, smooth cave, behind the waterfall.  A small fire
 burns in the center of the room.  The walls are very smooth, and there is no
 water to be found.  Bones litter the floor, and there are several tables set
-up in the room.  Against the northern wall, there is a large, stone throne, 
+up in the room.  Against the northern wall, there is a large, stone throne,
 and against the western wall, you see a rather large chest.  Also, you notice
 a smaller cave to the east.
 ~

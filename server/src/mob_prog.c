@@ -43,14 +43,14 @@ bool	mprog_veval		args( ( int lhs, char* opr, int rhs ) );
 bool	mprog_do_ifchck		args( ( char* ifchck, CHAR_DATA* mob,
 				       CHAR_DATA* actor, OBJ_DATA* obj,
 				       void* vo, CHAR_DATA* rndm ) );
-char *	mprog_process_if	args( ( char* ifchck, char* com_list, 
+char *	mprog_process_if	args( ( char* ifchck, char* com_list,
 				       CHAR_DATA* mob, CHAR_DATA* actor,
 				       OBJ_DATA* obj, void* vo,
 				       CHAR_DATA* rndm ) );
 void	mprog_translate		args( ( char ch, char* t, CHAR_DATA* mob,
 				       CHAR_DATA* actor, OBJ_DATA* obj,
 				       void* vo, CHAR_DATA* rndm ) );
-void	mprog_process_cmnd	args( ( char* cmnd, CHAR_DATA* mob, 
+void	mprog_process_cmnd	args( ( char* cmnd, CHAR_DATA* mob,
 				       CHAR_DATA* actor, OBJ_DATA* obj,
 				       void* vo, CHAR_DATA* rndm ) );
 void	mprog_driver		args( ( char* com_list, CHAR_DATA* mob,
@@ -172,43 +172,43 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
   int       lhsvl;
   int       rhsvl;
 
-  if ( *point == '\0' ) 
+  if ( *point == '\0' )
     {
-      bug ( "Mob: %d null ifchck", mob->pIndexData->vnum ); 
+      bug ( "Mob: %d null ifchck", mob->pIndexData->vnum );
       return -1;
-    }   
+    }
   /* skip leading spaces */
   while ( *point == ' ' )
     point++;
 
   /* get whatever comes before the left paren.. ignore spaces */
-  while ( *point != '(' ) 
-    if ( *point == '\0' ) 
+  while ( *point != '(' )
+    if ( *point == '\0' )
       {
-	bug ( "Mob: %d ifchck syntax error", mob->pIndexData->vnum ); 
+	bug ( "Mob: %d ifchck syntax error", mob->pIndexData->vnum );
 	return -1;
-      }   
+      }
     else
       if ( *point == ' ' )
 	point++;
-      else 
-	*bufpt++ = *point++; 
+      else
+	*bufpt++ = *point++;
 
   *bufpt = '\0';
   point++;
 
   /* get whatever is in between the parens.. ignore spaces */
-  while ( *point != ')' ) 
-    if ( *point == '\0' ) 
+  while ( *point != ')' )
+    if ( *point == '\0' )
       {
-	bug ( "Mob: %d ifchck syntax error", mob->pIndexData->vnum ); 
+	bug ( "Mob: %d ifchck syntax error", mob->pIndexData->vnum );
 	return -1;
-      }   
+      }
     else
       if ( *point == ' ' )
 	point++;
-      else 
-	*argpt++ = *point++; 
+      else
+	*argpt++ = *point++;
 
   *argpt = '\0';
   point++;
@@ -216,25 +216,25 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
   /* check to see if there is an operator */
   while ( *point == ' ' )
     point++;
-  if ( *point == '\0' ) 
+  if ( *point == '\0' )
     {
       *opr = '\0';
       *val = '\0';
-    }   
+    }
   else /* there should be an operator and value, so get them */
     {
-      while ( ( *point != ' ' ) && ( !isalnum( *point ) ) ) 
-	if ( *point == '\0' ) 
+      while ( ( *point != ' ' ) && ( !isalnum( *point ) ) )
+	if ( *point == '\0' )
 	  {
 	    bug ( "Mob: %d ifchck operator without value",
-		 mob->pIndexData->vnum ); 
+		 mob->pIndexData->vnum );
 	    return -1;
-	  }   
+	  }
 	else
-	  *oprpt++ = *point++; 
+	  *oprpt++ = *point++;
 
       *oprpt = '\0';
- 
+
       /* finished with operator, skip spaces and then get the value */
       while ( *point == ' ' )
 	point++;
@@ -243,7 +243,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	  if ( ( *point != ' ' ) && ( *point == '\0' ) )
 	    break;
 	  else
-	    *valpt++ = *point++; 
+	    *valpt++ = *point++;
 	}
 
       *valpt = '\0';
@@ -281,7 +281,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                      return ( !IS_NPC( rndm ) );
 	          else return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'ispc'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'ispc'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -301,11 +301,11 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	             return IS_NPC( rndm );
 	          else return -1;
 	default:
-	  bug ("Mob: %d bad argument to 'isnpc'", mob->pIndexData->vnum ); 
+	  bug ("Mob: %d bad argument to 'isnpc'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
-	
+
   if ( !str_cmp( buf, "isgood" ) )
     {
       switch ( arg[1] )  /* arg should be "$*" so just get the letter */
@@ -321,7 +321,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	             return IS_GOOD( rndm );
 	          else return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'isgood'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'isgood'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -344,7 +344,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
           bug ( "Mob: %d bad argument to 'isevil'", mob->pIndexData->vnum );
           return -1;
         }
-    } 
+    }
 
   if ( !str_cmp( buf, "isfight" ) )
     {
@@ -361,7 +361,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	             return ( rndm->fighting ) ? 1 : 0;
 	          else return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'isfight'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'isfight'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -380,7 +380,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		}
 		return -1;
 
-	case 'n': 
+	case 'n':
 		if (actor)
 		{
 			if (!IS_NPC(actor) && actor->level > LEVEL_HERO)
@@ -400,7 +400,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		}
 		return -1;
 
-	case 'r': 
+	case 'r':
 		if (rndm)
 		{
 			if (!IS_NPC(rndm) && rndm->level > LEVEL_HERO)
@@ -411,7 +411,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		return -1;
 
 	default:
-	  bug ( "Mob: %d bad argument to 'isimmort'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'isimmort'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -432,7 +432,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else return -1;
 	default:
 	  bug ( "Mob: %d bad argument to 'ischarmed'",
-	       mob->pIndexData->vnum ); 
+	       mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -456,7 +456,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 			     && rndm->master->in_room == rndm->in_room );
 	          else return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'isfollow'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'isfollow'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -477,11 +477,11 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else return -1;
 	default:
 	  bug ( "Mob: %d bad argument to 'isaffected'",
-	       mob->pIndexData->vnum ); 
+	       mob->pIndexData->vnum );
 	  return -1;
 	}
     }
-	
+
   if ( !str_cmp( buf, "hitprcnt" ) )
     {
       switch ( arg[1] )  /* arg should be "$*" so just get the letter */
@@ -514,7 +514,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'hitprcnt'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'hitprcnt'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -551,7 +551,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'inroom'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'inroom'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -588,7 +588,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'sex'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'sex'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -625,7 +625,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'position'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'position'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -634,7 +634,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
     {
       switch ( arg[1] )  /* arg should be "$*" so just get the letter */
 	{
-	case 'i': 
+	case 'i':
 		  /* lhsvl = get_trust( mob ); */
 		  lhsvl = mob->level;
 	          rhsvl = atoi( val );
@@ -646,7 +646,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		    rhsvl = atoi( val );
 		    return mprog_veval( lhsvl, opr, rhsvl );
 		  }
-	          else 
+	          else
 		    return -1;
 	case 't': if ( vict )
 	          {
@@ -667,7 +667,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'level'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'level'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -685,7 +685,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		    rhsvl = atoi( val );
 		    return mprog_veval( lhsvl, opr, rhsvl );
 		  }
-	          else 
+	          else
 		    return -1;
 	case 't': if ( vict )
 	          {
@@ -704,7 +704,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'class'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'class'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -741,7 +741,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'goldamt'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'goldamt'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -767,7 +767,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'objtype'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'objtype'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -790,10 +790,10 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		    rhsvl = atoi( val );
 		    return mprog_veval( lhsvl, opr, rhsvl );
 		  }
-	          else 
+	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'objval0'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'objval0'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -819,7 +819,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'objval1'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'objval1'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -845,7 +845,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'objval2'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'objval2'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -862,7 +862,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 		  }
 	          else
 		    return -1;
-	case 'p': if ( v_obj ) 
+	case 'p': if ( v_obj )
 	          {
 		    lhsvl = v_obj->value[3];
 		    rhsvl = atoi( val );
@@ -871,7 +871,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'objval3'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'objval3'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -932,7 +932,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'number'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'number'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -963,7 +963,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	          else
 		    return -1;
 	default:
-	  bug ( "Mob: %d bad argument to 'name'", mob->pIndexData->vnum ); 
+	  bug ( "Mob: %d bad argument to 'name'", mob->pIndexData->vnum );
 	  return -1;
 	}
     }
@@ -974,24 +974,24 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 	if (!str_cmp(buf, "clan"))
 	{
 		int clan = clan_lookup(val);
-		
+
 		switch (arg[1])
 		{
-		    case 'i': 
+		    case 'i':
 			return -1;
-		    
+
 		    case 'n':
 			if (actor && !IS_NPC(actor))
 			    return mprog_veval(actor->clan, opr, clan);
 			else
 			    return -1;
-			
+
 		    case 't':
 			if (vict)
 			    return mprog_veval(vict->clan, opr, clan);
 			else
 			    return -1;
-		    
+
 		    case 'r':
 			return -1;
 
@@ -1007,7 +1007,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
 			return -1;
 		}
 	}
-	
+
 	/*
  	 * Is carrying - Shade 2003
 	 *
@@ -1046,8 +1046,8 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                                 if (pobj->pIndexData->vnum == vnum)
                                    return mprog_veval(pobj->pIndexData->vnum, opr, vnum);
                             }
-				
-			    return mprog_veval(0, opr, vnum); 
+
+			    return mprog_veval(0, opr, vnum);
 			}
                         else
                             return -1;
@@ -1087,7 +1087,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
   /* Ok... all the ifchcks are done, so if we didnt find ours then something
    * odd happened.  So report the bug and abort the MOBprogram (return error)
    */
-  bug ( "Mob: %d unknown ifchck", mob->pIndexData->vnum ); 
+  bug ( "Mob: %d unknown ifchck", mob->pIndexData->vnum );
   return -1;
 
 }
@@ -1136,7 +1136,7 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
        cmnd++;
      if ( *cmnd == '\0' )
      {
-	 bug ( "Mob: %d no commands after IF/OR", mob->pIndexData->vnum ); 
+	 bug ( "Mob: %d no commands after IF/OR", mob->pIndexData->vnum );
 	 return null;
      }
      morebuf = one_argument( cmnd, buf );
@@ -1152,12 +1152,12 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
      else
        loopdone = TRUE;
  }
- 
+
  if ( flag )
-   for ( ; ; ) /*ifcheck was true, do commands but ignore else to endif*/ 
+   for ( ; ; ) /*ifcheck was true, do commands but ignore else to endif*/
    {
        if ( !str_cmp( buf, "if" ) )
-       { 
+       {
 	   com_list = mprog_process_if(morebuf,com_list,mob,actor,obj,vo,rndm);
 	   while ( *cmnd==' ' )
 	     cmnd++;
@@ -1171,10 +1171,10 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
        if ( !str_cmp( buf, "break" ) )
 	 return null;
        if ( !str_cmp( buf, "endif" ) )
-	 return com_list; 
-       if ( !str_cmp( buf, "else" ) ) 
+	 return com_list;
+       if ( !str_cmp( buf, "else" ) )
        {
-	   while ( str_cmp( buf, "endif" ) ) 
+	   while ( str_cmp( buf, "endif" ) )
 	   {
 	       cmnd     = com_list;
 	       com_list = mprog_next_command( com_list );
@@ -1188,7 +1188,7 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
 	       }
 	       morebuf = one_argument( cmnd,buf );
 	   }
-	   return com_list; 
+	   return com_list;
        }
        mprog_process_cmnd( cmnd, mob, actor, obj, vo, rndm );
        cmnd     = com_list;
@@ -1197,7 +1197,7 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
 	 cmnd++;
        if ( *cmnd == '\0' )
        {
-           bug ( "Mob: %d missing else or endif", mob->pIndexData->vnum ); 
+           bug ( "Mob: %d missing else or endif", mob->pIndexData->vnum );
            return null;
        }
        morebuf = one_argument( cmnd, buf );
@@ -1213,7 +1213,7 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
 	 if ( *cmnd == '\0' )
 	   {
 	     bug ( "Mob: %d missing an else or endif",
-		  mob->pIndexData->vnum ); 
+		  mob->pIndexData->vnum );
 	     return null;
 	   }
 	 morebuf = one_argument( cmnd, buf );
@@ -1227,16 +1227,16 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
      while ( *cmnd == ' ' )
        cmnd++;
      if ( *cmnd == '\0' )
-       { 
-	 bug ( "Mob: %d missing endif", mob->pIndexData->vnum ); 
+       {
+	 bug ( "Mob: %d missing endif", mob->pIndexData->vnum );
 	 return null;
        }
      morebuf = one_argument( cmnd, buf );
-     
+
      for ( ; ; ) /*process the post-else commands until an endif is found.*/
        {
 	 if ( !str_cmp( buf, "if" ) )
-	   { 
+	   {
 	     com_list = mprog_process_if( morebuf, com_list, mob, actor,
 					 obj, vo, rndm );
 	     while ( *cmnd == ' ' )
@@ -1248,16 +1248,16 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
 	     morebuf  = one_argument( cmnd,buf );
 	     continue;
 	   }
-	 if ( !str_cmp( buf, "else" ) ) 
+	 if ( !str_cmp( buf, "else" ) )
 	   {
 	     bug ( "Mob: %d found else in an else section",
-		  mob->pIndexData->vnum ); 
+		  mob->pIndexData->vnum );
 	     return null;
 	   }
 	 if ( !str_cmp( buf, "break" ) )
 	   return null;
 	 if ( !str_cmp( buf, "endif" ) )
-	   return com_list; 
+	   return com_list;
 	 mprog_process_cmnd( cmnd, mob, actor, obj, vo, rndm );
 	 cmnd     = com_list;
 	 com_list = mprog_next_command( com_list );
@@ -1266,7 +1266,7 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
 	 if ( *cmnd == '\0' )
 	   {
 	     bug ( "Mob:%d missing endif in else section",
-		  mob->pIndexData->vnum ); 
+		  mob->pIndexData->vnum );
 	     return null;
 	   }
 	 morebuf = one_argument( cmnd, buf );
@@ -1279,7 +1279,7 @@ char *mprog_process_if( char *ifchck, char *com_list, CHAR_DATA *mob,
  * clear how it is done and they are quite easy to do, so you
  * can be as creative as you want. The only catch is to check
  * that your variables exist before you use them. At the moment,
- * using $t when the secondary target refers to an object 
+ * using $t when the secondary target refers to an object
  * i.e. >prog_act drops~<nl>if ispc($t)<nl>sigh<nl>endif<nl>~<nl>
  * probably makes the mud crash (vice versa as well) The cure
  * would be to change act() so that vo becomes vict & v_obj.
@@ -1313,7 +1313,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
       break;
 
      case 'N':
-         if ( actor ) { 
+         if ( actor ) {
             if ( can_see( mob, actor ) )
 	       if ( IS_NPC( actor ) )
 		 strcpy( t, actor->short_descr );
@@ -1351,7 +1351,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
 	      strcpy( t, "someone" );
 	 }
 	 break;
-     
+
      case 'r':
          if ( rndm )
 	   if ( can_see( mob, rndm ) )
@@ -1381,45 +1381,45 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
 	   can_see( mob, actor ) ? strcpy( t, he_she[ actor->sex ] )
 	                         : strcpy( t, "someone" );
 	 break;
-  
+
      case 'm':
          if ( actor )
 	   can_see( mob, actor ) ? strcpy( t, him_her[ actor->sex ] )
                                  : strcpy( t, "someone" );
 	 break;
-  
+
      case 's':
          if ( actor )
 	   can_see( mob, actor ) ? strcpy( t, his_her[ actor->sex ] )
 	                         : strcpy( t, "someone's" );
 	 break;
-     
+
      case 'E':
          if ( vict )
 	   can_see( mob, vict ) ? strcpy( t, he_she[ vict->sex ] )
                                 : strcpy( t, "someone" );
 	 break;
-  
+
      case 'M':
          if ( vict )
 	   can_see( mob, vict ) ? strcpy( t, him_her[ vict->sex ] )
                                 : strcpy( t, "someone" );
 	 break;
-  
+
      case 'S':
          if ( vict )
 	   can_see( mob, vict ) ? strcpy( t, his_her[ vict->sex ] )
-                                : strcpy( t, "someone's" ); 
+                                : strcpy( t, "someone's" );
 	 break;
 
      case 'j':
 	 strcpy( t, he_she[ mob->sex ] );
 	 break;
-  
+
      case 'k':
 	 strcpy( t, him_her[ mob->sex ] );
 	 break;
-  
+
      case 'l':
 	 strcpy( t, his_her[ mob->sex ] );
 	 break;
@@ -1429,13 +1429,13 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
 	   can_see( mob, rndm ) ? strcpy( t, he_she[ rndm->sex ] )
 	                        : strcpy( t, "someone" );
 	 break;
-  
+
      case 'K':
          if ( rndm )
 	   can_see( mob, rndm ) ? strcpy( t, him_her[ rndm->sex ] )
                                 : strcpy( t, "someone" );
 	 break;
-  
+
      case 'L':
          if ( rndm )
 	   can_see( mob, rndm ) ? strcpy( t, his_her[ rndm->sex ] )
@@ -1467,7 +1467,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
       break;
 
      case 'a':
-         if ( obj ) 
+         if ( obj )
           switch ( *( obj->name ) )
 	  {
 	    case 'a': case 'e': case 'i':
@@ -1478,7 +1478,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
 	 break;
 
      case 'A':
-         if ( v_obj ) 
+         if ( v_obj )
           switch ( *( v_obj->name ) )
 	  {
             case 'a': case 'e': case 'i':
@@ -1538,7 +1538,7 @@ void mprog_process_cmnd( char *cmnd, CHAR_DATA *mob, CHAR_DATA *actor,
 
 }
 
-/* The main focus of the MOBprograms.  This routine is called 
+/* The main focus of the MOBprograms.  This routine is called
  *  whenever a trigger is successful.  It is responsible for parsing
  *  the command list and figuring out what to do. However, like all
  *  complex procedures, everything is farmed out to the other guys.
@@ -1574,7 +1574,7 @@ void mprog_driver ( char *com_list, CHAR_DATA *mob, CHAR_DATA *actor,
 	 rndm = vch;
        count++;
      }
-  
+
  strcpy( tmpcmndlst, com_list );
  command_list = tmpcmndlst;
  cmnd         = command_list;
@@ -1710,9 +1710,9 @@ void mprog_act_trigger( char *buf, CHAR_DATA *mob, CHAR_DATA *ch,
 
       mob->mpact      = tmp_act;
       mob->mpact->buf = str_dup( buf );
-      mob->mpact->ch  = ch; 
-      mob->mpact->obj = obj; 
-      mob->mpact->vo  = vo; 
+      mob->mpact->ch  = ch;
+      mob->mpact->obj = obj;
+      mob->mpact->vo  = vo;
       mob->mpactnum++;
 
     }
@@ -1850,7 +1850,7 @@ void mprog_hitprcnt_trigger( CHAR_DATA *mob, CHAR_DATA *ch)
 	 mprog_driver( mprg->comlist, mob, ch, NULL, NULL );
 	 break;
        }
- 
+
  return;
 
 }

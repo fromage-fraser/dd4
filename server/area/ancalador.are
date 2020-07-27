@@ -113,7 +113,7 @@ and begins to tell a strange tale,
 	dancing and drinking were over, and life returned to its
 	quiet pace, the people began to notice that the Dragon's
 	presence could still be felt.  Ancalador did, in fact,
-	continue to rule from his petrified prison through the 
+	continue to rule from his petrified prison through the
 	manipulation of the minds of men.  Indeed, he has done so
 	to this day.  Many believe he is plotting the day he can
         return in the flesh, so to speak...'
@@ -233,7 +233,7 @@ a falchion~
 A strange looking sword lies discarded here.~
 ~
 5 0 1|8192
-0~ 2~ 6~ 3~ 
+0~ 2~ 6~ 3~
 5 900 0
 E
 falchion sword~
@@ -245,7 +245,7 @@ a chalice~
 A blood-stained chalice has been set down here.~
 ~
 17 0 1|16384
-6~ 6~ 13~ 1~ 
+6~ 6~ 13~ 1~
 1 300 0
 E
 chalice~
@@ -257,7 +257,7 @@ the copper coffer~
 An ornate copper coffer is set against the far wall.~
 ~
 15 0 0
-200~ 13~ 0~ 0~ 
+200~ 13~ 0~ 0~
 0 0 0
 E
 coffer copper ornate~
@@ -270,7 +270,7 @@ a tonic of comfrey root~
 A tonic of comfrey root has been discarded here.~
 ~
 10 64 1|16384
-15~ giant strength~ giant strength~ poison~ 
+15~ giant strength~ giant strength~ poison~
 1 600 0
 E
 tonic root comfrey~
@@ -282,7 +282,7 @@ an elixir of Adder's Tongue~
 An elixir of Adder's Tongue lies here.~
 ~
 10 64 1|16384
-15~ detect hidden~ detect poison~ ~ 
+15~ detect hidden~ detect poison~ ~
 1 600 0
 E
 elixir tongue adder~
@@ -295,7 +295,7 @@ a skeleton key~
 An old skeleton key lies on the floor.~
 ~
 18 0 1|16384
-16805~ 0~ 0~ 0~ 
+16805~ 0~ 0~ 0~
 2 500 0
 E
 key skeleton~
@@ -307,7 +307,7 @@ a blowgun~
 A long, bamboo blowgun rest on the ground.~
 ~
 5 0 1|8192
-0~ 9~ 2~ 7~ 
+0~ 9~ 2~ 7~
 5 16000 0
 A
 18 15
@@ -322,7 +322,7 @@ the pool~
 You seem to be standing in a pool of blood.~
 ~
 17 0 0
-15~ 15~ 13~ 1~ 
+15~ 15~ 13~ 1~
 500 500 0
 E
 blood pool~
@@ -335,7 +335,7 @@ the Bloodstone~
 A large, dull red stone awaits, invitingly, to be picked up.~
 ~
 4 2|64|512 1|16384
-70~ 7~ 7~ energy drain~ 
+70~ 7~ 7~ energy drain~
 8 30000 0
 A
 4 -2
@@ -353,7 +353,7 @@ the Heartseeker~
 A nasty looking stiletto with a shiny black blade lies amid the dust.~
 ~
 5 2|64|512 1|8192
-0~ 4~ 4~ 11~ 
+0~ 4~ 4~ 11~
 3 10000 0
 A
 18 8
@@ -369,7 +369,7 @@ a scarab shield~
 A shield with a large, dead scarab mounted in the center lies here.~
 ~
 9 64 1|512
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 17 9000 0
 A
 5 3
@@ -385,7 +385,7 @@ the Mace of Undead Fred~
 A skull-headed mace has been left here.~
 ~
 5 2|64|512 1|8192
-0~ 3~ 6~ 6~ 
+0~ 3~ 6~ 6~
 14 12000 0
 A
 19 12
@@ -393,7 +393,7 @@ A
 27 -15
 E
 mace fred skull~
-The stout leather-wrapped shaft is topped with the animated skull of Fred 
+The stout leather-wrapped shaft is topped with the animated skull of Fred
 himself.  Though the jawbone is missing, you can hear him scream obscenities
 even in the midst of a fray.  A vague light stirs within his eyesockets as
 he says, 'What are ye looking at, maggot breath!'
@@ -404,7 +404,7 @@ an arsenal buckler~
 A spiked buckler with a circle of knives set in it, has been left here.~
 ~
 15 0 1|512
-3~ 0~ -1~ 0~ 
+3~ 0~ -1~ 0~
 7 2400 0
 A
 17 -5
@@ -420,7 +420,7 @@ a throwing knife~
 A well balanced throwing knife lies on the ground.~
 ~
 5 0 1|8192
-0~ 1~ 4~ 3~ 
+0~ 1~ 4~ 3~
 1 10 0
 E
 knife throwing~
@@ -433,7 +433,7 @@ the pile~
 A pile of debris has been stacked on a small plateau, away from the acid.~
 ~
 15 0 0
-1000~ 0~ -1~ 0~ 
+1000~ 0~ -1~ 0~
 0 0 0
 E
 pile debris~
@@ -446,7 +446,7 @@ a guisarme~
 A long, sharp polearm has been left here.~
 ~
 5 134217728 1|8192
-0~ 2~ 8~ 3~ 
+0~ 2~ 8~ 3~
 16 1500 0
 A
 18 -2
@@ -462,7 +462,7 @@ a minstrel's glove~
 A single, white minstrel's glove has been discarded here.~
 ~
 9 1|64 1|128
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 8 4500 0
 A
 18 9
@@ -477,7 +477,7 @@ some shabby mail~
 A worn and shabby suit of ring mail has been cast away here.~
 ~
 9 64 1|8
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 20 70000 0
 A
 26 3
@@ -491,7 +491,7 @@ a granite key~
 A key fashioned of stone has been left here.~
 ~
 18 0 1|16384
-16818~ 0~ 0~ 0~ 
+16818~ 0~ 0~ 0~
 2 1500 0
 E
 key granite~
@@ -504,7 +504,7 @@ the embalmed flesh~
 A large pile of presumably human flesh has been embalmed and stored here.~
 ~
 12 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 600 0
 E
 flesh embalmed~
@@ -517,7 +517,7 @@ a grave beater~
 A rusty grave beater flail has been dropped here.~
 ~
 5 0 1|8192
-0~ 2~ 7~ 2~ 
+0~ 2~ 7~ 2~
 12 1500 0
 A
 19 1
@@ -531,7 +531,7 @@ a rusty dagger~
 An old and rusty dagger has been left here.~
 ~
 5 0 1|8192
-0~ 2~ 2~ 3~ 
+0~ 2~ 2~ 3~
 1 2 0
 E
 dagger rusty~
@@ -544,7 +544,7 @@ a puce potion~
 A small vial has been forgotten here.~
 ~
 10 64 1|16384
-25~ detect invis~ poison~ ~ 
+25~ detect invis~ poison~ ~
 2 35 0
 E
 vial potion puce~
@@ -557,7 +557,7 @@ a large, shiny shield~
 A glistening metal object is here, it appears to be a shield.~
 ~
 9 64 1|512
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 1 1000 0
 A
 1 -2
@@ -575,7 +575,7 @@ a green torch~
 An odd torch glowing green has been left here.~
 ~
 1 1 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 1 1 0
 E
 torch green~
@@ -588,7 +588,7 @@ a silver helm~
 A helm made of a silverish metal has been left here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 1000 0
 E
 helm silver metal~
@@ -607,7 +607,7 @@ a rotted leather jacket~
 An old, rotted leather jacket is decomposing on the ground here.~
 ~
 9 0 1|8
--8~ 0~ 0~ 0~ 
+-8~ 0~ 0~ 0~
 3 0 0
 E
 jacket rotted leather~
@@ -620,7 +620,7 @@ a strange metal rod~
 A rather strange rod of a metallic material has been left here.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 7 0
 E
 rod metal strange~
@@ -1793,9 +1793,9 @@ D 1 16856 2 1
 D 1 16852 3 1           Guildhall To Altar
 D 1 16853 1 1
 D 1 16847 1 1           Amphitheatre To Lazerus' Private Chambers
-D 1 16846 3 1           
+D 1 16846 3 1
 D 1 16853 5 2           Altar To Darken Pit
-D 1 16854 4 2           
+D 1 16854 4 2
 S
 
 

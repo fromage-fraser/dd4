@@ -1,7 +1,7 @@
 /***************************************************************************
  *  map.c
  *
- *  Mapping system for Dragons Domain III 
+ *  Mapping system for Dragons Domain III
  *
  *  Originally coded by Tavolir, Oct 1999
  *
@@ -26,8 +26,6 @@
  *
  ***************************************************************************/
 
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,7 +39,7 @@ void	do_map_record	args( ( CHAR_DATA *ch, char *argument ) );
 
 
 
-void do_map_list ( CHAR_DATA *ch, char *argument ) 
+void do_map_list ( CHAR_DATA *ch, char *argument )
 {
   MAPBOOK_DATA * map;
   int i;
@@ -56,7 +54,7 @@ void do_map_list ( CHAR_DATA *ch, char *argument )
   } else {
     sprintf(buf, "\n\r #  Map Name      Map Description \n\r");
     strcat( buf, "\n\r~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\r");
-  
+
     for ( map = ch->mapbook; map != NULL; map = ch->mapbook->next )
     {
       sprintf(tmpbuf, "%d %15s %s\n\r", i, ch->mapbook->name, ch->mapbook->desc);
@@ -100,7 +98,7 @@ void do_map (CHAR_DATA *ch, char *argument)
   argument = one_argument( argument, arg );
 
 
-  /* 
+  /*
    * Process map options from here
    */
 

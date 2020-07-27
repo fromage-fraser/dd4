@@ -25,10 +25,10 @@ nidhogg dragon~
 Nidhogg the dragon~
 Nidhogg, a captured dragon, growls at your approach.
 ~
-The dragon appears to be the city's attempt at waste disposal.  Several 
-piles of garbage smolder around him.  The whole arrangement appears safe 
-since the dragon is both muzzled and several huge chains are used to bind 
-him firmly to the ground.  Nidhogg gnaws on the chains in a vain attempt 
+The dragon appears to be the city's attempt at waste disposal.  Several
+piles of garbage smolder around him.  The whole arrangement appears safe
+since the dragon is both muzzled and several huge chains are used to bind
+him firmly to the ground.  Nidhogg gnaws on the chains in a vain attempt
 to escape.
 ~
 2|4|16777216 8|16|32|128|512 0 S
@@ -41,7 +41,7 @@ the Joining~
 A Joining stands here waiting for its next command.
 ~
 This is a creature which was once human, but is now a magical combination
-of man and beast.  Most Joinings are designed for warfare, domestic, or 
+of man and beast.  Most Joinings are designed for warfare, domestic, or
 exotic uses.  The most popular forms are those combined with panthers,
 wolves, bears, or horses.
 ~
@@ -80,7 +80,7 @@ guard imperial cityguard~
 an imperial cityguard~
 An imperial cityguard is here, keeping the peace of Krondor.
 ~
-He is dressed for the desert, and he looks quite formidable.  At the 
+He is dressed for the desert, and he looks quite formidable.  At the
 moment, though, he has not noticed you.
 ~
 4|64 512 1000 S
@@ -132,8 +132,8 @@ Paradign paradign brave defender~
 Paradign the Brave~
 Paradign the Brave, the Defender of Krondor, is here.
 ~
-Paradign is dressed in full plate, and he looks indestructible.  
-He eyes you suspiciously not only because you are a stranger, but because 
+Paradign is dressed in full plate, and he looks indestructible.
+He eyes you suspiciously not only because you are a stranger, but because
 you are an ARMED stranger.  Better not do any funny stuff in his presence.
 ~
 1 128|512|32768 1000 S
@@ -146,8 +146,8 @@ Nevinyrral's disk~
 Floating a few feet above the ground is a blob of pulsating flesh.
 ~
 Originally it was a mistake done by novices of the nearby necromancers.  It
-is a big chunk of flesh that has been magically created from left over 
-body parts.  It now acts as a sentinel for the city.  Upon your arrival, 
+is a big chunk of flesh that has been magically created from left over
+body parts.  It now acts as a sentinel for the city.  Upon your arrival,
 the disk quickly rotates to expose the many tendrils used for defense.
 ~
 2 8|512|8192 0 S
@@ -160,9 +160,9 @@ the fanatic priest~
 A fanatic priest is here, foretelling the destruction of Krondor.
 ~
 The priest must have lost his mind.  He keeps saying that one day, evil will
-prevail and take over Krondor and bring the whole city down.  Obviously, 
-no one listens to this fool.  The priest's right fist is covered in 
-golden silk, and he clenches it at you.  Other than that, he is dressed 
+prevail and take over Krondor and bring the whole city down.  Obviously,
+no one listens to this fool.  The priest's right fist is covered in
+golden silk, and he clenches it at you.  Other than that, he is dressed
 all in black.
 ~
 2|128 128|512 -500 S
@@ -199,7 +199,7 @@ barkeep~
 the Barkeep~
 The Barkeep stands by the counter wiping a glass.
 ~
-He looks at you, belches loudly, scratches his armpit and says, ''Whatcha 
+He looks at you, belches loudly, scratches his armpit and says, ''Whatcha
 need?'.
 ~
 2 8|512 600 S
@@ -443,9 +443,9 @@ aardwolf~
 an aardwolf~
 An aardwolf stares at you and raises its hackles.
 ~
-The aardwolf is a small dog-like scavenger inhabiting the desert near 
-Krondor.  It is light buff in color, with an orange tint and dark brown in 
-bands.  It is reported that when attacked, the aardwolf erects its mane 
+The aardwolf is a small dog-like scavenger inhabiting the desert near
+Krondor.  It is light buff in color, with an orange tint and dark brown in
+bands.  It is reported that when attacked, the aardwolf erects its mane
 and ejects a foul smelling fluid.
 ~
 4|32|128 512 -100 S
@@ -783,8 +783,8 @@ carnivorous plant vines~
 the carnivorous plant~
 Several vines shoot out at you.
 ~
-A huge plant fills the greenhouse.  The plant appears to be an experiment 
-gone wrong.  It behaves as if it has a mind of it own.  Thick branches 
+A huge plant fills the greenhouse.  The plant appears to be an experiment
+gone wrong.  It behaves as if it has a mind of it own.  Thick branches
 and constantly moving vines almost make it almost impossible to hit it.
 ~
 2|4|32 8|16|32|512 -10 S
@@ -827,7 +827,7 @@ A warp hound hovers before you.
 The warp hound is one of the creatures which inhabits the Ginnungagap.
 The military of Krondor have only been able to capture a few of
 these creatures.  They stand about four feet tall and appear to blink
-in and out of existence every few seconds.  They are a grey-blue to 
+in and out of existence every few seconds.  They are a grey-blue to
 turquois in color and are reported to be quite fierce in combat.
 ~
 256 2|512|524288 0 S
@@ -839,9 +839,9 @@ miacis wolf~
 a miacis~
 A pair of red eyes glow in the shadows.
 ~
-The miacis are a distant relative to the timber wolf, however they 
-are an intelligent species of canine inhabiting a distant land across 
-the desert near Krondor.  Most of the time they are concealed in 
+The miacis are a distant relative to the timber wolf, however they
+are an intelligent species of canine inhabiting a distant land across
+the desert near Krondor.  Most of the time they are concealed in
 shadows, but can always be spotted due to the red glow of their eyes.
 ~
 256 2|512 0 S
@@ -853,9 +853,9 @@ ussurian racoon dog~
 a ussurian racoon~
 
 ~
-The ussurian racoon dog, named for its facial markings, is a long-haired, 
-bushy-tailed animal.  I has just until recently been unknown.  Not much is 
-known about the canine except that it is reported to inhabit the mountainous 
+The ussurian racoon dog, named for its facial markings, is a long-haired,
+bushy-tailed animal.  I has just until recently been unknown.  Not much is
+known about the canine except that it is reported to inhabit the mountainous
 regions around Krondor.
 ~
 256 2|512 0 S
@@ -868,7 +868,7 @@ a young lady~
 A young but attractive lady is standing behind the counter.
 ~
 While being plainly dressed this young lady is very attractive,
-about 5 ft 8" she is well built.  Standing tall and straight in a flowing 
+about 5 ft 8" she is well built.  Standing tall and straight in a flowing
 floral dress she is a handsome lady.
 ~
 2|64 0 1000 S
@@ -880,7 +880,7 @@ cobbler shoemaker~
 the cobbler~
 The cobbler is busy here working on a pair of bushmas boots.
 ~
-The cobbler has sweat running down his brow as he works labouriously on the 
+The cobbler has sweat running down his brow as he works labouriously on the
 pair of boots at his stand.
 ~
 2|64 0 1000 S
@@ -892,8 +892,8 @@ head hunter~
 the Head hunter.~
 A massive Giant of a man is here weapons glistening from his side.
 ~
-Huge is the only size this giants feet would be described as. Thick heavy 
-armour sparkles, with heavy sword hanging from one side and a sharp dagger 
+Huge is the only size this giants feet would be described as. Thick heavy
+armour sparkles, with heavy sword hanging from one side and a sharp dagger
 on the other this man looks tough.
 ~
 2|64 2|8|128|8192 0 S
@@ -910,7 +910,7 @@ endif
 ~
 |
 & 50 'teacher base'
-& 100 'spellcraft' 
+& 100 'spellcraft'
 & 100 'armed combat knowledge'
 & 100 'combat knowledge'
 & 100 'unarmed combat knowledge'
@@ -927,7 +927,7 @@ endif
 & 30 'warrior base'
 & 100 'stealth techniques'
 & 100 'thievery skills'
-& 100 'poison arts' 
+& 100 'poison arts'
 & 100 'hunting arts'
 & 100 'martial arts'
 & 100 'knowledge'
@@ -1082,12 +1082,12 @@ than someone ready to deck you with a new horse.
 				mpat 1 drop coins
 			else
 				say Sorry $n but only the most righteous Warriors have access to the Warhorse.
-				drop coins 
+				drop coins
 			endif
 		else
 			say I am sorry $n but you lack the experience for such a beast
 			drop coins
-			snicker	
+			snicker
 		endif
 	else
 	endif
@@ -1153,7 +1153,7 @@ than someone ready to deck you with a new horse.
 				mpat 1 50000 coins
 			else
 			say I am sorry $n but you lack the experience for such a beast
-			drop coins 
+			drop coins
 			endif
 		endif
 	endif
@@ -1217,8 +1217,8 @@ Nevinyrral's disk~
 Floating a few feet above the ground is a blob of pulsating flesh.
 ~
 Originally it was a mistake done by novices of the nearby necromancers.  It
-is a big chunk of flesh that has been magically created from left over 
-body parts.  It now acts as a sentinel for the city.  Upon your arrival, 
+is a big chunk of flesh that has been magically created from left over
+body parts.  It now acts as a sentinel for the city.  Upon your arrival,
 the disk quickly rotates to expose the many tendrils used for defense.
 ~
 2 8|512|8192 0 S
@@ -1232,8 +1232,8 @@ Nevinyrral's disk~
 Floating a few feet above the ground is a blob of pulsating flesh.
 ~
 Originally it was a mistake done by novices of the nearby necromancers.  It
-is a big chunk of flesh that has been magically created from left over 
-body parts.  It now acts as a sentinel for the city.  Upon your arrival, 
+is a big chunk of flesh that has been magically created from left over
+body parts.  It now acts as a sentinel for the city.  Upon your arrival,
 the disk quickly rotates to expose the many tendrils used for defense.
 ~
 2 8|512|8192 0 S
@@ -1247,8 +1247,8 @@ Nevinyrral's disk~
 Floating a few feet above the ground is a blob of pulsating flesh.
 ~
 Originally it was a mistake done by novices of the nearby necromancers.  It
-is a big chunk of flesh that has been magically created from left over 
-body parts.  It now acts as a sentinel for the city.  Upon your arrival, 
+is a big chunk of flesh that has been magically created from left over
+body parts.  It now acts as a sentinel for the city.  Upon your arrival,
 the disk quickly rotates to expose the many tendrils used for defense.
 ~
 2 8|512|8192 0 S
@@ -1266,7 +1266,7 @@ a Joining's collar~
 A Joining's collar is on the ground.~
 ~
 9 1|4096 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 10000 0
 A
 20 3
@@ -1276,7 +1276,7 @@ an artifact from the Ginnungagap~
 An artifact from the Ginnungagap lies here.~
 ~
 9 2|64 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 125 40000 0
 A
 18 3
@@ -1294,7 +1294,7 @@ a green serpentine staff~
 A green serpentine staff has been left here.~
 ~
 4 32|64 1|16384
-100~ 5~ 5~ ultrablast~ 
+100~ 5~ 5~ ultrablast~
 12 30000 0
 #30003
 scroll magic~
@@ -1302,7 +1302,7 @@ a scroll of enchantment~
 A scroll of magical enchantment has been left here.~
 ~
 2 64 1
-20~ enchant weapon~ ~ ~ 
+20~ enchant weapon~ ~ ~
 15 20000 0
 #30004
 scroll bound~
@@ -1310,7 +1310,7 @@ a bound scroll~
 A bound scroll made from human skin lies at your feet.~
 ~
 2 64 1
-10~ sanctuary~ flesh armor~ stone skin~ 
+10~ sanctuary~ flesh armor~ stone skin~
 15 5000 0
 #30005
 fountain~
@@ -1318,12 +1318,12 @@ a large beautiful fountain~
 The marble fountain of Mimir is here.~
 ~
 25 0 0
-0~ 10~ 0~ 0~ 
+0~ 10~ 0~ 0~
 0 0 0
 E
 fountain~
 You see the most beautiful fountain in the world.  The white marble glistens
-as sunlight hits its wet surfaces.  Fish swim around in the inner 
+as sunlight hits its wet surfaces.  Fish swim around in the inner
 fountain, and an exterior fountain is reserved just for drinking.
 ~
 #30006
@@ -1332,7 +1332,7 @@ the amber desk~
 A beautiful desk with inlaid amber is here.~
 ~
 15 0 0
-100~ 1|4|8~ 5224~ 0~ 
+100~ 1|4|8~ 5224~ 0~
 0 0 0
 E
 desk~
@@ -1345,12 +1345,12 @@ the glass cabinet~
 A sturdy glass cabinet is here.~
 ~
 15 0 0
-500~ 1|4|8~ 5226~ 0~ 
+500~ 1|4|8~ 5226~ 0~
 0 0 0
 E
 cabinet~
-A cabinet made of oak and mahogany, this piece of woodmanship is just 
-splendid to view.  The wood is varnished with a very strong stain that 
+A cabinet made of oak and mahogany, this piece of woodmanship is just
+splendid to view.  The wood is varnished with a very strong stain that
 looks as if it would last longer than the cabinet itself.
 ~
 #30008
@@ -1359,7 +1359,7 @@ an ud~
 An ud lies against the wall.~
 ~
 36 64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 10000 0
 E
 ud~
@@ -1372,7 +1372,7 @@ a rabab~
 A rustic rubab lies here.~
 ~
 36 64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 50 15000 0
 E
 rubab~
@@ -1386,7 +1386,7 @@ a darrabukkah~
 A hand-held darrabukkah lies on the ground.~
 ~
 36 1|64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 6 10500 0
 E
 darrabukkah drum~
@@ -1399,7 +1399,7 @@ a frothing bottle~
 You see a frothing bottle on the floor.~
 ~
 10 0 1
-70~ gas breath~ ~ ~ 
+70~ gas breath~ ~ ~
 5 100 0
 #30012
 vial~
@@ -1407,7 +1407,7 @@ a small vial~
 A very small vial with a wax seal is here.~
 ~
 26 1 1
-35~ teleport~ ~ ~ 
+35~ teleport~ ~ ~
 1 1 0
 E
 small vial~
@@ -1420,7 +1420,7 @@ a small flask~
 A very small flask with a wax seal is here.~
 ~
 26 1 1
-40~ poison~ ~ ~ 
+40~ poison~ ~ ~
 1 1 0
 E
 small flask~
@@ -1432,7 +1432,7 @@ a small pouch filled with animal bones~
 A small leather pouch is here.~
 ~
 26 2 1
-75~ stone skin~ ~ sanctuary~ 
+75~ stone skin~ ~ sanctuary~
 1 1 0
 E
 small pouch~
@@ -1444,7 +1444,7 @@ a small box covered in runes~
 A small box covered in runes is here.~
 ~
 26 1 1
-45~ intellect fortress~ death field~ ~ 
+45~ intellect fortress~ death field~ ~
 1 1 0
 E
 box~
@@ -1457,7 +1457,7 @@ a desert kukri~
 A short, broad-bladed sword is here.~
 ~
 5 64|256 1|8192
-0~ 15~ 15~ 11~ 
+0~ 15~ 15~ 11~
 5 50000 0
 A
 18 -25
@@ -1466,7 +1466,7 @@ A
 E
 kukri~
 The kukri is used by many of the desert nomads indigenous to the region.
-It is a short, broad-bladed sword which appears to be excellent in close 
+It is a short, broad-bladed sword which appears to be excellent in close
 combat for both attack and defense.
 ~
 #30017
@@ -1475,7 +1475,7 @@ an imperial scimitar~
 You see an imperial scimitar here.~
 ~
 5 64|256 1|8192
-0~ 10~ 15~ 1~ 
+0~ 10~ 15~ 1~
 5 5000 0
 A
 18 10
@@ -1487,7 +1487,7 @@ a white silk shirt embroidered with a golden fist~
 You see an item of imperial armor.~
 ~
 9 1024 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 25000 0
 A
 17 -20
@@ -1497,7 +1497,7 @@ an imperial steel shield~
 You see a shield.~
 ~
 9 0 1|512
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 10000 0
 A
 17 -45
@@ -1511,7 +1511,7 @@ a linen imperial cloak~
 You see a pile of fabric.~
 ~
 9 0 1|4
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 500 0
 A
 12 125
@@ -1523,7 +1523,7 @@ a gold earing~
 You see a small gold earing.~
 ~
 9 1 1|16
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 500 0
 A
 23 -5
@@ -1535,7 +1535,7 @@ a pair of silk pantaloons~
 A pile of fabric is here.~
 ~
 9 0 1|32
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 5000 0
 A
 24 -10
@@ -1547,7 +1547,7 @@ a pair of sandles~
 You see a pair of studded sandles here.~
 ~
 9 0 1|64
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 200 0
 A
 17 -10
@@ -1559,7 +1559,7 @@ a pair of imperial platinum greaves~
 You see a pair of imperial platinum greaves here.~
 ~
 9 0 1|128
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 20000 0
 A
 1 2
@@ -1573,7 +1573,7 @@ a pair of artifact guantlets~
 You see a pair of strange guantlets here.~
 ~
 9 1 1|256
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 5000 0
 A
 17 -10
@@ -1590,7 +1590,7 @@ a hooded cape~
 You see a hooded cape here.~
 ~
 9 0 1|1024
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 500 0
 A
 23 -10
@@ -1602,7 +1602,7 @@ an imperial linen kilt~
 You see a pile of fabric here.~
 ~
 9 0 1|2048
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 5000 0
 A
 17 -8
@@ -1612,7 +1612,7 @@ a platinum bracer~
 A platinum bracer lies on the ground.~
 ~
 9 1 1|4096
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 10000 0
 A
 19 5
@@ -1624,7 +1624,7 @@ the metal hand talons ~
 You see some razor-sharp talons on the floor.~
 ~
 5 64|16384 1|8192
-0~ 0~ 0~ 5~ 
+0~ 0~ 0~ 5~
 1 8000 0
 A
 18 30
@@ -1636,7 +1636,7 @@ a mechanical falcon~
 A mechanical bird lies motionless on the ground.~
 ~
 1 1|64 1
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 1 15000 0
 A
 24 -2
@@ -1650,7 +1650,7 @@ an ordinary looking key~
 A key is on the ground here.~
 ~
 18 32|512|2048 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 key~
@@ -1662,7 +1662,7 @@ a Krondorian clergy robe~
 A robe from the Krondorian clergy is here.~
 ~
 9 1|256|4096 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 17 -10
@@ -1674,15 +1674,15 @@ the Triad kris~
 A strange, glowing blade is here.~
 ~
 5 1|2|64 1|8192
-0~ 10~ 25~ 11~ 
+0~ 10~ 25~ 11~
 8 20000 0
 A
 19 12
 E
 triad kris~
 The Triad, an ancient assassin cult, has been outlawed in many lands.
-Their weapons are infamous.  The kris is curved and about as long as a 
-person's forearm.  The metal seems to contain a strange green glowing 
+Their weapons are infamous.  The kris is curved and about as long as a
+person's forearm.  The metal seems to contain a strange green glowing
 mineral.
 ~
 #30034
@@ -1691,7 +1691,7 @@ the chains of Nehdru~
 A pile of heavy chains is here.~
 ~
 9 1|2|32|64|4096 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 20000 0
 A
 18 6
@@ -1699,8 +1699,8 @@ A
 17 -10
 E
 chains nehdru~
-The chains were fashioned by the famous sorcerer Nehdru sometime in the 
-fifth millennium to hold the dragon Nihogg.  Unfortunately the sorcerer 
+The chains were fashioned by the famous sorcerer Nehdru sometime in the
+fifth millennium to hold the dragon Nihogg.  Unfortunately the sorcerer
 was eaten by the dragon before the chains were finally used to restrain him.
 ~
 #30035
@@ -1709,14 +1709,14 @@ morbius ring~
 A strange shaped ring is here.~
 ~
 9 1|2|64 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 20000 0
 A
 12 50
 E
 morbius ring~
-Only a few of these rings are known to exist.  The ring should not exist 
-in this reality since its shape is incomprehensible.  The bearer of the 
+Only a few of these rings are known to exist.  The ring should not exist
+in this reality since its shape is incomprehensible.  The bearer of the
 ring is supposed to be endowed with exceptional powers.
 ~
 #30036
@@ -1725,7 +1725,7 @@ a pair of titanium boots~
 A pair of expensive looking boots is here.~
 ~
 9 1|2|64|1024 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 9 20000 0
 A
 17 -12
@@ -1741,7 +1741,7 @@ a titanium carpace~
 An expensive piece of armor lies here.~
 ~
 9 1|2|64|1024 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 9 20000 0
 A
 12 25
@@ -1759,7 +1759,7 @@ titanium gauntlets~
 A piece of extraordinary craftmanship is here.~
 ~
 9 1|2|64|1024 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 9 20000 0
 A
 18 4
@@ -1777,7 +1777,7 @@ a titanium torque~
 A strange torque lies on the ground.~
 ~
 9 1|2|64|1024 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 9 20000 0
 A
 13 100
@@ -1795,14 +1795,14 @@ the book of the consortium~
 A large book is here.~
 ~
 8 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 20000 0
 A
 12 150
 E
 book consortium~
-The book of the consortium was made by a group of sorcerers to aid in 
-their experiments.  It is reported that eventually, one of their 
+The book of the consortium was made by a group of sorcerers to aid in
+their experiments.  It is reported that eventually, one of their
 experiments ravaged their laboratory and made off with the book.
 ~
 #30041
@@ -1811,7 +1811,7 @@ an idol of Ahash~
 An alien idol lies here.~
 ~
 4 2|128|512 1|16384
-40~ 10~ 10~ flamestrike~ 
+40~ 10~ 10~ flamestrike~
 10 20000 0
 E
 idol ahash~
@@ -1824,7 +1824,7 @@ a demon quartz mask~
 A mask lies here.~
 ~
 9 512|2048 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8 20000 0
 A
 19 13
@@ -1839,7 +1839,7 @@ the Bane of Su-Chi~
 The blade of ultimate evil is here.~
 ~
 5 1|2|16|32|64|128|512|2048 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 8 200000 0
 A
 12 50
@@ -1853,9 +1853,9 @@ A
 19 18
 E
 bane su chi su-chi~
-The ultimate blade of evil is within your hands.  Your soul screams as if 
-being ripped apart.  Within the metal of the blade, you swear you see 
-distorted faces frozen in a silent scream.  The blade swirls in angry 
+The ultimate blade of evil is within your hands.  Your soul screams as if
+being ripped apart.  Within the metal of the blade, you swear you see
+distorted faces frozen in a silent scream.  The blade swirls in angry
 colors of red and black.
 ~
 #30044
@@ -1864,7 +1864,7 @@ a pair of lacquered leggings~
 A pair of lacquered leggings is here.~
 ~
 9 1|256 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 15000 0
 A
 13 80
@@ -1872,7 +1872,7 @@ E
 lacquer lacquered leggings~
 Due to short supply of metal in the desert, the sumbasi tribes have relied
 on many desert materials to make their weapons and armor.  From the pulp
-of a native cactus and the excretions of a rare insect, the desert tribes 
+of a native cactus and the excretions of a rare insect, the desert tribes
 produce an armor which is said to surpass those made of metal.
 ~
 #30045
@@ -1881,13 +1881,13 @@ a lacquered torque~
 A lacquered torque is here.~
 ~
 9 1|256 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 15000 0
 E
 lacquer lacquered torque~
 Due to short supply of metal in the desert, the sumbasi tribes have relied
 on many desert materials to make their weapons and armor.  From the pulp
-of a native cactus and the excretions of a rare insect, the desert tribes 
+of a native cactus and the excretions of a rare insect, the desert tribes
 produce an armor which is said to surpass those made of metal.
 ~
 #30046
@@ -1896,13 +1896,13 @@ a lacquered helm~
 A lacquered helm is here.~
 ~
 9 1|256 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 15000 0
 E
 lacquer lacquered helm~
 Due to short supply of metal in the desert, the sumbasi tribes have relied
 on many desert materials to make their weapons and armor.  From the pulp
-of a native cactus and the excretions of a rare insect, the desert tribes 
+of a native cactus and the excretions of a rare insect, the desert tribes
 produce an armor which is said to surpass those made of metal.
 ~
 #30047
@@ -1911,7 +1911,7 @@ a lacquered bow~
 A lacquered bow is here.~
 ~
 5 1|256|1073741824 1|8192
-0~ 20~ 20~ 0~ 
+0~ 20~ 20~ 0~
 2 25000 0
 A
 19 6
@@ -1919,7 +1919,7 @@ E
 lacquer lacquered bow~
 Due to short supply of metal in the desert, the sumbasi tribes have relied
 on many desert materials to make their weapons and armor.  From the pulp
-of a native cactus and the excretions of a rare insect, the desert tribes 
+of a native cactus and the excretions of a rare insect, the desert tribes
 produce light-weight, durable weapons.  Many weapons are blessed by a tribal
 shaman.
 ~
@@ -1929,7 +1929,7 @@ an Inquisitor Hood~
 A pile of cloth is here.~
 ~
 9 1|2|16|512 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 25000 0
 A
 9 20
@@ -1940,7 +1940,7 @@ A
 E
 cloth inquisitor hood~
 The hood is made out of some fibrous material.  Leather patches
-containing small slits are sewn over the eyes, nose, and mouth.  The 
+containing small slits are sewn over the eyes, nose, and mouth.  The
 overall appearance of the hood is quite sinister.
 ~
 #30049
@@ -1949,7 +1949,7 @@ an ordinary carpet~
 An ordinary looking carpet with a note attached is here.~
 ~
 4 64 1|16384
-35~ 20~ 20~ fly~ 
+35~ 20~ 20~ fly~
 5 20000 0
 E
 note~
@@ -1962,7 +1962,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-5~ armor~ ~ ~ 
+5~ armor~ ~ ~
 2 0 20
 E
 homemade brew potion~
@@ -1975,7 +1975,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ poison~ poison~ poison~ 
+35~ poison~ poison~ poison~
 2 10000 20
 E
 homemade brew potion~
@@ -1988,7 +1988,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ change sex~ change sex~ change sex~ 
+35~ change sex~ change sex~ change sex~
 2 10000 20
 E
 homemade brew potion~
@@ -2001,7 +2001,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ cure blindness~ ~ ~ 
+35~ cure blindness~ ~ ~
 2 10000 20
 E
 homemade brew potion~
@@ -2014,7 +2014,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-50~ curse~ ~ ~ 
+50~ curse~ ~ ~
 2 10000 20
 E
 homemade brew potion~
@@ -2027,7 +2027,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ ~ ~ ectoplasmic form~ 
+35~ ~ ~ ectoplasmic form~
 2 10000 20
 E
 homemade brew potion~
@@ -2040,7 +2040,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ sleep~ poison~ detonate~ 
+35~ sleep~ poison~ detonate~
 2 10000 20
 E
 homemade brew potion~
@@ -2053,7 +2053,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ ~ ~ detect poison~ 
+35~ ~ ~ detect poison~
 2 10000 20
 E
 homemade brew potion~
@@ -2066,7 +2066,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ ~ flesh armor~ ~ 
+35~ ~ flesh armor~ ~
 2 10000 20
 E
 homemade brew potion~
@@ -2079,7 +2079,7 @@ a homemade brew~
 A potion containing twigs and leaves is here.~
 ~
 10 1 1|16384
-35~ ~ infravision~ ~ 
+35~ ~ infravision~ ~
 2 10000 20
 E
 homemade brew potion~
@@ -2092,7 +2092,7 @@ a crystal stave~
 A crystal stave lies on the ground.~
 ~
 4 64 1|16384
-35~ 10~ 10~ armor~ 
+35~ 10~ 10~ armor~
 5 15000 0
 #30061
 obsidian stave~
@@ -2100,7 +2100,7 @@ an obsidian stave~
 An obsidian stave lies on the ground.~
 ~
 4 64 1|16384
-35~ 10~ 10~ poison~ 
+35~ 10~ 10~ poison~
 5 15000 0
 #30062
 quartz stave~
@@ -2108,7 +2108,7 @@ a quartz stave~
 A quartz stave lies on the ground.~
 ~
 4 64 1|16384
-35~ 10~ 10~ blindness~ 
+35~ 10~ 10~ blindness~
 5 15000 0
 #30063
 onyx stave~
@@ -2116,7 +2116,7 @@ an onyx stave~
 An onyx stave lies on the ground.~
 ~
 4 64 1|16384
-35~ 10~ 10~ energy drain~ 
+35~ 10~ 10~ energy drain~
 5 15000 0
 #30064
 small pin~
@@ -2124,7 +2124,7 @@ a small pin~
 A small pin is here.~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 10000 0
 #30065
 assassins list paper~
@@ -2132,7 +2132,7 @@ the assassin's list~
 A piece of paper is here.~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 750000 0
 E
 list paper~
@@ -2145,7 +2145,7 @@ a scroll~
 A small tattered piece of paper with strange symbols on it lies here.~
 ~
 2 0 1
-80~ ~ ~ detect hidden~ 
+80~ ~ ~ detect hidden~
 5 0 0
 #30067
 s scroll~
@@ -2153,7 +2153,7 @@ a scroll~
 A small tattered piece of paper with strange symbols on it lies here.~
 ~
 2 0 1
-0~ pass door~ ~ ~ 
+0~ pass door~ ~ ~
 5 0 0
 #30068
 a scroll~
@@ -2161,7 +2161,7 @@ a scroll~
 A small tattered piece of paper with strange symbols on it lies here.~
 ~
 2 0 1
-30~ ~ ~ ~ 
+30~ ~ ~ ~
 5 0 0
 #30069
 a scroll~
@@ -2169,7 +2169,7 @@ a scroll~
 A small tattered piece of paper with strange symbols on it lies here.~
 ~
 2 0 1
-20~ dispel magic~ ~ ~ 
+20~ dispel magic~ ~ ~
 5 0 0
 #30070
 a scroll~
@@ -2177,7 +2177,7 @@ a scroll~
 A small tattered piece of paper with strange symbols on it lies here.~
 ~
 2 0 1
-100~ ~ poison~ curse~ 
+100~ ~ poison~ curse~
 5 0 0
 #30071
 a scroll~
@@ -2185,7 +2185,7 @@ a scroll~
 A small tattered piece of paper with strange symbols on it lies here.~
 ~
 2 0 1
-20~ enchant weapon~ ~ ~ 
+20~ enchant weapon~ ~ ~
 5 0 0
 #30072
 boots bushmans~
@@ -2193,7 +2193,7 @@ a pair of bushmans boots.~
 A pair of heavy leather boots with thick soles lie here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 1 1
@@ -2207,7 +2207,7 @@ a pair of leather shoes~
 A pair of dark brown suede leather boots is here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #30074
 hammer cobblers~
@@ -2215,7 +2215,7 @@ a cobblers hammer~
 A hammer for working on shoes is here.~
 ~
 37 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 5 0 0
 A
 1 2
@@ -2231,7 +2231,7 @@ the head hunters sword~
 A heavy bladed sword of immense proportions rests here.~
 ~
 5 1|2|1024 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 50 0 0
 A
 1 4
@@ -2251,7 +2251,7 @@ the head hunters dagger~
 A wicked looking dagger with a black shiney blade is covered in blood.~
 ~
 5 1|2|32|64|512 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 17
@@ -2263,7 +2263,7 @@ black platemail armour~
 Heavy armour made from a strange black metal is here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 17 0
@@ -2273,7 +2273,7 @@ a Black plate helmet~
 A large lack helmet rests here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 17 5
@@ -2283,7 +2283,7 @@ a sword~
 The sword of the adonai lies here.~
 ~
 5 2|512|1024|16384 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 5 0 0
 A
 18 25
@@ -2297,7 +2297,7 @@ an Adonai's lance~
 A long lance made from osage orange with a carbon steel blade is here.~
 ~
 5 2|64|1024|131072|16777216|134217728 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 25
@@ -2313,7 +2313,7 @@ robes of the adonai.~
 A pile of rupled white materil is here.~
 ~
 9 64|1024 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 17 -20
@@ -2323,7 +2323,7 @@ white chainmail armour~
 A pile of white chainmail is here.~
 ~
 9 2|64|1024 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 1 2
@@ -2335,7 +2335,7 @@ an attendants sword~
 A long white hilted sword with the black iris carved into the pommel.~
 ~
 5 0|512 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 5 0 0
 A
 18 15
@@ -2347,7 +2347,7 @@ a Large Anvil~
 A Large Anvil sits in the corner of the room, waiting to be used.~
 ~
 30 1 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5000 5000 0
 #30085
 saddle leather~
@@ -2355,7 +2355,7 @@ a combat saddle~
 a combat saddle that can only be worn by a horse.~
 ~
 9 0 1|1024
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 19 0
@@ -2365,7 +2365,7 @@ Heavy Armor~
 some heavy armor that only a horse can wear~
 ~
 9 512|1024 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 18 0
@@ -2375,7 +2375,7 @@ Heavy Armor~
 some heavy armor that only a horse can wear~
 ~
 9 512|1024 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -50
@@ -2387,7 +2387,7 @@ Heavy Armor~
 some heavy armor that only a horse can wear.~
 ~
 9 512|1024 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 13 0
@@ -2414,9 +2414,9 @@ A magical portal glows softly here.~
 #30000
 Outside the Grand Gate of Krondor~
 You stand in the midst of a gigantic stone archway. The two steel gates
-look indestructible, yet they are elaborate in engravings.  The faint 
-stench of carrion blows in from the east.  Obviously, the city is the  
-only oasis of civilization in the rift. There is a small gold plaque on 
+look indestructible, yet they are elaborate in engravings.  The faint
+stench of carrion blows in from the east.  Obviously, the city is the
+only oasis of civilization in the rift. There is a small gold plaque on
 mounted on the archway.
 ~
 0 4|1024 1
@@ -2426,7 +2426,7 @@ Only wilderness can be seen.
 ~
 0 -1 30056
 D3
-The city is teeming with life. Apparently they're oblivious of what's 
+The city is teeming with life. Apparently they're oblivious of what's
 going on around them.
 ~
 gate~
@@ -2442,9 +2442,9 @@ Further modified by Danath 1st Jan 1997.
 S
 #30001
 Eastern Road~
-This is a magnificent street, immaculate all over. The streets are 
-filled with people rushing from building to building and a balmy zephyr 
-blows by you.  The whole city is teeming with activity.  A cobbled street 
+This is a magnificent street, immaculate all over. The streets are
+filled with people rushing from building to building and a balmy zephyr
+blows by you.  The whole city is teeming with activity.  A cobbled street
 leads north and south.
 ~
 0 0 1
@@ -2471,11 +2471,11 @@ The Eastern Road lies this way.
 S
 #30002
 Eastern Road~
-This is a magnificent street, immaculate all over.  The streets are 
-filled with people rushing from building to building and a balmy zephyr 
-blows by you.  The whole city is teeming with activity.  On one side is a 
-beautiful house while on the other is the entrance to a large mansion.  
-Sounds of people hard at work echo within the mansion.  Near the Inner 
+This is a magnificent street, immaculate all over.  The streets are
+filled with people rushing from building to building and a balmy zephyr
+blows by you.  The whole city is teeming with activity.  On one side is a
+beautiful house while on the other is the entrance to a large mansion.
+Sounds of people hard at work echo within the mansion.  Near the Inner
 City District you see a large domed building, magnificent and immense.
 ~
 0 0 1
@@ -2502,9 +2502,9 @@ portcullis~
 S
 #30003
 Entrance into the Inner City~
-It appears life moves at a slower pace within the walls of the Inner 
-City.  Most of the older section has been replaced by public gardens and a 
-huge temple.  Flowers grow on the sides of the path and the lush trees are 
+It appears life moves at a slower pace within the walls of the Inner
+City.  Most of the older section has been replaced by public gardens and a
+huge temple.  Flowers grow on the sides of the path and the lush trees are
 laden with fruit.  Vines and ivy snake up the sides of the temple, making
 this temple truly a blend of nature and man's work of art.
 
@@ -2537,7 +2537,7 @@ The Public Gardens~
 A circular path surrounds a magnificent domed temple in the center
 of the city.   The temple's serenity is kept constant by a formidable wall
 surrounding the inner city.  Flowers grow on the sides of the path and the
-lush trees are laden with fruit.  Vines and ivy snake up the sides of the 
+lush trees are laden with fruit.  Vines and ivy snake up the sides of the
 temple, making this temple truly a blend of nature and man's work of art.
 
 A portcullis keeps traffic into the area at a minimum.
@@ -2564,7 +2564,7 @@ The Public Gardens~
 A circular path surrounds a magnificent domed temple in the center
 of the city.  The temple's serenity is kept constant by a formidable wall
 surrounding the inner city.  Flowers grow on the sides of the path and the
-lush trees are laden with fruit.  Vines and ivy snake up the sides of the 
+lush trees are laden with fruit.  Vines and ivy snake up the sides of the
 temple, making this temple truly a blend of nature and man's work of art.
 ~
 0 0 1
@@ -2629,7 +2629,7 @@ S
 #30008
 Inner City Market~
 You stand in the middle of a large square lined on each side with
-baskets, carts, and stands of all shapes and sizes.  The shops are 
+baskets, carts, and stands of all shapes and sizes.  The shops are
 filled with goods sold to the new flood of mercenaries.
 ~
 0 0 1
@@ -2957,12 +2957,12 @@ A strong aromatic smell emanates from the meat stands next to you.
 S
 #30021
 Gryphon Smithy~
-The smith appears to be also a master of carpentry.  The entire 
-front of the building is constructed of shutters along a low earthen 
-wall.  The shutters have been removed to allow a breeze into the forge.  
-A small swing gate keeps most of the window shoppers away.  In here you 
-find tools and anvils used to make various weapons and items. The walls 
-are fully stocked with pieces of armor and weaponry.  On the wall hangs a 
+The smith appears to be also a master of carpentry.  The entire
+front of the building is constructed of shutters along a low earthen
+wall.  The shutters have been removed to allow a breeze into the forge.
+A small swing gate keeps most of the window shoppers away.  In here you
+find tools and anvils used to make various weapons and items. The walls
+are fully stocked with pieces of armor and weaponry.  On the wall hangs a
 huge tapestry depicting armored men fighting a mythical beast.
 ~
 0 8 1
@@ -3043,9 +3043,9 @@ Above you stands a tall watchtower.
 S
 #30025
 The Jewelery Guild~
-Several tables stand covered with fine jewelery and gems.  The 
-guildmaster stands proudly over his collection as he polishes and cleans 
-each one.  In the background, several journeymen are busy learning their 
+Several tables stand covered with fine jewelery and gems.  The
+guildmaster stands proudly over his collection as he polishes and cleans
+each one.  In the background, several journeymen are busy learning their
 trade.
 ~
 0 0 1
@@ -3063,8 +3063,8 @@ You see stands full of fine clothes and expensive rugs.
 S
 #30026
 Krondor Granary~
-This is a simple stone structure where Krondor stores its grain.  
-Several holes capped with clay plugs line the floor.  Several large terra 
+This is a simple stone structure where Krondor stores its grain.
+Several holes capped with clay plugs line the floor.  Several large terra
 cotta jars are stored on shelves built into the walls.
 ~
 0 8 1
@@ -3084,16 +3084,16 @@ The jars are as large as a person.  They are sealed with a red wax seal.
 ~
 E
 clay plugs~
-The clay plugs seal off the large caverns underneath containing the 
-stores of grain.  It is rumored that some of the caverns extend for 
+The clay plugs seal off the large caverns underneath containing the
+stores of grain.  It is rumored that some of the caverns extend for
 several stories beneath the ground.
 ~
 S
 #30027
 Krondor Kennel~
-This small house is the dwelling for the trainer of the Krondor 
-warhounds.  The rafters are single tree trunks daubed with straw and 
-dung.  Pine shavings are scattered about the floor.  Several warhounds 
+This small house is the dwelling for the trainer of the Krondor
+warhounds.  The rafters are single tree trunks daubed with straw and
+dung.  Pine shavings are scattered about the floor.  Several warhounds
 sleep near a firepit in the middle of the building.
 ~
 0 8 1
@@ -3154,9 +3154,9 @@ S
 #30030
 The Tavern of the Sun~
 A glorious place, this tavern is second home for many citizens of
-Krondor.  Tables and chairs are set in rows, bottles and glasses are 
-filled, and a small performance stage is teaming with dazzling 
-entertainment. Musical instruments and personal belongings lie in piles 
+Krondor.  Tables and chairs are set in rows, bottles and glasses are
+filled, and a small performance stage is teaming with dazzling
+entertainment. Musical instruments and personal belongings lie in piles
 belonging to each member of this room.
 ~
 0 8 1
@@ -3187,9 +3187,9 @@ D1
 S
 #30032
 The Presidium Hall~
-This is the main reception area of Krondor's governing complex. The 
-walls have been painted in pure white and thick lush carpet line the 
-floor wall to wall.  A side door on the west wall allows you to go out to 
+This is the main reception area of Krondor's governing complex. The
+walls have been painted in pure white and thick lush carpet line the
+floor wall to wall.  A side door on the west wall allows you to go out to
 one of the city's side streets.  Hallways lead south and east.
 ~
 0 8 1
@@ -3314,8 +3314,8 @@ oak door~
 S
 #30037
 Krondor Library~
-This seems to be the tallest structure in the city.  Rows and rows of 
-books line the 20 foot tall bookcases, and a quiet serenity can be felt 
+This seems to be the tallest structure in the city.  Rows and rows of
+books line the 20 foot tall bookcases, and a quiet serenity can be felt
 by all here. Scrolls are for sale at the counter to the south.
 ~
 0 8 1
@@ -3341,8 +3341,8 @@ You see a second floor to the library.
 S
 #30038
 The Archives~
-There are more shelves and tables here.  Vials of strange potions 
-line a section of the wall, and books and other items of power line 
+There are more shelves and tables here.  Vials of strange potions
+line a section of the wall, and books and other items of power line
 another.  The exit is to the west.
 
 There is a mystical pattern drawn on the ground here.
@@ -3366,7 +3366,7 @@ Please speak with archive officials to arrange transactions.
 S
 #30039
 Anjou Street~
-The cobbled street runs along the city wall and is lined with small 
+The cobbled street runs along the city wall and is lined with small
 houses.  Towards the north stands a watchtower.  People quietly pass
 you by.
 ~
@@ -3422,9 +3422,9 @@ You've seen one, you've seen them all.
 S
 #30042
 Commons Bath House~
-This is the bath house for the commoners of the city. Hot steamy 
-water wells up from a hole in the floor. Obviously there is a hot spring 
-located under the city (making the decision to put a city here seem much 
+This is the bath house for the commoners of the city. Hot steamy
+water wells up from a hole in the floor. Obviously there is a hot spring
+located under the city (making the decision to put a city here seem much
 more reasonable). To the west is another room.
 ~
 0 8 1
@@ -3465,8 +3465,8 @@ S
 #30044
 A Resting Room~
 You are in a resting room.  Soft mats line the floor, and you see many
-people just relaxing on them.  The comfort of this place is so inviting, 
-you want to join them.  Great amounts of steam issue forth from the hole in 
+people just relaxing on them.  The comfort of this place is so inviting,
+you want to join them.  Great amounts of steam issue forth from the hole in
 the east wall.
 ~
 0 8 1
@@ -3494,7 +3494,7 @@ S
 #30046
 The north-west watchtower~
 You stand atop one of the city watchtowers. The view is magnificent
-from here and you can see all the way to the western mountains.  You are 
+from here and you can see all the way to the western mountains.  You are
 confident nothing can touch this tower.
 ~
 0 0 1
@@ -3547,11 +3547,11 @@ The alcove is a small room off the main temple.
 S
 #30050
 The Temple of Krondor~
-You stand within one of the most holy places in the realm. This 
-stunning domed temple houses the city's worshipers en masse.  Long 
-benches line the aisles and the altar glistens with the gold and 
-platinum inlay.  The walls and roof are all made of ceramic, making this 
-place reflect the sun well.  An arched passageway leads deeper into the 
+You stand within one of the most holy places in the realm. This
+stunning domed temple houses the city's worshipers en masse.  Long
+benches line the aisles and the altar glistens with the gold and
+platinum inlay.  The walls and roof are all made of ceramic, making this
+place reflect the sun well.  An arched passageway leads deeper into the
 complex.
 ~
 0 4|8|1024 1
@@ -3614,7 +3614,7 @@ D4
 S
 #30053
 Anjou Street~
-The cobbled street leads south to one of the city watchtowers.  A 
+The cobbled street leads south to one of the city watchtowers.  A
 small metal cover is bolted into the side of a building.
 ~
 0 0 1
@@ -3697,9 +3697,9 @@ Here marks the boundary of Krondor. Leave the city limits at your peril.
 S
 #30057
 The Cuan na'Dru~
-Deep inside the ancient forest, giant Redwoods grow thick and their 
-wide-flung limbs and heavy roots deny the undergrowth much purchase.  The 
-sunlight appears to slowly fight its way through the thick canopy.  A 
+Deep inside the ancient forest, giant Redwoods grow thick and their
+wide-flung limbs and heavy roots deny the undergrowth much purchase.  The
+sunlight appears to slowly fight its way through the thick canopy.  A
 faint trail enters from the west.  An overgrown trail leads east.
 ~
 0 8192 3
@@ -3716,9 +3716,9 @@ A faint trail enters from the west.
 S
 #30058
 The Cuan na'Dru~
-Deep inside the ancient forest, giant Redwoods grow thick and their 
-wide-flung limbs and heavy roots deny the undergrowth much purchase.  
-Sunlight is unable to filter through the thick canopy.  All around 
+Deep inside the ancient forest, giant Redwoods grow thick and their
+wide-flung limbs and heavy roots deny the undergrowth much purchase.
+Sunlight is unable to filter through the thick canopy.  All around
 shadows dance across the path while strange screams echo through the
 trees.
 ~
@@ -3753,7 +3753,7 @@ An overgrown trail continues south.
 0 0 30058
 E
 giant bloated worms~
-Fist-sized worms squirm through eye sockets and chest cavities of fallen 
+Fist-sized worms squirm through eye sockets and chest cavities of fallen
 warriors.
 ~
 E
@@ -3764,8 +3764,8 @@ stomachs and chest cavities of many of the victums.
 S
 #30060
 The Cuan na'Dru~
-Deep inside the ancient forest, giant Redwoods grow thick and their 
-wide flung limbs and heavy roots deny the undergrowth much purchase.  
+Deep inside the ancient forest, giant Redwoods grow thick and their
+wide flung limbs and heavy roots deny the undergrowth much purchase.
 The sunlight appears to slowly fight its way through the thick canopy.
 A faint stench of decay permeates the air. A trail leads north and south.
 ~
@@ -3874,10 +3874,10 @@ S
 The Portal~
 The road ends abruptly at the beginnings of a desert.  All around is a
 vast desolate place where the wind can howl undisturbed since nothing
-but you bars its way.  Several piles of timber for a half-constructed 
-fort lay strewn about the ground.  Peering across the dunes, you see 
-mountains far in the distance.  A huge vortex, feeding off debris  and 
-blowing apart boulders with lightning, skirts the edge of the desert.  
+but you bars its way.  Several piles of timber for a half-constructed
+fort lay strewn about the ground.  Peering across the dunes, you see
+mountains far in the distance.  A huge vortex, feeding off debris  and
+blowing apart boulders with lightning, skirts the edge of the desert.
 ~
 0 8192 10
 D2
@@ -3893,7 +3893,7 @@ S
 #30066
 Kharm Rhanna~
 You are standing amidst withered ancient oaks and poplars.  You can feel
-a strange sensation of evil seeping through you. The strange yellow dust 
+a strange sensation of evil seeping through you. The strange yellow dust
 swirls around your feet.  From here, paths lead east and south.
 ~
 0 8192|16384 3
@@ -3911,12 +3911,12 @@ S
 #30067
 Kharm Rhanna~
 You are standing amidst withered ancient oaks and poplars.  You can feel
-a strange sensation of evil seeping through you. The strange yellow dust 
+a strange sensation of evil seeping through you. The strange yellow dust
 swirls around your feet.  From here, paths lead east, west and south.
 ~
 0 8192|16384 3
 D1
-The path winds its way through the tall trees, towards a clearing faintly 
+The path winds its way through the tall trees, towards a clearing faintly
 seen.
 ~
 ~
@@ -3936,7 +3936,7 @@ S
 The Shrine~
 You are standing in a clearing in the light woods. Somehow, this place
 seems powerfully DIFFERENT from the rest of the forest, as if something is
-severely strained in the fabric of reality here.  A small tumbled pile of 
+severely strained in the fabric of reality here.  A small tumbled pile of
 stones lies in the center of the clearing.
 ~
 0 8192 3
@@ -3957,7 +3957,7 @@ There is a path leading west through the tall trees.
 0 -1 30067
 E
 shrine tumbled stones~
-The stones are covered in a small sticky film of blood.  Small fragments 
+The stones are covered in a small sticky film of blood.  Small fragments
 of bone scorch marks surround the altar.
 ~
 S
@@ -3995,9 +3995,9 @@ S
 Kharm Rhanna~
 You are standing in the middle of the Kharm Rhanna, where the citizens of
 Krondor used to come to celebrate the spring by performing human sacrifices.
-You feel the ultimate of evil wash over you.  Your sorrows and worries 
-intensify as you feel your life force ebb away.  Before you is what all 
-mortals on any plane dread, a soul eater and creature of the Ginnungagap, 
+You feel the ultimate of evil wash over you.  Your sorrows and worries
+intensify as you feel your life force ebb away.  Before you is what all
+mortals on any plane dread, a soul eater and creature of the Ginnungagap,
 which has taken special interest in you.
 ~
 0 16384 3
@@ -4025,8 +4025,8 @@ S
 #30071
 Kharm Rhanna~
 You are standing amidst withered ancient oaks and poplars.  You can feel
-a strange sensation of evil seeping through you. The strange yellow dust 
-swirls around your feet.  To the south, You glimpse a darker part of the 
+a strange sensation of evil seeping through you. The strange yellow dust
+swirls around your feet.  To the south, You glimpse a darker part of the
 forest, while paths lead away north and west.
 ~
 0 8192|16384 3
@@ -4049,8 +4049,8 @@ S
 #30072
 Kharma Rhanna~
 You are standing amidst withered ancient oaks and poplars.  You
-can feel a strange sensation of evil seeping through you. The strange 
-yellow dust swirls around your feet.  Paths lead north and east. To the 
+can feel a strange sensation of evil seeping through you. The strange
+yellow dust swirls around your feet.  Paths lead north and east. To the
 east, you see a darker part of the forest.
 ~
 0 8192|16384 3
@@ -4067,10 +4067,10 @@ You really can not see much east of here.  The forest is extremely dark.
 S
 #30073
 The Dires of Kharma Rhanna~
-Moving into the heart of the ancient forest, you step into a region 
-populated with leprous white trees and small bushes supporting clusters 
-of spiked, cyanic leaves.  The ground is soggy and the smell of decay is 
-heavy.  No sunlight penetrates through the canopy but a strange 
+Moving into the heart of the ancient forest, you step into a region
+populated with leprous white trees and small bushes supporting clusters
+of spiked, cyanic leaves.  The ground is soggy and the smell of decay is
+heavy.  No sunlight penetrates through the canopy but a strange
 illumination is given off by the bluish-green moulds growing on the
 forest floor.
 ~
@@ -4088,10 +4088,10 @@ There is a small path leading into the woods.
 S
 #30074
 The Dires of Kharma Rhanna~
-Moving into the heart of the ancient forest, you step into a region 
-populated with leprous white trees and small bushes supporting clusters 
-of spiked, cyanic leaves.  The ground is soggy and the smell of decay is 
-heavy.  No sunlight penetrates through the canopy but a strange 
+Moving into the heart of the ancient forest, you step into a region
+populated with leprous white trees and small bushes supporting clusters
+of spiked, cyanic leaves.  The ground is soggy and the smell of decay is
+heavy.  No sunlight penetrates through the canopy but a strange
 illumination is given off by the bluish-green molds growing on the
 forest floor.
 ~
@@ -4150,17 +4150,17 @@ The Gunnungagap stretches to the horizon.
 ~
 E
 altar~
-The altar looks identical to the one in the clearing but is intact.  A 
-small pool of blood is at its base.  There are no other clues that reveal 
+The altar looks identical to the one in the clearing but is intact.  A
+small pool of blood is at its base.  There are no other clues that reveal
 the altar's true purpose.  The altar fades in and out of existence.
 ~
 S
 #30076
 The Ginnungagap~
 You stumble along inside the Ginnungagap.  You see stars yet you cannot
-see what you are standing on.  You are not standing on any sort of 
-physical 'ground' as you can see yet you are not floating either.  
-Occasionally, the starry 'sky' fades into a fuzzy grey then back to its 
+see what you are standing on.  You are not standing on any sort of
+physical 'ground' as you can see yet you are not floating either.
+Occasionally, the starry 'sky' fades into a fuzzy grey then back to its
 normal state.
 ~
 0 8|8192 0
@@ -4198,9 +4198,9 @@ S
 #30077
 The Ginnungagap~
 You stumble along inside the Ginnungagap.  You see stars yet you cannot
-see what you are standing on.  You are not standing on any sort of 
-physical 'ground' as you can see yet you are not floating either.  
-Occasionally, the starry 'sky' fades into a fuzzy grey then back to its 
+see what you are standing on.  You are not standing on any sort of
+physical 'ground' as you can see yet you are not floating either.
+Occasionally, the starry 'sky' fades into a fuzzy grey then back to its
 normal state.
 ~
 0 8|8192 0
@@ -4276,8 +4276,8 @@ The Gunnungagap stretches to the horizon.
 ~
 E
 altar~
-The altar looks identical to the one in the clearing but is intact.  A 
-small pool of blood is at its base.  There are no other clues that reveal 
+The altar looks identical to the one in the clearing but is intact.  A
+small pool of blood is at its base.  There are no other clues that reveal
 the altar's true purpose.  The altar fades in and out of existence.
 ~
 S
@@ -4318,10 +4318,10 @@ D5
 S
 #30080
 The Common Square~
-The common square, people pass you, talking to each other.  To the 
-west is the poor alley and to the east you see a wooden bridge.  To the 
-north, this square is connected to the temple square.   From the south 
-you notice a nasty smell.  You're really confused and think you hear 
+The common square, people pass you, talking to each other.  To the
+west is the poor alley and to the east you see a wooden bridge.  To the
+north, this square is connected to the temple square.   From the south
+you notice a nasty smell.  You're really confused and think you hear
 someone's insane laughter in the distance.
 ~
 0 8|8192 1
@@ -4380,8 +4380,8 @@ S
 Eastern End of Poor Alley~
 You are at the poor alley.  South of here is the Crown & Anchor and to
 the east you see common square.  North of here is an abandoned shop.  A
-note is nailed to the shop's door.   The alley continues further west.  
-You're really confused and think you hear someone's insane laughter in 
+note is nailed to the shop's door.   The alley continues further west.
+You're really confused and think you hear someone's insane laughter in
 the distance.
 ~
 0 8|8192 1
@@ -4458,7 +4458,7 @@ doors is equipped with a very big lock.
 ~
 E
 tower towers~
-Both of the towers are built from large grey rocks that have been 
+Both of the towers are built from large grey rocks that have been
 fastened to each other with some kind of mortar.
 ~
 E
@@ -4470,8 +4470,8 @@ S
 #30085
 The Courtyard~
 The yard is square contained by the curtains of the walls, a colonnaded
-walkway running around the lower level, broken in places by the stone 
-stairways that rise to the battlements and postern.  The walls are thick 
+walkway running around the lower level, broken in places by the stone
+stairways that rise to the battlements and postern.  The walls are thick
 containing the chambers of the hold.
 ~
 0 8192 1
@@ -4493,7 +4493,7 @@ doors is equipped with a very big lock.
 ~
 E
 tower towers~
-Both of the towers are built from large grey rocks that have been 
+Both of the towers are built from large grey rocks that have been
 fastened to each other with some kind of mortar.
 ~
 E
@@ -4506,7 +4506,7 @@ S
 The Atrium~
 You step into a large area once enclosed by huge panes of glass.  Now
 there are several piles of debris and broken glass scattered in the corners.
-Once carpets covered the floor in a rich wine red, radiating from a 
+Once carpets covered the floor in a rich wine red, radiating from a
 central dias.  There are only a few faded and torn patches left.
 Several huge chains rest broken on the dias.
 ~
@@ -4593,10 +4593,10 @@ Something is blocking you.
 S
 #30089
 Outside The Northern Gates of Krondor~
-The air is quiet as you leave the city.  Small juniper and 
-blackthorn plants grow about the perimeter of the road, acting as silent 
-sentinels for the vast forest stretching beyond.  Glancing to the side of 
-the trail you see, almost hidden amoung the undergrowth, the white of 
+The air is quiet as you leave the city.  Small juniper and
+blackthorn plants grow about the perimeter of the road, acting as silent
+sentinels for the vast forest stretching beyond.  Glancing to the side of
+the trail you see, almost hidden amoung the undergrowth, the white of
 bones and the hidden glint of metal.
 
 The Northern Gates of Krondor is to the south.
@@ -4611,9 +4611,9 @@ gates~
 S
 #30090
 The Barracks~
-Several tables and cots occupy the room.  Swords, crossbows, and 
-armor lay neatly piled on each of the cots. In the middle of the barracks 
-is a large round table filled with playing cards, half-eaten dinners, and 
+Several tables and cots occupy the room.  Swords, crossbows, and
+armor lay neatly piled on each of the cots. In the middle of the barracks
+is a large round table filled with playing cards, half-eaten dinners, and
 empty bottles.  On the wall is posted a small notice.
 ~
 0 8 1
@@ -4640,8 +4640,8 @@ TO YOUR OWN DISCRETION.
 S
 #30091
 Equipment Room~
-The room contains an exotic assortment of armor and weapons.  Some 
-of which you have not seen before.  All of the equipment is stored on 
+The room contains an exotic assortment of armor and weapons.  Some
+of which you have not seen before.  All of the equipment is stored on
 racks and in cabinets that pulsate with a strange blue light.
 ~
 0 8 1
@@ -4652,15 +4652,15 @@ The barracks is north.
 0 0 30090
 E
 racks cabinets blue light equipment~
-Apparently the blue light keeps the equipment really safe.  It does not 
+Apparently the blue light keeps the equipment really safe.  It does not
 allow anyone to touch it.
 ~
 S
 #30092
 Arched Passage~
-The arched passage is well lit with torches.  A blue and red tiled 
-floor leads past tapestries containing strange creature and lands you 
-have not seen before.  From the north is the main temple complex.  To the 
+The arched passage is well lit with torches.  A blue and red tiled
+floor leads past tapestries containing strange creature and lands you
+have not seen before.  From the north is the main temple complex.  To the
 south, a strange crackling can be heard.
 ~
 0 4|8 1
@@ -4680,18 +4680,18 @@ D3
 0 -1 30115
 E
 tapestries tapestry~
-The tapestries appear almost life-like.  You think you detect movement in 
-a few but dismiss it as a draft ruffling the fabric.  One of the 
-creatures appears to be a fiercesome panther from the distant islands 
+The tapestries appear almost life-like.  You think you detect movement in
+a few but dismiss it as a draft ruffling the fabric.  One of the
+creatures appears to be a fiercesome panther from the distant islands
 south of Midgaard.
 ~
 S
 #30093
 Inner Sanctum~
 You enter a perfectly circular room.  On the walls are painted frescoes
-depicting heroic battles and strange beasts.  A single slab of obsidian 
-is inlaid into the floor.  Strange runes are etched into the surface.  
-Around the runes stands a group of hooded priests chanting softly.  
+depicting heroic battles and strange beasts.  A single slab of obsidian
+is inlaid into the floor.  Strange runes are etched into the surface.
+Around the runes stands a group of hooded priests chanting softly.
 Several religious icons are scattered about the slab.
 
 There is an enscription on the far wall.
@@ -4718,7 +4718,7 @@ The Ginnungagap~
 You stand upon a broad roadway of seamless jet running to an
 entranceway, the portal glowing red as if fire burns within.  The
 roadway floats within a void of shifting patterns and strange sounds.
-An altar is situated in front of the portal.  Upon it is chained a 
+An altar is situated in front of the portal.  Upon it is chained a
 mummified corpse clutching a large tome.
 
 A plaque is here.
@@ -4774,7 +4774,7 @@ After arriving on this other world, I discovered the kingdom of Krondor.
 I have only explored the city and surrounding areas.  The entire land
 appears to be extremely hostile.  However for the adventurous, the rewards
 are great.  The citizens of the city appear to be friendly albeit
-barbaric. However I detect with a few some hidden malice towards me.  
+barbaric. However I detect with a few some hidden malice towards me.
 I especially mistrust any member of Krondor's clergy.  I believe they are
 involved with the Ginnungagap and may have discovered my secret.  I may
 soon have to deal with them."
@@ -4784,10 +4784,10 @@ You discover it's a long, drawn-out diary and toss it back to the corpse.
 S
 #30095
 Meeting Room~
-The room is well-carpeted and contains a large, in-use fireplace on 
-one wall.  A large mahogany table occupies most of the room.  Several 
-leather chairs occupy each corner of the room.  Displayed on the the 
-walls and ceiling are several portraits of men and women, presumably past 
+The room is well-carpeted and contains a large, in-use fireplace on
+one wall.  A large mahogany table occupies most of the room.  Several
+leather chairs occupy each corner of the room.  Displayed on the the
+walls and ceiling are several portraits of men and women, presumably past
 family members.
 ~
 0 8 1
@@ -4799,9 +4799,9 @@ The foyer is south.
 S
 #30096
 A Private Library~
-The library is well stocked.   Several bookcases line the walls 
-containing books and scrolls covering many disciplines. Display cabinets 
-are in the middle of the room and contain a strange variety of 
+The library is well stocked.   Several bookcases line the walls
+containing books and scrolls covering many disciplines. Display cabinets
+are in the middle of the room and contain a strange variety of
 collectables: mummified hands, demonic masks, swords, and strange
 bubbling vials.
 ~
@@ -4820,11 +4820,11 @@ the constant run off of water.  You lose your footing and slip down the
 passage.  Several intersecting passageways quickly pass by as you tumble.
 
 Holding Tank
-     You tumble down the ramp and fall through the air into a pool of 
-water.  It appears the room was solely designed to collect rain water 
+     You tumble down the ramp and fall through the air into a pool of
+water.  It appears the room was solely designed to collect rain water
 during times of drought.  Several openings line the ceiling to supply the
-pool with a steady supply of water.  The water level is becoming 
-alarmingly high and you also do not feel as if you are alone. A set of 
+pool with a steady supply of water.  The water level is becoming
+alarmingly high and you also do not feel as if you are alone. A set of
 algae-covered steps leads up from the pool.
 ~
 0 1|8 1
@@ -4836,8 +4836,8 @@ Stone steps lead up.
 S
 #30098
 On Top of a Stairway~
-A set of algae-covered steps decends into a flooded room.  You 
-barely glimpse huge coils undulating under the water surface.  The only 
+A set of algae-covered steps decends into a flooded room.  You
+barely glimpse huge coils undulating under the water surface.  The only
 exit appears to be blocked by a door to the east.
 ~
 0 1|8|512 1
@@ -4858,9 +4858,9 @@ The stairs are underwater and can not be used.
 S
 #30099
 The Assassin's Guild~
-You enter a room containing the real controllers of Krondor.  Many 
-of the strange deaths occuring within the town can now be explained.  The 
-room is small, dimly-lit, and cluttered with discarded equipment and 
+You enter a room containing the real controllers of Krondor.  Many
+of the strange deaths occuring within the town can now be explained.  The
+room is small, dimly-lit, and cluttered with discarded equipment and
 armor.  Several pairs of eyes watch you closely as weapons are drawn.
 ~
 0 1|8|8192 1
@@ -4906,9 +4906,9 @@ A staircase leads down.
 S
 #30102
 On the Rooftop~
-From this vantage, all of Krondor can be seen.  The temple is seen 
-towards the west and a mansion is to the north.   The wind makes it 
-difficult to maneuver up here, but there are plenty of chimneys and 
+From this vantage, all of Krondor can be seen.  The temple is seen
+towards the west and a mansion is to the north.   The wind makes it
+difficult to maneuver up here, but there are plenty of chimneys and
 gutters to hang on to.  Another building's roof is nearby to the east.
 A small structure with a metal door pokes out of the roof.
 ~
@@ -4952,8 +4952,8 @@ It's a long way down.
 S
 #30104
 On the Rooftop~
-The roof gently slopes onto a smaller section of the roof.  A 
-strange looking building is north.  The building is capped with a dome of 
+The roof gently slopes onto a smaller section of the roof.  A
+strange looking building is north.  The building is capped with a dome of
 lattice and stretched animal skins.
 ~
 0 0 1
@@ -5062,9 +5062,9 @@ The rooftop continues.
 S
 #30109
 On the Rooftop~
-From this vantage, all of Krondor can be seen.  The temple is seen 
-towards the west and a mansion is to the north.   The wind makes it 
-difficult to maneuver up here, but there are plenty of chimneys and 
+From this vantage, all of Krondor can be seen.  The temple is seen
+towards the west and a mansion is to the north.   The wind makes it
+difficult to maneuver up here, but there are plenty of chimneys and
 gutters to hang on to.  A street is far below.
 ~
 0 0 1
@@ -5126,7 +5126,7 @@ No returns made on purchases.
 S
 #30112
 Hound Cages~
-Several cages fill the room.  Constantly is heard the sound of 
+Several cages fill the room.  Constantly is heard the sound of
 barking dogs.  There are no exits.
 (Storage for the kennels)
 ~
@@ -5151,7 +5151,7 @@ S
 Shoemakers~
 Shoes line the shelves before you, heavy leather boots on one side leading
 to the lighter more civilized street wear of town folk.  Made to measure items
-are being made all the time here.  Hard at work the cobbler puts in many hours to 
+are being made all the time here.  Hard at work the cobbler puts in many hours to
 acheive the finest quality.
 ~
 0 0 1
@@ -5229,7 +5229,7 @@ S
 Side of the Hall.~
 You stand at the left hand side of this magnificent shrine.  People
 spend time praying and worshiping here.  The seating is made of the
-highest quality wood with the finest workmanship.  Gold fittings adorn 
+highest quality wood with the finest workmanship.  Gold fittings adorn
 the walls.
 ~
 0 8|8192 1
@@ -5247,7 +5247,7 @@ S
 Side of the Hall.~
 You stand at the right hand side of this magnificent shrine.  People
 spend time praying and worshiping here.  The seating is made of the
-highest quality wood with the finest workmanship.  Gold fittings adorn 
+highest quality wood with the finest workmanship.  Gold fittings adorn
 the walls.
 ~
 0 8|8192 1
@@ -5262,7 +5262,7 @@ D3
 S
 #30120
 Front of the hall.~
-You stand at the front of the hall, making you presence known.  The 
+You stand at the front of the hall, making you presence known.  The
 altar is quite plainly seen from here and you have a good veiw from
 here of what goes on.  The Shrine attendants keep this place spotless.
 ~
@@ -5329,7 +5329,7 @@ D3
 S
 #30123
 Front of the Hall.~
-You stand at the front of the hall, making you presence known.  The 
+You stand at the front of the hall, making you presence known.  The
 altar is quite plainly seen from here and you have a good veiw from
 here of what goes on.  The Shrine attendants keep this place spotless.
 ~
@@ -5351,7 +5351,7 @@ S
 #30124
 the Imperial Stables.~
 You are standing in the great imperial stables, there are tapestries
-and ornate ornaments on a very large desk which you wouldnt have 
+and ornate ornaments on a very large desk which you wouldnt have
 expected to find in here.
 For stables the air is very fresh and the surroundings very tidy, you
 expect the person in charge of these stables to be very great indeed.
@@ -5369,7 +5369,7 @@ S
 The Ancient Portal~
 You open the hidden entrance to the altar and head along a short tunnel.
 You emerge into a small chamber, basked in deep blue light.  Just before
-the northern wall, a large oval disk of intense blue light crackles and 
+the northern wall, a large oval disk of intense blue light crackles and
 sparks: it is a magical portal.
 ~
 0 4 1
@@ -5453,7 +5453,7 @@ O 1 30005 1 30022		Fountain
 *
 M 1 30010 1 30019		Fanatic Priest
 E 1 30032 10 5			(clergy robe)
-G 1 30064 0   (pin) 
+G 1 30064 0   (pin)
 *
 M 1 30000 1 30050		Nidhogg
 E 1 30034 1 3 (chains)
@@ -5462,14 +5462,14 @@ E 1 30034 1 4 (chains)
 M 1 30011 1 30050		Priest
 E 1 30002 1 17		(serpentine staff)
 E 1 30032 10 5			(clergy robe)
-G 1 30064 0   (pin) 
+G 1 30064 0   (pin)
 *
 M 1 30011 1 30050			Priest
 E 1 30032 10 5			(clergy robe)
-G 1 30064 0   (pin) 
+G 1 30064 0   (pin)
 *
 M 1 30061 1 30093			Clergy
-G 1 30064 0   (pin) 
+G 1 30064 0   (pin)
 *
 M 1 30001 5 30004 Joining
 E 1 30000 3 3        (collar)
@@ -5581,7 +5581,7 @@ G 1 30063 2   (onyx stave)
 *                       (A bunch of homebrews)
 *
 *
-M 1 30012 1 30031		Chancellor 
+M 1 30012 1 30031		Chancellor
 E 1 30001 1 17	(Ginnungagap artifact)
 E 1 30016 1 16	(kukri)
 E 1 30036 1 8 (titanium boots)
@@ -5655,27 +5655,27 @@ E 1 30027 10 13		(kilt)
 E 1 30028 10 14		(platinum bracer)
 E 1 30017 10 16		(scimitar)
 *
-M 1 30004 6 30013			Imperial Guard patrol 
+M 1 30004 6 30013			Imperial Guard patrol
 E 1 30029 10 1		(talons)
 E 1 30020 10 4		(linen cloak)
 E 1 30018 10 5		(silk shirt)
 E 1 30019 10 11			(shield)
 E 1 30017 10 16		(scimitar)
 *
-M 1 30004 6 30015			Imperial Guard patrol 
+M 1 30004 6 30015			Imperial Guard patrol
 E 1 30020 10 4		(linen cloak)
 E 1 30018 10 5		(silk shirt)
 E 1 30026 10 12		(hooded cape)
 E 1 30027 10 13		(kilt)
 E 1 30017 10 16		(scimitar)
 *
-M 1 30004 6 30024			Imperial Guard patrol 
+M 1 30004 6 30024			Imperial Guard patrol
 E 1 30020 10 4		(linen cloak)
 E 1 30018 10 5		(silk shirt)
 E 1 30019 10 11			(shield)
 E 1 30017 10 16		(scimitar)
 *
-M 1 30004 6 30031			Imperial Guard patrol 
+M 1 30004 6 30031			Imperial Guard patrol
 E 1 30018 10 5		(silk shirt)
 E 1 30026 10 12		(hooded cape)
 E 1 30027 10 13		(kilt)
@@ -5778,7 +5778,7 @@ M 1 30038 5 30060			Spores
 M 1 30038 4 30058			Spores
 *
 M 1 30037 1 30062			Gallows
-G 1 30048 2   (inquisitor hood) 
+G 1 30048 2   (inquisitor hood)
 *
 M 1 30039 1 30070			Su Chi
 E 1 30002 1 17			(Bane of Su-Chi)

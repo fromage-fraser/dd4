@@ -40,7 +40,7 @@ the war hound from hell~
 A fiery hound of war prowls the tunnels.
 ~
 Acidic saliva drips from the fangs of this powerful beast.  Pools
-of flame surround his hooves, charring the ground he walks upon. 
+of flame surround his hooves, charring the ground he walks upon.
 The Dragon called this hound from the depths of hell to watch the
 mines while construction finishes.
 ~
@@ -360,7 +360,7 @@ a Scale of The Dragon~
 A large, ancient dragon scale lies here.~
 ~
 9 1|2|16|64|512 1|512
-16~ 1~ 6~ 11~ 
+16~ 1~ 6~ 11~
 13 0 0
 A
 13 50
@@ -376,7 +376,7 @@ a Talon of The Dragon~
 The talon of an ancient dragon lies here.~
 ~
 5 16|64|512|2048|4096 1|8192
-0~ 70~ 70~ 11~ 
+0~ 70~ 70~ 11~
 15 0 0
 A
 13 30
@@ -388,7 +388,7 @@ The Eye of The Dragon~
 A glowing dragons eye rolls around here.~
 ~
 1 1|16|512|2048 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 12 0 0
 A
 12 400
@@ -402,7 +402,7 @@ a demons tail~
 The tail of a demon lies here.~
 ~
 9 512|2048 1|32
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 12 0 0
 #24004
 shackles chain~
@@ -410,7 +410,7 @@ some chain shackles~
 Some chain shackles lie here.~
 ~
 9 128|4096 1|64
-1~ 1~ 6~ 11~ 
+1~ 1~ 6~ 11~
 37 0 0
 A
 14 -200
@@ -420,7 +420,7 @@ some chain shackles~
 Some chain shackles lie here.~
 ~
 9 128|4096 1|4096
-1~ 1~ 6~ 11~ 
+1~ 1~ 6~ 11~
 37 0 0
 A
 14 -200
@@ -430,7 +430,7 @@ a mining pick~
 A mining pick sticks out of the wall here.~
 ~
 5 1024 1|8192
-0~ 30~ 50~ 11~ 
+0~ 30~ 50~ 11~
 35 0 0
 #24007
 belt fire~
@@ -438,7 +438,7 @@ a belt of fire~
 A circle of fire burns brightly here.~
 ~
 9 16|64|512|2048 1|2048
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 14 0 0
 A
 13 -25
@@ -452,7 +452,7 @@ Yitrite platemail~
 A piece of red platemail lies here.~
 ~
 9 1024 1|8
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 25 0 0
 A
 1 5
@@ -466,7 +466,7 @@ a Yitrite sword~
 A sword of red metal lies here.~
 ~
 5 1024 1|8192
-0~ 60~ 80~ 3~ 
+0~ 60~ 80~ 3~
 15 0 0
 #24010
 yitrite club~
@@ -474,7 +474,7 @@ a Yitrite club~
 A club made of red metal lies here.~
 ~
 5 1024 1|8192
-0~ 60~ 80~ 8~ 
+0~ 60~ 80~ 8~
 20 0 0
 #24011
 yitrite axe~
@@ -482,7 +482,7 @@ a Yitrite axe~
 An axe made of red metal lies here.~
 ~
 5 1024 1|8192
-0~ 60~ 80~ 13~ 
+0~ 60~ 80~ 13~
 23 0 0
 #24012
 royal yitrite plate~
@@ -490,7 +490,7 @@ Royal Yitrite Plate~
 A red and silver piece of platemail lies here.~
 ~
 9 1|64|1024|2048 1|8
-14~ 1~ 6~ 11~ 
+14~ 1~ 6~ 11~
 20 0 0
 A
 19 7
@@ -508,7 +508,7 @@ a Yitrite Battle Axe~
 A red and silver battle axe lies on the ground.~
 ~
 5 64|1024|2048 1|8192
-0~ 70~ 100~ 13~ 
+0~ 70~ 100~ 13~
 25 0 0
 A
 18 15
@@ -520,7 +520,7 @@ a rocky key~
 A rocky key lies on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #24015
 ring crystal~
@@ -528,7 +528,7 @@ a crystal ring~
 A ring made of fine crystal rolls around here.~
 ~
 9 1024|2048 1|2
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 13 0 0
 A
 19 5
@@ -542,7 +542,7 @@ a flowing blue robe~
 A blue robe is piled on the ground.~
 ~
 9 1024 1|1024
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 25 0 0
 #24017
 yitrite ring~
@@ -550,7 +550,7 @@ a Yitrite ring~
 A ring of red metal rolls around here.~
 ~
 9 1024|2048 1|2
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 12 0 0
 A
 1 3
@@ -560,7 +560,7 @@ a Yitrite helmet~
 A red metal helmet sits on the ground.~
 ~
 9 1024|2048 1|16
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 26 0 0
 A
 5 3
@@ -570,7 +570,7 @@ a silver cloak~
 A silver cloak has been thrown here.~
 ~
 9 1024|2048 1|4
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 12 0 0
 A
 1 2
@@ -580,7 +580,7 @@ Yitrite armguards~
 A pair of red metal armguards lie here.~
 ~
 9 1024|2048 1|256
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 15 0 0
 A
 5 2
@@ -590,7 +590,7 @@ Yitrite plate~
 A piece of red plate armour lies here.~
 ~
 9 1024|2048 1|8
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 40 0 0
 A
 5 1
@@ -604,7 +604,7 @@ Yitrite greaves~
 A pair of red metal greaves lie here.~
 ~
 9 1024|2048 1|32
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 23 0 0
 A
 5 1
@@ -614,7 +614,7 @@ a silver belt~
 A belt made of silver lies here.~
 ~
 9 1024|2048 1|2048
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 12 0 0
 A
 1 1
@@ -624,7 +624,7 @@ silver boots~
 A pair of silver boots stands here.~
 ~
 9 1024|2048 1|64
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 12 0 0
 A
 14 100
@@ -634,7 +634,7 @@ a Yitrite shield~
 A red metal shield lies here.~
 ~
 9 1024|2048 1|512
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 20 0 0
 A
 5 1
@@ -644,7 +644,7 @@ a cavern cloak~
 A rocky looking cloak lies on the ground.~
 ~
 9 1024|2048 1|1024
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 23 0 0
 #24027
 gleaming mithril breastplate~
@@ -652,7 +652,7 @@ a gleaming mithril breastplate~
 A breastplate of mithril gleams here.~
 ~
 9 1|64|1024|2048 1|8
-14~ 1~ 6~ 11~ 
+14~ 1~ 6~ 11~
 25 0 0
 A
 1 3
@@ -664,7 +664,7 @@ a mithril crown~
 A gleaming mithril crown lies here.~
 ~
 9 1024|2048 1|16
-13~ 1~ 6~ 11~ 
+13~ 1~ 6~ 11~
 15 0 0
 A
 4 4
@@ -676,7 +676,7 @@ The Hammer of Kings~
 A royal looking hammer lies on the ground.~
 ~
 5 1024|2048 1|8192
-0~ 60~ 80~ 8~ 
+0~ 60~ 80~ 8~
 50 0 0
 A
 1 3
@@ -690,7 +690,7 @@ The Holy Armour of the Paladin~
 A gleaming gold breastplate sits here, radiating a holy aura.~
 ~
 9 1|32|64|1024|2048|4096 1|8
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 30 0 0
 A
 12 300
@@ -704,7 +704,7 @@ an oaken cane~
 A thick cane made of oak lies here.~
 ~
 5 1024|2048 1|8192
-0~ 60~ 80~ 7~ 
+0~ 60~ 80~ 7~
 13 0 0
 A
 9 30
@@ -714,7 +714,7 @@ an emerald pipe~
 A jewel encrusted pipe made of emerald lies here.~
 ~
 5 1|1024 1|8192
-0~ 60~ 60~ 11~ 
+0~ 60~ 60~ 11~
 12 0 0
 A
 2 5
@@ -724,7 +724,7 @@ a loaf of bread~
 A loaf of bread sits here.~
 ~
 19 0 1
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 #24034
 stein ale~
@@ -732,7 +732,7 @@ a stein of ale~
 A stein of ale foams here.~
 ~
 17 0 1|16384
-4~ 4~ 3~ 0~ 
+4~ 4~ 3~ 0~
 7 0 0
 #24035
 glow glowsteel~
@@ -740,7 +740,7 @@ a glowsteel~
 A glowing length of steel is here.~
 ~
 1 1|1024 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 14 0 0
 A
 18 7
@@ -814,7 +814,7 @@ You are standing in an enormous circular room.  Hundreds of feet in
 diameter, and just as high.  It looks as if the whole population of
 Cobresh could sit in the rows of seats that circle the round
 chamber and rise to the ceiling.  A round platform with doors set
-in three of the four directions sits in the middle of the floor. 
+in three of the four directions sits in the middle of the floor.
 The craftsmanship of this room is amazing, for even the quietest
 whisper on the stage can be heard from the highest seat.
 ~
@@ -1333,7 +1333,7 @@ D3
 S
 #24033
 Marble Avenue.~
-You are standing on the smooth stone road that is Marble Avenue. 
+You are standing on the smooth stone road that is Marble Avenue.
 A stone house lies north off of the road.  The road continues on
 east and west.
 ~
@@ -1353,7 +1353,7 @@ D3
 S
 #24034
 Marble Avenue.~
-The smooth stone road turns here, going both west and south. 
+The smooth stone road turns here, going both west and south.
 Dwarven citizens quickly move away to the darkness as you approach.
 ~
 0 1|8 1
@@ -1866,8 +1866,8 @@ D3
 S
 #24065
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1882,8 +1882,8 @@ D3
 S
 #24066
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1898,8 +1898,8 @@ D2
 S
 #24067
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1914,8 +1914,8 @@ D1
 S
 #24068
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1930,8 +1930,8 @@ D3
 S
 #24069
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1946,8 +1946,8 @@ D3
 S
 #24070
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1962,8 +1962,8 @@ D2
 S
 #24071
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1978,8 +1978,8 @@ D3
 S
 #24072
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -1994,8 +1994,8 @@ D2
 S
 #24073
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 8 5
@@ -2014,8 +2014,8 @@ D2
 S
 #24074
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2030,8 +2030,8 @@ D3
 S
 #24075
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2046,8 +2046,8 @@ D3
 S
 #24076
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2062,8 +2062,8 @@ D2
 S
 #24077
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2082,8 +2082,8 @@ D3
 S
 #24078
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2098,8 +2098,8 @@ D3
 S
 #24079
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2114,8 +2114,8 @@ D3
 S
 #24080
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2130,8 +2130,8 @@ D2
 S
 #24081
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2146,8 +2146,8 @@ D3
 S
 #24082
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2162,8 +2162,8 @@ D1
 S
 #24083
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2182,8 +2182,8 @@ D3
 S
 #24084
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2198,8 +2198,8 @@ D3
 S
 #24085
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2214,8 +2214,8 @@ D3
 S
 #24086
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2234,8 +2234,8 @@ D2
 S
 #24087
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2250,8 +2250,8 @@ D3
 S
 #24088
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2266,8 +2266,8 @@ D2
 S
 #24089
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2282,8 +2282,8 @@ D2
 S
 #24090
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2298,8 +2298,8 @@ D3
 S
 #24091
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2314,8 +2314,8 @@ D2
 S
 #24092
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2330,8 +2330,8 @@ D2
 S
 #24093
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2346,8 +2346,8 @@ D3
 S
 #24094
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2366,8 +2366,8 @@ D3
 S
 #24095
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2386,8 +2386,8 @@ D5
 S
 #24096
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2402,8 +2402,8 @@ D2
 S
 #24097
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2418,8 +2418,8 @@ D3
 S
 #24098
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2434,8 +2434,8 @@ D3
 S
 #24099
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2454,8 +2454,8 @@ D3
 S
 #24100
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2470,8 +2470,8 @@ D2
 S
 #24101
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2486,8 +2486,8 @@ D2
 S
 #24102
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2502,8 +2502,8 @@ D1
 S
 #24103
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2522,8 +2522,8 @@ D3
 S
 #24104
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2538,8 +2538,8 @@ D3
 S
 #24105
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2554,8 +2554,8 @@ D1
 S
 #24106
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2570,8 +2570,8 @@ D3
 S
 #24107
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2590,8 +2590,8 @@ D3
 S
 #24108
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2606,8 +2606,8 @@ D3
 S
 #24109
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2622,8 +2622,8 @@ D2
 S
 #24110
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2638,8 +2638,8 @@ D1
 S
 #24111
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2654,8 +2654,8 @@ D3
 S
 #24112
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2670,8 +2670,8 @@ D3
 S
 #24113
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -2686,8 +2686,8 @@ D2
 S
 #24114
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2702,8 +2702,8 @@ D2
 S
 #24115
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2718,8 +2718,8 @@ D3
 S
 #24116
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2734,8 +2734,8 @@ D1
 S
 #24117
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2754,8 +2754,8 @@ D3
 S
 #24118
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2770,8 +2770,8 @@ D3
 S
 #24119
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2786,8 +2786,8 @@ D3
 S
 #24120
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2806,8 +2806,8 @@ D3
 S
 #24121
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2826,8 +2826,8 @@ D3
 S
 #24122
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2842,8 +2842,8 @@ D3
 S
 #24123
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2858,8 +2858,8 @@ D1
 S
 #24124
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2874,8 +2874,8 @@ D3
 S
 #24125
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2890,8 +2890,8 @@ D2
 S
 #24126
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2906,8 +2906,8 @@ D1
 S
 #24127
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2922,8 +2922,8 @@ D3
 S
 #24128
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2938,8 +2938,8 @@ D3
 S
 #24129
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2954,8 +2954,8 @@ D3
 S
 #24130
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2970,8 +2970,8 @@ D2
 S
 #24131
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -2986,8 +2986,8 @@ D3
 S
 #24132
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3002,8 +3002,8 @@ D3
 S
 #24133
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3018,8 +3018,8 @@ D3
 S
 #24134
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3034,8 +3034,8 @@ D2
 S
 #24135
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3050,8 +3050,8 @@ D1
 S
 #24136
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3066,8 +3066,8 @@ D3
 S
 #24137
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3082,8 +3082,8 @@ D3
 S
 #24138
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3098,8 +3098,8 @@ D2
 S
 #24139
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3114,8 +3114,8 @@ D3
 S
 #24140
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3130,8 +3130,8 @@ D2
 S
 #24141
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3150,8 +3150,8 @@ D2
 S
 #24142
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3166,8 +3166,8 @@ D3
 S
 #24143
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3182,8 +3182,8 @@ D3
 S
 #24144
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3198,8 +3198,8 @@ D2
 S
 #24145
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3218,8 +3218,8 @@ D3
 S
 #24146
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3234,8 +3234,8 @@ D3
 S
 #24147
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3268,8 +3268,8 @@ D2
 S
 #24149
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3284,8 +3284,8 @@ D3
 S
 #24150
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3300,8 +3300,8 @@ D1
 S
 #24151
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3320,8 +3320,8 @@ D3
 S
 #24152
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3336,8 +3336,8 @@ D3
 S
 #24153
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3352,8 +3352,8 @@ D3
 S
 #24154
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3372,8 +3372,8 @@ D2
 S
 #24155
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3388,8 +3388,8 @@ D3
 S
 #24156
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3440,8 +3440,8 @@ D3
 S
 #24159
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3456,8 +3456,8 @@ D2
 S
 #24160
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3472,8 +3472,8 @@ D2
 S
 #24161
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3488,8 +3488,8 @@ D3
 S
 #24162
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3580,8 +3580,8 @@ D3
 S
 #24167
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3600,8 +3600,8 @@ D3
 S
 #24168
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3616,8 +3616,8 @@ D2
 S
 #24169
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3690,8 +3690,8 @@ D3
 S
 #24173
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3706,8 +3706,8 @@ D1
 S
 #24174
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3722,8 +3722,8 @@ D3
 S
 #24175
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3742,8 +3742,8 @@ D3
 S
 #24176
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3758,8 +3758,8 @@ D3
 S
 #24177
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3774,8 +3774,8 @@ D2
 S
 #24178
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3790,8 +3790,8 @@ D1
 S
 #24179
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3806,8 +3806,8 @@ D3
 S
 #24180
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1 5
@@ -3822,8 +3822,8 @@ D3
 S
 #24181
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|4|8 5
@@ -3838,8 +3838,8 @@ D2
 S
 #24182
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3854,8 +3854,8 @@ D2
 S
 #24183
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3870,8 +3870,8 @@ D3
 S
 #24184
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3886,8 +3886,8 @@ D1
 S
 #24185
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3906,8 +3906,8 @@ D3
 S
 #24186
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3922,8 +3922,8 @@ D3
 S
 #24187
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3938,8 +3938,8 @@ D3
 S
 #24188
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3958,8 +3958,8 @@ D3
 S
 #24189
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3978,8 +3978,8 @@ D3
 S
 #24190
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -3994,8 +3994,8 @@ D1
 S
 #24191
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -4010,8 +4010,8 @@ D3
 S
 #24192
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -4026,8 +4026,8 @@ D2
 S
 #24193
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -4042,8 +4042,8 @@ D1
 S
 #24194
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -4058,8 +4058,8 @@ D3
 S
 #24195
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -4074,8 +4074,8 @@ D3
 S
 #24196
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5
@@ -4090,8 +4090,8 @@ D3
 S
 #24197
 The mines.~
-You are in the large Yitrite mines of Cobresh.  From these mines, 
-the dwarves gather the red metal and forge it into all sorts of 
+You are in the large Yitrite mines of Cobresh.  From these mines,
+the dwarves gather the red metal and forge it into all sorts of
 items.  You see no signs of the alleged cave in.
 ~
 0 1|8 5

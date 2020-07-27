@@ -167,7 +167,7 @@ void do_mpasound( CHAR_DATA *ch, char *argument )
     for ( door = 0; door <= 5; door++ )
     {
       EXIT_DATA       *pexit;
-      
+
       if ( ( pexit = was_in_room->exit[door] ) != NULL
 	  &&   pexit->to_room != NULL
 	  &&   pexit->to_room != was_in_room )
@@ -227,12 +227,12 @@ void do_mpkill( CHAR_DATA *ch, char *argument )
     }
 
     if ( ch->position == POS_FIGHTING )
-    {	
+    {
 	bug( "MpKill - Already fighting: vnum %d",
 	    ch->pIndexData->vnum );
 	return;
     }
-	
+
     if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
 	return;
 
@@ -242,7 +242,7 @@ void do_mpkill( CHAR_DATA *ch, char *argument )
 
 
 /* lets the mobile destroy an object in its inventory
-   it can also destroy a worn object and it can destroy 
+   it can also destroy a worn object and it can destroy
    items using all.xxxxx or just plain all of them */
 
 void do_mpjunk( CHAR_DATA *ch, char *argument )
@@ -274,7 +274,7 @@ void do_mpjunk( CHAR_DATA *ch, char *argument )
 	return;
       }
       if ( ( obj = get_obj_carry( ch, arg ) ) == NULL )
-	return; 
+	return;
       extract_obj( obj );
     }
     else
@@ -286,14 +286,14 @@ void do_mpjunk( CHAR_DATA *ch, char *argument )
           if ( obj->wear_loc != WEAR_NONE)
 	    unequip_char( ch, obj );
           extract_obj( obj );
-        } 
+        }
       }
 
     return;
 
 }
 
-                                                                                
+
 
 /* prints the message to everyone in the room other than the mob and victim */
 
@@ -385,7 +385,7 @@ void do_mpecho( CHAR_DATA *ch, char *argument )
 		do_chat(ch, buf2);
 	else
 		act( argument, ch, NULL, NULL, TO_ROOM );
-	
+
 	return;
 }
 
@@ -451,14 +451,14 @@ void do_mpoload( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
- 
+
     if ( arg1[0] == '\0' || !is_number( arg1 ) )
     {
         bug( "Mpoload - Bad syntax: vnum %d.",
 	    ch->pIndexData->vnum );
         return;
     }
- 
+
     if ( arg2[0] == '\0' )
     {
 	level = get_trust( ch );
@@ -619,7 +619,7 @@ void do_mpat( CHAR_DATA *ch, char *argument )
         send_to_char( "Huh?\n\r", ch );
 	return;
     }
- 
+
     argument = one_argument( argument, arg );
 
     if ( arg[0] == '\0' || argument[0] == '\0' )
@@ -655,13 +655,13 @@ void do_mpat( CHAR_DATA *ch, char *argument )
 
     return;
 }
- 
+
 /*
  * lets the mobile transfer people.  the all argument transfers
  * everyone in the current room to the specified location
  *
- * Extended by Gezhp 
- * 
+ * Extended by Gezhp
+ *
  * mptransfer $n [location]          mount taken also, as below
  * mptransfer all [location]         all in room
  * mptransfer $n group [location]    all in group
@@ -676,16 +676,16 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 	CHAR_DATA *victim, *vch, *vnext;
 	bool all = FALSE, group = FALSE;
 	char buf [MAX_STRING_LENGTH];
-	
+
 	if (!IS_NPC(ch))
 	{
 		send_to_char( "Huh?\n\r", ch );
 		return;
 	}
-	
+
 	if (IS_AFFECTED(ch, AFF_CHARM))
 		return;
-   
+
 	argument = one_argument( argument, arg1 );
 	argument = one_argument( argument, arg2 );
 	argument = one_argument( argument, arg3 );
@@ -695,16 +695,16 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 		bug( "Mptransfer - Bad syntax: vnum %d.", ch->pIndexData->vnum );
 		return;
 	}
-	
+
 	if (!str_cmp(arg1, "all"))
 		all = TRUE;
-	
+
 	else if (!str_cmp(arg2, "group"))
 	{
 		group = TRUE;
 		strcpy(arg2, arg3);
 	}
-		
+
 	sprintf(buf, "mptransfer: vnum=%d all=%s group=%s target=%s loc=%s",
 		ch->pIndexData->vnum,
 		all ? "yes" : "no",
@@ -712,7 +712,7 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 		arg1,
 		arg2);
 	log_string(buf);
-	
+
 	/*
 	 * Thanks to Grodyn for the optional location parameter.
 	 */
@@ -726,7 +726,7 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 			    ch->pIndexData->vnum );
 			return;
 		}
-		
+
 		if (room_is_private(location))
 		{
 			bug( "Mptransfer - Private room: vnum %d.",
@@ -734,7 +734,7 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 			return;
 		}
 	}
-	
+
 	if (all)
 		victim = ch;
 	else
@@ -745,7 +745,7 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 			    ch->pIndexData->vnum );
 			return;
 		}
-		
+
 		if (!victim->in_room)
 		{
 			bug( "Mptransfer - Victim in Limbo: vnum %d.",
@@ -753,24 +753,24 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
 			return;
 		}
 	}
-		
-	for (vch = victim->in_room->people; vch; vch = vnext) 
+
+	for (vch = victim->in_room->people; vch; vch = vnext)
 	{
 		vnext = vch->next_in_room;
-		
+
 		if (vch->deleted)
 			continue;
-		
+
 		if (all
 		    || vch == victim
 		    || vch == victim->mount
-		    || (group 
+		    || (group
 			&& (is_same_group(vch, victim)
 			    || is_group_members_mount(vch, victim))))
 		{
 			if (vch->fighting)
 				stop_fighting (vch, TRUE);
-			
+
 			char_from_room (vch);
 			char_to_room (vch, location);
 		}
@@ -814,7 +814,7 @@ void do_mpforce( CHAR_DATA *ch, char *argument )
 	    vch_next = vch->next;
 
 	    if ( vch->in_room == ch->in_room
-		&& get_trust( vch ) < get_trust( ch ) 
+		&& get_trust( vch ) < get_trust( ch )
 		&& can_see( ch, vch ) )
 	    {
 		interpret( vch, argument );

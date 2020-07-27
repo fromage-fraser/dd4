@@ -29,7 +29,7 @@ crazed rabbit~
 A crazed Rabbit~
 A crazed rabbit hurtles through the grass.
 ~
-This rabbit is several orders of magnitude SMALLER than you and still he 
+This rabbit is several orders of magnitude SMALLER than you and still he
 attacks!  He must be on something.
 ~
 32|64 0 0 S
@@ -41,7 +41,7 @@ crazed rabbit~
 A crazed Rabbit~
 A crazed rabbit hurtles through the grass.
 ~
-This rabbit is several orders of magnitude SMALLER than you and still he 
+This rabbit is several orders of magnitude SMALLER than you and still he
 attacks!  He must be on something.
 ~
 32|64 0 0 S
@@ -53,7 +53,7 @@ king dead~
 The dead King~
 A long dead King moulders on his Bower.
 ~
-This guy is not even skin and bones.... Dark magic ensures his eternal 
+This guy is not even skin and bones.... Dark magic ensures his eternal
 existence.
 ~
 32|64 2|8|32|128|4096|32768|65536 -1000 S
@@ -65,7 +65,7 @@ carnivorous grass~
 The carnivorous grass~
 A tall clump of grass growls at you and attacks!?
 ~
-This strange creature looks like a big bunch of spring onions with lots of 
+This strange creature looks like a big bunch of spring onions with lots of
 litte legs..... and since it's chewing on you, it must have teeth too!?
 ~
 32|64 32 0 S
@@ -77,7 +77,7 @@ carnivorous grass~
 The carnivorous grass~
 A tall clump of grass growls at you and attacks!?
 ~
-This strange creature looks like a big bunch of spring onions with lots of 
+This strange creature looks like a big bunch of spring onions with lots of
 litte legs..... and since it's chewing on you, it must have teeth too!?
 ~
 32|64 32 0 S
@@ -90,7 +90,7 @@ Ben trapper~
 Ben the Trapper~
 Ben the trapper hunts the plains.
 ~
-Ben The Trapper looks to have fought a lot of battles and removed a lot of 
+Ben The Trapper looks to have fought a lot of battles and removed a lot of
 dangers from the land. He appears to be on the hunt even now.
 ~
 64|512|8388608|16777216 8|16|32|2048|65536|8388608|4194304 0 S
@@ -391,8 +391,8 @@ say You look as if you can handle yourself. Want to help rid the
 say Domain of a few horrors?
 ~
 >speech_prog Yes Yeah~
-say Good. Here, take this list. It'll help you identify the 
-say special dangers I'm looking for compared to the normal 
+say Good. Here, take this list. It'll help you identify the
+say special dangers I'm looking for compared to the normal
 say hazards of everyday adventuring.
 mpoload 18404 1
 give list $n
@@ -410,7 +410,7 @@ a rock~
 A sturdy rock sits here.~
 ~
 5 512|1024 1|8192
-0~ 1~ 6~ 8~ 
+0~ 1~ 6~ 8~
 5 0 0
 #18401
 coins~
@@ -418,7 +418,7 @@ a gleaming pile of coins~
 A huge pile of gold bullion rests at the feet of the Kings Bower.~
 ~
 20 0 1
-0~ 0~ 81~ 0~ 
+0~ 0~ 81~ 0~
 5 0 0
 #18402
 stone~
@@ -426,7 +426,7 @@ a dull grey stone~
 A dull grey stone sits here and acts stonish.~
 ~
 9 1|32|64|1024|2048 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 18 6
@@ -454,15 +454,15 @@ hunters list~
 A list of creatures to be hunted down.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 E
 hunters list~
-This appears to be a list of creatures the trapper wants eliminated. It 
-indicates the trapper is willing to reward anyone who does so. Proof of the 
+This appears to be a list of creatures the trapper wants eliminated. It
+indicates the trapper is willing to reward anyone who does so. Proof of the
 kill will be required before any reward is given. The list is as follows:
 {W
-                The Morque               Chelsea the Succubus                  
+                The Morque               Chelsea the Succubus
 		Falcor                   Shiloh the Siren
 		Roldin                   A Bone Golem
 		A Pigmy                  Heather the Banshee
@@ -496,8 +496,8 @@ trappers senses~
 #ROOMS
 #18400
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks although the plains seem to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks although the plains seem to
 grow darker to the far north. The trail you are following heads north and south.
 ~
 0 0 2
@@ -512,8 +512,8 @@ D2
 S
 #18401
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -528,9 +528,9 @@ D2
 S
 #18402
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -553,8 +553,8 @@ D3
 S
 #18403
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -569,9 +569,9 @@ D3
 S
 #18404
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -594,8 +594,8 @@ D3
 S
 #18405
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -610,9 +610,9 @@ D3
 S
 #18406
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -635,8 +635,8 @@ D3
 S
 #18407
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -651,9 +651,9 @@ D2
 S
 #18408
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -676,8 +676,8 @@ D3
 S
 #18409
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -692,9 +692,9 @@ D2
 S
 #18410
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -717,8 +717,8 @@ D3
 S
 #18411
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -733,9 +733,9 @@ D3
 S
 #18412
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -758,8 +758,8 @@ D3
 S
 #18413
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -774,9 +774,9 @@ D3
 S
 #18414
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -799,8 +799,8 @@ D3
 S
 #18415
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -815,9 +815,9 @@ D2
 S
 #18416
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -840,8 +840,8 @@ D3
 S
 #18417
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -856,8 +856,8 @@ D2
 S
 #18418
 Above the Cliffs~
-You stand atop a high cliff, below which stretches a broad fertile valley.  
-You glimpse a town in the distance, far across the valley floor.  
+You stand atop a high cliff, below which stretches a broad fertile valley.
+You glimpse a town in the distance, far across the valley floor.
 To the east a large mountain range dominates the view. You spy a pass
 running between two peaks.
 ~
@@ -873,7 +873,7 @@ D1
 S
 #18419
 A Steep Bank~
-The ground falls away suddenly beneath your feet, hidden by the lengthy 
+The ground falls away suddenly beneath your feet, hidden by the lengthy
 grass.  You tumble down a long slope.......
 ~
 0 0 2
@@ -884,9 +884,9 @@ D3
 S
 #18420
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from the west, north and 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from the west, north and
 south.
 ~
 0 0 2
@@ -905,8 +905,8 @@ D3
 S
 #18421
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -921,9 +921,9 @@ D3
 S
 #18422
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -946,8 +946,8 @@ D3
 S
 #18423
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -962,9 +962,9 @@ D2
 S
 #18424
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -987,8 +987,8 @@ D3
 S
 #18425
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1003,9 +1003,9 @@ D2
 S
 #18426
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -1028,8 +1028,8 @@ D3
 S
 #18427
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -1044,9 +1044,9 @@ D3
 S
 #18428
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. Trails converge here from each of the cardinal 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. Trails converge here from each of the cardinal
 directions.
 ~
 0 0 2
@@ -1069,8 +1069,8 @@ D3
 S
 #18429
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and east.
 ~
 0 0 2
@@ -1085,8 +1085,8 @@ D3
 S
 #18430
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1101,8 +1101,8 @@ D2
 S
 #18431
 Grassy Plain~
-The trail you are standing on heads south.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads south.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1113,8 +1113,8 @@ D2
 S
 #18432
 Grassy Plain~
-The trail you are standing on heads north.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads north.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1125,8 +1125,8 @@ D0
 S
 #18433
 Grassy Plain~
-The trail you are standing on heads south.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads south.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1137,8 +1137,8 @@ D2
 S
 #18434
 Grassy Plain~
-The trail you are standing on heads west.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads west.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1165,8 +1165,8 @@ D3
 S
 #18436
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads east and west.
 ~
 0 0 2
@@ -1181,8 +1181,8 @@ D3
 S
 #18437
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads east and south.
 ~
 0 0 2
@@ -1197,8 +1197,8 @@ D2
 S
 #18438
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1213,8 +1213,8 @@ D2
 S
 #18439
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads east and west.
 ~
 0 0 2
@@ -1229,8 +1229,8 @@ D3
 S
 #18440
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and south.
 ~
 0 0 2
@@ -1245,10 +1245,10 @@ D3
 S
 #18441
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
-A huge mountain range to the east blocks much light, however, you spy 
+A huge mountain range to the east blocks much light, however, you spy
 a trail that winds its way through a pass, leading eastward.
 ~
 0 0 2
@@ -1267,8 +1267,8 @@ D2
 S
 #18442
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  A copse of poppies is growing here and many of the flowers 
+You are walking through knee-high grass covering a gently undulating
+landscape.  A copse of poppies is growing here and many of the flowers
 look heavily chewed. The trail you are following heads north and west.
 ~
 0 0 2
@@ -1283,8 +1283,8 @@ D3
 S
 #18443
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads east and west,
 and there is a small trail leading to the south.
 ~
@@ -1304,8 +1304,8 @@ D3
 S
 #18444
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and east.
 ~
 0 0 2
@@ -1320,8 +1320,8 @@ D1
 S
 #18445
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1336,8 +1336,8 @@ D2
 S
 #18446
 Grassy Plain~
-The trail you are standing on heads north.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads north.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1348,8 +1348,8 @@ D0
 S
 #18447
 Grassy Plain~
-The trail you are standing on heads west.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads west.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1360,8 +1360,8 @@ D3
 S
 #18448
 Grassy Plain~
-The trail you are standing on heads east.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads east.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1372,8 +1372,8 @@ D1
 S
 #18449
 Grassy Plain~
-The trail you are standing on heads north.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads north.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1384,8 +1384,8 @@ D0
 S
 #18450
 Grassy Plain~
-The trail you are standing on heads east.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads east.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1396,8 +1396,8 @@ D1
 S
 #18451
 Grassy Plain~
-The trail you are standing on heads west.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads west.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1408,8 +1408,8 @@ D3
 S
 #18452
 Grassy Plain~
-The trail you are standing on heads east-west.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads east-west.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1424,8 +1424,8 @@ D3
 S
 #18453
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads east and west.
 ~
 0 0 2
@@ -1440,8 +1440,8 @@ D3
 S
 #18454
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and east.
 ~
 0 0 2
@@ -1456,8 +1456,8 @@ D1
 S
 #18455
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1472,8 +1472,8 @@ D2
 S
 #18456
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  A copse of poppies is growing here and many of the flowers 
+You are walking through knee-high grass covering a gently undulating
+landscape.  A copse of poppies is growing here and many of the flowers
 look heavily chewed. The trail you are following heads east and south.
 ~
 0 0 2
@@ -1488,8 +1488,8 @@ D2
 S
 #18457
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads east and west.
 ~
 0 0 2
@@ -1504,8 +1504,8 @@ D3
 S
 #18458
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads west and south.
 ~
 0 0 2
@@ -1520,8 +1520,8 @@ D3
 S
 #18459
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1536,8 +1536,8 @@ D2
 S
 #18460
 Grassy Plain~
-The trail you are standing on heads south.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads south.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1548,8 +1548,8 @@ D2
 S
 #18461
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
 stretch to the horizon. The trail you are following heads north and south.
 ~
 0 0 2
@@ -1564,9 +1564,9 @@ D2
 S
 #18462
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. The trail you are following heads north and east.  
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. The trail you are following heads north and east.
 A deep ravine prevents you from heading south.
 ~
 0 0 2
@@ -1581,9 +1581,9 @@ D1
 S
 #18463
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  There are no noticeable landmarks and the plains appear to 
-stretch to the horizon. The trail you are following heads east and west.  
+You are walking through knee-high grass covering a gently undulating
+landscape.  There are no noticeable landmarks and the plains appear to
+stretch to the horizon. The trail you are following heads east and west.
 A deep ravine cuts off any travel to the south.
 ~
 0 0 2
@@ -1598,10 +1598,10 @@ D3
 S
 #18464
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
-landscape.  The trail you are following heads north and west. To the south 
-lies a deep ravine and the remains of a tension brige.  Only the tall 
-anchor stones and some rotten planks remain.  Looks like you'll have to 
+You are walking through knee-high grass covering a gently undulating
+landscape.  The trail you are following heads north and west. To the south
+lies a deep ravine and the remains of a tension brige.  Only the tall
+anchor stones and some rotten planks remain.  Looks like you'll have to
 go around if you want to get to the other side.
 ~
 0 0 2
@@ -1616,8 +1616,8 @@ D3
 S
 #18465
 Grassy Plain~
-The trail you are standing on heads south.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads south.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1628,8 +1628,8 @@ D2
 S
 #18466
 Grassy Plain~
-The trail you are standing on heads north.  In all other directions 
-stretches the featureless grasslands.  With no landmarks to set your 
+The trail you are standing on heads north.  In all other directions
+stretches the featureless grasslands.  With no landmarks to set your
 course by, you decide not to leave the trail.
 ~
 0 0 2
@@ -1640,9 +1640,9 @@ D0
 S
 #18467
 Grassy Plain~
-The trail you are standing on heads south.  To the north lies a deep ravine 
-and the remains of a tension brige.  Only the tall anchor stones and some 
-rotten planks remain.  Looks like you'll have to go around if you want to 
+The trail you are standing on heads south.  To the north lies a deep ravine
+and the remains of a tension brige.  Only the tall anchor stones and some
+rotten planks remain.  Looks like you'll have to go around if you want to
 get to the other side.
 ~
 0 0 2
@@ -1653,8 +1653,8 @@ D2
 S
 #18469
 Bottom of the Bank~
-Feeling a little worse-for-wear after your fall, you stagger to your feet.  
-The bank to the east is far to unsteady to be climbed.  Trails converge 
+Feeling a little worse-for-wear after your fall, you stagger to your feet.
+The bank to the east is far to unsteady to be climbed.  Trails converge
 here from the west, north and south.
 ~
 0 0 2
@@ -1673,8 +1673,8 @@ D3
 S
 #18470
 Barrow Mound~
-The interior of this barrow mound is dank and musty.  Over the centuries 
-since its comstruction any exterior sign of the mounds existence has been 
+The interior of this barrow mound is dank and musty.  Over the centuries
+since its comstruction any exterior sign of the mounds existence has been
 eroded away.
 ~
 0 4 2

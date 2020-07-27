@@ -2,7 +2,7 @@
 
 #
 #  Post notice on port; Gezhp 2000
-# 
+#
 
 use IO::Socket;
 use POSIX 'sys_wait_h';
@@ -40,6 +40,6 @@ while (accept(CLIENT, $server)) {
 }
 continue {
 	close(CLIENT);
-}	
-	
+}
+
 

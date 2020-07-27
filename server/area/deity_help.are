@@ -96,7 +96,7 @@ powerful each deity is).  If you have a patron, you can feel whether your
 deity is powerful or weak, and when their ranking changes significantly.
 
 The internal ranking of the Pantheon is set randomly when the MUD reboots,
-and changes slowly over time.  Player characters, including Immortals, 
+and changes slowly over time.  Player characters, including Immortals,
 cannot influence or set the way the Pantheon is ranked.
 
 See 'HELP DEITY' for more information.
@@ -117,7 +117,7 @@ sort of personality the deity has, and what races and classes the deity
 favours or disfavours.
 
 See 'HELP DEITY PANTHEON' for background, and 'HELP DEITY' for more
-information. 
+information.
 ~
 
 
@@ -278,7 +278,7 @@ Usage: pray reveal <target>
 
 Pray for your patron to reveal information about any creature, where ever
 they may be in the Domain.  If you are clanned, you may target other
-players, so long as they are within your pkilling range. 
+players, so long as they are within your pkilling range.
 ~
 
 

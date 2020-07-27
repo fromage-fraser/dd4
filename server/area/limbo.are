@@ -13,8 +13,8 @@ Puff~
 Puff~
 Puff the Fractal Dragon is here, contemplating a higher reality.
 ~
-It is impossible to look closely at Puff.  The swirling light around you 
-flashes off her fractal scales, creating a sparkling ignis fatuus that 
+It is impossible to look closely at Puff.  The swirling light around you
+flashes off her fractal scales, creating a sparkling ignis fatuus that
 confuses your senses and disorientates you.
 ~
 1 0 1000 S
@@ -36,7 +36,7 @@ if rand(10)
 say No, I'm not THAT Puff. Stupid "magic dragon"...
 else
 if rand(10)
-say Welcome to My Domain. You did wonder who the dragon was in "Dragons 
+say Welcome to My Domain. You did wonder who the dragon was in "Dragons
 say Domain", didn't you?
 else
 if rand(10)
@@ -50,7 +50,7 @@ say AHA! That's it! Higher reality...
 emote goes back to contemplating a higher reality silently.
 else
 if rand(10)
-say Beware the wicked LAG. It takes many forms and will seize you before you 
+say Beware the wicked LAG. It takes many forms and will seize you before you
 say know it.
 else
 if rand(10)
@@ -218,8 +218,8 @@ if clan($n) == aod
 	'you're AOD
 else
 	'you're not AOD
-endif	
-endif	
+endif
+endif
 ~
 >rand_prog 10~
 if rand(25)
@@ -256,9 +256,9 @@ hunter grail~
 Grail the Hunter~
 Grail the Hunter stands here, looking for his prey.
 ~
-This blue-skinned man, still branded as a slave, now wanders endlessly 
-bringing justice to the deserved.  Body corded with muscle, eyes still sharp 
-and alert, this man is more than a match for most mortals.  
+This blue-skinned man, still branded as a slave, now wanders endlessly
+bringing justice to the deserved.  Body corded with muscle, eyes still sharp
+and alert, this man is more than a match for most mortals.
 ~
 0 8|32|128|512 0 S
 185 0 0 0d0+0 0d0+0
@@ -320,7 +320,7 @@ Ducky duck~
 Ducky the duck~
 A duck waddles around the desk.
 ~
-It looks like a duck. It also seems to be wearing a collar.	
+It looks like a duck. It also seems to be wearing a collar.
 ~
 2 128 1000 S
 600 0 0 0d0+0 0d0+0
@@ -341,7 +341,7 @@ a coin~
 One miserable coin.~
 ~
 20 0 1
-1~ ~ ~ ~ 
+1~ ~ ~ ~
 1 0 0
 #3
 coins~
@@ -349,7 +349,7 @@ some coins~
 A pile of coins.~
 ~
 20 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #10
 corpse~
@@ -357,7 +357,7 @@ corpse of %s~
 The corpse of %s is lying here.~
 ~
 23 0 1
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 100 0 0
 #11
 corpse~
@@ -365,7 +365,7 @@ corpse of %s~
 The corpse of %s is lying here.~
 ~
 24 0 0
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 100 0 0
 #12
 head~
@@ -373,7 +373,7 @@ head of %s~
 The severed head of %s is lying here.~
 ~
 19 0 1
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 5 0 0
 #13
 heart~
@@ -381,7 +381,7 @@ heart of %s~
 The torn-out heart of %s is lying here.~
 ~
 19 0 1
-16~ 0~ 0~ 0~ 
+16~ 0~ 0~ 0~
 2 0 0
 #14
 arm~
@@ -389,7 +389,7 @@ arm of %s~
 The sliced-off arm of %s is lying here.~
 ~
 19 0 1
-20~ 0~ 0~ 0~ 
+20~ 0~ 0~ 0~
 5 0 0
 #15
 leg~
@@ -397,7 +397,7 @@ leg of %s~
 The sliced-off leg of %s is lying here.~
 ~
 19 0 1
-20~ 0~ 0~ 0~ 
+20~ 0~ 0~ 0~
 5 0 0
 #16
 turd~
@@ -405,7 +405,7 @@ steaming turd~
 The steaming turds of %s assail your nostrils.~
 ~
 13 0 0
-5~ 0~ 0~ 1~ 
+5~ 0~ 0~ 1~
 1 0 0
 #20
 mushroom~
@@ -413,7 +413,7 @@ a Magic Mushroom~
 A delicious magic mushroom is here.~
 ~
 19 0 1
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 10 0
 #21
 ball light~
@@ -421,7 +421,7 @@ a bright ball of light~
 A bright ball of light shimmers in the air.~
 ~
 1 0 1
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 1 0 0
 #22
 spring~
@@ -429,7 +429,7 @@ a magical spring~
 A magical spring flows from the ground here.~
 ~
 25 64 0
-100000~ 100000~ 0~ 0~ 
+100000~ 100000~ 0~ 0~
 5000 10 0
 #23
 mob~
@@ -624,7 +624,7 @@ A
 3 2
 A
 4 -1
- 
+
 #57
 sftclaws~
 claws~
@@ -653,7 +653,7 @@ jammer's Guitar~
 Jammer's Ibanez is lying here...~
 ~
 5 2|64 1|8192
-0~ 1~ 6~ 13~ 
+0~ 1~ 6~ 13~
 5 0 0
 A
 18 0
@@ -672,7 +672,7 @@ madboy's Straight Jacket~
 ~
 ~
 9 1|64 1|1024
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 5 0 0
 A
 23 -5
@@ -693,7 +693,7 @@ madboy's Crayons~
 ~
 ~
 19 0 1|16384
-1~ 1~ 6~ 11~ 
+1~ 1~ 6~ 11~
 0 0 0
 #73
 desk~
@@ -701,7 +701,7 @@ a desk~
 An old walnut desk stands propped up against the wall.~
 ~
 12 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 100 0 0
 E
 desk old walnut~
@@ -713,7 +713,7 @@ a pile of books~
 A pile of old books is stacked next to the fireplace.~
 ~
 8 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 books pile~
@@ -728,7 +728,7 @@ the coin of Amaros~
 A magnificent golden coin glitters in the sun~
 ~
 8 1 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #76
 amulet thagg ivory~
@@ -736,7 +736,7 @@ the amulet of Thagg~
 A huge ivory amulet pulses gently.~
 ~
 8 2 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #77
 bowl wooden zackera~
@@ -744,7 +744,7 @@ the bowl of Zackera~
 A small wooden bowl lies in the dirt.~
 ~
 8 0 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #78
 book fretya~
@@ -752,7 +752,7 @@ the book of Fretya~
 Fretya's book of knowledge lies open on the ground.~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #79
 scroll ripped city cities ancient~
@@ -760,7 +760,7 @@ the City's ancient scroll~
 A ripped scroll lies in tatters before you.~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #80
 light hunter globe~
@@ -768,7 +768,7 @@ a small glowing globe~
 A globe of light lies here.  It seems to be missing something...~
 ~
 1 1|64 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 1 0 0
 A
 17 -20
@@ -782,7 +782,7 @@ a small rod~
 A small metallic rod lies here.~
 ~
 3 1|64|512|1024 1|16384
-100~ 10~ 10~ disintegrate~ 
+100~ 10~ 10~ disintegrate~
 1 0 0
 #82
 sword hunter~
@@ -790,7 +790,7 @@ a long sword~
 A sword rests here.  It is covered in a runes twisting in a spiral pattern around the blade.~
 ~
 5 1|2|64|512|1024 1|8192
-0~ 1~ 6~ 13~ 
+0~ 1~ 6~ 13~
 5 0 0
 A
 13 50
@@ -806,7 +806,7 @@ a leather vest~
 A non descript leather vest lies here...~
 ~
 9 64|512|1024 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 13 100
@@ -824,7 +824,7 @@ a smallish wooden ring~
 A small wooden ring lies here...~
 ~
 8 32|64|128|512|1024|4096 1|2
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 2 4
@@ -846,7 +846,7 @@ a skull necklace~
 A necklace of shrunken skulls lies here...~
 ~
 8 32|64|128|1024|2048|4096 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 4 6
@@ -866,7 +866,7 @@ a small leather cap~
 A leather cap lies here...~
 ~
 9 1|2|32|64|128|512|1024|4096 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 23 -20
@@ -882,7 +882,7 @@ a leather bracer~
 A sword rests here.~
 ~
 9 64|128|512|1024|4096 1|4096
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 19 2
@@ -894,7 +894,7 @@ some leather leggings~
 Some leather leggings lie here.~
 ~
 9 64|128|512|1024 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 3 0 0
 A
 17 -30
@@ -906,7 +906,7 @@ some leather boots~
 Some leather boots sit here.~
 ~
 9 64|128|512|1024|4096 1|64
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 14 200
@@ -918,7 +918,7 @@ a pair of leather gloves~
 A pair of ordinary leather gloves lie here...~
 ~
 9 64|128|512|1024|4096 1|128
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 2 3
@@ -932,7 +932,7 @@ a pair of metal armbands~
 A pair of metal armbands lie here.~
 ~
 9 64|512|1024 1|256
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 2 0 0
 A
 23 -20
@@ -946,7 +946,7 @@ a shield~
 A worn and beaten metal shield lies here...~
 ~
 9 64|512|1024 1|512
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 4 0 0
 A
 17 -30
@@ -960,7 +960,7 @@ cloak of the Hunter~
 A plain grey cloak lies here...~
 ~
 9 64|128|512|1024|4096 1|1024
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 3 4
@@ -978,7 +978,7 @@ a belt~
 A small belt with some pockets in it lies here~
 ~
 15 32|64 1|2048
-10~ 0~ -1~ 11~ 
+10~ 0~ -1~ 11~
 1 0 0
 A
 19 3
@@ -992,7 +992,7 @@ a yummy donut~
 A yummy jelly filled donut rests here~
 ~
 19 1|2 1
-99~ 1~ 6~ 11~ 
+99~ 1~ 6~ 11~
 1 0 0
 #96
 donutmaker~
@@ -1000,7 +1000,7 @@ a Donut Robot~
 a small Donut Robot is making donuts here, lots of donuts.~
 ~
 15 1|2 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #97
 magical stat item~
@@ -1012,7 +1012,7 @@ don't delete it. I'll do it myself when I've finished with it.
 -Owl
 ~
 9 1|64 1|64
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 5 0 0
 A
 1 30
@@ -1065,7 +1065,7 @@ the amazing magical resistance item~
 The amazing magical resistance item lies here.~
 ~
 9 1|128 1|64
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 5 0 0
 A
 36 -1
@@ -1160,7 +1160,7 @@ studio and a small control room.
 Various examples of musical equipment lie scattered around,  but the
 seemingly endless sea of cables appears to have some order to it. The small
 control room has even more music gear crammed into it,  and a large mixing
-desk.  A small computer sits looking out of place in one corner and there is a 
+desk.  A small computer sits looking out of place in one corner and there is a
 doorway out of this chaos to the East.
 ~
 0 4|8|8192 0
@@ -1188,7 +1188,7 @@ Torment's Lair~
 You stumble upon a cavernous chamber.  The fires of Hell burn hotter here
 and the stench of sulfur permeates the air.  The skulls of challengers
 ruthlessly destroyed line the walls, while their tormented souls hover in
-eternal servitude.  
+eternal servitude.
 
 Torment is here relaxing in a bubbling pool of sulfur.  Your blood runs
 cold as he turns his fiery eyes upon you and intones in a thunderous
@@ -1199,16 +1199,16 @@ voice, 'What foolish mortal dares to enter my lair?'
 S
 #75
 Lair of the Hunter~
-This square room contains all necessities for a subsistent existance.  The 
+This square room contains all necessities for a subsistent existance.  The
 Hunter devotes his life to bringing THIEVES and KILLERS to justice.
 ~
 0 1|4|8|1024|8192 0
 S
 #76
 Sassinak's Cupboard~
-You are standing in Sassinak's small secluded sanctuary. One entire wall of 
-this room is a HUGE big screen tv. Sitting on the other side of this room 
-is a small compact PC. Sitting next to the PC is a donut robot(tm) 
+You are standing in Sassinak's small secluded sanctuary. One entire wall of
+this room is a HUGE big screen tv. Sitting on the other side of this room
+is a small compact PC. Sitting next to the PC is a donut robot(tm)
 constantly making donuts.
 ~
 0 4|8|512|1024|2048|8192|16384 0
@@ -1225,11 +1225,11 @@ with cusions. You notice a small sign on the side of the wall.
 E
 sign wall~
 Istari lives here.
-~ 
+~
 S
 #78
 Owl's dungeon~
-This room is very dark, lit only by a few candles. Through the shadows you 
+This room is very dark, lit only by a few candles. Through the shadows you
 can make out many metal tools and implements hanging on the wall, but you
 doubt the room's owner is a gardener. An air of despondency and gloom hangs
 over the room.
@@ -1238,61 +1238,61 @@ over the room.
 E
 candles~
 Blood red, dripping with hot wax.
-~ 
+~
 S
 #79
 Hestia's Hideaway~
-This is where Hestia goes when she wants a break from pestering mortals.  
-There is an ornately-patterned, deep pile rug on the polished wooden floor, 
-and paintings of rugged landscapes on the walls.  Hard rock blasts from the 
-stereo, a jarring sound in the otherwise peaceful room.  Next to the stereo 
-is a tower of CDs.  One whole wall is lined with bookshelves, which are 
-filled with everything from texts on Greek mythology, to fantasy novels, to 
-the latest Stephen King bestseller.  You spy a couple of volumes of erotica 
-nestled discreetly at one end of a shelf.  There is a window on the far side 
-of the room, through which you can see small city on the banks of a wide 
-river.  The desk under the window is covered with books, notepads, pens, and 
-empty coffee cups and coke cans.  Amidst the clutter is a framed picture of 
-two beings, who look vaguely familiar to you.  Next to the desk is a small 
-kitchenette, with a kettle and coffee supplies, a microwave, a sink, a 
-cupboard, and a small refridgerator. There is a big squishy armchair in one 
+This is where Hestia goes when she wants a break from pestering mortals.
+There is an ornately-patterned, deep pile rug on the polished wooden floor,
+and paintings of rugged landscapes on the walls.  Hard rock blasts from the
+stereo, a jarring sound in the otherwise peaceful room.  Next to the stereo
+is a tower of CDs.  One whole wall is lined with bookshelves, which are
+filled with everything from texts on Greek mythology, to fantasy novels, to
+the latest Stephen King bestseller.  You spy a couple of volumes of erotica
+nestled discreetly at one end of a shelf.  There is a window on the far side
+of the room, through which you can see small city on the banks of a wide
+river.  The desk under the window is covered with books, notepads, pens, and
+empty coffee cups and coke cans.  Amidst the clutter is a framed picture of
+two beings, who look vaguely familiar to you.  Next to the desk is a small
+kitchenette, with a kettle and coffee supplies, a microwave, a sink, a
+cupboard, and a small refridgerator. There is a big squishy armchair in one
 corner, with a book open on one arm.  Next to the armchair is a large beanbag.
 ~
 0 4|8|1024|8192 0
 E
 notepads~
-The notepads seem to have plans for new areas, and changes to existing ones, 
+The notepads seem to have plans for new areas, and changes to existing ones,
 scribbled on them.  The plans are incomprehensible to your untrained eye.
 ~
 E
 books bookshelf bookshelves~
-You see a vast selection of books of different kinds, reflecting Hestia's 
+You see a vast selection of books of different kinds, reflecting Hestia's
 wide reading tastes and interests.
 ~
 E
 rug floor~
-The rug is ornately patterned in rich, dark colours.  The pile is deep, and it 
+The rug is ornately patterned in rich, dark colours.  The pile is deep, and it
 feels soft beneath your feet.
 ~
 E
 painting landscape wall~
-The paintings appear to be by a selection of artists, and depict landscapes 
+The paintings appear to be by a selection of artists, and depict landscapes
 from wide red deserts, to dry forests, to snow-capped mountains.
 ~
 E
 stereo~
-The stereo is a fairly new, but well-used, Sony.  As you listen, the music 
+The stereo is a fairly new, but well-used, Sony.  As you listen, the music
 changes from Smashing Pumpkins to Pearl Jam.
 ~
 E
 cd tower~
-Examining the CD tower, you see a huge range of music - from classics such as 
-Vivaldi, to seventies rock such as Meat Loaf, Jim Steinman, and Led Zeppelin, 
+Examining the CD tower, you see a huge range of music - from classics such as
+Vivaldi, to seventies rock such as Meat Loaf, Jim Steinman, and Led Zeppelin,
 to modern rock such as Smashing Pumpkins, Pearl Jam, and Linkin Park.
 ~
 E
 armchair arm chair~
-The armchair is a rather faded orange-brown, and very worn.  It looks very 
+The armchair is a rather faded orange-brown, and very worn.  It looks very
 comfortable, however.  The book on the arm is a tourism book about Tasmania.
 ~
 E
@@ -1301,38 +1301,38 @@ The window shows a small city on the banks of a wide river.
 ~
 E
 picture framed~
-The framed picture is of a towering, diabolical demon and a tall, ethereal, 
-scantily-dressed being, who are passionately embracing.  Both of the figures 
+The framed picture is of a towering, diabolical demon and a tall, ethereal,
+scantily-dressed being, who are passionately embracing.  Both of the figures
 look vaguely familiar to you, but you cannot seem to place them.
 ~
 E
 beanbag bean bag~
-The beanbag is covered in furry tiger-striped material, and looks very 
+The beanbag is covered in furry tiger-striped material, and looks very
 comfortable.
 ~
 E
 desk~
-The desk is dark mahogany, but you can barely see it under the clutter.  It is 
+The desk is dark mahogany, but you can barely see it under the clutter.  It is
 clearly frequently used.
 ~
 E
 kitchenette fridge coffee microwave kettle cupboard microwave sink~
-The small kitchenette is clearly designed for Hestia's convenience while she 
-works on areas.  The coffee is strong and aromatic.  In the fridge you find 
-non-fat milk with added calcium, and a variety of items to drink such as cans 
-of Coke, bottles of Tui beer, bottles of vodka pre-mixed drinks, a number of 
-bottles of wine, and bottles of iced tea.  There is also a huge box of mixed 
+The small kitchenette is clearly designed for Hestia's convenience while she
+works on areas.  The coffee is strong and aromatic.  In the fridge you find
+non-fat milk with added calcium, and a variety of items to drink such as cans
+of Coke, bottles of Tui beer, bottles of vodka pre-mixed drinks, a number of
+bottles of wine, and bottles of iced tea.  There is also a huge box of mixed
 chocolates, which is about a quarter empty.
 ~
 E
 erotica~
-You see a couple of anthologies of female-oriented erotica, which look rather 
+You see a couple of anthologies of female-oriented erotica, which look rather
 interesting.
 ~
 S
 #80
 The Watcher's domain~
-You seem to stand in the midst of a huge constellation of stars, yet you can 
+You seem to stand in the midst of a huge constellation of stars, yet you can
 breathe comfortably and feel neither unusually hot nor cold.
 ~
 0 1|8192 9
@@ -1376,11 +1376,11 @@ You see 10 players in the game. The most this session was 10 players.
 S
 #82
 Samxin's Reality~
-{xYou appear in a spot of solidity. Around you energy collides with itself and 
-large bolts of flashing {Rc{Yo{Gl{Bo{Mr{Cs{x roll by. Around you seems to be an invisible 
-wall or something such as that, for the energy just stops at a certain point. 
-On what is the 'floor' a red shrink's couch rests next to a large lamp and 
-desk full of ancient scrolls and tablets. A duck walks around on the desk, 
+{xYou appear in a spot of solidity. Around you energy collides with itself and
+large bolts of flashing {Rc{Yo{Gl{Bo{Mr{Cs{x roll by. Around you seems to be an invisible
+wall or something such as that, for the energy just stops at a certain point.
+On what is the 'floor' a red shrink's couch rests next to a large lamp and
+desk full of ancient scrolls and tablets. A duck walks around on the desk,
 occasionally asking you if you have any crackers.
 ~
 0 4|1024|8192 0

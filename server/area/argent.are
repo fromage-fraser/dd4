@@ -119,7 +119,7 @@ mammoth~
 a mammoth~
 A huge mammoth trumpets before you.
 ~
-The woolly mammoth is gigantic, two impressive tusks curling from his maw.  
+The woolly mammoth is gigantic, two impressive tusks curling from his maw.
 The animal looks crazed and has been illkept and tortured.
 ~
 64 0 0 S
@@ -216,7 +216,7 @@ a griffin~
 A gigantic griffin beats off her attackers.
 ~
 This magnificent beast is part lion, part dragon and part eagle.  Captured
-from its mountain nest, this exotic creature enthralls the crowd as it 
+from its mountain nest, this exotic creature enthralls the crowd as it
 massacres its opponents.
 ~
 64 524288 0 S
@@ -404,7 +404,7 @@ sailor~
 a sailor~
 A sailor tries desperately to defend the merchant ship.
 ~
-The terrified sailor does his best to beat of the pirates' attack, although 
+The terrified sailor does his best to beat of the pirates' attack, although
 the battle is all but lost for the crew of the merchant ship.
 ~
 64 0 100 S
@@ -508,7 +508,7 @@ some leather armour~
 Some leather armour lays here.~
 ~
 9 0 1|8
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 E
 armour leather~
@@ -520,7 +520,7 @@ a knife~
 A small knife sits on the ground.~
 ~
 5 0 1|8192
-0~ 5~ 10~ 11~ 
+0~ 5~ 10~ 11~
 5 0 0
 E
 knife small~
@@ -532,7 +532,7 @@ a shortsword~
 You spot a shortsword on the floor.~
 ~
 5 0 1|8192
-0~ 6~ 14~ 3~ 
+0~ 6~ 14~ 3~
 10 0 0
 E
 shortsword short sword~
@@ -544,7 +544,7 @@ a leather pouch~
 A small leather pouch sits here.~
 ~
 15 0 1|16384
-20~ 5~ -1~ 11~ 
+20~ 5~ -1~ 11~
 5 0 0
 E
 pouch leather~
@@ -557,7 +557,7 @@ a city pass~
 You notice a small square of parchment here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 pass key city~
@@ -571,7 +571,7 @@ some chainmail armour~
 A flimsy suit of chainmail lies in a heap.~
 ~
 9 0 1|8
-6~ 1~ 6~ 11~ 
+6~ 1~ 6~ 11~
 10 0 0
 E
 chainmail chain mail~
@@ -584,7 +584,7 @@ a small wooden shield~
 A small, round wooden shield lays on the ground.~
 ~
 9 0 1|512
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 E
 shield wooden~
@@ -596,7 +596,7 @@ a pomegranate~
 You smell a ripe pomegranate.~
 ~
 26 0 1|16384
-15~ giant strength~ cure serious~ ~ 
+15~ giant strength~ cure serious~ ~
 5 0 0
 E
 pomegranate fruit~
@@ -608,7 +608,7 @@ a square shield~
 A decorative square shield rests here.~
 ~
 9 0 1|512
-9~ 1~ 6~ 11~ 
+9~ 1~ 6~ 11~
 15 0 0
 E
 shield square~
@@ -621,7 +621,7 @@ a broadsword~
 A sharp broadsword lays on the floor.~
 ~
 5 0 1|8192
-0~ 8~ 16~ 11~ 
+0~ 8~ 16~ 11~
 10 0 0
 E
 broadsword broad sword~
@@ -634,7 +634,7 @@ a legionnaire's helmet~
 A legionnaire's helmet sits on the ground here.~
 ~
 9 0 1|16
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 5 0 0
 E
 helmet legionnaire's~
@@ -646,7 +646,7 @@ an imperial seal~
 A small scroll contains an elegant script.~
 ~
 2 0 1|16384
-18~ bless~ cure light~ ~ 
+18~ bless~ cure light~ ~
 5 0 0
 E
 seal imperial~
@@ -660,7 +660,7 @@ a red cape~
 You spy a luxuriant red cape.~
 ~
 9 0 1|1024
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 5 0 0
 A
 18 1
@@ -675,7 +675,7 @@ a fruit bowl~
 A fruit bowl sits here.~
 ~
 15 0 1|16384
-40~ 0~ -1~ 11~ 
+40~ 0~ -1~ 11~
 5 0 0
 E
 bowl fruit~
@@ -688,7 +688,7 @@ the jailor's key~
 A small iron key lays here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key jailor's~
@@ -701,7 +701,7 @@ some arm greaves~
 The jailor's arm greaves are here.~
 ~
 9 0 1|256
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 10 0 0
 A
 19 1
@@ -718,7 +718,7 @@ some studded leather gloves~
 There are a pair of studded leather gloves here.~
 ~
 9 0 1|128
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 5 0 0
 A
 18 1
@@ -733,7 +733,7 @@ a milestone~
 A milestone stands at the edge of the path.~
 ~
 12 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 100 0 0
 E
 milestone stone writing sign~
@@ -754,7 +754,7 @@ a banana~
 You spy a delicious banana.~
 ~
 19 0 1|16384
-2~ 1~ 6~ 11~ 
+2~ 1~ 6~ 11~
 5 0 0
 E
 banana~
@@ -766,7 +766,7 @@ a fig~
 You smell an over-ripe fig.~
 ~
 19 0 1|16384
-1~ 1~ 6~ 11~ 
+1~ 1~ 6~ 11~
 5 0 0
 E
 fig~
@@ -778,7 +778,7 @@ a gladiator's shortsword~
 A viscious shortsword lays here.~
 ~
 5 0 1|8192
-0~ 10~ 20~ 11~ 
+0~ 10~ 20~ 11~
 10 0 0
 A
 18 1
@@ -793,7 +793,7 @@ some leather armour~
 Some leather armour has been left here.~
 ~
 9 0 1|8
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 5 0 0
 A
 2 2
@@ -807,7 +807,7 @@ a barbed net~
 A large net is lined with sharp barbs.~
 ~
 5 0 1|8192
-0~ 12~ 22~ 9~ 
+0~ 12~ 22~ 9~
 10 0 0
 A
 19 2
@@ -823,7 +823,7 @@ a thick leather belt~
 A thick leather belt lays on the ground.~
 ~
 9 0 1|2048
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 10 0 0
 A
 14 -25
@@ -839,7 +839,7 @@ a bullwhip~
 A nasty bullwhip lays here.~
 ~
 5 0 1|8192
-0~ 12~ 22~ 4~ 
+0~ 12~ 22~ 4~
 10 0 0
 A
 18 2
@@ -856,7 +856,7 @@ a leather facemask~
 On the floor lays a leather facemask.~
 ~
 9 0 1|16
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 5 0 0
 A
 19 1
@@ -865,7 +865,7 @@ A
 E
 facemask leather~
 The black leather mask covers most of the head, with two small eyeholes and
-a row of large holes over the mouth.  The leather is strong and would afford 
+a row of large holes over the mouth.  The leather is strong and would afford
 good protection from headstrikes.
 ~
 #25226
@@ -874,7 +874,7 @@ a house key~
 A small key rests on the floor here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key house~
@@ -887,7 +887,7 @@ a steel key~
 There is a small steel key here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key steel~
@@ -899,7 +899,7 @@ a dagger~
 A thick-bladed dagger lays here.~
 ~
 5 0 1|8192
-0~ 8~ 18~ 11~ 
+0~ 8~ 18~ 11~
 5 0 0
 A
 19 1
@@ -917,7 +917,7 @@ some hemp robes~
 Some robes made of hemp fibre are here.~
 ~
 9 0 1|1024
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 5 0 0
 A
 24 -2
@@ -934,7 +934,7 @@ a toga~
 A large white toga lays in a bundle.~
 ~
 9 0 1|1024
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 A
 3 1
@@ -950,7 +950,7 @@ a cudgel~
 You spot a small cudgel here.~
 ~
 5 0 1|8192
-0~ 2~ 12~ 7~ 
+0~ 2~ 12~ 7~
 5 0 0
 E
 cudgel~
@@ -962,7 +962,7 @@ some coins~
 Some gold and silver coins lay here.~
 ~
 20 0 1|16384
-0~ 45~ 16~ 0~ 
+0~ 45~ 16~ 0~
 5 0 0
 #25233
 scroll old~
@@ -970,7 +970,7 @@ an old scroll~
 An old scroll sits on the floor.~
 ~
 2 0 1|16384
-20~ cure serious~ cure critical~ cure critical~ 
+20~ cure serious~ cure critical~ cure critical~
 5 0 0
 E
 scroll old~
@@ -983,7 +983,7 @@ a senator's rod~
 An ornate ivory rod rests here.~
 ~
 4 0 1|16384
-20~ 5~ 5~ thought shield~ 
+20~ 5~ 5~ thought shield~
 10 0 0
 E
 rod senator's ivory~
@@ -997,7 +997,7 @@ a red ticket~
 A small red ticket has been cast here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 ticket small red~
@@ -1009,7 +1009,7 @@ box chest small~
 a small box~~
 ~
 15 2097152 512 8 1 0
-10~ 5~ -1~ 11~ 
+10~ 5~ -1~ 11~
 5 0 0
 E
 box chest small~
@@ -1021,7 +1021,7 @@ a javelin~
 A javelin stands in the ground.~
 ~
 5 134217728 1|8192
-0~ 8~ 20~ 2~ 
+0~ 8~ 20~ 2~
 15 0 0
 A
 2 1
@@ -1038,7 +1038,7 @@ some imperial leggings~
 Some decorative brass leggings are here.~
 ~
 9 0 1|32
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 15 0 0
 A
 14 25
@@ -1048,7 +1048,7 @@ an imperial breastplate~
 A brass breastplate rests on the ground.~
 ~
 9 0 1|8
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 5 0 0
 A
 4 1
@@ -1063,7 +1063,7 @@ a cutlass~
 You spy a sharp cutlass here.~
 ~
 5 0 1|8192
-0~ 8~ 20~ 3~ 
+0~ 8~ 20~ 3~
 5 0 0
 A
 19 3
@@ -1078,7 +1078,7 @@ a pirate's sash~
 A silk sash lays on the ground.~
 ~
 9 0 1|2048
-6~ 1~ 6~ 11~ 
+6~ 1~ 6~ 11~
 5 0 0
 A
 5 1
@@ -1095,7 +1095,7 @@ a gold ring~
 A simple gold ring glints from the flagstones.~
 ~
 9 0 1|2
-4~ 1~ 6~ 11~ 
+4~ 1~ 6~ 11~
 5 0 0
 A
 19 3
@@ -1113,7 +1113,7 @@ the sword of Xerces~
 A gleaming sword floats in the air before you.~
 ~
 5 1|64|1024 1|8192
-0~ 20~ 30~ 11~ 
+0~ 20~ 30~ 11~
 10 0 0
 A
 18 5
@@ -1130,7 +1130,7 @@ The sword's workmanship is faultless, made of solid steel with a silver handle
 and pommel.  Legend has it that Xerces won the sword after defeating the
 chimera that guarded the king Hagian's tomb, who had become a powerful lich.
 Although gaining favour with several gods, the immortal Ares became jealous
-of Xerces' increasing popularity as a great warrior, and sent the Furies to 
+of Xerces' increasing popularity as a great warrior, and sent the Furies to
 slaughter him in his sleep.
 ~
 #25244
@@ -1139,7 +1139,7 @@ a wooden oar~
 A large wooden oar stands here.~
 ~
 5 0 1|8192
-0~ 5~ 10~ 7~ 
+0~ 5~ 10~ 7~
 5 0 0
 A
 18 -3
@@ -1153,7 +1153,7 @@ a wooden club~
 A gigantic wooden club lays here.~
 ~
 5 0 1|8192
-0~ 12~ 24~ 7~ 
+0~ 12~ 24~ 7~
 45 0 0
 A
 19 3
@@ -1168,7 +1168,7 @@ a vellum scroll~
 You see a vellum scroll.~
 ~
 2 0 1|16384
-25~ intellect fortress~ adrenaline control~ ~ 
+25~ intellect fortress~ adrenaline control~ ~
 5 0 0
 E
 scroll vellum~
@@ -1180,7 +1180,7 @@ a well~
 Water sparkles from within the well.~
 ~
 25 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 E
 well water~
@@ -1229,7 +1229,7 @@ D1
 D3
 ~
 ~
-0 -1 1720 
+0 -1 1720
 S
 #25201
 Rocky Path~
@@ -2173,7 +2173,7 @@ S
 #25256
 City Street~
 You stand in the street of a majestic city.  Tall, columned buildings rise
-many stories above you, and stalls and shops crowd the edges of the road.  
+many stories above you, and stalls and shops crowd the edges of the road.
 Many people hurry across the flagstones and the air is alive with chatter
 and laughter.  The street runs in an east-west direction, and some sort of
 market is visible directly north.
@@ -2540,7 +2540,7 @@ You board the ship, and soon the captain casts off.  He approaches you warmly.
 We will dock in Cyprises in less than three days."  You settle down on the deck
 and relax in the sun, glad to leave the city behind.  You wave to the soldiers
 that watch you suspiciously from the wharf; they scowl.  The wind dies a little
-and the captain instructs the oarsmen to row the vessel out of the harbour.  
+and the captain instructs the oarsmen to row the vessel out of the harbour.
 The ship makes rapid progress away from the mainland, heading in an easterly
 direction.  After several hours, a sailor reports from the crow's nest high
 above the deck.  "Captain!" he yells.  "There's a ship approaching from the
@@ -2573,7 +2573,7 @@ S
 #25279
 Main Deck~
 The ship's crew try their best to repel the pirates as they clamber over the
-side of the vessel.  The battle is fierce and viscious - the pirates have 
+side of the vessel.  The battle is fierce and viscious - the pirates have
 little to lose and enjoy a bloodbath.  The ship's mainsail is tattered and
 on fire in several places; boulders hurled from catapults on the pirate's
 galleon have breached the hull and the ship is listing to the side.  You can

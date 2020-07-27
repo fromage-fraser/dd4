@@ -7,10 +7,10 @@ gypsy man pale~
 the gypsy slave~
 A pale man sits here, making bundles of sticks.
 ~
-The pale, wan man who sits on the floor is busying himself tying sticks into 
-a great bundle, presumably for later transportation elsewhere. Surprisingly 
-he seems to take little interest in your presence. Studying his face you see 
-he is a man whose life long ago ceased to have personal purpose. He sports 
+The pale, wan man who sits on the floor is busying himself tying sticks into
+a great bundle, presumably for later transportation elsewhere. Surprisingly
+he seems to take little interest in your presence. Studying his face you see
+he is a man whose life long ago ceased to have personal purpose. He sports
 several ugly puncture wounds on his neck.
 ~
 2|4|64 0 0 S
@@ -22,8 +22,8 @@ pale gypsy woman~
 the gypsy woman~
 A pale gypsy woman lies on the ground at your feet.
 ~
-The woman's eyes are blank and unfocused and you are not sure if she has 
-even registered your presence. She lies pale and unmoving on the ground before 
+The woman's eyes are blank and unfocused and you are not sure if she has
+even registered your presence. She lies pale and unmoving on the ground before
 you and you notice her neck bears deep puncture wounds.
 ~
 2|64 256 0 S
@@ -35,7 +35,7 @@ Ronan vampire~
 Ronan~
 Ronan springs at you from his coffin.
 ~
-At your entrance Ronan springs from his undead slumber to the attack. He seems 
+At your entrance Ronan springs from his undead slumber to the attack. He seems
 only half-human with his dripping canines and clawed hands.
 ~
 2|4|32|64 8|32|512|2048 -125 S
@@ -56,9 +56,9 @@ Zelda witch~
 Zelda~
 Zelda the witch fusses about her hut making potions and poultices.
 ~
-Zelda is the witch of this forest and seems undaunted by the darkness and 
-gloom that besets it. She busies herself healing and curing the injured who 
-come here seeking her out, as well as studying herb and forest-lore. She 
+Zelda is the witch of this forest and seems undaunted by the darkness and
+gloom that besets it. She busies herself healing and curing the injured who
+come here seeking her out, as well as studying herb and forest-lore. She
 smiles at your entrance, as if she had been waiting for you all day.
 ~
 2|64|512 8|32|128|512|8192|16777216 1000 S
@@ -67,20 +67,20 @@ smiles at your entrance, as if she had been waiting for you all day.
 8 8 2
 >speech_prog p Morc thinks of you still~
 sigh
-mpecho Zelda says 'So you have seen Morc? It has been many years since 
-mpecho I braved his part of the forest and I'm not much of one for climbing trees. 
-mpecho I think of the old fool often too, curse his memory.' Zelda smirks. 
-mpecho 'Perhaps next time you see him you could give him this gift? 
+mpecho Zelda says 'So you have seen Morc? It has been many years since
+mpecho I braved his part of the forest and I'm not much of one for climbing trees.
+mpecho I think of the old fool often too, curse his memory.' Zelda smirks.
+mpecho 'Perhaps next time you see him you could give him this gift?
 mpecho I wish him to know my feelings.' Zelda smiles warmly at you.
 mpoload 20680
 give lace $n
 ~
 >speech_prog p Morc still thinks of you~
 sigh
-mpecho Zelda says 'So you have seen Morc? It has been many years since 
-mpecho I braved his part of the forest and I'm not much of one for climbing trees. 
-mpecho I think of the old fool often too, curse his memory.' Zelda smirks. 
-mpecho 'Perhaps next time you see him you could give him this gift? 
+mpecho Zelda says 'So you have seen Morc? It has been many years since
+mpecho I braved his part of the forest and I'm not much of one for climbing trees.
+mpecho I think of the old fool often too, curse his memory.' Zelda smirks.
+mpecho 'Perhaps next time you see him you could give him this gift?
 mpecho I wish him to know my feelings.' Zelda smiles warmly at you.
 mpoload 20680
 give lace $n
@@ -94,7 +94,7 @@ great grey wolf large~
 the great wolf~
 A large grey wolf defends the den.
 ~
-The huge grey wolf growls and snaps his jaws angrily when you look at him. 
+The huge grey wolf growls and snaps his jaws angrily when you look at him.
 You perceive desperate hunger in his expression.
 ~
 2|4|32|64 8|32|512|32768 0 S
@@ -156,7 +156,7 @@ female wolf~
 the female wolf~
 A female wolf growls and prepares to defend her den.
 ~
-You have stumbled into the territory of a nursing female wolf. She prepares 
+You have stumbled into the territory of a nursing female wolf. She prepares
 to defend her cubs with her life.
 ~
 2|32|64 32|512 0 S
@@ -168,9 +168,9 @@ Vincent vampire~
 Vincent~
 Vincent howls at your intrusion!
 ~
-It would appear the wolves are led by this creature. As he howls his features 
-become less human and more wolflike. Long claws protrude from his fingertips 
-and he rends his chest in fury. His long canines drip foul juices and hot steam 
+It would appear the wolves are led by this creature. As he howls his features
+become less human and more wolflike. Long claws protrude from his fingertips
+and he rends his chest in fury. His long canines drip foul juices and hot steam
 rises from his nostrils as his eyes fall at last upon you.
 ~
 2|32|64 8|32|512|2048 0 S
@@ -213,8 +213,8 @@ gypsy man pale~
 the gypsy man~
 A pale man wanders through the forest.
 ~
-The man pays you no attention as he wanders along his route. His glazed eyes 
-bespeak unimaginable horrors experienced and there are deep puncture wounds 
+The man pays you no attention as he wanders along his route. His glazed eyes
+bespeak unimaginable horrors experienced and there are deep puncture wounds
 in his neck.
 ~
 4|64 512 0 S
@@ -226,8 +226,8 @@ gypsy woman pale~
 the gypsy woman~
 A pale woman wanders through the forest.
 ~
-The woman pays you no attention as she wanders along her route. Her glazed 
-eyes bespeak unimaginable horrors experienced and there are deep puncture 
+The woman pays you no attention as she wanders along her route. Her glazed
+eyes bespeak unimaginable horrors experienced and there are deep puncture
 wounds in her neck.
 ~
 4|64 512 0 S
@@ -239,7 +239,7 @@ rayke vampire slavemaster~
 Rayke~
 Rayke the slavemaster rises at your intrusion.
 ~
-Furious at your unannounced entrance Rayke rises to his feet and grabs his 
+Furious at your unannounced entrance Rayke rises to his feet and grabs his
 bullwhip from its peg.
 ~
 2|32|64 8|32|512|2048 0 S
@@ -272,7 +272,7 @@ gypsy woman pale~
 a gypsy woman~
 A pale woman rests on a straw mattress.
 ~
-The woman has dark circles around her eyes and is clearly exhausted. Thin 
+The woman has dark circles around her eyes and is clearly exhausted. Thin
 rivulets of blood trickle from fresh puncture wounds in her throat.
 ~
 2|64 0 0 S
@@ -289,9 +289,9 @@ Ilyana vampire woman~
 Ilyana~
 Ilyana bids you welcome to her lair.
 ~
-Ilyana the Terrible, the Emerald Temptress of the Vale, hunts this forest 
-by night and returns to her underground grotto by day to dream her cold 
-dreams and feed upon the lifeblood of her prey. She regards you with cold 
+Ilyana the Terrible, the Emerald Temptress of the Vale, hunts this forest
+by night and returns to her underground grotto by day to dream her cold
+dreams and feed upon the lifeblood of her prey. She regards you with cold
 fury as green tendrils of smoke creep from the corners of her mouth.
 ~
 2|32|64 8|32|512|2048|65536 0 S
@@ -308,7 +308,7 @@ fire bonfire~
 the bonfire~
 The fire burns with unrelenting fury.
 ~
-The huge bonfire towers above you, crackling and burning with an unnatural 
+The huge bonfire towers above you, crackling and burning with an unnatural
 light. Such is the fury of its flame you feel it insanity to approach it any closer.
 ~
 2|64 2048 0 S
@@ -320,8 +320,8 @@ man pale gypsy~
 the gypsy man~
 A pale man sits at a table playing cards.
 ~
-The bleak expression on the face of this man along with the puncture marks 
-on his neck lead you to believe he is in the thrall of a vampire. His suffering 
+The bleak expression on the face of this man along with the puncture marks
+on his neck lead you to believe he is in the thrall of a vampire. His suffering
 will end in death.
 ~
 2|64 0 0 S
@@ -333,7 +333,7 @@ boy gypsy young~
 the gypsy boy~
 A pale young boy lies motionless on the floor.
 ~
-The young boy stares at the wall unblinking, his face a mask. He is completely 
+The young boy stares at the wall unblinking, his face a mask. He is completely
 naked and you see that deep puncture wounds have been inflicted in his neck.
 ~
 2|64|128 256 0 S
@@ -345,8 +345,8 @@ Gretzel vampire~
 Gretzel~
 Gretzel springs from his coffin!
 ~
-Gretzel is seven feet of lean muscle and focused anger. He howls with fury 
-at your entrance into his lair and leaps from his coffin, ready to flay your 
+Gretzel is seven feet of lean muscle and focused anger. He howls with fury
+at your entrance into his lair and leaps from his coffin, ready to flay your
 flesh from your body and feast upon your blood.
 ~
 2|4|8|32|64 2048 -125 S
@@ -367,11 +367,11 @@ morc man person~
 Morc~
 Morc sits here quietly in meditation.
 ~
-A gentle older man of hermetic persuasion, Morc has spent most of his life 
-dwelling in this forest. He tells you that he was here before the vampires came 
-and his heart is too close to the forest to abandon her to them, so he has 
-retreated to the upper reaches of his treetop home and goes out only in 
-necessity. He asks that you tell Zelda the white witch that he still thinks of 
+A gentle older man of hermetic persuasion, Morc has spent most of his life
+dwelling in this forest. He tells you that he was here before the vampires came
+and his heart is too close to the forest to abandon her to them, so he has
+retreated to the upper reaches of his treetop home and goes out only in
+necessity. He asks that you tell Zelda the white witch that he still thinks of
 her should your paths cross in the forest.
 ~
 2|64|512 8|32|128|512|8192 1000 S
@@ -388,7 +388,7 @@ mpecho Morc looks at $n curiously.
 mpecho Morc says 'tell me $n, do you oppose the Vampyre of these woods?'
 ~
 >speech_prog p yes I oppose the Vampyre~
-mpecho Morc says 'Very well it appears we have common goals. Take this item, 
+mpecho Morc says 'Very well it appears we have common goals. Take this item,
 mpecho I hope that it might aid you in your battles.'
 mpoload 20681
 give girdle $n
@@ -398,7 +398,7 @@ mpecho Morc disappears in a golden haze of light.
 mpgoto 20745
 ~
 >speech_prog p yes I do oppose the Vampyre~
-mpecho Morc says 'Very well it appears we have common goals. Take this item, 
+mpecho Morc says 'Very well it appears we have common goals. Take this item,
 mpecho I hope that it might aid you in your battles.'
 mpoload 20681
 give girdle $n
@@ -408,7 +408,7 @@ mpecho Morc disappears in a golden haze of light.
 mpgoto 20745
 ~
 >speech_prog p yes I oppose them~
-mpecho Morc says 'Very well it appears we have common goals. Take this item, 
+mpecho Morc says 'Very well it appears we have common goals. Take this item,
 mpecho I hope that it might aid you in your battles.'
 mpoload 20681
 give girdle $n
@@ -426,8 +426,8 @@ hungry horse~
 the hungry horse~
 A malnourished horse stands here neighing with hunger.
 ~
-The horse has the look of a thoroughbred gone to ruin. By its protruding ribs 
-and defeated gaze you know it has wandered long in these evil woods. It regards 
+The horse has the look of a thoroughbred gone to ruin. By its protruding ribs
+and defeated gaze you know it has wandered long in these evil woods. It regards
 you mournfully and with desperate hunger in its eyes. Now what do horses like
 to eat...?
 ~
@@ -448,14 +448,14 @@ mpecho ::rumble::
 mpecho $I neighs and prances about before chomping on the fresh hay.
 mpoload 20664
 give globe $n
-mpecho The hungry horse disappears into blinding white light and when you can see again 
+mpecho The hungry horse disappears into blinding white light and when you can see again
 mpecho it is not a horse but a short dark-haired man who stands before you. He speaks:
 mpecho {r{x
-mpecho "Thank you $n! I was once a servant of Herne in the catacombs near Kerofk. When 
-mpecho I learnt the true extent and nature of my master's evil I attempted to flee but 
-mpecho he pursued me and eventually caught me in these woods. He turned me into a horse 
-mpecho and uttered a curse, saying I would wander these woods unable to eat until 
-mpecho I was fed by hay from his stables. You have freed me from his curse and I thank you. 
+mpecho "Thank you $n! I was once a servant of Herne in the catacombs near Kerofk. When
+mpecho I learnt the true extent and nature of my master's evil I attempted to flee but
+mpecho he pursued me and eventually caught me in these woods. He turned me into a horse
+mpecho and uttered a curse, saying I would wander these woods unable to eat until
+mpecho I was fed by hay from his stables. You have freed me from his curse and I thank you.
 mpecho I must leave now but please accept this small gift as a token of my goodwill."
 mpecho {r{x
 mpecho The short dark-haired man waves as he fades away into nothing.
@@ -467,8 +467,8 @@ feral cat~
 the feral cat~
 A feral cat skulks cautiously.
 ~
-This cat bears every resemblance to a scruffy example of the garden variety 
-feline familiaris, yet any more than a casual glance reveals a creature 
+This cat bears every resemblance to a scruffy example of the garden variety
+feline familiaris, yet any more than a casual glance reveals a creature
 thoroughly undomesticated in its habits.
 ~
 2|4|64|512 8|32|512 0 S
@@ -480,7 +480,7 @@ zombie guard tall man~
 the zombie guardian~
 The spectral form of a tall dark man stands motionless here.
 ~
-The apparition stands perhaps 6' 8". His clothes are tattered and 
+The apparition stands perhaps 6' 8". His clothes are tattered and
 torn and his eyes are devoid of both life and will.
 ~
 2|64 8|32|128|512|1048576 0 S
@@ -508,7 +508,7 @@ Mavros vampire~
 Mavros~
 Mavros the Vampyre Lord resides in this room.
 ~
-Mavros is a fearsome sight in his suit of black iron full-plate armour. He 
+Mavros is a fearsome sight in his suit of black iron full-plate armour. He
 reeks of blood and death.
 ~
 2 8|32|128 0 S
@@ -528,7 +528,7 @@ leech~
 A foul black leech~
 A foul black leech erupts from the body of the dead vampire!
 ~
-The leech is a hideous oozing black monstrosity whose only desire is to flee 
+The leech is a hideous oozing black monstrosity whose only desire is to flee
 to somewhere safe and revive its host.
 ~
 4|128|4096 8|32|256|512|8388608 -1000 S
@@ -544,7 +544,7 @@ guardian bat~
 the guardian bat~
 A huge black bat flies through the air.
 ~
-You had no idea bats even grew this large. With a body as large as a small 
+You had no idea bats even grew this large. With a body as large as a small
 man's the demon bat falls upon you in a frenzy of screeching and flapping.
 ~
 32|64|128 8|32|512|524288 0 S
@@ -556,8 +556,8 @@ man bat man-bat~
 the Man-bat~
 A grim Man-bat is on guard here.
 ~
-The hideous Man-bat stands rigidly at its post. Its job is to control entry 
-to its Master's lair. It glares at you steadily, no flicker of emotion on its 
+The hideous Man-bat stands rigidly at its post. Its job is to control entry
+to its Master's lair. It glares at you steadily, no flicker of emotion on its
 snouted face. Your move.
 ~
 2|64 8|32|512|524288 0 S
@@ -565,7 +565,7 @@ snouted face. Your move.
 0 0
 8 8 0
 >all_greet_prog 100~
-mpecho The Man-Bat says 'Speak ye the passwords three, in their right and proper order, 
+mpecho The Man-Bat says 'Speak ye the passwords three, in their right and proper order,
 mpecho if you wish to meet my Master.'
 ~
 >speech_prog p blood terror madness~
@@ -581,9 +581,9 @@ Faraq Vampire flubber~
 Faraq~
 Faraq lies still in his gold coffin.
 ~
-Faraq seems a small, weak sort of vampire, not at all what you had expected 
-from the stories you'd heard told. He lies in his ostentatious gold coffin 
-draped in nothing but a velvet cape. He seems not to be aware of your presence, 
+Faraq seems a small, weak sort of vampire, not at all what you had expected
+from the stories you'd heard told. He lies in his ostentatious gold coffin
+draped in nothing but a velvet cape. He seems not to be aware of your presence,
 you think you could slit his throat and end his life without even waking him up.
 ~
 2|64 8|32 -1000 S
@@ -616,10 +616,10 @@ demon flibber ~
 the demon form of Faraq~
 The demon form of Faraq, Wamphyri overlord is here.
 ~
-Faraq's demon form is awe-inspiring and fearsome to behold. Blazing with 
-intolerable heat the demon turns from his reverie and pins you with his furious 
-gaze. You perceive no capacity for mercy in his black and souless eyes. In 
-retaliation for daring to threaten his mortal host he has now bent his implacable 
+Faraq's demon form is awe-inspiring and fearsome to behold. Blazing with
+intolerable heat the demon turns from his reverie and pins you with his furious
+gaze. You perceive no capacity for mercy in his black and souless eyes. In
+retaliation for daring to threaten his mortal host he has now bent his implacable
 will upon your utter destruction.
 ~
 4|32|64 8|32|512|2048|524288 -1000 S
@@ -637,7 +637,7 @@ the spy recruit~
 A grey wolf moves through the shadows, sniffing and looking around.
 ~
 The wolf slips quietly through the forest searching for food. This wolf looks
-unusually intelligent and alert and moves its head about as if searching for 
+unusually intelligent and alert and moves its head about as if searching for
 something in the dark and ominous forest.
 ~
 64|4096 32|512|32768 0 S
@@ -658,9 +658,9 @@ A great stone table stands at the circle's center.~
 2000 0 0
 E
 stone table altar great~
-The table is of stone, rough-hewn and stands at roughly waist height. Peering 
-closely at the stone you detect dark red stains in its nooks and crevasses. 
-This table has had blood sacrifices made upon it, but with what manner of beast 
+The table is of stone, rough-hewn and stands at roughly waist height. Peering
+closely at the stone you detect dark red stains in its nooks and crevasses.
+This table has had blood sacrifices made upon it, but with what manner of beast
 they were made you cannot determine.~
 #20601
 smock dirty grey~
@@ -730,7 +730,7 @@ A
 18 2
 E
 rawhide leggings skin~
-The leggings look much as those worn by men of the land, yet dark magiks 
+The leggings look much as those worn by men of the land, yet dark magiks
 have been infused into them and they radiate menace.~
 #20607
 hardened leather bracer~
@@ -750,7 +750,7 @@ A
 13 50
 E
 hardened leather bracer~
-The bracer is of solid construction but has a fell air about it and feels 
+The bracer is of solid construction but has a fell air about it and feels
 much heavier than it looks.~
 #20608
 rough wooden key crude~
@@ -773,7 +773,7 @@ a small wooden chest~
 25 0 0
 E
 chest~
-The chest is small and make of a dark gnarled wood. Its latch is fastened 
+The chest is small and make of a dark gnarled wood. Its latch is fastened
 by a steel padlock.~
 #20610
 key padlock small~
@@ -785,7 +785,7 @@ A small key lies here.~
 5 0 0
 E
 small padlock key~
-This key looks of a type that opens padlocks, such as might be used to 
+This key looks of a type that opens padlocks, such as might be used to
 fasten boxes and chests.~
 #20611
 gold coins money pile~
@@ -861,7 +861,7 @@ A
 24 -15
 E
 silver waistchain~
-The silver waistchain has had spells laid upon it, as is evidenced by the 
+The silver waistchain has had spells laid upon it, as is evidenced by the
 faint glow that surrounds it.~
 #20617
 athame ritual dagger~
@@ -928,7 +928,7 @@ A
 18 3
 E
 jet black jet-black stone~
-The stone is smooth and polished, yet reflects no light. 
+The stone is smooth and polished, yet reflects no light.
 It has a feeling of darkness about it.~
 #20622
 dark helm~
@@ -944,7 +944,7 @@ A
 19 6
 E
 dark helm~
-This kiln-blackened steel helm has strange glyphs and symbols cut into it 
+This kiln-blackened steel helm has strange glyphs and symbols cut into it
 that glow with a red fire when you hold it in your hands.~
 #20623
 black leather jerkin~
@@ -962,7 +962,7 @@ A
 18 3
 E
 black leather jerkin~
-The jerkin is made of hardened leather, which has been blackened and studded 
+The jerkin is made of hardened leather, which has been blackened and studded
 all over with steel spikes.~
 #20624
 claws~
@@ -1065,7 +1065,7 @@ A
 24 -15
 E
 silver circlet~
-The circlet has been engraved with glyphs and symbols of all kind. Unfathomable 
+The circlet has been engraved with glyphs and symbols of all kind. Unfathomable
 to you, yet bespeaking of magical enchantment...~
 #20632
 jewlled dagger~
@@ -1077,7 +1077,7 @@ A jewelled dagger of great beauty and craftsmanship lies here.~
 3 0 0
 E
 dagger jewelled~
-The dagger is of beautiful craftsmanship and design and its hilt is studded 
+The dagger is of beautiful craftsmanship and design and its hilt is studded
 with many precious stones.~
 #20633
 emerald key~
@@ -1141,7 +1141,7 @@ A
 17 -15
 E
 shield hardened leather~
-The shield has had spells laid upon it to enhance the effectiveness of the 
+The shield has had spells laid upon it to enhance the effectiveness of the
 sharp spikes with which it is covered.~
 #20638
 small stone key~
@@ -1176,7 +1176,7 @@ A
 13 40
 E
 jade ring pale green~
-This ring seems not afflicted by the dark spirit of its owner. Perhaps 
+This ring seems not afflicted by the dark spirit of its owner. Perhaps
 Gretzel came across it or its original owner by chance.~
 #20641
 meat haunch~
@@ -1242,7 +1242,7 @@ A
 12 160
 E
 shimmering golden robes~
-The robes shimmer and flicker with a curious white light. Obviously an item 
+The robes shimmer and flicker with a curious white light. Obviously an item
 of great magical worth.~
 #20647
 sandals~
@@ -1269,7 +1269,7 @@ A
 13 -20
 E
 golden halo~
-The halo is a nexus of magical energy that remains upon your head so long 
+The halo is a nexus of magical energy that remains upon your head so long
 as your actions are just and true.~
 #20649
 book journal leatherbound~
@@ -1281,8 +1281,8 @@ A small leatherbound  journal lies on the ground.~
 2 0 0
 E
 book journal leatherbound~
-The writings of Morc contains many short sonnets in praise of the beauty 
-and goodness of Zelda, Witch of the vale. It is embarrassing to read such 
+The writings of Morc contains many short sonnets in praise of the beauty
+and goodness of Zelda, Witch of the vale. It is embarrassing to read such
 heartfelt words and you feel the book would be best left alone.~
 #20650
 rags ragged tattered~
@@ -1393,7 +1393,7 @@ E
 black iron girdle~
 the kiln-burnt iron girdle has an inscription on the buckle. It reads:
 
-"I was made by Herne the Hunter, a gift for Mavros from the Lord of the Caitiffs. 
+"I was made by Herne the Hunter, a gift for Mavros from the Lord of the Caitiffs.
 The enchantments with which I am infused will bolster my wearer's magical strength."~
 #20658
 black iron cuisses leggings~
@@ -1407,7 +1407,7 @@ A
 17 -35
 E
 black iron cuisses leggings~
-This is a pair of kiln-burnt iron cuisses (thight protectors). They are heavily 
+This is a pair of kiln-burnt iron cuisses (thight protectors). They are heavily
 fluted and burnished.~
 #20659
 spear destiny black iron~
@@ -1423,7 +1423,7 @@ A
 18 5
 E
 black iron spear destiny~
-The legendary spear of destiny! You can't imagine how you could have come 
+The legendary spear of destiny! You can't imagine how you could have come
 into its possession.~
 #20660
 black iron buckler~
@@ -1439,9 +1439,9 @@ A
 18 2
 E
 black iron buckler~
-The kiln-burnt iron buckler has an odd symbol on its face, unrecognizeable to 
-you. A sharp spike protrudes from its center. The spike glistens in the light 
-and you notice its tip has been smeared with some foul-smelling green 
+The kiln-burnt iron buckler has an odd symbol on its face, unrecognizeable to
+you. A sharp spike protrudes from its center. The spike glistens in the light
+and you notice its tip has been smeared with some foul-smelling green
 substance.~
 #20661
 mutilated large carcass~
@@ -1478,7 +1478,7 @@ A
 19 -20
 E
 blood-red cloak~
-The cloak is of rich red velvet and causes a sensation of strength and 
+The cloak is of rich red velvet and causes a sensation of strength and
 power in the wearer.~
 #20664
 globe true sight shining~
@@ -1496,7 +1496,7 @@ A
 30 -1
 E
 globe true sight shining~
-The shining globe sparkles and flickers as you turn it in your hands. When 
+The shining globe sparkles and flickers as you turn it in your hands. When
 you release it the bauble levitates up and floats slowly about your head.~
 #20665
 money purse~
@@ -1534,7 +1534,7 @@ A
 17 -40
 E
 leathery wings~
-The wings seem to be able to move despite not being attached to a body. 
+The wings seem to be able to move despite not being attached to a body.
 Obviously some foul Wamphyri enchantment.~
 #20668
 key chamber faraq~
@@ -1546,7 +1546,7 @@ The key to Faraq's room is here.~
 50 0 0
 E
 key chamber faraq~
-A special grid-key that fits into the brass handle of the concrete podium, 
+A special grid-key that fits into the brass handle of the concrete podium,
 allowing it to be rotated and lifted.~
 #20669
 safe steel~
@@ -1612,7 +1612,7 @@ A
 17 -20
 E
 demon claws beast~
-The claws are talonous and razor-sharp. Hate to have any part of your body 
+The claws are talonous and razor-sharp. Hate to have any part of your body
 on their receiving end.~
 #20673
 demonscale leggings~
@@ -1628,9 +1628,9 @@ A
 18 3
 E
 demonscale leggings~
-The leggings consist of hundreds of hard, sharp demon scales bound together 
-with steel wire. They have been imbued with some magical effect you perceive, 
-as when they are worn the scales bind to the wearer's skin and become 
+The leggings consist of hundreds of hard, sharp demon scales bound together
+with steel wire. They have been imbued with some magical effect you perceive,
+as when they are worn the scales bind to the wearer's skin and become
 impossible to physically remove.~
 #20674
 claws~
@@ -1654,7 +1654,7 @@ A
 19 10
 E
 orb darkness~
-The small black orb radiates negativity and vileness. You feel quite 
+The small black orb radiates negativity and vileness. You feel quite
 uncomfortable handling it.~
 #20676
 horned codpiece~
@@ -1672,7 +1672,7 @@ A
 19 5
 E
 horned codpiece~
-The codpiece has had foul enchantments laid upon it to boost the strength 
+The codpiece has had foul enchantments laid upon it to boost the strength
 and virility of its wearer.~
 #20677
 demon vambraces~
@@ -1692,7 +1692,7 @@ A
 13 40
 E
 demon vambraces~
-The vambraces are marked around with all manner of glyph and rune, unfathomable 
+The vambraces are marked around with all manner of glyph and rune, unfathomable
 to you. Upon wearing them you feel infused with a dark and sinister power.~
 #20678
 ring overlord~
@@ -1706,7 +1706,7 @@ A
 19 10
 E
 ring overlord~
-The ring of the Wamphyri overlord denotes their rank and increases their 
+The ring of the Wamphyri overlord denotes their rank and increases their
 power and dominion over their subjects.~
 #20679
 aura darkness~
@@ -1741,10 +1741,10 @@ A fragment of white lace lies here.~
 0 0 0
 E
 white lace~
-The lace has these words embroidered in it in purple stitch: 
+The lace has these words embroidered in it in purple stitch:
 
-"We shall be together again when the darkness finally leaves the woods, though 
-that be many years hence or perhaps not even in our lifetimes. All my heart, 
+"We shall be together again when the darkness finally leaves the woods, though
+that be many years hence or perhaps not even in our lifetimes. All my heart,
 all my love. Zelda."~
 #20681
 girdle righteousness~
@@ -1811,8 +1811,8 @@ A
 12 175
 E
 blood orb red wooden pole~
-Created as a weapon for the Vampyre to use against each other the magical orb, 
-charged with the death energies of hundreds of vampire victims, shines forth a 
+Created as a weapon for the Vampyre to use against each other the magical orb,
+charged with the death energies of hundreds of vampire victims, shines forth a
 brilliant red light, causing incredible pain to a Vampyre's sensitive eyes.
 ~
 #0
@@ -1821,7 +1821,7 @@ brilliant red light, causing incredible pain to a Vampyre's sensitive eyes.
 #ROOMS
 #20600
 Undergrowth~
-A circle has been cleared in the undergrowth here and a large stone table 
+A circle has been cleared in the undergrowth here and a large stone table
 lies at its center. Sombre columns of trees hug the hills to the south and east.
 ~
 0 1|4|8|8192 3
@@ -1835,12 +1835,12 @@ D3
 0 -1 20602
 E
 sombre columns trees tree column~
-The mirthless trees are pressed hard up about the south and east. You can 
+The mirthless trees are pressed hard up about the south and east. You can
 see no way through them.~
 S
 #20601
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 ~
 0 1|8|8192 3
@@ -1866,9 +1866,9 @@ You can barely make out your feet before you.~
 S
 #20602
 Undergrowth~
-The forest is dark and the vine and bramble press hard about. No light 
-reaches the forest floor through the canopy and it is difficult to determine 
-by which routes progress may be made. Here dark hills loom to the west, 
+The forest is dark and the vine and bramble press hard about. No light
+reaches the forest floor through the canopy and it is difficult to determine
+by which routes progress may be made. Here dark hills loom to the west,
 preventing travel in at least that direction.
 ~
 0 1|8|8192 3
@@ -1886,7 +1886,7 @@ D2
 0 -1 20691
 E
 vine bramble~
-The vines are thick and tough, and when they are densely packed no way can 
+The vines are thick and tough, and when they are densely packed no way can
 be forced through them.~
 E
 dark hills~
@@ -1894,7 +1894,7 @@ The hills hedge about your west. They are too guarded here by dense bramble to a
 S
 #20603
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 ~
 0 1|8|8192 3
@@ -1917,8 +1917,8 @@ D3
 S
 #20604
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Dark hills rise to the west and south, barring passage thereby.
 ~
 0 1|8|8192 3
@@ -1933,7 +1933,7 @@ D1
 S
 #20605
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Out of the 
+You pass by ancient footworn trails in the dense undergrowth. Out of the
 gloom rises a great oak tree to the east. A door has been fashioned in its trunk.
 ~
 0 1|8|8192 3
@@ -1952,7 +1952,7 @@ D3
 S
 #20606
 Inside the oak tree~
-You stand inside the hollow of a great forest oak. A rude set of table and chairs 
+You stand inside the hollow of a great forest oak. A rude set of table and chairs
 stands on the rough floor and a small wood stove sits in the northeasterly corner.
 ~
 0 1|4|8|8192 0
@@ -1969,8 +1969,8 @@ A simple wood-burning stove such as one might find in a hunter's cabin.~
 S
 #20607
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Northeast the thicket grows darker and denser in a manner that seems unnatural.
 ~
 0 1|8|8192 3
@@ -1993,8 +1993,8 @@ D3
 S
 #20608
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these
 woods. The dark hills rise high to your west and south.
 ~
 0 1|8|8192 3
@@ -2008,14 +2008,14 @@ D1
 0 -1 20607
 E
 hills dark rise~
-The hills hem you in and you cannot make your way over them from here through 
+The hills hem you in and you cannot make your way over them from here through
 the tangled underbrush.~
 S
 #20609
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-To the north the undergrowth is unusally thickened, almost as if a blockade 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+To the north the undergrowth is unusally thickened, almost as if a blockade
 had been made of it.
 ~
 0 1|8|8192 3
@@ -2034,8 +2034,8 @@ D3
 S
 #20610
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these
 woods. Northwest the thicket grows darker and denser in a manner that seems unnatural.
 ~
 0 1|8|8192 3
@@ -2058,7 +2058,7 @@ D3
 S
 #20611
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 ~
 0 1|8|8192 3
@@ -2081,8 +2081,8 @@ D3
 S
 #20612
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 A great oak tree lies south and enormous rocks block the path north.
 ~
 0 1|8|8192 3
@@ -2103,7 +2103,7 @@ You think you see a door hacked out of its trunk to your southwest.~
 S
 #20613
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 Dark hills loom to the south and enormous rocks block the path north.
 ~
@@ -2125,8 +2125,8 @@ You wonder if the rocks are part of a cave system, but you can see no entrance t
 S
 #20614
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Dark hills rise to the south and east.
 ~
 0 1|8|8192 3
@@ -2140,14 +2140,14 @@ D3
 0 -1 20613
 E
 dark hills~
-The vegetation grows too dense at the bottom of the hills that surround the 
+The vegetation grows too dense at the bottom of the hills that surround the
 vale to allow them to be scaled.~
 S
 #20615
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-You spy the rear end of a dilapidated caravan poking out of the brush to the north, 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+You spy the rear end of a dilapidated caravan poking out of the brush to the north,
 from here its entrance cannot be seen.
 ~
 0 1|8|8192 3
@@ -2161,14 +2161,14 @@ D2
 0 -1 20608
 E
 gypsy north caravan~
-The caravan has not been maintained and its timbers are rotting in the humidity. 
+The caravan has not been maintained and its timbers are rotting in the humidity.
 Bramble and bracken grow about it and prevent approach but by the north.~
 S
 #20616
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
-To the east the thicket unpassably dense. A dilapidated caravan pokes out 
+To the east the thicket unpassably dense. A dilapidated caravan pokes out
 of the brush to the northwest, from here its entrance cannot be seen.
 ~
 0 1|8|8192 3
@@ -2187,8 +2187,8 @@ D3
 S
 #20617
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these
 woods. The undergrowth is too dense to make further progress north or east of here.
 ~
 0 1|8|8192 3
@@ -2203,8 +2203,8 @@ D2
 S
 #20618
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these
 woods. Large stone boulders lie to the east and you can find no way to pass by them.
 ~
 0 1|8|8192 3
@@ -2226,8 +2226,8 @@ They are large, stone and bouldery.~
 S
 #20619
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 The undergrowth grows thick and impassable to the west.
 ~
 0 1|8|8192 3
@@ -2246,8 +2246,8 @@ D2
 S
 #20620
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Large stone boulders lie to the east and south of here. You can see no way to pass them.
 ~
 0 1|8|8192 3
@@ -2262,9 +2262,9 @@ D3
 S
 #20621
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-A caravan pokes out of the bramble to the west, you can see its entrance lies 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+A caravan pokes out of the bramble to the west, you can see its entrance lies
 north and west of here. Thick bramble prevents movement eastward.
 ~
 0 1|8|8192 3
@@ -2279,9 +2279,9 @@ D2
 S
 #20622
 Undergrowth~
-Here you stand in a less-densely forested part of the valley although the 
-sky may still not be seen. A passage can be seen to the east which has been 
-carved into the dense thicket that lies there, and away to the west you spy 
+Here you stand in a less-densely forested part of the valley although the
+sky may still not be seen. A passage can be seen to the east which has been
+carved into the dense thicket that lies there, and away to the west you spy
 a lonely gypsy caravan.
 ~
 0 1|8|8192 3
@@ -2304,11 +2304,11 @@ D3
 S
 #20623
 Entrance to the wolves' den~
-Squeezing through the entrance to the thicket you find yourself in what is 
-clearly a wolves den, yet its construction is too sly to have been fashioned 
-by them alone. The bare earth floor is scattered about with straw and the 
-thicket walls prevent exit from the den in any direction save west. The walls 
-recede into darkness southward and you will have to travel in this direction 
+Squeezing through the entrance to the thicket you find yourself in what is
+clearly a wolves den, yet its construction is too sly to have been fashioned
+by them alone. The bare earth floor is scattered about with straw and the
+thicket walls prevent exit from the den in any direction save west. The walls
+recede into darkness southward and you will have to travel in this direction
 to explore further.
 ~
 0 1|4|8|8192 0
@@ -2323,9 +2323,9 @@ D3
 S
 #20624
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Westwards dark hills rise and to the south you can make out the entrance to 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Westwards dark hills rise and to the south you can make out the entrance to
 a dilapidated gypsy caravan hidden in the bramble.
 ~
 0 1|8|8192 3
@@ -2344,9 +2344,9 @@ caravan~
 S
 #20625
 Inside a Caravan~
-You stand inside a dilapidated gypsy caravan. The bolts of rotten fabric 
-spilled across the floor lead you to believe it was once a shop of some sort, 
-but that must have been years ago now. The smell of must lies heavy in the 
+You stand inside a dilapidated gypsy caravan. The bolts of rotten fabric
+spilled across the floor lead you to believe it was once a shop of some sort,
+but that must have been years ago now. The smell of must lies heavy in the
 air and all furnishing are covered by thick layers of dust and grime.
 ~
 0 1|4|8|8192 0
@@ -2370,8 +2370,8 @@ Musty.~
 S
 #20626
 The wolves' den~
-In this part of the den the darkness is absolute. It seems to have been set 
-aside for some special purpose, as the straw on the ground lies unusally thick. 
+In this part of the den the darkness is absolute. It seems to have been set
+aside for some special purpose, as the straw on the ground lies unusally thick.
 Strange sounds issue from the gloom.
 ~
 0 1|8|8192 0
@@ -2390,8 +2390,8 @@ D2
 S
 #20627
 The wolves' den~
-In this southern part of the wolves' lair there is less straw scattered about 
-the ground and the strange sounds have ceased. A solid platform of earth raises 
+In this southern part of the wolves' lair there is less straw scattered about
+the ground and the strange sounds have ceased. A solid platform of earth raises
 the floor level along the room's southern wall. There is an unnatural chill in the air.
 ~
 0 1|4|8|8192 0
@@ -2407,9 +2407,9 @@ Scratched along the front of the earthern platform are these words:
 S
 #20628
 The wolves' den~
-In this part of the den the darkness is absolute. It seems to have been set 
-aside for some special purpose, as the straw on the ground lies 
-unusally thick. 
+In this part of the den the darkness is absolute. It seems to have been set
+aside for some special purpose, as the straw on the ground lies
+unusally thick.
 Strange sounds issue from the gloom.
 ~
 0 1|8|8192 0
@@ -2420,7 +2420,7 @@ D3
 S
 #20629
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 ~
 0 1|8|8192 3
@@ -2443,10 +2443,10 @@ D3
 S
 #20630
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-To your west the undergrowth lets out to a clearing, where a fire can be seen 
-burning. Eastwards lies a great stone tower, though no entrance to it may be 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+To your west the undergrowth lets out to a clearing, where a fire can be seen
+burning. Eastwards lies a great stone tower, though no entrance to it may be
 seen from here.
 ~
 0 1|8|8192 3
@@ -2468,7 +2468,7 @@ A great stone tower lies to the east but no entrance may be seen to it from here
 S
 #20631
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 ~
 0 1|8|8192 3
@@ -2491,8 +2491,8 @@ D3
 S
 #20632
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 A collection of wooden huts lies northward but no entrance to them may be seen from here.
 ~
 0 1|8|8192 3
@@ -2511,8 +2511,8 @@ D3
 S
 #20633
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 There is a clearing in the forest to the north.
 ~
 0 1|8|8192 3
@@ -2535,8 +2535,8 @@ D3
 S
 #20634
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 The thicket grows too dense to afford passage to the south and west.
 ~
 0 1|8|8192 3
@@ -2551,8 +2551,8 @@ D1
 S
 #20635
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 You see a clearing to the east.
 ~
 0 1|8|8192 3
@@ -2575,8 +2575,8 @@ D3
 S
 #20636
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 The vegetation is too dense here to make further progress north or south.
 ~
 0 1|8|8192 3
@@ -2591,7 +2591,7 @@ D3
 S
 #20637
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 ~
 0 1|8|8192 3
@@ -2614,8 +2614,8 @@ D3
 S
 #20638
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 To the west and north dark hills prevent further movement.
 ~
 0 1|8|8192 3
@@ -2630,9 +2630,9 @@ D2
 S
 #20639
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Southward lies a great stone boulder. You see a fissure cut deep into its face. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Southward lies a great stone boulder. You see a fissure cut deep into its face.
 To the north lies a great stone tower. You can see no entrance to the tower from here.
 ~
 0 1|8|8192 3
@@ -2654,8 +2654,8 @@ A great stone tower lies to the north but no entrance may be seen to it from her
 S
 #20640
 Cave entrance~
-Here the undergrowth lets out and you stand before the face of an enormous 
-stone boulder. In the rock's center lies a great fissure, large enough that 
+Here the undergrowth lets out and you stand before the face of an enormous
+stone boulder. In the rock's center lies a great fissure, large enough that
 a person might walk into it.
 ~
 0 1|4|8|8192 0
@@ -2669,21 +2669,21 @@ fissure~
 0 -1 20641
 E
 center rock fissure boulder~
-Main Entry: 1fis·sure
+Main Entry: 1fisï¿½sure
 Pronunciation: 'fi-sh&r
 Function: noun
 Etymology: Middle English, from Middle French, from Latin fissura, from fissus
 Date: 14th century
-1 : a narrow opening or crack of considerable length and depth usually occurring 
+1 : a narrow opening or crack of considerable length and depth usually occurring
 from some breaking or parting
-2 a : a natural cleft between body parts or in the substance of an organ 
+2 a : a natural cleft between body parts or in the substance of an organ
   b : a break or slit in tissue usually at the junction of skin and mucous membrane
 3 : a separation or disagreement in thought or viewpoint
 4 : A thing like the one in front of you in a large boulder to the south.~
 S
 #20641
 Inside the fissure~
-It is cramped, cold and uncomfortable inside the rock fissure. Its span is 
+It is cramped, cold and uncomfortable inside the rock fissure. Its span is
 barely enough for two to travel abreast.
 ~
 0 1|8|512|8192 0
@@ -2698,7 +2698,7 @@ D3
 S
 #20642
 Inside the fissure~
-It is cramped, cold and uncomfortable inside the rock fissure. Here the fissure 
+It is cramped, cold and uncomfortable inside the rock fissure. Here the fissure
 turns and follows a path straight into the heart of the Earth.
 ~
 0 1|8|512|8192 0
@@ -2713,8 +2713,8 @@ fissure~
 S
 #20643
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Dark hills rise to the east and large boulders lie on the forest floor to the west.
 ~
 0 1|8|8192 3
@@ -2731,14 +2731,14 @@ dark hills~
 The hills are thick with vegetation and may not be scaled.~
 E
 large boulders rocks great~
-The rocks are clustered in a large group westwards and no progress from here 
+The rocks are clustered in a large group westwards and no progress from here
 in that direction may be made.~
 S
 #20644
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Great stone boulders lie on the forest floor to the west, and to your east 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Great stone boulders lie on the forest floor to the west, and to your east
 dark hills tower high above you.
 ~
 0 1|8|8192 3
@@ -2759,9 +2759,9 @@ The hills are thick with vegetation and may not be climbed.~
 S
 #20645
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-A stone tower can be seen to the north but there is no entrance to it from this 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+A stone tower can be seen to the north but there is no entrance to it from this
 side.
 ~
 0 1|8|8192 3
@@ -2783,7 +2783,7 @@ A great stone tower lies to the north but no entrance may be seen to it from her
 S
 #20646
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 Dark hills rise to the south and east and you can see no way to ascend them.
 ~
@@ -2799,9 +2799,9 @@ D3
 S
 #20647
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Hills rise sharply to the east and you can just make out the top of a great 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Hills rise sharply to the east and you can just make out the top of a great
 stone tower above the forest canopy to the west.
 ~
 0 1|8|8192 3
@@ -2826,8 +2826,8 @@ A great stone tower lies to the west but no entrance may be seen to it from here
 S
 #20648
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 To your west lies a great wooden door set into a stone wall.
 ~
 0 1|8|8192 3
@@ -2846,8 +2846,8 @@ D3
 S
 #20649
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Grim hills loom to the east, preventing passage thereby.
 ~
 0 1|8|8192 3
@@ -2866,9 +2866,9 @@ D3
 S
 #20650
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-A great oak that rises from the forest to the north might afford a view of the 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+A great oak that rises from the forest to the north might afford a view of the
 land's lay, but you can see no way to scale it from here.
 ~
 0 1|8|8192 3
@@ -2887,8 +2887,8 @@ D3
 S
 #20651
 Inside the Tower~
-You stand inside a cold stone tower. Stairs lead up to the battlement and its 
-further reaches lie south, in darkness. Nothing adorns this room save 
+You stand inside a cold stone tower. Stairs lead up to the battlement and its
+further reaches lie south, in darkness. Nothing adorns this room save
 bloodstains.
 ~
 0 1|4|8|8192 0
@@ -2907,10 +2907,10 @@ D4
 S
 #20652
 Inside the Stone Tower~
-You stand at the southern end of the great stone hall at the bottom of the 
-tower, the room is bare and forlorn of decoration yet its defenses have been 
-well maintained. The air is heavy with the stench of rotten meat and bloodstains 
-cover the floor and walls about you. A heavy steel door lies in the hall's 
+You stand at the southern end of the great stone hall at the bottom of the
+tower, the room is bare and forlorn of decoration yet its defenses have been
+well maintained. The air is heavy with the stench of rotten meat and bloodstains
+cover the floor and walls about you. A heavy steel door lies in the hall's
 southwestern corner.
 ~
 0 1|8|8192 0
@@ -2925,9 +2925,9 @@ D3
 S
 #20653
 Mavros' Lair~
-You stand inside a square room with low ceilings. The walls are iron or 
-iron-plated and the room is bare save for a metal coffin lying against the north 
-wall. The walls are painted with blood and body parts litter the ground before 
+You stand inside a square room with low ceilings. The walls are iron or
+iron-plated and the room is bare save for a metal coffin lying against the north
+wall. The walls are painted with blood and body parts litter the ground before
 you.
 ~
 0 1|8|8192 0
@@ -2941,11 +2941,11 @@ D1
 4 20662 20652
 E
 body parts blood gore~
-The gore lies everywhere about you. It is all you can do to fight off nausea 
+The gore lies everywhere about you. It is all you can do to fight off nausea
 and a gag reflex.~
 E
 coffin metal north~
-The coffin is raised slightly up on a podium against the northern wall. You 
+The coffin is raised slightly up on a podium against the northern wall. You
 notice it has an inscription at its foot.~
 E
 inscription Inscription~
@@ -2954,9 +2954,9 @@ The inscription reads,
 S
 #20654
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-A great stone tower rises from the forest to the south, but no entrance to it 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+A great stone tower rises from the forest to the south, but no entrance to it
 may be seen from here.
 ~
 0 1|8|8192 3
@@ -2978,8 +2978,8 @@ A great stone tower lies to the south but no entrance may be seen to it from her
 S
 #20655
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 A collection of wooden huts lies northward but no entrance to them may be seen from here.
 ~
 0 1|8|8192 3
@@ -2998,9 +2998,9 @@ D3
 S
 #20656
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-To the south and east you are blocked by a stone tower's thick and impenetrable 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+To the south and east you are blocked by a stone tower's thick and impenetrable
 walls.
 ~
 0 1|8|8192 3
@@ -3015,8 +3015,8 @@ D3
 S
 #20657
 Fire in a forest clearing~
-A huge fire burns here in a large clearing. You can see the clear blue sky 
-overhead and know that here at least is a place where prayers might be answered. 
+A huge fire burns here in a large clearing. You can see the clear blue sky
+overhead and know that here at least is a place where prayers might be answered.
 Paths leads off in all the cardinal directions.
 ~
 0 4|8 3
@@ -3039,8 +3039,8 @@ D3
 S
 #20658
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 A fire burns in a clearing to the south.
 ~
 0 1|8|8192 3
@@ -3063,8 +3063,8 @@ D3
 S
 #20659
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 You spy the door to a large wooden hut to your immediate west.
 ~
 0 1|8|8192 3
@@ -3083,8 +3083,8 @@ D3
 S
 #20660
 Inside a hut~
-You stand in the entrance room to a large hut in the forest. It is rundown 
-and dilapidated and the only furniture in the room is a low wooden table and 
+You stand in the entrance room to a large hut in the forest. It is rundown
+and dilapidated and the only furniture in the room is a low wooden table and
 some chairs. A door to the right of the entrance opens north.
 ~
 0 1|4|8|8192 0
@@ -3105,8 +3105,8 @@ Never seen one before?~
 S
 #20661
 Feeding room~
-Judging by the bloodstains and entrails that cover the floor and walls in 
-this room, you have found the feeding room of a vampire, and likely one without 
+Judging by the bloodstains and entrails that cover the floor and walls in
+this room, you have found the feeding room of a vampire, and likely one without
 table manners.
 ~
 0 1|8|8192 0
@@ -3120,13 +3120,13 @@ D2
 1 -1 20660
 E
 bloodstains entrails~
-Gruesome and terrifying to behold. Ruthless must be the vampire who would 
+Gruesome and terrifying to behold. Ruthless must be the vampire who would
 rend their prey to shreds as they were consumed.~
 S
 #20662
 Gretzel's Crypt~
-You stand in the crypt of a vampire. Blood covers the walls and body parts 
-lie scattered randomly about the floor. The room is bare but for the wooden 
+You stand in the crypt of a vampire. Blood covers the walls and body parts
+lie scattered randomly about the floor. The room is bare but for the wooden
 casket that lies against the northern wall.
 ~
 0 1|8|8192 0
@@ -3139,13 +3139,13 @@ wooden casket coffin northern wall~
 The coffin is simply a pine box with a lid that has been lined with straw.~
 E
 blood body parts wall~
-You don't recognize any of the body parts or entrails on the floor. At least 
+You don't recognize any of the body parts or entrails on the floor. At least
 they're not yours.~
 S
 #20663
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 You see wooden huts to the west, but no entrance to them may be found from here.
 ~
 0 1|8|8192 3
@@ -3164,8 +3164,8 @@ D2
 S
 #20664
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 West lies a large wooden hut, but you see no entrance to it from here.
 ~
 0 1|8|8192 3
@@ -3184,9 +3184,9 @@ D2
 S
 #20665
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-A collection of wooden huts lies to the east, but they have no entrance facing 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+A collection of wooden huts lies to the east, but they have no entrance facing
 this direction.
 ~
 0 1|8|8192 3
@@ -3205,9 +3205,9 @@ D3
 S
 #20666
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-A large wooden hut lies south but has no door facing in this direction. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+A large wooden hut lies south but has no door facing in this direction.
 Snarls and the hideous sound of rending flesh issue forth from it.
 ~
 0 1|8|8192 3
@@ -3226,8 +3226,8 @@ D3
 S
 #20667
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 North and south the forest becomes too thick to make further progress.
 ~
 0 1|8|8192 3
@@ -3242,9 +3242,9 @@ D3
 S
 #20668
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Dark hills rise to the west and north and you can move no farther in these 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Dark hills rise to the west and north and you can move no farther in these
 directions from where you now stand.
 ~
 0 1|8|8192 3
@@ -3259,8 +3259,8 @@ D2
 S
 #20669
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Light filters through the canopy from a small hut nestled against the hills to the west.
 ~
 0 1|8|8192 3
@@ -3279,9 +3279,9 @@ D3
 S
 #20670
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-To the west dark hills loom monstrously and eastward lies a large wooden hut 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+To the west dark hills loom monstrously and eastward lies a large wooden hut
 whose entrance may not be seen.
 ~
 0 1|8|8192 3
@@ -3299,9 +3299,9 @@ The hills are too thick with vegetation to force passage over.~
 S
 #20671
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Paths to the east and south end suddenly at the bottom of thickly forested 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Paths to the east and south end suddenly at the bottom of thickly forested
 hills.
 ~
 0 1|8|8192 3
@@ -3316,9 +3316,9 @@ D3
 S
 #20672
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Dark hills block passage east and a great oak rises from the forest to the west, 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Dark hills block passage east and a great oak rises from the forest to the west,
 though no way of scaling it can be seen from here.
 ~
 0 1|8|8192 3
@@ -3333,8 +3333,8 @@ D2
 S
 #20673
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Dark hills loom to the east and to the north you see the vale narrows.
 ~
 0 1|8|8192 3
@@ -3353,8 +3353,8 @@ D3
 S
 #20674
 Undergrowth~
-The Western and Eastern hill ranges join here and the Vale narrows dramatically, 
-permitting movement only before and behind. You notice the Northern route is 
+The Western and Eastern hill ranges join here and the Vale narrows dramatically,
+permitting movement only before and behind. You notice the Northern route is
 on a downward slope.
 ~
 0 1|4|8|8192 3
@@ -3369,8 +3369,8 @@ D2
 S
 #20675
 Undergrowth~
-The Dark Vale narrows dramatically here, permitting movement only before 
-and behind. This path is on a downward northern slope. You notice the terrain 
+The Dark Vale narrows dramatically here, permitting movement only before
+and behind. This path is on a downward northern slope. You notice the terrain
 becomes muddier and more waterlogged farther down the incline.
 ~
 0 1|8|8192 3
@@ -3385,8 +3385,8 @@ D2
 S
 #20676
 Bottom of the slope~
-You stand at the foot of a steep slope, waist-deep in mud. Northward the 
-mud turns into a foul-smelling bog and collects at the foot of the narrow 
+You stand at the foot of a steep slope, waist-deep in mud. Northward the
+mud turns into a foul-smelling bog and collects at the foot of the narrow
 ravine. It appears to end at a sheer rock face.
 ~
 0 1|8|8192 6
@@ -3404,10 +3404,10 @@ Blech. Mud.~
 S
 #20677
 Bog~
-You are in a pool of filthy bog that washes rhythmically over your head and 
+You are in a pool of filthy bog that washes rhythmically over your head and
 shoulders. The stench of refuse is overpowering. To the west you see the sewer
 outlet pumping a steady stream of effluent into the bog in which you now float.
-The stoney hill ranges join together far above you, barring movement in all 
+The stoney hill ranges join together far above you, barring movement in all
 directions but south.
 ~
 0 1|8|8192 6
@@ -3421,14 +3421,14 @@ D3
 0 -1 25600
 E
 outlet sewer~
-The stream of effluent has died down enough that the sewer pipe can be clambered 
+The stream of effluent has died down enough that the sewer pipe can be clambered
 up into. Why you'd actually want to do that is anybody's guess.~
 S
 #20678
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
-Thick vegetation prevent further movement north and a huge oak tree towers high 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
+Thick vegetation prevent further movement north and a huge oak tree towers high
 above the forest to the the south.
 ~
 0 1|8|8192 3
@@ -3443,8 +3443,8 @@ D3
 S
 #20679
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Thick vegetation prevent further movement north.
 ~
 0 1|8|8192 3
@@ -3463,8 +3463,8 @@ D3
 S
 #20680
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Just east of here stands an enormous grey oak. A door has been fixed to its trunk.
 ~
 0 1|8|8192 3
@@ -3483,8 +3483,8 @@ D2
 S
 #20681
 Inside the great oak~
-You stand inside the hollowed-out trunk of an ancient great oak. Footholes 
-gouged into the bark will allow you to climb up towards the large wooden 
+You stand inside the hollowed-out trunk of an ancient great oak. Footholes
+gouged into the bark will allow you to climb up towards the large wooden
 platform in the tree's upper brances.
 ~
 0 1|4|8|8192 0
@@ -3499,10 +3499,10 @@ D4
 S
 #20682
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
-Here the dark hills and tough scrub hem you in, forbidding further travel to 
-the north or south. A small collection of buildings can been seen over the 
+Here the dark hills and tough scrub hem you in, forbidding further travel to
+the north or south. A small collection of buildings can been seen over the
 scrubtops to the south.
 ~
 0 1|8|8192 3
@@ -3517,9 +3517,9 @@ D3
 S
 #20683
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
-Here the dark hills hem you in, forbidding travel to the north and south. A 
+Here the dark hills hem you in, forbidding travel to the north and south. A
 small collection of buildings lies to the southeast.
 ~
 0 1|8|8192 3
@@ -3537,7 +3537,7 @@ Dark. Hilly.~
 S
 #20684
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
 surround you about and you fear you might never escape the dread of these woods.
 East lies the entrance to a large wooden hut. Soft voices issue from within.
 ~
@@ -3557,8 +3557,8 @@ D3
 S
 #20685
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 Dark hills loom to the north, you can see no way to pass them.
 ~
 0 1|8|8192 3
@@ -3580,8 +3580,8 @@ They rise high and tower over your head. They are too dense with vegetation to s
 S
 #20686
 Undergrowth~
-You pass by ancient footworn trails in the dense undergrowth. Gloom and mist 
-surround you about and you fear you might never escape the dread of these woods. 
+You pass by ancient footworn trails in the dense undergrowth. Gloom and mist
+surround you about and you fear you might never escape the dread of these woods.
 A sheer rockface looms to the north, westward you spy an opening in the forest canopy.
 ~
 0 1|8|8192 3
@@ -3600,10 +3600,10 @@ D3
 S
 #20687
 Assembly Hall~
-The walls here are bare and devoid of adornment. This looks to be a room of 
-assembly. It has a small galley, a long eating-table and numerous chairs 
-scattered about its cold granite floor. A flight of stone stairs leads out 
-the northeast corner of the room and spirals to darkness. A swing-door 
+The walls here are bare and devoid of adornment. This looks to be a room of
+assembly. It has a small galley, a long eating-table and numerous chairs
+scattered about its cold granite floor. A flight of stone stairs leads out
+the northeast corner of the room and spirals to darkness. A swing-door
 affords passage south.
 ~
 0 1|4|8|8192 0
@@ -3622,9 +3622,9 @@ D5
 S
 #20688
 Male slave dormitory~
-Thin straw mattresses lie about the walls of this room, you stand now in the 
-sleeping quarters of the enslaved male population of this valley. A feeling 
-of despondancy and hopelessness weighs heavy in the air. A swing door leads 
+Thin straw mattresses lie about the walls of this room, you stand now in the
+sleeping quarters of the enslaved male population of this valley. A feeling
+of despondancy and hopelessness weighs heavy in the air. A swing door leads
 west to the female dormitory.
 ~
 0 1|8|8192 0
@@ -3639,9 +3639,9 @@ swingdoor~
 S
 #20689
 Female slave dormitory~
-Thin straw mattresses lie about the walls of this room, you stand now in the 
-sleeping quarters of the enslaved female population of this valley. A feeling 
-of despondancy and hopelessness weighs heavy in the air. A swing door leads 
+Thin straw mattresses lie about the walls of this room, you stand now in the
+sleeping quarters of the enslaved female population of this valley. A feeling
+of despondancy and hopelessness weighs heavy in the air. A swing door leads
 east to the male dormitory.
 ~
 0 1|8|8192 0
@@ -3652,8 +3652,8 @@ D1
 S
 #20690
 A clearing in the forest~
-You stand in an exposed circle of grass on a low hillock. At the center of 
-the circle lies a great hole descending directly down into the earth. It 
+You stand in an exposed circle of grass on a low hillock. At the center of
+the circle lies a great hole descending directly down into the earth. It
 measures perhaps some six metres in diameter. You cannot see its end.
 ~
 0 4|16384 2
@@ -3668,9 +3668,9 @@ D5
 S
 #20691
 Undergrowth entrance~
-The path disappears here down into the undergrowth, in which it seems paths 
-have been fashioned enabling the traveller to pass through the depression of 
-the vale without enduring sunlight. A fell silence lies here. Northward the 
+The path disappears here down into the undergrowth, in which it seems paths
+have been fashioned enabling the traveller to pass through the depression of
+the vale without enduring sunlight. A fell silence lies here. Northward the
 gloom and bramble beckon.
 ~
 0 1|4|8|8192|16384 3
@@ -3685,9 +3685,9 @@ D2
 S
 #20692
 In the vale of the dark valley~
-The grass grows high and thick here, well above head height. Dark hills 
-overhang to the west and east, northward this path disappears into shadow 
-and vine. A chill wind blows and from somewhere in the gloom and mist issues 
+The grass grows high and thick here, well above head height. Dark hills
+overhang to the west and east, northward this path disappears into shadow
+and vine. A chill wind blows and from somewhere in the gloom and mist issues
 forth a shriek of terror, suddenly cut short.
 ~
 0 1|4|8|8192 3
@@ -3702,9 +3702,9 @@ D2
 S
 #20693
 Nearing the dark valley~
-The formerly knee-high grass grows higher here as a gently undulating hill 
-gives way northward to a valley dark with vegetation. Large hills lie to the 
-northwest and northeast, blocking entrance to the valley but by the narrow 
+The formerly knee-high grass grows higher here as a gently undulating hill
+gives way northward to a valley dark with vegetation. Large hills lie to the
+northwest and northeast, blocking entrance to the valley but by the narrow
 ravine that passes between them.
 ~
 0 8192 2
@@ -3719,7 +3719,7 @@ D2
 S
 #20694
 Grassy Plain~
-You are walking through knee-high grass covering a gently undulating 
+You are walking through knee-high grass covering a gently undulating
 landscape.  You think you see a dark patch on the horizon to the north.
 ~
 0 0 2
@@ -3734,9 +3734,9 @@ D2
 S
 #20695
 Zelda's cabin~
-You stand inside a small wooden cabin in the dark forest. Jars and bottles 
-containing all manner of herb and poultice line the shelves about the walls. 
-The gloom and despondancy that penetrates the forest seems not to have an 
+You stand inside a small wooden cabin in the dark forest. Jars and bottles
+containing all manner of herb and poultice line the shelves about the walls.
+The gloom and despondancy that penetrates the forest seems not to have an
 effect here, and you feel that for now, at least, it may be safe to rest.
 ~
 0 4|8|1024|65536 0
@@ -3746,14 +3746,14 @@ D1
 1 -1 20669
 E
 shelves herb poultice~
-Mostly for use in the treatment of various injuries and ailments. It would 
-seem the occupant is a healer. You see a small wooden chest on a bottom shelf 
+Mostly for use in the treatment of various injuries and ailments. It would
+seem the occupant is a healer. You see a small wooden chest on a bottom shelf
 to the rear of the room.~
 S
 #20696
 The dark pit~
-You stand inside a dank and accursed pit dug deep into the earth under the 
-forest. The stench of the grave permeates the air and is complimented by the 
+You stand inside a dank and accursed pit dug deep into the earth under the
+forest. The stench of the grave permeates the air and is complimented by the
 crude wooden coffin sitting in the northern corner of the pit.
 ~
 0 1|4|8|8192 0
@@ -3763,12 +3763,12 @@ trapdoor~
 1 20608 20625
 E
 crude wooden coffin corner northern~
-The coffin is of rude and basic construction and is lined with straw. Nothing 
+The coffin is of rude and basic construction and is lined with straw. Nothing
 of interest or value can be seen in it.~
 S
 #20697
 The stone staircase~
-No sound can be heard but your footsteps as you follow the winding staircase 
+No sound can be heard but your footsteps as you follow the winding staircase
 down into darkness.
 ~
 0 1|4|8|512|8192|16384 0
@@ -3783,7 +3783,7 @@ D5
 S
 #20698
 Bottom of the stairwell~
-At last the staircase comes to level ground and you find yourself before a 
+At last the staircase comes to level ground and you find yourself before a
 tall wooden door to your north.
 ~
 0 1|4|8192 0
@@ -3798,8 +3798,8 @@ D4
 S
 #20699
 Slavemaster's Crypt~
-You stand in a cubical room carved from the granite, measuring perhaps twenty 
-feet along the length of its walls. In the center of the room is a stone podium 
+You stand in a cubical room carved from the granite, measuring perhaps twenty
+feet along the length of its walls. In the center of the room is a stone podium
 and atop it lies a grey marble coffin.
 ~
 0 1|8|8192 0
@@ -3809,21 +3809,21 @@ D2
 1 20629 20698
 E
 grey marble coffin~
-The coffin is of fine workmanship and sturdy construction. It is empty save 
+The coffin is of fine workmanship and sturdy construction. It is empty save
 a mattress of straw which lines its bottom.~
 E
 mattress straw~
 There is nothing in the straw.~
 E
 stone podium~
-The podium rises 2 feet from the floor. On its southern face these words have 
+The podium rises 2 feet from the floor. On its southern face these words have
 been etched into the stone:
 
 First came Blood...~
 S
 #20700
 Inside a fissure~
-It is cramped, cold and uncomfortable inside the rock fissure. It now leads 
+It is cramped, cold and uncomfortable inside the rock fissure. It now leads
 directly down and finding footing becomes more difficult.
 ~
 0 1|512|8192|16384 9
@@ -3838,7 +3838,7 @@ D5
 S
 #20701
 Inside a fissure.~
-It is cramped, cold and uncomfortable inside the rock fissure. It now leads 
+It is cramped, cold and uncomfortable inside the rock fissure. It now leads
 directly down and it becomes more difficult to find footing.
 ~
 0 1|512|8192|16384 9
@@ -3853,7 +3853,7 @@ D5
 S
 #20702
 Inside a fissure~
-The descent ends and the fissure lets upon a small stone room. Great double 
+The descent ends and the fissure lets upon a small stone room. Great double
 doors of polished marble lie to the north.
 ~
 0 1|4|8192 0
@@ -3868,9 +3868,9 @@ fissure~
 S
 #20703
 Ilyana's Lair~
-You stand amongst the gruesome remains of Ilyana's victims in her underground 
-lair. Not content to merely consume the blood of her victims Ilyana has taking 
-to using their body parts to decorate her walls. An emerald green coffin sits 
+You stand amongst the gruesome remains of Ilyana's victims in her underground
+lair. Not content to merely consume the blood of her victims Ilyana has taking
+to using their body parts to decorate her walls. An emerald green coffin sits
 upon a platform of steel.
 ~
 0 1|4|8192 0
@@ -3889,8 +3889,8 @@ emerald green coffin~
 The coffin has been lined inside with velvet cushions, in no other way is it remarkable.~
 E
 platform steel~
-The steel platform raises the coffin several feet high, away from the gore 
-and remains that litter the stone floor of the cavern. 
+The steel platform raises the coffin several feet high, away from the gore
+and remains that litter the stone floor of the cavern.
 
 Upon its southern face these words have been engraved:
 
@@ -3898,7 +3898,7 @@ Upon its southern face these words have been engraved:
 S
 #20704
 Climbing up the hollow treetrunk~
-You climb up the inside of the treetrunk, scrabbling to find footholds in the 
+You climb up the inside of the treetrunk, scrabbling to find footholds in the
 rough bark. Some distance above you see a hole leading into a treetop platform.
 ~
 0 1|4|8|512|8192 0
@@ -3913,8 +3913,8 @@ D5
 S
 #20705
 Climbing up the hollow treetrunk~
-You climb up the inside of the treetrunk, scrabbling to find footholds in the 
-rough bark. You are just beneath a hole that leads upward onto a wooden 
+You climb up the inside of the treetrunk, scrabbling to find footholds in the
+rough bark. You are just beneath a hole that leads upward onto a wooden
 platform.
 ~
 0 1|4|8|512|8192 0
@@ -3929,9 +3929,9 @@ D5
 S
 #20706
 Platform in the treetops~
-From this bare wooden platform you can look out across the entire valley. You 
-see narrow entrances to the vale to the far south and north but the dark hills 
-block your view in all other directions. A similar but higher wooden platform 
+From this bare wooden platform you can look out across the entire valley. You
+see narrow entrances to the vale to the far south and north but the dark hills
+block your view in all other directions. A similar but higher wooden platform
 above may be reached by climbing up the rope that dangles from it.
 ~
 0 1|4|8|8192 0
@@ -3949,8 +3949,8 @@ The rope hangs down from the upper platform. It seems strong enough to support y
 S
 #20707
 On the rope~
-Pulling your entire weight up this rope is hard work. Your muscles protest 
-furiously but you can see the second platform not far above your head. Best to 
+Pulling your entire weight up this rope is hard work. Your muscles protest
+furiously but you can see the second platform not far above your head. Best to
 press on.
 ~
 0 1|4|8|512|8192 0
@@ -3965,7 +3965,7 @@ D5
 S
 #20708
 On the rope before the higher platform~
-The hole leading to the second platform lies just above your head, one last 
+The hole leading to the second platform lies just above your head, one last
 mighty effort will see you reach the top.
 ~
 0 1|4|8|512|8192 0
@@ -3980,8 +3980,8 @@ D5
 S
 #20709
 Morc's home~
-You have stumbled into Morc the tree-dweller's home. Here he escapes the dangers 
-of the forest far below and spends his hours in quiet meditation and study under 
+You have stumbled into Morc the tree-dweller's home. Here he escapes the dangers
+of the forest far below and spends his hours in quiet meditation and study under
 the stars and sunlight. An aura of peace and holiness lies about this place.
 ~
 0 4|8|1024|8192 0
@@ -3992,7 +3992,7 @@ hole~
 S
 #20710
 At the top of a ladder~
-You stand at the top of a ladder in a thin underground tunnel. It seems to end 
+You stand at the top of a ladder in a thin underground tunnel. It seems to end
 inside the hollow of an old tree stump.
 ~
 0 1|4|8|2048|8192 0
@@ -4007,7 +4007,7 @@ D5
 S
 #20711
 At the foot of a ladder~
-The passage you stand in ends suddenly at the foot of a ladder leading upwards. 
+The passage you stand in ends suddenly at the foot of a ladder leading upwards.
 No light comes from above.
 ~
 0 1|4|8|8192 0
@@ -4022,7 +4022,7 @@ trunk~
 S
 #20712
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4037,7 +4037,7 @@ D3
 S
 #20713
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4052,7 +4052,7 @@ D3
 S
 #20714
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4067,7 +4067,7 @@ D3
 S
 #20715
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4082,7 +4082,7 @@ D2
 S
 #20716
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4097,7 +4097,7 @@ D3
 S
 #20717
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4112,7 +4112,7 @@ D1
 S
 #20718
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4127,7 +4127,7 @@ D2
 S
 #20719
 A dark underground passage~
-You stand in an ancient underground passage carved by hands unknown from the 
+You stand in an ancient underground passage carved by hands unknown from the
 limestone rock. It is cold and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4142,7 +4142,7 @@ D2
 S
 #20720
 A dark underground passage~
-You stand at the foot of a ladder in an ancient underground passage. It is cold 
+You stand at the foot of a ladder in an ancient underground passage. It is cold
 and dank and an unearthly silence hangs in the air.
 ~
 0 1|4|8|8192|16384 0
@@ -4157,7 +4157,7 @@ D4
 S
 #20721
 On a ladder~
-You stand on the rungs of a ladder leading down deep into the earth. It is 
+You stand on the rungs of a ladder leading down deep into the earth. It is
 cramped and uncomfortable here and an unearthly silence hangs in the air.
 ~
 0 1|4|8|2048|8192|16384 0
@@ -4172,8 +4172,8 @@ D5
 S
 #20722
 Top of a ladder~
-You stand at the top of a ladder that leads down deep into the earth. It is 
-cramped and uncomfortable here and you yearn to travel towards the light that 
+You stand at the top of a ladder that leads down deep into the earth. It is
+cramped and uncomfortable here and you yearn to travel towards the light that
 shines overhead.
 ~
 0 1|4|8|2048|8192|16384 0
@@ -4188,7 +4188,7 @@ D5
 S
 #20723
 Staircase up to the battlement tower~
-You stand in a small staircase leading up to the castle's battlement tower 
+You stand in a small staircase leading up to the castle's battlement tower
 or down to the base of the main tower. The air is old and stale.
 ~
 0 1|4|8|8192 0
@@ -4206,9 +4206,9 @@ Yeah it sucks, but hey, GOTTA BREATHE IT.~
 S
 #20724
 Top of the Battlement Tower~
-From the top of this stone turrent you can look out across all the woods. 
-You see the forest lies in a deep bowled valley within a high northern hill 
-range. Northward you spy a few huts clustered together near a steep incline 
+From the top of this stone turrent you can look out across all the woods.
+You see the forest lies in a deep bowled valley within a high northern hill
+range. Northward you spy a few huts clustered together near a steep incline
 and to the northeast the valley narrows and leads deeper into hill country.
 ~
 0 8192 3
@@ -4219,8 +4219,8 @@ D5
 S
 #20725
 Inside the iron coffin~
-There is more room than there appeared from the outside to be inside the 
-iron coffin, but not much more. You find you can barely crouch inside on 
+There is more room than there appeared from the outside to be inside the
+iron coffin, but not much more. You find you can barely crouch inside on
 the coffin's soft satin floor.
 ~
 0 1|4|8|512|8192 0
@@ -4230,13 +4230,13 @@ D2
 1 -1 20653
 E
 soft satin floor~
-The "floor" of the coffin is the part the coffin-dweller would ordinarily 
+The "floor" of the coffin is the part the coffin-dweller would ordinarily
 sleep on. Basically you are standing on someone's bed.~
 S
 #20726
 Inside the Hole~
-You are levitating inside a deep vertical tunnel. 
-The circular walls are smooth and featureless. Above lies the sky and daylight, 
+You are levitating inside a deep vertical tunnel.
+The circular walls are smooth and featureless. Above lies the sky and daylight,
 below you the tunnel drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4251,9 +4251,9 @@ D5
 S
 #20727
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4268,9 +4268,9 @@ D5
 S
 #20728
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4285,9 +4285,9 @@ D5
 S
 #20729
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4302,9 +4302,9 @@ D5
 S
 #20730
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4319,9 +4319,9 @@ D5
 S
 #20731
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4336,9 +4336,9 @@ D5
 S
 #20732
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4353,9 +4353,9 @@ D5
 S
 #20733
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4370,9 +4370,9 @@ D5
 S
 #20734
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4387,9 +4387,9 @@ D5
 S
 #20735
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4404,9 +4404,9 @@ D5
 S
 #20736
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4421,9 +4421,9 @@ D5
 S
 #20737
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4438,9 +4438,9 @@ D5
 S
 #20738
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4455,9 +4455,9 @@ D5
 S
 #20739
 Inside the Hole~
-You are levitating inside a deep vertical 
-tunnel. The circular walls are smooth and 
-featureless. Below and above you the tunnel 
+You are levitating inside a deep vertical
+tunnel. The circular walls are smooth and
+featureless. Below and above you the tunnel
 drops away into endless blackness.
 ~
 0 1|8|8192 9
@@ -4472,8 +4472,8 @@ D5
 S
 #20740
 The bottom of the Hole~
-The vertical tunnel comes to a sudden end. You stand in a small bell-shaped 
-room at its base. At the center of the room lies a circular concrete podium 
+The vertical tunnel comes to a sudden end. You stand in a small bell-shaped
+room at its base. At the center of the room lies a circular concrete podium
 with a brass ring at its center.
 ~
 0 1|4|8|8192 0
@@ -4488,10 +4488,10 @@ vault~
 S
 #20741
 Faraq's Chambers~
-You stand inside the personal dwelling quarters of Faraq, Wamphyri overlord 
-of this dark vale. The air is heavy with evil and the spectre of looming menace. 
-Dark stone doorways lie to your immediate east and west, yet so utter is the 
-darkness of this room that you cannot discern the contents of theirs from 
+You stand inside the personal dwelling quarters of Faraq, Wamphyri overlord
+of this dark vale. The air is heavy with evil and the spectre of looming menace.
+Dark stone doorways lie to your immediate east and west, yet so utter is the
+darkness of this room that you cannot discern the contents of theirs from
 your current position.
 ~
 0 1|8|8192 0
@@ -4510,8 +4510,8 @@ vault~
 S
 #20742
 Faraq's Chambers~
-You stand inside a dark concrete room whose bleak aspect is dominated by 
-the large and elaborately decorated gold coffin placed at its center. Blood 
+You stand inside a dark concrete room whose bleak aspect is dominated by
+the large and elaborately decorated gold coffin placed at its center. Blood
 and gore is splattered everywhere.
 ~
 0 1|8|8192 0
@@ -4521,20 +4521,20 @@ D1
 0 -1 20741
 E
 coffin elaborately decorated golden~
-The coffin must be worth a fortune, it appears to be solid gold, or perhaps 
+The coffin must be worth a fortune, it appears to be solid gold, or perhaps
 some sort of magical alloy. Inscribed on its base is this message:
 
 "Let trespassers beware. Things are not always as they seem."~
 E
 blood gore~
-Gobs of flesh litter the floor at your feet. Great arcs of blood cross the 
+Gobs of flesh litter the floor at your feet. Great arcs of blood cross the
 walls and ceiling all about you.~
 S
 #20743
 Faraq's Chambers~
-From the blood and gore that splatter the walls and floor of this room, you 
-would guess this is Faraq's dining room, replete as it is with table, chairs 
-and cutlery. A steel safe has been set into the northern wall. It has been 
+From the blood and gore that splatter the walls and floor of this room, you
+would guess this is Faraq's dining room, replete as it is with table, chairs
+and cutlery. A steel safe has been set into the northern wall. It has been
 carelessly left unlocked.
 ~
 0 1|8|8192 0
@@ -4544,20 +4544,20 @@ D3
 0 -1 20741
 E
 table chairs and cutlery~
-Some of it is quite attractive in appearance, but the blood and gore with 
+Some of it is quite attractive in appearance, but the blood and gore with
 which they are covered enable you to resist the urge to pilfer.~
 S
 #20744
 The Circle of Summoning~
-You stand inside a sphere of utter blackness and despair. This is the highest 
-plane of Hell, the one closest to our own material plane, where demons await 
+You stand inside a sphere of utter blackness and despair. This is the highest
+plane of Hell, the one closest to our own material plane, where demons await
 the summons of their mortal masters.
 ~
 0 1|4|8|1024|8192|16384 9
 S
 #20745
 Morc's Haven~
-You stand inside a circle of light. A feeling of calm and peace lies on this 
+You stand inside a circle of light. A feeling of calm and peace lies on this
 room and you feel all your worldly troubles melt away.
 ~
 0 4|1024|16384 9

@@ -6,7 +6,7 @@
 #4000
 python snake~
 the huge python~
-The huge python rears its head and hisses at you. 
+The huge python rears its head and hisses at you.
 ~
 It sways back and forth contemplating whether or not to eat you.
 ~
@@ -144,7 +144,7 @@ orc~
 the orc~
 An orc is here, looking for something (or perhaps someone) to eat.
 ~
-As you already know, orcs have quite a ravenous appetite.  
+As you already know, orcs have quite a ravenous appetite.
 Care to be dinner?
 ~
 100 0 -800 S
@@ -180,7 +180,7 @@ playmate for you.
 mage~
 the Mage~
 A small intelligent looking mage is standing here. It looks like he
-knows his way with magic. 
+knows his way with magic.
 ~
 This guy can ace the SAT with his frontal lobe tied behind his back.
 ~
@@ -476,7 +476,7 @@ blade black demon~
 a black demon blade~
 An evil black demon blade is here.~
 ~
-5 512|2048 8193 
+5 512|2048 8193
 0~ 3~ 4~ 11~
 8 10000 3500
 E
@@ -580,7 +580,7 @@ It looks like an excellent weapon for thieves.
 West trail around Midgaard~
    You are on a dusty trail following the outside wall of Midgaard.
 To the east the wall towers over you and to the west you see the
-forest of Haon-Dor. The trail leads north and south along the wall. 
+forest of Haon-Dor. The trail leads north and south along the wall.
 ~
 30 0 2
 D0
@@ -598,11 +598,11 @@ S
 West trail around Midgaard~
    You are on a dusty trail following the outside wall of Midgaard.
 To the east the wall towers over you and to the west you see the
-forest of Haon-Dor. The trail leads north and south along the wall. 
+forest of Haon-Dor. The trail leads north and south along the wall.
 ~
 30 0 2
 D0
-To the north you notice the path makes a turn, following the City wall. 
+To the north you notice the path makes a turn, following the City wall.
 ~
 ~
 0 -1 3902
@@ -615,7 +615,7 @@ S
 #3902
 Northwest corner of dusty trail.~
    You are standing outside the northwestern corner of the city wall.
-The trail leads east following the north wall and south towards the gate.  
+The trail leads east following the north wall and south towards the gate.
 ~
 30 0 2
 D1
@@ -632,7 +632,7 @@ S
 #3903
 Dusty trail along north wall.~
    You are walking on the trail following the outside of Midgaard's
-northern wall.  
+northern wall.
 ~
 30 0 2
 D1
@@ -641,7 +641,7 @@ The dusty trail is winding along the north wall of Midgaard.
 ~
 0 -1 3904
 D3
-The dusty trail turns left around the corner of the wall, behind it Haon-Dor. 
+The dusty trail turns left around the corner of the wall, behind it Haon-Dor.
 ~
 ~
 0 -1 3902
@@ -660,7 +660,7 @@ A small path extends into the plains.
 ~
 0 -1 300
 D1
-The dusty trail is winding along the north wall of Midgaard. 
+The dusty trail is winding along the north wall of Midgaard.
 ~
 ~
 0 -1 3905
@@ -678,11 +678,11 @@ S
 #3905
 Dusty trail along north wall.~
    You are walking on the trail following the outside of Midgaard's
-northern wall.  
+northern wall.
 ~
 30 0 2
 D1
-The dusty trail turns right around the corner of the wall. 
+The dusty trail turns right around the corner of the wall.
 You notice some mountains in the distance.
 ~
 ~
@@ -696,7 +696,7 @@ S
 #3906
 Northeast corner of dusty trail.~
    You are standing outside the northeastern corner of the city wall.
-The trail leads west following the north wall and south towards the gate.  
+The trail leads west following the north wall and south towards the gate.
 ~
 30 0 2
 D2
@@ -714,11 +714,11 @@ S
 East trail around Midgaard~
    You are on a dusty trail following the outside wall of Midgaard.
 To the west the wall towers over you and far to the east you see
-some mountains. The trail leads north and south along the wall. 
+some mountains. The trail leads north and south along the wall.
 ~
 30 0 2
 D0
-To the north you notice the path makes a turn, following the City wall. 
+To the north you notice the path makes a turn, following the City wall.
 ~
 ~
 0 -1 3906
@@ -732,7 +732,7 @@ S
 East trail around Midgaard~
    You are on a dusty trail following the outside wall of Midgaard.
 To the west the wall towers over you and far to the east you see
-some mountains. The trail leads north and south along the wall. 
+some mountains. The trail leads north and south along the wall.
 ~
 30 0 2
 D0
@@ -837,7 +837,7 @@ others haven't breathed before you.
 To the north a small tunnel continues into the mountain.
 ~
 40 9 2
-D0 
+D0
 ~
 ~
 0 0 4011
@@ -855,7 +855,7 @@ S
 #4011
 The tunnel~
    You squeeze your way through a small, narrow tunnel. The sharp-edged rocks
-protruding from the walls threaten to scratch and cut you. 
+protruding from the walls threaten to scratch and cut you.
 To the south you sense a freshness in the air which is rather unusual in these
 damp, stuffy tunnels. To the north the tunnel continues.
 ~
@@ -888,7 +888,7 @@ S
 #4013
 The tunnel~
 This tunnel, leading east-west, seems seldom used.  A thick layer of dust
-covers the floor, making the air stuffy and dry. 
+covers the floor, making the air stuffy and dry.
 ~
 40 9 3
 D1
@@ -1167,7 +1167,7 @@ D2
 S
 #4030
 The light cave~
-   You are in a light cave, through a hole large above you, you see 
+   You are in a light cave, through a hole large above you, you see
 the sky. A small tunnel to the south is the only way out.
 ~
 40 0 2
@@ -1178,7 +1178,7 @@ D2
 S
 #4031
 The valley~
-   You are in a small valley, surrounded by hills and a mountain to 
+   You are in a small valley, surrounded by hills and a mountain to
 the south. In the mountain there is a cave.
 ~
 40 0 2
@@ -1532,7 +1532,7 @@ D1
 S
 #4060
 The tunnel~
-   You are in a small tunnel, to the west the tunnel continues and 
+   You are in a small tunnel, to the west the tunnel continues and
 to the east you see some light.
 ~
 40 9 3
@@ -1961,7 +1961,7 @@ D3
 S
 #4113
 The passage~
-   You are in a passage that leads towards the south. To the east 
+   You are in a passage that leads towards the south. To the east
 you see a tunnel.
 ~
 41 9 3
@@ -1981,7 +1981,7 @@ S
 #4114
 The golden cave~
    You are in a giant cave, all the walls are shining with a soft golden
-light. The cave continues to the north, to the west you see a dark 
+light. The cave continues to the north, to the west you see a dark
 passage.
 ~
 41 8 1
@@ -2668,7 +2668,7 @@ M 0 4156 1 4151    A mean troll
 *
 M 0 4157 2 4167    A mage
 M 0 4157 2 4167    Second mage
-G 1 4151 3         The staff of harming 
+G 1 4151 3         The staff of harming
 *
 M 0 4158 2 4162    A snake
 M 0 4158 2 4169    A snake

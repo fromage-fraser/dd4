@@ -265,7 +265,7 @@ an ornate Longsword~
 An ornate Longsword is lying here.~
 ~
 5 64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 25 0 0
 A
 18 4
@@ -277,7 +277,7 @@ an ornate Breastplate~
 An ornate Breastplate with a black and gold coat of arms is lying here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 5 2
@@ -289,7 +289,7 @@ an ornate Bracer~
 An ornate Bracer with a black and gold coat of arms is lying here.~
 ~
 9 0 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 2 2
@@ -301,7 +301,7 @@ a black cloak with gold trim~
 A black cloak with Gold Trim is lying here.~
 ~
 9 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 12 25
@@ -313,7 +313,7 @@ an ornate helm~
 An ornate helm bearing a black and gold coat of arms lies here.~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 3 1
@@ -327,7 +327,7 @@ an ornate shield~
 A shield bearing the crest of the City of Anon lies here.~
 ~
 9 0 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 17 -20
@@ -337,7 +337,7 @@ a throwing spear~
 A sturdy throwing spear has been thrust into the ground here.~
 ~
 5 64|134217728 1|8192|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 18 4
@@ -349,7 +349,7 @@ a signet ring~
 A signet ring that identifies the wearer as a trusted wall guard lies here.~
 ~
 9 1|2 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 2 3
@@ -365,7 +365,7 @@ a suit of plate mail~
 A suit of heavy plate mail is piled up here.~
 ~
 9 1024 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 50 0 0
 A
 2 -2
@@ -377,7 +377,7 @@ a finely-made broadsword~
 A knight's broadsword lies here.~
 ~
 5 1|64|1024 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 10 0 0
 A
 18 8
@@ -389,7 +389,7 @@ a knight's shield~
 A knight's shield lies here.~
 ~
 9 1024 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 17 -20
@@ -399,7 +399,7 @@ a knight's helm~
 A knight's helm lies here.~
 ~
 9 1024 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 4 3
@@ -409,7 +409,7 @@ a pair of mail gauntlets~
 A pair of mail gauntlets lie here.~
 ~
 9 64|1024 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 1 2
@@ -423,7 +423,7 @@ a holy signet ring~
 A holy signet ring lies here.~
 ~
 9 1|2|256|1024 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 2 3
@@ -439,7 +439,7 @@ the marshal's uniform~
 The marshal's uniform lies here, neatly pressed.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 3
@@ -451,7 +451,7 @@ the marshal's swagger stick~
 The marshal's swagger stick lies here.~
 ~
 3 1|2|1024 1|16384
-60~ 4~ 4~ ego whip~ 
+60~ 4~ 4~ ego whip~
 1 0 0
 #31216
 beacon~
@@ -459,7 +459,7 @@ a wall beacon~
 This beacon illuminates the walls for guards patrolling at night.~
 ~
 1 64 0
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 0 0
 #31217
 pot boiling oil~
@@ -467,7 +467,7 @@ a pot of boiling oil~
 A pot of boiling oil bubbles away here.~
 ~
 12 1 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 E
 pot boiling oil~
@@ -478,7 +478,7 @@ a murder hole~
 A murder hole is in the middle of the floor here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 murder hole~
@@ -502,7 +502,7 @@ a suit of chainmail~
 A suit of chainmail lies here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 5 2
@@ -512,7 +512,7 @@ a pair of leather leggings~
 A pair of leather leggings lie here.~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 25
@@ -522,7 +522,7 @@ a crossbowman's leather wristguard~
 A strip of hardened leather lies here.~
 ~
 9 0 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #31223
 scroll torn~
@@ -530,7 +530,7 @@ a torn scroll~
 ~
 ~
 2 0 1|16384
-50~ dispel magic~ ~ ~ 
+50~ dispel magic~ ~ ~
 1 0 0
 #31224
 key old~
@@ -538,7 +538,7 @@ an old key~
 An old key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 key~
@@ -550,7 +550,7 @@ an old scroll~
 An old scroll has been left here, neatly rolled and sealed.~
 ~
 2 64 1|16384
-60~ flamestrike~ flamestrike~ flamestrike~ 
+60~ flamestrike~ flamestrike~ flamestrike~
 1 0 0
 A
 4 3
@@ -570,7 +570,7 @@ a footlocker~
 A footlocker rests near a bed.~
 ~
 15 0 0
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 10 0 0
 E
 footlocker~
@@ -582,7 +582,7 @@ an ancient tapestry~
 An ancient tapestry depicting the construction of these walls hangs here.~
 ~
 8 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 50000 0
 #31228
 tapestry~
@@ -590,7 +590,7 @@ an ancient tapestry~
 An ancient tapestry depicting the construction of Midgaard hangs here.~
 ~
 8 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 50000 0
 #31229
 tapestry~
@@ -598,7 +598,7 @@ an ancient tapestry~
 An ancient tapestry depicting the construction of Solace hangs here.~
 ~
 8 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 50000 0
 #31230
 tapestry~
@@ -606,7 +606,7 @@ an ancient tapestry~
 An ancient tapestry depicting the construction of Freeport hangs here.~
 ~
 8 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 25 50000 0
 #31231
 belaying pin~
@@ -622,7 +622,7 @@ a barrel of ale~
 A barrel of ale sits here, ready to be transported.~
 ~
 17 0 1
-25~ 25~ 3~ 0~ 
+25~ 25~ 3~ 0~
 25 0 0
 #31233
 barrel~
@@ -630,7 +630,7 @@ an empty barrel~
 An empty barrel rests here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #31234
 lantern~
@@ -638,7 +638,7 @@ a lantern~
 A lantern sits here.~
 ~
 1 0 1|65536
-0~ 0~ 200~ 0~ 
+0~ 0~ 200~ 0~
 2 25 0
 #31235
 rope~
@@ -646,7 +646,7 @@ a coiled rope~
 A coil of rope lies here.~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 200 0
 A
 5 1
@@ -656,7 +656,7 @@ a leather backpack~
 A leather backpack sits here.~
 ~
 15 0 1|8
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 2 0 0
 #31237
 cloth~
@@ -664,7 +664,7 @@ a bolt of cloth~
 A bolt of cloth lies on the floor here.~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 250 0
 #31238
 key~
@@ -672,7 +672,7 @@ a warehouse key~
 A warehouse key is here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 250 0
 #31239
 scow~
@@ -680,7 +680,7 @@ a scow~
 A scow is moored here.~
 ~
 15 262144|524288 0
-10000~ 0~ 0~ 1~ 
+10000~ 0~ 0~ 1~
 1000 0 0
 #31240
 cutlass~
@@ -688,7 +688,7 @@ a cutlass~
 A cutlass lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 7 0 0
 #31241
 ring wizardry~
@@ -696,7 +696,7 @@ a ring of wizardry~
 A ring of wizardry has been left here.~
 ~
 9 1|64 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 3 2
@@ -708,7 +708,7 @@ a staff of power~
 A staff of power rests on the floor here.~
 ~
 4 1|64 1|16384
-55~ 25~ 25~ lightning bolt~ 
+55~ 25~ 25~ lightning bolt~
 1 0 0
 A
 12 25
@@ -720,7 +720,7 @@ a white robe of the magi~
 A white robe of the magi lies here.~
 ~
 9 1|64|1024 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 2 2
@@ -736,7 +736,7 @@ a pair of boots of speed~
 A pair of boots of speed lie here.~
 ~
 9 1|64 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 3
@@ -750,7 +750,7 @@ a suit of invincible plate~
 A suit of invincible plate lies here.~
 ~
 9 2|16|32|64|128|512|2048|4096 1|8
-20~ 0~ 0~ 0~ 
+20~ 0~ 0~ 0~
 25 0 0
 A
 1 4
@@ -1195,7 +1195,7 @@ S
 Inside the Eastern City Wall~
 You are making you way along a narrow corridor that runs through the
 center of the massive walls of the City of Anon. Crossbow slits at regular
-intervals allow you to look out upon the sea that lies not far beyond 
+intervals allow you to look out upon the sea that lies not far beyond
 the city. Crossbowmen walk back and forth, talking and joking but ever alert
 for any signs of attack. After a while you begin to feel slightly
 claustrophobic.
@@ -3054,7 +3054,7 @@ E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
 E 1 31206 1 17              ;   throwning spear
 E 1 31207 1 1               ;   signet ring
-*                             
+*
 M 1 31201 4 31297           ; south wall guard
 E 1 31200 1 16              ;   ornate longsword
 E 1 31201 1 5               ;   ornate breastplate
@@ -3259,7 +3259,7 @@ M 1 31215 1 31316           ; priestess of Anon
 *
 M 1 31216 4 31278           ; burly dock workers
 E 1 31231 1 16              ;   belaying pin
-G 1 31232 0                 ;   barrel of ale        
+G 1 31232 0                 ;   barrel of ale
 *
 O 1 31232 1 31278           ; barrel of ale
 O 1 31233 1 31278           ; empty barrel

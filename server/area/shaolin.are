@@ -10,7 +10,7 @@ A monk child is here sweeping the floor.
 ~
 He is only a child, surely you will want to pick on someone your own size.
 ~
-4|64|128 0 500 S 
+4|64|128 0 500 S
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -32,7 +32,7 @@ disciple~
 A disciple~
 A disciple tries to impress you with his new skills.
 ~
-One of the many who came here to learn the Shaolin martial skills. Like 
+One of the many who came here to learn the Shaolin martial skills. Like
 many others, he seems quite hopeless.
 ~
 2|4|128 0 100 S
@@ -160,7 +160,7 @@ master monk drunken~
 The Drunken Master~
 A master is resting here, looking very intoxicated.
 ~
-Hmm.. Are monks supposed to do this? You pondered as you look at this 
+Hmm.. Are monks supposed to do this? You pondered as you look at this
 pathetic excuse for a human being.
 ~
 1|4|64|128 128|8192 250 S
@@ -186,7 +186,7 @@ abbot Abbot monk~
 The Abbot of Shaolin~
 The Abbot of Shaolin nods in your direction, acknowledging your presence.
 ~
-Looking strong and healthy even at this age, the Abbot cuts an impressive 
+Looking strong and healthy even at this age, the Abbot cuts an impressive
 figure.
 ~
 1|4|64|128 128|8192|524288 800 S
@@ -285,7 +285,7 @@ A steaming hot bun lies here waiting to be consumed.~
 ~
 19 0 1
 24~ 0~ 0~ 0~
-1 0 0 
+1 0 0
 
 #20107
 treasure~
@@ -329,7 +329,7 @@ An old chinese manual is discarded here.~
 10 0 0
 E
 book manual jiuyangzhenjing Jiuyangzhenjing~
-One of the most sought after manual in Shaolin. It is believed to contain 
+One of the most sought after manual in Shaolin. It is believed to contain
 a powerful source of Yang energy.
 ~
 
@@ -371,7 +371,7 @@ A huge sabre with a dragon motif is planted firmly in the ground.~
 20 0 0
 E
 sabre dragon~
-This heavy weapon glows and hums as you lay it upon your laps. The dragon 
+This heavy weapon glows and hums as you lay it upon your laps. The dragon
 carved into it seems almost alive.
 ~
 A
@@ -541,7 +541,7 @@ A
 18 3
 A
 19 3
- 
+
 #20124
 hair lock~
 a lock of nun's hair~
@@ -613,7 +613,7 @@ S
 
 #20102
 Path to the Shaolin Temple~
-After struggling up that flight of stairs, you finally reached the top of 
+After struggling up that flight of stairs, you finally reached the top of
 the mountain, well almost. Ahead of you, lies the great Shaolin Temple.
 A side mountain path leads west.
 ~
@@ -637,7 +637,7 @@ S
 
 #20103
 A side mountain path~
-This path, overgrown with vegetation, leads north to a small clearing and  
+This path, overgrown with vegetation, leads north to a small clearing and
 east to where you came from.
 ~
 201 1 5
@@ -655,8 +655,8 @@ S
 
 #20104
 Mountain shrine~
-A small shrine lies in one corner of this small clearing. This place 
-looks deserted and very forgotten. To your west, a hugå stone boulder is
+A small shrine lies in one corner of this small clearing. This place
+looks deserted and very forgotten. To your west, a hugï¿½ stone boulder is
 set into the mountain. South leads you back to the mountain path.
 ~
 201 1 3
@@ -680,7 +680,7 @@ S
 #20105
 A dark cave~
 At the far end of this small cave, stands a strange glowing mirror.
-A dark misty shadow slowly takes form as you look into the mirror. You 
+A dark misty shadow slowly takes form as you look into the mirror. You
 gasped in astonishment as your own reflection in the mirror charges at you.
 ~
 201 9 0
@@ -715,9 +715,9 @@ plaque wall sign~
 |      Welcome to Shaolin Temple          |
 |   ---------------------------------     |
 |                                         |
-| May your visit be fun and enlightening. |   
-|                                         | 
-|       <<<< ----- BOOM ---- >>>>>        |            
+| May your visit be fun and enlightening. |
+|                                         |
+|       <<<< ----- BOOM ---- >>>>>        |
 |=========================================|
 ~
 S
@@ -824,7 +824,7 @@ S
 
 #20112
 The Disciples' Bunk~
-This is the sleeping chamber of all the young men, like yourself,who come 
+This is the sleeping chamber of all the young men, like yourself,who come
 from all over the world to learn the legendary martial skills of Shaolin.
 ~
 201 8 0
@@ -882,7 +882,7 @@ S
 #20115
 The Luohan Chamber~
 Within this chamber dwells the legendary Luohans of Shaolin. They are here
-to see if you are ready to leave Shaolin.  You mutter a hasty prayer as you 
+to see if you are ready to leave Shaolin.  You mutter a hasty prayer as you
 prepare yourself to face these men of bronze.
 ~
 201 9 0
@@ -895,7 +895,7 @@ S
 
 #20116
 A Secret Tunnel~
-The floor above you closes and seals off your exit. 
+The floor above you closes and seals off your exit.
 This well-lit passage leads south.  To the south you see a bright source
 of light.
 ~
@@ -935,7 +935,7 @@ S
 #20119
 The Grand Hall~
 This massive hall contains figurines of the Buddha in all sort of sizes and
-positions. Towering above all of them, is a huge golden statue of a sleeping 
+positions. Towering above all of them, is a huge golden statue of a sleeping
 Buddha.  Directly in front of it, is a huge stone table for offerings.
 Exits lead west and east to side halls, while south leads you back to the
 Main Court.
@@ -981,7 +981,7 @@ A room.
 D2
 A room.
 ~
-~ 
+~
 0 -1 20121
 D3
 A room.
@@ -1039,9 +1039,9 @@ S
 
 #20124
 The Library~
-This room contains all the sutras and martial manuals of Shaolin. 
+This room contains all the sutras and martial manuals of Shaolin.
 Bookshelves line the walls displaying the books in a systematic manner.
-However, there is nothing you can use here. It is guarded by one of the 
+However, there is nothing you can use here. It is guarded by one of the
 masters.
 ~
 201 8 0
@@ -1089,7 +1089,7 @@ A room.
 D2
 A room.
 ~
-~ 
+~
 0 -1 20127
 D1
 A room.
@@ -1200,7 +1200,7 @@ S
 #20132
 A prison cell~
 It looks dark and gloomy, probably the only place in the temple that is not
-kept clean and maintained. 
+kept clean and maintained.
 ~
 201 9 0
 D1
@@ -1225,8 +1225,8 @@ S
 
 #20134
 Cell of Wuhua~
-Locked here for the past ten years, for the unspeakable crimes he did to 
-both men and women is...Wuhua, the lusty monk. After ten long years, you 
+Locked here for the past ten years, for the unspeakable crimes he did to
+both men and women is...Wuhua, the lusty monk. After ten long years, you
 cannot imagine what he will do to you.
 ~
 201 9 0
@@ -1253,10 +1253,10 @@ S
 
 #20136
 A Mysterious Room~
-The door above you closes and effectively seals off your exit. The walls 
-of this strange room glow and hum as if it is alive. This is where the 
+The door above you closes and effectively seals off your exit. The walls
+of this strange room glow and hum as if it is alive. This is where the
 body of the high monks are kept after they attain enlightenment. These
-bodies are embalmed and preserved using gold, hence they are sometimes 
+bodies are embalmed and preserved using gold, hence they are sometimes
 referred to as "Jinshen". A stairway leads down.
 ~
 201 1|8|512 0
@@ -1285,10 +1285,10 @@ S
 #0
 
 #RESETS
-* This area is written for Merc based muds. 
+* This area is written for Merc based muds.
 * All bit vectors unused in Merc has been set to 0.
 * Please feel free to amend any error i might
-* have made (i am just a beginner u see). 
+* have made (i am just a beginner u see).
 * Hope you enjoy it. Thank you.
 * [Boom]
 *
@@ -1310,7 +1310,7 @@ D 0 20115 5 2  	 	luohan chamber (1 way)
 D 0 20124 1 2   	library from outside
 D 0 20125 3 2   	from inside
 D 0 20131 0 2   	prison from outside
-D 0 20131 1 2   
+D 0 20131 1 2
 D 0 20131 2 2
 D 0 20131 3 2
 D 0 20132 1 2   	from inside
@@ -1322,7 +1322,7 @@ D 0 20137 3 2   	from inside
 * load objects into rooms
 O 0 20102 0 20121       lighted candle
 O 0 20102 0 20122
-O 0 20102 0 20123       
+O 0 20102 0 20123
 O 0 20102 0 20127
 O 0 20102 0 20128
 O 0 20136 0 20129       key
@@ -1346,7 +1346,7 @@ G 0 20111 0             yi manual
 E 0 20118 0 7           garters
 E 0 20119 0 12          robe
 * drunken master
-M 0 20113 1 20121       
+M 0 20113 1 20121
 G 0 20109 0             yang manual
 E 0 20118 0 7           garters
 E 0 20119 0 12          robe
@@ -1354,7 +1354,7 @@ E 0 20119 0 12          robe
 M 0 20114 1 20122
 E 0 20118 0 7           garters
 E 0 20119 0 12          robe
-E 0 20125 0 11          cane shield  
+E 0 20125 0 11          cane shield
 E 0 20114 0 16          chain whip
 * monks
 M 0 20104 1 20117

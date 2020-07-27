@@ -19,7 +19,7 @@ and holding a multi-coloured staff.  Although he appears to be older
 than the oldest man, he seems to have an inner strength which most mortals
 cannot overcome.
 ~
-2|64 8 500 S 
+2|64 8 500 S
 18 5 0 18d18+180 3d2+15
 0 30000
 8 8 1
@@ -543,7 +543,7 @@ a bag~
 A bag is on the floor.~
 ~
 15 0 1
-50~ 0~ 0~ 0~ 
+50~ 0~ 0~ 0~
 5 50 10
 #1112
 lantern~
@@ -676,7 +676,7 @@ S
 #1105
 The General Store~
    You are inside the general store.  All sorts of goodies are stacked on the
-many shelves.  Your local friendly shopkeeper is smiling patiently, waiting to 
+many shelves.  Your local friendly shopkeeper is smiling patiently, waiting to
 serve you to the best of his abilities.  The only exit is to the south.
 ~
 11 8 0
@@ -766,7 +766,7 @@ S
 Shiriff Post of the Eastern Shire~
    You are in the Shiriff Post which acts as the nucleus for the three shiriffs
 of the Eastern Shire.  As you examine the shiriffs on duty, you come to realise
-that the halflings of the Shire are not to be reckoned with.  You cower with 
+that the halflings of the Shire are not to be reckoned with.  You cower with
 awe.  A door offers passage to the east.
 ~
 11 8 0
@@ -894,7 +894,7 @@ S
 Shiriff Training Grounds~
    The sounds of mock battle and feigned death cries fill your ears.  Every
 which way you turn you see halfling trainees at the prime of their youth.  A
-wizened old battle instructor meets your gaze and asks if he may be of 
+wizened old battle instructor meets your gaze and asks if he may be of
 service.  The only exit lies to the west.
 ~
 11 0 0
@@ -974,8 +974,8 @@ S
 The Grocer's Delight~
    You tremble with ecstasy as the tempting odours of freshly made pipeweed
 bread fill your lungs.  Rumour has it that the pipeweed bread sold here can
-restore vitality.  You look around but find no one to take your order.  
-You then peep over the counter and discover a friendly grocer who is too 
+restore vitality.  You look around but find no one to take your order.
+You then peep over the counter and discover a friendly grocer who is too
 short to be seen over the counter.  The only exit is to the north.
 ~
 11 8 0
@@ -1172,7 +1172,7 @@ To the south runs Bywater Road.
 S
 #1132
 Delving Lane~
-   Delving Lane runs north and south in this small borough of the Shire.  To 
+   Delving Lane runs north and south in this small borough of the Shire.  To
 the south stands Brandywine Bridge.  The Green Dragon, the undisputed leader
 in the art of innkeeping, offers rest and comfort to the east.  You hear the
 bray of horses from the west.
@@ -1196,7 +1196,7 @@ The Green Dragon offers food, drink, and above all hospitality for mere gold.
 S
 #1133
 Delving Lane~
-   Delving Lane runs north and south in this small borough of the Shire.  A 
+   Delving Lane runs north and south in this small borough of the Shire.  A
 large, imposing building lies to the east.  You hear the bray of horses from
 the west.
 ~
@@ -1360,7 +1360,7 @@ S
 #1141
 Gamgee Residence~
    You stand inside a modest home.  You deduce that this is indeed the home
-of whomever owns the surrounding lands.  The air is somewhat musty and 
+of whomever owns the surrounding lands.  The air is somewhat musty and
 the smell reminds you of a stable.  As you look around disdainfully, you
 think to yourself that this is more of a shack than a proper residence and
 you long for the urban riches of the Shire proper.
@@ -1567,7 +1567,7 @@ Above a great oak door you see a sign which reads 'Shirriff Post'.
 S
 #1152
 A dark tunnel~
-   You stand inside a small underground tunnel.  The ceiling is so low that 
+   You stand inside a small underground tunnel.  The ceiling is so low that
 you must crouch to avoid hitting your head.  The tunnel continues north and
 south.  To the west lies a small home.  All you can see is darkness.
 ~
@@ -1590,7 +1590,7 @@ You see a halfling hole.
 S
 #1153
 Shiriff Post of the Lower Shire~
-   You are in the shiriff Post which acts as the nucleus for the three shiriffs 
+   You are in the shiriff Post which acts as the nucleus for the three shiriffs
 of the Lower Shire.  As you examine the shiriffs on duty, you come to realise
 that the halflings of the Shire are not to be reckoned with.  You cower with
 awe.  The only exit is to the east.
@@ -1647,8 +1647,8 @@ A trapdoor on the ceiling reveals a passageway.
 S
 #1157
 The Inn of the Green Dragon~
-   You are standing in the Inn of the Green dragon.  Large paintings of 
-halflings at work, and halflings at play adorn the walls.  Comfortable 
+   You are standing in the Inn of the Green dragon.  Large paintings of
+halflings at work, and halflings at play adorn the walls.  Comfortable
 benches and seats line the walls.  A stairway leads down.
 ~
 11 8 0
@@ -1741,7 +1741,7 @@ E 1 1104 1 12		Silvery cloak
 E 1 1100 1 0		Rainbow staff
 M 0 1116 1 1136		Elven warrior
 E 1 1106 1 16		Elven bow
-E 1 622 25 6		Bronze helmet 
+E 1 622 25 6		Bronze helmet
 M 0 1117 1 1136		Dwarven prince
 E 1 1107 1 16		Mithril axe
 E 1 621 10 5		Bronze breast plate
@@ -1813,7 +1813,7 @@ S
  1118 13  5 15  1 17 150 50  0 23	shopkeeper
  1119 13  5 15  1 17 150 50  0 23	grocer
  1120  9  5  0  0  0 150 50  0 23	blacksmith
- 1130 17  0  0  0  0 150 50  0 23	innkeeper 
+ 1130 17  0  0  0  0 150 50  0 23	innkeeper
 0
 
 

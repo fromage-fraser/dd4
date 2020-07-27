@@ -26,7 +26,7 @@ Bidshika the Gypsy Rogue~
 A rugged and unkempt gypsy man lurks in the shadows.
 ~
 The gypsy is tall with bronze skin and long black hair.  He has rugged
-features and gleaming eyes; his clothes are dirty and torn in places.  
+features and gleaming eyes; his clothes are dirty and torn in places.
 Two sharp looking knives are tucked into his thick leather belt.
 ~
 2|512|4096|4194304 2|8|16|32|128|512|65536|8388608 0 S
@@ -44,7 +44,7 @@ Lyanka the Gypsy Witch~
 Lyanka's soft singing soothes you to sleep.
 ~
 Old and hunched, eyes sunken into her skull, Lyanka is eldest of the
-Travellers.  Far she has wandered, and deep is her lore and counsel.  
+Travellers.  Far she has wandered, and deep is her lore and counsel.
 She sings the soft, sad songs of her displaced people.
 ~
 2|512|4096 128|8|32|8388608 0 S
@@ -57,14 +57,14 @@ She sings the soft, sad songs of her displaced people.
 		break
 	else
 		break;
-	endif	
+	endif
 ~
 >speech_prog bye~
 	if clan($n) == trv
 		mpecho The old woman reveals a secret opening in the tent wall and smuggles you out.
 		mptransfer $n 514
 		break
-	endif	
+	endif
 ~
 |
 

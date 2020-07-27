@@ -62,7 +62,7 @@ has been sitting here quite a while, drinking himself into oblivion.
 66 8 600 S
 8 13 3 1d12+110 2d6+0
 0 3750
-6 6 1 
+6 6 1
 & 25 'teacher base'
 & 85 'musicianship'
 #3505
@@ -448,7 +448,7 @@ The forest continues.
 S
 #3515
 Light Forest~
-     The forest is light here and you can easily pick your way through the 
+     The forest is light here and you can easily pick your way through the
 trail.  To the east, the forest becomes thick and darker. South, the trail
 continues.
 ~

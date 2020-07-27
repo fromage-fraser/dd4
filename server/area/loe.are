@@ -18,7 +18,7 @@ Many years passed, and the orcs began to gain ground into Ofcol itself.
 Gruumsh One-Eye revealed his plan for Ofcol.  In the dead of night the orcs
 would enter and kill the power behind Ofcol, the golden dragon that made its
 lair there.  A small party formed of Mahasamatman, Guburz, and some of the
-better orc lords made their way into Ofcol that night.  Fighting their way 
+better orc lords made their way into Ofcol that night.  Fighting their way
 past the temple guards and dragonknights there, they made their way into the
 tower where the dragon resided.  As Guburz went forward to open the great
 doors, the other lords struck as one, piercing him many times with their
@@ -34,7 +34,7 @@ mercenaries, and began to sell his services into any army or race that could
 pay.  Thus the Lords of Entropy began to walk upon the realm, and the army
 swelled with power.  And Gruumsh and Lloth smiled upon their works.
 
-Anyone interested in purchasing our services need only to talk with us. 
+Anyone interested in purchasing our services need only to talk with us.
 Assassinations and war can be bought for a price.
 ~
 0 $~
@@ -46,8 +46,8 @@ miyamoto musashi~
 Miyamoto Musashi~
 An Asian of medium height stands here with a weapon in each hand.
 ~
-An Asian of medium height stands here with a weapon in each hand. Judging by 
-the way he carries them you assume that he means business.  His eyes have 
+An Asian of medium height stands here with a weapon in each hand. Judging by
+the way he carries them you assume that he means business.  His eyes have
 never left you as you move, as if he is sizing you up.
 ~
 2|512|4096|4194304 2|8|16|32|128|512|65536|8388608 0 S
@@ -64,9 +64,9 @@ acupuncturist~
 the Acupuncturist~
 The Acupuncturist administers to the hurt here.
 ~
-This man has a bandolier of needles on his body, as well as smaller bracelets 
-of needles on his wrist. His hands are very steady as he sticks the needles 
-precisely into the body of the man on the table. "If you wish healing lie down 
+This man has a bandolier of needles on his body, as well as smaller bracelets
+of needles on his wrist. His hands are very steady as he sticks the needles
+precisely into the body of the man on the table. "If you wish healing lie down
 on that table," he says, "I'll be right with you."
 ~
 2|512|4096 8|32|128|8388608 0 S
@@ -74,18 +74,18 @@ on that table," he says, "I'll be right with you."
 0 0
 0 0 1
 >speech_prog bless~
-        	if clan($n) == loe                                                                           
-        		cast bless $n                                                                        
-        		break                                                                                
-        	else                                                                                         
-        		break;                                                                               
-        	endif	                                                                                     
+        	if clan($n) == loe
+        		cast bless $n
+        		break
+        	else
+        		break;
+        	endif
 ~
 >speech_prog bye~
-        	if clan($n) == loe                                                                           
-        		mpecho The Acupuncturist bows to you, and you find yourself outside the headquarters. 
-        		mptransfer $n 18138                                                                    
-        		break                                                              
+        	if clan($n) == loe
+        		mpecho The Acupuncturist bows to you, and you find yourself outside the headquarters.
+        		mptransfer $n 18138
+        		break
 		else
 			break;
         	endif
@@ -115,8 +115,8 @@ smith kensai~
 Kensai Smith~
 Kensai Smith works at his forge.
 ~
-This man is wearing simple leather apron and gloves.  His eyes are covered by 
-smoked lenses used in the forge. His arms and chest are massively muscled from 
+This man is wearing simple leather apron and gloves.  His eyes are covered by
+smoked lenses used in the forge. His arms and chest are massively muscled from
 working with the forge.
 ~
 2|512|4096|1048756 8|32|8388608 0 S
@@ -273,10 +273,10 @@ A
 #ROOMS
 #450
 Cave Mouth~
-You are entering the mouth of a large cave. It is well lit and much cleaner 
-than you would expect.  In the far corner you see a fully armored asian man 
-carrying a katana and wakizashi.  The way into the cave is blocked by a large 
-boulder.  In the middle of the boulder there is a crescent-moon shaped 
+You are entering the mouth of a large cave. It is well lit and much cleaner
+than you would expect.  In the far corner you see a fully armored asian man
+carrying a katana and wakizashi.  The way into the cave is blocked by a large
+boulder.  In the middle of the boulder there is a crescent-moon shaped
 indentation.
 ~
 0 8 5
@@ -292,12 +292,12 @@ S
 
 #451
 A Large Cavern~
-You enter a larger cavern with a few tables centered around the room.  On one 
-table you can see a relaxed man with needles sticking in various parts of his 
-body.  In the center of the room and tables you see a glowing silver katana 
-suspended in mid-air.  There are some steps cut into the cavern wall, but the 
-exit they lead to is blocked by a large boulder with a crescent-moon shaped 
-indentation in the centre.  There are smaller caverns to the north and south, 
+You enter a larger cavern with a few tables centered around the room.  On one
+table you can see a relaxed man with needles sticking in various parts of his
+body.  In the center of the room and tables you see a glowing silver katana
+suspended in mid-air.  There are some steps cut into the cavern wall, but the
+exit they lead to is blocked by a large boulder with a crescent-moon shaped
+indentation in the centre.  There are smaller caverns to the north and south,
 and a pit down.
 ~
 0 8 0
@@ -321,8 +321,8 @@ S
 
 #452
 War Council Room~
-Various tapestries and weapons cover the walls in this room.  It looks much 
-different from the rest of the cave. In the center of the room is a large 
+Various tapestries and weapons cover the walls in this room.  It looks much
+different from the rest of the cave. In the center of the room is a large
 table surrounded by cushions to sit upon.
 ~
 0 8 0
@@ -334,8 +334,8 @@ S
 
 #453
 The Forge~
-This room contains an anvil and a smokeless forge filled with a bluish fire.  
-A man stands here with tongs and a piece of steel, slowly folding it over and 
+This room contains an anvil and a smokeless forge filled with a bluish fire.
+A man stands here with tongs and a piece of steel, slowly folding it over and
 over. He doesn't look up as you enter.
 ~
 0 8 0
@@ -347,8 +347,8 @@ S
 
 #454
 The LOE Donation Pit~
-This room is little more than a shallow pit near the Acupuncturist's room.  
-Occasionally LOE members may drop items here for the use of other clan 
+This room is little more than a shallow pit near the Acupuncturist's room.
+Occasionally LOE members may drop items here for the use of other clan
 members.
 ~
 0 8 0

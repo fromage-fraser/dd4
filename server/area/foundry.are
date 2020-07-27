@@ -18,9 +18,9 @@ Ushog goblin captain~
 Ushog~
 Ushog, the Goblin Captain, rummages through some trash.
 ~
-Although short and stooped, Ushog is strong and quite viscious.  He 
-runs his troop of goblins with an intelligent combination of unprovoked 
-beating of his subordinates and ruthless killing of everyone else.  
+Although short and stooped, Ushog is strong and quite viscious.  He
+runs his troop of goblins with an intelligent combination of unprovoked
+beating of his subordinates and ruthless killing of everyone else.
 Ushog bares his yellow fangs at you, glaring at you out of one eye: his
 other one has long before been poked out.
 ~
@@ -47,7 +47,7 @@ olog goblin soldier~
 Olog~
 Olog, the Goblin Soldier, crouches in the muck.
 ~
-Olog is a solid goblin warrior with a particularly nasty streak.  
+Olog is a solid goblin warrior with a particularly nasty streak.
 She doesn't hesistate to attack anything within range.
 ~
 1|32 0 -200 S
@@ -60,7 +60,7 @@ Golgog~
 Golgog, the Goblin Soldier, growls nastily.
 ~
 Golgog is crafty and quick to notice when things are awry in the Holes.
-He has fashioned several nasty weapons for the troop out of the rubbish 
+He has fashioned several nasty weapons for the troop out of the rubbish
 he's scavenged from the surface.
 ~
 1|32 0 -200 S
@@ -98,7 +98,7 @@ Shargook~
 Shargook, the Goblin slave, organises some unknown filth.
 ~
 The goblin slaves are generally the youngest and most feeble members
-of the group.  Shargook once led this troop: now she does chores for 
+of the group.  Shargook once led this troop: now she does chores for
 the warriors, all her teeth pulled out and her ears cut off.  She
 eyes you fearfully and scowls.
 ~
@@ -253,7 +253,7 @@ A
 3 1
 E
 silver circlet~
-This simple band of silver fits elegantly about your brow.  Tiny 
+This simple band of silver fits elegantly about your brow.  Tiny
 runes have been inscribed upon its inner edge; you cannot recognise
 the text.
 ~
@@ -301,7 +301,7 @@ lies piled all about you, and large pools of dirty, stagnant water sit
 at regular intervals along the cobblestones.  Abandoned houses and
 stalls line the eastern edge of the road; some have their doors and
 windows securely boarded up, others have been broken into and ransacked.
-     Everything has been left unattended and allowed to ruin in this 
+     Everything has been left unattended and allowed to ruin in this
 empty neighbourhood, which is now home only to dogs and vermin.  You can
 continue north along the road or return south to the Western Gate.
 ~
@@ -345,13 +345,13 @@ edge.  Directly north stands a large brick building; its windowless
 southern wall joins the western wall and the edge of the northmost
 house to the east, turning the street into a sealed cul-de-sac.  Your
 journey north would normally have ended here, if not for the terrible
-condition of the northern wall: in several places the bricks have 
+condition of the northern wall: in several places the bricks have
 been dislodged and lay fallen to the ground, and quite near to street
 level you notice a hole large enough for you to haul yourself through
 into the building.
-     Hammered further up the northern wall is a faded wooden sign.  
-You can clear away the largest pieces of rubble and worm yourself 
-through the crumbling wall to the north, or head back south to leave 
+     Hammered further up the northern wall is a faded wooden sign.
+You can clear away the largest pieces of rubble and worm yourself
+through the crumbling wall to the north, or head back south to leave
 this despressing, deserted slum.
 ~
 0 0 1
@@ -380,15 +380,15 @@ S
 #104
 The Foundry~
 You stand within a deserted foundry, a massive brick building at least
-twenty feet high.  The walls are full of holes and the wooden roof is 
+twenty feet high.  The walls are full of holes and the wooden roof is
 mostly gone, its brittle tiles littering the ground.  The floor of the
 foundry is dominated by several gigantic iron moulds and pouring
-funnels, once used to create metal beams, pipes and containers, and 
+funnels, once used to create metal beams, pipes and containers, and
 now patched with rust.  Metal rods and grills are stacked haphazardly
 against the walls next to large coils of chain and rope; shorter
-lengths of chain ending in hooks hang from high beams stretching across 
+lengths of chain ending in hooks hang from high beams stretching across
 from wall to wall.  The foundry has long been abandoned by its workers.
-     From here you can head east to the other end of the foundry, or 
+     From here you can head east to the other end of the foundry, or
 exit through the damaged wall to the south.
 ~
 0 4|8 0
@@ -406,14 +406,14 @@ S
 #105
 The Foundry~
 The eastern end of the foundry is just as cluttered with rubbish and
-machinery and the opposite.  A large door in the middle of the eastern 
+machinery and the opposite.  A large door in the middle of the eastern
 wall leads from the building, but immovable metal beams and plates
 stacked against it make access to it impossible.  A large well sits
 in the centre of the floor; pipes of various sizes jut from the walls
 and ground, emptying into it.  Water no longer flows from these pipes,
 and after peering over the edge, you see that the well is filled with
 rubble and trash, but is completely dry.
-     You can head back east to the other end of the foundry, or 
+     You can head back east to the other end of the foundry, or
 investigate the well more closely.
 ~
 0 8 0
@@ -442,10 +442,10 @@ You climb awkwardly through the rubbish piled into the well, slowly
 forcing your way down to the bottom.  It quickly becomes dark, and you
 grope unsteadily in the gloom.  Further downwards, you slip and find
 yourself hanging, clinging desperately to a metal bar, unable to get a
-foothold on anything below.  After trying unsuccesfully to haul 
+foothold on anything below.  After trying unsuccesfully to haul
 yourself back up through the rubble, you make a dangerous decision.
-     You let go of the bar and drop to the bottom of the well!  You 
-brace yourself for a terrible injury, but fall about ten feet before 
+     You let go of the bar and drop to the bottom of the well!  You
+brace yourself for a terrible injury, but fall about ten feet before
 landing painlessly in soft muck...
 ~
 0 8|512|8192 0
@@ -461,7 +461,7 @@ Thick mud covers the floor of the well, metal rods and masonry poking
 through the surface in many places.  A cool breeze blows through here,
 as the walls of the well have been excavated: archways have been more
 or less smashed through the brickwork in every direction.
-     You can head in any direction through the holes in the well; 
+     You can head in any direction through the holes in the well;
 climbing back up the would be impossible.
 ~
 0 1|4 0
@@ -509,7 +509,7 @@ archway~
 S
 #109
 Muddy Tunnel~
-The rough tunnel winds throughout the underground complex, turning 
+The rough tunnel winds throughout the underground complex, turning
 westwards here and also returning south.  A crudely made wooden door
 opens eastwards from here.
 ~
@@ -537,7 +537,7 @@ This roughly circular room is filled with bones, rotting vegetation
 and mounds of fetid muck.  Near the far wall, a shallow pit about
 seven feet in diameter has been carved into the floor: an even fouler
 smell lurks about its edge.
-     You can jump down into the pit, or head out of the western door 
+     You can jump down into the pit, or head out of the western door
 into the tunnel.
 ~
 0 1 0
@@ -602,7 +602,7 @@ unruly goblinkind.  Dirty straw pellets and stinking rags lay strewn
 about the floor, with piles of rotting vegetables and goblin dung
 decorating the corners of rooms.  Bits of metal and rubble scavenged
 from the foundry high above have been hauled here and arranged into
-chaotic heaps.  Rats and small reptiles enjoy the company of the 
+chaotic heaps.  Rats and small reptiles enjoy the company of the
 goblins and their terrible habits.  The air is so stale and wretched
 that you breathe in gasps and begin to reel.
      From here you can head west through an archway into the well, or
@@ -632,7 +632,7 @@ unruly goblinkind.  Dirty straw pellets and stinking rags lay strewn
 about the floor, with piles of rotting vegetables and goblin dung
 decorating the corners of rooms.  Bits of metal and rubble scavenged
 from the foundry high above have been hauled here and arranged into
-chaotic heaps.  Rats and small reptiles enjoy the company of the 
+chaotic heaps.  Rats and small reptiles enjoy the company of the
 goblins and their terrible habits.  The air is so stale and wretched
 that you breathe in gasps and begin to reel.
      The holes continue north and west from here.
@@ -656,7 +656,7 @@ unruly goblinkind.  Dirty straw pellets and stinking rags lay strewn
 about the floor, with piles of rotting vegetables and goblin dung
 decorating the corners of rooms.  Bits of metal and rubble scavenged
 from the foundry high above have been hauled here and arranged into
-chaotic heaps.  Rats and small reptiles enjoy the company of the 
+chaotic heaps.  Rats and small reptiles enjoy the company of the
 goblins and their terrible habits.  The air is so stale and wretched
 that you breathe in gasps and begin to reel.
      An archway to the north takes you to the well, while the network
@@ -681,7 +681,7 @@ unruly goblinkind.  Dirty straw pellets and stinking rags lay strewn
 about the floor, with piles of rotting vegetables and goblin dung
 decorating the corners of rooms.  Bits of metal and rubble scavenged
 from the foundry high above have been hauled here and arranged into
-chaotic heaps.  Rats and small reptiles enjoy the company of the 
+chaotic heaps.  Rats and small reptiles enjoy the company of the
 goblins and their terrible habits.  The air is so stale and wretched
 that you breathe in gasps and begin to reel.
      More holes lay west from here.
@@ -699,7 +699,7 @@ A mud-filled tunnel eats westward into the rock from the bottom of
 the well.  As the narrow, crooked corridor heads west it works
 gently downwards, a healthy trickle of water running along a crude
 gutter against the northern wall.
-     The tunnel continues to the west and opens up into an archway 
+     The tunnel continues to the west and opens up into an archway
 to the east.
 ~
 0 1 0
@@ -739,7 +739,7 @@ Water dribbles down the rocks walls of this large chamber, which serves
 as some sort of storeroom.  Wicker baskets and sodden burlap sacks lay
 tossed against the walls, their spoilt contents crawling with maggots
 or covered in mould.  Bizarrely shaped scraps of metal lay in rusting
-piles, industriously arranged by the goblins.  The air is musty and 
+piles, industriously arranged by the goblins.  The air is musty and
 unpleasant.
      You can head east to the far end of this chamber, or climb back up
 the makeshift ladder to the tunnel above.
@@ -761,7 +761,7 @@ Lower Chamber~
 More rotted filth and worthless hunks of metal have been hoarded at
 this end of the chamber; the smell here is even worse, the floor
 heaped with goblin dung.
-     A curtain covers an archway within the eastern wall, while the 
+     A curtain covers an archway within the eastern wall, while the
 chamber stretches back west.
 ~
 0 1 0
@@ -781,7 +781,7 @@ Slave Pen~
 Mouldy straw and a water trough form the contents of this horrible
 pen that houses the goblin slaves.  Tiny bones and stinking vegetables
 can be picked out among the pellets upon further inspection.
-     The only exit appears to be back out through the curtain to the 
+     The only exit appears to be back out through the curtain to the
 west.
 ~
 0 1 0
@@ -793,7 +793,7 @@ curtain tattered archway arch~
 S
 #122
 The Pit~
-You leap into the pit, which is about six feet deep in the centre.  
+You leap into the pit, which is about six feet deep in the centre.
 The floor is submerged in about a foot of muddy water, full of soggy
 vegetation and more recently dumped leaves scraps of meat.  Small
 bones poke from the mire; animal skulls stare stupidly up at you.

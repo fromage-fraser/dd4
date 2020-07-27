@@ -365,7 +365,7 @@ An axe rests here.~
 0~ 1~ 8~ 13~
 5 0 0
 A
-4 -1 
+4 -1
 A
 18 3
 E
@@ -460,7 +460,7 @@ A
 A
 18 10
 A
-19 6 
+19 6
 A
 24 25
 E
@@ -887,7 +887,7 @@ ymplore me to ynduct you into my ranks. Those who fayl or those succeed but
 show ynsolence, shall only find death as I feed your soul to my mynyons. I
 awayt your arryval yn the crypts yf you have the courage to face me.
 
-Kharneth Dhar, Wytch-King 
+Kharneth Dhar, Wytch-King
 ~
 S
 #13017
@@ -2120,7 +2120,7 @@ E 1 13034 100 11
 D 1 13065 0 2                    ; The Idol Lock North
 D 1 13011 3 2                    ; A huge and magnificent ante-chamber Lock West
 D 1 13016 0 1                      ; A room Close North
-D 1 13015 2 1			 ; Outside shop close south 
+D 1 13015 2 1			 ; Outside shop close south
 D 1 13019 3 1                    ; A passageway Close West
 D 1 13043 2 1
 D 1 13042 0 1                    ; A wide passageway Close North

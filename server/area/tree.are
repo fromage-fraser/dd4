@@ -82,7 +82,7 @@ yagnodemon demon~
 a yagnodemon~
 A yagnodemon is here flexing his giant-sized arm.
 ~
-The yagnodemon has one man-sized and one giant-sized arm. 
+The yagnodemon has one man-sized and one giant-sized arm.
 With the giant-sized arm it can wield huge weapons.  He is
 not in a good mood right now.
 ~
@@ -598,7 +598,7 @@ S
 #9918
 The Upper Trunk of Yggrasil~
 You are in the topmost section of Yggdrasil.  The tree top
-is just above you.  Great power can be sensed in this area. 
+is just above you.  Great power can be sensed in this area.
 There is also goodness here.
 ~
 99 0 3
@@ -726,7 +726,7 @@ M 0 9908 8 9911
 *
 M 0 9909 1 9915
 *
-M 0 9910 1 9921 
+M 0 9910 1 9921
 G 1 9905 80
 *
 M 0 9911 10 9901

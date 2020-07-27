@@ -29,7 +29,7 @@ A kindly traveler asks you how your journey is going.
 ~
 You strike up a conversation with the traveler. He tells you
 he just came from town down the western path, and the road
-is clear and easy to travel. He asks you about the path you 
+is clear and easy to travel. He asks you about the path you
 have taken, and then bids you farewell.
 ~
 2 0 400 S
@@ -193,7 +193,7 @@ bardoosh goblin~
 Bardoosh~
 A goblin is here sleeping.
 ~
-The goblin has blood stains on his gear, and 
+The goblin has blood stains on his gear, and
 a tough weathered exterior. He smells of liquor.
 ~
 2 131072 -700 S
@@ -392,12 +392,12 @@ a road sign~
 A road sign marked "To Town" points south.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1000 0 0
 E
 sign road~
 You examine the road sign. It has been sunken into the
-earth to a good depth, and fairly recently at that. The 
+earth to a good depth, and fairly recently at that. The
 lettering is in common tongue, and done in whitewash.
 ~
 #4502
@@ -406,7 +406,7 @@ the waystation~
 There is a waystation here.~
 ~
 15 0 1
-200~ 0~ 0~ 0~ 
+200~ 0~ 0~ 0~
 15000 0 0
 E
 station way waystation~
@@ -420,7 +420,7 @@ the bubbling spring~
 There is a bubbling spring here.~
 ~
 25 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1530 0 0
 E
 spring bubbling~
@@ -434,7 +434,7 @@ a loaf of bread~
 A loaf of bread is here.~
 ~
 19 0 1
-30~ 0~ 0~ 0~ 
+30~ 0~ 0~ 0~
 20 0 0
 E
 bread loaf~
@@ -447,11 +447,11 @@ a jar of nuts~
 A jar of nuts is here.~
 ~
 19 0 1
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 13 0 0
 E
 nuts jar~
-The nuts are mainly walnuts. They are still in their 
+The nuts are mainly walnuts. They are still in their
 shells.
 ~
 #4506
@@ -460,7 +460,7 @@ a table~
 A small table is here.~
 ~
 15 0 1
-200~ 0~ 0~ 0~ 
+200~ 0~ 0~ 0~
 500 0 0
 E
 table~
@@ -473,7 +473,7 @@ a stool~
 A stool is here, next to the table.~
 ~
 12 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 125 0 0
 E
 stool~
@@ -486,7 +486,7 @@ a quill pen~
 A quill pen is here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 pen quill~
@@ -498,7 +498,7 @@ an ink well~
 An ink well is here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 7 0 0
 E
 well ink~
@@ -510,7 +510,7 @@ a half eaten piece of meat~
 A half eaten piece of meat is here.~
 ~
 19 0 1
-10~ 0~ 0~ 1~ 
+10~ 0~ 0~ 1~
 15 0 0
 E
 meat half eaten piece~
@@ -522,7 +522,7 @@ a piece of parchment~
 A piece of parchment is here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 E
 parchment piece~
@@ -543,7 +543,7 @@ a corpse~
 A corpse with arrows in it is here.~
 ~
 15 0 1
-30~ 0~ 0~ 0~ 
+30~ 0~ 0~ 0~
 2000 0 0
 E
 corpse~
@@ -556,7 +556,7 @@ a broken arrow~
 A broken arrow is here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 arrow broken~
@@ -569,7 +569,7 @@ a huge log~
 A huge log is lying on the ground.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8000 0 0
 E
 log huge~
@@ -582,7 +582,7 @@ a large root~
 A large root emerges from the ground here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1500 0 0
 #4516
 crack~
@@ -590,7 +590,7 @@ a crack in the tree~
 ~
 ~
 15 0 0
-1000~ 0~ 0~ 0~ 
+1000~ 0~ 0~ 0~
 0 0 0
 E
 crack~
@@ -604,7 +604,7 @@ a corpse~
 A bloody hacked up corpse is here.~
 ~
 15 0 1
-30~ 0~ 0~ 0~ 
+30~ 0~ 0~ 0~
 2000 0 0
 E
 corpse~
@@ -616,7 +616,7 @@ a corpse~
 A naked female corpse is here, speared into the ground.~
 ~
 15 0 1
-30~ 0~ 0~ 0~ 
+30~ 0~ 0~ 0~
 2000 0 0
 E
 corpse~
@@ -629,7 +629,7 @@ a corpse~
 A badly burnt corpse is here.~
 ~
 15 0 1
-30~ 0~ 0~ 0~ 
+30~ 0~ 0~ 0~
 2000 0 0
 E
 corpse burnt~
@@ -642,7 +642,7 @@ a bloody spear~
 A spear with blood stains on it is here.~
 ~
 5 134217728 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 12 0 0
 E
 blood spear~
@@ -656,7 +656,7 @@ a wooden spear~
 A wooden spear is here.~
 ~
 5 134217728 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 12 0 0
 E
 spear~
@@ -669,7 +669,7 @@ a poorly made arrow~
 A poorly made arrow is here~
 ~
 5 0 1|16384
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 3 0 0
 A
 18 -1
@@ -687,7 +687,7 @@ the grasp of the dead man~
 ~
 ~
 15 0 0
-15~ 5~ 0~ 0~ 
+15~ 5~ 0~ 0~
 0 0 0
 #4524
 key iron~
@@ -695,7 +695,7 @@ an iron key~
 An iron key is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 7 0 0
 #4525
 pool blood~
@@ -703,7 +703,7 @@ a pool of blood~
 A pool of blood is here.~
 ~
 17 0 0
-150~ 150~ 13~ 1~ 
+150~ 150~ 13~ 1~
 0 0 0
 #4526
 pool water~
@@ -711,7 +711,7 @@ a pool of water~
 A pool of water is here.~
 ~
 25 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 0 0 0
 E
 pool~
@@ -723,7 +723,7 @@ the ground~
 ~
 ~
 15 0 0
-150~ 0~ 0~ 0~ 
+150~ 0~ 0~ 0~
 0 0 0
 E
 ground~
@@ -736,7 +736,7 @@ some gold coins~
 Some gold coins are here.~
 ~
 20 0 1
-0~ 0~ 7~ 0~ 
+0~ 0~ 7~ 0~
 0 0 0
 #4529
 sack large~
@@ -744,7 +744,7 @@ a large sack~
 A large sack is here.~
 ~
 15 0 1
-400~ 0~ 0~ 0~ 
+400~ 0~ 0~ 0~
 50 0 0
 E
 sack~
@@ -757,7 +757,7 @@ A piece of leather armor is here.
 ~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 150 0 0
 #4531
 helmet hard leather~
@@ -766,7 +766,7 @@ A hard leather helmet is here.
 ~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 30 0 0
 #4532
 leggings hard leather~
@@ -775,7 +775,7 @@ A pair of hard leather leggings is here.
 ~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 45 0 0
 #4533
 boots hard leather~
@@ -784,7 +784,7 @@ A pair of hard leather boots is here.
 ~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 30 0 0
 #4534
 gauntlets hard leather~
@@ -793,7 +793,7 @@ A pair of hard leather gauntlets is here.
 ~
 ~
 9 0 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 #4535
 sleeves hard leather~
@@ -802,7 +802,7 @@ A pair of hard leather sleeves is here.
 ~
 ~
 9 0 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 55 0 0
 #4536
 shield hard leather~
@@ -811,7 +811,7 @@ A hard leather shield is here.
 ~
 ~
 9 0 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 35 0 0
 #4537
 girdle hard leather~
@@ -820,7 +820,7 @@ A hard leather girdle is here.
 ~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 #4538
 collar war dog~
@@ -829,7 +829,7 @@ A war dog collar is here.
 ~
 ~
 9 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 19 1
@@ -840,7 +840,7 @@ A goblin corpse is here.
 ~
 ~
 15 0 1
-100~ 0~ 0~ 0~ 
+100~ 0~ 0~ 0~
 750 0 0
 E
 corpse~
@@ -852,7 +852,7 @@ a short bow~
 A short bow is here.~
 ~
 5 1073741824 1|8192
-0~ 0~ 0~ 4~ 
+0~ 0~ 0~ 4~
 13 0 0
 E
 bow~
@@ -865,7 +865,7 @@ a quiver~
 A quiver is here.~
 ~
 15 0 1|1024
-50~ 0~ 0~ 0~ 
+50~ 0~ 0~ 0~
 50 0 0
 E
 quiver~
@@ -878,7 +878,7 @@ a skin of liquor~
 A skin of liquor is here.~
 ~
 17 0 1|16384
-30~ 15~ 8~ 0~ 
+30~ 15~ 8~ 0~
 15 0 0
 E
 skin liquor~
@@ -891,7 +891,7 @@ a ring of protection~
 A beautiful gold ring is here.~
 ~
 9 64 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 17 -3
@@ -910,7 +910,7 @@ a shiny brass button~
 A shiny brass button is here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 E
 button brass shiny~
@@ -924,7 +924,7 @@ the alcove~
 ~
 ~
 15 0 0
-100~ 0~ 0~ 0~ 
+100~ 0~ 0~ 0~
 0 0 0
 #4546
 torch oil soaked~
@@ -932,7 +932,7 @@ an oil soaked torch~
 An oil soaked torch is here.~
 ~
 1 0 1|16384
-0~ 0~ 4~ 0~ 
+0~ 0~ 4~ 0~
 30 0 0
 E
 torch oil soaked~
@@ -945,7 +945,7 @@ a pair of shackles~
 A pair of shackles is here.~
 ~
 13 4096 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 A
 2 -3
@@ -961,7 +961,7 @@ a pair of leg irons~
 A pair of leg irons is here.~
 ~
 13 4096 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 200 0 0
 A
 2 -3
@@ -977,7 +977,7 @@ the trunks~
 There is a trunk here.~
 ~
 15 0 0
-2000~ 5~ 0~ 0~ 
+2000~ 5~ 0~ 0~
 100 0 0
 E
 trunks~
@@ -989,7 +989,7 @@ some bad smelling clothes~
 Some bad smelling clothes are here.~
 ~
 13 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 50 0 0
 A
 5 -1
@@ -1003,7 +1003,7 @@ a lot of copper pieces~
 A lot of copper pieces are here.~
 ~
 20 0 1
-1~ 0~ 0~ 0~ 
+1~ 0~ 0~ 0~
 1000 0 0
 #4552
 rack racks weapon~
@@ -1011,7 +1011,7 @@ weapon racks~
 A number of weapon racks hang on the walls.~
 ~
 15 0 1
-500~ 0~ 0~ 0~ 
+500~ 0~ 0~ 0~
 2000 0 0
 #4553
 post posts armor~
@@ -1019,7 +1019,7 @@ armor posts~
 A number of armor posts are against the walls.~
 ~
 15 0 1
-400~ 0~ 0~ 0~ 
+400~ 0~ 0~ 0~
 2000 0 0
 #4554
 sconce~
@@ -1027,7 +1027,7 @@ a sconce~
 A gutting torch in a sconce is attached to the wall.~
 ~
 15 0 0
-50~ 0~ 0~ 0~ 
+50~ 0~ 0~ 0~
 16 0 0
 #4555
 pit fire~
@@ -1035,7 +1035,7 @@ a fire pit~
 A fire pit is here, smoldering.~
 ~
 1 0 0
-0~ 0~ 8~ 0~ 
+0~ 0~ 8~ 0~
 350 0 0
 E
 pit fire~
@@ -1047,7 +1047,7 @@ a barrel of water~
 A barrel of water is here.~
 ~
 17 0 0
-100~ 88~ 0~ 0~ 
+100~ 88~ 0~ 0~
 8000 0 0
 E
 barrel~
@@ -1060,11 +1060,11 @@ a bullwhip~
 A bullwhip is coiled on the ground.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 4~ 
+0~ 0~ 0~ 4~
 6 0 0
 E
 whip bullwhip~
-The bullwhip is made of animal hide, and has been 
+The bullwhip is made of animal hide, and has been
 oiled to a black sheen.
 ~
 #4558
@@ -1073,7 +1073,7 @@ an inky black potion.~
 An inky black potion is here.~
 ~
 10 64 1
-13~ detect hidden~ infravision~ ~ 
+13~ detect hidden~ infravision~ ~
 10 0 0
 E
 inky black potion~
@@ -1086,7 +1086,7 @@ a wavy bladed dagger~
 A wavy bladed dagger is here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 3 0 0
 A
 19 1
@@ -1101,7 +1101,7 @@ a brass key~
 A brass key is here.~
 ~
 18 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 brass key~
@@ -1113,7 +1113,7 @@ a chewed root~
 A chewed root is here.~
 ~
 26 0 1
-10~ sleep~ cure light~ ~ 
+10~ sleep~ cure light~ ~
 4 0 0
 #4562
 hammer smith's~
@@ -1121,7 +1121,7 @@ a smith's hammer~
 A smith's hammer is here.~
 ~
 37 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 18 0 0
 E
 hammer~
@@ -1134,7 +1134,7 @@ drow chain mail~
 A suit of drow chain mail is here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 17 -5
@@ -1149,7 +1149,7 @@ a spider amulet~
 An spider amulet made of dark metal is here.~
 ~
 9 512 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 12 10
@@ -1164,7 +1164,7 @@ a bladed flail~
 A bladed flail is here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 14 0 0
 A
 18 1
@@ -1180,7 +1180,7 @@ the throne~
 ~
 ~
 15 0 0
-100~ 0~ 0~ 0~ 
+100~ 0~ 0~ 0~
 12000 0 0
 #4567
 gems~
@@ -1188,7 +1188,7 @@ gems~
 A lot of gems~
 ~
 20 0 1
-0~ 55~ 3~ 0~ 
+0~ 55~ 3~ 0~
 250 0 0
 E
 gems~
@@ -1200,13 +1200,13 @@ a rolled piece of parchment~
 A rolled piece of parchment is here.~
 ~
 13 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 parchment rolled~
 The parchment reads:
 Merchant caravan, heavily guarded, heading to ambush
-site. Count 6 guards, one captain, 3 women and a child. 
+site. Count 6 guards, one captain, 3 women and a child.
 
 NICE JOB ON THE AMBUSH- GRULUK
 ~
@@ -1216,7 +1216,7 @@ a large iron box~
 A large iron box is here.~
 ~
 15 0|2097152 1|2|4|512 6 50 1
-2000~ 15~ 4524~ 0~ 
+2000~ 15~ 4524~ 0~
 20000 0 0
 E
 box~
@@ -1228,7 +1228,7 @@ a vast pile of coins~
 A vast pile of coins is here.~
 ~
 20 0 1
-0~ 120~ 50~ 6~ 
+0~ 120~ 50~ 6~
 1500 0 0
 #4571
 wand opal~
@@ -1236,7 +1236,7 @@ an opal wand~
 An opal wand is here.~
 ~
 3 64 1|16384
-15~ 10~ 3~ cure poison~ 
+15~ 10~ 3~ cure poison~
 15 0 0
 E
 wand~
@@ -1249,7 +1249,7 @@ a girdle of ogre power~
 A strange girdle is here.~
 ~
 9 64 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8 0 0
 A
 1 1
@@ -1265,7 +1265,7 @@ a broad sword called "Wyvernclaw"~
 A runed broad sword lies here.~
 ~
 5 64|4096 1|8192
-0~ 0~ 0~ 5~ 
+0~ 0~ 0~ 5~
 16 0 0
 A
 18 1
@@ -1283,7 +1283,7 @@ a corpse~
 A corpse with arrows in it is here.~
 ~
 15 0 1
-30~ 0~ 0~ 0~ 
+30~ 0~ 0~ 0~
 2000 0 0
 E
 corpse~
@@ -1296,7 +1296,7 @@ the ground~
 ~
 ~
 15 0 0
-150~ 0~ 0~ 0~ 
+150~ 0~ 0~ 0~
 0 0 0
 E
 ground~
@@ -1373,7 +1373,7 @@ going south into town.
 S
 #4503
 On the highway to town~
-You stand in a region of heavy forest. About you are signs of the 
+You stand in a region of heavy forest. About you are signs of the
 road crews efforts to clear the road. Trees are chopped back from
 the road, and a large brush pile lies next to the road. The road seems
 to be in better repair here.
@@ -1432,7 +1432,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1475,7 +1475,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1518,7 +1518,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1570,7 +1570,7 @@ you could press your way through the trees to the west.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1629,7 +1629,7 @@ the wagon there is no fire.
 ~
 E
 fallen mercenaries~
-You examine the dead. They seem to have fallen defending the 
+You examine the dead. They seem to have fallen defending the
 wagon. They wear riding boots, but there is no sign of horses.
 ~
 S
@@ -1660,7 +1660,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1707,7 +1707,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1754,7 +1754,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -1805,7 +1805,7 @@ cut down with axes. They seem to form a pattern.
 ~
 E
 pattern~
-The pattern of the trees is such that they direct people to the 
+The pattern of the trees is such that they direct people to the
 center of the clearing, and make travel to the edges of the
 clearing difficult.
 ~
@@ -2015,7 +2015,7 @@ E
 trail~
 You stoop down and examine the trail. The ground is loose here, as if it were
 recently dug in. In the loose earth you see tracks leading to the south. You listen
-and hear some whimpering and grunting coming from that direction. 
+and hear some whimpering and grunting coming from that direction.
 ~
 E
 canopy~
@@ -2072,8 +2072,8 @@ On a small trail~
 0 -1 4521
 E
 brush~
-The brush is very heavy and thick, preventing movement except in the southerly 
-direction. To the east it thins, and you can make out a small clearing. You could 
+The brush is very heavy and thick, preventing movement except in the southerly
+direction. To the east it thins, and you can make out a small clearing. You could
 get a good arrow shot at the clearing from here.
 ~
 E
@@ -2110,8 +2110,8 @@ The brush is very heavy and thick, preventing movement except along the path.
 ~
 E
 trail~
-The trail is muddy and bears the tracks of small humanoids and large humans. 
-There are signs of dragging leading off west. 
+The trail is muddy and bears the tracks of small humanoids and large humans.
+There are signs of dragging leading off west.
 ~
 E
 tunnel~
@@ -2150,7 +2150,7 @@ with smoke coming from them.
 ~
 E
 sticks pile~
-The pile of sticks upon examination is bound together with hemp. You 
+The pile of sticks upon examination is bound together with hemp. You
 lift the hemp and see a trapdoor leading downwards. You can make out
 rungs leading down a shaft.
 ~
@@ -2342,7 +2342,7 @@ S
 A shadowy tunnel~
 You are in a shadowy tunnel of about 5' height. The tunnel is lighted
 by a guttering torch in a sconce. The walls and floor are irregular, as
-is the ceiling. There is a door to the north. The tunnel twists and turns, 
+is the ceiling. There is a door to the north. The tunnel twists and turns,
 ascends and descends.
 ~
 0 8 4
@@ -2367,7 +2367,7 @@ S
 A shadowy tunnel~
 You are in a shadowy tunnel of about 5' height. The tunnel is lighted
 by a guttering torch in a sconce. The walls and floor are irregular, as
-is the ceiling. There is a door to the south. The tunnel twists and turns, 
+is the ceiling. There is a door to the south. The tunnel twists and turns,
 ascends and descends.
 ~
 0 8 4
@@ -2390,9 +2390,9 @@ The walls are of solid granite, with no veins of ore.
 S
 #4531
 In the great cavern of the goblins~
-You stand in the great vaulted cavern of the goblins. 
+You stand in the great vaulted cavern of the goblins.
 Firepits illuminate the walls in a shadowy flickering
-dance. There are many small alcoves dug into the 
+dance. There are many small alcoves dug into the
 walls to form the individual caves of the goblins. There
 is a door to the north.
 ~
@@ -2417,7 +2417,7 @@ hide blankets to serve as doors.
 S
 #4532
 In the great cavern of the goblins~
-You stand in the great vaulted cavern of the goblins. 
+You stand in the great vaulted cavern of the goblins.
 Firepits illuminate the walls in a shadowy flickering
 dance. Here goblin children play within the view of
 the women, who are busily roasting some kind of meat
@@ -2439,7 +2439,7 @@ The meat on second glance, is human flesh.
 S
 #4533
 In the great cavern of the goblins~
-You stand in the great vaulted cavern of the goblins. 
+You stand in the great vaulted cavern of the goblins.
 Firepits illuminate the walls in a shadowy flickering
 dance. A primitive forge and smithy is here.
 ~
@@ -2460,7 +2460,7 @@ to place the work.
 S
 #4534
 In the great cavern of the goblins~
-You stand in the great vaulted cavern of the goblins. 
+You stand in the great vaulted cavern of the goblins.
 Firepits illuminate the walls in a shadowy flickering
 dance. At the south wall of the cavern is a throne. On
 the east wall is a cage.
@@ -2505,7 +2505,7 @@ up through the brush and you can see the road fine.
 ~
 E
 cage empty~
-The cage is made of wood, and has a wooden perch in it. It is about 
+The cage is made of wood, and has a wooden perch in it. It is about
 1' square, and there are white feathers in it.
 ~
 S
@@ -2577,7 +2577,7 @@ P 1 4508 0 4506 pen on table
 P 1 4509 0 4506 ink well on table
 P 1 4510 0 4506 meat on table
 P 1 4511 0 4506 parchment on table
-O 1 4507 0 4535			stool at table 
+O 1 4507 0 4535			stool at table
 O 1 4512 0 4512			merc corpse, arrowed
 P 1 4513 0 4512 broken arrow in corpse
 O 1 4574 0 4507			merc corpse, arrowed
@@ -2667,7 +2667,7 @@ E 1 4535 0 10   sleeves on arms
 E 1 4537 0 13  girdle on waist
 E 1 4543 0 2   ring on finger
 O 1 4542 0 4514			skin next to Bard
-O 1 4575 0 4520			ground loads 
+O 1 4575 0 4520			ground loads
 P 1 4544 0 4575			button in ground
 O 1 4545 0 4523			alcove at entrance
 P 1 4546 0 4545			puts torch in alcove
@@ -2757,7 +2757,7 @@ E 1 4533 0 8     boots
 E 1 4536 0 11   shield
 E 1 4521 0 16   spear
 M 1 4529 1 4534			pigeon
-E 1 4568 0 7       parchment 
+E 1 4568 0 7       parchment
 M 1 4530 1 4534			leader
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet

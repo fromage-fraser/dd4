@@ -18,10 +18,10 @@ $
                                            |   Warden's
                                            |       Home-----Watch Tower
                                            |            |
-                                           |    Jasmir's| 
+                                           |    Jasmir's|
                                            |    Armory -|  Store of Wonders
                                            |            |    |
-                                           -----The Crossing---The Magus Tower 
+                                           -----The Crossing---The Magus Tower
                                            |  City Park | The Millionaires Club
                                      _North Cross_     \|-|
                    West Gate         |   Palace   |     |    East Gate
@@ -40,9 +40,9 @@ $
                                                    |
                                             Southern Docks
                                      Exxd's Office |
-                                Western Docks - |  |                                           
-                                       |        - - 
-                                     Rusty 
+                                Western Docks - |  |
+                                       |        - -
+                                     Rusty
                                   Anchor Taven
 
 ~
@@ -95,32 +95,32 @@ if carrying($n) == 28087
 mpecho {YSuddenly you are engulfed in a brilliant light!
 mptransfer $n 28193
 mpat 28193 mpforce $n look
-mpat 28193 mpforce Thasei say {CSilly mortals. You're fun to play with, but 
+mpat 28193 mpforce Thasei say {CSilly mortals. You're fun to play with, but
 mpat 28193 mpforce Thasei say {Creally.{x
 mpat 28193 mpforce Thasei sigh
-mpat 28193 mpforce Thasei say {CSince Samxin is...otherwise occupied...It's up 
-mpat 28193 mpforce Thasei say {Cto me to deliver the little warning. Oh 
+mpat 28193 mpforce Thasei say {CSince Samxin is...otherwise occupied...It's up
+mpat 28193 mpforce Thasei say {Cto me to deliver the little warning. Oh
 mpat 28193 mpforce Thasei say {Cbother.{x
 mpat 28193 mpforce Thasei pout
-mpat 28193 mpforce Thasei say {CAnd I was just fashioning the sexiest little 
+mpat 28193 mpforce Thasei say {CAnd I was just fashioning the sexiest little
 mpat 28193 mpforce Thasei say {Coutfit from stars, too.{x
 mpat 28193 mpecho Thasei glances down at her nude form.
 mpat 28193 mpecho Thasei strikes a little pose.
 mpat 28193 mpforce Thasei say {COh well, duty calls. So, this sword you have?
-mpat 28193 mpforce Thasei say {CThere's a little...snag with it. Outside of 
-mpat 28193 mpforce Thasei say {Cthe places where we Gods enforce safety and 
-mpat 28193 mpforce Thasei say {Charmony it's going to mess with your mind. 
-mpat 28193 mpforce Thasei say {CMake you really jumpy. Aggressive. Generally 
-mpat 28193 mpforce Thasei say {Cnot much fun. So, use at your own peril and 
+mpat 28193 mpforce Thasei say {CThere's a little...snag with it. Outside of
+mpat 28193 mpforce Thasei say {Cthe places where we Gods enforce safety and
+mpat 28193 mpforce Thasei say {Charmony it's going to mess with your mind.
+mpat 28193 mpforce Thasei say {CMake you really jumpy. Aggressive. Generally
+mpat 28193 mpforce Thasei say {Cnot much fun. So, use at your own peril and
 mpat 28193 mpforce Thasei say {Call that.Don't say we didn't warn you.
 mpat 28193 mpecho Thasei pauses for a moment.
-mpat 28193 mpforce Thasei say {CSpeaking of 'we' and 'aggressive' I'm going to 
+mpat 28193 mpforce Thasei say {CSpeaking of 'we' and 'aggressive' I'm going to
 mpat 28193 mpforce Thasei say {Chave to have a little talk with Samxin...{x
 mpat 28193 mpecho Thasei gets a wicked little gleam in her eyes for a moment.
-mpat 28193 mpforce Thasei say {COh, you may go now...though, you ARE kinda 
+mpat 28193 mpforce Thasei say {COh, you may go now...though, you ARE kinda
 mpat 28193 mpforce Thasei say {Ccute.{x
 mpat 28193 mpecho Thasei glances you up and down.
-mpat 28193 mpforce Thasei wink $n 
+mpat 28193 mpforce Thasei wink $n
 else
 break
 endif
@@ -132,7 +132,7 @@ Thasei goddess~
 Thasei~
 The goddess Thasei flares with an unearthly beauty.
 ~
-Your heart beats faster and your blood burns at the sight of her. 
+Your heart beats faster and your blood burns at the sight of her.
 She's the most alluring being you've ever even imagined. Your soul
 yearns to be touched by her, to be embraced, to be consumed.
 ~
@@ -142,7 +142,7 @@ yearns to be touched by her, to be embraced, to be consumed.
 0 0 2
 >fight_prog 100~
 chat {CYou DARE assault my flawlessness $n!?{Y
-mpgoto 28198 
+mpgoto 28198
 mppurge
 mpmload 28058
 mpgoto 28196
@@ -165,7 +165,7 @@ cast 'complete heal'
 Thasei~
 The goddess Thasei flares with an unearthly beauty.
 ~
-Your heart beats faster and your blood burns at the sight of her. 
+Your heart beats faster and your blood burns at the sight of her.
 She's the most alluring being you've ever even imagined. Your soul
 yearns to be touched by her, to be embraced, to be consumed.
 ~
@@ -234,8 +234,8 @@ The King looks back at you... in a benevolent kind of way.
 0 0 1
 >give_prog imperial favor document~
 if number($o) == 28092
-say I can't refuse the bearer of a imperial favor. Very well, I shall 
-say issue orders to the Templar Warden to release the Magus tower key 
+say I can't refuse the bearer of a imperial favor. Very well, I shall
+say issue orders to the Templar Warden to release the Magus tower key
 say to your keeping. Do with it what you will.
 mpoload 28093 1
 give order $n
@@ -279,7 +279,7 @@ templar warden~
 the Warden Templar~
 The Templar Warden of this Quarter proudly surveys his domain.
 ~
-The Templar Warden looks down his nose at you and demands to know what you 
+The Templar Warden looks down his nose at you and demands to know what you
 want from him.
 ~
 2|64|128 8|32|128 1000 S
@@ -289,7 +289,7 @@ want from him.
 >give_prog orders document~
 if number($o) == 28093
 mpecho The Warden quickly reads the orders.
-say I've been ordered to hand over the Magus Tower key. To you. 
+say I've been ordered to hand over the Magus Tower key. To you.
 say I suppose you knew that, though.
 mpecho The Warden Templar grunts.
 say Here you go.
@@ -413,13 +413,13 @@ This old looking human hides well the fact that he is a powerful sorcerer.
 0 0 1
 >give_prog letter wizard~
 if number($o) == 28095
-say Blayde sent you, did she? Well, here's what I want - the Flames of 
-say Wisdom. As you may or may not know the King has it under Royal Lock 
-say in the Magus Tower. He wont listen to any pleas to release it. So, 
-say we need an Imperial Favor. The King grants these rarely, they give 
-say the bearer any one thing they wish. The only man that I know of 
-say that has one is Captain Exxd. Take this letter to him with my 
-say plea and do say whatever it takes to get the Favor, and then bring 
+say Blayde sent you, did she? Well, here's what I want - the Flames of
+say Wisdom. As you may or may not know the King has it under Royal Lock
+say in the Magus Tower. He wont listen to any pleas to release it. So,
+say we need an Imperial Favor. The King grants these rarely, they give
+say the bearer any one thing they wish. The only man that I know of
+say that has one is Captain Exxd. Take this letter to him with my
+say plea and do say whatever it takes to get the Favor, and then bring
 say me the Flames. Then the block of platinum is yours.
 mpoload 28096 1
 give captain $n
@@ -937,19 +937,19 @@ endif
 ~
 >speech_prog Yes Yeah~
 say Good. I need a weapon. A Platine axe, to be exact. Only
-say problem is that it requires a large amount of pure 
-say platinum and that's not easy to find. The Wizard in the 
-say shop of Wonders has some, but won't sell me the damn thing. 
-say He wants some magic thing the King has locked up. So, I'll 
+say problem is that it requires a large amount of pure
+say platinum and that's not easy to find. The Wizard in the
+say shop of Wonders has some, but won't sell me the damn thing.
+say He wants some magic thing the King has locked up. So, I'll
 say give you this letter to give to the Wizard and you get what
-say he wants so I get it. Only I can't take the block itself, the 
-say King's Tax on it will bankrupt me. Luckily, weapons aren't 
-say taxed.  So take the block of platinum to Jasmir when you have 
-say it and have him craft the axe for me. say What do you get out 
-say of it?  My great grandfather's sword. He never actually used it 
-say as far as I can tell, it's never been out of the box that I've 
+say he wants so I get it. Only I can't take the block itself, the
+say King's Tax on it will bankrupt me. Luckily, weapons aren't
+say taxed.  So take the block of platinum to Jasmir when you have
+say it and have him craft the axe for me. say What do you get out
+say of it?  My great grandfather's sword. He never actually used it
+say as far as I can tell, it's never been out of the box that I've
 say seen.  But he always swore it was magic. I looked at it last
-say night and I don't know if it's magic or not, but it's a fine 
+say night and I don't know if it's magic or not, but it's a fine
 say weapon.  Sound good? A magic sword for an axe.
 mpoload 28095 1
 give letter $n
@@ -1023,14 +1023,14 @@ say Goddess, I call your divine fury down upon my enemies!
 mpecho {RAlvyn is surrounded by a {Ccyan{R glow.{x
 cast disintegrate $n
 ~
-| 
+|
 
 #28036
 guardian sentinel~
 The Guardian~
 The Guardian stands here shining.
 ~
-The guardian has silvery skin and looks like he's quite capable of tearing you 
+The guardian has silvery skin and looks like he's quite capable of tearing you
 limb from limb.
 ~
 2|32|64 8|32|32768 0 S
@@ -1141,8 +1141,8 @@ Captain Exxd~
 Captain Exxd~
 Captain Exxd has a thoughtful look on his face.
 ~
-He looks fit and has weathered many storms. A scar runs across the back of his 
-right hand, but it doesn't seem to interfere with normal operating procedure. 
+He looks fit and has weathered many storms. A scar runs across the back of his
+right hand, but it doesn't seem to interfere with normal operating procedure.
 ~
 2|64|8388608 8|32 1000 S
 100 0 0 0d0+0 0d0+0
@@ -1151,12 +1151,12 @@ right hand, but it doesn't seem to interfere with normal operating procedure.
 >give_prog letter captain exxd~
 if number($o) == 28096
 say So, you want my Imperial Favor. Fine. All you need to
-say do is kill Charybdis, the thing that almost destroyed 
-say my ship, Windthief. I saw it take a piece of the ship, 
-say it must keep trophies. I trapped it in the Lake in the 
-say City Park, the Lake is under lock and key. Give this to 
-say the guard and he'll unlock the fence for you. 
-say Bring me proof of Charybdis's death and I'll hand over my 
+say do is kill Charybdis, the thing that almost destroyed
+say my ship, Windthief. I saw it take a piece of the ship,
+say it must keep trophies. I trapped it in the Lake in the
+say City Park, the Lake is under lock and key. Give this to
+say the guard and he'll unlock the fence for you.
+say Bring me proof of Charybdis's death and I'll hand over my
 say imperial favor.
 mpoload 28097 1
 give key $n
@@ -1168,8 +1168,8 @@ endif
 ~
 >give_prog piece mast windthief~
 if number($o) == 28090
-say So, it's dead. I earned my imperial favor by saving the 
-say Windthief when it attacked, did you know that? Only 
+say So, it's dead. I earned my imperial favor by saving the
+say Windthief when it attacked, did you know that? Only
 say fitting the one who slew the beast ends up with it. Here.
 mpoload 28092 1
 give favor $n
@@ -1186,7 +1186,7 @@ Lake Gate Guard~
 A lake Gate Guard~
 A lake Gate Guard keeps people out of the lake.
 ~
-The gate is apparently meant to keep something in and it appears to do such a 
+The gate is apparently meant to keep something in and it appears to do such a
 good job these guards don't even need weapons.
 ~
 2|64|8388608 8|32 0 S
@@ -1254,7 +1254,7 @@ Rak'bensol'lafar Platinum Dragon~
 Rak'ben~
 Rak'ben the platinum dragon shifts his huge body slightly as you enter.
 ~
-Rak'bensol'lafar (the platinum dragon's full name) is, of course, platinum 
+Rak'bensol'lafar (the platinum dragon's full name) is, of course, platinum
 colored. As do all dragons, he looks rather intimidating. He seems to be
 holding a platinum coin on the tip of one of his massive claws.
 ~
@@ -1268,7 +1268,7 @@ mpecho The dragon rumbles (apparently a chuckle) at its own joke.
 ~
 >fight_prog 100~
 shout YOU DARE ASSAIL ME?! FLEE, FOOL!
-mpforce $n flee  
+mpforce $n flee
 cast 'complete heal'
 ~
 |
@@ -1278,9 +1278,9 @@ Xedd's Vorc~
 Xedd's Vorc~
 A vorc watches over Xedd's things while he's away.
 ~
-It's pinkish colored (at the moment) and a little E.T.-like in body, with 
-little pointy floppy ears. It's currently in its Cute Form. Its fighting 
-form is much uglier, and it uses it to kill things, so you don't really want 
+It's pinkish colored (at the moment) and a little E.T.-like in body, with
+little pointy floppy ears. It's currently in its Cute Form. Its fighting
+form is much uglier, and it uses it to kill things, so you don't really want
 to see it.
 ~
 2|64|32768|8388608|16777216 8|32 1000 S
@@ -2330,7 +2330,7 @@ A royal document granting the bearer an imperial favor is here.~
 1 0 0
 E
 imperial favor document~
-It's a document with the royal seal on it that declared the holder the 
+It's a document with the royal seal on it that declared the holder the
 privilege of being granted one Imperial Favor for services the Crown.
 ~
 
@@ -2608,7 +2608,7 @@ S
 The drawbridge~
 The drawbridge seems to be here more for effect than as a hindrance
 to an attacking force.  The sides of the drawbridge are draped with
-ivy and the water flowing beneath is crystal clear.  The bed of the 
+ivy and the water flowing beneath is crystal clear.  The bed of the
 moat is made up of pebbles and rocks which are home to many colorful
 fish.  To the north you see some beautiful gardens surrounding the
 palace and to the south are the gates.
@@ -2667,7 +2667,7 @@ S
 #28185
 The eastern gardens~
 You are standing amidst a small copse of small trees and hedges.  Around
-you gardens are arranged into various shapes.  To the north you see a 
+you gardens are arranged into various shapes.  To the north you see a
 small gardener's shed.
 ~
 0 0 1
@@ -2695,10 +2695,10 @@ S
 
 #28187
 The palace doors~
-You stand before a pair of massive double doors that lead into the huge 
-palace.  The sheer walls of the palace rise almost one hundred feet and are 
-topped with crenulated battlements manned by the Royal Guardsman.  Two of the 
-Royal Guardsmen stand to each side of the door their golden skin gleaming.  To 
+You stand before a pair of massive double doors that lead into the huge
+palace.  The sheer walls of the palace rise almost one hundred feet and are
+topped with crenulated battlements manned by the Royal Guardsman.  Two of the
+Royal Guardsmen stand to each side of the door their golden skin gleaming.  To
 the south you see the beautiful palatial gardens.
 ~
 0 4 1
@@ -2714,10 +2714,10 @@ S
 
 #28188
 The palace hall~
-The palace hall stretches forth toward the huge throne room.  Looking down the 
-hall you see the throne and the king sits listening to a minor hearing 
-involving two citizens.  The hallway is lined with torches.  In the shadows 
-between torches you notice the golden gleam of the skin of the Royal 
+The palace hall stretches forth toward the huge throne room.  Looking down the
+hall you see the throne and the king sits listening to a minor hearing
+involving two citizens.  The hallway is lined with torches.  In the shadows
+between torches you notice the golden gleam of the skin of the Royal
 Guardsmen.
 ~
 0 8 0
@@ -2734,9 +2734,9 @@ S
 #28189
 The Throne Room~
 As you enter the massive throne room you notice large pools of water
-to each side with pretty fountains in the middle.  Many different 
+to each side with pretty fountains in the middle.  Many different
 coats of arms line the walls as do tapestries and paintings of
-different people, most likely past kings.  The walls of the throne 
+different people, most likely past kings.  The walls of the throne
 are lined with the Royal Guardsmen.  Two stairwells lead off from here
 but they are heavily guarded by the Royal Guardsmen making them
 impassable.
@@ -3071,9 +3071,9 @@ S
 
 #28192
 Captain Exxd's Office~
-This is the office of Royal Captain Bom Exxd, in charge of the Docks of 
-Draagdim. A desk sits in the middle of the room with many papers stacked up in 
-piles upon it. Various sea-going instruments line the walls and to one side 
+This is the office of Royal Captain Bom Exxd, in charge of the Docks of
+Draagdim. A desk sits in the middle of the room with many papers stacked up in
+piles upon it. Various sea-going instruments line the walls and to one side
 rests a painting of the magnificent ship Windthief.
 ~
 0 4|8 0
@@ -3685,9 +3685,9 @@ S
 
 #28072
 The Thieves' Guild~
-As you step into this room, all manner of beings turn to stare at you as you 
-enter. Most turn back to their games, sleep or practice almost immediately 
-although they continue to eye you with suspicion and mistrust.  The room is 
+As you step into this room, all manner of beings turn to stare at you as you
+enter. Most turn back to their games, sleep or practice almost immediately
+although they continue to eye you with suspicion and mistrust.  The room is
 huge with makeshift beds lining the walls almost every nook and cranny.
 ~
 0 8 0
@@ -4020,7 +4020,7 @@ S
 
 #28108
 Saturn Promenade~
-The road bends.  You may head South or West. To the north you see the entrance 
+The road bends.  You may head South or West. To the north you see the entrance
 to the lavish and mightily impressive Millionaires Club.
 ~
 0 0 1
@@ -4293,7 +4293,7 @@ S
 
 #28151
 The City Park~
-You are standing in the corner of the park.  There is a small bench here you 
+You are standing in the corner of the park.  There is a small bench here you
 can rest on, and a small fountain splashes merrily to itself.
 ~
 0 0 1
@@ -4311,7 +4311,7 @@ S
 The Park Lake~
 You are standing knee deep in water in the park lake.  There is an iron fence
 circling the lake, to keep people from doing what you're doing.  Better get
-out before one of the ground staff sees you. There's a rather large something 
+out before one of the ground staff sees you. There's a rather large something
 in the water down below, too.
 ~
 0 0 1
@@ -4419,7 +4419,7 @@ S
 
 #28019
 The Bakery~
-You are standing in a flour covered room.  A tall, tray-laden stand sits in 
+You are standing in a flour covered room.  A tall, tray-laden stand sits in
 the corner, letting the loaves cool.  That warm moist smell of freshly baked
 bread makes your mouth water.
 ~
@@ -4449,10 +4449,10 @@ S
 
 #28107
 The City Wall~
-You are standing on the Corner of the city wall.  To the north, the swamp is 
-shrouded in mist.  Not far to the east you can make out the gently rolling 
-hills and farmlands of the Draagdim countryside.  Southwards you can see a 
-wood and the docks.  Off to the west, you see a dark, gloomy-looking forest, 
+You are standing on the Corner of the city wall.  To the north, the swamp is
+shrouded in mist.  Not far to the east you can make out the gently rolling
+hills and farmlands of the Draagdim countryside.  Southwards you can see a
+wood and the docks.  Off to the west, you see a dark, gloomy-looking forest,
 with a tower brooding over it.
 ~
 0 0 1
@@ -4893,9 +4893,9 @@ S
 #28168
 The Hallway~
 This hallway is richly paneled and carpeted.  Doors lead off on either side
-along the hall, with names on gold plaques above the doors.  The hallway seems 
-to go on forever; it is clearly magical, as the Millionaire's Club does not 
-seem to be this big from the outside.  The door to the north is larger than 
+along the hall, with names on gold plaques above the doors.  The hallway seems
+to go on forever; it is clearly magical, as the Millionaire's Club does not
+seem to be this big from the outside.  The door to the north is larger than
 the others, and ornately carved; the plaque above it reads "Arrivals".
 ~
 0 8 0
@@ -4933,9 +4933,9 @@ S
 #28170
 The Hallway~
 This hallway is richly paneled and carpeted.  Doors lead off on either side
-along the hall, with names on gold plaques above the doors.  The hallway seems 
-to go on forever; it is clearly magical, as the Millionaire's Club does not 
-seem to be this big from the outside.  The plaque above the door to the north 
+along the hall, with names on gold plaques above the doors.  The hallway seems
+to go on forever; it is clearly magical, as the Millionaire's Club does not
+seem to be this big from the outside.  The plaque above the door to the north
 reads "Sonne"; the plaque above the southern door reads "{rXeddicus{x".
 ~
 0 8 0
@@ -5149,9 +5149,9 @@ S
 #28173
 The Hallway~
 This hallway is richly paneled and carpeted.  Doors lead off on either side
-along the hall, with names on gold plaques above the doors.  The hallway seems 
-to go on forever; it is clearly magical, as the Millionaire's Club does not 
-seem to be this big from the outside.  The plaque above the door to the north 
+along the hall, with names on gold plaques above the doors.  The hallway seems
+to go on forever; it is clearly magical, as the Millionaire's Club does not
+seem to be this big from the outside.  The plaque above the door to the north
 reads "Adrioth"; the plaque above the southern door reads "Dexx".
 ~
 0 8 0
@@ -5333,9 +5333,9 @@ S
 #28179
 The Hallway~
 This hallway is richly paneled and carpeted.  Doors lead off on either side
-along the hall, with names on gold plaques above the doors.  The hallway seems 
-to go on forever; it is clearly magical, as the Millionaire's Club does not 
-seem to be this big from the outside.  The plaque above the door to the north 
+along the hall, with names on gold plaques above the doors.  The hallway seems
+to go on forever; it is clearly magical, as the Millionaire's Club does not
+seem to be this big from the outside.  The plaque above the door to the north
 reads "Truk"; the plaque over the southern door is currently blank.
 ~
 0 8 0
@@ -5489,11 +5489,11 @@ S
 
 #28190
 Temple of Samxin~
-You are standing in a massive reliquary dedicated the god Samxin. The walls 
-are covered in mighty scenes depicting the awesome god pulling the great city 
-of Draagdim apart stone by stone and then rebuilding it twice as strong. Great 
-faults are blasted out and wonders beyond dreams are put in. One of the final 
-murals represents Samxin inserting a living sword into the mighty city, and 
+You are standing in a massive reliquary dedicated the god Samxin. The walls
+are covered in mighty scenes depicting the awesome god pulling the great city
+of Draagdim apart stone by stone and then rebuilding it twice as strong. Great
+faults are blasted out and wonders beyond dreams are put in. One of the final
+murals represents Samxin inserting a living sword into the mighty city, and
 then sealing it away. An in flux portal showing many places in the world hangs
 in the center of the room.
 ~
@@ -5507,7 +5507,7 @@ S
 #28005
 The North Road~
 You are standing on the North Road.  The High Wall is to the east and
-the gateway is a short distance off to the north. The road continues south 
+the gateway is a short distance off to the north. The road continues south
 into the heart of the city. There are temples to the east and west.
 ~
 0 0 1
@@ -5533,8 +5533,8 @@ S
 Temple of Descendant Immortals~
 This room has a number of alcoves spotted around it.  Inside are
 small dedicated shrines to the other Immortals of the Domain.  You see
-a small statue of a barn owl (Owl), a black coffin (Thorne), a small metallic 
-container labeled "Mountain Dew" (Archon), a Tusk (Umgook), and a stethoscope 
+a small statue of a barn owl (Owl), a black coffin (Thorne), a small metallic
+container labeled "Mountain Dew" (Archon), a Tusk (Umgook), and a stethoscope
 (Sacrifis).
 ~
 0 8 0
@@ -5550,7 +5550,7 @@ You are standing on the North Road.  Eastwards, the High Wall runs
 north-south alongside the road.  Northwards, you can see the North
 Gate looming out of the massive city walls.  Southwards, you can see
 the High Quarter gates as the road continues further into the heart
-of the city. East and west you can see temples dedicated to the 
+of the city. East and west you can see temples dedicated to the
 Immortals of the domain.
 ~
 0 0 1
@@ -5933,8 +5933,8 @@ S
 Temple of Ascendant Immortals~
 This room has a number of alcoves spotted around it.  Inside are
 small dedicated shrines to the other Immortals in the Domain.  You see a
-small statue of a dwarf holding a piece of cloth (obviously Gezhp), a 
-{M(Poisoned) {RRed{x Rose (Hestia), an {dobsidian{x sacrificial altar 
+small statue of a dwarf holding a piece of cloth (obviously Gezhp), a
+{M(Poisoned) {RRed{x Rose (Hestia), an {dobsidian{x sacrificial altar
 (Torment), a {rWibb{gl{ye{x (Samxin) and a curious object which appears
 to be designed to wrap around your knee joint (Shade).
 ~
@@ -6039,7 +6039,7 @@ S
 
 #28125
 The South Gate~
-You are standing within the city walls.  South, the gate leads out into 
+You are standing within the city walls.  South, the gate leads out into
 a dark and foreboding wood. North, the sights, sounds and smells of this
 continent's largest city tempt the senses.
 ~
@@ -6238,9 +6238,9 @@ S
 
 #28180
 The Depository~
-You follow the stairs down and then you almost fall off the final step as you 
-spot a platinum dragon! After a moment the dragon asks you if you would like 
-to deposit anything. Apparently this dragon enjoys hoarding other peoples gold 
+You follow the stairs down and then you almost fall off the final step as you
+spot a platinum dragon! After a moment the dragon asks you if you would like
+to deposit anything. Apparently this dragon enjoys hoarding other peoples gold
 as well as its own.
 ~
 0 8|8192 0
@@ -6253,9 +6253,9 @@ S
 #28199
 The Hallway~
 This hallway is richly paneled and carpeted.  Doors lead off on either side
-along the hall, with names on gold plaques above the doors.  The hallway seems 
-to go on forever; it is clearly magical, as the Millionaire's Club does not 
-seem to be this big from the outside.  The plaques in this section of the 
+along the hall, with names on gold plaques above the doors.  The hallway seems
+to go on forever; it is clearly magical, as the Millionaire's Club does not
+seem to be this big from the outside.  The plaques in this section of the
 hallway are currently blank.
 ~
 0 0 1

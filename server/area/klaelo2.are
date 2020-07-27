@@ -1,5 +1,5 @@
 #AREA	Danath~    Forest~
-1 10 0 100 
+1 10 0 100
 
 
 #MOBILES
@@ -148,8 +148,8 @@ Gold coins~
 #ROOMS
 #18000
 Shadow Vale~
-Giant trees tower above you,  deep shadow is cast from the heavy foliage 
-growing among the branches.  The pathway is worn from travelers boots as they 
+Giant trees tower above you,  deep shadow is cast from the heavy foliage
+growing among the branches.  The pathway is worn from travelers boots as they
 warily wind their way through.  To the north you can just make out ...
 ~
 0 0 3
@@ -164,8 +164,8 @@ D2
 S
 #18001
 Heavy Forest~
-You are standing in a heavy forest of old oaks.  There is a small spring 
-trickling slowly from a small rock formation into a clear deep pool.  A barn 
+You are standing in a heavy forest of old oaks.  There is a small spring
+trickling slowly from a small rock formation into a clear deep pool.  A barn
 owl has made his home above you.
 ~
 0 0 3
@@ -669,7 +669,7 @@ S
 Winding River~
 A Small Riverflows past here, it comes down from a steeply sloped valley
 from the north, and turns easterly. The stones are slick with moss and
-lichen.  The water is quite deep and moves very swiftly, there doesn’t
+lichen.  The water is quite deep and moves very swiftly, there doesnï¿½t
 seem to be anyway across here.
 ~
 0 0 1
@@ -972,11 +972,11 @@ D3
 0 -1 18050
 E
 Sign~
-The road to  .........   
+The road to  .........
 ........ is .. place
 to rest their feet,
 ...  ...  ......  .... ...
-fastest way    
+fastest way
 ---------->
 ~
 S

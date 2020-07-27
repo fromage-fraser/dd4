@@ -41,15 +41,15 @@ const struct class_type class_table [MAX_CLASS] =
 	 *  sub-1 who name, sub-2 who name, sub-1 change name, sub-2 change name
 	 *  stat modifiers (str, int, wis, dex, con)
 	 */
-	
-	{	
-		"Mag",  "Mage", 
+
+	{
+		"Mag",  "Mage",
 		APPLY_INT, OBJ_VNUM_SCHOOL_DAGGER,
-		3018,  95,  18,  6,  6,  9,  TRUE, 
+		3018,  95,  18,  6,  6,  9,  TRUE,
 		"Necromncr",  "Warlock",  "Nec",  "Wlk",
 		{ -1, 3, 1, 1, -1 }
 	},
-	
+
 	{
 		"Cle",  "Cleric",
 		APPLY_WIS,  OBJ_VNUM_SCHOOL_MACE,
@@ -59,7 +59,7 @@ const struct class_type class_table [MAX_CLASS] =
 	},
 
 	{
-		"Thi",  "Thief",  
+		"Thi",  "Thief",
 		APPLY_DEX,  OBJ_VNUM_SCHOOL_DAGGER,
 		3028,  85,  18,  3,  9,  12,  FALSE,
 		"Ninja",  "B. Hunter",  "Nin",  "Bou",
@@ -83,7 +83,7 @@ const struct class_type class_table [MAX_CLASS] =
 	},
 
 	{
-		"Sft",  "Shifter", 
+		"Sft",  "Shifter",
 		APPLY_CON,  OBJ_VNUM_SCHOOL_SWORD,
 		3220,  90,  18,  0,  13, 16,  TRUE,
 		"Werewolf",  "Vampire ",  "Wer",  "Vam",
@@ -109,12 +109,12 @@ const struct class_type class_table [MAX_CLASS] =
 
 
 /*
- * SUB_CLASS TABLE - Brutus 
+ * SUB_CLASS TABLE - Brutus
  */
 const struct sub_class_type sub_class_table [MAX_SUB_CLASS] =
 {
 	/*  who name, show name, attribute bonus, mana bonus  */
-	
+
 	{  "Non",  "None",      APPLY_STR, FALSE    },
 	{  "Nec",  "Necromncr", APPLY_WIS, TRUE     },
 	{  "Wlk",  "Warlock",   APPLY_STR, TRUE     },
@@ -132,7 +132,7 @@ const struct sub_class_type sub_class_table [MAX_SUB_CLASS] =
 	{  "Mar",  "M. Artist", APPLY_STR, FALSE    },
 	{  "Brb",  "Barbarian", APPLY_STR, FALSE    },
 	{  "Brd",  "Bard",      APPLY_DEX, TRUE	    }
-};       
+};
 
 
 /*
@@ -140,13 +140,13 @@ const struct sub_class_type sub_class_table [MAX_SUB_CLASS] =
  */
 const struct clan_type clan_table [MAX_CLAN] =
 {
-	/* 
+	/*
 	 *  name, who name, transfer room, guard_room, heal_room, independent,
 	 *  colour code letter (for {X escapes)
-	 * 
+	 *
 	 *  'independent' should be FALSE for a normal clan
 	 */
-	
+
 	{  "No clan",                   "   ",  3001,  	3001,  	3001,  	TRUE,  'x' },
 	{  "The Travellers",		"TRV", 	534,	530,	533,	FALSE, 'G' },
 	{  "Clan Aesir",		"AES",  963,   	960,   	964,   	FALSE, 'Y' },
@@ -154,13 +154,13 @@ const struct clan_type clan_table [MAX_CLAN] =
         {  "Mercenaries of Conquest",   "MOC",  362,    360,    365,    FALSE, 'd' },
         {  "Shadows of Midnight",   	"SOM",  472,    470,    474,    FALSE, 'M' },
 	{  "Coven of Bone",   	        "COB",  490,    480,    484,    FALSE, 'd' }
-}; 
+};
 
 
 const struct clan_items clan_item_list [MAX_CLAN] =
 {
 	/* clan, level 1, level 30, level 60, pouch */
-	
+
 	{ "No",  0,     0,     	0,     	0     },
 	{ "TRV", 530,	531,	532,	533   },
 	{ "AES", 974,   975,   	976,   	970   },
@@ -173,40 +173,40 @@ const struct clan_items clan_item_list [MAX_CLAN] =
 
 const struct HERB herb_table[ MAX_HERBS ] =
 {
-	/*  
+	/*
 	 *  Herb table legend:
-	 *  name, item type, spell name, minimum skill needed to find, 
-	 *  chance of finding, keywords, short_desc, long_descr, 
+	 *  name, item type, spell name, minimum skill needed to find,
+	 *  chance of finding, keywords, short_desc, long_descr,
 	 *  action string\n\r (reported if herb found after gathering)
 	 */
 
 	{ "thurl",  ITEM_POTION,  "cure serious",  1,  60,
-		"thurl leaf brew",  "a brew of thurl leaf",  
+		"thurl leaf brew",  "a brew of thurl leaf",
 		"A brew of thurl leaf is here.",
 		"You find some thurl leaf and prepare a brew.\n\r" },
 
 	{ "gariig",  ITEM_PILL,  "cure critical",  1,  45,
-		"gariig cactus",  "some gariig cactus",  
+		"gariig cactus",  "some gariig cactus",
 		"Some gariig cactus is here.",
 		"You locate a tiny gariig cactus in the rocks.\n\r" },
 
 	{ "gefnul",  ITEM_PILL,  "heal",  1,  30,
-		"gefnul lichen",  "some gefnul lichen",  
+		"gefnul lichen",  "some gefnul lichen",
 		"Some gefnul lichen lies here.",
 		"You find and harvest a clump of gefnul lichen.\n\r" },
-	
+
 	{ "draaf",  ITEM_PILL,  "power heal",  85,  10,
-		"draaf leaf sprig",  "a sprig of draaf",  
+		"draaf leaf sprig",  "a sprig of draaf",
 		"You spot a sprig of draaf leaf here.",
 		"You gather some leaves from a tall draaf plant.\n\r" },
 
 	{ "athelas",  ITEM_POTION,  "complete heal",  95,  3,
-		"athelas brew",  "a brew of athelas herb",  
+		"athelas brew",  "a brew of athelas herb",
 		"A brew of athelas herb is here.",
 		"You find some athelas leaves, crush them and make a brew.\n\r" },
 
 	{ "arkasu",  ITEM_PAINT,  "refresh",  1,  60,
-		"arkasu paste",  "some arkasu paste",  
+		"arkasu paste",  "some arkasu paste",
 		"Some arkasu herb paste lies here.",
 		"You find some arkasu herbs and grind them into a thick paste.\n\r" },
 
@@ -278,7 +278,7 @@ char* const clan_title [MAX_CLAN] [MAX_CLAN_LEVEL+1] =
         { "", "[{WAuxiliary{x] ", "[{WLegionnaire{x] ", "[{WMercenary{x] "      },
         { "", "[{WApprentice{x] ","[{WDragoon{x] ", 	"[{WCouncillor{x] "     },
 	{ "", "[{WAcolyte{x] ","[{WScion{x] ", 	"[{WParagon{x] "     }
-}; 
+};
 
 
 
@@ -333,12 +333,12 @@ const struct race_struct race_table [MAX_RACE] =
 	 *  race skill 1, race skill 2,
 	 *  size
 	 */
-	
+
 	{
 		"None   ", "None",
 		0, 0, 0, 0, 0,
 		0, 0, 0,
-		"NULL", "NULL", 
+		"NULL", "NULL",
 		0
 	},
 
@@ -483,11 +483,11 @@ const struct race_struct race_table [MAX_RACE] =
 /*
  *  Form wear restrictions
  */
-const struct loc_wear_struct form_wear_table [MAX_FORM] = 
+const struct loc_wear_struct form_wear_table [MAX_FORM] =
 {
   	/*
 	 * light, take, finger, neck, body, head, legs, feet, hands, arms,
-	 * shield, about, waist, wrist, wield, held, float, pouch, ranged 
+	 * shield, about, waist, wrist, wield, held, float, pouch, ranged
 	 */
 
 	{ { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  normal	*/
@@ -520,7 +520,7 @@ const struct loc_wear_struct loc_wear_table [MAX_CLASS + MAX_SUB_CLASS - 1] =
 {
 	  /*
 	   * light, take, finger, neck, body, head, legs, feet, hands, arms,
-	   * shield, about, waist, wrist, wield, held, float, pouch, ranged 
+	   * shield, about, waist, wrist, wield, held, float, pouch, ranged
 	   */
 
 	{ { 1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,0 } }, /* mag */
@@ -592,13 +592,13 @@ const struct wear_struct wear_table [ MAX_CLASS + MAX_SUB_CLASS - 1 ] =
 /*
  *  Equipment slot to wear bit conversion table; Gezhp 2000
  */
-const int eq_slot_to_wear_bit [MAX_WEAR] = 
-{	
-	BIT_LIGHT, 
+const int eq_slot_to_wear_bit [MAX_WEAR] =
+{
+	BIT_LIGHT,
 	BIT_WEAR_FINGER,
 	BIT_WEAR_FINGER,
 	BIT_WEAR_NECK,
-	BIT_WEAR_NECK,  
+	BIT_WEAR_NECK,
 	BIT_WEAR_BODY,  /* 5 */
 	BIT_WEAR_HEAD,
 	BIT_WEAR_LEGS,
@@ -608,7 +608,7 @@ const int eq_slot_to_wear_bit [MAX_WEAR] =
 	BIT_WEAR_SHIELD,
 	BIT_WEAR_ABOUT,
 	BIT_WEAR_WAIST,
-	BIT_WEAR_WRIST, 
+	BIT_WEAR_WRIST,
 	BIT_WEAR_WRIST,  /* 15 */
 	BIT_WIELD,
 	BIT_HOLD,
@@ -622,7 +622,7 @@ const int eq_slot_to_wear_bit [MAX_WEAR] =
 /*
  *  Form allowed skills
  */
-struct form_skill_struct form_skill_table [MAX_FORM_SKILL] = 
+struct form_skill_struct form_skill_table [MAX_FORM_SKILL] =
 {
 	{ &gsn_hide,         		FORM_NONE	},
 	{ &gsn_sneak,        		FORM_NONE	},
@@ -698,7 +698,7 @@ struct form_skill_struct form_skill_table [MAX_FORM_SKILL] =
 };
 
 /*
- * Vampire disallow table 
+ * Vampire disallow table
  * Ugly hack to hide some skills from vampires and werewolves
  */
 struct vampire_gag vampire_gag_table [MAX_VAMPIRE_GAG] =
@@ -724,8 +724,8 @@ struct vampire_gag vampire_gag_table [MAX_VAMPIRE_GAG] =
 	{ &gsn_tailwhip		},
 	{ &gsn_bite		},
 	{ &gsn_maul		},
-	
-	/* 
+
+	/*
 	 * Skills below gagged by vamps but shown by werewolves
 	 * Need to edit prac_slist() if the number of wolf-only
 	 * skills is changed
@@ -766,7 +766,7 @@ const struct color_data color_table [] =
 
 /*
  *  Old experience table
- */ 
+ */
 const struct level_struct old_level_table [LEVEL_HERO] =
 {
 	{   1,      1000,   1000    },
@@ -869,7 +869,7 @@ const struct level_struct old_level_table [LEVEL_HERO] =
 	{  98,	1000000, 33000000 },
 	{  99,	1000000, 34000000 },
 	{ 100,	6000000, 40000000 }
-}; 
+};
 
 
 /*
@@ -877,109 +877,109 @@ const struct level_struct old_level_table [LEVEL_HERO] =
  */
 const struct level_struct level_table [LEVEL_HERO] =
 {
-	{   1,	1000,	1000	},	
-	{   2,	1300,	2300	},	
-	{   3,	1700,	4000	},	
-	{   4,	2700,	6700	},	
-	{   5,	3350,	10050	},	
-	{   6,	4100,	14150	},	
-	{   7,	4900,	19050	},	
-	{   8,	5800,	24850	},	
-	{   9,	6850,	31700	},	
-	{  10,	8000,	39700	},	
-	{  11,	8800,	48500	},	
-	{  12,	9950,	58450	},	
-	{  13,	11600,	70050	},	
-	{  14,	13200,	83250	},	
-	{  15,	14850,	98100	},	
-	{  16,	16700,	114800	},	
-	{  17,	18800,	133600	},	
-	{  18,	20850,	154450	},	
-	{  19,	23200,	177650	},	
-	{  20,	25650,	203300	},	
-	{  21,	27000,	230300	},	
-	{  22,	29500,	259800	},	
-	{  23,	32350,	292150	},	
-	{  24,	35400,	327550	},	
-	{  25,	38550,	366100	},	
-	{  26,	41950,	408050	},	
-	{  27,	45550,	453600	},	
-	{  28,	49350,	502950	},	
-	{  29,	53350,	556300	},	
-	{  30,	57600,	613900	},	
-	{  31,	55150,	669050	},	
-	{  32,	59250,	728300	},	
-	{  33,	63600,	791900	},	
-	{  34,	68150,	860050	},	
-	{  35,	72900,	932950	},	
-	{  36,	77850,	1010800	},	
-	{  37,	83050,	1093850	},	
-	{  38,	88500,	1182350	},	
-	{  39,	94100,	1276450	},	
-	{  40,	100000,	1376450	},	
-	{  41,	106000,	1482450	},	
-	{  42,	112500,	1594950	},	
-	{  43,	119050,	1714000	},	
-	{  44,	125500,	1839500	},	
-	{  45,	133000,	1972500	},	
-	{  46,	140500,	2113000	},	
-	{  47,	148000,	2261000	},	
-	{  48,	156000,	2417000	},	
-	{  49,	164500,	2581500	},	
-	{  50,	172500,	2754000	},	
-	{  51,	170000,	2924000	},	
-	{  52,	178500,	3102500	},	
-	{  53,	187500,	3290000	},	
-	{  54,	196500,	3486500	},	
-	{  55,	205500,	3692000	},	
-	{  56,	216000,	3908000	},	
-	{  57,	226000,	4134000	},	
-	{  58,	236000,	4370000	},	
-	{  59,	247000,	4617000	},	
-	{  60,	257000,	4874000	},	
-	{  61,	269000,	5143000	},	
-	{  62,	278000,	5421000	},	
-	{  63,	292000,	5713000	},	
-	{  64,	304000,	6017000	},	
-	{  65,	317000,	6334000	},	
-	{  66,	329000,	6663000	},	
-	{  67,	342000,	7005000	},	
-	{  68,	355000,	7360000	},	
-	{  69,	369000,	7729000	},	
-	{  70,	384000,	8113000	},	
-	{  71,	371000,	8484000	},	
-	{  72,	385000,	8869000	},	
-	{  73,	400000,	9269000	},	
-	{  74,	414000,	9683000	},	
-	{  75,	430000,	10113000 },	
-	{  76,	445000,	10558000 },	
-	{  77,	460000,	11018000 },	
-	{  78,	477000,	11495000 },	
-	{  79,	493000,	11988000 },	
-	{  80,	510000,	12498000 },	
-	{  81,	452000,	12950000 },	
-	{  82,	467000,	13417000 },	
-	{  83,	482000,	13899000 },	
-	{  84,	498000,	14397000 },	
-	{  85,	514000,	14911000 },	
-	{  86,	530000,	15441000 },	
-	{  87,	547000,	15988000 },	
-	{  88,	564000,	16552000 },	
-	{  89,	582000,	17134000 },	
-	{  90,	466000,	17600000 },	
-	{  91,	600000,	18200000 },	
-	{  92,	600000,	18800000 },	
-	{  93,	600000,	19400000 },	
-	{  94,	600000,	20000000 },	
-	{  95,	600000,	20600000 },	
-	{  96,	700000,	21300000 },	
-	{  97,	800000,	22100000 },	
-	{  98,	900000,	23000000 },	
-	{  99,	1000000, 24000000 },	
+	{   1,	1000,	1000	},
+	{   2,	1300,	2300	},
+	{   3,	1700,	4000	},
+	{   4,	2700,	6700	},
+	{   5,	3350,	10050	},
+	{   6,	4100,	14150	},
+	{   7,	4900,	19050	},
+	{   8,	5800,	24850	},
+	{   9,	6850,	31700	},
+	{  10,	8000,	39700	},
+	{  11,	8800,	48500	},
+	{  12,	9950,	58450	},
+	{  13,	11600,	70050	},
+	{  14,	13200,	83250	},
+	{  15,	14850,	98100	},
+	{  16,	16700,	114800	},
+	{  17,	18800,	133600	},
+	{  18,	20850,	154450	},
+	{  19,	23200,	177650	},
+	{  20,	25650,	203300	},
+	{  21,	27000,	230300	},
+	{  22,	29500,	259800	},
+	{  23,	32350,	292150	},
+	{  24,	35400,	327550	},
+	{  25,	38550,	366100	},
+	{  26,	41950,	408050	},
+	{  27,	45550,	453600	},
+	{  28,	49350,	502950	},
+	{  29,	53350,	556300	},
+	{  30,	57600,	613900	},
+	{  31,	55150,	669050	},
+	{  32,	59250,	728300	},
+	{  33,	63600,	791900	},
+	{  34,	68150,	860050	},
+	{  35,	72900,	932950	},
+	{  36,	77850,	1010800	},
+	{  37,	83050,	1093850	},
+	{  38,	88500,	1182350	},
+	{  39,	94100,	1276450	},
+	{  40,	100000,	1376450	},
+	{  41,	106000,	1482450	},
+	{  42,	112500,	1594950	},
+	{  43,	119050,	1714000	},
+	{  44,	125500,	1839500	},
+	{  45,	133000,	1972500	},
+	{  46,	140500,	2113000	},
+	{  47,	148000,	2261000	},
+	{  48,	156000,	2417000	},
+	{  49,	164500,	2581500	},
+	{  50,	172500,	2754000	},
+	{  51,	170000,	2924000	},
+	{  52,	178500,	3102500	},
+	{  53,	187500,	3290000	},
+	{  54,	196500,	3486500	},
+	{  55,	205500,	3692000	},
+	{  56,	216000,	3908000	},
+	{  57,	226000,	4134000	},
+	{  58,	236000,	4370000	},
+	{  59,	247000,	4617000	},
+	{  60,	257000,	4874000	},
+	{  61,	269000,	5143000	},
+	{  62,	278000,	5421000	},
+	{  63,	292000,	5713000	},
+	{  64,	304000,	6017000	},
+	{  65,	317000,	6334000	},
+	{  66,	329000,	6663000	},
+	{  67,	342000,	7005000	},
+	{  68,	355000,	7360000	},
+	{  69,	369000,	7729000	},
+	{  70,	384000,	8113000	},
+	{  71,	371000,	8484000	},
+	{  72,	385000,	8869000	},
+	{  73,	400000,	9269000	},
+	{  74,	414000,	9683000	},
+	{  75,	430000,	10113000 },
+	{  76,	445000,	10558000 },
+	{  77,	460000,	11018000 },
+	{  78,	477000,	11495000 },
+	{  79,	493000,	11988000 },
+	{  80,	510000,	12498000 },
+	{  81,	452000,	12950000 },
+	{  82,	467000,	13417000 },
+	{  83,	482000,	13899000 },
+	{  84,	498000,	14397000 },
+	{  85,	514000,	14911000 },
+	{  86,	530000,	15441000 },
+	{  87,	547000,	15988000 },
+	{  88,	564000,	16552000 },
+	{  89,	582000,	17134000 },
+	{  90,	466000,	17600000 },
+	{  91,	600000,	18200000 },
+	{  92,	600000,	18800000 },
+	{  93,	600000,	19400000 },
+	{  94,	600000,	20000000 },
+	{  95,	600000,	20600000 },
+	{  96,	700000,	21300000 },
+	{  97,	800000,	22100000 },
+	{  98,	900000,	23000000 },
+	{  99,	1000000, 24000000 },
 	{ 100,	3000000, 27000000 }
 };
 
- 
+
 /*
  * Attribute bonus tables
  */
@@ -1133,7 +1133,7 @@ const struct liq_type liq_table [LIQ_MAX] =
 struct pre_req_struct pre_req_table [MAX_PRE_REQ] =
 {
 #include "pre_reqs/pre_req-common.c"
-#include "pre_reqs/pre_req-thief.c" 
+#include "pre_reqs/pre_req-thief.c"
 #include "pre_reqs/pre_req-warrior.c"
 #include "pre_reqs/pre_req-mage.c"
 #include "pre_reqs/pre_req-knight.c"
@@ -1165,7 +1165,7 @@ struct pre_req_struct pre_req_table [MAX_PRE_REQ] =
 /*
  *  Skill practice groups
  */
-const int *spell_groups [MAX_GROUPS] = 
+const int *spell_groups [MAX_GROUPS] =
 {
 	&gsn_group_thievery,
 	&gsn_group_stealth,
@@ -1218,15 +1218,15 @@ const int *spell_groups [MAX_GROUPS] =
 	&gsn_group_herb_lore,
 	&gsn_group_morph,
 	&gsn_group_resistance,
-	&gsn_group_last	
+	&gsn_group_last
 };
 
 
 /*
  *  Skill group members
- *  Groups MUST be in the same order as the gsn's above... 
+ *  Groups MUST be in the same order as the gsn's above...
  */
-struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] = 
+struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 {
 	{ &gsn_group_thievery,		0 },
 	{ &gsn_pick_lock,		0 },
@@ -1287,7 +1287,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 	{ &gsn_smash,			0 },
 	{ &gsn_acrobatics,		0 },
 	{ &gsn_dual_parry,		0 },
-	
+
 	{ &gsn_group_inner,		0 },
 	{ &gsn_bash,			0 },
 	{ &gsn_warcry,			0 },
@@ -1306,7 +1306,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 	{ &gsn_moonray,			0 },
 	{ &gsn_wither,			0 },
 	{ &gsn_natures_fury,		0 },
-	
+
 	{ &gsn_group_advcombat,		0 },
 	{ &gsn_risposte,		0 },
 	{ &gsn_whirlwind,		0 },
@@ -1505,7 +1505,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 	{ &gsn_steal_soul,		0 },
 	{ &gsn_summon_demon,		0 },
         { &gsn_hells_fire,              0 },
-	
+
 	{ &gsn_group_death,		0 },
 	{ &gsn_feeblemind,		0 },
 	{ &gsn_spiritwrack,		0 },
@@ -1647,13 +1647,13 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
 	{ &gsn_group_morph,		0 },
 	{ &gsn_flight,			0 },
-	
+
 	{ &gsn_group_resistance,        0 },
 	{ &gsn_resist_heat,             0 },
 	{ &gsn_resist_cold,             0 },
 	{ &gsn_resist_acid,             0 },
 	{ &gsn_resist_lightning,        0 },
-	
+
 	{ &gsn_group_last,		0 }
 };
 
@@ -1661,7 +1661,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 /*
  *  Skill table
  */
-const struct skill_type skill_table [MAX_SKILL] = 
+const struct skill_type skill_table [MAX_SKILL] =
 {
 	/*
 	 * name, pointer to gsn
@@ -1717,7 +1717,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_unholy_word,	20,     12,
 		"{Munholy word{x",	"!Unholy Word!"
 	},
-	
+
 	{
 		"armor",    	&gsn_armor,
 		TYPE_INT,	TAR_CHAR_DEFENSIVE,     POS_STANDING,
@@ -1907,7 +1907,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_curse,             20,     12,
 		"{Mcurse{x",                "The curse wears off."
 	},
-	
+
 	{
 		"detect good",     	&gsn_detect_good,
 		TYPE_INT,      TAR_CHAR_SELF,          POS_STANDING,
@@ -2083,7 +2083,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_heal,                   50,     12,
 		"",                     "!Heal!"
 	},
-	
+
 	{
 		"knock",        	&gsn_knock,
 		TYPE_INT,             TAR_IGNORE,     POS_STANDING,
@@ -2122,7 +2122,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 	{
 		"extort",	&gsn_extort,
 		TYPE_STR, TAR_IGNORE,	POS_STANDING,
-		spell_null, 	0, 	0, 
+		spell_null, 	0, 	0,
 		"", 	"!Extort!"
 	},
 
@@ -2237,7 +2237,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_shield,            12,     18,
 		"",                     "Your force shield shimmers then fades away."
 	},
-	
+
 	{
 		"dragon shield",       	&gsn_dragon_shield,
 		TYPE_INT,           TAR_CHAR_DEFENSIVE,     POS_STANDING,
@@ -2321,7 +2321,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,		0,	12,
 		"",		"!Scribe!"
 	},
-	
+
 	{
 		"acid breath",    	&gsn_acid_breath,
 		TYPE_INT,      TAR_CHAR_OFFENSIVE,     POS_FIGHTING,
@@ -2370,7 +2370,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,                0,       0,
 		"",                     "!At!"
 	},
-	
+
 	{
 		"advanced consider",  	&gsn_advanced_consider,
 		TYPE_STR,		TAR_IGNORE,		POS_STANDING,
@@ -2433,7 +2433,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,              0,      24,
 		"bash",                 "!Bash Door!"
 	},
-	
+
 	{
 		"berserk",       	&gsn_berserk,
 		TYPE_STR,             TAR_IGNORE,     POS_FIGHTING,
@@ -2713,7 +2713,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,              0,       8,
 		"kick",                 "!Kick!"
 	},
-	
+
 	{
 		"punch",          	&gsn_punch,
 		TYPE_STR,             TAR_CHAR_OFFENSIVE,     POS_FIGHTING,
@@ -2762,7 +2762,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,              0,       8,
 		"fly",                 "!Fly!"
 	},
-	
+
 	{
 		"flying headbutt",                  &gsn_flying_headbutt,
 		TYPE_STR,             TAR_IGNORE,     POS_FIGHTING,
@@ -2853,7 +2853,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,         0,      12,
 		"",                     "!Pick!"
 	},
-	
+
 	{
 		"bladethirst",     	&gsn_bladethirst,
 		TYPE_STR,             TAR_OBJ_INV,            POS_STANDING,
@@ -2923,7 +2923,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,             0,      12,
 		"",                     NULL
 	},
-	
+
 	{
 		"stalk",                 	&gsn_stalk,
 		TYPE_STR,             TAR_IGNORE,             POS_STANDING,
@@ -2965,7 +2965,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,      0,      0,
 		"terrifying gaze",      "You shake free from the trance."
 	},
-	
+
 	{
 		"trap",          	&gsn_trap,
 		TYPE_STR,     TAR_IGNORE,             POS_STANDING,
@@ -3014,13 +3014,13 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,    18,      18,
 		"whirlwind",                     "You feel less enraged."
 	},
-	
+
 	{
 		"flight",          	&gsn_flight,
 		TYPE_STR,             TAR_IGNORE,          POS_FIGHTING,
 		spell_null,    18,      18,
 		"flight",                     "You fold your wings and settle on the ground."
-	},  
+	},
 
 	{
 		"general purpose",  	NULL,
@@ -3448,14 +3448,14 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,           0,       0,
 		"",                     "!Wizlock!"
 	},
-	
+
 	{
 		"zones",         	&gsn_zones,
 		TYPE_WIZ,             TAR_IGNORE,             POS_DEAD,
 		spell_null,             0,       0,
 		"",                     "!Zones!"
 	},
-	
+
 	{
 		"adrenaline control",  	&gsn_adrenaline_control,
 		TYPE_INT,   TAR_CHAR_SELF,  POS_STANDING,
@@ -3671,7 +3671,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		"lend health",    	&gsn_lend_health,
 		TYPE_INT,      TAR_CHAR_DEFENSIVE,     POS_STANDING,
 		spell_lend_health,                   10,     12,
-		"",                     "!Lend Health!"	
+		"",                     "!Lend Health!"
 	},
 
 	{
@@ -3785,7 +3785,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_wither,                   20,     12,
 		"{Gwit{Yhe{Wring {Ygr{Gasp{x",         "You feel less brittle."
 	},
-	
+
 	{
 		"lore",       	&gsn_lore,
 		TYPE_INT,         TAR_OBJ_INV,            POS_STANDING,
@@ -3911,7 +3911,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_recharge_item,                   100,    24,
 		"",                     "!Recharge Item!"
 	},
-	
+
 	{
 		"kiai",		 	&gsn_kiai,
 		TYPE_STR,		TAR_IGNORE,		POS_FIGHTING,
@@ -3967,7 +3967,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_summon_demon,                   100,    12,
 		"",                     "!Summon Demon!"
 	},
-	
+
 	{
 		"evocation magiks",          &gsn_group_evocation,
 		TYPE_INT,             TAR_IGNORE,             POS_DEAD,
@@ -4016,7 +4016,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,    0,       0,
 		"",                     "!Group Destruction!"
 	},
-	
+
 	{
 		"major protective magiks",          &gsn_group_majorp,
 		TYPE_INT,             TAR_IGNORE,             POS_DEAD,
@@ -4163,7 +4163,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,    0,       0,
 		"",                     "!Group Mana Control!"
 	},
-	
+
 	{
 		"combat knowledge",          &gsn_group_combat  ,
 		TYPE_INT,             TAR_IGNORE,             POS_DEAD,
@@ -4240,7 +4240,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,                 20,        18,
 		"",                         "!Morph!"
 	},
-	
+
 	{
 		"inner force",		     &gsn_group_inner  ,
 		TYPE_INT,        TAR_IGNORE,             POS_DEAD,
@@ -4310,7 +4310,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,     0,       0,
 		"",                     "!Group Pugalism!"
 	},
-	
+
 	{
 		"fear",             &gsn_fear,
 		TYPE_INT,     TAR_CHAR_OFFENSIVE_SINGLE,     POS_FIGHTING,
@@ -4338,7 +4338,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,      5,      12,
 		"",         "Your body reverts to its normal state."
 	},
-	
+
 	{
 		"gaias warning",             &gsn_gaias_warning,
 		TYPE_INT,     TAR_CHAR_SELF,     POS_STANDING,
@@ -4394,7 +4394,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,                   0,    18,
 		"blood-thirsty fangs",                     "!Feed!"
 	},
-	
+
 	{
 		"chameleon form",           &gsn_form_chameleon,
 		TYPE_INT,             TAR_IGNORE,              POS_DEAD,
@@ -4443,7 +4443,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,       25,        0,
 		"",                     "!Form Spider!"
 	},
-	
+
 	{
 		"bear form",                &gsn_form_bear,
 		TYPE_INT,             TAR_IGNORE,              POS_DEAD,
@@ -4527,7 +4527,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,   100,        0,
 		"",                         "!Form Elemental Fire!"
 	},
-	
+
 	{
 		"elemental water form",        &gsn_form_elemental_water,
 		TYPE_INT,                 TAR_IGNORE,              POS_DEAD,
@@ -4541,7 +4541,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,  100,        0,
 		"",                         "!Form Elemental Earth!"
 	},
-	
+
 	{
 		"coil",          	&gsn_coil,
 		TYPE_STR,             TAR_CHAR_OFFENSIVE,      POS_FIGHTING,
@@ -4738,7 +4738,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		"musicianship", 	"!Musicianship!"
 	},
 
-	{	
+	{
 		"herb lore",		&gsn_group_herb_lore,
 		TYPE_INT, 		TAR_IGNORE,		POS_STANDING,
 		spell_null,		0,			0,
@@ -4828,7 +4828,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,		0,			0,
 		"wizbrew",		"!wizbrew!"
 	},
-	
+
 	{
 		"breathe water",           	&gsn_breathe_water,
 		TYPE_INT,            TAR_CHAR_SELF,     POS_STANDING,
@@ -4877,42 +4877,42 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,		0,			0,
 		"divine curse",		"You are no longer cursed by the Gods."
 	},
-	
+
 	{
 		"resist heat",  &gsn_resist_heat,
 		TYPE_INT,  TAR_CHAR_SELF,  POS_STANDING,
 		spell_resist_heat,  15,  12,
-		"resist heat",  "You feel more vulnerable to heat and flame."			
+		"resist heat",  "You feel more vulnerable to heat and flame."
 	},
-	
+
 	{
 		"resist cold",  &gsn_resist_cold,
 		TYPE_INT,  TAR_CHAR_SELF,  POS_STANDING,
 		spell_resist_cold,  15,  12,
 		"resist cold",  "You feel more vulnerable to cold and ice."
 	},
-	
+
 	{
 		"resist lightning",  &gsn_resist_lightning,
 		TYPE_INT,  TAR_CHAR_SELF,  POS_STANDING,
 		spell_resist_lightning,  15,  12,
 		"resist lightning",  "You feel more vulnerable to electricity."
 	},
-	
+
 	{
 		"resist acid",  &gsn_resist_acid,
 		TYPE_INT,  TAR_CHAR_SELF,  POS_STANDING,
 		spell_resist_acid,  15,  12,
 		"resist acid",  "You feel more vulnerable to acid."
 	},
-	
+
 	{
 		"hells fire",   &gsn_hells_fire,
 		TYPE_INT,  TAR_CHAR_OFFENSIVE,  POS_FIGHTING,
 		spell_hells_fire,   20,  12,
 		"{Whell's fire{x", "!Hells Fire!"
 	},
-	
+
 	{
 		"holy prayer of destruction",  &gsn_prayer_destruction,
 		TYPE_INT,  TAR_IGNORE,  POS_DEAD,
@@ -4937,10 +4937,10 @@ const struct skill_type skill_table [MAX_SKILL] =
 	{
 		"natures fury",  &gsn_natures_fury,
 		TYPE_INT,  TAR_CHAR_OFFENSIVE,  POS_FIGHTING,
-		spell_natures_fury,  25,  12, 
+		spell_natures_fury,  25,  12,
 		"magical assault", ""
 	},
-		
+
 	{
 		"dual parry",         	&gsn_dual_parry,
 		TYPE_STR,             TAR_IGNORE,             POS_FIGHTING,
@@ -4954,9 +4954,9 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null,             0,      0,
                 "",                     "!Addqp!"
         },
-	
+
 	/*
-	 *  Base skills for classes :)  ALWAYS LEAVE AT END OF THE TABLE !!! 
+	 *  Base skills for classes :)  ALWAYS LEAVE AT END OF THE TABLE !!!
 	 */
 
 	{
@@ -5070,7 +5070,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 		spell_null,          0,        0,
 		"",                         "!-knight base-!"
 	},
-	
+
 	{
 		"satanist base",         &gsn_satanist_base,
 		TYPE_NULL,                 TAR_IGNORE,              POS_STANDING,

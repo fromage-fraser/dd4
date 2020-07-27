@@ -6,7 +6,7 @@
 Wilderness~
 The country here is empty and exposed: rocky plains stretching endlessly
 northwards.  The wilderness is mostly dirt and stone; a few scraggly
-plants cling to small cliffsides or grow prostrate across the ground.  
+plants cling to small cliffsides or grow prostrate across the ground.
 The air is thin and cold.  You wander alone through the wilderness, your
 only company some unidentified creatures circling in the sky far above.
      The city of Anon can be seen to the south; you can continue either
@@ -33,7 +33,7 @@ You march through the flat wilderness.  As you head east you begin to
 enter a small valley lined with steep cliffs.  The cliffs are tall and
 would be too trecherous to climb.  The valley narrows the further you
 penetrate it.  Eventually you run up against an eastern cliff-face.
-     A small path continues east through the cliffs; your only other 
+     A small path continues east through the cliffs; your only other
 option is to return westwards.
 ~
 0 4 2
@@ -145,7 +145,7 @@ You are at the southern end of massive salt lake, the dried up grave of an
 ancient inland sea.  The salty earth is set like mortar; the air is acrid
 and makes your eyes sting.  You are the only living thing visible on the
 surface of the lake bed, which looks like ugly, cracked marble.
-     You can head north across the surface of the salt lake, or east back 
+     You can head north across the surface of the salt lake, or east back
 into the rocky wilderness.
 ~
 0 0 10
@@ -166,7 +166,7 @@ ancient inland sea.  The salty earth is set like mortar; the air is acrid
 and makes your eyes sting.  You are the only living thing visible on the
 surface of the lake bed, which looks like ugly, cracked marble.
      You can return south across the salt lake, or head north into the
-rocky wilderness.     
+rocky wilderness.
 ~
 0 0 10
 D 0
@@ -215,7 +215,7 @@ formations of rock become more open and soon you are walking at a
 relatively quick pace.  The ground is becoming dustier and the air drier:
 you are approaching a sandy desert.
      You can head east into the desert, or try to work back west into the
-wasteland. You also think you spy an opening in the rocks above you.     
+wasteland. You also think you spy an opening in the rocks above you.
 ~
 0 0 10
 D 1

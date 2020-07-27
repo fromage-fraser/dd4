@@ -663,7 +663,7 @@ stone circle~
 The weathered stones stand as they have for centuries.~
 ~
 12 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 100 0 0
 E
 stones sign writing stone circle lichen~
@@ -680,7 +680,7 @@ a dew drop~
 A small vial of dew has been left here.~
 ~
 10 0 1|16384
-20~ heal~ ~ ~ 
+20~ heal~ ~ ~
 5 0 0
 E
 dew drop vial~
@@ -692,7 +692,7 @@ a mithril axe~
 Stone Beard's mithril axe lays before you.~
 ~
 5 4096 1|8192
-0~ 1~ 6~ 13~ 
+0~ 1~ 6~ 13~
 35 0 0
 A
 18 2
@@ -709,7 +709,7 @@ some stone armour~
 Heavy stone armour rests here.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 35 0 0
 A
 17 -10
@@ -725,7 +725,7 @@ a stone head~
 A badly chipped stone head sits here.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 25 0 0
 E
 stone head~
@@ -738,7 +738,7 @@ a stone key~
 A stone key lays here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key stone~
@@ -750,7 +750,7 @@ a crude stone axe~
 A crudely made stone axe has been abandoned here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 8~ 
+0~ 1~ 6~ 8~
 15 0 0
 A
 2 -1
@@ -767,7 +767,7 @@ a steel rapier~
 A steel rapier has been left here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 20 0 0
 A
 18 2
@@ -784,7 +784,7 @@ some slime armour~
 A suit of slime armour lays here.~
 ~
 9 1|4096 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 A
 23 -4
@@ -802,7 +802,7 @@ a lightning rod~
 A metal lightning rod lays on the ground.~
 ~
 3 64 1|16384
-30~ 5~ 5~ ultrablast~ 
+30~ 5~ 5~ ultrablast~
 5 0 0
 E
 metal lightning rod~
@@ -815,7 +815,7 @@ some swamp slime~
 A small glop of swamp slime site here.~
 ~
 26 0 1|16384
-25~ cure poison~ heal~ ~ 
+25~ cure poison~ heal~ ~
 5 0 0
 E
 swamp slime~
@@ -827,7 +827,7 @@ serpent teeth~
 You spy some sharp serpent teeth.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 10~ 
+0~ 1~ 6~ 10~
 5 0 0
 E
 serpent teeth~
@@ -840,7 +840,7 @@ a steel polearm~
 A long steel polearm lays on the floor.~
 ~
 5 134217728 1|8192
-0~ 1~ 6~ 2~ 
+0~ 1~ 6~ 2~
 25 0 0
 A
 1 2
@@ -856,7 +856,7 @@ a cast iron shield~
 You spot a large, cast iron shield.~
 ~
 9 64 1|512
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 35 0 0
 A
 17 -10
@@ -873,7 +873,7 @@ a grey thimble~
 A tiny grey thimble rests here.~
 ~
 9 32|64 1|2
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -25
@@ -893,7 +893,7 @@ a cloud dagger~
 A white bladed dagger rests on the floor.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 A
 14 50
@@ -910,7 +910,7 @@ a tungsten mail shirt~
 A shirt of mail made of tungsten lays here.~
 ~
 9 0 1|1024
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 20 0 0
 E
 tungsten mail shirt~
@@ -923,7 +923,7 @@ some tungsten boots~
 There is a pair of tungsten boots here.~
 ~
 9 0 1|64
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 E
 boots tungsten~
@@ -936,7 +936,7 @@ cloud magic~
 A wisp of cloudy matter hangs in the air.~
 ~
 4 1|128 1|16384
-30~ 4~ 4~ lightning bolt~ 
+30~ 4~ 4~ lightning bolt~
 5 0 0
 E
 cloud magic wisp cloudy matter~
@@ -949,7 +949,7 @@ a lightning sword~
 The gleaming blue blade of a longsword attracts your attention.~
 ~
 5 64|2048 1|8192
-0~ 1~ 6~ 3~ 
+0~ 1~ 6~ 3~
 20 0 0
 A
 18 4
@@ -968,7 +968,7 @@ thunder magic~
 A small dark cloud floats here.~
 ~
 4 1|4096 1|16384
-30~ 5~ 5~ frost breath~ 
+30~ 5~ 5~ frost breath~
 5 0 0
 E
 thunder magic dark cloud~
@@ -981,7 +981,7 @@ a cloak of protection~
 A faded grey cloak lays tossed in a heap.~
 ~
 9 0 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -50
@@ -996,7 +996,7 @@ a telescope~
 A gigantic telescope is aimed at the heavens.~
 ~
 12 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 500 0 0
 E
 telescope~
@@ -1011,7 +1011,7 @@ a gold tusk~
 A gold tusk lays here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 gold tusk~
@@ -1023,7 +1023,7 @@ a silver tusk~
 A silver tusk stands on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 silver tusk~
@@ -1035,7 +1035,7 @@ a copper tusk~
 You spot a polished copper tusk.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 copper tusk~
@@ -1047,7 +1047,7 @@ a leather sling~
 A thick leather sling sits on the ground.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 0~ 
+0~ 1~ 6~ 0~
 5 0 0
 A
 18 -1
@@ -1064,7 +1064,7 @@ a mud stone~
 You spot a small ball of hardened mud.~
 ~
 3 128 1|16384
-40~ 1~ 1~ high explosive~ 
+40~ 1~ 1~ high explosive~
 5 0 0
 E
 mud stone hardened ball~
@@ -1076,7 +1076,7 @@ a mud hammer~
 A large hammer made of dried clay rests here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 7~ 
+0~ 1~ 6~ 7~
 20 0 0
 E
 mud hammer dried clay~
@@ -1089,7 +1089,7 @@ a rusted iron girth~
 A rusted iron girth lays before you.~
 ~
 9 4096 1|2048
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 A
 9 50
@@ -1103,7 +1103,7 @@ a rusted iron neck chain~
 You spot a rusted iron neck chain.~
 ~
 9 4096 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 A
 17 -10
@@ -1117,7 +1117,7 @@ a rod of demon's breath~
 A short green rod sits here.~
 ~
 4 2 1|16384
-40~ 3~ 3~ gas breath~ 
+40~ 3~ 3~ gas breath~
 10 0 0
 E
 short green rod demon's breath~
@@ -1131,7 +1131,7 @@ a skullchain~
 Two gleaming snake skulls hang from a silver chain.~
 ~
 1 1 1|16384
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 5 0 0
 E
 skullchain skull chain~
@@ -1144,7 +1144,7 @@ jet black spear~
 An evil looking black spear has been thrown to the ground.~
 ~
 5 134217728 1|8192
-0~ 1~ 6~ 2~ 
+0~ 1~ 6~ 2~
 15 0 0
 A
 19 3
@@ -1160,7 +1160,7 @@ some strong smelling fungus~
 Some strong smelling fungus makes you wince.~
 ~
 26 0 1|16384
-30~ flesh armor~ biofeedback~ heal~ 
+30~ flesh armor~ biofeedback~ heal~
 5 0 0
 E
 strong smelling fungus~
@@ -1173,7 +1173,7 @@ a brown mushroom~
 A small brown mushroom lays here.~
 ~
 19 0 1|16384
-48~ 1~ 6~ 0~ 
+48~ 1~ 6~ 0~
 5 0 0
 E
 brown mushroom~
@@ -1186,7 +1186,7 @@ a beetle's carapace~
 A giant black insect carapace sits on the floor.~
 ~
 9 0 1|1024
-30~ 5~ 0~ 11~ 
+30~ 5~ 0~ 11~
 15 0 0
 A
 17 -10
@@ -1206,7 +1206,7 @@ Deathbringer~
 A gleaming silver mace glows intensely.~
 ~
 5 1|64|128|4096 1|8192
-0~ 1~ 6~ 8~ 
+0~ 1~ 6~ 8~
 30 0 0
 A
 18 6
@@ -1232,7 +1232,7 @@ a suit of moon armour~
 Pale white chainmail lays in a bundle here.~
 ~
 9 1 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 A
 3 3
@@ -1249,7 +1249,7 @@ a moon torc~
 A thin white metal crescent sits on the floor.~
 ~
 9 0 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 13 75
@@ -1266,7 +1266,7 @@ some molten lava~
 You see a ball of molten lava here.~
 ~
 4 0 1|16384
-30~ 7~ 7~ magic missile~ 
+30~ 7~ 7~ magic missile~
 5 0 0
 E
 ball molten lava~
@@ -1278,7 +1278,7 @@ a platinum tusk~
 A platinum tusk rests here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 platinum tusk~
@@ -1291,7 +1291,7 @@ some molten arm plates~
 Some arm plates have been constructed from molten lava.~
 ~
 9 0 1|256
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 E
 molten lava arm plates armplates~
@@ -1305,7 +1305,7 @@ a white scimitar~
 A scimitar's blade is pale white.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 1~ 
+0~ 1~ 6~ 1~
 15 0 0
 A
 18 3
@@ -1319,7 +1319,7 @@ a vial of firewater~
 A small vial a pale red liquid lays here.~
 ~
 10 0 1|16384
-30~ heal~ heal~ ~ 
+30~ heal~ heal~ ~
 5 0 0
 E
 small pale red vial fire water firewater~
@@ -1331,7 +1331,7 @@ a stone table~
 Dried blood covers the surface of the stone table.~
 ~
 12 0 0
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1000 0 0
 E
 stone sacrificial table~
@@ -1346,7 +1346,7 @@ a leather tunic~
 A large leather tunic sits here.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 leather tunic~
@@ -1359,7 +1359,7 @@ some leather boots~
 A pair of leather boots sit on the floor.~
 ~
 9 0 1|64
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 leather boots~
@@ -1371,7 +1371,7 @@ a flaming trident~
 Flames lick off the prongs of a long trident.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 2~ 
+0~ 1~ 6~ 2~
 5 0 0
 A
 19 3
@@ -1386,7 +1386,7 @@ a flaming shield~
 A metal shield is surrounded by magical fire.~
 ~
 9 64 1|512
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 A
 17 -20
@@ -1405,7 +1405,7 @@ an emerald kris~
 A kris knife made of pure emerald sits here.~
 ~
 5 64 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 35 0 0
 A
 19 4
@@ -1422,7 +1422,7 @@ a ruby broadsword~
 A red broadsword lays on the ground.~
 ~
 5 2 1|8192
-0~ 1~ 6~ 1~ 
+0~ 1~ 6~ 1~
 25 0 0
 A
 13 60
@@ -1439,7 +1439,7 @@ an onyx mace~
 An onyx mace floats before you.~
 ~
 5 1 1|8192
-0~ 1~ 6~ 8~ 
+0~ 1~ 6~ 8~
 35 0 0
 A
 4 3
@@ -1457,7 +1457,7 @@ a diamond sphere~
 A diamond sphere floats two feet from the floor.~
 ~
 5 64 1|8192
-0~ 1~ 6~ 6~ 
+0~ 1~ 6~ 6~
 5 0 0
 A
 19 10
@@ -1799,7 +1799,7 @@ S
 #25419
 Passage~
 This small connecting tunnel opens west through a solid door and east
-through a wide archway.  Water up to a foot deep in places covers the 
+through a wide archway.  Water up to a foot deep in places covers the
 floor.
 ~
 0 1|8 0
@@ -1984,7 +1984,7 @@ S
 #25430
 Hall of the Portals~
 This corridor appears to have remained undisturbed for centuries, thick
-dust carpets the floor and a mess of spiders webs hangs from the roof.  
+dust carpets the floor and a mess of spiders webs hangs from the roof.
 Archways lead west and east of here, with a faint light spreading into the
 corridor from each.  The hall continues to the north, with the great door
 directly south.
@@ -2037,8 +2037,8 @@ S
 #25432
 Hall of the Portals~
 You have reached the northern end of the great hall.  The northern wall is
-dominated by a large door: no handles or latches can be seen, although a 
-large keyhole lays in its centre.  Archways open west and east, with the 
+dominated by a large door: no handles or latches can be seen, although a
+large keyhole lays in its centre.  Archways open west and east, with the
 hall returning to the south.  A crackling portal rises to the north.
 ~
 0 4|8 0
@@ -2064,8 +2064,8 @@ S
 #25433
 The Snow Gate~
 You stand before an oval mirror, it's surface rippling like liquid and
-clouded over.  A cold wind gusts from the portal, with snow and ice 
-spreading into the room.  You may step east into the gate or return 
+clouded over.  A cold wind gusts from the portal, with snow and ice
+spreading into the room.  You may step east into the gate or return
 westwards to the main hall.
 ~
 0 4|8 0
@@ -2077,7 +2077,7 @@ S
 #25434
 The Mud Gate~
 An ugly stone archway has been set into the eastern wall.  Foul smelling
-mud oozes between the rock pillars, dribbling onto the floor and 
+mud oozes between the rock pillars, dribbling onto the floor and
 occasionally bubbling.  You can step eastwards into the gate or return
 westwards to the main hall.
 ~
@@ -2142,7 +2142,7 @@ S
 The Magma Gate~
 The heat radiating from a gigantic wall of molten rock to the west is
 intense and almost unbearable.  A rusted iron frame borders a rippling
-window of magma that undulates and bubbles before you.  You can force 
+window of magma that undulates and bubbles before you.  You can force
 yourself westwards into the gate or return east to the corridor.
 ~
 0 4|8 0
@@ -2207,7 +2207,7 @@ D3
 S
 #25441
 Quagmire~
-Thick, putrid filth rises almost to your waist, the smell of rot 
+Thick, putrid filth rises almost to your waist, the smell of rot
 overwhelming in this horrible quagmire.  The mire spreads north, west and
 south.
 ~
@@ -2227,10 +2227,10 @@ D3
 S
 #25442
 Mangroves~
-A dense forest of mangroves surrounds you, a tangled mass of tough and 
+A dense forest of mangroves surrounds you, a tangled mass of tough and
 twisted roots making it difficult to move quickly.  Rotting mangrove fruits
-fill the air with a sickly sweet odour that makes you feel ill.  You can 
-travel east and north from here; the trees to the west and south are so 
+fill the air with a sickly sweet odour that makes you feel ill.  You can
+travel east and north from here; the trees to the west and south are so
 dense that you can not progress any further in those directions.
 ~
 0 0 3
@@ -2246,7 +2246,7 @@ S
 #25443
 Swamp~
 You stand knee-deep in a thick, muddy swamp.  Sickly reeds grown in small,
-brown clumps, and green slimes spread across the surface of the mire.  The 
+brown clumps, and green slimes spread across the surface of the mire.  The
 air is thick with gigantic insects, and it is oppressively hot.  The swamp
 spreads out forever in every direction, with a forest of gnarled mangroves
 rising to the west.
@@ -2601,7 +2601,7 @@ S
 Mangroves~
 A dense forest of mangroves surrounds you, a tangled mass of tough and
 twisted roots making it difficult to move quickly.  Rotting mangrove fruits
-fill the air with a sickly sweet odour that makes you feel ill.  The 
+fill the air with a sickly sweet odour that makes you feel ill.  The
 vegetation is so dense that you can only return south into the swamp.
 ~
 0 0 3
@@ -2612,8 +2612,8 @@ D2
 S
 #25461
 Cliff Face~
-Steep, smooth cliffs tower to the north; they rise sharply and disappear 
-into the low clouds above you.  It would be impossible for you to climb 
+Steep, smooth cliffs tower to the north; they rise sharply and disappear
+into the low clouds above you.  It would be impossible for you to climb
 more than a dozen feet.  You can head south and east from here.
 ~
 0 0 3
@@ -2670,7 +2670,7 @@ S
 #25464
 Gnarled Branches~
 Covered with scratches, you force your way up through the mass of branches
-and sharp twigs.  Near the top of the tree, you step out onto a large, 
+and sharp twigs.  Near the top of the tree, you step out onto a large,
 horizontal branch.  A large nest of twigs, grasses and weeds about 6 feet
 in diameter has been made here: it is filled with filth and small
 skeletons.
@@ -2683,7 +2683,7 @@ D5
 S
 #25465
 Slimy cave~
-You stand in a small, dark cave.  The rough rock walls are covered in 
+You stand in a small, dark cave.  The rough rock walls are covered in
 slime, and water trickles from stalactites hanging from the roof.  The only
 exit is through the opening to the south.
 ~
@@ -2937,7 +2937,7 @@ S
 #25479
 Great Hall~
 A wide wooden table stands in the middle of this large hall.  It is covered
-with toppled tankards, dirty plates and cutlery.  A staircase leads up 
+with toppled tankards, dirty plates and cutlery.  A staircase leads up
 through an archway to the east, while the main entrance to the fortress is
 north.
 ~
@@ -2967,7 +2967,7 @@ D4
 S
 #25481
 Stairwell~
-A narrow spiral staircase winds down from here, while an archway north 
+A narrow spiral staircase winds down from here, while an archway north
 opens into a large, narrow common room.
 ~
 0 1|8 0
@@ -3019,8 +3019,8 @@ D0
 S
 #25484
 Laboratory~
-Metal junk and glassware clutters a large bench that spreads about the 
-west, north and east sides of the room.  Many books and pamphlets lay 
+Metal junk and glassware clutters a large bench that spreads about the
+west, north and east sides of the room.  Many books and pamphlets lay
 stacked in piles, and many charts have been plastered to the walls.
 ~
 0 1|8 0
@@ -3179,7 +3179,7 @@ S
 #25493
 Mudflats~
 You wade through the thick, stinking mud, which steams in several places.
-Dirty puddles float of the surface of the filth.  You can travel north, 
+Dirty puddles float of the surface of the filth.  You can travel north,
 east and south along the flats.
 ~
 0 0 4

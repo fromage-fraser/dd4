@@ -126,8 +126,8 @@ A Copper Dragon is here, waiting to take to the skies with its master.
 {y\_____--.  '`  `               __..-.  \     . (   < _...-----..._   `.
 {y \_,--..__. \\ .-`.\----'';``,..-.__ \  \      ,`_. `.,-'`--'`---''`.  )
 {y           `.\`.\  `_.-..' ,'   _,-..'  /..,-''(, ,' ; ( _______`___..'__
-{y                   ((,(,__(    ((,(,__,'  ``'-- `'`.(\  `.,..______  
-{y                                                     
+{y                   ((,(,__(    ((,(,__,'  ``'-- `'`.(\  `.,..______
+{y
 ``--------..._``--.__{X
 ~
 2|64|131072 8|32|128|2048|524288|16777216 0 S
@@ -318,17 +318,17 @@ A chatty critter wants to tell you a lot.
 {x                \ \__   / |
 {x                /- _ `-/  '
 {x               (/\/ \ \   /\
-{x               / /   | `    \ 
-{x               O O   )      |   
-{x               `-^--'`<     ' 
-{x              (_.)  _ )    /  
-{x               `.___/`    /  
+{x               / /   | `    \
+{x               O O   )      |
+{x               `-^--'`<     '
+{x              (_.)  _ )    /
+{x               `.___/`    /
 {x                 `-----' /
-{x    <----.     __ / __   \  
+{x    <----.     __ / __   \
 {x    <----|====O)))==) \) /====0
 {x    <----'    `--' `.__,' \
 {x                 |         |
-{x                  \       / 
+{x                  \       /
 {x              ____( (_   / \______
 {x            ,'  ,----'   |        \
 {x            `--{__________)       \/
@@ -459,7 +459,7 @@ A hulking {rbea{gst{x slathers as it tries to rip you apart.
 {x              |     |
 {x              (6___6)
 
-{x               `---`	
+{x               `---`
 ~
 32|64 8|32|32768|8388608 0 S
 64 0 0 0d0+0 0d0+0
@@ -549,7 +549,7 @@ twitching vine~
 a twitching vine~
 A twitching {gvi{one{x thrashes about the ground.
 ~
-It shoots out from the surrounding jungle like lightning so you have no time 
+It shoots out from the surrounding jungle like lightning so you have no time
 to really discern any characteristics.
 ~
 32|64 8|32|32768|8388608 0 S
@@ -716,9 +716,9 @@ metal muncher~
 a metal muncher~
 A creature rummages around picking up metallic objects and consuming them.
 ~
-{x                    //////////////_              
-{x        __\\\\@   //^^        _-    \///////   
-{x  _____((_     \-/ ____/ /   {   { \\       }    
+{x                    //////////////_
+{x        __\\\\@   //^^        _-    \///////
+{x  _____((_     \-/ ____/ /   {   { \\       }
 {x 0__________\\\---//____/----//__|-^\\\\\\\\
 ~
 2|64 0 0 S
@@ -762,13 +762,13 @@ frozen mist~
 a Frozen Mist~
 A {cFrozen{x Mist hovers around here.
 ~
-        {c                                 
-                         (`  ).                   _          
-                        (     ).              .:(`  )`.      
-                       _(       '`.          :(   .    )     
-                   .=(`(      .   )     .--  `.  (    ) )     
-       .--.       ((    (..__.:'-'   .+(   )   ` _`  ) )                
-     _(    `.     `(       ) )       (   .  )     (   )  ._  
+        {c
+                         (`  ).                   _
+                        (     ).              .:(`  )`.
+                       _(       '`.          :(   .    )
+                   .=(`(      .   )     .--  `.  (    ) )
+       .--.       ((    (..__.:'-'   .+(   )   ` _`  ) )
+     _(    `.     `(       ) )       (   .  )     (   )  ._
     (        )      ` __.:'   )     (   (   ))     `-'.-(`  )
    ( `  .  )  )  ( )       --'       `- __.'         :(      ))
     `--(___.-'  (_.'          .')                    `(    )  ))
@@ -870,9 +870,9 @@ Manticore~
 a Manticore~
 A manticore rises up and speaks.
 ~
-{X  
+{X
 {X   ((((()))))
-{X  ((( #  # )))   
+{X  ((( #  # )))
 {X (((        )))    ROAR
 {X  ((( ++++ ))) ___/
 {X   ((((()))))
@@ -935,7 +935,7 @@ A Valig sits on the ceiling.
 {x           .  __' '__  .
 {x     _ ,_._\.( d\_/b )./_._, _
 {x    ( '  '  ;'  .-.  ';  '  ` )
-{x    ' .' '. (_, /¯\ ,_) .' '. '
+{x    ' .' '. (_, /ï¿½\ ,_) .' '. '
 {x   .  .\`--.,| _____ |,.--'/.  .
 {x   .  . '.   \ " """ /   .' .  .
 {x  ,  .   \'-.,'-._.-',.-'/   .  ,
@@ -1014,8 +1014,8 @@ mpoload 55070
 give plat $n
 ~
 >give_prog simple metal key~
-say {cAh, it's the one true key...I'd think you'd want to find{x 
-say {cthe lock that matches it, if and when it exists anyway,{x 
+say {cAh, it's the one true key...I'd think you'd want to find{x
+say {cthe lock that matches it, if and when it exists anyway,{x
 say {cbut you mortals are an odd bunch. Here you go.{x
 mpjunk all
 mpoload 55064 5
@@ -1030,12 +1030,12 @@ give coin $n
 mpjunk all
 ~
 >give_prog shard sword~
-say {cOh yes, this is quite a powerful number. Too bad about all 
-say {cthose {clittle conflicting powers on it, though. Perhaps I 
+say {cOh yes, this is quite a powerful number. Too bad about all
+say {cthose {clittle conflicting powers on it, though. Perhaps I
 say {ccan shave some of them off...{x
 mpecho The trader waves his hands over the shard.
 mpecho The shard breaks into 2 pieces with a {Yflash{X.
-say {cAh, Well, not exactly what I was going for... but here you 
+say {cAh, Well, not exactly what I was going for... but here you
 say {cgo{x.
 mpjunk all
 mpoload 55066 15
@@ -1163,7 +1163,7 @@ else
 say {dWelcome, $n. You must find me my sword.{x
 say {dThat bastard Tynan trapped Vesttah and I here.{x
 say {dWith my sword I can get out of here!{x
-say {dPlease, find it.{x 
+say {dPlease, find it.{x
 endif
 ~
 >give_prog Adonis sword~
@@ -1238,7 +1238,7 @@ else
 say {dWelcome, $n. You must find me my sword.{x
 say {dThat bastard Tynan trapped Vesta and I here.{x
 say {dWith my sword I can get out of here.{x
-say {dPlease, find it.{x 
+say {dPlease, find it.{x
 ~
 >give_prog Adonis sword~
 say {dThank you... you FOOL!
@@ -2389,7 +2389,7 @@ A void wand erases a bit of reality here.~
 #55000
 In the {gjungle{x~
 A jungle presses in all around you and things cry out in pain in the
-distance.	
+distance.
 ~
 0 1|8192 3
 D 0
@@ -2432,7 +2432,7 @@ S
 
 #55001
 In the {gjungle{x~
-The {gjungle{x presses in around you, and you hear...something...moving.	
+The {gjungle{x presses in around you, and you hear...something...moving.
 ~
 0 1|8192 3
 D 0
@@ -2455,7 +2455,7 @@ S
 
 #55002
 In the {gjungle{x~
-Sounds whirl through the green landscape and shadows creep toward you.	
+Sounds whirl through the green landscape and shadows creep toward you.
 ~
 0 1|8192 3
 D 0
@@ -2478,8 +2478,8 @@ S
 
 #55003
 In the {gjungle{x~
-Bugs crawl down the vines and leaves around you and larger {rthings{x keep 
-just out of view...for now.	
+Bugs crawl down the vines and leaves around you and larger {rthings{x keep
+just out of view...for now.
 ~
 0 1|8192 3
 D 0
@@ -2502,8 +2502,8 @@ S
 
 #55004
 In the {gjungle{x~
-The {ggreen{x is almost uninterrupted but for the flittering shadows that 
-streak by in a wave of apprehension.	
+The {ggreen{x is almost uninterrupted but for the flittering shadows that
+streak by in a wave of apprehension.
 ~
 0 1|8192 3
 D 0
@@ -2526,7 +2526,7 @@ S
 
 #55005
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -2550,7 +2550,7 @@ S
 
 #55006
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -2574,7 +2574,7 @@ S
 
 #55007
 In the {gjungle{x~
-You spot some {rblood{x splattered across the green of the all encompassing 
+You spot some {rblood{x splattered across the green of the all encompassing
 jungle. What did that?
 ~
 0 1|8192 3
@@ -2598,7 +2598,7 @@ S
 
 #55008
 In the {gjungle{x~
-Something seems to be following you up in the trees. You can hear it. However, 
+Something seems to be following you up in the trees. You can hear it. However,
 when you look up, there's nothing there...
 ~
 0 1|8192 3
@@ -2641,7 +2641,7 @@ S
 
 #55010
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -2665,7 +2665,7 @@ S
 
 #55011
 In the {gjungle{x~
-You hear creatures growling just out of view. Of course, anything not right in 
+You hear creatures growling just out of view. Of course, anything not right in
 front of you is out of view...
 ~
 0 1|8192 3
@@ -2693,7 +2693,7 @@ S
 
 #55012
 In the {gjungle{x~
-Shadows unnaturally stretch across the landscape at all angles and you hear 
+Shadows unnaturally stretch across the landscape at all angles and you hear
 things growl and roar, you think...
 ~
 0 1|8192 3
@@ -2748,7 +2748,7 @@ S
 
 #55014
 In the {gjungle{x~
-You spot some {rblood{x splattered across the green of the all encompassing 
+You spot some {rblood{x splattered across the green of the all encompassing
 jungle. What did that?
 ~
 0 1|8192 3
@@ -2776,7 +2776,7 @@ S
 
 #55015
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -2804,7 +2804,7 @@ S
 
 #55016
 In the {gjungle{x~
-Something seems to be following you up in the trees, you can hear it. However, 
+Something seems to be following you up in the trees, you can hear it. However,
 when you look up, there's nothing there...
 ~
 0 1|8192 3
@@ -2832,7 +2832,7 @@ S
 
 #55017
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -2860,7 +2860,7 @@ S
 
 #55018
 In the {gjungle{x~
-Shadows unnaturally stretch across the landscape in all angles, and you hear 
+Shadows unnaturally stretch across the landscape in all angles, and you hear
 things growl and roar, you think...
 ~
 0 1|8192 3
@@ -2888,7 +2888,7 @@ S
 
 #55019
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -2912,7 +2912,7 @@ S
 
 #55020
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -2936,7 +2936,7 @@ S
 
 #55021
 In the {gjungle{x~
-You see a trail of {rblood{x across the path you are trying to follow. You 
+You see a trail of {rblood{x across the path you are trying to follow. You
 don't see anything dead near by, but then, you don't see much of anything.
 ~
 0 1|8192 3
@@ -2964,7 +2964,7 @@ S
 
 #55022
 In the {gjungle{x~
-You see a lot of {ggreen{x, but not much else. This place is a huge maze, 
+You see a lot of {ggreen{x, but not much else. This place is a huge maze,
 apparently.
 ~
 0 1|8192 3
@@ -2992,7 +2992,7 @@ S
 
 #55023
 In the {gjungle{x~
-Something swoops by over head and you get the distinct impression it had nice 
+Something swoops by over head and you get the distinct impression it had nice
 long razor-sharp claws.
 ~
 0 1|8192 3
@@ -3020,7 +3020,7 @@ S
 
 #55024
 In the {gjungle{x~
-Shadows unnaturally stretch across the landscape at all angles, and you hear 
+Shadows unnaturally stretch across the landscape at all angles, and you hear
 things growl and roar, you think...
 ~
 0 1|8192 3
@@ -3048,7 +3048,7 @@ S
 
 #55025
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -3076,7 +3076,7 @@ S
 
 #55026
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -3131,7 +3131,7 @@ S
 
 #55028
 In the {gjungle{x~
-You spot some {rblood{x splattered across the green of the all encompassing 
+You spot some {rblood{x splattered across the green of the all encompassing
 jungle. What did that?
 ~
 0 1|8192 3
@@ -3159,7 +3159,7 @@ S
 
 #55029
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -3183,7 +3183,7 @@ S
 
 #55030
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -3203,7 +3203,7 @@ S
 
 #55031
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -3274,7 +3274,7 @@ S
 
 #55034
 In the {gjungle{x~
-You spot some {rblood{x splattered across the green of the all encompassing 
+You spot some {rblood{x splattered across the green of the all encompassing
 jungle. What did that?
 ~
 0 1|8192 3
@@ -3303,7 +3303,7 @@ S
 
 #55035
 In the {gjungle{x~
-The jungle sprawls in all directions and various guttural noises in the 
+The jungle sprawls in all directions and various guttural noises in the
 distance make it to your ears...
 ~
 0 1|8192 3
@@ -3332,7 +3332,7 @@ S
 
 #55036
 In the {gjungle{x~
-Shadows unnaturally stretch across the landscape at all angles, and you hear 
+Shadows unnaturally stretch across the landscape at all angles, and you hear
 things growl and roar, you think...
 ~
 0 1|8192 3
@@ -3379,7 +3379,7 @@ S
 
 #55038
 In the {gjungle{x~
-Something seems to be following you up in the trees, you can hear it. However, 
+Something seems to be following you up in the trees, you can hear it. However,
 when you look up, there's nothing there...
 ~
 0 1|8192 3
@@ -3403,7 +3403,7 @@ S
 
 #55039
 In the {gjungle{x~
-Something slams into your back, but when you whirl around you catch only a 
+Something slams into your back, but when you whirl around you catch only a
 glimpse of a dark shape disappearing into the dense jungle.
 ~
 0 1|8192 3
@@ -3423,7 +3423,7 @@ S
 
 #55040
 Way out of the jungle~
-The jungle finally starts to thin out here, leading towards what looks like a 
+The jungle finally starts to thin out here, leading towards what looks like a
 clearing to the north.
 ~
 0 4|8192 2
@@ -3447,7 +3447,7 @@ S
 
 #55041
 Way out of the jungle~
-The jungle finally starts to thin out here, leading towards what looks like a 
+The jungle finally starts to thin out here, leading towards what looks like a
 clearing to the north.
 ~
 0 4|8192 2
@@ -3527,7 +3527,7 @@ S
 
 #55045
 A small grove~
-You step into a small grove of trees that spread east and west. To the north 
+You step into a small grove of trees that spread east and west. To the north
 you see a darkness that may be the opening to a cave or something.
 ~
 0 1|8192 3
@@ -3551,7 +3551,7 @@ S
 
 #55046
 A small grove~
-You step into a small grove of trees that spread east and west. To the north 
+You step into a small grove of trees that spread east and west. To the north
 you see a darkness that may be the opening to a cave or something.
 ~
 0 1|8192 3
@@ -3571,7 +3571,7 @@ S
 
 #55047
 A small grove~
-You come across a rather hostile creature, but not in the physical sense...for 
+You come across a rather hostile creature, but not in the physical sense...for
 now, anyway.
 ~
 0 1|8192 3
@@ -3583,7 +3583,7 @@ S
 
 #55048
 Large cavern~
-You step into a large open cavern. It LOOKS safe enough...the odd door towards 
+You step into a large open cavern. It LOOKS safe enough...the odd door towards
 the back is {yglowing{x slightly, though.
 ~
 0 1|8|8192 0
@@ -3599,7 +3599,7 @@ S
 
 #55049
 Large cavern~
-You step into another large open cavern. This one has a glowing door in the 
+You step into another large open cavern. This one has a glowing door in the
 back as well.
 ~
 0 1|8|8192 0
@@ -3655,7 +3655,7 @@ S
 
 #55051
 Stone steps~
-Stone steps rise up from here, apparently leading up to another floor of the 
+Stone steps rise up from here, apparently leading up to another floor of the
 temple. If this is, in fact, a temple...
 ~
 0 4|8|8192 0
@@ -3694,8 +3694,8 @@ S
 
 #55053
 A temple hallway~
-It appears you're in some sort of temple. It seems to be in fairly good 
-condition, except for the slight slash marks here and there and a splatter of 
+It appears you're in some sort of temple. It seems to be in fairly good
+condition, except for the slight slash marks here and there and a splatter of
 {rblood{x...
 ~
 0 8|8192 0
@@ -3719,8 +3719,8 @@ S
 
 #55054
 A temple hallway~
-The temple runs on, as do the signs that there's a battle taking place or has 
-recently done so. You don't hear the sound of fighting at the moment so maybe 
+The temple runs on, as do the signs that there's a battle taking place or has
+recently done so. You don't hear the sound of fighting at the moment so maybe
 it's over. For now.
 ~
 0 8|8192 0
@@ -3756,9 +3756,9 @@ S
 
 #55056
 Mixture room~
-This room seems to contain various ingredients someone used to make various 
-concoctions. Doubtless, some of them were pretty nasty. The different vials of 
-liquid line the walls on small shelves, while pots of different colors of 
+This room seems to contain various ingredients someone used to make various
+concoctions. Doubtless, some of them were pretty nasty. The different vials of
+liquid line the walls on small shelves, while pots of different colors of
 powder sit on a bench.
 ~
 0 8|8192 0
@@ -3770,7 +3770,7 @@ S
 
 #55057
 A destroyed room~
-There's a burning table in this room as well as rubble on the ground. This 
+There's a burning table in this room as well as rubble on the ground. This
 appears to be a sure sign that something has gone on, and recently.
 ~
 0 8|8192 0
@@ -3794,8 +3794,8 @@ S
 
 #55059
 Fallen in roof~
-Here there is a definite sign of a battle of some sort having been fought. 
-There are scorch marks on the top of the walls and the roof seems to have been 
+Here there is a definite sign of a battle of some sort having been fought.
+There are scorch marks on the top of the walls and the roof seems to have been
 blasted apart and has fallen in.
 ~
 0 8|8192 0
@@ -3807,8 +3807,8 @@ S
 
 #55060
 A bright room~
-The walls of this room seem to be glowing with some sort of...energy. It's 
-much brighter than the other rooms so far, but then, the prior rooms aren't 
+The walls of this room seem to be glowing with some sort of...energy. It's
+much brighter than the other rooms so far, but then, the prior rooms aren't
 that bright.
 ~
 0 8|8192 0
@@ -3824,7 +3824,7 @@ S
 
 #55061
 A stone hallway~
-A stone walled hallway runs along here, There are cracks and chips in it that 
+A stone walled hallway runs along here, There are cracks and chips in it that
 appear to be fresh.
 ~
 0 8|8192 0
@@ -3840,7 +3840,7 @@ S
 
 #55062
 Signs of battle~
-There's no mistaking the signs of battle this time. The room yields the fresh 
+There's no mistaking the signs of battle this time. The room yields the fresh
 corpse of... something and a burning table that hasn't been long aflame.
 ~
 0 8|8192 0
@@ -3852,7 +3852,7 @@ S
 
 #55063
 A stone hallway~
-A stone walled hallway runs along here, there are cracks and chips in it that 
+A stone walled hallway runs along here, there are cracks and chips in it that
 appear to be fresh.
 ~
 0 8|8192 0
@@ -3888,7 +3888,7 @@ S
 
 #55065
 Dark hallway~
-The hallway suddenly turns near to {dpitch black{x here. It feels {ccolder{x, 
+The hallway suddenly turns near to {dpitch black{x here. It feels {ccolder{x,
 as well. Something isn't right...
 ~
 0 8|8192 0
@@ -3904,7 +3904,7 @@ S
 
 #55066
 A stone hallway~
-A stone walled hallway runs along here, there are cracks and chips in it that 
+A stone walled hallway runs along here, there are cracks and chips in it that
 appear to be fresh.
 
 A door with a large gouge in it sits to the east.
@@ -3926,7 +3926,7 @@ S
 
 #55067
 Broken mirrors~
-This room contains half a dozen mirrors, all smashed. A few of them look to 
+This room contains half a dozen mirrors, all smashed. A few of them look to
 have been thrown...
 ~
 0 8|8192 0
@@ -3958,7 +3958,7 @@ S
 
 #55069
 A stone hallway~
-A stone walled hallway runs along here. There are cracks and chips in it that 
+A stone walled hallway runs along here. There are cracks and chips in it that
 appear to be fresh.
 ~
 0 8|8192 0
@@ -4009,7 +4009,7 @@ S
 
 #55072
 Death~
-My GOD! They're horrifying! They're ravenous! They're really {dANGRY 
+My GOD! They're horrifying! They're ravenous! They're really {dANGRY
 SQUIRRELS{x! Don't piss them off!
 ~
 0 8|8192 0
@@ -4021,7 +4021,7 @@ S
 
 #55073
 A warning~
-Some kind of creature stands up from its resting position as you enter the 
+Some kind of creature stands up from its resting position as you enter the
 room. It towers over you and its voice booms out with a warning.
 ~
 0 8|8192 0
@@ -4037,7 +4037,7 @@ S
 
 #55074
 A sense of doom~
-Suddenly, a sense of...wrongness washes over you. You can just feel something 
+Suddenly, a sense of...wrongness washes over you. You can just feel something
 is wrong ahead. Your steps falter for a moment...
 ~
 0 8|8192 0
@@ -4053,7 +4053,7 @@ S
 
 #55075
 Damaged hall~
-The hallway here is covered in hacks and slashes, while large holes are here 
+The hallway here is covered in hacks and slashes, while large holes are here
 and there.
 ~
 0 8|8192 0
@@ -4069,7 +4069,7 @@ S
 
 #55076
 An unseen force~
-You get the feeling something’s watching you, but this room isn't very big and
+You get the feeling somethingï¿½s watching you, but this room isn't very big and
 you see nothing...
 ~
 0 8|8192 0
@@ -4101,8 +4101,8 @@ S
 
 #55078
 A cracked wall~
-The east wall here has been struck by a tremendous force, apparently. There's 
-a huge crack running through the center and up out of the room. It looks large 
+The east wall here has been struck by a tremendous force, apparently. There's
+a huge crack running through the center and up out of the room. It looks large
 enough to easily enter and climb.
 ~
 0 8|8192 0
@@ -4118,8 +4118,8 @@ S
 
 #55099
 Some kind of vault~
-Climbing out of the crack leads you to this room full of money. There doesn't 
-seem to be any other way out other than the same crack you followed in to 
+Climbing out of the crack leads you to this room full of money. There doesn't
+seem to be any other way out other than the same crack you followed in to
 here.
 ~
 0 8|8192 0
@@ -4127,9 +4127,9 @@ S
 
 #55079
 Aged room~
-As you step into this room you almost fall as the floor gives away at your 
-feet. Looking around, the room appears to be....very old. It appears that 
-whatever happened to the rest of this place to hold it in time missed this 
+As you step into this room you almost fall as the floor gives away at your
+feet. Looking around, the room appears to be....very old. It appears that
+whatever happened to the rest of this place to hold it in time missed this
 room for some reason. The room runs on to the east.
 ~
 0 8|8192 0
@@ -4145,8 +4145,8 @@ S
 
 #55080
 Rotted floor~
-In this part of the room the floor is almost completely gone, exposing beams 
-and holes to what most likely is the floor below. You pay extra attention to 
+In this part of the room the floor is almost completely gone, exposing beams
+and holes to what most likely is the floor below. You pay extra attention to
 your footing as you cross.
 ~
 0 8|8192 0
@@ -4162,7 +4162,7 @@ S
 
 #55081
 Toppled statues~
-Large statues of someone that is no longer recognizable lie toppled about the 
+Large statues of someone that is no longer recognizable lie toppled about the
 floor in this room.
 ~
 0 8|8192 0
@@ -4178,7 +4178,7 @@ S
 
 #55082
 Stone hallway~
-A stone walled hallway runs along here. There are cracks and chips in it that 
+A stone walled hallway runs along here. There are cracks and chips in it that
 appear to be fresh.
 ~
 0 8|8192 0
@@ -4194,7 +4194,7 @@ S
 
 #55083
 A noise from the north~
-As you come to this intersection you faintly here a voice coming from the 
+As you come to this intersection you faintly here a voice coming from the
 north. You can't quite make out what it's saying.
 ~
 0 8|8192 0
@@ -4214,7 +4214,7 @@ S
 
 #55084
 Stone hallway~
-A stone walled hallway runs along here. There are cracks and chips in it that 
+A stone walled hallway runs along here. There are cracks and chips in it that
 appear to be fresh.
 
 A door hangs slightly ajar to the east.
@@ -4251,8 +4251,8 @@ S
 
 #55086
 Piles of items~
-This part of the hallway seems to have kept with the flow of time, as well. 
-However, it appears only extremely dusty and old, rather than deteriorated. 
+This part of the hallway seems to have kept with the flow of time, as well.
+However, it appears only extremely dusty and old, rather than deteriorated.
 Oddly, there is a pile of items strewn across the hall that look fairly new...
 ~
 0 4|8|8192 0
@@ -4268,10 +4268,10 @@ S
 
 #55087
 A trader~
-Well, this explains the items. Apparently some sort of God-like being has 
-taken up residence in this part of the temple and he's interested in Trade. 
-The logic of him being a God-like being wanting to trade items and him 
-choosing to do so here escapes you. It must be one of those things mere 
+Well, this explains the items. Apparently some sort of God-like being has
+taken up residence in this part of the temple and he's interested in Trade.
+The logic of him being a God-like being wanting to trade items and him
+choosing to do so here escapes you. It must be one of those things mere
 mortals aren't meant to understand.
 ~
 0 8|8192 0
@@ -4343,8 +4343,8 @@ S
 
 #55091
 A tranquil room~
-This room seems oddly...tranquil. There doesn't look to be much damage. There 
-seems to be old slashes and blast marks on the wall, but they're minor 
+This room seems oddly...tranquil. There doesn't look to be much damage. There
+seems to be old slashes and blast marks on the wall, but they're minor
 compared to some of what you've seen so far.
 ~
 0 4|8|8192 0
@@ -4360,9 +4360,9 @@ S
 
 #55092
 Adonis~
-This room is in perfect condition. It's covered in a breathtaking {wwhite{x 
-everywhere you look. A figure stands in the middle of the room, in a blinding 
-outfit complete with a slim blade of the purest white that matches the room. 
+This room is in perfect condition. It's covered in a breathtaking {wwhite{x
+everywhere you look. A figure stands in the middle of the room, in a blinding
+outfit complete with a slim blade of the purest white that matches the room.
 There seems to be a slight alcove to the east.
 ~
 0 8|8192 0
@@ -4390,9 +4390,9 @@ S
 
 #55094
 A turbulent room~
-The very fabric of reality seems to be shifting in this room. It's a chaotic 
-storm of madness. Everywhere you look forces seem to crash, split, shift. 
-There's a single spot of calmness- a small area around a sword that's sticking 
+The very fabric of reality seems to be shifting in this room. It's a chaotic
+storm of madness. Everywhere you look forces seem to crash, split, shift.
+There's a single spot of calmness- a small area around a sword that's sticking
 out of the ground in the middle of the room.
 ~
 0 8|8192 0
@@ -4431,8 +4431,8 @@ S
 
 #55100
 Traders Safe Room~
-This must be where the god-like Trader keeps all his inventory. Some of the 
-stuff seems to have extra security measures and vanishes upon your entry, but 
+This must be where the god-like Trader keeps all his inventory. Some of the
+stuff seems to have extra security measures and vanishes upon your entry, but
 a few items remain.
 ~
 0 8|8192 0
@@ -4463,8 +4463,8 @@ S
 
 #55103
 A tranquil room~
-This room seems oddly...tranquil. There doesn't look to be much damage. There 
-seems to be old slashes and blast marks on the wall, but they're minor 
+This room seems oddly...tranquil. There doesn't look to be much damage. There
+seems to be old slashes and blast marks on the wall, but they're minor
 compared to some of what you've seen so far.
 ~
 0 4|8|8192 0
@@ -4480,9 +4480,9 @@ S
 
 #55104
 Alcove~
-This section of the room is covered in white as well. However, when you get 
-closer to the wall you feel a slight tingle. After a moment it goes away. 
-Nothing seems to be changed...The only thing that seems to stand out from all 
+This section of the room is covered in white as well. However, when you get
+closer to the wall you feel a slight tingle. After a moment it goes away.
+Nothing seems to be changed...The only thing that seems to stand out from all
 the pure, holy whiteness is a softly {rp{xul{Rs{xing rock by the wall.
 ~
 0 8|8192 0
@@ -4494,9 +4494,9 @@ S
 
 #55105
 Alcove~
-This section of the room is covered in white as well. However, when you get 
-closer to the wall you feel a slight tingle. After a moment it goes away. 
-Nothing seems to be changed...The only thing that seems to stand out from all 
+This section of the room is covered in white as well. However, when you get
+closer to the wall you feel a slight tingle. After a moment it goes away.
+Nothing seems to be changed...The only thing that seems to stand out from all
 the pure, holy whiteness is a softly {rp{xul{Rs{xing rock by the wall.
 ~
 0 8|8192 0
