@@ -4143,7 +4143,7 @@ In the Pool~
 You are swimming along a narrow underwater passage. A strong current suddenly
 grabs you and drags you forward!
 ~
-0 1|4|8|32768 11
+0 1|4|8|32768 6
 D0
 ~
 ~
@@ -4158,7 +4158,7 @@ The Other Side~
 The current carries you under a wall and into another area. Up above you can
 see the surface, and you strike out for it.
 ~
-0 1|4|8 11
+0 1|4|8 6
 D2
 ~
 ~
