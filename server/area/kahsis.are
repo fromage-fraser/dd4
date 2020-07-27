@@ -380,7 +380,7 @@ replaced his eyes, and for a second you feel you hear a horrible screaming.
 #25028
 kahsis queen~
 Kahsis~
-Kahsis, Queen of the Serpents, sneers at you.  
+Kahsis, Queen of the Serpents, sneers at you.
 ~
 The Queen appears to be human, or at least has assumed a human form.  She is
 darkly beautiful and lounges naked between her serpent attendants, smiling at
@@ -419,7 +419,7 @@ a glass vial full of clear liquid~
 A thin glass vial full of a viscous clear liquid sits here.~
 ~
 10 0 1|16384
-40~ heal~ heal~ giant strength~ 
+40~ heal~ heal~ giant strength~
 5 0 0
 E
 vial potion bottle~
@@ -433,7 +433,7 @@ a Keeper's warhammer~
 A collosal warhammer rests on the floor, glowing faintly.~
 ~
 5 1|64 1|8192
-45~ 25~ 40~ 8~ 
+45~ 25~ 40~ 8~
 40 0 0
 A
 18 3
@@ -442,7 +442,7 @@ A
 E
 warhammer hammer~
 The warhammer has a heavy steel head and long handle, runes etched in both.
-Glowing faintly, the enchanted weapon sparks and fizzes as you touch the 
+Glowing faintly, the enchanted weapon sparks and fizzes as you touch the
 metal.
 ~
 #25002
@@ -451,7 +451,7 @@ a Keeper's armband~
 A thick armband gleams below you.~
 ~
 9 1|64 1|4096
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 5 0 0
 A
 19 1
@@ -467,7 +467,7 @@ a Kahsis scimitar~
 A long curved scimitar ending in a snake's head lies here.~
 ~
 5 0 1|8192
-40~ 25~ 35~ 3~ 
+40~ 25~ 35~ 3~
 10 0 0
 A
 2 2
@@ -483,7 +483,7 @@ a Kahsis mail shirt~
 A green mail shirt lies here.~
 ~
 9 0 1|8
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 15 0 0
 A
 2 2
@@ -500,7 +500,7 @@ a Kahsis shield~
 A circular shield carrying the design of a snake sits on the ground.~
 ~
 9 0 1|512
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 10 0 0
 E
 shield~
@@ -514,7 +514,7 @@ a Kahsis mace~
 A long handled mace rests here.~
 ~
 5 0 1|8192
-0~ 25~ 40~ 8~ 
+0~ 25~ 40~ 8~
 25 0 0
 A
 18 5
@@ -531,7 +531,7 @@ a serpent skin~
 A skin of the serpent lies on the floor.~
 ~
 9 0 1|1024
-14~ 1~ 6~ 11~ 
+14~ 1~ 6~ 11~
 5 0 0
 A
 2 3
@@ -553,7 +553,7 @@ a Kahsis helmet~
 You spot an oddly shaped helmet and visor here.~
 ~
 9 0 1|16
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 10 0 0
 E
 helmet~
@@ -565,7 +565,7 @@ pain's spiked axe~
 A gigantic double headed and spiked axe hovers in the air before you.~
 ~
 5 1|64|512|1024 1|8192
-0~ 40~ 50~ 1~ 
+0~ 40~ 50~ 1~
 50 0 0
 A
 19 10
@@ -582,7 +582,7 @@ a symbol of pain~
 A throbbing steel symbol hangs from a neckchain.~
 ~
 9 2|64 1|4
-15~ 1~ 6~ 11~ 
+15~ 1~ 6~ 11~
 5 0 0
 A
 19 7
@@ -600,7 +600,7 @@ a totem of blood seeking~
 A brilliant red stone is set on an ivory handle.~
 ~
 4 2|64|4096 1|16384
-50~ 2~ 2~ fire breath~ 
+50~ 2~ 2~ fire breath~
 15 0 0
 A
 18 10
@@ -618,7 +618,7 @@ some flowing robes~
 Luxuriant robes lay on the floor.~
 ~
 9 0 1|8
-14~ 1~ 6~ 11~ 
+14~ 1~ 6~ 11~
 10 0 0
 A
 23 -5
@@ -635,7 +635,7 @@ a ring of the snake~
 A snake biting its own tail forms a silver ring.~
 ~
 9 0 1|2
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 5 0 0
 A
 12 50
@@ -652,7 +652,7 @@ a granite staff~
 A length of granite has been fashioned into a weighty staff.~
 ~
 4 0 1|16384
-45~ 3~ 3~ lightning bolt~ 
+45~ 3~ 3~ lightning bolt~
 25 0 0
 A
 19 4
@@ -662,7 +662,7 @@ E
 wavy staff~
 This heavy staff has been crafted from solid granite.  The worksmanship is
 extraordinary: the staff has a clawed foot similar to a bird's and a large
-open mouth surrounding a comfortable handle.  The staff is virtually 
+open mouth surrounding a comfortable handle.  The staff is virtually
 weightless and almost certainly enchanted.
 ~
 #25015
@@ -670,12 +670,12 @@ corpse body~
 a bloated corpse~~
 ~
 15 0 0
-100~ 0~ -1~ 11~ 
+100~ 0~ -1~ 11~
 50 0 0
 E
 corpse body bloated~
-The corpse is rotting and fly blown.  The smell is terrible, and you gag.  
-Makeshift leather armour and rusty mail are stil wrapped around the body of 
+The corpse is rotting and fly blown.  The smell is terrible, and you gag.
+Makeshift leather armour and rusty mail are stil wrapped around the body of
 this unfortunate adventurer.
 ~
 #25016
@@ -684,7 +684,7 @@ some stone rubble~
 Rubble and masonry litter the floor.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 30 0 0
 E
 rubble rock~
@@ -696,7 +696,7 @@ shelf shelves~
 some shelves~~
 ~
 15 0 0
-100~ 0~ -1~ 11~ 
+100~ 0~ -1~ 11~
 100 0 0
 E
 shelves shelf shelving~
@@ -709,7 +709,7 @@ a rusty hammer~
 A rusty tack hammer lies here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 7~ 
+0~ 1~ 6~ 7~
 5 0 0
 E
 hammer~
@@ -722,7 +722,7 @@ an blunt chisel~
 An ancient chisel wouldn't cut through butter in the summer.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 2~ 
+0~ 1~ 6~ 2~
 5 0 0
 E
 chisel~
@@ -734,7 +734,7 @@ a rusty spanner~
 You spot a rusty spanner here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 spanner~
@@ -747,7 +747,7 @@ some bones~
 Yellowed bones lie scattered on the ground.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 bones bone~
@@ -761,7 +761,7 @@ some broken furniture~
 Broken furniture lies on the ground.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 50 0 0
 E
 furniture~
@@ -773,7 +773,7 @@ some junk~
 Many items of junk sit here.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 20 0 0
 E
 junk trash~
@@ -787,7 +787,7 @@ an iron key~
 An iron key sits attached to a short chain.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key iron~
@@ -799,7 +799,7 @@ an amulet of passing~
 A brass amulet lays here.~
 ~
 18 1 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 amulet passing~
@@ -811,7 +811,7 @@ the Seal of Pain~
 You spy a curiously shaped piece of silvery metal.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 seal pain~
@@ -824,7 +824,7 @@ a locker~
 ~
 ~
 15 0 0
-100~ 5~ -1~ 11~ 
+100~ 5~ -1~ 11~
 100 0 0
 E
 lockers locker wooden~
@@ -836,7 +836,7 @@ an idol of the snake~
 A golden idol shaped as a rearing cobra stands here.~
 ~
 4 64 1|16384
-45~ 5~ 5~ intellect fortress~ 
+45~ 5~ 5~ intellect fortress~
 15 0 0
 A
 3 4
@@ -857,7 +857,7 @@ a vellum scroll~
 A piece of vellum has been burnt at the edges.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 vellum scroll~
@@ -881,12 +881,12 @@ a leather bound journal~
 A small, leather bound jounal rests here.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 journal book leather bound~
-The journal is well used and dog-eared.  The entries are written in the 
-common language, although several scrawled in foreign script are marked in 
+The journal is well used and dog-eared.  The entries are written in the
+common language, although several scrawled in foreign script are marked in
 the margins, and notes have been made.  You read selected entries of certain
 interest:
 
@@ -896,7 +896,7 @@ interest:
        be summoned for his counsel at once, now that the King has been executed
        and all the wizards released from prison."
 
-"11.7  Mord Maggard is worried that the Queen will use the bodies of the 
+"11.7  Mord Maggard is worried that the Queen will use the bodies of the
        3rd battalion for further transformations.  Aesthesiel has completed
        preparations for raising the seal at the great door to the hive, but
        has asked for the protection of the 5th under Gurjief.  Mord realises
@@ -908,7 +908,7 @@ a curved dagger~
 A curved dagger is serrated on both edges.~
 ~
 5 64 1|8192
-0~ 25~ 45~ 11~ 
+0~ 25~ 45~ 11~
 20 0 0
 A
 18 6
@@ -925,7 +925,7 @@ a ring of protection~
 A copper ring gleams from the floor.~
 ~
 9 64 1|2
-10~ 1~ 6~ 11~ 
+10~ 1~ 6~ 11~
 5 0 0
 A
 17 -25
@@ -941,7 +941,7 @@ some snakescale leggings~
 On the floor lays a pair of green snakescale leggings.~
 ~
 9 0 1|32
-14~ 1~ 6~ 11~ 
+14~ 1~ 6~ 11~
 25 0 0
 A
 14 50
@@ -962,7 +962,7 @@ some Kahsis plate armour~
 Robust plate armour stands here.~
 ~
 9 0 1|8
-15~ 1~ 6~ 11~ 
+15~ 1~ 6~ 11~
 40 0 0
 A
 17 -10
@@ -979,7 +979,7 @@ a golden sabre~
 A sleek golden sabre lays here.~
 ~
 5 64 1|8192
-0~ 30~ 50~ 11~ 
+0~ 30~ 50~ 11~
 35 0 0
 A
 19 7
@@ -997,7 +997,7 @@ the Sektahsis Keth~
 Brilliant white light streams from a pulsing crystal figurine.~
 ~
 1 1 1|16384
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 25 0 0
 A
 19 5
@@ -1020,7 +1020,7 @@ an engineer's hammer~
 A solid iron engineer's hammer rests here.~
 ~
 5 64 1|8192
-0~ 30~ 60~ 7~ 
+0~ 30~ 60~ 7~
 50 0 0
 A
 19 10
@@ -1040,7 +1040,7 @@ a green skullcap~
 An emerald green skullcap lays here.~
 ~
 9 0 1|16
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 5 0 0
 A
 17 -10
@@ -1062,7 +1062,7 @@ some emerald leggings~
 A pair of sturdy, emerald leggings sit here.~
 ~
 9 0 1|32
-16~ 1~ 6~ 11~ 
+16~ 1~ 6~ 11~
 30 0 0
 A
 13 50
@@ -1081,7 +1081,7 @@ a crocodile egg~
 A small white egg sits here.~
 ~
 26 0 1|16384
-45~ sanctuary~ heal~ refresh~ 
+45~ sanctuary~ heal~ refresh~
 5 0 0
 E
 egg crocodile~
@@ -1093,7 +1093,7 @@ anguish's bone spear~
 You spy a large, bone handled spear.~
 ~
 5 64|128|134217728 1|8192
-0~ 35~ 60~ 11~ 
+0~ 35~ 60~ 11~
 45 0 0
 A
 12 50
@@ -1115,7 +1115,7 @@ the Seal of Anguish~
 A bronze template lays on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 seal anguish~
@@ -1128,7 +1128,7 @@ some snake skulls~
 Snake skulls are threaded on a metal chain.~
 ~
 9 0 1|2048
-18~ 1~ 6~ 11~ 
+18~ 1~ 6~ 11~
 15 0 0
 A
 9 100
@@ -1147,7 +1147,7 @@ a totem of bone seeking~
 An ivory rod lays here.~
 ~
 3 2 1|16384
-50~ 3~ 3~ high explosive~ 
+50~ 3~ 3~ high explosive~
 15 0 0
 A
 19 6
@@ -1162,7 +1162,7 @@ a Kahsis lance~
 A long, bulky lance stands here.~
 ~
 5 134217728 1|8192
-0~ 25~ 45~ 11~ 
+0~ 25~ 45~ 11~
 35 0 0
 A
 18 5
@@ -1179,7 +1179,7 @@ a cleaver~
 A viscious cleaver lays on the floor.~
 ~
 5 0 1|8192
-0~ 30~ 50~ 1~ 
+0~ 30~ 50~ 1~
 40 0 0
 A
 19 8
@@ -1198,7 +1198,7 @@ a piece of metal pipe~
 A short piece of metal pipe has been tossed here.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 E
 pipe metal~
@@ -1211,7 +1211,7 @@ a cast iron key~
 A cast iron key is on the ground near your feet.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key cast iron~
@@ -1223,7 +1223,7 @@ some machine oil~
 You spy a bottle of thick black oil.~
 ~
 10 0 1|16384
-40~ cause serious~ poison~ blindness~ 
+40~ cause serious~ poison~ blindness~
 5 0 0
 E
 bottle black oil~
@@ -1236,7 +1236,7 @@ some brass claws~
 A pair of brass hydrolic claws lay here.~
 ~
 9 0 1|128
-18~ 1~ 6~ 11~ 
+18~ 1~ 6~ 11~
 40 0 0
 A
 1 4
@@ -1253,7 +1253,7 @@ a reptillian egg~
 A small slimy egg lays here.~
 ~
 26 0 1|16384
-45~ cure critical~ cure poison~ cure critical~ 
+45~ cure critical~ cure poison~ cure critical~
 5 0 0
 E
 egg reptillian~
@@ -1265,7 +1265,7 @@ a bracelet of the snake~
 On the ground lays a tarnished silver bracelet.~
 ~
 9 0 1|4096
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 10 0 0
 A
 18 4
@@ -1286,7 +1286,7 @@ a wand of wrath~
 A twisted wooden twig has been thrown to the ground.~
 ~
 3 0 1|16384
-50~ 5~ 5~ earthquake~ 
+50~ 5~ 5~ earthquake~
 5 0 0
 E
 wand wrath~
@@ -1298,7 +1298,7 @@ an ivory key~
 There is a tiny ivory key here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key ivory~
@@ -1310,7 +1310,7 @@ some emerald armguards~
 Deep green armguards lay in a pair.~
 ~
 9 0 1|256
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 20 0 0
 A
 17 -10
@@ -1325,7 +1325,7 @@ Agony's bastard sword~
 A glowing bastard sword hovers in the air before your eyes.~
 ~
 5 1|2|64 1|8192
-0~ 40~ 60~ 3~ 
+0~ 40~ 60~ 3~
 35 0 0
 A
 18 8
@@ -1346,7 +1346,7 @@ a totem of soul seeking~
 A brilliant green jewel has been carved into a rearing spider.~
 ~
 4 1 1|16384
-50~ 3~ 3~ frost breath~ 
+50~ 3~ 3~ frost breath~
 10 0 0
 A
 17 -15
@@ -1363,7 +1363,7 @@ a dwarven amulet~
 A small amulet lays on the flagstones.~
 ~
 9 0 1|4
-22~ 1~ 6~ 11~ 
+22~ 1~ 6~ 11~
 5 0 0
 A
 18 8
@@ -1380,7 +1380,7 @@ the Seal of Agony~
 A golden tablet gleams from below.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 seal agony~
@@ -1393,7 +1393,7 @@ a ruby key~
 A ruby and gold key sits here.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 key ruby~
@@ -1405,7 +1405,7 @@ the Rod of the Destructor~
 You spot a magnificent rod, inlaid with gems and gold, upon the floor.~
 ~
 4 64 1|16384
-55~ 10~ 10~ earthquake~ 
+55~ 10~ 10~ earthquake~
 30 0 0
 A
 3 10
@@ -1424,7 +1424,7 @@ some gold and platinum coins~
 Gold and platinum coins lay scattered over the floor.~
 ~
 20 0 1|16384
-0~ 0~ 114~ 8~ 
+0~ 0~ 114~ 8~
 20 0 0
 #25063
 tooth snake~
@@ -1432,7 +1432,7 @@ a snakes tooth~
 A huge snake tooth lays on the ground.~
 ~
 18 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 tooth snake~
@@ -1444,7 +1444,7 @@ a dwarven axe~
 A doubled headed dwarven axe stands here.~
 ~
 5 2|64 1|8192
-50~ 40~ 60~ 1~ 
+50~ 40~ 60~ 1~
 45 0 0
 A
 18 12
@@ -1466,7 +1466,7 @@ a nest~
 ~
 ~
 15 0 0
-100~ 0~ -1~ 11~ 
+100~ 0~ -1~ 11~
 100 0 0
 E
 mound mounds nest~
@@ -1479,7 +1479,7 @@ some coins~
 A pile of gold coins sits here.~
 ~
 20 0 1|8192
-0~ 0~ 89~ 0~ 
+0~ 0~ 89~ 0~
 20 0 0
 #25067
 crown golden~
@@ -1487,7 +1487,7 @@ a golden crown~
 You spy a golden crown, encrusted with jewels.~
 ~
 8 0 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #25068
 egg crocodile~
@@ -1601,7 +1601,7 @@ Stagnant Pool~
 You emerge abruptly into a clearing.  The air is pungent and filled with
 swarming insects that cloud your face.  A large, murky brown pool dominates
 the open grass.  It is filled with rotting forest litter, and thousands of
-flies and wasps buzz about the surface of the turgid water.  You can make 
+flies and wasps buzz about the surface of the turgid water.  You can make
 your way north and west through the forest.
 ~
 0 0 2
@@ -1758,7 +1758,7 @@ The Seal~
 You emerge into a large room.  It is layered in dust, and the air is stale and
 musty.  A huge door stands to the north: it is made of iron and is covered in
 symbols and writing.  As you step into the room the floor throbs with faint
-blue light.  A large seal has been painted on the tiles, and is surrounded 
+blue light.  A large seal has been painted on the tiles, and is surrounded
 with more writing.  The air becomes charged with static as the seal glows then
 fades, and you feel a distant rumbling.  Ornate doors lead west and east from
 here; they appear to be covered with paintings and decorations.
@@ -1786,7 +1786,7 @@ A door leads west.
 1 -1 25017
 E
 door huge iron north~
-The sturdy door seems impenetrable.  There is no handle or obvious lock, 
+The sturdy door seems impenetrable.  There is no handle or obvious lock,
 although an immense iron bar spans the middle and is bolted to the walls both
 sides of the door: to keep those on the inside from coming out, you realise
 uneasily.  The metal is covered in writing, most of which is unreadable and
@@ -1997,7 +1997,7 @@ There is a door to the north.
 1 -1 25017
 E
 pipes metal~
-Rusted pipes rise vertically through the floor and penetrate the ceiling.  
+Rusted pipes rise vertically through the floor and penetrate the ceiling.
 Holes are visible in many places, and water slowly dribbles along their length.
 ~
 S
@@ -2112,7 +2112,7 @@ launching foul magicks at the disorganised and panicked opposition.
 S
 #25024
 Corridor of the Sword~
-The corridor heads both east and west, and there is a door to the north.  
+The corridor heads both east and west, and there is a door to the north.
 A fresco covers the southern wall.
 ~
 0 1|8 0
@@ -2136,7 +2136,7 @@ fresco painting wall~
 A beautiful woman with fangs and slitted eyes has beguiled a crowned human
 knight, magical vapours rising from her fingers and into the knight's eyes.
 Human courtiers are dismayed and confused as the charmed king sends them to
-their deaths with an outstretched finger, while dwarven princes are flogged 
+their deaths with an outstretched finger, while dwarven princes are flogged
 on a wheel behind them.
 ~
 S
@@ -3028,7 +3028,7 @@ S
 #25070
 Dim Tunnel~
 This narrow tunnel has been clawed from the bedrock: the air is foul and very
-hot, and you soon begin to sweat, your clothing clinging unbearably to your 
+hot, and you soon begin to sweat, your clothing clinging unbearably to your
 skin.  Dull noises echo through the passage, that wanders roughly eastwards.
 ~
 0 1|8 0
@@ -3266,7 +3266,7 @@ A door opens west.
 S
 #25082
 Snake Pit~
-Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+Crawling serpents writhe in a glistening mass over the floor of this chamber,
 the ground a sea of fanged worms and heaving pythons.  The pit continues to
 the west and south.
 ~
@@ -3284,7 +3284,7 @@ The pit stretches west.
 S
 #25083
 Snake Pit~
-Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+Crawling serpents writhe in a glistening mass over the floor of this chamber,
 the ground a sea of fanged worms and heaving pythons.  The pit continues to
 the north, east and south.
 ~
@@ -3307,7 +3307,7 @@ The pit stretches south.
 S
 #25084
 Snake Pit~
-Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+Crawling serpents writhe in a glistening mass over the floor of this chamber,
 the ground a sea of fanged worms and heaving pythons.  The pit continues to
 the west and north.
 ~
@@ -3325,7 +3325,7 @@ The pit stretches west.
 S
 #25085
 Snake Pit~
-Crawling serpents writhe in a glistening mass over the floor of this chamber, 
+Crawling serpents writhe in a glistening mass over the floor of this chamber,
 the ground a sea of fanged worms and heaving pythons.  The stretches back to
 the north, and there is a door directly east.
 ~
@@ -3371,7 +3371,7 @@ Metal Pipes~
 The north wall and ceiling are covered by a layer of horizontally running metal
 pipes, made of bronze or some such alloy.  Water drips from many fittings and
 small jets of steam occasionally burst from valves above you.  It is warm and
-stuffy in this passage, which continues to the east along with the pipes.  
+stuffy in this passage, which continues to the east along with the pipes.
 Doors open to the west and south of here.
 ~
 0 1|8 0
@@ -3627,7 +3627,7 @@ S
 Air Shaft~
 You climb carefully down the roughly cut shaft.  The air is very hot and dry,
 and you perspire heavily.  Ten feet into the shoot you feel a deep rumble from
-below.  A dim light grows beneath you, and the rumble turns into a terrific 
+below.  A dim light grows beneath you, and the rumble turns into a terrific
 roar.  A little voice talks to you inside your head.  It says, "If I were you,
 I'd start climbing out of this hole, right now..."  You whole-heartedly agree.
 ~
@@ -3658,7 +3658,7 @@ S
 The Grand Hall~
 Your footsteps echo loudly as you step into this magnificent hall, its high
 ceiling vaulted with decorative arches.  Dust covered chandeliers hang at
-intevals on long chains, and grotesque statues rise from short pillars.  
+intevals on long chains, and grotesque statues rise from short pillars.
 Doors open west and east from here, and the hall continues north.
 ~
 0 1|4|8 0
@@ -4035,7 +4035,7 @@ S
 Apparition~
 As you move through this antechamber a pinpoint of intense blue light develops
 to the north.  It grows suddenly and blazes - you cover your eyes as the light
-becomes stronger and stronger.  When it dies down, the flickering blue form 
+becomes stronger and stronger.  When it dies down, the flickering blue form
 of a robed maiden floats above you.  The woman is unbelievably beautiful, her
 clothes exquisitely emboidered.  She speaks to your mind.  "I can not stay
 long my friend, the power of the queen is too great, and many of the other
@@ -4046,8 +4046,8 @@ A great rumbling rocks the room, and you hear crashing from the north.  The
 maiden continues, "Kahsis lies directly ahead.  She will crush you, her power
 is too great.  Recall now - save your soul!"  Her voice becomes sterner as her
 form begins to waver and fade.  "Save yourself, I beg you!  You can never
-defeat the queen, never!"  Then she is gone, and you are badly shaken.  The 
-noise from ahead softens then stops.  Faint laughter echos through the air, 
+defeat the queen, never!"  Then she is gone, and you are badly shaken.  The
+noise from ahead softens then stops.  Faint laughter echos through the air,
 and seems to invade your mind.  A darkened archway rears to the north.
 ~
 0 1|4|8 0
@@ -4066,8 +4066,8 @@ Crash!~
 An almighty crash rings out as rubble pours from the roof behind you - you are
 sealed in!  A wide arch opens north, through which you see a wide dias.  A slim
 woman lounges on a luxuriant thone, several courtiers about her.  She calls out
-to you: "Welcome, I have been waiting for ssso long to meet you!"  Her voice 
-is radiant and musical, and her gaze pierces you even from a great distance.  
+to you: "Welcome, I have been waiting for ssso long to meet you!"  Her voice
+is radiant and musical, and her gaze pierces you even from a great distance.
 "I have much to thank you for," she continues.  "I have been asssleep for many
 yearsss, more yearsss than I can bear to remember..."  She laughs cruelly.
 A clear voice fills your mind.  "Quickly!  I can still rescue you - recall to
@@ -4096,7 +4096,7 @@ S
 #25122
 Treasure Room~
 You burst into a small room with golden walls.  Coins litter the floor; many
-guilded chests sit open, overflowing with treasures.  You quickly take what you 
+guilded chests sit open, overflowing with treasures.  You quickly take what you
 can, as the complex begins to rumble and heave, tremendous noises coming from
 the throne room.  Above the din you hear a piercing, tormented scream.  A dark
 portal flickers with light to the west, the ancient gateway crackling into
@@ -4110,8 +4110,8 @@ D3
 S
 #25123
 Through the Gate~
-You flee westwards through the opening gate, which then seals behind you.  
-The ground heaves violently as you emerge into a narrow cavern.  Soil and 
+You flee westwards through the opening gate, which then seals behind you.
+The ground heaves violently as you emerge into a narrow cavern.  Soil and
 rocks pour from cracks in the roof as the earth twists and bellows.
 ~
 0 1|4|8|8192 0
@@ -4217,8 +4217,8 @@ An archway opens north.
 S
 #25131
 Roasted and Toasted~
-Panic-stricken you attempt to clamber up the shaft, but the fireball is too 
-fast and it quickly envelopes you: with your flesh on fire you fall from the 
+Panic-stricken you attempt to clamber up the shaft, but the fireball is too
+fast and it quickly envelopes you: with your flesh on fire you fall from the
 rock face screaming.  Fortunately the intense agony is short lived, as you are
 vapourised in a pool of molten rock at the bottom of the vent.  Perhaps in
 your next life, you will behave with a little more common sense.

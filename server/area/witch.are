@@ -506,8 +506,8 @@ S
 
 #10112
 An Overgrown Path~
-You move along an overgrown woodland path.  Tree roots and low hanging 
-branches make progress along the path difficult and you have to force 
+You move along an overgrown woodland path.  Tree roots and low hanging
+branches make progress along the path difficult and you have to force
 your way forward.  The path turns here and you can head either north or west.
 ~
 0 0 3
@@ -565,8 +565,8 @@ S
 
 #10115
 An Overgrown Path~
-You move along an overgrown woodland path.  Tree roots and low hanging 
-branches make your passage slow but steady.  To the east the path opens 
+You move along an overgrown woodland path.  Tree roots and low hanging
+branches make your passage slow but steady.  To the east the path opens
 to a small woodland clearing, to the west the path continues into the woods.
 ~
 0 0 0
@@ -1759,7 +1759,7 @@ S
 A Bedroom~
 You stand in a small bedroom within the tower.  A large four-poster bed
 dominates the southern wall, a small set of drawers is beside the bed.
-Against the western wall is what was once a grand full length mirror, now it 
+Against the western wall is what was once a grand full length mirror, now it
 is cracked and badly damaged.  Exits lead out to the north and east.
 ~
 0 1|8 0

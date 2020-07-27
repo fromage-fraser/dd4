@@ -39,7 +39,7 @@ while ( 1 )
         \date >> ../log/last_command_list.txt
     	\cat ../log/last_command.txt >> ../log/last_command_list.txt
 	\rm ../log/last_command.txt
-    endif	
+    endif
 
     # Run envy.
     ../src/envy $port >&! $logfile

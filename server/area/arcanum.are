@@ -7,8 +7,8 @@ guard castle~
 a castle door guard~
 A castle door guard smiles at you.
 ~
-He's dressed in a standard issue uniform and doesn't appear to be concerned 
-about anything.	
+He's dressed in a standard issue uniform and doesn't appear to be concerned
+about anything.
 ~
 2|512 8 0 S
 1 0 0 0d0+0 0d0+0
@@ -32,7 +32,7 @@ a small black critter~
 A small black critter scuttles around.
 ~
 Standing just a foot tall and so dark it seems to absorb light, it's
-the most wicked little thing you've ever seen.	
+the most wicked little thing you've ever seen.
 ~
 2|512|32768 8|32|2048|8388608 0 S
 1 0 0 0d0+0 0d0+0
@@ -43,12 +43,12 @@ the most wicked little thing you've ever seen.
 ~
 >speech_prog p Yes.~
    say {b'I am a Master Thief and am never caught. I am a Master Thief
-   say {b'and yet am always found. I am a Master Thief and yet I break	
+   say {b'and yet am always found. I am a Master Thief and yet I break
    say {b'no laws. I am?'......... Well? You know answer?
 ~
 >speech_prog p Yeah.~
    say {b'I am a Master Thief and am never caught. I am a Master Thief
-   say {b'and yet am always found. I am a Master Thief and yet I break	
+   say {b'and yet am always found. I am a Master Thief and yet I break
    say {b'no laws. I am?'......... Well? You know answer?
 ~
 >speech_prog p Death.~
@@ -63,7 +63,7 @@ cloaked figure~
 a cloaked figure~
 A cloaked figure shifts slightly as you enter.
 ~
-He is cloaked from head to foot in dark garb and you can't make out any of his features.	
+He is cloaked from head to foot in dark garb and you can't make out any of his features.
 ~
 2|32768 2048 0 S
 101 0 0 0d0+0 0d0+0
@@ -73,7 +73,7 @@ He is cloaked from head to foot in dark garb and you can't make out any of his f
    mpecho Out of the silence a barely audible whisper rises up from the figure.
    say {dThe Challenge awaits......
    say {dIf you are a true Hero, speak the solution to this:
-   say {dI am a window, I am a lamp, I am clouded, I am shining, and I am 
+   say {dI am a window, I am a lamp, I am clouded, I am shining, and I am
    say {dcolored. I say much, but I have no words. I am?{x
 ~
 >speech_prog p Eye.~
@@ -90,7 +90,7 @@ He is cloaked from head to foot in dark garb and you can't make out any of his f
    else
    say {dGood luck wise one...you may wish to LOOK around in a second...
    mptransfer $n 26081
-   endif	
+   endif
 ~
 >speech_prog p An eye.~
    if level($n) < 100
@@ -98,7 +98,7 @@ He is cloaked from head to foot in dark garb and you can't make out any of his f
    else
    say {dGood luck wise one...you may wish to LOOK around in a second...
    mptransfer $n 26081
-   endif	
+   endif
 ~
 >speech_prog p Eyes.~
    if level($n) < 100
@@ -106,7 +106,7 @@ He is cloaked from head to foot in dark garb and you can't make out any of his f
    else
    say {dGood luck wise one...you may wish to LOOK around in a second...
    mptransfer $n 26081
-   endif	
+   endif
 endif
 ~
 |
@@ -117,7 +117,7 @@ a cyan guard~
 A {Ccyan{x guard stands here, guarding the door.
 ~
 Clad in sturdy {Ccyan{x armor from head to toe and with a sour expression
-on his face, he appears to take his job seriously.	
+on his face, he appears to take his job seriously.
 ~
 2|32 8|8388608 0 S
 70 0 0 0d0+0 0d0+0
@@ -130,7 +130,7 @@ a purple guard~
 A {Mpurple{x guard stands here, guarding the door.
 ~
 Clad in sturdy {Mpurple{x armor from head to toe and with a sour expression
-on his face, he appears to take his job seriously.	
+on his face, he appears to take his job seriously.
 ~
 2|32 8|8388608 0 S
 70 0 0 0d0+0 0d0+0
@@ -143,7 +143,7 @@ a female servant~
 A female servant is here doing her duties.
 ~
 Dressed simply in a servants uniform, she doesn't look threatening.
-She looks busy and ignores you when you try and talk to her.	
+She looks busy and ignores you when you try and talk to her.
 ~
 0 0 0 S
 75 0 0 0d0+0 0d0+0
@@ -155,7 +155,7 @@ give up mob~
 giver upper mob~
 Transfers players out when they give up
 ~
-blah blah cant see him (note to self: REMEMBER TO FLAG WIZINVIS!) 	
+blah blah cant see him (note to self: REMEMBER TO FLAG WIZINVIS!)
 ~
 2|512|65536 0 0 S
 201 0 0 0d0+0 0d0+0
@@ -172,7 +172,7 @@ a yellow guard~
 A {Yyellow{x guard stands here, guarding the door.
 ~
 Clad in sturdy {Yyellow{x armor from head to toe and with a sour expression
-on his face, he appears to take his job seriously.	
+on his face, he appears to take his job seriously.
 ~
 2|32 8|8388608 0 S
 70 0 0 0d0+0 0d0+0
@@ -185,7 +185,7 @@ an orange guard~
 An {yorange{x guard stands here, guarding the door.
 ~
 Clad in sturdy {yorange{x armor from head to toe and with a sour expression
-on his face, he appears to take his job seriously.	
+on his face, he appears to take his job seriously.
 ~
 2|32 8|8388608 0 S
 70 0 0 0d0+0 0d0+0
@@ -198,7 +198,7 @@ a green guard~
 A {Ggreen{x guard stands here, guarding the door.
 ~
 Clad in sturdy {Ggreen{x armor from head to toe and with a sour expression
-on his face, he appears to take his job seriously.	
+on his face, he appears to take his job seriously.
 ~
 2|32 8|8388608 0 S
 70 0 0 0d0+0 0d0+0
@@ -211,7 +211,7 @@ a male servant~
 A male servant is here doing his duties.
 ~
 Dressed in simple servants clothes he doesn't appear formidable.
-He looks busy and ignores you when you try and talk to him.	
+He looks busy and ignores you when you try and talk to him.
 ~
 0 0 0 S
 80 0 0 0d0+0 0d0+0
@@ -225,7 +225,7 @@ A beginning combatant is here training.
 ~
 Clearly a student, he wields his weapons with determination.
 He doesn't appear too proficient in what he's doing, but seems
-to be learning quickly.	
+to be learning quickly.
 ~
 2 0 0 S
 85 0 0 0d0+0 0d0+0
@@ -239,7 +239,7 @@ A beginning combatant is here training.
 ~
 Clearly a student, he wields his weapons with determination.
 He doesn't appear too proficient in what he's doing, but seems
-to be learning quickly.	
+to be learning quickly.
 ~
 2 0 0 S
 85 0 0 0d0+0 0d0+0
@@ -253,7 +253,7 @@ A beginning combatant is here training.
 ~
 Clearly a student, he wields his weapons with determination.
 He doesn't appear too proficient in what he's doing, but seems
-to be learning quickly.	
+to be learning quickly.
 ~
 0 0 0 S
 85 0 0 0d0+0 0d0+0
@@ -267,7 +267,7 @@ A beginning combatant is here training.
 ~
 Clearly a student, he wields his weapons with determination.
 He doesn't appear too proficient in what he's doing, but seems
-to be learning quickly.	
+to be learning quickly.
 ~
 2 0 0 S
 85 0 0 0d0+0 0d0+0
@@ -281,7 +281,7 @@ A beginning combatant is here training.
 ~
 Clearly a student, he wields his weapons with determination.
 He doesn't appear too proficient in what he's doing, but seems
-to be learning quickly.	
+to be learning quickly.
 ~
 0 0 0 S
 85 0 0 0d0+0 0d0+0
@@ -294,8 +294,8 @@ a intermediate combatant~
 An intermediate combatant is here training.
 ~
 Surprisingly, she seems to be doing as well as the men.
-She appears slightly proficient in what she's doing and seems 
-to be learning just as quickly.	
+She appears slightly proficient in what she's doing and seems
+to be learning just as quickly.
 ~
 0 0 0 S
 90 0 0 0d0+0 0d0+0
@@ -308,7 +308,7 @@ a expert combatant~
 An expert combatant is here training.
 ~
 This person strikes and parries with a confident grace.
-He appears to be proficient in what he's doing and knows it.	
+He appears to be proficient in what he's doing and knows it.
 ~
 0 0 0 S
 95 0 0 0d0+0 0d0+0
@@ -324,7 +324,7 @@ master combatant~
 a master combatant~
 A master combatant is here training.
 ~
-His skill is, in a word, masterful.	
+His skill is, in a word, masterful.
 ~
 0 0 0 S
 100 0 0 0d0+0 0d0+0
@@ -337,7 +337,7 @@ the beginning combatant's teacher~
 The beginning combatant's teacher stands here looking fearsome.
 ~
 Scars criss-cross his face and arms, and he doesn't look overly friendly.
-He looks big and tuff.	
+He looks big and tuff.
 ~
 2 8192 0 S
 101 0 0 0d0+0 0d0+0
@@ -382,7 +382,7 @@ He looks..well, rather small. But he radiates...danger.
 0 0
 0 0 1
 >death_prog 100~
-   mpecho {gThe master combatant's teacher guffaws at your 'victory'..{x 
+   mpecho {gThe master combatant's teacher guffaws at your 'victory'..{x
    mpgoto 26153
    mpmload 26023
    mpforce master mpoload 26090
@@ -396,8 +396,8 @@ stable master~
 the stable master~
 The stable master is here doing business.
 ~
-Dressed in a dingy uniform of unrecognizable origin, he appears to be the 
-one in charge of taking care of the mounts. 
+Dressed in a dingy uniform of unrecognizable origin, he appears to be the
+one in charge of taking care of the mounts.
 ~
 2 2048 1000 S
 87 0 0 0d0+0 0d0+0
@@ -409,8 +409,8 @@ scarren~
 a scarren~
 A scarren stands here, ready to kill you.
 ~
-He appears humanoid, with an elongated skull like a dog and 
-claws. His skin appears to be scale-like and rather tuff.	
+He appears humanoid, with an elongated skull like a dog and
+claws. His skin appears to be scale-like and rather tuff.
 ~
 2|512 0 0 S
 95 0 0 0d0+0 0d0+0
@@ -423,7 +423,7 @@ a moogle~
 A {wwhite{x moogle bobs up and down slightly.
 ~
 A small {Wwhite{x creature with tiny wings. It stands only about a foot tall,
-has small eyes and hovers a little above the ground.	
+has small eyes and hovers a little above the ground.
 ~
 2|512 0 1000 S
 500 0 0 0d0+0 0d0+0
@@ -483,7 +483,7 @@ crazed gerbil~
 a crazed gerbil~
 a crazed gerbil lunges!
 ~
-A furry little rodent of surprisingly disturbing temperament.	
+A furry little rodent of surprisingly disturbing temperament.
 ~
 2|32|512 8|32|8388608 0 S
 90 0 0 0d0+0 0d0+0
@@ -495,7 +495,7 @@ raging stork~
 a raging stork~
 A raging stork tries to tear you apart!
 ~
-Its all beak, claws and feathers.	
+Its all beak, claws and feathers.
 ~
 2|32|512 8|32|8388608 0 S
 91 0 0 0d0+0 0d0+0
@@ -507,7 +507,7 @@ bloodthirsty anteater~
 a bloodthirsty anteater~
 An anteater tries to devour you!
 ~
-It's long nose and large body streak towards you with surprising speed.	
+It's long nose and large body streak towards you with surprising speed.
 ~
 2|32|512 8|32|8388608 0 S
 92 0 0 0d0+0 0d0+0
@@ -520,7 +520,7 @@ a budong~
 A HUGE monster tries to swallow you!
 ~
 This thing is massive! It's bigger then the entire castle! How it's in here
-you don't have time to think about, as it's trying to swallow you!	
+you don't have time to think about, as it's trying to swallow you!
 ~
 2|32|512 8|32|8388608 0 S
 95 0 0 0d0+0 0d0+0
@@ -537,7 +537,7 @@ an explanation moogle~
 a {Rred{x moogle stands here.
 ~
 A {Rred{x little creature with tiny wings. It stands only about a foot tall,
-has small eyes and hovers a little above the ground. 	
+has small eyes and hovers a little above the ground.
 ~
 2|512|32768 0 0 S
 1 0 0 0d0+0 0d0+0
@@ -545,8 +545,8 @@ has small eyes and hovers a little above the ground.
 0 0 1
 >all_greet_prog 100~
 say {RWe'll ask you riddles or explain certain things as you go. Answer
-say {Rthe riddles (like the one given to you here) to proceed and pay 
-say {Rattention to the explanations.{x 
+say {Rthe riddles (like the one given to you here) to proceed and pay
+say {Rattention to the explanations.{x
 ~
 |
 
@@ -556,7 +556,7 @@ a moogle~
 a {Yyellow{x moogle.
 ~
 A {Yyellow{x one. It stands only about a foot tall,
-has small eyes and hovers a little above the ground.	
+has small eyes and hovers a little above the ground.
 ~
 2|512 0 0 S
 89 0 0 0d0+0 0d0+0
@@ -622,7 +622,7 @@ a blue moogle~
 a {Bblue{x moogle watches you.
 ~
 A {Bblue{x one. It stands only about a foot tall,
-has small eyes and hovers a little above the ground.	
+has small eyes and hovers a little above the ground.
 ~
 2|512 0 0 S
 81 0 0 0d0+0 0d0+0
@@ -641,7 +641,7 @@ a healer moogle~
 A healer moogle is here to refresh you.
 ~
 Looks like the others, small with tiny wings. It stands only about a foot tall,
-has small eyes and hovers a little above the ground. This one is also 
+has small eyes and hovers a little above the ground. This one is also
 {Wwhite{x.
 ~
 2|512 128 1000 S
@@ -777,7 +777,7 @@ a kings guard~
 A king's guard patrols the halls.
 ~
 Wielding sturdier weapons and armor then you've seen so far you notice
-he looks to be decently armed, if not really expecting any trouble.	
+he looks to be decently armed, if not really expecting any trouble.
 ~
 0 0 0 S
 101 0 0 0d0+0 0d0+0
@@ -794,7 +794,7 @@ a queen's guard~
 A queen's guard patrols the halls.
 ~
 Wielding sturdier weapons and armor then you've seen to far you notice
-she looks to be decently armed, if not really expecting any trouble.	
+she looks to be decently armed, if not really expecting any trouble.
 ~
 0 0 0 S
 100 0 0 0d0+0 0d0+0
@@ -837,7 +837,7 @@ visiting noble~
 a visiting noble~
 A visiting noble glares at you.
 ~
-He looks rich. Expensive robe, rings and a really ugly hat.	
+He looks rich. Expensive robe, rings and a really ugly hat.
 ~
 2 0 0 S
 84 0 0 0d0+0 0d0+0
@@ -862,7 +862,7 @@ the king~
 The king stands here looking kingly.
 ~
 He's dressed in grand robes and a huge gold crown. He looks to hate wearing
-the crown, though. He occasionally fingers his side and you think you detect 
+the crown, though. He occasionally fingers his side and you think you detect
 the shape of a sword under his robes.
 ~
 2 128|16777216 0 S
@@ -961,7 +961,7 @@ as long as possible.
 0 0 1
 >death_prog 100~
    mpecho {yYou are not worthy!{x
-   mppurge 
+   mppurge
    mptransfer all 26004
 ~
 |
@@ -972,7 +972,7 @@ Krissy the evil witch~
 Krissy the evil witch tortures a man here.
 ~
 She has blond hair, blues eyes and is a total witch! She kicks at the
-man's left side as he lies bleeding.	
+man's left side as he lies bleeding.
 ~
 2|512 0 -1000 S
 1 0 0 0d0+0 0d0+0
@@ -989,7 +989,7 @@ Dalag~
 Dalag~
 Dalag is here, pacing his cell.
 ~
-He looks like he's been here awhile and doesn't plan on getting out soon.	
+He looks like he's been here awhile and doesn't plan on getting out soon.
 ~
 2 0 100 S
 100 0 0 0d0+0 0d0+0
@@ -1015,7 +1015,7 @@ Isebada~
 Isebada appears to have been half beaten to death.
 ~
 He looks like he's half dead but not willing to give up. He ties another
-bandage around his head as you watch.	
+bandage around his head as you watch.
 ~
 2 0 1000 S
 100 0 0 0d0+0 0d0+0
@@ -1028,7 +1028,7 @@ Nykkard~
 Nykkard seems to be just relaxing here, not worried at all.
 ~
 He doesn't appear to be here against his will. In fact, it seems like
-he could leave at any time he wished.	
+he could leave at any time he wished.
 ~
 2 0 1000 S
 100 0 0 0d0+0 0d0+0
@@ -1088,7 +1088,7 @@ It's a medium sized brown dog wearing a glowing collar.
 4|32 0
 0 0 1
 >all_greet_prog 100~
-   mpecho Milo wags his tail as he spots you.			
+   mpecho Milo wags his tail as he spots you.
    cast 'complete heal'
 ~
 >give_prog tug war rope~
@@ -1104,7 +1104,7 @@ It's a medium sized brown dog wearing a glowing collar.
 a giant gold dragon~
 A giant {ygold{x dragon lies  here.
 ~
-Covered in radiant {ygold{x scales, it's blinding to look at.	
+Covered in radiant {ygold{x scales, it's blinding to look at.
 ~
 2|131072 8192 0 S
 96 0 0 0d0+0 0d0+0
@@ -1129,8 +1129,8 @@ ice wibble~
 An Ice Wibble~
 An Ice Wibble sways back and forth wibbling here.
 ~
-It has pearly white scales and eyes the color of a winter sky. It looks at you 
-curiously, then breaths a cloud of frost into the air that ices its 
+It has pearly white scales and eyes the color of a winter sky. It looks at you
+curiously, then breaths a cloud of frost into the air that ices its
 immediate surroundings slightly. It seems to look pleased with itself.
 ~
 2|131072 128|8192|16777216 1000 S
@@ -1147,7 +1147,7 @@ giant green caterpillar~
 A giant green caterpillar~
 A giant green caterpillar ripples along.
 ~
-It's really big and really {ggreen{x. REALLY big and REALLY {Ggreen{x. 
+It's really big and really {ggreen{x. REALLY big and REALLY {Ggreen{x.
 Otherwise, it's a normal old caterpillar.
 ~
 2|131072 2048 0 S
@@ -1209,7 +1209,7 @@ a kings guard~
 A king's guard patrols the halls.
 ~
 Wielding sturdier weapons and armor then you've seen so far you notice
-he looks to be decently armed, if not really expecting any trouble.	
+he looks to be decently armed, if not really expecting any trouble.
 ~
 2 0 0 S
 101 0 0 0d0+0 0d0+0
@@ -2066,8 +2066,8 @@ A {Yglowing{x tablet calls to you from the shelf.~
 1 0 0
 E
 glowing tablet~
-{mThe consecution will occur. Upon the advent of The Genesis unlock your mind and the 
-domain of the setting sun to release the way from nothingness and breach the boundries 
+{mThe consecution will occur. Upon the advent of The Genesis unlock your mind and the
+domain of the setting sun to release the way from nothingness and breach the boundries
 of non-existence.{x
 ~
 
@@ -2237,7 +2237,7 @@ A
 #ROOMS
 #26001
 Entrance to the Castle~
-You have come to the entrance of a castle. A guard appears to be on duty and 
+You have come to the entrance of a castle. A guard appears to be on duty and
 there is a {Ysign{x next to the locked steel door.
 ~
 0 0 2
@@ -2265,7 +2265,7 @@ S
 
 #26002
 Just inside the castle~
-It appears to be a fairly ancient castle. The walls are not crumbling or 
+It appears to be a fairly ancient castle. The walls are not crumbling or
 anything, they looks freshly cleaned in fact. But they give off the sense
 of time, even so. You can go in all directions from here.
 ~
@@ -2331,7 +2331,7 @@ S
 
 #26006
 More of the same~
-The hallway continues on, the echoes of your movements following. Or is that 
+The hallway continues on, the echoes of your movements following. Or is that
 guards coming to disembowel you?
 ~
 0 8 0
@@ -2371,7 +2371,7 @@ S
 
 #26008
 The {Mpurple{x door~
-A guard in a {Mpurple{x uniform stands at attention before a {Mpurple{x door. 
+A guard in a {Mpurple{x uniform stands at attention before a {Mpurple{x door.
 He seems intent on not letting anyone pass.
 ~
 0 8 0
@@ -2391,8 +2391,8 @@ S
 
 #26009
 The {yOrange{x door~
-A guard in an {yorange{x uniform patrols back and forth before an {yorange{x 
-door. 
+A guard in an {yorange{x uniform patrols back and forth before an {yorange{x
+door.
 ~
 0 8 0
 D 0
@@ -2411,7 +2411,7 @@ S
 
 #26010
 The {GGreen{x door~
-A guard in a {Ggreen{x uniform occupies the space in front of a {Ggreen{x 
+A guard in a {Ggreen{x uniform occupies the space in front of a {Ggreen{x
 door, as you expected him to.
 ~
 0 8 0
@@ -2427,7 +2427,7 @@ S
 
 #26082
 {YYellow{x door~
-Another guard has been posted here to guard yet another door. You briefly 
+Another guard has been posted here to guard yet another door. You briefly
 wonder what is the point of all the colours.
 ~
 0 8 0
@@ -2443,7 +2443,7 @@ S
 
 #26083
 {MPurple{x door~
-Yet another guard. They seem to be everywhere. Like the others, he seems to be 
+Yet another guard. They seem to be everywhere. Like the others, he seems to be
 guarding a door.
 ~
 0 8 0
@@ -2475,7 +2475,7 @@ S
 
 #26085
 {yOrange{x door~
-Another guard does his duty here. This time he's in {yorange{x armor and 
+Another guard does his duty here. This time he's in {yorange{x armor and
 guarding an {yorange{x door.
 ~
 0 8 0
@@ -2522,7 +2522,7 @@ S
 
 #26012
 {YYellow{x key room~
-In the center of the strangely bare room is a pedestal. A yellow key sits upon 
+In the center of the strangely bare room is a pedestal. A yellow key sits upon
 it and glows with a strange light.
 ~
 0 8 0
@@ -2534,7 +2534,7 @@ S
 
 #26013
 {MPurple{x key room~
-In the center of the strangely bare room is a pedestal. A purple key sits upon 
+In the center of the strangely bare room is a pedestal. A purple key sits upon
 it and glows with an odd light.
 ~
 0 8 0
@@ -2546,8 +2546,8 @@ S
 
 #26014
 {CCyan{x key room~
-In the center of the strangely bare room is a pedestal. A cyan key sits upon 
-it and glows with an odd light.	
+In the center of the strangely bare room is a pedestal. A cyan key sits upon
+it and glows with an odd light.
 ~
 0 8 0
 D 0
@@ -2562,7 +2562,7 @@ S
 
 #26015
 {yOrange{x key room~
-In the center of the strangely bare room is a pedestal. An orange key sits 
+In the center of the strangely bare room is a pedestal. An orange key sits
 upon it and glows with an odd light.
 ~
 0 8 0
@@ -2574,7 +2574,7 @@ S
 
 #26016
 {GGreen{x key room~
-In the center of the strangely bare room is a pedestal. A green key sits upon 
+In the center of the strangely bare room is a pedestal. A green key sits upon
 it and glows with an odd light.
 ~
 0 8 0
@@ -2586,7 +2586,7 @@ S
 
 #26017
 {CAnnoyingly{x locked room~
-A {Ccyan{x door blocks your way. It appears to be locked tight. Given its 
+A {Ccyan{x door blocks your way. It appears to be locked tight. Given its
 color though, it's obvious the doors are color-coded with their keys.
 ~
 0 8 0
@@ -2602,7 +2602,7 @@ S
 
 #26018
 {MAnnoyingly{x locked room~
-A {Mpurple{x door blocks your way. It appears to be locked tight. Given its 
+A {Mpurple{x door blocks your way. It appears to be locked tight. Given its
 color though, it's obvious the doors are color-coded with their keys.
 ~
 0 8 0
@@ -2618,7 +2618,7 @@ S
 
 #26019
 {YAnnoyingly{x locked room.~
-A {Yyellow{x door blocks your way. It appears to be locked tight. Given its 
+A {Yyellow{x door blocks your way. It appears to be locked tight. Given its
 color though, it's obvious the doors are color-coded with their keys.
 ~
 0 8 0
@@ -2634,7 +2634,7 @@ S
 
 #26020
 {x{yAnnoyingly{x locked room~
-An {yorange{x door blocks your way. It appears to be locked tight. Given its 
+An {yorange{x door blocks your way. It appears to be locked tight. Given its
 color though, it's obvious the doors are color-coded with their keys.
 ~
 0 4|8 0
@@ -2650,7 +2650,7 @@ S
 
 #26021
 A hallway~
-You've finally made it into the castle proper. Or at least a hallway. 
+You've finally made it into the castle proper. Or at least a hallway.
 Portraits line the walls and servants line the hall itself.
 ~
 0 8 0
@@ -2685,7 +2685,7 @@ S
 
 #26023
 More hallway~
-The castle runs east and west from here. It appears there is no shortage of 
+The castle runs east and west from here. It appears there is no shortage of
 servants about the place, for they are at work here also.
 ~
 0 8 0
@@ -2701,7 +2701,7 @@ S
 
 #26024
 The hallway goes on~
-The hallway is still here and still going. The servants are also continuing in 
+The hallway is still here and still going. The servants are also continuing in
 their duty.
 ~
 0 8 0
@@ -2732,7 +2732,7 @@ S
 
 #26026
 Hallway again~
-Here the hallway turns north sharply. You wonder if there are more servants on 
+Here the hallway turns north sharply. You wonder if there are more servants on
 the other side. You bet there are.
 ~
 0 8 0
@@ -2748,7 +2748,7 @@ S
 
 #26027
 The Hallway~
-It runs east and west and contains various people who appear to be servants of 
+It runs east and west and contains various people who appear to be servants of
 the castle.
 ~
 0 8 0
@@ -2780,7 +2780,7 @@ S
 
 #26029
 Another part of the hallway~
-The hallway turns to the north into even more hallway and even more servants, 
+The hallway turns to the north into even more hallway and even more servants,
 you are certain.
 ~
 0 8 0
@@ -2796,7 +2796,7 @@ S
 
 #26030
 Some more hallway~
-The hallway goes south and east, as do the servants. They seem to be 
+The hallway goes south and east, as do the servants. They seem to be
 everywhere and it kind of creeps you out.
 ~
 0 8 0
@@ -2812,7 +2812,7 @@ S
 
 #26031
 More hallway~
-Believe it or not, the hallway runs on. And unsurprisingly, so do all the 
+Believe it or not, the hallway runs on. And unsurprisingly, so do all the
 servants. They seem to be EVERYWHERE.
 ~
 0 8 0
@@ -2832,7 +2832,7 @@ S
 
 #26032
 The hallway rises slightly~
-The hallway starts to slope gently upwards here. You actually like this, as it 
+The hallway starts to slope gently upwards here. You actually like this, as it
 is a welcome change to the uniformity of the place thus far.
 ~
 0 8 0
@@ -2848,7 +2848,7 @@ S
 
 #26033
 Rising continues~
-The hallway continues its upwards trek. There is a servant even here and you 
+The hallway continues its upwards trek. There is a servant even here and you
 wonder if there is a part of the castle they don't occupy.
 ~
 0 8 0
@@ -2864,8 +2864,8 @@ S
 
 #26034
 End of the hallway~
-The hallway meets its other side here at the foot of some stairs that lead up 
-to the next floor. And thank God, there are no...oh wait, you see it. A 
+The hallway meets its other side here at the foot of some stairs that lead up
+to the next floor. And thank God, there are no...oh wait, you see it. A
 servant rubbing away at a wall...sigh...
 ~
 0 8 0
@@ -2885,7 +2885,7 @@ S
 
 #26035
 Hallway rises a bit~
-The hallway rises slightly and you think you spot a staircase ahead. This is a 
+The hallway rises slightly and you think you spot a staircase ahead. This is a
 welcome sight as it may provide a way out of Servant Hell.
 ~
 0 8 0
@@ -2901,8 +2901,8 @@ S
 
 #26036
 Slight rise~
-The hallway starts to rise a little. You wonder if it's due to a geographical 
-feature or if they built it over the fallen bodies of past servants who worked 
+The hallway starts to rise a little. You wonder if it's due to a geographical
+feature or if they built it over the fallen bodies of past servants who worked
 until they dropped here...
 ~
 0 8 0
@@ -2918,7 +2918,7 @@ S
 
 #26037
 The hallway goes on from here~
-The hallway goes on to more servants. East there are servants. West there are 
+The hallway goes on to more servants. East there are servants. West there are
 servants. You just want to scream.
 ~
 0 8 0
@@ -2934,8 +2934,8 @@ S
 
 #26038
 Turn in the hallway~
-The hallway goes south and west. And so do the damn servants! You look to the 
-south again then back to the west. Same thing still. You mutter a curse and 
+The hallway goes south and west. And so do the damn servants! You look to the
+south again then back to the west. Same thing still. You mutter a curse and
 move on.
 ~
 0 8 0
@@ -2951,8 +2951,8 @@ S
 
 #26039
 Stairs up~
-A staircase is here that leads to another floor of the castle.  You swear to 
-level this whole place if there's a servant anywhere  in sight once you reach 
+A staircase is here that leads to another floor of the castle.  You swear to
+level this whole place if there's a servant anywhere  in sight once you reach
 the next floor.
 ~
 0 4|8 0
@@ -2972,8 +2972,8 @@ S
 
 #26040
 On the top of the staircase~
-You reach the second floor, ready to cleave the first servant you see in 
-half...and stop dead. At first you can't understand what you're seeing, then 
+You reach the second floor, ready to cleave the first servant you see in
+half...and stop dead. At first you can't understand what you're seeing, then
 you figure it's better than more bloody servants and walk forward.
 ~
 0 4|8 0
@@ -3013,7 +3013,7 @@ S
 
 #26042
 Another part of the arena~
-The large arena stretches far in every direction. Men and women and things you 
+The large arena stretches far in every direction. Men and women and things you
 can't name fight here and there. It's...odd.
 ~
 0 8 0
@@ -3029,8 +3029,8 @@ S
 
 #26043
 Another part of the arena~
-The arena expands quite a distance in all directions. Most anyway. You don't 
-see a way to go up or down, but then you don't have time to really search as 
+The arena expands quite a distance in all directions. Most anyway. You don't
+see a way to go up or down, but then you don't have time to really search as
 people hack and slash and thrust and parry about you.
 ~
 0 8 0
@@ -3050,8 +3050,8 @@ S
 
 #26044
 Another part of the arena~
-The arena goes on. That's not so bad, but so do all the people around you. 
-You've had to duck a number of times now from beginners losing their swords 
+The arena goes on. That's not so bad, but so do all the people around you.
+You've had to duck a number of times now from beginners losing their swords
 and having the sword fly uncomfortably towards your head.
 ~
 0 8 0
@@ -3084,8 +3084,8 @@ S
 
 #26046
 The arena~
-You stand in the arena of the castle. You stand in the arena of the castle 
-that makes up the second story of this place. You go back to the first way of 
+You stand in the arena of the castle. You stand in the arena of the castle
+that makes up the second story of this place. You go back to the first way of
 thinking of it, otherwise it's too weird.
 ~
 0 8 0
@@ -3101,8 +3101,8 @@ S
 
 #26047
 Arena in the castle~
-You almost have a sword driven through your back as someone rushes by. You 
-figure you must be around a bunch of learning students. Or else a lot of 
+You almost have a sword driven through your back as someone rushes by. You
+figure you must be around a bunch of learning students. Or else a lot of
 people trying to assassinate you.
 ~
 0 8 0
@@ -3140,7 +3140,7 @@ S
 
 #26049
 Corner of the arena~
-The arena finally stops here but runs north and east. In the corner two people 
+The arena finally stops here but runs north and east. In the corner two people
 practice parrying each other's attacks.
 ~
 0 8 0
@@ -3156,7 +3156,7 @@ S
 
 #26050
 The arena goes on~
-The arena is massive. It continues on in all directions. You feel slightly 
+The arena is massive. It continues on in all directions. You feel slightly
 safer here as there are a few less hack marks all over the place.
 ~
 0 8 0
@@ -3176,8 +3176,8 @@ S
 
 #26051
 More of the arena~
-The people in this place seem dedicated, you'll give them that. You watch as a 
-person loses his balance apparently trying to perform some kind of recovery 
+The people in this place seem dedicated, you'll give them that. You watch as a
+person loses his balance apparently trying to perform some kind of recovery
 move a dozen times before finally getting it right.
 ~
 0 8 0
@@ -3197,7 +3197,7 @@ S
 
 #26052
 The arena~
-The arena is everywhere. As are the people in it. Seems almost every inch of 
+The arena is everywhere. As are the people in it. Seems almost every inch of
 it is occupied by someone training.
 ~
 0 8 0
@@ -3217,9 +3217,9 @@ S
 
 #26053
 Arena in the castle~
-WHOA! You barely dodge in time as a dagger comes flying through the air. You 
-look back at the dagger as it sticks into the wall and vanishes! You turn to 
-see the man who threw it stab himself playfully with a twin of the vanished 
+WHOA! You barely dodge in time as a dagger comes flying through the air. You
+look back at the dagger as it sticks into the wall and vanishes! You turn to
+see the man who threw it stab himself playfully with a twin of the vanished
 dagger. It simply is gone where it touches him. Damn Mages!
 ~
 0 8 0
@@ -3239,7 +3239,7 @@ S
 
 #26054
 Castle arena~
-This time you are ready to dodge past whatever comes your way but nothing 
+This time you are ready to dodge past whatever comes your way but nothing
 does. You are sure this just means something bad is going to happen soon.
 ~
 0 8 0
@@ -3260,7 +3260,7 @@ S
 #26055
 Arena in the castle~
 The size of this thing simply amazes you. You can barely make out
-the walls from side to side. Of course, all the people swinging 
+the walls from side to side. Of course, all the people swinging
 about with swords, axes and all kinds of weapons aren't helping any.
 ~
 0 8 0
@@ -3280,7 +3280,7 @@ S
 
 #26056
 The arena~
-The arena runs all around in all directions, except of course up or down. The 
+The arena runs all around in all directions, except of course up or down. The
 arena appears to be flat to aid footing.
 ~
 0 8 0
@@ -3300,7 +3300,7 @@ S
 
 #26057
 The continuing arena~
-You calmly walk by as someone tries to take the head off of their imagined 
+You calmly walk by as someone tries to take the head off of their imagined
 opponent.
 ~
 0 8 0
@@ -3320,8 +3320,8 @@ S
 
 #26058
 East wall of the arena~
-You come to the east wall of the arena. Affixed to the wall is a huge target 
-that several bowmen fire at. Some of them appear to actually be hitting the 
+You come to the east wall of the arena. Affixed to the wall is a huge target
+that several bowmen fire at. Some of them appear to actually be hitting the
 wall...
 ~
 0 8 0
@@ -3341,7 +3341,7 @@ S
 
 #26059
 West wall of the arena~
-The west wall of the arena runs along here. In various spots along it you spot 
+The west wall of the arena runs along here. In various spots along it you spot
 arrows, dirks and other throwing weapons stuck in it.
 ~
 0 8 0
@@ -3361,7 +3361,7 @@ S
 
 #26060
 Arena~
-More people are engaged in combat here. They seem to know what they're doing 
+More people are engaged in combat here. They seem to know what they're doing
 and the fighting is somewhat of a dance.
 ~
 0 8 0
@@ -3385,7 +3385,7 @@ S
 
 #26061
 More fighting~
-A lot of people seem to take advantage of the impressive arena. You wonder 
+A lot of people seem to take advantage of the impressive arena. You wonder
 just exactly how many this place can hold.
 ~
 0 8 0
@@ -3424,7 +3424,7 @@ S
 
 #26063
 A {Rviscious{x warrior~
-A man who looks pissed and prepared to fight stares at you. You were wondering 
+A man who looks pissed and prepared to fight stares at you. You were wondering
 when this would happen....
 ~
 0 8 0
@@ -3448,7 +3448,7 @@ S
 
 #26064
 Another fight, another part of the arena~
-Another person enjoying the arena. Well, not so much enjoying it as getting 
+Another person enjoying the arena. Well, not so much enjoying it as getting
 the crap kicked out of themselves while in it.
 ~
 0 8 0
@@ -3472,7 +3472,7 @@ S
 
 #26065
 Arena~
-The arena goes on, as do the combatants. The combatants especially seem to 
+The arena goes on, as do the combatants. The combatants especially seem to
 go on and on, and you wonder how no one has been killed yet.
 ~
 0 8 0
@@ -3488,7 +3488,7 @@ S
 
 #26066
 Another person in the arena~
-An individual wishing to learn the ways of combat practices here. You wonder 
+An individual wishing to learn the ways of combat practices here. You wonder
 where exactly this place leads.
 ~
 0 8 0
@@ -3512,7 +3512,7 @@ S
 
 #26067
 East wall of the arena~
-The east wall here is surprisingly smooth without mark. Maybe it's been 
+The east wall here is surprisingly smooth without mark. Maybe it's been
 recently repaired.
 ~
 0 8 0
@@ -3532,7 +3532,7 @@ S
 
 #26068
 Another corner of the arena.~
-The arena comes to a point here and runs south and west. In the corner a woman 
+The arena comes to a point here and runs south and west. In the corner a woman
 twirls..something so fast and so nimbly you can't make it out.
 ~
 0 8 0
@@ -3548,7 +3548,7 @@ S
 
 #26069
 The arena again~
-There are people everywhere in here. It's amazing. Almost as amazing as the 
+There are people everywhere in here. It's amazing. Almost as amazing as the
 skill of the thing in front of you with that dagger he's throwing around with
 practiced ease.
 ~
@@ -3565,7 +3565,7 @@ S
 
 #26070
 A person in the arena~
-Yet again you find another person in here. This time though, they're not 
+Yet again you find another person in here. This time though, they're not
 fighting but sitting quietly.
 ~
 0 8 0
@@ -3585,7 +3585,7 @@ S
 
 #26071
 The huge arena~
-This thing is simply HUGE. Whoever built it must have spent forever upon the 
+This thing is simply HUGE. Whoever built it must have spent forever upon the
 project.
 ~
 0 8 0
@@ -3601,7 +3601,7 @@ S
 
 #26072
 Exit from the arena~
-You weren't sure if it even existed, but at last to the north you see a second 
+You weren't sure if it even existed, but at last to the north you see a second
 way out of the arena.
 ~
 0 8 0
@@ -3625,7 +3625,7 @@ S
 
 #26073
 A man in the arena~
-The arena provides a place for many people to practice. The person here seems 
+The arena provides a place for many people to practice. The person here seems
 to be taking advantage of this fact with great skill.
 ~
 0 8 0
@@ -3641,7 +3641,7 @@ S
 
 #26074
 More of the huge arena~
-The arena is massive. As are some of the people in it. The thing in front of 
+The arena is massive. As are some of the people in it. The thing in front of
 you fits that bill. It seems to be crushing rocks with its hands.
 ~
 0 8 0
@@ -3661,7 +3661,7 @@ S
 
 #26075
 A part of the arena~
-As large as this place is, it's packed. People are everywhere. But no one 
+As large as this place is, it's packed. People are everywhere. But no one
 seems to be getting seriously injured. It's weird.
 ~
 0 8 0
@@ -3677,8 +3677,8 @@ S
 
 #26076
 Another corner of the arena~
-The arena corner stands before you, but the arena continues off to the east 
-and south. The corner is occupied by a woman with a short sword moving with an 
+The arena corner stands before you, but the arena continues off to the east
+and south. The corner is occupied by a woman with a short sword moving with an
 air of mastery.
 ~
 0 8 0
@@ -3740,8 +3740,8 @@ S
 
 #26080
 The teacher of the master combatants~
-The teacher of the master combatants doesn't even seem to notice you've even 
-entered the room. You do notice the stairway leading up he's resting upon, 
+The teacher of the master combatants doesn't even seem to notice you've even
+entered the room. You do notice the stairway leading up he's resting upon,
 though.
 ~
 0 8 0
@@ -3759,7 +3759,7 @@ S
 The Test~
 You appear in a simple room made of stone. On the wall is a sign that reads:
 {rIf at anytime you wish to abandon your try at completing the test simply
-say {x"{gI can not do it.{x"{r. This is the -ONLY- way to get out....other than 
+say {x"{gI can not do it.{x"{r. This is the -ONLY- way to get out....other than
 death, of course.{x
 ~
 0 8|8192 0
@@ -3916,7 +3916,7 @@ S
 #26100
 The prize~
 You made it! Congratulations! Here are the rewards for your efforts.
-You earned them.	
+You earned them.
 ~
 0 8|8192 0
 S
@@ -3940,7 +3940,7 @@ S
 #26102
 Third floor hallway~
 The third floor hallway runs north and south. To the east and west
-doors lead to rooms marked "Servants' Quarters" and "Armory" respectively. 
+doors lead to rooms marked "Servants' Quarters" and "Armory" respectively.
 ~
 0 8 0
 D 0
@@ -4083,7 +4083,7 @@ S
 
 #26110
 Combatant's quarters~
-This room is also used to store things. Swords, shields and various other 
+This room is also used to store things. Swords, shields and various other
 pieces of equipment are stacked along the walls.
 ~
 0 8 0
@@ -4164,7 +4164,7 @@ S
 
 #26115
 Secret stairwell~
-You reach the top of the secret stairwell to the 3rd floor. The north wall 
+You reach the top of the secret stairwell to the 3rd floor. The north wall
 seems to be able to open from this side...
 ~
 0 8 0
@@ -4176,8 +4176,8 @@ S
 
 #26116
 Fourth floor hallway~
-The fourth floor hallway is much more grand then the others. It also has 
-guards in it, unlike the others. Except for those rainbow boys out front, but 
+The fourth floor hallway is much more grand then the others. It also has
+guards in it, unlike the others. Except for those rainbow boys out front, but
 they weren't exactly in a hallway..
 ~
 0 8 0
@@ -4201,8 +4201,8 @@ S
 
 #26117
 Guard room~
-This room seems to be used by the guards to rest and relax. A table with cards 
-and a pitcher of some drink is in the middle of the room and a small fireplace 
+This room seems to be used by the guards to rest and relax. A table with cards
+and a pitcher of some drink is in the middle of the room and a small fireplace
 is set into the north wall.
 ~
 0 0 0
@@ -4214,8 +4214,8 @@ S
 
 #26118
 Guard room~
-Another room for the guards to do what they want to do in. This one has a 
-weapons rack in it to apparently hold the guards' weapons while they are off 
+Another room for the guards to do what they want to do in. This one has a
+weapons rack in it to apparently hold the guards' weapons while they are off
 duty.
 ~
 0 8 0
@@ -4264,7 +4264,7 @@ S
 
 #26121
 Nobles room~
-This room is where visiting nobles and such stay. In fact, there's a noble in 
+This room is where visiting nobles and such stay. In fact, there's a noble in
 it right now and they don't look to happy to have you in here..
 ~
 0 8 0
@@ -4276,8 +4276,8 @@ S
 
 #26122
 King and Queen's room~
-This is where the king and queen take audience. In the middle of the room is a 
-large {Gemerald{x held by a guard along with a sign that reads: "{RDO NOT 
+This is where the king and queen take audience. In the middle of the room is a
+large {Gemerald{x held by a guard along with a sign that reads: "{RDO NOT
 TOUCH. PROPERTY OF THE KING AND QUEEN.{X"
 ~
 0 8 0
@@ -4297,8 +4297,8 @@ S
 
 #26123
 King and Queen's bedroom~
-This is where the king and queen retire to after an audience. It is 
-a lot...simpler than you were expecting. In fact, it's not as gaudy as the 
+This is where the king and queen retire to after an audience. It is
+a lot...simpler than you were expecting. In fact, it's not as gaudy as the
 rooms the nobles stay in.
 ~
 0 8 0
@@ -4310,8 +4310,8 @@ S
 
 #26124
 Dungeon entrance~
-The castles dungeon starts here. The only light is provided by a few torches 
-placed in brackets along with damp gray walls. You here coughs and echoes from 
+The castles dungeon starts here. The only light is provided by a few torches
+placed in brackets along with damp gray walls. You here coughs and echoes from
 what you assume are prisoners.
 ~
 0 8 0
@@ -4327,7 +4327,7 @@ S
 
 #26125
 The dungeon~
-Two cells are to the east and west. The doors are closed and chances are, 
+Two cells are to the east and west. The doors are closed and chances are,
 locked. The dungeon continues to the south.
 ~
 0 8 0
@@ -4351,7 +4351,7 @@ S
 
 #26126
 A cell in the dungeon~
-This is a smell cell in the dungeon. It's rather dingy and dank. A prisoner is 
+This is a smell cell in the dungeon. It's rather dingy and dank. A prisoner is
 locked up here.
 ~
 0 8 0
@@ -4363,7 +4363,7 @@ S
 
 #26127
 Another cell~
-This is another cell occupied by another prisoner. A small pile of straw seems 
+This is another cell occupied by another prisoner. A small pile of straw seems
 to be the only bit of 'comfort'.
 ~
 0 8 0
@@ -4375,7 +4375,7 @@ S
 
 #26128
 Cell~
-The cell is small and in it is a captured prisoner. Markings on the wall seem 
+The cell is small and in it is a captured prisoner. Markings on the wall seem
 to indicate the passage of time as the prisoner has been stuck here.
 ~
 0 8 0
@@ -4387,8 +4387,8 @@ S
 
 #26129
 The dungeon~
-Three more cells are to the east, south and west. Rats scurry around at your 
-feet and you briefly wonder how many of them get eaten by the poor souls in 
+Three more cells are to the east, south and west. Rats scurry around at your
+feet and you briefly wonder how many of them get eaten by the poor souls in
 the cells.
 ~
 0 8 0
@@ -4412,7 +4412,7 @@ S
 
 #26130
 Yet another cell~
-This cell is occupied too. Who could all these people be? Thieves? Murderers? 
+This cell is occupied too. Who could all these people be? Thieves? Murderers?
 Mudders?
 ~
 0 8 0
@@ -4424,7 +4424,7 @@ S
 
 #26131
 The last cell~
-This is the last cell and also the last prisoner. You can barely see in this 
+This is the last cell and also the last prisoner. You can barely see in this
 cell as the torchlight doesn't reach back to here very well.
 ~
 0 8 0
@@ -4437,9 +4437,9 @@ S
 #26132
 The Purgatory~
 Clouds of white mist fill the whole place.  There's no telling where you
-are and what's around this area.  From a distance, you hear screams and 
+are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
-A small note is posted here.	
+A small note is posted here.
 ~
 0 8 0
 D 0
@@ -4483,7 +4483,7 @@ S
 #26133
 The Purgatory~
 Clouds of white mist fill the whole place.  There's no telling where you
-are and what's around this area.  From a distance, you hear screams and 
+are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
 0 8 0
@@ -4522,7 +4522,7 @@ S
 #26134
 The Purgatory~
 Clouds of white mist fill the whole place.  There's no telling where you
-are and what's around this area.  From a distance, you hear screams and 
+are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
 0 8 0
@@ -4561,7 +4561,7 @@ S
 #26135
 The Purgatory~
 Clouds of white mist fill the whole place.  There's no telling where you
-are and what's around this area.  From a distance, you hear screams and 
+are and what's around this area.  From a distance, you hear screams and
 wails of other suffering souls. You feel cold, hungry and hopelessly lost.
 ~
 0 8 0
@@ -4599,7 +4599,7 @@ S
 
 #26136
 The Judgment Room~
-This is where you'll face your final judgment.  Your fate will depend on 
+This is where you'll face your final judgment.  Your fate will depend on
 your past karma. Silently, you cursed yourself for being such a jerk when
 you were alive.  Overwhelmed by anxiety and tears flowing, you beg for mercy
 and search desperately for your corpse.  Good Luck!
@@ -4609,7 +4609,7 @@ S
 
 #26137
 The garden~
-You walk through the castles lush garden. Flowers and plants of all kinds 
+You walk through the castles lush garden. Flowers and plants of all kinds
 surround you. To the west you make out the stable.
 ~
 0 8 0
@@ -4625,7 +4625,7 @@ S
 
 #26138
 The stable~
-You come to the stable. You see an array of animals. Standing out front is a 
+You come to the stable. You see an array of animals. Standing out front is a
 man who appears to be in charge of selling the animals.
 ~
 0 0 2
@@ -4692,7 +4692,7 @@ Dining hall~
 The hallway opens up into a large dining hall, complete with long table
 and glimmering chandelier. The chandelier seems a little out of place though,
 as it appears mostly fighters and such use the table after a workout in the
-arena. 
+arena.
 ~
 0 8 0
 D 0
@@ -4751,7 +4751,7 @@ S
 #26145
 Continuing passageway-doors~
 Again the pattern repeats, except this time the passageway turns south
-before coming to a locked door. A single torch provides light, but it's 
+before coming to a locked door. A single torch provides light, but it's
 a oddly {wwhite{x light. You decide it must be magical.
 ~
 0 8 0
@@ -4784,7 +4784,7 @@ S
 
 #26147
 South some more and a door~
-You find, surprise, another locked door. A single torch provides light, but 
+You find, surprise, another locked door. A single torch provides light, but
 it's a oddly {wwhite{x light. You decide it must be magical.
 ~
 0 8 0
@@ -4800,8 +4800,8 @@ S
 
 #26148
 Finally, a door that {YISN'T{x locked....kidding. :)~
-Same thing as the last seven...you wonder if anyone has actually ever 
-made it to the end of these things. A single torch provides light, but 
+Same thing as the last seven...you wonder if anyone has actually ever
+made it to the end of these things. A single torch provides light, but
 it's a oddly {wwhite{x light. You decide it must be magical.
 ~
 0 8 0
@@ -4817,10 +4817,10 @@ S
 
 #26149
 The last door~
-Finally, you've made it to the last door. You know this because someone has 
-written "{cNote to self: One of these days, make the bloody secret passageway 
-shorter! Too many damn keys to get to this last door...{x" on the door. 
-Seems whoever wrote it still hasn't gotten to doing that yet. 
+Finally, you've made it to the last door. You know this because someone has
+written "{cNote to self: One of these days, make the bloody secret passageway
+shorter! Too many damn keys to get to this last door...{x" on the door.
+Seems whoever wrote it still hasn't gotten to doing that yet.
 ~
 0 8 0
 D 0
@@ -4835,7 +4835,7 @@ S
 
 #26150
 A place~
-You open the last door and find...{RANOTHER DOOR!{x Just kidding. You see a 
+You open the last door and find...{RANOTHER DOOR!{x Just kidding. You see a
 few shelves on the wall with various items sitting on them. After a moment
 you feel slightly dizzy and it becomes hard to focus. It clears up almost
 instantly, but your head feels slightly...fogged.

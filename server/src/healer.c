@@ -1,9 +1,9 @@
 /*
- * Healer code written for Merc 2.0 muds by Alander 
+ * Healer code written for Merc 2.0 muds by Alander
  * direct questions or comments to rtaylor@cie-2.uoregon.edu
- * any use of this code must include this header 
+ * any use of this code must include this header
  */
- 
+
 #if defined(macintosh)
 #include <types.h>
 #include <time.h>
@@ -16,8 +16,7 @@
 #include <stdlib.h>
 #include "merc.h"
 
-
-struct healer_spell 
+struct healer_spell
 {
 	char *keyword;
 	char *spell_name;
@@ -31,9 +30,9 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	char arg[MAX_INPUT_LENGTH];
 	char buf[MAX_STRING_LENGTH];
 	int i, sn;
-	
+
 	const int NUMBER_SPELLS = 12;
-	const struct healer_spell spell_list[12] = 
+	const struct healer_spell spell_list[12] =
 	{
 		/*  keyword, spell name, price in gold pieces */
 		{ "light",     "cure light wounds",     2     },
@@ -49,7 +48,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 		{ "mana",      "restore mana",          40    },
 		{ "vitalize",  "vitalize",              120   }
 	};
-	
+
 	for ( mob = ch->in_room->people; mob; mob = mob->next_in_room )
 	{
 		if ( IS_NPC(mob) && IS_SET(mob->act, ACT_IS_HEALER) )
@@ -73,7 +72,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	if (arg[0] == '\0')
 	{
 		send_to_char("The folowing spells are available from the healer:\n\r\n\r", ch);
-		for (i = 0; i < NUMBER_SPELLS; i++) 
+		for (i = 0; i < NUMBER_SPELLS; i++)
 		{
 			sprintf(buf, " {W%-13s{x {w%-22s %5d gold{x\n\r",
 				spell_list[i].keyword,
@@ -91,9 +90,9 @@ void do_heal(CHAR_DATA *ch, char *argument)
 		return;
 	}
 
-	for (i = 0; i < NUMBER_SPELLS; i++) 
+	for (i = 0; i < NUMBER_SPELLS; i++)
 	{
-		if (is_name(arg, spell_list[i].keyword)) 
+		if (is_name(arg, spell_list[i].keyword))
 		{
 			if ((spell_list[i].price * 100) > total_coins_char(ch))
 			{
@@ -108,7 +107,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 
 			act("$c makes a magical pass over you.", mob, NULL, ch, TO_VICT);
 			act("$c makes a magical pass over $N.", mob, NULL, ch, TO_NOTVICT);
-			
+
 			if (is_name(arg, "mana"))
 			{
 				ch->mana += 100;
@@ -116,7 +115,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 				send_to_char("A warm glow passes through you.\n\r",ch);
 				return;
 			}
-			
+
 			sn = skill_lookup(spell_list[i].spell_name);
 			if (sn < 0 || sn >= MAX_SKILL)
 				return;
@@ -124,7 +123,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 			return;
 		}
 	}
-	
+
 	send_to_char("Type HEAL for a list of spells you may select.\n\r", ch);
 }
 

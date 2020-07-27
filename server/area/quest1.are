@@ -1,5 +1,5 @@
 #AREA	Wrath~    DragonQuest~
-100 100 80 100 
+100 100 80 100
 
 
 #MOBILES
@@ -12,7 +12,7 @@ Conceived in Hell, the Wyrm Asverna has spent centuries hating and
 devouring all life.  Her veins are clogged with foul black blood,
 her mind a focus of pain and evil, her immense body an unasailable
 fortress...  Her cruelty, her hatefulness, her agony and her power
-can not be rivalled.  
+can not be rivalled.
 
 Asverna will go on and continue to hate ... but you will now end.
 ~
@@ -34,7 +34,7 @@ Asverna will go on and continue to hate ... but you will now end.
 ~
 >death_prog 100~
 	    mpat 3001 mpforce executioner mpecho CHAT Asverna has been defeated!
-~	    
+~
 >rand_prog 9~
 	mpat 19201 mpecho You hear the loud snorting of a Dragon.
 	mpat 19202 mpecho You hear some loud shuffling to the north.
@@ -86,7 +86,7 @@ A
 A
 3 25
 A
-31 -1	
+31 -1
 #19201
 wings asverna dragon~
 some Dragons Wings~
@@ -307,12 +307,12 @@ S
 A small clearing~
 You are standing in a small clearing, very small in fact that you are finding it hard to
 move without scratching yourself on the surrounding tree branches.
-The overgrowth here is amazing and cuts the view of the sky out as if there is a kind of 
+The overgrowth here is amazing and cuts the view of the sky out as if there is a kind of
 life force here giving the surrounding trees and shrubs the life they need
 ~
 0 1|4|8|2048 3
 D1
-A thick overgrowth of tress cover the obvious entrance to some sort of cave type 
+A thick overgrowth of tress cover the obvious entrance to some sort of cave type
 area, you think you might be able to clear it away~
 overgrown entranceway~
 1 19203 19205

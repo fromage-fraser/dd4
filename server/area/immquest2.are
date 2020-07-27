@@ -7,11 +7,11 @@ $
 
 #HELPS
 101 MOBQUEST~
-A trapper in the Plains of the South will accept skins/other such things from 
-special quest mobs. To activate the quest GOTO room 755 and say "Start a mob 
-quest.". The mob will then enter the portal and randomly choose mobs to load 
+A trapper in the Plains of the South will accept skins/other such things from
+special quest mobs. To activate the quest GOTO room 755 and say "Start a mob
+quest.". The mob will then enter the portal and randomly choose mobs to load
 to random rooms. He'll scatter 10 mobs at a time. He'll hand out tokens/pieces
-along with money as rewards. To see what each token/pieces is redeemable for 
+along with money as rewards. To see what each token/pieces is redeemable for
 see: {WHELP IMMQUEST{x
 ~
 0 $~

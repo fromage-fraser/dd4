@@ -7,7 +7,7 @@ Frog~
 A gigantic frog~
 The Frog jumps about a bit.
 ~
-It's over 6 meters long and you wonder what something so big eats to 
+It's over 6 meters long and you wonder what something so big eats to
 stay alive.
 ~
 32 0 -230 S
@@ -81,7 +81,7 @@ The Lord has the words to kill you on his lips.
 ~
 He rules this district. He is a very harsh ruler all his subjects
 fear him. He has teeth like a boar, man what is he ugly.
-~ 
+~
 2 128 -1000 S
 25 0 0 0d0+0 0d0+0
 0 90000
@@ -104,14 +104,14 @@ The Holy Slayer~
 The Slayer isn't aware of your presence.
 ~
 It's a ghostlike swirling mass which resembles somewhat a knight.
-He murmurs something of making a big mistake and now having to roam the 
+He murmurs something of making a big mistake and now having to roam the
 lands without peace.
 ~
 1 642 0 S
 35 0 0 0d0+0 0d0+0
 0 100000
 0 0 0
-#11509 
+#11509
 sheep~
 A sheep~
 The sheep is eating grass.
@@ -190,7 +190,7 @@ A Fire Elemental~
 A fire elemental is here.
 ~
 It's a elemental called down here probably by the mage herself to protect
-this exit. The guardians will attack anybody that comes here and isn't the 
+this exit. The guardians will attack anybody that comes here and isn't the
 mage.
 ~
 34 524840 -1000 S
@@ -222,7 +222,7 @@ Its an claymore made of laen a rare metal lies here.~
 5 593 8193
 0~ 0~ 0~ 3~
 24 2450 0
-A 
+A
 18 2
 A
 19 2
@@ -242,9 +242,9 @@ A Highlanders Kilt~
 A skirt lies on the ground.~
 ~
 9 1024 2049
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 7 1450 0
-A 
+A
 17 -10
 A
 14 +10
@@ -258,7 +258,7 @@ A heap of plate lies on the ground.~
 42 4555 0
 A
 17 -10
-A 
+A
 19 2
 A
 2 -2
@@ -284,7 +284,7 @@ A helmet made of laen lies here.~
 27 4211 0
 A
 5 2
-A 
+A
 24 -1
 #11506
 gauntlets~
@@ -367,19 +367,19 @@ A
 1 2
 A
 18 9
-A 
+A
 19 4
 #11513
 armor~
 The holy armor~
 A pile of armor lies here.~
 ~
-9 1282 9 
+9 1282 9
 0~ 0~ 0~ 0~
 45 5600 0
 A
 17 -30
-A 
+A
 24 -4
 A
 18 2
@@ -487,9 +487,9 @@ A
 #ROOMS
 #11500
 Entrance to a Valley in the Highlands.~
-Before you the path just stops. It doesn't go any further. A mysterious bog 
-begins here, if you dare entering it's at your own risk. 
-Also in the distance you see a vague contour of hills. On the top of 
+Before you the path just stops. It doesn't go any further. A mysterious bog
+begins here, if you dare entering it's at your own risk.
+Also in the distance you see a vague contour of hills. On the top of
 the hills you see lights.
 ~
 115 4 4
@@ -762,7 +762,7 @@ D0
 D1
 ~
 ~
-0 0 11514 
+0 0 11514
 D2
 ~
 ~
@@ -884,7 +884,7 @@ D3
 S
 #11519
 A path.~
-On solid ground again. You have entered a valley, in the distance you hear 
+On solid ground again. You have entered a valley, in the distance you hear
 sheep. Also you hear the distinct sound of a bagpipe.
 ~
 115 1 4
@@ -933,7 +933,7 @@ The guards here look nasty, better not make any trouble. There is a roadsign
 planted in the center of the crossing. To the north you see a lake.
 ~
 115 1 4
-D0 
+D0
 ~
 ~
 0 0 11537
@@ -965,7 +965,7 @@ making it harder to get on.
 115 1 4
 D1
 ~
-~ 
+~
 0 0 11524
 D3
 ~
@@ -1113,7 +1113,7 @@ S
 #11533
 A path uphill.~
 The path is getting steeper and steeper while it continues uphill. Also the
-terrain is getting more difficult to handle. Watch the rocks they're 
+terrain is getting more difficult to handle. Watch the rocks they're
 slippery.
 ~
 115 1 4
@@ -1129,7 +1129,7 @@ S
 #11534
 A path uphill.~
 The path is getting steeper and steeper while it continues uphill. Also the
-terrain is getting more difficult to handle. A light rabbit is sitting on 
+terrain is getting more difficult to handle. A light rabbit is sitting on
 the trail watching you intently.
 ~
 115 1 4
@@ -1175,7 +1175,7 @@ S
 #11537
 A muddy path.~
 The path is getting muddier towards the lake. In front of you can see
-a big lake and also almost not to be seen in the middle of the lake 
+a big lake and also almost not to be seen in the middle of the lake
 is a small turf of land.
 ~
 115 1 4
@@ -1207,9 +1207,9 @@ S
 #11539
 Crossroads at the Lake.~
 You stand on a crossroads in front of you is a lake. A highlander is here
-he says 'Ay mi lads the loch is not safe, turn back lads, much safer.' 
+he says 'Ay mi lads the loch is not safe, turn back lads, much safer.'
 his wife says:
-'Mind you don't go to the castle it is not safe.' The man goes on playing 
+'Mind you don't go to the castle it is not safe.' The man goes on playing
 his bagpipes.
 A barely readable roadsign is here.
 ~
@@ -1218,7 +1218,7 @@ D0
 ~
 ~
 0 0 11573
-D1 
+D1
 ~
 ~
 0 0 11540
@@ -1255,7 +1255,7 @@ D3
 ~
 0 0 11539
 S
-#11541 
+#11541
 Path along lake.~
 This path is muddy in the muddiest sense of the word. You still hear
 bagpipes and sheep but its quieter now, you would say too quiet.
@@ -1519,9 +1519,9 @@ S
 Path along lake.~
 This path is muddy in the muddiest sense of the word. You don't hear
 bagpipes and sheep. It's so quiet you dont't even can hear the quietness.
-The birds have completely stopped singing and you get a feeling of 
-total dread. This place must inhabit some kind of great evil 
-and it surrounds you. Towards the north you see castle, it looks 
+The birds have completely stopped singing and you get a feeling of
+total dread. This place must inhabit some kind of great evil
+and it surrounds you. Towards the north you see castle, it looks
 quite evil.
 ~
 115 1 2
@@ -1535,7 +1535,7 @@ D3
 0 0 11557
 E
 castle~
-It is a big black castle. It radiates evil like nothing you have seen 
+It is a big black castle. It radiates evil like nothing you have seen
 before. Surely the man who rules here must be some satanic ego-tripper.
 ~
 S
@@ -1823,7 +1823,7 @@ to the shore the Highlander waves at you like he won't be seeing again
 this life.
 ~
 115 4 7
-D0 
+D0
 ~
 ~
 0 0 11574
@@ -1867,7 +1867,7 @@ or anything really. It's just god forsaken place where probably nothing
 worthwhile is to be gotten. To the north is another bit of Isle maybe
 something is there.
 ~
-115 4 4 
+115 4 4
 D0
 ~
 ~
@@ -1907,7 +1907,7 @@ D3
 S
 #11579
 A path.~
-You enter a forest. It's extremely dark in there so mind your 
+You enter a forest. It's extremely dark in there so mind your
 step and don't trip over any tree stumps.
 ~
 115 8 4
@@ -1941,7 +1941,7 @@ Your climbed the cliff and are quite exhausted. The tower stands clear now
 since there is virtually nothing here, a bloody barren place.
 ~
 115 4 5
-D1 
+D1
 ~
 ~
 0 0 11580
@@ -1966,12 +1966,12 @@ D3
 S
 #11583
 Near the tower.~
-You almost have reached the tower. You can see the lake from up here, the 
+You almost have reached the tower. You can see the lake from up here, the
 other towers are also visible so far goes your sight. If this was
-a valley full of trees and birds and such it would have been a magnificent 
+a valley full of trees and birds and such it would have been a magnificent
 sight but alas the reality is different it is a dead and barren place
 like Gorgoroth is in the Lord of the Rings.
-But enough sightseeing concentrate on the problems before you, you 
+But enough sightseeing concentrate on the problems before you, you
 reluctantly decide to continue your travels.
 ~
 115 4 5
@@ -2032,7 +2032,7 @@ D3
 S
 #11587
 A steep climb.~
-A steep hill forcing you to much exertion to get up the hill. 
+A steep hill forcing you to much exertion to get up the hill.
 A feeling of dread comes over you but you have no idea where it comes form.
 ~
 115 0 5
@@ -2075,7 +2075,7 @@ D2
 ~
 0 0 11588
 S
- 
+
 #11590
 On another path up hill.~
 Again you must force yourself to great exertion. The terrain changed
@@ -2152,7 +2152,7 @@ The Keeper must be a real scrouge only the minimal requirements of
 a room has he one simple chair, one simple table, one plate, one spoon
 and even for a bed does he use a bit of straw in the corner.
 ~
-115 8 0 
+115 8 0
 D2
 ~
 ~
@@ -2201,7 +2201,7 @@ D5
 S
 #11597
 In Nessy's cave.~
-You hear faint sounds coming from the west. And a light shines towards the 
+You hear faint sounds coming from the west. And a light shines towards the
 south.
 ~
 115 8 0
@@ -2319,7 +2319,7 @@ ably belong to the keeper.
 D4
 ~
 ~
-0 0 11592 
+0 0 11592
 S
 #11606
 On the first floor.~
@@ -2525,7 +2525,7 @@ D5
 S
 #11617
 On the second floor.~
-Nothing here worth you while you already feel the heat of the beaconlight on 
+Nothing here worth you while you already feel the heat of the beaconlight on
 the top.
 ~
 115 8 0
@@ -2591,8 +2591,8 @@ D5
 S
 #11621
 On the second floor.~
-The walls are covered with paintings and as you already figured they are of 
-roses, christ small rose, big roses, a bunch of roses, a single rose, 
+The walls are covered with paintings and as you already figured they are of
+roses, christ small rose, big roses, a bunch of roses, a single rose,
 a rose in a field of petunias, a rose in a vase, a rose on a table, a rose
 in a hand and lot's more of them.
 ~
@@ -3150,7 +3150,7 @@ S
 In a secret gangway.~
 You can barely see something in front of you so dark is it,
 even with a light it's difficult to look ahead.
-But it's smooth here so you needn't be afraid of stumbling 
+But it's smooth here so you needn't be afraid of stumbling
 over something.
 ~
 115 9 0
@@ -3210,7 +3210,7 @@ S
 #11661
 In a secret gangway.~
 You can clearly see what is ahead of you now you can also see that
-the porch is guarded by some creatures. You think you have seen them 
+the porch is guarded by some creatures. You think you have seen them
 before in a nightmare or something. They appear not to be moving
 could it be that they are statues just to scare people of.
 ~
@@ -3270,7 +3270,7 @@ D1
 A door.
 ~
 door~
-2 0 11663 
+2 0 11663
 S
 #11666
 In the hallway.~
@@ -3307,11 +3307,11 @@ D3
 0 0 11669
 S
 #11668
-The guard barracks.~ 
+The guard barracks.~
 OOOOOOOOOOOOOooops, the barracks of the guards, they fall silent and
 look at you, they snarl at you for intruding upon them and attack.
 ~
-115 8 0 
+115 8 0
 D2
 A heavy door.
 ~
@@ -3386,7 +3386,7 @@ You are on the ground floor of the castle. You can go to the foyer
 or take the stairs down. In the foyer you see the shimmering of many
 teleporters.
 ~
-115 8 0 
+115 8 0
 D2
 ~
 ~
@@ -3484,7 +3484,7 @@ S
 #11679
 In the south of the foyer.  To the south, you see some stairs.~
 ~
-115 8 0 
+115 8 0
 D0
 ~
 ~
@@ -3592,7 +3592,7 @@ S
 In an unused room.~
 Nothing here but cobwebs and dust.
 ~
-115 8 0 
+115 8 0
 D1
 ~
 ~
@@ -3636,7 +3636,7 @@ S
 #11689
 In a hallway.~
 A painting picturing a ugly man is on the left and an even uglier
-painting of a woman is to the right, God almighty these guys are 
+painting of a woman is to the right, God almighty these guys are
 ugly. The note beneath the paintings have only one numeral on them
 so the man and the woman must be still alive (you silently hope
 never to encounter them).
@@ -3774,7 +3774,7 @@ D5
 S
 #11698
 In the Ante-Room.~
-A bench is here where you can sit on. presently just a farmer is sitting on  
+A bench is here where you can sit on. presently just a farmer is sitting on
 it. The farmer doesn't even glance in your direction.
 ~
 115 8 0
@@ -3791,7 +3791,7 @@ S
 A room in between the throne and the ante-room.~
 Here you are searched for weapons and the likes so that the Lord is safe
 but the guards look at ou and decide yo cannot possibly have good intentions
-so they decide to kill you on the spot. 
+so they decide to kill you on the spot.
 ~
 115 8 0
 D0
@@ -3871,7 +3871,7 @@ E 1 11516 0 16
 M 0 11502 6 11622
 E 1 11516 0 16
 M 0 11502 6 11622
-E 1 11516 0 16   
+E 1 11516 0 16
 M 0 11503 7 11612
 E 1 11516 0 16
 M 0 11503 7 11612
@@ -3913,7 +3913,7 @@ M 0 11507 1 11692
 G 1 11514 1
 G 1 11514 1
 E 1 11515 1 16
-M 0 11508 1 11686 
+M 0 11508 1 11686
 E 1 11512 1 16
 E 1 11513 1 5
 M 0 11509 20 11555
@@ -3945,13 +3945,13 @@ M 0 11511 1 11690
 E 1 11510 1 16
 E 1 11511 1 8
 *
-M 0 11512 4 11530 
+M 0 11512 4 11530
 G 1 11518 1
-M 0 11512 4 11536 
+M 0 11512 4 11536
 G 1 11519 1
 M 0 11512 4 11584
 G 1 11520 1
-M 0 11512 4 11591 
+M 0 11512 4 11591
 G 1 11521 1
 *
 M 0 11513 1 11601

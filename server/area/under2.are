@@ -1,7 +1,5 @@
 #AREA	Silence~  Underdark~
-
-20 60 0 100 
-
+20 60 0 100
 
 
 #MOBILES
@@ -11,7 +9,7 @@ The enforcer eye~
 A large eye watches all your moves
 ~
 These eyes are all over the Underdark, they make sure all the rules are
-obeyed.  They are just that, huge eyes that float above the ground.  The  
+obeyed.  They are just that, huge eyes that float above the ground.  The
 eye has a dark brown shell, with a huge pupil that never seems to blink.
 The pupil is a very dark green and takes in every action you do.
 ~
@@ -24,7 +22,7 @@ floating eye~
 The floating eye~
 A floating eye drifts in and out of the shadows
 ~
-The eye flies at about your head level watching everything that happens. 
+The eye flies at about your head level watching everything that happens.
 These eyes have been known to steal from people and to play "jokes" on
 others.  The eye's pupil is a very dark gray and you can't tell where it is
 focused.
@@ -53,7 +51,7 @@ The great enforcing eye~
 A huge eye floats in the air here, ready to punish all
 ~
 This eye is the right hand of the Beholder who is in charge of the
-enforcers.  The shell of this eye is brown and crusty, almost like scales. 
+enforcers.  The shell of this eye is brown and crusty, almost like scales.
 The pupil of this eye is a very deep red.  Looking at it makes you slightly
 dizzy.
 ~
@@ -68,7 +66,7 @@ A huge beholder watches over the other enforcers
 ~
 A globular body greets your curious gaze.  This beholder is the head of the
 enforcers of the Underdark.  The enforcers keep a tenuous peace, keeping
-prolonged fights from occurring but allowing stealing and assassinations. 
+prolonged fights from occurring but allowing stealing and assassinations.
 This body is a sphere with ten eyestalks on top.  A huge eleventh eye
 resides in the central area.  A large mouth with razor sharp teeth lies below
 this huge eye.  A hard chitinous covering protects the body.
@@ -80,7 +78,7 @@ this huge eye.  A hard chitinous covering protects the body.
 #16006
 beholder~
 The beholder~
-A beholder of incredible size floats here scheming against the world       
+A beholder of incredible size floats here scheming against the world
 ~
 A huge spherical body floats in the air here.  On top of the sphere reside 10
 moving eyestalks.  A huge eye is in the center of the sphere.  This huge eye
@@ -122,7 +120,7 @@ dwarf duergar~
 The duergar~
 A dark dwarf wanders about
 ~
-Before you stands an emaciated, evil-visaged dwarf.  His skin is dark gray. 
+Before you stands an emaciated, evil-visaged dwarf.  His skin is dark gray.
 He wears clothing that is a dark gray, he seems to blend into his
 surroundings.
 ~
@@ -396,7 +394,7 @@ The huge rat~
 A huge rat about five feet long stares right at you
 ~
 This is an incredibly huge rat, you have never seen anything comparable
-on the surface.  The rat has green eyes that seem to shimmer with hatred. 
+on the surface.  The rat has green eyes that seem to shimmer with hatred.
 The rat's fur is black and brown and very dirty.
 ~
 1|64 0 0 S
@@ -950,7 +948,7 @@ drow thief shillikif~
 Shillikif~
 A drow thief sits with his companions and watches you
 ~
-This drow thief has just begun to give himself a name in the Underdark. 
+This drow thief has just begun to give himself a name in the Underdark.
 From the conversations around you, you figure his name is Shillikif.  This
 group has reputedly found a way into the githzerai keep from the
 Underdark.
@@ -1007,7 +1005,7 @@ Satori~
 Satori the jeweler waits to buy what you have to offer her
 ~
 Satori is one of the few female merchants of the Underdark.  It is
-rumored that she killed all her rivals by murdering them while they slept. 
+rumored that she killed all her rivals by murdering them while they slept.
 She is a beautiful lady who always gets her way.
 ~
 1|2|64 8|32 -999 S
@@ -1047,7 +1045,7 @@ svirfneblin dignitary~
 The svirfneblin dignitary~
 A svirfneblin dignitary looks up surprised by your entry
 ~
-This is a svirfneblin dignitary who is using the embassy as a place of rest. 
+This is a svirfneblin dignitary who is using the embassy as a place of rest.
 He has just been rather shaken up by his visit to the Drow City and has
 come here to find comfort in the safe walls of this building.  He is dressed
 in different shades of gray and sports a nice looking necklace
@@ -1217,7 +1215,7 @@ so watch your back.
 #16092
 murderer assassin~
 The murderer~
-A drow murderer blends into the shadows watching for an opening 
+A drow murderer blends into the shadows watching for an opening
 ~
 This is a drow assassin, he blends into the shadows on each side of the
 street.  You can barely make out his form as he moves silently, looking for
@@ -1320,7 +1318,7 @@ any mortal.  His price is extremely high, but he has never failed.
 #16100
 assassin trainer~
 The trainer~
-The assassin's trainer stands here ready to help you progress 
+The assassin's trainer stands here ready to help you progress
 ~
 This is a figure of extreme power.  He can defeat anything that walks the
 land and is mortal.
@@ -1606,7 +1604,7 @@ demon clan mage~
 A demon clan mage~
 A clan mage walks about lost in thought
 ~
-This is one of the clan mages, he is dressed in flowing red and black robes. 
+This is one of the clan mages, he is dressed in flowing red and black robes.
 He is also wearing red and black bracers.
 ~
 1|64 8192 -600 S
@@ -1759,7 +1757,7 @@ scale of the enforcer~
 A brown scale glitters somewhat in the lighting~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 1 1
@@ -1771,7 +1769,7 @@ blood shot eye~
 A blood shot eye that looks half-mad~
 ~
 3 1 1|16384
-22~ 2~ 2~ flamestrike~ 
+22~ 2~ 2~ flamestrike~
 3 0 0
 #16003
 eye slime~
@@ -1779,7 +1777,7 @@ slime of the enforcing eye~
 Brown putrid slime~
 ~
 26 64 1
-23~ detect invis~ heal~ detect hidden~ 
+23~ detect invis~ heal~ detect hidden~
 1 0 0
 #16004
 eye justice~
@@ -1787,7 +1785,7 @@ a huge eye of justice~
 The ripped out eye of the enforcer beholder~
 ~
 4 1 1|16384
-40~ 2~ 2~ lightning bolt~ 
+40~ 2~ 2~ lightning bolt~
 3 0 0
 #16005
 eye stalk beholder~
@@ -1795,7 +1793,7 @@ beholder's eyestalk~
 An eyestalk of a beholder~
 ~
 3 1 1|16384
-20~ 2~ 2~ energy drain~ 
+20~ 2~ 2~ energy drain~
 3 0 0
 #16006
 gnome mace~
@@ -1803,7 +1801,7 @@ glinting gnome mace~
 A dull grayish mace of gnomic design~
 ~
 5 256 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 4 0 0
 A
 13 10
@@ -1817,7 +1815,7 @@ sword of darkness~
 A drow blade seems to cast a shadow of darkness around it~
 ~
 5 0 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 4 0 0
 A
 1 1
@@ -1829,7 +1827,7 @@ dark gray helm~
 A helm of duergar make lies abandoned off to the side~
 ~
 9 64 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 1 1
@@ -1841,7 +1839,7 @@ sleeves of knowledge~
 Sleeves that bear many arcane signs rest here~
 ~
 9 32|64 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 3 1
@@ -1853,7 +1851,7 @@ a piece of polished blood stone~
 A small polished stone that has flecks of red in a dark green base~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #16011
 breast plate~
@@ -1861,7 +1859,7 @@ breast plate of strength~
 A breastplate emits an aura of power~
 ~
 9 1|64 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 1 2
@@ -1877,7 +1875,7 @@ a shining holy symbol of Xevior~
 A holy symbol of Xevior floats above the ground~
 ~
 9 2|128|256|512 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 4 2
@@ -1887,7 +1885,7 @@ ripped leather pants~
 A pair of dirty ripped leather pants lies abandoned on the floor~
 ~
 9 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 #16014
 purple worm scale~
@@ -1895,7 +1893,7 @@ small purple worm scale~
 A small scale from a purple looks as if it can be worn on the arm~
 ~
 9 256 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 13 25
@@ -1907,7 +1905,7 @@ huge purple worm scale~
 A huge purple worm scale lies discarded off to the side~
 ~
 9 0 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 12 35
@@ -1921,7 +1919,7 @@ gauntlets of the eye~
 A pair of gauntlets with the design of an eye on them rests here~
 ~
 9 1 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 13 10
@@ -1933,7 +1931,7 @@ helm of the eye~
 A helm lies here with a huge eye centered on it~
 ~
 9 2 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 12 15
@@ -1949,7 +1947,7 @@ a very sharp pin~
 A small pin glints in the light~
 ~
 5 32 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 1 0 0
 A
 1 -3
@@ -1963,7 +1961,7 @@ very muddy branch~
 A branch covered in muck lies discarded off to the side~
 ~
 5 2|128|2048 1|8192
-0~ 0~ 0~ 9~ 
+0~ 0~ 0~ 9~
 15 0 0
 A
 2 -2
@@ -1977,7 +1975,7 @@ a small deadly dart~
 A little dart lies on the ground~
 ~
 5 32 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 1 0 0
 A
 1 -2
@@ -1999,7 +1997,7 @@ girth of protection~
 A girth lies here glowing softly with power~
 ~
 9 1|64|4096 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 13 10
@@ -2011,7 +2009,7 @@ dull eyes~
 Two small eyes that have lost their shine wait to be used~
 ~
 9 1|2|128|4096 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 4 -3
@@ -2023,7 +2021,7 @@ an iron sword~
 A very large sword made out of iron lies ready~
 ~
 5 0 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 45 0 0
 A
 1 2
@@ -2039,7 +2037,7 @@ a huge stone mace~
 A large mace made completely of stone waits to be used~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 25 0 0
 A
 1 1
@@ -2053,7 +2051,7 @@ black Shield of Protection~
 A black shield waits to protect its owner~
 ~
 9 2|256|4096 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 17 -35
@@ -2065,7 +2063,7 @@ a small black stone~
 A very small black stone almost escapes your notice~
 ~
 9 32|64|2048|4096 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 1 -3
@@ -2083,7 +2081,7 @@ demon horn~
 A glowing demon horn waits to be wielded~
 ~
 5 1|512 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 4 0 0
 A
 17 -10
@@ -2097,7 +2095,7 @@ translucent robe~
 A semi-transparent robe lies on the floor~
 ~
 9 256 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 5 1
@@ -2109,7 +2107,7 @@ belt of pleasure~
 A thin belt lies on the ground offering you much joy~
 ~
 9 256 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 2 1
@@ -2119,7 +2117,7 @@ ring of nobility~
 A small beautiful ring is ready to worn~
 ~
 9 256 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 3 -2
@@ -2133,7 +2131,7 @@ gold teeth~
 A couple golden teeth wait to be used~
 ~
 9 256 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 1 -1
@@ -2145,7 +2143,7 @@ a broken bottle~
 A broken bottle lies on the ground~
 ~
 5 0 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 2 0 0
 A
 2 -1
@@ -2157,7 +2155,7 @@ a pair of dusty boots~
 A pair of dusty boots lie forgotten on the ground~
 ~
 9 4096 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 -3
@@ -2171,7 +2169,7 @@ a gnome hat~
 A gnome hat rests here just waiting to be taken~
 ~
 9 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 2
@@ -2183,7 +2181,7 @@ boots of flying~
 A pair of boots hover just above the ground~
 ~
 9 32|64|4096 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8 0 0
 A
 14 100
@@ -2195,7 +2193,7 @@ bracer of strength~
 A very powerful looking bracer hums on the ground~
 ~
 9 2|64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 1 4
@@ -2205,7 +2203,7 @@ slaver's Whip~
 A long dangerous looking whip waits to used against a slave~
 ~
 5 2 1|8192
-0~ 0~ 0~ 4~ 
+0~ 0~ 0~ 4~
 4 0 0
 A
 4 -4
@@ -2221,7 +2219,7 @@ a pair of manacles~
 A pair of manacles waits to be worn~
 ~
 9 2|4096 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 1 -3
@@ -2235,7 +2233,7 @@ a mage cloak~
 A long flowing cloak that glows lies here~
 ~
 9 1 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 12 25
@@ -2245,7 +2243,7 @@ a jagged long sword~
 A jagged long sword rests on the ground~
 ~
 5 2 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 5 0 0
 A
 17 -10
@@ -2257,7 +2255,7 @@ an ebony dagger~
 An ebony dagger lies off to your side~
 ~
 5 2 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 4 0 0
 A
 17 -10
@@ -2271,7 +2269,7 @@ a glowing sphere~
 A glowing sphere lights up the room~
 ~
 1 1 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 3 0 0
 A
 12 20
@@ -2281,7 +2279,7 @@ a midnight blue bracer~
 A dark blue bracer lies on the ground~
 ~
 9 2 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 2 1
@@ -2291,7 +2289,7 @@ an ebony morning star~
 An ebony morning star rests on the ground~
 ~
 5 2 1|8192
-0~ 0~ 0~ 8~ 
+0~ 0~ 0~ 8~
 6 0 0
 A
 5 1
@@ -2305,7 +2303,7 @@ black drow chainmail~
 A black suit of chainmail lies ready to be taken~
 ~
 9 2 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 2 1
@@ -2317,7 +2315,7 @@ a drow sword~
 A dark sword lies on the ground~
 ~
 5 64 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 5 0 0
 A
 18 1
@@ -2329,7 +2327,7 @@ a drow dagger~
 A dark dagger lies on the ground~
 ~
 5 64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 3 0 0
 A
 18 2
@@ -2341,7 +2339,7 @@ a drow mace~
 A dark mace lies on the ground~
 ~
 5 64 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 4 0 0
 A
 18 1
@@ -2353,7 +2351,7 @@ duergar breastplate~
 A breastplate of duergar make lies ready~
 ~
 9 64 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 17 -5
@@ -2363,7 +2361,7 @@ a duergar helm~
 A helm of duergar make lies ready~
 ~
 9 64 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 17 -3
@@ -2373,7 +2371,7 @@ a duergar shield~
 A shield of duergar designs lies ready~
 ~
 9 64 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 17 -15
@@ -2383,7 +2381,7 @@ duergar leggings~
 A pair of leggings lie ready~
 ~
 9 64 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 17 -5
@@ -2393,7 +2391,7 @@ a duergar bracer~
 A bracer of duergar design lies ready~
 ~
 9 64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 17 -5
@@ -2403,7 +2401,7 @@ a brown mushroom~
 A brown mushroom lies here looking tasty~
 ~
 19 256 1
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 1 0 0
 #16056
 large mushroom~
@@ -2411,7 +2409,7 @@ a large mushroom~
 A large mushroom lies on the ground~
 ~
 19 256 1
-25~ 0~ 0~ 0~ 
+25~ 0~ 0~ 0~
 1 0 0
 #16057
 red moss~
@@ -2419,7 +2417,7 @@ red moss~
 Some red moss lies on the ground~
 ~
 26 256 1
-15~ giant strength~ ~ ~ 
+15~ giant strength~ ~ ~
 2 0 0
 #16058
 dirty root~
@@ -2427,7 +2425,7 @@ a dirty root~
 A dirty root lies on the ground~
 ~
 26 256 1
-15~ armor~ protection~ stone skin~ 
+15~ armor~ protection~ stone skin~
 1 0 15
 #16059
 scroll reveal~
@@ -2435,7 +2433,7 @@ scroll of reveal~
 A scroll lies on the ground~
 ~
 2 0 1|16384
-15~ identify~ ~ ~ 
+15~ identify~ ~ ~
 1 0 0
 #16060
 hand shocking grasp~
@@ -2443,7 +2441,7 @@ hand of shocking grasp~
 A hand lies on the ground~
 ~
 3 1 1|16384
-55~ 4~ 4~ shocking grasp~ 
+55~ 4~ 4~ shocking grasp~
 2 0 0
 #16061
 potion detection~
@@ -2451,7 +2449,7 @@ potion of detection~
 A potion of detection waits to be used~
 ~
 10 0 1
-15~ detect hidden~ detect invis~ detect magic~ 
+15~ detect hidden~ detect invis~ detect magic~
 2 0 0
 #16062
 svirfneblin leggings~
@@ -2459,7 +2457,7 @@ svirfneblin leggings~
 A pair of svirfneblin leggings lies on the ground waiting to be taken~
 ~
 9 64 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 1 1
@@ -2471,7 +2469,7 @@ necklace of nobility~
 A beautiful necklace waits to be worn~
 ~
 9 64 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 1 1
@@ -2489,7 +2487,7 @@ a broadsword named 'Vision'~
 A beautifully crafted broadsword lies on the ground~
 ~
 5 1|2 1|8192
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 4 0 0
 A
 1 1
@@ -2505,7 +2503,7 @@ thief's patch~
 A small patch lies on the ground~
 ~
 9 32 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 2
@@ -2517,7 +2515,7 @@ thief's gloves~
 A pair of thin leather gloves rests on the ground~
 ~
 9 64 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 2
@@ -2529,7 +2527,7 @@ a gold chain~
 A gold chain glints in the light~
 ~
 9 64 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 17 -10
@@ -2549,7 +2547,7 @@ lucky dice~
 A pair of dice glow softly~
 ~
 9 1|64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 13 20
@@ -2569,7 +2567,7 @@ a dark cloak~
 A very dark cloak lies in the shadows~
 ~
 9 64 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 2 2
@@ -2583,7 +2581,7 @@ golden earring~
 A small golden earring glints softly in the light~
 ~
 9 64 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 2 1
@@ -2597,7 +2595,7 @@ a jewelled dagger~
 A jewelled dagger looks as if it could cut through anything~
 ~
 5 2|64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 3 0 0
 A
 2 2
@@ -2613,7 +2611,7 @@ a hand grasping an orb~
 A hand grasping an orb lies on the ground~
 ~
 1 1|64 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 3 0 0
 A
 12 50
@@ -2625,7 +2623,7 @@ a long flowing robe~
 A beautiful robe lies pooled on the ground~
 ~
 9 64 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 12 50
@@ -2637,7 +2635,7 @@ a blade of poison~
 A dark blade rests here humming quietly~
 ~
 5 2|64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 3 0 0
 A
 18 1
@@ -2649,7 +2647,7 @@ assassin's sleeves~
 A pair of black sleeves rests here~
 ~
 9 64 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 18 1
@@ -2661,7 +2659,7 @@ skull tattoo~
 A weird glimmer lies on the ground, shaped like a skull~
 ~
 9 64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 13 5
@@ -2673,7 +2671,7 @@ a choke wire~
 A thin wire lies on the ground humming~
 ~
 5 2|64 1|16384
-0~ 0~ 0~ 9~ 
+0~ 0~ 0~ 9~
 1 0 0
 A
 18 -5
@@ -2685,7 +2683,7 @@ an assassin's mask~
 A mask, which keeps changing, is on the ground~
 ~
 9 64 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 1 1
@@ -2699,7 +2697,7 @@ flaming dagger tattoo~
 A weird glimmer lies on the ground, shaped like a dagger~
 ~
 9 64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 19 2
@@ -2709,7 +2707,7 @@ wyvern tattoo~
 A weird glimmer lies on the ground, shaped like a wyvern~
 ~
 9 64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 18 1
@@ -2721,7 +2719,7 @@ dragon tattoo~
 A weird glimmer lies on the ground, shaped like a dragon~
 ~
 9 64 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 18 2
@@ -2733,7 +2731,7 @@ a diamond helm~
 A helm sparkles and glints in the light~
 ~
 9 64 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 13 25
@@ -2745,7 +2743,7 @@ the keeper's shield~
 A large shield that looks as if it were made of stone lies here~
 ~
 9 64 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 13 35
@@ -2763,7 +2761,7 @@ a demon clan signet ring~
 A red and black ring glows and hums softly on the ground~
 ~
 9 1|2|16|64 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 12 10
@@ -2777,7 +2775,7 @@ demon bracer~
 A black and red bracer lies on the ground~
 ~
 9 1|2|16|64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 2 2
@@ -2789,7 +2787,7 @@ a demon blade~
 A black blade hums on the ground~
 ~
 5 2|16|64|512 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 6 0 0
 A
 17 -5
@@ -2803,7 +2801,7 @@ gem of gate~
 A large black gem lies on the ground~
 ~
 4 2|16|64 1|16384
-35~ 5~ 5~ teleport~ 
+35~ 5~ 5~ teleport~
 3 0 0
 #16088
 demon plate~
@@ -2811,7 +2809,7 @@ demon plate~
 A black suite of plate mail rests on the ground~
 ~
 9 2|16|64|512 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 9 0 0
 A
 5 2
@@ -2825,7 +2823,7 @@ the demon fire~
 A weird flame burns here~
 ~
 9 2|16|64 1|512
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 13 -400
@@ -2841,7 +2839,7 @@ a fire gem~
 A large red gem seems to be on fire~
 ~
 3 1|64 1|16384
-35~ 5~ 5~ fireball~ 
+35~ 5~ 5~ fireball~
 3 0 0
 #16091
 statue stealth~
@@ -2849,7 +2847,7 @@ statue of stealth~
 A statue of a god stands off to the side~
 ~
 15 32 0
-1000~ 1~ -1~ 0~ 
+1000~ 1~ -1~ 0~
 1 0 0
 #16092
 brains~
@@ -2857,7 +2855,7 @@ brains of the god~
 A foul greyish mush sits here~
 ~
 20 1 1
-5~ 5~ 5~ 15~ 
+5~ 5~ 5~ 15~
 1 0 0
 #16093
 gold pile merchants~
@@ -2865,7 +2863,7 @@ merchant's gold~
 Merchant's gold sits here in a pile~
 ~
 20 0 1
-0~ 0~ 1000~ 0~ 
+0~ 0~ 1000~ 0~
 1 0 0
 #16094
 gold pile~
@@ -2873,7 +2871,7 @@ not so rich merchant gold~
 A small pile of gold~
 ~
 20 0 1
-0~ 0~ 500~ 0~ 
+0~ 0~ 500~ 0~
 1 0 0
 #16095
 portal~
@@ -2881,7 +2879,7 @@ the mirror flashes scenes of the world~
 The mirror flashes scenes of the world~
 ~
 13 64 0
-0~ 0~ 0~ 31001~ 
+0~ 0~ 0~ 31001~
 1 0 0
 E
 mirror portal~
@@ -2905,19 +2903,19 @@ There are no exits from Silence's Chamber.
 E
 map~
 The map sits against the north wall.  It is a rough sketch of the Underdark,
-showing only the lay out of the streets.  It looks as follows. 
+showing only the lay out of the streets.  It looks as follows.
 Well once it looked as follows :)
    ############################################
    #******************************************#
    #*/---------\*/---\*/--------------------\*#
    #*! beholder!*!   !*|  gremlins          !*#
-   #*\---_-----/*\-_-/*\--------------------/*#/----------\       
-   #******************************************#!demon     !       
-   #HHHHHHHHH*/------\*/----\*/-------------\*#!  clan    !        
-   ##########*! bodak!*!    !*! inn.this it?!*#!          !       
-   #HHHHHHHHH*\_-----/*\_---/*\_------------/*#\-----_----/       
-   #******************************************|*************     
-   #HHHHHH***/-----\***/--------------_-\    *##############       
+   #*\---_-----/*\-_-/*\--------------------/*#/----------\
+   #******************************************#!demon     !
+   #HHHHHHHHH*/------\*/----\*/-------------\*#!  clan    !
+   ##########*! bodak!*!    !*! inn.this it?!*#!          !
+   #HHHHHHHHH*\_-----/*\_---/*\_------------/*#\-----_----/
+   #******************************************|*************
+   #HHHHHH***/-----\***/--------------_-\    *##############
    #HHHHHH***\-----]***\-------!        !*****#   #####
    #***************************! eyes   !*/_-\#   #***#
    #/--\*SSSSSSSSSS*/_-------\*|        |*\--/#####* *#
@@ -3411,7 +3409,7 @@ Sunset~
 You wonder who it was that named these dreadful streets such cheery
 names.  The street upon which you stand is nothing like sunset, the only
 reason you can even think up is the fact that the sun sets to the west.
-Screams echo towards you from all sides assaulting your senses. 
+Screams echo towards you from all sides assaulting your senses.
 You eyes hurt from trying to pierce the darkness that lies everywhere.  The
 ground is rough through your boots.  The air is cool, and the cavern wall to
 your west glints with wetness.
@@ -3457,7 +3455,7 @@ Before a huge dwelling~
 You stand before of what seems to be a house.  It seems to be made up of a
 dark blue rock.  The house, if that is what it is, seems to be very dark with
 no windows.  The house stretches to the east and west.  The walls are very
-smooth and glint in your light.  The entrance is to the north. 
+smooth and glint in your light.  The entrance is to the north.
 
 To the north is a door, to the south is sunset
 ~
@@ -3502,7 +3500,7 @@ S
 #16027
 Ruby Street~
 This is Ruby Street, where the shadows seem to come alive.  Everything
-seems to crawl and move in the darkness that your light does not pierce. 
+seems to crawl and move in the darkness that your light does not pierce.
 The glow of your light attracts the attention of everything around you, you
 feel as if things are watching you, sizing you, seeing if you are weak.
 
@@ -3571,7 +3569,7 @@ S
 #16030
 Sapphire street before the tavern~
 You stand on Sapphire Street just before a tavern.  A ball of light floats out
-of your reach above you.  It illuminates a sign that says 'The Gemstone.' 
+of your reach above you.  It illuminates a sign that says 'The Gemstone.'
 The door has been painted many different colours, you figure they were
 trying to catch the colours of all the gems.  From behind the door you can
 make out bits and pieces of conversation.
@@ -3742,7 +3740,7 @@ S
 Sunset~
 You stand along Sunset at part of the residential area of the city.  A little
 glowing orb hovers above your head.  The floor is flat and nondescript.  To
-the south lies one of the residential homes 
+the south lies one of the residential homes
 
 Sunset goes on to the east and west.  To the south is a door
 ~
@@ -3771,7 +3769,7 @@ S
 Sunset~
 You stand along Sunset at part of the residential area of the city.  A little
 glowing orb hovers above your head.  The floor is flat and nondescript.  To
-the south lies one of the residential homes 
+the south lies one of the residential homes
 
 Sunset goes on to the east and west.  To the south is a door
 ~
@@ -3827,7 +3825,7 @@ Sunset
 0 -1 16038
 E
 door~
-A simple door made of a gray material serves as the entrance to this house. 
+A simple door made of a gray material serves as the entrance to this house.
 There are no marks on this door.
 ~
 S
@@ -3896,7 +3894,7 @@ Sunset
 S
 #16043
 Ruby Street~
-Ruby Street goes on.  The red on the ground is beginning to annoy you. 
+Ruby Street goes on.  The red on the ground is beginning to annoy you.
 Shadows dance all around you as your light and the floating orbs pierce the
 blackness.  The air is cold and damp here.
 
@@ -3963,7 +3961,7 @@ Moonlight avenue
 S
 #16046
 Diamond Street~
-You stand on Diamond Street, another of the gem streets.  The ground 
+You stand on Diamond Street, another of the gem streets.  The ground
 glitters in the light.  There are fewer orbs of light in the air here, causing
 more shadows to fall everywhere and to invade all.  The sounds of laughter
 and screaming reach your ears.
@@ -4004,8 +4002,8 @@ Diamond street
 S
 #16048
 Diamond Street~
-Diamond Street is wide here.  For what reason, that lies beyond your grasp. 
-There are little bits of stone and wood that lie scattered across your path. 
+Diamond Street is wide here.  For what reason, that lies beyond your grasp.
+There are little bits of stone and wood that lie scattered across your path.
 Only a few glowing orbs shine here.
 
 Diamond street lies east and south
@@ -4072,8 +4070,8 @@ Diamond street
 S
 #16051
 Diamond Street~
-Diamond Street is wide here.  For what reason, that lies beyond your grasp. 
-There are little bits of stone and wood that lie scattered across your path. 
+Diamond Street is wide here.  For what reason, that lies beyond your grasp.
+There are little bits of stone and wood that lie scattered across your path.
 Only a few glowing orbs shine here.
 
 Diamond street lies east and south
@@ -4264,7 +4262,7 @@ Junction of Sunrise and Diamond~
 You stand where Diamond Street meets Sunrise.  You look down Diamond
 Street and see very few glowing orbs to illuminate the street.  Shadowy
 figures walk down the road doing their thing.  The sounds of the city are
-quite audible here bouncing off the cavern wall into your ear. 
+quite audible here bouncing off the cavern wall into your ear.
 
 Sunrise goes north and south, Diamond goes west
 ~
@@ -4289,7 +4287,7 @@ S
 Sunset~
 You stand on Sunset, the street that travels along the western end of
 Underdark.  The sounds of the market reach you ears here.  Small glowing
-orbs light the way every ten feet giving everything around you a faint glow. 
+orbs light the way every ten feet giving everything around you a faint glow.
 You feel as if you are walking in a dream.
 
 Sunset continues north and south
@@ -4310,7 +4308,7 @@ S
 Sunset~
 Sunset is a road that is very well travelled.  Glowing orbs float in the air
 every ten feet lighting your path.  Although the orbs light most of the
-street, off to the side the street remains shrouded in black. 
+street, off to the side the street remains shrouded in black.
 
 Sunset continues north and south
 ~
@@ -4330,7 +4328,7 @@ S
 Sunset~
 Sunset is a road that is very well travelled.  Glowing orbs float in the air
 every ten feet lighting your path.  Although the orbs light most of the
-street, off to the side the street remains shrouded in black. 
+street, off to the side the street remains shrouded in black.
 
 Sunset continues north and south
 ~
@@ -4396,7 +4394,7 @@ Moonlight Avenue~
 You stand on a clean street.  Although screams reach your ears they don't
 seem to be as bad.  This street almost seems to be a happy place.  The
 shadows are few, and the lighting is good.  Although you still can't see
-what is above you, you can see quite well in your immediate surroundings.    
+what is above you, you can see quite well in your immediate surroundings.
 
 Moonlight Avenue continues north and south
 ~
@@ -4455,7 +4453,7 @@ Emerald street
 S
 #16069
 Emerald Street~
-Emerald Street is a short street compared to the other streets in this city. 
+Emerald Street is a short street compared to the other streets in this city.
 There is little of note on this street that passes between the whorehouse
 and the inn.  The ground is greenish and sparkles gently in the light.
 
@@ -4479,7 +4477,7 @@ You stand on Emerald Street, a small shadowy street.  Shadows obscure
 everything that is even remotely far away.  Flickering glowing orbs light
 the way every fifteen feet.  Darkness forms at the edge of the circles of
 light formed by these orbs.  It's almost as if the darkness down here has
-a form.  This street is rarely used, 'cept by those fleeing. 
+a form.  This street is rarely used, 'cept by those fleeing.
 
 Emerald Street continues north, the Slaver's Route is south
 ~
@@ -4539,7 +4537,7 @@ S
 #16073
 Sunrise~
 You stand on Sunrise, the eastern most street of Underdark.  The street
-stretches to the north.  Glowing orbs float above your head every ten feet. 
+stretches to the north.  Glowing orbs float above your head every ten feet.
 Even with the orbs, darkness seems to eat the light with an appetite.  The
 air is moist and warm.  The smells of the city strike your nose as
 repugnant.
@@ -4687,7 +4685,7 @@ Slaver's Route~
 You stand on the slaver's route.  The darkness of the city seems to descend
 upon you here.  It's as if the floating orbs don't do their job.  The screams
 of slaves assault your ears.
-  
+
 The ground is charred and you see little bits of what was once a humanoid.
 
 The slaver's route is east and west.  To the north lies Sunset, south is the
@@ -4723,7 +4721,7 @@ Perhaps you would be able to recall from this zone here. ~
 S
 #16079
 Slaver's Route~
-You stand along the slaver's route.  The road is well worn and clean. 
+You stand along the slaver's route.  The road is well worn and clean.
 Screams of slaves surround you.  The orbs glow brightly and illuminate
 almost everything around you.
 
@@ -4801,7 +4799,7 @@ You are walking along the slaver's route.  The slaver's route was developed
 to generate trade, which it did.  In fact, it did such a good job that
 Underdark became a power in the politics of the world.  You can get
 basically anything you want in Underdark.  The glowing orbs light up
-the many opportunities that a person can have down here... 
+the many opportunities that a person can have down here...
 
 The slaver's route continues east and west.
 ~
@@ -4822,7 +4820,7 @@ Slaver's Route~
 This is the Slaver's Route, the same as the rest of the road.  All around
 you people move around on their respective duties.  The shadows seem to
 breathe and hide all sorts of unknown dangers.  Floating orbs that are
-evenly spaced light the way, well they sorta light the way. 
+evenly spaced light the way, well they sorta light the way.
 
 Slaver's route continues east and west, south is the Slave's square
 ~
@@ -4878,7 +4876,7 @@ S
 #16085
 Slaver's route, before the Whorehouse~
 The Slaver's Route, almost everyone in Underdark has walked along
-these famous stones.  It was along this road that the city was made. 
+these famous stones.  It was along this road that the city was made.
 Without the slave trade, the city would not have expanded as fast as it did
 when the city was first built.  Underdark has since become a trade
 center where those who dwell beneath the ground and those above can
@@ -4998,7 +4996,7 @@ You stand on the slaver's route.  The road stretches on between two huge
 buildings.  The building to the south is the head quarters for the guardian
 eyes and to the north is the inn.  The road here is very clean and better lit
 than most of the city.  The shadows seem less ominous and a couple
-orbs seem to have stopped functioning here. 
+orbs seem to have stopped functioning here.
 South is the entrance to the Guardian Eye's headquarters and the prisons.
 
 Slaver's route continues east and west
@@ -5048,11 +5046,11 @@ Slaver's route
 S
 #16091
 Slaver's Route~
-You walk along the slaver's route.    The sounds of people living, dying, 
-fighting threatens to overwhelm your senses.  The smell of human and non-human 
-bodies irritates your nose.  The sweet, tangy smell of sweat and blood causes 
+You walk along the slaver's route.    The sounds of people living, dying,
+fighting threatens to overwhelm your senses.  The smell of human and non-human
+bodies irritates your nose.  The sweet, tangy smell of sweat and blood causes
 your stomach to turn.
-Squinting in the dim light, you think you see a huddled form lying off 
+Squinting in the dim light, you think you see a huddled form lying off
 to the side of the road.
 
 The slaver's route continues east and west
@@ -5102,7 +5100,7 @@ Slaver's route
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -5117,7 +5115,7 @@ lies.  It is because of this that you think you stand in a huge cavern.  The
 air smells of thousands living in a confined space with little fresh air.  The
 air itself is moist and warm.  Sounds assault your ears, not just the buzzing
 of people, but also agonized screams.  The shadows seems to speak of
-death.  Welcome to the Underdark. 
+death.  Welcome to the Underdark.
 
 The north and south is Sunrise, to the east is the entrance and to the west is
 the Slaver's route and farther down, the market area.
@@ -5146,7 +5144,7 @@ Slaver's route
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -5248,7 +5246,7 @@ here.  The only illumination is from your light source.  No sounds reach
 your ears only your breathing and the blood gushing through your body.
 Everything seems to be at a distance, nothing looks real.  You feel isolated
 from society as a whole, ignored, worthless.  There is nothing to live for,
-people whisper in the shadows, plotting the downfall of the world. 
+people whisper in the shadows, plotting the downfall of the world.
 Nothing can stop it; there is no point.  How can you as an individual make
 a difference?  For a moment, these words form in the air "Welcome to the
 darkside" you feel empty and drained.  No life stirs within, a chill
@@ -5319,7 +5317,7 @@ The Slave's Square~
 You are in the northeast corner the slave's square.  The name is a cruel
 slavers joke, they have given the slaves this square.  The square is the only
 thing the slaves have, and it is used for their maiming, sentencing and
-execution.  The ground is clean, with dark brown spots here and there. 
+execution.  The ground is clean, with dark brown spots here and there.
 The dark brown stains are stains of blood.
 
 North is the slaver's route, west and south lies the slave's square
@@ -5406,7 +5404,7 @@ The slave's square
 0 -1 16100
 E
 mosaic stain~
-A mosaic of a large whip striking a defiant slave lies on the ground here. 
+A mosaic of a large whip striking a defiant slave lies on the ground here.
 The little stones have been stained with the blood of many slaves who may
 or may not have done something wrong.
 ~
@@ -5437,7 +5435,7 @@ Sunrise
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -5449,7 +5447,7 @@ orbs light the way, casting a surrealistic haze on all around you.  The
 sounds of the city bounce of the cavern wall to the east and find their way
 into your ears.  The smell of sweat engages your nose.  A dark forbidding
 enters your head, the shadows begin to come alive.  Always, just out of
-your sight, a shape flits in and out of the shadows. 
+your sight, a shape flits in and out of the shadows.
 
 North and west sunrise goes on.  South is the entrance to the cages.
 ~
@@ -5477,14 +5475,14 @@ cage containing many weird and exotic creatures.
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
 S
 #16104
 Sunrise~
-You are walking down sunrise.  Glowing orbs light the way into dimness. 
+You are walking down sunrise.  Glowing orbs light the way into dimness.
 You can make out very few features of the city here.  Only the muffled
 agonized cries and the hum of thousands talking indicate that this is a huge
 city.  Built in the recent past, the city has undergone major growth and
@@ -5508,7 +5506,7 @@ Sunrise
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -5520,7 +5518,7 @@ hides all sorts of criminal activity.  But at the surface, the city is calm, no
 fighting in the streets.  The only reason there is no fighting is that fact that
 huge guardian eyes float through the city preventing open fights.  Glowing
 orbs float in the air, casting their dim glow on all around.  Illuminating
-basically nothing but giving some light. 
+basically nothing but giving some light.
 
 Sunrise goes east and south
 ~
@@ -5631,7 +5629,7 @@ black ninja outfit.  In one hand he wields a tiger's claw the other hand
 seems to glow.  You tap the hand and no sound comes out.  On pedestal
 there is a note that reads
 
-    Silence is both provider and destroyer.  To be blessed by him is to           
+    Silence is both provider and destroyer.  To be blessed by him is to
 be blessed indeed.
 
 You take one final look at this impressive almost life like representation of
@@ -5680,7 +5678,7 @@ You are walking along the street of the Gods.  This section has been
 dedicated to Ironhand.  The street is clean and lit with the same dim light
 as the rest, except here it reminds you of the light cast from a monitor late at
 night.  On the ground are seem to be a series of confusing symbols which
-you presume are mystic symbols of some sort. 
+you presume are mystic symbols of some sort.
 
 The street of the gods continues east and west, north is the entrance to a
 home.  South Sunset goes on.
@@ -5765,7 +5763,7 @@ and holds his hands up in a defensive posture.
 ~
 E
 arcane symbols street~
-The following has been engraved into the ground with great care. 
+The following has been engraved into the ground with great care.
 bool spec_kungfu_poison( CHAR_DATA *ch )
 {
     CHAR_DATA *victim;
@@ -5884,7 +5882,7 @@ Street of the Gods, Dizzy~
 You have entered the section of the street of gods that has been obviously
 dedicated to Dizzy.  The reason why this is obvious is the fact that you feel
 very nauseous and confused.  You are having problems figuring out up and
-down, left and right.  The ground seems to be rising up to your face. 
+down, left and right.  The ground seems to be rising up to your face.
 
 The street of the gods continues east and west, south is the Glowing Hand
 ~
@@ -5907,7 +5905,7 @@ The street of the gods
 S
 #16116
 Street of the Gods, Raptor~
-You walk along the part of the street of the gods that honors Raptor. 
+You walk along the part of the street of the gods that honors Raptor.
 Raptor is one of those all powerful immortals who has figured out the very
 fabric of the worlds.  On the ground lies a bunch of arcane and mystic
 symbols.
@@ -5946,7 +5944,7 @@ The following symbols rest on the road here.
     number = number_argument( argument, arg );
     count  = 0;
     for ( obj = object_list; obj != NULL; obj = obj->next )
-    {      if (can_see_obj( ch, obj ) && is_name( arg, obj->name ) )        
+    {      if (can_see_obj( ch, obj ) && is_name( arg, obj->name ) )
      {   if (++count == number )
           return obj;
      }
@@ -5960,7 +5958,7 @@ Street of the Gods, RoX~
 This section of the street has been dedicated to RoX.  The street is clean
 and well built, no bugs in it.  Orbs float every ten feet, although the street
 is clean, the shadows are darker than they should be and whisper of
-assassins.  The lighting cast from the orbs is not white; it's cobalt blue. 
+assassins.  The lighting cast from the orbs is not white; it's cobalt blue.
 The screams of the city do not penetrate into this section.  On the ground
 lie holy symbols of Farside, RoX's playground.
 
@@ -5990,7 +5988,7 @@ The street of the gods
 0 -1 16116
 E
 door~
-A well built oaken door.  On the door is an engraving of a person walking. 
+A well built oaken door.  On the door is an engraving of a person walking.
 Behind and below the person is his shadow, and beyond this is yet another
 shadow.
 ~
@@ -6010,7 +6008,7 @@ The follow has been carefully written into the ground.
 And on the gibberish goes.  Below all of this, the following has been
 written.
 
-    RoX, the leader of Farside, may he live in peace and harmony.             
+    RoX, the leader of Farside, may he live in peace and harmony.
 All praises go out to RoX
 ~
 S
@@ -6044,8 +6042,8 @@ E
 ground arcane symbols~
 The following glows green on the ground:
 
-   We praise Soapbox in all his might and wisdom.  His open minded           
- thoughts on how the realms should work.  One of the greatest immortals    
+   We praise Soapbox in all his might and wisdom.  His open minded
+ thoughts on how the realms should work.  One of the greatest immortals
  that have ever ruled a realm.
 ~
 S
@@ -6055,7 +6053,7 @@ You are standing on the street of the gods.  Instead of building a temple,
 the denizens of the Underdark built a road dedicated to them.   This
 section of the road honors Garion and his true understanding of the fabric
 of life.  Garion with his foresight to bring people together so they can
-defend themselves from their enemies and unite for a common goal. 
+defend themselves from their enemies and unite for a common goal.
 
 The street goes on east and west.
 ~
@@ -6157,7 +6155,7 @@ S
 Street of the Gods, Etaine~
 You stand at the beginning of the street of the gods, this street has been
 dedicated to the many gods of different realms of mud.  The road here has
-been polished and the glowing orbs seem to glow a little bit brighter here. 
+been polished and the glowing orbs seem to glow a little bit brighter here.
 Although different than having a temple in the city to worship the gods in,
 the gods have come to accept the street.
 
@@ -6180,7 +6178,7 @@ Sunset~
 You are walking along sunset.  The screams of the slaves reaches your ears
 quite clearly here.  The awful stench of a rotting corpse causes your eyes to
 water.  There are glowing orbs floating in the air every ten feet or so,
-casting everything in a dim light, like the light of the predawn. 
+casting everything in a dim light, like the light of the predawn.
 
 To the north is the street of the gods, south lies sunset
 ~
@@ -6241,7 +6239,7 @@ S
 #16127
 Azurite Street~
 You are walking along Azurite Street.  Azurite street, like the rest of the
-Gemstone Streets was named after the mineral that was mined there. 
+Gemstone Streets was named after the mineral that was mined there.
 Before the Underdark was built, the entire area was a huge mine of
 different precious stones.  Azurite has left its mark on the street.  The
 street still seems to be blue in color.  The glowing orbs illuminate next to
@@ -6266,7 +6264,7 @@ Road of Shadows at Sunset~
 You are standing at the beginning of the road of Shadows.  The reason for
 this name is very obvious.  All around you more shadows than there should
 be form.  Everything seems to be cloaked in its own shadow.  The light of
-the orbs and from your light source does nothing to illuminate the area. 
+the orbs and from your light source does nothing to illuminate the area.
 
 Sunset goes north and south.  The road of shadows heads east.
 ~
@@ -6292,7 +6290,7 @@ Road of Shadows~
 You are walking down the road of shadows.  Everything seems to be
 distorted because they are enveloped in shadows, which shapes seem to
 filter in and out of.  The glowing orbs fail to pierce the darkness and
-the hum of the city buzzes constantly in your ears. 
+the hum of the city buzzes constantly in your ears.
 
 The road of shadows continues east and west
 ~
@@ -6314,7 +6312,7 @@ You wander down this Road of Shadows.  Everything is covered by shadow.
 You have an uneasy feeling about what could be hiding in the darkness
 of this city.  Every now and then a scream pierces through the regular
 hum of the city.  From all around you, you feel creatures watching
-you... 
+you...
 
 The road of shadows continues east and west
 ~
@@ -6335,7 +6333,7 @@ Road of Shadows~
 There is very little of note at this point on the road.  Everything is
 Obscure to your view.  Nothing seems to be natural, with very little light
 penetrating down to the street.  The glowing orbs, although glowing as
-they normally do, don't give off enough light to light up the area. 
+they normally do, don't give off enough light to light up the area.
 
 The road of shadows continues east and west
 ~
@@ -6356,7 +6354,7 @@ Road of Shadows~
 You are walking along the Road of Shadows.  You can barely see the
 ground you are walking on.  It's as if you are walking in every shadow ever
 created.  The glowing orbs glow as the regularly do but the light itself
-seems to cast a shadow on everything. 
+seems to cast a shadow on everything.
 
 The road of shadows continues east and west
 ~
@@ -6377,7 +6375,7 @@ Road of Shadows~
 This is the Road of Shadows, a place where thieves walk unmolested.  You
 carefully peer around you hoping to pierce the shadows with your gaze, but
 you fail miserably.  The road of shadows allows straight passage from the
-east side of the city to the west.  Very little lives along this street, but from all around you, you feel you are being sized up and inspected... 
+east side of the city to the west.  Very little lives along this street, but from all around you, you feel you are being sized up and inspected...
 
 The road of shadows continues east and west
 ~
@@ -6397,7 +6395,7 @@ S
 Road of Shadows at Azurite~
 You are standing at the junction of Azurite and the Road of Shadows.  The
 blue road of Azurite is covered by a layer of shadow.  The shadows deepen
-to the east and west, north and south they seem to clear up some. 
+to the east and west, north and south they seem to clear up some.
 
 To the north and south Azurite runs, to the east and west the road of
 Shadows seems to disappear into darkness.
@@ -6472,7 +6470,7 @@ Road of Shadows~
 You are walking down the road of shadows.  The whole length of this
 street is dark, as if you are walking in a huge shadow.  Every now and then
 a scream pierces through the darkness.  Glowing orbs float above your
-head, but they don't seem to shed much light and they flicker on and off. 
+head, but they don't seem to shed much light and they flicker on and off.
 
 The road of shadows continues east and west.  South stand a shadowy door
 ~
@@ -6498,7 +6496,7 @@ A door stands here, partially obscured by shadows.  You see small scribble
 engraved into it.  Staring at it for awhile, you think you make out the
 following
 
-     Only the true and strong may enter this building, 
+     Only the true and strong may enter this building,
       for it is protected by the gods.
 
 You have heard rumors that a very strong group of worshippers live in
@@ -6558,7 +6556,7 @@ S
 #16140
 Road of Shadows~
 You walk along this dark and gloomy road.  The shadows seem to live and
-breed here, they cover everything and get stronger in every crack. 
+breed here, they cover everything and get stronger in every crack.
 Glowing orbs float above you but shed no light just more shadows it
 seems.  Everything seems to be black, gray and white.  Color does not
 exist on this road.
@@ -6654,7 +6652,7 @@ S
 Sunrise~
 You are walking along Sunrise, the road of the east.  This road travels the
 length of the city along the eastern side.  Glowing orbs float in the air
-every ten feet casting an eerie dim on all the light strikes. 
+every ten feet casting an eerie dim on all the light strikes.
 
 Sunrise goes north and south, to the east the forgotten alley begins
 ~
@@ -6701,7 +6699,7 @@ Forgotten Alley~
 This street is narrow and dark.  There are many crevices to the side that
 are pitch black.  You think you are being watched as you walk carefully
 down this street.  Your light source only illuminates the ground directly
-ahead of you, while the floating orbs barely light up anything. 
+ahead of you, while the floating orbs barely light up anything.
 
 The alley continues east and west
 ~
@@ -6719,9 +6717,9 @@ The forgotten alley
 S
 #16147
 Forgotten Alley~
-You are walking along the forgotten alley, named this just for the fun of it. 
+You are walking along the forgotten alley, named this just for the fun of it.
 Most people in the Underdark know of this dark side street, but most have
-never traveled it.  The floating orbs glow dimly every fifteen feet. 
+never traveled it.  The floating orbs glow dimly every fifteen feet.
 
 The alley goes on east and west
 ~
@@ -6844,7 +6842,7 @@ S
 #16153
 Forgotten Alley~
 You stand at a turn in the alley.  It is very, very dark here, and you can
-Barely make out a glowing orb far to the south and nothing to the east. 
+Barely make out a glowing orb far to the south and nothing to the east.
 
 The alley goes east and south
 ~
@@ -6943,7 +6941,7 @@ S
 Dark Entrance Way~
 You are standing on a dark walkway before a huge house.  It is this house
 that the alley goes around.  You wonder what sort of maniac would live in
-a dark, quiet and dangerous place like this.  There are no lights around. 
+a dark, quiet and dangerous place like this.  There are no lights around.
 
 To the east is the forgotten alley, west is the door in.
 ~
@@ -7071,7 +7069,7 @@ S
 Forgotten Alley~
 There is a strong sense of death here.  It seems to be living in the dark that
 surrounds you.  There are no sounds here, not even the tread of a mouse.  It
-is so quiet that it seems as if it is the silence of death. 
+is so quiet that it seems as if it is the silence of death.
 
 The alley continues east and west.
 ~
@@ -7092,7 +7090,7 @@ Forgotten Alley~
 You are walking down through the Forgotten Alley.  The sounds of the city
 are dim here.  Very little can be heard from the city.  A sense of death
 hangs in the air.  A solitary glowing orb floats in the air, flickering on and
-off giving off a little illumination so you can barely see the road. 
+off giving off a little illumination so you can barely see the road.
 
 The alley goes north and south
 ~
@@ -7161,7 +7159,7 @@ S
 #16169
 Forgotten Alley~
 You stand at a corner in the forgotten alley.  Darkness surrounds your
-very being.  Your light source does little to relieve the dark. 
+very being.  Your light source does little to relieve the dark.
 
 The alley goes west and south
 ~
@@ -7200,7 +7198,7 @@ S
 #16172
 Forgotten Alley~
 You stand at the beginning of the forgotten alley.  It is dark here, and a
-floating orb lights up very little.  The sounds of the city reach your ears. 
+floating orb lights up very little.  The sounds of the city reach your ears.
 Rumors that death lives in this alley have reached your ears as you
 traveled through the Underdark.
 
@@ -7290,7 +7288,7 @@ S
 Sunrise~
 You are walking on Sunrise.  This street gets its name from the fact that it
 is on the east side of the city, and the founder of the city had a twisted
-sense of humor.  Floating orbs have been placed every five feet. 
+sense of humor.  Floating orbs have been placed every five feet.
 
 Sunrise goes on north and south
 ~
@@ -7310,7 +7308,7 @@ S
 Sunrise~
 You are on sunrise.  The sounds of the city strike your ears as a harsh
 rumble.  The smell of thousands living in a confined space with little fresh
-air assaults your nose.  Small glowing orbs float in the air every five feet. 
+air assaults your nose.  Small glowing orbs float in the air every five feet.
 The orbs here don't seem to be working properly since they flicker on and
 off.
 
@@ -7353,7 +7351,7 @@ Death's lane
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -7383,8 +7381,8 @@ Azurite Street~
 This is Azurite Street, a Gemstone Street.  Once long ago it is said that this
 entire cavern was filled with veins of gems and precious metals.  It was
 first mined by the duergar who lost it to the drow.  Much later a mighty
-wizard came to the area and created a huge cavern from the many tunnels. 
-Where the mighty veins once were now only roads exist. 
+wizard came to the area and created a huge cavern from the many tunnels.
+Where the mighty veins once were now only roads exist.
 
 North and south Azurite Street stretches onwards
 ~
@@ -7454,7 +7452,7 @@ S
 #16183
 Azurite Street~
 You are walking along Azurite Street.  Azurite street, like the rest of the
-Gemstone Streets was named after the mineral that was mined there. 
+Gemstone Streets was named after the mineral that was mined there.
 Before the Underdark was built, the entire area was a huge mine of
 different precious stones.  Azurite has left its mark on the street.  The
 street still seems to be blue in color.  The glowing orbs illuminate next to
@@ -7498,10 +7496,10 @@ Death's lane
 S
 #16185
 Death's Lane~
-You are walking down one of the most dangerous streets in the Underdark. 
+You are walking down one of the most dangerous streets in the Underdark.
 Thieves, rogues and assassins meet here to settle disputes.  The air is cool
 and dry.  The street is basically quiet with the sounds of the city but a faint
-memory.  Glowing orbs grow scarcer to the east. 
+memory.  Glowing orbs grow scarcer to the east.
 
 East and west death's lane continues
 ~
@@ -7561,7 +7559,7 @@ S
 #16188
 Death's Lane~
 You stand at the darkest section of death's lane.  It is here that most of the
-killings have occurred.  The ground is permanently stained with blood. 
+killings have occurred.  The ground is permanently stained with blood.
 You realize that there is no law here.  Your light barely illuminates the
 ground and doesn't cut through the darkness past four feet.  You are
 surrounded by a solid wall of darkness.
@@ -7582,7 +7580,7 @@ Death's lane
 S
 #16189
 Death's Lane~
-You are walking through one of the deadliest regions of the Underdark. 
+You are walking through one of the deadliest regions of the Underdark.
 Here assassins can strike without fear of their victims screaming.  The
 shadows are so deep that even a person wearing white could hide without
 being seen.
@@ -7712,7 +7710,7 @@ S
 Death's Lane~
 You are walking along death's lane, the most dangerous street in the
 Underdark.  The building to your north, you have heard, is the assassin's
-guild.  The darkness seems to hold your fate with a concealed dagger. 
+guild.  The darkness seems to hold your fate with a concealed dagger.
 
 West and east the lane continues
 ~
@@ -7765,7 +7763,7 @@ You stand at the most southern end of the Underdark.  There are a few
 glowing orbs that have been set up here.  The orbs seem to flicker on and
 off.  From this point you can hear, by some fluke of acoustics, the loud
 buzz of the city.  The smell of the city's denizens reaches your nose with
-painful clarity.  The cavern walls rise up all around you but north. 
+painful clarity.  The cavern walls rise up all around you but north.
 
 Death's lane goes on to the north
 ~
@@ -7778,7 +7776,7 @@ Death's lane
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -7840,7 +7838,7 @@ look carefully and you are rewarded with a handle to this door. ~
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -7868,7 +7866,7 @@ Traveler's crescent
 E
 floating orbs orb light~
 A small glowing orb of light is floating a few feet above your head.  The
-orb gives out a dim light that barely illuminates everything around you. 
+orb gives out a dim light that barely illuminates everything around you.
 These orbs seem to be along all the streets in the Underdark.  The orb
 itself is about 4 inches wide and is spherical.
 ~
@@ -7903,7 +7901,7 @@ S
 Traveler's Crescent~
 You are wandering down the Traveler's Crescent.  A nice secluded section
 of the Underdark.  The light for once is nice on the eyes and you don't have
-to squint.  The sounds of the city buzz at a bearable level. 
+to squint.  The sounds of the city buzz at a bearable level.
 
 East and west the crescent stretches
 ~
@@ -7942,7 +7940,7 @@ S
 #16204
 Traveler's Crescent~
 You walk down Traveler's Crescent.  The light of the orbs lights the path
-with a beautiful glow.  Shadows exist where they should not everywhere. 
+with a beautiful glow.  Shadows exist where they should not everywhere.
 You hear laughter dancing through the air.
 
 The crescent goes on east and west
@@ -7961,7 +7959,7 @@ Traveler's crescent
 S
 #16205
 Traveler's Crescent~
-The crescent beckons to you, it seems to glow with joy and happiness. 
+The crescent beckons to you, it seems to glow with joy and happiness.
 This is a total change from the rest of the city, where the city is normally
 dark and obscure, the street here is well lit and bright.  Nothing seems
 menacing here.
@@ -8077,7 +8075,7 @@ S
 Traveler's Crescent~
 You are walking down Traveler's Crescent.  The street is a light gray and
 seems to glow in the beautiful light from the orbs.  The dark gray wall of
-the inn rises up to your north.  The crescent travels along the wall. 
+the inn rises up to your north.  The crescent travels along the wall.
 
 The crescent goes east and west
 ~
@@ -8117,7 +8115,7 @@ S
 Traveler's Crescent~
 You are wandering down Traveler's Crescent.  You can almost imagine birds
 singing in the background.  The sounds of the city are virtually
-non-existent; a quiet sanctuary in the southwest end of the Underdark. 
+non-existent; a quiet sanctuary in the southwest end of the Underdark.
 
 Traveler's crescent continues east and west
 ~
@@ -8179,7 +8177,7 @@ S
 Traveler's Crescent~
 You are standing at the southwest corner of the Underdark.  The cavern
 walls loom up to the south and west.  The lighting here reflects off the
-walls into your eyes; a blinding effect and forces you to squint. 
+walls into your eyes; a blinding effect and forces you to squint.
 
 The crescent continues north and east
 ~
@@ -8263,10 +8261,10 @@ You stand in a dark tunnel.  Your light source illuminates a cleanly cut
 tunnel.  You seem to be standing where it ends. On the wall you see
 scribbled in blood:
 
-Progress only if thee canst be seen or if thou art powerful 
+Progress only if thee canst be seen or if thou art powerful
 The air is dry but cold.  The floor is even without any marks of tools.  The
 walls are straight without any indication that mining tools have carved this
-tunnel, only to the north are there any marks at all. 
+tunnel, only to the north are there any marks at all.
 
 The tunnel plunges into darkness to the south
 ~
@@ -8311,7 +8309,7 @@ S
 #16221
 Quiet Desolation~
 This whole section of the tunnel has been destroyed.  The ground lies in
-shambles, you notice huge slabs of rock that jut out into you circle of light. 
+shambles, you notice huge slabs of rock that jut out into you circle of light.
 The walls that should be smooth have scratches all over them, and even
 sections of the ceiling are missing.  An incredible force has passed through
 this section of the tunnel.
@@ -8334,7 +8332,7 @@ S
 The Hidden Way~
 You stand at the end of the tunnel.  To the east is a smooth wall with
 markings.  The tunnel has been well built, in fact very well built.  There
-are no scratches in the walls, floor or ceiling, and the air is dry and cool. 
+are no scratches in the walls, floor or ceiling, and the air is dry and cool.
 
 The tunnel plunges into darkness to the west
 ~
@@ -8353,7 +8351,7 @@ door wall markings~
 On the east wall you see the following
 
 Beware, you are about to enter the Underdark.  Remember to honor thy
-oath and to progress the cause.  Watch your back if you wish to survive. 
+oath and to progress the cause.  Watch your back if you wish to survive.
 The great lord cannot help you escape if you find trouble.
 
 You think for a bit then realize that it means you cannot recall from the
@@ -8361,7 +8359,7 @@ Underdark.  You then see the outline of the door into the Underdark. ~
 S
 #16223
 Vast Corridor~
-You stand on a huge corridor that runs steeply upwards and downwards. 
+You stand on a huge corridor that runs steeply upwards and downwards.
 There is room enough in this corridor for ten humans to walk abreast.  The
 corridor seems to descend into darkness.
 
@@ -8381,7 +8379,7 @@ The corridor descends
 S
 #16224
 Vast Corridor~
-You are walking down through a huge corridor.  The walls are dark gray. 
+You are walking down through a huge corridor.  The walls are dark gray.
 The feet of many have worn down the floor of the corridor.  You
 are walking along the path that connects the Underdark to the surface
 world.  A series of uninteresting scribbles sit on the walls.
@@ -8410,7 +8408,7 @@ are places that you can recall, just look for them.
 S
 #16225
 Vast Corridor~
-This is a huge corridor with room for ten humans to walk side by side. 
+This is a huge corridor with room for ten humans to walk side by side.
 The walls are a very deep dark gray, with the north wall being even darker
 than the south wall.  The floor has been worn down by the feet of the
 oppressed.  This is the way the slavers take their slaves from the surface
@@ -8443,7 +8441,7 @@ S
 #16226
 Vast Corridor~
 You are walking through a huge corridor, the corridor that connects the
-Underdark to the surface.  You can feel a breeze coming from above you. 
+Underdark to the surface.  You can feel a breeze coming from above you.
 The walls are basically black to your eyes.  The only light comes from
 your light source.
 
@@ -8469,7 +8467,7 @@ smooth by the dragging feet of the slave flocks. You stand just before the
 Underdark.  The Underdark is a huge city that rivals its surface counterpart,
 Midgaard.  From what you have heard, anything goes in the Underdark.  A
 dangerous place at best, only those who have had at least twenty levels of
-experience should venture into it.  On the wall to the north are a series of 
+experience should venture into it.  On the wall to the north are a series of
 markings that you can't make out at this distance.
 
 A huge door stands to the west; the way to the surface is up.
@@ -8502,7 +8500,7 @@ Good luck,
 E
 door~
 This door is just incredible in its size.  Ten people can easily walk through
-it at a time.  The door is made of steel and glints dully in the light. 
+it at a time.  The door is made of steel and glints dully in the light.
 Although huge, the door is well oiled and will open smoothly. ~
 S
 #16228
@@ -8510,7 +8508,7 @@ Entry Hall~
 You are standing in a large spacious hallway.  The floor is made of a
 polished black marble that catches the light and disperses it around.  The
 walls are made of what you think is jade, but it could just be a thin layer of
-jade.  The green seems to fade to black as it goes lower to the ground. 
+jade.  The green seems to fade to black as it goes lower to the ground.
 There is a large fur skin that lies right next to the door.  The west wall has
 a small closet in it.
 
@@ -8553,7 +8551,7 @@ shade of green, and seem to be made of jade, which would explain the color.
 The soft glint of your light plays on the floor which is clean and so are
 the walls.  Everything is neat.  The hall is about twenty feet wide and
 stretches above your head about twenty feet.  The scope of these halls
-just takes your breath away. 
+just takes your breath away.
 
 The hall stretches to the east
 ~
@@ -8567,7 +8565,7 @@ S
 #16230
 Jaded Hall before a Beautiful Door~
 You are in a large spacious hall.  The north wall has been covered with
-jade and every once in awhile your light dances off the wall into your eye. 
+jade and every once in awhile your light dances off the wall into your eye.
 The hall has been lit, but the light that is already there is murky and your
 light source seems harsh compared to the soft light that fills the hall.
 
@@ -8651,7 +8649,7 @@ This githzerai stands about seven feet tall and three feet wide.  He
 holds a huge silver sword that glows red.  On the pedestal you read the
 following:
 
-    Our paths are entwined in this enterprise, never forget the power          
+    Our paths are entwined in this enterprise, never forget the power
           of the githzerai.  We will win against all odds. ~
 S
 #16233
@@ -8745,10 +8743,10 @@ S
 #16236
 Vast Hall~
 You stand in a large hall.  The ceiling stands about thirty feet overhead
-and shimmers and sparkles.  The floor is made of onyx and is polished. 
+and shimmers and sparkles.  The floor is made of onyx and is polished.
 The north and west walls are jade, but covered with tapestries.  The
 tapestries depict many different figures, but prominent is a huge githzerai
-wielding a flaming silver sword defending a huge beholder. 
+wielding a flaming silver sword defending a huge beholder.
 
 The hall stretches south and east
 ~
@@ -8801,7 +8799,7 @@ Vast Hall~
 You are standing in the southwest corner of this huge hall.  The walls are
 covered with tapestries.  The tapestries add flashes of color to the
 normally green wall, the folds of cloth seem to muffle all sounds you
-make.  The ceiling floats about thirty feet above your head. 
+make.  The ceiling floats about thirty feet above your head.
 
 The hall continues to the north and east
 ~
@@ -8894,7 +8892,7 @@ This is a beautiful guestroom.  This room is reserved for dignitaries and
 those very special guests to this house.  The floor is deep blue with twirls
 of red in it.  The bed looks extremely comfortable, so comfy that you wish
 you could just lie down on it and fall asleep.  The walls are the same deep
-green but here they have thin veins of gold in them. 
+green but here they have thin veins of gold in them.
 
 The only way out is the door to the west
 ~
@@ -8912,7 +8910,7 @@ S
 #16243
 The Supreme Attendant's Chamber~
 You have stumbled into the chamber that houses the supreme attendant of
-the beholder.  On the north wall a large painted eye stares down at you. 
+the beholder.  On the north wall a large painted eye stares down at you.
 The ceiling is about thirty feet off the ground in here.  The bed is simple
 and there is no other furniture.  A large flaming silver sword has been
 painted onto the south wall.
@@ -8932,7 +8930,7 @@ very dark wood that compliments the jaded walls. ~
 S
 #16244
 The Gemstone~
-You are standing in the midst of a crowded tavern, at the northeastern side. 
+You are standing in the midst of a crowded tavern, at the northeastern side.
 A bard sits on a stool playing his lute.  The lute is just a tad out of tune and
 every now and then a cord causes you to cringe.  Laughter and shouting surrounds
 you.  Tables stand where there is room, and over half of them are occupied.  The
@@ -8957,7 +8955,7 @@ The Gemstone~
 You are surrounded by people drinking and chatting.  The people aren't
 just human, there are a bunch of other humanoid races.  The strong aroma
 of hard alcohol stings your nose.  The tavern itself is dark with little
-lighting.  One the walls are small cases of different gemstones. 
+lighting.  One the walls are small cases of different gemstones.
 
 The tavern continues east and north
 ~
@@ -8979,7 +8977,7 @@ You are standing just before the entrance to the Gemstone.  In the dim
 light you can make out the huddled forms of people at tables.  The air is
 thick with smoke, and smells of alcohol.  The floor remarkably is clean
 and so are the walls, the tables are another story.  It seems to be a friendly
-enough place.  Well, as friendly as you can get in the Underdark. 
+enough place.  Well, as friendly as you can get in the Underdark.
 
 The exit is a door to the south.  The tavern lies to the north and west
 ~
@@ -9030,7 +9028,7 @@ The tavern continues
 E
 form slumped~
 This is the body of a very, very drunken duergar.  So drunk that he has passed
-out.  Just looking at him you can smell the alcohol that covers his clothing. 
+out.  Just looking at him you can smell the alcohol that covers his clothing.
 He seems to be sleeping with his mouth open and little droplets of drool
 escape from this open passage and drip onto his tunic. ~
 S
@@ -9148,7 +9146,7 @@ A panel on the west wall looks as if it can easily be moved. ~
 S
 #16252
 Small Dusty Enclave~
-You stand in a small space between walls.  You see dust all over the floor. 
+You stand in a small space between walls.  You see dust all over the floor.
 The walls are rough and have nails sticking out of them.  The floor is
 cluttered with broken table legs.  The rafters hang low in the air easily
 within hands reach.
@@ -9202,7 +9200,7 @@ A sliding panel
 panel~
 1 -1 16256
 D1
-The dark main corridor plunges deeper into this building 
+The dark main corridor plunges deeper into this building
 ~
 ~
 0 -1 16257
@@ -9224,8 +9222,8 @@ push your way through into the next room.
 S
 #16255
 Dark Small Room~
-You are standing in a circle of light that is caused by your light source. 
-The floor is covered with dust and little foot marks in the cover of dust. 
+You are standing in a circle of light that is caused by your light source.
+The floor is covered with dust and little foot marks in the cover of dust.
 The rafters reach the ground and the walls seem to be leaning in to one
 side.
 
@@ -9233,7 +9231,7 @@ The sole exit is north, through the panel
 ~
 0 1|8|8192 1
 D0
-A broken wooden panel allows you to pass into the main corridor 
+A broken wooden panel allows you to pass into the main corridor
 ~
 panel~
 1 -1 16254
@@ -9245,7 +9243,7 @@ illuminates a narrow band beyond the panel.~
 S
 #16256
 Cramped Room~
-You are standing in a very small room with very little room to maneuver. 
+You are standing in a very small room with very little room to maneuver.
 The ceiling stands in easy reach of your grasping hand.  The wooden floor
 is covered with dust and broken bits of furniture.
 
@@ -9317,7 +9315,7 @@ S
 #16259
 Very Cluttered Corridor~
 You find it difficult to step and actually have your foot touch the ground
-here.  The wooden floor is literally covered by about a foot of junk. 
+here.  The wooden floor is literally covered by about a foot of junk.
 Broken boards and furniture cover the floor.  The walls are well ventilated.
 
 The corridor continues north and east
@@ -9364,7 +9362,7 @@ S
 A Dim Room~
 You stand in a room that has a large hole in the ceiling, with a floating orb
 above it that casts a thin light into this small room.  The ceiling is
-scattered on the floor in a large jumble of wooden beams and planks. 
+scattered on the floor in a large jumble of wooden beams and planks.
 A door stands to the west
 ~
 0 1|8|8192 1
@@ -9423,7 +9421,7 @@ door~
 1 -1 16262
 E
 door~
-This door was once painted black, now the paint lies in a pile on the floor. 
+This door was once painted black, now the paint lies in a pile on the floor.
 There seem to be small scratch marks on the door. ~
 S
 #16264
@@ -9500,7 +9498,7 @@ S
 #16267
 Cramped Dim Room~
 You are standing in cramped quarters, just barely enough for you and a
-few others.  The walls are whole, except a large hole in the west wall. 
+few others.  The walls are whole, except a large hole in the west wall.
 Through the hole you can hear the faint sounds of the city that lies outside
 this building.
 
@@ -9548,8 +9546,8 @@ S
 #16269
 The Old Office~
 You are standing in the old office of this warehouse.  A broken desk still
-rests against the eastern wall.  The chair has long since crumbled with age. 
-The floor is covered with dust, but has many footprints in it. 
+rests against the eastern wall.  The chair has long since crumbled with age.
+The floor is covered with dust, but has many footprints in it.
 
 A door stands to the north.
 ~
@@ -9796,7 +9794,7 @@ S
 Hallway in the Mansion~
 You are standing on the fine white floor.  The faint aroma of incense
 filters into your nose.  The ceiling lies way above your head.  The west
-wall is crimson; a striking contrast against the white floor. 
+wall is crimson; a striking contrast against the white floor.
 
 The hallway heads north, east and south, along the west wall a door stands
 ~
@@ -9828,7 +9826,7 @@ S
 #16282
 Guest Chamber~
 You stand within a well-furnished room.  This chamber has everything you
-would expect from a guest room.  Nothing of real interest lies in this room. 
+would expect from a guest room.  Nothing of real interest lies in this room.
 The floor is wooden and the walls are also wooden.
 
 The sole exit is the door to the east
@@ -9936,7 +9934,7 @@ The door is oaken and well made.~
 S
 #16287
 Dining Hall~
-You are in the dining hall of this mansion.  A long table stretches east. 
+You are in the dining hall of this mansion.  A long table stretches east.
 The wall is dark gray and the walls are sky blue.  The table is large enough
 for fifteen people no problem.  You are standing at the western end of the
 table.
@@ -9960,7 +9958,7 @@ S
 #16288
 Dining Hall~
 You stand at the eastern end of the dining hall.  The table stretches to the
-west.  The floor is dark gray and against the north wall stands a painting. 
+west.  The floor is dark gray and against the north wall stands a painting.
 The painting depicts a cavern entrance and has two glowing red eyes that
 seems to be staring right at you.
 
@@ -9985,7 +9983,7 @@ S
 Secret Chamber~
 You are standing in a sparse chamber.  The floor is black and the walls are
 dark gray.  There seems to be no furniture in this room although there are a
-series of mystic symbols on the floor and the walls around you. 
+series of mystic symbols on the floor and the walls around you.
 
 There are no obvious exits...
 ~
@@ -10003,7 +10001,7 @@ S
 Main Hall~
 You are walking down a beautifully striking hall.  The floor is pure white
 and glows in your light source.  The walls are azure.  Along the sides of
-the hall stand statues of different creatures, perhaps of arcane design. 
+the hall stand statues of different creatures, perhaps of arcane design.
 
 The hall continues east and west
 ~
@@ -10053,9 +10051,9 @@ S
 #16292
 Main Hall~
 You are heading along the main hall to the audience chamber of this
-impressive mansion.  The floor is pure white without a single blemish. 
+impressive mansion.  The floor is pure white without a single blemish.
 The walls are azure and seem to glow in this section.  The ceiling is way
-above your head.  A statue stands in the southeast corner. 
+above your head.  A statue stands in the southeast corner.
 
 The hall goes north and west.
 ~
@@ -10131,7 +10129,7 @@ S
 Audience Chamber~
 You stand in the southeast corner of a vast audience chamber.  The floor
 here is dark gray and the walls are midnight blue.  The ceiling lies about
-twenty feet from the floor.  Your nose catches the faint smell of incense. 
+twenty feet from the floor.  Your nose catches the faint smell of incense.
 You see a throne in the northwest corner of the chamber.
 
 The chamber goes on north and west.  A door stands to the south
@@ -10237,7 +10235,7 @@ S
 Entrance to the Whore House~
 You stand just before the entrance door.  You can clearly smell incense
 that makes you just a little bit dizzy.  The few candles that light the
- lace that have been placed in holders that stand off against the walls. 
+ lace that have been placed in holders that stand off against the walls.
 
 Doors stand north, east and south.
 ~
@@ -10284,7 +10282,7 @@ E
 sign~
 The sign reads as follows:
 
-     This building should only be entered if you are over 18 years              
+     This building should only be entered if you are over 18 years
           of age.  All minors shall be persecuted.
 ~
 S
@@ -10320,10 +10318,10 @@ A simple wooden door.
 S
 #16302
 Whoring Area~
-You are standing in the southeastern section of this large spacious room. 
+You are standing in the southeastern section of this large spacious room.
 The dim light allows you to see figures that are embraced in various
 positions among the cushions.  Along the walls are many murals that depict
-many interesting couples engaged in one of life's greatest experiences. 
+many interesting couples engaged in one of life's greatest experiences.
 
 The room continues north and west.
 ~
@@ -10410,7 +10408,7 @@ S
 Entrance Hall to the Inn~
 You are walking down the entranceway of the inn.  The walls are wooden
 and you can smell the faint scent of pine emanating from the wood.  You
-can hear the buzz of many conversations coming from the west. 
+can hear the buzz of many conversations coming from the west.
 
 A door stands to the north, west is the common room.
 ~
@@ -10438,7 +10436,7 @@ S
 Rest Room~
 You are standing in the rest room of the inn.  There is a basin to wash your
 hands and face, done magically.  There is a small bowl that you relieve
-yourself in.  All in all, this washroom is very clean and neat. 
+yourself in.  All in all, this washroom is very clean and neat.
 
 The sole exit is the door to the south
 ~
@@ -10457,7 +10455,7 @@ S
 Common Room~
 You are standing in the common room of the inn.  You can see the counter
 in the north east corner of this room.  Tables are scattered around the
-room.  Patrons fill the room and there is some smoke in the air. 
+room.  Patrons fill the room and there is some smoke in the air.
 
 The common room continues north and east, west is the hall, and south is
 a door to a room.
@@ -10511,7 +10509,7 @@ Common Room~
 You are in the northeastern corner of this large common room.  Tables sit
 scattered around without apparent order.  You catch snatches of the many
 conversations that are going on.  The atmosphere is merry and happy, as it
-normally is in a place where they serve many alcoholic beverages. 
+normally is in a place where they serve many alcoholic beverages.
 
 The common room continues west and south
 ~
@@ -10530,7 +10528,7 @@ S
 Common Room~
 You are in the southeastern corner of the common room.  Tables and
 chairs lie all about.  The floor is clean and well swept.  In the dim lighting
-you can see figures huddled over their mugs of ale discussing business. 
+you can see figures huddled over their mugs of ale discussing business.
 
 The common room goes on north and east.  There is also a door to the south
 ~
@@ -10580,7 +10578,7 @@ S
 Hall to the Inn Rooms~
 You are standing in a dimly lit hallway with doors on either side.  The
 floor is hard wood and the walls are also made of wood.  Along the walls
-torches burn to light the area, although they don't do a very good job. 
+torches burn to light the area, although they don't do a very good job.
 
 To the north and south are doors to private rooms, and the hall
 continues to the west. The common room lies to the east.
@@ -10629,7 +10627,7 @@ The common room
 S
 #16315
 Inn Room~
-You stand in a tidy and neat room.  The floor is clean and the bed is made. 
+You stand in a tidy and neat room.  The floor is clean and the bed is made.
 This room has all the marks of a good inn.  There are no holes in the wall
 either.
 
@@ -10709,7 +10707,7 @@ Entrance to the Slaver's Market~
 You stand within the halls of one of the most oppressing buildings of all
 the realms.  It is here that people come to buy and sell slaves as if they
 were pets.  The floor in this section is actually tidy, but you can here the
-screams of the slaves from behind the bars or their cages. 
+screams of the slaves from behind the bars or their cages.
 
 North a door offers a way into the dirty cages of the slaves.  You can
 Leave by going east or south and west goes further into this building
@@ -10792,7 +10790,7 @@ Slave Cage~
 You are currently in the slave cage.  The smell is incredible.  At times your
 stomach threatens to rebel and release it's latest meal.  The sounds of the
 slaves crying and cursing fills your ears.  The ground is covered in dirt and
-some hay, it's as if these slaves are not humanoids. 
+some hay, it's as if these slaves are not humanoids.
 
 The cage continues east and west
 ~
@@ -10813,7 +10811,7 @@ Slave Hall~
 You continue to walk down this exhibition hall.  The bars continue along
 the north wall.  You can see slaves staring at your with anger and some
 seem resigned to their fate.  The floor in this hall has gold inlaid in it, a
-blatant statement of wealth in the midst of this oppression. 
+blatant statement of wealth in the midst of this oppression.
 
 The hall continues east and west
 ~
@@ -10856,7 +10854,7 @@ This is the western side of the slave hall.  The bars still travel along
 to the north of you.  You can see slaves huddled in the corner fearing
 for their lives.  You feel a surge of lust to own one of your fellow
 humanoids, to control it and make it suffer.  Then you realize that you
-can fulfil this desire by simply buying a slave from the Slave Dealer. 
+can fulfil this desire by simply buying a slave from the Slave Dealer.
 
 The hall continues to the east, a door through the bars is north
 ~
@@ -10881,7 +10879,7 @@ Slave Cage~
 This is the western side of the slave's "living" quarters.  It is no better than
 the rest of the cage.  The floor is covered with old and smelly hay intermingled
 with rags and other things you don't want to think about.  The smell of sweat,
-garbage and death hang in the air. 
+garbage and death hang in the air.
 
 The cage continues to the east, south is a door through the bars
 ~
@@ -10965,7 +10963,7 @@ S
 Prison Hall~
 You are standing in the hallway of the prison.  You can hear agonized
 screams of prisoners.  The hall is about fifteen feet wide and the ceiling
-rests far above your head.  The walls are gray and the ground is black. 
+rests far above your head.  The walls are gray and the ground is black.
 
 The hall continues east and west.
 ~
@@ -11011,7 +11009,7 @@ door~
 1 -1 16332
 E
 prison door~
-The door is made out of solid iron.  It is huge and extremely hard to budge. 
+The door is made out of solid iron.  It is huge and extremely hard to budge.
 You figure nothing could dent this door.
 ~
 S
@@ -11019,7 +11017,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the west.
 ~
@@ -11042,7 +11040,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the east
 ~
@@ -11102,7 +11100,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the east
 ~
@@ -11125,7 +11123,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the west
 ~
@@ -11180,11 +11178,11 @@ The door is made of solid iron and looks as if nothing could harm it ~
 S
 #16337
 The eastern entrance~
-You stand just before the eastern entrance to the prisons of the Underdark. 
+You stand just before the eastern entrance to the prisons of the Underdark.
 It is here that the enforcer eyes bring those who have broken the few rules
 of this city.  The screams of the prisoners echo through the hall.  The floor
 is black and the walls are dark gray.  The hall is about fifteen feet wide
-and the ceiling lies about thirty feet above your head. 
+and the ceiling lies about thirty feet above your head.
 
 The door out is east.  To the south is a prison cell, guarded by an iron
 door, and west the hall continues.
@@ -11216,7 +11214,7 @@ thick and looks as if nothing could even dent it.~
 S
 #16338
 Western Entrance~
-You stand before the western entrance to the prisons of the Underdark. 
+You stand before the western entrance to the prisons of the Underdark.
 This building is where all those who have broken the few rules of the
 Underdark are brought to serve sentences.  The fact that this building exists
 proves that the Underdark is not a lawless city, but that it in fact has a few
@@ -11255,7 +11253,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the north
 ~
@@ -11278,7 +11276,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the north
 ~
@@ -11301,7 +11299,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the north
 ~
@@ -11407,7 +11405,7 @@ S
 Prison Cell~
 You stand in a cramped prison cell.  The walls are black and the floor is
 dark gray.  There is no light in this little room.  There is a bench against
-the far wall and a hole in the ground in the corner. 
+the far wall and a hole in the ground in the corner.
 
 The sole exit is the door to the north
 ~
@@ -11454,7 +11452,7 @@ S
 #16347
 Chamber of the Beholder~
 You are standing in a large room.  This is where the beholder that controls
-the eyes has made his home.  The floor is gray and the walls are also gray. 
+the eyes has made his home.  The floor is gray and the walls are also gray.
 There is no furniture or any other comfort.  The huge shape of the beholder
 hovers in the air way above your head.
 
@@ -11476,7 +11474,7 @@ S
 The entrance to the Shadow's Shadow~
 You stand just inside the Shadow's Shadow.  The Shadow's Shadow is a
 tavern where many of the denizens of the Underdark meet to discuss
-various topics.  The tavern is dark and smells of smoke and alcohol. 
+various topics.  The tavern is dark and smells of smoke and alcohol.
 
 The tavern lies to the south, north is the entrance
 ~
@@ -11524,7 +11522,7 @@ with.
 S
 #16350
 Entrance Hallway~
-You are standing just before the eating and drinking room of the tavern. 
+You are standing just before the eating and drinking room of the tavern.
 You notice that this hall is used by many to fight and for others to talk
 without having to sit.  The floor is sticky and the walls have little cracks in
 them.
@@ -11716,7 +11714,7 @@ The street of the gods
 S
 #16359
 The Sparkling Jewel~
-You are standing in the jewelers.  This shop is only fifteen feet by fifteen. 
+You are standing in the jewelers.  This shop is only fifteen feet by fifteen.
 There is a large counter along the southern portion of the store.  The
 counter is see through and beneath the barrier lie many different gems and
 stones.  A large wizard eye floats in the air watching you to make sure you
@@ -11748,7 +11746,7 @@ The street of the gods
 S
 #16361
 Foyer of Svirfneblin Embassy~
-You are standing the foyer of the deep gnome presence in the Underdark. 
+You are standing the foyer of the deep gnome presence in the Underdark.
 The svirfneblin maintain this building for their own merchants and people
 should they come into trouble here.  The building has a low ceiling, about
 seven feet off the ground.  The walls and ground are earthy in color and
@@ -12022,7 +12020,7 @@ Hallway in the Thief's Guild~
 You are standing at a junction of hallways.  The floor is dark green and the
 on the ceiling is a large chandelier.  The thieves have surrounded
 themselves with the most expensive of all they have stolen.  You figure
-that the thief's guild is probably richer than most kingdoms. 
+that the thief's guild is probably richer than most kingdoms.
 
 The hallway branches north, east, south and west.
 ~
@@ -12052,8 +12050,8 @@ S
 Hallway in the Thief's Guild~
 You stand in a hallway in the thief's guild.  The floor is a beautiful dark
 green that has been polished.  The walls are covered in white marble and
-you see little rivulets of gold creating chaotic patterns in the marble. 
-Small rods that are being held on the walls light the way. 
+you see little rivulets of gold creating chaotic patterns in the marble.
+Small rods that are being held on the walls light the way.
 
 The hallway continues east and west
 ~
@@ -12115,9 +12113,9 @@ S
 #16375
 Thief's GuardRoom~
 This is a guardroom.  There are daggers and short swords scattered on the
-floor and on the table.  The floor is crimson red and the walls are black. 
+floor and on the table.  The floor is crimson red and the walls are black.
 There is a rod that give off light sticking off of the northern wall.  A
-couple bunks lie against the north and east wall respectively. 
+couple bunks lie against the north and east wall respectively.
 
 The sole exit is the door to the south
 ~
@@ -12156,7 +12154,7 @@ Storage Room~
 You are standing in a storage room.  It is here that the thieves keep extra
 lock picks, daggers, swords, darts and anything else they would need to rob
 the world blind.  The room is ten feet by ten feet and the walls are covered
-with shelves.  The shelves are lined with these items. 
+with shelves.  The shelves are lined with these items.
 
 The sole exit is the door to the east
 ~
@@ -12175,7 +12173,7 @@ Hallway in the Thief's Guild~
 You are standing in the hallway of the guild.  The floor here gradually
 changed from dark green to dark red.  The walls are pure white and seem
 to create an atmosphere of good and well being.  The walls glitter with
-gold since there are little rivulets of gold that create many chaotic patterns. 
+gold since there are little rivulets of gold that create many chaotic patterns.
 
 The hallway continues north and south, there is a door to the west
 ~
@@ -12203,7 +12201,7 @@ S
 #16379
 Hallway in the Thief's Guild~
 You are standing at the southern end of the thief's guild.  The floor here
-is dark red and the walls are white.  You notice the faint aroma of incense. 
+is dark red and the walls are white.  You notice the faint aroma of incense.
 You also hear the faint melodious sounds of music.  The whole effect of
 the white walls, soft music and incense makes you feel at ease as if you
 were in a holy place of worship.
@@ -12229,8 +12227,8 @@ S
 Practice Room~
 You are standing in a practice room.  Along the walls are shelves that
 contain many different containers, each of the containers is locked with a
-different kind of lock.  The floor is dark red and the walls are dark gray. 
-Small rods provide a soft glow that lights everything in the room. 
+different kind of lock.  The floor is dark red and the walls are dark gray.
+Small rods provide a soft glow that lights everything in the room.
 
 There are doors to the east and west
 ~
@@ -12255,7 +12253,7 @@ You stand in the training room of the thief's guild.  It is here that thief's
 can train and practice their skills.  A dummy stands against the north wall,
 with his back facing you.  There is a large rip down the middle of the back
 where thieves have practiced their backstabbing abilities.  The floor here is
-black and the walls are dark blue. 
+black and the walls are dark blue.
 
 The sole exit is the door to the east
 ~
@@ -12274,7 +12272,7 @@ S
 Hallway in the Thief's Guild~
 You are walking down a very beautiful hallway.  The floor is a deep green
 and the walls are covered with white marble.  Along the sides of the
-hallway are statues in the design of many different creatures. 
+hallway are statues in the design of many different creatures.
 
 The hallway continue east and west, to the south is a door
 ~
@@ -12355,7 +12353,7 @@ You are standing in the southeastern corner of the council chamber.  It is
 in this part of the chamber that the head of the table is located.  The
 thief's guild is a very potent force throughout the underworld, their power
 stretching far out of the Underdark into adjacent regions.  The thief's
-guild is more powerful than that of their rival the assassin's guild.  
+guild is more powerful than that of their rival the assassin's guild.
 
 The chamber continues north and west
 ~
@@ -12397,7 +12395,7 @@ S
 Hallway in the Thief's Guild~
 You are walking down a large spacious hallway.  The floor is dark green
 while the walls are covered in a white marble.  The hallway is like an
-exhibition in a museum, there are statues along the sides of the hall. 
+exhibition in a museum, there are statues along the sides of the hall.
 
 The hallway continues east and west, there is a door to the north
 ~
@@ -12427,7 +12425,7 @@ a large beholder.~
 S
 #16388
 Personal Chamber~
-You are standing in one of the sleeping quarters of a high-ranking thief. 
+You are standing in one of the sleeping quarters of a high-ranking thief.
 The room is very well decorated with a large carpet covering the floor and
 a large bed.  There is a desk and padded chair.  The room even has a magic
 window looking out over the city.
@@ -12524,7 +12522,7 @@ S
 #16392
 Master Thief's Sleep Chamber~
 You are standing in a large spacious chamber.  There is a large bed in the
-middle of the chamber.  The floor is covered with many different fur rugs. 
+middle of the chamber.  The floor is covered with many different fur rugs.
 Large paintings adorn the walls.  The ceiling is high above your head and a
 chandelier hangs down from it.
 
@@ -12580,7 +12578,7 @@ The door is made of oak~
 S
 #16394
 Private Room~
-You are standing in the sleeping quarters of one of the high ranked thieves. 
+You are standing in the sleeping quarters of one of the high ranked thieves.
 There is a large bed against the far wall, exotic carpets on the floor and a
 large mirror above an ornate chest with drawers against the north wall.  The
 room is fifteen feet by fifteen with the ceiling about ten feet from the
@@ -12633,7 +12631,7 @@ coins.  The glove is black and the background is purple.~
 S
 #16396
 Private Chamber~
-You are standing in the private quarters of one of the high-ranking thieves. 
+You are standing in the private quarters of one of the high-ranking thieves.
 There is a large bed with silk sheets and a fur cover.  The room is fifteen
 feet by fifteen and the ceiling is about ten feet off the floor.  There is a
 large fur rug on the floor.
@@ -12889,7 +12887,7 @@ S
 Corridor in the Assassin's Guild~
 You are standing in a large corridor.  The walls are black and the floor is
 gray.  The corridor is dark and cold.  No noises can be heard except that of
-your heart pumping and the loud thud of each of your foot steps. 
+your heart pumping and the loud thud of each of your foot steps.
 
 There are doors to the north, east and south.  The corridor heads west
 ~
@@ -12956,7 +12954,7 @@ The door is a simple black door~
 S
 #16410
 Assassin's Meeting Chamber~
-You are standing in a large open chamber.  The chamber is cool and quiet. 
+You are standing in a large open chamber.  The chamber is cool and quiet.
 There are no chairs and the floor is pitch black.  The walls are dark gray
 with glowing lines of red in it.
 
@@ -13077,7 +13075,7 @@ S
 Hallway in the Assassin's Guild~
 You are walking through a silent hallway.  The walls are gray and the floor
 is black.  It is very dismal and bleak in this hallway.  Nothing is colorful
-or bright, everything is either black or shades of gray. 
+or bright, everything is either black or shades of gray.
 
 The hallway continues north and south
 ~
@@ -13148,7 +13146,7 @@ The door is black~
 S
 #16418
 Hall of the Assassins~
-You stand in a large hall.  The walls are dark blue while the floor is black. 
+You stand in a large hall.  The walls are dark blue while the floor is black.
 It is very dark here.  You can't hear anything but the sounds that you make.
 
 To the north is a door, the hall goes on to the east
@@ -13217,9 +13215,9 @@ S
 #16421
 Assassin's Information Gathering~
 You stand in the room where the assassins pry information from unwilling
-people.  There are various items of torture that hang on the walls. 
+people.  There are various items of torture that hang on the walls.
 Prominent in the middle of the room is a large table.  It's purpose to slowly
-stretch a person until either they talk or are split in half. 
+stretch a person until either they talk or are split in half.
 
 The only exit is the door to the south
 ~
@@ -13260,7 +13258,7 @@ The door is black~
 S
 #16423
 Assassin's Scrying Chamber~
-You are standing in the room that the assassins use to find their prey. 
+You are standing in the room that the assassins use to find their prey.
 They have a window set up against the northern wall and below it there are
 some words scribbled.  The rest of the chamber is black.
 
@@ -13320,7 +13318,7 @@ S
 Waiting Room~
 You are in a room that was designed to pass the time.  There are a couple
 chairs and a table.  On the table are a few magical baubles, nothing really
-useful, but interesting enough to spend hours staring at. 
+useful, but interesting enough to spend hours staring at.
 
 The only exit is the door to the east
 ~
@@ -13371,7 +13369,7 @@ S
 #16430
 Large Hall~
 You are in the southeastern corner of this hall.  Through the confusion of
-the hall, you think you can almost make out some greater purpose to it. 
+the hall, you think you can almost make out some greater purpose to it.
 You see a skull floating in the air, the eyes of which glow purple.  You see
 insects crawling along the floor.
 
@@ -13412,7 +13410,7 @@ S
 Large Hall~
 You are standing in the northwestern part of this weird hall.  It is very
 dark here, so dark that your light barely pierces the gloom.  You see
-figures standing off to the side, yet you can't quite make them out. 
+figures standing off to the side, yet you can't quite make them out.
 
 The hall continues east and south.  There is a door to the west
 ~
@@ -13493,8 +13491,8 @@ S
 Experimenting Room~
 You are in the experimenting room of this wizard's home.  This is where he
 takes apart animals and puts them back together again.  With a twisted
-sense of humor, he has created many foreign and disgusting creatures. 
-Most of them die within hours of being created, yet others survive... 
+sense of humor, he has created many foreign and disgusting creatures.
+Most of them die within hours of being created, yet others survive...
 
 The room continues to the north, there is a door to the south
 ~
@@ -13533,7 +13531,7 @@ S
 #16438
 Entrance to the Cages~
 You stand in a very small zoo.  It is here that the keeper keeps some of the
-wild creatures that once roamed this area before the city was founded. 
+wild creatures that once roamed this area before the city was founded.
 The walls look like natural cavern walls.  It is dark in here, with
 the sounds of snarling and growls.
 
@@ -13613,7 +13611,7 @@ S
 #16441
 The Cage~
 You are standing in the western end of this large cavern.  The air is
-cool and moist, and the walls drip with water.  The floor is rough and uneven. 
+cool and moist, and the walls drip with water.  The floor is rough and uneven.
 The ceiling stretches about thirty feet into the air at this end of the cavern.
 
 The cavern goes to the east
@@ -13629,7 +13627,7 @@ S
 Common Room of the Floating Eye~
 You stand in the common room of the Floating Eye, a quiet inn that
 cherishes privacy.  The first thing you note is the fact that you can't
-hear any clear words from any of the conversations going on in the room. 
+hear any clear words from any of the conversations going on in the room.
 There are tables spaced at least five feet away from one another, and a bar
 lies to the north.
 
@@ -13687,7 +13685,7 @@ Common Room~
 You are standing in the northwestern corner of the common room.  There
 are tables all around you, each table is spaced five feet away from the
 other tables.  You now know why this inn is used so much.  You can talk
-about anything here knowing that no one can hear what you are saying. 
+about anything here knowing that no one can hear what you are saying.
 
 The common room extends to the east and south, a door lies to the west.
 ~
@@ -13717,7 +13715,7 @@ You are standing in the southwestern corner of the common room.  Tables
 rest all around you and you can hear the buzz of conversation but all the
 words and jumbled and incoherent.  The air is heavy with smoke and
 smells of alcohol.  The common room has an air of business mixed with
-pleasure. 
+pleasure.
 
 The common room lies to the north and the east
 ~
@@ -13735,9 +13733,9 @@ The common room
 S
 #16446
 Hallway to the Rooms~
-You are standing in a long hallway that has doors to the north and south. 
+You are standing in a long hallway that has doors to the north and south.
 The hall is gray, much like a passage in a dungeon.  The ceiling stands
-about ten feet off the ground and the hallway is about seven feet wide. 
+about ten feet off the ground and the hallway is about seven feet wide.
 
 The hallway stretches westwards.  Doors lie to the north, east and south
 ~
@@ -13771,7 +13769,7 @@ Inn Room~
 You are standing in a room that is fifteen feet by ten.  The room has
 everything you would expect from a room in an inn.  The walls and floor
 are gray.  The ceiling lies ten feet from the floor.  The bed lies against
-the far wall and there is a bear skin rug on the floor. 
+the far wall and there is a bear skin rug on the floor.
 
 The sole exit is the door to the south
 ~
@@ -13789,7 +13787,7 @@ S
 Inn Room~
 You stand in a typical inn room.  The room is ten feet by ten and the
 ceiling lies ten feet off the ground.  There is a bed against the far wall and
-a chest of drawers against the east wall.  The floor and walls are made of rock. 
+a chest of drawers against the east wall.  The floor and walls are made of rock.
 
 The sole exit is the door to the north
 ~
@@ -13841,7 +13839,7 @@ Inn Room~
 You are standing in a room that is fifteen feet by ten.  The room has
 everything you would expect from a room in an inn.  The walls and floor
 are gray.  The ceiling lies ten feet from the floor.  The bed lies against
-the far wall and there is a bear skin rug on the floor. 
+the far wall and there is a bear skin rug on the floor.
 
 The sole exit is the door to the north
 ~
@@ -13906,7 +13904,7 @@ Inn Room~
 You are standing in a room that is fifteen feet by ten.  The room has
 everything you would expect from a room in an inn.  The walls and floor are
 gray.  The ceiling lies ten feet from the floor.  The bed lies against the
-far wall and there is a bear skin rug on the floor. 
+far wall and there is a bear skin rug on the floor.
 
 The sole exit is the door to the south
 ~
@@ -14114,10 +14112,10 @@ The summoning chamber
 S
 #16463
 Eastern Summoning Chamber~
-You are standing in the southeastern corner of this powerful chamber. 
+You are standing in the southeastern corner of this powerful chamber.
 This is where the mages of the clan cast their most powerful summoning
 spells to bring the followers of Graz'zt to the material plane.  Graz'zt is a
-demon prince whom the clan members worship and revere. 
+demon prince whom the clan members worship and revere.
 
 The chamber continues north and west
 ~
@@ -14189,7 +14187,7 @@ You stand in a small room that has little of note.  There is a simple cot
 against the far wall and that is the only piece of furniture adorning this
 chamber.  The walls depict scenes from the many layers of the abyss and
 constantly change, at one instant showing the hyenas and ghasts from
-Yeenoghu's layer to the aerial creatures of Pazuzu's level. 
+Yeenoghu's layer to the aerial creatures of Pazuzu's level.
 
 The sole exit is the door to the west
 ~
@@ -14288,7 +14286,7 @@ You stand in a small room that has little of note.  There is a simple cot
 against the far wall and that is the only piece of furniture adorning this
 chamber.  The walls depict scenes from the many layers of the abyss and
 constantly change, at one instant showing the hyenas and ghasts from
-Yeenoghu's layer to the aerial creatures of Pazuzu's level. 
+Yeenoghu's layer to the aerial creatures of Pazuzu's level.
 
 The sole exit is the door to the west
 ~
@@ -14514,7 +14512,7 @@ S
 Northern Summoning Room~
 You stand in the northern summoning room.  This chamber has not been
 dedicated to one of the planes in the abyss.  From here the members of the
-clan summon many of the lesser demons and contact the demon lords. 
+clan summon many of the lesser demons and contact the demon lords.
 There is a large pentagon in the center of the chamber.
 
 The room continues to the north and east, there is a door to the west
@@ -14606,7 +14604,7 @@ The summoning room
 S
 #16484
 Denizen of the Underdark's Abode~
-You are standing in a simple home.  The house is large, but uninteresting. 
+You are standing in a simple home.  The house is large, but uninteresting.
 You wander through the whole house noticing the alien decor, but nothing
 that is truly interesting.
 
@@ -14624,7 +14622,7 @@ The door is a simple wooden door~
 S
 #16485
 Home of a Denizen of the Underdark~
-You stand in a large home.  There are many rooms, yet nothing of interest. 
+You stand in a large home.  There are many rooms, yet nothing of interest.
 The house is lighted by the same glowing orbs that float throughout the
 whole city.  There are some weird decorations in the home but nothing to
 write home about.
@@ -14643,7 +14641,7 @@ The door is a simple wooden door~
 S
 #16486
 Denizen of the Underdark's Abode~
-You are standing in a simple home.  The house is large, but uninteresting. 
+You are standing in a simple home.  The house is large, but uninteresting.
 You wander through the whole house noticing the alien decor, but nothing
 that is truly interesting.
 ~
@@ -14663,7 +14661,7 @@ The door is a simple wooden door~
 S
 #16487
 Home of a Denizen of the Underdark~
-You stand in a large home.  There are many rooms, yet nothing of interest. 
+You stand in a large home.  There are many rooms, yet nothing of interest.
 The house is lighted by the same glowing orbs that float throughout the
 whole city.  There are some weird decorations in the home but nothing to
 write home about.
@@ -14715,7 +14713,7 @@ door~
 S
 #16490
 Home of a Denizen of the Underdark~
-You stand in a large home.  There are many rooms, yet nothing of interest. 
+You stand in a large home.  There are many rooms, yet nothing of interest.
 The house is lighted by the same glowing orbs that float throughout the
 whole city.  There are some weird decorations in the home but nothing to
 write home about.
@@ -14752,7 +14750,7 @@ The door is a simple wooden door~
 S
 #16492
 Denizen of the Underdark's Abode~
-You are standing in a simple home.  The house is large, but uninteresting. 
+You are standing in a simple home.  The house is large, but uninteresting.
 You wander through the whole house noticing the alien decor, but nothing
 that is truly interesting.
 
@@ -14770,7 +14768,7 @@ The door is a simple wooden door~
 S
 #16493
 Home of a Denizen of the Underdark~
-You stand in a large home.  There are many rooms, yet nothing of interest. 
+You stand in a large home.  There are many rooms, yet nothing of interest.
 The house is lighted by the same glowing orbs that float throughout the
 whole city.  There are some weird decorations in the home but nothing to
 write home about.
@@ -14804,7 +14802,7 @@ door~
 S
 #16495
 Home of a Denizen of the Underdark~
-You stand in a large home.  There are many rooms, yet nothing of interest. 
+You stand in a large home.  There are many rooms, yet nothing of interest.
 The house is lighted by the same glowing orbs that float throughout the
 whole city.  There are some weird decorations in the home but nothing to
 write home about.
@@ -14901,62 +14899,62 @@ S
 
 
 #RESETS
-M 1 16001 35 16001			; enforcer eyes, the guards of the city 
+M 1 16001 35 16001			; enforcer eyes, the guards of the city
 E 1 16001 0 5			; wears eye plate
 M 1 16001 35 16008			; these ones walk the streets
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16010			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16018			; ditto
 M 1 16001 35 16032			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16035			; ditto
 M 1 16001 35 16037			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16048			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16063			; ditto
 M 1 16001 35 16069			; ditto
 M 1 16001 35 16080			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16087			; ditto
 M 1 16001 35 16092			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16100			; ditto
 M 1 16001 35 16105			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16109			; ditto
 M 1 16001 35 16120			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16129			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16136			; ditto
 M 1 16001 35 16142			; ditto
 M 1 16001 35 16148			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16155			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16162			; ditto
 M 1 16001 35 16172			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16181			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16186			; ditto
 M 1 16001 35 16193			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16201			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16212			; ditto
 M 1 16001 35 16217			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16337			; loads eye into headquarters
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16336			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16338			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16001 35 16346			; ditto
-E 1 16001 0 5			; 
+E 1 16001 0 5			;
 M 1 16002 24 16003			; loads floating eye onto street
 G 1 16002 0			; gives it it's eye
 M 1 16002 24 16052			; loads floating eye
@@ -15594,7 +15592,7 @@ E 1 16088 0 5			; wears demon plate
 M 1 16124 2 16480			; loads noble cambion
 E 1 16088 0 5			; wears demon plate
 M 1 16125 1 16478			; loads clan head
-* E 1 16089 0 11    			; wears demon fire 
+* E 1 16089 0 11    			; wears demon fire
 M 1 16126 1 16478			; loads hezron
 *
 M 1 16127 4 16100			; loads eye of fear and flame
@@ -15906,13 +15904,13 @@ S
 #SHOPS
 16021 5 0 0 0 0 110 90 0 23			; bar keep
 16049 9 0 0 0 0 110 90 0 23			; inn keeper
-16055 0 0 0 0 0 100 100 0 23			; the slave dealer 
+16055 0 0 0 0 0 100 100 0 23			; the slave dealer
 16065 0 0 0 0 0 120 50 0 23			; bar tender
-16073 2 3 4 10 0 150 75 0 23			; yie'stei, magic 
-16074 5 0 0 0 0 40 100 0 23			; zae'tres, weapon 
-16075 9 0 0 0 0 40 100 0 23			; raesarnt, armour 
+16073 2 3 4 10 0 150 75 0 23			; yie'stei, magic
+16074 5 0 0 0 0 40 100 0 23			; zae'tres, weapon
+16075 9 0 0 0 0 40 100 0 23			; raesarnt, armour
 16076 8 20 0 0 0 150 90 0 23			; Satori, jeweller
-16077 19 26 0 0 0 150 60 0 23			; Jiestis, food 
+16077 19 26 0 0 0 150 60 0 23			; Jiestis, food
 16118 0 0 0 0 0 150 75 0 23			; inn keep
 0
 
@@ -15957,7 +15955,7 @@ M  16096 spec_assassin			The expert assassin
 M  16097 spec_assassin			The senior assassin
 M  16098 spec_assassin			The prime assassin
 M  16099 spec_assassin			The guildmaster
-M  16102 spec_assassin          Skyzorr 
+M  16102 spec_assassin          Skyzorr
 M  16104 spec_cast_cleric       The platinum golem
 M  16103 spec_poison            the dretches
 M  16105 spec_cast_archmage     Gulthac merchant

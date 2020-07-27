@@ -83,7 +83,7 @@ mountain goat~
 The goat~
 A large, cruelly horned goat capers about the mountainside.
 ~
-This shaggy bovid looks as though he has seen better days, but those horns 
+This shaggy bovid looks as though he has seen better days, but those horns
 could do some serious damage.
 ~
 64 0 0 S
@@ -100,7 +100,7 @@ a smooth stone~
 A featureless grey stone sits here.~
 ~
 9 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -5
@@ -116,9 +116,9 @@ A
 #ROOMS
 #18500
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
-floor.  The canyon continues to the west and opens out into a broad vale 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
+floor.  The canyon continues to the west and opens out into a broad vale
 eastward.
 ~
 0 0 5
@@ -133,8 +133,8 @@ D3
 S
 #18501
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -149,7 +149,7 @@ D3
 S
 #18502
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -172,8 +172,8 @@ D3
 S
 #18503
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -188,7 +188,7 @@ D3
 S
 #18504
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -211,8 +211,8 @@ D3
 S
 #18505
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -227,7 +227,7 @@ D3
 S
 #18506
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -250,8 +250,8 @@ D4
 S
 #18507
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, north and south along the 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, north and south along the
 canyon floor.
 ~
 0 0 5
@@ -266,7 +266,7 @@ D2
 S
 #18508
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -289,8 +289,8 @@ D3
 S
 #18509
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, north and south along the 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, north and south along the
 canyon floor.
 ~
 0 0 5
@@ -305,7 +305,7 @@ D2
 S
 #18510
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  
+All about you rise jagged peaks, most of which appear unscalable.
 Four rough trails converge here.
 ~
 0 0 5
@@ -328,8 +328,8 @@ D3
 S
 #18511
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -344,8 +344,8 @@ D3
 S
 #18512
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -360,7 +360,7 @@ D3
 S
 #18513
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -383,8 +383,8 @@ D3
 S
 #18514
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, north and south along the 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, north and south along the
 canyon floor.
 ~
 0 0 5
@@ -399,9 +399,9 @@ D2
 S
 #18515
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  Your only choice is to return to the 
-north. There are scratches on the side of a large boulder sitting against 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  Your only choice is to return to the
+north. There are scratches on the side of a large boulder sitting against
 the cliff.
 ~
 0 4 5
@@ -416,8 +416,8 @@ scratch scratches boulder~
 S
 #18516
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. Four 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. Four
 tunnels lead away from here.
 ~
 0 1|8 0
@@ -438,15 +438,15 @@ D3
 ~
 0 -1 18517
 D4
-You see faint glimmerings of light about the edges of a large rock set in 
+You see faint glimmerings of light about the edges of a large rock set in
 the tunnel roof.~
 light crack boulder~
 10 -1 18515
 S
 #18517
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. The tunnel 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. The tunnel
 extends east and west.
 ~
 0 1|8 0
@@ -461,8 +461,8 @@ D3
 S
 #18518
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. Four 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. Four
 tunnels lead away from here.
 ~
 0 1|8 0
@@ -485,8 +485,8 @@ D3
 S
 #18519
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. The tunnel 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. The tunnel
 extends north and south.
 ~
 0 1|8 0
@@ -501,7 +501,7 @@ D2
 S
 #18520
 Dank Tunnel~
-You are crouched in a low limestone passage. To the south runs a sluggish 
+You are crouched in a low limestone passage. To the south runs a sluggish
 underground river. The tunnel extends to the north.
 ~
 0 1|8 0
@@ -516,8 +516,8 @@ D2
 S
 #18521
 Underground River~
-Luckily this normally timid river is not in flood, as it would probably 
-flow into the other tunnels.  The river disappears into the western 
+Luckily this normally timid river is not in flood, as it would probably
+flow into the other tunnels.  The river disappears into the western
 wall and contiues to the east.
 ~
 0 1|8 0
@@ -532,8 +532,8 @@ D1
 S
 #18522
 Underground River~
-Luckily this normally timid river is not in flood, as it would probably 
-flow into the other tunnels.  The river disappears into the eastern wall 
+Luckily this normally timid river is not in flood, as it would probably
+flow into the other tunnels.  The river disappears into the eastern wall
 and contiues to the west.
 ~
 0 1|8 0
@@ -548,7 +548,7 @@ D3
 S
 #18523
 Dank Tunnel~
-You are crouched in a low limestone passage. To the south runs a sluggish 
+You are crouched in a low limestone passage. To the south runs a sluggish
 underground river. The tunnel extends to the north.
 ~
 0 1|8 0
@@ -563,8 +563,8 @@ D2
 S
 #18524
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. Four 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. Four
 tunnels lead away from here.
 ~
 0 1|8 0
@@ -587,8 +587,8 @@ D3
 S
 #18525
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. The tunnel 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. The tunnel
 extends east and west.
 ~
 0 1|8 0
@@ -603,8 +603,8 @@ D3
 S
 #18526
 Tunnel Mouth~
-You are standing at the base of a rocky outcropping. To the west foothills 
-extend out into rolling grasslands, while to the east a dark cave plunges 
+You are standing at the base of a rocky outcropping. To the west foothills
+extend out into rolling grasslands, while to the east a dark cave plunges
 under an imposing range of mountains.
 ~
 0 4 0
@@ -619,8 +619,8 @@ D3
 S
 #18527
 Foothills~
-Rugged foothills surround you, bleak and bare of all but the hardiest 
-vegetation.  The terrain requiring the least effort runs in a shallow vale 
+Rugged foothills surround you, bleak and bare of all but the hardiest
+vegetation.  The terrain requiring the least effort runs in a shallow vale
 leading from east to west.
 ~
 0 0 2
@@ -635,7 +635,7 @@ D3
 S
 #18528
 Rolling Grasslands~
-Plains of featureless grass stretch for miles around. An imposing range of 
+Plains of featureless grass stretch for miles around. An imposing range of
 mountains lies to the east.
 ~
 0 0 2
@@ -658,7 +658,7 @@ D3
 S
 #18529
 Rolling Grasslands~
-Plains of featureless grass stretch for miles in every direction. An 
+Plains of featureless grass stretch for miles in every direction. An
 imposing range of mountains lies far to the east.
 ~
 0 0 2
@@ -694,8 +694,8 @@ D3
 S
 #18531
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, north and south along the 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, north and south along the
 canyon floor.
 ~
 0 0 5
@@ -710,8 +710,8 @@ D2
 S
 #18532
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, north and south along the 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, north and south along the
 canyon floor.
 ~
 0 0 5
@@ -726,7 +726,7 @@ D2
 S
 #18533
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -749,8 +749,8 @@ D3
 S
 #18534
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -765,7 +765,7 @@ D3
 S
 #18535
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -788,8 +788,8 @@ D3
 S
 #18536
 A Narrow Canyon~
-High rock walls tower far above you on either side.  The path you are 
-standing on picks its way between boulders, east and west along the canyon 
+High rock walls tower far above you on either side.  The path you are
+standing on picks its way between boulders, east and west along the canyon
 floor.
 ~
 0 0 5
@@ -804,7 +804,7 @@ D3
 S
 #18537
 A Narrow Canyon~
-All about you rise jagged peaks, most of which appear unscalable.  Four 
+All about you rise jagged peaks, most of which appear unscalable.  Four
 rough trails converge here.
 ~
 0 0 5
@@ -827,8 +827,8 @@ D3
 S
 #18538
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  A narrow crack leads into the cliff 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  A narrow crack leads into the cliff
 face. A trail heads back to the east.
 ~
 0 0 5
@@ -843,7 +843,7 @@ D3
 S
 #18539
 Dry Cave~
-The crack you squeezed through opens up into a small, dry cavern.  The 
+The crack you squeezed through opens up into a small, dry cavern.  The
 only exit is to the east.
 ~
 0 1 5
@@ -854,7 +854,7 @@ D1
 S
 #18540
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
@@ -865,8 +865,8 @@ D0
 S
 #18541
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  Your only choice is to return to the 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  Your only choice is to return to the
 south.
 ~
 0 0 5
@@ -877,7 +877,7 @@ D2
 S
 #18542
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the south.
 ~
 0 0 5
@@ -888,7 +888,7 @@ D2
 S
 #18543
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
@@ -899,7 +899,7 @@ D0
 S
 #18544
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
@@ -910,8 +910,8 @@ D0
 S
 #18545
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  Your only choice is to return to the 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  Your only choice is to return to the
 west.
 ~
 0 0 5
@@ -922,8 +922,8 @@ D3
 S
 #18546
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  Your only choice is to return to the 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  Your only choice is to return to the
 south.
 ~
 0 0 5
@@ -934,8 +934,8 @@ D2
 S
 #18547
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  Your only choice is to return to the 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  Your only choice is to return to the
 south.
 ~
 0 0 5
@@ -946,7 +946,7 @@ D2
 S
 #18548
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
@@ -957,7 +957,7 @@ D0
 S
 #18549
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
@@ -968,9 +968,9 @@ D0
 S
 #18550
 Rocky Mountainside~
-The trail you are following leads from the canyon below to a distant peak, 
-far above. The terrain around you is uneven and fascinating rock formations 
-vie with bottomless chasms for your attention. It would be unwise to 
+The trail you are following leads from the canyon below to a distant peak,
+far above. The terrain around you is uneven and fascinating rock formations
+vie with bottomless chasms for your attention. It would be unwise to
 venture off the trail.
 ~
 0 0 5
@@ -985,9 +985,9 @@ D5
 S
 #18551
 Rocky Mountainside~
-The trail you are following leads from the canyon floor below to a distant 
-peak, far above.  From this height you can see a multitude of complex peaks 
-and ranges. Passage to the west could prove to be impossible.  To the east, 
+The trail you are following leads from the canyon floor below to a distant
+peak, far above.  From this height you can see a multitude of complex peaks
+and ranges. Passage to the west could prove to be impossible.  To the east,
 something glimmers on the mountainside.
 ~
 0 0 5
@@ -1006,9 +1006,9 @@ D5
 S
 #18552
 Lofty Peak~
-Having reached the apex of this lofty spire you stand stunned.  The view 
-is truly magnificent - day or night. From here you may truly appreciatethe 
-majesty of the alps in which you find yourself.  Far to the west you catch 
+Having reached the apex of this lofty spire you stand stunned.  The view
+is truly magnificent - day or night. From here you may truly appreciatethe
+majesty of the alps in which you find yourself.  Far to the west you catch
 a glimpse of a cityport nestled in rolling plains.
 ~
 0 0 5
@@ -1019,7 +1019,7 @@ D5
 S
 #18553
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the west.
 ~
 0 0 5
@@ -1030,8 +1030,8 @@ D3
 S
 #18554
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  An ancient trail 
-is carved into the sheer granite face before you, and leads up out of 
+The path you are following ends in a small rocky vale.  An ancient trail
+is carved into the sheer granite face before you, and leads up out of
 sight. A trail heads back to the east.
 ~
 0 0 5
@@ -1046,9 +1046,9 @@ D4
 S
 #18555
 Cliff Face~
-Inches from your feet the ground drops away suddenly.  Looking down you 
-see rugged foothills many miles below.  To the west, plains stretch from 
-the foothills, and in the far distance you espy a city. A trail leads down 
+Inches from your feet the ground drops away suddenly.  Looking down you
+see rugged foothills many miles below.  To the west, plains stretch from
+the foothills, and in the far distance you espy a city. A trail leads down
 from here to the east.
 ~
 0 0 5
@@ -1059,8 +1059,8 @@ D5
 S
 #18556
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  A narrow crack leads into the cliff 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  A narrow crack leads into the cliff
 face. A trail heads back to the east.
 ~
 0 0 5
@@ -1075,7 +1075,7 @@ D3
 S
 #18557
 Dry Cave~
-The crack you squeezed through opens up into a small, dry cavern.  The 
+The crack you squeezed through opens up into a small, dry cavern.  The
 only exit is to the east.
 ~
 0 1 5
@@ -1091,7 +1091,7 @@ iron gate~
 S
 #18558
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the south.
 ~
 0 0 5
@@ -1102,7 +1102,7 @@ D2
 S
 #18559
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way 
+The trail you are following ends suddenly in a huge rock fall.  The way
 foward is impassable.  Your only choice is to return to the south.
 ~
 0 0 5
@@ -1113,8 +1113,8 @@ D2
 S
 #18560
 A Narrow Canyon~
-The path you are following ends in a small rocky vale.  Before you is a 
-sheer granite face, with no way up.  Your only choice is to return to the 
+The path you are following ends in a small rocky vale.  Before you is a
+sheer granite face, with no way up.  Your only choice is to return to the
 west.
 ~
 0 0 5
@@ -1145,8 +1145,8 @@ D2
 S
 #18563
 Dank Tunnel~
-You are crouched in a low limestone passage.  The smoothness of the walls 
-imply that it was formed by many years of swiftly flowing water. The tunnel 
+You are crouched in a low limestone passage.  The smoothness of the walls
+imply that it was formed by many years of swiftly flowing water. The tunnel
 extends north and south. There is a faint glow emanating from the south.
 ~
 0 1|8 0
@@ -1161,9 +1161,9 @@ D2
 S
 #18564
 Sink Hole~
-You are standing at the bottom of a deep sink hole.  Looking about, you 
-see small stands of trees and a little pond.  Far above you can see the 
-sky; the sun must reach here at certain times. Mossy rocks surround the 
+You are standing at the bottom of a deep sink hole.  Looking about, you
+see small stands of trees and a little pond.  Far above you can see the
+sky; the sun must reach here at certain times. Mossy rocks surround the
 calm pool and the whole glade has a peaceful air.
 ~
 0 0 5
@@ -1184,7 +1184,7 @@ D2
 S
 #18566
 Dank Tunnel~
-The tunnel ends abruptly here. The slime beneath your feet 
+The tunnel ends abruptly here. The slime beneath your feet
 feels weird.  The floor has a slight inconsistancy with it.
 ~
 0 1|8 0
@@ -1220,7 +1220,7 @@ D2
 S
 #18569
 Rolling Grasslands~
-Plains of featureless grass stretch for miles in every direction. An 
+Plains of featureless grass stretch for miles in every direction. An
 imposing range of mountains lies far to the east.
 ~
 0 0 2
@@ -1231,7 +1231,7 @@ D2
 S
 #18570
 Rolling Grasslands~
-Plains of featureless grass stretch for miles in every direction. An 
+Plains of featureless grass stretch for miles in every direction. An
 imposing range of mountains lies far to the east.
 ~
 0 0 2
@@ -1242,8 +1242,8 @@ D0
 S
 #18571
 Forgotten Depths~
-All about you stretch forgotten halls, never seen by mortal eyes.  
-Fantastic rock formations compete with shadowy recesses for your 
+All about you stretch forgotten halls, never seen by mortal eyes.
+Fantastic rock formations compete with shadowy recesses for your
 uncomprimised attention.  Many secrets, dark and dangerous, reside here.
 ~
 0 1|8 0
@@ -1323,8 +1323,8 @@ M 1 18507 4 18508			The goat to A Narrow Canyon
 *
 M 1 18507 4 18535			The goat to A Narrow Canyon
 *
-D 1 18557 5 1				
-D 1 18566 5 1				
+D 1 18557 5 1
+D 1 18566 5 1
 S
 
 

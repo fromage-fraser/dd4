@@ -134,7 +134,7 @@ a lemming pickaxe~
 A tiny pickaxe lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 5~ 
+0~ 0~ 0~ 5~
 2 0 0
 A
 18 -2
@@ -148,7 +148,7 @@ a lemming hammer~
 A small hammer lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 5 0 0
 A
 19 5
@@ -160,7 +160,7 @@ a lemming axe~
 A small axe lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 13~ 
+0~ 0~ 0~ 13~
 10 0 0
 A
 5 1
@@ -172,7 +172,7 @@ bloody bandages~
 A pile of bloody bandages lies in the corner.~
 ~
 13 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 5 3
@@ -184,7 +184,7 @@ bloody bandages~
 A pile of bloody cloth lies in the corner.~
 ~
 13 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 5 3
@@ -196,7 +196,7 @@ bloody bandages~
 A pile of bloody cloth lies in the corner.~
 ~
 13 0 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 5 3
@@ -208,7 +208,7 @@ bloody bandages~
 A pile of bloody cloth lies in the corner.~
 ~
 13 0 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 5 3
@@ -220,7 +220,7 @@ a stinky Beast Bed~
 A pile of straw stinking of Beast lies in the corner.~
 ~
 15 0 0
-600~ 5~ 0~ 0~ 
+600~ 5~ 0~ 0~
 800 0 0
 E
 bed straw~
@@ -231,7 +231,7 @@ a heavily gnawed lemming bone~
 The leg bone of a lemming lies here, looking gross.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 E
 bone leg~
@@ -243,7 +243,7 @@ a heroic helm~
 The dented helm of a lemming hero lies here.~
 ~
 9 2|1024 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 19 3
@@ -264,7 +264,7 @@ claws of the Beast~
 Claws of the beast have been severed and deposited here.~
 ~
 5 64|512|2048|4096 1|8192
-0~ 0~ 0~ 5~ 
+0~ 0~ 0~ 5~
 5 0 0
 A
 18 5
@@ -274,7 +274,7 @@ a lemming scalpel~
 A small gleaming scalpel lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 2 0 0
 A
 18 5
@@ -286,7 +286,7 @@ runed robes~
 A pile of cloth covered in arcane runes lies here.~
 ~
 9 16|64|512 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 4 2
@@ -300,7 +300,7 @@ a lemming skeleton~
 A pile of small bones lies on the ground.~
 ~
 13  0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 50 0 0
 #29964
 key~
@@ -359,7 +359,7 @@ S
 #29952
 The central cave~
 You are now standing in the main chamber of the cavern. Looking
-around, you see... lemmings? Scurrying everywhere, the little 
+around, you see... lemmings? Scurrying everywhere, the little
 critters run about madly, seemingly without purpose.
 ~
 0 8 0
@@ -596,7 +596,7 @@ S
 A cavern of lemmings~
 More lemmings run around here. They are starting to get on your
 nerves. Wherever you go, more lemmings. Maybe you need to cut
-down the lemming population. The cave continues to the east, 
+down the lemming population. The cave continues to the east,
 and you see an alcove to the west, where a shadowy figure stands.
 ~
 0 1|8 0
@@ -939,8 +939,8 @@ D4
 S
 #29980
 An entrance to a cave~
-You are in a grassy area, standing in front of the 
-mouth of a small cave. You see slight claw marks around 
+You are in a grassy area, standing in front of the
+mouth of a small cave. You see slight claw marks around
 the edges of the entrance.
 ~
 0 1|8 0

@@ -57,8 +57,8 @@ manservant~
 Thorne's manservant~
 Thorne's manservant is here to do her bidding.
 ~
-A mysterious-looking man in a long brown robe is here tending to Thorne's 
-affairs and offering assistance to newbies who require it. 
+A mysterious-looking man in a long brown robe is here tending to Thorne's
+affairs and offering assistance to newbies who require it.
 
 If you would like some assistance please say 'I need help'. If Thorne or one
 of her mortal characters is currently on the mud he will inform them of your
@@ -330,7 +330,7 @@ and protective magiks on the tired and injured recruits.
 ~
 2|8192|512|4096|32768 128|16777216 500 S
 30 0 0 0d0+0 0d0+0
-0 0 
+0 0
 0 0 2
 >all_greet_prog 100~
 	if level($n) < 6
@@ -364,7 +364,7 @@ store.
 ~
 2|8192|512|4096|32768 128 500 S
 30 0 0 0d0+0 0d0+0
-0 0 
+0 0
 0 0 1
 
 #3712
@@ -432,15 +432,15 @@ A heavy iron mace lays at your feet.~
 E
 iron mace~
 
-The mace is a quality piece of craftsmanship, 
-well-suited to the rigours of exploration and 
-combat in the Domain. 
+The mace is a quality piece of craftsmanship,
+well-suited to the rigours of exploration and
+combat in the Domain.
 
 ~
 A
-18 5 
+18 5
 A
-19 5 
+19 5
 #3701
 jewel-studded dagger~
 a jewel-studded dagger~
@@ -453,15 +453,15 @@ E
 jewel-studded dagger~
 
 The dagger is a quality piece of midgaardian
-craftsmanship with a hilt inlaid with a variety 
-of precious and semi-precious stones and a blade 
+craftsmanship with a hilt inlaid with a variety
+of precious and semi-precious stones and a blade
 that has been tempered and sharpened to a fine edge.
 
 ~
 A
-18 5 
+18 5
 A
-19 5 
+19 5
 #3702
 sharp steel sword broadsword~
 a sharp steel broadsword~
@@ -473,16 +473,16 @@ A steel broadsword lies at your feet.~
 E
 sharp steel sword broadsword~
 
-The broadsword is a quality piece of craftsmanship 
+The broadsword is a quality piece of craftsmanship
 with a sturdy iron pommel and a wide, flat blade
-that has been sharpened with a whetstone to a fine 
+that has been sharpened with a whetstone to a fine
 cutting edge on both sides..
 
 ~
 A
-18 5 
+18 5
 A
-19 5 
+19 5
 #3703
 chainmail vest~
 a chainmail vest~
@@ -495,7 +495,7 @@ E
 chainmail vest~
 
 The gleaming chainmail vest covers the torso
-from the neck down to the waist with thousands 
+from the neck down to the waist with thousands
 of interconnected tempered-steel links.
 
 ~
@@ -512,11 +512,11 @@ dragon shield dragonshield~
 
 The shield is of solid construction, crafted from some
 exotic hardwood you do not recognise. The dragon whose
-fearsome head adorns the shield's face is Zyklor, the 
+fearsome head adorns the shield's face is Zyklor, the
 great drake whose shadow falls long over Midgaard from
 his remote realm beyond the eastern sea. Commonly his
 image or some corruption of it is taken as a device in
-the belief that so great is his evil that he himself fears 
+the belief that so great is his evil that he himself fears
 to look upon it, even in likeness.
 
 ~
@@ -531,7 +531,7 @@ A dark-blue cloak lies in a heap.~
 E
 dark blue dark-blue cloak~
 
-The cloak is made of a thick, warm fabric and 
+The cloak is made of a thick, warm fabric and
 feels pleasant against your skin.
 
 ~
@@ -562,7 +562,7 @@ A pair of leather leggings dotted with brass studs lies on the ground.~
 E
 leather studded leggings~
 
-The tough leather leggings have had hundreds 
+The tough leather leggings have had hundreds
 of small bronze studs affixed to them with a
 resinous glue in order to provide additional
 protection against injury.
@@ -595,7 +595,7 @@ Gloves made from the skin of a deer lie here, neatly folded.~
 E
 deerhide gloves~
 
-The gloves have been fashioned from the hide 
+The gloves have been fashioned from the hide
 of a deer with the fur side turned inwards for
 warmth.
 
@@ -659,8 +659,8 @@ A wrist bracer fashioned from copper lies here.~
 E
 copper bracer~
 
-The bracer has been fashioned from burnished 
-copper and protects the wrists and lower 
+The bracer has been fashioned from burnished
+copper and protects the wrists and lower
 forearms well from injury.
 
 ~
@@ -700,7 +700,7 @@ A brightly-glowing banner lies at your feet.~
 E
 banner illumination~
 
-The banner shines brightly with a light that doesn't fade or falter. 
+The banner shines brightly with a light that doesn't fade or falter.
 It has plainly had a magical enchantment cast upon it.
 
 ~
@@ -753,7 +753,7 @@ The portal hangs in the air.~
 #3700
 Floating in Space~
 You float in the inky darkness of space.  Far beneath you sits an immense
-planet, cloaked in brilliant white cloud.  A distant sun flames above you; 
+planet, cloaked in brilliant white cloud.  A distant sun flames above you;
 a lifeless moon swings slowly around its parent.
 
                  {WWelcome to the Dragons Domain MUD!{x
@@ -769,7 +769,7 @@ To leave the Domain, enter QUIT.  Beware: if you quit before you gain a
 level, your new character will not be saved.
 
            We hope you enjoy your time here...  Good luck!
-                         <The DD Immortals>	  
+                         <The DD Immortals>
 
 Enter LOOK to re-read this message; enter DOWN to begin your descent...
 ~
@@ -1064,7 +1064,7 @@ You step from the portal into a stone yard similar to the one before the
 obstacle course.  About half-a-dozen feeble looking recruits are being
 put through exercises by several muscular soldiers.  The ranking officer
 yells and barks at the recruits, most whom look asthough they're about to
-collapse. 
+collapse.
      A few solid looking doors lead from the yard, but are guarded by
 soldiers that prevent your exit.  A wide tunnel leads through the
 northern wall.
@@ -1075,7 +1075,7 @@ The {RImp{x has some helpful advice for you.
 E
 imp~
 The Imp says "You're about to begin your combat training.  Before you go,
-there are some commands that will report your status and progress. 
+there are some commands that will report your status and progress.
 
 "Type SCORE to bring up your scoresheet: it contains a lot of
 information, and more information will be revealed as you increase in
@@ -1102,7 +1102,7 @@ You emerge from the tunnel into another yard, covered with sandy earth.
 The implements of combat training are everywhere: racks of weapons,
 scaffolds mounted with shields and counterweights, targets for archery,
 bales of straw arranged as enemy soldiers.
-     Miserable recruits are being taught the basics of hand-to-hand 
+     Miserable recruits are being taught the basics of hand-to-hand
 combat by lightly armoured soldiers, who regard them with a mix of
 derision and pity.
      The yard is quite large, with areas to the west and east.  In these
@@ -1161,7 +1161,7 @@ for use as live targets for the recruits.  The recruits look even more
 distressed than the animals.  A soldier indicates a couple of animals for
 you to try to kill.
      The yard returns to the west.
-     
+
 The {RImp{x sits nearby.
 ~
 0 1024|8192 1
@@ -1184,7 +1184,7 @@ for use as live targets for the recruits.  The recruits look even more
 distressed than the animals.  A soldier indicates a couple of animals for
 you to try to kill.
      The yard returns to the east.
-     
+
 The {RImp{x waits for you patiently.
 ~
 0 1024|8192 1
@@ -1382,7 +1382,7 @@ tunnel leads north from here.
 The {RImp{x has some advice for you.
 ~
 0 4|8|1024|8192 0
-D 0 
+D 0
 A tunnel leaves north into a large yard.
 ~
 ~
@@ -1491,7 +1491,7 @@ You stand at the entrance to the Domain's training ground for new
 recruits.  The foyer is a spacious stone room with a high vaulted
 ceiling; many fabulous trophies, painted shields and weapons hang on the
 walls.
-     The door to the north will take you through to the obstacle course 
+     The door to the north will take you through to the obstacle course
 and combat training grounds, if you wish to repeat that training.
      The gate to the south will take you into a small arena, where you can
 improve your fighting skills and gain your first level of experience.
@@ -1869,7 +1869,7 @@ M 0 3712 1 3722		Gladiator to final combat
 G 0 3713 0
 G 0 3715 0
 G 0 3714 0
-G 0 3710 0 
+G 0 3710 0
 
 O 0 3719 1 3723		Portal to victory
 O 0 3720 1 3737		Portal to safety

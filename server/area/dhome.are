@@ -7,7 +7,7 @@ dwarf child~
 the dwarven child~
 A small dwarf eyes you with curiosity.
 ~
-The dwarven child looks at you with baby blue eyes, and trails his eyes down  
+The dwarven child looks at you with baby blue eyes, and trails his eyes down
 your body in awe of your equipment.
 ~
 2|4|64|524288 8|8192 750 S
@@ -19,7 +19,7 @@ dwarf teen~
 the dwarven teen~
 A dwarven teen eyes you warily.
 ~
-The dwarf is only a teen, yet he looks at you with an air of snobbiness, as 
+The dwarf is only a teen, yet he looks at you with an air of snobbiness, as
 though he thinks that he is better than you.
 ~
 2|64|524288 8|512|8192 500 S
@@ -31,7 +31,7 @@ dwarf blonde~
 the blonde dwarf~
 A blonde dwarf stands here.
 ~
-The dwarf has very long, dirty blonde hair.  He stares at you with wary eyes,  
+The dwarf has very long, dirty blonde hair.  He stares at you with wary eyes,
 watching your every move.
 ~
 2|64|524288 8|512|8192 500 S
@@ -43,7 +43,7 @@ dwarf caretaker~
 a dwarven caretaker~
 The caretaker of the children eyes you with suspicion.
 ~
-The dwarf has been watching these young dwarves for many a moon.  There are 
+The dwarf has been watching these young dwarves for many a moon.  There are
 scars on her arms from when the children have played too roughly.
 ~
 2|64|524288 8|512|8192|268435456 500 S
@@ -66,7 +66,7 @@ dwarf servant~
 the dwarven servant~
 A dwarven servant is gathering the food which is to be served at the party.
 ~
-The servant looks tired and overworked as he carries tray after tray from the  
+The servant looks tired and overworked as he carries tray after tray from the
 kitchen to be served to the guests of the grand party.
 ~
 2|64|1024|524288 8|512|8192|268435456 750 S
@@ -78,7 +78,7 @@ dwarf thief~
 a dwarven thief~
 A dwarf steps from the shadows and attacks!
 ~
-The thief somehow slipped through the house guards and managed to get into the  
+The thief somehow slipped through the house guards and managed to get into the
 keeping room, where all valuables are kept.
 ~
 2|32|64|262144 8|512|32768|65536 500 S
@@ -90,7 +90,7 @@ dwarf host~
 the host~
 The host of the party grins at you.
 ~
-The host of the party grins at you, for he knows that he is becoming more 
+The host of the party grins at you, for he knows that he is becoming more
 popular as he holds parties such as these.
 ~
 2|64|524288 8|512|8192 300 S
@@ -102,7 +102,7 @@ dwarf singer~
 a dwarven singer~
 A dwarf sings you a ballad.
 ~
-The dwarf looks at you with wonderous eyes and begins to sing an enchanting  
+The dwarf looks at you with wonderous eyes and begins to sing an enchanting
 tune.
 ~
 2|64|524288 8|512|8192 750 S
@@ -128,7 +128,7 @@ dwarf musician~
 the dwarven musician~
 A dwarven musician is playing a happy piece.
 ~
-The dwarven musician is using some sort of string instrument, and is playing  
+The dwarven musician is using some sort of string instrument, and is playing
 a merry piece.
 ~
 2|64|524288 8|512|8192 500 S
@@ -140,7 +140,7 @@ dwarf dwarven dancer~
 the dwarven dancer~
 A dancer is here, dancing a lively jig.
 ~
-The dancer moves with the grace of a butterfly, and dances over to you where  
+The dancer moves with the grace of a butterfly, and dances over to you where
 she says 'Would you care to dance?'
 ~
 2|64|524288 8|512|8192 300 S
@@ -152,7 +152,7 @@ dwarf chess player~
 the dwarf~
 A dwarf is here setting up a chessboard.
 ~
-The dwarf looks quite intelligent, and he looks at you with keen, intelligent  
+The dwarf looks quite intelligent, and he looks at you with keen, intelligent
 eyes.  He is holding a bishop for the chessboard which he is setting up.
 ~
 2|64|524288 8|512|8192 -750 S
@@ -164,7 +164,7 @@ dwarf handball player~
 the player~
 A dwarf is playing handball against the wall.
 ~
-The dwarf is hitting a small blue ball against the far wall in a game of  
+The dwarf is hitting a small blue ball against the far wall in a game of
 handball.
 ~
 2|64|524288 8|512|8192 0 S
@@ -176,7 +176,7 @@ dwarf puzzle~
 the dwarf~
 A dwarf sits here, putting a puzzle together.
 ~
-This dwarf has a very serious, concentrated look in his eyes as he tries to  
+This dwarf has a very serious, concentrated look in his eyes as he tries to
 put together the pieces of this puzzle.
 ~
 2|64|524288 8|512|8192 -1000 S
@@ -188,8 +188,8 @@ dwarf gambler~
 the dwarven gambler~
 A dwarf is standing here, gambling all of his money away.
 ~
-The dwarf is standing before a game table, and he has a pile of chips in front 
-of him.  Everybody around the table has more chips than he does, and he 
+The dwarf is standing before a game table, and he has a pile of chips in front
+of him.  Everybody around the table has more chips than he does, and he
 doesn't seem to be very happy about losing so much money.
 ~
 2|64|524288 8|512|8192 -750 S
@@ -201,8 +201,8 @@ dwarf dwarven mistress~
 the mistress~
 The mistress of the house is standing here.
 ~
-The mistress of the house is the person who runs most of the household 
-functions, including the parties and the gaming.  She is a large dwarf, with 
+The mistress of the house is the person who runs most of the household
+functions, including the parties and the gaming.  She is a large dwarf, with
 long brown hair and a large stomach.
 ~
 2|64|524288 8|512|8192 -1000 S
@@ -214,8 +214,8 @@ dwarf dwarven master~
 the master of the house~
 The master of the house stands here, watching over his home.
 ~
-The master of the house leaves most of the work up to the mistress, he only  
-watches over the house to makes sure that everything is ok.  He is a very 
+The master of the house leaves most of the work up to the mistress, he only
+watches over the house to makes sure that everything is ok.  He is a very
 large, muscular dwarf, with graying black hair and a long grey beard.
 ~
 2|64|524288 8|512|8192 0 S
@@ -227,7 +227,7 @@ dwarf guest~
 a guest~
 A guest of the house is here.
 ~
-The guest is wandering about the house, looking for anything interesting to  
+The guest is wandering about the house, looking for anything interesting to
 do.
 ~
 64|524288 1048576 0 S
@@ -239,7 +239,7 @@ dwarf maid~
 the maid~
 A maid cleans here.
 ~
-The maid is cleaning every part of the house, if the entire house isn't 
+The maid is cleaning every part of the house, if the entire house isn't
 perfect, the master of the house will not be happy.
 ~
 64|524288 1048576 100 S
@@ -256,7 +256,7 @@ a large toy~
 A large toy has been left here.~
 ~
 5 2|16777216 1|8192
-0~ 1~ 10~ 0~ 
+0~ 1~ 10~ 0~
 100 25 0
 #20501
 dark spear~
@@ -264,7 +264,7 @@ the Spear of Darkness~
 A Spear of Darkness lies here waiting or you to pick it up.~
 ~
 5 2|16|512|4096|16777216|134217728 1|8192
-0~ 5~ 10~ 0~ 
+0~ 5~ 10~ 0~
 50 200 0
 #20502
 iq vine~
@@ -272,7 +272,7 @@ an I.Q. Vine~
 An I.Q. Vine has been left here.~
 ~
 9 1|2|16777216 1|16
-2~ 2~ 2~ 2~ 
+2~ 2~ 2~ 2~
 25 100 0
 A
 3 2
@@ -284,7 +284,7 @@ a large mace~
 A large mace has been dropped here.~
 ~
 5 2|16777216 1|8192
-0~ 2~ 9~ 0~ 
+0~ 2~ 9~ 0~
 100 70 0
 #20504
 jagged little pill~
@@ -292,7 +292,7 @@ a jagged little pill~
 A jagged little pille lies here.~
 ~
 26 128 1
-10~ refresh~ pass door~ cure light~ 
+10~ refresh~ pass door~ cure light~
 2 50 0
 #20505
 mace~
@@ -300,7 +300,7 @@ a mace~
 A mace has been left here.~
 ~
 5 65536|1048576|16777216 1|8192
-0~ 3~ 9~ 0~ 
+0~ 3~ 9~ 0~
 75 100 0
 #20506
 cane~
@@ -308,7 +308,7 @@ a cane~
 A finely crafted cane rests against the wall.~
 ~
 5 2 1|8192
-0~ 3~ 9~ 0~ 
+0~ 3~ 9~ 0~
 50 150 0
 A
 1 2
@@ -318,7 +318,7 @@ a serving tray~
 A serving tray has been set down here.~
 ~
 5 16777216 1|8192
-0~ 3~ 9~ 0~ 
+0~ 3~ 9~ 0~
 50 170 0
 #20508
 bishop~
@@ -326,7 +326,7 @@ a bishop piece~
 A chess piece has been dropped here.~
 ~
 5 16777216 1|8192
-0~ 5~ 9~ 11~ 
+0~ 5~ 9~ 11~
 20 220 0
 #20509
 dwarven dagger~
@@ -334,7 +334,7 @@ a dwarven dagger~
 A dwarven dagger has been dropped here.~
 ~
 5 128|512|131072 1|8192
-0~ 6~ 10~ 11~ 
+0~ 6~ 10~ 11~
 20 300 0
 A
 19 5
@@ -344,7 +344,7 @@ a dancer's suit~
 A dancer's suit has been dropped here.~
 ~
 9 1|16777216 1|8
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 15 100 0
 A
 2 2
@@ -360,7 +360,7 @@ a baby shirt~
 A baby shirt has been left here.~
 ~
 9 16777216 1|1024
-1~ 1~ 1~ 1~ 
+1~ 1~ 1~ 1~
 15 50 0
 E
 flannel jacket~
@@ -373,7 +373,7 @@ a tuxedo~
 A nice looking tuxedo has been thrown here.~
 ~
 9 16777216 1|1024
--5~ -5~ -5~ -5~ 
+-5~ -5~ -5~ -5~
 50 100 0
 E
 tuxedo coat~
@@ -385,7 +385,7 @@ a pair of nice pants~
 A pair of nice pants has been carelessly left here.~
 ~
 9 16777216 1|32
-5~ 5~ 5~ 5~ 
+5~ 5~ 5~ 5~
 10 70 0
 E
 plaid shorts~
@@ -398,7 +398,7 @@ a servant's uniform~
 A servant's uniform has been left here.~
 ~
 9 16777216 1|1024
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 5 50 0
 E
 zero shirt star~
@@ -410,7 +410,7 @@ a leather shirt~
 A leather shirt has been left here.~
 ~
 9 16777216 1|1024
-5~ 5~ 5~ 5~ 
+5~ 5~ 5~ 5~
 5 75 0
 A
 13 10
@@ -425,7 +425,7 @@ a leather vest~
 A nice leather vest is lying here.~
 ~
 9 16777216 1|1024
--25~ -25~ -25~ -25~ 
+-25~ -25~ -25~ -25~
 5 150 0
 A
 17 5
@@ -439,7 +439,7 @@ a leather whip~
 A leather whip has been left here.~
 ~
 5 1|1048576 1|8192
-0~ 2~ 10~ 4~ 
+0~ 2~ 10~ 4~
 5 0 0
 A
 13 10
@@ -451,7 +451,7 @@ an invitation~
 An invitation has been dropped here.~
 ~
 8 1|1048576 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 1
@@ -465,7 +465,7 @@ a cleaning pick~
 A cleaning pick has been dropped here.~
 ~
 5 16777216 1|8192
-0~ 4~ 14~ 2~ 
+0~ 4~ 14~ 2~
 5 0 0
 A
 1 2
@@ -477,7 +477,7 @@ a log~
 A maid's log has been left here.~
 ~
 8 16777216 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 5 1
@@ -540,8 +540,8 @@ D2
 0 -1 20501
 E
 sculpture statue~
-The sculpture is of a strange being you think you recognize as a vampire.  
-The red eyes are actually rubies that seem to glow with a strange light 
+The sculpture is of a strange being you think you recognize as a vampire.
+The red eyes are actually rubies that seem to glow with a strange light
 within them.
 ~
 S
@@ -566,8 +566,8 @@ D2
 0 -1 20502
 E
 statue sculpture~
-The statue here is the same as before...large, looks like a vampire, same 
-glowing red eyes...but here it also has fangs that look large enough to 
+The statue here is the same as before...large, looks like a vampire, same
+glowing red eyes...but here it also has fangs that look large enough to
 suck the blood out of an elephant.
 ~
 S
@@ -688,7 +688,7 @@ D2
 S
 #20511
 In the Bright Hallway~
-The hallway here is getting dimmer, and continues dimming to the east. 
+The hallway here is getting dimmer, and continues dimming to the east.
 Here you see an opening leading off to the south, with the entertainment
 room beyond it.  The sound of singing can be heard to the south, and the
 sound of many people talking can be h eard to the west.
@@ -775,7 +775,7 @@ D3
 S
 #20516
 The Ballroom~
-The ballroom is quite large, and is suited perfectly for fine dances. 
+The ballroom is quite large, and is suited perfectly for fine dances.
 Many people come here to hold popular dances, or just to come and dance with
 a partner.  East leads back into the entertainment room.
 ~
@@ -803,7 +803,7 @@ D2
 0 -1 20503
 E
 statue sculpture~
-The statue here is once again the same as before.  Wait!  You realize that 
+The statue here is once again the same as before.  Wait!  You realize that
 this statue also has a cape....strange.
 ~
 S
@@ -866,7 +866,7 @@ S
 #20521
 Teen's Room~
 This is where all of the teens in the daycare gather.  They always feel
-better than the rest of the kids so they decide to gather into one room. 
+better than the rest of the kids so they decide to gather into one room.
 East leads back into the rest of the daycare.
 ~
 0 8 0
@@ -917,7 +917,7 @@ D2
 0 -1 20517
 E
 statue sculpture~
-This time the statue has grown one poity ear.  If it wasn't for the one ear 
+This time the statue has grown one poity ear.  If it wasn't for the one ear
 that is missing, this would be a perfect rendition of a vampire.
 ~
 S

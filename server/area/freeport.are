@@ -14,9 +14,9 @@ seas of the pirate lords makes it economically powerful. It is
 the wealth and commerce of Freeport which draws the pirates in
 the surrounding islands. Little known to many is the fact that
 the mayor, 1st admiral, and 1st master merchant of Freeport all
-are corrupt and work for Lord Mourning the 6th pirate lord. 
+are corrupt and work for Lord Mourning the 6th pirate lord.
 Mourning tips off his fellow pirate lords on the shipping routes,
-cargo lists, and passenger lists of all the vessels which will 
+cargo lists, and passenger lists of all the vessels which will
 pass their way. In turn he gets a cut from the booty.
 ~
 
@@ -150,9 +150,9 @@ shipbuilder master~
 the master shipbuilder~
 The master shipbuilder is here, working on a new prototype.
 ~
-After introducing yourself and the usual small talk, you 
+After introducing yourself and the usual small talk, you
 find out from the master shipbuilder that he has been recently
-commissioned to build 3 triremes, boats which offer little 
+commissioned to build 3 triremes, boats which offer little
 cargo storage, but excellent raiding speed.
 ~
 2|32768 0 300 S
@@ -350,7 +350,7 @@ Midge, the innkeeper of the Crew's Quarters offers you a wholesome meal.
 ~
 Midge sits down with you as you have the meal, as her business right now
 has been slow. She tells you that her business has steadily declined for
-the last 6 years. Recently her business picked up again. In fact, she 
+the last 6 years. Recently her business picked up again. In fact, she
 just last month had a week stay by a very rich visitor named Lord Vulture.
 ~
 2|32768 0 400 S
@@ -373,7 +373,7 @@ guard stoic pirate~
 the pirate guard~
 A stoic guard stands here, barring the way.
 ~
-The guard is heavily armed and moves with military 
+The guard is heavily armed and moves with military
 precision.
 ~
 2|32 8|32 -600 S
@@ -416,7 +416,7 @@ Lord Mourning, the secret 6th Pirate Lord laughs at you!
 Bah! Who are you to threaten me? I was sinking navies when you were a mere
 strapling on your mother's teat! I will destroy you! And if not me, then
 someone else, for every one of us you kill, 2 more sprout up to take my
-place! With that Lord Mourning draws his saber and eats a blue lizard 
+place! With that Lord Mourning draws his saber and eats a blue lizard
 tongue.
 ~
 2 128 -1000 S
@@ -445,7 +445,7 @@ A tall lizardman in golden robes watches you intently.
 ~
 Handsome, tall and lean, Stathog the Illuminatus reclines in his
 luxuriant golden robes, watching you intently.  His features are
-aged and tired, but his eyes gleam like brilliant emeralds and 
+aged and tired, but his eyes gleam like brilliant emeralds and
 miss no detail.  The air becomes charged and thick as you approach
 him.
 ~
@@ -474,7 +474,7 @@ him.
 & 30 'ranger base'
 & 110 'stealth techniques'
 & 110 'thievery skills'
-& 110 'poison arts' 
+& 110 'poison arts'
 & 110 'hunting arts'
 & 110 'knowledge'
 & 30 'thief base'
@@ -545,7 +545,7 @@ An old key is lying on the ground.
 ~
 ~
 18 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #29102
 tongue blue lizard~
@@ -554,7 +554,7 @@ A blue lizard tongue is here.
 ~
 ~
 26 0 1
-30~ sanctuary~ ~ ~ 
+30~ sanctuary~ ~ ~
 1 0 0
 #29103
 tongue red lizard~
@@ -563,7 +563,7 @@ A red lizard tongue is here.
 ~
 ~
 26 0 1
-30~ poison~ ~ ~ 
+30~ poison~ ~ ~
 1 0 0
 #29104
 tongue green lizard~
@@ -572,7 +572,7 @@ A green lizard tongue is here.
 ~
 ~
 26 0 1
-30~ curse~ ~ ~ 
+30~ curse~ ~ ~
 1 0 0
 #29105
 watchfire~
@@ -581,7 +581,7 @@ A watchfire is here, burning brightly.
 ~
 ~
 1 65536 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 20 0 0
 #29106
 pole fishing~
@@ -590,7 +590,7 @@ A fishing pole is here, hooked and baited.
 ~
 ~
 5 0 1|8192
-0~ 0~ 0~ 4~ 
+0~ 0~ 0~ 4~
 3 0 0
 #29107
 notebook~
@@ -599,7 +599,7 @@ A notebook has been left here.
 ~
 ~
 8 64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 #29108
 globe patrol~
@@ -608,7 +608,7 @@ A glowing globe has been left here.
 ~
 ~
 1 1 1|16384
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 0 0
 A
 24 -5
@@ -619,7 +619,7 @@ A suit of scale mail is here.
 ~
 ~
 9 64 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 #29110
 trident~
@@ -628,7 +628,7 @@ A trident has been left here.
 ~
 ~
 5 64 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 9 0 0
 A
 19 3
@@ -639,7 +639,7 @@ A steaming meat pie is here.
 ~
 ~
 19 0 1
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 2 0 0
 #29112
 grog sailor's~
@@ -648,7 +648,7 @@ A mug of sailor's grog is here.
 ~
 ~
 17 0 1
-2~ 2~ 4~ 0~ 
+2~ 2~ 4~ 0~
 2 0 0
 #29113
 wafer holy~
@@ -657,7 +657,7 @@ A holy wafer is here.
 ~
 ~
 26 64 1
-50~ bless~ ~ ~ 
+50~ bless~ ~ ~
 1 0 0
 #29114
 plate silver~
@@ -666,7 +666,7 @@ A silver plate has been left here.
 ~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8 0 0
 #29115
 tapestry~
@@ -675,7 +675,7 @@ A tapestry has been left here.
 ~
 ~
 8 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 30 0 0
 E
 tapestry~
@@ -689,7 +689,7 @@ A suit of emerald armor is here.
 ~
 ~
 9 64 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 40 0 0
 A
 17 -30
@@ -700,7 +700,7 @@ A dwarven throwing hammer is here.
 ~
 ~
 5 64|32768 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 0 0
 A
 18 4
@@ -713,7 +713,7 @@ A set of elven chainmail sleeves is here.
 ~
 ~
 9 64|65536 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 #29119
 leggings elven chainmail~
@@ -722,7 +722,7 @@ A pair of elven chainmail leggings is here.
 ~
 ~
 9 64|65536 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #29120
 wine red~
@@ -731,7 +731,7 @@ A glass of Freeport Burgundy is here.
 ~
 ~
 17 0 1
-1~ 1~ 2~ 0~ 
+1~ 1~ 2~ 0~
 1 0 0
 #29121
 wine white~
@@ -740,7 +740,7 @@ A glass of Freeport Chablis is here.
 ~
 ~
 17 0 1
-1~ 1~ 2~ 0~ 
+1~ 1~ 2~ 0~
 1 0 0
 #29122
 dumplings plate gravy~
@@ -749,7 +749,7 @@ A plate of gravy and dumplings is here.
 ~
 ~
 19 0 1
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 2 0 0
 #29123
 crate~
@@ -758,7 +758,7 @@ A huge box crate is here.
 ~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 #29124
 ship moored~
@@ -767,7 +767,7 @@ A moored ship is here.
 ~
 ~
 8 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 #29125
 wristguard emerald~
@@ -776,7 +776,7 @@ An emerald wristguard is here.
 ~
 ~
 9 64 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 17 -20
@@ -787,7 +787,7 @@ An emerald longsword is here.
 ~
 ~
 5 64 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 10 0 0
 A
 17 -20
@@ -798,7 +798,7 @@ An emerald helm is here.
 ~
 ~
 9 64 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 17 -10
@@ -809,7 +809,7 @@ A pinch of devil's weed is here.
 ~
 ~
 26 64 1
-40~ dispel good~ poison~ ~ 
+40~ dispel good~ poison~ ~
 1 0 0
 #29129
 cape admiral's~
@@ -818,7 +818,7 @@ A cape with the emblem of Freeport is here.
 ~
 ~
 9 64|256 1|4|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 18 2
@@ -837,7 +837,7 @@ A ring with the seal of Freeport is here.
 ~
 ~
 27 64 1|2
-0~ 0~ 90~ 0~ 
+0~ 0~ 90~ 0~
 1 0 0
 A
 14 100
@@ -852,7 +852,7 @@ A very heavy purse is here.
 ~
 ~
 20 0 1
-3~ 7~ 10~ 30~ 
+3~ 7~ 10~ 30~
 100 0 0
 #29132
 boots bladed~
@@ -861,7 +861,7 @@ A pair of boots with a spring action blade lie here.
 ~
 ~
 9 0 1|64
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 17 -10
@@ -874,7 +874,7 @@ A hole in reality lies here.
 ~
 ~
 9 64 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 1 1
@@ -899,7 +899,7 @@ A prism shimmers on the ground here.
 ~
 ~
 3 32|64 1|16384
-50~ 30~ 30~ invis~ 
+50~ 30~ 30~ invis~
 1 0 0
 #0
 
@@ -907,8 +907,8 @@ A prism shimmers on the ground here.
 #ROOMS
 #29101
 Dusk's Edge~
-You have reached the easternmost point of Freeport isle, a place locals 
-call Dusk's edge. There is an ivory statue of a dolphin entering the 
+You have reached the easternmost point of Freeport isle, a place locals
+call Dusk's edge. There is an ivory statue of a dolphin entering the
 water from a great leap is here.
 ~
 0 0 5
@@ -918,16 +918,16 @@ On the rock jetty~
 0 -1 29102
 E
 statue~
-The statue shows the Dolphin as it is entering the water. The inscription 
-reads `When Dolphin was created at the dawn of time, she leaped forth from 
-the water with great joy, and the water which fell from her back became the 
+The statue shows the Dolphin as it is entering the water. The inscription
+reads `When Dolphin was created at the dawn of time, she leaped forth from
+the water with great joy, and the water which fell from her back became the
 isle of Freeport.
 ~
 S
 #29102
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -942,8 +942,8 @@ On the rock jetty~
 S
 #29103
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -958,8 +958,8 @@ On the rock jetty~
 S
 #29104
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -994,7 +994,7 @@ Wharf road~
 S
 #29106
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1034,7 +1034,7 @@ You see the wharf~
 S
 #29108
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1078,8 +1078,8 @@ Wharf road~
 S
 #29110
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash 
-and spray a salt mist into the air. Gulls wheel in the sky above you, 
+You walk along the rock jetty of the isle of Freeport. The waves crash
+and spray a salt mist into the air. Gulls wheel in the sky above you,
 having flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1094,7 +1094,7 @@ On the rock jetty~
 S
 #29111
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1110,7 +1110,7 @@ On the wharf~
 S
 #29112
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1158,8 +1158,8 @@ Wharf road~
 S
 #29114
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash 
-and spray a salt mist into the air. Gulls wheel in the sky above you, 
+You walk along the rock jetty of the isle of Freeport. The waves crash
+and spray a salt mist into the air. Gulls wheel in the sky above you,
 having flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1178,8 +1178,8 @@ On the Rock Jetty~
 S
 #29115
 Widow's Cape~
-You have climbed the rocks of widows cape, and can see the violent southern 
-shoals which have claimed many a ship. A watchfire is kept burning here at 
+You have climbed the rocks of widows cape, and can see the violent southern
+shoals which have claimed many a ship. A watchfire is kept burning here at
 night to warn sailors.
 ~
 0 0 5
@@ -1190,7 +1190,7 @@ On the rock jetty~
 S
 #29116
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1210,7 +1210,7 @@ On the wharf~
 S
 #29117
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1234,7 +1234,7 @@ On the wharf~
 S
 #29118
 Wharf Road~
-You are on the stone paved wharf road. Here you see a ship being hauled up 
+You are on the stone paved wharf road. Here you see a ship being hauled up
 to dry dock for repairs. Traffic from the warehouse to the west travels to
 the wharf via wharf road.
 ~
@@ -1278,7 +1278,7 @@ Wharf road~
 S
 #29120
 On the Wharf~
-You are on the wharf of Freeport, where ships dock and load. The docks 
+You are on the wharf of Freeport, where ships dock and load. The docks
 are busy today as any day, for the commerce of the seas knows no holiday.
 To the north of you the harbor of Freeport stretches.
 ~
@@ -1294,7 +1294,7 @@ Wharf road~
 S
 #29121
 Wharf Road~
-You are on the stone paved wharf road. Traffic from the warehouse to the 
+You are on the stone paved wharf road. Traffic from the warehouse to the
 west travels to the wharf via wharf road. To your immediate east is the
 shipyards, where you can hear the sounds of construction.
 ~
@@ -1318,7 +1318,7 @@ On the wharf~
 S
 #29122
 Wharf Road~
-You are on the stone paved wharf road. Traffic from the warehouse to the 
+You are on the stone paved wharf road. Traffic from the warehouse to the
 west travels to the wharf via wharf road. To your immediate east you see
 the road to the city of Freeport.
 ~
@@ -1389,8 +1389,8 @@ Wharf road~
 S
 #29125
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1405,8 +1405,8 @@ On the rock jetty~
 S
 #29126
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1487,7 +1487,7 @@ S
 #29129
 The Mercantile Warehouse~
 You dodge porters and errand boys in the whirling mayhem of the mercantile
-warehouse. Longshoremen load crates of cargo into horse drawn carts and 
+warehouse. Longshoremen load crates of cargo into horse drawn carts and
 lead the teams down to the wharf for embarking vessels. The cargomaster
 signals to his apprentices in a strange sign language of the merchants
 guild. You get caught up in the excitement of the warehouse, and lend a
@@ -1513,8 +1513,8 @@ Wharf road~
 S
 #29130
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1529,8 +1529,8 @@ On the rock jetty~
 S
 #29131
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1576,8 +1576,8 @@ The road to Freeport city~
 S
 #29133
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1592,8 +1592,8 @@ On the rock jetty~
 S
 #29134
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1608,8 +1608,8 @@ On the rock jetty~
 S
 #29135
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1624,8 +1624,8 @@ On the rock jetty~
 S
 #29136
 Dawn's Edge~
-You have reached the easternmost point of Freeport isle, a place locals call 
-Dawn's edge. There is an ivory statue of a dolphin leaping out of the water 
+You have reached the easternmost point of Freeport isle, a place locals call
+Dawn's edge. There is an ivory statue of a dolphin leaping out of the water
 here.
 ~
 0 0 5
@@ -1635,16 +1635,16 @@ On the rock jetty~
 0 -1 29135
 E
 statue~
-The statue shows the Dolphin as it is rising out of the water. The 
-inscription reads `When Dolphin was created at the dawn of time, she 
-leaped forth from the water with great joy, and the water which fell 
+The statue shows the Dolphin as it is rising out of the water. The
+inscription reads `When Dolphin was created at the dawn of time, she
+leaped forth from the water with great joy, and the water which fell
 from her back became the isle of Freeport'
 ~
 S
 #29137
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1659,8 +1659,8 @@ On the rock jetty~
 S
 #29138
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1675,8 +1675,8 @@ On the rock jetty~
 S
 #29139
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1691,8 +1691,8 @@ On the rock jetty~
 S
 #29140
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1707,8 +1707,8 @@ On the rock jetty~
 S
 #29141
 On the Rock Jetty~
-You walk along the rock jetty of the isle of Freeport. The waves crash and 
-spray a salt mist into the air. Gulls wheel in the sky above you, having 
+You walk along the rock jetty of the isle of Freeport. The waves crash and
+spray a salt mist into the air. Gulls wheel in the sky above you, having
 flown from their perches upon seeing you.
 ~
 0 0 4
@@ -1723,9 +1723,9 @@ On the rock jetty~
 S
 #29142
 Northpoint~
-You have reached the end of the jetty at a place called Northpoint. Here 
-long swells from the northeast crash with great force upon the island. You 
-see why the island has been reinforced with a rock jetty- without it, it 
+You have reached the end of the jetty at a place called Northpoint. Here
+long swells from the northeast crash with great force upon the island. You
+see why the island has been reinforced with a rock jetty- without it, it
 would rapidly erode.
 ~
 0 0 5
@@ -1740,7 +1740,7 @@ You stand in the burrows of Freeport, where all the sailors and merchants
 families live. The houses are made of the local stone and have slate roofs.
 The closer the houses are to the city, the more beautiful and grandiose they
 become. Down next to the jetty where flooding is likely, live the poorest
-families, in temporary shacks which are prone to flooding. To the north is 
+families, in temporary shacks which are prone to flooding. To the north is
 the mercantile warehouse.
 ~
 0 0 4
@@ -1780,7 +1780,7 @@ You stand in the burrows of Freeport, where all the sailors and merchants
 families live. The houses are made of the local stone and have slate roofs.
 The closer the houses are to the city, the more beautiful and grandiose they
 become. Down next to the jetty where flooding is likely, live the poorest
-families, in temporary shacks which are prone to flooding. To the west is 
+families, in temporary shacks which are prone to flooding. To the west is
 the mercantile warehouse.
 ~
 0 0 4
@@ -1899,7 +1899,7 @@ The Mystic Eye~
 S
 #29151
 The Bronze Scabbard~
-The Bronze Scabbard is actually a front store for the blacksmith the 
+The Bronze Scabbard is actually a front store for the blacksmith the
 metalworkers of Freeport. The bulk of the commissions come from the
 Captains guild and the shipyards, where most of the arms of Freeport
 are made. In their spare time the metalworkers make various trinkets
@@ -1927,7 +1927,7 @@ S
 #29153
 The Town Square of Freeport~
 You are in the broad town square of Freeport, which measures 100 yds by 100
-yds. Small outdoor cafes have set up shop in the square, catering to 
+yds. Small outdoor cafes have set up shop in the square, catering to
 their people watching customers. To the south is the town hall, where
 the famed waterclock of Freeport chimes the martial song of the Captains
 guild every hour. To the east, Naval street runs to the Captains guild at
@@ -1976,7 +1976,7 @@ S
 #29155
 Shipper's Lane~
 You walk Shippers lane. Two story houses press closely to the to the
-street and people bustle back and forth. To the south is the bank of 
+street and people bustle back and forth. To the south is the bank of
 Freeport.
 ~
 0 0 1
@@ -2016,7 +2016,7 @@ statue~
 E
 statues~
 The statues are of past mayors of the city. As you examine them more
-closely, you notice one of them shows signs of having been moved across the 
+closely, you notice one of them shows signs of having been moved across the
 floor many many times. You try to move it, but the statue is held in place
 by a locking mechanism.
 ~
@@ -2038,7 +2038,7 @@ Naval Street~
 S
 #29158
 The Bank of Freeport~
-You stand inside the stout walls of the bank of Freeport. There is a 
+You stand inside the stout walls of the bank of Freeport. There is a
 continual stream of customers entering and depositing vast sums of money in
 the well guarded vault. The bank is faring well, as you can judge by
 the amount of gilding inside the building.
@@ -2071,7 +2071,7 @@ The merchant's guild~
 S
 #29160
 The Mercantile School~
-You stand in the courtyard of the mercantile school of Freeport. It is 
+You stand in the courtyard of the mercantile school of Freeport. It is
 here that young boys master the subtleties of profit and trade. Scribes
 record the latest buy and sell rates of commodities around the world upon
 the rolls of the school. This school is one of the main reasons for the
@@ -2094,7 +2094,7 @@ lands. The guild masters command much respect, wealth, and power throughout
 the world. Guild matters are decided by a vote, scaled by the wealth of
 each master. The 5 richest masters make up the council of 5, and argue on
 the guilds behalf in contractual negotiations in town meetings. It has been
-said that the council of 5 collectively owns one quarter of the world's 
+said that the council of 5 collectively owns one quarter of the world's
 wealth.
 ~
 0 8 0
@@ -2122,7 +2122,7 @@ S
 The Captains Guild~
 Here in the halls of the Captains guild, the worlds shipping begins and
 ends. The guild was founded over 300 years ago to represent the collective
-interests of the ship owners. To be a member, one must demonstrate the 
+interests of the ship owners. To be a member, one must demonstrate the
 clear title to at least one vessel. Ahead of you is the great hall where
 the guild holds its meetings. Votes in the guild are based weighted by
 the number of vessels the captain has. The richest men with the most ships
@@ -2139,7 +2139,7 @@ S
 On a Secret Staircase~
 You follow a secret staircase south and downward underground. The stairs
 are wet and mossy. Far below you hear the sounds of men loading a ship.
-The old torch sconces on the wall have not been used in years. There is 
+The old torch sconces on the wall have not been used in years. There is
 a sign on the wall.
 ~
 0 1|8 4
@@ -2175,7 +2175,7 @@ S
 #29167
 In the Hidden Cavern~
 You have discovered a hidden underground cavern. In the center of the
-room is a deep pool in which several triremes have been moored. 
+room is a deep pool in which several triremes have been moored.
 Laughing sailors are unloading cargo from one of the ships. You quickly
 disguise yourself as one of the sailors.
 ~
@@ -2256,7 +2256,7 @@ shipping schedule, duplicated on scrolls addressed to the other pirate
 lords. There is a cargo list of several missing merchant vessels. On the
 desk is a scroll of the departure time, vessel name, and destination of
 a rich noble. Yes you have discovered the kingpin of the pirate lords,
-the man who has terrorized commerce for a decade. What will you do about 
+the man who has terrorized commerce for a decade. What will you do about
 it?
 ~
 0 8 0
@@ -2315,7 +2315,7 @@ S
 In the Hidden Cavern~
 You walk along the shore of an underground water cave in which several
 triremes have been moored, one of which is being unloaded. You sneak
-unnoticed behind several CRATES which have been recently off-loaded. To 
+unnoticed behind several CRATES which have been recently off-loaded. To
 the south of you the waterway leaves the cavern through a tunnel which
 U's in a long curve.
 ~
@@ -2416,11 +2416,11 @@ M 1 29104 1 29115			Watchman
 O 1 29105 0 29115			watch fire
 M 1 29105 1 29142			fisherman
 E 1 29106 0 16 fishing pole
-M 1 29106 5 29129			longshoreman 
-M 1 29106 5 29106			longshoreman 
-M 1 29106 5 29111			longshoreman 
-M 1 29106 5 29120			longshoreman 
-M 1 29106 5 29151			longshoreman 
+M 1 29106 5 29129			longshoreman
+M 1 29106 5 29106			longshoreman
+M 1 29106 5 29111			longshoreman
+M 1 29106 5 29120			longshoreman
+M 1 29106 5 29151			longshoreman
 M 1 29107 1 29116			harbormaster
 G 1 29107 0    notebook
 M 1 29108 5 29108			citizen
@@ -2525,7 +2525,7 @@ S
 29116 17 19 0 0 0 150 75 0 23              Lefty sells food and drink
 29117 8 12 13 26 0 130 80 9 17             Anwar sells junk
 29118 5 9 29 30 0 125 85 6 18             Raedner sells arms & armor
-29119 9 2 3 4 28 140 60 17 23              Samanthia sells magic at night 
+29119 9 2 3 4 28 140 60 17 23              Samanthia sells magic at night
 29127 17 19 0 0 0 110 90 0 23			Midge sells food and drink
 0
 

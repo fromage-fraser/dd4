@@ -941,7 +941,7 @@ a box with your name written on it~
 A box with your name written on its lid lies here.~
 ~
 15 0 1
-5~ 5~ 0~ 0~ 
+5~ 5~ 0~ 0~
 1 0 0
 #17701
 gold~
@@ -949,7 +949,7 @@ some gold~
 Some gold has been dropped here. Looks like just two bits.~
 ~
 20 0 1
-0~ 0~ 2~ 0~ 
+0~ 0~ 2~ 0~
 1 0 0
 #17702
 note parchment~
@@ -957,7 +957,7 @@ a note written on a small piece of parchment~
 A note written on a small piece of parchment lies here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 note parchment~
@@ -974,7 +974,7 @@ a large iron bell~
 A large iron bell hangs from the ceiling here.~
 ~
 12 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1000 0 0
 E
 bell~
@@ -986,7 +986,7 @@ a leather bag~
 A leather bag lies in the dust here.~
 ~
 15 0 1
-5~ 1~ 0~ 0~ 
+5~ 1~ 0~ 0~
 1 0 0
 #17705
 corked earthenware jug~
@@ -994,7 +994,7 @@ a corked earthenware jug~
 A corked earthenware jug rolls about on the floor here.~
 ~
 10 0 1
-20~ acid breath~ poison~ poison~ 
+20~ acid breath~ poison~ poison~
 1 0 0
 E
 corked earthenware jug~
@@ -1006,7 +1006,7 @@ a club~
 A rather crude club has been left here, perhaps intentionally.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 8~ 
+0~ 0~ 0~ 8~
 10 0 0
 A
 18 -6
@@ -1018,7 +1018,7 @@ a leather wristband from which 4 small rat skulls hang~
 A leather wristband decorated with small rat skulls lies here.~
 ~
 13 16|128|4096 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 2 -2
@@ -1038,7 +1038,7 @@ a large leather backpack~
 A large leather backpack has been abandoned here.~
 ~
 15 0 1|8
-150~ 5~ 0~ 0~ 
+150~ 5~ 0~ 0~
 5 0 0
 E
 leather backpack~
@@ -1050,7 +1050,7 @@ a gold coin~
 A gold coin has been left here. Tsk.~
 ~
 20 0 1
-0~ 0~ 1~ 0~ 
+0~ 0~ 1~ 0~
 1 0 0
 #17710
 water bamboo tube~
@@ -1058,7 +1058,7 @@ a bamboo tube~
 A bamboo tube rests against one wall here.~
 ~
 17 0 1|16384
-5~ 5~ 0~ 0~ 
+5~ 5~ 0~ 0~
 1 0 0
 E
 bamboo tube~
@@ -1070,7 +1070,7 @@ a coil of rope~
 A coil of rope lies here. Useless in muds, really.~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 #17712
 morning star~
@@ -1078,7 +1078,7 @@ a morning star~
 A spiked ball attached to a long chain with a wooden handle lies here.~
 ~
 5 16 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 12 0 0
 A
 18 4
@@ -1094,7 +1094,7 @@ a hollow wooden tube~
 A hollow wooden tube has been discarded here.~
 ~
 13 0 1|16
-0~ 0~ 1~ 0~ 
+0~ 0~ 1~ 0~
 1 0 0
 E
 tube~
@@ -1106,7 +1106,7 @@ the corpse of a barbarian~
 The corpse of one of your competitors is impaled on a nasty trap here.~
 ~
 23 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 E
 corpse~
@@ -1119,7 +1119,7 @@ a spiked board~
 A spiked board has impaled a barbarian here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1000 0 0
 E
 spiked board~
@@ -1132,7 +1132,7 @@ accumulated rubbish and debris~
 Piles of accumulated rubbish and debris litter the floor.~
 ~
 13 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1903 0 0
 E
 rubbish debris~
@@ -1144,7 +1144,7 @@ a silver goblet~
 A silver goblet rests in an alcove here.~
 ~
 10 0 1|16384
-20~ cure poison~ cure poison~ cure poison~ 
+20~ cure poison~ cure poison~ cure poison~
 3 0 0
 E
 silver goblet~
@@ -1156,7 +1156,7 @@ a small pouch~
 A small pouch has fallen on the ground here.~
 ~
 15 0 1|2048
-5~ 1~ 0~ 0~ 
+5~ 1~ 0~ 0~
 1 0 0
 E
 pouch~
@@ -1168,7 +1168,7 @@ some herbal meat~
 Some herbal meat has been left here.~
 ~
 26 0 1
-20~ giant strength~ refresh~ cure light~ 
+20~ giant strength~ refresh~ cure light~
 1 1500 0
 E
 herbal meat~
@@ -1180,7 +1180,7 @@ a large emerald~
 A large green jewel lies here, forgotten.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 10000 0
 E
 emerald jewel gem~
@@ -1192,7 +1192,7 @@ an opal-studded dagger~
 An opal-studded dagger is stuck in the ground here.~
 ~
 5 1|64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 20
@@ -1202,7 +1202,7 @@ a wall-length mirror~
 A wall-length mirror is affixed to the wall here.~
 ~
 12 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 150 0 0
 A
 3 -3
@@ -1221,7 +1221,7 @@ a stone statue~
 A stone statue of a paladin stands here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 250 0 0
 E
 statue paladin~
@@ -1234,7 +1234,7 @@ a stone statue~
 A stone statue of a monk stands here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 250 0 0
 E
 statue monk~
@@ -1247,7 +1247,7 @@ a stone statue~
 A stone statue of a wizard stands here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 250 0 0
 E
 statue wizard~
@@ -1260,7 +1260,7 @@ a stone statue~
 A stone statue of a thief stands here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 250 0 0
 E
 statue thief~
@@ -1273,7 +1273,7 @@ an ornate helm~
 An ornate helm rests here. It looks to be centuries old.~
 ~
 9 16|512 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 1
@@ -1287,7 +1287,7 @@ a bloodstained sword~
 A sword smeared with dried blood lies here.~
 ~
 5 16|64|512|4096 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 1 2
@@ -1303,7 +1303,7 @@ a piece of parchment~
 An old piece of parchment lies here.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 parchment~
@@ -1320,7 +1320,7 @@ a pair of leather boots~
 A pair of leather boots rest here.~
 ~
 9 16|512 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 1
@@ -1332,7 +1332,7 @@ a tattered cloak~
 A tattered cloak lies neglected on the floor here.~
 ~
 9 16|512 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 13 50
@@ -1342,7 +1342,7 @@ a suit of archaic scale mail~
 This suit of scale mail must be at least 200 years old...~
 ~
 9 16|512 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 17 -20
@@ -1352,7 +1352,7 @@ the ring of Yaegar~
 This ring is granted by Yaegar to his trusted agents.~
 ~
 9 16|64|512|4096 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 18 8
@@ -1366,7 +1366,7 @@ some tasty-looking mushrooms~
 Some tasty-looking mushrooms grow here.~
 ~
 26 0 1
-25~ giant strength~ giant strength~ giant strength~ 
+25~ giant strength~ giant strength~ giant strength~
 1 0 0
 E
 mushrooms~
@@ -1378,7 +1378,7 @@ a sharp short sword~
 A sharp short sword lies here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 4
@@ -1388,7 +1388,7 @@ a short throwing spear~
 A short throwing spear has been thrust into the dirt here.~
 ~
 5 134217728 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 3 0 0
 #17737
 skull~
@@ -1396,7 +1396,7 @@ a human skull~
 A human skull rests here.~
 ~
 15 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 E
 skull~
@@ -1408,7 +1408,7 @@ a topaz~
 A yellow jewel lies here.~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 500 0
 E
 topaz~
@@ -1420,7 +1420,7 @@ a topaz~
 A yellow jewel lies here.~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 500 0
 E
 topaz~
@@ -1432,7 +1432,7 @@ a loaded crossbow~
 A loaded crossbow is aimed fair at you.~
 ~
 5 1073741824 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 18 5000 0
 A
 19 7
@@ -1442,7 +1442,7 @@ a marble plinth~
 A marble plinth stands in the center of the room.~
 ~
 15 0 0
-100~ 5~ 0~ 0~ 
+100~ 5~ 0~ 0~
 1000 0 0
 E
 plinth~
@@ -1454,7 +1454,7 @@ a red wooden ball~
 A red wooden ball rolls across the floor.~
 ~
 12 0 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 #17743
 wooden ball blue~
@@ -1462,7 +1462,7 @@ a blue wooden ball~
 A blue wooden ball rolls across the floor.~
 ~
 12 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 #17744
 withered hand~
@@ -1470,7 +1470,7 @@ a withered hand~
 A withered hand is nailed to the door here.~
 ~
 19 0 1|16384
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 2 0 0
 E
 hand~
@@ -1482,7 +1482,7 @@ a wooden box~
 A small wooden box rests here.~
 ~
 15 0 1
-10~ 5~ 0~ 0~ 
+10~ 5~ 0~ 0~
 2 0 0
 E
 box~
@@ -1494,7 +1494,7 @@ an iron key~
 An iron key lies here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 iron key~
@@ -1507,7 +1507,7 @@ a sapphire~
 A large gem lies forgotten here.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 6000 0
 E
 sapphire gem~
@@ -1519,7 +1519,7 @@ a broad axe~
 A broad axe lies on the ground.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 22 0 0
 A
 1 3
@@ -1533,7 +1533,7 @@ a loincloth~
 A loincloth fashioned from bear furs has been dropped here.~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 loincloth~
@@ -1545,7 +1545,7 @@ a pair of fur-lined boots~
 A pair of fur-lined boots, good for walking, rest here.~
 ~
 9 0 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8 0 0
 A
 5 1
@@ -1557,7 +1557,7 @@ a throwing dagger~
 A throwing dagger is stuck in the ground here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 8
@@ -1571,7 +1571,7 @@ a tattoo~
 A rough tattoo has been torn from someone's arm.~
 ~
 9 4096 1|256
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 5 2
@@ -1585,7 +1585,7 @@ a piece of brown, curled paper~
 A piece of paper, brown and curled with age, is pinned to the wall.~
 ~
 13 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 paper~
@@ -1597,7 +1597,7 @@ a red leather-bound book~
 A dusty red leather-bound book rests on a stone ledge here.~
 ~
 2 0 1|16384
-0~ ~ ~ ~ 
+0~ ~ ~ ~
 5 2000 0
 E
 red leather book~
@@ -1610,7 +1610,7 @@ a black leather-bound book~
 A dusty black leather-bound book rests on a stone ledge here.~
 ~
 15 0 1|16384
-2~ 4~ 0~ 0~ 
+2~ 4~ 0~ 0~
 10 0 0
 E
 black leather book~
@@ -1624,7 +1624,7 @@ a small corked bottle~
 A small corked bottle containing a clear liquid lies here.~
 ~
 10 64 1|16384
-20~ detect invis~ detect magic~ detect hidden~ 
+20~ detect invis~ detect magic~ detect hidden~
 1 0 0
 E
 bottle~
@@ -1640,7 +1640,7 @@ a bone ring~
 A bone ring has been dropped here.~
 ~
 9 2|64|1024 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 1 1
@@ -1663,7 +1663,7 @@ a small leather pouch~
 A small leather pouch lies nearby.~
 ~
 15 0 1
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 1 0 0
 E
 pouch~
@@ -1675,7 +1675,7 @@ a wicker basket~
 A wicker basket, much like those used by snake charmers, rests here.~
 ~
 15 0 1
-25~ 0~ 0~ 0~ 
+25~ 0~ 0~ 0~
 1 0 0
 #17760
 crossbow~
@@ -1683,7 +1683,7 @@ a light crossbow~
 A light crossbow, cocked and ready to fire, has been left here.~
 ~
 5 1073741824 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 2
@@ -1695,7 +1695,7 @@ a suit of finely-made chainmail~
 A suit of Dwarven mail lies here.~
 ~
 9 64 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 8 0 0
 A
 17 -20
@@ -1709,7 +1709,7 @@ a pint of guiness~
 A pint of guiness foams away here.~
 ~
 17 0 1|16384
-2~ 2~ 0~ 0~ 
+2~ 2~ 0~ 0~
 1 0 0
 E
 guiness stout~
@@ -1721,7 +1721,7 @@ a roast meal~
 A steaming meal of vegetables and beef sits here.~
 ~
 19 0 1
-24~ 0~ 0~ 0~ 
+24~ 0~ 0~ 0~
 3 0 0
 E
 roast meal~
@@ -1733,7 +1733,7 @@ a wooden casket~
 A small wooden casket rests here.~
 ~
 15 0 1
-10~ 5~ 0~ 0~ 
+10~ 5~ 0~ 0~
 2 0 0
 E
 casket~
@@ -1745,7 +1745,7 @@ a velvet bag~
 A velvet bag lies here, forgotten.~
 ~
 15 0 1
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 1 1000 0
 E
 velvet bag~
@@ -1757,7 +1757,7 @@ a large pearl~
 A large pearl, fresh from the sea, rests here.~
 ~
 8 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 500 0
 E
 pearl~
@@ -1769,7 +1769,7 @@ a crown~
 A crown set with magnificent jewels sparkles here.~
 ~
 13 0 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 10 0
 E
 crown~
@@ -1782,7 +1782,7 @@ a plate of food~
 A plate of food sits here, untouched.~
 ~
 19 0 1
-4~ 0~ 0~ 1~ 
+4~ 0~ 0~ 1~
 1 0 0
 #17769
 tray~
@@ -1790,7 +1790,7 @@ a serving tray~
 A heavy serving tray has been dropped here.~
 ~
 5 0 1|16384
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 10 0 0
 E
 tray~
@@ -1803,7 +1803,7 @@ a glass of water~
 A glass of water sits here.~
 ~
 17 0 1|16384
-1~ 1~ 0~ 1~ 
+1~ 1~ 0~ 1~
 1 0 0
 #17771
 chair bird~
@@ -1811,7 +1811,7 @@ a chair~
 A chair carved in the shape of a grotesque bird sits near one wall.~
 ~
 15 0 0
-100~ 13~ 0~ 0~ 
+100~ 13~ 0~ 0~
 1000 0 0
 E
 chair~
@@ -1823,7 +1823,7 @@ a glass phial~
 A glass phial rests here.~
 ~
 10 64 1|16384
-20~ poison~ ~ ~ 
+20~ poison~ ~ ~
 1 0 0
 #17773
 helm~
@@ -1831,7 +1831,7 @@ a magnificent winged helm~
 A magnificent winged helm rests on a stick here.~
 ~
 9 1|2|64|1024|2048 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 3 1
@@ -1853,7 +1853,7 @@ a fountain carved in the shape of a cherub~
 A fountain carved in the shape of a cherub rests near the west wall.~
 ~
 25 0 0
-0~ 0~ 0~ 1~ 
+0~ 0~ 0~ 1~
 10000 0 0
 E
 fountain~
@@ -1865,7 +1865,7 @@ a fountain carved in the shape of a cherub~
 A fountain carved in the shape of a cherub rests near the east wall.~
 ~
 25 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10000 0 0
 E
 fountain~
@@ -1877,7 +1877,7 @@ a dagger~
 A small dagger is stuck in the ground here.~
 ~
 5 1|64 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 4
@@ -1891,7 +1891,7 @@ a snake skin~
 This skin would make a funky-ass belt.~
 ~
 9 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 #17778
 elven boots~
@@ -1899,7 +1899,7 @@ a pair of elven boots~
 A pair of soft elven boots lie here.~
 ~
 9 64 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 2 3
@@ -1909,7 +1909,7 @@ a metal grille~
 A metal grille is set in the floor here.~
 ~
 15 0 0
-1000~ 0~ 0~ 0~ 
+1000~ 0~ 0~ 0~
 10000 0 0
 E
 grille~
@@ -1921,7 +1921,7 @@ a grappling iron~
 A grappling iron has been left here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 8~ 
+0~ 0~ 0~ 8~
 8 0 0
 E
 grappling iron~
@@ -1933,7 +1933,7 @@ a large oak chest~
 A large oak chest bound with bands of iron rest here.~
 ~
 15 0 1
-500~ 5~ 0~ 0~ 
+500~ 5~ 0~ 0~
 100 0 0
 E
 chest~
@@ -1945,7 +1945,7 @@ a silver pendant~
 A silver pendant, once set with a stone now long gone, lies here.~
 ~
 8 0 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 250 0
 E
 pendant~
@@ -1957,7 +1957,7 @@ a large golden effigy~
 A large golden effigy that serves as a Troglodyte totem stands tall here.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10000 0 0
 E
 effigy~
@@ -1970,7 +1970,7 @@ a crude stone axe~
 A crude stone axe.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 7 0 0
 #17785
 crude wooden spear~
@@ -1978,7 +1978,7 @@ a crude wooden spear~
 A crude wooden spear.~
 ~
 5 134217728 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 5 0 0
 #17786
 loincloth~
@@ -1986,7 +1986,7 @@ a shit-stained loincloth~
 A loincloth stained with Troglodyte shit lies here, unwanted (!).~
 ~
 9 16 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 E
 loincloth~
@@ -1998,7 +1998,7 @@ magic dust~
 Some magic dust floats about here.~
 ~
 4 1|64 1|16384
-25~ 1~ 1~ fly~ 
+25~ 1~ 1~ fly~
 1 800 0
 #17788
 pair green boots~
@@ -2006,7 +2006,7 @@ a pair of green boots~
 A pair of green boots with bright gold buckles have been left here.~
 ~
 9 64|1024 1|64
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 2 2
@@ -2018,7 +2018,7 @@ a brown belt with a gold buckle~
 A brown belt with a shiny gold buckle has been dropped here.~
 ~
 9 64|1024 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 2 1
@@ -2030,7 +2030,7 @@ a pair of sturdy green breeches~
 A pair of sturdy green breeches have been neatly folded up here.~
 ~
 9 64|1024 1|32
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 5 1
@@ -2042,7 +2042,7 @@ a bright green tunic~
 A homespun bright green tunic has been hung from a hook here.~
 ~
 9 64|1024 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 4 0 0
 A
 12 120
@@ -2056,7 +2056,7 @@ a pipe~
 A pipe smokes away here.~
 ~
 1 1 1|65536
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 1 0 0
 A
 5 -2
@@ -2066,7 +2066,7 @@ a green hat with a gold buckle~
 A green puritan style hat with a gold buckle sits here.~
 ~
 9 64|1024 1|16
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 3 0 0
 A
 3 1
@@ -2078,7 +2078,7 @@ a leather backpack~
 A magical leather backpack rest here, half-open.~
 ~
 15 0 1|8
-250~ 1~ 0~ 0~ 
+250~ 1~ 0~ 0~
 5 0 0
 #17795
 unleavened bread~
@@ -2086,7 +2086,7 @@ some elven unleavened bread~
 A loaf of elven bread sits here.~
 ~
 26 64 1
-25~ cure serious~ cure poison~ refresh~ 
+25~ cure serious~ cure poison~ refresh~
 1 0 0
 E
 elven bread~
@@ -2098,7 +2098,7 @@ a small silvered mirror~
 A small silvered mirror rests here.~
 ~
 3 64 1|16384
-25~ 10~ 10~ blindness~ 
+25~ 10~ 10~ blindness~
 1 0 0
 #17797
 bone monkey charm~
@@ -2106,7 +2106,7 @@ a bone monkey charm~
 A bone monkey charm attached to a leather thong has been discarded here.~
 ~
 9 64 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 12 100
@@ -2116,7 +2116,7 @@ a small leather pouch~
 A small leather pouch has fallen on the ground here.~
 ~
 15 0 1|2048
-5~ 4~ 0~ 0~ 
+5~ 4~ 0~ 0~
 1 0 0
 #17799
 tiny brass bell~
@@ -2124,7 +2124,7 @@ a tiny brass bell~
 A tiny brass bell rests here.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 tiny brass bell~
@@ -2136,7 +2136,7 @@ a ninja-to~
 A sharp ninja-to rests here in its scabbard.~
 ~
 5 2|64 1|8192
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 8 0 0
 A
 18 8
@@ -2148,7 +2148,7 @@ a pair of ninja tiger claws~
 A pair of a ninja's tiger claws lie here.~
 ~
 9 0 1|128
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 A
 18 3
@@ -2160,7 +2160,7 @@ a shuriken~
 A sharp shuriken is deply imbedded in the wall here.~
 ~
 5 1 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 18 3
@@ -2172,7 +2172,7 @@ black ninja robes~
 Black ninja robes lie here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 2 1
@@ -2186,7 +2186,7 @@ a long knife~
 A long knife lies on the floor here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 1000 0
 #17805
 flask water~
@@ -2194,7 +2194,7 @@ a flask of water~
 A flask of water lies here.~
 ~
 17 0 1|16384
-8~ 8~ 0~ 0~ 
+8~ 8~ 0~ 0~
 2 0 0
 #17806
 rice palm leaf~
@@ -2202,7 +2202,7 @@ rice wrapped in palm leaf~
 Some rice wrapped in palm leaf sits here.~
 ~
 19 0 1
-4~ 0~ 0~ 0~ 
+4~ 0~ 0~ 0~
 1 0 0
 #17807
 jar healing ointment~
@@ -2210,7 +2210,7 @@ a jar of healing ointment~
 A jar of healing ointment rests here.~
 ~
 4 64 1|16384
-26~ 5~ 5~ cure critical~ 
+26~ 5~ 5~ cure critical~
 2 0 0
 E
 jar healing ointment~
@@ -2222,7 +2222,7 @@ a beautiful diamond~
 A beautiful diamond has been tossed aside here.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 8000 0
 E
 diamond~
@@ -2234,7 +2234,7 @@ a large basket~
 A large basket affixed to a rope allows people to be hauled up.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 #17810
 bone~
@@ -2242,7 +2242,7 @@ a bone~
 A bone. Go on, have a gnaw.~
 ~
 19 0 1
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 3 0 0
 #17811
 broken stool~
@@ -2250,7 +2250,7 @@ a broken stool~
 A broken stool rests crazily on its remaining three legs.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 6 0 0
 #17812
 collar~
@@ -2258,7 +2258,7 @@ a spiked dog collar~
 A spiked dog collar lies here.~
 ~
 15 0 1|4
-5~ 4~ 0~ 0~ 
+5~ 4~ 0~ 0~
 1 0 0
 E
 collar~
@@ -2270,7 +2270,7 @@ a magnificent shield~
 A maginificent shield lies here, gleaming.~
 ~
 9 1|64 1|512
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 5 0 0
 A
 17 -20
@@ -2288,7 +2288,7 @@ a bare cupboard~
 This cupboard appears to be rather bare...~
 ~
 15 0 0
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 700 0 0
 #17815
 metal capsule~
@@ -2296,7 +2296,7 @@ a metal capsule~
 A small metal capsule lies here.~
 ~
 9 1|64 1|16384
-1~ 0~ 0~ 0~ 
+1~ 0~ 0~ 0~
 1 0 0
 A
 4 1
@@ -2308,7 +2308,7 @@ a suit of leather armor~
 (Smelly) A suit of Orcish armor lies here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 7 0 0
 #17817
 animal hides~
@@ -2316,7 +2316,7 @@ animal hides~
 Some uncured animal hides are stinking up the room here.~
 ~
 9 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 12 0 0
 A
 5 -1
@@ -2334,7 +2334,7 @@ a gold ring~
 A gold ring gleams here.~
 ~
 9 2|16|512|4096 1|2
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 5 1
@@ -2348,7 +2348,7 @@ a pair of mandibles~
 A pair of stone-crushing mandibles lie here.~
 ~
 5 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 10 0 0
 A
 18 10
@@ -2360,7 +2360,7 @@ a wooden mallet~
 A wooden mallet rests here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 7~ 
+0~ 0~ 0~ 7~
 3 0 0
 #17821
 iron spike~
@@ -2368,7 +2368,7 @@ an iron spike~
 An iron spike rests here.~
 ~
 5 0 1|8192
-0~ 0~ 0~ 11~ 
+0~ 0~ 0~ 11~
 5 0 0
 A
 18 -2
@@ -2380,7 +2380,7 @@ a small cupboard~
 A small cupboard rests near one wall.~
 ~
 15 0 1
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 100 0 0
 #17823
 orc corpse~
@@ -2388,7 +2388,7 @@ the corpse of an orc~
 The corpse of one of the dungeon's Orcish guards lies here.~
 ~
 23 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 75 0 0
 E
 corpse orc~
@@ -2401,7 +2401,7 @@ the corpse of an orc~
 The corpse of one of the dungeon's Orcish guards lies here.~
 ~
 23 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 75 0 0
 E
 corpse orc~
@@ -2414,7 +2414,7 @@ an amulet of strength~
 A bone necklace has been discarded here.~
 ~
 9 2 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 A
 1 2
@@ -2426,7 +2426,7 @@ a test chamber key~
 This key will allow you to open the door leading north from the chambers.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #17827
 dungeon key~
@@ -2434,7 +2434,7 @@ a dungeon key~
 This key will allow you to proceed into the next stage of the dungeon.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #17828
 brooch garnet~
@@ -2442,7 +2442,7 @@ a brooch set with a large garnet~
 A brooch set with a large garnet lies here.~
 ~
 8 0 1|8
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 2452 0
 #17829
 shell~
@@ -2450,7 +2450,7 @@ a basket shell~
 This shell allows you to travel up in the basket. Unlock it now!~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 E
 shell~
@@ -2462,7 +2462,7 @@ lots of money!~
 Piled all around is lots and lots of money!~
 ~
 20 0 1
-222~ 57~ 11~ 3~ 
+222~ 57~ 11~ 3~
 1 0 0
 #17831
 chute~
@@ -2470,7 +2470,7 @@ a chute~
 This filthy chute leads into a sewer. You sure you wanna enter?~
 ~
 33 0 0
-17817~ 0~ 0~ 100~ 
+17817~ 0~ 0~ 100~
 1 0 0
 #17832
 ruby~
@@ -2478,7 +2478,7 @@ a large ruby~
 A large ruby has been carelessly dropped here.~
 ~
 8 2|64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 10000 0
 E
 ruby~

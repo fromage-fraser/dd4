@@ -65,7 +65,7 @@ char *                  warning2;
 AUCTION_DATA *		auction;
 
 
-/* 
+/*
  * Tables - Geogg, Tavolir, Gezhp
  */
 FAME_TABLE              fame_table[FAME_TABLE_LENGTH];
@@ -80,26 +80,26 @@ WANTED_DATA             *wanted_list_first;
 WANTED_DATA             *wanted_list_last;
 
 /*
- * Skill bases 
+ * Skill bases
  */
 int     gsn_mage_base;
 int     gsn_cleric_base;
 int     gsn_thief_base;
 int     gsn_warrior_base;
-int     gsn_psionic_base;  
+int     gsn_psionic_base;
 int     gsn_shifter_base;
 int     gsn_brawler_base;
 int     gsn_ranger_base;
-int     gsn_necro_base; 
+int     gsn_necro_base;
 int     gsn_warlock_base;
-int     gsn_templar_base;  
-int     gsn_druid_base;    
-int     gsn_ninja_base;   
-int     gsn_bounty_base;  
+int     gsn_templar_base;
+int     gsn_druid_base;
+int     gsn_ninja_base;
+int     gsn_bounty_base;
 int     gsn_thug_base;
 int     gsn_knight_base;
 int     gsn_satanist_base;
-int     gsn_witch_base;   
+int     gsn_witch_base;
 int	gsn_werewolf_base;
 int	gsn_vampire_base;
 int	gsn_monk_base;
@@ -114,11 +114,11 @@ int     gsn_teacher_base;
  */
 int	gsn_hunt;
 int	gsn_transfix;
-int	gsn_trap; 
+int	gsn_trap;
 int	gsn_decapitate;
 int	gsn_meditate;
 int	gsn_knock;
-int	gsn_flight;  
+int	gsn_flight;
 int	gsn_assassinate;
 int	gsn_backstab;
 int	gsn_double_backstab;
@@ -166,7 +166,7 @@ int	gsn_second_spell;
 int	gsn_third_spell;
 int	gsn_fourth_spell;
 int     gsn_unarmed_combat;
-int	gsn_warcry; 
+int	gsn_warcry;
 int	gsn_whirlwind;
 int	gsn_grip;
 int	gsn_smash;
@@ -299,7 +299,7 @@ int	gsn_mawasigeri;
 int	gsn_fear;
 int	gsn_deter;
 int	gsn_astral_sidestep;
-int	gsn_mist_walk; 
+int	gsn_mist_walk;
 int	gsn_gaias_warning;
 int	gsn_resist_magic;
 int	gsn_resist_toxin;
@@ -560,7 +560,7 @@ int     gsn_resist_acid;
 int     gsn_hells_fire;
 
 /*
- *  Spell groups 
+ *  Spell groups
  */
 int	gsn_group_evocation;
 int	gsn_group_dark;
@@ -752,20 +752,20 @@ void boot_db( void )
 		top_string	= string_space;
 		fBootDb		= TRUE;
 	}
-	
+
 	/*
 	 * Init random number generator.
 	 */
 	{
 		init_mm( );
 	}
-	
+
 	/*
 	 * Set time and weather.
 	 */
 	{
 		long lhour, lday, lmonth;
-		
+
 		lhour = ( current_time - 650336715 ) / ( PULSE_TICK / PULSE_PER_SECOND );
 		time_info.hour  = lhour  % 24;
 		lday		= lhour  / 24;
@@ -773,18 +773,18 @@ void boot_db( void )
 		lmonth		= lday   / 35;
 		time_info.month	= lmonth % 17;
 		time_info.year	= lmonth / 17;
-		
+
 		if ( time_info.hour <  5 )
 			weather_info.sunlight = SUN_DARK;
 		else if ( time_info.hour <  6 )
 			weather_info.sunlight = SUN_RISE;
-		else if ( time_info.hour < 19 ) 
+		else if ( time_info.hour < 19 )
 			weather_info.sunlight = SUN_LIGHT;
 		else if ( time_info.hour < 20 )
 			weather_info.sunlight = SUN_SET;
 		else
 			weather_info.sunlight = SUN_DARK;
-		
+
 		if ( time_info.day <  8 )
 			weather_info.moonlight = MOON_NONE;
 		else if ( time_info.day < 17 )
@@ -792,16 +792,16 @@ void boot_db( void )
 		else if ( time_info.day < 26 )
 			weather_info.moonlight = MOON_FULL;
 		else
-			weather_info.moonlight  = MOON_WANING; 
-		
+			weather_info.moonlight  = MOON_WANING;
+
 		weather_info.change	= 0;
 		weather_info.mmhg	= 960;
-		
+
 		if ( time_info.month >= 7 && time_info.month <=12 )
 			weather_info.mmhg += number_range( 1, 50 );
 		else
 			weather_info.mmhg += number_range( 1, 80 );
-		
+
 		if ( weather_info.mmhg <=  980 )
 			weather_info.sky = SKY_LIGHTNING;
 		else if ( weather_info.mmhg <= 1000 )
@@ -810,14 +810,14 @@ void boot_db( void )
 			weather_info.sky = SKY_CLOUDY;
 		else
 			weather_info.sky = SKY_CLOUDLESS;
-		
+
 	}
-	
+
 	/*
 	 *  Auctioning
 	 */
 	{
-		auction = (AUCTION_DATA *) malloc (sizeof(AUCTION_DATA)); 
+		auction = (AUCTION_DATA *) malloc (sizeof(AUCTION_DATA));
 		if (!auction)
 		{
 			bug ("malloc'ing AUCTION_DATA didn't give %d bytes", sizeof(AUCTION_DATA));
@@ -825,38 +825,38 @@ void boot_db( void )
 		}
 		auction->item = NULL;
 	}
-	
+
 	/*
 	 * Assign gsns for skills which have them.
 	 */
 	{
 		int sn;
-		
+
 		for ( sn = 0; sn < MAX_SKILL; sn++ )
 		{
 			if ( skill_table[sn].pgsn )
 				*skill_table[sn].pgsn = sn;
 		}
 	}
-	
+
 	/*
 	 * Read in all the area files.
 	 */
 	{
 		FILE *fpList;
-		
+
 		if ( !( fpList = fopen( AREA_LIST, "r" ) ) )
 		{
 			perror( AREA_LIST );
 			exit( 1 );
 		}
-		
+
 		for ( ; ; )
 		{
 			strcpy( strArea, fread_word( fpList ) );
 			if ( strArea[0] == '$' )
 				break;
-			
+
 			if ( strArea[0] == '-' )
 			{
 				fpArea = stdin;
@@ -869,33 +869,33 @@ void boot_db( void )
 					exit( 1 );
 				}
 			}
-			
+
 			for ( ; ; )
 			{
 				char *word;
-				
+
 				if ( fread_letter( fpArea ) != '#' )
 				{
 					bug( "Boot_db: # not found.", 0 );
 					exit( 1 );
 				}
-				
+
 				word = fread_word( fpArea );
-				
+
 				if ( word[0] == '$' )
 					break;
 				else if ( !str_cmp( word, "AREA"     ) )
 					load_area    ( fpArea );
 				else if ( !str_cmp( word, "AREA_SPECIAL" ) )
 					load_area_special ( fpArea );
-				else if ( !str_cmp( word, "HELPS"    ) ) 
+				else if ( !str_cmp( word, "HELPS"    ) )
 					load_helps   ( fpArea );
 				else if ( !str_cmp( word, "RECALL"   ) )
 					load_recall  ( fpArea );
 				else if ( !str_cmp( word, "MOBILES"  ) )
 					load_mobiles ( fpArea );
 				else if ( !str_cmp( word, "MOBPROGS" ) )
-					load_mobprogs( fpArea );	
+					load_mobprogs( fpArea );
 				else if ( !str_cmp( word, "OBJECTS"  ) )
 					load_objects ( fpArea );
 				else if ( !str_cmp( word, "RESETS"   ) )
@@ -912,34 +912,34 @@ void boot_db( void )
 					exit( 1 );
 				}
 			}
-			
+
 			if ( fpArea != stdin )
 				fclose( fpArea );
 			fpArea = NULL;
 		}
 		fclose( fpList );
 	}
-	
+
 	/*
-	 * Init fame table 
+	 * Init fame table
 	 */
 	{
 		int i;
-		
-		for (i = 0; i < FAME_TABLE_LENGTH; i++) 
+
+		for (i = 0; i < FAME_TABLE_LENGTH; i++)
 		{
 			fame_table[i].fame = 0;
 			sprintf(fame_table[i].name, "*");
 		}
 	}
-	
-	/* 
-	 * Init legend table 
+
+	/*
+	 * Init legend table
 	 */
 	{
 		int i;
-		
-		for (i = 0; i < LEGEND_TABLE_LENGTH; i++) 
+
+		for (i = 0; i < LEGEND_TABLE_LENGTH; i++)
 		{
 			sprintf(legend_table[i].name, "*");
 			legend_table[i].fame = 0;
@@ -947,14 +947,14 @@ void boot_db( void )
 			legend_table[i].subclassed = 0;
 		}
 	}
-	
-	/* 
-	 * Init pkscore table 
+
+	/*
+	 * Init pkscore table
 	 */
 	{
 		int i;
-		
-		for (i = 0; i < PKSCORE_TABLE_LENGTH; i++) 
+
+		for (i = 0; i < PKSCORE_TABLE_LENGTH; i++)
 		{
 			sprintf(pkscore_table[i].name, "*");
 			pkscore_table[i].pkills = 0;
@@ -963,42 +963,42 @@ void boot_db( void )
 			pkscore_table[i].subclassed = 0;
 		}
 	}
-	
-	/* 
-	 * Init clan pkill table 
+
+	/*
+	 * Init clan pkill table
 	 */
 	{
 		int i;
 		int j;
-		
-		for (i = 0; i < MAX_CLAN; i++) 
+
+		for (i = 0; i < MAX_CLAN; i++)
 		{
-			for (j = 0; j < CLAN_PKILL_TABLE_LENGTH; j++) 
+			for (j = 0; j < CLAN_PKILL_TABLE_LENGTH; j++)
 			{
 				clan_pkill_table[i][j].pkills = 0;
 				sprintf(clan_pkill_table[i][j].name, "*");
 			}
 		}
 	}
-	
-	/* 
-	 * Init clan vanq table 
+
+	/*
+	 * Init clan vanq table
 	 */
 	{
 		int i;
 		int j;
-		
-		for (i = 0; i < MAX_CLAN; i++) 
+
+		for (i = 0; i < MAX_CLAN; i++)
 		{
-			for (j = 0; j < CLAN_VANQ_TABLE_LENGTH; j++) 
+			for (j = 0; j < CLAN_VANQ_TABLE_LENGTH; j++)
 			{
 				clan_vanq_table[i][j].killed = 0;
 				sprintf(clan_vanq_table[i][j].name, "*");
 			}
 		}
 	}
-	
-	/* 
+
+	/*
 	 * Load all tables
 	 */
 	{
@@ -1009,38 +1009,38 @@ void boot_db( void )
 		load_all_clan_tables();
 		load_wanted_table();
 	}
-	
+
 	/*
 	 * Initialise Deity system
 	 */
 	{
-		if (!init_pantheon() && deities_active()) 
+		if (!init_pantheon() && deities_active())
 		{
 			log_deity ("failed to init pantheon: deactivating Deity system");
 			deity_system_halted = TRUE;
 		}
 	}
-		
+
 	/*
 	 *  Tournament system
 	 */
 	{
 		tournament_init();
 	}
-	
+
 	/*
 	 *  Init review buffers
 	 */
 	{
 		int i;
-		
+
 		for (i = 0; i < REVIEW_CHANNEL_COUNT; i++)
 			review_buffer_public[i][0].buffer[0] = '\0';
 
 		for (i = 0; i < MAX_CLAN; i++)
 			review_buffer_clan[i][0].buffer[0] = '\0';
 	}
-	
+
 	/*
 	 * Fix up exits.
 	 * Declare db booting over.
@@ -1052,11 +1052,11 @@ void boot_db( void )
 		fBootDb = FALSE;
 		area_update();
 		load_boards();
-		save_notes(); 
-		MOBtrigger = TRUE;	
+		save_notes();
+		MOBtrigger = TRUE;
 		load_down_time();
 	}
-	
+
 	return;
 }
 
@@ -1079,7 +1079,7 @@ int mprog_name_to_type ( char *name )
 	if ( !str_cmp( name, "all_greet_prog" ) )	return ALL_GREET_PROG;
 	if ( !str_cmp( name, "give_prog"      ) ) 	return GIVE_PROG;
 	if ( !str_cmp( name, "bribe_prog"     ) )	return BRIBE_PROG;
-	
+
 	return( ERROR_PROG );
 }
 
@@ -1091,55 +1091,55 @@ MPROG_DATA* mprog_file_read( char *f, MPROG_DATA *mprg, MOB_INDEX_DATA *pMobInde
 	FILE       *progfile;
 	char        letter;
 	bool        done = FALSE;
-	
+
 	sprintf( MOBProgfile, "%s%s", MOB_DIR, f );
-	
+
 	progfile = fopen( MOBProgfile, "r" );
 	if ( !progfile )
 	{
 		bug( "Mob: %d couldnt open mobprog file", pMobIndex->vnum );
 		exit( 1 );
 	}
-	
+
 	mprg2 = mprg;
-	
+
 	switch ( letter = fread_letter( progfile ) )
 	{
 	    case '>':
 		break;
-		
+
 	    case '|':
 		bug( "empty mobprog file.", 0 );
 		exit( 1 );
 		break;
-		
+
 	    default:
 		bug( "in mobprog file syntax error.", 0 );
 		exit( 1 );
 		break;
 	}
-	
+
 	while ( !done )
 	{
 		mprg2->type = mprog_name_to_type( fread_word( progfile ) );
-		
+
 		switch ( mprg2->type )
 		{
 		    case ERROR_PROG:
 			bug( "mobprog file type error", 0 );
 			exit( 1 );
 			break;
-			
+
 		    case IN_FILE_PROG:
 			bug( "mprog file contains a call to file.", 0 );
 			exit( 1 );
 			break;
-			
+
 		    default:
 			pMobIndex->progtypes = pMobIndex->progtypes | mprg2->type;
 			mprg2->arglist       = fread_string( progfile );
 			mprg2->comlist       = fread_string( progfile );
-			
+
 			switch ( letter = fread_letter( progfile ) )
 			{
 			    case '>':
@@ -1147,11 +1147,11 @@ MPROG_DATA* mprog_file_read( char *f, MPROG_DATA *mprg, MOB_INDEX_DATA *pMobInde
 				mprg2       = mprg2->next;
 				mprg2->next = NULL;
 				break;
-				
+
 			    case '|':
 				done = TRUE;
 				break;
-				
+
 			    default:
 				bug( "in mobprog file syntax error.", 0 );
 				exit( 1 );
@@ -1160,7 +1160,7 @@ MPROG_DATA* mprog_file_read( char *f, MPROG_DATA *mprg, MOB_INDEX_DATA *pMobInde
 			break;
 		}
 	}
-	
+
 	fclose( progfile );
 	return mprg2;
 }
@@ -1176,7 +1176,7 @@ void load_mobprogs( FILE *fp )
 	MPROG_DATA     *working;
 	char            letter;
 	int             value;
-	
+
 	for (;;)
 	{
 		switch ( letter = fread_letter( fp ) )
@@ -1185,16 +1185,16 @@ void load_mobprogs( FILE *fp )
 			bug( "Load_mobprogs: bad command '%c'.",letter);
 			exit(1);
 			break;
-			
+
 		    case 'S':
 		    case 's':
-			fread_to_eol( fp ); 
+			fread_to_eol( fp );
 			return;
-			
+
 		    case '*':
-			fread_to_eol( fp ); 
+			fread_to_eol( fp );
 			break;
-			
+
 		    case 'M':
 		    case 'm':
 			value = fread_number( fp );
@@ -1203,58 +1203,58 @@ void load_mobprogs( FILE *fp )
 				bug( "Load_mobprogs: vnum %d doesnt exist", value );
 				exit( 1 );
 			}
-			
+
 			if ( ( original = iMob->mobprogs ) )
 				for ( ; original->next != NULL; original = original->next );
-			
+
 			working = (MPROG_DATA *)alloc_perm( sizeof( MPROG_DATA ) );
-			
+
 			if ( original )
 				original->next = working;
 			else
 				iMob->mobprogs = working;
-			
+
 			working = mprog_file_read( fread_word( fp ), working, iMob );
 			working->next = NULL;
 			fread_to_eol( fp );
 			break;
 		}
 	}
-	
+
 	return;
-} 
-	
+}
+
 
 void mprog_read_programs( FILE *fp, MOB_INDEX_DATA *pMobIndex)
 {
 	MPROG_DATA *mprg;
 	char        letter;
 	bool        done = FALSE;
-	
+
 	if ( ( letter = fread_letter( fp ) ) != '>' )
 	{
 		bug( "Load_mobiles: vnum %d MOBPROG char", pMobIndex->vnum );
 		exit( 1 );
 	}
-	
+
 	pMobIndex->mobprogs = (MPROG_DATA *)alloc_perm( sizeof( MPROG_DATA ) );
 	mprg = pMobIndex->mobprogs;
-	
+
 	while ( !done )
 	{
 		mprg->type = mprog_name_to_type( fread_word( fp ) );
-		
+
 		switch ( mprg->type )
 		{
 		    case ERROR_PROG:
 			bug( "Load_mobiles: vnum %d MOBPROG type.", pMobIndex->vnum );
 			exit( 1 );
 			break;
-			
+
 		    case IN_FILE_PROG:
 			mprg = mprog_file_read( fread_string( fp ), mprg,pMobIndex );
 			fread_to_eol( fp );
-			
+
 			switch ( letter = fread_letter( fp ) )
 			{
 			    case '>':
@@ -1262,27 +1262,27 @@ void mprog_read_programs( FILE *fp, MOB_INDEX_DATA *pMobIndex)
 				mprg       = mprg->next;
 				mprg->next = NULL;
 				break;
-				
+
 			    case '|':
 				mprg->next = NULL;
 				fread_to_eol( fp );
 				done = TRUE;
 				break;
-				
+
 			    default:
 				bug( "Load_mobiles: vnum %d bad MOBPROG.", pMobIndex->vnum );
 				exit( 1 );
 				break;
 			}
 			break;
-			
+
 		    default:
 			pMobIndex->progtypes = pMobIndex->progtypes | mprg->type;
 			mprg->arglist = fread_string( fp );
 			fread_to_eol( fp );
 			mprg->comlist = fread_string( fp );
 			fread_to_eol( fp );
-			
+
 			switch ( letter = fread_letter( fp ) )
 			{
 			    case '>':
@@ -1290,13 +1290,13 @@ void mprog_read_programs( FILE *fp, MOB_INDEX_DATA *pMobIndex)
 				mprg       = mprg->next;
 				mprg->next = NULL;
 				break;
-				
+
 			    case '|':
 				mprg->next = NULL;
 				fread_to_eol( fp );
 				done = TRUE;
 				break;
-				
+
 			    default:
 				bug( "Load_mobiles: vnum %d bad MOBPROG.", pMobIndex->vnum );
 				exit( 1 );
@@ -1305,7 +1305,7 @@ void mprog_read_programs( FILE *fp, MOB_INDEX_DATA *pMobIndex)
 			break;
 		}
 	}
-	
+
 	return;
 }
 
@@ -1316,7 +1316,7 @@ void mprog_read_programs( FILE *fp, MOB_INDEX_DATA *pMobIndex)
 void load_area( FILE *fp )
 {
 	AREA_DATA *pArea;
-	
+
 	pArea		    = alloc_perm( sizeof( *pArea ) );
 	pArea->reset_first  = NULL;
 	pArea->reset_last   = NULL;
@@ -1329,26 +1329,26 @@ void load_area( FILE *fp )
 	pArea->high_enforced = fread_number(fp);
 	pArea->age	    = 15;
 	pArea->nplayer	    = 0;
-	pArea->low_r_vnum   = 0;   
+	pArea->low_r_vnum   = 0;
 	pArea->low_o_vnum   = 0;
 	pArea->low_m_vnum   = 0;
 	pArea->hi_r_vnum    = 0;
 	pArea->hi_o_vnum    = 0;
 	pArea->hi_m_vnum    = 0;
-	
+
 	pArea->container_reset_timer = number_range (1, 10);
 	pArea->area_flags = 0;
 	pArea->exp_modifier = 100;
-	
+
 	if ( !area_first )
 		area_first = pArea
 		;
 	if (  area_last  )
 		area_last->next = pArea;
-	
+
 	area_last	= pArea;
 	pArea->next	= NULL;
-	
+
 	top_area++;
 	return;
 }
@@ -1360,30 +1360,30 @@ void load_area( FILE *fp )
 void load_helps( FILE *fp )
 {
 	HELP_DATA *pHelp;
-	
+
 	for ( ; ; )
 	{
 		pHelp		= alloc_perm( sizeof( *pHelp ) );
 		pHelp->level	= fread_number( fp );
 		pHelp->keyword	= fread_string( fp );
-		
+
 		if ( pHelp->keyword[0] == '$' )
 			break;
-		
+
 		pHelp->text	= fread_string( fp );
-		
+
 		if ( !str_cmp( pHelp->keyword, "greeting" ) )
 			help_greeting = pHelp->text;
 		if ( !help_first )
 			help_first = pHelp;
 		if (  help_last  )
 			help_last->next = pHelp;
-		
+
 		help_last	= pHelp;
 		pHelp->next	= NULL;
 		top_help++;
 	}
-	
+
 	return;
 }
 
@@ -1395,17 +1395,17 @@ void load_recall( FILE *fp )
 {
 	AREA_DATA *pArea;
 	char       buf [ MAX_STRING_LENGTH ];
-	
+
 	pArea         = area_last;
 	pArea->recall = fread_number( fp );
-	
+
 	if ( pArea->recall < 1 )
 	{
 		sprintf( buf, "Load_recall:  %s invalid recall point", pArea->name );
 		bug( buf, 0 );
 		pArea->recall = DEFAULT_RECALL;
 	}
-	
+
 	return;
 }
 
@@ -1420,32 +1420,32 @@ void load_area_special (FILE *fp)
 	char buf [MAX_STRING_LENGTH];
 	char *next;
 	int num;
-	
+
 	while (1)
 	{
 		next = fread_word(fp);
-		
+
 		if (next[0] == '\0' || !str_cmp(next, "$"))
 			break;
-		
+
 		/* Keywords much better than numbers, aren't they? */
-		
+
 		if (!str_cmp(next, "school"))
 			SET_BIT(area_last->area_flags, AREA_FLAG_SCHOOL);
-		
+
 		else if (!str_cmp(next, "no_quest"))
 			SET_BIT(area_last->area_flags, AREA_FLAG_NO_QUEST);
-		
+
 		else if (!str_cmp(next, "hidden"))
 			SET_BIT(area_last->area_flags, AREA_FLAG_HIDDEN);
-		
+
 		else if (!str_cmp(next, "safe"))
 			SET_BIT(area_last->area_flags, AREA_FLAG_SAFE);
-		
+
 		else if (!str_cmp(next, "exp_mod"))
 		{
 			num = fread_number(fp);
-			
+
 			if (num < 0)
 			{
 				sprintf(buf, "load_area_special: area '%s' has bad exp_mod '%d' (ignoring)",
@@ -1455,8 +1455,8 @@ void load_area_special (FILE *fp)
 			else
 				area_last->exp_modifier = num;
 		}
-		
-		else 
+
+		else
 		{
 			sprintf(buf, "load_area_special: area '%s' has unknown flag '%s' (ignoring)",
 				area_last->name, next);
@@ -1469,38 +1469,38 @@ void load_area_special (FILE *fp)
 /*
  *  Load the teachers skills
  */
-void load_teacher (FILE *fp, MOB_INDEX_DATA *pMobIndex) 
+void load_teacher (FILE *fp, MOB_INDEX_DATA *pMobIndex)
 {
 	int sn;
 	int value;
 	char letter;
 	char *buf;
 	char buf2[100];
-	
+
 	letter = fread_letter( fp );
-	
+
 	/* init all skills to zero :) */
 	for  ( sn = 0; sn < MAX_SKILL; sn++ )
 		pMobIndex->skills->learned[sn] = 0;
-	
-	while (letter == '&') 
+
+	while (letter == '&')
 	{
 		value = fread_number( fp );
 		buf = fread_word(fp);
 		sn = skill_lookup(buf);
-		
-		if (sn < 0) 
+
+		if (sn < 0)
 		{
 			sprintf(buf2, "[*****] BUG: Fread_teacher: unknown skill: mob vnum %d: %s (%d)",
 				pMobIndex->vnum, buf, value);
 			log_string (buf2);
 		}
-		else 
-			pMobIndex->skills->learned[sn] = value;  
-		
+		else
+			pMobIndex->skills->learned[sn] = value;
+
 		letter = fread_letter( fp );
 	}
-	
+
 	ungetc( letter, fp );
 }
 
@@ -1512,24 +1512,24 @@ void load_mobiles( FILE *fp )
 {
 	MOB_INDEX_DATA *pMobIndex;
 	char buf[MAX_STRING_LENGTH];
-	
+
 	for ( ; ; )
 	{
 		char letter;
 		int  vnum;
 		int  iHash;
-		
+
 		letter = fread_letter( fp );
 		if ( letter != '#' )
 		{
 			bug( "Load_mobiles: # not found.", 0 );
 			exit( 1 );
 		}
-		
+
 		vnum = fread_number( fp );
 		if ( vnum == 0 )
 			break;
-		
+
 		fBootDb = FALSE;
 		if ( get_mob_index( vnum ) )
 		{
@@ -1537,36 +1537,36 @@ void load_mobiles( FILE *fp )
 			exit( 1 );
 		}
 		fBootDb = TRUE;
-		
+
 		pMobIndex = alloc_perm( sizeof( *pMobIndex ) );
 		pMobIndex->vnum	= vnum;
 
-		if ( fBootDb )       
+		if ( fBootDb )
 		{
 			if ( !area_last->low_m_vnum )
 				area_last->low_m_vnum       = vnum;
 			if ( vnum > area_last->hi_m_vnum )
 				area_last->hi_m_vnum        = vnum;
 		}
-		
+
 		pMobIndex->player_name		= fread_string( fp );
 		pMobIndex->short_descr		= fread_string( fp );
 		pMobIndex->long_descr		= fread_string( fp );
 		pMobIndex->description		= fread_string( fp );
-		
+
 		pMobIndex->long_descr[0]	= UPPER( pMobIndex->long_descr[0]  );
 		pMobIndex->description[0]	= UPPER( pMobIndex->description[0] );
-		
+
 		pMobIndex->act			= fread_number( fp ) | ACT_IS_NPC;
-		
+
 		pMobIndex->affected_by		= fread_number( fp );
 		REMOVE_BIT (pMobIndex->affected_by, AFF_CHARM);
-	    
+
 		pMobIndex->pShop		= NULL;
 		pMobIndex->alignment		= fread_number( fp );
 		letter				= fread_letter( fp );
 		pMobIndex->level		= number_fuzzy( fread_number( fp ) );
-		
+
 		fread_number( fp );   /* Unused */
 		fread_number( fp );   /* Unused */
 		fread_number( fp );   /* Unused */
@@ -1579,23 +1579,23 @@ void load_mobiles( FILE *fp )
 		fread_number( fp );   /* Unused */
 		fread_letter( fp );   /* Unused */
 		fread_number( fp );   /* Unused */
-		
+
 		pMobIndex->body_form = fread_number( fp );   /* Gezhp 99 */
-		
+
 		fread_number( fp );   /* Unused */
 		fread_number( fp );   /* Unused */
 		fread_number( fp );   /* Unused */
-		
+
 		pMobIndex->sex = fread_number( fp );
-		
+
 		if ( letter != 'S' )
 		{
 			bug( "Load_mobiles: vnum %d non-S.", vnum );
 			exit( 1 );
 		}
-		
+
 		/* This is for mob-programs - Brutus */
-		
+
 		letter = fread_letter( fp );
 		if ( letter == '>' )
 		{
@@ -1604,34 +1604,34 @@ void load_mobiles( FILE *fp )
 		}
 		else
 			ungetc( letter, fp );
-		
+
 		/* this is for teachers...... :)  geoff */
-		
-		pMobIndex->skills = NULL; 
-		
-		letter = fread_letter( fp ); 
-		if ( letter == '&' ) 
-		{ 
-			pMobIndex->skills = alloc_perm(sizeof(LEARNED_DATA)); 
-			ungetc (letter, fp); 
+
+		pMobIndex->skills = NULL;
+
+		letter = fread_letter( fp );
+		if ( letter == '&' )
+		{
+			pMobIndex->skills = alloc_perm(sizeof(LEARNED_DATA));
+			ungetc (letter, fp);
 			sprintf(buf, "[teacher] %s (vnum %d).",
 				pMobIndex->short_descr, pMobIndex->vnum);
 			log_string (buf);
-			load_teacher(fp, pMobIndex); 
-		} 
-		else 
-			ungetc( letter, fp ); 
-	
+			load_teacher(fp, pMobIndex);
+		}
+		else
+			ungetc( letter, fp );
+
 		iHash			= vnum % MAX_KEY_HASH;
 		pMobIndex->next		= mob_index_hash[iHash];
 		mob_index_hash[iHash]	= pMobIndex;
 		top_mob_index++;
 		kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL-1 )].number++;
-		
+
 		if (pMobIndex->player_name[0] == '\0')
 		{
 			char buf[MAX_STRING_LENGTH];
-			
+
 			sprintf(buf, "Mob #%d (%s) has empty name string (ignores players)",
 				vnum,
 				pMobIndex->short_descr);
@@ -1648,44 +1648,44 @@ void load_objects( FILE *fp )
 {
 	OBJ_INDEX_DATA *pObjIndex;
 	char buf [MAX_STRING_LENGTH];
-	
+
 	for ( ; ; )
 	{
 		char *value [ 4 ];
 		char  letter;
 		int   vnum;
 		int   iHash;
-		
+
 		letter = fread_letter( fp );
 		if ( letter != '#' )
 		{
 			bug( "Load_objects: # not found.", 0 );
 			exit( 1 );
 		}
-		
+
 		vnum = fread_number( fp );
 		if ( vnum == 0 )
 			break;
-		
+
 		fBootDb = FALSE;
 		if ( get_obj_index( vnum ) )
 		{
 			bug( "Load_objects: vnum %d duplicated.", vnum );
 			exit( 1 );
 		}
-		
+
 		fBootDb = TRUE;
 		pObjIndex = alloc_perm( sizeof( *pObjIndex ) );
 		pObjIndex->vnum = vnum;
-		
-		if ( fBootDb )      
+
+		if ( fBootDb )
 		{
 			if ( !area_last->low_o_vnum )
 				area_last->low_o_vnum = vnum;
 			if ( vnum > area_last->hi_o_vnum )
 				area_last->hi_o_vnum = vnum;
 		}
-		
+
 		pObjIndex->name			= fread_string( fp );
 		pObjIndex->short_descr		= fread_string( fp );
 		pObjIndex->description		= fread_string( fp );
@@ -1693,9 +1693,9 @@ void load_objects( FILE *fp )
 		pObjIndex->description[0]	= UPPER( pObjIndex->description[0] );
 		pObjIndex->item_type		= fread_number( fp );
 		pObjIndex->extra_flags		= fread_number( fp );
-		
 
-		if (IS_SET(pObjIndex->extra_flags, ITEM_TRAP) )       
+
+		if (IS_SET(pObjIndex->extra_flags, ITEM_TRAP) )
 		{
 			pObjIndex->trap_eff             = fread_number( fp );
 			pObjIndex->trap_dam             = fread_number( fp );
@@ -1706,8 +1706,8 @@ void load_objects( FILE *fp )
 			pObjIndex->trap_dam            = 0;
 			pObjIndex->trap_eff            = 0;
 			pObjIndex->trap_charge         = 0;
-		}	
-		
+		}
+
 		if (IS_SET(pObjIndex->extra_flags, ITEM_EGO))
 		{
 			sprintf(buf, "Found ego item: %s [%d]",
@@ -1718,7 +1718,7 @@ void load_objects( FILE *fp )
 		}
 		else
 			pObjIndex->ego_flags = 0;
-				
+
 		pObjIndex->wear_flags		= fread_number( fp );
 		value[0]		        = fread_string( fp );
 		value[1]		        = fread_string( fp );
@@ -1727,7 +1727,7 @@ void load_objects( FILE *fp )
 		pObjIndex->weight		= fread_number( fp );
 		pObjIndex->cost			= fread_number( fp );
 		pObjIndex->level		= fread_number( fp );
-		
+
 		/*
 		 * Check here for the redundancy of invisible light sources - Kahn
 		 */
@@ -1737,16 +1737,16 @@ void load_objects( FILE *fp )
 			bug( "Vnum %d : light source with ITEM_INVIS set", vnum );
 			REMOVE_BIT( pObjIndex->extra_flags, ITEM_INVIS );
 		}
-		
+
 		for ( ; ; )
 		{
 			char letter;
 			letter = fread_letter( fp );
-			
+
 			if ( letter == 'A' )
 			{
 				AFFECT_DATA *paf;
-				
+
 				paf			= alloc_perm( sizeof( *paf ) );
 				paf->type		= -1;
 				paf->duration		= -1;
@@ -1760,7 +1760,7 @@ void load_objects( FILE *fp )
 			else if ( letter == 'E' )
 			{
 				EXTRA_DESCR_DATA *ed;
-				
+
 				ed			= alloc_perm( sizeof( *ed ) );
 				ed->keyword		= fread_string( fp );
 				ed->description		= fread_string( fp );
@@ -1774,7 +1774,7 @@ void load_objects( FILE *fp )
 				break;
 			}
 		}
-		
+
 		/*
 		 * Translate character strings *value[] into integers:  sn's for
 		 * items with spells, or straight conversion for other items.
@@ -1788,7 +1788,7 @@ void load_objects( FILE *fp )
 			pObjIndex->value[2] = atoi( value[2] );
 			pObjIndex->value[3] = atoi( value[3] );
 			break;
-			
+
 		    case ITEM_PILL:
 		    case ITEM_PAINT:
 		    case ITEM_POTION:
@@ -1799,7 +1799,7 @@ void load_objects( FILE *fp )
 			pObjIndex->value[2] = skill_lookup( value[2] );
 			pObjIndex->value[3] = skill_lookup( value[3] );
 			break;
-			
+
 		    case ITEM_STAFF:
 		    case ITEM_WAND:
 			pObjIndex->value[0] = atoi( value[0] );
@@ -1808,13 +1808,13 @@ void load_objects( FILE *fp )
 			pObjIndex->value[3] = skill_lookup( value[3] );
 			break;
 		}
-		
+
 		iHash			= vnum % MAX_KEY_HASH;
 		pObjIndex->next		= obj_index_hash[iHash];
 		obj_index_hash[iHash]	= pObjIndex;
 		top_obj_index++;
 	}
-	
+
 	return;
 }
 
@@ -1825,7 +1825,7 @@ void load_objects( FILE *fp )
 void load_resets( FILE *fp )
 {
 	RESET_DATA *pReset;
-	
+
 	if ( !area_last )
 	{
 		bug( "Load_resets: no #AREA seen yet.", 0 );
@@ -1837,34 +1837,34 @@ void load_resets( FILE *fp )
 		EXIT_DATA       *pexit;
 		ROOM_INDEX_DATA *pRoomIndex;
 		char             letter;
-		
+
 		letter = fread_letter( fp );
-		
+
 		if ( letter == 'S' )
 			break;
-		
+
 		if ( letter == '*' )
 		{
 			fread_to_eol( fp );
 			continue;
 		}
-		
+
 		pReset		= alloc_perm( sizeof( *pReset ) );
 		pReset->command	= letter;
-		
-		/* 
-		 * if_flag 
+
+		/*
+		 * if_flag
 		 * fread_number( fp );
 		 * (replaced by arg0 assignment by Gezhp 2000
 		 */
-		
+
 		pReset->arg0	= fread_number( fp );
 		pReset->arg1	= fread_number( fp );
 		pReset->arg2	= fread_number( fp );
 		pReset->arg3	= ( letter == 'G' || letter == 'R' || letter == 'F' )
 			? 0 : fread_number( fp );
 		fread_to_eol( fp );
-		
+
 		/*
 		 * Validate parameters.
 		 * We're calling the index functions for the side effect.
@@ -1875,42 +1875,42 @@ void load_resets( FILE *fp )
 			bug( "Load_resets: bad command '%c'.", letter );
 			exit( 1 );
 			break;
-			
+
 		    case 'M':
 			get_mob_index  ( pReset->arg1 );
 			get_room_index ( pReset->arg3 );
 			break;
-			
+
 		    case 'O':
 			get_obj_index  ( pReset->arg1 );
 			get_room_index ( pReset->arg3 );
 			break;
-			
+
 		    case 'I':
 			get_obj_index  ( pReset->arg0 );
 			get_room_index ( pReset->arg2 );
-			
+
 			if (pReset->arg1 < 0)
 			{
 				bug("Load resets: 'I': item level invalid: %d",
 				    pReset->arg1);
 				exit(1);
 			}
-			
+
 			if (pReset->arg3 < 1)
 			{
 				bug("Load resets: 'I': max count invalid: %d",
 				    pReset->arg3);
 				exit(1);
 			}
-			
+
 			break;
-			
+
 		    case 'P':
 			get_obj_index  ( pReset->arg1 );
 			get_obj_index  ( pReset->arg3 );
 			break;
-			
+
 		    case 'F':
 			get_obj_index ( pReset->arg1 );
 			get_obj_index ( pReset->arg3 );
@@ -1918,10 +1918,10 @@ void load_resets( FILE *fp )
 		    case 'E':
 			get_obj_index  ( pReset->arg1 );
 			break;
-			
+
 		    case 'D':
 			pRoomIndex = get_room_index( pReset->arg1 );
-			
+
 			if (   pReset->arg2 < 0
 			    || pReset->arg2 > 5
 			    || !( pexit = pRoomIndex->exit[pReset->arg2] )
@@ -1930,37 +1930,37 @@ void load_resets( FILE *fp )
 				bug( "Load_resets: 'D': exit %d not door.", pReset->arg2 );
 				exit( 1 );
 			}
-			
+
 			if ( pReset->arg3 < 0 || pReset->arg3 > 2 )
 			{
 				bug( "Load_resets: 'D': bad 'locks': %d.", pReset->arg3 );
 				exit( 1 );
 			}
-			
+
 			break;
-			
+
 		    case 'R':
 			pRoomIndex = get_room_index( pReset->arg1 );
-			
+
 			if ( pReset->arg2 < 0 || pReset->arg2 > 6 )
 			{
 				bug( "Load_resets: 'R': bad exit %d.", pReset->arg2 );
 				exit( 1 );
 			}
-			
+
 			break;
 		}
-		
+
 		if ( !area_last->reset_first )
 			area_last->reset_first      = pReset;
 		if (  area_last->reset_last  )
 			area_last->reset_last->next = pReset;
-		
+
 		area_last->reset_last	= pReset;
 		pReset->next		= NULL;
 		top_reset++;
 	}
-	
+
 	return;
 }
 
@@ -1971,31 +1971,31 @@ void load_resets( FILE *fp )
 void load_rooms( FILE *fp )
 {
 	ROOM_INDEX_DATA *pRoomIndex;
-	
+
 	if ( !area_last )
 	{
 		bug( "Load_resets: no #AREA seen yet.", 0 );
 		exit( 1 );
 	}
-	
+
 	for ( ; ; )
 	{
 		char letter;
 		int  vnum;
 		int  door;
 		int  iHash;
-		
+
 		letter = fread_letter( fp );
 		if ( letter != '#' )
 		{
 			bug( "Load_rooms: # not found.", 0 );
 			exit( 1 );
 		}
-		
+
 		vnum = fread_number( fp );
 		if ( vnum == 0 )
 			break;
-		
+
 		fBootDb = FALSE;
 		if ( get_room_index( vnum ) )
 		{
@@ -2003,7 +2003,7 @@ void load_rooms( FILE *fp )
 			exit( 1 );
 		}
 		fBootDb = TRUE;
-		
+
 		pRoomIndex			= alloc_perm( sizeof( *pRoomIndex ) );
 		pRoomIndex->people		= NULL;
 		pRoomIndex->contents		= NULL;
@@ -2011,7 +2011,7 @@ void load_rooms( FILE *fp )
 		pRoomIndex->area		= area_last;
 		pRoomIndex->vnum		= vnum;
 
-		if ( fBootDb )       
+		if ( fBootDb )
 		{
 			if ( !area_last->low_r_vnum )
 				area_last->low_r_vnum           = vnum;
@@ -2025,33 +2025,33 @@ void load_rooms( FILE *fp )
 		pRoomIndex->room_flags		= fread_number( fp );
 		pRoomIndex->sector_type		= fread_number( fp );
 		pRoomIndex->light		= 0;
-		
+
 		for ( door = 0; door <= 5; door++ )
 			pRoomIndex->exit[door] = NULL;
-		
+
 		for ( ; ; )
 		{
 			letter = fread_letter( fp );
-			
+
 			if ( letter == 'S' || letter == 's' )
 			{
 				if ( letter == 's' )
 					bug( "Load_rooms: vnum %d has lowercase 's'", vnum );
 				break;
 			}
-			
+
 			if ( letter == 'D' )
 			{
 				EXIT_DATA *pexit;
 				int        locks;
-				
+
 				door = fread_number( fp );
 				if ( door < 0 || door > 5 )
 				{
 					bug( "Fread_rooms: vnum %d has bad door number.", vnum );
 					exit( 1 );
 				}
-				
+
 				pexit			= alloc_perm( sizeof( *pexit ) );
 				pexit->description	= fread_string( fp );
 				pexit->keyword		= fread_string( fp );
@@ -2059,70 +2059,70 @@ void load_rooms( FILE *fp )
 				locks			= fread_number( fp );
 				pexit->key		= fread_number( fp );
 				pexit->vnum		= fread_number( fp );
-				
+
 				switch ( locks )
 				{
-				    case 1: 
+				    case 1:
 					pexit->exit_info = EX_ISDOOR;
 					break;
-					
+
 				    case 2:
 					pexit->exit_info = EX_ISDOOR | EX_PICKPROOF;
 					break;
-					
+
 				    case 3:
-					pexit->exit_info = EX_ISDOOR | EX_BASHPROOF;     
+					pexit->exit_info = EX_ISDOOR | EX_BASHPROOF;
 					break;
-					
+
 				    case 4:
 					pexit->exit_info = EX_ISDOOR | EX_PICKPROOF
 						| EX_BASHPROOF;
 					break;
-					
+
 				    case 5:
-					pexit->exit_info = EX_ISDOOR | EX_PASSPROOF; 
+					pexit->exit_info = EX_ISDOOR | EX_PASSPROOF;
 					break;
-					
+
 				    case 6:
 					pexit->exit_info = EX_ISDOOR | EX_PICKPROOF
 						| EX_PASSPROOF;
 					break;
-					
+
 				    case 7:
 					pexit->exit_info = EX_ISDOOR | EX_BASHPROOF
 						| EX_PASSPROOF;
 					break;
-					
+
 				    case 8:
 					pexit->exit_info = EX_ISDOOR | EX_PICKPROOF
 						| EX_BASHPROOF | EX_PASSPROOF;
 					break;
-					
-				    case 9: 
+
+				    case 9:
 					pexit->exit_info = EX_WALL;
 					break;
-					
+
 				    case 10:
 					pexit->exit_info = EX_ISDOOR | EX_SECRET;
 					break;
-					
+
 				    case 11:
 					pexit->exit_info = EX_ISDOOR | EX_PICKPROOF
 						| EX_BASHPROOF | EX_PASSPROOF | EX_SECRET;
 					break;
-					
-				    case 12:  
+
+				    case 12:
 					pexit->exit_info = EX_SECRET;
 					break;
 				}
-				
+
 				pRoomIndex->exit[door]   = pexit;
 				top_exit++;
 			}
 			else if ( letter == 'E' )
 			{
 				EXTRA_DESCR_DATA *ed;
-				
+
 				ed			= alloc_perm( sizeof( *ed ) );
 				ed->keyword		= fread_string( fp );
 				ed->description		= fread_string( fp );
@@ -2136,13 +2136,13 @@ void load_rooms( FILE *fp )
 				exit( 1 );
 			}
 		}
-		
+
 		iHash			= vnum % MAX_KEY_HASH;
 		pRoomIndex->next	= room_index_hash[iHash];
 		room_index_hash[iHash]	= pRoomIndex;
 		top_room++;
 	}
-	
+
 	return;
 }
 
@@ -2153,20 +2153,20 @@ void load_rooms( FILE *fp )
 void load_shops( FILE *fp )
 {
 	SHOP_DATA *pShop;
-	
+
 	for ( ; ; )
 	{
 		MOB_INDEX_DATA *pMobIndex;
 		int iTrade;
-		
+
 		pShop			= alloc_perm( sizeof( *pShop ) );
 		pShop->keeper		= fread_number( fp );
 		if ( pShop->keeper == 0 )
 			break;
-		
+
 		for ( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
 			pShop->buy_type[iTrade] = fread_number( fp );
-		
+
 		pShop->profit_buy	= fread_number( fp );
 		pShop->profit_sell	= fread_number( fp );
 		pShop->open_hour	= fread_number( fp );
@@ -2174,68 +2174,68 @@ void load_shops( FILE *fp )
 		fread_to_eol( fp );
 		pMobIndex		= get_mob_index( pShop->keeper );
 		pMobIndex->pShop	= pShop;
-		
+
 		if ( !shop_first )
 			shop_first = pShop;
 		if (  shop_last  )
 			shop_last->next = pShop;
-		
+
 		shop_last	= pShop;
 		pShop->next	= NULL;
 		top_shop++;
 	}
-	
+
 	return;
 }
 
 
 /*
  * Snarf spec proc declarations.
- * 
+ *
  * Modified to give xp bonuses April 2001 Shade / Gezhp
  */
 
 void load_specials( FILE *fp )
 {
 	int bonus;
-	
+
 	for ( ; ; )
 	{
 		MOB_INDEX_DATA *pMobIndex;
 		char letter;
-		
+
 		switch ( letter = fread_letter( fp ) )
 		{
 		    default:
 			bug( "Load_specials: letter '%c' not *MS.", letter );
 			exit( 1 );
-			
+
 		    case 'S':
 			return;
-			
+
 		    case '*':
 			break;
-			
+
 		    case 'M':
 			pMobIndex           = get_mob_index ( fread_number ( fp ) );
 			pMobIndex->spec_fun = spec_lookup   ( fread_word   ( fp ) );
-			
+
 			if ( pMobIndex->spec_fun == 0 )
 			{
 				bug( "Load_specials: 'M': vnum %d.", pMobIndex->vnum );
 				exit( 1 );
 			}
-			
+
 			/*
-			 * average combat specials 
+			 * average combat specials
 			 */
-			
+
 			bonus = 10;
-			
+
 			/*
 			 * non combat specials
 			 */
-			
+
 			if (pMobIndex->spec_fun == spec_lookup("spec_fido")
 			    || pMobIndex->spec_fun == spec_lookup("spec_thief")
 			    || pMobIndex->spec_fun == spec_lookup("spec_janitor")
@@ -2248,11 +2248,11 @@ void load_specials( FILE *fp )
 			    || pMobIndex->spec_fun == spec_lookup("spec_executioner")
 			    || pMobIndex->spec_fun == spec_lookup("spec_cast_orb"))
 				bonus = 0;
-			
+
 			/*
 			 * weak combat specials
 			 */
-			
+
 			if (pMobIndex->spec_fun == spec_lookup("spec_poison")
 			    || pMobIndex->spec_fun == spec_lookup("spec_bloodsucker")
 			    || pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
@@ -2260,30 +2260,30 @@ void load_specials( FILE *fp )
 			    || pMobIndex->spec_fun == spec_lookup("spec_guard")
 			    || pMobIndex->spec_fun == spec_lookup("spec_judge"))
 				bonus = 5;
-			
+
 			/*
 			 * strong combat specials
 			 */
-			
+
 			else if (pMobIndex->spec_fun == spec_lookup("spec_warrior")
 				 || pMobIndex->spec_fun == spec_lookup("spec_cast_druid")
 				 || pMobIndex->spec_fun == spec_lookup("spec_assassin"))
 				bonus = 15;
-			
+
 			/*
 			 * bad ass combat specials
 			 */
-			
+
 			else if (pMobIndex->spec_fun == spec_lookup("spec_priestess")
 				 || pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
 				 || pMobIndex->spec_fun == spec_lookup("spec_cast_archmage"))
 				bonus = 20;
 
 			pMobIndex->spec_fun_exp_modifier = bonus;
-			
+
 			break;
 		}
-		
+
 		fread_to_eol( fp );
 	}
 }
@@ -2292,19 +2292,19 @@ void load_specials( FILE *fp )
 void load_down_time( void )
 {
 	FILE *fp;
-	
+
 	down_time = str_dup ( "*" );
 	warning1  = str_dup ( "*" );
 	warning2  = str_dup ( "*" );
-	
+
 	if ( !( fp = fopen( DOWN_TIME_FILE, "r" ) ) )
 		return;
-	
+
 	for ( ; ; )
 	{
 		char *word;
 		char  letter;
-		
+
 		do
 		{
 			letter = getc( fp );
@@ -2315,23 +2315,23 @@ void load_down_time( void )
 			}
 		}
 		while ( isspace( letter ) );
-		
+
 		ungetc( letter, fp );
-		
+
 		word = fread_word( fp );
-		
+
 		if ( !str_cmp( word, "DOWNTIME" ) )
 		{
 			free_string( down_time );
 			down_time = fread_string( fp );
 		}
-		
+
 		if ( !str_cmp( word, "WARNINGA" ) )
 		{
 			free_string( warning1 );
 			warning1 = fread_string( fp );
 		}
-		
+
 		if ( !str_cmp( word, "WARNINGB" ) )
 		{
 			free_string( warning2 );
@@ -2352,7 +2352,7 @@ void fix_exits( void )
 	ROOM_INDEX_DATA *pRoomIndex;
 	int              iHash;
 	int              door;
-	
+
 	for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
 	{
 		for ( pRoomIndex  = room_index_hash[iHash];
@@ -2360,7 +2360,7 @@ void fix_exits( void )
 		     pRoomIndex  = pRoomIndex->next )
 		{
 			bool fexit;
-			
+
 			fexit = FALSE;
 			for ( door = 0; door <= 5; door++ )
 			{
@@ -2373,7 +2373,7 @@ void fix_exits( void )
 						pexit->to_room = get_room_index( pexit->vnum );
 				}
 			}
-			
+
 			if ( !fexit )
 				SET_BIT( pRoomIndex->room_flags, ROOM_NO_MOB );
 		}
@@ -2388,16 +2388,16 @@ void fix_exits( void )
 void area_update( void )
 {
 	AREA_DATA *pArea;
-	
+
 	sprintf (last_function, "entering area_update");
-	
+
 	for ( pArea = area_first; pArea; pArea = pArea->next )
 	{
 		CHAR_DATA *pch;
-		
+
 		if ( ++pArea->age < 8 )
 			continue;
-		
+
 		/*
 		 * Check for PC's.
 		 */
@@ -2414,7 +2414,7 @@ void area_update( void )
 				}
 			}
 		}
-		
+
 		/*
 		 * Check age and reset.
 		 * Note: Mud School resets every 3 minutes (not 15).
@@ -2422,16 +2422,16 @@ void area_update( void )
 		if ( !pArea->nplayer || pArea->age > 14 )
 		{
 			ROOM_INDEX_DATA *pRoomIndex;
-			
+
 			reset_area( pArea );
 			pArea->age = number_range( 0, 3 );
 			pRoomIndex = get_room_index( ROOM_VNUM_SCHOOL );
-			
+
 			if ( pRoomIndex && pArea == pRoomIndex->area )
 				pArea->age = 12;
 		}
 	}
-	
+
 	sprintf (last_function, "leaving area_update");
 	return;
 }
@@ -2446,11 +2446,11 @@ void reset_area( AREA_DATA *pArea )
 	RESET_DATA *pReset;
 	int         level;
 	bool        last;
-	
+
 	OBJ_DATA        *obj;
 	OBJ_INDEX_DATA  *pObjIndex;
 	ROOM_INDEX_DATA *pRoomIndex;
-	
+
 	mob 	= NULL;
 	last	= TRUE;
 	level	= 0;
@@ -2461,40 +2461,40 @@ void reset_area( AREA_DATA *pArea )
 		EXIT_DATA       *pexit;
 		MOB_INDEX_DATA  *pMobIndex;
 		OBJ_INDEX_DATA  *pObjToIndex;
-		
+
 		switch ( pReset->command )
 		{
 		    default:
 			bug( "Reset_area: bad command %c.", pReset->command );
 			break;
-			
+
 		    case 'M':
 			if ( !( pMobIndex = get_mob_index( pReset->arg1 ) ) )
 			{
 				bug( "Reset_area: 'M': bad vnum %d.", pReset->arg1 );
 				continue;
 			}
-			
+
 			if ( !( pRoomIndex = get_room_index( pReset->arg3 ) ) )
 			{
 				bug( "Reset_area: 'R': bad vnum %d.", pReset->arg3 );
 				continue;
 			}
-			
+
 			level = URANGE( 0, pMobIndex->level - 2, LEVEL_HERO );
-			
+
 			if ( pMobIndex->count >= pReset->arg2 )
 			{
 				last = FALSE;
 				break;
 			}
-			
+
 			if (IS_SET(pArea->area_flags, AREA_FLAG_NO_QUEST))
 				SET_BIT(pMobIndex->act, ACT_NO_QUEST);
-			
+
 			mob = create_mobile( pMobIndex );
 			mob->exp_modifier = pArea->exp_modifier + pMobIndex->spec_fun_exp_modifier;
-			
+
 			/*
 			 * Check for pet shop.
 			 */
@@ -2506,41 +2506,41 @@ void reset_area( AREA_DATA *pArea )
 				    && IS_SET( pRoomIndexPrev->room_flags, ROOM_PET_SHOP ) )
 					SET_BIT( mob->act, ACT_PET);
 			}
-			
+
 			if ( room_is_dark( pRoomIndex ) )
 				SET_BIT( mob->affected_by, AFF_INFRARED );
-			
+
 			char_to_room( mob, pRoomIndex );
 			level = URANGE( 0, mob->level - 2, LEVEL_HERO );
 			last  = TRUE;
 			break;
-			
+
 		    case 'O':
 			if ( !( pObjIndex = get_obj_index( pReset->arg1 ) ) )
 			{
 				bug( "Reset_area: 'O': bad vnum %d.", pReset->arg1 );
 				continue;
 			}
-			
+
 			if ( !( pRoomIndex = get_room_index( pReset->arg3 ) ) )
 			{
 				bug( "Reset_area: 'R': bad vnum %d.", pReset->arg3 );
 				continue;
 			}
-			
+
 			if ( pArea->nplayer > 0
 			    || count_obj_list( pObjIndex, pRoomIndex->contents ) > 0 )
 			{
 				last = FALSE;
 				break;
 			}
-			
+
 			obj       = create_object( pObjIndex, number_fuzzy( level ) );
 			obj->cost = 0;
 			obj_to_room( obj, pRoomIndex );
 			last = TRUE;
 			break;
-			
+
 		    case 'I':
 			/*
 			 * New item to room reset by Gezhp 2000
@@ -2551,57 +2551,57 @@ void reset_area( AREA_DATA *pArea )
 				bug("Reset_area: 'I': bad item vnum: %d", pReset->arg0);
 				continue;
 			}
-			
+
 			if (pReset->arg1 < 0)
 			{
 				bug("Reset_area: 'I': bad item level: %d", pReset->arg1);
 				continue;
 			}
-			
+
 			if (!(pRoomIndex = get_room_index(pReset->arg2)))
 			{
 				bug("Reset_area: 'R': bad room vnum: %d", pReset->arg2);
 				continue;
 			}
-			
+
 			if (pReset->arg3 < 0)
 			{
 				bug("Reset_area: 'I': bad max count: %d", pReset->arg3);
 				continue;
 			}
-			
+
 			if (pArea->nplayer > 0
 			    || count_obj_list(pObjIndex, pRoomIndex->contents) >= pReset->arg3)
 			{
 				last = FALSE;
 				break;
 			}
-			
+
 			obj = create_object(pObjIndex, number_fuzzy(pReset->arg1));
 			obj->cost = 0;
 			obj_to_room(obj, pRoomIndex);
 			last = TRUE;
 			break;
-			
+
 		    case 'P':
 			if ( !( pObjIndex = get_obj_index( pReset->arg1 ) ) )
 			{
 				bug( "Reset_area: 'P': bad vnum %d.", pReset->arg1 );
 				continue;
 			}
-			
+
 			if ( !( pObjToIndex = get_obj_index( pReset->arg3 ) ) )
 			{
 				bug( "Reset_area: 'P': bad vnum %d.", pReset->arg3 );
 				continue;
 			}
-			
+
 			if ( pObjToIndex == pObjIndex )
 			{
 				bug( "Reset_area: 'P': object loaded in itself %d.", pReset->arg3);
 				continue;
 			}
-			
+
 			if ( pArea->nplayer > 0
 			    || !( obj_to = get_obj_type( pObjToIndex ) )
 			    || count_obj_list( pObjIndex, obj_to->contains ) > 0 )
@@ -2609,12 +2609,12 @@ void reset_area( AREA_DATA *pArea )
 				last = FALSE;
 				break;
 			}
-			
+
 			obj = create_object( pObjIndex, number_fuzzy( obj_to->level ) );
 			obj_to_obj( obj, obj_to );
 			last = TRUE;
 			break;
-			
+
 		    case 'G':
 		    case 'E':
 			if ( !( pObjIndex = get_obj_index( pReset->arg1 ) ) )
@@ -2622,10 +2622,10 @@ void reset_area( AREA_DATA *pArea )
 				bug( "Reset_area: 'E' or 'G': bad vnum %d.", pReset->arg1 );
 				continue;
 			}
-			
+
 			if ( !last )
 				break;
-			
+
 			if ( !mob )
 			{
 				bug( "Reset_area: 'E' or 'G': null mob for vnum %d.",
@@ -2633,14 +2633,14 @@ void reset_area( AREA_DATA *pArea )
 				last = FALSE;
 				break;
 			}
-			
+
 			if ( mob->pIndexData->pShop )
 			{
 				int olevel;
-				
+
 				/*
 				 * Additions to allow items levels to be set in area files
-				 * Tavolir 
+				 * Tavolir
 				 */
 				if(pObjIndex->level == 0)
 				{
@@ -2649,35 +2649,35 @@ void reset_area( AREA_DATA *pArea )
 					    default:
 						olevel = 0;
 						break;
-						
+
 					    case ITEM_PILL:
 						olevel = number_range(  0, 10 );
 						break;
-						
+
 					    case ITEM_PAINT:
 						olevel = number_range(  0, 10 );
 						break;
-						
+
 					    case ITEM_POTION:
 						olevel = number_range(  0, 10 );
 						break;
-						
+
 					    case ITEM_SCROLL:
 						olevel = number_range(  5, 15 );
 						break;
-						
+
 					    case ITEM_WAND:
 						olevel = number_range( 10, 20 );
 						break;
-						
+
 					    case ITEM_STAFF:
 						olevel = number_range( 15, 25 );
 						break;
-						
+
 					    case ITEM_ARMOR:
 						olevel = number_range( 5, 15 );
 						break;
-						
+
 					    case ITEM_WEAPON:
 						if ( pReset->command == 'G' )
 							olevel = number_range( 5, 15 );
@@ -2685,18 +2685,18 @@ void reset_area( AREA_DATA *pArea )
 							olevel = number_fuzzy( level );
 						break;
 					}
-				} 
-				else 
+				}
+				else
 				{
 					if( pObjIndex->level >= LEVEL_HERO)
 						olevel = LEVEL_HERO - 1;
-					else 
+					else
 						olevel = pObjIndex->level;
 				}
 				/* End of item level additions */
-				
+
 				obj = create_object( pObjIndex, olevel );
-				
+
 				if ( pReset->command == 'G' )
 					SET_BIT( obj->extra_flags, ITEM_INVENTORY );
 			}
@@ -2716,22 +2716,22 @@ void reset_area( AREA_DATA *pArea )
 			}
 
 			obj_to_char( obj, mob );
-			
+
 			if (pReset->command == 'E')
 			{
 				equip_char(mob, obj, pReset->arg3);
-				
+
 				switch (pReset->arg3)
 				{
 				    case WEAR_WIELD:
 					mob->exp_modifier += 10;
 					break;
-					
+
 				    case WEAR_DUAL:
 				    case WEAR_SHIELD:
 					mob->exp_modifier += 5;
 					break;
-					
+
 				    case WEAR_HOLD:
 					if (obj->item_type == ITEM_WAND
 					    || obj->item_type == ITEM_STAFF
@@ -2744,20 +2744,20 @@ void reset_area( AREA_DATA *pArea )
 					break;
 				}
 			}
-			
+
 			last = TRUE;
 			break;
-			
+
 		    case 'D':
 			if ( !( pRoomIndex = get_room_index( pReset->arg1 ) ) )
 			{
 				bug( "Reset_area: 'D': bad vnum %d.", pReset->arg1 );
 				continue;
 			}
-			
+
 			if ( !( pexit = pRoomIndex->exit[pReset->arg2] ) )
 				break;
-			
+
 			/* Bashed doors persist across resets */
 			if ( !IS_SET( pexit->exit_info, EX_BASHED ) )
 				switch ( pReset->arg3 )
@@ -2766,32 +2766,32 @@ void reset_area( AREA_DATA *pArea )
 					REMOVE_BIT( pexit->exit_info, EX_CLOSED );
 					REMOVE_BIT( pexit->exit_info, EX_LOCKED );
 					break;
-					
+
 				    case 1:
 					SET_BIT(    pexit->exit_info, EX_CLOSED );
 					REMOVE_BIT( pexit->exit_info, EX_LOCKED );
 					break;
-					
+
 				    case 2:
 					SET_BIT(    pexit->exit_info, EX_CLOSED );
 					SET_BIT(    pexit->exit_info, EX_LOCKED );
 					break;
 				}
-			
+
 			last = TRUE;
 			break;
-			
+
 		    case 'R':
 			if ( !( pRoomIndex = get_room_index( pReset->arg1 ) ) )
 			{
 				bug( "Reset_area: 'R': bad vnum %d.", pReset->arg1 );
 				continue;
 			}
-			
+
 			{
 				int d0;
 				int d1;
-				
+
 				for ( d0 = 0; d0 < pReset->arg2 - 1; d0++ )
 				{
 					d1                   = number_range( d0, pReset->arg2-1 );
@@ -2803,26 +2803,26 @@ void reset_area( AREA_DATA *pArea )
 			break;
 		}
 	}
-	
-	/*  
+
+	/*
 	 *  Reset container lids, traps with exhausted charges.
 	 *  This is a bit of a cpu hog so do it only once every 10 resets.
 	 *  Gezhp 2000
 	 */
-	if (--pArea->container_reset_timer < 1) 
+	if (--pArea->container_reset_timer < 1)
 	{
-		for (obj = object_list; obj; obj = obj->next) 
+		for (obj = object_list; obj; obj = obj->next)
 		{
-			if (!obj->deleted && obj->in_room && obj->in_room->area == pArea) 
+			if (!obj->deleted && obj->in_room && obj->in_room->area == pArea)
 			{
 				if (obj->item_type == ITEM_CONTAINER)
 					obj->value[1] = obj->pIndexData->value[1];
-				
+
 				if (IS_SET (obj->extra_flags, ITEM_TRAP) && !obj->trap_charge)
 					obj->trap_charge = obj->pIndexData->trap_charge;
 			}
 		}
-		
+
 		pArea->container_reset_timer = 10;
 	}
 }
@@ -2834,13 +2834,13 @@ void reset_area( AREA_DATA *pArea )
 CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
 {
 	CHAR_DATA *mob;
-	
+
 	if ( !pMobIndex )
 	{
 		bug( "Create_mobile: NULL pMobIndex.", 0 );
 		exit( 1 );
 	}
-	
+
 	if ( !char_free )
 	{
 		mob		= alloc_perm( sizeof( *mob ) );
@@ -2850,34 +2850,34 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
 		mob		= char_free;
 		char_free	= char_free->next;
 	}
-	
+
 	clear_char( mob );
 	mob->pIndexData         = pMobIndex;
-	
+
 	mob->name	        = pMobIndex->player_name;
 	mob->short_descr        = pMobIndex->short_descr;
 	mob->long_descr	        = pMobIndex->long_descr;
 	mob->description        = pMobIndex->description;
 	mob->spec_fun	        = pMobIndex->spec_fun;
-	mob->prompt             = str_dup( "<%hhp %mm %vmv> " ); 
-	
+	mob->prompt             = str_dup( "<%hhp %mm %vmv> " );
+
 	mob->level		= number_fuzzy( pMobIndex->level );
 	mob->act		= pMobIndex->act;
 	mob->affected_by	= pMobIndex->affected_by;
 	mob->alignment	        = pMobIndex->alignment;
 	mob->sex		= pMobIndex->sex;
 	mob->body_form	        = pMobIndex->body_form;
-	
+
 	mob->armor		= interpolate( mob->level, 100, -100 );
-	
-	mob->max_hit = mob->level * 8 
+
+	mob->max_hit = mob->level * 8
 		+ number_range(	mob->level * mob->level / 4, mob->level * mob->level );
-	
+
 	mob->hit		= mob->max_hit;
-	
+
 	if (IS_SET(mob->act, ACT_CLAN_GUARD))
 		REMOVE_BIT(mob->affected_by, AFF_HIDE);
-	
+
 	mob->next		= char_list;
 	char_list		= mob;
 	pMobIndex->count++;
@@ -2894,13 +2894,13 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 	OBJ_DATA*	obj;
 	int 		i;
 	const int	complete_heal_sn = skill_lookup("complete heal");
-	
+
 	if ( !pObjIndex )
 	{
 		bug( "Create_object: NULL pObjIndex.", 0 );
 		exit( 1 );
 	}
-	
+
 	if ( !obj_free )
 	{
 		obj		= alloc_perm( sizeof( *obj ) );
@@ -2910,13 +2910,13 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 		obj		= obj_free;
 		obj_free	= obj_free->next;
 	}
-	
+
 	*obj		= obj_zero;
 	obj->pIndexData	= pObjIndex;
 	obj->in_room	= NULL;
 	obj->level	= level;
 	obj->wear_loc	= -1;
-	
+
 	obj->name		= pObjIndex->name;
 	obj->short_descr	= pObjIndex->short_descr;
 	obj->description	= pObjIndex->description;
@@ -2928,12 +2928,12 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 	obj->value[2]	        = pObjIndex->value[2];
 	obj->value[3]	        = pObjIndex->value[3];
 	obj->weight		= pObjIndex->weight;
-	
+
 	obj->cost = number_fuzzy(10) * number_fuzzy(level) + number_range(1, 20);
 
-	obj->trap_eff               = pObjIndex->trap_eff;   
+	obj->trap_eff               = pObjIndex->trap_eff;
 	obj->trap_dam               = pObjIndex->trap_dam;
-	obj->trap_charge            = pObjIndex->trap_charge; 
+	obj->trap_charge            = pObjIndex->trap_charge;
 	obj->ego_flags              = pObjIndex->ego_flags;
 	obj->deleted                = FALSE;
 
@@ -2945,7 +2945,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 	    default:
 		bug( "Read_object: vnum %d bad type.", pObjIndex->vnum );
 		break;
-		
+
 	    case ITEM_CONTAINER:
 	    case ITEM_LIGHT:
 	    case ITEM_FURNITURE:
@@ -2957,7 +2957,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 	    case ITEM_CORPSE_NPC:
 	    case ITEM_CORPSE_PC:
 	    case ITEM_FOUNTAIN:
-	    case ITEM_CLIMBING_EQ:             
+	    case ITEM_CLIMBING_EQ:
 	    case ITEM_MOB:
 	    case ITEM_ANVIL:
 	    case ITEM_CLAN_OBJECT:
@@ -2972,22 +2972,22 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 	    case ITEM_TREASURE:
 		obj->cost *= (number_range(3, 6) / 2);
 		break;
-		
+
 	    case ITEM_SCROLL:
 		obj->value[0]   = number_fuzzy( obj->value[0] );
 		break;
-		
+
 	    case ITEM_WAND:
 		obj->value[0]   = number_fuzzy( obj->value[0] );
 		obj->value[1]	= number_fuzzy( obj->value[1] );
 		obj->value[2]	= obj->value[1];
 		break;
-		
+
 	    case ITEM_STAFF:
-		
-		/* 
+
+		/*
 		 * Complete heal staff charge hack; Gezhp 2001
-		 * 
+		 *
 		 * 1 charge    ->  1 charge
 		 * 2 charges   ->  1-2 charges
 		 * 3+ charges  ->  number_fuzzy - 1 (3 -> 1-3, 4 -> 2-4, ...)
@@ -2996,7 +2996,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 		{
 			if (obj->value[1] == 2)
 				obj->value[1] = number_range(1, 2);
-			
+
 			else if (obj->value[1] > 2)
 				obj->value[1] = number_fuzzy(obj->value[1]) - 1;
 		}
@@ -3006,12 +3006,12 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 		obj->value[0]   = number_fuzzy( obj->value[0] );
 		obj->value[2]	= obj->value[1];
 		break;
-		
+
 	    case ITEM_WEAPON:
 		obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
 		obj->value[2]	= number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
 		break;
-		
+
 	    /*
 	     * Although we can't wield armourer's hammers, area resets may
 	     * equip them as weapons; let's prepare for wierdness; Gezhp 2001
@@ -3021,41 +3021,41 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 		obj->value[2]	= number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
 		obj->value[3]	= 7;
 		break;
-		
+
 	    case ITEM_ARMOR:
 		obj->value[0]   = number_fuzzy( level / 5 + 2 );
 		break;
-		
+
 	    case ITEM_POTION:
 	    case ITEM_PILL:
-	    case ITEM_PAINT:   
+	    case ITEM_PAINT:
 		obj->value[0]   = number_fuzzy( number_fuzzy( obj->value[0] ) );
 		break;
-		
+
 	    case ITEM_MONEY:
 		/* Make coin amounts fuzzy; Gezhp */
-		for (i = 0; i < 4; i++) 
+		for (i = 0; i < 4; i++)
 		{
-			if (obj->value[i] > 10) 
+			if (obj->value[i] > 10)
 			{
 				obj->value[i] = number_range (obj->value[i] * 0.9,
 							      obj->value[i] * 1.1);
 			}
-			
+
 			if (obj->value[i] < 0)
 				obj->value[i] = 0;
 		}
 		break;
-		
+
 	    case ITEM_AUCTION_TICKET:
 		obj->value[0]	= obj->cost;
 		break;
 	}
-	
+
 	obj->next		= object_list;
 	object_list		= obj;
 	pObjIndex->count++;
-	
+
 	return obj;
 }
 
@@ -3066,7 +3066,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
 void clear_char( CHAR_DATA *ch )
 {
 	static CHAR_DATA ch_zero;
-	
+
 	*ch			= ch_zero;
 	ch->name		= &str_empty[0];
 	ch->short_descr		= &str_empty[0];
@@ -3093,7 +3093,7 @@ void clear_char( CHAR_DATA *ch )
 	/* ch->mapbook		= NULL; */
 	ch->deleted             = FALSE;
 	ch->exp_modifier	= 100;
-	
+
 	ch->colors[COLOR_AUCTION]	= 13;
 	ch->colors[COLOR_GOSSIP]	= 14;
 	ch->colors[COLOR_SHOUT]	        = 12;
@@ -3115,7 +3115,7 @@ void free_char( CHAR_DATA *ch )
 	OBJ_DATA    *obj;
 	OBJ_DATA    *obj_next;
 	AFFECT_DATA *paf;
-	
+
 	for ( obj = ch->carrying; obj; obj = obj_next )
 	{
 		obj_next = obj->next_content;
@@ -3123,20 +3123,20 @@ void free_char( CHAR_DATA *ch )
 			continue;
 		extract_obj( obj );
 	}
-	
+
 	for ( paf = ch->affected; paf; paf = paf->next )
 	{
 		if ( paf->deleted )
 			continue;
 		affect_remove( ch, paf );
 	}
-	
+
 	free_string( ch->name );
 	free_string( ch->short_descr );
 	free_string( ch->long_descr );
 	free_string( ch->description );
-	free_string( ch->prompt ); 
-	
+	free_string( ch->prompt );
+
 	if ( ch->pcdata )
 	{
 		free_string( ch->pcdata->pwd		);
@@ -3146,10 +3146,10 @@ void free_char( CHAR_DATA *ch )
 		ch->pcdata->next = pcdata_free;
 		pcdata_free      = ch->pcdata;
 	}
-	
+
 	ch->next	     = char_free;
 	char_free	     = ch;
-	
+
 	return;
 }
 
@@ -3175,7 +3175,7 @@ char *get_extra_descr( const char *name, EXTRA_DESCR_DATA *ed )
 MOB_INDEX_DATA *get_mob_index( int vnum )
 {
 	MOB_INDEX_DATA *pMobIndex;
-	
+
 	for ( pMobIndex  = mob_index_hash[vnum % MAX_KEY_HASH];
 	     pMobIndex;
 	     pMobIndex  = pMobIndex->next )
@@ -3183,13 +3183,13 @@ MOB_INDEX_DATA *get_mob_index( int vnum )
 		if ( pMobIndex->vnum == vnum )
 			return pMobIndex;
 	}
-	
+
 	if ( fBootDb )
 	{
 		bug( "Get_mob_index: bad vnum %d.", vnum );
 		exit( 1 );
 	}
-	
+
 	return NULL;
 }
 
@@ -3201,7 +3201,7 @@ MOB_INDEX_DATA *get_mob_index( int vnum )
 OBJ_INDEX_DATA *get_obj_index( int vnum )
 {
 	OBJ_INDEX_DATA *pObjIndex;
-	
+
 	for ( pObjIndex  = obj_index_hash[vnum % MAX_KEY_HASH];
 	     pObjIndex;
 	     pObjIndex  = pObjIndex->next )
@@ -3209,13 +3209,13 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
 		if ( pObjIndex->vnum == vnum )
 			return pObjIndex;
 	}
-	
+
 	if ( fBootDb )
 	{
 		bug( "Get_obj_index: bad vnum %d.", vnum );
 		exit( 1 );
 	}
-	
+
 	return NULL;
 }
 
@@ -3227,10 +3227,10 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
 ROOM_INDEX_DATA *get_room_index( int vnum )
 {
 	ROOM_INDEX_DATA *pRoomIndex;
-	
-	if (vnum < 0) 
-		return NULL; 
-	
+
+	if (vnum < 0)
+		return NULL;
+
 	for ( pRoomIndex  = room_index_hash[vnum % MAX_KEY_HASH];
 	     pRoomIndex;
 	     pRoomIndex  = pRoomIndex->next )
@@ -3238,13 +3238,13 @@ ROOM_INDEX_DATA *get_room_index( int vnum )
 		if ( pRoomIndex->vnum == vnum )
 			return pRoomIndex;
 	}
-	
+
 	if ( fBootDb )
 	{
 		bug( "Get_room_index: bad vnum %d.", vnum );
 		exit( 1 );
 	}
-	
+
 	return NULL;
 }
 
@@ -3255,13 +3255,13 @@ ROOM_INDEX_DATA *get_room_index( int vnum )
 char fread_letter( FILE *fp )
 {
 	char c;
-	
+
 	do
 	{
 		c = getc( fp );
 	}
 	while ( isspace( c ) );
-	
+
 	return c;
 }
 
@@ -3274,15 +3274,15 @@ int fread_number( FILE *fp )
 	char c;
 	int  number;
 	bool sign;
-	
+
 	do
 	{
 		c = getc( fp );
 	}
 	while ( isspace( c ) );
-	
+
 	number = 0;
-	
+
 	sign   = FALSE;
 	if ( c == '+' )
 	{
@@ -3293,28 +3293,28 @@ int fread_number( FILE *fp )
 		sign = TRUE;
 		c = getc( fp );
 	}
-	
+
 	if ( !isdigit( c ) )
 	{
 		bug( "Fread_number: bad format.", 0 );
 		bug( "   If bad object, check for missing '~' in value[] fields.", 0 );
 		exit( 1 );
 	}
-	
+
 	while ( isdigit(c) )
 	{
 		number = number * 10 + c - '0';
 		c      = getc( fp );
 	}
-	
+
 	if ( sign )
 		number = 0 - number;
-	
+
 	if ( c == '|' )
 		number += fread_number( fp );
 	else if ( c != ' ' )
 		ungetc( c, fp );
-	
+
 	return number;
 }
 
@@ -3331,14 +3331,14 @@ char *fread_string( FILE *fp )
 {
 	char *plast;
 	char  c;
-	
+
 	plast = top_string + sizeof( char * );
 	if ( plast > &string_space [ MAX_STRING - MAX_STRING_LENGTH ] )
 	{
 		bug( "Fread_string: MAX_STRING %d exceeded.", MAX_STRING );
 		exit( 1 );
 	}
-	
+
 	/*
 	 * Skip blanks.
 	 * Read first char.
@@ -3348,10 +3348,10 @@ char *fread_string( FILE *fp )
 		c = getc( fp );
 	}
 	while ( isspace( c ) );
-	
+
 	if ( ( *plast++ = c ) == '~' )
 		return &str_empty[0];
-	
+
 	for ( ;; )
 	{
 		/*
@@ -3364,20 +3364,20 @@ char *fread_string( FILE *fp )
 		    default:
 			plast++;
 			break;
-			
+
 		    case EOF:
 			bug( "Fread_string: EOF", 0 );
 			exit( 1 );
 			break;
-			
+
 		    case '\n':
 			plast++;
 			*plast++ = '\r';
 			break;
-			
+
 		    case '\r':
 			break;
-			
+
 		    case '~':
 			plast++;
 			{
@@ -3391,7 +3391,7 @@ char *fread_string( FILE *fp )
 				char *pHash;
 				char *pHashPrev;
 				char *pString;
-				
+
 				plast[-1] = '\0';
 				iHash     = UMIN( MAX_KEY_HASH - 1, plast - 1 - top_string );
 				for ( pHash = string_hash[iHash]; pHash; pHash = pHashPrev )
@@ -3400,12 +3400,12 @@ char *fread_string( FILE *fp )
 						u1.rgc[ic] = pHash[ic];
 					pHashPrev = u1.pc;
 					pHash    += sizeof(char *);
-					
+
 					if ( top_string[sizeof( char * )] == pHash[0]
 					    && !strcmp( top_string+sizeof( char * )+1, pHash+1 ) )
 						return pHash;
 				}
-				
+
 				if ( fBootDb )
 				{
 					pString         = top_string;
@@ -3435,19 +3435,19 @@ char *fread_string( FILE *fp )
 void fread_to_eol( FILE *fp )
 {
 	char c;
-	
+
 	do
 	{
 		c = getc( fp );
 	}
 	while ( c != '\n' && c != '\r' );
-	
+
 	do
 	{
 		c = getc( fp );
 	}
 	while ( c == '\n' || c == '\r' );
-	
+
 	ungetc( c, fp );
 	return;
 }
@@ -3461,13 +3461,13 @@ char *fread_word( FILE *fp )
 	static char  word [ MAX_INPUT_LENGTH ];
 	char *pword;
 	char  cEnd;
-	
+
 	do
 	{
 		cEnd = getc( fp );
 	}
 	while ( isspace( cEnd ) );
-	
+
 	if ( cEnd == '\'' || cEnd == '"' )
 	{
 		pword   = word;
@@ -3478,7 +3478,7 @@ char *fread_word( FILE *fp )
 		pword   = word+1;
 		cEnd    = ' ';
 	}
-	
+
 	for ( ; pword < word + MAX_INPUT_LENGTH; pword++ )
 	{
 		*pword = getc( fp );
@@ -3490,7 +3490,7 @@ char *fread_word( FILE *fp )
 			return word;
 		}
 	}
-	
+
 	bug( "Fread_word: word too long.", 0 );
 	bug(word, 0);
 	exit( 1 );
@@ -3506,19 +3506,19 @@ void *alloc_mem( int sMem )
 {
 	void *pMem;
 	int iList;
-	
+
 	for ( iList = 0; iList < MAX_MEM_LIST; iList++ )
 	{
 		if ( sMem <= rgSizeList[iList] )
 			break;
 	}
-	
+
 	if ( iList == MAX_MEM_LIST )
 	{
 		bug( "Alloc_mem: size %d too large.", sMem );
 		abort();
 	}
-	
+
 	if ( !rgFreeList[iList] )
 	{
 		pMem = alloc_perm( rgSizeList[iList] );
@@ -3528,7 +3528,7 @@ void *alloc_mem( int sMem )
 		pMem              = rgFreeList[iList];
 		rgFreeList[iList] = * ( (void **) rgFreeList[iList] );
 	}
-	
+
 	return pMem;
 }
 
@@ -3540,22 +3540,22 @@ void *alloc_mem( int sMem )
 void free_mem( void *pMem, int sMem )
 {
 	int iList;
-	
+
 	for ( iList = 0; iList < MAX_MEM_LIST; iList++ )
 	{
 		if ( sMem <= rgSizeList[iList] )
 			break;
 	}
-	
+
 	if ( iList == MAX_MEM_LIST )
 	{
 		bug( "Free_mem: size %d too large.", sMem );
 		exit( 1 );
 	}
-	
+
 	* ( (void **) pMem ) = rgFreeList[iList];
 	rgFreeList[iList]  = pMem;
-	
+
 	return;
 }
 
@@ -3570,7 +3570,7 @@ void *alloc_perm( int sMem )
 	void *pMem;
 	static char *pMemPerm;
 	static int   iMemPerm;
-	
+
 	while ( sMem % sizeof( long ) != 0 )
 		sMem++;
 	if ( sMem > MAX_PERM_BLOCK )
@@ -3578,7 +3578,7 @@ void *alloc_perm( int sMem )
 		bug( "Alloc_perm: %d too large.", sMem );
 		exit( 1 );
 	}
-	
+
 	if ( !pMemPerm || iMemPerm + sMem > MAX_PERM_BLOCK )
 	{
 		iMemPerm = 0;
@@ -3604,13 +3604,13 @@ void *alloc_perm( int sMem )
 char *str_dup( const char *str )
 {
 	char *str_new;
-	
+
 	if ( str[0] == '\0' )
 		return &str_empty[0];
-	
+
 	if ( str >= string_space && str < top_string )
 		return (char *) str;
-	
+
 	str_new = alloc_mem( strlen(str) + 1 );
 	strcpy( str_new, str );
 	return str_new;
@@ -3628,7 +3628,7 @@ void free_string( char *pstr )
 	    || pstr == &str_empty[0]
 	    || ( pstr >= string_space && pstr < top_string ) )
 		return;
-	
+
 	free_mem( pstr, strlen( pstr ) + 1 );
 	return;
 }
@@ -3643,43 +3643,43 @@ void do_areas (CHAR_DATA *ch, char *argument)
 
 	if ( argument[0] != '\0' && is_number(argument))
 		level = atoi(argument);
-	
+
 	pArea = area_first;
-	
-	if (level) 
+
+	if (level)
 		sprintf(buf, "Areas around level %d:\n\r", level);
-	else 
+	else
 		sprintf(buf, "Complete area list:\n\r");
-	
-	for (pArea = area_first; pArea; pArea = pArea->next) 
+
+	for (pArea = area_first; pArea; pArea = pArea->next)
 	{
 		if (!level
-		    || (pArea->low_level <= level 
+		    || (pArea->low_level <= level
 			&& (pArea->high_level >= level || pArea->high_level == -1)
                         && (pArea->low_level != ROOM_LABEL_ALL)))
 		{
 			if (IS_SET(pArea->area_flags, AREA_FLAG_HIDDEN))
 				continue;
-			
+
 			if (pArea->low_level == ROOM_LABEL_CLAN)
 				sprintf(buf1, "(  clan )   ");
-			
-			else if (pArea->low_level == ROOM_LABEL_NONE) 
+
+			else if (pArea->low_level == ROOM_LABEL_NONE)
 				sprintf(buf1, "(  none )   ");
 
-			else if (pArea->low_level == ROOM_LABEL_ALL) 
+			else if (pArea->low_level == ROOM_LABEL_ALL)
 				sprintf(buf1, "(  all  )   ");
-			
-			else if (pArea->low_level == ROOM_LABEL_NOTELEPORT ) 
+
+			else if (pArea->low_level == ROOM_LABEL_NOTELEPORT )
 				sprintf(buf1, "(not finished) ");
-			
-			else if (pArea->high_level == ROOM_LABEL_PLUS) 
+
+			else if (pArea->high_level == ROOM_LABEL_PLUS)
 				sprintf(buf1, "(%3d  + )   ", pArea->low_level);
 
-			else 
+			else
 				sprintf(buf1, "(%3d %3d)   ", pArea->low_level, pArea->high_level);
-			
-			if (!(pArea->low_level == -4 && level)) 
+
+			if (!(pArea->low_level == -4 && level))
 			{
 				strcat(buf, buf1);
 				sprintf(buf1, "%-26s %-15s\n\r", pArea->name, pArea->author);
@@ -3687,7 +3687,7 @@ void do_areas (CHAR_DATA *ch, char *argument)
 			}
 		}
 	}
-		
+
 	send_to_char(buf, ch);
 	return;
 }
@@ -3705,49 +3705,49 @@ void do_memory( CHAR_DATA *ch, char *argument )
 	int             desc_count;
 	DESCRIPTOR_DATA *d;
 	*/
-	
+
 	rch = get_char(ch);
-	
+
 	if (!authorized(rch, gsn_memory))
 		return;
-	
+
 	sprintf(buf,
 		"Affects %5d      Areas   %5d      ExDes   %5d\n\r"
 		"Exits   %5d      Helps   %5d      Mobs    %5d\n\r"
 		"Objs    %5d      Resets  %5d      Rooms   %5d\n\r"
-		"Shops   %5d\n\r", 
+		"Shops   %5d\n\r",
 		top_affect, top_area, top_ed,
 		top_exit, top_help, top_mob_index,
 		top_obj_index, top_reset, top_room,
 		top_shop);
 	send_to_char(buf, ch);
-	
+
 	sprintf( buf, "\n\rStrings %5d strings of %7d bytes (max %d).\n\r",
 		nAllocString, sAllocString, MAX_STRING );
 	send_to_char( buf, ch );
-	
+
 	sprintf( buf, "Perms   %5d blocks of %7d bytes.\n\r",
 		nAllocPerm, sAllocPerm );
 	send_to_char( buf, ch );
-	
+
 	for (mob = char_list; mob; mob = mob->next)
 		mob_count++;
-	
+
 	if (mob_count > mob_max)
 		mob_max = mob_count;
-	
+
 	for (obj = object_list; obj; obj = obj->next)
 		obj_count++;
-	
+
 	if (obj_count > obj_max)
 		obj_max = obj_count;
-	
+
 	sprintf (buf, "\n\rMobile list: %5d  (highest %5d)\n\r"
 		 "Object list: %5d  (highest %5d)\n\r",
 		 mob_count, mob_max,
 		 obj_count, obj_max);
 	send_to_char (buf, ch);
-	
+
 	/*
 	send_to_char("\n\rDescriptor information:\n\r", ch);
 
@@ -3776,7 +3776,7 @@ int number_fuzzy( int number )
 	    case 0:  number -= 1; break;
 	    case 3:  number += 1; break;
 	}
-	
+
 	return UMAX( 1, number );
 }
 
@@ -3788,16 +3788,16 @@ int number_range( int from, int to )
 {
 	int power;
 	int number;
-	
+
 	if ( ( to = to - from + 1 ) <= 1 )
 		return from;
-	
+
 	for ( power = 2; power < to; power <<= 1 )
 		;
-	
+
 	while ( ( number = number_mm( ) & ( power - 1 ) ) >= to )
 		;
-	
+
 	return from + number;
 }
 
@@ -3808,10 +3808,10 @@ int number_range( int from, int to )
 int number_percent( void )
 {
 	int percent;
-	
+
 	while ( ( percent = number_mm( ) & ( 128-1 ) ) > 99 )
 		;
-	
+
 	return 1 + percent;
 }
 
@@ -3822,10 +3822,10 @@ int number_percent( void )
 int number_door( void )
 {
 	int door;
-	
+
 	while ( ( door = number_mm( ) & ( 8-1 ) ) > 5 )
 		;
-	
+
 	return door;
 }
 
@@ -3848,12 +3848,12 @@ void init_mm( )
 {
 	int *piState;
 	int  iState;
-	
+
 	piState = &rgiState[2];
-	
+
 	piState[-2]	= 55 - 55;
 	piState[-1]	= 55 - 24;
-	
+
 	piState[0]	= ( (int) current_time ) & ( ( 1 << 30 ) - 1 );
 	piState[1]	= 1;
 	for ( iState = 2; iState < 55; iState++ )
@@ -3871,7 +3871,7 @@ int number_mm( void )
 	int  iState1;
 	int  iState2;
 	int  iRand;
-	
+
 	piState		= &rgiState[2];
 	iState1	 	= piState[-2];
 	iState2	 	= piState[-1];
@@ -3894,16 +3894,16 @@ int dice( int number, int size )
 {
 	int idice;
 	int sum;
-	
+
 	switch ( size )
 	{
 	    case 0: return 0;
 	    case 1: return number;
 	}
-	
+
 	for ( idice = 0, sum = 0; idice < number; idice++ )
 		sum += number_range( 1, size );
-	
+
 	return sum;
 }
 
@@ -3928,7 +3928,7 @@ void smash_tilde( char *str )
 		if ( *str == '~' )
 			*str = '-';
 	}
-	
+
 	return;
 }
 
@@ -3945,19 +3945,19 @@ bool str_cmp( const char *astr, const char *bstr )
 		bug( "Str_cmp: null astr.", 0 );
 		return TRUE;
 	}
-	
+
 	if ( !bstr )
 	{
 		bug( "Str_cmp: null bstr.", 0 );
 		return TRUE;
 	}
-	
+
 	for ( ; *astr || *bstr; astr++, bstr++ )
 	{
 		if ( LOWER( *astr ) != LOWER( *bstr ) )
 			return TRUE;
 	}
-	
+
 	return FALSE;
 }
 
@@ -3974,19 +3974,19 @@ bool str_prefix( const char *astr, const char *bstr )
 		bug( "Str_prefix: null astr.", 0 );
 		return TRUE;
 	}
-	
+
 	if ( !bstr )
 	{
 		bug( "Str_prefix: null bstr.", 0 );
 		return TRUE;
 	}
-	
+
 	for ( ; *astr; astr++, bstr++ )
 	{
 		if ( LOWER( *astr ) != LOWER( *bstr ) )
 			return TRUE;
 	}
-	
+
 	return FALSE;
 }
 
@@ -4002,19 +4002,19 @@ bool str_infix( const char *astr, const char *bstr )
 	int  sstr1;
 	int  sstr2;
 	int  ichar;
-	
+
 	if ( ( c0 = LOWER( astr[0] ) ) == '\0' )
 		return FALSE;
-	
+
 	sstr1 = strlen( astr );
 	sstr2 = strlen( bstr );
-	
+
 	for ( ichar = 0; ichar <= sstr2 - sstr1; ichar++ )
 	{
 		if ( c0 == LOWER( bstr[ichar] ) && !str_prefix( astr, bstr + ichar ) )
 			return FALSE;
 	}
-	
+
 	return TRUE;
 }
 
@@ -4028,10 +4028,10 @@ bool str_suffix( const char *astr, const char *bstr )
 {
 	int sstr1;
 	int sstr2;
-	
+
 	sstr1 = strlen( astr );
 	sstr2 = strlen( bstr );
-	
+
 	if ( sstr1 <= sstr2 && !str_cmp( astr, bstr + sstr2 - sstr1 ) )
 		return FALSE;
 	else
@@ -4046,7 +4046,7 @@ char *capitalize( const char *str )
 {
 	static char strcap [ MAX_STRING_LENGTH ];
 	int  i;
-	
+
 	for ( i = 0; str[i] != '\0'; i++ )
 		strcap[i] = LOWER( str[i] );
 	strcap[i] = '\0';
@@ -4062,7 +4062,7 @@ char *capitalize_initial( const char *str )
 {
 	static char strcap [ MAX_STRING_LENGTH ];
 	int  i;
-	
+
 	for ( i = 0; str[i] != '\0'; i++ )
 		strcap[i] = str[i];
 	strcap[i] = '\0';
@@ -4077,10 +4077,10 @@ char *capitalize_initial( const char *str )
 void append_file( CHAR_DATA *ch, char *file, char *str )
 {
 	FILE *fp;
-	
+
 	if ( IS_NPC( ch ) || str[0] == '\0' )
 		return;
-	
+
 	fclose( fpReserve );
 	if ( !( fp = fopen( file, "a" ) ) )
 	{
@@ -4093,7 +4093,7 @@ void append_file( CHAR_DATA *ch, char *file, char *str )
 			ch->in_room ? ch->in_room->vnum : 0, ch->name, str );
 		fclose( fp );
 	}
-	
+
 	fpReserve = fopen( NULL_FILE, "r" );
 	return;
 }
@@ -4106,12 +4106,12 @@ void bug( const char *str, int param )
 {
 	FILE *fp;
 	char  buf [ MAX_STRING_LENGTH ];
-	
+
 	if ( fpArea )
 	{
 		int iLine;
 		int iChar;
-		
+
 		if ( fpArea == stdin )
 		{
 			iLine = 0;
@@ -4127,7 +4127,7 @@ void bug( const char *str, int param )
 			}
 			fseek( fpArea, iChar, 0 );
 		}
-		
+
 		sprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
 		log_string( buf );
 		if ( ( fp = fopen( "../src/shutdown.txt", "a" ) ))
@@ -4136,11 +4136,11 @@ void bug( const char *str, int param )
 			fclose( fp );
 		}
 	}
-	
+
 	strcpy( buf, "[*****] BUG: " );
 	sprintf( buf + strlen( buf ), str, param );
 	log_string( buf );
-	
+
 	fclose( fpReserve );
 	if ( ( fp = fopen( BUG_FILE, "a" ) ) )
 	{
@@ -4148,7 +4148,7 @@ void bug( const char *str, int param )
 		fclose( fp );
 	}
 	fpReserve = fopen( NULL_FILE, "r" );
-	
+
 	return;
 }
 
@@ -4159,7 +4159,7 @@ void bug( const char *str, int param )
 void log_string (const char *str)
 {
 	char *strtime;
-	
+
 	strtime = ctime(&current_time);
 	strtime[strlen(strtime)-6] = '\0';
 	fprintf(stderr, "%s :: %s\n", &strtime[4], str);
@@ -4173,24 +4173,24 @@ void log_string (const char *str)
 void show_vnums(CHAR_DATA *ch, int low, int high,  bool shownl,
 		char *loadst, char *notloadst)
 {
-	char buf[MAX_STRING_LENGTH]; 
+	char buf[MAX_STRING_LENGTH];
 	AREA_DATA *pArea, *first_sort;
 	int count;
-	
+
 	first_sort = area_first;
-	count = 0;  
-	
-	for ( pArea = first_sort; pArea; pArea = pArea->next ) 
+	count = 0;
+
+	for ( pArea = first_sort; pArea; pArea = pArea->next )
 	{
 		if ( pArea->low_r_vnum < low )
 			continue;
-		
+
 		if ( pArea->hi_r_vnum > high )
 			continue;
-		
+
 		else if ( !shownl )
 			continue;
-		
+
 		sprintf(buf, "%-24s| Rooms: %5d-%-5d"
 			" Objs: %5d-%-5d Mobs: %5d-%-5d%s\n\r",
 			(pArea->name ? pArea->name : "(invalid)"),
@@ -4198,26 +4198,26 @@ void show_vnums(CHAR_DATA *ch, int low, int high,  bool shownl,
 			pArea->low_o_vnum, pArea->hi_o_vnum,
 			pArea->low_m_vnum, pArea->hi_m_vnum,
 			loadst  );
-		
+
 		send_to_char( buf, ch );
-		
+
 		/*
 		 * Used by Gezhp to extract area vnum info to file
 		 * printf ("\t'%s',\t\t%d,\t%d,\n",
 		 * pArea->name ? pArea->name : "(invalid)",
 		 * pArea->low_m_vnum,
-		 * pArea->hi_m_vnum); 
+		 * pArea->hi_m_vnum);
 		 */
-		
+
 		count++;
 	}
-	
+
 	sprintf( buf, "Areas listed: %d\n\r", count );
-	send_to_char( buf, ch ); 
+	send_to_char( buf, ch );
 	return;
 }
 
- 
+
 /*
  * Shows installed areas, sorted.  Mark unloaded areas with an X
  */
@@ -4227,21 +4227,21 @@ void do_zones( CHAR_DATA *ch, char *argument )
 	char arg2[MAX_INPUT_LENGTH];
 	int low = 0;
 	int high = 60000;
-	
+
 	argument = one_argument( argument, arg1 );
 	argument = one_argument( argument, arg2 );
 
 	if ( arg1[0] != '\0' )
 	{
 		low = atoi(arg1);
-		
+
 		if ( arg2[0] != '\0' )
 			high = atoi(arg2);
 	}
-	
+
 	show_vnums( ch, low, high, TRUE, "", " X" );
 }
- 
+
 
 /*
  * This function is here to aid in debugging.

@@ -21,7 +21,7 @@ the Old Treant~
 A huge, gnarled tree stands here, battered by age and nature.
 ~
 The old tree looks as though the wind has battered and torn at it for years.
-Very few leaves remain. Its limbs are crooked and gnarled. It moans as the 
+Very few leaves remain. Its limbs are crooked and gnarled. It moans as the
 wind pushes it back and forth.
 ~
 2 0 250 S
@@ -431,7 +431,7 @@ A pair of metal plated gloves lie here.~
 6 10000 2500
 E
 gloves combat~
-These gloves are plated with metal plates that provide strength and 
+These gloves are plated with metal plates that provide strength and
 protection.
 ~
 A
@@ -870,7 +870,7 @@ A hood made of black leather rests here.~
 9 64 17
 5~ 0~ 0~ 0~
 5 25000 2500
-#2337 
+#2337
 sleeves black leather~
 a pair of black leather sleeves~
 Some leather sleeves lie here.~
@@ -1263,7 +1263,7 @@ A very large glaive rests here.~
 19 45000 5000
 A
 18 1
-A 
+A
 19 1
 #2377
 visor helm crimson steel~
@@ -1335,7 +1335,7 @@ a huge wooden maul~
 A huge wooden maul rests here.~
 ~
 5 0 8193
-0~ 5~ 5~ 6~ 
+0~ 5~ 5~ 6~
 22 100000 20000
 #2384
 potion misty~
@@ -1583,7 +1583,7 @@ This is a small intersection. Paths lead east, west, and south. You are struck
 by the carnage here when you enter the clearing. There appears to have been a
 great battle here. Blood is everywhere and the ground is all torn up. Pieces
 of beaten armour and broken blades lie all around. Examining the tracks here
-lead you to believe that the dead and wounded were dragged off in two 
+lead you to believe that the dead and wounded were dragged off in two
 directions, south and east.
 ~
 23 1 4
@@ -2331,8 +2331,8 @@ S
 #2343
 Inside the gates~
 You stand just north of the gates to the village. Looking around, you see many
-crude huts and cooking fires. To the north, you see a huge fire pit. Behind 
-it, there appears to be a hut of sorts. Small paths lead east and west among 
+crude huts and cooking fires. To the north, you see a huge fire pit. Behind
+it, there appears to be a hut of sorts. Small paths lead east and west among
 the crude huts. The gates to the south provide an exit from the village.
 ~
 23 0 1
@@ -2453,7 +2453,7 @@ The throne room~
 You stand in a large, crudely decorated throne room. A huge throne adorned
 with humanoid skulls sits against the west wall. A crude, blood stained altar
 is against the east wall. A doorway is directly to the north, long strands of
-beads blocking the view of the other side. Crude torches light the hall and 
+beads blocking the view of the other side. Crude torches light the hall and
 smoke clings to the ceiling.
 ~
 23 8 0
@@ -2728,7 +2728,7 @@ Before the gates of Mahn-Tor~
 You stand at the edge of a high cliff. Directly south, set back off the
 cliff's edge, you see a huge pair of gates. These gates appear to be carved
 almost completely out of ice. A huge city and keep appear to be on the other
-side of these gates. There is also a possibility of climbing down the cliff 
+side of these gates. There is also a possibility of climbing down the cliff
 face.
 ~
 23 0 5
@@ -3538,7 +3538,7 @@ M 0 2307 5 2344
 *
 M 0 2308 4 2347      Ogre Warrior
 E 1 2386 25 16       Ogre Spear
-M 0 2308 4 2342 
+M 0 2308 4 2342
 E 1 2386 25 16
 M 0 2308 4 2348
 E 1 2386 25 16
@@ -3547,7 +3547,7 @@ E 1 2386 25 16
 *
 M 0 2309 4 2348      Ogre Guard
 E 1 2387 25 16       Ogre Club
-M 0 2309 4 2342 
+M 0 2309 4 2342
 E 1 2387 25 16
 M 0 2309 4 2341
 E 1 2387 25 16
@@ -3565,15 +3565,15 @@ E 1 2391 10 16       Massive Club
 M 0 2312 3 2351      Plains Barbarian
 E 1 2392 20 4        Thick Fur Cape
 E 1 2393 20 5        Fur Lined Tunic
-E 1 2360 20 8        Fur Lined Boots 
+E 1 2360 20 8        Fur Lined Boots
 M 0 2312 3 2354
-E 1 2392 20 4        
-E 1 2393 20 5        
-E 1 2360 20 8         
-M 0 2312 3 2359 
-E 1 2392 20 4        
-E 1 2393 20 5        
-E 1 2360 20 8         
+E 1 2392 20 4
+E 1 2393 20 5
+E 1 2360 20 8
+M 0 2312 3 2359
+E 1 2392 20 4
+E 1 2393 20 5
+E 1 2360 20 8
 *
 M 0 2313 3 2357        White Yeti
 E 1 2361 20 12         Pelt of the Yeti
@@ -3588,7 +3588,7 @@ M 0 2314 3 2356
 *
 M 0 2315 5 2363         Minotaur Citizen
 E 1 2362 35 16             Kopesh Sword
-M 0 2315 5 2367 
+M 0 2315 5 2367
 E 1 2362 35 16
 M 0 2315 5 2365
 E 1 2362 35 16
@@ -3633,7 +3633,7 @@ E 1 2371 15 10                Blue Steel Vambraces
 E 1 2366 15 5                Steel Plate
 E 1 2372 10 16               Two-Handed Sword
 M 0 2319 2 2379
-E 1 2369 15 6                 
+E 1 2369 15 6
 E 1 2370 15 7
 E 1 2371 15 10
 E 1 2366 15 5
@@ -3650,9 +3650,9 @@ E 1 2373 10 6
 E 1 2374 10 7
 E 1 2375 10 10
 E 1 2366 15 5
-E 1 2376 10 16     
+E 1 2376 10 16
 *
-M 0 2321 2 2385               Minotaur Elite Guard         
+M 0 2321 2 2385               Minotaur Elite Guard
 E 1 2377 5 6                  Crimson Steel Visor
 E 1 2378 5 7                  Crimson Steel Greaves
 E 1 2379 5 10                 Crimson Steel Vambraces

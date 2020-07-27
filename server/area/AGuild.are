@@ -111,7 +111,7 @@ some gold and platinum coins~
 A pile of gold and platinum coins sits on the ground.~
 ~
 20 0 1|16384
-0~ 0~ 500~ 50~ 
+0~ 0~ 500~ 50~
 5 0 0
 #25301
 shield crusader's~
@@ -119,7 +119,7 @@ crusader's shield~
 A large metal shield bears a holy symbol on its front face.~
 ~
 9 1 1|512
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 10 0 0
 A
 19 4
@@ -151,7 +151,7 @@ an emerald necklace~
 A shining emerald necklace lays on the ground.~
 ~
 9 1|64 1|4
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 9
@@ -165,7 +165,7 @@ table~
 A long table runs the length of the room~
 ~
 12 0 8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 250 0 0
 #25305
 emerald necklace~
@@ -229,7 +229,7 @@ A
 E
 protective talisman~
 
-The talisman is humming with magical energies and lends you a feeling of 
+The talisman is humming with magical energies and lends you a feeling of
 protection when you fasten it around your neck.
 
 ~
@@ -312,7 +312,7 @@ S
 #25302
 Lord Kurbistraht's Office~
 Bookcases and wooden cabinets line the walls of this office.  You also
-see that there are stairs leading down into a dark room.  The tiled 
+see that there are stairs leading down into a dark room.  The tiled
 floor is dominated by a large wooden desk.  A large SIGN sits in front
 of the desk.
 ~
@@ -341,8 +341,8 @@ O=============================O
 S
 #25303
 Saint Justinian's Office~
-Oil paintings and religious idols sit about this plush room.  Scented 
-candles burn in ornate electrum holders.  A large SIGN contains elegant 
+Oil paintings and religious idols sit about this plush room.  Scented
+candles burn in ornate electrum holders.  A large SIGN contains elegant
 handwriting.
 ~
 0 8|1024 0
@@ -365,7 +365,7 @@ O=============================O
 S
 #25304
 Xiao Tsu's Office~
-Stuffed heads and a selection of cruel and evil looking weapons hang on 
+Stuffed heads and a selection of cruel and evil looking weapons hang on
 the walls of this room, which contains no furnature except for a modest
 desk and a large SIGN on the wall.
 ~

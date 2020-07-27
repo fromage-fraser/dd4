@@ -9,7 +9,7 @@ gate watch guard~
 the Gate Guard~
 The gate guard stands here,  proudly protecting the city...
 ~
-These men are chosen for their tall menacing demeanour,  a necessary evil in the 
+These men are chosen for their tall menacing demeanour,  a necessary evil in the
 current times of unrest and uncertainty.
 ~
 2|64 8|32|512|8192 400 S
@@ -21,7 +21,7 @@ elite guard watch~
 the Elite Guard~
 The Elite guard ignores you,  continuing to do his duty...
 ~
-The hand picked elite of the Draagdim guard assumed the coveted position of 
+The hand picked elite of the Draagdim guard assumed the coveted position of
 guarding the palace.  They are all veterans and remain alert.
 ~
 2|64 8|32|512|8192 900 S
@@ -38,7 +38,7 @@ an Elite Sword~
 A sword bearing the symbol of the Draagdim elite guard rests here.~
 ~
 5 64|1024 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 19 10
@@ -48,7 +48,7 @@ an Elite Breastplate~
 A breastplate bearing the symbol of the Draagdim Elite guard lies here...~
 ~
 9 64|1024 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 17 -20
@@ -60,7 +60,7 @@ an Elite Helm~
 A helmet bearing the symbol of the Draagdim Elite guard lies here...~
 ~
 9 64|1024 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 A
 17 -10
@@ -72,7 +72,7 @@ a City Battleaxe~
 A large and carefully sharpened battleaxe rests here.~
 ~
 5 64|2048 1|8192
-0~ 1~ 6~ 13~ 
+0~ 1~ 6~ 13~
 5 0 0
 A
 19 20
@@ -82,7 +82,7 @@ a City Leather Jerkin~
 A leather jerkin bearing the symbol of Draagdim lies here.~
 ~
 9 64|1024 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 2 0 0
 A
 17 -10
@@ -94,7 +94,7 @@ an Elite Shield~
 A shield bearing the symbol of the Draagdim elite guard lies here.~
 ~
 9 64|1024|2048 1|512
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 2 0 0
 A
 17 -25
@@ -144,7 +144,7 @@ S
 #28102
 The North Road~
 You are standing on the North Road.  The High Wall is to the east and
-the gateway is a short distance off to the north and the road 
+the gateway is a short distance off to the north and the road
 continues south into the heart of the city.
 ~
 0 0 1
@@ -186,7 +186,7 @@ S
 #28104
 The Inner Gates~
 You are standing at the Inner Gate.  A gateway into the High Quarter
-stands to the east.  Southwards you can see the city palace emerging 
+stands to the east.  Southwards you can see the city palace emerging
 out of the chaos of dwellings and shops that make up this huge city.
 Northwards,  the High Wall runs towards the North Gate.
 ~
@@ -524,7 +524,7 @@ Temple of the Gods~
 This room has a number of alcoves spotted around it.  Inside are
 small dedicated shrines to the other GODs in the MUD.  You see a
 small statue of a dwarf holding a small piece of cloth (obviously
-Geshp),  a cross-eyed rubbish bin (Madboy),  and others belonging 
+Geshp),  a cross-eyed rubbish bin (Madboy),  and others belonging
 to Jihad,  Rufus and Sacrifis.
 ~
 0 8 0
@@ -626,7 +626,7 @@ You are standing inside the huge city walls that surround the proud
 city of Draagdim.  To the east,  you see the fortified sea gate
 that is scrupulously guarded by the proud elite sea watch.  Westwards
 the confusion of stalls,  lean-to's and shops that are the Draagdim
-Market are so tightly jammed together in the space you cannot find a 
+Market are so tightly jammed together in the space you cannot find a
 space to get in.
 ~
 0 4 1
@@ -642,7 +642,7 @@ S
 #28130
 The South Gate~
 You are standing within the citywalls.  South,  the gate leads out into a dark
-and foreboding forest. North,  the sights,  sounds and smells of this continent's 
+and foreboding forest. North,  the sights,  sounds and smells of this continent's
 largest city tempt the senses.
 ~
 0 0 1

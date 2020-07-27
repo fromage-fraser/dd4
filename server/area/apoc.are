@@ -87,7 +87,7 @@ rat rats~
 the pestilence filled rats~
 A large rat is spreading disease.
 ~
-Unnatural red eyes sit atop the head of this amazingly large rat. 
+Unnatural red eyes sit atop the head of this amazingly large rat.
 Brought forth by Pestilence, this is no ordinary rodent.  It
 spreads disease to all it touches.  Spying you, it decides that you
 would make a nice carrier for its pestilence.
@@ -133,7 +133,7 @@ The Horse of Death~
 A huge white horse is snorting at you.
 ~
 This huge white steed belongs to Death.  He is a fierce and
-formidable foe, and can crush you with the slightest of effort. 
+formidable foe, and can crush you with the slightest of effort.
 With each breath he takes, fire and smoke leak from his nostrils,
 matching the fire that surrounds his feet.  Turning his head in
 your direction, he snorts and charges at you.
@@ -163,7 +163,7 @@ The Horse of Famine~
 A huge brown horse is snorting at you.
 ~
 This huge brown steed belongs to Famine.  He is a fierce and
-formidable foe, and can crush you with the slightest of effort. 
+formidable foe, and can crush you with the slightest of effort.
 With each breath he takes, fire and smoke leak from his nostrils,
 matching the fire that surrounds his feet.  Turning his head in
 your direction, he snorts and charges at you.
@@ -178,7 +178,7 @@ The Horse of Pestilence~
 A huge green horse is snorting at you.
 ~
 This huge green steed belongs to Pestilence.  He is a fierce and
-formidable foe, and can crush you with the slightest of effort. 
+formidable foe, and can crush you with the slightest of effort.
 With each breath he takes, fire and smoke leak from his nostrils,
 matching the fire that surrounds his feet.  Turning his head in
 your direction, he snorts and charges at you.
@@ -197,7 +197,7 @@ the Barren Boots of Famine~
 The ground withers beneath a pair of boots.~
 ~
 9 32|64|4096 1|64
-15~ 1~ 6~ 11~ 
+15~ 1~ 6~ 11~
 13 0 0
 A
 19 10
@@ -209,7 +209,7 @@ the Bloody Armour of War~
 A bloody red breastplate with spikes on it is lying here.~
 ~
 9 32|64|4096 1|8
-18~ 1~ 6~ 11~ 
+18~ 1~ 6~ 11~
 200 0 0
 A
 19 10
@@ -223,7 +223,7 @@ the Diseased Gloves of Pestilence~
 A pair of gloves crawling with insects and disease lies here.~
 ~
 9 32|64|4096 1|128
-15~ 1~ 6~ 11~ 
+15~ 1~ 6~ 11~
 10 0 0
 A
 1 -5
@@ -237,7 +237,7 @@ the Black Robe of Death~
 A black robe reeking of death is piled in the corner.~
 ~
 9 32|64|4096 1|1024
-18~ 1~ 6~ 11~ 
+18~ 1~ 6~ 11~
 50 0 0
 A
 12 1000
@@ -257,7 +257,7 @@ the Scythe of Death~
 A scythe radiating cold stands in the corner.~
 ~
 5 64|128|4096 1|8192
-0~ 85~ 100~ 1~ 
+0~ 85~ 100~ 1~
 30 0 0
 A
 5 -5
@@ -269,7 +269,7 @@ the Bloody Sword of War~
 An enormous sword covered with blood is stuck in the ground.~
 ~
 5 64|128|4096 1|8192
-0~ 85~ 100~ 3~ 
+0~ 85~ 100~ 3~
 30 0 0
 A
 19 9
@@ -281,7 +281,7 @@ a sword~
 A sword rests here.~
 ~
 5 0 1|8192
-0~ 50~ 70~ 3~ 
+0~ 50~ 70~ 3~
 5 0 0
 #5607
 key dirty~
@@ -289,7 +289,7 @@ a dirty key~
 A dirty key rests here.~
 ~
 18 32 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #5608
 belt apocalypse~
@@ -297,7 +297,7 @@ the Belt of the Apocalypse~
 A belt of four colours swirling together lies here.~
 ~
 9 32|64|4096 1|2048
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 14 0 0
 A
 18 5
@@ -313,7 +313,7 @@ the Black Robe of Death~
 A black robe reeking of death is piled in the corner.~
 ~
 9 32|64|4096 1|1024
-18~ 1~ 6~ 11~ 
+18~ 1~ 6~ 11~
 50 0 0
 A
 12 500
@@ -333,7 +333,7 @@ the Belt of the Apocalypse~
 A belt of four colours swirling together lies here.~
 ~
 9 32|64|4096 1|2048
-20~ 1~ 6~ 11~ 
+20~ 1~ 6~ 11~
 14 0 0
 A
 18 5
@@ -1815,7 +1815,7 @@ D 1 5639 1 2            ; A room Lock East
 O 1 5607 100 5601            a dirty key to In the mists.
 *
 *
-M 1 5604 10 5603             the starving man to The Famished 
+M 1 5604 10 5603             the starving man to The Famished
 *Lands.
 *
 M 1 5604 10 5604             the starving man to A room
@@ -1831,7 +1831,7 @@ M 1 5610 1 5613              The Horse of Famine to A room
 M 1 5600 1 5613              Famine to A room
 E 1 5600 100 8
 *
-M 1 5605 10 5616             the pestilence filled rats to The 
+M 1 5605 10 5616             the pestilence filled rats to The
 *City of Pestilence.
 *
 M 1 5605 10 5618             the pestilence filled rats to A room
@@ -1847,7 +1847,7 @@ M 1 5611 1 5626              The Horse of Pestilence
 M 1 5603 1 5626              Pestilence to A room
 E 1 5602 100 9
 *
-M 1 5606 10 5629             the wounded soldier to The Plains of 
+M 1 5606 10 5629             the wounded soldier to The Plains of
 E 1 5606 100 16
 *War.
 *
@@ -1885,7 +1885,7 @@ M 1 5602 1 5652              Death to A room
 E 1 5609 100 12
 E 1 5604 100 16
 D 1 5652 0 2            ; A room Lock North
-O 1 5610 100 5654          The Belt of the Apocalypse to The  
+O 1 5610 100 5654          The Belt of the Apocalypse to The
 *                           End of it All.
 S
 

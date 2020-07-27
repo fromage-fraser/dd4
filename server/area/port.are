@@ -150,7 +150,7 @@ The watchman nods to you and says " Good day to you, citizen"
 #28212
 barkeep~
 a Barkeep~
-The fat barkeep barks " Whaddya want?" 
+The fat barkeep barks " Whaddya want?"
 ~
 The barkeep is a huge fat man with a perpetual nasty expression. He
 looks down at you from the bar as you are vermin. He wipes his sweaty
@@ -170,7 +170,7 @@ crysomer~
 A silver, great-sword rests here.~
 ~
 5 1|2|64|1024|2048 1|8192
-0~ 30~ 72~ 13~ 
+0~ 30~ 72~ 13~
 1 0 0
 A
 1 2
@@ -186,7 +186,7 @@ A
 24 -20
 E
 crysomer~
-This is the fabled sword carried by the half-dragon hero, Fitharn 
+This is the fabled sword carried by the half-dragon hero, Fitharn
 and protected him from the Disintergration spells cast by Xoric
 in the apocalyptic God's War when Madboy truly did lose his bickies
 and led the forces of darkness against Midgaard and it's heroes.~
@@ -196,7 +196,7 @@ a thieves ring~
 A small steel ring lies here~
 ~
 18 512 1|2
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 #28202
 scale~
@@ -204,7 +204,7 @@ a scale shirt~
 A metal scale shirt lies here.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 7 0 0
 #28203
 ~
@@ -212,7 +212,7 @@ A metal scale shirt lies here.~
 ~
 ~
 5 0 8192
-0~ 100~ 600~ 6~ 
+0~ 100~ 600~ 6~
 5 0 0
 A
 18 100
@@ -224,7 +224,7 @@ a dagger~
 A blunt dagger rests here~
 ~
 5 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 19 -1
@@ -234,7 +234,7 @@ a sword~
 A sword rests here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 3~ 
+0~ 1~ 6~ 3~
 5 0 0
 #28206
 flamberge sword~
@@ -242,7 +242,7 @@ a flamberge~
 A long, wavy-bladed sword lies here~
 ~
 5 64 1|8192
-0~ 1~ 6~ 1~ 
+0~ 1~ 6~ 1~
 5 15 10
 A
 2 1
@@ -254,7 +254,7 @@ a mace~
 A heavy mace rests here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 7~ 
+0~ 1~ 6~ 7~
 8 0 0
 A
 19 3
@@ -266,7 +266,7 @@ a battle axe~
 A battle axe rests here.~
 ~
 5 0 1|8192
-0~ 1~ 6~ 13~ 
+0~ 1~ 6~ 13~
 5 0 0
 A
 19 4
@@ -280,7 +280,7 @@ a steel helm~
 A steel helm rests here.~
 ~
 9 0 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 2 0 0
 #28210
 gauntlets leather~
@@ -288,7 +288,7 @@ leather gauntlets~
 A pair of leather gauntlets lie here~
 ~
 9 0 1|128
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 #28211
 plate platemail breast breastplate~
@@ -296,7 +296,7 @@ a platemail breastplate~
 A shiny breastplate lies here.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 A
 2 -1
@@ -308,7 +308,7 @@ leather greaves~
 A pair of leather greaves rest here.~
 ~
 9 0 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #28213
 beer~
@@ -316,7 +316,7 @@ a pint of beer~
 A pint of flat, stale beer sits here~
 ~
 17 0 1
-0~ 1~ 1~ 0~ 
+0~ 1~ 1~ 0~
 1 0 0
 #28214
 whiskey~
@@ -324,7 +324,7 @@ a glass of whiskey~
 A glass of rough whiskey rests here.~
 ~
 17 0 1
-0~ 1~ 5~ 0~ 
+0~ 1~ 5~ 0~
 1 0 0
 #28215
 strong cider~
@@ -332,7 +332,7 @@ a pint of strong cider~
 A pint of extra-strong cider rests here.~
 ~
 17 0 1
-0~ 1~ 20~ 0~ 
+0~ 1~ 20~ 0~
 1 0 0
 #28216
 talisman~
@@ -340,7 +340,7 @@ a talisman of enlightenment~
 A small silver talisman lies here~
 ~
 1 0 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 1 0 0
 A
 4 1
@@ -350,7 +350,7 @@ a cloak of Alvesayth~
 A cloak rests here.~
 ~
 9 64 1|1024
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 5
 A
 2 1
@@ -368,7 +368,7 @@ a nildaeth~
 A nildaeth rests here~
 ~
 5 1 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 10
 A
 1 1
@@ -383,11 +383,11 @@ A nildaeth is a small charm that is worn around the waists of Alaghi to give the
 #ROOMS
 #28200
 The Western Docks~
-You are standing at the docks which gave the Port Quarter it's title.  
-This quarter of the city is the only part which is truly busy all the 
-time as sailors, both drunk and sober pass you by and men unload 
-large containers from the huge ships.  To the north the docks carry on.  
-To the south is the entrance to a seedy tavern called "The Rusty Anchor". 
+You are standing at the docks which gave the Port Quarter it's title.
+This quarter of the city is the only part which is truly busy all the
+time as sailors, both drunk and sober pass you by and men unload
+large containers from the huge ships.  To the north the docks carry on.
+To the south is the entrance to a seedy tavern called "The Rusty Anchor".
 To the west is a jetty. To the east an alleyway called "The
 Links" runs down around the Rusty Anchor to the Southern Docks.
 ~
@@ -514,15 +514,15 @@ D1
 0 -1 28205
 E
 ship~
-The huge frigate bears the king's coat of arms on the hull. She seems 
+The huge frigate bears the king's coat of arms on the hull. She seems
 to be being prepared for war.~
 E
 boxes crates~
-The crates and boxes bear the king's coat of arms on the sides. They 
+The crates and boxes bear the king's coat of arms on the sides. They
 are large and too heavy for one man to lift.~
 E
 Barrels~
-The barrels bear the kings coat of arms on the sides and appear to 
+The barrels bear the kings coat of arms on the sides and appear to
 contain foodstuffs.~
 S
 #28207
@@ -547,7 +547,7 @@ D3
 0 -1 28205
 E
 gate~
-The wrought-iron gate has the number 1 on it and a sign that reads 
+The wrought-iron gate has the number 1 on it and a sign that reads
 "Beware of the Dog".~
 S
 #28208
@@ -680,7 +680,7 @@ D3
 S
 #28216
 The Southern Docks~
-You are standing at the western-most end of the Southern Docks. 
+You are standing at the western-most end of the Southern Docks.
 Thousands of boats are tethered here along the five jetties that jut
 out across the water. Many buildings both shops and warehouses
 (mainly the latter) face the waterfront along the docks and people
@@ -698,7 +698,7 @@ D1
 S
 #28217
 The Southern Docks~
-A fresh breeze blows in from across the water carrying with it the 
+A fresh breeze blows in from across the water carrying with it the
 tangy odour of brine. Many people crowd this wide street some
 strolling and other carrying heavy loads from the boats moored here.
 There is a jetty here to the south.
@@ -747,7 +747,7 @@ S
 The Southern Docks~
 The Southern Docks is crowded with people looking, shopping and
 carrying heavy loads of all sorts of items bound for the Market
-Quarter. To the north is a shop with a suit of platemail emblazoned 
+Quarter. To the north is a shop with a suit of platemail emblazoned
 above the door and a sign hangs next to it. To the south are a
 number of small jetties and docks but all are very crowded making
 passing impossible.
@@ -775,7 +775,7 @@ S
 The Armorie~
 You have entered an enormous, warehouse sized armour shop. All around
 you see manniquins wearing various types of plain and ordinary armour
-through to elaborate and exotic types of armour. At the end of the 
+through to elaborate and exotic types of armour. At the end of the
 room you see a counter and a massive forge.
 ~
 0 8|0 0
@@ -806,8 +806,8 @@ D3
 0 -1 28220
 E
 gate~
-The gate has no lock and no apparent opening mechanism nor any hinges. The 
-beautifully worked gates scrollwork, upon closerexamination is razor sharp 
+The gate has no lock and no apparent opening mechanism nor any hinges. The
+beautifully worked gates scrollwork, upon closerexamination is razor sharp
 to prevent anyone climbing it.~
 S
 #28223
@@ -966,7 +966,7 @@ S
 #28230
 The Eastern Wharf~
 The Eastern Wharf is crowded with new arrivals to the city.  Docked,
-here, is a beautiful passenger liner with four masts and gilded 
+here, is a beautiful passenger liner with four masts and gilded
 scrollwork on the bowsprit. Debarked passengers move to and fro as
 they try to locate thier luggage. To the south you spot a ticketing
 office.
@@ -1242,7 +1242,7 @@ D1
 S
 #28244
 The Sewer~
-You dive into the foul morass that sloshes sluggishly. The putrid 
+You dive into the foul morass that sloshes sluggishly. The putrid
 stench causes bile to flood your mouth and your gorge to rise. The
 hideous stream winds for, what seems like, miles before coming to
 a lit area.
@@ -1260,7 +1260,7 @@ S
 #28245
 Tomb of the Kings~
 You are standing in a brightly lit chamber lined on each side with
-statues of dead kings. To the north you see a pedistal with a glowing 
+statues of dead kings. To the north you see a pedistal with a glowing
 sword resting upon it.
 ~
 0 4|8|0 0

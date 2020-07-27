@@ -451,7 +451,7 @@ be attacked.
 >death_prog 100~
    mpecho Hesad says '{GHAHAHA. You think you've won do you?{x'
    mpecho The room shimmers for a moment...
-   mpecho {x   
+   mpecho {x
    mptransfer all 39070
    mpgoto 39070
    mpforce all look

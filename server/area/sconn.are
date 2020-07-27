@@ -38,7 +38,7 @@ The Eight Ball~
 A glowing black ball floats mystically in the air.~
 ~
 1 1 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 0 0 0
 A
 24 -20
@@ -57,7 +57,7 @@ Hakim's Pool Cue~
 A heavy pool cue rolls around on he ground.~
 ~
 5 64|128|4096 1|8192
-0~ 1000~ 1000~ 11~ 
+0~ 1000~ 1000~ 11~
 0 0 0
 A
 19 100
@@ -76,7 +76,7 @@ misty portal~
 a misty portal~
 ~~
 33 0 0
-30400~ -1~ 0~ 100~ 
+30400~ -1~ 0~ 100~
 1 0 0
 E
 misty portal~
@@ -87,7 +87,7 @@ magical portal~
 A magical portal glows softly here.~
 ~
 33 0 0
-30065~ -1~ 0~ 100~ 
+30065~ -1~ 0~ 100~
 1 0 0
 #0
 

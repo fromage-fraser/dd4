@@ -206,7 +206,7 @@ Priest~
 the priest~
 A powerful priest stand here incanting.
 ~
-The priest glares at you and says 
+The priest glares at you and says
 "How dare you interupt me."
 ~
 4|64|128 128 0 S
@@ -311,7 +311,7 @@ a Rusty Sword~
 A old rusty sword lies here~
 ~
 5 0 1|8192
-14~ 5~ 15~ 1~ 
+14~ 5~ 15~ 1~
 16 0 0
 #16601
 Rusty Helm~
@@ -319,7 +319,7 @@ a rusty helm~
 A rusty helm rests here.~
 ~
 9 0 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 #16602
 Wraiths Claws~
@@ -327,7 +327,7 @@ wraiths Claws~
 A Pair of claws lie here.~
 ~
 5 0 1|8192
-10~ 1~ 6~ 3~ 
+10~ 1~ 6~ 3~
 15 0 0
 A
 19 0
@@ -337,7 +337,7 @@ a iron key~
 A iron key lies here.~
 ~
 18 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #16604
 Tattered rags~
@@ -345,7 +345,7 @@ some tattered rags~
 Some tattered rags lie here.~
 ~
 9 128 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #16605
 Silver visor~
@@ -353,7 +353,7 @@ a silver visor~
 A silver visor lies here.~
 ~
 9 1|1024 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 10 0 0
 #16606
 Silver Platemail~
@@ -361,7 +361,7 @@ silver platemail~
 Some Silver platemail lies here.~
 ~
 9 1|1024 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 A
 1 0
@@ -371,7 +371,7 @@ silver leggings~
 Some Silver leggings lie here.~
 ~
 9 1|512|1024 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 15 0 0
 #16608
 Silver Battleaxe~
@@ -379,7 +379,7 @@ a Silver battleaxe~
 A Silver battleaxe rests here.~
 ~
 5 1024 1|8192
-0~ 7~ 20~ 3~ 
+0~ 7~ 20~ 3~
 25 0 0
 A
 18 2
@@ -391,7 +391,7 @@ a chain of accuracy~
 A chain rests here.~
 ~
 9 1|1024 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 18 3
@@ -401,7 +401,7 @@ a archers bow~
 A archers bow rests here.~
 ~
 5 1024|1073741824 1|8192
-0~ 10~ 20~ 0~ 
+0~ 10~ 20~ 0~
 15 0 0
 #16611
 Archers Boots~
@@ -409,7 +409,7 @@ archers boots~
 Some boots rest here.~
 ~
 9 1024 1|64
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 7 0 0
 A
 18 3
@@ -421,7 +421,7 @@ a cloak~
 A green cloak rests here.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 13 25
@@ -431,7 +431,7 @@ a small scroll~
 A small scroll lies here.~
 ~
 2 1 1
-30~ faerie fire~ curse~ blindness~ 
+30~ faerie fire~ curse~ blindness~
 5 0 0
 #16614
 Fine dagger~
@@ -439,7 +439,7 @@ a fine dagger~
 A expensive looking dagger lies here.~
 ~
 5 0 1|8192
-0~ 11~ 27~ 11~ 
+0~ 11~ 27~ 11~
 6 0 0
 A
 13 10
@@ -449,7 +449,7 @@ a pile of coins~
 A pile of coins lie here~
 ~
 20 0 1
-12~ 23~ 16~ 0~ 
+12~ 23~ 16~ 0~
 5 0 0
 #16616
 fine cloak~
@@ -457,7 +457,7 @@ a fine cloak~
 A fine cloak lies  here.~
 ~
 9 0 1|1024
-6~ 1~ 6~ 11~ 
+6~ 1~ 6~ 11~
 5 0 0
 #16617
 keep key~
@@ -465,7 +465,7 @@ a gold key~
 A gold key rests here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #16618
 Jail Key~
@@ -473,7 +473,7 @@ a jailers key~
 A jailers key lies here.~
 ~
 18 0 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #16619
 Kings Key~
@@ -481,7 +481,7 @@ a Kings key~
 A Kings key lies here.~
 ~
 18 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #16620
 Throneroom key~
@@ -489,7 +489,7 @@ a silver key~
 A silver key rests here.~
 ~
 18 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #16621
 Flail~
@@ -497,7 +497,7 @@ a flail~
 A flail rests here.~
 ~
 5 0 1|8192
-0~ 16~ 26~ 4~ 
+0~ 16~ 26~ 4~
 16 0 0
 A
 19 3
@@ -507,7 +507,7 @@ a shadow lantern~
 A shadow lantern glows on the ground here.~
 ~
 1 1 1|16384
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 5 0 0
 A
 4 2
@@ -519,7 +519,7 @@ a shadow shield~
 A pitch black shield rests here.~
 ~
 9 128|4096 1|512
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 25 0 0
 A
 23 4
@@ -535,7 +535,7 @@ a trident~
 A devils trident smolders on the ground here.~
 ~
 5 128|512 1|8192
-0~ 20~ 37~ 2~ 
+0~ 20~ 37~ 2~
 35 0 0
 A
 1 1
@@ -547,7 +547,7 @@ a evil ring ~
 A evil ring lies here.~
 ~
 9 16|32|64|512|2048|4096 1|2
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 5 0 0
 A
 19 5
@@ -559,7 +559,7 @@ a leather helm~
 A leather helm rests here.~
 ~
 9 0 1|16
-6~ 1~ 6~ 11~ 
+6~ 1~ 6~ 11~
 5 0 0
 #16627
 dark dagger~
@@ -567,7 +567,7 @@ a dark dagger~
 A  dark dagger rests here.~
 ~
 5 0 1|8192
-0~ 6~ 20~ 11~ 
+0~ 6~ 20~ 11~
 5 0 0
 A
 13 20
@@ -577,7 +577,7 @@ chainmail~
 Some chainmail rests here.~
 ~
 9 0 1|8
-6~ 1~ 6~ 11~ 
+6~ 1~ 6~ 11~
 20 0 0
 #16629
 Black mask~
@@ -585,7 +585,7 @@ a black mask~
 A black mask lies here.~
 ~
 9 0 1|16
-7~ 1~ 6~ 11~ 
+7~ 1~ 6~ 11~
 5 0 0
 #16630
 Shrunken heads~
@@ -593,7 +593,7 @@ shrunken heads~
 Some shrunken heads lie here.~
 ~
 9 128|4096 1|4
-7~ 1~ 6~ 11~ 
+7~ 1~ 6~ 11~
 5 0 0
 A
 19 2
@@ -609,7 +609,7 @@ a torturers belt~
 A belt rests here.~
 ~
 9 128|4096 1|2048
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 #16632
 hot poker~
@@ -617,7 +617,7 @@ a hot poker~
 A hot poker lies here.~
 ~
 5 1 1|8192
-0~ 10~ 26~ 3~ 
+0~ 10~ 26~ 3~
 15 0 0
 A
 19 3
@@ -627,7 +627,7 @@ some black robes~
 Some black robes lie here.~
 ~
 9 0 1|1024
-4~ 1~ 6~ 11~ 
+4~ 1~ 6~ 11~
 5 0 0
 #16634
 note~
@@ -635,7 +635,7 @@ a note~
 A note rests here.~
 ~
 13 0 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 note~
@@ -650,7 +650,7 @@ some grey robes~
 Some grey robes lie here.~
 ~
 9 0 1|1024
-4~ 1~ 6~ 11~ 
+4~ 1~ 6~ 11~
 5 0 0
 #16636
 Blood red robe~
@@ -658,7 +658,7 @@ a blood red robe~
 A red robe lies here.~
 ~
 9 0 1|1024
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 5 0 0
 A
 23 5
@@ -670,7 +670,7 @@ a red dagger~
 A red dagger lies here.~
 ~
 5 1 1|8192
-0~ 15~ 36~ 11~ 
+0~ 15~ 36~ 11~
 6 0 0
 A
 1 1
@@ -684,7 +684,7 @@ a book of demon~
 A book rests here.~
 ~
 8 16|2048 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 23 -5
@@ -696,7 +696,7 @@ a scroll~
 A scroll rests here.~
 ~
 2 0 1
-30~ bless~ armor~ sanctuary~ 
+30~ bless~ armor~ sanctuary~
 5 0 0
 #16640
 crown~
@@ -704,7 +704,7 @@ a crown~
 A crown rests here.~
 ~
 9 1 1|16
-4~ 1~ 6~ 11~ 
+4~ 1~ 6~ 11~
 8 0 0
 A
 3 1
@@ -716,7 +716,7 @@ a kings sword~
 A sword rests here.~
 ~
 5 0 1|8192
-0~ 20~ 30~ 3~ 
+0~ 20~ 30~ 3~
 20 0 0
 A
 13 30
@@ -726,7 +726,7 @@ black leather leggings~
 Some leggings lie here.~
 ~
 9 0 1|32
-9~ 1~ 6~ 11~ 
+9~ 1~ 6~ 11~
 5 0 0
 #16643
 Black platemail plate mail~
@@ -734,7 +734,7 @@ some black platemail~
 Some black platemail lies here.~
 ~
 9 128|4096 1|8
-12~ 1~ 6~ 11~ 
+12~ 1~ 6~ 11~
 5 0 0
 A
 19 2
@@ -746,7 +746,7 @@ a wazagashi~
 A wazagashi rests here.~
 ~
 5 1 1|8192
-0~ 15~ 32~ 1~ 
+0~ 15~ 32~ 1~
 20 0 0
 A
 2 2
@@ -756,7 +756,7 @@ a tome of power~
 A tome rests here.~
 ~
 8 1|128|1024|4096 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 18 4
@@ -768,7 +768,7 @@ a steak~
 A steak rests here.~
 ~
 19 0 1
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 #16647
 chips~
@@ -776,7 +776,7 @@ chips~
 Some chips resthere.~
 ~
 19 0 1
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 #16648
 eggs~
@@ -784,7 +784,7 @@ eggs~
 Some eggs lie here.~
 ~
 19 0 1
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 #16649
 White Fluffy hat~
@@ -792,7 +792,7 @@ a white fluffy hat~
 A hat rests here.~
 ~
 9 0 1|16
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 #16650
 Rotten bread~
@@ -800,7 +800,7 @@ rotten bread~
 Some rotten bread lies here.~
 ~
 19 0 1
--1~ 1~ 6~ 11~ 
+-1~ 1~ 6~ 11~
 5 0 0
 #16651
 Dog collar~
@@ -808,7 +808,7 @@ a Dog collar~
 A collar here.~
 ~
 9 0 1|4
-5~ 1~ 6~ 11~ 
+5~ 1~ 6~ 11~
 5 0 0
 A
 5 2
@@ -818,7 +818,7 @@ some fine robes~
 Some fine robes lie here.~
 ~
 9 0 1|1024
-7~ 1~ 6~ 11~ 
+7~ 1~ 6~ 11~
 5 0 0
 #16653
 Silk sash~
@@ -826,7 +826,7 @@ a silk sash~
 A silk sash lies here.~
 ~
 9 0 1|2048
-7~ 1~ 6~ 11~ 
+7~ 1~ 6~ 11~
 5 0 0
 #16654
 dwarven plate~
@@ -834,7 +834,7 @@ some dwarven plate~
 Some dwarven plate lies here.~
 ~
 9 0 1|8
-8~ 1~ 6~ 11~ 
+8~ 1~ 6~ 11~
 20 0 0
 #16655
 axe~
@@ -842,7 +842,7 @@ a axe~
 A axe rests here.~
 ~
 5 1 1|8192
-0~ 24~ 25~ 3~ 
+0~ 24~ 25~ 3~
 20 0 0
 #16656
 letter~
@@ -850,7 +850,7 @@ a letter~
 A letter rests here.~
 ~
 8 0 1|8192
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 letter~
@@ -904,7 +904,7 @@ Welcome to Shadow Keep
 May God have mercy on your soul
 The monsters within won't...
 
-Slash 
+Slash
 ~
 S
 #16602
@@ -2899,7 +2899,7 @@ M  16602 spec_breath_lightning                   A  Giant Eel
 M  16603 spec_poison                     A Giant Rat
 M  16605 spec_guard                      A suit of armour
 M  16606 spec_guard                      the archer
-M  16607 spec_cast_undead                        A  Soldier 
+M  16607 spec_cast_undead                        A  Soldier
 M  16609 spec_thief                      the smuggler
 M  16610 spec_guard                      Keep Sentry
 M  16611 spec_breath_fire                      the shadow demon

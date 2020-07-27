@@ -257,10 +257,10 @@ A vampire is here hiding his face from your light source.
 The guardian vampire looks quite EVIL.  Just by looking at him the hair on your
 arms raises. He looks mighty tough to be just a minor minion.
 ~
-2|32 40 -1000 S  
-35 0 -4 1d1+385 4d5+15  
-96 105000  
-8 8 1  
+2|32 40 -1000 S
+35 0 -4 1d1+385 4d5+15
+96 105000
+8 8 1
 #0
 
 
@@ -885,7 +885,7 @@ oak~
 1 -1 3422
 D4
 You see a large set of stone stairs leading upwards to a small stone door at
-the top. 
+the top.
 ~
 stone trapdoor door~
 2 3410 3405
@@ -1824,7 +1824,7 @@ R 0 3436 4
 R 0 3440 4
 R 0 3441 4
 R 0 3442 4
-R 0 3443 4 
+R 0 3443 4
 R 0 3444 4
 R 0 3445 4
 R 0 3446 4

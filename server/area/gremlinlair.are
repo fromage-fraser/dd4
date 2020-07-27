@@ -42,7 +42,7 @@ Female Gremlin~
 a Female Gremlin~
 The Female {gGremlin{x is looking for her kids.
 ~
-The Female {gGremlin{x garbles something about kicking kids out of the 
+The Female {gGremlin{x garbles something about kicking kids out of the
 way as she looks for her own.
 ~
 4|64 0 -1000 S
@@ -61,11 +61,11 @@ As you look at him you notice one leg is longer then the other.
 0 0
 8 8 1
 #135
-Boosë~
-Boosë the Gremlin~
-Boosë lunges at you with a plastic spork!
+Boosï¿½~
+Boosï¿½ the Gremlin~
+Boosï¿½ lunges at you with a plastic spork!
 ~
-Boosë says "{gGarble Gar Blargh Garble BLAH!{x"
+Boosï¿½ says "{gGarble Gar Blargh Garble BLAH!{x"
 ~
 2|4|32|64 0 -1000 S
 6 0 0 0d0+0 0d0+0
@@ -83,11 +83,11 @@ Booz can't find "{rXeddy{x" and is very unhappy about it.
 0 0
 8 8 1
 #137
-Boozës~
-Boozës the Gremlin~
-Boozës smiles wickedly at you.
+Boozï¿½s~
+Boozï¿½s the Gremlin~
+Boozï¿½s smiles wickedly at you.
 ~
-Boozës pokes at your eyes.
+Boozï¿½s pokes at your eyes.
 ~
 2|32|64 0 -1000 S
 6 0 0 0d0+0 0d0+0
@@ -109,7 +109,7 @@ Sir Durok EAT~
 Sir Durok of EAT~
 Sir Durok is searching for the {gGremlin{x Lord and Xevlin the {GCleric{x.
 ~
-Sir Durok searches for his lost comrade Xevlin the Cleric and the 
+Sir Durok searches for his lost comrade Xevlin the Cleric and the
 infamous Gremlin Lord.
 ~
 2|64 128|8192|32768 1000 S
@@ -130,11 +130,11 @@ The teddy bear's head seems mildly annoyed at not having a body.
 #141
 Jeremiah gremlin~
 Jeremiah the gremlin~
-Jeremiah the {cmighty{x, {cmighty{x, {mlethal{x {ggremlin{x sits on 
+Jeremiah the {cmighty{x, {cmighty{x, {mlethal{x {ggremlin{x sits on
 his "throne" of trash and watches you.
 ~
-His bulging muscles frighten you so badly you begin to tremble, he has 
-an aura of wickedness that buckles your knees......YEAH RIGHT! This puny 
+His bulging muscles frighten you so badly you begin to tremble, he has
+an aura of wickedness that buckles your knees......YEAH RIGHT! This puny
 little thing is the most laughable little critter you've ever seen.
 ~
 2|4|64 256 -1000 S
@@ -162,7 +162,7 @@ petrified bread stick~
 A hard bread stick is here covered in mold.~
 ~
 5 512|2048 1|8192
-0~ 1~ 1~ 0~ 
+0~ 1~ 1~ 0~
 5 0 0
 #131
 tattered pants~
@@ -170,7 +170,7 @@ tattered pants~
 Some tattered pants lie here.~
 ~
 9 0 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #132
 loin cloth~
@@ -178,7 +178,7 @@ a loin cloth~
 A tiny piece of cloth that covers nothing is here.~
 ~
 9 0 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #133
 spork~
@@ -186,7 +186,7 @@ a {wspork{x~
 A plastic eating utensil has been dropped here.~
 ~
 5 0 1|8192
-0~ 0~ 1~ 2~ 
+0~ 0~ 1~ 2~
 5 0 0
 E
 ~
@@ -197,7 +197,7 @@ a dented helmet~
 A worthless dented helmet lies here.~
 ~
 9 1|1024 1|16
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 A
 3 1
@@ -209,7 +209,7 @@ a diaper~
 A smelly diaper lies here.~
 ~
 9 64 1|2048
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #136
 polyester vest~
@@ -217,7 +217,7 @@ a polyester vest~
 A pretty polyester vest has been discarded here.~
 ~
 9 0 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #137
 trash bag~
@@ -225,7 +225,7 @@ a trash bag~
 A trash bag with holes in it lies here.~
 ~
 9 0 1|32
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #138
 bib~
@@ -233,21 +233,21 @@ a severely soiled bib.~
 A bib with all kinds of crap on it is here.~
 ~
 9 0 1|4
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #139
 Xevlin corpse~
 the corpse of Xevlin the Cleric~
-Xevlin the clerics body lies here, chained to the wall and good portion 
+Xevlin the clerics body lies here, chained to the wall and good portion
 of his skull bashed in.~
 ~
 15 0 8192
-100~ 1~ -1~ 11~ 
+100~ 1~ -1~ 11~
 5 0 0
 E
 corpse Xevlin~
-This appears to be Xevlin the Cleric, Durok the knights friend. His 
-head is bashed in and he's very dead. Durok will not be happy..he 
+This appears to be Xevlin the Cleric, Durok the knights friend. His
+head is bashed in and he's very dead. Durok will not be happy..he
 appears to still have some of his equipment on his body.~
 #140
 paper journal page #1~
@@ -255,13 +255,13 @@ a page of a journal #1~
 A page of a journal lies here.~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 E
 paper journal~
-This piece of paper appears to be part of someone's journal. Inside 
-it reads  "We found the entrance to the Gremlin Lair. 
-Durok was especially happy. I just want to get out of here...". 
+This piece of paper appears to be part of someone's journal. Inside
+it reads  "We found the entrance to the Gremlin Lair.
+Durok was especially happy. I just want to get out of here...".
 That's all.~
 #141
 shining breastplate~
@@ -269,7 +269,7 @@ a shining breastplate~
 A shining breastplate is here.~
 ~
 9 1|2|1024|2048 1|8
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #142
 Jeremiah's throne~
@@ -277,7 +277,7 @@ jeremiah's throne~
 A  throne of {ygolden{x trash glitters with the light of your torch.~
 ~
 15 0 0
-100~ 1~ -1~ 11~ 
+100~ 1~ -1~ 11~
 5 0 0
 #143
 paper journal page #2~
@@ -285,22 +285,22 @@ a page of a journal #2~
 A piece of a journal~
 ~
 13 0 1|16384
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 E
 journal paper 2~
-This piece of the journal reads: " Unfortunately, I have been separated 
-from Durok. But, I found this great helm! I can't wait to.....I hear 
-something coming...I hope it's Durok...". Looks like he didn't get a 
+This piece of the journal reads: " Unfortunately, I have been separated
+from Durok. But, I found this great helm! I can't wait to.....I hear
+something coming...I hope it's Durok...". Looks like he didn't get a
 chance to finish.~
 #144
 soda can~
 a empty soda can~
-A empty soda can lies here, having rolled to a stop after being tossed 
+A empty soda can lies here, having rolled to a stop after being tossed
 by King Boo.~
 ~
 18 64 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 1 0 0
 #145
 wacky scroll~
@@ -308,7 +308,7 @@ a {yw{gac{rk{cy{x scroll~
 A scroll is crumpled here.~
 ~
 2 1|2|32|64 1|16384
-1~ ventriloquate~ detect magic~ know alignment~ 
+1~ ventriloquate~ detect magic~ know alignment~
 1 0 0
 #0
 
@@ -316,8 +316,8 @@ A scroll is crumpled here.~
 #ROOMS
 #130
 Entrance to the Gremlin Lair~
-Small claw marks and tattered bits of various objects are scattered 
-around this cave mouth...you think you hear shuffling and eery cackling 
+Small claw marks and tattered bits of various objects are scattered
+around this cave mouth...you think you hear shuffling and eery cackling
 from farther into the cave.
 ~
 0 1|4 1
@@ -332,8 +332,8 @@ D5
 S
 #131
 Farther into the Gremlin Lair~
-The claw marks and bits of destroyed items increase as you make your 
-way farther down into the cave. The little devils appear to have 
+The claw marks and bits of destroyed items increase as you make your
+way farther down into the cave. The little devils appear to have
 hollowed out room like spaces from the tunnels.
 ~
 0 8 1
@@ -348,7 +348,7 @@ D5
 S
 #132
 You're in!~
-The tunnel cave levels off here and tunnels lead off to the east and 
+The tunnel cave levels off here and tunnels lead off to the east and
 west.
 ~
 0 8 1
@@ -367,7 +367,7 @@ D4
 S
 #133
 Babies!~
-A cute, adorable and extremely {revil{w looking Baby Gremlin sits here 
+A cute, adorable and extremely {revil{w looking Baby Gremlin sits here
 playing with a dead rat.
 ~
 0 8 1
@@ -382,7 +382,7 @@ D3
 S
 #134
 Babies!~
-A cute, adorable and extremely {revil{w looking Baby Gremlin sits here 
+A cute, adorable and extremely {revil{w looking Baby Gremlin sits here
 playing with a dead rat.
 ~
 0 8 1
@@ -397,8 +397,8 @@ D3
 S
 #135
 The "play" room.~
-This room appears to be where the baby gremlins do their "playing". 
-There are vast amounts of broken items and {ydead{w animals spread 
+This room appears to be where the baby gremlins do their "playing".
+There are vast amounts of broken items and {ydead{w animals spread
 across the room...and a bunch of babies playing with them.
 ~
 0 8 1
@@ -417,7 +417,7 @@ D2
 S
 #136
 The Play Ground.~
-You see many many destroyed children's play things scattered about. 
+You see many many destroyed children's play things scattered about.
 Among the remains you spot the {gsevered{w head of a teddy bear.
 ~
 0 8 1
@@ -428,9 +428,9 @@ D3
 S
 #137
 A crevice~
-As you step into this room you are momentarily blinded by the 
-{ysunlight{w making it's way through the crevice that open up to the 
-sky in the ceiling. After your vision returns you notice a mighty 
+As you step into this room you are momentarily blinded by the
+{ysunlight{w making it's way through the crevice that open up to the
+sky in the ceiling. After your vision returns you notice a mighty
 knight that appears to be preparing for battle.
 ~
 0 4 5
@@ -441,8 +441,8 @@ D0
 S
 #138
 A clean room~
-You enter this room and are surprised to find it is relatively clean 
-compared to the other parts of this gremlin infested place...somehow, 
+You enter this room and are surprised to find it is relatively clean
+compared to the other parts of this gremlin infested place...somehow,
 this worries you.
 ~
 0 1|4|8 1
@@ -457,9 +457,9 @@ D3
 S
 #139
 The "stairwell"~
-You enter this room and meet the reason why the baby's seem to avoid 
-the prior room and obviously this room too. A larger gremlin stands 
-at the foot of a hole that leads deeper into the tunnels..must be a 
+You enter this room and meet the reason why the baby's seem to avoid
+the prior room and obviously this room too. A larger gremlin stands
+at the foot of a hole that leads deeper into the tunnels..must be a
 guard.
 ~
 0 1|4|8 1
@@ -474,9 +474,9 @@ D5
 S
 #140
 The 2nd level~
-As you climb/slide down the primitive stairs you arrive at this place. 
+As you climb/slide down the primitive stairs you arrive at this place.
 The gremlins here appear to be slightly larger then the ones above.
-looks like they feel the babies can take care of themselves (and 
+looks like they feel the babies can take care of themselves (and
 hopefully any intruders).
 ~
 0 1|4|8 1
@@ -505,9 +505,9 @@ D3
 S
 #142
 {rAAAAAAHHHHHHHHHHHH{W!!!!!!!!!!!!!{x~
-As you make your way into this room, the air is suddenly filled with 
-a echo of what sounds like a human crying out in extreme pain. After 
-the bone chilling cry subsides, you check to make sure your weapon is 
+As you make your way into this room, the air is suddenly filled with
+a echo of what sounds like a human crying out in extreme pain. After
+the bone chilling cry subsides, you check to make sure your weapon is
 at the ready.
 ~
 0 1|8 1
@@ -522,7 +522,7 @@ D3
 S
 #143
 A draft of wind....~
-A draft of wind that somehow made it's way down to this place softly 
+A draft of wind that somehow made it's way down to this place softly
 brushes by you, raising goose bumps along your flesh.
 ~
 0 1|8 1
@@ -537,7 +537,7 @@ D3
 S
 #144
 Nothing....or not~
-This room is completely bare....except for the {rblood{w and {bdead{w 
+This room is completely bare....except for the {rblood{w and {bdead{w
 and {ydying{w creatures that are occupying it.
 ~
 0 1|4|8 1
@@ -552,8 +552,8 @@ D3
 S
 #145
 The 2nd "stairwell"~
-It looks like these tunnels run yet another level deeper and that the 
-gremlins get yet another size larger. The biggest gremlin you've seen 
+It looks like these tunnels run yet another level deeper and that the
+gremlins get yet another size larger. The biggest gremlin you've seen
 so far sits here guarding the way down to the next level.
 ~
 0 1|4|8 1
@@ -568,9 +568,9 @@ D5
 S
 #146
 Welcome to the 3rd level!~
-You make your way down the sorry excuse for stairs and find 
-yourself in.......{YSURPRISE!{x {wAnother gremlin room. This 
-time it looks like you've found the level where the mommy and 
+You make your way down the sorry excuse for stairs and find
+yourself in.......{YSURPRISE!{x {wAnother gremlin room. This
+time it looks like you've found the level where the mommy and
 daddy gremlins reside.
 ~
 0 1|4|8 1
@@ -585,9 +585,9 @@ D4
 S
 #147
 {rJeremiah's "throne room"{x~
-You come upon a room with a frayed banner hanging from the roof that 
-proclaims this place "JÆr3rnI@HZ room". What appears to be a {ygolden{w 
-throne sits in the middle of the room with what must be Jeremiah himself 
+You come upon a room with a frayed banner hanging from the roof that
+proclaims this place "Jï¿½r3rnI@HZ room". What appears to be a {ygolden{w
+throne sits in the middle of the room with what must be Jeremiah himself
 on top it.
 ~
 0 1|8 1
@@ -602,8 +602,8 @@ D3
 S
 #148
 {rKLANG! THUD! KLANG! THUD! KLANG! THUD! KLANG! THUD!{x~
-You enter this room and the air around you is filled with the echoes of 
-metal clashing with metal followed by a wet thud....you're definitely 
+You enter this room and the air around you is filled with the echoes of
+metal clashing with metal followed by a wet thud....you're definitely
 a wee-bit scared now....definitely.
 ~
 0 1|8 1
@@ -618,8 +618,8 @@ D3
 S
 #149
 tiny~
-This room is barely tall enough for you to stand in, though the gremlins 
-don't seem to suffer from this problem..of course, they're a lot smaller 
+This room is barely tall enough for you to stand in, though the gremlins
+don't seem to suffer from this problem..of course, they're a lot smaller
 then you..most of them anyway.
 ~
 0 1|8 1
@@ -634,8 +634,8 @@ D3
 S
 #150
 BIG~
-This room, in contrast to the last, is unusually large. Many gremlins 
-must gather here as there seems to be an even more abundant amount of 
+This room, in contrast to the last, is unusually large. Many gremlins
+must gather here as there seems to be an even more abundant amount of
 mess in here then elsewhere.
 ~
 0 1|8 1
@@ -655,9 +655,9 @@ S
 #151
 The 3rd "stairwell"~
 You come upon the 3rd stairwell and a sense of something...
-amiss fills you. At first you cant quite tell why then it hits 
-you... this stairwell, unlike the others, is unguarded. It seems 
-the other gremlins avoid the next lower level without the need of 
+amiss fills you. At first you cant quite tell why then it hits
+you... this stairwell, unlike the others, is unguarded. It seems
+the other gremlins avoid the next lower level without the need of
 a "helper". The question is though, WHY?
 ~
 0 1|4|8 1
@@ -672,10 +672,10 @@ D5
 S
 #152
 Empty, Coins and Trash~
-This room appears very similar to the others you've been through, 
-mostly empty, trash and bits of carcass...but a few things 
-{yg{wl{yi{wt{yt{we{yr{w in your torch light and they turn out to be 
-coins. They seem to run in the 4 directions of the 4 doors to each 
+This room appears very similar to the others you've been through,
+mostly empty, trash and bits of carcass...but a few things
+{yg{wl{yi{wt{yt{we{yr{w in your torch light and they turn out to be
+coins. They seem to run in the 4 directions of the 4 doors to each
 side....
 ~
 0 1|4|8 1
@@ -706,8 +706,8 @@ D5
 S
 #153
 Boos's room~
-Everything in this room is covered in trash! Rats scurry around chewing 
-on the trash and occasionally your boots. In the middle of the room sits 
+Everything in this room is covered in trash! Rats scurry around chewing
+on the trash and occasionally your boots. In the middle of the room sits
 Boos. "{rKILL! KILL!{w" he bellows as he spots you.
 ~
 0 1|8 1
@@ -717,12 +717,12 @@ D2
 0 -1 152
 S
 #154
-Boosë's room~
-Dead center in this room is a large gremlin cramming food into his 
-mouth. Rather strange you think as you notice the gremlin is trying 
-to eat and laugh at the same time, you find the sight quite amusing. 
-After a second the Gremlin stops and turns to you. 
-"{gKill!{w". "{gKill..{w" comes from the gremlin. "{gYou will die 
+Boosï¿½'s room~
+Dead center in this room is a large gremlin cramming food into his
+mouth. Rather strange you think as you notice the gremlin is trying
+to eat and laugh at the same time, you find the sight quite amusing.
+After a second the Gremlin stops and turns to you.
+"{gKill!{w". "{gKill..{w" comes from the gremlin. "{gYou will die
 touch food!{w" "{gNo come closer!!{w"
 ~
 0 1|8 1
@@ -732,7 +732,7 @@ D0
 0 -1 152
 S
 #155
-Boozës's room~
+Boozï¿½s's room~
 "{yEeek{w". "{yDddn{w". "{yXxxs{w". This gremlin is apparently trying to
 speak, but failing miserably.
 ~
@@ -744,12 +744,12 @@ D3
 S
 #156
 Booz's room~
-X's and o's of {rblood{w adorn the walls of this room. Every where you 
-look is covered in {rblood{w. {bDeath{w is rampant in this room. 
-Darkness wraps its icy fingers around your heart and you tremble. 
-In the corner, refuse is piled up to your chest. Covered in vile 
-waste is Booz himself. Upon your entry he rises up and {ygrowls{w. 
-Suddenly, you wonder what the hell you were thinking coming down here 
+X's and o's of {rblood{w adorn the walls of this room. Every where you
+look is covered in {rblood{w. {bDeath{w is rampant in this room.
+Darkness wraps its icy fingers around your heart and you tremble.
+In the corner, refuse is piled up to your chest. Covered in vile
+waste is Booz himself. Upon your entry he rises up and {ygrowls{w.
+Suddenly, you wonder what the hell you were thinking coming down here
 at all.
 ~
 0 1|8 1
@@ -775,7 +775,7 @@ D4
 S
 #158
 {rBlood{x~
-You notice there's {rblood{w smeared across the floor as if someone 
+You notice there's {rblood{w smeared across the floor as if someone
 or something was dragged across here fairly recently.
 ~
 0 1|8 1
@@ -790,10 +790,10 @@ D2
 S
 #159
 Closed doors~
-You come to the end of the large tunnel and notice two things. 
-First you notice the large set of doors that are closed. Secondly, 
-you notice the {rblood{w that is on the ground and slightly smeared 
-on the closed doors. 
+You come to the end of the large tunnel and notice two things.
+First you notice the large set of doors that are closed. Secondly,
+you notice the {rblood{w that is on the ground and slightly smeared
+on the closed doors.
 You simply just can't WAIT to open them can you?
 ~
 0 1|8 1
@@ -808,9 +808,9 @@ D2
 S
 #160
 King Boo's residence~
-You're in {WKing Boo's{x {wplace. This is made evident by the amount of 
-money, trash and just about everything else you've seen while in this 
-place being in extreme abundance compared to the rest of the rooms you've 
+You're in {WKing Boo's{x {wplace. This is made evident by the amount of
+money, trash and just about everything else you've seen while in this
+place being in extreme abundance compared to the rest of the rooms you've
 been in. The fact the King Boo himself is standing here is a big clue too.
 ~
 0 1|8 1
@@ -825,8 +825,8 @@ door~
 S
 #161
 {rA storage space.......or a cell?{x~
-This appears to be an empty room. There's nothing in it at first glance 
-then you notice the body lying against the wall to the side..could this 
+This appears to be an empty room. There's nothing in it at first glance
+then you notice the body lying against the wall to the side..could this
 be {GXevlin{w?
 ~
 0 1|8|8192 5
@@ -837,7 +837,7 @@ D1
 S
 #162
 Gizmo's Room~
-Before you stands Gizmo. You think you've heard that name from 
+Before you stands Gizmo. You think you've heard that name from
 somewhere before, but you aren't sure. This place seems safe and calm.
 ~
 0 4|8|1024 5
@@ -914,10 +914,10 @@ M 1 132 4 150			a Male Gremlin to BIG
 *
 M 1 134 1 153			Boos the Gremlin. to Boos's room
 *
-M 1 135 1 154			Boosë the Gremlin to Boosë's room
+M 1 135 1 154			Boosï¿½ the Gremlin to Boosï¿½'s room
 E 1 133 100 16
 *
-M 1 137 1 155			Boozës the Gremlin to Boozës's room
+M 1 137 1 155			Boozï¿½s the Gremlin to Boozï¿½s's room
 *
 M 1 136 1 156			Booz the Gremlin to Booz's room
 *

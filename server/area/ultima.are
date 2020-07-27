@@ -51,7 +51,7 @@ look up at you expectantly.
 ~
 128 0 1000 S
 3 0 0 0d0+0 0d0+0
-0 0 
+0 0
 0 0 2
 #2404
 sheep~
@@ -156,7 +156,7 @@ reproduce.
 ~
 32|128 0 -1000 S
 7 0 0 0d0+0 0d0+0
-63 0 
+63 0
 0 0 0
 #2412
 snake~
@@ -201,7 +201,7 @@ beggar~
 the beggar~
 A beggar is here with his hand out.
 ~
-He is more accustomed to receiving Compassion, than giving it. 
+He is more accustomed to receiving Compassion, than giving it.
 But help him out gov, give him a few coins.
 ~
 0 0 500 S
@@ -256,7 +256,7 @@ Gwenno the Bard~
 Gwenno the Bard, Iolo's happy wife, wanders around with bow in
 hand.
 ~
-You see a pretty woman, with finally sculptured musculature. 
+You see a pretty woman, with finally sculptured musculature.
 She's seems to guard the party with a her Infinity Bow, the best
 bow in the Ultima world.  Her kindly eyes seem to emit pure
 Compassion, and as she wanders she helps the drunks up and leads
@@ -505,14 +505,14 @@ solidified into a human form.
 ~
 0 128 1000 S
 33 0 0 0d0+0 0d0+0
-0 0 
+0 0
 0 0 1
 #2438
 mimic~
 the mimic~
 A treasure chest is here, overflowing with gold.
 ~
-The treasure chest reforms, and spits out a glob of poison. 
+The treasure chest reforms, and spits out a glob of poison.
 Beware adventurer of the Mimic.
 ~
 32 0 -1000 S
@@ -552,8 +552,8 @@ Julia the Tinker~
 Julia the Tinker is here forging a sword.~
 Julia the Tinker provided some of the muscle power to the Avatar,
 during his Great Quest for enlightenment.  She was a Warrior of
-Destiny and you see that not much has changed since those days. 
-She represents Sacrifice in everything she does, she is the 
+Destiny and you see that not much has changed since those days.
+She represents Sacrifice in everything she does, she is the
 Keeper of Oral History, as well as a prominent weaponsmith.
 ~
 2 128 1000 S
@@ -594,7 +594,7 @@ come billowing out of his maw.
 ~
 The dragon looks like every other dragon you've seen, wings,
 tail, fire.  Only this one doesn't have a  dorky color attached
-to it.  And doesn't talk about annoying C terms. 
+to it.  And doesn't talk about annoying C terms.
 ~
 2|32 0 -1000 S
 32 0 0 0d0+0 0d0+0
@@ -697,7 +697,7 @@ the daemon~
 He unfurls his wings and swoops into you.
 ~
 The most dangerous undead, and among the most dangerous of all
-monsters, this beast can use all magics, is strong and hardy. 
+monsters, this beast can use all magics, is strong and hardy.
 Right now he seems to be busy... killing you.
 ~
 32 128 -1000 S
@@ -749,7 +749,7 @@ guardian~
 The Guardian~
 The Guardian as far as you can tell is just a big red face.
 ~
-First you hear a booming voice.  'You will join the Fellowship.' 
+First you hear a booming voice.  'You will join the Fellowship.'
 He is the latest, and some people say greatest of the Avatar's
 enemies.  And now you have the joy of meeting him.
 ~
@@ -790,7 +790,7 @@ Minax is here conjuring up the evil spirits.
 ~
 More powerful then her master and lover, Minax is as beautiful as
 she is dangerous.  Bold enough to take on the forces of evil
-without the gem, she eventually proved to be their mistress. 
+without the gem, she eventually proved to be their mistress.
 Without the Avatar the world would still be under her complete
 power.
 ~
@@ -828,14 +828,14 @@ and wields a heavy blade.
 ~
 2 0 1000 S
 35 0 0 0d0+0 0d0+0
-0 0 
+0 0
 0 0 1
 #2462
 batlin~
 Batlin~
 Batlin says, 'Join the Fellowship.'
 ~
-Batlin is an evil man that goes around and corrupts the young. 
+Batlin is an evil man that goes around and corrupts the young.
 You see also that he has a full set of mantras, probably stolen
 from their rightful owners.  He is though protected by the power
 of his god.
@@ -1002,7 +1002,7 @@ Ra, the Mantra of Valor is here.~
 0~ 0~ 0~ 0~
 1 0 0
 #2407
-mantra honor summ~ 
+mantra honor summ~
 Summ~
 Summ, the Mantra of Honor is here.~
 ~
@@ -1176,7 +1176,7 @@ a cup~
 The beggar's cup is here.~
 ~
 15 0 5
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #2426
 gold~
@@ -1221,7 +1221,7 @@ A chicken is lying on the ground.~
 E
 chicken~
 As you look closer you see this isn't a real chicken, it's one of
-those gag rubber chickens. 
+those gag rubber chickens.
 ~
 A
 8 3
@@ -1420,7 +1420,7 @@ Dupre's rapier is here.~
 ~
 5 1025  8193
 0~ 0~ 0~ 11~
-13 0 0 
+13 0 0
 A
 1 1
 A
@@ -1742,7 +1742,7 @@ of power.
 ~
 E
 orb~
-The orb of power is transparent to the point of sightlessness. 
+The orb of power is transparent to the point of sightlessness.
 It holds within a vast store of power.
 ~
 A
@@ -1799,7 +1799,7 @@ A glowing scepter has been discarded here.~
 5 0 0
 E
 scepter power artifact~
-The scepter glows brightly when you touch it. You feel a sudden 
+The scepter glows brightly when you touch it. You feel a sudden
 sense of invincibility and might, as if anything were within your
 power and any man might be bent to your will. When you remove your
 hand the feeling evaporates. Truly, this is an artifact of great
@@ -1829,7 +1829,7 @@ D5
 A blue moongate
 ~
 moongate~
-1 -1 315 
+1 -1 315
 E
 magic scroll~
 An image flew out of the scroll and creates a huge image of a
@@ -1967,7 +1967,7 @@ door~
 S
 #2408
 Humility Lane~
-This is a even smaller dirt path that crosses New Maginica Road. 
+This is a even smaller dirt path that crosses New Maginica Road.
 To your north there is a barn, and to the south you see a
 condemned building, though you cannot enter this way.  West is
 blocked off a herd o sheep.
@@ -2088,7 +2088,7 @@ Library~
 This is an amazing HUGE library.  Its musty smell, and the
 collapsed bookshelf to your north, tell you that it also must be
 ancient.  In any case you can't get out of the Library (remember
-the collapsed shelves?) so just pick a book and start reading. 
+the collapsed shelves?) so just pick a book and start reading.
 The stacks continue to the east and west.
 ~
 0 8 0
@@ -2606,7 +2606,7 @@ The Southwest Corner of the Tavern~
 There are many people here, but even through their scent, there
 seems to be a slight stench.
 ~
-0 8 0 
+0 8 0
 D0
 ~
 ~
@@ -2623,7 +2623,7 @@ S
 #2444
 The South Wall of the Tavern~
 The South Wall windows overlook the sea.  There seems to be a
-island far to the south, and boats just floating in the ports. 
+island far to the south, and boats just floating in the ports.
 The party-goers just wander around here.
 ~
 0 8 0
@@ -2680,7 +2680,7 @@ There are huge wine casks against this wall.  Most seem intact
 though one is eaten through, and the inside seems to have a gooey
 green substance.
 ~
-0 9 0 
+0 9 0
 D1
 There is the sound of singing in that corner.
 ~
@@ -2732,11 +2732,11 @@ D2
 S
 #2450
 The Britain Moongate~
-The place around the moongate, as always, seems clean and neat. 
+The place around the moongate, as always, seems clean and neat.
 The blue light of the moongate has become a comforting sight to
 you.
 ~
-0 12 0 
+0 12 0
 D0
 ~
 ~
@@ -2800,7 +2800,7 @@ The smells and ventilation of this cellar are overpowering.
 D0
 There is a shimmering light.
 ~
-~     
+~
 0 -1 2450
 D1
 ~
@@ -2828,8 +2828,8 @@ D3
 S
 #2455
 The Yew Entrance~
-To the south you see a large courthouse and a small part of Yew. 
-Most of Yew is secretly hidden in the branches of the forest. 
+To the south you see a large courthouse and a small part of Yew.
+Most of Yew is secretly hidden in the branches of the forest.
 To the north you see one of the most dangerous parts of this same
 forest.
 ~
@@ -3918,7 +3918,7 @@ D3
 S
 #2515
 The Beach~
-The beach here is perfect, glistening white sands, perfect sun. 
+The beach here is perfect, glistening white sands, perfect sun.
 Too bad there is a monster infestation....
 ~
 0 1 0
@@ -4222,7 +4222,7 @@ A Campfire~
 This campfire sits in the middle of the camp.  Many of the
 paladins stand by it looking it the desert beyond.  Some just
 wander by.  To the south is a small tent, to the north are more
-tents. 
+tents.
 ~
 0 0 10
 D0
@@ -4567,7 +4567,7 @@ S
 #2549
 The Shrine of Spirituality~
 In this room a huge ankh sits on a pedestal.  The Shrine is the
-source of all magical power.  The Timelord himself lives here. 
+source of all magical power.  The Timelord himself lives here.
 There is a moongate here also.  And last of all there is a huge
 engraving taking up the west wall.
 ~
@@ -4575,7 +4575,7 @@ engraving taking up the west wall.
 E
 engraving~
 Pilgrim,
-     You have reached the final step on your way to enlightenment. 
+     You have reached the final step on your way to enlightenment.
 In this last step you will be shown ultimate evil to your north,
 and ultimate food to your south.  This is the land of the undead.
 
@@ -4816,7 +4816,7 @@ D3
 S
 #2562
 Lord British's Castle Entrance~
-This building is awe-inspiring.  Just smaller then Yaz's own. 
+This building is awe-inspiring.  Just smaller then Yaz's own.
 Anyway Lord British's personal Jester is here to entertain you.
 ~
 0 0 0
@@ -4887,7 +4887,7 @@ This is a hallway that would regularly extend from west to east,
 but it is closed for reconstruction.  There is though a room to
 your north that can be entered.
 ~
-0 0 0 
+0 0 0
 D0
 ~
 door~
@@ -4946,7 +4946,7 @@ gain enlightenment.
 0 0 0
 E
 plaque~
-Compassion is nonjudgmental empathy for one's fellow creatures. 
+Compassion is nonjudgmental empathy for one's fellow creatures.
 It is pure love.
 ~
 D0
@@ -5065,7 +5065,7 @@ S
 The Enlightenment~
 A voice booms out, "You are now eight part enlightened.  To truly
 become an Avatar though you must experience what he has
-experienced.  Go through the time warp and fight his enemies. 
+experienced.  Go through the time warp and fight his enemies.
 Beware only High Mortals should attempt this challenge."
 ~
 0 0 0
@@ -5078,7 +5078,7 @@ S
 #2578
 In the Warp~
 This is a forest.  You were sent very far back in time.  Before
-there was a Britannia.  Almost before there was a Lord British. 
+there was a Britannia.  Almost before there was a Lord British.
 This is the time of Mondain.  The first enemy that the Avatar
 met.
 ~
@@ -5199,7 +5199,7 @@ M 0 2410 1 2418 ; load maraih in library
 E 0 2404 0 17 ; she holds mantra
 M 0 2411 20 2452 ; load slime in cellar
 M 0 2412 1 2454 ;load snake in cellar
-G 0 2410 0 ;give it moonstane 
+G 0 2410 0 ;give it moonstane
 M 0 2413 1 2406 ;load horse into barn
 E 0 2423 0 8 ; it equips horseshoes
 M 0 2414 5 2444 ; load bards into tavern

@@ -8,7 +8,7 @@ child gnome~
 a gnome child~
 A gnome child is playing around here.
 ~
-The little tyke looks so innocent playing with his boomerang that you 
+The little tyke looks so innocent playing with his boomerang that you
 just want to pick him up and hug him.
 ~
 20 0 600 S
@@ -575,7 +575,7 @@ You are on a dusty path on the far side of the village.  Houses are to the
 north and south, while the path continues east.  There is a sign here.
 ~
 15 0 1
-D0 
+D0
 You see a house.
 ~
 ~
@@ -607,7 +607,7 @@ This road runs north and south through the center of the village.  There
 are a few people moving around, but not many.
 ~
 15 0 1
-D0 
+D0
 You see a road.
 ~
 ~
@@ -634,7 +634,7 @@ This road runs north and south through the center of the village.  There
 are a few people moving around, but not many.
 ~
 15 0 1
-D0 
+D0
 You see a road.
 ~
 ~
@@ -651,7 +651,7 @@ This road runs north and south through the center of the village.  There
 are a few people moving around, but not many.
 ~
 15 0 1
-D0 
+D0
 You see a road.
 ~
 ~
@@ -673,7 +673,7 @@ This road runs north and south through the center of the village.  There
 are a few people moving around, but not many.
 ~
 15 0 1
-D0 
+D0
 You see a road.
 ~
 ~
@@ -890,7 +890,7 @@ You see a small stream.
 S
 #1521
 On the Stream~
-The current here flows from the east, but a logjam blocks you from 
+The current here flows from the east, but a logjam blocks you from
 continuing onward.
 ~
 15 0 7
@@ -994,7 +994,7 @@ You see a long hallway.
 S
 #1528
 A Long Hallway~
-You are now inside of the fortress; you must be lucky that the guards 
+You are now inside of the fortress; you must be lucky that the guards
 haven't killed you.  As you glance around, you notice that the walls and
 floors are spotlessly cleaned.  The barracks are to the north and a
 storage room is to the south.
@@ -1023,7 +1023,7 @@ You see a long hallway.
 S
 #1529
 A Long Hallway~
-You are now inside of the fortress; you must be lucky that the guards 
+You are now inside of the fortress; you must be lucky that the guards
 haven't killed you.  As you glance around, you notice that the walls and
 floors are spotlessly cleaned.  A mess hall is to the south.
 ~
@@ -1056,7 +1056,7 @@ You see a small storage room.
 ~
 ~
 0 -1 1531
-D2 
+D2
 You see a long hallway.
 ~
 ~
@@ -1105,7 +1105,7 @@ You see a small room.
 S
 #1534
 The Mess Hall~
-You are in the room where the guards come to get their grub.  The benches 
+You are in the room where the guards come to get their grub.  The benches
 and tables are neatly cleaned and straightened, while shiny plates line
 the walls.
 ~
@@ -1163,7 +1163,7 @@ D1
 0 -1 1538
 D2
 ~
-~ 
+~
 0 -1 1539
 D3
 You see a rusty door.
@@ -1183,7 +1183,7 @@ D3
 0 -1 1537
 E
 machine~
-The machine consists of a large rack with winches on each end.  You can 
+The machine consists of a large rack with winches on each end.  You can
 almost feel them pulling your arms out of their sockets.
 ~
 S
@@ -1492,7 +1492,7 @@ You see a path.
 S
 #1559
 The Unused Path~
-You are now on a fairly unused path that leads east out of the village.  
+You are now on a fairly unused path that leads east out of the village.
 You wonder what could be out this way.
 ~
 15 4 1
@@ -2075,7 +2075,7 @@ M 0 1503  3 1515
 E 1 1514 12 16
 *
 M 0 1504  3 1519
-G 1 1500  3 
+G 1 1500  3
 G 1 1506 10
 E 1 1507 10 3
 *
@@ -2118,7 +2118,7 @@ M 0 1512 1 1545
 G 1 1501 4
 D 0 1545 3 2
 D 0 1546 1 2
-* 
+*
 M 0 1513 10 1548
 M 0 1514 10 1548
 *

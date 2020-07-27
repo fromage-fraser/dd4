@@ -157,7 +157,7 @@ a huge white washer~
 A old washer sits here once used, long ago.~
 ~
 13 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 155 0 0
 #9926
 ruins~
@@ -165,7 +165,7 @@ ruins of a forgotten building.~
 Ruins of a forgotten building lie here.~
 ~
 13 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 50000 0 0
 #9927
 sink~
@@ -173,7 +173,7 @@ a marble sink~
 A marble sink sits here.~
 ~
 17 0 0
-255~ 255~ 1~ 1~ 
+255~ 255~ 1~ 1~
 55 0 0
 #9928
 sofa~
@@ -181,7 +181,7 @@ a large sofa~
 A large sofa lies here, torn to shreds.~
 ~
 12 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 85 0 0
 #9929
 pillar~
@@ -189,7 +189,7 @@ a tall pillar~
 A tall pillar lies here on the ground.~
 ~
 13 0 0
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 500 0 0
 #9930
 painting~
@@ -197,7 +197,7 @@ a large painting~
 A large painting has been torn apart and stomped on.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #9931
 chess board~
@@ -205,7 +205,7 @@ a small chess board~
 A small chess board sits here on the ground, waiting for someone to play~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 2 0 0
 #9932
 welcoming mat~
@@ -213,7 +213,7 @@ a welcoming mat~
 A mat sits here welcoming your arival.~
 ~
 13 0 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #9933
 jagged spear~
@@ -221,7 +221,7 @@ a jagged spear~
 A jagged spear lies here.~
 ~
 5 64 1|8192
-0~ 0~ 0~ 2~ 
+0~ 0~ 0~ 2~
 8 0 0
 A
 19 8
@@ -235,7 +235,7 @@ bracer of the cat~
 A small black bracer lies here.~
 ~
 9 2 1|4096
-0~ 0~ 0~ 3~ 
+0~ 0~ 0~ 3~
 5 0 0
 A
 2 2
@@ -247,7 +247,7 @@ a small piece of candy~
 A small half eaten piece of candy sits here.~
 ~
 19 0 1
-5~ 0~ 0~ 4~ 
+5~ 0~ 0~ 4~
 1 0 0
 #9936
 masters barbed whip~
@@ -255,7 +255,7 @@ The master's barbed whip~
 A barbed whip humming with evil rests here.~
 ~
 5 2|16 1|8192
-0~ 0~ 0~ 4~ 
+0~ 0~ 0~ 4~
 5 0 0
 A
 19 6
@@ -269,7 +269,7 @@ a cloth of dragon scales~
 Some scales lie on the ground.~
 ~
 9 0 1|1024
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 15 0 0
 A
 17 10
@@ -451,7 +451,7 @@ the owners of this house must have been small.
 ~
 0 13 0
 D3
-This door is made of cast iron and 
+This door is made of cast iron and
 only the greatest lock smith could open it~
 ~
 1 -1 9936

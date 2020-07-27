@@ -10,9 +10,9 @@ $
 To start a 'find the pieces and then turn them in for fabulous prizes' quest
 either GOTO room 372 or do an AT command there and then say the following:
 "Start a quest.". Slog (the quest mob sitting in there) will then enter the
-portal that will disperse him randomly to any part of the MUD except for 
-limbo. He will then drop a random quest piece/token and then go back to the 
-quest room. He'll scatter 20 pieces at a time. Repeat "Start a quest." to 
+portal that will disperse him randomly to any part of the MUD except for
+limbo. He will then drop a random quest piece/token and then go back to the
+quest room. He'll scatter 20 pieces at a time. Repeat "Start a quest." to
 scatter more pieces around the MUD.
 
 The possible tokens/pieces that are scattered are:
@@ -25,11 +25,11 @@ A {g30{w point {wQuest Point{x token. A {ypotion{x {wpiece{x [{r2{x]
 A {g15 {wFame Point {xtoken.        A {yrename 1 item{x {wpiece{x [{r4{x]
                    A {yspecial{x {wpiece{x [{r5{x]
 
-The rewards for the tokens should be obvious. The ADDFAME command should be 
+The rewards for the tokens should be obvious. The ADDFAME command should be
 handy for setting fame, the ADDQP command for setting quest points.
 
-The equipment pieces can be turned in for any {RCURRENTLY EXISTING ITEM WITH 
-'NORMAL' STATS{x. Such as a level 10 flamberge or a level 5 Amulet. But not a 
+The equipment pieces can be turned in for any {RCURRENTLY EXISTING ITEM WITH
+'NORMAL' STATS{x. Such as a level 10 flamberge or a level 5 Amulet. But not a
 level 1 IQ vine. It's helpful if you happen to know what stuff pops at :)
 
 Intellectual pracs should be obvious as well.
@@ -41,15 +41,15 @@ Pick two pieces earn you your pick of any 2 DIFFERENT rewards.
 A potion piece earns 10,000XP...err, no, a potion. :) The following spells
 are {Rdisallowed{x in potions: {WComplete heal, globe, power heal, haste, fireshield.{x
 
-A rename piece allows a non-Hero to have one item renamed. They now own that 
+A rename piece allows a non-Hero to have one item renamed. They now own that
 item. (I.E. Set the owner flag to whatever character the item is for)
 
 A special piece earns you 1 each of each of the other rewards.
 
-Pieces/Tokens are named "/". They use vnums 372-384 (and 18405). If you notice 
-a token/piece with a different vnum do something nasty to everyone in the 
-immediate area. Actual tokens being renamed to another type are harder to 
-spot, so on the off chance you care enough to look here are vnums for each 
+Pieces/Tokens are named "/". They use vnums 372-384 (and 18405). If you notice
+a token/piece with a different vnum do something nasty to everyone in the
+immediate area. Actual tokens being renamed to another type are harder to
+spot, so on the off chance you care enough to look here are vnums for each
 piece:
 
 5 QP Token - 384       Eq Piece - 375

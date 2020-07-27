@@ -10,7 +10,7 @@ Here we honour those who attained the mighty rank of {WHERO{x on DD2:
 {wTarian{R        (Werewolf)              {wChimeisho{B     (Ninja){x
 {wMogur{C         (Martial Artist)        {wIshmael{M       (Warrior){x
 {wGodspeed{Y      (Mage)                  {wAlaior{B        (Ninja){x
-{wShamno{M        (Warrior)               {wAjax{M          (Warrior){x      
+{wShamno{M        (Warrior)               {wAjax{M          (Warrior){x
 {wWarchild{C      (Brawler)               {wDream{Y         (Mage){x
 {wHarbinger{Y     (Warlock)               {wZena{Y          (Mage){x
 {wGarsnik{M       (Warrior)               {wReno{C          (Martial Artist){x
@@ -124,35 +124,35 @@ Here we honour the most deadly pkillers from DD3
                                                  Raw    Final
 Rank   Name         Class      Kills   Deaths   Score   Score     Rating
 ---------------------------------------------------------------------------
- 1st   {WStavros      {MThug{x         {C57       1      166     {Y164     {BStalker{x   
+ 1st   {WStavros      {MThug{x         {C57       1      166     {Y164     {BStalker{x
  2nd   {WBleurgh      {BNinja{x        {C37       3      155     {Y149   {R-=Predator=-{x
- 3rd   {WRift         {RShifter{x      {C46       0      148     {Y148     {M-Hunter-{x  
- 4th   {WBliss        {YMage{x         {C44       4      152     {Y144     {M-Hunter-{x  
- 5th   {WChaos        {MWarrior{x      {C31       2      103      {Y99     {M-Hunter-{x  
- 6th   {WSilenoz      {MWarrior{x      {C36       4      103      {Y95     {BStalker{x   
- 7th   {WGrimloch     {RShifter{x      {C36       5      103      {Y93     {BStalker{x   
- 8th   {WJarl         {MWarrior{x      {C27       2       91      {Y87     {M-Hunter-{x  
- 9th   {WNephthys     {MWarrior{x      {C25       2       88      {Y84    {M<Assassin>{x 
-10th   {WKovac        {RShifter{x      {C28       0       84      {Y84     {BStalker{x   
-11th   {WAnnoyed      {RVampire{x      {C38       7       86      {Y72     {BBrigand{x   
-12th   {WGreel        {MWarrior{x      {C28       1       72      {Y70     {BStalker{x   
-13th   {WFate         {RWerewolf{x     {C21       0       67      {Y67     {M-Hunter-{x  
-14th   {WPayne        {RWerewolf{x     {C34       6       78      {Y66     {BBrigand{x   
-15th   {WKirchal      {CBrawler{x      {C17       1       65      {Y63    {M<Assassin>{x 
-16th   {WAvenger      {BNinja{x        {C16       0       62      {Y62    {M<Assassin>{x 
-17th   {WTalon        {RShifter{x      {C19       0       61      {Y61     {M-Hunter-{x  
-18th   {WDurnak       {BNinja{x        {C19       0       52      {Y52     {BStalker{x   
-19th   {WCarcharoth   {RWerewolf{x     {C16       2       50      {Y46     {M-Hunter-{x  
-20th   {WMasika       {RShifter{x      {C14       0       44      {Y44     {M-Hunter-{x  
-21st   {WCortese      {BB. Hunter{x    {C44       6       55      {Y43      {xCoward{x   
-22nd   {WKrasheva     {RWerewolf{x     {C19       4       50      {Y42     {BStalker{x   
-23rd   {WCapo         {RVampire{x      {C12       1       42      {Y40    {M<Assassin>{x 
-24th   {WCommodus     {MWarrior{x      {C16       3       46      {Y40     {BStalker{x   
-25th   {WLythande     {MWarrior{x      {C15       0       40      {Y40     {BStalker{x   
+ 3rd   {WRift         {RShifter{x      {C46       0      148     {Y148     {M-Hunter-{x
+ 4th   {WBliss        {YMage{x         {C44       4      152     {Y144     {M-Hunter-{x
+ 5th   {WChaos        {MWarrior{x      {C31       2      103      {Y99     {M-Hunter-{x
+ 6th   {WSilenoz      {MWarrior{x      {C36       4      103      {Y95     {BStalker{x
+ 7th   {WGrimloch     {RShifter{x      {C36       5      103      {Y93     {BStalker{x
+ 8th   {WJarl         {MWarrior{x      {C27       2       91      {Y87     {M-Hunter-{x
+ 9th   {WNephthys     {MWarrior{x      {C25       2       88      {Y84    {M<Assassin>{x
+10th   {WKovac        {RShifter{x      {C28       0       84      {Y84     {BStalker{x
+11th   {WAnnoyed      {RVampire{x      {C38       7       86      {Y72     {BBrigand{x
+12th   {WGreel        {MWarrior{x      {C28       1       72      {Y70     {BStalker{x
+13th   {WFate         {RWerewolf{x     {C21       0       67      {Y67     {M-Hunter-{x
+14th   {WPayne        {RWerewolf{x     {C34       6       78      {Y66     {BBrigand{x
+15th   {WKirchal      {CBrawler{x      {C17       1       65      {Y63    {M<Assassin>{x
+16th   {WAvenger      {BNinja{x        {C16       0       62      {Y62    {M<Assassin>{x
+17th   {WTalon        {RShifter{x      {C19       0       61      {Y61     {M-Hunter-{x
+18th   {WDurnak       {BNinja{x        {C19       0       52      {Y52     {BStalker{x
+19th   {WCarcharoth   {RWerewolf{x     {C16       2       50      {Y46     {M-Hunter-{x
+20th   {WMasika       {RShifter{x      {C14       0       44      {Y44     {M-Hunter-{x
+21st   {WCortese      {BB. Hunter{x    {C44       6       55      {Y43      {xCoward{x
+22nd   {WKrasheva     {RWerewolf{x     {C19       4       50      {Y42     {BStalker{x
+23rd   {WCapo         {RVampire{x      {C12       1       42      {Y40    {M<Assassin>{x
+24th   {WCommodus     {MWarrior{x      {C16       3       46      {Y40     {BStalker{x
+25th   {WLythande     {MWarrior{x      {C15       0       40      {Y40     {BStalker{x
 
 See also HELP PAST HEROLIST and HELP PAST LEGENDS.
 ~
 
-0 $~                       
+0 $~
 
 #$

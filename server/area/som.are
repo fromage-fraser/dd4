@@ -5,25 +5,25 @@
 -1 SOM 'THE SHADOWS OF MIDNIGHT' SHADOW MIDNIGHT~
 The Shadows of Midnight (SOM)
 
-A long time ago, in a past age, 12 knights were assembled to save the 
-Kingdom of Clehrl, as the city was known then, from the evil invading drow 
-warlocks. The twelve knights were led by Myrithin, The strongest and best 
+A long time ago, in a past age, 12 knights were assembled to save the
+Kingdom of Clehrl, as the city was known then, from the evil invading drow
+warlocks. The twelve knights were led by Myrithin, The strongest and best
 trained Knight of the Kingdom.
 
-It is not well known when, or how, but an evil drow mage shifted himself to 
-look like one of the knights, and Sabotaged them on one of their legendary 
-journeys. Losing six knights in the quest, Myrithin and the five remaining 
-knights returned to Clehrl. Myrithin, Axion, Ocearus, Ogden, Gmork, And 
-Chaorid were the only six knights left. 
+It is not well known when, or how, but an evil drow mage shifted himself to
+look like one of the knights, and Sabotaged them on one of their legendary
+journeys. Losing six knights in the quest, Myrithin and the five remaining
+knights returned to Clehrl. Myrithin, Axion, Ocearus, Ogden, Gmork, And
+Chaorid were the only six knights left.
 
-Coming back to their beloved city, the Knights were hailed with distrust, and 
-hatred. The six knights fled the city, and hid themselves in the hills... 
+Coming back to their beloved city, the Knights were hailed with distrust, and
+hatred. The six knights fled the city, and hid themselves in the hills...
 
-However, unable to leave their beloved city behind, The six knights made a 
-hidden, organized Clan...The Shadows of Midnight. Viewed by the people as 
-Evil, yet only valor running in their hearts, the clan was taken as demons,  
-because of how fast and silent they struck in the night...Through many lives 
-and generations the clan still exsists, though only Myrithin survives it 
+However, unable to leave their beloved city behind, The six knights made a
+hidden, organized Clan...The Shadows of Midnight. Viewed by the people as
+Evil, yet only valor running in their hearts, the clan was taken as demons,
+because of how fast and silent they struck in the night...Through many lives
+and generations the clan still exsists, though only Myrithin survives it
 now...
 ~
 0 $~
@@ -34,8 +34,8 @@ manticore giant~
 a giant Manticore~
 A giant Manticore menaces the area.
 ~
-A giant Manticore with the body of a lion and a human face prowls before you, 
-baring its sharp teeth and waving its barbed tail in a rather disturbing 
+A giant Manticore with the body of a lion and a human face prowls before you,
+baring its sharp teeth and waving its barbed tail in a rather disturbing
 manner.
 ~
 2|512|4096|4194304 2|8|16|32|128|32768|65536 0 S
@@ -52,9 +52,9 @@ myrithin knight~
 Myrithin~
 Myrithin, last of the Shadows of Midnight, sits before you.
 ~
-Myrithin, last of the Shadows of Midnight, sits before you on a large, gilded 
-chair, atop the dais.  He is young-looking, but his silver hair and serious 
-demeanor betray his true age.  He is armored as if for war, and wears a long 
+Myrithin, last of the Shadows of Midnight, sits before you on a large, gilded
+chair, atop the dais.  He is young-looking, but his silver hair and serious
+demeanor betray his true age.  He is armored as if for war, and wears a long
 blue surcoat, bordered with gold.
 ~
 2|512|4096 8|32|128|8388608 0 S
@@ -62,18 +62,18 @@ blue surcoat, bordered with gold.
 0 0
 0 0 1
 >speech_prog bless~
-        	if clan($n) == som                                                                           
-        		cast bless $n                                                                        
-        		break                                                                                
-        	else                                                                                         
-        		break;                                                                               
-        	endif	                                                                                     
+        	if clan($n) == som
+        		cast bless $n
+        		break
+        	else
+        		break;
+        	endif
 ~
 >speech_prog bye~
-        	if clan($n) == som                                                                           
-        		mpecho Myrithin smiles at you, and you suddenly find yourself outside the clanhall. 
-        		mptransfer $n 18207                                                                    
-        		break                                                                                
+        	if clan($n) == som
+        		mpecho Myrithin smiles at you, and you suddenly find yourself outside the clanhall.
+        		mptransfer $n 18207
+        		break
         	endif
 ~
 |
@@ -101,7 +101,7 @@ wolfstar sunsoar angel~
 WolfStar SunSoar~
 WolfStar SunSoar stands magestically before you.
 ~
-WolfStar SunSoar is a large winged man with long black and silver wings.  He 
+WolfStar SunSoar is a large winged man with long black and silver wings.  He
 has silver straks in his long black hair.
 ~
 2|512|4096|1048756 8|32|8388608 0 S
@@ -225,11 +225,11 @@ A
 #ROOMS
 #470
 Entrance~
-You enter this strange room, and as your eyes adjust you can see some 
-condensation on the walls from being so near water. A few scant torches adorn 
-the walls here. Further down the hall you notice the hallway continues. From 
-niches in the wall, you notice a few beady eyes staring at you, and some not 
-so beady...your mind sparks what could be here, and a soft, low growl makes 
+You enter this strange room, and as your eyes adjust you can see some
+condensation on the walls from being so near water. A few scant torches adorn
+the walls here. Further down the hall you notice the hallway continues. From
+niches in the wall, you notice a few beady eyes staring at you, and some not
+so beady...your mind sparks what could be here, and a soft, low growl makes
 you wonder even more...
 ~
 0 1|8 0
@@ -247,12 +247,12 @@ S
 
 #471
 The Great Hall~
-You enter a great and grand hall, that extends back farther then you would  
-have imagined. The room opens up now, about thirty feet wide and about three 
-hundred feet back. The center of the hall is lined with pillars; upon closer 
-inspection you notice in the pillars are carved Giant Angels, their wings 
+You enter a great and grand hall, that extends back farther then you would
+have imagined. The room opens up now, about thirty feet wide and about three
+hundred feet back. The center of the hall is lined with pillars; upon closer
+inspection you notice in the pillars are carved Giant Angels, their wings
 turned up, and their faces looking skyward, calling a heavenly plea for all
-eternity. You notice a dais further on, and a door east.  Along the walls, 
+eternity. You notice a dais further on, and a door east.  Along the walls,
 torches are evenly placed, except for one.
 ~
 0 8 0
@@ -279,10 +279,10 @@ S
 
 #472
 The Grand Meeting Hall~
-You enter a grand meeting room. A long table is here, from the olden days of 
-when SOM had over fifty knights. The table is aged and refined, it looks to be 
-from some very rich wood. You notice a side table here, with some assorted 
-foods. Tapestries line the wall here, showing monsters and legendary beasts 
+You enter a grand meeting room. A long table is here, from the olden days of
+when SOM had over fifty knights. The table is aged and refined, it looks to be
+from some very rich wood. You notice a side table here, with some assorted
+foods. Tapestries line the wall here, showing monsters and legendary beasts
 that SOM has slayed in the past.
 ~
 0 8 0
@@ -296,11 +296,11 @@ S
 #473
 Adrioth's Bedroom~
 You step up into the room and your breath leaves you, as you notice the many
-types of flowers and plants here, as many colors as you can imagine. The walls 
+types of flowers and plants here, as many colors as you can imagine. The walls
 are lined with tapestries that look so real you'd swear they were so, they
-depict waterfalls and rivers, is it your imagination...or are they flowing? Oh 
-well, must be the air. You notice a large painting over a fire place, showing 
-six very powerful looking knights on the wall here. The floor is black and 
+depict waterfalls and rivers, is it your imagination...or are they flowing? Oh
+well, must be the air. You notice a large painting over a fire place, showing
+six very powerful looking knights on the wall here. The floor is black and
 white tile, all along this room. A very large bed lays against the west wall.
 ~
 0 8 0
@@ -313,13 +313,13 @@ S
 
 #474
 The Great Hall, Dais~
-As you continue along the pillared walk way, you come upon a dais. As your 
-gaze slowly wanders up you look upon a young looking knight, sitting in a 
-chair here. He sits on a large gilded chair, decorated with Dragon designs all 
-over it. A giant tapestry hangs behind the chair, Showing a Sword, with a 
-Leviathan wrapped around it, The Ancient Symbol of Clehrl. A giant rug below 
-your feet shows a scene of night, with a full moon high in its sky, and 
-shadows among a few trees - The Shadows of Midnight. You notice an out of 
+As you continue along the pillared walk way, you come upon a dais. As your
+gaze slowly wanders up you look upon a young looking knight, sitting in a
+chair here. He sits on a large gilded chair, decorated with Dragon designs all
+over it. A giant tapestry hangs behind the chair, Showing a Sword, with a
+Leviathan wrapped around it, The Ancient Symbol of Clehrl. A giant rug below
+your feet shows a scene of night, with a full moon high in its sky, and
+shadows among a few trees - The Shadows of Midnight. You notice an out of
 color step on the dais.
 ~
 0 8 0
@@ -346,13 +346,13 @@ S
 
 #475
 Xeno's Office~
-As you walk into the room you are struck by the fact that this room is much 
-different than the rest of them. You see tapestries of mighty warriors all 
-along the wall. A giant Statue of Hurin catches your interest, and you also 
-pick out a few skulls laying about the room, one of them seeming to be a large 
-dragon skull. A human skull adorns a giant oak desk here, a piece of paper 
-also catches your attention. Quickly scanning the paper you relize it is a 
-list of names. As realization hits you, you see your name at the bottom, and 
+As you walk into the room you are struck by the fact that this room is much
+different than the rest of them. You see tapestries of mighty warriors all
+along the wall. A giant Statue of Hurin catches your interest, and you also
+pick out a few skulls laying about the room, one of them seeming to be a large
+dragon skull. A human skull adorns a giant oak desk here, a piece of paper
+also catches your attention. Quickly scanning the paper you relize it is a
+list of names. As realization hits you, you see your name at the bottom, and
 every other name crossed off......
 ~
 0 8 0
@@ -365,11 +365,11 @@ S
 
 #476
 Allurna's Room~
-You are almost blinded as you walk in here, various piles of treasure and 
-jewels gleam madly here, no doubt from Allurna's many travels, where things 
-just happened to fall into her pouches. The room is decorated with jewels and 
-daggers everywhere, you even notice a rag teddy bear on the bed, with jewels 
-for eyes and nose. While looking around you think you hear footsteps behind 
+You are almost blinded as you walk in here, various piles of treasure and
+jewels gleam madly here, no doubt from Allurna's many travels, where things
+just happened to fall into her pouches. The room is decorated with jewels and
+daggers everywhere, you even notice a rag teddy bear on the bed, with jewels
+for eyes and nose. While looking around you think you hear footsteps behind
 you, is that the mistress returning...?
 ~
 0 8 0
@@ -382,10 +382,10 @@ S
 
 #477
 The Vaults~
-This is where SOM keeps their supplies and weapons, various tools and items 
-are laying around here, tapestries and scrolls piled up to your eye level. 
-Various things hum and make weird metallic sounds, making you wonder what 
-they're used for. As you wonder what these various items do, You think you 
+This is where SOM keeps their supplies and weapons, various tools and items
+are laying around here, tapestries and scrolls piled up to your eye level.
+Various things hum and make weird metallic sounds, making you wonder what
+they're used for. As you wonder what these various items do, You think you
 hear the distinct sound of a vault door closing behind you...
 ~
 0 1|8 0

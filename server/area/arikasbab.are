@@ -8,7 +8,7 @@ the Shadow~
 A hooded figure is sitting at a table near the door.
 ~
 A long black cloak is completely concealing any details of the figure underneath.
-Keeping their head bowed the hood of the garment casts their face into a pool of 
+Keeping their head bowed the hood of the garment casts their face into a pool of
 shadow. The figure sits very still and you can feel its attention fixed upon you.
 ~
 2|64 8|32|512|32768|65536|524288|8388608 0 S
@@ -29,8 +29,8 @@ hooded figure vampire~
 the Vampire~
 A hooded figure is crouching in the rafters above you.
 ~
-The hooded figure is crouching in a pool of deep shadows among the rafters. 
-It is very still and seems to be looking in your direction, it has apparently 
+The hooded figure is crouching in a pool of deep shadows among the rafters.
+It is very still and seems to be looking in your direction, it has apparently
 noticed your arrival.
 ~
 2|32|64|512|8388608 8|32|512|8192|65536|524288|8388608 -1000 S
@@ -49,8 +49,8 @@ man chef busychef~
 the Chef~
 A large man in a white uniform and a floppy chef's hat is rushing about.
 ~
-The large man is muttering to himself and rushing about the kitchen. He is wearing 
-a white uniform and a floppy chef's hat which keeps falling in his face when he bends 
+The large man is muttering to himself and rushing about the kitchen. He is wearing
+a white uniform and a floppy chef's hat which keeps falling in his face when he bends
 over the oven.
 ~
 2|64|8388608 32|512|8192|524288 0 S
@@ -90,7 +90,7 @@ centaur~
 a Powerful Centaur~
 A powerful centaur looks you over and laughs mercilessly.
 ~
-The powerful centaur standing before you is clad in gold armour and holds a 
+The powerful centaur standing before you is clad in gold armour and holds a
 fierce-looking bow. He radiates an aura of power and beauty.
 ~
 2|64|8388608 32|512|8192|4194304|8388608 0 S
@@ -120,9 +120,9 @@ woman waitress~
 the Waitress~
 A small woman in a white dress is examining a bottle of wine.
 ~
-A small woman in a white dress is busy examining a bottle of wine. She is using 
-a cloth to wipe furiously at the dust obscuring the label. Several strands of 
-long red hair escape the lace scarf holding it back and fall in front of her 
+A small woman in a white dress is busy examining a bottle of wine. She is using
+a cloth to wipe furiously at the dust obscuring the label. Several strands of
+long red hair escape the lace scarf holding it back and fall in front of her
 eyes. She frowns as she pushes it back from her pretty face.
 ~
 2|64 8|32|512|8388608 0 S
@@ -152,7 +152,7 @@ proprietor~
 the Proprietor~
 Arika the proprietor of this establishment sits in a leather chair behind a large desk.
 ~
-She is flicking through the pages of a large leatherbound journal that is open 
+She is flicking through the pages of a large leatherbound journal that is open
 on the desk.
 ~
 2|64|8388608 8|32|128|512|8192|524288|8388608 1000 S
@@ -184,7 +184,7 @@ mpforce $n give 50 gold proprietor
 mpecho {WThe proprietor unlocks a drawer in her desk and retrieves a small key.{x
 mpoload 28357 20
 give one $n
-mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x 
+mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x
 mpechoaround $n {WThe proprietor tells $n to enjoy $s stay.{x
 endif
 ~
@@ -198,7 +198,7 @@ mpforce $n give 50 gold proprietor
 mpecho {WThe proprietor unlocks a drawer in her desk and retrieves a small key.{x
 mpoload 28359 20
 give three $n
-mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x 
+mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x
 mpechoaround $n {WThe proprietor tells $n to enjoy $s stay.{x
 endif
 ~
@@ -212,7 +212,7 @@ mpforce $n give 200 gold proprietor
 mpecho {WThe proprietor unlocks a drawer in her desk and retrieves a small key.{x
 mpoload 28361 20
 give five $n
-mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x 
+mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x
 mpechoaround $n {WThe proprietor tells $n to enjoy $s stay.{x
 endif
 ~
@@ -226,7 +226,7 @@ mpforce $n give 50 gold proprietor
 mpecho {WThe proprietor unlocks a drawer in her desk and retrieves a small key.{x
 mpoload 28364 20
 give eight $n
-mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x 
+mpechoat $n {WThe proprietor says, 'Enjoy your stay, $n!'{x
 mpechoaround $n {WThe proprietor tells $n to enjoy $s stay.{x
 endif
 ~
@@ -432,8 +432,8 @@ blonde girl~
 the Pretty Blonde~
 A pretty blond girl is sleeping in a tangle of sheets.
 ~
-The pretty blond girl appears to be in a deep sleep - she hasn't stirred at all 
-since you entered the room. She is sprawled out on the bed with the sheets 
+The pretty blond girl appears to be in a deep sleep - she hasn't stirred at all
+since you entered the room. She is sprawled out on the bed with the sheets
 tangled around her body.
 ~
 2|64|32768 512|524288 1000 S
@@ -449,7 +449,7 @@ maid~
 the Maid~
 A maid is organising a shelf of clean linen.
 ~
-The maid looks up from her task and regards your intrusion fearfully. She cowers 
+The maid looks up from her task and regards your intrusion fearfully. She cowers
 against the wall and begins to scream.
 ~
 2|64|8388608 8|32|512|8388608 0 S
@@ -467,11 +467,11 @@ ghostly apparition~
 the Ghostly Apparition~
 The ghostly apparition of a trapped soul is reaching towards you.
 ~
-The apparition is terrifying to behold as it reaches towards you with outstretched 
+The apparition is terrifying to behold as it reaches towards you with outstretched
 arms. Its face is covered in blood and gore from a large gash on its head.
-It appears to have been the victim of a grisly murder. Beneath the blood is 
-the face of a young man that is permanently contorted in anguish and pain. 
-His premature death may be what is keeping him trapped in the physical realm, 
+It appears to have been the victim of a grisly murder. Beneath the blood is
+the face of a young man that is permanently contorted in anguish and pain.
+His premature death may be what is keeping him trapped in the physical realm,
 unable to cross to the other side.
 ~
 2|64|8388608 8|32|512|524288|1048576|8388608 0 S
@@ -481,7 +481,7 @@ unable to cross to the other side.
 #28311
 fat cat~
 the Fat Black Cat~
-A fat black cat is sprawled on its back, sleeping soundly. 
+A fat black cat is sprawled on its back, sleeping soundly.
 ~
 The overweight cat is sprawled on its back, sleeping soundly.
 Its back left foot twitches now and then and paws at the air.
@@ -499,8 +499,8 @@ bob bartender~
 Bob~
 The bartender is polishing a glass while he waits for the next order.
 ~
-Bob has been the bartender as long as you've been coming here, only he doesn't 
-look a single day older. He notices you looking at him and nods politely in your 
+Bob has been the bartender as long as you've been coming here, only he doesn't
+look a single day older. He notices you looking at him and nods politely in your
 direction.
 ~
 2|64|512 8|32|524288|8388608 0 S
@@ -521,8 +521,8 @@ A large mahogany desk stands in the centre of the room.~
 1000 0 0
 E
 desk~
-The large mahogany desk has obviously been built by a master cabinetmaker. 
-Its lacquered surface has been polished until you can almost see your reflection. 
+The large mahogany desk has obviously been built by a master cabinetmaker.
+Its lacquered surface has been polished until you can almost see your reflection.
 It is clearly a very expensive piece of furniture.
 ~
 #28301
@@ -547,8 +547,8 @@ A long steel bench is laden with fresh fruits and vegetables.~
 1000 0 0
 E
 bench steel~
-The long steel bench is laden with baskets of fresh fruit and vegetables. 
-There is a chopping block in the centre that has a pile of half-diced carrots 
+The long steel bench is laden with baskets of fresh fruit and vegetables.
+There is a chopping block in the centre that has a pile of half-diced carrots
 on it, the chef must have wandered off before finishing the task.
 ~
 #28303
@@ -590,8 +590,8 @@ A
 12 150
 E
 long leather cloak~
-The heavy cloak has been made from thick black leather. It is very long and 
-would drag on the ground when worn by most people. It looks like it would offer 
+The heavy cloak has been made from thick black leather. It is very long and
+would drag on the ground when worn by most people. It looks like it would offer
 very good protection as long as you didn't stand on the bottom and trip over.
 ~
 #28305
@@ -610,9 +610,9 @@ A
 19 10
 E
 silver dagger~
-The hilt of the silver dagger has been adorned with precious rubies making this 
-a very valuable weapon. It has obviously been used in combat as the blade has 
-been filed enough times to cause the edges to be quite thin. It seems awfully 
+The hilt of the silver dagger has been adorned with precious rubies making this
+a very valuable weapon. It has obviously been used in combat as the blade has
+been filed enough times to cause the edges to be quite thin. It seems awfully
 extravagant for a fighting weapon.
 ~
 #28306
@@ -631,7 +631,7 @@ A
 19 10
 E
 blunt mace~
-The mace is rather bulky and very blunt, it is obviously for maiming and not 
+The mace is rather bulky and very blunt, it is obviously for maiming and not
 killing. A blow to the head would knock you out but probably not kill you.
 ~
 #28307
@@ -650,7 +650,7 @@ A
 9 -100
 E
 black velvet pants~
-The black velvet pants must have been hand tailored and made for someone very 
+The black velvet pants must have been hand tailored and made for someone very
 tall. The legs would surely drag on the floor if you put them on.
 ~
 #28308
@@ -669,8 +669,8 @@ A
 19 10
 E
 leather tunic~
-The tunic has been made from thick black leather and seamed with heavy leather 
-thong. It has been designed to hang loosely on the body to give the wearer 
+The tunic has been made from thick black leather and seamed with heavy leather
+thong. It has been designed to hang loosely on the body to give the wearer
 maximum movement and protection.
 ~
 #28309
@@ -687,8 +687,8 @@ A
 18 10
 E
 leather hood~
-The hood is very deep to allow the wearer to hide most of their face beneath it. 
-It has been made from soft black leather and looks as if someone has worn it for 
+The hood is very deep to allow the wearer to hide most of their face beneath it.
+It has been made from soft black leather and looks as if someone has worn it for
 a long time.
 ~
 #28310
@@ -719,8 +719,8 @@ There is a four-poster bed with black velvet drapes here.~
 1500 0 0
 E
 bed~
-The dusty velvet drapes have been drawn back and secured to the corner posts 
-with a cord. The mattress is covered with sheets and a quilt made from faded 
+The dusty velvet drapes have been drawn back and secured to the corner posts
+with a cord. The mattress is covered with sheets and a quilt made from faded
 black material that looks fairly dust free.
 ~
 #28312
@@ -733,8 +733,8 @@ There is a wrought-iron table with two chairs here.~
 600 0 0
 E
 wrought-iron table chairs~
-The table has been forged in black wrought-iron and has a solid top. There are 
-two matching chairs around it that have waterproof cushions affixed to withstand 
+The table has been forged in black wrought-iron and has a solid top. There are
+two matching chairs around it that have waterproof cushions affixed to withstand
 the elements.
 ~
 #28313
@@ -747,7 +747,7 @@ A large plant box has many varieties of herbs growing in it.~
 150 0 0
 E
 plant box~
-The large earthen plant box has many varieties of herbs growing in it. You 
+The large earthen plant box has many varieties of herbs growing in it. You
 recognize some of them but many others look completely unfamiliar.
 ~
 #28314
@@ -760,7 +760,7 @@ Small purple herbs are growing here.~
 2 0 0
 E
 purple herbs~
-The small purple herbs are lush and vibrant and they have a faint scent 
+The small purple herbs are lush and vibrant and they have a faint scent
 similar to aniseed.
 ~
 #28315
@@ -773,7 +773,7 @@ Small purple herbs are growing here.~
 2 0 0
 E
 purple herbs~
-The small purple herbs are lush and vibrant and they have a faint scent 
+The small purple herbs are lush and vibrant and they have a faint scent
 similar to aniseed.
 ~
 #28316
@@ -799,8 +799,8 @@ A large plant box has exotic herbs and flowers growing in it.~
 150 0 0
 E
 plant box~
-The large earthen plant box has many varieties of exotic herbs and flowers 
-growing in it. You recognize some of them but many others look completely 
+The large earthen plant box has many varieties of exotic herbs and flowers
+growing in it. You recognize some of them but many others look completely
 unfamiliar.
 ~
 #28318
@@ -837,9 +837,9 @@ There is a four-poster bed with a canopy of pale apricot lace trailing onto the 
 1500 0 0
 E
 bed~
-The beautiful four-poster bed is covered by a canopy of pale apricot lace that 
-trails onto the floor. The lace has been pulled back on one side, revealing white 
-satin sheets and a matching quilt. There are two neatly-arranged rows of soft 
+The beautiful four-poster bed is covered by a canopy of pale apricot lace that
+trails onto the floor. The lace has been pulled back on one side, revealing white
+satin sheets and a matching quilt. There are two neatly-arranged rows of soft
 fluffy pillows, and a flimsy silk gown has been tossed across the end of the bed.
 ~
 #28321
@@ -852,8 +852,8 @@ A large plant box has brightly-coloured flowers growing in it.~
 150 0 0
 E
 plant box~
-The large earthen plant box has many varieties of brightly-coloured flowers 
-growing in it. You recognize some of them but many others look completely 
+The large earthen plant box has many varieties of brightly-coloured flowers
+growing in it. You recognize some of them but many others look completely
 unfamiliar.
 ~
 #28322
@@ -866,7 +866,7 @@ Red carnations are growing here.~
 2 0 0
 E
 red carnations~
-The carnations are a vibrant red. They must have been lovingly tended to look 
+The carnations are a vibrant red. They must have been lovingly tended to look
 so magnificent.
 ~
 #28323
@@ -879,8 +879,8 @@ A large plant box has brightly-coloured flowers growing in it.~
 150 0 0
 E
 plant box~
-The large earthen plant box has many varieties of brightly-coloured flowers 
-growing in it. You recognize some of them but many others look completely 
+The large earthen plant box has many varieties of brightly-coloured flowers
+growing in it. You recognize some of them but many others look completely
 unfamiliar.
 ~
 #28324
@@ -925,7 +925,7 @@ A
 17 0
 E
 white trousers~
-The white linen trousers look very clean and a little stiff, as if it they have 
+The white linen trousers look very clean and a little stiff, as if it they have
 been starched many times.
 ~
 #28327
@@ -942,8 +942,8 @@ A
 4 3
 E
 floppy chef hat~
-The huge floppy white chef's hat looks more than a little comical. You wonder 
-why people are made to wear them, and furthermore why the chefs go along with 
+The huge floppy white chef's hat looks more than a little comical. You wonder
+why people are made to wear them, and furthermore why the chefs go along with
 it.
 ~
 #28328
@@ -958,7 +958,7 @@ A
 17 -10
 E
 white leather shoes~
-The shoes have been made from white leather hide and polished with wax until the 
+The shoes have been made from white leather hide and polished with wax until the
 surface has a glassy shine.
 ~
 #28329
@@ -977,7 +977,7 @@ A
 4 1
 E
 gold ring band simple~
-The simple band bears no inscriptions or marks of any kind and has been made 
+The simple band bears no inscriptions or marks of any kind and has been made
 from a very pale gold.
 ~
 #28330
@@ -994,7 +994,7 @@ A
 18 6
 E
 sharp knife~
-The small knife is wickedly sharp and looks like the kind chefs use to chop 
+The small knife is wickedly sharp and looks like the kind chefs use to chop
 vegetables.
 ~
 #28331
@@ -1009,9 +1009,9 @@ A
 17 -5
 E
 white apron~
-The white linen apron looks very clean and a little stiff as if it has been 
-starched many times. 
-There is a red emblem embroidered onto one corner of the apron with the letters  A  
+The white linen apron looks very clean and a little stiff as if it has been
+starched many times.
+There is a red emblem embroidered onto one corner of the apron with the letters  A
 in the centre.                              					B&B
 ~
 #28332
@@ -1026,7 +1026,7 @@ A
 17 -10
 E
 long white dress~
-The long dress has been made from white cotton, and though it is a simple design 
+The long dress has been made from white cotton, and though it is a simple design
 it has a full flowing skirt trimmed with lace which lends it a touch of elegance.
 ~
 #28333
@@ -1041,7 +1041,7 @@ A
 17 -5
 E
 white lace scarf~
-The scarf has been made from pretty white lace and has a fringe of long tassels 
+The scarf has been made from pretty white lace and has a fringe of long tassels
 around the edge.
 ~
 #28334
@@ -1060,7 +1060,7 @@ A
 18 2
 E
 white stiletto boots~
-The stiletto ankle boots have been made from soft white leather and polished 
+The stiletto ankle boots have been made from soft white leather and polished
 with wax to leave a glossy finish.
 ~
 #28335
@@ -1073,8 +1073,8 @@ A large iron lamp is affixed to the wall.~
 60 0 0
 E
 iron lamp~
-The large iron lamp has been securely affixed to the wall near the foot of the 
-narrow stairs. The light it sheds is bright enough to illuminate nearly all of 
+The large iron lamp has been securely affixed to the wall near the foot of the
+narrow stairs. The light it sheds is bright enough to illuminate nearly all of
 the dusty cellar.
 ~
 #28336
@@ -1101,7 +1101,7 @@ A black wrought-iron chair with embroidered cushions stands against a wall.~
 150 0 0
 E
 chair~
-The large chair has been made from black wrought-iron. It has plump cushions 
+The large chair has been made from black wrought-iron. It has plump cushions
 made from dark green velvet and embroidered with gold thread.
 ~
 #28338
@@ -1114,10 +1114,10 @@ A large bed with a black wrought-iron frame stands in the centre of the room.~
 1500 0 0
 E
 bed~
-The large bed has a black wrought-iron frame with tall spikes that form the head 
-and foot ends. There are small iron cups containing lit candles attached at 
-differing heights on the outside of some of them. The bed has gold satin sheets 
-with matching pillowcases and a quilt made from dark green velvet and 
+The large bed has a black wrought-iron frame with tall spikes that form the head
+and foot ends. There are small iron cups containing lit candles attached at
+differing heights on the outside of some of them. The bed has gold satin sheets
+with matching pillowcases and a quilt made from dark green velvet and
 embroidered with gold thread.
 ~
 #28339
@@ -1187,7 +1187,7 @@ A
 17 -10
 E
 gold bracers~
-The solid gold bracers bear no engravings or markings of any fashion. 
+The solid gold bracers bear no engravings or markings of any fashion.
 They are highly polished and glow brightly in the light.
 ~
 #28344
@@ -1218,7 +1218,7 @@ A bowl of meat and vegetable stew has been left here.~
 5 0 0
 E
 bowl stew~
-The bowl of meat and vegetable stew looks delicious and has a wonderful aroma of 
+The bowl of meat and vegetable stew looks delicious and has a wonderful aroma of
 herbs and spices.
 ~
 #28346
@@ -1243,7 +1243,7 @@ A bottle of red wine has been left here.~
 3 0 0
 E
 bottle red wine~
-The bottle of red wine is a fine quality vintage according to the date on 
+The bottle of red wine is a fine quality vintage according to the date on
 the label, but everything else on the label is in a language you have never seen.
 ~
 #28348
@@ -1268,8 +1268,8 @@ A menu has been discarded here.~
 1 0 0
 E
 menu~
-'Evening menu' is embossed in gold lettering across the top of the white card. 
-Below is this list: 
+'Evening menu' is embossed in gold lettering across the top of the white card.
+Below is this list:
                    Meat and vegetable stew
                    Travel bread
                    Red wine
@@ -1285,9 +1285,9 @@ A statue of an Egyptian dog is standing in the corner of the room.~
 500 0 0
 E
 statue dog~
-The statue looks like it is very old and certainly appears to be a real 
-Egyptian artifact. The statue is a dog with long pointed ears that stand 
-straight up. It has a lean body and looks like it is on guard, sitting with 
+The statue looks like it is very old and certainly appears to be a real
+Egyptian artifact. The statue is a dog with long pointed ears that stand
+straight up. It has a lean body and looks like it is on guard, sitting with
 its chest thrust out.
 ~
 #28351
@@ -1300,9 +1300,9 @@ There is a raised sleeping platform with richly-adorned bed linen in the centre 
 1500 0 0
 E
 platform bed~
-The raised sleeping platform has a thin mattress on it that is covered with 
-richly-adorned bedding. The sheets and pillowcases are pale cream satin, covered 
-by a fawn-coloured velvet quilt that cascades down to the floor. 
+The raised sleeping platform has a thin mattress on it that is covered with
+richly-adorned bedding. The sheets and pillowcases are pale cream satin, covered
+by a fawn-coloured velvet quilt that cascades down to the floor.
 ~
 #28352
 bookcase~
@@ -1314,7 +1314,7 @@ A large mahogany bookcase stands against one of the walls.~
 1000 0 0
 E
 bookcase~
-The bookcase is lined with leatherbound books that are mostly about obscure art 
+The bookcase is lined with leatherbound books that are mostly about obscure art
 and gothic poetry.
 ~
 #28353
@@ -1327,8 +1327,8 @@ There is a four-poster bed with a canopy of black lace trailing onto the floor.~
 1500 0 0
 E
 bed~
-The beautiful four-poster bed is covered by a canopy of black lace that trails 
-onto the floor. The lace has been pulled back on one side, revealing black satin 
+The beautiful four-poster bed is covered by a canopy of black lace that trails
+onto the floor. The lace has been pulled back on one side, revealing black satin
 sheets and pillowcases covered by a brown velvet quilt, embroidered with gold.
 ~
 #28354
@@ -1341,7 +1341,7 @@ Candles are burning in a tall candelabra made from solid gold.~
 300 0 0
 E
 gold candelabra candles~
-There is a tall candelabra made from solid gold standing in one corner of the 
+There is a tall candelabra made from solid gold standing in one corner of the
 room. The candles flicker, casting eerie shadows across the walls.
 ~
 #28355
@@ -1478,10 +1478,10 @@ There is a four-poster bed with a canopy of pale blue lace trailing onto the flo
 1500 0 0
 E
 bed~
-The beautiful four-poster bed is covered by a canopy of pale blue lace that 
-trails onto the floor. The lace has been pulled back on one side revealing 
-silver satin sheets and pillowcases. A pale blue quilt made from velvet and 
-embroidered with silver thread has slipped from the bed and lays on the floor 
+The beautiful four-poster bed is covered by a canopy of pale blue lace that
+trails onto the floor. The lace has been pulled back on one side revealing
+silver satin sheets and pillowcases. A pale blue quilt made from velvet and
+embroidered with silver thread has slipped from the bed and lays on the floor
 in a pile.
 ~
 #28366
@@ -1494,8 +1494,8 @@ There is a four-poster bed with a canopy of pale blue lace trailing onto the flo
 1500 0 0
 E
 bed~
-The beautiful four-poster bed is covered by a canopy of black lace that trails 
-onto the floor. The lace has been pulled back on one side revealing black satin 
+The beautiful four-poster bed is covered by a canopy of black lace that trails
+onto the floor. The lace has been pulled back on one side revealing black satin
 sheets and pillowcases covered by a red velvet quilt embroidered with gold.
 ~
 #28367
@@ -1508,7 +1508,7 @@ A beautiful lounge suite takes up one corner of the room.~
 1500 0 0
 E
 lounge~
-A beautiful lounge suite made from varnished mahogany and upholstered in red 
+A beautiful lounge suite made from varnished mahogany and upholstered in red
 velvet that is printed with gold.
 ~
 #28368
@@ -1521,8 +1521,8 @@ A large suit of black armour dominates one corner of the room.~
 4000 0 0
 E
 black suit armour~
-The large suit of armour stands a foot taller than you. Whoever once wore this 
-must have been an imposing figure to face. It has been tempered black and bears 
+The large suit of armour stands a foot taller than you. Whoever once wore this
+must have been an imposing figure to face. It has been tempered black and bears
 no crest or engravings of any kind.
 ~
 #28369
@@ -1535,7 +1535,7 @@ A black wrought-iron chair with embroidered cushions stands against a wall.~
 150 0 0
 E
 chair~
-The large chair has been made from black wrought-iron. It has plump cushions 
+The large chair has been made from black wrought-iron. It has plump cushions
 made from dark blue velvet and embroidered with silver thread.
 ~
 #28370
@@ -1548,10 +1548,10 @@ A large bed with a black wrought-iron frame stands in the centre of the room.~
 1500 0 0
 E
 bed~
-The large bed has a black wrought-iron frame with tall spikes that form the head 
-and foot ends. There are small iron cups containing lit candles attached at 
-differing heights on the outside of some of them. The bed has white satin sheets 
-with matching pillowcases and a quilt made from dark blue velvet, embroidered with 
+The large bed has a black wrought-iron frame with tall spikes that form the head
+and foot ends. There are small iron cups containing lit candles attached at
+differing heights on the outside of some of them. The bed has white satin sheets
+with matching pillowcases and a quilt made from dark blue velvet, embroidered with
 a fleur de leas pattern in silver thread.
 ~
 #28371
@@ -1580,7 +1580,7 @@ A
 18 3
 E
 black stiletto boots~
-The stiletto ankle boots have been made from soft black leather and polished 
+The stiletto ankle boots have been made from soft black leather and polished
 with wax to leave a glossy finish.
 ~
 #28373
@@ -1595,7 +1595,7 @@ A
 17 0
 E
 long black dress~
-The long dress has been made from black cotton and though it is a simple design 
+The long dress has been made from black cotton and though it is a simple design
 it has a full-flowing skirt which lends it a touch of elegance.
 ~
 #28375
@@ -1686,7 +1686,7 @@ A statue of a magnificent golden dragon stands in the centre of the room. ~
 1000 0 0
 E
 dragon statue idol~
-As you admire this exquisite piece of art you marvel over the fact that it is 
+As you admire this exquisite piece of art you marvel over the fact that it is
 made of white gold.
 ~
 #28383
@@ -1705,7 +1705,7 @@ A
 23 -10
 E
 brass cymbals~
-The large brass cymbals look as if they would cause quite a racket when you 
+The large brass cymbals look as if they would cause quite a racket when you
 banged them together.
 ~
 #28384
@@ -1752,7 +1752,7 @@ A
 24 -10
 E
 long hooded cloak~
-The long hooded cloak has been designed to conceal the identity and features of 
+The long hooded cloak has been designed to conceal the identity and features of
 the person who wears it.
 ~
 #28387
@@ -1801,9 +1801,9 @@ A large bed with a black wrought-iron frame stands in the centre of the room.~
 1500 0 0
 E
 bed~
-The large bed has a black wrought-iron frame with tall spikes that form the head 
-and foot ends. There are small iron cups containing lit candles attached at 
-differing heights on the outside of some of them. The mattress is currently bare 
+The large bed has a black wrought-iron frame with tall spikes that form the head
+and foot ends. There are small iron cups containing lit candles attached at
+differing heights on the outside of some of them. The mattress is currently bare
 it looks as if someone is in the middle of making the bed.
 ~
 #28392
@@ -1836,9 +1836,9 @@ A small brass key has been dropped here.~
 #ROOMS
 #28300
 outside a homestead~
-You are standing outside a quaint little homestead. Delicious aromas of meat and 
-pastry waft from inside, causing your mouth to water and your stomach to growl. 
-There is a solid oak door with a sign hanging above it that proclaims this to be 
+You are standing outside a quaint little homestead. Delicious aromas of meat and
+pastry waft from inside, causing your mouth to water and your stomach to growl.
+There is a solid oak door with a sign hanging above it that proclaims this to be
 Arika's Bed & Breakfast.
 ~
 0 0 1
@@ -1865,10 +1865,10 @@ The sign has '{RArika's Bed & Breakfast{x' painted on it in glossy red lettering
 S
 #28301
 a cosy dining room~
-You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red 
-and has been lacquered and polished until it shines. The tables are covered by 
-black lace tablecloths and adorned with highly polished silverware. In the 
-centre of each table is a delicate crystal vase containing a bunch of blood-red 
+You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red
+and has been lacquered and polished until it shines. The tables are covered by
+black lace tablecloths and adorned with highly polished silverware. In the
+centre of each table is a delicate crystal vase containing a bunch of blood-red
 roses. Enticing aromas of herbs and spices waft from the kitchen.
 
 ~
@@ -1891,8 +1891,8 @@ D3
 0 -1 28304
 E
 table~
-The table is covered by a black lace tablecloth and adorned with highly 
-polished silverware. In the centre of the table is a delicate crystal vase 
+The table is covered by a black lace tablecloth and adorned with highly
+polished silverware. In the centre of the table is a delicate crystal vase
 containing a bunch of blood-red roses.
 ~
 E
@@ -1902,11 +1902,11 @@ The delicate crystal vase contains a bunch of blood-red roses in full bloom.
 S
 #28302
 outside a homestead~
-You are standing outside a quaint little homestead. There are plant boxes 
-beneath the window ledges that are brimming with brightly-coloured flowers. 
-There is a thick covering of wild red ivy trailing its way up the walls. 
-Delicious aromas of meat and pastry waft from inside, causing your mouth 
-to water and your stomach to growl. 
+You are standing outside a quaint little homestead. There are plant boxes
+beneath the window ledges that are brimming with brightly-coloured flowers.
+There is a thick covering of wild red ivy trailing its way up the walls.
+Delicious aromas of meat and pastry waft from inside, causing your mouth
+to water and your stomach to growl.
 The entrance must be further along the building.
 ~
 0 0 1
@@ -1916,22 +1916,22 @@ D1
 0 -1 28300
 E
 flowers~
-You see blood-red carnations growing among frothy bunches of snow white baby's 
+You see blood-red carnations growing among frothy bunches of snow white baby's
 breath, with patches of tiny purple violets around the edges.
 ~
 E
 ivy~
-The pretty red ivy has heart-shaped leaves, and causes the building to look warm 
+The pretty red ivy has heart-shaped leaves, and causes the building to look warm
 and inviting.
 ~
 S
 #28303
 outside a homestead~
-You are standing outside a quaint little homestead. There are plant boxes 
-beneath the window ledges that are brimming with brightly-coloured flowers. 
-There is a thick covering of wild red ivy trailing its way up the walls. 
-Delicious aromas of meat and pastry waft from inside, causing your mouth 
-to water and your stomach to growl. 
+You are standing outside a quaint little homestead. There are plant boxes
+beneath the window ledges that are brimming with brightly-coloured flowers.
+There is a thick covering of wild red ivy trailing its way up the walls.
+Delicious aromas of meat and pastry waft from inside, causing your mouth
+to water and your stomach to growl.
 The entrance must be further along the building.
 ~
 0 0 1
@@ -1941,21 +1941,21 @@ D3
 0 -1 28300
 E
 ivy~
-The pretty red ivy has heart-shaped leaves, and causes the building to look warm 
+The pretty red ivy has heart-shaped leaves, and causes the building to look warm
 and inviting.
 ~
 E
 flowers~
-You see blood-red carnations growing among frothy bunches of snow white baby's 
+You see blood-red carnations growing among frothy bunches of snow white baby's
 breath, with patches of tiny purple violets around the edges.
 ~
 S
 #28304
 a cosy dining room~
-You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red 
-and has been lacquered and polished until it shines. The tables are covered by 
-black lace tablecloths and adorned with highly polished silverware. In the 
-centre of each table is a delicate crystal vase containing a bunch of blood-red 
+You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red
+and has been lacquered and polished until it shines. The tables are covered by
+black lace tablecloths and adorned with highly polished silverware. In the
+centre of each table is a delicate crystal vase containing a bunch of blood-red
 roses. Enticing aromas of herbs and spices waft from the kitchen.
 ~
 0 8 0
@@ -1969,8 +1969,8 @@ D1
 0 -1 28301
 E
 table~
-The table is covered by a black lace tablecloth and adorned with highly 
-polished silverware. In the centre of the table is a delicate crystal vase 
+The table is covered by a black lace tablecloth and adorned with highly
+polished silverware. In the centre of the table is a delicate crystal vase
 containing a bunch of blood-red roses.
 ~
 E
@@ -1980,10 +1980,10 @@ The delicate crystal vase contains a bunch of blood-red roses in full bloom.
 S
 #28305
 a cosy dining room~
-You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red 
-and has been lacquered and polished until it shines. The tables are covered by 
-black lace tablecloths and adorned with highly polished silverware. In the 
-centre of each table is a delicate crystal vase containing a bunch of blood-red 
+You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red
+and has been lacquered and polished until it shines. The tables are covered by
+black lace tablecloths and adorned with highly polished silverware. In the
+centre of each table is a delicate crystal vase containing a bunch of blood-red
 roses. Enticing aromas of herbs and spices waft from the kitchen.
 ~
 0 8 0
@@ -1997,8 +1997,8 @@ D3
 0 -1 28301
 E
 table~
-The table is covered by a black lace tablecloth and adorned with highly 
-polished silverware. In the centre of the table is a delicate crystal vase 
+The table is covered by a black lace tablecloth and adorned with highly
+polished silverware. In the centre of the table is a delicate crystal vase
 containing a bunch of blood-red roses.
 ~
 E
@@ -2008,12 +2008,12 @@ The delicate crystal vase contains a bunch of blood-red roses in full bloom.
 S
 #28306
 at the counter~
-You are standing before a beautifully handcrafted wooden counter that has an 
-intricate design embedded into the surface. The counter is covered with pastries 
-and deserts on silver plates that are covered with clear crystal domes. 
-Everything looks so delicious that you want to try it all. You can see into the 
-kitchen from here. The kitchen staff are all busy baking and preparing for the 
-evening's meals. There is a sign on the wall that says, 'If you wish to place an 
+You are standing before a beautifully handcrafted wooden counter that has an
+intricate design embedded into the surface. The counter is covered with pastries
+and deserts on silver plates that are covered with clear crystal domes.
+Everything looks so delicious that you want to try it all. You can see into the
+kitchen from here. The kitchen staff are all busy baking and preparing for the
+evening's meals. There is a sign on the wall that says, 'If you wish to place an
 order, ask for a menu.'
 ~
 0 8 0
@@ -2027,16 +2027,16 @@ D2
 0 -1 28304
 E
 counter~
-The beautifully handcrafted wooden counter has an intricate design of trailing 
-vines embedded into the surface. There are neatly-arranged silver platters laden 
+The beautifully handcrafted wooden counter has an intricate design of trailing
+vines embedded into the surface. There are neatly-arranged silver platters laden
 with delicious-looking pastries and deserts.
 ~
 S
 #28307
 at the counter~
-You are standing before a beautifully handcrafted wooden counter that has an 
-intricate design embedded into the surface. The counter is covered with pastries 
-and deserts on silver plates that are covered with clear crystal domes. 
+You are standing before a beautifully handcrafted wooden counter that has an
+intricate design embedded into the surface. The counter is covered with pastries
+and deserts on silver plates that are covered with clear crystal domes.
 Everything looks so delicious that you want to try it all.
 ~
 0 8 0
@@ -2054,19 +2054,19 @@ D3
 0 -1 28306
 E
 counter~
-The beautifully handcrafted wooden counter has an intricate design of trailing 
-vines embedded into the surface. There are neatly-arranged silver platters laden 
+The beautifully handcrafted wooden counter has an intricate design of trailing
+vines embedded into the surface. There are neatly-arranged silver platters laden
 with delicious-looking pastries and deserts.
 ~
 S
 #28308
 a cosy dining room~
-You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red 
-and has been lacquered and polished until it shines. The tables are covered by 
-black lace tablecloths and adorned with highly polished silverware. In the 
-centre of each table is a delicate crystal vase containing a bunch of blood-red 
-roses. Enticing aromas of herbs and spices waft from the kitchen. 
-Through an alcove to the north you can see a flight of stairs leading upwards. 
+You are in a cosy candlelit dining room. The wooden floor is a warm cherry-red
+and has been lacquered and polished until it shines. The tables are covered by
+black lace tablecloths and adorned with highly polished silverware. In the
+centre of each table is a delicate crystal vase containing a bunch of blood-red
+roses. Enticing aromas of herbs and spices waft from the kitchen.
+Through an alcove to the north you can see a flight of stairs leading upwards.
 To the east is a large office.
 ~
 0 8 0
@@ -2088,8 +2088,8 @@ D3
 0 -1 28307
 E
 table~
-The table is covered by a black lace tablecloth and adorned with highly 
-polished silverware. In the centre of the table is a delicate crystal vase 
+The table is covered by a black lace tablecloth and adorned with highly
+polished silverware. In the centre of the table is a delicate crystal vase
 containing a bunch of blood-red roses.
 ~
 E
@@ -2099,11 +2099,11 @@ The delicate crystal vase contains a bunch of blood-red roses in full bloom.
 S
 #28309
 the office~
-You are in the large, richly-furnished office of the proprietor of this 
-establishment. There are several beautiful paintings hanging on the walls and 
-the floor is covered in plush brown carpet. There is a large mahogany desk in 
-the centre of the room that is illuminated by a crystal chandelier hanging above 
-it. No other light penetrates the room, as the windows are covered with heavy 
+You are in the large, richly-furnished office of the proprietor of this
+establishment. There are several beautiful paintings hanging on the walls and
+the floor is covered in plush brown carpet. There is a large mahogany desk in
+the centre of the room that is illuminated by a crystal chandelier hanging above
+it. No other light penetrates the room, as the windows are covered with heavy
 velvet drapes.
 ~
 0 8 0
@@ -2113,31 +2113,31 @@ D3
 0 -1 28308
 E
 paintings~
-This painting has been rendered in soft tones of apricots and browns and is 
+This painting has been rendered in soft tones of apricots and browns and is
 depicting a small village at sunset.
 ~
 E
 carpet~
-The plush carpet is a dark shade of brown and has tiny flecks of gold embedded 
+The plush carpet is a dark shade of brown and has tiny flecks of gold embedded
 in the pile.
 ~
 E
 crystal chandelier~
-The candles that burn in the centre of the chandelier flicker, causing tiny 
-twinkles of light to dance across the surface of the crystals. The effect seems 
+The candles that burn in the centre of the chandelier flicker, causing tiny
+twinkles of light to dance across the surface of the crystals. The effect seems
 to lend a magical quality to the light it sheds.
 ~
 E
 curtains~
-The curtains are made from heavy black velvet and completely stop any outside 
+The curtains are made from heavy black velvet and completely stop any outside
 light from penetrating the room.
 ~
 S
 #28310
 before the stairs~
-You are at the bottom of a flight of stairs that lead to the floor above. There 
-is a strip of plush red carpet running up the centre of the polished wooden 
-stairway. Small stone gargoyles emerge from the walls on either side of you 
+You are at the bottom of a flight of stairs that lead to the floor above. There
+is a strip of plush red carpet running up the centre of the polished wooden
+stairway. Small stone gargoyles emerge from the walls on either side of you
 with burning lanterns clenched in their jaws.
 To the west is a door that has a sign on it, and on the east wall is
 a large floor-length mirror.
@@ -2157,19 +2157,19 @@ D4
 0 -1 28311
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 mirror~
-The glass in the large, floor-length mirror is rippling and you can't see your 
+The glass in the large, floor-length mirror is rippling and you can't see your
 reflection in it.
 ~
 E
 sign~
 There is a sign affixed to the west door.
                 ---------------
-                |   Kitchen   | 
+                |   Kitchen   |
                 |    Staff    |
                 |    Only     |
                 ---------------
@@ -2177,11 +2177,11 @@ There is a sign affixed to the west door.
 S
 #28311
 top of the stairs~
-You are at the top of a flight of stairs that lead down to the floor below. 
-There is a strip of plush red carpet running up the centre of the polished wooden 
-stairway. Small stone gargoyles emerge from the walls on either side of you 
-with burning lanterns clenched in their jaws. 
-A small number one has been forged from iron and affixed to the northern door. 
+You are at the top of a flight of stairs that lead down to the floor below.
+There is a strip of plush red carpet running up the centre of the polished wooden
+stairway. Small stone gargoyles emerge from the walls on either side of you
+with burning lanterns clenched in their jaws.
+A small number one has been forged from iron and affixed to the northern door.
 There is a corridor leading away to the west.
 ~
 0 8 0
@@ -2203,17 +2203,17 @@ D5
 0 -1 28310
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 S
 #28312
 a guest room~
-This spacious room has been decorated in shades of dark green and gold. There 
-are large marble pillars in the corners of the room that have been sculptured in 
-the image of a coiled cobra. The heads of the mighty snakes leer down at you and 
-the dark sapphire eyes twinkle. The furniture has all been made from black 
-wrought-iron, apart from a tall set of drawers standing against one wall. 
+This spacious room has been decorated in shades of dark green and gold. There
+are large marble pillars in the corners of the room that have been sculptured in
+the image of a coiled cobra. The heads of the mighty snakes leer down at you and
+the dark sapphire eyes twinkle. The furniture has all been made from black
+wrought-iron, apart from a tall set of drawers standing against one wall.
 Heavy velvet drapes obscure a small window on the north wall.
 ~
 0 8 0
@@ -2223,29 +2223,29 @@ D2
 8 28357 28311
 E
 drawers~
-The tall set of wooden drawers have been stained black and lacquered to a glossy 
-finish. There is nothing on top of the cabinet. 
+The tall set of wooden drawers have been stained black and lacquered to a glossy
+finish. There is nothing on top of the cabinet.
 ~
 E
 pillars~
-The large pillar has been sculptured from pale jade-coloured marble in the image 
-of a coiled cobra. The head of the mighty snake leers down at you from above and 
+The large pillar has been sculptured from pale jade-coloured marble in the image
+of a coiled cobra. The head of the mighty snake leers down at you from above and
 its dark sapphire eyes twinkle.
 ~
 E
 window drapes velvet~
-The long velvet drapes are black with thorned rose vines embroidered in gold. 
-The window they are obscuring is caked with dust and you are unable to see 
+The long velvet drapes are black with thorned rose vines embroidered in gold.
+The window they are obscuring is caked with dust and you are unable to see
 anything beyond.
 ~
 S
 #28313
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
-wooden floor. Small stone gargoyles emerge from the walls on either side of you 
-with burning lanterns clenched in their jaws. The corridor is also adorned with 
-several beautiful paintings that have been rendered in matching shades of red, 
-gray and black. They appear to have been painted by the same artist. 
+There is a strip of plush red carpet running down the centre of the polished
+wooden floor. Small stone gargoyles emerge from the walls on either side of you
+with burning lanterns clenched in their jaws. The corridor is also adorned with
+several beautiful paintings that have been rendered in matching shades of red,
+gray and black. They appear to have been painted by the same artist.
 A small number two has been forged from iron and affixed to the northern door.
 ~
 0 8 0
@@ -2271,22 +2271,22 @@ The delicate crystal vase contains a bunch of blood-red roses in full bloom.
 ~
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 paintings~
-The images depicted in these paintings are somewhat disturbing, yet a morbid 
-curiosity drawers you to look at them. This one is of a large volcano erupting. 
-Rising in the currents of its hot vapor is the translucent form of a large dragon. 
+The images depicted in these paintings are somewhat disturbing, yet a morbid
+curiosity drawers you to look at them. This one is of a large volcano erupting.
+Rising in the currents of its hot vapor is the translucent form of a large dragon.
 The artist has used a lot of red. It is entitled 'From the fire it rises'
 ~
 S
 #28314
 a guest room~
-This spacious room has been decorated with an Egyptian theme. The walls have 
-been hand-painted with Egyptian picture symbols and the room is filled with 
-ancient artifacts. 
+This spacious room has been decorated with an Egyptian theme. The walls have
+been hand-painted with Egyptian picture symbols and the room is filled with
+ancient artifacts.
 Heavy velvet drapes obscure a small window on the north wall.
 ~
 0 8 0
@@ -2296,28 +2296,28 @@ D2
 7 28358 28313
 E
 artifacts~
-There is a square recess in the western wall that contains three 
-different-coloured pottery jars that all have Egyptian symbols 
+There is a square recess in the western wall that contains three
+different-coloured pottery jars that all have Egyptian symbols
 glazed onto them.
 ~
 E
 window drapes~
-The long velvet drapes are a pale fawn colour and they hang right to the floor. 
-The window they are obscuring is caked with dust and you are unable to see 
+The long velvet drapes are a pale fawn colour and they hang right to the floor.
+The window they are obscuring is caked with dust and you are unable to see
 anything beyond.
 ~
 E
 walls picture symbols~
-The walls are hand-painted with Egyptian picture symbols. They seem to tell a 
+The walls are hand-painted with Egyptian picture symbols. They seem to tell a
 story but you don't really understand it.
 ~
 S
 #28315
 Arika's private quarters~
-You are in a spacious room that has been decorated in soft shades of pastel and 
-gray. It is illuminated by a crystal chandelier hanging from the roof that 
-infuses the antique furniture with a warm, honey-brown shine. There is a 
-beautiful lounge suite here made from varnished mahogany and upholstered in 
+You are in a spacious room that has been decorated in soft shades of pastel and
+gray. It is illuminated by a crystal chandelier hanging from the roof that
+infuses the antique furniture with a warm, honey-brown shine. There is a
+beautiful lounge suite here made from varnished mahogany and upholstered in
 apricot velvet printed with gold. A small table sits before it.
 ~
 0 8|16384 0
@@ -2335,7 +2335,7 @@ The leatherbound books are mostly about obscure art and gothic poetry.
 ~
 E
 lounge~
-A beautiful lounge suite made from varnished mahogany and upholstered in apricot 
+A beautiful lounge suite made from varnished mahogany and upholstered in apricot
 velvet printed with gold.
 
 ~
@@ -2345,19 +2345,19 @@ The small coffee table has round silver coasters on it.
 ~
 E
 crystal chandelier~
-The candles that burn in the centre of the chandelier flicker, causing tiny 
-twinkles of light to dance across the surface of the crystals. The effect seems 
+The candles that burn in the centre of the chandelier flicker, causing tiny
+twinkles of light to dance across the surface of the crystals. The effect seems
 to lend a magical quality to the light the candles shed.
 ~
 S
 #28316
 Arika's private quarters~
-You are in a bedroom that has been decorated in soft shades of pastel. The walls 
-are adorned with oil paintings of skeletal trees and bare winter landscapes. The 
-room is illuminated by a crystal chandelier hanging from the roof, which infuses 
-the antique furniture with a warm, honey-brown shine. In the south wall there is 
-a set of large wrought-iron doors with large panes of clear crystal inserted 
-into them. A set of white lace curtains have been pulled back from the doors, 
+You are in a bedroom that has been decorated in soft shades of pastel. The walls
+are adorned with oil paintings of skeletal trees and bare winter landscapes. The
+room is illuminated by a crystal chandelier hanging from the roof, which infuses
+the antique furniture with a warm, honey-brown shine. In the south wall there is
+a set of large wrought-iron doors with large panes of clear crystal inserted
+into them. A set of white lace curtains have been pulled back from the doors,
 allowing you to see a beautiful balcony beyond.
 ~
 0 8 0
@@ -2375,27 +2375,27 @@ D2
 8 -1 28317
 E
 doors wrought-iron~
-The ornate doors are black wrought-iron with large panes of clear crystal 
-inserted into them. A set of white lace curtains have been pulled back from the 
+The ornate doors are black wrought-iron with large panes of clear crystal
+inserted into them. A set of white lace curtains have been pulled back from the
 doors, allowing you to see through to the other side.
 ~
 E
 paintings~
-This painting is of a spooky-looking tree with twisted, skeletal branches. 
+This painting is of a spooky-looking tree with twisted, skeletal branches.
 It has been painted in many shades of gray.
 
 ~
 E
 crystal chandelier~
-The candles that burn in the centre of the chandelier flicker, causing tiny 
-twinkles of light to dance across the surface of the crystals. The effect seems 
+The candles that burn in the centre of the chandelier flicker, causing tiny
+twinkles of light to dance across the surface of the crystals. The effect seems
 to lend a magical quality to the light the candles shed.
 ~
 S
 #28317
 on the balcony~
-You are in a beautiful miniature garden on the balcony. You notice a vine of 
-jasmine entwined in the black wrought-iron fence, and plant boxes filled with 
+You are in a beautiful miniature garden on the balcony. You notice a vine of
+jasmine entwined in the black wrought-iron fence, and plant boxes filled with
 a variety of exotic herbs and flowers.
 ~
 0 0 3
@@ -2405,18 +2405,18 @@ D0
 8 -1 28316
 E
 fence~
-The fence has large spikes along the top to discourage anyone from trying to 
+The fence has large spikes along the top to discourage anyone from trying to
 climb over it as a means of entering the hotel.
 ~
 S
 #28318
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
+There is a strip of plush red carpet running down the centre of the polished
 wooden floor. Small stone gargoyles emerge from the walls on either side of you
-with burning lanterns clenched in their jaws. 
-To the west there is a set of large wrought-iron doors with large panes of clear 
-crystal inserted into them. A set of black lace curtains have been pulled back 
-from the doors, allowing you to see a beautiful balcony beyond. 
+with burning lanterns clenched in their jaws.
+To the west there is a set of large wrought-iron doors with large panes of clear
+crystal inserted into them. A set of black lace curtains have been pulled back
+from the doors, allowing you to see a beautiful balcony beyond.
 A small number three has been forged from iron and affixed to the northern door.
 ~
 0 8 0
@@ -2438,21 +2438,21 @@ D3
 8 -1 28320
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 doors wrought-iron~
-The ornate doors are black wrought-iron with large panes of clear crystal 
-inserted into them. A set of black lace curtains have been pulled back from the 
+The ornate doors are black wrought-iron with large panes of clear crystal
+inserted into them. A set of black lace curtains have been pulled back from the
 doors, allowing you to see through to the other side.
 ~
 S
 #28319
 a guest room~
-This spacious room has been decorated in shades of black, brown and gold. The 
-walls are adorned with beautiful oil paintings and the room is filled with 
-antique furniture. 
+This spacious room has been decorated in shades of black, brown and gold. The
+walls are adorned with beautiful oil paintings and the room is filled with
+antique furniture.
 Heavy velvet drapes obscure a small window on the north wall.
 ~
 0 8 0
@@ -2462,8 +2462,8 @@ D2
 8 28359 28318
 E
 window drapes~
-The long velvet drapes are black with thorned rose vines embroidered in gold. 
-The window they are obscuring is caked with dust and you are unable to see 
+The long velvet drapes are black with thorned rose vines embroidered in gold.
+The window they are obscuring is caked with dust and you are unable to see
 anything beyond.
 ~
 E
@@ -2473,10 +2473,10 @@ This painting is of a partially-ruined castle standing high on a cliff.
 S
 #28320
 on the balcony~
-You are in a beautiful miniature garden on the balcony. It is surrounded by a 
-black wrought-iron fence and there are plant boxes filled with a variety of 
-exotic herbs and flowers. In the corners of the balcony are large earthen pots 
-with miniature rose bushes growing in them. The roses are in full bloom and the 
+You are in a beautiful miniature garden on the balcony. It is surrounded by a
+black wrought-iron fence and there are plant boxes filled with a variety of
+exotic herbs and flowers. In the corners of the balcony are large earthen pots
+with miniature rose bushes growing in them. The roses are in full bloom and the
 sweet fragrance of them lingers in the air.
 ~
 0 0 3
@@ -2490,25 +2490,25 @@ D2
 0 -1 28322
 E
 fence~
-The fence has large spikes along the top to discourage anyone from trying to 
+The fence has large spikes along the top to discourage anyone from trying to
 climb over it as a means of entering the hotel.
 ~
 E
 rose bushes~
-The roses are in full bloom and the sweet fragrance of them lingers in the air. 
-The ones nearest to you are a deep orange that turns to red towards the edges of 
+The roses are in full bloom and the sweet fragrance of them lingers in the air.
+The ones nearest to you are a deep orange that turns to red towards the edges of
 the petals.
 ~
 S
 #28321
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
+There is a strip of plush red carpet running down the centre of the polished
 wooden floor. Small stone gargoyles emerge from the walls on either side of you
-with burning lanterns clenched in their jaws. The corridor is also adorned with 
-several beautiful paintings that have been rendered in matching shades of red, 
-gray and black. They appear to have been painted by the same artist. 
-To the west there is a set of large wrought-iron doors with large panes of clear 
-crystal inserted into them. A set of black lace curtains have been pulled back 
+with burning lanterns clenched in their jaws. The corridor is also adorned with
+several beautiful paintings that have been rendered in matching shades of red,
+gray and black. They appear to have been painted by the same artist.
+To the west there is a set of large wrought-iron doors with large panes of clear
+crystal inserted into them. A set of black lace curtains have been pulled back
 from the doors, allowing you to see a beautiful balcony beyond.
 ~
 0 8 0
@@ -2526,29 +2526,29 @@ D3
 8 -1 28322
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 paintings~
-The images depicted in these paintings are somewhat disturbing, yet a morbid 
-curiosity drawers you to look at them. This one is of small village consumed in 
-flames. The sky is filled with thick black smoke and the translucent form of a 
+The images depicted in these paintings are somewhat disturbing, yet a morbid
+curiosity drawers you to look at them. This one is of small village consumed in
+flames. The sky is filled with thick black smoke and the translucent form of a
 large dragon hovers above the carnage. It is entitled 'The burning death'
 ~
 E
 doors wrought-iron~
-The ornate doors are black wrought-iron with large panes of clear crystal 
-inserted into them. A set of black lace curtains have been pulled back from the 
+The ornate doors are black wrought-iron with large panes of clear crystal
+inserted into them. A set of black lace curtains have been pulled back from the
 doors, allowing you to see through to the other side.
 ~
 S
 #28322
 on the balcony~
-You are in a beautiful miniature garden on the balcony. It is surrounded by a 
-black wrought-iron fence and there are plant boxes filled with a variety of 
-exotic herbs and flowers. In the corners of the balcony are large earthen pots 
-with miniature rose bushes growing in them. The roses are in full bloom and the 
+You are in a beautiful miniature garden on the balcony. It is surrounded by a
+black wrought-iron fence and there are plant boxes filled with a variety of
+exotic herbs and flowers. In the corners of the balcony are large earthen pots
+with miniature rose bushes growing in them. The roses are in full bloom and the
 sweet fragrance of them lingers in the air.
 ~
 0 0 3
@@ -2562,25 +2562,25 @@ D1
 8 -1 28321
 E
 fence~
-The fence has large spikes along the top to discourage anyone from trying to 
+The fence has large spikes along the top to discourage anyone from trying to
 climb over it as a means of entering the hotel.
 ~
 E
 rose bushes~
-The roses are in full bloom and the sweet fragrance of them lingers in the air. 
-The ones nearest to you are a blood-red that turns to black near the edges of 
+The roses are in full bloom and the sweet fragrance of them lingers in the air.
+The ones nearest to you are a blood-red that turns to black near the edges of
 the petals.
 ~
 E
 plant box~
-The large earthen plant box has many varieties of herbs growing in it. You 
+The large earthen plant box has many varieties of herbs growing in it. You
 recognize some of them but many others look completely unfamiliar.
 ~
 S
 #28323
 before the stairs~
-You are at the bottom of a flight of stairs that lead to the floor above. There 
-is a strip of plush red carpet running up the centre of the polished wooden 
+You are at the bottom of a flight of stairs that lead to the floor above. There
+is a strip of plush red carpet running up the centre of the polished wooden
 stairway. Small stone gargoyles emerge from the walls on either side of you
 with burning lanterns clenched in their jaws.
 ~
@@ -2595,17 +2595,17 @@ D4
 0 -1 28326
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 S
 #28324
 A large bathroom~
-You are in large bathroom that is covered with white tiles. Fresh towels hang on 
-brass rails along most of the walls and there are a few hand basins with mirrors 
-over them. In the centre of the room a large mineral pool is sunken into the 
-floor. There is steam rising from the surface of the water, they must be piping 
-it in from a natural hot spring nearby. At the back of the room you can see a 
+You are in large bathroom that is covered with white tiles. Fresh towels hang on
+brass rails along most of the walls and there are a few hand basins with mirrors
+over them. In the centre of the room a large mineral pool is sunken into the
+floor. There is steam rising from the surface of the water, they must be piping
+it in from a natural hot spring nearby. At the back of the room you can see a
 private bath cubicle.
 ~
 0 8 0
@@ -2613,7 +2613,7 @@ D0
 north door~
 There is a sign affixed to the solid wooden door.
                 ---------------
-                |             | 
+                |             |
                 |   Laundry   |
                 |             |
                 ---------------
@@ -2633,7 +2633,7 @@ D3
 1 -1 28311
 E
 basins~
-There is a small crystal dish containing a bar of scented soap on top of each of 
+There is a small crystal dish containing a bar of scented soap on top of each of
 the hand basins.
 ~
 E
@@ -2642,14 +2642,14 @@ White towels with the hotel insignia on them are hanging neatly on brass rails.
 ~
 E
 pool bath~
-A large mineral pool is sunken into the floor. There is steam rising from the 
-surface of the water, they must be piping it in from a natural hot spring 
+A large mineral pool is sunken into the floor. There is steam rising from the
+surface of the water, they must be piping it in from a natural hot spring
 nearby.
 ~
 S
 #28325
 a laundry room~
-You are in a laundry room with a row of basins along the far wall. There are 
+You are in a laundry room with a row of basins along the far wall. There are
 several baskets sitting on the floor containing laundry waiting to be washed.
 ~
 0 8 0
@@ -2664,9 +2664,9 @@ The large wicker basket is filled with sheets and towels waiting to be washed.
 S
 #28326
 top of the stairs~
-You are at the top of a flight of stairs that lead  down to the floor below. 
-There is a strip of plush red carpet running down the centre of the polished 
-wooden stairway. Small stone gargoyles emerge from the walls on either 
+You are at the top of a flight of stairs that lead  down to the floor below.
+There is a strip of plush red carpet running down the centre of the polished
+wooden stairway. Small stone gargoyles emerge from the walls on either
 side of you with burning lanterns clenched in their jaws.
 There is a corridor leading away to the north.
 ~
@@ -2676,7 +2676,7 @@ D0
 ~
 0 -1 28327
 D4
-There is a small trap door in the roof. 
+There is a small trap door in the roof.
 It is tightly sealed.~
 trap door trapdoor~
 3 -1 28341
@@ -2686,16 +2686,16 @@ D5
 0 -1 28323
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 S
 #28327
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
-wooden floor. Small stone gargoyles emerge from the walls on either side of 
-you with burning lanterns clenched in their jaws. The corridor is also adorned 
-with several beautiful paintings that have been rendered in matching shades of 
+There is a strip of plush red carpet running down the centre of the polished
+wooden floor. Small stone gargoyles emerge from the walls on either side of
+you with burning lanterns clenched in their jaws. The corridor is also adorned
+with several beautiful paintings that have been rendered in matching shades of
 purple, gray and black. They appear to have been painted by the same artist.
 ~
 0 8 0
@@ -2713,24 +2713,24 @@ D2
 0 -1 28326
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 paintings~
-The images depicted in these paintings are somewhat disturbing, though it's hard 
-to say exactly what it is that bothers you about them. This one is of little 
-child with a very pale face who is standing at the centre of a lightning storm. 
+The images depicted in these paintings are somewhat disturbing, though it's hard
+to say exactly what it is that bothers you about them. This one is of little
+child with a very pale face who is standing at the centre of a lightning storm.
 The purples in the sky are particularly bold. It is entitled 'The storm within'
 ~
 S
 #28328
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
+There is a strip of plush red carpet running down the centre of the polished
 wooden floor. Small stone gargoyles emerge from the walls on either side of you
-with burning lanterns clenched in their jaws. The corridor is also adorned with 
-several beautiful paintings that have been rendered in matching shades of purple, 
-gray and black. They appear to have been painted by the same artist. 
+with burning lanterns clenched in their jaws. The corridor is also adorned with
+several beautiful paintings that have been rendered in matching shades of purple,
+gray and black. They appear to have been painted by the same artist.
 A small number four has been forged from iron and affixed to the northern door.
 ~
 0 8 0
@@ -2748,25 +2748,25 @@ D2
 0 -1 28327
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 paintings~
-The images depicted in these paintings are somewhat disturbing, though it's hard 
-to say exactly what it is that bothers you about them. This one is of a large 
-open field that is covered with bizarre-looking boulders. It is a dreary, overcast 
-day and dark storm clouds are gathering in the sky. 
+The images depicted in these paintings are somewhat disturbing, though it's hard
+to say exactly what it is that bothers you about them. This one is of a large
+open field that is covered with bizarre-looking boulders. It is a dreary, overcast
+day and dark storm clouds are gathering in the sky.
 The artist has used a lot of black. It is entitled 'slumber'
 ~
 S
 #28329
 a guest room~
-This room looks as if someone has been staying in it for quite a while, it's 
-cluttered with stuff. The floor is strewn with women's clothes and the dresser is 
-covered in perfume and trinkets. There is a tall candelabra made from solid 
-silver standing in one corner of the room. The burning candles flicker, casting 
-eerie shadows across the walls. 
+This room looks as if someone has been staying in it for quite a while, it's
+cluttered with stuff. The floor is strewn with women's clothes and the dresser is
+covered in perfume and trinkets. There is a tall candelabra made from solid
+silver standing in one corner of the room. The burning candles flicker, casting
+eerie shadows across the walls.
 Heavy velvet drapes obscure a small window on the north wall.
 ~
 0 8 0
@@ -2776,35 +2776,35 @@ D2
 7 28360 28328
 E
 window drapes~
-The long velvet drapes are pale blue velvet with thorned rose vines embroidered 
-in silver. The window they are obscuring is caked with dust and you are unable 
+The long velvet drapes are pale blue velvet with thorned rose vines embroidered
+in silver. The window they are obscuring is caked with dust and you are unable
 to see anything beyond.
 ~
 E
 clothes floor~
-The floor is strewn with women's clothes. It looks as if the owner came home and 
+The floor is strewn with women's clothes. It looks as if the owner came home and
 undressed on the way to the bed, dropping her clothes as she crossed the room.
 ~
 E
 candelabra candles~
-The tall candelabra is made from solid silver. The burning candles flicker, casting 
+The tall candelabra is made from solid silver. The burning candles flicker, casting
 eerie shadows across the walls.
 ~
 E
 dresser~
-The tall set of wooden drawers have been stained black and lacquered to a glossy 
-finish. The top is covered in women's perfume bottles and various items of 
+The tall set of wooden drawers have been stained black and lacquered to a glossy
+finish. The top is covered in women's perfume bottles and various items of
 silver jewelry.
 ~
 S
 #28330
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
-wooden floor. Small stone gargoyles are emerging from the walls on either side 
-of you with burning lanterns clenched in their jaws. The corridor is also adorned 
-with several beautiful paintings that have been rendered in matching shades of purple, 
-gray and black. They appear to have been painted by the same artist. 
-A small number five has been forged from iron and affixed to the northern door, 
+There is a strip of plush red carpet running down the centre of the polished
+wooden floor. Small stone gargoyles are emerging from the walls on either side
+of you with burning lanterns clenched in their jaws. The corridor is also adorned
+with several beautiful paintings that have been rendered in matching shades of purple,
+gray and black. They appear to have been painted by the same artist.
+A small number five has been forged from iron and affixed to the northern door,
 and a matching number six is on the southern door.
 ~
 0 8 0
@@ -2830,25 +2830,25 @@ The delicate crystal vase contains a bunch of blood-red roses in full bloom.
 ~
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 paintings~
-The images depicted in these paintings are somewhat disturbing, though it's hard 
-to say exactly what it is that bothers you about them. This one is of the 
-ghostly figure of a mysterious-looking woman. She has striking gray eyes that 
-seem to reach into your soul. Mist gathers around her as she sits beside a blank 
-tombstone wearing an elegant dress of exquisite white lace. 
+The images depicted in these paintings are somewhat disturbing, though it's hard
+to say exactly what it is that bothers you about them. This one is of the
+ghostly figure of a mysterious-looking woman. She has striking gray eyes that
+seem to reach into your soul. Mist gathers around her as she sits beside a blank
+tombstone wearing an elegant dress of exquisite white lace.
 It is entitled 'Hollow'.
 ~
 S
 #28331
 a guest room~
-This spacious room has been decorated with a battle theme. Hanging on the walls 
-there are colorful tapestries depicting great battle scenes from the past. There 
-is also an extensive collection of weapons on display. A large pair of axes 
-connected by a chain are hanging on the wall beside you. 
+This spacious room has been decorated with a battle theme. Hanging on the walls
+there are colorful tapestries depicting great battle scenes from the past. There
+is also an extensive collection of weapons on display. A large pair of axes
+connected by a chain are hanging on the wall beside you.
 Heavy velvet drapes obscure a small window on the north wall.
 ~
 0 8 0
@@ -2858,30 +2858,30 @@ D2
 8 28361 28330
 E
 window drapes~
-The long velvet drapes are dark blue with a fleur de leas pattern embroidered in 
-silver. The window they are obscuring is caked with dust and you are unable to 
+The long velvet drapes are dark blue with a fleur de leas pattern embroidered in
+silver. The window they are obscuring is caked with dust and you are unable to
 see anything beyond.
 ~
 E
 tapestries~
-The colorful tapestries look very old and well-preserved. This one is a large 
-battle between an army wearing full suits of steel armour who are flying a blue 
-banner with a large black wolf on it, and a horde wearing black armour who are 
-flying a purple banner with a mystical symbol on it. The army in black seem to 
+The colorful tapestries look very old and well-preserved. This one is a large
+battle between an army wearing full suits of steel armour who are flying a blue
+banner with a large black wolf on it, and a horde wearing black armour who are
+flying a purple banner with a mystical symbol on it. The army in black seem to
 be winning.
 ~
 E
 axes~
-The large battle axes are joined at the handles by a reasonably short chain and 
-are designed to be used in close combat. Only very skilled fighters use these as 
+The large battle axes are joined at the handles by a reasonably short chain and
+are designed to be used in close combat. Only very skilled fighters use these as
 a first choice of weapon.
 ~
 S
 #28332
 a guest room~
-It looks as if the maid is in the middle of making this room up after the 
-previous guest. The bed has had all the linen stripped off it leaving the 
-mattress bare. 
+It looks as if the maid is in the middle of making this room up after the
+previous guest. The bed has had all the linen stripped off it leaving the
+mattress bare.
 Heavy velvet drapes obscure a small window on the south wall.
 ~
 0 8 0
@@ -2891,19 +2891,19 @@ D0
 8 28361 28330
 E
 window drapes~
-The long velvet drapes are soft pink with a fleur de leas pattern embroidered in 
-silver. The window they are obscuring is caked with dust and you are unable to 
+The long velvet drapes are soft pink with a fleur de leas pattern embroidered in
+silver. The window they are obscuring is caked with dust and you are unable to
 see anything beyond.
 ~
 S
 #28333
 a corridor~
-There is a strip of plush red carpet running down the centre of the polished 
+There is a strip of plush red carpet running down the centre of the polished
 wooden floor. Small stone gargoyles emerge from the walls on either side of you
-with burning lanterns clenched in their jaws. The corridor is also adorned with 
-several beautiful paintings that have been rendered in matching shades of purple, 
-gray and black. They appear to have been painted by the same artist. 
-A small number seven has been forged from iron and affixed to the northern door, 
+with burning lanterns clenched in their jaws. The corridor is also adorned with
+several beautiful paintings that have been rendered in matching shades of purple,
+gray and black. They appear to have been painted by the same artist.
+A small number seven has been forged from iron and affixed to the northern door,
 and a matching number eight is on the southern door.
 ~
 0 8 0
@@ -2925,24 +2925,24 @@ D3
 0 -1 28330
 E
 gargoyle~
-The small stone gargoyle appears to be emerging from the wall. There is a 
+The small stone gargoyle appears to be emerging from the wall. There is a
 brightly burning lantern hanging from its clenched jaws.
 ~
 E
 paintings~
-The images depicted in these paintings are somewhat disturbing, though it's hard 
-to say exactly what it is that bothers you about them. This one is of a large, 
-jagged crack in a sheer wall of solid stone. The dark, foreboding opening may 
-have been the result of a bad earthquake, but somehow it doesn't quite look 
+The images depicted in these paintings are somewhat disturbing, though it's hard
+to say exactly what it is that bothers you about them. This one is of a large,
+jagged crack in a sheer wall of solid stone. The dark, foreboding opening may
+have been the result of a bad earthquake, but somehow it doesn't quite look
 right. It is entitled 'Descent into Madness'
 ~
 S
 #28334
 a guest room~
-You are in a dark, musty-smelling room, it looks like it has been shut up for 
-some time. Cobwebs tangle themselves in your hair every time you move, and the 
-thick coating of dust on the furniture is threatening to choke the air from your 
-lungs. It's extremely cold in here and you pull your clothing tighter, attempting 
+You are in a dark, musty-smelling room, it looks like it has been shut up for
+some time. Cobwebs tangle themselves in your hair every time you move, and the
+thick coating of dust on the furniture is threatening to choke the air from your
+lungs. It's extremely cold in here and you pull your clothing tighter, attempting
 to ward off the terrible bout of shivering that has seized your body.
 ~
 0 1|8|131072 0
@@ -2952,15 +2952,15 @@ D2
 7 28363 28333
 E
 furniture~
-There is a thin coating of dust on the once-beautiful furniture. It looks as if 
+There is a thin coating of dust on the once-beautiful furniture. It looks as if
 the maid hasn't been in here for some time.
 ~
 S
 #28335
 a guest room~
-This spacious room has been decorated in shades of black, red and gold. The 
-walls are adorned with beautiful oil paintings and the room is filled with 
-antique furniture. 
+This spacious room has been decorated in shades of black, red and gold. The
+walls are adorned with beautiful oil paintings and the room is filled with
+antique furniture.
 Heavy velvet drapes obscure a small window on the north wall.
 ~
 0 8 0
@@ -2970,8 +2970,8 @@ D0
 8 28364 28333
 E
 window drapes~
-The long velvet drapes are black with thorned rose vines embroidered in gold. 
-The window they are obscuring is caked with dust and you are unable to see 
+The long velvet drapes are black with thorned rose vines embroidered in gold.
+The window they are obscuring is caked with dust and you are unable to see
 anything beyond.
 ~
 E
@@ -2981,18 +2981,18 @@ This one is of a spooky-looking house surrounded by dead trees.
 S
 #28336
 a large bathroom~
-You are in large bathroom that is covered with white tiles. Fresh towels hang on 
-brass rails along most of the walls and there are a few hand basins with mirrors 
-over them. In the centre of the room a large mineral pool is sunken into the 
-floor. There is steam rising from the surface of the water, they must be piping 
-it in from a natural hot spring nearby. 
+You are in large bathroom that is covered with white tiles. Fresh towels hang on
+brass rails along most of the walls and there are a few hand basins with mirrors
+over them. In the centre of the room a large mineral pool is sunken into the
+floor. There is steam rising from the surface of the water, they must be piping
+it in from a natural hot spring nearby.
 At the back of the room you can see a private bath cubicle.
 ~
 0 8 0
 D0
 There is a sign affixed to the solid wooden door.
                 ---------------
-                |             | 
+                |             |
                 |   Laundry   |
                 |             |
                 ---------------~
@@ -3016,19 +3016,19 @@ White towels with the hotel insignia on them are hanging neatly on brass rails.
 ~
 E
 basins~
-There is a small crystal dish containing a bar of scented soap on top of each of 
+There is a small crystal dish containing a bar of scented soap on top of each of
 the hand basins.
 ~
 E
 pool bath~
-A large mineral pool is sunken into the floor. There is steam rising from the 
-surface of the water, they must be piping it in from a natural hot spring 
+A large mineral pool is sunken into the floor. There is steam rising from the
+surface of the water, they must be piping it in from a natural hot spring
 nearby.
 ~
 S
 #28337
 a laundry room~
-You are in a laundry room with a row of basins along the far wall. There are 
+You are in a laundry room with a row of basins along the far wall. There are
 several baskets sitting on the floor containing laundry waiting to be washed.~
 0 8 0
 D2
@@ -3038,7 +3038,7 @@ D2
 S
 #28338
 a toilet cubicle~
-You are in a small toilet cubicle which is lined with white tiles. There is a small hand 
+You are in a small toilet cubicle which is lined with white tiles. There is a small hand
 basin with scented soap here. A towel hangs beside the hand basin on a brass rail.
 ~
 0 8 0
@@ -3057,7 +3057,7 @@ There is a small crystal dish containing a bar of scented soap on top of the han
 S
 #28339
 a toilet cubicle~
-You are in a small toilet cubicle which is lined with white tiles. There is a small hand 
+You are in a small toilet cubicle which is lined with white tiles. There is a small hand
 basin with scented soap here. A towel hangs beside the hand basin on a brass rail.
 ~
 0 8 0
@@ -3076,10 +3076,10 @@ A white towel with the hotel insignia on it is hanging neatly on a brass rail.
 S
 #28340
 a large bathroom~
-You are in large private bathroom that is covered with white tiles. A fresh 
-towel hangs on a brass rail along one wall and there is a hand basin with a 
-mirror hanging over it. In the centre of the room a large mineral pool is sunken 
-into the floor. There is steam rising from the surface of the water, they must 
+You are in large private bathroom that is covered with white tiles. A fresh
+towel hangs on a brass rail along one wall and there is a hand basin with a
+mirror hanging over it. In the centre of the room a large mineral pool is sunken
+into the floor. There is steam rising from the surface of the water, they must
 be piping it in from a natural hot spring nearby.
 ~
 0 8 0
@@ -3094,9 +3094,9 @@ D3
 S
 #28341
 a dusty attic~
-You appear to be in a dark and dusty attic. There is no light in here at all, 
-making everything appear to be shadows on shadows. A soft breeze is blowing in 
-from somewhere and fluttering the many sheets and strands of lace that are 
+You appear to be in a dark and dusty attic. There is no light in here at all,
+making everything appear to be shadows on shadows. A soft breeze is blowing in
+from somewhere and fluttering the many sheets and strands of lace that are
 hanging from the ceiling all around you.
 ~
 0 1|8 0
@@ -3109,23 +3109,23 @@ D1
 ~
 0 -1 28344
 D5
-There is a small trap door in the floor. 
+There is a small trap door in the floor.
 It it tightly sealed.~
 trap door trapdoor~
 3 -1 28326
 E
 lace~
-The black lace is trailing down from the rafters high above. Most of it is 
-tattered and torn with age. It flutters in the breeze, stirring up the dust 
-collected on the floor. 
+The black lace is trailing down from the rafters high above. Most of it is
+tattered and torn with age. It flutters in the breeze, stirring up the dust
+collected on the floor.
 ~
 S
 #28342
 a dusty attic~
-There is no light in the dark and dusty attic, making everything appear to be 
-shadows on shadows. A soft breeze is blowing in from somewhere and fluttering 
-the many sheets and strands of lace that are hanging from the ceiling all around 
-you. There are a few old paintings leaned against the wall, half-covered by a 
+There is no light in the dark and dusty attic, making everything appear to be
+shadows on shadows. A soft breeze is blowing in from somewhere and fluttering
+the many sheets and strands of lace that are hanging from the ceiling all around
+you. There are a few old paintings leaned against the wall, half-covered by a
 sheet.
 ~
 0 1|8 0
@@ -3139,23 +3139,23 @@ D2
 0 -1 28341
 E
 paintings~
-The paintings are old and faded and coated in a thick layer of dust like 
-everything else in here. They have been leaned against the wall with a sheet 
+The paintings are old and faded and coated in a thick layer of dust like
+everything else in here. They have been leaned against the wall with a sheet
 tossed over them.
 ~
 E
 lace~
-The black lace is trailing down from the rafters high above. Most of it is 
-tattered and torn with age. It flutters in the breeze, stirring up the dust 
-collected on the floor. 
+The black lace is trailing down from the rafters high above. Most of it is
+tattered and torn with age. It flutters in the breeze, stirring up the dust
+collected on the floor.
 ~
 S
 #28343
 a dusty attic~
-There is no light in the dark and dusty attic, making everything appear to be 
-shadows on shadows. A soft breeze is blowing in from somewhere and fluttering 
-the many sheets and strands of lace that are hanging from the ceiling all around 
-you. There is a dust covered candelabra standing in this corner of the room. The 
+There is no light in the dark and dusty attic, making everything appear to be
+shadows on shadows. A soft breeze is blowing in from somewhere and fluttering
+the many sheets and strands of lace that are hanging from the ceiling all around
+you. There is a dust covered candelabra standing in this corner of the room. The
 candles are half burnt and small splatters of wax have dripped onto the floor.
 ~
 0 1|8 0
@@ -3169,23 +3169,23 @@ D3
 0 -1 28342
 E
 candelabra candle~
-The tall candelabra is solid silver and has a simple pattern etched into the 
-surface that twines its way up the stand. It is coated in dust but several 
-patches of fresh wax splattered on the stand indicate that it has been recently 
+The tall candelabra is solid silver and has a simple pattern etched into the
+surface that twines its way up the stand. It is coated in dust but several
+patches of fresh wax splattered on the stand indicate that it has been recently
 used.
 ~
 E
 lace~
-The black lace is trailing down from the rafters high above. Most of it is 
-tattered and torn with age. It flutters in the breeze siring up the dust 
-collected on the floor. 
+The black lace is trailing down from the rafters high above. Most of it is
+tattered and torn with age. It flutters in the breeze siring up the dust
+collected on the floor.
 ~
 S
 #28344
 a dusty attic~
-There is no light in the dark and dusty attic, making everything appear to be 
-shadows on shadows. There is a strong breeze here that seems to be coming from 
-somewhere in the ceiling, but it is too dark up there to make anything out. 
+There is no light in the dark and dusty attic, making everything appear to be
+shadows on shadows. There is a strong breeze here that seems to be coming from
+somewhere in the ceiling, but it is too dark up there to make anything out.
 The sheets and strands of lace hanging from the ceiling flutter all around you.
 ~
 0 1|8 0
@@ -3199,16 +3199,16 @@ D3
 0 -1 28341
 E
 lace~
-The black lace is trailing down from the rafters high above. Most of it is 
-tattered and torn with age. It flutters in the breeze, stirring up the dust 
-collected on the floor. 
+The black lace is trailing down from the rafters high above. Most of it is
+tattered and torn with age. It flutters in the breeze, stirring up the dust
+collected on the floor.
 ~
 S
 #28345
 behind the counter~
-You are standing behind the counter used to serve the hungry patrons. It is 
-covered with pastries and deserts on silver plates that are covered with clear 
-crystal domes. You hear a clatter of pots and pans through the east wall and 
+You are standing behind the counter used to serve the hungry patrons. It is
+covered with pastries and deserts on silver plates that are covered with clear
+crystal domes. You hear a clatter of pots and pans through the east wall and
 realize it probably wouldn't be wise to get caught back here.
 ~
 0 8 0
@@ -3223,10 +3223,10 @@ D3
 S
 #28346
 behind the counter~
-You are standing behind the counter used to serve the hungry patrons. It is 
-covered with pastries and deserts on silver plates that are covered with clear 
-crystal domes. You can see into the kitchen from here, the staff are rushing 
-about preparing for the evening's meals. You hear a clatter of pots and pans from 
+You are standing behind the counter used to serve the hungry patrons. It is
+covered with pastries and deserts on silver plates that are covered with clear
+crystal domes. You can see into the kitchen from here, the staff are rushing
+about preparing for the evening's meals. You hear a clatter of pots and pans from
 further back in the kitchen.
 ~
 0 8 0
@@ -3241,8 +3241,8 @@ D1
 S
 #28347
 in the kitchen~
-You are in a tidy, well-organized kitchen. There is a large coal range oven in 
-the corner of the room. It has pots of stew simmering on top of it and a 
+You are in a tidy, well-organized kitchen. There is a large coal range oven in
+the corner of the room. It has pots of stew simmering on top of it and a
 delicious aroma of fresh-baked bread wafts from inside.
 ~
 0 8 0
@@ -3256,15 +3256,15 @@ D2
 0 -1 28346
 E
 stew pots~
-Pots of vegetable and meat stew are simmering on top of the oven and a delicious 
+Pots of vegetable and meat stew are simmering on top of the oven and a delicious
 aroma of herbs and spices fills the air.
 ~
 S
 #28348
 in the kitchen~
-You are in a tidy, well-organized kitchen. There are several shelves on the far 
-wall that have pots and pans stacked in orderly piles. A long bench is laden 
-with fresh fruits and vegetables. On the wall behind it is large spice rack that 
+You are in a tidy, well-organized kitchen. There are several shelves on the far
+wall that have pots and pans stacked in orderly piles. A long bench is laden
+with fresh fruits and vegetables. On the wall behind it is large spice rack that
 is full of jars containing herbs and spices for flavouring food.
 ~
 0 8 0
@@ -3278,7 +3278,7 @@ trap door trapdoor~
 1 -1 28349
 E
 rack spice jars herbs~
-Many small jars containing herbs and spices for flavouring food are packed into 
+Many small jars containing herbs and spices for flavouring food are packed into
 the spice rack.
 ~
 E
@@ -3288,10 +3288,10 @@ Pots and pans stacked in orderly piles along the shelves.
 S
 #28349
 a dusty wine cellar~
-You are in dusty cellar and the only exit appears to be a narrow stairway 
-leading up to a trap door in the roof. The cellar is lined with shelves 
-containing wine bottles draped in cobwebs. The labels on some of the wine 
-bottles near you bear very old dates and the wines must be worth a lot of money. 
+You are in dusty cellar and the only exit appears to be a narrow stairway
+leading up to a trap door in the roof. The cellar is lined with shelves
+containing wine bottles draped in cobwebs. The labels on some of the wine
+bottles near you bear very old dates and the wines must be worth a lot of money.
 There are also several large barrels which probably contain beer.
 ~
 0 8 0
@@ -3314,7 +3314,7 @@ The large oak barrels are tightly sealed and probably contain beer.
 S
 #28350
 the linen closet~
-You are in a large linen closet that is filled with shelves containing expensive 
+You are in a large linen closet that is filled with shelves containing expensive
 sheets, spare pillows and quilts.
 ~
 0 1|8 0
@@ -3324,12 +3324,12 @@ D3
 8 -1 28327
 E
 sheets~
-Many sets of expensive sheets and pillowcases are stacked neatly on the 
+Many sets of expensive sheets and pillowcases are stacked neatly on the
 shelves. Most of them are made from satin.
 ~
 E
 quilts~
-Several spare quilts made from different shades of velvet are stacked neatly on 
+Several spare quilts made from different shades of velvet are stacked neatly on
 the shelves.
 ~
 E
@@ -3339,11 +3339,11 @@ Soft plump pillows stuffed with feathers are stacked neatly on the sleeves.
 S
 #28351
 The Sanctuary~
-You are in a plush private bar where peaceful travelers of the realm can take 
-sanctuary. A bartender can be seen polishing a glass behind the long mahogany 
-bar that runs along the east wall. Several people are at the bar drinking, 
+You are in a plush private bar where peaceful travelers of the realm can take
+sanctuary. A bartender can be seen polishing a glass behind the long mahogany
+bar that runs along the east wall. Several people are at the bar drinking,
 sitting on the tall, padded bar stools arrayed before it.
-To the north heavy velvet drapes are being held back on either side of a large 
+To the north heavy velvet drapes are being held back on either side of a large
 archway into the adjoining lounge.
 ~
 0 8|1024 0
@@ -3354,9 +3354,9 @@ D0
 S
 #28352
 The Sanctuary~
-You are in a plush private lounge furnished with lavishly-soft armchairs and 
-sofas. In the centre of the spacious room there is a large statue of a dragon. 
-As you admire this exquisite piece of art you realize that it is made of white 
+You are in a plush private lounge furnished with lavishly-soft armchairs and
+sofas. In the centre of the spacious room there is a large statue of a dragon.
+As you admire this exquisite piece of art you realize that it is made of white
 gold.
 ~
 0 8|1024 0
@@ -3367,10 +3367,10 @@ D2
 S
 #28353
 A private bath cubicle~
-You are in a small private bath cubicle that is covered with white tiles. A fresh 
-towel hangs on a brass rail along one wall and there is a hand basin with a 
-mirror hanging over it. In the centre of the room a small mineral pool is sunken 
-into the floor. There is steam rising from the surface of the water, they must 
+You are in a small private bath cubicle that is covered with white tiles. A fresh
+towel hangs on a brass rail along one wall and there is a hand basin with a
+mirror hanging over it. In the centre of the room a small mineral pool is sunken
+into the floor. There is steam rising from the surface of the water, they must
 be piping it in from a natural hot spring nearby.
 ~
 0 8 0
@@ -3380,7 +3380,7 @@ D3
 1 -1 28324
 E
 basin~
-There is a small crystal dish containing a bar of scented soap on top of the 
+There is a small crystal dish containing a bar of scented soap on top of the
 hand basin.
 ~
 E
@@ -3389,17 +3389,17 @@ A white towel with the hotel insignia on it is hanging neatly on a brass rail.
 ~
 E
 pool bath~
-A small mineral pool is sunken into the floor. There is steam rising from the 
-surface of the water, they must be piping it in from a natural hot spring 
+A small mineral pool is sunken into the floor. There is steam rising from the
+surface of the water, they must be piping it in from a natural hot spring
 nearby.
 ~
 S
 #28354
 A private bath cubicle~
-You are in small private bath cubicle that is covered with white tiles. A fresh 
-towel hangs on a brass rail along one wall and there is a hand basin with a 
-mirror hanging over it. In the centre of the room a small mineral pool is sunken 
-into the floor. There is steam rising from the surface of the water, they must 
+You are in small private bath cubicle that is covered with white tiles. A fresh
+towel hangs on a brass rail along one wall and there is a hand basin with a
+mirror hanging over it. In the centre of the room a small mineral pool is sunken
+into the floor. There is steam rising from the surface of the water, they must
 be piping it in from a natural hot spring nearby.
 ~
 0 8 0
@@ -3417,14 +3417,14 @@ A white towel with the hotel insignia on it is hanging neatly on a brass rail.
 ~
 E
 pool bath~
-A small mineral pool is sunken into the floor. There is steam rising from the 
-surface of the water, they must be piping it in from a natural hot spring 
+A small mineral pool is sunken into the floor. There is steam rising from the
+surface of the water, they must be piping it in from a natural hot spring
 nearby.
 ~
 S
 #28355
 a toilet cubicle~
-You are in a small toilet cubicle which is lined with white tiles. There is a small hand 
+You are in a small toilet cubicle which is lined with white tiles. There is a small hand
 basin with scented soap here. A towel hangs beside the hand basin on a brass rail.
 ~
 0 8 0
@@ -3444,7 +3444,7 @@ S
 #28356
 a disturbance in time~
 You are in some kind of crazy time storm. The air is charged with static electricity
-and your hair is beginning to stand on end. Surging and swirling around you, 
+and your hair is beginning to stand on end. Surging and swirling around you,
 brightly coloured energy-trails spark and collide. It is an amazing display of raw power.
 At the centre of the disturbance a large building can be seen. A building that wasn't
 here before!. This is really weird.
@@ -3568,7 +3568,7 @@ D 1 28333 2 2			; a corridor Lock South
 *
 M 1 28306 1 28309			the Proprietor to the office
 G 1 28393 100
-*				
+*
 D 1 28312 2 2			; a guest room Lock South
 D 1 28314 2 2			; a guest room Lock South
 D 1 28319 2 2			; a guest room Lock South

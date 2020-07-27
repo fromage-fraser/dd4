@@ -22,7 +22,7 @@ golem beggar~
 the golem beggar~
 A golem beggar grovels at your feet.
 ~
-The golem beggar is dirty and is wearing tattered cloths fit for one such as he.  
+The golem beggar is dirty and is wearing tattered cloths fit for one such as he.
 He looks at you with dark pleading eyes and asks you for a single coin.
 ~
 4|64|128 8|32 1000 S
@@ -67,7 +67,7 @@ golem healer~
 the golem healer~
 The healer of the town stands here casting spells.
 ~
-The golem healer is tall and is garbed in plain black robes.  He is healing the 
+The golem healer is tall and is garbed in plain black robes.  He is healing the
 other golems which are coming back from war or from a hard day of hunting.
 ~
 2|64 8|32|128|512|8192|16777216 -1000 S
@@ -90,8 +90,8 @@ golem warrior~
 a golem warrior~
 A golem warrior is wandering around looking for new adventures.
 ~
-The golem warrior has been through many adventures; you can tell by its many 
-wounds.  It is wearing a full suit of armor, just in case it runs into a good 
+The golem warrior has been through many adventures; you can tell by its many
+wounds.  It is wearing a full suit of armor, just in case it runs into a good
 fight.
 ~
 64|524288 8|32|2097152|16777216 -700 S
@@ -114,7 +114,7 @@ golem cleric~
 the golem cleric~
 A golem cleric heals those who ask.
 ~
-The cleric is wearing a bright silver cloak, and has bright, penetrating eyes.  
+The cleric is wearing a bright silver cloak, and has bright, penetrating eyes.
 It stares at you, piercing your soul.
 ~
 64 8|32|512|8192|16777216 1000 S
@@ -126,7 +126,7 @@ golem thief~
 the golem thief~
 A thief lunges from the dark!
 ~
-The thief is very dark, and hides well.  It blends in with the surroundings, 
+The thief is very dark, and hides well.  It blends in with the surroundings,
 seeming to change color from setting to setting.
 ~
 32|64 8|32|512|8192|32768|65536 -1000 S
@@ -138,7 +138,7 @@ golem master warrior~
 the master~
 The master warrior stands here, smirking at you.
 ~
-The master warrior is the only known golem to be trained in all arts of warfare.  
+The master warrior is the only known golem to be trained in all arts of warfare.
 He has saved the settlement on many occasions, without a scratch upon his body.
 ~
 2|32|64|524288 8|32|512|8192|67108864 -1000 S
@@ -150,7 +150,7 @@ golem destroyer~
 the destroyer~
 A golem destroyer lurks in the shadows.
 ~
-The golem destroyers are a rare breed, never seen in light.  Their charge is to 
+The golem destroyers are a rare breed, never seen in light.  Their charge is to
 protect and serve the master warrior however possible.
 ~
 2|32|64 2|8|32|512|8192|32768|65536|67108864|16777216 -1000 S
@@ -162,8 +162,8 @@ dorak shopkeeper~
 Dorak~
 Dorak stands here, selling his wares.
 ~
-Dorak is a rather large human, the only human in this settlement.  He wears a 
-leather tunic, boasting his large muscles.  He eyes you warily, making sure that 
+Dorak is a rather large human, the only human in this settlement.  He wears a
+leather tunic, boasting his large muscles.  He eyes you warily, making sure that
 you steal none of his wares.
 ~
 2|64|524288 8|32|512|8192|67108864 -1000 S
@@ -180,7 +180,7 @@ a golem's toy~
 A small toy lies here.~
 ~
 13 1|2|64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 5000 0
 A
 1 3
@@ -196,7 +196,7 @@ a worker's shirt~
 A large shirt has been left here.~
 ~
 9 16|256|8192 1|8
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 5 0 0
 A
 2 3
@@ -210,7 +210,7 @@ a black robe~
 A black robe has been left here.~
 ~
 9 0 1|1024
-14~ 14~ 14~ 14~ 
+14~ 14~ 14~ 14~
 5 0 0
 #20403
 pill combat~
@@ -226,7 +226,7 @@ a pill of defense~
 A red pill lies here.~
 ~
 26 0 1
-85~ sanctuary~ shield~ bless~ 
+85~ sanctuary~ shield~ bless~
 5 1500 80
 #20405
 golem sword~
@@ -234,7 +234,7 @@ a golem sword~
 A HUGE bright sword has been left here.~
 ~
 5 1|64 1|8192
-0~ 13~ 10~ 3~ 
+0~ 13~ 10~ 3~
 45 45000 0
 A
 18 25
@@ -248,7 +248,7 @@ a golem helm~
 A large helmet has been dropped here.~
 ~
 9 0 1|16
-25~ 25~ 25~ 25~ 
+25~ 25~ 25~ 25~
 50 10000 0
 A
 5 2
@@ -260,7 +260,7 @@ a stone collar~
 A collar of stone has been left here.~
 ~
 9 0 1|4
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 10 12500 0
 A
 13 20
@@ -274,7 +274,7 @@ a mithril ring~
 A small mithril ring lies here.~
 ~
 9 0 1|2
-18~ 18~ 18~ 18~ 
+18~ 18~ 18~ 18~
 5 10000 0
 A
 12 175
@@ -284,7 +284,7 @@ a pair of golem gauntlets~
 A pair of finely crafted gauntlets has been left here.~
 ~
 9 16|64|128|4096 1|128
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 5 11500 0
 A
 18 12
@@ -298,7 +298,7 @@ a pair of pauldrons~
 A pair of fine pauldrons has been dropped here.~
 ~
 9 0 1|256
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 30 10000 0
 A
 1 2
@@ -310,7 +310,7 @@ a golem cuirass~
 A large cuirass has been carelessly left here.~
 ~
 9 0 1|8
-22~ 22~ 22~ 22~ 
+22~ 22~ 22~ 22~
 15 10000 0
 A
 5 2
@@ -322,7 +322,7 @@ a leather belt~
 A leather belt has been dropped here.~
 ~
 9 0 1|2048
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 5 7500 0
 A
 12 100
@@ -336,7 +336,7 @@ a set of golem greaves~
 A set of finely crafted greaves are here.~
 ~
 9 0 1|32
-20~ 20~ 20~ 20~ 
+20~ 20~ 20~ 20~
 10 8000 0
 A
 14 100
@@ -346,7 +346,7 @@ a pair of combat boots~
 A pair of boots has been left here.~
 ~
 9 0 1|64
-18~ 18~ 18~ 18~ 
+18~ 18~ 18~ 18~
 50 25000 0
 A
 19 7
@@ -358,7 +358,7 @@ a mage cloak~
 A cloak has been left here.~
 ~
 9 1|2 1|1024
-17~ 17~ 17~ 17~ 
+17~ 17~ 17~ 17~
 10 25000 0
 A
 3 3
@@ -372,7 +372,7 @@ a mithril mage dagger~
 A mithril dagger is stuck in the ground.~
 ~
 5 1|64 1|8192
-0~ 10~ 11~ 2~ 
+0~ 10~ 11~ 2~
 10 30000 0
 A
 18 10
@@ -386,7 +386,7 @@ a bright silver cloak~
 A bright silver cloak has been dropped here.~
 ~
 9 0 1|1024
-26~ 26~ 26~ 26~ 
+26~ 26~ 26~ 26~
 30 25000 0
 A
 3 3
@@ -400,7 +400,7 @@ a golem mace~
 A finely crafted mace has been dropped here.~
 ~
 5 1|2|64 1|8192
-0~ 15~ 10~ 7~ 
+0~ 15~ 10~ 7~
 30 30000 0
 A
 12 100
@@ -412,7 +412,7 @@ a bright silver girth~
 A bright silver girth has been left here.~
 ~
 9 1|64 1|2048
-26~ 26~ 26~ 26~ 
+26~ 26~ 26~ 26~
 5 22500 0
 A
 13 50
@@ -428,7 +428,7 @@ the master's weapon~
 The master's weapon gleams in the light.~
 ~
 5 1|2|8|32|64|16384|262144 1|8192
-0~ 15~ 10~ 3~ 
+0~ 15~ 10~ 3~
 40 40000 0
 A
 19 30
@@ -442,7 +442,7 @@ a thief dagger~
 A flaming dagger burns here.~
 ~
 5 1|64 1|8192
-0~ 16~ 10~ 11~ 
+0~ 16~ 10~ 11~
 20 30000 0
 A
 2 3
@@ -456,7 +456,7 @@ a pill of cancellation~
 A small cyan pill has been dropped here.~
 ~
 26 0 1
-100~ ~ remove curse~ dispel magic~ 
+100~ ~ remove curse~ dispel magic~
 5 3000 0
 #20423
 potion green healing~
@@ -464,7 +464,7 @@ a green potion of healing~
 A green potion has been left here.~
 ~
 10 2 1|16384
-50~ heal~ heal~ heal~ 
+50~ heal~ heal~ heal~
 5 4000 0
 #20424
 ebony destroyer dagger~
@@ -472,7 +472,7 @@ a destroyer's dagger~
 An ebony dagger has been discarded here.~
 ~
 5 16|32|64|4096|524288 1|8192
-0~ 9~ 15~ 2~ 
+0~ 9~ 15~ 2~
 10 10000 0
 A
 19 20
@@ -484,9 +484,9 @@ A
 #ROOMS
 #20400
 Entrance to the Golem Settlement~
-This is the entrance to a small settlement of rogue golems, golems 
-which have fled from the fortress of an evil mage. The 
-settlement is composed of large huts made of straw, wood, and any other 
+This is the entrance to a small settlement of rogue golems, golems
+which have fled from the fortress of an evil mage. The
+settlement is composed of large huts made of straw, wood, and any other
 materials found in the surrounding land. North leads into the settlement.
 ~
 0 4 3
@@ -501,9 +501,9 @@ D2
 S
 #20401
 The South Entrance to the Settlement~
-Golems can be seen going about their business in the streets, and some pause 
-shortly to look at you, quite puzzled as to what one of your kind is doing in 
-their small settlement. To the east and west are huts, north leads farther into 
+Golems can be seen going about their business in the streets, and some pause
+shortly to look at you, quite puzzled as to what one of your kind is doing in
+their small settlement. To the east and west are huts, north leads farther into
 the settlement, and south leads out of the south gate.
 ~
 0 0 1
@@ -526,9 +526,9 @@ D3
 S
 #20402
 In a Hut~
-This is one of the residential huts of the golems which occupy this settlement. 
-It is sparsely furnished, only a few large chairs and a table are in this main 
-room. The floor is covered with straw, and the smell of fresh leaves wafts from 
+This is one of the residential huts of the golems which occupy this settlement.
+It is sparsely furnished, only a few large chairs and a table are in this main
+room. The floor is covered with straw, and the smell of fresh leaves wafts from
 the roof. West leads from the hut, and east leads into the dining area of the hut.
 ~
 0 8 0
@@ -543,9 +543,9 @@ D3
 S
 #20403
 In the Kitchen~
-This is where the golems come to make their food and to eat in the privacy of 
-their own home. All that is in this room is a table and a few chairs, along with 
-a pit containing a pile of burned logs. West leads back into the main room of 
+This is where the golems come to make their food and to eat in the privacy of
+their own home. All that is in this room is a table and a few chairs, along with
+a pit containing a pile of burned logs. West leads back into the main room of
 the hut.
 ~
 0 8 0
@@ -556,9 +556,9 @@ D3
 S
 #20404
 In a Hut~
-This is one of the residential huts of the golems which occupy this settlement. 
-It is sparsely furnished, only a few large chairs and a table are in this main 
-room. The floor is covered with straw, and the smell of fresh leaves wafts from 
+This is one of the residential huts of the golems which occupy this settlement.
+It is sparsely furnished, only a few large chairs and a table are in this main
+room. The floor is covered with straw, and the smell of fresh leaves wafts from
 the roof. East leads from the hut, and west leads into the dining area of the hut.
 ~
 0 8 0
@@ -573,9 +573,9 @@ D3
 S
 #20405
 The Kitchen~
-This is where the golems come to make their food and to eat in the privacy of 
-their own home. All that is in this room is a table and a few chairs, along with 
-a pit containing a pile of burned logs. East leads back into the main room of 
+This is where the golems come to make their food and to eat in the privacy of
+their own home. All that is in this room is a table and a few chairs, along with
+a pit containing a pile of burned logs. East leads back into the main room of
 the hut.
 ~
 0 8 0
@@ -586,7 +586,7 @@ D1
 S
 #20406
 In the Street~
-This is the main street in the settlement, all of the huts branch of from here. 
+This is the main street in the settlement, all of the huts branch of from here.
 To the east is a store, and a hut lies to the west.
 ~
 0 0 1
@@ -609,9 +609,9 @@ D3
 S
 #20407
 The General Store~
-The general is a very popular gathering place for the citizens of this 
-settlement, for it has all of the necessities for these people. The store is 
-well kept and clean, and has many items for sale on shelves along the walls. 
+The general is a very popular gathering place for the citizens of this
+settlement, for it has all of the necessities for these people. The store is
+well kept and clean, and has many items for sale on shelves along the walls.
 West leads back to the street.
 ~
 0 8 0
@@ -622,9 +622,9 @@ D3
 S
 #20408
 In a Hut~
-This is one of the residential huts of the golems which occupy this settlement. 
-It is sparsely furnished, only a few large chairs and a table are in this main 
-room. The floor is covered with straw, and the smell of fresh leaves wafts from 
+This is one of the residential huts of the golems which occupy this settlement.
+It is sparsely furnished, only a few large chairs and a table are in this main
+room. The floor is covered with straw, and the smell of fresh leaves wafts from
 the roof. East leads from the hut, and west leads into the dining area of the hut.
 ~
 0 8 0
@@ -639,9 +639,9 @@ D3
 S
 #20409
 The Kitchen~
-This is where the golems come to make their food and to eat in the privacy of 
-their own home. All that is in this room is a table and a few chairs, along with 
-a pit containing a pile of burned logs. East leads back into the main room of 
+This is where the golems come to make their food and to eat in the privacy of
+their own home. All that is in this room is a table and a few chairs, along with
+a pit containing a pile of burned logs. East leads back into the main room of
 the hut.
 ~
 0 8 0
@@ -652,7 +652,7 @@ D1
 S
 #20410
 Main Street~
-Two empty patches of grass lie to each side, awaiting a family of golems to 
+Two empty patches of grass lie to each side, awaiting a family of golems to
 build their house there. Main Street continues north and south.
 ~
 0 0 1
@@ -667,8 +667,8 @@ D2
 S
 #20411
 Main Street~
-Workers mill about here, on either side of the street are workplaces of 
-different types. To the east is a construction site, and to the west is a mill 
+Workers mill about here, on either side of the street are workplaces of
+different types. To the east is a construction site, and to the west is a mill
 of some kind. Main Street continues north and south.
 ~
 0 0 1
@@ -691,9 +691,9 @@ D3
 S
 #20412
 The Lumber Mill~
-This is where all of the wood for the huts comes first to be shaped into 
-appropriate pieces. Workers work hard everywhere, preparing the wood for the 
-different huts which are being built around the settlement. East leads back to 
+This is where all of the wood for the huts comes first to be shaped into
+appropriate pieces. Workers work hard everywhere, preparing the wood for the
+different huts which are being built around the settlement. East leads back to
 the street.
 ~
 0 8 0
@@ -704,8 +704,8 @@ D1
 S
 #20413
 The Construction Site~
-It looks like a new hut is being built here, most likely another house. Pieces 
-of wood, bundles of hay, and piles of leaves are everywhere. West leads back 
+It looks like a new hut is being built here, most likely another house. Pieces
+of wood, bundles of hay, and piles of leaves are everywhere. West leads back
 into the street.
 ~
 0 0 1
@@ -716,10 +716,10 @@ D3
 S
 #20414
 Before the Temple~
-The hut which serves as the temple for the golems lies to the north. It is 
-larger than the rest of the huts, and looks to be better made. The straw walls 
-are more tightly woven, and the roof is made of wood instead of just leaves. 
-Main Street leads south, west street lies to the west, east street lies to the 
+The hut which serves as the temple for the golems lies to the north. It is
+larger than the rest of the huts, and looks to be better made. The straw walls
+are more tightly woven, and the roof is made of wood instead of just leaves.
+Main Street leads south, west street lies to the west, east street lies to the
 east, and the temple lies to the north.
 ~
 0 0 1
@@ -742,9 +742,9 @@ D3
 S
 #20415
 The Temple~
-This is the hut which the golems use as their temple. This is where they have 
-come to rest after a long hard day of work, a hunt, or perhaps a battle. The 
-floor is covered with finely woven rugs bought from elsewhere, and the walls are 
+This is the hut which the golems use as their temple. This is where they have
+come to rest after a long hard day of work, a hunt, or perhaps a battle. The
+floor is covered with finely woven rugs bought from elsewhere, and the walls are
 adorned with holy symbols. South leads back to the street.
 ~
 0 4|8|1024|65536 0
@@ -755,9 +755,9 @@ D2
 S
 #20416
 Beginning of West Street~
-West street is composed mainly of small, dirty shacks, and filthy streets. This 
-is where the poorer golems come to live, since they can't afford the nicer huts 
-on Main Street or East Street. To the east is a temple, shacks lie to the north 
+West street is composed mainly of small, dirty shacks, and filthy streets. This
+is where the poorer golems come to live, since they can't afford the nicer huts
+on Main Street or East Street. To the east is a temple, shacks lie to the north
 and south, and West Street continues west.
 ~
 0 0 1
@@ -780,9 +780,9 @@ D3
 S
 #20417
 In a Shack~
-The shack is filthy, with trash all over the floor, and the walls and roof 
-falling apart. There is a small pit in the center with wood for burning in it, 
-and no furniture save a few small cots next to the walls. South leads back to 
+The shack is filthy, with trash all over the floor, and the walls and roof
+falling apart. There is a small pit in the center with wood for burning in it,
+and no furniture save a few small cots next to the walls. South leads back to
 West Street.
 ~
 0 8 0
@@ -793,9 +793,9 @@ D2
 S
 #20418
 In a Shack~
-The shack is filthy, with trash all over the floor, and the walls and roof 
-falling apart. There is a small pit in the center with wood for burning in it, 
-and no furniture save a few small cots next to the walls. North leads back to 
+The shack is filthy, with trash all over the floor, and the walls and roof
+falling apart. There is a small pit in the center with wood for burning in it,
+and no furniture save a few small cots next to the walls. North leads back to
 West Street.
 ~
 0 8 0
@@ -806,7 +806,7 @@ D0
 S
 #20419
 West Street~
-West street is a small, filthy street. Rats and other small rodents scamper 
+West street is a small, filthy street. Rats and other small rodents scamper
 around the trash. West Street heads east and west.
 ~
 0 0 1
@@ -821,8 +821,8 @@ D3
 S
 #20420
 West Street~
-West street is extremely dirty here, with rodents running about everywhere. A 
-small shack lies to the north, an abandoned hut lies to the south, and West 
+West street is extremely dirty here, with rodents running about everywhere. A
+small shack lies to the north, an abandoned hut lies to the south, and West
 Street heads east and west.
 ~
 0 0 1
@@ -845,9 +845,9 @@ D3
 S
 #20421
 An Abandoned Store~
-This was once a profitable store in the settlement, but has since been run down 
-and forgotten. The counter on the south wall is cracked in many places, and 
-there is no furniture. There is a sign on the east wall, and north leads back to 
+This was once a profitable store in the settlement, but has since been run down
+and forgotten. The counter on the south wall is cracked in many places, and
+there is no furniture. There is a sign on the east wall, and north leads back to
 West Street.
 ~
 0 8 0
@@ -868,9 +868,9 @@ sign wall~
 S
 #20422
 A Shack~
-The shack is filthy, with trash all over the floor, and the walls and roof 
-falling apart. There is a small pit in the center with wood for burning in it, 
-and no furniture save a few small cots next to the walls. South leads back to 
+The shack is filthy, with trash all over the floor, and the walls and roof
+falling apart. There is a small pit in the center with wood for burning in it,
+and no furniture save a few small cots next to the walls. South leads back to
 West Street.
 ~
 0 8 0
@@ -881,9 +881,9 @@ D2
 S
 #20423
 End of West Street~
-You have reached the end of West Street, the dirtiest part of the settlement. 
-The west wall is covered with writing, and the center is made of a different 
-colored bricks. Abandoned shacks lie to the north and south, and West Street 
+You have reached the end of West Street, the dirtiest part of the settlement.
+The west wall is covered with writing, and the center is made of a different
+colored bricks. Abandoned shacks lie to the north and south, and West Street
 heads back to the east.
 ~
 0 0 1
@@ -902,8 +902,8 @@ D2
 S
 #20424
 An Abandoned Shack~
-This shack has been long abandoned by the inhabitants, most likely in order to 
-find a better living place. The shack is now inhabited by rodents and other 
+This shack has been long abandoned by the inhabitants, most likely in order to
+find a better living place. The shack is now inhabited by rodents and other
 vermin. South leads back to West Street.
 ~
 0 8 0
@@ -914,8 +914,8 @@ D2
 S
 #20425
 In an Abandoned Shack~
-This shack has been long abandoned by the inhabitants, most likely in order to 
-find a better living place. The shack is now inhabited by rodents and other 
+This shack has been long abandoned by the inhabitants, most likely in order to
+find a better living place. The shack is now inhabited by rodents and other
 vermin. North leads back to West Street.
 ~
 0 8 0
@@ -926,9 +926,9 @@ D0
 S
 #20426
 Beginning of East Street~
-East street is where the wealthy golems come to live. These golems have mostly 
-made their fortunes from selling their wares to the adventurers who come through 
-the settlement. To the west lies a temple, and East street continues to the 
+East street is where the wealthy golems come to live. These golems have mostly
+made their fortunes from selling their wares to the adventurers who come through
+the settlement. To the west lies a temple, and East street continues to the
 east.
 ~
 0 0 1
@@ -943,9 +943,9 @@ D3
 S
 #20427
 East Street~
-East Street is very well kept, with fine huts and plants lining the road. This 
-is the only road in the settlement to have a cobblestone road, due to the rich 
-occupants. A large hut lies to the north, a residence lies to the south, and 
+East Street is very well kept, with fine huts and plants lining the road. This
+is the only road in the settlement to have a cobblestone road, due to the rich
+occupants. A large hut lies to the north, a residence lies to the south, and
 East Street continues east and west.
 ~
 0 0 1
@@ -968,8 +968,8 @@ D3
 S
 #20428
 Dorak's Supplies~
-This is an expensive supply store, where only the wealthiest adventurers may 
-shop. All of the equipment within is finely crafted, the best in the land. South 
+This is an expensive supply store, where only the wealthiest adventurers may
+shop. All of the equipment within is finely crafted, the best in the land. South
 leads back to East Street.
 ~
 0 8 0
@@ -980,7 +980,7 @@ D2
 S
 #20429
 A Residence~
-This is a residence of a wealthy golem from the settlement. It is very well 
+This is a residence of a wealthy golem from the settlement. It is very well
 kept, and has fine furniture all around. North leads back to East Street.
 ~
 0 8 0
@@ -991,9 +991,9 @@ D0
 S
 #20430
 East Street~
-East Street is very clean and well kept, with no litter anywhere. The 
-cobblestones in the street are fairly new, with not many chips on them. The 
-plants lining the street are green and well watered. East street heads east and 
+East Street is very clean and well kept, with no litter anywhere. The
+cobblestones in the street are fairly new, with not many chips on them. The
+plants lining the street are green and well watered. East street heads east and
 west.
 ~
 0 0 1
@@ -1008,7 +1008,7 @@ D3
 S
 #20431
 End of East Street~
-This is the end of East Street. The dead end is as well kept as the rest of the 
+This is the end of East Street. The dead end is as well kept as the rest of the
 street, it has no writing on it, only fine brick. East street continues west.
 ~
 0 0 1
@@ -1023,8 +1023,8 @@ D3
 S
 #20432
 The Secret Chamber~
-You have entered the secret chamber of the master golem. This is where the 
-master golem resides and does his work, where he runs the settlement from. 
+You have entered the secret chamber of the master golem. This is where the
+master golem resides and does his work, where he runs the settlement from.
 It is very dark, but still well kept and furnished beautifully.
 ~
 0 1|8|8192 0

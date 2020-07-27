@@ -108,7 +108,7 @@ a firedrake~
 A red dragon-beast sits here, staring at you and blowing fire at you!
 ~
 This beast looks a lot like a red dragon, except that it's a bit smaller.  It
-has red scales over it's four-legged reptilian body, with sharp claws and 
+has red scales over it's four-legged reptilian body, with sharp claws and
 piercing tail.  It is disturbed by your intrusion.
 ~
 2|32 8 -700 S
@@ -148,7 +148,7 @@ A large wererat cracks his whip at you!
 ~
 This beast looks like a combination rat and human, as it has properties of
 both, namely standing erect, wielding a weapon, but with fur, ears, and tail
-of a rat.  This one looks quite big, and the barbed whip he flicks toward you 
+of a rat.  This one looks quite big, and the barbed whip he flicks toward you
 looks quite deadly.
 ~
 32 0 -600 S
@@ -160,7 +160,7 @@ slave human~
 a human slave~
 A human slave crouches in a corner, shivering.
 ~
-This human looks familiar, and upon further examination, you see that this 
+This human looks familiar, and upon further examination, you see that this
 slave used to be a citizen of Midgaard!  She asks pitifully for you to help
 her escape.
 ~
@@ -598,8 +598,8 @@ by Hatchet 4/4/94
 #ROOMS
 #3801
 Below a Dark Stairway~
-You are beneath a dark stairway.  Little light filters through from above, 
-allowing you to see only a dim passage leading to the south.  You see around 
+You are beneath a dark stairway.  Little light filters through from above,
+allowing you to see only a dim passage leading to the south.  You see around
 you decaying wood, and a musty smell assails your nostrils.  You look down and
 realize you are stepping on some type of feces.
 ~
@@ -715,7 +715,7 @@ door~
 S
 #3807
 A Small Storage Room~
-You are in a small storage room.  A horrid stench fills this room, smelling 
+You are in a small storage room.  A horrid stench fills this room, smelling
 like some dead animal is rotting away here.  The exit is to the east.
 ~
 38 8 0
@@ -836,8 +836,8 @@ S
 #3814
 A Dark Hallway~
 You are in a dark hallway.  You see more exposed rock than wood now, as this
-unfinished place reveals it's state of incompleteness.  Someone must have 
-abandoned this place for a reason.  To the west and east are some makeshift 
+unfinished place reveals it's state of incompleteness.  Someone must have
+abandoned this place for a reason.  To the west and east are some makeshift
 bedrooms, and this hallway leads north and south.
 ~
 38 9 0
@@ -871,7 +871,7 @@ door~
 S
 #3816
 A Storage Room~
-You are in a storage room.  "Food" and some useless tools are scattered all 
+You are in a storage room.  "Food" and some useless tools are scattered all
 over the floor, but they sure don't look like anything you'd dare get near!
 The exit is to the west.
 ~
@@ -949,8 +949,8 @@ door~
 S
 #3823
 A Stairway~
-You are on a landing of an old stairway.  The stairs creak as you put any 
-pressure on it, and the combined gloom of this place gives you the creeps. 
+You are on a landing of an old stairway.  The stairs creak as you put any
+pressure on it, and the combined gloom of this place gives you the creeps.
 The stairs lead both up and down, and a hallway is to the south.
 ~
 38 9 0
@@ -971,7 +971,7 @@ S
 A Meeting Room~
 You are in a roughly dug room, about 20 paces by 20 paces, and 8 paces high.
 A table is in the center, with about a dozen chairs surrounding it.  A lit
-torch is on a wall, and you can tell that someone must do some upkeep here, 
+torch is on a wall, and you can tell that someone must do some upkeep here,
 because the obnoxious smell is less in this room.  The exit is down the
 stairway.
 ~
@@ -1098,7 +1098,7 @@ cage~
 S
 #3832
 A Bend in the Tunnels~
-You are in a bend in the tunnels.  A lantern blazes on a low ceiling.  The 
+You are in a bend in the tunnels.  A lantern blazes on a low ceiling.  The
 exits are to the west and south.
 ~
 38 8 0
@@ -1219,7 +1219,7 @@ The inscribed words say,
 My Goddess Icaza,
      My love for you shall never end, for you are the love of my life.  I
 dedicate this room to you, and I bless it so that no evil may ever enter this
-room. 
+room.
 					Your Mortal Paladin,
 					Hatchet
 ~
@@ -1291,7 +1291,7 @@ Icaza's Study~
 You are in a small room.  A large bed is in the corner, and a wooden rocker
 creaks of it's own will on the hardwood floors.  You can see a stuffed ducky
 and a stuffed piggie on the bed.  This bed looks like it's for display use
-only, as the owner of this room must sleep somewhere else.  You can hear the 
+only, as the owner of this room must sleep somewhere else.  You can hear the
 ringing of a small bell in the background.  The exit is to the north.
 ~
 38 0 0
@@ -1304,9 +1304,9 @@ S
 Icaza's and Hatchet's Bedroom~
 You are in a large room.  Strangely, you see THREE beds in this room, a large
 brass bed, an equally large waterbed, and a smaller low futon.  All three look
-used, as if the owners of this room use all three beds depending on their 
-moods.  The smell of roses and perfumes permeates this room, and you can hear 
-some soft jazzy music (Kenny G?) in the background.  There is no mortal exit 
+used, as if the owners of this room use all three beds depending on their
+moods.  The smell of roses and perfumes permeates this room, and you can hear
+some soft jazzy music (Kenny G?) in the background.  There is no mortal exit
 from this room.
 ~
 38 512 0

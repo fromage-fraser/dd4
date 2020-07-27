@@ -69,7 +69,7 @@ a sword~
 A black hilted sword, with a jewelled pommel lies here.~
 ~
 5 0 1|8192
-0~ 6~ 25~ 3~ 
+0~ 6~ 25~ 3~
 10 0 0
 A
 18 2
@@ -81,7 +81,7 @@ a small cloak with pockets~
 A small pike of brown sacklike material.~
 ~
 15 64 1|1024
-100~ 1~ -1~ 11~ 
+100~ 1~ -1~ 11~
 5 0 0
 A
 13 10
@@ -93,7 +93,7 @@ gold coins~
 Some gold has been left here.~
 ~
 20 1 1
-0~ 0~ 56~ 0~ 
+0~ 0~ 56~ 0~
 5 0 0
 #18103
 chest treasure~
@@ -101,7 +101,7 @@ a treasure chest~
 A large chest is here.~
 ~
 15 0 0
-1000~ 8~ 18104~ 11~ 
+1000~ 8~ 18104~ 11~
 5 0 0
 #18104
 key~
@@ -109,7 +109,7 @@ a key~
 A rabbits foot on a small ring.~
 ~
 18 0 1
-0~ 1~ 6~ 11~ 
+0~ 1~ 6~ 11~
 5 0 0
 #18105
 belt leather~
@@ -117,7 +117,7 @@ a Leather Belt~
 A Leather Belt with a shiny silver buckle lies here.~
 ~
 9 0 1|2048
-4~ 1~ 6~ 11~ 
+4~ 1~ 6~ 11~
 5 0 0
 #18106
 boots~
@@ -125,7 +125,7 @@ a pair of low heeled boots.~
 A well made pair of boots is here on the ground.~
 ~
 9 0 1|64
-3~ 1~ 6~ 11~ 
+3~ 1~ 6~ 11~
 5 0 0
 #0
 
@@ -148,7 +148,7 @@ D3
 S
 #18101
 Desert~
-Shifting sands are whipped up by the winds that blow gently around here.  The shape of 
+Shifting sands are whipped up by the winds that blow gently around here.  The shape of
 the land is constantly changing.
 ~
 0 0 10
@@ -838,7 +838,7 @@ S
 Desert~
 Wind howls as it sweeps across the giant sand dunes above you, down the
 long slopes shifting and moving the land shape in its way.  Small pockets
-of soft sand slow your passage here. Strewn rocks litter the landscape. You 
+of soft sand slow your passage here. Strewn rocks litter the landscape. You
 see an opening in the rocks to the south.
 ~
 0 0 10

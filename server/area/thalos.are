@@ -1645,8 +1645,8 @@ You see the trail continue south.
 S
 #5260
 The dwarf forest~
-You see more stunted trees here.  It looks almost as if this place was cursed 
-by a god to be short and dry.  The trail leads north and south.  There is a 
+You see more stunted trees here.  It looks almost as if this place was cursed
+by a god to be short and dry.  The trail leads north and south.  There is a
 small tower to the east, overgrown with ivy.
 ~
 52 0 3
@@ -1938,8 +1938,8 @@ S
 #5274
 A fork in the dwarf forest~
 Here the dim trail forks with the main track entering a slow northeasterly
-decline down to a dry riverbed before splitting off sharply to the north and 
-west into lighter foliage, where light may be seen filtering through the 
+decline down to a dry riverbed before splitting off sharply to the north and
+west into lighter foliage, where light may be seen filtering through the
 thick forest canopy.
 ~
 52 0 3
@@ -1998,7 +1998,7 @@ S
 #5277
 A trail in the dwarf forest~
      You are in a trail in the dwarf forest.  The trees are stunted and it
-looks dry around here.  The trail leads east and west.  A dark mountain blocks 
+looks dry around here.  The trail leads east and west.  A dark mountain blocks
 your progress north.
 ~
 52 0 3
@@ -2191,7 +2191,7 @@ D 0 5268 1 1
 D 0 5270 5 1
 *
 * Drow guards and scouts
-* 
+*
 M 0 5110 2 5270		guards at the entrance
 E 1 5100 99 16
 M 0 5110 2 5270

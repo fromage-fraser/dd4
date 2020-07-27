@@ -13,7 +13,7 @@ separate areas. There is a main part ( the tower ), and 4 portals ( earth,
 air, water and fire ). The 4 portals are scattered around the mud ( I will
 give details later ). The location to these portals will be found out as the
 player explores the tower. The keys to these portals will be guarded by
-Zyklor himself. So once defeating Zyklor, the player gains the 4 keys, and 
+Zyklor himself. So once defeating Zyklor, the player gains the 4 keys, and
 enter the 4 portals. Each portal contains one part of a sword. Note Zyklor
 himself is level 107. Each portal is guarded by a myriad of mobs up to
 level 100, so the sword is quite powerful. I would suggest once a player
@@ -39,7 +39,7 @@ Note that the exits from this area to these vnums are already inserted.
 -1 POWERMONGER~
 Congratulations Adventurer!!!!
 You have found the 4 parts of the ONE.
-At this point, you will need to approach an Imm so they can load the 
+At this point, you will need to approach an Imm so they can load the
 completed sword for you to use.
 Tell your imm to see help POWERQUEST.
 Use the power of the ONE wisely, for it shapes your future.....
@@ -48,8 +48,8 @@ Use the power of the ONE wisely, for it shapes your future.....
 101 POWERQUEST~
 If you are reading this, then a player must have instructed you to do so.
 The player has just finished Zyklor ( the quest for the one ).
-The player _should_ have 4 parts to the ONE ( a sword ). 
-Upon giving the 4 parts of the sword to you, you will have to load the 
+The player _should_ have 4 parts to the ONE ( a sword ).
+Upon giving the 4 parts of the sword to you, you will have to load the
 completed sword for the player (oload 14624).
 Thanks
 Matt
@@ -65,7 +65,7 @@ the dwarf~
 A mutant Dwarf crawls from the slimy lake, exhausted.
 ~
 This is like no other dwarf you have seen before, other than the fact that it
-has 3 arms, 2 ripped wings extrude from its back. Its eyes seem in agony, 
+has 3 arms, 2 ripped wings extrude from its back. Its eyes seem in agony,
 and it pleads you to end its misery.
 ~
 2|64 256 1000 S
@@ -89,7 +89,7 @@ wooden golem~
 the wooden golem~
 A large wooden golem stands here motionless.
 ~
-This golem is made from wood. It stands 12 feet high, and although may be 
+This golem is made from wood. It stands 12 feet high, and although may be
 easier to kill than the iron golem, will still put up a good fight. A
 glowing amulet around its neck attracts your attention
 ~
@@ -103,12 +103,12 @@ the hobbit~
 A hobbit leaps out of the shadows, obviously happy to have visitors.
 ~
 This hobbit is dressed in workers overalls, and is obviously happy to see you.
-The hobbit says 
-	"God-dam, hmmm, I wonder if you can help me. I lost 
-	my key to my workshop, just across the corridor. I accidently threw 
-	it down the garbage shute on the eastern side of this floor. The shute 
-	leads to the towers sewers. I don't suppose you would like to retrieve 
-	it for me? You can take anything you want from my workshop if you do 
+The hobbit says
+	"God-dam, hmmm, I wonder if you can help me. I lost
+	my key to my workshop, just across the corridor. I accidently threw
+	it down the garbage shute on the eastern side of this floor. The shute
+	leads to the towers sewers. I don't suppose you would like to retrieve
+	it for me? You can take anything you want from my workshop if you do
 	manage to find it. Please?"
 ~
 2|4|64 8|32 500 S
@@ -132,7 +132,7 @@ fire elemental~
 the fire elemental~
 A fire elemental burns before you.
 ~
-Before you is a ball of flame, it seems quite at home in this hell as it 
+Before you is a ball of flame, it seems quite at home in this hell as it
 combusts quietly in the centre of the room.
 ~
 2|32|64 8|32 0 S
@@ -155,7 +155,7 @@ fire demon~
 the fire demon~
 A demon is here, oblivious to the fire and heat that surrounds it.
 ~
-The demon seems to be thriving in this hell. It has two horns which protrude 
+The demon seems to be thriving in this hell. It has two horns which protrude
 from its pointed head. A long thin tail sways from side to side, obviously
 annoyed with something or someone.
 ~
@@ -168,8 +168,8 @@ archdemon demon~
 the archdemon~
 An archdemon snarls at you before attacking.
 ~
-The archdemon, is a more powerful version of the demon, its huge frame towering 
-over you. It opens its jaw and screams a terrifying cry before leaping toward 
+The archdemon, is a more powerful version of the demon, its huge frame towering
+over you. It opens its jaw and screams a terrifying cry before leaping toward
 you. Not only powerful, but magical, this demon will put up a good fight.
 ~
 2|4|32|64 8|32|524288 -1000 S
@@ -194,7 +194,7 @@ giant storm~
 the storm giant~
 A 10 foot giant is here sizzling with energy.
 ~
-This giant towers above you. Dressed in leather armor, the giant raises his 
+This giant towers above you. Dressed in leather armor, the giant raises his
 hand, and a bolt of lightning strikes him from the heavens above. He clutches
 the bolt, now using it as a weapon.
 ~
@@ -233,7 +233,7 @@ the Air Guardian~
 A translucent guardian watches you solemnly.
 ~
 This 'creature' is unlike any you have seen before. It's body takes the form of
-a dragon, but it is translucent, and has no mass. It clutches tightly to 
+a dragon, but it is translucent, and has no mass. It clutches tightly to
 one part of the sword that is your ultimate goal.
 ~
 2|64 2|8|32|512|524288|1048576 250 S
@@ -245,9 +245,9 @@ stone giant~
 the stone giant~
 A giant, animated from stone, blocks your path forward.
 ~
-This gigantic creature towers over you. His skin is a dull grey, as are his 
-eyes. It seems this giant is lifeless, as he stares right through you. 
-Although being very dull, his size and great strength, make him a worthy 
+This gigantic creature towers over you. His skin is a dull grey, as are his
+eyes. It seems this giant is lifeless, as he stares right through you.
+Although being very dull, his size and great strength, make him a worthy
 adversary.
 ~
 2|32|64 512 0 S
@@ -259,8 +259,8 @@ elemental earth~
 the earth elemental~
 An elemental rises out of the ground to meet you.
 ~
-This creature appears as a large humanoid. You cannot distinguish where the 
-elemental stops, and the surrounding earth begins as they are one. Although 
+This creature appears as a large humanoid. You cannot distinguish where the
+elemental stops, and the surrounding earth begins as they are one. Although
 having no armor or weapon, the elementals huge fists look menacing.
 ~
 2|32|64 8|512 0 S
@@ -286,7 +286,7 @@ the earth guardian~
 The earth guardian is here guarding a chest.
 ~
 This 'creature' is unlike any you have seen before. It's body takes the form of
-a dragon, but it is made from solid rock, and would weigh several tons. Its 
+a dragon, but it is made from solid rock, and would weigh several tons. Its
 huge bulk stands before a chest.
 ~
 2|4|64 8|32|128|512 0 S
@@ -312,7 +312,7 @@ A elemental forms in the water in front of you.
 ~
 This creature takes the form of a humanoid. Formed out of the surrounding water,
 and completely translucent, the elemental will make an interesting opponent.
-Having no weapons, you are aware that this elemental makes good use of water 
+Having no weapons, you are aware that this elemental makes good use of water
 based attacks, including frost.
 ~
 2|32|64 8|512|1048576 -1000 S
@@ -348,8 +348,8 @@ slimer~
 a slimer~
 A slimer rises from the murky depths and attacks.
 ~
-A long snake like being, the slimers most outstanding features are the large, 
-sharp teeth that extrude from its mouth. Getting in the way of these will be 
+A long snake like being, the slimers most outstanding features are the large,
+sharp teeth that extrude from its mouth. Getting in the way of these will be
 hazardous to your health. The slimers body is snake like, and covered with
 green sludge.
 ~
@@ -375,11 +375,11 @@ mage archmage~
 the archmage~
 A dark-robed figure sits before you, waiting.
 ~
-This archmage is dressed in a black robe, the hood covering her eyes. A 
-golden necklace falls around her neck. She rotates her head in your general 
+This archmage is dressed in a black robe, the hood covering her eyes. A
+golden necklace falls around her neck. She rotates her head in your general
 direction and begins to speak in a soft tongue:-
     "I have seen your coming. I am here in Zyklors tower to assist him with his
-quest for 4 parts of an ancient sword that have been scattered around the 
+quest for 4 parts of an ancient sword that have been scattered around the
 lands. I do my best to slow his progress, however. The way to Zyklor is long
 and dangerous, the black maze is one obstacle. This may help you find your way
 through it. Deep in the castles wine cellar, there lies a single bottle.
@@ -398,11 +398,11 @@ This small imp, stands barely 2 feet tall, and bounces between your legs. Its
 pointy ears stand erect above its bald head, and its green eyes are affixed upon
 you. It begins to speak in a high pitch voice.
     "Eeeeww, me have visitors. Me like visitors. Me like talking. Me tell you
-things about dark castle. Me like talking. Me thinks you want lost sword. Me 
-thinks you need to know bout 4 keys. Me like talking. Me thinks you need to 
-find 4 keys for 4 portals for 4 parts of sword. Me thinks you need to kill 
+things about dark castle. Me like talking. Me thinks you want lost sword. Me
+thinks you need to know bout 4 keys. Me like talking. Me thinks you need to
+find 4 keys for 4 portals for 4 parts of sword. Me thinks you need to kill
 Zyklor. Me thinks that this will be haarrrrrrd. Me thinks that once you have
-the 4 keys for the 4 portals, you will find the 4 parts and make the One 
+the 4 keys for the 4 portals, you will find the 4 parts and make the One
 again. Me like to talk. Me tell you about me. Me is......"
 You nod politely to the little man, then run quickly from the room.
 ~
@@ -428,7 +428,7 @@ cat spike~
 Spike~
 A nasty little cat arches its back to you.
 ~
-This black little cat, obviously the witches familiar, hisses as you try and pat 
+This black little cat, obviously the witches familiar, hisses as you try and pat
 it. Its entirely black coat lets it blend well with the shadows.
 ~
 2|64|128 8|32|512|65536 0 S
@@ -454,7 +454,7 @@ A small skinny green man jumps up and down excitedly.
 ~
 This small man, dressed entirely in green, looks excited to see you. You watch
 quietly has he calms down, and begins to speak.
-    "You have made it to the great tower. But be warned the way on is blocked 
+    "You have made it to the great tower. But be warned the way on is blocked
 be many evil ones and riddles. One such trap are the 4 talking doors. Half of
 them lie, the other half are truthful. I have 2 brothers in this castle. Seek
 them out for they will tell you more. One is down a level and directly west
@@ -469,7 +469,7 @@ mercenary man dark~
 the mercenary~
 A dark-skinned man searches for intruders.
 ~
-This dark-skinned man, probably a foreigner for the east, wanders the castle 
+This dark-skinned man, probably a foreigner for the east, wanders the castle
 looking for unwanteds.
 ~
 4|32|64 32768 0 S
@@ -481,13 +481,13 @@ blue man riddler~
 the blue one~
 A short blue man eyes you, before a wide smile breaks over his face.
 ~
-This humanoid like creature stands barely 4 feet tall, and has blue skin. Not 
+This humanoid like creature stands barely 4 feet tall, and has blue skin. Not
 only does he have blue skin, but he is dressed in blue as well. He begins to
 speak to you.
 	"Found me you, I see have. Through get talking doors 4 must get you.
-	Secret talking 4 doors know do I. Say must I that pairs of doors that 
-	each other face, one truth does speak, the other speak truth not. 
-	Know that is all speak I. Seek red brother of mine, but beware, 
+	Secret talking 4 doors know do I. Say must I that pairs of doors that
+	each other face, one truth does speak, the other speak truth not.
+	Know that is all speak I. Seek red brother of mine, but beware,
 	speak thy truth does he not."
 ~
 2|4|64|128 8|32 0 S
@@ -499,7 +499,7 @@ waiter human~
 the waiter~
 A human waiter sits on a toilet, with his pants around his ankles.
 ~
-This man blushes. You have caught him in mid-shit. He sits here, totally 
+This man blushes. You have caught him in mid-shit. He sits here, totally
 defenseless.
 ~
 2|64 0 0 S
@@ -528,10 +528,10 @@ This man looks at you with hollow eyes. He begins to speak in a deep haunting
 voice.
     " I was once Zyklors trusted lieutenant. He and I were best of friends,
 however, as my fighting prowess began to surpass his, he started to become
-jealous. He invited me to a dinner, here in the dining room. The cook had 
-poisoned my meal. The last thing I saw was Zyklor laughing at me, as I fell to 
+jealous. He invited me to a dinner, here in the dining room. The cook had
+poisoned my meal. The last thing I saw was Zyklor laughing at me, as I fell to
 the floor. My spirit now remains here. I want you to kill him as he is evil.
-However, you will need to get through his infamous black maze. Even though 
+However, you will need to get through his infamous black maze. Even though
 surrounded by evil, there lies somewhere deep in the earth below this castle
 a feeling of good. In there I believe you find information to get through
 his black maze"
@@ -546,7 +546,7 @@ the voodoo priest~
 A dark-skinned man slowly inserts a large pin into a doll.
 ~
 This man is a voodoo priest. He smiles with pleasure as he inserts a pin into
-a doll that he holds. Dressed in a simple straw skirt, you shudder as you 
+a doll that he holds. Dressed in a simple straw skirt, you shudder as you
 notice a necklace made from fingers hanging loosely around his neck.
 ~
 2|4|64 128|512 -1000 S
@@ -584,16 +584,16 @@ the prisoner~
 A beaten man is shackled in the corner of the cell.
 ~
 This skinny beaten man slowly turns his head to face you. Seeing you mean him
-no harm, his eyes light up. You offer assistance to the man, and after 
+no harm, his eyes light up. You offer assistance to the man, and after
 regaining some of his strength, he starts to speak.
-    "Many generations ago there was rumoured to be a great sword, made by 
-ancient druids from the four elements that make up this world, namely earth, 
+    "Many generations ago there was rumoured to be a great sword, made by
+ancient druids from the four elements that make up this world, namely earth,
 fire, air and water. The druids created this sword for their greatest champion
 Aricton. The sword however became of interest to evil, and many attacks were
 made to recover it. The 4 druids sensing this danger, decided to split the
 sword into four parts and banish them to the four elements of this world.
 Zyklor's father was a servant to one of the druid. Zyklor heard of the legend
-of the sword and vowed to make it his. I believe he is close to recovering 
+of the sword and vowed to make it his. I believe he is close to recovering
 the sword. You must stop him and recover the sword so it is safe.
 ~
 2|64 256 1000 S
@@ -606,7 +606,7 @@ the druid~
 A druid sits in the corner of the cell, mumbling.
 ~
 The druid returns your look, he appears to about 50 years old, a long grey
-beard drops from his chin, and his grey eyes seem to be friendly. 
+beard drops from his chin, and his grey eyes seem to be friendly.
 Acknowledging your presence, he begins to speak.
     "Thank god you have come, the warlock Zyklor is near to recovering the 4
 parts of the One. He has managed to acquire the 4 keys that will unlock the
@@ -626,11 +626,11 @@ druidess woman~
 the druidesss~
 A druidess weeps in the corner.
 ~
-You attract the attention of the druidess, she wipes the tears from her eyes, 
+You attract the attention of the druidess, she wipes the tears from her eyes,
 and tries to compose herself. You offer food and water, and she gratefully
 accepts, after drinking she relates to you what she knows about your quest.
     "I know you are here to try to re-acquire the keys leading to the portals.
-Zyklor has them in the top level of this tower. The portals themselves are 
+Zyklor has them in the top level of this tower. The portals themselves are
 guarded by elementals. I know the location of 3 of the portals. One is located
 above Midgaard, in mid-air, the other below Midgaard in the sewers. The third
 is deep in the firey pit that is Hell. That is all I know, may this knowledge
@@ -645,7 +645,7 @@ psionic prisoner~
 the psionic~
 A psionic greets you as you enter his cell.
 ~
-This psionic has predicted you arrival, as he stands ready to greet you. He is 
+This psionic has predicted you arrival, as he stands ready to greet you. He is
 dressed in a torn cloak, and shabby boots. Looking at him, he smiles, for it
 seems he knows what you want before you can introduce yourself.
    "I know why you are here" he starts, "I was brought along to probe the mind
@@ -687,7 +687,7 @@ lotus man elf~
 the lotus-elf~
 A lotus-elf cross crouches here, waiting for its prey.
 ~
-Having the head and torso of an elf, and the body of a giant lotus, this beast 
+Having the head and torso of an elf, and the body of a giant lotus, this beast
 makes a terrifying sight.
 ~
 32|64 0 -600 S
@@ -699,8 +699,8 @@ ettin~
 the ettin~
 A two-headed ettin stands here looking confused.
 ~
-This ettin stands 8 feet tall, its two heads are it striking contrast to one 
-another. The first is of light colouration, blue eyes, blonde hair. The other 
+This ettin stands 8 feet tall, its two heads are it striking contrast to one
+another. The first is of light colouration, blue eyes, blonde hair. The other
 has dark skin and black eyes. A very weird combination.
 ~
 64 0 0 S
@@ -726,7 +726,7 @@ the statue~
 A mighty statue of a black dragon towers over you.
 ~
 The statue is of exquisite detail. Each scale is well defined on its massive
-black body. Its gaping jaw is open and smoke rises from its nostrils. 
+black body. Its gaping jaw is open and smoke rises from its nostrils.
 Although great detail has gone into this statue, you feel great evil emanate
 from it. As you stand there admiring it, you think you see its head move. You
 look away, as you return to face the statue, you find it no longer on its
@@ -742,8 +742,8 @@ the black priest~
 A black priest points to you and curses before attacking.
 ~
 The priest is dressed in a dark black robe. Its hood covers its face, although
-from which you can make out glowing green eyes. As it charges to attack, the 
-hood falls off, revealing a scaled green skin! It hisses at you with a forked 
+from which you can make out glowing green eyes. As it charges to attack, the
+hood falls off, revealing a scaled green skin! It hisses at you with a forked
 tongue. It appears this is some sort of dragon-man cross, and looks extremely
 nasty.
 ~
@@ -758,7 +758,7 @@ A mad man cackles incessantly while working over something strapped to a table.
 ~
 You see the back of a tall bald man, who is currently hunched over something
 strapped to a table in the middle of the room. It raises what you make out
-to be a scalpel, and is about to plunge it into the thing squirming on the 
+to be a scalpel, and is about to plunge it into the thing squirming on the
 table.
 ~
 2|64 8 0 S
@@ -770,7 +770,7 @@ sorcerer~
 a sorcerer~
 A sorcerer mutters an incantation before launching his attack.
 ~
-You stare at your opponent, his drawn out, weather beaten face shows no 
+You stare at your opponent, his drawn out, weather beaten face shows no
 expression, as his grey eyes pierce your soul. You can tell this sorcerer is
 a worthy and powerful opponent.
 ~
@@ -783,8 +783,8 @@ ninja black~
 a black ninja~
 A ninja launches himself from the shadows toward you.
 ~
-A small man crouched in an offensive position, wields a sharp katana which he 
-swings in your direction. He is dressed entirely in black, from head to foot, 
+A small man crouched in an offensive position, wields a sharp katana which he
+swings in your direction. He is dressed entirely in black, from head to foot,
 the only part of his body that is visible are his narrow, slanted brown eyes.
 ~
 2|32|64 8|32|128|32768|65536 -1000 S
@@ -796,7 +796,7 @@ artist~
 the artist~
 An artist paints a portrait on a giant canvas.
 ~
-This woman has her back to you. A long mane of fiery red hair covers a 
+This woman has her back to you. A long mane of fiery red hair covers a
 multi-coloured robe. She sits on a long stool in front of a large canvas and
 paints the portrait of someone.
 ~
@@ -825,7 +825,7 @@ A Shokh'Torg wanders the halls looking for a fight.
 ~
 A Shokh'Torg, or warrior-mage is an impressive sight. This woman stands 8 feet
 tall, she is dressed in full battle gear, and wields a Skip-Torg, or barbed
-sword. It seems it would be wise to avoid this impressive warrior-mage angel 
+sword. It seems it would be wise to avoid this impressive warrior-mage angel
 of death.
 ~
 4|32|64 32|128|512|32768 0 S
@@ -837,8 +837,8 @@ burrower worm~
 the burrower~
 A HUGE worm-like creature gnaws at the rockface
 ~
-This giant worm, has no legs as such, and moves as worms do. Its head is 
-somewhat different however, having 8 large circular 'fangs' centered around 
+This giant worm, has no legs as such, and moves as worms do. Its head is
+somewhat different however, having 8 large circular 'fangs' centered around
 its mouth, which drips acid. It seems this 'worm' dissolves the rock with acid
 from its stomach.
 ~
@@ -851,7 +851,7 @@ sewer humanoid shape dweller~
 the sewer dweller~
 A humanoid shape hunches toward you.
 ~
-You can vaguely make out humanoid features on this beast. It hunches over, 
+You can vaguely make out humanoid features on this beast. It hunches over,
 trying to take up as little room as possible. It is covered in rags, and torn
 armour, and wields a bone as a weapon.
 ~
@@ -864,9 +864,9 @@ scorpions giant~
 a giant scorpion~
 A giant scorpion scuttles toward you.
 ~
-You have stood on many a scorpion in your day, however, you will not be able 
-to stand on this beast. The scorpion stands 5 feet high, its pointed barb 
-stands another 5 feet above you, ready to strike. Beware its poison, for it 
+You have stood on many a scorpion in your day, however, you will not be able
+to stand on this beast. The scorpion stands 5 feet high, its pointed barb
+stands another 5 feet above you, ready to strike. Beware its poison, for it
 can kill.
 ~
 4|32|64 512 -1000 S
@@ -890,8 +890,8 @@ mound shambling~
 the shambling mound~
 A mound rises from the garbage to engulf you.
 ~
-This 'creature' can only be described as walking garbage. It is roughly of 
-humanoid shape, having two arms and two legs, but that is where the 
+This 'creature' can only be described as walking garbage. It is roughly of
+humanoid shape, having two arms and two legs, but that is where the
 similarities end. It is made entirely from garbage.
 ~
 2|4|32|64 128 0 S
@@ -922,8 +922,8 @@ the sewer guardian~
 The guardian of the sewers will make sure you progress no further.
 ~
 A huge beast-man stands before you. Covered in think natural fur, and wielding
-and extremely large bone club. Its large, yellow fang-like teeth extrude 
-from its primitive skull. Large and powerful, yet slow and dumb, this beast 
+and extremely large bone club. Its large, yellow fang-like teeth extrude
+from its primitive skull. Large and powerful, yet slow and dumb, this beast
 knows the sewers well.
 ~
 2|4|32|64 8|32 -1000 S
@@ -935,10 +935,10 @@ Zyklor warlock~
 Zyklor~
 Zyklor turns to face you, a wry smile upon the warlocks face.
 ~
-This warlock emanates pure evil. From his black eyes, to his well trimmed 
+This warlock emanates pure evil. From his black eyes, to his well trimmed
 goatee down to his long curled finger-nails, evil flows from his every pore.
 His dark features stare at you intently, before he speaks to you.
-"You have done very well little ones, but I am afraid time has come to end 
+"You have done very well little ones, but I am afraid time has come to end
 your fun and games. For now you will either become a legendary Hero or will
 meet your maker, and I know who I am betting on. Be warned however, you cannot
 defeat me......"
@@ -979,7 +979,7 @@ arms arms-master master~
 Arms-master~
 The Arms-master laughs at your mercilessly.
 ~
-A Large Half-dragon stands here, eyeing you. Its huge presence sends shivers 
+A Large Half-dragon stands here, eyeing you. Its huge presence sends shivers
 down your spine. It speaks in a deep booming voice.
 "Your fun and games must end here. Prepare to die..."
 ~
@@ -992,11 +992,11 @@ red one man~
 the red one~
 A wee little man bounces up and down madly.
 ~
-A small red-coloured imp, dressed in red as well, bounces around the room at 
-your arrival, after he settles down, he looks at you and begins to speak.  
-"OOOOOHHHH, adventurers come to see the dark warlock. I would think you need 
-a helpful clue. My brothers have told me that you need help to get through 
-the room of the talking doors. All I will say, is that the blue door is 
+A small red-coloured imp, dressed in red as well, bounces around the room at
+your arrival, after he settles down, he looks at you and begins to speak.
+"OOOOOHHHH, adventurers come to see the dark warlock. I would think you need
+a helpful clue. My brothers have told me that you need help to get through
+the room of the talking doors. All I will say, is that the blue door is
 Lying..."
 ~
 2|4|64 0 0 S
@@ -1013,7 +1013,7 @@ sabre of the ancients~
 An ancient sabre lays here, pulsing.~
 ~
 5 1|2|64|4096 1|8192
-0~ 30~ 80~ 1~ 
+0~ 30~ 80~ 1~
 30 0 0
 A
 18 12
@@ -1025,7 +1025,7 @@ robe of invincibility~
 An intense white coloured robe lies here.~
 ~
 9 1|32|64|512 1|1024
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 25 1
@@ -1035,7 +1035,7 @@ boots of infinity~
 Mystical runes cover a pair of black boots.~
 ~
 9 1|64 1|64
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 5 3
@@ -1049,7 +1049,7 @@ dragonskin armour~
 The skin of a red dragon lies here.~
 ~
 9 1|2 1|8
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 40 0 0
 A
 1 4
@@ -1063,7 +1063,7 @@ bracer of accuracy~
 An intense humming comes from a small bracer.~
 ~
 9 2|64 1|4096
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 5 0 0
 A
 18 10
@@ -1075,7 +1075,7 @@ ring of necromancy~
 A small blue ring inscribed with arcane symbols lies at your feet.~
 ~
 9 2|32|64 1|2
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 10 0 0
 A
 12 300
@@ -1085,7 +1085,7 @@ armbands of chaos~
 A pair of armbands radiate pure evil.~
 ~
 9 16|64|512|4096 1|256
-13~ 0~ 0~ 0~ 
+13~ 0~ 0~ 0~
 5 0 0
 A
 19 15
@@ -1099,7 +1099,7 @@ boots of stealth~
 Some boots are here, barely visible to the naked eye.~
 ~
 9 2|64|128|512 1|64
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 2 4
@@ -1109,7 +1109,7 @@ mithril katana~
 A katana made from mithril lies here.~
 ~
 5 1|2 1|8192
-0~ 40~ 60~ 1~ 
+0~ 40~ 60~ 1~
 10 0 0
 A
 18 15
@@ -1121,7 +1121,7 @@ a black facemask~
 Some black cloth lies heaped in the corner.~
 ~
 9 1|64 1|16
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 18 10
@@ -1131,7 +1131,7 @@ robes of the ninja~
 A pile of black cloth merges into the shadows.~
 ~
 9 1|64 1|1024
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 18 10
@@ -1143,7 +1143,7 @@ the cloak of mastery~
 A multicoloured cloaks, lies here, waiting to master someone.~
 ~
 9 2|16|128|2048|4096 1|1024
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 5 0 0
 A
 12 200
@@ -1155,7 +1155,7 @@ staff of the magi~
 A staff covered with runes leans up against a wall.~
 ~
 5 2|64 1|8192
-0~ 30~ 50~ 7~ 
+0~ 30~ 50~ 7~
 5 0 0
 A
 12 200
@@ -1165,7 +1165,7 @@ ring of the magi~
 You notice a small copper ring lying on the ground~
 ~
 9 32|2048 1|2
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 5 0 0
 A
 4 3
@@ -1179,7 +1179,7 @@ mithril longsword of destruction~
 A well crafted mithril longsword lies here~
 ~
 5 1|16 1|8192
-0~ 30~ 60~ 0~ 
+0~ 30~ 60~ 0~
 5 0 0
 A
 18 13
@@ -1193,7 +1193,7 @@ dragon scale mail~
 A heap of dragon scales are heaped here.~
 ~
 9 1|16|512 1|8
-13~ 0~ 0~ 0~ 
+13~ 0~ 0~ 0~
 40 0 0
 A
 1 3
@@ -1207,7 +1207,7 @@ a dragons skull~
 A skull of a dragon lies in the dirt.~
 ~
 9 1|16|64|4096 1|16
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 19 4
@@ -1219,7 +1219,7 @@ thalem armour~
 A suit of thaleum sparkles in the sunlight.~
 ~
 9 1 1|8
-15~ 0~ 0~ 0~ 
+15~ 0~ 0~ 0~
 30 0 0
 A
 1 4
@@ -1229,7 +1229,7 @@ a thaleum axe~
 A majestic thaleum axe leans against the wall.~
 ~
 5 1 1|8192
-0~ 20~ 45~ 1~ 
+0~ 20~ 45~ 1~
 5 0 0
 A
 18 12
@@ -1239,7 +1239,7 @@ the amulet of binding~
 A pulsating amulet draws your attention.~
 ~
 9 1|16|128|4096 1|4
-2~ 0~ 0~ 0~ 
+2~ 0~ 0~ 0~
 7 0 0
 A
 3 -13
@@ -1251,7 +1251,7 @@ a glass skull~
 A skull made from glass catches your eye.~
 ~
 9 1|32 1|16384
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 5 0 0
 A
 12 140
@@ -1261,7 +1261,7 @@ black robes~
 A heap of black cloth, covered with runes lies at your feet.~
 ~
 9 16|64|512|2048 1|1024
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 10 0 0
 A
 4 3
@@ -1277,7 +1277,7 @@ a pointed hat~
 A pointed hat, probably from a dead witch.~
 ~
 9 16|512|4096 1|16
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 5 0 0
 A
 24 -20
@@ -1287,7 +1287,7 @@ a broomstick~
 A straw broomstick.~
 ~
 3 2 1|16384
-50~ 20~ 20~ fly~ 
+50~ 20~ 20~ fly~
 12 0 0
 A
 12 50
@@ -1297,7 +1297,7 @@ a jewelled collar~
 A small jewel encrusted collar, complete with name tag.~
 ~
 9 1|64 1|4
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 5 0 0
 A
 19 12
@@ -1311,7 +1311,7 @@ a voodoo doll~
 A small doll that looks like you lies on the ground.~
 ~
 4 16 1|16384
-50~ 6~ 6~ charm person~ 
+50~ 6~ 6~ charm person~
 2 0 0
 A
 3 -2
@@ -1321,7 +1321,7 @@ a pin~
 A long metallic pin.~
 ~
 5 64|2048|16384|262144 1|8192
-0~ 40~ 65~ 11~ 
+0~ 40~ 65~ 11~
 5 0 0
 A
 19 15
@@ -1333,7 +1333,7 @@ a feather headdress~
 Large feathers protrude from a headdress lying here.~
 ~
 9 4096 1|16
-3~ 0~ 0~ 0~ 
+3~ 0~ 0~ 0~
 5 0 0
 A
 2 2
@@ -1345,7 +1345,7 @@ a finger necklace~
 A pile of detached fingers, strung together, lie on the ground.~
 ~
 9 0 1|4
-2~ 0~ 0~ 0~ 
+2~ 0~ 0~ 0~
 15 0 0
 A
 19 12
@@ -1353,7 +1353,7 @@ A
 2 -1
 E
 fingers finger~
-The fingers are of various colours and sizes. On two of the fingers you spy a                                                                           
+The fingers are of various colours and sizes. On two of the fingers you spy a
 sapphire ring.
 ~
 #14529
@@ -1362,7 +1362,7 @@ a grass loincloth~
 A grass loincloth rustles in the breeze.~
 ~
 9 2 1|2048
-6~ 0~ 0~ 0~ 
+6~ 0~ 0~ 0~
 5 0 0
 A
 2 3
@@ -1374,7 +1374,7 @@ shackles of the damned~
 A pair of shackles seem to move towards your wrists.~
 ~
 9 2|16|64|128|4096 1|4096
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 1 -13
@@ -1388,7 +1388,7 @@ a barbed whip~
 A nasty looking whip with many barbs attracts your attention~
 ~
 5 1|16|512 1|8192
-0~ 45~ 65~ 4~ 
+0~ 45~ 65~ 4~
 20 0 0
 A
 19 14
@@ -1400,7 +1400,7 @@ leather boots~
 A pair of comfortable leather boots lie here.~
 ~
 9 512 1|64
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 5 0 0
 A
 2 2
@@ -1410,7 +1410,7 @@ your death chains~
 Some chains lie here, they smell of death.~
 ~
 3 1|16|64|512|4096 1|16384
-60~ 5~ 5~ death field~ 
+60~ 5~ 5~ death field~
 50 0 0
 #14534
 dragon egg ~
@@ -1418,7 +1418,7 @@ a dragons egg~
 A dragons egg is here for the taking.~
 ~
 26 1 1|16384
-50~ complete healing~ bless~ armor~ 
+50~ complete healing~ bless~ armor~
 1 0 0
 #14535
 scale shield dragon~
@@ -1426,7 +1426,7 @@ a dragons scale~
 A red dragons scale rests against the wall.~
 ~
 9 1|64 1|512
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 23 -15
@@ -1440,7 +1440,7 @@ a dragons fang~
 A fang ripped from the jaw of a dragon lies here.~
 ~
 5 1|16384|67108864 1|8192
-0~ 1~ 65~ 11~ 
+0~ 1~ 65~ 11~
 17 0 0
 A
 9 50
@@ -1452,7 +1452,7 @@ ring of thaj-koj~
 The infamous ring of thaj-koj glows as you examine it.~
 ~
 9 1|32|1024|2048 1|2
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 12 0 0
 A
 18 17
@@ -1466,7 +1466,7 @@ a human torso~
 Half a human body lies on the ground,  guts leak from the severed torso.~
 ~
 23 0|2097152 1|2 -1 10 1
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 100 0 0
 #14539
 arm severed~
@@ -1474,7 +1474,7 @@ an arm~
 A severed arm lies on the ground.~
 ~
 23 0 1|8192
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14540
 intestines~
@@ -1482,7 +1482,7 @@ intestines~
 Someone's intestines lie spread around the room.~
 ~
 19 0 1
-20~ 0~ 0~ 0~ 
+20~ 0~ 0~ 0~
 5 0 0
 #14541
 hilt one~
@@ -1490,7 +1490,7 @@ hilt of the one~
 A hilt, made from an unknown silvery metal draws you to it.~
 ~
 8 64|1024 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 19 30
@@ -1504,7 +1504,7 @@ the handle of the one~
 A silvery handle, lays before you.~
 ~
 8 64 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 18 20
@@ -1518,7 +1518,7 @@ the binding of the one~
 The leather binding of the One, lies abandoned here~
 ~
 8 1|2|64|1024|2048 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 A
 17 -50
@@ -1532,7 +1532,7 @@ the blade of the one~
 Light reflects of a long metallic blade, mystifying you.~
 ~
 5 1|2|64|1024|2048|16384 1|8192
-0~ 70~ 120~ 6~ 
+0~ 70~ 120~ 6~
 5 0 0
 E
 blade one~
@@ -1544,7 +1544,7 @@ a wooden key~
 A plain key made from wood.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14547
 key iron~
@@ -1552,7 +1552,7 @@ an iron key~
 A dull, slightly rusting iron key lies on the ground~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14548
 door handle~
@@ -1560,7 +1560,7 @@ a door handle~
 A handle, broken from a door catches your eye.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14549
 arm~
@@ -1568,7 +1568,7 @@ an arm~
 A shrivelled arm, whose fingers are clenched in a fist.~
 ~
 15 0 1|8192
-10~ 1~ 0~ 0~ 
+10~ 1~ 0~ 0~
 5 0 0
 E
 fingers fist~
@@ -1580,7 +1580,7 @@ a sewer pipe~
 ~
 ~
 15 0 0
-30~ 1~ 6~ 0~ 
+30~ 1~ 6~ 0~
 5 0 0
 #14551
 shield tower~
@@ -1588,7 +1588,7 @@ a tower shield~
 A large tower shield rests on the ground.~
 ~
 9 0 1|512
-13~ 0~ 0~ 0~ 
+13~ 0~ 0~ 0~
 5 0 0
 A
 17 -10
@@ -1600,13 +1600,13 @@ a long sword~
 A long sword is impaled into the ground here.~
 ~
 5 0 1|8192
-0~ 20~ 38~ 3~ 
+0~ 20~ 38~ 3~
 15 0 0
 A
 18 7
 E
 long sword~
-A standard long sword. You have seen many in your travels. This one is nothing 
+A standard long sword. You have seen many in your travels. This one is nothing
 special.
 ~
 #14553
@@ -1615,7 +1615,7 @@ a black robe~
 A pile of black cloth is heaped in the corner of the room.~
 ~
 9 64|2048 1|1024
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 2 0 0
 A
 4 3
@@ -1633,7 +1633,7 @@ a golden necklace~
 A necklace made from pure gold sparkles in the sun-light.~
 ~
 9 1|64 1|4
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 10 0 0
 A
 4 4
@@ -1645,7 +1645,7 @@ a green suit~
 A green coloured suit.~
 ~
 9 0 1|8
-3~ 0~ 0~ 0~ 
+3~ 0~ 0~ 0~
 20 0 0
 #14556
 sword short~
@@ -1653,7 +1653,7 @@ a short sword~
 A short sword lies in the dust.~
 ~
 5 2|16384 1|8192
-0~ 20~ 35~ 11~ 
+0~ 20~ 35~ 11~
 10 0 0
 A
 18 6
@@ -1667,7 +1667,7 @@ leather armour~
 A suit of leather armour rests here.~
 ~
 9 0 1|8
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 10 0 0
 #14558
 suit blue~
@@ -1675,7 +1675,7 @@ a blue suit~
 A blue suit draws your attention.~
 ~
 9 0 1|8
-5~ 0~ 0~ 0~ 
+5~ 0~ 0~ 0~
 5 0 0
 #14559
 wooden spoon~
@@ -1683,7 +1683,7 @@ a wooden spoon~
 A wooden spoon, covered in some sort of chunky gruel.~
 ~
 5 16 1|8192
-0~ 20~ 35~ 7~ 
+0~ 20~ 35~ 7~
 10 0 0
 #14560
 oven~
@@ -1691,7 +1691,7 @@ an oven~
 A huge oven stands before you.~
 ~
 15 1 0
-100~ 1~ 6~ 0~ 
+100~ 1~ 6~ 0~
 5 0 0
 #14561
 leather belt~
@@ -1699,7 +1699,7 @@ a studded leather belt~
 A studded leather belt rests on a hook.~
 ~
 15 0 1|2048
-100~ 1~ 6~ 0~ 
+100~ 1~ 6~ 0~
 5 0 0
 A
 17 -10
@@ -1715,7 +1715,7 @@ a wooden club~
 A simple wooden club lies at your feet.~
 ~
 5 0 1|8192
-0~ 30~ 40~ 7~ 
+0~ 30~ 40~ 7~
 25 0 0
 #14563
 shackles damned~
@@ -1723,7 +1723,7 @@ shackles of the damned~
 A pair of shackles seem to say use me, use me.~
 ~
 9 1|2|16|64|128|4096 1|128
-2~ 0~ 0~ 0~ 
+2~ 0~ 0~ 0~
 10 0 0
 A
 12 -300
@@ -1737,7 +1737,7 @@ a dragons head~
 ~
 ~
 15 0 0
-50~ 1~ 0~ 0~ 
+50~ 1~ 0~ 0~
 5 0 0
 #14565
 jewel cyan~
@@ -1745,7 +1745,7 @@ a cyan jewel~
 A translucent blue-green jewel sparkles.~
 ~
 4 1|64 1|16384
-50~ 6~ 6~ sanctuary~ 
+50~ 6~ 6~ sanctuary~
 5 0 0
 #14566
 black robe~
@@ -1753,7 +1753,7 @@ a black robe~
 The long black robes reeks of evil.~
 ~
 9 16|512 1|1024
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 2 3
@@ -1763,7 +1763,7 @@ a black scroll~
 A black scroll emanates evil from the center of the room.~
 ~
 2 2|16|512 1|16384
-60~ acid breath~ ultrablast~ fly~ 
+60~ acid breath~ ultrablast~ fly~
 1 0 0
 #14568
 dagger black~
@@ -1771,7 +1771,7 @@ a black dagger~
 A black dagger merges in to the shadows.~
 ~
 5 16|512|16384 1|8192
-0~ 30~ 45~ 11~ 
+0~ 30~ 45~ 11~
 5 0 0
 A
 18 13
@@ -1781,7 +1781,7 @@ a lab coat~
 A plain white lab coat hangs on a peg.~
 ~
 9 16 1|1024
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 13 0 0
 A
 3 4
@@ -1797,7 +1797,7 @@ a scalpel~
 A vicious looking scalpel lies on a table, dripping blood.~
 ~
 5 2|16|64 1|8192
-0~ 15~ 15~ 11~ 
+0~ 15~ 15~ 11~
 15 0 0
 A
 18 8
@@ -1813,7 +1813,7 @@ a glass receptacle~
 A receptacle rests on the table collecting liquid from a glass tube.~
 ~
 10 64 1
-50~ blindness~ curse~ complete healing~ 
+50~ blindness~ curse~ complete healing~
 5 0 0
 #14572
 brush paint~
@@ -1821,7 +1821,7 @@ a paint brush~
 An artists paint brush lies on the ground, forgotten.~
 ~
 3 1|64 1|16384
-100~ 20~ 20~ colour spray~ 
+100~ 20~ 20~ colour spray~
 2 0 0
 #14573
 Skip-torg sword barbed~
@@ -1829,7 +1829,7 @@ a Skip-torg~
 A very lethal barbed sword beckons you to control it.~
 ~
 5 2|64|4096 1|8192
-0~ 20~ 30~ 3~ 
+0~ 20~ 30~ 3~
 35 0 0
 A
 19 20
@@ -1846,7 +1846,7 @@ a marble key~
 A key made from marble lies on the ground.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14575
 key glowing~
@@ -1854,7 +1854,7 @@ a glowing key~
 A key radiates light from the centre of the room.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14576
 platinum key~
@@ -1862,7 +1862,7 @@ a platinum key~
 A key made from platinum, looks very important.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 key platinum~
@@ -1874,7 +1874,7 @@ a plain key~
 An ordinary metal key.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14578
 ivory key~
@@ -1882,7 +1882,7 @@ an ivory key~
 A key shaped like a dragons head, gleams in the dirt.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 1 0 0
 #14579
 belt dungeon cell~
@@ -1890,7 +1890,7 @@ a Belt~
 A rather large belt, with a key dangling from it lies here.~
 ~
 18 0 1|2048
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 belt key~
@@ -1902,7 +1902,7 @@ a two-handed sword~
 A large two-handed sword lies in pristine condition in the dirt.~
 ~
 5 1|64 1|8192
-0~ 20~ 38~ 3~ 
+0~ 20~ 38~ 3~
 25 0 0
 A
 19 13
@@ -1914,7 +1914,7 @@ the earth key~
 A large chunk of dirt lies on the ground.~
 ~
 18 2 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14582
 water key~
@@ -1922,7 +1922,7 @@ the water key~
 (Shimmering) A drop of water forms before your eyes.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14583
 fire key~
@@ -1930,7 +1930,7 @@ the fire key~
 A tongue of fire burns in mid-air.~
 ~
 18 1 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14584
 air key~
@@ -1938,7 +1938,7 @@ the air key~
 (Translucent) A pocket of air floats before you.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14585
 copper key~
@@ -1946,7 +1946,7 @@ a copper key~
 A small copper key is here.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 E
 key copper small~
@@ -1958,7 +1958,7 @@ a human skeleton~
 A human skeleton is slumped in the corner of the room~
 ~
 15 0 1
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 100 0 0
 #14587
 bottle enwis wine~
@@ -1966,7 +1966,7 @@ enwis wine~
 A singular bottle of wine rest in a rack.~
 ~
 17 0 1
-100~ 100~ 2~ 0~ 
+100~ 100~ 2~ 0~
 5 0 0
 E
 wine bottle enwis~
@@ -1978,7 +1978,7 @@ an eyepatch~
 An eyepatch lies on the floor.~
 ~
 9 1|64 1|16
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 2 0 0
 A
 2 3
@@ -1990,7 +1990,7 @@ a jewel encrusted butterfly~
 A butterfly encrusted with jewels sparkles on the ground before you.~
 ~
 4 1|64 1|16384
-30~ 3~ 3~ complete healing~ 
+30~ 3~ 3~ complete healing~
 1 0 0
 A
 4 6
@@ -2000,7 +2000,7 @@ a stiletto~
 A wickedly sharp blade lies on the ground.~
 ~
 5 2|1024 1|8192
-0~ 20~ 30~ 11~ 
+0~ 20~ 30~ 11~
 5 0 0
 A
 19 9
@@ -2010,7 +2010,7 @@ gloves of swordsmanship~
 A pair of elegant gloves.~
 ~
 9 2|64|2048 1|128
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 8 0 0
 A
 18 13
@@ -2020,7 +2020,7 @@ A
 1 2
 E
 gloves swordmanship elegant~
-Elegantly crafted gloves. Light yet imbued with a magical spell allowing for 
+Elegantly crafted gloves. Light yet imbued with a magical spell allowing for
 great accuracy.
 ~
 #14592
@@ -2029,7 +2029,7 @@ the spiked belt~
 A leather belt, set with large spikes, hangs on a hook.~
 ~
 9 1|64 1|2048
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 12 0 0
 A
 2 -1
@@ -2049,7 +2049,7 @@ a dusty scroll~
 A scroll lies almost buried by dust.~
 ~
 2 0 1|16384
-60~ armor~ combat mind~ bless~ 
+60~ armor~ combat mind~ bless~
 5 0 0
 #14595
 scroll enhancement~
@@ -2057,7 +2057,7 @@ a scroll of enhancement~
 A scroll of enhancement lies in the dirt.~
 ~
 2 1 1|16384
-80~ enhance armor~ ~ ~ 
+80~ enhance armor~ ~ ~
 5 0 0
 #14596
 pill yellow~
@@ -2065,7 +2065,7 @@ a yellow pill~
 A yellow pill sits on a table.~
 ~
 26 2 1
-55~ heal~ heal~ weaken~ 
+55~ heal~ heal~ weaken~
 5 0 0
 #14597
 wand knowledge~
@@ -2073,7 +2073,7 @@ the wand of knowledge~
 A small stick, inscribed with writing, draws your attention.~
 ~
 3 1 1|16384
-9~ 20~ 20~ identify~ 
+9~ 20~ 20~ identify~
 5 0 0
 A
 3 4
@@ -2087,7 +2087,7 @@ a blue stick~
 A blue stick lies in the dust.~
 ~
 3 1 1|16384
-90~ 15~ 15~ combat mind~ 
+90~ 15~ 15~ combat mind~
 5 0 0
 A
 1 2
@@ -2101,7 +2101,7 @@ flame of life~
 A green flame lights the room.~
 ~
 1 1|64 1
-0~ 0~ -1~ 0~ 
+0~ 0~ -1~ 0~
 5 0 0
 A
 5 2
@@ -2113,7 +2113,7 @@ the lightning orb~
 A concentrated mass of energy floats in the middle of the room.~
 ~
 1 1|64 1
-0~ 1~ -1~ 11~ 
+0~ 1~ -1~ 11~
 5 0 0
 A
 19 9
@@ -2123,7 +2123,7 @@ coins~
 A horde of coins lies in he corner of the room.~
 ~
 20 0 1
-1208~ 650~ 457~ 221~ 
+1208~ 650~ 457~ 221~
 5 0 0
 #14602
 leggings  mastery~
@@ -2131,7 +2131,7 @@ leggings of mastery~
 A pair of shiny leggings lean against a wall.~
 ~
 9 1|32|64|128|2048 1|32
-10~ 0~ 0~ 0~ 
+10~ 0~ 0~ 0~
 5 0 0
 A
 19 9
@@ -2143,7 +2143,7 @@ a fiery chest~
 {R(Flaming){x A chest, constructed from fire, combusts before you.~
 ~
 15 0 0
-20~ 8~ 14583~ 0~ 
+20~ 8~ 14583~ 0~
 100 0 0
 #14604
 bolt lightning~
@@ -2151,7 +2151,7 @@ a lightning bolt~
 A bolt of lightning stretches down from the heavens.~
 ~
 5 1 1|8192
-0~ 10~ 35~ 6~ 
+0~ 10~ 35~ 6~
 20 0 0
 A
 18 12
@@ -2161,7 +2161,7 @@ the lightning trident~
 A huge lightning bolt forms into a trident as you watch.~
 ~
 5 1 1|8192
-0~ 20~ 40~ 11~ 
+0~ 20~ 40~ 11~
 5 0 0
 A
 18 7
@@ -2171,7 +2171,7 @@ an icicle~
 A large pointed piece of ice is melting into a puddle.~
 ~
 5 2|64 1|8192
-0~ 20~ 35~ 11~ 
+0~ 20~ 35~ 11~
 5 0 0
 A
 19 8
@@ -2181,11 +2181,11 @@ an ancient coffin~
 An ancient coffin, covered in dust, seems undisturbed.~
 ~
 15 0 0
-100~ 5~ 0~ 0~ 
+100~ 5~ 0~ 0~
 100 0 0
 E
 coffin dust~
-Wiping away the dust, you see many inscriptions and hieroglyphics covering 
+Wiping away the dust, you see many inscriptions and hieroglyphics covering
 the tomb. The largest writing near the head of the coffin reads ROLKYZ.
 ~
 #14608
@@ -2194,7 +2194,7 @@ a pair of loaded dice~
 Some dice lie on a table, the numbers on the faces read 6 and 1.~
 ~
 3 64 1|16384
-20~ 1~ 1~ heighten senses~ 
+20~ 1~ 1~ heighten senses~
 5 0 0
 #14609
 red suit~
@@ -2202,7 +2202,7 @@ a red suit~
 A red suit lies neatly folded on a table.~
 ~
 9 0 1|8
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 5 0 0
 #14610
 bronze plate ~
@@ -2210,7 +2210,7 @@ a bronze plate~
 A bronze breastplate rests on the ground.~
 ~
 9 1|64 1|8
-9~ 0~ 0~ 0~ 
+9~ 0~ 0~ 0~
 20 0 0
 A
 1 2
@@ -2220,7 +2220,7 @@ bronze leggings~
 Some bronze leggings lean against the wall.~
 ~
 9 64 1|32
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 10 0 0
 A
 3 2
@@ -2230,7 +2230,7 @@ bronze armguards~
 A pair of bronze armguards catch your eye~
 ~
 9 64 1|256
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 5 0 0
 A
 5 2
@@ -2240,7 +2240,7 @@ a bronze helm~
 A bronze helm rests in the corner of the room.~
 ~
 9 64 1|16
-8~ 0~ 0~ 0~ 
+8~ 0~ 0~ 0~
 5 0 0
 A
 4 2
@@ -2250,7 +2250,7 @@ bronze boots~
 A pair of bronze boots sparkle before you.~
 ~
 9 2|64 1|64
-7~ 0~ 0~ 0~ 
+7~ 0~ 0~ 0~
 5 0 0
 A
 2 2
@@ -2260,7 +2260,7 @@ a leg bone~
 The leg bone of a long dead adventurer lies on the ground.~
 ~
 5 0 1|8192
-0~ 10~ 15~ 7~ 
+0~ 10~ 15~ 7~
 10 0 0
 #14616
 trident~
@@ -2268,7 +2268,7 @@ a trident~
 A great trident rests against the wall.~
 ~
 5 1|64 1|8192
-0~ 40~ 55~ 11~ 
+0~ 40~ 55~ 11~
 5 0 0
 A
 19 6
@@ -2278,7 +2278,7 @@ an ornate key~
 An ornate key lies on the ground.~
 ~
 18 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #14618
 angel angels amulet~
@@ -2286,7 +2286,7 @@ angels Amulet~
 A figurine of an angel, hovers before you.~
 ~
 9 1|2|32|64|1024|2048 1|4
-12~ 0~ 0~ 0~ 
+12~ 0~ 0~ 0~
 5 0 0
 A
 13 100
@@ -2294,7 +2294,7 @@ A
 12 200
 E
 amulet angel~
-An magnificently detailed angel, attached to a golden necklace seem to 
+An magnificently detailed angel, attached to a golden necklace seem to
 glow as you examine it.
 ~
 #14619
@@ -2303,7 +2303,7 @@ a water-stained paper~
 A water-stained scroll of paper lies on a desk.~
 ~
 2 0 1|16384
-60~ ~ detect hidden~ adrenaline control~ 
+60~ ~ detect hidden~ adrenaline control~
 5 0 0
 #14620
 box small~
@@ -2311,7 +2311,7 @@ a small box~
 A small box sits in the corner, almost obscured from view.~
 ~
 15 0 0
-100~ 1~ 0~ 0~ 
+100~ 1~ 0~ 0~
 10 0 0
 #14621
 potion dark blue~
@@ -2319,7 +2319,7 @@ a dark blue potion~
 A dark blue liquid fills a closed glass bottle.~
 ~
 10 0 1
-40~ cure poison~ dispel magic~ remove curse~ 
+40~ cure poison~ dispel magic~ remove curse~
 1 0 0
 #14622
 red liquid fiery potion~
@@ -2327,7 +2327,7 @@ a fiery red potion~
 A fiery red liquid bubbles in a bottle.~
 ~
 10 1 1
-100~ bless~ sanctuary~ ~ 
+100~ bless~ sanctuary~ ~
 5 0 0
 #14623
 orb crystal~
@@ -2335,7 +2335,7 @@ a crystal orb~
 A crystal orb floats before you.~
 ~
 4 1|2097152 2 2 50  1|16384
-2~ 5~ 5~ complete healing~ 
+2~ 5~ 5~ complete healing~
 5 0 0
 #14624
 one~
@@ -2343,7 +2343,7 @@ one~
 The sword that legends are made of. There can only be ONE!~
 ~
 5 1|2|64|1024|2048|1048576 1|8192
-0~ 70~ 120~ 11~ 
+0~ 70~ 120~ 11~
 15 0 0
 A
 17 -50
@@ -2375,7 +2375,7 @@ S
 #14501
 Misty Path~
 You stand on a muddy path. A mist covers the ground like a blanket. You can see
-a tower in the distance to the north. To the south the path disappears. You 
+a tower in the distance to the north. To the south the path disappears. You
 think you can hear running water to the north.
 ~
 0 1 2
@@ -2390,8 +2390,8 @@ D2
 S
 #14502
 Misty Path~
-You stand on a muddy path. A mist covers the ground like a blanket. Another 
-path heads off to the west, between two large rocks, while the castle to the 
+You stand on a muddy path. A mist covers the ground like a blanket. Another
+path heads off to the west, between two large rocks, while the castle to the
 north beckons you. You think you can hear running water from the east.
 ~
 0 1 2
@@ -2409,8 +2409,8 @@ D2
 0 -1 14501
 E
 rocks boulders~
-A path winds its way between two rocks. scrawled on one of the rocks, you 
-can make out the words: 
+A path winds its way between two rocks. scrawled on one of the rocks, you
+can make out the words:
 		      This area was written by Brutus aka Freak aka Xan
 		      May 95 - Nov 95,
 		      Enjoy :)
@@ -2419,7 +2419,7 @@ can make out the words:
 S
 #14503
 Between the rocks~
-Its a tight squeeze between these two rocks. To the east the rocks widen to 
+Its a tight squeeze between these two rocks. To the east the rocks widen to
 reveal a lake of sorts, the smell from that direction is not at all pleasant.
 ~
 0 1 2
@@ -2460,7 +2460,7 @@ the liquid and then dive back under.
 S
 #14505
 Path around the Lake of Slime~
-A small trail leads around the lake. You can head west toward two rocks, or 
+A small trail leads around the lake. You can head west toward two rocks, or
 north.
 ~
 0 1 2
@@ -2476,7 +2476,7 @@ S
 #14506
 On the Lake~
 Your boat floats quite well on this thick green sludge. Any thicker and you
-would be able to walk on the lake. The noise of falling water, or sludge, 
+would be able to walk on the lake. The noise of falling water, or sludge,
 emanates from the north. You can row to shore to the east or south.
 ~
 0 1 7
@@ -2509,13 +2509,13 @@ sewer outlet~
 A narrow pipe extrudes from the cliff face just above you. The constant flow
 of liquid makes it impossible to enter. Then again , why would you want to
 enter? As you study the iron pipe, you notice an arm half blocking the outlet.
-The fingers are clenched, and seem to be holding something. You cannot reach 
+The fingers are clenched, and seem to be holding something. You cannot reach
 it from here.
 ~
 S
 #14508
 Trail around the Lake~
-A small trail leads around the lake. You can head onto the lake to the west, 
+A small trail leads around the lake. You can head onto the lake to the west,
 or follow the trail north or south.
 ~
 0 1 2
@@ -2535,7 +2535,7 @@ S
 #14509
 Trail around the Lake~
 You stand on a small trail which ends abruptly at a cliff face. Looking west
-you can see green liquid pour from an outlet in the cliff face. The cliff 
+you can see green liquid pour from an outlet in the cliff face. The cliff
 seems a little lower here, and you maybe able to climb it.
 ~
 0 1 2
@@ -2550,7 +2550,7 @@ D4
 S
 #14510
 On the cliff~
-You cling tightly to the cliff face, there is only enough for one here. The 
+You cling tightly to the cliff face, there is only enough for one here. The
 top of the cliff is just above you, or you can jump down to the ground below.
 ~
 0 1|2048 5
@@ -2565,7 +2565,7 @@ D5
 S
 #14511
 Top of the cliff~
-You stand on the top of a cliff. All around you, a thick forest prevents any 
+You stand on the top of a cliff. All around you, a thick forest prevents any
 progress. However a small trail follows the top of the cliff to the west.
 ~
 0 1|2048 4
@@ -2596,7 +2596,7 @@ S
 #14513
 The sewer outlet~
 What a STINK!!. You are perched precariously on a small outlet pipe, the flow
-of murky liquid batters your body, as you cling to the edge of an outlet pipe. 
+of murky liquid batters your body, as you cling to the edge of an outlet pipe.
 From here you can reach inside the outlet pipe if you want.
 ~
 0 1|2048 4
@@ -2607,9 +2607,9 @@ On the Lake~
 S
 #14514
 Misty Path~
-You stand on a muddy path. A fine mist covers the ground like a blanket. A 
-foul smell drifts across the path coming from the east. The plant life seems 
-to thicken further to the north. You can head toward a tower to the north, or 
+You stand on a muddy path. A fine mist covers the ground like a blanket. A
+foul smell drifts across the path coming from the east. The plant life seems
+to thicken further to the north. You can head toward a tower to the north, or
 retreat back to the south.
 ~
 0 1 2
@@ -2656,8 +2656,8 @@ D2
 S
 #14517
 Top of the hill~
-You stand on the top of a hill. The mist has cleared, buy the sun still does 
-not shine. Looking south you see a mist covered valley, and a small lake. 
+You stand on the top of a hill. The mist has cleared, buy the sun still does
+not shine. Looking south you see a mist covered valley, and a small lake.
 Looking north, you make out the entrance-way to a great black tower.
 ~
 0 1 4
@@ -2672,7 +2672,7 @@ D2
 S
 #14518
 Path in the hills~
-Just to the north, two gates bar the way to a black tower. You can make out 
+Just to the north, two gates bar the way to a black tower. You can make out
 two golems, standing, motionless. A slight wind blows, and you sense an evil
 presence, like someone or something is watching you. You can proceed to the
 gates to the north, or head back to the south.
@@ -2689,8 +2689,8 @@ D2
 S
 #14519
 Before the gates.~
-Two iron gates block any more progress to the north. So to do the two giant 
-figures standing before the gates. The only exit is south, unless you feel 
+Two iron gates block any more progress to the north. So to do the two giant
+figures standing before the gates. The only exit is south, unless you feel
 taking on the two guards.
 ~
 0 1 4
@@ -2705,7 +2705,7 @@ D2
 0 -1 14518
 E
 gate door gates iron~
-Two iron gates block any entrance to the north. You notice archaic runes 
+Two iron gates block any entrance to the north. You notice archaic runes
 engraved into the doors. You think this is to stop magic users from passing
 though.
 ~
@@ -2728,12 +2728,12 @@ iron gate gates~
 5 -1 14519
 E
 wooden door~
-Two wooden doors with a very complex lock, bar your entrance to the main 
+Two wooden doors with a very complex lock, bar your entrance to the main
 castle.
 ~
 E
 gate iron gates~
-Two iron gates block any entrance to the south. You notice archaic runes 
+Two iron gates block any entrance to the south. You notice archaic runes
 engraved into the doors. You think this is to stop magic users from passing
 though.
 ~
@@ -2742,7 +2742,7 @@ S
 Entrance to the Castle~
 You stand inside the castle. An evil aura originates from somewhere with these
 walls; you feel it affecting you. Three corridors lead from this room. One to
-the north, and one each to the east, and west. There is a double wooden door 
+the north, and one each to the east, and west. There is a double wooden door
 to the south.
 ~
 0 1|8 0
@@ -2854,7 +2854,7 @@ S
 #14527
 An imps room.~
 You are standing in an extremely messy room. Papers, miscellaneous items and
-the furniture are spread around the room in an disorganized manner. A squeal 
+the furniture are spread around the room in an disorganized manner. A squeal
 of delight comes from the corner of the room, and a imp comes running to greet
 you.
 ~
@@ -2984,7 +2984,7 @@ door wooden~
 S
 #14535
 A Witch's Hovel~
-This is home to a witch. Her belongings are stacked on shelves on the east 
+This is home to a witch. Her belongings are stacked on shelves on the east
 wall. Many jars filled with spices and animal parts line this shelf, along
 with many books. In the centre of the room a table sits.
 ~
@@ -3043,9 +3043,9 @@ D2
 S
 #14538
 Spiral Stairs~
-The corridor opens up here. A spiral staircase dominates the centre of the 
+The corridor opens up here. A spiral staircase dominates the centre of the
 room. It extends to the roof, where you see a large iron trapdoor. There is
-also an exit in the west wall. You can head either north or south along a 
+also an exit in the west wall. You can head either north or south along a
 corridor.
 ~
 0 8 0
@@ -3206,7 +3206,7 @@ S
 Bend in the Corridor~
 You stand in a grey corridor. The walls are a grey slate, very boring.
 Torches are affixed to the walls at regular intervals to light the corridor.
-To the south you notice a VERY large guardian. You can head toward him, or 
+To the south you notice a VERY large guardian. You can head toward him, or
 back down the corridor to the east.
 ~
 0 8 0
@@ -3221,7 +3221,7 @@ D2
 S
 #14548
 Bend in a corridor~
-The corridor bend again. To the east you can see a stairwell. You can head 
+The corridor bend again. To the east you can see a stairwell. You can head
 toward it, or back to the north.
 ~
 0 8 0
@@ -3252,7 +3252,7 @@ S
 #14550
 Hobbits room.~
 A small room, littered with scraps of papers, and plans. A small bed lies next
-to the west wall, and a desk lies next to it. The only exit from the room is 
+to the west wall, and a desk lies next to it. The only exit from the room is
 to the east.
 ~
 0 8 0
@@ -3267,7 +3267,7 @@ The workshop~
 What a mess! Various unfinished project of the hobbit lie in heaps around the
 room. Looking around the room you try and figure out what to look at first.
 Some sort of anti-personnel device with a large spiked mace attached is in a
-heap in the southern corner. Various plans, blueprints and scraps of paper 
+heap in the southern corner. Various plans, blueprints and scraps of paper
 lies all over the room. The only exit is to the west.
 ~
 0 8 0
@@ -3279,7 +3279,7 @@ wooden door~
 S
 #14552
 Room of the Archmage~
-The air in this room is charged with magic. Archaic runes and symbols line 
+The air in this room is charged with magic. Archaic runes and symbols line
 the shelves and are drawn onto the walls of the room. The only exit is through
 the door to the west.
 ~
@@ -3292,7 +3292,7 @@ wooden door~
 S
 #14553
 Bunk-room~
-You stand in a simple bunk-room. The only thing occupying this room is a 
+You stand in a simple bunk-room. The only thing occupying this room is a
 large bunk. The only exit to this room is to the east.
 ~
 0 8 0
@@ -3315,7 +3315,7 @@ door multicolored~
 S
 #14555
 Bunk-room~
-You stand in a simple bunk-room. The only thing occupying this room is a 
+You stand in a simple bunk-room. The only thing occupying this room is a
 large bunk. The only exit to this room is to the north.
 ~
 0 8 0
@@ -3327,9 +3327,9 @@ S
 #14556
 The Stairwell~
 You stand at the bottom of the stairwell. All around you feel people watching,
-waiting for you to make a wrong move. The air here is damp, and you notice 
+waiting for you to make a wrong move. The air here is damp, and you notice
 its a little warmer, making it difficult to breath. You have three choices of
-exits, up the stairs, east along a lit hallway, or to the north into a dark 
+exits, up the stairs, east along a lit hallway, or to the north into a dark
 hallway.
 ~
 0 8 0
@@ -3348,7 +3348,7 @@ D4
 S
 #14557
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. Your shadows seem to fall in a funny way on the
 west wall. You can travel to the east or south.
 ~
@@ -3386,8 +3386,8 @@ secret door niche~
 S
 #14559
 Riddlers Room~
-Another multicoloured room assaults your vision. A small bed lies in the 
-corner, with a table beside it. A figure emerges jumps out from behind the 
+Another multicoloured room assaults your vision. A small bed lies in the
+corner, with a table beside it. A figure emerges jumps out from behind the
 door, in a feeble attempt to give you a fright. This is followed by numerous
 giggles from the culprit.
 ~
@@ -3400,7 +3400,7 @@ door secret door-way~
 S
 #14560
 Unlit Hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. You can travel only to the west or east.
 ~
 0 1|8 0
@@ -3415,7 +3415,7 @@ D3
 S
 #14561
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. You can travel only to the west or east.
 ~
 0 1|8 0
@@ -3430,7 +3430,7 @@ D3
 S
 #14562
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. You can travel only to the west or south.
 ~
 0 1|8 0
@@ -3445,7 +3445,7 @@ D3
 S
 #14563
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. As you walk, you think you hear a muffled scream
 come from the south.
 ~
@@ -3461,7 +3461,7 @@ D2
 S
 #14564
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. As you walk, you think you hear a muffled scream
 come from the south.
 ~
@@ -3477,7 +3477,7 @@ D2
 S
 #14565
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. As you walk, you hear a muffled scream come from
 the south.
 ~
@@ -3493,7 +3493,7 @@ D2
 S
 #14566
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
+This hall, has no torches to light the way. You light source flickers on the
 grey-slate wall as you walk. A rusty metal hatch covers something to the east.
 As you walk, you hear a muffled scream come from the south.
 ~
@@ -3514,8 +3514,8 @@ D2
 S
 #14567
 Unlit hall~
-This hall, has no torches to light the way. You light source flickers on the 
-grey-slate wall as you walk. As you walk, you hear a cry for help come from 
+This hall, has no torches to light the way. You light source flickers on the
+grey-slate wall as you walk. As you walk, you hear a cry for help come from
 the south.
 ~
 0 1|8 0
@@ -3565,7 +3565,7 @@ D3
 0 -1 14556
 E
 crack wall~
-A long crack extends from the floor to about waist high, looking closer you 
+A long crack extends from the floor to about waist high, looking closer you
 see two more 'cracks'. The 3 lines make small door, only 3 feet high. You push
 on the door with some force, and it finally starts to open.
 ~
@@ -3587,7 +3587,7 @@ D3
 S
 #14571
 Hall-way~
-You stand in a very plain hall-way. Nothing of interest is here, apart from 
+You stand in a very plain hall-way. Nothing of interest is here, apart from
 the odd torch used to light the seldom used corridor.
 ~
 0 8 0
@@ -3632,8 +3632,8 @@ D2
 S
 #14574
 The kitchen~
-You stand in a vast kitchen - enough for 20 cooks. Tables for preparing food 
-are all around, and a huge oven can be seen across the room. The kitchen 
+You stand in a vast kitchen - enough for 20 cooks. Tables for preparing food
+are all around, and a huge oven can be seen across the room. The kitchen
 extends to the south and west, or you can head up a hallway to the north.
 ~
 0 8 0
@@ -3689,9 +3689,9 @@ door wooden~
 S
 #14577
 The kitchen~
-You stand in a vast kitchen - enough for 20 cooks. tables for preparing food 
-are all around, and a huge oven can be seen across the room. The kitchen 
-extends to the south and east, or you can head into the dining room to the 
+You stand in a vast kitchen - enough for 20 cooks. tables for preparing food
+are all around, and a huge oven can be seen across the room. The kitchen
+extends to the south and east, or you can head into the dining room to the
 north.
 ~
 0 8 0
@@ -3710,7 +3710,7 @@ D2
 S
 #14578
 Dining room~
-A grand dining table dominates the very large room which extends both to the 
+A grand dining table dominates the very large room which extends both to the
 west and north. Looking around, various portraits, ornamental weapons and
 armour decorate the walls.
 ~
@@ -3730,7 +3730,7 @@ D3
 S
 #14579
 Dining room~
-A grand dining table dominates the very large room which extends both to the 
+A grand dining table dominates the very large room which extends both to the
 west and south. Looking around, various portraits, ornamental weapons and
 armour decorate the walls.
 ~
@@ -3746,10 +3746,10 @@ D3
 S
 #14580
 Dining room~
-A grand dining table dominates the very large room which extends both to the 
+A grand dining table dominates the very large room which extends both to the
 west and south. Looking around, various portraits, ornamental weapons and
 armour decorate the walls. In the corner something glows on the floor. A rune
-is etched into the floor, and emits pure evil, you are unsure as to its 
+is etched into the floor, and emits pure evil, you are unsure as to its
 purpose.
 ~
 0 8 0
@@ -3764,7 +3764,7 @@ D1
 S
 #14581
 Dining room~
-A grand dining table dominates the very large room which extends both to the 
+A grand dining table dominates the very large room which extends both to the
 west and south. Looking around, various portraits, ornamental weapons and
 armour decorate the walls. A wooden door is just to the north.
 ~
@@ -3801,7 +3801,7 @@ D3
 S
 #14583
 Access corridor~
-The small hall-way ends abruptly here. To the south, another wooden door lies 
+The small hall-way ends abruptly here. To the south, another wooden door lies
 before you.
 ~
 0 1|8 0
@@ -3817,7 +3817,7 @@ door wooden~
 S
 #14584
 Waiters Quarters~
-You enter a bedroom. It is immaculate. The single bed is tucked neatly  
+You enter a bedroom. It is immaculate. The single bed is tucked neatly
 together, and the desk beside it, has been polished and seems to glow. A simple
 cloth covers a room to the south, while a wooden door is to the north.
 ~
@@ -3835,9 +3835,9 @@ cloth~
 S
 #14585
 Toilet~
-You enter into a small toilet, which is taken! You try to hide your obvious 
-guilt in walking into a man who is taking a dump, but you cannot help but 
-laugh at the waiter, who is currently trying to make himself dignified. The 
+You enter into a small toilet, which is taken! You try to hide your obvious
+guilt in walking into a man who is taking a dump, but you cannot help but
+laugh at the waiter, who is currently trying to make himself dignified. The
 toilet is a simple wooden box, with a hole cut out of the top. A hole has been
 etched out of the floor. You hope nobody is currently underneath the hole.
 ~
@@ -3855,10 +3855,10 @@ wall~
 S
 #14586
 Secret room~
-You stumble into a secret room. It was a good idea to map the castle, and 
+You stumble into a secret room. It was a good idea to map the castle, and
 upon seeing that there was no obvious door into this room, you figured there
 must be a secret access. Looking around a number of thing catch your eye, and
-they are there for the taking. Although there seems to be one problem to 
+they are there for the taking. Although there seems to be one problem to
 deal with first.
 ~
 0 1|8 0
@@ -3869,7 +3869,7 @@ D0
 S
 #14587
 Storage~
-You stand in a store-room. Various ingredients lie on shelves around the room. 
+You stand in a store-room. Various ingredients lie on shelves around the room.
 The kitchen lies to the east. Two closed doors can be seen, one to the north
 and one to the west.
 ~
@@ -3894,8 +3894,8 @@ S
 #14588
 Ice room~
 Its very cold here. For some reason this room is like sitting on the top of
-the hills north of Midgaard on a winters day in your birthday suit. You 
-suspect magic has created this cool room. Not surprisingly various meats 
+the hills north of Midgaard on a winters day in your birthday suit. You
+suspect magic has created this cool room. Not surprisingly various meats
 and perishable foods are stored in here.
 ~
 0 1|8 0
@@ -3907,7 +3907,7 @@ door wooden~
 S
 #14589
 Top of the ladder.~
-You enter a small damp room. Beneath you a ladder descends into darkness. 
+You enter a small damp room. Beneath you a ladder descends into darkness.
 Nothing can be heard, you shout and your voice echoes.
 ~
 0 1|8 0
@@ -3924,9 +3924,9 @@ S
 #14590
 Dusty Alcove~
 Crawling under the small door you find yourself in an equally small alcove.
-It is dark here, safe for the light coming through the door-way. You guide 
-your light source around the room. Various tomes and scrolls lie scattered 
-around the room. Picking one up, it crumbles to dust in your hand. However, 
+It is dark here, safe for the light coming through the door-way. You guide
+your light source around the room. Various tomes and scrolls lie scattered
+around the room. Picking one up, it crumbles to dust in your hand. However,
 you notice a small box in the corner of the room.
 ~
 0 1|8 0
@@ -3938,8 +3938,8 @@ door~
 S
 #14591
 Beneath the ladder~
-You stand beneath a ladder. There is a sweet smell all around, a fruity smell, 
-like a wine. The room has been dug from the earth, the walls, and floor are 
+You stand beneath a ladder. There is a sweet smell all around, a fruity smell,
+like a wine. The room has been dug from the earth, the walls, and floor are
 dried mud. You can travel to the east or north.
 ~
 0 1|8 0
@@ -3959,7 +3959,7 @@ S
 #14592
 Wine Cellar~
 You stand in a wine cellar. There is a sweet smell in this room. Rows and rows
-of wine racks line the walls, all empty. You can head north, 
+of wine racks line the walls, all empty. You can head north,
 to more racks, or back to the west.
 A rune is etched into the floor, and emits pure evil, you are unsure as to its
 purpose.
@@ -3977,7 +3977,7 @@ S
 #14593
 Wine Cellar~
 You stand in a wine cellar. There is a sweet smell in this room. Rows and rows
-of wine racks line the wall. You can head south, to more racks, or to the 
+of wine racks line the wall. You can head south, to more racks, or to the
 west.
 ~
 0 1|8 0
@@ -3993,7 +3993,7 @@ S
 #14594
 Wine Cellar.~
 You stand in a large wine cellar. Against the north wall are several very
-large wine barrels used for bulk storage. You walk by them, tapping them with 
+large wine barrels used for bulk storage. You walk by them, tapping them with
 your weapon, and one of them makes a hollow sound. Looking closer you see that
 it is attached to the wall in a funny way.
 ~
@@ -4015,7 +4015,7 @@ S
 #14595
 Shit!!~
 Oh shit - literally. You walk underneath a hole in the roof, and get struck on
-the head by falling shit!!. Beneath you there is a grate fixed in the ground 
+the head by falling shit!!. Beneath you there is a grate fixed in the ground
 to allow the 'waste' products to pass. Looking up you see a large brown eye
 looking at you. You better move on quickly before you get hit again!.
 ~
@@ -4037,7 +4037,7 @@ eye brown ass~
 S
 #14596
 Dark tunnel~
-You stand in a dark tunnel dug from the earth. A un-nerving silence follows 
+You stand in a dark tunnel dug from the earth. A un-nerving silence follows
 you as you walk down the tunnel. Scanning around for signs of life, all you
 ca see is the odd spiders web strung in a corner.
 ~
@@ -4053,9 +4053,9 @@ D2
 S
 #14597
 Dark tunnel~
-You stand in a dark tunnel dug from the earth. A un-nerving silence follows 
+You stand in a dark tunnel dug from the earth. A un-nerving silence follows
 you as you walk down the tunnel. A pool of blood lies beneath the door to the
-east. Scanning around for signs of life, all you can see is the odd spiders 
+east. Scanning around for signs of life, all you can see is the odd spiders
 web strung in a corner.
 ~
 0 1|8 0
@@ -4079,7 +4079,7 @@ The door has had its handle broken off.
 S
 #14598
 Dark Tunnel~
-You stand in a dark tunnel dug from the earth. A un-nerving silence follows 
+You stand in a dark tunnel dug from the earth. A un-nerving silence follows
 you as you walk down the tunnel. Scanning around for signs of life, all you
 can see is the odd spiders web strung in a corner.
 ~
@@ -4095,8 +4095,8 @@ D2
 S
 #14599
 End of the tunnel~
-You stand in a dark tunnel dug from the earth. A un-nerving silence follows 
-you as stand here. A large hole gapes open in the floor just before you. A 
+You stand in a dark tunnel dug from the earth. A un-nerving silence follows
+you as stand here. A large hole gapes open in the floor just before you. A
 rope hangs from the ceiling, and disappears into the hole and darkness. A
 Disgusting smell rises from the hole, you are unsure whether to proceed down.
 ~
@@ -4144,7 +4144,7 @@ D4
 S
 #14602
 Dark Tunnel~
-You stand in a vast cavern that extends to the west and south. Various 
+You stand in a vast cavern that extends to the west and south. Various
 creatures are being held here. The place stinks due to the lack of ventilation
 and toilet facilities. There is a crack in the west wall.
 ~
@@ -4158,7 +4158,7 @@ D2
 ~
 0 -1 14601
 D3
-Looking at the wall, you notice an outline of a door, cleverly disguised as 
+Looking at the wall, you notice an outline of a door, cleverly disguised as
 part of the tunnel wall.
 ~
 wall door~
@@ -4166,7 +4166,7 @@ wall door~
 S
 #14603
 Dark Tunnel~
-You stand in a dark tunnel, two levels down in the castle. There is a metal 
+You stand in a dark tunnel, two levels down in the castle. There is a metal
 hatch covering something on the east wall. You spy footprints heading down the
 corridor, and what seems to be something being dragged behind them. A scream
 echoes down the tunnel from the north
@@ -4275,7 +4275,7 @@ S
 End of the tunnel~
 You stand at the end of the tunnel. The only thing here is a torch attached to
 the south wall. Apart from that, there is nothing here. Although no doors can
-be seen, the footprints and trail seem to disappear under the south wall. 
+be seen, the footprints and trail seem to disappear under the south wall.
 The torch is not like any of the others you have seen before, and it sits lower
 on the wall.
 ~
@@ -4294,16 +4294,16 @@ D3
 E
 torch~
 Looking closer at the torch, it seems like an ordinary torch. You try to move
-it, and as you do so, you hear a faint click and the wall moves slightly, 
+it, and as you do so, you hear a faint click and the wall moves slightly,
 revealing the frame of a door. It seems you can now proceed south.
 ~
 S
 #14610
 The voodoo room~
 You enter a room, filled with smoke from incense that is burning in the middle
-of the room. A voodoo priest is standing in the centre of the room with a 
+of the room. A voodoo priest is standing in the centre of the room with a
 doll and pin, repeatedly stabbing the doll with the pin. Laying in the corner
-screaming in agony is a druid, clutching his side. The priest looks up, he 
+screaming in agony is a druid, clutching his side. The priest looks up, he
 doesn't seem happy.
 ~
 0 8 0
@@ -4315,7 +4315,7 @@ wall  door~
 S
 #14611
 The Pens.~
-You stand in a vast cavern that extends to the west and south. Various 
+You stand in a vast cavern that extends to the west and south. Various
 creatures are being held here. The place stinks due to the lack of ventilation
 and toilet facilities. You can travel west or south, or back through the iron
 door to the east.
@@ -4337,7 +4337,7 @@ D3
 S
 #14612
 The Pens~
-You stand in a vast cavern that extends to the west and south. Various 
+You stand in a vast cavern that extends to the west and south. Various
 creatures are being held here. The place stinks due to the lack of ventilation
 and toilet facilities. These pens extend to the south and east.
 ~
@@ -4353,7 +4353,7 @@ D2
 S
 #14613
 The Pens~
-You stand in a vast cavern that extends to the west and south. Various 
+You stand in a vast cavern that extends to the west and south. Various
 creatures are being held here. The place stinks due to the lack of ventilation
 and toilet facilities. Something brushes against your leg, looking down you see
 a rather large rat scurry away. The pens extend to the north and east.
@@ -4370,7 +4370,7 @@ D1
 S
 #14614
 The Pens~
-You stand in a vast cavern that extends to the west and south. Various 
+You stand in a vast cavern that extends to the west and south. Various
 creatures are being held here. The place stinks due to the lack of ventilation
 and toilet facilities. The pens extend to the north or west.
 ~
@@ -4386,7 +4386,7 @@ D3
 S
 #14615
 A tunnel~
-You stand in a west-east tunnel, two levels down in the castle. To the east 
+You stand in a west-east tunnel, two levels down in the castle. To the east
 you can see some stairs.
 ~
 0 1|8 0
@@ -4401,7 +4401,7 @@ D3
 S
 #14616
 A tunnel~
-You stand in a small dark tunnel. To the north you see light. To the east - 
+You stand in a small dark tunnel. To the north you see light. To the east -
 blackness.
 ~
 0 1|8 0
@@ -4416,14 +4416,14 @@ D1
 S
 #14617
 End of the tunnel~
-You come to the end of the tunnel. Before you is an iron gate with a 
-small window which is barred. Looking through the bars of the window, you see 
-an ugly half-giant resting against another door on the eastern side of the 
+You come to the end of the tunnel. Before you is an iron gate with a
+small window which is barred. Looking through the bars of the window, you see
+an ugly half-giant resting against another door on the eastern side of the
 room. His back is facing you, so you may be able to sneak up on him.
 ~
 0 1|8 0
 D0
-The door has a small window in it, allowing you to see what is on the other 
+The door has a small window in it, allowing you to see what is on the other
 side.
 ~
 iron door gate~
@@ -4436,7 +4436,7 @@ S
 #14618
 The Dungeon~
 This appears to be the dungeon where prisoners or slaves are kept. You stand
-at the start of a corridor which stretches to the north. Either side of you are 
+at the start of a corridor which stretches to the north. Either side of you are
 locked iron gates. To the south there is another iron gate, this one has a
 small window in it.
 ~
@@ -4509,7 +4509,7 @@ door wooden~
 S
 #14621
 Prison Cell~
-You are in a dark, damp prison cell. Rats run between your legs trying to 
+You are in a dark, damp prison cell. Rats run between your legs trying to
 escape from this sudden movement. There are several pairs of shackles attached
 to the wall. The only exit is to the east.
 ~
@@ -4522,7 +4522,7 @@ iron door~
 S
 #14622
 Prison Cell~
-You are in a dark, damp prison cell. Rats run between your legs trying to 
+You are in a dark, damp prison cell. Rats run between your legs trying to
 escape from this sudden movement. There are several pairs of shackles attached
 to the wall, one of which is taken. The only exit is to the west.
 ~
@@ -4535,7 +4535,7 @@ iron door~
 S
 #14623
 Prison Cell.~
-You are in a dark, damp prison cell. Rats run between your legs trying to 
+You are in a dark, damp prison cell. Rats run between your legs trying to
 escape from this sudden movement. There are several pairs of shackles attached
 to the wall, one of which is taken. The only exit is to the east
 ~
@@ -4548,7 +4548,7 @@ iron door~
 S
 #14624
 Prison Cell~
-You are in a dark, damp prison cell. Rats run between your legs trying to 
+You are in a dark, damp prison cell. Rats run between your legs trying to
 escape from this sudden movement. There are several pairs of shackles attached
 to the wall, one of which is taken. The only exit is to the west.
 ~
@@ -4561,10 +4561,10 @@ iron door~
 S
 #14625
 The riddlers room~
-As with the other rooms of the riddlers, this one is painted in a myriad of 
+As with the other rooms of the riddlers, this one is painted in a myriad of
 colours, that start to give you a headache. Various statues line the shelf to
 the north, and books, tomes and scroll lie scattered across a desk to the west.
-The inhabitant jumps to his feet when you enter, and then starts an incessant 
+The inhabitant jumps to his feet when you enter, and then starts an incessant
 babble.
 ~
 0 8 0
@@ -4576,10 +4576,10 @@ door~
 S
 #14626
 4-way intersection~
-The surroundings here take a change for the better. To floors, walls, and 
-ceiling are no longer a grey slate, but a white marble. Elegant torches now line 
+The surroundings here take a change for the better. To floors, walls, and
+ceiling are no longer a grey slate, but a white marble. Elegant torches now line
 the wall. Even though the surroundings are more aesthetically pleasing a coldness
-diffuses through you, chilling your bones. You can head in any direction, 
+diffuses through you, chilling your bones. You can head in any direction,
 except up. A trapdoor lies beneath your feet.
 ~
 0 8|1024 0
@@ -4607,7 +4607,7 @@ trap-door iron trap door~
 S
 #14627
 Marble hall~
-You stand in a white marble hall. The ceiling, floor and walls are made form 
+You stand in a white marble hall. The ceiling, floor and walls are made form
 it. At regular intervals torches, in elegant fittings, are attached to the wall.
 This corridor heads in an east-west direction. There is a wooden door to the
 south.
@@ -4629,7 +4629,7 @@ D3
 S
 #14628
 Bend in the hall~
-You stand in a white marble hall. The ceiling, floor and walls are made form 
+You stand in a white marble hall. The ceiling, floor and walls are made form
 it. At regular intervals torches, in elegant fittings, are attached to the wall.
 This corridor bends here. You can head either north or east.
 ~
@@ -4645,7 +4645,7 @@ D1
 S
 #14629
 A room~
-You stand in a white marble hall. The ceiling, floor and walls are made form 
+You stand in a white marble hall. The ceiling, floor and walls are made form
 it. At regular intervals torches, in elegant fittings, are attached to the wall.
 This corridor heads in a north-south direction.
 ~
@@ -4661,8 +4661,8 @@ D2
 S
 #14630
 Marble hall~
-You stand in a white marble hall. The ceiling, floor and walls are made form 
-it. At regular intervals, torches, in elegant fittings, are attached to the 
+You stand in a white marble hall. The ceiling, floor and walls are made form
+it. At regular intervals, torches, in elegant fittings, are attached to the
 wall. This corridor heads in a north-south direction.
 ~
 0 8|1024 0
@@ -4677,7 +4677,7 @@ D2
 S
 #14631
 Bend in the hall~
-You stand in a white marble hall. The ceiling, floor and walls are made form 
+You stand in a white marble hall. The ceiling, floor and walls are made form
 it. At regular intervals torches, in elegant fittings, are attached to the wall.
 There is a closed ivory door here to the east.
 ~
@@ -4709,9 +4709,9 @@ D3
 S
 #14633
 Elegant room~
-A room full of paintings. Examining each one closer they all seem to depict 
+A room full of paintings. Examining each one closer they all seem to depict
 one man - tall, handsome, dark hair and what's most unnerving, pitch black eyes.
-All the pictures are the same, except from different angles. Looking at the 
+All the pictures are the same, except from different angles. Looking at the
 painting to the south, you notice the eyes move. The room extends to the north.
 ~
 0 8|1024 0
@@ -4720,21 +4720,21 @@ D0
 ~
 0 -1 14632
 D2
-A large painting covers nearly the entire wall to the south. Moving the 
+A large painting covers nearly the entire wall to the south. Moving the
 painting reveals a door in the wall.
 ~
 wall door~
 1 -1 14634
 E
 painting picture eyes~
-The eyes of the painting seem to follow you around the room. Looking closer, 
+The eyes of the painting seem to follow you around the room. Looking closer,
 you are sure you can remove the picture from the wall..
 ~
 S
 #14634
 The artists abode.~
 You are in a small well lit room. An easel is set up in the corner, and behind
-it you notice someone sitting, however they are not aware of your entrance to 
+it you notice someone sitting, however they are not aware of your entrance to
 the room.
 A rune is etched into the floor, and emits pure evil, you are unsure as to its
 purpose.
@@ -4748,7 +4748,7 @@ wall door~
 S
 #14635
 Marble hall~
-You stand in a white marble hall. The ceiling, floor and walls are made form 
+You stand in a white marble hall. The ceiling, floor and walls are made form
 it. At regular intervals torches, in elegant fittings, are attached to the wall.
 This corridor heads in a north-south direction.
 ~
@@ -4788,7 +4788,7 @@ of the chest shimmers slightly.
 0 8 0
 D0
 Looking north, and at the chest, you notice that every few seconds or so, it
-seems to 'flicker'. Its like looking into still pond, and a wave flowing over your 
+seems to 'flicker'. Its like looking into still pond, and a wave flowing over your
 reflection.
 ~
 ~
@@ -4909,9 +4909,9 @@ door~
 S
 #14644
 The Laboratory~
-You enter a rather large laboratory. On the wooden bench in front of you, 
+You enter a rather large laboratory. On the wooden bench in front of you,
 various glass receptacles, linked by tubes have different coloured liquids
-bubbling inside them. At the end of the zigzag tubing, a glowing crystal 
+bubbling inside them. At the end of the zigzag tubing, a glowing crystal
 collects a slow drip of liquid from the end of an open tube. A man rises from
 a stool to greet you.
 ~
@@ -4924,9 +4924,9 @@ door~
 S
 #14645
 The Temple of Zyklor~
-You are standing in a temple of sorts. Black candles burn on the walls, 
+You are standing in a temple of sorts. Black candles burn on the walls,
 emitting a black acrid smoke. Little black books sit humming on the pews which
-are arranged in neat rows. These pews extend to the west. To the north, you can 
+are arranged in neat rows. These pews extend to the west. To the north, you can
 head toward a large statue.
 ~
 0 8|1024 0
@@ -4946,8 +4946,8 @@ D3
 S
 #14646
 Temple of Zyklor~
-You are standing in a temple of sorts. Black candles burn on the walls, 
-emitting a black acrid smoke. A huge statue of a dragon stands here, smoke 
+You are standing in a temple of sorts. Black candles burn on the walls,
+emitting a black acrid smoke. A huge statue of a dragon stands here, smoke
 rising from it nostrils. It eyes glow a bright green, they seem to be alive.
 You can hear chanting to the west.
 ~
@@ -4963,7 +4963,7 @@ D3
 S
 #14647
 Temple of Zyklor~
-You are standing in a temple of sorts. Black candles burn on the walls, 
+You are standing in a temple of sorts. Black candles burn on the walls,
 emitting a black acrid smoke. A black altar in the shape of a dragon is here
 before you. The person worshiping the dragon rises from his feet, angry at your
 interruption of his prayer.
@@ -4995,9 +4995,9 @@ You see a jewel!
 S
 #14648
 Temple of Zyklor~
-You are standing in a temple of sorts. Black candles burn on the walls, 
+You are standing in a temple of sorts. Black candles burn on the walls,
 emitting a black acrid smoke. Little black books sit humming on the pews which
-are arranged in neat rows. These pews extend to the east. You can hear praying 
+are arranged in neat rows. These pews extend to the east. You can hear praying
 to the north.
 ~
 0 8|1024 0
@@ -5013,8 +5013,8 @@ S
 #14649
 An illusion~
 You find yourself hurtling toward jagged rocks, looking up you can see a hole
-in the wall of the castle. It seems the vision of the chest was only an 
-illusion in the castle wall, to trick the greedy. 
+in the wall of the castle. It seems the vision of the chest was only an
+illusion in the castle wall, to trick the greedy.
 You hear Maniacal laughter before you hit the ground.
 SPLAT!!!!
 ~
@@ -5037,9 +5037,9 @@ A few spiders sit motionless in the centre of their webs.
 S
 #14651
 Last Chance~
-You stand before two massive stone doors shaped in the form of a dragon. They 
-are a sight to behold, and you need to look twice to make sure they are not 
-real. A cool breeze seems to come from the direction of the doors, and it 
+You stand before two massive stone doors shaped in the form of a dragon. They
+are a sight to behold, and you need to look twice to make sure they are not
+real. A cool breeze seems to come from the direction of the doors, and it
 brings with it the smell of smoke. The only other exit apart from the dragon
 doors, is to the north.
 ~
@@ -5056,8 +5056,8 @@ door~
 S
 #14652
 Room of Riddles~
-You are in a blue room. The walls floor, and the four doors you see leading 
-from the room are blue.                                                                                                     
+You are in a blue room. The walls floor, and the four doors you see leading
+from the room are blue.
 A silver plaque hangs from the roof.
 ~
 0 1|4|8|1024 0
@@ -5083,10 +5083,10 @@ door~
 1 -1 14785
 E
 plaque silver~
-A simple test to see if you have been paying attention. If Zyklor has all the 
-keys for the portals, and you will need 4 more keys still to get to those 
-keys, how many keys will it take to complete the great sword counting the ones 
-you have already used to get this far? Each door has a number on it. The 
+A simple test to see if you have been paying attention. If Zyklor has all the
+keys for the portals, and you will need 4 more keys still to get to those
+keys, how many keys will it take to complete the great sword counting the ones
+you have already used to get this far? Each door has a number on it. The
 correct answer will see you progress safely.
 ~
 S
@@ -5117,8 +5117,8 @@ door~
 1 -1 14785
 E
 mosaic mosaic~
-The mosaic depicts a battle between a huge red dragon, and a gallant knight. 
-It is set in a field covered with yellow flowers, A mountain range rises to 
+The mosaic depicts a battle between a huge red dragon, and a gallant knight.
+It is set in a field covered with yellow flowers, A mountain range rises to
 meet a blood-red sky.
 ~
 E
@@ -5135,23 +5135,23 @@ A range of rocky mountains lie in the background.
 ~
 E
 dragon~
-An enormous dragon, wounded and bleeding, breaths a column of fire towards 
+An enormous dragon, wounded and bleeding, breaths a column of fire towards
 the knight. The dragons seems to emanate evil.
 ~
 E
 knight~
-The knight is dressed in full battle gear. From his full-face helmet down to 
-his golden boots, the knight means business. In one hand, he wields a glowing 
+The knight is dressed in full battle gear. From his full-face helmet down to
+his golden boots, the knight means business. In one hand, he wields a glowing
 long sword. In the other, a mighty shield.
 ~
 E
 shield~
-Intricately designed, the shield offers great protection for the dragons 
+Intricately designed, the shield offers great protection for the dragons
 breath.
 ~
 E
 sword~
-The knights sword is a masterful piece of weaponry. It seems to emit a light 
+The knights sword is a masterful piece of weaponry. It seems to emit a light
 that radiates throughout the entire field.
 ~
 E
@@ -5160,7 +5160,7 @@ The golden boots seem to be a size 12.
 ~
 E
 helmet~
-The helmet, covers most of the knights face. From beneath the helm, you can 
+The helmet, covers most of the knights face. From beneath the helm, you can
 see the knights beady eyes.
 ~
 E
@@ -5173,15 +5173,15 @@ One of the dragons toe nails is bent upwards, revealing an inscription.
 ~
 E
 inscription toe toenail nail~
-The inscription on the dragons toenail, which the golden knight seems to be 
-focusing on while fighting the great red beast in a field of flowers, dwarfed 
-by a mountain range and a blood read sky reads: 
+The inscription on the dragons toenail, which the golden knight seems to be
+focusing on while fighting the great red beast in a field of flowers, dwarfed
+by a mountain range and a blood read sky reads:
 "Go South".
 ~
 S
 #14654
 Room of Riddles~
-You are in a green room. The walls floor, and the four doors you see leading 
+You are in a green room. The walls floor, and the four doors you see leading
 from the room are green.
 Hanging from the roof, a large wooden sign.
 ~
@@ -5208,13 +5208,13 @@ door~
 1 -1 14655
 E
 sign wooden roof~
-A riddle for you. The direction to go in, is the opposite of the one 
+A riddle for you. The direction to go in, is the opposite of the one
 you wouldn't pick, if you weren't heading north and didn't turn left.
 ~
 S
 #14655
 Room of the doors~
-You are in a white room. The walls, floor, are white, however the four doors 
+You are in a white room. The walls, floor, are white, however the four doors
 are a multitude of colours.
 ~
 0 1|8|1024 0
@@ -5258,8 +5258,8 @@ S
 #14656
 End of the Riddles~
 You made it, You successfully completed the maze of the Riddlers. The door you
-came from slams shut, and you cannot seem to re-open it. There is a single exit 
-leading west. 
+came from slams shut, and you cannot seem to re-open it. There is a single exit
+leading west.
 A marble plaque is affixed to the wall here.
 ~
 0 1|8|1024 0
@@ -5279,8 +5279,8 @@ Can you pass the test of strength?
 S
 #14657
 Silent Corridor~
-You stand in a marble corridor. There is a deathly silence all around. Even 
-your footsteps cannot be heard as you walk down the corridor. You feel 
+You stand in a marble corridor. There is a deathly silence all around. Even
+your footsteps cannot be heard as you walk down the corridor. You feel
 uncomfortable here, as though someone is watching you. You can head north or
 east.
 ~
@@ -5296,8 +5296,8 @@ D1
 S
 #14658
 Silent Corridor~
-You stand in a marble corridor. There is a deathly silence all around. Even 
-your footsteps cannot be heard as you walk down the corridor. Your breathing 
+You stand in a marble corridor. There is a deathly silence all around. Even
+your footsteps cannot be heard as you walk down the corridor. Your breathing
 gets heavier, someone is near, you cannot tell where. You can head north or
 south.
 ~
@@ -5329,8 +5329,8 @@ D3
 S
 #14660
 Silent Corridor~
-You stand in a marble corridor. There is a deathly silence all around. Even 
-your footsteps cannot be heard as you walk down the corridor. You feel 
+You stand in a marble corridor. There is a deathly silence all around. Even
+your footsteps cannot be heard as you walk down the corridor. You feel
 uncomfortable here, as though someone is watching you. There is a locked door to
 the north. You can head south or east.
 ~
@@ -5364,9 +5364,9 @@ door wooden~
 S
 #14662
 Ambush~
-You walk into another darken room. Suddenly a ball if fire hurtles at you from 
-across the room. You throw yourself to the ground, just in time as the 
-fireball roars over your head, singeing the hairs on the back of your neck. 
+You walk into another darken room. Suddenly a ball if fire hurtles at you from
+across the room. You throw yourself to the ground, just in time as the
+fireball roars over your head, singeing the hairs on the back of your neck.
 You stand to meet your foe.
 ~
 0 1|8|1024 0
@@ -5382,7 +5382,7 @@ door~
 S
 #14663
 Beneath the stairwell~
-You are standing at the base of a stairwell. Looking up you see a trapdoor in 
+You are standing at the base of a stairwell. Looking up you see a trapdoor in
 the roof. You can either proceed up or through the door to the north.
 ~
 0 1|8|1024 0
@@ -5676,7 +5676,7 @@ S
 #14677
 End of the blackness.~
 You made it, you emerge from the blackness and have to cover your eyes due to
-the light here. As your pupils narrow, you are aware that you are not entirely 
+the light here. As your pupils narrow, you are aware that you are not entirely
 alone. A huge half-dragon stands before you. You may have succeeded in getting
 out of the blackness, but there is something you will have to deal with before
 proceeding any further.
@@ -5694,7 +5694,7 @@ D3
 S
 #14678
 Majestic Hall~
-You are standing in a very ornate hall-way. The walls seems to be alive, and 
+You are standing in a very ornate hall-way. The walls seems to be alive, and
 they emit a red glow, which lights your way. The corridor widens to the north.
 There is a door here to your south.
 ~
@@ -5712,7 +5712,7 @@ S
 #14679
 Before the ivory doors~
 You are standing at a T intersection. The walls seems to be alive, and they
-emit a red glow, which lights the room. To the north you see two rather large 
+emit a red glow, which lights the room. To the north you see two rather large
 ivory doors.
 ~
 0 8|1024 0
@@ -5742,9 +5742,9 @@ S
 #14680
 Hallway of the Keys~
 You have made it to the room of the keys. Here are stores the 4 keys that will
-unlock the 4 portals so as you can recover the 4 parts of the sword. You 
+unlock the 4 portals so as you can recover the 4 parts of the sword. You
 realise that each key has to be stored in its own special environment. To the
-east you can see a red glow emanate. To the west you see nothing but dirt. 
+east you can see a red glow emanate. To the west you see nothing but dirt.
 However a shimmering forcefield blocks your way on both to the west and east.
 ~
 0 1|8|1024 0
@@ -5784,7 +5784,7 @@ S
 #14682
 The Water Key~
 Zyklor has managed to put a large amount of water into this room. It stays here
-by magic, staying within the confines of this room by a magic spell of 
+by magic, staying within the confines of this room by a magic spell of
 confinement. To the east you can see dirt.
 ~
 0 8|1024 7
@@ -5795,8 +5795,8 @@ D1
 S
 #14683
 Key of Fire~
-You stand in the fire room. The walls, floor and ceiling seem to be made of 
-molten lava. Small flames lick at your feet as you feel the hair on your head 
+You stand in the fire room. The walls, floor and ceiling seem to be made of
+molten lava. Small flames lick at your feet as you feel the hair on your head
 start to singe. You'd better grab what you came for and leave quickly. To the
 east you can hear a howling wind. To the west is the entrance-way.
 ~
@@ -5825,8 +5825,8 @@ D3
 S
 #14685
 Ornate hall.~
-You are standing in a very ornate hall-way. The walls seems to be alive, and 
-they emit a red glow, which lights your way. The corridor extends to the west 
+You are standing in a very ornate hall-way. The walls seems to be alive, and
+they emit a red glow, which lights your way. The corridor extends to the west
 and east.
 ~
 0 8|1024 0
@@ -5841,8 +5841,8 @@ D3
 S
 #14686
 End of the hall.~
-You are standing in a very ornate hall-way. The walls seems to be alive, and 
-they emit a red glow, which lights your way. A ivory door is set into the 
+You are standing in a very ornate hall-way. The walls seems to be alive, and
+they emit a red glow, which lights your way. A ivory door is set into the
 southern wall.
 ~
 0 8|1024 0
@@ -5878,7 +5878,7 @@ S
 #14688
 The Warlocks room~
 Here is the bedroom for the Warlock Zyklor. An ornate bed made from ivory stands
-against the eastern wall. The walls are decorated not with pictures or 
+against the eastern wall. The walls are decorated not with pictures or
 ornamental armour, but with skulls of Zyklors victims. You see the skulls of
 humans, elves and the odd giant skull. The only exit is from where you came.
 ~
@@ -5890,10 +5890,10 @@ D3
 S
 #14689
 Room of Portals~
-You stand in a vast room. The walls are made from a substance that you have 
+You stand in a vast room. The walls are made from a substance that you have
 not seen before. They emit a green light, which lights the room. In the corner
 something glows on the floor. A rune is etched into the floor, and emits pure
-evil. You remember seeing other portals like this through-out the castle, 
+evil. You remember seeing other portals like this through-out the castle,
 perhaps it is a way of travelling within the castle.
 ~
 0 8|1024 0
@@ -5921,10 +5921,10 @@ Looking at the rune, you see a vision of the dining room form.
 S
 #14690
 Room of portals~
-You stand in a vast room. The walls are made from a substance that you have 
+You stand in a vast room. The walls are made from a substance that you have
 not seen before. They emit a green light, which lights the room. In the corner
 something glows on the floor. A rune is etched into the floor, and emits pure
-evil. You remember seeing other portals like this through-out the castle, 
+evil. You remember seeing other portals like this through-out the castle,
 perhaps it is a way of travelling within the castle.
 ~
 0 8|1024 0
@@ -5948,10 +5948,10 @@ Through the rune, you see the image of a painter form.
 S
 #14691
 Room of portals.~
-You stand in a vast room. The walls are made from a substance that you have 
+You stand in a vast room. The walls are made from a substance that you have
 not seen before. They emit a green light, which lights the room. In the corner
 something glows on the floor. A rune is etched into the floor, and emits pure
-evil. You remember seeing other portals like this through-out the castle, 
+evil. You remember seeing other portals like this through-out the castle,
 perhaps it is a way of travelling within the castle.
 ~
 0 8|1024 0
@@ -5975,10 +5975,10 @@ Looking at the rune, you see the vision of a dungeon.
 S
 #14692
 Room of Portals~
-You stand in a vast room. The walls are made from a substance that you have 
+You stand in a vast room. The walls are made from a substance that you have
 not seen before. They emit a green light, which lights the room. In the corner
 something glows on the floor. A rune is etched into the floor, and emits pure
-evil. You remember seeing other portals like this through-out the castle, 
+evil. You remember seeing other portals like this through-out the castle,
 perhaps it is a way of travelling within the castle.
 ~
 0 8|1024 0
@@ -6228,7 +6228,7 @@ The fire that surrounds you seems less intense here.
 S
 #14705
 Room of the Guardian~
-You have reached the end of the fire portal. Flames continue to surround you, 
+You have reached the end of the fire portal. Flames continue to surround you,
 your armour is now drenched from your incessant sweating. Here if you wish to
 do so, you can wrest one part of the sword of the ancient druids from its
 holder.
@@ -6242,8 +6242,8 @@ S
 #14706
 Water Portal~
 You stand before a shimmering portal of water. There seems to be no way
-through. There is no way to pass through the portal due to its intense magical 
-barrier, nor is there any way to unlock the portal as there is no lock. The 
+through. There is no way to pass through the portal due to its intense magical
+barrier, nor is there any way to unlock the portal as there is no lock. The
 way on has you stumped.
 ~
 0 8|1024 8
@@ -6258,14 +6258,14 @@ D3
 0 -1 10072
 E
 portal~
-A portal made from water hangs before you inviting you in. A glow surrounds 
+A portal made from water hangs before you inviting you in. A glow surrounds
 the portal and you can make out symbols forming in the liquid barrier.
 ~
 S
 #14707
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. Coral walls guide you in a
 east-west direction.
 ~
@@ -6282,8 +6282,8 @@ portal~
 S
 #14708
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. Coral walls guide you in a
 east-west direction.
 ~
@@ -6299,9 +6299,9 @@ D3
 S
 #14709
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
-problem, this could be due to the key that you hold. Coral walls guide you 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
+problem, this could be due to the key that you hold. Coral walls guide you
 either to the north or west.
 ~
 0 8|1024 8
@@ -6316,9 +6316,9 @@ D3
 S
 #14710
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
-problem, this could be due to the key that you hold. The current here seems to 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
+problem, this could be due to the key that you hold. The current here seems to
 be pulling you to the north.
 ~
 0 8|1024 8
@@ -6333,8 +6333,8 @@ D2
 S
 #14711
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. The current here seems to
 pull you to the north.
 ~
@@ -6350,8 +6350,8 @@ D2
 S
 #14712
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. The current changes
 direction abruptly here , now flowing to the west. You can however still head
 south.
@@ -6368,9 +6368,9 @@ D3
 S
 #14713
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
-problem, this could be due to the key that you hold. The current flows in an 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
+problem, this could be due to the key that you hold. The current flows in an
 easterly direction.
 ~
 0 8|1024 8
@@ -6385,8 +6385,8 @@ D3
 S
 #14714
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. The current again changes
 direction here, now flowing to the south. You can however still head east.
 ~
@@ -6402,8 +6402,8 @@ D2
 S
 #14715
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. Seaweed floats by you,
 being pulled by the current which heads south.
 ~
@@ -6419,8 +6419,8 @@ D2
 S
 #14716
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. The current changes
 direction abruptly here, now flowing strongly eastwards. The pressure here is
 making you uncomfortable.
@@ -6437,8 +6437,8 @@ D1
 S
 #14717
 Water~
-You are surrounded by liquid, you try to speak, but bubbles of air float from 
-your mouth to the surface far above. Breathing however doesn't seem to be a 
+You are surrounded by liquid, you try to speak, but bubbles of air float from
+your mouth to the surface far above. Breathing however doesn't seem to be a
 problem, this could be due to the key that you hold. The current again changes
 direction here, now flowing strongly to the north. The pressure here is
 making you uncomfortable.
@@ -6455,7 +6455,7 @@ D3
 S
 #14718
 Room of the Guardian~
-You have reached the end of the water portal. You are still surrounded by 
+You have reached the end of the water portal. You are still surrounded by
 water. Here if you wish to do so, you can wrest one part of the sword of the
 ancient druids from its holder.
 ~
@@ -6467,7 +6467,7 @@ D2
 S
 #14719
 The Air Portal~
-Before you is an invisible barrier. You can see through it, the elements 
+Before you is an invisible barrier. You can see through it, the elements
 pass through it, but you are unable to. You cannot pass through something that
 is not there, nor can you bash or pick what you cant see. You seem to be stuck.
 ~
@@ -6484,7 +6484,7 @@ D2
 S
 #14720
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. It seems
 that these walls you cant see guide you in a north-south direction.
 ~
@@ -6501,7 +6501,7 @@ portal~
 S
 #14721
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. It seems
 that these walls you cant see guide you in a north-south direction.
 ~
@@ -6517,7 +6517,7 @@ D2
 S
 #14722
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. It seems
 that these walls you cant see guide you to the south or to the west.
 ~
@@ -6533,8 +6533,8 @@ D3
 S
 #14723
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
-definite exits. You try moving and you bump into invisible walls. A faint 
+You are in the middle of nothing. You stand on nothing, nor can you see any
+definite exits. You try moving and you bump into invisible walls. A faint
 breeze swirls around your head. It seems you can head west or east.
 ~
 0 1024 9
@@ -6549,8 +6549,8 @@ D3
 S
 #14724
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
-definite exits. You try moving and you bump into invisible walls. A faint 
+You are in the middle of nothing. You stand on nothing, nor can you see any
+definite exits. You try moving and you bump into invisible walls. A faint
 breeze swirls around your head. It seems you can head west or east.
 ~
 0 1024 9
@@ -6565,9 +6565,9 @@ D3
 S
 #14725
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
-definite exits. You try moving and you bump into invisible walls. A faint 
-breeze swirls around your head. It seems you can head southwards or to the 
+You are in the middle of nothing. You stand on nothing, nor can you see any
+definite exits. You try moving and you bump into invisible walls. A faint
+breeze swirls around your head. It seems you can head southwards or to the
 east.
 ~
 0 1024 9
@@ -6582,7 +6582,7 @@ D2
 S
 #14726
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. There is a
 string wind here which seems to be heading to the south.
 ~
@@ -6598,9 +6598,9 @@ D2
 S
 #14727
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
-definite exits. You try moving and you bump into invisible walls. Again you 
-have to change direction, this time the exits being to the east or north. A 
+You are in the middle of nothing. You stand on nothing, nor can you see any
+definite exits. You try moving and you bump into invisible walls. Again you
+have to change direction, this time the exits being to the east or north. A
 strong breeze pulls you to the east.
 ~
 0 1024 9
@@ -6615,7 +6615,7 @@ D1
 S
 #14728
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. The wind
 here is becoming hurricane-force in strength. You begin to loose your footing
 due to the strong gusts which pull you east.
@@ -6632,7 +6632,7 @@ D3
 S
 #14729
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. The wind
 here is becoming hurricane-force in strength. You begin to loose your footing
 due to the strong gusts which pull you north.
@@ -6649,7 +6649,7 @@ D3
 S
 #14730
 Air~
-You are in the middle of nothing. You stand on nothing, nor can you see any 
+You are in the middle of nothing. You stand on nothing, nor can you see any
 definite exits. You try moving and you bump into invisible walls. The noise due
 to the wind makes talking impossible. A tall figure can be seen clearly to the
 'room' to the west.
@@ -6679,7 +6679,7 @@ S
 #14732
 The Earth Portal~
 You enter a small alcove, the only apparent exit to the east. In the wall to the
-east, are inscriptions carved into the wall. Pounding on the wall gives a 
+east, are inscriptions carved into the wall. Pounding on the wall gives a
 hollow sound. It seems there is something behind the wall, but with no lock
 to pick, or handle to use, there seems to be no way on.
 ~
@@ -6696,9 +6696,9 @@ earth wall door~
 S
 #14733
 Earth~
-You are in an underground cavern. To the east is a portal. Moss and mould 
-grow on the walls of the cavern, and the air surrounding you is musty and 
-stale. It seems no-one has been here for centuries. The cavern extends to the 
+You are in an underground cavern. To the east is a portal. Moss and mould
+grow on the walls of the cavern, and the air surrounding you is musty and
+stale. It seems no-one has been here for centuries. The cavern extends to the
 west.
 ~
 0 1|8|1024 5
@@ -6732,7 +6732,7 @@ S
 Earth~
 You are in an underground cavern. Moss and mould grow on the walls of the
 cavern, and the air surrounding you is musty and stale. It seems no-one has
-been here for centuries. The cavern takes a turns sharply here. You can 
+been here for centuries. The cavern takes a turns sharply here. You can
 proceed to the south or the east.
 ~
 0 1|8|1024 5
@@ -6866,10 +6866,10 @@ D3
 S
 #14743
 Earth~
-You are in a very narrow crawl-way. Moss and mould grow on the walls, and the 
+You are in a very narrow crawl-way. Moss and mould grow on the walls, and the
 air surrounding you is musty and stale. It seems no-one has been here for
-centuries. The crawl-space you were in narrows yet again, and you find 
-yourself on your stomach. The only way to proceed is to inch-along like a 
+centuries. The crawl-space you were in narrows yet again, and you find
+yourself on your stomach. The only way to proceed is to inch-along like a
 worm. If the tunnel narrows any further, you will get stuck.
 ~
 0 1|8|1024 5
@@ -6944,8 +6944,8 @@ D3
 S
 #14749
 Sewer tunnels~
-The tunnel takes an abrupt turn here. To the west it narrows, while to the 
-south, it opens into a large cavern, that seems to glow with an unusual 
+The tunnel takes an abrupt turn here. To the west it narrows, while to the
+south, it opens into a large cavern, that seems to glow with an unusual
 white-green light.
 ~
 0 1|8 0
@@ -6960,7 +6960,7 @@ D3
 S
 #14750
 Limestone Cavern~
-You are standing in a large limestone cavern. The white walls that surround 
+You are standing in a large limestone cavern. The white walls that surround
 you seem to amplify your light source. You can see that the cavern extends to
 the west and south. Stalagmites extend upward from the floor, trying to make
 contact with the stalactites hanging from the roof. A steady drip, drip, drip
@@ -6982,10 +6982,10 @@ D3
 S
 #14751
 Limestone Cavern~
-You are standing in a large limestone cavern. The white walls that surround 
-you seem to amplify your light source. Stalagmites extend upward from the 
-floor, trying to make contact with the stalactites hanging from the roof. 
-A steady drip, drip, drip is all that can be heard. A dark tunnel extends to 
+You are standing in a large limestone cavern. The white walls that surround
+you seem to amplify your light source. Stalagmites extend upward from the
+floor, trying to make contact with the stalactites hanging from the roof.
+A steady drip, drip, drip is all that can be heard. A dark tunnel extends to
 the east. You can hear running water in that direction.
 ~
 0 1|8 0
@@ -7004,9 +7004,9 @@ D3
 S
 #14752
 Limestone cavern~
-You are standing in a large limestone cavern. The white walls that surround 
-you seem to amplify your light source. Stalagmites extend upward from the 
-floor, trying to make contact with the stalactites hanging from the roof. A 
+You are standing in a large limestone cavern. The white walls that surround
+you seem to amplify your light source. Stalagmites extend upward from the
+floor, trying to make contact with the stalactites hanging from the roof. A
 steady drip, drip, drip is all that can be heard.
 ~
 0 1|8 0
@@ -7021,9 +7021,9 @@ D1
 S
 #14753
 Limestone Cavern~
-You are standing in a large limestone cavern. The white walls that surround 
-you seem to amplify your light source. Stalagmites extend upward from the 
-floor, trying to make contact with the stalactites hanging from the roof. 
+You are standing in a large limestone cavern. The white walls that surround
+you seem to amplify your light source. Stalagmites extend upward from the
+floor, trying to make contact with the stalactites hanging from the roof.
 A steady drip, drip, drip is all that can be heard.
 ~
 0 1|8 0
@@ -7038,8 +7038,8 @@ D2
 S
 #14754
 Sewer tunnel~
-You stand in a cold damp tunnel. The ground below you is muddy, making 
-movement difficult. To the west a light cavern can be seen. To the south you 
+You stand in a cold damp tunnel. The ground below you is muddy, making
+movement difficult. To the west a light cavern can be seen. To the south you
 see blackness, however you can hear running water.
 ~
 0 1|8 4
@@ -7080,7 +7080,7 @@ S
 Dead-end~
 There is no way on here. The only way onward is the way you come in from, to
 the west. Looking at the rock to the north and east, you see that the rock has
-been eaten away, recently, by acid or similar, and the thin acrid smoke 
+been eaten away, recently, by acid or similar, and the thin acrid smoke
 still fills the air.
 ~
 0 1|8 0
@@ -7095,7 +7095,7 @@ D3
 S
 #14757
 Narrow crack.~
-You are trapped between two sheer rock faces. The crack you crawled into, 
+You are trapped between two sheer rock faces. The crack you crawled into,
 is just south of here. This small crevice narrows even further to the north,
 moving further north, would surely crush your fragile body.
 ~
@@ -7112,7 +7112,7 @@ S
 #14758
 Musty chamber~
 You burst into a dark, yet dry chamber. The air is very stale here, and you
-realise that no-one has been here for many years. The walls are covered in 
+realise that no-one has been here for many years. The walls are covered in
 strange writing and hieroglyphics. A large tomb leis in the north-western side of the chamber.
 ~
 0 1|8 0
@@ -7136,7 +7136,7 @@ S
 #14759
 Musty chamber~
 You stand in a dark, yet dry chamber. The air is very stale here, and you
-realise that no-one has been here for many years. The walls are covered in 
+realise that no-one has been here for many years. The walls are covered in
 strange writing and hieroglyphics.
 ~
 0 1|8 0
@@ -7150,14 +7150,14 @@ D3
 0 -1 14760
 E
 writing wall~
-A strange sequence of letters and pictures. Scanning the wall you notice a 
+A strange sequence of letters and pictures. Scanning the wall you notice a
 strange sequence of numbers etched into the wall. It reads as follows:
 	       eyk ot the clack zame ->3221122<-~
 S
 #14760
 Musty chamber~
 You stand in a dark, yet dry chamber. The air is very stale here, and you
-realise that no-one has been here for many years. The walls are covered in 
+realise that no-one has been here for many years. The walls are covered in
 strange writing and hieroglyphics.
 ~
 0 1|8 0
@@ -7177,7 +7177,7 @@ S
 #14761
 Musty chamber~
 You stand in a dark, yet dry chamber. The air is very stale here, and you
-realise that no-one has been here for many years. The walls are covered in 
+realise that no-one has been here for many years. The walls are covered in
 strange writing and hieroglyphics.
 ~
 0 1|8 0
@@ -7196,9 +7196,9 @@ of interest.~
 S
 #14762
 Damp tunnel.~
-You make through a narrow tunnel, that starts to slope downwards. The sound 
-of running water comes from close by. The wall to the south seems to be 
-'sweating'. The tunnel continues on its descent to the west, however to 
+You make through a narrow tunnel, that starts to slope downwards. The sound
+of running water comes from close by. The wall to the south seems to be
+'sweating'. The tunnel continues on its descent to the west, however to
 the east there appears to be more stable ground.
 ~
 0 1|8 0
@@ -7212,7 +7212,7 @@ D3
 0 -1 14763
 E
 wall south~
-The tunnel wall seems to be sweating. You put your ear to the wall, and are 
+The tunnel wall seems to be sweating. You put your ear to the wall, and are
 deafened by the loud roar of running water. It seems just behind the wall, a
 large body of water flows. It would be best no to touch the wall.
 ~
@@ -7220,7 +7220,7 @@ S
 #14763
 Sloping Tunnel~
 The damp tunnel continues to slope downwards - the sound of running water seems
-to come from above. Looking up you see drops of water falling from the cave 
+to come from above. Looking up you see drops of water falling from the cave
 roof, and running downhill to the west.
 ~
 0 1|8 0
@@ -7235,9 +7235,9 @@ D3
 S
 #14764
 Damp Tunnel~
-The tunnel changes direction here, and slope. It seems you are at the bottom 
+The tunnel changes direction here, and slope. It seems you are at the bottom
 of two tunnels , both the northern and eastern tunnel slope upward from here.
-A large pool of water is collecting in the corner of the tunnel, but the 
+A large pool of water is collecting in the corner of the tunnel, but the
 porous rock seems to absorb it just as quickly as it flows in form the east.
 A large grumbling noise can be heard from the north.
 ~
@@ -7294,10 +7294,10 @@ D2
 S
 #14768
 Huge Cavern.~
-You stand in a HUGE underground cavern. The first thing you notice is a fast 
+You stand in a HUGE underground cavern. The first thing you notice is a fast
 flowing river, which emanates from a hole in the wall far to the north-west.
-It slows somewhat to the west, and you think you may be able to get across to 
-a bank leading to a ledge. The river runs off to the southeast before disappearing 
+It slows somewhat to the west, and you think you may be able to get across to
+a bank leading to a ledge. The river runs off to the southeast before disappearing
 into a hole. A path along the river extends to the east, where you see
 ~
 0 1|8 0
@@ -7316,9 +7316,9 @@ A subterranean river flows here.~
 S
 #14769
 Beneath the sludgefall.~
-You are directly underneath a waterfall, of sludge, which emanates from the 
-north. It falls into a fast flowing river just to your south, which you can 
-enter from here. You see that the river disappears into a hole in the 
+You are directly underneath a waterfall, of sludge, which emanates from the
+north. It falls into a fast flowing river just to your south, which you can
+enter from here. You see that the river disappears into a hole in the
 southern wall of this cavern. The ledge that you stand on heads to the west.
 ~
 0 1|8 0
@@ -7334,7 +7334,7 @@ S
 #14770
 Stream of sludge.~
 You stand in a small tunnel, which carries a stream of liquid, and solid waste
-to the south. Looking south you see an abrupt end to the tunnel. It appears that 
+to the south. Looking south you see an abrupt end to the tunnel. It appears that
 waste falls over and edge to join a faster flowing stream below it. Just below
 the edge you can see a ledge, which you can easily get to.
 ~
@@ -7361,8 +7361,8 @@ D3
 S
 #14772
 Subterranean river.~
-The river changes direction here. It turns to the south, but not before 
-slamming you into the wall to the east. By the time you recover you find you 
+The river changes direction here. It turns to the south, but not before
+slamming you into the wall to the east. By the time you recover you find you
 are unable to clamber out here. You are dragged to the south.
 ~
 0 1|4|8 0
@@ -7373,8 +7373,8 @@ D2
 S
 #14773
 Fast flowing river.~
-This subterranean river continues with great pace to the east. You cannot get 
-near enough to the bank to the south to clamber out. You are dragged to the 
+This subterranean river continues with great pace to the east. You cannot get
+near enough to the bank to the south to clamber out. You are dragged to the
 east.
 ~
 0 1|4|8 0
@@ -7387,7 +7387,7 @@ S
 Fast flowing river~
 You have emersed yourself into a fast flowing river. Water gushes from a hole
 in the west wall, making it impossible to enter it. Above you you spy a grate,
-covered in slime and shit. The fast flowing river drags you with it, you 
+covered in slime and shit. The fast flowing river drags you with it, you
 cannot help but follow its course.
 ~
 0 1|8 0
@@ -7455,7 +7455,7 @@ D2
 S
 #14778
 Small tunnel~
-The small tunnel you are in abruptly changes direction here. Exits are to the 
+The small tunnel you are in abruptly changes direction here. Exits are to the
 north and east. The sound of running water can be heard north.
 ~
 0 1|4|8 0
@@ -7511,7 +7511,7 @@ River of Sludge!~
 You are in a fast flowing river. You cannot swim against its powerful flow, the
 only way onwards is south. From above, a waterfall of sludge falls upon you.
 You believe this emanates from the castle itself - its waste products. Looking
-to the south, the sludge disappears into a dark hole. You have no choice but 
+to the south, the sludge disappears into a dark hole. You have no choice but
 to follow
 ~
 0 1|4|8 6
@@ -7523,7 +7523,7 @@ S
 #14783
 Darkness.~
 You are sucked into the hole and darkness. The current throwing you around like
-a pebble. You have lost your sense of direction, but all you know is that you 
+a pebble. You have lost your sense of direction, but all you know is that you
 are getting sucked further into blackness by the raging river.
 ~
 0 1|4|8 7
@@ -7534,7 +7534,7 @@ D2
 S
 #14784
 End of the tunnel?~
-You are picking up speed, and running out of oxygen. The water here is very 
+You are picking up speed, and running out of oxygen. The water here is very
 turbulent. You have no idea which way is up, still you are dragged onwards by
 the raging current.
 ~
@@ -7546,7 +7546,7 @@ D2
 S
 #14785
 The shute~
-You have chosen incorrectly. A narrow shute head down into darkness. You are 
+You have chosen incorrectly. A narrow shute head down into darkness. You are
 falling at an ever increasing rate, the only way forward is down.
 ~
 0 1|4|8|1024 0
@@ -7631,16 +7631,16 @@ D 1 14686 2 1                ; End of the hall. Close South
 D 1 14687 0 1                ; Zyklor's Study Close North
 D 1 14694 0 2                ; Fire Lock North
 D 1 14693 2 2              ; The Fire Portal Lock South
-*                    
+*
 M 1 14501 1 14519   iron golem before gates
-E 1 14519 100 3                                              
-E 1 14580 100 16                                 
-G 1 14547 100                                    
+E 1 14519 100 3
+E 1 14580 100 16
+G 1 14547 100
 *
 M 1 14502 1 14519   wooden golem before gates
-E 1 14519 100 3                           
-E 1 14580 100 16                           
-G 1 14546 100                                           
+E 1 14519 100 3
+E 1 14580 100 16
+G 1 14546 100
 D 1 14678 2 2              ; Majestic Hall Lock South
 D 1 14677 0 2                ; End of the blackness. Lock North
 D 1 14525 1 1               ; A corridor Close East
@@ -7659,7 +7659,7 @@ M 1 14507 1 14702   the fire demon to Fire
 M 1 14508 1 14704   the archdemon to Fire
 *
 M 1 14509 1 14705   the fire guardian to Room of the Guardian
-G 1 14544 100                                
+G 1 14544 100
 *
 M 1 14500 1 14504   the dwarf to Lake of Slime
 *
@@ -7670,15 +7670,15 @@ M 1 14503 1 14550   the hobbit to Hobbits room.
 M 1 14524 1 14552   the archmage to Room of the Archmage
 *
 M 1 14523 3 14538   the guard to Spiral Stairs
-E 1 14551 100 11                           
-E 1 14552 100 16                   
+E 1 14551 100 11
+E 1 14552 100 16
 D 1 14538 4 2              ; Spiral Stairs Lock Up
 D 1 14626 5 1             ; 4-way intersection Close Down
 *
 M 1 14526 1 14535   the black witch to A witches Hovel.
-E 1 14522 100 6    
-E 1 14521 100 12           
-E 1 14520 100 17               
+E 1 14522 100 6
+E 1 14521 100 12
+E 1 14520 100 17
 *
 M 1 14527 1 14535   Spike to A witches Hovel.
 E 1 14524 100 3
@@ -7686,20 +7686,20 @@ E 1 14524 100 3
 M 1 14525 1 14527   the imp to An imps room.
 *
 M 1 14529 1 14554   the green one to Room of the Riddler
-E 1 14555 100 5                
+E 1 14555 100 5
 *
 M 1 14531 1 14559   the blue one to Riddlers Room
-E 1 14558 100 5                           
+E 1 14558 100 5
 *
 M 1 14530 3 14570   the mercenary to Bend in the hallway.
-E 1 14557 100 5                                  
-E 1 14580 100 16                  
-E 1 14532 100 8              
+E 1 14557 100 5
+E 1 14580 100 16
+E 1 14532 100 8
 *
 M 1 14528 3 14568   the guardian to Stairwell
-E 1 14524 100 3                  
-E 1 14517 100 5           
-E 1 14518 100 16              
+E 1 14524 100 3
+E 1 14517 100 5
+E 1 14518 100 16
 *
 M 1 14533 1 14575   the cook to The oven.
 E 1 14559 100 16
@@ -7709,9 +7709,9 @@ M 1 14534 1 14579   the ghostly guest to Dining room
 M 1 14532 1 14585   the waiter to Toilet
 *
 M 1 14528 3 14586   the guardian to Secret room
-E 1 14524 100 4                       
-E 1 14517 100 5             
-E 1 14518 100 16            
+E 1 14524 100 4
+E 1 14517 100 5
+E 1 14518 100 16
 *
 M 1 14543 2 14611   the arachnid to The Pens.
 *
@@ -7720,108 +7720,108 @@ M 1 14544 2 14611   the lotus-elf to The Pens.
 M 1 14545 2 14614   the ettin to The Pens
 *
 M 1 14535 1 14610   the voodoo priest to The voodoo room
-E 1 14527 100 6                                   
-E 1 14526 100 16                          
-E 1 14525 100 17                              
-E 1 14528 100 3                           
-E 1 14529 100 13                        
+E 1 14527 100 6
+E 1 14526 100 16
+E 1 14525 100 17
+E 1 14528 100 3
+E 1 14529 100 13
 *
 M 1 14546 1 14610   the man to The voodoo room
 *
 M 1 14542 3 14601   the vampire to Bottom of the stairwell
 *
 M 1 14536 1 14618   the jailor to The Dungeon
-E 1 14532 100 8                                
-E 1 14579 100 13                  
-E 1 14562 100 16                  
+E 1 14532 100 8
+E 1 14579 100 13
+E 1 14562 100 16
 *
 M 1 14538 1 14623   the prisoner to Prison Cell.
-E 1 14563 100 9                     
+E 1 14563 100 9
 *
 M 1 14539 1 14624   the druid to Prison Cell
-E 1 14563 100 9               
+E 1 14563 100 9
 *
 M 1 14540 1 14621   the druidesss to Prison Cell
-E 1 14563 100 9               
+E 1 14563 100 9
 *
 M 1 14541 1 14622   the psionic to Prison Cell
-E 1 14563 100 9                      
+E 1 14563 100 9
 *
 M 1 14537 1 14620   the Dungeonmaster to Dungeonmaster's room.
-E 1 14532 100 8              
-E 1 14531 100 16                     
+E 1 14532 100 8
+E 1 14531 100 16
 G 1 14576 100
 *
 M 1 14554 3 14626   the Shokh'Torg to 4-way intersection
-E 1 14573 100 16                                      
-E 1 14610 100 5                                
-E 1 14613 100 6                                    
-E 1 14611 100 7                                  
-E 1 14612 100 10                          
-E 1 14614 100 8                                  
-G 1 14617 100                                       
+E 1 14573 100 16
+E 1 14610 100 5
+E 1 14613 100 6
+E 1 14611 100 7
+E 1 14612 100 10
+E 1 14614 100 8
+G 1 14617 100
 *
 M 1 14553 1 14633   a painting to Elegant room
 *
 M 1 14552 1 14634   the artist to The artists abode.
-E 1 14572 100 17                                 
+E 1 14572 100 17
 *
 M 1 14548 1 14647   the black priest to Temple of Zyklor
-E 1 14566 100 12                               
-E 1 14568 100 16                          
-E 1 14567 100 17                
-G 1 14593 100             
+E 1 14566 100 12
+E 1 14568 100 16
+E 1 14567 100 17
+G 1 14593 100
 *
 M 1 14547 1 14646   the statue to Temple of Zyklor
 *
 M 1 14549 1 14644   the mad scientist to The Laboratory
-E 1 14569 100 12                    
-E 1 14570 100 16               
+E 1 14569 100 12
+E 1 14570 100 16
 *
 M 1 14551 1 14659   a black ninja to Ambush.
-E 1 14509 100 6                                  
-E 1 14507 100 8                                
-E 1 14510 100 12                          
-E 1 14508 100 16                              
+E 1 14509 100 6
+E 1 14507 100 8
+E 1 14510 100 12
+E 1 14508 100 16
 *
 M 1 14550 1 14662   a sorcerer to Ambush
-E 1 14513 100 1                           
-E 1 14513 100 2                 
-E 1 14511 100 12                                             
-E 1 14512 100 16   
-E 1 14577 100 17                         
-E 1 14600 100 0        
+E 1 14513 100 1
+E 1 14513 100 2
+E 1 14511 100 12
+E 1 14512 100 16
+E 1 14577 100 17
+E 1 14600 100 0
 *
 *
 M 1 14564 1 14677   Arms-master to End of the blackness.
-E 1 14515 100 5                                
-E 1 14509 100 6                             
-E 1 14504 100 14                                     
-E 1 14504 100 15                               
-E 1 14508 100 16                        
-E 1 14574 100 17                            
-E 1 14592 100 13                 
-E 1 14599 100 0                       
+E 1 14515 100 5
+E 1 14509 100 6
+E 1 14504 100 14
+E 1 14504 100 15
+E 1 14508 100 16
+E 1 14574 100 17
+E 1 14592 100 13
+E 1 14599 100 0
 *
 M 1 14562 1 14679   Zyklor to Before the ivory doors
-E 1 14505 100 1                       
-E 1 14505 100 2                                 
+E 1 14505 100 1
+E 1 14505 100 2
 E 1 14503 100 5
-E 1 14602 100 7                      
-E 1 14502 100 8  
-E 1 14506 100 10 
-E 1 14501 100 12     
-E 1 14504 100 14     
-E 1 14500 100 16   
-E 1 14578 100 17    
-E 1 14591 100 9     
-E 1 14592 100 13     
+E 1 14602 100 7
+E 1 14502 100 8
+E 1 14506 100 10
+E 1 14501 100 12
+E 1 14504 100 14
+E 1 14500 100 16
+E 1 14578 100 17
+E 1 14591 100 9
+E 1 14592 100 13
 *
 M 1 14563 1 14680   Zyklor to Hallway of the Keys
 E 1 14575 100 17
 *
 M 1 14518 1 14708   the frost giant to Water
-E 1 14606 100 16    
+E 1 14606 100 16
 *
 M 1 14519 1 14711   the water elemental to Water
 *
@@ -7832,23 +7832,23 @@ M 1 14520 1 14715   the water demon to Water
 M 1 14508 1 14717   the archdemon to Water
 *
 M 1 14521 1 14718   the water guardian to Room of the Guardian
-E 1 14616 100 16  
-E 1 14543 100 17                              
+E 1 14616 100 16
+E 1 14543 100 17
 *
 M 1 14510 1 14721   the storm giant to Air
-E 1 14604 100 16  
+E 1 14604 100 16
 *
 M 1 14511 1 14724   an air elemental to Air
 *
 M 1 14506 1 14726   an elemental golem to Air
 *
 M 1 14512 1 14728   the air demon to Air
-E 1 14605 100 16     
+E 1 14605 100 16
 *
 M 1 14508 1 14730   the archdemon to Air
 *
 M 1 14513 1 14731   the Air Guardian to Room of the Guardian
-E 1 14541 100 17     
+E 1 14541 100 17
 *
 M 1 14514 1 14734   the stone giant to Earth
 *
@@ -7861,27 +7861,27 @@ M 1 14516 1 14741   the earth demon to Earth
 M 1 14508 4 14743   the archdemon to Earth
 *
 M 1 14517 1 14744   the earth guardian to Room of the Guardian
-E 1 14542 100 17    
+E 1 14542 100 17
 *
 M 1 14557 2 14750   a giant scorpion to Limestone Cavern
 *
 M 1 14561 1 14755   the sewer guardian to 4-way junction
 *
 M 1 14560 1 14766   a demi-dragon to The Lair
-E 1 14535 100 11   
-E 1 14536 100 16 
-G 1 14534 100    
-G 1 14537 100    
+E 1 14535 100 11
+E 1 14536 100 16
+G 1 14534 100
+G 1 14537 100
 *
 M 1 14555 1 14756   the burrower to Dead-end
 *
 M 1 14559 1 14771   the shambling mound to Bottom of the chute
 *
 M 1 14556 2 14768   the sewer dweller to Huge Cavern.
-E 1 14615 100 16  
+E 1 14615 100 16
 *
 M 1 14558 1 14779   the sewer demon to Daemon's chamber
-G 1 14585 100  
+G 1 14585 100
 *
 M 1 14558 2 14777   the sewer demon to Small ledge
 O 1 14550 100 14513     a sewer pipe to The sewer outlet
@@ -7933,14 +7933,14 @@ D 1 14655 0 1                     ; Room of the doors Close North
 D 1 14655 1 1                      ; Room of the doors Close East
 D 1 14655 2 1                     ; Room of the doors Close South
 D 1 14655 3 0                      ; Room of the doors Open West
-*                              
+*
 M 1 14565 1 14625                 the red one to The riddlers room
-E 1 14609 100 5                                                                                                                     
+E 1 14609 100 5
 *
 M 1 14528 3 14548                 the guardian to Bend in a corridor
-E 1 14517 100 5   
-E 1 14518 100 16     
-E 1 14524 100 3     
+E 1 14517 100 5
+E 1 14518 100 16
+E 1 14524 100 3
 O 1 14615 100 14661      a leg bone to Skeletons in the Closet
 O 1 14598 100 14551        a blue stick to The workshop
 O 1 14618 100 14551           Angels Amulet to The workshop

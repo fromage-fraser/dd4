@@ -7,7 +7,7 @@ goblin guard~
 The goblin guard~
 The goblin guard is here guarding something.
 ~
-The goblin guard looks very strong, and very fierce.  He is about six 
+The goblin guard looks very strong, and very fierce.  He is about six
 feet tall, and extremely muscular.
 ~
 64 4|512 -1000 S
@@ -19,7 +19,7 @@ goblin visitor~
 The goblin visitor~
 The goblin visitor is sitting here playing cards.
 ~
-The goblin visitor is just sitting here playing cards, but looks up in 
+The goblin visitor is just sitting here playing cards, but looks up in
 surprise as you enter the room.
 ~
 2|64 4|512 -1000 S
@@ -31,7 +31,7 @@ goblin child~
 The goblin child~
 The goblin child is sitting here playing with his pretend sword.
 ~
-The goblin child is small, but looks surprisingly strong for his age.  
+The goblin child is small, but looks surprisingly strong for his age.
 His wooden sword also looks very strong for a child to be playing with.
 ~
 2|64 4|512 0 S
@@ -43,7 +43,7 @@ bathing guard~
 The guard~
 There is a guard here bathing himself.
 ~
-The guard is bathing himself, and he doesn't look too pleased about 
+The guard is bathing himself, and he doesn't look too pleased about
 your intrusion.
 ~
 2|64 4|512 -1000 S
@@ -55,7 +55,7 @@ ballroom dancer woman~
 The dancer~
 There is a woman here dancing away.
 ~
-She is wearing a beautiful hoop dress and seems to be and excellent 
+She is wearing a beautiful hoop dress and seems to be and excellent
 dancer.
 ~
 2|64 4|512 -100 S
@@ -67,7 +67,7 @@ ballroom dancer man~
 The dancer~
 There is a man here dancing.
 ~
-He is wearing a nice suit and looks pretty strong...strong enough to 
+He is wearing a nice suit and looks pretty strong...strong enough to
 beat you up!
 ~
 2|64 4|512 -100 S
@@ -79,7 +79,7 @@ goblin cook~
 The cook~
 There is a mighty cook standing here preparing and elegant dish.
 ~
-The cook is a short ugly goblin, but he seems to enjoy what he is doing here at 
+The cook is a short ugly goblin, but he seems to enjoy what he is doing here at
 the fortress.
 ~
 2|64 4|512 -200 S
@@ -91,8 +91,8 @@ diner goblin~
 The goblin~
 There is a goblin here eating dinner.
 ~
-The goblin is sitting here eating something that looks faintly familiar, 
-but smells really good.  You suddenly realise that it is eating one of 
+The goblin is sitting here eating something that looks faintly familiar,
+but smells really good.  You suddenly realise that it is eating one of
 your kind!
 ~
 2|64 4|512 -400 S
@@ -104,7 +104,7 @@ cook assistant~
 The assistant~
 The cooks assistant is here assisting the cook.
 ~
-The assistant looks almost as nasty as the cook himself but you can tell 
+The assistant looks almost as nasty as the cook himself but you can tell
 that he hasn't been worked as badly as the cook.
 ~
 2|64 4|512 -200 S
@@ -116,7 +116,7 @@ goblin servant~
 The goblin servant~
 A goblin servant is here waiting to be called upon.
 ~
-The goblin looks extremely tired and overworked, but such is the brutality 
+The goblin looks extremely tired and overworked, but such is the brutality
 of goblin royalty.
 ~
 64 4|512 -200 S
@@ -128,7 +128,7 @@ servant cook goblin~
 The cook~
 The servant's cook is here preparing a meal.
 ~
-The cook looks very dirty, and just by looking you can tell that whatever 
+The cook looks very dirty, and just by looking you can tell that whatever
 meal is being prepared will be disgusting.
 ~
 2|64 4|512 -200 S
@@ -140,7 +140,7 @@ bathing goblin servant~
 The goblin~
 A goblin servant is here bathing himself.
 ~
-The goblin is bathing himself to the best of his ability, which you notice 
+The goblin is bathing himself to the best of his ability, which you notice
 is not a very well learned ability.
 ~
 2|64 4|512 -300 S
@@ -152,7 +152,7 @@ orc trophy~
 The trophy~
 There is a trophy of an orc's head here.
 ~
-The orc's head has a strange look to it, almost as though it is still 
+The orc's head has a strange look to it, almost as though it is still
 alive...
 ~
 2|64 4|512 -1000 S
@@ -164,7 +164,7 @@ bathing elite guard~
 The guard~
 There is an elite goblin guard here bathing himself.
 ~
-The guard is bathing himself and really does not appreciate you barging in 
+The guard is bathing himself and really does not appreciate you barging in
 like you did.
 ~
 2|64 4|512 -1000 S
@@ -176,7 +176,7 @@ elite goblin guard~
 The elite guard~
 There is an elite goblin guard standing here waiting to kill you.
 ~
-The guard is huge!  He is pure muscle, and is wearing the most exquisite 
+The guard is huge!  He is pure muscle, and is wearing the most exquisite
 armour you have ever seen.
 ~
 64 4|512 -1000 S
@@ -188,7 +188,7 @@ watch goblin guard~
 The guard~
 There is a watch guard standing here watching you intently.
 ~
-The guard seems very alert, and is staring at you from underneath his 
+The guard seems very alert, and is staring at you from underneath his
 helmet.
 ~
 2|32|64 4|512 -1000 S
@@ -200,7 +200,7 @@ goblin scientist~
 The scientist~
 There is a goblin here performing many scientific experiments.
 ~
-The goblin is wearing a white lab coat which makes it easily identified 
+The goblin is wearing a white lab coat which makes it easily identified
 as a scientist.
 ~
 2|64 4|512 -1000 S
@@ -223,7 +223,7 @@ goblin war planner~
 The war planner~
 There is a goblin here planning wars.
 ~
-The goblin is wearing a military outfit and has many medals of war upon 
+The goblin is wearing a military outfit and has many medals of war upon
 his uniform.
 ~
 2|64 4|512 -1000 S
@@ -235,7 +235,7 @@ bard~
 The bard~
 There is a bard here playing music.
 ~
-The bard is very small and frail looking, though he has an evil gleam in 
+The bard is very small and frail looking, though he has an evil gleam in
 his eye.
 ~
 2|64 4|512 -1000 S
@@ -247,7 +247,7 @@ jester court~
 The jester~
 The court jester is here performing his many antics.
 ~
-The Jester looks rather strange, almost insane.  He has penetrating blue 
+The Jester looks rather strange, almost insane.  He has penetrating blue
 eyes, and strange, bright red coloured hair.
 ~
 2|64 4|512 -1000 S
@@ -259,7 +259,7 @@ deformity~
 The deformity~
 There is an awful deformity standing here grossing you out.
 ~
-The deformity looks as though it used to be a human, but now it's body 
+The deformity looks as though it used to be a human, but now it's body
 has been ravaged by some evil thing.
 ~
 2|64 4|512 -1000 S
@@ -271,8 +271,8 @@ king~
 The King~
 The King of the goblins is sitting here on his mighty throne.
 ~
-The King of the goblins looks to be more powerful than any other goblin you 
-have ever encountered.  His muscles look like steel, his body like concrete, 
+The King of the goblins looks to be more powerful than any other goblin you
+have ever encountered.  His muscles look like steel, his body like concrete,
 and he has the stern look of a mighty king on his face.
 ~
 2|64 4|512 -1000 S
@@ -284,7 +284,7 @@ queen~
 The Queen~
 The Queen of the goblins is sitting here on her beautiful throne.
 ~
-The Queen of the goblins is almost beautiful!  If it wasn't for her 
+The Queen of the goblins is almost beautiful!  If it wasn't for her
 distinct goblin features, you might have thought she is beautiful.
 ~
 2|64 4|512 -1000 S
@@ -296,7 +296,7 @@ tortured soul~
 The tortured soul~
 There is tortured soul here waiting to get his revenge.
 ~
-The tortured soul is almost transparent, and is extremely dark in 
+The tortured soul is almost transparent, and is extremely dark in
 appearance.
 ~
 2|64 4|256|512 500 S
@@ -356,8 +356,8 @@ executioner~
 The executioner~
 The executioner stands here, awaiting his next victim.
 ~
-The executioner is the only human to live in this castle, also the only 
-human to offer his services to the goblin kingdom.  He is about six feet 
+The executioner is the only human to live in this castle, also the only
+human to offer his services to the goblin kingdom.  He is about six feet
 tall, and looks to be pure muscle, perhaps weighing three hundred pounds.
 ~
 2 8|32 -1000 S
@@ -371,8 +371,8 @@ A burly goblin with a thuggish demeanour stands here with his arms folded.
 ~
 The goblin jailer regards you with lazy contempt before squinting his heavy
 lidded eyes and letting loose with a hideous cackle, revealing rows of
-broken and serrated teeth. He reeks with the foul body odour typical of his 
-misbegotten kind, and a casual inspection of the floor reveals his utter lack 
+broken and serrated teeth. He reeks with the foul body odour typical of his
+misbegotten kind, and a casual inspection of the floor reveals his utter lack
 of toilet training.
 ~
 2 8|32 -1000 S
@@ -384,7 +384,7 @@ goblin assassin~
 the goblin assassin~
 A shadowy figure patrols the corridors of the fortress.
 ~
-The nimble and stealthy goblin assassins have been ordered by the king to 
+The nimble and stealthy goblin assassins have been ordered by the king to
 investigate the recent intrusions into the fortress, with a view to finding a
 permanent solution to the trespassing.
 ~
@@ -402,7 +402,7 @@ a goblin sword~
 A goblin sword has been dropped here.~
 ~
 5 1|64 1|8192
-0~ 10~ 5~ 3~ 
+0~ 10~ 5~ 3~
 25 7500 0
 A
 19 4
@@ -414,7 +414,7 @@ goblin chainmail~
 A suit of goblin chainmail is lying here.~
 ~
 9 2 1|8
-12~ 12~ 12~ 12~ 
+12~ 12~ 12~ 12~
 30 5000 0
 A
 17 -15
@@ -426,7 +426,7 @@ a pair of goblin leggings~
 A pair of steel leggings was carelessly left here.~
 ~
 9 0 1|32
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 50 1000 0
 A
 5 1
@@ -436,7 +436,7 @@ a pair of goblin gauntlets~
 A pair of strong gauntlets has been thrown here.~
 ~
 9 0 1|128
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 20 1300 0
 A
 13 40
@@ -446,7 +446,7 @@ a goblin helm~
 A steel helmet is lying here.~
 ~
 9 0 1|16
-11~ 11~ 11~ 11~ 
+11~ 11~ 11~ 11~
 30 1300 0
 A
 3 1
@@ -456,7 +456,7 @@ a pair of goblin boots~
 A strong pair of boots has been left here.~
 ~
 9 0 1|64
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 30 1300 0
 A
 2 2
@@ -466,7 +466,7 @@ a goblin shield~
 A large shield is lying here.~
 ~
 9 0 1|512
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 10 1300 0
 A
 17 -10
@@ -476,7 +476,7 @@ a pair of goblin sleeves~
 A pair of sleeves has been discarded here.~
 ~
 9 0 1|256
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 5 1800 0
 A
 1 2
@@ -486,7 +486,7 @@ a toy sword~
 A small toy sword has been thrown here.~
 ~
 5 2 1|8192
-0~ 6~ 6~ 1~ 
+0~ 6~ 6~ 1~
 15 1000 0
 A
 4 2
@@ -496,7 +496,7 @@ a towel~
 A large towel is lying here looking comfortable.~
 ~
 9 0 1|2048
-1~ 3~ 3~ 3~ 
+1~ 3~ 3~ 3~
 5 100 0
 A
 2 2
@@ -506,7 +506,7 @@ a hoop dress~
 A large, flowing hoop dress has been left here.~
 ~
 9 0 1|2048
-2~ 2~ 2~ 2~ 
+2~ 2~ 2~ 2~
 10 150 0
 #20311
 suit~
@@ -514,7 +514,7 @@ a suit~
 A dancing suit is lying here.~
 ~
 9 0 1|1024
-2~ 2~ 2~ 2~ 
+2~ 2~ 2~ 2~
 10 150 0
 #20312
 cleaver meat~
@@ -522,7 +522,7 @@ a meat cleaver~
 A large, nasty meat cleaver is lying here.~
 ~
 5 1|64 1|8192
-0~ 6~ 7~ 13~ 
+0~ 6~ 7~ 13~
 10 1000 0
 A
 13 10
@@ -534,7 +534,7 @@ a fork~
 A small fork is lying here.~
 ~
 3 0 1|16384
-45~ 10~ 10~ create food~ 
+45~ 10~ 10~ create food~
 2 1200 0
 #20314
 steak knife~
@@ -542,7 +542,7 @@ a steak knife~
 A large steak knife is here gleaming in the light.~
 ~
 5 0 1|8192
-0~ 6~ 6~ 2~ 
+0~ 6~ 6~ 2~
 10 150 0
 #20315
 large knife~
@@ -550,7 +550,7 @@ a large knife~
 A huge knife is lying here.~
 ~
 5 0 1|8192
-0~ 8~ 7~ 2~ 
+0~ 8~ 7~ 2~
 5 200 0
 #20316
 elite sword~
@@ -558,7 +558,7 @@ an elite sword~
 A beautiful sword is here.~
 ~
 5 2|64|2048 1|8192
-0~ 6~ 11~ 1~ 
+0~ 6~ 11~ 1~
 30 3000 0
 A
 19 9
@@ -570,7 +570,7 @@ elite platemail~
 A beautiful suit of powerful armour has carelessly been left here.~
 ~
 9 2 1|8
-19~ 19~ 19~ 19~ 
+19~ 19~ 19~ 19~
 30 2000 0
 A
 4 2
@@ -582,7 +582,7 @@ a pair of elite greaves~
 A powerful pair of greaves has been left here.~
 ~
 9 2 1|32
-18~ 18~ 18~ 18~ 
+18~ 18~ 18~ 18~
 15 2000 0
 A
 3 2
@@ -594,7 +594,7 @@ a pair of elite gauntlets~
 A powerful pair of gauntlets has been set here.~
 ~
 9 2 1|128
-18~ 18~ 18~ 18~ 
+18~ 18~ 18~ 18~
 50 2000 0
 A
 13 10
@@ -608,7 +608,7 @@ an elite helmet~
 A wondrous helmet lies here.~
 ~
 9 2 1|16
-18~ 18~ 18~ 18~ 
+18~ 18~ 18~ 18~
 50 2000 0
 A
 3 3
@@ -620,7 +620,7 @@ a pair of elite combat boots~
 A strong pair of boots lie here.~
 ~
 9 2 1|64
-18~ 18~ 18~ 18~ 
+18~ 18~ 18~ 18~
 50 2000 0
 A
 18 3
@@ -634,7 +634,7 @@ an elite tower shield~
 A huge, powerful shield lies here.~
 ~
 9 2 1|512
-18~ 17~ 18~ 18~ 
+18~ 17~ 18~ 18~
 15 2000 0
 A
 14 25
@@ -646,7 +646,7 @@ a pair of elite sleeves~
 A strong pair of sleeves lies here.~
 ~
 9 2 1|256
-17~ 17~ 17~ 17~ 
+17~ 17~ 17~ 17~
 10 2000 0
 A
 5 3
@@ -658,7 +658,7 @@ a labcoat~
 A small labcoat lies here.~
 ~
 9 0 1|1024
-13~ 13~ 13~ 13~ 
+13~ 13~ 13~ 13~
 5 2000 0
 A
 3 3
@@ -668,7 +668,7 @@ a gurgling potion~
 A strange potion rests here.~
 ~
 10 0 1|16384
-50~ refresh~ sanctuary~ bless~ 
+50~ refresh~ sanctuary~ bless~
 5 700 0
 #20326
 scroll war~
@@ -676,7 +676,7 @@ a scroll of war~
 A small scroll is here.~
 ~
 2 0 1|16384
-60~ giant strength~ sanctuary~ cure critical~ 
+60~ giant strength~ sanctuary~ cure critical~
 1 1400 0
 #20327
 lute~
@@ -684,7 +684,7 @@ a lute~
 A small musical instrument lies here.~
 ~
 36 0 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 20 175 0
 #20328
 jester's cap~
@@ -692,7 +692,7 @@ a jester's cap~
 A funny looking cap lies here.~
 ~
 9 16777216 1|16
-10~ 10~ 10~ 10~ 
+10~ 10~ 10~ 10~
 10 1000 0
 A
 5 2
@@ -702,7 +702,7 @@ the king's cape~
 A billowing cape is here fluttering in the wind.~
 ~
 9 16777216 1|4
-15~ 15~ 15~ 15~ 
+15~ 15~ 15~ 15~
 13 1000 0
 A
 4 3
@@ -714,7 +714,7 @@ the king's crown~
 A shining crown has been dropped here.~
 ~
 9 16777216 1|16
-10~ 18~ 18~ 18~ 
+10~ 18~ 18~ 18~
 80 1000 0
 A
 4 3
@@ -724,7 +724,7 @@ the king's staff~
 A large staff is here.~
 ~
 5 16777216 1|8192
-0~ 6~ 10~ 0~ 
+0~ 6~ 10~ 0~
 20 1000 0
 #20332
 queen's ring queens queen~
@@ -732,7 +732,7 @@ the queen's ring~
 A shiny gold ring is on the ground here.~
 ~
 9 16777216 1|2
-5~ 5~ 5~ 5~ 
+5~ 5~ 5~ 5~
 5 1150 0
 A
 4 2
@@ -742,7 +742,7 @@ a large black key~
 A large black key is on the ground here.~
 ~
 18 16777216 1|16384
-0~ 0~ 0~ 0~ 
+0~ 0~ 0~ 0~
 5 0 0
 #20334
 iron shackles~
@@ -750,7 +750,7 @@ a pair of iron shackles~
 A pair of iron shackles has been left here.~
 ~
 9 16777216 1|8192
-5~ 5~ 5~ 5~ 
+5~ 5~ 5~ 5~
 30 250 0
 #20335
 executioners axe~
@@ -758,7 +758,7 @@ an executioners axe~
 A huge axe is here.~
 ~
 5 2|64|16777216 1|8192
-0~ 6~ 10~ 13~ 
+0~ 6~ 10~ 13~
 35 2050 0
 A
 1 2
@@ -772,7 +772,7 @@ the king's throne~
 The king's mighty throne is here.~
 ~
 12 0 0
-1~ 250~ 0~ 150~ 
+1~ 250~ 0~ 150~
 0 0 0
 E
 throne~
@@ -784,7 +784,7 @@ the queens throne~
 The queen's throne is here, next to the king's.~
 ~
 12 0 0
-1~ 250~ 0~ 100~ 
+1~ 250~ 0~ 100~
 0 0 0
 #20338
 mask execution executioners~
@@ -792,7 +792,7 @@ the executioners hood~
 The executioners hood lies here.~
 ~
 9 1|16777216 1|16
-25~ 25~ 25~ 25~ 
+25~ 25~ 25~ 25~
 5 0 0
 A
 5 2
@@ -800,7 +800,7 @@ A
 19 3
 E
 hood~
-The executioners hood is what he wears so that the prisoner being 
+The executioners hood is what he wears so that the prisoner being
 executed does not have to see his evil face.~
 #20339
 elite dagger~
@@ -808,7 +808,7 @@ an elite dagger~
 A beautiful dagger is here.~
 ~
 5 2|64 1|8192
-0~ 6~ 11~ 2~ 
+0~ 6~ 11~ 2~
 30 3000 0
 A
 19 9
@@ -820,7 +820,7 @@ a goblin dagger~
 A goblin dagger has been dropped here.~
 ~
 5 64 1|8192
-0~ 10~ 5~ 2~ 
+0~ 10~ 5~ 2~
 20 7500 0
 A
 19 4
@@ -843,7 +843,7 @@ a cudgel~
 A short heavy club lies at your feet.~
 ~
 5 64|2048 1|8192
-0~ 6~ 11~ 7~ 
+0~ 6~ 11~ 7~
 15 3000 0
 A
 19 9
@@ -859,9 +859,9 @@ the jailer's predilection for sadism.~
 #ROOMS
 #20300
 Entrance to the Goblin Fortress~
-When you enter through the large black doors, you see a long dark hallway 
-heading to the east with doors set into the northern and southern walls. There 
-are murals depicting grand battles on the grey stone walls, and there is a long 
+When you enter through the large black doors, you see a long dark hallway
+heading to the east with doors set into the northern and southern walls. There
+are murals depicting grand battles on the grey stone walls, and there is a long
 red carpet leading east down the hallway.
 ~
 0 1|4|8 0
@@ -883,13 +883,13 @@ trapdoor~
 0 0 18566
 E
 mural murals picture pictures~
-The murals depict great battles between the goblins of the fortress and 
-their many foes, such as humans, orcs, dragons, and trolls. 
+The murals depict great battles between the goblins of the fortress and
+their many foes, such as humans, orcs, dragons, and trolls.
 ~
 S
 #20301
 The Hallway~
-The hallway here is decorated with murals much like the ones to the west, and it 
+The hallway here is decorated with murals much like the ones to the west, and it
 is very dark. You here some noises farther east. The hallway leads east and west.
 ~
 0 1|8 0
@@ -904,14 +904,14 @@ The entrance to the goblin fortress lies to the west.
 0 -1 20300
 E
 mural murals~
-The murals depict great battles between the goblins of the fortress and 
-their many foes, such as humans, orcs, dragons, and trolls. 
+The murals depict great battles between the goblins of the fortress and
+their many foes, such as humans, orcs, dragons, and trolls.
 ~
 S
 #20302
 The Hallway~
-The murals stop here, and are replaced by morbid drawings on the walls. The 
-sounds that were heard to the east lead through some doors to the south, and are 
+The murals stop here, and are replaced by morbid drawings on the walls. The
+sounds that were heard to the east lead through some doors to the south, and are
 louder here. You can tell that the sounds are voices talking to one another.
 ~
 0 1|8 0
@@ -929,14 +929,14 @@ The hallway lies to the west.~
 0 -1 20301
 E
 pictures drawings drawing picture~
-The drawings are of people of all races being tortured and beaten 
+The drawings are of people of all races being tortured and beaten
 mercilessly.
 ~
 S
 #20303
 The Hallway~
-The hallway here suddenly becomes very plain. There are no drawings and no 
-murals, but there are more noises behind a door to the south. The voices you 
+The hallway here suddenly becomes very plain. There are no drawings and no
+murals, but there are more noises behind a door to the south. The voices you
 hear are of children. The hallway leads east and west.
 ~
 0 1|4|8 0
@@ -955,9 +955,9 @@ The hallway lies to the west.~
 S
 #20304
 The Hallway~
-The stone that the walls here are made of appear to be much older and more 
-unkept than the stone to the west, and you notice water coming out from beneath 
-a door to the south. There is also a sound of splashing behind the southern 
+The stone that the walls here are made of appear to be much older and more
+unkept than the stone to the west, and you notice water coming out from beneath
+a door to the south. There is also a sound of splashing behind the southern
 door.
 ~
 0 1|8 0
@@ -979,10 +979,10 @@ The walls here appear to be made of very old stone.~
 S
 #20305
 Deep in the Hallway~
-As you look to the west from here you realise that you can no longer see the 
-light of day from the double doors that you entered through. You do not know 
-whether this is because the doors to the entrance of the fortress have been 
-closed, of if it is because you are too deep into the fortress to see the 
+As you look to the west from here you realise that you can no longer see the
+light of day from the double doors that you entered through. You do not know
+whether this is because the doors to the entrance of the fortress have been
+closed, of if it is because you are too deep into the fortress to see the
 doors. There is a door to the south.
 ~
 0 1|8 0
@@ -1001,10 +1001,10 @@ The hallway lies to the west.~
 S
 #20306
 Deep in the Hallway~
-You are in a deep part of the main hallway leading east and west, from the door 
-to the outside which you can't see, and towards who knows what to the east. 
-There are torches on both walls of the hallway, shedding a little light on what 
-would be an otherwise pitch black hallway. You can see a small door to the 
+You are in a deep part of the main hallway leading east and west, from the door
+to the outside which you can't see, and towards who knows what to the east.
+There are torches on both walls of the hallway, shedding a little light on what
+would be an otherwise pitch black hallway. You can see a small door to the
 north.
 ~
 0 1|8 0
@@ -1026,8 +1026,8 @@ The torches here look to be about ready to fizzle off.~
 S
 #20307
 Deep in the Hallway~
-You are in a deep part of the main hallway leading east and west. It is very 
-dark here, even with the help of the torches on the walls. You can see a small 
+You are in a deep part of the main hallway leading east and west. It is very
+dark here, even with the help of the torches on the walls. You can see a small
 door to the north through the faint glow of the torch light.
 ~
 0 1|8 0
@@ -1050,9 +1050,9 @@ The torches here are very week, and look like they won't last much longer.~
 S
 #20308
 In the Main Hallway~
-The hallway here is brighter than to the west, as there are more torches on the 
-walls, and the stone that the walls are made of is also more kept than to the 
-west. This makes you realise that there must be an important room farther to the 
+The hallway here is brighter than to the west, as there are more torches on the
+walls, and the stone that the walls are made of is also more kept than to the
+west. This makes you realise that there must be an important room farther to the
 east. There is a large door to the south.
 ~
 0 1|8 0
@@ -1074,8 +1074,8 @@ The torches here are improved from those to the west.~
 S
 #20309
 In the Main Hallway~
-The hallway is starting to look much nicer as you head to the east, but less 
-spectacular to the west. You can here some noise through a large set of doors to 
+The hallway is starting to look much nicer as you head to the east, but less
+spectacular to the west. You can here some noise through a large set of doors to
 the north.
 ~
 0 1|8 0
@@ -1094,8 +1094,8 @@ The hallway lies to the west.~
 S
 #20310
 In the Dark Hallway~
-The hallway is once again starting to get darker to the east, but is no less 
-spectacular. The torches here are burning brightly, but there are too few to 
+The hallway is once again starting to get darker to the east, but is no less
+spectacular. The torches here are burning brightly, but there are too few to
 make the hallway very bright. There is a set of large doors to the north.
 ~
 0 1|8 0
@@ -1114,9 +1114,9 @@ The hallway lies to the west.~
 S
 #20311
 In the Dark Hallway~
-The hallway here is very clean and kept, but still very dark. You can hear the 
-sounds of talk and other noises behind a large door to the south. There are only 
-a few torches covering the walls here, but as you look to the east you see that 
+The hallway here is very clean and kept, but still very dark. You can hear the
+sounds of talk and other noises behind a large door to the south. There are only
+a few torches covering the walls here, but as you look to the east you see that
 there are more torches, and they burn more brightly.
 ~
 0 1|8 0
@@ -1135,8 +1135,8 @@ The dark hallway lies to the west.~
 S
 #20312
 In the Dark Hallway~
-The Hallway here is so clean, that you can see your reflection in the stone! 
-There is a small door to the north, and the hallway continues east and west, 
+The Hallway here is so clean, that you can see your reflection in the stone!
+There is a small door to the north, and the hallway continues east and west,
 darkening to the west, and brightening to the east.
 ~
 0 1|8 0
@@ -1155,8 +1155,8 @@ The dark hallway lies to the west.~
 S
 #20313
 The Hallway~
-The hallway here looks very clean and kept, and is much brighter than the 
-hallway to the west. The torches and the sconces in which they rest seem to be 
+The hallway here looks very clean and kept, and is much brighter than the
+hallway to the west. The torches and the sconces in which they rest seem to be
 made of better quality material; perhaps this is why the lighting is better.
 ~
 0 1|8 0
@@ -1175,8 +1175,8 @@ To the west is the hallway which you are now in.~
 S
 #20314
 The Hallway~
-The hallway here is lined with large torches in silver sconces. The walls are 
-made of a grey stone, which are well taken care of. There is a red carpet 
+The hallway here is lined with large torches in silver sconces. The walls are
+made of a grey stone, which are well taken care of. There is a red carpet
 leading east, and the hallway lies to the west.
 ~
 0 1|4|8 0
@@ -1191,8 +1191,8 @@ To the west is the hallway which you are now in.~
 S
 #20315
 The Hallway~
-The hallway here is very neat and well kept, except for a small trail of black 
-spots in the red carpet leading to a door on the south wall. The sound of 
+The hallway here is very neat and well kept, except for a small trail of black
+spots in the red carpet leading to a door on the south wall. The sound of
 sizzling can be heard through the wall, and the hallway leads east and west.
 ~
 0 1|8 0
@@ -1210,14 +1210,14 @@ To the west is the hallway which you are now in.~
 0 -1 20314
 E
 trail black spot spots carpet red~
-The red carpet has a trail of black grease spots leading to a door 
+The red carpet has a trail of black grease spots leading to a door
 on the south wall.~
 S
 #20316
 The Royal Kitchen~
-This is where to food for the entire fortress is made. There are cupboards which 
-line the walls, and there are grease spots all over the floor, and there is an 
-oven and a stove on the north wall. There is a door on the north wall leading 
+This is where to food for the entire fortress is made. There are cupboards which
+line the walls, and there are grease spots all over the floor, and there is an
+oven and a stove on the north wall. There is a door on the north wall leading
 back to the hallway.
 ~
 0 8 0
@@ -1228,9 +1228,9 @@ door~
 S
 #20317
 The Guardroom~
-The guardroom is very sparsely furnished, having only one table with a couple of 
-chairs. The walls and floor are bare and made of stone, and the room is quite 
-cold. There is a window looking out to the north, and a door leading back into 
+The guardroom is very sparsely furnished, having only one table with a couple of
+chairs. The walls and floor are bare and made of stone, and the room is quite
+cold. There is a window looking out to the north, and a door leading back into
 the hallway on the south wall.
 ~
 0 8 0
@@ -1247,9 +1247,9 @@ Through the window you can see plains of grass and weeds.~
 S
 #20318
 The Guardroom~
-The guardroom is very sparsely furnished, having only one table with a couple of 
-chairs. The walls and floor are bare and made of stone, and the room is quite 
-cold. There is a window looking out to the south, and a door leading back into 
+The guardroom is very sparsely furnished, having only one table with a couple of
+chairs. The walls and floor are bare and made of stone, and the room is quite
+cold. There is a window looking out to the south, and a door leading back into
 the hallway on the north wall.
 ~
 0 8 0
@@ -1266,9 +1266,9 @@ Through the window you can see plains of grass and weeds.~
 S
 #20319
 The Visitor's Lobby~
-This is where all of the visitors to the fortress go to relax, chat, or play 
-games. There is a round table surrounded by chairs in the centre of the room, 
-paintings line the walls, and the floor is covered by a plush red carpet. A door 
+This is where all of the visitors to the fortress go to relax, chat, or play
+games. There is a round table surrounded by chairs in the centre of the room,
+paintings line the walls, and the floor is covered by a plush red carpet. A door
 leads north back into the hallway.
 ~
 0 8 0
@@ -1288,9 +1288,9 @@ The paintings depict great scenes of beauty.~
 S
 #20320
 The Daycare~
-You are in the daycare, where all of the visitors children play. There are toys 
-everywhere, and the sounds of children playing can be heard everywhere. The 
-walls have markings all over them from when the children have drawn on them. To 
+You are in the daycare, where all of the visitors children play. There are toys
+everywhere, and the sounds of children playing can be heard everywhere. The
+walls have markings all over them from when the children have drawn on them. To
 the north is the hallway.
 ~
 0 8 0
@@ -1301,9 +1301,9 @@ door~
 S
 #20321
 The Guard Bath~
-You have stumbled upon the guards bath! The walls and floor are covered in 
-mildew from the water which constantly covers them, which makes it difficult to 
-walk. There is a large tub in the centre of the room. There is a door leading 
+You have stumbled upon the guards bath! The walls and floor are covered in
+mildew from the water which constantly covers them, which makes it difficult to
+walk. There is a large tub in the centre of the room. There is a door leading
 north.
 ~
 0 8 0
@@ -1314,8 +1314,8 @@ door~
 S
 #20322
 The Guards Quarters~
-This is where the guards come to sleep or just rest when they are off duty. 
-There are beds against the southern wall, and there are nightstands next to the 
+This is where the guards come to sleep or just rest when they are off duty.
+There are beds against the southern wall, and there are nightstands next to the
 beds. There is a door to the north heading back to the hallway.
 ~
 0 8 0
@@ -1325,7 +1325,7 @@ door doors~
 1 -1 20305
 E
 bed beds~
-The beds look very comfortable, and are covered with dark red 
+The beds look very comfortable, and are covered with dark red
 sheets and pillows.~
 E
 night stand stands nightstand nightstands~
@@ -1333,8 +1333,8 @@ The nightstands are made of polished wood, and each has a lamp set upon it.~
 S
 #20323
 The Visitor's Quarters~
-This is where the visitors of the castle go to sleep. Beds line the northern 
-wall, and there are paintings hanging along the western wall. The hallway lies 
+This is where the visitors of the castle go to sleep. Beds line the northern
+wall, and there are paintings hanging along the western wall. The hallway lies
 to the south, and the visitor's chambers continue to the east.
 ~
 0 8 0
@@ -1355,8 +1355,8 @@ The paintings depict beautiful scenes of nature.~
 S
 #20324
 A Storage Room~
-There are large boxes, crates, and sacks everywhere. The boxes have no markings, 
-like the crates and sacks. There are no windows, and the walls are bare. There 
+There are large boxes, crates, and sacks everywhere. The boxes have no markings,
+like the crates and sacks. There are no windows, and the walls are bare. There
 is a door to the south leading back to the hallway.
 ~
 0 8 0
@@ -1367,8 +1367,8 @@ door~
 S
 #20325
 The Guards Quarters~
-This is where the guards come to sleep or just rest when they are off duty. 
-There are beds against the southern wall, and there are nightstands next to the 
+This is where the guards come to sleep or just rest when they are off duty.
+There are beds against the southern wall, and there are nightstands next to the
 beds. There is a door to the north heading back to the hallway.
 ~
 0 8 0
@@ -1379,8 +1379,8 @@ door~
 S
 #20326
 A Storage Room~
-There are large boxes, crates, and sacks everywhere. The boxes have no markings, 
-like the crates and sacks. There are no windows, and the walls are bare. There 
+There are large boxes, crates, and sacks everywhere. The boxes have no markings,
+like the crates and sacks. There are no windows, and the walls are bare. There
 is a door to the south leading back to the hallway.
 ~
 0 8 1
@@ -1391,8 +1391,8 @@ door~
 S
 #20327
 The Visitor's Quarters~
-This is where the visitors of the castle go to sleep. Beds line the northern 
-wall, and there are paintings hanging along the eastern wall. The hallway lies 
+This is where the visitors of the castle go to sleep. Beds line the northern
+wall, and there are paintings hanging along the eastern wall. The hallway lies
 to the south, and the visitor's chambers continue to the west.
 ~
 0 8 0
@@ -1413,9 +1413,9 @@ The paintings depict beautiful scenes of nature.~
 S
 #20328
 The Royal Ballroom~
-This is the royal ballroom, where all of the royal dances and festivities are 
-held. The floor is made of hard grey stone, but is covered with a soft, plush 
-carpet. Murals adorn the walls, and crystal chandeliers hang from the high 
+This is the royal ballroom, where all of the royal dances and festivities are
+held. The floor is made of hard grey stone, but is covered with a soft, plush
+carpet. Murals adorn the walls, and crystal chandeliers hang from the high
 ceiling. There is a door leading north back into the hallway.
 ~
 0 8 0
@@ -1432,8 +1432,8 @@ The murals upon the walls show the past kings and queens of the fortress.~
 S
 #20329
 A Storage Room~
-There are large boxes, crates, and sacks everywhere. The boxes have no markings, 
-like the crates and sacks. There are no windows, and the walls are bare. There 
+There are large boxes, crates, and sacks everywhere. The boxes have no markings,
+like the crates and sacks. There are no windows, and the walls are bare. There
 is a door to the south leading back to the hallway.
 ~
 0 8 0
@@ -1444,8 +1444,8 @@ door~
 S
 #20330
 A Storage Room~
-There are large boxes, crates, and sacks everywhere. The boxes have no markings, 
-like the crates and sacks. There are no windows, and the walls are bare. There 
+There are large boxes, crates, and sacks everywhere. The boxes have no markings,
+like the crates and sacks. There are no windows, and the walls are bare. There
 is a door to the south leading back to the hallway.
 ~
 0 8 0
@@ -1456,8 +1456,8 @@ door~
 S
 #20331
 The Hallway~
-At this point in the hallway, many noises can be heard to the south. The noises 
-consist of metal clanging, people shouting, and many other noises. A door leads 
+At this point in the hallway, many noises can be heard to the south. The noises
+consist of metal clanging, people shouting, and many other noises. A door leads
 south, and the hallway continues east and west.
 ~
 0 1|8 0
@@ -1476,10 +1476,10 @@ The hallway continues to the west.~
 S
 #20333
 The Royal Dining Hall~
-The citizens of the castle meet in this royal dining room to dine and have their 
-conversations over a warm meal. There is a very long table in the centre of the 
-room leading to the west, the floor is covered by a lush red carpet, and the 
-walls are adorned by murals. There is a door leading north, and the dining hall 
+The citizens of the castle meet in this royal dining room to dine and have their
+conversations over a warm meal. There is a very long table in the centre of the
+room leading to the west, the floor is covered by a lush red carpet, and the
+walls are adorned by murals. There is a door leading north, and the dining hall
 continues to the west.
 ~
 0 8 0
@@ -1494,7 +1494,7 @@ The royal dining hall continues to the west.~
 S
 #20334
 The Hallway~
-The hallway here is well kept. There are doors leading to the south and north, 
+The hallway here is well kept. There are doors leading to the south and north,
 and the hallway continues east and west.
 ~
 0 1|4|8 0
@@ -1517,9 +1517,9 @@ The hallway continues to the west.~
 S
 #20335
 The Royal Dining Hall~
-This is where the citizens of the castle meet eat their meals. There is an 
-extremely long table here, extending to the east, the floor is covered in a lush 
-red carpet, and the walls are adorned with murals. There is a door leading 
+This is where the citizens of the castle meet eat their meals. There is an
+extremely long table here, extending to the east, the floor is covered in a lush
+red carpet, and the walls are adorned with murals. There is a door leading
 north, and the dining room continues to the east.
 ~
 0 8 0
@@ -1534,9 +1534,9 @@ The royal dining hall continues to the east.~
 S
 #20336
 The Throne Room~
-You have entered the throne room, where the King and Queen come to perform their 
-royal duty. There is a red carpet leading to the thrones, the walls are 
-decorated with rugs, and there are torches lining the walls. There is a door to 
+You have entered the throne room, where the King and Queen come to perform their
+royal duty. There is a red carpet leading to the thrones, the walls are
+decorated with rugs, and there are torches lining the walls. There is a door to
 the south leading back to the hallway.
 ~
 0 8 0
@@ -1553,8 +1553,8 @@ The murals bear the coat of arms of the goblins.~
 S
 #20337
 The Hallway~
-The hallway here is well kept, but sparsely furnished. The walls are made of grey 
-stone, as is the floor. Upon the walls are torches, illuminating the way. The 
+The hallway here is well kept, but sparsely furnished. The walls are made of grey
+stone, as is the floor. Upon the walls are torches, illuminating the way. The
 hallway leads east and west.
 ~
 0 1|8 0
@@ -1569,8 +1569,8 @@ The hallway continues to the west.~
 S
 #20338
 The End of the Hallway~
-This is the eastern end of the hallway. There are torches lining the wall, 
-casting light upon the hallway, and creating strange shadows. There is a door 
+This is the eastern end of the hallway. There are torches lining the wall,
+casting light upon the hallway, and creating strange shadows. There is a door
 leading to the east, and the hallway continues to the west.
 ~
 0 1|8 0
@@ -1585,8 +1585,8 @@ The hallway continues to the west.~
 S
 #20339
 The Stairwell~
-You are standing in the stairwell of the castle, leading down into the dungeon, 
-and up to the second level of the fortress. The hallway lies to the west, the 
+You are standing in the stairwell of the castle, leading down into the dungeon,
+and up to the second level of the fortress. The hallway lies to the west, the
 stairwell leads up, and there is a trapdoor at your feet.
 ~
 0 1|4|8 1
@@ -1605,10 +1605,10 @@ door trapdoor trap~
 S
 #20340
 The Dungeon~
-You have entered the dungeon, where the fortress keeps its prisoners. It is dank 
-and smelly in here, with moss growing on the damp stone walls. Every once in a 
-while a small animal can be seen scurrying across the floor, seeking shelter. 
-There are no windows, and it smells horrible. There is a trapdoor leading up, 
+You have entered the dungeon, where the fortress keeps its prisoners. It is dank
+and smelly in here, with moss growing on the damp stone walls. Every once in a
+while a small animal can be seen scurrying across the floor, seeking shelter.
+There are no windows, and it smells horrible. There is a trapdoor leading up,
 and there are doors all around you.
 ~
 0 4|8|8192 0
@@ -1635,9 +1635,9 @@ door trapdoor trap~
 S
 #20341
 The Execution Chamber~
-This is where all of the prisoners are taken to be executed. There is a small 
-table in the centre of the room, completely covered with blood. The walls are 
-damp and covered with moss, and there are various weapons hanging from the 
+This is where all of the prisoners are taken to be executed. There is a small
+table in the centre of the room, completely covered with blood. The walls are
+damp and covered with moss, and there are various weapons hanging from the
 walls. There is a door leading south.
 ~
 0 8|8192 0
@@ -1648,8 +1648,8 @@ door~
 S
 #20342
 The Torture Chamber~
-This is the torture chamber, a prisoner's most feared room. There are various 
-torture devices here, including the iron maiden, the stretcher, and the rack. 
+This is the torture chamber, a prisoner's most feared room. There are various
+torture devices here, including the iron maiden, the stretcher, and the rack.
 There is blood covering the walls, and there is the horrible stench of death.
 ~
 0 8 0
@@ -1660,9 +1660,9 @@ door~
 S
 #20343
 The West Prison Wing~
-You are standing at the beginning of the west prison wing, where the prison 
-cells are. It is extremely filthy, the walls are covered with moss and are damp, 
-and rats can be seen scurrying across the floor. There are doors to the north, 
+You are standing at the beginning of the west prison wing, where the prison
+cells are. It is extremely filthy, the walls are covered with moss and are damp,
+and rats can be seen scurrying across the floor. There are doors to the north,
 south, and east.
 ~
 0 8|8192 0
@@ -1685,8 +1685,8 @@ The west prison wing continues to the west.~
 S
 #20344
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading south.
 ~
 0 8|8192 0
@@ -1697,8 +1697,8 @@ door~
 S
 #20345
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading north.
 ~
 0 8|8192 0
@@ -1709,8 +1709,8 @@ door~
 S
 #20346
 The End of the West Prison Wing~
-You are at the end of the west prison wing, where some of the prisoners are 
-held. The walls and floor are covered with moss, and they are very damp. 
+You are at the end of the west prison wing, where some of the prisoners are
+held. The walls and floor are covered with moss, and they are very damp.
 You can hear and see rats here, scurrying across the floor.
 ~
 0 8|8192 0
@@ -1729,8 +1729,8 @@ door doors~
 S
 #20347
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading south.
 ~
 0 8|8192 0
@@ -1741,8 +1741,8 @@ door doors~
 S
 #20348
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading south.
 ~
 0 8|8192 0
@@ -1753,9 +1753,9 @@ door doors~
 S
 #20349
 The East Prison Wing~
-You are standing at the beginning of the east prison wing, where the prison 
-cells are. It is extremely filthy, the walls are covered with moss and are damp, 
-and rats can be seen scurrying across the floor. There are doors to the north, 
+You are standing at the beginning of the east prison wing, where the prison
+cells are. It is extremely filthy, the walls are covered with moss and are damp,
+and rats can be seen scurrying across the floor. There are doors to the north,
 south, and west.
 ~
 0 8|8192 0
@@ -1778,8 +1778,8 @@ door~
 S
 #20350
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading south.
 ~
 0 8|8192 0
@@ -1790,8 +1790,8 @@ door~
 S
 #20351
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading north.
 ~
 0 8|8192 0
@@ -1802,9 +1802,9 @@ door~
 S
 #20352
 The End of the Eastern Prison Wing~
-You are at the end of the east prison wing, where some of the prisoners are 
-held. The walls and floor are covered with moss, and they are very damp. You can 
-hear and see rats here, scurrying across the floor. There are doors to the 
+You are at the end of the east prison wing, where some of the prisoners are
+held. The walls and floor are covered with moss, and they are very damp. You can
+hear and see rats here, scurrying across the floor. There are doors to the
 north and south, and the prison wing continues to the west.
 ~
 0 8|8192 0
@@ -1823,8 +1823,8 @@ door~
 S
 #20353
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading south.
 ~
 0 8|8192 0
@@ -1835,8 +1835,8 @@ door~
 S
 #20354
 A Prison Cell~
-You are in one of the prison cells of the fortress. The walls are very damp and 
-covered with moss, and there are faeces and other substances covering the floor. 
+You are in one of the prison cells of the fortress. The walls are very damp and
+covered with moss, and there are faeces and other substances covering the floor.
 There is a door leading north.
 ~
 0 8|8192 0
@@ -1847,8 +1847,8 @@ door~
 S
 #20355
 The Stairwell~
-You are at the top of the stairwell, on the second floor. It is very dark, but 
-for one lone torch on the eastern wall lighting the stairwell. There is a door 
+You are at the top of the stairwell, on the second floor. It is very dark, but
+for one lone torch on the eastern wall lighting the stairwell. There is a door
 to the west, and the stairwell leads south.
 ~
 0 1|4|8 0
@@ -1863,9 +1863,9 @@ The stairwell continues down.~
 S
 #20356
 The Beginning of the Hallway~
-You are in the beginning of the upstairs hallway. The floor of the hallway is 
-covered by a red carpet, which continues to the west. There are paintings on 
-both the northern and southern walls. The hallway continues west, and there is a 
+You are in the beginning of the upstairs hallway. The floor of the hallway is
+covered by a red carpet, which continues to the west. There are paintings on
+both the northern and southern walls. The hallway continues west, and there is a
 door to the east.
 ~
 0 1|8 0
@@ -1886,14 +1886,14 @@ red carpet~
 The red carpet covers the floor and leads to the west.~
 E
 painting paintings ~
-The paintings are of people who may have been important to the making 
+The paintings are of people who may have been important to the making
 of this fortress.~
 S
 #20357
 The Servant's Quarters~
-This is where the servants go to sleep and chat while they are off duty. There 
-are beds lining the northern wall, each with a rickety nightstand next to it. 
-The floor and walls are bare, and it is very dirty in here. There is a door to 
+This is where the servants go to sleep and chat while they are off duty. There
+are beds lining the northern wall, each with a rickety nightstand next to it.
+The floor and walls are bare, and it is very dirty in here. There is a door to
 the south, and the servant's quarters continue to the west.
 ~
 0 8 0
@@ -1908,8 +1908,8 @@ The servant's quarters continue to the west.~
 S
 #20358
 The Hallway~
-There is a red carpet here, leading east and west down the hallway. The walls 
-are lined with paintings of important, but next to this the hallway is quite 
+There is a red carpet here, leading east and west down the hallway. The walls
+are lined with paintings of important, but next to this the hallway is quite
 plain. The hallway leads east and west, and there is a door to the north.
 ~
 0 1|8 0
@@ -1928,9 +1928,9 @@ D3
 S
 #20359
 The Servant's Quarters~
-This is where the servants go to sleep and chat while they are off duty. There 
-are beds lining the northern wall, each with a rickety nightstand next to it. 
-The floor and walls are bare, and it is very dirty in here. There is a door to 
+This is where the servants go to sleep and chat while they are off duty. There
+are beds lining the northern wall, each with a rickety nightstand next to it.
+The floor and walls are bare, and it is very dirty in here. There is a door to
 the south, and the servant's quarters continue to the east.
 ~
 0 8 0
@@ -1945,9 +1945,9 @@ door~
 S
 #20360
 The Hallway~
-The walls here are bare, except for the torches which line them, illuminating 
-the hallway. There is a red carpet leading east and west covering the floor of 
-the hallway. The hallway continues east and west, and there is a door to the 
+The walls here are bare, except for the torches which line them, illuminating
+the hallway. There is a red carpet leading east and west covering the floor of
+the hallway. The hallway continues east and west, and there is a door to the
 north.
 ~
 0 1|8 0
@@ -1966,9 +1966,9 @@ The hallway continues to the west.~
 S
 #20361
 The Servant's Kitchen~
-This is where the food for the lowly servants is prepared. There is a fireplace 
-to the north, with a cauldron hanging above the fire, and the floor is covered 
-with trash. There is a door leading south, and the servant's dining area is to 
+This is where the food for the lowly servants is prepared. There is a fireplace
+to the north, with a cauldron hanging above the fire, and the floor is covered
+with trash. There is a door leading south, and the servant's dining area is to
 the west.
 ~
 0 8 0
@@ -1982,20 +1982,20 @@ D3
 0 -1 20362
 E
 cauldron~
-The cauldron is a large black pot, and it has some kind of fluid 
+The cauldron is a large black pot, and it has some kind of fluid
 boiling in it.~
 E
 fireplace~
 The fireplace is where all of the cooking takes place.~
 E
 trash~
-The trash is composed of pieces of food, paper, and other unrecognisable 
+The trash is composed of pieces of food, paper, and other unrecognisable
 articles.~
 S
 #20362
 The Servant's Dining Area~
-This is where the servant's come to eat their disgusting meals. There is a table 
-in the centre of the room, which is covered by what could be a tablecloth, and 
+This is where the servant's come to eat their disgusting meals. There is a table
+in the centre of the room, which is covered by what could be a tablecloth, and
 chairs surround that. The servant's kitchen is to the east.
 ~
 0 8 0
@@ -2006,7 +2006,7 @@ The hallway continues to the east.~
 S
 #20363
 The Hallway~
-The hallway here is bare, except for the torches on the walls, and the red 
+The hallway here is bare, except for the torches on the walls, and the red
 carpet covering on the floor. The hallway continues to the east and west.
 ~
 0 1|8 0
@@ -2021,9 +2021,9 @@ The hallway continues to the west.~
 S
 #20364
 The Hallway~
-The floor here is covered by a red carpet which leads east and west along the 
-hallway, and the walls are lined with torches. The sound of splashing can be 
-heard to the north. The hallway continues to the east and west, and there is a 
+The floor here is covered by a red carpet which leads east and west along the
+hallway, and the walls are lined with torches. The sound of splashing can be
+heard to the north. The hallway continues to the east and west, and there is a
 door to the north.
 ~
 0 1|4|8 0
@@ -2042,9 +2042,9 @@ The hallway continues to the west.~
 S
 #20365
 The Servant's Bath~
-This is where the servants come when they need to bathe themselves, which is 
-quite frequently. There is a bath tub in the centre of the room. The walls and 
-floor here are covered with moss and are quite damp. There is a door to the 
+This is where the servants come when they need to bathe themselves, which is
+quite frequently. There is a bath tub in the centre of the room. The walls and
+floor here are covered with moss and are quite damp. There is a door to the
 south.
 ~
 0 8 0
@@ -2058,7 +2058,7 @@ The bath tub is filled with dirty water.~
 S
 #20366
 The Hallway~
-The hallway here is bare, except for the torches lining the wall, and the red 
+The hallway here is bare, except for the torches lining the wall, and the red
 carpet on the floor leading east and west. The hallway leads east and west.
 ~
 0 1|8 0
@@ -2073,9 +2073,9 @@ The hallway continues to the west.~
 S
 #20367
 The Hallway~
-The floor here is covered by a red carpet which leads east and west, and which 
-also seems to be heavily used towards the door to the north. Torches line the 
-walls here. The hallway leads east and west, and there are doors to the north 
+The floor here is covered by a red carpet which leads east and west, and which
+also seems to be heavily used towards the door to the north. Torches line the
+walls here. The hallway leads east and west, and there are doors to the north
 and south.
 ~
 0 1|8 0
@@ -2098,8 +2098,8 @@ D3
 S
 #20368
 The Trophy Room~
-This is where all of the trophies are held for the castle. In this western 
-section, the smaller trophies are held, mostly personal trophies for knights. 
+This is where all of the trophies are held for the castle. In this western
+section, the smaller trophies are held, mostly personal trophies for knights.
 The trophy room continues to the east, and there is a door to the south.
 ~
 0 8 0
@@ -2114,8 +2114,8 @@ door~
 S
 #20369
 The Trophy Room~
-This is where the larger trophies are held for the castle. These include some 
-personal hunting trophies, as well as trophies from competitions which the 
+This is where the larger trophies are held for the castle. These include some
+personal hunting trophies, as well as trophies from competitions which the
 knights of this castle have competed in. The trophy room continues to the west.
 ~
 0 8 0
@@ -2126,8 +2126,8 @@ The trophy room continues to the west.~
 S
 #20370
 The Elite Bath~
-This is where the elite guards of the castle go to bathe themselves. There is a 
-large bath in the centre of the room, and the walls and floor are nice and dry, 
+This is where the elite guards of the castle go to bathe themselves. There is a
+large bath in the centre of the room, and the walls and floor are nice and dry,
 very well kept. There is a door to the north.
 ~
 0 8 0
@@ -2138,8 +2138,8 @@ door~
 S
 #20371
 The Hallway~
-The floor here is covered by a red rug which leads east and west, and the walls 
-are lined with torches. The hallway leads east and west, and there are doors to 
+The floor here is covered by a red rug which leads east and west, and the walls
+are lined with torches. The hallway leads east and west, and there are doors to
 the north and south.
 ~
 0 1|8 0
@@ -2162,8 +2162,8 @@ D3
 S
 #20372
 The Queen's Bath~
-This is where the royal Queen herself is bathed by her servants. There is an 
-exquisite bath in the centre of the room, and the room is very well kept. There 
+This is where the royal Queen herself is bathed by her servants. There is an
+exquisite bath in the centre of the room, and the room is very well kept. There
 is a door to the south.
 ~
 0 8 0
@@ -2174,9 +2174,9 @@ door~
 S
 #20373
 The Elite Guard's Quarters~
-All of the elite guards come here when they are off duty to sleep or just talk. 
-The floor is covered with a plush blue carpet, with the emblem of the elite 
-guard embroidered into it. Beds line the southern wall, and there is a door to 
+All of the elite guards come here when they are off duty to sleep or just talk.
+The floor is covered with a plush blue carpet, with the emblem of the elite
+guard embroidered into it. Beds line the southern wall, and there is a door to
 the north.
 ~
 0 8 0
@@ -2187,8 +2187,8 @@ door~
 S
 #20374
 The Hallway~
-The floor here is covered by a red carpet which leads east and west. The walls 
-are lined with torches. The hallway leads east and west, and there is a door to 
+The floor here is covered by a red carpet which leads east and west. The walls
+are lined with torches. The hallway leads east and west, and there is a door to
 the north.
 ~
 0 1|8 0
@@ -2207,9 +2207,9 @@ D3
 S
 #20375
 The Queen's Room~
-This is where the Queen of the fortress sleeps and spends her free time. The 
-floor is covered by a plush red and blue carpet, and the walls are decorated 
-with beautiful paintings. On the western wall there is a huge bed, with a large 
+This is where the Queen of the fortress sleeps and spends her free time. The
+floor is covered by a plush red and blue carpet, and the walls are decorated
+with beautiful paintings. On the western wall there is a huge bed, with a large
 nightstand next to it. There are doors to the north and south.
 ~
 0 8 0
@@ -2230,8 +2230,8 @@ The paintings depict scenes of nature.~
 S
 #20376
 The Queen's Closet~
-This is the Queen's closet, where she keeps all of her personal belongings. 
-There are small boxes littering the floor, and there are clothes strewn about. 
+This is the Queen's closet, where she keeps all of her personal belongings.
+There are small boxes littering the floor, and there are clothes strewn about.
 There is a door to the south.
 ~
 0 8 0
@@ -2242,8 +2242,8 @@ door~
 S
 #20377
 The Hallway~
-The hallway here is well kept. There is a red carpet covering the floor, leading 
-east and west, and the walls are lined with torches, shining brightly. There are 
+The hallway here is well kept. There is a red carpet covering the floor, leading
+east and west, and the walls are lined with torches, shining brightly. There are
 doors to the north and south.
 ~
 0 1|8 0
@@ -2266,8 +2266,8 @@ D3
 S
 #20378
 The King's Bedroom~
-This is where the King comes to do his personal business. There is a giant bed 
-by the northern wall, and the walls are decorated with elegant paintings and 
+This is where the King comes to do his personal business. There is a giant bed
+by the northern wall, and the walls are decorated with elegant paintings and
 murals. There is a door to the south.
 ~
 0 8 0
@@ -2278,9 +2278,9 @@ door~
 S
 #20379
 The Elite Guard's Quarters~
-All of the elite guards come here when they are off duty to sleep or just talk. 
-The floor is covered with a plush blue carpet, with the emblem of the elite 
-guard embroidered into it. Beds line the southern wall, and there is a door to 
+All of the elite guards come here when they are off duty to sleep or just talk.
+The floor is covered with a plush blue carpet, with the emblem of the elite
+guard embroidered into it. Beds line the southern wall, and there is a door to
 the north.
 ~
 0 8 0
@@ -2291,9 +2291,9 @@ door~
 S
 #20380
 The Hallway~
-The floor of the hallway here is covered by a red carpet which continues to the 
-east and west, and the walls are lined with torches. You can hear somebody 
-talking to himself to the north, behind a closed door. The hallway leads east 
+The floor of the hallway here is covered by a red carpet which continues to the
+east and west, and the walls are lined with torches. You can hear somebody
+talking to himself to the north, behind a closed door. The hallway leads east
 and west, and there is a door to the north.
 ~
 0 1|8 0
@@ -2312,9 +2312,9 @@ The hallway continues to the west.~
 S
 #20381
 The War Planning Room~
-This is where the goblin kingdom comes up with their cruel plans for taking over 
-other kingdoms. There is a large table in the centre of the room with plans laid 
-out over it, and there are weapons hanging on the walls. There is a door to the 
+This is where the goblin kingdom comes up with their cruel plans for taking over
+other kingdoms. There is a large table in the centre of the room with plans laid
+out over it, and there are weapons hanging on the walls. There is a door to the
 south.
 ~
 0 8 0
@@ -2325,9 +2325,9 @@ door~
 S
 #20382
 The Hallway~
-The floor of the hallway here is covered by a red carpet which continues to the 
-east and west, and the walls are lined with torches. You can hear some music to 
-the north, behind a closed door. The hallway leads east and west, and there is a 
+The floor of the hallway here is covered by a red carpet which continues to the
+east and west, and the walls are lined with torches. You can hear some music to
+the north, behind a closed door. The hallway leads east and west, and there is a
 door to the north.
 ~
 0 1|8 0
@@ -2350,8 +2350,8 @@ The hallway lies to the west.~
 S
 #20383
 The Entertainment Room~
-This is where the denizens of the castle come to be entertained. The floor is 
-covered with a bright multicoloured rug, and the walls are bare. There is a door 
+This is where the denizens of the castle come to be entertained. The floor is
+covered with a bright multicoloured rug, and the walls are bare. There is a door
 to the south.
 ~
 0 8 0
@@ -2362,8 +2362,8 @@ door~
 S
 #20384
 The End of the Hallway~
-You have reached the end of the upstairs hallway. The red carpet ends at the 
-western door. The walls here are lined with torches in silver sconces. There are 
+You have reached the end of the upstairs hallway. The red carpet ends at the
+western door. The walls here are lined with torches in silver sconces. There are
 doors to the north and west.
 ~
 0 1|8 0
@@ -2382,8 +2382,8 @@ door~
 S
 #20385
 The Room of Oddities~
-This is where the deformed persons of the castle have been taken to. This is 
-another cruel characteristic of the Goblin kingdom. There is a table in the 
+This is where the deformed persons of the castle have been taken to. This is
+another cruel characteristic of the Goblin kingdom. There is a table in the
 centre of the room. There is a door leading south.
 ~
 0 8 0
@@ -2394,8 +2394,8 @@ door~
 S
 #20386
 The Healing Room~
-This is where the citizens of the castle go to receive healing, perhaps after a 
-cut, or after a long battle. The walls and floor seem to be magical, and are a 
+This is where the citizens of the castle go to receive healing, perhaps after a
+cut, or after a long battle. The walls and floor seem to be magical, and are a
 pure white. There is a door leading east.
 ~
 0 8 0
@@ -2406,8 +2406,8 @@ door~
 S
 #20387
 The Laboratory~
-This is where the scientists of the Goblin kingdom do all of their experiments. 
-There are lab tables around the room, and many vials and beakers are lying 
+This is where the scientists of the Goblin kingdom do all of their experiments.
+There are lab tables around the room, and many vials and beakers are lying
 about. There is a door leading north.
 ~
 0 8 0
