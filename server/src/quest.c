@@ -233,7 +233,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
 				 quest_recall_info[next].name,
 				 quest_recall_info[next].cost,
 				 (ch->pcdata->recall_points[quest_recall_info[next].slot] >= 0)
-				 ? "{chave{x" : "{CNEED{x");
+				 ? "{chave{x" : "{RNEED{x");
 			send_to_char (buf, ch);
 		}
 

@@ -1964,9 +1964,10 @@ void do_recall (CHAR_DATA *ch, char *argument)
 			if (place != -1)
 			{
 				location = get_room_index(place);
-				sprintf(tmp, "%2d %c %s", iter,
+				sprintf(tmp, "%2d %c %-35s (%s)", iter,
 					((ch->pcdata->current_recall == iter) ? '*' : ' '),
-					location ? location->name : "(null)");
+					location ? location->name : "Unknown",
+					location ? location->area->name : "Unknown");
 				strcat(buf, tmp);
 
 				if (IS_IMMORTAL(ch))
@@ -2545,12 +2546,12 @@ void do_warcry (CHAR_DATA *ch, char *argument)
 		     ch, NULL, NULL, TO_ROOM);
 		send_to_char("You cry an ancient warchant in preparation for battle.\n\r", ch);
 
-		WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+		WAIT_STATE(ch, PULSE_VIOLENCE);
 		return;
 	}
 
 	send_to_char("This time the warchant doesn't inspire you for battle...\n\r",ch);
-	WAIT_STATE(ch, PULSE_VIOLENCE);
+	WAIT_STATE(ch, PULSE_VIOLENCE / 2);
 	return;
 }
 
@@ -2591,10 +2592,13 @@ void do_rage (CHAR_DATA *ch, char *argument)
 
 		act ("$n starts to growl horribly... I'd stand back if I were you.\n\r",ch,NULL,NULL,TO_ROOM);
 		send_to_char("You being to growl softly, focusing on your next target.\n\r", ch);
+
+		WAIT_STATE(ch, PULSE_VIOLENCE);
 		return;
 	}
 
 	send_to_char("Your need for combat is not as great as you thought.\n\r",ch);
+	WAIT_STATE(ch, PULSE_VIOLENCE / 2);
 	return;
 }
 

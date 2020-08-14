@@ -38,7 +38,7 @@ _Gezhp 2019_
     | DD III code by Shade, Gezhp, Owl, Brutus, Jyhad, Tavolir, and Danath.     |
     | DD IV code by Shade, Owl, Gezhp and the rest of the team.                 |
     O-----< MobCode from Merc 2.2 >-----< Quest Code (c) 1996 Ryan Addams >-----O
-    
+
 
 ## Quick start
 
@@ -49,21 +49,21 @@ _Gezhp 2019_
     ```
     // With make
     make build
-    
+
     // With docker-compose directly
     docker-compose build --no-cache
     ```
-    
+
     This will build a `dd4_server` docker image.
     Repeating this command will rebuild the server.
-    
+
 
 1.  From the root directory, start the server:
 
     ```
     // With make
     make up
-    
+
     // With docker-compose directly
     docker-compose up -d
     ```
@@ -75,7 +75,7 @@ _Gezhp 2019_
     ```
     // With make
     make logs
-    
+
     // With docker-compose directly
     docker-compose logs -f
     ```
@@ -85,12 +85,12 @@ _Gezhp 2019_
     ```
     // With make
     make down
-    
+
     // With docker-compose directly
     docker-compose down
     ```
-    
-The server container is configured to always restart: edit [the docker-compose configuration](docker-compose.yml) 
+
+The server container is configured to always restart: edit [the docker-compose configuration](docker-compose.yml)
 if you don't want this behaviour.
 
 
@@ -102,7 +102,7 @@ if you don't want this behaviour.
 | server/player/    | Player files ("pfiles")   | *
 | server/src/       | Source code
 
-`*` These directories are both mounted when using the docker-compose file to run the MUD. 
+`*` These directories are both mounted when using the docker-compose file to run the MUD.
     Areas can be modified and characters saved.
 
 
@@ -119,7 +119,7 @@ Maps generated from MUD areas can be found in the `maps` directory.
 
 | File                                  | Notes
 | ---                                   | ---
-| [world-map.svg](maps/world-map.svg)   | All areas linked to the world. Note the layout is not "geographic": locations are not arranged accurately with repsect to the cardinal directions.
+| [world-map.svg](maps/world-map.svg)   | All areas linked to the world. Note the layout is not "geographic": locations are not arranged accurately with respect to the cardinal directions.
 
 
 ## Immortals
@@ -138,11 +138,11 @@ If you want to create your own immortal:
 1.  Quit the game: `quit`.
 1.  Edit the new character's pfile. It will be the file `server/player/<initial letter>/<name>`.
     Make the following changes:
-    
+
     Set the characters level to 106 by altering the value of the existing _Lvl_ key:
     ```
     Lvl         106
-    ```    
+    ```
     Add the _sset_ (_skill set_) skill under the existing set of skills:
     ```
     Skll        100 'sset'
@@ -158,10 +158,10 @@ If you want to create your own immortal:
 
 ## Notes
 
--   _Shouldn't it be "Dragon's Domain"?_ 
+-   _Shouldn't it be "Dragon's Domain"?_
 
     Probably.
-    
+
 -   I used [tinyfugue](http://tinyfugue.sourceforge.net/) as a game client.
 
 -   The server seems to crash hard if directories it expects to exist do not. E.g. subdirectories of `/server/player`.
