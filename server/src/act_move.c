@@ -1964,9 +1964,10 @@ void do_recall (CHAR_DATA *ch, char *argument)
 			if (place != -1)
 			{
 				location = get_room_index(place);
-				sprintf(tmp, "%2d %c %s", iter,
+				sprintf(tmp, "%2d %c %-35s (%s)", iter,
 					((ch->pcdata->current_recall == iter) ? '*' : ' '),
-					location ? location->name : "(null)");
+					location ? location->name : "Unknown",
+					location ? location->area->name : "Unknown");
 				strcat(buf, tmp);
 
 				if (IS_IMMORTAL(ch))
