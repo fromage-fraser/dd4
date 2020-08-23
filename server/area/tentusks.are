@@ -324,7 +324,7 @@ a mud man~
 A mud man wades through the mud towards you.
 ~
 Made from wet, solid mud, this elemental is slow but strong and well
-armoured.  It's tortured features constantly warp and altar as his skin
+armoured.  Its tortured features constantly warp and altar as his skin
 oozes and drips.
 ~
 32|64 0 0 S
@@ -1993,7 +1993,7 @@ directly south.
 D0
 ~
 ~
-0 -1 25432
+0 -1 25431
 D1
 A smoky haze can be seen to the east.
 ~
@@ -2047,14 +2047,14 @@ D0
 portal~
 8 25425 25556
 D1
-Mud and dirt lay within the eastern portal.
+Snow and ice lay within the eastern portal.
 ~
 east~
-0 -1 25434
+0 -1 25433
 D2
 ~
 ~
-0 -1 25430
+0 -1 25431
 D3
 The air to the west is increasingly warmer.
 ~
@@ -2063,10 +2063,8 @@ west~
 S
 #25433
 The Snow Gate~
-You stand before an oval mirror, it's surface rippling like liquid and
-clouded over.  A cold wind gusts from the portal, with snow and ice
-spreading into the room.  You may step east into the gate or return
-westwards to the main hall.
+You stand before an oval mirror, its surface frozen solid and clouded
+over.  There seems to be no way through the icy gate.
 ~
 0 4|8 0
 D3
@@ -2089,7 +2087,7 @@ D1
 D3
 ~
 ~
-0 -1 25432
+0 -1 25431
 S
 #25435
 The Smoke Gate~
@@ -2129,8 +2127,8 @@ S
 The Gas Gate~
 An immense metal portal rises westwards, surrounded by an intense glowing
 field of magical energies.  The air is charged with electricity, and
-gaseous vapours spill out into the room.  You can head west into the gate
-or return eastwards to the corridor.
+gaseous vapours spill out into the room.  However, the portal resists
+your entry.
 ~
 0 4|8 0
 D1

@@ -1944,10 +1944,13 @@ void do_recall (CHAR_DATA *ch, char *argument)
 	{
 		int iter;
 		char tmp[MAX_STRING_LENGTH];
+		const char *template = "%2d %c %-35s (%s)";
 
 		sprintf(buf, "Recall points currently available (indexed by number):\n");
-		sprintf(tmp, " 0 %c Default recall (%s)",
+		sprintf(tmp, template,
+			0,
 			((!ch->pcdata->current_recall) ? '*' : ' '),
+			"Default recall",
 			get_room_index(DEFAULT_RECALL)->name);
 		strcat(buf, tmp);
 
@@ -1964,7 +1967,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
 			if (place != -1)
 			{
 				location = get_room_index(place);
-				sprintf(tmp, "%2d %c %-35s (%s)", iter,
+				sprintf(tmp, template, iter,
 					((ch->pcdata->current_recall == iter) ? '*' : ' '),
 					location ? location->name : "Unknown",
 					location ? location->area->name : "Unknown");
