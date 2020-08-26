@@ -720,6 +720,11 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 		strcat( buf1, " " );
 		one_argument( rch->name, buf );
 		strcat( buf1, buf );
+
+		if (IS_NPC(rch)) {
+			sprintf(buf, " (%d)", rch->pIndexData->vnum );
+                       	strcat(buf1, buf);
+		}
 	}
 
 	strcat( buf1, ".\n\rObjects:   " );
@@ -727,6 +732,8 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 	{
 		strcat( buf1, " " );
 		one_argument( obj->name, buf );
+		strcat( buf1, buf );
+		sprintf( buf, " (%d)", obj->pIndexData->vnum );
 		strcat( buf1, buf );
 	}
 	strcat( buf1, ".\n\r" );
