@@ -96,11 +96,13 @@ if you don't want this behaviour.
 
 ## Files
 
-| Directory         | Contents                  | Notes
-| ---               | ---                       | ---
-| server/area/      | Area files                | *
-| server/player/    | Player files ("pfiles")   | *
-| server/src/       | Source code
+| Directory         | Contents                          | Notes
+| ---               | ---                               | ---
+| `server/area/`    | Area files                        | *
+| `server/player/`  | Player files ("pfiles")           | *
+| `server/src/`     | Source code                       |
+| `faq/`            | Frequently Asked Questions        | See below
+| `maps/`           | Maps generated from area files    | See below
 
 `*` These directories are both mounted when using the docker-compose file to run the MUD.
     Areas can be modified and characters saved.
@@ -109,17 +111,51 @@ if you don't want this behaviour.
 ## FAQ
 
 An HTML FAQ for new players was hosted on the MUD's original website.
-There was a script and source files to generate the FAQ pages, but I no longer have them.
 The rendered FAQ pages can be found in the `faq` directory: [view the FAQ index](faq/dd-faq.html).
+
+There was a script and source files to generate the FAQ pages, but I no longer have them.
+
+The FAQ is a good place to start if you have no idea about how to play, or you aren't familiar with the DD4 MUD.
 
 
 ## Maps
 
-Maps generated from MUD areas can be found in the `maps` directory.
+Maps of the DD4 world can be found in the `maps` directory.
 
-| File                                  | Notes
-| ---                                   | ---
-| [world-map.svg](maps/world-map.svg)   | All areas linked to the world. Note the layout is not "geographic": locations are not arranged accurately with respect to the cardinal directions.
+
+#### Area maps
+
+Individual area maps can be found in `maps/areas` directory.
+
+Please note that the code used to generate these maps is far from perfect.
+There are currently some very strange layouts!
+
+(Generating these maps is a fairly interesting problem, as the world seems like a grid, but it is not really.)
+
+*Spoiler alert*: area maps contain information about healers, teachers, shops, no-recall and no-mobile rooms, and show
+all exits (apart from portals). However, the following are not shown: whether doors are locked or bash/lock/pass-proof;
+the location of any objects; the location of any mobiles (beyond healers, teachers and shopkeepers).
+
+| File                                      | Notes
+| ---                                       | ---
+| [Index](maps/area/index.html)             | Index of all maps
+| [Midgaard](maps/area/midgaard.html)       | Starting city
+| [Haon Dor](maps/area/haon.html)           | Wilderness west of Midgaard (many low-level areas nearby)
+| [Miden'nir](maps/area/haon.html)          | Wilderness east and south of Midgaard (many low-level areas nearby)
+| [Town Of Solace](maps/area/solace.html)   | Low-level city with many areas nearby
+| [The City of Anon](maps/area/tcwn.html)   | Key mid-level city
+
+
+#### World maps
+
+World maps can be found in `maps/world` directory.
+
+| File                                          | Notes
+| ---                                           | ---
+| [world-map.svg](maps/world/world-map.svg)     | All areas linked to the world. Note the layout is not "geographic": locations are not arranged accurately with respect to the cardinal directions. Portals between areas are shown in this map.
+
+(This map was a first attempt at trying to figure out where everything was again after all these years, but the lack
+of any sense of direction made it difficult to use.)
 
 
 ## Immortals

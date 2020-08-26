@@ -1,0 +1,3368 @@
+<!-- Built with MapMaker v0.2 at 2020-08-26T21:27:19.024502+01:00[Europe/London] -->
+<html lang="en">
+<head>
+    <title>Hel&#39;s Tower</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Almendra:400|Metamorphous:400,700|Open+Sans:400,600');
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            border: 0;
+            padding: 0;
+            margin: 3em 4em;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            color: #111111;
+            background: #efede6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Metamorphous', cursive;
+            color: #555555;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f69700;
+            text-decoration: underline;
+        }
+
+        a.invis {
+            height: 0;
+            width: 0;
+        }
+
+        .subheading {
+            font-family: 'Almendra', cursive;
+            font-size: 1.25em;
+        }
+
+        .vnum {
+            font-weight: bold;
+        }
+
+        .fragments {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: center;
+            margin: 1em -1em -1em -1em;
+        }
+
+        .fragment {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+        }
+
+        .legend {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 1em;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+        }
+
+        .legend-sector {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+        }
+
+        .legend-symbol {
+            margin: auto;
+        }
+
+        .legend-description {
+        }
+
+        .cells {
+            border: 30px solid #cccccc;
+            border-radius: 4px;
+            display: grid;
+            grid-gap: 1px;
+            margin: 0;
+        }
+
+        .cell {
+            box-sizing: border-box;
+            height: 108px;
+            width: 108px;
+        }
+
+        .room-cell {
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .area-exit-cell {
+            background: #ff530d;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .connector-cell {
+            background: #cccccc;
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr;
+            grid-template-rows: 2fr 2fr 2fr;
+        }
+
+        .north-south-connection {
+            grid-column: 2;
+            grid-row: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .east-west-connection {
+            grid-row: 2;
+            grid-column: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .empty-cell {
+            background: #cccccc;
+        }
+
+        .room-top-left {
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+
+        .sector-inside {
+            background: #808080;
+        }
+
+        .sector-city {
+            background: #aba596;
+        }
+
+        .sector-field {
+            background: #b1ba31;
+        }
+
+        .sector-forest {
+            background: #6b9d3d;
+        }
+
+        .sector-hills {
+            background: #7d995e;
+        }
+
+        .sector-mountain {
+            background: #929292;
+        }
+
+        .sector-water_swim {
+            background: #59addb;
+        }
+
+        .sector-water_no_swim {
+            background: #0c62bd;
+        }
+
+        .sector-underwater {
+            background: #082fa9;
+        }
+
+        .sector-air {
+            background: #c4d3d7;
+        }
+
+        .sector-desert {
+            background: #e2bf11;
+        }
+
+        .room-main {
+            color: #333333;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .area-exit-main {
+            color: #b13808;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .cell-main-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            hyphens: auto;
+            margin: 10px;
+            overflow: hidden;
+        }
+
+        .area-exit-main a:link,
+        .area-exit-main a:visited,
+        .area-exit-main a:hover,
+        .area-exit-main a:active {
+            color: #b13808;
+        }
+
+        .cell-edge-n {
+            grid-row: 1;
+            grid-column: 3 / 4;
+            border-width: 0 2px 2px 2px;
+        }
+
+        .cell-edge-s {
+            grid-row: 5;
+            grid-column: 3 / 4;
+            border-width: 2px 2px 0 2px;
+        }
+
+        .cell-edge-e {
+            grid-row: 3 / 4;
+            grid-column: 5;
+            border-width: 2px 0 2px 2px;
+        }
+
+        .cell-edge-w {
+            grid-row: 3 / 4;
+            grid-column: 1;
+            border-width: 2px 2px 2px 0;
+        }
+
+        .cell-edge-type-open {
+            background: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .cell-edge-type-door-north, .cell-edge-type-door-south, .cell-edge-type-door-east, .cell-edge-type-door-west {
+            z-index: 100;
+            background: #d8c4b8;
+            border-color: #6b5130;
+            border-style: solid;
+            border-radius: 2px;
+        }
+
+        .cell-edge-type-door-north {
+            margin: -1px 12px -4px 12px;
+        }
+
+        .cell-edge-type-door-south {
+            margin: -4px 12px -1px 12px;
+        }
+
+        .cell-edge-type-door-east {
+            margin: 12px -1px 12px -4px;
+        }
+
+        .cell-edge-type-door-west {
+            margin: 12px -4px 12px -1px;
+        }
+
+        .cell-link {
+            z-index: 100;
+            font-family: monospace;
+            font-size: 12px;
+            margin: auto;
+        }
+
+        .cell-link-n {
+            grid-row: 1  / 4;
+            grid-column: 2 / 5;
+            margin-top: 1px
+        }
+
+        .cell-link-s {
+            grid-row: 3 / 6;
+            grid-column: 3 / 4;
+            margin-bottom: 1px
+        }
+
+        .cell-link-e {
+            grid-row: 2 / 5;
+            grid-column: 3 / 6;
+            margin-right: 0;
+        }
+
+        .cell-link-w {
+            grid-row: 2 / 5;
+            grid-column: 1 / 4;
+            margin-left: 0
+        }
+
+        .cell-link-u {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+
+        .cell-link-d {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-right: 3px;
+            margin-bottom: 3px;
+        }
+
+        .cell-link-type-unlinked {
+            background: #ee00ff;
+            color: #fdfdfd;
+            padding: 1px 4px;
+            border-radius: 12px;
+        }
+
+        .cell-link-type-jump {
+            background: #fb8403;
+            color: #fafafa;
+            padding: 1px 4px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .arrow-direction-n::before {
+            content: "^";
+        }
+
+        .arrow-direction-s::before {
+            content: "v";
+        }
+
+        .arrow-direction-e::before {
+            content: ">";
+        }
+
+        .arrow-direction-w::before {
+            content: "<";
+        }
+
+        .arrow-direction-u::before {
+            content: "^";
+        }
+
+        .arrow-direction-d::before {
+            content: "v";
+        }
+
+        .cell-link-type-link {
+            background: #b9c2c7;
+            color: #fafafa;
+            padding: 1px 4px;
+        }
+
+        .room-flags {
+            margin-top: 5px;
+        }
+
+        .room-flag {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 10px;
+            background: #999999;
+            color: #f8f8f8;
+            font-family: monospace;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .room-flag-randomized-exits::before {
+            content: "R";
+        }
+
+        .room-flag-no-mobiles {
+            background: #1aa8e2 !important;
+        }
+
+        .room-flag-no-mobiles::before {
+            content: "NM";
+        }
+
+        .room-flag-no-recall {
+            background: #102e67 !important;
+        }
+
+        .room-flag-no-recall::before {
+            content: "NR";
+        }
+
+        .room-flag-healer {
+            background: #2b9611 !important;
+        }
+
+        .room-flag-healer::before {
+            content: "H";
+        }
+
+        .room-flag-shop {
+            background: #ffbf00 !important;
+            color: #483602 !important;
+        }
+
+        .room-flag-shop::before {
+            content: "$";
+        }
+
+
+        .room-flag-teacher {
+            background: #b516c6 !important;
+        }
+
+        .room-flag-teacher::before {
+            content: "T";
+        }
+
+        .room-label {
+            padding: 1px 4px;
+            border-radius: 2px;
+            background: #cc4114;
+            color: #f8f8f8;
+            font-family: monospace;
+            cursor: pointer;
+        }
+
+        .summary .links {
+            float: right;
+        }
+
+        .summary .links a {
+             margin-left: 1em;
+        }
+    </style>
+</head>
+<body>
+<div class="summary">
+    <div class="links">
+        <a href="#legend">Legend</a>
+        <a href="index.html">Index</a>
+    </div>
+    <h1>Hel&#39;s Tower</h1>
+        <div class="subheading">Levels 30-60</div>
+</div>
+<div class="fragments">
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!--  Room vnum 13501 at (0, 1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-door-south"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-1"><span class="cell-link-type-jump arrow-direction-u" title="Up to 1 (The Mist)">1</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Entryway">
+                                            <span>The Entryway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13500 at (0, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-door-north"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Portal">
+                                            <span>The Portal</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(5, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13519 at (0, 4) -->
+                            <div class="cell room-cell sector-inside"id="label-22">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-21"><span class="cell-link-type-jump arrow-direction-u" title="Up to 21 (The Mist)">21</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">22</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13517 at (-1, 3) -->
+                            <div class="cell room-cell sector-inside"id="label-24">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-23"><span class="cell-link-type-jump arrow-direction-u" title="Up to 23 (The Mist)">23</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">24</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13518 at (0, 3) -->
+                            <div class="cell room-cell sector-inside"id="label-20">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-19"><span class="cell-link-type-jump arrow-direction-u" title="Up to 19 (The Mist)">19</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">20</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13520 at (1, 3) -->
+                            <div class="cell room-cell sector-inside"id="label-18">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-17"><span class="cell-link-type-jump arrow-direction-u" title="Up to 17 (The Mist)">17</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">18</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13515 at (-2, 2) -->
+                            <div class="cell room-cell sector-inside"id="label-12">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-11"><span class="cell-link-type-jump arrow-direction-u" title="Up to 11 (The Stairway)">11</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">12</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13514 at (-1, 2) -->
+                            <div class="cell room-cell sector-inside"id="label-27">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-26"><span class="cell-link-type-jump arrow-direction-u" title="Up to 26 (The Mist)">26</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">27</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13504 at (0, 2) -->
+                            <div class="cell room-cell sector-inside"id="label-3">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-2"><span class="cell-link-type-jump arrow-direction-u" title="Up to 2 (The Mist)">2</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">3</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13512 at (1, 2) -->
+                            <div class="cell room-cell sector-inside"id="label-14">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-13"><span class="cell-link-type-jump arrow-direction-u" title="Up to 13 (The Mist)">13</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">14</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13513 at (2, 2) -->
+                            <div class="cell room-cell sector-inside"id="label-16">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-15"><span class="cell-link-type-jump arrow-direction-u" title="Up to 15 (The Mist)">15</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">16</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13505 at (-1, 1) -->
+                            <div class="cell room-cell sector-inside"id="label-10">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-9"><span class="cell-link-type-jump arrow-direction-u" title="Up to 9 (The Mist)">9</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">10</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13503 at (0, 1) -->
+                            <div class="cell room-cell sector-inside"id="label-5">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-4"><span class="cell-link-type-jump arrow-direction-u" title="Up to 4 (The Mist)">4</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">5</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13506 at (1, 1) -->
+                            <div class="cell room-cell sector-inside"id="label-8">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-7"><span class="cell-link-type-jump arrow-direction-u" title="Up to 7 (The Mist)">7</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">8</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13502 at (0, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-1">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-6"><span class="cell-link-type-jump arrow-direction-u" title="Up to 6 (The Mist)">6</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">1</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(5, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13525 at (0, 2) -->
+                            <div class="cell room-cell sector-air"id="label-21">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-22"><span class="cell-link-type-jump arrow-direction-d" title="Down to 22 (The Mist)">22</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">21</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13526 at (-1, 1) -->
+                            <div class="cell room-cell sector-air"id="label-23">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-24"><span class="cell-link-type-jump arrow-direction-d" title="Down to 24 (The Mist)">24</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">23</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13524 at (0, 1) -->
+                            <div class="cell room-cell sector-air"id="label-19">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-20"><span class="cell-link-type-jump arrow-direction-d" title="Down to 20 (The Mist)">20</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">19</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13523 at (1, 1) -->
+                            <div class="cell room-cell sector-air"id="label-17">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-18"><span class="cell-link-type-jump arrow-direction-d" title="Down to 18 (The Mist)">18</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">17</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13516 at (-2, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-11">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-25"><span class="cell-link-type-jump arrow-direction-u" title="Up to 25 (The Wooded Maze)">25</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-12"><span class="cell-link-type-jump arrow-direction-d" title="Down to 12 (The Mist)">12</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Stairway">
+                                                <div><span class="room-label">11</span></div>
+                                            <span>The Stairway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13528 at (-1, 0) -->
+                            <div class="cell room-cell sector-air"id="label-26">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-27"><span class="cell-link-type-jump arrow-direction-d" title="Down to 27 (The Mist)">27</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">26</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13507 at (0, 0) -->
+                            <div class="cell room-cell sector-air"id="label-2">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-3"><span class="cell-link-type-jump arrow-direction-d" title="Down to 3 (The Mist)">3</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">2</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13521 at (1, 0) -->
+                            <div class="cell room-cell sector-air"id="label-13">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-14"><span class="cell-link-type-jump arrow-direction-d" title="Down to 14 (The Mist)">14</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">13</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13522 at (2, 0) -->
+                            <div class="cell room-cell sector-air"id="label-15">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-16"><span class="cell-link-type-jump arrow-direction-d" title="Down to 16 (The Mist)">16</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">15</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13511 at (-1, -1) -->
+                            <div class="cell room-cell sector-air"id="label-9">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-10"><span class="cell-link-type-jump arrow-direction-d" title="Down to 10 (The Mist)">10</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">9</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13508 at (0, -1) -->
+                            <div class="cell room-cell sector-air"id="label-4">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-5"><span class="cell-link-type-jump arrow-direction-d" title="Down to 5 (The Mist)">5</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">4</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13510 at (1, -1) -->
+                            <div class="cell room-cell sector-air"id="label-7">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-8"><span class="cell-link-type-jump arrow-direction-d" title="Down to 8 (The Mist)">8</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">7</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13509 at (0, -2) -->
+                            <div class="cell room-cell sector-air"id="label-6">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-1"><span class="cell-link-type-jump arrow-direction-d" title="Down to 1 (The Mist)">1</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Mist">
+                                                <div><span class="room-label">6</span></div>
+                                            <span>The Mist</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(5, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13533 at (2, 2) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13531 at (1, 1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13532 at (2, 1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13534 at (3, 1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13527 at (0, 0) -->
+                            <div class="cell room-cell sector-forest"id="label-25">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                                <div><span class="room-label">25</span></div>
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13529 at (1, 0) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13530 at (2, 0) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13535 at (3, 0) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Hag&#39;s Garden">
+                                            <span>The Hag&#39;s Garden</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13536 at (4, 0) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-28"><span class="cell-link-type-jump arrow-direction-u" title="Up to 28 (The Sea of Fire)">28</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Stairway">
+                                            <span>The Stairway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13540 at (1, -1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13538 at (2, -1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13537 at (3, -1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13539 at (2, -2) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Wooded Maze">
+                                            <span>The Wooded Maze</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(5, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13552 at (-2, 2) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the Sea of Fire">
+                                            <span>In the Sea of Fire</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13551 at (-3, 1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13550 at (-2, 1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13549 at (-1, 1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13553 at (-4, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-29"><span class="cell-link-type-jump arrow-direction-u" title="Up to 29 (Falling Upwards!)">29</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Bodies">
+                                            <span>The Bodies</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13548 at (-3, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13543 at (-2, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the Sea of Fire">
+                                            <span>In the Sea of Fire</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13542 at (-1, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13541 at (0, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-28">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Sea of Fire">
+                                                <div><span class="room-label">28</span></div>
+                                            <span>The Sea of Fire</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13547 at (-3, -1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13545 at (-2, -1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13544 at (-1, -1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Pathway">
+                                            <span>The Pathway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13546 at (-2, -2) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the Sea of Fire">
+                                            <span>In the Sea of Fire</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!--  Room vnum 13554 at (0, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-29">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-30"><span class="cell-link-type-jump arrow-direction-u" title="Up to 30 (Splash!!)">30</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Falling Upwards!">
+                                                <div><span class="room-label">29</span></div>
+                                            <span>Falling Upwards!</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(3, 1fr);" class="cells">
+                            <!--  Room vnum 13563 at (0, 1) -->
+                            <div class="cell room-cell sector-water_swim"id="label-42">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-41"><span class="cell-link-type-jump arrow-direction-d" title="Down to 41 (Underwater)">41</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">42</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13555 at (0, 0) -->
+                            <div class="cell room-cell sector-water_swim"id="label-30">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Splash!!">
+                                                <div><span class="room-label">30</span></div>
+                                            <span>Splash!!</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13556 at (1, 0) -->
+                            <div class="cell room-cell sector-water_swim"id="label-33">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-32"><span class="cell-link-type-jump arrow-direction-d" title="Down to 32 (Underwater)">32</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">33</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13560 at (0, -1) -->
+                            <div class="cell room-cell sector-water_swim"id="label-39">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                            <a href="#label-31"><span class="cell-link-type-jump arrow-direction-e" title="East to 31 (In the water)">31</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-38"><span class="cell-link-type-jump arrow-direction-d" title="Down to 38 (Underwater)">38</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">39</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13557 at (0, -2) -->
+                            <div class="cell room-cell sector-water_swim"id="label-35">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-34"><span class="cell-link-type-jump arrow-direction-d" title="Down to 34 (Underwater)">34</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">35</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13558 at (1, -2) -->
+                            <div class="cell room-cell sector-desert">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="On the island">
+                                            <span>On the island</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13559 at (2, -2) -->
+                            <div class="cell room-cell sector-water_swim"id="label-37">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-36"><span class="cell-link-type-jump arrow-direction-d" title="Down to 36 (Underwater)">36</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">37</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13561 at (0, -3) -->
+                            <div class="cell room-cell sector-water_swim"id="label-31">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                            <a href="#label-39"><span class="cell-link-type-jump arrow-direction-w" title="West to 39 (In the water)">39</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-40"><span class="cell-link-type-jump arrow-direction-d" title="Down to 40 (Underwater)">40</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">31</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13562 at (1, -3) -->
+                            <div class="cell room-cell sector-desert">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="On the island">
+                                            <span>On the island</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13564 at (0, -4) -->
+                            <div class="cell room-cell sector-water_swim"id="label-44">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-43"><span class="cell-link-type-jump arrow-direction-d" title="Down to 43 (Underwater)">43</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">44</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13565 at (1, -4) -->
+                            <div class="cell room-cell sector-water_swim"id="label-46">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-45"><span class="cell-link-type-jump arrow-direction-d" title="Down to 45 (Underwater)">45</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">46</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13566 at (2, -4) -->
+                            <div class="cell room-cell sector-water_swim"id="label-48">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-47"><span class="cell-link-type-jump arrow-direction-d" title="Down to 47 (Underwater)">47</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">48</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13567 at (1, -5) -->
+                            <div class="cell room-cell sector-water_swim"id="label-50">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-49"><span class="cell-link-type-jump arrow-direction-d" title="Down to 49 (Underwater)">49</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the water">
+                                                <div><span class="room-label">50</span></div>
+                                            <span>In the water</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!--  Room vnum 13568 at (0, 0) -->
+                            <div class="cell room-cell sector-underwater"id="label-32">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-33"><span class="cell-link-type-jump arrow-direction-u" title="Up to 33 (In the water)">33</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">32</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(5, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13569 at (0, 0) -->
+                            <div class="cell room-cell sector-underwater"id="label-34">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-35"><span class="cell-link-type-jump arrow-direction-u" title="Up to 35 (In the water)">35</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">34</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13580 at (1, 0) -->
+                            <div class="cell room-cell sector-underwater"id="label-52">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-51"><span class="cell-link-type-jump arrow-direction-d" title="Down to 51 (Hel&#39;s Chamber)">51</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Hatchway">
+                                                <div><span class="room-label">52</span></div>
+                                            <span>The Hatchway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13570 at (2, 0) -->
+                            <div class="cell room-cell sector-underwater"id="label-36">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-37"><span class="cell-link-type-jump arrow-direction-u" title="Up to 37 (In the water)">37</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">36</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13571 at (-1, -1) -->
+                            <div class="cell room-cell sector-underwater"id="label-38">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-39"><span class="cell-link-type-jump arrow-direction-u" title="Up to 39 (In the water)">39</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">38</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13572 at (0, -1) -->
+                            <div class="cell room-cell sector-underwater"id="label-40">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-31"><span class="cell-link-type-jump arrow-direction-u" title="Up to 31 (In the water)">31</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">40</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13579 at (1, -1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Underwater Cavern">
+                                            <span>The Underwater Cavern</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13578 at (2, -1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Leviathan&#39;s Lair">
+                                            <span>The Leviathan&#39;s Lair</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13573 at (3, -1) -->
+                            <div class="cell room-cell sector-underwater"id="label-41">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-42"><span class="cell-link-type-jump arrow-direction-u" title="Up to 42 (In the water)">42</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">41</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13574 at (0, -2) -->
+                            <div class="cell room-cell sector-underwater"id="label-43">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-44"><span class="cell-link-type-jump arrow-direction-u" title="Up to 44 (In the water)">44</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">43</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13575 at (1, -2) -->
+                            <div class="cell room-cell sector-underwater"id="label-45">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-46"><span class="cell-link-type-jump arrow-direction-u" title="Up to 46 (In the water)">46</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">45</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13576 at (2, -2) -->
+                            <div class="cell room-cell sector-underwater"id="label-47">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-48"><span class="cell-link-type-jump arrow-direction-u" title="Up to 48 (In the water)">48</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">47</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 13577 at (1, -3) -->
+                            <div class="cell room-cell sector-underwater"id="label-49">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-50"><span class="cell-link-type-jump arrow-direction-u" title="Up to 50 (In the water)">50</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">49</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!--  Room vnum 13582 at (0, 1) -->
+                            <div class="cell room-cell sector-inside"id="label-54">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-53"><span class="cell-link-type-jump arrow-direction-u" title="Up to 53 (The Fane of the Soul Gem)">53</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Hel&#39;s Chamber">
+                                                <div><span class="room-label">54</span></div>
+                                            <span>Hel&#39;s Chamber</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 13581 at (0, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-51">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-52"><span class="cell-link-type-jump arrow-direction-u" title="Up to 52 (The Hatchway)">52</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Hel&#39;s Chamber">
+                                                <div><span class="room-label">51</span></div>
+                                            <span>Hel&#39;s Chamber</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <!--  Room vnum 13583 at (0, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-53">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-54"><span class="cell-link-type-jump arrow-direction-d" title="Down to 54 (Hel&#39;s Chamber)">54</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="The Fane of the Soul Gem">
+                                                <div><span class="room-label">53</span></div>
+                                            <span>The Fane of the Soul Gem</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+    <div id="legend" class="legend">
+        <div class="legend-symbol"><span class="room-label">123</span></div>
+        <div class="legend-description">Numbered location</div>
+
+        <div class="legend-symbol"><span class="cell-link cell-link-type-jump arrow-direction-u">123</span></div>
+        <div class="legend-description">Exit to a numbered location</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-randomized-exits"></span></div>
+        <div class="legend-description">Randomized exits</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-no-mobiles"></span></div>
+        <div class="legend-description">Mobiles cannot enter</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-no-recall"></span></div>
+        <div class="legend-description">Cannot recall</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-healer"></span></div>
+        <div class="legend-description">Healer</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-shop"></span></div>
+        <div class="legend-description">Shop</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-teacher"></span></div>
+        <div class="legend-description">Teacher</div>
+
+        <div class="legend-symbol"><span class="area-exit-cell"></span></div>
+        <div class="legend-description">Exit to another area</div>
+
+        <div class="legend-symbol"><span class="cell-link cell-link-type-unlinked">?</span></div>
+        <div class="legend-description">Unknown exit</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-inside"></span></div>
+        <div class="legend-description">Inside</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-city"></span></div>
+        <div class="legend-description">City</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-field"></span></div>
+        <div class="legend-description">Fields</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-forest"></span></div>
+        <div class="legend-description">Forest</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-hills"></span></div>
+        <div class="legend-description">Hills</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-mountain"></span></div>
+        <div class="legend-description">Mountains</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-water_swim"></span></div>
+        <div class="legend-description">Swimmable water</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-water_no_swim"></span></div>
+        <div class="legend-description">Unswimmable water</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-underwater"></span></div>
+        <div class="legend-description">Underwater</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-air"></span></div>
+        <div class="legend-description">In the air</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-desert"></span></div>
+        <div class="legend-description">Desert</div>
+    </div>
+</div>
+</body>
+</html>
