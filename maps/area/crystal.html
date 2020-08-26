@@ -1,0 +1,3218 @@
+<!-- Built with MapMaker v0.2 at 2020-08-26T21:27:18.704150+01:00[Europe/London] -->
+<html lang="en">
+<head>
+    <title>Crystalmir Lake</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Almendra:400|Metamorphous:400,700|Open+Sans:400,600');
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            border: 0;
+            padding: 0;
+            margin: 3em 4em;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            color: #111111;
+            background: #efede6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Metamorphous', cursive;
+            color: #555555;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f69700;
+            text-decoration: underline;
+        }
+
+        a.invis {
+            height: 0;
+            width: 0;
+        }
+
+        .subheading {
+            font-family: 'Almendra', cursive;
+            font-size: 1.25em;
+        }
+
+        .vnum {
+            font-weight: bold;
+        }
+
+        .fragments {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: center;
+            margin: 1em -1em -1em -1em;
+        }
+
+        .fragment {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+        }
+
+        .legend {
+            border: 1px solid #999999;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px;
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 1em;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+        }
+
+        .legend-sector {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+        }
+
+        .legend-symbol {
+            margin: auto;
+        }
+
+        .legend-description {
+        }
+
+        .cells {
+            border: 30px solid #cccccc;
+            border-radius: 4px;
+            display: grid;
+            grid-gap: 1px;
+            margin: 0;
+        }
+
+        .cell {
+            box-sizing: border-box;
+            height: 108px;
+            width: 108px;
+        }
+
+        .room-cell {
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .area-exit-cell {
+            background: #ff530d;
+            display: grid;
+            grid-template-columns: 6px 1fr 5fr 1fr 6px;
+            grid-template-rows: 6px 1fr 5fr 1fr 6px;
+        }
+
+        .connector-cell {
+            background: #cccccc;
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr;
+            grid-template-rows: 2fr 2fr 2fr;
+        }
+
+        .north-south-connection {
+            grid-column: 2;
+            grid-row: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .east-west-connection {
+            grid-row: 2;
+            grid-column: 1 / 4;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .empty-cell {
+            background: #cccccc;
+        }
+
+        .room-top-left {
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+
+        .sector-inside {
+            background: #808080;
+        }
+
+        .sector-city {
+            background: #aba596;
+        }
+
+        .sector-field {
+            background: #b1ba31;
+        }
+
+        .sector-forest {
+            background: #6b9d3d;
+        }
+
+        .sector-hills {
+            background: #7d995e;
+        }
+
+        .sector-mountain {
+            background: #929292;
+        }
+
+        .sector-water_swim {
+            background: #59addb;
+        }
+
+        .sector-water_no_swim {
+            background: #0c62bd;
+        }
+
+        .sector-underwater {
+            background: #082fa9;
+        }
+
+        .sector-air {
+            background: #c4d3d7;
+        }
+
+        .sector-desert {
+            background: #e2bf11;
+        }
+
+        .room-main {
+            color: #333333;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .area-exit-main {
+            color: #b13808;
+            background: #ffffff;
+            grid-column: 2 / 5;
+            grid-row: 2 / 5;
+        }
+
+        .cell-main-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            hyphens: auto;
+            margin: 10px;
+            overflow: hidden;
+        }
+
+        .area-exit-main a:link,
+        .area-exit-main a:visited,
+        .area-exit-main a:hover,
+        .area-exit-main a:active {
+            color: #b13808;
+        }
+
+        .cell-edge-n {
+            grid-row: 1;
+            grid-column: 3 / 4;
+            border-width: 0 2px 2px 2px;
+        }
+
+        .cell-edge-s {
+            grid-row: 5;
+            grid-column: 3 / 4;
+            border-width: 2px 2px 0 2px;
+        }
+
+        .cell-edge-e {
+            grid-row: 3 / 4;
+            grid-column: 5;
+            border-width: 2px 0 2px 2px;
+        }
+
+        .cell-edge-w {
+            grid-row: 3 / 4;
+            grid-column: 1;
+            border-width: 2px 2px 2px 0;
+        }
+
+        .cell-edge-type-open {
+            background: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .cell-edge-type-door-north, .cell-edge-type-door-south, .cell-edge-type-door-east, .cell-edge-type-door-west {
+            z-index: 100;
+            background: #d8c4b8;
+            border-color: #6b5130;
+            border-style: solid;
+            border-radius: 2px;
+        }
+
+        .cell-edge-type-door-north {
+            margin: -1px 12px -4px 12px;
+        }
+
+        .cell-edge-type-door-south {
+            margin: -4px 12px -1px 12px;
+        }
+
+        .cell-edge-type-door-east {
+            margin: 12px -1px 12px -4px;
+        }
+
+        .cell-edge-type-door-west {
+            margin: 12px -4px 12px -1px;
+        }
+
+        .cell-link {
+            z-index: 100;
+            font-family: monospace;
+            font-size: 12px;
+            margin: auto;
+        }
+
+        .cell-link-n {
+            grid-row: 1  / 4;
+            grid-column: 2 / 5;
+            margin-top: 1px
+        }
+
+        .cell-link-s {
+            grid-row: 3 / 6;
+            grid-column: 3 / 4;
+            margin-bottom: 1px
+        }
+
+        .cell-link-e {
+            grid-row: 2 / 5;
+            grid-column: 3 / 6;
+            margin-right: 0;
+        }
+
+        .cell-link-w {
+            grid-row: 2 / 5;
+            grid-column: 1 / 4;
+            margin-left: 0
+        }
+
+        .cell-link-u {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+
+        .cell-link-d {
+            grid-row: 1 / 6;
+            grid-column: 1 / 6;
+            margin-right: 3px;
+            margin-bottom: 3px;
+        }
+
+        .cell-link-type-unlinked {
+            background: #ee00ff;
+            color: #fdfdfd;
+            padding: 1px 4px;
+            border-radius: 12px;
+        }
+
+        .cell-link-type-jump {
+            background: #fb8403;
+            color: #fafafa;
+            padding: 1px 4px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .arrow-direction-n::before {
+            content: "^";
+        }
+
+        .arrow-direction-s::before {
+            content: "v";
+        }
+
+        .arrow-direction-e::before {
+            content: ">";
+        }
+
+        .arrow-direction-w::before {
+            content: "<";
+        }
+
+        .arrow-direction-u::before {
+            content: "^";
+        }
+
+        .arrow-direction-d::before {
+            content: "v";
+        }
+
+        .cell-link-type-link {
+            background: #b9c2c7;
+            color: #fafafa;
+            padding: 1px 4px;
+        }
+
+        .room-flags {
+            margin-top: 5px;
+        }
+
+        .room-flag {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 10px;
+            background: #999999;
+            color: #f8f8f8;
+            font-family: monospace;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .room-flag-randomized-exits::before {
+            content: "R";
+        }
+
+        .room-flag-no-mobiles {
+            background: #1aa8e2 !important;
+        }
+
+        .room-flag-no-mobiles::before {
+            content: "NM";
+        }
+
+        .room-flag-no-recall {
+            background: #102e67 !important;
+        }
+
+        .room-flag-no-recall::before {
+            content: "NR";
+        }
+
+        .room-flag-healer {
+            background: #2b9611 !important;
+        }
+
+        .room-flag-healer::before {
+            content: "H";
+        }
+
+        .room-flag-shop {
+            background: #ffbf00 !important;
+            color: #483602 !important;
+        }
+
+        .room-flag-shop::before {
+            content: "$";
+        }
+
+
+        .room-flag-teacher {
+            background: #b516c6 !important;
+        }
+
+        .room-flag-teacher::before {
+            content: "T";
+        }
+
+        .room-label {
+            padding: 1px 4px;
+            border-radius: 2px;
+            background: #cc4114;
+            color: #f8f8f8;
+            font-family: monospace;
+            cursor: pointer;
+        }
+
+        .summary .links {
+            float: right;
+        }
+
+        .summary .links a {
+             margin-left: 1em;
+        }
+    </style>
+</head>
+<body>
+<div class="summary">
+    <div class="links">
+        <a href="#legend">Legend</a>
+        <a href="index.html">Index</a>
+    </div>
+    <h1>Crystalmir Lake</h1>
+        <div class="subheading">Levels 5-15</div>
+</div>
+<div class="fragments">
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(1, 1fr);" class="cells">
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="klaelo2.html">Forest</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10001 at (0, 0) -->
+                            <div class="cell room-cell sector-mountain"id="label-2">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-1"><span class="cell-link-type-jump arrow-direction-d" title="Down to 1 (Road among the Vallenwoods.)">1</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Rock Outcropping">
+                                                <div><span class="room-label">2</span></div>
+                                            <span>Rock Outcropping</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(10, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10037 at (-5, 4) -->
+                            <div class="cell room-cell sector-field"id="label-9">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                            <a href="#label-8"><span class="cell-link-type-jump arrow-direction-n" title="North to 8 (Northfields)">8</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                            <a href="#label-10"><span class="cell-link-type-jump arrow-direction-w" title="West to 10 (Northfields)">10</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                                <div><span class="room-label">9</span></div>
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="east-west-connection"></div>
+                            </div>
+                            <!--  Room vnum 10033 at (-3, 4) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10034 at (-2, 4) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10035 at (-1, 4) -->
+                            <div class="cell room-cell sector-field"id="label-11">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                            <a href="#label-8"><span class="cell-link-type-jump arrow-direction-e" title="East to 8 (Northfields)">8</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                                <div><span class="room-label">11</span></div>
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10039 at (-5, 3) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-door-east"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="A Farmer&#39;s House">
+                                            <span>A Farmer&#39;s House</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10040 at (-4, 3) -->
+                            <div class="cell room-cell sector-inside"id="label-5">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-door-west"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-4"><span class="cell-link-type-jump arrow-direction-u" title="Up to 4 (Top of Stairs)">4</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Living Room">
+                                                <div><span class="room-label">5</span></div>
+                                            <span>Living Room</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10032 at (-3, 3) -->
+                            <div class="cell room-cell sector-field"id="label-3">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                            <a href="#label-8"><span class="cell-link-type-jump arrow-direction-w" title="West to 8 (Northfields)">8</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                                <div><span class="room-label">3</span></div>
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10031 at (-2, 3) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10036 at (-1, 3) -->
+                            <div class="cell room-cell sector-field"id="label-10">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                            <a href="#label-9"><span class="cell-link-type-jump arrow-direction-e" title="East to 9 (Northfields)">9</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                                <div><span class="room-label">10</span></div>
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="white.html">White Lotus Temple</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10018 at (-6, 2) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Smoldering Campsite">
+                                            <span>Smoldering Campsite</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10017 at (-5, 2) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Trail through forest">
+                                            <span>Trail through forest</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10038 at (-3, 2) -->
+                            <div class="cell room-cell sector-field"id="label-8">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                            <a href="#label-9"><span class="cell-link-type-jump arrow-direction-s" title="South to 9 (Northfields)">9</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                            <a href="#label-3"><span class="cell-link-type-jump arrow-direction-e" title="East to 3 (Northfields)">3</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                            <a href="#label-11"><span class="cell-link-type-jump arrow-direction-w" title="West to 11 (Northfields)">11</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                                <div><span class="room-label">8</span></div>
+                                            <span>Northfields</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10016 at (-5, 1) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Jakanth Vale">
+                                            <span>Jakanth Vale</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="east-west-connection"></div>
+                            </div>
+                            <!--  Room vnum 10015 at (-3, 1) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Twin Flat">
+                                            <span>Twin Flat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10014 at (-2, 1) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Northfields">
+                                            <span>Northfields</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10013 at (-1, 1) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Nearfields">
+                                            <span>Nearfields</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="mountain.html">Sentinel Pass</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10020 at (-6, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Twin Peaks Vale">
+                                            <span>Twin Peaks Vale</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10019 at (-5, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Sentinal Gap">
+                                            <span>Sentinal Gap</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="east-west-connection"></div>
+                            </div>
+                            <!--  Room vnum 10009 at (-3, 0) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Path along the Lake">
+                                            <span>Path along the Lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10006 at (-2, 0) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="North shore of Crystalmir Lake">
+                                            <span>North shore of Crystalmir Lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10007 at (-1, 0) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Path along lake">
+                                            <span>Path along lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="solace.html">Town Of Solace</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10021 at (-5, -1) -->
+                            <div class="cell room-cell sector-mountain">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Prayers Eye Peak">
+                                            <span>Prayers Eye Peak</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="east-west-connection"></div>
+                            </div>
+                            <!--  Room vnum 10008 at (-3, -1) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="West shore of Crystalmir Lake">
+                                            <span>West shore of Crystalmir Lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10005 at (-2, -1) -->
+                            <div class="cell room-cell sector-water_no_swim"id="label-7">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-6"><span class="cell-link-type-jump arrow-direction-d" title="Down to 6 (Underwater)">6</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Middle of Crystalmir Lake">
+                                                <div><span class="room-label">7</span></div>
+                                            <span>Middle of Crystalmir Lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10004 at (-1, -1) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="East shore of Crystalmir Lake">
+                                            <span>East shore of Crystalmir Lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10003 at (0, -1) -->
+                            <div class="cell room-cell sector-city">
+                                <div class="cell-edge-n cell-edge-type-door-north"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Entrance to the Town of Solace">
+                                            <span>Entrance to the Town of Solace</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10002 at (1, -1) -->
+                            <div class="cell room-cell sector-forest"id="label-1">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-2"><span class="cell-link-type-jump arrow-direction-u" title="Up to 2 (Rock Outcropping)">2</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Road among the Vallenwoods.">
+                                                <div><span class="room-label">1</span></div>
+                                            <span>Road among the Vallenwoods.</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-teacher" title="Teacher"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10028 at (-5, -2) -->
+                            <div class="cell room-cell sector-mountain">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the Mountains">
+                                            <span>In the Mountains</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10012 at (-3, -2) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Path along the lakeshore">
+                                            <span>Path along the lakeshore</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10010 at (-2, -2) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="South shore of Crystalmir Lake">
+                                            <span>South shore of Crystalmir Lake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10011 at (-1, -2) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Path along the lakeshore">
+                                            <span>Path along the lakeshore</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10022 at (0, -2) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Road through the forest">
+                                            <span>Road through the forest</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10029 at (1, -2) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Among the Vallenwoods">
+                                            <span>Among the Vallenwoods</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10027 at (-5, -3) -->
+                            <div class="cell room-cell sector-mountain">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the Mountains">
+                                            <span>In the Mountains</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="east-west-connection"></div>
+                            </div>
+                            <!--  Room vnum 10026 at (-3, -3) -->
+                            <div class="cell room-cell sector-mountain">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the Mountains">
+                                            <span>In the Mountains</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10025 at (-2, -3) -->
+                            <div class="cell room-cell sector-mountain">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Mountain Trail">
+                                            <span>Mountain Trail</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10024 at (-1, -3) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Small Grove">
+                                            <span>Small Grove</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                                    <span class="room-flag room-flag-healer" title="Healer"></span>
+                                                    <span class="room-flag room-flag-teacher" title="Teacher"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10023 at (0, -3) -->
+                            <div class="cell room-cell sector-hills">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Stone bridge">
+                                            <span>Stone bridge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10030 at (1, -3) -->
+                            <div class="cell room-cell sector-forest">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Solace East Woods">
+                                            <span>Solace East Woods</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="plains2.html">Plains of the South</a></span>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(2, 1fr);" class="cells">
+                            <!--  Room vnum 10042 at (0, 1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-door-east"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Bedroom">
+                                            <span>Bedroom</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10044 at (1, 1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-door-west"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="In the closet">
+                                            <span>In the closet</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-recall" title="No recall"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10041 at (0, 0) -->
+                            <div class="cell room-cell sector-inside"id="label-4">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                            <a href="#label-5"><span class="cell-link-type-jump arrow-direction-d" title="Down to 5 (Living Room)">5</span></a>
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Top of Stairs">
+                                                <div><span class="room-label">4</span></div>
+                                            <span>Top of Stairs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10043 at (1, 0) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-door-south"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Kids Room">
+                                            <span>Kids Room</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10082 at (1, -1) -->
+                            <div class="cell room-cell sector-inside">
+                                <div class="cell-edge-n cell-edge-type-door-north"></div>
+                                <div class="cell-edge-s cell-edge-type-door-south"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Kids Closet.">
+                                            <span>Kids Closet.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="descent.html">Descent to Hell</a></span>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+        <div class="fragment">
+            <div style="grid-template-columns: repeat(8, 1fr);" class="cells">
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10067 at (-2, 3) -->
+                            <div class="cell room-cell sector-underwater"id="label-16">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                            <a href="#label-19"><span class="cell-link-type-jump arrow-direction-n" title="North to 19 (Underwater)">19</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                            <a href="#label-20"><span class="cell-link-type-jump arrow-direction-w" title="West to 20 (Underwater)">20</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">16</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10054 at (-1, 3) -->
+                            <div class="cell room-cell sector-underwater"id="label-21">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                            <a href="#label-12"><span class="cell-link-type-jump arrow-direction-n" title="North to 12 (Underwater)">12</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">21</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10055 at (0, 3) -->
+                            <div class="cell room-cell sector-underwater"id="label-22">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                            <a href="#label-13"><span class="cell-link-type-jump arrow-direction-n" title="North to 13 (Underwater)">13</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">22</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10056 at (1, 3) -->
+                            <div class="cell room-cell sector-underwater"id="label-23">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                            <a href="#label-14"><span class="cell-link-type-jump arrow-direction-n" title="North to 14 (Underwater)">14</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">23</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10057 at (2, 3) -->
+                            <div class="cell room-cell sector-underwater"id="label-20">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                            <a href="#label-15"><span class="cell-link-type-jump arrow-direction-n" title="North to 15 (Underwater)">15</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                            <a href="#label-16"><span class="cell-link-type-jump arrow-direction-e" title="East to 16 (Underwater)">16</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">20</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10066 at (-2, 2) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10053 at (-1, 2) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10048 at (0, 2) -->
+                            <div class="cell room-cell sector-underwater"id="label-6">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                            <a href="#label-7"><span class="cell-link-type-jump arrow-direction-u" title="Up to 7 (Middle of Crystalmir Lake)">7</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">6</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10049 at (1, 2) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10058 at (2, 2) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10073 at (3, 2) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater Cave">
+                                            <span>Underwater Cave</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10075 at (-4, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater Passageway">
+                                            <span>Underwater Passageway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10074 at (-3, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater Passageway">
+                                            <span>Underwater Passageway</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10065 at (-2, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10052 at (-1, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10051 at (0, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10050 at (1, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10059 at (2, 1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10076 at (-4, 0) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Cave of the Turtle Dragon">
+                                            <span>Cave of the Turtle Dragon</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10064 at (-2, 0) -->
+                            <div class="cell room-cell sector-underwater"id="label-17">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                            <a href="#label-18"><span class="cell-link-type-jump arrow-direction-w" title="West to 18 (Underwater)">18</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">17</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10063 at (-1, 0) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10062 at (0, 0) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10061 at (1, 0) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10060 at (2, 0) -->
+                            <div class="cell room-cell sector-underwater"id="label-18">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                            <a href="#label-17"><span class="cell-link-type-jump arrow-direction-e" title="East to 17 (Underwater)">17</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">18</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-randomized-exits" title="Randomized exits"></span>
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10081 at (-4, -1) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Barracuda Nest">
+                                            <span>Barracuda Nest</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10080 at (-4, -2) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Nest Entrance">
+                                            <span>Nest Entrance</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell connector-cell">
+                                <div class="north-south-connection"></div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <!--  Room vnum 10078 at (-4, -3) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Small Tunnel">
+                                            <span>Small Tunnel</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10077 at (-3, -3) -->
+                            <div class="cell room-cell sector-underwater">
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Narrow Crack in the rock.">
+                                            <span>Narrow Crack in the rock.</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10068 at (-2, -3) -->
+                            <div class="cell room-cell sector-underwater"id="label-19">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                            <a href="#label-16"><span class="cell-link-type-jump arrow-direction-s" title="South to 16 (Underwater)">16</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">19</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10069 at (-1, -3) -->
+                            <div class="cell room-cell sector-underwater"id="label-12">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                            <a href="#label-21"><span class="cell-link-type-jump arrow-direction-s" title="South to 21 (Underwater)">21</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">12</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10070 at (0, -3) -->
+                            <div class="cell room-cell sector-underwater"id="label-13">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                            <a href="#label-22"><span class="cell-link-type-jump arrow-direction-s" title="South to 22 (Underwater)">22</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">13</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10071 at (1, -3) -->
+                            <div class="cell room-cell sector-underwater"id="label-14">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                            <a href="#label-23"><span class="cell-link-type-jump arrow-direction-s" title="South to 23 (Underwater)">23</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">14</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10072 at (2, -3) -->
+                            <div class="cell room-cell sector-underwater"id="label-15">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-open"></div>
+                                <div class="cell-edge-e cell-edge-type-open"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                            <a href="#label-20"><span class="cell-link-type-jump arrow-direction-s" title="South to 20 (Underwater)">20</span></a>
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Underwater">
+                                                <div><span class="room-label">15</span></div>
+                                            <span>Underwater</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell area-exit-cell" >
+                                <div class="cell-edge-n cell-edge-type-none"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-open"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="area-exit-main">
+                                    <div class="cell-main-content">
+                                        <span>To <a href="tower.html">Zyklor&#39;s Tower</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  Room vnum 10079 at (-4, -4) -->
+                            <div class="cell room-cell sector-field">
+                                <div class="cell-edge-n cell-edge-type-open"></div>
+                                <div class="cell-edge-s cell-edge-type-none"></div>
+                                <div class="cell-edge-e cell-edge-type-none"></div>
+                                <div class="cell-edge-w cell-edge-type-none"></div>
+                                    <div class="cell-link cell-link-n">
+                                    </div>
+                                    <div class="cell-link cell-link-s">
+                                    </div>
+                                    <div class="cell-link cell-link-e">
+                                    </div>
+                                    <div class="cell-link cell-link-w">
+                                    </div>
+                                    <div class="cell-link cell-link-u">
+                                    </div>
+                                    <div class="cell-link cell-link-d">
+                                    </div>
+                                <div class="room-main">
+                                    <div class="cell-main-content">
+                                        
+                                        
+                                        <div title="Dead end">
+                                            <span>Dead end</span>
+                                        </div>
+                                            <div id="room-flags">
+                                                    <span class="room-flag room-flag-no-mobiles" title="No mobiles"></span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+                            <div class="cell empty-cell"></div>
+            </div>
+        </div>
+    <div id="legend" class="legend">
+        <div class="legend-symbol"><span class="room-label">123</span></div>
+        <div class="legend-description">Numbered location</div>
+
+        <div class="legend-symbol"><span class="cell-link cell-link-type-jump arrow-direction-u">123</span></div>
+        <div class="legend-description">Exit to a numbered location</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-randomized-exits"></span></div>
+        <div class="legend-description">Randomized exits</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-no-mobiles"></span></div>
+        <div class="legend-description">Mobiles cannot enter</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-no-recall"></span></div>
+        <div class="legend-description">Cannot recall</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-healer"></span></div>
+        <div class="legend-description">Healer</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-shop"></span></div>
+        <div class="legend-description">Shop</div>
+
+        <div class="legend-symbol"><span class="room-flag room-flag-teacher"></span></div>
+        <div class="legend-description">Teacher</div>
+
+        <div class="legend-symbol"><span class="area-exit-cell"></span></div>
+        <div class="legend-description">Exit to another area</div>
+
+        <div class="legend-symbol"><span class="cell-link cell-link-type-unlinked">?</span></div>
+        <div class="legend-description">Unknown exit</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-inside"></span></div>
+        <div class="legend-description">Inside</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-city"></span></div>
+        <div class="legend-description">City</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-field"></span></div>
+        <div class="legend-description">Fields</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-forest"></span></div>
+        <div class="legend-description">Forest</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-hills"></span></div>
+        <div class="legend-description">Hills</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-mountain"></span></div>
+        <div class="legend-description">Mountains</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-water_swim"></span></div>
+        <div class="legend-description">Swimmable water</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-water_no_swim"></span></div>
+        <div class="legend-description">Unswimmable water</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-underwater"></span></div>
+        <div class="legend-description">Underwater</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-air"></span></div>
+        <div class="legend-description">In the air</div>
+
+        <div class="legend-symbol"><span class="legend-sector sector-desert"></span></div>
+        <div class="legend-description">Desert</div>
+    </div>
+</div>
+</body>
+</html>
