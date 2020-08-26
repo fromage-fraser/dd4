@@ -133,7 +133,7 @@ There are currently some very strange layouts!
 (Generating these maps is a fairly interesting problem, as the world seems like a grid, but it is not really.)
 
 *Spoiler alert*: area maps contain information about healers, teachers, shops, no-recall and no-mobile rooms, and show
-all exits (apart from portals). However, the following are not shown: whether doors are locked or bash/lock/pass-proof;
+all exits (apart from portals). However, the following are not shown: whether doors are locked or bash/pick/pass-proof;
 the location of any objects; the location of any mobiles (beyond healers, teachers and shopkeepers).
 
 | File                                      | Notes
