@@ -141,7 +141,7 @@ the location of any objects; the location of any mobiles (beyond healers, teache
 | [Index](maps/area/index.html)             | Index of all maps
 | [Midgaard](maps/area/midgaard.html)       | Starting city
 | [Haon Dor](maps/area/haon.html)           | Wilderness west of Midgaard (many low-level areas nearby)
-| [Miden'nir](maps/area/haon.html)          | Wilderness east and south of Midgaard (many low-level areas nearby)
+| [Miden'nir](maps/area/midennir.html)      | Wilderness east and south of Midgaard (many low-level areas nearby)
 | [Town Of Solace](maps/area/solace.html)   | Low-level city with many areas nearby
 | [The City of Anon](maps/area/tcwn.html)   | Key mid-level city
 
