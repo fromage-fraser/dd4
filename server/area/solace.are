@@ -734,7 +734,7 @@ A
 19 3
 #10209
 amulet solace~
-the amulet of Solace.~
+the amulet of Solace~
 A shiny black amulet with a gold symbol is here.~
 ~
 9 64|1024 1|4
@@ -1325,7 +1325,7 @@ A pear has been left here.~
 2 0 0
 #10263
 charm solace~
-the charm of Solace.~
+the charm of Solace~
 A shiny black charm with a gold symbol is here.~
 ~
 9 0 1|4
@@ -1333,7 +1333,7 @@ A shiny black charm with a gold symbol is here.~
 15 15 0
 #10264
 ring solace~
-the ring of Solace.~
+the ring of Solace~
 A shiny black ring with a gold symbol is here.~
 ~
 9 0 1|2
@@ -1341,7 +1341,7 @@ A shiny black ring with a gold symbol is here.~
 5 15 0
 #10265
 earrings solace~
-the earrings of Solace.~
+the earrings of Solace~
 A pair of shiny black earrings with a gold symbols is here.~
 ~
 9 0 1|16
@@ -1689,7 +1689,7 @@ You see a strong metal box used to keep the town deposits in.
 ~
 #10303
 gold coins~
-a lot of gold and silver coins.~
+a lot of gold and silver coins~
 A lot of gold and silver coins are here.~
 Looks like at least 100 coins.
 ~
@@ -1734,7 +1734,7 @@ a drink called, "a Flaming homer" is here.~
 3 300 0
 #10308
 jello shot~
-a jello shot.~
+a jello shot~
 a jello shot is wiggling here.~
 ~
 17 0 1

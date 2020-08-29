@@ -462,8 +462,7 @@ to your disturbance they have risen again!
 #8800
 rod orcus~
 the Rod of Orcus~
-The Rod of Orcus glows evilly here.
-~
+The Rod of Orcus glows evilly here.~
 ~
 4 2|16|64|128 1|16384
 60~ 15~ 15~ invis~
@@ -483,8 +482,7 @@ A
 #8801
 hand vecna~
 the Hand of Vecna~
-The Hand of Vecna lies here.
-~
+The Hand of Vecna lies here.~
 ~
 9 16|128|512|4096|65536 1|128
 0~ 0~ 0~ 0~
@@ -504,8 +502,7 @@ A
 #8802
 eye vecna~
 the Eye of Vecna~
-The Eye of Vecna glows evilly here.
-~
+The Eye of Vecna glows evilly here.~
 ~
 9 1|16|512|4096 1|16
 0~ 0~ 0~ 0~
@@ -519,8 +516,7 @@ A
 #8803
 sword kas~
 the Sword of Kas~
-The Sword of Kas beckons to you!
-~
+The Sword of Kas beckons to you!~
 ~
 5 2|8|16|64|512|4096|16384|131072|262144 1|8192
 0~ 0~ 0~ 11~
@@ -536,8 +532,7 @@ A
 #8804
 circlet~
 a circlet~
-A Circlet lies here, gathering dust.
-~
+A Circlet lies here, gathering dust.~
 ~
 9 64|4096 1|16
 0~ 0~ 0~ 0~
@@ -549,8 +544,7 @@ A
 #8805
 hoard~
 a treasure hoard~
-A treasure hoard is scattered here.
-~
+A treasure hoard is scattered here.~
 ~
 8 0 1|16384
 0~ 0~ 0~ 0~
@@ -558,8 +552,7 @@ A treasure hoard is scattered here.
 #8806
 chest~
 a chest~
-A chest sits here.
-~
+A chest sits here.~
 ~
 15 0 1
 150~ 8~ 8120~ 0~
@@ -567,8 +560,7 @@ A chest sits here.
 #8807
 robes flesh~
 robes of Flesh~
-Robes made of human flesh are piled here.
-~
+Robes made of human flesh are piled here.~
 ~
 9 16|512 1|1024
 0~ 0~ 0~ 0~
@@ -582,8 +574,7 @@ A
 #8808
 rod bone~
 a Rod of Bone~
-A Rod fashioned from a human femur lies here.
-~
+A Rod fashioned from a human femur lies here.~
 ~
 5 16|512 1|8192
 0~ 0~ 0~ 8~
@@ -599,8 +590,7 @@ A
 #8809
 bones~
 a pile of bones~
-A pile of bones lies here.
-~
+A pile of bones lies here.~
 ~
 13 0 1
 0~ 0~ 0~ 0~
@@ -608,8 +598,7 @@ A pile of bones lies here.
 #8810
 gem~
 a Power Gem~
-A Mana Power Gem pulses strongly here.
-~
+A Mana Power Gem pulses strongly here.~
 ~
 4 1|64 1|16384
 50~ 20~ 20~ sanctuary~
@@ -619,8 +608,7 @@ A
 #8811
 cloak~
 a black cloak~
-A black cloak is piled here.
-~
+A black cloak is piled here.~
 ~
 9 0 1|1024
 0~ 0~ 0~ 0~
@@ -628,8 +616,7 @@ A black cloak is piled here.
 #8812
 sword~
 (Diabolical) a Dark Sword~
-A Dark Sword hums evilly here.
-~
+A Dark Sword hums evilly here.~
 ~
 5 2|16|512 1|8192
 0~ 0~ 0~ 0~
@@ -647,8 +634,7 @@ A
 #8813
 armor~
 a Suit of Dark Armor~
-A Suit of Dark Armor lies here.
-~
+A Suit of Dark Armor lies here.~
 ~
 9 16|512 1|8
 0~ 0~ 0~ 0~
@@ -662,8 +648,7 @@ A
 #8814
 helm~
 a Dark Helm~
-A Dark Helm seeks to possess you!
-~
+A Dark Helm seeks to possess you!~
 ~
 9 128|4096 1|16
 0~ 0~ 0~ 0~
@@ -675,8 +660,7 @@ A
 #8815
 jar~
 a jar~
-A glass jar sits here.
-~
+A glass jar sits here.~
 ~
 15 0 1|16384
 25~ 1~ 0~ 0~
@@ -684,8 +668,7 @@ A glass jar sits here.
 #8816
 poison~
 some poison~
-Some poison lies here.
-~
+Some poison lies here.~
 ~
 19 0 1
 1~ 0~ 0~ 1~
@@ -693,8 +676,7 @@ Some poison lies here.
 #8817
 unholy symbol~
 an Unholy Symbol~
-The Unholy Symbol of some priest devoted to evil lies here.
-~
+The Unholy Symbol of some priest devoted to evil lies here.~
 ~
 1 16|512 1
 0~ 0~ -1~ 0~
@@ -704,8 +686,7 @@ A
 #8818
 holy symbol~
 a holy Symbol~
-The Holy Symbol of some priest devoted to good lies here.
-~
+The Holy Symbol of some priest devoted to good lies here.~
 ~
 1 1|1024 1
 0~ 0~ -1~ 0~
@@ -715,8 +696,7 @@ A
 #8819
 corpse~
 a corpse~
-The corpse of some unfortunate adventurer is lying here.
-~
+The corpse of some unfortunate adventurer is lying here.~
 ~
 13 0 1
 0~ 0~ 0~ 0~
@@ -724,8 +704,7 @@ The corpse of some unfortunate adventurer is lying here.
 #8820
 key~
 a key~
-A black key is here.
-~
+A black key is here.~
 ~
 18 2 1|16384
 0~ 0~ 0~ 0~
@@ -733,8 +712,7 @@ A black key is here.
 #8821
 jar blood~
 a jar of human blood~
-A jar of human blood sits here.
-~
+A jar of human blood sits here.~
 ~
 10 2|16|512 1|16384
 50~ poison~ weaken~ curse~
@@ -750,8 +728,7 @@ A shimmering portal rests here.~
 #8823
 ethereal sword~
 an ethereal sword~
-A translucent sword lies on the ground, shimmering.
-~
+A translucent sword lies on the ground, shimmering.~
 ~
 5 64|512|16777216 1|8192
 0~ 0~ 0~ 0~

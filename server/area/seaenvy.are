@@ -163,8 +163,7 @@ you something.
 #17001
 map strange~
 a strange map~
-A strange looking map is here.
-~
+A strange looking map is here.~
 ~
 13 0 1|16384
 0~ 0~ 0~ 0~
@@ -189,8 +188,7 @@ map strange~
 #17002
 fire greek~
 greek fire~
-A smoldering pot of hot volatile liquid is here.
-~
+A smoldering pot of hot volatile liquid is here.~
 ~
 4 1 1|16384
 10~ 1~ 1~ fire breath~
@@ -198,8 +196,7 @@ A smoldering pot of hot volatile liquid is here.
 #17003
 trireme~
 a trireme~
-A trireme is here, ready to sail the high seas.
-~
+A trireme is here, ready to sail the high seas.~
 ~
 22 0 1
 0~ 0~ 0~ 0~
@@ -207,8 +204,7 @@ A trireme is here, ready to sail the high seas.
 #17004
 galley~
 a galley~
-A galley is here, wallowing in the water.
-~
+A galley is here, wallowing in the water.~
 ~
 22 0 1
 0~ 0~ 0~ 0~
@@ -216,8 +212,7 @@ A galley is here, wallowing in the water.
 #17005
 hoard ships~
 the ship's hoard~
-A pile of crates and boxes lies here, awaiting longshoremen.
-~
+A pile of crates and boxes lies here, awaiting longshoremen.~
 ~
 20 0 1
 54~ 69~ 25~ 7~
@@ -225,8 +220,7 @@ A pile of crates and boxes lies here, awaiting longshoremen.
 #17006
 whaler~
 a whaling ship~
-A whaling ship is docked here, drawing a swarm of flies.
-~
+A whaling ship is docked here, drawing a swarm of flies.~
 ~
 22 0 1
 0~ 0~ 0~ 0~
@@ -234,8 +228,7 @@ A whaling ship is docked here, drawing a swarm of flies.
 #17007
 blubber giant mound~
 a giant mound of blubber~
-A giant mound of blubber is here, waiting to be processed into oil.
-~
+A giant mound of blubber is here, waiting to be processed into oil.~
 ~
 19 0 1
 72~ 0~ 0~ 0~
@@ -243,8 +236,7 @@ A giant mound of blubber is here, waiting to be processed into oil.
 #17008
 treasure lost~
 the lost treasure from the sunken ship~
-A huge gleaming pile of gold glistens here.
-~
+A huge gleaming pile of gold glistens here.~
 ~
 22 0 1
 5~ 23~ 34~ 18~
@@ -252,8 +244,7 @@ A huge gleaming pile of gold glistens here.
 #17009
 fire circle~
 the circle of fire~
-A circular fire burns and crackles here.
-~
+A circular fire burns and crackles here.~
 ~
 9 1|64 1|2048
 0~ 0~ 0~ 0~
@@ -269,8 +260,7 @@ slice is shaped and forged into a bright band of fire.
 #17010
 cape storm~
 the storm cape~
-Soaring high above you is a little stormy cloud.
-~
+Soaring high above you is a little stormy cloud.~
 ~
 9 32|64 1|4
 0~ 0~ 0~ 0~
@@ -283,8 +273,7 @@ from your grasp even as you manage to seize it.
 #17097
 boat banana~
 a banana boat~
-A beat up wreck of a ship drifts with the current.
-~
+A beat up wreck of a ship drifts with the current.~
 ~
 22 0 1
 0~ 0~ 0~ 0~
@@ -296,8 +285,7 @@ You see lots of bananas loaded on board the boat.
 #17098
 spliff big fat~
 a big fat spliff~
-Ya mon, Jah has provided.
-~
+Ya mon, Jah has provided.~
 ~
 4 1 1|16384
 5~ 3~ 2~ cure light~
@@ -311,8 +299,7 @@ took one hit off it when he sold it to you.
 #17099
 dreddlocks~
 dreddlocks~
-A beautiful set of dreddlocks lie on the ground.
-~
+A beautiful set of dreddlocks lie on the ground.~
 ~
 9 0 16
 0~ 0~ 0~ 0~

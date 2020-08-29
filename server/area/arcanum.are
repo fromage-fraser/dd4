@@ -1224,7 +1224,7 @@ he looks to be decently armed, if not really expecting any trouble.
 #OBJECTS
 #26001
 yellow pedestal~
-A yellow pedestal~
+a yellow pedestal~
 A {Yyellow{x pedestal sits here.~
 ~
 15 0 0
@@ -1233,7 +1233,7 @@ A {Yyellow{x pedestal sits here.~
 
 #26002
 purple pedestal~
-A purple pedestal~
+a purple pedestal~
 A {Mpurple{x pedestal sits here.~
 ~
 15 0 0
@@ -1242,7 +1242,7 @@ A {Mpurple{x pedestal sits here.~
 
 #26003
 cyan pedestal~
-A cyan pedestal~
+a cyan pedestal~
 A {Ccyan{x pedestal sits here.~
 ~
 15 0 0
@@ -1251,7 +1251,7 @@ A {Ccyan{x pedestal sits here.~
 
 #26004
 orange pedestal~
-A orange pedestal~
+an orange pedestal~
 An {yorange{x pedestal sits here.~
 ~
 15 0 0
@@ -1260,7 +1260,7 @@ An {yorange{x pedestal sits here.~
 
 #26005
 green pedestal~
-A green pedestal~
+a green pedestal~
 A {Ggreen{x pedestal sits here.~
 ~
 15 0 0
@@ -1745,7 +1745,7 @@ A bunch of platinum coins.~
 
 #26049
 portal of chance~
-The portal of chance~
+the portal of chance~
 The portal of chance has been erected here.~
 ~
 33 1|2 0
@@ -2058,7 +2058,7 @@ A
 
 #26086
 glowing tablet~
-A {Yglowing{x tablet~
+a {Yglowing{x tablet~
 A {Yglowing{x tablet calls to you from the shelf.~
 ~
 13 0 1

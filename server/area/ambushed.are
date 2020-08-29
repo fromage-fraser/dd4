@@ -753,8 +753,7 @@ The sack is made of burlap.
 #4530
 armor hard leather~
 hard leather armor~
-A piece of leather armor is here.
-~
+A piece of leather armor is here.~
 ~
 9 0 1|8
 0~ 0~ 0~ 0~
@@ -762,8 +761,7 @@ A piece of leather armor is here.
 #4531
 helmet hard leather~
 hard leather helmet~
-A hard leather helmet is here.
-~
+A hard leather helmet is here.~
 ~
 9 0 1|16
 0~ 0~ 0~ 0~
@@ -771,8 +769,7 @@ A hard leather helmet is here.
 #4532
 leggings hard leather~
 hard leather leggings~
-A pair of hard leather leggings is here.
-~
+A pair of hard leather leggings is here.~
 ~
 9 0 1|32
 0~ 0~ 0~ 0~
@@ -780,17 +777,15 @@ A pair of hard leather leggings is here.
 #4533
 boots hard leather~
 hard leather boots~
-A pair of hard leather boots is here.
-~
+A pair of hard leather boots is here.~
 ~
 9 0 1|64
 0~ 0~ 0~ 0~
 30 0 0
 #4534
 gauntlets hard leather~
-hard leather gauntlets.~
-A pair of hard leather gauntlets is here.
-~
+hard leather gauntlets~
+A pair of hard leather gauntlets is here.~
 ~
 9 0 1|128
 0~ 0~ 0~ 0~
@@ -798,8 +793,7 @@ A pair of hard leather gauntlets is here.
 #4535
 sleeves hard leather~
 hard leather sleeves~
-A pair of hard leather sleeves is here.
-~
+A pair of hard leather sleeves is here.~
 ~
 9 0 1|256
 0~ 0~ 0~ 0~
@@ -807,8 +801,7 @@ A pair of hard leather sleeves is here.
 #4536
 shield hard leather~
 hard leather shield~
-A hard leather shield is here.
-~
+A hard leather shield is here.~
 ~
 9 0 1|512
 0~ 0~ 0~ 0~
@@ -816,8 +809,7 @@ A hard leather shield is here.
 #4537
 girdle hard leather~
 hard leather girdle~
-A hard leather girdle is here.
-~
+A hard leather girdle is here.~
 ~
 9 0 1|2048
 0~ 0~ 0~ 0~
@@ -825,8 +817,7 @@ A hard leather girdle is here.
 #4538
 collar war dog~
 a war dog collar~
-A war dog collar is here.
-~
+A war dog collar is here.~
 ~
 9 0 1|4
 0~ 0~ 0~ 0~
@@ -836,8 +827,7 @@ A
 #4539
 corpse~
 a goblin corpse~
-A goblin corpse is here.
-~
+A goblin corpse is here.~
 ~
 15 0 1
 100~ 0~ 0~ 0~
@@ -1069,7 +1059,7 @@ oiled to a black sheen.
 ~
 #4558
 potion inky black~
-an inky black potion.~
+an inky black potion~
 An inky black potion is here.~
 ~
 10 64 1

@@ -1245,8 +1245,7 @@ A psychedelic potion rolls around here.~
 #31029
 guillotine~
 a nasty guillotine~
-A Guillotine with a razor-sharp blade stands ready here.
-~
+A Guillotine with a razor-sharp blade stands ready here.~
 ~
 15 0 0
 100~ 1~ 0~ 0~
@@ -2214,8 +2213,8 @@ A single gold piece.~
 1 0 0
 #31093
 anvil~
-A Large Anvil~
-A Large Anvil sits in the corner of the room, waiting to be used.~
+a large anvil~
+A large anvil sits in the corner of the room, waiting to be used.~
 ~
 30 1 0
 0~ 0~ 0~ 0~

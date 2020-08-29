@@ -793,8 +793,7 @@ Lok charmed me so you wouldn't just mindlessly butcher me.'
 #17011
 tree banana~
 the banana tree~
-A banana tree is here, burdened with nice ripe fruit.
-~
+A banana tree is here, burdened with nice ripe fruit.~
 ~
 15 0 0
 400~ 0~ 0~ 0~
@@ -806,8 +805,7 @@ Have you had your potassium today?
 #17012
 bananas bunch~
 a bunch of bananas~
-A ripe bunch of bananas is here- where is the monkey?
-~
+A ripe bunch of bananas is here- where is the monkey?~
 ~
 19 0 1
 5~ 0~ 0~ 0~
@@ -815,8 +813,7 @@ A ripe bunch of bananas is here- where is the monkey?
 #17013
 sign warning~
 a wooden sign~
-A wooden sign is nailed in the ground here.
-~
+A wooden sign is nailed in the ground here.~
 ~
 13 0 0
 0~ 0~ 0~ 0~
@@ -832,8 +829,7 @@ sign wooden~
 #17014
 mallet wooden~
 a wooden mallet~
-A wooden mallet is here.
-~
+A wooden mallet is here.~
 ~
 5 0 1|8192
 0~ 0~ 0~ 8~
@@ -850,8 +846,7 @@ pegs, and not for combat.
 #17015
 robe feather~
 a feather robe~
-A robe made of brilliant tropical bird plumage is here.
-~
+A robe made of brilliant tropical bird plumage is here.~
 ~
 9 0 1|1024
 0~ 0~ 0~ 0~
@@ -863,8 +858,7 @@ It sure is pretty.
 #17016
 bottle rum~
 a bottle of rum~
-You see a have full bottle of rum here, going to waste.
-~
+You see a have full bottle of rum here, going to waste.~
 ~
 17 0 1
 6~ 3~ 7~ 0~
@@ -881,8 +875,7 @@ Are you going to get lucky?
 #17018
 sextant~
 a sextant~
-A beautiful gilded sextant lies here.
-~
+A beautiful gilded sextant lies here.~
 ~
 2 64 1|16384
 25~ locate object~ ~ ~
@@ -896,8 +889,7 @@ last I will be freed'
 #17019
 girdle might~
 the girdle of might~
-A well crafted weapons belt is lying here.
-~
+A well crafted weapons belt is lying here.~
 ~
 9 64 1|2048
 0~ 0~ 0~ 0~
@@ -917,8 +909,7 @@ All there is, is triumphant might
 #17020
 gauntlets accuracy~
 gauntlets of accuracy~
-A pair of gauntlets with arrows on them lies here.
-~
+A pair of gauntlets with arrows on them lies here.~
 ~
 9 64 1|128
 0~ 0~ 0~ 0~
@@ -933,8 +924,7 @@ the thumbs.
 #17021
 key iron~
 an iron key~
-An iron key is here.
-~
+An iron key is here.~
 ~
 18 0 1|16384
 0~ 0~ 0~ 0~
@@ -942,8 +932,7 @@ An iron key is here.
 #17022
 pool lava~
 a lava pool~
-A pool of lava is bubbling here.
-~
+A pool of lava is bubbling here.~
 ~
 13 1 0
 0~ 0~ 0~ 0~
@@ -955,8 +944,7 @@ It is so hot your eyes are watering.
 #17023
 cutlass sword~
 a cutlass~
-An arm-length curved sword is here.
-~
+An arm-length curved sword is here.~
 ~
 5 0 1|8192
 0~ 0~ 0~ 3~
@@ -966,10 +954,9 @@ A
 A
 19 1
 #17024
-eye kracken krackens kracken's~
+eye kracken krackens kracken's eyeball~
 the kracken's eye~
-A large eyeball of some sea creature is rotting on the ground.
-~
+A large eyeball of some sea creature is rotting on the ground.~
 ~
 4 16|512 1|16384
 25~ 10~ 10~ detect hidden~
@@ -983,8 +970,7 @@ your gaze.
 #17025
 armbands volcanoes~
 armbands of the Volcanoes~
-Armbands made of fire are smoldering on the ground.
-~
+Armbands made of fire are smoldering on the ground.~
 ~
 9 1|64 1|256
 0~ 0~ 0~ 0~
@@ -1000,8 +986,7 @@ The armbands are burning brightly.
 #17026
 chest bronze~
 a huge bronze chest~
-A huge bronze chest is here.
-~
+A huge bronze chest is here.~
 ~
 15 32 0
 200~ 5~ 0~ 0~
@@ -1009,8 +994,7 @@ A huge bronze chest is here.
 #17027
 javelin~
 a javelin~
-A well balanced javelin is here.
-~
+A well balanced javelin is here.~
 ~
 5 64|134217728 1|8192
 10~ 10~ 10~ 10~
@@ -1020,8 +1004,7 @@ A
 #17028
 cloak looting~
 the cloak of looting~
-You see a suspicious looking cloak here. Hmmm.
-~
+You see a suspicious looking cloak here. Hmmm.~
 ~
 9 32|64 1|1024
 0~ 0~ 0~ 0~
@@ -1033,8 +1016,7 @@ Yes, you have seen a thief wearing this once before.
 #17029
 blood ettins ettin ettin's~
 ettin's blood~
-A jar of blood is here
-~
+A jar of blood is here.~
 ~
 10 32|64 1
 30~ sanctuary~ protection~ stone skin~
@@ -1042,8 +1024,7 @@ A jar of blood is here
 #17030
 hoard pirate pirate's~
 the pirate's hoard~
-You see a big old pile o' loot!
-~
+You see a big old pile o' loot!~
 ~
 20 0 1
 27~ 45~ 35~ 9~
@@ -1051,8 +1032,7 @@ You see a big old pile o' loot!
 #17031
 pants sharkskin~
 sharkskin pants~
-A pair of pants cut from the skin of a fish lie here.
-~
+A pair of pants cut from the skin of a fish lie here.~
 ~
 9 64 1|32
 0~ 0~ 0~ 0~
@@ -1071,8 +1051,7 @@ Upon closer examination, you notice a tag on the waistline. It reads
 #17032
 crossbow poison~
 a crossbow of poison~
-You see a nasty looking hand crossbow with black gummed quarrels here.
-~
+You see a nasty looking hand crossbow with black gummed quarrels here.~
 ~
 3 0 1|16384
 35~ 30~ 30~ poison~
@@ -1086,8 +1065,7 @@ of the same black metal.
 #17033
 orb nullifier~
 the nullifier orb~
-A round sphere on the ground is swallowing all the light around it.
-~
+A round sphere on the ground is swallowing all the light around it.~
 ~
 3 0 1|16384
 40~ 20~ 20~ dispel magic~
@@ -1100,8 +1078,7 @@ Holding it in your hand, you can feel its smooth, spherical shape.
 #17034
 chest padlocked~
 a padlocked chest~
-A heavy padlocked chest is here.
-~
+A heavy padlocked chest is here.~
 ~
 15 0 0
 200~ 15~ 17035~ 0~
@@ -1114,8 +1091,7 @@ key.
 #17035
 key metal~
 a metal key~
-A metal key lies here.
-~
+A metal key lies here.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
@@ -1127,8 +1103,7 @@ The key is small, perhaps it might open a padlock.
 #17036
 waverunner boat~
 an outrigger called 'Waverunner'~
-An outrigger canoe with a sky blue sail is here, provisioned for adventure.
-~
+An outrigger canoe with a sky blue sail is here, provisioned for adventure.~
 ~
 22 0 1
 0~ 0~ 0~ 0~
@@ -1136,8 +1111,7 @@ An outrigger canoe with a sky blue sail is here, provisioned for adventure.
 #17037
 lantern watchman's watchman watchamans~
 a watchman's lantern~
-A watchman's lantern is here, giving off a bright white light.
-~
+A watchman's lantern is here, giving off a bright white light.~
 ~
 1 1 1|16384
 0~ 0~ -1~ 0~
@@ -1160,8 +1134,7 @@ of amazing things.
 #17038
 pearl giant~
 a giant pearl~
-A giant pearl lies forgotten in the sand.
-~
+A giant pearl lies forgotten in the sand.~
 ~
 8 0 1
 100~ 45~ 32~ 52~
@@ -1174,8 +1147,7 @@ off of its shiny surface.
 #17039
 hammock hemp~
 a hemp hammock~
-A hemp hammock is here, stretched between 2 sunken poles.
-~
+A hemp hammock is here, stretched between 2 sunken poles.~
 ~
 12 0 1
 0~ 0~ 0~ 0~
@@ -1187,8 +1159,7 @@ The hammock has an inviting sag, and it beckons to you.
 #17040
 doubloons booty~
 doubloons and booty~
-You see a trove of doubloons and booty!
-~
+You see a trove of doubloons and booty!~
 ~
 20 0 1
 0~ 0~ 64~ 5~
@@ -1196,8 +1167,7 @@ You see a trove of doubloons and booty!
 #17041
 key golden hawk~
 a golden hawk key~
-A golden hawk key lies here.
-~
+A golden hawk key lies here.~
 ~
 18 0 1|16384
 0~ 1~ 6~ 11~
@@ -1210,8 +1180,7 @@ on it.
 #17042
 stone floating~
 a floating stone~
-A stone is here, floating in mid-air!
-~
+A stone is here, floating in mid-air!~
 ~
 13 0 1|32769
 0~ 0~ 0~ 0~
@@ -1225,8 +1194,7 @@ The stone is of a strange material you have rarely seen.
 #17043
 robe hawklord hawk lord~
 the Vest of the Hawklord~
-A vest made of a bright blue fine chain mesh hovers here.
-~
+A vest made of a bright blue fine chain mesh hovers here.~
 ~
 9 64 1|1024
 100~ 0~ 0~ 0~
@@ -1245,8 +1213,7 @@ In fact, you can attach small throwing items onto it.
 #17044
 winch ladder~
 a winch ladder~
-A winch with a long rope ladder is here.
-~
+A winch with a long rope ladder is here.~
 ~
 12 0 0
 0~ 0~ 0~ 0~
@@ -1259,8 +1226,7 @@ can go down 500'.
 #17045
 gizzard~
 a gizzard~
-A raw gizzard is on the ground, being consumed by ants.
-~
+A raw gizzard is on the ground, being consumed by ants.~
 ~
 26 0 1
 35~ heal~ ~ ~
@@ -1268,8 +1234,7 @@ A raw gizzard is on the ground, being consumed by ants.
 #17046
 chest iron bound~
 an iron bound chest~
-A massive iron bound chest is here.
-~
+A massive iron bound chest is here.~
 ~
 15 0 0
 501~ 5~ 0~ 0~
@@ -1282,8 +1247,7 @@ Engraved on a band in the corner are the words:
 #17047
 silver mountain~
 a mountain of silver~
-A mountain of silver is here. Take it and be rich!
-~
+A mountain of silver is here. Take it and be rich!~
 ~
 20 0 1
 0~ 379~ 0~ 0~
@@ -1295,8 +1259,7 @@ The silver coins are from many different mints and eras.
 #17048
 mug everfull~
 the everfull mug~
-A bottomless glass of ale is here, waiting to slake your thirst.
-~
+A bottomless glass of ale is here, waiting to slake your thirst.~
 ~
 17 64 1|16384
 5000~ 5000~ 3~ 0~
@@ -1309,8 +1272,7 @@ its aroma.
 #17049
 wings lord vulture's vulture vultures~
 lord Vulture's wings~
-Wings from an ENORMOUS black bird lie well preserved on the ground.
-~
+Wings from an ENORMOUS black bird lie well preserved on the ground.~
 ~
 9 32|64 1|256
 0~ 0~ 0~ 0~
@@ -1327,8 +1289,7 @@ which straps to your biceps.
 #17050
 eye eagle~
 the eye of the eagle~
-You see a smooth amber stone with a single black spot lying on the ground.
-~
+You see a smooth amber stone with a single black spot lying on the ground.~
 ~
 4 64 1|16384
 40~ 40~ 40~ infravision~
@@ -1341,8 +1302,7 @@ the light around it.
 #17051
 dagger throwing~
 a throwing dagger~
-A well balanced blue metal throwing dagger is here.
-~
+A well balanced blue metal throwing dagger is here.~
 ~
 5 64 1|16384
 0~ 0~ 0~ 0~
@@ -1358,8 +1318,7 @@ The blue metal seems to stick to other metal objects.
 #17052
 grog mug~
 a mug of grog~
-A foaming mug of grog is here, ready to take the chill off..
-~
+A foaming mug of grog is here, ready to take the chill off..~
 ~
 10 64 1|16384
 40~ refresh~ cure light~ ~
@@ -1367,8 +1326,7 @@ A foaming mug of grog is here, ready to take the chill off..
 #17053
 cloak fur skin~
 a fur skin cloak~
-A white fur skin cloak is here.
-~
+A white fur skin cloak is here.~
 ~
 9 0 1|1024
 0~ 0~ 0~ 0~
@@ -1376,8 +1334,7 @@ A white fur skin cloak is here.
 #17054
 vest fur skin~
 a fur skin vest~
-A white fur skin vest is here.
-~
+A white fur skin vest is here.~
 ~
 9 0 1|8
 0~ 0~ 0~ 0~
@@ -1385,8 +1342,7 @@ A white fur skin vest is here.
 #17055
 leggings fur skin~
 fur skin leggings~
-Some white fur skin leggings are here.
-~
+Some white fur skin leggings are here.~
 ~
 9 0 1|32
 0~ 0~ 0~ 0~
@@ -1394,8 +1350,7 @@ Some white fur skin leggings are here.
 #17056
 buckler spiked~
 a spiked buckler~
-A spiked buckler is here.
-~
+A spiked buckler is here.~
 ~
 9 0 1|512
 0~ 0~ 0~ 11~
@@ -1407,8 +1362,7 @@ A
 #17057
 icicle~
 an icicle~
-An icicle lies on the floor, melting.
-~
+An icicle lies on the floor, melting.~
 ~
 3 64 1|16384
 40~ 5~ 5~ frost breath~
@@ -1416,8 +1370,7 @@ An icicle lies on the floor, melting.
 #17058
 pool melting~
 the melting pool~
-A pool of melting ice and frigid water is here.
-~
+A pool of melting ice and frigid water is here.~
 ~
 25 0 0
 0~ 0~ 0~ 0~
@@ -1425,8 +1378,7 @@ A pool of melting ice and frigid water is here.
 #17059
 garrote wire~
 a garrote wire~
-A long piece of wire lies on the ground.
-~
+A long piece of wire lies on the ground.~
 ~
 5 0 1|8192
 0~ 0~ 0~ 9~
@@ -1434,8 +1386,7 @@ A long piece of wire lies on the ground.
 #17060
 stone ghost~
 the ghost stone~
-(TRANSLUCENT) A stone lies on the ground here.
-~
+(TRANSLUCENT) A stone lies on the ground here.~
 ~
 8 64 1|16384
 0~ 0~ 0~ 0~
@@ -1443,8 +1394,7 @@ the ghost stone~
 #17061
 battle axe two handed~
 a mighty two handed battle axe~
-A mighty two handed battle axe lies neglected in the dirt.
-~
+A mighty two handed battle axe lies neglected in the dirt.~
 ~
 5 0 1|8192
 0~ 0~ 0~ 3~
@@ -1454,8 +1404,7 @@ A
 #17062
 armor frost~
 frost armor~
-A suit of armor fashioned from ice lies melting on the ground.
-~
+A suit of armor fashioned from ice lies melting on the ground.~
 ~
 9 32|64 1|8
 0~ 0~ 0~ 0~
@@ -1480,8 +1429,7 @@ in a scale like fashion. The armor is cold to touch.
 #17063
 Frostbite sword winter~
 frostbite, sword of winter~
-A long bastard sword made of ice lies here melting.
-~
+A long bastard sword made of ice lies here melting.~
 ~
 5 32|64|2048 1|8192
 0~ 0~ 0~ 10~
@@ -1507,8 +1455,7 @@ this slid through your body.
 #17064
 bag gold~
 a bag of gold~
-A heavy bulging bag of gold lies here.
-~
+A heavy bulging bag of gold lies here.~
 ~
 20 0 1
 0~ 0~ 70~ 0~
@@ -1516,8 +1463,7 @@ A heavy bulging bag of gold lies here.
 #17065
 bag silver~
 a bag of silver~
-A heavy bulging bag of silver lies here.
-~
+A heavy bulging bag of silver lies here.~
 ~
 20 0 1
 0~ 56~ 0~ 0~
@@ -1525,8 +1471,7 @@ A heavy bulging bag of silver lies here.
 #17066
 bag gems~
 a bag of gems~
-A heavy bulging bag of gems lies here.
-~
+A heavy bulging bag of gems lies here.~
 ~
 20 0 1
 0~ 0~ 15~ 0~
@@ -1534,8 +1479,7 @@ A heavy bulging bag of gems lies here.
 #17067
 bag jewelry~
 a bag of jewelry~
-A heavy bulging bag of jewelry lies here.
-~
+A heavy bulging bag of jewelry lies here.~
 ~
 20 0 1
 7~ 2~ 17~ 4~
@@ -1543,8 +1487,7 @@ A heavy bulging bag of jewelry lies here.
 #17068
 eye evil~
 the evil eye~
-A bloody eye lies here.
-~
+A bloody eye lies here.~
 ~
 3 16|64 1|16384
 45~ 15~ 15~ sleep~
@@ -1552,8 +1495,7 @@ A bloody eye lies here.
 #17069
 map hell's reef~
 a map to hell's reef~
-A map lies rolled up on the ground.
-~
+A map lies rolled up on the ground.~
 ~
 13 0 1
 0~ 0~ 0~ 0~
@@ -1565,8 +1507,7 @@ From southpoint, go 4n and 3w. There ye shall find a great treasure.
 #17070
 bonfire roaring~
 a roaring bonfire~
-A roaring bonfire blazes brightly here.
-~
+A roaring bonfire blazes brightly here.~
 ~
 13 1|2|65536 0
 0~ 0~ 0~ 0~

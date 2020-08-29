@@ -1,428 +1,216 @@
 #AREA   Jammer~  The Three Trials~
 50 100 0 100
 
-
-
 #RECALL
-
 3001
 
 #MOBILES
-
 #13100
-
 Inquisitor spectral~
-
 A Spectral Inquisitor~
-
 A Spectral Inquisitor is accusing someone of something...
-
 ~
-
 The Inquisitor looks at you - Heretic!!
-
 Then it says something in spanish.
-
 ~
-
 32|64 2|8|32 -250 S
-
 45 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13101
-
 Assassin~
-
 A Multiplanar Assassin~
-
-
-
 ~
-
 This assassin is a real professional.  Almost invisible.
-
 ~
-
 2|32|64|128 2|8|32|512|32768|65536 -300 S
-
 50 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13102
-
 Dreadguard guard~
-
 the Dreadguard~
-
 The Dreadguard is on patrol
 ~
-
 Foolish Mortal - you unterestimate the power of the Dreadking!
 Die foolishly then.  These creatures are not human - you don't have a clue
 as to what they are!
-
 ~
-
 4|64 8|32 0 S
-
 40 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 1
-
 #13103
-
 Raider~
-
 A Raider~
-
 A Raider stands here - watch out!
-
 ~
-
 The Raider is pausing before it's next kill - you?
-
 ~
-
 4|64 8|32|512|32768|65536 -250 S
-
 40 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13104
-
 Fanatic~
-
 the Fanatic~
-
 The Fanatic sees you,  screams and attacks
-
 ~
-
 The Fanatic has a look of terror on it's face.
-
 ~
-
 32|64 32|512 -100 S
-
 40 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13105
-
 Demonspawn spawn~
-
 the Spawn~
-
 The Demonspawn stands here.  You had better leave..
-
 ~
-
 The Demonspawn looks back at you!
-
 ~
-
 2|64 32|512 -350 S
-
 45 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13106
-
 black square~
-
 The Black Square~
-
-
-
 ~
-
-
-
 ~
-
 2|32|64 2|8|32|32768|65536 0 S
-
 100 0 0 0d0+0 0d0+0
-
 127|256 0
-
 8 8 0
-
 #13107
-
 white square~
-
 The White Square~
-
-
-
 ~
-
-
-
 ~
-
 2|32|64 2|8|32|32768|65536 0 S
-
 100 0 0 0d0+0 0d0+0
-
 127|256 0
-
 8 8 0
-
 #13108
-
 Cambion~
-
 the Cambion~
-
 The Cambion is loose!  Look out!
-
 ~
-
 The cold,  malevolent stare send shivers through your spine.  Better get
 ready...
-
 This thing reeks of evil.
-
 ~
-
 2|4|32|64 8|32|512 -750 S
-
 60 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 1
-
 #13185
-
 Visigoth goth visi~
-
 the Gordaron Visigoth~
-
 The Gordaron Visigoth wants to swing his axe at you...
-
 ~
-
 This alien goth is obviously insane - HOMICIDALLY!
-
 ~
-
 4|32|64 8|32|512 0 S
-
 49 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 1
-
 #13186
-
 freebooter free booter Gordaron~
-
 the Gordaron Freebooter~
-
 A Gordaron Freebooter is loitering here.
-
 ~
-
 The Freebooter looks at you,  appraising your items...
-
 This race must be pretty money hungry...
-
 ~
-
 4|64|128 8|32|512|32768|65536 -125 S
-
 55 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13187
-
 grotto beast~
-
 the Grottobeast~
-
 The grotto beast stirs,  then attacks...
-
 ~
-
 This strange creature has a bulbous body which emits a cascade of
 differing shades and hues of light.  Its huge ugly head has two rows of
 wickedly razorlike teeth.  It's claws could rend adamantium and it 's tail
 could smash a house in.
-
 ~
-
 2|32|64 8|32 -900 S
-
 58 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13188
-
 Dread~
-
 the Dread~
-
-
-
 ~
-
 You can't kill this - let alone stare at it!
-
 ~
-
 2|32|64 2|8|32|512|32768|65536 0 S
-
 100 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13189
-
 Yagnid~
-
 the Yagnid~
-
 The Yagnid is crawling around here,  feeding on moss
-
 ~
-
 Gigantic member of the millipede family is rather harmless - I wouldn't
 provoke it though...
-
 ~
-
 2|4|64 8|32|512 0 S
-
 40 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13190
-
 Ahrganite~
-
 the Ahrganite~
-
 The Ahrganite is visiting this plane of existance...
-
 ~
-
 This creature has no stable form to look at!
-
 ~
-
 4|64|128 8|32|128|65536 0 S
-
 35 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13191
-
 Bleeder~
-
 the Bleeder~
-
 The Bleeder waits for it's next victim...
-
 ~
-
 The Bleeder is endowed with some very large,  sharp teeth.  A green, slimy
 body with four short legs and a long neck are somewhat offset by those
 teeth...
-
 ~
-
 4|64|128 8|32|512 -100 S
-
 57 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 0
-
 #13192
-
 Janitor~
-
 the Janitor~
-
 The Janitor is here cleaning up the mess...
-
 ~
-
 The Janitor looks back at you!
-
 Better be a tidy adventurer...
-
 ~
-
 64|128|512 8|32|512 0 S
-
 30 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 1
-
 #13193
-
 Jammer Avatar~
-
 Jammer's Avatar~
-
-
-
 ~
-
 This guy has long hair,  is dressed in leathers and has a guitar strapped
 to his back.  He doesn't have the marshall stack floating behind him
 though...
-
 ~
-
 2|64 8|32|128|512|8192 1000 S
-
 100 0 0 0d0+0 0d0+0
-
 0 0
-
 8 8 1
-
 >all_greet_prog 100~
 if ispc($n)
 smile $n
@@ -440,5196 +228,2633 @@ endif
 ~
 |
 #0
-
 #OBJECTS
-
 #13100
-
 Demonsword~
-
 a Demonsword~
-
 A Demonsword rests here.~
-
 ~
-
 5 16|64|512|4096|32768|65536|131072|524288 1|8192
-
 0~ 1~ 6~ 3~
-
 3 0 0
-
 A
-
 18 2
-
 A
-
 19 2
-
 A
-
 24 -3
-
 E
-
 blade~
-
 This sword radiates a foul evil.  It is a black blade which casts no
 shadow and does not reflect any light.~
-
 #13101
-
 Demonring ring demon~
-
 a Demonring~
-
 A Demonring rests here.~
-
 ~
-
 9 0 1|2|524288|1048576
-
 0~ 1~ 6~ 11~
-
 5 0 0
-
 A
-
 3 2
-
 A
-
 24 -2
-
 A
-
 18 4
-
 #13102
-
 robe~
-
 some robes~
-
 Some robes lie here.~
-
 ~
-
 9 0 1|1024
-
 0~ 1~ 6~ 11~
-
 2 0 0
-
 #13103
-
 Ethereal Leather~
-
  Ethereal Leather~
-
 ~
-
 ~
-
 9 32|64 1|8
-
 0~ 1~ 6~ 11~
-
 2 0 0
-
 A
-
 18 2
-
 A
-
 14 25
-
 #13104
-
 Ethereal leggings~
-
 Ethereal Leggings~
-
 ~
-
 ~
-
 9 32|64 1|32
-
 0~ 1~ 6~ 11~
-
 2 0 0
-
 A
-
 4 1
-
 A
-
 5 1
-
 #13105
-
 ethereal ninjato~
-
 an Ethereal Ninjato~
-
 ~
-
 ~
-
 5 32|64|32768|65536|262144|524288|1048576 1|8192
-
 0~ 1~ 6~ 11~
-
 5 0 0
-
 A
-
 18 3
-
 A
-
 19 3
-
 A
-
 13 5
-
 A
-
 24 -3
-
 #13106
-
 bloodaxe blood axe~
-
 a Bloodaxe~
-
 A Bloodaxe rests here.~
-
 ~
-
 5 0 1|8192
-
 0~ 1~ 6~ 13~
-
 5 0 0
-
 #13107
-
 Hardened leather vest~
-
 a Hardened Leather Vest~
-
 A Hardened Leather Vest lies on the ground~
-
 ~
-
 9 0 1|8
-
 0~ 1~ 6~ 11~
-
 5 0 0
-
 #13108
-
 scroll~
-
 a scroll~
-
 ~
-
 ~
-
 2 32 1|16384
-
 0~ ~ ~ ~
-
 1 0 0
-
 E
-
 read~
-
 This is the time of testing.  Before you lies a time when you will need
 more than just a mighty arm or spell to aid you.  Think before you act,
 brawn is not the answer.
 
-
-
 Jammer '95.~
-
 #13109
-
 dread sword dreadsword~
-
 a Dreadsword~
-
 A Dreadsword rests here.~
-
 ~
-
 5 1|64 1|8192
-
 0~ 1~ 6~ 3~
-
 5 0 0
-
 A
-
 18 4
-
 #13110
-
 ethereal bracers~
-
 Ethereal Bracers~
-
 ~
-
 ~
-
 9 32|64 1|4096
-
 0~ 1~ 6~ 11~
-
 5 0 0
-
 A
-
 1 3
-
 A
-
 5 3
-
 #13111
-
 ethereal boots~
-
 Ethereal Boots~
-
 ~
-
 ~
-
 9 32|64|131072 1|64
-
 0~ 1~ 6~ 11~
-
 5 0 0
-
 A
-
 14 25
-
 A
-
 17 -3
-
 A
-
 18 2
-
 A
-
 24 -3
 
-
-
 #13185
-
 Battle axe battleaxe~
-
 a Battleaxe~
-
 A Gordaron Battleaxe rests here.~
-
 ~
-
 5 64 1|8192
-
 0~ 1~ 6~ 13~
-
 1 0 0
-
 A
-
 19 5
-
 #13186
-
 furs~
-
 furs~
-
 Some furs lie on the ground~
-
 ~
-
 9 64 1|8
-
 0~ 1~ 6~ 11~
-
 5 0 0
-
 A
-
 14 25
-
 A
-
 5 2
-
 A
-
 13 15
-
 A
-
 23 -5
-
 #13187
-
 Short sword shortsword~
-
 a Shortsword~
-
 A Gordaron Shortsword rests here.~
-
 ~
-
 5 64 1|8192
-
 0~ 1~ 6~ 1~
-
 5 0 0
-
 A
-
 18 5
-
 A
-
 24 -4
-
 A
-
 17 -5
-
 A
-
 19 8
-
 #13188
-
 leather armor~
-
 Leather Armor~
-
 Some Gordaron leather armor lies here.~
-
 ~
-
 9 64|4096 1|8
-
 0~ 1~ 6~ 11~
-
 1 0 0
-
 A
-
 17 -5
-
 A
-
 24 -5
-
 A
-
 23 -5
-
 #13189
-
 Black belt blackbelt~
-
-The Blackbelt~
-
+the Blackbelt~
 ~
-
 ~
-
 9 1|32|64|128|1024|2048|4096 1|2048
-
 0~ 1~ 6~ 11~
-
 1 0 0
-
 A
-
 4 2
-
 A
-
 5 2
-
 A
-
 3 2
-
 A
-
 17 -10
-
 A
-
 2 2
-
 A
-
 18 10
-
 A
-
 19 10
-
 A
-
 14 50
-
 A
-
 12 50
-
 A
-
 24 -10
-
 A
-
 23 -10
-
 A
-
 16 50000
-
 #13190
-
 Robes Daeron~
-
 Daeron's Robes~
-
 Daeron's Robes are lying here~
-
 ~
-
 9 1|64|128|1024|2048 1|1024
-
 9~ 1~ 6~ 11~
-
 1 0 0
-
 A
-
 1 3
-
 A
-
 19 8
-
 A
-
 18 8
-
 A
-
 9 -20
-
 A
-
 8 1
-
 A
-
 12 200
-
 #0
 
 
-
-
-
 #ROOMS
-
 #13100
-
 The Antechamber~
-
 This room is an incredible piece of architecture.  The walls are
 geometrically perfect,  the floor and the ceiling are smooth.
-
 There is a wooden sign on the wall.  There is a staircase leading up.
 There is a doorway north.
-
 ~
-
 0 1|4|8 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13101
 D4
 ~
 ~
 0 -1 13073
 E
-
 Sign wooden~
-
 ***   WARNING   ***
-
 Most of this area is flagged no-recall.
-
 All rooms which are recall capable will be signposted.
-
-
 
 You can recall here.
 
-
-
 Jammer 95.~
-
 S
-
 #13101
-
 The Entranceway~
-
 This is a grand hall,  there are couches for lying on strewn across the
 room.  It seems as though people waited here,  for something...
-
 There is a glow coming from the doorway to the west.  There is a room
 south of here.
-
 ~
-
 0 1|8|8192 0
-
 D2
-
 ~
-
 ~
-
 0 -1 13100
-
 D3
-
 There is a dim glow around the doorway here.  The entrance is
-
 filled with a swirly grey fog.~
-
 west doorway glow dim~
-
 0 -1 13102
-
 S
-
 #13102
-
 A dark passage~
-
 This is a finely made passage.  If there was light here - you would see
 beautiful fresco's painted on the walls and ceiling,  depicting general
 everyday life... There is a doorway to the west.
-
 ~
-
 0 1|8|8192 0
-
 D3
-
 ~
-
 ~
-
 0 -1 13103
-
 S
-
 #13103
-
 Hallway~
-
 There is light from a doorway to the west creating wierd shadows on the
 wall. You can't see anything to the east.
-
 ~
-
 0 1|8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13102
-
 D3
-
 ~
-
 ~
-
 0 -1 13104
-
 S
-
 #13104
-
 North-South Corridor~
-
 You are standing in a long corridor running North-South.  To the East is a
 dark passage.  To the West you can see an elaborate archway. There is a
 shiny bronze plaque on the wall above the archway.
-
 ~
-
 0 8 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13108
-
 D1
-
 ~
-
 ~
-
 0 -1 13103
-
 D2
-
 ~
-
 ~
-
 0 -1 13105
-
 D3
-
 ~
-
 ~
-
 0 -1 13143
-
 E
-
 shiny bronze plaque~
-
 The plaque has inscribed in strange letters:
-
-
 
 VORAPSAK-SV-VOPRAK
 
 
-
-
-
 You may recall here.
 
-
-
 Jammer 1995.~
-
 S
-
 #13105
-
 North-South Corridor~
-
 The corridor runs North-South.  There is an archway to the west.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13104
-
 D2
-
 ~
-
 ~
-
 0 -1 13106
-
 D3
-
 ~
-
 ~
-
 0 -1 13128
-
 S
-
 #13106
-
 North-South Corridor~
-
 The corridor runs North-South.  There is an archway to the west.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13105
-
 D2
-
 ~
-
 ~
-
 0 -1 13107
-
 D3
-
 ~
-
 ~
-
 0 -1 13127
-
 S
-
 #13107
-
 South-Eastern end~
-
 You are at the Southern end of the corridor. The corridor proceeds North.
 There is an archway to the West.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13106
-
 D3
-
 ~
-
 ~
-
 0 -1 13112
-
 S
-
 #13108
-
 North-South Corridor~
-
 The corridor runs in a North-South direction. There is an archway to the West.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13109
-
 D2
-
 ~
-
 ~
-
 0 -1 13104
-
 D3
-
 ~
-
 ~
-
 0 -1 13144
-
 S
-
 #13109
-
 North-South Corridor~
-
 The corridor runs in a North-South direction. There is an archway to the West.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13110
-
 D2
-
 ~
-
 ~
-
 0 -1 13108
-
 D3
-
 ~
-
 ~
-
 0 -1 13159
-
 S
-
 #13110
-
 North-South Corridor~
-
 The corridor runs in a North-South direction. There is an archway to the West.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13111
-
 D2
-
 ~
-
 ~
-
 0 -1 13109
-
 D3
-
 ~
-
 ~
-
 0 -1 13160
-
 S
-
 #13111
-
 North-Eastern end~
-
 You are at the Northern end of the corridor.  The corridor proceeds South.
 There is an archway to the West.
-
 ~
-
 0 8|8192 0
-
 D2
-
 ~
-
 ~
-
 0 -1 13110
-
 D3
-
 ~
-
 ~
-
 0 -1 13175
-
 S
-
 #13112
-
 A black square~
-
 This is a massive room with the roof reaching far upwards.  You see before
 you a massive checkered room. You are standing on a black square.  To the
 north there is a white square.  To the west there is another white square.
 To the east there is an archway.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13127
-
 D1
-
 ~
-
 ~
-
 0 -1 13107
-
 D3
-
 ~
-
 ~
-
 0 -1 13113
-
 S
-
 #13113
-
 A white square~
-
 You are standing on a white square.  To the North there is a black square.
 To the West there is a black square.  To the East there is a black square.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13126
-
 D1
-
 ~
-
 ~
-
 0 -1 13112
-
 D3
-
 ~
-
 ~
-
 0 -1 13114
-
 S
-
 #13114
-
 A black square~
-
 You are standing on a black square.  To the North there is a white sqaure.
 To the East there is a white square.  To the West there is a white square.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13125
-
 D1
-
 ~
-
 ~
-
 0 -1 13113
-
 D3
-
 ~
-
 ~
-
 0 -1 13115
-
 S
-
 #13115
-
 A white square~
-
 You are standing on a white square.  To the North there is a black square.
 To the West there is a black square.  To the East there is a black square.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13124
-
 D1
-
 ~
-
 ~
-
 0 -1 13114
-
 D3
-
 ~
-
 ~
-
 0 -1 13116
-
 S
-
 #13116
-
 A black square~
-
 You are standing on a black square.  To the North there is a white square.
 To the West there is a white square.  To the East there is a white square.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13123
-
 D1
-
 ~
-
 ~
-
 0 -1 13115
-
 D3
-
 ~
-
 ~
-
 0 -1 13117
-
 S
-
 #13117
-
 A white square~
-
 You are standing a white square.  To the North there is a black square.
 To the West there is a black square.  To the East there is a black square.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13122
-
 D1
-
 ~
-
 ~
-
 0 -1 13116
-
 D3
-
 ~
-
 ~
-
 0 -1 13118
-
 S
-
 #13118
-
 A black square~
-
 You are standing on a black square.  To the north there is a white square.
 To the West there is a white square.  To the East there is a white square.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13121
-
 D1
-
 ~
-
 ~
-
 0 -1 13117
-
 D3
-
 ~
-
 ~
-
 0 -1 13119
-
 S
-
 #13119
-
 A white square~
-
 You are standing on a white square.  There are 3 exits.
-
 North there is an archway.  The others are to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13120
-
 D1
-
 ~
-
 ~
-
 0 -1 13118
-
 D3
-
 ~
-
 ~
-
 0 -1 13183
-
 S
-
 #13120
-
 A black square~
-
 You are standing on a black square.  There is an archway to the West.
-
 The other exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13135
-
 D1
-
 ~
-
 ~
-
 0 -1 13121
-
 D2
-
 ~
-
 ~
-
 0 -1 13119
-
 D3
-
 ~
-
 ~
-
 0 -1 13182
-
 S
-
 #13121
-
 A white square~
-
 You are standing on a white square.  There are exits in all four corners.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13134
-
 D1
-
 ~
-
 ~
-
 0 -1 13122
-
 D2
-
 ~
-
 ~
-
 0 -1 13118
-
 D3
-
 ~
-
 ~
-
 0 -1 13120
-
 S
-
 #13122
-
 A black square~
-
 You are standing on a black square.  There are exits in all four corners.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13133
-
 D1
-
 ~
-
 ~
-
 0 -1 13123
-
 D2
-
 ~
-
 ~
-
 0 -1 13117
-
 D3
-
 ~
-
 ~
-
 0 -1 13121
-
 S
-
 #13123
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13132
-
 D1
-
 ~
-
 ~
-
 0 -1 13124
-
 D2
-
 ~
-
 ~
-
 0 -1 13116
-
 D3
-
 ~
-
 ~
-
 0 -1 13122
-
 S
-
 #13124
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13131
-
 D1
-
 ~
-
 ~
-
 0 -1 13125
-
 D2
-
 ~
-
 ~
-
 0 -1 13115
-
 D3
-
 ~
-
 ~
-
 0 -1 13123
-
 S
-
 #13125
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13130
-
 D1
-
 ~
-
 ~
-
 0 -1 13126
-
 D2
-
 ~
-
 ~
-
 0 -1 13114
-
 D3
-
 ~
-
 ~
-
 0 -1 13124
-
 S
-
 #13126
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13129
-
 D1
-
 ~
-
 ~
-
 0 -1 13127
-
 D2
-
 ~
-
 ~
-
 0 -1 13113
-
 D3
-
 ~
-
 ~
-
 0 -1 13125
-
 S
-
 #13127
-
 A white square~
-
 You are standing in a massive room.  Around you you see a checkered floor.
 Each of the squares is about 6 foot square.
-
 You are standing on a white square.  There is an archway to the East.
-
 To the North,  West and South are black squares.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13128
-
 D1
-
 ~
-
 ~
-
 0 -1 13106
-
 D2
-
 ~
-
 ~
-
 0 -1 13112
-
 D3
-
 ~
-
 ~
-
 0 -1 13126
-
 S
-
 #13128
-
 A black square~
-
 This gigantic hall is covered in 6 foot squares.
-
 You are standing on a black square.  To the East there is an archway.
-
 The three other directions all have white squares.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13143
-
 D1
-
 ~
-
 ~
-
 0 -1 13105
-
 D2
-
 ~
-
 ~
-
 0 -1 13127
-
 D3
-
 ~
-
 ~
-
 0 -1 13129
-
 S
-
 #13129
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13142
-
 D1
-
 ~
-
 ~
-
 0 -1 13128
-
 D2
-
 ~
-
 ~
-
 0 -1 13126
-
 D3
-
 ~
-
 ~
-
 0 -1 13130
-
 S
-
 #13130
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13141
-
 D1
-
 ~
-
 ~
-
 0 -1 13129
-
 D2
-
 ~
-
 ~
-
 0 -1 13125
-
 D3
-
 ~
-
 ~
-
 0 -1 13131
-
 S
-
 #13131
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13140
-
 D1
-
 ~
-
 ~
-
 0 -1 13130
-
 D2
-
 ~
-
 ~
-
 0 -1 13124
-
 D3
-
 ~
-
 ~
-
 0 -1 13132
-
 S
-
 #13132
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13139
-
 D1
-
 ~
-
 ~
-
 0 -1 13131
-
 D2
-
 ~
-
 ~
-
 0 -1 13123
-
 D3
-
 ~
-
 ~
-
 0 -1 13133
-
 S
-
 #13133
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13138
-
 D1
-
 ~
-
 ~
-
 0 -1 13132
-
 D2
-
 ~
-
 ~
-
 0 -1 13122
-
 D3
-
 ~
-
 ~
-
 0 -1 13134
-
 S
-
 #13134
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13137
-
 D1
-
 ~
-
 ~
-
 0 -1 13133
-
 D2
-
 ~
-
 ~
-
 0 -1 13121
-
 D3
-
 ~
-
 ~
-
 0 -1 13135
-
 S
-
 #13135
-
 A white square~
-
 You are standing on a white square.  There is an archway to the West.
-
 The other exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13136
-
 D1
-
 ~
-
 ~
-
 0 -1 13134
-
 D2
-
 ~
-
 ~
-
 0 -1 13120
-
 D3
-
 ~
-
 ~
-
 0 -1 13181
-
 S
-
 #13136
-
 A black square~
-
 You are standing on a black square.  There is an archway to the West.
-
 The other exits all lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13151
-
 D1
-
 ~
-
 ~
-
 0 -1 13137
-
 D2
-
 ~
-
 ~
-
 0 -1 13135
-
 D3
-
 ~
-
 ~
-
 0 -1 13180
-
 S
-
 #13137
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13150
-
 D1
-
 ~
-
 ~
-
 0 -1 13138
-
 D2
-
 ~
-
 ~
-
 0 -1 13134
-
 D3
-
 ~
-
 ~
-
 0 -1 13136
-
 S
-
 #13138
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13149
-
 D1
-
 ~
-
 ~
-
 0 -1 13139
-
 D2
-
 ~
-
 ~
-
 0 -1 13133
-
 D3
-
 ~
-
 ~
-
 0 -1 13137
-
 S
-
 #13139
-
 A white square~
-
 You are standing in the middle of a white square.  All Exits are to black
 squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13148
-
 D1
-
 ~
-
 ~
-
 0 -1 13140
-
 D2
-
 ~
-
 ~
-
 0 -1 13132
-
 D3
-
 ~
-
 ~
-
 0 -1 13138
-
 S
-
 #13140
-
 A black square~
-
 You are standing in the middle of a black square.  All Exits are to white
 squares
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13147
-
 D1
-
 ~
-
 ~
-
 0 -1 13141
-
 D2
-
 ~
-
 ~
-
 0 -1 13131
-
 D3
-
 ~
-
 ~
-
 0 -1 13139
-
 S
-
 #13141
-
 A white square~
-
 You are standing in the middle of a white square.  All Exits are to black
 squares
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13146
-
 D1
-
 ~
-
 ~
-
 0 -1 13142
-
 D2
-
 ~
-
 ~
-
 0 -1 13130
-
 D3
-
 ~
-
 ~
-
 0 -1 13140
-
 S
-
 #13142
-
 A black square~
-
 You are standing in the middle of a black square.  All Exits are to white
 squares
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13145
-
 D1
-
 ~
-
 ~
-
 0 -1 13143
-
 D2
-
 ~
-
 ~
-
 0 -1 13129
-
 D3
-
 ~
-
 ~
-
 0 -1 13141
-
 S
-
 #13143
-
 A white square~
-
 This room is HUGE!  The roof disappears into the darkness,  although there
 is plenty of light around you.  As you look around you see that the floor
 is made up of 6 foot squares - easily big enough for you to stand in.
-
 You are standing on a white square.  To the East there is an archway.
-
 The other three directions all lead to other black squares.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13144
-
 D1
-
 ~
-
 ~
-
 0 -1 13104
-
 D2
-
 ~
-
 ~
-
 0 -1 13128
-
 D3
-
 ~
-
 ~
-
 0 -1 13142
-
 S
-
 #13144
-
 A black square~
-
 This room takes you breath away as soon as you enter it.  This massive
 room as a checkered floor consisting of 6 foot squares.
-
 You are standing on a black square.  There is an archway to the East.
-
 The other directions all lead onto white squares.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13159
-
 D1
-
 ~
-
 ~
-
 0 -1 13108
-
 D2
-
 ~
-
 ~
-
 0 -1 13143
-
 D3
-
 ~
-
 ~
-
 0 -1 13145
-
 S
-
 #13145
-
 A white square~
-
 You are standing on a white square.  All exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13158
-
 D1
-
 ~
-
 ~
-
 0 -1 13144
-
 D2
-
 ~
-
 ~
-
 0 -1 13142
-
 D3
-
 ~
-
 ~
-
 0 -1 13146
-
 S
-
 #13146
-
 A black square~
-
 You are standing on a black square.  All exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13157
-
 D1
-
 ~
-
 ~
-
 0 -1 13145
-
 D2
-
 ~
-
 ~
-
 0 -1 13141
-
 D3
-
 ~
-
 ~
-
 0 -1 13147
-
 S
-
 #13147
-
 A white square~
-
 You are standing on a large white square.  Black squares are in the
 cardinal directions around you.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13156
-
 D1
-
 ~
-
 ~
-
 0 -1 13146
-
 D2
-
 ~
-
 ~
-
 0 -1 13140
-
 D3
-
 ~
-
 ~
-
 0 -1 13148
-
 S
-
 #13148
-
 A black square~
-
 You are standing on a black square.  All four sqaures next you are white
 squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13155
-
 D1
-
 ~
-
 ~
-
 0 -1 13147
-
 D2
-
 ~
-
 ~
-
 0 -1 13139
-
 D3
-
 ~
-
 ~
-
 0 -1 13149
-
 S
-
 #13149
-
 A white square~
-
 You are standing on a white square.  All 4 directions lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13154
-
 D1
-
 ~
-
 ~
-
 0 -1 13148
-
 D2
-
 ~
-
 ~
-
 0 -1 13138
-
 D3
-
 ~
-
 ~
-
 0 -1 13150
-
 S
-
 #13150
-
 A black square~
-
 You are standing on a black square.  All four directions lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13153
-
 D1
-
 ~
-
 ~
-
 0 -1 13149
-
 D2
-
 ~
-
 ~
-
 0 -1 13137
-
 D3
-
 ~
-
 ~
-
 0 -1 13151
-
 S
-
 #13151
-
 A white square~
-
 You are standing on a white square.  There is an archway to the West.
-
 The other exits all lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13152
-
 D1
-
 ~
-
 ~
-
 0 -1 13150
-
 D2
-
 ~
-
 ~
-
 0 -1 13136
-
 D3
-
 ~
-
 ~
-
 0 -1 13179
-
 S
-
 #13152
-
 A black square~
-
 You are standing on a black square.  There is an archway to the West.
-
 The other exits all lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13167
-
 D1
-
 ~
-
 ~
-
 0 -1 13153
-
 D2
-
 ~
-
 ~
-
 0 -1 13151
-
 D3
-
 ~
-
 ~
-
 0 -1 13178
-
 S
-
 #13153
-
 A white square~
-
 You are standing on a white square.  All around you are black sqaures.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13166
-
 D1
-
 ~
-
 ~
-
 0 -1 13154
-
 D2
-
 ~
-
 ~
-
 0 -1 13150
-
 D3
-
 ~
-
 ~
-
 0 -1 13152
-
 S
-
 #13154
-
 A black square~
-
 You are standing on a black square.  All around you are white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13165
-
 D1
-
 ~
-
 ~
-
 0 -1 13155
-
 D2
-
 ~
-
 ~
-
 0 -1 13149
-
 D3
-
 ~
-
 ~
-
 0 -1 13153
-
 S
-
 #13155
-
 A white square~
-
 You are standing on a white square.  All around you are black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13164
-
 D1
-
 ~
-
 ~
-
 0 -1 13156
-
 D2
-
 ~
-
 ~
-
 0 -1 13148
-
 D3
-
 ~
-
 ~
-
 0 -1 13154
-
 S
-
 #13156
-
 A black square~
-
 You are standing on a black square.  All around you are white squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13163
-
 D1
-
 ~
-
 ~
-
 0 -1 13157
-
 D2
-
 ~
-
 ~
-
 0 -1 13147
-
 D3
-
 ~
-
 ~
-
 0 -1 13155
-
 S
-
 #13157
-
 A white square~
-
 You are standing on a white square.  All around you are black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13162
-
 D1
-
 ~
-
 ~
-
 0 -1 13158
-
 D2
-
 ~
-
 ~
-
 0 -1 13146
-
 D3
-
 ~
-
 ~
-
 0 -1 13156
-
 S
-
 #13158
-
 A black square~
-
 You are standing on a black square.  The squares adjacent are all white.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13161
-
 D1
-
 ~
-
 ~
-
 0 -1 13159
-
 D2
-
 ~
-
 ~
-
 0 -1 13145
-
 D3
-
 ~
-
 ~
-
 0 -1 13157
-
 S
-
 #13159
-
 A white square~
-
 This mammoth sized room defies all explanation.  The floor is made up of
 black and white squares.
-
 You are standing on a white square.  There is an archway to the East.
-
 The other directions all lead to black sqaures.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13160
-
 D1
-
 ~
-
 ~
-
 0 -1 13109
-
 D2
-
 ~
-
 ~
-
 0 -1 13144
-
 D3
-
 ~
-
 ~
-
 0 -1 13158
-
 S
-
 #13160
-
 A black square~
-
 This room is covered in 6 foot wide black and white squares.
-
 You are standing on a black square.  There is an archway to the East.
-
 The other exits all lead to white squares.
-
 ~
-
 0 4|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13175
-
 D1
-
 ~
-
 ~
-
 0 -1 13110
-
 D2
-
 ~
-
 ~
-
 0 -1 13159
-
 D3
-
 ~
-
 ~
-
 0 -1 13161
-
 S
-
 #13161
-
 A white square~
-
 You are standing on a white square.  All adjacent squares are black.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13174
-
 D1
-
 ~
-
 ~
-
 0 -1 13160
-
 D2
-
 ~
-
 ~
-
 0 -1 13158
-
 D3
-
 ~
-
 ~
-
 0 -1 13162
-
 S
-
 #13162
-
 A black square~
-
 You are standing on a black square.  All adjacent squares are white.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13173
-
 D1
-
 ~
-
 ~
-
 0 -1 13161
-
 D2
-
 ~
-
 ~
-
 0 -1 13157
-
 D3
-
 ~
-
 ~
-
 0 -1 13163
-
 S
-
 #13163
-
 A white square~
-
 You are standing on a white square. All adjacent squares are black.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13172
-
 D1
-
 ~
-
 ~
-
 0 -1 13162
-
 D2
-
 ~
-
 ~
-
 0 -1 13156
-
 D3
-
 ~
-
 ~
-
 0 -1 13164
-
 S
-
 #13164
-
 A black square~
-
 You are standing on a black square.  All adjacent squares are white.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13171
-
 D1
-
 ~
-
 ~
-
 0 -1 13163
-
 D2
-
 ~
-
 ~
-
 0 -1 13155
-
 D3
-
 ~
-
 ~
-
 0 -1 13165
-
 S
-
 #13165
-
 A white square~
-
 You are standing on a white square.  All adjacent squares are black.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13170
-
 D1
-
 ~
-
 ~
-
 0 -1 13164
-
 D2
-
 ~
-
 ~
-
 0 -1 13154
-
 D3
-
 ~
-
 ~
-
 0 -1 13166
-
 S
-
 #13166
-
 A black square~
-
 You are standing on a black square.  All adjacent squares are white.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13169
-
 D1
-
 ~
-
 ~
-
 0 -1 13165
-
 D2
-
 ~
-
 ~
-
 0 -1 13153
-
 D3
-
 ~
-
 ~
-
 0 -1 13167
-
 S
-
 #13167
-
 A white square~
-
 You are standing on a white square.  To the West there is an archway.
-
 All other exits lead to black squares.
-
 ~
-
 0 8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13168
-
 D1
-
 ~
-
 ~
-
 0 -1 13166
-
 D2
-
 ~
-
 ~
-
 0 -1 13152
-
 D3
-
 ~
-
 ~
-
 0 -1 13177
-
 S
-
 #13168
-
 A black square~
-
 You are standing on a black square.  There is an archway to the West.
-
 All other exits lead to white squares.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13169
-
 D2
-
 ~
-
 ~
-
 0 -1 13167
-
 D3
-
 ~
-
 ~
-
 0 -1 13176
-
 S
-
 #13169
-
 A white square~
-
 You are standing on a white square.  All adjacent squares are black.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13170
-
 D2
-
 ~
-
 ~
-
 0 -1 13166
-
 D3
-
 ~
-
 ~
-
 0 -1 13168
-
 S
-
 #13170
-
 A black square~
-
 You are standing on a black square.  All adjacent squares are white.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13171
-
 D2
-
 ~
-
 ~
-
 0 -1 13165
-
 D3
-
 ~
-
 ~
-
 0 -1 13169
-
 S
-
 #13171
-
 A white square~
-
 You are standing on a white square.  All adjacent squares are black.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13172
-
 D2
-
 ~
-
 ~
-
 0 -1 13164
-
 D3
-
 ~
-
 ~
-
 0 -1 13170
-
 S
-
 #13172
-
 A black square~
-
 You are standing on a black square.  All adjacent squares are white.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13173
-
 D2
-
 ~
-
 ~
-
 0 -1 13163
-
 D3
-
 ~
-
 ~
-
 0 -1 13171
-
 S
-
 #13173
-
 A white square~
-
 You are standing on a white square.  All adjacent squares are black.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13174
-
 D2
-
 ~
-
 ~
-
 0 -1 13162
-
 D3
-
 ~
-
 ~
-
 0 -1 13172
-
 S
-
 #13174
-
 A black square~
-
 You are standing on a black square.  All adjacent squares are white.
-
 ~
-
 0 8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13175
-
 D2
-
 ~
-
 ~
-
 0 -1 13161
-
 D3
-
 ~
-
 ~
-
 0 -1 13173
-
 S
-
 #13175
-
 A white square~
-
 You are standing in the corner of a MASSIVE room!  The floor is made up of
 6 foot wide squares,  and the roof disappears into darkness.
-
 You are standing on a white square.  There is an archway to the East.
-
 The other exits all lead to black squares.
-
 ~
-
 0 4|8|8192 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13111
-
 D2
-
 ~
-
 ~
-
 0 -1 13160
-
 D3
-
 ~
-
 ~
-
 0 -1 13174
-
 S
-
 #13176
-
 The North-West end~
-
 You are at the end of a long North - South passage.  There is an archway
 to the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13168
-
 D2
-
 ~
-
 ~
-
 0 -1 13177
-
 S
-
 #13177
-
 A North - South passageway~
-
 You are in a long North - South passage.  There is an archway to the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13176
-
 D1
-
 ~
-
 ~
-
 0 -1 13167
-
 D2
-
 ~
-
 ~
-
 0 -1 13178
-
 S
-
 #13178
-
 A North - South passageway~
-
 You are standing in a North - South passageway.  There is an archway to
 the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13177
-
 D1
-
 ~
-
 ~
-
 0 -1 13152
-
 D2
-
 ~
-
 ~
-
 0 -1 13179
-
 S
-
 #13179
-
 A North - South passageway~
-
 You are standing in a North - South passageway.  There is an archway to
 the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13178
-
 D1
-
 ~
-
 ~
-
 0 -1 13151
-
 D2
-
 ~
-
 ~
-
 0 -1 13180
-
 S
-
 #13180
-
 A North - South passageway~
-
 You are standing in a North - South passageway.  There is an archway to
 the East and a closed door to the West.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13179
-
 D1
-
 ~
-
 ~
-
 0 -1 13136
-
 D2
-
 ~
-
 ~
-
 0 -1 13181
-
 D3
-
 ~
-
 ~
-
 1 -1 13184
-
 S
-
 #13181
-
 A North - South passageway~
-
 You are standing in a North - South passageway.  There is an archway to
 the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13180
-
 D1
-
 ~
-
 ~
-
 0 -1 13135
-
 D2
-
 ~
-
 ~
-
 0 -1 13182
-
 S
-
 #13182
-
 A North - South passageway~
-
 You are standing in a North - South passageway.  There is an archway to
 the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13181
-
 D1
-
 ~
-
 ~
-
 0 -1 13120
-
 D2
-
 ~
-
 ~
-
 0 -1 13183
-
 S
-
 #13183
-
 The South-West end~
-
 You are at the end of a long North - South passageway.  There is an
 archway to the East.
-
 ~
-
 0 4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13182
-
 D1
-
 ~
-
 ~
-
 0 -1 13119
-
 S
-
 #13184
-
 The Descent~
-
 This circular stone room is filled with a dull humming noise.
-
 There is a closed door east.  There is a stairway leading down into
 darkness.  There is also a rough message carved ruggedly into the smooth
 North wall.
-
 ~
-
 0 1|8|16384 0
-
 D1
-
 ~
-
 ~
-
 1 -1 13180
-
 D5
-
 ~
-
 ~
-
 0 -1 13185
-
 E
-
 rough message north~
-
 You may recall here.
 
-
-
 Jammer 95.~
-
 S
-
 #13185
-
 The Lower Reaches~
-
 You are standing in a small sparcely furnished room.  There is a stairway
 leading up and a passage leads south. A plain looking sign attracts your
 attention.
-
 ~
-
 0 4|8 0
-
 D2
-
 The doorway is shrouded in darkness...~
-
 ~
-
 0 -1 13186
-
 D4
-
 ~
-
 ~
-
 0 -1 13184
-
 E
-
 sign plain~
-
 This area is mostly flagged no-recall.  Some rooms are recall flagged.
 They will be sign posted.
 
-
-
 This room is recall capable.
 
-
-
 Jammer 1995.~
-
 S
-
 #13186
-
 The Maze of dispair~
-
 This room is a plain looking room with 4 exits.
-
 North,  East,  West and South.
-
 ~
-
 0 1|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13187
-
 D1
-
 ~
-
 ~
-
 0 -1 13186
-
 D2
-
 ~
-
 ~
-
 0 -1 13186
-
 D3
-
 ~
-
 ~
-
 0 -1 13188
-
 S
-
 #13187
-
 The Maze of dispair~
-
 Another rather non-descript room hardly registers on your senses.
-
 It has... yes you guessed it,  four exits.
-
 North,  East,  West,  South.
-
 ~
-
 0 1|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13186
-
 D1
-
 ~
-
 ~
-
 0 -1 13189
-
 D2
-
 ~
-
 ~
-
 0 -1 13187
-
 D3
-
 ~
-
 ~
-
 0 -1 13190
-
 S
-
 #13188
-
 The Maze of dispair~
-
 Hmm,  we've been here before,  haven't we?
-
 Four exits are the best feature of this room.
-
 North,  East,  West,  South.
-
 ~
-
 0 1|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13189
-
 D1
-
 ~
-
 ~
-
 0 -1 13186
-
 D2
-
 ~
-
 ~
-
 0 -1 13190
-
 D3
-
 ~
-
 ~
-
 0 -1 13189
-
 S
-
 #13189
-
 The Maze of dispair~
-
 Deja vu runs amok amongst your common senses.
-
 You MUST have been here before,  well,  in this life time anyway.
-
 Four exits:
-
 North,  East,  West,  South.
-
 ~
-
 0 1|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13192
-
 D1
-
 ~
-
 ~
-
 0 -1 13188
-
 D2
-
 ~
-
 ~
-
 0 -1 13191
-
 D3
-
 ~
-
 ~
-
 0 -1 13187
-
 S
-
 #13190
-
 The Maze of dispair~
-
 Oh no!  Another plain room with four exits.
-
 North,  East,  West,  South.
-
 ~
-
 0 1|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13191
-
 D1
-
 ~
-
 ~
-
 0 -1 13188
-
 D2
-
 ~
-
 ~
-
 0 -1 13192
-
 D3
-
 ~
-
 ~
-
 0 -1 13187
-
 S
-
 #13191
-
 The Maze of dispair~
-
 Is this the same room as you left?  It must be an illusion.  Four exits
 are not really there(?),  but you could try going:
-
 North,  East,  West,  South.
-
 ~
-
 0 1|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13189
-
 D1
-
 ~
-
 ~
-
 0 -1 13192
-
 D2
-
 ~
-
 ~
-
 0 -1 13190
-
 D3
-
 ~
-
 ~
-
 0 -1 13189
-
 S
-
 #13192
-
 The Maze of dispair~
-
 OK. This is just another room with four exits:
-
 North,  East,  West,  South.
-
 ~
-
 0 1|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13186
-
 D1
-
 ~
-
 ~
-
 0 -1 13193
-
 D2
-
 ~
-
 ~
-
 0 -1 13189
-
 D3
-
 ~
-
 ~
-
 0 -1 13191
-
 S
-
 #13193
-
 The Maze of dispair~
-
 There must be a way out of this place!
-
 Try:  North,  East,  West,  South.
-
 ~
-
 0 1|8|8192 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13194
-
 D1
-
 ~
-
 ~
-
 0 -1 13192
-
 D2
-
 ~
-
 ~
-
 0 -1 13189
-
 D3
-
 ~
-
 ~
-
 0 -1 13192
-
 S
-
 #13194
-
 The Maze of dispair~
-
 Tired are we?  Longing for change?  Bored with the same old mazes?
-
 Try this out for size!
-
 North,  South,  East, West.
-
 ~
-
 0 1|8|8192|16384 0
-
 D2
-
 ~
-
 ~
-
 0 -1 13195
-
 S
-
 #13195
-
 The dark tunnel~
-
 You are in a rather damp narrow tunnel leading south.  This tunnel is
 rough hewn,  and appears to be older than the room you just stepped out of.
 There is a magically illuminated sign on the wall.
-
 ~
-
 0 1|4|8 0
-
 D2
-
 ~
-
 ~
-
 0 -1 13196
-
 E
-
 sign~
-
 You may recall here.
-
-
 
 Jammer 1995~
-
 S
-
 #13196
-
 The dark tunnel~
-
 The roof is getting taller but the width of the passage remains rather
 cramped.  The tunnel runs in a North - South direction.
-
 ~
-
 0 1|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13195
-
 D2
-
 ~
-
 ~
-
 0 -1 13197
-
 S
-
 #13197
-
 The dark tunnel~
-
 The tunnel here turns a corner.  Exits are North and East.
-
 ~
-
 0 1|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13196
-
 D1
-
 ~
-
 ~
-
 0 -1 13198
-
 S
-
 #13198
-
 The wide tunnel~
-
 The tunnel is opening out eastwards. To the west the tunnel is enclosed in
 darkness. To the east the tunnel widens out and there is light ahead.
-
 ~
-
 0 1|8|8192|16384 0
-
 D1
-
 ~
-
 ~
-
 0 -1 13199
-
 D3
-
 ~
-
 ~
-
 0 -1 13197
-
 S
-
 #13199
-
 The Glowing Grotto~
-
 You are standing in a massive cavern.  It is lit up by millions of
 glow-worms. There is a tunnel leading off to the West.
-
 There are some stairs leading Down. There is an old decrepit sign hanging
 off rusty hinges creakes loudly in a slight breeze...
-
 ~
-
 0 8 0
-
 D3
-
 ~
-
 ~
-
 0 -1 13198
-
 D5
-
 The stairwell is closed off by a magical force gate.  There is a
-
 small lock made of an unknown metal built into the wall on the
-
 entrance. ~
-
 lock entrance~
-
 8 13187 13200
-
 E
-
 old decrepit sign~
-
 You may recall here.
 
-
-
 Jammer 1995.~
-
 S
-
 #13200
-
 The Final Test Entrance - The Choice Room~
-
 Some where down the stairs your vision blurs and you appear in a small
 room.  The air here is stale and dank,  and yet the room is
-
 absolutely spotless. This room has three closed doors.  West,  South and
 East. A plain sign hangings neatly on the North wall.
-
 ~
-
 0 1|4|8|16384 0
-
 D1
-
 ~
-
 ~
-
 1 -1 13201
-
 D2
-
 ~
-
 ~
-
 1 -1 13203
-
 D3
-
 ~
-
 ~
-
 1 -1 13202
-
 E
-
 plain sign north~
-
 Congratulations on getting this far!
-
 The final test is a simple test of your LUCK!
-
 Pick one of the doors.  One is the way through - the others are a one way
 trip to purgatory the hard way.
-
 If you wish,  you may recall now and save yourself.  Otherwise,  make the
 right choice and you will be rewarded (as well as seeing what is on the
 other side).
-
 May the luck of the Gods be with you.
 
-
-
 Jammer 95.~
-
 S
-
 #13201
-
 An empty room~
-
 You are standing in a small empty room.  There is a door in front of you.
-
 ~
-
 0 1|4|8|8192|16384 0
-
 D2
-
 ~
-
 ~
-
 0 -1 13204
-
 S
-
 #13202
-
 A dead end~
-
 You life flashes before your eyes as the Dread takes it from you...
-
 ~
-
 0 1|4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 1 -1 13200
-
 S
-
 #13203
-
 A dead end~
-
 Sorry - time to die... now!  A Dread phases in and attacks you.
-
 ~
-
 0 1|4|8|8192|16384 0
-
 D0
-
 ~
-
 ~
-
 1 -1 13200
-
 S
-
 #13204
-
 The chamber~
-
 You are standing in a large chamber.  Artifacts litter the room,  placed
 rather chaotically.  The walls have magnificent tapestries depicting
 ancient battles,  banners hang from a beam spanning the ceiling.
-
 ~
-
 0 8|16384 0
-
 D0
-
 ~
-
 ~
-
 0 -1 13201
-
 S
-
 #0
 
 
-
-
-
 #RESETS
-
 *
-
 M 1 13102 6 13101                      the Dreadguard to The Entranceway
-
 E 1 13109 100 16
-
 *
-
 *
-
 M 1 13104 2 13102                      the Fanatic to A dark passage
-
 E 1 13102 100 12
-
 *
-
 M 1 13103 2 13103                      A Raider to Hallway
-
 E 1 13106 100 16
-
 E 1 13107 100 5
-
 *
-
 M 1 13105 1 13105                      the Spawn to North-South Corridor
-
 *
-
 M 1 13103 2 13106                      A Raider to North-South Corridor
-
 E 1 13106 100 16
-
 E 1 13107 100 5
-
 *
-
 M 1 13102 6 13104                      the Dreadguard to North-South Corridor
-
 E 1 13109 100 16
-
 *
-
 M 1 13104 2 13104                      the Fanatic to North-South Corridor
-
 E 1 13102 100 12
-
 *
-
 M 1 13107 18 13113                      The White Square to A white square
-
 *
-
 M 1 13106 17 13114                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13115                      The White Square to A white square
-
 *
-
 M 1 13106 17 13116                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13117                      The White Square to A white square
-
 *
-
 M 1 13106 17 13118                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13119                      The White Square to A white square
-
 *
-
 M 1 13106 17 13120                      The Black Square to A black square
-
 *
-
 M 1 13106 17 13124                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13129                      The White Square to A white square
-
 *
-
 M 1 13107 18 13133                      The White Square to A white square
-
 *
-
 M 1 13106 17 13136                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13137                      The White Square to A white square
-
 *
-
 M 1 13106 17 13138                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13139                      The White Square to A white square
-
 *
-
 M 1 13106 17 13140                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13141                      The White Square to A white square
-
 *
-
 M 1 13106 17 13142                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13145                      The White Square to A white square
-
 *
-
 M 1 13106 17 13146                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13147                      The White Square to A white square
-
 *
-
 M 1 13106 17 13148                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13149                      The White Square to A white square
-
 *
-
 M 1 13106 17 13150                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13151                      The White Square to A white square
-
 *
-
 M 1 13106 17 13154                      The Black Square to A black square
-
 *
-
 M 1 13106 17 13158                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13163                      The White Square to A white square
-
 *
-
 M 1 13107 18 13167                      The White Square to A white square
-
 *
-
 M 1 13106 17 13168                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13169                      The White Square to A white square
-
 *
-
 M 1 13106 17 13170                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13171                      The White Square to A white square
-
 *
-
 M 1 13106 17 13172                      The Black Square to A black square
-
 *
-
 M 1 13107 18 13173                      The White Square to A white square
-
 *
-
 M 1 13106 17 13174                      The Black Square to A black square
-
 D 1 13184 1 1                   ; The Descent Close East
-
 *
-
 M 1 13102 6 13109                      the Dreadguard to North-South Corridor
-
 E 1 13109 100 16
-
 *
-
 M 1 13101 1 13121                      A Multiplanar Assassin to A white square
-
 E 1 13103 100 5
-
 E 1 13104 100 7
-
 E 1 13105 100 16
-
 E 1 13111 100 8
-
 E 1 13110 100 14
-
 E 1 13110 100 15
-
 *
-
 M 1 13102 6 13102                      the Dreadguard to A dark passage
-
 E 1 13109 100 16
-
 *
-
 M 1 13102 6 13107                      the Dreadguard to South-Eastern end
-
 E 1 13109 100 16
-
 *
-
 M 1 13100 1 13108                      A Spectral Inquisitor to
-
 E 1 13103 100 5
-
 E 1 13104 100 7
-
 *
-
 M 1 13102 6 13110                      the Dreadguard to North-South Corridor
-
 E 1 13109 100 16
-
 *
-
 M 1 13108 1 13184                      the Cambion to The Descent
-
 E 1 13101 100 1
-
 E 1 13103 100 5
-
 E 1 13100 100 16
-
 O 1 13108 100 13104                    a scroll to North-South Corridor
-
 O 1 13190 100 13204                    Daeron's Robes to The chamber
-
 R 1 13186 4             ; Randomize The Maze of dispair
-
 R 1 13187 4             ; Randomize The Maze of dispair
-
 R 1 13188 4             ; Randomize The Maze of dispair
-
 R 1 13189 4             ; Randomize The Maze of dispair
-
 R 1 13190 4             ; Randomize The Maze of dispair
-
 R 1 13191 4             ; Randomize The Maze of dispair
-
 R 1 13192 4             ; Randomize The Maze of dispair
-
 R 1 13193 4             ; Randomize The Maze of dispair
-
 *
-
 M 1 13187 1 13199                     the Grottobeast to The grotto
-
 G 1 13187 100
-
 R 1 13200 3             ; Randomize The Final Test
-
 *
-
 M 1 13188 2 13202                      the Dread to A dead end
-
 *
-
 M 1 13188 2 13203                      the Dread to A dead end
-
 D 1 13199 5 2                   ; The Glowing Grotto Lock Down
-
 *
-
 M 1 13189 2 13196                      the Yagnid to The dark tunnel
-
 *
-
 M 1 13190 1 13193                      the Ahrganite to The Maze of dispair
-
 *
-
 M 1 13185 2 13186                      the Visigoth to The Maze of dispair
-
 E 1 13186 100 5
-
 E 1 13185 100 16
-
 *
-
 M 1 13186 1 13192                      the Freebooter to The Maze of dispair
-
 E 1 13188 100 5
-
 E 1 13187 100 16
-
 *
-
 M 1 13185 1 13190                      the Visigoth to The Maze of dispair
-
 E 1 13186 100 5
-
 E 1 13185 100 16
-
 *
-
 M 1 13191 2 13187                      the Bleeder to The Maze of dispair
-
 *
-
 M 1 13191 2 13192                      the Bleeder to The Maze of dispair
-
 *
-
 M 1 13192 1 13188                     the Janitor to The Maze of dispair
-
 *
-
 M 1 13189 2 13195                      the Yagnid to The dark tunnel
-
 *
-
 M 1 13193 1 13204                      Jammer's Avatar to The chamber
-
 O 1 13189 100 13204                    The Blackbelt to The chamber
-
 D 1 13180 3 1                   ; A North - South passageway Close West
-
 D 1 13202 0 1			; A dead end close north
-
 D 1 13203 0 1			; A dead end close north
-
 S
-
-
-
 
 
 #SPECIALS
-
 M  13101 spec_poison                    An Assassin
-
 M  13102 spec_breath_gas                        the Dreadguard
-
 M  13103 spec_poison                    A Raider
-
 M  13104 spec_cast_cleric                       the Fanatic
-
 M  13105 spec_cast_mage                 the Spawn
-
 M  13106 spec_poison                    The Black Square
-
 M  13107 spec_poison                    The White Square
-
 M  13108 spec_cast_undead                       the Cambion
-
 M  13186 spec_thief                     the Freebooter
-
 M  13187 spec_poison                       the Grottobeast
-
 M  13188 spec_breath_any                        the Dread
-
 M  13189 spec_poison                    the Yagnid
-
 M  13190 spec_cast_mage                 the Ahrganite
-
 M  13191 spec_cast_psionicist                   the Bleeder
-
 M  13192 spec_janitor                   the Janitor
 S
-
-
-
 
 
 #$
