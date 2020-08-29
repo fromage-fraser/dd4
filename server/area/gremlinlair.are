@@ -61,11 +61,11 @@ As you look at him you notice one leg is longer then the other.
 0 0
 8 8 1
 #135
-Boos�~
-Boos� the Gremlin~
-Boos� lunges at you with a plastic spork!
+Boose~
+Boose the Gremlin~
+Boose lunges at you with a plastic spork!
 ~
-Boos� says "{gGarble Gar Blargh Garble BLAH!{x"
+Boose says "{gGarble Gar Blargh Garble BLAH!{x"
 ~
 2|4|32|64 0 -1000 S
 6 0 0 0d0+0 0d0+0
@@ -83,11 +83,11 @@ Booz can't find "{rXeddy{x" and is very unhappy about it.
 0 0
 8 8 1
 #137
-Booz�s~
-Booz�s the Gremlin~
-Booz�s smiles wickedly at you.
+Boozes~
+Boozes the Gremlin~
+Boozes smiles wickedly at you.
 ~
-Booz�s pokes at your eyes.
+Boozes pokes at your eyes.
 ~
 2|32|64 0 -1000 S
 6 0 0 0d0+0 0d0+0
@@ -586,7 +586,7 @@ S
 #147
 {rJeremiah's "throne room"{x~
 You come upon a room with a frayed banner hanging from the roof that
-proclaims this place "J�r3rnI@HZ room". What appears to be a {ygolden{w
+proclaims this place "Jer3rnI@HZ room". What appears to be a {ygolden{w
 throne sits in the middle of the room with what must be Jeremiah himself
 on top it.
 ~
@@ -717,7 +717,7 @@ D2
 0 -1 152
 S
 #154
-Boos�'s room~
+Boose's room~
 Dead center in this room is a large gremlin cramming food into his
 mouth. Rather strange you think as you notice the gremlin is trying
 to eat and laugh at the same time, you find the sight quite amusing.
@@ -732,7 +732,7 @@ D0
 0 -1 152
 S
 #155
-Booz�s's room~
+Boozes's room~
 "{yEeek{w". "{yDddn{w". "{yXxxs{w". This gremlin is apparently trying to
 speak, but failing miserably.
 ~
@@ -914,10 +914,10 @@ M 1 132 4 150			a Male Gremlin to BIG
 *
 M 1 134 1 153			Boos the Gremlin. to Boos's room
 *
-M 1 135 1 154			Boos� the Gremlin to Boos�'s room
+M 1 135 1 154			Boose the Gremlin to Boose's room
 E 1 133 100 16
 *
-M 1 137 1 155			Booz�s the Gremlin to Booz�s's room
+M 1 137 1 155			Boozes the Gremlin to Boozes's room
 *
 M 1 136 1 156			Booz the Gremlin to Booz's room
 *
