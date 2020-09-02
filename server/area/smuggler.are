@@ -966,7 +966,7 @@ A small key is here~
 2 0 0
 #17555
 dagger~
-A sharp dagger~
+a sharp dagger~
 A small but sharp dagger is here.~
 ~
 5 64 1|8192
@@ -999,8 +999,8 @@ A
 A
 12 30
 #17558
-hat~
-A wizards hat~
+wizards hat~
+a wizards hat~
 A pointed ridiculous looking hat is here~
 ~
 9 64 1|16
@@ -1011,8 +1011,8 @@ A
 A
 4 2
 #17559
-wand~
-A Melted Wand~
+melted wand~
+a Melted Wand~
 A battered wands lies on the ground here~
 ~
 3 64 1|16384

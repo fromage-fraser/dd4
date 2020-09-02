@@ -200,6 +200,12 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 	 */
 	for (obj = list; obj; obj = obj->next_content)
 	{
+		// Objects with empty descriptions are intended to be hidden.
+		// Suppress blanks lines that can appear in room descriptions: these can tip off players.
+		if (!fShort && !strcmp(obj->description, "")) {
+			continue;
+		}
+
 		if (obj->wear_loc == WEAR_NONE && can_see_obj(ch, obj))
 		{
 			pstrShow = format_obj_to_char(obj, ch, fShort);

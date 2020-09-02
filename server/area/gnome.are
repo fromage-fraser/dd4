@@ -317,7 +317,7 @@ A dirty key lies here.~
 1 1050 405
 #1502
 toy boomerang~
-A toy boomerang~
+a toy boomerang~
 A toy boomerang wants to be picked up.~
 ~
 5 0 1|8192
@@ -325,7 +325,7 @@ A toy boomerang wants to be picked up.~
 5 5 2
 #1503
 staff gnarled~
-A gnarled staff~
+a gnarled staff~
 A gnarled staff is here.~
 ~
 5 0 1|8192
@@ -333,7 +333,7 @@ A gnarled staff is here.~
 15 600 250
 #1504
 sword gnome~
-A gnome sword~
+a gnome sword~
 A gnome sword catches your eye.~
 ~
 5 0 8193
@@ -365,7 +365,7 @@ A bloody cloak lies in a corner.~
 15 2000 1000
 #1508
 ring bat~
-A bat ring~
+a bat ring~
 A ring in the shape of a bat lies here.~
 ~
 9 64 3
@@ -375,7 +375,7 @@ A
 14 15
 #1509
 necklace bead~
-A bead necklace~
+a bead necklace~
 A string of beads is here.~
 ~
 9 0 5
@@ -385,7 +385,7 @@ A
 18 2
 #1510
 sword electrum~
-An electrum sword~
+an electrum sword~
 An electrum sword lies here.~
 ~
 5 65 8193

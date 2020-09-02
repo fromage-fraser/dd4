@@ -552,7 +552,7 @@ This leather pouch serves as a small purse, able to be closed by pulling two
 opposing leather straps.
 ~
 #25204
-pass key city~
+pass key city parchment~
 a city pass~
 You notice a small square of parchment here.~
 ~
@@ -560,7 +560,7 @@ You notice a small square of parchment here.~
 0~ 1~ 6~ 11~
 5 0 0
 E
-pass key city~
+pass key city parchment~
 The pass is a small piece of vellum carrying some elegant writing.  According
 to the text, this pass will let you gain entrance to 'The City' or 'Surrounding
 Outposts' with 'Merchantman Access and Privileges'.

@@ -541,8 +541,7 @@ him.
 #29101
 key old~
 an old key~
-An old key is lying on the ground.
-~
+An old key is lying on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
@@ -550,8 +549,7 @@ An old key is lying on the ground.
 #29102
 tongue blue lizard~
 a blue lizard tongue~
-A blue lizard tongue is here.
-~
+A blue lizard tongue is here.~
 ~
 26 0 1
 30~ sanctuary~ ~ ~
@@ -559,8 +557,7 @@ A blue lizard tongue is here.
 #29103
 tongue red lizard~
 a red lizard tongue~
-A red lizard tongue is here.
-~
+A red lizard tongue is here.~
 ~
 26 0 1
 30~ poison~ ~ ~
@@ -568,8 +565,7 @@ A red lizard tongue is here.
 #29104
 tongue green lizard~
 a green lizard tongue~
-A green lizard tongue is here.
-~
+A green lizard tongue is here.~
 ~
 26 0 1
 30~ curse~ ~ ~
@@ -577,8 +573,7 @@ A green lizard tongue is here.
 #29105
 watchfire~
 a watchfire~
-A watchfire is here, burning brightly.
-~
+A watchfire is here, burning brightly.~
 ~
 1 65536 1|16384
 0~ 0~ -1~ 0~
@@ -586,8 +581,7 @@ A watchfire is here, burning brightly.
 #29106
 pole fishing~
 a fishing pole~
-A fishing pole is here, hooked and baited.
-~
+A fishing pole is here, hooked and baited.~
 ~
 5 0 1|8192
 0~ 0~ 0~ 4~
@@ -595,8 +589,7 @@ A fishing pole is here, hooked and baited.
 #29107
 notebook~
 a notebook~
-A notebook has been left here.
-~
+A notebook has been left here.~
 ~
 8 64 1|16384
 0~ 0~ 0~ 0~
@@ -604,8 +597,7 @@ A notebook has been left here.
 #29108
 globe patrol~
 a patrol globe~
-A glowing globe has been left here.
-~
+A glowing globe has been left here.~
 ~
 1 1 1|16384
 0~ 0~ -1~ 0~
@@ -615,8 +607,7 @@ A
 #29109
 mail scale~
 scale mail~
-A suit of scale mail is here.
-~
+A suit of scale mail is here.~
 ~
 9 64 1|8
 0~ 0~ 0~ 0~
@@ -624,8 +615,7 @@ A suit of scale mail is here.
 #29110
 trident~
 a trident~
-A trident has been left here.
-~
+A trident has been left here.~
 ~
 5 64 1|8192
 0~ 0~ 0~ 2~
@@ -635,8 +625,7 @@ A
 #29111
 pie meat~
 a steaming meat pie~
-A steaming meat pie is here.
-~
+A steaming meat pie is here.~
 ~
 19 0 1
 8~ 0~ 0~ 0~
@@ -644,8 +633,7 @@ A steaming meat pie is here.
 #29112
 grog sailor's~
 a mug of sailor's grog~
-A mug of sailor's grog is here.
-~
+A mug of sailor's grog is here.~
 ~
 17 0 1
 2~ 2~ 4~ 0~
@@ -653,8 +641,7 @@ A mug of sailor's grog is here.
 #29113
 wafer holy~
 a holy wafer~
-A holy wafer is here.
-~
+A holy wafer is here.~
 ~
 26 64 1
 50~ bless~ ~ ~
@@ -662,8 +649,7 @@ A holy wafer is here.
 #29114
 plate silver~
 a silver plate~
-A silver plate has been left here.
-~
+A silver plate has been left here.~
 ~
 8 0 1
 0~ 0~ 0~ 0~
@@ -671,8 +657,7 @@ A silver plate has been left here.
 #29115
 tapestry~
 a tapestry~
-A tapestry has been left here.
-~
+A tapestry has been left here.~
 ~
 8 0 1
 0~ 0~ 0~ 0~
@@ -685,8 +670,7 @@ of Arden.
 #29116
 armor emerald~
 emerald armor~
-A suit of emerald armor is here.
-~
+A suit of emerald armor is here.~
 ~
 9 64 1|8
 0~ 0~ 0~ 0~
@@ -696,8 +680,7 @@ A
 #29117
 hammer dwarven thrower~
 a dwarven thrower~
-A dwarven throwing hammer is here.
-~
+A dwarven throwing hammer is here.~
 ~
 5 64|32768 1|8192
 0~ 0~ 0~ 0~
@@ -709,8 +692,7 @@ A
 #29118
 sleeves elven chainmail~
 elven chainmail sleeves~
-A set of elven chainmail sleeves is here.
-~
+A set of elven chainmail sleeves is here.~
 ~
 9 64|65536 1|256
 0~ 0~ 0~ 0~
@@ -718,8 +700,7 @@ A set of elven chainmail sleeves is here.
 #29119
 leggings elven chainmail~
 elven chainmail leggings~
-A pair of elven chainmail leggings is here.
-~
+A pair of elven chainmail leggings is here.~
 ~
 9 64|65536 1|32
 0~ 0~ 0~ 0~
@@ -727,8 +708,7 @@ A pair of elven chainmail leggings is here.
 #29120
 wine red~
 a glass of Freeport burgundy~
-A glass of Freeport Burgundy is here.
-~
+A glass of Freeport Burgundy is here.~
 ~
 17 0 1
 1~ 1~ 2~ 0~
@@ -736,8 +716,7 @@ A glass of Freeport Burgundy is here.
 #29121
 wine white~
 a glass of Freeport chablis~
-A glass of Freeport Chablis is here.
-~
+A glass of Freeport Chablis is here.~
 ~
 17 0 1
 1~ 1~ 2~ 0~
@@ -745,8 +724,7 @@ A glass of Freeport Chablis is here.
 #29122
 dumplings plate gravy~
 a plate of gravy and dumplings~
-A plate of gravy and dumplings is here.
-~
+A plate of gravy and dumplings is here.~
 ~
 19 0 1
 5~ 0~ 0~ 0~
@@ -754,8 +732,7 @@ A plate of gravy and dumplings is here.
 #29123
 crate~
 a huge box crate~
-A huge box crate is here.
-~
+A huge box crate is here.~
 ~
 13 0 1
 0~ 0~ 0~ 0~
@@ -763,8 +740,7 @@ A huge box crate is here.
 #29124
 ship moored~
 a moored ship~
-A moored ship is here.
-~
+A moored ship is here.~
 ~
 8 0 0
 0~ 0~ 0~ 0~
@@ -772,8 +748,7 @@ A moored ship is here.
 #29125
 wristguard emerald~
 an emerald wristguard~
-An emerald wristguard is here.
-~
+An emerald wristguard is here.~
 ~
 9 64 1|4096
 0~ 0~ 0~ 0~
@@ -783,8 +758,7 @@ A
 #29126
 longsword emerald~
 an emerald longsword~
-An emerald longsword is here.
-~
+An emerald longsword is here.~
 ~
 5 64 1|8192
 0~ 0~ 0~ 3~
@@ -794,8 +768,7 @@ A
 #29127
 helm emerald~
 an emerald helm~
-An emerald helm is here.
-~
+An emerald helm is here.~
 ~
 9 64 1|16
 0~ 0~ 0~ 0~
@@ -805,8 +778,7 @@ A
 #29128
 weed devil's~
 a pinch of devil's weed~
-A pinch of devil's weed is here.
-~
+A pinch of devil's weed is here.~
 ~
 26 64 1
 40~ dispel good~ poison~ ~
@@ -814,8 +786,7 @@ A pinch of devil's weed is here.
 #29129
 cape admiral's~
 an admiral's cape~
-A cape with the emblem of Freeport is here.
-~
+A cape with the emblem of Freeport is here.~
 ~
 9 64|256 1|4|8
 0~ 0~ 0~ 0~
@@ -833,8 +804,7 @@ A
 #29130
 signet ring freeport~
 an admiral's signet~
-A ring with the seal of Freeport is here.
-~
+A ring with the seal of Freeport is here.~
 ~
 27 64 1|2
 0~ 0~ 90~ 0~
@@ -848,8 +818,7 @@ A
 #29131
 purse heavy~
 a very heavy purse~
-A very heavy purse is here.
-~
+A very heavy purse is here.~
 ~
 20 0 1
 3~ 7~ 10~ 30~
@@ -857,8 +826,7 @@ A very heavy purse is here.
 #29132
 boots bladed~
 bladed boots~
-A pair of boots with a spring action blade lie here.
-~
+A pair of boots with a spring action blade lie here.~
 ~
 9 0 1|64
 0~ 0~ 0~ 11~
@@ -870,8 +838,7 @@ A
 #29133
 cape dimensional~
 a dimensional cape~
-A hole in reality lies here.
-~
+A hole in reality lies here.~
 ~
 9 64 1|4
 0~ 0~ 0~ 0~
@@ -895,8 +862,7 @@ A
 #29134
 prism bending~
 a prism of bending~
-A prism shimmers on the ground here.
-~
+A prism shimmers on the ground here.~
 ~
 3 32|64 1|16384
 50~ 30~ 30~ invis~

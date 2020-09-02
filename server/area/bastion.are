@@ -539,7 +539,7 @@ Scraps of white meat that you are unable to identify by looking at them.
 ~
 #30605
 vial red ~
-a vial of red liquid ~
+a vial of red liquid~
 A vile filled with bright red liquid is here.~
 ~
 10 16|64 1
@@ -719,7 +719,7 @@ you are unable to read.
 ~
 #30617
 gothik breastplate black~
-a black gothik breastplate ~
+a black gothik breastplate~
 A black gothik breastplate etched with silver has been left here.~
 ~
 9 16 1|8

@@ -235,7 +235,7 @@ A
 3 -3
 #8303
 chain mail chainmail~
-A suit of chainmail~
+a suit of chainmail~
 An old suit of chainmail lies here, corroded by the marsh.~
 ~
 9 128|512 9
@@ -243,7 +243,7 @@ An old suit of chainmail lies here, corroded by the marsh.~
 20 2000 2000
 #8306
 scythe~
-A huge, wicked-looking scythe~
+a huge, wicked-looking scythe~
 An evil, wicked-looking scythe lies in the shadows.~
 ~
 5 128|512 8193
@@ -254,8 +254,8 @@ A
 A
 19 3
 #8307
-green potion~
-A murky green potion~
+murky green potion~
+a murky green potion~
 A murky green potion lies here in the mud.~
 ~
 10 3 1

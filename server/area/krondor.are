@@ -1620,7 +1620,7 @@ A
 18 13
 #30029
 talons~
-the metal hand talons ~
+the metal hand talons~
 You see some razor-sharp talons on the floor.~
 ~
 5 64|16384 1|8192
@@ -2189,7 +2189,7 @@ A small tattered piece of paper with strange symbols on it lies here.~
 5 0 0
 #30072
 boots bushmans~
-a pair of bushmans boots.~
+a pair of bushmans boots~
 A pair of heavy leather boots with thick soles lie here.~
 ~
 9 0 1|64
@@ -2309,8 +2309,8 @@ A
 24 -20
 #30081
 adonai robes~
-robes of the adonai.~
-A pile of rupled white materil is here.~
+robes of the adonai~
+A pile of rupled white material is here.~
 ~
 9 64|1024 1|1024
 0~ 0~ 0~ 0~
@@ -2343,8 +2343,8 @@ A
 19 15
 #30084
 anvil~
-a Large Anvil~
-A Large Anvil sits in the corner of the room, waiting to be used.~
+a large anvil~
+A large anvil sits in the corner of the room, waiting to be used.~
 ~
 30 1 0
 0~ 0~ 0~ 0~

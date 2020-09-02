@@ -1738,12 +1738,12 @@ A small leather belt pouch is lying here.~
 E
 pouch leather~
 This small pouch is made of fairly rugged leather and can be tied onto your
-belt for quick access to some small items in combat. you may store up to
+belt for quick access to some small items in combat. You may store up to
 four potions, pills or paints in here.
 ~
 #3371
 ring diamond wedding~
-a diamond wedding ring.~
+a diamond wedding ring~
 A diamond wedding ring has been left here.~
 ~
 9 256 1|2
@@ -1756,7 +1756,7 @@ Inscribed on the inside of the band is: 'I love you forever.'
 ~
 #3372
 band gold wedding~
-a gold wedding band.~
+a gold wedding band~
 A gold wedding band has been left here.~
 ~
 9 256 1|2
@@ -5075,6 +5075,7 @@ M 1 3008 1 3031      The Pet Shop Boy
 M 1 3009 1 3034      The Jeweller
 *
 M 1 3010 1 3035      The Leather Worker
+G 1 3370 100            belt pouch
 G 1 3066 100
 G 1 3067 100
 G 1 3068 100

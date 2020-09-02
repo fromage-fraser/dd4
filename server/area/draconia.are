@@ -288,7 +288,7 @@ A
 5 2
 #2210
 belt silk white~
-a white silk belt.~
+a white silk belt~
 A white belt made of the finest silk is hanging here.~
 ~
 15 0 2049
@@ -298,7 +298,7 @@ A
 1 2
 #2211
 bracelet platinum~
-a platinum bracelet.~
+a platinum bracelet~
 A tarnished platinum bracelet has been dropped here.~
 ~
 9 1 4097
@@ -372,7 +372,7 @@ A steel key.~
 1 500 1000
 #2232
 key ruby~
-A ruby key~
+a ruby key~
 A ruby key.~
 ~
 18 0 1
