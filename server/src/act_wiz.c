@@ -818,7 +818,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 		strcat(buf1, " none.\n\r");
 	else
 	{
-		for (i = 1; i; i *= 2)
+		for (i = 1; i > 0 && i <= BIT_30; i *= 2)
 		{
 			if (IS_SET(obj->extra_flags, i))
 			{
@@ -1099,7 +1099,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	{
 		strcat(buf1, "Affected by:");
 
-		for (next = 1; next; next *= 2)
+		for (next = 1; next > 0 && next <= BIT_30; next *= 2)
 		{
 			if (IS_AFFECTED(victim, next))
 			{

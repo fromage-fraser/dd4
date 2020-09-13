@@ -10,6 +10,6 @@
 
 FROM gcc:4.9
 RUN apt-get update && \
-    apt-get -y install gdb
+    apt-get -y install gdb vim
 EXPOSE 8888
 CMD ["/bin/bash"]
