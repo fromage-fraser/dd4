@@ -1,0 +1,16 @@
+# docker-compose file for a gcc development environment.
+# The local server directory is mounted under /dd4-dev.
+
+version: '3'
+services:
+  dev:
+    image: dd4-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./server:/dd4-dev
+    working_dir: /dd4-dev
+
