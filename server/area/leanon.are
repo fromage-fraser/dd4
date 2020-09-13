@@ -117,8 +117,8 @@ There is a fire crackilng with a billy boiling away~
 5 0 0
 #18202
 pitch fork~
-a Pitch Fork~
-A Pitch fork lies here stuck in a stack of hay~
+a pitch fork~
+A pitch fork lies here stuck in a stack of hay~
 ~
 5 0 1|8192
 0~ 1~ 6~ 2~
@@ -450,7 +450,7 @@ D3
 0 -1 18212
 E
 sign~
-+-----------------------------+
+{x       +-----------------------------+
        |    The Eastern Junction     |
        |                             |
        |     beware the roaming      |
@@ -490,8 +490,8 @@ D2
 0 -1 18228
 S
 #18216
-the Campsite~
-You are at an old mans camp site, you see his small dwelling and nod to him in greeting he gestures for
+The Campsite~
+You are at an old man's camp site, you see his small dwelling and nod to him in greeting he gestures for
 you to sit by the fire and rest a while.  The warmth floods through your body as your stretch out your hands.
 ~
 0 4|16384 2
@@ -547,7 +547,7 @@ D2
 0 -1 18250
 S
 #18219
-the creek~
+The Creek~
 A freshwater creek trickles down from a spring on a ledge about head height, the water very cool
 to the touch makes you thirst for it looks very refreshing.  Small pebbles make the floor of the
 creek a little slippery.
@@ -571,7 +571,7 @@ D3
 0 -1 18262
 S
 #18220
-a Pond~
+A Pond~
 The creek trickles into the pond that has been overgrown with weeds, small tadpoles swim
 merrily around as they wait to become full grown frogs.  A small sign in the middle of the pond
 stands out a little.
@@ -625,7 +625,7 @@ D4
 0 -1 18221
 S
 #18223
-underwater~
+Underwater~
 You are in a small tunnel that goes up and south, it seems not many people have been here before.
 The floor is covered with a thick slime.
 ~
@@ -1038,7 +1038,7 @@ D2
 0 -1 18247
 S
 #18249
-underneath a haystack~
+Underneath a haystack~
 You are standing in the haystack.
 It is very warm and you can feel a sweat starting to bead on your forehead
 ~
@@ -1162,14 +1162,13 @@ D3
 0 -1 18255
 E
 small sign~
-|-------------------------------|
-|	 A N O N		|
-|				|
-|	Popn: 3,405		|
-|	Est: 306		|
-|				|
-|				|
-|-------------------------------|
+|-------------------|
+|      A N O N      |
+|                   |
+|    Popn: 3,405    |
+|     Est: 306      |
+|                   |
+|-------------------|
 ~
 S
 #18257
