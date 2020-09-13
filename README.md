@@ -42,8 +42,9 @@ _Gezhp 2019_
 
 ## Quick start
 
-1.  Install docker.
-1.  Install docker-compose.
+1.  Install `docker`.
+1.  Install `docker-compose`.
+1.  Recommended: install `make`.
 1.  From the root directory, build the server image:
 
     ```
@@ -51,10 +52,10 @@ _Gezhp 2019_
     make build
 
     // With docker-compose directly
-    docker-compose build --no-cache
+    docker-compose -f server-docker-compose.yml build --no-cache
     ```
 
-    This will build a `dd4_server` docker image.
+    This will build a `dd4-server` docker image.
     Repeating this command will rebuild the server.
 
 
@@ -65,7 +66,7 @@ _Gezhp 2019_
     make up
 
     // With docker-compose directly
-    docker-compose up -d
+    docker-compose -f server-docker-compose.yml up -d
     ```
 
     The MUD server will start up on port 8888.
@@ -77,7 +78,7 @@ _Gezhp 2019_
     make logs
 
     // With docker-compose directly
-    docker-compose logs -f
+    docker-compose -f server-docker-compose.yml logs -f
     ```
 
 1.  To stop the server:
@@ -87,10 +88,10 @@ _Gezhp 2019_
     make down
 
     // With docker-compose directly
-    docker-compose down
+    docker-compose -f server-docker-compose.yml down
     ```
 
-The server container is configured to always restart: edit [the docker-compose configuration](docker-compose.yml)
+The server container is configured to always restart: edit [the server-docker-compose configuration](server-docker-compose.yml)
 if you don't want this behaviour.
 
 
@@ -190,6 +191,53 @@ If you want to create your own immortal:
     ```
 1.  Save your character.
 1.  The `wizhelp` command should work if these steps were completed successfully.
+
+
+## Development
+
+A development shell is provided to more quickly build, run and debug the server in environments that might have
+trouble compiling the code.
+The shell environment includes versions of gcc and gdb that will support the codebase.
+Using the shell can speed up development, as files can be quickly changed, compiled and debugged without constantly
+rebuilding the main server image.
+
+To run the shell:
+
+    // With make
+    make dev
+
+    // With docker-compose directly
+    docker-compose -f dev-docker-compose.yml run --rm --service-ports dev
+
+This command will mount the MUD server files under `/dd4-dev` in a `dd4-dev` container.
+Port 8888 will be exposed, so the MUD can be compiled, run and connected to.
+
+Note that the working directory for the running MUD server is the `area` directory, so execution must occur from there.
+
+
+### Building and running the server in the dev shell
+
+Start the container:
+
+    user@host$ make dev
+
+Compile the server:
+
+    root@container:/dd4-dev# cd src
+
+    root@container:/dd4-dev/src# make
+
+Run the server:
+
+    root@container:/dd4-dev/src# cd ../area
+
+    root@container:/dd4-dev/area# ../src/envy
+
+Debug the server:
+
+    root@container:/dd4-dev/area# gdb ../src/envy
+
+    (gdb) run
 
 
 ## Notes

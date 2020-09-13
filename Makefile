@@ -1,16 +1,19 @@
-.PHONY: build up up-fg down logs
+.PHONY: build up up-fg down logs dev
 
 build:
-	docker-compose build --no-cache
+	docker-compose -f server-docker-compose.yml build --no-cache
 
 up:
-	docker-compose up -d
+	docker-compose -f server-docker-compose.yml up -d
 
 up-fg:
-	docker-compose up
+	docker-compose -f server-docker-compose.yml up
 
 down:
-	docker-compose down
+	docker-compose -f server-docker-compose.yml down
 
 logs:
-	docker-compose logs -f
+	docker-compose -f server-docker-compose.yml logs -f
+
+dev:
+	docker-compose -f dev-docker-compose.yml run --rm --service-ports dev
