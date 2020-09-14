@@ -210,7 +210,8 @@ To run the shell:
     docker-compose run --rm --service-ports dev
 
 This command will mount the MUD server files under `/dd4-dev` in a `dd4-dev` container.
-Port 8888 will be exposed, so the MUD can be compiled, run and connected to.
+
+Port 8888 within the container will be mapped to host port 18888.
 
 Note that the working directory for the running MUD server is the `area` directory, so execution must occur from there.
 

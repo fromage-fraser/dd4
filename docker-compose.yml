@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: dev.Dockerfile
     ports:
-      - "8888:8888"
+      - "18888:8888"
     volumes:
       - ./server:/dd4-dev
     working_dir: /dd4-dev
