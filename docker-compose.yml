@@ -1,7 +1,6 @@
-# docker-compose file for building and running the DD4 MUD server.
-
 version: '3'
 services:
+  # Build and run the DD4 MUD server
   server:
     image: dd4-server
     build:
@@ -13,3 +12,14 @@ services:
       - ./server/area:/dd4/external/area
       - ./server/player:/dd4/external/player
     restart: always
+  # Development environment
+  dev:
+    image: dd4-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./server:/dd4-dev
+    working_dir: /dd4-dev

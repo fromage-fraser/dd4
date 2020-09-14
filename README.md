@@ -52,7 +52,7 @@ _Gezhp 2019_
     make build
 
     // With docker-compose directly
-    docker-compose -f server-docker-compose.yml build --no-cache
+    docker-compose build --no-cache server
     ```
 
     This will build a `dd4-server` docker image.
@@ -66,7 +66,7 @@ _Gezhp 2019_
     make up
 
     // With docker-compose directly
-    docker-compose -f server-docker-compose.yml up -d
+    docker-compose up -d server
     ```
 
     The MUD server will start up on port 8888.
@@ -78,7 +78,7 @@ _Gezhp 2019_
     make logs
 
     // With docker-compose directly
-    docker-compose -f server-docker-compose.yml logs -f
+    docker-compose logs -f server
     ```
 
 1.  To stop the server:
@@ -88,10 +88,10 @@ _Gezhp 2019_
     make down
 
     // With docker-compose directly
-    docker-compose -f server-docker-compose.yml down
+    docker-compose down
     ```
 
-The server container is configured to always restart: edit [the server-docker-compose configuration](server-docker-compose.yml)
+The server container is configured to always restart: edit [the docker-compose configuration](docker-compose.yml)
 if you don't want this behaviour.
 
 
@@ -207,7 +207,7 @@ To run the shell:
     make dev
 
     // With docker-compose directly
-    docker-compose -f dev-docker-compose.yml run --rm --service-ports dev
+    docker-compose run --rm --service-ports dev
 
 This command will mount the MUD server files under `/dd4-dev` in a `dd4-dev` container.
 Port 8888 will be exposed, so the MUD can be compiled, run and connected to.
