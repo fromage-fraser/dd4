@@ -11,10 +11,9 @@ ij_continuation_indent_size = 8
 
 [Makefile]
 indent_style = tab
-
-[*.yml]
-indent_size = 2
+indent_size = 8
 
 [{*.c,*.h}]
+indent_style = space
 indent_size = 8
-indent_style = tab
+ij_continuation_indent_size = 12

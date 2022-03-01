@@ -34,8 +34,8 @@
 
 
 /* Local functions */
-void	do_map_list	args( ( CHAR_DATA *ch, char *argument ) );
-void	do_map_record	args( ( CHAR_DATA *ch, char *argument ) );
+void    do_map_list     args( ( CHAR_DATA *ch, char *argument ) );
+void    do_map_record   args( ( CHAR_DATA *ch, char *argument ) );
 
 
 
