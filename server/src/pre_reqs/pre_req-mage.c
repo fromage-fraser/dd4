@@ -140,7 +140,7 @@
 {&gsn_scribe,                   &gsn_group_craft,       50,     PRE_MAGE},
 {&gsn_scribe,                   &gsn_mage_base,         60,     PRE_MAGE},
 
-{&gsn_recharge_item,            &gsn_group_craft,       90,     PRE_MAGE},      
+{&gsn_recharge_item,            &gsn_group_craft,       90,     PRE_MAGE},
 {&gsn_recharge_item,            &gsn_mage_base,         60,     PRE_MAGE},
 
 /* **** DESTRUCTION **** */

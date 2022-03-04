@@ -329,7 +329,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->fame < 0)
                 {
-                        sprintf(buf, "Thou art not worthy of a quest %s.", ch->name);
+                        sprintf(buf, "You are not worthy to receive a quest, %s.", ch->name);
                         do_say(questman, buf);
                         return;
                 }

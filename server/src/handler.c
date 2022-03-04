@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <math.h>
 #include "merc.h"
 
 
@@ -390,8 +391,8 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 else
                 {
                         affect_strip( ch, af.type );
-                        send_to_char( "You fade back into existance.\n\r", ch );
-                        act( "$n fades back into existance body vanishes.", ch,
+                        send_to_char( "You fade back into existence.\n\r", ch );
+                        act( "$n fades back into existence.", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
@@ -982,11 +983,11 @@ int apply_ac( OBJ_DATA *obj, int iWear )
         switch ( iWear )
         {
             case WEAR_BODY:     return 3 * obj->value[0];
-            case WEAR_HEAD:     return 2 * obj->value[0];
-            case WEAR_LEGS:     return 2 * obj->value[0];
-            case WEAR_FEET:     return     obj->value[0];
+            case WEAR_HEAD:         return 2 * obj->value[0];
+            case WEAR_LEGS:         return 2 * obj->value[0];
+            case WEAR_FEET:         return     obj->value[0];
             case WEAR_HANDS:    return     obj->value[0];
-            case WEAR_ARMS:     return     obj->value[0];
+            case WEAR_ARMS:         return     obj->value[0];
             case WEAR_SHIELD:   return     obj->value[0];
             case WEAR_FINGER_L: return     obj->value[0];
             case WEAR_FINGER_R: return     obj->value[0];
@@ -996,7 +997,7 @@ int apply_ac( OBJ_DATA *obj, int iWear )
             case WEAR_WAIST:    return     obj->value[0];
             case WEAR_WRIST_L:  return     obj->value[0];
             case WEAR_WRIST_R:  return     obj->value[0];
-            case WEAR_HOLD:     return     obj->value[0];
+            case WEAR_HOLD:         return     obj->value[0];
         }
 
         return 0;
@@ -2069,36 +2070,36 @@ char *item_type_name( OBJ_DATA *obj  )
 
         switch ( obj->item_type )
         {
-            case ITEM_LIGHT:            return "light";
-            case ITEM_SCROLL:           return "scroll";
-            case ITEM_WAND:             return "wand";
-            case ITEM_STAFF:            return "staff";
-            case ITEM_WEAPON:           return "weapon";
-            case ITEM_TREASURE:         return "treasure";
-            case ITEM_ARMOR:            return "armor";
-            case ITEM_POTION:           return "potion";
-            case ITEM_FURNITURE:        return "furniture";
-            case ITEM_TRASH:            return "trash";
-            case ITEM_CONTAINER:        return "container";
-            case ITEM_DRINK_CON:        return "drink container";
-            case ITEM_KEY:              return "key";
-            case ITEM_FOOD:             return "food";
-            case ITEM_MONEY:            return "money";
-            case ITEM_BOAT:             return "boat";
-            case ITEM_CORPSE_NPC:       return "npc corpse";
-            case ITEM_CORPSE_PC:        return "pc corpse";
-            case ITEM_FOUNTAIN:         return "fountain";
-            case ITEM_PILL:             return "pill";
+            case ITEM_LIGHT:                return "light";
+            case ITEM_SCROLL:               return "scroll";
+            case ITEM_WAND:                     return "wand";
+            case ITEM_STAFF:                return "staff";
+            case ITEM_WEAPON:               return "weapon";
+            case ITEM_TREASURE:             return "treasure";
+            case ITEM_ARMOR:                return "armor";
+            case ITEM_POTION:               return "potion";
+            case ITEM_FURNITURE:            return "furniture";
+            case ITEM_TRASH:                return "trash";
+            case ITEM_CONTAINER:            return "container";
+            case ITEM_DRINK_CON:            return "drink container";
+            case ITEM_KEY:                      return "key";
+            case ITEM_FOOD:                     return "food";
+            case ITEM_MONEY:                return "money";
+            case ITEM_BOAT:                     return "boat";
+            case ITEM_CORPSE_NPC:           return "npc corpse";
+            case ITEM_CORPSE_PC:            return "pc corpse";
+            case ITEM_FOUNTAIN:             return "fountain";
+            case ITEM_PILL:                     return "pill";
             case ITEM_PAINT:            return "paint pigment";
-            case ITEM_CLAN_OBJECT:      return "clan item";
-            case ITEM_LOCK_PICK:        return "lockpick";
-            case ITEM_INSTRUMENT:       return "musical instrument";
+            case ITEM_CLAN_OBJECT:          return "clan item";
+            case ITEM_LOCK_PICK:            return "lockpick";
+            case ITEM_INSTRUMENT:           return "musical instrument";
             case ITEM_PORTAL:           return "portal";
             case ITEM_POISON_POWDER:    return "poison powder";
             case ITEM_ARMOURERS_HAMMER: return "armourer's hammer";
-            case ITEM_MITHRIL:          return "mithril";
-            case ITEM_WHETSTONE:        return "whetstone";
-            case ITEM_ANVIL:            return "anvil";
+            case ITEM_MITHRIL:              return "mithril";
+            case ITEM_WHETSTONE:            return "whetstone";
+            case ITEM_ANVIL:                return "anvil";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
@@ -2124,45 +2125,45 @@ char *affect_loc_name( int location )
 {
         switch ( location )
         {
-            case APPLY_NONE:            return "none";
-            case APPLY_STR:             return "strength";
-            case APPLY_DEX:             return "dexterity";
-            case APPLY_INT:             return "intelligence";
-            case APPLY_WIS:             return "wisdom";
-            case APPLY_CON:             return "constitution";
-            case APPLY_SEX:             return "sex";
-            case APPLY_CLASS:           return "class";
-            case APPLY_LEVEL:           return "level";
-            case APPLY_AGE:             return "age";
-            case APPLY_HEIGHT:          return "height";
-            case APPLY_WEIGHT:          return "weight";
-            case APPLY_MANA:            return "mana";
-            case APPLY_HIT:             return "hit points";
-            case APPLY_MOVE:            return "moves";
-            case APPLY_GOLD:            return "gold";
-            case APPLY_EXP:             return "experience";
-            case APPLY_AC:              return "armor class";
-            case APPLY_HITROLL:         return "hit roll";
-            case APPLY_DAMROLL:         return "damage roll";
-            case APPLY_SAVING_PARA:     return "save vs paralysis";
-            case APPLY_SAVING_ROD:      return "save vs rod";
-            case APPLY_SAVING_PETRI:    return "save vs petrification";
-            case APPLY_SAVING_BREATH:   return "save vs breath";
-            case APPLY_SAVING_SPELL:    return "save vs spell";
-            case APPLY_SANCTUARY:       return "sanctuary";
-            case APPLY_SNEAK:           return "sneak";
-            case APPLY_FLY:             return "fly";
-            case APPLY_INVIS:           return "invisibility";
-            case APPLY_DETECT_INVIS:    return "detect invisibility";
-            case APPLY_DETECT_HIDDEN:   return "detect hidden";
-            case APPLY_PROTECT:         return "protection";
-            case APPLY_PASS_DOOR:       return "pass door";
-            case APPLY_GLOBE:           return "globe";
-            case APPLY_FLAMING:         return "fireshield";
-            case APPLY_RESIST_HEAT:     return "heat resistance";
-            case APPLY_RESIST_COLD:     return "cold resistance";
-            case APPLY_RESIST_LIGHTNING: return "lightning resistance";
-            case APPLY_RESIST_ACID:     return "acid resistance";
+            case APPLY_NONE:                    return "none";
+            case APPLY_STR:                         return "strength";
+            case APPLY_DEX:                         return "dexterity";
+            case APPLY_INT:                         return "intelligence";
+            case APPLY_WIS:                         return "wisdom";
+            case APPLY_CON:                         return "constitution";
+            case APPLY_SEX:                         return "sex";
+            case APPLY_CLASS:                   return "class";
+            case APPLY_LEVEL:                   return "level";
+            case APPLY_AGE:                         return "age";
+            case APPLY_HEIGHT:              return "height";
+            case APPLY_WEIGHT:              return "weight";
+            case APPLY_MANA:                    return "mana";
+            case APPLY_HIT:                         return "hit points";
+            case APPLY_MOVE:                    return "moves";
+            case APPLY_GOLD:                    return "gold";
+            case APPLY_EXP:                         return "experience";
+            case APPLY_AC:                          return "armor class";
+            case APPLY_HITROLL:                 return "hit roll";
+            case APPLY_DAMROLL:                 return "damage roll";
+            case APPLY_SAVING_PARA:             return "save vs paralysis";
+            case APPLY_SAVING_ROD:              return "save vs rod";
+            case APPLY_SAVING_PETRI:        return "save vs petrification";
+            case APPLY_SAVING_BREATH:       return "save vs breath";
+            case APPLY_SAVING_SPELL:        return "save vs spell";
+            case APPLY_SANCTUARY:               return "sanctuary";
+            case APPLY_SNEAK:                   return "sneak";
+            case APPLY_FLY:                         return "fly";
+            case APPLY_INVIS:                   return "invisibility";
+            case APPLY_DETECT_INVIS:        return "detect invisibility";
+            case APPLY_DETECT_HIDDEN:       return "detect hidden";
+            case APPLY_PROTECT:                 return "protection";
+            case APPLY_PASS_DOOR:               return "pass door";
+            case APPLY_GLOBE:                   return "globe";
+            case APPLY_FLAMING:                 return "fireshield";
+            case APPLY_RESIST_HEAT:         return "heat resistance";
+            case APPLY_RESIST_COLD:         return "cold resistance";
+            case APPLY_RESIST_LIGHTNING:    return "lightning resistance";
+            case APPLY_RESIST_ACID:         return "acid resistance";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );
@@ -2191,11 +2192,10 @@ int item_name_type( char *name )
         if ( !str_cmp( name, "corpse"    ) ) return ITEM_CORPSE_NPC;
         if ( !str_cmp( name, "fountain"  ) ) return ITEM_FOUNTAIN;
         if ( !str_cmp( name, "pill"      ) ) return ITEM_PILL;
-
-        if ( !str_cmp( name, "poison powder"      ) ) return ITEM_POISON_POWDER;
-        if ( !str_cmp( name, "armourer's hammer"  ) ) return ITEM_ARMOURERS_HAMMER;
-        if ( !str_cmp( name, "mithril"            ) ) return ITEM_MITHRIL;
-        if ( !str_cmp( name, "whetstone"          ) ) return ITEM_WHETSTONE;
+        if ( !str_cmp( name, "poison powder"        ) ) return ITEM_POISON_POWDER;
+        if ( !str_cmp( name, "armourer's hammer"    ) ) return ITEM_ARMOURERS_HAMMER;
+        if ( !str_cmp( name, "mithril"              ) ) return ITEM_MITHRIL;
+        if ( !str_cmp( name, "whetstone"            ) ) return ITEM_WHETSTONE;
 
         return 0;
 }
@@ -2240,7 +2240,6 @@ char *affect_bit_name (int vector)
         return "none";
 }
 
-
 /*
  *  Used for the 'affect' command output
  */
@@ -2280,35 +2279,212 @@ char* affect_bit_name_nice (int vector)
         return "some unknown effect";
 }
 
+/*
+ * ASCII name for body_form flags, used in mstat --Owl 9/2/22
+ *
+ */
+char* body_form_name (int vector)
+{
+        if ( vector & BODY_NO_HEAD      ) return "no_head";
+        if ( vector & BODY_NO_EYES      ) return "no_eyes";
+        if ( vector & BODY_NO_ARMS      ) return "no_arms";
+        if ( vector & BODY_NO_LEGS      ) return "no_legs";
+        if ( vector & BODY_NO_HEART     ) return "no_heart";
+        if ( vector & BODY_NO_SPEECH    ) return "no_speech";
+        if ( vector & BODY_NO_CORPSE    ) return "no_corpse";
+        if ( vector & BODY_HUGE         ) return "huge";
+        if ( vector & BODY_INORGANIC    ) return "inorganic";
+
+        return "none";
+}
+
+/*
+ * ASCII name for room flags, used in rstat --Owl 10/2/22
+ *
+*/
+
+char* room_flag_name (int vector)
+{
+        if ( vector & ROOM_DARK             ) return "dark";
+        if ( vector & ROOM_NO_MOB           ) return "no_mob";
+        if ( vector & ROOM_INDOORS          ) return "indoors";
+        if ( vector & ROOM_PRIVATE          ) return "private";
+        if ( vector & ROOM_SAFE             ) return "safe";
+        if ( vector & ROOM_SOLITARY         ) return "solitary";
+        if ( vector & ROOM_PET_SHOP         ) return "pet_shop";
+        if ( vector & ROOM_NO_RECALL        ) return "no_recall";
+        if ( vector & ROOM_CONE_OF_SILENCE  ) return "cone_of_silence";
+        if ( vector & ROOM_PLAYER_KILLER    ) return "player_killer";
+        if ( vector & ROOM_HEALING          ) return "healing";
+        if ( vector & ROOM_FREEZING         ) return "freezing";
+        if ( vector & ROOM_BURNING          ) return "burning";
+        if ( vector & ROOM_NO_MOUNT         ) return "no_mount";
+        return "";
+}
+
+/*
+ * ASCII name for area flags, used in rstat --Owl 10/2/22
+ *
+*/
+
+char* area_flag_name (int vector)
+{
+        if ( vector & AREA_FLAG_SCHOOL      ) return "school";
+        if ( vector & AREA_FLAG_NO_QUEST    ) return "no_quest";
+        if ( vector & AREA_FLAG_HIDDEN      ) return "hidden";
+        if ( vector & AREA_FLAG_SAFE        ) return "safe";
+        return "none";
+}
+
+
+#define ITEM_WEAR_NECK                  BIT_2
+#define ITEM_WEAR_BODY                  BIT_3
+#define ITEM_WEAR_HEAD                  BIT_4
+#define ITEM_WEAR_LEGS                  BIT_5
+#define ITEM_WEAR_FEET                  BIT_6
+#define ITEM_WEAR_HANDS                 BIT_7
+#define ITEM_WEAR_ARMS                  BIT_8
+#define ITEM_WEAR_SHIELD                BIT_9
+#define ITEM_WEAR_ABOUT                 BIT_10
+#define ITEM_WEAR_WAIST                 BIT_11
+#define ITEM_WEAR_WRIST                 BIT_12
+#define ITEM_WIELD                      BIT_13
+#define ITEM_HOLD                       BIT_14
+#define ITEM_FLOAT                      BIT_15
+#define ITEM_WEAR_POUCH                 BIT_16
+#define ITEM_RANGED_WEAPON              BIT_17
+#define ITEM_LAST_WEAR_BIT              BIT_17
+
+/*
+* ASCII name for wear flags, used in ostat --Owl 12/2/22
+*
+*/
+char* wear_flag_name (int vector)
+{
+        if ( vector & ITEM_TAKE             ) return "take";
+        if ( vector & ITEM_WEAR_FINGER      ) return "finger";
+        if ( vector & ITEM_WEAR_NECK        ) return "neck";
+        if ( vector & ITEM_WEAR_BODY        ) return "body";
+        if ( vector & ITEM_WEAR_HEAD        ) return "head";
+        if ( vector & ITEM_WEAR_LEGS        ) return "legs";
+        if ( vector & ITEM_WEAR_FEET        ) return "feet";
+        if ( vector & ITEM_WEAR_HANDS       ) return "hands";
+        if ( vector & ITEM_WEAR_ARMS        ) return "arms";
+        if ( vector & ITEM_WEAR_SHIELD      ) return "shield";
+        if ( vector & ITEM_WEAR_ABOUT       ) return "about";
+        if ( vector & ITEM_WEAR_WAIST       ) return "waist";
+        if ( vector & ITEM_WEAR_WRIST       ) return "wrist";
+        if ( vector & ITEM_WIELD            ) return "wield";
+        if ( vector & ITEM_HOLD             ) return "hold";
+        if ( vector & ITEM_FLOAT            ) return "float";
+        if ( vector & ITEM_WEAR_POUCH       ) return "pouch";
+        if ( vector & ITEM_RANGED_WEAPON    ) return "ranged";
+        return "none";
+}
+
+/*
+* ASCII name for wear location, used in ostat --Owl 12/2/22
+*
+*/
+
+char* wear_location_name (int wearloc_num)
+{
+        /* These values are used in #RESETS. */
+
+        if (wearloc_num == WEAR_NONE)           return "none";
+        if (wearloc_num == WEAR_LIGHT)          return "light";
+        if (wearloc_num == WEAR_FINGER_L)       return "left_finger";
+        if (wearloc_num == WEAR_FINGER_R)       return "right_finger";
+        if (wearloc_num == WEAR_NECK_1)         return "neck_1";
+        if (wearloc_num == WEAR_NECK_2)         return "neck_2";
+        if (wearloc_num == WEAR_BODY)           return "on_body";
+        if (wearloc_num == WEAR_HEAD)           return "head";
+        if (wearloc_num == WEAR_LEGS)           return "legs";
+        if (wearloc_num == WEAR_FEET)           return "feet";
+        if (wearloc_num == WEAR_HANDS)          return "hands";
+        if (wearloc_num == WEAR_ARMS)           return "arms";
+        if (wearloc_num == WEAR_SHIELD)         return "shield";
+        if (wearloc_num == WEAR_ABOUT)          return "about_body";
+        if (wearloc_num == WEAR_WAIST)          return "waist";
+        if (wearloc_num == WEAR_WRIST_L)        return "left_wrist";
+        if (wearloc_num == WEAR_WRIST_R)        return "right_wrist";
+        if (wearloc_num == WEAR_WIELD)          return "wield";
+        if (wearloc_num == WEAR_HOLD)           return "hold";
+        if (wearloc_num == WEAR_DUAL)           return "dual_wield";
+        if (wearloc_num == WEAR_FLOAT)          return "float";
+        if (wearloc_num == WEAR_POUCH)          return "pouch";
+        if (wearloc_num == WEAR_RANGED_WEAPON)  return "ranged";
+
+        return "NO WEAR LOCATION NUM";
+
+}
+
+/*
+* ASCII name for sector flags, used in rstat --Owl 10/2/22
+*
+*/
+char* sector_name (int sector_num)
+{
+        if (sector_num == SECT_INSIDE)          return "inside";
+        if (sector_num == SECT_CITY)            return "city";
+        if (sector_num == SECT_FIELD)           return "field";
+        if (sector_num == SECT_FOREST)          return "forest";
+        if (sector_num == SECT_HILLS)           return "hills";
+        if (sector_num == SECT_MOUNTAIN)        return "mountain";
+        if (sector_num == SECT_WATER_SWIM)      return "water_swim";
+        if (sector_num == SECT_WATER_NOSWIM)    return "water_noswim";
+        if (sector_num == SECT_UNDERWATER)      return "underwater";
+        if (sector_num == SECT_AIR)             return "air";
+        if (sector_num == SECT_DESERT)          return "desert";
+        if (sector_num == SECT_MAX)             return "max";
+
+        return "NO SECTOR NUM";
+}
 
 /*
  * Return ascii name of anti-class vector - brutus
  */
 char *extra_class_name (int extra_flags)
 {
-        if ( extra_flags & ITEM_ANTI_MAGE) return "Mage";
-        if ( extra_flags & ITEM_ANTI_CLERIC) return "Cleric";
-        if ( extra_flags & ITEM_ANTI_THIEF) return "Thief";
-        if ( extra_flags & ITEM_ANTI_WARRIOR) return "Warrior";
-        if ( extra_flags & ITEM_ANTI_PSIONIC) return "Psionic";
-        if ( extra_flags & ITEM_ANTI_BRAWLER) return "Brawler";
+        if ( extra_flags & ITEM_ANTI_MAGE)          return "Mage";
+        if ( extra_flags & ITEM_ANTI_CLERIC)        return "Cleric";
+        if ( extra_flags & ITEM_ANTI_THIEF)         return "Thief";
+        if ( extra_flags & ITEM_ANTI_WARRIOR)       return "Warrior";
+        if ( extra_flags & ITEM_ANTI_PSIONIC)       return "Psionic";
+        if ( extra_flags & ITEM_ANTI_BRAWLER)       return "Brawler";
         if ( extra_flags & ITEM_ANTI_SHAPE_SHIFTER) return "Shape Shifter";
-        if ( extra_flags & ITEM_ANTI_RANGER) return "Ranger";
+        if ( extra_flags & ITEM_ANTI_RANGER)        return "Ranger";
         return "none";
+}
+
+/* return text string for position --Owl 9/2/22*/
+
+char *position_name (int position)
+{
+        if (position == POS_DEAD)       return "dead";
+        if (position == POS_MORTAL)     return "mortally wounded";
+        if (position == POS_INCAP)      return "incapacitated";
+        if (position == POS_STUNNED)    return "stunned";
+        if (position == POS_SLEEPING)   return "sleeping";
+        if (position == POS_RESTING)    return "resting";
+        if (position == POS_FIGHTING)   return "fighting";
+        if (position == POS_STANDING)   return "standing";
+
+        return "NO POSITION";
 }
 
 
 /* return class and subclass names  - geoff */
 char *full_class_name (int class)
 {
-        if (class == CLASS_MAGE) return "Mage";
-        if (class == CLASS_CLERIC) return "Cleric";
-        if (class == CLASS_THIEF) return "Thief";
-        if (class == CLASS_WARRIOR) return "Warrior";
-        if (class == CLASS_PSIONICIST) return "Psionic";
-        if (class == CLASS_BRAWLER) return "Brawler";
-        if (class == CLASS_SHAPE_SHIFTER) return "Shape Shifter";
-        if (class == CLASS_RANGER) return "Ranger";
+        if (class == CLASS_MAGE)            return "Mage";
+        if (class == CLASS_CLERIC)          return "Cleric";
+        if (class == CLASS_THIEF)           return "Thief";
+        if (class == CLASS_WARRIOR)         return "Warrior";
+        if (class == CLASS_PSIONICIST)      return "Psionic";
+        if (class == CLASS_BRAWLER)         return "Brawler";
+        if (class == CLASS_SHAPE_SHIFTER)   return "Shape Shifter";
+        if (class == CLASS_RANGER)          return "Ranger";
 
         return "NO CLASS";
 }
@@ -2368,12 +2544,12 @@ char *extra_form_name (int form)
         if ( form == FORM_TIGER           ) return "tiger";
         if ( form == FORM_HYDRA           ) return "hydra";
         if ( form == FORM_WOLF            ) return "wolf";
-        if ( form == FORM_DIREWOLF        ) return "direwolf";
+        if ( form == FORM_DIREWOLF            ) return "direwolf";
         if ( form == FORM_PHOENIX         ) return "phoenix";
         if ( form == FORM_DEMON           ) return "demon";
         if ( form == FORM_DRAGON          ) return "dragon";
-        if ( form == FORM_FLY             ) return "fly";
-        if ( form == FORM_GRIFFIN         ) return "griffin";
+        if ( form == FORM_FLY                 ) return "fly";
+        if ( form == FORM_GRIFFIN             ) return "griffin";
 
         return "none";
 }
@@ -2385,20 +2561,20 @@ int extra_form_int (char *name)
 
         if (!strncmp(name, "normal", strlen(name)))     form = FORM_NORMAL;
         if (!strncmp(name, "chameleon", strlen(name)))  form = FORM_CHAMELEON;
-        if (!strncmp(name, "hawk", strlen(name)))       form = FORM_HAWK;
-        if (!strncmp(name, "cat", strlen(name)))        form = FORM_CAT;
-        if (!strncmp(name, "snake", strlen(name)))      form = FORM_SNAKE;
+        if (!strncmp(name, "hawk", strlen(name)))           form = FORM_HAWK;
+        if (!strncmp(name, "cat", strlen(name)))            form = FORM_CAT;
+        if (!strncmp(name, "snake", strlen(name)))          form = FORM_SNAKE;
         if (!strncmp(name, "scorpion", strlen(name)))   form = FORM_SCORPION;
         if (!strncmp(name, "spider", strlen(name)))     form = FORM_SPIDER;
-        if (!strncmp(name, "bear", strlen(name)))       form = FORM_BEAR;
-        if (!strncmp(name, "tiger", strlen(name)))      form = FORM_TIGER;
-        if (!strncmp(name, "hydra", strlen(name)))      form = FORM_HYDRA;
-        if (!strncmp(name, "wolf", strlen(name)))       form = FORM_WOLF;
+        if (!strncmp(name, "bear", strlen(name)))           form = FORM_BEAR;
+        if (!strncmp(name, "tiger", strlen(name)))          form = FORM_TIGER;
+        if (!strncmp(name, "hydra", strlen(name)))          form = FORM_HYDRA;
+        if (!strncmp(name, "wolf", strlen(name)))           form = FORM_WOLF;
         if (!strncmp(name, "direwolf", strlen(name)))   form = FORM_DIREWOLF;
         if (!strncmp(name, "phoenix", strlen(name)))    form = FORM_PHOENIX;
-        if (!strncmp(name, "demon", strlen(name)))      form = FORM_DEMON;
+        if (!strncmp(name, "demon", strlen(name)))          form = FORM_DEMON;
         if (!strncmp(name, "dragon", strlen(name)))     form = FORM_DRAGON;
-        if (!strncmp(name, "fly", strlen(name)))        form = FORM_FLY;
+        if (!strncmp(name, "fly", strlen(name)))            form = FORM_FLY;
         if (!strncmp(name, "griffin", strlen(name)))    form = FORM_GRIFFIN;
 
         return form;
@@ -2412,35 +2588,35 @@ char *extra_bit_name (int extra_flags)
 {
         switch (extra_flags)
         {
-            case ITEM_GLOW:            return "glow";
-            case ITEM_HUM:             return "hum";
-            case ITEM_EGO:             return "ego_item";
-            case ITEM_ANTI_RANGER:     return "anti_ranger";
-            case ITEM_EVIL:            return "evil";
-            case ITEM_INVIS:           return "invis";
-            case ITEM_MAGIC:           return "magic";
-            case ITEM_NODROP:          return "no_drop";
-            case ITEM_BLESS:           return "blessed";
-            case ITEM_ANTI_GOOD:       return "anti_good";
-            case ITEM_ANTI_EVIL:       return "anti_evil";
-            case ITEM_ANTI_NEUTRAL:    return "anti_neutral";
-            case ITEM_NOREMOVE:        return "no_remove";
-            case ITEM_POISONED:        return "poisoned";
-            case ITEM_ANTI_MAGE:       return "anti_mage";
-            case ITEM_ANTI_CLERIC:     return "anti_cleric";
-            case ITEM_ANTI_THIEF:      return "anti_thief";
-            case ITEM_ANTI_WARRIOR:    return "anti_warrior";
-            case ITEM_VORPAL:          return "vorpal";
-            case ITEM_TRAP:            return "trapped";
-            case ITEM_DONATED:         return "donated";
-            case ITEM_BLADE_THIRST:    return "blade_thirst";
-            case ITEM_SHARP:           return "sharpened";
-            case ITEM_FORGED:          return "forged";
-            case ITEM_BODY_PART:       return "body_part";
-            case ITEM_LANCE:           return "lance";
-            case ITEM_ANTI_BRAWLER:    return "anti_brawler";
-            case ITEM_ANTI_SHAPE_SHIFTER: return "anti_shifter";
-            case ITEM_BOW:             return "bow";
+            case ITEM_GLOW:                 return "glow";
+            case ITEM_HUM:                  return "hum";
+            case ITEM_EGO:                  return "ego_item";
+            case ITEM_ANTI_RANGER:          return "anti_ranger";
+            case ITEM_EVIL:                 return "evil";
+            case ITEM_INVIS:                return "invis";
+            case ITEM_MAGIC:                return "magic";
+            case ITEM_NODROP:               return "no_drop";
+            case ITEM_BLESS:                return "blessed";
+            case ITEM_ANTI_GOOD:            return "anti_good";
+            case ITEM_ANTI_EVIL:            return "anti_evil";
+            case ITEM_ANTI_NEUTRAL:         return "anti_neutral";
+            case ITEM_NOREMOVE:             return "no_remove";
+            case ITEM_POISONED:             return "poisoned";
+            case ITEM_ANTI_MAGE:            return "anti_mage";
+            case ITEM_ANTI_CLERIC:          return "anti_cleric";
+            case ITEM_ANTI_THIEF:           return "anti_thief";
+            case ITEM_ANTI_WARRIOR:         return "anti_warrior";
+            case ITEM_VORPAL:               return "vorpal";
+            case ITEM_TRAP:                 return "trapped";
+            case ITEM_DONATED:              return "donated";
+            case ITEM_BLADE_THIRST:         return "blade_thirst";
+            case ITEM_SHARP:                return "sharpened";
+            case ITEM_FORGED:               return "forged";
+            case ITEM_BODY_PART:            return "body_part";
+            case ITEM_LANCE:                return "lance";
+            case ITEM_ANTI_BRAWLER:         return "anti_brawler";
+            case ITEM_ANTI_SHAPE_SHIFTER:   return "anti_shifter";
+            case ITEM_BOW:                  return "bow";
 
             default: return "(unknown)";
         }

@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       834
+Playd       853
 Note        0
 Room        78
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -49,7 +49,7 @@ Pkscore     0
 Form        0
 Gag         0
 Quiet       0
-AllowLook	 0
+AllowLook   0
 XPLevel     0
 AirSupply   2
 Paswd       ~
@@ -67,7 +67,7 @@ RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1598483614
+Saved       1646439516
 Patron      None~
 DeityTimer  360
 DeityFlags  0
@@ -146,6 +146,7 @@ Skll        100 'fireball'
 Skll        100 'fireshield'
 Skll        100 'flamestrike'
 Skll        100 'fly'
+Skll        100 '__EMPTY__'
 Skll        100 '__EMPTY__'
 Skll        100 'gate'
 Skll        100 'giant strength'
@@ -248,9 +249,10 @@ Skll        100 'choke'
 Skll        100 'break wrist'
 Skll        100 'snap_neck'
 Skll        100 'grapple'
+Skll        100 'fly'
 Skll        100 'flying headbutt'
 Skll        100 'gouge'
-Skll        100 'pugalism'
+Skll        100 'pugilism'
 Skll        100 'grab'
 Skll        100 'mount'
 Skll        100 'dismount'
@@ -468,7 +470,7 @@ Skll        100 'advanced combat knowledge'
 Skll        100 'metal working techniques'
 Skll        100 'morphing knowledge'
 Skll        100 'morphing abilities'
-Skll        100 'pugalism knowledge'
+Skll        100 'pugilism knowledge'
 Skll        100 'fear'
 Skll        100 'deter'
 Skll        100 'astral sidestep'

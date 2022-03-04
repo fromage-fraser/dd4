@@ -1,4 +1,4 @@
- 
+
 { &gsn_group_vampyre,           &gsn_vampire_base,              30,     PRE_VAMPIRE},
 
 { &gsn_fast_healing,            &gsn_vampire_base,              50,     PRE_VAMPIRE},
@@ -43,19 +43,19 @@
 {&gsn_second_attack,            &gsn_group_armed,       50,     PRE_VAMPIRE},
 {&gsn_enhanced_hit,             &gsn_group_armed,       95,     PRE_VAMPIRE},
 {&gsn_enhanced_hit,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
- 
+
 {&gsn_disarm,                   &gsn_group_armed,       75,     PRE_VAMPIRE},
 {&gsn_disarm,                   &gsn_vampire_base,      30,     PRE_VAMPIRE},
 
 {&gsn_third_attack,             &gsn_group_armed,       70,     PRE_VAMPIRE},
 {&gsn_third_attack,             &gsn_second_attack,     70,     PRE_VAMPIRE},
 {&gsn_third_attack,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
- 
+
 {&gsn_fourth_attack,            &gsn_group_armed,       85,     PRE_VAMPIRE},
 {&gsn_fourth_attack,            &gsn_second_attack,     85,     PRE_VAMPIRE},
 {&gsn_fourth_attack,            &gsn_third_attack,      85,     PRE_VAMPIRE},
 {&gsn_fourth_attack,            &gsn_vampire_base,      30,     PRE_VAMPIRE},
- 
+
 {&gsn_dual,                     &gsn_group_armed,       90,     PRE_VAMPIRE},
 {&gsn_dual,                     &gsn_third_attack,      90,     PRE_VAMPIRE},
 {&gsn_dual,                     &gsn_fourth_attack,     90,     PRE_VAMPIRE},

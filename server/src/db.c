@@ -1068,7 +1068,7 @@ void boot_db( void )
 int mprog_name_to_type ( char *name )
 {
         if ( !str_cmp( name, "in_file_prog"   ) )       return IN_FILE_PROG;
-        if ( !str_cmp( name, "act_prog"       ) )       return ACT_PROG;
+        if ( !str_cmp( name, "act_prog"       ) )   return ACT_PROG;
         if ( !str_cmp( name, "speech_prog"    ) )       return SPEECH_PROG;
         if ( !str_cmp( name, "rand_prog"      ) )       return RAND_PROG;
         if ( !str_cmp( name, "fight_prog"     ) )       return FIGHT_PROG;
@@ -2267,6 +2267,7 @@ void load_specials( FILE *fp )
 
                         else if (pMobIndex->spec_fun == spec_lookup("spec_warrior")
                                  || pMobIndex->spec_fun == spec_lookup("spec_cast_druid")
+                                 || pMobIndex->spec_fun == spec_lookup("spec_demon")
                                  || pMobIndex->spec_fun == spec_lookup("spec_assassin"))
                                 bonus = 15;
 
@@ -2276,6 +2277,8 @@ void load_specials( FILE *fp )
 
                         else if (pMobIndex->spec_fun == spec_lookup("spec_priestess")
                                  || pMobIndex->spec_fun == spec_lookup("spec_mast_vampire")
+                                 || pMobIndex->spec_fun == spec_lookup("spec_evil_evil_gezhp")
+                                 || pMobIndex->spec_fun == spec_lookup("spec_grail")
                                  || pMobIndex->spec_fun == spec_lookup("spec_cast_archmage"))
                                 bonus = 20;
 
@@ -3655,9 +3658,15 @@ void do_areas (CHAR_DATA *ch, char *argument)
         {
                 if (!level
                     || (pArea->low_level <= level
-                        && (pArea->high_level >= level || pArea->high_level == -1)
-                        && (pArea->low_level != ROOM_LABEL_ALL)))
+                        && (pArea->high_level >= level || pArea->high_level == -1 || pArea->low_level == -2)))
                 {
+                        /*
+                        added last || evaluation to if_check above so you see 'all' areas if you supply
+                        an area number argument to 'area' --Owl 13/2/22
+                        */
+
+                        /*fprintf(stderr, "var: %d\r\n", pArea->low_level);*/
+
                         if (IS_SET(pArea->area_flags, AREA_FLAG_HIDDEN))
                                 continue;
 
@@ -3906,7 +3915,6 @@ int dice( int number, int size )
 
         return sum;
 }
-
 
 /*
  * Simple linear interpolation.

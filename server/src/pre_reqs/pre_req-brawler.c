@@ -1,5 +1,5 @@
-/* Bralwer Pre_Req.c */
- 
+/* Brawler Pre_Req.c */
+
 /* Starting Skills */
 {&gsn_group_combat,             &gsn_brawler_base,      30,     PRE_BRAWLER},
 {&gsn_group_unarmed,            &gsn_brawler_base,      30,     PRE_BRAWLER},
@@ -16,7 +16,7 @@
 {&gsn_rescue,                   &gsn_brawler_base,      30,     PRE_BRAWLER},
 
 {&gsn_pre_empt,                 &gsn_group_defense,     60,     PRE_BRAWLER},
-{&gsn_pre_empt,                 &gsn_brawler_base,      30,     PRE_BRAWLER},   
+{&gsn_pre_empt,                 &gsn_brawler_base,      30,     PRE_BRAWLER},
 
 /* **** GROUP COMBAT **** */
 
@@ -97,6 +97,6 @@
 {&gsn_focus,                    &gsn_brawler_base,      60,     PRE_BRAWLER},
 {&gsn_focus,                    &gsn_group_inner,       90,     PRE_BRAWLER},
 {&gsn_focus,                    &gsn_advanced_consider, 90,     PRE_BRAWLER},
- 
+
 {&gsn_fast_healing,             &gsn_group_inner,       85,     PRE_BRAWLER},
 {&gsn_fast_healing,             &gsn_brawler_base,      30,     PRE_BRAWLER},

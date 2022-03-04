@@ -24,6 +24,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
+
 /*
  * This file contains all of the OS-dependent stuff:
  *   startup, signals, BSD sockets for tcp/ip, i/o, timing.
@@ -107,7 +108,7 @@ const   char    go_ahead_str    [] = { IAC, GA, '\0' };
 int     close           args((int fd));
 /*int   getpeername     args((int s, struct sockaddr *name, int *namelen)); */
 /*int   getsockname     args((int s, struct sockaddr *name, int *namelen));*/
-int     gettimeofday    args((struct timeval *tp, struct timezone *tzp));
+/* int  gettimeofday    args((struct timeval *tp, struct timezone *tzp));  Commented out due to compile error/duplication -- Owl 10/2/22*/
 /* int  listen          args((int s, int backlog));*/
 /* int  read            args((int fd, char *buf, int nbyte));*/
 int     select          args((int width, fd_set *readfds, fd_set *writefds,
@@ -220,7 +221,7 @@ int main(int argc, char **argv)
         mudport = port;
         control = init_socket(port);
         boot_db();
-        sprintf(log_buf, "DD is ready to rock on port %d.", port);
+        sprintf(log_buf, "DD4 is ready to rock on port %d.", port);
         log_string(log_buf);
         game_loop_unix(control, wizPort);
         close(control);
@@ -531,7 +532,7 @@ void create_ident(DESCRIPTOR_DATA *d, long ip, sh_int port)
 }
 
 /*
- *  identd bollocks currently unsued
+ *  identd bollocks currently unused
  */
 
 #endif
@@ -875,7 +876,7 @@ void new_descriptor (int control)
         {
                 if (!str_prefix(pban->name, dnew->host))
                 {
-                        write_to_descriptor(desc, "Your site has been banned from DD.\n\r", 0);
+                        write_to_descriptor(desc, "Your site has been banned from DD4.\n\r", 0);
                         close(desc);
                         free_string(dnew->host);
                         free_mem(dnew->outbuf, dnew->outsize);
@@ -2622,7 +2623,7 @@ bool check_playing (DESCRIPTOR_DATA *d, char *name)
                         /* Temporarily out of action */
                         return TRUE;
 
-                        if (dold->connected != CON_PLAYING);
+                        if (dold->connected != CON_PLAYING)
                         {
                                 write_to_buffer(d, "You may not safely disconnect them at the moment.\n\r", 0);
                                 return TRUE;
@@ -2649,7 +2650,9 @@ void stop_idling(CHAR_DATA *ch)
             ||  ch->desc->connected != CON_PLAYING
             || !ch->was_in_room
             ||  ch->in_room != get_room_index(ROOM_VNUM_LIMBO))
+        {
                 return;
+        }
 
         ch->timer = 0;
         char_from_room(ch);
@@ -3334,6 +3337,49 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
         return;
 }
 
+void bit_explode (CHAR_DATA *ch, char* buf, unsigned long int n)
+{
+    char tmp [MAX_STRING_LENGTH] = {0};
+
+    /* Doesn't accept stupid values */
+    if (n <= 0 || n > 2147483647)
+        return;
+
+    char *sep;
+    sep = "";
+    unsigned long int arr[31] = {0};
+    int i = 0;
+    int j;
+    strcpy( buf, tmp );
+
+    while (n) {
+        int pos = 31 - __builtin_clz(n);
+        unsigned long int total = pow(2, pos);
+
+        if (total > 0)
+            arr[i] = total;
+
+        i++;
+        n ^= 1 << pos;
+    }
+
+    for(j=i; j>=0; j--)
+    {
+        if (j == i)
+            continue;
+
+        if (arr[j] > 0)
+        {
+            if ((arr[j] == 1) || (arr[j] == 0))
+            {
+                sep = "";
+            }
+            sprintf(tmp, "%s%lu", sep,arr[j]);
+            strcat( buf, tmp );
+            sep = "|";
+        }
+    }
+}
 
 int colour (char type, CHAR_DATA *ch, char *string)
 {

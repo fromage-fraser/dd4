@@ -2,7 +2,7 @@
 /* Groups
 
 Thieves have four different groups: Armed Combat, Defense, Stealth and
-Thievery. More will be added when/if we think of them - Simon 
+Thievery. More will be added when/if we think of them - Simon
 
 Last modified 29/7/97 @ 15:45 - Mat
 
@@ -12,7 +12,7 @@ Last modified 29/7/97 @ 15:45 - Mat
   {&gsn_group_defense,          &gsn_thief_base,        30,     PRE_THIEF},
   {&gsn_group_stealth,          &gsn_thief_base,        30,     PRE_THIEF},
   {&gsn_group_thievery,         &gsn_thief_base,        30,     PRE_THIEF},
-  
+
 /* **** GROUPS **** */
 
   {&gsn_group_unarmed,          &gsn_thief_base,        39,     PRE_THIEF},
@@ -21,7 +21,7 @@ Last modified 29/7/97 @ 15:45 - Mat
 
   {&gsn_peek,                   &gsn_thief_base,        30,     PRE_THIEF},
   {&gsn_hide,                   &gsn_thief_base,        30,     PRE_THIEF},
-  {&gsn_pick_lock,              &gsn_thief_base,        30,     PRE_THIEF},  
+  {&gsn_pick_lock,              &gsn_thief_base,        30,     PRE_THIEF},
 
   /* Set level dependent skills */
 
@@ -30,7 +30,7 @@ Last modified 29/7/97 @ 15:45 - Mat
 /* SpellCarft is the group that thieves get at 31 */
 
   {&gsn_spellcraft,             &gsn_thief_base,        60,     PRE_THIEF},
-  
+
 /* Spell Skills */
 
   {&gsn_detect_hidden,          &gsn_peek,              20,     PRE_THIEF},
@@ -45,7 +45,7 @@ Last modified 29/7/97 @ 15:45 - Mat
 
   {&gsn_detect_magic,           &gsn_detect_invis,      80,     PRE_THIEF},
   {&gsn_detect_magic,           &gsn_spellcraft,        65,     PRE_THIEF},
-        
+
   {&gsn_invis,                  &gsn_detect_invis,      80,     PRE_THIEF},
   {&gsn_invis,                  &gsn_spellcraft,        80,     PRE_THIEF},
 
@@ -81,7 +81,7 @@ Last modified 29/7/97 @ 15:45 - Mat
 /* Doubt these work at this stage...*/
 
   {&gsn_find_traps,             &gsn_pick_lock,         20,     PRE_THIEF},
-  {&gsn_find_traps,             &gsn_group_thievery,    40,     PRE_THIEF},     
+  {&gsn_find_traps,             &gsn_group_thievery,    40,     PRE_THIEF},
   {&gsn_find_traps,             &gsn_thief_base,        30,     PRE_THIEF},
 
   {&gsn_disable,                &gsn_find_traps,        40,     PRE_THIEF},
@@ -114,14 +114,14 @@ Last modified 29/7/97 @ 15:45 - Mat
   {&gsn_trip,                   &gsn_thief_base,        30,     PRE_THIEF},
 
   {&gsn_dirt,                   &gsn_trip,              60,     PRE_THIEF},
-  {&gsn_dirt,                   &gsn_group_unarmed,     60,     PRE_THIEF},     
+  {&gsn_dirt,                   &gsn_group_unarmed,     60,     PRE_THIEF},
   {&gsn_dirt,                   &gsn_thief_base,        30,     PRE_THIEF},
-        
+
   {&gsn_circle,                 &gsn_trip,              70,     PRE_THIEF},
   {&gsn_circle,                 &gsn_group_armed,       70,     PRE_THIEF},
   {&gsn_circle,                 &gsn_thief_base,        30,     PRE_THIEF},
 
-  {&gsn_third_attack,           &gsn_second_attack,     60,     PRE_THIEF},     
+  {&gsn_third_attack,           &gsn_second_attack,     60,     PRE_THIEF},
   {&gsn_third_attack,           &gsn_group_armed,       60,     PRE_THIEF},
   {&gsn_third_attack,           &gsn_thief_base,        30,     PRE_THIEF},
 

@@ -46,7 +46,7 @@
 {&gsn_disarm,                   &gsn_ranger_base,       30,     PRE_RANGER},
 
 /* Thievery Skills */
-  
+
 {&gsn_hide,                     &gsn_ranger_base,       30,     PRE_RANGER},
 
 {&gsn_sneak,                    &gsn_hide,              50,     PRE_RANGER},
@@ -55,7 +55,7 @@
 
 {&gsn_find_traps,               &gsn_group_thievery,    60,     PRE_RANGER},
 {&gsn_find_traps,               &gsn_ranger_base,       30,     PRE_RANGER},
-  
+
 {&gsn_disable,                  &gsn_find_traps,        40,     PRE_RANGER},
 {&gsn_disable,                  &gsn_group_thievery,    70,     PRE_RANGER},
 
@@ -72,7 +72,7 @@
 {&gsn_fast_healing,             &gsn_group_knowledge,   85,     PRE_RANGER},
 {&gsn_fast_healing,             &gsn_ranger_base,       60,     PRE_RANGER},
 
-{&gsn_bark_skin,                &gsn_group_knowledge,   75,     PRE_RANGER},    
+{&gsn_bark_skin,                &gsn_group_knowledge,   75,     PRE_RANGER},
 {&gsn_bark_skin,                &gsn_ranger_base,       60,     PRE_RANGER},
 
 {&gsn_faerie_fire,              &gsn_group_knowledge,   80,     PRE_RANGER},
@@ -133,7 +133,7 @@
 {&gsn_classify,                 &gsn_group_herb_lore,   70,     PRE_RANGER},
 {&gsn_classify,                 &gsn_ranger_base,       60,     PRE_RANGER},
 
-{&gsn_gather_herbs,             &gsn_group_herb_lore,   80,     PRE_RANGER},    
+{&gsn_gather_herbs,             &gsn_group_herb_lore,   80,     PRE_RANGER},
 {&gsn_gather_herbs,             &gsn_classify,          80,     PRE_RANGER},
 {&gsn_gather_herbs,             &gsn_ranger_base,       60,     PRE_RANGER},
 

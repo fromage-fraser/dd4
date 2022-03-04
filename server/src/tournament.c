@@ -1,9 +1,9 @@
 /*
  *  tournament.c
- *
+ * 
  *  Routines to allow Immortals to organise Pkilling tournaments
  *  in the Midgaard Arena.  See 'HELP TOURNAMENT'.
- *
+ * 
  *  Gezhp 2000
  */
 
@@ -77,39 +77,39 @@ const char *tournament_types [3] =
 void do_tournament (CHAR_DATA *ch, char *argument)
 {
         char arg [MAX_INPUT_LENGTH];
-
+        
         if (IS_NPC(ch))
                 return;
-
+        
         argument = one_argument(argument, arg);
-
+        
         if (arg[0] == '\0' || !str_cmp(arg, "info"))
                 tournament_info(ch);
-
+        
         else if (!str_cmp(arg, "enter"))
                 enter_tournament(ch, argument);
-
+        
         else if (!str_cmp(arg, "withdraw"))
                 withdraw_from_tournament(ch);
-
+        
         else if (!str_cmp(arg, "cancel") && ch->level > LEVEL_HERO)
                 cancel_tournament(ch);
-
+        
         else if (!str_cmp(arg, "close") && ch->level > LEVEL_HERO)
                 close_tournament(ch);
-
+        
         else if (!str_cmp(arg, "start") && ch->level > LEVEL_HERO)
                 begin_tournament(ch);
-
+        
         else if (!str_cmp(arg, "ban") && ch->level > LEVEL_HERO)
                 ban_from_tournament(ch, argument);
-
+        
         else if (!str_cmp(arg, "set") && ch->level > LEVEL_HERO)
                 set_tournament(ch, argument);
-
+        
         else if (ch->level > LEVEL_HERO)
                 send_to_char("Syntax: tournament [set|cancel|close|start|ban]\n\r", ch);
-
+        
         else
                 send_to_char("Syntax: tournament [info|enter|withdraw]\n\r", ch);
 }
@@ -119,7 +119,7 @@ void tournament_init ()
 {
         DESCRIPTOR_DATA *d;
         int i;
-
+        
         tournament_status = TOURNAMENT_STATUS_NONE;
         tournament_type = TOURNAMENT_TYPE_OPEN;
         tournament_team_count = 0;
@@ -127,19 +127,19 @@ void tournament_init ()
         tournament_banned_count = 0;
         tournament_countdown = 0;
         tournament_host = NULL;
-
+        
         for (i = 0; i < TOURNAMENT_MAX_TEAMS; i++)
         {
                 tournament_entrant_count[i] = 0;
                 tournament_team_alive[i] = FALSE;
         }
-
+        
         for (d = descriptor_list; d; d = d->next)
         {
                 if (d->connected == CON_PLAYING && d->character)
                         d->character->tournament_team = -1;
         }
-
+        
         bot_entry_count = 0;
 }
 
@@ -150,7 +150,7 @@ void tournament_info (CHAR_DATA *ch)
 
         if (IS_NPC(ch))
                 return;
-
+        
         if (tournament_status != TOURNAMENT_STATUS_NONE)
         {
                 if (tournament_lower_level != tournament_upper_level)
@@ -172,10 +172,10 @@ void tournament_info (CHAR_DATA *ch)
                                 option_string,
                                 tournament_types[tournament_type]);
                 }
-
+                        
                 send_to_char(buf, ch);
                 print_entrant_info(ch);
-
+                        
                 if (tournament_status == TOURNAMENT_STATUS_POSTED)
                 {
                         if (tournament_type == TOURNAMENT_TYPE_TEAM)
@@ -183,17 +183,17 @@ void tournament_info (CHAR_DATA *ch)
                         else
                                 send_to_char("\n\rType 'TOURNAMENT ENTER' to enter the combat!\n\r", ch);
                 }
-
+                
                 else if (tournament_status == TOURNAMENT_STATUS_CLOSED)
                         send_to_char("\n\rThis tournament is closed to further entries.\n\r", ch);
-
+                
                 else if (tournament_status == TOURNAMENT_STATUS_RUNNING)
                         send_to_char("\n\rThe tournament is currently underway!\n\r", ch);
 
                 else
                         send_to_char("\n\rThe tournament has finished.\n\r", ch);
         }
-
+                
         else
                 send_to_char("No tournament has been posted.\n\r", ch);
 }
@@ -204,17 +204,17 @@ void print_entrant_info (CHAR_DATA *ch)
         char buf [MAX_STRING_LENGTH];
         struct tournament_entrant next;
         int i, j;
-
-        const char *status [] =
+        
+        const char *status [] = 
         {
                 "{GAlive{x",
                 "{RDead{x",
-                "{YDisqualified{x"
+                "{YDisqualified{x"      
         };
 
         if (tournament_team_count == 1)
         {
-                if (!tournament_entrant_count[0])
+                if (!tournament_entrant_count[0]) 
                         send_to_char("No one has entered this tournament.\n\r", ch);
 
                 else
@@ -237,13 +237,13 @@ void print_entrant_info (CHAR_DATA *ch)
                         if (tournament_status != TOURNAMENT_STATUS_POSTED
                             && !tournament_entrant_count[i])
                                 continue;
-
+                        
                         sprintf(buf, "%s %s%s team{x\n\r",
                                 i ? "\n\r" : "",
                                 tournament_teams[i].colour_code,
                                 tournament_teams[i].name);
                         send_to_char(buf, ch);
-
+                                                
                         if (!tournament_entrant_count[i])
                                 send_to_char(" No one has entered this team\n\r", ch);
                         else
@@ -269,30 +269,30 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
         char team_name [MAX_INPUT_LENGTH];
         int i;
         int team;
-
+        
         if (IS_NPC(ch))
                 return;
-
+        
         one_argument(arg, team_name);
-
+        
         if (tournament_status == TOURNAMENT_STATUS_NONE)
         {
                 send_to_char("No tournament has been posted!\n\r", ch);
-                return;
+                return; 
         }
-
+        
         if (tournament_status != TOURNAMENT_STATUS_POSTED)
         {
                 send_to_char("Sorry, you may not enter the tournament now.\n\r", ch);
                 return;
         }
-
+        
         if (ch->level < tournament_lower_level || ch->level > tournament_upper_level)
         {
                 send_to_char("Sorry, the tournament is not open to your level.\n\r", ch);
                 return;
         }
-
+        
         if (is_entered_in_tournament(ch))
         {
                 send_to_char("You are already entered!\n\r", ch);
@@ -307,7 +307,7 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
                         return;
                 }
         }
-
+        
         if (tournament_type == TOURNAMENT_TYPE_TEAM
             || tournament_type == TOURNAMENT_TYPE_TAG)
         {
@@ -316,9 +316,9 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
                         send_to_char("What team do you wish to enter?\n\r", ch);
                         return;
                 }
-
+                
                 team = -1;
-
+                
                 for (i = 0; i < tournament_team_count; i++)
                 {
                         if (!str_cmp(team_name, tournament_teams[i].keyword))
@@ -327,20 +327,20 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
                                 break;
                         }
                 }
-
+                
                 if (team < 0)
                 {
                         strcpy(buf, "Valid teams are:");
-
+                        
                         for (i = 0; i < tournament_team_count; i++)
                         {
                                 strcat(buf, " ");
                                 strcat(buf, tournament_teams[i].keyword);
-
+                                
                                 if (i < tournament_team_count - 1)
                                         strcat(buf, ",");
                         }
-
+                        
                         strcat(buf, ".\n\r");
                         send_to_char(buf, ch);
                         return;
@@ -348,7 +348,7 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
         }
         else
                 team = 0;
-
+        
         if (tournament_entrant_count[team] == TOURNAMENT_MAX_ENTRANTS)
         {
                 if (tournament_team_count == 1)
@@ -357,29 +357,29 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
                         send_to_char("Sorry, no more people may enter that team.\n\r", ch);
                 return;
         }
-
+        
         sprintf(tournament_entrants[team][tournament_entrant_count[team]].stats,
                 "{W%-15s{x [%s %3d]",
                 ch->name,
                 ch->sub_class ? sub_class_table[ch->sub_class].who_name
                     : class_table[ch->class].who_name,
                 ch->level);
-
+        
         tournament_entrants[team][tournament_entrant_count[team]].killer[0] = '\0';
         tournament_entrants[team][tournament_entrant_count[team]].status = TOURNAMENT_ENTRANT_ALIVE;
         tournament_entrants[team][tournament_entrant_count[team]].ch = ch;
         tournament_entrant_count[team]++;
         ch->tournament_team = team;
-
+        
         send_to_char("You enter the tournament!\n\r", ch);
-
+        
         if (tournament_team_count == 1)
                 sprintf(buf, "%s has entered the tournament!", ch->name);
         else
                 sprintf(buf, "%s has entered the tournament for the %s team!",
                         ch->name,
                         tournament_teams[team].name);
-
+                
         tournament_message(buf, ch);
 }
 
@@ -387,11 +387,11 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
 bool is_entered_in_tournament (CHAR_DATA *ch)
 {
         int i, j;
-
+        
         if (IS_NPC(ch) && ch->pIndexData->vnum != BOT_VNUM)
                 return FALSE;
-
-        for (i = 0; i < tournament_team_count; i++)
+        
+        for (i = 0; i < tournament_team_count; i++) 
         {
                 for (j = 0; j < tournament_entrant_count[i]; j++)
                 {
@@ -408,20 +408,20 @@ bool is_entered_in_tournament (CHAR_DATA *ch)
 void withdraw_from_tournament (CHAR_DATA *ch)
 {
         char buf [MAX_STRING_LENGTH];
-
+        
         if (IS_NPC(ch))
                 return;
-
-        if (tournament_status == TOURNAMENT_STATUS_NONE)
+        
+        if (tournament_status == TOURNAMENT_STATUS_NONE) 
                 send_to_char("But a tournament hasn't been posted!\n\r", ch);
 
-        else if (tournament_status == TOURNAMENT_STATUS_FINISHED)
+        else if (tournament_status == TOURNAMENT_STATUS_FINISHED) 
                 send_to_char("But the tournament has finished!\n\r", ch);
 
-        else if (tournament_status == TOURNAMENT_STATUS_RUNNING)
+        else if (tournament_status == TOURNAMENT_STATUS_RUNNING) 
                 send_to_char("Not while the tournament is running!\n\r", ch);
 
-        else
+        else 
         {
                 if (!is_entered_in_tournament(ch))
                 {
@@ -441,14 +441,14 @@ void cancel_tournament (CHAR_DATA *ch)
 {
         if (IS_NPC(ch) || ch->level <= LEVEL_HERO)
                 return;
-
-        if (tournament_status == TOURNAMENT_STATUS_NONE)
+        
+        if (tournament_status == TOURNAMENT_STATUS_NONE) 
                 send_to_char("But a tournament hasn't been posted!\n\r", ch);
-
+        
         else if (ch->level < tournament_host->level)
                 send_to_char("You aren't authorised to cancel this tournament.\n\r", ch);
 
-        else
+        else 
         {
                 if (tournament_status != TOURNAMENT_STATUS_FINISHED)
                         tournament_message("The tournament has been cancelled!", ch);
@@ -462,20 +462,20 @@ void close_tournament (CHAR_DATA *ch)
 {
         if (IS_NPC(ch) || ch->level <= LEVEL_HERO)
                 return;
-
+        
         if (tournament_status == TOURNAMENT_STATUS_NONE)
                 send_to_char("There is no tournament to close.\n\r", ch);
-
+        
         else if (tournament_status == TOURNAMENT_STATUS_CLOSED)
                 send_to_char("The tournament is already closed.\n\r", ch);
-
+        
         else if (tournament_status == TOURNAMENT_STATUS_RUNNING)
                 send_to_char("Too late now: the tournament is running.\n\r", ch);
-
+        
         else if (tournament_status == TOURNAMENT_STATUS_FINISHED)
                 send_to_char("Too late now: the tournament is finished.\n\r", ch);
-
-        else
+        
+        else 
         {
                 send_to_char("Closing tournament to further entries.\n\r", ch);
                 tournament_message("The tournament is now closed to further entries.", ch);
@@ -487,23 +487,23 @@ void close_tournament (CHAR_DATA *ch)
 void begin_tournament (CHAR_DATA *ch)
 {
         int i, teams;
-
+        
         if (IS_NPC(ch) || ch->level <= LEVEL_HERO)
                 return;
-
+        
         if (tournament_status == TOURNAMENT_STATUS_NONE)
         {
                 send_to_char("No tournament has been set.\n\r", ch);
                 return;
         }
-
+        
         if (tournament_status == TOURNAMENT_STATUS_RUNNING)
         {
                 send_to_char("The tournament is already running.\n\r", ch);
                 return;
         }
-
-        if (ch != tournament_host)
+        
+        if (ch != tournament_host) 
         {
                 send_to_char("You may not start the tournament.\n\r", ch);
                 return;
@@ -512,7 +512,7 @@ void begin_tournament (CHAR_DATA *ch)
         if (tournament_team_count > 1)
         {
                 teams = 0;
-
+                
                 for (i = 0; i < tournament_team_count; i++)
                 {
                         if (tournament_entrant_count[i])
@@ -523,7 +523,7 @@ void begin_tournament (CHAR_DATA *ch)
                         else
                                 tournament_team_alive[i] = FALSE;
                 }
-
+                                
                 if (teams < 2)
                 {
                         send_to_char("You need at least two teams before you can start.\n\r", ch);
@@ -535,7 +535,7 @@ void begin_tournament (CHAR_DATA *ch)
                 send_to_char("You need at least two entrants before you can start.\n\r", ch);
                 return;
         }
-
+        
         send_to_char("Starting countdown...\n\r", ch);
         tournament_message("The tournament is about to begin!", ch);
         tournament_countdown = COUNTDOWN;
@@ -548,17 +548,17 @@ void ban_from_tournament (CHAR_DATA *ch, char *argument)
         char buf [MAX_STRING_LENGTH];
         char arg [MAX_INPUT_LENGTH];
         CHAR_DATA *victim;
-
+        
         if (IS_NPC(ch) || ch->level <= LEVEL_HERO)
                 return;
 
         if (tournament_status == TOURNAMENT_STATUS_NONE)
                 send_to_char("There is no tournament to ban anyone from.\n\r", ch);
-
+        
         else if (tournament_status != TOURNAMENT_STATUS_POSTED)
                 send_to_char("Too late now!\n\r", ch);
-
-        else
+        
+        else 
         {
                 one_argument(argument, arg);
 
@@ -567,21 +567,21 @@ void ban_from_tournament (CHAR_DATA *ch, char *argument)
                         send_to_char("Ban who from this tournament?\n\r", ch);
                         return;
                 }
-
+                
                 victim = get_char_world(ch, arg);
-
+                
                 if (!victim || !is_entered_in_tournament(victim))
                 {
                         send_to_char("No one by that name in the tournament.\n\r", ch);
                         return;
                 }
-
+                
                 if (tournament_banned_count == TOURNAMENT_MAX_BANNED)
                 {
                         send_to_char("Can't ban anymore characters.\n\r", ch);
                         return;
                 }
-
+                
                 send_to_char("Banning player from the tournament.\n\r", ch);
                 send_to_char("You've been banned from this tournament!\n\r", victim);
                 sprintf(buf, "%s has been removed from the tournament!", victim->name);
@@ -606,36 +606,36 @@ void set_tournament (CHAR_DATA *ch, char *argument)
         int upper;
         int type;
         int team_count = 1;
-
-        const char *syntax =
+        
+        const char *syntax = 
                 "Syntax: tournament set <open|team|tag> [number teams] <lower level> \\\n\r"
                 "                       <upper level> [sameroom] [noflee] [nowimpy] \\\n\r"
                 "                       [noquaff] [nopill] [nobrandish] [nosummon]\n\r";
-
+        
         if (IS_NPC(ch) || ch->level <= LEVEL_HERO)
                 return;
-
+        
         if (tournament_status != TOURNAMENT_STATUS_NONE
             && tournament_status != TOURNAMENT_STATUS_FINISHED)
         {
                 send_to_char("A tournament has already been posted!\n\r", ch);
                 return;
         }
-
+        
         if (argument[0] == '\0')
         {
                 send_to_char(syntax, ch);
                 return;
         }
-
+        
         argument = one_argument(argument, arg_type);
-
+        
         if (!str_cmp(arg_type, "open"))
                 type = TOURNAMENT_TYPE_OPEN;
 
         else if (!str_cmp(arg_type, "team"))
                 type = TOURNAMENT_TYPE_TEAM;
-
+        
         else if (!str_cmp(arg_type, "tag"))
         {
                 type = TOURNAMENT_TYPE_TAG;
@@ -648,13 +648,13 @@ void set_tournament (CHAR_DATA *ch, char *argument)
                 send_to_char("* Invalid tournament type.\n\r", ch);
                 return;
         }
-
+        
         if (type == TOURNAMENT_TYPE_TEAM
             || type == TOURNAMENT_TYPE_TAG)
         {
                 argument = one_argument(argument, arg_teams);
                 team_count = is_number(arg_teams) ? atoi(arg_teams) : -1;
-
+                
                 if (team_count < 2 || team_count > TOURNAMENT_MAX_TEAMS)
                 {
                         send_to_char(syntax, ch);
@@ -664,62 +664,62 @@ void set_tournament (CHAR_DATA *ch, char *argument)
                         return;
                 }
         }
-
+                                
         argument = one_argument(argument, arg_lower);
         argument = one_argument(argument, arg_upper);
         lower = is_number(arg_lower) ? atoi(arg_lower) : -1;
         upper = is_number(arg_lower) ? atoi(arg_upper) : -1;
-
-        if (lower < 10 || lower > 100)
+        
+        if (lower < 10 || lower > 100) 
         {
                 send_to_char(syntax, ch);
                 send_to_char("* Lower level limit must be from 10-100.\n\r", ch);
                 return;
         }
-
-        if (upper < 10 || upper > 100)
+        
+        if (upper < 10 || upper > 100) 
         {
                 send_to_char(syntax, ch);
                 send_to_char("* Upper level limit must be from 10-100.\n\r", ch);
                 return;
         }
-
-        if (lower > upper)
+        
+        if (lower > upper) 
         {
                 int temp = upper;
                 upper = lower;
                 lower = temp;
         }
-
+        
         while (1)
         {
                 argument = one_argument(argument, arg_option);
-
+                
                 if (arg_option[0] == '\0')
                         break;
-
+                
                 else if (!str_cmp(arg_option, "noflee"))
                         SET_BIT(options, TOURNAMENT_OPTION_NOFLEE);
-
+                
                 else if (!str_cmp(arg_option, "nowimpy"))
                         SET_BIT(options, TOURNAMENT_OPTION_NOWIMPY);
-
+                
                 else if (!str_cmp(arg_option, "sameroom"))
                         SET_BIT(options, TOURNAMENT_OPTION_SAMEROOM);
-
+                
                 else if (!str_cmp(arg_option, "noquaff"))
                         SET_BIT(options, TOURNAMENT_OPTION_NOQUAFF);
-
+                
                 else if (!str_cmp(arg_option, "nopill"))
                         SET_BIT(options, TOURNAMENT_OPTION_NOPILL);
-
+                
                 else if (!str_cmp(arg_option, "nobrandish"))
                         SET_BIT(options, TOURNAMENT_OPTION_NOBRANDISH);
-
+                
                 else if (!str_cmp(arg_option, "nosummon"))
                         SET_BIT(options, TOURNAMENT_OPTION_NOSUMMON);
-
-                else
+                
+                else 
                 {
                         send_to_char(syntax, ch);
                         sprintf(buf, "* Unknown option: %s.\n\r", arg_option);
@@ -727,7 +727,7 @@ void set_tournament (CHAR_DATA *ch, char *argument)
                         return;
                 }
         }
-
+        
         sprintf(option_string,
                 "entry:%s flee:%s wimpy:%s potions:%s pills:%s staves:%s summon:%s",
                 (options & TOURNAMENT_OPTION_SAMEROOM) ? "same" : "random",
@@ -737,7 +737,7 @@ void set_tournament (CHAR_DATA *ch, char *argument)
                 (options & TOURNAMENT_OPTION_NOPILL) ? "NO" : "yes",
                 (options & TOURNAMENT_OPTION_NOBRANDISH) ? "NO" : "yes",
                 (options & TOURNAMENT_OPTION_NOSUMMON) ? "NO" : "yes");
-
+        
         tournament_init();
         tournament_type = type;
         tournament_team_count = team_count;
@@ -746,18 +746,18 @@ void set_tournament (CHAR_DATA *ch, char *argument)
         tournament_lower_level = lower;
         tournament_upper_level = upper;
         tournament_status = TOURNAMENT_STATUS_POSTED;
-
+        
         sprintf(buf, "Tournament posted for levels %d-%d!\n\rOptions: %s.\n\rType: %s\n\r",
-                lower,
+                lower, 
                 upper,
                 option_string,
                 tournament_types[type]);
         send_to_char(buf, ch);
-
+        
         sprintf(buf, "%s has posted a TOURNAMENT for those level %d-%d!",
                 ch->name, lower, upper);
         do_info(ch, buf);
-
+        
         sprintf(buf, "Options: %s", option_string);
         tournament_message(buf, ch);
 
@@ -772,14 +772,14 @@ void remove_from_tournament (CHAR_DATA *ch)
 
         if (tournament_status == TOURNAMENT_STATUS_FINISHED)
                 return;
-
+        
         for (h = 0; h < tournament_team_count; h++)
         {
                 for (i = 0; i < tournament_entrant_count[h]; i++)
                 {
-                        if (ch == tournament_entrants[h][i].ch)
+                        if (ch == tournament_entrants[h][i].ch) 
                         {
-                                for (j = i; j < tournament_entrant_count[h]-1; j++)
+                                for (j = i; j < tournament_entrant_count[h]-1; j++) 
                                         tournament_entrants[h][j] = tournament_entrants[h][j+1];
 
                                 tournament_entrant_count[h]--;
@@ -794,10 +794,10 @@ void remove_from_tournament (CHAR_DATA *ch)
 void do_tournament_countdown ()
 {
         char buf [64];
-
+        
         if (tournament_countdown < 1)
                 return;
-
+        
         if (tournament_countdown == 1)
         {
                 tournament_message("The tournament has begun!", tournament_host);
@@ -805,14 +805,14 @@ void do_tournament_countdown ()
                 tournament_countdown = 0;
                 transfer_entrants();
         }
-
+        
         else if (tournament_countdown-- <= COUNTDOWN)
         {
                 sprintf(buf, ">> %d <<", tournament_countdown);
                 tournament_message(buf, tournament_host);
                 return;
         }
-
+        
         check_for_tournament_winner();
 }
 
@@ -823,24 +823,24 @@ void transfer_entrants ()
         ROOM_INDEX_DATA *assembly_room;
         ROOM_INDEX_DATA *start_room = NULL;
         int h, i, j;
-
+        
         assembly_room = get_room_index(TOURNAMENT_ASSEMBLY_VNUM);
-
-        for (i = 0; i < 1000; i++)
+        
+        for (i = 0; i < 1000; i++) 
         {
                 start_room = get_room_index(ROOM_VNUM_ARENA + number_range(5, 35));
                 if (start_room)
                         break;
         }
-
-        if (!start_room)
+        
+        if (!start_room) 
         {
                 send_to_char("Couldn't find a transfer room!\n\r", tournament_host);
                 tournament_init();
                 return;
         }
-
-        if (!assembly_room)
+        
+        if (!assembly_room) 
         {
                 tournament_init();
                 send_to_char("Start room vnum invalid!\n\r", tournament_host);
@@ -852,9 +852,9 @@ void transfer_entrants ()
                 {
                         if (tournament_type == TOURNAMENT_TYPE_TAG)
                                 i = number_range(0, tournament_entrant_count[h]-1);
-
+                        
                         ch = tournament_entrants[h][i].ch;
-
+                        
                         if (!IS_NPC(ch))
                         {
                                 if (!ch->desc || ch->desc->connected != CON_PLAYING)
@@ -862,58 +862,58 @@ void transfer_entrants ()
                                         disqualify_tournament_entrant(ch, "not ready");
                                         continue;
                                 }
-
+                        
                                 if (ch->in_room != assembly_room)
                                 {
                                         disqualify_tournament_entrant(ch, "not at assembly point");
                                         continue;
                                 }
-
+                        
                                 if (ch->fighting || ch->position != POS_STANDING)
                                 {
                                         disqualify_tournament_entrant(ch, "not standing ready");
                                         continue;
                                 }
-
+                        
                                 if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
                                 {
                                         disqualify_tournament_entrant(ch, "not in correct form");
                                         continue;
                                 }
-
+                        
                                 ch->pcdata->tailing = 0;
                         }
-
+                        
                         else if (ch->pIndexData->vnum != BOT_VNUM)
                         {
                                 disqualify_tournament_entrant(ch, "bad bot");
                                 continue;
                         }
-
+                                                            
                         act("$n disappears into thin air!", ch, NULL, NULL, TO_ROOM);
                         char_from_room(ch);
                         char_to_room(ch, start_room);
                         act("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
-
+                        
                         if (ch->mount)
                         {
                                 char_from_room(ch->mount);
                                 char_to_room(ch->mount, start_room);
                         }
-
+                
                         send_to_char("\n\r", ch);
                         do_look(ch, "");
-
+                        
                         if (!IS_SET(tournament_options, TOURNAMENT_OPTION_SAMEROOM))
                         {
                                 for (j = 0; j < 1000; j++)
                                 {
                                         start_room = get_room_index(ROOM_VNUM_ARENA + number_range(5, 35));
-
+                                        
                                         if (start_room)
                                                 break;
                                 }
-
+                                
                                 if (!start_room)
                                 {
                                         send_to_char("Couldn't find a transfer room!\n\r", tournament_host);
@@ -921,7 +921,7 @@ void transfer_entrants ()
                                         return;
                                 }
                         }
-
+                        
                         if (tournament_type == TOURNAMENT_TYPE_TAG)
                                 break;
                 }
@@ -934,7 +934,7 @@ void disqualify_tournament_entrant (CHAR_DATA *ch, char *reason)
         char buf [MAX_STRING_LENGTH];
         int h, i, j;
         int alive = 0;
-
+        
         for (h = 0; h < tournament_team_count; h++)
         {
                 for (i = 0; i < tournament_entrant_count[h]; i++)
@@ -942,32 +942,32 @@ void disqualify_tournament_entrant (CHAR_DATA *ch, char *reason)
                         if (tournament_entrants[h][i].ch == ch)
                         {
                                 tournament_entrants[h][i].status = TOURNAMENT_ENTRANT_DISQUALIFIED;
-
+                                
                                 sprintf(buf, "%s has been disqualified: %s.",
                                         ch->name, reason ? reason : "(no reason)");
                                 tournament_message(buf, ch);
-
+                                
                                 sprintf(buf, "{RYou have been disqualified from the tournament: %s.{x\n\r",
                                         reason ? reason : "(no reason)");
                                 send_to_char(buf, ch);
-
+                                
                                 for (j = 0; j < tournament_entrant_count[h]; j++)
                                 {
                                         if (tournament_entrants[h][j].status == TOURNAMENT_ENTRANT_ALIVE)
                                                 alive++;
                                 }
-
+                                
                                 if (!alive)
                                         tournament_team_alive[h] = FALSE;
-
+                                
                                 return;
                         }
                 }
-
+                
         }
 }
 
-
+        
 void check_for_tournament_winner ()
 {
         char buf [MAX_STRING_LENGTH];
@@ -976,7 +976,7 @@ void check_for_tournament_winner ()
         int teams_alive = 0;
         int winning_team = -1;
         CHAR_DATA *ch = NULL;
-
+        
         if (tournament_status != TOURNAMENT_STATUS_RUNNING)
                 return;
 
@@ -984,14 +984,14 @@ void check_for_tournament_winner ()
         {
                 for (i = 0; i < tournament_entrant_count[0]; i++)
                 {
-                        if (tournament_entrants[0][i].status == TOURNAMENT_ENTRANT_ALIVE)
+                        if (tournament_entrants[0][i].status == TOURNAMENT_ENTRANT_ALIVE) 
                         {
                                 alive++;
                                 ch = tournament_entrants[0][i].ch;
                         }
-                }
-
-                if (!alive)
+                }       
+                
+                if (!alive) 
                 {
                         tournament_message("Ack!  NO ONE has won this tournament!", tournament_host);
                         send_to_char("No one wins the tournament.\n\r", tournament_host);
@@ -999,10 +999,10 @@ void check_for_tournament_winner ()
                         bot_entry_count = 0;
                         return;
                 }
-
+                
                 if (alive == 1)
                 {
-                        sprintf(buf, ">>> The tournament has been won...  %s is victorious! <<<\n\r",
+                        sprintf(buf, ">>> The tournament has been won...  %s is victorious! <<<\n\r", 
                                 ch->name);
                         tournament_message(buf, ch);
                         send_to_char("\n\r{Y>>> {WCongratulations!  {CYou have won the tournament! {Y<<<{x\n\r\n\r", ch);
@@ -1025,7 +1025,7 @@ void check_for_tournament_winner ()
                                 }
                         }
                 }
-
+                
                 if (!teams_alive)
                 {
                         tournament_message("Ack!  NO ONE has won this tournament!", tournament_host);
@@ -1034,24 +1034,24 @@ void check_for_tournament_winner ()
                         bot_entry_count = 0;
                         return;
                 }
-
+                
                 if (teams_alive == 1)
                 {
-                        sprintf(buf, ">>> The tournament has been won...  The %s team wins! <<<",
+                        sprintf(buf, ">>> The tournament has been won...  The %s team wins! <<<", 
                                 tournament_teams[winning_team].name);
                         tournament_message(buf, tournament_host);
-
+                        
                         sprintf(buf, "The tournament has been won by the %s team!\n\r",
                                 tournament_teams[winning_team].name);
                         send_to_char(buf, tournament_host);
-
+                        
                         for (i = 0; i < tournament_entrant_count[winning_team]; i++)
                         {
-                                send_to_char("\n\r{Y>>> {WCongratulations!  {CYour team has won the tournament! {Y<<<{x\n\r\n\r",
+                                send_to_char("\n\r{Y>>> {WCongratulations!  {CYour team has won the tournament! {Y<<<{x\n\r\n\r", 
                                              tournament_entrants[winning_team][i].ch);
                                 tournament_entrants[winning_team][i].ch->tournament_team = -1;
                         }
-
+                        
                         tournament_status = TOURNAMENT_STATUS_FINISHED;
                         bot_entry_count = 0;
                 }
@@ -1062,14 +1062,14 @@ void check_for_tournament_winner ()
 bool is_tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
 {
         int h, i;
-
+        
         if (tournament_status != TOURNAMENT_STATUS_RUNNING)
                 return FALSE;
-
+        
         if ((IS_NPC(victim) && victim->pIndexData->vnum != BOT_VNUM)
              || (IS_NPC(killer) && killer->pIndexData->vnum != BOT_VNUM))
                 return FALSE;
-
+        
         for (h = 0; h < tournament_team_count; h++)
         {
                 for (i = 0; i < tournament_entrant_count[h]; i++)
@@ -1082,7 +1082,7 @@ bool is_tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
                         }
                 }
         }
-
+        
         return FALSE;
 }
 
@@ -1092,11 +1092,11 @@ void tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
         char buf [MAX_STRING_LENGTH];
         int h, i;
         int alive [TOURNAMENT_MAX_TEAMS];
-
+        
         for (h = 0; h < tournament_team_count; h++)
         {
                 alive[h] = 0;
-
+                
                 for (i = 0; i < tournament_entrant_count[h]; i++)
                 {
                         if (tournament_entrants[h][i].ch == victim)
@@ -1105,14 +1105,14 @@ void tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
                                 sprintf(buf, "{RKilled by %s{x", killer->name);
                                 strcpy(tournament_entrants[h][i].killer, buf);
                         }
-
+                        
                         else if (tournament_entrants[h][i].status == TOURNAMENT_ENTRANT_ALIVE)
                         {
                                 alive[h]++;
                         }
                 }
-
-                if (!alive[h]
+                
+                if (!alive[h] 
                     && tournament_team_count > 1
                     && tournament_team_alive[h])
                 {
@@ -1122,7 +1122,7 @@ void tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
                         tournament_team_alive[h] = FALSE;
                 }
         }
-
+        
         if (tournament_team_count == 1)
         {
                 if (alive[0] > 1)
@@ -1131,7 +1131,7 @@ void tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
                         tournament_message(buf, victim);
                 }
         }
-
+                
         check_for_tournament_winner();
 }
 
@@ -1139,10 +1139,10 @@ void tournament_death (CHAR_DATA *victim, CHAR_DATA *killer)
 bool is_still_alive_in_tournament (CHAR_DATA *ch)
 {
         int h, i;
-
+        
         if (IS_NPC(ch) && ch->pIndexData->vnum != BOT_VNUM)
                 return FALSE;
-
+        
         for (h = 0; h < tournament_team_count; h++)
         {
                 for (i = 0; i < tournament_entrant_count[h]; i++)
@@ -1156,11 +1156,11 @@ bool is_still_alive_in_tournament (CHAR_DATA *ch)
                         }
                 }
         }
-
+        
         return FALSE;
 }
 
-
+        
 bool tournament_action_illegal (CHAR_DATA *ch, int flag)
 {
         if (tournament_status == TOURNAMENT_STATUS_RUNNING
@@ -1168,7 +1168,7 @@ bool tournament_action_illegal (CHAR_DATA *ch, int flag)
             && IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER)
             && IS_SET(tournament_options, flag))
                 return TRUE;
-
+        
         return FALSE;
 }
 
@@ -1180,18 +1180,18 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
         char buf2 [MAX_STRING_LENGTH];
         char *write;
         const char *read, *token;
-
+        
         if (!ch
             || !IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER)
             || text[0] == '\0')
                 return;
-
+        
         /*
          *  Modified version of act to include '$n' and '$N' tokens
          */
         write = buf;
         read = text;
-
+        
         while (*read != '\0')
         {
                 if (*read != '$')
@@ -1199,9 +1199,9 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
                         *write++ = *read++;
                         continue;
                 }
-
+                
                 ++read;
-
+                
                 if (*read == 'n')
                 {
                         if (IS_NPC(ch))
@@ -1209,7 +1209,7 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
                         else
                                 token = ch->name;
                 }
-
+                
                 else if (*read == 'N' && victim)
                 {
                         if (IS_NPC(victim))
@@ -1217,12 +1217,12 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
                         else
                                 token = victim->name;
                 }
-
+                
                 else
                         continue;
-
+                
                 ++read;
-
+                
                 while ((*write = *token) != '\0')
                         ++write, ++token;
         }
@@ -1230,7 +1230,7 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
         *write = '\0';
 
         add_to_public_review_buffer(NULL, REVIEW_ARENA, buf);
-
+        
         for (d = descriptor_list; d; d = d->next)
         {
                 if (d->connected != CON_PLAYING
@@ -1251,5 +1251,5 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
         }
 }
 
-
-
+                              
+                    

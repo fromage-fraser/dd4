@@ -29,7 +29,7 @@
 #include "merc.h"
 /*
  * Externals
- */
+ */ 
 extern  bool            merc_down;
 
 /*
@@ -50,7 +50,7 @@ void    weather_update  args( ( void ) );
 void    char_update     args( ( void ) );
 void    obj_update      args( ( void ) );
 void    aggr_update     args( ( void ) );
-void    quest_update    args( ( void ) ); /* Vassago - quest.c */
+void    quest_update    args( ( void ) ); /* Vassago - quest.c */  
 
 
 /*
@@ -58,145 +58,145 @@ void    quest_update    args( ( void ) ); /* Vassago - quest.c */
  */
 
 
-int check_stat_advance (CHAR_DATA *ch, int stat)
+int check_stat_advance (CHAR_DATA *ch, int stat) 
 {
-        switch (stat)
+        switch (stat) 
         {
-            case APPLY_STR:
-                if (ch->pcdata->perm_str < (21 + race_table[ch->race].str_bonus +
+            case APPLY_STR: 
+                if (ch->pcdata->perm_str < (21 + race_table[ch->race].str_bonus + 
                                             class_table[ch->class].class_stats[0]))
                         return 1;
-
+        
                 break;
-
-            case APPLY_INT:
+        
+            case APPLY_INT: 
                 if (ch->pcdata->perm_int < (21 + race_table[ch->race].int_bonus +
                                             class_table[ch->class].class_stats[1]))
                         return 1;
 
                 break;
-
-            case APPLY_WIS:
+                
+            case APPLY_WIS: 
                 if (ch->pcdata->perm_wis < (21 + race_table[ch->race].wis_bonus +
-                                            class_table[ch->class].class_stats[2]))
+                                            class_table[ch->class].class_stats[2])) 
                         return 1;
-
+                
                 break;
-
-            case APPLY_DEX:
+                
+            case APPLY_DEX: 
                 if (ch->pcdata->perm_dex < (21 + race_table[ch->race].dex_bonus +
-                                            class_table[ch->class].class_stats[3]))
+                                            class_table[ch->class].class_stats[3])) 
                         return 1;
-
+                
                 break;
-
-            case APPLY_CON:
+                
+            case APPLY_CON: 
                 if (ch->pcdata->perm_con < (21 + race_table[ch->race].con_bonus +
-                                            class_table[ch->class].class_stats[4]))
+                                            class_table[ch->class].class_stats[4])) 
                             return 1;
-
+                
                 break;
-
+                
         }
-
+        
         return 0;
 }
 
 
-void advance_stat (CHAR_DATA *ch)
+void advance_stat (CHAR_DATA *ch) 
 {
         int type = -1;
 
-        if (ch->level % 2)
+        if (ch->level % 2) 
                 return;
-
-        if (check_stat_advance(ch, ch->pcdata->stat_train))
+        
+        if (check_stat_advance(ch, ch->pcdata->stat_train)) 
                 type = ch->pcdata->stat_train;
-
+        
         else if (check_stat_advance(ch, class_table[ch->class].attr_prime))
                 type = class_table[ch->class].attr_prime;
-
+        
         else if (check_stat_advance(ch, APPLY_WIS))
                 type = APPLY_WIS;
-
-        else if (check_stat_advance(ch, APPLY_CON))
+        
+        else if (check_stat_advance(ch, APPLY_CON)) 
                 type = APPLY_CON;
-
-        else if (check_stat_advance(ch, APPLY_STR))
+        
+        else if (check_stat_advance(ch, APPLY_STR)) 
                 type = APPLY_STR;
-
-        else if (check_stat_advance(ch, APPLY_INT))
+        
+        else if (check_stat_advance(ch, APPLY_INT)) 
                 type = APPLY_INT;
-
-        else if (check_stat_advance(ch, APPLY_DEX))
+        
+        else if (check_stat_advance(ch, APPLY_DEX)) 
                 type = APPLY_DEX;
-
-        else
+        
+        else 
                 return; /* max stats */
-
-        switch (type)
+        
+        switch (type) 
         {
             case APPLY_STR:
                 ch->pcdata->perm_str += 1;
                 send_to_char("{WYou feel stronger", ch);
-
+                
                 if (!check_stat_advance(ch, APPLY_STR))
                         send_to_char("; your strength is at maximum", ch);
-
+                
                 send_to_char(".{x\n\r", ch);
-
+                
                 break;
-
-            case APPLY_INT:
+                
+            case APPLY_INT: 
                 ch->pcdata->perm_int += 1;
                 send_to_char("{WYou feel smarter", ch);
-
-                if (!check_stat_advance(ch, APPLY_INT))
+                
+                if (!check_stat_advance(ch, APPLY_INT)) 
                         send_to_char("; your intelligence is at maximum", ch);
-
+                
                 send_to_char(".{x\n\r", ch);
-
+                
                 break;
-
-            case APPLY_WIS:
+        
+            case APPLY_WIS: 
                 ch->pcdata->perm_wis += 1;
                 send_to_char("{WYou feel wiser", ch);
-
-                if (!check_stat_advance(ch, APPLY_WIS))
+                
+                if (!check_stat_advance(ch, APPLY_WIS)) 
                         send_to_char("; your wisdom is at maximum", ch);
-
+                    
                 send_to_char(".{x\n\r", ch);
-
+                    
                 break;
-
-            case APPLY_DEX:
+            
+            case APPLY_DEX: 
                 ch->pcdata->perm_dex += 1;
                 send_to_char("{WYou feel more dexterous", ch);
 
-                if (!check_stat_advance(ch, APPLY_DEX))
+                if (!check_stat_advance(ch, APPLY_DEX)) 
                         send_to_char("; your dexterity is at maximum", ch);
 
                 send_to_char(".{x\n\r", ch);
-
+                    
                 break;
-
-            case APPLY_CON:
+                
+            case APPLY_CON: 
                 ch->pcdata->perm_con += 1;
                 send_to_char("{WYou feel fitter", ch);
-
-                if (!check_stat_advance(ch, APPLY_CON))
+                
+                if (!check_stat_advance(ch, APPLY_CON)) 
                         send_to_char("; your constitution is at maximum", ch);
-
+                    
                 send_to_char(".{x\n\r", ch);
-
+                
                 break;
         }
 }
 
 
-void advance_base (CHAR_DATA *ch)
+void advance_base (CHAR_DATA *ch) 
 {
-        if (ch->sub_class)
+        if (ch->sub_class) 
                 ch->pcdata->learned[gsn_ranger_base + ch->sub_class]++;
         else
                 ch->pcdata->learned[gsn_mage_base + ch->class]++;
@@ -220,10 +220,10 @@ void advance_level( CHAR_DATA *ch )
 
         add_hp = con_app[get_curr_con( ch )].hitp
                 + number_range(class_table[ch->class].hp_min, class_table[ch->class].hp_max );
-
+        
         add_mana = number_range(1, 10) + ((2 * get_curr_int(ch) + get_curr_wis(ch)) / 3);
-
-        if (!class_table[ch->class].fMana && !sub_class_table[ch->sub_class].bMana)
+        
+        if (!class_table[ch->class].fMana && !sub_class_table[ch->sub_class].bMana) 
                 add_mana /= 3;
 
         add_move = number_range(5, (get_curr_con(ch) + get_curr_dex(ch)) /4);
@@ -231,7 +231,7 @@ void advance_level( CHAR_DATA *ch )
         /* add pracs - physical = str/dex/wis avg andbonus if prime >= 27 */
         /*           - intellect = pure int/ (wis * 2)                    */
 
-        tmp = ((double)get_curr_wis(ch) + (double)get_curr_str(ch)
+        tmp = ((double)get_curr_wis(ch) + (double)get_curr_str(ch) 
                + (double)get_curr_dex(ch)) / 3;
 
         add_phys_prac = 1;
@@ -240,42 +240,42 @@ void advance_level( CHAR_DATA *ch )
         if (tmp > 25) { add_phys_prac++; }
 
         tmp = (2 * (double)get_curr_wis(ch) + (double)get_curr_int(ch)) / 3;
-
+        
         add_int_prac = 1;
         if (class_table[ch->class].fMana) { add_int_prac++; }
         if (ch->sub_class == SUB_CLASS_MONK || ch->sub_class == SUB_CLASS_BARD) { add_int_prac++; }
         if (tmp > 15) { add_int_prac++; }
         if (tmp > 20) { add_int_prac++; }
         if (tmp > 25) { add_int_prac++; }
-
-        switch ((ch->sub_class == 0)
+        
+        switch ((ch->sub_class == 0) 
                 ? class_table[ch->class].attr_prime :
-                sub_class_table[ch->sub_class].attr_bonus )
+                sub_class_table[ch->sub_class].attr_bonus ) 
         {
-            case APPLY_STR:
-                if (get_curr_str(ch) > 26)
+            case APPLY_STR: 
+                if (get_curr_str(ch) > 26) 
                         add_phys_prac++;
-                break;
-
-            case APPLY_INT:
-                if (get_curr_int(ch) > 26)
+                break; 
+            
+            case APPLY_INT: 
+                if (get_curr_int(ch) > 26) 
                         add_int_prac++;
-                break;
-
-            case APPLY_WIS:
-                if (get_curr_wis(ch) > 26)
-                        add_int_prac++;
-                break;
-
-            case APPLY_DEX:
-                if (get_curr_dex(ch) > 26)
+                break; 
+                
+            case APPLY_WIS: 
+                if (get_curr_wis(ch) > 26) 
+                        add_int_prac++; 
+                break; 
+                
+            case APPLY_DEX: 
+                if (get_curr_dex(ch) > 26) 
                         add_phys_prac++;
-                break;
-
+                break; 
+                
             case APPLY_CON:
-                if (get_curr_con(ch) > 26)
+                if (get_curr_con(ch) > 26) 
                         add_phys_prac++;
-                break;
+                break; 
         }
 
         sprintf(buf, "PC levels: %s.  Level: %d.  Stats: %d %d %d %d %d.  Pracs: %d Phys, %d Int.",
@@ -289,27 +289,27 @@ void advance_level( CHAR_DATA *ch )
                 add_phys_prac,
                 add_int_prac);
         log_string(buf);
-
+        
         add_int_prac = UMIN (5, add_int_prac);
 
         add_hp               = UMAX(  1, add_hp   );
         add_mana             = UMAX(  1, add_mana );
         add_move             = UMAX( 10, add_move );
         add_rage             = number_range( 1, 3);
-
+        
         ch->max_hit          += add_hp;
         ch->max_mana         += add_mana;
         ch->max_move         += add_move;
-
+        
         if ( ch->sub_class == SUB_CLASS_VAMPIRE )
                 ch->max_rage         += add_rage;
-
+        
         ch->pcdata->level_xp_loss = 0;
 
         ch->max_hit += ch->pcdata->str_prac;
         ch->max_mana += ch->pcdata->int_prac;
 
-        if (!IS_NPC(ch))
+        if (!IS_NPC(ch)) 
                 REMOVE_BIT(ch->act, PLR_BOUGHT_PET);
 
         sprintf (buf, "You gain {G%d hits{x, {C%d mana{x and {Y%d moves{x.\n\r"
@@ -319,18 +319,18 @@ void advance_level( CHAR_DATA *ch )
                  add_move,
                  add_phys_prac,
                  add_int_prac);
-
+        
         send_to_char( buf, ch );
-
+        
         ch->pcdata->str_prac = add_phys_prac;
         ch->pcdata->int_prac = add_int_prac;
 
         for (i = 0; i < DEITY_NUMBER_TYPES; i++)
                 SET_DEITY_TYPE_TIMER(ch, i, UMIN(-240, 0 - (ch->pcdata->deity_type_timer[i] / 2)));
-
+        
         for (i = 0; i < DEITY_NUMBER_PERSONALITIES; i++)
                 SET_DEITY_PERSONALITY_TIMER(ch, i, UMIN(-120, 0 - (ch->pcdata->deity_personality_timer[i] / 2)));
-}
+}   
 
 
 void gain_exp( CHAR_DATA *ch, int gain )
@@ -343,20 +343,20 @@ void gain_exp( CHAR_DATA *ch, int gain )
                 send_to_char("The experience you gain is irrelevant.\n\r", ch);
                 return;
         }
-
+        
         /* This is the new quest points required for level - Shade Sept 99 */
         /* Its this hacky on purpose because we don't want the player to */
         /* get the xp until we've checked they can advance! */
-
+        
         tmp = ch->exp + gain;
         if (tmp > (level_table[ch->level].exp_total))
         {
-                if (!check_questpoints_allow_level_gain(ch, TRUE))
+                if (!check_questpoints_allow_level_gain(ch, TRUE)) 
                 {
                         ch->exp = level_table[ch->level].exp_total - 1;
                         return;
                 }
-
+                
                 if(ch->pcdata->fame < 0)
                 {
                         ch->exp = level_table[ch->level].exp_total - 1;
@@ -367,21 +367,21 @@ void gain_exp( CHAR_DATA *ch, int gain )
 
         /*
          *  ch->exp = UMAX( 1000, ch->exp + gain );
-         *
+         * 
          *  Don't want people slipping back into previous level's exp range
          *  through fleeing, etc; Gezhp
          */
-
+        
         ch->exp = UMAX ((ch->level < 2) ? 1000 : level_table[ch->level-1].exp_total,
                         ch->exp + gain);
-
-        while ( ch->level < LEVEL_HERO && ch->exp >= (level_table[ch->level].exp_total))
+        
+        while ( ch->level < LEVEL_HERO && ch->exp >= (level_table[ch->level].exp_total)) 
         {
                 send_to_char( "\n\rYou raise a level!!  ",ch );
                 ch->level += 1;
                 advance_level(ch);
 
-                if (ch->level == LEVEL_HERO)
+                if (ch->level == LEVEL_HERO) 
                 {
                         sprintf(buf, "-=>>  A time of celebration arrives as %s reaches the ultimate level of Hero!  <<=-",ch->name);
                         do_info(ch,buf);
@@ -390,9 +390,9 @@ void gain_exp( CHAR_DATA *ch, int gain )
                         ch->pcdata->condition[COND_FULL] = 0;
                         ch->pcdata->condition[COND_THIRST] = 0;
                         ch->pcdata->condition[COND_DRUNK] = 0;
-                        add_hero(ch);
-                }
-                else
+                        add_hero(ch);   
+                } 
+                else 
                 {
                         sprintf(buf,"-=>>%s has made it to level %d<<=-\n\r",ch->name,ch->level);
                         do_info(ch,buf);
@@ -408,7 +408,7 @@ int hit_gain( CHAR_DATA *ch )
         int gain;
         int amt;
         int count;
-
+        
         if (IS_NPC(ch))
         {
                 gain = ch->level * 3 / 2;
@@ -419,22 +419,22 @@ int hit_gain( CHAR_DATA *ch )
 
                 return UMIN( gain, ch->max_hit - ch->hit );
         }
-
+        
         gain = UMAX(5, ch->level / 2);
-
+        
         switch (ch->position)
         {
-            case POS_SLEEPING:
+            case POS_SLEEPING: 
                 gain += 2 * get_curr_con(ch);
                 break;
-
-            case POS_RESTING:
+                
+            case POS_RESTING:  
                 gain += get_curr_con(ch) ;
                 break;
         }
 
         gain += gain * ch->pcdata->learned[gsn_fast_healing] / 100;
-
+            
         if (ch->form == FORM_DEMON)
                 gain += gain * ch->pcdata->learned[gsn_form_demon] / 100;
 
@@ -442,11 +442,11 @@ int hit_gain( CHAR_DATA *ch )
         {
                 if (!ch->pcdata->condition[COND_FULL])
                         gain /= 2;
-
+                
                 if (!ch->pcdata->condition[COND_THIRST])
                         gain /= 2;
         }
-
+                
         if (IS_AFFECTED(ch, AFF_MEDITATE))
                 gain += get_curr_int(ch);
 
@@ -458,7 +458,7 @@ int hit_gain( CHAR_DATA *ch )
                 gain -= gain/3;
 
         gain += (gain * race_table[ch->race].hp_regen/100);
-
+        
         if ( IS_SET(ch->in_room->room_flags, ROOM_HEALING) )
                 gain *= 2;
 
@@ -466,33 +466,33 @@ int hit_gain( CHAR_DATA *ch )
         {
                 count = 1;
 
-                for (obj = ch->in_room->contents; obj; obj = obj->next_content)
+                for (obj = ch->in_room->contents; obj; obj = obj->next_content)        
                         if (obj->item_type == ITEM_CLAN_OBJECT )
                                 count++;
 
                 gain *= count;
         }
-
+        
         if (ch->sub_class == SUB_CLASS_VAMPIRE
             && IS_OUTSIDE(ch)
             && !IS_SET(ch->in_room->room_flags, ROOM_DARK)
             && ch->in_room->sector_type != SECT_UNDERWATER
-            && weather_info.sky < SKY_RAINING
+            && weather_info.sky < SKY_RAINING  
             && (time_info.hour >= 6 && time_info.hour <= 18)
-            && !is_affected(ch, gsn_mist_walk))
+            && !is_affected(ch, gsn_mist_walk)) 
         {
                 send_to_char("Your skin burns as the {Ysunlight{x hits it!\n\r", ch);
                 act("$n's skin starts to burn!", ch, NULL, NULL, TO_ROOM);
                 gain = - number_range( 30, 60);
-
+                
                 if (ch->hit + gain <= 0)
                         gain = ch->hit -1;
         }
-
+        
         /*
          *  Burning and freezing rooms; Gez 2000
          */
-
+        
         if (!IS_NPC(ch)
             && ch->level <= LEVEL_HERO
             && !IS_AFFECTED(ch, AFF_NON_CORPOREAL))
@@ -504,7 +504,7 @@ int hit_gain( CHAR_DATA *ch )
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
                 }
-
+                
                 if (IS_SET(ch->in_room->room_flags, ROOM_FREEZING)
                     && !is_affected(ch, gsn_resist_cold))
                 {
@@ -513,13 +513,13 @@ int hit_gain( CHAR_DATA *ch )
                         return 0;
                 }
         }
-
+        
         if (is_affected(ch, gsn_song_of_rejuvenation))
         {
                 amt = (ch->pcdata->learned[gsn_song_of_rejuvenation]) * ch->level / 100;
                 gain += amt;
                 send_to_char("{YYour song fills you with warmth; you feel rejuvenated.\n\r{x", ch);
-
+                
                 for (gch = char_list;gch;gch=gch->next)
                 {
                         if (gch->deleted)
@@ -527,7 +527,7 @@ int hit_gain( CHAR_DATA *ch )
 
                         if (ch == gch)
                                 continue;
-
+                        
                         if ((is_same_group(gch, ch)) && (ch->in_room == gch->in_room))
                         {
                                 if (gch->hit < gch->max_hit)
@@ -542,7 +542,7 @@ int hit_gain( CHAR_DATA *ch )
                 }
         }
 
-        if (ch->hit > ch->max_hit)
+        if (ch->hit > ch->max_hit) 
         {
                 if (gain >= 0)
                         return 0;
@@ -561,22 +561,22 @@ int mana_gain( CHAR_DATA *ch )
         OBJ_DATA *obj;
         int gain;
         int amt;
-        int count;
+        int count;   
 
         if (IS_NPC(ch))
         {
                 gain = ch->level * 3 / 2;
                 return UMIN( gain, ch->max_mana - ch->mana );
         }
-
+                
         gain = UMAX(5, ch->level);
-
+        
         switch (ch->position)
         {
             case POS_SLEEPING:
                 gain += get_curr_int(ch) * 2;
                 break;
-
+                
             case POS_RESTING:
                 gain += get_curr_int(ch);
                 break;
@@ -586,26 +586,26 @@ int mana_gain( CHAR_DATA *ch )
         {
                 if (!ch->pcdata->condition[COND_FULL])
                         gain /= 2;
-
+                
                 if (!ch->pcdata->condition[COND_THIRST])
                         gain /= 2;
         }
-
+        
         if (IS_AFFECTED(ch, AFF_MEDITATE))
                 gain *= 2;
-
+        
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
-
+        
         gain += gain * race_table[ch->race].mana_regen / 100;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_HEALING))
                 gain *= 2;
-
+        
         if (ch->in_room->vnum == clan_table[ch->clan].heal_room)
         {
                 count = 1;
-
+                
                 for (obj = ch->in_room->contents; obj; obj = obj->next_content)
                         if (obj->item_type == ITEM_CLAN_OBJECT )
                                 count++;
@@ -617,15 +617,15 @@ int mana_gain( CHAR_DATA *ch )
         {
                 amt = ch->pcdata->learned[gsn_song_of_rejuvenation] * ch->level;
                 gain += amt;
-
+                
                 for (gch = char_list; gch; gch = gch->next)
                 {
                         if (gch->deleted)
                                 continue;
-
+                        
                         if (ch == gch)
                                 continue;
-
+                        
                         if (is_same_group(gch, ch) && ch->in_room == gch->in_room)
                         {
                                 if (gch->mana < gch->max_mana)
@@ -637,10 +637,10 @@ int mana_gain( CHAR_DATA *ch )
                         }
                 }
         }
-
+        
         if (ch->mana > ch->max_mana)
                 return 0;
-
+        
         return UMIN(gain, ch->max_mana - ch->mana);
 }
 
@@ -648,23 +648,23 @@ int mana_gain( CHAR_DATA *ch )
 int move_gain( CHAR_DATA *ch )
 {
         int gain;
-        int count;
+        int count;   
         OBJ_DATA *obj;
-
+        
         if (IS_NPC(ch))
         {
                 gain = ch->level;
                 return UMIN( gain, ch->max_move - ch->move );
         }
-
+                
         gain = UMAX(15, 2 * ch->level);
-
+        
         switch (ch->position)
         {
             case POS_SLEEPING:
                 gain += get_curr_dex(ch);
                 break;
-
+                
             case POS_RESTING:
                 gain += get_curr_dex(ch) / 2;
                 break;
@@ -674,30 +674,30 @@ int move_gain( CHAR_DATA *ch )
         {
                 if (!ch->pcdata->condition[COND_FULL])
                         gain /= 2;
-
+                
                 if (!ch->pcdata->condition[COND_THIRST])
                         gain /= 2;
         }
-
+        
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
-
+        
         gain += gain * race_table[ch->race].move_regen / 100;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_HEALING))
                 gain *= 2;
-
+        
         if (ch->in_room->vnum == clan_table[ch->clan].heal_room)
         {
                 count = 1;
-
+                
                 for (obj = ch->in_room->contents; obj; obj = obj->next_content)
                         if (obj->item_type == ITEM_CLAN_OBJECT)
                                 count++;
-
+                
                 gain = gain * count;
         }
-
+        
         return UMIN(gain, ch->max_move - ch->move);
 }
 
@@ -708,55 +708,55 @@ int move_gain( CHAR_DATA *ch )
 int rage_gain( CHAR_DATA *ch )
 {
         int gain = -2;
-
-        if (IS_NPC(ch)
+        
+        if (IS_NPC(ch) 
             || !(ch->sub_class == SUB_CLASS_VAMPIRE || ch->sub_class == SUB_CLASS_WEREWOLF)
             || IS_AFFECTED(ch, AFF_NON_CORPOREAL))
-                return 0;
-
+                return 0; 
+        
         if (ch->sub_class == SUB_CLASS_VAMPIRE)
         {
                 if (ch->rage < ch->max_rage / 10)
                         send_to_char( "You feel weak - You crave for {Rblood!{x\n\r", ch);
-
+                
                 if (!ch->pcdata->condition[COND_THIRST] && ch->level < LEVEL_HERO)
                         gain *= 2;
-
+                
                 if (ch->position == POS_SLEEPING)
                         gain /= 2;
-
+                
                 return UMAX(gain, -ch->rage);
         }
-
+        
         /* else werewolf */
-
+        
         if (ch->rage > 90)
                 send_to_char("You feel enraged - you must {Rkill!{x\n\r", ch);
 
         if (ch->form == FORM_WOLF || ch->form == FORM_DIREWOLF)
-                return UMIN(2, ch->max_rage - ch->rage);
+                return UMIN(2, ch->max_rage - ch->rage);  
         else if (ch->rage > 0)
                 return -1;
         else
                 return 0;
 }
-
+ 
 
 void gain_condition( CHAR_DATA *ch, int iCond, int value )
 {
         int condition;
         int gain;
-
+        
         if (IS_NPC(ch)
             || value == -10
-            || ch->level >= LEVEL_HERO
+            || ch->level >= LEVEL_HERO 
             || ch->level < 2
             || ch->sub_class == SUB_CLASS_VAMPIRE)
                 return;
-
+        
         condition = ch->pcdata->condition[iCond];
         ch->pcdata->condition[iCond] = URANGE(-10, condition + value, 48);
-
+        
         if (ch->pcdata->condition[iCond] <= -8)
         {
                 switch (iCond)
@@ -764,18 +764,18 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                     case COND_FULL:
                         send_to_char("You're dying of hunger!\n\r", ch);
                         gain = - number_range(2, 5) * ch->level;
-
+                        
                         if (ch->hit + gain <= 0)
                                 gain = 0;
-
+                        
                         ch->hit += gain;
                         update_pos(ch);
                         break;
-
+                        
                     case COND_THIRST:
                         send_to_char( "You're dying of thirst!\n\r", ch);
                         gain = - number_range( 15, 30);
-
+                        
                         if ( ch->hit + gain <= 0)
                                 gain = 0;
 
@@ -793,28 +793,28 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                     case COND_FULL:
                         send_to_char("You begin to feel weak due to lack of food.\n\r", ch);
                         gain = - number_range(5, 10);
-
+                        
                         if (ch->hit + gain <= 0)
                                 gain = 0;
-
+                        
                         ch->hit += gain;
                         update_pos(ch);
                         break;
-
+                        
                     case COND_THIRST:
                         send_to_char("Your parched throat cries out for liquid.\n\r", ch);
                         gain = - number_range(1, 2) * ch->level;
-
+                        
                         if (ch->hit + gain <= 0)
                                 gain = 0;
-
+                        
                         ch->hit += gain;
                         update_pos(ch);
                         break;
                 }
                 return;
         }
-
+        
         if (!ch->pcdata->condition[iCond])
         {
                 switch (iCond)
@@ -822,11 +822,11 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                     case COND_FULL:
                         send_to_char("You are hungry.\n\r", ch);
                         break;
-
+                        
                     case COND_THIRST:
                         send_to_char("You are thirsty.\n\r", ch);
                         break;
-                }
+                }   
         }
 }
 
@@ -842,12 +842,12 @@ void mobile_update( void )
         CHAR_DATA *ch;
         EXIT_DATA *pexit;
         int door;
-
+        
         for (ch = char_list; ch; ch = ch->next)
         {
                 if (ch->deleted)
                         continue;
-
+                
                 if (!IS_NPC(ch)
                     || !ch->in_room
                     || ch->mount
@@ -858,7 +858,7 @@ void mobile_update( void )
                 /*
                  * Some summoned mobs should disappear when their master is absent.
                  * Also take care of tournament Bots.
-                 * Gezhp
+                 * Gezhp  
                  */
                 if (IS_NPC(ch))
                 {
@@ -871,7 +871,7 @@ void mobile_update( void )
                                 extract_char (ch, TRUE);
                                 continue;
                         }
-
+                        
                         if (ch->pIndexData->vnum == BOT_VNUM)
                         {
                                 if (tournament_status == TOURNAMENT_STATUS_NONE
@@ -884,7 +884,7 @@ void mobile_update( void )
                                                 disqualify_tournament_entrant(ch, "left the Arena");
                                                 check_for_tournament_winner();
                                         }
-
+                                                                                
                                         sprintf(buf, "[Bot] destroying bot '%s' (location %d)",
                                                 ch->short_descr,
                                                 ch->in_room->vnum);
@@ -892,30 +892,30 @@ void mobile_update( void )
 
                                         act("$c shimmers and disappears from view.",
                                             ch, NULL, NULL, TO_ROOM);
-
+                                        
                                         extract_char(ch, TRUE);
                                 }
-
+                                
                                 else if (ch->spec_fun)
                                         (*ch->spec_fun)(ch);
-
-                                continue;
+                                
+                                continue;               
                         }
                 }
-
+                
                 /* Return after special function returns success */
                 if (ch->spec_fun && (*ch->spec_fun)(ch))
                         continue;
-
+                
                 if (ch->in_room->area->nplayer > 0)
                         mprog_random_trigger(ch);
 
                 if (ch->position < POS_STANDING)
                         continue;
-
+                
                 if (ch->rider && ch->in_room != ch->rider->in_room)
                         strip_mount(ch->rider);
-
+                
                 if (IS_SET(ch->act, ACT_SCAVENGER)
                     && ch->in_room->contents
                     && !number_bits(2))
@@ -923,7 +923,7 @@ void mobile_update( void )
                         OBJ_DATA *obj;
                         OBJ_DATA *obj_best = NULL;
                         int max = 1;
-
+                        
                         for (obj = ch->in_room->contents; obj; obj = obj->next_content)
                         {
                                 if (IS_SET(obj->wear_flags, ITEM_TAKE)
@@ -943,7 +943,7 @@ void mobile_update( void )
                                         max = obj->cost;
                                 }
                         }
-
+                        
                         if (obj_best)
                         {
                                 obj_from_room(obj_best);
@@ -966,13 +966,13 @@ void mobile_update( void )
                         || pexit->to_room->area == ch->in_room->area))
                 {
                         move_char(ch, door);
-
+                        
                         if (ch->position < POS_STANDING)
-                                continue;
+                                continue;       
                 }
-
+                
                 /*
-                 * Flee
+                 * Flee 
                  */
                 if (ch->hit < (ch->max_hit / 2)
                     && !IS_SET(ch->act, ACT_SENTINEL)
@@ -991,41 +991,41 @@ void mobile_update( void )
 /*
  * Update the weather.
  */
-void day_weather_update()
+void day_weather_update() 
 {
         DESCRIPTOR_DATA *d;
         char buf [MAX_STRING_LENGTH];
-
+        
         switch (time_info.day)
         {
             case 8:
                 weather_info.moonlight = MOON_WAXING;
                 strcpy( buf, "The {Wmoon{x enters its waxing period.\n\r" );
                 break;
-
+                
             case  17:
                 weather_info.moonlight = MOON_FULL;
                 strcpy( buf, "There is a {Wfull moon{x in the sky.\n\r" );
                 break;
-
+                
             case 26:
                 weather_info.moonlight = MOON_WANING;
                 strcpy( buf, "The {Wmoon{x enters its waning quarter.\n\r" );
                 break;
-
-            case 35:
+                
+            case 35: 
                 weather_info.moonlight = MOON_NONE;
                 strcpy( buf, "The {Wmoon{x enters its dim quarter.\n\r" );
                 time_info.day = 0;
                 time_info.month++;
-
+                
                 if ( time_info.month >= 17 )
                 {
                         time_info.month = 0;
                         time_info.year++;
                 }
                 break;
-
+                
             default:
                 return;
         }
@@ -1045,7 +1045,7 @@ void weather_update ()
         DESCRIPTOR_DATA *d;
         char buf [MAX_STRING_LENGTH];
         int diff;
-
+        
         buf[0] = '\0';
 
         switch (++time_info.hour)
@@ -1054,17 +1054,17 @@ void weather_update ()
                 weather_info.sunlight = SUN_LIGHT;
                 strcat( buf, "{MThe day has begun.{x\n\r" );
                 break;
-
+                
             case  6:
                 weather_info.sunlight = SUN_RISE;
                 strcat( buf, "The {Ysun{x rises in the east.\n\r" );
                 break;
-
+                
             case 19:
                 weather_info.sunlight = SUN_SET;
                 strcat( buf, "The {Ysun{x slowly disappears in the west.\n\r" );
                 break;
-
+                
             case 20:
                 weather_info.sunlight = SUN_DARK;
                 strcat( buf, "{BThe night has begun.{x\n\r" );
@@ -1076,7 +1076,7 @@ void weather_update ()
                 day_weather_update();
                 break;
         }
-
+        
         /*
          * Weather change.
          */
@@ -1084,20 +1084,20 @@ void weather_update ()
                 diff = weather_info.mmhg >  985 ? -2 : 2;
         else
                 diff = weather_info.mmhg > 1015 ? -2 : 2;
-
+        
         weather_info.change += diff * dice(1, 4) + dice(2, 6) - dice(2, 6);
         weather_info.change = URANGE(-12, weather_info.change,  12 );
-
+        
         weather_info.mmhg += weather_info.change;
         weather_info.mmhg = URANGE(960, weather_info.mmhg, 1040 );
-
+        
         switch (weather_info.sky)
         {
-            default:
+            default: 
                 bug( "Weather_update: bad sky %d.", weather_info.sky );
                 weather_info.sky = SKY_CLOUDLESS;
                 break;
-
+                
             case SKY_CLOUDLESS:
                 if (weather_info.mmhg < 990
                     || (weather_info.mmhg < 1010 && !number_bits(2)))
@@ -1106,7 +1106,7 @@ void weather_update ()
                         weather_info.sky = SKY_CLOUDY;
                 }
                 break;
-
+                
             case SKY_CLOUDY:
                 if (weather_info.mmhg < 970
                     || ( weather_info.mmhg < 990 && !number_bits(2)))
@@ -1114,21 +1114,21 @@ void weather_update ()
                         strcat( buf, "{BIt starts to rain.{x\n\r" );
                         weather_info.sky = SKY_RAINING;
                 }
-
+                
                 if (weather_info.mmhg > 1030 && !number_bits(2))
                 {
                         strcat( buf, "{CThe clouds disappear.{x\n\r" );
                         weather_info.sky = SKY_CLOUDLESS;
                 }
                 break;
-
+                
             case SKY_RAINING:
                 if (weather_info.mmhg < 970 && !number_bits(2))
                 {
                         strcat( buf, "{WLightning flashes in the sky.{x\n\r" );
                         weather_info.sky = SKY_LIGHTNING;
                 }
-
+                
                 if (weather_info.mmhg > 1030
                     || (weather_info.mmhg > 1010 && !number_bits(2)))
                 {
@@ -1136,7 +1136,7 @@ void weather_update ()
                         weather_info.sky = SKY_CLOUDY;
                 }
                 break;
-
+                
             case SKY_LIGHTNING:
                 if (weather_info.mmhg > 1010
                     || (weather_info.mmhg > 990 && !number_bits(2)))
@@ -1146,7 +1146,7 @@ void weather_update ()
                 }
                 break;
         }
-
+                
         for (d = descriptor_list; d; d = d->next)
         {
                 if (buf[0] != '\0'
@@ -1154,7 +1154,7 @@ void weather_update ()
                     && IS_OUTSIDE(d->character)
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
-
+                        
                 if (time_info.hour == 20
                     && d->character
                     && d->character->sub_class == SUB_CLASS_WEREWOLF
@@ -1162,13 +1162,13 @@ void weather_update ()
                 {
                         if (d->character->position != POS_FIGHTING)
                                 d->character->position = POS_STANDING;
-
-                        send_to_char("{WThe full moon brings you glorious lust for blood!{x\n\r",
+                        
+                        send_to_char("{WThe full moon brings you glorious lust for blood!{x\n\r", 
                                      d->character);
-
+                        
                         if (d->character->form != FORM_WOLF && d->character->form != FORM_DIREWOLF)
                                 do_morph(d->character, "wolf");
-
+                        
                         act("$n bays at the {Wmoon{x!", d->character, NULL, NULL, TO_ROOM);
                 }
 
@@ -1230,7 +1230,7 @@ void char_update( void )
                 if (ch->position >= POS_STUNNED)
                 {
                         ch->hit  += hit_gain(ch);
-
+                        
                         if (ch->aggro_dam > 0)
                                 ch->aggro_dam -= UMIN(ch->level/8, ch->aggro_dam);
 
@@ -1268,13 +1268,13 @@ void char_update( void )
                                 if (!ch->was_in_room && ch->in_room)
                                 {
                                         ch->was_in_room = ch->in_room;
-
+                                        
                                         if (ch->fighting)
                                                 stop_fighting(ch, TRUE);
-
+                                        
                                         send_to_char("You disappear into the void.\n\r", ch);
                                         act("$n disappears into the void.", ch, NULL, NULL, TO_ROOM);
-
+                                        
                                         save_char_obj(ch);
                                         char_from_room(ch);
                                         char_to_room(ch, get_room_index(ROOM_VNUM_LIMBO));
@@ -1311,7 +1311,7 @@ void char_update( void )
 
                         if (paf->duration < 0)
                                 continue;
-
+                        
                         if (paf->duration > 0)
                                 paf->duration--;
                         else
@@ -1351,7 +1351,7 @@ void char_update( void )
                                 send_to_char("You shiver and suffer.\n\r", ch);
                                 act("$n shivers and suffers.", ch, NULL, NULL, TO_ROOM);
                                 damage(ch, ch, number_range(2, 4), gsn_poison, FALSE);
-
+                                
                                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
                         }
@@ -1390,10 +1390,10 @@ void char_update( void )
                 {
                         if (ch->deleted)
                                 continue;
-
+                        
                         if (ch == ch_save)
                                 save_char_obj(ch);
-
+                        
                         if (ch == ch_quit)
                                 do_quit(ch, "");
                 }
@@ -1408,7 +1408,7 @@ void char_update( void )
  * This function is performance sensitive.
  */
 void obj_update()
-{
+{   
         OBJ_DATA *obj;
         OBJ_DATA *obj_next;
         CHAR_DATA *rch;
@@ -1417,50 +1417,49 @@ void obj_update()
         for (obj = object_list; obj; obj = obj_next)
         {
                 obj_next = obj->next;
-
+                
                 if (obj->deleted)
                         continue;
-
+                
                 if (obj->timer < -1)
                         obj->timer = -1;
-
+                
                 if (--obj->timer == 0)
                 {
                         switch (obj->item_type)
                         {
                             default:
-                                message = "$p vanishes.";
+                                message = "$p vanishes.";         
                                 break;
-
+                                
                             case ITEM_FOUNTAIN:
                                 message = "$p dries up.";
                                 break;
-
+                                
                             case ITEM_PORTAL:
-                                message = "$p shimmers out of existance.";
+                                message = "$p shimmers out of existence.";
                                 break;
-
-                            case ITEM_CORPSE_NPC:
-                            case ITEM_CORPSE_PC:
+                           case ITEM_CORPSE_NPC:
+                           case ITEM_CORPSE_PC:
                                 message = "$p decays into dust.";
                                 break;
-
-                            case ITEM_FOOD:
-                                message = "$p decomposes.";
+                                
+                            case ITEM_FOOD: 
+                                message = "$p decomposes.";      
                                 break;
                         }
-
+    
                         if (obj->carried_by)
                                 act(message, obj->carried_by, obj, NULL, TO_CHAR);
-
+                        
                         else if (obj->in_room && (rch = obj->in_room->people))
                         {
                                 act(message, rch, obj, NULL, TO_ROOM);
                                 act(message, rch, obj, NULL, TO_CHAR);
                         }
-
+    
                         extract_obj(obj);
-
+                        
                         if (obj == object_list)
                         {
                                 obj_next = object_list;
@@ -1468,16 +1467,16 @@ void obj_update()
                         else
                         {
                                 OBJ_DATA *previous;
-
+                                
                                 for (previous = object_list; previous; previous = previous->next)
                                         if (previous->next == obj)
                                                 break;
-
+                                
                                 obj_next = previous->next;
                         }
                 }
-
-                if (obj->timer == 20 && obj->carried_by)
+                
+                if (obj->timer == 20 && obj->carried_by) 
                 {
                         if (obj->item_type == ITEM_WEAPON
                             && IS_OBJ_STAT(obj, ITEM_POISONED))
@@ -1492,7 +1491,7 @@ void obj_update()
                                 act("$p's blade is beginning to deteriorate.",
                                     obj->carried_by, obj, NULL, TO_CHAR);
                         }
-
+                        
                         else if (obj->item_type == ITEM_ARMOR
                                  && IS_OBJ_STAT(obj, ITEM_FORGED))
                         {
@@ -1524,10 +1523,10 @@ void aggr_update()
         for (d = descriptor_list; d; d = d->next)
         {
                 ch = d->character;
-
+                
                 if (d->connected != CON_PLAYING || !ch->in_room)
                         continue;
-
+                
                 /*
                  * Bloodlust ego items might cause players to attack any NPC
                  * target; check once per 20 pulses (5 secs); Gezhp 2001
@@ -1542,7 +1541,7 @@ void aggr_update()
                     && (ch->level > LEVEL_HERO || !ch->wait))
                 {
                         bloodlust_count = 0;
-
+                        
                         for (mch = ch->in_room->people; mch; mch = mch->next_in_room)
                         {
                                 if (IS_NPC(mch)
@@ -1559,21 +1558,21 @@ void aggr_update()
                                 }
                         }
                 }
-
+                
                 for (mch = ch->in_room->people; mch; mch = mch->next_in_room)
                 {
                         int count;
-
+                        
                         /*
-                         * MOBProgs ACT_PROG trigger.  Walker.
+                         * MOBProgs ACT_PROG trigger.  Walker. 
                          * Modified to free the mpact list w/o regard to nplayer.  Walker
-                         *
+                         
                         if (IS_NPC(mch) && mch->mpactnum > 0)
                         {
                                 MPROG_ACT_LIST * tmp_act, *tmp2_act;
 
-                                if (mch->in_room->area->nplayer > 0)
-                                {
+                                if (mch->in_room->area->nplayer > 0) 
+                                { 
                                         for (tmp_act = mch->mpact; tmp_act; tmp_act = tmp_act->next)
                                         {
                                                 mprog_wordlist_check(tmp_act->buf, mch, tmp_act->ch,
@@ -1581,7 +1580,7 @@ void aggr_update()
                                                 free_string(tmp_act->buf);
                                         }
                                 }
-
+                                
                                 for (tmp_act = mch->mpact; tmp_act; tmp_act = tmp2_act)
                                 {
                                         tmp2_act = tmp_act->next;
@@ -1590,11 +1589,10 @@ void aggr_update()
                                 mch->mpactnum = 0;
                                 mch->mpact    = NULL;
                         }
-                         */
-
+                        */
                         if (!IS_NPC(mch)
                             || !IS_SET(mch->act, ACT_AGGRESSIVE)
-                            || !can_see(mch, ch)
+                            || !can_see(mch, ch) 
                             || !IS_AWAKE(mch)
                             || mch->fighting
                             || (IS_AFFECTED(ch, AFF_DETER) && !IS_SET(mch->act, ACT_CLAN_GUARD))
@@ -1607,7 +1605,7 @@ void aggr_update()
                             || ch->level > LEVEL_HERO
                             || mch->rider
                             || mch->deleted
-                            || (ch->level > mch->level + 10))
+                            || (ch->level > mch->level + 10)) 
                                 continue;
 
                         /* If in a clan headquarters, don't attack anyone */
@@ -1620,23 +1618,23 @@ void aggr_update()
                          * Now make the aggressor fight a RANDOM pc victim in the room,
                          * giving each 'vch' an equal chance of selection.
                          */
-
+                        
                         count  = 0;
                         victim = NULL;
-
+                        
                         for (vch = mch->in_room->people; vch; vch = vch->next_in_room)
                         {
                                 if (IS_NPC(vch)
                                     || vch->deleted
                                     || vch->level >= LEVEL_IMMORTAL)
                                         continue;
-
+                        
                                 if ((!IS_SET(mch->act, ACT_WIMPY) || !IS_AWAKE(vch))
                                     && can_see(mch, vch))
                                 {
                                         if (!number_range(0, count))
                                         {
-                                                if (vch->pcdata->group_leader
+                                                if (vch->pcdata->group_leader 
                                                     && can_see(mch, vch->pcdata->group_leader)
                                                     && vch->pcdata->group_leader->in_room == mch->in_room)
                                                 {
@@ -1648,7 +1646,7 @@ void aggr_update()
                                         count++;
                                 }
                         }
-
+                        
                         if (!victim)
                                 continue;
 
@@ -1664,10 +1662,10 @@ void time_update()
         FILE *fp;
         char *curr_time;
         char buf [ MAX_STRING_LENGTH ];
-
+    
         if (down_time[0] == '*')
                 return;
-
+        
         curr_time = ctime(&current_time);
         if (!str_infix(warning1, curr_time))
         {
@@ -1676,7 +1674,7 @@ void time_update()
                 free_string(warning1);
                 warning1 = str_dup("*");
         }
-
+        
         if (!str_infix(warning2, curr_time))
         {
                 sprintf(buf, "Second Warning!\n\rShutdown at %s system time\n\r", down_time);
@@ -1684,14 +1682,14 @@ void time_update()
                 free_string(warning2);
                 warning2 = str_dup("*");
         }
-
+        
         if (!str_infix(down_time, curr_time))
         {
                 send_to_all_char("Shutdown by system.\n\r");
                 log_string("Shutdown by system.");
                 end_of_game();
                 fclose(fpReserve);
-
+                
                 if (!(fp = fopen(SHUTDOWN_FILE, "a")))
                 {
                         perror(SHUTDOWN_FILE);
@@ -1729,21 +1727,21 @@ void list_update ()
         extern bool delete_obj;
         extern bool delete_char;
         char buf [MAX_STRING_LENGTH];
-
+        
         sprintf (last_function, "entering list_update");
-
-        if (delete_char)
+        
+        if (delete_char) 
         {
                 sprintf (last_function, "list_update: char_list");
-
+                
                 for (ch = char_list; ch; ch = ch_next)
                 {
                         ch_next = ch->next;
-
+                        
                         for (paf = ch->affected; paf; paf = paf_next)
                         {
                                 paf_next = paf->next;
-
+                                
                                 if (paf->deleted || ch->deleted)
                                 {
                                         if (ch->affected == paf)
@@ -1758,14 +1756,14 @@ void list_update ()
                                                                 break;
                                                         }
                                                 }
-
+                                                
                                                 if (!paf_prev)
                                                 {
                                                         bug("List_update: cannot find paf on ch.", 0);
                                                         continue;
                                                 }
                                         }
-
+                                        
                                         paf->next   = affect_free;
                                         affect_free = paf;
                                 }
@@ -1785,7 +1783,7 @@ void list_update ()
                                                         break;
                                                 }
                                         }
-
+                                        
                                         if (!ch_prev)
                                         {
                                                 sprintf(buf, "List_update: char %s not found.",
@@ -1794,29 +1792,29 @@ void list_update ()
                                                 continue;
                                         }
                                 }
-
+                                
                                 free_char(ch);
                         }
                 }
         }
-
+        
         sprintf (last_function, "list_update: obj_list");
-
-        if (delete_obj)
+        
+        if (delete_obj) 
         {
                 for (obj = object_list; obj; obj = obj_next)
                 {
                         obj_next = obj->next;
-
+                        
                         if (!obj->deleted)
                                 continue;
-
+                        
                         sprintf (last_function, "list_update: delete_obj: extra_descr");
-
+                        
                         for (ed = obj->extra_descr; ed; ed = ed_next)
                         {
                                 ed_next = ed->next;
-
+                                
                                 if (obj->deleted)
                                 {
                                         free_string(ed->description);
@@ -1825,13 +1823,13 @@ void list_update ()
                                         extra_descr_free = ed;
                                 }
                         }
-
+                        
                         sprintf (last_function, "list_update: delete_obj: effects");
-
+                        
                         for (paf = obj->affected; paf; paf = paf_next)
                         {
                                 paf_next = paf->next;
-
+                                
                                 if (obj->deleted)
                                 {
                                         if (obj->affected == paf)
@@ -1846,21 +1844,21 @@ void list_update ()
                                                                 break;
                                                         }
                                                 }
-
+                                                
                                                 if (!paf_prev)
                                                 {
                                                         bug("List_update: cannot find paf on obj.", 0);
                                                         continue;
                                                 }
                                         }
-
+                                        
                                         paf->next = affect_free;
                                         affect_free = paf;
                                 }
                         }
-
+                        
                         sprintf (last_function, "list_update: delete_obj: list");
-
+                        
                         if (obj->deleted)
                         {
                                 if (obj == object_list)
@@ -1875,7 +1873,7 @@ void list_update ()
                                                         break;
                                                 }
                                         }
-
+                                        
                                         if (!obj_prev)
                                         {
                                                 bug("List_update: obj %d not found.",
@@ -1883,10 +1881,10 @@ void list_update ()
                                                 continue;
                                         }
                                 }
-
+                                
                                 sprintf (last_function, "list_update: delete_obj: free_string, "
                                          "object name is '%s'", obj->name);
-
+                                
                                 free_string(obj->name);
                                 free_string(obj->description);
                                 free_string(obj->short_descr);
@@ -1896,10 +1894,10 @@ void list_update ()
                         }
                 }
         }
-
+        
         delete_obj  = FALSE;
         delete_char = FALSE;
-
+        
         sprintf (last_function, "leaving list_update");
 }
 
@@ -1915,25 +1913,25 @@ void update_handler ()
         static int pulse_mobile;
         static int pulse_violence;
         static int pulse_point;
-
+        
         sprintf (last_function, "entering update_hander");
-
+        
         if (--pulse_area <= 0)
         {
                 pulse_area = number_range(PULSE_AREA / 2, 3 * PULSE_AREA / 2);
                 sprintf (last_function, "update_hander: calling area_update");
                 area_update();
                 sprintf (last_function, "update_hander: calling quest_update");
-                quest_update();
+                quest_update(); 
         }
-
+        
         if (--pulse_violence <= 0)
         {
                 pulse_violence = PULSE_VIOLENCE;
                 sprintf (last_function, "update_hander: calling violence_update");
                 violence_update();
         }
-
+        
         if (--pulse_mobile <= 0)
         {
                 pulse_mobile = PULSE_MOBILE;
@@ -1941,7 +1939,7 @@ void update_handler ()
                 mobile_update();
                 do_tournament_countdown();
         }
-
+        
         if (--pulse_point <= 0)
         {
                 pulse_point = number_range(PULSE_TICK / 2, 3 * PULSE_TICK / 2);
@@ -1954,17 +1952,17 @@ void update_handler ()
                 sprintf (last_function, "update_hander: calling list_update");
                 list_update();
                 sprintf (last_function, "update_hander: calling deity_update");
-                deity_update();
+                deity_update();    
         }
-
+        
         sprintf (last_function, "calling time_update");
         time_update();
-
+        
         sprintf (last_function, "calling auction_update");
-        auction_update();
-
+        auction_update();  
+        
         sprintf (last_function, "calling bot_update");
-        bot_update();
+        bot_update();    
 
         sprintf (last_function, "calling aggr_update");
         aggr_update();
@@ -1976,15 +1974,15 @@ void update_handler ()
 
 
 /*
- * save morphed items - Shade
+ * save morphed items - Shade 
  */
 void add_morph_list(CHAR_DATA *ch, int iWear)
 {
         OBJ_DATA *theObj;
-
+        
         if (!(theObj = get_eq_char(ch, iWear)))
                 return;
-
+        
         unequip_char(ch, theObj);
         ch->pcdata->morph_list[iWear] = theObj;
 }
@@ -1993,7 +1991,7 @@ void add_morph_list(CHAR_DATA *ch, int iWear)
 void rem_morph_list(CHAR_DATA *ch, int iWear)
 {
         OBJ_DATA *theObj = ch->pcdata->morph_list[iWear];
-
+        
         if (!theObj)
                 return;
 
@@ -2005,27 +2003,27 @@ void rem_morph_list(CHAR_DATA *ch, int iWear)
 bool remove_obj (CHAR_DATA *ch, int iWear, bool fReplace);
 
 
-void form_equipment_update (CHAR_DATA *ch)
+void form_equipment_update (CHAR_DATA *ch) 
 {
         OBJ_DATA *obj;
         int iter;
         int jter;
-
-        for (iter = 0; iter < MAX_WEAR; iter++)
+        
+        for (iter = 0; iter < MAX_WEAR; iter++) 
         {
                 jter = eq_slot_to_wear_bit[iter];
-
+                
                 obj = get_eq_char(ch, iter);
-
+                    
                 if (!obj)
-                {
+                { 
                         if (form_wear_table[ch->form].can_wear[jter])
                                 rem_morph_list(ch, iter);
                 }
-
-                else
+                
+                else 
                 {
-                        if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
+                        if (IS_SET(obj->extra_flags, ITEM_BODY_PART)) 
                         {
                                 unequip_char(ch, obj);
                                 extract_obj(obj);
@@ -2037,7 +2035,7 @@ void form_equipment_update (CHAR_DATA *ch)
         }
 }
 
-
+        
 /*
  * the auction update - another very important part
  */
@@ -2077,7 +2075,7 @@ void auction_update ()
                                          auction->buyer->name,
                                          auction->bet);
                                 talk_auction(buf);
-
+                                
                                 obj_to_char(auction->item, auction->buyer);
 
                                 act ("The auctioneer appears before you in a puff of smoke and hands you $p.",
@@ -2097,12 +2095,12 @@ void auction_update ()
                                 sprintf (buf, "No bids were received for %s: this item has been removed from auction.",
                                          auction->item->short_descr);
                                 talk_auction(buf);
-
+                                
                                 act ("The auctioneer appears before you to return $p to you.",
                                      auction->seller, auction->item, NULL, TO_CHAR);
                                 act ("The auctioneer appears before $n to return $p to $m.",
                                      auction->seller, auction->item, NULL, TO_ROOM);
-
+                                
                                 obj_to_char (auction->item, auction->seller);
                                 auction->item = NULL;
                         }
@@ -2115,14 +2113,14 @@ void auction_update ()
 
 
 bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
-{
+{       
         int qp;
         char buf [MAX_STRING_LENGTH];
-
+        
         if (IS_NPC(ch))
                 return FALSE;
-
-        switch (ch->level)
+        
+        switch (ch->level) 
         {
                 /* Old
                  case 30:  qp =    1;  break;
@@ -2133,30 +2131,30 @@ bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
                  case 89:  qp = 1200;  break;
                  case 99:  qp = 1500;  break;
                  */
-
+                
             /* You'll also need to change the messages in do_score if you change these values. */
-
+                
             case 49:
                 qp = 1;
                 break;
-
+                
             case 69:
                 qp = 200;
                 break;
-
+                
             case 99:
                 qp = 500;
                 break;
-
+                
             default:
                 return TRUE;
         }
-
-        if (ch->pcdata->totalqp < qp)
+        
+        if (ch->pcdata->totalqp < qp) 
         {
-                if (verbose)
+                if (verbose) 
                 {
-                        sprintf(buf,
+                        sprintf(buf, 
                                 "You need at least %d quest point%s to advance to level %d.\n\r",
                                 qp,
                                 (qp == 1) ? "" : "s",
@@ -2165,7 +2163,7 @@ bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
                 }
                 return FALSE;
         }
-
+        
         return TRUE;
 }
 

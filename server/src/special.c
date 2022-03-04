@@ -40,7 +40,7 @@ void wear_obj           args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
 /*
  * The following special functions are available for mobiles.
  *
- * REMEMBER: check xp bonus in load_specials in db.c
+ * REMEMBER: check xp bonus in load_specials in db.c and update spec_fun_name() and spec_lookup() if you add a special
  */
 
 DECLARE_SPEC_FUN( spec_breath_any       );
@@ -81,6 +81,7 @@ DECLARE_SPEC_FUN( spec_spectral_minion  );
 DECLARE_SPEC_FUN( spec_celestial_repairman);
 DECLARE_SPEC_FUN( spec_sahuagin         );
 DECLARE_SPEC_FUN( spec_evil_evil_gezhp  );
+DECLARE_SPEC_FUN( spec_demon  );
 
 
 /*
@@ -127,9 +128,68 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_celestial_repairman"))  return spec_celestial_repairman;
         if (!str_cmp(name, "spec_sahuagin"))             return spec_sahuagin;
         if (!str_cmp(name, "spec_evil_evil_gezhp"))      return spec_evil_evil_gezhp;
+        if (!str_cmp(name, "spec_demon"))                return spec_demon;
 
         return 0;
 
+}
+
+/*
+* Get text string for a mobile's spec_fun, used in mstat --Owl 22/2/22
+*
+*/
+char* spec_fun_name (CHAR_DATA *ch)
+{
+    // fprintf(stderr, "has spec fun var: %p\r\n", ch->spec_fun);
+    // fprintf(stderr, "spec lookup var: %p\r\n", spec_lookup("spec_cast_hooker"));
+
+    if ( IS_NPC(ch)
+        &&   ch->spec_fun )
+    {
+        if (ch->spec_fun == spec_lookup("spec_breath_any"))         return "spec_breath_any";
+        if (ch->spec_fun == spec_lookup("spec_breath_acid"))        return "spec_breath_acid";
+        if (ch->spec_fun == spec_lookup("spec_breath_fire"))        return "spec_breath_fire";
+        if (ch->spec_fun == spec_lookup("spec_breath_frost"))       return "spec_breath_frost";
+        if (ch->spec_fun == spec_lookup("spec_breath_gas"))         return "spec_breath_gas";
+        if (ch->spec_fun == spec_lookup("spec_breath_lightning"))   return "spec_breath_lightning";
+        if (ch->spec_fun == spec_lookup("spec_cast_adept"))         return "spec_cast_adept";
+        if (ch->spec_fun == spec_lookup("spec_cast_hooker"))        return "spec_cast_hooker";
+        if (ch->spec_fun == spec_lookup("spec_buddha"))             return "spec_buddha";
+        if (ch->spec_fun == spec_lookup("spec_kungfu_poison"))      return "spec_kungfu_poison";
+        if (ch->spec_fun == spec_lookup("spec_cast_cleric"))        return "spec_cast_cleric";
+        if (ch->spec_fun == spec_lookup("spec_cast_judge"))         return "spec_cast_judge";
+        if (ch->spec_fun == spec_lookup("spec_cast_mage"))          return "spec_cast_mage";
+        if (ch->spec_fun == spec_lookup("spec_cast_druid"))         return "spec_cast_druid";
+        if (ch->spec_fun == spec_lookup("spec_cast_psionicist"))    return "spec_cast_psionicist";
+        if (ch->spec_fun == spec_lookup("spec_cast_undead"))        return "spec_cast_undead";
+        if (ch->spec_fun == spec_lookup("spec_executioner"))        return "spec_executioner";
+        if (ch->spec_fun == spec_lookup("spec_fido"))               return "spec_fido";
+        if (ch->spec_fun == spec_lookup("spec_clan_guard"))         return "spec_clan_guard";
+        if (ch->spec_fun == spec_lookup("spec_guard"))              return "spec_guard";
+        if (ch->spec_fun == spec_lookup("spec_janitor"))            return "spec_janitor";
+        if (ch->spec_fun == spec_lookup("spec_poison"))             return "spec_poison";
+        if (ch->spec_fun == spec_lookup("spec_repairman"))          return "spec_repairman";
+        if (ch->spec_fun == spec_lookup("spec_thief"))              return "spec_thief";
+        if (ch->spec_fun == spec_lookup("spec_bounty"))             return "spec_bounty";
+        if (ch->spec_fun == spec_lookup("spec_grail"))              return "spec_grail";
+        if (ch->spec_fun == spec_lookup("spec_cast_orb"))           return "spec_cast_orb";
+        if (ch->spec_fun == spec_lookup("spec_assassin"))           return "spec_assassin";
+        if (ch->spec_fun == spec_lookup("spec_warrior"))            return "spec_warrior";
+        if (ch->spec_fun == spec_lookup("spec_vampire"))            return "spec_vampire";
+        if (ch->spec_fun == spec_lookup("spec_cast_archmage"))      return "spec_cast_archmage";
+        if (ch->spec_fun == spec_lookup("spec_cast_priestess"))     return "spec_cast_priestess";
+        if (ch->spec_fun == spec_lookup("spec_mast_vampire"))       return "spec_mast_vampire";
+        if (ch->spec_fun == spec_lookup("spec_bloodsucker"))        return "spec_bloodsucker";
+        if (ch->spec_fun == spec_lookup("spec_spectral_minion"))    return "spec_spectral_minion";
+        if (ch->spec_fun == spec_lookup("spec_celestial_repairman"))return "spec_celestial_repairman";
+        if (ch->spec_fun == spec_lookup("spec_sahuagin"))           return "spec_sahuagin";
+        if (ch->spec_fun == spec_lookup("spec_evil_evil_gezhp"))    return "spec_evil_evil_gezhp";
+        if (ch->spec_fun == spec_lookup("spec_demon"))              return "spec_demon";
+    }
+    else {
+        return "none";
+    }
+    return "none";
 }
 
 
@@ -830,17 +890,17 @@ bool spec_guard( CHAR_DATA *ch )
                 switch( number_bits(2) )
                 {
                 case 0:
-                        do_say(ch,"Feel my head!!");
+                        if( CAN_SPEAK(ch)) { do_say(ch,"Feel my head!!"); }
                         do_headbutt(ch, victim->name);
                         return TRUE;
 
                 case 1:
-                        do_say(ch, "Eat this!!");
+                        if( CAN_SPEAK(ch)) { do_say(ch, "Eat this!!"); }
                         do_smash( ch, victim->name);
                         return TRUE;
 
                 default:
-                        do_say(ch, "Mighty foot engaged!!");
+                        if( CAN_SPEAK(ch)) { do_say(ch, "Mighty foot engaged!!"); }
                         do_kick( ch, "");
                         return TRUE;
 
@@ -1660,19 +1720,19 @@ bool spec_assassin( CHAR_DATA *ch )
 
                 rnd_say = number_range (1, 10);
 
-                if ( rnd_say <= 5)
+                if ( rnd_say <= 5 && CAN_SPEAK(ch))
                         sprintf( buf, "Death is the true end...");
 
-                else if ( rnd_say <= 6)
+                else if ( rnd_say <= 6 && CAN_SPEAK(ch))
                         sprintf( buf, "Time to die...");
 
-                else if ( rnd_say <= 7)
+                else if ( rnd_say <= 7 && CAN_SPEAK(ch))
                         sprintf( buf, "Cabrone...");
 
-                else if ( rnd_say <= 8)
+                else if ( rnd_say <= 8 && CAN_SPEAK(ch))
                         sprintf( buf, "Welcome to your fate...");
 
-                else if ( rnd_say <= 10)
+                else if ( rnd_say <= 10 && CAN_SPEAK(ch))
                         sprintf( buf, "Ever dance with the devil?");
 
                 do_say( ch, buf );
@@ -1842,42 +1902,42 @@ bool spec_cast_archmage (CHAR_DATA *ch)
                     case 0:
                     case 1:
                         min_level = 25;
-                        sprintf(buf, "Smoke on this...");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Smoke on this..."); }
                         spell = "fireball";
                         break;
 
                     case 2:
                         min_level = 30;
-                        sprintf(buf,"Kaboom!!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Kaboom!!"); }
                         spell = "firestorm";
                         break;
 
                     case 3:
                         min_level = 35;
-                        sprintf(buf,"This won't hurt a bit...");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"This won't hurt a bit..."); }
                         spell = "dispel magic";
                         break;
 
                     case 4:
                         min_level = 40;
-                        sprintf(buf, "Feel your life force drain away!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Feel your life force drain away!"); }
                         spell = "energy drain";
                         break;
 
                     case 5: min_level = 40;
-                        sprintf(buf,"I am invincible!!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"I am invincible!!"); }
                         spell = "meteor storm";
                         break;
 
                     case 6:
                         min_level = 45;
-                        sprintf(buf,"Come get some...");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Come get some..."); }
                         spell = "prismatic spray";
                         break;
 
                     default:
                         min_level = 15;
-                        sprintf(buf,"Damn you're ugly...");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Damn you're ugly..."); }
                         spell = "acid blast";
                 }
 
@@ -1929,37 +1989,37 @@ bool spec_cast_priestess (CHAR_DATA *ch)
                 {
                     case 0:
                         min_level = 1;
-                        sprintf(buf, "Heretic!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Heretic!"); }
                         spell = "curse";
                         break;
 
                     case 1:
                         min_level = 25;
-                        sprintf(buf, "May God strike you blind!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "May God strike you blind!"); }
                         spell = "blindness";
                         break;
 
                     case 2:
                         min_level = 30;
-                        sprintf(buf, "This won't hurt a bit...");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "This won't hurt a bit..."); }
                         spell = "dispel magic";
                         break;
 
                     case 3:
                     case 4:
                         min_level = 40;
-                        sprintf(buf, "I'm a mean bitch!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "I'm a mean bitch!"); }
                         spell = "unholy word";
                         break;
 
                     case 5:
                         min_level = 60;
-                        sprintf(buf, "I chain you to eternal damnation!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "I chain you to eternal damnation!"); }
                         spell = "hex";
                         break;
 
                     default: min_level = 20;
-                        sprintf(buf, "Die Infidel!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Die Infidel!"); }
                         spell = "flamestrike";
                 }
 
@@ -2018,19 +2078,19 @@ bool spec_mast_vampire(CHAR_DATA *ch)
                 switch (random)
                 {
                     case 0:
-                        sprintf(buf, "Ever dance with the devil by the pale moonlight?");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Ever dance with the devil by the pale moonlight?"); }
                         break;
 
                     case 1:
-                        sprintf(buf, "You dare invade my sanctuary!?");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "You dare invade my sanctuary!?"); }
                         break;
 
                     case 2:
-                        sprintf(buf, "Velcome to your destiny, come join me beyond the grave.");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Velcome to your destiny, come join me beyond the grave."); }
                         break;
 
                     default:
-                        sprintf(buf, "Ahhhh more blood!");
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Ahhhh more blood!"); }
                 }
 
                 do_say(ch, buf);
@@ -2048,19 +2108,19 @@ bool spec_mast_vampire(CHAR_DATA *ch)
         {
             case 0:
             case 1:
-                act("$n screams, 'The streets will run red with your {Rblood{x!'",
-                    ch, NULL, NULL, TO_ROOM);
+                if ( CAN_SPEAK(ch) ) { act("$n screams, 'The streets will run red with your {Rblood{x!'",
+                    ch, NULL, NULL, TO_ROOM); }
                 one_hit(ch, victim, gsn_suck);
                 break;
 
             case 2:
-                sprintf(buf, "Flee puny mortal!");
+                if ( CAN_SPEAK(ch) ) { sprintf(buf, "Flee puny mortal!"); }
                 spell = "fear";
                 cast_spell = 1;
                 break;
 
             default:
-                sprintf(buf, "I will flay the flesh from your bones!");
+                if ( CAN_SPEAK(ch) ) { sprintf(buf, "I will flay the flesh from your bones!"); }
                 spell = "prismatic spray";
                 cast_spell = 1;
                 break;
@@ -2082,7 +2142,7 @@ bool spec_mast_vampire(CHAR_DATA *ch)
 
 
 /*
- * Bloodsucking-worms Owl 27/04/00
+ * Bloodsucking worms.  -Owl 27/04/00
  */
 bool spec_bloodsucker( CHAR_DATA *ch )
 {
@@ -2371,4 +2431,68 @@ bool spec_evil_evil_gezhp (CHAR_DATA *ch)
         }
 
         return FALSE;
+}
+
+/* demon spec, -Owl 3/2/08 */
+
+bool spec_demon( CHAR_DATA *ch )
+{
+        CHAR_DATA *victim;
+        char      *spell;
+        int        sn;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+                int min_level;
+
+                switch ( number_bits( 4 ) )
+                {
+                    case  0: do_say(ch,"{RCurse you, mortal scum!{x");
+                                min_level =  0; spell = "curse";          break;
+                    case  1:
+                    case  2: do_say(ch,"{RFreeze, terrestrial vermin!{x");
+                                min_level =  3; spell = "chill touch";    break;
+                    case  3: do_say(ch,"{RBurn!{x");
+                                min_level =  5; spell = "burning hands";  break;
+                    case  4: do_say(ch,"{RGive me your power!{x");
+                                min_level = 12; spell = "steal strength"; break;
+                    case  5: do_say(ch,"{RAhh.. sweet lifeforce...{x");
+                                min_level = 15; spell = "energy drain";   break;
+                    case  6: do_say(ch,"{RYour life belongs to ME!{x");
+                                min_level = 20; spell = "wither";         break;
+                    case  7:
+                    case  8: do_say(ch,"{RBe still, carrion!{x");
+                                min_level = 18; spell = "hand of lucifer";break;
+                    case  9: do_say(ch,"{RFEEL MY MASTER'S CURSE!{x");
+                                min_level = 40; spell = "hex";            break;
+                    case  10:
+                    case  11: min_level = 30; spell = "gate";             break;
+                    case  12: do_say(ch,"{RPerish in flame!{x");
+                                min_level = 50; spell = "fire breath";    break;
+                    default: do_say(ch,"{RBy the Dark Lord's power!{x");
+                                min_level = 25; spell = "hells fire";     break;
+                }
+
+                if ( ch->level >= min_level )
+                        break;
+        }
+
+        if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+
+        return TRUE;
 }

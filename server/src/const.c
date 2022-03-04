@@ -28,23 +28,22 @@
 #include "merc.h"
 
 
-
 /*
- * Class table.
+ *  Class table.
  */
-const struct class_type class_table [MAX_CLASS] =
+const struct class_type class_table [ MAX_CLASS ] =
 {
         /*
-         *  who name, show name,
-         *  prime attribute, first weapon,
-         *  guild vnum, max skill level, thac0_0, thac0_47, hp_min, hp_max, gain mana,
-         *  sub-1 who name, sub-2 who name, sub-1 change name, sub-2 change name
-         *  stat modifiers (str, int, wis, dex, con)
+         * who name, show name,
+         * prime attribute, first weapon,
+         * guild vnum, max skill level, thac0_0, thac0_47, hp_min, hp_max, gain mana,
+         * sub-1 who name, sub-2 who name, sub-1 change name, sub-2 change name
+         * stat modifiers (str, int, wis, dex, con)
          */
 
         {
                 "Mag",  "Mage",
-                APPLY_INT, OBJ_VNUM_SCHOOL_DAGGER,
+                APPLY_INT,  OBJ_VNUM_SCHOOL_DAGGER,
                 3018,  95,  18,  6,  6,  9,  TRUE,
                 "Necromncr",  "Warlock",  "Nec",  "Wlk",
                 { -1, 3, 1, 1, -1 }
@@ -52,7 +51,7 @@ const struct class_type class_table [MAX_CLASS] =
 
         {
                 "Cle",  "Cleric",
-                APPLY_WIS,  OBJ_VNUM_SCHOOL_MACE,
+                APPLY_WIS, OBJ_VNUM_SCHOOL_MACE,
                 3003,  95,  18,  9,  8,  11,  TRUE,
                 "Templar",  "Druid",  "Tem",  "Dru",
                 { 1, 1, 3, -1, -1 }
@@ -93,7 +92,7 @@ const struct class_type class_table [MAX_CLASS] =
         {
                 "Bra",  "Brawler",
                 APPLY_DEX,  OBJ_VNUM_SCHOOL_NULL,
-                3207,  85, 18,  0,  13, 16,  FALSE,
+                3207,  85,  18,  0,  13, 16,  FALSE,
                 "Monk",  "M. Artist",  "Mon",  "Mar",
                 { 1, -2, -2, 3, 3 }
         },
@@ -109,147 +108,147 @@ const struct class_type class_table [MAX_CLASS] =
 
 
 /*
- * SUB_CLASS TABLE - Brutus
+ *  SUB_CLASS TABLE - Brutus
  */
-const struct sub_class_type sub_class_table [MAX_SUB_CLASS] =
+const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
 {
         /*  who name, show name, attribute bonus, mana bonus  */
 
-        {  "Non",  "None",      APPLY_STR, FALSE    },
-        {  "Nec",  "Necromncr", APPLY_WIS, TRUE     },
-        {  "Wlk",  "Warlock",   APPLY_STR, TRUE     },
-        {  "Tem",  "Templar",   APPLY_STR, TRUE     },
-        {  "Dru",  "Druid",     APPLY_INT, TRUE     },
-        {  "Nin",  "Ninja",     APPLY_CON, FALSE    },
-        {  "Bou",  "B. Hunter", APPLY_STR, FALSE    },
-        {  "Thg",  "Thug",      APPLY_CON, FALSE    },
-        {  "Kni",  "Knight",    APPLY_WIS, TRUE     },
-        {  "Sat",  "Satanist",  APPLY_STR, TRUE     },
-        {  "Wit",  "Witch",     APPLY_INT, TRUE     },
-        {  "Wer",  "Werewolf",  APPLY_STR, FALSE    },
-        {  "Vam",  "Vampire",   APPLY_STR, FALSE    },
-        {  "Mon",  "Monk",      APPLY_WIS, TRUE     },
-        {  "Mar",  "M. Artist", APPLY_STR, FALSE    },
-        {  "Brb",  "Barbarian", APPLY_STR, FALSE    },
-        {  "Brd",  "Bard",      APPLY_DEX, TRUE     }
+        {       "Non",  "None",                 APPLY_STR,      FALSE   },
+        {       "Nec",  "Necromncr",    APPLY_WIS,      TRUE    },
+        {       "Wlk",  "Warlock",              APPLY_STR,      TRUE    },
+        {       "Tem",  "Templar",              APPLY_STR,      TRUE    },
+        {       "Dru",  "Druid",                APPLY_INT,      TRUE    },
+        {       "Nin",  "Ninja",                APPLY_CON,      FALSE   },
+        {       "Bou",  "B. Hunter",    APPLY_STR,      FALSE   },
+        {       "Thg",  "Thug",                 APPLY_CON,      FALSE   },
+        {       "Kni",  "Knight",               APPLY_WIS,      TRUE    },
+        {       "Sat",  "Satanist",             APPLY_STR,      TRUE    },
+        {       "Wit",  "Witch",                APPLY_INT,      TRUE    },
+        {       "Wer",  "Werewolf",             APPLY_STR,      FALSE   },
+        {       "Vam",  "Vampire",              APPLY_STR,      FALSE   },
+        {       "Mon",  "Monk",                 APPLY_WIS,      TRUE    },
+        {       "Mar",  "M. Artist",    APPLY_STR,      FALSE   },
+        {       "Brb",  "Barbarian",    APPLY_STR,      FALSE   },
+        {       "Brd",  "Bard",                 APPLY_DEX,      TRUE    }
 };
 
 
 /*
  *  Clan tables
  */
-const struct clan_type clan_table [MAX_CLAN] =
+const struct clan_type clan_table [ MAX_CLAN ] =
 {
         /*
-         *  name, who name, transfer room, guard_room, heal_room, independent,
-         *  colour code letter (for {X escapes)
+         * name, who name, transfer room, guard_room, heal_room, independent,
+         * colour code letter (for {X escapes)
          *
-         *  'independent' should be FALSE for a normal clan
+         * 'independent' should be FALSE for a normal clan
          */
 
-        {  "No clan",                   "   ",  3001,   3001,   3001,   TRUE,  'x' },
-        {  "The Travellers",            "TRV",  534,    530,    533,    FALSE, 'G' },
-        {  "Clan Aesir",                "AES",  963,    960,    964,    FALSE, 'Y' },
-        {  "Legion of Entropy",         "LOE",  452,    450,    451,    FALSE, 'R' },
-        {  "Mercenaries of Conquest",   "MOC",  362,    360,    365,    FALSE, 'd' },
-        {  "Shadows of Midnight",       "SOM",  472,    470,    474,    FALSE, 'M' },
-        {  "Coven of Bone",             "COB",  490,    480,    484,    FALSE, 'd' }
+        {       "No clan",                      "   ",  3001,   3001,   3001,   TRUE,   'x'     },
+        {       "The Travellers",               "TRV",   534,    530,    533,   FALSE,  'G'     },
+        {       "Clan Aesir",                   "AES",   963,    960,    964,   FALSE,  'Y'     },
+        {       "Legion of Entropy",            "LOE",   452,    450,    451,   FALSE,  'R'     },
+        {       "Mercenaries of Conquest",      "MOC",   362,    360,    365,   FALSE,  'd'     },
+        {       "Shadows of Midnight",          "SOM",   472,    470,    474,   FALSE,  'M'     },
+        {       "Coven of Bone",                "COB",   490,    480,    484,   FALSE,  'd'     }
 };
 
 
-const struct clan_items clan_item_list [MAX_CLAN] =
+const struct clan_items clan_item_list [ MAX_CLAN ] =
 {
         /* clan, level 1, level 30, level 60, pouch */
 
-        { "No",  0,     0,      0,      0     },
-        { "TRV", 530,   531,    532,    533   },
-        { "AES", 974,   975,    976,    970   },
-        { "LOE", 458,   459,    461,    460   },
-        { "MOC", 368,   369,    370,    371   },
-        { "SOM", 476,   477,    479,    478   },
-        { "COB", 488,   489,    491,    490   }
+        {       "No",     0,      0,      0,      0             },
+        {       "TRV",  530,    531,    532,    533             },
+        {       "AES",  974,    975,    976,    970             },
+        {       "LOE",  458,    459,    461,    460             },
+        {       "MOC",  368,    369,    370,    371             },
+        {       "SOM",  476,    477,    479,    478             },
+        {       "COB",  488,    489,    491,    490             }
 };
 
 
-const struct HERB herb_table[ MAX_HERBS ] =
+const struct HERB herb_table [ MAX_HERBS ] =
 {
         /*
-         *  Herb table legend:
-         *  name, item type, spell name, minimum skill needed to find,
-         *  chance of finding, keywords, short_desc, long_descr,
-         *  action string\n\r (reported if herb found after gathering)
+         * Herb table legend:
+         * name, item type, spell name, minimum skill needed to find,
+         * chance of finding, keywords, short_desc, long_descr,
+         * action string\n\r (reported if herb found after gathering)
          */
 
         { "thurl",  ITEM_POTION,  "cure serious",  1,  60,
                 "thurl leaf brew",  "a brew of thurl leaf",
                 "A brew of thurl leaf is here.",
-                "You find some thurl leaf and prepare a brew.\n\r" },
+                "You find some thurl leaf and prepare a brew.\n\r"  },
 
         { "gariig",  ITEM_PILL,  "cure critical",  1,  45,
                 "gariig cactus",  "some gariig cactus",
                 "Some gariig cactus is here.",
-                "You locate a tiny gariig cactus in the rocks.\n\r" },
+                "You locate a tiny gariig cactus in the rocks.\n\r"  },
 
         { "gefnul",  ITEM_PILL,  "heal",  1,  30,
                 "gefnul lichen",  "some gefnul lichen",
                 "Some gefnul lichen lies here.",
-                "You find and harvest a clump of gefnul lichen.\n\r" },
+                "You find and harvest a clump of gefnul lichen.\n\r"  },
 
         { "draaf",  ITEM_PILL,  "power heal",  85,  10,
                 "draaf leaf sprig",  "a sprig of draaf",
                 "You spot a sprig of draaf leaf here.",
-                "You gather some leaves from a tall draaf plant.\n\r" },
+                "You gather some leaves from a tall draaf plant.\n\r"  },
 
         { "athelas",  ITEM_POTION,  "complete heal",  95,  3,
                 "athelas brew",  "a brew of athelas herb",
                 "A brew of athelas herb is here.",
-                "You find some athelas leaves, crush them and make a brew.\n\r" },
+                "You find some athelas leaves, crush them and make a brew.\n\r"  },
 
         { "arkasu",  ITEM_PAINT,  "refresh",  1,  60,
                 "arkasu paste",  "some arkasu paste",
                 "Some arkasu herb paste lies here.",
-                "You find some arkasu herbs and grind them into a thick paste.\n\r" },
+                "You find some arkasu herbs and grind them into a thick paste.\n\r"  },
 
         { "attanar",  ITEM_PAINT,  "cure poison",  1,  40,
                 "attanar moss",  "some attanar moss",
                 "A clump of attanar moss sits here.",
-                "You recover some attanar moss and mash it into a salve.\n\r" },
+                "You recover some attanar moss and mash it into a salve.\n\r"  },
 
         { "karfar",  ITEM_PAINT,  "poison",  1,  10,
                 "karfar leaf paste",  "some karfar leaf paste",
                 "Some karfar leaf paste is here.",
-                "You gather some karfar leaves and grind them into a paste.\n\r" },
+                "You gather some karfar leaves and grind them into a paste.\n\r"  },
 
         { "dynallca",  ITEM_PAINT,  "weaken",  1,  10,
                 "dynallca leaf paste",  "a paste made from dynallca leaves",
                 "A paste made from dynallca leaves lies here.",
-                "You locate some dynallca leaves and mash them into a pulp.\n\r" },
+                "You locate some dynallca leaves and mash them into a pulp.\n\r"  },
 
         { "zur",  ITEM_POTION,  "cause serious",  1,  5,
                 "zur fungus brew",  "a brew made from zur fungus",
                 "You spot a brew made from zur fungus.",
-                "You find zur fungus growing on some trees, and make a strong brew.\n\r" },
+                "You find zur fungus growing on some trees, and make a strong brew.\n\r"  },
 
         { "slota",  ITEM_PILL,  "sleep",  1,  5,
                 "slota bark",  "a piece of slota bark",
                 "Some bark from the slota tree lies here.",
-                "You find a bushy slota tree and harvest some of the chewy bark.\n\r" }
+                "You find a bushy slota tree and harvest some of the chewy bark.\n\r"  }
 };
 
 
-const struct song song_table [MAX_SONGS] =
+const struct song song_table [ MAX_SONGS ] =
 {
-        {  "revelation",        "Ode to Siope the All Seeing",  "song of revelation",   0},
-        {  "rejuvenation",      "Hymn of Ealindel the Healer",  "song of rejuvenation", 0},
-        {  "tranquility",       "Lay of the Elfin Queen",       "song of tranquility",  AFF_DETER},
-        {  "shadows",           "Lament of Dracos-kar",         "song of shadows",      0},
-        {  "divination",        "Song of Saint Brutus the Enlightened","song of divination",0},
-        {  "sustenance",        "Rime of the Wearie Adventurer","song of sustenance",   0},
-        {  "flight",            "Ballad of the Pegasus",        "song of flight",       AFF_FLYING}
+        {       "revelation",   "Ode to Siope the All Seeing",          "song of revelation",   0               },
+        {       "rejuvenation", "Hymn of Ealindel the Healer",          "song of rejuvenation", 0               },
+        {       "tranquility",  "Lay of the Elfin Queen",               "song of tranquility",  AFF_DETER       },
+        {       "shadows",      "Lament of Dracos-kar",                 "song of shadows",      0               },
+        {       "divination",   "Song of Saint Brutus the Enlightened", "song of divination",   0               },
+        {       "sustenance",   "Rime of the Wearie Adventurer",        "song of sustenance",   0               },
+        {       "flight",       "Ballad of the Pegasus",                "song of flight",       AFF_FLYING      }
 };
 
 
-const struct pattern_points pattern_list[MAX_PATTERN] =
+const struct pattern_points pattern_list [ MAX_PATTERN ] =
 {
         {       },
         {  3017 },
@@ -267,19 +266,18 @@ const struct pattern_points pattern_list[MAX_PATTERN] =
  * Clan titles
  * Remember to leave a space after the end of each clan title.
  * This is pretty hacky but it keeps who clean.
- * If ayone wants to clean the table below up, feel free - Shade
+ * If anyone wants to clean the table below up, feel free - Shade
  */
-char* const clan_title [MAX_CLAN] [MAX_CLAN_LEVEL+1] =
+char* const clan_title [ MAX_CLAN ] [ MAX_CLAN_LEVEL + 1 ] =
 {
-        { "", "",                 "",                   ""                      },
-        { "", "[{WGypsy{x] ",     "[{WWanderer{x] ",    "[{WAdventurer{x] "     },
-        { "", "[{WBerserker{x] ", "[{WJarl{x] ",        "[{WEinherjar{x] "      },
-        { "", "[{WBushido{x] ",   "[{WSamurai{x] ",     "[{WKensai{x] "         },
-        { "", "[{WAuxiliary{x] ", "[{WLegionnaire{x] ", "[{WMercenary{x] "      },
-        { "", "[{WApprentice{x] ","[{WDragoon{x] ",     "[{WCouncillor{x] "     },
-        { "", "[{WAcolyte{x] ","[{WScion{x] ",  "[{WParagon{x] "     }
+        { "", "",                       "",                             ""                      },
+        { "", "[{WGypsy{x] ",           "[{WWanderer{x] ",              "[{WAdventurer{x] "     },
+        { "", "[{WBerserker{x] ",       "[{WJarl{x] ",                  "[{WEinherjar{x] "      },
+        { "", "[{WBushido{x] ",         "[{WSamurai{x] ",               "[{WKensai{x] "         },
+        { "", "[{WAuxiliary{x] ",       "[{WLegionnaire{x] ",           "[{WMercenary{x] "      },
+        { "", "[{WApprentice{x] ",      "[{WDragoon{x] ",               "[{WCouncillor{x] "     },
+        { "", "[{WAcolyte{x] ",         "[{WScion{x] ",                 "[{WParagon{x] "        }
 };
-
 
 
 char * const color_list [MAX_COLOR_LIST] =
@@ -287,12 +285,12 @@ char * const color_list [MAX_COLOR_LIST] =
         "red",
         "blue",
         "black",
-        "torquoise",
+        "turquoise",
         "yellow",
         "faded indigo",
         "purple",
         "magenta",
-        "lavenda",
+        "lavender",
         "green",
         "white",
         "faded orange",
@@ -305,7 +303,7 @@ char * const color_list [MAX_COLOR_LIST] =
 };
 
 
-int size_index[3] =
+int size_index [ 3 ] =
 {
         ITEM_SIZE_SMALL,
         ITEM_SIZE_MEDIUM,
@@ -313,10 +311,10 @@ int size_index[3] =
 };
 
 
-char * const size_names[3] =
+char * const size_names [ 3 ] =
 {
         "small",
-        "man sized",
+        "man-sized",
         "large"
 };
 
@@ -327,11 +325,11 @@ char * const size_names[3] =
 const struct race_struct race_table [MAX_RACE] =
 {
         /*
-         *  who name (padded), race name,
-         *  str int wis dex con adjustments,
-         *  hp regen, mana regen, move regen
-         *  race skill 1, race skill 2,
-         *  size
+         * who name (padded), race name,
+         * str int wis dex con adjustments,
+         * hp regen, mana regen, move regen
+         * race skill 1, race skill 2,
+         * size
          */
 
         {
@@ -490,26 +488,26 @@ const struct loc_wear_struct form_wear_table [MAX_FORM] =
          * shield, about, waist, wrist, wield, held, float, pouch, ranged
          */
 
-        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  normal       */
-        { { 1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,0,1,0 } }, /*  chameleon    */
-        { { 1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0 } }, /*  hawk         */
-        { { 1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0 } }, /*  cat          */
-        { { 1,1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,1,0 } }, /*  snake        */
-        { { 1,1,1,1,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0 } }, /*  scorpion     */
-        { { 1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0 } }, /*  spider       */
-        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  bear         */
-        { { 1,1,0,1,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0 } }, /*  tiger        */
-        { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0 } }, /*  ghost        */
-        { { 1,1,0,1,0,1,0,0,0,0,0,1,1,0,1,1,1,1,0 } }, /*  hydra        */
-        { { 1,1,1,1,0,1,1,1,0,0,0,1,0,1,0,1,1,1,0 } }, /*  phoenix      */
-        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  demon        */
-        { { 1,1,1,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0 } }, /*  dragon       */
-        { { 1,1,0,1,1,0,1,1,1,1,0,1,1,1,0,1,1,1,0 } }, /*  direwolf     */
-        { { 0,1,1,1,0,0,1,1,0,0,0,1,1,1,1,1,0,1,0 } }, /*  vampire      */
-        { { 1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1,0 } }, /*  werehuman    */
-        { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } }, /*  fly          */
-        { { 1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1,0 } }, /*  griffin      */
-        { { 1,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1,1,1,0 } }  /*  werewolf     */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  normal  */
+        { { 1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,0,1,0 } }, /*  chameleon  */
+        { { 1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0 } }, /*  hawk   */
+        { { 1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0 } }, /*  cat  */
+        { { 1,1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,1,0 } }, /*  snake  */
+        { { 1,1,1,1,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0 } }, /*  scorpion  */
+        { { 1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0 } }, /*  spider  */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  bear  */
+        { { 1,1,0,1,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0 } }, /*  tiger  */
+        { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0 } }, /*  ghost  */
+        { { 1,1,0,1,0,1,0,0,0,0,0,1,1,0,1,1,1,1,0 } }, /*  hydra  */
+        { { 1,1,1,1,0,1,1,1,0,0,0,1,0,1,0,1,1,1,0 } }, /*  phoenix  */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /*  demon  */
+        { { 1,1,1,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0 } }, /*  dragon  */
+        { { 1,1,0,1,1,0,1,1,1,1,0,1,1,1,0,1,1,1,0 } }, /*  direwolf  */
+        { { 0,1,1,1,0,0,1,1,0,0,0,1,1,1,1,1,0,1,0 } }, /*  vampire  */
+        { { 1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1,0 } }, /*  werehuman  */
+        { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } }, /*  fly  */
+        { { 1,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1,0 } }, /*  griffin  */
+        { { 1,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1,1,1,0 } }  /*  werewolf  */
 };
 
 
@@ -518,10 +516,10 @@ const struct loc_wear_struct form_wear_table [MAX_FORM] =
  */
 const struct loc_wear_struct loc_wear_table [MAX_CLASS + MAX_SUB_CLASS - 1] =
 {
-          /*
-           * light, take, finger, neck, body, head, legs, feet, hands, arms,
-           * shield, about, waist, wrist, wield, held, float, pouch, ranged
-           */
+        /*
+         * light, take, finger, neck, body, head, legs, feet, hands, arms,
+         * shield, about, waist, wrist, wield, held, float, pouch, ranged
+         */
 
         { { 1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,0 } }, /* mag */
         { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* cle */
@@ -556,43 +554,44 @@ const struct loc_wear_struct loc_wear_table [MAX_CLASS + MAX_SUB_CLASS - 1] =
 const struct wear_struct wear_table [ MAX_CLASS + MAX_SUB_CLASS - 1 ] =
 {
         /*
-         *  null, light, scroll, wand, staff, weapon, -, -, treasure, armour, potion,
-         *  -, furniture, trash, -, container, -, drink con, key, food, money,
-         *  -, boat, NPC corpse, PC corpse, fountain, pill, climbing eq, paint, mob, anvil,
-         *  ticket, clan object, portal, poison powder, lock pick, instrument
-         *  armourer's hammer, mithril, whetstone
+         * null, light, scroll, wand, staff, weapon, -, -, treasure, armour, potion,
+         * -, furniture, trash, -, container, -, drink con, key, food, money,
+         * -, boat, NPC corpse, PC corpse, fountain, pill, climbing eq, paint, mob, anvil,
+         * ticket, clan object, portal, poison powder, lock pick, instrument
+         * armourer's hammer, mithril, whetstone
          */
 
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 1,0,1,1,0,0,1,1,1 }},/*mag*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*cle*/
-        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,0,1,1,1 }},/*thi*/
-        {{ 0,1,0,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*war*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*psi*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*sft*/
-        {{ 0,1,0,0,0,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 0,1,1,1,0,0,1,1,1 }},/*bra*/
-        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*rng*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*nec*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*wlk*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*tem*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*dru*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,0,1,1,1 }},/*nin*/
-        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,0,1,1,1 }},/*bou*/
-        {{ 0,1,1,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*thg*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*kni*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*sat*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*wit*/
-        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*wer*/
-        {{ 0,0,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*vam*/
-        {{ 0,1,1,1,1,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*mon*/
-        {{ 0,1,0,0,0,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*mar*/
-        {{ 0,1,1,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }},/*brb*/
-        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,1,1,1,1 }} /*brd*/
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 1,0,1,1,0,0,1,1,1 }}, /* mag */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* cle */
+        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,0,1,1,1 }}, /* thi */
+        {{ 0,1,0,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* war */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* psi */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* sft */
+        {{ 0,1,0,0,0,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 0,1,1,1,0,0,1,1,1 }}, /* bra */
+        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* rng */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* nec */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* wlk */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* tem */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* dru */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,0,1,1,1 }}, /* nin */
+        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,0,1,1,1 }}, /* bou */
+        {{ 0,1,1,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* thg */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* kni */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* sat */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* wit */
+        {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* wer */
+        {{ 0,0,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* vam */
+        {{ 0,1,1,1,1,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* mon */
+        {{ 0,1,0,0,0,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* mar */
+        {{ 0,1,1,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* brb */
+        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,1,1,1,1 }}  /* brd */
 };
+
 
 /*
  *  Equipment slot to wear bit conversion table; Gezhp 2000
  */
-const int eq_slot_to_wear_bit [MAX_WEAR] =
+const int eq_slot_to_wear_bit [ MAX_WEAR ] =
 {
         BIT_LIGHT,
         BIT_WEAR_FINGER,
@@ -609,12 +608,12 @@ const int eq_slot_to_wear_bit [MAX_WEAR] =
         BIT_WEAR_ABOUT,
         BIT_WEAR_WAIST,
         BIT_WEAR_WRIST,
-        BIT_WEAR_WRIST,  /* 15 */
+        BIT_WEAR_WRIST, /* 15 */
         BIT_WIELD,
         BIT_HOLD,
         BIT_WIELD,
         BIT_FLOAT,
-        BIT_WEAR_POUCH,  /* 20 */
+        BIT_WEAR_POUCH, /* 20 */
         BIT_RANGED_WEAPON
 };
 
@@ -622,117 +621,118 @@ const int eq_slot_to_wear_bit [MAX_WEAR] =
 /*
  *  Form allowed skills
  */
-struct form_skill_struct form_skill_table [MAX_FORM_SKILL] =
+struct form_skill_struct form_skill_table [ MAX_FORM_SKILL ] =
 {
-        { &gsn_hide,                    FORM_NONE       },
-        { &gsn_sneak,                   FORM_NONE       },
-        { &gsn_morph,                   FORM_ALL        },
-        { &gsn_venom,                   FORM_SPIDER     },
-        { &gsn_spy,                     FORM_HAWK       },
-        { &gsn_swim,                    FORM_SNAKE      },
-        { &gsn_constrict,               FORM_SNAKE      },
-        { &gsn_coil,                    FORM_SNAKE      },
-        { &gsn_strangle,                FORM_SNAKE      },
-        { &gsn_backstab,                FORM_SCORPION   },
-        { &gsn_second_attack,           FORM_BEAR       },
-        { &gsn_third_attack,            FORM_BEAR       },
-        { &gsn_enhanced_damage,         FORM_BEAR       },
-        { &gsn_second_attack,           FORM_TIGER      },
-        { &gsn_dual,                    FORM_TIGER      },
-        { &gsn_berserk,                 FORM_TIGER      },
-        { &gsn_forage,                  FORM_BEAR       },
-        { &gsn_bite,                    FORM_TIGER      },
-        { &gsn_maul,                    FORM_TIGER      },
-        { &gsn_web,                     FORM_SPIDER     },
-        { &gsn_venom,                   FORM_SPIDER     },
-        { &gsn_breathe,                 FORM_HYDRA      },
-        { &gsn_breathe,                 FORM_DRAGON     },
-        { &gsn_whirlwind,               FORM_HYDRA      },
-        { &gsn_second_attack,           FORM_HYDRA      },
-        { &gsn_third_attack,            FORM_HYDRA      },
-        { &gsn_second_attack,           FORM_PHOENIX    },
-        { &gsn_rescue,                  FORM_PHOENIX    },
-        { &gsn_second_attack,           FORM_DRAGON     },
-        { &gsn_enhanced_damage,         FORM_DRAGON     },
-        { &gsn_dual,                    FORM_DRAGON     },
-        { &gsn_dive,                    FORM_DRAGON     },
-        { &gsn_second_attack,           FORM_GRIFFIN    },
-        { &gsn_maul,                    FORM_GRIFFIN    },
-        { &gsn_third_attack,            FORM_GRIFFIN    },
-        { &gsn_enhanced_damage,         FORM_GRIFFIN    },
-        { &gsn_dual,                    FORM_GRIFFIN    },
-        { &gsn_tailwhip,                FORM_DRAGON     },
-        { &gsn_wolfbite,                FORM_WOLF       },
-        { &gsn_ravage,                  FORM_WOLF       },
-        { &gsn_dual,                    FORM_WOLF       },
-        { &gsn_berserk,                 FORM_WOLF       },
-        { &gsn_howl,                    FORM_WOLF       },
-        { &gsn_second_attack,           FORM_WOLF       },
-        { &gsn_third_attack,            FORM_WOLF       },
-        { &gsn_fourth_attack,           FORM_WOLF       },
-        { &gsn_rage,                    FORM_WOLF       },
-        { &gsn_dodge,                   FORM_WOLF       },
-        { &gsn_fast_healing,            FORM_WOLF       },
-        { &gsn_enhanced_hit,            FORM_WOLF       },
-        { &gsn_resist_magic,            FORM_WOLF       },
-        { &gsn_resist_toxin,            FORM_WOLF       },
-        { &gsn_hunt,                    FORM_WOLF       },
-        { &gsn_gaias_warning,           FORM_WOLF       },
-        { &gsn_wolfbite,                FORM_DIREWOLF   },
-        { &gsn_ravage,                  FORM_DIREWOLF   },
-        { &gsn_dual,                    FORM_DIREWOLF   },
-        { &gsn_berserk,                 FORM_DIREWOLF   },
-        { &gsn_howl,                    FORM_DIREWOLF   },
-        { &gsn_second_attack,           FORM_DIREWOLF   },
-        { &gsn_third_attack,            FORM_DIREWOLF   },
-        { &gsn_fourth_attack,           FORM_DIREWOLF   },
-        { &gsn_rage,                    FORM_DIREWOLF   },
-        { &gsn_dodge,                   FORM_DIREWOLF   },
-        { &gsn_fast_healing,            FORM_DIREWOLF   },
-        { &gsn_enhanced_hit,            FORM_DIREWOLF   },
-        { &gsn_resist_magic,            FORM_DIREWOLF   },
-        { &gsn_resist_toxin,            FORM_DIREWOLF   },
-        { &gsn_hunt,                    FORM_DIREWOLF   },
-        { &gsn_gaias_warning,           FORM_DIREWOLF   },
-        { &gsn_summon_demon,            FORM_DEMON      }
+        {       &gsn_hide,                      FORM_NONE               },
+        {       &gsn_sneak,                     FORM_NONE               },
+        {       &gsn_morph,                     FORM_ALL                },
+        {       &gsn_venom,                     FORM_SPIDER             },
+        {       &gsn_spy,                       FORM_HAWK               },
+        {       &gsn_swim,                      FORM_SNAKE              },
+        {       &gsn_constrict,                 FORM_SNAKE              },
+        {       &gsn_coil,                      FORM_SNAKE              },
+        {       &gsn_strangle,                  FORM_SNAKE              },
+        {       &gsn_backstab,                  FORM_SCORPION           },
+        {       &gsn_second_attack,             FORM_BEAR               },
+        {       &gsn_third_attack,              FORM_BEAR               },
+        {       &gsn_enhanced_damage,           FORM_BEAR               },
+        {       &gsn_second_attack,             FORM_TIGER              },
+        {       &gsn_dual,                      FORM_TIGER              },
+        {       &gsn_berserk,                   FORM_TIGER              },
+        {       &gsn_forage,                    FORM_BEAR               },
+        {       &gsn_bite,                      FORM_TIGER              },
+        {       &gsn_maul,                      FORM_TIGER              },
+        {       &gsn_web,                       FORM_SPIDER             },
+        {       &gsn_venom,                     FORM_SPIDER             },
+        {       &gsn_breathe,                   FORM_HYDRA              },
+        {       &gsn_breathe,                   FORM_DRAGON             },
+        {       &gsn_whirlwind,                 FORM_HYDRA              },
+        {       &gsn_second_attack,             FORM_HYDRA              },
+        {       &gsn_third_attack,              FORM_HYDRA              },
+        {       &gsn_second_attack,             FORM_PHOENIX            },
+        {       &gsn_rescue,                    FORM_PHOENIX            },
+        {       &gsn_second_attack,             FORM_DRAGON             },
+        {       &gsn_enhanced_damage,           FORM_DRAGON             },
+        {       &gsn_dual,                      FORM_DRAGON             },
+        {       &gsn_dive,                      FORM_DRAGON             },
+        {       &gsn_second_attack,             FORM_GRIFFIN            },
+        {       &gsn_maul,                      FORM_GRIFFIN            },
+        {       &gsn_third_attack,              FORM_GRIFFIN            },
+        {       &gsn_enhanced_damage,           FORM_GRIFFIN            },
+        {       &gsn_dual,                      FORM_GRIFFIN            },
+        {       &gsn_tailwhip,                  FORM_DRAGON             },
+        {       &gsn_wolfbite,                  FORM_WOLF               },
+        {       &gsn_ravage,                    FORM_WOLF               },
+        {       &gsn_dual,                      FORM_WOLF               },
+        {       &gsn_berserk,                   FORM_WOLF               },
+        {       &gsn_howl,                      FORM_WOLF               },
+        {       &gsn_second_attack,             FORM_WOLF               },
+        {       &gsn_third_attack,              FORM_WOLF               },
+        {       &gsn_fourth_attack,             FORM_WOLF               },
+        {       &gsn_rage,                      FORM_WOLF               },
+        {       &gsn_dodge,                     FORM_WOLF               },
+        {       &gsn_fast_healing,              FORM_WOLF               },
+        {       &gsn_enhanced_hit,              FORM_WOLF               },
+        {       &gsn_resist_magic,              FORM_WOLF               },
+        {       &gsn_resist_toxin,              FORM_WOLF               },
+        {       &gsn_hunt,                      FORM_WOLF               },
+        {       &gsn_gaias_warning,             FORM_WOLF               },
+        {       &gsn_wolfbite,                  FORM_DIREWOLF           },
+        {       &gsn_ravage,                    FORM_DIREWOLF           },
+        {       &gsn_dual,                      FORM_DIREWOLF           },
+        {       &gsn_berserk,                   FORM_DIREWOLF           },
+        {       &gsn_howl,                      FORM_DIREWOLF           },
+        {       &gsn_second_attack,             FORM_DIREWOLF           },
+        {       &gsn_third_attack,              FORM_DIREWOLF           },
+        {       &gsn_fourth_attack,             FORM_DIREWOLF           },
+        {       &gsn_rage,                      FORM_DIREWOLF           },
+        {       &gsn_dodge,                     FORM_DIREWOLF           },
+        {       &gsn_fast_healing,              FORM_DIREWOLF           },
+        {       &gsn_enhanced_hit,              FORM_DIREWOLF           },
+        {       &gsn_resist_magic,              FORM_DIREWOLF           },
+        {       &gsn_resist_toxin,              FORM_DIREWOLF           },
+        {       &gsn_hunt,                      FORM_DIREWOLF           },
+        {       &gsn_gaias_warning,             FORM_DIREWOLF           },
+        {       &gsn_summon_demon,              FORM_DEMON              }
 };
+
 
 /*
  * Vampire disallow table
  * Ugly hack to hide some skills from vampires and werewolves
  */
-struct vampire_gag vampire_gag_table [MAX_VAMPIRE_GAG] =
+struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
 {
-        { &gsn_group_forms      },
-        { &gsn_form_chameleon   },
-        { &gsn_form_hawk        },
-        { &gsn_form_cat         },
-        { &gsn_form_bat         },
-        { &gsn_form_snake       },
-        { &gsn_form_scorpion    },
-        { &gsn_form_spider      },
-        { &gsn_form_bear        },
-        { &gsn_form_tiger       },
-        { &gsn_venom            },
-        { &gsn_spy              },
-        { &gsn_swim             },
-        { &gsn_constrict        },
-        { &gsn_coil             },
-        { &gsn_web              },
-        { &gsn_strangle,        },
-        { &gsn_forage           },
-        { &gsn_tailwhip         },
-        { &gsn_bite             },
-        { &gsn_maul             },
+        {       &gsn_group_forms                },
+        {       &gsn_form_chameleon             },
+        {       &gsn_form_hawk                  },
+        {       &gsn_form_cat                   },
+        {       &gsn_form_bat                   },
+        {       &gsn_form_snake                 },
+        {       &gsn_form_scorpion              },
+        {       &gsn_form_spider                },
+        {       &gsn_form_bear                  },
+        {       &gsn_form_tiger                 },
+        {       &gsn_venom                      },
+        {       &gsn_spy                        },
+        {       &gsn_swim                       },
+        {       &gsn_constrict                  },
+        {       &gsn_coil                       },
+        {       &gsn_web                        },
+        {       &gsn_strangle,                  },
+        {       &gsn_forage                     },
+        {       &gsn_tailwhip                   },
+        {       &gsn_bite                       },
+        {       &gsn_maul                       },
 
         /*
          * Skills below gagged by vamps but shown by werewolves
          * Need to edit prac_slist() if the number of wolf-only
          * skills is changed
          */
-        { &gsn_morph            },
-        { &gsn_wolfbite         },
-        { &gsn_ravage           },
+        {       &gsn_morph                      },
+        {       &gsn_wolfbite                   },
+        {       &gsn_ravage                     },
 };
 
 
@@ -741,278 +741,278 @@ struct vampire_gag vampire_gag_table [MAX_VAMPIRE_GAG] =
  */
 const struct color_data color_table [] =
 {
-        { "\x1b[30m",     "$R$0",   "black",         0 },
-        { "\x1b[34m",     "$R$1",   "blue",          1 },
-        { "\x1b[32m",     "$R$2",   "green",         2 },
-        { "\x1b[36m",     "$R$3",   "cyan",          3 },
-        { "\x1b[31m",     "$R$4",   "red",           4 },
-        { "\x1b[35m",     "$R$5",   "purple",        5 },
-        { "\x1b[33m",     "$R$6",   "brown",         6 },
-        { "\x1b[37m",     "$R$7",   "grey",          7 },
-        { "\x1b[30;1m",   "$B$0",   "dark_grey",     8 },
-        { "\x1b[34;1m",   "$B$1",   "light_blue",    9 },
-        { "\x1b[32;1m",   "$B$2",   "light_green",  10 },
-        { "\x1b[36;1m",   "$B$3",   "light_cyan",   11 },
-        { "\x1b[31;1m",   "$B$4",   "light_red",    12 },
-        { "\x1b[35;1m",   "$B$5",   "magenta",      13 },
-        { "\x1b[33;1m",   "$B$6",   "yellow",       14 },
-        { "\x1b[37;1m",   "$B$7",   "white",        15 },
-        { "\x1b[1m",      "$B",     "bold",         16 },
-        { "\x1b[5m",      "$F",     "flashing",     17 },
-        { "\x1b[7m",      "$I",     "inverse",      18 },
-        { "\x1b[0m",      "$R",     "normal",       19 }
+        { "\x1b[30m",           "$R$0",         "black",                 0 },
+        { "\x1b[34m",           "$R$1",         "blue",                  1 },
+        { "\x1b[32m",           "$R$2",         "green",                 2 },
+        { "\x1b[36m",           "$R$3",         "cyan",                  3 },
+        { "\x1b[31m",           "$R$4",         "red",                   4 },
+        { "\x1b[35m",           "$R$5",         "purple",                5 },
+        { "\x1b[33m",           "$R$6",         "brown",                 6 },
+        { "\x1b[37m",           "$R$7",         "grey",                  7 },
+        { "\x1b[30;1m",         "$B$0",         "dark_grey",             8 },
+        { "\x1b[34;1m",         "$B$1",         "light_blue",            9 },
+        { "\x1b[32;1m",         "$B$2",         "light_green",          10 },
+        { "\x1b[36;1m",         "$B$3",         "light_cyan",           11 },
+        { "\x1b[31;1m",         "$B$4",         "light_red",            12 },
+        { "\x1b[35;1m",         "$B$5",         "magenta",              13 },
+        { "\x1b[33;1m",         "$B$6",         "yellow",               14 },
+        { "\x1b[37;1m",         "$B$7",         "white",                15 },
+        { "\x1b[1m",            "$B",           "bold",                 16 },
+        { "\x1b[5m",            "$F",           "flashing",             17 },
+        { "\x1b[7m",            "$I",           "inverse",              18 },
+        { "\x1b[0m",            "$R",           "normal",               19 }
 };
 
 
 /*
  *  Old experience table
  */
-const struct level_struct old_level_table [LEVEL_HERO] =
+const struct level_struct old_level_table [ LEVEL_HERO ] =
 {
-        {   1,      1000,   1000    },
-        {   2,      1311,   2311    },
-        {   3,      1728,   4039    },
-        {   4,      2744,   6783    },
-        {   5,      3375,   10158   },
-        {   6,      4096,   14254   },
-        {   7,      4913,   19167   },
-        {   8,      5832,   24999   },
-        {   9,      6859,   31858   },
-        {  10,      8000,   39858   },
-        {  11,      9261,   49119   },
-        {  12,     10468,   59767   },
-        {  13,     12167,   71934   },
-        {  14,     13824,   85758   },
-        {  15,     15625,  101383   },
-        {  16,     17576,  118959   },
-        {  17,     19683,  138642   },
-        {  18,     21952,  160594   },
-        {  19,     24389,  184983   },
-        {  20,     27000,  211983   },
-        {  21,     29991,  241974   },
-        {  22,     32768,  274742   },
-        {  23,     35937,  310679   },
-        {  24,     39304,  349983   },
-        {  25,     42875,  392858   },
-        {  26,     46656,  439514   },
-        {  27,     50653,  490167   },
-        {  28,     54872,  545039   },
-        {  29,     59319,  604358   },
-        {  30,     64000,  668358   },
-        {  31,     68921,  737279   },
-        {  32,     74088,  811367   },
-        {  33,     79507,  890874   },
-        {  34,     85184,  976058   },
-        {  35,     91125,  1067183  },
-        {  36,     97336,  1164519  },
-        {  37,    103823,  1268342  },
-        {  38,    110592,  1378934  },
-        {  39,    117649,  1496583  },
-        {  40,    125000,  1621583  },
-        {  41,    132651,  1754234  },
-        {  42,    140608,  1894842  },
-        {  43,    148877,  2043719  },
-        {  44,    157464,  2201183  },
-        {  45,    166375,  2367558  },
-        {  46,    175616,  2543174  },
-        {  47,    185193,  2728367  },
-        {  48,    195112,  2923479  },
-        {  49,    205379,  3128858  },
-        {  50,    216000,  3344858  },
-        {  51,    226981,  3571839  },
-        {  52,    238328,  3810167  },
-        {  53,    250047,  4060214  },
-        {  54,    262144,  4322358  },
-        {  55,    274625,  4596983  },
-        {  56,  287496, 4884479 },
-        {  57,  300763, 5185242 },
-        {  58,  314432, 5499674 },
-        {  59,  328509, 5828183 },
-        {  60,  343000, 6171183 },
-        {  61,  357911, 6205483 },
-        {  62,  373248, 6578731 },
-        {  63,  389017, 6967748 },
-        {  64,  405224, 7372972 },
-        {  65,  421875, 7794847 },
-        {  66,  438976, 8233823 },
-        {  67,  456533, 8690356 },
-        {  68,  474552, 9164908 },
-        {  69,  493039, 9657947 },
-        {  70,  512000, 10169947 },
-        {  71,  531441, 10701388 },
-        {  72,  551368, 11252756 },
-        {  73,  571787, 11824543 },
-        {  74,  592704, 12417247 },
-        {  75,  614125, 13031372 },
-        {  76,  636056, 13667428 },
-        {  77,  658503, 14325931 },
-        {  78,  681472, 15007403 },
-        {  79,  704969, 15712372 },
-        {  80,  729000, 16441372 },
-        {  81,  753571, 17194943 },
-        {  82,  778688, 17973631 },
-        {  83,  804357, 18777988 },
-        {  84,  830584, 19608572 },
-        {  85,  857375, 20465947 },
-        {  86,  884736, 21350683 },
-        {  87,  912673, 22263356 },
-        {  88,  941192, 23204548 },
-        {  89,  970299, 24114847 },
-        {  90,  885153, 25000000 },
-        {  91,  1000000, 26000000 },
-        {  92,  1000000, 27000000 },
-        {  93,  1000000, 28000000 },
-        {  94,  1000000, 29000000 },
-        {  95,  1000000, 30000000 },
-        {  96,  1000000, 31000000 },
-        {  97,  1000000, 32000000 },
-        {  98,  1000000, 33000000 },
-        {  99,  1000000, 34000000 },
-        { 100,  6000000, 40000000 }
+        {   1,             1000,            1000 },
+        {   2,             1311,            2311 },
+        {   3,             1728,            4039 },
+        {   4,             2744,            6783 },
+        {   5,             3375,           10158 },
+        {   6,             4096,           14254 },
+        {   7,             4913,           19167 },
+        {   8,             5832,           24999 },
+        {   9,             6859,           31858 },
+        {  10,             8000,           39858 },
+        {  11,             9261,           49119 },
+        {  12,            10468,           59767 },
+        {  13,            12167,           71934 },
+        {  14,            13824,           85758 },
+        {  15,            15625,          101383 },
+        {  16,            17576,          118959 },
+        {  17,            19683,          138642 },
+        {  18,            21952,          160594 },
+        {  19,            24389,          184983 },
+        {  20,            27000,          211983 },
+        {  21,            29991,          241974 },
+        {  22,            32768,          274742 },
+        {  23,            35937,          310679 },
+        {  24,            39304,          349983 },
+        {  25,            42875,          392858 },
+        {  26,            46656,          439514 },
+        {  27,            50653,          490167 },
+        {  28,            54872,          545039 },
+        {  29,            59319,          604358 },
+        {  30,            64000,          668358 },
+        {  31,            68921,          737279 },
+        {  32,            74088,          811367 },
+        {  33,            79507,          890874 },
+        {  34,            85184,          976058 },
+        {  35,            91125,         1067183 },
+        {  36,            97336,         1164519 },
+        {  37,           103823,         1268342 },
+        {  38,           110592,         1378934 },
+        {  39,           117649,         1496583 },
+        {  40,           125000,         1621583 },
+        {  41,           132651,         1754234 },
+        {  42,           140608,         1894842 },
+        {  43,           148877,         2043719 },
+        {  44,           157464,         2201183 },
+        {  45,           166375,         2367558 },
+        {  46,           175616,         2543174 },
+        {  47,           185193,         2728367 },
+        {  48,           195112,         2923479 },
+        {  49,           205379,         3128858 },
+        {  50,           216000,         3344858 },
+        {  51,           226981,         3571839 },
+        {  52,           238328,         3810167 },
+        {  53,           250047,         4060214 },
+        {  54,           262144,         4322358 },
+        {  55,           274625,         4596983 },
+        {  56,           287496,         4884479 },
+        {  57,           300763,         5185242 },
+        {  58,           314432,         5499674 },
+        {  59,           328509,         5828183 },
+        {  60,           343000,         6171183 },
+        {  61,           357911,         6205483 },
+        {  62,           373248,         6578731 },
+        {  63,           389017,         6967748 },
+        {  64,           405224,         7372972 },
+        {  65,           421875,         7794847 },
+        {  66,           438976,         8233823 },
+        {  67,           456533,         8690356 },
+        {  68,           474552,         9164908 },
+        {  69,           493039,         9657947 },
+        {  70,           512000,        10169947 },
+        {  71,           531441,        10701388 },
+        {  72,           551368,        11252756 },
+        {  73,           571787,        11824543 },
+        {  74,           592704,        12417247 },
+        {  75,           614125,        13031372 },
+        {  76,           636056,        13667428 },
+        {  77,           658503,        14325931 },
+        {  78,           681472,        15007403 },
+        {  79,           704969,        15712372 },
+        {  80,           729000,        16441372 },
+        {  81,           753571,        17194943 },
+        {  82,           778688,        17973631 },
+        {  83,           804357,        18777988 },
+        {  84,           830584,        19608572 },
+        {  85,           857375,        20465947 },
+        {  86,           884736,        21350683 },
+        {  87,           912673,        22263356 },
+        {  88,           941192,        23204548 },
+        {  89,           970299,        24114847 },
+        {  90,           885153,        25000000 },
+        {  91,          1000000,        26000000 },
+        {  92,          1000000,        27000000 },
+        {  93,          1000000,        28000000 },
+        {  94,          1000000,        29000000 },
+        {  95,          1000000,        30000000 },
+        {  96,          1000000,        31000000 },
+        {  97,          1000000,        32000000 },
+        {  98,          1000000,        33000000 },
+        {  99,          1000000,        34000000 },
+        { 100,          6000000,        40000000 }
 };
 
 
 /*
  *  New level table
  */
-const struct level_struct level_table [LEVEL_HERO] =
+const struct level_struct level_table [ LEVEL_HERO ] =
 {
-        {   1,  1000,   1000    },
-        {   2,  1300,   2300    },
-        {   3,  1700,   4000    },
-        {   4,  2700,   6700    },
-        {   5,  3350,   10050   },
-        {   6,  4100,   14150   },
-        {   7,  4900,   19050   },
-        {   8,  5800,   24850   },
-        {   9,  6850,   31700   },
-        {  10,  8000,   39700   },
-        {  11,  8800,   48500   },
-        {  12,  9950,   58450   },
-        {  13,  11600,  70050   },
-        {  14,  13200,  83250   },
-        {  15,  14850,  98100   },
-        {  16,  16700,  114800  },
-        {  17,  18800,  133600  },
-        {  18,  20850,  154450  },
-        {  19,  23200,  177650  },
-        {  20,  25650,  203300  },
-        {  21,  27000,  230300  },
-        {  22,  29500,  259800  },
-        {  23,  32350,  292150  },
-        {  24,  35400,  327550  },
-        {  25,  38550,  366100  },
-        {  26,  41950,  408050  },
-        {  27,  45550,  453600  },
-        {  28,  49350,  502950  },
-        {  29,  53350,  556300  },
-        {  30,  57600,  613900  },
-        {  31,  55150,  669050  },
-        {  32,  59250,  728300  },
-        {  33,  63600,  791900  },
-        {  34,  68150,  860050  },
-        {  35,  72900,  932950  },
-        {  36,  77850,  1010800 },
-        {  37,  83050,  1093850 },
-        {  38,  88500,  1182350 },
-        {  39,  94100,  1276450 },
-        {  40,  100000, 1376450 },
-        {  41,  106000, 1482450 },
-        {  42,  112500, 1594950 },
-        {  43,  119050, 1714000 },
-        {  44,  125500, 1839500 },
-        {  45,  133000, 1972500 },
-        {  46,  140500, 2113000 },
-        {  47,  148000, 2261000 },
-        {  48,  156000, 2417000 },
-        {  49,  164500, 2581500 },
-        {  50,  172500, 2754000 },
-        {  51,  170000, 2924000 },
-        {  52,  178500, 3102500 },
-        {  53,  187500, 3290000 },
-        {  54,  196500, 3486500 },
-        {  55,  205500, 3692000 },
-        {  56,  216000, 3908000 },
-        {  57,  226000, 4134000 },
-        {  58,  236000, 4370000 },
-        {  59,  247000, 4617000 },
-        {  60,  257000, 4874000 },
-        {  61,  269000, 5143000 },
-        {  62,  278000, 5421000 },
-        {  63,  292000, 5713000 },
-        {  64,  304000, 6017000 },
-        {  65,  317000, 6334000 },
-        {  66,  329000, 6663000 },
-        {  67,  342000, 7005000 },
-        {  68,  355000, 7360000 },
-        {  69,  369000, 7729000 },
-        {  70,  384000, 8113000 },
-        {  71,  371000, 8484000 },
-        {  72,  385000, 8869000 },
-        {  73,  400000, 9269000 },
-        {  74,  414000, 9683000 },
-        {  75,  430000, 10113000 },
-        {  76,  445000, 10558000 },
-        {  77,  460000, 11018000 },
-        {  78,  477000, 11495000 },
-        {  79,  493000, 11988000 },
-        {  80,  510000, 12498000 },
-        {  81,  452000, 12950000 },
-        {  82,  467000, 13417000 },
-        {  83,  482000, 13899000 },
-        {  84,  498000, 14397000 },
-        {  85,  514000, 14911000 },
-        {  86,  530000, 15441000 },
-        {  87,  547000, 15988000 },
-        {  88,  564000, 16552000 },
-        {  89,  582000, 17134000 },
-        {  90,  466000, 17600000 },
-        {  91,  600000, 18200000 },
-        {  92,  600000, 18800000 },
-        {  93,  600000, 19400000 },
-        {  94,  600000, 20000000 },
-        {  95,  600000, 20600000 },
-        {  96,  700000, 21300000 },
-        {  97,  800000, 22100000 },
-        {  98,  900000, 23000000 },
-        {  99,  1000000, 24000000 },
-        { 100,  3000000, 27000000 }
+        {   1,             1000,            1000 },
+        {   2,             1300,            2300 },
+        {   3,             1700,            4000 },
+        {   4,             2700,            6700 },
+        {   5,             3350,           10050 },
+        {   6,             4100,           14150 },
+        {   7,             4900,           19050 },
+        {   8,             5800,           24850 },
+        {   9,             6850,           31700 },
+        {  10,             8000,           39700 },
+        {  11,             8800,           48500 },
+        {  12,             9950,           58450 },
+        {  13,            11600,           70050 },
+        {  14,            13200,           83250 },
+        {  15,            14850,           98100 },
+        {  16,            16700,          114800 },
+        {  17,            18800,          133600 },
+        {  18,            20850,          154450 },
+        {  19,            23200,          177650 },
+        {  20,            25650,          203300 },
+        {  21,            27000,          230300 },
+        {  22,            29500,          259800 },
+        {  23,            32350,          292150 },
+        {  24,            35400,          327550 },
+        {  25,            38550,          366100 },
+        {  26,            41950,          408050 },
+        {  27,            45550,          453600 },
+        {  28,            49350,          502950 },
+        {  29,            53350,          556300 },
+        {  30,            57600,          613900 },
+        {  31,            55150,          669050 },
+        {  32,            59250,          728300 },
+        {  33,            63600,          791900 },
+        {  34,            68150,          860050 },
+        {  35,            72900,          932950 },
+        {  36,            77850,         1010800 },
+        {  37,            83050,         1093850 },
+        {  38,            88500,         1182350 },
+        {  39,            94100,         1276450 },
+        {  40,           100000,         1376450 },
+        {  41,           106000,         1482450 },
+        {  42,           112500,         1594950 },
+        {  43,           119050,         1714000 },
+        {  44,           125500,         1839500 },
+        {  45,           133000,         1972500 },
+        {  46,           140500,         2113000 },
+        {  47,           148000,         2261000 },
+        {  48,           156000,         2417000 },
+        {  49,           164500,         2581500 },
+        {  50,           172500,         2754000 },
+        {  51,           170000,         2924000 },
+        {  52,           178500,         3102500 },
+        {  53,           187500,         3290000 },
+        {  54,           196500,         3486500 },
+        {  55,           205500,         3692000 },
+        {  56,           216000,         3908000 },
+        {  57,           226000,         4134000 },
+        {  58,           236000,         4370000 },
+        {  59,           247000,         4617000 },
+        {  60,           257000,         4874000 },
+        {  61,           269000,         5143000 },
+        {  62,           278000,         5421000 },
+        {  63,           292000,         5713000 },
+        {  64,           304000,         6017000 },
+        {  65,           317000,         6334000 },
+        {  66,           329000,         6663000 },
+        {  67,           342000,         7005000 },
+        {  68,           355000,         7360000 },
+        {  69,           369000,         7729000 },
+        {  70,           384000,         8113000 },
+        {  71,           371000,         8484000 },
+        {  72,           385000,         8869000 },
+        {  73,           400000,         9269000 },
+        {  74,           414000,         9683000 },
+        {  75,           430000,        10113000 },
+        {  76,           445000,        10558000 },
+        {  77,           460000,        11018000 },
+        {  78,           477000,        11495000 },
+        {  79,           493000,        11988000 },
+        {  80,           510000,        12498000 },
+        {  81,           452000,        12950000 },
+        {  82,           467000,        13417000 },
+        {  83,           482000,        13899000 },
+        {  84,           498000,        14397000 },
+        {  85,           514000,        14911000 },
+        {  86,           530000,        15441000 },
+        {  87,           547000,        15988000 },
+        {  88,           564000,        16552000 },
+        {  89,           582000,        17134000 },
+        {  90,           466000,        17600000 },
+        {  91,           600000,        18200000 },
+        {  92,           600000,        18800000 },
+        {  93,           600000,        19400000 },
+        {  94,           600000,        20000000 },
+        {  95,           600000,        20600000 },
+        {  96,           700000,        21300000 },
+        {  97,           800000,        22100000 },
+        {  98,           900000,        23000000 },
+        {  99,          1000000,        24000000 },
+        { 100,          3000000,        27000000 }
 };
 
 
 /*
  * Attribute bonus tables
  */
-const struct str_app_type str_app [MAX_STAT] =
+const struct str_app_type str_app [ MAX_STAT ] =
 {
         /*  to-hit, to-dam, carry weight, wield weight  */
 
-        { -5, -4,   0,  0 },  /* 0 */
-        { -5, -4,   3,  1 },
-        { -3, -2,   3,  2 },
-        { -3, -1,  10,  3 },
-        { -2, -1,  25,  4 },
-        { -2, -1,  55,  5 },  /* 5 */
-        { -1,  0,  80,  6 },
-        { -1,  0,  90,  7 },
-        {  0,  0, 100,  8 },
-        {  0,  0, 100,  9 },
-        {  0,  0, 115, 10 },  /* 10 */
-        {  0,  0, 115, 11 },
-        {  0,  0, 140, 12 },
-        {  0,  0, 140, 13 },
-        {  0,  1, 170, 14 },
-        {  1,  1, 200, 15 },  /* 15 */
-        {  1,  2, 250, 16 },
-        {  2,  3, 300, 22 },
-        {  2,  4, 350, 25 },
-        {  3,  5, 400, 30 },
-        {  3,  6, 500, 35 },  /* 20 */
-        {  4,  7, 600, 40 },
-        {  5,  7, 700, 45 },
-        {  6,  8, 800, 50 },
-        {  8, 10, 900, 55 },
-        { 10, 12, 950, 60 },  /* 25 */
+        { -5, -4,    0,  0 },  /* 0 */
+        { -5, -4,    3,  1 },
+        { -3, -2,    3,  2 },
+        { -3, -1,   10,  3 },
+        { -2, -1,   25,  4 },
+        { -2, -1,   55,  5 },  /* 5 */
+        { -1,  0,   80,  6 },
+        { -1,  0,   90,  7 },
+        {  0,  0,  100,  8 },
+        {  0,  0,  100,  9 },
+        {  0,  0,  115, 10 },  /* 10 */
+        {  0,  0,  115, 11 },
+        {  0,  0,  140, 12 },
+        {  0,  0,  140, 13 },
+        {  0,  1,  170, 14 },
+        {  1,  1,  200, 15 },  /* 15 */
+        {  1,  2,  250, 16 },
+        {  2,  3,  300, 22 },
+        {  2,  4,  350, 25 },
+        {  3,  5,  400, 30 },
+        {  3,  6,  500, 35 },  /* 20 */
+        {  4,  7,  600, 40 },
+        {  5,  7,  700, 45 },
+        {  6,  8,  800, 50 },
+        {  8, 10,  900, 55 },
+        { 10, 12,  950, 60 },  /* 25 */
         { 12, 13, 1000, 70 },
         { 13, 14, 1050, 80 },
         { 16, 16, 1100, 85 },
@@ -1022,35 +1022,35 @@ const struct str_app_type str_app [MAX_STAT] =
 };
 
 
-const struct dex_app_type dex_app [MAX_STAT] =
+const struct dex_app_type dex_app [ MAX_STAT ] =
 {
         /* defensive adjustment, initiative bonus */
-        {   60, 0 },   /* 0 */
+        {   60, 0 },  /* 0 */
         {   50, 0 },
         {   50, 0 },
         {   40, 0 },
         {   30, 0 },
-        {   20, 0 },   /* 5 */
+        {   20, 0 },  /* 5 */
         {   10, 0 },
         {    0, 0 },
         {    0, 0 },
         {    0, 0 },
-        {    0, 0 },   /* 10 */
+        {    0, 0 },  /* 10 */
         {    0, 0 },
         {    0, 0 },
         {    0, 0 },
         {    0, 0 },
-        { - 10, 0 },   /* 15 */
+        { - 10, 0 },  /* 15 */
         { - 15, 0 },
         { - 20, 0 },
         { - 30, 0 },
         { - 40, 0 },
-        { - 50, 0 },   /* 20 */
+        { - 50, 0 },  /* 20 */
         { - 65, 0 },
         { - 75, 0 },
         { - 90, 0 },
         { -105, 0 },
-        { -120, 0 },    /* 25 */
+        { -120, 0 },  /* 25 */
         { -130, 1 },
         { -140, 1 },
         { -150, 2 },
@@ -1060,41 +1060,41 @@ const struct dex_app_type dex_app [MAX_STAT] =
 };
 
 
-const struct con_app_type con_app [MAX_STAT] =
+const struct con_app_type con_app [ MAX_STAT ] =
 {
         /*  hp, shock */
 
-        { -4, 20 },   /*  0 */
+        { -4, 20 },  /* 0 */
         { -3, 25 },
         { -2, 30 },
         { -2, 35 },
         { -1, 40 },
-        { -1, 45 },   /*  5 */
+        { -1, 45 },  /* 5 */
         { -1, 50 },
         {  0, 55 },
         {  0, 60 },
         {  0, 65 },
-        {  0, 70 },   /* 10 */
+        {  0, 70 },  /* 10 */
         {  0, 75 },
         {  0, 80 },
         {  0, 85 },
         {  0, 88 },
-        {  1, 90 },   /* 15 */
+        {  1, 90 },  /* 15 */
         {  2, 95 },
         {  3, 97 },
         {  4, 99 },
         {  5, 99 },
-        {  6, 99 },   /* 20 */
+        {  6, 99 },  /* 20 */
         {  7, 99 },
         {  8, 99 },
         {  9, 99 },
         { 10, 99 },
-        { 11, 99 },    /* 25 */
+        { 11, 99 },  /* 25 */
         { 12, 99 },
         { 13, 99 },
         { 15, 99 },
         { 16, 99 },
-        { 18, 99 },   /*  30  */
+        { 18, 99 },  /* 30 */
         { 20, 99 }
 };
 
@@ -1103,34 +1103,31 @@ const struct con_app_type con_app [MAX_STAT] =
  * Liquid properties.
  * Used in world.obj.
  */
-const struct liq_type liq_table [LIQ_MAX] =
+const struct liq_type liq_table [ LIQ_MAX ] =
 {
-        { "water",                  "clear",        {  0, 0, 10 }   },  /*  0 */
-        { "beer",                   "amber",        {  3, 2,  5 }   },
-        { "wine",                   "rose",         {  5, 2,  5 }   },
-        { "ale",                    "brown",        {  2, 2,  5 }   },
-        { "dark ale",               "dark",         {  1, 2,  5 }   },
-
-        { "whisky",                 "golden",       {  6, 1,  4 }   },  /*  5 */
-        { "lemonade",               "pink",         {  0, 1,  8 }   },
-        { "firebreather",           "boiling",      { 10, 0,  0 }   },
-        { "local specialty",        "everclear",    {  3, 3,  3 }   },
-        { "slime mold juice",       "green",        {  0, 4, -8 }   },
-
-        { "milk",                   "white",        {  0, 3,  6 }   },  /* 10 */
-        { "tea",                    "tan",          {  0, 1,  6 }   },
-        { "coffee",                 "black",        {  0, 1,  6 }   },
-        { "blood",                  "red",          {  0, 2, -1 }   },
-        { "salt water",             "clear",        {  0, 1, -2 }   },
-
-        { "cola",                   "cherry",       {  0, 1,  5 }   }   /* 15 */
+        { "water",                      "clear",                {  0, 0, 10 } },  /* 0 */
+        { "beer",                       "amber",                {  3, 2,  5 } },
+        { "wine",                       "rose",                 {  5, 2,  5 } },
+        { "ale",                        "brown",                {  2, 2,  5 } },
+        { "dark ale",                   "dark",                 {  1, 2,  5 } },
+        { "whisky",                     "golden",               {  6, 1,  4 } },  /* 5 */
+        { "lemonade",                   "pink",                 {  0, 1,  8 } },
+        { "firebreather",               "boiling",              { 10, 0,  0 } },
+        { "local speciality",           "everclear",            {  3, 3,  3 } },
+        { "slime mould juice",          "green",                {  0, 4, -8 } },
+        { "milk",                       "white",                {  0, 3,  6 } },  /* 10 */
+        { "tea",                        "tan",                  {  0, 1,  6 } },
+        { "coffee",                     "black",                {  0, 1,  6 } },
+        { "blood",                      "red",                  {  0, 2, -1 } },
+        { "salt water",                 "clear",                {  0, 1, -2 } },
+        { "cola",                       "cherry",               {  0, 1,  5 } }   /* 15 */
 };
 
 
 /*
  *  Skill pre-reqs
  */
-struct pre_req_struct pre_req_table [MAX_PRE_REQ] =
+struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 {
 #include "pre_reqs/pre_req-common.c"
 #include "pre_reqs/pre_req-thief.c"
@@ -1158,14 +1155,14 @@ struct pre_req_struct pre_req_table [MAX_PRE_REQ] =
 #include "pre_reqs/pre_req-ranger.c"
 #include "pre_reqs/pre_req-barbarian.c"
 
-        { &gsn_sstime,       &gsn_sstime,               100,            0}
+        { &gsn_sstime,  &gsn_sstime,    100,    0 }
 };
 
 
 /*
  *  Skill practice groups
  */
-const int *spell_groups [MAX_GROUPS] =
+const int *spell_groups [ MAX_GROUPS ] =
 {
         &gsn_group_thievery,
         &gsn_group_stealth,
@@ -1228,433 +1225,433 @@ const int *spell_groups [MAX_GROUPS] =
  */
 struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 {
-        { &gsn_group_thievery,          0 },
-        { &gsn_pick_lock,               0 },
-        { &gsn_find_traps,              0 },
-        { &gsn_disable,                 0 },
-        { &gsn_climb,                   0 },
-        { &gsn_intimidate,              0 },
-        { &gsn_extort,                  0 },
+        { &gsn_group_thievery,                          0 },
+        { &gsn_pick_lock,                               0 },
+        { &gsn_find_traps,                              0 },
+        { &gsn_disable,                                 0 },
+        { &gsn_climb,                                   0 },
+        { &gsn_intimidate,                              0 },
+        { &gsn_extort,                                  0 },
 
-        { &gsn_group_stealth,           0 },
-        { &gsn_hide,                    0 },
-        { &gsn_sneak,                   0 },
-        { &gsn_tail,                    0 },
-        { &gsn_backstab,                0 },
-        { &gsn_circle,                  0 },
-        { &gsn_second_circle,           0 },
-        { &gsn_peek,                    0 },
-        { &gsn_steal,                   0 },
-        { &gsn_assassinate,             0 },
-        { &gsn_double_backstab,         0 },
+        { &gsn_group_stealth,                           0 },
+        { &gsn_hide,                                    0 },
+        { &gsn_sneak,                                   0 },
+        { &gsn_tail,                                    0 },
+        { &gsn_backstab,                                0 },
+        { &gsn_circle,                                  0 },
+        { &gsn_second_circle,                           0 },
+        { &gsn_peek,                                    0 },
+        { &gsn_steal,                                   0 },
+        { &gsn_assassinate,                             0 },
+        { &gsn_double_backstab,                         0 },
 
-        { &gsn_group_hunting,           0 },
-        { &gsn_trap,                    0 },
-        { &gsn_hunt,                    0 },
+        { &gsn_group_hunting,                           0 },
+        { &gsn_trap,                                    0 },
+        { &gsn_hunt,                                    0 },
 
-        { &gsn_group_riding,            0 },
-        { &gsn_mount,                   0 },
-        { &gsn_dismount,                0 },
-        { &gsn_joust,                   0 },
-        { &gsn_destrier,                0 },
+        { &gsn_group_riding,                            0 },
+        { &gsn_mount,                                   0 },
+        { &gsn_dismount,                                0 },
+        { &gsn_joust,                                   0 },
+        { &gsn_destrier,                                0 },
 
-        { &gsn_group_unarmed,           0 },
-        { &gsn_kick,                    0 },
-        { &gsn_headbutt,                0 },
-        { &gsn_second_headbutt,         0 },
-        { &gsn_stun,                    0 },
-        { &gsn_trip,                    0 },
-        { &gsn_dirt,                    0 },
-        { &gsn_unarmed_combat,          0 },
+        { &gsn_group_unarmed,                           0 },
+        { &gsn_kick,                                    0 },
+        { &gsn_headbutt,                                0 },
+        { &gsn_second_headbutt,                         0 },
+        { &gsn_stun,                                    0 },
+        { &gsn_trip,                                    0 },
+        { &gsn_dirt,                                    0 },
+        { &gsn_unarmed_combat,                          0 },
 
-        { &gsn_group_armed,             0 },
-        { &gsn_second_attack,           0 },
-        { &gsn_enhanced_damage,         0 },
-        { &gsn_third_attack,            0 },
-        { &gsn_fourth_attack,           0 },
-        { &gsn_feint,                   0 },
-        { &gsn_dual,                    0 },
-        { &gsn_thrust,                  0 },
+        { &gsn_group_armed,                             0 },
+        { &gsn_second_attack,                           0 },
+        { &gsn_enhanced_damage,                         0 },
+        { &gsn_third_attack,                            0 },
+        { &gsn_fourth_attack,                           0 },
+        { &gsn_feint,                                   0 },
+        { &gsn_dual,                                    0 },
+        { &gsn_thrust,                                  0 },
 
-        { &gsn_group_defense,           0 },
-        { &gsn_rescue,                  0 },
-        { &gsn_dodge,                   0 },
-        { &gsn_parry,                   0 },
-        { &gsn_pre_empt,                0 },
-        { &gsn_disarm,                  0 },
-        { &gsn_grip,                    0 },
-        { &gsn_shield_block,            0 },
-        { &gsn_smash,                   0 },
-        { &gsn_acrobatics,              0 },
-        { &gsn_dual_parry,              0 },
+        { &gsn_group_defense,                           0 },
+        { &gsn_rescue,                                  0 },
+        { &gsn_dodge,                                   0 },
+        { &gsn_parry,                                   0 },
+        { &gsn_pre_empt,                                0 },
+        { &gsn_disarm,                                  0 },
+        { &gsn_grip,                                    0 },
+        { &gsn_shield_block,                            0 },
+        { &gsn_smash,                                   0 },
+        { &gsn_acrobatics,                              0 },
+        { &gsn_dual_parry,                              0 },
 
-        { &gsn_group_inner,             0 },
-        { &gsn_bash,                    0 },
-        { &gsn_warcry,                  0 },
-        { &gsn_battle_aura,             0 },
-        { &gsn_fast_healing,            0 },
-        { &gsn_berserk,                 0 },
+        { &gsn_group_inner,                             0 },
+        { &gsn_bash,                                    0 },
+        { &gsn_warcry,                                  0 },
+        { &gsn_battle_aura,                             0 },
+        { &gsn_fast_healing,                            0 },
+        { &gsn_berserk,                                 0 },
 
-        { &gsn_group_knowledge,         0 },
-        { &gsn_lore,                    0 },
-        { &gsn_advanced_consider,       0 },
-        { &gsn_enhanced_hit,            0 },
+        { &gsn_group_knowledge,                         0 },
+        { &gsn_lore,                                    0 },
+        { &gsn_advanced_consider,                       0 },
+        { &gsn_enhanced_hit,                            0 },
 
-        { &gsn_group_nature,            0 },
-        { &gsn_bark_skin,               0 },
-        { &gsn_sunray,                  0 },
-        { &gsn_moonray,                 0 },
-        { &gsn_wither,                  0 },
-        { &gsn_natures_fury,            0 },
+        { &gsn_group_nature,                            0 },
+        { &gsn_bark_skin,                               0 },
+        { &gsn_sunray,                                  0 },
+        { &gsn_moonray,                                 0 },
+        { &gsn_wither,                                  0 },
+        { &gsn_natures_fury,                            0 },
 
-        { &gsn_group_advcombat,         0 },
-        { &gsn_risposte,                0 },
-        { &gsn_whirlwind,               0 },
-        { &gsn_decapitate,              0 },
-        { &gsn_focus,                   0 },
+        { &gsn_group_advcombat,                         0 },
+        { &gsn_risposte,                                0 },
+        { &gsn_whirlwind,                               0 },
+        { &gsn_decapitate,                              0 },
+        { &gsn_focus,                                   0 },
 
-        { &gsn_group_metal,             0 },
-        { &gsn_sharpen,                 0 },
-        { &gsn_forge,                   0 },
+        { &gsn_group_metal,                             0 },
+        { &gsn_sharpen,                                 0 },
+        { &gsn_forge,                                   0 },
 
-        { &gsn_group_combos,            0 },
-        { &gsn_combo,                   0 },
-        { &gsn_combo2,                  0 },
-        { &gsn_combo3,                  0 },
-        { &gsn_combo4,                  0 },
+        { &gsn_group_combos,                            0 },
+        { &gsn_combo,                                   0 },
+        { &gsn_combo2,                                  0 },
+        { &gsn_combo3,                                  0 },
+        { &gsn_combo4,                                  0 },
 
-        { &gsn_group_arts,              0 },
-        { &gsn_atemi,                   0 },
-        { &gsn_kansetsu,                0 },
-        { &gsn_tetsui,                  0 },
-        { &gsn_shuto,                   0 },
-        { &gsn_yokogeri,                0 },
-        { &gsn_mawasigeri,              0 },
+        { &gsn_group_arts,                              0 },
+        { &gsn_atemi,                                   0 },
+        { &gsn_kansetsu,                                0 },
+        { &gsn_tetsui,                                  0 },
+        { &gsn_shuto,                                   0 },
+        { &gsn_yokogeri,                                0 },
+        { &gsn_mawasigeri,                              0 },
 
-        { &gsn_group_combat,            0 },
-        { &gsn_kiai,                    0 },
+        { &gsn_group_combat,                            0 },
+        { &gsn_kiai,                                    0 },
 
-        { &gsn_group_poison,            0 },
-        { &gsn_poison_weapon,           0 },
+        { &gsn_group_poison,                            0 },
+        { &gsn_poison_weapon,                           0 },
 
-        { &gsn_group_pugalism,          0 },
-        { &gsn_gouge,                   0 },
-        { &gsn_punch,                   0 },
-        { &gsn_grapple,                 0 },
-        { &gsn_flying_headbutt,         0 },
-        { &gsn_second_punch,            0 },
-        { &gsn_grab,                    0 },
-        { &gsn_choke,                   0 },
-        { &gsn_break_wrist,             0 },
-        { &gsn_snap_neck,               0 },
-        { &gsn_push,                    0 },
-        { &gsn_pugalism,                0 },
+        { &gsn_group_pugalism,                          0 },
+        { &gsn_gouge,                                   0 },
+        { &gsn_punch,                                   0 },
+        { &gsn_grapple,                                 0 },
+        { &gsn_flying_headbutt,                         0 },
+        { &gsn_second_punch,                            0 },
+        { &gsn_grab,                                    0 },
+        { &gsn_choke,                                   0 },
+        { &gsn_break_wrist,                             0 },
+        { &gsn_snap_neck,                               0 },
+        { &gsn_push,                                    0 },
+        { &gsn_pugalism,                                0 },
 
-        { &gsn_group_forms,             0 },
-        { &gsn_morph,                   0 },
-        { &gsn_form_chameleon,          0 },
-        { &gsn_form_hawk,               0 },
-        { &gsn_spy,                     0 },
-        { &gsn_form_cat,                0 },
-        { &gsn_form_snake,              0 },
-        { &gsn_coil,                    0 },
-        { &gsn_constrict,               0 },
-        { &gsn_strangle,                0 },
-        { &gsn_form_scorpion,           0 },
-        { &gsn_form_spider,             0 },
-        { &gsn_venom,                   0 },
-        { &gsn_web,                     0 },
-        { &gsn_form_bear,               0 },
-        { &gsn_forage,                  0 },
-        { &gsn_form_tiger,              0 },
-        { &gsn_bite,                    0 },
-        { &gsn_maul,                    0 },
-        { &gsn_wolfbite,                0 },
-        { &gsn_ravage,                  0 },
-        { &gsn_form_dragon,             0 },
-        { &gsn_dive,                    0 },
-        { &gsn_tailwhip,                0 },
-        { &gsn_form_demon,              0 },
-        { &gsn_form_phoenix,            0 },
-        { &gsn_form_hydra,              0 },
-        { &gsn_breathe,                 0 },
-        { &gsn_form_direwolf,           0 },
-        { &gsn_form_elemental_air,      0 },
-        { &gsn_form_elemental_water,    0 },
-        { &gsn_form_elemental_fire,     0 },
-        { &gsn_form_elemental_earth,    0 },
-        { &gsn_form_fly,                0 },
-        { &gsn_form_griffin,            0 },
-        { &gsn_form_wolf,               0 },
+        { &gsn_group_forms,                             0 },
+        { &gsn_morph,                                   0 },
+        { &gsn_form_chameleon,                          0 },
+        { &gsn_form_hawk,                               0 },
+        { &gsn_spy,                                     0 },
+        { &gsn_form_cat,                                0 },
+        { &gsn_form_snake,                              0 },
+        { &gsn_coil,                                    0 },
+        { &gsn_constrict,                               0 },
+        { &gsn_strangle,                                0 },
+        { &gsn_form_scorpion,                           0 },
+        { &gsn_form_spider,                             0 },
+        { &gsn_venom,                                   0 },
+        { &gsn_web,                                     0 },
+        { &gsn_form_bear,                               0 },
+        { &gsn_forage,                                  0 },
+        { &gsn_form_tiger,                              0 },
+        { &gsn_bite,                                    0 },
+        { &gsn_maul,                                    0 },
+        { &gsn_wolfbite,                                0 },
+        { &gsn_ravage,                                  0 },
+        { &gsn_form_dragon,                             0 },
+        { &gsn_dive,                                    0 },
+        { &gsn_tailwhip,                                0 },
+        { &gsn_form_demon,                              0 },
+        { &gsn_form_phoenix,                            0 },
+        { &gsn_form_hydra,                              0 },
+        { &gsn_breathe,                                 0 },
+        { &gsn_form_direwolf,                           0 },
+        { &gsn_form_elemental_air,                      0 },
+        { &gsn_form_elemental_water,                    0 },
+        { &gsn_form_elemental_fire,                     0 },
+        { &gsn_form_elemental_earth,                    0 },
+        { &gsn_form_fly,                                0 },
+        { &gsn_form_griffin,                            0 },
+        { &gsn_form_wolf,                               0 },
 
-        { &gsn_group_healing,           0 },
-        { &gsn_cure_light,              0 },
-        { &gsn_cure_serious,            0 },
-        { &gsn_cure_critical,           0 },
-        { &gsn_heal,                    0 },
+        { &gsn_group_healing,                           0 },
+        { &gsn_cure_light,                              0 },
+        { &gsn_cure_serious,                            0 },
+        { &gsn_cure_critical,                           0 },
+        { &gsn_heal,                                    0 },
 
-        { &gsn_group_harmful,           0 },
-        { &gsn_cause_light,             0 },
-        { &gsn_cause_serious,           0 },
-        { &gsn_cause_critical,          0 },
-        { &gsn_harm,                    0 },
+        { &gsn_group_harmful,                           0 },
+        { &gsn_cause_light,                             0 },
+        { &gsn_cause_serious,                           0 },
+        { &gsn_cause_critical,                          0 },
+        { &gsn_harm,                                    0 },
 
-        { &gsn_group_curative,          0 },
-        { &gsn_refresh,                 0 },
-        { &gsn_cure_blindness,          0 },
-        { &gsn_cure_poison,             0 },
-        { &gsn_remove_curse,            0 },
+        { &gsn_group_curative,                          0 },
+        { &gsn_refresh,                                 0 },
+        { &gsn_cure_blindness,                          0 },
+        { &gsn_cure_poison,                             0 },
+        { &gsn_remove_curse,                            0 },
 
-        { &gsn_group_disease,           0 },
-        { &gsn_blindness,               0 },
-        { &gsn_poison,                  0 },
-        { &gsn_curse,                   0 },
-        { &gsn_hex,                     0 },
+        { &gsn_group_disease,                           0 },
+        { &gsn_blindness,                               0 },
+        { &gsn_poison,                                  0 },
+        { &gsn_curse,                                   0 },
+        { &gsn_hex,                                     0 },
 
-        { &gsn_group_conjuration,       0 },
-        { &gsn_create_water,            0 },
-        { &gsn_create_spring,           0 },
-        { &gsn_create_food,             0 },
-        { &gsn_brew,                    0 },
+        { &gsn_group_conjuration,                       0 },
+        { &gsn_create_water,                            0 },
+        { &gsn_create_spring,                           0 },
+        { &gsn_create_food,                             0 },
+        { &gsn_brew,                                    0 },
 
-        { &gsn_group_protection,        0 },
-        { &gsn_protection,              0 },
-        { &gsn_armor,                   0 },
-        { &gsn_sanctuary,               0 },
-        { &gsn_shield,                  0 },
-        { &gsn_stone_skin,              0 },
-        { &gsn_blink,                   0 },
-        { &gsn_dispel_magic,            0 },
-        { &gsn_mass_sanctuary,          0 },
+        { &gsn_group_protection,                        0 },
+        { &gsn_protection,                              0 },
+        { &gsn_armor,                                   0 },
+        { &gsn_sanctuary,                               0 },
+        { &gsn_shield,                                  0 },
+        { &gsn_stone_skin,                              0 },
+        { &gsn_blink,                                   0 },
+        { &gsn_dispel_magic,                            0 },
+        { &gsn_mass_sanctuary,                          0 },
 
-        { &gsn_group_advanced_heal,     0 },
-        { &gsn_mass_heal,               0 },
-        { &gsn_power_heal,              0 },
-        { &gsn_mass_power_heal,         0 },
+        { &gsn_group_advanced_heal,                     0 },
+        { &gsn_mass_heal,                               0 },
+        { &gsn_power_heal,                              0 },
+        { &gsn_mass_power_heal,                         0 },
 
-        { &gsn_group_divine,            0 },
-        { &gsn_bless,                   0 },
-        { &gsn_earthquake,              0 },
-        { &gsn_dispel_evil,             0 },
-        { &gsn_flamestrike,             0 },
-        { &gsn_holy_word,               0 },
-        { &gsn_unholy_word,             0 },
-        { &gsn_bless_weapon,            0 },
-        { &gsn_wrath_of_god,            0 },
-        { &gsn_prayer,                  0 },
-        { &gsn_frenzy,                  0 },
+        { &gsn_group_divine,                            0 },
+        { &gsn_bless,                                   0 },
+        { &gsn_earthquake,                              0 },
+        { &gsn_dispel_evil,                             0 },
+        { &gsn_flamestrike,                             0 },
+        { &gsn_holy_word,                               0 },
+        { &gsn_unholy_word,                             0 },
+        { &gsn_bless_weapon,                            0 },
+        { &gsn_wrath_of_god,                            0 },
+        { &gsn_prayer,                                  0 },
+        { &gsn_frenzy,                                  0 },
 
-        { &gsn_group_alteration,        0 },
-        { &gsn_continual_light,         0 },
-        { &gsn_invis,                   0 },
-        { &gsn_mass_invis,              0 },
-        { &gsn_faerie_fire,             0 },
-        { &gsn_fly,                     0 },
-        { &gsn_giant_strength,          0 },
-        { &gsn_weaken,                  0 },
-        { &gsn_faerie_fog,              0 },
-        { &gsn_knock,                   0 },
-        { &gsn_pass_door,               0 },
-        { &gsn_haste,                   0 },
-        { &gsn_entrapment,              0 },
-        { &gsn_breathe_water,           0 },
+        { &gsn_group_alteration,                        0 },
+        { &gsn_continual_light,                         0 },
+        { &gsn_invis,                                   0 },
+        { &gsn_mass_invis,                              0 },
+        { &gsn_faerie_fire,                             0 },
+        { &gsn_fly,                                     0 },
+        { &gsn_giant_strength,                          0 },
+        { &gsn_weaken,                                  0 },
+        { &gsn_faerie_fog,                              0 },
+        { &gsn_knock,                                   0 },
+        { &gsn_pass_door,                               0 },
+        { &gsn_haste,                                   0 },
+        { &gsn_entrapment,                              0 },
+        { &gsn_breathe_water,                           0 },
 
-        { &gsn_group_illusion,          0 },
-        { &gsn_ventriloquate,           0 },
+        { &gsn_group_illusion,                          0 },
+        { &gsn_ventriloquate,                           0 },
 
-        { &gsn_group_enchant,           0 },
-        { &gsn_sleep,                   0 },
-        { &gsn_charm_person,            0 },
-        { &gsn_enchant_weapon,          0 },
-        { &gsn_enhance_armor,           0 },
+        { &gsn_group_enchant,                           0 },
+        { &gsn_sleep,                                   0 },
+        { &gsn_charm_person,                            0 },
+        { &gsn_enchant_weapon,                          0 },
+        { &gsn_enhance_armor,                           0 },
 
-        { &gsn_group_summoning,         0 },
-        { &gsn_summon_familiar,         0 },
-        { &gsn_call_lightning,          0 },
-        { &gsn_control_weather,         0 },
-        { &gsn_teleport,                0 },
-        { &gsn_summon,                  0 },
-        { &gsn_pattern,                 0 },
+        { &gsn_group_summoning,                         0 },
+        { &gsn_summon_familiar,                         0 },
+        { &gsn_call_lightning,                          0 },
+        { &gsn_control_weather,                         0 },
+        { &gsn_teleport,                                0 },
+        { &gsn_summon,                                  0 },
+        { &gsn_pattern,                                 0 },
 
-        { &gsn_group_mana,              0 },
-        { &gsn_meditate,                0 },
-        { &gsn_second_spell,            0 },
-        { &gsn_third_spell,             0 },
-        { &gsn_fourth_spell,            0 },
+        { &gsn_group_mana,                              0 },
+        { &gsn_meditate,                                0 },
+        { &gsn_second_spell,                            0 },
+        { &gsn_third_spell,                             0 },
+        { &gsn_fourth_spell,                            0 },
 
-        { &gsn_group_divination,        0 },
-        { &gsn_detect_evil,             0 },
-        { &gsn_detect_poison,           0 },
-        { &gsn_detect_good,             0 },
-        { &gsn_detect_invis,            0 },
-        { &gsn_detect_magic,            0 },
-        { &gsn_detect_hidden,           0 },
-        { &gsn_detect_sneak,            0 },
-        { &gsn_infravision,             0 },
-        { &gsn_identify,                0 },
-        { &gsn_locate_object,           0 },
-        { &gsn_sense_traps,             0 },
-        { &gsn_know_alignment,          0 },
+        { &gsn_group_divination,                        0 },
+        { &gsn_detect_evil,                             0 },
+        { &gsn_detect_poison,                           0 },
+        { &gsn_detect_good,                             0 },
+        { &gsn_detect_invis,                            0 },
+        { &gsn_detect_magic,                            0 },
+        { &gsn_detect_hidden,                           0 },
+        { &gsn_detect_sneak,                            0 },
+        { &gsn_infravision,                             0 },
+        { &gsn_identify,                                0 },
+        { &gsn_locate_object,                           0 },
+        { &gsn_sense_traps,                             0 },
+        { &gsn_know_alignment,                          0 },
 
-        { &gsn_group_dark,              0 },
-        { &gsn_possession,              0 },
-        { &gsn_demon_flames,            0 },
-        { &gsn_steal_strength,          0 },
-        { &gsn_hand_of_lucifer,         0 },
-        { &gsn_satans_fury,             0 },
-        { &gsn_steal_soul,              0 },
-        { &gsn_summon_demon,            0 },
-        { &gsn_hells_fire,              0 },
+        { &gsn_group_dark,                              0 },
+        { &gsn_possession,                              0 },
+        { &gsn_demon_flames,                            0 },
+        { &gsn_steal_strength,                          0 },
+        { &gsn_hand_of_lucifer,                         0 },
+        { &gsn_satans_fury,                             0 },
+        { &gsn_steal_soul,                              0 },
+        { &gsn_summon_demon,                            0 },
+        { &gsn_hells_fire,                              0 },
 
-        { &gsn_group_death,             0 },
-        { &gsn_feeblemind,              0 },
-        { &gsn_spiritwrack,             0 },
-        { &gsn_animate_dead,            0 },
-        { &gsn_bladethirst,             0 },
-        { &gsn_dark_ritual,             0 },
+        { &gsn_group_death,                             0 },
+        { &gsn_feeblemind,                              0 },
+        { &gsn_spiritwrack,                             0 },
+        { &gsn_animate_dead,                            0 },
+        { &gsn_bladethirst,                             0 },
+        { &gsn_dark_ritual,                             0 },
 
-        { &gsn_group_lycanthropy,       0 },
-        { &gsn_resist_toxin,            0 },
-        { &gsn_resist_magic,            0 },
-        { &gsn_astral_sidestep,         0 },
-        { &gsn_gaias_warning,           0 },
-        { &gsn_summon_avatar,           0 },
-        { &gsn_rage,                    0 },
-        { &gsn_howl,                    0 },
+        { &gsn_group_lycanthropy,                       0 },
+        { &gsn_resist_toxin,                            0 },
+        { &gsn_resist_magic,                            0 },
+        { &gsn_astral_sidestep,                         0 },
+        { &gsn_gaias_warning,                           0 },
+        { &gsn_summon_avatar,                           0 },
+        { &gsn_rage,                                    0 },
+        { &gsn_howl,                                    0 },
 
-        { &gsn_group_vampyre,           0 },
-        { &gsn_feed,                    0 },
-        { &gsn_suck,                    0 },
-        { &gsn_lunge,                   0 },
-        { &gsn_double_lunge,            0 },
-        { &gsn_mist_walk,               0 },
-        { &gsn_stalk,                   0 },
-        { &gsn_transfix,                0 },
-        { &gsn_aura_of_fear,            0 },
+        { &gsn_group_vampyre,                           0 },
+        { &gsn_feed,                                    0 },
+        { &gsn_suck,                                    0 },
+        { &gsn_lunge,                                   0 },
+        { &gsn_double_lunge,                            0 },
+        { &gsn_mist_walk,                               0 },
+        { &gsn_stalk,                                   0 },
+        { &gsn_transfix,                                0 },
+        { &gsn_aura_of_fear,                            0 },
 
-        { &gsn_group_evocation,         0 },
-        { &gsn_magic_missile,           0 },
-        { &gsn_chill_touch,             0 },
-        { &gsn_burning_hands,           0 },
-        { &gsn_shocking_grasp,          0 },
-        { &gsn_lightning_bolt,          0 },
-        { &gsn_colour_spray,            0 },
-        { &gsn_fireball,                0 },
-        { &gsn_acid_blast,              0 },
-        { &gsn_chain_lightning,         0 },
-        { &gsn_energy_drain,            0 },
-        { &gsn_prismatic_spray,         0 },
+        { &gsn_group_evocation,                         0 },
+        { &gsn_magic_missile,                           0 },
+        { &gsn_chill_touch,                             0 },
+        { &gsn_burning_hands,                           0 },
+        { &gsn_shocking_grasp,                          0 },
+        { &gsn_lightning_bolt,                          0 },
+        { &gsn_colour_spray,                            0 },
+        { &gsn_fireball,                                0 },
+        { &gsn_acid_blast,                              0 },
+        { &gsn_chain_lightning,                         0 },
+        { &gsn_energy_drain,                            0 },
+        { &gsn_prismatic_spray,                         0 },
 
-        { &gsn_group_breath,            0 },
-        { &gsn_frost_breath,            0 },
-        { &gsn_acid_breath,             0 },
-        { &gsn_fire_breath,             0 },
-        { &gsn_gas_breath,              0 },
-        { &gsn_lightning_breath,        0 },
+        { &gsn_group_breath,                            0 },
+        { &gsn_frost_breath,                            0 },
+        { &gsn_acid_breath,                             0 },
+        { &gsn_fire_breath,                             0 },
+        { &gsn_gas_breath,                              0 },
+        { &gsn_lightning_breath,                        0 },
 
-        { &gsn_group_destruction,       0 },
-        { &gsn_firestorm,               0 },
-        { &gsn_meteor_storm,            0 },
+        { &gsn_group_destruction,                       0 },
+        { &gsn_firestorm,                               0 },
+        { &gsn_meteor_storm,                            0 },
 
-        { &gsn_group_majorp,            0 },
-        { &gsn_globe,                   0 },
-        { &gsn_fireshield,              0 },
-        { &gsn_dragon_shield,           0 },
+        { &gsn_group_majorp,                            0 },
+        { &gsn_globe,                                   0 },
+        { &gsn_fireshield,                              0 },
+        { &gsn_dragon_shield,                           0 },
 
-        { &gsn_group_craft,             0 },
-        { &gsn_scribe,                  0 },
-        { &gsn_recharge_item,           0 },
-        { &gsn_transport,               0 },
+        { &gsn_group_craft,                             0 },
+        { &gsn_scribe,                                  0 },
+        { &gsn_recharge_item,                           0 },
+        { &gsn_transport,                               0 },
 
-        { &gsn_group_mentald,           0 },
-        { &gsn_thought_shield,          0 },
-        { &gsn_mental_barrier,          0 },
-        { &gsn_displacement,            0 },
-        { &gsn_flesh_armor,             0 },
-        { &gsn_intellect_fortress,      0 },
-        { &gsn_biofeedback,             0 },
-        { &gsn_inertial_barrier,        0 },
-        { &gsn_animate_weapon,          0 },
+        { &gsn_group_mentald,                           0 },
+        { &gsn_thought_shield,                          0 },
+        { &gsn_mental_barrier,                          0 },
+        { &gsn_displacement,                            0 },
+        { &gsn_flesh_armor,                             0 },
+        { &gsn_intellect_fortress,                      0 },
+        { &gsn_biofeedback,                             0 },
+        { &gsn_inertial_barrier,                        0 },
+        { &gsn_animate_weapon,                          0 },
 
-        { &gsn_group_matter,            0 },
-        { &gsn_ballistic_attack,        0 },
-        { &gsn_agitation,               0 },
-        { &gsn_control_flames,          0 },
-        { &gsn_project_force,           0 },
-        { &gsn_detonate,                0 },
+        { &gsn_group_matter,                            0 },
+        { &gsn_ballistic_attack,                        0 },
+        { &gsn_agitation,                               0 },
+        { &gsn_control_flames,                          0 },
+        { &gsn_project_force,                           0 },
+        { &gsn_detonate,                                0 },
 
-        { &gsn_group_energy,            0 },
-        { &gsn_create_sound,            0 },
-        { &gsn_shadow_form,             0 },
-        { &gsn_chameleon_power,         0 },
-        { &gsn_energy_containment,      0 },
+        { &gsn_group_energy,                            0 },
+        { &gsn_create_sound,                            0 },
+        { &gsn_shadow_form,                             0 },
+        { &gsn_chameleon_power,                         0 },
+        { &gsn_energy_containment,                      0 },
 
-        { &gsn_group_telepathy,         0 },
-        { &gsn_mind_thrust,             0 },
-        { &gsn_psychic_drain,           0 },
-        { &gsn_inflict_pain,            0 },
-        { &gsn_psychic_crush,           0 },
-        { &gsn_ego_whip,                0 },
-        { &gsn_combat_mind,             0 },
-        { &gsn_domination,              0 },
-        { &gsn_psionic_blast,           0 },
-        { &gsn_fear,                    0 },
-        { &gsn_deter,                   0 },
+        { &gsn_group_telepathy,                         0 },
+        { &gsn_mind_thrust,                             0 },
+        { &gsn_psychic_drain,                           0 },
+        { &gsn_inflict_pain,                            0 },
+        { &gsn_psychic_crush,                           0 },
+        { &gsn_ego_whip,                                0 },
+        { &gsn_combat_mind,                             0 },
+        { &gsn_domination,                              0 },
+        { &gsn_psionic_blast,                           0 },
+        { &gsn_fear,                                    0 },
+        { &gsn_deter,                                   0 },
 
-        { &gsn_group_advtele,           0 },
-        { &gsn_inner_fire,              0 },
-        { &gsn_synaptic_blast,          0 },
-        { &gsn_ultrablast,              0 },
-        { &gsn_death_field,             0 },
-        { &gsn_disintergrate,           0 },
+        { &gsn_group_advtele,                           0 },
+        { &gsn_inner_fire,                              0 },
+        { &gsn_synaptic_blast,                          0 },
+        { &gsn_ultrablast,                              0 },
+        { &gsn_death_field,                             0 },
+        { &gsn_disintergrate,                           0 },
 
-        { &gsn_group_body,              0 },
-        { &gsn_levitation,              0 },
-        { &gsn_psychic_healing,         0 },
-        { &gsn_enhanced_strength,       0 },
-        { &gsn_adrenaline_control,      0 },
-        { &gsn_lend_health,             0 },
-        { &gsn_cell_adjustment,         0 },
-        { &gsn_share_strength,          0 },
-        { &gsn_recharge_mana,           0 },
-        { &gsn_vitalize,                0 },
-        { &gsn_complete_healing,        0 },
-        { &gsn_heighten,                0 },
-        { &gsn_ectoplasmic_form,        0 },
+        { &gsn_group_body,                              0 },
+        { &gsn_levitation,                              0 },
+        { &gsn_psychic_healing,                         0 },
+        { &gsn_enhanced_strength,                       0 },
+        { &gsn_adrenaline_control,                      0 },
+        { &gsn_lend_health,                             0 },
+        { &gsn_cell_adjustment,                         0 },
+        { &gsn_share_strength,                          0 },
+        { &gsn_recharge_mana,                           0 },
+        { &gsn_vitalize,                                0 },
+        { &gsn_complete_healing,                        0 },
+        { &gsn_heighten,                                0 },
+        { &gsn_ectoplasmic_form,                        0 },
 
-        { &gsn_group_archery,           0 },
-        { &gsn_shoot,                   0 },
-        { &gsn_second_shot,             0 },
-        { &gsn_third_shot,              0 },
-        { &gsn_accuracy,                0 },
+        { &gsn_group_archery,                           0 },
+        { &gsn_shoot,                                   0 },
+        { &gsn_second_shot,                             0 },
+        { &gsn_third_shot,                              0 },
+        { &gsn_accuracy,                                0 },
 
-        { &gsn_group_music,             0 },
-        { &gsn_song_of_shadows,         0 },
-        { &gsn_song_of_revelation,      0 },
-        { &gsn_song_of_sustenance,      0 },
-        { &gsn_song_of_rejuvenation,    0 },
-        { &gsn_song_of_tranquility,     0 },
-        { &gsn_song_of_flight,          0 },
-        { &gsn_chant_of_pain,           0 },
-        { &gsn_chant_of_vigour,         0 },
-        { &gsn_chant_of_enfeeblement,   0 },
-        { &gsn_chant_of_battle,         0 },
-        { &gsn_chant_of_protection,     0 },
+        { &gsn_group_music,                             0 },
+        { &gsn_song_of_shadows,                         0 },
+        { &gsn_song_of_revelation,                      0 },
+        { &gsn_song_of_sustenance,                      0 },
+        { &gsn_song_of_rejuvenation,                    0 },
+        { &gsn_song_of_tranquility,                     0 },
+        { &gsn_song_of_flight,                          0 },
+        { &gsn_chant_of_pain,                           0 },
+        { &gsn_chant_of_vigour,                         0 },
+        { &gsn_chant_of_enfeeblement,                   0 },
+        { &gsn_chant_of_battle,                         0 },
+        { &gsn_chant_of_protection,                     0 },
 
-        { &gsn_group_herb_lore,         0 },
-        { &gsn_gather_herbs,            0 },
-        { &gsn_classify,                0 },
+        { &gsn_group_herb_lore,                         0 },
+        { &gsn_gather_herbs,                            0 },
+        { &gsn_classify,                                0 },
 
-        { &gsn_group_morph,             0 },
-        { &gsn_flight,                  0 },
+        { &gsn_group_morph,                             0 },
+        { &gsn_flight,                                  0 },
 
-        { &gsn_group_resistance,        0 },
-        { &gsn_resist_heat,             0 },
-        { &gsn_resist_cold,             0 },
-        { &gsn_resist_acid,             0 },
-        { &gsn_resist_lightning,        0 },
+        { &gsn_group_resistance,                        0 },
+        { &gsn_resist_heat,                             0 },
+        { &gsn_resist_cold,                             0 },
+        { &gsn_resist_acid,                             0 },
+        { &gsn_resist_lightning,                        0 },
 
-        { &gsn_group_last,              0 }
+        { &gsn_group_last,                              0 }
 };
 
 
@@ -1694,7 +1691,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                  "synaptic blast",      &gsn_synaptic_blast,
                  TYPE_INT,      TAR_CHAR_OFFENSIVE,     POS_FIGHTING,
                  spell_synaptic_blast,  30,     12,
-                 "{Bsy{Cnap{Wtic {Cbla{Bst{x",  "!synaptic blast!"
+                 "{Bsy{Cnap{Wtic {Cbla{Bst{x",  "!Synaptic Blast!"
         },
 
         {
@@ -1722,7 +1719,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "armor",        &gsn_armor,
                 TYPE_INT,       TAR_CHAR_DEFENSIVE,     POS_STANDING,
                 spell_armor,    5,      12,
-                "",     "Your magical armor dissipates."
+                "",     "Your magical armour dissipates."
         },
 
         {
@@ -1926,7 +1923,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "detect hidden",        &gsn_detect_hidden,
                 TYPE_INT,    TAR_CHAR_SELF,          POS_STANDING,
                 spell_detect_hidden,      5,      12,
-                "",                     "You feel less aware of your suroundings."
+                "",                     "You feel less aware of your surroundings."
         },
 
         {
@@ -1947,7 +1944,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "detect magic",         &gsn_detect_magic,
                 TYPE_INT,     TAR_CHAR_SELF,          POS_STANDING,
                 spell_detect_magic,                   5,      12,
-                "",                     "The detect magic wears off."
+                "",                     "The blue in your vision disappears."
         },
 
         {
@@ -1996,14 +1993,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "entrapment",           &gsn_entrapment,
                 TYPE_INT,       TAR_CHAR_OFFENSIVE_SINGLE,     POS_STANDING,
                 spell_entrapment,                        100,     12,
-                "entrapment",           "You break through the sticky webs."
+                "entrapment",           "You break free from the stasis field."
         },
 
         {
                 "faerie fire",          &gsn_faerie_fire,
                 TYPE_INT,      TAR_CHAR_OFFENSIVE_SINGLE,     POS_FIGHTING,
                 spell_faerie_fire,                   5,      12,
-                "{mfa{Merie fi{x{mre{x",          "The pink aura around you fades away."
+                "{mfa{Merie fi{x{mre{x","The pink aura around you fades away."
         },
 
         {
@@ -2228,7 +2225,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "sense traps",           &gsn_sense_traps,
                 TYPE_INT,       TAR_CHAR_SELF,          POS_STANDING,
                 spell_sense_traps,                      15,     12,
-                "",                     "You feel less astute."
+                "",                     "You feel less perspicacious."
         },
 
         {
@@ -2564,21 +2561,21 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "fourth spell",           &gsn_fourth_spell,
                 TYPE_INT,     TAR_IGNORE,     POS_FIGHTING,
                 spell_null,      0,      0,
-                "",             "!fourth Spell!"
+                "",             "!Fourth Spell!"
         },
 
         {
                 "animate weapon",           &gsn_animate_weapon,
                 TYPE_INT,     TAR_CHAR_OFFENSIVE_SINGLE,     POS_FIGHTING,
                 spell_animate_weapon,      20,      12,
-                "",             "!Animate weapon!"
+                "",             "!Animate Weapon!"
         },
 
         {
                 "mass teleport",           0,
                 TYPE_WIZ,     TAR_IGNORE,     POS_FIGHTING,
                 spell_null,      50,      0,
-                "",             "!Mass teleport!"
+                "",             "!Mass Teleport!"
         },
 
         {
@@ -2732,7 +2729,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "choke",                &gsn_choke,
                 TYPE_STR,             TAR_CHAR_OFFENSIVE,     POS_STANDING,
                 spell_null,              0,       8,
-                "choker hold",                 "You regain conciousness."
+                "choker hold",                 "You regain consciousness."
         },
 
         {
@@ -2778,10 +2775,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "pugalism",             &gsn_pugalism,
+                "pugilism",             &gsn_pugalism,
                 TYPE_STR,             TAR_IGNORE,     POS_FIGHTING,
                 spell_null,              0,       0,
-                "pugalism",                 "!Pugalism!"
+                "pugilism",                 "!Pugilism!"
         },
 
         {
@@ -2823,7 +2820,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "meditate",             &gsn_meditate,
                 TYPE_STR,     TAR_IGNORE,     POS_RESTING,
                 spell_null,          0,      12,
-                "",             "You awaken from your trance."
+                "",                  "You awaken from your trance."
         },
 
         {
@@ -2998,7 +2995,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "rage",                 &gsn_rage,
                 TYPE_INT,             TAR_CHAR_SELF,          POS_STANDING,
                 spell_null,    0,      0,
-                "",                     "You feel less enraged."
+                "",                     "You feel less furious."
         },
 
         {
@@ -3012,7 +3009,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "whirlwind",            &gsn_whirlwind,
                 TYPE_STR,             TAR_IGNORE,          POS_STANDING,
                 spell_null,    18,      18,
-                "whirlwind",                     "You feel less enraged."
+                "whirlwind",                     "You feel less angry."
         },
 
         {
@@ -3629,7 +3626,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "enhanced strength",    &gsn_enhanced_strength,
                 TYPE_INT,        TAR_CHAR_SELF,  POS_STANDING,
                 spell_enhanced_strength,                           20,     12,
-                "",                             "You no longer feel so HUGE."
+                "",                             "Your strength is no longer enhanced."
         },
 
         {
@@ -3678,7 +3675,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "levitation",           &gsn_levitation,
                 TYPE_INT,       TAR_CHAR_SELF,     POS_STANDING,
                 spell_levitation,                   10,     18,
-                "",                     "You slowly float to the ground."
+                "",                     "You gently float to the ground."
         },
 
         {
@@ -3797,7 +3794,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "hex",                  &gsn_hex,
                 TYPE_INT,            TAR_CHAR_OFFENSIVE_SINGLE,     POS_FIGHTING,
                 spell_hex,             30,     12,
-                "hex",                "The hex withers."
+                "hex",                "You are no longer hexed."
         },
 
         {
@@ -3881,7 +3878,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "dark globe of invulnerability",        &gsn_dark_globe,
                 TYPE_INT,            TAR_CHAR_SELF,     POS_STANDING,
                 spell_dark_globe,                   120,     12,
-                "",                     "The globe about you implodes."
+                "",                     "The dark globe about you implodes."
         },
 
         {
@@ -3923,14 +3920,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "possession",                   &gsn_possession,
                 TYPE_INT,               TAR_CHAR_DEFENSIVE,             POS_STANDING,
                 spell_possession,               25,     12,
-                "attempted possession",         "You return to your own body"
+                "attempted possession",         "You return to your own body."
         },
 
         {
                 "demon flames",                 &gsn_demon_flames,
                 TYPE_INT,               TAR_CHAR_OFFENSIVE_SINGLE,      POS_FIGHTING,
                 spell_demon_flames,             25,     12,
-                "Horde of Demons",              "You feel less tormented"
+                "Horde of Demons",              "You feel less tormented."
         },
 
         {
@@ -3951,7 +3948,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "hand of lucifer",                      &gsn_hand_of_lucifer,
                 TYPE_INT,               TAR_CHAR_OFFENSIVE_SINGLE,      POS_STANDING,
                 spell_hand_of_lucifer,          100,    12,
-                "hand of lucifer",              "You break free from the hand that surrounds you."
+                "hand of lucifer",              "You break free from the black hand that holds you."
         },
 
         {
@@ -4237,7 +4234,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "morph",                    &gsn_morph,
                 TYPE_STR,                 TAR_IGNORE,              POS_DEAD,
-                spell_null,                 20,        18,
+                spell_null,                 20,        12,
                 "",                         "!Morph!"
         },
 
@@ -4305,31 +4302,31 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "pugalism knowledge",          &gsn_group_pugalism,
+                "pugilism knowledge",          &gsn_group_pugalism,
                 TYPE_INT,             TAR_IGNORE,             POS_DEAD,
                 spell_null,     0,       0,
-                "",                     "!Group Pugalism!"
+                "",                     "!Group Pugilism!"
         },
 
         {
                 "fear",             &gsn_fear,
                 TYPE_INT,     TAR_CHAR_OFFENSIVE_SINGLE,     POS_FIGHTING,
                 spell_fear,      5,      12,
-                "spell",         "You feel less afraid.."
+                "spell",         "You feel less afraid."
         },
 
         {
                 "deter",             &gsn_deter,
                 TYPE_INT,     TAR_CHAR_DEFENSIVE,     POS_STANDING,
                 spell_deter,      5,      12,
-                "",         "Monsters appear less cautious toward you..."
+                "",         "Monsters seem less intimidated by you..."
         },
 
         {
                 "astral sidestep",             &gsn_astral_sidestep,
                 TYPE_INT,     TAR_CHAR_SELF,     POS_STANDING,
                 spell_astral_sidestep,      5,      12,
-                "",         "You rematerialise in the pysical plane."
+                "",         "You rematerialise in the physical plane."
         },
 
         {
@@ -4385,7 +4382,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "aura of fear",        &gsn_aura_of_fear,
                 TYPE_STR,   TAR_IGNORE,             POS_FIGHTING,
                 spell_null,                   0,    18,
-                "aura of fear",                     "!Aura of fear!"
+                "aura of fear",                     "!Aura Of Fear!"
         },
 
         {
@@ -4616,7 +4613,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "web",                  &gsn_web,
                 TYPE_STR,     TAR_IGNORE,             POS_STANDING,
                 spell_null,      0,      12,
-                "slip up",              "You break free from the sticky threads."
+                "slip up",              "You break free from the sticky webbing."
         },
 
         {
@@ -4728,7 +4725,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "archery knowledge",    &gsn_group_archery,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "archery knowledge",    "!Archery knowledge!"
+                "archery knowledge",    "!Archery Knowledge!"
         },
 
         {
@@ -4742,42 +4739,42 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "herb lore",            &gsn_group_herb_lore,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "herb lore",            "!Herb lore!"
+                "herb lore",            "!Herb Lore!"
         },
 
         {
                 "song of revelation",   &gsn_song_of_revelation,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "song of revelation",   "!Song of revelation!"
+                "song of revelation",   "!Song of Revelation!"
         },
 
         {
                 "song of rejuvenation", &gsn_song_of_rejuvenation,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "song of rejuvenation", "!Song of rejuvenation!"
+                "song of rejuvenation", "!Song of Rejuvenation!"
         },
 
         {
                 "song of tranquility",  &gsn_song_of_tranquility,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "song of tranquility",  "!Song of tranquility!"
+                "song of tranquility",  "!Song of Tranquility!"
         },
 
         {
                 "song of shadows",      &gsn_song_of_shadows,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "song of shadows",      "!Song of shadows!"
+                "song of shadows",      "!Song of Shadows!"
         },
 
         {
                 "song of sustenance",   &gsn_song_of_sustenance,
                 TYPE_INT,               TAR_IGNORE,             POS_STANDING,
                 spell_null,             0,                      0,
-                "song of sustenance",   "!Song of sustenance!"
+                "song of sustenance",   "!Song of Sustenance!"
         },
 
         {
@@ -4812,14 +4809,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                   "chant of enfeeblement", &gsn_chant_of_enfeeblement,
                   TYPE_INT,             TAR_CHAR_OFFENSIVE,     POS_FIGHTING,
                   spell_null,           0,                      0,
-                  "chant of enfeeblement", "!Chant of enfeeblement!"
+                  "chant of enfeeblement", "!Chant of Enfeeblement!"
           },
 
         {
                 "chant of pain",        &gsn_chant_of_pain,
                 TYPE_INT,               TAR_CHAR_OFFENSIVE,     POS_FIGHTING,
                 spell_null,             0,                      0,
-                "chant of pain",        "!Chant of pain!"
+                "chant of pain",        "!Chant of Pain!"
         },
 
         {
@@ -4875,7 +4872,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "divine curse",         &gsn_prayer_weaken,
                 TYPE_INT,               TAR_IGNORE,             POS_DEAD,
                 spell_null,             0,                      0,
-                "divine curse",         "You are no longer cursed by the Gods."
+                "divine curse",         "You are no longer cursed by the gods."
         },
 
         {
@@ -4924,7 +4921,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "plague",  &gsn_prayer_plague,
                 TYPE_INT,  TAR_IGNORE,  POS_DEAD,
                 spell_null,  0,  0,
-                "plague",  "Your sickness lifts."
+                "plague",  "You have recovered from your illness."
         },
 
         {

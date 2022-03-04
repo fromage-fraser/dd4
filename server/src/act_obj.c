@@ -746,6 +746,11 @@ void do_drop (CHAR_DATA *ch, char *argument)
 
 void do_give (CHAR_DATA *ch, char *argument)
 {
+        /*
+         * Edited so it uses the correct reference for mob names (victim->short_descr) when
+         * money is being given to them. - Owl 19/2/22
+         */
+
         CHAR_DATA *victim;
         OBJ_DATA  *obj;
         char       arg1 [ MAX_INPUT_LENGTH ];
@@ -812,13 +817,15 @@ void do_give (CHAR_DATA *ch, char *argument)
                 {
                         if (ch->plat <= 0 )
                         {
-                                sprintf(buf, "You have no platinum coins to give to %s.\n\r", victim->name);
+                                sprintf(buf, "You have no platinum coins to give to %s.\n\r",
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
                         if (amount > ch->plat )
                         {
-                                sprintf(buf, "You do not have %d platinum coins to give to %s.\n\r", amount, victim->name);
+                                sprintf(buf, "You do not have %d platinum coins to give to %s.\n\r", amount,
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
@@ -832,13 +839,15 @@ void do_give (CHAR_DATA *ch, char *argument)
                 {
                         if (ch->gold <= 0 )
                         {
-                                sprintf(buf, "You have no gold coins to give to %s.\n\r", victim->name);
+                                sprintf(buf, "You have no gold coins to give to %s.\n\r",
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
                         if (amount > ch->gold )
                         {
-                                sprintf(buf, "You do not have %d gold coins to give to %s.\n\r", amount, victim->name);
+                                sprintf(buf, "You do not have %d gold coins to give to %s.\n\r", amount,
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
@@ -852,13 +861,15 @@ void do_give (CHAR_DATA *ch, char *argument)
                 {
                         if (ch->silver <= 0 )
                         {
-                                sprintf(buf, "You have no silver coins to give to %s.\n\r", victim->name);
+                                sprintf(buf, "You have no silver coins to give to %s.\n\r",
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
                         if (amount > ch->silver )
                         {
-                                sprintf(buf, "You do not have %d silver coins to give to %s.\n\r", amount, victim->name);
+                                sprintf(buf, "You do not have %d silver coins to give to %s.\n\r", amount,
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
@@ -872,13 +883,15 @@ void do_give (CHAR_DATA *ch, char *argument)
                 {
                         if (ch->copper <= 0 )
                         {
-                                sprintf(buf, "You have no copper coins to give to %s.\n\r", victim->name);
+                                sprintf(buf, "You have no copper coins to give to %s.\n\r",
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
                         if (amount > ch->copper )
                         {
-                                sprintf(buf, "You do not have %d copper coins to give to %s.\n\r", amount, victim->name);
+                                sprintf(buf, "You do not have %d copper coins to give to %s.\n\r", amount,
+                                        IS_NPC(victim) ? victim->short_descr : victim->name);
                                 send_to_char(buf, ch);
                                 return;
                         }
@@ -1114,11 +1127,11 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 amount = UMIN(amount, obj->value[1]);
 
                 gain_condition(ch, COND_DRUNK,
-                               amount * liq_table[liquid].liq_affect[COND_DRUNK  ]);
+                               amount * liq_table[liquid].liq_effect[COND_DRUNK  ]);
                 gain_condition(ch, COND_FULL,
-                               amount * liq_table[liquid].liq_affect[COND_FULL   ]);
+                               amount * liq_table[liquid].liq_effect[COND_FULL   ]);
                 gain_condition(ch, COND_THIRST,
-                               amount * liq_table[liquid].liq_affect[COND_THIRST ]);
+                               amount * liq_table[liquid].liq_effect[COND_THIRST ]);
 
                 if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 10)
                         send_to_char("You feel drunk.\n\r", ch);

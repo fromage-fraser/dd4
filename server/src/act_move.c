@@ -385,11 +385,14 @@ void move_char(CHAR_DATA *ch, int door)
                 }
                 */
 
+                /* Immortals can fly, even when they can't -- Owl 22/2/22 */
+
                 if (to_room->sector_type == SECT_AIR)
                 {
                         if (!IS_AFFECTED(ch, AFF_FLYING)
                             && !IS_AFFECTED(ch, AFF_NON_CORPOREAL)
-                            && !ch->mount)
+                            && !ch->mount
+                            && !IS_IMMORTAL( ch ))
                         {
                                 send_to_char("You can't fly.\n\r", ch);
                                 return;
@@ -403,8 +406,11 @@ void move_char(CHAR_DATA *ch, int door)
 
                         found = FALSE;
 
+                        /* Immortals are boats -- Owl 22/2/22 */
+
                         if (IS_AFFECTED(ch, AFF_FLYING)
                             || IS_AFFECTED(ch, AFF_SWIM)
+                            || IS_IMMORTAL( ch )
                             || ch->mount
                             || is_affected(ch,gsn_mist_walk))
                         {
@@ -498,8 +504,9 @@ void move_char(CHAR_DATA *ch, int door)
                 if (checkmovetrap(ch, door))
                         return;
 
-                move = movement_loss[UMIN(SECT_MAX-1, in_room->sector_type)]
-                        + movement_loss[UMIN(SECT_MAX-1, to_room->sector_type)];
+        move = movement_loss[UMIN(SECT_MAX-1, in_room->sector_type)]
+             + movement_loss[UMIN(SECT_MAX-1, to_room->sector_type)];
+
 
                 if ((IS_AFFECTED(ch, AFF_NON_CORPOREAL)
                      || IS_AFFECTED(ch, AFF_FLYING))
@@ -510,18 +517,24 @@ void move_char(CHAR_DATA *ch, int door)
                         move = UMAX(move, 1);
                 }
 
-                if (ch->move < move)
+                /* Don't put a wait state on or take movement points from imms -- Owl 22/2/22 */
+
+                if (ch->move < move
+                        && !IS_IMMORTAL( ch ))
                 {
                         send_to_char("You are too exhausted.\n\r", ch);
                         return;
                 }
 
-                WAIT_STATE(ch, 1);
+                if (!IS_IMMORTAL( ch ))
+                {
+                        WAIT_STATE(ch, 1);
 
-                if (is_affected(ch, gsn_mount))
-                        ch->move -= 1;
-                else
-                        ch->move -= move;
+                        if (is_affected(ch, gsn_mount))
+                                ch->move -= 1;
+                        else
+                                ch->move -= move;
+                }
         } /* end PC checks */
 
         if (ch->in_room->area != to_room->area
@@ -1353,7 +1366,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
 
                 if (IS_SET(pexit->exit_info, EX_PICKPROOF))
                 {
-                        send_to_char("You fail to move the lock and realise it's tamper proof.\n\r", ch);
+                        send_to_char("You fail to pick the lock and realise it's tamper-proof.\n\r", ch);
                         return;
                 }
 
@@ -1701,7 +1714,7 @@ void do_meditate (CHAR_DATA *ch, char *argument)
         if (IS_AFFECTED(ch, AFF_MEDITATE))
                 REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
-        if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_meditate])
+        if (IS_NPC(ch) || number_percent() < (49 + (ch->pcdata->learned[gsn_meditate]/2)))
         {
                 SET_BIT(ch->affected_by, AFF_MEDITATE);
                 send_to_char("You fall into a deep trance.\n\r", ch);
@@ -1712,6 +1725,7 @@ void do_meditate (CHAR_DATA *ch, char *argument)
         }
 
         send_to_char("You try to fall into a deep trance, but fail miserably.\n\r",ch);
+        WAIT_STATE(ch, 12);  /* Shade 20.2.22 encourage more practice */
         return;
 }
 
@@ -2365,7 +2379,10 @@ void do_heighten (CHAR_DATA *ch, char *argument)
         };
 
         if (is_affected(ch, gsn_heighten))
+        {
+                send_to_char("Your senses are already enhanced.\n\r", ch);
                 return;
+        }
 
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_heighten])
         {
@@ -2383,8 +2400,13 @@ void do_heighten (CHAR_DATA *ch, char *argument)
                 affect_to_char(ch, &af);
 
                 send_to_char("Your senses are heightened.\n\r", ch);
+                return;
         }
-        return;
+        else
+        {
+                send_to_char("You fail to enhance your senses.\n\r", ch);
+                return;
+        }
 }
 
 
