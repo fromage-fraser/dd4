@@ -16,7 +16,7 @@
 {&gsn_hunt,                     &gsn_barbarian_base,    30,     PRE_BARBARIAN},
 
 {&gsn_advanced_consider,        &gsn_group_knowledge,   90,     PRE_BARBARIAN},
-{&gsn_advanced_consider,        &gsn_barbarian_base,    30,     PRE_BARBARIAN}, 
+{&gsn_advanced_consider,        &gsn_barbarian_base,    30,     PRE_BARBARIAN},
 
 /* **** METAL **** */
 

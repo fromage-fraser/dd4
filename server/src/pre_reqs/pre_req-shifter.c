@@ -1,8 +1,8 @@
- 
+
 /* Last modified 1/6 - Mat */
- 
+
 /* Total Pre_Reqs == 37  */
- 
+
 /* Starting Skills - have decided what worldly is going to be yet?*/
 {&gsn_group_forms,              &gsn_shifter_base,      30,    PRE_SHIFTER},
 

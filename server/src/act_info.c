@@ -1544,7 +1544,7 @@ void do_time( CHAR_DATA *ch, char *argument )
         sprintf( buf, "The moon is currently %s.\n\r", moon );
         send_to_char( buf, ch );
 
-        sprintf( buf, "DD was started at %s\rThe system time is %s\r",
+        sprintf( buf, "DD4 was started at %s\rThe system time is %s\r",
                 str_boot_time,
                 (char *) ctime( &current_time ) );
         send_to_char( buf, ch );
@@ -1571,7 +1571,7 @@ void do_time( CHAR_DATA *ch, char *argument )
 
         if (days)
         {
-                sprintf (buf, "DD has been running for %d day%s and %d hour%s.\n\r",
+                sprintf (buf, "DD4 has been running for %d day%s and %d hour%s.\n\r",
                          days,
                          days == 1 ? "" : "s",
                          hours,
@@ -1579,7 +1579,7 @@ void do_time( CHAR_DATA *ch, char *argument )
         }
         else if (hours)
         {
-                sprintf (buf, "DD has been running for %d hour%s and %d minute%s.\n\r",
+                sprintf (buf, "DD4 has been running for %d hour%s and %d minute%s.\n\r",
                          hours,
                          hours == 1 ? "" : "s",
                          minutes,
@@ -1587,12 +1587,12 @@ void do_time( CHAR_DATA *ch, char *argument )
         }
         else if (minutes)
         {
-                sprintf (buf, "DD has been running for %d minute%s.\n\r",
+                sprintf (buf, "DD4 has been running for %d minute%s.\n\r",
                          minutes,
                          minutes == 1 ? "" : "s");
         }
         else
-                sprintf (buf, "DD has been running for less than a minute.\n\r");
+                sprintf (buf, "DD4 has been running for less than a minute.\n\r");
 
         send_to_char (buf, ch);
 
@@ -2790,7 +2790,7 @@ void do_practice (CHAR_DATA *ch, char *argument)
         /* check the pc is of appropriate level */
         if (ch->level < mob->pIndexData->skills->learned[gsn_teacher_base])
         {
-                sprintf(buf, "I'm sorry %s, but you are not yet of the right caliber for my knowledge.", ch->name);
+                sprintf(buf, "I'm sorry %s, but you are not yet of the right calibre for my knowledge.", ch->name);
                 do_say(mob, buf);
                 return;
         }
@@ -3903,6 +3903,16 @@ void do_prompt( CHAR_DATA *ch, char *argument )
                 return;
         }
 
+        if ( !strcmp(argument, "current"))
+        {
+                send_to_char("Your current prompt:\n\r", ch);
+                strcat(buf, ch->prompt);
+                send_to_char(buf, ch);
+                send_to_char("\n\r", ch);
+
+                return;
+        }
+
         if( !strcmp( argument, "all" ) || !strcmp (argument, "default") )
                 strcat (buf, "<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move> ");
         else
@@ -4072,7 +4082,6 @@ void do_status (CHAR_DATA *ch, char *argument)
 
         send_to_char (buf, ch);
 }
-
 
 void print_player_status (CHAR_DATA *ch, char* buf)
 {

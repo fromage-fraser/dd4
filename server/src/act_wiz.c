@@ -154,7 +154,7 @@ void do_deny( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -165,7 +165,7 @@ void do_deny( CHAR_DATA *ch, char *argument )
         }
 
         SET_BIT( victim->act, PLR_DENY );
-        send_to_char( "You are denied access!\n\r", victim );
+        send_to_char( "You are denied access.\n\r", victim );
         send_to_char( "OK.\n\r", ch );
         do_quit( victim, "" );
 
@@ -296,7 +296,7 @@ void do_pardon(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(victim ))
         {
-                send_to_char("Not on NPC's.\n\r", ch);
+                send_to_char("Not on NPCs.\n\r", ch);
                 return;
         }
 
@@ -656,6 +656,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         char             buf1 [ MAX_STRING_LENGTH ];
         char             arg  [ MAX_INPUT_LENGTH  ];
         int              door;
+        int              next;
 
         rch = get_char( ch );
 
@@ -678,23 +679,77 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
         buf1[0] = '\0';
 
-        sprintf( buf, "Name: '%s.'\n\rArea: '%s'.\n\rArea flags: %d.  Exp modifier: %d.\n\r",
+        sprintf( buf, "Name: '%s.'\n\rArea: '%s'.\n\r",
                 location->name,
-                location->area->name,
-                location->area->area_flags,
+                location->area->name);
+                strcat( buf1, buf );
+
+        if(location->area->area_flags)
+        {
+                sprintf( buf, "Area flags (txt):");
+                strcat( buf1, buf );
+
+                for (next = 1; next <= BIT_20; next *= 2)
+                {
+                        if (IS_SET(location->area->area_flags, next))
+                        {
+                                strcat(buf1, " ");
+                                strcat(buf1, area_flag_name(next));
+                        }
+                }
+
+                strcat(buf1, "\n\r");
+
+                sprintf( buf, "Area flags (num): ");
+                strcat( buf1, buf );
+                bit_explode(ch, buf, location->area->area_flags);
+                strcat( buf1, buf );
+
+                strcat(buf1, "\n\r");
+        }
+        else {
+                strcat(buf1, "Area flags: none [0]\n\r");
+        }
+
+        sprintf( buf, "Exp modifier: %d.  ",
                 location->area->exp_modifier);
         strcat( buf1, buf );
 
         sprintf( buf,
-                "Vnum: %d.  Sector: %d.  Light: %d.\n\r",
+                "Vnum: %d.  Sector: %s [%d].  Light: %d.\n\r",
                 location->vnum,
+        sector_name(location->sector_type),
                 location->sector_type,
                 location->light );
         strcat( buf1, buf );
 
+        if (location->room_flags)
+        {
+                strcat(buf1, "Room flags (txt):");
+
+                for (next = 1; next <= BIT_20; next *= 2)
+                {
+                        if (IS_SET(location->room_flags, next))
+                        {
+                                strcat(buf1, " ");
+                                strcat(buf1, room_flag_name(next));
+                        }
+                }
+                strcat(buf1, "\n\r");
+
+                sprintf( buf, "Room flags (num): ");
+                strcat( buf1, buf );
+                bit_explode(ch, buf, location->room_flags);
+                strcat( buf1, buf );
+
+                strcat(buf1, "\n\r");
+        }
+        else {
+                strcat(buf1, "Room flags: none [0]\n\r");
+        }
+
         sprintf( buf,
-                "Room flags: %d.\n\rDescription:\n\r%s",
-                location->room_flags,
+                "Description:\n\r%s",
                 location->description );
         strcat( buf1, buf );
 
@@ -775,6 +830,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         char         buf1 [ MAX_STRING_LENGTH ];
         char         arg  [ MAX_INPUT_LENGTH  ];
         int          i;
+        int          next;
 
         rch = get_char( ch );
 
@@ -810,15 +866,50 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 obj->weight, get_obj_weight( obj ) );
         strcat( buf1, buf );
 
-        sprintf( buf, "Type: %s.  Wear bits: %d.  Wear_loc: %d.\n\rExtra flags:",
-                item_type_name( obj ), obj->wear_flags, obj->wear_loc);
+        sprintf( buf, "Type: %s.  ",item_type_name( obj ));
         strcat( buf1, buf );
 
-        if (!obj->extra_flags)
-                strcat(buf1, " none.\n\r");
-        else
+        sprintf( buf, "Wear bits: " );
+        strcat( buf1, buf );
+
+        if (obj->wear_flags)
         {
-                for (i = 1; i > 0 && i <= BIT_30; i *= 2)
+                bit_explode(ch, buf, obj->wear_flags);
+                strcat( buf1, buf );
+                sprintf( buf, " [" );
+                strcat( buf1, buf );
+
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))
+                        {
+                                strcat(buf1, " ");
+                                strcat(buf1, wear_flag_name(next));
+                        }
+                }
+                sprintf( buf, " ]." );
+                strcat( buf1, buf );
+        }
+        else {
+                sprintf( buf, "none [0]." );
+                strcat( buf1, buf );
+        }
+
+        sprintf( buf, "  Wear loc: %d [ ", obj->wear_loc );
+        strcat( buf1, buf );
+
+        sprintf( buf, "%s ].\n\r", wear_location_name(obj->wear_loc) );
+        strcat( buf1, buf );
+
+        if (obj->extra_flags)
+        {
+                strcat(buf1, "Extra flags:");
+
+                /*
+                        If you change the following to BIT_30 or just let it evaluate i, do_ostat might break and hang the server.
+                        Leave the ugly hack unless you know how to fix the loop.  --Owl 30/09/18
+                */
+                for (i = 1; i <= BIT_29; i *= 2)
                 {
                         if (IS_SET(obj->extra_flags, i))
                         {
@@ -826,7 +917,13 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                                 strcat(buf1, extra_bit_name(i));
                         }
                 }
-                strcat(buf1, ".\n\r");
+
+                if (IS_SET(obj->extra_flags, BIT_30))
+                {
+                        strcat(buf1, " ");
+                        strcat(buf1, extra_bit_name(BIT_30));
+                }
+                strcat(buf1, "\n\r");
         }
 
         sprintf( buf, "In room: %d.  In object: %s.  Carried by: %s.  \n\r",
@@ -971,9 +1068,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         CHAR_DATA   *rch;
         CHAR_DATA   *victim;
         AFFECT_DATA *paf;
-        char         buf  [ MAX_STRING_LENGTH ];
-        char         buf1 [ MAX_STRING_LENGTH ];
-        char         arg  [ MAX_INPUT_LENGTH  ];
+        char         buf         [ MAX_STRING_LENGTH ];
+        char         buf1        [ MAX_STRING_LENGTH ];
+        char         spec_result [ MAX_STRING_LENGTH ];
+        char         arg         [ MAX_INPUT_LENGTH ];
+
         int          next;
 
         rch = get_char( ch );
@@ -997,8 +1096,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
         buf1[0] = '\0';
 
-        sprintf( buf, "Name: %s.\n\r",
-                victim->name );
+        sprintf( buf, "Name: %s.\n\r", victim->name );
         strcat( buf1, buf );
 
         if (!IS_NPC(victim))
@@ -1058,19 +1156,21 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         if ( !IS_NPC( victim ) )
         {
                 sprintf( buf,
-                        "Thirst: %d.  Full: %d.  Drunk: %d.  Position: %d.  Wimpy: %d.  Page Lines: %d.\n\r",
+                        "Thirst: %d.  Full: %d.  Drunk: %d.  Position: %s [%d.  Wimpy: %d.  Page Lines: %d.\n\r",
                         victim->pcdata->condition[COND_THIRST],
                         victim->pcdata->condition[COND_FULL  ],
                         victim->pcdata->condition[COND_DRUNK ],
-                        victim->position,
+                        position_name(victim->position),
+            victim->position,
                         victim->wimpy,
                         victim->pcdata->pagelen  );
                 strcat( buf1, buf );
         }
         else
         {
-                sprintf( buf, "Position: %d.  Wimpy: %d.  Exp modifier: %d.\n\r",
-                        victim->position,
+                sprintf( buf, "Position: %s [%d].  Wimpy: %d.  Exp modifier: %d.\n\r",
+                        position_name(victim->position),
+            victim->position,
                         victim->wimpy,
                         victim->exp_modifier);
                 strcat( buf1, buf );
@@ -1099,7 +1199,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         {
                 strcat(buf1, "Affected by:");
 
-                for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                /*
+                        If you change the following to BIT_30 or just evaluate i, do_mstat might break and hang the server.
+                        Leave the ugly hack unless you know how to fix the loop.  --Owl 22/09/18
+                */
+                for (next = 1; next <= BIT_29; next *= 2)
                 {
                         if (IS_AFFECTED(victim, next))
                         {
@@ -1108,7 +1212,47 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
-                strcat(buf1, ".\n\r");
+                if (IS_AFFECTED(victim, BIT_30))
+                {
+                        strcat(buf1, " ");
+                        strcat(buf1, affect_bit_name(BIT_30));
+                }
+
+                strcat(buf1, "\n\r");
+        }
+
+        /*
+         * Show body_form stuff more nicely. --Owl 9/2/22
+         */
+
+        if( IS_NPC( victim ) )
+        {
+                if (victim->body_form)
+                {
+                        strcat(buf1, "Body form (txt):");
+
+                        for (next = 1; next <= BIT_8; next *= 2)
+                        {
+                                if (IS_SET(victim->body_form, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, body_form_name(next));
+                                }
+                        }
+                        strcat(buf1, "\n\r");
+                }
+        }
+
+        if( IS_NPC( victim ) )
+        {
+                if (victim->body_form)
+                {
+                        sprintf( buf, "Body form (num): ");
+                        strcat( buf1, buf );
+                        bit_explode(ch, buf, victim->body_form);
+                        strcat( buf1, buf );
+                        strcat(buf1, "\n\r");
+                }
         }
 
         /*
@@ -1167,21 +1311,26 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, buf);
         }
 
-        sprintf( buf, "Short description: %s\n\rLong  description: %s",
+        sprintf( buf, "Short description: %s\n\rLong description: %s",
                 victim->short_descr[0] != '\0'
                 ? victim->short_descr : "(none)",
                 victim->long_descr[0] != '\0'
                 ? victim->long_descr : "(none)\n\r" );
         strcat( buf1, buf );
 
-        if( IS_NPC( victim ) )
-        {
-                sprintf( buf, "Body form: %d.\n\r", victim->body_form );
-                strcat( buf1, buf );
-        }
+        /* Looks up spec_fun and displays it if the mob has one -- Owl 22/2/22 */
 
-        if ( IS_NPC( victim ) && victim->spec_fun != 0 )
-                strcat( buf1, "Mobile has a special function.\n\r" );
+        if ( IS_NPC( victim ) )
+        {
+                strcpy( spec_result , spec_fun_name( victim ) );
+
+                if ( str_cmp(spec_result, "none") )
+                {
+                        sprintf( buf, "Special function: %s\n\r", spec_fun_name( victim ) );
+                        /* fprintf(stderr, "var: %s\r\n", spec_fun_name( victim ) ); */
+                        strcat( buf1, buf );
+                }
+        }
 
         for ( paf = victim->affected; paf; paf = paf->next )
         {
@@ -1264,7 +1413,7 @@ void do_mfind( CHAR_DATA *ch, char *argument )
 
         if ( !found )
         {
-                send_to_char( "Nothing like that in hell, earth, or heaven.\n\r", ch);
+                send_to_char( "Nothing like that in the domain.\n\r", ch);
                 return;
         }
 
@@ -1331,7 +1480,7 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 
         if ( !found )
         {
-                send_to_char( "Nothing like that in hell, earth, or heaven.\n\r", ch);
+                send_to_char( "Nothing like that in the domain.\n\r", ch);
                 return;
         }
 
@@ -1583,7 +1732,7 @@ void do_switch( CHAR_DATA *ch, char *argument )
 
         if ( !IS_NPC( victim ) )
         {
-                send_to_char( "You cannot switch into a player!\n\r", ch );
+                send_to_char( "You cannot switch into a player.\n\r", ch );
                 return;
         }
 
@@ -1775,7 +1924,7 @@ void do_purge( CHAR_DATA *ch, char *argument )
 
         if ( !IS_NPC( victim ) )
         {
-                send_to_char( "Not on PC's.\n\r", ch );
+                send_to_char( "Not on PCs.\n\r", ch );
                 return;
         }
 
@@ -1817,7 +1966,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -1909,7 +2058,7 @@ void do_addfame( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -1935,7 +2084,7 @@ void do_addfame( CHAR_DATA *ch, char *argument )
                 char buf [ MAX_STRING_LENGTH ];
                 send_to_char( "Raising a players Fame.\n\r", ch );
                 victim->pcdata->fame += level;
-                sprintf( buf, "You gain %d Fame for your Heroic deeds!\n\r", level );
+                sprintf( buf, "You gain %d fame for your heroic deeds!\n\r", level );
                 send_to_char( buf, victim );
                 act( "$n rewards $N for $s heroic actions.",ch,NULL,victim,TO_ROOM);
                 check_fame_table(victim);
@@ -2045,7 +2194,7 @@ void do_trust( CHAR_DATA *ch, char *argument )
 
         if (get_trust(victim) > get_trust(ch))
         {
-                send_to_char( "Get bent!\n\r", ch );
+                send_to_char( "Get bent.\n\r", ch );
                 return;
         }
 
@@ -2191,7 +2340,7 @@ void do_freeze( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2211,7 +2360,7 @@ void do_freeze( CHAR_DATA *ch, char *argument )
         {
                 SET_BIT(    victim->act, PLR_FREEZE );
                 send_to_char( "FREEZE set.\n\r",            ch     );
-                send_to_char( "You can't do ANYthing!\n\r", victim );
+                send_to_char( "You can't do anything.\n\r", victim );
         }
 
         save_char_obj( victim );
@@ -2254,7 +2403,7 @@ void do_promote( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2335,7 +2484,7 @@ void do_leader( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2396,7 +2545,7 @@ void do_ronin (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(victim))
         {
-                send_to_char("Not on NPC's.\n\r", ch);
+                send_to_char("Not on NPCs.\n\r", ch);
                 return;
         }
 
@@ -2483,7 +2632,7 @@ void do_log( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2532,7 +2681,7 @@ void do_noemote( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2586,7 +2735,7 @@ void do_notell( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2640,7 +2789,7 @@ void do_silence( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2802,7 +2951,7 @@ void do_wizlock( CHAR_DATA *ch, char *argument )
         if ( wizlock )
                 send_to_char( "Game wizlocked.\n\r", ch );
         else
-                send_to_char( "Game un-wizlocked.\n\r", ch );
+                send_to_char( "Game wizlock removed.\n\r", ch );
 
         return;
 }
@@ -2894,7 +3043,7 @@ void do_sset( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 
@@ -2953,9 +3102,9 @@ void do_sset( CHAR_DATA *ch, char *argument )
 void do_oclanitem (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
-        char arg1 [ MAX_INPUT_LENGTH ];
-        char arg2 [ MAX_INPUT_LENGTH ];
-        char buf [ MAX_STRING_LENGTH ];
+        char arg1 [ MAX_INPUT_LENGTH  ];
+        char arg2 [ MAX_INPUT_LENGTH  ];
+        char buf  [ MAX_STRING_LENGTH ];
         OBJ_DATA *clanobj;
         int clan;
         int level;
@@ -3112,7 +3261,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3134,7 +3283,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3156,7 +3305,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3178,7 +3327,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3200,7 +3349,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3265,7 +3414,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                 /*
                  if ( !IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on PC's.\n\r", ch );
+                        send_to_char( "Not on PCs.\n\r", ch );
                         return;
                 }
 
@@ -3292,7 +3441,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( !IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on PC's.\n\r", ch );
+                        send_to_char( "Not on PCs.\n\r", ch );
                         return;
                 }
 
@@ -3309,7 +3458,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ))
                 {
-                        send_to_char("Not on NPC's.\n\r", ch);
+                        send_to_char("Not on NPCs.\n\r", ch);
                         return;
                 }
 
@@ -3321,7 +3470,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ))
                 {
-                        send_to_char("Not on NPC's.\n\r", ch);
+                        send_to_char("Not on NPCs.\n\r", ch);
                         return;
                 }
 
@@ -3342,7 +3491,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ))
                 {
-                        send_to_char("Not on NPC's.\n\r", ch);
+                        send_to_char("Not on NPCs.\n\r", ch);
                         return;
                 }
 
@@ -3465,7 +3614,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3483,7 +3632,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3501,7 +3650,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3531,7 +3680,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3556,7 +3705,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3574,7 +3723,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3598,7 +3747,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( !IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on PC's.\n\r", ch );
+                        send_to_char( "Not on PCs.\n\r", ch );
                         return;
                 }
 
@@ -3635,7 +3784,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on NPC's.\n\r", ch );
+                        send_to_char( "Not on NPCs.\n\r", ch );
                         return;
                 }
 
@@ -3647,7 +3796,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         {
                 if ( !IS_NPC( victim ) )
                 {
-                        send_to_char( "Not on PC's.\n\r", ch );
+                        send_to_char( "Not on PCs.\n\r", ch );
                         return;
                 }
 
@@ -3670,7 +3819,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
                 if (ch->level < L_IMM)
                 {
-                        send_to_char("Not authorized.\n\r", ch);
+                        send_to_char("Not authorised.\n\r", ch);
                         return;
                 }
 
@@ -3697,7 +3846,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
                 if (ch->level < L_IMM)
                 {
-                        send_to_char("Not authorized.\n\r", ch);
+                        send_to_char("Not authorised.\n\r", ch);
                         return;
                 }
 
@@ -3723,7 +3872,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
                 if (ch->level < L_IMM)
                 {
-                        send_to_char("Not authorized.\n\r", ch);
+                        send_to_char("Not authorised.\n\r", ch);
                         return;
                 }
 
@@ -3781,7 +3930,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
         if ( !( obj = get_obj_world( ch, arg1 ) ) )
         {
-                send_to_char( "Nothing like that in hell, earth, or heaven.\n\r", ch );
+                send_to_char( "Nothing like that in the domain.\n\r", ch );
                 return;
         }
 
@@ -3927,11 +4076,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
                         extra_descr_free        = extra_descr_free->next;
                 }
 
-                ed->keyword             = str_dup( arg3     );
-                ed->description         = str_dup( argument );
-                ed->deleted             = FALSE;
-                ed->next                = obj->extra_descr;
-                obj->extra_descr        = ed;
+                ed->keyword         = str_dup( arg3     );
+                ed->description     = str_dup( argument );
+                ed->deleted         = FALSE;
+                ed->next            = obj->extra_descr;
+                obj->extra_descr    = ed;
                 return;
         }
 
@@ -4270,7 +4419,7 @@ void do_force( CHAR_DATA *ch, char *argument )
 
                 if ( get_trust( victim ) >= get_trust( ch ) )
                 {
-                        send_to_char( "Do it yourself!\n\r", ch );
+                        send_to_char( "Do it yourself.\n\r", ch );
                         return;
                 }
 
@@ -4722,7 +4871,7 @@ void do_cando (CHAR_DATA *ch, char *argument)
         {
                 if (!victim->pIndexData->skills)
                 {
-                        send_to_char("That would crash the mud... choose a PC.\n\r", ch);
+                        send_to_char("That would crash the MUD. Choose a PC.\n\r", ch);
                         return;
                 }
         }
@@ -4791,7 +4940,7 @@ void do_reset (CHAR_DATA *ch, char *argument)
 void do_wizbrew (CHAR_DATA *ch, char *argument)
 {
         /*
-         *      Wizbrew a potion, out of thin air, 'cause your an imm,
+         *      Wizbrew a potion, out of thin air, 'cause you're an imm,
          *      and you're worth it.  Nice if you want to quickly make
          *      a quest reward, and that sort of thing.
          *      [Gezhp 2000 deluxe]
@@ -4828,7 +4977,7 @@ void do_wizbrew (CHAR_DATA *ch, char *argument)
 
                 if (!is_number (tmp))
                 {
-                        strcpy (buf, "* The item level needs to be a number for starters.\n\r");
+                        strcpy (buf, "* The item level needs to be a number, for starters.\n\r");
                         break;
                 }
 
@@ -4981,7 +5130,7 @@ void do_guide( CHAR_DATA *ch, char *argument )
 
         if ( IS_NPC( victim ) )
         {
-                send_to_char( "Not on NPC's.\n\r", ch );
+                send_to_char( "Not on NPCs.\n\r", ch );
                 return;
         }
 

@@ -1,10 +1,10 @@
- 
+
 /* Last modified 4/5 - Umgook */
- 
+
 /* Total Pre_Reqs == 16  */
 
 {&gsn_second_attack,            &gsn_satanist_base,     40,     PRE_SATANIST},
- 
+
 /* Starting Skills - have decided what worldly is going to be yet?*/
 {&gsn_group_dark,              &gsn_satanist_base,      30,     PRE_SATANIST},
 

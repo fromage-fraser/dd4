@@ -37,8 +37,7 @@
 bool    is_note_to      args( ( CHAR_DATA *ch, NOTE_DATA *pnote ) );
 void    note_attach     args( ( CHAR_DATA *ch ) );
 void    note_remove     args( ( CHAR_DATA *ch, NOTE_DATA *pnote ) );
-void    talk_channel    args( ( CHAR_DATA *ch, char *argument,
-                            int channel, const char *verb ) );
+void    talk_channel    args( ( CHAR_DATA *ch, char *argument, int channel, const char *verb ) );
 
 /*
  * 'Review' command channel buffers; Gez 2001
@@ -368,6 +367,11 @@ void do_say( CHAR_DATA *ch, char *argument )
         if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
         {
                 send_to_char("You are mute. Sssh.\n\r", ch);
+                return;
+        }
+
+        if (IS_NPC(ch) && !CAN_SPEAK(ch))
+        {
                 return;
         }
 
@@ -981,7 +985,10 @@ void do_delete( CHAR_DATA *ch, char *argument)
         }
 
         if (IS_NPC(ch))
+        {
+                send_to_char("Mobs can't delete themselves.\n\r",ch);
                 return;
+        }
 
         if (ch->pcdata->confirm_delete)
         {
@@ -1199,7 +1206,10 @@ void do_follow( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if ( ( ch->level - victim->level < -11 || ch->level - victim->level >  11 ) )
+        /* Immortals can follow and be followed by whomsoever. -Owl 2/2/08 */
+
+        if ( ( ch->level - victim->level < -11 || ch->level - victim->level >  11 )
+                && (!(ch->level > LEVEL_HERO)) && (!(victim->level > LEVEL_HERO)))
         {
                 send_to_char( "You are not of the right caliber to follow.\n\r", ch );
                 return;
@@ -1492,8 +1502,10 @@ void do_group( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if (   ch->level - victim->level < -11
-            || ch->level - victim->level >  11 )
+        if (   ((ch->level - victim->level < -11)
+            || (ch->level - victim->level >  11))
+            && !(ch->level > LEVEL_HERO)
+            && !(victim->level > LEVEL_HERO))
         {
                 act( "$N cannot join your group.",  ch, NULL, victim, TO_CHAR       );
                 act( "You cannot join $n's group.", ch, NULL, victim, TO_VICT       );

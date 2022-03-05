@@ -258,6 +258,27 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
         sn = skill_lookup(arg1);
 
+        /*
+                Added below 23/09/18 to stop crashes caused by fake spellcasting
+                --Owl
+        */
+        if (sn == -1)
+        {
+                send_to_char( "That spell doesn't exist.\n\r", ch );
+                return;
+        }
+        /*
+                Below code converts an int (e.g. 'sn') to a string and logs it.
+                Which is sometimes useful.
+
+                int length = snprintf( NULL, 0, "%d", sn );
+                char* mystr = malloc( length + 1 );
+                snprintf( mystr, length + 1, "%d", sn );
+                log_string(mystr);
+
+                -- Owl 23/09/18
+        */
+
         if (!IS_NPC(ch) && !CAN_DO(ch, sn))
         {
                 send_to_char("You fail miserably.\n\r", ch);
@@ -336,7 +357,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                 if (ch == victim)
                 {
-                        send_to_char("You think about attacking yourself but decide against it.\n\r", ch);
+                        send_to_char("You think about attacking yourself, but decide against it.\n\r", ch);
                         return;
                 }
 
@@ -443,8 +464,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 break;
         }
 
+        /*
         if  ( !skill_table[sn].name )
                 return;
+
+        Why is this so far into the function?  Also it doesn't work.
+        --Owl 23/09/18
+        */
 
         if ( ch->mana < mana )
         {
@@ -452,8 +478,17 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 return;
         }
 
+        /*
         if ( str_cmp( skill_table[sn].name, "ventriloquate" ) )
+        {
                 say_spell( ch, sn );
+        }
+        Below probably fixes above?  --Owl 23/09/18
+        */
+        if ( (strcmp( skill_table[sn].name, "ventriloquate" )) == 0 )
+        {
+                say_spell( ch, sn );
+        }
 
         WAIT_STATE( ch, skill_table[sn].beats );
 
@@ -478,7 +513,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 int chance;
                 spell_attack_number = 1;
                 ch->mana -= mana;
-
                 (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
                 if (skill_table[sn].target == TAR_CHAR_OFFENSIVE)
@@ -519,7 +553,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                             || ch->position < POS_FIGHTING)
                                 return;
 
-                        /* 3rd spell  - must have succeeded in seecond spell to have a
+                        /* 3rd spell  - must have succeeded in second spell to have a
                          * chance at a third spell - geoff */
 
                         if (ch->pcdata->spell_attacks < 3)
@@ -723,8 +757,8 @@ void spell_inner_fire (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (spell_attack_number == 1)
         {
-                act("$N's flesh begins to smolder!", ch, NULL, victim, TO_CHAR);
-                act("$N's flesh begins to smolder!", ch, NULL, victim, TO_ROOM);
+                act("$N's flesh begins to smoulder!", ch, NULL, victim, TO_CHAR);
+                act("$N's flesh begins to smoulder!", ch, NULL, victim, TO_ROOM);
         }
 
         damage(ch,victim,dam,sn, FALSE);
@@ -857,7 +891,11 @@ void spell_astral_vortex( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim;
 
+        /*
         return;
+        Re-enabled 24/09/18.  And may God have mercy on my soul.
+        --Owl
+        */
 
         if ( ( !( victim = get_char_world (ch, target_name ) ) )
             || ( !IS_NPC ( ch ) && ch->fighting )
@@ -930,7 +968,10 @@ void spell_blindness (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (saves_spell(level, victim))
         {
-                send_to_char( "You have failed.\n\r", ch );
+                send_to_char( "They resist your spell!\n\r", ch );
+                /* Shade 12.2.22 */
+                /* Make a save initiate combat and do a minor amount of damage */
+                damage(ch, victim, number_range(1, ch->level/2), gsn_blindness, FALSE);
                 return;
         }
 
@@ -1137,7 +1178,7 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        return;
+        //return;  Re-enabled 22/09/2018.  I too like to live dangerously. --Owl
 
         if ( victim == ch )
         {
@@ -1328,7 +1369,10 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
         if (!IS_AFFECTED(victim, AFF_BLIND))
+        {
+                send_to_char( "They can see just fine.\n\r", ch );
                 return;
+        }
 
         affect_strip(victim, gsn_blindness);
         affect_strip(victim, gsn_gouge);
@@ -1646,7 +1690,7 @@ void spell_detect_invis( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         if ( ch != victim )
-                send_to_char( "They now detect invis.\n\r", ch );
+                send_to_char( "They can now see invisible things.\n\r", ch );
 
         send_to_char( "Your eyes tingle.\n\r", victim );
         return;
@@ -1721,6 +1765,9 @@ void spell_detect_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
 void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
+
+        /* Made some changes so imm dispel (hopefully) always works and on everything --Owl 19/2/22 */
+
         CHAR_DATA   *victim = (CHAR_DATA *) vo;
         AFFECT_DATA *paf;
 
@@ -1790,10 +1837,8 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
 
                                 if (paf->deleted)
                                         continue;
-
-                                send_to_char("Ok.\n\r", ch);
+                                send_to_char("You attempt to dispel magical effects.\n\r", ch);
                                 send_to_char("You feel a strange sensation.\n\r", victim);
-
                                 send_to_char( skill_table[paf->type].msg_off, victim );
                                 send_to_char( "\n\r", victim );
 
@@ -1810,7 +1855,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
         }
         else  /* either ch or victim is an NPC */
         {
-                send_to_char("Ok.\n\r", ch);
+                send_to_char("You attempt to dispel magical effects.\n\r", ch);
                 send_to_char("You feel a strange sensation.\n\r", victim);
 
                 for ( paf = victim->affected; paf; paf = paf->next )
@@ -1818,7 +1863,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         if (paf->duration < 0)
                                 continue;
 
-                        if (effect_is_prayer(paf))
+                        if (effect_is_prayer(paf) && !(IS_IMMORTAL( ch )))
                                 continue;
 
                         if ( paf->type == gsn_mount && victim->mount)
@@ -1830,7 +1875,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         if (skill_cannot_be_dispelled(paf->type))
                                 continue;
 
-                        if ( !saves_spell( level, victim ) )
+                        if ( !saves_spell( level, victim ) || (IS_IMMORTAL( ch )))
                         {
                                 send_to_char( skill_table[paf->type].msg_off, victim );
                                 send_to_char( "\n\r", victim );
@@ -1846,12 +1891,15 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 /*
                  * Can't dispel sanctuary, fireshield or globe if player has
                  * prayer of protection; Gezhp
+                 *
+                 * Can if you're an imm - Owl 19/2/22)
                  */
-                if (is_affected(victim, gsn_prayer_protection))
+
+                if (is_affected(victim, gsn_prayer_protection) && !(IS_IMMORTAL( ch )))
                         return;
 
                 /* ALWAYS give a shot at removing sanctuary */
-                if (IS_AFFECTED(victim, AFF_SANCTUARY) && !saves_spell(level, victim ) )
+                if (IS_AFFECTED(victim, AFF_SANCTUARY) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))) )
                 {
                         REMOVE_BIT(victim->affected_by, AFF_SANCTUARY);
                         send_to_char( "The white aura around your body fades.\n\r", victim );
@@ -1860,7 +1908,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
 
                 /* and globe - this is ugly */
-                if (IS_AFFECTED(victim, AFF_GLOBE) && !saves_spell(level, victim))
+                if (IS_AFFECTED(victim, AFF_GLOBE) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_GLOBE);
                         send_to_char( "The globe around your body dissipates.\n\r", victim );
@@ -1869,13 +1917,256 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
 
                 /* and fireshield - this is ugly too */
-                if (IS_AFFECTED(victim, AFF_FLAMING) && !saves_spell(level, victim))
+                if (IS_AFFECTED(victim, AFF_FLAMING) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_FLAMING);
                         send_to_char( "The flames around your body fizzle out.\n\r", victim );
                         act( "The flames around $n's body fade.", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
+
+                /*
+                 * Continuing the ugliness for AFF bits on mobs we want players to be
+                 * able to dispel (not set in stone, make imm-only if creates problems).
+                 * - Owl 19/2/22
+                 */
+
+                if (IS_AFFECTED(victim, AFF_PROTECT) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_PROTECT);
+                        send_to_char( "You feel less protected.\n\r", victim );
+                        act( "$n looks more vulnerable.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_INVISIBLE) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_INVISIBLE);
+                        send_to_char( "You are no longer invisible.\n\r", victim );
+                        act( "$n fades back into existence.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_FAERIE_FIRE) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_FAERIE_FIRE);
+                        send_to_char( "You are no longer surrounded by a pink outline.\n\r", victim );
+                        act( "The pink outline around $n's body disappears.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_POISON) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_POISON);
+                        send_to_char( "You are no longer sick.\n\r", victim );
+                        act( "$n no longer looks sick.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_CURSE) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_CURSE);
+                        send_to_char( "You are no longer cursed.\n\r", victim );
+                        act( "$n is no longer accursed.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                /* AFF bits that only imms can dispel, i.e. the rest of them. -- Owl 19/2/22 */
+
+                if (IS_AFFECTED(victim, AFF_BATTLE_AURA) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_BATTLE_AURA);
+                        send_to_char( "The silvery glow around you fades.\n\r", victim );
+                        act( "$n seems less ready for battle.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_HOLD) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_HOLD);
+                        send_to_char( "You are no longer entrapped.\n\r", victim );
+                        act( "$n is released from $s confinement.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_BLIND) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_BLIND);
+                        if (HAS_EYES(victim))
+                        {
+                                send_to_char( "You can see!\n\r", victim );
+                                act( "$n's vision has returned.", victim, NULL, NULL, TO_ROOM );
+                        }
+                        else
+                        {
+                                send_to_char( "You are no longer affected by AFF_BLIND.\n\r", victim );
+                                act( "The AFF_BLIND effect is stripped from $n.", victim, NULL, NULL, TO_ROOM );
+                        }
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_CHARM) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_CHARM);
+                        send_to_char( "You feel more self-confident.\n\r", victim );
+                        act( "$n's mind is no longer under the dominion of another.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_HOLD) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_HOLD);
+                        send_to_char( "You are no longer entrapped.\n\r", victim );
+                        act( "$n is released from $s confinement.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_FLYING) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_FLYING);
+                        send_to_char( "You are no longer flying.\n\r", victim );
+                        act( "$n slowly floats to the ground.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_SLEEP) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_SLEEP);
+                        send_to_char( "You wake up!\n\r", victim );
+                        act( "$n wakes up!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_HIDE) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_HIDE);
+                        send_to_char( "You are no longer hiding.\n\r", victim );
+                        act( "$n emerges from $s hiding place.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_PASS_DOOR) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_PASS_DOOR);
+                        send_to_char( "You become tangible.\n\r", victim );
+                        act( "$n solidifies.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_MEDITATE) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_MEDITATE);
+                        send_to_char( "You awaken from your trance.\n\r", victim );
+                        act( "$n awakens from $s trance.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETER) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETER);
+                        send_to_char( "You feel less intimidating.\n\r", victim );
+                        act( "$n seems less intimidating.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_SNEAK) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_SNEAK);
+                        send_to_char( "You feel less stealthy.\n\r", victim );
+                        act( "$n stops sneaking about.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_SWIM) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_SWIM);
+                        send_to_char( "You suddenly forget how to swim!\n\r", victim );
+                        act( "$n forgets how to swim!", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_PRAYER_PLAGUE) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_PRAYER_PLAGUE);
+                        send_to_char( "You are no longer affected by the plague prayer.\n\r", victim );
+                        act( "$n seems a LOT less sickly.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_NON_CORPOREAL) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
+                        send_to_char( "You return to your corporeal form.\n\r", victim );
+                        act( "$n returns to $s corporeal form.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_EVIL) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_EVIL);
+                        send_to_char( "The red in your vision disappears.\n\r", victim );
+                        act( "$n can no longer detect evil.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_INVIS) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_INVIS);
+                        send_to_char( "You no longer see invisible objects.\n\r", victim );
+                        act( "$n can no longer see invisible objects.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_GOOD) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_GOOD);
+                        send_to_char( "The yellow in your vision disappears.\n\r", victim );
+                        act( "$n can no longer detect goodness.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_MAGIC) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_MAGIC);
+                        send_to_char( "The blue in your vision disappears.\n\r", victim );
+                        act( "$n can no longer detect magic.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_HIDDEN) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_HIDDEN);
+                        send_to_char( "You feel less aware of your surroundings.\n\r", victim );
+                        act( "$n seems less aware of $s surroundings.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_TRAPS) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_TRAPS);
+                        send_to_char( "You feel less perspicacious.\n\r", victim );
+                        act( "$n seems less perspicacious.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_SNEAK) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_SNEAK);
+                        send_to_char( "You feel less observant.\n\r", victim );
+                        act( "$n seems less observant.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_INFRARED) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_INFRARED);
+                        send_to_char( "You no longer see in the dark.\n\r", victim );
+                        act( "$n can no longer see in the dark.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                send_to_char( "They don't seem to be affected by anything.\n\r", ch );
+                return;
         }
 }
 
@@ -2166,7 +2457,10 @@ void spell_faerie_fire( int sn, int level, CHAR_DATA *ch, void *vo )
         AFFECT_DATA af;
 
         if ( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) )
+        {
+                send_to_char("They are already surrounded by pink fire\n\r", ch);
                 return;
+        }
 
         af.type      = sn;
         af.duration  = level;
@@ -2250,14 +2544,17 @@ void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( npccount > pccount )
         {
-                do_say( ch, "There are too many of us here!  One must die!" );
+                /* do_say( ch, "There are too many of us here!  One must die!" );
+                   Don't really see the point of this. -Owl */
                 return;
         }
 
-        do_say( ch, "Come brothers!  Join me in this glorious bloodbath!" );
+        do_say( ch, "{RCome brothers!  Join me in this glorious bloodbath!{x" );
 
         mob = create_mobile(get_mob_index(MOB_VNUM_VAMPIRE));
-        mob->level = ch->level - 10;
+        /* Tweaked slightly to make  spell a little more dangerous. 9/4/15 --Owl
+        mob->level = ch->level - 10; */
+        mob->level = ch->level - 7;
         mob->max_hit = mob->level * 8 + number_range(mob->level * mob->level / 4,
                                                      mob->level * mob->level);
         mob->hit = mob->max_hit;
@@ -2857,7 +3154,7 @@ void spell_dark_ritual( int sn, int level, CHAR_DATA *ch, void *vo )
         extract_obj ( obj );
         ch->alignment = UMAX(-1000, ch->alignment - ch->level * 2);
 
-        act("You give up an offering to $D and their blessing fills you with ectasy!\n\r",
+        act("You give up an offering to $D and their blessing fills you with ecstasy!\n\r",
             ch, NULL, NULL, TO_CHAR);
         act("$n offers up a foul sacrifice... A darkness surrounds the corpse and it smolders and burns!",
             ch, NULL, NULL, TO_ROOM);
@@ -3202,9 +3499,14 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+        char    buf     [MAX_STRING_LENGTH];
 
         if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
+        {
+                sprintf( buf, "%s is already affected by that spell.\n\r", victim->name);
+                send_to_char( buf, ch );
                 return;
+        }
 
         af.type      = sn;
         af.duration  = number_fuzzy( level / 8 );
@@ -4029,7 +4331,10 @@ void spell_biofeedback ( int sn, int level, CHAR_DATA *ch, void *vo )
         AFFECT_DATA af;
 
         if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
+        {
+                send_to_char( "You are already protected.\n\r", victim );
                 return;
+        }
 
         af.type      = sn;
         af.duration  = number_fuzzy( level / 8 );
@@ -4038,7 +4343,7 @@ void spell_biofeedback ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_SANCTUARY;
         affect_to_char( victim, &af );
 
-        send_to_char( "You are surrounded by a white aura.\n\r", victim );
+        send_to_char( "A white aura surrounds you.\n\r", victim );
         act( "$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM );
         return;
 }
@@ -4729,8 +5034,10 @@ void spell_levitation ( int sn, int level, CHAR_DATA *ch, void *vo )
         AFFECT_DATA af;
 
         if ( IS_AFFECTED( victim, AFF_FLYING ) )
+        {
+                send_to_char( "You are already floating in mid-air!\n\r", victim );
                 return;
-
+        }
         af.type = sn;
         af.duration = level + 3;
         af.location = APPLY_NONE;
@@ -4738,7 +5045,7 @@ void spell_levitation ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_FLYING;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your feet rise off the ground.\n\r", victim );
+        send_to_char( "You rise up into the air.\n\r", victim );
         act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
         return;
 }
@@ -5575,7 +5882,7 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if ( weather_info.sunlight == SUN_DARK )
         {
-                send_to_char( "Denied, it seems to be dark.\n\r", ch );
+                send_to_char( "It is too dark to cast this spell.\n\r", ch );
                 return;
         }
 
@@ -5832,9 +6139,15 @@ void spell_hex( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        if ( is_affected( victim, sn ) || saves_spell( level, victim ) )
+        if ( is_affected( victim, sn ) )
         {
-                send_to_char( "No way.\n\r", ch );
+                send_to_char( "They are already defiled.\n\r", ch );
+                return;
+        }
+
+        if ( saves_spell( level, victim ) )
+        {
+                send_to_char( "Your curse is resisted.\n\r", ch );
                 return;
         }
 
@@ -5899,7 +6212,7 @@ void spell_animate_dead( int sn, int level, CHAR_DATA *ch, void *vo )
         extract_obj ( obj );
 
         if ( ch->level < 35 )
-                victim = ( create_mobile (get_mob_index ( MOB_VNUM_SKELATON ) ) );
+                victim = ( create_mobile (get_mob_index ( MOB_VNUM_SKELETON ) ) );
 
         else if (ch->level < 45 )
                 victim = ( create_mobile (get_mob_index ( MOB_VNUM_GHOUL ) ) );
@@ -5996,7 +6309,7 @@ void spell_possession( int sn, int level, CHAR_DATA *ch, void *vo  )
         victim->desc          = ch->desc;
         ch->desc              = NULL;
 
-        send_to_char( "You concerntrate on your victims mind, suddenly you see what they see.\n\r", victim );
+        send_to_char( "You concentrate on your victim's mind--suddenly you see what they see!\n\r", victim );
         return;
 }
 
@@ -6324,7 +6637,7 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if ( saves_spell( level, victim ) )
                 {
-                        send_to_char("They moved to quickly.\n\r",ch);
+                        send_to_char("They moved too quickly.\n\r",ch);
                         return;
                 }
 

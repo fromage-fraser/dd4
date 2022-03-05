@@ -27,38 +27,38 @@
 {&gsn_third_spell,              &gsn_druid_base,        30,     PRE_DRUID},
 
 /* **** MANA CRAFT **** */
- 
+
 {&gsn_group_craft,              &gsn_group_mana,        90,     PRE_DRUID},
 {&gsn_group_craft,              &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 {&gsn_scribe,                   &gsn_group_craft,       50,     PRE_DRUID},
 {&gsn_scribe,                   &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 {&gsn_brew,                     &gsn_group_craft,       90,     PRE_DRUID},
 {&gsn_brew,                     &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 /* **** DESTRUCTION **** */
- 
+
 {&gsn_group_destruction,        &gsn_group_divine,      90,     PRE_DRUID},
 {&gsn_group_destruction,        &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 {&gsn_firestorm,                &gsn_group_destruction, 50,     PRE_DRUID},
 {&gsn_firestorm,                &gsn_flamestrike,       90,     PRE_DRUID},
 {&gsn_firestorm,                &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 {&gsn_meteor_storm,             &gsn_group_destruction, 95,     PRE_DRUID},
 {&gsn_meteor_storm,             &gsn_firestorm,         90,     PRE_DRUID},
 {&gsn_meteor_storm,             &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 /* **** MAJOR PROTECTION */
 
 {&gsn_group_majorp,             &gsn_druid_base,        30,     PRE_DRUID},
 {&gsn_group_majorp,             &gsn_group_protection,  80,     PRE_DRUID},
- 
+
 {&gsn_fireshield,               &gsn_group_majorp,      30,     PRE_DRUID},
 {&gsn_fireshield,               &gsn_flamestrike,       80,     PRE_DRUID},
 {&gsn_fireshield,               &gsn_druid_base,        30,     PRE_DRUID},
- 
+
 {&gsn_mass_invis,               &gsn_druid_base,        60,     PRE_DRUID},
 {&gsn_mass_invis,               &gsn_invis,             90,     PRE_DRUID},
 {&gsn_mass_invis,               &gsn_group_majorp,      30,     PRE_DRUID},
@@ -84,5 +84,5 @@
 {&gsn_resist_heat,              &gsn_group_resistance,  95,     PRE_DRUID},
 
 
-            
-            
+
+

@@ -1916,7 +1916,7 @@ void make_corpse (CHAR_DATA *ch)
                  */
 
                 corpse = create_object(get_obj_index( OBJ_VNUM_CORPSE_NPC), 0);
-                corpse->timer = number_range(4, 8);
+                corpse->timer = number_range(10, 20);
                 name = ch->short_descr;
                 corpse->level = ch->level;
 
@@ -1938,7 +1938,7 @@ void make_corpse (CHAR_DATA *ch)
         {
                 name            = ch->name;
                 corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0);
-                corpse->timer   = number_range(35, 40);
+                corpse->timer   = number_range(90, 100);
 
                 free_string(corpse->name);
                 sprintf(buf, "corpse %s", ch->name);
@@ -1975,9 +1975,9 @@ void make_corpse (CHAR_DATA *ch)
                 {
                         if( report_eq_falling == FALSE )
                         {
-                                act( "$n's belongings fall to the floor.\n\r", ch, NULL, NULL,
-                                    TO_ROOM );
-                                report_eq_falling = TRUE;
+                                /* act( "$n's belongings fall to the floor.\n\r", ch, NULL, NULL,
+TO_ROOM );
+                                report_eq_falling = TRUE; */
                         }
                         obj_to_room( obj, ch->in_room );
                 }
@@ -2022,7 +2022,7 @@ void death_cry (CHAR_DATA *ch)
         if( IS_HUGE(ch) )
                 strcpy(msg, "$n's huge body crashes to the ground... DEAD.");
         if( !MAKES_CORPSE(ch) )
-                strcpy(msg, "$n's form withers and dissolves into nothing.");
+                strcpy(msg, "{w$n's form withers and dissolves into nothing.{x");
 
         switch( number_bits(4) )
         {
@@ -4366,7 +4366,7 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 
         if (!HAS_HEAD (victim))
         {
-                act ("$C has no head for you butt!", ch, NULL, victim, TO_CHAR);
+                act ("$C has no head for you to butt!", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
@@ -4409,7 +4409,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
         OBJ_DATA *wobj;
         char arg [ MAX_INPUT_LENGTH ];
         int chance;
-        char msg [MAX_STRING_LENGTH];
+        char msg [ MAX_STRING_LENGTH ];
         int vnum;
         int ok;
 
@@ -4432,7 +4432,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
 
         if (!ok)
         {
-                send_to_char("You must weild a vorpal to decapitate!\n\r",ch);
+                send_to_char("You must wield a vorpal to decapitate!\n\r",ch);
                 return;
         }
 
@@ -4462,7 +4462,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
 
         if (victim->hit > victim->max_hit / 5)
         {
-                act ("$N's reflex's are still to good.", ch, NULL, victim, TO_CHAR);
+                act ("$N's reflexes are still too good.", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
@@ -4812,7 +4812,7 @@ void do_disarm (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
         {
-                send_to_char("You cannot sever your oppenents body parts.\n\r", ch);
+                send_to_char("You cannot sever your opponent's body parts.\n\r", ch);
                 return;
         }
 
@@ -4823,7 +4823,7 @@ void do_disarm (CHAR_DATA *ch, char *argument)
                 disarm(ch, victim);
 
         else
-                send_to_char("You failed.\n\r", ch);
+                send_to_char("Your disarm attempt failed.\n\r", ch);
         return;
 }
 
@@ -4838,7 +4838,7 @@ void do_trip (CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_trip))
         {
-                send_to_char("Tripping?  You'd be better of tying their shoelaces together!\n\r",ch);
+                send_to_char("Tripping?  You'd be better off tying their shoelaces together!\n\r",ch);
                 return;
         }
 

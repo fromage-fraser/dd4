@@ -1131,8 +1131,7 @@ CHAR_DATA* bot_scan_for_target (int num)
         CHAR_DATA *bot;
         CHAR_DATA *vch;
         ROOM_INDEX_DATA *room;
-        int id;
-        unsigned int sight, i, j;
+        unsigned int id, sight, i, j;
 
         if (num < 0 || num >= bot_entry_count)
                 return NULL;

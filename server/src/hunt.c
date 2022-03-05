@@ -468,7 +468,7 @@ void do_hunt( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if (!(IS_NPC(victim)) && !in_pkill_range(ch, victim))
+        if (!(IS_NPC(victim)) && !in_pkill_range(ch, victim) && !IS_IMMORTAL(ch))
         {
                 send_to_char("They are not in your pkill range.\n\r", ch);
                 return;

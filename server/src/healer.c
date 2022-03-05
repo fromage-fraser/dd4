@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include "merc.h"
 
+
 struct healer_spell
 {
         char *keyword;

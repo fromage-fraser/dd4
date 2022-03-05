@@ -1,14 +1,15 @@
 /*
- *      diety.c
+ *      deity.c
  *
  *      Routines and definitions used for the deity system on the
- *      Dragons Domain 3 Envy-style MUD.
+ *      Dragons Domain 4 Envy-style MUD.
  *
  *      To stop deity code being used during the game, alter the
- *      function 'dieties_active' to return FALSE.
+ *      function 'deities_active' to return FALSE.
  *
  *      Gezhp and Shade, 2000-2001
  */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -887,7 +888,7 @@ void do_pantheoninfo (CHAR_DATA *ch, char *argument)
         }
 
         strcat (buf, "\n\r"
-                "ID, name and title                  Align  Type         Personality   Flags\n\r"
+                "ID, Name and Title                  Align  Type         Personality   Flags\n\r"
                 "---------------------------------------------------------------------------\n\r");
         send_to_char (buf, ch);
 

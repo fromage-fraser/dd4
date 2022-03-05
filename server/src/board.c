@@ -431,19 +431,18 @@ bool is_note_to (CHAR_DATA *ch, NOTE_DATA *note)
         if (is_full_name ("all", note->to_list))
                 return TRUE;
 
-
-     if ( ch->clan == 1  && is_full_name( "trv", note->to_list ))
-        return TRUE;
-     if ( ch->clan == 2 && is_full_name( "aes", note->to_list ) )
-        return TRUE;
-     if ( ch->clan == 3  && is_full_name( "loe", note->to_list ))
-        return TRUE;
-     if ( ch->clan == 4  && is_full_name( "moc", note->to_list ))
-        return TRUE;
-     if ( ch->clan == 5  && is_full_name( "som", note->to_list ))
-        return TRUE;
-     if ( ch->clan == 6  && is_full_name( "cob", note->to_list ))
-        return TRUE;
+        if ( ch->clan == 1  && is_full_name( "trv", note->to_list ))
+                return TRUE;
+        if ( ch->clan == 2 && is_full_name( "aes", note->to_list ) )
+                return TRUE;
+        if ( ch->clan == 3  && is_full_name( "loe", note->to_list ))
+                return TRUE;
+        if ( ch->clan == 4  && is_full_name( "moc", note->to_list ))
+                return TRUE;
+        if ( ch->clan == 5  && is_full_name( "som", note->to_list ))
+                return TRUE;
+        if ( ch->clan == 6  && is_full_name( "cob", note->to_list ))
+                return TRUE;
 
         if (IS_IMMORTAL(ch) && (
                 is_full_name ("imm", note->to_list) ||
@@ -452,7 +451,9 @@ bool is_note_to (CHAR_DATA *ch, NOTE_DATA *note)
                 is_full_name ("god", note->to_list) ||
                 is_full_name ("gods", note->to_list) ||
                 is_full_name ("immortals", note->to_list)))
+        {
                 return TRUE;
+        }
 
         if ((get_trust(ch) == MAX_LEVEL) && (
                 is_full_name ("imp", note->to_list) ||
