@@ -1,4 +1,4 @@
-#AREA	Mahatma~ Little Haven~
+#AREA   Mahatma~ Little Haven~
 10 30 0 100
 
 #MOBILES
@@ -828,12 +828,12 @@ S
 * Contact: c370672@h281.mdc.com
 * Files: Haven.are (for Merc 2.0)
 * Suggested level: groups of > 10 or soloed by 20-30th levels.
-*	Please send me a fully debugged copy.  I have done my
-* 	best to make it as bug-free as possible.
-*	This area is (hopefully) to be first used
-*	at Rivers of Mud (imp: Alander).  I have written
-*	other areas including Arachnos, Islands of Minos,
-*	and the (failed) Collinwood Area :P .
+*   Please send me a fully debugged copy.  I have done my
+*   best to make it as bug-free as possible.
+*   This area is (hopefully) to be first used
+*   at Rivers of Mud (imp: Alander).  I have written
+*   other areas including Arachnos, Islands of Minos,
+*   and the (failed) Collinwood Area :P .
 *
 * Geography: This adds an ocean area and connects to the
 * standard Midgaard on the river, going west at
@@ -841,48 +841,48 @@ S
 *
 * Thank you for allowing me to add to your world.
 *
-*			-- Mahatma the Silent
+*           -- Mahatma the Silent
 
-M 0 1801 10 1810		busy gnome
-M 0 1801 10 1811		busy gnome
-M 0 1801 10 1812		busy gnome
-M 0 1810 10 1812		Thief
-M 0 1801 10 1813		busy gnome
-M 0 1801 10 1814		busy gnome
-M 0 1802 4 1807			gnome guard
-M 0 1802 4 1807			gnome guard
-M 0 1803 4 1831			polar bear
-M 0 1803 4 1832			polar bear
-M 0 1803 4 1833			polar bear
-M 0 1803 4 1805			polar bear
-M 0 1804 1 1824			white dragon
-E 1 1802 2 17				gets a fire wand
-M 0 1805 1 1825			blue dragon
-E 1 1803 2 16				gets a flaming axe
-M 0 1806 1 1819			Snow Queen
-E 1 1804 1 11				gets a shield southwind
-E 1 1801 4 17				gets an ice staff
-M 0 1807 5 1818			frost giant guard
-G 1 1806 10				give him a purple potion
-M 0 1807 5 1814			frost giant guard
-G 1 1806 10				give him a purple potion
-M 0 1807 5 1821			frost giant guard
-G 1 1806 10				give him a purple potion
-M 0 1807 5 1827			frost giant guard
-G 1 1806 10				give him a purple potion
-M 0 1807 5 1827			frost giant guard
-M 0 1808 4 1830			white mistress
-E 1 1802 2 17				gets a fire wand
+M 0 1801 10 1810        busy gnome
+M 0 1801 10 1811        busy gnome
+M 0 1801 10 1812        busy gnome
+M 0 1810 10 1812        Thief
+M 0 1801 10 1813        busy gnome
+M 0 1801 10 1814        busy gnome
+M 0 1802 4 1807         gnome guard
+M 0 1802 4 1807         gnome guard
+M 0 1803 4 1831         polar bear
+M 0 1803 4 1832         polar bear
+M 0 1803 4 1833         polar bear
+M 0 1803 4 1805         polar bear
+M 0 1804 1 1824         white dragon
+E 1 1802 2 17               gets a fire wand
+M 0 1805 1 1825         blue dragon
+E 1 1803 2 16               gets a flaming axe
+M 0 1806 1 1819         Snow Queen
+E 1 1804 1 11               gets a shield southwind
+E 1 1801 4 17               gets an ice staff
+M 0 1807 5 1818         frost giant guard
+G 1 1806 10             give him a purple potion
+M 0 1807 5 1814         frost giant guard
+G 1 1806 10             give him a purple potion
+M 0 1807 5 1821         frost giant guard
+G 1 1806 10             give him a purple potion
+M 0 1807 5 1827         frost giant guard
+G 1 1806 10             give him a purple potion
+M 0 1807 5 1827         frost giant guard
+M 0 1808 4 1830         white mistress
+E 1 1802 2 17               gets a fire wand
 M 0 1808 4 1828
-M 0 1808 4 1828			white mistress
-E 1 1803 2 16				gets a flaming axe
-M 0 1809 1 1820			master herbal
-G 1 1805 10 				gets a sprig of mints
+M 0 1808 4 1828         white mistress
+E 1 1803 2 16               gets a flaming axe
+M 0 1809 1 1820         master herbal
+G 1 1805 10                 gets a sprig of mints
 *
 * there were some locked doors here, but I can't find any keys, so I'm not
 * sure what to do with this.    Hatchet of Merc Mud
-*D 0 1827 0 2			Lock the door.
-*D 0 1823 0 2			Lock the door.
+*D 0 1827 0 2           Lock the door.
+*D 0 1823 0 2           Lock the door.
 *
 * some randomizing of rooms.    Hatchet
 R 0 1806 4

@@ -12,7 +12,7 @@ a Keeper of the Seal~
 A Keeper of the Seal stands rigidly by the great door.
 ~
 This huge creature was created with powerful enchantments, and exists only to
-fulfill its given task: in this case, to destory any intruders.  The guardian
+fulfil its given task: in this case, to destroy any intruders.  The guardian
 raises its great warhammer...
 ~
 2|32|64 2|8|32|512|32768|65536 0 S
@@ -25,7 +25,7 @@ Skah Makuit~
 Skah Makuit the wizard turns to you, and smiles...
 ~
 The wizard floats over a large book, quickly scanning the pages.  His slitted
-eyes immediatey sense a presence in the room.  He smiles horribly.  "I mussst
+eyes immediately sense a presence in the room.  He smiles horribly.  "I mussst
 thank you for what you have done for usss... it hasss been too long a sssleep
 and we have much to plan."  He gives you a cursory glance, and snickers.  "You
 are lucky that I am tired after being trapped for ssso long.  I have errandsss
@@ -146,7 +146,7 @@ Makis stands here watching the stairs.
 ~
 The Lieutenant seems unconcerned with your arrival, but utters something down
 the stairs behind him.  His plated armour is covered in symbols and writing,
-and a large tatoo of a winged serpent adorns his left arm.  He raises his
+and a large tattoo of a winged serpent adorns his left arm.  He raises his
 sword and waits for your charge.  "Foolsss, you have cursssed your peoplesss
 for an eternity..."
 ~
@@ -312,7 +312,7 @@ A boiling jet of steam bursts through a broken pipe.
 ~
 A thick, strong jet of steam fires downwards onto the floor.  Some sort of
 object can just be made out in its midst.  You are likely to get hurt eihter
-trying to retreive the object or blocking the broken pipe.
+trying to retrieve the object or blocking the broken pipe.
 ~
 2|64 524288 0 S
 45 0 0 0d0+0 0d0+0
@@ -329,7 +329,7 @@ his face.  "I sssussspect that you have ssseen far too much for your own good."
 You are unsure whether the veiled threat should be taken seriously, but ready
 for battle.  Seht does not make a move, and continues.  "Off with you... I have
 thingsss to do, and have no time for petty squabblesss with adventurersss who
-have bitten off more that they can chew."  The smile disappears, and a talonned
+have bitten off more that they can chew."  The smile disappears, and a taloned
 hand moves nearer to a large sheathed dagger.
 ~
 2|64 8|32|512|524288 -500 S
@@ -430,7 +430,7 @@ filth.
 #25001
 warhammer hammer~
 a Keeper's warhammer~
-A collosal warhammer rests on the floor, glowing faintly.~
+A colossal warhammer rests on the floor, glowing faintly.~
 ~
 5 1|64 1|8192
 45~ 25~ 40~ 8~
@@ -489,7 +489,7 @@ A
 2 2
 E
 mail shirt~
-The Kahsis mail is fashioned from large green scales, no doubt shedded by some
+The Kahsis mail is fashioned from large green scales, no doubt shed by some
 foul serpent.  The scales are extremely light and tough; the skirt oozes like
 water when thrown to the floor, and feels like silk when run through the
 fingers.
@@ -522,7 +522,7 @@ A
 19 3
 E
 mace kahsis~
-This ugly looking weapon has blunt spikes raised off its cylinderical head.
+This ugly looking weapon has blunt spikes raised off its cylindrical head.
 One good swing could smash your skull into a grisly pulp.
 ~
 #25007
@@ -588,7 +588,7 @@ A
 19 7
 E
 symbol pain neckchain~
-A steel circle containing an inverted traingle hangs from a bulky neckchain.
+A steel circle containing an inverted triangle hangs from a bulky neckchain.
 Arcane script is engraved around the outer ring of the symbol: it is in a
 language far too ancient for you to comprehend.  The triangle depicts a face
 writhing in agony, an expression you are able to understand fully well after
@@ -609,7 +609,7 @@ A
 E
 totem blood stone~
 Yellowed ivory clutches a perfectly spherical blood stone.  The rock shines
-brilliantly and has a flawless surface.  As you weild the totem, your temples
+brilliantly and has a flawless surface.  As you wield the totem, your temples
 throb, and you feel slightly drained of energy.
 ~
 #25012
@@ -660,7 +660,7 @@ A
 12 50
 E
 wavy staff~
-This heavy staff has been crafted from solid granite.  The worksmanship is
+This heavy staff has been crafted from solid granite.  The workmanship is
 extraordinary: the staff has a clawed foot similar to a bird's and a large
 open mouth surrounding a comfortable handle.  The staff is virtually
 weightless and almost certainly enchanted.
@@ -675,7 +675,7 @@ a bloated corpse~~
 E
 corpse body bloated~
 The corpse is rotting and fly blown.  The smell is terrible, and you gag.
-Makeshift leather armour and rusty mail are stil wrapped around the body of
+Makeshift leather armour and rusty mail are still wrapped around the body of
 this unfortunate adventurer.
 ~
 #25016
@@ -739,7 +739,7 @@ You spot a rusty spanner here.~
 E
 spanner~
 The spanner is rusty but usable, being made of solid iron that has resisted
-serious deteriation.
+serious deterioration.
 ~
 #25021
 bones bone~
@@ -752,7 +752,7 @@ Yellowed bones lie scattered on the ground.~
 E
 bones bone~
 These fragile and yellowed bones once belonged to a living humanoid.  A large
-skull contains large eye sockets and a saggital crest, two fangs pointing from
+skull contains large eye sockets and a sagittal crest, two fangs pointing from
 its grinning jaw.
 ~
 #25022
@@ -1053,7 +1053,7 @@ A
 E
 skullcap cap green~
 The skullcap is made of soft snakeskin and is curiously decorated with sequins
-and tassles.  You imagine that the small label covered in short writing on the
+and tassels.  You imagine that the small label covered in short writing on the
 inside of the cap is some sort of name tag.
 ~
 #25039
@@ -1176,7 +1176,7 @@ effectively in close combat.
 #25046
 cleaver~
 a cleaver~
-A viscious cleaver lays on the floor.~
+A vicious cleaver lays on the floor.~
 ~
 5 0 1|8192
 0~ 30~ 50~ 1~
@@ -1233,7 +1233,7 @@ unlikely to have been made with human consumption in mind.
 #25050
 brass claws~
 some brass claws~
-A pair of brass hydrolic claws lay here.~
+A pair of brass hydraulic claws lay here.~
 ~
 9 0 1|128
 18~ 1~ 6~ 11~
@@ -1244,19 +1244,19 @@ A
 19 5
 E
 claws brass~
-The brass claws are extremely sharp and hard, hydrolic pistons able to pinch
+The brass claws are extremely sharp and hard, hydraulic pistons able to pinch
 opposing digits together for a vice-like grip.
 ~
 #25051
 egg reptile~
-a reptillian egg~
+a reptilian egg~
 A small slimy egg lays here.~
 ~
 26 0 1|16384
 45~ cure critical~ cure poison~ cure critical~
 5 0 0
 E
-egg reptillian~
+egg reptilian~
 This small white egg is layered in thick slime, and smells awful.
 ~
 #25052
@@ -1371,7 +1371,7 @@ A
 19 7
 E
 amulet dwarven~
-A circular symbol hangs from a simlpe chain.  The amulet is made from steel
+A circular symbol hangs from a simple chain.  The amulet is made from steel
 inlaid with silver and mithril, but is weathered and unpolished.
 ~
 #25059
@@ -1436,7 +1436,7 @@ A huge snake tooth lays on the ground.~
 5 0 0
 E
 tooth snake~
-This white tooth is indestructable and extremely sharp.
+This white tooth is indestructible and extremely sharp.
 ~
 #25064
 axe dwarven~
@@ -1470,7 +1470,7 @@ a nest~
 100 0 0
 E
 mound mounds nest~
-This stinking mound of rotting vegetation serves as some sort of reptillian
+This stinking mound of rotting vegetation serves as some sort of reptilian
 nest.
 ~
 #25066
@@ -1721,7 +1721,7 @@ A small tunnel extends through the serpent's jaws.
 ~
 0 -1 25010
 D2
-The clearing streches south of here.
+The clearing stretches south of here.
 ~
 ~
 0 -1 25008
@@ -1791,7 +1791,7 @@ although an immense iron bar spans the middle and is bolted to the walls both
 sides of the door: to keep those on the inside from coming out, you realise
 uneasily.  The metal is covered in writing, most of which is unreadable and
 very likely magical intonements and spells.  Several figures are engraved in
-the panels, including an armoured human woman weilding two swords and fighting
+the panels, including an armoured human woman wielding two swords and fighting
 a gigantic humanoid serpent, and a stout demihuman opposed to a horde of flying
 dragons.  "Mord Protect Us," cites some intricate script; "Avenger of those of
 Good who have died by the Poisoned Fang," appears below.
@@ -1981,7 +1981,7 @@ E
 inscription writing west~
 "In Memory and Honour of the 5th Battalion, who were slaughtered defending the
  Seal as it was Raised.  May every Soul find Peace with the One.
-					      Gurjief, Lord High under Maggard"
+                                              Gurjief, Lord High under Maggard"
 ~
 S
 #25019
@@ -2170,7 +2170,7 @@ A sturdy door stands directly south.
 1 -1 25025
 E
 trash items junk armour weapons~
-All of the articles of armour and weaponary are broken and rusted, completely
+All of the articles of armour and weaponry are broken and rusted, completely
 unusable in combat.
 ~
 S
@@ -2187,7 +2187,7 @@ A sturdy door stands leads south back into the corridor.
 1 -1 25024
 E
 bunks wooden~
-The bunks are layered in dust, their moth-eaten matresses hanging from their
+The bunks are layered in dust, their moth-eaten mattresses hanging from their
 edges.
 ~
 S
@@ -2204,7 +2204,7 @@ door~
 1 -1 25022
 E
 beds table furniture~
-The furnature is layered in thick dust, unused for centuries.
+The furniture is layered in thick dust, unused for centuries.
 ~
 S
 #25029
@@ -2221,7 +2221,7 @@ S
 #25030
 The Great Door~
 You stand at the southern end of an immense chamber that continues northwards.
-The southern wall is filled with a large iron door that is annoited with
+The southern wall is filled with a large iron door that is anointed with
 symbols and writing.  Decorative doors open west and east from here.  Another
 large door is visible further northwards.
 ~
@@ -2256,7 +2256,7 @@ cover its panels.
 S
 #25031
 The Door of Pain~
-The door against the north wall is covered in scripture.  It's metal finish
+The door against the north wall is covered in scripture.  Its metal finish
 gleams and carries no imperfection.  Ornate doors open west and east from
 here, and this large chamber stretches south.
 ~
@@ -2312,8 +2312,8 @@ An ornate door open west.
 S
 #25033
 Corridor~
-This corridor is hugh and very wide.  You may continue west, and doors open
-here to the north and east.  The eastern door is heavy and carrys the outline
+This corridor is huge and very wide.  You may continue west, and doors open
+here to the north and east.  The eastern door is heavy and carries the outline
 of a skull.
 ~
 0 1|8 0
@@ -2335,7 +2335,7 @@ The corridor continues to the west.
 S
 #25034
 Chamber~
-This room is very dim and musty, and there are no furnature or fittings.  Bits
+This room is very dim and musty, and there are no furniture or fittings.  Bits
 of masonry and rubble litter the floor.
 ~
 0 1|8 0
@@ -2499,7 +2499,7 @@ may head west along the corridor or leave east through a door to the guardroom.
 ~
 0 1|8 0
 D0
-A solid door leads north.  A large symbol is emboised on the wood.
+A solid door leads north.  A large symbol is embossed on the wood.
 ~
 ~
 1 -1 25045
@@ -2564,7 +2564,7 @@ The room is beginning to become full of awfully smelling smoke.
 S
 #25045
 Vestry~
-The vestry is lined with small wooden lockers.  They contain richy embroidered
+The vestry is lined with small wooden lockers.  They contain richly-embroidered
 robes and tunics of a shiny, unfamiliar material.  The only exit appears to be
 through the door to the south.
 ~
@@ -2601,7 +2601,7 @@ drain pipe disappears from beneath the bowl into the wall.
 S
 #25047
 Small Chapel~
-Stark stone benches are organised before a small guilded idol.  Tapestries
+Stark stone benches are organised before a small gilded idol.  Tapestries
 hang from the walls, displaying large silver symbols.
 ~
 0 1|8 0
@@ -2619,7 +2619,7 @@ swampy landscape.  Small but unrecognisable writing borders the artwork.
 S
 #25048
 Bedroom~
-These living quaters are filled with rubbish.  A wooden bed stands dejectedly
+These living quarters are filled with rubbish.  A wooden bed stands dejectedly
 in the far corner.
 ~
 0 1|8 0
@@ -2666,7 +2666,7 @@ A small door leads back west.
 1 -1 25049
 S
 #25051
-Broken Furnature~
+Broken Furniture~
 Tables and chairs lay broken and upended.
 ~
 0 1|8 0
@@ -2677,7 +2677,7 @@ A door to the north leads back into the corridor.
 1 -1 25035
 S
 #25052
-Abandonned Room~
+Abandoned Room~
 Probably serving as some sort of meeting room or general quarters, this room
 contains a large table and several stools.  Bones lie in the southwest corner.
 ~
@@ -2690,7 +2690,7 @@ A door to the north leads back into the corridor.
 S
 #25053
 Grand Hall~
-Stone serpents spiral up the huge collums standing in rows to the west and east
+Stone serpents spiral up the huge columns standing in rows to the west and east
 of this lofty hall.  A large staircase disappears downwards to the north, and
 side chambers open west and east.
 ~
@@ -2786,7 +2786,7 @@ The stairs lead upwards.
 S
 #25058
 Hall of Serpents~
-Statues of disturbingly strange beasts stand in the center of the wide hall,
+Statues of disturbingly strange beasts stand in the centre of the wide hall,
 their bright paint faded and replaced by dust and grim.  You may head north and
 south along the hall; doors open west and east of here.
 ~
@@ -2929,8 +2929,8 @@ A sturdy door stands to the west.
 S
 #25063
 Servants' Quarters~
-You stand in an abandoned dormatory.  The sparse furniture - several rickety
-bunds and a few stools - lays tossed or in pieces about the room.
+You stand in an abandoned dormitory.  The sparse furniture - several rickety
+bunks and a few stools - lays tossed or in pieces about the room.
 ~
 0 1|8 0
 D2
@@ -2941,7 +2941,7 @@ An archway opens south.
 S
 #25064
 Servants' Quarters~
-Broken furniture and garbage are all that occupy this abbandonned dormatory.
+Broken furniture and garbage are all that occupy this abandoned dormitory.
 ~
 0 1|8 0
 D2
@@ -2965,7 +2965,7 @@ An archway opens south.
 S
 #25066
 Servants' Quarters~
-Rubbish and rubble cover the floor of this abandonned room.
+Rubbish and rubble cover the floor of this abandoned room.
 ~
 0 1|8 0
 D0
@@ -3100,7 +3100,7 @@ A wave of heat swamps you as you enter the room, which is more accurately a
 roughly hewn cavern.  Huge pipes stretch from wall to wall, or disappear into
 the ground.  Several large vents open up in the ground near the west wall.
 One in particular is quite large, large enough for you to climb down it if you
-wished too.  The waves of heat and occassional bursts of flames that arrive
+wished too.  The waves of heat and occasional bursts of flames that arrive
 from the opening of these vents indicate that if you were inclined to enter
 these holes, you might not be alive long enough to get out of them again...
 ~
@@ -3176,7 +3176,7 @@ Swamp oozes to the west.
 E
 mud swamp marsh~
 The mud is thick and smells bad.  Foul water bubbles up through the muck in
-many places, amd the air is alive with flies.
+many places, and the air is alive with flies.
 ~
 S
 #25078
@@ -3199,7 +3199,7 @@ panel door~
 1 -1 25069
 E
 stake skulls skull~
-Several human and reptillian skulls decorate this spike.  The bones are also
+Several human and reptilian skulls decorate this spike.  The bones are also
 crushed and pierced in many places.
 ~
 S
@@ -3411,7 +3411,7 @@ A door opens north.
 1 -1 25087
 E
 cabinet bench control panel~
-Guages and dials are mounted in the walls of this low set cabinet.  Pipes and
+Gauges and dials are mounted in the walls of this low set cabinet.  Pipes and
 tubes lead from the rear of the control panel and into the wall.  Murky water
 sits inside many of the dials, and control levers and switches have been badly
 rusted and no longer move easily.
@@ -3464,7 +3464,7 @@ A large wooden bench against the east wall lays covered in pieces of broken
 pipe, plumbing, dials and valves.  Tools stand on the floor and on an extensive
 rack above the workbench and pipes layer the ceiling, spurting steam and water
 into the southern end of the chamber.  An open furnace in the southwest corner
-burns brighly and radiates heat throughout the room.  A large set of plans or
+burns brightly and radiates heat throughout the room.  A large set of plans or
 blueprints is stretched out across a pair of adjacent stools near the door.
 ~
 0 1|8 0
@@ -3477,19 +3477,19 @@ E
 plans plan diagram blueprints~
 Diagrams and tiny script cover these vellum scrolls.  Pictured in the diagrams
 are several humanoid figures, many notes and arrows pointing to various body
-parts.  Arms and legs are pictured seperately in detail.
+parts.  Arms and legs are pictured separately in detail.
 ~
 E
 tools rack workbench~
 Tools hang from nails on a rack above the cluttered workbench.  Piping and
 rubbish cover the table; also visible are several snakeman manuals and scrolls,
 and interestingly enough, a human book, titled "Art and Application of the
-Magick Study of Hydrolics and Engineering of the Elements of Fire and Air."
+Magick Study of Hydraulics and Engineering of the Elements of Fire and Air."
 ~
 S
 #25092
 Generator Room~
-A throbbing whine fills the air, which is hot and very humid.  A collosal
+A throbbing whine fills the air, which is hot and very humid.  A colossal
 boiler or burner occupies the bulk of this large chamber, which stretches east
 and south.  Pipes and valves rise out of the ground and disappear through the
 walls in every direction.
@@ -3513,7 +3513,7 @@ The chamber heads south.
 S
 #25093
 Generator Room~
-A throbbing whine fills the air, which is hot and very humid.  A collosal
+A throbbing whine fills the air, which is hot and very humid.  A colossal
 boiler or burner occupies the bulk of this large chamber, which stretches west
 and south.  Pipes and valves rise out of the ground and disappear through the
 walls in every direction.
@@ -3538,7 +3538,7 @@ incoming water carried by several pipes.
 S
 #25094
 Generator Room~
-A throbbing whine fills the air, which is hot and very humid.  A collosal
+A throbbing whine fills the air, which is hot and very humid.  A colossal
 boiler or burner occupies the bulk of this large chamber, which stretches east
 and north.  Pipes and valves rise out of the ground and disappear through the
 walls in every direction.
@@ -3557,7 +3557,7 @@ The chamber stretches west.
 S
 #25095
 Generator Room~
-A throbbing whine fills the air, which is hot and very humid.  A collosal
+A throbbing whine fills the air, which is hot and very humid.  A colossal
 boiler or burner occupies the bulk of this large chamber, which stretches west
 and north.  Pipes and valves rise out of the ground and disappear through the
 walls in every direction.
@@ -3658,7 +3658,7 @@ S
 The Grand Hall~
 Your footsteps echo loudly as you step into this magnificent hall, its high
 ceiling vaulted with decorative arches.  Dust covered chandeliers hang at
-intevals on long chains, and grotesque statues rise from short pillars.
+intervals on long chains, and grotesque statues rise from short pillars.
 Doors open west and east from here, and the hall continues north.
 ~
 0 1|4|8 0
@@ -4037,7 +4037,7 @@ As you move through this antechamber a pinpoint of intense blue light develops
 to the north.  It grows suddenly and blazes - you cover your eyes as the light
 becomes stronger and stronger.  When it dies down, the flickering blue form
 of a robed maiden floats above you.  The woman is unbelievably beautiful, her
-clothes exquisitely emboidered.  She speaks to your mind.  "I can not stay
+clothes exquisitely embroidered.  She speaks to your mind.  "I can not stay
 long my friend, the power of the queen is too great, and many of the other
 gods refuse to interfere."  She seems distracted momentarily.  "However, I
 must warn you - you are in great peril.  You have refused to heed the warnings
@@ -4047,7 +4047,7 @@ maiden continues, "Kahsis lies directly ahead.  She will crush you, her power
 is too great.  Recall now - save your soul!"  Her voice becomes sterner as her
 form begins to waver and fade.  "Save yourself, I beg you!  You can never
 defeat the queen, never!"  Then she is gone, and you are badly shaken.  The
-noise from ahead softens then stops.  Faint laughter echos through the air,
+noise from ahead softens then stops.  Faint laughter echoes through the air,
 and seems to invade your mind.  A darkened archway rears to the north.
 ~
 0 1|4|8 0
@@ -4064,8 +4064,8 @@ S
 #25120
 Crash!~
 An almighty crash rings out as rubble pours from the roof behind you - you are
-sealed in!  A wide arch opens north, through which you see a wide dias.  A slim
-woman lounges on a luxuriant thone, several courtiers about her.  She calls out
+sealed in!  A wide arch opens north, through which you see a wide dais.  A slim
+woman lounges on a luxuriant throne, several courtiers about her.  She calls out
 to you: "Welcome, I have been waiting for ssso long to meet you!"  Her voice
 is radiant and musical, and her gaze pierces you even from a great distance.
 "I have much to thank you for," she continues.  "I have been asssleep for many
@@ -4096,7 +4096,7 @@ S
 #25122
 Treasure Room~
 You burst into a small room with golden walls.  Coins litter the floor; many
-guilded chests sit open, overflowing with treasures.  You quickly take what you
+gilded chests sit open, overflowing with treasures.  You quickly take what you
 can, as the complex begins to rumble and heave, tremendous noises coming from
 the throne room.  Above the din you hear a piercing, tormented scream.  A dark
 portal flickers with light to the west, the ancient gateway crackling into
@@ -4133,7 +4133,7 @@ D3
 S
 #25125
 Explosions~
-Titanic explosions rock the passage as you hurredly escape.  A chilling wind
+Titanic explosions rock the passage as you hurriedly escape.  A chilling wind
 sweeps past you as you flee the approaching destruction.
 ~
 0 1|4|8|8192 0
@@ -4167,7 +4167,7 @@ scramble to your feet.  The maiden cries tears of joy, and reaches forward to
 kiss your cheek and hug you.  Her very presence refreshes you and you feel fit
 and well.  The dwarf's eyes glow, and he grins widely.  He bows before you.
 "You have earned a place in heaven, my friend," he says.  Mord Maggard wipes
-a tear from his eye, and seems embarassed.  "You have achieved what a whole
+a tear from his eye, and seems embarrassed.  "You have achieved what a whole
 army could not... may Kahsis never escape from hell again. Finally now, my
 brothers and I may rest, rest knowing that this evil has been vanquished."  He
 stands before you and kneels, offering you his great axe.  "I pray that the
@@ -4206,7 +4206,7 @@ An archway opens south.
 S
 #25130
 Guard House~
-This guard house stands empty and abandonned.
+This guard house stands empty and abandoned.
 ~
 0 1|8 0
 D0
@@ -4220,7 +4220,7 @@ Roasted and Toasted~
 Panic-stricken you attempt to clamber up the shaft, but the fireball is too
 fast and it quickly envelopes you: with your flesh on fire you fall from the
 rock face screaming.  Fortunately the intense agony is short lived, as you are
-vapourised in a pool of molten rock at the bottom of the vent.  Perhaps in
+vaporised in a pool of molten rock at the bottom of the vent.  Perhaps in
 your next life, you will behave with a little more common sense.
 ~
 0 1|4|8 0
@@ -4359,7 +4359,7 @@ E 1 25008 100 6
 E 1 25005 100 11
 E 1 25007 100 12
 E 1 25006 100 16
-D 1 25051 0 1                   ; Broken Furnature Close North
+D 1 25051 0 1                   ; Broken Furniture Close North
 D 1 25052 0 1                   ; Abandonned Room Close North
 D 1 25037 2 1                   ; Corridor of Magic Close South
 *
@@ -4450,7 +4450,7 @@ E 1 25004 100 5
 E 1 25005 100 11
 E 1 25003 100 16
 *
-M 1 25007 12 25051                      a Kahsis Footsoldier to Broken Furnature
+M 1 25007 12 25051                      a Kahsis Footsoldier to Broken Furniture
 E 1 25004 100 5
 E 1 25008 100 6
 E 1 25005 100 11
@@ -4496,7 +4496,7 @@ D 1 25029 2 1                   ; Ancient Guardroom Close South
 D 1 25030 1 1                   ; The Great Door Close East
 D 1 25030 3 1                   ; The Great Door Close West
 D 1 25035 1 1                   ; Corridor of Magic Close East
-O 1 25022 100 25051             some broken furniture to Broken Furnature
+O 1 25022 100 25051             some broken furniture to Broken Furniture
 O 1 25022 100 25026             some broken furniture to Trashed Armoury
 O 1 25021 100 25052             some bones to Abandonned Room
 O 1 25023 100 25038             some junk to Side Chamber

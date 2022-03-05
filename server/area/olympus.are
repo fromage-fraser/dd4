@@ -1,4 +1,4 @@
-#AREA	Generic~ Olympus~
+#AREA   Generic~ Olympus~
 20 35 0 100
 
 
@@ -1467,7 +1467,7 @@ S
 
 
 #SHOPS
-  915	 1  8 13 15 19	 120  80	 0 23	; Julius
+  915    1  8 13 15 19   120  80     0 23   ; Julius
 0
 
 

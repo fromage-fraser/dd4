@@ -2826,15 +2826,15 @@ M 1 13191 2 13187                      the Bleeder to The Maze of dispair
 *
 M 1 13191 2 13192                      the Bleeder to The Maze of dispair
 *
-M 1 13192 1 13188                     the Janitor to The Maze of dispair
+M 1 13192 1 13188                      the Janitor to The Maze of dispair
 *
 M 1 13189 2 13195                      the Yagnid to The dark tunnel
 *
 M 1 13193 1 13204                      Jammer's Avatar to The chamber
 O 1 13189 100 13204                    The Blackbelt to The chamber
-D 1 13180 3 1                   ; A North - South passageway Close West
-D 1 13202 0 1			; A dead end close north
-D 1 13203 0 1			; A dead end close north
+D 1 13180 3 1                          ; A North - South passageway Close West
+D 1 13202 0 1                          ; A dead end close north
+D 1 13203 0 1                          ; A dead end close north
 S
 
 

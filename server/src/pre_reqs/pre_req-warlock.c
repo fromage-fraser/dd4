@@ -79,5 +79,5 @@
 {&gsn_warcry,                   &gsn_group_inner,       95,     PRE_WARLOCK},
 {&gsn_warcry,                   &gsn_warlock_base,      30,     PRE_WARLOCK},
 
-{&gsn_whirlwind,              &gsn_dual,              95,     PRE_WARLOCK},
-{&gsn_whirlwind,              &gsn_warlock_base,      60,     PRE_WARLOCK},
+{&gsn_whirlwind,                &gsn_dual,              95,     PRE_WARLOCK},
+{&gsn_whirlwind,                &gsn_warlock_base,      60,     PRE_WARLOCK},

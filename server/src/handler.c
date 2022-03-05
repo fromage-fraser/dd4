@@ -2228,6 +2228,7 @@ char *affect_bit_name (int vector)
         if ( vector & AFF_FLYING        ) return "flying";
         if ( vector & AFF_PASS_DOOR     ) return "pass_door";
         if ( vector & AFF_MEDITATE      ) return "meditating";
+        if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
         if ( vector & AFF_GLOBE         ) return "globed";
         if ( vector & AFF_DETECT_TRAPS  ) return "detect_traps";
@@ -2266,6 +2267,7 @@ char* affect_bit_name_nice (int vector)
         if ( vector & AFF_FLYING        ) return "flight";
         if ( vector & AFF_PASS_DOOR     ) return "pass door";
         if ( vector & AFF_MEDITATE      ) return "meditation";
+        if ( vector & AFF_DETECT_CURSE  ) return "detect curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect good";
         if ( vector & AFF_GLOBE         ) return "globe";
         if ( vector & AFF_DETECT_TRAPS  ) return "detect traps";

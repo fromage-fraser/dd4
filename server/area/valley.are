@@ -1,4 +1,4 @@
-#AREA	Hatchet~ Valley of the Elves~
+#AREA   Hatchet~ Valley of the Elves~
 5 20 0 100
 
 
@@ -2250,10 +2250,11 @@ S
 
 
 #SPECIALS
-M  7807 spec_cast_cleric	; elder
-M  7808 spec_cast_mage		; elder
-M  7809 spec_breath_fire	; pyrohydra
-M  7811 spec_cast_mage		; Talemon
+M  7807 spec_cast_cleric    ; elder
+M  7808 spec_cast_mage      ; elder
+M  7809 spec_breath_fire    ; pyrohydra
+M  7811 spec_cast_mage      ; Talemon
+M  7812 spec_demon          ; daemon
 S
 
 

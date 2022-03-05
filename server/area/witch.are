@@ -1,4 +1,4 @@
-#AREA Shade~ Witches Tower~
+#AREA Shade~ Witch's Tower~
 25 35 1 100
 
 #MOBILES
@@ -15,7 +15,7 @@ ignores your presence.
 32|128 0
 0 0 1
 >rand_prog 15~
-	mpecho The bear sniffs about in the trees looking for food.
+    mpecho The bear sniffs about in the trees looking for food.
 ~
 |
 
@@ -64,10 +64,10 @@ touch each one.  She looks despairingly at you.
 32|64|256 0
 0 0 2
 >rand_prog 15~
-	mpasound A despairing wail echoes through the trees.
+    mpasound A despairing wail echoes through the trees.
 ~
 >rand_prog 15~
-	mpecho The nymph lets out a despairing wail.
+    mpecho The nymph lets out a despairing wail.
 ~
 |
 
@@ -85,7 +85,7 @@ of sadness, this spirit is not resting peacefully.
 32|64|256 0
 0 0 0
 >rand_prog 15~
-	mpecho The spectral elf wails sadly.
+    mpecho The spectral elf wails sadly.
 ~
 |
 
@@ -130,7 +130,7 @@ grins back at you.
 0 0
 0 0 1
 >fight_prog 15~
-	mpecho The imp throws back his head and cackles with insane glee!
+    mpecho The imp throws back his head and cackles with insane glee!
 ~
 |
 
@@ -149,12 +149,12 @@ gaze falls upon you.
 0 0
 0 0 2
 >death_prog 100~
-	mpecho Aiseen lets out a piercing wail, so great you are forced
-	mpecho to cover your ears in agony.  You hear voices in the air.
-	mpecho {W'Master it is done!'{x
-	mpecho {W'Yes apprentice, and at last we may rest.  Farewell Thanus.'{x
-	mpecho {W'Farewell and thanks Master.'{x
-	mpecho {x
+    mpecho Aiseen lets out a piercing wail, so great you are forced
+    mpecho to cover your ears in agony.  You hear voices in the air.
+    mpecho {W'Master it is done!'{x
+    mpecho {W'Yes apprentice, and at last we may rest.  Farewell Thanus.'{x
+    mpecho {W'Farewell and thanks Master.'{x
+    mpecho {x
 ~
 |
 
@@ -172,7 +172,7 @@ is impossible to tell.  The wight shifts about restlessly.
 32|64|256 0
 0 0 0
 >rand_prog 15~
-	mpecho The wight shuffles about restlessly.
+    mpecho The wight shuffles about restlessly.
 ~
 |
 #0
@@ -1951,7 +1951,7 @@ M 10103 spec_cast_druid         a ghostly nymph
 M 10105 spec_cast_priestess     a black witch
 M 10107 spec_cast_undead        a ghostly wraith
 M 10106 spec_cast_mage          a small imp
-M 10108 spec_cast_undead        a demon spirit
+M 10108 spec_demon              a demon spirit
 S
 
 #$

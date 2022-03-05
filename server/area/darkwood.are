@@ -1,4 +1,4 @@
-#AREA	Istari~  Dark Wood~
+#AREA   Istari~  Dark Wood~
 50 60 0 100
 
 
@@ -16,15 +16,15 @@ see anything through it.
 127|256 0
 8 8 1
 >all_greet_prog 20~
-	mpecho The mist begins to stir up around you.
-   	mpechoat $n .
-   	mpechoat $n .
-   	mpechoat $n You slip and fall off the bridge!!
-   	mpechoat $n .
-   	mpechoat $n .
-   	mpechoat $n .
-   	mpechoat $n !!SPLASH!!
-   	mptrans $n 11213
+    mpecho The mist begins to stir up around you.
+    mpechoat $n .
+    mpechoat $n .
+    mpechoat $n You slip and fall off the bridge!!
+    mpechoat $n .
+    mpechoat $n .
+    mpechoat $n .
+    mpechoat $n !!SPLASH!!
+    mptrans $n 11213
 ~
 |
 #11201
@@ -2122,81 +2122,81 @@ S
 
 
 #RESETS
-R 1 11201 4			; Randomize The Light Forest
-R 1 11203 2			; Randomize The darkening forest
-R 1 11204 3			; Randomize The darkening forest
-R 1 11205 4			; Randomize The misty forest
-R 1 11206 2			; Randomize the misty forest
+R 1 11201 4         ; Randomize The Light Forest
+R 1 11203 2         ; Randomize The darkening forest
+R 1 11204 3         ; Randomize The darkening forest
+R 1 11205 4         ; Randomize The misty forest
+R 1 11206 2         ; Randomize the misty forest
 *
-M 1 11200 1 11211			the strange mist to A misty bridge
-*
-*
+M 1 11200 1 11211           the strange mist to A misty bridge
 *
 *
 *
 *
-D 1 11231 0 2			; The Crystal Cavern Lock North
+*
+*
+D 1 11231 0 2               ; The Crystal Cavern Lock North
 *
 M 1 11203 1 11231              the crystal dragon to The crystal cavern
 E 1 11206 100 2
 *
 M 1 11204 1 11232              the crystal tree to A crystal chamber
 *
-M 1 11214 1 11239			the morepork to Dark Wood
+M 1 11214 1 11239           the morepork to Dark Wood
 O 1 11200 100 11231            a crystal dagger to The crystal cavern
 O 1 11201 100 11231            crystal sleeves to The crystal cavern
 O 1 11202 100 11231            a crystal bracer to The crystal cavern
 O 1 11203 100 11231            crystals to The crystal cavern
-O 1 11205 100 11231      a crystal shard to The Crystal Cavern
+O 1 11205 100 11231         a crystal shard to The Crystal Cavern
 *
-M 1 11201 2 11214			the sharp rocks to The mighty river
+M 1 11201 2 11214           the sharp rocks to The mighty river
 *
-M 1 11205 2 11216			the jagged rocks to The mighty river
-R 1 11256 4			; Randomize Dark Wood
-R 1 11242 2              ; Randomize Dark Wood
-D 1 11265 1 1			; A small hut Close East
-D 1 11267 0 2			; The Tower of Dark Wood Lock North
+M 1 11205 2 11216           the jagged rocks to The mighty river
+R 1 11256 4                 ; Randomize Dark Wood
+R 1 11242 2                 ; Randomize Dark Wood
+D 1 11265 1 1               ; A small hut Close East
+D 1 11267 0 2               ; The Tower of Dark Wood Lock North
 *
-M 1 11211 1 11268			the vampire to The Tower of Dark Wood
+M 1 11211 1 11268           the vampire to The Tower of Dark Wood
 *
-M 1 11212 2 11269			the vampire to The Tower of Dark Wood
+M 1 11212 2 11269           the vampire to The Tower of Dark Wood
 *
-M 1 11213 1 11270			the demon to The Tower of Dark Wood
+M 1 11213 1 11270           the demon to The Tower of Dark Wood
 *
-M 1 11210 1 11271			the Darkone to The Tower of Dark Wood
+M 1 11210 1 11271           the Darkone to The Tower of Dark Wood
 E 1 11213 100 5
 *
-M 1 11202 2 11215             the large rocks to The mighty river
-O 1 11207 100 11252           dirt to Dark Wood
-O 1 11208 100 11266			steel chest to Inside a small hut
-P 1 11210 100 11207			a steel key to container Dirt
-P 1 11209 100 11208			a silver cross to container chest
-P 1 11212 100 11208            a prayer to container chest
+M 1 11202 2 11215           the large rocks to The mighty river
+O 1 11207 100 11252         dirt to Dark Wood
+O 1 11208 100 11266         steel chest to Inside a small hut
+P 1 11210 100 11207         a steel key to container Dirt
+P 1 11209 100 11208         a silver cross to container chest
+P 1 11212 100 11208         a prayer to container chest
 *
-M 1 11206 2 11237			the forest giant to Dark Wood
+M 1 11206 2 11237           the forest giant to Dark Wood
 E 1 11214 100 5
 *
-M 1 11208 2 11247			the tiger to Dark Wood
+M 1 11208 2 11247           the tiger to Dark Wood
 *
-M 1 11207 2 11251			the forest giant to Dark Wood
+M 1 11207 2 11251           the forest giant to Dark Wood
 E 1 11214 100 5
 *
-M 1 11209 3 11256			the tiger to Dark Wood
-O 1 11204 100 11232      a pair of ruby slippers to A crystal chamber
-R 1 11276 2			; Randomize A room
-R 1 11287 2			; Randomize A room
-O 1 11216 100 11220			lagoon to The lagoon
-O 1 11217 100 11291			a mushroom to A Clearing
+M 1 11209 3 11256           the tiger to Dark Wood
+O 1 11204 100 11232         a pair of ruby slippers to A crystal chamber
+R 1 11276 2                 ; Randomize A room
+R 1 11287 2                 ; Randomize A room
+O 1 11216 100 11220         lagoon to The lagoon
+O 1 11217 100 11291         a mushroom to A Clearing
 S
 
 
 #SPECIALS
-M  11203 spec_breath_gas			the crystal dragon
-M  11204 spec_cast_orb			the crystal tree
-M  11210 spec_cast_undead			the Darkone
-M  11211 spec_cast_undead			the vampire
-M  11212 spec_cast_undead			the vampire
-M  11213 spec_cast_undead			the demon
+M  11203 spec_breath_gas            the crystal dragon
+M  11204 spec_cast_orb              the crystal tree
+M  11210 spec_cast_undead           the Darkone
+M  11211 spec_cast_undead           the vampire
+M  11212 spec_cast_undead           the vampire
+M  11213 spec_demon                 the demon
 S
 
 

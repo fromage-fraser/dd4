@@ -2824,6 +2824,17 @@ const struct social_type social_table [] =
                         "You give yourself a thumbs-up.",
                         "$n gives $mself a thumbs-up."
         },
+        /* OR THIS ONE -- Owl 2/3/22 */
+        {
+                "facepalm",
+                        "You hold your face in your hands and groan.",
+                        "$n holds $s face in $s hands and groans.",
+                        "You facepalm at $N's groanworthy remark.",
+                        "$n groans and facepalms at $N.",
+                        "$n groans and facepalms at you.",
+                        "You hold your face in your hands and groan to yourself.",
+                        "$n groans and facepalms at $mself."
+        },
 
         {
                 "type",

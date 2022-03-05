@@ -1,4 +1,4 @@
-#AREA	Wench~   Dragon Tower~
+#AREA   Wench~   Dragon Tower~
 5 50 0 100
 
 
@@ -1538,8 +1538,8 @@ M 0 2225 1 2230
 G 1 2241 2
 G 1 2285 50
 E 1 2261 50 3
-M 0 2220 1 2243			TIAMAT
-E 1 2298 50 17			his chromatic orb
+M 0 2220 1 2243         TIAMAT
+E 1 2298 50 17          his chromatic orb
 S
 
 

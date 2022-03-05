@@ -48,7 +48,7 @@ mpkill $n
 ~
 >death_prog 100~
 mpecho {RAs Ronan's body is destroyed a giant black leech erupts from his skin!{x
-	mpmload 20626
+    mpmload 20626
 ~
 |
 #20603
@@ -89,6 +89,41 @@ give lace $n
 mpecho {WWith her dying breath Zelda whimpers, `I love you Morc...'{x
 ~
 |
+& 40 'teacher base'
+& 100 'armed combat knowledge'
+& 100 'defense knowledge'
+& 100 'unarmed combat knowledge'
+& 100 'mental defense disciplines'
+& 100 'matter control disciplines'
+& 100 'energy control disciplines'
+& 100 'telepathy disciplines'
+& 100 'body control disciplines'
+& 100 'mana control disciplines'
+& 100 'evocation magiks'
+& 100 'divination magiks'
+& 100 'summoning magiks'
+& 100 'enchantment magiks'
+& 100 'dark magiks'
+& 100 'death magiks'
+& 100 'hunting arts'
+& 100 'riding techniques'
+& 100 'protective magiks'
+& 100 'divine magiks'
+& 100 'conjuration magiks'
+& 100 'enchantment magiks'
+& 100 'alteration magiks'
+& 100 'disease magiks'
+& 100 'mana control'
+& 100 'draconian magiks'
+& 100 'major protective magiks'
+& 100 'mana craft'
+& 100 'destructive magiks'
+& 30 'necro base'
+& 30 'warlock base'
+& 30 'mage base'
+& 30 'psionic base'
+& 30 'witch base'
+& 30 'mage base'
 #20604
 great grey wolf large~
 the great wolf~
@@ -183,7 +218,7 @@ mpkill $n
 ~
 >death_prog 100~
 mpecho {RAs Vincent's body is destroyed a giant black leech erupts from his skin!{x
-	mpmload 20626
+    mpmload 20626
 ~
 |
 #20609
@@ -252,7 +287,7 @@ mpkill $n
 ~
 >death_prog 100~
 mpecho {RAs Rayke's body is destroyed a giant black leech erupts from his skin!{x
-	mpmload 20626
+    mpmload 20626
 ~
 |
 #20614
@@ -300,7 +335,7 @@ fury as green tendrils of smoke creep from the corners of her mouth.
 8 8 2
 >death_prog 100~
 mpecho {RAs Ilyana's body is destroyed a giant black leech erupts from her skin!{x
-	mpmload 20626
+    mpmload 20626
 ~
 |
 #20617
@@ -359,7 +394,7 @@ mpkill $n
 ~
 >death_prog 100~
 mpecho {RAs Gretzel's body is destroyed a giant black leech erupts from his skin!{x
-	mpmload 20626
+    mpmload 20626
 ~
 |
 #20621
@@ -520,7 +555,7 @@ sleep
 ~
 >death_prog 100~
 mpecho {RAs Mavros' body is destroyed a giant black leech erupts from his skin!{x
-	mpmload 20626
+    mpmload 20626
 ~
 |
 #20626
@@ -2669,7 +2704,7 @@ fissure~
 0 -1 20641
 E
 center rock fissure boulder~
-Main Entry: 1fis�sure
+Main Entry: fissure
 Pronunciation: 'fi-sh&r
 Function: noun
 Etymology: Middle English, from Middle French, from Latin fissura, from fissus
@@ -4566,24 +4601,24 @@ S
 
 
 #RESETS
-D 1 20606 3 1			; Inside the oak tree Close West
-D 1 20623 3 1			; Entrance to the wolves' den Close West
-D 1 20625 0 1			; Inside a Caravan Close North
-O 1 20600 100 20600			a stone table to Undergrowth
+D 1 20606 3 1           ; Inside the oak tree Close West
+D 1 20623 3 1           ; Entrance to the wolves' den Close West
+D 1 20625 0 1           ; Inside a Caravan Close North
+O 1 20600 100 20600         a stone table to Undergrowth
 *
-M 1 20600 1 20606			the gypsy slave to Inside the oak tree
+M 1 20600 1 20606           the gypsy slave to Inside the oak tree
 E 1 20601 100 5
 G 1 20602 100
-D 1 20695 1 1			; Zelda's cabin Close East
-D 1 20624 2 1			; Undergrowth Close South
+D 1 20695 1 1           ; Zelda's cabin Close East
+D 1 20624 2 1           ; Undergrowth Close South
 *
-M 1 20601 1 20625			the gypsy woman to Inside a Caravan
+M 1 20601 1 20625           the gypsy woman to Inside a Caravan
 E 1 20604 100 13
 E 1 20603 100 5
-D 1 20625 5 2			; Inside a Caravan Lock Down
-D 1 20696 4 2			; The dark pit Lock Up
+D 1 20625 5 2           ; Inside a Caravan Lock Down
+D 1 20696 4 2           ; The dark pit Lock Up
 *
-M 1 20602 1 20696			Ronan to The dark pit
+M 1 20602 1 20696           Ronan to The dark pit
 E 1 20605 100 16
 E 1 20605 100 18
 E 1 20606 100 7
@@ -4591,166 +4626,166 @@ E 1 20607 100 14
 E 1 20607 100 15
 G 1 20608 100
 *
-M 1 20603 1 20695			Zelda to Zelda's cabin
+M 1 20603 1 20695           Zelda to Zelda's cabin
 E 1 20614 100 12
 E 1 20615 100 5
 E 1 20616 100 13
 E 1 20617 100 16
 E 1 20618 100 8
 G 1 20610 100
-O 1 20609 100 20695			a small wooden chest to Zelda's cabin
-P 1 20611 100 20609			gold coins to container chest
-P 1 20612 100 20609			a silver flask to container chest
-P 1 20613 100 20609			a bag of mixed herbs to container chest
+O 1 20609 100 20695         a small wooden chest to Zelda's cabin
+P 1 20611 100 20609         gold coins to container chest
+P 1 20612 100 20609         a silver flask to container chest
+P 1 20613 100 20609         a bag of mixed herbs to container chest
 *
-M 1 20604 1 20623			the great wolf to Entrance to the wolves' den
+M 1 20604 1 20623           the great wolf to Entrance to the wolves' den
 E 1 20619 100 16
 *
-M 1 20605 1 20657			the great wolf to Land
+M 1 20605 1 20657           the great wolf to Land
 E 1 20619 100 16
 *
-M 1 20606 7 20626			the wolf cub to The wolves' den
+M 1 20606 7 20626           the wolf cub to The wolves' den
 *
-O 1 20642 100 20633			some blue herbs to Undergrowth
-O 1 20642 100 20646			some blue herbs to Undergrowth
-O 1 20642 100 20665			some blue herbs to Undergrowth
-O 1 20643 100 20605			some red herbs to Undergrowth
-O 1 20643 100 20637			some red herbs to Undergrowth
-O 1 20643 100 20671			some red herbs to Land
-O 1 20644 100 20617			some green herbs to Undergrowth
-O 1 20644 100 20667			some green herbs to Land
-O 1 20644 100 20632			some green herbs to Undergrowth
-O 1 20645 100 20679			some purple herbs to Land
+O 1 20642 100 20633         some blue herbs to Undergrowth
+O 1 20642 100 20646         some blue herbs to Undergrowth
+O 1 20642 100 20665         some blue herbs to Undergrowth
+O 1 20643 100 20605         some red herbs to Undergrowth
+O 1 20643 100 20637         some red herbs to Undergrowth
+O 1 20643 100 20671         some red herbs to Land
+O 1 20644 100 20617         some green herbs to Undergrowth
+O 1 20644 100 20667         some green herbs to Land
+O 1 20644 100 20632         some green herbs to Undergrowth
+O 1 20645 100 20679         some purple herbs to Land
 *
-M 1 20606 7 20626			the wolf cub to The wolves' den
+M 1 20606 7 20626           the wolf cub to The wolves' den
 *
-M 1 20606 7 20626			the wolf cub to The wolves' den
+M 1 20606 7 20626           the wolf cub to The wolves' den
 *
-M 1 20606 7 20626			the wolf cub to The wolves' den
+M 1 20606 7 20626           the wolf cub to The wolves' den
 *
-M 1 20607 2 20626			the female wolf to The wolves' den
+M 1 20607 2 20626           the female wolf to The wolves' den
 *
-M 1 20607 2 20628			the female wolf to The wolves' den
+M 1 20607 2 20628           the female wolf to The wolves' den
 *
-M 1 20606 7 20628			the wolf cub to The wolves' den
+M 1 20606 7 20628           the wolf cub to The wolves' den
 *
-M 1 20606 7 20628			the wolf cub to The wolves' den
+M 1 20606 7 20628           the wolf cub to The wolves' den
 *
-M 1 20606 7 20628			the wolf cub to The wolves' den
+M 1 20606 7 20628           the wolf cub to The wolves' den
 *
-M 1 20608 1 20627			Vincent to The wolves' den
+M 1 20608 1 20627           Vincent to The wolves' den
 E 1 20622 100 6
 E 1 20623 100 5
 E 1 20605 100 16
 E 1 20605 100 18
 E 1 20625 100 7
 G 1 20684 100
-O 1 20620 100 20627			a large oak coffin to The wolves' den
-P 1 20621 100 20620			a jet-black stone to container coffin large oak
+O 1 20620 100 20627         a large oak coffin to The wolves' den
+P 1 20621 100 20620         a jet-black stone to container coffin large oak
 *
-M 1 20609 6 20602			the wolf to Undergrowth
+M 1 20609 6 20602           the wolf to Undergrowth
 *
-M 1 20610 4 20608			the wolf to Undergrowth
+M 1 20610 4 20608           the wolf to Undergrowth
 *
-M 1 20610 4 20611			the wolf to Land
+M 1 20610 4 20611           the wolf to Land
 *
-M 1 20610 4 20614			the wolf to Land
+M 1 20610 4 20614           the wolf to Land
 *
-M 1 20610 4 20621			the wolf to Undergrowth
+M 1 20610 4 20621           the wolf to Undergrowth
 *
-M 1 20609 6 20620			the wolf to Land
+M 1 20609 6 20620           the wolf to Land
 *
-M 1 20609 6 20664			the wolf to Land
+M 1 20609 6 20664           the wolf to Land
 *
-M 1 20609 6 20649			the wolf to Land
+M 1 20609 6 20649           the wolf to Land
 *
-M 1 20609 6 20668			the wolf to Land
+M 1 20609 6 20668           the wolf to Land
 *
-M 1 20609 6 20683			the wolf to Land
+M 1 20609 6 20683           the wolf to Land
 *
-M 1 20611 5 20603			the gypsy man to Undergrowth
+M 1 20611 5 20603           the gypsy man to Undergrowth
 E 1 20601 100 5
 *
-M 1 20611 5 20601			the gypsy man to Undergrowth
+M 1 20611 5 20601           the gypsy man to Undergrowth
 E 1 20601 100 5
 *
-M 1 20611 5 20619			the gypsy man to Land
+M 1 20611 5 20619           the gypsy man to Land
 E 1 20601 100 5
 *
-M 1 20611 5 20644			the gypsy man to Land
+M 1 20611 5 20644           the gypsy man to Land
 E 1 20601 100 5
 *
-M 1 20611 5 20638			the gypsy man to Land
+M 1 20611 5 20638           the gypsy man to Land
 E 1 20601 100 5
 *
-M 1 20612 5 20635			the gypsy woman to Land
+M 1 20612 5 20635           the gypsy woman to Land
 E 1 20603 100 5
 *
-M 1 20612 5 20631			the gypsy woman to Land
+M 1 20612 5 20631           the gypsy woman to Land
 E 1 20603 100 5
 *
-M 1 20612 5 20655			the gypsy woman to Land
+M 1 20612 5 20655           the gypsy woman to Land
 E 1 20603 100 5
 *
-M 1 20612 5 20685			the gypsy woman to Land
+M 1 20612 5 20685           the gypsy woman to Land
 E 1 20603 100 5
 *
-M 1 20612 5 20673			the gypsy woman to Land
+M 1 20612 5 20673           the gypsy woman to Land
 E 1 20603 100 5
-D 1 20605 1 1			; Undergrowth Close East
-D 1 20684 1 1			; Undergrowth Close East
-D 1 20687 3 1			; Assembly Hall Close West
-D 1 20698 0 2			; Bottom of the stairwell Lock North
-D 1 20699 2 2			; Slavemaster's Crypt Lock South
+D 1 20605 1 1           ; Undergrowth Close East
+D 1 20684 1 1           ; Undergrowth Close East
+D 1 20687 3 1           ; Assembly Hall Close West
+D 1 20698 0 2           ; Bottom of the stairwell Lock North
+D 1 20699 2 2           ; Slavemaster's Crypt Lock South
 *
-M 1 20613 1 20699			Rayke to Slavemaster's Crypt
+M 1 20613 1 20699           Rayke to Slavemaster's Crypt
 E 1 20626 100 16
 E 1 20627 100 5
 E 1 20628 100 7
 G 1 20629 100
-D 1 20687 2 1			; Assembly Hall Close South
-D 1 20688 0 1			; Male slave dormitory Close North
-D 1 20688 3 1			; Male slave dormitory Close West
+D 1 20687 2 1           ; Assembly Hall Close South
+D 1 20688 0 1           ; Male slave dormitory Close North
+D 1 20688 3 1           ; Male slave dormitory Close West
 *
-M 1 20614 1 20688			a gypsy man to Male slave dormitory
+M 1 20614 1 20688           a gypsy man to Male slave dormitory
 E 1 20601 100 5
-D 1 20689 1 1			; Female slave dormitory Close East
+D 1 20689 1 1           ; Female slave dormitory Close East
 *
-M 1 20615 2 20689			a gypsy woman to Female slave dormitory
+M 1 20615 2 20689           a gypsy woman to Female slave dormitory
 E 1 20603 100 5
 *
-M 1 20615 2 20689			a gypsy woman to Female slave dormitory
+M 1 20615 2 20689           a gypsy woman to Female slave dormitory
 E 1 20603 100 5
-D 1 20702 0 2			; Inside a fissure Lock North
-D 1 20703 2 2			; Ilyana's Lair Lock South
+D 1 20702 0 2           ; Inside a fissure Lock North
+D 1 20703 2 2           ; Ilyana's Lair Lock South
 *
-M 1 20616 1 20703			Ilyana to Ilyana's Lair
+M 1 20616 1 20703           Ilyana to Ilyana's Lair
 E 1 20630 100 12
 E 1 20631 100 3
 E 1 20632 100 16
 G 1 20633 100
 *
-M 1 20617 1 20657			the bonfire to Fire in a forest clearing
-D 1 20660 0 1			; Inside a hut Close North
-D 1 20661 2 1			; Feeding room Close South
+M 1 20617 1 20657           the bonfire to Fire in a forest clearing
+D 1 20660 0 1           ; Inside a hut Close North
+D 1 20661 2 1           ; Feeding room Close South
 *
-M 1 20618 2 20660			the gypsy man to Inside a hut
+M 1 20618 2 20660           the gypsy man to Inside a hut
 E 1 20601 100 5
 E 1 20634 100 17
 *
-M 1 20618 2 20660			the gypsy man to Inside a hut
+M 1 20618 2 20660           the gypsy man to Inside a hut
 E 1 20635 100 16
 E 1 20601 100 5
 G 1 20636 100
 *
-M 1 20601 1 20661			the gypsy woman to Feeding room
+M 1 20601 1 20661           the gypsy woman to Feeding room
 E 1 20603 100 5
 E 1 20604 100 13
 *
-M 1 20619 1 20661			the gypsy boy to Feeding room
-D 1 20661 1 2			; Feeding room Lock East
+M 1 20619 1 20661           the gypsy boy to Feeding room
+D 1 20661 1 2           ; Feeding room Lock East
 *
-M 1 20620 1 20662			Gretzel to Gretzel's Crypt
+M 1 20620 1 20662           Gretzel to Gretzel's Crypt
 E 1 20683 100 17
 E 1 20637 100 11
 E 1 20606 100 7
@@ -4758,34 +4793,34 @@ E 1 20639 100 16
 E 1 20640 100 1
 G 1 20638 100
 G 1 20641 100
-D 1 20662 3 2			; Gretzel's Crypt Lock West
-D 1 20669 3 1			; Undergrowth Close West
-D 1 20648 3 2			; Undergrowth Lock West
-D 1 20651 1 2			; Inside the Tower Lock East
-D 1 20680 1 1			; Undergrowth Close East
+D 1 20662 3 2           ; Gretzel's Crypt Lock West
+D 1 20669 3 1           ; Undergrowth Close West
+D 1 20648 3 2           ; Undergrowth Lock West
+D 1 20651 1 2           ; Inside the Tower Lock East
+D 1 20680 1 1           ; Undergrowth Close East
 *
-M 1 20621 1 20709			Morc to Morc's home
+M 1 20621 1 20709           Morc to Morc's home
 E 1 20646 100 5
 E 1 20647 100 8
 E 1 20648 100 19
 G 1 20649 100
-D 1 20710 4 1			; At the top of a ladder Close Up
-D 1 20647 5 1			; Undergrowth Close Down
+D 1 20710 4 1           ; At the top of a ladder Close Up
+D 1 20647 5 1           ; Undergrowth Close Down
 *
-M 1 20622 2 20647			the hungry horse to Undergrowth
+M 1 20622 2 20647           the hungry horse to Undergrowth
 *
-M 1 20622 2 20647			the hungry horse to Undergrowth
+M 1 20622 2 20647           the hungry horse to Undergrowth
 *
-M 1 20623 2 20657			the feral cat to Fire in a forest clearing
-D 1 20652 3 2			; Inside the Stone Tower Lock West
-D 1 20653 1 2			; Mavros' Lair Lock East
+M 1 20623 2 20657           the feral cat to Fire in a forest clearing
+D 1 20652 3 2           ; Inside the Stone Tower Lock West
+D 1 20653 1 2           ; Mavros' Lair Lock East
 *
-M 1 20624 1 20652			the zombie guardian to Inside the Stone Tower
+M 1 20624 1 20652           the zombie guardian to Inside the Stone Tower
 E 1 20650 100 5
-D 1 20725 2 1			; Inside the iron coffin Close South
-D 1 20653 0 1			; Mavros' Lair Close North
+D 1 20725 2 1           ; Inside the iron coffin Close South
+D 1 20653 0 1           ; Mavros' Lair Close North
 *
-M 1 20625 1 20725			Mavros to Inside the iron coffin
+M 1 20625 1 20725           Mavros to Inside the iron coffin
 E 1 20651 100 3
 E 1 20652 100 14
 E 1 20652 100 15
@@ -4800,55 +4835,55 @@ E 1 20659 100 16
 E 1 20660 100 11
 E 1 20663 100 12
 G 1 20662 100
-O 1 20661 100 20653			a mutilated carcass to Mavros' Lair
-P 1 20665 100 20661			a money purse to container mutilated carcass
+O 1 20661 100 20653         a mutilated carcass to Mavros' Lair
+P 1 20665 100 20661         a money purse to container mutilated carcass
 *
-M 1 20623 2 20690			the feral cat to Building
+M 1 20623 2 20690           the feral cat to Building
 *
-M 1 20627 4 20728			the guardian bat to Inside the Hole
+M 1 20627 4 20728           the guardian bat to Inside the Hole
 *
-M 1 20627 4 20731			the guardian bat to Inside the Hole
+M 1 20627 4 20731           the guardian bat to Inside the Hole
 *
-M 1 20627 4 20735			the guardian bat to Inside the Hole
+M 1 20627 4 20735           the guardian bat to Inside the Hole
 *
-M 1 20627 4 20738			the guardian bat to Inside the Hole
+M 1 20627 4 20738           the guardian bat to Inside the Hole
 *
-M 1 20628 1 20740			the Man-bat to Inside the Hole
+M 1 20628 1 20740           the Man-bat to Inside the Hole
 E 1 20667 100 12
 E 1 20666 100 16
-D 1 20740 5 2			; The bottom of the Hole Lock Down
-O 1 20669 100 20743			a safe to Faraq's Chambers
-P 1 20668 100 20669			key to Faraq's Chamber to container safe steel
-P 1 20611 100 20669			gold coins to Faraq's container safe steel
-P 1 20670 100 20669			a map of the forest to container safe steel
+D 1 20740 5 2           ; The bottom of the Hole Lock Down
+O 1 20669 100 20743         a safe to Faraq's Chambers
+P 1 20668 100 20669         key to Faraq's Chamber to container safe steel
+P 1 20611 100 20669         gold coins to Faraq's container safe steel
+P 1 20670 100 20669         a map of the forest to container safe steel
 *
-M 1 20629 1 20742			Faraq to Faraq's Chambers
+M 1 20629 1 20742           Faraq to Faraq's Chambers
 E 1 20671 100 12
 *
-M 1 20630 1 20744			the demon form of Faraq to The Circle of Summoning
-D 1 20741 4 2			; Faraq's Chambers Lock Up
-O 1 20682 100 20648			some orange herbs to Undergrowth
+M 1 20630 1 20744           the demon form of Faraq to The Circle of Summoning
+D 1 20741 4 2           ; Faraq's Chambers Lock Up
+O 1 20682 100 20648         some orange herbs to Undergrowth
 *
-M 1 20631 1 20650		; the spy recruit wolf
+M 1 20631 1 20650       ; the spy recruit wolf
 S
 
 
 #SPECIALS
-M  20602 spec_poison			Ronan
-M  20603 spec_cast_adept			Zelda
-M  20604 spec_poison			the great wolf
-M  20605 spec_poison			the great wolf
-M  20608 spec_poison			Vincent
-M  20616 spec_breath_gas			Ilyana
-M  20617 spec_breath_fire		the bonfire
-M  20620 spec_vampire			Gretzel
-M  20621 spec_cast_cleric			Morc
-M  20622 spec_fido			the hungry horse
-M  20623 spec_fido			the feral cat
-M  20624 spec_cast_undead			the zombie guardian
-M  20625 spec_cast_undead			Mavros
-M  20628 spec_poison			the Man-bat
-M  20630 spec_breath_gas			the demon form of Faraq
+M  20602 spec_poison            Ronan
+M  20603 spec_cast_adept        Zelda
+M  20604 spec_poison            the great wolf
+M  20605 spec_poison            the great wolf
+M  20608 spec_poison            Vincent
+M  20616 spec_breath_gas        Ilyana
+M  20617 spec_breath_fire       the bonfire
+M  20620 spec_vampire           Gretzel
+M  20621 spec_cast_cleric       Morc
+M  20622 spec_fido              the hungry horse
+M  20623 spec_fido              the feral cat
+M  20624 spec_cast_undead       the zombie guardian
+M  20625 spec_cast_undead       Mavros
+M  20628 spec_poison            the Man-bat
+M  20630 spec_demon             the demon form of Faraq
 S
 
 

@@ -1,4 +1,4 @@
-#AREA	Madboy~  The Port of Draagdim~
+#AREA   Madboy~  The Port of Draagdim~
 -2 -2 0 100
 
 #AREA_SPECIAL
@@ -86,7 +86,7 @@ worker dock~
 a dock worker~
 A dock worker is hefting boxes here
 ~
-Have you never seen a dock worker before?  Brawn in dungerees.
+Have you never seen a dock worker before?  Brawn in dungarees.
 ~
 2|64|128 0 300 S
 15 0 0 0d0+0 0d0+0
@@ -167,7 +167,7 @@ brow with a meaty hand and asks "Do you want a drink or what?"
 #28200
 sword crysomer~
 crysomer~
-A silver, great-sword rests here.~
+A silver great sword rests here.~
 ~
 5 1|2|64|1024|2048 1|8192
 0~ 30~ 72~ 13~
@@ -187,7 +187,7 @@ A
 E
 crysomer~
 This is the fabled sword carried by the half-dragon hero, Fitharn
-and protected him from the Disintergration spells cast by Xoric
+and protected him from the Disintegration spells cast by Xoric
 in the apocalyptic God's War when Madboy truly did lose his bickies
 and led the forces of darkness against Midgaard and it's heroes.~
 #28201
@@ -436,7 +436,7 @@ The Rusty Anchor Tavern~
 The smell of unwashed bodies, stale beer and vomit assaults your
 nostrils as you enter the low ceilinged tavern.  The large, smoky
 common room is wall to wall with sailors, in various states of
-drunkeness, all yelling to be heard over each other and a large,
+drunkenness, all yelling to be heard over each other and a large,
 buxom barmaid serves leering sailors with an air of indifference at
 the bar.  To the south you see a heavy bead curtain hanging before a
 doorway.
@@ -466,7 +466,7 @@ S
 #28204
 A jetty~
 The old but sturdy timbers of the jetty creak as you walk over them
-and seaspray lightly coats your face as it is caried by the light sea
+and sea spray lightly coats your face as it is carried by the light sea
 breeze. Overhead, gulls wheel on the prevailing westerly gusts and a
 sense of calm and serenity washes over you. There are no boats moored
 at his jetty.
@@ -566,7 +566,7 @@ D4
 1 -1 28209
 S
 #28209
-Madboy's sea-veiw apartment.~
+Madboy's sea-view apartment.~
 You have entered Madboy's private little apartment. The walls are
 covered with expensive tapestries and hangings and the floor is
 scattered with deep, plush wool rugs and cushions. The windows face
@@ -586,7 +586,7 @@ S
 The kitchen~
 You find yourself standing in a small, tidy kitchen.  Large bay
 windows take up most of the eastern wall affording a brilliant view
-of the harbour, rivaling that of the lounge.  To the south a door
+of the harbour, rivalling that of the lounge.  To the south a door
 leads to the butler's quarters and a door in the north leads back out
 into the lounge area.  To the west is a pantry.
 ~
@@ -774,7 +774,7 @@ S
 #28221
 The Armorie~
 You have entered an enormous, warehouse sized armour shop. All around
-you see manniquins wearing various types of plain and ordinary armour
+you see mannequins wearing various types of plain and ordinary armour
 through to elaborate and exotic types of armour. At the end of the
 room you see a counter and a massive forge.
 ~
@@ -807,7 +807,7 @@ D3
 E
 gate~
 The gate has no lock and no apparent opening mechanism nor any hinges. The
-beautifully worked gates scrollwork, upon closerexamination is razor sharp
+beautifully worked gates scrollwork, upon closer examination is razor sharp
 to prevent anyone climbing it.~
 S
 #28223
@@ -849,7 +849,7 @@ D3
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -876,7 +876,7 @@ D2
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -910,7 +910,7 @@ Silvre Blayde's Qualitie Armes~
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -922,9 +922,9 @@ S
 #28227
 Silvre Blayde's Qualitee Armes~
 The sea breeze blows in as you open the door then the door swings
-silently shut behind you as you enter the dark shop.  The meager
+silently shut behind you as you enter the dark shop.  The meagre
 light of the torches on the walls gleams off the highly polished
-weapons arrayed around this room. The sound of a hammer stiking
+weapons arrayed around this room. The sound of a hammer striking
 metal beats in the background.
 ~
 0 8|0|16384 0
@@ -968,7 +968,7 @@ The Eastern Wharf~
 The Eastern Wharf is crowded with new arrivals to the city.  Docked,
 here, is a beautiful passenger liner with four masts and gilded
 scrollwork on the bowsprit. Debarked passengers move to and fro as
-they try to locate thier luggage. To the south you spot a ticketing
+they try to locate their luggage. To the south you spot a ticketing
 office.
 ~
 0 0 1
@@ -1008,7 +1008,7 @@ in the wall.~
 S
 #28232
 The Square~
-You stand in a large sqaure who's centre is dominated by a large
+You stand in a large square who's centre is dominated by a large
 statue. To the south and west the square continues.
 ~
 0 0 1
@@ -1023,7 +1023,7 @@ D3
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -1095,7 +1095,7 @@ D3
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -1121,7 +1121,7 @@ D3
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -1152,7 +1152,7 @@ D2
 E
 Statue~
 The statue depicts two figures, one a massive, half-dragon
-barbarian wielding a Greatsword, and the other, a human warrior
+barbarian wielding a great sword, and the other, a human warrior
 holding an ornate lantern aloft.
 
 There is a small plaque at the base of the statue.~
@@ -1229,7 +1229,7 @@ S
 #28243
 The Thieves'  Guild~
 As you step into this room, all manner of beings turn to stare at
-you as you enter. Most turn back to thier games, sleep or practice
+you as you enter. Most turn back to their games, sleep or practice
 almost immediately although eye you with suspicion and mistrust.
 The room is huge with makeshift beds lining the walls almost every
 nook and cranny.
@@ -1260,7 +1260,7 @@ S
 #28245
 Tomb of the Kings~
 You are standing in a brightly lit chamber lined on each side with
-statues of dead kings. To the north you see a pedistal with a glowing
+statues of dead kings. To the north you see a pedestal with a glowing
 sword resting upon it.
 ~
 0 4|8|0 0
@@ -1275,7 +1275,7 @@ D2
 S
 #28246
 The Fane of the Crysomer~
-You are standing before a pedistal with a glowing sword resting upon
+You are standing before a pedestal with a glowing sword resting upon
 it. The room here is not so brightly lit and you see movements in the
 shadows.
 ~
@@ -1290,183 +1290,183 @@ S
 
 #RESETS
 *
-D 1 28209 5 1			; Madboy's sea-veiw apartment. Close Down
-D 1 28208 0 1			; Stairs Close North
-D 1 28208 4 1			; Stairs Close Up
-D 1 28207 2 2			; North-Wall Lock South
+D 1 28209 5 1           ; Madboy's sea-veiw apartment. Close Down
+D 1 28208 0 1           ; Stairs Close North
+D 1 28208 4 1           ; Stairs Close Up
+D 1 28207 2 2           ; North-Wall Lock South
 *
-* M 1 28200 1 28209		Madboy's butler to Madboy's sea-veiw apartment.
+* M 1 28200 1 28209     Madboy's butler to Madboy's sea-veiw apartment.
 * E 1 28203 100 16
-D 1 28220 0 1			; The Southern Docks Close North
-D 1 28202 0 1			; The Rusty Anchor Tavern Close North
-D 1 28203 0 1			; The small gambling room. Close North
-D 1 28202 2 1			; The Rusty Anchor Tavern Close South
-D 1 28200 2 1			; The Western Docks Close South
-D 1 28209 2 1			; Madboy's sea-veiw apartment. Close South
-D 1 28210 0 1			; The kitchen Close North
-D 1 28231 0 1			; The Ticketing Office Close North
-D 1 28230 2 1			; The Eastern Wharf Close South
-D 1 28226 3 1			; The Square Close West
-D 1 28227 1 1			; Silvre Blayde's Qualitee Armes Close East
-D 1 28235 0 1			; Alvyn's Curio's Close North
-D 1 28234 2 1			; An alleyway Close South
-D 1 28222 1 2			; South-Wall Lock East
-D 1 28240 0 1			; Welcome home? Close North
+D 1 28220 0 1           ; The Southern Docks Close North
+D 1 28202 0 1           ; The Rusty Anchor Tavern Close North
+D 1 28203 0 1           ; The small gambling room. Close North
+D 1 28202 2 1           ; The Rusty Anchor Tavern Close South
+D 1 28200 2 1           ; The Western Docks Close South
+D 1 28209 2 1           ; Madboy's sea-veiw apartment. Close South
+D 1 28210 0 1           ; The kitchen Close North
+D 1 28231 0 1           ; The Ticketing Office Close North
+D 1 28230 2 1           ; The Eastern Wharf Close South
+D 1 28226 3 1           ; The Square Close West
+D 1 28227 1 1           ; Silvre Blayde's Qualitee Armes Close East
+D 1 28235 0 1           ; Alvyn's Curio's Close North
+D 1 28234 2 1           ; An alleyway Close South
+D 1 28222 1 2           ; South-Wall Lock East
+D 1 28240 0 1           ; Welcome home? Close North
 *
-M 1 28202 1 28227			Silvre Blayde to Silvre Blayde's Qualitee Armes
+M 1 28202 1 28227           Silvre Blayde to Silvre Blayde's Qualitee Armes
 E 1 28208 100 16
 G 1 28204 100
 G 1 28205 100
 G 1 28206 100
 G 1 28207 100
 G 1 28208 100
-D 1 28231 2 2			; The Ticketing Office Lock South
-O 1 28200 100 28246			crysomer to The Fane of the Crysomer
+D 1 28231 2 2           ; The Ticketing Office Lock South
+O 1 28200 100 28246         crysomer to The Fane of the Crysomer
 *
-M 1 28204 1 28246			The Guardian to The Fane of the Crysomer
+M 1 28204 1 28246           The Guardian to The Fane of the Crysomer
 *
-M 1 28205 11 28200			a sailor to The Western Docks
+M 1 28205 11 28200          a sailor to The Western Docks
 E 1 28204 100 16
 *
-M 1 28205 11 28200			a sailor to The Western Docks
+M 1 28205 11 28200          a sailor to The Western Docks
 E 1 28204 100 16
 *
-M 1 28205 11 28202			a sailor to The Rusty Anchor Tavern
+M 1 28205 11 28202          a sailor to The Rusty Anchor Tavern
 E 1 28204 100 16
 *
-M 1 28205 11 28202			a sailor to The Rusty Anchor Tavern
+M 1 28205 11 28202          a sailor to The Rusty Anchor Tavern
 E 1 28204 100 16
 *
-M 1 28206 11 28202			a dock worker to The Rusty Anchor Tavern
+M 1 28206 11 28202          a dock worker to The Rusty Anchor Tavern
 *
-M 1 28207 15 28202			a citizen to The Rusty Anchor Tavern
+M 1 28207 15 28202          a citizen to The Rusty Anchor Tavern
 *
-M 1 28206 11 28203			a dock worker to The small gambling room.
+M 1 28206 11 28203          a dock worker to The small gambling room.
 *
-M 1 28207 15 28203			a citizen to The small gambling room.
+M 1 28207 15 28203          a citizen to The small gambling room.
 *
-M 1 28206 11 28204			a dock worker to A jetty
+M 1 28206 11 28204          a dock worker to A jetty
 *
-M 1 28205 11 28205			a sailor to The Western Docks
+M 1 28205 11 28205          a sailor to The Western Docks
 *
-M 1 28206 11 28206			a dock worker to A jetty
+M 1 28206 11 28206          a dock worker to A jetty
 *
-M 1 28206 11 28206			a dock worker to A jetty
+M 1 28206 11 28206          a dock worker to A jetty
 *
-M 1 28206 11 28206			a dock worker to A jetty
+M 1 28206 11 28206          a dock worker to A jetty
 *
-M 1 28207 15 28212			a citizen to North-Wall
+M 1 28207 15 28212          a citizen to North-Wall
 *
-M 1 28211 7 28213			a watchman to North-Wall at the North Gate
+M 1 28211 7 28213           a watchman to North-Wall at the North Gate
 *
-M 1 28206 11 28214			a dock worker to A jetty
+M 1 28206 11 28214          a dock worker to A jetty
 *
-M 1 28205 11 28214			a sailor to A jetty
+M 1 28205 11 28214          a sailor to A jetty
 E 1 28204 100 16
 *
-M 1 28206 11 28214			a dock worker to A jetty
+M 1 28206 11 28214          a dock worker to A jetty
 *
-M 1 28208 4 28215			a thief to The Links
+M 1 28208 4 28215           a thief to The Links
 E 1 28204 100 16
 *
-M 1 28205 11 28216			a sailor to The Southern Docks
+M 1 28205 11 28216          a sailor to The Southern Docks
 E 1 28204 100 16
 *
-M 1 28208 4 28216			a thief to The Southern Docks
+M 1 28208 4 28216           a thief to The Southern Docks
 *
-M 1 28207 15 28216			a citizen to The Southern Docks
+M 1 28207 15 28216          a citizen to The Southern Docks
 *
-M 1 28207 15 28216			a citizen to The Southern Docks
+M 1 28207 15 28216          a citizen to The Southern Docks
 *
-M 1 28207 15 28216			a citizen to The Southern Docks
+M 1 28207 15 28216          a citizen to The Southern Docks
 *
-M 1 28206 11 28217			a dock worker to The Southern Docks
+M 1 28206 11 28217          a dock worker to The Southern Docks
 *
-M 1 28206 11 28218			a dock worker to A jetty
+M 1 28206 11 28218          a dock worker to A jetty
 *
-M 1 28205 11 28219			a sailor to A jetty
+M 1 28205 11 28219          a sailor to A jetty
 E 1 28204 100 16
 *
-M 1 28207 15 28220			a citizen to The Southern Docks
+M 1 28207 15 28220          a citizen to The Southern Docks
 *
-M 1 28207 15 28220			a citizen to The Southern Docks
+M 1 28207 15 28220          a citizen to The Southern Docks
 *
-M 1 28208 4 28220			a thief to The Southern Docks
+M 1 28208 4 28220           a thief to The Southern Docks
 *
-M 1 28201 1 28221			The armourer to The Armorie
+M 1 28201 1 28221           The armourer to The Armorie
 G 1 28209 100
 G 1 28210 100
 G 1 28211 100
 G 1 28212 100
 *
-M 1 28207 15 28222			a citizen to South-Wall
+M 1 28207 15 28222          a citizen to South-Wall
 *
-M 1 28208 4 28224			a thief to The Square
+M 1 28208 4 28224           a thief to The Square
 E 1 28204 100 16
 *
-M 1 28207 15 28226			a citizen to The Square
+M 1 28207 15 28226          a citizen to The Square
 *
-M 1 28207 15 28228			a citizen to North-Wall
+M 1 28207 15 28228          a citizen to North-Wall
 *
-M 1 28207 15 28230			a citizen to The Eastern Wharf
+M 1 28207 15 28230          a citizen to The Eastern Wharf
 *
-M 1 28205 11 28230			a sailor to The Eastern Wharf
+M 1 28205 11 28230          a sailor to The Eastern Wharf
 E 1 28204 100 16
 *
-M 1 28205 11 28230			a sailor to The Eastern Wharf
+M 1 28205 11 28230          a sailor to The Eastern Wharf
 E 1 28204 100 16
 *
-M 1 28206 11 28230			a dock worker to The Eastern Wharf
+M 1 28206 11 28230          a dock worker to The Eastern Wharf
 *
-M 1 28205 11 28233			a sailor to The Square
+M 1 28205 11 28233          a sailor to The Square
 E 1 28204 100 16
 *
-M 1 28203 1 28235			Alvyn to Alvyn's Curio's
+M 1 28203 1 28235           Alvyn to Alvyn's Curio's
 G 1 28218 100
 G 1 28217 100
 *
-M 1 28207 15 28237			a citizen to The Square
+M 1 28207 15 28237          a citizen to The Square
 *
-M 1 28210 1 28243			The guildmaster to The Thieves'  Guild
+M 1 28210 1 28243           The guildmaster to The Thieves'  Guild
 E 1 28206 100 16
 *
-M 1 28209 4 28243			a thief to The Thieves'  Guild
+M 1 28209 4 28243           a thief to The Thieves'  Guild
 E 1 28205 100 16
 *
-M 1 28209 4 28243			a thief to The Thieves'  Guild
+M 1 28209 4 28243           a thief to The Thieves'  Guild
 E 1 28204 100 16
 *
-M 1 28209 4 28243			a thief to The Thieves'  Guild
+M 1 28209 4 28243           a thief to The Thieves'  Guild
 E 1 28205 100 16
 *
-M 1 28209 4 28243			a thief to The Thieves'  Guild
+M 1 28209 4 28243           a thief to The Thieves'  Guild
 E 1 28205 100 16
 *
-M 1 28211 7 28237			a watchman to The Square
+M 1 28211 7 28237           a watchman to The Square
 E 1 28202 100 5
 E 1 28205 100 16
 *
-M 1 28211 7 28232			a watchman to The Square
+M 1 28211 7 28232           a watchman to The Square
 E 1 28202 100 5
 E 1 28205 100 16
 *
-M 1 28211 7 28229			a watchman to North-Wall
+M 1 28211 7 28229           a watchman to North-Wall
 E 1 28202 100 5
 E 1 28205 100 16
 *
-M 1 28211 7 28223			a watchman to Gate Road
+M 1 28211 7 28223           a watchman to Gate Road
 E 1 28202 100 5
 E 1 28205 100 16
 *
-M 1 28211 7 28217			a watchman to The Southern Docks
+M 1 28211 7 28217           a watchman to The Southern Docks
 E 1 28202 100 5
 E 1 28205 100 16
 *
-M 1 28211 7 28203			a watchman to The small gambling room.
+M 1 28211 7 28203           a watchman to The small gambling room.
 E 1 28202 100 5
 E 1 28205 100 16
 *
-M 1 28212 1 28202			a Barkeep to The Rusty Anchor Tavern
+M 1 28212 1 28202           a Barkeep to The Rusty Anchor Tavern
 E 1 28207 100 16
 G 1 28215 100
 G 1 28214 100
@@ -1475,21 +1475,21 @@ S
 
 
 #SHOPS
-28201 9 8 0 0 0 85 125 0 23			(mobile is from another zone)
-28202 5 8 0 0 0 70 130 0 23			(mobile is from another zone)
-28203 1 12 15 13 8 70 145 0 23			(mobile is from another zone)
-28212 0 0 0 0 0 100 200 0 23			(mobile is from another zone)
-28208 5 8 10 3 2 45 250 0 23			(mobile is from another zone)
-28210 5 3 2 10 8 35 250 0 23			(mobile is from another zone)
+28201 9 8 0 0 0 85 125 0 23             (mobile is from another zone)
+28202 5 8 0 0 0 70 130 0 23             (mobile is from another zone)
+28203 1 12 15 13 8 70 145 0 23          (mobile is from another zone)
+28212 0 0 0 0 0 100 200 0 23            (mobile is from another zone)
+28208 5 8 10 3 2 45 250 0 23            (mobile is from another zone)
+28210 5 3 2 10 8 35 250 0 23            (mobile is from another zone)
 0
 
 
 #SPECIALS
-M  28200 spec_cast_orb			Madboy's butler
-M  28201 spec_breath_fire			The armourer
-M  28202 spec_cast_mage			Silvre Blayde
-M  28203 spec_cast_psionicist			Alvyn
-M  28208 spec_thief			a thief
+M  28200 spec_cast_orb              Madboy's butler
+M  28201 spec_breath_fire           The armourer
+M  28202 spec_cast_mage             Silvre Blayde
+M  28203 spec_cast_psionicist       Alvyn
+M  28208 spec_thief                 a thief
 S
 
 

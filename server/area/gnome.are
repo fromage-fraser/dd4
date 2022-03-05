@@ -1,4 +1,4 @@
-#AREA	Vougon~  Gnome Village~
+#AREA   Vougon~  Gnome Village~
 5 15 0 100
 
 
@@ -2105,7 +2105,7 @@ E 1 1503 12 16
 *
 M 0 1511  3 1543
 *
-R 0 1548 4		; maze these hallways
+R 0 1548 4      ; maze these hallways
 R 0 1549 4
 R 0 1550 4
 R 0 1551 4

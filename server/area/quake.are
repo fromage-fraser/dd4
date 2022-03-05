@@ -1,4 +1,4 @@
-#AREA	Spitfire~  The Isle of Quake~
+#AREA   Spitfire~  The Isle of Quake~
 -2 -2 0 100
 
 
@@ -78,7 +78,7 @@ It looks absent-minded.
 ~
 1 0 0 S
 15 0 0 1d1+1 1d1+1
-0 0
+32 0
 0 0 0
 #12008
 shark~
@@ -111,7 +111,7 @@ It looks weak and slithery.
 ~
 3 0 500 S
 4 0 0 1d1+1 1d1+1
-63 0
+1|2|4|8|16|32 0
 0 0 0
 #12011
 fish~
@@ -133,7 +133,7 @@ It's very beautiful but also very dangerous.
 ~
 35 8232 -250 S
 30 0 0 1d1+1 1d1+1
-0 0
+32 0
 0 0 0
 #12013
 cannibal~
@@ -166,7 +166,7 @@ It looks like it's sleeping.
 ~
 129 524288 -250 S
 8 0 0 1d1+1 1d1+1
-0 0
+4|32 0
 0 0 0
 #12016
 thief~
@@ -199,7 +199,7 @@ It looks weak and slithery.
 ~
 3 0 500 S
 3 0 0 1d1+1 1d1+1
-0 0
+1|2|4|8|16|32 0
 0 0 0
 #12019
 monkey~
@@ -210,7 +210,7 @@ She looks very pretty but has sharp teeth so watch out.
 ~
 5 0 500 S
 10 0 0 1d1+1 1d1+1
-0 0
+32 0
 0 0 2
 #12020
 gorilla aggressive~
@@ -221,7 +221,7 @@ He's very big and looks very strong.  You can better run away.
 ~
 35 0 -500 S
 20 0 0 1d1+1 1d1+1
-0 0
+32 0
 0 0 1
 #12021
 crab~
@@ -243,7 +243,7 @@ It's very beautiful but also very dangerous.
 ~
 3 0 0 S
 15 0 0 1d1+1 1d1+1
-0 0
+32 0
 0 0 0
 #12023
 lion mountain~
@@ -4345,7 +4345,7 @@ The note reads:
   List  - Show which various items are in the store.
   Buy   - Buy an item.
   Value - The shopkeeper will (free of charge) tell how much he will
-	  pay for your item.
+          pay for your item.
   Sell  - Sell an item.
 ~
 S
@@ -4369,7 +4369,7 @@ Free instructions.
 
    Buy  - Buy something (drinkable) from the tavern-keeper.
    List - The tavern-keeper will show you all the different drinks, and
-	  tell the price of each.
+          tell the price of each.
 ~
 E
 writing carving carvings symbols symbol~
@@ -4394,7 +4394,7 @@ The note reads:
   List  - Show which various items are in the store.
   Buy   - Buy an item.
   Value - The shopkeeper will (free of charge) tell how much he will
-	  pay for your item.
+          pay for your item.
   Sell  - Sell an item.
 ~
 S
@@ -4556,216 +4556,216 @@ S
 
 
 #RESETS
-D 0 12044 0 1		Close door behind waterfall
-D 0 12101 2 1		Close door from the other side
+D 0 12044 0 1           Close door behind waterfall
+D 0 12101 2 1           Close door from the other side
 *
-D 0 12095 5 1		Close door in cottage
-D 0 12135 4 1		Close door from the other side
+D 0 12095 5 1           Close door in cottage
+D 0 12135 4 1           Close door from the other side
 *
-D 0 12085 2 2		Close and lock door to cottage of the chief cannibal
-D 0 12096 0 2		Close and lock door from the other side
+D 0 12085 2 2           Close and lock door to cottage of the chief cannibal
+D 0 12096 0 2           Close and lock door from the other side
 *
-D 0 12146 1 1		Close door to the little hut
-D 0 12147 3 1		Close door from the other side
+D 0 12146 1 1           Close door to the little hut
+D 0 12147 3 1           Close door from the other side
 *
-D 0 12165 0 1		Close gate of Westreen
-D 0 12166 2 1		Close gate from the other side
+D 0 12165 0 1           Close gate of Westreen
+D 0 12166 2 1           Close gate from the other side
 *
-M 0 12008 1 12005		A shark
-M 0 12009 1 12045		A whale
-M 0 12010 2 12003		A jelly-fish
-M 0 12010 2 12072		A jelly-fish
-M 0 12011 2 12007		A fish
-M 0 12011 2 12097		A fish
-M 0 12018 4 12012		A jelly-fish on the beach
-M 0 12018 4 12031		A jelly-fish on the beach
-M 0 12018 4 12040		A jelly-fish on the beach
-M 0 12018 4 12061		A jelly-fish on the beach
-O 0 12025 0 12001		A small canoe
-M 0 12021 4 12011		A crab
-M 0 12021 4 12018		A crab
-M 0 12021 4 12054		A crab
-M 0 12021 4 12069		A crab
+M 0 12008 1 12005               A shark
+M 0 12009 1 12045               A whale
+M 0 12010 2 12003               A jelly-fish
+M 0 12010 2 12072               A jelly-fish
+M 0 12011 2 12007               A fish
+M 0 12011 2 12097               A fish
+M 0 12018 4 12012               A jelly-fish on the beach
+M 0 12018 4 12031               A jelly-fish on the beach
+M 0 12018 4 12040               A jelly-fish on the beach
+M 0 12018 4 12061               A jelly-fish on the beach
+O 0 12025 0 12001               A small canoe
+M 0 12021 4 12011               A crab
+M 0 12021 4 12018               A crab
+M 0 12021 4 12054               A crab
+M 0 12021 4 12069               A crab
 *
-M 0 12001 3 12028		A snake
-M 0 12001 3 12078		A snake
-M 0 12002 1 12052		A huge snake
-G 1 12001 0		   Give cyan potion
-M 0 12003 3 12036		A parrot
-M 0 12003 3 12066		A parrot
-M 0 12004 3 12060		A cockatoo
-M 0 12004 3 12016		A cockatoo
-M 0 12005 4 12022		A black ant
-M 0 12006 4 12053		A red ant
-M 0 12019 3 12064		A monkey
-M 0 12019 3 12035		A monkey
-M 0 12020 1 12015		An aggressive gorilla
+M 0 12001 3 12028               A snake
+M 0 12001 3 12078               A snake
+M 0 12002 1 12052               A huge snake
+G 1 12001 0                Give cyan potion
+M 0 12003 3 12036               A parrot
+M 0 12003 3 12066               A parrot
+M 0 12004 3 12060               A cockatoo
+M 0 12004 3 12016               A cockatoo
+M 0 12005 4 12022               A black ant
+M 0 12006 4 12053               A red ant
+M 0 12019 3 12064               A monkey
+M 0 12019 3 12035               A monkey
+M 0 12020 1 12015               An aggressive gorilla
 *
-M 0 12012 1 12125		A silver dragon
-E 1 12002 0 16		   Wield a silver claw
-G 1 12021 0		   Give silver key
-O 0 12015 0 12126		A big chest
-P 1 12017 0 12015		   Put diamond ring in chest
-P 1 12018 0 12015		   Put bronze leggings in chest
-P 1 12019 0 12015		   Put leather boots in chest
-P 1 12023 0 12015		   Put black gloves in chest
-M 0 12022 1 12130		A silver baby dragon
-E 1 12024 0 16		   Wield a small silver claw
-M 0 12005 4 12106		A black ant
-M 0 12005 4 12131		A black ant
-M 0 12006 4 12120		A red ant
-M 0 12006 4 12116		A red ant
-O 0 12003 0 12102		A torch
-O 0 12003 0 12134		A torch
-O 0 12003 0 12109		A torch
-M 0 12007 1 12110		A giant ant
-G 1 12005 0		   Give some coins
-M 0 12015 4 12103		A bat
-M 0 12015 4 12118		A bat
+M 0 12012 1 12125               A silver dragon
+E 1 12002 0 16             Wield a silver claw
+G 1 12021 0                Give silver key
+O 0 12015 0 12126               A big chest
+P 1 12017 0 12015                  Put diamond ring in chest
+P 1 12018 0 12015                  Put bronze leggings in chest
+P 1 12019 0 12015                  Put leather boots in chest
+P 1 12023 0 12015                  Put black gloves in chest
+M 0 12022 1 12130               A silver baby dragon
+E 1 12024 0 16             Wield a small silver claw
+M 0 12005 4 12106               A black ant
+M 0 12005 4 12131               A black ant
+M 0 12006 4 12120               A red ant
+M 0 12006 4 12116               A red ant
+O 0 12003 0 12102               A torch
+O 0 12003 0 12134               A torch
+O 0 12003 0 12109               A torch
+M 0 12007 1 12110               A giant ant
+G 1 12005 0                Give some coins
+M 0 12015 4 12103               A bat
+M 0 12015 4 12118               A bat
 *
-M 0 12014 1 12096		The chief cannibal
-E 1 12009 0 16		   Wield a huge spear
-E 1 12007 0 5		   Wear a steel vest
-E 1 12008 0 11		   Wear a steel shield
-E 1 12010 0 6		   Wear a diamond crown
-E 1 12022 0 4		   Wear a diamond necklace
-E 1 12016 0 13		   Wear a rush-skirt
-M 0 12017 1 12094		The cannibal shopkeeper
-E 1 12016 0 13		   Wear a rush-skirt
-G 1 12012 0		   Give a red diamond
-G 1 12013 0		   Give a shiny piece of glass
-M 0 12013 5 12092		A cannibal
-E 1 12004 0 16		   Wield a sharp spear
-E 1 12016 0 13		   Wear a rush-skirt
-G 1 12011 0		   Give key to cottage of the chief cannibal
-M 0 12013 5 12095		A cannibal
-E 1 12004 0 16		   Wield a sharp spear
-E 1 12016 0 13		   Wear a rush-skirt
-M 0 12013 5 12086		A cannibal
-E 1 12004 0 16		   Wield a sharp spear
-E 1 12016 0 13		   Wear a rush-skirt
-G 1 12005 0		   Give some coins
-M 0 12016 1 12089		A thief
-E 1 12006 0 16		   Wield a steel dagger
-M 0 12044 1 12098		Albertus the healer
+M 0 12014 1 12096               The chief cannibal
+E 1 12009 0 16             Wield a huge spear
+E 1 12007 0 5              Wear a steel vest
+E 1 12008 0 11             Wear a steel shield
+E 1 12010 0 6              Wear a diamond crown
+E 1 12022 0 4              Wear a diamond necklace
+E 1 12016 0 13             Wear a rush-skirt
+M 0 12017 1 12094               The cannibal shopkeeper
+E 1 12016 0 13             Wear a rush-skirt
+G 1 12012 0                Give a red diamond
+G 1 12013 0                Give a shiny piece of glass
+M 0 12013 5 12092               A cannibal
+E 1 12004 0 16             Wield a sharp spear
+E 1 12016 0 13             Wear a rush-skirt
+G 1 12011 0                Give key to cottage of the chief cannibal
+M 0 12013 5 12095               A cannibal
+E 1 12004 0 16             Wield a sharp spear
+E 1 12016 0 13             Wear a rush-skirt
+M 0 12013 5 12086               A cannibal
+E 1 12004 0 16             Wield a sharp spear
+E 1 12016 0 13             Wear a rush-skirt
+G 1 12005 0                Give some coins
+M 0 12016 1 12089               A thief
+E 1 12006 0 16             Wield a steel dagger
+M 0 12044 1 12098               Albertus the healer
 *
-O 0 12014 0 12092		The cooking pot in the centre of the village
+O 0 12014 0 12092               The cooking pot in the centre of the village
 *
-M 0 12026 1 12147		Pete the wood-cutter
-E 1 12020 0 16		   Wield a wood-cutter's axe
-M 0 12024 1 12151		A bear
-M 0 12023 2 12140		A mountain lion
-M 0 12023 2 12142		A mountain lion
-M 0 12025 2 12153		A cow
-M 0 12025 2 12154		A cow
-M 0 12027 1 12155		An eagle
-M 0 12028 1 12155		A baby eagle
+M 0 12026 1 12147               Pete the wood-cutter
+E 1 12020 0 16             Wield a wood-cutter's axe
+M 0 12024 1 12151               A bear
+M 0 12023 2 12140               A mountain lion
+M 0 12023 2 12142               A mountain lion
+M 0 12025 2 12153               A cow
+M 0 12025 2 12154               A cow
+M 0 12027 1 12155               An eagle
+M 0 12028 1 12155               A baby eagle
 *
-R 0 12156 4		Randomize exits
-R 0 12157 4		Randomize exits
-R 0 12158 4		Randomize exits
-R 0 12159 4		Randomize exits
-R 0 12160 4		Randomize exits
-R 0 12161 4		Randomize exits
-R 0 12162 4		Randomize exits
-R 0 12163 4		Randomize exits
-R 0 12164 4		Randomize exits
+R 0 12156 4             Randomize exits
+R 0 12157 4             Randomize exits
+R 0 12158 4             Randomize exits
+R 0 12159 4             Randomize exits
+R 0 12160 4             Randomize exits
+R 0 12161 4             Randomize exits
+R 0 12162 4             Randomize exits
+R 0 12163 4             Randomize exits
+R 0 12164 4             Randomize exits
 *
-M 0 12029 1 12187		Frances the druggist
-E 1 12029 0 16		   Wield a long silver sword
-G 1 12001 0		   Give cyan potion
-G 1 12030 0		   Give lavender potion
-G 1 12031 0		   Give green pill
-M 0 12030 1 12189		Patrick the green-grocer
-E 1 12029 0 16		   Wield a long silver sword
-G 1 12036 0		   Give green apple
-G 1 12037 0		   Give orange
-G 1 12038 0		   Give carrot
-M 0 12031 1 12191		Paul the tailor
-E 1 12029 0 16		   Wield a long silver sword
-E 1 12032 0 7		   Wear fashionable pants
-E 1 12033 0 5		   Wear fashionable jacket
-G 1 12032 0		   Give fashionable pants
-G 1 12033 0		   Give fashionable jacket
-M 0 12032 1 12186		Yves the tavern-keeper
-E 1 12029 0 16		   Wield a long silver sword
-G 1 12026 0		   Give bottle of beer
-G 1 12027 0		   Give bottle of firebreather
-M 0 12033 1 12184		William the coroner
-E 1 12029 0 16		   Wield a long silver sword
-M 0 12034 1 12185		Julian the armourer
-E 1 12029 0 16		   Wield a long silver sword
-G 1 12034 0		   Give heavy gloves
-G 1 12035 0		   Give linnen sleeves
-M 0 12035 1 12183		Steve the weaponsmith
-E 1 12029 0 16		   Wield a long silver sword
-G 1 12028 0		   Give small silver sword
-G 1 12029 0		   Give long silver sword
-M 0 12037 2 12166		Westreen cityguard garding the city gate
-E 1 12039 0 16		   Wield a silver claymore
-E 1 12040 0 5		   Wear a steel plate
-E 1 12041 0 6		   Wear a steel helm
-E 1 12008 0 11		   Wear a steel shield
-M 0 12037 2 12166		Westreen cityguard garding the city gate
-E 1 12039 0 16		   Wield a silver claymore
-E 1 12040 0 5		   Wear a steel plate
-E 1 12041 0 6		   Wear a steel helm
-E 1 12008 0 11		   Wear a steel shield
-M 0 12036 4 12177		Westreen cityguard
-E 1 12039 0 16		   Wield a silver claymore
-E 1 12040 0 5		   Wear a steel plate
-E 1 12041 0 6		   Wear a steel helm
-M 0 12036 4 12174		Westreen cityguard
-E 1 12039 0 16		   Wield a silver claymore
-E 1 12040 0 5		   Wear a steel plate
-E 1 12008 0 11		   Wear a steel shield
-M 0 12036 4 12181		Westreen cityguard
-E 1 12039 0 16		   Wield a silver claymore
-E 1 12040 0 5		   Wear a steel plate
-E 1 12008 0 11		   Wear a steel shield
-M 0 12036 4 12171		Westreen cityguard
-E 1 12039 0 16		   Wield a silver claymore
-E 1 12040 0 5		   Wear a steel plate
-E 1 12041 0 6		   Wear a steel helm
-M 0 12038 1 12199		Belinda the judge
-E 1 12042 0 6		   Wear a judge's wig
-G 1 12005 0		   Give some coins
-M 0 12039 1 12197		Bea the housewife
-E 1 12043 0 16		   Wield a carpet-beater
-G 1 12005 0		   Give some coins
-M 0 12040 1 12195		Jannet the housewife
-E 1 12043 0 16		   Wield a carpet-beater
-G 1 12005 0		   Give some coins
-M 0 12041 4 12198		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12042 4 12196		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12041 4 12182		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12042 4 12188		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12041 4 12190		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12042 4 12194		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12041 4 12192		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12042 4 12193		A citizen of Westreen
-G 1 12005 0		   Give some coins
-M 0 12043 1 12159		A little white mouse alias the great sorcerer
-O 0 12046 0 12167		A purple fountain
+M 0 12029 1 12187               Frances the druggist
+E 1 12029 0 16             Wield a long silver sword
+G 1 12001 0                Give cyan potion
+G 1 12030 0                Give lavender potion
+G 1 12031 0                Give green pill
+M 0 12030 1 12189               Patrick the green-grocer
+E 1 12029 0 16             Wield a long silver sword
+G 1 12036 0                Give green apple
+G 1 12037 0                Give orange
+G 1 12038 0                Give carrot
+M 0 12031 1 12191               Paul the tailor
+E 1 12029 0 16             Wield a long silver sword
+E 1 12032 0 7              Wear fashionable pants
+E 1 12033 0 5              Wear fashionable jacket
+G 1 12032 0                Give fashionable pants
+G 1 12033 0                Give fashionable jacket
+M 0 12032 1 12186               Yves the tavern-keeper
+E 1 12029 0 16             Wield a long silver sword
+G 1 12026 0                Give bottle of beer
+G 1 12027 0                Give bottle of firebreather
+M 0 12033 1 12184               William the coroner
+E 1 12029 0 16             Wield a long silver sword
+M 0 12034 1 12185               Julian the armourer
+E 1 12029 0 16             Wield a long silver sword
+G 1 12034 0                Give heavy gloves
+G 1 12035 0                Give linnen sleeves
+M 0 12035 1 12183               Steve the weaponsmith
+E 1 12029 0 16             Wield a long silver sword
+G 1 12028 0                Give small silver sword
+G 1 12029 0                Give long silver sword
+M 0 12037 2 12166               Westreen cityguard garding the city gate
+E 1 12039 0 16             Wield a silver claymore
+E 1 12040 0 5              Wear a steel plate
+E 1 12041 0 6              Wear a steel helm
+E 1 12008 0 11             Wear a steel shield
+M 0 12037 2 12166               Westreen cityguard garding the city gate
+E 1 12039 0 16             Wield a silver claymore
+E 1 12040 0 5              Wear a steel plate
+E 1 12041 0 6              Wear a steel helm
+E 1 12008 0 11             Wear a steel shield
+M 0 12036 4 12177               Westreen cityguard
+E 1 12039 0 16             Wield a silver claymore
+E 1 12040 0 5              Wear a steel plate
+E 1 12041 0 6              Wear a steel helm
+M 0 12036 4 12174               Westreen cityguard
+E 1 12039 0 16             Wield a silver claymore
+E 1 12040 0 5              Wear a steel plate
+E 1 12008 0 11             Wear a steel shield
+M 0 12036 4 12181               Westreen cityguard
+E 1 12039 0 16             Wield a silver claymore
+E 1 12040 0 5              Wear a steel plate
+E 1 12008 0 11             Wear a steel shield
+M 0 12036 4 12171               Westreen cityguard
+E 1 12039 0 16             Wield a silver claymore
+E 1 12040 0 5              Wear a steel plate
+E 1 12041 0 6              Wear a steel helm
+M 0 12038 1 12199               Belinda the judge
+E 1 12042 0 6              Wear a judge's wig
+G 1 12005 0                Give some coins
+M 0 12039 1 12197               Bea the housewife
+E 1 12043 0 16             Wield a carpet-beater
+G 1 12005 0                Give some coins
+M 0 12040 1 12195               Jannet the housewife
+E 1 12043 0 16             Wield a carpet-beater
+G 1 12005 0                Give some coins
+M 0 12041 4 12198               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12042 4 12196               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12041 4 12182               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12042 4 12188               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12041 4 12190               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12042 4 12194               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12041 4 12192               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12042 4 12193               A citizen of Westreen
+G 1 12005 0                Give some coins
+M 0 12043 1 12159               A little white mouse alias the great sorcerer
+O 0 12046 0 12167               A purple fountain
 S
 
 
 
 #SHOPS
- 12017	 8  12  13  0  0	 100 10   0 23	The cannibal
- 12029	 8  10  26  0  0	 110 25   6 22	Frances the druggist
- 12030	 8   0   0  0  0	 100 10   6 22	Patrick the green-grocer
- 12031	 8   0   0  0  0	 100 10   6 22	Paul the tailor
- 12032	 8   0   0  0  0	 100 10   0 23	Yves the tavern-keeper
- 12034	 8   9   0  0  0	 125 50   6 22	Julian the armourer
- 12035	 8   5   0  0  0	 125 50   6 22	Steve the weaponsmith
+ 12017   8  12  13  0  0         100 10   0 23  The cannibal
+ 12029   8  10  26  0  0         110 25   6 22  Frances the druggist
+ 12030   8   0   0  0  0         100 10   6 22  Patrick the green-grocer
+ 12031   8   0   0  0  0         100 10   6 22  Paul the tailor
+ 12032   8   0   0  0  0         100 10   0 23  Yves the tavern-keeper
+ 12034   8   9   0  0  0         125 50   6 22  Julian the armourer
+ 12035   8   5   0  0  0         125 50   6 22  Steve the weaponsmith
 0
 
 

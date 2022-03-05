@@ -1,4 +1,4 @@
-#AREA	Wrath~    DragonQuest~
+#AREA   Wrath~    DragonQuest~
 100 100 80 100
 
 
@@ -10,9 +10,9 @@ Asverna, the Infernal Wyrm, radiates a loathsome foulness.
 ~
 Conceived in Hell, the Wyrm Asverna has spent centuries hating and
 devouring all life.  Her veins are clogged with foul black blood,
-her mind a focus of pain and evil, her immense body an unasailable
-fortress...  Her cruelty, her hatefulness, her agony and her power
-can not be rivalled.
+her mind is a locus of pain and evil, and her immense body is an
+unassailable fortress.  Her cruelty, hatefulness, agony, and her
+power cannot be rivalled.
 
 Asverna will go on and continue to hate ... but you will now end.
 ~
@@ -21,50 +21,50 @@ Asverna will go on and continue to hate ... but you will now end.
 128 0
 8 8 2
 >all_greet_prog 100~
-	if ispc($n)
-		get all
-		wear all
-		warcry
-		unarmed
-		say Nice knowing you $n!
-		mpasound You hear $n screaming in terror!
-		mpat 3001 mpforce executioner mpecho CHAT I sense that $n has engaged Asverna in combat!
-		mpkill $n
-	endif
+    if ispc($n)
+        get all
+        wear all
+        warcry
+        unarmed
+        say Nice knowing you $n!
+        mpasound You hear $n screaming in terror!
+        mpat 3001 mpforce executioner mpecho CHAT I sense that $n has engaged Asverna in combat!
+        mpkill $n
+    endif
 ~
 >death_prog 100~
-	    mpat 3001 mpforce executioner mpecho CHAT Asverna has been defeated!
+        mpat 3001 mpforce executioner mpecho CHAT Asverna has been defeated!
 ~
 >rand_prog 9~
-	mpat 19201 mpecho You hear the loud snorting of a Dragon.
-	mpat 19202 mpecho You hear some loud shuffling to the north.
-	mpat 19203 mpecho You hear the deep breathing of something in the echos of the cavern.
-	mpat 19204 mpecho You hear faintly the breathing of some large creature...
+    mpat 19201 mpecho You hear the loud snorting of a Dragon.
+    mpat 19202 mpecho You hear some loud shuffling to the north.
+    mpat 19203 mpecho You hear the deep breathing of something amongst the echoes of the cavern.
+    mpat 19204 mpecho You hear, faintly, the breathing of some large creature...
 ~
 >rand_prog 25~
-	scream
-	wear claw
+    scream
+    wear claw
 ~
 |
 #19201
-guardians dragon~
+protector guardians dragon~
 the protector~
 A guardian of Asverna scans the area.
 ~
 This guard is on the look out for intruders so you better hope that this isn't you!
 ~
-64|512 8|32|128|32768|524288 -500 S
+64|512 8|32|128|32768|524288 750 S
 111 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >greet_prog 100~
-	if ispc($n)
-		say We have heard of you $n, now prepare for combat!
-		yell We are being invaded... Save Asverna!
-	endif
+    if ispc($n)
+        say We have heard of you $n, now prepare for combat!
+        yell We are being invaded! Save Asverna!
+    endif
 ~
 >rand_prog 3~
-	mpasound You hear something nearby...
+    mpasound You hear something nearby...
 ~
 |
 #0
@@ -90,7 +90,7 @@ A
 #19201
 wings asverna dragon~
 some Dragons Wings~
-The wings of a dragon have been left here~
+The wings of a dragon have been left here.~
 ~
 9 2 1|8
 0~ 0~ 0~ 0~
@@ -108,7 +108,7 @@ A
 #19202
 claws feet dragon~
 some Dragons Claws~
-some dragons claws lie here forgotten~
+Some dragons claws lie here, forgotten.~
 ~
 9 2 1|64
 0~ 0~ 0~ 0~
@@ -121,8 +121,8 @@ A
 2 -2
 #19203
 small axe~
-a small woodcutters axe~
-a small axe good for cutting trees away~
+a small woodcutter's axe~
+A small axe, good for cutting trees away.~
 ~
 5 2048 1|8192
 0~ 0~ 0~ 13~
@@ -130,7 +130,7 @@ a small axe good for cutting trees away~
 #19204
 dagger~
 a small dagger~
-a small dagger is here~
+A small dagger is here.~
 ~
 5 1|2|1024|4096|16384 1|8192
 0~ 0~ 0~ 11~
@@ -141,8 +141,8 @@ A
 17 -25
 #19206
 chain mail~
-Chain mail~
-a pile of chain mail lies here~
+chain mail~
+A pile of chain mail lies here.~
 ~
 9 1|2048 1|1024
 0~ 0~ 0~ 0~
@@ -164,7 +164,7 @@ key~
 #19208
 jewel quest famous~
 Jewel of Dragons~
-The most famous of all Jewels is here, its strength is uncomparable~
+The most famous of all Jewels is here, its power is incomparable.~
 ~
 8 1 1|16384
 0~ 0~ 0~ 0~
@@ -184,7 +184,7 @@ A
 #19209
 orb flaming~
 the infamous Orb of Asverna~
-An Orb floats pulsing in the air.~
+An Orb floats, pulsing in the air.~
 ~
 1 1 1
 0~ 0~ -1~ 0~
@@ -212,10 +212,10 @@ A
 
 #ROOMS
 #19200
-Asvernas Lair~
+Asverna's Lair~
 You have stumbled into the Lair of the Asverna, the lost Dragon that was thought to have been
-killed by Zyklor along time ago, but has been hibernating here waiting for the time that she
-may rise again and rule the realm
+killed by Zyklor long ago, but who has been hibernating here, waiting for the time that she
+may rise again and rule the realm.
 ~
 0 1|8|8192 0
 D2
@@ -223,15 +223,15 @@ D2
 ~
 0 -1 19201
 D4
-You can see light coming from trees above you and looks like they can be cleared away~
+You can see light coming from trees above you. It looks like they can be cleared away.~
 tree~
 8 19203 19208
 S
 #19201
-a tight spot~
-You are in a very small enclosure, so tight that you cant turn around to go back
-You are finding it hard to breath and are starting to feel light in the head, you
-concentrate as you think you can hear something or maybe you are just going crazy
+A tight spot~
+You are in a very small enclosure, so tight that you can't turn around to go back.
+You are finding it hard to breath and are starting to feel light in the head; you
+concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192|16384 0
 D0
@@ -244,10 +244,10 @@ D2
 0 -1 19202
 S
 #19202
-a tight spot~
-You are in a small enclosure, so tight that you cant turn around to go back
-You are finding it hard to breath and are starting to feel light in the head, you
-concentrate as you think you can hear something or maybe you are just going crazy
+A tight spot~
+You are in a very small enclosure, so tight that you can't turn around to go back.
+You are finding it hard to breath and are starting to feel light in the head; you
+concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
 D0
@@ -260,10 +260,10 @@ D1
 0 -1 19203
 S
 #19203
-a tight spot~
-You are in a very small enclosure, so tight that you cant turn around to go back
-You are finding it hard to breath and are starting to feel light in the head, you
-concentrate as you think you can hear something or maybe you are just going crazy
+A tight spot~
+You are in a very small enclosure, so tight that you can't turn around to go back.
+You are finding it hard to breath and are starting to feel light in the head; you
+concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
 D2
@@ -276,10 +276,10 @@ D3
 0 -1 19202
 S
 #19204
-a tight spot~
-You are in a very small enclosure, so tight that you cant turn around to go back
-You are finding it hard to breath and are starting to feel light in the head, you
-concentrate as you think you can hear something or maybe you are just going crazy
+A tight spot~
+You are in a very small enclosure, so tight that you can't turn around to go back.
+You are finding it hard to breath and are starting to feel light in the head; you
+concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
 D0
@@ -292,10 +292,10 @@ D3
 0 -1 19205
 S
 #19205
-a tight spot~
-You are in a very small enclosure, so tight that you cant turn around to go back
-You are finding it hard to breath and are starting to feel light in the head, you
-concentrate as you think you can hear something or maybe you are just going crazy
+A tight spot~
+You are in a very small enclosure, so tight that you can't turn around to go back.
+You are finding it hard to breath and are starting to feel light in the head; you
+concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
 D1
@@ -305,15 +305,15 @@ D1
 S
 #19206
 A small clearing~
-You are standing in a small clearing, very small in fact that you are finding it hard to
-move without scratching yourself on the surrounding tree branches.
-The overgrowth here is amazing and cuts the view of the sky out as if there is a kind of
-life force here giving the surrounding trees and shrubs the life they need
+You are standing in a small clearing--very small, in fact! You are finding it hard to
+move without scratching yourself on the surrounding tree branches. The overgrowth here
+is amazing and cuts the view of the sky out, almost as if there is a kind of energy
+here giving the surrounding trees and shrubs the life they need.
 ~
 0 1|4|8|2048 3
 D1
-A thick overgrowth of tress cover the obvious entrance to some sort of cave type
-area, you think you might be able to clear it away~
+A thick overgrowth of tress cover the obvious entrance to some sort of cave, you think you
+might be able to clear it away.~
 overgrown entranceway~
 1 19203 19205
 D2
@@ -322,10 +322,10 @@ D2
 0 -1 19207
 S
 #19207
-Forest.~
+Forest~
 You are in a thickly forested area, with vines and creepers wound heavily throughout the
-base of the trees.  The pathway is faint as little light is available to you.  Small wisps
-of mist sway in the air before you.
+base of the trees.  The pathway is faint, as little light is available to you.  Small wisps
+of mist float in the air before you.
 ~
 0 1 3
 D0
@@ -339,9 +339,9 @@ D2
 S
 #19208
 Top of the Trees~
-You have climbed your way out of Asvernas Lair, you can smell the rest air of the realm and
-as you take a deep breath in you know that it is great to be alive and all in one piece still
-You can see as far as you like from here but you also know that time is wasting so you move on
+You have climbed your way out of Asverna's lair; you can smell the fresh air of the realm. As
+you take a deep breath in, you know that while it is great to be alive and in one piece you
+also know that time is wasting, so you should move on.
 ~
 0 4|1024 3
 S
@@ -349,10 +349,10 @@ S
 
 
 #RESETS
-D 1 19206 1 1			; A small clearing Close East
-D 1 19200 4 2			; Asvernas Lair Lock Up
+D 1 19206 1 1           ; A small clearing Close East
+D 1 19200 4 2           ; Asvernas Lair Lock Up
 *
-M 1 19200 1 19200			Asverna to Asvernas Lair
+M 1 19200 1 19200           Asverna to Asvernas Lair
 E 1 19209 100 0
 E 1 19201 100 5
 E 1 19202 100 8
@@ -360,16 +360,16 @@ E 1 19200 100 16
 E 1 19200 100 18
 E 1 19208 100 17
 *
-M 1 19201 5 19201			the protector to a tight spot
+M 1 19201 5 19201           the protector to a tight spot
 E 1 19206 100 12
 E 1 19204 100 16
-O 1 19203 100 19206			a small woodcutters axe to A small clearing
+O 1 19203 100 19206         a small woodcutters axe to A small clearing
 S
 
 
 #SPECIALS
-M  19200 spec_breath_lightning			Asverna
-M  19201 spec_cast_mage			the protector
+M  19200 spec_breath_lightning      Asverna
+M  19201 spec_cast_mage             the protector
 S
 
 

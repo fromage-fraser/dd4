@@ -1,4 +1,4 @@
-#AREA	Lok~     Ambush~
+#AREA   Lok~     Ambush~
 6 16 0 100
 
 #HELPS
@@ -23,11 +23,11 @@ in the room descriptions. There is a lot more to this area than meets the eye.
 
 #MOBILES
 #4501
-traveler kindly~
-The kindly traveler~
-A kindly traveler asks you how your journey is going.
+traveller kindly~
+The kindly traveller~
+A kindly traveller asks you how your journey is going.
 ~
-You strike up a conversation with the traveler. He tells you
+You strike up a conversation with the traveller. He tells you
 he just came from town down the western path, and the road
 is clear and easy to travel. He asks you about the path you
 have taken, and then bids you farewell.
@@ -182,7 +182,7 @@ The goblin archer~
 A goblin archer is here, fletching an arrow.
 ~
 The goblin is completely absorbed in his task
-of refeathering a bad arrow.
+of re-feathering a bad arrow.
 ~
 2 0 -400 S
 9 0 0 0d0+0 0d0+0
@@ -365,7 +365,7 @@ pigeon~
 The pigeon~
 A pigeon is flying here.
 ~
-The pigeon is small, gray, and coos.
+The pigeon is small, grey, and coos.
 ~
 2 524288 0 S
 1 0 0 0d0+0 0d0+0
@@ -401,16 +401,16 @@ earth to a good depth, and fairly recently at that. The
 lettering is in common tongue, and done in whitewash.
 ~
 #4502
-station way waystation~
-the waystation~
-There is a waystation here.~
+station way way-station~
+the way-station~
+There is a way-station here.~
 ~
 15 0 1
 200~ 0~ 0~ 0~
 15000 0 0
 E
-station way waystation~
-The waystation is made of wood and thatch. Simple
+station way way-station~
+The way-station is made of wood and thatch. Simple
 wood shelves hold food. There is a bench and table
 for dining inside. A map is on the wall.
 ~
@@ -425,7 +425,7 @@ There is a bubbling spring here.~
 E
 spring bubbling~
 The spring is shallow, about 2' depth. The water runs
-clear from between the graveled bottom. The spring
+clear from between the gravelled bottom. The spring
 is some 4' in diameter, and cold (50F).
 ~
 #4504
@@ -1337,7 +1337,7 @@ S
 On the highway to town~
 You have reached a gentle bend in the road. Eastwards the road
 goes through a low brush forest. To the south, the forest deepens.
-A waystation is here, with food for the weary traveler. A spring
+A way-station is here, with food for the weary traveller. A spring
 bubbles up next to the station.
 ~
 0 0 5
@@ -1356,7 +1356,7 @@ south the forest is made mainly of oaks and other hardwoods.
 ~
 E
 map~
-You look at the map on the waystation wall. It shows a east west road
+You look at the map on the way-station wall. It shows a east west road
 to the north forking south, then going through a westerly bend before
 going south into town.
 ~
@@ -1945,7 +1945,7 @@ towards where you can hear horses. Tracks lead east down the path.
 ~
 E
 tracks~
-The tracks show a human and small humanoids traveling east.
+The tracks show a human and small humanoids travelling east.
 ~
 E
 brush~
@@ -2283,7 +2283,7 @@ S
 #4527
 In a cramped cell~
 You stand in a dark, cramped cell. The ceiling is perhaps 4' high, and the cell is
-3' wide. It smells of blood, feces, and urine. The cell door is on the east wall.
+3' wide. It smells of blood, faeces, and urine. The cell door is on the east wall.
 ~
 0 1|8 0
 D1
@@ -2559,93 +2559,93 @@ S
 #RESETS
 O 1 4501 0 3581 Loads sign for Ambush area in midennir
 O 1 4503 0 4502 spring
-O 1 4502 0 4502 waystation
-P 1 4504 0 4502 bread in waystation
-P 1 4505 0 4502 nuts in waystation
+O 1 4502 0 4502 way-station
+P 1 4504 0 4502 bread in way-station
+P 1 4505 0 4502 nuts in way-station
 O 1 4506 0 4535 table in pit
 P 1 4508 0 4506 pen on table
 P 1 4509 0 4506 ink well on table
 P 1 4510 0 4506 meat on table
 P 1 4511 0 4506 parchment on table
-O 1 4507 0 4535			stool at table
-O 1 4512 0 4512			merc corpse, arrowed
+O 1 4507 0 4535         stool at table
+O 1 4512 0 4512         merc corpse, arrowed
 P 1 4513 0 4512 broken arrow in corpse
-O 1 4574 0 4507			merc corpse, arrowed
+O 1 4574 0 4507         merc corpse, arrowed
 P 1 4513 0 4574 broken arrow in corpse
-O 1 4514 0 4511			log blocking way
-O 1 4515 0 4514			huge root
-O 1 4516 0 4514			crack at oak tree
+O 1 4514 0 4511         log blocking way
+O 1 4515 0 4514         huge root
+O 1 4516 0 4514         crack at oak tree
 P 1 4521 0 4516 spear in crack
 P 1 4522 0 4516 arrow in crack
 P 1 4522 0 4516 arrow in crack
 P 1 4522 0 4516 arrow in crack
-O 1 4517 0 4508			bloody corpse
-O 1 4525 0 4508			pool of blood
-O 1 4518 0 4509			maiden corpse
-P 1 4520 0 4518			spear in corpse
-O 1 4519 0 4538			burnt corpse
-O 1 4523 0 4538			grasp
+O 1 4517 0 4508         bloody corpse
+O 1 4525 0 4508         pool of blood
+O 1 4518 0 4509         maiden corpse
+P 1 4520 0 4518         spear in corpse
+O 1 4519 0 4538         burnt corpse
+O 1 4523 0 4538         grasp
 P 1 4524 0 4523 key in grasp of dead man
-O 1 4526 0 4517			pool of water in horse area
-O 1 4527 0 4518			ground on trail
+O 1 4526 0 4517         pool of water in horse area
+O 1 4527 0 4518         ground on trail
 P 1 4528 0 4527 buries coins in ground
-O 1 4529 0 4518			puts empty sack where coins buried
-M 1 4501 1 4502			traveler on road
-M 1 4502 1 4535			goblin lookout
+O 1 4529 0 4518         puts empty sack where coins buried
+M 1 4501 1 4502         traveller on road
+M 1 4502 1 4535         goblin lookout
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4521 0 16   spear
-M 1 4503 1 4506			raider in clearing
+M 1 4503 1 4506         raider in clearing
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4534 0 9     gauntlets
 E 1 4520 0 16   spear
-M 1 4504 1 4505			war dog
+M 1 4504 1 4505         war dog
 E 1 4538 0 3      collar
-O 1 4539 0 4505			goblin corpse for fido
-M 1 4505 1 4512			looter
+O 1 4539 0 4505         goblin corpse for fido
+M 1 4505 1 4512         looter
 E 1 4530 0 5     armor
 E 1 4535 0 10    sleeves
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4520 0 16   spear
-M 1 4506 1 4510			wounded goblin
+M 1 4506 1 4510         wounded goblin
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4536 0 11   shield
 E 1 4521 0 16   spear
-O 1 4539 0 4508			goblin corpse
-M 1 4507 1 4539			stunned boy
-M 1 4508 1 4536			roaring flame
-M 1 4509 1 4537			searing flame
-M 1 4510 1 4538			choking smoke
-M 1 4511 2 4517			horse
-M 1 4511 2 4517			horse
-M 1 4512 1 4519			molesting goblin
-O 1 4530 0 4519			removed armor
-O 1 4533 0 4519			removed boots
-O 1 4521 0 4519			spear
-O 1 4537 0 4519			girdle
-M 1 4513 1 4519			whimpering female
-M 1 4514 1 4515			goblin archer
+O 1 4539 0 4508         goblin corpse
+M 1 4507 1 4539         stunned boy
+M 1 4508 1 4536         roaring flame
+M 1 4509 1 4537         searing flame
+M 1 4510 1 4538         choking smoke
+M 1 4511 2 4517         horse
+M 1 4511 2 4517         horse
+M 1 4512 1 4519         molesting goblin
+O 1 4530 0 4519         removed armor
+O 1 4533 0 4519         removed boots
+O 1 4521 0 4519         spear
+O 1 4537 0 4519         girdle
+M 1 4513 1 4519         whimpering female
+M 1 4514 1 4515         goblin archer
 E 1 4541 0 12   quiver
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4540 0 16   bow
-P 1 4522 0 4541			arrow in quiver
-P 1 4522 0 4541			arrow in quiver
-P 1 4522 0 4541			arrow in quiver
-P 1 4522 0 4541			arrow in quiver
-P 1 4522 0 4541			arrow in quiver
-P 1 4522 0 4541			arrow in quiver
-M 1 4515 1 4514			Bardoosh, asleep
+P 1 4522 0 4541         arrow in quiver
+P 1 4522 0 4541         arrow in quiver
+P 1 4522 0 4541         arrow in quiver
+P 1 4522 0 4541         arrow in quiver
+P 1 4522 0 4541         arrow in quiver
+P 1 4522 0 4541         arrow in quiver
+M 1 4515 1 4514         Bardoosh, asleep
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
@@ -2656,39 +2656,39 @@ E 1 4534 0 9     gauntlets on hands
 E 1 4535 0 10   sleeves on arms
 E 1 4537 0 13  girdle on waist
 E 1 4543 0 2   ring on finger
-O 1 4542 0 4514			skin next to Bard
-O 1 4575 0 4520			ground loads
-P 1 4544 0 4575			button in ground
-O 1 4545 0 4523			alcove at entrance
-P 1 4546 0 4545			puts torch in alcove
-O 1 4555 0 4525			fire pit in cave
-O 1 4556 0 4525			barrel of water
-O 1 4549 0 4528			trunks in barracks
-P 1 4550 0 4549			clothes in trunks
-P 1 4551 0 4549			copper in trunks
-O 1 4552 0 4528			weapon racks in barracks
-P 1 4540 0 4552			bow in rack
-P 1 4522 0 4552			arrow in rack
-P 1 4522 0 4552			arrow in rack
-P 1 4522 0 4552			arrow in rack
-P 1 4522 0 4552			arrow in rack
-P 1 4522 0 4552			arrow in rack
-P 1 4522 0 4552			arrow in rack
-P 1 4521 0 4552			spear in rack
-O 1 4553 0 4528			armor posts
+O 1 4542 0 4514         skin next to Bard
+O 1 4575 0 4520         ground loads
+P 1 4544 0 4575         button in ground
+O 1 4545 0 4523         alcove at entrance
+P 1 4546 0 4545         puts torch in alcove
+O 1 4555 0 4525         fire pit in cave
+O 1 4556 0 4525         barrel of water
+O 1 4549 0 4528         trunks in barracks
+P 1 4550 0 4549         clothes in trunks
+P 1 4551 0 4549         copper in trunks
+O 1 4552 0 4528         weapon racks in barracks
+P 1 4540 0 4552         bow in rack
+P 1 4522 0 4552         arrow in rack
+P 1 4522 0 4552         arrow in rack
+P 1 4522 0 4552         arrow in rack
+P 1 4522 0 4552         arrow in rack
+P 1 4522 0 4552         arrow in rack
+P 1 4522 0 4552         arrow in rack
+P 1 4521 0 4552         spear in rack
+O 1 4553 0 4528         armor posts
 P 1 4530 0 4553 armor on post
 P 1 4532 0 4553 leggings on post
 P 1 4531 0 4553 helmet on post
-O 1 4554 0 4528			sconce in barracks
-P 1 4546 0 4554			torch in sconce
-M 1 4516 1 4521			Fanatical guard
+O 1 4554 0 4528         sconce in barracks
+P 1 4546 0 4554         torch in sconce
+M 1 4516 1 4521         Fanatical guard
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4536 0 11   shield
 E 1 4521 0 16   spear
-M 1 4517 1 4526			elite guard
+M 1 4517 1 4526         elite guard
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
@@ -2696,11 +2696,11 @@ E 1 4533 0 8     boots
 E 1 4536 0 11   shield
 E 1 4521 0 16   spear
 G 1 4560 0         door key
-M 1 4518 1 4525			Beaten prisoner
+M 1 4518 1 4525         Beaten prisoner
 E 1 4547 0 14    shackles
 E 1 4547 0 15    shackles
 E 1 4548 0 7      leg irons
-M 1 4519 1 4525			Haglik
+M 1 4519 1 4525         Haglik
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
@@ -2709,17 +2709,17 @@ E 1 4536 0 11   shield
 E 1 4559 0 16   dagger
 E 1 4537 0 13   girdle
 G 1 4560 0          door key
-M 1 4520 1 4528			evil goblin
+M 1 4520 1 4528         evil goblin
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4557 0 16   bullwhip
 G 1 4558 0         inky black potion
-M 1 4521 1 4528			Essabella
+M 1 4521 1 4528         Essabella
 E 1 4547 0 14    shackles
 E 1 4547 0 15    shackles
-M 1 4522 1 4527			Hamal
+M 1 4522 1 4527         Hamal
 E 1 4548 0 7      leg irons
-M 1 4523 1 4530			patrol
+M 1 4523 1 4530         patrol
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
@@ -2727,28 +2727,28 @@ E 1 4533 0 8     boots
 E 1 4536 0 11   shield
 E 1 4521 0 16   spear
 G 1 4561 0          chewed root
-M 1 4524 1 4532			women
-M 1 4525 1 4532			children
-O 1 4555 0 4531			pit
-O 1 4555 0 4532			pit
-O 1 4555 0 4533			pit
-O 1 4555 0 4534			pit
-M 1 4526 1 4533			smith
+M 1 4524 1 4532         women
+M 1 4525 1 4532         children
+O 1 4555 0 4531         pit
+O 1 4555 0 4532         pit
+O 1 4555 0 4533         pit
+O 1 4555 0 4534         pit
+M 1 4526 1 4533         smith
 E 1 4562 0 16     hammer
-M 1 4527 1 4533			Nevdara
+M 1 4527 1 4533         Nevdara
 E 1 4563 0 5        drow chain
 E 1 4564 0 4        amulet
 E 1 4565 0 16      bladed flail
-M 1 4528 1 4534			personal guard
+M 1 4528 1 4534         personal guard
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
 E 1 4533 0 8     boots
 E 1 4536 0 11   shield
 E 1 4521 0 16   spear
-M 1 4529 1 4534			pigeon
+M 1 4529 1 4534         pigeon
 E 1 4568 0 7       parchment
-M 1 4530 1 4534			leader
+M 1 4530 1 4534         leader
 E 1 4530 0 5     armor
 E 1 4531 0 6     helmet
 E 1 4532 0 7     leggings
@@ -2758,14 +2758,14 @@ E 1 4573 0 16   wyvernclaw
 E 1 4572 0 13   girdle of ogre power
 E 1 4534 0 9    gauntlets
 G 1 4560 0      key
-O 1 4566 0 4534			throne
-P 1 4567 0 4566			gems in throne
-O 1 4569 0 4534			iron box
+O 1 4566 0 4534         throne
+P 1 4567 0 4566         gems in throne
+O 1 4569 0 4534         iron box
 P 1 4570 0 4569 gold in iron box
 P 1 4571 0 4569 opal wand in box
-O 1 4556 0 4533			barrel of water at forge
-D 1 4503 5 1			; On the highway to town Close Down
-D 1 4535 4 1			; In a pit beneath the brush pile Close Up
+O 1 4556 0 4533         barrel of water at forge
+D 1 4503 5 1            ; On the highway to town Close Down
+D 1 4535 4 1            ; In a pit beneath the brush pile Close Up
 D 1 4507 3 1
 D 1 4520 1 1
 D 1 4510 2 1
@@ -2788,8 +2788,8 @@ S
 
 
 #SPECIALS
-M  4504 spec_fido			The war dog
-M  4521 spec_guard			Essabella
+M  4504 spec_fido           The war dog
+M  4521 spec_guard          Essabella
 S
 
 

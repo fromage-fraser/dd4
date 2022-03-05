@@ -5,7 +5,7 @@
 #11500
 Frog~
 A gigantic frog~
-The Frog jumps about a bit.
+The frog jumps about a bit.
 ~
 It's over 6 meters long and you wonder what something so big eats to
 stay alive.
@@ -17,9 +17,9 @@ stay alive.
 #11501
 Barbarian~
 A Barbarian~
-The Barbarian stinks and sweats.
+The barbarian stinks and sweats.
 ~
-The Barbarian looks like he could eat a horse but he will
+The barbarian looks like he could eat a horse but he will
 consider you also.
 ~
 65 0 -100 S
@@ -31,8 +31,7 @@ Barbarian Warrior~
 A barbarian warrior~
 The warrior looks at you.
 ~
-The warrior looks suspiciously around for anyone he thinks
-he wants to kill.
+The warrior looks around suspiciously for someone to kill.
 ~
 1 0 -200 S
 16 0 0 0d0+0 0d0+0
@@ -40,10 +39,10 @@ he wants to kill.
 0 0 1
 #11503
 Barbarian Guard~
-A Barbarian Guard~
-The guard is standing still like a marble bust.
+A barbarian guard~
+The guard stands still as a marble bust.
 ~
-The Guard will let nobody in who isn's supposed to get in.
+The guard will let nobody in who isn't supposed to get in.
 They also guard the lord's cleric and mage.
 ~
 2 0 -350 S
@@ -52,11 +51,11 @@ They also guard the lord's cleric and mage.
 0 0 1
 #11504
 Barbarian Elite~
-An Elite barbarian~
+An elite barbarian~
 The barbarian is waiting for you to do something.
 ~
-The Elite of the army they will protect their Lord at all cost
-even death they don NOT fear.
+The elite of the army they will protect their Lord at all cost,
+not even fearing death.
 ~
 2 0 -600 S
 21 0 0 0d0+0 0d0+0
@@ -67,7 +66,7 @@ Highlander~
 A Highlander~
 The highlander walks by and greets you.
 ~
-An man who lives in these harsh lands. He knows is way around here.
+An man who lives in these harsh lands. He knows his way around here.
 He walks around playing his bagpipes.
 ~
 1 132 700 S
@@ -79,8 +78,8 @@ Barbarian Lord~
 The Barbarian Lord~
 The Lord has the words to kill you on his lips.
 ~
-He rules this district. He is a very harsh ruler all his subjects
-fear him. He has teeth like a boar, man what is he ugly.
+He rules this district. He is a very harsh ruler; all his subjects
+fear him. He has teeth like a boar, man is he ugly.
 ~
 2 128 -1000 S
 25 0 0 0d0+0 0d0+0
@@ -89,10 +88,10 @@ fear him. He has teeth like a boar, man what is he ugly.
 #11507
 Wife~
 The wife of the Lord~
-The Wife is looking at a cracked mirror.
+The wife is looking at a cracked mirror.
 ~
-She is a ugliest looking example of the feminine sex, you wonder
-how he can stand the sight of her even in absolute darkness.
+A hideous example of the feminine sex, you wonder how her husband
+can stand the sight of her, even in absolute darkness.
 ~
 6 0 -900 S
 20 0 0 0d0+0 0d0+0
@@ -101,11 +100,11 @@ how he can stand the sight of her even in absolute darkness.
 #11508
 Holy Slayer~
 The Holy Slayer~
-The Slayer isn't aware of your presence.
+The slayer isn't aware of your presence.
 ~
-It's a ghostlike swirling mass which resembles somewhat a knight.
-He murmurs something of making a big mistake and now having to roam the
-lands without peace.
+A ghostlike, swirling mass that resembles a knight somewhat.
+He murmurs something about making a big mistake and having to roam the
+lands searching for peace.
 ~
 1 642 0 S
 35 0 0 0d0+0 0d0+0
@@ -116,8 +115,7 @@ sheep~
 A sheep~
 The sheep is eating grass.
 ~
-It looks like a sheep, it sounds like a sheep and what'd ya know it's
-even a sheep.
+It looks like a sheep, it sounds like a sheep and... it's a sheep.
 ~
 1 0 200 S
 10 0 0 0d0+0 0d0+0
@@ -125,11 +123,11 @@ even a sheep.
 0 0 0
 #11510
 mage lord mardonna~
-The Lord's Mage Mardonna~
-The mage eyes you conspiciously.
+The Lord's Mage, Mardonna~
+The mage stares at you with evident disdain.
 ~
-She is the personal mage for the Lord just like the Cleric is.
-She is doing some sort of an experiment here. Beter watch out it
+She is the Lord's personal servant, just like the cleric.
+She is doing some sort of an experiment here. Better watch out, it
 might explode in your face.
 ~
 2 152 -800 S
@@ -138,8 +136,8 @@ might explode in your face.
 0 0 2
 #11511
 cleric lord boldar~
-The Lord's Cleric Boldar~
-The cleric doesnt notice you.
+The Lord's Cleric, Boldar~
+The cleric doesn't notice you.
 ~
 He is the house cleric. He sees to it that the Lord stays healthy
 in body and mind. Presently he is meditating on something, so he
@@ -154,7 +152,7 @@ Keeper~
 The Keeper of the Tower~
 The keeper greets you.
 ~
-His sole duty is that his Beacon stays lit. It's the only thing he cares for.
+His sole duty is to see that his beacon stays lit. It's the only thing he cares for.
 ~
 2 0 0 S
 16 0 0 0d0+0 0d0+0
@@ -177,8 +175,8 @@ Child kid Nessy~
 Nessy's Child.~
 A small Nessy is sleeping here.
 ~
-A smaller replica of Nessy lies here sleeping contently. Don't disturb her
-even kids of a reptilian need their sleep.
+A small replica of Nessy lies here sleeping contently. Don't disturb her!
+Even reptilian kids need their sleep.
 ~
 3 512 300 S
 20 0 0 0d0+0 0d0+0
@@ -189,9 +187,8 @@ Guardian~
 A Fire Elemental~
 A fire elemental is here.
 ~
-It's a elemental called down here probably by the mage herself to protect
-this exit. The guardians will attack anybody that comes here and isn't the
-mage.
+A fire elemental, probably summoned by the mage to protect this exit.
+It will attack anybody that comes here except the mage.
 ~
 34 524840 -1000 S
 20 0 0 0d0+0 0d0+0
@@ -202,9 +199,9 @@ Guard~
 A guard~
 A guard is here.
 ~
-The guards here are cleaning their equipement or sleeping or whatever. Normally
+The guards here are cleaning their equipment or sleeping. Normally
 they would be on duty but they are just on-call now.
-They are not very tall but look quite though.
+They are not tall, but look quite tough.
 ~
 34 0 -400 S
 17 0 0 0d0+0 0d0+0
@@ -217,7 +214,7 @@ They are not very tall but look quite though.
 #11500
 Claymore~
 an enormous claymore~
-Its an claymore made of laen a rare metal lies here.~
+A claymore made of laen lies here.~
 ~
 5 593 8193
 0~ 0~ 0~ 3~
@@ -251,7 +248,7 @@ A
 #11503
 plate suit~
 a suit of laen plate~
-A heap of plate lies on the ground.~
+A heap of plate armor lies on the ground.~
 ~
 9 593 9
 0~ 0~ 0~ 0~
@@ -289,7 +286,7 @@ A
 #11506
 gauntlets~
 a pair of laen gauntlets~
-A pair of queer looking gauntlets lie here.~
+A pair of queer-looking gauntlets lie here.~
 ~
 9 531 257
 0~ 0~ 0~ 0~
@@ -301,7 +298,7 @@ A
 
 #11507
 sword~
-a highlanders sword~
+a highlander's sword~
 A sword of a highlander lies here.~
 ~
 5 1024 8193
@@ -312,9 +309,9 @@ A
 A
 19 2
 #11508
-rod~
-a Rod of OmniScience~
-a strange rod lies here.~
+rod omniscience~
+a rod of omniscience~
+A strange rod lies here.~
 ~
 3 0 16385
 18~ 10~ 9~ flamestrike~
@@ -324,9 +321,9 @@ A
 A
 5 -1
 #11509
-cloak~
+cloak magus~
 the cloak of Magus~
-a cloak with constantly changing colors lies here.~
+A cloak with constantly-changing colors lies here.~
 ~
 9 1 5
 0~ 0~ 0~ 0~
@@ -334,9 +331,9 @@ a cloak with constantly changing colors lies here.~
 A
 24 -2
 #11510
-mace~
+mace oblivion~
 the mace of oblivion~
-a dark mace lies here.~
+A dark mace lies here.~
 ~
 5 145 8193
 0~ 0~ 0~ 7~
@@ -344,9 +341,9 @@ a dark mace lies here.~
 A
 12 20
 #11511
-boots~
+boots necromancy~
 the boots of necromancy~
-a pair of blackish boots lies here.~
+A pair of blackish boots lies here.~
 ~
 9 528 65
 0~ 0~ 0~ 0~
@@ -358,7 +355,7 @@ A
 #11512
 holy basher~
 the Holy Basher~
-A weapon of some sort lies here.~
+A bashing weapon of some sort lies here.~
 ~
 5 1282 8193
 0~ 0~ 0~ 8~
@@ -396,7 +393,7 @@ a potion stands here.~
 #11515
 dagger~
 a dagger~
-A plain simple dagger lies here.~
+A plain, simple dagger lies here.~
 ~
 5 512 8193
 0~ 0~ 0~ 1~
@@ -404,7 +401,7 @@ A plain simple dagger lies here.~
 #11516
 sword notched~
 a notched sword~
-a worn sword lies here.~
+A worn sword lies here.~
 ~
 5 0 8193
 0~ 0~ 0~ 3~
@@ -412,39 +409,39 @@ a worn sword lies here.~
 #11517
 dark key~
 a dark key~
-a key lies here on the ground.~
+A key lies here on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
 1 0 0
 #11518
 tower key~
-a key of the tower~
-a key lies here on the ground.~
+a key to the tower~
+A key lies here on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
 1 0 0
 #11519
 tower key~
-a key of the tower~
-a key lies here on the ground.~
+a key to the tower~
+A key lies here on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
 1 0 0
 #11520
 tower key~
-a key of the tower~
-a key lies here on the ground.~
+a key to the tower~
+A key lies here on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
 1 0 0
 #11521
 tower key~
-a key of the tower~
-a key lies here on the ground.~
+a key to the tower~
+A key lies here on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
@@ -452,7 +449,7 @@ a key lies here on the ground.~
 #11522
 shield~
 a laen shield~
-a dark shield lies here.~
+A dark shield lies here.~
 ~
 9 531 513
 0~ 0~ 0~ 0~
@@ -461,8 +458,8 @@ A
 17 -10
 #11523
 bag pipes bagpipes~
-a bagpipe~
-A bagpipe has been carelessly tossed on the ground here.~
+a set of bagpipes~
+A set of bagpipes has been carelessly tossed on the ground here.~
 ~
 8 1024 16385
 0~ 0~ 0~ 0~
@@ -488,7 +485,7 @@ A
 #11500
 Entrance to a Valley in the Highlands.~
 Before you the path just stops. It doesn't go any further. A mysterious bog
-begins here, if you dare entering it's at your own risk.
+begins here; if you dare to enter it's at your own risk.
 Also in the distance you see a vague contour of hills. On the top of
 the hills you see lights.
 ~
@@ -885,7 +882,7 @@ S
 #11519
 A path.~
 On solid ground again. You have entered a valley, in the distance you hear
-sheep. Also you hear the distinct sound of a bagpipe.
+sheep. Also you hear the distinct sound of bagpipes.
 ~
 115 1 4
 D0
@@ -914,7 +911,7 @@ D2
 S
 #11521
 A path.~
-You are approaching to a crossroad in the valley. The ground gets noticably level
+You are approaching a crossroads in the valley. The ground gets noticably level
 here so you must be coming to the lowest point of the valley.
 ~
 115 1 4
@@ -929,7 +926,7 @@ D2
 S
 #11522
 The Crossroads.~
-The guards here look nasty, better not make any trouble. There is a roadsign
+The guards here look nasty; better not make any trouble. There is a road sign
 planted in the center of the crossing. To the north you see a lake.
 ~
 115 1 4
@@ -959,7 +956,7 @@ S
 #11523
 Path to the southeastern Beacon Tower.~
 The path is getting steeper and steeper while it continues uphill. Also the
-terrain is getting more difficult to handle. many big rocks lie on the way
+terrain is getting more difficult to handle. Many big rocks lie on the way
 making it harder to get on.
 ~
 115 1 4
@@ -975,8 +972,8 @@ S
 #11524
 A path uphill.~
 The path is getting steeper and steeper while it continues uphill. Also the
-terrain is getting more difficult to handle. It's getting slippery you might
-fall on your face and hurt yourself.
+terrain is getting more difficult to handle. It's getting slippery--you might
+fall on your face and hurt yourself!
 ~
 115 1 4
 D1
@@ -2231,8 +2228,8 @@ D2
 S
 #11599
 In Nessy's cave.~
-The light just went out, strange very strange. Is it possible she heart you,
-you tried to be as silent as possible.
+The light just went out! Strange... very strange. Is it possible she heard you?
+You tried to be as silent as possible!
 ~
 115 8 0
 D0
@@ -3179,8 +3176,8 @@ D3
 S
 #11659
 In a secret gangway.~
-The light brightens but doen't help much yet. Above you you think you
-that it is raining again.
+The light brightens but doesn't help much yet. Above you you think it
+has started to rain again.
 ~
 115 8 0
 D1

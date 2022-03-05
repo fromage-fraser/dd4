@@ -1,4 +1,4 @@
-#AREA	Diku~    Sewer~
+#AREA   Diku~    Sewer~
 5 20 0 100
 
 
@@ -3616,20 +3616,26 @@ penetrates the rock from which these steps are chiselled.
 S
 #7399
 On the walls of the Abyss~
-You are clutching the steps on the wall so that you don't fall to the ground
-down below.
-A large sign says : I haven't gotten any further ... Yet. But  I'm pushing
-                    to get finished with this sewer.
-                                           Greetings and Good Health :)
-
-                                                     Redferne The Gentle
-This stops your journey down, the only exit is up.
+You are clutching the steps on the wall so that you don't fall into the darkness
+down below. It seems like the floor just drops away into endless nothingness.
+You can see strange flashing lights down in the gloom. Better make sure you're
+flying if you venture down there.
 ~
 73 9 5
 D4
 ~
 ~
 0 -1 7279
+D 5
+Impenetrable blackness.
+~
+~
+0 -1 7500
+E
+blackness~
+Completely impenetrable.
+~
+
 S
 #7400
 Cave entrance~
@@ -4641,21 +4647,21 @@ D 1 7280 4 1
 D 0 7200 1 2    Close door
 D 0 7201 3 2    Lock stone door
 D 0 7201 2 1    Close wood door
-D 0 7204 2 1	Close door
+D 0 7204 2 1    Close door
 D 0 7202 0 1    Close wood door
 D 0 7208 0 1    Close door
 *
 M 0 7200 1 7201 Load master mindflayer
-E 1 7200 4 16	Equip master with devil rod
+E 1 7200 4 16   Equip master with devil rod
 E 1 7203 4 3    Equip master with cloak
 G 1 7205 7200   Give key to master
 O 0 7204 6 7200 Potion into treasury
 M 0 7201 1 7203 Load senior mindflayer
-E 1 7201 4 16 	Equip with large mace
+E 1 7201 4 16   Equip with large mace
 M 0 7202 2 7205 Junior mindflayer
-E 1 7202 8 16 	Equip with large mace
+E 1 7202 8 16   Equip with large mace
 M 0 7202 2 7207 Load junior mindflayer
-E 1 7202 8 16 	Equip with small mace
+E 1 7202 8 16   Equip with small mace
 O 0 7206 4 7206 Load Skull
 * The sewermaze
 M 0 7203 10 7214 Load wererat
@@ -4665,24 +4671,24 @@ E 1 7211 16 16 Equip with short sword
 M 0 7203 10 7215 Load wererat
 E 1 7211 16 16 Equip
 M 0 7203 10 7217 Load wererat
-G 1 7208 20 	Load light stick
+G 1 7208 20     Load light stick
 E 1 7211 16 16 Equip
 M 0 7203 10 7219 Load wererat
-E 1 7209 4 8  	Load MUD-boots
+E 1 7209 4 8    Load MUD-boots
 E 1 7211 16 16 Equip
 M 0 7203 10 7221 Load wererat
-G 1 7208 20 	Load light stick
+G 1 7208 20     Load light stick
 E 1 7211 16 16 Equip
 M 0 7203 10 7223 Load wererat
-E 1 7209 4 8  	Load MUD-boots
+E 1 7209 4 8    Load MUD-boots
 E 1 7211 16 16 Equip
 M 0 7203 10 7225 Load wererat
 E 1 7211 16 16 Equip
 M 0 7203 10 7233 Load wererat
-G 1 7208 20 	Load light stick
+G 1 7208 20     Load light stick
 E 1 7211 16 16 Equip
 M 0 7203 10 7233 Load wererat
-E 1 7209 4 8  	Load MUD-boots
+E 1 7209 4 8    Load MUD-boots
 E 1 7211 16 16 Equip
 M 0 7204 1 7234  Load gigantic rat
 * The small Hell
@@ -4715,12 +4721,12 @@ M 0 7040 1 7428          Load The Red Dragon
 E 1 7304 99 5           Equip Red Plate on Red
 E 1 7305 99 7           Equip Red Legs on Red
 E 1 7306 99 9           Equip Red Claws (Hands) on Red
-E 1 7307 99 6		Equip Red Skull on Red
-E 1 7308 99 11		Equip Red Shield on Red
-E 1 7309 99 10		Equip Red Arms on Red
-E 1 7310 99 8		Equip Red Rear Claws (Feet) on Red
-E 1 7216 99 16		Equip Red Dragon Claw Weapon on Red
-E 1 7303 99 17		Equip Red DragonOrb on Red
+E 1 7307 99 6           Equip Red Skull on Red
+E 1 7308 99 11          Equip Red Shield on Red
+E 1 7309 99 10          Equip Red Arms on Red
+E 1 7310 99 8           Equip Red Rear Claws (Feet) on Red
+E 1 7216 99 16          Equip Red Dragon Claw Weapon on Red
+E 1 7303 99 17          Equip Red DragonOrb on Red
 M 0 7041 2 7444          Load The Sea Hag
 M 0 7042 2 7435          Load The Good Guardian Naga
 M 0 7043 3 7439          Load The Basilisk

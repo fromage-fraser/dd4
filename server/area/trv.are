@@ -34,7 +34,7 @@ Two sharp looking knives are tucked into his thick leather belt.
 0 0
 0 0 1
 >death_prog 100~
-	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+    mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
 ~
 |
 
@@ -52,19 +52,19 @@ She sings the soft, sad songs of her displaced people.
 0 0
 0 0 2
 >speech_prog bless~
-	if clan($n) == trv
-		cast bless $n
-		break
-	else
-		break;
-	endif
+    if clan($n) == trv
+        cast bless $n
+        break
+    else
+        break;
+    endif
 ~
 >speech_prog bye~
-	if clan($n) == trv
-		mpecho The old woman reveals a secret opening in the tent wall and smuggles you out.
-		mptransfer $n 514
-		break
-	endif
+    if clan($n) == trv
+        mpecho The old woman reveals a secret opening in the tent wall and smuggles you out.
+        mptransfer $n 514
+        break
+    endif
 ~
 |
 
@@ -94,9 +94,9 @@ Sleepy time for me.
 0 0
 0 0 0
 >rand_prog 100~
-	drop trv
-	mpgoto 537
-	meditate
+    drop trv
+    mpgoto 537
+    meditate
 ~
 |
 
@@ -112,13 +112,13 @@ TRV transfer guy~
 0 0
 0 0 0
 >speech_prog friend~
-	mpecho The Gypsy nods and returns to his seat.
-	mptransfer $n 532
+    mpecho The Gypsy nods and returns to his seat.
+    mptransfer $n 532
 ~
 >speech_prog foe~
-	mpecho The Gypsy looks angry and utters a harsh-sounding chant!
-	mpecho Your head spins and you feel disoriented.
-	mptransfer $n 506
+    mpecho The Gypsy looks angry and utters a harsh-sounding chant!
+    mpecho Your head spins and you feel disoriented.
+    mptransfer $n 506
 ~
 |
 
@@ -134,10 +134,10 @@ TRV close door guy~
 0 0
 0 0 0
 >rand_prog 10~
-	close north
-	close south
-	close east
-	close west
+    close north
+    close south
+    close east
+    close west
 ~
 |
 #0

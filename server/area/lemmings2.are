@@ -954,89 +954,89 @@ S
 
 #RESETS
 *
-D 1 29958 0 1			; Before the carpenter's workshop Close North
-D 1 29966 3 1			; The lemming smithy Close West
-D 1 29964 1 1			; The lemming cavern Close East
-D 1 29970 3 1			; A storage room Close West
-D 1 29969 1 2			; The corridor turns Lock East
-D 1 29972 2 1			; The lemming doctor Close South
-D 1 29971 0 1			; The corridor ends Close North
-D 1 29973 3 1	                ; The corridor descends Close West
-D 1 29973 3 2			; The corridor descends Lock West
+D 1 29958 0 1           ; Before the carpenter's workshop Close North
+D 1 29966 3 1           ; The lemming smithy Close West
+D 1 29964 1 1           ; The lemming cavern Close East
+D 1 29970 3 1           ; A storage room Close West
+D 1 29969 1 2           ; The corridor turns Lock East
+D 1 29972 2 1           ; The lemming doctor Close South
+D 1 29971 0 1           ; The corridor ends Close North
+D 1 29973 3 1           ; The corridor descends Close West
+D 1 29973 3 2           ; The corridor descends Lock West
 *
-M 1 29950 8 29952			a small lemming to The central cave
+M 1 29950 8 29952           a small lemming to The central cave
 *
-M 1 29950 8 29953			a small lemming to A side cave
+M 1 29950 8 29953           a small lemming to A side cave
 *
-M 1 29950 8 29957			a small lemming to A side cave
+M 1 29950 8 29957           a small lemming to A side cave
 *
-M 1 29956 7 29960			a lemming to The top of the stairs
+M 1 29956 7 29960           a lemming to The top of the stairs
 *
-M 1 29952 1 29959			the lemming carpenter to The carpenter's workshop
+M 1 29952 1 29959           the lemming carpenter to The carpenter's workshop
 E 1 29952 100 16
 *
-M 1 29950 8 29961			a small lemming to Another floor of lemmings
+M 1 29950 8 29961           a small lemming to Another floor of lemmings
 *
-M 1 29956 7 29961			a small lemming to Another floor of lemmings
+M 1 29956 7 29961           a small lemming to Another floor of lemmings
 *
-M 1 29956 7 29956			a lemming to The rear of the cave
+M 1 29956 7 29956           a lemming to The rear of the cave
 *
-M 1 29956 7 29962			a lemming to A cavern of lemmings
+M 1 29956 7 29962           a lemming to A cavern of lemmings
 *
-M 1 29951 4 29965			a large lemming to The north-east corner of the lemming cave's second floor
+M 1 29951 4 29965           a large lemming to The north-east corner of the lemming cave's second floor
 *
-M 1 29951 4 29964			a large lemming to The lemming cavern
+M 1 29951 4 29964           a large lemming to The lemming cavern
 *
-M 1 29959 1 29963			a lemming mage to The shadowy alcove
+M 1 29959 1 29963           a lemming mage to The shadowy alcove
 E 1 29962 100 12
 *
 O 1 29963 1 29954       skeleton in the pit
 *
-M 1 29953 1 29966			the lemming smithy to The lemming smithy
+M 1 29953 1 29966           the lemming smithy to The lemming smithy
 E 1 29951 100 16
 *
-M 1 29956 7 29968			a lemming to The bottom of the stairway
+M 1 29956 7 29968           a lemming to The bottom of the stairway
 *
-M 1 29951 4 29968			a large lemming to The bottom of the stairway
+M 1 29951 4 29968           a large lemming to The bottom of the stairway
 *
-M 1 29954 4 29969			a miner lemming to The corridor turns
+M 1 29954 4 29969           a miner lemming to The corridor turns
 E 1 29950 100 16
 *
-M 1 29955 1 29972			the lemming doctor to The lemming doctor
+M 1 29955 1 29972           the lemming doctor to The lemming doctor
 E 1 29961 100 16
 *
 O 1 29957 1 29978       the beasts bed
 P 1 29958 1 29957       leg bone inside the bed
 P 1 29959 1 29957       helm inside the bed
 *
-M 1 29957 4 29972			a wounded lemming to The lemming doctor
+M 1 29957 4 29972           a wounded lemming to The lemming doctor
 E 1 29953 100 12
 *
-M 1 29957 4 29972			a wounded lemming to The lemming doctor
+M 1 29957 4 29972           a wounded lemming to The lemming doctor
 E 1 29954 100 6
 *
-M 1 29957 4 29972			a wounded lemming to The lemming doctor
+M 1 29957 4 29972           a wounded lemming to The lemming doctor
 E 1 29956 100 7
 *
-M 1 29957 4 29972			a wounded lemming to The lemming doctor
+M 1 29957 4 29972           a wounded lemming to The lemming doctor
 E 1 29955 100 10
 *
-M 1 29954 3 29975			a miner lemming to A dark corner
+M 1 29954 3 29975           a miner lemming to A dark corner
 E 1 29950 100 16
 *
-M 1 29954 3 29976			a miner lemming to The dark corridor
+M 1 29954 3 29976           a miner lemming to The dark corridor
 E 1 29950 100 16
 *
-M 1 29958 1 29978			the Beast to The beast's lair
+M 1 29958 1 29978           the Beast to The beast's lair
 E 1 29960 100 16
 *
-O 1 29964 1 29967			key to the top of the climbing wall
+O 1 29964 1 29967           key to the top of the climbing wall
 S
 
 
 #SPECIALS
-M  29955 spec_cast_cleric			the lemming doctor
-M  29959 spec_cast_mage			a lemming mage
+M  29955 spec_cast_cleric       the lemming doctor
+M  29959 spec_cast_mage         a lemming mage
 S
 
 

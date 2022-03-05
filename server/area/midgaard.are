@@ -457,6 +457,22 @@ A drunk who seems to be too happy, and to carry too much money.
 2 19 8 2d6+22 1d6+0
 0 0
 8 8 1
+>rand_prog 10~
+if rand(50)
+        dance
+else
+        sing
+endif
+~
+>greet_prog 10~
+yell Monster!  I found a monster!  Kill!  Banzai!
+mpkill $n
+~
+>bribe_prog 10~
+say Ahh!  More spirits!  Good spirits!
+sing
+~
+|
 #3065
 beggar~
 the beggar~
@@ -1477,10 +1493,10 @@ The letter is written in a bold and feminine Carolinian hand.
 
     To whom it may concern,
 
-	Merc Industries has installed a new no-rent save and quit
-	system.  Apparently one can now save and quit at any time
-	from anywhere inside a town or out.  My services here are
-	no longer required.
+        Merc Industries has installed a new no-rent save and quit
+        system.  Apparently one can now save and quit at any time
+        from anywhere inside a town or out.  My services here are
+        no longer required.
 
     Diana the Receptionist
 ~
@@ -1498,10 +1514,10 @@ The letter is written in a reserved and dignified Spencer hand.
 
     To whom it may concern,
 
-	Merc Industries has charmed your money.  Apparently one's
-	gold will remain close, even beyond death. We are closing
-	down our offices and ATM machines.  Our services here are
-	no longer required.
+        Merc Industries has charmed your money.  Apparently one's
+        gold will remain close, even beyond death. We are closing
+        down our offices and ATM machines.  Our services here are
+        no longer required.
 
     Midgaard City Bank
 ~
@@ -1778,35 +1794,35 @@ E
 map~
 {w
                                   Altar
-       ^			    |       Mud school (up from Temple)
-       |			    |      /
-  The City of		      Temple/Recall
-   Midgaard			    |
- <-----+----->	  Cleric Guild -- Temple --  Midgaard Bank and
-       |			  Square     Adventurer's Guild
-       |			    |
+       ^                            |       Mud school (up from Temple)
+       |                            |      /
+  The City of                 Temple/Recall
+   Midgaard                         |
+ <-----+----->    Cleric Guild -- Temple --  Midgaard Bank and
+       |                          Square     Adventurer's Guild
+       |                            |
        o  Goblin   Magic            |     General  Weapon  Psionicist
-	 Foundry   Shop   Bakery    |      Store    Shop     Guild
-	    |	     |       |      |        |       |       |
+         Foundry   Shop   Bakery    |      Store    Shop     Guild
+            |        |       |      |        |       |       |
     To  -- West -- Main -- Main - Market -- Main -- Main -- East --    To
   Forest   Gate   Street  Street  Square   Street  Street   Gate   Crossroads
-	    |        |       |      |        |       |       |
-	  Wall     Mage   Armoury   |     Jeweler   Warrior  Wall
-	  Road     Guild            |                Guild   Road
-	    |                       |                        |
-	    |                       |            To Dangerous Neighborhood
-	    |                       |                       and the Circus
-	    |   Leather  Drago      |       Map      Pet
-	    |     Shop    Cult      |      Store     Shop  Shifter Guild
-	    |      |       |        |        |        |        |
-	  Wall -- End --  Poor -- Common -- Dark -- Alley --   End   --  Mob
-	  Road   Alley   Alley    Square    Alley  At Levee  of Alley  Factory
-	    |      |       |        |        |        |        |
-	    |   Brawler  Lusty      |      Thief    Levee   Abandoned
-	  Wall   Guild   Ogres      |      Guild      |     Warehouse
-	  Road           Tavern     |                 |
-	    |                       |               River
-	    |                       |
+            |        |       |      |        |       |       |
+          Wall     Mage   Armoury   |     Jeweler   Warrior  Wall
+          Road     Guild            |                Guild   Road
+            |                       |                        |
+            |                       |            To Dangerous Neighborhood
+            |                       |                       and the Circus
+            |   Leather  Drago      |       Map      Pet
+            |     Shop    Cult      |      Store     Shop  Shifter Guild
+            |      |       |        |        |        |        |
+          Wall -- End --  Poor -- Common -- Dark -- Alley --   End   --  Mob
+          Road   Alley   Alley    Square    Alley  At Levee  of Alley  Factory
+            |      |       |        |        |        |        |
+            |   Brawler  Lusty      |      Thief    Levee   Abandoned
+          Wall   Guild   Ogres      |      Guild      |     Warehouse
+          Road           Tavern     |                 |
+            |                       |               River
+            |                       |
     To South Midgaard              Dump
 ~
 
@@ -1822,7 +1838,7 @@ E
 map~
 (An exerpt from a journal of an unknown adventurer)
 Date Unknown
-	... and after locating Horl the Knight and paying his bail, we finally
+        ... and after locating Horl the Knight and paying his bail, we finally
 left Midgaard on the first day of the new moon, 3 days behind schedule.  Our
 guide says that he knows the quickest way to Thalos, and that we can expect to
 reach the ruins there by late tomorrow.   We left the east gate of Midgaard,
@@ -1832,7 +1848,7 @@ for the night.  Once again, I, Gagglesneeze, the Greatest Mage to walk these
 lands, am stuck with the midnight watch.  How I long for a group that realizes
 the delicate rest required of a mage.
 
-	Today, we continued south, until the woods thickened and we were forced
+        Today, we continued south, until the woods thickened and we were forced
 to turn east or west, or return north in failure.  Following our guide's
 lead, we turned east and walked through the woods for several hours, turning
 south at noon, and then preceding east again when we had skirted the clump of
@@ -1842,7 +1858,7 @@ Thalos lies just over the far rim of the valley.  For once, I will get some
 sleep, as I have convinced that fool priest Karl to take my watch for me.
 Hopefully tomorrow morning we may begin amassing treasure in Thalos.
 
-	Today did not bode well from the very beginning.  I awoke to a small
+        Today did not bode well from the very beginning.  I awoke to a small
 amount of yelling going on in camp.  It appeared our guide had left in the
 middle of the night, taking some of Ravin the Burglar's gold and equipment with
 him.  We decided to look for Thalos anyway.  It was nowhere to be found.
@@ -1873,7 +1889,7 @@ map~
 An excerpt from a book recently acquired from the mages guild by the thief
 Picard (to whom our condolences go out).
 
-	The magical forest known as shadow grove has long been known as a place
+        The magical forest known as shadow grove has long been known as a place
 in which even those with the best direction sense may be confused.  However,
 it is the gateway to such places as the Galaxy, the Tower of High Sorcery,
 and the Tower of the Draconians.  The route to the Grove is a well established
@@ -1884,7 +1900,7 @@ eventually reach a dusty part of the forest.  From this point, travel north,
 and west and north again.  From here the Entrance to Shadow Grove can be seen
 to the north.
 
-	Our experts recommend this method for traveling in the Grove itself.
+        Our experts recommend this method for traveling in the Grove itself.
 In each new area, check all exits, and often you will be able to see if you
 have reached the entrance to the spot you set out for.  Traveling in daylight
 will often aid this process.  Also, our experts have noted that oftentimes,
@@ -1892,7 +1908,7 @@ traveling in the same direction twice will return you to the spot you left
 from originally.  However, traveling north, then back south, for example, will
 take you to a different area.
 
-	The entrance to the Galaxy is said to be found by talking with a gypsy
+        The entrance to the Galaxy is said to be found by talking with a gypsy
 in a tavern.  The entrances to the Towers of Sorcery and of the Draconians are
 said to be gigantic Gates.  Also, if you see poor Edward, please be nice to
 him, the poor fool can't seem to find his way out...
@@ -1919,8 +1935,8 @@ trail east as far as it goes.  Continue on the trail, going whichever way you
 can, until the trail splits.   Travel east, and then go south.  You will be
 in my realm, and may try to find your way to me.
 
-				Mahn-Tor,
-				Minotaur Grand Master
+                                Mahn-Tor,
+                                Minotaur Grand Master
 ~
 #3377
 map haven antarctic~
@@ -1948,7 +1964,7 @@ actions to get us where we need to go.  However, I enjoy the adventures I've
 shared with these two, especially Whirl.  Without her, where would we, in
 fact, where would I be now?
 
-	Well, we set off from Midgaard along the river heading west away
+        Well, we set off from Midgaard along the river heading west away
 from town, and although in full view due to the daylight we wanted to avoid,
 the locals seemed more glad we had left than angry enough to give chase.
 We went under the bridge which crosses the river and continued west.  As we
@@ -1963,7 +1979,7 @@ to be upset about something here, and strangely so was Hogar, so we decided
 not to press further and quickly left the island to continue going west along
 the river.
 
-	We noticed quickly that the river was getting much wider now,
+        We noticed quickly that the river was getting much wider now,
 and soon were at the mouth of the great river.  Not wanting to get too far
 from land just yet, we entered the ocean and went south along the shoreline.
 I must say at this point my arms were getting tired of paddling, so Whirl
@@ -1978,7 +1994,7 @@ Another turn to the south leads us to much colder waters, we can see icebergs
 floating in the ocean below us.  I'm getting dreadfully cold now and wish
 we could turn back, but it seems we cannot and continue onward to the south.
 
-	This is going to be my last entry.  It has been two days since last
+        This is going to be my last entry.  It has been two days since last
 I wrote.  We encountered an enormous white bear which so surprised us, it
 managed to mortally wound Hogar, and I suffered several cuts before the bear
 finally succumbed to the combined efforts of Whirl and I.  She had tried
@@ -1990,7 +2006,7 @@ I am with Whirl.  The bear meat should be enough to keep us alive for a
 little while, time enough for us to finally be alone together.
 ....
 
-	This journal entry is one of many found in a book which had floated
+        This journal entry is one of many found in a book which had floated
 in the ocean protected by some magical force from the water and salt.  The
 finder can only guess at what happened to the two who were left. Hopefully
 the directions from the book will help others avoid the same fate.
@@ -2011,14 +2027,14 @@ The following set of directions was obtained from the legendary mage
 Shapeshifter, whom it is said spent so much time (lost?) in the desert, that
 he finally killed off the nomad leader and made it his home.
 
-	Shapeshifter reports that there are several interesting places that
+        Shapeshifter reports that there are several interesting places that
 may be visited from the eastern desert.  To get to the desert, the mage
 recommends that one get upon the river and travel east.  The journey will
 take the adventurer through an underground channel, until finally an under-
 ground lake will be the last point at which boats will be used.  Continuing
 east up a passageway will bring one to the edge of the desert.
 
-	The desert is easy to lose one's way in, but such interesting areas
+        The desert is easy to lose one's way in, but such interesting areas
 as MegaCity, the Pyramid of the Sphynx, the Nomad Camp, and the Lair of the
 Brass dragon can be approached only from the desert.  Although even the great
 Shapeshifter is not able to give exact directions, he was able to provide this
@@ -2042,7 +2058,7 @@ This is often attributed to the quick reproduction rates of the denizens of
 the caves.  Such creatures as the kobold, the hobgoblin, and the hideous troll
 can be found within the caves.  The caves are also reputed to be the base of
 operations for several dangerous rogue mages.
-	Those seeking the caves should first stock themselves with food and
+        Those seeking the caves should first stock themselves with food and
 water, as there is little of nourishment within the caves.  A few brave souls
 who were lucky to make it out of the caves alive after running out of supplies,
 report that the mushrooms that grow in the caves are not fit for human con-
@@ -2050,7 +2066,7 @@ sumption.  After acquiring supplies, travel out the east gate of Midgaard,
 sticking to the roads as far as the Crossroads.  From there, a party must
 wander north through the plains, until a cave mouth is reached.  This is the
 entrance to Moria.
-	Some things to take heed of about Moria.  Many adventurers have exited
+        Some things to take heed of about Moria.  Many adventurers have exited
 the caves through a cavern to the north of the complex, and have then followed
 a trail up the mountain.  Those foolish enough to do so have had to return to
 town in failure, apparently too embarrassed to reveal what happened.  Also,
@@ -2060,9 +2076,9 @@ Many are the parties that have gone to attempt to recover corpses from this
 powerful wizard.
 
 
-						- Faithfully yours,
+                                                - Faithfully yours,
 
-						  Alexis, the Lady Cleric
+                                                  Alexis, the Lady Cleric
 
 ~
 #3380
@@ -2080,18 +2096,18 @@ journeyed to the Goblin Caverns.  Accompanied by Demonspawn the Warrior,
 and Partan, I left town through the east gate.  We turned south at the
 Crossroads, and pitched camp after traveling as far south as we were able.
 
-	The next day, we turned east, zigzaggin east and south, until we went
+        The next day, we turned east, zigzaggin east and south, until we went
 down into a valley.  At this point, we turned north, following a trail
 through the woods.
 
-	At this point, we became somewhat lost, and had to wander for a while
+        At this point, we became somewhat lost, and had to wander for a while
 before we found the entrance to the Goblin's mountain lair.  The assistance
 of Odin didn't hurt of course.  Although I am not sure of the exact route,
 I believe that we turned west and then back north at least once, and possibly
 twice.  We found ourselves at the foot of the mountain, and were able to climb
 it and enter the Goblin Caves.
 
-	However, the most exciting part of our expedition occurred after we
+        However, the most exciting part of our expedition occurred after we
 had defeated Darkside (at the cost of Demonspawn, Partan, and several
 younger adventurers who happened to be in the area).  I discovered a secret
 door in the mountain side that opens into a store room, that directly
@@ -2100,8 +2116,8 @@ back to his altar in Midgaard to reward us, I might have been able to find
 out exactly where the secret door is.  All that I can say, is that it is in
 the forest, and guarded by a Goblin Sentinel.
 
-					Recorded from an interview with
-					with Tholeus, Hero of Midgaard.
+                                        Recorded from an interview with
+                                        with Tholeus, Hero of Midgaard.
 
 ~
 #3381
@@ -2290,7 +2306,7 @@ Supplied by Minks Cartography co.
           Road           Road                 Road       Road
            |               |       Mouse-       |         |
            |  House of     |  Town riders Mages |         |
-           |  Pugalism     |  Hall Temple Guild |         |
+           |  Pugilism     |  Hall Temple Guild |         |
            |     |         |   |     |      |   |         |
            +---------------+----Centre-Road-----+---------+
            |     |         |                    |         |
@@ -2393,7 +2409,7 @@ Free instructions provided by the waiter:
 
    Buy  - Buy something (drinkable) from the waiter.
    List - The waiter will show you all the different drinks and
-	  specialties, and tell the price of each.
+          specialties, and tell the price of each.
 ~
 S
 #3004
@@ -2489,10 +2505,10 @@ sign~
 The sign reads:
 Free instructions provided by the Bank of Midgaard.
 
-   Balance	Will find your current Balance, from anywhere.
+   Balance      Will find your current Balance, from anywhere.
    Withdraw <x> Will withdraw x coins from your account.
-   Deposit <x>	Will Deposit x amount of coins to your account.
-   Borrow <x>	Will borrow x amount from the bank.
+   Deposit <x>  Will Deposit x amount of coins to your account.
+   Borrow <x>   Will borrow x amount from the bank.
 ~
 E
 writing carving carvings symbols symbol~
@@ -2536,7 +2552,7 @@ Free instructions provided by the store:
 
    Buy  - Will buy you some bread or pastry.
    List - The baker will kindly tell you the price and sort of the bread in
-	  his bakery.
+          his bakery.
 ~
 S
 #3010
@@ -2558,7 +2574,7 @@ The note reads:
   List  - Show which various items are in the store.
   Buy   - Buy an item.
   Value - The shopkeeper will (free of charge) tell how much he will
-	  pay for your item.
+          pay for your item.
   Sell  - Sell an item.
 ~
 S
@@ -2579,7 +2595,7 @@ The note reads:
   List  - Show which various items are in the store.
   Buy   - Buy an item.
   Value - The shopkeeper will (free of charge) tell how much he will
-	  pay for your item.
+          pay for your item.
   Sell  - Sell an item.
 ~
 S
@@ -2808,8 +2824,8 @@ You can use these commands for trading:
   buy <item>       To buy something (provided that the shop has it in store).
   list             Gives you a listing of the shop's inventory.
 
-	WE DON'T GIVE CREDIT; WE DON'T EXPECT TO RECEIVE CREDIT!
-			     NO HAGGLING
+        WE DON'T GIVE CREDIT; WE DON'T EXPECT TO RECEIVE CREDIT!
+                             NO HAGGLING
 ~
 S
 #3021
@@ -3131,9 +3147,9 @@ sign~
 The golden letters say :-
 
     Use 'list' to see what is in store,
-	'buy <item>' to buy an item,
-	'sell <item>' to sell an item and
-	'value <item>' to make the jeweller evaluate an item.
+        'buy <item>' to buy an item,
+        'sell <item>' to sell an item and
+        'value <item>' to make the jeweller evaluate an item.
 ~
 S
 #3035
@@ -3169,9 +3185,9 @@ sign~
 The wooden sign says :-
 
     Use 'list' to see what is in store,
-	'buy <item>' to buy an item,
-	'sell <item>' to sell an item and
-	'value <item>' to make the leather worker evaluate an item.
+        'buy <item>' to buy an item,
+        'sell <item>' to sell an item and
+        'value <item>' to make the leather worker evaluate an item.
 ~
 S
 #3040
@@ -3997,7 +4013,7 @@ E
 building door sign~
 The sign on the door says:-
 
-		 Cityguard Head Quarters
+                 Cityguard Head Quarters
 ~
 S
 #3112
@@ -4343,10 +4359,10 @@ E
 sign~
 The sign says :-
 
-			  Graveyard of Midgaard
+                          Graveyard of Midgaard
 
     Many brave adventurers have found their final resting place here.
-	  Please show respect and do not desecrate their tombs.
+          Please show respect and do not desecrate their tombs.
 ~
 S
 #3130
@@ -4617,7 +4633,7 @@ Free instructions provided by the waiter:
 
    Buy  - Buy something (drinkable) from the waiter.
    List - The waiter will show you all the different drinks and
-	  specialties, and tell the price of each.
+          specialties, and tell the price of each.
 ~
 E
 painting paintings picture pictures uri geller karnak~
@@ -4892,7 +4908,7 @@ There is a bar there.
 S
 #3208
 The Weapon Donation Room.~
-Scattered around the room, lie various weapons. A perfect place for finding a
+Scattered around the room lie various weapons. A perfect place for finding a
 backup weapon, or if you have lost yours.
 ~
 0 8|1024 0
@@ -4913,7 +4929,7 @@ D3
 S
 #3210
 The Magical donation room.~
-Scaning around, you see alot of magical items on the floor, perhaps some could
+Scanning around, you see a lot of magical items on the floor; perhaps some could
 be useful.
 ~
 0 8|1024 0
@@ -5036,11 +5052,11 @@ O 1 3010 1 3054                       Donation pit
 M 1 3000 1 3033      The Wizard Shop Keeper
 G 1 3040 500                                   Give identify scroll.
 G 1 3041 500                                   Give potion of see invisible.
-G 1 3389 500				Potion of breathe water
-G 1 3384 500				Give fly potion
-G 1 3385 500				Give auction ticket
-G 1 3043 500				Give parchment
-G 1 3044 500				Give empty vial
+G 1 3389 500                            Potion of breathe water
+G 1 3384 500                            Give fly potion
+G 1 3385 500                            Give auction ticket
+G 1 3043 500                            Give parchment
+G 1 3044 500                            Give empty vial
 *
 M 1 3003 1 3011      The weaponsmith
 E 1 3022 100 16                            wields a longsword
@@ -5064,7 +5080,7 @@ E 1 3022 900 16                            wields a longsword
 G 1 3030 900
 G 1 3031 900
 G 1 3138 999
-G 1 3385 500				Give auction ticket
+G 1 3385 500                            Give auction ticket
 *
 M 1 3001 1 3009      The baker
 E 1 3022 100 16                            wields a longsword
@@ -5139,7 +5155,7 @@ M 1 3050 1 3120      Dave the Dealer
 G 1 3352 100                               standard issue mace
 G 1 1113 100                               bardiche from shire.are
 G 1 1521 100                               large club from gnome.are
-G 1 38 100				   brass lockpick from limbo.are
+G 1 38 100                                 brass lockpick from limbo.are
 *
 M 1 3060 12 3004     Cityguard 1
 E 1 3365 99 0                                   banner
@@ -5355,9 +5371,9 @@ G 1 3004 100
 *
 M 1 3155 1 3218                 the guildmaster to Practice Yard.( brawler)
 *
-M 1 3157 1 3219	shapeshifter guard
+M 1 3157 1 3219 shapeshifter guard
 *
-M 1 3158 1 3221	shapeshifter teacher
+M 1 3158 1 3221 shapeshifter teacher
 *
 M 1 3159 1 3048 ranger teacher to Lusty Ogre tavern
 *

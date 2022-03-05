@@ -1,4 +1,4 @@
-#AREA	 Caw~     Kerofk~
+#AREA    Caw~     Kerofk~
 -2 -2 0 100
 
 #AREA_SPECIAL
@@ -519,7 +519,7 @@ The gateguard is here, guarding the gate.
 ~
 The guard guard looks at you and enunciates very clearly,
 'Guard guard guard guard guard guard guard guard guard.'
-	(looks like he got the right job!)
+        (looks like he got the right job!)
 ~
 2 0 400 S
 33 6 10 3d6+180 2d8+2
@@ -757,11 +757,11 @@ later...
 0 0
 8 8 1
 #30255
-brawler man large pugalist~
-the Pugalist~
+brawler man large pugilist~
+the Pugilist~
 A large man shadow boxes here.
 ~
-This pugalist has a true love of unarmed fighting. His combo of
+This pugilist has a true love of unarmed fighting. His combo of
 punches astounds you as you watch his shadow dance. He may
 be able to teach you some of his ways..
 ~
@@ -2586,11 +2586,11 @@ Organized Madness.  There are people going every which way here, up
 across, over, under, through!  Deliveries, messages, visits,
 appointments, WHEW!  You're suddenly glad you don't work here!
 
-	   There's a directory sign:
-		Up-Mayor Kell
-		Down-Jails
-		North-Courtroom
-		West-Council Chambers
+           There's a directory sign:
+                Up-Mayor Kell
+                Down-Jails
+                North-Courtroom
+                West-Council Chambers
 ~
 0 8 0
 D0
@@ -2698,7 +2698,7 @@ door~
 E
 table~
 You notice a small engraving on one side:
-		'Amanda was here.'
+                'Amanda was here.'
 ~
 S
 #30261
@@ -2789,11 +2789,11 @@ Uh-Oh!~
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA(breathe)AAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHH!!!!
-			THUD! CRACK!  KerPLOOMP!
+                        THUD! CRACK!  KerPLOOMP!
 
-   	   (that wasn't a good idea, but now you know that, eh?)
+           (that wasn't a good idea, but now you know that, eh?)
 
-			  YOU ARE DEAD!  R.I.P.
+                          YOU ARE DEAD!  R.I.P.
 ~
 0 2 0
 D0
@@ -2952,7 +2952,7 @@ gave them to Builder_5, smiled, and said,
 these files into a version more suitable for a public release.  This
 is what you have now.
    Both of us hope you enjoy this area, over a year in the making...
-	Amanda Eterniale			Builder_5
+        Amanda Eterniale                        Builder_5
 ~
 0 4|8 1
 S
@@ -3855,7 +3855,7 @@ S
 #30328
 Passageway~
 There is a door to your north, with a plaque that says,
-		   'The Trial of Death!'
+                   'The Trial of Death!'
 
    Uh-oh.  You wonder if you've a scroll of recall...
 ~
@@ -4191,7 +4191,7 @@ D0
 D3
 ~
 ~
-0 0 18441
+0 0 18411
 S
 #30347
 Fleecem and Son~
@@ -4297,7 +4297,7 @@ D2
 0 0 30220
 S
 #30353
-House of Pugalism~
+House of Pugilism~
 Upon entering the house you notice it is one big training yard. Heavy
 weights line the walls, and a roped of section in the middle of the room
 forms what look like a ring for fighting. The ai is rich with the scent of
@@ -4326,187 +4326,187 @@ S
 
 
 #RESETS
-O 1 30247 2 30354		/*well*/
-O 1 30247 2 30354		/*well*/
-M 1 30200 1 30200		/*Mouserider*/
-E 1 30200 10 9		/*white glove*/
-M 1 30201 1 30203		/*Sentinel Beast*/
-M 1 30202 1 30251		/*Leonna*/
-E 1 30230 20 5		/*magic jerkin*/
-E 1 30227 20 16		/*flaming sword*/
-E 1 30223 1 17		/*guild key*/
-O 1 30229 10 30252	/*chimaera cloak*/
-O 1 30228 3 30252		/*dreamblade*/
-M 1 30203 1 30247	/*Bookstore Owner*/
-G 1 30202 1000		/*Dragon Book*/
-G 1 30208 1000		/*manual of protection*/
-G 1 30209 1000		/*travel brochure*/
-G 1 3042 1000		/*standard scroll of recall*/
-G 1 3040 1000		/*standard scroll of identify*/
-M 1 30204 1 30248		/*Seobagn*/
-M 1 30205 1 30246		/*Bartender*/
-G 1 30248 1000		/*bottle*/
-G 1 30249 1000		/*carafe*/
-G 1 30250 1000		/*shotglass*/
-M 1 30254 1 30265		/*Bartender*/
-G 1 30248 1000		/*bottle*/
-G 1 30249 1000		/*carafe*/
-G 1 30250 1000		/*shotglass*/
-M 1 30206 2 30265		/*Barmaid*/
-M 1 30206 2 30246		/*Barmaid*/
-M 1 30207 2 30246		/*Drunk*/
-M 1 30207 2 30265		/*Drunk*/
-M 1 30208 2 30207		/*lucky gambler*/
-M 1 30208 2 30241		/*lucky gambler*/
-M 1 30209 2 30207		/*dealer*/
-M 1 30209 2 30241		/*dealer*/
-M 1 30210 1 30242		/*Benzaldehyde*/
-E 1 30237 20 16		/*axe*/
-M 1 30211 1 30243		/*Ginger*/
-G 1 30251 1 1000	/*flamberge*/
-G 1 30252 1 1000	/*nildaeth*/
-G 1 30214 100		/*nightcrawlers*/
-G 1 30217 100		/*fly lure*/
-G 1 30243 1000		/*breast plate*/
-G 1 30244 1000		/*round cap*/
-G 1 30245 1000		/*chain leggings*/
-M 1 30212 4 30207		/*unlucky gambler*/
-M 1 30212 4 30207		/*unlucky gambler*/
-M 1 30212 4 30241		/*unlucky gambler*/
-M 1 30212 4 30241		/*unlucky gambler*/
-M 1 30213 2 30265		/*citizen*/
-M 1 30213 2 30265		/*citizen*/
-M 1 30214 1 30264		/*receptionist*/
-M 1 30215 1 30254		/*herbalist*/
-G 1 30218 1000		/*dusk of basil*/
-G 1 30219 1000		/*fern seed*/
-G 1 30220 1000		/*clump of hemlock*/
-G 1 30221 1000		/*betony leaf*/
-G 1 30222 1000		/*elder berry crown*/
-M 1 30216 2 30258		/*lawyer*/
-M 1 30216 2 30258		/*lawyer*/
-M 1 30217 1 30256		/*secretary*/
-M 1 30218 1 30257		/*mayor*/
-M 1 30219 2 30259		/*council guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30219 2 30259		/*council guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30220 7 30260		/*council members*/
-M 1 30220 7 30260		/*council members*/
-M 1 30220 7 30260		/*council members*/
-M 1 30220 7 30260		/*council members*/
-M 1 30220 7 30260		/*council members*/
-M 1 30220 7 30260		/*council members*/
-M 1 30220 7 30260		/*council members*/
-M 1 30221 1 30261		/*jailer*/
-E 1 3022 1000 16	/*standard long sword*/
-G 1 30226 1		/*key*/
-M 1 30222 1 30262		/*prisoner*/
-M 1 30223 2 30244		/*innguard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30223 2 30244		/*innguard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30224 1 30239		/*Jenk*/
-G 1 30211 100		/*arbalest*/
-G 1 30212 100		/*target armor*/
-G 1 30213 100		/*quick sheathe*/
-G 1 30210 3		/*bird perch*/
-M 1 30225 1 30240		/*Black Marketeer*/
-E 1 30231 10 17		/*spacewarp wand*/
-M 1 30226 2 30269		/*priest*/
-M 1 30226 2 30269		/*priest*/
-M 1 30227 1 30270		/*high priest*/
-M 1 30228 1 30271		/*seargeant*/
-M 1 30229 1 30272		/*captain*/
-E 1 30204 20 16		/*epee*/
-M 1 30230 1 30268		/*beggar (key) */
-G 1 30224 1		/*blank key*/
-M 1 30231 4 30202		/*citizen in line*/
-M 1 30231 4 30202		/*citizen in line*/
-M 1 30231 4 30202		/*citizen in line*/
-M 1 30231 4 30202		/*citizen in line*/
-M 1 30232 3 30250		/*citizens (male) */
-M 1 30232 3 30250		/*citizens (male) */
-M 1 30232 3 30250		/*citizens (male) */
-M 1 30233 6 30268		/*militia guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30233 6 30268		/*militia guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30233 6 30268		/*militia guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30233 6 30268		/*militia guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30233 6 30268		/*militia guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30233 6 30268		/*militia guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30234 1 30268		/*Kervin*/
-E 1 30206 20 16		/*War Ribbon*/
-E 1 30239 10 5		/*living armor*/
-M 1 30235 4 30276		/*gate guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30235 4 30276		/*gate guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30235 4 30277		/*gate guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30235 4 30277		/*gate guard*/
-E 1 3022 1000 16	/*standard long sword*/
-M 1 30236 1 30304		/*bright light*/
-M 1 30237 2 30307		/*guardian wisp*/
-M 1 30237 2 30307		/*guardian wisp*/
-M 1 30238 1 30331		/*orb*/
-E 1 30201 5 17		/*Crystal Shard*/
-O 1 30246 1 30200		/*chest*/
-M 1 30239 1 30332		/*liche*/
-E 1 30203 5 12		/*liche's robes*/
-P 1 30225 2 30246		/*odd scroll*/
-O 1 30215 5 30333		/*amulet*/
-O 1 30216 5 30333		/*eagle pendant*/
-M 1 30240 2 30332		/*storm demon*/
-M 1 30240 2 30332		/*storm demon*/
-M 1 30241 1 30299		/*Tiersten*/
-E 1 30235 20 16		/*flail*/
-O 1 30236 20 30299	/*painting*/
-M 1 30242 1 30299		/*edimmu*/
-M 1 30243 1 30284		/*Sosivia*/
-E 1 30238 20 3		/*talisman of hope*/
-M 1 30244 1 30291		/*Celia*/
-E 1 30233 15 3		/*amulet of protection*/
-E 1 30234 15 17		/*staff of memory*/
-M 1 30245 1 30288		/*Talbot*/
-E 1 30232 100 16		/*elite sword*/
-M 1 30246 1 30288		/*Korino*/
-E 1 30232 100 16		/*elite sword*/
-M 1 30247 1 30347		/*Fleecem*/
-G 1 30253 1000			/*High Quarter Cloak*/
-G 1 30254 1000			/*High Quarter Shield*/
-G 1 30255 1000			/*Cloak of Alvesayth*/
-M 1 30248 1 30350		/*gravedigger*/
-M 1 30249 3 30250		/*citizen (female)*/
-M 1 30249 3 30250		/*citizen (female)*/
-M 1 30249 3 30250		/*citizen (female)*/
-M 1 30250 2 30316		/*hellhounds*/
-M 1 30250 2 30316		/*hellhounds*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30251 10 30319	/*goblins*/
-M 1 30252 1 30352		/*farmer*/
-G 1 30205 1000		/*powwee*/
-G 1 30207 1000		/*zucchini*/
-G 1 30240 1000		/*apple*/
-G 1 30241 1000		/*potato*/
-G 1 30242 1000		/*onion*/
-M 1 30253 1 30245		/*receptionist*/
-M 1 30255 1 30353	/* brawler teacher*/
-M 1 30256 1 30297	/* Psi teacher */
-M 1 30257 1 30250	/* sft teacher - wanders */
+O 1 30247 2 30354               /*well*/
+O 1 30247 2 30354               /*well*/
+M 1 30200 1 30200               /*Mouserider*/
+E 1 30200 10 9          /*white glove*/
+M 1 30201 1 30203               /*Sentinel Beast*/
+M 1 30202 1 30251               /*Leonna*/
+E 1 30230 20 5          /*magic jerkin*/
+E 1 30227 20 16         /*flaming sword*/
+E 1 30223 1 17          /*guild key*/
+O 1 30229 10 30252      /*chimaera cloak*/
+O 1 30228 3 30252               /*dreamblade*/
+M 1 30203 1 30247       /*Bookstore Owner*/
+G 1 30202 1000          /*Dragon Book*/
+G 1 30208 1000          /*manual of protection*/
+G 1 30209 1000          /*travel brochure*/
+G 1 3042 1000           /*standard scroll of recall*/
+G 1 3040 1000           /*standard scroll of identify*/
+M 1 30204 1 30248               /*Seobagn*/
+M 1 30205 1 30246               /*Bartender*/
+G 1 30248 1000          /*bottle*/
+G 1 30249 1000          /*carafe*/
+G 1 30250 1000          /*shotglass*/
+M 1 30254 1 30265               /*Bartender*/
+G 1 30248 1000          /*bottle*/
+G 1 30249 1000          /*carafe*/
+G 1 30250 1000          /*shotglass*/
+M 1 30206 2 30265               /*Barmaid*/
+M 1 30206 2 30246               /*Barmaid*/
+M 1 30207 2 30246               /*Drunk*/
+M 1 30207 2 30265               /*Drunk*/
+M 1 30208 2 30207               /*lucky gambler*/
+M 1 30208 2 30241               /*lucky gambler*/
+M 1 30209 2 30207               /*dealer*/
+M 1 30209 2 30241               /*dealer*/
+M 1 30210 1 30242               /*Benzaldehyde*/
+E 1 30237 20 16         /*axe*/
+M 1 30211 1 30243               /*Ginger*/
+G 1 30251 1 1000        /*flamberge*/
+G 1 30252 1 1000        /*nildaeth*/
+G 1 30214 100           /*nightcrawlers*/
+G 1 30217 100           /*fly lure*/
+G 1 30243 1000          /*breast plate*/
+G 1 30244 1000          /*round cap*/
+G 1 30245 1000          /*chain leggings*/
+M 1 30212 4 30207               /*unlucky gambler*/
+M 1 30212 4 30207               /*unlucky gambler*/
+M 1 30212 4 30241               /*unlucky gambler*/
+M 1 30212 4 30241               /*unlucky gambler*/
+M 1 30213 2 30265               /*citizen*/
+M 1 30213 2 30265               /*citizen*/
+M 1 30214 1 30264               /*receptionist*/
+M 1 30215 1 30254               /*herbalist*/
+G 1 30218 1000          /*dusk of basil*/
+G 1 30219 1000          /*fern seed*/
+G 1 30220 1000          /*clump of hemlock*/
+G 1 30221 1000          /*betony leaf*/
+G 1 30222 1000          /*elder berry crown*/
+M 1 30216 2 30258               /*lawyer*/
+M 1 30216 2 30258               /*lawyer*/
+M 1 30217 1 30256               /*secretary*/
+M 1 30218 1 30257               /*mayor*/
+M 1 30219 2 30259               /*council guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30219 2 30259               /*council guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30220 7 30260               /*council members*/
+M 1 30220 7 30260               /*council members*/
+M 1 30220 7 30260               /*council members*/
+M 1 30220 7 30260               /*council members*/
+M 1 30220 7 30260               /*council members*/
+M 1 30220 7 30260               /*council members*/
+M 1 30220 7 30260               /*council members*/
+M 1 30221 1 30261               /*jailer*/
+E 1 3022 1000 16        /*standard long sword*/
+G 1 30226 1             /*key*/
+M 1 30222 1 30262               /*prisoner*/
+M 1 30223 2 30244               /*innguard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30223 2 30244               /*innguard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30224 1 30239               /*Jenk*/
+G 1 30211 100           /*arbalest*/
+G 1 30212 100           /*target armor*/
+G 1 30213 100           /*quick sheathe*/
+G 1 30210 3             /*bird perch*/
+M 1 30225 1 30240               /*Black Marketeer*/
+E 1 30231 10 17         /*spacewarp wand*/
+M 1 30226 2 30269               /*priest*/
+M 1 30226 2 30269               /*priest*/
+M 1 30227 1 30270               /*high priest*/
+M 1 30228 1 30271               /*seargeant*/
+M 1 30229 1 30272               /*captain*/
+E 1 30204 20 16         /*epee*/
+M 1 30230 1 30268               /*beggar (key) */
+G 1 30224 1             /*blank key*/
+M 1 30231 4 30202               /*citizen in line*/
+M 1 30231 4 30202               /*citizen in line*/
+M 1 30231 4 30202               /*citizen in line*/
+M 1 30231 4 30202               /*citizen in line*/
+M 1 30232 3 30250               /*citizens (male) */
+M 1 30232 3 30250               /*citizens (male) */
+M 1 30232 3 30250               /*citizens (male) */
+M 1 30233 6 30268               /*militia guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30233 6 30268               /*militia guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30233 6 30268               /*militia guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30233 6 30268               /*militia guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30233 6 30268               /*militia guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30233 6 30268               /*militia guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30234 1 30268               /*Kervin*/
+E 1 30206 20 16         /*War Ribbon*/
+E 1 30239 10 5          /*living armor*/
+M 1 30235 4 30276               /*gate guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30235 4 30276               /*gate guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30235 4 30277               /*gate guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30235 4 30277               /*gate guard*/
+E 1 3022 1000 16        /*standard long sword*/
+M 1 30236 1 30304               /*bright light*/
+M 1 30237 2 30307               /*guardian wisp*/
+M 1 30237 2 30307               /*guardian wisp*/
+M 1 30238 1 30331               /*orb*/
+E 1 30201 5 17          /*Crystal Shard*/
+O 1 30246 1 30200               /*chest*/
+M 1 30239 1 30332               /*liche*/
+E 1 30203 5 12          /*liche's robes*/
+P 1 30225 2 30246               /*odd scroll*/
+O 1 30215 5 30333               /*amulet*/
+O 1 30216 5 30333               /*eagle pendant*/
+M 1 30240 2 30332               /*storm demon*/
+M 1 30240 2 30332               /*storm demon*/
+M 1 30241 1 30299               /*Tiersten*/
+E 1 30235 20 16         /*flail*/
+O 1 30236 20 30299      /*painting*/
+M 1 30242 1 30299               /*edimmu*/
+M 1 30243 1 30284               /*Sosivia*/
+E 1 30238 20 3          /*talisman of hope*/
+M 1 30244 1 30291               /*Celia*/
+E 1 30233 15 3          /*amulet of protection*/
+E 1 30234 15 17         /*staff of memory*/
+M 1 30245 1 30288               /*Talbot*/
+E 1 30232 100 16                /*elite sword*/
+M 1 30246 1 30288               /*Korino*/
+E 1 30232 100 16                /*elite sword*/
+M 1 30247 1 30347               /*Fleecem*/
+G 1 30253 1000                  /*High Quarter Cloak*/
+G 1 30254 1000                  /*High Quarter Shield*/
+G 1 30255 1000                  /*Cloak of Alvesayth*/
+M 1 30248 1 30350               /*gravedigger*/
+M 1 30249 3 30250               /*citizen (female)*/
+M 1 30249 3 30250               /*citizen (female)*/
+M 1 30249 3 30250               /*citizen (female)*/
+M 1 30250 2 30316               /*hellhounds*/
+M 1 30250 2 30316               /*hellhounds*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30251 10 30319      /*goblins*/
+M 1 30252 1 30352               /*farmer*/
+G 1 30205 1000          /*powwee*/
+G 1 30207 1000          /*zucchini*/
+G 1 30240 1000          /*apple*/
+G 1 30241 1000          /*potato*/
+G 1 30242 1000          /*onion*/
+M 1 30253 1 30245               /*receptionist*/
+M 1 30255 1 30353       /* brawler teacher*/
+M 1 30256 1 30297       /* Psi teacher */
+M 1 30257 1 30250       /* sft teacher - wanders */
 D 1 30202 2 2
 D 1 30203 0 2
 D 1 30239 1 1
@@ -4554,13 +4554,16 @@ S
 
 
 #SHOPS
-30203 2 3 2 0 0 150 50 0 23			(mobile is from another zone)
-30215 10 0 0 0 0 150 50 0 23			(mobile is from another zone)
-30211 5 9 0 0 0 150 100 0 23			(mobile is from another zone)
+30203 2 3 2 0 0 150 50 0 23                     (mobile is from another zone)
+30215 10 0 0 0 0 150 50 0 23                    (mobile is from another zone)
+30211 5 9 0 0 0 150 100 0 23                    (mobile is from another zone)
 30247 19 0 0 0 0 150 50 0 23                    (mobile is from another zone)
-30252 19 0 0 0 0 150 50 0 23			(mobile is from another zone)
-30224 9 0 0 0 0 150 50 0 23			(mobile is from another zone)
+30252 19 0 0 0 0 150 50 0 23                    (mobile is from another zone)
+30224 9 0 0 0 0 150 50 0 23                     (mobile is from another zone)
 0
 
+#SPECIALS
+M  30240        spec_demon      storm demon
+S
 
 #$

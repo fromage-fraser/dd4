@@ -1,7 +1,7 @@
 >greet_prog 80~
 if ispc($n)
-	beg $n
-	say Spare some gold?
+        beg $n
+        say Spare some gold?
 endif
 ~
 >bribe_prog 10000~
@@ -21,16 +21,16 @@ thank $n
 >fight_prog 20~
 say Help!  Please somebody help me!
 if rand(50)
-	say Ouch!
+        say Ouch!
 else
-	say I'm bleeding.
+        say I'm bleeding.
 endif
 ~
 >death_prog 50~
 if rand(50)
-	mpechoaround $i $I says 'Now I go to a better place.'
+        mpechoaround $i $I says 'Now I go to a better place.'
 else
-	mpechoaround $i $I says 'Forgive me God for I have sinned...'
+        mpechoaround $i $I says 'Forgive me God for I have sinned...'
 endif
 ~
 |

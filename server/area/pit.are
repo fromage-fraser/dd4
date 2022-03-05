@@ -8,9 +8,9 @@ $
 
 #HELPS
 40 sentinel pit~
-"Now facing one another, the stand off eats at time.
-And all at once the silence falls as the bell ceases it's chime.
-Upon the sign, the challengers, with shreiks and cries, rush forth.
+"Now facing one another, the stand-off eats at time.
+And all at once the silence falls as the bell ceases its chime.
+Upon the sign, the challengers, with shrieks and cries, rush forth.
 The knives fly out like bullets, upon their deadly course.
 Screams of pain and agony rend the silent air.
 Amidst the dying bodies, blood runs everywhere.
@@ -55,10 +55,10 @@ that's what she wants you to think coz she's gonna kick your arse!
 0 0
 8 8 2
 >greet_prog 100~
-	if ispc($n)
+   if ispc($n)
    smile $n
    emote licks her lips
-   mpat 13703 mpecho Turbo reports: $n has arrived and has a couple of ticks to live!
+   mpat 13703 mpecho Turbo reports: $n has arrived and has only minutes to live!
    mpkill $n
 endif
 ~
@@ -80,7 +80,7 @@ Poor bastard.
 if ispc($n)
    say I hate this filthy morass!
    grimace
-   mpat 13703 mpecho The Defnder of the Faith reports:  $n has arrived and is soon to be dead.
+   mpat 13703 mpecho The Defender of the Faith reports:  $n has arrived and is soon to be dead.
 endif
 ~
 |
@@ -117,7 +117,7 @@ Madboy says 'Hi'
 8 8 1
 >greet_prog 100~
 if ispc($n)
-    mpat 13703 mpecho The Sentinal reports:  $n has arrived
+    mpat 13703 mpecho The Sentinel reports:  $n has arrived
     mpkill $n
     endif
 ~
@@ -169,7 +169,7 @@ Osarr looks back at you and grins.  Want to bet on the action?
 #13709
 Jakyra~
 a Jakyra~
-A bright orange beast stands heer stands here.
+A bright orange beast stands here.
 ~
 Oh, dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
 ~
@@ -188,9 +188,9 @@ endif
 #13710
 biledemon~
 a Biledemon~
-A huge pile of pickish blubber rears as you enter the room.
+A huge pile of pinkish blubber rears as you enter the room.
 ~
-Attatched to the site of this demons head are too massive spiked mases.
+Attached to the side of this demon's head are two massive spiked masses.
 ~
 4|32|64|4096 8|32|512|8192 -650 S
 55 0 0 0d0+0 0d0+0
@@ -198,7 +198,7 @@ Attatched to the site of this demons head are too massive spiked mases.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	burp
+   burp
    muha
    mpat 13703 mpecho a Bile demon bellows $n is about to start bleeding.
    mpkill $n
@@ -206,9 +206,9 @@ endif
 ~
 |
 #13711
-mastadon~
-the mastadon~
-A great big hary beast snorts and stamps as you enter the room.
+mastodon~
+the mastodon~
+A great big hairy beast snorts and stamps as you enter the room.
 ~
 A cross between a rhino and an elephant with great amounts of hair this beast is gonna rip you
 apart.
@@ -220,7 +220,7 @@ apart.
 >greet_prog 100~
 if ispc($n)
     emote bellows and stampedes straight toward YOU!!!
-   mpat 13703 mpecho  a thundering blast deafens you as the Mastadon attacks $n.
+   mpat 13703 mpecho A thundering blast deafens you as the Mastodon attacks $n.
    mpkill $n
 endif
 ~
@@ -409,7 +409,7 @@ A
 A
 24 -7
 #13713
-knife disintergrate~
+knife disintegrate~
 a glowing knife~
 A glowing knife hovers here.~
 ~
@@ -821,7 +821,7 @@ E
 sign~
 All spectators please move through the southern door to the spectator's lounge.
 All challengers please take the stairway down to the changing barracks.  You will
- recieve further instruction there.
+ receive further instruction there.
 Both spectators and challengers please note:
 You are all safe from any of the authorities that would close down this establishment
 or incarcerate any spectator or challenger by a powerful magic-damping field.  This
@@ -865,7 +865,7 @@ E
 sign~
 The gate at the southern end of the room has a self-locking mechanism.  If you pass
 through here you will be sent out into the waiting area before the arena proper.
-Passing through the gate shall be taken as concent to enter the Pit.  We take no liability
+Passing through the gate shall be taken as consent to enter the Pit.  We take no liability
 for any damage caused in any way, shape of form by any being, spell or weapon within the arena.
 
 ENTER AT YOUR OWN RISK.
@@ -891,8 +891,8 @@ S
 The waiting area~
 You hear the click of the gate closing behind you.  You look around and notice
 that you stand in a small waiting area.  Before you, to the south, is a massive
-portcullis leading to the arena.  Looking through the portcullis you see a small landscape withi
-n the pit. Your portcullis opens out onto a real-looking savannah.  In the middle
+portcullis leading to the arena.  Looking through the portcullis you see a small landscape
+within the pit. Your portcullis opens out onto a real-looking savannah.  In the middle
 you espy a small tower.  This, the official tells you, is your goal...to defeat
 the Sentinel and claim the tower.  A rotten wooden sign hangs from the portcullis.
 ~
@@ -958,7 +958,7 @@ D2
 S
 #13709
 Grassy plain - At the moat~
-The moat appears to be filled with hot, bubbling mud.  A digusting stench
+The moat appears to be filled with hot, bubbling mud.  A disgusting stench
 wafts up on the scalding air currents forcing you away from the edge.
 ~
 0 8|1024|8192 2
@@ -1015,7 +1015,7 @@ D3
 S
 #13712
 Grassy plain - At the moat~
-The moat appears to be filled with hot, bubbling mud.  A digusting stench
+The moat appears to be filled with hot, bubbling mud.  A disgusting stench
 wafts up on the scalding air currents forcing you away from the edge.
 ~
 0 8|1024|8192 2
@@ -1036,7 +1036,7 @@ S
 Grassy plains meets the plateau~
 This area appears to be the intervening ground where the savannah meets the
 plateau.  The ground here rises up steeply to the plateau.  The climb looks
-like it will be hard work but the sheer ruggedness of the rockface ensures
+like it will be hard work but the sheer ruggedness of the rock face ensures
 plenty of handholds.
 ~
 0 4|8|1024|8192 4
@@ -1133,7 +1133,7 @@ D3
 S
 #13718
 The Bog - At the wall~
-The bog here appears to be alot muddier and stickier than anywhere else in
+The bog here appears to be a lot muddier and stickier than anywhere else in
 this fetid, smelly swamp.  Above you, the wall has spikes protruding from it
 to prevent escape.  To the west, you see a tower on an island and to
 the south west is a large knotty tree.
@@ -1151,7 +1151,7 @@ S
 #13719
 The Bog - At the moat~
 The mud from the moat overflows here and mixes with the water creating a dirty,
-sticky mire that impedes your progree quite considerably.  To the west, past the
+sticky mire that impedes your progress quite considerably.  To the west, past the
 moat, a tower stands on an island.  To the south of you is a huge, knotty tree
 growing next to a steep, muddy bank.
 ~
@@ -1191,8 +1191,8 @@ D2
 S
 #13721
 Where swamp meets the thick woods~
-A steep, muddy and treacherous-looking bank reaces up to the wooded area above you.
-However, a huge, knotted oak stands here, it's branches reacing over and above the
+A steep, muddy and treacherous-looking bank reaches up to the wooded area above you.
+However, a huge, knotted oak stands here, it's branches reaching over and above the
 top of the bank. The tree looks the better option.
 ~
 0 4|8|1024|8192 4
@@ -1280,7 +1280,7 @@ D1
 S
 #13726
 Rocky plateau - At the moat~
-The plateau stands about fiften to twenty feet above the moat which stands between
+The plateau stands about fifteen to twenty feet above the moat which stands between
 you and the  island with the tower.  To the south you see a slope of scree which
 descends down to a heavily wooded area.
 ~
@@ -1644,11 +1644,11 @@ E 1 13702 100 16
 E 1 13737 100 12
 O 1 13700 100 13705       a desk to Small ticketing room
 O 1 13706 100 13704       a weapon rack to The changing room
-P 1 13701 100 13706       a morningstar to container rack weapon wapons
-P 1 13702 100 13706       a weighted net to container rack weapon wapons
-P 1 13703 100 13706       an axe to container rack weapon wapons
-P 1 13704 100 13706       a spear to container rack weapon wapons
-P 1 13705 100 13706       a sword to container rack weapon wapons
+P 1 13701 100 13706       a morningstar to container rack weapon weapons
+P 1 13702 100 13706       a weighted net to container rack weapon weapons
+P 1 13703 100 13706       an axe to container rack weapon weapons
+P 1 13704 100 13706       a spear to container rack weapon weapons
+P 1 13705 100 13706       a sword to container rack weapon weapons
 *
 M 1 13705 1 13704                 the arms dealer to The changing room
 *
@@ -1705,11 +1705,11 @@ E 1 13736 100 16
 *
 O 1 13738 1 13747              Daeron's Lantern to The very top!
 *
-M 1 13710 1 13718		biledemon
+M 1 13710 1 13718       biledemon
 E 1 13710 100 16
-M 1 13709 1 13726		jakyra
+M 1 13709 1 13726       jakyra
 E 1 13709 100 16
-M 1 13711 1 13733		mastadon
+M 1 13711 1 13733       mastadon
 E 1 13708 100 16
 *
 M 1 13706 1 13703                 Valan the rich to The spectators area
@@ -1734,12 +1734,13 @@ S
 
 
 #SPECIALS
-M  13700 spec_breath_acid                   the Pit Official
-M  13701 spec_poison                    Turbo
-M  13702 spec_executioner                       The Defender of the Faith
-M  13703 spec_cast_psionicist                   Painkiller
-M  13704 spec_cast_psionicist                 The Sentinel
-M  13705 spec_breath_acid                       the arms dealer
+M  13700 spec_breath_acid           the Pit Official
+M  13701 spec_poison                Turbo
+M  13702 spec_executioner           The Defender of the Faith
+M  13703 spec_cast_psionicist       Painkiller
+M  13704 spec_cast_psionicist       The Sentinel
+M  13705 spec_breath_acid           the arms dealer
+M  13710 spec_demon                 the Biledemon
 S
 
 

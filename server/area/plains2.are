@@ -1,4 +1,4 @@
-#AREA	Prozak~  Plains of the South~
+#AREA   Prozak~  Plains of the South~
 -2 -2 0 100
 
 #MOBILES
@@ -463,13 +463,13 @@ indicates the trapper is willing to reward anyone who does so. Proof of the
 kill will be required before any reward is given. The list is as follows:
 {W
                 The Morque               Chelsea the Succubus
-		Falcor                   Shiloh the Siren
-		Roldin                   A Bone Golem
-		A Pigmy                  Heather the Banshee
-		A Chupacabra             A Boggart
-		Jeremy the Incubus       A Cockatrice
-		The Erinyes              A Hrulgin
-{R				Cretin{x
+                Falcor                   Shiloh the Siren
+                Roldin                   A Bone Golem
+                A Pigmy                  Heather the Banshee
+                A Chupacabra             A Boggart
+                Jeremy the Incubus       A Cockatrice
+                The Erinyes              A Hrulgin
+{R                              Cretin{x
 ~
 
 #18405
@@ -1684,43 +1684,43 @@ S
 
 #RESETS
 *
-O 1 18401 100 18470			A gleaming pile of coins to Barrow Mound
+O 1 18401 100 18470                     A gleaming pile of coins to Barrow Mound
 *
-M 1 18402 4 18456			A crazed Rabbit to Grassy Plain
+M 1 18402 4 18456                       A crazed Rabbit to Grassy Plain
 *
-M 1 18403 4 18442			A crazed Rabbit to Grassy Plain
+M 1 18403 4 18442                       A crazed Rabbit to Grassy Plain
 *
-M 1 18403 4 18444			A crazed Rabbit to Grassy Plain
+M 1 18403 4 18444                       A crazed Rabbit to Grassy Plain
 *
-M 1 18403 4 18410			A crazed Rabbit to Grassy Plain
+M 1 18403 4 18410                       A crazed Rabbit to Grassy Plain
 *
-M 1 18403 4 18408			A crazed Rabbit to Grassy Plain
+M 1 18403 4 18408                       A crazed Rabbit to Grassy Plain
 *
-M 1 18402 4 18458			A crazed Rabbit to Grassy Plain
+M 1 18402 4 18458                       A crazed Rabbit to Grassy Plain
 *
-M 1 18402 4 18454			A crazed Rabbit to Grassy Plain
+M 1 18402 4 18454                       A crazed Rabbit to Grassy Plain
 *
-M 1 18405 4 18428			The carnivorous grass to Grassy Plain
+M 1 18405 4 18428                       The carnivorous grass to Grassy Plain
 *
-M 1 18405 1 18404			The carnivorous grass to Grassy Plain
+M 1 18405 1 18404                       The carnivorous grass to Grassy Plain
 *
-M 1 18406 2 18422			The carnivorous grass to Grassy Plain
+M 1 18406 2 18422                       The carnivorous grass to Grassy Plain
 *
-M 1 18400 2 18420			The rolling rock to Grassy Plain
+M 1 18400 2 18420                       The rolling rock to Grassy Plain
 E 1 18400 100 16
 *
-M 1 18401 4 18412			The rolling rock to Grassy Plain
+M 1 18401 4 18412                       The rolling rock to Grassy Plain
 E 1 18400 100 16
 *
-M 1 18401 4 18408			The rolling rock to Grassy Plain
+M 1 18401 4 18408                       The rolling rock to Grassy Plain
 E 1 18400 100 16
 *
-M 1 18401 4 18417			The rolling rock to Grassy Plain
+M 1 18401 4 18417                       The rolling rock to Grassy Plain
 E 1 18400 100 16
 *
-M 1 18401 4 18467			The rolling rock to Grassy Plain
+M 1 18401 4 18467                       The rolling rock to Grassy Plain
 *
-M 1 18404 1 18470			The dead King to Barrow Mound
+M 1 18404 1 18470                       The dead King to Barrow Mound
 E 1 18402 100 17
 *
 M 1 18407 1 18400                       Ben the Trapper to Grassy Plains
@@ -1729,9 +1729,9 @@ S
 
 
 #SPECIALS
-M  18404 spec_cast_psionicist			The dead King
-M  18405 spec_fido			The carnivorous grass
-M  18406 spec_fido			The carnivorous grass
+M  18404 spec_cast_psionicist           The dead King
+M  18405 spec_fido                      The carnivorous grass
+M  18406 spec_fido                      The carnivorous grass
 S
 
 

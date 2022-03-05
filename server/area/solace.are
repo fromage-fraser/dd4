@@ -1,4 +1,4 @@
-#AREA	Strahd~  Town Of Solace~
+#AREA   Strahd~  Town Of Solace~
 -2 -2 0 100
 
 #MOBILES
@@ -1490,7 +1490,7 @@ A pile of cloth is on the ground here.~
 #10283
 travellers dagger~
 travellers dagger~
-A small dagger is here. It looks like the kind alot of travellers carry.~
+A small dagger is here. It looks like the kind a lot of travellers carry.~
 ~
 5 0 1|8192
 0~ 1~ 4~ 11~
@@ -2418,7 +2418,7 @@ S
 End of the Main Road~
 The main road of Solace stops here. Other smaller roadways lead off
 in various directions.
-To the west is the marketplace, where farmers go to sell thier harvests.
+To the west is the marketplace, where farmers go to sell their harvests.
 Farther north you see a large building.
 To the East is the Townguard Administration Building.
 ~
@@ -4496,7 +4496,7 @@ G 1 10277 1                  load scuba snorkle
 G 1 10278 1                  load scuba dive belt
 *
 M 0 10226 1 10241       Croben
-G 1 3370  1		     load belt pouch
+G 1 3370  1                  load belt pouch
 G 1 10280 1                  load cloak of storage
 *
 M 0 10233 5 10279       Mage traveller Common East
@@ -4803,21 +4803,21 @@ S
 
 #SHOPS
 
- 10208	 0  0  0  0  0	 105  15	 0 23	; Matt
- 10209	 0  0  0  0  0	 110 100	 6 17	; The McBaker
- 10210	 0  0  0  0  0	 110 100	 6 17	; Cookie Helper
- 10211	 0  0  0  0  0	 110 100	 0 23	; Marilyn
- 10214	 0  0  0  0  0	 110 100	 0 23	; Ghost of Barkeep
- 10219	 0  0  0  0  0	 110 100	 4 20	; Jhen
- 10220	 0  0  0  0  0	 110 100	 4 20	; Krista
- 10221	 0  0  0  0  0	 125 75	 4 20	; Janni
- 10222	 5  9  19  0  0	 125 75	 4 20	; Nisi
- 10223	 10  0  0  0  0	 125 75	 4 20	; Molin
- 10224	 0  0  0  0  0	 125 75	 4 20	; Rashan
- 10225	 22  0  0  0  0	 125 75	 4 20	; Lexie
- 10226	 15  0  0  0  0	 125 75	 4 20	; Croben
- 10227	 0  0  0  0  0	 105  15	 0 23	; Otik barkeep
- 10227	 0  0  0  0  0	 105  15	 0 23	; Tika Barmaid
+ 10208   0  0  0  0  0   105  15    0 23   ; Matt
+ 10209   0  0  0  0  0   110 100    6 17   ; The McBaker
+ 10210   0  0  0  0  0   110 100    6 17   ; Cookie Helper
+ 10211   0  0  0  0  0   110 100    0 23   ; Marilyn
+ 10214   0  0  0  0  0   110 100    0 23   ; Ghost of Barkeep
+ 10219   0  0  0  0  0   110 100    4 20   ; Jhen
+ 10220   0  0  0  0  0   110 100    4 20   ; Krista
+ 10221   0  0  0  0  0   125 75     4 20   ; Janni
+ 10222   5  9  19  0  0  125 75     4 20   ; Nisi
+ 10223   10  0  0  0  0  125 75     4 20   ; Molin
+ 10224   0  0  0  0  0   125 75     4 20   ; Rashan
+ 10225   22  0  0  0  0  125 75     4 20   ; Lexie
+ 10226   15  0  0  0  0  125 75     4 20   ; Croben
+ 10227   0  0  0  0  0   105  15    0 23   ; Otik barkeep
+ 10227   0  0  0  0  0   105  15    0 23   ; Tika Barmaid
 0
 
 #SPECIALS

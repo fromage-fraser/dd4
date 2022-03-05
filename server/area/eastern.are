@@ -1,4 +1,4 @@
-#AREA	Anon~    Great Eastern Desert~
+#AREA   Anon~    Great Eastern Desert~
 10 20 0 100
 
 
@@ -1335,7 +1335,7 @@ S
 
 
 #RESETS
-R 0 5024 4		 Maze!
+R 0 5024 4       Maze!
 R 0 5025 4
 R 0 5026 4
 R 0 5027 4

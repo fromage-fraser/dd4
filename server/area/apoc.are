@@ -1,4 +1,4 @@
-#AREA	Steihl~  Apocalypse Now~
+#AREA   Steihl~  Apocalypse Now~
 55 100 0 100
 
 #MOBILES
@@ -1435,7 +1435,7 @@ S
 Before the black mist.~
 You have reached a safe spot in your journey.  A thick
 black mist blocks your view north.  The smell of death
-and decay eminates from the mist.  Rest here while you
+and decay emanates from the mist.  Rest here while you
 can, turn back if you will, go forward if you dare.
 Death awaits.
 ~
@@ -1446,9 +1446,9 @@ D0
 0 -1 5642
 S
 #5642
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1475,9 +1475,9 @@ D3
 0 -1 5653
 S
 #5643
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1504,9 +1504,9 @@ D3
 0 -1 5642
 S
 #5644
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1533,9 +1533,9 @@ D3
 0 -1 5643
 S
 #5645
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1562,9 +1562,9 @@ D3
 0 -1 5650
 S
 #5646
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1591,9 +1591,9 @@ D3
 0 -1 5645
 S
 #5647
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1620,9 +1620,9 @@ D3
 0 -1 5646
 S
 #5648
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1649,9 +1649,9 @@ D3
 0 -1 5647
 S
 #5649
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1678,9 +1678,9 @@ D3
 0 -1 5648
 S
 #5650
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1707,9 +1707,9 @@ D3
 0 -1 5649
 S
 #5651
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1736,9 +1736,9 @@ D3
 0 -1 5644
 S
 #5652
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1766,9 +1766,9 @@ D3
 0 -1 5651
 S
 #5653
-The Cemetary of Death.~
+The Cemetery of Death.~
 Graves and mausoleums rise all around the landscape.  The
-names of those who have gone before you are chiseled into
+names of those who have gone before you are chiselled into
 the cold stones.  A chill breeze blows from the east
 causing a shiver to run down your spine.  A strange howl
 can be heard in the distance, and it seems as if Death
@@ -1869,7 +1869,7 @@ M 1 5601 1 5639              War to A room
 E 1 5601 100 5
 E 1 5605 100 16
 *
-M 1 5607 10 5642             the ghost to The Cemetary of Death.
+M 1 5607 10 5642             the ghost to The Cemetery of Death.
 *
 M 1 5607 10 5644             the ghost to A room
 *

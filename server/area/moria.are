@@ -1,4 +1,4 @@
-#AREA	Alfa~    Moria~
+#AREA   Alfa~    Moria~
 5 15 0 100
 
 
@@ -201,7 +201,7 @@ figure just how tender you are.
 0 15000
 8 8 1
 #4102
-guardian snake~
+large green guardian snake~
 the guardian snake~
 A large green snake is guardian for something.
 ~
@@ -247,7 +247,7 @@ He doesn't look friendly at all...  He is no Mr. Rogers!
 0 9000
 8 8 1
 #4107
-kobold~
+kobold green~
 the green kobold~
 A green kobold hobbles along the cave walls puking periodically.
 ~
@@ -335,7 +335,7 @@ He looks quite mean.  Don't mess with him.
 0 20000
 8 8 1
 #4157
-mage~
+mage man small~
 the Mage~
 A small man is here researching magical incantations.
 ~
@@ -347,7 +347,7 @@ angry should you bother his studies.
 0 11000
 8 8 1
 #4158
-snake~
+snake brown~
 the snake~
 A brown snake hisses at you.
 ~
@@ -359,7 +359,7 @@ for dinner.
 4|8|32 8000
 8 8 1
 #4159
-troll~
+troll small~
 the small troll~
 A small troll is here happily dancing.  Trala-la-la.  La-la.
 ~
@@ -771,7 +771,7 @@ small from a distance you now get the feeling that they're closing in on you,
 towering over you, overwhelming you ...  The small path seems to have second
 thoughts about these hills because it starts winding unnecessarily, turning
 several times around itself.  To the south the hills have a lighter hue of
-dark. To the north however, the hills have become nightblack holes in the
+dark. To the north, however, the hills have become night-black holes in the
 distant mountains.
 ~
 40 4 4
@@ -2635,7 +2635,7 @@ M 0 4102 3 4103    A snake
 G 1 4103 10        Slime
 G 1 4104 3         Poisoned slime
 *
-M 0 3005 5 4103		A thief
+M 0 3005 5 4103    A thief
 *
 M 0 4104 3 4124    A orc
 G 1 4104 10        Slime

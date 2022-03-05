@@ -48,7 +48,7 @@ oak serves as her home and feeds her the energy of the forest.
 0 0
 0 0 2
 >rand_prog 10~
-	mpecho Faint laughter floats through the air.
+        mpecho Faint laughter floats through the air.
 ~
 |
 #39003
@@ -206,7 +206,7 @@ Asverna's baby~
 Asverna's baby~
 {rAsverna's{x baby sits here swishing its tail.
 ~
-Looks a lot like Asverna only alot smaller.
+Looks like Asverna, only a lot smaller.
 ~
 2 0 -1000 S
 50 0 0 0d0+0 0d0+0
@@ -218,7 +218,7 @@ Zyklor's baby~
 Zyklor's baby~
 {WZyklor's{x baby stands on its hind legs as it tries to eat the wall.
 ~
-Zyklor minus a few, well alot, of years.
+Zyklor minus a few... well, okay, A LOT of years.
 ~
 2 0 -1000 S
 40 0 0 0d0+0 0d0+0
@@ -967,9 +967,9 @@ S
 
 #39008
 Disconnected~
-{cConnected to host www.dragons-domain.org{w
+{cConnected to host dd4.webredirect.org{w
 
-O---=<  Dragons Domain IV   >=---------------- __----^^^^^^^^^^^------__ ---O
+O---=<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |          .              .         _//^    ^//====......          __--^^^  |
 |    )              -_       _..--+^o`\     ||_   ^^^^^^::::... /^    .     |
 | .              ___-==_     `--=;_`_  \   ||  -_             _/^^-         |
@@ -994,7 +994,6 @@ O---<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
 | Based on the original Merc 2.2 source written by Kahn, Hatchet and Furey. |
 | DD III code by Shade, Gezhp, Owl, Brutus, Jyhad, Tavolir, and Danath.     |
 | DD IV code by Shade, Owl, Gezhp and the rest of the team.                 |
-| DD IV hosted by Minimum Effort Limited see http://www.webhideout.com      |
 O-----< MobCode from Merc 2.2 >-----< Quest Code (c) 1996 Ryan Addams >-----O
 Enter thy Name:
 ~
@@ -2208,9 +2207,9 @@ M 0 39004 1 39004               add a sand worm to A {ydesert{x
 M 0 39005 2 39005               add a green plant to A {GGreenery{x
 M 0 39005 2 39069               add a green plant to Greenery
 M 0 39006 1 39006               add a painted knight to Room of paintings
-E 0 39015 0 16			    equip a painted sword
-E 0 39016 0 11			    equip a painted shield
-E 0 39017 0 5			    equip a painted breastplate
+E 0 39015 0 16                      equip a painted sword
+E 0 39016 0 11                      equip a painted shield
+E 0 39017 0 5                       equip a painted breastplate
 M 0 39007 1 39006               add a painted dragon to Room of paintings
 M 0 39008 1 39009               add a dust dweller to A dusty room
 M 0 39009 1 39012               add a unicorn to Unicorn
@@ -2234,23 +2233,23 @@ M 0 39023 1 39034               add a ranger to {wRanger{x
 E 0 39006 0 21                      equip a red bow (ranged)
 M 0 39024 1 39037               add a baby kraken to The lake continues
 M 0 39025 6 39039               add Hesad's guard to A...hallway??
-E 0 39019 0 16			    equip a painted sword
-E 0 39018 0 11			    equip a painted shield
+E 0 39019 0 16                      equip a painted sword
+E 0 39018 0 11                      equip a painted shield
 M 0 39025 6 39040               add Hesad's guard to A grand hallway
-E 0 39019 0 16			    equip a painted sword
-E 0 39018 0 11			    equip a painted shield
+E 0 39019 0 16                      equip a painted sword
+E 0 39018 0 11                      equip a painted shield
 M 0 39025 6 39041               add Hesad's guard to A bend
-E 0 39019 0 16			    equip a painted sword
-E 0 39018 0 11			    equip a painted shield
+E 0 39019 0 16                      equip a painted sword
+E 0 39018 0 11                      equip a painted shield
 M 0 39025 6 39042               add Hesad's guard to A nice room
-E 0 39019 0 16			    equip a painted sword
-E 0 39018 0 11			    equip a painted shield
+E 0 39019 0 16                      equip a painted sword
+E 0 39018 0 11                      equip a painted shield
 M 0 39025 6 39043               add Hesad's guard to More hallway
-E 0 39019 0 16			    equip a painted sword
-E 0 39018 0 11			    equip a painted shield
+E 0 39019 0 16                      equip a painted sword
+E 0 39018 0 11                      equip a painted shield
 M 0 39025 6 39044               add Hesad's guard to Even more hallway
-E 0 39019 0 16			    equip a painted sword
-E 0 39018 0 11			    equip a painted shield
+E 0 39019 0 16                      equip a painted sword
+E 0 39018 0 11                      equip a painted shield
 M 0 39026 1 39047               add a red shaft of light to A {rred {Wroom{x
 M 0 39027 1 39048               add a cyan shaft of light to The {ccyan {Wroom{x
 M 0 39028 1 39049               add a yellow shaft of light to The {yyellow{W room{x
@@ -2284,9 +2283,9 @@ S
 
 #SPECIALS
 M 39009 spec_cast_druid         a unicorn
-M 39002 spec_cast_druid		dryads
+M 39002 spec_cast_druid         dryads
 M 39014 spec_breath_gas         Asverna's baby
-M 39007 spec_breath_lightning	a painted dragon
+M 39007 spec_breath_lightning   a painted dragon
 M 39015 spec_poison             Zyklor's baby
 M 39016 spec_warrior            a warrior
 M 39017 spec_cast_psionicist    a psionic
@@ -2296,11 +2295,11 @@ M 39020 spec_breath_any         a shapeshifter
 M 39021 spec_cast_priestess     a cleric
 M 39022 spec_cast_archmage      a mage
 M 39023 spec_vampire            a ranger
-M 39024 spec_sahuagin		a kraken
+M 39024 spec_sahuagin           a kraken
 M 39026 spec_breath_fire        a red shaft of light
-M 39028 spec_breath_lightning	a yellow shaft of light
-M 39029 spec_breath_acid	a green shaft of light
-M 39030 spec_breath_frost	a blue shaft of light
+M 39028 spec_breath_lightning   a yellow shaft of light
+M 39029 spec_breath_acid        a green shaft of light
+M 39030 spec_breath_frost       a blue shaft of light
 M 39031 spec_breath_any         a multicolored shaft of light
 M 39032 spec_cast_cleric        Hesad the Grand Illusionist
 M 39033 spec_cast_priestess     Hesad the Grand Illusionist

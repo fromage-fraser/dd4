@@ -1,4 +1,4 @@
-#AREA	Jammer~  Draagdim Streets~
+#AREA   Jammer~  Draagdim Streets~
 -2 -2 0 100
 
 #RECALL
@@ -761,57 +761,57 @@ S
 
 #RESETS
 *
-M 1 28100 8 28100			the Gate Guard to The North Gate
+M 1 28100 8 28100           the Gate Guard to The North Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 8 28100			the Gate Guard to The North Gate
+M 1 28100 8 28100           the Gate Guard to The North Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 8 28118			the Gate Guard to The East Gate
+M 1 28100 8 28118           the Gate Guard to The East Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 8 28118			the Elite Guard to The East Gate
+M 1 28100 8 28118           the Elite Guard to The East Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 5 28130			the Gate Guard to The South Gate
+M 1 28100 5 28130           the Gate Guard to The South Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 8 28130			the Gate Guard to The South Gate
+M 1 28100 8 28130           the Gate Guard to The South Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 8 28136			the Gate Guard to The West Gate
+M 1 28100 8 28136           the Gate Guard to The West Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28100 8 28136			the Gate Guard to The West Gate
+M 1 28100 8 28136           the Gate Guard to The West Gate
 E 1 28104 100 5
 E 1 28103 100 16
 *
-M 1 28101 4 28109			the Elite Guard to The South Cross
+M 1 28101 4 28109           the Elite Guard to The South Cross
 E 1 28101 100 5
 E 1 28102 100 6
 E 1 28105 100 11
 E 1 28100 100 16
 *
-M 1 28101 4 28105			the Elite Guard to The North Cross
+M 1 28101 4 28105           the Elite Guard to The North Cross
 E 1 28101 100 5
 E 1 28102 100 6
 E 1 28105 100 11
 E 1 28100 100 16
 *
-M 1 28101 4 28107			the Elite Guard to The West Cross
+M 1 28101 4 28107           the Elite Guard to The West Cross
 E 1 28101 100 5
 E 1 28102 100 6
 E 1 28105 100 11
 E 1 28100 100 16
 *
-M 1 28101 4 28111			the Elite Guard to The East Cross
+M 1 28101 4 28111           the Elite Guard to The East Cross
 E 1 28101 100 5
 E 1 28102 100 6
 E 1 28105 100 11
@@ -820,8 +820,8 @@ S
 
 
 #SPECIALS
-M  28100 spec_cast_psionicist			the Gate Guard
-M  28101 spec_cast_psionicist			the Elite Guard
+M  28100 spec_cast_psionicist           the Gate Guard
+M  28101 spec_cast_psionicist           the Elite Guard
 S
 
 

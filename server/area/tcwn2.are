@@ -1,4 +1,4 @@
-#AREA	Yaegar~ The Walls of Anon~
+#AREA   Yaegar~ The Walls of Anon~
 45 60 0 100
 
 #MOBILES
@@ -3359,14 +3359,14 @@ S
 
 
 #SPECIALS
-M  31200 spec_guard			an east wall guard
-M  31201 spec_guard			a south wall guard
-M  31202 spec_guard			a north wall guard
-M  31203 spec_guard			an west wall guard
-M  31204 spec_guard			the east wall guard captain
-M  31205 spec_guard			the south wall guard captain
-M  31206 spec_guard			the north wall guard captain
-M  31207 spec_guard			the west wall guard captain
+M  31200 spec_guard         an east wall guard
+M  31201 spec_guard         a south wall guard
+M  31202 spec_guard         a north wall guard
+M  31203 spec_guard         an west wall guard
+M  31204 spec_guard         the east wall guard captain
+M  31205 spec_guard         the south wall guard captain
+M  31206 spec_guard         the north wall guard captain
+M  31207 spec_guard         the west wall guard captain
 M  31208 spec_cast_cleric   a knight
 M  31209 spec_cast_archmage an elven battle mage
 M  31210 spec_cast_judge    the marshal

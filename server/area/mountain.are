@@ -1,4 +1,4 @@
-#AREA	Prozak~  Sentinel Pass~
+#AREA   Prozak~  Sentinel Pass~
 -2 -2 0 100
 
 #MOBILES
@@ -410,9 +410,14 @@ D0
 ~
 0 -1 18514
 D5
-This huge lump of igneous rock looks as if it has been moved!~
-scratch scratches boulder~
+A huge lump of igneous rock that looks as if it has been moved!
+~
+boulder scratch scratches~
 10 -1 18516
+E
+scratch scratches boulder~
+This huge lump of igneous rock looks as if it has been moved!
+~
 S
 #18516
 Dank Tunnel~
@@ -1273,55 +1278,55 @@ S
 
 #RESETS
 *
-M 1 18500 1 18571			The shadow to Forgotten Depths
+M 1 18500 1 18571           The shadow to Forgotten Depths
 E 1 18500 100 17
-D 1 18515 5 1			; A Narrow Canyon Close Down
-D 1 18516 4 1			; Dank Tunnel Close Up
-R 1 18528 4			; Randomize Rolling Grasslands
+D 1 18515 5 1           ; A Narrow Canyon Close Down
+D 1 18516 4 1           ; Dank Tunnel Close Up
+R 1 18528 4             ; Randomize Rolling Grasslands
 *
-M 1 18504 4 18516			The troglodyte to Dank Tunnel
+M 1 18504 4 18516           The troglodyte to Dank Tunnel
 *
-M 1 18504 4 18518			The troglodyte to Dank Tunnel
+M 1 18504 4 18518           The troglodyte to Dank Tunnel
 *
-M 1 18504 4 18520			The troglodyte to Dank Tunnel
+M 1 18504 4 18520           The troglodyte to Dank Tunnel
 *
-M 1 18504 4 18524			The troglodyte to Dank Tunnel
+M 1 18504 4 18524           The troglodyte to Dank Tunnel
 *
-M 1 18501 4 18502			The rock crab to A Narrow Canyon
+M 1 18501 4 18502           The rock crab to A Narrow Canyon
 *
-M 1 18501 4 18504			The rock crab to A Narrow Canyon
+M 1 18501 4 18504           The rock crab to A Narrow Canyon
 *
-M 1 18501 4 18506			The rock crab to A Narrow Canyon
+M 1 18501 4 18506           The rock crab to A Narrow Canyon
 *
-M 1 18501 4 18533			The rock crab to A Narrow Canyon
+M 1 18501 4 18533           The rock crab to A Narrow Canyon
 *
-M 1 18502 1 18502			The sasquatch to A Narrow Canyon
+M 1 18502 1 18502           The sasquatch to A Narrow Canyon
 *
-M 1 18503 6 18506			The boulder beast to A Narrow Canyon
+M 1 18503 6 18506           The boulder beast to A Narrow Canyon
 *
-M 1 18503 6 18508			The boulder beast to A Narrow Canyon
+M 1 18503 6 18508           The boulder beast to A Narrow Canyon
 *
-M 1 18503 6 18510			The boulder beast to A Narrow Canyon
+M 1 18503 6 18510           The boulder beast to A Narrow Canyon
 *
-M 1 18503 6 18513			The boulder beast to A Narrow Canyon
+M 1 18503 6 18513           The boulder beast to A Narrow Canyon
 *
-M 1 18503 6 18533			The boulder beast to A Narrow Canyon
+M 1 18503 6 18533           The boulder beast to A Narrow Canyon
 *
-M 1 18503 6 18537			The boulder beast to A Narrow Canyon
+M 1 18503 6 18537           The boulder beast to A Narrow Canyon
 *
-M 1 18505 2 18539			The cave slime to Dry Cave
+M 1 18505 2 18539           The cave slime to Dry Cave
 *
-M 1 18505 2 18557			The cave slime to Dry Cave
+M 1 18505 2 18557           The cave slime to Dry Cave
 *
-M 1 18506 1 18564			The tree sprite to Sink Hole
+M 1 18506 1 18564           The tree sprite to Sink Hole
 *
-M 1 18507 4 18513			The goat to A Narrow Canyon
+M 1 18507 4 18513           The goat to A Narrow Canyon
 *
-M 1 18507 4 18510			The goat to A Narrow Canyon
+M 1 18507 4 18510           The goat to A Narrow Canyon
 *
-M 1 18507 4 18508			The goat to A Narrow Canyon
+M 1 18507 4 18508           The goat to A Narrow Canyon
 *
-M 1 18507 4 18535			The goat to A Narrow Canyon
+M 1 18507 4 18535           The goat to A Narrow Canyon
 *
 D 1 18557 5 1
 D 1 18566 5 1
@@ -1329,12 +1334,12 @@ S
 
 
 #SPECIALS
-M  18500 spec_cast_psionicist			The shadow
-M  18501 spec_breath_gas			The rock crab
-M  18502 spec_fido			The sasquatch
-M  18503 spec_breath_any			The boulder beast
-M  18504 spec_fido			The troglodyte
-M  18505 spec_breath_any			The cave slime
+M  18500 spec_cast_psionicist       The shadow
+M  18501 spec_breath_gas            The rock crab
+M  18502 spec_fido                  The sasquatch
+M  18503 spec_breath_any            The boulder beast
+M  18504 spec_fido                  The troglodyte
+M  18505 spec_breath_any            The cave slime
 S
 
 

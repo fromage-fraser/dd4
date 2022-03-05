@@ -364,6 +364,24 @@ void do_get (CHAR_DATA *ch, char *argument)
                         for (obj = container->contains; obj; obj = obj_next)
                         {
                                 obj_next = obj->next_content;
+                                /* detect curse prevents autolooting of cursed items */
+
+                                if ( ( ( IS_OBJ_STAT( obj, ITEM_NODROP )
+                                        || IS_OBJ_STAT( obj, ITEM_NOREMOVE )
+                                        || ( obj->value[1] == 33 )
+                                        || ( obj->value[1] == 304 )
+                                        || ( obj->value[1] == 458 )
+                                        || ( obj->value[2] == 33 )
+                                        || ( obj->value[2] == 304 )
+                                        || ( obj->value[2] == 458 )
+                                        || ( obj->value[3] == 33 )
+                                        || ( obj->value[3] == 304 )
+                                        || ( obj->value[3] == 458 ) )
+                                        && IS_AFFECTED( ch, AFF_DETECT_CURSE ) ) )
+                                {
+                                        send_to_char("{WYou are reluctant to acquire a cursed item.{x\n\r", ch);
+                                        continue;
+                                }
 
                                 if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
                                     && can_see_obj(ch, obj))
@@ -375,8 +393,11 @@ void do_get (CHAR_DATA *ch, char *argument)
 
                         if (!found)
                         {
-                                if (arg1[3] == '\0')
+                                if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
                                         act("You see nothing in the $T.",
+                                            ch, NULL, arg2, TO_CHAR);
+                                else if (arg1[3] == '\0' && IS_AFFECTED( ch, AFF_DETECT_CURSE ))
+                                        act("You see nothing desirable in the $T.",
                                             ch, NULL, arg2, TO_CHAR);
                                 else
                                         act("You see nothing like that in the $T.",
@@ -3675,8 +3696,7 @@ void do_sell (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((cost = get_cost(keeper, obj, FALSE)) <= 0
-            || obj->level > LEVEL_HERO)
+        if ((cost = get_cost(keeper, obj, FALSE)) <= 0 )
         {
                 act("$n looks uninterested in $p.", keeper, obj, ch, TO_VICT);
                 return;
@@ -4397,11 +4417,14 @@ void do_auction (CHAR_DATA *ch, char *argument)
 
         if (!str_cmp(arg1, "bet"))
         {
+                /*
                 if (ch->level > LEVEL_HERO)
                 {
                         send_to_char("Immortals may not bet in auctions.\n\r", ch);
                         return;
                 }
+                Removed 2/3/22 by Owl. imms do what they want.
+                */
 
                 if (auction->item)
                 {
@@ -4487,11 +4510,14 @@ void do_auction (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /*
         if (ch->level > LEVEL_HERO)
         {
                 send_to_char("Immortals may not auction items.\n\r", ch);
                 return;
         }
+        Removed 2/3/22 by Owl. imms do what they want.
+        */
 
         for (wobj = ch->carrying; wobj; wobj = wobj->next_content)
         {

@@ -1,4 +1,4 @@
-#AREA	Tyrst~   Wyvern's Tower~
+#AREA   Tyrst~   Wyvern's Tower~
 5 20 0 100
 
 
@@ -384,7 +384,7 @@ There is a large black kite shield lying here.~
 A
 24 1
 #1614
-helm~
+commander helm~
 a commander's helm~
 A commander's helm rests on a table here.~
 ~
@@ -397,7 +397,7 @@ This elegant helm is plated in mithril and silver.~
 A
 4 1
 #1615
-bracer~
+bracer mithril~
 a mithril bracer~
 A magical bracer made from mithril lies on the ground!~
 ~
@@ -1581,92 +1581,92 @@ S
 
 
 #RESETS
-* D 0 1647 4 2		;Lock strange door
+* D 0 1647 4 2          ;Lock strange door
 * D 0 1648 5 2
-* D 0 1623 2 1		;Close Main door
+* D 0 1623 2 1          ;Close Main door
 * D 0 1624 4 1
-* D 0 1633 5 1		;Close grate
+* D 0 1633 5 1          ;Close grate
 * D 0 1634 4 1
-R 0 1644 0 4		;Maze the dark room
-O 0 1652 2 1608		;Put barrel in storeroom
-O 0 1601 2 1627		;Load rusty cleaver
-O 0 1651 1 1645		;Load chest in Armory
-P 0 1603 1 1651		;Put dagger in chest
-M 0 1601 2 1620		;Load two frogs
+R 0 1644 0 4            ;Maze the dark room
+O 0 1652 2 1608         ;Put barrel in storeroom
+O 0 1601 2 1627         ;Load rusty cleaver
+O 0 1651 1 1645         ;Load chest in Armory
+P 0 1603 1 1651         ;Put dagger in chest
+M 0 1601 2 1620         ;Load two frogs
 M 0 1601 2 1620
-M 0 1601 3 1621		;Load 1 frog < 3 existing
-M 0 1601 3 1622		;Load 1 frog < 3 existing
-M 0 1602 2 1623		;Load 2 Stone gargoyles
+M 0 1601 3 1621         ;Load 1 frog < 3 existing
+M 0 1601 3 1622         ;Load 1 frog < 3 existing
+M 0 1602 2 1623         ;Load 2 Stone gargoyles
 M 0 1602 2 1623
-M 0 1602 4 1624		;Load 2 Stone gargoyles
+M 0 1602 4 1624         ;Load 2 Stone gargoyles
 M 0 1602 4 1624
-M 0 1602 5 1625		;Load a Stone gargoyle
-M 0 1602 6 1631		;Load a Stone gargoyle
-M 0 1603 1 1630		;Load Angry gargoyle
-M 0 1603 2 1632		;Load Angry gargoyle
-M 0 1603 3 1637		;Load Angry gargoyle
-M 0 1604 2 1636		;Load 2 Elite gargoyles
-E 1 1604 10 16			;Equip them large spear
+M 0 1602 5 1625         ;Load a Stone gargoyle
+M 0 1602 6 1631         ;Load a Stone gargoyle
+M 0 1603 1 1630         ;Load Angry gargoyle
+M 0 1603 2 1632         ;Load Angry gargoyle
+M 0 1603 3 1637         ;Load Angry gargoyle
+M 0 1604 2 1636         ;Load 2 Elite gargoyles
+E 1 1604 10 16                  ;Equip them large spear
 M 0 1604 2 1636
 E 1 1604 10 16
-M 0 1604 2 1639		;Load 2 Elite gargoyles
+M 0 1604 2 1639         ;Load 2 Elite gargoyles
 M 0 1604 2 1639
-M 0 1605 1 1638		;Load Gargoyle Shaman
-E 1 1602 6 16			;Equip her fine mace
-E 1 1621 3 13			;Equip her scarlet belt
-M 0 1606 1 1628		;Load Carn. Plant
-M 0 1607 1 1629		;Load Ogre
-M 0 1608 4 1644		;Load shadow < 4 existing
-M 0 1609 1 1634		;Load the Wight
-E 1 1692 1 17			;Hold Strange key
-M 0 1610 2 1645		;Load 2 Burly minotaurs
+M 0 1605 1 1638         ;Load Gargoyle Shaman
+E 1 1602 6 16                   ;Equip her fine mace
+E 1 1621 3 13                   ;Equip her scarlet belt
+M 0 1606 1 1628         ;Load Carn. Plant
+M 0 1607 1 1629         ;Load Ogre
+M 0 1608 4 1644         ;Load shadow < 4 existing
+M 0 1609 1 1634         ;Load the Wight
+E 1 1692 1 17                   ;Hold Strange key
+M 0 1610 2 1645         ;Load 2 Burly minotaurs
 M 0 1610 2 1645
-M 0 1612 1 1610		;Load the Savage minotaur
-E 0 1604 5 16			;Equip him broad sword
-E 1 1612 3 11			;Equip him black shield
-M 0 1613 1 1646		;Load Minotaur Captain
-E 1 1604 5 16			;Equip him broad sword
-E 1 1614 3 6			;Equip him Commander's helm
-M 0 1614 1 1643		;Load Black Pudding
-M 0 1615 2 1647		;Load Lesser Golem < 2 existing
-E 1 1606 2 16			;Equip him Might rod
-M 0 1616 1 1648		;Load the Ancient Wyvern!
-E 1 1615 2 17			;Equip him bracers
-G 1 1621 5			;Red potion in inv.
-M 0 1617 1 1650		;Load the Spectre!
-E 1 1616 2 3			;Equip him blue cloak
+M 0 1612 1 1610         ;Load the Savage minotaur
+E 0 1604 5 16                   ;Equip him broad sword
+E 1 1612 3 11                   ;Equip him black shield
+M 0 1613 1 1646         ;Load Minotaur Captain
+E 1 1604 5 16                   ;Equip him broad sword
+E 1 1614 3 6                    ;Equip him Commander's helm
+M 0 1614 1 1643         ;Load Black Pudding
+M 0 1615 2 1647         ;Load Lesser Golem < 2 existing
+E 1 1606 2 16                   ;Equip him Might rod
+M 0 1616 1 1648         ;Load the Ancient Wyvern!
+E 1 1615 2 17                   ;Equip him bracers
+G 1 1621 5                      ;Red potion in inv.
+M 0 1617 1 1650         ;Load the Spectre!
+E 1 1616 2 3                    ;Equip him blue cloak
 *
 *
 *
-M 0 1702 2 1703		;Load 2 trappers
-E 1 1711 5 6			;Equip them cap
+M 0 1702 2 1703         ;Load 2 trappers
+E 1 1711 5 6                    ;Equip them cap
 M 0 1702 2 1703
 E 1 1711 5 6
-M 0 1704 2 1703		;Load 2 Hunters
+M 0 1704 2 1703         ;Load 2 Hunters
 M 0 1704 2 1703
-E 1 1701 10 16			;Equip one a short bow
-M 0 1706 1 1703		;Load the Ranger
-E 1 1702 5 16			;Equip him long bow
-G 1 1621 5			;Red Potion in inv.
-M 0 1710 1 1704		;Load male Centaur
+E 1 1701 10 16                  ;Equip one a short bow
+M 0 1706 1 1703         ;Load the Ranger
+E 1 1702 5 16                   ;Equip him long bow
+G 1 1621 5                      ;Red Potion in inv.
+M 0 1710 1 1704         ;Load male Centaur
 E 1 1701 10 16                  ;Equip him short bow
-M 0 1710 2 1708		;Load another one
-E 1 1701 10 16			;Equip him short bow
-M 0 1710 3 1710		;Load another, no bow
-M 0 1711 1 1706		;Load female Centaur
+M 0 1710 2 1708         ;Load another one
+E 1 1701 10 16                  ;Equip him short bow
+M 0 1710 3 1710         ;Load another, no bow
+M 0 1711 1 1706         ;Load female Centaur
 M 0 1711 2 1709         ;Load female Centaur
-M 0 1712 1 1710		;Load Old Centaur
-M 0 1712 2 1712		;Load Old Centaur
-M 0 1712 3 1713		;Load Old Centaur
-M 0 1714 1 1711		;Load Centaur Elder
-M 0 1714 2 1714		;Load Centaur Elder
-M 0 1714 3 1715		;Load Centaur Elder
-M 0 1715 2 1716		;Load 2 Centaur Guards
-E 1 1604 10 16			;Equip them large spear
+M 0 1712 1 1710         ;Load Old Centaur
+M 0 1712 2 1712         ;Load Old Centaur
+M 0 1712 3 1713         ;Load Old Centaur
+M 0 1714 1 1711         ;Load Centaur Elder
+M 0 1714 2 1714         ;Load Centaur Elder
+M 0 1714 3 1715         ;Load Centaur Elder
+M 0 1715 2 1716         ;Load 2 Centaur Guards
+E 1 1604 10 16                  ;Equip them large spear
 M 0 1715 2 1716
 E 1 1604 10 16
-M 0 1716 1 1717		;Load the Centaur Chief
-E 1 1713 1 2			;Equip him Bronze ring
+M 0 1716 1 1717         ;Load the Centaur Chief
+E 1 1713 1 2                    ;Equip him Bronze ring
 S
 
 

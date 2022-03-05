@@ -113,6 +113,22 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         if ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) && IS_OBJ_STAT( obj, ITEM_MAGIC ) )
                 strcat( buf, "{B(Magical){x " );
 
+        /* Below is ugly, sorry -- Owl 4/3/22 */
+
+        if ( ( ( IS_OBJ_STAT( obj, ITEM_NODROP )
+              || IS_OBJ_STAT( obj, ITEM_NOREMOVE )
+              || ( obj->value[1] == 33 )         /* curse, hex, divine curse */
+              || ( obj->value[1] == 304 )
+              || ( obj->value[1] == 458 )
+              || ( obj->value[2] == 33 )
+              || ( obj->value[2] == 304 )
+              || ( obj->value[2] == 458 )
+              || ( obj->value[3] == 33 )
+              || ( obj->value[3] == 304 )
+              || ( obj->value[3] == 458 ) )
+            && IS_AFFECTED( ch, AFF_DETECT_CURSE ) ) )
+                strcat( buf, "{b(Cursed){x " );
+
         if ( IS_OBJ_STAT( obj, ITEM_TRAP) && IS_AFFECTED( ch, AFF_DETECT_TRAPS) )
                 strcat( buf, "(Trapped) " );
 
@@ -215,7 +231,7 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
                         {
                                 /*
                                  * Look for duplicates, case sensitive.
-                                 * Matches tend to be near end so run loop backwords.
+                                 * Matches tend to be near end so run loop backwards.
                                  */
                                 for (iShow = nShow - 1; iShow >= 0; iShow--)
                                 {
@@ -313,19 +329,19 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
                 strcat(buf, "{R[TARGET]{x ");
 
         if (IS_AFFECTED(victim, AFF_MEDITATE))
-                strcat(buf, "[Meditating] ");
+                strcat(buf, "{W[Meditating]{x ");
 
         if (IS_AFFECTED(victim, AFF_HOLD))
-                strcat(buf, "(Held) ");
+                strcat(buf, "{g(Held){x ");
 
         if (IS_AFFECTED(victim, AFF_INVISIBLE))
                 strcat(buf, "{c(Invis){x ");
 
         if (IS_AFFECTED(victim, AFF_HIDE))
-                strcat(buf, "(Hidden) ");
+                strcat(buf, "{m(Hidden){x ");
 
         if (IS_AFFECTED(victim, AFF_CHARM))
-                strcat(buf, "(Charmed) ");
+                strcat(buf, "{y(Charmed){x ");
 
         if (IS_SET(victim->act, ACT_MOUNTABLE))
         {
@@ -346,6 +362,13 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (IS_EVIL(victim )
             && (IS_AFFECTED(ch, AFF_DETECT_EVIL) || is_affected(ch, gsn_song_of_revelation)))
                 strcat(buf, "{r(Red Aura){x "   );
+
+        if (IS_AFFECTED(ch, AFF_DETECT_CURSE)
+            && ( is_affected(victim, gsn_prayer_weaken)
+              || is_affected(victim, gsn_hex)
+              || is_affected(victim, gsn_curse)
+              || IS_AFFECTED(victim, AFF_CURSE) ) )
+                strcat(buf, "{b(Cursed){x "   );
 
         if (IS_GOOD(victim )
             && (IS_AFFECTED(ch, AFF_DETECT_GOOD) || is_affected(ch, gsn_song_of_revelation)))
@@ -424,7 +447,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
                         strcat( buf, "." );
                 }
                 else
-                        strcat( buf, "somone who left??" );
+                        strcat( buf, "someone who left??" );
                 break;
         }
 
@@ -881,7 +904,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                     case ITEM_ARMOR:
                         if (obj->timer > 0 && obj->timer < 11
                             && IS_SET(obj->extra_flags, ITEM_FORGED))
-                                send_to_char("The forged metal looks to be in bad condition.\n\r", ch);
+                                send_to_char("The forged metal looks to be in poor condition.\n\r", ch);
                         break;
                 }
         }
@@ -1091,16 +1114,16 @@ void do_score (CHAR_DATA *ch, char *argument)
                 ch->pcdata->killed == 1 ? "" : "s" );
         strcat( buf1, buf );
 
-        sprintf( buf, "You are %d years old, after %d hours of playing time.\n\r",
+        sprintf( buf, "You are {W%d{x years old, after {W%d{x hours of playing time.\n\r",
                 get_age(ch), (get_age(ch)-17)*4 );
         strcat( buf1, buf );
 
         sprintf( buf, "Autoexit: %s  Autoloot: %s  Autocoin: %s  Autosac: %s  Autowield: %s\n\r\n\r",
-                IS_SET(ch->act, PLR_AUTOEXIT) ? "YES" : "no",
-                IS_SET(ch->act, PLR_AUTOLOOT) ? "YES" : "no",
-                IS_SET(ch->act, PLR_AUTOCOIN) ? "YES" : "no",
-                IS_SET(ch->act, PLR_AUTOSAC) ? "YES" : "no",
-                IS_SET(ch->act, PLR_AUTOWIELD) ? "YES" : "no" );
+                IS_SET(ch->act, PLR_AUTOEXIT)   ? "{GYES{x" : "{RNO{x",
+                IS_SET(ch->act, PLR_AUTOLOOT)   ? "{GYES{x" : "{RNO{x",
+                IS_SET(ch->act, PLR_AUTOCOIN)   ? "{GYES{x" : "{RNO{x",
+                IS_SET(ch->act, PLR_AUTOSAC)    ? "{GYES{x" : "{RNO{x",
+                IS_SET(ch->act, PLR_AUTOWIELD)  ? "{GYES{x" : "{RNO{x" );
         strcat( buf1, buf );
 
         print_player_status (ch, buf);
@@ -1316,7 +1339,7 @@ void do_fixexp( CHAR_DATA *ch, char *argument )
 
         if ( ch->level >= LEVEL_IMMORTAL )
         {
-                send_to_char("Immortals dont need to fixexp!\n\r",ch);
+                send_to_char("Immortals don't need to fix exp!\n\r",ch);
                 return;
         }
 
@@ -1571,7 +1594,7 @@ void do_time( CHAR_DATA *ch, char *argument )
 
         if (days)
         {
-                sprintf (buf, "DD4 has been running for %d day%s and %d hour%s.\n\r",
+                sprintf (buf, "DD has been running for %d day%s and %d hour%s.\n\r",
                          days,
                          days == 1 ? "" : "s",
                          hours,
@@ -1579,7 +1602,7 @@ void do_time( CHAR_DATA *ch, char *argument )
         }
         else if (hours)
         {
-                sprintf (buf, "DD4 has been running for %d hour%s and %d minute%s.\n\r",
+                sprintf (buf, "DD has been running for %d hour%s and %d minute%s.\n\r",
                          hours,
                          hours == 1 ? "" : "s",
                          minutes,
@@ -1587,12 +1610,12 @@ void do_time( CHAR_DATA *ch, char *argument )
         }
         else if (minutes)
         {
-                sprintf (buf, "DD4 has been running for %d minute%s.\n\r",
+                sprintf (buf, "DD has been running for %d minute%s.\n\r",
                          minutes,
                          minutes == 1 ? "" : "s");
         }
         else
-                sprintf (buf, "DD4 has been running for less than a minute.\n\r");
+                sprintf (buf, "DD has been running for less than a minute.\n\r");
 
         send_to_char (buf, ch);
 
@@ -2330,10 +2353,10 @@ void do_consider( CHAR_DATA *ch, char *argument )
                 send_to_char ( buf1, ch );
         }
 
-        /*  Er, ways of magic == any spec_fun?
+        /*  A "sizing up" ability for thugs?  Re-enabled and edited for sanity 5/3/22 -- Owl */
         if ( IS_NPC( victim ) && ch->sub_class == 7 && victim->spec_fun != 0 )
-                act ("You suspect $N as being knowledgable in the ways of magic.", ch,
-                     NULL, victim, TO_CHAR ); */
+                act ("You suspect $N of having unusual capabilities.", ch,
+                     NULL, victim, TO_CHAR );
 }
 
 
@@ -2644,7 +2667,7 @@ void do_advice (CHAR_DATA *ch, char *argument)
 
         if (sn < 0)
         {
-                sprintf(buf, "I'm sorry %s, bit i have never heard of that ability.",
+                sprintf(buf, "I'm sorry %s, but I have never heard of that ability.",
                         ch->name);
                 do_say(mob, buf);
                 return;
@@ -2672,7 +2695,7 @@ void do_advice (CHAR_DATA *ch, char *argument)
         /* check the pc is of appropriate level */
         if (ch->level < mob->pIndexData->skills->learned[gsn_teacher_base])
         {
-                sprintf(buf, "I'm sorry %s, but you are not yet of the right caliber for my advice.", ch->name);
+                sprintf(buf, "I'm sorry %s, but you are not yet of the right calibre for my advice.", ch->name);
                 do_say(mob, buf);
                 return;
         }
@@ -2725,7 +2748,7 @@ void do_advice (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                sprintf (buf, "Learning %s from me would not have any long term benefits %s.", skill_table[sn].name, ch->name);
+                sprintf (buf, "Learning %s from me would not have any long term benefits, %s.", skill_table[sn].name, ch->name);
                 do_say (mob, buf);
         }
 }
@@ -2800,7 +2823,7 @@ void do_practice (CHAR_DATA *ch, char *argument)
         {
                 if (!ch->pcdata->int_prac)
                 {
-                        sprintf(buf, "I'm sorry %s, you haven't the potential to attain further knowledge.",
+                        sprintf(buf, "I'm sorry %s, you haven't the potential to obtain further knowledge.",
                                 ch->name);
                         do_say(mob, buf);
                         return;
@@ -2830,7 +2853,7 @@ void do_practice (CHAR_DATA *ch, char *argument)
                 if (((teach - 1) <= (ch->pcdata->learned[sn] + penalty))
                     || (ch->pcdata->learned[sn] >= 100))
                 {
-                        sprintf(buf, "I'm sorry %s, but i have insufficient knowledge to help you.",
+                        sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
                         return;
@@ -2845,7 +2868,7 @@ void do_practice (CHAR_DATA *ch, char *argument)
                 if (((teach - 1) <= (ch->pcdata->learned[sn] + penalty))
                     || (ch->pcdata->learned[sn] >= 100))
                 {
-                        sprintf(buf, "I'm sorry %s, but i have insufficient knowledge to help you.",
+                        sprintf(buf, "I'm sorry %s, but I have insufficient knowledge to help you.",
                                 ch->name);
                         do_say(mob, buf);
                         return;
@@ -2865,7 +2888,7 @@ void do_practice (CHAR_DATA *ch, char *argument)
                 if (ch->pcdata->learned[sn] > 100)
                         ch->pcdata->learned[sn] = 100;
 
-                sprintf(buf, "I hope my knowledge helps you %s.", ch->name);
+                sprintf(buf, "I hope my knowledge helps you, %s.", ch->name);
                 do_say(mob, buf);
                 return;
         }
@@ -3428,7 +3451,8 @@ char * const color_name [] =
         "CLAN",
         "DIRTALK",
         "SERVER",
-        "ARENA"
+        "ARENA",
+        "NEWBIE"
 };
 
 
@@ -3571,7 +3595,7 @@ void do_config( CHAR_DATA *ch, char *argument )
 
                 send_to_char(  IS_SET( ch->act, PLR_ANSI     )
                              ? "[+ANSI     ] You have color.\n\r"
-                             : "[-ANSI     ] You dont have color.\n\r"
+                             : "[-ANSI     ] You don't have color.\n\r"
                              , ch );
 
                 send_to_char( (ch->gag != 0)
@@ -3862,7 +3886,7 @@ void do_pagelen ( CHAR_DATA *ch, char *argument )
 
         if ( lines < 1 )
         {
-                send_to_char("Negative or Zero values for a page pause are not legal.\n\r", ch );
+                send_to_char("Negative or zero values for a page pause are not legal.\n\r", ch );
                 return;
         }
 

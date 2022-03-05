@@ -1,4 +1,4 @@
-#AREA	Mahatma~ Arachnos~
+#AREA   Mahatma~ Arachnos~
 5 20 0 100
 
 
@@ -74,7 +74,7 @@ An ordinary drone spider.
 #6307
 spider ethereal~
 the ethereal spider~
-The ethereal spider strides here, traveling to different worlds.
+The ethereal spider strides here, travelling to different worlds.
 ~
 She winks in and out.
 ~
@@ -205,7 +205,7 @@ A huge, poisonous spider is here.
 ~
 This disgusting creature is at the size of a human crawling on all four.  It
 has eight hairy legs that gives it a tremendous speed on almost any surface and
-sharp poisonous fangs to paralyze or kill its prey.
+sharp poisonous fangs to paralyse or kill its prey.
 ~
 67 0 -350 S
 8 13 2 8d8+80 2d5+1
@@ -230,8 +230,8 @@ if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 
 #OBJECTS
 #6303
-headress pontiff's~
-a pontiff's headress~
+headdress pontiff's~
+a pontiff's headdress~
 A white cone-shaped head ornament with religious symbols lies here.~
 ~
 9 96 17
@@ -575,7 +575,7 @@ D3
 S
 #6321
 Above the Ravine~
-     Stranger still.  Your feet get a real firm grip on the spiderline.
+     Stranger still.  Your feet get a real firm grip on the spider line.
 You are above a deep ravine.  This line connects you between two trees.
 Below you can see a prismatic web with lots of animal bones caught in it:
 some bear and small deer bones in fact.  No human skeletons are visible
@@ -598,7 +598,7 @@ S
 #6322
 The Rainbow Web~
      This is the rainbow web--each strand, each link, a hue of violently
-sharp colors and contrasts.  The resident here seems to have a command
+sharp colours and contrasts.  The resident here seems to have a command
 of light as well.
 ~
 63 0 2
@@ -610,7 +610,7 @@ S
 #6323
 The Web Forest~
      The trees here take on a different appearance--they are not trees
-anymore, but disjointed make-shift silken made shafts, sticky to the touch,
+any more, but disjointed make-shift silken made shafts, sticky to the touch,
 and webby in texture.  This is another world it would appear.
 ~
 63 0 2
@@ -672,7 +672,7 @@ S
 #6327
 A Leader Strand~
      This strand is weightier, more sturdy.  It shimmers as you step on
-it.  You are definitely not in the Midgaardian realms anymore.  Just
+it.  You are definitely not in the Midgaardian realms any more.  Just
 where you are you can't tell.  It feels like you're moving through
 ether.  You can still get back down to more surer lands.
 ~
@@ -952,7 +952,7 @@ S
 A Link in the Ethereal Web~
      This is another link in the ethereal web.  Various creatures
 seem to get caught (or hypnotized) by its sticky strands.  A single
-spider line lies to the north, while ghastly seemings are due
+spider line lies to the north, while ghastly visions are due
 southward.  The grim entrance of Arachnos' Lair is downward.
 ~
 63 0 2
@@ -1168,8 +1168,8 @@ The Lair of Arachnos~
      This is the lair of the Empress Spider, Arachnos.  A lavishly
 adorned rainbow web, her lair allows her to move to any universe
 she wishes by using her magical strands to the Prime Material Plane.
-Coffers upon coffers of gold, magical jewels and gems await.  Unfor-
-tunately Arachnos is a baggy spider too, and webs all her treasures
+Coffers upon coffers of gold, magical jewels and gems await.
+Unfortunately, Arachnos is a baggy spider too, and webs all her treasures
 to her beautiful silken body.
 ~
 63 0 2
@@ -1185,14 +1185,14 @@ S
 #RESETS
 * Arachnos originally made by Mahatma (Mr. Melo)
 *
-M 0 6319 1 6134  		Queen Spider
-G 1 6308 10        		  10,000 gold
-M 0 6318 3 6134  		Poisonous spider
-G 1 6309 20        		  Healing potion
-M 0 6318 3 6134  		Poisonous spider
-G 1 6309 20        		  Healing potion
-M 0 6318 3 6134  		Poisonous spider
-G 1 6309 20        		  Healing potion
+M 0 6319 1 6134                 Queen Spider
+G 1 6308 10                     10,000 gold
+M 0 6318 3 6134                 Poisonous spider
+G 1 6309 20                     Healing potion
+M 0 6318 3 6134                 Poisonous spider
+G 1 6309 20                     Healing potion
+M 0 6318 3 6134                 Poisonous spider
+G 1 6309 20                     Healing potion
 M 0 6301 10 6301                young spider
 M 0 6301 10 6306                young spider
 M 0 6301 10 6306                young spider

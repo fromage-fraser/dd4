@@ -1,4 +1,4 @@
-#AREA	Thorne~   The Magic Garden~
+#AREA   Thorne~   The Magic Garden~
 80 100 60 100
 
 #MOBILES
@@ -543,7 +543,7 @@ A
 #11314
 drake egg rotten~
 a rotten drakes egg~
-There is an egg here that looks as if it may have come from a drake although it smells like it's gone off.~
+There is an egg here that looks as if it may have come from a drake, although it smells like it's gone off.~
 ~
 26 64|16384 1|16384
 90~ hex~ curse~ blindness~
@@ -3162,7 +3162,7 @@ S
 #RESETS
 D 1 11348 0 1  ;close north in entrance room
 *
-M 1 11300 1 11387			The water drake to beneath the waterfall
+M 1 11300 1 11387           The water drake to beneath the waterfall
 E 1 11300 100 16
 E 1 11344 100 17
 E 1 11300 100 18
@@ -3171,49 +3171,49 @@ E 1 11343 100 5
 G 1 11303 100
 G 1 11322 100
 *
-M 1 11301 1 11390			A water sprite to in the stream
+M 1 11301 1 11390           A water sprite to in the stream
 E 1 11316 100 17
 *
-M 1 11302 1 11392			A water sprite to in the stream
+M 1 11302 1 11392           A water sprite to in the stream
 E 1 11316 100 17
 *
-M 1 11303 1 11385			A water sprite to in the stream
+M 1 11303 1 11385           A water sprite to in the stream
 E 1 11316 100 17
 *
-M 1 11304 1 11398			A water sprite to in the stream
+M 1 11304 1 11398           A water sprite to in the stream
 E 1 11316 100 17
 *
-M 1 11305 1 11402			A water sprite to in the stream
+M 1 11305 1 11402           A water sprite to in the stream
 E 1 11316 100 17
 *
-M 1 11306 1 11313			A carnivorous plant to beside the waterfall
+M 1 11306 1 11313           A carnivorous plant to beside the waterfall
 *
-M 1 11307 1 11300			A carnivorous plant to Bottom left corner
+M 1 11307 1 11300           A carnivorous plant to Bottom left corner
 *
-M 1 11308 1 11332			A carnivorous plant to beside the waterfall
+M 1 11308 1 11332           A carnivorous plant to beside the waterfall
 *
-M 1 11309 1 11375			A carnivorous plant to A room
+M 1 11309 1 11375           A carnivorous plant to A room
 *
-M 1 11310 1 11362			A carnivorous plant to A room
+M 1 11310 1 11362           A carnivorous plant to A room
 *
-M 1 11311 1 11322			The gardener to A sunflower patch
+M 1 11311 1 11322           The gardener to A sunflower patch
 E 1 11311 100 16
 E 1 11312 100 5
 E 1 11313 100 8
 E 1 11327 100 9
-O 1 11315 100 11322			a sunflower petal to A sunflower patch
+O 1 11315 100 11322         a sunflower petal to A sunflower patch
 *
-M 1 11312 1 11309			A vine to A room
-O 1 11331 100 11310			{Wa white orchid{x to In the garden
+M 1 11312 1 11309           A vine to A room
+O 1 11331 100 11310         {Wa white orchid{x to In the garden
 *
-M 1 11313 1 11303			A vine to A room
-O 1 11332 100 11337			{Ya bunch of daffodils{x to In the garden
+M 1 11313 1 11303           A vine to A room
+O 1 11332 100 11337         {Ya bunch of daffodils{x to In the garden
 *
-M 1 11314 1 11378			A vine to A room
-O 1 11333 100 11361			{Rwild roses{x to In the garden
+M 1 11314 1 11378           A vine to A room
+O 1 11333 100 11361         {Rwild roses{x to In the garden
 O 1 11330 1 11367                      ;fountain?
 *
-M 1 11315 1 11310			The fairy to In the garden.
+M 1 11315 1 11310           The fairy to In the garden.
 E 1 11302 100 17
 E 1 11310 100 4
 E 1 11317 100 12
@@ -3222,7 +3222,7 @@ E 1 11329 100 5
 E 1 11328 100 6
 G 1 11301 100
 *
-M 1 11316 1 11337			The fairy to In the garden.
+M 1 11316 1 11337           The fairy to In the garden.
 E 1 11302 100 17
 E 1 11310 100 4
 E 1 11318 100 12
@@ -3231,7 +3231,7 @@ E 1 11329 100 5
 E 1 11328 100 6
 G 1 11301 100
 *
-M 1 11317 1 11361			The fairy to In the garden.
+M 1 11317 1 11361           The fairy to In the garden.
 E 1 11302 100 17
 E 1 11310 100 4
 E 1 11319 100 12
@@ -3240,7 +3240,7 @@ E 1 11329 100 5
 E 1 11328 100 6
 G 1 11301 100
 *
-M 1 11318 1 11356			The fairy to Beside the river.
+M 1 11318 1 11356           The fairy to Beside the river.
 E 1 11302 100 17
 E 1 11310 100 4
 E 1 11320 100 12
@@ -3249,15 +3249,15 @@ E 1 11329 100 5
 E 1 11328 100 6
 G 1 11301 100
 *
-M 1 11319 1 11308			The tree to In the garden.
+M 1 11319 1 11308           The tree to In the garden.
 E 1 11304 100 17
 E 1 11342 100 5
 *
-M 1 11320 1 11380			The tree to In the garden.
+M 1 11320 1 11380           The tree to In the garden.
 E 1 11304 100 17
 E 1 11342 100 5
 *
-M 1 11321 1 11405			the fairy queen to On top of the sunflower
+M 1 11321 1 11405           the fairy queen to On top of the sunflower
 E 1 11305 100 6
 E 1 11306 100 5
 E 1 11307 100 8
@@ -3266,26 +3266,26 @@ E 1 11309 100 16
 E 1 11310 100 4
 E 1 11321 100 1
 *
-M 1 11322 1 11325			the mischievous pixie to In the garden
+M 1 11322 1 11325           the mischievous pixie to In the garden
 E 1 11326 100 5
 E 1 11325 100 6
 E 1 11323 100 7
 E 1 11324 100 8
-O 1 11334 100 11356			{Mpurple tulips{x to Beside the river
+O 1 11334 100 11356         {Mpurple tulips{x to Beside the river
 *
-M 1 11323 1 11350			the mischievous pixie to In the garden
-E 1 11326 100 5
-E 1 11325 100 6
-E 1 11323 100 7
-E 1 11324 100 8
-*
-M 1 11324 1 11383			the mischievous pixie to Beside the river
+M 1 11323 1 11350           the mischievous pixie to In the garden
 E 1 11326 100 5
 E 1 11325 100 6
 E 1 11323 100 7
 E 1 11324 100 8
 *
-M 1 11325 1 11331			the leprechaun to On the Bridge
+M 1 11324 1 11383           the mischievous pixie to Beside the river
+E 1 11326 100 5
+E 1 11325 100 6
+E 1 11323 100 7
+E 1 11324 100 8
+*
+M 1 11325 1 11331           the leprechaun to On the Bridge
 E 1 11335 100 5
 E 1 11336 100 6
 E 1 11337 100 7
@@ -3293,7 +3293,7 @@ E 1 11338 100 13
 E 1 11340 100 0
 E 1 11339 100 8
 *
-O 1 11341 100 11405			ball of continual light to fairy queen's room
+O 1 11341 100 11405         ball of continual light to fairy queen's room
 
 S
 
@@ -3303,14 +3303,14 @@ S
 
 
 #SPECIALS
-M  11321 spec_cast_adept			the fairy queen
-M  11325 spec_thief			the leprechaun
-M  11319 spec_warrior			the tree
-M  11320 spec_warrior			the tree
-M  11315 spec_cast_archmage		fairy
-M  11316 spec_cast_archmage		fairy
-M  11317 spec_cast_archmage		fairy
-M  11318 spec_cast_archmage		fairy
+M  11321 spec_cast_adept        the fairy queen
+M  11325 spec_thief             the leprechaun
+M  11319 spec_warrior           the tree
+M  11320 spec_warrior           the tree
+M  11315 spec_cast_archmage     fairy
+M  11316 spec_cast_archmage     fairy
+M  11317 spec_cast_archmage     fairy
+M  11318 spec_cast_archmage     fairy
 S
 
 

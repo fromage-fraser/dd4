@@ -1,4 +1,4 @@
-#AREA	Danath~  Desert of Despair~
+#AREA   Danath~  Desert of Despair~
 -2 -2 0 100
 
 #MOBILES
@@ -7,8 +7,8 @@ Bedouin man warrior~
 A Bedouin man.~
 A Bedouin man walks about doing his work.
 ~
-Tall and straight this man is proud and strong.  Dark skin and hooded
-cloak make his features not all that easy to make out.
+Tall and straight, this man is proud and strong.  Dark skin and a hooded
+cloak make his features hard to make out.
 ~
 64 8|32|8192|32768 0 S
 10 0 0 0d0+0 0d0+0
@@ -17,21 +17,21 @@ cloak make his features not all that easy to make out.
 #18101
 woman bedouin~
 the woman~
-A Bedouin woman carry's her day's work in a large basket here.
+A Bedouin woman carries her day's work in a large basket here.
 ~
-Tough and wry this woman could keep any man going,  although her skin is dry
-from the continuosly hot sun a bit of Elizabetth Arden would see her right.
+Tough and wry, this woman could keep any man going.  Although her skin is dry
+from the continuously heat of the sun, a bit of Elizabeth Arden would see her right.
 ~
 4|64|128 0 100 S
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #18102
-snake~
+snake viper king~
 a snake~
-A King Viper slither's accross your path.
+A King Viper slithers across your path.
 ~
-This snake has a deadly bite to it, large dark brown markings are striped across it's back.
+This snake has a deadly bite to it; large, dark brown markings are striped across its back.
 ~
 32|64|128 32768 -700 S
 10 0 0 0d0+0 0d0+0
@@ -39,8 +39,8 @@ This snake has a deadly bite to it, large dark brown markings are striped across
 8 8 0
 #18103
 bedouin child~
-a Bedoiun child~
-A small child is here playing with his toy sword.
+a Bedouin child~
+A small child is here, playing with his toy sword.
 ~
 Dressed in loose robes this little child could probably beat up on most kids his age.
 ~
@@ -51,9 +51,9 @@ Dressed in loose robes this little child could probably beat up on most kids his
 #18104
 asp snake~
 an asp~
-A deadly asp snake is eyeing you up for tea.
+A deadly asp is eyeing you up for tea.
 ~
-Small but deadly this snake could kill you with it's venom easy.
+Small but deadly this snake could kill you with its venom easy.
 ~
 32|64|128 32768 -900 S
 7 0 0 0d0+0 0d0+0
@@ -78,7 +78,7 @@ A
 #18101
 cloak~
 a small cloak with pockets~
-A small pike of brown sacklike material.~
+A small piece of brown, sacklike material.~
 ~
 15 64 1|1024
 100~ 1~ -1~ 11~
@@ -106,7 +106,7 @@ A large chest is here.~
 #18104
 key~
 a key~
-A rabbits foot on a small ring.~
+A rabbit's foot on a small ring.~
 ~
 18 0 1
 0~ 1~ 6~ 11~
@@ -193,9 +193,9 @@ D2
 S
 #18104
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D2
@@ -209,9 +209,9 @@ D3
 S
 #18105
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -225,9 +225,9 @@ D1
 S
 #18106
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -241,9 +241,9 @@ D3
 S
 #18107
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -257,9 +257,9 @@ D2
 S
 #18108
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.  A small adobe hut has been built here, you can see
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.  A small adobe hut has been built here, you can see
 broken furniture inside.
 ~
 0 0 10
@@ -278,9 +278,9 @@ D3
 S
 #18109
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -294,9 +294,9 @@ D1
 S
 #18110
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -310,9 +310,9 @@ D2
 S
 #18111
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -326,9 +326,9 @@ D2
 S
 #18112
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -346,9 +346,9 @@ D2
 S
 #18113
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D2
@@ -362,9 +362,9 @@ D3
 S
 #18114
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -378,9 +378,9 @@ D1
 S
 #18115
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -394,9 +394,9 @@ D3
 S
 #18116
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.  In the distance you can see a small Pyramid.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -410,9 +410,9 @@ D2
 S
 #18117
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.  Not very far away is a small Pyramid.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.  Not very far away is a small pyramid.
 ~
 0 0 10
 D1
@@ -445,7 +445,7 @@ S
 Desert~
 Shifting sands wash over your feet as the wind steadily erodes away the
 high dunes above you.  To the north you can make out through the haze a
-Pyramid, with huge blocks etched together.
+pyramid, with huge blocks cemented together.
 ~
 0 0 10
 D0
@@ -459,9 +459,9 @@ D2
 S
 #18120
 Desert~
-Wandering around with sand everywhere, you are dis-orientated, the land is
-made up of dunes all look the same, only the odd rock makes it seem like
-your moving at all.
+Wandering around with sand everywhere, you are disoriented.  The land is
+made up of dunes that all look the same--only the odd rock makes it seem like
+you're moving at all.
 ~
 0 0 10
 D0
@@ -927,30 +927,30 @@ S
 
 
 #RESETS
-D 1 18130 5 1			; Oasis. Close Down
-O 1 18103 100 18141			a treasure chest to Secret.
-P 1 18102 100 18103			gold coins to container chest treasure
-P 1 18102 100 18103			gold coins to container chest treasure
+D 1 18130 5 1           ; Oasis. Close Down
+O 1 18103 100 18141         a treasure chest to Secret.
+P 1 18102 100 18103         gold coins to container chest treasure
+P 1 18102 100 18103         gold coins to container chest treasure
 *
-M 1 18100 6 18124			A Bedouin man. to Bedouin camp.
+M 1 18100 6 18124           A Bedouin man. to Bedouin camp.
 E 1 18106 100 8
 E 1 18105 100 13
 E 1 18100 100 16
 *
-M 1 18101 4 18126			the woman to Bedouin camp.
+M 1 18101 4 18126           the woman to Bedouin camp.
 *
-M 1 18103 5 18125			a Bedoiun child to Bedouin camp.
+M 1 18103 5 18125           a Bedoiun child to Bedouin camp.
 *
-M 1 18102 5 18119			a snake to Desert.
+M 1 18102 5 18119           a snake to Desert.
 *
-M 1 18104 8 18144			an asp to Desert.
+M 1 18104 8 18144           an asp to Desert.
 S
 
 
 #SPECIALS
-M  18100 spec_warrior			A Bedouin man.
-M  18102 spec_poison			a snake
-M  18104 spec_poison			an asp
+M  18100 spec_warrior           A Bedouin man.
+M  18102 spec_poison            a snake
+M  18104 spec_poison            an asp
 S
 
 

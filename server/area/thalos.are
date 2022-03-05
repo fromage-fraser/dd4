@@ -1,4 +1,4 @@
-#AREA	Anon~    Thalos~
+#AREA   Anon~    Thalos~
 10 25 0 100
 
 
@@ -2192,13 +2192,13 @@ D 0 5270 5 1
 *
 * Drow guards and scouts
 *
-M 0 5110 2 5270		guards at the entrance
+M 0 5110 2 5270     guards at the entrance
 E 1 5100 99 16
 M 0 5110 2 5270
 E 1 5100 99 16
-M 0 5111 2 5267		scout at the valley
+M 0 5111 2 5267     scout at the valley
 E 1 5100 99 16
-M 0 5111 2 5272		scout at the dim trail
+M 0 5111 2 5272     scout at the dim trail
 E 1 5100 99 16
 *
 S

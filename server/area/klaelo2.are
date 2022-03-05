@@ -1,4 +1,4 @@
-#AREA	Danath~    Forest~
+#AREA   Danath~    Forest~
 1 10 0 100
 
 
@@ -28,9 +28,9 @@ The bear is not pleased to see you.
 #18002
 Mosquito's~
 mosquito~
-A swarm of Mosquito's is hungrily looking at you.
+A swarm of Mosquitoes is hungrily looking at you.
 ~
-The mosquito's look lean and in need of blood YOURS!
+The mosquitoes look lean and in need of blood--YOURS!
 ~
 32|64 524288 -500 S
 10 0 0 0d0+0 0d0+0
@@ -74,7 +74,7 @@ Robyn~
 A Small Robin~
 A little bird flits from tree to tree getting insects for tea.
 ~
-The robyn is tiny about the size of your thumb.
+The robin is tiny about the size of your thumb.
 ~
 64|128 524288 0 S
 1 0 0 0d0+0 0d0+0
@@ -119,7 +119,7 @@ A
 A
 24 -10
 #18001
-necklace~
+bone necklace~
 a bone necklace~
 A little pile of bones on a string is on the ground.~
 ~
@@ -149,7 +149,7 @@ Gold coins~
 #18000
 Shadow Vale~
 Giant trees tower above you,  deep shadow is cast from the heavy foliage
-growing among the branches.  The pathway is worn from travelers boots as they
+growing among the branches.  The pathway is worn from travellers' boots as they
 warily wind their way through.  To the north you can just make out ...
 ~
 0 0 3
@@ -387,7 +387,7 @@ S
 Light Forest~
 The growth here is mostly young saplings but a few older trees are
 prominent as well. A tree here is twisted and gnarled from a twister, that
-has changed it's appearance for good. Vines hang from above, sweeping down
+has changed its appearance for good. Vines hang from above, sweeping down
 like hair from the branches.
 ~
 0 0 3
@@ -420,7 +420,7 @@ S
 Low Foothills~
 The path you are standing on here is sloped quite heavily making the path
 difficult for the unprepared.  Tread warily so you don't fall as it is a
-bumpy ride to the bottom. The pathway is split here in a threeway
+bumpy ride to the bottom. The pathway is split here in a three-way
 intersection.
 ~
 0 0 3
@@ -504,11 +504,11 @@ D3
 S
 #18021
 Thick oaks~
-A large branch from one of the many oak tree's here hangs low down over
+A large branch from one of the many oak trees here hangs low down over
 the trail, if you wished you could just about reach it and climb up.  You
 hear acorns crunch under your feet as you walk.
 
-To the east you see a wooden homestead set amoungst the trees. The door
+To the east you see a wooden homestead set amongst the trees. The door
 is quite small, probably only 5 feet high. You cannot see any windows to
 look inside.
 ~
@@ -545,9 +545,9 @@ D2
 S
 #18023
 Intersection~
-You are standing in the middle of a fourway intersection, of a game trail.
+You are standing in the middle of a four-way intersection, of a game trail.
 exits lead in all compass directions.  The forest here has made the trails
-quite narrow. Game makes it's way along here regularly.
+quite narrow. Game makes its way along here regularly.
 ~
 0 0 3
 D0
@@ -569,7 +569,7 @@ D3
 S
 #18024
 Dead End~
-Dead end.  The trails just stops here for some unknown reason, tree's and
+Dead end.  The trails just stops here for some unknown reason, trees and
 scrub are very thick here making going anywhere but south impossible.  The
 ground is covered in a thick blanket of leaves.
 ~
@@ -610,7 +610,7 @@ S
 #18027
 Forest~
 Down, down down you go, you have stepped onto a mossy slope and just slid
-down.  There is no way your goint to get back up there again you'll have
+down.  There is no way you're going to get back up there again you'll have
 to keep going.  Watch your step next time.  You just missed some sharp
 rocks that have collected at the bottom of the slope.
 ~
@@ -623,7 +623,7 @@ S
 #18028
 River bed~
 An old river bed, empty now except for little pools of rain water that
-have collected here, they are full of mosquitos, watch out as you might
+have collected here, they are full of mosquitoes, watch out as you might
 get malaria.  Better get the little beggars before they get you.
 ~
 0 0 4
@@ -667,9 +667,9 @@ D0
 S
 #18031
 Winding River~
-A Small Riverflows past here, it comes down from a steeply sloped valley
+A small river flows past here; it comes down from a steeply-sloped valley
 from the north, and turns easterly. The stones are slick with moss and
-lichen.  The water is quite deep and moves very swiftly, there doesn�t
+lichen.  The water is quite deep and moves very swiftly; there doesn't
 seem to be anyway across here.
 ~
 0 0 1
@@ -797,8 +797,8 @@ D3
 S
 #18039
 Dark forest~
-The tree's here look very old and are wilting from some kind of disease,
-this place feels creepy and seem's to reek of death.  There is a stench
+The trees here look very old and are wilting from some kind of disease,
+this place feels creepy and seems to reek of death.  There is a stench
 from the decomposing leaves all around you.
 ~
 0 0 1
@@ -814,7 +814,7 @@ S
 #18040
 Dying Forest~
 Death just hangs in the air here small game carcasses are here, rotting
-most of the tree's are dead but still standing. Something weird is killing
+most of the trees are dead but still standing. Something weird is killing
 everything that comes here.
 ~
 0 0 1
@@ -830,9 +830,9 @@ S
 #18041
 Dying Forest~
 You just about puke as the smell of rotting flesh and decomposing foliage
-hit's your nostrils.  A large stag is here with great holes punctured into
+hits your nostrils.  A large stag is here with great holes punctured into
 his mighty body he has died, but put up a good fight.  Evil markings have
-been carved into into it's body.
+been carved into its body.
 ~
 0 0 1
 D0
@@ -927,7 +927,7 @@ D1
 S
 #18047
 Light Forest~
-A low rugged hill covered in douglas fir is just off to the north the
+A low rugged hill covered in Douglas fir is just off to the north the
 trail winds sort of up and around it.  You can see a burrow that probably
 is the home of a badger.
 ~
@@ -943,10 +943,10 @@ D1
 S
 #18048
 Light Forest~
-An abandoned Hut is here with it's roof caved in, over the years the
-weather has got too much for the rotting wood.  A stone fireplace stands
+An abandoned hut is here with its roof caved in; over the years the
+weather became too much for the rotting wood.  A stone fireplace stands
 still at one end of the old hut. What remains of a sitting stool is half
-fallen from it's fastening on the wall.
+fallen from its fastening on the wall.
 ~
 0 0 3
 D3
@@ -998,9 +998,9 @@ D2
 S
 #18051
 Light Forest~
-The forest trail is quite wide here making it very easy for travel, the
-tree's don't seem to have grown close at all probably due o a lot of
-wildlife making it's way through here.
+The forest trail is quite wide here making it very easy for travel. The
+trees don't seem to have grown close at all probably due to a lot of
+wildlife making its way through here.
 ~
 0 0 3
 D0
@@ -1014,9 +1014,9 @@ D2
 S
 #18052
 Light Forest~
-Small Conifer tree's grow in abundance here, the forest has a calm
+Small Conifer trees grow in abundance here, the forest has a calm
 sensation about it. With the birds quietly singing away to each other.  A
-centipede has made it's home, in a log that is rotting away here.
+centipede has made its home, in a log that is rotting away here.
 ~
 0 0 3
 D0
@@ -1046,9 +1046,9 @@ D2
 S
 #18054
 Cliff face~
-A sheer Clift face rise's straight up from here about 400 feet, there is
+A sheer cliff face rises straight up from here about 400 feet; there is
 no way past here. Rocks have cascaded down from about over the years,
-making quite a pile of stone here.
+making quite a pile of stone.
 ~
 0 0 1
 D3
@@ -1061,34 +1061,34 @@ S
 
 #RESETS
 *
-M 1 18001 1 18026			a Giant Kodiak bear to Forest.
+M 1 18001 1 18026           a Giant Kodiak bear to Forest.
 E 1 18000 100 16
 *
-M 1 18002 3 18028			mosquito to River bed.
+M 1 18002 3 18028           mosquito to River bed.
 *
-M 1 18003 5 18029			a swarm of wasps to River bed.
+M 1 18003 5 18029           a swarm of wasps to River bed.
 *
-M 1 18005 1 18013			the badger. to Heavy Forest.
-O 1 18002 100 18042			a big toe to Medicine man' Lair.
+M 1 18005 1 18013           the badger. to Heavy Forest.
+O 1 18002 100 18042         a big toe to Medicine man' Lair.
 *
-M 1 18007 1 18042			a medicine man to Medicine man' Lair.
+M 1 18007 1 18042           a medicine man to Medicine man' Lair.
 E 1 18001 100 4
 G 1 18003 100
 *
-M 1 18006 2 18007			A Small Robin to Heavy Forest.
+M 1 18006 2 18007           A Small Robin to Heavy Forest.
 *
-M 1 18008 1 18023			the lynx to Intersection.
+M 1 18008 1 18023           the lynx to Intersection.
 *
 D 1 18021 1 1
 S
 
 
 #SPECIALS
-M  18000 spec_breath_lightning			Small rabbit.
-M  18002 spec_poison			mosquito
-M  18003 spec_poison			a swarm of wasps
-M  18006 spec_breath_lightning			A Small Robin
-M  18007 spec_breath_any			a medicine man
+M  18000 spec_breath_lightning          Small rabbit.
+M  18002 spec_poison                    mosquito
+M  18003 spec_poison                    a swarm of wasps
+M  18006 spec_breath_lightning          A Small Robin
+M  18007 spec_breath_any                a medicine man
 S
 
 

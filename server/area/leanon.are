@@ -1,14 +1,14 @@
-#AREA	Danath~  Lea'Non~
+#AREA   Danath~  Lea'Non~
 -2 -2 0 100
 
 #MOBILES
 #18200
 frog~
 a frog~
-A frog sits on the lillies here croaking loudly
+A frog sits on the lilies here croaking loudly.
 ~
-The frog doesnt seem to haves many cares in the world and
-looks content croakin his ass off
+The frog doesn't seem to have many cares in the world and
+looks content croaking his ass off.
 ~
 64 512 0 S
 3 0 0 0d0+0 0d0+0
@@ -17,7 +17,7 @@ looks content croakin his ass off
 #18201
 mouse field~
 field mouse~
-A field mouse is here hiding in the hay
+A field mouse is here, hiding in the hay.
 ~
 The field mouse is hiding here from YOU!
 ~
@@ -39,7 +39,7 @@ The mob looks back at you!
 #18203
 old man healer~
 an old man~
-A weathered old man warms his hands by the fire
+A weathered old man warms his hands by the fire.
 ~
 The man tells you 'Please sit....join me and I will help thee weary
 traveller'
@@ -51,7 +51,7 @@ traveller'
 #18204
 trader~
 A roaming trader~
-A roaming trader scuttles past you
+A roaming trader scuttles past you.
 ~
 The roaming bandit looks as if he can fell your eyes on him, he looks
 uneasy better get ready for him I think he knows you are here...
@@ -63,10 +63,10 @@ uneasy better get ready for him I think he knows you are here...
 #18205
 snake giant~
 a giant field snake~
-A giant field snake lunges at you
+A giant field snake lunges at you!
 ~
 His fangs look very poisonous and he looks pissed that you have disturbed
-his sleep
+his sleep.
 ~
 32|64|128 512|32768 0 S
 25 0 0 0d0+0 0d0+0
@@ -77,8 +77,8 @@ beast cave cavebeast~
 the cave beast~
 A massive cave beast is here walking around.
 ~
-Huge and hairy this creautre has muscles on muscles, he is awesome.
-You thing you see a sword glinting over his shoulder from a sheath behind him.
+Huge and hairy this creature has muscles on muscles, he is awesome.
+You think you see a sword glinting over his shoulder from a sheath behind him.
 ~
 2|64 8|32|128|8192 1000 S
 80 0 0 0d0+0 0d0+0
@@ -89,7 +89,7 @@ slave~
 the slave~
 Slave of the cave beast is here to do his bidding.
 ~
-Lean and thin almost wraithlike this slave has a hidden strenght that makes him quite tough.
+Lean and thin, almost wraithlike, this slave has a hidden strength that makes him quite tough.
 ~
 2|32|64 8|32|128|8192|32768 -1000 S
 25 0 0 0d0+0 0d0+0
@@ -102,7 +102,7 @@ Lean and thin almost wraithlike this slave has a hidden strenght that makes him 
 #18200
 creek~
 a creek~
-A creek trickles quietly~
+A creek trickles quietly.~
 ~
 25 0 8192
 0~ 1~ 6~ 11~
@@ -110,15 +110,15 @@ A creek trickles quietly~
 #18201
 billy~
 a billy~
-There is a fire crackilng with a billy boiling away~
+There is a fire crackling with a billy boiling away.~
 ~
 25 0 8192
 0~ 1~ 6~ 11~
 5 0 0
 #18202
-pitch fork~
-a pitch fork~
-A pitch fork lies here stuck in a stack of hay~
+pitch fork pitchfork~
+a pitchfork~
+A pitchfork lies here, stuck in a stack of hay.~
 ~
 5 0 1|8192
 0~ 1~ 6~ 2~
@@ -127,8 +127,8 @@ A
 18 0
 #18203
 pitch fork pitchfork~
-a pitch fork~
-A pitch fork is stuck here in the haystack~
+a pitchfork~
+A pitch fork is stuck here in the haystack.~
 ~
 18 0 1|16384
 0~ 1~ 6~ 11~
@@ -136,9 +136,9 @@ A pitch fork is stuck here in the haystack~
 A
 13 0
 #18204
-hay~
+hay stack haystack~
 a hay stack~
-A HUGE Hay stack~
+A HUGE Hay stack.~
 ~
 13 0 0
 0~ 1~ 6~ 11~
@@ -158,7 +158,7 @@ A
 A
 18 15
 #18207
-wand~
+wand stick~
 a wand~
 A small stick with claw marks in it.~
 ~
@@ -209,9 +209,8 @@ A
 #ROOMS
 #18200
 Plains~
-Long grass blow gently in the wind, as the breeze sweeps through it the
-seeds are picked up and drift across in the air.
-The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -225,9 +224,9 @@ D3
 S
 #18201
 Plains~
-You are on a well worn path.
+You are on a well-worn path.
 To the south you see a very deep pit and you hear your own echo in it,
-but thats not all you hear coming from the pit.
+but that's not all you hear coming from the pit.
 ~
 0 0 2
 D0
@@ -249,8 +248,8 @@ D3
 S
 #18202
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -264,8 +263,8 @@ D2
 S
 #18203
 In the Pit~
-You have slipped into a pit and the home of two giant field snakes you look around to see if they are
-at home.  Their nest is here amd it smells like they have been here very recently.
+You have slipped into a pit which serves as the home of two giant field snakes. You look around
+to see if they are at home.  Their nest is here, and it smells like they have been here very recently.
 ~
 0 1 2
 D0
@@ -275,8 +274,8 @@ D0
 S
 #18204
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -290,8 +289,8 @@ D3
 S
 #18205
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -309,8 +308,8 @@ D3
 S
 #18206
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -324,8 +323,8 @@ D3
 S
 #18207
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -342,10 +341,9 @@ D3
 0 -1 18206
 S
 #18208
-4-way junction~
-You are at a junction where the path extends in all major directions of the compass.  A parere dog
-has chosen this place to dig his home and you can hear something scuttling about underneath
-your feet.  While south of here a creek is trickling into a small pond.
+4-way Junction~
+You are at a junction where the path extends in all major directions of the compass.  A prairie dog has chosen this place to dig his home and you can hear something scuttling about underneath
+your feet.  South of here, a creek is trickling into a small pond.
 ~
 0 4 2
 D0
@@ -367,8 +365,8 @@ D3
 S
 #18209
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -386,8 +384,8 @@ D3
 S
 #18210
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -401,8 +399,8 @@ D3
 S
 #18211
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -416,8 +414,8 @@ D3
 S
 #18212
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -431,9 +429,9 @@ D3
 S
 #18213
 Eastern Junction~
-You are at the eastern junction where the path separates into the
-North, West and South
-There is a sign here which lies on the ground as if it had been kicked down
+You are at the eastern junction where the path separates into North, West and South.
+
+There is a sign here which lies on the ground as if it had been kicked down.
 ~
 0 0 2
 D0
@@ -461,8 +459,8 @@ sign~
 S
 #18214
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -476,8 +474,8 @@ D2
 S
 #18215
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -491,8 +489,8 @@ D2
 S
 #18216
 The Campsite~
-You are at an old man's camp site, you see his small dwelling and nod to him in greeting he gestures for
-you to sit by the fire and rest a while.  The warmth floods through your body as your stretch out your hands.
+You are at an old man's camp site. You see his small dwelling and nod to him in greeting as he gestures for
+you to sit by the fire and rest a while.  Warmth floods through your body as you stretch out your hands.
 ~
 0 4|16384 2
 D3
@@ -501,20 +499,21 @@ D3
 0 -1 18218
 E
 fire~
-you look into the fire and it crackles fiercly as if it knew you
-were looking at it~
+You look into the fire and it crackles fiercely, as if it knew you
+were looking at it.
+~
 E
 billy~
-The billy is fill with a liquid of some kind
+The billy is full of liquid of some kind.
 
-an old man says 'go ahead,  try some you will like it'
+An old man says, 'Go ahead, try some. You will like it.'
 
 ~
 S
 #18217
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -528,9 +527,10 @@ D2
 S
 #18218
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
-To the East you hear the sound of a crackling fire
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
+
+To the East you hear the sound of a crackling fire.
 ~
 0 0 2
 D0
@@ -548,9 +548,8 @@ D2
 S
 #18219
 The Creek~
-A freshwater creek trickles down from a spring on a ledge about head height, the water very cool
-to the touch makes you thirst for it looks very refreshing.  Small pebbles make the floor of the
-creek a little slippery.
+A freshwater creek trickles down from a spring on a ledge about head height. The water is very cool
+and looks very refreshing.  Small pebbles make the floor of the creek a little slippery.
 ~
 0 0 2
 D0
@@ -572,8 +571,8 @@ D3
 S
 #18220
 A Pond~
-The creek trickles into the pond that has been overgrown with weeds, small tadpoles swim
-merrily around as they wait to become full grown frogs.  A small sign in the middle of the pond
+The creek trickles into the pond that has been overgrown with weeds. Small tadpoles swim
+merrily around as they wait to become full-grown frogs.  A small sign in the middle of the pond
 stands out a little.
 ~
 0 0 2
@@ -582,7 +581,8 @@ D0
 ~
 0 -1 18219
 D5
-Weeds are here to thick to pass~
+Weeds are here, too thick to pass.
+~
 weeds~
 1 -1 18221
 E
@@ -596,10 +596,10 @@ sign~
 S
 #18221
 Underwater~
-A secret pool under all the weeds.  You glance around and discover the the pool is quite a bit deeper
-than you first thought.  A small ledge is on one side with lichen growing all over it.
+A secret pool under all the weeds.  You glance around and discover that the pool is quite a bit deeper
+than you first thought.  A small ledge on one side has lichen growing all over it.
 ~
-0 1|8|8192 6
+0 1|8|8192 8
 D4
 The weeds are too thick to surface~
 weeds~
@@ -612,9 +612,10 @@ S
 #18222
 Underwater~
 Air becomes a primary concern as you realise how long you have been under the water.  The water is
-thicker here almost slimy.  The floor is thick with mud and slime small creatures crawl amoung your toes.
+thicker here: almost slimy.  The floor is thick with mud and slime, and small creatures crawl between
+your toes.
 ~
-0 1|8|512|8192|16384 6
+0 1|8|512|8192|16384 8
 D0
 ~
 ~
@@ -629,7 +630,7 @@ Underwater~
 You are in a small tunnel that goes up and south, it seems not many people have been here before.
 The floor is covered with a thick slime.
 ~
-0 1|8|512|8192 6
+0 1|8|512|8192 8
 D2
 ~
 ~
@@ -641,8 +642,8 @@ D4
 S
 #18224
 A cave~
-You have emerged into dark cave wih a chest in one corner containing treasures one would assume.
-It seems that somthing has also made this it's home.
+You have emerged into a dark cave with a chest in one corner--containing treasure, one would assume.
+It seems that something has also made this its home.
 ~
 0 1|8|512|8192 0
 D5
@@ -652,9 +653,10 @@ D5
 S
 #18225
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.  To the
-north you can make out a building of some kind.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
+
+To the north you can make out a building of some kind.
 ~
 0 0 2
 D0
@@ -672,8 +674,8 @@ D2
 S
 #18226
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -691,8 +693,8 @@ D3
 S
 #18227
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 4 2
 D0
@@ -706,8 +708,8 @@ D3
 S
 #18228
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -721,8 +723,8 @@ D2
 S
 #18229
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 4 2
 D0
@@ -740,8 +742,8 @@ D3
 S
 #18230
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -755,8 +757,8 @@ D1
 S
 #18231
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -770,8 +772,8 @@ D3
 S
 #18232
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -785,8 +787,8 @@ D3
 S
 #18233
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -800,8 +802,8 @@ D3
 S
 #18234
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -815,8 +817,8 @@ D3
 S
 #18235
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -834,10 +836,10 @@ D3
 S
 #18236
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 
-To the south there is a strange haze but you cannot make it out...
+To the south there is a strange haze, but you can't make anything out in it...
 ~
 0 0 2
 D0
@@ -851,8 +853,8 @@ D2
 S
 #18237
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 4 2
 D0
@@ -870,8 +872,8 @@ D2
 S
 #18238
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -889,8 +891,8 @@ D3
 S
 #18239
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -904,10 +906,10 @@ D2
 S
 #18240
 Before a Mountain Range~
-Long grass blow gently in the wind, as the breese sweeps through it the
-seeds are picked up and drift across in the air.  The haze created by dust
-and small seeds impedes your vison.  The snow-capped peaks of a magnificent
-mountain range rise magestically to the north.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
+
+The snow-capped peaks of a magnificent mountain range rise majestically to the north.
 ~
 0 0 2
 D0
@@ -921,8 +923,8 @@ D3
 S
 #18241
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -936,8 +938,8 @@ D3
 S
 #18242
 The Hay Stack~
-A large field,  with stacks of hay scattered about, there is a large haystack piled in the middle
-of the field.  A farmer has been woirking very hard to get the work done here.
+A large field with stacks of hay scattered about. There is a large haystack in the middle
+of the field.  Some farmer must have been working very hard to get their work done here.
 ~
 0 0 2
 D1
@@ -947,8 +949,8 @@ D1
 S
 #18243
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -962,8 +964,8 @@ D2
 S
 #18244
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D2
@@ -977,8 +979,8 @@ D3
 S
 #18245
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -992,8 +994,8 @@ D3
 S
 #18246
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -1007,8 +1009,8 @@ D1
 S
 #18247
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -1022,10 +1024,11 @@ D2
 S
 #18248
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked
-up and drift across in  the air.  The haze created by dust and small seeds impedes
-your vison. A dirt track winds east tne north, to a very large imposing mountain.
-Howls of terror drift across the plains followed by blood curdling screams.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
+
+A dirt track winds east then north, to a very large imposing mountain.
+Howls of terror echo across the plains, followed by blood curdling screams.
 ~
 0 0 2
 D1
@@ -1038,9 +1041,10 @@ D2
 0 -1 18247
 S
 #18249
-Underneath a haystack~
+Underneath a Haystack~
 You are standing in the haystack.
-It is very warm and you can feel a sweat starting to bead on your forehead
+
+It is very warm and you can feel sweat starting to bead on your forehead.
 ~
 0 4 1
 D4
@@ -1050,8 +1054,8 @@ D4
 S
 #18250
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -1065,8 +1069,8 @@ D1
 S
 #18251
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D0
@@ -1080,9 +1084,9 @@ D3
 S
 #18252
 Plains~
-You are standing on a well worn path.
-you hear the sounds of a busy city but cant quite make out the direction
-it is coming from
+You are standing on a well-worn path.
+
+You hear the sounds of a busy city, but cant quite make out the direction they're coming from.
 ~
 0 0 2
 D0
@@ -1096,8 +1100,8 @@ D2
 S
 #18253
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -1111,8 +1115,8 @@ D3
 S
 #18254
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -1126,9 +1130,10 @@ D3
 S
 #18255
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
-The sounds of a busy city can be heard off to the east from here
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
+
+The sounds of a busy city can be heard off to the east of here.
 ~
 0 0 2
 D1
@@ -1142,10 +1147,10 @@ D3
 S
 #18256
 Plains~
-You are on a well worn path,  all around you see vast areas of grassy plains
-the sounds of a city are quite loud and as you look east you see the smoke
-from small fires in the city rising to meet the clouds
-You see a small sign here.
+You are on a well-worn path surrounded by a vast area of grassy plains.  The sounds of a city are
+quite loud, and as you look east you see smoke from small fires rising to meet the clouds.
+
+There is a small sign here.
 ~
 0 0 2
 D1
@@ -1162,21 +1167,23 @@ D3
 0 -1 18255
 E
 small sign~
-|-------------------|
-|      A N O N      |
-|                   |
-|    Popn: 3,405    |
-|     Est: 306      |
-|                   |
-|-------------------|
+|-------------------------------|
+|        A N O N                |
+|                               |
+|       Popn: 3,405             |
+|       Est: 306                |
+|                               |
+|                               |
+|-------------------------------|
 ~
 S
 #18257
 Entrance to Anon~
-You are standing outside the entrance to Anon. The City walls stand before
-you, there weather beaten exterior, surely hold many tales to attempted
-attacks and defenses. the noise of a busy markey comes from within these
-walls. A place to rest, drink, food and women seems to draw you in.
+You are standing outside the entrance to Anon. The city walls stand before
+you; their weather-beaten exterior surely holding many tales of attempted
+attack and heroic defense. The noise of a busy market comes from behind the
+walls. The thought of a place you can rest, drink, eat food and pursue romance
+draws you onward.
 ~
 0 0 1
 D1
@@ -1190,8 +1197,8 @@ D3
 S
 #18260
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds are picked up and
-drift across in  the air.  The haze created by dust and small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D2
@@ -1205,9 +1212,8 @@ D3
 S
 #18261
 Plains~
-Long grass blow gently in the wind, as the breese sweeps through it the seeds
-are picked up and drift across in  the air.  The haze created by dust and
-small seeds impedes your vison.
+Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
+drift through in the air.  The haze created by dust and small seeds impedes your vision.
 ~
 0 0 2
 D1
@@ -1221,9 +1227,9 @@ D5
 S
 #18262
 Behind the Waterfall~
-Behind you, a creek trickles over a small ledge, about the height of a man.
+Behind you a creek trickles over a small ledge, about the height of a man.
 You can comfortably stand in this small recess behind the waterfall.  Further
-on, the recess seems to open up in to a small room.
+on, the recess opens up into a small room.
 ~
 0 1|8 0
 D1
@@ -1241,33 +1247,33 @@ S
 
 
 #RESETS
-O 1 18200 100 18219			a creek to A room
+O 1 18200 100 18219                     a creek to A room
 *
 *
-M 1 18200 2 18220			a frog to a Pond
-D 1 18220 5 1			; a Pond Close Down
-D 1 18221 4 1			; Underwater Close Up
+M 1 18200 2 18220                       a frog to a Pond
+D 1 18220 5 1                   ; a Pond Close Down
+D 1 18221 4 1                   ; Underwater Close Up
 
 *
-M 1 18203 1 18216			an old man to the Campsite
-O 1 18201 100 18216			a billy to the Campsite
+M 1 18203 1 18216                       an old man to the Campsite
+O 1 18201 100 18216                     a billy to the Campsite
 *
-M 1 18201 2 18242			field mouse to an entrance
-O 1 18204 100 18242			A hay stack to an entrance
+M 1 18201 2 18242                       field mouse to an entrance
+O 1 18204 100 18242                     A hay stack to an entrance
 *
-M 1 18201 2 18249			field mouse to underneath a haystack
+M 1 18201 2 18249                       field mouse to underneath a haystack
 *
-M 1 18204 1 18211			A roaming bandit to Plains
+M 1 18204 1 18211                       A roaming bandit to Plains
 *
-M 1 18204 2 18205			A roaming bandit to Plains
+M 1 18204 2 18205                       A roaming bandit to Plains
 *
-M 1 18205 2 18203			a giant field snake to In the Pit
+M 1 18205 2 18203                       a giant field snake to In the Pit
 *
-M 1 18205 1 18203			a giant field snake to In the Pit
+M 1 18205 1 18203                       a giant field snake to In the Pit
 *
-M 1 18201 1 18242			field mouse to an entrance
+M 1 18201 1 18242                       field mouse to an entrance
 *
-M 1 18206 1 18224			the cave beast to A cave
+M 1 18206 1 18224                       the cave beast to A cave
 E 1 18206 100 16
 E 1 18206 100 18
 E 1 18207 100 17
@@ -1278,34 +1284,34 @@ E 1 18210 100 15
 G 1 18209 100
 G 1 18203 100
 *
-M 1 18207 1 18221			the slave to Underwater
+M 1 18207 1 18221                       the slave to Underwater
 *
-M 1 18206 1 18222			the cave beast to Underwater
+M 1 18206 1 18222                       the cave beast to Underwater
 *
-M 1 18207 1 18223			the slave to underwater
+M 1 18207 1 18223                       the slave to underwater
 *
-M 1 18204 1 18207			A roaming bandit to Plains
+M 1 18204 1 18207                       A roaming bandit to Plains
 *
-M 1 18204 1 18212			A roaming bandit to Plains
+M 1 18204 1 18212                       A roaming bandit to Plains
 *
-M 1 18204 1 18218			A roaming bandit to Plains
+M 1 18204 1 18218                       A roaming bandit to Plains
 *
-M 1 18204 1 18226			A roaming bandit to Plains
+M 1 18204 1 18226                       A roaming bandit to Plains
 *
-M 1 18204 1 18229			A roaming bandit to Plains
+M 1 18204 1 18229                       A roaming bandit to Plains
 *
-M 1 18204 1 18232			A roaming bandit to Plains
+M 1 18204 1 18232                       A roaming bandit to Plains
 S
 
 
 #SHOPS
-18203 5 9 8 19 1 75 125 0 23			an old man
+18203 5 9 8 19 1 75 125 0 23                    an old man
 0
 
 
 #SPECIALS
-M  18203 spec_cast_adept			an old man
-M  18206 spec_warrior    			the cave beast
+M  18203 spec_cast_adept                        an old man
+M  18206 spec_warrior                           the cave beast
 S
 
 

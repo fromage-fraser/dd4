@@ -75,9 +75,9 @@
 {&gsn_joust,                    &gsn_mount,             75,     PRE_KNIGHT},
 {&gsn_joust,                    &gsn_knight_base,       30,     PRE_KNIGHT},
 
-{&gsn_destrier,                 &gsn_group_riding,      85, PRE_KNIGHT},
-{&gsn_destrier,                 &gsn_mount,             85, PRE_KNIGHT},
-{&gsn_destrier,                 &gsn_knight_base,       30, PRE_KNIGHT},
+{&gsn_destrier,                 &gsn_group_riding,      85,     PRE_KNIGHT},
+{&gsn_destrier,                 &gsn_mount,             85,     PRE_KNIGHT},
+{&gsn_destrier,                 &gsn_knight_base,       30,     PRE_KNIGHT},
 
 /* **** METAL WORKING **** */
 

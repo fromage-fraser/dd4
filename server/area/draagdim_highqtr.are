@@ -1,4 +1,4 @@
-#AREA	Jammer~     The High Quarter~
+#AREA   Jammer~     The High Quarter~
 -2 -2 0 100
 
 #AREA_SPECIAL
@@ -3180,25 +3180,25 @@ S
 
 #RESETS
 D 1 28017 1 2         ; The entry hall Lock East
-D 1 28021 5 1			; Loft Close Down
+D 1 28021 5 1                   ; Loft Close Down
 D 1 28019 0 1         ; The bedroom Close North
 D 1 28012 3 1         ; Saturn Promanade Close West
-D 1 28024 3 2			; The City Park Lock West
-D 1 28030 1 2			; The City Park Lock East
-D 1 28027 0 2			; The City Park Lock North
+D 1 28024 3 2                   ; The City Park Lock West
+D 1 28030 1 2                   ; The City Park Lock East
+D 1 28027 0 2                   ; The City Park Lock North
 D 1 28048 1 1         ; The loungeroom close east
 D 1 28048 0 1         ; The loungeroom close north
 D 1 28050 1 1         ; Watch post Close East
 D 1 28051 3 1         ; Watch post Close West
 D 1 28016 4 1         ; The Corner Close Up
-D 1 28002 2 1			; High Street Close South
+D 1 28002 2 1                   ; High Street Close South
 D 1 28058 3 2         ; A room Lock West
 D 1 28059 1 1         ; A room Close East
-D 1 28060 3 1			; A room Close West
-D 1 28061 1 1			; A room Close East
-D 1 28062 3 1			; A room Close West
-D 1 28063 1 1			; A room Close East
-D 1 28065 1 1			; A closet Close East
+D 1 28060 3 1                   ; A room Close West
+D 1 28061 1 1                   ; A room Close East
+D 1 28062 3 1                   ; A room Close West
+D 1 28063 1 1                   ; A room Close East
+D 1 28065 1 1                   ; A closet Close East
 *
 M 1 28004 3 28031             the Groundskeeper to The City Park
 *
@@ -3245,7 +3245,7 @@ G 1 28002 100
 G 1 28003 100
 G 1 28007 100
 *
-M 1 28027 1 28089			; the massuer to the massage room
+M 1 28027 1 28089                       ; the massuer to the massage room
 *
 M 1 28006 4 28032             the Citizen to The City Park
 G 1 28012 100
@@ -3432,62 +3432,62 @@ E 1 28023 100 15
 E 1 28018 100 16
 G 1 28033 100
 G 1 28034 100
-D 1 28052 0 1			; Dragonshead Hotel Close North
-D 1 28015 2 1			; East Way Close South
+D 1 28052 0 1                   ; Dragonshead Hotel Close North
+D 1 28015 2 1                   ; East Way Close South
 D 1 28085 0 1            ; The Jail Close North
-D 1 28013 0 1		;Close north to Millionaire's Club
-D 1 28047 3 1		; Millionaire's Club close west
-D 1 28091 0 1		;Upstairs Hallway close north to Arrivals Room
-D 1 28093 0 1		;Upstairs Hallway close north to Sonne's Room
-D 1 28093 2 1 		;Upstairs Hallway close south to Xedd's Room
-D 1 28096 0 1		;Upstairs Hallway close north to Adrioth's Room
-D 1 28096 2 1		;Upstairs Hallway close south to Dexx's Room
-D 1 28099 2 1		;Upstairs Hallway close south to Firetongue's Room
-D 1 28142 0 1		;Upstairs Hallway close north to Truk's Room
-I 28037 100 28094 1	;bed to Sonne's Room
-I 28038 100 28094 1	;computer to Sonne's Room
-I 28039 100 28094 1	;magazines to Sonne's Room
-I 28040 100 28094 1	;fridge to Sonne's Room
-I 28041 100 28094 1	;desk to Sonne's Room
+D 1 28013 0 1           ;Close north to Millionaire's Club
+D 1 28047 3 1           ; Millionaire's Club close west
+D 1 28091 0 1           ;Upstairs Hallway close north to Arrivals Room
+D 1 28093 0 1           ;Upstairs Hallway close north to Sonne's Room
+D 1 28093 2 1           ;Upstairs Hallway close south to Xedd's Room
+D 1 28096 0 1           ;Upstairs Hallway close north to Adrioth's Room
+D 1 28096 2 1           ;Upstairs Hallway close south to Dexx's Room
+D 1 28099 2 1           ;Upstairs Hallway close south to Firetongue's Room
+D 1 28142 0 1           ;Upstairs Hallway close north to Truk's Room
+I 28037 100 28094 1     ;bed to Sonne's Room
+I 28038 100 28094 1     ;computer to Sonne's Room
+I 28039 100 28094 1     ;magazines to Sonne's Room
+I 28040 100 28094 1     ;fridge to Sonne's Room
+I 28041 100 28094 1     ;desk to Sonne's Room
 I 28042 100 28095 1       ;An areas schematic to {rXeddicus'{W chamber{x
 I 28043 100 28098 1           a pink bunny to Dexx's Armory
-M 1 28028 3 28140			;Souls to Shroud's lair
-O 1 28044 100 28140			;Sulfuric pool to Shroud's lair
-O 0 28045 1 28099			;Portal to Shroud's lair
-O 0 28046 1 28140			;Portal from Shroud's lair
-I 28047 100 28141 1			;broken longsword to Firetongue's Room
-I 28048 100 28141 1			;pitted full plate armor to Firetongue's Room
-I 28049	100 28141 1			;burnt kite shield to Firetongue's Room
-M 1 28029 1 28141			;Firetongue to Firetongue's Room
+M 1 28028 3 28140                       ;Souls to Shroud's lair
+O 1 28044 100 28140                     ;Sulfuric pool to Shroud's lair
+O 0 28045 1 28099                       ;Portal to Shroud's lair
+O 0 28046 1 28140                       ;Portal from Shroud's lair
+I 28047 100 28141 1                     ;broken longsword to Firetongue's Room
+I 28048 100 28141 1                     ;pitted full plate armor to Firetongue's Room
+I 28049 100 28141 1                     ;burnt kite shield to Firetongue's Room
+M 1 28029 1 28141                       ;Firetongue to Firetongue's Room
 *
-M 1 28026 3 28010			the fat merchant to Saturn Promanade
+M 1 28026 3 28010                       the fat merchant to Saturn Promanade
 E 1 28035 100 12
 G 1 28012 100
 *
-M 1 28026 3 28004			the fat merchant to Titan Avenue
+M 1 28026 3 28004                       the fat merchant to Titan Avenue
 E 1 28035 100 12
 G 1 28012 100
 *
-M 1 28026 1 28002			the fat merchant to High Street
+M 1 28026 1 28002                       the fat merchant to High Street
 E 1 28035 100 12
 G 1 28012 100
-D 1 28052 3 1			; Dragonshead Hotel Close West
-D 1 28037 5 2			; The City Wall Lock Down
-D 1 28032 2 2			; The City Park Lock South
-D 1 28029 0 2			; The Park Lake Lock North
-D 1 28029 1 2			; The Park Lake Lock East
-D 1 28029 2 2			; The Park Lake Lock South
-D 1 28029 3 2			; The Park Lake Lock West
+D 1 28052 3 1                   ; Dragonshead Hotel Close West
+D 1 28037 5 2                   ; The City Wall Lock Down
+D 1 28032 2 2                   ; The City Park Lock South
+D 1 28029 0 2                   ; The Park Lake Lock North
+D 1 28029 1 2                   ; The Park Lake Lock East
+D 1 28029 2 2                   ; The Park Lake Lock South
+D 1 28029 3 2                   ; The Park Lake Lock West
 S
 
 
 #SHOPS
-28007 19 0 0 0 0 200 100 8 19			the Baker
-28008 8 0 0 0 0 175 80 9 17			The Jeweller
-28009 2 4 3 10 0 185 95 0 23			Wizard
-28010 17 0 0 0 0 105 10 0 23			Bartender
-28016 5 9 0 0 0 190 35 7 19			Jasmir
-28012 0 0 0 0 0 110 100 0 23			Waiter
+28007 19 0 0 0 0 200 100 8 19                   the Baker
+28008 8 0 0 0 0 175 80 9 17                     The Jeweller
+28009 2 4 3 10 0 185 95 0 23                    Wizard
+28010 17 0 0 0 0 105 10 0 23                    Bartender
+28016 5 9 0 0 0 190 35 7 19                     Jasmir
+28012 0 0 0 0 0 110 100 0 23                    Waiter
 0
 
 
@@ -3506,7 +3506,7 @@ M  28019 spec_cast_mage                 the Green Mage
 M  28020 spec_cast_mage                 the Red Mage
 M  28021 spec_cast_mage                 the Blue Mage
 M  28022 spec_thief                     the Minstrel
-M  28027 spec_cast_adept				Jamuir
+M  28027 spec_cast_adept                                Jamuir
 S
 
 

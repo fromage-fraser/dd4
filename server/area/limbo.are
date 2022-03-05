@@ -1,4 +1,4 @@
-#AREA	Diku~    Limbo~
+#AREA   Diku~    Limbo~
 -3 -3 0 100
 
 #AREA_SPECIAL
@@ -22,15 +22,15 @@ confuses your senses and disorientates you.
 0 0
 8 8 2
 >greet_prog 100~
-	if carrying($n) == 3005
-		mpecho Puff says '{WNice axe you have there!{x'
-	else
-		mpecho Puff says '{WHi there.{x'
-	endif
+        if carrying($n) == 3005
+                mpecho Puff says '{WNice axe you have there!{x'
+        else
+                mpecho Puff says '{WHi there.{x'
+        endif
 ~
 >rand_prog 20~
 if rand(20)
-say See http://www.dragons-domain.org/faq/ for A's to all your Q's.
+say See https://smihilist.com/dd4/web/main/faq/dd-faq.html for A's to all your Q's.
 else
 if rand(10)
 say No, I'm not THAT Puff. Stupid "magic dragon"...
@@ -66,7 +66,7 @@ if rand(1)
 say Tip #4: When Hestia has PMS, run for cover.
 else
 if rand(10)
-say Tip #5: Ignore immortals and be disemboweled with a rusty keyboard!
+say Tip #5: Ignore immortals and be disembowelled with a rusty keyboard!
 else
 if rand(1)
 say Samxin prefers "Personal Assistant." Remember that. Or he'll smite you.
@@ -116,29 +116,29 @@ if name($n) == gezhp
     say Master! Thank goodness you've returned!
 else
     if isimmort($n)
-	if rand(50)
-	    bow $n
-	    say My Lord
-	else
-	    shake $n
-	    say Make yourself comfortable
-	endif
+        if rand(50)
+            bow $n
+            say My Lord
+        else
+            shake $n
+            say Make yourself comfortable
+        endif
     endif
 endif
 ~
 >rand_prog 10~
 if rand(25)
-    emote mutters incomprehensively
+    emote mutters incomprehensibly
     mpecho ..mumble mumble.. ..large breasted girlies.. ..murmur mutter..
 else
     if rand(25)
-	scream
-	say There's just too much for me to handle!
+        scream
+        say There's just too much for me to handle!
     else
-	if rand(25)
-	    puke
-	    emote mutters 'Damn prawns'
-	endif
+        if rand(25)
+            puke
+            emote mutters 'Damn prawns'
+        endif
     endif
 endif
 ~
@@ -156,13 +156,13 @@ if rand(30)
     shout Gadzooks! $n is killing me!
 else
     if rand(30)
-	scream
-	shout Gezhp! Save me!
-	pray
+        scream
+        shout Gezhp! Save me!
+        pray
     else
-	cast wrath $n
-	shout Say your prayers, $n
-	muhaha
+        cast wrath $n
+        shout Say your prayers, $n
+        muhaha
     endif
 endif
 ~
@@ -210,14 +210,14 @@ freezes.  His eyes gleam like emerald suns, his gaze capturing your mind.
 8 8 1
 >speech_prog heel~
 if name($n) == gezhp
-	emote growls and snorts
+        emote growls and snorts
 endif
 ~
 >speech_prog clan~
 if clan($n) == aod
-	'you're AOD
+        'you're AOD
 else
-	'you're not AOD
+        'you're not AOD
 endif
 endif
 ~
@@ -226,7 +226,7 @@ if rand(25)
     emote flexes his massive wings
 else
     if rand(25)
-	emote releases a deafening ROAR!
+        emote releases a deafening ROAR!
     endif
 endif
 ~
@@ -265,17 +265,17 @@ and alert, this man is more than a match for most mortals.
 0 0
 8 8 1
 >fight_prog 100~
-	    if rand(8)
-	       mpecho CHAT Watch as I deal death to $n!
-	    else
-	    if rand(8)
-	       mpecho CHAT $n shall taste my steel and DIE!
-	    else
-	    endif
-	    endif
+            if rand(8)
+               mpecho CHAT Watch as I deal death to $n!
+            else
+            if rand(8)
+               mpecho CHAT $n shall taste my steel and DIE!
+            else
+            endif
+            endif
 ~
 >death_prog 100~
-	    mpecho CHAT Masters, I have been defeated!
+            mpecho CHAT Masters, I have been defeated!
 ~
 |
 #76
@@ -306,11 +306,11 @@ if rand(25)
     emote flaps its feathery wings
     else
     if rand(25)
-	emote squawks and pecks at the ground
+        emote squawks and pecks at the ground
     else
-	if rand(25)
-	    sratches at the ground with its huge claws
-	endif
+        if rand(25)
+            sratches at the ground with its huge claws
+        endif
     endif
 endif
 ~
@@ -664,7 +664,7 @@ Up,  North and East of the Healer in Midgaard.  Thank you.~
 E
 Guitar~
 This is a limited edition custom designed electric guitar.  It is black
-and has the latest in tremelo and pickup technology.  It obviously does not
+and has the latest in tremolo and pickup technology.  It obviously does not
 belong to any mortal!~
 #71
 madboy's straight jacket~
@@ -803,7 +803,7 @@ A
 #83
 hunter leather~
 a leather vest~
-A non descript leather vest lies here...~
+A nondescript leather vest lies here...~
 ~
 9 64|512|1024 1|8
 0~ 1~ 6~ 11~
@@ -1143,8 +1143,8 @@ S
 Frag's Hovel~
 You are in a small, miserable, dwelling (for those of you nincompoops who
 don't know what a HOVEL is).  It's dark, dank, and cold.  At one end of the
-room, you see a sorry excuse of a rusty, squeaky bunkbed.  Obviously, neither
-of the beds are made.  A dirty, ragtorn teddy bear sleeps heavily on the
+room, you see a sorry excuse of a rusty, squeaky bunk-bed.  Obviously, neither
+of the beds are made.  A dirty, rag-torn teddy bear sleeps heavily on the
 lower bunk.  You see, to your dismay, TWO clock radios, both of which are
 ringing, which shows that this room was made for TWO people to sleep in,
 although it's barely 10 X 12 feet.  Papers, books, and laundry are thrown
@@ -1199,10 +1199,10 @@ voice, 'What foolish mortal dares to enter my lair?'
 S
 #75
 Lair of the Hunter~
-This square room contains all necessities for a subsistent existance.  The
+This square room contains all necessities for a subsistent existence.  The
 Hunter devotes his life to bringing THIEVES and KILLERS to justice.
 ~
-0 1|4|8|1024|8192 0
+0 1|4|8 0
 S
 #76
 Sassinak's Cupboard~
@@ -1219,7 +1219,7 @@ You have somehow made your way into this, rather nice looking
 bottle, you know its a bottle by its shape as it curves up to
 a piece of what looks like cork protruding from the ceiling.
 The walls are covered in sparking gems and the floor is covered
-with cusions. You notice a small sign on the side of the wall.
+with cushions. You notice a small sign on the side of the wall.
 ~
 0 4|8|8192|65536 0
 E
@@ -1255,7 +1255,7 @@ river.  The desk under the window is covered with books, notepads, pens, and
 empty coffee cups and coke cans.  Amidst the clutter is a framed picture of
 two beings, who look vaguely familiar to you.  Next to the desk is a small
 kitchenette, with a kettle and coffee supplies, a microwave, a sink, a
-cupboard, and a small refridgerator. There is a big squishy armchair in one
+cupboard, and a small refrigerator. There is a big squishy armchair in one
 corner, with a book open on one arm.  Next to the armchair is a large beanbag.
 ~
 0 4|8|1024|8192 0
@@ -1346,7 +1346,7 @@ scribbled on papers and printouts, half-used notebooks, and empty cans of
 Mountain Dew (tm).
     A rack of CD's stands between the computer and the stereo, and a small
 refrigerator stands next to the couch with a clear path between it and the
-desk, presumably for easy access on the rolling-reclining-swiveling chair.
+desk, presumably for easy access on the rolling-reclining-swivelling chair.
 Taped to the wall above the couch is an odd-looking mural with many
 familiar-looking faces.
 ~
@@ -1413,28 +1413,28 @@ E 1 87 100 15
 E 1 82 100 16
 E 1 81 100 17
 G 1 81 100
-M 1 76 1 80			The Watcher to the Watcher's domain
-O 1 96 100 76			a Donut Robot to Sassinak's Cupboard
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
-P 1 95 100 96			a yummy donut to container donutmaker
+M 1 76 1 80                     The Watcher to the Watcher's domain
+O 1 96 100 76                   a Donut Robot to Sassinak's Cupboard
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
+P 1 95 100 96                   a yummy donut to container donutmaker
 
-M 1 4 3 73			Souls to Torment's lair
-O 1 98 100 73			Sulfuric pool to Torment's lair
+M 1 4 3 73                      Souls to Torment's lair
+O 1 98 100 73                   Sulfuric pool to Torment's lair
 
-M 1 6 2 75 			Monkeys to Grail's lair (2 now, were 3)
+M 1 6 2 75                      Monkeys to Grail's lair (2 now, were 3)
 
 
-M 0 78 1 82               	add Ducky the duck to Samxin's Reality
+M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                       equip a duck collar (neck1)
 I 61 1 82 1               Samxins desk to Samxin's Reality
 I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's Reality
@@ -1444,9 +1444,9 @@ S
 
 #SPECIALS
 M  75 spec_grail                the Hunter
-M   1 spec_warrior		puff
-M   6 spec_celestial_repairman	monkey squadron
-M  5 spec_poison		gulgorthil
+M   1 spec_warrior              puff
+M   6 spec_celestial_repairman  monkey squadron
+M  5 spec_poison                gulgorthil
 S
 
 

@@ -776,7 +776,7 @@ king's guard~
 a kings guard~
 A king's guard patrols the halls.
 ~
-Wielding sturdier weapons and armor then you've seen so far you notice
+Wielding sturdier weapons and armor than you've seen so far you notice
 he looks to be decently armed, if not really expecting any trouble.
 ~
 0 0 0 S
@@ -808,7 +808,7 @@ she looks to be decently armed, if not really expecting any trouble.
 #26039
 king door guard~
 the kings door guard~
-The kings door guars stands here, guarding the kings and queens door.
+The kings door guard stands here, guarding the kings and queens door.
 ~
 He is even more heavily armed then the other guards you've seen so far.
 Looks like his function is to keep people from passing through the doors...
@@ -1051,7 +1051,7 @@ Phzeg~
 Phzeg~
 Phzeg is in charge of making the prisoners lives hell.
 ~
-He looks kinda like a cross between an umpaloompa and David Hasslehoff, with
+He looks kinda like a cross between an umpaloompa and David Hasselhoff, with
 just a tad of Dwarf thrown in.
 ~
 2 0 -1000 S
@@ -1068,7 +1068,7 @@ Rzzrdehcurfn~
 Rzzrdehcurfn~
 Rzzrdehcurfn cowers in fear as you open he door.
 ~
-He looks like he seems to be scared, but you get the sense it's an act.	His
+He looks like he seems to be scared, but you get the sense it's an act. His
 gaze seems to challenge you to call the bluff.
 ~
 2 0 1000 S
@@ -1753,8 +1753,8 @@ The portal of chance has been erected here.~
 1 0 0
 
 #26050
-kings sword~
-a kings sword~
+king's sword~
+a king's sword~
 A king's sword has been laid here.~
 ~
 5 0 1|8192
@@ -1767,7 +1767,7 @@ A
 
 #26051
 queen's sword~
-a queens sword~
+a queen's sword~
 A queen's sword has been laid here.~
 ~
 5 0 1|8192
@@ -1779,8 +1779,8 @@ A
 18 30
 
 #26052
-kings armor~
-kings armor~
+king's armor~
+king's armor~
 Some king's armor has been discarded here.~
 ~
 9 0 1|8
@@ -1805,9 +1805,9 @@ A
 18 30
 
 #26054
-kings helm~
-kings helm~
-A kings helm has been tossed here.~
+king's helm~
+king's helm~
+A king's helm has been tossed here.~
 ~
 9 0 1|16
 ~ ~ ~ ~
@@ -1818,9 +1818,9 @@ A
 18 -31
 
 #26055
-queens helm~
-queens helm~
-A queens helm has been tossed here.~
+queen's helm~
+queen's helm~
+A queen's helm has been tossed here.~
 ~
 9 0 1|16
 ~ ~ ~ ~
@@ -1914,18 +1914,18 @@ A dust pan has been dropped by a servant here.~
 5 0 0
 
 #26068
-servants uniform~
-a servants uniform~
-A servant must be running around naked, as a uniform lies here.~
+servant's uniform~
+a servant's uniform~
+A servant must be running around naked, as one's uniform lies here.~
 ~
 9 0 1|1024
 ~ ~ ~ ~
 1 0 0
 
 #26069
-servants pin~
-a servants pin~
-A servants pin is spinning around here.~
+servant's pin~
+a servant's pin~
+A servant's pin is spinning around here.~
 ~
 9 33554432 1|4
 ~ ~ ~ ~
@@ -1950,8 +1950,8 @@ A
 
 #26071
 ring fortitude~
-a ring of fortititude~
-A ring of fortititude has been taken from it's rightful owner.~
+a ring of fortitude~
+A ring of fortitude has been taken from its rightful owner.~
 ~
 9 1|2|32 1|2
 ~ ~ ~ ~
@@ -2058,7 +2058,7 @@ A
 
 #26086
 glowing tablet~
-a {Yglowing{x tablet~
+A {Yglowing{x tablet~
 A {Yglowing{x tablet calls to you from the shelf.~
 ~
 13 0 1
@@ -2066,9 +2066,9 @@ A {Yglowing{x tablet calls to you from the shelf.~
 1 0 0
 E
 glowing tablet~
-{mThe consecution will occur. Upon the advent of The Genesis unlock your mind and the
-domain of the setting sun to release the way from nothingness and breach the boundries
-of non-existence.{x
+{mThe consecration will occur. Upon the advent of The Genesis unlock your mind
+and the domain of the setting sun to release the way from nothingness and breach
+the boundaries of non-existence.{x
 ~
 
 #26087
@@ -2147,8 +2147,8 @@ A
 
 #26093
 king burden~
-a kings burden~
-A kings burden has been dropped.~
+a king's burden~
+A king's burden has been dropped.~
 ~
 9 0 0
 ~ ~ ~ ~
@@ -2162,8 +2162,8 @@ A
 
 #26094
 queen concern~
-a queens concern~
-A queens concern has been dropped here.~
+a queen's concern~
+A queen's concern has been dropped here.~
 ~
 9 0 0
 ~ ~ ~ ~
@@ -2213,7 +2213,7 @@ A
 #26098
 prickly teeth~
 prickly teeth~
-A pricky set of teeth.~
+A prickly set of teeth.~
 ~
 5 67108864 0
 ~ ~ ~ 10~
@@ -2990,7 +2990,7 @@ S
 #26041
 Sparring arena~
 It appears almost the entire second level of the castle is a large open area
-used for dueling.
+used for duelling.
 ~
 0 8 0
 D 0
@@ -3400,7 +3400,7 @@ D 3
 S
 
 #26062
-A fighter practicing~
+A fighter practising~
 A combatant trains here. He looks to be training with a staff weapon.
 ~
 0 8 0
@@ -3423,7 +3423,7 @@ D 3
 S
 
 #26063
-A {Rviscious{x warrior~
+A {Rvicious{x warrior~
 A man who looks pissed and prepared to fight stares at you. You were wondering
 when this would happen....
 ~
@@ -3550,7 +3550,7 @@ S
 The arena again~
 There are people everywhere in here. It's amazing. Almost as amazing as the
 skill of the thing in front of you with that dagger he's throwing around with
-practiced ease.
+practised ease.
 ~
 0 8 0
 D 1
@@ -4012,7 +4012,7 @@ S
 #26106
 Combatant's quarters~
 This room is used to house the various pieces of equipment the combatant's use
-in the arena. Dented shields and knicked swords lie scattered about.
+in the arena. Dented shields and nicked swords lie scattered about.
 ~
 0 8 0
 D 0
@@ -4957,23 +4957,23 @@ M 0 26004 2 26084               add a cyan guard to {CCyan{x door
 M 0 26005 2 26008               add a purple guard to The {Mpurple{x door
 M 0 26005 2 26083               add a purple guard to {MPurple{x door
 M 0 26006 5 26021               add a female servant to A hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26006 5 26023               add a female servant to More hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26006 5 26025               add a female servant to The hallway continues
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26006 5 26027               add a female servant to The Hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26006 5 26029               add a female servant to Another part of the hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26007 12 26081              add giver upper mob to The Test
@@ -4996,31 +4996,31 @@ M 0 26009 2 26085               add an orange guard to {yOrange{x door
 M 0 26010 2 26010               add a green guard to The {GGreen{x door
 M 0 26010 2 26086               add a green guard to {GGreen{x door
 M 0 26011 5 26030               add a male servant to Some more hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26069 0 3                       equip a servants pin (neck1)
 E 0 26068 0 5                       equip a servants uniform (body)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26011 5 26032               add a male servant to The hallway rises slightly
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26069 0 3                       equip a servants pin (neck1)
 E 0 26068 0 5                       equip a servants uniform (body)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26011 5 26034               add a male servant to End of the hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26069 0 3                       equip a servants pin (neck1)
 E 0 26068 0 5                       equip a servants uniform (body)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26011 5 26036               add a male servant to Slight rise
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26069 0 3                       equip a servants pin (neck1)
 E 0 26068 0 5                       equip a servants uniform (body)
 E 0 26067 0 16                      equip a dust pan (wield)
 E 0 26070 0 17                      equip a dust rag (hold)
 M 0 26011 5 26038               add a male servant to Turn in the hallway
-E 0 26071 0 1                       equip a ring of fortititude (finger1)
+E 0 26071 0 1                       equip a ring of fortitude (finger1)
 E 0 26069 0 3                       equip a servants pin (neck1)
 E 0 26068 0 5                       equip a servants uniform (body)
 E 0 26067 0 16                      equip a dust pan (wield)

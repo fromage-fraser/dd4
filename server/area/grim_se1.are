@@ -1,4 +1,4 @@
-#AREA	Grim~  The Sea of Deception~
+#AREA   Grim~  The Sea of Deception~
 5 10 0 100
 
 #MOBILES
@@ -1066,41 +1066,41 @@ S
 
 #RESETS
 R 1 18803 4                    ; Randomize Calmer Waters
-R 1 18804 4			; Randomize Out to sea
-R 1 18805 4			; Randomize Out to sea
-R 1 18806 4			; Randomize Out to sea
-R 1 18807 4			; Randomize Floating beside a dark Sloop
-R 1 18808 4			; Randomize Lost at sea
-R 1 18809 4			; Randomize Lost at sea
-R 1 18810 4			; Randomize Out to sea
-R 1 18811 4			; Randomize Out to sea
-R 1 18812 4			; Randomize Out to sea
-R 1 18813 4			; Randomize Out to sea
-R 1 18814 4			; Randomize Out to sea
-R 1 18815 4			; Randomize Out to sea
+R 1 18804 4         ; Randomize Out to sea
+R 1 18805 4         ; Randomize Out to sea
+R 1 18806 4         ; Randomize Out to sea
+R 1 18807 4         ; Randomize Floating beside a dark Sloop
+R 1 18808 4         ; Randomize Lost at sea
+R 1 18809 4         ; Randomize Lost at sea
+R 1 18810 4         ; Randomize Out to sea
+R 1 18811 4         ; Randomize Out to sea
+R 1 18812 4         ; Randomize Out to sea
+R 1 18813 4         ; Randomize Out to sea
+R 1 18814 4         ; Randomize Out to sea
+R 1 18815 4         ; Randomize Out to sea
 R 1 18816 4                     ; Randomize A powerful whirlpool
-R 1 18817 4			; Randomize Out to sea
-R 1 18818 4			; Randomize Out to sea
-R 1 18819 4			; Randomize Out to sea
-R 1 18820 4			; Randomize Out to sea
+R 1 18817 4         ; Randomize Out to sea
+R 1 18818 4         ; Randomize Out to sea
+R 1 18819 4         ; Randomize Out to sea
+R 1 18820 4         ; Randomize Out to sea
 R 1 18821 4                    ; Randomize Above a hazy outline
 R 1 18828 4                     ; Randomize Out to sea
 *
-M 1 18804 1 18824			a hammerhead shark to Diving Underwater
+M 1 18804 1 18824           a hammerhead shark to Diving Underwater
 E 1 18802 100 6                        give head to hammerhead
-M 1 18800 1 18811			a young sailor to Out to sea
-M 1 18801 5 18805			a seagull to Out to sea
-M 1 18801 5 18805			a seagull to Out to sea
-M 1 18801 5 18818			a seagull to Out to sea
+M 1 18800 1 18811           a young sailor to Out to sea
+M 1 18801 5 18805           a seagull to Out to sea
+M 1 18801 5 18805           a seagull to Out to sea
+M 1 18801 5 18818           a seagull to Out to sea
 E 1 18800 100 17                       give herring to seagull
-M 1 18801 5 18814			a seagull to Out to sea
-M 1 18801 5 18828			a seagull to Out to sea
+M 1 18801 5 18814           a seagull to Out to sea
+M 1 18801 5 18828           a seagull to Out to sea
 E 1 18800 100 17                       give herring to seagull
 *
-M 1 18802 2 18821			a friendly dolphin to Above a hazy outline
-M 1 18802 2 18810			a friendly dolphin to Out to sea
-M 1 18803 1 18819			a blue whale to Out to sea
-O 1 18801 100 18816			debris from a ship to A powerful whirlpool
+M 1 18802 2 18821           a friendly dolphin to Above a hazy outline
+M 1 18802 2 18810           a friendly dolphin to Out to sea
+M 1 18803 1 18819           a blue whale to Out to sea
+O 1 18801 100 18816         debris from a ship to A powerful whirlpool
 *
 R 1 18831 5                  ; Randomize Disorientated underwater
 R 1 18830 5                  ; Randomize Disorientated underwater
@@ -1108,11 +1108,11 @@ R 1 18832 5                  ; Randomize Disorientated underwater
 M 1 18805 1 18830                      a small fish to Disorientated underwater
 *
 M 1 18806 1 18835                      Dahij the prophet to A circle of trees
-E 1 3031 0 0				give Dahij a light
+E 1 3031 0 0                give Dahij a light
 *
-O 1 18803 100 18826			an intricately carved gold coin to Exploring the ocean floor
+O 1 18803 100 18826         an intricately carved gold coin to Exploring the ocean floor
 O 1 18804 100 18839                    a beautiful golden coin to The bottom of the mud pit
-M 1 18805 1 18827			a small fish to Exploring the ocean floor
+M 1 18805 1 18827           a small fish to Exploring the ocean floor
 S
 
 #SPECIALS

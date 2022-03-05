@@ -1,4 +1,4 @@
-#AREA	Brant~ Dwarven Homestead~
+#AREA   Brant~ Dwarven Homestead~
 1 55 0 100
 
 #MOBILES
@@ -1203,7 +1203,7 @@ S
 
 
 #SPECIALS
-M  20506 spec_thief			a dwarven thief
+M  20506 spec_thief         a dwarven thief
 S
 
 

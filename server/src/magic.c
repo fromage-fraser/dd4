@@ -1742,6 +1742,28 @@ void spell_detect_magic( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
 }
 
+void spell_detect_curse( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        CHAR_DATA  *victim = (CHAR_DATA *) vo;
+        AFFECT_DATA af;
+
+        if ( IS_AFFECTED( victim, AFF_DETECT_CURSE ) )
+                return;
+
+        af.type      = sn;
+        af.duration  = level;
+        af.location  = APPLY_NONE;
+        af.modifier  = 0;
+        af.bitvector = AFF_DETECT_CURSE;
+        affect_to_char( victim, &af );
+
+        if ( ch != victim )
+                send_to_char( "They now have an affinity for the accursed.\n\r", ch );
+
+        send_to_char( "You feel an affinity for the accursed.\n\r", victim);
+        return;
+}
+
 
 void spell_detect_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 {
@@ -1926,7 +1948,7 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
 
                 /*
-                 * Continuing the ugliness for AFF bits on mobs we want players to be
+                 * Continuing the ugliness for AFF flags on mobs we want players to be
                  * able to dispel (not set in stone, make imm-only if creates problems).
                  * - Owl 19/2/22
                  */
@@ -2146,6 +2168,14 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         REMOVE_BIT(victim->affected_by, AFF_DETECT_TRAPS);
                         send_to_char( "You feel less perspicacious.\n\r", victim );
                         act( "$n seems less perspicacious.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
+                if (IS_AFFECTED(victim, AFF_DETECT_CURSE) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_DETECT_CURSE);
+                        send_to_char( "You no longer feel an affinity for the accursed.\n\r", victim );
+                        act( "$n seems less attuned to the accursed.", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2380,10 +2410,10 @@ void spell_entrapment( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector= AFF_HOLD;
         affect_to_char(victim, &af);
 
-        act( "You successfully entrap $N in your web.", ch, NULL, victim, TO_CHAR );
-        act( "A sticky mesh forms around you, preventing you from moving.",
+        act( "You successfully immobilise $N in your stasis field.", ch, NULL, victim, TO_CHAR );
+        act( "A stasis field surround you, preventing you from moving.",
             ch, NULL, victim, TO_VICT);
-        act( "A sticky mesh forms around $N, preventing $S from moving.",
+        act( "A stasis field forms around $N, preventing $S from moving.",
             ch, NULL, victim, TO_ROOM );
         return;
 }
@@ -6272,13 +6302,13 @@ void spell_possession( int sn, int level, CHAR_DATA *ch, void *vo  )
 
         if ( ch->desc->original )
         {
-                send_to_char( "You are already in possesion of another.\n\r", ch );
+                send_to_char( "You are already in possession of another.\n\r", ch );
                 return;
         }
 
         if ( !IS_AFFECTED( victim, AFF_CHARM ) || victim->master != ch )
         {
-                send_to_char( "You must charm your vistim first!!\n\r", ch );
+                send_to_char( "You must charm your victim first!!\n\r", ch );
                 return;
         }
 
@@ -6938,10 +6968,63 @@ void spell_hells_fire (int sn, int level, CHAR_DATA *ch, void *vo)
         if (spell_attack_number == 1)
         {
                 act("{RFlames{x burst forth from the ground around $N!", ch, NULL, victim, TO_NOTVICT);
-                act("You summon {Rflames{x from the pits of hell!", ch, NULL, NULL, TO_CHAR);
+                act("You summon {Rflames{x from the pits of Hell!", ch, NULL, NULL, TO_CHAR);
         }
 
         damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
+{
+    /*
+     Does factorial damage, somewhat comical opener spell for Satanists --Owl 1/3/22
+    */
+
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    int    dam;
+    double factorials[7]    = { 1.0, 2.0, 6.0, 24.0, 120.0, 720.0, 5040.0 };
+    int    rnd_idx          = rand() % 7;
+    double rnd_factorial    = factorials[rnd_idx];
+    double fuzz_value;
+    int    flip             = rand() % 2;
+    double range            = 1.0;
+    double div              = RAND_MAX / range;
+
+    if (victim->hit < victim->max_hit
+        && IS_NPC(victim)
+        && victim->pIndexData->vnum != BOT_VNUM)
+    {
+        act ("{W$C is too alert for you to unleash chaos energy on $m!{x",
+                ch, NULL, victim, TO_CHAR);
+        return;
+    }
+
+    if ( !IS_EVIL( ch ) )
+    {
+        act ("{WYou are not evil enough to summon chaos energy.{x",
+             ch, NULL, victim, TO_CHAR);
+        return;
+    }
+
+    /* better chance of good damage if held, i.e. by hand of lucifer */
+    if (IS_AFFECTED(victim, AFF_HOLD) &&
+        (rnd_idx != 6))
+    {
+        rnd_idx++;
+    }
+
+    fuzz_value = (rnd_factorial/20 * (rand()/div));
+
+    dam = (flip) ? (int)(((rnd_factorial/100) * level) + fuzz_value) :
+                   (int)(((rnd_factorial/100) * level) - fuzz_value);
+
+    /*fprintf(stderr, "rnd_idx = %d | rnd_factorial = %f | dam = %d | flip = %d | fuzz = %f\r\n", rnd_idx, rnd_factorial, dam, flip, fuzz_value  );*/
+
+    act("Tendrils of chaos energy snake from $n's hand!", ch, NULL, NULL, TO_ROOM);
+    act("You unleash a blast of pure {Wc{Bh{Wa{Bo{Ws{x energy!", ch, NULL, NULL, TO_CHAR);
+
+    damage(ch, victim, dam, sn, FALSE);
+
 }
 
 

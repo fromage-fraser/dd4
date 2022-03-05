@@ -34,7 +34,7 @@ attempts to remove your limbs from your body.
 0 0
 0 0 1
 >death_prog 100~
-	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+    mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
 ~
 |
 
@@ -98,19 +98,19 @@ empty air, yet you KNOW it's there.
    mpecho You feel as if you're not alone...
 ~
 >speech_prog bless~
-        	if clan($n) == moc
-        		cast bless $n
-        		break
-        	else
-        		break;
-        	endif
+            if clan($n) == moc
+                cast bless $n
+                break
+            else
+                break;
+            endif
 ~
 >speech_prog bye~
-        	if clan($n) == moc
-        		mpecho The world {ysh{Yim{x{ymers{x in your vision and then you find yourself outside the cave.
-        		mptransfer $n 507
-        		break
-        	endif
+            if clan($n) == moc
+                mpecho The world {ysh{Yim{x{ymers{x in your vision and then you find yourself outside the cave.
+                mptransfer $n 507
+                break
+            endif
 ~
 |
 
@@ -126,9 +126,9 @@ He's wizinvis, who cares?
 0 0
 0 0 1
 >rand_prog 100~
-	drop moc
-	mpgoto 537
-	meditate
+    drop moc
+    mpgoto 537
+    meditate
 ~
 |
 #0
@@ -136,8 +136,8 @@ He's wizinvis, who cares?
 #OBJECTS
 #361
 door key~
-the door key	{Y<----{GYou want this.{x~
-The door key has been stolen from Filleg{Y<----{GYou want this.{x~
+the door key {Y<----{GYou want this.{x~
+The door key has been stolen from Filleg {Y<----{GYou want this.{x~
 ~
 18 0 1|16384
 ~ ~ ~ ~
@@ -383,7 +383,7 @@ M 0 360 1 360               add Filleg the grunt to A pitch bright cave
 E 0 366 0 5                       equip a mended uniform (body)
 E 0 364 0 16                      equip an expertly crafted broadsword (wield)
 E 0 365 0 18                      equip a crystal dagger (dual)
-G 0 361 0	    carry the door key	{Y<----{GYou want this.{x
+G 0 361 0                   carry the door key  {Y<----{GYou want this.{x
 M 0 362 1 361               add A cognizant bat to {dTotal darkness{x
 M 0 363 1 363               add Dakar to Inspector
 M 0 364 1 364               add Kooc to Kooc

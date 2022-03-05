@@ -1,4 +1,4 @@
-#AREA	Lok~       The Isles of the Pirate Lords~
+#AREA   Lok~       The Isles of the Pirate Lords~
 20 45 0 100
 
 #MOBILES
@@ -770,17 +770,19 @@ the frozen captive~
 A prisoner shivers in the cold here.
 ~
 The frozen captive is so gratified by your kindness that
-she tells you a story. ` A long time ago, Lok started this
-area, and had major writers block. Well, Simba sort of
-nudged him and he broke out of his block. With Rainman
-doing the main debugging and alot of dark beer, this
-area was created for your amusement. The secret to sailing
-is that all simple seas never border on grounding reefs.
-If you are in shallows type exit after each move to look
-for shoals ( they won't show in the night ). There is a main
-clockwise current running in the high seas. There are alot of
-clues throughout isles so don't just powermud and miss all.
-Lok charmed me so you wouldn't just mindlessly butcher me.'
+she tells you a story:
+
+'A long time ago, Lok started this area, and had major
+writers' block. Well, Simba sort of nudged him and he broke
+out of his block. With Rainman doing the main debugging and
+a lot of dark beer, this area was created for your amusement.
+The secret to sailing is that all simple seas never border
+on grounding reefs. If you are in shallows type exit after
+each move to look for shoals ( they won't show in the night ).
+There is a main clockwise current running in the high seas.
+There are a lot of clues throughout isles so don't just
+powermud and miss them all. Lok charmed me so you wouldn't
+just mindlessly butcher me.'
 ~
 2 262144 1000 S
 40 0 0 0d0+0 0d0+0
@@ -4188,20 +4190,20 @@ O 1 17013 0 17177                      Warning sign
 D 1 17176 1 1   Closed barricade, E
 D 1 17177 3 1   Closed barricade, W
 * Pirate cave
-M 1 17015 1 17185			Sleeping pirate
-M 1 17016 3 17186			Drunken pirate
+M 1 17015 1 17185           Sleeping pirate
+M 1 17016 3 17186           Drunken pirate
 G 1 17016 0      A bottle of rum
-M 1 17016 3 17187			Drunken pirate
+M 1 17016 3 17187           Drunken pirate
 G 1 17016 0      A bottle of rum
-M 1 17016 3 17188			Drunken pirate
+M 1 17016 3 17188           Drunken pirate
 G 1 17016 0      A bottle of rum
-M 1 17020 1 17190			Bond maiden in throne
-M 1 17019 1 17190			One-eye in throne
+M 1 17020 1 17190           Bond maiden in throne
+M 1 17019 1 17190           One-eye in throne
 E 1 17019 0 13   Wears girdle of might
 E 1 17020 0 9    Wears gauntlets of acc.
-M 1 17017 1 17192			Princess smallberry in dung.
+M 1 17017 1 17192           Princess smallberry in dung.
 G 1 17017 0      Makes her ready and willing
-M 1 17018 1 17193			Navigator atop mtn
+M 1 17018 1 17193           Navigator atop mtn
 G 1 17018 0      Gives navigator his sextant
 D 1 17190 5 1    Closes secret door to dungeon
 D 1 17192 4 1    Closes secret door to dungeon
@@ -4276,42 +4278,42 @@ D 1 17239 1 1   Closes E door
 *
 * 4th Isle, The Flying Mountain
 *
-M 1 17041 1 17241			Hawkwoman
-M 1 17042 3 17242			Hawkmen
+M 1 17041 1 17241           Hawkwoman
+M 1 17042 3 17242           Hawkmen
 M 1 17042 3 17246
 M 1 17042 3 17248
-M 1 17043 1 17249			The Hawklord
+M 1 17043 1 17249           The Hawklord
 E 1 17043 0 12   Wears his vest
-P 1 17051 0 17043			Throwing dagger on vest
+P 1 17051 0 17043           Throwing dagger on vest
 P 1 17051 0 17043
 P 1 17051 0 17043
-O 1 17044 0 17251			Winch at edge of isle
-O 1 17042 0 17248			Floating stone
-M 1 17044 4 17253			Terra-kan
+O 1 17044 0 17251           Winch at edge of isle
+O 1 17042 0 17248           Floating stone
+M 1 17044 4 17253           Terra-kan
 G 1 17045 0      Gives it gizzard
-M 1 17044 4 17254			Terra-kan
+M 1 17044 4 17254           Terra-kan
 G 1 17045 0      Gives it gizzard
-M 1 17044 4 17255			Terra-kan
+M 1 17044 4 17255           Terra-kan
 G 1 17045 0      Gives it gizzard
-M 1 17044 4 17258			Terra-kan
+M 1 17044 4 17258           Terra-kan
 G 1 17045 0      Gives it gizzard
-M 1 17045 6 17261			Gambling pirates
-M 1 17045 6 17261			Gambling pirates
-M 1 17045 6 17265			Gambling pirates
-M 1 17045 6 17265			Gambling pirates
-M 1 17045 6 17267			Gambling pirates
-M 1 17045 6 17267			Gambling pirates
-M 1 17046 1 17268			1st Mate
+M 1 17045 6 17261           Gambling pirates
+M 1 17045 6 17261           Gambling pirates
+M 1 17045 6 17265           Gambling pirates
+M 1 17045 6 17265           Gambling pirates
+M 1 17045 6 17267           Gambling pirates
+M 1 17045 6 17267           Gambling pirates
+M 1 17046 1 17268           1st Mate
 G 1 17041 0      The hawk key
-M 1 17047 1 17266			The elite pirate
-M 1 17048 1 17270			Alindra of Dunkeldorf
-M 1 17049 1 17269			Mutton the chef
-M 1 17050 1 17270			Lord Vulture
+M 1 17047 1 17266           The elite pirate
+M 1 17048 1 17270           Alindra of Dunkeldorf
+M 1 17049 1 17269           Mutton the chef
+M 1 17050 1 17270           Lord Vulture
 E 1 17049 0 10   His wings
 E 1 17050 0 17   The eye of the eagle
-O 1 17046 0 17270			Loads chest in Vultures chamber
-P 1 17047 0 17046			Puts mountain of silver in chest
-P 1 17048 0 17046			Puts mug in chest
+O 1 17046 0 17270           Loads chest in Vultures chamber
+P 1 17047 0 17046           Puts mountain of silver in chest
+P 1 17048 0 17046           Puts mug in chest
 R 1 17241 6      Randomize the air zone
 R 1 17242 6
 R 1 17243 6

@@ -1,4 +1,4 @@
-#AREA	Mercutio~ Ancalador~
+#AREA   Mercutio~ Ancalador~
 60 100 30 100
 
 #MOBILES
@@ -35,7 +35,7 @@ Her long, raven black hair drapes those stunning curves of hers.  How
 did such a sweet thing become the leader of this cult?  As a bard once
 wrote,
 
-        'You could tell she was practiced at the art of deception
+        'You could tell she was practised at the art of deception
          by her bloodstained hands.'
 ~
 2|4 8|32|128|512 -1000 S
@@ -64,7 +64,7 @@ A fine example of Necromancy, this giant beast can travel for miles
 with no need for food nor water.  A most economical mount -- and
 sporty too!
 ~
-2 128 -300 S
+2|131072 128 -300 S
 63 10 2 1d6+150 2d6+1
 52 0
 8 8 1
@@ -104,18 +104,18 @@ has not spoken with anyone for ages.  The shaggy hermit draws you over
 and begins to tell a strange tale,
 
        'Some 600 years ago, when I was but a lad, a great dragon
-	ruled the land.  His name was Ancalador.  Many heroes came
-	to do battle with him, but all failed and died, horribly,
-	I imagine.  But one wizard challenged the Drake to a magic
-	duel.  He too died, like the others, but with his last
-	breath, the wizard turned the mighty Ancalador to stone!
-	Many believed the dragon's evil reign ended, but after the
-	dancing and drinking were over, and life returned to its
-	quiet pace, the people began to notice that the Dragon's
-	presence could still be felt.  Ancalador did, in fact,
-	continue to rule from his petrified prison through the
-	manipulation of the minds of men.  Indeed, he has done so
-	to this day.  Many believe he is plotting the day he can
+        ruled the land.  His name was Ancalador.  Many heroes came
+        to do battle with him, but all failed and died, horribly,
+        I imagine.  But one wizard challenged the Drake to a magic
+        duel.  He too died, like the others, but with his last
+        breath, the wizard turned the mighty Ancalador to stone!
+        Many believed the dragon's evil reign ended, but after the
+        dancing and drinking were over, and life returned to its
+        quiet pace, the people began to notice that the Dragon's
+        presence could still be felt.  Ancalador did, in fact,
+        continue to rule from his petrified prison through the
+        manipulation of the minds of men.  Indeed, he has done so
+        to this day.  Many believe he is plotting the day he can
         return in the flesh, so to speak...'
 
 With that the Hermit begins to cackle madly, tears running down his
@@ -395,7 +395,7 @@ E
 mace fred skull~
 The stout leather-wrapped shaft is topped with the animated skull of Fred
 himself.  Though the jawbone is missing, you can hear him scream obscenities
-even in the midst of a fray.  A vague light stirs within his eyesockets as
+even in the midst of a fray.  A vague light stirs within his eye sockets as
 he says, 'What are ye looking at, maggot breath!'
 ~
 #16812
@@ -594,7 +594,7 @@ E
 helm silver metal~
 This helm looks to be purely ornamental, and does not look like it
 would afford the wearer any protection whatsoever.  It is finely
-engraven with small wavy lines however.
+engraved with small wavy lines, however.
 ~
 E
 engravings lines pattern~
@@ -666,7 +666,7 @@ stone that terrorized nations long ago.
 ~
 0 0 4
 D1
-The huge maw lies frozen in midsnarl.  You could find enough purchase
+The huge maw lies frozen in mid-snarl.  You could find enough purchase
 to scale the tongue and enter inside, should you want to.
 ~
 ~
@@ -828,8 +828,8 @@ S
 #16811
 A Dragon Lung~
 The nuclear fires that empowered the dragon with its frightful
-breath are here, and though they have been smoldered for so very
-long, they scorch you and make you rue the choice wearing of metal
+breath are here, and though they have been smoldering for so very
+long, they scorch you and make you rue your decision to wear metal
 armor.
 ~
 0 8 0
@@ -1432,7 +1432,7 @@ E
 sign signpost~
 The signpost reads in ancient runic script:
 
-The Penultimate Tower of Wizardry was rumored to exist, once, just
+The Penultimate Tower of Wizardry was rumoured to exist, once, just
 down this road... who knows if this is true?  For though many have
 went on to see, none have returned to claim it true...
 
@@ -1450,7 +1450,7 @@ S
 #16845
 An Undead Garden~
 Shaking shrubberies and quivering palms surround a few skeletal
-trees that make up this gruesome garden.  The shriveled plantlife, set
+trees that make up this gruesome garden.  The shrivelled plant life, set
 in niches within the deformed chamber walls, seem to have all died and
 come back from the afterlife somehow.  Openings in the petrified organ
 wall lead west and down.
@@ -1506,7 +1506,7 @@ D5
 S
 #16848
 The Temple Of Death~
-You are in a small shrine in honor of the 'Pale Priest of the Mute
+You are in a small shrine in honour of the 'Pale Priest of the Mute
 People'.  Here, Hell's Grim Tyrant is sought as a source of
 inspiration and wisdom by the Guildmembers.  The chamber walls open to
 exits heading down and east.
@@ -1601,7 +1601,7 @@ You stand before the horrific Altar of Annihilation where the magic
 and power of extinguishment and dissolution are full explored.  You
 feel the countless ceremonies of extinction performed here, like a
 gloom that pervades the altar, which looks like a huge rib cage
-centered with a demon's skull.  Before the altar is a black iron
+centred with a demon's skull.  Before the altar is a black iron
 grating covering a dark pit where the ebb of life is glorified in
 sacrifice.
 ~
@@ -1755,9 +1755,9 @@ M 1 16813 6 16838        Umber Hulk
 M 1 16813 6 16839        Umber Hulk
 M 1 16813 6 16840        Umber Hulk
 M 1 16814 6 16830        Ochre Jello
-G 1 16821 5			16815                 Rusty Dagger
+G 1 16821 5 16815               Rusty Dagger
 M 1 16814 6 16834        Ochre Jello
-G 1 16823 2			16815                 Shiny Shield
+G 1 16823 2 16815               Shiny Shield
 M 1 16814 6 16837        Ochre Jello
 G 1 16822 20                    Puce Potion
 M 1 16814 6 16838        Ochre Jello
@@ -1800,18 +1800,18 @@ S
 
 
 #SPECIALS
-M  16802 spec_cast_undead			Morticia
-M  16803 spec_thief			Lazarus
-M  16804 spec_cast_undead			the undead riding beetle
-M  16805 spec_cast_mage			the wraith knight
-M  16806 spec_repairman			the Crypt Keeper
-M  16809 spec_breath_fire			the flame dweller
-M  16810 spec_poison			the green crystal spider
-M  16811 spec_poison			the yellow crystal spider
-M  16812 spec_cast_undead			the Petrified Warden
-M  16813 spec_breath_gas			the umber hulk
-M  16814 spec_breath_acid			the ochre jello
-M  16815 spec_cast_mage			the Necromancer
+M  16802 spec_cast_undead       Morticia
+M  16803 spec_thief             Lazarus
+M  16804 spec_cast_undead       the undead riding beetle
+M  16805 spec_cast_mage         the wraith knight
+M  16806 spec_repairman         the Crypt Keeper
+M  16809 spec_breath_fire       the flame dweller
+M  16810 spec_poison            the green crystal spider
+M  16811 spec_poison            the yellow crystal spider
+M  16812 spec_cast_undead       the Petrified Warden
+M  16813 spec_breath_gas        the umber hulk
+M  16814 spec_breath_acid       the ochre jello
+M  16815 spec_cast_mage         the Necromancer
 S
 
 

@@ -1,4 +1,4 @@
-#AREA	Chris~   Mahn-Tor Keep~
+#AREA   Chris~   Mahn-Tor Keep~
 15 35 0 100
 
 #MOBILES
@@ -3783,7 +3783,7 @@ D 0 2362 2 1
 *
 R 0 2332 4
 R 0 2333 4
-R 0 2334 4		This is the swamp maze.
+R 0 2334 4      This is the swamp maze.
 R 0 2335 4
 R 0 2336 4
 R 0 2337 4
@@ -3792,7 +3792,7 @@ R 0 2338 4
 R 0 2351 4
 R 0 2352 4
 R 0 2354 4
-R 0 2355 4		This is the blizzard maze.
+R 0 2355 4      This is the blizzard maze.
 R 0 2356 4
 R 0 2357 4
 R 0 2358 4

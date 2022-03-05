@@ -32,7 +32,7 @@ NOTE: Your prompt can also be colourised, see 'HELP PROMPT'.
 
 0 CLANS~
 Clans are groups of adventurers who believe in the same ideals, beliefs
-and values.  These adventurers band together to offer eachother mutual
+and values.  These adventurers band together to offer each other mutual
 support, help and friendship.
 
 Clans can be formed by anyone above level 50 who has at least one other
@@ -192,6 +192,16 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
+    [22 February 2022]
+    ---------------------------------------------------------------------
+    {WDragons Domain 4.0{x
+
+    {GAfter 10 years resting up - we're back for another round!{x
+
+    New players, a big hello!  If you need any help please check out
+    our website which has a FAQ at {Yhttps://smihilist.com/dd4/web/{x or look
+    for players with a {CGuide{x flag.
+
 To Enter the Dragons Domain press <Return>.
 ~
 
@@ -275,7 +285,7 @@ information. See the help files for rules on recreating old clans.
 Some of the more powerful skill / race / class combinations have been
 toned down, mainly by increasing the pre-reqs required for some skills
 so they cannot be gained as early. You'll find these as you go, but the
-skill dual cannot be learned at low level trainers anymore as it is too
+skill dual cannot be learned at low level trainers any more as it is too
 powerful [{WEditors note: clear enough Cort / Lyth :p{x]
 
 Otherwise should be fairly familiar to you. Enjoy :)
@@ -318,11 +328,11 @@ These two druid spells call upon the elements to blast their opponents.  You
 need to be outside and in the presence of the moon or sun.
 ~
 
-0 'NATURES FURY'~
-Syntax: cast 'natures fury' <victim>
+0 'FURY OF NATURE'~
+Syntax: cast 'fury of nature' <victim>
 
 This spells summons the power of the surrounding environment to assault your
-victim.  This spell is less effective away from natural surrounds.
+victim.  This spell is less effective when not in natural surrounds.
 ~
 
 0 FAME~
@@ -386,7 +396,7 @@ Newbie, eh?  Finding things a little difficult?  Well there are the
 answers to all your questions and more in the DD FAQ and Newbie Guide:
 available for browsing and download at
 
-<http://www.dragons-domain.org/faq>.
+<https://smihilist.com/dd4/web/main/faq/dd-faq.html>.
 
 You can also use your own special newbie channel up to level 5.  To use
 the newbie channel type:
@@ -423,7 +433,7 @@ themselves due to the intense heat of the fire!
 0 MEDITATE MEDITATION~
 Syntax: meditate
 
-Fall into a deep trance.  The rate at which you recover hitpoints and mana
+Fall into a deep trance.  The rate at which you recover hit points and mana
 is increased while you are meditating.
 ~
 
@@ -468,7 +478,7 @@ See 'HELP CHANGE' for how to change to choose a subclass.
 -1 NECROMANCER~
 Necromancer subclass (base class Mage)
 
-The necromancer perverts nature with bizarre death and disease magics,
+The necromancer perverts nature with bizarre death and disease magiks,
 commanding the forces of growth and decay for their own twisted ends.
 With the spells WITHER, HEX and FEAR they can be gruesome opponents.
 Able to ANIMATE DEAD, they can rise to command legions of undead slaves.
@@ -489,7 +499,7 @@ Templar subclass (base class Cleric)
 
 Melee can sometimes be too much for the cloistered cleric.  It's time to
 bring out some religious muscle.  The templar, combining religious piety
-with skillful sword-play, is a force to be reckoned with.
+with skilful sword-play, is a force to be reckoned with.
 ~
 
 -1 DRUID~
@@ -556,7 +566,7 @@ Syntax: scribe <spell name>
 
 Enchant a scroll to release a spell or spells upon being recited.  You may
 only scribe spells that you know how to cast already.  You must find a
-suitable piece of parchemnt to contain the spell in.  Each scribed scroll
+suitable piece of parchment to contain the spell in.  Each scribed scroll
 may contain up to three spells: just repeat the scribing process using the
 same scroll.
 
@@ -586,7 +596,7 @@ unwanted.  Items become worthless upon being donated.
 
 0 'FAST HEALING'~
 Experienced adventurers being thick-skinned are able to heal at an
-increased rate.  This skill is automatic once practiced.
+increased rate.  This skill is automatic once practised.
 ~
 
 0 CLIMB~
@@ -643,8 +653,8 @@ be in suitable terrain for this skill to work.
 0 HEADBUTT 'SECOND HEADBUTT'~
 Syntax: headbutt
 
-Smash your opponent to the ground with a forcefull headbutt, or two if you
-have practiced SECOND HEADBUTT.
+Smash your opponent to the ground with a forceful headbutt, or two if you
+have practised SECOND HEADBUTT.
 ~
 
 
@@ -795,7 +805,7 @@ them or lose them.  This policy prevents wholesale abuse of pets.
 
 You are responsible for the actions of your pets.  Conversely, if you attack
 someone else's pet, you will be penalized as if you attacked them.  It is
-a good idea to refrain from attacking creatures labeled '(Charmed)'.
+a good idea to refrain from attacking creatures labelled '(Charmed)'.
 ~
 
 0 CAST~
@@ -887,7 +897,7 @@ Syntax: backstab <target>
 Syntax: bs <target>
 
 Sneak behind your opponent and plunge a blade into their back, causing
-grievous damage.  If you've practiced DOUBLE BACKSTAB, you can repeat the
+grievous damage.  If you've practised DOUBLE BACKSTAB, you can repeat the
 attack.  You need to wield a piercing or stabbing weapon in order to
 backstab.
 ~
@@ -895,8 +905,8 @@ backstab.
 0 CIRCLE 'SECOND CIRCLE'~
 Syntax: circle
 
-Skirt behind your opponent to make a suprise attack.  A CIRCLE will not
-cause as much damage as a BACKSTAB.  If you have practiced SECOND CIRCLE,
+Skirt behind your opponent to make a surprise attack.  A CIRCLE will not
+cause as much damage as a BACKSTAB.  If you have practised SECOND CIRCLE,
 you may attempt to strike twice.
 ~
 
@@ -1109,6 +1119,9 @@ For more help, type 'help <topic>' for any command, skill, or spell.
 Also see help for: DAMAGE DEATH EXPERIENCE DEITY SUBCLASSES RACES TICK
                    RULES 'PKILL RULES' 'PKILL SCORE' QUEST 'QP LEVEL'
                    TEACHER CLAN
+
+More information is available on the DD website: {Bsmihilist.com/dd4/web/{x.
+You'd do well to read our helpful FAQ, found at {csmihilist.com/dd4/web/main/faq/dd-faq.html{x!
 ~
 
 0 DAMAGE~
@@ -1121,8 +1134,8 @@ least damage to most damage:
        {wgraze         maim             {RANNIHILATE        ELIMINATE{x
        {whit           MUTILATE         {ROBLITERATE        EXTERMINATE{x
        {winjure        DISEMBOWEL       {RRAVAGE            UTTERLY DESTROY{x
-       {wwound         {WEVISCERATE       {RCRIPPLE           PARTICLIZE{x
-       {wmaul          {WMASSACRE         {RBRUTALISE{x
+       {wwound       {WEVISCERATE       {RCRIPPLE           PARTICLIZE{x
+       {wmaul        {WMASSACRE         {RBRUTALISE{x
 ~
 
 0 DEATH~
@@ -1260,13 +1273,13 @@ This command shows the list of the original Diku Mud implementors.
 -1 DIKU~
 .                    Original game idea, concept, and design:
 
-Katja Nyboe               [Superwoman] (katz@freja.diku.dk)
-Tom Madsen              [Stormbringer] (noop@freja.diku.dk)
-Hans Henrik Staerfeldt           [God] (bombman@freja.diku.dk)
-Michael Seifert                 [Papi] (seifert@freja.diku.dk)
-Sebastian Hammer               [Quinn] (quinn@freja.diku.dk)
+      Katja Nyboe               [Superwoman] (katz@freja.diku.dk)
+      Tom Madsen              [Stormbringer] (noop@freja.diku.dk)
+      Hans Henrik Staerfeldt           [God] (bombman@freja.diku.dk)
+      Michael Seifert                 [Papi] (seifert@freja.diku.dk)
+      Sebastian Hammer               [Quinn] (quinn@freja.diku.dk)
 
-Additional contributions from:
+             Additional contributions from:
 
 Michael Curran  - the player title collection and additional locations.
 Ragnar Loenn    - the bulletin board.
@@ -1277,7 +1290,7 @@ Bill Wisner     - for being the first to successfully port the game,
 And: Mads Haar and Stephan Dahl for additional locations.
 
 Developed at: DIKU -- The Department of Computer Science
-                      at the University of Copenhagen.
+              at the University of Copenhagen.
 
 ~
 
@@ -1306,7 +1319,7 @@ Thanks to ...
       for the improvements and ideas to the pager.
   ... Raff, Doctor, VampLestat, Nirrad, Tyrst, PinkF, Chris for worlds.
   ... Ikee, Chaos, Kraze, Maxx, Thoth, Zolstead, Zavod, VampLestat, Cyric,
-      Kelvin, and Jackal for extensively playtesting MERC 2.2 and providing
+      Kelvin, and Jackal for extensively play testing MERC 2.2 and providing
       constructive input.
   ... the players and imps of Mud Dome, Final Mud, Mud Lite, Vego Mud, Rivers
       of Mud, Ruhr Mud, Mystic Realms, 4th Realm, Dragon Mud, and Salems Lot
@@ -1351,8 +1364,8 @@ The EnvyMud Staff
 
 0 MAPS~
 Experienced explorers have chronicled their adventures and 'sold' their
-rights to the local mapmaker in Midgaard.  You might find the shop where
-else but close to profit minded thieves.
+rights to the local mapmaker in Midgaard.  You might find the shop (where
+else?) in the vicinity of profit-minded thieves.
 ~
 
 0 HELP~
@@ -1432,7 +1445,7 @@ example:
     WHO CLERIC             all clerics
     WHO SHIFTER 15 20      all 15-20 level shifters
 
-'WHO IMMORTAL' lists all Heros and Immortals.
+'WHO IMMORTAL' lists all Heroes and Immortals.
 
 'WHO CLAN' will display all clanned players.
 
@@ -1450,15 +1463,15 @@ your own clan are not shown.
 {cThe Implementors{x
     {WShade{x      {wArbitrary Rule Maker and Bringer of Furious Wrath{x
     {WGezhp{x      {wBorn-again DD Code-Base Bug-Creationist{x
+    {WOwl{x        {wJust Pathetically Happy to be Included{x
 
 {cAscendant Immortals  (In no particular order!){x
     {WHestia{x     {wDungeon Mistress, Temptress and Area Desecrator{x
     {WSamxin{x     {wAnti-Establishment Havoc-Wreaker and {RPersonal Assistant{x
     {WTorment{x    {wSick, Twisted and Evil Incarnate{x
 
-{cDescendant Immortals  (Who may appear on occassion){x
+{cDescendant Immortals  (Who may appear on occasion){x
     {WBrutus{x
-    {WOwl{x
     {WSacrifis{x
     {WThorne{x
     {WUmgook{x
@@ -1496,7 +1509,7 @@ The options are:
     TELL      You don't receive TELL messages.
 
 You can also type AUTOEXIT, AUTOLOOT, AUTOSAC, AUTOWIELD, BLANK, BRIEF,
-COMBINE, QUIET and TELLMODE directly from the prompt to toggle the status
+COMBINE, QUIET, GAG and TELLMODE directly from the prompt to toggle the status
 of these options.  See the helps for these commands.
 ~
 
@@ -1560,6 +1573,15 @@ true names of heroes are exposed.
 See CONFIGURE to find out which toggle is on and which is off.
 ~
 
+0 GAG~
+Syntax: gag
+
+GAG toggles combat messages to see verbose combat or not. Parries, dodges will
+be removed as will some flavour text.
+
+See CONFIGURE to find out which toggle is on and which is off.
+~
+
 0 COMBINE~
 Syntax: combine
 
@@ -1604,11 +1626,11 @@ Syntax: prompt
 Syntax: prompt all
 Syntax: prompt <%*>
 
-PROMPT with out an argument will turn your prompt on or off.
+PROMPT without an argument will toggle your prompt on and off.
 
-PROMPT ALL will give you the standard "<hits mana moves>" prompt.
+PROMPT ALL sets a standard "<hits/hitmax mana/manamax moves/movesmax>" prompt.
 
-PROMPT <%*> where the %* are the various variables you may set yourself:
+PROMPT <%*> creates a prompt where %* represents the following variables:
 
     %h :  Current hits
     %H :  Maximum hits
@@ -1732,7 +1754,7 @@ reach certain levels.
 
 See 'HELP QUESTMASTERS' for the identities of questmasters.
 
-Also, read the relevent section of the FAQ ('HELP FAQ').
+Also, read the relevant section of the FAQ ('HELP FAQ').
 ~
 
 0 QUESTMASTERS~
@@ -1924,7 +1946,7 @@ take kindly to that type of behaviour...
 Syntax: chameleon
 
 With CHAMELEON POWER, a psionicist uses the power of his or her mind to
-change the appearance and coloration of his or her body, armor, and
+change the appearance and colouration of his or her body, armor, and
 equipment to blend in with the surroundings.  This skill is only effective
 if the psionicist remains absolutely still.
 ~
@@ -2632,6 +2654,17 @@ Syntax: cast 'detect magic'
 This spell enables the caster to detect magical objects.
 ~
 
+
+0 'DETECT CURSE'~
+Syntax: cast 'detect curse'
+
+This spell enables the caster to detect cursed objects and creatures.
+
+Additionally, it will make you reluctant to remove cursed items from
+a corpse if you have AUTOLOOT on (see "help autoloot").  You will
+still be able to manually remove the items (i.e. get <item> corpse).
+~
+
 0 'DETECT POISON'~
 Syntax: cast 'detect poison' <object>
 
@@ -2882,44 +2915,44 @@ can potentially blink, but each successful blink uses up some mana.
 
 0 DODGE~
 This skill lets you dodge incoming attacks, taking no damage from
-them. Use of the skill is automatic once you have practiced it.
+them. Use of the skill is automatic once you have practised it.
 ~
 
 0 ACROBATICS~
 
 This skill allows a skilled martial artist to use acrobatic moves to evade
-incoming attacks.  The skill is automatic once practiced.
+incoming attacks.  The skill is automatic once practised.
 ~
 
 0 'AURA OF FEAR'~
 
 This skill allows a vampire to frighten their opponent during combat,
 preventing them from attacking.  The use of this skill is automatic once
-practiced.
+practised.
 ~
 
 0 'ENHANCED DAMAGE' 'ENHANCED HIT'~
 
 These skills increase the damage you inflict when attacking.  Use of the
-skill is automatic once you have practiced it.
+skill is automatic once you have practised it.
 ~
 
 0 PARRY 'DUAL PARRY'~
 These skills ward off incoming attacks.  Use of the skill is automatic
-once you have practiced it.  You must be wielding a weapon in order to
+once you have practised it.  You must be wielding a weapon in order to
 parry; you must be dual wielding in order to dual parry.
 ~
 
 0 PEEK~
 
 This skill shows you a character's inventory when you look at a mob.
-Use of the skill is automatic once you have practiced it.
+Use of the skill is automatic once you have practised it.
 ~
 
 0 'SECOND ATTACK' 'THIRD ATTACK' 'FOURTH ATTACK'~
 
 These skills let you attack more than once during a combat round.  Use of
-these skills is automatic once you have practiced them.
+these skills is automatic once you have practised them.
 
 You can practice THIRD ATTACK before you have mastered SECOND ATTACK,
 although it isn't efficient to do so.
@@ -2940,16 +2973,15 @@ very formidable in hand to hand combat.  Warriors train in the art of
 multiple attacks.  Some master the art of a THIRD ATTACK and if
 experienced enough, master a FOURTH ATTACK.  Along with this training in
 multiple attacks, a warrior is trained in making each hit count.  ENHANCED
-DAMAGE is available to only the learned.  Toward the defense side of the
+DAMAGE is available to only the learned.  Toward the defence side of the
 WARRIOR, skills of PARRY, RESCUE and BASH DOOR allow them to ward off
 attacks, rush to the aid of fellow comrades, and open doors rather
 barbarously.
 
 Warriors are not able to use scrolls, wands or staves.
 
-DD has a class structure where by at level 30 you may specialise your
-class into one of three sub-classes.  The warrior sub-classes are as
-follows:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The warrior sub-classes are as follows:
 
     THUG                  WARRIOR                 KNIGHT
 
@@ -2957,15 +2989,14 @@ See 'HELP THUG' and 'HELP KNIGHT' for more information.
 ~
 
 -1 CLE CLERIC~
-The CLERIC class is a spellcasting class devoted primarily toward defense.
+The CLERIC class is a spell-casting class devoted primarily toward defence.
 The cleric's god gives them spells in the curing, warding, and protection
 disciplines.  Clerics being of a defensive nature fare averagely in the art
 of mortal combat.  They much prefer to be civil servants to society or
 healers to their comrades in arms.
 
-DD has a class structure where by at level 30 you may choose one of three
-specialised directions for your character.  The choices for clerics are as
-follows:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The choices for clerics are as follows:
 
     TEMPLAR                 CLERIC                  DRUID
 
@@ -2973,7 +3004,7 @@ See 'HELP TEMPLAR' and 'HELP DRUID' for more information.
 ~
 
 -1 MAG MAGE MAGIC-USER 'MAGIC USER'~
-The MAGE class is a spellcasting class devoted primarily toward control
+The MAGE class is a spell-casting class devoted primarily toward control
 over the elements.  The universe contains an unmeasured power the mage
 taps into to influence the world.  Mage spells are devoted to the
 invoking, hermetic, and combative disciplines.  Mages fare a little better
@@ -2983,8 +3014,8 @@ to stand back and roast their enemies with a FIREBALL.
 Mages are not able to use shields or wear anything on their hands, as it
 restricts their casting ability.
 
-DD has a class structure where by at level 30 you may choose one of three
-specialised directions for your class.  These mage sub-classes are:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The mage sub-classes are as follows:
 
     NECROMANCER              MAGE                WARLOCK
 
@@ -3006,8 +3037,8 @@ assassin for political power-houses.
 
 Thieves are unable to use shields, as it restricts their movement.
 
-DD has a class structure where by at level 30 you may specialise your
-class into one of three sub-classes.  The Thief sub-classes are:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The thief sub-classes are:
 
             NINJA             THIEF           BOUNTY HUNTER
 
@@ -3017,10 +3048,10 @@ See 'HELP NINJA' and 'HELP BOUNTY HUNTER' for more information.
 ~
 
 -1 PSI PSIONICS PSIONICIST~
-The PSIONICIST class is a spellcasting class similar to mages and clerics,
+The PSIONICIST class is a spell-casting class similar to mages and clerics,
 but with several important differences.  Where a mage's power comes from
 harnessing external energies present in all matter, and a cleric's comes
-from his or her god, the Psionicist derives all of his or her power
+from his or her god, the psionicist derives all of his or her power
 from within.  The psionicist harnesses, shapes, and utilizes the natural
 forces which infuse his or her own being.  As a result, many of the
 devotions that a psionicist can practice are strictly personal in effect,
@@ -3029,8 +3060,8 @@ and cannot be used on other players.
 Psionics are unable to use head gear, as it interferes with their mental
 powers.
 
-DD has a class structure where by at level 30 your can specialize your
-character into one of three sub-classes.  The psionic sub-classes are:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The psionic sub-classes are:
 
           SATANIST              PSIONIC               WITCH
 
@@ -3450,7 +3481,7 @@ NEWBIE for more information.
 RENAME
 Syntax: rename <object> <string> <value>
 Heroes are able to RENAME their equipment.  The strings that can be changed
-are: name, short, long, ed (ed being the extra desciption on the item).
+are: name, short, long, ed (ed being the extra description on the item).
 Heroes are not permitted to rename items for other characters, except for
 containers.  This includes their own characters.
 
@@ -3479,7 +3510,7 @@ Syntax: legend
 Syntax: pkillers
 Syntax: pkillers <clan name>
 
-LEGEND is similar to FAME in that it shows who has recieved the most fame
+LEGEND is similar to FAME in that it shows who has received the most fame
 within the Dragons Domain.  The difference between LEGEND and FAME is that
 the you will not lose your LEGEND status when your FAME decreases.
 
@@ -3497,7 +3528,7 @@ keep it there!
 
 0 FAQ 'FREQUENTLY ASKED QUESTIONS' RTFM~
 Very wise!  Read the friendly manual at:
-{Whttp://www.dragons-domain.org/faq{x...  You won't be sorry for long!
+{Wsmihilist.com/dd4/web/main/faq/dd-faq.html{x...  You won't be sorry for long!
 ~
 
 0 BOUNTY WANTED~
@@ -3564,10 +3595,10 @@ Spells in summoning include:
     call lightning
 ~
 
-0 PUGALISM~
-The pugalism skill allows the ability to fight with both hands.  Hence it
+0 PUGILISM~
+The pugilism skill allows the ability to fight with both hands.  Hence it
 will allow up to 4 attacks per round if this skill and second attack are
-well learned.  This skill is automatic once learned.
+well-learned.  This skill is automatic once learned.
 ~
 
 0 'DIVINATION MAGIKS'~
@@ -3590,12 +3621,12 @@ Spells in divination magiks include:
 
 0 'MENTAL DEFENSE DISCIPLINES'~
 
-Mental defense is about using the mind to shield oneself from attack.
+Mental defence is about using the mind to shield oneself from attack.
 As the psionic increases in skill they are able to learn more and more
 powerful defensive magiks.  Skilled casters will also be able to protect
 their friends and allies.
 
-Spells in mental defense include:
+Spells in mental defence include:
     thought shield
     mental barrier
     displacement
@@ -3633,7 +3664,7 @@ Spells in matter control include:
 
 0 'EVOCATION MAGIKS'~
 
-Evocation Magiks cover the magics best described as 'potentially lethal'.
+Evocation Magiks cover the magiks best described as 'potentially lethal'.
 This Mage Sphere includes the spells used by the Mage to cause great
 bodily injuries to their enemies.
 
@@ -3860,7 +3891,7 @@ The attribute to be trained can be set at any time by typing 'TRAIN
 Syntax:  practice
 Syntax:  practice <skill>
 
-PRACTICE without an arguemnt will list all the skills a character can
+PRACTICE without an argument will list all the skills a character can
 currently learn and those they currently know.
 
 With an argument, a character will attempt to gain knowledge of that skill
@@ -3897,7 +3928,7 @@ How much you learn depends on
 Practices do NOT accumulate from level to level.  When a character
 advances in level, any remaining physical practices become extra hit
 points and intellectual practices become mana, on a 1:1 ratio.  The amount
-of practices a character gains upon leveling depends on physical
+of practices a character gains upon levelling depends on physical
 attributes and intellectual attributes respectively.
 
 For more info on practicing see 'HELP TEACHER' and 'HELP ADVICE'; also see
@@ -3989,7 +4020,7 @@ short time and prone to attack.
 Syntax: grapple <victim>
 
 The grappling technique will enable the brawler to bring his/her victim to
-the ground.  The force of this manoeuver is enough to stun the victim for a
+the ground.  The force of this manoeuvre is enough to stun the victim for a
 short while, making them more vulnerable to attacks.
 ~
 
@@ -3999,7 +4030,7 @@ Syntax: flying <target>
 A spectacular version of a headbutt, with this skill the experienced
 brawler leaps through the air and headbutts their victim.  If successful,
 the headbutt stuns the victim for a short while making them vulnerable to
-a followup attack.
+a follow-up attack.
 ~
 
 0 GOUGE~
@@ -4051,8 +4082,8 @@ victims corpse.  If successful, the Satanist uses the soul to revitalise
 themselves.
 ~
 
-0 'SATANS FURY'~
-Syntax: cast 'satans fury' <victim>
+0 'SATANIC FURY'~
+Syntax: cast 'satanic fury' <victim>
 
 A skilled Satanist can invoke the will of his esteemed master to invoke
 damage, pain and suffering on their foes.  This spell will cause damage to
@@ -4193,16 +4224,15 @@ cause half-damage, and any charm type spells will fail.
 -1 BRAWLER BRA~
 The BRAWLER is a rough breed of class.  Preferring to do away with weapons
 and fight with their bare hands, some would laugh at this breed of
-pugalist.  However those who laugh often find themselves on the wrong end
+pugilist.  However those who laugh often find themselves on the wrong end
 of a PUNCH, HEADBUTT or KICK.  Brawlers with SNAP NECK are feared, and
 their WHIRLWIND attack can put them in a mad fighting frenzy.
 
 Brawlers cannot use weapons or wear shields.  The reasons are obvious.
 Nor can they use wands or staves.
 
-DD has a class structure where by at level 30 your can specialize
-your character into one of 3 sub-classes. The sub-classes for Brawlers
-are as follows:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The sub-classes for brawlers are as follows:
 
           MONK            BRAWLER           MARTIAL ARTIST
 
@@ -4221,9 +4251,8 @@ TIGER FORMS create powerful offensive characters.
 
 Each form has limitations in wearing equipment.
 
-DD has a class structure where by at level 30 you can specialise
-you character into one of 3 sub-classes. The choices for shape-shifters
-are as follows:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The choices for shape-shifters are as follows:
 
         WEREWOLF          SHAPE SHIFTER           VAMPIRE
 
@@ -4542,7 +4571,7 @@ parry                   disable                 circle
 find traps              fast healing            tail
 feint                   dirt kick
 
-True thieves (thoses that don't change to bounty hunters or ninjas) may
+True thieves (those who don't change to bounty hunters or ninjas) may
 also learn these skills above level 30:
 
 double backstab         dual                    detect magic
@@ -4603,7 +4632,7 @@ lightning breath        acid breath             fire breath
 scribe                  gas breath              recharge item
 fourth spell            firestorm               meteor storm
 third spell             haste                   prismatic spray
-mount                   globe of invunerability
+mount                   globe of invulnerability
 
 See 'HELP SWARLOCK' and 'HELP SNECROMANCER' for lists of warlock and
 necromancer skills respectively.
@@ -4646,7 +4675,7 @@ advanced consider       fear                    resist toxin
 resist magic            astral sidestep         gaias warning
 summon avatar           second attack           third attack
 fourth attack           enhanced hit            dual
-dodge {Y*{x                 parry                   wolf form
+dodge {Y*{x             parry                   wolf form
 howl                    wolfbite                ravage
 
 {Y*{x The skill 'dodge' is only available in normal form.
@@ -4661,7 +4690,7 @@ Vampire skills and spells{x
 
 fast healing            advanced consider       transfix
 disarm                  mist walk               suck
-feed {Y*{x                  lunge                   second attack
+feed {Y*{x              lunge                   second attack
 third attack            fourth attack           enhanced hit
 dual                    climb                   resist magic
 deter                   fear                    resist toxin
@@ -4719,7 +4748,7 @@ able to learn these skills after level 30:
 
 choke                   fourth attack           snap neck
 whirlwind               battle aura             push
-pugalism                advanced consider       break wrist
+pugilism                advanced consider       break wrist
 focus                   flying headbutt         enhanced hit
 ~
 
@@ -4753,7 +4782,7 @@ griffin form              resist heat {Y*{x           dive
                         fly form                  dragon aura {Y*{x
 
 {Y*{x These skills are automatically gained at 100% by morphing to the
-     appropriate form.
+  appropriate form.
 
 
 See 'HELP SWEREWOLF' and 'HELP SVAMPIRE' for lists of werewolf and vampire
@@ -4796,7 +4825,7 @@ sunray                  third spell             scribe
 brew                    firestorm               meteor storm
 fireshield              entrapment              breathe water
 resist lightning        resist acid             resist cold
-resist heat             natures fury
+resist heat             fury of nature
 ~
 
 -1 SMONK~
@@ -4844,10 +4873,10 @@ decapitate              enhanced hit
 Satanist skills and spells{x
 
 steal strength          hand of lucifer         globe of invulnerability
-steal soul              demon flames            satans fury
+steal soul              demon flames            satanic fury
 fireshield              detect good             summon demon
 dark ritual             second attack           third spell
-hells fire
+hellfire                chaos blast
 ~
 
 -1 STEMPLAR~
@@ -4886,7 +4915,7 @@ second attack           globe of invulnerabilty wither
 
 0 'DEFENSE KNOWLEDGE'~
 
-Defense Knowledge is the main defensive group that holds most of the
+Defence Knowledge is the main defensive group that holds most of the
 skills needed by the fighting classes to properly defend themselves.
 It holds skills such as SHIELD BLOCK, PARRY, DODGE and PRE-EMPT.
 ~
@@ -4927,7 +4956,7 @@ disarm traps, pick locks, and climb walls.
 
 Any skill that involves or requires stealth to be successful are covered
 in this group.  This includes skills such as HIDE, SNEAK, and PEEK.  Some
-attack skills also need this group as a pre-reqresite.
+attack skills also need this group as a pre-requisite.
 ~
 
 0 'MORPHING KNOWLEDGE'~
@@ -4967,12 +4996,12 @@ Level 10
 All your masters are in Midgaard.
 
 Level 15
-Brawler   .   .   A wandering Ranger patrols a lake (defense only).
+Brawler   .   .   A wandering Ranger patrols a lake (defence only).
 Cleric    .   .   Near Solace a fair maiden sings a beautiful song.
 Mage  .   .   .   A warrior Mage residing over the guards in Ofcol.
 Psionic   .   .   In a small cottage overlooking a river.
 Shapeshifter  .   None.
-Thief .   .   .   In an Olive Grove, a leader of Cutthroats.
+Thief .   .   .   In an Olive Grove, a leader of Cut-throats.
 Warrior   .   .   A warrior Mage residing over the guards in Ofcol.
 Ranger    .   .   Shop around.
 
@@ -4998,6 +5027,9 @@ Bard  .   .   .   Seek a sullen bard, drowning his sorrows in an Inn.
 Level 35
 Seek all trainers in the town of Anon.
 Bard  .   .   .   Seek out the Dwarven Bard.
+
+Level 40
+Witch .   .   .   A forest witch, in a cursed vale.
 
 Level 50
 Seek your trainers in Krondor.
@@ -5038,7 +5070,7 @@ Doors.  Of course this only applies to doors who have locks!
 0 'PHOENIX FORM'~
 
 The Phoenix form is the shapeshifters best defensively.  Surrounded in a
-permanent fireshield, more experianced phoenixes have even been known to
+permanent fireshield, more experienced phoenixes have even been known to
 globe themselves.  Phoenixes also resist heat, and cannot be disintegrated.
 ~
 
@@ -5107,17 +5139,17 @@ See also HELP 'PKILL SCORE'
 Pkill scores are calculated on the level difference between the two characters
 involved in the pkill:
 
-Level difference                            Pkill points
-Victim 6 levels or more below pkiller       1
-Victim 5-3 levels below pkiller             2
-Victim 2-1 levels below pkiller             3
-Victim 0 to 4 levels above pkiller          3
-Victim 5 to 9 levels above pkiller          5
-Victim 10-14 levels above pkiller           7
-Every additional 5 levels...                2 extra points
+Level difference                        Pkill points
+Victim 6 levels or more below pkiller   1
+Victim 5-3 levels below pkiller         2
+Victim 2-1 levels below pkiller         3
+Victim 0 to 4 levels above pkiller      3
+Victim 5 to 9 levels above pkiller      5
+Victim 10-14 levels above pkiller       7
+Every additional 5 levels...            2 extra points
 
 Once you have a few pkills under your belt, your pkill score is one reflection
-of how succesful you are. Killing people around your own level most of the
+of how successful you are. Killing people around your own level most of the
 time will give you an average of 2-3 points per kill. Above or below this is
 some indication of how successful you are. If you see someone with a lot of
 kills and a high rating (see below), watch out!
@@ -5265,7 +5297,7 @@ Syntax: bladethirst <weapon>
 This enhances the effectiveness of the target weapon, increasing its
 effectiveness in combat. Being such a potent skill, weapons eventually
 disintegrate from the sheer power pulsing through them.  The '(Damaged)'
-flag appears on thirsty weapons in poor conditon.
+flag appears on thirsty weapons in poor condition.
 ~
 
 0 'BARK SKIN'~
@@ -5331,10 +5363,10 @@ Five attributes define the physical and mental qualities of your character:
 
 Characters start with randomly generated attributes that are modified by
 their class and race.  The attributes you should choose depends on your
-chosen class: fighting types need strength, consitution and dexterity; spell
+chosen class: fighting types need strength, constitution and dexterity; spell
 casting types need intelligence and wisdom.
 
-You can reroll your attributes as many times as you wish.  Try rolling a few
+You can re-roll your attributes as many times as you wish.  Try rolling a few
 times first to see the range of scores available to your character.
 ~
 
@@ -5352,11 +5384,11 @@ Dragons Domain...
 
 -1 RNG RANGER~
 The RANGER is a capable fighter with extensive knowledge of hunting,
-finding and utilizing herbs, and remaining undetected.  Rangers are
+finding and utilising herbs, and remaining undetected.  Rangers are
 also skilled bowmen, able to SHOOT and cause terrible damage.
 
-DD has a class structure where by at level 30 you may specialise your
-class into 1 of 3 sub-classes. The ranger sub-classes are as follows:
+DD has a class structure whereby at level 30 you may specialise into one
+of three sub-classes.  The ranger sub-classes are as follows:
 
         BARD                RANGER              BARBARIAN
 
@@ -5376,9 +5408,9 @@ protect, sustain and invigorate him or herself, and any companions.
 0 FRENZY~
 Syntax: cast 'frenzy' <target>
 
-Templars are religous fanatics, and live solely to incite others to follow
+Templars are religious fanatics, and live solely to incite others to follow
 their God, or kill them if they refuse.  By using FRENZY, they can work
-themselves or their companions into a state of religous ecstasy, enabling
+themselves or their companions into a state of religious ecstasy, enabling
 them to more effectively serve their God.  Higher level Templars gradually
 earn even more favour from their God, and their FRENZY is gradually
 improved.
@@ -5444,7 +5476,7 @@ danger.
 Satanist subclass (base class Psionicist)
 
 Practitioners of dark arts, satanists have an array of evil magicks to
-inflict pain and suffering on others.  SATANS FURY, HELLS FIRE and HAND
+inflict pain and suffering on others.  SATANIC FURY, HELLFIRE and HAND
 OF LUCIFER are a few of the horrible spells in their arsenal.
 ~
 
@@ -5511,7 +5543,7 @@ The songs a bard can learn are:
 0 'SONG OF REVELATION' REVELATION~
 Syntax: sing revelation
 
-Bards must be weary of an amush or irate customer at all times.  To
+Bards must be wary of an ambush or irate customer at all times.  To
 enhance their senses, they can sing a song of revelation which shows much
 of their surroundings.
 ~
@@ -5565,9 +5597,9 @@ during combat if caught unawares.
 
 These chants are divided into combat and non-combat groups:
 
-        enfeeblement    protection
-        pain            battle
-        vigour
+        enfeeblement        protection
+        pain                battle
+                            vigour
 ~
 
 0 'CHANT OF ENFEEBLEMENT' ENFEEBLEMENT~
@@ -5634,14 +5666,14 @@ Syntax: shoot <target>
 
 Equipped with a bow, a ranger can start each fight by ambushing their
 prey, catching them unawares and allowing the ranger to inflict a shot of
-high damage.  Rangers who have practiced ACCURACY can also increase the
+high damage.  Rangers who have practised ACCURACY can also increase the
 amount of damage inflicted by each shot they land.
 ~
 
 0 THRUST~
 Syntax: thrust
 
-The brave fighter may occassionaly feel the need for a brutal, yet wide
+The brave fighter may occasionally feel the need for a brutal, yet wide
 open, attack.  Thrusting with their weapon allows the fighter to inflict
 heavy damage, but may leave them open for a counter-attack.
 ~
@@ -5776,7 +5808,7 @@ floor of the room.  If equipment or money falls a message is printed
 when the mob is killed.
 
 Corpse forming mobiles may produce body parts when killed or spray
-blood.  Relevent checks for heads, arms etc are made to prevent wrong
+blood.  Relevant checks for heads, arms etc are made to prevent wrong
 body parts from being produced.  Body parts from mobiles with
 'BODY_INORGANIC' set are made type 'trash' and are inedible (but still
 have a timer set to prevent clutter).
@@ -5827,37 +5859,37 @@ able to wear.
 
 
 101 BITZ~
-#define BIT_0   0x00000001    /*              1  */
-#define BIT_1   0x00000002    /*              2  */
-#define BIT_2   0x00000004    /*              4  */
-#define BIT_3   0x00000008    /*              8  */
-#define BIT_4   0x00000010    /*             16  */
-#define BIT_5   0x00000020    /*             32  */
-#define BIT_6   0x00000040    /*             64  */
-#define BIT_7   0x00000080    /*            128  */
-#define BIT_8   0x00000100    /*            256  */
-#define BIT_9   0x00000200    /*            512  */
-#define BIT_10  0x00000400    /*          1 024  */
-#define BIT_11  0x00000800    /*          2 048  */
-#define BIT_12  0x00001000    /*          4 096  */
-#define BIT_13  0x00002000    /*          8 192  */
-#define BIT_14  0x00004000    /*         16 384  */
-#define BIT_15  0x00008000    /*         32 768  */
-#define BIT_16  0x00010000    /*         65 536  */
-#define BIT_17  0x00020000    /*        131 072  */
-#define BIT_18  0x00040000    /*        262 144  */
-#define BIT_19  0x00080000    /*        524 288  */
-#define BIT_20  0x00100000    /*      1 048 576  */
-#define BIT_21  0x00200000    /*      2 097 152  */
-#define BIT_22  0x00400000    /*      4 194 304  */
-#define BIT_23  0x00800000    /*      8 388 608  */
-#define BIT_24  0x01000000    /*     16 777 216  */
-#define BIT_25  0x02000000    /*     33 554 432  */
-#define BIT_26  0x04000000    /*     67 108 864  */
-#define BIT_27  0x08000000    /*    134 217 728  */
-#define BIT_28  0x10000000    /*    268 435 456  */
-#define BIT_29  0x20000000    /*    536 870 912  */
-#define BIT_30  0x40000000    /*  1 073 741 824  */
+#define BIT_0   0x00000001  /*              1  */
+#define BIT_1   0x00000002  /*              2  */
+#define BIT_2   0x00000004  /*              4  */
+#define BIT_3   0x00000008  /*              8  */
+#define BIT_4   0x00000010  /*             16  */
+#define BIT_5   0x00000020  /*             32  */
+#define BIT_6   0x00000040  /*             64  */
+#define BIT_7   0x00000080  /*            128  */
+#define BIT_8   0x00000100  /*            256  */
+#define BIT_9   0x00000200  /*            512  */
+#define BIT_10  0x00000400  /*           1024  */
+#define BIT_11  0x00000800  /*           2048  */
+#define BIT_12  0x00001000  /*           4096  */
+#define BIT_13  0x00002000  /*           8192  */
+#define BIT_14  0x00004000  /*          16384  */
+#define BIT_15  0x00008000  /*          32768  */
+#define BIT_16  0x00010000  /*          65536  */
+#define BIT_17  0x00020000  /*         131072  */
+#define BIT_18  0x00040000  /*         262144  */
+#define BIT_19  0x00080000  /*         524288  */
+#define BIT_20  0x00100000  /*        1048576  */
+#define BIT_21  0x00200000  /*        2097152  */
+#define BIT_22  0x00400000  /*        4194304  */
+#define BIT_23  0x00800000  /*        8388608  */
+#define BIT_24  0x01000000  /*       16777216  */
+#define BIT_25  0x02000000  /*       33554432  */
+#define BIT_26  0x04000000  /*       67108864  */
+#define BIT_27  0x08000000  /*      134217728  */
+#define BIT_28  0x10000000  /*      268435456  */
+#define BIT_29  0x20000000  /*      536870912  */
+#define BIT_30  0x40000000  /*     1073741824  */
 ~
 
 1 SAFE~
@@ -5874,10 +5906,10 @@ your prompt: see 'HELP PROMPT'.
 
 
 1 TOURNAMENTS~
-Syntax: tournament [info]        View tournament information and entrants
-        tournament enter         Enter the current tournament
-        tournament enter <team>  Enter for a particular team
-        tournament withdraw      Withdraw from the current tournament
+Syntax:  tournament [info]        View tournament information and entrants
+         tournament enter         Enter the current tournament
+         tournament enter <team>  Enter for a particular team
+         tournament withdraw      Withdraw from the current tournament
 
 Immortals can run special pkilling 'tournaments' in the Arena for players
 to take part in.  The tournament deaths do not count as real pkills, and
@@ -5896,7 +5928,7 @@ and any options that the Immortal calling the tournament has set.  There
 are several options.
 
 You can look at this information before, during and after the tournament;
-there is also a TOURNAMENT channel that provides running commentry.  (You
+there is also a TOURNAMENT channel that provides running commentary.  (You
 should have this channel turned on if you want to enter!)
 
 Type 'TOURNAMENT ENTER' to enter a posted tournament.  You must be within
@@ -5904,12 +5936,12 @@ the level range set by the tournament's poster in order to be accepted.
 Type 'TOURNAMENT WITHDRAW' to remove yourself from the tournament if
 necessary.
 
-Some tournaments involve two or more teams fighting eachother until only
+Some tournaments involve two or more teams fighting each other until only
 one team is left.  To enter a team tournament, type 'TOURNAMENT ENTER <team
 name>', e.g. 'TOURNAMENT ENTER RED' for the Red team.
 
 When it's time to begin, the countdown will be started and you'll be
-transfered into the Arena, from where it's up to you to kill your
+transferred into the Arena, from where it's up to you to kill your
 opponents.  If you are tailing or stalking a victim, that tail or stalk
 will be cancelled.  You may not tail or stalk during the tournament.
 
@@ -5921,16 +5953,16 @@ tournaments.
 ~
 
 101 'TOURNAMENT CONTROLS'~
-Syntax: tournament set <open|team|tag> [number teams] <lower level> \
+Syntax:  tournament set <open|team|tag> [number teams] <lower level> \
                  <upper level> [noflee] [nowimpy] [noquaff] [sameroom]
-        tournament cancel
-        tournament close
-        tournament start
-        tournament ban <character>
+         tournament cancel
+         tournament close
+         tournament start
+         tournament ban <character>
 
 There are three types of tournament: 'open', 'team' and 'tag'.  'Open'
-tournaments involve all fighters killing eachother until one is left.
-'Team' tournaments involve 2-4 teams fighting eachother until only one
+tournaments involve all fighters killing each other until one is left.
+'Team' tournaments involve 2-4 teams fighting each other until only one
 team is left.  'Tag' or 'tag team' tournaments haven't been implemented
 yet, sorry!
 
@@ -5941,22 +5973,22 @@ they enter.  If not all the teams you set are filled, the tournament can
 still be run so long as there are at least two teams: the empty teams are
 deleted.
 
-E.g.    tournament set open ...
-        tournament set team 3 ...
+E.g.     tournament set open ...
+         tournament set team 3 ...
 
 You must provide a level range (valid levels are 10-100).  You may add any
 number of the following options after the level range:
 
-        noflee          Players may not use the FLEE command
-        nowimpy         Players' wimpy values are ignored
-        sameroom        Players are all transferred into the same room
-        noquaff         Players cannot quaff potions
-        nopill          Players cannot eat pills
-        nobrandish      Players cannot brandish staves
+         noflee        Players may not use the FLEE command
+         nowimpy       Players' wimpy values are ignored
+         sameroom      Players are all transferred into the same room
+         noquaff       Players cannot quaff potions
+         nopill        Players cannot eat pills
+         nobrandish    Players cannot brandish staves
 
-E.g.    tournament set open 10 100
-        tournament set open 30 40 nowimpy noflee
-        tournament set team 3 50 60 sameroom
+E.g.     tournament set open   10 100
+         tournament set open   30 40 nowimpy noflee
+         tournament set team 3 50 60 sameroom
 
 Once you have set a tournament give players time to ENTER.  When you enter
 you are listed on 'TOURNAMENT INFO'; nothing else happens until you start
@@ -5967,7 +5999,7 @@ wish to take part.  The ban lasts until the next tournament is posted.
 You can not unban players or reopen closed tournaments.
 
 Use START to begin the tournament: there is a countdown shown to the
-players and then they are all automatically transfered to the arena.
+players and then they are all automatically transferred to the arena.
 Players must be awake, not fighting and standing at the Temple of Midgaard
 (recall square, 3001) else they will not be transferred.
 
@@ -5997,11 +6029,22 @@ including spells and breath weapons.  'Resist heat' and 'resist cold' also
 protect the caster from extremely hot and extremely cold environments.
 ~
 
-0 'HELLS FIRE' 'HELL FIRE'~
-Syntax: cast 'hells fire' <target>
+0 'HELLFIRE' 'HELL FIRE'~
+Syntax: cast 'hellfire' <target>
 
 A powerful Satanist may summon forth white-hot fires from the pits of
-hell to sear their victims flesh from their bones.
+Hell to sear their victims' flesh from their bones.
+~
+
+0 'CHAOS BLAST' 'CHAOSBLAST'~
+Syntax: cast 'chaos blast' <target>
+
+A Satanist able to summon chaotic energies from the nether realms may
+focus and direct them at a target, inflicting unpredictable amounts
+of damage on their foe.  As it requires ignorance on the part of the
+victim to be successful, this spell may not be cast on alert or
+suspicious opponents.  Additionally, enemies who are trapped or
+otherwise rendered immobile are more vulnerable to its depredations.
 ~
 
 0 REVIEW~
@@ -6021,7 +6064,7 @@ Millionaire's Club for 1000 platinum coins.  The hero can decorate this
 room as they wish.  Please note that items dropped on the ground in these
 rooms will not survive reboots, the same as other rooms in the Domain.
 Also note, you will still need the Draagdim recall to use your room, it
-is not includd in the purchase price!  If you are interested in purchasing
+is not included in the purchase price!  If you are interested in purchasing
 a room, talk to Hestia or one of the other Immortals.
 ~
 
@@ -6068,44 +6111,43 @@ different interactions that the social could be used in.  E.g. a social
 Not every interaction needs to be unique for the social to work.
 
 If you want to include a social, just send a note to IMM with the
-social texts in natural english (as in the above example).
+social texts in natural English (as in the above example).
 
-Swedish socials will have to pass a rigerous translation process.
+Swedish socials will have to pass a rigorous translation process.
 ~
 
 -1 MIDGAARD~
-
-{x       N                           Altar
-       ^                             |      Mud School (up from Temple)
-       |                             |     /
-  The City of                   Temple/Recall
-   Midgaard                          |
- <-----+----->    Cleric Guild -- Temple -- Midgaard Bank and
-       O                          Square    Adventurer's Guild
-                                     |
-          Goblin    Magic            |     General  Weapon  Psionicist
-          Foundry   Shop   Bakery    |      Store    Shop    Guild
-            |        |       |       |        |       |       |
-    To  -- West -- Main -- Main - Market -- Main -- Main -- East --     To
-  Forest   Gate   Street  Street  Square   Street  Street   Gate    Crossroads
-            |        |       |       |        |       |       |
-          Wall     Mage   Armoury    |     Jeweler  Warrior  Wall
-          Road     Guild             |               Guild   Road
-            |                        |                        |
-            |                        |            To Dangerous Neighborhood
-            |                        |                   and the Circus
-            |                        |
-            |   Leather  Dragon      |       Map       Pet
-            |     Shop    Cult       |      Store      Shop  Shifter Guild
-            |      |       |         |        |         |        |
-          Wall -- End --  Poor -- Common -- Dark --  Alley -- End of --  Mob
-          Road   Alley   Alley    Square    Alley   At Levee  Alley    Factory
-            |      |       |         |        |         |        |
-            |   Brawler  Lusty       |      Thief     Levee   Abandoned
-          Wall   Guild   Ogres       |      Guild       |     Warehouse
-          Road           Tavern      |                  |
-            |                        |                River
-            |                        |
+{x
+       N                          {Y}yAltar{x
+       ^                            |       Mud School (up from Temple)
+       |                            |      /
+  {YThe City of{x                 {W}gTemple/Recall{x
+   {WMidgaard{x                         |
+ <-----+----->    {W}rCleric Guild{x -- {k}wTemple{x -- {W}bMidgaard Bank and {x
+       O                          {k}wSquare{x    {W}bAdventurer's Guild{x
+                                    |
+          Goblin   {W}bMagic{x            |     {W}bGeneral{x  {W}bWeapon{x  {W}rPsionicist{x
+         Foundry   {W}bShop {x  {W}bBakery{x    |     {W}b Store {x  {W}b Shop {x  {W}r  Guild   {x
+            |        |       |      |        |       |       |
+    To  -- West -- Main -- Main - {k}wMarket{x -- Main -- Main -- East --     To
+  Forest   Gate   Street  Street  {k}wSquare{x   Street  Street   Gate    Crossroads
+            |        |       |      |        |       |       |
+          Wall     {W}rMage {x  {W}bArmoury{x   |     {W}bJeweler{x  {W}rWarrior{x  Wall
+          Road     {W}rGuild{x            |              {W}r Guild {x  Road
+            |                       |                        |
+            |                       |            To Dangerous Neighborhood
+            |                       |                       and the Circus
+            |   {W}bLeather{x  Dragon     |      {W}b Map {x      {W}bPet {x
+            |   {W}b  Shop {x   Cult      |      {W}bStore{x      {W}bShop{x  {W}rShifter Guild{x
+            |      |       |        |        |         |        |
+          Wall -- End --  Poor -- {k}wCommon{x -- Dark --  Alley -- End of --  Mob
+          Road   Alley   Alley    {k}wSquare{x    Alley   At Levee  Alley    Factory
+            |      |       |        |        |         |        |
+            |   {W}rBrawler{x  Lusty      |      {W}rThief{x     Levee   Abandoned
+          Wall  {W}r Guild {x  Ogres      |      {W}rGuild{x       |     Warehouse
+          Road           Tavern     |                  |
+            |                       |                River
+            |                       |
     To South Midgaard              Dump
 
 ~

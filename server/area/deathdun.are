@@ -1,4 +1,4 @@
-#AREA	Yaegar~ Deathtrap Dungeon~
+#AREA   Yaegar~ Deathtrap Dungeon~
 50 75 0 100
 
 #HELPS
@@ -50,7 +50,7 @@ the Trial of Champions.
 8 8 1
 >rand_prog 30~
 if ispc($n)
-	  cheer
+        cheer
         say Huzzah!
 endif
 ~
@@ -69,7 +69,7 @@ the Trial of Champions.
 8 8 2
 >rand_prog 30~
 if ispc($n)
-	  cheer
+        cheer
         say Huzzah!
 endif
 ~
@@ -89,8 +89,8 @@ gonna stop you? This HOBGOBLIN? Please.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	  say Give me that! It's mine!
-	  slap hobgoblin
+          say Give me that! It's mine!
+          slap hobgoblin
 endif
 ~
 |
@@ -122,8 +122,8 @@ his job.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	  say Ugh!
-	  scratch
+          say Ugh!
+          scratch
 endif
 ~
 >death_prog 100~
@@ -148,8 +148,8 @@ anticipates the coming battle.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	  grin
-	  say Prepare to die humanoid
+          grin
+          say Prepare to die humanoid
  endif
 ~
 |
@@ -181,7 +181,7 @@ generally nauseating. Enough to put you off your tea, really.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	  squirm
+          squirm
 endif
 ~
 |
@@ -201,7 +201,7 @@ of its six feet long wings makes you feel disoriented and weak.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	  emote moves to protect its young
+          emote moves to protect its young
 endif
 ~
 >death_prog 100~
@@ -223,7 +223,7 @@ attempting to slay you and reduce you to the same state as it.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	  emote slowly stands up and creaks toward you.
+          emote slowly stands up and creaks toward you.
 endif
 ~
 >death_prog 100~
@@ -246,8 +246,8 @@ way.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	  say Greetings.
-	  say Im off west. You may come too if you like.
+          say Greetings.
+          say Im off west. You may come too if you like.
 endif
 ~
 |
@@ -266,7 +266,7 @@ disgust at the foul odor it exudes- perhaps trolls haven't heard of bathing?
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	emote drools and attacks!
+        emote drools and attacks!
 endif
 ~
 >death_prog 100~
@@ -287,7 +287,7 @@ ears newbie, who shouldn't (and indeed couldn't) make it this far.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	  emote squeaks and tries to flee.
+          emote squeaks and tries to flee.
 endif
 ~
 |
@@ -318,7 +318,7 @@ the beast as it charges.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	emote raises its axe and attacks!
+        emote raises its axe and attacks!
 endif
 ~
 |
@@ -337,7 +337,7 @@ a potent venom that hisses and melts the sand where it drips.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	emote scuttles across the sand toward you, venom dripping from its tail.
+        emote scuttles across the sand toward you, venom dripping from its tail.
  endif
 ~
 |
@@ -356,8 +356,8 @@ weapons indicates clearly that this won't be an easy task.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	say To go further you must get past me!
-	emote readies his weapons and glares menacingly at you.
+        say To go further you must get past me!
+        emote readies his weapons and glares menacingly at you.
  endif
 ~
 >death_prog 100~
@@ -385,7 +385,7 @@ give him something to cheer him up, he may give you a clue.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	say Refreshments for sale.
+        say Refreshments for sale.
  endif
 ~
 >bribe_prog 100~
@@ -408,8 +408,8 @@ existence.
 8 8 2
 >greet_prog 100~
 if ispc($n)
-	scream
-	yell The mirror shall claim another victim!
+        scream
+        yell The mirror shall claim another victim!
  endif
 ~
 |
@@ -442,7 +442,7 @@ steel yourself and prepare to do away with this anti-social menace.
 8 8 2
 >greet_prog 100~
 if ispc($n)
-	say Help! Get me out of here! Quickly!
+        say Help! Get me out of here! Quickly!
  endif
 ~
 |
@@ -477,7 +477,7 @@ as it attacks, remembering how tough this beast is rumored to be.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	emote rolls its tremendoud bulk over and moved to attack.
+        emote rolls its tremendoud bulk over and moved to attack.
  endif
 ~
 >death_prog 100~
@@ -524,7 +524,7 @@ hapless elf.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	emote is squeezing the life from an elf!
+        emote is squeezing the life from an elf!
  endif
 ~
 |
@@ -543,7 +543,7 @@ with a dagger in the back, as there can be only one winner...
 8 8 2
 >entry_prog 100~
 if ispc($n)
-  	say I thanks you for your aid!
+        say I thanks you for your aid!
 endif
 ~
 >bribe_prog 100~
@@ -568,7 +568,7 @@ not to disturb them...
 8 8 1
 >rand_prog 30~
 if ispc($n)
-	emote chants and screams gibberish.
+        emote chants and screams gibberish.
  endif
 ~
 |
@@ -587,7 +587,7 @@ not to disturb them...
 8 8 1
 >rand_prog 30~
 if ispc($n)
-	say Oogah Boogah Oogah Boogah
+        say Oogah Boogah Oogah Boogah
  endif
 ~
 |
@@ -606,7 +606,7 @@ not to disturb them...
 8 8 1
 >rand_prog 40~
 if ispc($n)
-	emote writes in a near orgasmic state of joy.
+        emote writes in a near orgasmic state of joy.
  endif
 ~
 |
@@ -625,7 +625,7 @@ not to disturb them...
 8 8 1
 >rand_prog 40~
 if ispc($n)
-	say AAAAAIIIIIIIAAAAAGGGGGGHHHH!
+        say AAAAAIIIIIIIAAAAAGGGGGGHHHH!
  endif
 ~
 |
@@ -645,8 +645,8 @@ ignore him, but perhaps not his advice.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	say Welcome! For an item I'll give you a key to get up from here!
-	say And thats where you want to be!
+        say Welcome! For an item I'll give you a key to get up from here!
+        say And thats where you want to be!
  endif
 ~
 >bribe_prog 100~
@@ -674,8 +674,8 @@ place called Port Blacksand.
 8 8 2
 >greet_prog 100~
 if ispc($n)
-	grunt $n
-	say Ivy want item too!
+        grunt $n
+        say Ivy want item too!
  endif
 ~
 |
@@ -736,7 +736,7 @@ from its barbed tail and move to close range to do battle.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	yell RRRRRRRRRRRRRROOOOOOOOOOOOOOOOAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRR!!!!!!!!!!
+        yell RRRRRRRRRRRRRROOOOOOOOOOOOOOOOAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRR!!!!!!!!!!
  endif
 ~
 |
@@ -756,7 +756,7 @@ attempt to unlock the doors.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	say Well Done! Now you must needs have 3 gems to unlocks 3 doors!
+        say Well Done! Now you must needs have 3 gems to unlocks 3 doors!
  endif
 ~
 |
@@ -830,7 +830,7 @@ couple of them are saying, however.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	say Greetings. When you get to the pool dive in and head north. Good Luck!
+        say Greetings. When you get to the pool dive in and head north. Good Luck!
  endif
 ~
 |
@@ -849,7 +849,7 @@ minor infringement.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	say Help Me! At least give me some food and water!
+        say Help Me! At least give me some food and water!
  endif
 ~
 >bribe_prog 100~
@@ -909,7 +909,7 @@ quickly find yourself sorry for underestimating him.
 8 8 1
 >greet_prog 100~
 if ispc($n)
-	tell $n You're Dog meat, pal!
+        tell $n You're Dog meat, pal!
  endif
 ~
 |
@@ -927,7 +927,7 @@ LOT more aggressive.
 8 8 0
 >greet_prog 100~
 if ispc($n)
-	yell RRRRRRRRRRRROOOOOOOOOOOOOAAAAAAAAAAAAAAAAARRRRRRRRRRRR!!!!!!!!!!
+        yell RRRRRRRRRRRROOOOOOOOOOOOOAAAAAAAAAAAAAAAAARRRRRRRRRRRR!!!!!!!!!!
  endif
 ~
 |
@@ -4661,7 +4661,7 @@ O 1 17711 1 17708 rope
 M 1 17706 1 17709 orc
 E 1 17816 1 5    leather armor
 E 1 17712 1 16   morning star
-G 1 17713 0			0        tube
+G 1 17713 0 0    tube
 M 1 17739 1 17709 orc
 E 1 17816 1 5    leather armor
 E 1 17712 1 16   morning star
@@ -4700,7 +4700,7 @@ M 1 17743 1 17725 light
 M 1 17709 1 17727 giant fly
 *
 M 1 17708 1 17728 larvae
-G 1 17721 0			0        dagger
+G 1 17721 0 0    dagger
 *
 M 1 17746 1 17731 rock grub
 *
@@ -4755,7 +4755,7 @@ E 1 17748 1 16   axe
 E 1 17749 1 13   loincloth
 E 1 17750 1 8    boots
 E 1 17752 1 10   tattoos
-G 1 17751 0			0        dagger
+G 1 17751 0 0    dagger
 *
 O 1 17753 1 17756 paper
 *
@@ -4775,23 +4775,23 @@ O 1 17763 1 17764 meal
 M 1 17714 1 17764 cobra
 *
 M 1 17715 1 17765 minotaur
-G 1 17826 0			0        key
+G 1 17826 0 0    key
 *
 M 1 17716 1 17766 scorpion
-G 1 17826 0			0        key
+G 1 17826 0 0    key
 *
 M 1 17717 1 17767 dwarf
 E 1 17740 1 16   crossbow
 E 1 17741 1 5    mail
-G 1 17827 0			0        key
+G 1 17827 0 0    key
 *
 O 1 17767 1 17770 crown
 M 1 17720 1 17770 swarm
 *
 M 1 17718 1 17771 servant
 E 1 17769 1 16   tray
-G 1 17768 0			0        food
-G 1 17770 0			0        water
+G 1 17768 0 0    food
+G 1 17770 0 0    water
 *
 O 1 17771 1 17773 chair
 P 1 17832 1 17771 ruby
@@ -4821,7 +4821,7 @@ E 1 17793 1 6    hat
 O 1 17773 1 17793 helm
 *
 M 1 17726 1 17799 boa
-G 1 17777 0			0        skin
+G 1 17777 0 0    skin
 M 1 17727 1 17799 elf
 E 1 17776 1 16   dagger
 E 1 17778 1 8    boots
@@ -4864,12 +4864,12 @@ E 1 17800 1 16   ninjato
 E 1 17801 1 9    bagh nakh
 E 1 17802 1 17   shuriken
 E 1 17803 1 5    robes
-G 1 17804 0			0        knife
-G 1 17802 0			0        shuriken
-G 1 17805 0			0        water
-G 1 17806 0			0        rice
-G 1 17807 0			0        ointment
-G 1 17808 0			0        diamond
+G 1 17804 0 0    knife
+G 1 17802 0 0    shuriken
+G 1 17805 0 0    water
+G 1 17806 0 0    rice
+G 1 17807 0 0    ointment
+G 1 17808 0 0    diamond
 *
 M 1 17733 1 17811 ivy
 E 1 17811 1 16   stool
@@ -4882,7 +4882,7 @@ M 1 17735 1 17813 dog
 E 1 17812 1 3    collar
 *
 M 1 17749 1 17815 pit fiend
-G 1 17813 0			0        shield
+G 1 17813 0 0    shield
 M 1 17723 1 17817 bloodbeast
 *
 M 1 17737 1 17818 manticore
@@ -4904,34 +4904,34 @@ S
 
 
 #SPECIALS
-M  17703 spec_thief			a hobgoblin
-M  17704 spec_thief			a hobgoblin
-M  17708 spec_poison			a writhing mass of fly larvae
-M  17709 spec_poison			a giant fly
-M  17710 spec_cast_undead			a skeleton warrior
-M  17714 spec_poison			a cobra
-M  17716 spec_poison			a giant scorpion
-M  17717 spec_cast_judge			a rough dwarf
-M  17718 spec_janitor			a crippled, shackled servant
-M  17719 spec_cast_mage			a mirror demon
-M  17720 spec_poison			a swarm of insects
-M  17721 spec_poison			a medusa
-M  17722 spec_thief			a leprechaun
-M  17723 spec_breath_acid			the bloodbeast
-M  17725 spec_breath_acid			a pool of green slime
-M  17727 spec_thief			an elven thief
-M  17732 spec_janitor			an old man
-M  17733 spec_fido			poison ivy
-M  17734 spec_fido			a guard dog
-M  17735 spec_fido			a guard dog
-M  17736 spec_thief			a ninja
-M  17737 spec_poison			a manticore
-M  17738 spec_cast_mage			a gnomish trialmaster
-M  17741 spec_poison			a black widow spider
-M  17742 spec_cast_judge			a giant spore ball
-M  17745 spec_cast_undead			a spectre
-M  17746 spec_fido			a rock grub
-M  17749 spec_fido			a pit fiend
+M  17703 spec_thief                     a hobgoblin
+M  17704 spec_thief                     a hobgoblin
+M  17708 spec_poison                    a writhing mass of fly larvae
+M  17709 spec_poison                    a giant fly
+M  17710 spec_cast_undead               a skeleton warrior
+M  17714 spec_poison                    a cobra
+M  17716 spec_poison                    a giant scorpion
+M  17717 spec_cast_judge                a rough dwarf
+M  17718 spec_janitor                   a crippled, shackled servant
+M  17719 spec_demon                     a mirror demon
+M  17720 spec_poison                    a swarm of insects
+M  17721 spec_poison                    a medusa
+M  17722 spec_thief                     a leprechaun
+M  17723 spec_breath_acid               the bloodbeast
+M  17725 spec_breath_acid               a pool of green slime
+M  17727 spec_thief                     an elven thief
+M  17732 spec_janitor                   an old man
+M  17733 spec_fido                      poison ivy
+M  17734 spec_fido                      a guard dog
+M  17735 spec_fido                      a guard dog
+M  17736 spec_thief                     a ninja
+M  17737 spec_poison                    a manticore
+M  17738 spec_cast_mage                 a gnomish trialmaster
+M  17741 spec_poison                    a black widow spider
+M  17742 spec_cast_judge                a giant spore ball
+M  17745 spec_cast_undead               a spectre
+M  17746 spec_fido                      a rock grub
+M  17749 spec_fido                      a pit fiend
 S
 
 

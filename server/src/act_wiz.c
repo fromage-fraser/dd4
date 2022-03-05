@@ -684,7 +684,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 location->area->name);
                 strcat( buf1, buf );
 
-        if(location->area->area_flags)
+        if (location->area->area_flags)
         {
                 sprintf( buf, "Area flags (txt):");
                 strcat( buf1, buf );
@@ -905,11 +905,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         {
                 strcat(buf1, "Extra flags:");
 
-                /*
-                        If you change the following to BIT_30 or just let it evaluate i, do_ostat might break and hang the server.
-                        Leave the ugly hack unless you know how to fix the loop.  --Owl 30/09/18
-                */
-                for (i = 1; i <= BIT_29; i *= 2)
+                for (i = 1; i > 0 && i <= BIT_30; i *= 2)
                 {
                         if (IS_SET(obj->extra_flags, i))
                         {
@@ -917,13 +913,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                                 strcat(buf1, extra_bit_name(i));
                         }
                 }
-
-                if (IS_SET(obj->extra_flags, BIT_30))
-                {
-                        strcat(buf1, " ");
-                        strcat(buf1, extra_bit_name(BIT_30));
-                }
-                strcat(buf1, "\n\r");
+                strcat(buf1, ".\n\r");
         }
 
         sprintf( buf, "In room: %d.  In object: %s.  Carried by: %s.  \n\r",
@@ -1845,11 +1835,15 @@ void do_oload( CHAR_DATA *ch, char *argument )
                         return;
                 }
                 level = atoi( arg2 );
+
+                /*
                 if ( level < 0 || level > get_trust( ch ) )
                 {
                         send_to_char( "Limited to your trust level.\n\r", ch );
                         return;
                 }
+                Removed 2/3/22. imms do what they want. --Owl
+                */
         }
 
         if ( !( pObjIndex = get_obj_index( atoi( arg1 ) ) ) )
@@ -2104,7 +2098,7 @@ void do_addqp( CHAR_DATA *ch, char *argument )
         if ( IS_NPC( ch ) && !IS_SET(ch->act, ACT_NOCHARM )  )
                 return;
 
-        if  (!IS_NPC(ch) )
+        if  (!IS_NPC(ch) && !IS_IMMORTAL(ch)) /* surely imms can use this? --Owl 2/3/22 */
         {
                 if (!authorized( ch, gsn_addqp ) )
                         return;
@@ -2132,9 +2126,9 @@ void do_addqp( CHAR_DATA *ch, char *argument )
 
         points = atoi( arg2 );
 
-        if ( points < 1 || points > 100 )
+        if ( points < 1 || points > 10000 ) /* Increased 100->10000 --Owl 2/3/22 */
         {
-                send_to_char("The number of quest points added must be between 1 and 100.\n\r", ch);
+                send_to_char("The number of quest points added must be between 1 and 10000.\n\r", ch);
                 return;
         }
 
@@ -3581,9 +3575,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 100 )
+                if ( value < 0 || value > 1000 )
                 {
-                        send_to_char( "Practice range is 0 to 100 sessions.\n\r", ch );
+                        send_to_char( "Practice range is 0 to 1000 sessions.\n\r", ch );
                         return;
                 }
 
@@ -3599,9 +3593,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 100 )
+                if ( value < 0 || value > 1000 )
                 {
-                        send_to_char( "Practice range is 0 to 100 sessions.\n\r", ch );
+                        send_to_char( "Practice range is 0 to 1000 sessions.\n\r", ch );
                         return;
                 }
 
@@ -4076,11 +4070,11 @@ void do_oset( CHAR_DATA *ch, char *argument )
                         extra_descr_free        = extra_descr_free->next;
                 }
 
-                ed->keyword         = str_dup( arg3     );
-                ed->description     = str_dup( argument );
-                ed->deleted         = FALSE;
-                ed->next            = obj->extra_descr;
-                obj->extra_descr    = ed;
+                ed->keyword             = str_dup( arg3     );
+                ed->description         = str_dup( argument );
+                ed->deleted             = FALSE;
+                ed->next                = obj->extra_descr;
+                obj->extra_descr        = ed;
                 return;
         }
 

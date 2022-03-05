@@ -1,5 +1,6 @@
 deity_help.are
 helpfile.are
+abyss.are
 limbo.are
 foundry.are
 gremlinlair.are
@@ -11,6 +12,7 @@ immquest.are
 purgator.are
 loe.are
 som.are
+astral.are
 cob.are
 wastelands.are
 trv.are
@@ -39,6 +41,7 @@ grave.are
 school.are
 rats.are
 moria.are
+nirvana.are
 cathenvy.are
 circus.are
 ambushed.are
@@ -76,7 +79,7 @@ magicgarden.are
 highland.are
 quake.are
 mrinthas.are
-DOMAIN2.are
+three_trials.are
 dungeons.are
 heltower.are
 deserts.are
@@ -115,7 +118,7 @@ citie.are
 cobres.are
 kahsis.are
 argent.are
-AGuild.are
+adventurers_guild.are
 tentusks.are
 vampcat4.are
 whitevoid.are

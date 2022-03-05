@@ -1,4 +1,4 @@
-#AREA	Yaegar/Kurgan~ Mount Doom~
+#AREA   Yaegar/Kurgan~ Mount Doom~
 60 85 0 100
 
 #AREA_SPECIAL
@@ -111,7 +111,7 @@ This mammoth horse must weigh double any other equine steed you have ever
 seen. Its jet black coat seems to glow with an inner evil, and you gasp in
 astonishment at the satanic gleam in its dark red eyes.
 ~
-2|64 512 -1000 S
+2|64|131072 512 -1000 S
 54 0 0 0d0+0 0d0+0
 36 0
 8 8 0
@@ -3543,16 +3543,16 @@ M 1 15742 4 15746
 *
 M 1 15732 4 15711                  loads hill giants
 E 1 15743 1 16                    wields club
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 M 1 15732 4 15723
 E 1 15743 1 16                    wields club
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 M 1 15732 4 15727
 E 1 15743 1 16                    wields club
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 M 1 15732 4 15739
 E 1 15743 1 16                    wields club
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 *
 M 1 15729 4 15718                  loads hell hounds
 E 1 15740 1 3                     wears collar
@@ -3565,10 +3565,10 @@ E 1 15740 1 3                     wears collar
 *
 M 1 15730 2 15731                  loads fire giants
 E 1 15741 1 16                    wields sword
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 M 1 15730 2 15733
 E 1 15741 1 16                    wields sword
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 *
 M 1 15720 2 15752                  loads male slaves
 E 1 15730 1 10                    wears manacles
@@ -3607,17 +3607,17 @@ M 1 15710 3 15768                  loads blackguard
 E 1 15715 1 5                     wears armor
 E 1 15716 1 16                    wields morning star
 E 1 15717 1 6                     wears helm
-G 1 15758 0			0                           gives key
+G 1 15758 0 0                     gives key
 M 1 15710 3 15769                  loads blackguard
 E 1 15715 1 5                     wears armor
 E 1 15716 1 16                    wields morning star
 E 1 15717 1 6                     wears helm
-G 1 15758 0			0                           gives key
+G 1 15758 0 0                     gives key
 M 1 15710 3 15770                  loads blackguard
 E 1 15715 1 5                     wears armor
 E 1 15716 1 16                    wields morning star
 E 1 15717 1 6                     wears helm
-G 1 15758 0			0                           gives key
+G 1 15758 0 0                     gives key
 *
 M 1 15736 2 15771                  loads trolls
 E 1 15747 1 16                    wields pole arm
@@ -3625,19 +3625,19 @@ E 1 15748 1 5                     wears chainmail
 *
 M 1 15731 3 15773                  loads frost giants
 E 1 15741 1 16                    wields sword
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 *
 M 1 15733 1 15774                  loads cloud giant
 E 1 15741 1 16                    wields sword
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 *
 M 1 15737 1 15775                  loads ettin
 E 1 15741 1 16                    wields sword
-G 1 15742 0			0                           gives rock
+G 1 15742 0 0                     gives rock
 *
 M 1 15735 2 15776                  loads ogre magi
 E 1 15745 1 16                    wields glaive
-G 1 15746 0			0                           gives potion
+G 1 15746 0 0                     gives potion
 *
 M 1 15740 1 15777                  loads drow
 E 1 15753 1 12                    wears cloak
@@ -3651,29 +3651,29 @@ M 1 15747 1 15778                  loads naga
 M 1 15704 1 15782                  loads arch mage
 E 1 15709 1 17                    holds staff
 E 1 15710 1 12                    wears robes
-G 1 15711 0			0                           gives dust
+G 1 15711 0 0                     gives dust
 *
 M 1 15716 1 15783                  loads fire elemental
-G 1 15728 0			0                           gives brazier
+G 1 15728 0 0                     gives brazier
 M 1 15726 1 15784                  loads earth elemental
-G 1 15737 0			0                           gives stone
+G 1 15737 0 0                     gives stone
 M 1 15727 1 15785                  loads water elemental
-G 1 15738 0			0                           gives bowl
+G 1 15738 0 0                     gives bowl
 M 1 15728 1 15786                  loads air elemental
-G 1 15739 0			0                           gives censer
+G 1 15739 0 0                     gives censer
 *
 M 1 15709 3 15784                  loads mage
 E 1 15721 1 12                    wears robes
 E 1 15722 1 17                    holds wand
-G 1 15723 0			0                           gives chemicals
+G 1 15723 0 0                     gives chemicals
 M 1 15709 3 15785                  loads mage
 E 1 15721 1 12                    wears robes
 E 1 15722 1 17                    holds wand
-G 1 15723 0			0                           gives chemicals
+G 1 15723 0 0                     gives chemicals
 M 1 15709 3 15786                  loads mage
 E 1 15721 1 12                    wears robes
 E 1 15722 1 17                    holds wand
-G 1 15723 0			0                           gives chemicals
+G 1 15723 0 0                     gives chemicals
 *
 M 1 15744 1 15788                  loads lich
 *
@@ -3713,7 +3713,7 @@ O 1 15735 1 15796                  loads bed
 *
 M 1 15703 1 15797                  loads demon prince
 E 1 15707 1 16                    wields flail
-G 1 15708 0			0                           gives spear
+G 1 15708 0 0                     gives spear
 *
 M 1 15743 1 15798                  loads vampire
 E 1 15736 1 12                    wears silk
@@ -3771,7 +3771,7 @@ S
 #SPECIALS
 M  15701 spec_cast_judge                         krothgar
 M  15702 spec_executioner                        golem
-M  15703 spec_cast_undead                        demon prince
+M  15703 spec_demon                              demon prince
 M  15704 spec_cast_mage                          arch mage
 M  15705 spec_cast_cleric                        high priest
 M  15706 spec_guard                              guard
@@ -3790,7 +3790,7 @@ M  15718 spec_cast_cleric                        shedu
 M  15722 spec_fido                               mutant
 M  15723 spec_breath_any                         hydra
 M  15724 spec_thief                              quasit
-M  15725 spec_cast_undead                        succubus
+M  15725 spec_demon                              succubus
 M  15728 spec_breath_gas                         air elemental
 M  15729 spec_breath_fire                        hell hound
 M  15733 spec_cast_cleric                        cloud giant

@@ -1,4 +1,4 @@
-#AREA	Alfa~    Graveyard~
+#AREA   Alfa~    Graveyard~
 5 10 0 100
 
 
@@ -896,11 +896,11 @@ M 0 3603 5 3649        Skeleton
 D 0 3650 5 1          Close Tomb 3651 from outside
 D 0 3651 4 1          Close Tomb 3651 from inside
 *
-M 0 3604 4 3606		random wandering skeletons
+M 0 3604 4 3606       random wandering skeletons
 M 0 3604 4 3604
 M 0 3604 4 3612
 M 0 3604 4 3640
-M 0 3605 3 3651		random wandering zombies
+M 0 3605 3 3651       random wandering zombies
 M 0 3605 3 3644
 M 0 3605 3 3638
 *

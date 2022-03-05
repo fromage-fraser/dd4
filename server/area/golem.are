@@ -1,4 +1,4 @@
-#AREA	Brant~   Golem Settlement~
+#AREA   Brant~   Golem Settlement~
 80 100 60 100
 
 #AREA_SPECIAL
@@ -52,7 +52,7 @@ The golem is quite large and stares at you warily, ready for a fight.
 304 0
 8 8 1
 #20404
-golem wife~
+golem female wife~
 the golem wife~
 A female golem is here preparing a meal.
 ~
@@ -1175,11 +1175,11 @@ M  20404 spec_warrior
 M  20406 spec_warrior
 M  20407 spec_warrior
 M  20411 spec_warrior
-M  20405 spec_cast_adept			the golem healer
-M  20408 spec_cast_mage			the golem mage
-M  20409 spec_cast_cleric			the golem cleric
-M  20410 spec_thief			the golem thief
-M  20412 spec_thief			the destroyer
+M  20405 spec_cast_adept                the golem healer
+M  20408 spec_cast_mage                 the golem mage
+M  20409 spec_cast_cleric               the golem cleric
+M  20410 spec_thief                     the golem thief
+M  20412 spec_thief                     the destroyer
 S
 
 

@@ -1,15 +1,15 @@
-#AREA	Jammer~  The Valley of Dreams~
+#AREA   Jammer~  The Valley of Dreams~
 45 60 0 100
 
 #RECALL
 13609
 #MOBILES
 #13600
-Rhino rhinosaurus beetle~
-A Rhinosaurus Beetle~
-The Rhinosaurus beetle is crawling around looking for food
+Rhino rhinoceros beetle~
+A Rhinoceros Beetle~
+The Rhinoceros beetle is crawling around looking for food
 ~
-This huge armourplated insect is the size of a man and looks very mean.
+This huge armour-plated insect is the size of a man and looks very mean.
 ~
 64 0 0 S
 45 0 0 0d0+0 0d0+0
@@ -20,7 +20,7 @@ Bulette~
 the Bulette~
 The Bulette is on a neverending quest for food...
 ~
-This bizarre creature looks like a cross between a rhinosaurus,  an armadillo and a shark.  Obviously not a natural looking creature,  you wonder at the insane intelligence that may have created this monster...
+This bizarre creature looks like a cross between a rhinoceros, an armadillo and a shark.  Obviously not a natural looking creature,  you wonder at the insane intelligence that may have created this monster...
 ~
 32|64 8|32|512 0 S
 58 0 0 0d0+0 0d0+0
@@ -1543,63 +1543,63 @@ S
 
 
 #RESETS
-D 1 13615 4 1			; The hidden tunnel Close Up
-D 1 13614 5 2			; The Clearing Lock Down
-D 1 13616 4 1			; The tomb Close Up
-R 1 13610 4			; Randomize The Hidden Jungle
-R 1 13611 4			; Randomize The Hidden Jungle
-R 1 13623 4			; Randomize The Hidden Jungle
-R 1 13602 4			; Randomize The great Desert
-D 1 13637 1 2			; The study Lock East
-D 1 13635 3 2			; The top of the stairs Lock West
-D 1 13639 2 2			; A small laboratory Lock South
-D 1 13636 0 2			; The master bedroom Lock North
+D 1 13615 4 1           ; The hidden tunnel Close Up
+D 1 13614 5 2           ; The Clearing Lock Down
+D 1 13616 4 1           ; The tomb Close Up
+R 1 13610 4             ; Randomize The Hidden Jungle
+R 1 13611 4             ; Randomize The Hidden Jungle
+R 1 13623 4             ; Randomize The Hidden Jungle
+R 1 13602 4             ; Randomize The great Desert
+D 1 13637 1 2           ; The study Lock East
+D 1 13635 3 2           ; The top of the stairs Lock West
+D 1 13639 2 2           ; A small laboratory Lock South
+D 1 13636 0 2           ; The master bedroom Lock North
 *
-M 1 13602 1 13609			Torba the Shaman Healer to The Valley Spring
+M 1 13602 1 13609           Torba the Shaman Healer to The Valley Spring
 *
-M 1 13603 1 13611			the Giant Crocodile to The Hidden Jungle
+M 1 13603 1 13611           the Giant Crocodile to The Hidden Jungle
 G 1 13603 100
 *
-M 1 13605 1 13610			the Giant Jaguar to The Hidden Jungle
+M 1 13605 1 13610           the Giant Jaguar to The Hidden Jungle
 *
-M 1 13607 1 13622			the Lizardman Guard to The Hidden Jungle
+M 1 13607 1 13622           the Lizardman Guard to The Hidden Jungle
 E 1 13606 100 16
 E 1 13607 100 11
 *
-M 1 13607 1 13622			the Lizardman Guard to The Hidden Jungle
+M 1 13607 1 13622           the Lizardman Guard to The Hidden Jungle
 E 1 13606 100 16
 E 1 13607 100 11
 *
-M 1 13608 1 13625			the Lizardman Shaman to The Hidden Jungle
+M 1 13608 1 13625           the Lizardman Shaman to The Hidden Jungle
 E 1 13601 100 6
 *
-M 1 13606 1 13626			the Humanoid Gargantua to The Large Clearing
+M 1 13606 1 13626           the Humanoid Gargantua to The Large Clearing
 *
-M 1 13607 1 13624			the Lizardman Guard to The Hidden Jungle
+M 1 13607 1 13624           the Lizardman Guard to The Hidden Jungle
 E 1 13606 100 16
 E 1 13607 100 11
 *
-M 1 13600 1 13622			A Rhinosaurus Beetle to The Hidden Jungle
+M 1 13600 1 13622           A Rhinoceros Beetle to The Hidden Jungle
 *
-M 1 13601 1 13623			the Bulette to The Hidden Jungle
+M 1 13601 1 13623           the Bulette to The Hidden Jungle
 *
-M 1 13607 1 13625			the Lizardman Guard to The Hidden Jungle
+M 1 13607 1 13625           the Lizardman Guard to The Hidden Jungle
 E 1 13606 100 16
 E 1 13607 100 11
 *
-M 1 13604 1 13614			the Black Dragon to The Clearing
-O 1 13600 100 13643			a massive copper tub to The wash house
-P 1 13602 100 13600			an ornate key to container copper tub wash washing
-D 1 13643 5 2			; The wash house Lock Down
+M 1 13604 1 13614           the Black Dragon to The Clearing
+O 1 13600 100 13643         a massive copper tub to The wash house
+P 1 13602 100 13600         an ornate key to container copper tub wash washing
+D 1 13643 5 2               ; The wash house Lock Down
 *
-M 1 13607 1 13613			the Lizardman Guard to The Canyon wall
+M 1 13607 1 13613           the Lizardman Guard to The Canyon wall
 E 1 13607 100 11
 E 1 13606 100 16
-D 1 13618 5 2			; The tomb Lock Down
-O 1 13605 100 13636			a desk to The study
-P 1 13604 100 13605			a polished wooden key to container desk
+D 1 13618 5 2               ; The tomb Lock Down
+O 1 13605 100 13636         a desk to The study
+P 1 13604 100 13605         a polished wooden key to container desk
 *
-M 1 13609 1 13637			Kiqir the Giant Wizard  to The study
+M 1 13609 1 13637           Kiqir the Giant Wizard  to The study
 E 1 13608 100 0
 E 1 13609 100 6
 E 1 13613 100 1
@@ -1618,81 +1618,81 @@ E 1 13622 100 8
 E 1 13620 100 12
 E 1 13623 100 17
 *
-M 1 13610 1 13636			rakasha to The master bedroom
-E 1 13634 100 1				key to rakasha
-O 1 13619 100 13641			Daeron's Shield to The crypt
+M 1 13610 1 13636           rakasha to The master bedroom
+E 1 13634 100 1             key to rakasha
+O 1 13619 100 13641         Daeron's Shield to The crypt
 *
-M 1 13611 1 13649			Jakor the Hermit to The hermits cave
+M 1 13611 1 13649           Jakor the Hermit to The hermits cave
 *
-M 1 13612 1 13630			the Giant Servant to The corridor
+M 1 13612 1 13630           the Giant Servant to The corridor
 *
-M 1 13612 1 13633			the Giant Servant to The Staircase.
+M 1 13612 1 13633           the Giant Servant to The Staircase.
 *
-M 1 13612 1 13635			the Giant Servant to The top of the stairs
+M 1 13612 1 13635           the Giant Servant to The top of the stairs
 *
-M 1 13614 1 13640			the Giant Maid to The pantry
+M 1 13614 1 13640           the Giant Maid to The pantry
 *
-M 1 13614 1 13642			the Giant Maid to The dining room
+M 1 13614 1 13642           the Giant Maid to The dining room
 *
-M 1 13614 1 13651			the Giant Maid to The drawing room
+M 1 13614 1 13651           the Giant Maid to The drawing room
 *
-M 1 13613 1 13638			the Giant Cook to The kitchen
+M 1 13613 1 13638           the Giant Cook to The kitchen
 *
-M 1 13612 1 13638			the Giant Servant to The kitchen
-O 1 13624 100 13640			some meat to The pantry
-O 1 13624 100 13640			some meat to The pantry
-O 1 13624 100 13640			some meat to The pantry
-O 1 13625 100 13614			Rubble to The Clearing
-O 1 13626 100 13636			A fine tapestry to The master bedroom
-O 1 13626 100 13636			A fine tapestry to The master bedroom
-O 1 13626 100 13636			A fine tapestry to The master bedroom
-O 1 13626 100 13636			A fine tapestry to The master bedroom
-O 1 13627 100 13636			A Fourposter Bed to The master bedroom
-O 1 13628 100 13639			a small pile of coins to A small laboratory
-O 1 13629 100 13639			to A small laboratory
-O 1 13628 100 13641			a small pile of coins to The crypt
-O 1 13613 100 13641			kiqir's Signet Ring to The crypt
+M 1 13612 1 13638           the Giant Servant to The kitchen
+O 1 13624 100 13640         some meat to The pantry
+O 1 13624 100 13640         some meat to The pantry
+O 1 13624 100 13640         some meat to The pantry
+O 1 13625 100 13614         Rubble to The Clearing
+O 1 13626 100 13636         A fine tapestry to The master bedroom
+O 1 13626 100 13636         A fine tapestry to The master bedroom
+O 1 13626 100 13636         A fine tapestry to The master bedroom
+O 1 13626 100 13636         A fine tapestry to The master bedroom
+O 1 13627 100 13636         A Fourposter Bed to The master bedroom
+O 1 13628 100 13639         a small pile of coins to A small laboratory
+O 1 13629 100 13639         to A small laboratory
+O 1 13628 100 13641         a small pile of coins to The crypt
+O 1 13613 100 13641         kiqir's Signet Ring to The crypt
 *
-M 1 13615 1 13641			the Black Phasebeast to The crypt
-O 1 13630 100 13609			the spring to The Valley Spring
+M 1 13615 1 13641           the Black Phasebeast to The crypt
+O 1 13630 100 13609         the spring to The Valley Spring
 *
-M 1 13612 1 13632			the Giant Servant to The end
+M 1 13612 1 13632           the Giant Servant to The end
 *
-M 1 13612 1 13632			the Giant Servant to The end
+M 1 13612 1 13632           the Giant Servant to The end
 *
-M 1 13616 1 13646			the Giant Red Roc to The cave
-O 1 13624 100 13647			some meat to The large cave
-O 1 13632 100 13647			A small fireplace to The large cave
-P 1 13633 100 13632			a black ring to container fire fireplace embers small
-P 1 13633 100 13632			a black ring to container fire fireplace embers small
-D 1 13631 3 1			; The corridor  Close West
+M 1 13616 1 13646           the Giant Red Roc to The cave
+O 1 13624 100 13647         some meat to The large cave
+O 1 13632 100 13647         A small fireplace to The large cave
+P 1 13633 100 13632         a black ring to container fire fireplace embers small
+P 1 13633 100 13632         a black ring to container fire fireplace embers small
+D 1 13631 3 1               ; The corridor  Close West
 *
-M 1 13617 2 13623			the Rabid Ape to The Hidden Jungle
+M 1 13617 2 13623           the Rabid Ape to The Hidden Jungle
 *
-M 1 13617 2 13624			the Rabid Ape to The Hidden Jungle
-D 1 13641 4 1			; The crypt Close Up
-D 1 13615 5 2			; The hidden tunnel Lock Down
-D 1 13633 3 1			; The Staircase. Close West
-D 1 13631 1 1			; The corridor  Close East
-D 1 13638 1 1			; The kitchen Close East
+M 1 13617 2 13624           the Rabid Ape to The Hidden Jungle
+D 1 13641 4 1               ; The crypt Close Up
+D 1 13615 5 2               ; The hidden tunnel Lock Down
+D 1 13633 3 1               ; The Staircase. Close West
+D 1 13631 1 1               ; The corridor  Close East
+D 1 13638 1 1               ; The kitchen Close East
 S
 
 
 #SPECIALS
-M  13600 spec_breath_acid			A Rhinosaurus Beetle
-M  13601 spec_poison			the Bulette
-M  13602 spec_cast_adept			Torba the Shaman Healer
-M  13604 spec_breath_acid			the Black Dragon
-M  13608 spec_cast_psionicist			the Lizardman Shaman
-M  13609 spec_cast_psionicist			Kiqir the Giant Wizard
-M  13610 spec_cast_mage  13611 spec_cast_psionicist			Jakor the Hermit
-M  13611 spec_cast_psionicist			Jakor the Hermit
-M  13612 spec_breath_lightning			the Giant Servant
-M  13613 spec_breath_fire			the Giant Cook
-M  13614 spec_cast_psionicist			the Giant Maid
-M  13615 spec_breath_gas			the Black Phasebeast
-M  13616 spec_breath_fire			the Giant Red Roc
-M  13617 spec_poison			the Rabid Ape
+M  13600 spec_breath_acid           A Rhinoceros Beetle
+M  13601 spec_poison                the Bulette
+M  13602 spec_cast_adept            Torba the Shaman Healer
+M  13604 spec_breath_acid           the Black Dragon
+M  13608 spec_cast_psionicist       the Lizardman Shaman
+M  13609 spec_cast_psionicist       Kiqir the Giant Wizard
+M  13610 spec_demon                 Rakasasha
+M  13611 spec_cast_psionicist       Jakor the Hermit
+M  13612 spec_breath_lightning      the Giant Servant
+M  13613 spec_breath_fire           the Giant Cook
+M  13614 spec_cast_psionicist       the Giant Maid
+M  13615 spec_breath_gas            the Black Phasebeast
+M  13616 spec_breath_fire           the Giant Red Roc
+M  13617 spec_poison                the Rabid Ape
 S
 
 

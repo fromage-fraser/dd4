@@ -957,25 +957,25 @@ S
 
 #RESETS
 *
-M 1 31401 5 31429			the alligator to A swampy path
+M 1 31401 5 31429           the alligator to A swampy path
 *
-M 1 31400 1 31429			Will o' the Wisp to A swampy path
+M 1 31400 1 31429           Will o' the Wisp to A swampy path
 *
-M 1 31401 5 31413			the alligator to A swampy path
+M 1 31401 5 31413           the alligator to A swampy path
 *
-M 1 31401 5 31424			the alligator to A swampy path
+M 1 31401 5 31424           the alligator to A swampy path
 *
-M 1 31401 5 31440			the alligator to A swampy path
+M 1 31401 5 31440           the alligator to A swampy path
 *
-M 1 31401 5 31409			the alligator to A swampy path
+M 1 31401 5 31409           the alligator to A swampy path
 *
-O 0 31402 0 31410			misty portal to entrance to swamp of despair
+O 0 31402 0 31410           misty portal to entrance to swamp of despair
 O 0 31403 0 31400
 S
 
 
 #SPECIALS
-M  31400 spec_breath_lightning			Will o' the Wisp
+M  31400 spec_breath_lightning          Will o' the Wisp
 S
 
 

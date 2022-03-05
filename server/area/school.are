@@ -1,4 +1,4 @@
-#AREA	Gezhp~ 	Mud School~
+#AREA   Gezhp~  Mud School~
 1 5 0 100
 
 #AREA_SPECIAL
@@ -333,23 +333,23 @@ and protective magiks on the tired and injured recruits.
 0 0
 0 0 2
 >all_greet_prog 100~
-	if level($n) < 6
-		say Greetings $n, I am here to assist you.
-		mpecho {WA Cleric says 'If you say "fly" I will cast fly on you, this will aid you in your adventures.'
-		break
-	else
-		break
-	endif
+    if level($n) < 6
+        say Greetings $n, I am here to assist you.
+        mpecho {WA Cleric says 'If you say "fly" I will cast fly on you, this will aid you in your adventures.'
+        break
+    else
+        break
+    endif
 ~
 >speech_prog p fly~
-	if level($n) < 6
-		say One moment $n.
-		cast fly $n
-		break
-	else
-		say I'm afraid I am no longer of help to you $n.
-		break
-	endif
+    if level($n) < 6
+        say One moment $n.
+        cast fly $n
+        break
+    else
+        say I'm afraid I am no longer of help to you $n.
+        break
+    endif
 ~
 |
 
@@ -786,10 +786,10 @@ You are beginning to be pulled towards the planet far below.
 
 {WGetting Help{x
 
-The Dragons Domain has a website posted at <{Bwww.dragons-domain.org{x>: you are
-encouraged to check it out!  If this is the first time you have visited
+The Dragons Domain has a website posted at <{Bhttps://smihilist.com/dd4/web/{x>:
+you are encouraged to check it out!  If this is the first time you have visited
 the Domain, you should also read the `Frequently Asked Questions' at
-<{Bwww.dragons-domain.org/faq{x>.
+<{Bhttps://smihilist.com/dd4/web/main/faq/dd-faq.html{x>.
 
 Help is available online by using the HELP command.  If online help
 cannot answer your question, try reading the FAQ.  Also read HELP NEWBIE.
@@ -1819,76 +1819,76 @@ S
 
 #SPECIALS
 
-M 3710	spec_cast_adept		Cleric
-M 3700	spec_cast_psionicist	Loremaster
+M 3710  spec_cast_adept     Cleric
+M 3700  spec_cast_psionicist    Loremaster
 
 S
 
 
 #RESETS
 
-D 0 3707 3 1		Close hatch in obstacle course
-D 0 3708 2 1		Close trapdoor in obstacle course
-O 0 3718 1 3710		Portal to obstacle course
+D 0 3707 3 1        Close hatch in obstacle course
+D 0 3708 2 1        Close trapdoor in obstacle course
+O 0 3718 1 3710     Portal to obstacle course
 
-M 0 3702 1 3714		Animals to combat training yard
+M 0 3702 1 3714     Animals to combat training yard
 M 0 3703 1 3714
 M 0 3704 1 3713
 M 0 3705 1 3713
 
-D 0 3712 0 1		Close gate in combat training yard
+D 0 3712 0 1        Close gate in combat training yard
 
-M 0 3706 1 3717		Goblin to cages
-G 0 3708 0			boots
-G 0 3705 0			cloak
+M 0 3706 1 3717     Goblin to cages
+G 0 3708 0          boots
+G 0 3705 0          cloak
 
-M 0 3707 1 3718		Kobold to cages
-G 0 3706 0			helm
-G 0 3705 0			cloak
+M 0 3707 1 3718     Kobold to cages
+G 0 3706 0          helm
+G 0 3705 0          cloak
 
-M 0 3708 1 3719		Human prisoner to cages
-G 0 3707 0			leggings
-G 0 3712 0			belt
+M 0 3708 1 3719     Human prisoner to cages
+G 0 3707 0          leggings
+G 0 3712 0          belt
 
-M 0 3709 1 3720		Lizardman to cages
-G 0 3711 0			cape
-G 0 3713 0			bracer
+M 0 3709 1 3720     Lizardman to cages
+G 0 3711 0          cape
+G 0 3713 0          bracer
 
-D 0 3715 1 1		close cage gates
+D 0 3715 1 1        close cage gates
 D 0 3715 3 1
 D 0 3716 1 1
 D 0 3716 3 1
 
-D 0 3716 0 1		close door to gladiators
-D 0 3722 0 2		lock door to victory
+D 0 3716 0 1        close door to gladiators
+D 0 3722 0 2        lock door to victory
 
-M 0 3710 1 3721		Cleric to sanctuary
+M 0 3710 1 3721     Cleric to sanctuary
 
-M 0 3712 1 3722		Gladiator to final combat
+M 0 3712 1 3722     Gladiator to final combat
 G 0 3713 0
 G 0 3715 0
 G 0 3714 0
 G 0 3710 0
 
-O 0 3719 1 3723		Portal to victory
-O 0 3720 1 3737		Portal to safety
+O 0 3719 1 3723     Portal to victory
+O 0 3720 1 3737     Portal to safety
 
-D 0 3725 2 1		close door to arena
-D 0 3725 0 1		close door to obstacle course
+D 0 3725 2 1        close door to arena
+D 0 3725 0 1        close door to obstacle course
 
-M 0 3711 1 3724		Quartermaster to store
+M 0 3711 1 3724     Quartermaster to store
 G 0 3138 0
 G 0 3009 0
 G 0 3373 0
 G 0 3031 0
 
-M 0 3700 1 3726		Loremaster
+M 0 3700 1 3726     Loremaster
 
-M 0 3713 2 3729		a "board"
+M 0 3713 2 3729     a "board"
 M 0 3713 2 3736
-M 0 3714 4 3730		lizzy lizzy
+M 0 3714 4 3730     lizzy lizzy
 M 0 3714 4 3732
-M 0 3715 2 3734		woofpalBITE --[ DOGGY STYLE ]-- you!
+M 0 3715 2 3734     woofpalBITE --[ DOGGY STYLE ]-- you!
 S
 
 
@@ -1898,7 +1898,7 @@ S
 
 #SHOPS
 
-3711	1 15 17 19 9 100 100 0 23
+3711    1 15 17 19 9 100 100 0 23
 0
 
 #$

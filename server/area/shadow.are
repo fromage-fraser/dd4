@@ -1,4 +1,4 @@
-#AREA	Sneak~  Shadow Keep~
+#AREA   Sneak~  Shadow Keep~
 10 30 0 100
 
 #MOBILES
@@ -16,7 +16,7 @@ The Shadow Wraith Glares Back At YOU!
 #16601
 Undead Soldier~
 an Undead Soldier~
-An Undead Soldier continues his age old assult On The Castle.
+An Undead Soldier continues his age old assault On The Castle.
 ~
 The Undead Soldier looks straight through you.
 ~
@@ -38,7 +38,7 @@ Electricity Streaks from the Eel.
 #16603
 Giant Rat~
 a Giant Rat~
-A Giant Rat lurkes here considering you.
+A Giant Rat lurks here considering you.
 ~
 I hate to think what they feed this rat.
 ~
@@ -173,7 +173,7 @@ Insane torturer~
 the insane torturer~
 A insane torturer stands here torturing himself.
 ~
-This guy is sick, there are scars and burnmarks all over him.
+This guy is sick, there are scars and burn marks all over him.
 ~
 2|4|64 0 0 S
 25 0 0 0d0+0 0d0+0
@@ -182,7 +182,7 @@ This guy is sick, there are scars and burnmarks all over him.
 #16616
 Servant~
 a servant~
-A servant scurrys around doing chores.
+A servant scurries around doing chores.
 ~
 He is too busy even to notice you.
 ~
@@ -207,7 +207,7 @@ the priest~
 A powerful priest stand here incanting.
 ~
 The priest glares at you and says
-"How dare you interupt me."
+"How dare you interrupt me."
 ~
 4|64|128 128 0 S
 32 0 0 0d0+0 0d0+0
@@ -269,20 +269,20 @@ The hunting dog looks rather happy with itself.
 36 0
 8 8 1
 #16624
-Gnome ambasador~
-a Gnome ambasador~
-A gnome ambasador stands here looking at you.
+Gnome ambassador~
+a Gnome ambassador~
+A gnome ambassador stands here looking at you.
 ~
-The ambasador sniffs his nose at you and turns away.
+The ambassador sniffs his nose at you and turns away.
 ~
 128 0 0 S
 23 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #16625
-Dwarven ambasador dwarf~
-the dwarven ambasador~
-The Dwarven ambasador stands here feet planted like a stone.
+Dwarven ambassador dwarf~
+the dwarven ambassador~
+The Dwarven ambassador stands here feet planted like a stone.
 ~
 "What YOU looking at small fry"
 ~
@@ -484,7 +484,7 @@ A Kings key lies here.~
 0~ 1~ 6~ 11~
 5 0 0
 #16620
-Throneroom key~
+Throneroom silver key~
 a silver key~
 A silver key rests here.~
 ~
@@ -640,7 +640,7 @@ A note rests here.~
 E
 note~
 To all the guards.
-As the castle is under imminent danger of assult i have locked the king in the throne room. Should he require anything tell me as i have the key and will be in the armoury.
+As the castle is under imminent danger of assault I have locked the king in the throne room. Should he require anything tell me as I have the key and will be in the armoury.
 
 Farlin.
 Captain of the guards.~
@@ -773,7 +773,7 @@ A steak rests here.~
 #16647
 chips~
 chips~
-Some chips resthere.~
+Some chips rest here.~
 ~
 19 0 1
 5~ 1~ 6~ 11~
@@ -838,8 +838,8 @@ Some dwarven plate lies here.~
 20 0 0
 #16655
 axe~
-a axe~
-A axe rests here.~
+an axe~
+An axe rests here.~
 ~
 5 1 1|8192
 0~ 24~ 25~ 3~
@@ -869,7 +869,7 @@ King of Shadow keep.
 #16600
 A Dark Path~
 The path seems to be getting darker and colder here and a strange chill
-eminates from the west.  Even the shadows seen to grasp at you as you
+emanates from the west.  Even the shadows seen to grasp at you as you
 pass.
 ~
 0 1 3
@@ -885,7 +885,7 @@ S
 #16601
 A Dark Path~
 The path seems to be getting darker and colder here and a strange chill
-eminates from the west.  Even the shadows seem to grasp at you as you
+emanates from the west.  Even the shadows seem to grasp at you as you
 pass. You can hear noises in the bush that you hope are small animals. On
 a tree you can make out a sign.
 ~
@@ -910,7 +910,7 @@ S
 #16602
 A Dark Path~
 The path seems to be getting darker and colder here and a strange chill
-eminates from the west.  Even the shadows seem to grasp at you as you
+emanates from the west.  Even the shadows seem to grasp at you as you
 pass. You can hear noises in the bush that you hope are small animals.
 Towards the west you can see the towers of a dark castle through the
 trees.
@@ -927,7 +927,7 @@ D3
 S
 #16603
 A Path Towards A Castle~
-The forest seems to be thining out and its getting lighter, but the chill
+The forest seems to be thinning out and it's getting lighter, but the chill
 in the air is getting even worse. A Large dark castle stands to the west
 from here.
 ~
@@ -945,8 +945,8 @@ S
 Killing Grounds~
 Bones lie scattered all over the field here, you can identify a few of
 them as human. Even the grass is still stained red although the battle was
-a long time ago.  Rusty weapons lie discarded on the ground or enbedded in
-some poor victims corpse. You can follow a trench towards the north and
+a long time ago.  Rusty weapons lie discarded on the ground or embedded in
+some poor victim's corpse. You can follow a trench towards the north and
 south or continue towards the castle to the west.
 ~
 0 0 2
@@ -980,8 +980,8 @@ S
 Killing Grounds~
 Bones lie scattered all over the field here, you can identify a few of
 them as human. Even the grass is still stained red although the battle was
-a long time ago. Rusty weapons lie discarded on the ground or enbedded in
-some poor victims corpse. A Trench leads back to the south and a siege
+a long time ago. Rusty weapons lie discarded on the ground or embedded in
+some poor victim's corpse. A Trench leads back to the south and a siege
 engine can be seen standing to the west.
 ~
 0 0 2
@@ -998,7 +998,7 @@ S
 A Siege Engine~
 You have entered a siege engine that was to be used to scale the castle
 walls. Ropes and pulleys are attached to the walls for the slaves to hoist
-up the ramp. The wood is rotten and the ladder leading to the roof does'nt
+up the ramp. The wood is rotten and the ladder leading to the roof doesn't
 look to safe.
 ~
 0 8 2
@@ -1013,7 +1013,7 @@ D4
 S
 #16607
 On Top Of Siege Engine~
-Whoa what a view, you can just about see midgaard from here. To the west
+Whoa what a view, you can just about see Midgaard from here. To the west
 you can see the castle walls a mere 10 ft away. The wood on the top of the
 siege engine looks old and rotten.
 ~
@@ -1046,9 +1046,9 @@ D2
 S
 #16609
 Moat~
-The Moat seems to be getting clearer here you can almosty see the bottom.
+The Moat seems to be getting clearer here; you can almost see the bottom.
 You can still feel thing brushing against you but now you can make out
-dary green shapes under the water. Something is glinting at the bottom of
+dark green shapes under the water. Something is glinting at the bottom of
 the moat.
 ~
 0 0 6
@@ -1120,7 +1120,7 @@ The water stings your eyes and seems to taste very salty. Dark green
 shapes swim around the edges of your vision, occasionally you feel a nip
 at the back of your head or legs but nothing seems to be there when you
 look. Below you is the remains of a attempt to breach the castle walls, it
-was not succesful from the look of the bodies scattered around the bottom,
+was not successful from the look of the bodies scattered around the bottom,
 held down by the rusty armour they still wear.
 ~
 0 0 6
@@ -1133,8 +1133,8 @@ S
 Killing Grounds~
 Bones lie scattered all over the field here, you can identify a few of
 them as human. Even the grass is still stained red although the battle was
-a long time ago. Rusty weapons lie discarded on the ground or enbedded in
-some poor victims corpse. A trench leads to the north and to the east you
+a long time ago. Rusty weapons lie discarded on the ground or embedded in
+some poor victim's corpse. A trench leads to the north and to the east you
 can see a strange looking hill.
 ~
 0 0 2
@@ -1166,9 +1166,9 @@ mound~
 S
 #16616
 In The Burial Mound~
-Its dark and cold here and the corpses seem to move and grasp at you as
+It's dark and cold here and the corpses seem to move and grasp at you as
 you push through them. Somewhere in the shadows you can hear moans of
-something still alive. A Soldiers arm seems to be bekoning to you.
+something still alive. A soldier's arm seems to be beckoning to you.
 ~
 0 1|8 0
 D4
@@ -1200,7 +1200,7 @@ D3
 S
 #16618
 Drawbridge~
-The drawbridge looks as if it should have been condemed years ago. The
+The drawbridge looks as if it should have been condemned years ago. The
 Wood has rotted and the steel bands holding them are rusted and broken. As
 you step onto the drawbridge some timber drops into the murky water
 beneath. A Thrashing noise and a spray of moat water make you think you
@@ -1284,7 +1284,7 @@ S
 A Stairway~
 This Small room is used by defenders of the castle to climb to the
 battlements above. A old stone staircase winds its way up above you. By
-the dust on the staircase it hasnt been used in a long time.
+the dust on the staircase it hasn't been used in a long time.
 ~
 0 4|8 0
 D2
@@ -1298,7 +1298,7 @@ D4
 S
 #16623
 Atop The Battlements~
-The view from here is spectacular, you can almost see midgaard. The only
+The view from here is spectacular, you can almost see Midgaard. The only
 worry is the dark black clouds that seem to hover just above the castle,
 as you watch a lightning bolt streaks down into the forest below, igniting
 a tree. The only exits are down the stairs and along the wall to the
@@ -1318,7 +1318,7 @@ S
 Castle wall~
 On the wall you can see the slits the defenders used to shoot arrows
 through and on the stone floor are small holes which you suspect were used
-for dropping oil onto the enemys of the castle. The wall leads from north
+for dropping oil onto the enemies of the castle. The wall leads from north
 to south.
 ~
 0 0 1
@@ -1335,7 +1335,7 @@ S
 Above the Archway~
 On the wall you can see the slits the defenders used to shoot arrows
 through and on the stone floor are small holes which you suspect were used
-for dropping oil onto the enemys of the castle. The wall leads from north
+for dropping oil onto the enemies of the castle. The wall leads from north
 to south.
 ~
 0 0 1
@@ -1352,7 +1352,7 @@ S
 Castle wall~
 On the wall you can see the slits the defenders used to shoot arrows
 through and on the stone floor are small holes which you suspect were used
-for dropping oil onto the enemys of the castle. The wall leads from north
+for dropping oil onto the enemies of the castle. The wall leads from north
 to south.
 ~
 0 0 1
@@ -1367,7 +1367,7 @@ D2
 S
 #16627
 Atop the Battlements~
-The view from here is spectacular, you can almost see midgaard. The only
+The view from here is spectacular, you can almost see Midgaard. The only
 worry is the dark black clouds that seem to hover just above the castle,
 as you watch a lightning bolt streaks down into the forest below, igniting
 a tree. The only exits are down the stairs and along the wall to the
@@ -1387,7 +1387,7 @@ S
 A Stairway~
 This Small room is used by defenders of the castle to climb to the
 battlements above. A old stone staircase winds its way up above you. By
-the dust on the staircase it hasnt been used in a long time.
+the dust on the staircase it hasn't been used in a long time.
 ~
 0 4|8 0
 D0
@@ -1424,7 +1424,7 @@ S
 #16630
 Keep Entrance~
 The huge black stone gates of this Keep would keep out a army of giants.
-The faint mist is seeping from underneath the double doors and weaveing
+The faint mist is seeping from underneath the double doors and weaving
 its way down the steps towards you. The weather seems to suddenly be
 getting colder, better find some shelter fast.
 ~
@@ -1575,7 +1575,7 @@ S
 #16637
 The Scullery~
 The scullery is busy at the moment, servants run around preparing food and
-a cook is grumbling about the kings wages. The room contuines to the
+a cook is grumbling about the kings wages. The room continues to the
 north. A wooden door is in the west wall.
 ~
 0 8 0
@@ -1596,7 +1596,7 @@ S
 The Larder~
 This is where they keep all the food for the king and his guests. Exotic
 food lines the shelves here, some you can recognise and others in jars you
-dont think you want to. A wooden door leads out to the east.
+don't think you want to. A wooden door leads out to the east.
 ~
 0 8 0
 D1
@@ -1624,7 +1624,7 @@ S
 #16640
 Garbage shute~
 Phew what a smell, oops the door closed behind you. The only exit you can
-see is down into the gloom and thats where the smell is comming from.
+see is down into the gloom and that's where the smell is coming from.
 ~
 0 4|8 0
 D5
@@ -1634,8 +1634,8 @@ D5
 S
 #16641
 Stairs Down~
-Old worn stairs lead down into a dimily lit passage here. You can hear the
-sounds of someone screaming in agony from below and also many mens voices
+Old worn stairs lead down into a dimly lit passage here. You can hear the
+sounds of someone screaming in agony from below and also many men's voices
 telling him to be quiet. A Wooden door is in the north wall.
 ~
 0 8 0
@@ -1666,7 +1666,7 @@ D3
 S
 #16643
 Kings Foyer~
-The Sentrys snap to attention as you enter the room and then relax as they
+The sentries snap to attention as you enter the room and then relax as they
 notice you are nobody important. To the west you can see people moving
 around pointing at some closed stone doors and whispering.
 ~
@@ -1706,7 +1706,7 @@ D3
 S
 #16645
 Bottom of Stairs~
-You smell the odor of many bodies down here, the high ceiling looks moundy
+You smell the odor of many bodies down here, the high ceiling looks mouldy
 and dirty but the floor looks well used. The hallway leads to the south
 and the stairs lead back up to the level above.
 ~
@@ -1722,7 +1722,7 @@ D4
 S
 #16646
 A Dim Hallway~
-You smell the odor of many bodies down here, the high ceiling looks moundy
+You smell the odor of many bodies down here, the high ceiling looks mouldy
 and dirty but the floor looks well used. The hallway leads to the south
 and there are archways to the east and west.
 ~
@@ -1770,7 +1770,7 @@ D3
 S
 #16649
 A Dim hallway~
-You smell the odor of many bodies down here, the high ceiling looks moundy
+You smell the odor of many bodies down here, the high ceiling looks mouldy
 and dirty but the floor looks well used. The hallway leads to the north
 and west and a archway is to the east.
 ~
@@ -1802,7 +1802,7 @@ D3
 S
 #16651
 Steps Down~
-The screaming is becoming deafning now and the torches are placed further
+The screaming is becoming deafening now and the torches are placed further
 apart. You have to squint to see down the corridor. It continues to the
 south.
 ~
@@ -1818,7 +1818,7 @@ D2
 S
 #16652
 A Damp Dim Hallway~
-The screaming is becoming deafning now and the torches are placed further
+The screaming is becoming deafening now and the torches are placed further
 apart. You have to squint to see down the corridor. It continues to the
 east.
 ~
@@ -1834,7 +1834,7 @@ D1
 S
 #16653
 A Damp Dim Hallway~
-The screaming is becoming deafning now and the torches are placed further
+The screaming is becoming deafening now and the torches are placed further
 apart. You have to squint to see down the corridor. It continues tot he
 South.
 ~
@@ -1850,8 +1850,8 @@ D3
 S
 #16654
 A Damp Dim Hallway~
-The screaming is becoming deafning now and the torches are placed further
-apart. You have to squint to see down the corridor. It continuse to the
+The screaming is becoming deafening now and the torches are placed further
+apart. You have to squint to see down the corridor. It continues to the
 east.
 ~
 0 8 0
@@ -1885,7 +1885,7 @@ D3
 0 -1 16654
 S
 #16656
-Jailers Quaters~
+Jailers Quarters~
 This room looks relatively comfortable considering it is in the lowest
 level of the castle and there are continuous screams from outside it. A
 door south leads out of the room.
@@ -1899,7 +1899,7 @@ S
 #16657
 Dungeons~
 There are manacles and chains set into all of the walls and a few dead
-bodies are still hanging from them. A horrible screaming is comming from
+bodies are still hanging from them. A horrible screaming is coming from
 the north. Bars to some cells lie to the east and south.
 ~
 0 8 0
@@ -1937,7 +1937,7 @@ S
 A Cell~
 This Is a small dark hole in the wall the floor is covered with straw and
 the smell coming from the corner makes you want to vomit. Through the
-dorway you can hear the bellows of the torturers room heating up the
+doorway you can hear the bellows of the torturers room heating up the
 tools. Some Straw looks to be covering something on the ground.
 ~
 0 8|512 0
@@ -1960,7 +1960,7 @@ S
 A Cell~
 This Is a small dark hole in the wall the floor is covered with straw and
 the smell coming from the corner makes you want to vomit. Through the
-dorway you can hear the bellows of the torturers room heating up the
+doorway you can hear the bellows of the torturers room heating up the
 tools. On the ground is a skeleton.
 ~
 0 8|512 0
@@ -1976,7 +1976,7 @@ ago. From the looks of the 2 fingers on one hand he must have got hungry.
 S
 #16661
 North Wing~
-The hallway is very plush looking, capert line the floor and halfway up
+The hallway is very plush looking, carpet line the floor and halfway up
 the walls too. Various paintings and sketches of old battles line the
 walls too. A polished door lies to the north.
 ~
@@ -2000,7 +2000,7 @@ D3
 S
 #16662
 Hallway~
-The hallway is very plush looking, capert line the floor and halfway up
+The hallway is very plush looking, carpet line the floor and halfway up
 the walls too. Various paintings and sketches of old battles line the
 walls too. A polished door lies to the north.
 ~
@@ -2065,7 +2065,7 @@ D2
 S
 #16666
 Hallway~
-The hallway is very plush looking, capert line the floor and halfway up
+The hallway is very plush looking, carpet line the floor and halfway up
 the walls too. Various paintings and sketches of old battles line the
 walls too. A polished door lies to the north.
 ~
@@ -2093,7 +2093,7 @@ D2
 S
 #16668
 South Wing~
-The hallway is very plush looking, capert line the floor and halfway up
+The hallway is very plush looking, carpet line the floor and halfway up
 the walls too. Various paintings and sketches of old battles line the
 walls too. A polished door lies to the south.
 ~
@@ -2117,7 +2117,7 @@ D3
 S
 #16669
 Hallway~
-The hallway is very plush looking, capert line the floor and halfway up
+The hallway is very plush looking, carpet line the floor and halfway up
 the walls too. Various paintings and sketches of old battles line the
 walls too. A polished door lies to the south.
 ~
@@ -2157,7 +2157,7 @@ D0
 S
 #16672
 Hallway~
-The hallway is very plush looking, capert line the floor and halfway up
+The hallway is very plush looking, carpet line the floor and halfway up
 the walls too. Various paintings and sketches of old battles line the
 walls too. A polished door lies to the south.
 ~
@@ -2258,7 +2258,7 @@ S
 Master Bedroom~
 This looks like the kings Bedroom, a massive bed lies in the middle of the
 room and a few old books line the walls. Against the south wall there are
-a few suits of armour ready for the upcomming battle. The only exit is to
+a few suits of armour ready for the upcoming battle. The only exit is to
 the east.
 ~
 0 8|8192 0
@@ -2272,7 +2272,7 @@ Priests Room~
 Books cover the walls of this room, in the middle is a large stone table
 on which small corpses of animals can be seen. A few books lie open to
 pages about Demons and controlling them. A large pentagram made of a red
-sand is on the floor and a figure in red robes is stareing at it intently.
+sand is on the floor and a figure in red robes is staring at it intently.
 ~
 0 8|8192 0
 D3
@@ -2283,7 +2283,7 @@ S
 #16680
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2299,7 +2299,7 @@ S
 #16681
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2319,7 +2319,7 @@ S
 #16682
 Sewers~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2335,7 +2335,7 @@ S
 #16683
 Sewers~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2351,7 +2351,7 @@ S
 #16684
 Sewers~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2367,7 +2367,7 @@ S
 #16685
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2383,7 +2383,7 @@ S
 #16686
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2399,7 +2399,7 @@ S
 #16687
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2423,7 +2423,7 @@ S
 #16688
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2443,7 +2443,7 @@ S
 #16689
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2459,7 +2459,7 @@ S
 #16690
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2475,7 +2475,7 @@ S
 #16691
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2495,7 +2495,7 @@ S
 #16692
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2511,7 +2511,7 @@ S
 #16693
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2527,7 +2527,7 @@ S
 #16694
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2543,7 +2543,7 @@ S
 #16695
 Sewers.~
 It is dark and smelly here and the water seems to grab at your legs as you
-wade through it. There is a constant splashing sound comming from ahead of
+wade through it. There is a constant splashing sound coming from ahead of
 you. You hope that only rats are in here.
 ~
 0 1|8 0
@@ -2589,39 +2589,39 @@ S
 
 #RESETS
 *
-M 1 16600 1 16600			A Shadow Wraith to A Dark Path
+M 1 16600 1 16600                       A Shadow Wraith to A Dark Path
 E 1 16602 100 16
 *
-M 1 16600 1 16603			A Shadow Wraith to A Path Towards A Castle
+M 1 16600 1 16603                       A Shadow Wraith to A Path Towards A Castle
 E 1 16602 100 16
 *
-M 1 16601 6 16607			A Undead Soldier to On Top Of Siege Engine
+M 1 16601 6 16607                       A Undead Soldier to On Top Of Siege Engine
 E 1 16601 100 6
 E 1 16600 100 16
 *
-M 1 16602 1 16610			A  Giant Eel to Under The Drawbridge
+M 1 16602 1 16610                       A  Giant Eel to Under The Drawbridge
 *
-M 1 16601 6 16613			A Undead Soldier to Underwater Assult
+M 1 16601 6 16613                       A Undead Soldier to Underwater Assault
 E 1 16601 100 6
 E 1 16600 100 16
 *
-M 1 16601 6 16613			A Undead Soldier to Underwater Assult
+M 1 16601 6 16613                       A Undead Soldier to Underwater Assault
 E 1 16601 100 6
 E 1 16600 100 16
 *
-M 1 16601 6 16613			A Undead Soldier to Underwater Assult
+M 1 16601 6 16613                       A Undead Soldier to Underwater Assault
 E 1 16601 100 6
 E 1 16600 100 16
 *
-M 1 16603 1 16612			A Giant Rat to Entrance To sewers
+M 1 16603 1 16612                       A Giant Rat to Entrance To sewers
 *
-M 1 16601 1 16615			A Undead Soldier to Burial Mound
+M 1 16601 1 16615                       A Undead Soldier to Burial Mound
 E 1 16601 100 6
 E 1 16600 100 16
 *
-D 1 16620 1 1			; Castle Courtyard Close East
-D 1 16619 3 2			; Castle Archway Lock West
-D 1 16622 2 1			; A Stairway Close South
+D 1 16620 1 1                   ; Castle Courtyard Close East
+D 1 16619 3 2                   ; Castle Archway Lock West
+D 1 16622 2 1                   ; A Stairway Close South
 D 1 16621 0 1               ; NE of castle courtyard Close North
 D 1 16629 2 1               ; SE of castle courtyard Close South
 D 1 16619 3 2               ; Castle Archway Lock West
@@ -2631,105 +2631,105 @@ D 1 16628 0 1               ; A Stairway Close North
 D 1 16615 5 1               ; Burial Mound Close Down
 D 1 16616 4 1               ; In The Burial Mound Close Up
 *
-M 1 16601 6 16618			A Undead Soldier to Drawbridge
+M 1 16601 6 16618                       A Undead Soldier to Drawbridge
 E 1 16601 100 6
 E 1 16600 100 16
 *
-M 1 16604 3 16606			A slave to A Siege Engine
+M 1 16604 3 16606                       A slave to A Siege Engine
 E 1 16604 100 5
 *
-M 1 16604 3 16606			A slave to A Siege Engine
+M 1 16604 3 16606                       A slave to A Siege Engine
 E 1 16604 100 5
 *
-M 1 16604 3 16606			A slave to A Siege Engine
+M 1 16604 3 16606                       A slave to A Siege Engine
 E 1 16604 100 5
 *
-M 1 16605 2 16620			A suit of armour to Castle Courtyard
+M 1 16605 2 16620                       A suit of armour to Castle Courtyard
 E 1 16606 100 5
 E 1 16605 100 6
 E 1 16607 100 7
 E 1 16608 100 16
 *
-M 1 16605 2 16620			A suit of armour to Castle Courtyard
+M 1 16605 2 16620                       A suit of armour to Castle Courtyard
 E 1 16606 100 5
 E 1 16605 100 6
 E 1 16607 100 7
 E 1 16608 100 16
 *
-M 1 16606 3 16623			the archer to Atop The Battlements
+M 1 16606 3 16623                       the archer to Atop The Battlements
 E 1 16609 100 3
 E 1 16612 100 5
 E 1 16611 100 8
 E 1 16610 100 16
 *
-M 1 16606 3 16625			the archer to Above the Archway
+M 1 16606 3 16625                       the archer to Above the Archway
 E 1 16609 100 3
 E 1 16612 100 5
 E 1 16611 100 8
 E 1 16610 100 16
 *
-M 1 16606 3 16627			the archer to Atop the Battlements
+M 1 16606 3 16627                       the archer to Atop the Battlements
 E 1 16609 100 3
 E 1 16612 100 5
 E 1 16611 100 8
 E 1 16610 100 16
 *
-M 1 16607 1 16616			A Undead soldier to In The Burial Mound
+M 1 16607 1 16616                       A Undead soldier to In The Burial Mound
 E 1 16601 100 6
 E 1 16600 100 16
 G 1 16603 100
-D 1 16631 0 1			; NW of castle courtyard Close North
+D 1 16631 0 1                   ; NW of castle courtyard Close North
 D 1 16633 2 1               ; The stable Close South
 D 1 16632 2 1               ; SW of castle courtyard Close South
 D 1 16634 0 1               ; A Storage room Close North
 D 1 16634 5 1               ; A Storage room Close Down
 D 1 16635 4 1               ; A smugglers room Close Up
 *
-M 1 16608 1 16633			a horse to The stable
+M 1 16608 1 16633                       a horse to The stable
 *
 *
-M 1 16609 1 16635			the smuggler to A smugglers room
+M 1 16609 1 16635                       the smuggler to A smugglers room
 E 1 16616 100 12
 E 1 16614 100 16
 G 1 16615 100
 G 1 16617 100
-D 1 16630 3 2			; Keep Entrance Lock West
-D 1 16636 1 2			; Inside the keep Lock East
-D 1 16638 1 1			; The Larder Close East
-D 1 16639 3 1			; Servants Quarters Close West
-D 1 16639 3 1			; Servants Quarters Close West
-D 1 16641 0 1			; Stairs Down Close North
-D 1 16636 0 1			; Inside the keep Close North
-D 1 16636 2 1			; Inside the keep Close South
-D 1 16637 2 1			; The Scullery Close South
-D 1 16656 2 1			; Jailers Quaters Close South
-D 1 16655 0 1			; A Smelly Hallway Close North
-D 1 16655 1 2			; A Smelly Hallway Lock East
-D 1 16657 3 2			; Dungeons Lock West
-D 1 16659 3 2			; A Cell Lock West
-D 1 16657 1 2			; Dungeons Lock East
-D 1 16660 0 2			; A Cell Lock North
-D 1 16657 2 2			; Dungeons Lock South
-D 1 16664 1 2			; Pentagram Room Lock East
-D 1 16662 3 2			; Hallway Lock West
-D 1 16661 0 1			; North Wing Close North
-D 1 16665 2 1			; 2nd Guest Room Close South
-D 1 16662 0 1			; Hallway Close North
-D 1 16663 2 1			; 1st Guest Room Close South
-D 1 16667 2 1			; 3rd Guest Room Close South
-D 1 16666 0 1			; Hallway Close North
-D 1 16670 0 1			; 4th Guest Room Close North
-D 1 16669 2 1			; Hallway Close South
-D 1 16671 0 1			; 5th Guest Room Close North
-D 1 16668 2 1			; South Wing Close South
-D 1 16673 0 1			; 6th Guest Room Close North
-D 1 16672 2 1			; Hallway Close South
-D 1 16675 1 2			; Secret Room Lock East
-D 1 16674 3 2			; Throne Room Lock West
-D 1 16678 1 2			; Master Bedroom Lock East
-D 1 16677 3 2			; Private Quarters Lock West
-D 1 16644 3 2			; Kings Waiting Room Lock West
-D 1 16674 1 2			; Throne Room Lock East
+D 1 16630 3 2                   ; Keep Entrance Lock West
+D 1 16636 1 2                   ; Inside the keep Lock East
+D 1 16638 1 1                   ; The Larder Close East
+D 1 16639 3 1                   ; Servants Quarters Close West
+D 1 16639 3 1                   ; Servants Quarters Close West
+D 1 16641 0 1                   ; Stairs Down Close North
+D 1 16636 0 1                   ; Inside the keep Close North
+D 1 16636 2 1                   ; Inside the keep Close South
+D 1 16637 2 1                   ; The Scullery Close South
+D 1 16656 2 1                   ; Jailers Quarters Close South
+D 1 16655 0 1                   ; A Smelly Hallway Close North
+D 1 16655 1 2                   ; A Smelly Hallway Lock East
+D 1 16657 3 2                   ; Dungeons Lock West
+D 1 16659 3 2                   ; A Cell Lock West
+D 1 16657 1 2                   ; Dungeons Lock East
+D 1 16660 0 2                   ; A Cell Lock North
+D 1 16657 2 2                   ; Dungeons Lock South
+D 1 16664 1 2                   ; Pentagram Room Lock East
+D 1 16662 3 2                   ; Hallway Lock West
+D 1 16661 0 1                   ; North Wing Close North
+D 1 16665 2 1                   ; 2nd Guest Room Close South
+D 1 16662 0 1                   ; Hallway Close North
+D 1 16663 2 1                   ; 1st Guest Room Close South
+D 1 16667 2 1                   ; 3rd Guest Room Close South
+D 1 16666 0 1                   ; Hallway Close North
+D 1 16670 0 1                   ; 4th Guest Room Close North
+D 1 16669 2 1                   ; Hallway Close South
+D 1 16671 0 1                   ; 5th Guest Room Close North
+D 1 16668 2 1                   ; South Wing Close South
+D 1 16673 0 1                   ; 6th Guest Room Close North
+D 1 16672 2 1                   ; Hallway Close South
+D 1 16675 1 2                   ; Secret Room Lock East
+D 1 16674 3 2                   ; Throne Room Lock West
+D 1 16678 1 2                   ; Master Bedroom Lock East
+D 1 16677 3 2                   ; Private Quarters Lock West
+D 1 16644 3 2                   ; Kings Waiting Room Lock West
+D 1 16674 1 2                   ; Throne Room Lock East
 *
 M 1 16610 2 16643   Keep Sentry to Kings Foyer
 E 1 16622 100 0
@@ -2791,7 +2791,7 @@ E 1 16616 100 12
 E 1 16621 100 16
 G 1 16620 100
 *
-M 1 16614 1 16656            the jailer to Jailers Quaters
+M 1 16614 1 16656            the jailer to Jailers Quarters
 E 1 16628 100 5
 E 1 16626 100 6
 E 1 16627 100 16
@@ -2833,9 +2833,9 @@ E 1 16635 100 12
 *
 M 1 16617 4 16650            a page boy to Pages Quarters.
 E 1 16635 100 12
-D 1 16637 3 1			; The Scullery Close West
+D 1 16637 3 1                   ; The Scullery Close West
 *
-M 1 16618 1 16679			the priest to Priests Room
+M 1 16618 1 16679                       the priest to Priests Room
 E 1 16636 100 12
 E 1 16637 100 16
 E 1 16638 100 17
@@ -2863,10 +2863,10 @@ E 1 16649 100 6
 G 1 16646 100
 G 1 16647 100
 G 1 16648 100
-D 1 16679 3 1			; Priests Room Close West
-D 1 16677 1 1			; Private Quarters Close East
-D 1 16690 4 2			; Sewers. Lock Up
-D 1 16659 5 2			; A Cell Lock Down
+D 1 16679 3 1                   ; Priests Room Close West
+D 1 16677 1 1                   ; Private Quarters Close East
+D 1 16690 4 2                   ; Sewers. Lock Up
+D 1 16659 5 2                   ; A Cell Lock Down
 D 1 16696 3 1               ; Surge Room Close West
 D 1 16688 1 1               ; Sewers. Close East
 D 1 16696 5 1               ; Surge Room Close Down
@@ -2902,7 +2902,7 @@ M  16606 spec_guard                      the archer
 M  16607 spec_cast_undead                        A  Soldier
 M  16609 spec_thief                      the smuggler
 M  16610 spec_guard                      Keep Sentry
-M  16611 spec_breath_fire                      the shadow demon
+M  16611 spec_demon                      the shadow demon
 M  16612 spec_guard                      the keep guard
 M  16613 spec_guard                      the captain of the guards
 M  16618 spec_cast_mage                  the priest

@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       853
+Playd       867
 Note        0
 Room        78
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -67,7 +67,7 @@ RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1646439516
+Saved       1646527249
 Patron      None~
 DeityTimer  360
 DeityFlags  0
@@ -418,7 +418,7 @@ Skll        100 'kiai'
 Skll        100 'possession'
 Skll        100 'demon flames'
 Skll        100 'steal strength'
-Skll        100 'satans fury'
+Skll        100 'satanic fury'
 Skll        100 'hand of lucifer'
 Skll        100 'steal soul'
 Skll        100 'summon demon'
@@ -556,13 +556,15 @@ Skll        100 'resist heat'
 Skll        100 'resist cold'
 Skll        100 'resist lightning'
 Skll        100 'resist acid'
-Skll        100 'hells fire'
+Skll        100 'hellfire'
 Skll        100 'holy prayer of destruction'
 Skll        100 'plague'
 Skll        100 'resistance magiks'
-Skll        100 'natures fury'
+Skll        100 'fury of nature'
 Skll        100 'dual parry'
 Skll        100 'addqp'
+Skll        100 'chaos blast'
+Skll        100 'detect curse'
 Skll        100 'mage base'
 Skll        100 'cleric base'
 Skll        100 'thief base'

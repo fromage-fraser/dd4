@@ -1,4 +1,4 @@
-#AREA	Lok~     Freeport~
+#AREA   Lok~     Freeport~
 -2 -2 0 100
 
 #AREA_SPECIAL
@@ -2368,131 +2368,131 @@ S
 
 
 #RESETS
-M 1 29101 2 29140			Blue Lizard
+M 1 29101 2 29140           Blue Lizard
 G 1 29102 0    tongue
-M 1 29102 2 29130			Red Lizard
+M 1 29102 2 29130           Red Lizard
 G 1 29103 0    tongue
-M 1 29102 2 29103			Red Lizard
+M 1 29102 2 29103           Red Lizard
 G 1 29103 0    tongue
-M 1 29103 2 29110			Green Lizard
+M 1 29103 2 29110           Green Lizard
 G 1 29104 0    tongue
-M 1 29103 2 29135			Green lizard
+M 1 29103 2 29135           Green lizard
 G 1 29104 0    tongue
-M 1 29104 1 29115			Watchman
-O 1 29105 0 29115			watch fire
-M 1 29105 1 29142			fisherman
+M 1 29104 1 29115           Watchman
+O 1 29105 0 29115           watch fire
+M 1 29105 1 29142           fisherman
 E 1 29106 0 16 fishing pole
-M 1 29106 5 29129			longshoreman
-M 1 29106 5 29106			longshoreman
-M 1 29106 5 29111			longshoreman
-M 1 29106 5 29120			longshoreman
-M 1 29106 5 29151			longshoreman
-M 1 29107 1 29116			harbormaster
+M 1 29106 5 29129           longshoreman
+M 1 29106 5 29106           longshoreman
+M 1 29106 5 29111           longshoreman
+M 1 29106 5 29120           longshoreman
+M 1 29106 5 29151           longshoreman
+M 1 29107 1 29116           harbormaster
 G 1 29107 0    notebook
-M 1 29108 5 29108			citizen
-M 1 29108 5 29107			citizen
-M 1 29108 5 29143			citizen
-M 1 29108 5 29152			citizen
-M 1 29108 5 29153			citizen
-M 1 29109 2 29153			child
-M 1 29109 2 29132			child
-M 1 29110 2 29144			sailor's wife
-M 1 29110 2 29155			sailor's wife
-M 1 29111 1 29127			master shipbuilder
-M 1 29112 1 29127			apprentice
-M 1 29113 1 29129			overseer
+M 1 29108 5 29108           citizen
+M 1 29108 5 29107           citizen
+M 1 29108 5 29143           citizen
+M 1 29108 5 29152           citizen
+M 1 29108 5 29153           citizen
+M 1 29109 2 29153           child
+M 1 29109 2 29132           child
+M 1 29110 2 29144           sailor's wife
+M 1 29110 2 29155           sailor's wife
+M 1 29111 1 29127           master shipbuilder
+M 1 29112 1 29127           apprentice
+M 1 29113 1 29129           overseer
 G 1 29107 0    notebook
-M 1 29114 3 29117			harbor patrol
+M 1 29114 3 29117           harbor patrol
 E 1 29108 0 0  globe
 E 1 29109 0 5  scale mail
 E 1 29110 0 16 trident
-M 1 29114 3 29113			harbor patrol
+M 1 29114 3 29113           harbor patrol
 E 1 29108 0 0  globe
 E 1 29109 0 5  scale mail
 E 1 29110 0 16 trident
-M 1 29114 3 29150			harbor patrol
+M 1 29114 3 29150           harbor patrol
 E 1 29108 0 0  globe
 E 1 29109 0 5  scale mail
 E 1 29110 0 16 trident
-M 1 29115 2 29123			teamster
-M 1 29116 1 29148			Lefty in Sunken Pirate
+M 1 29115 2 29123           teamster
+M 1 29116 1 29148           Lefty in Sunken Pirate
 G 1 29111 0    meat pie
 G 1 29112 0    sailor's grog
-M 1 29117 1 29149			Anwar in Emporium
+M 1 29117 1 29149           Anwar in Emporium
 G 1 29113 0    Holy wafer
 G 1 29114 0    Silver plate
 G 1 29115 0    Tapestry
-M 1 29118 1 29151			Raedner in Bronze Scabbard
+M 1 29118 1 29151           Raedner in Bronze Scabbard
 G 1 29116 0    Emerald armor
 G 1 29117 0    Dwarven thrower
 * G 1 40 0       mithril lockpick    Trouble here?
-M 1 29119 1 29152			Samantha in Mystic Eye
+M 1 29119 1 29152           Samantha in Mystic Eye
 G 1 29118 0    Elven chain sleeves
 G 1 29119 0    Elven chain leggings
-M 1 29120 1 29160			Apprentice merchant
-M 1 29121 1 29161			Ceres in merchant guild
+M 1 29120 1 29160           Apprentice merchant
+M 1 29121 1 29161           Ceres in merchant guild
 G 1 29121 0    A very heavy purse
-M 1 29122 1 29158			Elken in Bank of Freeport
-M 1 29124 1 29162			Cadet in academy
-M 1 29125 1 29163			Whitecap in Captains Guild
+M 1 29122 1 29158           Elken in Bank of Freeport
+M 1 29124 1 29162           Cadet in academy
+M 1 29125 1 29163           Whitecap in Captains Guild
 E 1 29129 0 12 Admirals cape
 E 1 29130 0 2  Admiral's signet
-M 1 29126 1 29156			Mayor Friendly in Town Hall
+M 1 29126 1 29156           Mayor Friendly in Town Hall
 G 1 29101 0    Key
-M 1 29127 1 29157			Midge in Crew's Quarters
+M 1 29127 1 29157           Midge in Crew's Quarters
 G 1 29120 0    red wine
 G 1 29121 0    white wine
 G 1 29122 0    gravy and dumplings
-M 1 29128 2 29173			scruffy sailor
-M 1 29128 2 29174			scruffy sailor
-M 1 29129 2 29165			stoic guard
+M 1 29128 2 29173           scruffy sailor
+M 1 29128 2 29174           scruffy sailor
+M 1 29129 2 29165           stoic guard
 E 1 29125 0 14 wrist guard
 E 1 29126 0 16 long sword
 E 1 29127 0 6  helm
-M 1 29129 2 29169			stoic guard
+M 1 29129 2 29169           stoic guard
 E 1 29125 0 14 wrist guard
 E 1 29126 0 16 long sword
 E 1 29127 0 6  helm
-M 1 29128 1 29172			Admiral Blacksail
+M 1 29128 1 29172           Admiral Blacksail
 E 1 29129 0 12 Admirals cape
 E 1 29130 0 2  Admiral's signet
 G 1 29128 0    Devils weed
-M 1 29131 1 29170			Oglethorpe
+M 1 29131 1 29170           Oglethorpe
 G 1 29131 0    A very heavy purse
-M 1 29132 1 29170			Lord Mourning
+M 1 29132 1 29170           Lord Mourning
 E 1 29132 0 8  Bladed boots
 E 1 29133 0 3  Dimensional cloak
 E 1 29134 0 17 Prism of bending
-M 1 29133 2 29148			Drunken sailor
-M 1 29133 2 29157			Drunken sailor
-O 1 29123 0 29106			crate
-O 1 29123 0 29108			crate
-O 1 29123 0 29108			crate
-O 1 29123 0 29120			crate
-O 1 29123 0 29129			crate
-O 1 29123 0 29129			crate
-O 1 29123 0 29168			crate
-O 1 29123 0 29172			crate
-O 1 29123 0 29169			crate
-O 1 29124 0 29106			moored ship
-O 1 29124 0 29108			moored ship
-O 1 29124 0 29120			moored ship
-O 1 29124 0 29175			moored ship
+M 1 29133 2 29148           Drunken sailor
+M 1 29133 2 29157           Drunken sailor
+O 1 29123 0 29106           crate
+O 1 29123 0 29108           crate
+O 1 29123 0 29108           crate
+O 1 29123 0 29120           crate
+O 1 29123 0 29129           crate
+O 1 29123 0 29129           crate
+O 1 29123 0 29168           crate
+O 1 29123 0 29172           crate
+O 1 29123 0 29169           crate
+O 1 29124 0 29106           moored ship
+O 1 29124 0 29108           moored ship
+O 1 29124 0 29120           moored ship
+O 1 29124 0 29175           moored ship
 D 1 29156 5 2              ; Town Hall Lock Down
 D 1 29164 4 2              ; On a Secret Staircase Lock Up
 D 1 29175 4 1             ; On the Hidden Harbor Close South
 D 1 29169 0 1              ; In the Hidden Cavern Close North
-M 1 29134 1 29153			Stathog
+M 1 29134 1 29153           Stathog
 S
 
 
 #SHOPS
-29111 22 0 0 0 0 130 70 6 17               Shipbuilder buys boats
-29116 17 19 0 0 0 150 75 0 23              Lefty sells food and drink
-29117 8 12 13 26 0 130 80 9 17             Anwar sells junk
-29118 5 9 29 30 0 125 85 6 18             Raedner sells arms & armor
-29119 9 2 3 4 28 140 60 17 23              Samanthia sells magic at night
-29127 17 19 0 0 0 110 90 0 23			Midge sells food and drink
+29111 22 0 0 0 0 130 70 6 17                Shipbuilder buys boats
+29116 17 19 0 0 0 150 75 0 23               Lefty sells food and drink
+29117 8 12 13 26 0 130 80 9 17              Anwar sells junk
+29118 5 9 29 30 0 125 85 6 18               Raedner sells arms & armor
+29119 9 2 3 4 28 140 60 17 23               Samanthia sells magic at night
+29127 17 19 0 0 0 110 90 0 23               Midge sells food and drink
 0
 
 

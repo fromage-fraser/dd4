@@ -1486,6 +1486,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_detect_invis,                            0 },
         { &gsn_detect_magic,                            0 },
         { &gsn_detect_hidden,                           0 },
+        { &gsn_detect_curse,                            0 },
         { &gsn_detect_sneak,                            0 },
         { &gsn_infravision,                             0 },
         { &gsn_identify,                                0 },
@@ -1502,6 +1503,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_steal_soul,                              0 },
         { &gsn_summon_demon,                            0 },
         { &gsn_hells_fire,                              0 },
+        { &gsn_chaos_blast,                             0 },
 
         { &gsn_group_death,                             0 },
         { &gsn_feeblemind,                              0 },
@@ -3938,7 +3940,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "satans fury",                  &gsn_satans_fury,
+                "satanic fury",                 &gsn_satans_fury,
                 TYPE_INT,               TAR_IGNORE,    POS_FIGHTING,
                 spell_satans_fury,              25,     12,
                 "summoned {Rdevil{x",           "!Satans_Fury!"
@@ -4904,10 +4906,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "hells fire",   &gsn_hells_fire,
+                "hellfire",   &gsn_hells_fire,
                 TYPE_INT,  TAR_CHAR_OFFENSIVE,  POS_FIGHTING,
                 spell_hells_fire,   20,  12,
-                "{Whell's fire{x", "!Hells Fire!"
+                "{Whellfire{x", "!Hellfire!"
         },
 
         {
@@ -4932,7 +4934,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "natures fury",  &gsn_natures_fury,
+                "fury of nature",  &gsn_natures_fury,
                 TYPE_INT,  TAR_CHAR_OFFENSIVE,  POS_FIGHTING,
                 spell_natures_fury,  25,  12,
                 "magical assault", ""
@@ -4947,13 +4949,31 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "addqp",                &gsn_addqp,
-                TYPE_STR,               TAR_IGNORE,             POS_DEAD,
+                TYPE_STR,               TAR_IGNORE,                 POS_DEAD,
                 spell_null,             0,      0,
                 "",                     "!Addqp!"
         },
 
+        {
+                "chaos blast",              &gsn_chaos_blast,
+                TYPE_INT,               TAR_CHAR_OFFENSIVE_SINGLE,  POS_STANDING,
+                spell_chaos_blast,      5,                          12,
+                "{Wc{Bh{Wa{Bo{Ws {Bb{Wl{Ba{Ws{Bt{x",                  "!Chaos Blast!"
+        },
+
+        {
+                "detect curse",         &gsn_detect_curse,
+                TYPE_INT,     TAR_CHAR_SELF,          POS_STANDING,
+                spell_detect_curse,                   5,      12,
+                "",         "You no longer feel an affinity for the accursed."
+        },
+
         /*
-         *  Base skills for classes :)  ALWAYS LEAVE AT END OF THE TABLE !!!
+         *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
+         */
+
+        /*
+         *  Base skills for classes :)  ALWAYS LEAVE BASE SKILLS AT END OF THE TABLE !!!
          */
 
         {
