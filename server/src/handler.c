@@ -983,11 +983,11 @@ int apply_ac( OBJ_DATA *obj, int iWear )
         switch ( iWear )
         {
             case WEAR_BODY:     return 3 * obj->value[0];
-            case WEAR_HEAD:         return 2 * obj->value[0];
-            case WEAR_LEGS:         return 2 * obj->value[0];
-            case WEAR_FEET:         return     obj->value[0];
+            case WEAR_HEAD:     return 2 * obj->value[0];
+            case WEAR_LEGS:     return 2 * obj->value[0];
+            case WEAR_FEET:     return     obj->value[0];
             case WEAR_HANDS:    return     obj->value[0];
-            case WEAR_ARMS:         return     obj->value[0];
+            case WEAR_ARMS:     return     obj->value[0];
             case WEAR_SHIELD:   return     obj->value[0];
             case WEAR_FINGER_L: return     obj->value[0];
             case WEAR_FINGER_R: return     obj->value[0];
@@ -997,7 +997,7 @@ int apply_ac( OBJ_DATA *obj, int iWear )
             case WEAR_WAIST:    return     obj->value[0];
             case WEAR_WRIST_L:  return     obj->value[0];
             case WEAR_WRIST_R:  return     obj->value[0];
-            case WEAR_HOLD:         return     obj->value[0];
+            case WEAR_HOLD:     return     obj->value[0];
         }
 
         return 0;
@@ -2070,36 +2070,36 @@ char *item_type_name( OBJ_DATA *obj  )
 
         switch ( obj->item_type )
         {
-            case ITEM_LIGHT:                return "light";
-            case ITEM_SCROLL:               return "scroll";
-            case ITEM_WAND:                     return "wand";
-            case ITEM_STAFF:                return "staff";
-            case ITEM_WEAPON:               return "weapon";
-            case ITEM_TREASURE:             return "treasure";
-            case ITEM_ARMOR:                return "armor";
-            case ITEM_POTION:               return "potion";
-            case ITEM_FURNITURE:            return "furniture";
-            case ITEM_TRASH:                return "trash";
-            case ITEM_CONTAINER:            return "container";
-            case ITEM_DRINK_CON:            return "drink container";
-            case ITEM_KEY:                      return "key";
-            case ITEM_FOOD:                     return "food";
-            case ITEM_MONEY:                return "money";
-            case ITEM_BOAT:                     return "boat";
-            case ITEM_CORPSE_NPC:           return "npc corpse";
-            case ITEM_CORPSE_PC:            return "pc corpse";
-            case ITEM_FOUNTAIN:             return "fountain";
-            case ITEM_PILL:                     return "pill";
+            case ITEM_LIGHT:            return "light";
+            case ITEM_SCROLL:           return "scroll";
+            case ITEM_WAND:             return "wand";
+            case ITEM_STAFF:            return "staff";
+            case ITEM_WEAPON:           return "weapon";
+            case ITEM_TREASURE:         return "treasure";
+            case ITEM_ARMOR:            return "armor";
+            case ITEM_POTION:           return "potion";
+            case ITEM_FURNITURE:        return "furniture";
+            case ITEM_TRASH:            return "trash";
+            case ITEM_CONTAINER:        return "container";
+            case ITEM_DRINK_CON:        return "drink container";
+            case ITEM_KEY:              return "key";
+            case ITEM_FOOD:             return "food";
+            case ITEM_MONEY:            return "money";
+            case ITEM_BOAT:             return "boat";
+            case ITEM_CORPSE_NPC:       return "npc corpse";
+            case ITEM_CORPSE_PC:        return "pc corpse";
+            case ITEM_FOUNTAIN:         return "fountain";
+            case ITEM_PILL:             return "pill";
             case ITEM_PAINT:            return "paint pigment";
-            case ITEM_CLAN_OBJECT:          return "clan item";
-            case ITEM_LOCK_PICK:            return "lockpick";
-            case ITEM_INSTRUMENT:           return "musical instrument";
+            case ITEM_CLAN_OBJECT:      return "clan item";
+            case ITEM_LOCK_PICK:        return "lockpick";
+            case ITEM_INSTRUMENT:       return "musical instrument";
             case ITEM_PORTAL:           return "portal";
             case ITEM_POISON_POWDER:    return "poison powder";
             case ITEM_ARMOURERS_HAMMER: return "armourer's hammer";
-            case ITEM_MITHRIL:              return "mithril";
-            case ITEM_WHETSTONE:            return "whetstone";
-            case ITEM_ANVIL:                return "anvil";
+            case ITEM_MITHRIL:          return "mithril";
+            case ITEM_WHETSTONE:        return "whetstone";
+            case ITEM_ANVIL:            return "anvil";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
@@ -2126,44 +2126,44 @@ char *affect_loc_name( int location )
         switch ( location )
         {
             case APPLY_NONE:                    return "none";
-            case APPLY_STR:                         return "strength";
-            case APPLY_DEX:                         return "dexterity";
-            case APPLY_INT:                         return "intelligence";
-            case APPLY_WIS:                         return "wisdom";
-            case APPLY_CON:                         return "constitution";
-            case APPLY_SEX:                         return "sex";
+            case APPLY_STR:                     return "strength";
+            case APPLY_DEX:                     return "dexterity";
+            case APPLY_INT:                     return "intelligence";
+            case APPLY_WIS:                     return "wisdom";
+            case APPLY_CON:                     return "constitution";
+            case APPLY_SEX:                     return "sex";
             case APPLY_CLASS:                   return "class";
             case APPLY_LEVEL:                   return "level";
-            case APPLY_AGE:                         return "age";
-            case APPLY_HEIGHT:              return "height";
-            case APPLY_WEIGHT:              return "weight";
+            case APPLY_AGE:                     return "age";
+            case APPLY_HEIGHT:                  return "height";
+            case APPLY_WEIGHT:                  return "weight";
             case APPLY_MANA:                    return "mana";
-            case APPLY_HIT:                         return "hit points";
+            case APPLY_HIT:                     return "hit points";
             case APPLY_MOVE:                    return "moves";
             case APPLY_GOLD:                    return "gold";
-            case APPLY_EXP:                         return "experience";
-            case APPLY_AC:                          return "armor class";
+            case APPLY_EXP:                     return "experience";
+            case APPLY_AC:                      return "armor class";
             case APPLY_HITROLL:                 return "hit roll";
             case APPLY_DAMROLL:                 return "damage roll";
             case APPLY_SAVING_PARA:             return "save vs paralysis";
             case APPLY_SAVING_ROD:              return "save vs rod";
-            case APPLY_SAVING_PETRI:        return "save vs petrification";
-            case APPLY_SAVING_BREATH:       return "save vs breath";
-            case APPLY_SAVING_SPELL:        return "save vs spell";
+            case APPLY_SAVING_PETRI:            return "save vs petrification";
+            case APPLY_SAVING_BREATH:           return "save vs breath";
+            case APPLY_SAVING_SPELL:            return "save vs spell";
             case APPLY_SANCTUARY:               return "sanctuary";
             case APPLY_SNEAK:                   return "sneak";
-            case APPLY_FLY:                         return "fly";
+            case APPLY_FLY:                     return "fly";
             case APPLY_INVIS:                   return "invisibility";
-            case APPLY_DETECT_INVIS:        return "detect invisibility";
-            case APPLY_DETECT_HIDDEN:       return "detect hidden";
+            case APPLY_DETECT_INVIS:            return "detect invisibility";
+            case APPLY_DETECT_HIDDEN:           return "detect hidden";
             case APPLY_PROTECT:                 return "protection";
             case APPLY_PASS_DOOR:               return "pass door";
             case APPLY_GLOBE:                   return "globe";
             case APPLY_FLAMING:                 return "fireshield";
-            case APPLY_RESIST_HEAT:         return "heat resistance";
-            case APPLY_RESIST_COLD:         return "cold resistance";
-            case APPLY_RESIST_LIGHTNING:    return "lightning resistance";
-            case APPLY_RESIST_ACID:         return "acid resistance";
+            case APPLY_RESIST_HEAT:             return "heat resistance";
+            case APPLY_RESIST_COLD:             return "cold resistance";
+            case APPLY_RESIST_LIGHTNING:        return "lightning resistance";
+            case APPLY_RESIST_ACID:             return "acid resistance";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );
@@ -2544,12 +2544,12 @@ char *extra_form_name (int form)
         if ( form == FORM_TIGER           ) return "tiger";
         if ( form == FORM_HYDRA           ) return "hydra";
         if ( form == FORM_WOLF            ) return "wolf";
-        if ( form == FORM_DIREWOLF            ) return "direwolf";
+        if ( form == FORM_DIREWOLF        ) return "direwolf";
         if ( form == FORM_PHOENIX         ) return "phoenix";
         if ( form == FORM_DEMON           ) return "demon";
         if ( form == FORM_DRAGON          ) return "dragon";
-        if ( form == FORM_FLY                 ) return "fly";
-        if ( form == FORM_GRIFFIN             ) return "griffin";
+        if ( form == FORM_FLY             ) return "fly";
+        if ( form == FORM_GRIFFIN         ) return "griffin";
 
         return "none";
 }
@@ -2561,20 +2561,20 @@ int extra_form_int (char *name)
 
         if (!strncmp(name, "normal", strlen(name)))     form = FORM_NORMAL;
         if (!strncmp(name, "chameleon", strlen(name)))  form = FORM_CHAMELEON;
-        if (!strncmp(name, "hawk", strlen(name)))           form = FORM_HAWK;
-        if (!strncmp(name, "cat", strlen(name)))            form = FORM_CAT;
-        if (!strncmp(name, "snake", strlen(name)))          form = FORM_SNAKE;
+        if (!strncmp(name, "hawk", strlen(name)))       form = FORM_HAWK;
+        if (!strncmp(name, "cat", strlen(name)))        form = FORM_CAT;
+        if (!strncmp(name, "snake", strlen(name)))      form = FORM_SNAKE;
         if (!strncmp(name, "scorpion", strlen(name)))   form = FORM_SCORPION;
         if (!strncmp(name, "spider", strlen(name)))     form = FORM_SPIDER;
-        if (!strncmp(name, "bear", strlen(name)))           form = FORM_BEAR;
-        if (!strncmp(name, "tiger", strlen(name)))          form = FORM_TIGER;
-        if (!strncmp(name, "hydra", strlen(name)))          form = FORM_HYDRA;
-        if (!strncmp(name, "wolf", strlen(name)))           form = FORM_WOLF;
+        if (!strncmp(name, "bear", strlen(name)))       form = FORM_BEAR;
+        if (!strncmp(name, "tiger", strlen(name)))      form = FORM_TIGER;
+        if (!strncmp(name, "hydra", strlen(name)))      form = FORM_HYDRA;
+        if (!strncmp(name, "wolf", strlen(name)))       form = FORM_WOLF;
         if (!strncmp(name, "direwolf", strlen(name)))   form = FORM_DIREWOLF;
         if (!strncmp(name, "phoenix", strlen(name)))    form = FORM_PHOENIX;
-        if (!strncmp(name, "demon", strlen(name)))          form = FORM_DEMON;
+        if (!strncmp(name, "demon", strlen(name)))      form = FORM_DEMON;
         if (!strncmp(name, "dragon", strlen(name)))     form = FORM_DRAGON;
-        if (!strncmp(name, "fly", strlen(name)))            form = FORM_FLY;
+        if (!strncmp(name, "fly", strlen(name)))        form = FORM_FLY;
         if (!strncmp(name, "griffin", strlen(name)))    form = FORM_GRIFFIN;
 
         return form;

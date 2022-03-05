@@ -4076,10 +4076,10 @@ void do_oset( CHAR_DATA *ch, char *argument )
                         extra_descr_free        = extra_descr_free->next;
                 }
 
-                ed->keyword                 = str_dup( arg3     );
+                ed->keyword         = str_dup( arg3     );
                 ed->description     = str_dup( argument );
                 ed->deleted         = FALSE;
-                ed->next                    = obj->extra_descr;
+                ed->next            = obj->extra_descr;
                 obj->extra_descr    = ed;
                 return;
         }
@@ -4199,11 +4199,11 @@ void do_rename( CHAR_DATA *ch, char *argument )
                         extra_descr_free        = extra_descr_free->next;
                 }
 
-                ed->keyword                 = str_dup( arg3     );
+                ed->keyword             = str_dup( arg3     );
                 ed->description         = str_dup( argument );
-                ed->deleted         = FALSE;
-                ed->next                    = obj->extra_descr;
-                obj->extra_descr    = ed;
+                ed->deleted             = FALSE;
+                ed->next                = obj->extra_descr;
+                obj->extra_descr        = ed;
                 return;
         }
 
@@ -4302,12 +4302,12 @@ void do_users (CHAR_DATA *ch, char *argument)
 
         const char *connect_desc [24] =
         {
-                "playing",                  "get name",             "get old pwd",
+                "playing",              "get name",             "get old pwd",
                 "confirm pwd",          "get new pwd",          "confirm pwd",
                 "display race",         "choose race",          "confirm race",
                 "choose sex",           "confirm sex",          "choose class",
                 "confirm class",        "read motd",            "roll stats",
-                "confirm stats",        "note to",                  "note subject",
+                "confirm stats",        "note to",              "note subject",
                 "note expiry",          "note text",            "note finish",
                 "welcome note",         "reconnect pwd",        "confirm ansi"
         };

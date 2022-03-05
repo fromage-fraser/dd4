@@ -504,8 +504,8 @@ void move_char(CHAR_DATA *ch, int door)
                 if (checkmovetrap(ch, door))
                         return;
 
-        move = movement_loss[UMIN(SECT_MAX-1, in_room->sector_type)]
-             + movement_loss[UMIN(SECT_MAX-1, to_room->sector_type)];
+                move = movement_loss[UMIN(SECT_MAX-1, in_room->sector_type)]
+                        + movement_loss[UMIN(SECT_MAX-1, to_room->sector_type)];
 
 
                 if ((IS_AFFECTED(ch, AFF_NON_CORPOREAL)

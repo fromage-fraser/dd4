@@ -115,12 +115,12 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         /*  who name, show name, attribute bonus, mana bonus  */
 
         {       "Non",  "None",                 APPLY_STR,      FALSE   },
-        {       "Nec",  "Necromncr",    APPLY_WIS,      TRUE    },
+        {       "Nec",  "Necromncr",            APPLY_WIS,      TRUE    },
         {       "Wlk",  "Warlock",              APPLY_STR,      TRUE    },
         {       "Tem",  "Templar",              APPLY_STR,      TRUE    },
         {       "Dru",  "Druid",                APPLY_INT,      TRUE    },
         {       "Nin",  "Ninja",                APPLY_CON,      FALSE   },
-        {       "Bou",  "B. Hunter",    APPLY_STR,      FALSE   },
+        {       "Bou",  "B. Hunter",            APPLY_STR,      FALSE   },
         {       "Thg",  "Thug",                 APPLY_CON,      FALSE   },
         {       "Kni",  "Knight",               APPLY_WIS,      TRUE    },
         {       "Sat",  "Satanist",             APPLY_STR,      TRUE    },
@@ -128,8 +128,8 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         {       "Wer",  "Werewolf",             APPLY_STR,      FALSE   },
         {       "Vam",  "Vampire",              APPLY_STR,      FALSE   },
         {       "Mon",  "Monk",                 APPLY_WIS,      TRUE    },
-        {       "Mar",  "M. Artist",    APPLY_STR,      FALSE   },
-        {       "Brb",  "Barbarian",    APPLY_STR,      FALSE   },
+        {       "Mar",  "M. Artist",            APPLY_STR,      FALSE   },
+        {       "Brb",  "Barbarian",            APPLY_STR,      FALSE   },
         {       "Brd",  "Bard",                 APPLY_DEX,      TRUE    }
 };
 
