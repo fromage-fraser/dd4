@@ -3868,6 +3868,8 @@ void do_pagelen ( CHAR_DATA *ch, char *argument )
         char buf [ MAX_STRING_LENGTH ];
         char arg [ MAX_INPUT_LENGTH  ];
         int  lines;
+        const int default_len = 25;
+        const int max_len = 1000;
 
         if (IS_NPC(ch))
                 return;
@@ -3879,26 +3881,29 @@ void do_pagelen ( CHAR_DATA *ch, char *argument )
                 if (ch->pcdata->pagelen)
                         lines = ch->pcdata->pagelen;
                 else
-                        lines = 25;
+                        lines = default_len;
         }
         else
+        {
                 lines = atoi( arg );
+        }
 
-        if ( lines < 1 )
+        if (lines < 1)
         {
                 send_to_char("Negative or zero values for a page pause are not legal.\n\r", ch );
                 return;
         }
 
-        if ( lines > 100 )
+        if (lines > max_len)
         {
-                send_to_char("I don't know of a screen that is larger than 100 lines!\n\r", ch );
-                lines = 100;
+                sprintf(buf, "I don't know of a screen that is larger than %d lines!\n\r", max_len);
+                send_to_char(buf, ch);
+                lines = max_len;
         }
 
         ch->pcdata->pagelen = lines;
-        sprintf( buf, "Page pause set to %d lines.\n\r", lines );
-        send_to_char( buf, ch );
+        sprintf(buf, "Page pause set to %d lines.\n\r", lines);
+        send_to_char(buf, ch);
         return;
 }
 
