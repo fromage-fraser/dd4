@@ -7,8 +7,8 @@
 set port = 8888
 if ( "$1" != "" ) set port="$1"
 
-# Gezhp 2002
-rm nohup.out
+# Gezhp 2002 / Owl 2022
+if ( -e nohup.out ) rm nohup.out
 
 # Change to area directory.
 cd ../area
