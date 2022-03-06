@@ -1134,8 +1134,8 @@ least damage to most damage:
        {wgraze         maim             {RANNIHILATE        ELIMINATE{x
        {whit           MUTILATE         {ROBLITERATE        EXTERMINATE{x
        {winjure        DISEMBOWEL       {RRAVAGE            UTTERLY DESTROY{x
-       {wwound       {WEVISCERATE       {RCRIPPLE           PARTICLIZE{x
-       {wmaul        {WMASSACRE         {RBRUTALISE{x
+       {wwound         {WEVISCERATE       {RCRIPPLE           PARTICLIZE{x
+       {wmaul          {WMASSACRE         {RBRUTALISE{x
 ~
 
 0 DEATH~
