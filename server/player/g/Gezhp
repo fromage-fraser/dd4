@@ -90,9 +90,9 @@ DeityFavour Nystis~ 400
 DeityFavour Tractacus~ 400
 DeityFavour Brutus~ 600
 DeityFavour Morfus~ 600
-DeityType   0 0 0 0 0 0 
-DeityPerson 0 0 0 0 0 0 0 
-Boards      5 General 0 Ideas 0 Announce 0 Bugs 0 Personal 0 
+DeityType   0 0 0 0 0 0
+DeityPerson 0 0 0 0 0 0 0
+Boards      5 General 0 Ideas 0 Announce 0 Bugs 0 Personal 0
 Skll        100 'reserved'
 Skll        100 'acid blast'
 Skll        100 'inner fire'
