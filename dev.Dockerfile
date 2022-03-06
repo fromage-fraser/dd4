@@ -6,10 +6,10 @@
 # Run the container, exposing server on port 18888:
 #   docker run --rm -it -v<local dd4 directory>:/dd4-dev -w /dd4-dev -p 18888:8888 dd4-dev bash
 #
-# See 'dev' target in the main Makefile.
+# See 'dev' and 'buid-dev' targets in the main Makefile.
 
 FROM gcc:4.9
 RUN apt-get update && \
-    apt-get -y install gdb vim less
+    apt-get -y install gdb vim less screen
 EXPOSE 8888
 CMD ["/bin/bash"]

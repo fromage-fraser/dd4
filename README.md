@@ -91,7 +91,7 @@ _Gezhp 2019_
     docker-compose down
     ```
 
-The server container is configured to always restart: edit [the docker-compose configuration](docker-compose.yml)
+The server container is not configured to always restart: edit [the docker-compose configuration](docker-compose.yml)
 if you don't want this behaviour.
 
 
@@ -250,5 +250,3 @@ Debug the server:
 -   I used [tinyfugue](http://tinyfugue.sourceforge.net/) as a game client.
 
 -   The server seems to crash hard if directories it expects to exist do not. E.g. subdirectories of `/server/player`.
-
--   It would be better to have the server write to persistent log files automatically.
