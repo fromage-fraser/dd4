@@ -1,4 +1,4 @@
-#AREA	 Sneak~    City Of Thieves ~
+#AREA    Sneak~    City Of Thieves ~
 30 50 0 100
 
 #MOBILES
@@ -49,7 +49,7 @@ He is wearing rags of the street.
 #23504
 lizard lizardine~
 a lizardine~
-The green lizardine filcks it tongue at you.
+The green lizardine flicks its tongue at you.
 ~
 The lizardine spits in your direction.
 ~
@@ -558,16 +558,16 @@ horse~
 the horse~
 A horse stands here tied to a post.
 ~
-It whinneys and snorts at you with eyes of terror.
+It whinnies and snorts at you with eyes of terror.
 ~
-2|64 0 0 S
+2|64|131072 0 0 S
 30 0 0 0d0+0 0d0+0
 36 0
 8 8 1
 #23552
 dwarf thief~
 the dwarf~
-A dwarf stands here waiting for somone to mug.
+A dwarf stands here waiting for someone to mug.
 ~
 He snarls at you.
 ~
@@ -3268,64 +3268,64 @@ S
 
 
 #RESETS
-D 1 23595 0 2			; A Dark Tower Lock North
-D 1 23596 2 2			; Tower Hallway. Lock South
-D 1 23598 2 1			; 1st Floor Room. Close South
-D 1 23597 0 1			; 1st Floor. Close North
-D 1 23600 2 1			; 2nd Floor Room. Close South
-D 1 23602 2 1			; 3rd Floor Room. Close South
-D 1 23604 2 1			; A White Room. Close South
-D 1 23599 0 1			; 2nd Floor. Close North
-D 1 23601 0 1			; 3rd Floor. Close North
-D 1 23603 0 1			; 4th Floor. Close North
-D 1 23603 2 2			; 4th Floor. Lock South
-D 1 23605 0 2			; A Black Room. Lock North
-D 1 23606 0 1			; 5th Floor. Close North
-D 1 23607 2 1			; 5th Floor Room. Close South
-D 1 23590 0 1			; Mill Street. Close North
-D 1 23591 2 1			; 'Jimmy Quicktint', Best Tattooist In Town. Close South
-D 1 23585 3 1			; Stable Street. Close West
-D 1 23582 3 1			; Stable Street. Close West
-D 1 23583 1 1			; Serpent Queens Home. Close East
-D 1 23573 5 1			; Stable Street. Close Down
-D 1 23574 4 1			; Iron Ladder. Close Up
-D 1 23567 0 1			; Clog Street. Close North
-D 1 23568 2 1			; Ben Borryman 'Silversmith'. Close South
-D 1 23565 0 1			; Clog Street. Close North
-D 1 23566 2 1			; Candle Makers. Close South
-D 1 23560 1 1			; A Narrow Corridor. Close East
-D 1 23562 3 1			; A Cabin. Close West
-D 1 23560 3 1			; A Narrow Corridor. Close West
-D 1 23561 1 1			; The Crews Cabin. Close East
-D 1 23553 2 0			; Harbour Street Open South
-D 1 23554 0 0			; An Alley. Open North
-D 1 23546 0 1			; Candle Street Close North
-D 1 23547 2 1			; A Dark Gloomy Room Close South
-D 1 23548 0 1			; Candle Street. Close North
-D 1 23549 2 1			; Mad House. Close South
-D 1 23541 1 1			; Bridge Street. Close East
-D 1 23542 3 1			; A Gloomy House. Close West
-D 1 23539 1 1			; Town markets Close East
-D 1 23540 3 1			; Madam Star Clairvoyant. Close West
-D 1 23528 3 2			; Front Lawn Lock West
-D 1 23529 1 2			; Entranceway. Lock East
-M 1 23507 1 23528			the wolf to Front Lawn
+D 1 23595 0 2           ; A Dark Tower Lock North
+D 1 23596 2 2           ; Tower Hallway. Lock South
+D 1 23598 2 1           ; 1st Floor Room. Close South
+D 1 23597 0 1           ; 1st Floor. Close North
+D 1 23600 2 1           ; 2nd Floor Room. Close South
+D 1 23602 2 1           ; 3rd Floor Room. Close South
+D 1 23604 2 1           ; A White Room. Close South
+D 1 23599 0 1           ; 2nd Floor. Close North
+D 1 23601 0 1           ; 3rd Floor. Close North
+D 1 23603 0 1           ; 4th Floor. Close North
+D 1 23603 2 2           ; 4th Floor. Lock South
+D 1 23605 0 2           ; A Black Room. Lock North
+D 1 23606 0 1           ; 5th Floor. Close North
+D 1 23607 2 1           ; 5th Floor Room. Close South
+D 1 23590 0 1           ; Mill Street. Close North
+D 1 23591 2 1           ; 'Jimmy Quicktint', Best Tattooist In Town. Close South
+D 1 23585 3 1           ; Stable Street. Close West
+D 1 23582 3 1           ; Stable Street. Close West
+D 1 23583 1 1           ; Serpent Queens Home. Close East
+D 1 23573 5 1           ; Stable Street. Close Down
+D 1 23574 4 1           ; Iron Ladder. Close Up
+D 1 23567 0 1           ; Clog Street. Close North
+D 1 23568 2 1           ; Ben Borryman 'Silversmith'. Close South
+D 1 23565 0 1           ; Clog Street. Close North
+D 1 23566 2 1           ; Candle Makers. Close South
+D 1 23560 1 1           ; A Narrow Corridor. Close East
+D 1 23562 3 1           ; A Cabin. Close West
+D 1 23560 3 1           ; A Narrow Corridor. Close West
+D 1 23561 1 1           ; The Crews Cabin. Close East
+D 1 23553 2 0           ; Harbour Street Open South
+D 1 23554 0 0           ; An Alley. Open North
+D 1 23546 0 1           ; Candle Street Close North
+D 1 23547 2 1           ; A Dark Gloomy Room Close South
+D 1 23548 0 1           ; Candle Street. Close North
+D 1 23549 2 1           ; Mad House. Close South
+D 1 23541 1 1           ; Bridge Street. Close East
+D 1 23542 3 1           ; A Gloomy House. Close West
+D 1 23539 1 1           ; Town markets Close East
+D 1 23540 3 1           ; Madam Star Clairvoyant. Close West
+D 1 23528 3 2           ; Front Lawn Lock West
+D 1 23529 1 2           ; Entranceway. Lock East
+M 1 23507 1 23528           the wolf to Front Lawn
 G 1 23537 100
-O 1 23539 100 23531			a chest to A Landing
-P 1 23538 100 23539			a black key to container chest solid
-M 1 23508 1 23531			a fireimp to A Landing
+O 1 23539 100 23531         a chest to A Landing
+P 1 23538 100 23539         a black key to container chest solid
+M 1 23508 1 23531           a fireimp to A Landing
 E 1 23514 100 6
-M 1 23509 1 23531			the fat man to A Landing
+M 1 23509 1 23531           the fat man to A Landing
 E 1 23515 100 5
 G 1 23551 100
-M 1 23540 1 23503			the locksmith to J. B. Wraggins, Locksmith.
+M 1 23540 1 23503           the locksmith to J. B. Wraggins, Locksmith.
 E 1 23526 100 5
 E 1 23508 100 6
 E 1 23531 100 12
 E 1 23511 100 13
 E 1 23517 100 16
 G 1 23537 100
-M 1 23505 1 23523			a half orc to Herbalist Shop
+M 1 23505 1 23523           a half orc to Herbalist Shop
 E 1 23526 100 5
 E 1 23508 100 6
 E 1 23531 100 12
@@ -3334,18 +3334,18 @@ E 1 23540 100 16
 G 1 23542 100
 G 1 23546 100
 G 1 23547 100
-M 1 23502 2 23500			a city guard to Entrance To Port Blacksand.
+M 1 23502 2 23500           a city guard to Entrance To Port Blacksand.
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23509 100 16
-M 1 23502 2 23500			a city guard to Entrance To Port Blacksand.
+M 1 23502 2 23500           a city guard to Entrance To Port Blacksand.
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23509 100 16
 *
-M 1 23542 1 23605			Zanbar Bone to A Black Room.
+M 1 23542 1 23605           Zanbar Bone to A Black Room.
 E 1 23501 100 0
 E 1 23541 100 3
 E 1 23541 100 4
@@ -3358,11 +3358,11 @@ E 1 23550 100 8
 E 1 23587 100 17
 G 1 23503 100
 *
-O 1 23583 100 23602			A copper urn to 3rd Floor Room.
-P 1 23584 100 23583			a copper orb to container copper urn large
-P 1 23585 100 23583			a green scroll to container copper urn large
+O 1 23583 100 23602         A copper urn to 3rd Floor Room.
+P 1 23584 100 23583         a copper orb to container copper urn large
+P 1 23585 100 23583         a green scroll to container copper urn large
 *
-M 1 23500 2 23603			the Spirit Stalker to 4th Floor.
+M 1 23500 2 23603           the Spirit Stalker to 4th Floor.
 E 1 23501 100 0
 E 1 23541 100 3
 E 1 23541 100 4
@@ -3373,7 +3373,7 @@ E 1 23502 100 12
 E 1 23504 100 16
 G 1 23503 100
 *
-M 1 23500 2 23603			the Spirit Stalker to 4th Floor.
+M 1 23500 2 23603           the Spirit Stalker to 4th Floor.
 E 1 23541 100 3
 E 1 23541 100 4
 E 1 23507 100 5
@@ -3382,50 +3382,50 @@ E 1 23533 100 7
 E 1 23502 100 12
 E 1 23504 100 16
 G 1 23503 100
-D 1 23503 0 1			; J. B. Wraggins, Locksmith. Close North
-D 1 23502 2 1			; Key Street Close South
+D 1 23503 0 1           ; J. B. Wraggins, Locksmith. Close North
+D 1 23502 2 1           ; Key Street Close South
 *
-M 1 23503 5 23504			the boy to Key Street
+M 1 23503 5 23504           the boy to Key Street
 E 1 23510 100 5
 *
-M 1 23503 5 23506			the boy to Old house
+M 1 23503 5 23506           the boy to Old house
 E 1 23510 100 5
 *
-M 1 23503 5 23506			the boy to Old house
+M 1 23503 5 23506           the boy to Old house
 E 1 23510 100 5
 *
-M 1 23503 5 23506			the boy to Old house
+M 1 23503 5 23506           the boy to Old house
 E 1 23510 100 5
 *
-M 1 23503 5 23507			the boy to Key Street
+M 1 23503 5 23507           the boy to Key Street
 E 1 23510 100 5
 *
-M 1 23504 1 23509			a lizardine to A Lounge.
+M 1 23504 1 23509           a lizardine to A Lounge.
 *
-M 1 23543 2 23510			the city guard to Key Street
+M 1 23543 2 23510           the city guard to Key Street
 E 1 23507 100 5
 E 1 23508 100 6
 E 1 23533 100 7
 E 1 23509 100 16
 *
-M 1 23543 2 23510			the city guard to Key Street
+M 1 23543 2 23510           the city guard to Key Street
 E 1 23507 100 5
 E 1 23508 100 6
 E 1 23509 100 16
 *
-M 1 23543 10 23522			the city guard to Market Street
-E 1 23507 100 5
-E 1 23508 100 6
-E 1 23533 100 7
-E 1 23509 100 16
-*
-M 1 23543 10 23522			the city guard to Market Street
+M 1 23543 10 23522          the city guard to Market Street
 E 1 23507 100 5
 E 1 23508 100 6
 E 1 23533 100 7
 E 1 23509 100 16
 *
-M 1 23544 1 23525			the inn keeper. to The Spotted Dog
+M 1 23543 10 23522          the city guard to Market Street
+E 1 23507 100 5
+E 1 23508 100 6
+E 1 23533 100 7
+E 1 23509 100 16
+*
+M 1 23544 1 23525           the inn keeper. to The Spotted Dog
 E 1 23507 100 5
 E 1 23508 100 6
 E 1 23533 100 7
@@ -3436,14 +3436,14 @@ G 1 23543 100
 G 1 23544 100
 G 1 23545 100
 *
-M 1 23543 10 23525			the city guard to The Spotted Dog
+M 1 23543 10 23525          the city guard to The Spotted Dog
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23531 100 12
 E 1 23517 100 16
 *
-M 1 23543 10 23525			the city guard to The Spotted Dog
+M 1 23543 10 23525          the city guard to The Spotted Dog
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
@@ -3451,7 +3451,7 @@ E 1 23531 100 12
 E 1 23517 100 16
 *
 *
-M 1 23506 2 23526			the thief to Market Street
+M 1 23506 2 23526           the thief to Market Street
 E 1 23526 100 5
 E 1 23549 100 6
 E 1 23533 100 7
@@ -3459,7 +3459,7 @@ E 1 23512 100 12
 E 1 23513 100 16
 E 1 23550 100 8
 *
-M 1 23506 2 23526			the thief to Market Street
+M 1 23506 2 23526           the thief to Market Street
 E 1 23526 100 5
 E 1 23549 100 6
 E 1 23533 100 7
@@ -3467,78 +3467,78 @@ E 1 23550 100 8
 E 1 23512 100 12
 E 1 23513 100 16
 *
-M 1 23503 8 23518			the boy to Clock Street
+M 1 23503 8 23518           the boy to Clock Street
 E 1 23510 100 5
 *
-M 1 23513 2 23520			the dwarf to Mugged!
+M 1 23513 2 23520           the dwarf to Mugged!
 E 1 23507 100 5
 E 1 23549 100 6
 E 1 23533 100 7
 E 1 23512 100 12
 E 1 23517 100 16
 *
-M 1 23513 2 23520			the dwarf to Mugged!
+M 1 23513 2 23520           the dwarf to Mugged!
 E 1 23526 100 5
 E 1 23549 100 6
 E 1 23533 100 7
 E 1 23512 100 12
 E 1 23517 100 16
 *
-M 1 23552 2 23514			the dwarf to Clock Street.
+M 1 23552 2 23514           the dwarf to Clock Street.
 E 1 23526 100 5
 E 1 23549 100 6
 E 1 23533 100 7
 E 1 23512 100 12
 E 1 23517 100 16
 *
-M 1 23552 2 23545			the dwarf to Over catfish river.
+M 1 23552 2 23545           the dwarf to Over catfish river.
 E 1 23526 100 5
 E 1 23549 100 6
 E 1 23533 100 7
 E 1 23512 100 12
 E 1 23529 100 16
 *
-M 1 23545 1 23534			the florist to A Flower Shop
+M 1 23545 1 23534           the florist to A Flower Shop
 E 1 23552 100 5
 G 1 23553 100
 G 1 23555 100
 G 1 23554 100
 *
-M 1 23510 1 23513			the madman to Clock Street
+M 1 23510 1 23513           the madman to Clock Street
 E 1 23510 100 5
 *
-M 1 23511 1 23517			the ogre to A Ogre Lair.
+M 1 23511 1 23517           the ogre to A Ogre Lair.
 E 1 23526 100 5
 E 1 23508 100 6
 E 1 23533 100 7
 E 1 23531 100 12
 E 1 23529 100 16
 *
-M 1 23535 1 23600			the vampire to 2nd Floor Room.
+M 1 23535 1 23600           the vampire to 2nd Floor Room.
 E 1 23501 100 0
 E 1 23534 100 5
 *
 *
-M 1 23536 1 23604			the mummy to A White Room.
+M 1 23536 1 23604           the mummy to A White Room.
 E 1 23535 100 5
 *
-M 1 23537 2 23607			the zombie to 5th Floor Room.
+M 1 23537 2 23607           the zombie to 5th Floor Room.
 E 1 23510 100 5
 E 1 23533 100 7
 E 1 23502 100 12
 *
-M 1 23537 2 23607			the zombie to 5th Floor Room.
+M 1 23537 2 23607           the zombie to 5th Floor Room.
 E 1 23510 100 5
 E 1 23533 100 7
 E 1 23502 100 12
 *
-M 1 23538 3 23608			the death hawk to Atop A Dark Tower
+M 1 23538 3 23608           the death hawk to Atop A Dark Tower
 *
-M 1 23538 3 23608			the death hawk to Atop A Dark Tower
+M 1 23538 3 23608           the death hawk to Atop A Dark Tower
 *
-M 1 23538 3 23608			the death hawk to Atop A Dark Tower
+M 1 23538 3 23608           the death hawk to Atop A Dark Tower
 *
-M 1 23546 1 23536			the jeweller to Jewellers.
+M 1 23546 1 23536           the jeweller to Jewellers.
 E 1 23556 100 5
 E 1 23557 100 7
 E 1 23558 100 8
@@ -3546,16 +3546,16 @@ G 1 23559 100
 G 1 23560 100
 G 1 23561 100
 *
-M 1 23547 1 23537			the man to A Crowded Street
+M 1 23547 1 23537           the man to A Crowded Street
 E 1 23560 100 1
 E 1 23526 100 5
 E 1 23557 100 7
 E 1 23558 100 8
 *
-M 1 23548 1 23537			the woman to A Crowded Street
+M 1 23548 1 23537           the woman to A Crowded Street
 E 1 23562 100 5
 *
-M 1 23549 1 23537			the vendor to A Crowded Street
+M 1 23549 1 23537           the vendor to A Crowded Street
 E 1 23563 100 7
 E 1 23566 100 8
 E 1 23531 100 12
@@ -3566,24 +3566,24 @@ G 1 23565 100
 G 1 23564 100
 G 1 23563 100
 *
-M 1 23514 1 23538			the bare chested man to Town Markets
+M 1 23514 1 23538           the bare chested man to Town Markets
 E 1 23566 100 8
 E 1 23516 100 13
 E 1 23518 100 16
 *
-M 1 23515 1 23540			the woman to Madam Star Clairvoyant.
+M 1 23515 1 23540           the woman to Madam Star Clairvoyant.
 E 1 23520 100 6
 E 1 23566 100 8
 E 1 23519 100 12
 G 1 23569 100
 *
-M 1 23516 2 23542			the snake to A Gloomy House.
+M 1 23516 2 23542           the snake to A Gloomy House.
 *
-M 1 23516 2 23542			the snake to A Gloomy House.
-O 1 23570 100 23544			A rotting Corpse to Under A Bridge.
-P 1 23571 100 23570			a drink skin to container rotting corpse
+M 1 23516 2 23542           the snake to A Gloomy House.
+O 1 23570 100 23544         A rotting Corpse to Under A Bridge.
+P 1 23571 100 23570         a drink skin to container rotting corpse
 *
-M 1 23550 1 23547			Sin to A Dark Gloomy Room
+M 1 23550 1 23547           Sin to A Dark Gloomy Room
 E 1 23573 100 6
 E 1 23572 100 12
 G 1 23574 100
@@ -3593,39 +3593,39 @@ G 1 23577 100
 G 1 23578 100
 G 1 23579 100
 *
-M 1 23519 2 23549			the mad woman to Mad House.
+M 1 23519 2 23549           the mad woman to Mad House.
 E 1 23510 100 5
 E 1 23540 100 16
 *
-M 1 23519 2 23549			the mad woman to Mad House.
+M 1 23519 2 23549           the mad woman to Mad House.
 E 1 23510 100 5
 E 1 23524 100 16
 *
-M 1 23520 6 23551			the bay to On the wall.
+M 1 23520 6 23551           the bay to On the wall.
 E 1 23524 100 16
 *
-M 1 23520 6 23551			the bay to On the wall.
+M 1 23520 6 23551           the bay to On the wall.
 E 1 23525 100 17
 *
-M 1 23520 6 23551			the bay to On the wall.
+M 1 23520 6 23551           the bay to On the wall.
 *
-M 1 23520 6 23551			the bay to On the wall.
+M 1 23520 6 23551           the bay to On the wall.
 *
-M 1 23520 6 23551			the bay to On the wall.
+M 1 23520 6 23551           the bay to On the wall.
 *
-M 1 23520 6 23551			the bay to On the wall.
+M 1 23520 6 23551           the bay to On the wall.
 *
-M 1 23517 2 23554			the wild dog to A Alley.
+M 1 23517 2 23554           the wild dog to A Alley.
 *
-M 1 23517 2 23554			the wild dog to A Alley.
+M 1 23517 2 23554           the wild dog to A Alley.
 *
-M 1 23503 2 23553			the boy to Harbour Street
+M 1 23503 2 23553           the boy to Harbour Street
 E 1 23510 100 5
 *
-M 1 23503 2 23553			the boy to Harbour Street
+M 1 23503 2 23553           the boy to Harbour Street
 E 1 23510 100 5
 *
-M 1 23518 1 23557			the pirate to On A Pirate Ship.
+M 1 23518 1 23557           the pirate to On A Pirate Ship.
 E 1 23522 100 6
 E 1 23533 100 7
 E 1 23550 100 8
@@ -3633,7 +3633,7 @@ E 1 23523 100 10
 E 1 23531 100 12
 E 1 23521 100 16
 *
-M 1 23518 3 23561			the pirate to A Cabin.
+M 1 23518 3 23561           the pirate to A Cabin.
 E 1 23522 100 6
 E 1 23533 100 7
 E 1 23550 100 8
@@ -3641,7 +3641,7 @@ E 1 23523 100 10
 E 1 23531 100 12
 E 1 23521 100 16
 *
-M 1 23518 3 23561			the pirate to A Cabin.
+M 1 23518 3 23561           the pirate to A Cabin.
 E 1 23522 100 6
 E 1 23533 100 7
 E 1 23550 100 8
@@ -3649,7 +3649,7 @@ E 1 23523 100 10
 E 1 23531 100 12
 E 1 23521 100 16
 *
-M 1 23518 3 23561			the pirate to A Cabin.
+M 1 23518 3 23561           the pirate to A Cabin.
 E 1 23522 100 6
 E 1 23533 100 7
 E 1 23550 100 8
@@ -3657,10 +3657,10 @@ E 1 23523 100 10
 E 1 23531 100 12
 E 1 23521 100 16
 *
-M 1 23521 1 23564			the goblin to Clog Street.
+M 1 23521 1 23564           the goblin to Clog Street.
 E 1 23510 100 5
 *
-M 1 23522 1 23566			the candlemaker to Candle Makers.
+M 1 23522 1 23566           the candlemaker to Candle Makers.
 E 1 23580 100 0
 E 1 23556 100 5
 E 1 23557 100 7
@@ -3669,7 +3669,7 @@ E 1 23531 100 12
 E 1 23511 100 13
 E 1 23540 100 16
 *
-M 1 23523 1 23568			the smith to Ben Borryman 'Silversmith'.
+M 1 23523 1 23568           the smith to Ben Borryman 'Silversmith'.
 E 1 23560 100 1
 E 1 23559 100 2
 E 1 23526 100 5
@@ -3680,93 +3680,93 @@ E 1 23531 100 12
 E 1 23511 100 13
 E 1 23517 100 16
 *
-M 1 23524 1 23572			the drunk to Stable Street.
+M 1 23524 1 23572           the drunk to Stable Street.
 E 1 23510 100 5
 E 1 23536 100 17
 G 1 23536 100
 *
-M 1 23525 1 23578			the centipede to Sewers.
+M 1 23525 1 23578           the centipede to Sewers.
 *
-M 1 23526 3 23576			the rat to Sewers.
+M 1 23526 3 23576           the rat to Sewers.
 *
-M 1 23526 3 23576			the rat to Sewers.
+M 1 23526 3 23576           the rat to Sewers.
 *
-M 1 23526 3 23576			the rat to Sewers.
-*
-*
+M 1 23526 3 23576           the rat to Sewers.
 *
 *
 *
 *
-M 1 23543 8 23580			the city guard to Stable Street.
+*
+*
+M 1 23543 8 23580           the city guard to Stable Street.
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23509 100 16
 *
-M 1 23543 8 23580			the city guard to Stable Street.
+M 1 23543 8 23580           the city guard to Stable Street.
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23509 100 16
 *
-M 1 23543 8 23580			the city guard to Stable Street.
+M 1 23543 8 23580           the city guard to Stable Street.
 E 1 23507 100 5
 E 1 23508 100 6
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23517 100 16
 *
-M 1 23543 8 23580			the city guard to Stable Street.
+M 1 23543 8 23580           the city guard to Stable Street.
 E 1 23507 100 5
 E 1 23508 100 6
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23517 100 16
 *
-M 1 23528 3 23581			the vagabond to Stable Street.
+M 1 23528 3 23581           the vagabond to Stable Street.
 E 1 23526 100 5
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23529 100 16
 *
-M 1 23528 3 23581			the vagabond to Stable Street.
+M 1 23528 3 23581           the vagabond to Stable Street.
 E 1 23526 100 5
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23529 100 16
 *
-M 1 23528 3 23581			the vagabond to Stable Street.
+M 1 23528 3 23581           the vagabond to Stable Street.
 E 1 23526 100 5
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23529 100 16
 *
-M 1 23529 1 23583			the serpent queen to Serpent Queens Home.
+M 1 23529 1 23583           the serpent queen to Serpent Queens Home.
 E 1 23530 100 12
 *
-M 1 23551 2 23585			the horse to Stable Street.
+M 1 23551 2 23585           the horse to Stable Street.
 *
-M 1 23551 2 23585			the horse to Stable Street.
+M 1 23551 2 23585           the horse to Stable Street.
 *
-M 1 23530 1 23586			the blacksmith to A Stable.
+M 1 23530 1 23586           the blacksmith to A Stable.
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23582 100 9
 E 1 23511 100 13
 E 1 23581 100 16
 *
-M 1 23531 1 23587			the prisoner to Stable Street.
+M 1 23531 1 23587           the prisoner to Stable Street.
 E 1 23510 100 5
 E 1 23527 100 7
 *
-M 1 23532 2 23589			the leaf beast to Gardens.
+M 1 23532 2 23589           the leaf beast to Gardens.
 *
-M 1 23532 2 23589			the leaf beast to Gardens.
+M 1 23532 2 23589           the leaf beast to Gardens.
 *
-M 1 23533 1 23591			the tatooist to 'Jimmy Quicktint', Best Tattoist In Town.
+M 1 23533 1 23591           the tatooist to 'Jimmy Quicktint', Best Tattoist In Town.
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23566 100 8
@@ -3774,37 +3774,37 @@ E 1 23532 100 9
 E 1 23511 100 13
 E 1 23540 100 16
 *
-M 1 23502 2 23592			a city guard to Mill Street.
+M 1 23502 2 23592           a city guard to Mill Street.
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23509 100 16
 *
-M 1 23502 2 23592			a city guard to Mill Street.
+M 1 23502 2 23592           a city guard to Mill Street.
 E 1 23507 100 5
 E 1 23505 100 6
 E 1 23533 100 7
 E 1 23550 100 8
 E 1 23509 100 16
 *
-M 1 23501 4 23595			a moon dog to A Dark Tower
+M 1 23501 4 23595           a moon dog to A Dark Tower
 E 1 23506 100 3
 E 1 23506 100 4
 *
-M 1 23501 4 23595			a moon dog to A Dark Tower
+M 1 23501 4 23595           a moon dog to A Dark Tower
 E 1 23506 100 3
 E 1 23506 100 4
 *
-M 1 23501 4 23595			a moon dog to A Dark Tower
+M 1 23501 4 23595           a moon dog to A Dark Tower
 E 1 23506 100 3
 E 1 23506 100 4
 *
-M 1 23501 4 23595			a moon dog to A Dark Tower
+M 1 23501 4 23595           a moon dog to A Dark Tower
 E 1 23506 100 3
 E 1 23506 100 4
 *
-M 1 23539 1 23552			the mayor to Harbour Street.
+M 1 23539 1 23552           the mayor to Harbour Street.
 E 1 23559 100 1
 E 1 23560 100 2
 E 1 23557 100 7
@@ -3812,44 +3812,44 @@ E 1 23566 100 8
 E 1 23582 100 9
 E 1 23564 100 12
 *
-M 1 23527 1 23576			the hag to Sewers.
+M 1 23527 1 23576           the hag to Sewers.
 E 1 23528 100 3
 E 1 23528 100 4
 E 1 23510 100 5
-O 1 23586 100 23613			a large stone to Before The City
+O 1 23586 100 23613         a large stone to Before The City
 S
 
 
 #SHOPS
-23540 18 5 0 0 0 100 150 0 23			(mobile is from another zone)
-23505 2 3 19 0 0 100 400 0 23			(mobile is from another zone)
-23544 19 17 0 0 0 100 400 0 23			(mobile is from another zone)
-23545 0 0 0 0 0 50 300 0 23			(mobile is from another zone)
-23546 8 0 0 0 0 80 350 0 23			(mobile is from another zone)
-23549 0 0 0 0 0 100 350 0 23			(mobile is from another zone)
-23550 0 0 0 0 0 100 300 0 23			(mobile is from another zone)
+23540 18 5 0 0 0 100 150 0 23           (mobile is from another zone)
+23505 2 3 19 0 0 100 400 0 23           (mobile is from another zone)
+23544 19 17 0 0 0 100 400 0 23          (mobile is from another zone)
+23545 0 0 0 0 0 50 300 0 23             (mobile is from another zone)
+23546 8 0 0 0 0 80 350 0 23             (mobile is from another zone)
+23549 0 0 0 0 0 100 350 0 23            (mobile is from another zone)
+23550 0 0 0 0 0 100 300 0 23            (mobile is from another zone)
 0
 
 
 #SPECIALS
-M  23500 spec_poison			the Spirit Stalker
-M  23501 spec_fido			a moon dog
-M  23502 spec_guard			a city guard
-M  23506 spec_thief			the thief
-M  23507 spec_fido			the wolf
-M  23508 spec_breath_fire			a fireimp
-M  23509 spec_cast_mage			the fat man
-M  23510 spec_poison			the madman
-M  23513 spec_thief			the dwarf
-M  23516 spec_poison			the snake
-M  23518 spec_guard			the pirate
-M  23534 spec_guard			the troll
-M  23535 spec_cast_undead			the vampire
-M  23536 spec_cast_undead			the mummy
-M  23537 spec_cast_undead			the zombie
-M  23542 spec_assassin			Zanbar Bone
-M  23543 spec_guard			the city guard
-M  23550 spec_breath_any			Sin
+M  23500 spec_poison            the Spirit Stalker
+M  23501 spec_fido              a moon dog
+M  23502 spec_guard             a city guard
+M  23506 spec_thief             the thief
+M  23507 spec_fido              the wolf
+M  23508 spec_breath_fire       a fireimp
+M  23509 spec_cast_mage         the fat man
+M  23510 spec_poison            the madman
+M  23513 spec_thief             the dwarf
+M  23516 spec_poison            the snake
+M  23518 spec_guard             the pirate
+M  23534 spec_guard             the troll
+M  23535 spec_cast_undead       the vampire
+M  23536 spec_cast_undead       the mummy
+M  23537 spec_cast_undead       the zombie
+M  23542 spec_assassin          Zanbar Bone
+M  23543 spec_guard             the city guard
+M  23550 spec_breath_any        Sin
 S
 
 

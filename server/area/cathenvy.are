@@ -1,4 +1,4 @@
-#AREA	C.A.W.~  The Abandoned Cathedral~
+#AREA   C.A.W.~  The Abandoned Cathedral~
 60 90 0 100
 
 #MOBILES
@@ -1978,6 +1978,6 @@ S
 
 
 #SPECIALS
-M  4306 spec_vampire			Erich
+M  4306 spec_vampire            Erich
 S
 #$

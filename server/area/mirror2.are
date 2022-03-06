@@ -1,4 +1,4 @@
-#AREA	Merrima~  Mirror Realm~
+#AREA   Merrima~  Mirror Realm~
 20 50 0 100
 
 #HELPS
@@ -6358,96 +6358,96 @@ S
 #RESETS
 *
 *
-O 1 19005 100 19020			a throne to The Alcove with the King's Throne
+O 1 19005 100 19020                     a throne to The Alcove with the King's Throne
 *
-M 1 19003 1 19020			King Loranhir to The King's Alcove
+M 1 19003 1 19020                       King Loranhir to The King's Alcove
 E 1 19006 100 5
-O 1 19039 100 19005			a brass plaque to Before the Face of the Mountain
+O 1 19039 100 19005                     a brass plaque to Before the Face of the Mountain
 *
-M 1 19008 2 19005			a watchman to Before the Face of the Mountain
+M 1 19008 2 19005                       a watchman to Before the Face of the Mountain
 E 1 19040 100 5
-D 1 19005 0 1			; Before the Face of the Mountain Close North
-D 1 19006 2 1			; The Path Above the Realm Close South
-D 1 19008 3 0			; Beside the Watchtowers Open West
+D 1 19005 0 1                   ; Before the Face of the Mountain Close North
+D 1 19006 2 1                   ; The Path Above the Realm Close South
+D 1 19008 3 0                   ; Beside the Watchtowers Open West
 *
-M 1 19009 1 19009			a watchman to Inside the Watchtower
-E 1 19040 100 5
-E 1 19085 100 16
-O 1 19041 100 19009			a telescope to Inside the Watchtower
-D 1 19008 1 0			; Beside the Watchtowers Open East
-*
-M 1 19010 1 19010			a watchman to Inside a  Watchtower
+M 1 19009 1 19009                       a watchman to Inside the Watchtower
 E 1 19040 100 5
 E 1 19085 100 16
-O 1 19042 100 19010			a telescope to Inside a  Watchtower
-D 1 19030 0 1			; In Front of the Castle Entrance Close North
+O 1 19041 100 19009                     a telescope to Inside the Watchtower
+D 1 19008 1 0                   ; Beside the Watchtowers Open East
 *
-M 1 19001 2 19031			the mirror guardian to A room
+M 1 19010 1 19010                       a watchman to Inside a  Watchtower
+E 1 19040 100 5
+E 1 19085 100 16
+O 1 19042 100 19010                     a telescope to Inside a  Watchtower
+D 1 19030 0 1                   ; In Front of the Castle Entrance Close North
+*
+M 1 19001 2 19031                       the mirror guardian to A room
 E 1 19002 100 5
 E 1 19004 100 6
 E 1 19001 100 11
 E 1 19003 100 16
 E 1 19086 100 7
 *
-M 1 19001 2 19031			the mirror guardian to A room
+M 1 19001 2 19031                       the mirror guardian to A room
 E 1 19002 100 5
 E 1 19004 100 6
 E 1 19001 100 11
 E 1 19003 100 16
 E 1 19086 100 7
-R 1 19032 4			; Randomize Mirrors
-R 1 19033 4			; Randomize Mirrors
-R 1 19034 4			; Randomize Mirrors
-R 1 19035 4			; Randomize Mirrors
-R 1 19038 4			; Randomize Mirrors
-R 1 19039 4			; Randomize Mirrors
-R 1 19040 4			; Randomize Mirrors
+R 1 19032 4                     ; Randomize Mirrors
+R 1 19033 4                     ; Randomize Mirrors
+R 1 19034 4                     ; Randomize Mirrors
+R 1 19035 4                     ; Randomize Mirrors
+R 1 19038 4                     ; Randomize Mirrors
+R 1 19039 4                     ; Randomize Mirrors
+R 1 19040 4                     ; Randomize Mirrors
 *
-M 1 19001 1 19041			the mirror guardian to Intersection
+M 1 19001 1 19041                       the mirror guardian to Intersection
 E 1 19002 100 5
 E 1 19004 100 6
 E 1 19001 100 11
 E 1 19003 100 16
 *
-M 1 19002 1 19042			a withered knight to An Alcove
+M 1 19002 1 19042                       a withered knight to An Alcove
 E 1 19009 100 5
 E 1 19007 100 6
 E 1 19008 100 16
 E 1 19043 100 0
-D 1 19026 3 1			; Floating Beside the Left Wall Close West
-D 1 19042 1 1			; An Alcove Close East
+D 1 19026 3 1                   ; Floating Beside the Left Wall Close West
+D 1 19042 1 1                   ; An Alcove Close East
 *
 *
-M 1 19012 1 19043			a withered knight to An Alcove
+M 1 19012 1 19043                       a withered knight to An Alcove
 E 1 19009 100 5
 E 1 19008 100 16
 E 1 19010 100 17
 *
 *
-D 1 19024 1 1			; Floating Beside the Right Wall Close East
-D 1 19009 5 0			; Inside a  Watchtower Open Down
-D 1 19048 1 1			; Intersection in the Garden Close East
-D 1 19045 3 1			; The Foot of the Rock Ladder Close West
-O 1 19035 100 19051			a grove of apple trees to A Small Grove
-P 1 19036 100 19035			an apple to container apple tree
-P 1 19036 100 19035			an apple to container apple tree
-P 1 19036 100 19035			an apple to container apple tree
-O 1 19056 100 19053			a small jar of pale glowing fish to Under the Gazebo
-O 1 19057 100 19059			the white goldfish to The pond
-O 1 19037 100 19060			a grove of plum trees to A room
-P 1 19038 100 19037			a plum to container plum tree
-P 1 19038 100 19037			a plum to container plum tree
-P 1 19038 100 19037			a plum to container plum tree
-P 1 19038 100 19037			a plum to container plum tree
+D 1 19024 1 1                   ; Floating Beside the Right Wall Close East
+D 1 19009 5 0                   ; Inside a  Watchtower Open Down
+D 1 19048 1 1                   ; Intersection in the Garden Close East
+D 1 19045 3 1                   ; The Foot of the Rock Ladder Close West
+O 1 19035 100 19051                     a grove of apple trees to A Small Grove
+P 1 19036 100 19035                     an apple to container apple tree
+P 1 19036 100 19035                     an apple to container apple tree
+P 1 19036 100 19035                     an apple to container apple tree
+O 1 19056 100 19053                     a small jar of pale glowing fish to Under the Gazebo
+O 1 19057 100 19059                     the white goldfish to The pond
+O 1 19037 100 19060                     a grove of plum trees to A room
+P 1 19038 100 19037                     a plum to container plum tree
+P 1 19038 100 19037                     a plum to container plum tree
+P 1 19038 100 19037                     a plum to container plum tree
+P 1 19038 100 19037                     a plum to container plum tree
 *
-M 1 19014 1 19067			the bride to The Gazebo
+M 1 19014 1 19067                       the bride to The Gazebo
 E 1 19054 100 1
 E 1 19051 100 5
 E 1 19053 100 6
 E 1 19052 100 8
 E 1 19055 100 17
 *
-M 1 19015 1 19067			the groom to The Gazebo
+M 1 19015 1 19067                       the groom to The Gazebo
 E 1 19050 100 1
 E 1 19045 100 3
 E 1 19046 100 5
@@ -6456,51 +6456,51 @@ E 1 19049 100 8
 E 1 19044 100 12
 E 1 19048 100 13
 *
-M 1 19023 1 19067			the priest to The Gazebo
+M 1 19023 1 19067                       the priest to The Gazebo
 E 1 19066 100 12
 *
-M 1 19016 1 19064			the Red Lord to Along the Path
+M 1 19016 1 19064                       the Red Lord to Along the Path
 E 1 19058 100 12
 E 1 19064 100 16
 *
-M 1 19017 1 19057			the Orange Lord to Along the Path
+M 1 19017 1 19057                       the Orange Lord to Along the Path
 E 1 19059 100 12
 E 1 19064 100 16
 *
-M 1 19018 1 19047			the Yellow Lord to The Path in the Garden
+M 1 19018 1 19047                       the Yellow Lord to The Path in the Garden
 E 1 19060 100 12
 E 1 19064 100 16
 *
-M 1 19019 1 19049			the Green Lord to Path in the Garden
+M 1 19019 1 19049                       the Green Lord to Path in the Garden
 E 1 19061 100 12
 E 1 19064 100 16
 *
-M 1 19020 1 19061			the Blue Lord to Bend in the Path
+M 1 19020 1 19061                       the Blue Lord to Bend in the Path
 E 1 19062 100 12
 E 1 19064 100 16
 *
-M 1 19021 1 19062			the Violet Lord to Along the Path Behind the Buildings
+M 1 19021 1 19062                       the Violet Lord to Along the Path Behind the Buildings
 E 1 19063 100 12
 E 1 19064 100 16
 *
-M 1 19022 1 19065			the gardener to Bend in the Path
+M 1 19022 1 19065                       the gardener to Bend in the Path
 E 1 19065 100 16
 *
-M 1 19006 5 19056			a citizen of the Mirror Realm to Along the Gravel Path
+M 1 19006 5 19056                       a citizen of the Mirror Realm to Along the Gravel Path
 E 1 19015 100 16
 G 1 19020 100
 *
-M 1 19005 1 19050			a citizen of the Mirror Realm to Corner of the Path
+M 1 19005 1 19050                       a citizen of the Mirror Realm to Corner of the Path
 E 1 19015 100 16
 G 1 19020 100
 *
-M 1 19004 1 19068			Caerlin to Center of the Street
+M 1 19004 1 19068                       Caerlin to Center of the Street
 E 1 19014 100 3
 E 1 19061 100 12
 E 1 19173 100 17
 G 1 19011 100
 *
-M 1 19024 1 19070			the wizard to The Sorcery
+M 1 19024 1 19070                       the wizard to The Sorcery
 E 1 19080 100 6
 E 1 19081 100 12
 E 1 19092 100 17
@@ -6511,18 +6511,18 @@ G 1 19067 100
 *
 *
 *
-O 1 19013 100 19071			a pool table to A room
+O 1 19013 100 19071                     a pool table to A room
 *
-M 1 19026 1 19071			Lauraine the barkeep to The bar of the Holly Bush
+M 1 19026 1 19071                       Lauraine the barkeep to The bar of the Holly Bush
 G 1 19070 100
 G 1 19069 100
 G 1 19068 100
 *
-M 1 19025 1 19071			the pool player to The bar of the Holly Bush
+M 1 19025 1 19071                       the pool player to The bar of the Holly Bush
 E 1 19012 100 16
-O 1 19032 100 19072			a menu to A room
+O 1 19032 100 19072                     a menu to A room
 *
-M 1 19027 1 19072			the waiter to The restaurant of the Holly Bush
+M 1 19027 1 19072                       the waiter to The restaurant of the Holly Bush
 G 1 19023 100
 G 1 19024 100
 G 1 19025 100
@@ -6532,13 +6532,13 @@ G 1 19029 100
 G 1 19030 100
 G 1 19031 100
 *
-M 1 19028 1 19073			Master Dunn to
+M 1 19028 1 19073                       Master Dunn to
 E 1 19072 100 5
 E 1 19073 100 13
 E 1 19071 100 16
-O 1 19074 100 19073			a fountain to Master Dunn's House
+O 1 19074 100 19073                     a fountain to Master Dunn's House
 *
-M 1 19029 1 19075			the proprietor to The Travellers' Shop
+M 1 19029 1 19075                       the proprietor to The Travellers' Shop
 G 1 19078 100
 G 1 19077 100
 G 1 19076 100
@@ -6548,77 +6548,77 @@ G 1 19043 100
 G 1 19150 100
 *
 *
-M 1 19006 2 19069			a citizen of the Mirror Realm to The Street
+M 1 19006 2 19069                       a citizen of the Mirror Realm to The Street
 E 1 19015 100 16
 G 1 19020 100
-O 1 19082 100 19077			a hymn to The Chapel
+O 1 19082 100 19077                     a hymn to The Chapel
 *
-M 1 19031 1 19077			Father Franklin to The Chapel
+M 1 19031 1 19077                       Father Franklin to The Chapel
 E 1 19066 100 12
 E 1 19083 100 1
 *
 *
-M 1 19007 1 19078			the unicorn to Crossing the Bridge to the Crystal Mansion
+M 1 19007 1 19078                       the unicorn to Crossing the Bridge to the Crystal Mansion
 E 1 19034 100 5
 E 1 19033 100 16
-D 1 19079 4 1			; Entrance to the Rainbow Tower Close Up
-D 1 19080 4 1			; The Red Room Close Up
-D 1 19081 4 1			; The Orange Room Close Up
-D 1 19082 4 1			; The Yellow Room Close Up
-D 1 19083 4 1			; The Green Room Close Up
-D 1 19084 4 1			; The Blue Room Close Up
-D 1 19085 4 1			; The Violet Room Close Up
-D 1 19108 1 1			; The Foot of the Rock Ladder  Close East
+D 1 19079 4 1                   ; Entrance to the Rainbow Tower Close Up
+D 1 19080 4 1                   ; The Red Room Close Up
+D 1 19081 4 1                   ; The Orange Room Close Up
+D 1 19082 4 1                   ; The Yellow Room Close Up
+D 1 19083 4 1                   ; The Green Room Close Up
+D 1 19084 4 1                   ; The Blue Room Close Up
+D 1 19085 4 1                   ; The Violet Room Close Up
+D 1 19108 1 1                   ; The Foot of the Rock Ladder  Close East
 *
-M 1 19013 1 19119			the Gray Mare to Path to the Dark Tower [EDIT]
+M 1 19013 1 19119                       the Gray Mare to Path to the Dark Tower [EDIT]
 E 1 19107 100 3
 E 1 19106 100 16
 *
 *
 *
-M 1 19034 1 19114			Storn the assassin to A Dark House
+M 1 19034 1 19114                       Storn the assassin to A Dark House
 E 1 19126 100 5
 E 1 19127 100 16
 *
-M 1 19032 2 19102			the White Lord to Corner of the Path
+M 1 19032 2 19102                       the White Lord to Corner of the Path
 E 1 19124 100 12
 E 1 19110 100 16
 *
 *
-M 1 19032 2 19106			the White Lord to The Corner of the Path
+M 1 19032 2 19106                       the White Lord to The Corner of the Path
 E 1 19124 100 12
 E 1 19110 100 16
 *
 *
 *
-M 1 19036 1 19091			the gardener to The Corner of the Wooden Path
+M 1 19036 1 19091                       the gardener to The Corner of the Wooden Path
 E 1 19084 100 16
 *
-M 1 19008 2 19005			a watchman to Before the Face of the Mountain
+M 1 19008 2 19005                       a watchman to Before the Face of the Mountain
 E 1 19040 100 5
 *
-M 1 19030 1 19076			Mrs. Truxton the Librarian to The Library and Bookstore [EDIT]
+M 1 19030 1 19076                       Mrs. Truxton the Librarian to The Library and Bookstore [EDIT]
 E 1 19087 100 12
 G 1 19134 100
 G 1 19135 100
 G 1 19136 100
 *
-M 1 19037 1 19051			the young boy to A Grove of Trees
+M 1 19037 1 19051                       the young boy to A Grove of Trees
 *
-M 1 19038 1 19058			the fisherman to The pond
+M 1 19038 1 19058                       the fisherman to The pond
 E 1 19090 100 5
 E 1 19088 100 8
 E 1 19089 100 16
 G 1 19091 100
 *
-M 1 19039 1 19132			The buck to The Forest
+M 1 19039 1 19132                       The buck to The Forest
 E 1 19093 100 6
-O 1 19094 100 19050			a pear tree to Corner of the Path
-P 1 19095 100 19094			a pear to container pear tree
-P 1 19095 100 19094			a pear to container pear tree
-P 1 19095 100 19094			a pear to container pear tree
+O 1 19094 100 19050                     a pear tree to Corner of the Path
+P 1 19095 100 19094                     a pear to container pear tree
+P 1 19095 100 19094                     a pear to container pear tree
+P 1 19095 100 19094                     a pear to container pear tree
 *
-M 1 19035 1 19112			the wizard to The Sorcery [EDIT]
+M 1 19035 1 19112                       the wizard to The Sorcery [EDIT]
 E 1 19080 100 6
 E 1 19081 100 12
 E 1 19096 100 17
@@ -6627,165 +6627,165 @@ G 1 19019 100
 G 1 19102 100
 G 1 19103 100
 *
-M 1 19041 1 19142			the mass of red ants to Up the Tree [EDIT]
+M 1 19041 1 19142                       the mass of red ants to Up the Tree [EDIT]
 E 1 19097 100 16
 *
-M 1 19040 1 19127			something to The Top of the Dark Tower: Gray Mists [EDIT]
+M 1 19040 1 19127                       something to The Top of the Dark Tower: Gray Mists [EDIT]
 G 1 19128 100
 *
-M 1 19011 1 19147			Bear-de-bear to Vell, hi!
+M 1 19011 1 19147                       Bear-de-bear to Vell, hi!
 *
-M 1 19042 1 19111			the card shark to The Bar of the Hemlock Bush [EDIT]
+M 1 19042 1 19111                       the card shark to The Bar of the Hemlock Bush [EDIT]
 *
-M 1 19043 1 19111			Dulcinea the Barkeep to The Bar of the Hemlock Bush
+M 1 19043 1 19111                       Dulcinea the Barkeep to The Bar of the Hemlock Bush
 E 1 19101 100 16
 G 1 19100 100
 G 1 19098 100
 G 1 19099 100
 *
-M 1 19044 1 19109			Carvallo to Center of the Street
+M 1 19044 1 19109                       Carvallo to Center of the Street
 E 1 19105 100 9
 *
-M 1 19045 1 19115			the young man to The Street
+M 1 19045 1 19115                       the young man to The Street
 E 1 19015 100 16
 G 1 19020 100
 *
-M 1 19046 1 19110			the woman to Street
+M 1 19046 1 19110                       the woman to Street
 E 1 19015 100 16
 G 1 19020 100
 *
-M 1 19047 1 19146			the grey fox to Dark Forest
+M 1 19047 1 19146                       the grey fox to Dark Forest
 *
-M 1 19048 1 19131			the moose to The Forest
+M 1 19048 1 19131                       the moose to The Forest
 E 1 19093 100 6
 *
-M 1 19049 1 19139			the bear to Dark Forest
-O 1 19108 100 19092			a holly tree to A Grove of Trees
-P 1 19109 100 19108			a few holly berries to container holly tree
-P 1 19109 100 19108			a few holly berries to container holly tree
-P 1 19109 100 19108			a few holly berries to container holly tree
+M 1 19049 1 19139                       the bear to Dark Forest
+O 1 19108 100 19092                     a holly tree to A Grove of Trees
+P 1 19109 100 19108                     a few holly berries to container holly tree
+P 1 19109 100 19108                     a few holly berries to container holly tree
+P 1 19109 100 19108                     a few holly berries to container holly tree
 *
-M 1 19033 1 19103			the Black Lord to The Path [EDIT]
+M 1 19033 1 19103                       the Black Lord to The Path [EDIT]
 E 1 19110 100 16
 E 1 19123 100 12
-O 1 19111 100 19113			a menu to The Restaurant of the Hemlock Bush
-O 1 19112 100 19113			a sign to The Restaurant of the Hemlock Bush
+O 1 19111 100 19113                     a menu to The Restaurant of the Hemlock Bush
+O 1 19112 100 19113                     a sign to The Restaurant of the Hemlock Bush
 *
-M 1 19050 1 19113			the waiter to The Restaurant of the Hemlock Bush
+M 1 19050 1 19113                       the waiter to The Restaurant of the Hemlock Bush
 G 1 19113 100
-O 1 19114 100 19099			a small jar of glowing slugs to Under the Gazebo
-O 1 19115 100 19097			a poison oak tree to A Grove of Trees
-P 1 19116 100 19115			an acorn to container oak tree poison
-P 1 19116 100 19115			an acorn to container oak tree poison
-P 1 19116 100 19115			an acorn to container oak tree poison
+O 1 19114 100 19099                     a small jar of glowing slugs to Under the Gazebo
+O 1 19115 100 19097                     a poison oak tree to A Grove of Trees
+P 1 19116 100 19115                     an acorn to container oak tree poison
+P 1 19116 100 19115                     an acorn to container oak tree poison
+P 1 19116 100 19115                     an acorn to container oak tree poison
 *
-M 1 19050 1 19092			the waiter to A Grove of Trees
+M 1 19050 1 19092                       the waiter to A Grove of Trees
 *
-M 1 19052 1 19121			the lady of ill repute to The Gazebo
+M 1 19052 1 19121                       the lady of ill repute to The Gazebo
 E 1 19117 100 5
 E 1 19118 100 7
 *
-M 1 19053 1 19121			the master to The Gazebo
-O 1 19119 100 19095			a dead squid to The Swamp
+M 1 19053 1 19121                       the master to The Gazebo
+O 1 19119 100 19095                     a dead squid to The Swamp
 *
-M 1 19054 1 19117			the hidden thief cackles silently and to The Travellers' Shop
-O 1 19120 100 19129			a cabinet door to Merriman's Alcove
+M 1 19054 1 19117                       the hidden thief cackles silently and to The Travellers' Shop
+O 1 19120 100 19129                     a cabinet door to Merriman's Alcove
 *
-M 1 19055 1 19080			the Crimson Master to The Red Room
+M 1 19055 1 19080                       the Crimson Master to The Red Room
 E 1 19122 100 6
 E 1 19058 100 12
 *
-M 1 19056 1 19081			the Amber Master to The Orange Room
+M 1 19056 1 19081                       the Amber Master to The Orange Room
 E 1 19122 100 6
 *
-M 1 19033 1 19097			the Black Lord to A Grove of Trees
+M 1 19033 1 19097                       the Black Lord to A Grove of Trees
 E 1 19123 100 12
 E 1 19110 100 16
 *
-M 1 19057 1 19083			the Green Master to The Green Room
+M 1 19057 1 19083                       the Green Master to The Green Room
 *
-M 1 19058 1 19084			the Blue Master to The Blue Room
-*
-*
-M 1 19059 1 19085			the Violet Master to The Violet Room
+M 1 19058 1 19084                       the Blue Master to The Blue Room
 *
 *
-M 1 19060 1 19082			the Yellow Master to The Yellow Room
+M 1 19059 1 19085                       the Violet Master to The Violet Room
 *
-M 1 19061 1 19086			the Master of Light to At the Top of the Tower: The Prism Room
+*
+M 1 19060 1 19082                       the Yellow Master to The Yellow Room
+*
+M 1 19061 1 19086                       the Master of Light to At the Top of the Tower: The Prism Room
 G 1 19129 100
 *
-M 1 19062 1 19151			the Phoenix to A Small Room
-D 1 19010 5 0			; Inside a  Watchtower Open Down
-R 1 19037 4			; Randomize Mirrors
-R 1 19036 4			; Randomize Mirrors
+M 1 19062 1 19151                       the Phoenix to A Small Room
+D 1 19010 5 0                   ; Inside a  Watchtower Open Down
+R 1 19037 4                     ; Randomize Mirrors
+R 1 19036 4                     ; Randomize Mirrors
 *
-M 1 19005 2 19074			the young man to The Street
+M 1 19005 2 19074                       the young man to The Street
 E 1 19015 100 16
 G 1 19020 100
 *
-M 1 19066 1 19123			the Black Master to Inside the Dark Tower
+M 1 19066 1 19123                       the Black Master to Inside the Dark Tower
 E 1 19132 100 5
-D 1 19123 4 1			; Inside the Dark Tower Close Up
+D 1 19123 4 1                   ; Inside the Dark Tower Close Up
 *
-M 1 19064 1 19124			the White Master to Inside the Dark Tower
+M 1 19064 1 19124                       the White Master to Inside the Dark Tower
 E 1 19131 100 5
-D 1 19124 4 1			; Inside the Dark Tower Close Up
+D 1 19124 4 1                   ; Inside the Dark Tower Close Up
 *
-M 1 19067 1 19125			the Black Master to Inside the Dark Tower
+M 1 19067 1 19125                       the Black Master to Inside the Dark Tower
 E 1 19132 100 5
-D 1 19125 4 1			; Inside the Dark Tower Close Up
+D 1 19125 4 1                   ; Inside the Dark Tower Close Up
 *
-M 1 19065 1 19126			the White Master to Inside the Dark Tower
+M 1 19065 1 19126                       the White Master to Inside the Dark Tower
 E 1 19131 100 5
 *
-M 1 19063 1 19138			Mandeep the Beekeeper to The Tree House
+M 1 19063 1 19138                       Mandeep the Beekeeper to The Tree House
 E 1 19133 100 17
-D 1 19080 4 2			; The Yellow Room Lock Down
-D 1 19081 4 2			; The Orange Room Lock Up
-D 1 19082 4 2			; The Blue Room Lock Down
-D 1 19083 4 2			; The Violet Room Lock Down
-D 1 19084 4 2			; The Blue Room Lock Up
-D 1 19085 4 2			; The Violet Room Lock Up
-D 1 19067 4 1			; The Gazebo Close Up
-O 1 19137 100 19152			the crystal altar to The Crystal Altar
-P 1 19138 100 19137			the crystal sigil to container altar crystal drawer
-D 1 19138 4 1			; The Tree House Close Up
-O 1 19139 100 19154			a citrine altar to Inside the Hive
-P 1 19140 100 19139			a yellow topaz sigil to container altar yellow drawer
-D 1 19137 5 1			; The Forest  Close Down
-O 1 19141 100 19155			a purple altar to The Violet Altar
-P 1 19142 100 19141			the amethyst sigil to container altar amethyst purple
-D 1 19157 0 1			; Inside the House: The Kitchen Close North
-D 1 19157 1 1			; Inside the House: The Kitchen Close East
-D 1 19160 3 1			; The Bedroom Close West
-O 1 19143 100 19158			the red altar to Inside the Fire: The Red Altar
-P 1 19144 100 19143			the ruby sigil to container drawer red altar
-O 1 19146 100 19162			the sapphire altar to Underwater Cave: The Blue Altar
-P 1 19145 100 19146			the sapphire sigil to container altar sapphire
-D 1 19163 0 1			; The Green Altar Close North
-D 1 19136 2 1			;Close the door to green altar
-O 1 19147 100 19163			the green altar to The Green Altar
-P 1 19148 100 19147			the emerald sigil to container drawer green altar
-P 1 19036 100 19035			an apple to container apple tree
-P 1 19036 100 19035			an apple to container apple tree
-P 1 19036 100 19035			an apple to container apple tree
-P 1 19038 100 19037			a plum to container plum tree
-P 1 19038 100 19037			a plum to container plum tree
-P 1 19038 100 19037			a plum to container plum tree
-P 1 19095 100 19094			a nectarine to container nectarine tree
-P 1 19095 100 19094			a nectarine to container nectarine tree
-P 1 19095 100 19094			a nectarine to container nectarine tree
-P 1 19149 100 19094			the amber sigil to container nectarine tree
+D 1 19080 4 2                   ; The Yellow Room Lock Down
+D 1 19081 4 2                   ; The Orange Room Lock Up
+D 1 19082 4 2                   ; The Blue Room Lock Down
+D 1 19083 4 2                   ; The Violet Room Lock Down
+D 1 19084 4 2                   ; The Blue Room Lock Up
+D 1 19085 4 2                   ; The Violet Room Lock Up
+D 1 19067 4 1                   ; The Gazebo Close Up
+O 1 19137 100 19152                     the crystal altar to The Crystal Altar
+P 1 19138 100 19137                     the crystal sigil to container altar crystal drawer
+D 1 19138 4 1                   ; The Tree House Close Up
+O 1 19139 100 19154                     a citrine altar to Inside the Hive
+P 1 19140 100 19139                     a yellow topaz sigil to container altar yellow drawer
+D 1 19137 5 1                   ; The Forest  Close Down
+O 1 19141 100 19155                     a purple altar to The Violet Altar
+P 1 19142 100 19141                     the amethyst sigil to container altar amethyst purple
+D 1 19157 0 1                   ; Inside the House: The Kitchen Close North
+D 1 19157 1 1                   ; Inside the House: The Kitchen Close East
+D 1 19160 3 1                   ; The Bedroom Close West
+O 1 19143 100 19158                     the red altar to Inside the Fire: The Red Altar
+P 1 19144 100 19143                     the ruby sigil to container drawer red altar
+O 1 19146 100 19162                     the sapphire altar to Underwater Cave: The Blue Altar
+P 1 19145 100 19146                     the sapphire sigil to container altar sapphire
+D 1 19163 0 1                   ; The Green Altar Close North
+D 1 19136 2 1                   ;Close the door to green altar
+O 1 19147 100 19163                     the green altar to The Green Altar
+P 1 19148 100 19147                     the emerald sigil to container drawer green altar
+P 1 19036 100 19035                     an apple to container apple tree
+P 1 19036 100 19035                     an apple to container apple tree
+P 1 19036 100 19035                     an apple to container apple tree
+P 1 19038 100 19037                     a plum to container plum tree
+P 1 19038 100 19037                     a plum to container plum tree
+P 1 19038 100 19037                     a plum to container plum tree
+P 1 19095 100 19094                     a nectarine to container nectarine tree
+P 1 19095 100 19094                     a nectarine to container nectarine tree
+P 1 19095 100 19094                     a nectarine to container nectarine tree
+P 1 19149 100 19094                     the amber sigil to container nectarine tree
 *
-M 1 19068 1 19170			Jerry Garcia to The Suite
+M 1 19068 1 19170                       Jerry Garcia to The Suite
 E 1 19151 100 5
 E 1 19152 100 6
 E 1 19153 100 7
 E 1 19154 100 17
 G 1 19155 100
 *
-M 1 19069 1 19166			Mr. Teece to Mr. Teece's Room
+M 1 19069 1 19166                       Mr. Teece to Mr. Teece's Room
 E 1 19156 100 17
 *
 O 1 19166 100 19169                    the heart key to The Honeymoon Suite
@@ -6794,55 +6794,55 @@ S
 
 
 #SHOPS
-19024 3 2 10 4 26 125 75 0 23			the wizard
-19026 0 0 0 0 0 100 100 0 23			Lauraine the barkeep
-19027 0 0 0 0 0 100 100 0 23			the waiter
-19029 9 5 15 1 0 150 50 0 23			the proprietor
-19030 0 0 0 0 0 100 100 0 23			Mrs. Truxton the Librarian
-19043 0 0 0 0 0 100 100 0 23			(mobile is from another zone)
-19035 2 3 4 10 26 175 25 0 23			(mobile is from another zone)
-19044 23 19 12 13 15 200 25 0 23			(mobile is from another zone)
-19050 0 0 0 0 0 100 100 0 23			(mobile is from another zone)
+19024 3 2 10 4 26 125 75 0 23                   the wizard
+19026 0 0 0 0 0 100 100 0 23                    Lauraine the barkeep
+19027 0 0 0 0 0 100 100 0 23                    the waiter
+19029 9 5 15 1 0 150 50 0 23                    the proprietor
+19030 0 0 0 0 0 100 100 0 23                    Mrs. Truxton the Librarian
+19043 0 0 0 0 0 100 100 0 23                    (mobile is from another zone)
+19035 2 3 4 10 26 175 25 0 23                   (mobile is from another zone)
+19044 23 19 12 13 15 200 25 0 23                        (mobile is from another zone)
+19050 0 0 0 0 0 100 100 0 23                    (mobile is from another zone)
 0
 
 
 #SPECIALS
-M  19002 spec_breath_frost			a withered knight
-M  19003 spec_cast_mage			King Loranhir
-M  19004 spec_cast_cleric			Corwin
-M  19011 spec_breath_fire			Bear-de-bear
-M  19012 spec_breath_frost			a withered knight
-M  19013 spec_poison			the Gray Mare
-M  19023 spec_cast_cleric			the priest
-M  19024 spec_cast_mage			the wizard
-M  19031 spec_cast_adept			Father Franklin
-M  19035 spec_cast_mage			the wizard
-M  19036 spec_thief			the gardener
-M  19040 spec_breath_any			something
-M  19041 spec_poison			the mass of red ants
-M  19042 spec_thief			the card shark
-M  19044 spec_thief			Carvallo
-M  19045 spec_thief			the young man
-M  19046 spec_thief			the woman
-M  19047 spec_fido			the grey fox
-M  19050 spec_thief			the waiter
-M  19051 spec_thief			the young urchin
-M  19052 spec_thief			the lady of ill repute
-M  19053 spec_thief			the master
-M  19054 spec_thief			the hidden thief cackles silently and
-M  19055 spec_breath_fire			the Crimson Master
-M  19056 spec_breath_gas			the Amber Master
-M  19057 spec_breath_acid			the Green Master
-M  19058 spec_breath_frost			the Blue Master
-M  19059 spec_breath_gas			the Violet Master
-M  19060 spec_breath_lightning			the Yellow Master
-M  19061 spec_breath_any			the Master of Light
-M  19062 spec_breath_any			the Phoenix
-M  19064 spec_cast_undead			the White Master
-M  19065 spec_cast_undead			the White Master
+M  19002 spec_breath_frost                      a withered knight
+M  19003 spec_cast_mage                 King Loranhir
+M  19004 spec_cast_cleric                       Corwin
+M  19011 spec_breath_fire                       Bear-de-bear
+M  19012 spec_breath_frost                      a withered knight
+M  19013 spec_poison                    the Gray Mare
+M  19023 spec_cast_cleric                       the priest
+M  19024 spec_cast_mage                 the wizard
+M  19031 spec_cast_adept                        Father Franklin
+M  19035 spec_cast_mage                 the wizard
+M  19036 spec_thief                     the gardener
+M  19040 spec_breath_any                        something
+M  19041 spec_poison                    the mass of red ants
+M  19042 spec_thief                     the card shark
+M  19044 spec_thief                     Carvallo
+M  19045 spec_thief                     the young man
+M  19046 spec_thief                     the woman
+M  19047 spec_fido                      the grey fox
+M  19050 spec_thief                     the waiter
+M  19051 spec_thief                     the young urchin
+M  19052 spec_thief                     the lady of ill repute
+M  19053 spec_thief                     the master
+M  19054 spec_thief                     the hidden thief cackles silently and
+M  19055 spec_breath_fire                       the Crimson Master
+M  19056 spec_breath_gas                        the Amber Master
+M  19057 spec_breath_acid                       the Green Master
+M  19058 spec_breath_frost                      the Blue Master
+M  19059 spec_breath_gas                        the Violet Master
+M  19060 spec_breath_lightning                  the Yellow Master
+M  19061 spec_breath_any                        the Master of Light
+M  19062 spec_breath_any                        the Phoenix
+M  19064 spec_cast_undead                       the White Master
+M  19065 spec_cast_undead                       the White Master
 M  19066 spec_cast_undead                       the Black Master
-M  19067 spec_cast_undead			the Black Master
-M  19068 spec_cast_adept			Jerry Garcia
+M  19067 spec_cast_undead                       the Black Master
+M  19068 spec_cast_adept                        Jerry Garcia
 S
 
 

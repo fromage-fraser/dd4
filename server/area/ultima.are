@@ -151,7 +151,7 @@ the slime~
 An ugly green mass sits on the ground in a puddle.
 ~
 The slime is an amorphous goo.  It seems pretty wimpy, but it has
-alot of friends.  As you look at it you wonder who these things
+a lot of friends.  As you look at it you wonder who these things
 reproduce.
 ~
 32|128 0 -1000 S
@@ -1541,7 +1541,7 @@ A
 #2452
 evil charm~
 an evil charm~
-You see a very oddly shaped charm... it might be worth it to look at its shape.~
+You see a very oddly-shaped charm... it might be worth it to look at its shape.~
 ~
 9 16|512|2048 5
 0~ 0~ 0~ 0~
@@ -5436,14 +5436,15 @@ R 0 2526 4
 S
 
 #SHOPS
- 2468	9  0  0  0  0	110   90	0 23 ; armorer
- 2469   5  0  0  0  0   110   90	0 23 ; weaponsmith
- 2470  22  0  0  0  0   110   90	0 23 ; boatseller
+ 2468   9  0  0  0  0   110   90    0 23 ; armorer
+ 2469   5  0  0  0  0   110   90    0 23 ; weaponsmith
+ 2470  22  0  0  0  0   110   90    0 23 ; boatseller
 0
 
 #SPECIALS
-M  2459 spec_cast_archmage			Minax
-M  2463 spec_warrior				The Avatar
+M  2452 spec_demon                  a demon
+M  2459 spec_cast_archmage          Minax
+M  2463 spec_warrior                The Avatar
 S
 
 #$

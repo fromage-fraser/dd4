@@ -2184,9 +2184,9 @@ S
  M 0 2602 3 2626
 * Load some pyramid watchers (thanks for the idea, Mahatma!)
  M 0 2603 6 2609
- E 0 2600 0 16		One gets an egyptian mace
+ E 0 2600 0 16      One gets an egyptian mace
  M 0 2603 6 2609
- E 0 2601 0 12		The other gets sand-colored robings
+ E 0 2601 0 12      The other gets sand-colored robings
  M 0 2603 6 2637
  E 0 2600 0 16
  M 0 2603 6 2637
@@ -2197,7 +2197,7 @@ S
  E 0 2601 0 12
 * Load some tomb thieves
  M 0 2604 6 2625
- E 0 2602 0 16		Each wields an obsidian dagger
+ E 0 2602 0 16      Each wields an obsidian dagger
  M 0 2604 6 2626
  E 0 2602 0 16
  M 0 2604 6 2633
@@ -2210,17 +2210,17 @@ S
  E 0 2602 0 16
 * Load Ali Baba
  M 0 2605 1 2643
- E 0 2603 0 6		He wears a cloth turban
- E 0 2602 0 16		And wields an obsidian dagger
+ E 0 2603 0 6       He wears a cloth turban
+ E 0 2602 0 16      And wields an obsidian dagger
 * Load the magic carpet (apologies to Disney and the makers of _Aladdin_)
  M 0 2606 1 2623
 * Load some mummies
  M 0 2607 4 2625
- E 0 2604 0 5		Each wears cloth wrappings
- G 0 2606 0		This one carries a jar of formaldehyde
+ E 0 2604 0 5       Each wears cloth wrappings
+ G 0 2606 0     This one carries a jar of formaldehyde
  M 0 2607 4 2625
  E 0 2604 0 5
- G 0 2605 0		This one carries a bottle of embalming fluid
+ G 0 2605 0     This one carries a bottle of embalming fluid
  M 0 2607 4 2637
  E 0 2604 0 5
  M 0 2607 4 2641
@@ -2232,25 +2232,25 @@ S
  M 0 2608 4 2657
 * Load the efreet
  M 0 2609 1 2611
- E 0 2607 0 0		He holds a ball of flame
+ E 0 2607 0 0       He holds a ball of flame
 * Load the caryatids
  M 0 2610 2 2645
- E 0 2608 0 16		Each wields a stone scimitar
+ E 0 2608 0 16      Each wields a stone scimitar
  M 0 2610 2 2645
- E 0 2608 0 16		Each wields a stone scimitar
- G 0 2609 0		Give the second one a stone key
+ E 0 2608 0 16      Each wields a stone scimitar
+ G 0 2609 0     Give the second one a stone key
 * Note: the second one was given the key to require that BOTH be killed
 * at some time for the key to be reloaded.  This way if players only kill the
 * second one, the first one will be loaded sans key on the next reset.
 * Of course, this won't really FORCE the previous players to kill both, but
 * it is more balanced than always fighting only the first caraytid.
 * And also the treasure of the pharoahs
- O 0 2610 0 2645	The stone sarcophagus
- P 0 2611 0 2610	Dust
- P 0 2612 0 2610	The scarab (key to the coffin lid in room #26)
+ O 0 2610 0 2645    The stone sarcophagus
+ P 0 2611 0 2610    Dust
+ P 0 2612 0 2610    The scarab (key to the coffin lid in room #26)
 * Load the djinn (all the power in the world, and an itty bitty living space)
  M 0 2611 1 2623
- E 0 2613 0 17		He holds the lamp
+ E 0 2613 0 17      He holds the lamp
 * Load some hieracosphinxes
  M 0 2612 3 2648
  M 0 2612 3 2649
@@ -2258,49 +2258,49 @@ S
 * Load some gynosphinxes
  M 0 2613 2 2650
  M 0 2613 2 2650
- G 0 2614 0		Give the second one an ankh
+ G 0 2614 0     Give the second one an ankh
 * Load some criosphinxes
  M 0 2614 2 2652
  M 0 2614 2 2652
- G 0 2615 0		Give the second one a book of riddles
+ G 0 2615 0     Give the second one a book of riddles
 * Load the mighty androsphinx
  M 0 2615 1 2647
- G 0 2616 0		Give him a lion's paw
+ G 0 2616 0     Give him a lion's paw
 * Load the great sphinx
  M 0 2616 1 2658
- E 0 2617 0 17		He holds the answer (key to room #59)
+ E 0 2617 0 17      He holds the answer (key to room #59)
 * And also his treasure
- O 0 2618 0 2659	The treasure of the sphinx
- O 0 2624 0 2659	A sun wand
- O 0 2625 0 2659	A sandy ring
- O 0 2626 0 2659	A small golden sphinx
- O 0 2627 0 2659	Sphinxian leggings
+ O 0 2618 0 2659    The treasure of the sphinx
+ O 0 2624 0 2659    A sun wand
+ O 0 2625 0 2659    A sandy ring
+ O 0 2626 0 2659    A small golden sphinx
+ O 0 2627 0 2659    Sphinxian leggings
 * Load Ramses (apologies to Anne Rice, hope I did ok with him)
  M 0 2617 1 2632
- G 0 2619 0		Pile of sand (money money)
- G 0 2620 0		He carries the curse of the mummy
- G 0 2621 0		as well as 2 small elixirs
+ G 0 2619 0     Pile of sand (money money)
+ G 0 2620 0     He carries the curse of the mummy
+ G 0 2621 0     as well as 2 small elixirs
  G 0 2621 0
- E 0 2622 0 6		He wears the golden mask
+ E 0 2622 0 6       He wears the golden mask
 * Almost forgot, the 'diamond in the rough'
- O 0 2623 0 2619	Key to room #23, loaded in #19 (ROUGH crevasse)
+ O 0 2623 0 2619    Key to room #23, loaded in #19 (ROUGH crevasse)
 S
 
 #SPECIALS
-M  2600 spec_poison		asp
-M  2601 spec_poison		cobra
-M  2604 spec_thief		tomb thief
-M  2605 spec_thief		Ali Baba
-M  2609 spec_breath_fire	efreet
-M  2611 spec_breath_gas		djinn
-M  2611 spec_cast_mage		djinn
-M  2613 spec_cast_cleric	gynosphinx
-M  2614 spec_cast_cleric	criosphinx
-M  2615 spec_cast_cleric	androsphinx
-M  2616 spec_cast_cleric	great sphinx
-M  2616 spec_breath_any		great sphinx
-M  2617 spec_cast_undead	Ramses
-M  2617 spec_cast_cleric	Ramses
+M  2600 spec_poison         asp
+M  2601 spec_poison         cobra
+M  2604 spec_thief          tomb thief
+M  2605 spec_thief          Ali Baba
+M  2609 spec_breath_fire    efreet
+M  2611 spec_breath_gas     djinn
+M  2611 spec_cast_mage      djinn
+M  2613 spec_cast_cleric    gynosphinx
+M  2614 spec_cast_cleric    criosphinx
+M  2615 spec_cast_cleric    androsphinx
+M  2616 spec_cast_cleric    great sphinx
+M  2616 spec_breath_any     great sphinx
+M  2617 spec_cast_undead    Ramses
+M  2617 spec_cast_cleric    Ramses
 S
 
 #$

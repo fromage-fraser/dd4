@@ -1,4 +1,4 @@
-#AREA	Kahn~    Old Thalos~
+#AREA   Kahn~    Old Thalos~
 10 25 0 100
 
 
@@ -2650,28 +2650,28 @@ S
 
 
 #RESETS
-M 0 5306 1 5319		Fanatic Priest
-E 1 5218 8  3		(talisman)
-E 1 5222 8 12		(black robe)
-E 1 5252 150 16		(silver dagger)
-E 1 5239 9 17		(dull grey stone)
+M 0 5306 1 5319         Fanatic Priest
+E 1 5218 8  3           (talisman)
+E 1 5222 8 12           (black robe)
+E 1 5252 150 16         (silver dagger)
+E 1 5239 9 17           (dull grey stone)
 *
-M 0 5305 1 5336		Gordon the commander
-E 1 5204 8 8		(mithril boots)
-E 1 5203 8 10		(mithril sleeves)
-E 1 5205 8 7		(mithril leggings)
-E 1 5206 8 13		(mithril girth)
-E 1 5201 8 6		(mithril helm)
-E 1 5202 8 9		(mithril gauntlets)
-E 1 5301 8 5		(breast plate)
-E 1 5221 80 16		(two-handed sword)
-E 1 5226 12 17		(ivory seal)
+M 0 5305 1 5336         Gordon the commander
+E 1 5204 8 8            (mithril boots)
+E 1 5203 8 10           (mithril sleeves)
+E 1 5205 8 7            (mithril leggings)
+E 1 5206 8 13           (mithril girth)
+E 1 5201 8 6            (mithril helm)
+E 1 5202 8 9            (mithril gauntlets)
+E 1 5301 8 5            (breast plate)
+E 1 5221 80 16          (two-handed sword)
+E 1 5226 12 17          (ivory seal)
 *
-M 0 5300 1 5350		Baby Beholder
-E 1 5243 9 17		(clear stone)
-M 0 5307 1 5350		Priest
-E 1 5302 8 17		(serpentine staff)
-E 1 5223 10 3		(green cloak)
+M 0 5300 1 5350         Baby Beholder
+E 1 5243 9 17           (clear stone)
+M 0 5307 1 5350         Priest
+E 1 5302 8 17           (serpentine staff)
+E 1 5223 10 3           (green cloak)
 *
 M 0 5301 20 5300        lamia
 E 1 5300 99 3           (collar)
@@ -2730,40 +2730,40 @@ E 1 5300 99 3           (collar)
 M 0 5301 20 5354        lamia
 E 1 5300 99 3           (collar)
 *
-O 0 5306 1 5334		Fountain
+O 0 5306 1 5334         Fountain
 *
-M 0 5330 2 5300		Bard
-E 1 5311 3 17		(silver flute)
+M 0 5330 2 5300         Bard
+E 1 5311 3 17           (silver flute)
 *
-M 0 5329 2 5330		Bard
-E 1 5309 3 17		(mandolin)
-M 0 5329 2 5330		Bard
-E 1 5310 3 17		(harp)
+M 0 5329 2 5330         Bard
+E 1 5309 3 17           (mandolin)
+M 0 5329 2 5330         Bard
+E 1 5310 3 17           (harp)
 *
-M 0 5316 2 5345		Scholar
-M 0 5315 1 5337		Librarian
+M 0 5316 2 5345         Scholar
+M 0 5315 1 5337         Librarian
 *
-M 0 5319 2 5342		Bath people
-M 0 5318 4 5344		Women
+M 0 5319 2 5342         Bath people
+M 0 5318 4 5344         Women
 *
-M 0 5308 8 5347		Golem SW
-E 1 5221 80 16		(2-handed sword)
-E 1 5232 9 17		(inc. blue stone)
+M 0 5308 8 5347         Golem SW
+E 1 5221 80 16          (2-handed sword)
+E 1 5232 9 17           (inc. blue stone)
 *
-M 0 5308 8 5346		Golem NW
-E 1 5221 80 16		(2-handed sword)
-E 1 5233 9 17		(deep red stone)
+M 0 5308 8 5346         Golem NW
+E 1 5221 80 16          (2-handed sword)
+E 1 5233 9 17           (deep red stone)
 *
-M 0 5308 8 5348		Golem NE
-E 1 5221 80 16		(2-handed sword)
-E 1 5235 9 17		(white stone)
+M 0 5308 8 5348         Golem NE
+E 1 5221 80 16          (2-handed sword)
+E 1 5235 9 17           (white stone)
 *
-M 0 5308 8 5354		Golem SE
-E 1 5221 80 16		(2-handed sword)
-E 1 5237 9 17		(green and lav. stone)
+M 0 5308 8 5354         Golem SE
+E 1 5221 80 16          (2-handed sword)
+E 1 5237 9 17           (green and lav. stone)
 *
 M 0 5311 1 5317         Grocer/meat seller
-G 1 5219 99		(venison)
+G 1 5219 99             (venison)
 E 1 601 99 16           (cleaver)
 G 1 602 99              (beef)
 G 1 603 99              (pork)
@@ -2777,7 +2777,7 @@ G 1 611 99              (milk)
 G 1 612 99              (apple)
 G 1 613 99              (corn)
 *
-M 0 5313 1 5329		Armourer (need items)
+M 0 5313 1 5329         Armourer (need items)
 *
 M 0 5310 1 5330         Barkeep
 G 1 648 99              (whiskey)
@@ -2788,183 +2788,183 @@ M 0 5314 1 5321         Smithy
 G 1 601 99              (cleaver)
 G 1 615 99              (pitchfork)
 *
-M 0 5317 1 5338		Wizard
-G 1 5210 12		(Black Potion)
-G 1 5211 12		(Orange Potion)
+M 0 5317 1 5338         Wizard
+G 1 5210 12             (Black Potion)
+G 1 5211 12             (Orange Potion)
 *
 
-M 0 5309 1 5331		Mayor
-E 1 5224 9 17		(ebony seal)
+M 0 5309 1 5331         Mayor
+E 1 5224 9 17           (ebony seal)
 *
-O 0 5307 1 5331		Curved Desk
-P 1 5304 4 5307		(scroll of enchantment)
-P 1 5305 4 5307		(scroll of detection)
-P 1 5231 9 5307		(scar. and blue stone)
+O 0 5307 1 5331         Curved Desk
+P 1 5304 4 5307         (scroll of enchantment)
+P 1 5305 4 5307         (scroll of detection)
+P 1 5231 9 5307         (scar. and blue stone)
 *
-O 0 5308 1 5333		Glass Cabinet
-P 1 3105 8 5308		(bronze bracer)
-P 1 5214 8 5308		(ball o' light)
-P 1 5230 9 5308		(blue stone)
+O 0 5308 1 5333         Glass Cabinet
+P 1 3105 8 5308         (bronze bracer)
+P 1 5214 8 5308         (ball o' light)
+P 1 5230 9 5308         (blue stone)
 *
-M 0 5320  3 5335	Imperial Guard in Guard House
-E 1 5330 99 1		(signet ring)
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5328 99 13		(belt)
-E 1 5317 199 16		(sword)
-M 0 5320  3 5335	Imperial Guard in Guard House
-E 1 5330 99 1		(signet ring)
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5329 99 14		(bracer)
-E 1 5318 199 16		(mace)
-M 0 5320  3 5335	Imperial Guard in Guard House
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5328 99 13		(belt)
-E 1 5329 99 14		(bracer)
-E 1 5317 199 16		(sword)
-M 0 5321  2 5300	Imperial Guard at Entrance
-E 1 5331 99 0		(banner)
-E 1 5319 99 5		(chest plate)
-E 1 5322 99 6		(helmet)
-E 1 5323 99 7		(leggings)
-E 1 5324 99 8		(boots)
-E 1 5325 99 9		(gloves)
+M 0 5320  3 5335        Imperial Guard in Guard House
+E 1 5330 99 1           (signet ring)
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5328 99 13          (belt)
+E 1 5317 199 16         (sword)
+M 0 5320  3 5335        Imperial Guard in Guard House
+E 1 5330 99 1           (signet ring)
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5329 99 14          (bracer)
+E 1 5318 199 16         (mace)
+M 0 5320  3 5335        Imperial Guard in Guard House
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5328 99 13          (belt)
+E 1 5329 99 14          (bracer)
+E 1 5317 199 16         (sword)
+M 0 5321  2 5300        Imperial Guard at Entrance
+E 1 5331 99 0           (banner)
+E 1 5319 99 5           (chest plate)
+E 1 5322 99 6           (helmet)
+E 1 5323 99 7           (leggings)
+E 1 5324 99 8           (boots)
+E 1 5325 99 9           (gloves)
 E 1 5320 99 11          (shield)
-E 1 5318 199 16		(mace)
-M 0 5321  2 5300	Imperial Guard at Entrance
-E 1 5331 99 0		(banner)
-E 1 5319 99 5		(chest plate)
-E 1 5324 99 8		(boots)
-E 1 5325 99 9		(gloves)
-E 1 5326 99 10		(sleeves)
+E 1 5318 199 16         (mace)
+M 0 5321  2 5300        Imperial Guard at Entrance
+E 1 5331 99 0           (banner)
+E 1 5319 99 5           (chest plate)
+E 1 5324 99 8           (boots)
+E 1 5325 99 9           (gloves)
+E 1 5326 99 10          (sleeves)
 E 1 5320 99 11          (shield)
-E 1 5317 199 16		(sword)
-M 0 5303 11 5300	Imperial Guard patrol
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5329 99 14		(bracer)
-E 1 5318 199 16		(mace)
-M 0 5303 11 5304		"
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
+E 1 5317 199 16         (sword)
+M 0 5303 11 5300        Imperial Guard patrol
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5329 99 14          (bracer)
+E 1 5318 199 16         (mace)
+M 0 5303 11 5304                "
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
 E 1 5320 99 11          (shield)
-E 1 5317 199 16		(sword)
-M 0 5303 11 5307		"
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5328 99 13		(belt)
-E 1 5329 99 14		(bracer)
-E 1 5318 199 16		(mace)
-M 0 5303 11 5313		"
-E 1 5330 99 1		(signet ring)
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
+E 1 5317 199 16         (sword)
+M 0 5303 11 5307                "
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5328 99 13          (belt)
+E 1 5329 99 14          (bracer)
+E 1 5318 199 16         (mace)
+M 0 5303 11 5313                "
+E 1 5330 99 1           (signet ring)
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
 E 1 5320 99 11          (shield)
-E 1 5317 199 16		(sword)
-M 0 5303 11 5315		"
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5328 99 13		(belt)
-E 1 5318 199 16		(mace)
-M 0 5303 11 5324		"
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
+E 1 5317 199 16         (sword)
+M 0 5303 11 5315                "
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5328 99 13          (belt)
+E 1 5318 199 16         (mace)
+M 0 5303 11 5324                "
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
 E 1 5320 99 11          (shield)
-E 1 5317 199 16		(sword)
-M 0 5303 11 5331		"
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5328 99 13		(belt)
-E 1 5329 99 14		(bracer)
-E 1 5318 199 16		(mace)
-M 0 5303 11 5334		"
-E 1 5330 99 1		(signet ring)
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
+E 1 5317 199 16         (sword)
+M 0 5303 11 5331                "
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5328 99 13          (belt)
+E 1 5329 99 14          (bracer)
+E 1 5318 199 16         (mace)
+M 0 5303 11 5334                "
+E 1 5330 99 1           (signet ring)
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
 E 1 5320 99 11          (shield)
-E 1 5317 199 16		(sword)
-M 0 5303 11 5341		"
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5318 199 16		(mace)
-M 0 5303 11 5350		"
-E 1 5321 99 4		(cloak)
-E 1 5319 99 5		(chest plate)
+E 1 5317 199 16         (sword)
+M 0 5303 11 5341                "
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5318 199 16         (mace)
+M 0 5303 11 5350                "
+E 1 5321 99 4           (cloak)
+E 1 5319 99 5           (chest plate)
 E 1 5320 99 11          (shield)
-E 1 5317 199 16		(sword)
-M 0 5303 11 5352		"
-E 1 5330 99 1		(signet ring)
-E 1 5319 99 5		(chest plate)
-E 1 5327 99 12		(cape)
-E 1 5328 99 13		(belt)
-E 1 5318 199 16		(mace)
+E 1 5317 199 16         (sword)
+M 0 5303 11 5352                "
+E 1 5330 99 1           (signet ring)
+E 1 5319 99 5           (chest plate)
+E 1 5327 99 12          (cape)
+E 1 5328 99 13          (belt)
+E 1 5318 199 16         (mace)
 *
-M 0 5304 9 5302		Female Citizen
-M 0 5302 9 5304		Male Citizen
-M 0 5304 9 5307		Female Citizen
-M 0 5302 9 5308		Male Citizen
-M 0 5304 9 5312		Female Citizen
-M 0 5302 9 5316		Male Citizen
-M 0 5304 9 5326		Female Citizen
-M 0 5302 9 5327		Male Citizen
-M 0 5304 9 5330		Female Citizen
-M 0 5302 9 5330		Male Citizen
-M 0 5304 9 5332		Female Citizen
-M 0 5302 9 5338		Male Citizen
-M 0 5304 9 5340		Female Citizen
-M 0 5302 9 5344		Male Citizen
-M 0 5304 9 5344		Female Citizen
-M 0 5302 9 5350		Male Citizen
-M 0 5304 9 5361		Female Citizen
-M 0 5302 9 5367		Male Citizen
+M 0 5304 9 5302         Female Citizen
+M 0 5302 9 5304         Male Citizen
+M 0 5304 9 5307         Female Citizen
+M 0 5302 9 5308         Male Citizen
+M 0 5304 9 5312         Female Citizen
+M 0 5302 9 5316         Male Citizen
+M 0 5304 9 5326         Female Citizen
+M 0 5302 9 5327         Male Citizen
+M 0 5304 9 5330         Female Citizen
+M 0 5302 9 5330         Male Citizen
+M 0 5304 9 5332         Female Citizen
+M 0 5302 9 5338         Male Citizen
+M 0 5304 9 5340         Female Citizen
+M 0 5302 9 5344         Male Citizen
+M 0 5304 9 5344         Female Citizen
+M 0 5302 9 5350         Male Citizen
+M 0 5304 9 5361         Female Citizen
+M 0 5302 9 5367         Male Citizen
 *
 R 0 5375 5
 R 0 5376 6
 R 0 5377 6
 R 0 5378 5
 *
-M 0 5327 1 5368		Druid
-G 1 5313 99		blue herbs
-M 0 5327 2 5371		Druid
-G 1 5315 99		grey herbs
-M 0 5328 1 5374		Druidess
-G 1 5314 99		purple herbs
-M 0 5328 2 5372		Druidess
-G 1 5316 99		orange herbs
+M 0 5327 1 5368         Druid
+G 1 5313 99             blue herbs
+M 0 5327 2 5371         Druid
+G 1 5315 99             grey herbs
+M 0 5328 1 5374         Druidess
+G 1 5314 99             purple herbs
+M 0 5328 2 5372         Druidess
+G 1 5316 99             orange herbs
 *
-M 0 5322 2 5367		Doe
-M 0 5323 3 5370		Deer
-M 0 5324 1 5369		Stag
-M 0 5325 3 5373		Rabbit
-M 0 5326 4 5372		Snake
+M 0 5322 2 5367         Doe
+M 0 5323 3 5370         Deer
+M 0 5324 1 5369         Stag
+M 0 5325 3 5373         Rabbit
+M 0 5326 4 5372         Snake
 *
-M 0 5334 1 5384		City Guard at Gate
-E 1 3365 99 0		(banner)
-E 1 3364 99 1		(signet ring)
-E 1 3350 199 16		(sword)
-E 1 3353 99 5		(vest)
+M 0 5334 1 5384         City Guard at Gate
+E 1 3365 99 0           (banner)
+E 1 3364 99 1           (signet ring)
+E 1 3350 199 16         (sword)
+E 1 3353 99 5           (vest)
 E 1 3354 99 11          (shield)
 *
-M 0 5331 1 5381		City Guard
-E 1 3365 99 0		(banner)
-E 1 3364 99 1		(signet ring)
-E 1 3350 199 16		(sword)
-E 1 3353 99 5		(vest)
-E 1 3355 199 4		(cloak)
+M 0 5331 1 5381         City Guard
+E 1 3365 99 0           (banner)
+E 1 3364 99 1           (signet ring)
+E 1 3350 199 16         (sword)
+E 1 3353 99 5           (vest)
+E 1 3355 199 4          (cloak)
 *
-M 0 5332 2 5380		Janitor
-M 0 5333 3 5382		Fido
+M 0 5332 2 5380         Janitor
+M 0 5333 3 5382         Fido
 *
-M 0 5323 3 5358		Deer
-M 0 5326 4 5356		Snake
+M 0 5323 3 5358         Deer
+M 0 5326 4 5356         Snake
 S
 
 

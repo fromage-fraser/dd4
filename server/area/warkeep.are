@@ -1,4 +1,4 @@
-#AREA	Yaegar~ The Keep of the Warlock~
+#AREA   Yaegar~ The Keep of the Warlock~
 70 90 40 100
 
 #HELPS
@@ -1642,7 +1642,7 @@ E 1 15942 1 7
 *
 M 1 15919 1 15939                    loads flind
 E 1 15935 1 16
-G 1 15934 0			0
+G 1 15934 0 0
 *
 M 1 15920 1 15913                    loads otyugh
 O 1 15936 1 15913
@@ -1651,24 +1651,24 @@ S
 
 
 #SPECIALS
-M  15900 spec_cast_archmage			the warlock Baragar
-M  15901 spec_cast_archmage			the witch Alara
-M  15902 spec_cast_undead			a demon
-M  15903 spec_cast_mage			a cat familiar
-M  15904 spec_cast_mage			a hawk familiar
-M  15905 spec_fido			a troll guard
-M  15906 spec_executioner			a flesh golem
-M  15907 spec_breath_fire			a fire drake
-M  15908 spec_cast_archmage			a zombie servant
-M  15909 spec_guard			a keep guard
-M  15910 spec_cast_archmage			an apprentice mage
-M  15911 spec_poison			a grell
-M  15913 spec_fido			a hungry crocodile
-M  15914 spec_poison			a savage war dog
-M  15915 spec_thief			an assassin
-M  15916 spec_cast_mage			the assassin Dagar
-M  15919 spec_poison			a flind slave master
-M  15920 spec_fido			an otyugh
+M  15900 spec_cast_archmage         the warlock Baragar
+M  15901 spec_cast_archmage         the witch Alara
+M  15902 spec_demon             a demon
+M  15903 spec_cast_mage         a cat familiar
+M  15904 spec_cast_mage         a hawk familiar
+M  15905 spec_fido          a troll guard
+M  15906 spec_executioner           a flesh golem
+M  15907 spec_breath_fire           a fire drake
+M  15908 spec_cast_archmage         a zombie servant
+M  15909 spec_guard         a keep guard
+M  15910 spec_cast_archmage         an apprentice mage
+M  15911 spec_poison            a grell
+M  15913 spec_fido          a hungry crocodile
+M  15914 spec_poison            a savage war dog
+M  15915 spec_thief         an assassin
+M  15916 spec_cast_mage         the assassin Dagar
+M  15919 spec_poison            a flind slave master
+M  15920 spec_fido          an otyugh
 S
 
 

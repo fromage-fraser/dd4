@@ -4722,21 +4722,21 @@ S
 0
 
 #SPECIALS
-M  24000 spec_breath_any            The Dragon
-M  24001 spec_breath_fire           the fiery demon
-M  24002 spec_breath_fire           the war hound from hell
-M  24004 spec_breath_fire           the fire elemental
+M  24000 spec_breath_any       The Dragon
+M  24001 spec_demon            the fiery demon
+M  24002 spec_breath_fire      the war hound from hell
+M  24004 spec_breath_fire      the fire elemental
 M  24005 spec_guard            the dwarven guard
 M  24006 spec_guard            Erich, Captain of the Cobresh Guard
 M  24007 spec_guard            Guntharson, King of Cobresh
-M  24009 spec_cast_cleric           Hanson
-M  24011 spec_cast_adept            Bjorn the Dwarf
-M  24012 spec_cast_archmage             Adolf the Dwarf
+M  24009 spec_cast_cleric      Hanson
+M  24011 spec_cast_adept       Bjorn the Dwarf
+M  24012 spec_cast_archmage    Adolf the Dwarf
 M  24013 spec_guard            the dwarven guard
 M  24016 spec_guard            the dwarven scout
 M  24017 spec_guard            the dwarven guard
 M  24020 spec_thief            Stain, master thief
-M  24021 spec_cast_cleric           Mazzy
+M  24021 spec_cast_cleric      Mazzy
 M  24022 spec_guard            the royal dwarven guard
 S
 

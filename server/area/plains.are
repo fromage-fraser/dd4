@@ -1,4 +1,4 @@
-#AREA	Copper~  Plains of the North~
+#AREA   Copper~  Plains of the North~
 1 20 0 100
 
 
@@ -1285,8 +1285,8 @@ O 0 304 3 323    -
 O 0 304 3 338    -
 *
 M 0 305 1 344  Giant worm
-G 1 310 5	give template to worm
-G 1 311 5 	Give potion to worm
+G 1 310 5       give template to worm
+G 1 311 5       Give potion to worm
 *
 M 0 309 10 324  rabbits
 M 0 309 10 318     -

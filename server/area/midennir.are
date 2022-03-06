@@ -1,4 +1,4 @@
-#AREA	Copper~  Miden'nir~
+#AREA   Copper~  Miden'nir~
 5 15 0 100
 
 
@@ -1074,9 +1074,9 @@ M 0 3502 1 3575       Load Small Boy at Ambush
 M 0 3503 1 3576       Load Innkeeper at Bar
 M 0 3504 1 3577       Load Bard at Table
 M 0 3505 4 3584       Load Horseman at End of Trail
-G 1 2114 100		give Horseman a single gold coin
-M 0 3505 4 3584            Horseman at End of Trail
-G 1 2114 100		give Horseman a single gold coin
+G 1 2114 100          give Horseman a single gold coin
+M 0 3505 4 3584       Horseman at End of Trail
+G 1 2114 100          give Horseman a single gold coin
 S
 
 

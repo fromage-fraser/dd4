@@ -1,0 +1,2822 @@
+#AREA Owl~ The Abyss~
+15 30 5 100
+
+#MOBILES
+#7500
+photophore blob glowing pulsing jelly~
+a photophore~
+{RA glowing, pulsing blob of jelly floats through the room.{x
+~
+This curious organism resembles nothing so much as a large, glowing
+spherical blob of jelly. It pulses and flashes blue and red before
+your eyes as it drifts through the room with no obvious means of
+locomotion.
+~
+4|64|4096 1|524288 0 S
+15 0 0 0d0+0 0d0+0
+1|2|4|8|32|64 0
+0 0 0
+>death_prog 100~
+mpecho {wThe photophore explodes, jelly goes everywhere!{x
+mpoload 7500
+~
+|
+
+#7501
+mesopelag mottled shark-like creature~
+a mesopelag~
+{yA mottled, shark-like creature cruises about.{x
+~
+The mesopelag resembles a large catshark in appearance. Its body is
+coverings with glowing spots, which complement the mottled, jaguar-like
+patterning on its skin. It regards you now with a hungry gleam in its
+empty black eyes as it cruises the Abyss in search of prey.
+~
+64 32|524288|8388608 -275 S
+16 0 0 0d0+0 0d0+0
+4|8|32 0
+0 0 1
+
+#7502
+malacost large woodlouse~
+a malacost~
+{BWhat looks like a giant woodlouse swims through the blackness.{x
+~
+The malacost reminds you in appearance somewhat of a slater. That is,
+if you can imagine a slater the size of a large dog, flying impossibly
+through the air with a lazy swimming motion. The outer edges of its
+segmented body-plates glow an eerie blue-green in the darkness.
+~
+64|128 512|8192|524288 175 S
+17 0 0 0d0+0 0d0+0
+8|32 0
+0 0 2
+>death_prog 100~
+mpecho {wThe malacost spasms and curls up into a ball, lifeless.{x
+~
+|
+
+#7503
+pycnogonid spider~
+a pycnogonid~
+{rA giant spider looms, teeth dripping with venom.{x
+~
+The pycnogonid is a huge flying spider with a legspan of perhaps two
+metres. Her striped legs flash blue and red as she looms before you in
+the darkness, teeth dripping with venom.
+~
+64 512|524288 -620 S
+18 0 0 0d0+0 0d0+0
+4|32 0
+0 0 2
+
+#7504
+anthozoa~
+an anthozoa~
+{mAn anthozoa hovers here, its tentacles beckoning.{x
+~
+This huge purple anthozoa resembles a terrestrial sea anemone, save for
+its unusual size, and the fact that it's hovering in the airy, inky gloom
+with no apparent means of support. It glows attractive shades of purple
+and blue. It looks hungry.
+~
+2|32|64 524288 -25 S
+19 0 0 0d0+0 0d0+0
+1|2|4|8|32 0
+0 0 0
+
+#7505
+scyph creature oval-shaped~
+a scyph~
+{GA oval-shaped creature with a domed shell lingers here.{x
+~
+The scyph is a oval-shaped limpet-like creature, about the size of
+a dolphin but with none of the personality. It glows with a brilliant
+green colour as it floats in space, apparently not too concerned
+about your presence and in no hurry to get anyplace.
+~
+2|64 1|64|524288 65 S
+20 0 0 0d0+0 0d0+0
+1|2|4|8|32 0
+0 0 0
+
+#7506
+siph algae cloud~
+a cloud of siph~
+{YA cloud of brilliant yellow algae drifts through the Abyss.{x
+~
+The siph is a colony composed of a brilliant yellow algae that drifts
+aimlessly, looking for the carrion of other Abyss-dwelling organisms
+to consume.
+~
+64|128 524288|1048576 0 S
+22 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64 0
+0 0 0
+>death_prog 100~
+mpecho {wThe siph cloud disperses into the Abyss.{x
+mpoload 7505
+~
+|
+
+#7507
+erenna jellyfish~
+an erenna~
+{CA flying jellyfish-like creature glides past you.{x
+~
+The erenna drifts past you here, its huge jellyfish-like body glowing
+with a bright blueish tinge. Its stingers hang down below its pulsating
+gelatinous body menacingly.
+~
+64 524288|1048576 0 S
+23 0 0 0d0+0 0d0+0
+1|2|4|8|16|32|64 0
+0 0 0
+>death_prog 100~
+mpecho {wThe erenna's body implodes, leaving only its slimy heart.{x
+mpoload 7506
+~
+|
+
+#7508
+copepod shrimp~
+a copepod~
+{mA giant glowing shrimp paddles through the air.{x
+~
+The copepod is a bizarre species of giant, flying, bioluminescent shrimp.
+It glows with a dull pink aura as it paddles through the air, oblivious
+to your presence.
+~
+64 256|524288 26 S
+21 0 0 0d0+0 0d0+0
+4|32 0
+0 0 2
+
+#7509
+abralia squid green~
+an abralia~
+{gA green, squid-like creature jets through the air.{x
+~
+The abralia jets through the air backwards, squirting some kind of
+compressed gas out from amongst its tentacles. It glows with a dull
+green light.
+
+The abralia reminds you of nothing so much as a giant, airborne squid.
+
+It doesn't seem at all bothered by your presence; you wouldn't be
+surprised if you could jump on its back and ride it around without
+it being overly disturbed.
+~
+64|131072 512|524288 -125 S
+27 0 0 0d0+0 0d0+0
+8|32|64 0
+0 0 1
+>death_prog 100~
+mpecho {wThe abralia explodes in a cloud of blue ink!{x
+mpoload 7508
+~
+|
+
+#7510
+veranyi red maw teeth lure~
+the veranyi~
+{rA red lure wriggles above a huge, gaping maw, full of sharp teeth.{x
+~
+The veranyi is a gigantic fishlike predator. It hides away in dark corners, luring
+its unlucky prey into its gaping maw with a hypnotic, wriggling red lure.
+~
+2|32|64 8|32|512|65536|524288|8388608 -800 S
+28 0 0 0d0+0 0d0+0
+4|8|32|128 0
+0 0 2
+
+#7511
+calimedusae cuttlefish~
+the calimedusae~
+{cThe largest cuttlefish you've ever seen blasts towards you.{x
+~
+The calimedusae is a magical species of cuttlefish. Huge, green and hungry it
+drifts in space here, considering you for its next meal.
+~
+2|32|64 512|524288 -125 S
+29 0 0 0d0+0 0d0+0
+8|32 0
+0 0 2
+
+#7512
+cyclothone eel~
+the cyclothone~
+{WA long, eellike creature patrols this area. It crackles with electrical energy.{x
+~
+The long, sinuous cyclothone resembles a electric eel in many respects, only it is much
+larger, flying, and covered with many luminous spots of various colours. It's a mean
+predator and will eat anything it thinks it can overpower with its vicious electric
+attack.
+~
+2|32|64 32|128|512|32768|524288|8388608 -675 S
+30 0 0 0d0+0 0d0+0
+4|8|32 0
+0 0 1
+#0
+
+#OBJECTS
+#7500
+jelly jellied substance heap untidy strange~
+some strange jellied substance~
+A strange jellied substance has been splattered everywhere.~
+~
+13 1 1
+~ ~ ~ ~
+100 0 0
+E
+jelly jellied substance strange~
+The strange jellied substance pulses and glows blue and red in
+your hands. It smells awful.
+~
+
+#7501
+interlocking plates chitinous body-plates~
+interlocking chitinous plates~
+The interlocking chitinous body-plates of a malacost lie here.~
+~
+9 1 1|8
+~ ~ ~ ~
+15 0 0
+E
+interlocking plates chitinous body-plates~
+The interlocking chitinous plates of the malacost's armour look like
+they could be modified to be worn by a humanoid, providing some protection
+against damage received in combat.
+~
+A
+17 -15
+
+#7502
+mass purple tentacles~
+a mass of purple tentacles~
+The slimy purple tentacles of an anthozoa lie here.~
+~
+5 1|67108864 1|8192
+~ ~ ~ 4~
+10 0 0
+E
+mass purple tentacles~
+The anthozoa's slimy purple tentacles are hideous and useless. Why
+would you want them?
+~
+A
+19 2
+
+#7503
+domed shell glowing~
+{Ga glowing domed shell{x~
+{GThe glowing, domed shell of a scyph lies here.{x~
+~
+9 1 1|8
+~ ~ ~ ~
+30 0 0
+E
+domed shell glowing~
+The glowing domed shell of a scyph looks like it could be worn as
+armour by a humanoid without too much trouble. It looks quite
+resistant to damage.
+~
+A
+17 -35
+A
+2 -2
+
+#7504
+muscular foot~
+a muscular foot~
+The muscular foot of a scyph lies here, covered in mucus.~
+~
+5 1|67108864 1|8192
+~ ~ ~ 12~
+12 0 0
+E
+muscular foot~
+This muscular "foot" is used by a scyph for feeding, locomotion, and
+affixing itself to surfaces. Apparently, for the species you encountered,
+also as a form of defence. It's covered in a thick mucus.
+~
+A
+19 3
+
+#7505
+yellow slime~
+some yellow slime~
+{yYou see some dirty yellow slime.{x~
+~
+28 1|64 1
+18~ fly~ cure critical~ ~
+1 0 0
+E
+yellow slime~
+This yellow slime is the remnants of a siph algae colony. It glows with
+magical energy.
+~
+
+#7506
+slimy heart erenna~
+the slimy heart of an erenna~
+{CThe slimy heart of an erenna lies here.{x~
+~
+26 1|2|64 1
+20~ pass door~ cure poison~ fly~
+1 0 0
+E
+slimy heart erenna~
+The slimy heart of an erenna glows and hums. It looks like it might be edible.
+~
+
+#7507
+poisonous stingers~
+{Cpoisonous stingers{x~
+{CThe poisonous stingers of an erenna lie here.{x~
+~
+5 1|16384|67108864 1|8192
+~ ~ ~ 15~
+1 0 0
+E
+poisonous stingers~
+The poisonous stingers of an erenna glow with an eerie blue light.
+~
+
+#7508
+abralia ink~
+some abralia ink~
+{bA dark pool of ink lies before you.{x~
+~
+10 1 1
+27~ poison~ ~ ~
+1 0 0
+E
+abralia ink~
+The ink looks and smells foul. Best to leave it alone.
+~
+
+#7509
+gaping maw~
+gaping maw~
+The gaping maw of a veranyi lies here, full of sharp teeth.~
+~
+5 67108864 1|8192
+~ ~ ~ 10~
+55 0 0
+E
+gaping maw~
+The veranyi's gaping maw is huge, and full of hundreds of sharp teeth. Brrrr.
+~
+A
+19 7
+A
+18 5
+
+#7510
+red lure~
+{Ra wriggling red lure{x~
+The red lure of a veranyi lies here, wriggling about.~
+~
+4 1|16 1|16384
+28~ 3~ 3~ inertial barrier~
+10 0 0
+E
+red lure~
+It feels magical. You wonder how to activate it.
+~
+
+#7511
+sharp beak~
+a sharp beak~
+The sharp beak of the largest cuttlefish you can imagine lies here.~
+~
+5 16777216|67108864 1|8192
+~ ~ ~ 10~
+55 0 0
+E
+sharp beak~
+The beak of the cuttlefish looks like it could sever your limbs unproblematically.
+~
+A
+19 5
+A
+18 15
+
+#7512
+sparking oil~
+some sparking oil~
+A greasy oil sparks and shimmers here.~
+~
+10 0 1
+30~ heal~ ~ ~
+1 0 0
+E
+sparking oil~
+The sparking oil smells quite pleasant. It might even be drinkable.
+~
+#0
+
+#ROOMS
+#7500
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7501
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7502
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7503
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7399
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7501
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7500
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7502
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7503
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7502
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7501
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7500
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7503
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7503
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7501
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7502
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7500
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7504
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7507
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7502
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7503
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7505
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7507
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7503
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7506
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7507
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7507
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7504
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7508
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7507
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7505
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7511
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7509
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7507
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7506
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7511
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7512
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7510
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7511
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7507
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7512
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7513
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7511
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7512
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7514
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7513
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7508
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7512
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7509
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7514
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7513
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7515
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7511
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7513
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7511
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7512
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7514
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7510
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7515
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7516
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7514
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7516
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7512
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7511
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7513
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7515
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7517
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7515
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7516
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7517
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7514
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7513
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7512
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7518
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7516
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7517
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7518
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7514
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7519
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7515
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7513
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7517
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7516
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7515
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7519
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7518
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7520
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7521
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7518
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7517
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7516
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7520
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7519
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7521
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7522
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7519
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7517
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7519
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7521
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7520
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7522
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7523
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7520
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7521
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7519
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7523
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7522
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7524
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7525
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7521
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7520
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7522
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7524
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7523
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7525
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7526
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7522
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7526
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7521
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7524
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7523
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7525
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7527
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7523
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7528
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7527
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7524
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7522
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7525
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7526
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7524
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7527
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7526
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7523
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7528
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7525
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7529
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7525
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7527
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7526
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7529
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7528
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7524
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7530
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7526
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7527
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7525
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7529
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7528
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7531
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7530
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7527
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7528
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7526
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7531
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7529
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7530
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7528
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7529
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7527
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7531
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7530
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7529
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7531
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7528
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7530
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7530
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7531
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7529
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7531
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7530
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7532
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7531
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7533
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7534
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7535
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7503
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7502
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7540
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7536
+The Abyss~
+{bYou are floating in endless, disorienting blackness. This place doesn't
+feel quite so accursed as most of the Abyss.{x
+~
+0 4 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7540
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7537
+The Abyss~
+{bYou are floating in endless, disorienting blackness. This place doesn't
+feel quite so accursed as most of the Abyss.{x
+~
+0 4 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7540
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7538
+The Abyss~
+{bYou are floating in endless, disorienting blackness. This place doesn't
+feel quite so accursed as most of the Abyss.{x
+~
+0 4 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7533
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7539
+The Abyss~
+{bYou are floating in endless, disorienting blackness. This place doesn't
+feel quite so accursed as most of the Abyss.{x
+~
+0 4 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7532
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7534
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7535
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7540
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 4|8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7542
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7537
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7541
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7541
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7540
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7557
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7538
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7536
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7542
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7542
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7543
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7544
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7540
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7541
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7539
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7543
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7541
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7542
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7544
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7540
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7544
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7541
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7542
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7543
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7547
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7545
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7543
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7542
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7554
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7547
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7548
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7546
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7543
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7542
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7547
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7548
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7549
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7547
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7544
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7548
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7549
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7550
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7548
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7544
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7547
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7549
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7550
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7549
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7545
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7548
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7547
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7550
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7544
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7550
+The Abyss~
+{bYou are floating in endless, disorienting blackness.{x
+~
+0 8192 9
+D 0
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7546
+D 2
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7547
+D 1
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7549
+D 3
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7548
+D 4
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7544
+D 5
+Cursed, impenetrable blackness.
+~
+~
+0 -1 7551
+E
+blackness~
+Completely impenetrable. It feels cursed and unnatural.
+~
+S
+
+#7551
+The Abyss~
+{bThough dark, airy, and seemingly endless, this area feels strangely bounded;
+travel is only possible in certain directions. It also feels less accursed
+than most of the places you've seen in the Abyss.{x
+~
+0 4 9
+D 0
+Impenetrable blackness.
+~
+~
+0 -1 7550
+D 2
+Impenetrable blackness.
+~
+~
+0 -1 7552
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7552
+The Abyss~
+{bThough dark, airy, and seemingly endless, this area feels strangely bounded;
+travel is only possible in certain directions. It also feels less accursed
+than most of the places you've seen in the Abyss. You get a bad feeling when
+you look to the south.{x
+~
+0 4 9
+D 0
+Impenetrable blackness.
+~
+~
+0 -1 7551
+D 2
+You can't SEE anything, but a chill runs down your spine when you turn in
+this direction.
+~
+~
+0 -1 7553
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7553
+The Veranyi's Lair~
+{bThough your senses indicate that this place is as unbounded and endless as any
+other part of the Abyss some magic prevents you from leaving it in any direction
+but north. This area feels lived-in. Lived-in by something terrible and sinister.{x
+~
+0 8192 9
+D 0
+Impenetrable blackness.
+~
+~
+0 -1 7552
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7554
+The Abyss~
+{bThough dark, airy, and seemingly endless, this area feels strangely bounded;
+travel is only possible in certain directions. It also feels less accursed
+than most of the places you've seen in the Abyss.{x
+~
+0 4 9
+D 1
+Impenetrable blackness.
+~
+~
+0 -1 7555
+D 3
+Impenetrable blackness.
+~
+~
+0 -1 7545
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7555
+The Abyss~
+{bThough dark, airy, and seemingly endless, this area feels strangely bounded;
+travel is only possible in certain directions. It also feels less accursed
+than most of the places you've seen in the Abyss. You get a bad feeling when
+you look to the east.{x
+~
+0 4 9
+D 1
+~
+~
+0 -1 7556
+D 3
+~
+~
+0 -1 7554
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7556
+The Calimedusae's Lair~
+{bThough your senses indicate that this place is as unbounded and endless as any
+other part of the Abyss some magic prevents you from leaving it in any direction
+but west. This area feels lived-in. Lived-in by something terrible and sinister.{x
+~
+0 8192 9
+D 3
+Impenetrable blackness.
+~
+~
+0 -1 7555
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7557
+The Abyss~
+{bThough dark, airy, and seemingly endless, this area feels strangely bounded;
+travel is only possible in certain directions. It also feels less accursed
+than most of the places you've seen in the Abyss.{x
+~
+0 4 9
+D 4
+Impenetrable blackness.
+~
+~
+0 -1 7541
+D 5
+Impenetrable blackness.
+~
+~
+0 -1 7558
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7558
+The Abyss~
+{bThough dark, airy, and seemingly endless, this area feels strangely bounded;
+travel is only possible in certain directions. It also feels less accursed
+than most of the places you've seen in the Abyss. You get a bad feeling when
+you look down.{x
+~
+0 4 9
+D 4
+Impenetrable blackness.
+~
+~
+0 -1 7557
+D 5
+You can't SEE anything, but a chill runs down your spine when you turn in
+this direction.
+~
+~
+0 -1 7559
+E
+blackness~
+Completely impenetrable.
+~
+S
+
+#7559
+The Cyclothone's Lair~
+{bThough your senses indicate that this place is as unbounded and endless as any
+other part of the Abyss some magic prevents you from leaving it in any direction
+but up. This area feels lived-in. Lived-in by something terrible and sinister.{x
+~
+0 8192 9
+D 4
+Impenetrable blackness.
+~
+~
+0 -1 7558
+E
+blackness~
+Completely impenetrable.
+~
+S
+#0
+
+#RESETS
+R 0 7500 6                      randomise exits in The Abyss
+R 0 7501 6                      randomise exits in The Abyss
+R 0 7502 6                      randomise exits in The Abyss
+R 0 7503 6                      randomise exits in The Abyss
+R 0 7504 6                      randomise exits in The Abyss
+R 0 7505 6                      randomise exits in The Abyss
+R 0 7506 6                      randomise exits in The Abyss
+R 0 7507 6                      randomise exits in The Abyss
+R 0 7508 6                      randomise exits in The Abyss
+R 0 7509 6                      randomise exits in The Abyss
+R 0 7510 6                      randomise exits in The Abyss
+R 0 7511 6                      randomise exits in The Abyss
+R 0 7512 6                      randomise exits in The Abyss
+R 0 7513 6                      randomise exits in The Abyss
+R 0 7514 6                      randomise exits in The Abyss
+R 0 7515 6                      randomise exits in The Abyss
+R 0 7516 6                      randomise exits in The Abyss
+R 0 7517 6                      randomise exits in The Abyss
+R 0 7518 6                      randomise exits in The Abyss
+R 0 7519 6                      randomise exits in The Abyss
+R 0 7520 6                      randomise exits in The Abyss
+R 0 7521 6                      randomise exits in The Abyss
+R 0 7522 6                      randomise exits in The Abyss
+R 0 7523 6                      randomise exits in The Abyss
+R 0 7524 6                      randomise exits in The Abyss
+R 0 7525 6                      randomise exits in The Abyss
+R 0 7526 6                      randomise exits in The Abyss
+R 0 7527 6                      randomise exits in The Abyss
+R 0 7528 6                      randomise exits in The Abyss
+R 0 7529 6                      randomise exits in The Abyss
+R 0 7530 6                      randomise exits in The Abyss
+R 0 7531 6                      randomise exits in The Abyss
+R 0 7532 6                      randomise exits in The Abyss
+R 0 7533 6                      randomise exits in The Abyss
+R 0 7534 6                      randomise exits in The Abyss
+R 0 7535 6                      randomise exits in The Abyss
+R 0 7536 6                      randomise exits in The Abyss
+R 0 7537 6                      randomise exits in The Abyss
+R 0 7538 6                      randomise exits in The Abyss
+R 0 7539 6                      randomise exits in The Abyss
+R 0 7540 6                      randomise exits in The Abyss
+R 0 7541 6                      randomise exits in The Abyss
+R 0 7542 6                      randomise exits in The Abyss
+R 0 7543 6                      randomise exits in The Abyss
+R 0 7544 6                      randomise exits in The Abyss
+R 0 7545 6                      randomise exits in The Abyss
+R 0 7546 6                      randomise exits in The Abyss
+R 0 7547 6                      randomise exits in The Abyss
+R 0 7548 6                      randomise exits in The Abyss
+R 0 7549 6                      randomise exits in The Abyss
+R 0 7550 6                      randomise exits in The Abyss
+M 0 7500 4 7501                 add a photophore to The Abyss
+M 0 7500 4 7515                 add a photophore to The Abyss
+M 0 7500 4 7525                 add a photophore to The Abyss
+M 0 7500 4 7535                 add a photophore to The Abyss
+M 0 7501 4 7502                 add a mesopelag to The Abyss
+M 0 7501 4 7515                 add a mesopelag to The Abyss
+M 0 7501 4 7526                 add a mesopelag to The Abyss
+M 0 7501 4 7536                 add a mesopelag to The Abyss
+M 0 7502 4 7503                 add a malacost to The Abyss
+E 0 7501 0 5                        equip interlocking chitinous plates (body)
+M 0 7502 4 7516                 add a malacost to The Abyss
+E 0 7501 0 5                        equip interlocking chitinous plates (body)
+M 0 7502 4 7527                 add a malacost to The Abyss
+E 0 7501 0 5                        equip interlocking chitinous plates (body)
+M 0 7502 4 7537                 add a malacost to The Abyss
+E 0 7501 0 5                        equip interlocking chitinous plates (body)
+M 0 7503 2 7528                 add a pycnogonid to The Abyss
+M 0 7503 2 7538                 add a pycnogonid to The Abyss
+M 0 7504 3 7529                 add an anthozoa to The Abyss
+E 0 7502 0 16                       equip a mass of purple tentacles (wield)
+M 0 7504 3 7537                 add an anthozoa to The Abyss
+E 0 7502 0 16                       equip a mass of purple tentacles (wield)
+M 0 7504 3 7521                 add an anthozoa to The Abyss
+E 0 7502 0 16                       equip a mass of purple tentacles (wield)
+M 0 7505 3 7531                 add a scyph to The Abyss
+E 0 7503 0 5                        equip {Ga glowing domed shell{x (body)
+E 0 7504 0 16                       equip a muscular foot (wield)
+M 0 7505 3 7539                 add a scyph to The Abyss
+E 0 7503 0 5                        equip {Ga glowing domed shell{x (body)
+E 0 7504 0 16                       equip a muscular foot (wield)
+M 0 7505 3 7519                 add a scyph to The Abyss
+E 0 7503 0 5                        equip {Ga glowing domed shell{x (body)
+E 0 7504 0 16                       equip a muscular foot (wield)
+M 0 7506 2 7542                 add a cloud of siph to The Abyss
+M 0 7506 2 7546                 add a cloud of siph to The Abyss
+M 0 7507 2 7543                 add an erenna to The Abyss
+E 0 7507 0 16                       equip {Cpoisonous stingers{x (wield)
+M 0 7507 2 7547                 add an erenna to The Abyss
+E 0 7507 0 16                       equip {Cpoisonous stingers{x (wield)
+M 0 7508 2 7544                 add a copepod to The Abyss
+M 0 7508 2 7548                 add a copepod to The Abyss
+M 0 7510 1 7553                 add the veranyi to The Veranyi's Lair
+E 0 7509 0 16                       equip gaping maw (wield)
+E 0 7510 0 17                       equip {Ra wriggling red lure{x (hold)
+M 0 7511 1 7556                 add the calimedusae to The Calimedusae's Lair
+E 0 7511 0 16                       equip a sharp beak (wield)
+M 0 7512 1 7559                 add the cyclothone to The Cyclothone's Lair
+G 0 7512 0                          carry some sparking oil
+G 0 7512 0                          carry some sparking oil
+S
+
+#SPECIALS
+M 7503 spec_poison              a pycnogonid
+M 7506 spec_fido                a cloud of siph
+M 7510 spec_bloodsucker         the veranyi
+M 7512 spec_breath_lightning    the cyclothone
+S
+
+#$

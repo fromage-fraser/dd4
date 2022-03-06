@@ -1,4 +1,4 @@
-#AREA	Xanax~   Thoran~
+#AREA   Xanax~   Thoran~
 35 90 0 100
 
 #MOBILES
@@ -2513,29 +2513,29 @@ S
 
 
 #SPECIALS
-M  26702 spec_cast_psionicist			A gypsie
-M  26706 spec_cast_undead			A ghoul
-M  26707 spec_cast_undead			A wight
-M  26708 spec_cast_undead			A wraith
-M  26709 spec_vampire			A maiden vampire
+M  26702 spec_cast_psionicist       A gypsie
+M  26706 spec_cast_undead           A ghoul
+M  26707 spec_cast_undead           A wight
+M  26708 spec_cast_undead           A wraith
+M  26709 spec_vampire               A maiden vampire
 M  26716 spec_cast_cleric           Donovan
-M  26717 spec_cast_psionicist             Ave
-M  26724 spec_cast_undead			A spectre
-M  26726 spec_breath_fire			A red dragon
-M  26727 spec_cast_undead			A gaurdian of sorrow
-M  26731 spec_cast_archmage             Guardian Portrait
-M  26732 spec_cast_archmage             witch
-M  26734 spec_cast_undead			A shadow demon
-M  26737 spec_breath_fire			A hellhound
-M  26738 spec_cast_psionicist			A nightmare
-M  26739 spec_cast_undead			A zombie
-M  26741 spec_cast_undead			A ghoul
-M  26742 spec_cast_undead			A wight
-M  26743 spec_cast_undead			A wraith
-M  26746 spec_cast_undead			A spectre
-M  26722  spec_vampire 		vampire
-M  26744  spec_vampire  	vampire
-M  26745 spec_vampire 		vampire
+M  26717 spec_cast_psionicist       Ave
+M  26724 spec_cast_undead           A spectre
+M  26726 spec_breath_fire           A red dragon
+M  26727 spec_cast_undead           A gaurdian of sorrow
+M  26731 spec_cast_archmage         Guardian Portrait
+M  26732 spec_cast_archmage         witch
+M  26734 spec_demon                 A shadow demon
+M  26737 spec_breath_fire           A hellhound
+M  26738 spec_cast_psionicist       A nightmare
+M  26739 spec_cast_undead           A zombie
+M  26741 spec_cast_undead           A ghoul
+M  26742 spec_cast_undead           A wight
+M  26743 spec_cast_undead           A wraith
+M  26746 spec_cast_undead           A spectre
+M  26722 spec_vampire               vampire
+M  26744 spec_vampire               vampire
+M  26745 spec_vampire               vampire
 S
 
 

@@ -1,4 +1,4 @@
-#AREA	Strahd~  Crystalmir Lake~
+#AREA   Strahd~  Crystalmir Lake~
 5 15 0 100
 
 
@@ -2206,7 +2206,7 @@ S
 #10073
 Underwater Cave~
 This is an underwater cave that seems to have trapped some air in it.
-It seems as if the cave continued deeper, but it is blocked by a rock
+It seems as if the cave continues deeper, but it is blocked by a rock
 slide.
 ~
 100 7  8
@@ -2223,7 +2223,7 @@ S
 #10074
 Underwater Passageway~
 This passageway is almost completely filled with water. It seems to have
-trapped some air. Some thing doesn't feel right. Maybe you should leave.
+trapped some air. Something doesn't feel right. Maybe you should leave.
 ~
 100 7  8
 D1
@@ -2240,7 +2240,7 @@ S
 #10075
 Underwater Passageway~
 This passageway is almost completely filled with air. This is REALLY strange.
-You wonder how this can be. Something is definetly wrong.
+You wonder how this can be. Something is definitely wrong.
 The air here is very humid and it seem to be getting warmer to the south.
 ~
 100 7  8
@@ -2405,12 +2405,12 @@ M 0 10007 16 10066       Barracuda
 M 0 10007 16 10079       Barracuda
 M 0 10007 16 10005       Barracuda
 *
-M 0 10008 1 10076       Turtle Dragon
-E 1 10001 20 12            Equipt with Turtle Dragon Shell
-G 0 10010 0	              Give Pile of ancient coins.
+M 0 10008 1 10076        Turtle Dragon
+E 1 10001 20 12          Equipped with Turtle Dragon Shell
+G 0 10010 0              Give Pile of ancient coins.
 *
-M 0 10009 2 10039       Farmer's Dog
-G 0 10006 0                  Give house key
+M 0 10009 2 10039        Farmer's Dog
+G 0 10006 0              Give house key
 *
 M 0 10010 40 10053       Strange Fish
 M 0 10010 40 10067       Strange Fish
@@ -2506,10 +2506,10 @@ M  10013 spec_thief                Pooh bear
 *
 *************************DATE 1/12/94**************************
 * UPDATED 1/14/94
-* BUG FIX 1/21/94 8:00PST  Fix fire pit so you can't pick it up.
-* ADD 1/30/94 2:00pm PST    Addition of conect point for Descent.are
-* BUG FIX 1/30/94 2:00pm PST  Fix for the mob trap in farmers house/yard
-* ADD 2/17/94 2:00pm PST 	Addition of connect point for Yggdrasil
+* BUG FIX 1/21/94 8:00PST       Fix fire pit so you can't pick it up.
+* ADD 1/30/94 2:00pm PST        Addition of conect point for Descent.are
+* BUG FIX 1/30/94 2:00pm PST    Fix for the mob trap in farmers house/yard
+* ADD 2/17/94 2:00pm PST        Addition of connect point for Yggdrasil
 *
 S
 

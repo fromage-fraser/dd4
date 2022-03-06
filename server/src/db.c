@@ -558,6 +558,8 @@ int     gsn_resist_cold;
 int     gsn_resist_lightning;
 int     gsn_resist_acid;
 int     gsn_hells_fire;
+int     gsn_chaos_blast;
+int     gsn_detect_curse;
 
 /*
  *  Spell groups
@@ -3107,6 +3109,7 @@ void clear_char( CHAR_DATA *ch )
         ch->colors[COLOR_IMMTALK]       = 9;
         ch->colors[COLOR_ARENA]         = 13;
         ch->colors[COLOR_SERVER]        = 3;
+        ch->colors[COLOR_NEWBIE]        = 11; /* --Owl 2/3/22, didn't want it same colour as 'say' */
 }
 
 

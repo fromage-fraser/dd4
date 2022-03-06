@@ -1,4 +1,4 @@
-#AREA	Owl~   The White Void~
+#AREA   Owl~   The White Void~
 -2 -2 70 100
 
 
@@ -167,11 +167,11 @@ S
 
 #RESETS
 
-R 1 25900 5			Randomize all exits in void
-R 1 25901 5			Randomize all exits in void
-R 1 25902 5			Randomize all exits in void
-R 1 25903 5			Randomize all exits in void
-R 1 25904 5			Randomize all exits in void
+R 1 25900 5         Randomize all exits in void
+R 1 25901 5         Randomize all exits in void
+R 1 25902 5         Randomize all exits in void
+R 1 25903 5         Randomize all exits in void
+R 1 25904 5         Randomize all exits in void
 S
 
 #$

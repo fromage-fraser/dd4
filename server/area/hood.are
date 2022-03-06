@@ -1,4 +1,4 @@
-#AREA	Raff~    Dangerous Neighborhood~
+#AREA   Raff~    Dangerous Neighborhood~
 5 15 0 100
 
 
@@ -174,7 +174,7 @@ A small mirror has been left here.~
 20~ 10~ 10~ blindness~
 1 1000 1
 #2109
-gloves~
+comfortable leather gloves~
 comfortable leather gloves~
 A pair of soft lined leather gloves lie here.~
 ~
@@ -1578,7 +1578,7 @@ D 0 2148 1 1        /* closes the door out of the chapel */
 D 0 2149 3 1        /* closes the door into the chapel */
 M 0 2103 2 2124          /* loads a gang leader in the warehouse */
 E 1 2111 5 1        /* equips Ogre gang leader with signet(finger) */
-E 1 2112 6 17		/* Geshp and Sacrifis were here in 96 */
+E 1 2112 6 17       /* Geshp and Sacrifis were here in 96 */
 M 0 2103 2 2148          /* loads a gang leader in chapel */
 E 1 2106 5 16       /* equips Troll leader with stiletto (wield) */
 M 0 2108 12 2124    /* loads a pit bull in the warehouse */
@@ -1592,21 +1592,21 @@ M 0 2108 12 2148    /* loads a pit bull in the chapel */
 M 0 2104 10 2116    /* loads a bruiser */
 E 1 2104 10 11      /* equips bruiser with a cover (shield) */
 E 1 2103 10 16      /* equips bruiser with a chain (wield) */
-G 1 2113 100	    /* gives bruiser some money (inventory) */
+G 1 2113 100        /* gives bruiser some money (inventory) */
 M 0 2104 10 2155    /* loads a bruiser */
 E 1 2104 10 11      /* equips bruiser with a cover (shield) */
 E 1 2109 2 9        /* equips bruiser with gloves (hands) */
-G 1 2113 100	    /* gives bruiser some money (inventory) */
+G 1 2113 100        /* gives bruiser some money (inventory) */
 M 0 2104 10 2114    /* loads a bruiser */
 E 1 2103 10 16      /* equips bruiser with a chain (wield) */
-G 1 2113 100	    /* gives bruiser some money (inventory) */
+G 1 2113 100        /* gives bruiser some money (inventory) */
 M 0 2104 10 2108    /* loads a bruiser */
 E 1 2109 2 9        /* equips bruiser with gloves (hands) */
-G 1 2113 100	    /* gives bruiser some money (inventory) */
+G 1 2113 100        /* gives bruiser some money (inventory) */
 M 0 2104 10 2170    /* loads a bruiser */
 E 1 2111 5 1        /* equips bruiser with signet (finger) */
 E 1 2104 10 11      /* equips bruiser with cover (shield) */
-G 1 2113 100	    /* gives bruiser some money (inventory) */
+G 1 2113 100        /* gives bruiser some money (inventory) */
 M 0 2105 10 2125    /* loads doll */
 E 1 2108 20 17      /* equips doll with mirror (held) */
 E 1 2107 10 8       /* equips doll with boots (feet) */

@@ -1,4 +1,4 @@
-#AREA	Yaegar~  Ghost Town~
+#AREA   Yaegar~  Ghost Town~
 55 80 0 100
 
 #HELPS
@@ -2671,7 +2671,7 @@ D 1 8867 0 1
 D 1 8867 1 1
 D 1 8867 2 1
 D 1 8868 2 1
-D 1 8869 0 1			; A Room In the Crypt Close North
+D 1 8869 0 1            ; A Room In the Crypt Close North
 D 1 8870 3 1
 *
 O 1 8809 0 8803   LOADS BONES
@@ -2750,7 +2750,7 @@ M 1 8819 1 8852   LOADS MASTER
 E 1 8807 0 12     LOADS ROBES
 E 1 8808 0 16     WIELDS BONE
 E 1 8810 0 17     HOLDS GEM
-G 1 8820 0			0          GIVES KEY
+G 1 8820 0 0          GIVES KEY
 *
 M 1 8816 1 8853   LOADS SUCCUBUS
 O 1 8815 0 8853   LOADS JAR
@@ -2770,16 +2770,16 @@ M 1 8833 2 8866   LOADS SPIDERS
 M 1 8823 2 8867   LOADS SLIME
 M 1 8804 2 8868   LOADS VAMPIRE
 E 1 8811 0 12     WEARS CLOAK
-G 1 8821 0			0          GIVES BLOOD
+G 1 8821 0 0          GIVES BLOOD
 M 1 8804 2 8868   LOADS VAMPIRE
 E 1 8811 0 12     WEARS CLOAK
-G 1 8821 0			0          GIVES BLOOD
+G 1 8821 0 0          GIVES BLOOD
 M 1 8834 1 8870   LOADS BARON
 E 1 8811 0 12     WEARS CLOAK
-G 1 8821 0			0          GIVES BLOOD
+G 1 8821 0 0          GIVES BLOOD
 *
 M 1 8817 1 8874   LOADS XANTHARUS
-G 1 8818 0			0          GIVES HOLY SYMBOL
+G 1 8818 0 0          GIVES HOLY SYMBOL
 *
 M 1 8820 4 8875   LOADS MOUNDS
 M 1 8821 4 8878   LOADS KAMPFLUTS
@@ -2812,16 +2812,17 @@ R 1 8891 4
 S
 
 #SPECIALS
-M  8804 spec_mast_vampire             	Baron Vampire dude
-M  8805 spec_cast_archmage		The Lich
-M  8810 spec_breath_gas 		Greater Demon
-M  8811 spec_breath_gas			The dragon
-M  8819 spec_cast_mage 			The Master
-M  8826 spec_cast_adept			The Tree Spirit
-M  8831 spec_cast_psionicist		Orcus
-M  8834 spec_vampire			Other Baron Vampire dude
-M  8814 spec_poison			spider
-M  8812 spec_cast_undead		undead monster
+M  8804 spec_mast_vampire       Baron Vampire dude
+M  8805 spec_cast_archmage      The Lich
+M  8806 spec_demon              Lesser Demon
+M  8810 spec_demon              Greater Demon
+M  8811 spec_breath_gas         The dragon
+M  8819 spec_cast_mage          The Master
+M  8826 spec_cast_adept         The Tree Spirit
+M  8831 spec_cast_psionicist    Orcus
+M  8834 spec_vampire            Other Baron Vampire dude
+M  8814 spec_poison             spider
+M  8812 spec_cast_undead        undead monster
 S
 
 #$

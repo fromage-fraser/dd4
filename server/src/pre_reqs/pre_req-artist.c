@@ -5,15 +5,15 @@
 /* Total Pre_Reqs == 38  */
 
 /* Starting Skills - have decided what worldly is going to be yet?*/
-{&gsn_group_arts,       &gsn_martist_base,      31,    PRE_ARTIST},
+{&gsn_group_arts,               &gsn_martist_base,      31,     PRE_ARTIST},
 
-{&gsn_group_combos,      &gsn_group_arts,       60,     PRE_ARTIST},
+{&gsn_group_combos,             &gsn_group_arts,        60,     PRE_ARTIST},
 
-{&gsn_group_stealth,     &gsn_group_arts,       85,     PRE_ARTIST},
-{&gsn_group_knowledge,   &gsn_group_arts,       90,     PRE_ARTIST},
+{&gsn_group_stealth,            &gsn_group_arts,        85,     PRE_ARTIST},
+{&gsn_group_knowledge,          &gsn_group_arts,        90,     PRE_ARTIST},
 
 /* Level dependent skills */
-{&gsn_fast_healing,             &gsn_martist_base,      49,     PRE_ARTIST},/**/
+{&gsn_fast_healing,             &gsn_martist_base,      49,     PRE_ARTIST},
 
 /* DEFENSE */
 {&gsn_acrobatics,               &gsn_group_defense,     90,     PRE_ARTIST},

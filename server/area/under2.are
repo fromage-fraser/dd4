@@ -1,4 +1,4 @@
-#AREA	Silence~  Underdark~
+#AREA   Silence~  Underdark~
 20 60 0 100
 
 
@@ -14899,721 +14899,721 @@ S
 
 
 #RESETS
-M 1 16001 35 16001			; enforcer eyes, the guards of the city
-E 1 16001 0 5			; wears eye plate
-M 1 16001 35 16008			; these ones walk the streets
-E 1 16001 0 5			;
-M 1 16001 35 16010			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16018			; ditto
-M 1 16001 35 16032			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16035			; ditto
-M 1 16001 35 16037			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16048			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16063			; ditto
-M 1 16001 35 16069			; ditto
-M 1 16001 35 16080			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16087			; ditto
-M 1 16001 35 16092			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16100			; ditto
-M 1 16001 35 16105			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16109			; ditto
-M 1 16001 35 16120			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16129			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16136			; ditto
-M 1 16001 35 16142			; ditto
-M 1 16001 35 16148			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16155			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16162			; ditto
-M 1 16001 35 16172			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16181			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16186			; ditto
-M 1 16001 35 16193			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16201			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16212			; ditto
-M 1 16001 35 16217			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16337			; loads eye into headquarters
-E 1 16001 0 5			;
-M 1 16001 35 16336			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16338			; ditto
-E 1 16001 0 5			;
-M 1 16001 35 16346			; ditto
-E 1 16001 0 5			;
-M 1 16002 24 16003			; loads floating eye onto street
-G 1 16002 0			; gives it it's eye
-M 1 16002 24 16052			; loads floating eye
-M 1 16002 24 16087			; loads floating eye
-M 1 16002 24 16088			; ditto
-M 1 16002 24 16075			; ditto
-M 1 16002 24 16108			; ditto
-M 1 16002 24 16113			; ditto
-M 1 16002 24 16120			; ditto
-M 1 16002 24 16139			; loads floating eye onto street
-G 1 16002 0			; gives it it's eye
-M 1 16002 24 16071			; loads floating eye
-M 1 16002 24 16020			; loads floating eye
-M 1 16002 24 16040			; ditto
-M 1 16002 24 16095			; ditto
-M 1 16002 24 16096			; ditto
-M 1 16002 24 16177			; ditto
-M 1 16002 24 16152			; ditto
-M 1 16002 24 16047			; loads floating eye onto street
-G 1 16002 0			; gives it it's eye
-M 1 16002 24 16047			; loads floating eye
-M 1 16002 24 16073			; loads floating eye
-M 1 16002 24 16073			; ditto
-M 1 16002 24 16083			; ditto
-M 1 16002 24 16083			; ditto
-M 1 16002 24 16198			; ditto
-M 1 16002 24 16198			; ditto
-G 1 16002 0			; give it it's eye
-M 1 16003 3 16331			; loads prisoner into cell
-M 1 16003 3 16334			; ditto
-M 1 16003 3 16343			; ditto
-M 1 16004 2 16345			; loads great enforcer eye
-G 1 16003 0			; give him slime
-M 1 16004 2 16347			; loads great enforcer eye
-G 1 16003 0			; give him slime
-M 1 16005 1 16339			; loads enforcer beholder
-G 1 16004 0			; give him his eye
-M 1 16006 1 16239			; loads beholder in beholder's house
-G 1 16005 0			; give him his eyestalk
-M 1 16007 16 16089			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16101			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16144			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16056			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16046			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16065			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16063			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16147			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16036			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16034			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16086			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16201			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16209			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16128			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16133			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16007 16 16110			; loads gnome on street
-E 1 16006 0 16			; wields mace
-M 1 16008 12 16197			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16177			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16142			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16115			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16112			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16119			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16041			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16133			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16208			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16175			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16080			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16008 12 16100			; loads drow trader to street
-E 1 16007 0 16			; wields blade of darkness
-M 1 16009 18 16018			; loads duergar on street
-M 1 16009 18 16030			; loads duergar on street
-M 1 16009 18 16022			; loads duergar on street
-M 1 16009 18 16157			; loads duergar on street
-E 1 16008 0 6			; wears helm
-M 1 16009 18 16140			; loads duergar on street
-M 1 16009 18 16132			; loads duergar on street
-E 1 16008 0 6			; wears helm
-M 1 16009 18 16210			; loads duergar on street
-M 1 16009 18 16218			; loads duergar on street
-M 1 16009 18 16167			; loads duergar on street
-E 1 16008 0 6			; wears helm
-M 1 16009 18 16134			; loads duergar on street
-M 1 16009 18 16134			; loads duergar on street
-M 1 16009 18 16115			; loads duergar on street
-M 1 16009 18 16111			; loads duergar on street
-E 1 16008 0 6			; wears helm
-M 1 16009 18 16113			; loads duergar on street
-M 1 16009 18 16097			; loads duergar on street
-M 1 16009 18 16097			; loads duergar on street
-M 1 16009 18 16109			; loads duergar on street
-M 1 16009 18 16103			; loads duergar on street
-E 1 16008 0 6			; wears helm
-M 1 16010 1 16135			; load necromancer on street
-E 1 16009 0 10			; wears sleeves
-M 1 16011 1 16135			; load behir with necro and party
-G 1 16010 0			; give it blood stone
-M 1 16012 1 16135			; load fighter with party
-E 1 16011 0 5			; wears breast plate
-M 1 16013 1 16135			; load xevior's priest
-E 1 16012 0 17			; wears holy symbol
-M 1 16014 10 16211			; loads lizard man
-E 1 16013 0 7			; wears leather pants
-M 1 16014 10 16148			; loads lizard man
-E 1 16013 0 7			; wears leather pants
-M 1 16014 10 16153			; loads lizard man
-M 1 16014 10 16034			; loads lizard man
-M 1 16014 10 16091			; loads lizard man
-M 1 16014 10 16084			; loads lizard man
-M 1 16014 10 16067			; loads lizard man
-M 1 16014 10 16117			; loads lizard man
-M 1 16014 10 16121			; loads lizard man
-M 1 16014 10 16131			; loads lizard man
+M 1 16001 35 16001          ; enforcer eyes, the guards of the city
+E 1 16001 0 5           ; wears eye plate
+M 1 16001 35 16008          ; these ones walk the streets
+E 1 16001 0 5           ;
+M 1 16001 35 16010          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16018          ; ditto
+M 1 16001 35 16032          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16035          ; ditto
+M 1 16001 35 16037          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16048          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16063          ; ditto
+M 1 16001 35 16069          ; ditto
+M 1 16001 35 16080          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16087          ; ditto
+M 1 16001 35 16092          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16100          ; ditto
+M 1 16001 35 16105          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16109          ; ditto
+M 1 16001 35 16120          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16129          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16136          ; ditto
+M 1 16001 35 16142          ; ditto
+M 1 16001 35 16148          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16155          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16162          ; ditto
+M 1 16001 35 16172          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16181          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16186          ; ditto
+M 1 16001 35 16193          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16201          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16212          ; ditto
+M 1 16001 35 16217          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16337          ; loads eye into headquarters
+E 1 16001 0 5           ;
+M 1 16001 35 16336          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16338          ; ditto
+E 1 16001 0 5           ;
+M 1 16001 35 16346          ; ditto
+E 1 16001 0 5           ;
+M 1 16002 24 16003          ; loads floating eye onto street
+G 1 16002 0         ; gives it it's eye
+M 1 16002 24 16052          ; loads floating eye
+M 1 16002 24 16087          ; loads floating eye
+M 1 16002 24 16088          ; ditto
+M 1 16002 24 16075          ; ditto
+M 1 16002 24 16108          ; ditto
+M 1 16002 24 16113          ; ditto
+M 1 16002 24 16120          ; ditto
+M 1 16002 24 16139          ; loads floating eye onto street
+G 1 16002 0         ; gives it it's eye
+M 1 16002 24 16071          ; loads floating eye
+M 1 16002 24 16020          ; loads floating eye
+M 1 16002 24 16040          ; ditto
+M 1 16002 24 16095          ; ditto
+M 1 16002 24 16096          ; ditto
+M 1 16002 24 16177          ; ditto
+M 1 16002 24 16152          ; ditto
+M 1 16002 24 16047          ; loads floating eye onto street
+G 1 16002 0         ; gives it it's eye
+M 1 16002 24 16047          ; loads floating eye
+M 1 16002 24 16073          ; loads floating eye
+M 1 16002 24 16073          ; ditto
+M 1 16002 24 16083          ; ditto
+M 1 16002 24 16083          ; ditto
+M 1 16002 24 16198          ; ditto
+M 1 16002 24 16198          ; ditto
+G 1 16002 0         ; give it it's eye
+M 1 16003 3 16331           ; loads prisoner into cell
+M 1 16003 3 16334           ; ditto
+M 1 16003 3 16343           ; ditto
+M 1 16004 2 16345           ; loads great enforcer eye
+G 1 16003 0         ; give him slime
+M 1 16004 2 16347           ; loads great enforcer eye
+G 1 16003 0         ; give him slime
+M 1 16005 1 16339           ; loads enforcer beholder
+G 1 16004 0         ; give him his eye
+M 1 16006 1 16239           ; loads beholder in beholder's house
+G 1 16005 0         ; give him his eyestalk
+M 1 16007 16 16089          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16101          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16144          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16056          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16046          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16065          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16063          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16147          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16036          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16034          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16086          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16201          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16209          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16128          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16133          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16007 16 16110          ; loads gnome on street
+E 1 16006 0 16          ; wields mace
+M 1 16008 12 16197          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16177          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16142          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16115          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16112          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16119          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16041          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16133          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16208          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16175          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16080          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16008 12 16100          ; loads drow trader to street
+E 1 16007 0 16          ; wields blade of darkness
+M 1 16009 18 16018          ; loads duergar on street
+M 1 16009 18 16030          ; loads duergar on street
+M 1 16009 18 16022          ; loads duergar on street
+M 1 16009 18 16157          ; loads duergar on street
+E 1 16008 0 6           ; wears helm
+M 1 16009 18 16140          ; loads duergar on street
+M 1 16009 18 16132          ; loads duergar on street
+E 1 16008 0 6           ; wears helm
+M 1 16009 18 16210          ; loads duergar on street
+M 1 16009 18 16218          ; loads duergar on street
+M 1 16009 18 16167          ; loads duergar on street
+E 1 16008 0 6           ; wears helm
+M 1 16009 18 16134          ; loads duergar on street
+M 1 16009 18 16134          ; loads duergar on street
+M 1 16009 18 16115          ; loads duergar on street
+M 1 16009 18 16111          ; loads duergar on street
+E 1 16008 0 6           ; wears helm
+M 1 16009 18 16113          ; loads duergar on street
+M 1 16009 18 16097          ; loads duergar on street
+M 1 16009 18 16097          ; loads duergar on street
+M 1 16009 18 16109          ; loads duergar on street
+M 1 16009 18 16103          ; loads duergar on street
+E 1 16008 0 6           ; wears helm
+M 1 16010 1 16135           ; load necromancer on street
+E 1 16009 0 10          ; wears sleeves
+M 1 16011 1 16135           ; load behir with necro and party
+G 1 16010 0         ; give it blood stone
+M 1 16012 1 16135           ; load fighter with party
+E 1 16011 0 5           ; wears breast plate
+M 1 16013 1 16135           ; load xevior's priest
+E 1 16012 0 17          ; wears holy symbol
+M 1 16014 10 16211          ; loads lizard man
+E 1 16013 0 7           ; wears leather pants
+M 1 16014 10 16148          ; loads lizard man
+E 1 16013 0 7           ; wears leather pants
+M 1 16014 10 16153          ; loads lizard man
+M 1 16014 10 16034          ; loads lizard man
+M 1 16014 10 16091          ; loads lizard man
+M 1 16014 10 16084          ; loads lizard man
+M 1 16014 10 16067          ; loads lizard man
+M 1 16014 10 16117          ; loads lizard man
+M 1 16014 10 16121          ; loads lizard man
+M 1 16014 10 16131          ; loads lizard man
 *
-M 1 16015 1 16221			; loads purple worm
-G 1 16014 0			; gives scale to worm
-M 1 16016 1 16220			; loads HUGE purple worm
-G 1 16015 0			; give it scale shield
+M 1 16015 1 16221           ; loads purple worm
+G 1 16014 0         ; gives scale to worm
+M 1 16016 1 16220           ; loads HUGE purple worm
+G 1 16015 0         ; give it scale shield
 *
-M 1 16017 3 16228			; loads beholder attendant
-E 1 16016 0 9			; wears gauntlets
-M 1 16017 3 16229			; loads attendant
-E 1 16016 0 9			; wears gauntlets
-M 1 16017 3 16242			; loads attendant
-M 1 16018 3 16237			; loads legionnaire
-E 1 16017 0 6			; wears helm
-M 1 16018 3 16237			; loads legionnaire
-E 1 16017 0 6			; wears helm
-M 1 16018 3 16237			; loads legionnaire
-E 1 16017 0 6			; wears helm
-M 1 16019 1 16243			; loads supreme attendant
-E 1 16016 0 9			; wears gauntlets
-E 1 16017 0 6			; wears helm
-M 1 16020 1 16238			; loads grell
+M 1 16017 3 16228           ; loads beholder attendant
+E 1 16016 0 9           ; wears gauntlets
+M 1 16017 3 16229           ; loads attendant
+E 1 16016 0 9           ; wears gauntlets
+M 1 16017 3 16242           ; loads attendant
+M 1 16018 3 16237           ; loads legionnaire
+E 1 16017 0 6           ; wears helm
+M 1 16018 3 16237           ; loads legionnaire
+E 1 16017 0 6           ; wears helm
+M 1 16018 3 16237           ; loads legionnaire
+E 1 16017 0 6           ; wears helm
+M 1 16019 1 16243           ; loads supreme attendant
+E 1 16016 0 9           ; wears gauntlets
+E 1 16017 0 6           ; wears helm
+M 1 16020 1 16238           ; loads grell
 *
-M 1 16021 1 16247			; loads barkeep
+M 1 16021 1 16247           ; loads barkeep
 G 1 3002 0
-M 1 16022 4 16247			; loads duergar patron
-M 1 16022 4 16244			; loads duergar patron
-M 1 16022 4 16245			; loads duergar patron
-M 1 16023 3 16246			; loads drow patron
-M 1 16023 3 16247			; loads drow patron
-M 1 16024 2 16244			; loads human patron
-M 1 16024 2 16246			; loads human patron
-M 1 16025 1 16245			; loads Caris
-E 1 3072 0 5			; wears scale mail
-E 1 3073 0 6			; scale coif
-E 1 3074 0 7			; leggings
-E 1 3077 0 10			; sleeves
-E 1 9212 0 14			; wears elemental bracelet
-E 1 2313 0 11			; holds tower shield
-E 1 2365 0 16			; wields battle axe
-M 1 16026 1 16245			; loads Antryg
-E 1 10293 0 5			; wears robe
-E 1 1615 0 14			; wears mithril bracelet
-E 1 633 0 7			; wears leggings
+M 1 16022 4 16247           ; loads duergar patron
+M 1 16022 4 16244           ; loads duergar patron
+M 1 16022 4 16245           ; loads duergar patron
+M 1 16023 3 16246           ; loads drow patron
+M 1 16023 3 16247           ; loads drow patron
+M 1 16024 2 16244           ; loads human patron
+M 1 16024 2 16246           ; loads human patron
+M 1 16025 1 16245           ; loads Caris
+E 1 3072 0 5            ; wears scale mail
+E 1 3073 0 6            ; scale coif
+E 1 3074 0 7            ; leggings
+E 1 3077 0 10           ; sleeves
+E 1 9212 0 14           ; wears elemental bracelet
+E 1 2313 0 11           ; holds tower shield
+E 1 2365 0 16           ; wields battle axe
+M 1 16026 1 16245           ; loads Antryg
+E 1 10293 0 5           ; wears robe
+E 1 1615 0 14           ; wears mithril bracelet
+E 1 633 0 7         ; wears leggings
 *
-M 1 16027 7 16251			; loads gremlin
-M 1 16027 7 16253			; same
-M 1 16027 7 16254			; same
-M 1 16027 7 16257			; same
-M 1 16027 7 16260			; same
-M 1 16027 7 16263			; same
-M 1 16027 7 16273			; same
-M 1 16028 3 16258			; loads slime creature
-E 1 16019 0 16			; wields muck branch
-M 1 16028 3 16258			; same thing
-E 1 16019 0 16			; wields the branch
-M 1 16028 3 16273			; loads slime creature
-E 1 16019 0 16			; wields the branch
-M 1 16029 5 16248			; loads rat
-M 1 16029 5 16257			; same
-M 1 16029 5 16264			; same
-M 1 16029 5 16268			; same
-M 1 16029 5 16271			; same
-M 1 16030 5 16250			; loads jinxkin
-E 1 16018 0 16			; wields pin
-M 1 16030 5 16252			; same
-E 1 16018 0 16			; same
-M 1 16030 5 16253			; loads jinxkin
-E 1 16018 0 16			; wields pin
-M 1 16030 5 16255			; same
-E 1 16018 0 16			; same
-M 1 16030 5 16269			; loads jinxkin
-E 1 16018 0 16			; wields the pin
-M 1 16031 7 16252			; loads jermlaine
-E 1 16019 0 16			; wields dart
-M 1 16031 7 16263			; loads jermlaine
-E 1 16019 0 16			; wields dart
-M 1 16031 7 16264			; loads jermlaine
-E 1 16019 0 16			; wields dart
-M 1 16031 7 16267			; loads jermlaine
-E 1 16019 0 16			; wields dart
-M 1 16031 7 16267			; loads jermlaine
-E 1 16019 0 16			; wields dart
-M 1 16031 7 16269			; loads jermlaine
-E 1 16019 0 16			; wields dart
-M 1 16031 7 16269			; loads jermlaine
-E 1 16019 0 16			; wields dart
+M 1 16027 7 16251           ; loads gremlin
+M 1 16027 7 16253           ; same
+M 1 16027 7 16254           ; same
+M 1 16027 7 16257           ; same
+M 1 16027 7 16260           ; same
+M 1 16027 7 16263           ; same
+M 1 16027 7 16273           ; same
+M 1 16028 3 16258           ; loads slime creature
+E 1 16019 0 16          ; wields muck branch
+M 1 16028 3 16258           ; same thing
+E 1 16019 0 16          ; wields the branch
+M 1 16028 3 16273           ; loads slime creature
+E 1 16019 0 16          ; wields the branch
+M 1 16029 5 16248           ; loads rat
+M 1 16029 5 16257           ; same
+M 1 16029 5 16264           ; same
+M 1 16029 5 16268           ; same
+M 1 16029 5 16271           ; same
+M 1 16030 5 16250           ; loads jinxkin
+E 1 16018 0 16          ; wields pin
+M 1 16030 5 16252           ; same
+E 1 16018 0 16          ; same
+M 1 16030 5 16253           ; loads jinxkin
+E 1 16018 0 16          ; wields pin
+M 1 16030 5 16255           ; same
+E 1 16018 0 16          ; same
+M 1 16030 5 16269           ; loads jinxkin
+E 1 16018 0 16          ; wields the pin
+M 1 16031 7 16252           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
+M 1 16031 7 16263           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
+M 1 16031 7 16264           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
+M 1 16031 7 16267           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
+M 1 16031 7 16267           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
+M 1 16031 7 16269           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
+M 1 16031 7 16269           ; loads jermlaine
+E 1 16019 0 16          ; wields dart
 *
-M 1 16032 1 16298			; loads the bodak
-E 1 16008 0 16			; wields silver sword
-E 1 16021 0 17			; holds wand
-E 1 16022 0 13			; wears girth
-M 1 16033 1 16285			; loads drained mage
-G 1 16023 0			; give him his eyes
-M 1 16034 3 16290			; loads iron golem
-E 1 16024 0 16			; wields sword
-M 1 16034 3 16294			; loads iron golem
-E 1 16024 0 16			; wields sword
-M 1 16034 3 16296			; loads iron golem
-E 1 16024 0 16			; wields sword
-M 1 16035 4 16283			; loads stone golem
-E 1 16025 0 16			; wields mace
-M 1 16035 4 16286			; loads stone golem
-E 1 16025 0 16			; wields mace
-M 1 16035 4 16293			; loads stone golem
-E 1 16025 0 16			; wields mace
-M 1 16035 4 16297			; loads stone golem
-E 1 16025 0 16			; wields mace
-M 1 16036 1 16282			; loads Itreres in guest room
-E 1 1704 0 16			; wields ancient sword
-E 1 2009 0 5			; wears chainmail
-E 1 16026 0 11			; uses his shield
-M 1 16037 1 16294			; loads imp
-E 1 16027 0 17			; holds stone
-M 1 16038 2 16289			; loads minor demon
-G 1 16028 0			; give horn
-M 1 16038 2 16295			; loads minor demon
-G 1 16028 0			; give horn
-M 1 16039 2 16280			; loads servant
-M 1 16039 2 16287			; loads servant
-M 1 16040 1 16288			; loads gibbering mouther
+M 1 16032 1 16298           ; loads the bodak
+E 1 16008 0 16          ; wields silver sword
+E 1 16021 0 17          ; holds wand
+E 1 16022 0 13          ; wears girth
+M 1 16033 1 16285           ; loads drained mage
+G 1 16023 0         ; give him his eyes
+M 1 16034 3 16290           ; loads iron golem
+E 1 16024 0 16          ; wields sword
+M 1 16034 3 16294           ; loads iron golem
+E 1 16024 0 16          ; wields sword
+M 1 16034 3 16296           ; loads iron golem
+E 1 16024 0 16          ; wields sword
+M 1 16035 4 16283           ; loads stone golem
+E 1 16025 0 16          ; wields mace
+M 1 16035 4 16286           ; loads stone golem
+E 1 16025 0 16          ; wields mace
+M 1 16035 4 16293           ; loads stone golem
+E 1 16025 0 16          ; wields mace
+M 1 16035 4 16297           ; loads stone golem
+E 1 16025 0 16          ; wields mace
+M 1 16036 1 16282           ; loads Itreres in guest room
+E 1 1704 0 16           ; wields ancient sword
+E 1 2009 0 5            ; wears chainmail
+E 1 16026 0 11          ; uses his shield
+M 1 16037 1 16294           ; loads imp
+E 1 16027 0 17          ; holds stone
+M 1 16038 2 16289           ; loads minor demon
+G 1 16028 0         ; give horn
+M 1 16038 2 16295           ; loads minor demon
+G 1 16028 0         ; give horn
+M 1 16039 2 16280           ; loads servant
+M 1 16039 2 16287           ; loads servant
+M 1 16040 1 16288           ; loads gibbering mouther
 *
-M 1 16041 3 16085			; loads worker of the night
-M 1 16041 3 16301			; loads worker of the night
-M 1 16041 3 16303			; loads worker of the night
-M 1 16042 2 16302			; loads maid of passion
-E 1 16029 0 12			; wear robe
-M 1 16042 2 16303			; loads maid of passion
-E 1 16029 0 12			; wear robe
-M 1 16043 1 16304			; loads granter of pleasure
-E 1 16030 0 13			; wears belt
-M 1 16044 2 16301			; loads customer
-E 1 16031 0 1			; wears ring
-M 1 16044 2 16302			; loads customer
-E 1 16031 0 1			; wears ring
-M 1 16045 1 16300			; loads pimp
-G 1 16032 0			; give teeth
+M 1 16041 3 16085           ; loads worker of the night
+M 1 16041 3 16301           ; loads worker of the night
+M 1 16041 3 16303           ; loads worker of the night
+M 1 16042 2 16302           ; loads maid of passion
+E 1 16029 0 12          ; wear robe
+M 1 16042 2 16303           ; loads maid of passion
+E 1 16029 0 12          ; wear robe
+M 1 16043 1 16304           ; loads granter of pleasure
+E 1 16030 0 13          ; wears belt
+M 1 16044 2 16301           ; loads customer
+E 1 16031 0 1           ; wears ring
+M 1 16044 2 16302           ; loads customer
+E 1 16031 0 1           ; wears ring
+M 1 16045 1 16300           ; loads pimp
+G 1 16032 0         ; give teeth
 *
-M 1 16046 3 16310			; loads halfling
-M 1 16046 3 16314			; loads halfling
-M 1 16047 3 16310			; loads half-orc
-E 1 16033 0 16			; wields broken bottle
-M 1 16047 3 16311			; loads half-orc
-E 1 16033 0 16			; wields broken bottle
-M 1 16048 3 16308			; loads deep gnome
-M 1 16049 1 16314			; loads inn keeper
+M 1 16046 3 16310           ; loads halfling
+M 1 16046 3 16314           ; loads halfling
+M 1 16047 3 16310           ; loads half-orc
+E 1 16033 0 16          ; wields broken bottle
+M 1 16047 3 16311           ; loads half-orc
+E 1 16033 0 16          ; wields broken bottle
+M 1 16048 3 16308           ; loads deep gnome
+M 1 16049 1 16314           ; loads inn keeper
 G 1 3002 0
-M 1 16050 1 16310			; loads Limbeck
-E 1 16034 0 8			; wears boots
-M 1 16051 1 16318			; loads Geg
-E 1 16035 0 6			; wears hat
+M 1 16050 1 16310           ; loads Limbeck
+E 1 16034 0 8           ; wears boots
+M 1 16051 1 16318           ; loads Geg
+E 1 16035 0 6           ; wears hat
 M 1 16052 1 16312           ; loads Srevlin
-E 1 16036 0 8			; wears boots of flying
-M 1 16053 1 16308			; loads Jarre
-E 1 16037 0 14			; wears bracer of str
-M 1 16054 3 16308			; loads serving wench
-M 1 16054 3 16314			; loads serving wench
+E 1 16036 0 8           ; wears boots of flying
+M 1 16053 1 16308           ; loads Jarre
+E 1 16037 0 14          ; wears bracer of str
+M 1 16054 3 16308           ; loads serving wench
+M 1 16054 3 16314           ; loads serving wench
 *
-M 1 16055 1 16319			; loads the slave dealer
+M 1 16055 1 16319           ; loads the slave dealer
 G 1 16094 0
-M 1 16056 15 16088			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16089			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16092			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16077			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16101			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16068			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16140			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16123			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16198			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16080			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16084			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16089			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16092			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16099			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16056 15 16325			; loads slave trader
-E 1 16038 0 16			; wields whip
-M 1 16057 12 16100			; loads slave buyer
+M 1 16056 15 16088          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16089          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16092          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16077          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16101          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16068          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16140          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16123          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16198          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16080          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16084          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16089          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16092          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16099          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16056 15 16325          ; loads slave trader
+E 1 16038 0 16          ; wields whip
+M 1 16057 12 16100          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16321			; loads slave buyer
+M 1 16057 12 16321          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16323			; loads slave buyer
+M 1 16057 12 16323          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16090			; loads slave buyer
+M 1 16057 12 16090          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16098			; loads slave buyer
+M 1 16057 12 16098          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16101			; loads slave buyer
+M 1 16057 12 16101          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16045			; loads slave buyer
+M 1 16057 12 16045          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16094			; loads slave buyer
+M 1 16057 12 16094          ; loads slave buyer
 G 1 16039 0
-M 1 16057 12 16090			; loads slave buyer
-M 1 16057 12 16093			; loads slave buyer
-M 1 16057 12 16202			; loads slave buyer
-M 1 16057 12 16137			; loads slave buyer
-M 1 16058 1 16320			; orc slave at slave dealer
-M 1 16059 1 16320			; goblin slave at slave dealer
-M 1 16060 1 16320			; male human slave at slave dealer
-M 1 16061 1 16320			; female human slave at slave dealer
-M 1 16062 1 16320			; kobold slave at slave dealer
-M 1 16063 1 16320			; elf slave at slave dealer
-M 1 16064 1 16320			; dwarf slave at slave dealer
+M 1 16057 12 16090          ; loads slave buyer
+M 1 16057 12 16093          ; loads slave buyer
+M 1 16057 12 16202          ; loads slave buyer
+M 1 16057 12 16137          ; loads slave buyer
+M 1 16058 1 16320           ; orc slave at slave dealer
+M 1 16059 1 16320           ; goblin slave at slave dealer
+M 1 16060 1 16320           ; male human slave at slave dealer
+M 1 16061 1 16320           ; female human slave at slave dealer
+M 1 16062 1 16320           ; kobold slave at slave dealer
+M 1 16063 1 16320           ; elf slave at slave dealer
+M 1 16064 1 16320           ; dwarf slave at slave dealer
 *
-M 1 16022 4 16352			; duergar patron
-M 1 16023 3 16354			; drow patron
-M 1 16046 3 16342			; halfling patron
-M 1 16048 3 16354			; deep gnome patron
-M 1 16065 1 16352			; loads bar tender
+M 1 16022 4 16352           ; duergar patron
+M 1 16023 3 16354           ; drow patron
+M 1 16046 3 16342           ; halfling patron
+M 1 16048 3 16354           ; deep gnome patron
+M 1 16065 1 16352           ; loads bar tender
 G 1 3002 0
 G 1 16094 0
-M 1 16066 1 16353			; loads Prax
-E 1 16040 0 3			; wears cloak
-M 1 16067 1 16353			; loads Thespan
-E 1 16041 0 16			; wields sword
-M 1 16068 1 16353			; loads Endolar
-E 1 16042 0 16			; wields dagger
-M 1 16069 1 16351			; loads Snaromba
-E 1 16043 0 0			; holds glowing sphere
-M 1 16070 1 16351			; loads Anmictes
-E 1 16044 0 14			; wears bracer
-M 1 16071 1 16351			; loads Emba
-E 1 16045 0 16			; wields morning star
-M 1 16072 1 16351			; loads Shillikif
-E 1 16046 0 5			; wears chainmail
+M 1 16066 1 16353           ; loads Prax
+E 1 16040 0 3           ; wears cloak
+M 1 16067 1 16353           ; loads Thespan
+E 1 16041 0 16          ; wields sword
+M 1 16068 1 16353           ; loads Endolar
+E 1 16042 0 16          ; wields dagger
+M 1 16069 1 16351           ; loads Snaromba
+E 1 16043 0 0           ; holds glowing sphere
+M 1 16070 1 16351           ; loads Anmictes
+E 1 16044 0 14          ; wears bracer
+M 1 16071 1 16351           ; loads Emba
+E 1 16045 0 16          ; wields morning star
+M 1 16072 1 16351           ; loads Shillikif
+E 1 16046 0 5           ; wears chainmail
 *
-M 1 16073 1 16356			; loads Yie'Stei, magic guy
-G 1 16059 0			; gives scroll of reveal
-G 1 16060 0			; give hand of shocking grasp
-G 1 16061 0			; give potion of detection
+M 1 16073 1 16356           ; loads Yie'Stei, magic guy
+G 1 16059 0         ; gives scroll of reveal
+G 1 16060 0         ; give hand of shocking grasp
+G 1 16061 0         ; give potion of detection
 *
-M 1 16074 1 16357			; loads Zae'tres, weaponsmith
-G 1 16047 0			; give sword
-G 1 16048 0			; give dagger
-G 1 16049 0			; give mace
+M 1 16074 1 16357           ; loads Zae'tres, weaponsmith
+G 1 16047 0         ; give sword
+G 1 16048 0         ; give dagger
+G 1 16049 0         ; give mace
 *
-M 1 16075 1 16358			; loads Raesarnt, armourer
-G 1 16050 0			; give plate
-G 1 16051 0			; give helm
-G 1 16052 0			; give shield
-G 1 16053 0			; give leggings
-G 1 16054 0			; give bracer
+M 1 16075 1 16358           ; loads Raesarnt, armourer
+G 1 16050 0         ; give plate
+G 1 16051 0         ; give helm
+G 1 16052 0         ; give shield
+G 1 16053 0         ; give leggings
+G 1 16054 0         ; give bracer
 *
-M 1 16076 1 16359			; loads Satori, jeweller
+M 1 16076 1 16359           ; loads Satori, jeweller
 *
-M 1 16077 1 16360			; loads Jiestis, food guy
-G 1 16055 0			; gives brown mushroom
-G 1 16056 0			; gives large mushroom
-G 1 16057 0			; gives red moss
-G 1 16058 0			; gives dirty root
+M 1 16077 1 16360           ; loads Jiestis, food guy
+G 1 16055 0         ; gives brown mushroom
+G 1 16056 0         ; gives large mushroom
+G 1 16057 0         ; gives red moss
+G 1 16058 0         ; gives dirty root
 *
-M 1 16078 2 16364			; loads deep gnome
-E 1 16062 0 7			; wears leggings
-M 1 16078 2 16365			; same
-E 1 16062 0 7			; wears leggings
-M 1 16079 1 16366			; loads gnome dignitary
-E 1 16063 0 3			; wears necklace
-M 1 16080 1 16368			; loads gnome caretaker
-E 1 16064 0 16			; wields vision
+M 1 16078 2 16364           ; loads deep gnome
+E 1 16062 0 7           ; wears leggings
+M 1 16078 2 16365           ; same
+E 1 16062 0 7           ; wears leggings
+M 1 16079 1 16366           ; loads gnome dignitary
+E 1 16063 0 3           ; wears necklace
+M 1 16080 1 16368           ; loads gnome caretaker
+E 1 16064 0 16          ; wields vision
 *
-M 1 16081 16 16015			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16001			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16021			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16039			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16048			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16035			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16024			; loads footpad
-M 1 16081 16 16011			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16061			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16071			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16088			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16099			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16130			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16140			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16179			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16081 16 16190			; loads footpad
-E 1 16065 0 15			; wears thieve's patch
-M 1 16082 5 16110			; loads cutpurse
-E 1 16065 0 15			; wears thieve's patch
-M 1 16082 5 16129			; loads cutpurse
-E 1 16065 0 15			; wears thieve's patch
-M 1 16082 5 16137			; loads cutpurse
-E 1 16065 0 15			; wears thieve's patch
-M 1 16082 5 16145			; loads cutpurse
-E 1 16065 0 15			; wears thieve's patch
-M 1 16082 5 16201			; loads cutpurse
-E 1 16065 0 15			; wears thieve's patch
-M 1 16083 5 16020			; loads filcher
-E 1 16066 0 9			; wears thieve's gloves
-M 1 16083 5 16063			; loads filcher
-E 1 16066 0 9			; wears thieve's gloves
-M 1 16083 5 16066			; loads filcher
-E 1 16066 0 9			; wears thieve's gloves
-M 1 16083 5 16131			; loads filcher
-E 1 16066 0 9			; wears thieve's gloves
-M 1 16083 5 16215			; loads filcher
-E 1 16066 0 9			; wears thieve's gloves
-M 1 16084 5 16048			; loads rogue
-E 1 16067 0 3			; wears gold chain
-M 1 16084 5 16103			; loads rogue
-E 1 16067 0 3			; wears gold chain
-M 1 16084 5 16125			; loads rogue
-E 1 16067 0 3			; wears gold chain
-M 1 16084 5 16185			; loads rogue
-E 1 16067 0 3			; wears gold chain
-M 1 16084 5 16193			; loads rogue
-E 1 16067 0 3			; wears gold chain
-M 1 16085 8 16370			; loads sharper
-M 1 16085 8 16370			; loads sharper
-E 1 16068 0 17			; holds dice
-M 1 16085 8 16371			; loads sharper
-M 1 16085 8 16371			; loads sharper
-E 1 16068 0 17			; holds dice
-M 1 16085 8 16375			; loads sharper
-M 1 16085 8 16375			; loads sharper
-E 1 16068 0 17			; holds dice
-M 1 16085 8 16376			; loads sharper
-M 1 16085 8 16376			; loads sharper
-E 1 16068 0 17			; holds dice
-M 1 16086 3 16378			; loads magsman
-E 1 16069 0 3			; wears cloak
-M 1 16086 3 16388			; loads magsman
-E 1 16069 0 3			; wears cloak
-M 1 16086 3 16396			; loads magsman
-E 1 16069 0 3			; wears cloak
-M 1 16087 3 16383			; loads master thief
-E 1 16070 0 6			; wears earring
-M 1 16087 3 16391			; loads master thief
-E 1 16070 0 6			; wears earring
-M 1 16087 3 16394			; loads master thief
-E 1 16070 0 6			; wears earring
-M 1 16088 1 16385			; loads head thief
-E 1 16071 0 16			; wields jewelled dagger
-M 1 16089 1 16390			; loads guild's mage
-E 1 16072 0 0			; uses light
-E 1 16073 0 12			; wears robe
-M 1 16090 1 16381			; loads thieve's trainer
+M 1 16081 16 16015          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16001          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16021          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16039          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16048          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16035          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16024          ; loads footpad
+M 1 16081 16 16011          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16061          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16071          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16088          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16099          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16130          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16140          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16179          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16081 16 16190          ; loads footpad
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16082 5 16110           ; loads cutpurse
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16082 5 16129           ; loads cutpurse
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16082 5 16137           ; loads cutpurse
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16082 5 16145           ; loads cutpurse
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16082 5 16201           ; loads cutpurse
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16083 5 16020           ; loads filcher
+E 1 16066 0 9           ; wears thieve's gloves
+M 1 16083 5 16063           ; loads filcher
+E 1 16066 0 9           ; wears thieve's gloves
+M 1 16083 5 16066           ; loads filcher
+E 1 16066 0 9           ; wears thieve's gloves
+M 1 16083 5 16131           ; loads filcher
+E 1 16066 0 9           ; wears thieve's gloves
+M 1 16083 5 16215           ; loads filcher
+E 1 16066 0 9           ; wears thieve's gloves
+M 1 16084 5 16048           ; loads rogue
+E 1 16067 0 3           ; wears gold chain
+M 1 16084 5 16103           ; loads rogue
+E 1 16067 0 3           ; wears gold chain
+M 1 16084 5 16125           ; loads rogue
+E 1 16067 0 3           ; wears gold chain
+M 1 16084 5 16185           ; loads rogue
+E 1 16067 0 3           ; wears gold chain
+M 1 16084 5 16193           ; loads rogue
+E 1 16067 0 3           ; wears gold chain
+M 1 16085 8 16370           ; loads sharper
+M 1 16085 8 16370           ; loads sharper
+E 1 16068 0 17          ; holds dice
+M 1 16085 8 16371           ; loads sharper
+M 1 16085 8 16371           ; loads sharper
+E 1 16068 0 17          ; holds dice
+M 1 16085 8 16375           ; loads sharper
+M 1 16085 8 16375           ; loads sharper
+E 1 16068 0 17          ; holds dice
+M 1 16085 8 16376           ; loads sharper
+M 1 16085 8 16376           ; loads sharper
+E 1 16068 0 17          ; holds dice
+M 1 16086 3 16378           ; loads magsman
+E 1 16069 0 3           ; wears cloak
+M 1 16086 3 16388           ; loads magsman
+E 1 16069 0 3           ; wears cloak
+M 1 16086 3 16396           ; loads magsman
+E 1 16069 0 3           ; wears cloak
+M 1 16087 3 16383           ; loads master thief
+E 1 16070 0 6           ; wears earring
+M 1 16087 3 16391           ; loads master thief
+E 1 16070 0 6           ; wears earring
+M 1 16087 3 16394           ; loads master thief
+E 1 16070 0 6           ; wears earring
+M 1 16088 1 16385           ; loads head thief
+E 1 16071 0 16          ; wields jewelled dagger
+M 1 16089 1 16390           ; loads guild's mage
+E 1 16072 0 0           ; uses light
+E 1 16073 0 12          ; wears robe
+M 1 16090 1 16381           ; loads thieve's trainer
 *
-M 1 16091 6 16179			; loads assassin (bravo)
-E 1 16074 0 16			; wields blade of poison
-M 1 16091 6 16127			; loads assassin (bravo)
-E 1 16074 0 16			; wields blade of poison
-M 1 16091 6 16144			; loads assassin (bravo)
-E 1 16074 0 16			; wields blade of poison
-M 1 16091 6 16172			; loads assassin (bravo)
-E 1 16074 0 16			; wields blade of poison
-M 1 16091 6 16193			; loads assassin (bravo)
-E 1 16074 0 16			; wields blade of poison
-M 1 16091 6 16209			; loads assassin (bravo)
-E 1 16074 0 16			; wields blade of poison
-M 1 16092 6 16139			; loads assassin (murderer)
-E 1 16074 0 16			; wields blade of poison
-M 1 16092 6 16170			; loads assassin (murderer)
-E 1 16074 0 16			; wields blade of poison
-M 1 16092 6 16106			; loads assassin (murderer)
-E 1 16074 0 16			; wields blade of poison
-M 1 16092 6 16154			; loads assassin (murderer)
-E 1 16074 0 16			; wields blade of poison
-M 1 16092 6 16177			; loads assassin (murderer)
-E 1 16074 0 16			; wields blade of poison
-M 1 16092 6 16182			; loads assassin (murderer)
-E 1 16074 0 16			; wields blade of poison
-M 1 16093 6 16189			; loads assassin (thug)
-M 1 16093 6 16175			; loads assassin (thug)
-M 1 16093 6 16163			; loads assassin (thug)
-M 1 16093 6 16160			; loads assassin (thug)
-E 1 16075 0 10			; wears sleeves
-M 1 16093 6 16184			; loads assassin (thug)
-E 1 16075 0 10			; wears sleeves
-M 1 16093 6 16188			; loads assassin (thug)
-E 1 16075 0 10			; wears sleeves
-M 1 16094 3 16167			; loads assassin (killer)
-E 1 16076 0 14			; wears skull tattoo
-M 1 16094 3 16190			; loads assassin (killer)
-E 1 16076 0 14			; wears skull tattoo
-M 1 16094 3 16197			; loads assassin (killer)
-E 1 16076 0 14			; wears skull tattoo
-M 1 16095 2 16400			; loads assassin
-E 1 16077 0 16			; wields choke wire
-M 1 16095 2 16402			; loads assassin
-E 1 16077 0 16			; wields choke wire
-M 1 16096 3 16413			; loads expert assassin
-E 1 16078 0 6			; wears mask
-M 1 16096 3 16415			; loads expert assassin
-E 1 16078 0 6			; wears mask
-M 1 16096 3 16421			; loads expert assassin
-E 1 16078 0 6			; wears mask
-M 1 16097 2 16405			; loads senior assassin
-E 1 16079 0 14			; wears flaming dagger tattoo
-M 1 16097 2 16423			; loads senior assassin
-E 1 16079 0 14			; wears flaming dagger tattoo
-M 1 16098 2 16409			; loads prime assassin
-E 1 16080 0 14			; wears wyvern tattoo
-M 1 16098 2 16411			; loads prime assassin
-E 1 16080 0 14			; wears wyvern tattoo
-M 1 16099 1 16412			; loads guildmaster assassin
-E 1 16081 0 10			; wears dragon tattoo
-M 1 16100 1 16419			; loads trainer assassin
+M 1 16091 6 16179           ; loads assassin (bravo)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16091 6 16127           ; loads assassin (bravo)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16091 6 16144           ; loads assassin (bravo)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16091 6 16172           ; loads assassin (bravo)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16091 6 16193           ; loads assassin (bravo)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16091 6 16209           ; loads assassin (bravo)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16092 6 16139           ; loads assassin (murderer)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16092 6 16170           ; loads assassin (murderer)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16092 6 16106           ; loads assassin (murderer)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16092 6 16154           ; loads assassin (murderer)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16092 6 16177           ; loads assassin (murderer)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16092 6 16182           ; loads assassin (murderer)
+E 1 16074 0 16          ; wields blade of poison
+M 1 16093 6 16189           ; loads assassin (thug)
+M 1 16093 6 16175           ; loads assassin (thug)
+M 1 16093 6 16163           ; loads assassin (thug)
+M 1 16093 6 16160           ; loads assassin (thug)
+E 1 16075 0 10          ; wears sleeves
+M 1 16093 6 16184           ; loads assassin (thug)
+E 1 16075 0 10          ; wears sleeves
+M 1 16093 6 16188           ; loads assassin (thug)
+E 1 16075 0 10          ; wears sleeves
+M 1 16094 3 16167           ; loads assassin (killer)
+E 1 16076 0 14          ; wears skull tattoo
+M 1 16094 3 16190           ; loads assassin (killer)
+E 1 16076 0 14          ; wears skull tattoo
+M 1 16094 3 16197           ; loads assassin (killer)
+E 1 16076 0 14          ; wears skull tattoo
+M 1 16095 2 16400           ; loads assassin
+E 1 16077 0 16          ; wields choke wire
+M 1 16095 2 16402           ; loads assassin
+E 1 16077 0 16          ; wields choke wire
+M 1 16096 3 16413           ; loads expert assassin
+E 1 16078 0 6           ; wears mask
+M 1 16096 3 16415           ; loads expert assassin
+E 1 16078 0 6           ; wears mask
+M 1 16096 3 16421           ; loads expert assassin
+E 1 16078 0 6           ; wears mask
+M 1 16097 2 16405           ; loads senior assassin
+E 1 16079 0 14          ; wears flaming dagger tattoo
+M 1 16097 2 16423           ; loads senior assassin
+E 1 16079 0 14          ; wears flaming dagger tattoo
+M 1 16098 2 16409           ; loads prime assassin
+E 1 16080 0 14          ; wears wyvern tattoo
+M 1 16098 2 16411           ; loads prime assassin
+E 1 16080 0 14          ; wears wyvern tattoo
+M 1 16099 1 16412           ; loads guildmaster assassin
+E 1 16081 0 10          ; wears dragon tattoo
+M 1 16100 1 16419           ; loads trainer assassin
 *
-M 1 16101 3 16437			; loads darken beast
-M 1 16101 3 16437			; loads darken beast
-M 1 16101 3 16436			; loads darken beast
-M 1 16102 1 16429			; loads skyzorr'n
-M 1 16103 3 16430			; loads dretch
-M 1 16103 3 16434			; loads dretch
-M 1 16103 3 16432			; loads dretch
-M 1 16104 4 16429			; loads platinum golem
-E 1 16082 0 6			; wears diamond helm
-M 1 16104 4 16430			; loads platinum golem
-E 1 16082 0 6			; wears diamond helm
-M 1 16104 4 16432			; loads platinum golem
-E 1 16082 0 6			; wears diamond helm
-M 1 16104 4 16436			; loads platinum golem
-E 1 16082 0 6			; wears diamond helm
-M 1 16105 1 16431			; loads guthlac
-M 1 16106 1 16435			; loads eurandus
+M 1 16101 3 16437           ; loads darken beast
+M 1 16101 3 16437           ; loads darken beast
+M 1 16101 3 16436           ; loads darken beast
+M 1 16102 1 16429           ; loads skyzorr'n
+M 1 16103 3 16430           ; loads dretch
+M 1 16103 3 16434           ; loads dretch
+M 1 16103 3 16432           ; loads dretch
+M 1 16104 4 16429           ; loads platinum golem
+E 1 16082 0 6           ; wears diamond helm
+M 1 16104 4 16430           ; loads platinum golem
+E 1 16082 0 6           ; wears diamond helm
+M 1 16104 4 16432           ; loads platinum golem
+E 1 16082 0 6           ; wears diamond helm
+M 1 16104 4 16436           ; loads platinum golem
+E 1 16082 0 6           ; wears diamond helm
+M 1 16105 1 16431           ; loads guthlac
+M 1 16106 1 16435           ; loads eurandus
 *
-M 1 16107 1 16439			; loads the keeper
-E 1 16083 0 11			; holds shield
-M 1 16108 1 16440			; loads xaren
-M 1 16109 1 16441			; loads cloaker
+M 1 16107 1 16439           ; loads the keeper
+E 1 16083 0 11          ; holds shield
+M 1 16108 1 16440           ; loads xaren
+M 1 16109 1 16441           ; loads cloaker
 *
-M 1 16110 1 16444			; loads lord rygar
-M 1 16111 1 16444			; loads orak
-E 1 16065 0 15			; wears thieve's patch
-M 1 16112 1 16447			; loads sabrakarn
-M 1 16113 1 16448			; loads hangharid
-E 1 2390 0 15			; wears ogre gauntlets
-M 1 16114 1 16453			; loads sifrim
-M 1 16115 1 16450			; loads wismarel
-M 1 16116 1 16454			; loads methuen
-M 1 16117 1 16451			; loads cedrena
-M 1 16118 1 16443			; loads inn keep
+M 1 16110 1 16444           ; loads lord rygar
+M 1 16111 1 16444           ; loads orak
+E 1 16065 0 15          ; wears thieve's patch
+M 1 16112 1 16447           ; loads sabrakarn
+M 1 16113 1 16448           ; loads hangharid
+E 1 2390 0 15           ; wears ogre gauntlets
+M 1 16114 1 16453           ; loads sifrim
+M 1 16115 1 16450           ; loads wismarel
+M 1 16116 1 16454           ; loads methuen
+M 1 16117 1 16451           ; loads cedrena
+M 1 16118 1 16443           ; loads inn keep
 G 1 3002 0
-M 1 16054 3 16445			; loads serving wench
-M 1 16047 3 16445			; half-orc patron
-E 1 16033 0 16			; wields broken bottle
-M 1 16048 3 16442			; deep gnome patron
+M 1 16054 3 16445           ; loads serving wench
+M 1 16047 3 16445           ; half-orc patron
+E 1 16033 0 16          ; wields broken bottle
+M 1 16048 3 16442           ; deep gnome patron
 *
-M 1 16119 3 16458			; loads clan member
-E 1 16084 0 1			; wears clan ring
-M 1 16119 3 16471			; loads clan member
-E 1 16084 0 1			; wears clan ring
-M 1 16119 3 16474			; loads clan member
-E 1 16084 0 1			; wears clan ring
-M 1 16120 3 16459			; loads clan mage
-E 1 16085 0 14			; wears bracer
-M 1 16120 3 16462			; loads clan mage
-E 1 16085 0 14			; wears bracer
-M 1 16120 3 16470			; loads clan mage
-E 1 16085 0 14			; wears bracer
-M 1 16121 3 16456			; loads clan fighter
-E 1 16086 0 16			; wields demon blade
-M 1 16121 3 16458			; loads clan fighter
-E 1 16086 0 16			; wields demon blade
-M 1 16121 3 16479			; loads clan fighter
-E 1 16086 0 16			; wields demon blade
-M 1 16122 3 16462			; loads demon summoner
-E 1 16087 0 17			; holds gem
-M 1 16122 3 16477			; loads demon summoner
-E 1 16087 0 17			; holds gem
-M 1 16122 3 16482			; loads demon summoner
-E 1 16087 0 17			; holds gem
-M 1 16123 2 16460			; loads cambion
-E 1 16088 0 5			; wears demon plate
-M 1 16123 2 16475			; loads cambion
-E 1 16088 0 5			; wears demon plate
-M 1 16124 2 16461			; loads noble cambion
-E 1 16088 0 5			; wears demon plate
-M 1 16124 2 16480			; loads noble cambion
-E 1 16088 0 5			; wears demon plate
-M 1 16125 1 16478			; loads clan head
-* E 1 16089 0 11    			; wears demon fire
-M 1 16126 1 16478			; loads hezron
+M 1 16119 3 16458           ; loads clan member
+E 1 16084 0 1           ; wears clan ring
+M 1 16119 3 16471           ; loads clan member
+E 1 16084 0 1           ; wears clan ring
+M 1 16119 3 16474           ; loads clan member
+E 1 16084 0 1           ; wears clan ring
+M 1 16120 3 16459           ; loads clan mage
+E 1 16085 0 14          ; wears bracer
+M 1 16120 3 16462           ; loads clan mage
+E 1 16085 0 14          ; wears bracer
+M 1 16120 3 16470           ; loads clan mage
+E 1 16085 0 14          ; wears bracer
+M 1 16121 3 16456           ; loads clan fighter
+E 1 16086 0 16          ; wields demon blade
+M 1 16121 3 16458           ; loads clan fighter
+E 1 16086 0 16          ; wields demon blade
+M 1 16121 3 16479           ; loads clan fighter
+E 1 16086 0 16          ; wields demon blade
+M 1 16122 3 16462           ; loads demon summoner
+E 1 16087 0 17          ; holds gem
+M 1 16122 3 16477           ; loads demon summoner
+E 1 16087 0 17          ; holds gem
+M 1 16122 3 16482           ; loads demon summoner
+E 1 16087 0 17          ; holds gem
+M 1 16123 2 16460           ; loads cambion
+E 1 16088 0 5           ; wears demon plate
+M 1 16123 2 16475           ; loads cambion
+E 1 16088 0 5           ; wears demon plate
+M 1 16124 2 16461           ; loads noble cambion
+E 1 16088 0 5           ; wears demon plate
+M 1 16124 2 16480           ; loads noble cambion
+E 1 16088 0 5           ; wears demon plate
+M 1 16125 1 16478           ; loads clan head
+* E 1 16089 0 11                ; wears demon fire
+M 1 16126 1 16478           ; loads hezron
 *
-M 1 16127 4 16100			; loads eye of fear and flame
-G 1 16090 0			; gives fire gem
-M 1 16127 4 16123			; loads eye of fear and flame
-G 1 16090 0			; gives fire gem
-M 1 16127 4 16140			; loads eye of fear
-M 1 16127 4 16074			; loads eye of fear
-M 1 16128 6 16193			; loads revenant
-M 1 16128 6 16170			; loads revenant
-M 1 16128 6 16052			; loads revenant
-M 1 16128 6 16144			; loads revenant
-M 1 16128 6 16210			; loads revenant
-M 1 16128 6 16187			; loads revenant
-M 1 16129 7 16028			; loads eye killer
-M 1 16129 7 16071			; loads eye killer
-M 1 16129 7 16061			; loads eye killer
-M 1 16129 7 16162			; loads eye killer
-M 1 16129 7 16057			; loads eye killer
-M 1 16129 7 16120			; loads eye killer
-M 1 16129 7 16172			; loads eye killer
+M 1 16127 4 16100           ; loads eye of fear and flame
+G 1 16090 0         ; gives fire gem
+M 1 16127 4 16123           ; loads eye of fear and flame
+G 1 16090 0         ; gives fire gem
+M 1 16127 4 16140           ; loads eye of fear
+M 1 16127 4 16074           ; loads eye of fear
+M 1 16128 6 16193           ; loads revenant
+M 1 16128 6 16170           ; loads revenant
+M 1 16128 6 16052           ; loads revenant
+M 1 16128 6 16144           ; loads revenant
+M 1 16128 6 16210           ; loads revenant
+M 1 16128 6 16187           ; loads revenant
+M 1 16129 7 16028           ; loads eye killer
+M 1 16129 7 16071           ; loads eye killer
+M 1 16129 7 16061           ; loads eye killer
+M 1 16129 7 16162           ; loads eye killer
+M 1 16129 7 16057           ; loads eye killer
+M 1 16129 7 16120           ; loads eye killer
+M 1 16129 7 16172           ; loads eye killer
 *
 O 1 16091 0 16109
 P 1 16092 0 16091
@@ -15627,17 +15627,17 @@ D 1 16036 2 1
 D 1 16484 0 1
 D 1 16037 2 1
 D 1 16485 0 1
-D 1 16038 2 2			; Sunset Lock South
-D 1 16486 0 1			; Denizen of the Underdark's Abode Close North
+D 1 16038 2 2           ; Sunset Lock South
+D 1 16486 0 1           ; Denizen of the Underdark's Abode Close North
 D 1 16039 2 1
 D 1 16487 0 1
-D 1 16074 0 1			; Slaver's Route Close North
+D 1 16074 0 1           ; Slaver's Route Close North
 D 1 16488 2 1
-D 1 16074 2 1			; Slaver's Route Close South
+D 1 16074 2 1           ; Slaver's Route Close South
 D 1 16492 0 1
-D 1 16075 0 1			; Slaver's Route Close North
+D 1 16075 0 1           ; Slaver's Route Close North
 D 1 16489 2 1
-D 1 16075 2 1			; Slaver's Route Close South
+D 1 16075 2 1           ; Slaver's Route Close South
 D 1 16493 0 1
 D 1 16076 0 1
 D 1 16490 2 1
@@ -15646,10 +15646,10 @@ D 1 16494 0 1
 D 1 16491 2 1
 D 1 16079 0 1
 D 1 16275 2 1
-D 1 16085 0 1			; Slaver's route, before the Whorehouse Close North
+D 1 16085 0 1           ; Slaver's route, before the Whorehouse Close North
 D 1 16299 2 1
 D 1 16089 2 1
-D 1 16327 0 1			; Before the Northern Entrance of the Prisons Close North
+D 1 16327 0 1           ; Before the Northern Entrance of the Prisons Close North
 D 1 16093 1 1
 D 1 16227 3 1
 D 1 16103 2 1
@@ -15659,7 +15659,7 @@ D 1 16337 1 1
 D 1 16108 0 1
 D 1 16497 2 1
 D 1 16109 0 1           ; A Home in the Underdark Close North
-D 1 16496 2 1			; Denizen of the Underdark's Home Close South
+D 1 16496 2 1           ; Denizen of the Underdark's Home Close South
 D 1 16110 0 1           ; close home from outside (archon)
 D 1 16499 2 1           ; close home from inside (yay)
 D 1 16495 2 1
@@ -15673,12 +15673,12 @@ D 1 16167 3 1
 D 1 16397 1 1
 D 1 16181 1 1
 D 1 16374 3 1
-D 1 16195 0 1			; Death's Lane Close North
-D 1 16414 2 1			; Hallway in the Assassin's Guild Close South
-* D 1 16197 2 1			Secret door to drow area
-D 1 16199 3 1			; Traveler's Crescent Close West
-D 1 16222 1 1			; The Hidden Way Close East
-D 1 16208 3 1			; Entrance to the Traveler's Den Close East
+D 1 16195 0 1           ; Death's Lane Close North
+D 1 16414 2 1           ; Hallway in the Assassin's Guild Close South
+* D 1 16197 2 1         Secret door to drow area
+D 1 16199 3 1           ; Traveler's Crescent Close West
+D 1 16222 1 1           ; The Hidden Way Close East
+D 1 16208 3 1           ; Entrance to the Traveler's Den Close East
 D 1 16225 0 1
 D 1 16456 2 1
 *
@@ -15695,9 +15695,9 @@ D 1 16243 1 1
 *
 D 1 16249 3 1
 D 1 16250 1 1
-D 1 16251 3 1			; Twisting Passage Close West
+D 1 16251 3 1           ; Twisting Passage Close West
 D 1 16252 1 1
-D 1 16251 2 1			; Twisting Passage Close South
+D 1 16251 2 1           ; Twisting Passage Close South
 D 1 16253 0 1
 D 1 16254 0 1
 D 1 16256 2 1
@@ -15723,12 +15723,12 @@ D 1 16280 1 1
 D 1 16281 3 1
 D 1 16282 1 1
 D 1 16283 2 1
-D 1 16287 0 1			; Dining Hall Close North
+D 1 16287 0 1           ; Dining Hall Close North
 D 1 16284 1 1
 D 1 16286 3 1
 D 1 16285 3 1
 D 1 16286 1 1
-D 1 16288 0 1			; Dining Hall Close North
+D 1 16288 0 1           ; Dining Hall Close North
 D 1 16289 2 1
 D 1 16289 0 1
 D 1 16296 2 1
@@ -15740,25 +15740,25 @@ D 1 16301 2 1
 D 1 16299 1 1
 D 1 16300 3 1
 *
-D 1 16306 0 1			; Entrance Hall to the Inn Close North
+D 1 16306 0 1           ; Entrance Hall to the Inn Close North
 D 1 16307 2 1
-D 1 16308 2 1			; Common Room Close South
+D 1 16308 2 1           ; Common Room Close South
 D 1 16309 0 1
-D 1 16311 2 1			; Common Room Close South
+D 1 16311 2 1           ; Common Room Close South
 D 1 16312 0 1
-D 1 16313 0 1			; Hall to the Inn Rooms Close North
+D 1 16313 0 1           ; Hall to the Inn Rooms Close North
 D 1 16315 2 1
-D 1 16313 2 1			; Hall to the Inn Rooms Close South
+D 1 16313 2 1           ; Hall to the Inn Rooms Close South
 D 1 16316 0 1
-D 1 16317 2 1			; Traveler's Den Hallway Close South
+D 1 16317 2 1           ; Traveler's Den Hallway Close South
 D 1 16318 0 1
 *
-D 1 16319 0 1			; Entrance to the Slaver's Market Close North
-D 1 16320 2 1			; Slave Cage Close South
+D 1 16319 0 1           ; Entrance to the Slaver's Market Close North
+D 1 16320 2 1           ; Slave Cage Close South
 D 1 16325 0 1
 D 1 16326 2 1
 *
-D 1 16327 1 1			; Before the Northern Entrance of the Prisons Close East
+D 1 16327 1 1           ; Before the Northern Entrance of the Prisons Close East
 D 1 16328 3 1
 D 1 16330 1 1
 D 1 16331 3 1
@@ -15782,7 +15782,7 @@ D 1 16346 2 1
 D 1 16347 0 1
 *
 D 1 16354 3 1
-D 1 16355 1 1			; Washroom of the Shadow's Shadow Close East
+D 1 16355 1 1           ; Washroom of the Shadow's Shadow Close East
 *
 D 1 16363 1 1
 D 1 16364 3 1
@@ -15820,21 +15820,21 @@ D 1 16394 3 1
 D 1 16395 1 1
 D 1 16396 3 1
 *
-D 1 16400 1 1			; Hallway in the Assassin's Guild Close East
-D 1 16401 3 1			; Corridor in the Assassin's Guild Close West
-D 1 16401 0 1			; Corridor in the Assassin's Guild Close North
+D 1 16400 1 1           ; Hallway in the Assassin's Guild Close East
+D 1 16401 3 1           ; Corridor in the Assassin's Guild Close West
+D 1 16401 0 1           ; Corridor in the Assassin's Guild Close North
 D 1 16402 2 1
 D 1 16403 0 1
-D 1 16404 0 1			; Corridor in the Assassin's Guild Close North
+D 1 16404 0 1           ; Corridor in the Assassin's Guild Close North
 D 1 16406 2 1
-D 1 16404 2 1			; Corridor in the Assassin's Guild Close South
+D 1 16404 2 1           ; Corridor in the Assassin's Guild Close South
 D 1 16405 0 1
-D 1 16407 0 1			; Corridor in the Assassin's Guild Close North
+D 1 16407 0 1           ; Corridor in the Assassin's Guild Close North
 D 1 16408 2 1
-D 1 16407 2 1			; Corridor in the Assassin's Guild Close South
+D 1 16407 2 1           ; Corridor in the Assassin's Guild Close South
 D 1 16409 0 1
-D 1 16407 1 1			; Corridor in the Assassin's Guild Close East
-D 1 16410 3 1			; Assassin's Meeting Chamber Close West
+D 1 16407 1 1           ; Corridor in the Assassin's Guild Close East
+D 1 16410 3 1           ; Assassin's Meeting Chamber Close West
 D 1 16416 0 1
 D 1 16417 2 1
 D 1 16418 0 1
@@ -15860,7 +15860,7 @@ D 1 16439 1 1
 *
 D 1 16442 2 1           ; Floating Eye.. close south inside
 D 1 16088 0 1           ; close door from outside
-D 1 16444 3 1			; Common Room Close West
+D 1 16444 3 1           ; Common Room Close West
 D 1 16446 1 1
 D 1 16446 0 1
 D 1 16447 2 1
@@ -15892,51 +15892,51 @@ D 1 16475 0 1
 D 1 16479 1 1
 D 1 16480 3 1
 *
-D 1 16195 0 1			; Death's Lane Close North
-D 1 16486 2 1			; Denizen of the Underdark's Abode Close South
-O 1 16095 100 16000			the mirror flashes scenes of the world to Chamber of Silence
+D 1 16195 0 1           ; Death's Lane Close North
+D 1 16486 2 1           ; Denizen of the Underdark's Abode Close South
+O 1 16095 100 16000         the mirror flashes scenes of the world to Chamber of Silence
 *
-M 1 16130 1 16000			; loads woman
-D 1 16219 5 1			; Dark Tunnel Close Down
+M 1 16130 1 16000           ; loads woman
+D 1 16219 5 1           ; Dark Tunnel Close Down
 S
 
 
 #SHOPS
-16021 5 0 0 0 0 110 90 0 23			; bar keep
-16049 9 0 0 0 0 110 90 0 23			; inn keeper
-16055 0 0 0 0 0 100 100 0 23			; the slave dealer
-16065 0 0 0 0 0 120 50 0 23			; bar tender
-16073 2 3 4 10 0 150 75 0 23			; yie'stei, magic
-16074 5 0 0 0 0 40 100 0 23			; zae'tres, weapon
-16075 9 0 0 0 0 40 100 0 23			; raesarnt, armour
-16076 8 20 0 0 0 150 90 0 23			; Satori, jeweller
-16077 19 26 0 0 0 150 60 0 23			; Jiestis, food
-16118 0 0 0 0 0 150 75 0 23			; inn keep
+16021 5 0 0 0 0 110 90 0 23         ; bar keep
+16049 9 0 0 0 0 110 90 0 23         ; inn keeper
+16055 0 0 0 0 0 100 100 0 23            ; the slave dealer
+16065 0 0 0 0 0 120 50 0 23         ; bar tender
+16073 2 3 4 10 0 150 75 0 23            ; yie'stei, magic
+16074 5 0 0 0 0 40 100 0 23         ; zae'tres, weapon
+16075 9 0 0 0 0 40 100 0 23         ; raesarnt, armour
+16076 8 20 0 0 0 150 90 0 23            ; Satori, jeweller
+16077 19 26 0 0 0 150 60 0 23           ; Jiestis, food
+16118 0 0 0 0 0 150 75 0 23         ; inn keep
 0
 
 
 #SPECIALS
-M  16004 spec_cast_mage			The great enforcing eye
-M  16005 spec_cast_mage			The huge beholder
-M  16006 spec_cast_mage			The beholder
+M  16004 spec_cast_mage         The great enforcing eye
+M  16005 spec_cast_mage         The huge beholder
+M  16006 spec_cast_mage         The beholder
 M  16010 spec_cast_undead       The necromancer
 M  16013 spec_cast_cleric       A high priest of Xevior
-M  16018 spec_cast_mage			The beholder legionnaire
-M  16019 spec_cast_mage			The supreme attendant
-M  16025 spec_cast_mage			Caris
-M  16026 spec_cast_mage			Antryg
+M  16018 spec_cast_mage         The beholder legionnaire
+M  16019 spec_cast_mage         The supreme attendant
+M  16025 spec_cast_mage         Caris
+M  16026 spec_cast_mage         Antryg
 M  16027 spec_thief             The gremlin
 M  16030 spec_thief             The jinxkin
 M  16031 spec_thief             The jermlaine
-M  16032 spec_cast_mage			The bodak
-M  16033 spec_cast_mage			The mage
+M  16032 spec_demon
+M  16033 spec_cast_mage         The mage
 M  16037 spec_thief             The imp
-M  16038 spec_cast_cleric       The babau
-M  16066 spec_cast_mage			Prax
+M  16038 spec_demon             The babau
+M  16066 spec_cast_mage         Prax
 M  16068 spec_thief             Endolar
-M  16069 spec_cast_mage			Snaromba
+M  16069 spec_cast_mage         Snaromba
 M  16072 spec_thief             Shillikif
-M  16073 spec_cast_mage			Yie'Stei
+M  16073 spec_cast_mage         Yie'Stei
 M  16081 spec_thief             The footpad
 M  16082 spec_thief             The cutpurse
 M  16083 spec_thief             The filcher
@@ -15945,34 +15945,34 @@ M  16085 spec_thief             The sharper
 M  16086 spec_thief             The magsman
 M  16087 spec_thief             The master thief
 M  16088 spec_thief             The head thief
-M  16089 spec_cast_mage			Meliadus
-M  16091 spec_assassin			The bravo
-M  16092 spec_assassin			The murderer
-M  16093 spec_assassin			The thug
-M  16094 spec_assassin			The killer
-M  16095 spec_assassin			The assassin
-M  16096 spec_assassin			The expert assassin
-M  16097 spec_assassin			The senior assassin
-M  16098 spec_assassin			The prime assassin
-M  16099 spec_assassin			The guildmaster
+M  16089 spec_cast_mage         Meliadus
+M  16091 spec_assassin          The bravo
+M  16092 spec_assassin          The murderer
+M  16093 spec_assassin          The thug
+M  16094 spec_assassin          The killer
+M  16095 spec_assassin          The assassin
+M  16096 spec_assassin          The expert assassin
+M  16097 spec_assassin          The senior assassin
+M  16098 spec_assassin          The prime assassin
+M  16099 spec_assassin          The guildmaster
 M  16102 spec_assassin          Skyzorr
 M  16104 spec_cast_cleric       The platinum golem
-M  16103 spec_poison            the dretches
+M  16103 spec_demon             the dretches
 M  16105 spec_cast_archmage     Gulthac merchant
 M  16106 spec_cast_archmage     Eurandus
 M  16107 spec_cast_archmage     The Keeper
-M  16109 spec_cast_mage			The cloaker
+M  16109 spec_cast_mage         The cloaker
 M  16111 spec_thief             Orak
-M  16112 spec_cast_mage			Sabrakarn
+M  16112 spec_cast_mage         Sabrakarn
 M  16114 spec_cast_cleric       Sifrim
-M  16116 spec_cast_mage			Methuen
-M  16120 spec_cast_mage			A demon clan mage
-M  16122 spec_cast_mage			The demon summoner
+M  16116 spec_cast_mage         Methuen
+M  16120 spec_cast_mage         A demon clan mage
+M  16122 spec_cast_mage         The demon summoner
 M  16123 spec_breath_fire       The cambion
 M  16124 spec_breath_fire       A noble cambion
-M  16125 spec_cast_mage			Irmugar
-M  16126 spec_breath_acid       The hezron
-M  16130 spec_repairman			A young woman with fiery red hair
+M  16125 spec_cast_mage         Irmugar
+M  16126 spec_demon             The hezron
+M  16130 spec_repairman         A young woman with fiery red hair
 S
 
 

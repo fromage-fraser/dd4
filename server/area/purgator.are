@@ -959,26 +959,26 @@ S
 #RESETS
 * Death Reaper (shopkeeper)
 M 0 401 1 427
-E 0 403 0 16           scythe
-E 0 402 0 17           book of judgement
-G 0 401 0              a drop of elves' tear (detect invis potion)
+E 0 403 0 16            scythe
+E 0 402 0 17            book of judgement
+G 0 401 0               a drop of elves' tear (detect invis potion)
 * lost souls
 M 0 402 3 407
 M 0 402 3 425
-R 0 401 6		Randomize the mail room
-R 0 410 6		Randomize one other room
-I 404 1000 427 1	Portal
+R 0 401 6               Randomize the mail room
+R 0 410 6               Randomize one other room
+I 404 1000 427 1        Portal
 S
 
 #SHOPS
-401 0 0 0 0 0 	100 0 	0 23 	sells detect invis potion (elves' tear)
+401 0 0 0 0 0   100 0   0 23    sells detect invis potion (elves' tear)
 
 0
 
 #SPECIALS
 
-M 401  spec_cast_adept		Death Reaper double as healer
-M 401  spec_cast_mage  		Death Reaper
+M 401  spec_cast_adept      Death Reaper double as healer
+M 401  spec_cast_mage       Death Reaper
 S
 
 

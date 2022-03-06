@@ -43,7 +43,7 @@ manner.
 0 0
 0 0 0
 >death_prog 100~
-	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+    mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
 ~
 |
 
@@ -62,19 +62,19 @@ blue surcoat, bordered with gold.
 0 0
 0 0 1
 >speech_prog bless~
-        	if clan($n) == som
-        		cast bless $n
-        		break
-        	else
-        		break;
-        	endif
+            if clan($n) == som
+                cast bless $n
+                break
+            else
+                break;
+            endif
 ~
 >speech_prog bye~
-        	if clan($n) == som
-        		mpecho Myrithin smiles at you, and you suddenly find yourself outside the clanhall.
-        		mptransfer $n 18207
-        		break
-        	endif
+            if clan($n) == som
+                mpecho Myrithin smiles at you, and you suddenly find yourself outside the clanhall.
+                mptransfer $n 18207
+                break
+            endif
 ~
 |
 
@@ -90,9 +90,9 @@ I am sleepy....zzzzZZZZzzzz.....
 0 0
 0 0 1
 >rand_prog 100~
-	drop som
-	mpgoto 537
-	meditate
+    drop som
+    mpgoto 537
+    meditate
 ~
 |
 

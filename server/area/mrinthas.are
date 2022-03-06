@@ -358,7 +358,7 @@ ring~
 The steel band is featureless.~
 #13017
 Shopkeepers Axe~
-the shopkeepers axe~
+the shopkeeper's axe~
 An axe rests here.~
 ~
 5 0 1|8192
@@ -2120,29 +2120,29 @@ E 1 13034 100 11
 D 1 13065 0 2                    ; The Idol Lock North
 D 1 13011 3 2                    ; A huge and magnificent ante-chamber Lock West
 D 1 13016 0 1                      ; A room Close North
-D 1 13015 2 1			 ; Outside shop close south
+D 1 13015 2 1                    ; Outside shop close south
 D 1 13019 3 1                    ; A passageway Close West
 D 1 13043 2 1
 D 1 13042 0 1                    ; A wide passageway Close North
-D 1 13036 3 1			 ; A passage-way close West
+D 1 13036 3 1                    ; A passage-way close West
 D 1 13056 1 1                    ; The Temple Close East
 D 1 13049 3 1                    ; The Temple Close West
-D 1 13038 1 1			 ; A passageway close east
+D 1 13038 1 1                    ; A passageway close east
 D 1 13027 1 1                    ; A passageway Close East
-D 1 13025 1 1			 ; Another passage-way close east
+D 1 13025 1 1                    ; Another passage-way close east
 D 1 13023 3 1                    ; Another ante-chamber Close West
-D 1 13018 0 1			 ; A passage-way close north
+D 1 13018 0 1                    ; A passage-way close north
 D 1 13028 1 1                    ; A small room Close East
-D 1 13033 3 1			 ; A passageway close west
+D 1 13033 3 1                    ; A passageway close west
 D 1 13028 2 1                    ; A small room Close South
-D 1 13021 1 1			 ; Ante-chamber close east
-D 1 13073 5 2			; somewhere lock down
+D 1 13021 1 1                    ; Ante-chamber close east
+D 1 13073 5 2                   ; somewhere lock down
 O 1 13035 100 13062               a featureless key to Temple Altar
 *
 M 1 13012 1 13072                   a Guardian Daemon to Dark Junction
 G 1 13037 100
 D 1 13074 5 2                      ; The entrance to Hel's Tower Lock Down
-D 1 13072 4 2			   ; Junction lock up
+D 1 13072 4 2                      ; Junction lock up
 *
 S
 
@@ -2161,7 +2161,7 @@ M  13008 spec_cast_cleric                   An undead Temple Acolyte
 M  13009 spec_cast_undead                  the Guard Captain
 M  13010 spec_guard                        Ready Temple Guards
 M  13011 spec_guard                        Ready Temple Sergeant
-M  13012 spec_breath_acid                   a Guardian Daemon
+M  13012 spec_demon                  a Guardian Daemon
 S
 
 

@@ -1,4 +1,4 @@
-#AREA	Thorne~   The Eerie Woods~
+#AREA   Thorne~   The Eerie Woods~
 -2 -2 0 100
 
 #MOBILES
@@ -112,7 +112,7 @@ head, buzzing loudly.
 #29007
 tree~
 the tree~
-A gnarled oak tree towers above you, it's branches sway gently rustling the leaves.
+A gnarled oak tree towers above you. Its branches sway gently, rustling the leaves.
 ~
 The tree looks very ancient and must have taken many years to grow this large.
 Its branches are all gnarled and twisted at odd angles. As you turn away from
@@ -2220,30 +2220,30 @@ S
 #RESETS
 D 1 29050 2 1   ;close south entrance to magic garden
 *
-M 1 29001 1 29053			the wolf cub to In a dark hole
+M 1 29001 1 29053           the wolf cub to In a dark hole
 *
-M 1 29002 1 29053			the wolf cub to In a dark hole
+M 1 29002 1 29053           the wolf cub to In a dark hole
 *
-M 1 29003 1 29053			the female wolf to In a dark hole
+M 1 29003 1 29053           the female wolf to In a dark hole
 *
-M 1 29000 1 29033			the wolf to Wandering in the woods
+M 1 29000 1 29033           the wolf to Wandering in the woods
 *
-M 1 29004 1 29003			a frantic bee to The bees hive
+M 1 29004 1 29003           a frantic bee to The bees hive
 *
-M 1 29005 1 29003			a frantic bee  to The bees hive
+M 1 29005 1 29003           a frantic bee  to The bees hive
 *
-M 1 29006 1 29003			a frantic bee  to The bees hive
-O 1 29009 100 29039			red mushrooms to Wandering in the woods
-O 1 29009 100 29012			red mushrooms to Wandering in the woods
-O 1 29008 100 29043			{Wtiny daisies{x to Wandering in the woods
-O 1 29008 100 29028			{Wtiny daisies{x to Wandering in the woods
-O 1 29012 100 29055			a bag of holding to In a hut
+M 1 29006 1 29003           a frantic bee  to The bees hive
+O 1 29009 100 29039         red mushrooms to Wandering in the woods
+O 1 29009 100 29012         red mushrooms to Wandering in the woods
+O 1 29008 100 29043         {Wtiny daisies{x to Wandering in the woods
+O 1 29008 100 29028         {Wtiny daisies{x to Wandering in the woods
+O 1 29012 100 29055         a bag of holding to In a hut
 *
-M 1 29007 1 29016			the tree to Wandering in the woods
+M 1 29007 1 29016           the tree to Wandering in the woods
 E 1 11304 100 17
 E 1 11342 100 5
 *
-M 1 29008 1 29008			the leprechaun to Wandering in the woods
+M 1 29008 1 29008           the leprechaun to Wandering in the woods
 E 1 29000 100 0
 E 1 29004 100 5
 E 1 29003 100 6
@@ -2253,44 +2253,44 @@ E 1 29005 100 8
 G 1 29006 100
 G 1 29020 100
 *
-M 1 29009 1 29028			the enchanted horse to Wandering in the woods
+M 1 29009 1 29028           the enchanted horse to Wandering in the woods
 E 1 29007 100 6
 *
-M 1 29010 1 29046			the enchanted horse to Wandering in the woods
+M 1 29010 1 29046           the enchanted horse to Wandering in the woods
 E 1 29007 100 6
 *
-M 1 29011 1 29001			the dood to Wandering in the woods
+M 1 29011 1 29001           the dood to Wandering in the woods
 E 1 29014 100 12
 G 1 29018 100
 *
-M 1 29012 1 29051			the chick to In a hut
+M 1 29012 1 29051           the chick to In a hut
 E 1 29011 100 17
 E 1 29014 100 12
 E 1 29015 100 14
 *
-M 1 29013 1 29056			the elderly elf to In a hut
+M 1 29013 1 29056           the elderly elf to In a hut
 E 1 29013 100 17
 E 1 29016 100 12
 E 1 29017 100 3
-O 1 29019 100 29054			a small wooden chest to In a hut
-P 1 29021 100 29019			a huge pile of coins to container chest small wooden
+O 1 29019 100 29054         a small wooden chest to In a hut
+P 1 29021 100 29019         a huge pile of coins to container chest small wooden
 S
 
 
 #SHOPS
-29008 13 8 2 18 0 100 200 0 23			(mobile is from another zone)
+29008 13 8 2 18 0 100 200 0 23          (mobile is from another zone)
 0
 
 
 #SPECIALS
-M  29004 spec_poison			a frantic bee
-M  29005 spec_poison			a frantic bee
-M  29006 spec_poison			a frantic bee
-M  29008 spec_cast_psionicist			the leprechaun
-M  29009 spec_breath_frost			the enchanted horse
-M  29010 spec_breath_frost			the enchanted horse
-M  29011 spec_cast_cleric			the elven bard
-M  29007 spec_warrior                           the tree
+M  29004 spec_poison                a frantic bee
+M  29005 spec_poison                a frantic bee
+M  29006 spec_poison                a frantic bee
+M  29008 spec_cast_psionicist       the leprechaun
+M  29009 spec_breath_frost          the enchanted horse
+M  29010 spec_breath_frost          the enchanted horse
+M  29011 spec_cast_cleric           the elven bard
+M  29007 spec_warrior               the tree
 S
 
 

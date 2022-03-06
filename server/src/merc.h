@@ -220,7 +220,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_COLORS                        11
 #define MAX_LEVEL                        106
 #define MAX_TRADE                          5
-#define MAX_DAMAGE                      3000
+#define MAX_DAMAGE                      6000    /* Increased from 3k->6k for chaos blast --Owl 2/3/22 */
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
 
 #define L_IMM                       MAX_LEVEL
@@ -233,9 +233,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               495
-#define MAX_PRE_REQ             1279
-#define MAX_SPELL_GROUP         375
+#define MAX_SKILL               497
+#define MAX_PRE_REQ             1283
+#define MAX_SPELL_GROUP         377
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
 #define MAX_VAMPIRE_GAG         24      /* ugly vampire/werewolf hack */
@@ -398,7 +398,7 @@ struct quest_recall
  * number of things are shown rather than having squeaps dumped on screen
  * Umgook 7/5/98
  *
- * Also added extra non-printed pkscore table rows to accommodate new
+ * Also added extra non-printed pkscore table rows to accomodate new
  * pkscore system; Gezhp 2000
  */
 #define CLAN_PKILL_TABLE_LENGTH                 50
@@ -1451,6 +1451,7 @@ DECLARE_DO_FUN( do_initiative );
 #define COLOR_DIRTALK                                   7
 #define COLOR_SERVER                                    8
 #define COLOR_ARENA                                     9
+#define COLOR_NEWBIE                                    10   /* --Owl 2/3/22 */
 
 
 /*
@@ -1538,9 +1539,8 @@ DECLARE_DO_FUN( do_initiative );
 #define AFF_SWIM                        BIT_26
 #define AFF_PRAYER_PLAGUE               BIT_27
 #define AFF_NON_CORPOREAL               BIT_28  /* Mist Walk, Astral Sidestep, Fly form */
-#define AFF_BIT_29                      BIT_29
-#define AFF_DETECT_GOOD                 BIT_30  /* last */
-
+#define AFF_DETECT_CURSE                BIT_29
+#define AFF_DETECT_GOOD                 BIT_30	/* last */
 
 /* forms - Brutus */
 #define FORM_NORMAL                     0
@@ -3108,6 +3108,8 @@ extern int gsn_bless;
 extern int gsn_mass_sanctuary;
 extern int gsn_mass_heal;
 extern int gsn_mass_power_heal;
+extern int gsn_chaos_blast;
+extern int gsn_detect_curse;
 
 
 /*
@@ -3834,6 +3836,8 @@ DECLARE_SPELL_FUN( spell_resist_cold            );
 DECLARE_SPELL_FUN( spell_resist_lightning       );
 DECLARE_SPELL_FUN( spell_resist_acid            );
 DECLARE_SPELL_FUN( spell_hells_fire             );
+DECLARE_SPELL_FUN( spell_chaos_blast            );
+DECLARE_SPELL_FUN( spell_detect_curse           );
 DECLARE_SPELL_FUN( spell_imprint                );
 
 

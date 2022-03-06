@@ -1,4 +1,4 @@
-#AREA	Brant~ The Fortress of Goblins~
+#AREA   Brant~ The Fortress of Goblins~
 40 60 25 100
 
 #MOBILES
@@ -2772,8 +2772,8 @@ S
 
 
 #SPECIALS
-M  20317 spec_cast_adept			The healer
-M  20321 spec_breath_gas			The deformity
+M  20317 spec_cast_adept            The healer
+M  20321 spec_breath_gas            The deformity
 S
 
 

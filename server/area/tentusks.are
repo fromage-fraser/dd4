@@ -1,4 +1,4 @@
-#AREA	Gezhp~   TenTusks~
+#AREA   Gezhp~   TenTusks~
 20 40 0 100
 
 #MOBILES
@@ -16,7 +16,7 @@ serves as her home and feeds her the energy of the forest.
 0 0
 8 8 2
 >rand_prog 10~
-	mpecho Faint laughter floats through the air.
+        mpecho Faint laughter floats through the air.
 ~
 |
 #25401
@@ -95,12 +95,12 @@ features.
 96 0
 8 8 2
 >death_prog 100~
-	mpecho The nymph dissolves into the air, hands gesturing.
-	mpecho The water about you begins to froth violently: elementals appear!
-	mpmload 25448
-	mpmload 25448
-	mpmload 25448
-	mpmload 25448
+        mpecho The nymph dissolves into the air, hands gesturing.
+        mpecho The water about you begins to froth violently: elementals appear!
+        mpmload 25448
+        mpmload 25448
+        mpmload 25448
+        mpmload 25448
 ~
 |
 #25407
@@ -129,11 +129,11 @@ completely.  The statue shifts slightly at your approach.
 304 0
 8 8 1
 >give_prog badly chipped stone head~
-	mpoload 25405
-	unlock n
-	mprecho The statue turns and unlocks the door to the north.
-	mpjunk head
-	mpjunk key
+        mpoload 25405
+        unlock n
+        mprecho The statue turns and unlocks the door to the north.
+        mpjunk head
+        mpjunk key
 ~
 |
 #25409
@@ -324,7 +324,7 @@ a mud man~
 A mud man wades through the mud towards you.
 ~
 Made from wet, solid mud, this elemental is slow but strong and well
-armoured.  Its tortured features constantly warp and altar as his skin
+armoured.  Its tortured features constantly warp and alter as his skin
 oozes and drips.
 ~
 32|64 0 0 S
@@ -576,8 +576,8 @@ forehead.
 0 0
 8 8 0
 >hitprcnt_prog 30~
-	snicker
-	circle
+        snicker
+        circle
 ~
 |
 #25445
@@ -593,10 +593,10 @@ thick ram's horns curling from the sides of his head.
 0 0
 8 8 0
 >hitprcnt_prog 30~
-	head
+        head
 ~
 >hitprcnt_prog 60~
-	kick
+        kick
 ~
 |
 #25446
@@ -612,7 +612,7 @@ you and roaring terribly.
 0 0
 8 8 0
 >hitprcnt_prog 50~
-	head
+        head
 ~
 |
 #25447
@@ -629,18 +629,18 @@ presence fills you with complete terror.
 0 0
 8 8 0
 >hitprcnt_prog 30~
-	if rand(40)
-		smash
-		say Feel the pain, insect...
-	endif
+        if rand(40)
+                smash
+                say Feel the pain, insect...
+        endif
 ~
 >hitprcnt_prog 60~
-	if rand(20)
-		say You fool, I shall drink your blood!
-	endif
+        if rand(20)
+                say You fool, I shall drink your blood!
+        endif
 ~
 >hitprcnt_prog 90~
-	berserk
+        berserk
 ~
 |
 #25448
@@ -670,7 +670,7 @@ stones sign writing stone circle lichen~
 The upright stones stand roughly     O====================================O
 five feet high, and are about two    |       T  e  n  T  u  s  k  s       |
 feet in diameter.  Lichen covers     |                >--<                |
-the weathered runes inscribed        |   For Adventurers levels 25 - 45   |
+the weathered runes inscribed        |   For Adventurers levels 20 - 40   |
 about their sides: the text is       |          Geshp : Feb 1996          |
 ancient and unrecognisable.          O====================================O
 ~
@@ -4428,331 +4428,331 @@ S
 
 
 #RESETS
-D 1 25409 1 1			; Granite Cliffs Close East
-D 1 25410 3 1			; Musty Tunnel Close West
-D 1 25418 1 1			; Chamber Close East
-D 1 25419 3 1			; Passage Close West
-D 1 25427 1 1			; Flooded Passage Close East
-D 1 25428 3 1			; Great Hall Close West
-D 1 25429 0 2			; Great Hall Lock North
-D 1 25430 2 2			; Hall of the Portals Lock South
+D 1 25409 1 1                   ; Granite Cliffs Close East
+D 1 25410 3 1                   ; Musty Tunnel Close West
+D 1 25418 1 1                   ; Chamber Close East
+D 1 25419 3 1                   ; Passage Close West
+D 1 25427 1 1                   ; Flooded Passage Close East
+D 1 25428 3 1                   ; Great Hall Close West
+D 1 25429 0 2                   ; Great Hall Lock North
+D 1 25430 2 2                   ; Hall of the Portals Lock South
 *
-O 1 25400 100 25406			stones to Circle of Stones
+O 1 25400 100 25406                     stones to Circle of Stones
 *
-M 1 25400 4 25402			a dryad to Forest Path
+M 1 25400 4 25402                       a dryad to Forest Path
 *
-M 1 25400 4 25403			a dryad to Forest Path
+M 1 25400 4 25403                       a dryad to Forest Path
 *
-M 1 25401 2 25404			a treant to Forest Path
+M 1 25401 2 25404                       a treant to Forest Path
 G 1 25401 100
 *
-M 1 25400 1 25405			a dryad to Forest Path
+M 1 25400 1 25405                       a dryad to Forest Path
 *
-M 1 25401 1 25407			a treant to Forest Path
+M 1 25401 1 25407                       a treant to Forest Path
 G 1 25401 100
 *
-M 1 25400 1 25408			a dryad to Forest Path
+M 1 25400 1 25408                       a dryad to Forest Path
 *
-M 1 25402 2 25412			a cave beast to Musty Chamber
+M 1 25402 2 25412                       a cave beast to Musty Chamber
 *
-M 1 25402 2 25418			a cave beast to Chamber
+M 1 25402 2 25418                       a cave beast to Chamber
 *
-M 1 25403 2 25416			a tunnel worm to Wide Tunnel
+M 1 25403 2 25416                       a tunnel worm to Wide Tunnel
 *
-M 1 25403 2 25414			a tunnel worm to Small Chamber
+M 1 25403 2 25414                       a tunnel worm to Small Chamber
 *
-M 1 25404 1 25420			Stone Beard to Damp Chamber
+M 1 25404 1 25420                       Stone Beard to Damp Chamber
 E 1 25403 100 5
 E 1 25402 100 16
 *
-M 1 25405 1 25426			an octopus to Murky Water
+M 1 25405 1 25426                       an octopus to Murky Water
 G 1 25404 100
 *
-M 1 25406 1 25425			a water nymph to Murky Water
+M 1 25406 1 25425                       a water nymph to Murky Water
 *
-M 1 25407 2 25424			a water demon to Murky Water
+M 1 25407 2 25424                       a water demon to Murky Water
 *
-M 1 25407 2 25423			a water demon to Murky Water
+M 1 25407 2 25423                       a water demon to Murky Water
 *
-M 1 25408 1 25429			a headless statue to Great Hall
-D 1 25414 5 2			; Small Chamber Lock Down
-R 1 25466 4			; Randomize Impenetrable Fog
-R 1 25472 4			; Randomize Impenetrable Fog
-R 1 25469 4			; Randomize Impenetrable Fog
-D 1 25476 0 1			; Entrance Chamber Close North
-D 1 25487 1 1			; Observatory Close East
-D 1 25488 3 1			; Control Room Close West
-D 1 25475 2 1			; Stone Fortress Close South
+M 1 25408 1 25429                       a headless statue to Great Hall
+D 1 25414 5 2                   ; Small Chamber Lock Down
+R 1 25466 4                     ; Randomize Impenetrable Fog
+R 1 25472 4                     ; Randomize Impenetrable Fog
+R 1 25469 4                     ; Randomize Impenetrable Fog
+D 1 25476 0 1                   ; Entrance Chamber Close North
+D 1 25487 1 1                   ; Observatory Close East
+D 1 25488 3 1                   ; Control Room Close West
+D 1 25475 2 1                   ; Stone Fortress Close South
 *
-M 1 25416 1 25465			Gortholsa to Slimy cave
+M 1 25416 1 25465                       Gortholsa to Slimy cave
 E 1 25413 100 11
 E 1 25412 100 16
 *
-M 1 25415 1 25464			a swamp serpent to Gnarled Branches
+M 1 25415 1 25464                       a swamp serpent to Gnarled Branches
 E 1 25411 100 16
 G 1 25423 100
 *
-M 1 25414 3 25460			some putrid filth to Mangroves
+M 1 25414 3 25460                       some putrid filth to Mangroves
 *
-M 1 25414 3 25449			some putrid filth to Marsh
+M 1 25414 3 25449                       some putrid filth to Marsh
 *
-M 1 25414 3 25458			some putrid filth to Quagmire
+M 1 25414 3 25458                       some putrid filth to Quagmire
 *
-M 1 25409 5 25455			a swamp ogre to Swamp
+M 1 25409 5 25455                       a swamp ogre to Swamp
 E 1 25406 100 16
 *
-M 1 25410 3 25456			a marsh glider to Swamp
+M 1 25410 3 25456                       a marsh glider to Swamp
 *
-M 1 25411 5 25457			a mudworm to Swamp
+M 1 25411 5 25457                       a mudworm to Swamp
 *
-M 1 25412 3 25459			a gethgul to Cliff Face
+M 1 25412 3 25459                       a gethgul to Cliff Face
 E 1 25408 100 5
 E 1 25407 100 16
 E 1 25409 100 17
 *
-M 1 25412 3 25461			a gethgul to Cliff Face
+M 1 25412 3 25461                       a gethgul to Cliff Face
 E 1 25408 100 5
 E 1 25407 100 16
 *
-M 1 25410 3 25463			a marsh glider to Cliff Face
+M 1 25410 3 25463                       a marsh glider to Cliff Face
 *
-M 1 25411 3 25440			a mudworm to Swamp
+M 1 25411 3 25440                       a mudworm to Swamp
 *
-M 1 25413 3 25441			some green slime to Quagmire
+M 1 25413 3 25441                       some green slime to Quagmire
 G 1 25410 100
 *
-M 1 25409 5 25442			a swamp ogre to Mangroves
+M 1 25409 5 25442                       a swamp ogre to Mangroves
 E 1 25406 100 16
 *
-M 1 25409 5 25443			a swamp ogre to Swamp
+M 1 25409 5 25443                       a swamp ogre to Swamp
 E 1 25406 100 16
 *
-M 1 25411 5 25445			a mudworm to Swamp
+M 1 25411 5 25445                       a mudworm to Swamp
 *
-M 1 25412 3 25447			a gethgul to Marsh
+M 1 25412 3 25447                       a gethgul to Marsh
 E 1 25408 100 5
 E 1 25407 100 16
 E 1 25409 100 17
 *
-M 1 25413 3 25448			some green slime to Marsh
+M 1 25413 3 25448                       some green slime to Marsh
 G 1 25410 100
 *
-M 1 25411 5 25450			a mudworm to Marsh
+M 1 25411 5 25450                       a mudworm to Marsh
 *
-M 1 25409 5 25451			a swamp ogre to Marsh
+M 1 25409 5 25451                       a swamp ogre to Marsh
 E 1 25406 100 16
 *
-M 1 25411 5 25454			a mudworm to Swamp
+M 1 25411 5 25454                       a mudworm to Swamp
 *
-M 1 25410 3 25444			a marsh glider to Swamp
+M 1 25410 3 25444                       a marsh glider to Swamp
 *
-M 1 25409 5 25446			a swamp ogre to Quagmire
+M 1 25409 5 25446                       a swamp ogre to Quagmire
 E 1 25406 100 16
 *
-M 1 25413 3 25453			some green slime to Mangroves
+M 1 25413 3 25453                       some green slime to Mangroves
 G 1 25410 100
 *
-M 1 25417 3 25468			a smoke demon to Impenetrable Fog
+M 1 25417 3 25468                       a smoke demon to Impenetrable Fog
 *
-M 1 25418 1 25470			Xabashu to Impenetrable Fog
+M 1 25418 1 25470                       Xabashu to Impenetrable Fog
 E 1 25414 100 1
 *
-M 1 25417 3 25471			a smoke demon to Impenetrable Fog
+M 1 25417 3 25471                       a smoke demon to Impenetrable Fog
 *
-M 1 25417 3 25473			a smoke demon to Impenetrable Fog
+M 1 25417 3 25473                       a smoke demon to Impenetrable Fog
 *
-M 1 25419 4 25477			a fortress trooper to Guard Room
+M 1 25419 4 25477                       a fortress trooper to Guard Room
 E 1 25417 100 8
 E 1 25416 100 12
 E 1 25415 100 16
 *
-M 1 25419 4 25478			a fortress trooper to Barracks
+M 1 25419 4 25478                       a fortress trooper to Barracks
 E 1 25417 100 8
 E 1 25416 100 12
 E 1 25415 100 16
 *
-M 1 25420 2 25479			a fortress mage to Great Hall
-E 1 25417 100 8
-E 1 25416 100 12
-E 1 25415 100 16
-E 1 25418 100 17
-*
-M 1 25421 2 25478			a mist dragon to Barracks
-*
-M 1 25419 4 25482			a fortress trooper to Common Room
-E 1 25417 100 8
-E 1 25416 100 12
-E 1 25415 100 16
-*
-M 1 25420 2 25483			a fortress mage to Armoury
+M 1 25420 2 25479                       a fortress mage to Great Hall
 E 1 25417 100 8
 E 1 25416 100 12
 E 1 25415 100 16
 E 1 25418 100 17
 *
-M 1 25419 4 25484			a fortress trooper to Laboratory
+M 1 25421 2 25478                       a mist dragon to Barracks
+*
+M 1 25419 4 25482                       a fortress trooper to Common Room
 E 1 25417 100 8
 E 1 25416 100 12
 E 1 25415 100 16
 *
-M 1 25421 2 25482			a mist dragon to Common Room
+M 1 25420 2 25483                       a fortress mage to Armoury
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+E 1 25418 100 17
+*
+M 1 25419 4 25484                       a fortress trooper to Laboratory
+E 1 25417 100 8
+E 1 25416 100 12
+E 1 25415 100 16
+*
+M 1 25421 2 25482                       a mist dragon to Common Room
 *
 *
-M 1 25422 1 25480			the Weathermonger to Stairwell
+M 1 25422 1 25480                       the Weathermonger to Stairwell
 E 1 25421 100 4
 E 1 25417 100 8
 E 1 25416 100 12
 E 1 25420 100 17
 E 1 25419 100 16
 *
-M 1 25423 1 25487			the Astrologer to Observatory
+M 1 25423 1 25487                       the Astrologer to Observatory
 E 1 25421 100 3
 E 1 25417 100 8
 E 1 25416 100 12
 E 1 25419 100 16
 E 1 25420 100 17
 G 1 25424 100
-O 1 25422 100 25487			a telescope to Observatory
+O 1 25422 100 25487                     a telescope to Observatory
 *
-M 1 25424 4 25491			a mud man to Mudflats
+M 1 25424 4 25491                       a mud man to Mudflats
 E 1 25426 100 16
 G 1 25427 100
 G 1 25427 100
 *
 *
-M 1 25429 2 25492			a mormogol to Hot Pools
+M 1 25429 2 25492                       a mormogol to Hot Pools
 G 1 25435 100
 G 1 25434 100
 G 1 25435 100
 *
-M 1 25425 3 25493			an ooze beast to Mudflats
+M 1 25425 3 25493                       an ooze beast to Mudflats
 *
-M 1 25426 3 25494			a clay giant to Mudflats
+M 1 25426 3 25494                       a clay giant to Mudflats
 E 1 25430 100 3
 E 1 25429 100 13
 E 1 25428 100 16
 *
-M 1 25424 4 25495			a mud man to Mudflats
+M 1 25424 4 25495                       a mud man to Mudflats
 E 1 25426 100 16
 G 1 25427 100
 G 1 25427 100
 *
-M 1 25427 2 25496			an Akshashi Devil to Grimy Pond
+M 1 25427 2 25496                       an Akshashi Devil to Grimy Pond
 E 1 25432 100 0
 E 1 25433 100 16
 E 1 25431 100 17
 *
-M 1 25424 4 25497			a mud man to Mudflats
+M 1 25424 4 25497                       a mud man to Mudflats
 E 1 25426 100 16
 G 1 25427 100
 G 1 25427 100
 *
-M 1 25426 3 25498			a clay giant to Geyser
+M 1 25426 3 25498                       a clay giant to Geyser
 E 1 25430 100 3
 E 1 25428 100 16
 *
-M 1 25425 3 25499			an ooze beast to Mudflats
+M 1 25425 3 25499                       an ooze beast to Mudflats
 *
-M 1 25427 2 25500			an Akshashi Devil to Mud Pools
+M 1 25427 2 25500                       an Akshashi Devil to Mud Pools
 E 1 25432 100 0
 E 1 25433 100 16
 G 1 25431 100
 *
-M 1 25424 4 25501			a mud man to Mud Pools
+M 1 25424 4 25501                       a mud man to Mud Pools
 E 1 25426 100 16
 G 1 25427 100
 G 1 25427 100
 *
-M 1 25425 3 25493			an ooze beast to Mudflats
+M 1 25425 3 25493                       an ooze beast to Mudflats
 *
-M 1 25426 3 25496			a clay giant to Grimy Pond
+M 1 25426 3 25496                       a clay giant to Grimy Pond
 E 1 25429 100 13
 E 1 25428 100 16
 *
-M 1 25429 2 25494			a mormogol to Mudflats
+M 1 25429 2 25494                       a mormogol to Mudflats
 G 1 25435 100
 G 1 25434 100
 *
-M 1 25430 6 25503			a mud beetle to Mud Burrow
+M 1 25430 6 25503                       a mud beetle to Mud Burrow
 E 1 25436 100 12
 *
-M 1 25431 6 25505			a horned mud beetle to Muddy Tunnel
+M 1 25431 6 25505                       a horned mud beetle to Muddy Tunnel
 E 1 25436 100 12
 *
-M 1 25430 6 25506			a mud beetle to Muddy Tunnel
+M 1 25430 6 25506                       a mud beetle to Muddy Tunnel
 E 1 25436 100 12
 *
 *
-M 1 25434 4 25508			a mud beetle to Nest
+M 1 25434 4 25508                       a mud beetle to Nest
 E 1 25436 100 12
 *
-M 1 25432 9 25508			a beetle larva to Nest
+M 1 25432 9 25508                       a beetle larva to Nest
 *
-M 1 25432 9 25508			a beetle larva to Nest
+M 1 25432 9 25508                       a beetle larva to Nest
 *
-M 1 25432 9 25508			a beetle larva to Nest
+M 1 25432 9 25508                       a beetle larva to Nest
 *
 *
-M 1 25431 6 25512			a horned mud beetle to Tunnel Junction
+M 1 25431 6 25512                       a horned mud beetle to Tunnel Junction
 E 1 25436 100 12
 *
-M 1 25431 6 25513			a horned mud beetle to Muddy Tunnel
+M 1 25431 6 25513                       a horned mud beetle to Muddy Tunnel
 E 1 25436 100 12
 *
-M 1 25430 6 25514			a mud beetle to Muddy Tunnel
+M 1 25430 6 25514                       a mud beetle to Muddy Tunnel
 E 1 25436 100 12
 *
-M 1 25434 4 25515			a mud beetle to Nest
+M 1 25434 4 25515                       a mud beetle to Nest
 E 1 25436 100 12
 *
-M 1 25432 9 25515			a beetle larva to Nest
+M 1 25432 9 25515                       a beetle larva to Nest
 *
-M 1 25432 9 25515			a beetle larva to Nest
+M 1 25432 9 25515                       a beetle larva to Nest
 *
-M 1 25430 6 25516			a mud beetle to Muddy Tunnel
+M 1 25430 6 25516                       a mud beetle to Muddy Tunnel
 E 1 25436 100 12
 *
-M 1 25433 2 25517			a burrow worm to Nest
+M 1 25433 2 25517                       a burrow worm to Nest
 *
 *
-M 1 25431 6 25518			a horned mud beetle to Mud Burrow
+M 1 25431 6 25518                       a horned mud beetle to Mud Burrow
 E 1 25436 100 12
 *
-M 1 25430 6 25520			a mud beetle to Muddy Tunnel
+M 1 25430 6 25520                       a mud beetle to Muddy Tunnel
 E 1 25436 100 12
 *
-M 1 25434 4 25521			a mud beetle to Nest
+M 1 25434 4 25521                       a mud beetle to Nest
 E 1 25436 100 12
 *
-M 1 25432 9 25521			a beetle larva to Nest
+M 1 25432 9 25521                       a beetle larva to Nest
 *
-M 1 25432 9 25521			a beetle larva to Nest
+M 1 25432 9 25521                       a beetle larva to Nest
 *
-M 1 25434 4 25521			a mud beetle to Nest
+M 1 25434 4 25521                       a mud beetle to Nest
 *
-M 1 25432 9 25521			a beetle larva to Nest
+M 1 25432 9 25521                       a beetle larva to Nest
 *
-M 1 25431 6 25523			a horned mud beetle to Central Nest
+M 1 25431 6 25523                       a horned mud beetle to Central Nest
 E 1 25436 100 12
 *
-M 1 25431 6 25524			a horned mud beetle to Central Nest
+M 1 25431 6 25524                       a horned mud beetle to Central Nest
 E 1 25436 100 12
 *
-M 1 25431 6 25525			a horned mud beetle to Central Nest
+M 1 25431 6 25525                       a horned mud beetle to Central Nest
 E 1 25436 100 12
 *
-M 1 25435 1 25526			a mud beetle queen to Central Nest
+M 1 25435 1 25526                       a mud beetle queen to Central Nest
 E 1 25436 100 12
 G 1 25425 100
 *
-M 1 25433 2 25519			a burrow worm to Muddy Tunnel
+M 1 25433 2 25519                       a burrow worm to Muddy Tunnel
 *
-M 1 25428 1 25527			boiling water to Steaming Hot Pool
+M 1 25428 1 25527                       boiling water to Steaming Hot Pool
 *
 *
-M 1 25436 1 25540			J'ket to Mouth of the Volcano
+M 1 25436 1 25540                       J'ket to Mouth of the Volcano
 *
-M 1 25437 1 25554			Llewllokin to Sacrificial Table
+M 1 25437 1 25554                       Llewllokin to Sacrificial Table
 E 1 25437 100 16
 E 1 25439 100 3
 E 1 25438 100 5
@@ -4761,108 +4761,110 @@ E 1 25442 100 10
 G 1 25441 100
 G 1 25444 100
 *
-M 1 25438 3 25554			a druid berserker to Sacrificial Table
+M 1 25438 3 25554                       a druid berserker to Sacrificial Table
 E 1 25438 100 5
 E 1 25443 100 16
 *
 *
-M 1 25438 3 25553			a druid berserker to Stone Circle
+M 1 25438 3 25553                       a druid berserker to Stone Circle
 E 1 25438 100 5
 E 1 25443 100 16
 *
-M 1 25439 2 25553			a druid spellcaster to Stone Circle
-E 1 25438 100 5
-E 1 25443 100 16
-G 1 25444 100
-*
-M 1 25439 2 25555			a druid spellcaster to Wicker Man
+M 1 25439 2 25553                       a druid spellcaster to Stone Circle
 E 1 25438 100 5
 E 1 25443 100 16
 G 1 25444 100
 *
-M 1 25438 3 25555			a druid berserker to Wicker Man
+M 1 25439 2 25555                       a druid spellcaster to Wicker Man
 E 1 25438 100 5
 E 1 25443 100 16
-O 1 25445 100 25554			a stone table to Sacrificial Table
+G 1 25444 100
 *
-M 1 25440 4 25528			a fire serpent to Lofty Crags
+M 1 25438 3 25555                       a druid berserker to Wicker Man
+E 1 25438 100 5
+E 1 25443 100 16
+O 1 25445 100 25554                     a stone table to Sacrificial Table
 *
-M 1 25441 4 25529			a molten uzuz to Wastelands
+M 1 25440 4 25528                       a fire serpent to Lofty Crags
 *
-M 1 25442 3 25531			a fire giant to Sea of Magma
+M 1 25441 4 25529                       a molten uzuz to Wastelands
+*
+M 1 25442 3 25531                       a fire giant to Sea of Magma
 E 1 25446 100 5
 E 1 25447 100 8
 E 1 25448 100 16
 *
-M 1 25443 2 25533			a winged terror to Wastelands
+M 1 25443 2 25533                       a winged terror to Wastelands
 *
-M 1 25441 4 25534			a molten uzuz to Volcanic Slopes
+M 1 25441 4 25534                       a molten uzuz to Volcanic Slopes
 *
-M 1 25440 4 25536			a fire serpent to Volcanic Slopes
+M 1 25440 4 25536                       a fire serpent to Volcanic Slopes
 *
-M 1 25440 4 25537			a fire serpent to Magma River
+M 1 25440 4 25537                       a fire serpent to Magma River
 *
-M 1 25443 2 25538			a winged terror to Wastelands
+M 1 25443 2 25538                       a winged terror to Wastelands
 *
-M 1 25441 4 25541			a molten uzuz to Volcanic Slopes
+M 1 25441 4 25541                       a molten uzuz to Volcanic Slopes
 *
-M 1 25442 3 25542			a fire giant to Magma River
+M 1 25442 3 25542                       a fire giant to Magma River
 E 1 25446 100 5
 E 1 25447 100 8
 E 1 25448 100 16
 *
-M 1 25442 3 25543			a fire giant to Wastelands
+M 1 25442 3 25543                       a fire giant to Wastelands
 E 1 25446 100 5
 E 1 25447 100 8
 E 1 25448 100 16
 *
-M 1 25441 4 25545			a molten uzuz to Volcanic Slopes
+M 1 25441 4 25545                       a molten uzuz to Volcanic Slopes
 *
-M 1 25440 4 25547			a fire serpent to Magma River
-D 1 25432 0 2			; Hall of the Portals Lock North
-D 1 25556 2 2			; The Nexus Lock South
-D 1 25556 0 2			; The Nexus Lock North
-D 1 25557 0 2			; The Nexus Lock North
-D 1 25558 0 2			; The Nexus Lock North
+M 1 25440 4 25547                       a fire serpent to Magma River
+D 1 25432 0 2                   ; Hall of the Portals Lock North
+D 1 25556 2 2                   ; The Nexus Lock South
+D 1 25556 0 2                   ; The Nexus Lock North
+D 1 25557 0 2                   ; The Nexus Lock North
+D 1 25558 0 2                   ; The Nexus Lock North
 *
-M 1 25444 1 25556			One Tusk to The Nexus
+M 1 25444 1 25556                       One Tusk to The Nexus
 E 1 25450 100 16
 *
-M 1 25445 1 25557			Two Tusks to The Nexus
+M 1 25445 1 25557                       Two Tusks to The Nexus
 E 1 25451 100 16
 *
-M 1 25446 1 25558			Three Tusks to The Nexus
+M 1 25446 1 25558                       Three Tusks to The Nexus
 E 1 25452 100 16
 *
-M 1 25447 1 25559			Four Tusks to The Nexus
+M 1 25447 1 25559                       Four Tusks to The Nexus
 E 1 25449 100 11
 E 1 25453 100 16
 E 1 25454 100 17
 *
-D 1 25558 2 2			; The Nexus Lock South
-D 1 25559 2 2			; The Nexus Lock South
+D 1 25558 2 2                   ; The Nexus Lock South
+D 1 25559 2 2                   ; The Nexus Lock South
 S
 
 
 #SPECIALS
-M  25400 spec_cast_druid		a druid
-M  25401 spec_cast_mage			a treant
-M  25406 spec_breath_frost		a water nymph
-M  25410 spec_poison			a marsh glider
-M  25413 spec_breath_acid		some green slime
-M  25415 spec_breath_acid		a swamp serpent
-M  25420 spec_cast_mage			a fortress mage
-M  25429 spec_breath_gas		a mormogol
-M  25435 spec_breath_fire		a mud beetle queen
-M  25436 spec_breath_fire		J'ket
-M  25437 spec_cast_psionicist		Llewllokin
-M  25439 spec_cast_druid		a druid spellcaster
-M  25441 spec_thief			a molten uzuz
-M  25443 spec_breath_fire		a winged terror
-M  25444 spec_poison			One Tusk
-M  25445 spec_breath_lightning	Two Tusks
-M  25446 spec_cast_mage			Three Tusks
-M  25447 spec_breath_gas		Four Tusks
+M  25400 spec_cast_druid                a druid
+M  25401 spec_cast_mage                 a treant
+M  25406 spec_breath_frost              a water nymph
+M  25407 spec_demon                     a water demon
+M  25410 spec_poison                    a marsh glider
+M  25413 spec_breath_acid               some green slime
+M  25415 spec_breath_acid               a swamp serpent
+M  25417 spec_demon                     a smoke demon
+M  25420 spec_cast_mage                 a fortress mage
+M  25429 spec_breath_gas                a mormogol
+M  25435 spec_breath_fire               a mud beetle queen
+M  25436 spec_breath_fire               J'ket
+M  25437 spec_cast_psionicist           Llewllokin
+M  25439 spec_cast_druid                a druid spellcaster
+M  25441 spec_thief                     a molten uzuz
+M  25443 spec_breath_fire               a winged terror
+M  25444 spec_poison                    One Tusk
+M  25445 spec_breath_lightning          Two Tusks
+M  25446 spec_cast_mage                 Three Tusks
+M  25447 spec_breath_gas                Four Tusks
 S
 
 

@@ -238,7 +238,7 @@ A bib with all kinds of crap on it is here.~
 #139
 Xevlin corpse~
 the corpse of Xevlin the Cleric~
-Xevlin the clerics body lies here, chained to the wall and good portion of his skull bashed in.~
+Xevlin the Cleric's body lies here, chained to the wall with a good portion of his skull bashed in.~
 ~
 15 0 8192
 100~ 1~ -1~ 11~
@@ -851,109 +851,109 @@ S
 *
 *
 *
-M 1 131 8 134			a Baby Gremlin to Baby!
+M 1 131 8 134                   a Baby Gremlin to Baby!
 E 1 135 100 13
 *
-M 1 131 8 133			a Baby Gremlin to Baby!
+M 1 131 8 133                   a Baby Gremlin to Baby!
 E 1 135 100 13
 *
-M 1 131 8 135			a Baby Gremlin to The "play" room.
+M 1 131 8 135                   a Baby Gremlin to The "play" room.
 E 1 135 100 13
 *
-M 1 131 8 135			a Baby Gremlin to The "play" room.
+M 1 131 8 135                   a Baby Gremlin to The "play" room.
 E 1 135 100 13
 *
-M 1 131 8 135			a Baby Gremlin to The "play" room.
+M 1 131 8 135                   a Baby Gremlin to The "play" room.
 E 1 135 100 13
 *
 *
 *
-M 1 131 8 135			a Baby Gremlin to The "play" room.
+M 1 131 8 135                   a Baby Gremlin to The "play" room.
 E 1 135 100 13
 *
-M 1 131 8 135			a Baby Gremlin to The "play" room.
+M 1 131 8 135                   a Baby Gremlin to The "play" room.
 E 1 135 100 13
 *
-M 1 131 8 135			a Baby Gremlin to The "play" room.
+M 1 131 8 135                   a Baby Gremlin to The "play" room.
 E 1 135 100 13
 *
-M 1 140 1 136			a teddy bear head to The Play Ground.
+M 1 140 1 136                   a teddy bear head to The Play Ground.
 *
-M 1 139 1 137			Sir Durok of EAT to A crevice
+M 1 139 1 137                   Sir Durok of EAT to A crevice
 E 1 141 100 5
 *
 *
 *
 *
-M 1 130 5 139			a Little Gremlin to The "stairwell"
+M 1 130 5 139                   a Little Gremlin to The "stairwell"
 *
-M 1 130 5 140			a Little Gremlin to The 2nd level
+M 1 130 5 140                   a Little Gremlin to The 2nd level
 *
-M 1 130 5 140			a Little Gremlin to The 2nd level
+M 1 130 5 140                   a Little Gremlin to The 2nd level
 *
-M 1 132 4 145			a Male Gremlin to The 2nd "stairwell"
+M 1 132 4 145                   a Male Gremlin to The 2nd "stairwell"
 *
-M 1 132 4 146			a Male Gremlin to Welcome to the 3rd level!
-*
-*
-M 1 133 5 146			a Female Gremlin to Welcome to the 3rd level!
-O 1 142 100 147			Jeremiah's throne to Jeremiah's "throne room"
-*
-M 1 141 1 147			Jeremiah the gremlin to Jeremiah's "throne room"
+M 1 132 4 146                   a Male Gremlin to Welcome to the 3rd level!
 *
 *
-M 1 133 5 150			a Female Gremlin to BIG
+M 1 133 5 146                   a Female Gremlin to Welcome to the 3rd level!
+O 1 142 100 147                 Jeremiah's throne to Jeremiah's "throne room"
 *
-M 1 132 4 150			a Male Gremlin to BIG
+M 1 141 1 147                   Jeremiah the gremlin to Jeremiah's "throne room"
 *
-M 1 133 5 150			a Female Gremlin to BIG
 *
-M 1 132 4 150			a Male Gremlin to BIG
+M 1 133 5 150                   a Female Gremlin to BIG
 *
-M 1 134 1 153			Boos the Gremlin. to Boos's room
+M 1 132 4 150                   a Male Gremlin to BIG
 *
-M 1 135 1 154			Boose the Gremlin to Boose's room
+M 1 133 5 150                   a Female Gremlin to BIG
+*
+M 1 132 4 150                   a Male Gremlin to BIG
+*
+M 1 134 1 153                   Boos the Gremlin. to Boos's room
+*
+M 1 135 1 154                   Boose the Gremlin to Boose's room
 E 1 133 100 16
 *
-M 1 137 1 155			Boozes the Gremlin to Boozes's room
+M 1 137 1 155                   Boozes the Gremlin to Boozes's room
 *
-M 1 136 1 156			Booz the Gremlin to Booz's room
+M 1 136 1 156                   Booz the Gremlin to Booz's room
 *
-M 1 138 1 160			King Boo the Gremlin Lord to King Boo's residence
+M 1 138 1 160                   King Boo the Gremlin Lord to King Boo's residence
 E 1 138 100 3
 E 1 137 100 7
 E 1 130 100 16
 G 1 143 100
-O 1 139 100 161			the corpse of Xevlin the Cleric to A storage space.......or a cell
-P 1 134 100 139			a dented helmet to container Xevlin corpse
+O 1 139 100 161                 the corpse of Xevlin the Cleric to A storage space.......or a cell
+P 1 134 100 139                 a dented helmet to container Xevlin corpse
 *
-M 1 130 5 144			a Little Gremlin to Nothing....or not
+M 1 130 5 144                   a Little Gremlin to Nothing....or not
 *
-M 1 130 5 142			a Little Gremlin to AAAAAAAAAAAAAHHHHHHHHHHHHHH!!!!!!!!!!!!!
+M 1 130 5 142                   a Little Gremlin to AAAAAAAAAAAAAHHHHHHHHHHHHHH!!!!!!!!!!!!!
 *
-P 1 140 100 142			a page of a journal #1 to container Jeremiah's throne
-D 1 160 3 2			; King Boo's residence Lock West
-D 1 161 1 1			; A storage space.......or a cell? Close East
-O 1 144 100 160			a empty soda can to King Boo's residence
+P 1 140 100 142                 a page of a journal #1 to container Jeremiah's throne
+D 1 160 3 2                     ; King Boo's residence Lock West
+D 1 161 1 1                     ; A storage space.......or a cell? Close East
+O 1 144 100 160                 a empty soda can to King Boo's residence
 *
-M 1 142 1 162			Gizmo to Gizmo's Room
-P 1 145 100 142			a {yw{gac{rk{cy{x scroll to container Jeremiah's throne
-D 1 162 2 1			; Gizmo's Room Close South
-D 1 150 0 1			; BIG Close North
-D 1 159 2 1			; Closed doors Close South
-D 1 160 0 1			; King Boo's residence Close North
-P 1 140 100 142			a page of a journal #1 to container Jeremiah's throne
-D 1 152 5 1			; Empty, Coins and Trash Close Down
+M 1 142 1 162                   Gizmo to Gizmo's Room
+P 1 145 100 142                 a {yw{gac{rk{cy{x scroll to container Jeremiah's throne
+D 1 162 2 1                     ; Gizmo's Room Close South
+D 1 150 0 1                     ; BIG Close North
+D 1 159 2 1                     ; Closed doors Close South
+D 1 160 0 1                     ; King Boo's residence Close North
+P 1 140 100 142                 a page of a journal #1 to container Jeremiah's throne
+D 1 152 5 1                     ; Empty, Coins and Trash Close Down
 *
-M 1 133 5 148			a Female {gGremlin{x to {rKLANG! THUD! KLANG! THUD! KLANG! THUD! KLANG! THUD!{x
+M 1 133 5 148                   a Female {gGremlin{x to {rKLANG! THUD! KLANG! THUD! KLANG! THUD! KLANG! THUD!{x
 *
-M 1 133 5 149			a Female {gGremlin{x to tiny
+M 1 133 5 149                   a Female {gGremlin{x to tiny
 S
 
 
 #SPECIALS
-M  136 spec_fido			Booz the Gremlin
-M  142 spec_cast_adept			Gizmo
+M  136 spec_fido                Booz the Gremlin
+M  142 spec_cast_adept          Gizmo
 S
 
 

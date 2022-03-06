@@ -210,7 +210,7 @@ A small chess board sits here on the ground, waiting for someone to play~
 #9932
 welcoming mat~
 a welcoming mat~
-A mat sits here welcoming your arival.~
+A mat sits here welcoming your arrival.~
 ~
 13 0 1
 0~ 0~ 0~ 0~
@@ -597,7 +597,7 @@ D0
 S
 #9945
 The Basement~
-It is deep, dark and dank down here.  A sensation occurs that somone
+It is deep, dark and dank down here.  A sensation occurs that someone
 is watching your every move.  You scan around and see the hallway
 leads in two directions, and the stairs lead back up.
 ~
@@ -675,7 +675,7 @@ D3
 S
 #9950
 Dark Corridor~
-There are stalagmites and stalagtites rising and falling from the room.
+There are stalagmites and stalactites rising and falling from the room.
 There are tiny black creatures hanging off of them, but you are uncertain
 what they are.
 ~
@@ -838,8 +838,8 @@ O 1 9932 100 9929                       A welcoming mat to A Shelter
 S
 
 #SPECIALS
-M 9925 spec_breath_lightning		dragon
-M 9927 spec_cast_undead			master
+M 9925 spec_breath_lightning    dragon
+M 9927 spec_cast_undead         master
 
 S
 

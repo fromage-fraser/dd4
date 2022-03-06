@@ -1,4 +1,4 @@
-#AREA	Copper~  In the Air~
+#AREA   Copper~  In the Air~
 5 10 0 100
 
 
@@ -20,7 +20,7 @@ griffin~
 A griffin~
 A large black winged griffin swoops into an attack.
 ~
-Golden maned and black all over.  It's quite a beautiful creature if not
+Golden-maned and black all over.  It's quite a beautiful creature if not
 for the fact it is hungry and is attacking you!
 ~
 96 0 300 S
@@ -704,6 +704,11 @@ More of the same.
 ~
 ~
 0 0 1024
+D4
+You see a shimming rainbow above you.
+~
+~
+0 0 1900
 D5
 More of the same.
 ~
@@ -1093,6 +1098,11 @@ You see a magnificent city!
 ~
 ~
 0 0 904
+D5
+You see the Temple spire.
+~
+~
+0 0 1016
 S
 #1037
 In the air ...~

@@ -88,7 +88,7 @@ The canoe is fairly light.
 
 #201
 On the River~
-	The river flows slowly westward from the city of Midgaard. To the east
+    The river flows slowly westward from the city of Midgaard. To the east
 a bridge can be seen crossing the river. South of here a field can be seen
 on ground rising from the water's edge. To the north is a thick forest. The
 river flows west and upstream to the east.
@@ -107,7 +107,7 @@ The river continues westward.
 S
 #202
 On the River~
-	You have passed by the farm land of Midgaard and no longer can you
+    You have passed by the farm land of Midgaard and no longer can you
 sense the noise of the city. The forest bordering the river has swallowed you
 in a dark shadow. The river flows west and upstream to the east.
 ~
@@ -125,7 +125,7 @@ The river continues into the shadows.
 S
 #203
 On the River~
-	The sun is barely visible above the top branches of the trees as the
+    The sun is barely visible above the top branches of the trees as the
 river snakes its way thru the forest. The flow of the river seems to have
 picked up though in this narrow section of the river as you notice a small
 figure watching you from the northern shore. The river flows west and upstream
@@ -149,7 +149,7 @@ As you look towards the shore, the figure disappears into the forest.
 S
 #204
 The Wide River~
-	Here the river is very wide. With the absence of so many tree limbs
+    Here the river is very wide. With the absence of so many tree limbs
 overhead, the river is much brighter here than it is towards the east.
 You can see land far to the west. The river flows west and upstream to the
 east.
@@ -168,7 +168,7 @@ The appears to be an island in the middle of the river ahead.
 S
 #205
 A Split in the River~
-	The river flows around a small island which lies directly to the south
+    The river flows around a small island which lies directly to the south
 west. The brackish water reflects your image like a smooth mirror disturbed
 only by your movement. The river flows west and upstream to the east. A
 smaller part of the river splits and flows south.
@@ -192,7 +192,7 @@ This way leads past the eastern side of the island.
 S
 #206
 On the River~
-	You are on the river which is flowing westward past the north side
+    You are on the river which is flowing westward past the north side
 of a small island.  The island is thich with vegetation which makes it
 impossible to get on shore from here. The river flows west and upstream
 to the east.
@@ -211,7 +211,7 @@ The river continues onwards towards a large body of water.
 S
 #207
 The Southeast Split in the River~
-	A small island is west of the river here, but the island's thick
+    A small island is west of the river here, but the island's thick
 vegetation makes it impossible to get on shore from here. To the north
 the main path of the river flows west and upstream to the east.
 ~
@@ -229,7 +229,7 @@ Here you can see the southern side of the island.
 S
 #208
 The Little River~
-	This narrower route around the island has brought you within sight
+    This narrower route around the island has brought you within sight
 of a small path cut out of the vegetation leading north into the depths
 of the island.
 ~
@@ -252,7 +252,7 @@ You see the southwest split in the river.
 S
 #209
 On the Big River~
-	A small island splits the river to the southeast. On the island you
+    A small island splits the river to the southeast. On the island you
 can see nothing due to trees and plants which grow even at the waters edge.
 These plants make it impossible to get on the island from here. The river
 flows to the downstream to the west and upstream to the east.
@@ -277,7 +277,7 @@ The river continues its slow movement toward a larger body of water.
 S
 #210
 The Southwest Split in the River~
-	A small island can be seen to the east. Large trees cover this end
+    A small island can be seen to the east. Large trees cover this end
 of the island. The river merges to the north where it continues to flow
 downstream to the west.
 ~
@@ -295,7 +295,7 @@ Going upstream from here you may pass by the southern side of the island.
 S
 #211
 The Wide River~
-	The river flows westward from here. Looking at the distant shores
+    The river flows westward from here. Looking at the distant shores
 you notice they continue to get further apart and all that can be seen to
 the west is more water which touches the sky at the horizon. Upstream
 it appears there is land near the middle of the river.
@@ -319,7 +319,7 @@ The mouth of the river can be seen to the west.
 S
 #212
 The Mouth of the River~
-	The river is merging with the ocean! Waves rock you back and forth
+    The river is merging with the ocean! Waves rock you back and forth
 as you move about. The river snakes its way into the land and disappears
 to the east. To the west is the big, blue ocean. To the north and south
 the forest has given way to grass fields and small bushes on fairly flat land.
@@ -338,7 +338,7 @@ To the west only the ocean can be seen.
 S
 #213
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the east can be seen
 a river as it leads into an immense land mass. The ocean continues to
 the north, south, and west.
@@ -367,9 +367,9 @@ To the west only the ocean can be seen.
 S
 #214
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, and west
-the ocean continues in unobscured vision. To the east, a large land mass
+the ocean continues as far as your eyes can see. To the east, a large land mass
 can be seen, however rocks along the shore prevent you from landing there.
 ~
 2 4 7
@@ -391,9 +391,9 @@ To the west only the ocean can be seen.
 S
 #215
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, and west
-the ocean continues in unobscured vision. To the east, a large land mass
+the ocean continues as far as your eyes can see. To the east, a large land mass
 can be seen, however rocks along the shore prevent you from landing there.
 ~
 2 4 7
@@ -415,9 +415,9 @@ To the west only the ocean can ben seen.
 S
 #216
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, east and
-west the ocean continues in unobscured vision.
+west the ocean continues as far as your eyes can see.
 ~
 2 4 7
 D0
@@ -443,9 +443,9 @@ To the west only the ocean can be seen.
 S
 #217
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, and west
-the ocean continues in unobscured vision. To the east, a large land mass
+the ocean continues as far as your eyes can see. To the east, a large land mass
 can be seen, however rocks along the shore prevent you from landing there.
 ~
 2 4 7
@@ -467,7 +467,7 @@ To the west only the ocean can be seen.
 S
 #218
 In a Frozen Ocean~
-	The ocean is beginning to freeze and turn to ice. To the north can
+    The ocean is beginning to freeze and turn to ice. To the north can
 be seen large blocks of ice which block further passage in that direction. To
 the south and west the ocean continues. To the east, a large land mass
 can be seen, however rocks along the shore prevent you from landing there.
@@ -487,7 +487,7 @@ To the west the ocean appears frozen.
 S
 #219
 In a Frozen Ocean~
-	The ocean is beginning to freeze and turn to ice. To the north can
+    The ocean is beginning to freeze and turn to ice. To the north can
 be seen large blocks of ice which block further passage in that direction. To
 the south and east the ocean continues.
 ~
@@ -505,9 +505,9 @@ To the south only the ocean can be seen.
 S
 #220
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, east and
-west the ocean continues in unobscured vision.
+west the ocean continues as far as your eyes can see.
 ~
 2 4 7
 D0
@@ -533,9 +533,9 @@ To the west only the ocean can be seen.
 S
 #221
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, east and
-west the ocean continues in unobscured vision.
+west the ocean continues as far as your eyes can see.
 ~
 2 4 7
 D0
@@ -561,9 +561,9 @@ To the west only the ocean can be seen.
 S
 #222
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north and west the
-ocean continues in unobscured vision. To the east the shore rises steeply
+ocean continues as far as your eyes can see. To the east the shore rises steeply
 into a verticle cliff. To the south the water seem to be turning cooler.
 ~
 2 4 7
@@ -585,9 +585,9 @@ To the south appears a dangerous region inhabited by polar bears.
 S
 #223
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, east and west
-the ocean continues in unobscured vision. To the south large pieces of floating
+the ocean continues as far as your eyes can see. To the south large pieces of floating
 ice make the waters impassable.
 ~
 2 4 7
@@ -609,9 +609,9 @@ To the west only the ocean can be seen.
 S
 #224
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, east and
-west the ocean continues in unobscured vision.
+west the ocean continues as far as your eyes can see.
 ~
 2 4 7
 D0
@@ -637,7 +637,7 @@ To the west the ocean grows in ferocity.
 S
 #225
 The Angry Sea~
-	Although you didn't know it at the time, you have come upon
+    Although you didn't know it at the time, you have come upon
 the dreaded area of the ocean where many an adventurer has perished
 never to heard of again.
 ~
@@ -665,7 +665,7 @@ To the west only the sea can be seen.
 S
 #226
 A Ferocious Sea~
-	As you make your way here the sky darkens, and the
+    As you make your way here the sky darkens, and the
 wind rises. Waves now pour over you, filling your stomach with
 the taste of salt water. Gradually things subside, and you able to
 continue your journey.
@@ -694,7 +694,7 @@ To the west only the ocean can be seen.
 S
 #227
 A Tropical Sea~
-	You have reached the calm warm waters of the Yeats Sea.
+    You have reached the calm warm waters of the Yeats Sea.
 The clear blue-green waters support a variety of life below the surface.
 Stuck to simply wondering above though, you notice land to the south, but
 volcanic lava flows prevent landing.
@@ -713,7 +713,7 @@ To the west only the smooth sea can be seen.
 S
 #228
 A Tropical Sea~
-	You have reached the calm warm waters of the Yeats Sea.
+    You have reached the calm warm waters of the Yeats Sea.
 The clear blue-green waters support a variety of life below the surface.
 The sea continues north, south, east, and west, however the sky
 appears much cloudier looking to the east than in the other directions.
@@ -742,9 +742,9 @@ To the west only the sea can be seen.
 S
 #229
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, and east
-the ocean continues in unobscured vision. You see land in the west, seemingly
+the ocean continues as far as your eyes can see. You see land in the west, seemingly
 unconnected with that on which Midgaard rests.
 ~
 2 4 7
@@ -766,7 +766,7 @@ To the south the clouds gather in manner meant as a warning.
 S
 #230
 A Tropical Sea~
-	You have reached the calm warm waters of the Yeats Sea.
+    You have reached the calm warm waters of the Yeats Sea.
 The clear blue-green waters support a variety of life below the surface.
 The sea continues south, east, and west, however the sky appears
 much cloudier looking to the east than in the other directions. You see
@@ -791,7 +791,7 @@ To the west only the sea can be seen.
 S
 #231
 A Tropical Sea~
-	You traverse the calm warm waters of the Yeats Sea. The clear
+    You traverse the calm warm waters of the Yeats Sea. The clear
  blue-green waters support a variety of life below the surface. The sea
 continues north, south, east, and west.
 ~
@@ -819,7 +819,7 @@ To the west only the sea can be seen.
 S
 #232
 A Tropical Sea~
-	You traverse the calm warm waters of the Yeats Sea. The clear
+    You traverse the calm warm waters of the Yeats Sea. The clear
  blue-green waters support a variety of life below the surface. The sea
 continues north, south, east, and west.
 ~
@@ -847,9 +847,9 @@ To the west only the sea can be seen.
 S
 #233
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north, south, and east
-the ocean continues in unobscured vision. You see land in the west, seemingly
+the ocean continues as far as your eyes can see. You see land in the west, seemingly
 unconnected with that on which Midgaard rests.
 ~
 2 4 7
@@ -871,9 +871,9 @@ To the south only the ocean can be seen..
 S
 #234
 The Big Blue Ocean~
-	You are in the ocean. Waves rock you back and forth occasionally
+    You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the south and east the
-ocean continues in unobscured vision. You see land in the west, seemingly
+ocean continues as far as your eyes can see. You see land in the west, seemingly
 unconnected with that on which Midgaard rests. To the north the cliffs
 break away to a narrow stretch of beach.
 ~
@@ -896,7 +896,7 @@ To the south only the ocean can be seen.
 S
 #235
 A Tropical Sea~
-	You traverse the calm warm waters of the Yeats Sea.
+    You traverse the calm warm waters of the Yeats Sea.
 The clear blue-green waters support a variety of life below the surface.
 The sea continues south and east. You see land to the north and west
 seemingly unconnected with that on which Midgaard rests. A small
@@ -921,7 +921,7 @@ To the south only the sea can be seen.
 S
 #236
 A Tropical Sea~
-	You have reached the calm warm waters of the Yeats Sea.
+    You have reached the calm warm waters of the Yeats Sea.
 The clear blue-green waters support a variety of life below the surface.
 Stuck to simply wondering above though, you notice land to the south and
 east, but volcanic lava flows prevent landing.
@@ -940,7 +940,7 @@ To the west only the sea can be seen.
 S
 #237
 A Tropical Sea~
-	You traverse the calm warm waters of the Yeats Sea. The clear
+    You traverse the calm warm waters of the Yeats Sea. The clear
  blue-green waters support a variety of life below the surface. The sea
 continues north, south, east, and west.
 ~
@@ -968,7 +968,7 @@ To the west only the sea can be seen.
 S
 #238
 A Tropical Sea~
-	You traverse the calm warm waters of the Yeats Sea.
+    You traverse the calm warm waters of the Yeats Sea.
 The clear blue-green waters support a variety of life below the surface.
 The sea continues south and east. You see land to the north and west
 seemingly unconnected with that on which Midgaard rests. The banks
@@ -988,7 +988,7 @@ To the south only the sea can be seen.
 S
 #239
 The Dock~
-	The dock is made of old greyed timber. Not very much could
+    The dock is made of old greyed timber. Not very much could
 stop at so small a dock with such shallow water around it. There are no
 apparent reasons for a dock even being here, since there is no visible
 trail in any direction. The only exit takes you back to the Sea.
@@ -1002,7 +1002,7 @@ To the south only the sea can be seen.
 S
 #240
 A Tropical Sea~
-	You sail the calm warm waters of the Yeats Sea. The clear
+    You sail the calm warm waters of the Yeats Sea. The clear
 blue-green waters support a variety of life below the surface. Stuck to
 simply wondering above though, you notice land to the south and
 west, but volcanic lava flows prevent landing.
@@ -1021,7 +1021,7 @@ To the east only the sea can be seen.
 S
 #241
 A Tropical Sea~
-	You sail the calm warm waters of the Yeats Sea. The clear
+    You sail the calm warm waters of the Yeats Sea. The clear
 blue-green waters support a variety of life below the surface. Stuck to
 simply wondering above though, you notice land to the south and
 west on which forested hills rise and fall like the waves of the sea for as
@@ -1041,7 +1041,7 @@ To the east only the sea can be seen.
 S
 #242
 A Small Path~
-	As you slowly force your way through the head high weeds
+    As you slowly force your way through the head high weeds
 the path becomes clearer. Going just far enough to be out of sight
 of where you stepped on to the island, you can see a small cottage
 ahead steeped in shadow with light filtering though the shutters of a
@@ -1061,7 +1061,7 @@ To the south you can see the river.
 S
 #243
 Beside the Cottage~
-	You stand in front of a small cottage made of shabbily
+    You stand in front of a small cottage made of shabbily
 connected boards and sticks, the kinds of things one might see
 floating down a river. As you approached a noise came from
 within, and now all is quiet.  The entrance is to the west, or you
@@ -1082,7 +1082,7 @@ door wooden~
 S
 #244
 Inside the Cottage~
-	Around the room you can see a number of books and
+    Around the room you can see a number of books and
 flasks, perhaps used in the manufacture of magical potions. On
 the far side of the room from where you stand the picture of a
 beautiful woman dressed in a formal gown can be seen. A door
@@ -1097,7 +1097,7 @@ The door leads outside.
 S
 #245
 A Beach~
-	You come to a narrow beach.  Vertical cliffs loom to the east and west,
+    You come to a narrow beach.  Vertical cliffs loom to the east and west,
 and the harsh ocean is to the south.  To the north, you can see a less steep
 mountain ahead, which you can probably climb.
 ~
@@ -1115,7 +1115,7 @@ You see the vast ocean before you.
 S
 #246
 Along the Beach~
-	You are along the beach.  Evidently, not many people travel on this
+    You are along the beach.  Evidently, not many people travel on this
 rocky shore, and you are lucky you found this place.  Continuing north is the
 foot of a large mountain, while south of you, you can hear the roar of the
 waves crashing against the rocky beach.  The vertical cliffs to the east and
@@ -1135,7 +1135,7 @@ You see the beach and the vast ocean beyond.
 S
 #247
 Foot of the Mountain~
-	You are at the foot of the mountain.  A narrow trail leads up the face
+    You are at the foot of the mountain.  A narrow trail leads up the face
 of the mountain to the north, while the beach leads back south toward the
 ocean.  Vertical cliffs block all travel east and west.  It almost looks as if
 stairs have been carved into the trail to the north.
@@ -1174,7 +1174,7 @@ D 0 244 1 1
 S
 
 #SHOPS
- 202	22  0  0  0  0  120  90		6 22  ; The sailor
+ 202    22  0  0  0  0  120  90     6 22  ; The sailor
 0
 
 #SPECIALS

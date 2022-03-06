@@ -1,4 +1,4 @@
-#AREA	Anon~    Dwarven Kingdom~
+#AREA   Anon~    Dwarven Kingdom~
 10 25 0 100
 
 
@@ -1296,8 +1296,8 @@ S
 
 
 #SHOPS
- 6503	 0  0  0  0  0	 150  50	 0 23	; Hide and Tooth
- 6504	 0  0  0  0  0	 150  50	 0 23	; Granitehead the Baker
+ 6503    0  0  0  0  0   150  50     0 23   ; Hide and Tooth
+ 6504    0  0  0  0  0   150  50     0 23   ; Granitehead the Baker
 0
 
 

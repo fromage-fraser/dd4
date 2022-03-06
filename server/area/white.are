@@ -1,4 +1,4 @@
-#AREA	Strahd~  White Lotus Temple~
+#AREA   Strahd~  White Lotus Temple~
 20 50 0 100
 
 #HELPS
@@ -24,7 +24,7 @@ robe. He is diligently cleaning the walkway.
 #10702
 monk elder~
 elder monk~
-An elder monk is here murmering and praying.
+An elder monk is here murmuring and praying.
 ~
 
 ~
@@ -35,7 +35,7 @@ An elder monk is here murmering and praying.
 #10703
 monk student~
 student~
-A temple student is here practicing his kung fu.
+A temple student is here practising his kung fu.
 ~
 
 ~
@@ -46,7 +46,7 @@ A temple student is here practicing his kung fu.
 #10704
 monk advanced student~
 student~
-A temple student is here practicing his kung fu.
+A temple student is here practising his kung fu.
 ~
 
 ~
@@ -134,7 +134,7 @@ A temple soldier is here stuffing his mouth with rice.
 #10712
 officer temple~
 temple officer~
-A temple office is here drinking wine.
+A temple officer is here drinking wine.
 ~
 
 ~
@@ -165,7 +165,7 @@ A monk is here wandering and praying.
 0 0
 8 8 1
 #10715
-song bird~
+song bird songbird~
 song bird~
 A small colorful songbird is here chirping merrily.
 ~
@@ -242,7 +242,7 @@ A small red scorpion is scuttling across the path.
 52 0
 8 8 0
 #10722
-Expert Scorpion~
+Expert Scorpion ma tang monk~
 Ma Tang~
 Ma Tang, Expert of the Scorpion technique is here.
 ~
@@ -253,7 +253,7 @@ Ma Tang, Expert of the Scorpion technique is here.
 0 0
 8 8 1
 #10723
-Expert Toad~
+Expert Toad lee ho monk~
 Lee Ho~
 Lee Ho, Expert of the Toad technique is here.
 ~
@@ -264,7 +264,7 @@ Lee Ho, Expert of the Toad technique is here.
 0 0
 8 8 1
 #10724
-Expert Centipede~
+Expert Centipede monk tang seung qwe~
 Tang Seung Qwe~
 Tang Seung Qwe, Expert of the Centipede technique is here.
 ~
@@ -275,7 +275,7 @@ Tang Seung Qwe, Expert of the Centipede technique is here.
 0 0
 8 8 1
 #10725
-Expert Lizard~
+Expert Lizard Yeun Sun Ho monk~
 Yeun Sun Ho~
 Yeun Sun Ho, Expert of the Lizard technique is here.
 ~
@@ -332,7 +332,7 @@ The statue of the Golden Buddha of Contentment sits here.
 #10730
 shrine attendant~
 shrine attendant~
-An atttendant is here tending to the shrines.
+An attendant is here tending to the shrines.
 ~
 
 ~
@@ -363,7 +363,7 @@ Wei Chin is here.
 0 0
 8 8 1
 #10733
-Wu Tak~
+Wu Tak monk~
 Wu Tak~
 A visiting monk named, 'Wu Tak' is here.
 ~
@@ -385,7 +385,7 @@ The White Lotus Chief is here meditating.
 0 0
 8 8 1
 #10735
-chief personal guard~
+chief personal guard white lotus~
 personal guard of the White Lotus Chief~
 The personal guard of the White Lotus Chief is here.
 ~
@@ -431,7 +431,7 @@ The teacher of the 2nd chamber is waiting patiently for a student.
 #10739
 teacher whirlwind kick~
 teacher of the whirlwind kick~
-The teacher of the whirlwind kick is here waiting to test you.
+The teacher of the whirlwind kick is here, waiting to test you.
 ~
 
 ~
@@ -442,7 +442,7 @@ The teacher of the whirlwind kick is here waiting to test you.
 #10740
 teacher chin kang palm~
 teacher of the chin kang palm~
-The teacher of the chin kang palm is here waiting to test you.
+The teacher of the chin kang palm is here, waiting to test you.
 ~
 
 ~
@@ -464,7 +464,7 @@ The teacher of the lizard style is standing on the wall.
 #10742
 teacher crane style~
 teacher of the crane style~
-The teacher of the crane style is here meditating.
+The teacher of the crane style is here, meditating.
 ~
 
 ~
@@ -486,7 +486,7 @@ The teacher of the dragon style is awaiting your arrival.
 #10744
 teacher tiger style~
 teacher of the tiger style~
-The teacher of the tiger style sits here eating a pork bun.
+The teacher of the tiger style sits here, eating a pork bun.
 ~
 
 ~
@@ -541,7 +541,7 @@ The teacher of the toad style is waiting for you.
 #10749
 teacher iron monk style~
 teacher of the iron monk style~
-The teacher of the iron monk style is here meditating.
+The teacher of the iron monk style is here, meditating.
 ~
 
 ~
@@ -563,7 +563,7 @@ The teacher of the iron head style is praying he'll spare you.
 #10751
 teacher hawk style~
 teacher of the hawk style~
-The teacher of the hawk style is here drinking wine.
+The teacher of the hawk style is here, drinking wine.
 ~
 
 ~
@@ -574,7 +574,7 @@ The teacher of the hawk style is here drinking wine.
 #10752
 teacher quivering palm style~
 teacher of the quivering palm style~
-The teacher of the quivering palm style sits patiently on a stool here.
+The teacher of the quivering palm style sits patiently on a stool.
 ~
 
 ~
@@ -596,7 +596,7 @@ The teacher of the five pace palm style is waiting patiently.
 #10754
 healing monk chanting~
 chanting monk~
-A monk is here praying and chanting.
+A monk is here, praying and chanting.
 ~
 
 ~
@@ -607,7 +607,7 @@ A monk is here praying and chanting.
 #10755
 teacher weightless boxing~
 teacher of weightless boxing~
-The teacher of weightless boxing is here saying, 'Damn You!'
+The teacher of weightless boxing is here, saying, 'Damn you!'
 ~
 
 ~
@@ -618,7 +618,7 @@ The teacher of weightless boxing is here saying, 'Damn You!'
 #10756
 teacher lightning strike~
 teacher of the lightning strike~
-The teacher of the lightning strike sits on the floor here.
+The teacher of the lightning strike sits on the floor\.
 ~
 
 ~
@@ -629,7 +629,7 @@ The teacher of the lightning strike sits on the floor here.
 #10757
 teacher iron skin~
 teacher of the iron skin technique~
-The teacher of the iron skin technique sits on the floor here.
+The teacher of the iron skin technique sits on the floor.
 ~
 
 ~
@@ -640,7 +640,7 @@ The teacher of the iron skin technique sits on the floor here.
 #10758
 teacher chinese long sword~
 teacher of chinese long sword~
-The teacher of the chinese long sword is here cutting up apples.
+The teacher of the chinese long sword is here, cutting up apples.
 ~
 
 ~
@@ -651,7 +651,7 @@ The teacher of the chinese long sword is here cutting up apples.
 #10759
 teacher butterfly swords~
 teacher of butterfly swords~
-The teacher of the butterfly swords is here sharpening his blades.
+The teacher of the butterfly swords is here, sharpening his blades.
 ~
 
 ~
@@ -662,7 +662,7 @@ The teacher of the butterfly swords is here sharpening his blades.
 #10760
 teacher long spear~
 teacher of chinese long spear~
-The teacher of the chinese long spear is here making kabobs.
+The teacher of the chinese long spear is here, making kabobs.
 ~
 
 ~
@@ -673,7 +673,7 @@ The teacher of the chinese long spear is here making kabobs.
 #10761
 teacher deadly palm~
 teacher of deadly palm~
-The teacher of the deadly palm is here writing poetry.
+The teacher of the deadly palm is here, writing poetry.
 ~
 
 ~
@@ -682,9 +682,9 @@ The teacher of the deadly palm is here writing poetry.
 0 0
 8 8 1
 #10762
-teacher fivechops~
+teacher fivechops five chops~
 teacher of the five chops~
-The teacher of the five chops is here watching the home choping channel.
+The teacher of the five chops is here, watching the home chopping channel.
 ~
 
 ~
@@ -695,7 +695,7 @@ The teacher of the five chops is here watching the home choping channel.
 #10763
 teacher angry buddha~
 teacher of the angry buddha~
-The teacher of the angry buddha is here being...well..angry...
+The teacher of the angry buddha is here, being... angry.
 ~
 
 ~
@@ -706,7 +706,7 @@ The teacher of the angry buddha is here being...well..angry...
 #10764
 first master~
 1st master of the White Lotus Clan~
-The 1st master of the White Lotus Clan is here softly chanting.
+The 1st master of the White Lotus Clan is here, softly chanting.
 ~
 
 ~
@@ -717,7 +717,7 @@ The 1st master of the White Lotus Clan is here softly chanting.
 #10765
 second master~
 2nd master of the White Lotus Clan~
-The 2nd master of the White Lotus Clan is here watching MTV.
+The 2nd master of the White Lotus Clan is here, watching MTV.
 ~
 
 ~
@@ -728,7 +728,7 @@ The 2nd master of the White Lotus Clan is here watching MTV.
 #10766
 third master~
 3rd master of the White Lotus Clan~
-The 3rd master of the White Lotus Clan is here eating dumplings.
+The 3rd master of the White Lotus Clan is here, eating dumplings.
 ~
 
 ~
@@ -750,7 +750,7 @@ The 4th master of the White Lotus Clan is waiting to test you.
 #10768
 fifth master~
 5th master of the White Lotus Clan~
-The 5th master of the White Lotus Clan praying for your soul.
+The 5th master of the White Lotus Clan is here, praying for your soul.
 ~
 
 ~
@@ -761,7 +761,7 @@ The 5th master of the White Lotus Clan praying for your soul.
 #10769
 abbot~
 Abbot~
-The Abbot awaits patiently to test your kung fu.
+The Abbot waits patiently to test your kung fu.
 ~
 
 ~
@@ -772,7 +772,7 @@ The Abbot awaits patiently to test your kung fu.
 #10770
 grand abbot~
 Grand Abbot~
-The Grand Abbot is here doing what Grand Abbots normally do.
+The Grand Abbot is here, doing what Grand Abbots normally do.
 ~
 
 ~
@@ -783,7 +783,7 @@ The Grand Abbot is here doing what Grand Abbots normally do.
 #10771
 disciple of buddha~
 disciple of buddha~
-A disciple of buddha is here chanting and praying.
+A disciple of buddha is here, chanting and praying.
 ~
 
 ~
@@ -803,9 +803,9 @@ Before you sits The Buddha.
 96 0
 8 8 1
 #10773
-Expert Snake~
+Expert Snake Hung Wei Tung~
 Hung Wei Tung~
-Hung Wei Tung, Expert of the Snake technique is here.
+Hung Wei Tung, Expert of the Snake technique, is here.
 ~
 
 ~
@@ -817,7 +817,7 @@ Hung Wei Tung, Expert of the Snake technique is here.
 #10774
 grand abbot~
 Grand Abbot~
-The Grand Abbot is here doing what Grand Abbots normally do.
+The Grand Abbot is here, doing what Grand Abbots normally do.
 ~
 
 ~
@@ -830,7 +830,7 @@ The Grand Abbot is here doing what Grand Abbots normally do.
 
 #OBJECTS
 #10701
-mop~
+mop soggy~
 mop~
 A wet soggy mop is here on the ground.~
 ~
@@ -838,7 +838,7 @@ A wet soggy mop is here on the ground.~
 0~ 1~ 25~ 4~
 3 10000 0
 #10702
-soap~
+soap bottle~
 soap~
 A bottle of soap is here.~
 ~
@@ -848,7 +848,7 @@ A bottle of soap is here.~
 #10703
 prayer beads~
 prayer beads~
-A string of prayer beads are here.~
+A string of prayer beads is here.~
 ~
 9 0 1|4
 5~ 0~ 0~ 0~
@@ -870,7 +870,7 @@ A large chinese broadsword lies on the ground.~
 #10705
 white lotus shield~
 white lotus shield~
-A medium size wooden sheild with a picture of a white lotus is here.~
+A medium size wooden shield with a picture of a white lotus is here.~
 ~
 9 64 1|512
 10~ 0~ 0~ 0~
@@ -886,7 +886,7 @@ A very large chinese cleaver is stuck in the ground.~
 0~ 1~ 15~ 1~
 2 10000 0
 #10707
-chopsticks chopstick ivory~
+chopsticks chopstick ivory pair~
 pair of chopsticks~
 A pair of ivory chopsticks are stuck in the ground here.~
 ~
@@ -1656,7 +1656,7 @@ A
 #10793
 Cell door key prison~
 cell door key~
-A small shiney silver key is sitting on the ground here.~
+A small shiny silver key is sitting on the ground here.~
 ~
 18 0 1|16384
 0~ 0~ 0~ 0~
@@ -2204,7 +2204,7 @@ S
 #10727
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 To the north you see a stone path that winds through a beautiful rock garden
 and up to the temple.
@@ -2229,9 +2229,9 @@ S
 #10728
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
-To the north and east, large stone buddhas look down apon you.
+To the north and east, large stone buddhas look down upon you.
 ~
 0 0 1
 D2
@@ -2248,7 +2248,7 @@ S
 #10729
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 To the east is a bamboo bridge.
 ~
@@ -2272,7 +2272,7 @@ S
 #10730
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 To the south and east of you is a dense bamboo forest.
 ~
@@ -2291,7 +2291,7 @@ S
 #10731
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 To the south of you is a dense bamboo forest.
 ~
@@ -2315,7 +2315,7 @@ S
 #10732
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 To the south and west of you is a dense bamboo forest.
 ~
@@ -2334,7 +2334,7 @@ S
 #10733
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 ~
 0 0 1
@@ -2357,7 +2357,7 @@ S
 #10734
 Practice Yard~
 You stand in the practice yard of the temple. Various students are here
-practicing their kung fu. This is basically a large cement yard. Several
+practising their kung fu. This is basically a large cement yard. Several
 higher monks are walking about the practice area correcting the students.
 To the north and west of you is a beautiful pond and stream.
 ~
@@ -2422,7 +2422,7 @@ S
 #10737
 Training yard~
 This area of the temple is filled with what look like small ponds. It is
-rumored that these 1000 ponds were made to represent the 1000 lakes
+rumoured that these 1000 ponds were made to represent the 1000 lakes
 of a mystical training grounds called Jyusenkyo. large bamboo poles
 are stuck in the middle of the ponds. Many students are training
 their combat skills and concentration.
@@ -2452,7 +2452,7 @@ S
 #10738
 Training yard~
 This area of the temple is filled with what look like small ponds. It is
-rumored that these 1000 ponds were made to represent the 1000 lakes
+rumoured that these 1000 ponds were made to represent the 1000 lakes
 of a mystical training grounds called Jyusenkyo. large bamboo poles
 are stuck in the middle of the ponds. Many students are training
 their combat skills and concentration. To the north and east of you is
@@ -2473,7 +2473,7 @@ S
 #10739
 Training yard~
 This area of the temple is filled with what look like small ponds. It is
-rumored that these 1000 ponds were made to represent the 1000 lakes
+rumoured that these 1000 ponds were made to represent the 1000 lakes
 of a mystical training grounds called Jyusenkyo. large bamboo poles
 are stuck in the middle of the ponds. Many students are training
 their combat skills and concentration. To the north and west of you is
@@ -2495,7 +2495,7 @@ S
 #10740
 Training yard~
 This area of the temple is filled with what look like small ponds. It is
-rumored that these 1000 ponds were made to represent the 1000 lakes
+rumoured that these 1000 ponds were made to represent the 1000 lakes
 of a mystical training grounds called Jyusenkyo. large bamboo poles
 are stuck in the middle of the ponds. Many students are training
 their combat skills and concentration. To the west of you is the edge of
@@ -2522,7 +2522,7 @@ S
 #10741
 Training yard~
 This area of the temple is filled with what look like small ponds. It is
-rumored that these 1000 ponds were made to represent the 1000 lakes
+rumoured that these 1000 ponds were made to represent the 1000 lakes
 of a mystical training grounds called Jyusenkyo. large bamboo poles
 are stuck in the middle of the ponds. Many students are training
 their combat skills and concentration. To the west and south of you is the
@@ -2544,7 +2544,7 @@ S
 #10742
 Training yard~
 This area of the temple is filled with what look like small ponds. It is
-rumored that these 1000 ponds were made to represent the 1000 lakes
+rumoured that these 1000 ponds were made to represent the 1000 lakes
 of a mystical training grounds called Jyusenkyo. large bamboo poles
 are stuck in the middle of the ponds. Many students are training
 their combat skills and concentration. To the south of you is the edge of the
@@ -2933,8 +2933,8 @@ This is a small stone path that leads to the temple garden. The garden here
 is so dense that it blocks out the sky. Rays of light break through the
 canopy and light the pathway. All of the flowers and other plants are dead.
 The smell of rotting vegetation and decay assaults your sense of smell.
-This is definitely not the beautiful gardens that Xiang Fung once labored
-so hard apon. Something new has taken over.
+This is definitely not the beautiful gardens that Xiang Fung once laboured
+so hard upon. Something new has taken over.
 The path continues to the north and east.
 ~
 0 0 1
@@ -3014,7 +3014,7 @@ path~
 S
 #10764
 Garden Path~
-You come apon a split in the path. Many dead rosebushes almost obscure
+You come upon a split in the path. Many dead rosebushes almost obscure
 the western path. The putrid smell of rotting vegetation turns your
 stomach.
 A path leads to the north and to the south.
@@ -3038,7 +3038,7 @@ path~
 S
 #10765
 Garden Path~
-This is an obcure path, almost hidden by death rosebushes. The canopy
+This is an obscure path, almost hidden by death rosebushes. The canopy
 seems to be more dense here and the light barely seeps through the
 intertwined branches overhead.
 A path leads to the north and to the east.
@@ -3291,7 +3291,7 @@ S
 #10778
 Garden Path~
 You walk on a small dirt path that winds through the now decaying garden.
-Multicolored dragonflies and other exotic insects buzz by you.
+Multi-colored dragonflies and other exotic insects buzz by you.
 The path continues to the north and west.
 ~
 0 0 1
@@ -3361,7 +3361,7 @@ S
 #10782
 Garden Path~
 This small path winds across a shallow pond. White lotus leaves float
-gently on the suface of the water. Dead branches and murky water
+gently on the surface of the water. Dead branches and murky water
 contaminate the once pristine scene.
 The path continues to the north and east.
 ~
@@ -3380,7 +3380,7 @@ S
 #10783
 Garden Path~
 This small path winds across a shallow pond. White lotus leaves float
-gently on the suface of the water. Here in the center of the pond the
+gently on the surface of the water. Here in the center of the pond the
 water seems to be cleaner as if out of reach of the encroaching poison.
 The path continues to the north and west.
 ~
@@ -3399,7 +3399,7 @@ S
 #10784
 Garden Path~
 This small path winds across a shallow pond. White lotus leaves float
-gently on the suface of the water. Here in the center of the pond the
+gently on the surface of the water. Here in the center of the pond the
 water seems to be cleaner as if out of reach of the encroaching poison.
 The path continues to the east and south.
 ~
@@ -3418,7 +3418,7 @@ S
 #10785
 Garden Path~
 This small path winds across a shallow pond. White lotus leaves float
-gently on the suface of the water. The water is murky and dark as if
+gently on the surface of the water. The water is murky and dark as if
 a poison of some sort has contaminated it.
 The path continues to the west and south.
 ~
@@ -3618,7 +3618,7 @@ You see a long wooden hall.
 hall~
 0 -1 10791
 D3
-You see a large room with benchs and barrels..
+You see a large room with benches and barrels..
 ~
 room~
 0 -1 10795
@@ -3713,7 +3713,7 @@ S
 #10800
 General's Office~
 This is the office of General Chow, head of the militia at the temple.
-He normally sits in his office, drinks wine and laughs alot. Most
+He normally sits in his office, drinks wine and laughs a lot. Most
 people are smart enough not to cause trouble at the temple. His office
 is decorated with beautiful vases and pots full of fine chinese wine.
 A large wooden door is to the north.
@@ -3919,7 +3919,7 @@ Hall of the Dragon.~
 This is a very dark wooden hallway. Stairs lead up to the second floor from
 here. This hall is drastically different from that of the main hall. It has no
 carvings, no dragons, and basically has no decorations at all. the wooden
-paneled walls are adorn only with small candles.
+panelled walls are adorn only with small candles.
 The hall continues to the north.
 A stairway here leads up to the second floor.
 The main hall is to the west.
@@ -3945,7 +3945,7 @@ S
 Hall of the Dragon.~
 This is a very dark wooden hallway. This hall is drastically different from
 that of the main hall. It has no carvings, no dragons, and basically has no
-decorations at all. the wooden paneled walls are adorn only with small candles.
+decorations at all. the wooden panelled walls are adorn only with small candles.
 The hall continues to the east and south.
 ~
 0 8 0
@@ -3964,7 +3964,7 @@ S
 Hall of the Dragon.~
 This is a very dark wooden hallway. This hall is drastically different from
 that of the main hall. It has no carvings, no dragons, and basically has no
-decorations at all. the wooden paneled walls are adorn only with small candles.
+decorations at all. the wooden panelled walls are adorn only with small candles.
 The hall continues to the south and west.
 ~
 0 8 0
@@ -3983,7 +3983,7 @@ S
 Hall of the Dragon.~
 This is a very dark wooden hallway. This hall is drastically different from
 that of the main hall. It has no carvings, no dragons, and basically has no
-decorations at all. the wooden paneled walls are adorn only with small candles.
+decorations at all. the wooden panelled walls are adorn only with small candles.
 The hall continues to the north and south.
 ~
 0 8 0
@@ -4002,7 +4002,7 @@ S
 Hall of the Dragon.~
 This is a very dark wooden hallway. This hall is drastically different from
 that of the main hall. It has no carvings, no dragons, and basically has no
-decorations at all. the wooden paneled walls are adorn only with small candles.
+decorations at all. the wooden panelled walls are adorn only with small candles.
 The hall continues to the north and west.
 ~
 0 8 0
@@ -4021,7 +4021,7 @@ S
 Hall of the Dragon.~
 This is a very dark wooden hallway. This hall is drastically different from
 that of the main hall. It has no carvings, no dragons, and basically has no
-decorations at all. the wooden paneled walls are adorn only with small candles.
+decorations at all. the wooden panelled walls are adorn only with small candles.
 You see here a large wooden arch. The arch is covered with different chinese
 characters depicting the 36 basic styles of the clan.
 The hall continues to the east.
@@ -4036,7 +4036,7 @@ hall hallway~
 D5
 You see stone steps leading down in to the darkness.
 ~
-steps darkeness~
+steps darkness~
 0 -1 10837
 S
 #10816
@@ -4137,7 +4137,7 @@ Golden Buddha of Enlightenment~
 Before you stands a giant golden statue of a buddha. This is the Buddha
 of Wisdom. The chanting here seems to be the loudest. The constant
 sounding of a gold and the tapping of a hollow wooden ball drowned
-out any other sound that you might hear. The monks chanting is rythmic
+out any other sound that you might hear. The monks chanting is rhythmic
 and a deep monotone buzz. Any individual voice almost undistinguishable
 from the others.Many red candles surround the statue's base and all around
 the floor. Many offerings of oranges and rice cakes sit in front of the statue.
@@ -4347,7 +4347,7 @@ S
 Room of Wei Chin~
 This is the room of Wei Chin, the nephew of the White Lotus Chief.
 He is here to serve his uncle and practice his kung fu. His room looks
-very much unlived in. Wei Chin is usually out traveling and looking
+very much unlived-in. Wei Chin is usually out travelling and looking
 over the towns that the Lotus clan controls.
 The only exit is to the south.
 ~
@@ -4409,8 +4409,8 @@ bookcase~
 S
 #10833
 Hidden Room~
-This is a secret room hidden behind one of the bookshelfs. This is where
-many special books and scrolls are kept.the room is lit by a dim lightsource
+This is a secret room hidden behind one of the bookshelves. This is where
+many special books and scrolls are kept.the room is lit by a dim light source
 that is out of sight up above.
 The only exit is to the east.
 ~
@@ -4490,7 +4490,7 @@ S
 1st Chamber of the White Lotus~
 This cold stone room is complete bare except for a door on the east wall.
 It is here that the higher monks and students come to test their skills. This
-is the first chamber. It is a basic skill chamber where students test thier
+is the first chamber. It is a basic skill chamber where students test their
 skill at punches.
 The only exit is to the east.
 ~
@@ -4504,7 +4504,7 @@ S
 2nd Chamber of the White Lotus~
 This cold stone room is complete bare except for a door on the east wall.
 It is here that the higher monks and students come to test their skills. This
-is the second chamber. It is a basic skill chamber where students test thier
+is the second chamber. It is a basic skill chamber where students test their
 skill at kicks.
 The only exit is to the east.
 ~
@@ -4942,7 +4942,7 @@ S
 This is a room of meditation and rest. You may drink deeply from the fountain
 and eat to fill your body. Ahead is the 36th chamber. From there you will have
 graduated from the Temple and sent out to explore the lands. Know well that
-the last chamber will truely test your skills and stamina. Focus your mind, and
+the last chamber will truly test your skills and stamina. Focus your mind, and
 rest your body......and may you be enlightened....
 The only exit is to the west.
 ~
@@ -5059,490 +5059,490 @@ D 1 10871 3 2               Close 35th chamber doors from Outside
 *
 D 1 10872 3 2               Close 36th chamber doors from Outside
 *
-M 1 10701 4 10707	Monk cleaning
-E 1 10701 99 16       	mop
+M 1 10701 4 10707       Monk cleaning
+E 1 10701 99 16         mop
 G 1 10702 8                soap
 *
-M 1 10701 4 10711	Monk cleaning
-E 1 10701 99 16       	mop
+M 1 10701 4 10711       Monk cleaning
+E 1 10701 99 16         mop
 G 1 10702 8                soap
 *
-M 1 10701 4 10718	Monk cleaning
-E 1 10701 99 16       	mop
+M 1 10701 4 10718       Monk cleaning
+E 1 10701 99 16         mop
 G 1 10702 8                soap
 *
-M 1 10701 4 10723	Monk cleaning
-E 1 10701 99 16       	mop
+M 1 10701 4 10723       Monk cleaning
+E 1 10701 99 16         mop
 G 1 10702 8                soap
 *
-M 1 10702 7 10713	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10713       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10702 7 10820	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10820       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10702 7 10808	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10808       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10702 7 10811	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10811       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10702 7 10816	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10816       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10702 7 10817	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10817       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10702 7 10714	Monk Elder
-E 1 10703 99 3       	prayer beads
+M 1 10702 7 10714       Monk Elder
+E 1 10703 99 3          prayer beads
 *
-M 1 10703 15 10727	monk student
-M 1 10703 15 10727	monk student
-M 1 10703 15 10727	monk student
-M 1 10703 15 10727	monk student
+M 1 10703 15 10727      monk student
+M 1 10703 15 10727      monk student
+M 1 10703 15 10727      monk student
+M 1 10703 15 10727      monk student
 *
-M 1 10703 15 10733	monk student
-M 1 10703 15 10733	monk student
-M 1 10703 15 10733	monk student
+M 1 10703 15 10733      monk student
+M 1 10703 15 10733      monk student
+M 1 10703 15 10733      monk student
 *
-M 1 10703 15 10734	monk student
-M 1 10703 15 10734	monk student
+M 1 10703 15 10734      monk student
+M 1 10703 15 10734      monk student
 *
-M 1 10703 15 10729	monk student
+M 1 10703 15 10729      monk student
 *
-M 1 10703 15 10730	monk student
-M 1 10703 15 10730	monk student
-M 1 10703 15 10730	monk student
+M 1 10703 15 10730      monk student
+M 1 10703 15 10730      monk student
+M 1 10703 15 10730      monk student
 *
-M 1 10703 15 10747	monk student
+M 1 10703 15 10747      monk student
 *
-M 1 10703 15 10748	monk student
+M 1 10703 15 10748      monk student
 *
-M 1 10704 12 10737	monk advanced student
-M 1 10704 12 10737	monk advanced student
+M 1 10704 12 10737      monk advanced student
+M 1 10704 12 10737      monk advanced student
 *
-M 1 10704 12 10739	monk advanced student
-M 1 10704 12 10739	monk advanced student
-M 1 10704 12 10739	monk advanced student
-M 1 10704 12 10739	monk advanced student
+M 1 10704 12 10739      monk advanced student
+M 1 10704 12 10739      monk advanced student
+M 1 10704 12 10739      monk advanced student
+M 1 10704 12 10739      monk advanced student
 *
-M 1 10704 12 10742	monk advanced student
+M 1 10704 12 10742      monk advanced student
 *
-M 1 10704 12 10741	monk advanced student
-M 1 10704 12 10739	monk advanced student
-M 1 10704 12 10739	monk advanced student
+M 1 10704 12 10741      monk advanced student
+M 1 10704 12 10739      monk advanced student
+M 1 10704 12 10739      monk advanced student
 *
-M 1 10704 12 10745	monk advanced student
-M 1 10704 12 10745	monk advanced student
+M 1 10704 12 10745      monk advanced student
+M 1 10704 12 10745      monk advanced student
 *
-M 1 10705 6 10737	monk teacher
+M 1 10705 6 10737       monk teacher
 *
-M 1 10705 6 10741	monk teacher
+M 1 10705 6 10741       monk teacher
 *
-M 1 10705 6 10735	monk teacher
+M 1 10705 6 10735       monk teacher
 *
-M 1 10705 6 10730	monk teacher
+M 1 10705 6 10730       monk teacher
 *
-M 1 10705 6 10752	monk teacher
+M 1 10705 6 10752       monk teacher
 *
-M 1 10705 6 10749	monk teacher
+M 1 10705 6 10749       monk teacher
 *
-M 1 10706 4 10807	temple guard North
-E 1 10704 99 16       	Chinese broadsword
+M 1 10706 4 10807       temple guard North
+E 1 10704 99 16         Chinese broadsword
 *
-M 1 10706 4 10807	temple guard North
-E 1 10704 99 16       	Chinese broadsword
+M 1 10706 4 10807       temple guard North
+E 1 10704 99 16         Chinese broadsword
 *
-M 1 10706 4 10809	temple guard South
-E 1 10704 99 16       	Chinese broadsword
+M 1 10706 4 10809       temple guard South
+E 1 10704 99 16         Chinese broadsword
 *
-M 1 10706 4 10809	temple guard South
-E 1 10704 99 16       	Chinese broadsword
+M 1 10706 4 10809       temple guard South
+E 1 10704 99 16         Chinese broadsword
 *
-M 1 10707 9 10706	white lotus Guard North
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10706       white lotus Guard North
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10706	white lotus Guard North
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10706       white lotus Guard North
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10716	white lotus Guard South
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10716       white lotus Guard South
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10716	white lotus Guard South
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10716       white lotus Guard South
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10788	white lotus Guard HQ
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
-E 1 10793 99 17       	Cell key
+M 1 10707 9 10788       white lotus Guard HQ
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
+E 1 10793 99 17         Cell key
 *
-M 1 10707 9 10792	white lotus Guard Room
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10792       white lotus Guard Room
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10792	white lotus Guard Room
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10792       white lotus Guard Room
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10792	white lotus Guard Room
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10792       white lotus Guard Room
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10707 9 10792	white lotus Guard Room
-E 1 10704 99 16       	Chinese broadsword
-E 1 10705 99 11       	white lotus shield
+M 1 10707 9 10792       white lotus Guard Room
+E 1 10704 99 16         Chinese broadsword
+E 1 10705 99 11         white lotus shield
 *
-M 1 10708 2 10795	Kitchen attendant
-E 1 10706 99 16       	cleaver
+M 1 10708 2 10795       Kitchen attendant
+E 1 10706 99 16         cleaver
 *
-M 1 10708 2 10795	Kitchen attendant
-E 1 10706 99 16       	cleaver
+M 1 10708 2 10795       Kitchen attendant
+E 1 10706 99 16         cleaver
 *
-M 1 10709 2 10795	Kitchen attendant
-E 1 10707 99 17       	chopsticks
+M 1 10709 2 10795       Kitchen attendant
+E 1 10707 99 17         chopsticks
 *
-M 1 10709 2 10795	Kitchen attendant
-E 1 10707 99 17       	chopsticks
+M 1 10709 2 10795       Kitchen attendant
+E 1 10707 99 17         chopsticks
 *
-M 1 10710 6 10803	Gambling soldier
-E 1 10708 99 17       	dice
+M 1 10710 6 10803       Gambling soldier
+E 1 10708 99 17         dice
 *
-M 1 10710 6 10803	Gambling soldier
+M 1 10710 6 10803       Gambling soldier
 *
-M 1 10710 6 10803	Gambling soldier
+M 1 10710 6 10803       Gambling soldier
 *
-M 1 10710 6 10805	Gambling soldier
-E 1 10709 99 17       	cards
+M 1 10710 6 10805       Gambling soldier
+E 1 10709 99 17         cards
 *
-M 1 10710 6 10805	Gambling soldier
+M 1 10710 6 10805       Gambling soldier
 *
-M 1 10710 6 10805	Gambling soldier
+M 1 10710 6 10805       Gambling soldier
 *
-M 1 10711 4 10795	eating soldier
+M 1 10711 4 10795       eating soldier
 G 1 10710 8                rice
 *
-M 1 10711 4 10795	eating soldier
+M 1 10711 4 10795       eating soldier
 G 1 10710 8                rice
 *
-M 1 10711 4 10795	eating soldier
+M 1 10711 4 10795       eating soldier
 G 1 10710 8                rice
 *
-M 1 10711 4 10795	eating soldier
+M 1 10711 4 10795       eating soldier
 G 1 10710 8                rice
 *
-M 1 10712 4 10795	drinking officer
+M 1 10712 4 10795       drinking officer
 G 1 10711 8                wine
 *
-M 1 10712 4 10792	drinking officer
+M 1 10712 4 10792       drinking officer
 G 1 10711 8                wine
 *
-M 1 10712 4 10798	drinking officer
+M 1 10712 4 10798       drinking officer
 G 1 10711 8                wine
 *
-M 1 10712 4 10802	drinking officer
+M 1 10712 4 10802       drinking officer
 G 1 10711 8                wine
 *
-M 1 10713 3 10790	barfing prisoner
+M 1 10713 3 10790       barfing prisoner
 G 1 10712 8                barf
 *
-M 1 10713 3 10789	barfing prisoner
+M 1 10713 3 10789       barfing prisoner
 G 1 10712 8                barf
 *
-M 1 10713 3 10793	barfing prisoner
+M 1 10713 3 10793       barfing prisoner
 G 1 10712 8                barf
 *
-M 1 10714 5 10762	wandering monk
+M 1 10714 5 10762       wandering monk
 *
-M 1 10714 5 10784	wandering monk
+M 1 10714 5 10784       wandering monk
 *
-M 1 10714 5 10758	wandering monk
+M 1 10714 5 10758       wandering monk
 *
-M 1 10714 5 10770	wandering monk
+M 1 10714 5 10770       wandering monk
 *
-M 1 10714 5 10726	wandering monk
+M 1 10714 5 10726       wandering monk
 *
-M 1 10715 5 10785	song bird
+M 1 10715 5 10785       song bird
 G 1 10713 8                feather
 *
-M 1 10715 5 10769	song bird
+M 1 10715 5 10769       song bird
 G 1 10713 8                feather
 *
-M 1 10715 5 10753	song bird
+M 1 10715 5 10753       song bird
 G 1 10713 8                feather
 *
-M 1 10715 5 10776	song bird
+M 1 10715 5 10776       song bird
 G 1 10713 8                feather
 *
-M 1 10715 5 10758	song bird
+M 1 10715 5 10758       song bird
 G 1 10713 8                feather
 *
-M 1 10716 5 10761	member poison clan
-E 1 10714 99 16       	big knife
-E 1 10715 99 17       	insignia
-M 1 10716 5 10761	member poison clan
-E 1 10714 99 16       	big knife
-E 1 10715 99 17       	insignia
+M 1 10716 5 10761       member poison clan
+E 1 10714 99 16         big knife
+E 1 10715 99 17         insignia
+M 1 10716 5 10761       member poison clan
+E 1 10714 99 16         big knife
+E 1 10715 99 17         insignia
 *
-M 1 10716 5 10785	member poison clan
-E 1 10714 99 16       	big knife
-E 1 10715 99 17       	insignia
+M 1 10716 5 10785       member poison clan
+E 1 10714 99 16         big knife
+E 1 10715 99 17         insignia
 *
-M 1 10716 5 10781	member poison clan
-E 1 10715 99 17       	insignia
+M 1 10716 5 10781       member poison clan
+E 1 10715 99 17         insignia
 *
-M 1 10716 5 10768	member poison clan
-E 1 10714 99 16       	big knife
-E 1 10715 99 17       	insignia
+M 1 10716 5 10768       member poison clan
+E 1 10714 99 16         big knife
+E 1 10715 99 17         insignia
 *
-M 1 10717 2 10774	small frog
-M 1 10717 2 10774	small frog
+M 1 10717 2 10774       small frog
+M 1 10717 2 10774       small frog
 *
-M 1 10718 2 10775	small centipede
-M 1 10718 2 10775	small centipede
+M 1 10718 2 10775       small centipede
+M 1 10718 2 10775       small centipede
 *
-M 1 10719 3 10766	small snake
-M 1 10719 3 10766	small snake
-M 1 10719 3 10766	small snake
+M 1 10719 3 10766       small snake
+M 1 10719 3 10766       small snake
+M 1 10719 3 10766       small snake
 *
-M 1 10720 1 10771	small green lizard
+M 1 10720 1 10771       small green lizard
 *
-M 1 10721 5 10773	small red scorpion
-M 1 10721 5 10773	small red scorpion
-M 1 10721 5 10773	small red scorpion
-M 1 10721 5 10773	small red scorpion
-M 1 10721 5 10773	small red scorpion
+M 1 10721 5 10773       small red scorpion
+M 1 10721 5 10773       small red scorpion
+M 1 10721 5 10773       small red scorpion
+M 1 10721 5 10773       small red scorpion
+M 1 10721 5 10773       small red scorpion
 *
-M 1 10722 1 10773	Expert of Scorpion
-E 1 10716 99 16       	Scorpion Technique
+M 1 10722 1 10773       Expert of Scorpion
+E 1 10716 99 16         Scorpion Technique
 *
-M 1 10723 1 10774	Expert of Toad
+M 1 10723 1 10774       Expert of Toad
 G 1 10717 31                Toad Technique
 *
-M 1 10773 1 10766	Expert of Snake
-E 1 10744 99 16       	Snake Technique
+M 1 10773 1 10766       Expert of Snake
+E 1 10744 99 16         Snake Technique
 *
-M 1 10724 1 10775	Expert of Centipede
-E 1 10718 99 16       	CentipedeTechnique
+M 1 10724 1 10775       Expert of Centipede
+E 1 10718 99 16         CentipedeTechnique
 *
-M 1 10725 1 10771	Expert of Lizard
-E 1 10719 99 17       	Lizard Technique
+M 1 10725 1 10771       Expert of Lizard
+E 1 10719 99 17         Lizard Technique
 *
-M 1 10726 1 10786	Teachers last student
+M 1 10726 1 10786       Teachers last student
 *
-M 1 10727 1 10820	Buddha of Enlightenment
+M 1 10727 1 10820       Buddha of Enlightenment
 G 1 10720 44             Orange
 *
-M 1 10728 1 10819	Buddha of Wisdom
+M 1 10728 1 10819       Buddha of Wisdom
 G 1 10721 45             enchanted prayer beads
 *
-M 1 10729 1 10818	Buddha of Contentment
+M 1 10729 1 10818       Buddha of Contentment
 G 1 10789 46             Rice cake
 *
-M 1 10730 4 10820	shrine attendant
+M 1 10730 4 10820       shrine attendant
 *
-M 1 10730 4 10821	shrine attendant
+M 1 10730 4 10821       shrine attendant
 *
-M 1 10730 4 10822	shrine attendant
+M 1 10730 4 10822       shrine attendant
 *
-M 1 10730 4 10817	shrine attendant
+M 1 10730 4 10817       shrine attendant
 *
-M 1 10731 4 10819	monk chanting
+M 1 10731 4 10819       monk chanting
 *
-M 1 10731 10 10816	monk chanting
-M 1 10731 10 10816	monk chanting
-M 1 10731 10 10816	monk chanting
-M 1 10731 10 10816	monk chanting
+M 1 10731 10 10816      monk chanting
+M 1 10731 10 10816      monk chanting
+M 1 10731 10 10816      monk chanting
+M 1 10731 10 10816      monk chanting
 *
-M 1 10731 10 10815	monk chanting
-M 1 10731 10 10815	monk chanting
+M 1 10731 10 10815      monk chanting
+M 1 10731 10 10815      monk chanting
 *
-M 1 10731 10 10816	monk chanting
-M 1 10731 10 10816	monk chanting
-M 1 10731 10 10816	monk chanting
-M 1 10731 10 10816	monk chanting
+M 1 10731 10 10816      monk chanting
+M 1 10731 10 10816      monk chanting
+M 1 10731 10 10816      monk chanting
+M 1 10731 10 10816      monk chanting
 *
-M 1 10732 1 10830	Wei Chin
-E 1 10722 99 17       	Iron Monk Technique
+M 1 10732 1 10830       Wei Chin
+E 1 10722 99 17         Iron Monk Technique
 *
-M 1 10733 1 10829	Wei Chin
+M 1 10733 1 10829       Wei Chin
 *
-M 1 10734 1 10836	White Lotus Chief
-E 1 10723 99 17       	Weightless Boxing Technique
+M 1 10734 1 10836       White Lotus Chief
+E 1 10723 99 17         Weightless Boxing Technique
 *
-M 1 10735 2 10828	White Lotus Chief Personal Guard
-E 1 10724 99 16       	White Chinese Longsword
+M 1 10735 2 10828       White Lotus Chief Personal Guard
+E 1 10724 99 16         White Chinese Longsword
 *
-M 1 10736 1 10837	Attendant to the 36 Chambers
-E 1 10725 99 17      	Key to the 36 chambers
+M 1 10736 1 10837       Attendant to the 36 Chambers
+E 1 10725 99 17         Key to the 36 chambers
 *
-M 1 10737 1 10838	Teacher of the 1st Chamber
-E 1 10726 99 17      	Key to the 2nd chamber
+M 1 10737 1 10838       Teacher of the 1st Chamber
+E 1 10726 99 17         Key to the 2nd chamber
 *
-M 1 10738 1 10839	Teacher of the 2nd Chamber
-E 1 10727 99 17      	Key to the 3rd chamber
+M 1 10738 1 10839       Teacher of the 2nd Chamber
+E 1 10727 99 17         Key to the 3rd chamber
 *
-M 1 10739 1 10840	Teacher of the Whirlwind Kick
-E 1 10729 99 16      	Whirlwind Kick
-E 1 10728 99 17      	Key to the 4th chamber
+M 1 10739 1 10840       Teacher of the Whirlwind Kick
+E 1 10729 99 16         Whirlwind Kick
+E 1 10728 99 17         Key to the 4th chamber
 *
-M 1 10740 1 10841	Teacher of the Chin Kang Palm
-E 1 10731 99 16      	Chin Kang Palm
-E 1 10730 99 17      	Key to the 5th chamber
+M 1 10740 1 10841       Teacher of the Chin Kang Palm
+E 1 10731 99 16         Chin Kang Palm
+E 1 10730 99 17         Key to the 5th chamber
 *
-M 1 10741 1 10842	Teacher of the Lizard Style
-E 1 10733 99 16      	Lizard Style
-E 1 10732 99 17      	Key to the 6th chamber
+M 1 10741 1 10842       Teacher of the Lizard Style
+E 1 10733 99 16         Lizard Style
+E 1 10732 99 17         Key to the 6th chamber
 *
-M 1 10742 1 10843	Teacher of the Crane Style
-E 1 10735 99 16      	Crane Style
-E 1 10734 99 17      	Key to the 7th chamber
+M 1 10742 1 10843       Teacher of the Crane Style
+E 1 10735 99 16         Crane Style
+E 1 10734 99 17         Key to the 7th chamber
 *
-M 1 10743 1 10844	Teacher of the Dragon Style
-E 1 10737 99 16      	Dragon Style
-E 1 10736 99 17      	Key to the 8th chamber
+M 1 10743 1 10844       Teacher of the Dragon Style
+E 1 10737 99 16         Dragon Style
+E 1 10736 99 17         Key to the 8th chamber
 *
-M 1 10744 1 10845	Teacher of the Tiger Style
-E 1 10739 99 16      	Tiger Style
-E 1 10738 99 17      	Key to the 9th chamber
+M 1 10744 1 10845       Teacher of the Tiger Style
+E 1 10739 99 16         Tiger Style
+E 1 10738 99 17         Key to the 9th chamber
 *
-M 1 10745 1 10846	Teacher of the Scorpion Style
-E 1 10741 99 16      	Scorpion Style
-E 1 10740 99 17      	Key to the 10th chamber
+M 1 10745 1 10846       Teacher of the Scorpion Style
+E 1 10741 99 16         Scorpion Style
+E 1 10740 99 17         Key to the 10th chamber
 *
-M 1 10746 1 10847	Teacher of the Snake Style
-E 1 10744 99 16      	Snake Style
-E 1 10742 99 17      	Key to the 11th chamber
+M 1 10746 1 10847       Teacher of the Snake Style
+E 1 10744 99 16         Snake Style
+E 1 10742 99 17         Key to the 11th chamber
 *
-M 1 10747 1 10848	Teacher of the Centipede Style
-E 1 10746 99 16      	Centipede Style
-E 1 10743 99 17      	Key to the 12th chamber
+M 1 10747 1 10848       Teacher of the Centipede Style
+E 1 10746 99 16         Centipede Style
+E 1 10743 99 17         Key to the 12th chamber
 *
-M 1 10748 1 10849	Teacher of the Toad Style
-E 1 10748 99 5      	Toad Style
-E 1 10745 99 17      	Key to the 13th chamber
+M 1 10748 1 10849       Teacher of the Toad Style
+E 1 10748 99 5          Toad Style
+E 1 10745 99 17         Key to the 13th chamber
 *
-M 1 10749 1 10850	Teacher of the Iron Monk Style
-E 1 10747 99 17      	Key to the 14th chamber
+M 1 10749 1 10850       Teacher of the Iron Monk Style
+E 1 10747 99 17         Key to the 14th chamber
 G 1 10750 44             Iron Monk Technique
 *
-M 1 10750 1 10851	Teacher of the Iron Head Style
-E 1 10752 99 16      	Iron Head Style
-E 1 10749 99 17      	Key to the 15th chamber
+M 1 10750 1 10851       Teacher of the Iron Head Style
+E 1 10752 99 16         Iron Head Style
+E 1 10749 99 17         Key to the 15th chamber
 *
-M 1 10751 1 10852	Teacher of the Hawk Style
-E 1 10754 99 16      	Hawk  Style
-E 1 10751 99 17      	Key to the 16th chamber
+M 1 10751 1 10852       Teacher of the Hawk Style
+E 1 10754 99 16         Hawk  Style
+E 1 10751 99 17         Key to the 16th chamber
 *
-M 1 10752 1 10853	Teacher of the Quivering Palm Style
-E 1 10756 99 16      	Quivering Palm Style
-E 1 10753 99 17      	Key to the 17th chamber
+M 1 10752 1 10853       Teacher of the Quivering Palm Style
+E 1 10756 99 16         Quivering Palm Style
+E 1 10753 99 17         Key to the 17th chamber
 *
-M 1 10753 1 10854	Teacher of the Five Pace Palm Style
-E 1 10756 99 16      	Quivering Palm Style
-E 1 10755 99 17      	Key to the 18th chamber
+M 1 10753 1 10854       Teacher of the Five Pace Palm Style
+E 1 10756 99 16         Quivering Palm Style
+E 1 10755 99 17         Key to the 18th chamber
 *
-M 1 10754 1 10855	Healing monk
+M 1 10754 1 10855       Healing monk
 O 1 10786 10 10855  fountain at meditation chamber
 O 1 10787 10 10855  Key to the 19th chamber
 *
-M 1 10755 1 10856	Teacher of the Weightless Boxing
-E 1 10760 99 16      	Weightless Boxing
-E 1 10757 99 17      	Key to the 20th chamber
+M 1 10755 1 10856       Teacher of the Weightless Boxing
+E 1 10760 99 16         Weightless Boxing
+E 1 10757 99 17         Key to the 20th chamber
 *
-M 1 10756 1 10857	Teacher of the Lightning Strike
-E 1 10760 99 16      	Lightning Strike
-E 1 10758 99 17      	Key to the 21st chamber
+M 1 10756 1 10857       Teacher of the Lightning Strike
+E 1 10760 99 16         Lightning Strike
+E 1 10758 99 17         Key to the 21st chamber
 *
-M 1 10757 1 10858	Teacher of the Iron skin
-E 1 10764 99 16      	Iron skin
-E 1 10759 99 17      	Key to the 22nd chamber
+M 1 10757 1 10858       Teacher of the Iron skin
+E 1 10764 99 16         Iron skin
+E 1 10759 99 17         Key to the 22nd chamber
 *
-M 1 10758 1 10859	Teacher of the chinese long sword
-E 1 10766 99 16      	chinese longsword
-E 1 10791 99 17      	chinese longsword offhand
+M 1 10758 1 10859       Teacher of the chinese long sword
+E 1 10766 99 16         chinese longsword
+E 1 10791 99 17         chinese longsword offhand
 G 1 10761 52             Key to the 23rd chamber
 *
-M 1 10759 1 10860	Teacher of the butterfly swords
-E 1 10766 99 16      	butterfly sword
-E 1 10790 99 17      	butterfly sword off hand
+M 1 10759 1 10860       Teacher of the butterfly swords
+E 1 10766 99 16         butterfly sword
+E 1 10790 99 17         butterfly sword off hand
 G 1 10763 52             Key to the 24th chamber
 *
-M 1 10760 1 10861	Teacher of the longspear
-E 1 10770 99 16      	longspear
-E 1 10767 99 17      	Key to the 25th chamber
+M 1 10760 1 10861       Teacher of the longspear
+E 1 10770 99 16         longspear
+E 1 10767 99 17         Key to the 25th chamber
 *
-M 1 10761 1 10862	Teacher of the deadly palm
-E 1 10772 99 16      	deadly palm
-E 1 10769 99 17      	Key to the 26th chamber
+M 1 10761 1 10862       Teacher of the deadly palm
+E 1 10772 99 16         deadly palm
+E 1 10769 99 17         Key to the 26th chamber
 *
-M 1 10762 1 10863	Teacher of the Flying Buddha
-E 1 10774 99 16      	Flying Buddha
-E 1 10771 99 17      	Key to the 27th chamber
+M 1 10762 1 10863       Teacher of the Flying Buddha
+E 1 10774 99 16         Flying Buddha
+E 1 10771 99 17         Key to the 27th chamber
 *
-M 1 10763 1 10864	Teacher of the angry buddha
-E 1 10776 99 16      	angry buddha
-E 1 10773 99 17      	Key to the 28th chamber
+M 1 10763 1 10864       Teacher of the angry buddha
+E 1 10776 99 16         angry buddha
+E 1 10773 99 17         Key to the 28th chamber
 *
-M 1 10764 1 10865	First Master
-E 1 10775 99 17      	Key to the 29th chamber
+M 1 10764 1 10865       First Master
+E 1 10775 99 17         Key to the 29th chamber
 *
-M 1 10765 1 10866	Second Master
-E 1 10777 99 17      	Key to the 30th chamber
+M 1 10765 1 10866       Second Master
+E 1 10777 99 17         Key to the 30th chamber
 *
-M 1 10766 1 10867	Third Master
-E 1 10778 99 17      	Key to the 31st chamber
+M 1 10766 1 10867       Third Master
+E 1 10778 99 17         Key to the 31st chamber
 *
-M 1 10767 1 10868	Fourth Master
-E 1 10779 99 17      	Key to the 32nd chamber
+M 1 10767 1 10868       Fourth Master
+E 1 10779 99 17         Key to the 32nd chamber
 *
-M 1 10768 1 10869	Fifth Master
-E 1 10780 99 17      	Key to the 33rd chamber
+M 1 10768 1 10869       Fifth Master
+E 1 10780 99 17         Key to the 33rd chamber
 *
-M 1 10769 1 10870	Abbot
-E 1 10781 99 17      	Key to the 34th chamber
+M 1 10769 1 10870       Abbot
+E 1 10781 99 17         Key to the 34th chamber
 *
-M 1 10774 1 10871	Grand Abbot
-E 1 10784 99 16      	Holy mace
-E 1 10782 99 17      	Key to the 35th chamber
+M 1 10774 1 10871       Grand Abbot
+E 1 10784 99 16         Holy mace
+E 1 10782 99 17         Key to the 35th chamber
 *
-M 1 10770 1 10752	Grand Abbot
-E 1 10784 99 16      	Holy mace
+M 1 10770 1 10752       Grand Abbot
+E 1 10784 99 16         Holy mace
 *
-M 1 10771 1 10872	Disciple of Buddha
-E 1 10783 99 17      	Key to the 36th chamber
+M 1 10771 1 10872       Disciple of Buddha
+E 1 10783 99 17         Key to the 36th chamber
 O 1 10786 1 10872  fountain at last chamber
 O 1 10789 1 10872  fountain at last chamber
 *
-M 1 10772 1 10873	Buddha
-E 1 10785 99 16      	Hand of Buddha
-E 1 10792 99 1      	Ring of the 36 chambers of White Lotus
+M 1 10772 1 10873       Buddha
+E 1 10785 99 16         Hand of Buddha
+E 1 10792 99 1          Ring of the 36 chambers of White Lotus
 *
 S
 
 
 #SPECIALS
-M  10701 spec_janitor	cleaning monk
-M  10702 spec_cast_cleric	monk elder
-M  10706 spec_guard		temple guard
-M  10707 spec_guard		white lotus guard
-M  10713 spec_fido		prisoner
-M  10717 spec_poison	small frog
-M  10718 spec_poison	small centipede
-M  10719 spec_poison	small snake
-M  10720 spec_poison	small lizard
-M  10721 spec_poison	small scorpion
-M  10722 spec_kungfu_poison	Expert scorpion
-M  10724 spec_kungfu_poison	Expert centipede
-M  10727 spec_cast_adept	Buddha of Enlightenment
-M  10728 spec_cast_adept	Buddha of Wisdom
-M  10729 spec_cast_adept	Buddha of Contentment
-M  10734 spec_cast_mage	White Lotus Chief
-M  10772 spec_buddha		Teacher 36th Chamber Buddha
-M  10773 spec_kungfu_poison	Expert snake
+M  10701 spec_janitor           cleaning monk
+M  10702 spec_cast_cleric       monk elder
+M  10706 spec_guard             temple guard
+M  10707 spec_guard             white lotus guard
+M  10713 spec_fido              prisoner
+M  10717 spec_poison            small frog
+M  10718 spec_poison            small centipede
+M  10719 spec_poison            small snake
+M  10720 spec_poison            small lizard
+M  10721 spec_poison            small scorpion
+M  10722 spec_kungfu_poison     Expert scorpion
+M  10724 spec_kungfu_poison     Expert centipede
+M  10727 spec_cast_adept        Buddha of Enlightenment
+M  10728 spec_cast_adept        Buddha of Wisdom
+M  10729 spec_cast_adept        Buddha of Contentment
+M  10734 spec_cast_mage         White Lotus Chief
+M  10772 spec_buddha            Teacher 36th Chamber Buddha
+M  10773 spec_kungfu_poison     Expert snake
 S
 
 

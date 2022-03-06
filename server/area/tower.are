@@ -1,4 +1,4 @@
-#AREA	 Brutus~  Zyklor's Tower~
+#AREA    Brutus~  Zyklor's Tower~
 60 100 0 100
 
 #AREA_SPECIAL
@@ -104,12 +104,12 @@ A hobbit leaps out of the shadows, obviously happy to have visitors.
 ~
 This hobbit is dressed in workers overalls, and is obviously happy to see you.
 The hobbit says
-	"God-dam, hmmm, I wonder if you can help me. I lost
-	my key to my workshop, just across the corridor. I accidently threw
-	it down the garbage shute on the eastern side of this floor. The shute
-	leads to the towers sewers. I don't suppose you would like to retrieve
-	it for me? You can take anything you want from my workshop if you do
-	manage to find it. Please?"
+        "God-dam, hmmm, I wonder if you can help me. I lost
+        my key to my workshop, just across the corridor. I accidently threw
+        it down the garbage shute on the eastern side of this floor. The shute
+        leads to the towers sewers. I don't suppose you would like to retrieve
+        it for me? You can take anything you want from my workshop if you do
+        manage to find it. Please?"
 ~
 2|4|64 8|32 500 S
 66 0 0 0d0+0 0d0+0
@@ -484,11 +484,11 @@ A short blue man eyes you, before a wide smile breaks over his face.
 This humanoid like creature stands barely 4 feet tall, and has blue skin. Not
 only does he have blue skin, but he is dressed in blue as well. He begins to
 speak to you.
-	"Found me you, I see have. Through get talking doors 4 must get you.
-	Secret talking 4 doors know do I. Say must I that pairs of doors that
-	each other face, one truth does speak, the other speak truth not.
-	Know that is all speak I. Seek red brother of mine, but beware,
-	speak thy truth does he not."
+        "Found me you, I see have. Through get talking doors 4 must get you.
+        Secret talking 4 doors know do I. Say must I that pairs of doors that
+        each other face, one truth does speak, the other speak truth not.
+        Know that is all speak I. Seek red brother of mine, but beware,
+        speak thy truth does he not."
 ~
 2|4|64|128 8|32 0 S
 66 0 0 0d0+0 0d0+0
@@ -933,12 +933,13 @@ knows the sewers well.
 #14562
 Zyklor warlock~
 Zyklor~
-Zyklor turns to face you, a wry smile upon the warlocks face.
+Zyklor turns to face you, a wry smile upon the warlock's face.
 ~
-This warlock emanates pure evil. From his black eyes, to his well trimmed
-goatee down to his long curled finger-nails, evil flows from his every pore.
-His dark features stare at you intently, before he speaks to you.
-"You have done very well little ones, but I am afraid time has come to end
+This warlock emanates pure evil. From his black eyes to his well-trimmed
+goatee down to his long, curled finger-nails, evil flows from his every pore.
+His dark eyes stare at you intently before he speaks to you.
+
+"You have done very well little ones, but I am afraid the time has come to end
 your fun and games. For now you will either become a legendary Hero or will
 meet your maker, and I know who I am betting on. Be warned however, you cannot
 defeat me......"
@@ -2411,10 +2412,10 @@ E
 rocks boulders~
 A path winds its way between two rocks. scrawled on one of the rocks, you
 can make out the words:
-		      This area was written by Brutus aka Freak aka Xan
-		      May 95 - Nov 95,
-		      Enjoy :)
-		      P.S Beware Zyklor, for he is not what he seems.
+                      This area was written by Brutus aka Freak aka Xan
+                      May 95 - Nov 95,
+                      Enjoy :)
+                      P.S Beware Zyklor, for he is not what he seems.
 ~
 S
 #14503
@@ -7152,7 +7153,7 @@ E
 writing wall~
 A strange sequence of letters and pictures. Scanning the wall you notice a
 strange sequence of numbers etched into the wall. It reads as follows:
-	       eyk ot the clack zame ->3221122<-~
+               eyk ot the clack zame ->3221122<-~
 S
 #14760
 Musty chamber~
@@ -7597,7 +7598,7 @@ D 1 14584 2 1                 ; Waiters Quarters Close South
 D 1 14585 0 1                ; Toilet Close North
 D 1 14585 2 1                ;Toilet Close South
 D 1 14594 0 1              ; Wine Cellar. Close North
-D 1 14595 2 1			; Shit!! Close South
+D 1 14595 2 1                   ; Shit!! Close South
 D 1 14619 0 1              ; The Dungeon Close North
 D 1 14620 2 1                ; Dungeonmaster's room. Close South
 D 1 14619 1 2              ; The Dungeon Lock East
@@ -7902,7 +7903,7 @@ O 1 14538 100 14661        a human torso to Skeletons in the Closet
 O 1 14564 100 14647        a dragons head to Temple of Zyklor
 O 1 14560 100 14575             an oven to before the ovens
 D 1 14600 3 2                   ; Dusty room Lock West
-D 1 14597 1 2			; Dark tunnel Lock East
+D 1 14597 1 2                   ; Dark tunnel Lock East
 D 1 14652 0 1                 ; Room of Riddles Close North
 D 1 14652 1 1              ; Room of Riddles Close East
 D 1 14652 2 1              ; Room of Riddles Close South
@@ -7962,47 +7963,47 @@ D 1 14654 1 1                ; Room of Riddles Close East
 D 1 14654 2 0                ; Room of Riddles Open South
 D 1 14654 3 1                ; Room of Riddles Close West
 D 1 14651 2 1                ; Last Chance Close South
-O 1 14540 100 14747			intestines to The sewers
-O 1 14538 100 14748			a human torso to Sewer tunnel
-O 1 14539 100 14751			an arm to Limestone Cavern
-O 1 14538 100 14755			a human torso to 4-way junction
+O 1 14540 100 14747                     intestines to The sewers
+O 1 14538 100 14748                     a human torso to Sewer tunnel
+O 1 14539 100 14751                     an arm to Limestone Cavern
+O 1 14538 100 14755                     a human torso to 4-way junction
 S
 
 
 #SPECIALS
-M  14503 spec_cast_mage			the hobbit
-M  14507 spec_breath_fire			the fire demon
-M  14508 spec_cast_undead			the archdemon
-M  14509 spec_breath_fire			the fire guardian
-M  14511 spec_breath_lightning			an air elemental
-M  14512 spec_breath_lightning			the air demon
-M  14513 spec_breath_lightning			the Air Guardian
-M  14516 spec_breath_acid			the earth demon
-M  14517 spec_cast_mage			the earth guardian
-M  14519 spec_breath_frost			the water elemental
-M  14520 spec_breath_frost			the water demon
-M  14521 spec_breath_frost			the water guardian
-M  14522 spec_poison			a slimer
-M  14524 spec_cast_archmage			the archmage
-M  14526 spec_cast_priestess			the black witch
-M  14535 spec_cast_psionicist			the voodoo priest
-M  14542 spec_vampire			the vampire
-M  14543 spec_poison			the arachnid
-M  14544 spec_poison			the lotus-elf
-M  14547 spec_breath_acid			the statue
-M  14548 spec_cast_cleric			the black priest
-M  14549 spec_cast_judge			the mad scientist
-M  14550 spec_cast_archmage			a sorcerer
-M  14551 spec_assassin				ninja
-M  14554 spec_cast_mage			the Shokh'Torg
-M  14555 spec_breath_acid			the burrower
-M  14557 spec_poison			a giant scorpion
-M  14558 spec_cast_undead			the sewer demon
-M  14560 spec_breath_any			a demi-dragon
-M  14561 spec_poison			the sewer guardian
-M  14562 spec_cast_archmage			Zyklor
-M  14563 spec_breath_any			Zyklor
-M  14564 spec_warrior			Arms-master
+M  14503 spec_cast_mage                         the hobbit
+M  14507 spec_breath_fire                       the fire demon
+M  14508 spec_demon                             the archdemon
+M  14509 spec_breath_fire                       the fire guardian
+M  14511 spec_breath_lightning                  an air elemental
+M  14512 spec_breath_lightning                  the air demon
+M  14513 spec_breath_lightning                  the Air Guardian
+M  14516 spec_breath_acid                       the earth demon
+M  14517 spec_cast_mage                         the earth guardian
+M  14519 spec_breath_frost                      the water elemental
+M  14520 spec_breath_frost                      the water demon
+M  14521 spec_breath_frost                      the water guardian
+M  14522 spec_poison                            a slimer
+M  14524 spec_cast_archmage                     the archmage
+M  14526 spec_cast_priestess                    the black witch
+M  14535 spec_cast_psionicist                   the voodoo priest
+M  14542 spec_vampire                           the vampire
+M  14543 spec_poison                            the arachnid
+M  14544 spec_poison                            the lotus-elf
+M  14547 spec_breath_acid                       the statue
+M  14548 spec_cast_cleric                       the black priest
+M  14549 spec_cast_judge                        the mad scientist
+M  14550 spec_cast_archmage                     a sorcerer
+M  14551 spec_assassin                          ninja
+M  14554 spec_cast_mage                         the Shokh'Torg
+M  14555 spec_breath_acid                       the burrower
+M  14557 spec_poison                            a giant scorpion
+M  14558 spec_demon                             the sewer demon
+M  14560 spec_breath_any                        a demi-dragon
+M  14561 spec_poison                            the sewer guardian
+M  14562 spec_cast_archmage                     Zyklor
+M  14563 spec_breath_any                        Zyklor
+M  14564 spec_warrior                           Arms-master
 S
 
 

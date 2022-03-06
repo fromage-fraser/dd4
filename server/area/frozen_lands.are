@@ -1,4 +1,4 @@
-#AREA	Thorne~  The Frozen Lands~
+#AREA   Thorne~  The Frozen Lands~
 70 85 45 100
 
 
@@ -240,25 +240,25 @@ of a winter sky. The dragon regards you momentarily then continues with its sear
 128 0
 8 8 0
 >give_prog dragon gem~
-	if number($o) == 18605
-	 say Thank you for returning my precious egg to me.
-	 mpoload 18608
-	 mpecho The dragon pulls something from the snow.
-	 say I found this lying around, you can have it if you like.
-	 give silver $n
-	 mpjunk gem
-	 say I must go and hide my egg in a safe place so it wont be stolen again.
-	 mpecho The dragon shambles off.
-	else
-	 mpecho $I examines $O closely.
-	 mpecho $I looks disappointed.
-	 drop gem
-	endif
-	  if inroom($n) == 18698
-	   mpgoto 18699
-	  else
-	   mpgoto 18698
-	  endif
+    if number($o) == 18605
+     say Thank you for returning my precious egg to me.
+     mpoload 18608
+     mpecho The dragon pulls something from the snow.
+     say I found this lying around, you can have it if you like.
+     give silver $n
+     mpjunk gem
+     say I must go and hide my egg in a safe place so it wont be stolen again.
+     mpecho The dragon shambles off.
+    else
+     mpecho $I examines $O closely.
+     mpecho $I looks disappointed.
+     drop gem
+    endif
+      if inroom($n) == 18698
+       mpgoto 18699
+      else
+       mpgoto 18698
+      endif
 ~
 |
 #18617
@@ -4981,53 +4981,53 @@ S
 
 #RESETS
 *
-M 1 18600 1 18661			the Fat Penguin to On the frozen lake
+M 1 18600 1 18661           the Fat Penguin to On the frozen lake
 *
-M 1 18601 1 18654			the Fat Penguin to Trudging through the snow
+M 1 18601 1 18654           the Fat Penguin to Trudging through the snow
 *
-M 1 18602 1 18645			the Fat Penguin to Trudging through the snow
+M 1 18602 1 18645           the Fat Penguin to Trudging through the snow
 *
-M 1 18603 1 18706			the Fat Penguin to In the icy water
+M 1 18603 1 18706           the Fat Penguin to In the icy water
 *
-M 1 18604 1 18609			the Snow Wolf to Trudging through the snow
+M 1 18604 1 18609           the Snow Wolf to Trudging through the snow
 E 1 18602 100 5
 *
-M 1 18605 1 18636			the Snow Wolf to Trudging through the snow
+M 1 18605 1 18636           the Snow Wolf to Trudging through the snow
 E 1 18602 100 5
 *
-M 1 18606 1 18679			the Snow Wolf to Trudging through the snow
+M 1 18606 1 18679           the Snow Wolf to Trudging through the snow
 E 1 18602 100 5
 *
-M 1 18607 1 18693			the Snow Wolf to A ravine
+M 1 18607 1 18693           the Snow Wolf to A ravine
 E 1 18602 100 5
 *
-M 1 18608 1 18709			the Ice Fish to In the icy water
+M 1 18608 1 18709           the Ice Fish to In the icy water
 *
-M 1 18609 1 18721			the Ice Fish to In the icy water
+M 1 18609 1 18721           the Ice Fish to In the icy water
 *
-M 1 18610 1 18717			the Ice Fish to In the icy water
+M 1 18610 1 18717           the Ice Fish to In the icy water
 *
-M 1 18611 1 18702			the Ice Fish to In the icy water
+M 1 18611 1 18702           the Ice Fish to In the icy water
 *
-M 1 18612 1 18659			the Leopard Seal to On the frozen lake
+M 1 18612 1 18659           the Leopard Seal to On the frozen lake
 E 1 18600 100 16
 E 1 18601 100 5
 *
-M 1 18613 1 18657			the Leopard Seal to On the frozen lake
+M 1 18613 1 18657           the Leopard Seal to On the frozen lake
 E 1 18601 100 5
 E 1 18600 100 16
 *
-M 1 18614 1 18667			the Leopard seal to Trudging through the snow
+M 1 18614 1 18667           the Leopard seal to Trudging through the snow
 E 1 18601 100 5
 E 1 18600 100 16
 *
-M 1 18615 1 18622			the Leopard Seal to Trudging through the snow
+M 1 18615 1 18622           the Leopard Seal to Trudging through the snow
 E 1 18601 100 5
 E 1 18600 100 16
-O 1 18603 100 18682			a tuft of grass to Trudging through the snow
-O 1 18603 100 18619			a tuft of grass to Trudging through the snow
+O 1 18603 100 18682         a tuft of grass to Trudging through the snow
+O 1 18603 100 18619         a tuft of grass to Trudging through the snow
 *
-M 1 18617 1 18725			the Thief to Inside the giant tree
+M 1 18617 1 18725           the Thief to Inside the giant tree
 E 1 18607 100 5
 E 1 18609 100 7
 E 1 18611 100 8
@@ -5036,13 +5036,13 @@ E 1 18612 100 16
 G 1 18605 100
 G 1 18606 100
 *
-M 1 18619 1 18729			the Polar bear to A ravine
+M 1 18619 1 18729           the Polar bear to A ravine
 E 1 18613 100 5
 *
-M 1 18618 1 18727			the Polar bear to A ravine
+M 1 18618 1 18727           the Polar bear to A ravine
 E 1 18613 100 5
 *
-M 1 18620 1 18723			the Seal Hunter to Inside the giant tree
+M 1 18620 1 18723           the Seal Hunter to Inside the giant tree
 E 1 18614 100 16
 E 1 18615 100 11
 E 1 18611 100 8
@@ -5050,41 +5050,41 @@ E 1 18617 100 5
 E 1 18618 100 7
 G 1 18616 100
 *
-M 1 18624 1 18734			the baby Snow Dragon to A ravine
+M 1 18624 1 18734           the baby Snow Dragon to A ravine
 E 1 18619 100 5
 *
-M 1 18616 1 18699			the Snow Dragon to Inside a cave
+M 1 18616 1 18699           the Snow Dragon to Inside a cave
 E 1 18604 100 5
 *
-M 1 18621 1 18724			a Crazy Old Hermit to Inside the giant tree
-O 1 18620 100 18679			a frozen mouse to Trudging through the snow
-O 1 18620 100 18611			a frozen mouse to Trudging through the snow
+M 1 18621 1 18724           a Crazy Old Hermit to Inside the giant tree
+O 1 18620 100 18679         a frozen mouse to Trudging through the snow
+O 1 18620 100 18611         a frozen mouse to Trudging through the snow
 *
-M 1 18623 2 18625			the Abominable Snowman to Trudging through the snow
+M 1 18623 2 18625           the Abominable Snowman to Trudging through the snow
 *
-M 1 18623 2 18667			the Abominable Snowman to Trudging through the snow
+M 1 18623 2 18667           the Abominable Snowman to Trudging through the snow
 *
-M 1 18625 2 18687			the Abominable Snowman to Trudging through the snow
+M 1 18625 2 18687           the Abominable Snowman to Trudging through the snow
 *
-M 1 18625 2 18620			the Abominable Snowman to Trudging through the snow
+M 1 18625 2 18620           the Abominable Snowman to Trudging through the snow
 *
-M 1 18626 1 18747			the Lady of the Lake to The lady's ethereal chamber
+M 1 18626 1 18747           the Lady of the Lake to The lady's ethereal chamber
 E 1 18621 100 5
 E 1 18622 100 6
 E 1 18623 100 16
 E 1 18632 100 17
 *
-M 1 18627 1 18722			the White Witch to Inside the giant tree
+M 1 18627 1 18722           the White Witch to Inside the giant tree
 E 1 18624 100 5
 E 1 18625 100 12
 E 1 18626 100 16
 E 1 18631 100 17
 E 1 18628 100 1
 *
-M 1 18628 1 18616			the Familiar to Trudging through the snow
+M 1 18628 1 18616           the Familiar to Trudging through the snow
 E 1 18613 100 5
 *
-M 1 18629 1 18746			the Weather Mage to on top of the glacier.
+M 1 18629 1 18746           the Weather Mage to on top of the glacier.
 E 1 18607 100 5
 E 1 18609 100 7
 E 1 18611 100 8
@@ -5096,17 +5096,17 @@ M 1 18622 1 18736
 O 1 18633 100 18748
 O 1 18634 100 18600
 *
-M 1 18630 1 18650			wizinvis mob
+M 1 18630 1 18650           wizinvis mob
 S
 
 
 #SPECIALS
-M  18616 spec_breath_frost			the Snow Dragon
-M  18623 spec_breath_frost			the Abominable Snowman
-M  18624 spec_breath_frost			the baby Snow Dragon
-M  18626 spec_breath_frost			the Lady of the Lake
-M  18627 spec_cast_adept			the White Witch
-M  18629 spec_cast_archmage			the Weather Mage
+M  18616 spec_breath_frost          the Snow Dragon
+M  18623 spec_breath_frost          the Abominable Snowman
+M  18624 spec_breath_frost          the baby Snow Dragon
+M  18626 spec_breath_frost          the Lady of the Lake
+M  18627 spec_cast_adept            the White Witch
+M  18629 spec_cast_archmage         the Weather Mage
 S
 
 

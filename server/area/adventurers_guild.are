@@ -1,4 +1,4 @@
-#AREA	GezSacWrath~  Adventurer's Guild~
+#AREA   GezSacWrath~  Adventurer's Guild~
 -2 -2 0 100
 
 #AREA_SPECIAL
@@ -69,14 +69,14 @@ This guy is the largest mother you have ever laid eyes on....
 0 0
 8 8 0
 >all_greet_prog 100~
-	if level($n) > 25
-		say I am sorry $n but you are banished from here!
-		mpechoaround $n is banished from here!
-		mptrans $n 25302
-		mpat $n mpforce $n look
-	else
-		nod $n
-	endif
+    if level($n) > 25
+        say I am sorry $n but you are banished from here!
+        mpechoaround $n is banished from here!
+        mptrans $n 25302
+        mpat $n mpforce $n look
+    else
+        nod $n
+    endif
 ~
 |
 #25305
@@ -91,8 +91,8 @@ Suturb is the wise questmaster of Midgaard.
 0 0
 8 8 1
 >all_greet_prog 100~
-	say Greetings young one.  I am your questmaster, here to aid you in your glorious adventures.
-	say To ask for a quest type QUEST REQUEST.  For more information, try HELP QUEST.
+    say Greetings young one.  I am your questmaster, here to aid you in your glorious adventures.
+    say To ask for a quest type QUEST REQUEST.  For more information, try HELP QUEST.
 ~
 |
 #0
@@ -366,7 +366,7 @@ S
 #25304
 Xiao Tsu's Office~
 Stuffed heads and a selection of cruel and evil looking weapons hang on
-the walls of this room, which contains no furnature except for a modest
+the walls of this room, which contains no furniture except for a modest
 desk and a large SIGN on the wall.
 ~
 0 8|1024 0
@@ -380,7 +380,7 @@ O===============================O
 | Quests currently available:   |
 |                               |
 | 1. The Magician's Missing Gem |
-|         		        |
+|                               |
 O===============================O
 ~
 S
@@ -404,7 +404,7 @@ The Questmasters Home~
 This room is very untidy and looks as if the owner of this room hasnt
 lifted a finger to do anything about it.  You see a long table with
 empty bottles of ale and half eaten loaves of bread. The smell of the
-ale and the stale bread starts to make you feel queezy and you notice a
+ale and the stale bread starts to make you feel queasy and you notice a
 rat hiding in the corner.
 ~
 0 4|8|1024|8192 0
@@ -422,16 +422,16 @@ M 1 25301 1 25302
 M 1 25302 1 25303
 M 1 25303 1 25304
 *
-M 1 25304 1 25305			the huge guard to the small corridor
+M 1 25304 1 25305           the huge guard to the small corridor
 *
-M 1 25305 1 25306			Simon to Simons hideout
-O 1 25304 100 25306			table to Simons hideout
+M 1 25305 1 25306           Simon to Simons hideout
+O 1 25304 100 25306         table to Simons hideout
 S
 
 
 #SPECIALS
-M  25304 spec_cast_psionicist			the huge guard
-M  25305 spec_cast_psionicist		Simon
+M  25304 spec_cast_psionicist       the huge guard
+M  25305 spec_cast_psionicist       Simon
 S
 
 

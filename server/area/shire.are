@@ -1,4 +1,4 @@
-#AREA	 Anon~    The Shire~
+#AREA    Anon~    The Shire~
 5 15 0 100
 
 
@@ -457,8 +457,8 @@ by entering these lands you agree to obey our laws.  If you break these laws,
 you will be severely punished.  We do not like riff raff in our peaceful
 town.
 
-					The Thain
-					Peacekeeper of the Shire
+                    The Thain
+                    Peacekeeper of the Shire
 
 ~
 #1103
@@ -1662,71 +1662,71 @@ S
 
 
 #RESETS
-O 0 1102 1 1103		Sign
-M 0 1118 1 1105  	General Store Shopkeeper
-G 1 1111 999		bags
-G 1 1112 999		lanterns
-M 0 1120 1 1107		Blacksmith
-M 0 1104 2 1108		Nursemaids
+O 0 1102 1 1103     Sign
+M 0 1118 1 1105     General Store Shopkeeper
+G 1 1111 999        bags
+G 1 1112 999        lanterns
+M 0 1120 1 1107     Blacksmith
+M 0 1104 2 1108     Nursemaids
 M 0 1104 2 1108
-M 0 1103 6 1108		Toddlers
+M 0 1103 6 1108     Toddlers
 M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
-M 0 1110 8 1110		Non-mobile shiriffs
-E 1 1109 9 16		Tiny dagger
-E 1 616 100 5		Leather armour
+M 0 1110 8 1110     Non-mobile shiriffs
+E 1 1109 9 16       Tiny dagger
+E 1 616 100 5       Leather armour
 M 0 1110 8 1110
 E 1 616 100 5
-M 0 1111 4 1110		Mobile shiriff
+M 0 1111 4 1110     Mobile shiriff
 E 1 616 100 5
-M 0 1112 1 1111		Thain
-E 1 1113 100 16		Long sword
-E 1 616 100 5		Leather vest
+M 0 1112 1 1111     Thain
+E 1 1113 100 16     Long sword
+E 1 616 100 5       Leather vest
 E 1 1108 5 13
-M 0 1128 4 1114		Country bumpkin
+M 0 1128 4 1114     Country bumpkin
 G 1 1103 99
-M 0 1128 4 1115		Country bumpkin
+M 0 1128 4 1115     Country bumpkin
 G 1 1103 99
-M 0 1113 1 1116		Innkeeper - Ivy Bush
-G 1 1110 999		eggs
-G 1 648 999		whiskey
-G 1 649 999		ale
-G 1 650 999		port brew
-M 0 1123 4 1116		Seasoned adventurers
+M 0 1113 1 1116     Innkeeper - Ivy Bush
+G 1 1110 999        eggs
+G 1 648 999         whiskey
+G 1 649 999         ale
+G 1 650 999         port brew
+M 0 1123 4 1116     Seasoned adventurers
 M 0 1123 4 1116
-M 0 1124 2 1116		Gossips
+M 0 1124 2 1116     Gossips
 M 0 1124 2 1116
-M 0 1127 7 1116		Chic urbanites
+M 0 1127 7 1116     Chic urbanites
 M 0 1127 7 1116
 M 0 1127 7 1116
-M 0 1121 1 1117		Battle master
-E 1 1113 100 16		Small sword
-M 0 1126 3 1117		Trainees
-E 1 1113 100 16		Small sword
+M 0 1121 1 1117     Battle master
+E 1 1113 100 16     Small sword
+M 0 1126 3 1117     Trainees
+E 1 1113 100 16     Small sword
 M 0 1126 3 1117
 E 1 1113 100 16
 M 0 1126 3 1117
 E 1 1113 100 16
-M 0 1110 8 1119		Non-mobile shiriffs
-E 1 1109 3 16		Tiny dagger
+M 0 1110 8 1119     Non-mobile shiriffs
+E 1 1109 3 16       Tiny dagger
 E 1 616 100 5
 M 0 1110 8 1119
 E 1 616 100 5
-M 0 1111 4 1119		Mobile shiriff
+M 0 1111 4 1119     Mobile shiriff
 E 1 616 100 5
-M 0 1119 1 1121		Grocer
-G 1 1103 999		bread
-M 0 1115 6 1123		Mill workers
+M 0 1119 1 1121     Grocer
+G 1 1103 999        bread
+M 0 1115 6 1123     Mill workers
 M 0 1115 6 1123
 M 0 1115 6 1124
 M 0 1115 6 1124
 M 0 1115 6 1124
-M 0 1114 1 1124		Miller
-M 0 1115 6 1125		Mill workers
-M 0 1122 9 1127		Halfing youths
+M 0 1114 1 1124     Miller
+M 0 1115 6 1125     Mill workers
+M 0 1122 9 1127     Halfing youths
 M 0 1122 9 1127
 M 0 1122 9 1127
 M 0 1122 9 1129
@@ -1735,36 +1735,36 @@ M 0 1122 9 1129
 M 0 1122 9 1130
 M 0 1122 9 1130
 M 0 1122 9 1130
-M 0 1125 1 1128		Beauty
-M 0 1100 1 1128		Wizard
-E 1 1104 1 12		Silvery cloak
-E 1 1100 1 0		Rainbow staff
-M 0 1116 1 1136		Elven warrior
-E 1 1106 1 16		Elven bow
-E 1 622 25 6		Bronze helmet
-M 0 1117 1 1136		Dwarven prince
-E 1 1107 1 16		Mithril axe
-E 1 621 10 5		Bronze breast plate
-M 0 1101 1 1137		Ring keeper
-E 1 1101 1 16		Sting
-E 1 1105 10 1		One ring
-E 1 623 15 7		Bronze leggings
-M 0 1108 1 1138		Bull
-M 0 1106 5 1139		Pigs
+M 0 1125 1 1128     Beauty
+M 0 1100 1 1128     Wizard
+E 1 1104 1 12       Silvery cloak
+E 1 1100 1 0        Rainbow staff
+M 0 1116 1 1136     Elven warrior
+E 1 1106 1 16       Elven bow
+E 1 622 25 6        Bronze helmet
+M 0 1117 1 1136     Dwarven prince
+E 1 1107 1 16       Mithril axe
+E 1 621 10 5        Bronze breast plate
+M 0 1101 1 1137     Ring keeper
+E 1 1101 1 16       Sting
+E 1 1105 10 1       One ring
+E 1 623 15 7        Bronze leggings
+M 0 1108 1 1138     Bull
+M 0 1106 5 1139     Pigs
 M 0 1106 5 1139
 M 0 1106 5 1139
 M 0 1106 5 1139
 M 0 1106 5 1139
-M 0 1102 1 1141		Farmer Gamgee
-M 0 1105 3 1142		Cows
+M 0 1102 1 1141     Farmer Gamgee
+M 0 1105 3 1142     Cows
 M 0 1105 3 1142
 M 0 1105 3 1142
-M 0 1109 4 1142		Horses
+M 0 1109 4 1142     Horses
 M 0 1109 4 1142
 M 0 1109 4 1142
 M 0 1109 4 1142
-M 0 1107 6 1143		Chickens
-G 1 1110 100		egg
+M 0 1107 6 1143     Chickens
+G 1 1110 100        egg
 M 0 1107 6 1143
 G 1 1110 100
 M 0 1107 6 1143
@@ -1775,60 +1775,60 @@ M 0 1107 6 1143
 G 1 1110 100
 M 0 1107 6 1143
 G 1 1110 100
-M 0 1130 1 1144		Innkeeper - Green Dragon
-G 1 1110 999		eggs
-G 1 648 999		whiskey
-G 1 649 999		ale
-G 1 650 999		port brew
-M 0 1131 1 1157         receptionist - green dragon
-M 0 1123 6 1144		Seasoned adventurers
+M 0 1130 1 1144     Innkeeper - Green Dragon
+G 1 1110 999        eggs
+G 1 648 999         whiskey
+G 1 649 999         ale
+G 1 650 999         port brew
+M 0 1131 1 1157     receptionist - green dragon
+M 0 1123 6 1144     Seasoned adventurers
 M 0 1123 6 1144
 M 0 1123 6 1144
-M 0 1127 7 1144		Chic urbanites
+M 0 1127 7 1144     Chic urbanites
 M 0 1127 7 1144
 M 0 1127 7 1144
 M 0 1127 7 1144
-M 0 1110 8 1145		Non-mobile shiriffs
-E 1 1109 3 16		Tiny daggers
-E 1 616 100 5		Leather armour
+M 0 1110 8 1145     Non-mobile shiriffs
+E 1 1109 3 16       Tiny daggers
+E 1 616 100 5       Leather armour
 M 0 1110 8 1145
 E 1 616 100 5
-M 0 1111 4 1145		Mobile shiriff
+M 0 1111 4 1145     Mobile shiriff
 E 1 616 100 5
-M 0 1110 8 1153		Non-mobile shiriffs
-E 1 1109 3 16		Tiny daggers
-E 1 616 100 5		Leather armour
+M 0 1110 8 1153     Non-mobile shiriffs
+E 1 1109 3 16       Tiny daggers
+E 1 616 100 5       Leather armour
 M 0 1110 8 1153
 E 1 616 100 5
-M 0 1111 4 1153		Mobile shiriff
+M 0 1111 4 1153     Mobile shiriff
 E 1 616 100 5
-M 0 1128 4 1154		Country bumpkin
-M 0 1128 4 1155		Country bumpkin
+M 0 1128 4 1154     Country bumpkin
+M 0 1128 4 1155     Country bumpkin
 S
 
 
 
 #SHOPS
- 1113 17  0  0  0  0 150 50  0 23	innkeeper
- 1118 13  5 15  1 17 150 50  0 23	shopkeeper
- 1119 13  5 15  1 17 150 50  0 23	grocer
- 1120  9  5  0  0  0 150 50  0 23	blacksmith
- 1130 17  0  0  0  0 150 50  0 23	innkeeper
+ 1113 17  0  0  0  0 150 50  0 23   innkeeper
+ 1118 13  5 15  1 17 150 50  0 23   shopkeeper
+ 1119 13  5 15  1 17 150 50  0 23   grocer
+ 1120  9  5  0  0  0 150 50  0 23   blacksmith
+ 1130 17  0  0  0  0 150 50  0 23   innkeeper
 0
 
 
 
 #SPECIALS
-M  1100 spec_cast_mage		Wizard
-M  1101 spec_poison		keeper
-M  1110 spec_guard		shiriff
-M  1111 spec_guard		shiriff
-M  1112 spec_guard		Thain
-M  1116 spec_cast_mage		elf
-M  1117 spec_cast_mage		dwarf
-M  1121 spec_guard		battlemaster
-M  1122 spec_thief		youth
-M  1132 spec_guard		shiriff
+M  1100 spec_cast_mage      Wizard
+M  1101 spec_poison         keeper
+M  1110 spec_guard          shiriff
+M  1111 spec_guard          shiriff
+M  1112 spec_guard          Thain
+M  1116 spec_cast_mage      elf
+M  1117 spec_cast_mage      dwarf
+M  1121 spec_guard          battlemaster
+M  1122 spec_thief          youth
+M  1132 spec_guard          shiriff
 S
 
 

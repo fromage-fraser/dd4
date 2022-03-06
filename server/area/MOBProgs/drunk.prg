@@ -1,8 +1,8 @@
 >rand_prog 60~
 if rand(50)
-	dance
+        dance
 else
-	sing
+        sing
 endif
 ~
 >greet_prog 10~

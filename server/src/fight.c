@@ -1330,7 +1330,7 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
                         return TRUE;
                 }
 
-                if (!in_pkill_range(ch, victim->rider))
+                if (!in_pkill_range(ch, victim->rider) && !IS_IMMORTAL( ch ))
                 {
                         send_to_char("They are not within your pkilling range.\n\r", ch);
                         return TRUE;
@@ -1371,7 +1371,7 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
                 return TRUE;
         }
 
-        if (!in_pkill_range(ch, victim))
+        if (!in_pkill_range(ch, victim) && !IS_IMMORTAL( ch ))
         {
                 send_to_char("They are not within your pkilling range.\n\r",ch);
                 return TRUE;

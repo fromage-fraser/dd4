@@ -1,4 +1,4 @@
-#AREA	Alfa~    Holy Grove~
+#AREA   Alfa~    Holy Grove~
 5 20 0 100
 
 
@@ -250,7 +250,7 @@ This robe is rough, but appears quite durable.
 A
 12 10
 #8913
-herbs~
+bluish herbs~
 some bluish herbs~
 Some bluish herbs are scattered here.~
 ~
@@ -258,7 +258,7 @@ Some bluish herbs are scattered here.~
 15~ bless~ ~ ~
 1 1 1
 #8914
-herbs~
+purplish herbs~
 some purplish herbs~
 Some purplish herbs are scattered here.~
 ~
@@ -266,7 +266,7 @@ Some purplish herbs are scattered here.~
 15~ change sex~ ~ ~
 1 1 1
 #8915
-herbs~
+blackish herbs~
 some blackish herbs~
 Some blackish herbs are scattered here.~
 ~
@@ -274,7 +274,7 @@ Some blackish herbs are scattered here.~
 5~ blindness~ ~ ~
 1 1 1
 #8916
-herbs~
+grayish herbs~
 some grayish herbs~
 Some grayish herbs are scattered here.~
 ~
@@ -282,7 +282,7 @@ Some grayish herbs are scattered here.~
 5~ giant strength~ poison~ ~
 1 1 1
 #8917
-herbs~
+reddish herbs~
 some reddish herbs~
 Some reddish herbs are scattered here.~
 ~
@@ -290,7 +290,7 @@ Some reddish herbs are scattered here.~
 15~ detect magic~ ~ ~
 1 1 1
 #8918
-herbs~
+orangish herbs~
 some orangish herbs~
 Some orangish herbs are scattered here.~
 ~
@@ -298,7 +298,7 @@ Some orangish herbs are scattered here.~
 5~ cure light~ ~ ~
 1 1 1
 #8919
-herbs~
+pinkish herbs~
 some pinkish herbs~
 Some pinkish herbs are scattered here.~
 ~
@@ -805,48 +805,48 @@ S
 
 
 #RESETS
-M 0 8900 1 8905		the Hierophant
-E 1 8910 99 16		wields a staff
-E 1 8911 99 5		wears a robe
-G 1 8919 99		pink herbs
-G 1 8918 99		orange herbs
-M 0 8901 1 8901		the female Hierophant
-E 1 8910 99 16		wields a staff
-E 1 8911 99 5		wears a robe
-G 1 8913 99		blue herbs
-G 1 8915 99		black herbs
-M 0 8902 1 8902		the elder druid
-E 1 8910 99 16		wields a staff
-G 1 8914 99		purple herbs
-G 1 8916 99		grey herbs
-M 0 8903 1 8904		the elder druidess
-E 1 8910 99 16		wields a staff
-G 1 8919 99		pink herbs
-G 1 8917 99		red herbs
-M 0 8904 2 8905		doe
-M 0 8905 2 8906		deer
-M 0 8906 1 8905		stag
-M 0 8907 4 8903		bunny
-M 0 8907 4 8903		bunny
-M 0 8908 9 8906		snake!
-M 0 8909 1 8911		druid
-G 1 8913 99		blue herbs
-M 0 8909 2 8918		druid
-G 1 8916 99		grey herbs
-M 0 8910 1 8914		druidess
-G 1 8914 99		purple herbs
-M 0 8910 2 8917		druidess
-G 1 8918 99		orange herbs
-O 0 8901 2 8912		Closet
-O 0 8901 2 8914		.-.
-O 0 8902 2 8915		jar..
-P 1 8903 1 8902		pepper
-O 0 8902 2 8915		jar...
-P 1 8904 1 8902		corn
+M 0 8900 1 8905         the Hierophant
+E 1 8910 99 16          wields a staff
+E 1 8911 99 5           wears a robe
+G 1 8919 99             pink herbs
+G 1 8918 99             orange herbs
+M 0 8901 1 8901         the female Hierophant
+E 1 8910 99 16          wields a staff
+E 1 8911 99 5           wears a robe
+G 1 8913 99             blue herbs
+G 1 8915 99             black herbs
+M 0 8902 1 8902         the elder druid
+E 1 8910 99 16          wields a staff
+G 1 8914 99             purple herbs
+G 1 8916 99             grey herbs
+M 0 8903 1 8904         the elder druidess
+E 1 8910 99 16          wields a staff
+G 1 8919 99             pink herbs
+G 1 8917 99             red herbs
+M 0 8904 2 8905         doe
+M 0 8905 2 8906         deer
+M 0 8906 1 8905         stag
+M 0 8907 4 8903         bunny
+M 0 8907 4 8903         bunny
+M 0 8908 9 8906         snake!
+M 0 8909 1 8911         druid
+G 1 8913 99             blue herbs
+M 0 8909 2 8918         druid
+G 1 8916 99             grey herbs
+M 0 8910 1 8914         druidess
+G 1 8914 99             purple herbs
+M 0 8910 2 8917         druidess
+G 1 8918 99             orange herbs
+O 0 8901 2 8912         Closet
+O 0 8901 2 8914         .-.
+O 0 8902 2 8915         jar..
+P 1 8903 1 8902         pepper
+O 0 8902 2 8915         jar...
+P 1 8904 1 8902         corn
 O 0 8905 1 8915
-D 0 8914 3 1		close door
+D 0 8914 3 1            close door
 D 0 8913 1 1
-D 0 8912 3 1		.-.
+D 0 8912 3 1            .-.
 D 0 8911 1 1
 D 0 8911 0 1
 D 0 8910 2 1

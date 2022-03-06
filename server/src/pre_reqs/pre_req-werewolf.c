@@ -38,12 +38,12 @@
 
 {&gsn_group_armed,              &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 {&gsn_second_attack,            &gsn_group_armed,       50,     PRE_WEREWOLF},
-{&gsn_enhanced_hit,          &gsn_group_armed,          80,     PRE_WEREWOLF},
-{&gsn_enhanced_hit,          &gsn_werewolf_base,        30,     PRE_WEREWOLF},
+{&gsn_enhanced_hit,             &gsn_group_armed,       80,     PRE_WEREWOLF},
+{&gsn_enhanced_hit,             &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
 {&gsn_third_attack,             &gsn_group_armed,       70,     PRE_WEREWOLF},
 {&gsn_third_attack,             &gsn_second_attack,     70,     PRE_WEREWOLF},
-{&gsn_third_attack,             &gsn_werewolf_base,      30,     PRE_WEREWOLF},
+{&gsn_third_attack,             &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
 {&gsn_fourth_attack,            &gsn_group_armed,       90,     PRE_WEREWOLF},
 {&gsn_fourth_attack,            &gsn_second_attack,     85,     PRE_WEREWOLF},
@@ -52,7 +52,7 @@
 
 {&gsn_dual,                     &gsn_group_armed,       92,     PRE_WEREWOLF},
 {&gsn_dual,                     &gsn_fourth_attack,     90,     PRE_WEREWOLF},
-{&gsn_dual,                     &gsn_werewolf_base,      30,     PRE_WEREWOLF},
+{&gsn_dual,                     &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
 {&gsn_group_defense,            &gsn_werewolf_base,     45,     PRE_WEREWOLF},
 

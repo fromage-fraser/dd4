@@ -1,4 +1,4 @@
-#AREA	 Pinto~   Krondor~
+#AREA    Pinto~   Krondor~
 -2 -2 0 100
 
 #AREA_SPECIAL
@@ -11,7 +11,7 @@ $
 If you are reading this then you have either met or are planning to meet
 Kennan the Stablemaster located in Krondor.
 He has the most desired mounts to offer all you have to do is ask him the
-price?  All the horses are very obediant and if you tell them to stay they
+price?  All the horses are very obedient and if you tell them to stay they
 will lie down and sleep to rest as well but you have to dismounted to do
 that.   syntax :- say 'stallion stay' if you have a stallion and so forth.
 Everything else will be revealed to you.
@@ -128,11 +128,11 @@ they are the allies of Krondor.
 0 0
 8 8 1
 #30008
-Paradign paradign brave defender~
-Paradign the Brave~
-Paradign the Brave, the Defender of Krondor, is here.
+Paradigm paradigm brave defender~
+Paradigm the Brave~
+Paradigm the Brave, the Defender of Krondor, is here.
 ~
-Paradign is dressed in full plate, and he looks indestructible.
+Paradigm is dressed in full plate, and he looks indestructible.
 He eyes you suspiciously not only because you are a stranger, but because
 you are an ARMED stranger.  Better not do any funny stuff in his presence.
 ~
@@ -637,7 +637,7 @@ mold demon~
 the hideous demon~
 A pool of decay bubbles and a hideous mold demon erupts.
 ~
-The demon is humunoid in shape but is coated in a slime of
+The demon is humanoid in shape but is coated in a slime of
 glowing fungus and spurting puffballs.  Every few seconds, a
 mushroom sprouts out with a loud popping noise.
 ~
@@ -676,7 +676,7 @@ are known to be docile since they sleep most of the time.
 #30051
 quartz demon~
 the Quartz Demon~
-A humunoid form made out of quartz studies the machine.
+A humanoid form made out of quartz studies the machine.
 ~
 One of the few forms of demons known to be lawful, the quartz
 demon appears to interested in the observatory's equipment instead
@@ -754,7 +754,7 @@ his first work as an apprentice.
 8 8 1
 #30057
 shrine icon~
-a guilded icon~
+a gilded icon~
 
 ~
 You start to pass off the shrine as another religious icon,
@@ -878,9 +878,9 @@ floral dress she is a handsome lady.
 #30066
 cobbler shoemaker~
 the cobbler~
-The cobbler is busy here working on a pair of bushmas boots.
+The cobbler is busy here working on a pair of bushman's boots.
 ~
-The cobbler has sweat running down his brow as he works labouriously on the
+The cobbler has sweat running down his brow as he works laboriously on the
 pair of boots at his stand.
 ~
 2|64 0 1000 S
@@ -902,10 +902,10 @@ on the other this man looks tough.
 8 8 1
 >fight_prog 75~
 if ispc($n)
-	trip $n
-	disarm $n
-	get all
-	headbutt
+    trip $n
+    disarm $n
+    get all
+    headbutt
 endif
 ~
 |
@@ -958,10 +958,10 @@ sword.  Clean white gloves adorn his hands. While in his hand is a long lance.
 8 8 1
 >fight_prog 75~
 if ispc($n)
-	trip $n
-	disarm $n
-	get all
-	headbutt
+    trip $n
+    disarm $n
+    get all
+    headbutt
 endif
 ~
 |
@@ -971,7 +971,7 @@ the high priest.~
 The high priest stands here.
 ~
 Red robes flow from shoulders that are just able to hold upright
-the large white has with a cross ensignia in the centre of it.
+the large white has with a cross insignia in the centre of it.
 ~
 2|64 8|32|128|8192 1000 S
 80 0 0 0d0+0 0d0+0
@@ -1044,119 +1044,119 @@ than someone ready to deck you with a new horse.
 0 0
 8 8 1
 >speech_prog p price?~
-	mpecho The stablemaster shows you firstly a shiny Stallion that is very stunning to look
-	mpecho at then he moves you on to the more desirable Charger which is visually bigger and
-	mpecho is a beautiful beast, finally he shows you the pinnacle of his stables the Warhorse
-	mpecho which is breathtaking and mesmorising to look at.
-	say The stallions I can give you for 50000 coins the Chargers I can give for 100000 coins and
-	say for the most righteous Warriors I can give the Warhorses for 150000 coins.
+    mpecho The stablemaster shows you firstly a shiny Stallion that is very stunning to look
+    mpecho at then he moves you on to the more desirable Charger which is visually bigger and
+    mpecho is a beautiful beast, finally he shows you the pinnacle of his stables the Warhorse
+    mpecho which is breathtaking and mesmerising to look at.
+    say The stallions I can give you for 50000 coins the Chargers I can give for 100000 coins and
+    say for the most righteous Warriors I can give the Warhorses for 150000 coins.
 ~
 >greet_prog 77~
-	if ispc($n)
-		say Welcome $n
-	endif
+    if ispc($n)
+        say Welcome $n
+    endif
 ~
 >rand_prog 1~
-	emote checks his sword.
-	mpat 1 mppurge
+    emote checks his sword.
+    mpat 1 mppurge
 ~
 >bribe_prog 150000~
-	if ispc($n)
-		if level($n) > 85
-			if class($n) == 3
-				mpat 1 mpmload 30074
-				mpat 1 mpoload 30085 95
-				mpat 1 mpoload 30086 95
-				mpat 1 mpoload 30087 95
-				mpat 1 mpoload 30088 95
-				mpat 1 give saddle warhorse
-				mpat 1 give heavy warhorse
-				mpat 1 give heavy warhorse
-				mpat 1 give heavy warhorse
-				mpat 1 mpforce warhorse wear all
-				mpat 1 mptransfer warhorse 30124
-				mpecho Kennan leads a very large Warhorse in.
-				say This is my finest, good luck Sir.
-				bow $n
-				mpforce $n mount warhorse
-				mpat 1 drop coins
-			else
-				say Sorry $n but only the most righteous Warriors have access to the Warhorse.
-				drop coins
-			endif
-		else
-			say I am sorry $n but you lack the experience for such a beast
-			drop coins
-			snicker
-		endif
-	else
-	endif
+    if ispc($n)
+        if level($n) > 85
+            if class($n) == 3
+                mpat 1 mpmload 30074
+                mpat 1 mpoload 30085 95
+                mpat 1 mpoload 30086 95
+                mpat 1 mpoload 30087 95
+                mpat 1 mpoload 30088 95
+                mpat 1 give saddle warhorse
+                mpat 1 give heavy warhorse
+                mpat 1 give heavy warhorse
+                mpat 1 give heavy warhorse
+                mpat 1 mpforce warhorse wear all
+                mpat 1 mptransfer warhorse 30124
+                mpecho Kennan leads a very large Warhorse in.
+                say This is my finest, good luck Sir.
+                bow $n
+                mpforce $n mount warhorse
+                mpat 1 drop coins
+            else
+                say Sorry $n but only the most righteous Warriors have access to the Warhorse.
+                drop coins
+            endif
+        else
+            say I am sorry $n but you lack the experience for such a beast
+            drop coins
+            snicker
+        endif
+    else
+    endif
 ~
 >bribe_prog 100000~
-	if ispc($n)
-		if class($n) == 3
-				mpat 1 mpmload 30073
-				mpat 1 mpoload 30085 80
-				mpat 1 mpoload 30086 80
-				mpat 1 give saddle charger
-				mpat 1 give heavy charger
-				mpat 1 mpforce charger wear all
-				mpat 1 mptransfer charger 30124
-				emote leads a Charger into the room.
-				say There you go mighty Knight.
-				bow $n
-				mpforce $n mount charger
-				mpat 1 drop coins
-		else
-			if level($n) > 65
-				mpat 1 mpmload 30073
-				mpat 1 mpoload 30085 80
-				mpat 1 mpoload 30086 80
-				mpat 1 give saddle charger
-				mpat 1 give heavy charger
-				mpat 1 mpforce charger wear all
-				mpat 1 mptransfer charger 30124
-				emote leads a Charger from the back of the Stables.
-				say One charger mighty adventurer.
-				mpforce $n mount charger
-				mpat 1 drop coins
-			else
-			say I am sorry $n but you lack the experience for such a beast
-			drop coins
-			endif
-		endif
-	endif
+    if ispc($n)
+        if class($n) == 3
+                mpat 1 mpmload 30073
+                mpat 1 mpoload 30085 80
+                mpat 1 mpoload 30086 80
+                mpat 1 give saddle charger
+                mpat 1 give heavy charger
+                mpat 1 mpforce charger wear all
+                mpat 1 mptransfer charger 30124
+                emote leads a Charger into the room.
+                say There you go mighty Knight.
+                bow $n
+                mpforce $n mount charger
+                mpat 1 drop coins
+        else
+            if level($n) > 65
+                mpat 1 mpmload 30073
+                mpat 1 mpoload 30085 80
+                mpat 1 mpoload 30086 80
+                mpat 1 give saddle charger
+                mpat 1 give heavy charger
+                mpat 1 mpforce charger wear all
+                mpat 1 mptransfer charger 30124
+                emote leads a Charger from the back of the Stables.
+                say One charger mighty adventurer.
+                mpforce $n mount charger
+                mpat 1 drop coins
+            else
+            say I am sorry $n but you lack the experience for such a beast
+            drop coins
+            endif
+        endif
+    endif
 ~
 >bribe_prog 50000~
-	if ispc($n)
-		if class($n) == 3
-			mpat 1 mpmload 30072
-			mpat 1 mpoload 30085 60
-			mpat 1 give saddle stallion
-			mpat 1 mpforce stallion wear all
-			mpat 1 mptransfer stallion 30124
-			emote leads a stallion towards you.
-			say This is the finest Stallion we have mighty Knight.
-			bow $n
-			mpforce $n mount stallion
-			mpat 1 drop coins
-		else
-			if level($n) > 50
-				mpat 1 mpmload 30072
-				mpat 1 mpoload 30085 60
-				mpat 1 give saddle stallion
-				mpat 1 mpforce stallion wear all
-				mpat 1 mptransfer stallion 30124
-				mpecho A stallion is lead from the rear of the stables towards you.
-				say This Stallion will serve you well.
-				mpforce $n mount stallion
-				mpat 1 50000 coins
-			else
-			say I am sorry $n but you lack the experience for such a beast
-			drop coins
-			endif
-		endif
-	endif
+    if ispc($n)
+        if class($n) == 3
+            mpat 1 mpmload 30072
+            mpat 1 mpoload 30085 60
+            mpat 1 give saddle stallion
+            mpat 1 mpforce stallion wear all
+            mpat 1 mptransfer stallion 30124
+            emote leads a stallion towards you.
+            say This is the finest Stallion we have mighty Knight.
+            bow $n
+            mpforce $n mount stallion
+            mpat 1 drop coins
+        else
+            if level($n) > 50
+                mpat 1 mpmload 30072
+                mpat 1 mpoload 30085 60
+                mpat 1 give saddle stallion
+                mpat 1 mpforce stallion wear all
+                mpat 1 mptransfer stallion 30124
+                mpecho A stallion is lead from the rear of the stables towards you.
+                say This Stallion will serve you well.
+                mpforce $n mount stallion
+                mpat 1 50000 coins
+            else
+            say I am sorry $n but you lack the experience for such a beast
+            drop coins
+            endif
+        endif
+    endif
 ~
 |
 & 50 'teacher base'
@@ -1173,7 +1173,7 @@ This shiny black stallion has a very detailed saddle.
 36 0
 8 8 1
 >speech_prog p stallion stay~
-	sleep
+    sleep
 ~
 |
 #30073
@@ -1188,7 +1188,7 @@ A powerful with a very complex saddle and some heavy armor.
 36 0
 8 8 1
 >speech_prog p charger stay~
-	sleep
+    sleep
 ~
 |
 #30074
@@ -1204,10 +1204,10 @@ at the power this warhorse possesses.
 36 0
 8 8 1
 >speech_prog p warhorse stay~
-	sleep
+    sleep
 ~
 >rand_prog 1~
-	mpecho The warhorse snorts and shuffles.
+    mpecho The warhorse snorts and shuffles.
 ~
 |
 
@@ -1337,7 +1337,7 @@ A beautiful desk with inlaid amber is here.~
 E
 desk~
 The desk must be magical.  You stare at the small pieces of inlaid
-amber and see tiny trapped insects stuggling to get out.
+amber and see tiny trapped insects struggling to get out.
 ~
 #30007
 cabinet~
@@ -1349,7 +1349,7 @@ A sturdy glass cabinet is here.~
 0 0 0
 E
 cabinet~
-A cabinet made of oak and mahogany, this piece of woodmanship is just
+A cabinet made of oak and mahogany, this piece of woodsmanship is just
 splendid to view.  The wood is varnished with a very strong stain that
 looks as if it would last longer than the cabinet itself.
 ~
@@ -1448,7 +1448,7 @@ A small box covered in runes is here.~
 1 1 0
 E
 box~
-You decide to act wierd and lick the box.
+You decide to act weird and lick the box.
 It's not a bad flavor.
 ~
 #30016
@@ -1518,9 +1518,9 @@ A
 A
 14 300
 #30021
-gold earing~
-a gold earing~
-You see a small gold earing.~
+gold earring~
+a gold earring~
+You see a small gold earring.~
 ~
 9 1 1|16
 5~ 0~ 0~ 0~
@@ -1542,9 +1542,9 @@ A
 A
 2 2
 #30023
-studded sandles~
-a pair of sandles~
-You see a pair of studded sandles here.~
+studded sandals~
+a pair of sandals~
+You see a pair of studded sandals here.~
 ~
 9 0 1|64
 5~ 0~ 0~ 0~
@@ -1568,9 +1568,9 @@ A
 A
 19 6
 #30025
-artifact guantlets~
-a pair of artifact guantlets~
-You see a pair of strange guantlets here.~
+artifact gauntlets~
+a pair of artifact gauntlets~
+You see a pair of strange gauntlets here.~
 ~
 9 1 1|256
 5~ 0~ 0~ 0~
@@ -1578,7 +1578,7 @@ You see a pair of strange guantlets here.~
 A
 17 -10
 E
-strange artifact guantlets~
+strange artifact gauntlets~
 Unknown to most of the people of Krondor, the military often
 encounter small artifacts during their excursions into the
 wilderness.  These artifacts often become damaged.  The military
@@ -1724,7 +1724,7 @@ titanium boots~
 a pair of titanium boots~
 A pair of expensive looking boots is here.~
 ~
-9 1|2|64|1024 1|64
+9 1|2|16|64 1|64
 0~ 0~ 0~ 0~
 9 20000 0
 A
@@ -1733,14 +1733,14 @@ E
 boots~
 Only a few pieces of titanium equipment make it into Krondor.
 It is reported that skilled shamans in the Sumbasi make such items.
-These items offer superior portection in combat.
+These items offer superior protection in combat.
 ~
 #30037
-titanium carpace~
-a titanium carpace~
+titanium carapace~
+a titanium carapace~
 An expensive piece of armor lies here.~
 ~
-9 1|2|64|1024 1|8
+9 1|2|16|64 1|8
 0~ 0~ 0~ 0~
 9 20000 0
 A
@@ -1748,17 +1748,17 @@ A
 A
 17 -5
 E
-carpace~
+carapace~
 Only a few pieces of titanium equipment make it into Krondor.
 It is reported that skilled shamans in the Sumbasi make such items.
-These items offer superior portection in combat.
+These items offer superior protection in combat.
 ~
 #30038
 titanium gauntlets~
 titanium gauntlets~
-A piece of extraordinary craftmanship is here.~
+A piece of extraordinary craftsmanship is here.~
 ~
-9 1|2|64|1024 1|128
+9 1|2|16|64 1|128
 0~ 0~ 0~ 0~
 9 20000 0
 A
@@ -1769,14 +1769,14 @@ E
 gauntlets~
 Only a few pieces of titanium equipment make it into Krondor.
 It is reported that skilled shamans in the Sumbasi make such items.
-These items offer superior portection in combat.
+These items offer superior protection in combat.
 ~
 #30039
-titatnium torque~
+titanium torque~
 a titanium torque~
 A strange torque lies on the ground.~
 ~
-9 1|2|64|1024 1|2048
+9 1|2|16|64 1|2048
 0~ 0~ 0~ 0~
 9 20000 0
 A
@@ -1787,7 +1787,7 @@ E
 torque~
 Only a few pieces of titanium equipment make it into Krondor.
 It is reported that skilled shamans in the Sumbasi make such items.
-These items offer superior portection in combat.
+These items offer superior protection in combat.
 ~
 #30040
 book consortium~
@@ -1830,7 +1830,7 @@ A
 19 13
 E
 quartz mask~
-The mask is a chiseled image of some smiling demon.
+The mask is a chiselled image of some smiling demon.
 It appears that anything seen through it is a little distorted.
 ~
 #30043
@@ -2127,7 +2127,7 @@ A small pin is here.~
 0~ 0~ 0~ 0~
 1 10000 0
 #30065
-assassins list paper~
+assassin's list paper~
 the assassin's list~
 A piece of paper is here.~
 ~
@@ -2136,8 +2136,8 @@ A piece of paper is here.~
 10 750000 0
 E
 list paper~
-The piece of paper appears to be a long list of names - probably
-a list of next targets.  This may be worth something.
+Written on this piece of paper is a long list of names - probably
+the assassin's next targets.  It may be worth something.
 ~
 #30066
 a scroll~
@@ -2188,8 +2188,8 @@ A small tattered piece of paper with strange symbols on it lies here.~
 20~ enchant weapon~ ~ ~
 5 0 0
 #30072
-boots bushmans~
-a pair of bushmans boots~
+boots bushman's~
+a pair of bushman's boots~
 A pair of heavy leather boots with thick soles lie here.~
 ~
 9 0 1|64
@@ -2248,7 +2248,7 @@ A
 #30076
 dagger hunters~
 the head hunters dagger~
-A wicked looking dagger with a black shiney blade is covered in blood.~
+A wicked looking dagger with a black shiny blade is covered in blood.~
 ~
 5 1|2|32|64|512 1|8192
 0~ 0~ 0~ 11~
@@ -2310,7 +2310,7 @@ A
 #30081
 adonai robes~
 robes of the adonai~
-A pile of rupled white material is here.~
+A pile of rumpled white material is here.~
 ~
 9 64|1024 1|1024
 0~ 0~ 0~ 0~
@@ -2611,7 +2611,7 @@ to the new flood of mercenaries.
 ~
 0 0 1
 D0
-The Jewelers Guild is here, laden with fine jewelery and gems.
+The Jewellers' Guild is here, laden with fine jewellery and gems.
 ~
 ~
 0 0 30025
@@ -2990,7 +2990,7 @@ D0
 ~
 0 0 30023
 D1
-The Jewelers Guild lies majestically next to you.
+The Jewellers' Guild lies majestically next to you.
 ~
 ~
 0 0 30025
@@ -3042,8 +3042,8 @@ Above you stands a tall watchtower.
 0 0 30046
 S
 #30025
-The Jewelery Guild~
-Several tables stand covered with fine jewelery and gems.  The
+The Jewellery Guild~
+Several tables stand covered with fine jewellery and gems.  The
 guildmaster stands proudly over his collection as he polishes and cleans
 each one.  In the background, several journeymen are busy learning their
 trade.
@@ -3064,8 +3064,8 @@ S
 #30026
 Krondor Granary~
 This is a simple stone structure where Krondor stores its grain.
-Several holes capped with clay plugs line the floor.  Several large terra
-cotta jars are stored on shelves built into the walls.
+Several holes capped with clay plugs line the floor.  Several large
+terracotta jars are stored on shelves built into the walls.
 ~
 0 8 1
 D1
@@ -3079,7 +3079,7 @@ A trap door is here probably used when grain is stored.
 trap~
 8 30031 30098
 E
-terra cotta jars~
+terracotta jars~
 The jars are as large as a person.  They are sealed with a red wax seal.
 ~
 E
@@ -3290,7 +3290,7 @@ door~
 1 -1 30090
 S
 #30036
-Paradign House~
+Paradigm House~
 This house houses the Defender of Krondor.  He represents all that
 is good and right in this city.  As the most skilled fighting machine,
 he is the commander of the guard.
@@ -3548,7 +3548,7 @@ S
 #30050
 The Temple of Krondor~
 You stand within one of the most holy places in the realm. This
-stunning domed temple houses the city's worshipers en masse.  Long
+stunning domed temple houses the city's worshippers en masse.  Long
 benches line the aisles and the altar glistens with the gold and
 platinum inlay.  The walls and roof are all made of ceramic, making this
 place reflect the sun well.  An arched passageway leads deeper into the
@@ -3673,7 +3673,7 @@ Edge of the Cuan na'Dru~
 The air is quiet as you near the edge of the Cuan na' Dru.  Rowan
 and blackthorn grow about the perimeter acting as silent sentinels for the
 giant redwoods growing beyond. Glancing to the side of the trail you see,
-almost hidden amoung the undergrowth, the white of bones and the hidden
+almost hidden among the undergrowth, the white of bones and the hidden
 glint of metal.
 
 The Grand Gate of Krondor is to the west.
@@ -3759,7 +3759,7 @@ warriors.
 E
 blackened corpses~
 Blackened corpses litter the ground.  Giant holes appear to be gnawed in the
-stomachs and chest cavities of many of the victums.
+stomachs and chest cavities of many of the victims.
 ~
 S
 #30060
@@ -3804,7 +3804,7 @@ S
 Convict Hill~
 You approach a gallows built at the intersection of two roads in
 a dusty field.  As the wind increases, small dust devils spring up and the
-gallow's occupants sway gently like grotesque wind-chimes.  To the east
+gallows' occupants sway gently like grotesque wind-chimes.  To the east
 is a small copse of diseased looking oaks and poplars.  A wide path leads
 south to the Cuan na'Dru. To the west, you see a small ruin.
 ~
@@ -3864,7 +3864,7 @@ D3
 0 0 30084
 E
 bronze plaque~
-Most of the palque's original message appears legible:
+Most of the plaque's original message appears legible:
 
 KEEP OF KRONDOR
 
@@ -4285,7 +4285,7 @@ S
 The Temple Square~
 You are standing in the temple square.  Huge marble steps lead up
 to the temple gate. A narrow, shadow-hidden stairway leads down. The
-entrance to the Cleric's Guild is to the west, and the Headquaters
+entrance to the Cleric's Guild is to the west, and the Headquarters
 for the Cityguard is to the east.  Just south of here you see the
 common square.  You're really confused and think you hear someone's
 insane laughter in the distance.
@@ -4507,8 +4507,8 @@ The Atrium~
 You step into a large area once enclosed by huge panes of glass.  Now
 there are several piles of debris and broken glass scattered in the corners.
 Once carpets covered the floor in a rich wine red, radiating from a
-central dias.  There are only a few faded and torn patches left.
-Several huge chains rest broken on the dias.
+central dais.  There are only a few faded and torn patches left.
+Several huge chains rest broken on the dais.
 ~
 0 8|8192 1
 D1
@@ -4526,7 +4526,7 @@ Market Square~
 You are standing on the market square, the famous Square of Midgaard.
 A large, peculiar looking statue is standing in the middle of the square.
 Roads lead in every direction, north to an ancient stone bridge, south
-to the temple square, east and westboundis the main street.  A stairway
+to the temple square, east and westbound is the main street.  A stairway
 leads up to the Dog & Duck.  A huge statue of a dragon shadows most of
 the square.  You're really confused and think you hear someone's insane
 laughter in the distance.
@@ -4596,7 +4596,7 @@ Outside The Northern Gates of Krondor~
 The air is quiet as you leave the city.  Small juniper and
 blackthorn plants grow about the perimeter of the road, acting as silent
 sentinels for the vast forest stretching beyond.  Glancing to the side of
-the trail you see, almost hidden amoung the undergrowth, the white of
+the trail you see, almost hidden among the undergrowth, the white of
 bones and the hidden glint of metal.
 
 The Northern Gates of Krondor is to the south.
@@ -4682,7 +4682,7 @@ E
 tapestries tapestry~
 The tapestries appear almost life-like.  You think you detect movement in
 a few but dismiss it as a draft ruffling the fabric.  One of the
-creatures appears to be a fiercesome panther from the distant islands
+creatures appears to be a fearsome panther from the distant islands
 south of Midgaard.
 ~
 S
@@ -4694,7 +4694,7 @@ is inlaid into the floor.  Strange runes are etched into the surface.
 Around the runes stands a group of hooded priests chanting softly.
 Several religious icons are scattered about the slab.
 
-There is an enscription on the far wall.
+There is an inscription on the far wall.
 ~
 0 8 1
 D0
@@ -4708,7 +4708,7 @@ There is an archway glowing red.
 ~
 0 0 30094
 E
-enscription~
+inscription~
 THUS THESE WARRIORS LIVED IN JOY, BLESSED.
 UNTIL ONE BEGAN TO DO EVIL DEEDS, A HELLISH ENEMY.
 ~
@@ -4836,7 +4836,7 @@ Stone steps lead up.
 S
 #30098
 On Top of a Stairway~
-A set of algae-covered steps decends into a flooded room.  You
+A set of algae-covered steps descends into a flooded room.  You
 barely glimpse huge coils undulating under the water surface.  The only
 exit appears to be blocked by a door to the east.
 ~
@@ -4859,7 +4859,7 @@ S
 #30099
 The Assassin's Guild~
 You enter a room containing the real controllers of Krondor.  Many
-of the strange deaths occuring within the town can now be explained.  The
+of the strange deaths occurring within the town can now be explained.  The
 room is small, dimly-lit, and cluttered with discarded equipment and
 armor.  Several pairs of eyes watch you closely as weapons are drawn.
 ~
@@ -4889,7 +4889,7 @@ A staircase leads up.
 S
 #30101
 Top of a Stairwell~
-You enter the stairwell.  A spiral metal staircase decends into the
+You enter the stairwell.  A spiral metal staircase descends into the
 darkness.  The noise from the wind makes standing here almost
 unbearable.  A metal door is here.
 ~
@@ -4908,7 +4908,7 @@ S
 On the Rooftop~
 From this vantage, all of Krondor can be seen.  The temple is seen
 towards the west and a mansion is to the north.   The wind makes it
-difficult to maneuver up here, but there are plenty of chimneys and
+difficult to manoeuvrer up here, but there are plenty of chimneys and
 gutters to hang on to.  Another building's roof is nearby to the east.
 A small structure with a metal door pokes out of the roof.
 ~
@@ -4996,8 +4996,8 @@ S
 #30106
 The Greenhouse~
 After wading through the knee-high compost, you stumble into a
-greenhouse.  You now understand why there is alot of plants outside.
-The entire greenhouse is filled with a single plant wielding a small
+greenhouse.  You now understand why there are a lot of plants outside.
+The entire greenhouse is filled by a single plant wielding a small
 army of mouth-shaped leaves.
 ~
 0 0 1
@@ -5064,7 +5064,7 @@ S
 On the Rooftop~
 From this vantage, all of Krondor can be seen.  The temple is seen
 towards the west and a mansion is to the north.   The wind makes it
-difficult to maneuver up here, but there are plenty of chimneys and
+difficult to manoeuvrer up here, but there are plenty of chimneys and
 gutters to hang on to.  A street is far below.
 ~
 0 0 1
@@ -5134,7 +5134,7 @@ barking dogs.  There are no exits.
 S
 #30113
 Library Counter.~
-Before you, behind the large counter sits a helpfull yooung lady.  Behind her is a shelf
+Before you, behind the large counter sits a helpful young lady.  Behind her is a shelf
 of scrolls of various scrolls.  The young lady looks very shy but subtly confident.
 ~
 0 0 1
@@ -5179,7 +5179,7 @@ D3
 0 -1 30116
 E
 plaque sign wall~
-Only good may enter here, evil spawn of satan are not welcome here.
+Only good may enter here, evil spawn of Satan are not welcome here.
 This is your only warning.~
 S
 #30116
@@ -5201,9 +5201,9 @@ D1
 S
 #30117
 Entrance of the Hall.~
-What a grand sight you standf before a large hall with an altar at the
+What a grand sight! You stand before a large hall with an altar at the
 far end with candles lit.  The hall has seating in two rows one on
-your left an one on your right.  There is room to walk three abreast
+your left and one on your right.  There is room to walk three abreast
 down the centre but only one wide on the outside.
 ~
 0 8|8192 1
@@ -5228,7 +5228,7 @@ S
 #30118
 Side of the Hall.~
 You stand at the left hand side of this magnificent shrine.  People
-spend time praying and worshiping here.  The seating is made of the
+spend time praying and worshipping here.  The seating is made of the
 highest quality wood with the finest workmanship.  Gold fittings adorn
 the walls.
 ~
@@ -5246,7 +5246,7 @@ S
 #30119
 Side of the Hall.~
 You stand at the right hand side of this magnificent shrine.  People
-spend time praying and worshiping here.  The seating is made of the
+spend time praying and worshipping here.  The seating is made of the
 highest quality wood with the finest workmanship.  Gold fittings adorn
 the walls.
 ~
@@ -5263,7 +5263,7 @@ S
 #30120
 Front of the hall.~
 You stand at the front of the hall, making you presence known.  The
-altar is quite plainly seen from here and you have a good veiw from
+altar is quite plainly seen from here and you have a good view from
 here of what goes on.  The Shrine attendants keep this place spotless.
 ~
 0 8|8192 1
@@ -5330,7 +5330,7 @@ S
 #30123
 Front of the Hall.~
 You stand at the front of the hall, making you presence known.  The
-altar is quite plainly seen from here and you have a good veiw from
+altar is quite plainly seen from here and you have a good view from
 here of what goes on.  The Shrine attendants keep this place spotless.
 ~
 0 8|8192 1
@@ -5351,7 +5351,7 @@ S
 #30124
 the Imperial Stables.~
 You are standing in the great imperial stables, there are tapestries
-and ornate ornaments on a very large desk which you wouldnt have
+and ornate ornaments on a very large desk which you wouldn't have
 expected to find in here.
 For stables the air is very fresh and the surroundings very tidy, you
 expect the person in charge of these stables to be very great indeed.
@@ -5388,87 +5388,87 @@ S
 *
 *                 Doors and Randomized Exits
 *
-R 1 30076 5			Randomize all exits in void
-R 1 30077 5			Randomize all exits in void
-R 1 30078 5			Randomize all exits in void including entrance
+R 1 30076 5         Randomize all exits in void
+R 1 30077 5         Randomize all exits in void
+R 1 30078 5         Randomize all exits in void including entrance
 *                 No set path through void
 *
-R 1 30079 4			Randomize all exits in Keep
-R 1 30080 3			Randomize all exits in Keep
-R 1 30081 2			Randomize all exits in Keep
-R 1 30082 4			Randomize all exits in Keep
-R 1 30083 1			Randomize all exits in Keep
-R 1 30087 1			Randomize all exits in Keep
+R 1 30079 4         Randomize all exits in Keep
+R 1 30080 3         Randomize all exits in Keep
+R 1 30081 2         Randomize all exits in Keep
+R 1 30082 4         Randomize all exits in Keep
+R 1 30083 1         Randomize all exits in Keep
+R 1 30087 1         Randomize all exits in Keep
 *
-D 1 30105 2 1			Door inside Observatory
-D 1 30104 0 1			Door outside Observatory
-D 1 30033 0 2			; East wing of the Presidium Lock North
-D 1 30100 2 2			Door inside on bottom of Stairwell
-D 1 30101 2 2			; Top of a Stairwell Lock South
-D 1 30102 0 2			; On the Rooftop Lock North
-D 1 30085 3 1			; The Courtyard Close West
-D 1 30086 1 1			Keep door Inside
-D 1 30084 3 1			; Postern Gate Close West
-D 1 30085 1 1			; The Courtyard Close East
-D 1 30001 1 1			; Eastern Road Close East
-D 1 30000 3 1			; Outside the Grand Gate of Krondor Close West
-D 1 30009 0 2			; Beggars Gate close North
-D 1 30089 2 2			Beggar Gate wilderness
-D 1 30004 0 1			; The Public Gardens Close North
-D 1 30011 2 1			; Commons Road Close South
-D 1 30003 1 1			; Entrance into the Inner City Close East
-D 1 30002 3 1			; Eastern Road Close West
-D 1 30006 2 1			; The Public Gardens Close South
-D 1 30012 0 1			; The Merchant Quarter Close North
-D 1 30098 4 2			; On Top of a Stairway Lock Up
-D 1 30026 5 2			; Krondor Granary Lock Down
-D 1 30053 3 2			; Anjou Street Lock West
-D 1 30028 2 2			; Falkirk Street Lock South
-D 1 30098 1 1			; On Top of a Stairway Close East
-D 1 30099 3 1			; The Assassin's Guild Close West
-D 1 30090 1 1			; The Barracks Close East
-D 1 30035 3 1			; Krondor Barracks Close West
-D 1 30012 3 1			; The Merchant Quarter Close West
-D 1 30021 1 1			; Gryphon Smithy Close East
-D 1 30013 1 1			; The Merchant Quarter Close East
-D 1 30030 3 1			; The Tavern of the Sun Close West
-D 1 30014 2 1			; Antioch Road Close South
-D 1 30029 0 1			; The Aachbar Close North
-D 1 30026 1 1			; Krondor Granary Close East
-D 1 30010 3 1			; Commons Road Close West
-D 1 30027 1 1			; Krondor Kennel Close East
-D 1 30011 3 1			; Commons Road Close West
-D 1 30010 1 1			; Commons Road Close East
-D 1 30044 3 1			; A Resting Room Close West
-D 1 30002 0 1			; Eastern Road Close North
-D 1 30036 2 1			; Paradign House Close South
-D 1 30032 0 1			; The Presidium Hall Close North
-D 1 30002 2 1			; Eastern Road Close South
-D 1 30032 3 1			; The Presidium Hall Close West
-D 1 30012 1 1			; The Merchant Quarter Close East
+D 1 30105 2 1           Door inside Observatory
+D 1 30104 0 1           Door outside Observatory
+D 1 30033 0 2           ; East wing of the Presidium Lock North
+D 1 30100 2 2           Door inside on bottom of Stairwell
+D 1 30101 2 2           ; Top of a Stairwell Lock South
+D 1 30102 0 2           ; On the Rooftop Lock North
+D 1 30085 3 1           ; The Courtyard Close West
+D 1 30086 1 1           Keep door Inside
+D 1 30084 3 1           ; Postern Gate Close West
+D 1 30085 1 1           ; The Courtyard Close East
+D 1 30001 1 1           ; Eastern Road Close East
+D 1 30000 3 1           ; Outside the Grand Gate of Krondor Close West
+D 1 30009 0 2           ; Beggars Gate close North
+D 1 30089 2 2           Beggar Gate wilderness
+D 1 30004 0 1           ; The Public Gardens Close North
+D 1 30011 2 1           ; Commons Road Close South
+D 1 30003 1 1           ; Entrance into the Inner City Close East
+D 1 30002 3 1           ; Eastern Road Close West
+D 1 30006 2 1           ; The Public Gardens Close South
+D 1 30012 0 1           ; The Merchant Quarter Close North
+D 1 30098 4 2           ; On Top of a Stairway Lock Up
+D 1 30026 5 2           ; Krondor Granary Lock Down
+D 1 30053 3 2           ; Anjou Street Lock West
+D 1 30028 2 2           ; Falkirk Street Lock South
+D 1 30098 1 1           ; On Top of a Stairway Close East
+D 1 30099 3 1           ; The Assassin's Guild Close West
+D 1 30090 1 1           ; The Barracks Close East
+D 1 30035 3 1           ; Krondor Barracks Close West
+D 1 30012 3 1           ; The Merchant Quarter Close West
+D 1 30021 1 1           ; Gryphon Smithy Close East
+D 1 30013 1 1           ; The Merchant Quarter Close East
+D 1 30030 3 1           ; The Tavern of the Sun Close West
+D 1 30014 2 1           ; Antioch Road Close South
+D 1 30029 0 1           ; The Aachbar Close North
+D 1 30026 1 1           ; Krondor Granary Close East
+D 1 30010 3 1           ; Commons Road Close West
+D 1 30027 1 1           ; Krondor Kennel Close East
+D 1 30011 3 1           ; Commons Road Close West
+D 1 30010 1 1           ; Commons Road Close East
+D 1 30044 3 1           ; A Resting Room Close West
+D 1 30002 0 1           ; Eastern Road Close North
+D 1 30036 2 1           ; Paradigm House Close South
+D 1 30032 0 1           ; The Presidium Hall Close North
+D 1 30002 2 1           ; Eastern Road Close South
+D 1 30032 3 1           ; The Presidium Hall Close West
+D 1 30012 1 1           ; The Merchant Quarter Close East
 *
 *                       Inner City
 *
-O 1 30005 1 30022		Fountain
+O 1 30005 1 30022       Fountain
 *
-M 1 30010 1 30019		Fanatic Priest
-E 1 30032 10 5			(clergy robe)
+M 1 30010 1 30019       Fanatic Priest
+E 1 30032 10 5          (clergy robe)
 G 1 30064 0   (pin)
 *
-M 1 30000 1 30050		Nidhogg
+M 1 30000 1 30050       Nidhogg
 E 1 30034 1 3 (chains)
 E 1 30034 1 4 (chains)
 *
-M 1 30011 1 30050		Priest
-E 1 30002 1 17		(serpentine staff)
-E 1 30032 10 5			(clergy robe)
+M 1 30011 1 30050       Priest
+E 1 30002 1 17      (serpentine staff)
+E 1 30032 10 5          (clergy robe)
 G 1 30064 0   (pin)
 *
-M 1 30011 1 30050			Priest
-E 1 30032 10 5			(clergy robe)
+M 1 30011 1 30050           Priest
+E 1 30032 10 5          (clergy robe)
 G 1 30064 0   (pin)
 *
-M 1 30061 1 30093			Clergy
+M 1 30061 1 30093           Clergy
 G 1 30064 0   (pin)
 *
 M 1 30001 5 30004 Joining
@@ -5479,91 +5479,91 @@ M 1 30001 5 30008 Joining
 E 1 30000 3 3        (collar)
 M 1 30001 5 30020 Joining
 E 1 30000 3 3        (collar)
-M 1 30001 5 30022			Joining
+M 1 30001 5 30022           Joining
 E 1 30000 3 3        (collar)
 *
-M 1 30014 1 30017			Butcher
+M 1 30014 1 30017           Butcher
 G 1 5219 99   (venison)
 G 1 602 99    (beef)
 G 1 603 99    (pork)
 G 1 604 99    (horse)
 G 1 605 99    (chicken)
 *
-M 1 30052 1 30020			Produce Seller
+M 1 30052 1 30020           Produce Seller
 G 1 609 99    (cabbage)
 G 1 610 99    (lettuce)
 G 1 611 99    (milk)
 G 1 612 99    (apple)
 G 1 613 99    (corn)
 *
-M 1 30055 1 30022			Weaver Guildmaster
+M 1 30055 1 30022           Weaver Guildmaster
 G 1 30049 10  (carpet)
 *
-M 1 30056 1 30025			Jeweller Guildmaster
+M 1 30056 1 30025           Jeweller Guildmaster
 *
-M 1 30057 1 30049			Shrine
+M 1 30057 1 30049           Shrine
 *
-M 1 30027 1 30005		Doe
-M 1 30028 1 30005		Deer
-M 1 30029 1 30003		Stag
+M 1 30027 1 30005       Doe
+M 1 30028 1 30005       Deer
+M 1 30029 1 30003       Stag
 *
 *                       Outer City
 *
-O 1 30006 1 30031		Desk
-P 1 30006 4 5307		(scroll of enchantment)
-P 1 30006 4 5307		(bound scroll)
+O 1 30006 1 30031       Desk
+P 1 30006 4 5307        (scroll of enchantment)
+P 1 30006 4 5307        (bound scroll)
 *
-O 1 30007 1 30033		Glass Cabinet
-P 1 30007 99 5308			(pin)
+O 1 30007 1 30033       Glass Cabinet
+P 1 30007 99 5308           (pin)
 *
-M 1 30008 1 30036			Paradign the commander
-E 1 30001 1 17	(Ginnungagap artifact)
-E 1 30016 1 16	(kukri)
+M 1 30008 1 30036           Paradigm the commander
+E 1 30001 1 17  (Ginnungagap artifact)
+E 1 30016 1 16  (kukri)
 E 1 30036 1 8 (titanium boots)
-E 1 30037 1 5 (titanium carpace)
+E 1 30037 1 5 (titanium carapace)
 E 1 30038 1 9 (titanium gauntlets)
 E 1 30039 1 3 (titanium torque)
 E 1 30016 1 18
 *
-M 1 30025 2 30019		Bard
-E 1 30010 3 17		(darrabukkah drum)
+M 1 30025 2 30019       Bard
+E 1 30010 3 17      (darrabukkah drum)
 *
-M 1 30026 2 30030		Bard
-E 1 30008 3 17		(ud)
+M 1 30026 2 30030       Bard
+E 1 30008 3 17      (ud)
 *
-M 1 30026 2 30030		Bard
-E 1 30009 3 17		(rubab)
+M 1 30026 2 30030       Bard
+E 1 30009 3 17      (rubab)
 *
-M 1 30020 1 30045		Preceptor
-M 1 30019 1 30045		Librarian
-M 1 30052 1 30045			Nettling Imp
+M 1 30020 1 30045       Preceptor
+M 1 30019 1 30045       Librarian
+M 1 30052 1 30045           Nettling Imp
 *
-M 1 30022 2 30042		Bath people
-M 1 30021 4 30044		Women
+M 1 30022 2 30042       Bath people
+M 1 30021 4 30044       Women
 *
-M 1 30009 1 30047		Nevinyrral's disk SW
+M 1 30009 1 30047       Nevinyrral's disk SW
 *
-M 1 30075 1 30046		Nevinyrral's disk NW
+M 1 30075 1 30046       Nevinyrral's disk NW
 *
-M 1 30076 1 30048			Nevinyrral's disk NE
+M 1 30076 1 30048           Nevinyrral's disk NE
 *
-M 1 30077 1 30054		Nevinyrral's disk SE
+M 1 30077 1 30054       Nevinyrral's disk SE
 *
-M 1 30015 1 30029		Armourer
+M 1 30015 1 30029       Armourer
 *
-M 1 30013 1 30030			Barkeep
+M 1 30013 1 30030           Barkeep
 G 1 648 99    (whiskey)
 G 1 649 99    (ale)
 G 1 650 99    (port brew)
 *
-M 1 30016 1 30021			Gryphon the Smithy
+M 1 30016 1 30021           Gryphon the Smithy
 O 1 30084 1 30021
 *
-M 1 30058 1 30111			Hound Master
+M 1 30058 1 30111           Hound Master
 *
-M 1 30017 1 30038		Wizard
-G 1 5210 12		(Black Potion)
-G 1 5211 12		(Orange Potion)
+M 1 30017 1 30038       Wizard
+G 1 5210 12     (Black Potion)
+G 1 5211 12     (Orange Potion)
 G 1 30050 1
 G 1 30051 1
 G 1 30052 1
@@ -5581,207 +5581,207 @@ G 1 30063 2   (onyx stave)
 *                       (A bunch of homebrews)
 *
 *
-M 1 30012 1 30031		Chancellor
-E 1 30001 1 17	(Ginnungagap artifact)
-E 1 30016 1 16	(kukri)
+M 1 30012 1 30031       Chancellor
+E 1 30001 1 17  (Ginnungagap artifact)
+E 1 30016 1 16  (kukri)
 E 1 30036 1 8 (titanium boots)
-E 1 30037 1 5 (titanium carpace)
-E 1 30038 1 9 (titanium guantlets)
+E 1 30037 1 5 (titanium carapace)
+E 1 30038 1 9 (titanium gauntlets)
 E 1 30039 1 3 (titanium torque)
 *
-M 1 30005 3 30035			Imperial Guard in Guard House
-E 1 30029 10 1		(talons)
-E 1 30020 10 4		(linen cloak)
-E 1 30018 10 5		(silk shirt)
-E 1 30026 10 12		(hooded cape)
-E 1 30027 10 13		(kilt)
-E 1 30017 10 16		(scimitar)
+M 1 30005 3 30035           Imperial Guard in Guard House
+E 1 30029 10 1      (talons)
+E 1 30020 10 4      (linen cloak)
+E 1 30018 10 5      (silk shirt)
+E 1 30026 10 12     (hooded cape)
+E 1 30027 10 13     (kilt)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30062 1 30112			Warp Hound
-M 1 30063 1 30112			Miacis
-M 1 30064 1 30112			Ussurian
+M 1 30062 1 30112           Warp Hound
+M 1 30063 1 30112           Miacis
+M 1 30064 1 30112           Ussurian
 *
-M 1 30006 2 30001	Imperial Guard at Grand Gate
-E 1 30030 1 0		(falcon)
-E 1 30018 10 5		(silk shirt)
-E 1 30021 1 6		(earing)
-E 1 30022 10 7		(pantaloons)
-E 1 30023 10 8		(sandles)
-E 1 30024 10 9		(platinum greaves)
-E 1 30019 10 11			(shield)
-E 1 30017 10 16		(scimitar)
+M 1 30006 2 30001   Imperial Guard at Grand Gate
+E 1 30030 1 0       (falcon)
+E 1 30018 10 5      (silk shirt)
+E 1 30021 1 6       (earring)
+E 1 30022 10 7      (pantaloons)
+E 1 30023 10 8      (sandals)
+E 1 30024 10 9      (platinum greaves)
+E 1 30019 10 11         (shield)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30030 2 30001			War Hounds
+M 1 30030 2 30001           War Hounds
 *
-M 1 30006 2 30001	Imperial Guard at Grand Gate
-E 1 30018 10 5		(silk shirt)
-E 1 30023 10 8		(sandles)
-E 1 30024 10 9		(platinum greaves)
-E 1 30025 1 10		(artifact guantlets)
-E 1 30019 10 11			(shield)
-E 1 30017 10 16		(scimitar)
+M 1 30006 2 30001   Imperial Guard at Grand Gate
+E 1 30018 10 5      (silk shirt)
+E 1 30023 10 8      (sandals)
+E 1 30024 10 9      (platinum greaves)
+E 1 30025 1 10      (artifact gauntlets)
+E 1 30019 10 11         (shield)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30006 2 30009	Imperial Guard at Beggar's Gate
-E 1 30030 1 0		(falcon)
-E 1 30018 10 5		(silk shirt)
-E 1 30021 1 6		(earing)
-E 1 30022 10 7		(kilt)
-E 1 30023 10 8		(sandles)
-E 1 30024 10 9		(platinum greaves)
-E 1 30019 10 11			(shield)
-E 1 30017 10 16		(scimitar)
+M 1 30006 2 30009   Imperial Guard at Beggar's Gate
+E 1 30030 1 0       (falcon)
+E 1 30018 10 5      (silk shirt)
+E 1 30021 1 6       (earring)
+E 1 30022 10 7      (kilt)
+E 1 30023 10 8      (sandals)
+E 1 30024 10 9      (platinum greaves)
+E 1 30019 10 11         (shield)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30006 2 30009	Imperial Guard at Beggar's Gate
-E 1 30018 10 5		(silk shirt)
-E 1 30023 10 8		(sandles)
-E 1 30024 1 9		(artifact guantlets)
-E 1 30025 10 10		(platinum greaves)
-E 1 30019 10 11			(shield)
-E 1 30017 10 16		(scimitar)
+M 1 30006 2 30009   Imperial Guard at Beggar's Gate
+E 1 30018 10 5      (silk shirt)
+E 1 30023 10 8      (sandals)
+E 1 30024 1 9       (artifact gauntlets)
+E 1 30025 10 10     (platinum greaves)
+E 1 30019 10 11         (shield)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30030 2 30009			War Hounds
+M 1 30030 2 30009           War Hounds
 *
-M 1 30004 6 30039	Imperial Guard patrol
-E 1 30020 10 4		(linen cloak)
-E 1 30018 10 5	(silk shirt)
-E 1 30026 10 12		(hooded cape)
-E 1 30028 10 14		(platinum bracer)
-E 1 30017 10 16		(scimitar)
+M 1 30004 6 30039   Imperial Guard patrol
+E 1 30020 10 4      (linen cloak)
+E 1 30018 10 5  (silk shirt)
+E 1 30026 10 12     (hooded cape)
+E 1 30028 10 14     (platinum bracer)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30004 6 30007			Imperial Guard patrol
-E 1 30020 10 4		(linen cloak)
-E 1 30018 10 5		(silk shirt)
-E 1 30027 10 13		(kilt)
-E 1 30028 10 14		(platinum bracer)
-E 1 30017 10 16		(scimitar)
+M 1 30004 6 30007           Imperial Guard patrol
+E 1 30020 10 4      (linen cloak)
+E 1 30018 10 5      (silk shirt)
+E 1 30027 10 13     (kilt)
+E 1 30028 10 14     (platinum bracer)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30004 6 30013			Imperial Guard patrol
-E 1 30029 10 1		(talons)
-E 1 30020 10 4		(linen cloak)
-E 1 30018 10 5		(silk shirt)
-E 1 30019 10 11			(shield)
-E 1 30017 10 16		(scimitar)
+M 1 30004 6 30013           Imperial Guard patrol
+E 1 30029 10 1      (talons)
+E 1 30020 10 4      (linen cloak)
+E 1 30018 10 5      (silk shirt)
+E 1 30019 10 11         (shield)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30004 6 30015			Imperial Guard patrol
-E 1 30020 10 4		(linen cloak)
-E 1 30018 10 5		(silk shirt)
-E 1 30026 10 12		(hooded cape)
-E 1 30027 10 13		(kilt)
-E 1 30017 10 16		(scimitar)
+M 1 30004 6 30015           Imperial Guard patrol
+E 1 30020 10 4      (linen cloak)
+E 1 30018 10 5      (silk shirt)
+E 1 30026 10 12     (hooded cape)
+E 1 30027 10 13     (kilt)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30004 6 30024			Imperial Guard patrol
-E 1 30020 10 4		(linen cloak)
-E 1 30018 10 5		(silk shirt)
-E 1 30019 10 11			(shield)
-E 1 30017 10 16		(scimitar)
+M 1 30004 6 30024           Imperial Guard patrol
+E 1 30020 10 4      (linen cloak)
+E 1 30018 10 5      (silk shirt)
+E 1 30019 10 11         (shield)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30004 6 30031			Imperial Guard patrol
-E 1 30018 10 5		(silk shirt)
-E 1 30026 10 12		(hooded cape)
-E 1 30027 10 13		(kilt)
-E 1 30028 10 14		(platinum bracer)
-E 1 30017 10 16		(scimitar)
+M 1 30004 6 30031           Imperial Guard patrol
+E 1 30018 10 5      (silk shirt)
+E 1 30026 10 12     (hooded cape)
+E 1 30027 10 13     (kilt)
+E 1 30028 10 14     (platinum bracer)
+E 1 30017 10 16     (scimitar)
 *
-M 1 30034 1 30084		Sumbasi Guard at Keep Gate
-E 1 30044 10 7			(lacquered leggings)
-E 1 30045 10 3			(lacquered torque)
-E 1 30046 10 6			(lacquered helm)
-E 1 30018 10 5			(silk shirt)
-E 1 30017 10 16			(scimitar)
+M 1 30034 1 30084       Sumbasi Guard at Keep Gate
+E 1 30044 10 7          (lacquered leggings)
+E 1 30045 10 3          (lacquered torque)
+E 1 30046 10 6          (lacquered helm)
+E 1 30018 10 5          (silk shirt)
+E 1 30017 10 16         (scimitar)
 *
-M 1 30007 1 30084			Sumbasi Archer
-E 1 30044 10 7			(lacquered leggings)
-E 1 30045 10 3			(lacquered torque)
-E 1 30046 10 6			(lacquered helm)
-E 1 30018 10 5			(silk shirt)
-E 1 30047 5 16			(lacquered bow)
+M 1 30007 1 30084           Sumbasi Archer
+E 1 30044 10 7          (lacquered leggings)
+E 1 30045 10 3          (lacquered torque)
+E 1 30046 10 6          (lacquered helm)
+E 1 30018 10 5          (silk shirt)
+E 1 30047 5 16          (lacquered bow)
 *
-M 1 30034 1 30065	Sumbasi Guard at Outpost
-E 1 30044 10 7			(lacquered leggings)
-E 1 30045 10 3			(lacquered torque)
-E 1 30046 10 6			(lacquered helm)
-E 1 30018 10 5			(silk shirt)
-E 1 30017 10 16			(scimitar)
+M 1 30034 1 30065   Sumbasi Guard at Outpost
+E 1 30044 10 7          (lacquered leggings)
+E 1 30045 10 3          (lacquered torque)
+E 1 30046 10 6          (lacquered helm)
+E 1 30018 10 5          (silk shirt)
+E 1 30017 10 16         (scimitar)
 *
-M 1 30007 1 30065			Sumbasi Archer
-E 1 30044 10 7			(lacquered leggings)
-E 1 30045 10 3			(lacquered torque)
-E 1 30046 10 6			(lacquered helm)
-E 1 30018 10 5			(silk shirt)
-E 1 30047 5 16			(lacquered bow)
+M 1 30007 1 30065           Sumbasi Archer
+E 1 30044 10 7          (lacquered leggings)
+E 1 30045 10 3          (lacquered torque)
+E 1 30046 10 6          (lacquered helm)
+E 1 30018 10 5          (silk shirt)
+E 1 30047 5 16          (lacquered bow)
 *
-M 1 30030 3 30027			War Hounds at Kennel
+M 1 30030 3 30027           War Hounds at Kennel
 *
-M 1 30003 4 30032		Female Citizen
-M 1 30002 4 30038		Male Citizen
-M 1 30003 4 30040		Female Citizen
-M 1 30002 4 30044		Male Citizen
-M 1 30003 4 30044		Female Citizen
-M 1 30002 4 30050		Male Citizen
-M 1 30003 4 30022		Female Citizen
-M 1 30002 4 30022		Male Citizen
+M 1 30003 4 30032       Female Citizen
+M 1 30002 4 30038       Male Citizen
+M 1 30003 4 30040       Female Citizen
+M 1 30002 4 30044       Male Citizen
+M 1 30003 4 30044       Female Citizen
+M 1 30002 4 30050       Male Citizen
+M 1 30003 4 30022       Female Citizen
+M 1 30002 4 30022       Male Citizen
 *
-M 1 30041 2 30023			Citizen (aggr)
+M 1 30041 2 30023           Citizen (aggr)
 M 1 30041 2 30039
 *
-M 1 30018 2 30022		Farmer (Janitor)
-M 1 30033 3 30009		Aardwolf
+M 1 30018 2 30022       Farmer (Janitor)
+M 1 30033 3 30009       Aardwolf
 *
-M 1 30031 2 30055			Dire Hyenas
-M 1 30031 2 30018			Dire Hyenas
+M 1 30031 2 30055           Dire Hyenas
+M 1 30031 2 30018           Dire Hyenas
 *
-M 1 30035 4 30026			Swarm of Rats
+M 1 30035 4 30026           Swarm of Rats
 *
-M 1 30036 1 30026			Cat
+M 1 30036 1 30026           Cat
 *
 *                       On the Rooftop and Assassin Guild
 *
-M 1 30040 2 30108			Assassin (aggr)
-E 1 30033 2 16			(triad kris)
-E 1 30064 99 17			(pin)
-M 1 30054 2 30099			Assassin (non-aggr)
-E 1 30033 2 16			(triad kris)
-E 1 30064 99 17			(pin)
-O 1 30065 1 30099			(note)
+M 1 30040 2 30108           Assassin (aggr)
+E 1 30033 2 16          (triad kris)
+E 1 30064 99 17         (pin)
+M 1 30054 2 30099           Assassin (non-aggr)
+E 1 30033 2 16          (triad kris)
+E 1 30064 99 17         (pin)
+O 1 30065 1 30099           (note)
 *
-M 1 30043 1 30097			Leviathan
-E 1 30040 2 17			(book consortium)
+M 1 30043 1 30097           Leviathan
+E 1 30040 2 17          (book consortium)
 *
-M 1 30045 1 30103			Ball Lightning
+M 1 30045 1 30103           Ball Lightning
 *
-M 1 30059 1 30106			Canivorous Plant
+M 1 30059 1 30106           Canivorous Plant
 *
-M 1 30051 1 30105			Quartz Demon
+M 1 30051 1 30105           Quartz Demon
 E 1 30042 2 6 (quartz mask)
 G 1 30031 99  (ordinary key)
 *
 *                       Wilderness
 *
-M 1 30047 1 30068			Singir the Necromancer
+M 1 30047 1 30068           Singir the Necromancer
 E 1 30035 1 1 (Morbius ring)
 E 1 30035 1 2 (Morbius ring)
 *
-M 1 30023 1 30068		Necromancer (he)
-G 1 30012 10		vial
-G 1 30014 10		pouch
+M 1 30023 1 30068       Necromancer (he)
+G 1 30012 10        vial
+G 1 30014 10        pouch
 *
-M 1 30024 1 30068		Necromancer (she)
-G 1 30015 10		box
-G 1 30013 10		flask
+M 1 30024 1 30068       Necromancer (she)
+G 1 30015 10        box
+G 1 30013 10        flask
 *
-M 1 30032 5 30072		Daboia Snake
-M 1 30032 5 30056		Daboia Snake
+M 1 30032 5 30072       Daboia Snake
+M 1 30032 5 30056       Daboia Snake
 *
-M 1 30044 5 30059			Morris Worm
+M 1 30044 5 30059           Morris Worm
 *
-M 1 30038 5 30060			Spores
-M 1 30038 4 30058			Spores
+M 1 30038 5 30060           Spores
+M 1 30038 4 30058           Spores
 *
-M 1 30037 1 30062			Gallows
+M 1 30037 1 30062           Gallows
 G 1 30048 2   (inquisitor hood)
 *
-M 1 30039 1 30070			Su Chi
-E 1 30002 1 17			(Bane of Su-Chi)
+M 1 30039 1 30070           Su Chi
+E 1 30002 1 17          (Bane of Su-Chi)
 E 1 30035 1 1 (Morbius ring)
 E 1 30035 1 2 (Morbius ring)
 E 1 30043 1 16
@@ -5801,24 +5801,24 @@ E 1 30039 1 13
 E 1 30028 10 14
 E 1 30028 10 15
 *
-M 1 30042 1 30073			Fungusaur
+M 1 30042 1 30073           Fungusaur
 G 1 30041 2   (idol)
 *
-M 1 30048 1 30074			Mold Demon
+M 1 30048 1 30074           Mold Demon
 G 1 30041 2   (idol)
 *
-M 1 30046 1 30057			Kudzu
+M 1 30046 1 30057           Kudzu
 *
-M 1 30047 1 30086			Chimera
+M 1 30047 1 30086           Chimera
 *
-M 1 30049 1 30087			Cambyses (Insane)
+M 1 30049 1 30087           Cambyses (Insane)
 *
-M 1 30060 1 30094			Lich
+M 1 30060 1 30094           Lich
 *
 *
-M 1 30005 1 30048			An imperial cityguard to The north-east watchtower
+M 1 30005 1 30048           An imperial cityguard to The north-east watchtower
 *
-M 1 30065 1 30113			a young lady to Library Counter.
+M 1 30065 1 30113           a young lady to Library Counter.
 G 1 30066 100
 G 1 30067 100
 G 1 30068 100
@@ -5826,33 +5826,33 @@ G 1 30069 100
 G 1 30070 100
 G 1 30071 100
 *
-M 1 30066 1 30114			the cobbler to Shoemakers
+M 1 30066 1 30114           the cobbler to Shoemakers
 E 1 30074 100 16
 E 1 30074 100 18
 G 1 30072 100
 G 1 30073 100
 *
-M 1 30067 1 30000			the head hunter. to Outside the Grand Gate of Krondor
+M 1 30067 1 30000           the head hunter. to Outside the Grand Gate of Krondor
 E 1 30077 100 5
 E 1 30078 100 6
 E 1 30075 100 16
 E 1 30076 100 18
 *
-M 1 30068 1 30116			the slayer to Shrine of Adonai.
+M 1 30068 1 30116           the slayer to Shrine of Adonai.
 E 1 30080 100 16
 E 1 30079 100 18
 *
-M 1 30069 1 30121			the high priest. to The altar
+M 1 30069 1 30121           the high priest. to The altar
 *
-M 1 30070 1 30122			the attendant. to Before the altar.
+M 1 30070 1 30122           the attendant. to Before the altar.
 E 1 30083 100 16
 E 1 30083 100 18
 *
-M 1 30070 1 30123			the attendant. to Front of the Hall.
+M 1 30070 1 30123           the attendant. to Front of the Hall.
 E 1 30083 100 16
 E 1 30083 100 18
 *
-M 1 30071 1 30124			Kennan to the Imperial Stables.
+M 1 30071 1 30124           Kennan to the Imperial Stables.
 E 1 30030 1 0
 E 1 30035 1 1
 E 1 30035 1 2
@@ -5884,22 +5884,22 @@ E 1 30087 100 6
 E 1 30086 100 7
 E 1 30085 100 12
 
-D 0 30121 0 1				close the altar
-O 0 30089 0 30125			portal to room behind altar
-O 0 30090 0 30065			portal to the portal to draagdim
+D 0 30121 0 1               close the altar
+O 0 30089 0 30125           portal to room behind altar
+O 0 30090 0 30065           portal to the portal to draagdim
 
 S
 
 
 #SHOPS
-30013 5 9 0 0 0 150 70 7 19			; The armourer
-30014 1 8 12 13 22 150 65 7 19			; Gryphon the smithy
-30017 2 3 4 10 0 200 50 7 19			; The Old Wizard
-30015 5 9 8 0 0 180 50 7 19			; Aachbar the Dwarf
-30058 0 0 0 0 0 10000 0 7 19			; Hound Master
-30056 33 8 32 0 0 100 100 0 23			the Jeweller
-30065 2 3 0 0 0 100 100 0 23			(mobile is from another zone)
-30066 0 0 0 0 0 100 100 0 23			the cobbler
+30013 5 9 0 0 0 150 70 7 19         ; The armourer
+30014 1 8 12 13 22 150 65 7 19          ; Gryphon the smithy
+30017 2 3 4 10 0 200 50 7 19            ; The Old Wizard
+30015 5 9 8 0 0 180 50 7 19         ; Aachbar the Dwarf
+30058 0 0 0 0 0 10000 0 7 19            ; Hound Master
+30056 33 8 32 0 0 100 100 0 23          the Jeweller
+30065 2 3 0 0 0 100 100 0 23            (mobile is from another zone)
+30066 0 0 0 0 0 100 100 0 23            the cobbler
 0
 
 
@@ -5909,7 +5909,7 @@ M  30003 spec_guard               Imperial guard
 M  30005 spec_guard               Imperial guard
 M  30006 spec_guard               Imperial guard
 M  30007 spec_guard               Sumbasi guard
-M  30008 spec_executioner         Paradign
+M  30008 spec_executioner         Paradigm
 M  30010 spec_cast_psionicist     Crazy Priest
 M  30011 spec_cast_psionicist     Priest
 M  30012 spec_cast_archmage           Chancellor
@@ -5925,22 +5925,23 @@ M  30034 spec_guard               Sumbasi guard
 M  30035 spec_poison              Swarm of Rats
 M  30038 spec_poison              Spores
 M  30039 spec_breath_any          Su Chi
-M  30040 spec_assassin               Assassin (aggr)
+M  30040 spec_assassin            Assassin (aggr)
 M  30045 spec_breath_lightning    Ball Lightning
 M  30047 spec_cast_undead         Sengir
 M  30048 spec_breath_gas          Mold Demon
-M  30049 spec_cast_archmage           Cambyses
+M  30049 spec_cast_archmage       Cambyses
 M  30050 spec_breath_fire         Chimera
+M  30051 spec_demon               Quartz demon
 M  30052 spec_thief               Nettling Imp
-M  30054 spec_assassin              Assassin
+M  30054 spec_assassin            Assassin
 M  30057 spec_cast_judge          Shrine Icon
 M  30060 spec_cast_judge          Lich
 M  30061 spec_cast_psionicist     Clergy
 M  30062 spec_cast_psionicist     Warp Hound
-M  30065 spec_cast_adept			a young lady
-M  30067 spec_guard			the Head hunter.
-M  30068 spec_cast_judge			the slayer
-M  30071 spec_cast_psionicist		Kennan
+M  30065 spec_cast_adept          a young lady
+M  30067 spec_guard               the Head hunter.
+M  30068 spec_cast_judge          the slayer
+M  30071 spec_cast_psionicist     Kennan
 S
 
 

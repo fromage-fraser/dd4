@@ -1,4 +1,4 @@
-#AREA	Strahd~  Descent to Hell~
+#AREA   Strahd~  Descent to Hell~
 30 45 0 100
 
 #MOBILES
@@ -1824,7 +1824,7 @@ Greed~
 What luck! A room full of treasure. Gold, diamonds, riches beyond
 imagination! Wait! You suddenly feel as if it is all slowly disappearing.
 Someone is taking your treasure. They have no right! It is yours! You
-found it first. Let them go get thier own treasures!
+found it first. Let them go get their own treasures!
 You see a door to the east.
 ~
 104 1|8 0
@@ -3823,7 +3823,7 @@ S
 Office of Complaints~
 This is a relatively small office. There is a large hole in the wall where a
 clerk usually sits and takes complaints about hell. As you peek behind
-the counter you see a large paper shredder and alot of shredded complaints.
+the counter you see a large paper shredder and a lot of shredded complaints.
 a sign over the clerks desk reads, 'Hours: 12:00am - 12:01am'
 To the west is a lawyers office.
 To the north you see the Halls of Judgement.
@@ -4684,31 +4684,34 @@ S
 
 
 #SHOPS
-10451 	5  2  9  4  3	 110 75	 0 23	; Hiramoto
-10451 	0  0  0  0  0	 110 75	 0 23	; Stanley
+10451   5  2  9  4  3    110 75  0 23   ; Hiramoto
+10451   0  0  0  0  0    110 75  0 23   ; Stanley
 0
 
 
 
 #SPECIALS
-M  10401 spec_cast_judge                              Guardian of Hell
-M  10402 spec_thief                                        Pile of Coins (mob)
-M  10405 spec_thief                                        gold bar (mob)
-M  10411 spec_cast_undead                            half-eaten person
-M  10412 spec_cast_undead                            living wall
-M  10413 spec_warrior					warrior
-M  10421 spec_fido                                         manes
-M  10422 spec_fido                                         Prisoner Raiden
-M  10425 spec_poison                                    demonguard
-M  10432 spec_breath_fire                              hell hound
-M  10434 spec_breath_frost                            ice devil
-M  10439 spec_breath_frost                            Ice Screamer
-M  10442 spec_thief                                   office worker from hell
-M  10445 spec_cast_cleric                               High Priest of Hell
-M  10448 spec_cast_judge                               Judge Whopper
-M  10456 spec_breath_acid                              stomach dragon
-M  10468 spec_breath_fire                              Greater Fire Demon
-M  10470 spec_fido                                         guard dog
+M  10401 spec_cast_judge                Guardian of Hell
+M  10402 spec_thief                     Pile of Coins (mob)
+M  10403 spec_demon                     Male dee demon
+M  10404 spec_demon                     Female dee demon
+M  10405 spec_thief                     gold bar (mob)
+M  10411 spec_cast_undead               half-eaten person
+M  10412 spec_cast_undead               living wall
+M  10413 spec_warrior                   warrior
+M  10421 spec_fido                      manes
+M  10422 spec_fido                      Prisoner Raiden
+M  10425 spec_demon                     demonguard
+M  10432 spec_breath_fire               hell hound
+M  10434 spec_breath_frost              ice devil
+M  10439 spec_breath_frost              Ice Screamer
+M  10440 spec_demon                     Demonic foreman
+M  10442 spec_thief                     office worker from hell
+M  10445 spec_cast_cleric               High Priest of Hell
+M  10448 spec_cast_judge                Judge Whopper
+M  10456 spec_breath_acid               stomach dragon
+M  10468 spec_demon                     Greater Fire Demon
+M  10470 spec_fido                      guard dog
 *
 *
 *
@@ -4716,7 +4719,7 @@ M  10470 spec_fido                                         guard dog
 **************************NOTES************************
 *
 * THIS AREA RESERVES VNUM 10401-10600
-* Slots alloted are 104 & 105
+* Slots allotted are 104 & 105
 * And is Connected at vnum #10401 to
 * #10082 ( kid's closet in the farmer's house)
 *

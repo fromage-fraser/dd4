@@ -1,4 +1,4 @@
-#AREA	Thorne~  The Swamp of Despair~
+#AREA   Thorne~  The Swamp of Despair~
 60 75 40 100
 
 #MOBILES
@@ -3557,135 +3557,135 @@ S
 
 #RESETS
 *
-M 1 30400 1 30454			the Blood Worm to A slimy burrow.
+M 1 30400 1 30454           the Blood Worm to A slimy burrow.
 *
-M 1 30401 1 30447			the Blood Worm to A slimy burrow.
+M 1 30401 1 30447           the Blood Worm to A slimy burrow.
 *
-M 1 30402 1 30456			the Blood Worm to A slimy burrow.
+M 1 30402 1 30456           the Blood Worm to A slimy burrow.
 *
-M 1 30403 1 30452			the Blood Worm to A slimy burrow.
+M 1 30403 1 30452           the Blood Worm to A slimy burrow.
 *
-M 1 30404 1 30448			the Blood worm to A slimy burrow.
+M 1 30404 1 30448           the Blood worm to A slimy burrow.
 *
-M 1 30405 1 30420			the lost one to Lost in the mist
+M 1 30405 1 30420           the lost one to Lost in the mist
 E 1 30402 100 5
 E 1 30403 100 7
 E 1 30401 100 16
 
-O 0 30444 0 30490			Full-helm to Genie's Lamp
+O 0 30444 0 30490           Full-helm to Genie's Lamp
 
-M 1 30406 1 30414			the Lost One to Lost in the mist
+M 1 30406 1 30414           the Lost One to Lost in the mist
 E 1 30408 100 1
 E 1 30405 100 5
 E 1 30407 100 7
 E 1 30406 100 16
 *
-M 1 30407 1 30442			the Lost One to Lost in the mist
+M 1 30407 1 30442           the Lost One to Lost in the mist
 E 1 30402 100 5
 E 1 30403 100 7
 E 1 30404 100 12
 E 1 30401 100 16
 *
-M 1 30408 1 30401			the Mist Wolf to Lost in the mist
+M 1 30408 1 30401           the Mist Wolf to Lost in the mist
 E 1 30409 100 12
 *
-M 1 30409 1 30422			the Mist Wolf to Lost in the mist
+M 1 30409 1 30422           the Mist Wolf to Lost in the mist
 E 1 30409 100 12
-O 1 30419 100 30429			a ripe cherry to Dry Land
-O 1 30438 100 30429			a ripe cherry to Dry Land
-O 1 30439 100 30429			a ripe cherry to Dry Land
-O 1 30420 100 30429			a cherry tree to Dry Land
-O 1 30400 100 30456			a speckled egg to An Egg chamber
-O 1 30440 100 30456			a speckled egg to An Egg chamber
-O 1 30441 100 30456			a speckled egg to An Egg chamber
-O 1 30400 100 30457			a speckled egg to An Egg chamber
-O 1 30440 100 30457			a speckled egg to An Egg chamber
-O 1 30400 100 30455			a speckled egg to An Egg chamber
-O 1 30441 100 30455			a speckled egg to An Egg chamber
-O 1 30417 100 30401			swamp slime to Lost in the mist
-O 1 30417 100 30415			swamp slime to Lost in the mist
-O 1 30417 100 30442			swamp slime to Lost in the mist
-O 1 30418 100 30417			a tadpole to Lost in the mist
-O 1 30418 100 30440			a tadpole to Lost in the mist
-O 1 30418 100 30420			a tadpole to Lost in the mist
+O 1 30419 100 30429         a ripe cherry to Dry Land
+O 1 30438 100 30429         a ripe cherry to Dry Land
+O 1 30439 100 30429         a ripe cherry to Dry Land
+O 1 30420 100 30429         a cherry tree to Dry Land
+O 1 30400 100 30456         a speckled egg to An Egg chamber
+O 1 30440 100 30456         a speckled egg to An Egg chamber
+O 1 30441 100 30456         a speckled egg to An Egg chamber
+O 1 30400 100 30457         a speckled egg to An Egg chamber
+O 1 30440 100 30457         a speckled egg to An Egg chamber
+O 1 30400 100 30455         a speckled egg to An Egg chamber
+O 1 30441 100 30455         a speckled egg to An Egg chamber
+O 1 30417 100 30401         swamp slime to Lost in the mist
+O 1 30417 100 30415         swamp slime to Lost in the mist
+O 1 30417 100 30442         swamp slime to Lost in the mist
+O 1 30418 100 30417         a tadpole to Lost in the mist
+O 1 30418 100 30440         a tadpole to Lost in the mist
+O 1 30418 100 30420         a tadpole to Lost in the mist
 *
-M 1 30410 1 30439			the Mist Wolf to Lost in the mist
+M 1 30410 1 30439           the Mist Wolf to Lost in the mist
 E 1 30409 100 12
-O 1 30410 100 30410			a dead tree to Lost in the mist
-O 1 30410 100 30424			a dead tree to Lost in the mist
-O 1 30410 100 30444			a dead tree to Lost in the mist
+O 1 30410 100 30410         a dead tree to Lost in the mist
+O 1 30410 100 30424         a dead tree to Lost in the mist
+O 1 30410 100 30444         a dead tree to Lost in the mist
 *
-M 1 30411 1 30444			the Nighthunter to Lost in the mist
+M 1 30411 1 30444           the Nighthunter to Lost in the mist
 E 1 30411 100 5
 E 1 30412 100 8
 E 1 30437 100 16
 *
-M 1 30412 1 30460			the Dream Shadow to A Dark cavern.
+M 1 30412 1 30460           the Dream Shadow to A Dark cavern.
 *
-M 1 30413 1 30477			the Dream Shadow to A Dark cavern.
+M 1 30413 1 30477           the Dream Shadow to A Dark cavern.
 *
-M 1 30414 1 30484			the Dream Shadow to A Dark cavern.
-O 1 30434 100 30488			a ruby to treasure room
-O 1 30433 100 30488			a sapphire to treasure room
+M 1 30414 1 30484           the Dream Shadow to A Dark cavern.
+O 1 30434 100 30488         a ruby to treasure room
+O 1 30433 100 30488         a sapphire to treasure room
 *
-M 1 30415 1 30463			the Undead Dog to A Dark cavern.
+M 1 30415 1 30463           the Undead Dog to A Dark cavern.
 E 1 30414 100 5
 *
-M 1 30416 1 30463			the Undead Dog to A Dark cavern.
+M 1 30416 1 30463           the Undead Dog to A Dark cavern.
 E 1 30414 100 5
 *
-M 1 30417 1 30466			the Shadow Crawler to A Dark cavern.
+M 1 30417 1 30466           the Shadow Crawler to A Dark cavern.
 E 1 30411 100 5
 *
-M 1 30418 1 30468			the Shadow Crawler to A Dark cavern.
+M 1 30418 1 30468           the Shadow Crawler to A Dark cavern.
 E 1 30411 100 5
 *
-M 1 30419 1 30479			the Shadow Crawler to A Dark cavern.
+M 1 30419 1 30479           the Shadow Crawler to A Dark cavern.
 E 1 30411 100 5
 *
-M 1 30420 1 30432			the Nightwing to Lost in the mist
+M 1 30420 1 30432           the Nightwing to Lost in the mist
 E 1 30415 100 12
 E 1 30416 100 16
 *
-M 1 30421 1 30427			the Nightwing to Lost in the mist
+M 1 30421 1 30427           the Nightwing to Lost in the mist
 E 1 30415 100 12
 E 1 30416 100 16
 *
-M 1 30422 1 30404			the Mist Horror to Lost in the mist
+M 1 30422 1 30404           the Mist Horror to Lost in the mist
 E 1 30409 100 12
 *
-M 1 30423 1 30435			the Mist Horror to Lost in the mist
+M 1 30423 1 30435           the Mist Horror to Lost in the mist
 E 1 30409 100 12
 *
-M 1 30424 1 30487			the shadow dragon to A Dark cavern
+M 1 30424 1 30487           the shadow dragon to A Dark cavern
 E 1 30421 100 12
 E 1 30422 100 16
 E 1 30422 100 18
 E 1 30423 100 8
 E 1 30424 100 5
-O 1 30431 100 30463           		dirt to den of the undead
-P 1 30413 100 30431			a bone to container Dirt
+O 1 30431 100 30463         dirt to den of the undead
+P 1 30413 100 30431         a bone to container Dirt
 *
-M 1 30425 1 30490			the genie to inside the lamp
+M 1 30425 1 30490           the genie to inside the lamp
 E 1 30425 100 17
 E 1 30427 100 5
 E 1 30426 100 7
 E 1 30428 100 8
 E 1 30429 100 15
 E 1 30430 100 19
-O 1 30436 100 30490			ring to inside the lamp
+O 1 30436 100 30490         ring to inside the lamp
 *
 
-O 1 30435 100 30488			coins to treasure room
+O 1 30435 100 30488         coins to treasure room
 *
-O 1 30432 100 30449			a corpse to a room in the burrow
-O 1 30432 100 30454			a corpse to a room in the burrow
+O 1 30432 100 30449         a corpse to a room in the burrow
+O 1 30432 100 30454         a corpse to a room in the burrow
 *
-D 1 30488 5 1				close lamp from outside
-D 1 30490 4 1				close lamp from inside
+D 1 30488 5 1               close lamp from outside
+D 1 30490 4 1               close lamp from inside
 *
-O 1 30442 100 30400		misty portal to entrance
-O 1 30443 100 30489		shadowy portal to bastion
+O 1 30442 100 30400         misty portal to entrance
+O 1 30443 100 30489         shadowy portal to bastion
 S
 
 
@@ -3695,13 +3695,14 @@ M  30401 spec_bloodsucker
 M  30402 spec_bloodsucker
 M  30403 spec_bloodsucker
 M  30404 spec_bloodsucker
-M  30408 spec_breath_gas			the Mist Wolf
-M  30409 spec_breath_gas			the Mist Wolf
-M  30410 spec_breath_gas			the Mist Wolf
-M  30411 spec_fido				the Nighthunter
-M  30415 spec_cast_undead			the Undead Dog
-M  30416 spec_cast_undead			the Undead Dog
-M  30425 spec_cast_archmage			the Genie
+M  30408 spec_breath_gas            the Mist Wolf
+M  30409 spec_breath_gas            the Mist Wolf
+M  30410 spec_breath_gas            the Mist Wolf
+M  30411 spec_fido                  the Nighthunter
+M  30415 spec_cast_undead           the Undead Dog
+M  30416 spec_cast_undead           the Undead Dog
+M  30420 spec_demon                 the Nightwing
+M  30425 spec_cast_archmage         the Genie
 S
 
 

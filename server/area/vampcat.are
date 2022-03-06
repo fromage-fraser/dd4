@@ -4089,9 +4089,9 @@ An exhibit stands here.~
 2500 0 0
 E
 exhibit sculpture demon concrete~
-This exhibit's centerpiece is an enormous stone gargoyle, well over 20 foot high
+This exhibit's centrepiece is an enormous stone gargoyle, well over 20 foot high
 and finished in breathtaking detail.  You notice a small black object lying at
-its feet~
+its feet.~
 #9700
 exhibit eerie song~
 eerie song~
@@ -4723,9 +4723,9 @@ Straining to read the spidery scrawl on the notes you make out the following:
 
 "It has come to my attention that SOMEBODY here has been using MY VERY EXPENSIVE
 shampoo and conditioner. Until the guilty party comes forward I am REFUSING to
-to contribute in ANY WAY to the wellbeing of the community!
+contribute in ANY WAY to the wellbeing of the community!
 
-YOU KNOW WHO YOU ARE THIEF!
+YOU KNOW WHO YOU ARE, THIEF!
 
 -Saturnina"
 
@@ -6840,43 +6840,43 @@ S
 
 
 #RESETS
-O 1 9500 100 9501			meat scraps to Rubbish room
+O 1 9500 100 9501           meat scraps to Rubbish room
 *
-M 1 9500 1 9501			a dying man to Rubbish room
+M 1 9500 1 9501         a dying man to Rubbish room
 G 1 9501 100
-D 1 9502 3 2			; A dark corridor Lock West
-D 1 9502 1 1			; A dark corridor Close East
+D 1 9502 3 2            ; A dark corridor Lock West
+D 1 9502 1 1            ; A dark corridor Close East
 *
-M 1 9501 1 9506			Anton to Anton's bedroom
+M 1 9501 1 9506         Anton to Anton's bedroom
 E 1 9505 100 5
 E 1 9503 100 6
 E 1 9507 100 7
 E 1 9506 100 16
 G 1 9504 100
-D 1 9508 3 1			; Greg's bedroom Close West
-D 1 9504 1 1			; A dark corridor Close East
-D 1 9506 3 1			; Anton's bedroom Close West
-D 1 9501 3 1			; Rubbish room Close West
-O 1 9508 100 9508			a blood flask to Greg's bedroom
-O 1 9508 100 9508			a blood flask to Greg's bedroom
-O 1 9508 100 9508			a blood flask to Greg's bedroom
+D 1 9508 3 1            ; Greg's bedroom Close West
+D 1 9504 1 1            ; A dark corridor Close East
+D 1 9506 3 1            ; Anton's bedroom Close West
+D 1 9501 3 1            ; Rubbish room Close West
+O 1 9508 100 9508           a blood flask to Greg's bedroom
+O 1 9508 100 9508           a blood flask to Greg's bedroom
+O 1 9508 100 9508           a blood flask to Greg's bedroom
 *
-M 1 9502 1 9508			Greg to Greg's bedroom
+M 1 9502 1 9508         Greg to Greg's bedroom
 E 1 9509 100 17
 E 1 9510 100 12
 E 1 9511 100 7
 G 1 9509 100
-D 1 9505 1 2			; Herne's lounge Lock East
-D 1 9505 0 2			; Herne's lounge Lock North
-D 1 9511 2 2			; Herne's bedroom Lock South
-D 1 9509 0 2			; The kitchen Lock North
-O 1 9513 100 9509			a large wooden table to The kitchen
-O 1 9525 100 9509			an oven to The kitchen
-O 1 9512 100 9509			a large pot  to The kitchen
-P 1 9514 100 9512			a black jewelled key to container pot pots
-D 1 9512 2 2			; Saturnina's bedroom Lock South
+D 1 9505 1 2            ; Herne's lounge Lock East
+D 1 9505 0 2            ; Herne's lounge Lock North
+D 1 9511 2 2            ; Herne's bedroom Lock South
+D 1 9509 0 2            ; The kitchen Lock North
+O 1 9513 100 9509           a large wooden table to The kitchen
+O 1 9525 100 9509           an oven to The kitchen
+O 1 9512 100 9509           a large pot  to The kitchen
+P 1 9514 100 9512           a black jewelled key to container pot pots
+D 1 9512 2 2            ; Saturnina's bedroom Lock South
 *
-M 1 9503 1 9512			Saturnina to Saturnina's bedroom
+M 1 9503 1 9512         Saturnina to Saturnina's bedroom
 E 1 9519 100 3
 E 1 9518 100 5
 E 1 9517 100 6
@@ -6886,20 +6886,20 @@ E 1 9515 100 15
 E 1 9520 100 16
 E 1 9521 100 13
 E 1 9522 100 9
-O 1 9523 100 9513			a toilet to Saturnina's bathroom
+O 1 9523 100 9513           a toilet to Saturnina's bathroom
 *
-M 1 9504 1 9513			Steigen the kitten to Saturnina's bathroom
+M 1 9504 1 9513         Steigen the kitten to Saturnina's bathroom
 E 1 9524 100 3
-P 1 9526 100 9525			a meat pie to container oven
-D 1 9514 2 1			; Communal bathroom Close North
-O 1 9527 100 9515			A urinal to Communal bathroom
-D 1 9515 1 1			; Communal bathroom Close East
-D 1 9515 3 1			; Communal bathroom Close West
-O 1 9528 100 9515			a handbasin to Communal bathroom
-O 1 9523 100 9516			a toilet to A toilet stall
-D 1 9516 1 1			; A toilet stall Close East
+P 1 9526 100 9525           a meat pie to container oven
+D 1 9514 2 1            ; Communal bathroom Close North
+O 1 9527 100 9515           A urinal to Communal bathroom
+D 1 9515 1 1            ; Communal bathroom Close East
+D 1 9515 3 1            ; Communal bathroom Close West
+O 1 9528 100 9515           a handbasin to Communal bathroom
+O 1 9523 100 9516           a toilet to A toilet stall
+D 1 9516 1 1            ; A toilet stall Close East
 *
-M 1 9505 1 9516			Cyril to A toilet stall
+M 1 9505 1 9516         Cyril to A toilet stall
 E 1 9530 100 8
 E 1 9531 100 7
 E 1 9532 100 6
@@ -6907,45 +6907,45 @@ E 1 9533 100 12
 E 1 9534 100 16
 E 1 9535 100 13
 G 1 9529 100
-D 1 9517 3 1			; Showers Close West
+D 1 9517 3 1            ; Showers Close West
 *
-M 1 9506 1 9517			Joan to Showers
+M 1 9506 1 9517         Joan to Showers
 G 1 9537 100
 G 1 9539 100
 G 1 9540 100
 *
-M 1 9507 1 9517			Peter to Showers
+M 1 9507 1 9517         Peter to Showers
 E 1 9536 100 16
 E 1 9538 100 12
 G 1 9537 100
-D 1 9518 0 1			; End of a dark corridor Close North
-D 1 9519 0 1			; End of a dark corridor Close North
-D 1 9523 2 1			; Grok's bedroom Close South
-D 1 9524 3 2			; Through the cupboard Lock West
-D 1 9523 1 2			; Grok's bedroom Lock East
-D 1 9520 2 1			; Ganymede's lounge Close South
-D 1 9521 0 1			; A foyer Close North
-D 1 9519 2 1			; End of a dark corridor Close South
-D 1 9520 1 2			; Ganymede's lounge Lock East
+D 1 9518 0 1            ; End of a dark corridor Close North
+D 1 9519 0 1            ; End of a dark corridor Close North
+D 1 9523 2 1            ; Grok's bedroom Close South
+D 1 9524 3 2            ; Through the cupboard Lock West
+D 1 9523 1 2            ; Grok's bedroom Lock East
+D 1 9520 2 1            ; Ganymede's lounge Close South
+D 1 9521 0 1            ; A foyer Close North
+D 1 9519 2 1            ; End of a dark corridor Close South
+D 1 9520 1 2            ; Ganymede's lounge Lock East
 *
-M 1 9508 1 9520			A metal sculpture to Ganymede's lounge
+M 1 9508 1 9520         A metal sculpture to Ganymede's lounge
 E 1 9541 100 16
 E 1 9542 100 6
 G 1 9543 100
 *
-M 1 9508 1 9520			A metal sculpture to Ganymede's lounge
+M 1 9508 1 9520         A metal sculpture to Ganymede's lounge
 E 1 9541 100 16
 E 1 9542 100 6
-D 1 9522 3 2			; Ganymede's bedroom Lock West
+D 1 9522 3 2            ; Ganymede's bedroom Lock West
 *
-M 1 9509 1 9522			Ganymede to Ganymede's bedroom
+M 1 9509 1 9522         Ganymede to Ganymede's bedroom
 E 1 9544 100 17
 E 1 9536 100 16
 E 1 9545 100 7
 E 1 9546 100 12
-O 1 9547 100 9522			a metallic hipflask to Ganymede's bedroom
+O 1 9547 100 9522           a metallic hipflask to Ganymede's bedroom
 *
-M 1 9510 1 9523			Grok to A room
+M 1 9510 1 9523         Grok to A room
 E 1 9502 100 17
 E 1 9548 100 16
 E 1 9549 100 6
@@ -6961,11 +6961,11 @@ E 1 9557 100 10
 E 1 9558 100 13
 E 1 9559 100 1
 E 1 9559 100 2
-O 1 9560 100 9505			a large black box to Herne's lounge
-O 1 9561 100 9511			a four-postered bed to Herne's bedroom
-O 1 9562 100 9511			a torture rack to Herne's bedroom
+O 1 9560 100 9505           a large black box to Herne's lounge
+O 1 9561 100 9511           a four-postered bed to Herne's bedroom
+O 1 9562 100 9511           a torture rack to Herne's bedroom
 *
-M 1 9511 1 9511			Herne to Herne's bedroom
+M 1 9511 1 9511         Herne to Herne's bedroom
 E 1 9563 100 6
 E 1 9564 100 12
 E 1 9565 100 17
@@ -6986,120 +6986,120 @@ E 1 9577 100 11
 E 1 9578 100 0
 G 1 9656 100
 *
-M 1 9512 1 9510			Amanda to A dark corridor
+M 1 9512 1 9510         Amanda to A dark corridor
 E 1 9579 100 8
 *
-M 1 9513 1 9504			Martin to A dark corridor
+M 1 9513 1 9504         Martin to A dark corridor
 E 1 9580 100 5
 E 1 9581 100 7
 *
-M 1 9514 1 9514			Sally to A dark corridor
+M 1 9514 1 9514         Sally to A dark corridor
 E 1 9582 100 12
 G 1 9583 100
 *
-M 1 9515 1 9502			Bevan to A dark corridor
+M 1 9515 1 9502         Bevan to A dark corridor
 E 1 9585 100 7
 E 1 9586 100 5
 E 1 9587 100 8
 G 1 9584 100
-D 1 9527 0 1			; A corridor in the catacombs Close North
-D 1 9526 2 1			; Bottom of the shaft Close South
-O 1 9588 100 9527			a piece of lichen to A corridor in the catacombs
-O 1 9589 100 9527			a chunk of moss to A corridor in the catacombs
+D 1 9527 0 1            ; A corridor in the catacombs Close North
+D 1 9526 2 1            ; Bottom of the shaft Close South
+O 1 9588 100 9527           a piece of lichen to A corridor in the catacombs
+O 1 9589 100 9527           a chunk of moss to A corridor in the catacombs
 *
-M 1 9516 1 9518			Caroline to End of a dark corridor
+M 1 9516 1 9518         Caroline to End of a dark corridor
 E 1 9590 100 6
 E 1 9591 100 12
 E 1 9592 100 7
 G 1 9593 100
 *
-M 1 9517 1 9509			Paul to The kitchen
+M 1 9517 1 9509         Paul to The kitchen
 E 1 9594 100 12
-D 1 9541 0 2			; The tithe room Lock North
-O 1 9589 100 9530			a chunk of moss to A corridor in the catacombs
-O 1 9588 100 9530			a piece of lichen to A corridor in the catacombs
-D 1 9531 0 1			; A living area Close North
-D 1 9531 3 1			; A living area Close West
-D 1 9534 0 1			; Mavralyn's lair Close North
-D 1 9531 2 1			; A living area Close South
-D 1 9533 1 1			; Velkyn's laboratory Close East
-D 1 9563 1 1			; The master vat Close East
+D 1 9541 0 2            ; The tithe room Lock North
+O 1 9589 100 9530           a chunk of moss to A corridor in the catacombs
+O 1 9588 100 9530           a piece of lichen to A corridor in the catacombs
+D 1 9531 0 1            ; A living area Close North
+D 1 9531 3 1            ; A living area Close West
+D 1 9534 0 1            ; Mavralyn's lair Close North
+D 1 9531 2 1            ; A living area Close South
+D 1 9533 1 1            ; Velkyn's laboratory Close East
+D 1 9563 1 1            ; The master vat Close East
 *
-M 1 9518 1 9565			the Wamphyri Warrior to A enormous vat
+M 1 9518 1 9565         the Wamphyri Warrior to A enormous vat
 E 1 9595 100 16
 *
-M 1 9519 1 9566			a Wamphyri Flyer to An enormous vat
+M 1 9519 1 9566         a Wamphyri Flyer to An enormous vat
 E 1 9596 100 16
 E 1 9595 100 18
 *
-M 1 9520 1 9564			a Wamphyri Siphoneer to An enormous vat
+M 1 9520 1 9564         a Wamphyri Siphoneer to An enormous vat
 E 1 9597 100 16
 *
-M 1 9521 1 9533			Velkyn to Velkyn's laboratory
+M 1 9521 1 9533         Velkyn to Velkyn's laboratory
 E 1 9598 100 12
 E 1 9599 100 17
 E 1 9600 100 16
 E 1 9601 100 1
 E 1 9601 100 2
 G 1 9509 100
-O 1 9602 100 9533			a distillery to Velkyn's laboratory
-D 1 9567 2 1			; Xundus' quarters Close South
-O 1 9603 100 9567			a coal range to A room
+O 1 9602 100 9533           a distillery to Velkyn's laboratory
+D 1 9567 2 1            ; Xundus' quarters Close South
+O 1 9603 100 9567           a coal range to A room
 *
-M 1 9522 1 9567			Xandus the psionic to Xundus' quarters
+M 1 9522 1 9567         Xandus the psionic to Xundus' quarters
 E 1 9605 100 1
 E 1 9606 100 12
 E 1 9607 100 8
 E 1 9609 100 13
-O 1 9608 100 9567			A high-backed leather chair to Xundus' quarters
-O 1 9610 100 9567			an alligator head to Xundus' quarters
-P 1 9514 100 9512			a black jewelled key to container pot pots
-P 1 9526 100 9525			a meat pie to container oven
-O 1 9611 100 9569			bat guano to A cavernous recess
+O 1 9608 100 9567           A high-backed leather chair to Xundus' quarters
+O 1 9610 100 9567           an alligator head to Xundus' quarters
+P 1 9514 100 9512           a black jewelled key to container pot pots
+P 1 9526 100 9525           a meat pie to container oven
+O 1 9611 100 9569           bat guano to A cavernous recess
 *
 *
-M 1 9523 1 9534			Mavralyn to Mavralyn's lair
+M 1 9523 1 9534         Mavralyn to Mavralyn's lair
 E 1 9612 100 5
 E 1 9613 100 4
 E 1 9614 100 1
 G 1 9509 100
 *
 *
-M 1 9524 1 9568			the giant bat to A cavernous recess
+M 1 9524 1 9568         the giant bat to A cavernous recess
 *
-M 1 9525 1 9569			the giant bat to A cavernous recess
-D 1 9570 3 1			; Isolation booth Close West
-O 1 9615 100 9570			a pipe organ to Isolation booth
-D 1 9500 1 1			; A dark corridor Close East
+M 1 9525 1 9569         the giant bat to A cavernous recess
+D 1 9570 3 1            ; Isolation booth Close West
+O 1 9615 100 9570           a pipe organ to Isolation booth
+D 1 9500 1 1            ; A dark corridor Close East
 *
-M 1 9526 1 9571			the bouncer to Entrance to the Nightclub
+M 1 9526 1 9571         the bouncer to Entrance to the Nightclub
 E 1 9617 100 5
 E 1 9618 100 6
 E 1 9619 100 1
 E 1 9620 100 8
-D 1 9573 0 2			; Short corridor Lock North
-D 1 9500 2 2			; A dark corridor Lock South
+D 1 9573 0 2            ; Short corridor Lock North
+D 1 9500 2 2            ; A dark corridor Lock South
 *
-D 1 9571 0 2			; Entrance to the Nightclub Lock North
-D 1 9573 2 2			; Short corridor Lock South
+D 1 9571 0 2            ; Entrance to the Nightclub Lock North
+D 1 9573 2 2            ; Short corridor Lock South
 *
-M 1 9528 1 9537			arm of a statue to Porl's studio
+M 1 9528 1 9537         arm of a statue to Porl's studio
 *
-M 1 9529 1 9537			a marble torso to Porl's studio
+M 1 9529 1 9537         a marble torso to Porl's studio
 G 1 9621 100
 *
-M 1 9530 1 9537			a broken marble leg to Porl's studio
-D 1 9537 0 2			; Porl's studio Lock North
+M 1 9530 1 9537         a broken marble leg to Porl's studio
+D 1 9537 0 2            ; Porl's studio Lock North
 *
-M 1 9531 1 9575			Porl to A concrete bunker
+M 1 9531 1 9575         Porl to A concrete bunker
 E 1 9622 100 16
 E 1 9623 100 5
 E 1 9624 100 7
 E 1 9625 100 8
 E 1 9626 100 6
-O 1 9628 100 9536			a lute to Nathaniel's studio
+O 1 9628 100 9536           a lute to Nathaniel's studio
 *
-M 1 9532 1 9574			Nathaniel to Inside a coffin
+M 1 9532 1 9574         Nathaniel to Inside a coffin
 E 1 9629 100 6
 E 1 9630 100 10
 E 1 9631 100 16
@@ -7110,24 +7110,24 @@ E 1 9634 100 1
 E 1 9635 100 13
 E 1 9620 100 8
 E 1 9636 100 3
-O 1 9627 100 9536			an antique violin to Nathaniel's studio
-D 1 9574 0 1			; Inside a coffin Close North
-D 1 9536 2 1			; Nathaniel's studio Close South
-D 1 9532 0 1			; A living area Close North
-D 1 9532 1 1			; A living area Close East
-D 1 9532 2 1			; A living area Close South
-D 1 9532 3 1			; A living area Close West
-D 1 9530 1 1			; A corridor in the catacombs Close East
-D 1 9530 3 1			; A corridor in the catacombs Close West
-D 1 9535 2 1			; Symon's studio Close South
-D 1 9536 0 1			; Nathaniel's studio Close North
-D 1 9536 1 1			; Nathaniel's studio Close East
-D 1 9537 3 1			; Porl's studio Close West
-D 1 9575 2 2			; A concrete bunker Lock South
+O 1 9627 100 9536           an antique violin to Nathaniel's studio
+D 1 9574 0 1            ; Inside a coffin Close North
+D 1 9536 2 1            ; Nathaniel's studio Close South
+D 1 9532 0 1            ; A living area Close North
+D 1 9532 1 1            ; A living area Close East
+D 1 9532 2 1            ; A living area Close South
+D 1 9532 3 1            ; A living area Close West
+D 1 9530 1 1            ; A corridor in the catacombs Close East
+D 1 9530 3 1            ; A corridor in the catacombs Close West
+D 1 9535 2 1            ; Symon's studio Close South
+D 1 9536 0 1            ; Nathaniel's studio Close North
+D 1 9536 1 1            ; Nathaniel's studio Close East
+D 1 9537 3 1            ; Porl's studio Close West
+D 1 9575 2 2            ; A concrete bunker Lock South
 *
-M 1 9533 1 9532			The nude sculpture to A living area
+M 1 9533 1 9532         The nude sculpture to A living area
 *
-M 1 9534 1 9561			Scorpios to A room
+M 1 9534 1 9561         Scorpios to A room
 E 1 9639 100 5
 E 1 9640 100 4
 E 1 9641 100 8
@@ -7137,85 +7137,85 @@ G 1 9646 100
 G 1 9645 100
 G 1 9644 100
 G 1 9643 100
-D 1 9561 1 1			; Scorpios' quarters Close East
-D 1 9555 3 1			; The Galleria Close West
-D 1 9562 1 1			; Christian's room Close East
-D 1 9556 3 1			; The Galleria Close West
-D 1 9552 3 2			; The Galleria Lock West
-D 1 9560 1 2			; Inside the cupboard Lock East
-O 1 9637 100 9561			a drawer to Scorpios' quarters
-P 1 9638 100 9637			gold to container drawer
+D 1 9561 1 1            ; Scorpios' quarters Close East
+D 1 9555 3 1            ; The Galleria Close West
+D 1 9562 1 1            ; Christian's room Close East
+D 1 9556 3 1            ; The Galleria Close West
+D 1 9552 3 2            ; The Galleria Lock West
+D 1 9560 1 2            ; Inside the cupboard Lock East
+O 1 9637 100 9561           a drawer to Scorpios' quarters
+P 1 9638 100 9637           gold to container drawer
 *
-M 1 9535 1 9503			Charles to A dark corridor
+M 1 9535 1 9503         Charles to A dark corridor
 E 1 9649 100 5
 E 1 9648 100 12
 E 1 9650 100 1
 E 1 9651 100 8
-O 1 9652 100 9535			a painting to Symon's studio
+O 1 9652 100 9535           a painting to Symon's studio
 *
-M 1 9536 1 9535			Symon to Symon's studio
+M 1 9536 1 9535         Symon to Symon's studio
 E 1 9653 100 5
 E 1 9654 100 17
-D 1 9539 2 2			; A bend in the corridor Lock South
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-O 1 9509 100 9541			a blood flask to The tithe room
-D 1 9548 2 2			; The reception area Lock South
-D 1 9549 0 2			; The Galleria Lock North
+D 1 9539 2 2            ; A bend in the corridor Lock South
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+O 1 9509 100 9541           a blood flask to The tithe room
+D 1 9548 2 2            ; The reception area Lock South
+D 1 9549 0 2            ; The Galleria Lock North
 *
-M 1 9537 1 9548			the receptionist to The reception area
+M 1 9537 1 9548         the receptionist to The reception area
 G 1 9662 100
-O 1 9655 100 9548			an oak desk to The reception area
-D 1 9576 3 0			; A bathroom Open West
-D 1 9577 1 2			; Dank passage Lock East
-D 1 9511 3 2			; Herne's bedroom Lock West
-O 1 9657 100 9585			a trough to A horse box
-O 1 9657 100 9586			a trough to A horse box
+O 1 9655 100 9548           an oak desk to The reception area
+D 1 9576 3 0            ; A bathroom Open West
+D 1 9577 1 2            ; Dank passage Lock East
+D 1 9511 3 2            ; Herne's bedroom Lock West
+O 1 9657 100 9585           a trough to A horse box
+O 1 9657 100 9586           a trough to A horse box
 *
-M 1 9538 2 9585			the demon steed to A horse box
+M 1 9538 2 9585         the demon steed to A horse box
 E 1 9658 100 16
 *
-M 1 9538 2 9586			the demon steed to A horse box
+M 1 9538 2 9586         the demon steed to A horse box
 E 1 9658 100 16
-D 1 9586 2 1			; A horse box Close South
-D 1 9585 1 1			; A horse box Close East
-D 1 9584 0 1			; Herne's stables Close North
-D 1 9584 3 1			; Herne's stables Close West
-O 1 9659 100 9584			a sack of oats to Herne's stables
-O 1 9660 100 9584			a bale of hay to Herne's stables
-O 1 9661 100 9562			a filthy mattress to Christian's room
+D 1 9586 2 1            ; A horse box Close South
+D 1 9585 1 1            ; A horse box Close East
+D 1 9584 0 1            ; Herne's stables Close North
+D 1 9584 3 1            ; Herne's stables Close West
+O 1 9659 100 9584           a sack of oats to Herne's stables
+O 1 9660 100 9584           a bale of hay to Herne's stables
+O 1 9661 100 9562           a filthy mattress to Christian's room
 *
-M 1 9539 1 9562			Christian to Christian's room
+M 1 9539 1 9562         Christian to Christian's room
 E 1 9664 100 5
 E 1 9665 100 7
 E 1 9666 100 17
-D 1 9546 1 2			; A corridor in the catacombs Lock East
-O 1 9523 100 9576			a toilet to A bathroom
-O 1 9663 100 9576			a washbasin to A bathroom
-D 1 9553 1 0			; The Galleria Open East
-D 1 9540 1 1			; A living area Close East
-D 1 9539 3 1			; A bend in the corridor Close West
-O 1 9588 100 9545			a piece of lichen to A corridor in the catacombs
-O 1 9589 100 9545			a chunk of moss to A corridor in the catacombs
-O 1 9667 100 9543			a cedar desk to A study
-O 1 9669 100 9543			a small drawer to A study
-P 1 9670 100 9669			gloves of the vampire to container small drawer
-D 1 9543 2 1			; A study Close South
-D 1 9540 2 1			; A living area Close South
-D 1 9544 0 1			; Augus' Quarters Close North
-D 1 9542 0 1			; Grieb's Quarters Close North
-D 1 9547 3 1			; Worship Hall Close West
-O 1 9671 100 9547			an onyx-plated altar to Worship Hall
+D 1 9546 1 2            ; A corridor in the catacombs Lock East
+O 1 9523 100 9576           a toilet to A bathroom
+O 1 9663 100 9576           a washbasin to A bathroom
+D 1 9553 1 0            ; The Galleria Open East
+D 1 9540 1 1            ; A living area Close East
+D 1 9539 3 1            ; A bend in the corridor Close West
+O 1 9588 100 9545           a piece of lichen to A corridor in the catacombs
+O 1 9589 100 9545           a chunk of moss to A corridor in the catacombs
+O 1 9667 100 9543           a cedar desk to A study
+O 1 9669 100 9543           a small drawer to A study
+P 1 9670 100 9669           gloves of the vampire to container small drawer
+D 1 9543 2 1            ; A study Close South
+D 1 9540 2 1            ; A living area Close South
+D 1 9544 0 1            ; Augus' Quarters Close North
+D 1 9542 0 1            ; Grieb's Quarters Close North
+D 1 9547 3 1            ; Worship Hall Close West
+O 1 9671 100 9547           an onyx-plated altar to Worship Hall
 *
-M 1 9540 1 9547			Saul to Worship Hall
+M 1 9540 1 9547         Saul to Worship Hall
 E 1 9672 100 4
 E 1 9673 100 16
 E 1 9675 100 18
@@ -7225,7 +7225,7 @@ E 1 9678 100 1
 E 1 9679 100 2
 G 1 9716 100
 *
-M 1 9541 1 9544			Augus to Augus' Quarters
+M 1 9541 1 9544         Augus to Augus' Quarters
 E 1 9680 100 12
 E 1 9681 100 7
 E 1 9682 100 17
@@ -7233,134 +7233,136 @@ E 1 9636 100 3
 G 1 9683 100
 G 1 9684 100
 *
-M 1 9542 1 9542			Grieb to A room
+M 1 9542 1 9542         Grieb to A room
 E 1 9685 100 5
 *
-M 1 9543 3 9527			the gallery visitor to A corridor in the catacombs
+M 1 9543 3 9527         the gallery visitor to A corridor in the catacombs
 *
-M 1 9544 3 9529			the gallery visitor to A corridor in the catacombs
+M 1 9544 3 9529         the gallery visitor to A corridor in the catacombs
 *
-M 1 9543 3 9538			the gallery visitor to A corridor in the catacombs
+M 1 9543 3 9538         the gallery visitor to A corridor in the catacombs
 *
-M 1 9544 3 9545			the gallery visitor to A corridor in the catacombs
+M 1 9544 3 9545         the gallery visitor to A corridor in the catacombs
 *
-M 1 9543 3 9528			the gallery visitor to A corridor in the catacombs
+M 1 9543 3 9528         the gallery visitor to A corridor in the catacombs
 *
-M 1 9544 3 9530			the gallery visitor to A corridor in the catacombs
+M 1 9544 3 9530         the gallery visitor to A corridor in the catacombs
 *
-M 1 9545 6 9558			an art critic to The Galleria
+M 1 9545 6 9558         an art critic to The Galleria
 E 1 9687 100 17
 *
-M 1 9546 6 9552			a gallery visitor to The Galleria
+M 1 9546 6 9552         a gallery visitor to The Galleria
 *
-M 1 9547 6 9555			a gallery visitor to The Galleria
+M 1 9547 6 9555         a gallery visitor to The Galleria
 *
-M 1 9546 6 9556			a gallery visitor to The Galleria
+M 1 9546 6 9556         a gallery visitor to The Galleria
 *
-M 1 9547 6 9587			a gallery visitor to The Galleria
+M 1 9547 6 9587         a gallery visitor to The Galleria
 *
-M 1 9546 6 9549			a gallery visitor to The Galleria
+M 1 9546 6 9549         a gallery visitor to The Galleria
 *
-M 1 9547 6 9554			a gallery visitor to The Galleria
+M 1 9547 6 9554         a gallery visitor to The Galleria
 *
-M 1 9546 6 9557			a gallery visitor to The Galleria
+M 1 9546 6 9557         a gallery visitor to The Galleria
 *
-M 1 9547 6 9588			a gallery visitor to The Galleria
+M 1 9547 6 9588         a gallery visitor to The Galleria
 *
-M 1 9546 6 9553			a gallery visitor to The Galleria
+M 1 9546 6 9553         a gallery visitor to The Galleria
 *
-M 1 9547 6 9559			a gallery visitor to The Galleria
+M 1 9547 6 9559         a gallery visitor to The Galleria
 *
-M 1 9546 6 9589			a gallery visitor to The Galleria
+M 1 9546 6 9589         a gallery visitor to The Galleria
 *
-M 1 9547 6 9590			a gallery visitor to The Galleria
+M 1 9547 6 9590         a gallery visitor to The Galleria
 *
-M 1 9547 6 9591			a gallery visitor to The Galleria
+M 1 9547 6 9591         a gallery visitor to The Galleria
 *
-M 1 9546 8 9592			a gallery visitor to The Galleria
+M 1 9546 8 9592         a gallery visitor to The Galleria
 *
-M 1 9548 1 9551			the cloakroom attendant to The cloakroom
-O 1 9688 100 9551			the pocket of the dress jacket to The cloakroom
-P 1 9689 100 9688			a potion of fortitude to container pocket
-D 1 9545 2 1			; A corridor in the catacombs Close South
-O 1 9699 100 9590			demon sculpture to The Galleria
-O 1 9690 100 9590			an onyx band to The Galleria
-O 1 9691 100 9550			human body pieces to Kitchen in the Catacombs
+M 1 9548 1 9551         the cloakroom attendant to The cloakroom
+O 1 9688 100 9551           the pocket of the dress jacket to The cloakroom
+P 1 9689 100 9688           a potion of fortitude to container pocket
+D 1 9545 2 1            ; A corridor in the catacombs Close South
+O 1 9699 100 9590           demon sculpture to The Galleria
+O 1 9690 100 9590           an onyx band to The Galleria
+O 1 9691 100 9550           human body pieces to Kitchen in the Catacombs
 *
-M 1 9549 1 9550			The chef to Kitchen in the Catacombs
+M 1 9549 1 9550         The chef to Kitchen in the Catacombs
 E 1 9692 100 5
 E 1 9693 100 16
 E 1 9693 100 18
 *
-M 1 9550 3 9550			a kitchenhand to Kitchen in the Catacombs
+M 1 9550 3 9550         a kitchenhand to Kitchen in the Catacombs
 E 1 9693 100 16
 E 1 9694 100 13
 *
-M 1 9550 3 9550			a kitchenhand to Kitchen in the Catacombs
+M 1 9550 3 9550         a kitchenhand to Kitchen in the Catacombs
 E 1 9693 100 16
 E 1 9694 100 13
 *
-M 1 9550 3 9550			a kitchenhand to Kitchen in the Catacombs
+M 1 9550 3 9550         a kitchenhand to Kitchen in the Catacombs
 E 1 9693 100 16
 E 1 9694 100 13
 *
-P 1 9709 100 9707			a fiery pill to container cranny crannies crannys
-D 1 9550 3 1			; Galleria kitchen Close West
-D 1 9593 1 1			; Inside a fridge Close East
+P 1 9709 100 9707           a fiery pill to container cranny crannies crannys
+D 1 9550 3 1            ; Galleria kitchen Close West
+D 1 9593 1 1            ; Inside a fridge Close East
 *
-M 1 9551 1 9593			a tiny mouse to Inside a fridge
-O 1 9696 100 9587			an enormous steel ball to The Galleria
-O 1 9697 100 9557			a wire net to The Galleria
-O 1 9698 100 9558			a psychedelic painting to The Galleria
-O 1 9700 100 9591			eerie song to The Galleria
-O 1 9701 100 9592			reading booths to The Galleria
-O 1 9702 100 9589			caged creatures to The Galleria
-O 1 9703 100 9555			balls in space to The Galleria
-O 1 9704 100 9554			coffin to The Galleria
-P 1 9705 100 9696			a simple black key to container steel ball exhibit
-O 1 9706 100 9560			nook to The haul
-O 1 9707 100 9560			cranny to The haul
-P 1 9708 100 9706			gold coins in bags to container nook nooks
+M 1 9551 1 9593         a tiny mouse to Inside a fridge
+O 1 9696 100 9587           an enormous steel ball to The Galleria
+O 1 9697 100 9557           a wire net to The Galleria
+O 1 9698 100 9558           a psychedelic painting to The Galleria
+O 1 9700 100 9591           eerie song to The Galleria
+O 1 9701 100 9592           reading booths to The Galleria
+O 1 9702 100 9589           caged creatures to The Galleria
+O 1 9703 100 9555           balls in space to The Galleria
+O 1 9704 100 9554           coffin to The Galleria
+P 1 9705 100 9696           a simple black key to container steel ball exhibit
+O 1 9706 100 9560           nook to The haul
+O 1 9707 100 9560           cranny to The haul
+P 1 9708 100 9706           gold coins in bags to container nook nooks
 *
-M 1 9552 1 9539			the shadowthief to A bend in the corridor
-P 1 9709 100 9707			a fiery pill to container cranny crannies crannys
+M 1 9552 1 9539         the shadowthief to A bend in the corridor
+P 1 9709 100 9707           a fiery pill to container cranny crannies crannys
 E 1 9710 100 5
 E 1 9711 100 16
 E 1 9711 100 18
 G 1 9712 100
-D 1 9592 2 2			; The Galleria Lock South
-D 1 9594 0 2			; In a tiny room behind a secret panel Lock North
-O 1 9708 100 9594			gold coins in bags to In a tiny room behind a secret panel
-O 1 9713 100 9594			provisions to In a tiny room behind a secret panel
-O 1 9713 100 9594			provisions to In a tiny room behind a secret panel
-O 1 9714 100 9594			a water bottle to In a tiny room behind a secret panel
-P 1 9604 100 9603			a charred corpse to container coal range antique
-P 1 9715 100 9610			a cache of gold coins to container alligator alligator's
+D 1 9592 2 2            ; The Galleria Lock South
+D 1 9594 0 2            ; In a tiny room behind a secret panel Lock North
+O 1 9708 100 9594           gold coins in bags to In a tiny room behind a secret panel
+O 1 9713 100 9594           provisions to In a tiny room behind a secret panel
+O 1 9713 100 9594           provisions to In a tiny room behind a secret panel
+O 1 9714 100 9594           a water bottle to In a tiny room behind a secret panel
+P 1 9604 100 9603           a charred corpse to container coal range antique
+P 1 9715 100 9610           a cache of gold coins to container alligator alligator's
 S
 
 
 #SHOPS
-9534 10 26 17 19 0 30 100 0 23			Scorpios the drug merchant
-9537 0 0 0 0 0 100 5000 0 23			sells the key to the galleria entrance
+9534 10 26 17 19 0 30 100 0 23          Scorpios the drug merchant
+9537 0 0 0 0 0 100 5000 0 23            sells the key to the galleria entrance
 0
 
 
 #SPECIALS
-M  9502 spec_thief			Greg
-M  9504 spec_fido			Steigen the kitten
-M  9508 spec_guard			A metal sculpture
-M  9511 spec_cast_undead			Herne
-M  9521 spec_cast_undead			Velkyn
-M  9522 spec_cast_psionicist			Xundus the psionic
-M  9526 spec_breath_any			the bouncer
-M  9533 spec_cast_undead			The nude sculpture
-M  9537 spec_cast_undead			the receptionist
-M  9538 spec_breath_fire			the demon steed
-M  9540 spec_cast_adept			Saul
-M  9548 spec_thief			the cloakroom attendant
-M  9549 spec_poison			The chef
-M  9550 spec_poison			a kitchenhand
-M  9552 spec_thief			the shadowthief
+M  9502 spec_thief              Greg
+M  9503 spec_cast_hooker        Saturnina
+M  9504 spec_fido               Steigen the kitten
+M  9508 spec_guard              A metal sculpture
+M  9510 spec_warrior            Grok
+M  9511 spec_cast_undead        Herne
+M  9521 spec_cast_undead        Velkyn
+M  9522 spec_cast_psionicist    Xundus the psionic
+M  9526 spec_breath_any         the bouncer
+M  9533 spec_cast_undead        The nude sculpture
+M  9537 spec_cast_undead        the receptionist
+M  9538 spec_breath_fire        the demon steed
+M  9540 spec_cast_adept         Saul
+M  9548 spec_thief              the cloakroom attendant
+M  9549 spec_poison             The chef
+M  9550 spec_poison             a kitchenhand
+M  9552 spec_thief              the shadowthief
 S
 
 

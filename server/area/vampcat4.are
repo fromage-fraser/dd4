@@ -1,4 +1,4 @@
-#AREA	Owl and Thorne~   The Vampyre Hive~
+#AREA   Owl and Thorne~   The Vampyre Hive~
 50 80 40 100
 
 
@@ -574,37 +574,37 @@ eye $n
 ~
 >death_prog 100~
 if rand(75)
-	mpecho With his dying breath the guard lunges for the alarm button against the wall.. and falls short.
+    mpecho With his dying breath the guard lunges for the alarm button against the wall.. and falls short.
 else
-	mpecho With his dying breath the guard lunges for the alarm button against the wall and slams his fist against it.
-	mpecho You hear running feet followed by the sound of a door being opened and shut.
-	mpgoto 25691
-	mpecho Suddenly the alarm bell rings!
-	mpecho Two men charge into the room...
-	mpasound You hear the sharp ring of an alarm bell!
-	mpmload 25638
-	mpforce officer mpoload 25632
-	mpforce officer mpoload 25633
-	mpforce officer mpoload 25654
-	mpforce officer mpoload 25655
-	mpforce officer mpoload 25656
-	mpforce officer wear all
-	mptrans officer 25665
-	mpmload 25638
-	mpforce officer mpoload 25632
-	mpforce officer mpoload 25633
-	mpforce officer mpoload 25654
-	mpforce officer mpoload 25655
-	mpforce officer mpoload 25656
-	mpforce officer wear all
-	mptrans officer 25665
-	mpecho As suddenly as they arrived the men go charging back out the door..
-	mpat 25671 mpecho Two armed men in black charge through the door to the west, ignoring you completely.
-	mpat 25670 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
-	mpat 25667 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
-	mpat 25663 mpecho Two armed men in black charge in through the door to the west then head south.
-	mpat 25665 mpecho Two armed men in black slip into the room and take cover in the shadows.
-	mpgoto 25666
+    mpecho With his dying breath the guard lunges for the alarm button against the wall and slams his fist against it.
+    mpecho You hear running feet followed by the sound of a door being opened and shut.
+    mpgoto 25691
+    mpecho Suddenly the alarm bell rings!
+    mpecho Two men charge into the room...
+    mpasound You hear the sharp ring of an alarm bell!
+    mpmload 25638
+    mpforce officer mpoload 25632
+    mpforce officer mpoload 25633
+    mpforce officer mpoload 25654
+    mpforce officer mpoload 25655
+    mpforce officer mpoload 25656
+    mpforce officer wear all
+    mptrans officer 25665
+    mpmload 25638
+    mpforce officer mpoload 25632
+    mpforce officer mpoload 25633
+    mpforce officer mpoload 25654
+    mpforce officer mpoload 25655
+    mpforce officer mpoload 25656
+    mpforce officer wear all
+    mptrans officer 25665
+    mpecho As suddenly as they arrived the men go charging back out the door..
+    mpat 25671 mpecho Two armed men in black charge through the door to the west, ignoring you completely.
+    mpat 25670 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
+    mpat 25667 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
+    mpat 25663 mpecho Two armed men in black charge in through the door to the west then head south.
+    mpat 25665 mpecho Two armed men in black slip into the room and take cover in the shadows.
+    mpgoto 25666
 endif
 ~
 |
@@ -628,37 +628,37 @@ grin $n
 ~
 >death_prog 100~
 if rand(75)
-	mpecho With his dying breath the guard lunges for the alarm button against the wall.. and falls short.
+    mpecho With his dying breath the guard lunges for the alarm button against the wall.. and falls short.
 else
-	mpecho With his dying breath the guard lunges for the alarm button against the wall and slams his fist against it.
-	mpecho You hear running feet followed by the sound of a door being opened and shut.
-	mpgoto 25691
-	mpecho Suddenly the alarm bell rings!
-	mpecho Two men charge into the room...
-	mpasound You hear the sharp ring of an alarm bell!
-	mpmload 25638
-	mpforce officer mpoload 25632
-	mpforce officer mpoload 25633
-	mpforce officer mpoload 25654
-	mpforce officer mpoload 25655
-	mpforce officer mpoload 25656
-	mpforce officer wear all
-	mptrans officer 25665
-	mpmload 25638
-	mpforce officer mpoload 25632
-	mpforce officer mpoload 25633
-	mpforce officer mpoload 25654
-	mpforce officer mpoload 25655
-	mpforce officer mpoload 25656
-	mpforce officer wear all
-	mptrans officer 25665
-	mpecho As suddenly as they arrived the men go charging back out the door..
-	mpat 25671 mpecho Two armed men in black charge through the door to the west, ignoring you completely.
-	mpat 25670 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
-	mpat 25667 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
-	mpat 25663 mpecho Two armed men in black charge in through the door to the west then head south.
-	mpat 25665 mpecho Two armed men in black slip into the room and take cover in the shadows.
-	mpgoto 25666
+    mpecho With his dying breath the guard lunges for the alarm button against the wall and slams his fist against it.
+    mpecho You hear running feet followed by the sound of a door being opened and shut.
+    mpgoto 25691
+    mpecho Suddenly the alarm bell rings!
+    mpecho Two men charge into the room...
+    mpasound You hear the sharp ring of an alarm bell!
+    mpmload 25638
+    mpforce officer mpoload 25632
+    mpforce officer mpoload 25633
+    mpforce officer mpoload 25654
+    mpforce officer mpoload 25655
+    mpforce officer mpoload 25656
+    mpforce officer wear all
+    mptrans officer 25665
+    mpmload 25638
+    mpforce officer mpoload 25632
+    mpforce officer mpoload 25633
+    mpforce officer mpoload 25654
+    mpforce officer mpoload 25655
+    mpforce officer mpoload 25656
+    mpforce officer wear all
+    mptrans officer 25665
+    mpecho As suddenly as they arrived the men go charging back out the door..
+    mpat 25671 mpecho Two armed men in black charge through the door to the west, ignoring you completely.
+    mpat 25670 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
+    mpat 25667 mpecho Two armed men in black charge through the door to the east, ignoring you completely.
+    mpat 25663 mpecho Two armed men in black charge in through the door to the west then head south.
+    mpat 25665 mpecho Two armed men in black slip into the room and take cover in the shadows.
+    mpgoto 25666
 endif
 ~
 |
@@ -677,11 +677,11 @@ and take a dim view of intruders.
 8 8 1
 >all_greet_prog 100~
 if rand(50)
-	yell INTRUDERS! PERISH!
-	mpkill $n
+    yell INTRUDERS! PERISH!
+    mpkill $n
 else
-	say Time to die, intruder.
-	mpkill $n
+    say Time to die, intruder.
+    mpkill $n
 endif
 ~
 |
@@ -888,9 +888,9 @@ n
 wake
 say errrgggh...
 if rand(50)
-		e
-	else
-		w
+        e
+    else
+        w
 endif
 ~
 >rand_prog 3~
@@ -903,14 +903,14 @@ w
 ~
 >greet_prog 35~
 if rand(50)
-		wake
-		em lunges at you and falls short, ending up face down in the sewage.
-		say urrRrrrr...
-		rest
-	else
-		wake
-		say food!... but.. no time.. must get back.. so injured..
-	endif
+        wake
+        em lunges at you and falls short, ending up face down in the sewage.
+        say urrRrrrr...
+        rest
+    else
+        wake
+        say food!... but.. no time.. must get back.. so injured..
+    endif
 ~
 |
 #25653
@@ -2243,7 +2243,7 @@ implied in places that he is responsible for decisions which affect the entire
 group, as well as the clans' diplomatic dealings with other vampire groups and
 organizations (some of whom seem to be among the most frequent contractors of
 the clan's services).
-	Flipping through the list of murder contracts taken out by vampires against
+    Flipping through the list of murder contracts taken out by vampires against
 members of rival clans you grin, realizing humans are not alone amongst the sentient
 creatures of this world in being their own worst enemies.~
 #25678
@@ -6790,7 +6790,7 @@ even with a light source you cannot see more than a few inches in front of
 your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 
-Your foot strikes something metallic.~
+{WYour foot strikes something metallic.{x~
 0 1|8 0
 D2
 ~
@@ -7079,110 +7079,110 @@ S
 
 
 #RESETS
-D 1 25603 3 2			; At the filter grill Lock West
-D 1 25604 1 2			; Western end of the sewer drain Lock East
+D 1 25603 3 2           ; At the filter grill Lock West
+D 1 25604 1 2           ; Western end of the sewer drain Lock East
 *
 *
-M 1 25600 1 25609			the shadowbeast to Junction in the sewer tunnels
+M 1 25600 1 25609           the shadowbeast to Junction in the sewer tunnels
 E 1 25600 100 16
 E 1 25601 100 3
-D 1 25612 5 1			; Tunnel in the sewers Close Down
-D 1 25609 4 1 			; shadowbeast room in sewers Close Up
-D 1 25651 3 2			; At the iron gate Lock West
+D 1 25612 5 1           ; Tunnel in the sewers Close Down
+D 1 25609 4 1           ; shadowbeast room in sewers Close Up
+D 1 25651 3 2           ; At the iron gate Lock West
 *
-M 1 25601 2 25622			a giant rat to Junction in the sewer tunnels
+M 1 25601 2 25622           a giant rat to Junction in the sewer tunnels
 E 1 25603 100 16
-O 1 25606 100 25661			a crack in the floor to In the Snake Pit
-P 1 25605 100 25606			a snake's egg to container crack
-P 1 25605 100 25606			a snake's egg to container crack
+O 1 25606 100 25661         a crack in the floor to In the Snake Pit
+P 1 25605 100 25606         a snake's egg to container crack
+P 1 25605 100 25606         a snake's egg to container crack
 *
-M 1 25601 2 25625			a giant rat to Bend in the sewer tunnel
-E 1 25603 100 16
-*
-M 1 25602 2 25620			a giant rat to Junction in the sewer tunnels
+M 1 25601 2 25625           a giant rat to Bend in the sewer tunnel
 E 1 25603 100 16
 *
-M 1 25602 2 25619			a giant rat to Tunnel in the Sewers
+M 1 25602 2 25620           a giant rat to Junction in the sewer tunnels
 E 1 25603 100 16
 *
-M 1 25603 2 25646			A giant vampire bat to Bend in the sewer tunnel
+M 1 25602 2 25619           a giant rat to Tunnel in the Sewers
+E 1 25603 100 16
+*
+M 1 25603 2 25646           A giant vampire bat to Bend in the sewer tunnel
 E 1 25604 100 16
 *
-M 1 25603 2 25638			A giant vampire bat to Junction in the sewer tunnels
+M 1 25603 2 25638           A giant vampire bat to Junction in the sewer tunnels
 E 1 25604 100 16
 *
-M 1 25604 2 25633			A giant vampire bat to Junction in the sewer tunnels
+M 1 25604 2 25633           A giant vampire bat to Junction in the sewer tunnels
 *
-M 1 25604 2 25635			A giant vampire bat to Tunnel in the Sewers
+M 1 25604 2 25635           A giant vampire bat to Tunnel in the Sewers
 E 1 25604 100 16
 *
-M 1 25605 4 25660			the giant water python to In the Snake Pit
+M 1 25605 4 25660           the giant water python to In the Snake Pit
 *
-M 1 25605 4 25659			the giant water python to In the Snake Pit
+M 1 25605 4 25659           the giant water python to In the Snake Pit
 *
-M 1 25605 4 25662			the giant water python to In the Snake Pit
+M 1 25605 4 25662           the giant water python to In the Snake Pit
 *
-M 1 25605 4 25661			the giant water python to In the Snake Pit
+M 1 25605 4 25661           the giant water python to In the Snake Pit
 *
-M 1 25606 1 25662			the giant water python to In the Snake Pit
+M 1 25606 1 25662           the giant water python to In the Snake Pit
 G 1 25605 100
 *
-M 1 25607 1 25651			to At the iron gate
-D 1 25663 3 1			; Reception room  Close West
-D 1 25677 3 1			; the Assassinmaster's quarters Close West
-D 1 25683 1 1			; Recruit quarters Close East
-D 1 25682 1 1			; Corridor in the barracks Close East
-D 1 25685 1 1			; Recruit quarters Close East
-D 1 25681 3 1			; Corridor in the barracks Close West
-D 1 25681 1 1			; Corridor in the barracks Close East
-D 1 25680 3 1			; Corridor in the barracks Close West
-D 1 25680 1 1			; Corridor in the barracks Close East
-D 1 25688 3 1			; Recruit quarters Close West
-D 1 25687 1 1			; Recruit quarters Close East
-D 1 25689 1 1			; Officer quarters Close East
-D 1 25679 3 1			; Corridor in the barracks Close West
-D 1 25690 3 1			; Officer quarters Close West
-D 1 25679 1 1			; Corridor in the barracks Close East
-D 1 25678 1 2			; Corridor in the barracks Lock East
-D 1 25678 3 1			; Corridor in the barracks Close West
-D 1 25691 1 1			; Entrance-guard quarters Close East
-D 1 25692 3 1			; Elder quarters Close West
-D 1 25699 1 1			; The briefing and co-ordination center Close East
-D 1 25693 3 1			; Corridor in the Hive Close West
-D 1 25704 0 1			; The briefing and co-ordination center Close North
-D 1 25696 2 1			; Corridor in the Hive Close South
+M 1 25607 1 25651           to At the iron gate
+D 1 25663 3 1           ; Reception room  Close West
+D 1 25677 3 1           ; the Assassinmaster's quarters Close West
+D 1 25683 1 1           ; Recruit quarters Close East
+D 1 25682 1 1           ; Corridor in the barracks Close East
+D 1 25685 1 1           ; Recruit quarters Close East
+D 1 25681 3 1           ; Corridor in the barracks Close West
+D 1 25681 1 1           ; Corridor in the barracks Close East
+D 1 25680 3 1           ; Corridor in the barracks Close West
+D 1 25680 1 1           ; Corridor in the barracks Close East
+D 1 25688 3 1           ; Recruit quarters Close West
+D 1 25687 1 1           ; Recruit quarters Close East
+D 1 25689 1 1           ; Officer quarters Close East
+D 1 25679 3 1           ; Corridor in the barracks Close West
+D 1 25690 3 1           ; Officer quarters Close West
+D 1 25679 1 1           ; Corridor in the barracks Close East
+D 1 25678 1 2           ; Corridor in the barracks Lock East
+D 1 25678 3 1           ; Corridor in the barracks Close West
+D 1 25691 1 1           ; Entrance-guard quarters Close East
+D 1 25692 3 1           ; Elder quarters Close West
+D 1 25699 1 1           ; The briefing and co-ordination center Close East
+D 1 25693 3 1           ; Corridor in the Hive Close West
+D 1 25704 0 1           ; The briefing and co-ordination center Close North
+D 1 25696 2 1           ; Corridor in the Hive Close South
 *
-M 1 25608 1 25702			the Spymaster to A room
+M 1 25608 1 25702           the Spymaster to A room
 E 1 25608 100 16
 E 1 25705 100 17
 E 1 25642 100 19
 G 1 25609 100
 G 1 25610 100
 *
-M 1 25609 1 25702			the spy recruit to A room
+M 1 25609 1 25702           the spy recruit to A room
 G 1 25609 100
-D 1 25697 0 2			; Corridor in the Hive Lock North
-D 1 25705 2 1			; Intelligence Center Close South
-D 1 25709 3 2			; Intelligence Center Lock West
-D 1 25709 1 2			; Intelligence Center Lock East
-D 1 25707 1 1			; Intelligence Center Close East
-D 1 25706 1 1			; Intelligence Center Close East
-D 1 25706 3 1			; Intelligence Center Close West
-D 1 25705 3 2			; Intelligence Center Lock West
-D 1 25705 1 2			; Intelligence Center Lock East
-D 1 25718 2 1			; A Secretary's Office Close South
-D 1 25709 0 1			; Intelligence Center Close North
-D 1 25719 2 1			; The Spymaster's office Close South
-D 1 25718 0 2			; A Secretary's Office Lock North
+D 1 25697 0 2           ; Corridor in the Hive Lock North
+D 1 25705 2 1           ; Intelligence Center Close South
+D 1 25709 3 2           ; Intelligence Center Lock West
+D 1 25709 1 2           ; Intelligence Center Lock East
+D 1 25707 1 1           ; Intelligence Center Close East
+D 1 25706 1 1           ; Intelligence Center Close East
+D 1 25706 3 1           ; Intelligence Center Close West
+D 1 25705 3 2           ; Intelligence Center Lock West
+D 1 25705 1 2           ; Intelligence Center Lock East
+D 1 25718 2 1           ; A Secretary's Office Close South
+D 1 25709 0 1           ; Intelligence Center Close North
+D 1 25719 2 1           ; The Spymaster's office Close South
+D 1 25718 0 2           ; A Secretary's Office Lock North
 *
-M 1 25610 1 25713			the spy elder to Krondor Elder's office
+M 1 25610 1 25713           the spy elder to Krondor Elder's office
 E 1 25612 100 5
 E 1 25613 100 6
 E 1 25611 100 16
 E 1 25614 100 18
 G 1 25609 100
 *
-M 1 25611 1 25713			the spy officer to Krondor Elder's office
+M 1 25611 1 25713           the spy officer to Krondor Elder's office
 E 1 25615 100 16
 E 1 25616 100 5
 E 1 25617 100 3
@@ -7190,99 +7190,99 @@ E 1 25618 100 15
 E 1 25619 100 12
 G 1 25609 100
 *
-M 1 25612 4 25715			the shadowbeast to Portal to Krondor
+M 1 25612 4 25715           the shadowbeast to Portal to Krondor
 E 1 25601 100 3
 E 1 25600 100 16
 *
-M 1 25612 4 25716			the shadowbeast to Portal to Kerofk
+M 1 25612 4 25716           the shadowbeast to Portal to Kerofk
 E 1 25601 100 3
 E 1 25600 100 16
 *
-M 1 25612 4 25710			the shadowbeast to Portal to Midgaard
+M 1 25612 4 25710           the shadowbeast to Portal to Midgaard
 E 1 25601 100 3
 E 1 25600 100 16
 *
-M 1 25612 4 25711			the shadowbeast to Portal to Anon
+M 1 25612 4 25711           the shadowbeast to Portal to Anon
 E 1 25601 100 3
 E 1 25600 100 16
 *
-M 1 25613 1 25714			the shifter to Kerofk Elder's Office
+M 1 25613 1 25714           the shifter to Kerofk Elder's Office
 G 1 25609 100
-D 1 25730 0 1			; Abattoir Close North
-D 1 25715 1 1			; Portal to Krondor Close East
-D 1 25716 3 1			; Portal to Kerofk Close West
-D 1 25713 1 1			; Krondorian Elder's office Close East
-D 1 25714 3 1			; Kerofkian Elder's Office Close West
-D 1 25712 3 1			; Anon Elder's Office Close West
-D 1 25710 1 1			; Portal to Midgaard Close East
-D 1 25711 3 1			; Portal to Anon Close West
-D 1 25741 3 1			; The Sanctuary Close West
-D 1 25739 1 1			; Corridor in the Hive Close East
-D 1 25740 0 2			; Corridor in the Hive Lock North
-D 1 25742 2 1			; Training Zone Close South
-D 1 25749 0 1			; Hallway in the barracks Close North
-D 1 25750 2 1			; Abattoir Close South
-D 1 25751 0 1			; Elder Quarters Close North
-D 1 25749 2 1			; Hallway in the barracks Close South
-D 1 25752 0 1			; Hallway in the barracks Close North
-D 1 25756 2 1			; Officer Quarters Close South
-D 1 25752 2 1			; Hallway in the barracks Close South
-D 1 25757 0 1			; Officer Quarters Close North
-D 1 25753 0 1			; Hallway in the barracks Close North
-D 1 25758 2 1			; Recruit Quarters Close South
-D 1 25753 2 1			; Hallway in the barracks Close South
-D 1 25759 0 1			; Recruit Quarters Close North
-D 1 25754 0 1			; Hallway in the barracks Close North
-D 1 25760 2 1			; Recruit Quarters Close South
-D 1 25754 2 1			; Hallway in the barracks Close South
-D 1 25761 0 1			; Recruit Quarters Close North
-D 1 25755 0 1			; Hallway in the barracks Close North
-D 1 25762 2 1			; Recruit Quarters Close South
-D 1 25755 2 1			; Hallway in the barracks Close South
-D 1 25763 0 1			; Recruit Quarters Close North
+D 1 25730 0 1           ; Abattoir Close North
+D 1 25715 1 1           ; Portal to Krondor Close East
+D 1 25716 3 1           ; Portal to Kerofk Close West
+D 1 25713 1 1           ; Krondorian Elder's office Close East
+D 1 25714 3 1           ; Kerofkian Elder's Office Close West
+D 1 25712 3 1           ; Anon Elder's Office Close West
+D 1 25710 1 1           ; Portal to Midgaard Close East
+D 1 25711 3 1           ; Portal to Anon Close West
+D 1 25741 3 1           ; The Sanctuary Close West
+D 1 25739 1 1           ; Corridor in the Hive Close East
+D 1 25740 0 2           ; Corridor in the Hive Lock North
+D 1 25742 2 1           ; Training Zone Close South
+D 1 25749 0 1           ; Hallway in the barracks Close North
+D 1 25750 2 1           ; Abattoir Close South
+D 1 25751 0 1           ; Elder Quarters Close North
+D 1 25749 2 1           ; Hallway in the barracks Close South
+D 1 25752 0 1           ; Hallway in the barracks Close North
+D 1 25756 2 1           ; Officer Quarters Close South
+D 1 25752 2 1           ; Hallway in the barracks Close South
+D 1 25757 0 1           ; Officer Quarters Close North
+D 1 25753 0 1           ; Hallway in the barracks Close North
+D 1 25758 2 1           ; Recruit Quarters Close South
+D 1 25753 2 1           ; Hallway in the barracks Close South
+D 1 25759 0 1           ; Recruit Quarters Close North
+D 1 25754 0 1           ; Hallway in the barracks Close North
+D 1 25760 2 1           ; Recruit Quarters Close South
+D 1 25754 2 1           ; Hallway in the barracks Close South
+D 1 25761 0 1           ; Recruit Quarters Close North
+D 1 25755 0 1           ; Hallway in the barracks Close North
+D 1 25762 2 1           ; Recruit Quarters Close South
+D 1 25755 2 1           ; Hallway in the barracks Close South
+D 1 25763 0 1           ; Recruit Quarters Close North
 *
-M 1 25614 1 25712			the spy elder to Anon Elder's Office
+M 1 25614 1 25712           the spy elder to Anon Elder's Office
 E 1 25620 100 6
 G 1 25609 100
 *
-M 1 25615 1 25729			the spy officer to Spy training area
+M 1 25615 1 25729           the spy officer to Spy training area
 E 1 25621 100 3
 E 1 25621 100 4
 *
-M 1 25616 1 25765			the spy officer to Spy training area
-D 1 25719 3 2			; The Spymaster's office Lock West
-D 1 25719 1 2			; The Spymaster's office Lock East
+M 1 25616 1 25765           the spy officer to Spy training area
+D 1 25719 3 2           ; The Spymaster's office Lock West
+D 1 25719 1 2           ; The Spymaster's office Lock East
 *
-M 1 25617 1 25772			the treasure guardian to The Spymaster's room of Treasures
+M 1 25617 1 25772           the treasure guardian to The Spymaster's room of Treasures
 E 1 25626 100 16
-O 1 25622 100 25772			the large pile of jewels to The Spymaster's room of Treasures
-O 1 25623 100 25772			a chest full of gold coins to The Spymaster's room of Treasures
-O 1 25624 100 25772			{rthe blood amulet{x to The Spymaster's room of Treasures
-O 1 25625 100 25772			{rthe scepter of Resurrection{x to The Spymaster's room of Treasures
+O 1 25622 100 25772         the large pile of jewels to The Spymaster's room of Treasures
+O 1 25623 100 25772         a chest full of gold coins to The Spymaster's room of Treasures
+O 1 25624 100 25772         {rthe blood amulet{x to The Spymaster's room of Treasures
+O 1 25625 100 25772         {rthe scepter of Resurrection{x to The Spymaster's room of Treasures
 *
-M 1 25618 1 25724			the spy officer to A room
+M 1 25618 1 25724           the spy officer to A room
 *
-M 1 25619 1 25738			the spy officer to Spy officer's quarters
+M 1 25619 1 25738           the spy officer to Spy officer's quarters
 E 1 25628 100 16
 *
-M 1 25620 1 25736			the spy officer to Spy officer's quarters
+M 1 25620 1 25736           the spy officer to Spy officer's quarters
 E 1 25627 100 16
 *
-M 1 25621 1 25723			the spy recruit to A room
-D 1 25723 3 1				; close West
-D 1 25722 3 1				; close West
-D 1 25721 3 1				; close West
-D 1 25720 3 1				; close West
-D 1 25722 1 1				; close East
-D 1 25721 1 1				; close East
-D 1 25720 1 1				; close East
-D 1 25678 0 1				; close North
-D 1 25816 0 1				; close North
+M 1 25621 1 25723           the spy recruit to A room
+D 1 25723 3 1               ; close West
+D 1 25722 3 1               ; close West
+D 1 25721 3 1               ; close West
+D 1 25720 3 1               ; close West
+D 1 25722 1 1               ; close East
+D 1 25721 1 1               ; close East
+D 1 25720 1 1               ; close East
+D 1 25678 0 1               ; close North
+D 1 25816 0 1               ; close North
 *
-M 1 25622 1 25741			the Sphere to The Sanctuary
-D 1 25747 0 2			; Training Zone Lock North
+M 1 25622 1 25741           the Sphere to The Sanctuary
+D 1 25747 0 2           ; Training Zone Lock North
 *
-M 1 25623 1 25748			the Thiefmaster to master thief
+M 1 25623 1 25748           the Thiefmaster to master thief
 E 1 25629 100 16
 E 1 25629 100 18
 E 1 25630 100 12
@@ -7294,198 +7294,198 @@ E 1 25695 100 17
 E 1 25643 100 19
 G 1 25610 100
 G 1 25609 100
-D 1 25698 2 2			; Corridor in the Hive Lock South
-D 1 25774 2 2			; Third room of passing Lock South
-D 1 25776 2 1			; The Overseer's Abattoir Close South
-D 1 25775 3 2			; Overseer's Office Lock West
-D 1 25778 3 2			; Dark corridor Lock West
-D 1 25775 1 2			; Overseer's Office Lock East
-D 1 25781 1 2			; Dark corridor Lock East
+D 1 25698 2 2           ; Corridor in the Hive Lock South
+D 1 25774 2 2           ; Third room of passing Lock South
+D 1 25776 2 1           ; The Overseer's Abattoir Close South
+D 1 25775 3 2           ; Overseer's Office Lock West
+D 1 25778 3 2           ; Dark corridor Lock West
+D 1 25775 1 2           ; Overseer's Office Lock East
+D 1 25781 1 2           ; Dark corridor Lock East
 *
-M 1 25624 1 25730			the spy recruit to The abattoir
+M 1 25624 1 25730           the spy recruit to The abattoir
 E 1 25634 100 16
 *
 *
 *
-M 1 25626 1 25732			the spy recruit to A room
-D 1 25698 3 2			; Corridor in the Hive Lock West
+M 1 25626 1 25732           the spy recruit to A room
+D 1 25698 3 2           ; Corridor in the Hive Lock West
 *
-M 1 25627 1 25735			the spy recruit to A room
+M 1 25627 1 25735           the spy recruit to A room
 *
 *
-M 1 25629 1 25728			the spy recruit to Spy training area
+M 1 25629 1 25728           the spy recruit to Spy training area
 *
-M 1 25630 1 25720			the spy recruit to Corridor in the spy barracks
+M 1 25630 1 25720           the spy recruit to Corridor in the spy barracks
 *
-M 1 25631 1 25733			the spy recruit to A room
+M 1 25631 1 25733           the spy recruit to A room
 G 1 25637 100
 *
-M 1 25632 1 25733			the spy recruit to A room
+M 1 25632 1 25733           the spy recruit to A room
 E 1 25638 100 0
 E 1 25639 100 3
 *
-M 1 25633 1 25737			the spy recruit to A room
+M 1 25633 1 25737           the spy recruit to A room
 E 1 25641 100 5
 E 1 25640 100 16
-D 1 25730 2 1			; Abattoir Close South
-D 1 25725 0 1			; Corridor in the barracks Close North
-D 1 25725 2 1			; Corridor in the barracks Close South
-D 1 25726 0 1			; Training area Close North
+D 1 25730 2 1           ; Abattoir Close South
+D 1 25725 0 1           ; Corridor in the barracks Close North
+D 1 25725 2 1           ; Corridor in the barracks Close South
+D 1 25726 0 1           ; Training area Close North
 *
-M 1 25628 1 25727			the spy recruit to Spy training area
+M 1 25628 1 25727           the spy recruit to Spy training area
 E 1 25636 100 16
 *
-M 1 25625 1 25764			the spy recruit to Spy training area
+M 1 25625 1 25764           the spy recruit to Spy training area
 E 1 25635 100 3
-D 1 25773 2 2			; Second room of passing Lock South
+D 1 25773 2 2           ; Second room of passing Lock South
 *
-M 1 25634 1 25629			the Bogmonster to Swimming in raw sewage
+M 1 25634 1 25629           the Bogmonster to Swimming in raw sewage
 *
-M 1 25635 1 25642			the Bogmonster to Swimming in raw sewage
-O 1 25647 100 25666			a wooden desk to In the Guardroom
-P 1 25648 100 25647			a pile of small change to container desk wooden
-P 1 25649 100 25647			a pile of small change to container desk wooden
-O 1 25651 100 25652			a plain wooden chair to Reception room
-O 1 25651 100 25663			a plain wooden chair to Reception room
-O 1 25651 100 25663			a plain wooden chair to Reception room
-O 1 25651 100 25652			a plain wooden chair to Reception room
-O 1 25651 100 25666			a plain wooden chair to In the Guardroom
-O 1 25651 100 25666			a plain wooden chair to In the Guardroom
+M 1 25635 1 25642           the Bogmonster to Swimming in raw sewage
+O 1 25647 100 25666         a wooden desk to In the Guardroom
+P 1 25648 100 25647         a pile of small change to container desk wooden
+P 1 25649 100 25647         a pile of small change to container desk wooden
+O 1 25651 100 25652         a plain wooden chair to Reception room
+O 1 25651 100 25663         a plain wooden chair to Reception room
+O 1 25651 100 25663         a plain wooden chair to Reception room
+O 1 25651 100 25652         a plain wooden chair to Reception room
+O 1 25651 100 25666         a plain wooden chair to In the Guardroom
+O 1 25651 100 25666         a plain wooden chair to In the Guardroom
 *
-M 1 25636 1 25666			the Hive guard to In the Guardroom
+M 1 25636 1 25666           the Hive guard to In the Guardroom
 E 1 25652 100 16
 E 1 25653 100 5
 *
-M 1 25637 1 25666			the Hive guard to In the Guardroom
+M 1 25637 1 25666           the Hive guard to In the Guardroom
 E 1 25652 100 16
 E 1 25653 100 5
-D 1 25670 1 2			; Corridor in the Hive Lock East
-D 1 25673 1 2			; Training area Lock East
+D 1 25670 1 2           ; Corridor in the Hive Lock East
+D 1 25673 1 2           ; Training area Lock East
 *
-D 1 25739 1 2			; Room outside the Sanctuary Lock East
+D 1 25739 1 2           ; Room outside the Sanctuary Lock East
 *
-M 1 25639 1 25674			the assassin officer to Training area
+M 1 25639 1 25674           the assassin officer to Training area
 E 1 25656 100 5
 E 1 25633 100 8
 G 1 25660 100
 *
-M 1 25640 1 25672			the assassin officer to Training area
+M 1 25640 1 25672           the assassin officer to Training area
 E 1 25656 100 5
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25654 100 16
 G 1 25660 100
 *
-M 1 25641 2 25676			the assassin recruit to Training area
+M 1 25641 2 25676           the assassin recruit to Training area
 E 1 25656 100 5
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25658 100 6
 E 1 25657 100 16
 *
-M 1 25641 2 25676			the assassin recruit to Training area
+M 1 25641 2 25676           the assassin recruit to Training area
 E 1 25656 100 5
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25658 100 6
 E 1 25657 100 16
 *
-M 1 25642 1 25675			the assassin recruit to Training area
+M 1 25642 1 25675           the assassin recruit to Training area
 E 1 25656 100 5
 E 1 25632 100 7
 E 1 25658 100 6
 E 1 25659 100 17
 *
-M 1 25643 1 25671			the assassin recruit to Training area
+M 1 25643 1 25671           the assassin recruit to Training area
 E 1 25656 100 5
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25655 100 16
 *
-M 1 25644 4 25673			the assassin recruit to Training area
+M 1 25644 4 25673           the assassin recruit to Training area
 E 1 25656 100 5
 E 1 25658 100 6
 E 1 25632 100 7
 *
-M 1 25644 4 25679			the assassin recruit to Corridor in the barracks
+M 1 25644 4 25679           the assassin recruit to Corridor in the barracks
 E 1 25656 100 5
 E 1 25658 100 6
 E 1 25633 100 8
 *
-M 1 25644 4 25681			the assassin recruit to Corridor in the barracks
+M 1 25644 4 25681           the assassin recruit to Corridor in the barracks
 E 1 25658 100 6
 E 1 25632 100 7
 *
-M 1 25644 4 25685			the assassin recruit to A room
+M 1 25644 4 25685           the assassin recruit to A room
 E 1 25656 100 5
 E 1 25658 100 6
 E 1 25655 100 16
 *
-M 1 25645 4 25685			the assassin recruit to Recruit quarters in the barracks
+M 1 25645 4 25685           the assassin recruit to Recruit quarters in the barracks
 E 1 25656 100 5
 E 1 25658 100 6
 E 1 25632 100 7
 *
-M 1 25645 4 25686			the assassin recruit to Recruit quarters in the barracks
+M 1 25645 4 25686           the assassin recruit to Recruit quarters in the barracks
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25633 100 8
 *
-M 1 25645 4 25683			the assassin recruit to A room
+M 1 25645 4 25683           the assassin recruit to A room
 E 1 25656 100 5
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25654 100 16
-D 1 25684 3 1			; Recruit quarters Close West
-D 1 25682 3 1			; Corridor in the barracks Close West
+D 1 25684 3 1           ; Recruit quarters Close West
+D 1 25682 3 1           ; Corridor in the barracks Close West
 *
-M 1 25645 4 25684			the assassin recruit to Recruit quarters in the barracks
+M 1 25645 4 25684           the assassin recruit to Recruit quarters in the barracks
 E 1 25658 100 6
 E 1 25655 100 16
 *
-M 1 25646 1 25689			the assassin officer to Officer quarters
+M 1 25646 1 25689           the assassin officer to Officer quarters
 E 1 25656 100 5
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25654 100 16
 G 1 25660 100
 *
-M 1 25647 1 25690			the assassin officer to Officer quarters
+M 1 25647 1 25690           the assassin officer to Officer quarters
 E 1 25656 100 5
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25655 100 16
 G 1 25660 100
-O 1 25661 100 25788			a golden coffin to Elder quarters
-P 1 25664 100 25661			a bitter black pill to container golden coffin
-O 1 25662 100 25788			a golden coffin to Elder quarters
-P 1 25610 100 25662			a translucent key to container golden coffin
-O 1 25665 100 25788			a golden coffin to Elder quarters
-P 1 25663 100 25665			a leather bag to container golden coffin
+O 1 25661 100 25788         a golden coffin to Elder quarters
+P 1 25664 100 25661         a bitter black pill to container golden coffin
+O 1 25662 100 25788         a golden coffin to Elder quarters
+P 1 25610 100 25662         a translucent key to container golden coffin
+O 1 25665 100 25788         a golden coffin to Elder quarters
+P 1 25663 100 25665         a leather bag to container golden coffin
 *
-M 1 25648 1 25787			the assassin elder to Elder quarters
+M 1 25648 1 25787           the assassin elder to Elder quarters
 E 1 25632 100 7
 E 1 25633 100 8
 E 1 25666 100 5
 E 1 25658 100 6
 E 1 25667 100 16
 *
-M 1 25649 1 25789			the assassin elder to Elder quarters
+M 1 25649 1 25789           the assassin elder to Elder quarters
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25668 100 16
 *
-M 1 25650 1 25701			the assassin elder to The briefing and co-ordination center
+M 1 25650 1 25701           the assassin elder to The briefing and co-ordination center
 E 1 25666 100 5
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25633 100 8
-O 1 25651 100 25677			a plain wooden chair to the Master Assassin's Quarters
-O 1 25651 100 25677			a plain wooden chair to the Master Assassin's Quarters
-O 1 25669 100 25677			a platinum coffin to the Assassinmaster's quarters
+O 1 25651 100 25677         a plain wooden chair to the Master Assassin's Quarters
+O 1 25651 100 25677         a plain wooden chair to the Master Assassin's Quarters
+O 1 25669 100 25677         a platinum coffin to the Assassinmaster's quarters
 *
-M 1 25651 1 25677			the Assassinmaster to the Assassinmaster's quarters
+M 1 25651 1 25677           the Assassinmaster to the Assassinmaster's quarters
 E 1 25670 100 16
 E 1 25654 100 18
 E 1 25671 100 5
@@ -7497,118 +7497,118 @@ E 1 25675 100 1
 E 1 25644 100 19
 G 1 25610 100
 G 1 25609 100
-P 1 25674 100 25669			a small chest to container platinum coffin
-O 1 25651 100 25704			a plain wooden chair to The briefing and co-ordination center
-O 1 25651 100 25699			a plain wooden chair to The briefing and co-ordination center
-O 1 25651 100 25699			a plain wooden chair to The briefing and co-ordination center
-O 1 25651 100 25703			a plain wooden chair to The briefing and co-ordination center
-O 1 25651 100 25703			a plain wooden chair to The briefing and co-ordination center
-O 1 25651 100 25700			a plain wooden chair to The briefing and co-ordination center
-O 1 25676 100 25702			a lectern to The briefing and co-ordination center
-P 1 25677 100 25676			a pile of papers to container lectern
-D 1 25804 5 1			; A dark tunnel Close Down
-D 1 25809 5 1			; A narrow alleyway Close Down
+P 1 25674 100 25669         a small chest to container platinum coffin
+O 1 25651 100 25704         a plain wooden chair to The briefing and co-ordination center
+O 1 25651 100 25699         a plain wooden chair to The briefing and co-ordination center
+O 1 25651 100 25699         a plain wooden chair to The briefing and co-ordination center
+O 1 25651 100 25703         a plain wooden chair to The briefing and co-ordination center
+O 1 25651 100 25703         a plain wooden chair to The briefing and co-ordination center
+O 1 25651 100 25700         a plain wooden chair to The briefing and co-ordination center
+O 1 25676 100 25702         a lectern to The briefing and co-ordination center
+P 1 25677 100 25676         a pile of papers to container lectern
+D 1 25804 5 1           ; A dark tunnel Close Down
+D 1 25809 5 1           ; A narrow alleyway Close Down
 *
-M 1 25652 1 25641			the assassin recruit to Tunnel in the Sewers
+M 1 25652 1 25641           the assassin recruit to Tunnel in the Sewers
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25714 100 17
 G 1 25602 100
 *
-M 1 25653 2 25742			the thief recruit to Training Zone
+M 1 25653 2 25742           the thief recruit to Training Zone
 E 1 25658 100 6
 E 1 25678 100 5
 G 1 25679 100
 *
-M 1 25653 2 25746			the thief recruit to Training Zone
+M 1 25653 2 25746           the thief recruit to Training Zone
 E 1 25658 100 6
 E 1 25678 100 5
 *
-M 1 25654 2 25745			the thief recruit to Training Zone
-E 1 25658 100 6
-E 1 25678 100 5
-G 1 25679 100
-*
-M 1 25654 2 25747			the thief recruit to Training Zone
+M 1 25654 2 25745           the thief recruit to Training Zone
 E 1 25658 100 6
 E 1 25678 100 5
 G 1 25679 100
 *
-M 1 25655 2 25744			the thief recruit to Training Zone
+M 1 25654 2 25747           the thief recruit to Training Zone
+E 1 25658 100 6
+E 1 25678 100 5
+G 1 25679 100
+*
+M 1 25655 2 25744           the thief recruit to Training Zone
 E 1 25658 100 6
 E 1 25678 100 5
 *
-M 1 25655 2 25743			the thief recruit to Training Zone
+M 1 25655 2 25743           the thief recruit to Training Zone
 E 1 25658 100 6
 E 1 25678 100 5
 *
-M 1 25657 2 25762			the thief recruit to Recruit Quarters
+M 1 25657 2 25762           the thief recruit to Recruit Quarters
 E 1 25678 100 5
 E 1 25658 100 6
 *
-M 1 25657 2 25761			the thief recruit to Recruit Quarters
+M 1 25657 2 25761           the thief recruit to Recruit Quarters
 E 1 25678 100 5
 E 1 25658 100 6
 G 1 25680 100
 *
-M 1 25658 2 25763			the thief recruit to Recruit Quarters
+M 1 25658 2 25763           the thief recruit to Recruit Quarters
 E 1 25678 100 5
 E 1 25654 100 16
 G 1 25680 100
 *
-M 1 25658 2 25760			the thief recruit to Recruit Quarters
+M 1 25658 2 25760           the thief recruit to Recruit Quarters
 E 1 25678 100 5
 E 1 25658 100 6
 G 1 25679 100
 *
-M 1 25656 2 25758			the thief recruit to Recruit Quarters
+M 1 25656 2 25758           the thief recruit to Recruit Quarters
 E 1 25678 100 5
 E 1 25658 100 6
 G 1 25680 100
 *
-M 1 25656 2 25759			the thief recruit to Recruit Quarters
+M 1 25656 2 25759           the thief recruit to Recruit Quarters
 E 1 25658 100 6
 E 1 25632 100 7
 E 1 25678 100 5
 G 1 25680 100
 *
-M 1 25659 1 25743			the thief officer to Training Zone
+M 1 25659 1 25743           the thief officer to Training Zone
 E 1 25678 100 5
 E 1 25658 100 6
 E 1 25681 100 16
 G 1 25680 100
 *
-M 1 25660 1 25745			the thief officer to Training Zone
+M 1 25660 1 25745           the thief officer to Training Zone
 E 1 25678 100 5
 E 1 25658 100 6
 E 1 25633 100 8
 E 1 25681 100 16
 G 1 25682 100
-O 1 25683 100 25750			a 40 gallon drum to Abattoir
+O 1 25683 100 25750         a 40 gallon drum to Abattoir
 *
-M 1 25662 1 25750			the disemboweled dwarf to Abattoir
+M 1 25662 1 25750           the disemboweled dwarf to Abattoir
 *
-M 1 25661 1 25757			the thief officer to Officer Quarters
+M 1 25661 1 25757           the thief officer to Officer Quarters
 E 1 25654 100 16
 *
-M 1 25663 1 25756			the thief officer to Officer Quarters
+M 1 25663 1 25756           the thief officer to Officer Quarters
 E 1 25658 100 6
 G 1 25681 100
 *
-M 1 25664 1 25755			the thief officer to Hallway in the barracks
+M 1 25664 1 25755           the thief officer to Hallway in the barracks
 E 1 25678 100 5
 E 1 25658 100 6
 E 1 25633 100 8
 *
-M 1 25665 1 25752			the thief officer to Hallway in the barracks
+M 1 25665 1 25752           the thief officer to Hallway in the barracks
 E 1 25633 100 8
 E 1 25654 100 16
 G 1 25682 100
-O 1 25684 100 25814			a golden coffin to Elder Quarters
-O 1 25685 100 25814			a golden coffin to Elder Quarters
-O 1 25686 100 25814			a golden coffin to Elder Quarters
+O 1 25684 100 25814         a golden coffin to Elder Quarters
+O 1 25685 100 25814         a golden coffin to Elder Quarters
+O 1 25686 100 25814         a golden coffin to Elder Quarters
 *
-M 1 25666 1 25812			the thief elder to Elder Quarters
+M 1 25666 1 25812           the thief elder to Elder Quarters
 E 1 25687 100 5
 E 1 25632 100 7
 E 1 25688 100 8
@@ -7616,7 +7616,7 @@ E 1 25689 100 16
 E 1 25690 100 6
 G 1 25679 100
 *
-M 1 25667 1 25813			the thief elder to Elder Quarters
+M 1 25667 1 25813           the thief elder to Elder Quarters
 E 1 25687 100 5
 E 1 25690 100 6
 E 1 25632 100 7
@@ -7625,83 +7625,83 @@ E 1 25654 100 16
 E 1 25691 100 9
 G 1 25680 100
 *
-M 1 25668 1 25814			the thief elder to Elder Quarters
+M 1 25668 1 25814           the thief elder to Elder Quarters
 E 1 25654 100 16
-D 1 25815 2 1			; In the chiller Close South
-D 1 25750 0 2			; Abattoir Lock North
-P 1 25692 100 25684			a small handcrank to container golden coffin long
-P 1 25679 100 25686			an assortment of gold and valuables to container golden coffin long
+D 1 25815 2 1           ; In the chiller Close South
+D 1 25750 0 2           ; Abattoir Lock North
+P 1 25692 100 25684         a small handcrank to container golden coffin long
+P 1 25679 100 25686         an assortment of gold and valuables to container golden coffin long
 *
-M 1 25669 1 25815			the thief recruit to In the chiller
+M 1 25669 1 25815           the thief recruit to In the chiller
 E 1 25654 100 16
 E 1 25694 100 17
 G 1 25693 100
-P 1 25610 100 25685			a translucent key to container golden coffin long
-O 1 25647 100 25748			a wooden desk to Office of the Thiefmaster
-O 1 25651 100 25748			a plain wooden chair to Office of the Thiefmaster
-O 1 25651 100 25748			a plain wooden chair to Office of the Thiefmaster
-O 1 25696 100 25748			a platinum coffin to Office of the Thiefmaster
-P 1 25697 100 25696			a small chest to container platinum coffin
-O 1 25651 100 25713			a plain wooden chair to Krondorian Elder's office
-O 1 25651 100 25713			a plain wooden chair to Krondorian Elder's office
-O 1 25647 100 25713			a wooden desk to Krondorian Elder's office
-O 1 25647 100 25714			a wooden desk to Kerofkian Elder's Office
-O 1 25651 100 25714			a plain wooden chair to Kerofkian Elder's Office
-O 1 25651 100 25714			a plain wooden chair to Kerofkian Elder's Office
-O 1 25647 100 25712			a wooden desk to Anon Elder's Office
-O 1 25651 100 25712			a plain wooden chair to Anon Elder's Office
-O 1 25651 100 25712			a plain wooden chair to Anon Elder's Office
-O 1 25651 100 25718			a plain wooden chair to A Secretary's Office
-O 1 25651 100 25718			a plain wooden chair to A Secretary's Office
+P 1 25610 100 25685         a translucent key to container golden coffin long
+O 1 25647 100 25748         a wooden desk to Office of the Thiefmaster
+O 1 25651 100 25748         a plain wooden chair to Office of the Thiefmaster
+O 1 25651 100 25748         a plain wooden chair to Office of the Thiefmaster
+O 1 25696 100 25748         a platinum coffin to Office of the Thiefmaster
+P 1 25697 100 25696         a small chest to container platinum coffin
+O 1 25651 100 25713         a plain wooden chair to Krondorian Elder's office
+O 1 25651 100 25713         a plain wooden chair to Krondorian Elder's office
+O 1 25647 100 25713         a wooden desk to Krondorian Elder's office
+O 1 25647 100 25714         a wooden desk to Kerofkian Elder's Office
+O 1 25651 100 25714         a plain wooden chair to Kerofkian Elder's Office
+O 1 25651 100 25714         a plain wooden chair to Kerofkian Elder's Office
+O 1 25647 100 25712         a wooden desk to Anon Elder's Office
+O 1 25651 100 25712         a plain wooden chair to Anon Elder's Office
+O 1 25651 100 25712         a plain wooden chair to Anon Elder's Office
+O 1 25651 100 25718         a plain wooden chair to A Secretary's Office
+O 1 25651 100 25718         a plain wooden chair to A Secretary's Office
 *
-M 1 25670 1 25718			the Spymaster's secretary to A Secretary's Office
+M 1 25670 1 25718           the Spymaster's secretary to A Secretary's Office
 E 1 25698 100 5
 E 1 25699 100 8
 E 1 25700 100 13
 G 1 25609 100
 G 1 25680 100
-O 1 25701 100 25718			a large wooden desk to A Secretary's Office
-P 1 25702 100 25701			a cask of red wine to container large wooden desk
-O 1 25703 100 25719			a steel-framed chair to The Spymaster's office
-O 1 25703 100 25719			a steel-framed chair to The Spymaster's office
-O 1 25704 100 25719			a large cast-iron desk to The Spymaster's office
-O 1 25683 100 25816			a 40 gallon drum to The Abattoir
+O 1 25701 100 25718         a large wooden desk to A Secretary's Office
+P 1 25702 100 25701         a cask of red wine to container large wooden desk
+O 1 25703 100 25719         a steel-framed chair to The Spymaster's office
+O 1 25703 100 25719         a steel-framed chair to The Spymaster's office
+O 1 25704 100 25719         a large cast-iron desk to The Spymaster's office
+O 1 25683 100 25816         a 40 gallon drum to The Abattoir
 *
-M 1 25671 1 25817			the mob to In the chiller
+M 1 25671 1 25817           the mob to In the chiller
 G 1 25646 100
-O 1 25707 100 25731			corpse of a dryad to Inside the chiller
-P 1 25706 100 25704			a large cast-iron key to container large cast-iron desk
-O 1 25703 100 25728			a steel-framed chair to Training area
-O 1 25703 100 25765			a steel-framed chair to Training area
-O 1 25651 100 25765			a plain wooden chair to Training area
-O 1 25651 100 25764			a plain wooden chair to Training area
-O 1 25651 100 25726			a plain wooden chair to Training area
-O 1 25651 100 25726			a plain wooden chair to Training area
-O 1 25683 100 25776			a 40 gallon drum to The Overseer's Abattoir
-O 1 25683 100 25776			a 40 gallon drum to The Overseer's Abattoir
+O 1 25707 100 25731         corpse of a dryad to Inside the chiller
+P 1 25706 100 25704         a large cast-iron key to container large cast-iron desk
+O 1 25703 100 25728         a steel-framed chair to Training area
+O 1 25703 100 25765         a steel-framed chair to Training area
+O 1 25651 100 25765         a plain wooden chair to Training area
+O 1 25651 100 25764         a plain wooden chair to Training area
+O 1 25651 100 25726         a plain wooden chair to Training area
+O 1 25651 100 25726         a plain wooden chair to Training area
+O 1 25683 100 25776         a 40 gallon drum to The Overseer's Abattoir
+O 1 25683 100 25776         a 40 gallon drum to The Overseer's Abattoir
 *
-M 1 25672 1 25776			the female elf to The Overseer's Abattoir
+M 1 25672 1 25776           the female elf to The Overseer's Abattoir
 E 1 25708 100 5
 *
-M 1 25673 2 25779			the shadowbeast to Dark corridor
+M 1 25673 2 25779           the shadowbeast to Dark corridor
 E 1 25601 100 3
 E 1 25600 100 16
 E 1 25600 100 18
 *
-M 1 25673 2 25781			the shadowbeast to Dark corridor
+M 1 25673 2 25781           the shadowbeast to Dark corridor
 E 1 25601 100 3
 E 1 25600 100 16
 E 1 25600 100 18
-O 1 25709 100 25775			a solid gold desk to Overseer's Office
-P 1 25710 100 25709			a small golden key to container solid gold desk
+O 1 25709 100 25775         a solid gold desk to Overseer's Office
+P 1 25710 100 25709         a small golden key to container solid gold desk
 *
-M 1 25676 1 25669				male thrall to corridor
+M 1 25676 1 25669               male thrall to corridor
 E 1 25723 100 5
 *
-M 1 25677 1 25698				female thrall to corridor
+M 1 25677 1 25698               female thrall to corridor
 E 1 25723 100 5
 *
-M 1 25674 1 25784			the Overseer to Overseer's Living Quarters
+M 1 25674 1 25784           the Overseer to Overseer's Living Quarters
 E 1 25712 100 1
 E 1 25713 100 11
 E 1 25715 100 16
@@ -7711,8 +7711,8 @@ E 1 25632 100 7
 E 1 25711 100 19
 G 1 25716 100
 G 1 25719 100
-O 1 25718 100 25783			a crystal coffin to Overseer's Living Quarters
-P 1 25720 100 25718			a pile of gold and gems to container casket coffin crystal
+O 1 25718 100 25783         a crystal coffin to Overseer's Living Quarters
+P 1 25720 100 25718         a pile of gold and gems to container casket coffin crystal
 *
 O 1 25721 100 25771
 O 1 25722 100 25772
@@ -7720,40 +7720,40 @@ S
 
 
 #SHOPS
-25631 2 0 0 0 0 0 100 0 23			(mobile is from another zone)
+25631 2 0 0 0 0 0 100 0 23          (mobile is from another zone)
 0
 
 
 #SPECIALS
-M  25609 spec_fido			the spy recruit
-M  25611 spec_guard			the spy officer
-M  25613 spec_cast_undead		the shifter
-M  25615 spec_poison			the spy officer
-M  25621 spec_janitor			the spy recruit
-M  25622 spec_cast_orb			the Sphere
-M  25623 spec_thief			the Thiefmaster
-M  25634 spec_poison			the Bogmonster
-M  25635 spec_breath_gas		the Bogmonster
-M  25639 spec_kungfu_poison		the assassin officer
-M  25651 spec_assassin			the Assassinmaster
-M  25653 spec_thief			the thief recruit
-M  25654 spec_thief			the thief recruit
-M  25655 spec_thief			the thief recruit
-M  25656 spec_thief			the thief recruit
-M  25657 spec_thief			the thief recruit
-M  25658 spec_thief			the thief recruit
-M  25659 spec_thief			the thief officer
-M  25660 spec_thief			the thief officer
-M  25661 spec_thief			the thief officer
-M  25663 spec_thief			the thief officer
-M  25664 spec_thief			the thief officer
-M  25665 spec_thief			the thief officer
-M  25666 spec_thief			the thief elder
-M  25667 spec_thief			the thief elder
-M  25669 spec_poison			the thief officer
-M  25670 spec_cast_undead		the Spymaster's secretary
-M  25672 spec_cast_priestess		the female elf
-M  25674 spec_mast_vampire		the Overseer
+M  25609 spec_fido              the spy recruit
+M  25611 spec_guard             the spy officer
+M  25613 spec_cast_undead       the shifter
+M  25615 spec_poison            the spy officer
+M  25621 spec_janitor           the spy recruit
+M  25622 spec_cast_orb          the Sphere
+M  25623 spec_thief             the Thiefmaster
+M  25634 spec_poison            the Bogmonster
+M  25635 spec_breath_gas        the Bogmonster
+M  25639 spec_kungfu_poison     the assassin officer
+M  25651 spec_assassin          the Assassinmaster
+M  25653 spec_thief             the thief recruit
+M  25654 spec_thief             the thief recruit
+M  25655 spec_thief             the thief recruit
+M  25656 spec_thief             the thief recruit
+M  25657 spec_thief             the thief recruit
+M  25658 spec_thief             the thief recruit
+M  25659 spec_thief             the thief officer
+M  25660 spec_thief             the thief officer
+M  25661 spec_thief             the thief officer
+M  25663 spec_thief             the thief officer
+M  25664 spec_thief             the thief officer
+M  25665 spec_thief             the thief officer
+M  25666 spec_thief             the thief elder
+M  25667 spec_thief             the thief elder
+M  25669 spec_poison            the thief officer
+M  25670 spec_cast_undead       the Spymaster's secretary
+M  25672 spec_cast_priestess    the female elf
+M  25674 spec_mast_vampire      the Overseer
 
 S
 

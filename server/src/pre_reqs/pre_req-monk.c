@@ -2,13 +2,13 @@
 
 /* **** STARTING SKILLS **** */
 
-{&gsn_thought_shield,           &gsn_monk_base, 30,     PRE_MONK},
-{&gsn_ballistic_attack,         &gsn_monk_base, 30,     PRE_MONK},
-{&gsn_mind_thrust,              &gsn_monk_base, 30,     PRE_MONK},
-{&gsn_levitation,               &gsn_monk_base, 30,     PRE_MONK},
+{&gsn_thought_shield,           &gsn_monk_base,         30,     PRE_MONK},
+{&gsn_ballistic_attack,         &gsn_monk_base,         30,     PRE_MONK},
+{&gsn_mind_thrust,              &gsn_monk_base,         30,     PRE_MONK},
+{&gsn_levitation,               &gsn_monk_base,         30,     PRE_MONK},
 
-{&gsn_group_mana,               &gsn_monk_base, 30,     PRE_MONK},
-{&gsn_group_summoning,          &gsn_monk_base, 30,     PRE_MONK},
+{&gsn_group_mana,               &gsn_monk_base,         30,     PRE_MONK},
+{&gsn_group_summoning,          &gsn_monk_base,         30,     PRE_MONK},
 
 /* **** GROUPS **** */
 {&gsn_group_mentald,            &gsn_thought_shield,    45,     PRE_MONK},
@@ -51,7 +51,7 @@
 
 /* **** DIVINATION **** */
 
-{&gsn_group_divination,         &gsn_monk_base, 45,     PRE_MONK},
+{&gsn_group_divination,         &gsn_monk_base,         45,     PRE_MONK},
 
 /* **** ENERGY CONTROL **** */
 

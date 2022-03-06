@@ -64,7 +64,7 @@ int chan( int channel )
             case CHANNEL_YELL           : c = COLOR_SHOUT;      break;
             case CHANNEL_SERVER         : c = COLOR_SERVER;     break;
             case CHANNEL_ARENA          : c = COLOR_ARENA;      break;
-            case CHANNEL_NEWBIE         : c = COLOR_SAY;        break;
+            case CHANNEL_NEWBIE         : c = COLOR_NEWBIE;     break;
 
             default                     : bug ( "Chan: invalid code %d", channel );
                 c = 0;  break;
@@ -1209,9 +1209,9 @@ void do_follow( CHAR_DATA *ch, char *argument )
         /* Immortals can follow and be followed by whomsoever. -Owl 2/2/08 */
 
         if ( ( ch->level - victim->level < -11 || ch->level - victim->level >  11 )
-                && (!(ch->level > LEVEL_HERO)) && (!(victim->level > LEVEL_HERO)))
+         && (!(ch->level > LEVEL_HERO)) && (!(victim->level > LEVEL_HERO)))
         {
-                send_to_char( "You are not of the right caliber to follow.\n\r", ch );
+                send_to_char( "You are not of the right calibre to follow.\n\r", ch );
                 return;
         }
 

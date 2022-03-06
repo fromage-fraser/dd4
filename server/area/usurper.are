@@ -1,4 +1,4 @@
-#AREA	Hestia~ Prince's Fortress~
+#AREA   Hestia~ Prince's Fortress~
 20 40 15 100
 
 #MOBILES
@@ -229,14 +229,14 @@ worship $n
 say oh thankyou, I am eternally grateful!  I lost my favourite treasure, a brass globe, behind the stables.  If you find it you can keep it.
 ~
 >give_prog potpie pot pie~
-	if number ($o) == 3009
+    if number ($o) == 3009
             worship $n
-	    say Thanks!
+        say Thanks!
             eat pie
  else
-  	mpecho The fletcher examines the pie closely
+    mpecho The fletcher examines the pie closely
          say get out of here with your counterfeit pie!
-	drop pie
+    drop pie
 endif
 ~
 |
@@ -3702,64 +3702,64 @@ S
 
 
 #RESETS
-D 1 29801 3 1			; A guardhouse Close West
-D 1 29822 1 1			; A guardhouse Close East
-D 1 29824 3 1			; Before the barracks Close West
-D 1 29827 2 1			; Inside the barracks Close South
-D 1 29833 2 1			; Before the stables Close South
-D 1 29842 1 1			; By the dungheap and the pigpen Close East
-D 1 29846 2 1			; In the courtyard Close South
-D 1 29848 3 1			; In the courtyard Close West
-D 1 29850 2 1			; Before the chapel Close South
-D 1 29851 2 1			; Inside the chapel Close South
-D 1 29853 2 1			; By the altar Close South
-D 1 29860 1 1			; In the courtyard Close East
-O 1 29800 100 29864			the keep well to By the well
-D 1 29867 1 1			; In the courtyard Close East
-D 1 29868 2 1			; The smithy Close South
+D 1 29801 3 1           ; A guardhouse Close West
+D 1 29822 1 1           ; A guardhouse Close East
+D 1 29824 3 1           ; Before the barracks Close West
+D 1 29827 2 1           ; Inside the barracks Close South
+D 1 29833 2 1           ; Before the stables Close South
+D 1 29842 1 1           ; By the dungheap and the pigpen Close East
+D 1 29846 2 1           ; In the courtyard Close South
+D 1 29848 3 1           ; In the courtyard Close West
+D 1 29850 2 1           ; Before the chapel Close South
+D 1 29851 2 1           ; Inside the chapel Close South
+D 1 29853 2 1           ; By the altar Close South
+D 1 29860 1 1           ; In the courtyard Close East
+O 1 29800 100 29864         the keep well to By the well
+D 1 29867 1 1           ; In the courtyard Close East
+D 1 29868 2 1           ; The smithy Close South
 *
-M 1 29800 1 29801			the gate guard to A guardhouse
+M 1 29800 1 29801           the gate guard to A guardhouse
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29807 100 8
 E 1 29810 100 16
 *
-M 1 29804 1 29822			the gate guard to A guardhouse
+M 1 29804 1 29822           the gate guard to A guardhouse
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29807 100 8
 E 1 29810 100 16
 *
-M 1 29801 3 29825			the off-duty guard to Inside the barracks
+M 1 29801 3 29825           the off-duty guard to Inside the barracks
 E 1 29812 100 7
 E 1 29807 100 8
 E 1 29811 100 12
 *
-M 1 29802 1 29829			the captain of the guard to The Captain's quarters
+M 1 29802 1 29829           the captain of the guard to The Captain's quarters
 E 1 29813 100 5
 E 1 29814 100 6
 E 1 29807 100 8
 E 1 29816 100 11
 E 1 29815 100 16
 *
-M 1 29803 1 29829			the merchant to The Captain's quarters
+M 1 29803 1 29829           the merchant to The Captain's quarters
 E 1 29817 100 4
 E 1 29819 100 6
 E 1 29820 100 8
 E 1 29818 100 12
-O 1 29801 100 29826			a locker to Inside the barracks
-P 1 29802 100 29801			a nightshirt to container locker chest foot footlocker
-P 1 29803 100 29801			a pair of socks to container locker chest foot footlocker
-O 1 29821 100 29827			a locker to Inside the barracks
-P 1 29804 100 29821			a bottle of whisky to container locker chest foot footlocker
-P 1 29805 100 29821			a girly magazine to container locker chest foot footlocker
-O 1 29822 100 29828			a locker to Inside the barracks
-P 1 29806 100 29822			crumpled fatigues to container locker chest foot footlocker
-O 1 29823 100 29829			a locker to The Captain's quarters
-P 1 29808 100 29823			a ringmail vest to container locker chest foot footlocker
-P 1 29809 100 29823			a ringmail hood to container locker chest foot footlocker
+O 1 29801 100 29826         a locker to Inside the barracks
+P 1 29802 100 29801         a nightshirt to container locker chest foot footlocker
+P 1 29803 100 29801         a pair of socks to container locker chest foot footlocker
+O 1 29821 100 29827         a locker to Inside the barracks
+P 1 29804 100 29821         a bottle of whisky to container locker chest foot footlocker
+P 1 29805 100 29821         a girly magazine to container locker chest foot footlocker
+O 1 29822 100 29828         a locker to Inside the barracks
+P 1 29806 100 29822         crumpled fatigues to container locker chest foot footlocker
+O 1 29823 100 29829         a locker to The Captain's quarters
+P 1 29808 100 29823         a ringmail vest to container locker chest foot footlocker
+P 1 29809 100 29823         a ringmail hood to container locker chest foot footlocker
 *
-M 1 29805 1 29833			the guard to Before the stables
+M 1 29805 1 29833           the guard to Before the stables
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3767,7 +3767,7 @@ E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
 *
-M 1 29806 1 29865			the guard to Before the keep
+M 1 29806 1 29865           the guard to Before the keep
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3775,7 +3775,7 @@ E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
 *
-M 1 29807 1 29867			the guard to In the courtyard
+M 1 29807 1 29867           the guard to In the courtyard
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3783,7 +3783,7 @@ E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
 *
-M 1 29808 1 29850			the guard to Before the chapel
+M 1 29808 1 29850           the guard to Before the chapel
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3791,68 +3791,68 @@ E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
 *
-M 1 29809 1 29837			the stableboy to Inside the stables
+M 1 29809 1 29837           the stableboy to Inside the stables
 E 1 29827 100 7
 E 1 29828 100 12
 E 1 29826 100 16
 *
-M 1 29810 1 29836			moonraker to A stall
+M 1 29810 1 29836           moonraker to A stall
 *
-M 1 29811 1 29838			sundancer to A stall
-O 1 29829 100 29844			a brass globe to In the dungheap
+M 1 29811 1 29838           sundancer to A stall
+O 1 29829 100 29844         a brass globe to In the dungheap
 *
-M 1 29812 2 29845			a pig to In the pigpen
+M 1 29812 2 29845           a pig to In the pigpen
 *
-M 1 29813 1 29852			the sinner to The confessional box
+M 1 29813 1 29852           the sinner to The confessional box
 E 1 29832 100 6
 E 1 29833 100 8
 E 1 29831 100 12
 E 1 29830 100 19
 *
-M 1 29814 1 29854			the priest to The Priest's box
+M 1 29814 1 29854           the priest to The Priest's box
 E 1 29836 100 6
 E 1 29837 100 8
 E 1 29835 100 12
 E 1 29838 100 17
 E 1 29834 100 19
 *
-M 1 29815 3 29853			the choirboy to By the altar
+M 1 29815 3 29853           the choirboy to By the altar
 E 1 29837 100 8
 E 1 29839 100 12
 *
-M 1 29816 1 29859			the gardener to The vegetable garden
+M 1 29816 1 29859           the gardener to The vegetable garden
 E 1 29842 100 5
 E 1 29841 100 9
 E 1 29843 100 13
 E 1 29840 100 16
-O 1 29850 100 29853			an altar to By the altar
-O 1 29849 100 29859			vegetables to The vegetable garden
+O 1 29850 100 29853         an altar to By the altar
+O 1 29849 100 29859         vegetables to The vegetable garden
 *
-M 1 29818 1 29868			the smith to The smithy
+M 1 29818 1 29868           the smith to The smithy
 E 1 29845 100 6
 E 1 29847 100 7
 E 1 29844 100 9
 E 1 29843 100 13
 E 1 29846 100 16
 G 1 24 100
-O 1 29848 100 29868			an anvil to The smithy
+O 1 29848 100 29868         an anvil to The smithy
 *
-M 1 29817 1 29861			the fletcher to The fletcher's shed
+M 1 29817 1 29861           the fletcher to The fletcher's shed
 E 1 29845 100 6
 E 1 29844 100 9
 E 1 29843 100 13
-D 1 29865 2 1			; Before the keep Close South
-D 1 29859 3 1			; The vegetable garden Close West
+D 1 29865 2 1           ; Before the keep Close South
+D 1 29859 3 1           ; The vegetable garden Close West
 *
-M 1 29819 1 29874			the cook to The kitchen
+M 1 29819 1 29874           the cook to The kitchen
 E 1 29852 100 12
 E 1 29851 100 16
 *
-M 1 29820 2 29875			the kitchenboy to The kitchen
+M 1 29820 2 29875           the kitchenboy to The kitchen
 E 1 29853 100 5
 E 1 29854 100 16
 *
-M 1 29821 1 29877			the guard to Inside the keep
+M 1 29821 1 29877           the guard to Inside the keep
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3860,39 +3860,39 @@ E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
 *
-M 1 29822 1 29870			the guard to Inside the keep
+M 1 29822 1 29870           the guard to Inside the keep
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
 E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
-D 1 29811 5 2			; Inside the wall Lock Down
-D 1 29881 3 1			; The hallway Close West
-D 1 29883 1 1			; The hallway Close East
-D 1 29883 3 1			; The hallway Close West
-D 1 29886 1 1			; The hallway Close East
-D 1 29886 3 1			; The hallway Close West
-D 1 29889 3 1			; The hallway Close West
-D 1 29889 1 1			; The hallway Close East
-D 1 29892 3 1			; The hallway Close West
-D 1 29896 1 1			; The hallway Close East
-D 1 29898 1 1			; The hallway Close East
-D 1 29898 3 1			; The hallway Close West
-D 1 29901 1 1			; The hallway Close East
-D 1 29901 3 1			; The hallway Close West
-D 1 29904 1 1			; The hallway Close East
-D 1 29904 3 1			; The hallway Close West
-D 1 29907 1 1			; The hallway Close East
-D 1 29889 2 1			; The hallway Close South
-D 1 29898 2 1			; The hallway Close South
-D 1 29876 4 1			; The servant's stairs Close Up
-D 1 29909 0 1			; The top of the stairs Close North
-D 1 29910 0 2			; The Secretary's Office Lock North
-D 1 29911 0 2			; The Guard Room Lock North
-D 1 29912 0 2			; The Throne Room Lock North
+D 1 29811 5 2           ; Inside the wall Lock Down
+D 1 29881 3 1           ; The hallway Close West
+D 1 29883 1 1           ; The hallway Close East
+D 1 29883 3 1           ; The hallway Close West
+D 1 29886 1 1           ; The hallway Close East
+D 1 29886 3 1           ; The hallway Close West
+D 1 29889 3 1           ; The hallway Close West
+D 1 29889 1 1           ; The hallway Close East
+D 1 29892 3 1           ; The hallway Close West
+D 1 29896 1 1           ; The hallway Close East
+D 1 29898 1 1           ; The hallway Close East
+D 1 29898 3 1           ; The hallway Close West
+D 1 29901 1 1           ; The hallway Close East
+D 1 29901 3 1           ; The hallway Close West
+D 1 29904 1 1           ; The hallway Close East
+D 1 29904 3 1           ; The hallway Close West
+D 1 29907 1 1           ; The hallway Close East
+D 1 29889 2 1           ; The hallway Close South
+D 1 29898 2 1           ; The hallway Close South
+D 1 29876 4 1           ; The servant's stairs Close Up
+D 1 29909 0 1           ; The top of the stairs Close North
+D 1 29910 0 2           ; The Secretary's Office Lock North
+D 1 29911 0 2           ; The Guard Room Lock North
+D 1 29912 0 2           ; The Throne Room Lock North
 *
-M 1 29823 1 29892			the guard to The hallway
+M 1 29823 1 29892           the guard to The hallway
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3900,93 +3900,93 @@ E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
 *
-M 1 29824 1 29880			the guard to The first floor landing
+M 1 29824 1 29880           the guard to The first floor landing
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
 E 1 29807 100 8
 E 1 29825 100 10
 E 1 29810 100 16
-D 1 29876 5 2			; The servant's stairs Lock Down
+D 1 29876 5 2           ; The servant's stairs Lock Down
 *
-M 1 29828 1 29884			Snypre to Snypre's Room
+M 1 29828 1 29884           Snypre to Snypre's Room
 E 1 29863 100 12
 E 1 29862 100 16
 *
-M 1 29829 1 29884			Drogar to Snypre's Room
+M 1 29829 1 29884           Drogar to Snypre's Room
 E 1 29857 100 8
 E 1 29864 100 12
 *
-M 1 29825 1 29885			Rudolf to Rudolf's Room
+M 1 29825 1 29885           Rudolf to Rudolf's Room
 E 1 29856 100 5
 E 1 29855 100 6
 E 1 29857 100 8
 *
-M 1 29826 1 29888			Jeeves to Jeeves' Room
+M 1 29826 1 29888           Jeeves to Jeeves' Room
 E 1 29857 100 8
 E 1 29859 100 12
 E 1 29858 100 17
 *
-M 1 29830 1 29891			the traveller to A Guest Room
+M 1 29830 1 29891           the traveller to A Guest Room
 E 1 29865 100 12
 E 1 29866 100 16
 G 1 29820 100
 *
-M 1 29827 1 29893			the Dowager Mother to A Guest Room
+M 1 29827 1 29893           the Dowager Mother to A Guest Room
 E 1 29860 100 12
 E 1 29861 100 17
 *
-M 1 29838 1 29897			the diplomat to A Guest Room
+M 1 29838 1 29897           the diplomat to A Guest Room
 E 1 29863 100 12
 E 1 29888 100 16
 E 1 29889 100 17
 *
-M 1 29837 1 29899			the minstrel to A Guest Room
+M 1 29837 1 29899           the minstrel to A Guest Room
 E 1 29874 100 8
 E 1 29886 100 12
 E 1 29887 100 16
 E 1 29911 100 17
 *
-M 1 29833 1 29900			the Prince's cousin to A Guest Room
+M 1 29833 1 29900           the Prince's cousin to A Guest Room
 E 1 29876 100 5
 E 1 29875 100 7
 E 1 29874 100 8
 E 1 29873 100 12
 E 1 29872 100 16
 *
-M 1 29831 1 29903			Wintergern to Wintergern's Room
+M 1 29831 1 29903           Wintergern to Wintergern's Room
 E 1 29867 100 5
 E 1 29868 100 6
 E 1 29857 100 8
 E 1 29869 100 17
 *
-M 1 29832 1 29903			Winster to Wintergern's Room
+M 1 29832 1 29903           Winster to Wintergern's Room
 E 1 29871 100 5
 E 1 29857 100 8
 E 1 29870 100 17
 E 1 29909 100 19
 *
-M 1 29835 1 29902			Rutger to Crinnan's Room
+M 1 29835 1 29902           Rutger to Crinnan's Room
 E 1 29881 100 6
 E 1 29807 100 8
 E 1 29880 100 12
 *
-M 1 29836 1 29902			Crinnan to Crinnan's Room
+M 1 29836 1 29902           Crinnan to Crinnan's Room
 E 1 29882 100 5
 E 1 29884 100 8
 E 1 29883 100 12
 *
-M 1 29834 1 29905			Milli to Milli's Room
+M 1 29834 1 29905           Milli to Milli's Room
 E 1 29878 100 3
 E 1 29877 100 5
 E 1 29879 100 6
 *
 *
-M 1 29839 1 29910			the secretary to The Secretary's Office
+M 1 29839 1 29910           the secretary to The Secretary's Office
 E 1 29891 100 5
 E 1 29890 100 17
 *
-M 1 29840 1 29911			the Prince's Own Guard to The Guard Room
+M 1 29840 1 29911           the Prince's Own Guard to The Guard Room
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -3996,7 +3996,7 @@ E 1 29908 100 16
 E 1 29892 100 17
 E 1 29893 100 11
 *
-M 1 29841 1 29911			the Prince's Own Guard to The Guard Room
+M 1 29841 1 29911           the Prince's Own Guard to The Guard Room
 E 1 29808 100 5
 E 1 29809 100 6
 E 1 29824 100 7
@@ -4005,9 +4005,9 @@ E 1 29825 100 10
 E 1 29908 100 16
 E 1 29892 100 17
 E 1 29893 100 11
-O 1 29894 100 29912			a throne to The Throne Room
+O 1 29894 100 29912         a throne to The Throne Room
 *
-M 1 29842 1 29912			Makras the Prince to The Throne Room
+M 1 29842 1 29912           Makras the Prince to The Throne Room
 E 1 29896 100 17
 E 1 29897 100 7
 E 1 29899 100 16
@@ -4020,13 +4020,13 @@ E 1 29903 100 5
 E 1 29904 100 12
 E 1 29905 100 8
 E 1 29898 100 18
-O 1 29906 100 29913			a huge pile of coins to The Treasure Room
-O 1 29907 100 29913			a jewel-encrusted gold chalice to The Treasure Room
-D 1 29884 1 1			; Snypre's Room Close East
-D 1 29870 1 1			; Inside the keep Close East
-D 1 29837 2 1			; Inside the stables Close South
-D 1 29906 1 1			; Drogar's Room Close East
-D 1 29875 1 1			; The kitchen Close East
+O 1 29906 100 29913         a huge pile of coins to The Treasure Room
+O 1 29907 100 29913         a jewel-encrusted gold chalice to The Treasure Room
+D 1 29884 1 1           ; Snypre's Room Close East
+D 1 29870 1 1           ; Inside the keep Close East
+D 1 29837 2 1           ; Inside the stables Close South
+D 1 29906 1 1           ; Drogar's Room Close East
+D 1 29875 1 1           ; The kitchen Close East
 M 0 29843 1 8318        gate guard
 E 1 29808 100 5
 E 1 29809 100 6
@@ -4045,11 +4045,11 @@ S
 
 
 #SPECIALS
-M  29803 spec_breath_frost			the merchant
-M  29814 spec_cast_cleric			the priest
-M  29832 spec_cast_psionicist			Winster
-M  29836 spec_cast_mage			Crinnan
-M  29834 spec_cast_hooker		Milli
+M  29803 spec_breath_frost          the merchant
+M  29814 spec_cast_cleric           the priest
+M  29832 spec_cast_psionicist       Winster
+M  29836 spec_cast_mage             Crinnan
+M  29834 spec_cast_hooker           Milli
 S
 
 

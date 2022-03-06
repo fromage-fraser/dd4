@@ -1,4 +1,4 @@
-#AREA	Merc~    Troll Den~
+#AREA   Merc~    Troll Den~
 10 15 0 100
 
 
@@ -14,7 +14,7 @@ saliva dripping from the beast's jaw.  The guardian beast snarls again.
 ~
 2|4|32|64 8|32768|65536 -200 S
 7 12 2 7d7+70 2d6+1
-0 1550
+32 1550
 8 8 1
 #2801
 young troll~
@@ -53,7 +53,7 @@ He notices you and gargles "WANNA JOIN?".
 ~
 2|4|32 32768 -100 S
 5 14 4 5d5+50 2d4+1
-0 700
+32 700
 6 8 1
 #2804
 giant troll~
@@ -91,7 +91,7 @@ It moves quickly, from corpse to corpse.
 ~
 4|32|128 32768|65536 0 S
 3 13 3 3d3+30 2d4+0
-0 350
+4|8|32 350
 8 8 0
 #2807
 roving beast~
@@ -105,7 +105,7 @@ jaw.  The roving beast snarls at you.
 ~
 2|4|32|64 8|32768 -200 S
 7 12 2 7d7+70 2d6+1
-0 2250
+32 2250
 8 8 1
 #2808
 medium troll~

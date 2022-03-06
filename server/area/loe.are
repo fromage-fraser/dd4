@@ -55,7 +55,7 @@ never left you as you move, as if he is sizing you up.
 0 0
 0 0 1
 >death_prog 100~
-	mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
+    mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
 ~
 |
 
@@ -74,21 +74,21 @@ on that table," he says, "I'll be right with you."
 0 0
 0 0 1
 >speech_prog bless~
-        	if clan($n) == loe
-        		cast bless $n
-        		break
-        	else
-        		break;
-        	endif
+            if clan($n) == loe
+                cast bless $n
+                break
+            else
+                break;
+            endif
 ~
 >speech_prog bye~
-        	if clan($n) == loe
-        		mpecho The Acupuncturist bows to you, and you find yourself outside the headquarters.
-        		mptransfer $n 18138
-        		break
-		else
-			break;
-        	endif
+            if clan($n) == loe
+                mpecho The Acupuncturist bows to you, and you find yourself outside the headquarters.
+                mptransfer $n 18138
+                break
+        else
+            break;
+            endif
 ~
 |
 
@@ -104,9 +104,9 @@ I am sleepy....zzzzZZZZzzzz.....
 0 0
 0 0 1
 >rand_prog 100~
-	drop loe
-	mpgoto 537
-	meditate
+    drop loe
+    mpgoto 537
+    meditate
 ~
 |
 

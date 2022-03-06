@@ -1,4 +1,4 @@
-#AREA	Hatchet~ The Rats Lair~
+#AREA   Hatchet~ The Rats' Lair~
 2 10 0 100
 
 
@@ -496,12 +496,12 @@ FOUR.
 E
 one~
 .
-			Dear Icaza
+                        Dear Icaza
 
-		Roses are red,
-		Violets are blue.
-		For being my love,
-		I write this book for you.
+                Roses are red,
+                Violets are blue.
+                For being my love,
+                I write this book for you.
 
 Inspired by and dedicated for the fair lady Icaza.
 by Hatchet, 3/7/94
@@ -509,7 +509,7 @@ by Hatchet, 3/7/94
 E
 two~
 .
-		Little Girl
+                Little Girl
 
 One day, I happened upon a little girl,
 Sitting on the stump of a tree.
@@ -562,14 +562,14 @@ Inspired by and dedicated to the fair lady Icaza.
 E
 three~
 .
-		Untitled
-	I read a poem to my love,
-	One that comes to me unbidden.
-	It is a simple poem, written by simple me,
-	but writing such a poem
-	makes me laugh, and it makes her cry
-	And I know that at that very moment,
-	we are both experiencing the same emotion, Love.
+                Untitled
+        I read a poem to my love,
+        One that comes to me unbidden.
+        It is a simple poem, written by simple me,
+        but writing such a poem
+        makes me laugh, and it makes her cry
+        And I know that at that very moment,
+        we are both experiencing the same emotion, Love.
 
 Inspired by and dedicated to the fair lady Icaza
 by Hatchet 3/14/94
@@ -577,16 +577,16 @@ by Hatchet 3/14/94
 E
 four~
 .
-		Untitled
-	Leaves swirling around us,
-	Raindrops in our hair.
-	Locked within one another's embrace,
-	Lost in our own world.
+                Untitled
+        Leaves swirling around us,
+        Raindrops in our hair.
+        Locked within one another's embrace,
+        Lost in our own world.
 
-	We kiss softly, longingly,
-	Secure within our own warmth.
-	People scurry around us,
-	Oblivious to us, we oblivious to them.
+        We kiss softly, longingly,
+        Secure within our own warmth.
+        People scurry around us,
+        Oblivious to us, we oblivious to them.
 
 Inspired by and dedicated to the fair lady Icaza
 by Hatchet 4/4/94
@@ -1220,8 +1220,8 @@ My Goddess Icaza,
      My love for you shall never end, for you are the love of my life.  I
 dedicate this room to you, and I bless it so that no evil may ever enter this
 room.
-					Your Mortal Paladin,
-					Hatchet
+                                        Your Mortal Paladin,
+                                        Hatchet
 ~
 S
 #3839
@@ -1317,150 +1317,150 @@ S
 
 #RESETS
 *Doors*
-D 0 3801 4 1		Close the grate up
-D 0 3026 5 1		Close the grate down
-D 0 3802 1 1		Close the door to room 3806
-D 0 3806 3 1		Close the door from room 3806
-D 0 3804 3 1		Close the door to room 3809
-D 0 3809 1 1		Close the door from room 3809
-D 0 3811 1 1		Close the door to room 3816
-D 0 3816 3 1		Close the door from room 3816
-D 0 3811 3 1		Close the door to room 3815
-D 0 3815 1 1		Close the door from room 3815
-D 0 3812 1 1		Close the door to room 3818
-D 0 3818 3 1		Close the door from room 3818
-D 0 3813 3 1		Close the door to room 3819
-D 0 3819 1 1		Close the door from room 3819
-D 0 3814 3 1		Close the door to room 3821
-D 0 3821 1 1		Close the door from room 3821
-D 0 3826 1 2		Close and lock the door to room 3827
-D 0 3827 3 2		Close and lock the door from room 3827
-D 0 3826 3 2		Close and lock the door to room 3828
-D 0 3828 1 2		Close and lock the door from room 3828
-D 0 3830 3 2		Close and lock the door to room 3831
-D 0 3831 1 2		Close and lock the door from room 3831
-D 0 3837 2 2		Close and lock the door to room 3838
-D 0 3838 0 2		Close and lock the door from room 3838
-D 0 3838 3 2		Close and lock the door to room 3839
-D 0 3839 1 2		Close and lock the door from room 3839
-D 0 3840 0 2		Close and lock the door to room 3841
-D 0 3840 2 2		Close and lock the door to room 3842
+D 0 3801 4 1            Close the grate up
+D 0 3026 5 1            Close the grate down
+D 0 3802 1 1            Close the door to room 3806
+D 0 3806 3 1            Close the door from room 3806
+D 0 3804 3 1            Close the door to room 3809
+D 0 3809 1 1            Close the door from room 3809
+D 0 3811 1 1            Close the door to room 3816
+D 0 3816 3 1            Close the door from room 3816
+D 0 3811 3 1            Close the door to room 3815
+D 0 3815 1 1            Close the door from room 3815
+D 0 3812 1 1            Close the door to room 3818
+D 0 3818 3 1            Close the door from room 3818
+D 0 3813 3 1            Close the door to room 3819
+D 0 3819 1 1            Close the door from room 3819
+D 0 3814 3 1            Close the door to room 3821
+D 0 3821 1 1            Close the door from room 3821
+D 0 3826 1 2            Close and lock the door to room 3827
+D 0 3827 3 2            Close and lock the door from room 3827
+D 0 3826 3 2            Close and lock the door to room 3828
+D 0 3828 1 2            Close and lock the door from room 3828
+D 0 3830 3 2            Close and lock the door to room 3831
+D 0 3831 1 2            Close and lock the door from room 3831
+D 0 3837 2 2            Close and lock the door to room 3838
+D 0 3838 0 2            Close and lock the door from room 3838
+D 0 3838 3 2            Close and lock the door to room 3839
+D 0 3839 1 2            Close and lock the door from room 3839
+D 0 3840 0 2            Close and lock the door to room 3841
+D 0 3840 2 2            Close and lock the door to room 3842
 *
-M 0 3801 2 3802		Small rat in rooms
-M 0 3801 2 3810		Small rat in rooms
-O 0 3804 9 3802		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3803		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3804		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3811		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3812		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3813		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3814		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3823		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
-O 0 3804 9 3824		Walls in the rooms
-P 0 3820 9 3804		Torch in walls
+M 0 3801 2 3802         Small rat in rooms
+M 0 3801 2 3810         Small rat in rooms
+O 0 3804 9 3802         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3803         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3804         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3811         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3812         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3813         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3814         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3823         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
+O 0 3804 9 3824         Walls in the rooms
+P 0 3820 9 3804         Torch in walls
 *
-M 0 3804 2 3808		Rat in rooms
-M 0 3804 2 3817		Rat in rooms
-M 0 3805 1 3823		Large rat in rooms
-M 0 3806 1 3806		Wererat in room
-E 1 3811 99 16		Equipped with a stake
-M 0 3807 1 3815		Wererat guarding weapons
-E 1 3813 99 16		Rusted Knife
-E 1 3815 99 7		Leggings
-M 0 3807 2 3816		Wererat guarding food
-E 1 3813 99 16		Rusted Knife
-E 1 3816 99 10		Arm Guards
-M 0 3807 3 3815		Wererat guarding weapons
-E 1 3813 99 16		Rusted Knife
-E 1 3815 99 7		Leggings
-M 0 3807 4 3816		Wererat guarding food
-E 1 3813 99 16		Rusted Knife
-E 1 3816 99 10		Arm Guards
-M 0 3808 3 3824		Wererat in conference
-E 1 3811 99 16		Stake
-M 0 3808 3 3824		Wererat in conference
-E 1 3811 99 16		Stake
-M 0 3808 3 3824		Wererat in conference
-E 1 3811 99 16		Stake
-M 0 3810 1 3828		Wererat leader in office
-E 1 3817 99 16		Flail
-E 1 3814 99 14		Bracer
-E 1 3814 99 15		Bracer
-E 1 3815 99 7		Leggings
-E 1 3816 99 10		Arm Guards
-M 0 3811 2 3828		Large rats to support leader
-M 0 3811 2 3828		Large rats to support leader
-M 0 3812 1 3830		Slavemaster walking around
-E 1 3818 99 16		Whip
-E 1 3814 99 14		Bracer
-E 1 3814 99 15		Bracer
-G 1 3803 99		Give him the key to the cage
-O 0 3805 9 3829		Cavern walls in the rooms
-P 0 3822 9 3805		Sapphire in walls
-O 0 3805 9 3830		Cavern walls in the rooms
-P 0 3823 9 3805		Ruby in walls
-O 0 3805 9 3832		Cavern walls in the rooms
-P 0 3822 9 3805		Sapphire in walls
-O 0 3805 9 3833		Cavern walls in the rooms
-P 0 3822 9 3805		Sapphire in walls
-O 0 3805 9 3834		Cavern walls in the rooms
-P 0 3823 9 3805		Ruby in walls
-O 0 3805 9 3835		Cavern walls in the rooms
-P 0 3822 9 3805		Sapphire in walls
-O 0 3805 9 3836		Cavern walls in the rooms
-P 0 3822 9 3805		Sapphire in walls
-O 0 3805 9 3837		Cavern walls in the rooms
-P 0 3823 9 3805		Ruby in walls
-O 0 3805 9 3838		Cavern walls in the rooms
-P 0 3823 9 3805		Ruby in walls
-M 0 3813 3 3831		Slave in cage
-M 0 3813 3 3831		Slave in cage
-M 0 3813 3 3831		Slave in cage
-M 0 3814 2 3837		Slave working
-M 0 3814 2 3835		Slave working
-M 0 3815 1 3840		Mortal Hatchet
-E 1 3824 9 17		Wielding a Minigun!
-M 0 3816 1 3840		Mortal Icaza
-E 1 3824 9 17		Wielding a Minigun!
-M 0 3817 1 3819		Ooze in room
+M 0 3804 2 3808         Rat in rooms
+M 0 3804 2 3817         Rat in rooms
+M 0 3805 1 3823         Large rat in rooms
+M 0 3806 1 3806         Wererat in room
+E 1 3811 99 16          Equipped with a stake
+M 0 3807 1 3815         Wererat guarding weapons
+E 1 3813 99 16          Rusted Knife
+E 1 3815 99 7           Leggings
+M 0 3807 2 3816         Wererat guarding food
+E 1 3813 99 16          Rusted Knife
+E 1 3816 99 10          Arm Guards
+M 0 3807 3 3815         Wererat guarding weapons
+E 1 3813 99 16          Rusted Knife
+E 1 3815 99 7           Leggings
+M 0 3807 4 3816         Wererat guarding food
+E 1 3813 99 16          Rusted Knife
+E 1 3816 99 10          Arm Guards
+M 0 3808 3 3824         Wererat in conference
+E 1 3811 99 16          Stake
+M 0 3808 3 3824         Wererat in conference
+E 1 3811 99 16          Stake
+M 0 3808 3 3824         Wererat in conference
+E 1 3811 99 16          Stake
+M 0 3810 1 3828         Wererat leader in office
+E 1 3817 99 16          Flail
+E 1 3814 99 14          Bracer
+E 1 3814 99 15          Bracer
+E 1 3815 99 7           Leggings
+E 1 3816 99 10          Arm Guards
+M 0 3811 2 3828         Large rats to support leader
+M 0 3811 2 3828         Large rats to support leader
+M 0 3812 1 3830         Slavemaster walking around
+E 1 3818 99 16          Whip
+E 1 3814 99 14          Bracer
+E 1 3814 99 15          Bracer
+G 1 3803 99             Give him the key to the cage
+O 0 3805 9 3829         Cavern walls in the rooms
+P 0 3822 9 3805         Sapphire in walls
+O 0 3805 9 3830         Cavern walls in the rooms
+P 0 3823 9 3805         Ruby in walls
+O 0 3805 9 3832         Cavern walls in the rooms
+P 0 3822 9 3805         Sapphire in walls
+O 0 3805 9 3833         Cavern walls in the rooms
+P 0 3822 9 3805         Sapphire in walls
+O 0 3805 9 3834         Cavern walls in the rooms
+P 0 3823 9 3805         Ruby in walls
+O 0 3805 9 3835         Cavern walls in the rooms
+P 0 3822 9 3805         Sapphire in walls
+O 0 3805 9 3836         Cavern walls in the rooms
+P 0 3822 9 3805         Sapphire in walls
+O 0 3805 9 3837         Cavern walls in the rooms
+P 0 3823 9 3805         Ruby in walls
+O 0 3805 9 3838         Cavern walls in the rooms
+P 0 3823 9 3805         Ruby in walls
+M 0 3813 3 3831         Slave in cage
+M 0 3813 3 3831         Slave in cage
+M 0 3813 3 3831         Slave in cage
+M 0 3814 2 3837         Slave working
+M 0 3814 2 3835         Slave working
+M 0 3815 1 3840         Mortal Hatchet
+E 1 3824 9 17           Wielding a Minigun!
+M 0 3816 1 3840         Mortal Icaza
+E 1 3824 9 17           Wielding a Minigun!
+M 0 3817 1 3819         Ooze in room
 *
-M 0 3809 1 3826		Drake in the Drake's Lair
-E 1 3802 9 3		Wearing the necklace key
-O 0 3812 9 3838		Shrine in Icaza's holy room
-P 0 3819 9 3812		Put the rod in the shrine
-O 0 3801 9 3827		Key lying on the ground
-O 0 3821 9 3827		Treasure on the ground
+M 0 3809 1 3826         Drake in the Drake's Lair
+E 1 3802 9 3            Wearing the necklace key
+O 0 3812 9 3838         Shrine in Icaza's holy room
+P 0 3819 9 3812         Put the rod in the shrine
+O 0 3801 9 3827         Key lying on the ground
+O 0 3821 9 3827         Treasure on the ground
 *
-M 0 3802 1 3842		Snigger in Icaza's room
-O 0 3825 1 3842		Book of Poetry
-M 0 3803 1 3841		Sammy in Hatchet's room
+M 0 3802 1 3842         Snigger in Icaza's room
+O 0 3825 1 3842         Book of Poetry
+M 0 3803 1 3841         Sammy in Hatchet's room
 *
 S
 
 
 
 #SPECIALS
-M 3801 spec_poison	small rat
-M 3802 spec_poison	snigger
-M 3804 spec_poison	rat
-M 3805 spec_poison	large rat
-M 3806 spec_poison	wererat
-M 3807 spec_poison	wererat guard
-M 3808 spec_poison	wererat in conference
-M 3809 spec_breath_fire	firedrake
-M 3810 spec_poison	rat leader
-M 3811 spec_poison	large rat
-M 3812 spec_poison	slavemaster
-M 3815 spec_cast_undead	Hatchet
-M 3816 spec_cast_cleric	Icaza
+M 3801 spec_poison      small rat
+M 3802 spec_poison      snigger
+M 3804 spec_poison      rat
+M 3805 spec_poison      large rat
+M 3806 spec_poison      wererat
+M 3807 spec_poison      wererat guard
+M 3808 spec_poison      wererat in conference
+M 3809 spec_breath_fire firedrake
+M 3810 spec_poison      rat leader
+M 3811 spec_poison      large rat
+M 3812 spec_poison      slavemaster
+M 3815 spec_cast_undead Hatchet
+M 3816 spec_cast_cleric Icaza
 S
 
 

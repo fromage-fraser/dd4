@@ -12,7 +12,7 @@ The Beastmaster~
 The cyclops beastmaster is here.
 ~
 The mighty cyclops laughs as you enter the room. He has spent his life worrying
-about a vicious beast and is not worried by your intrusion.
+about vicious beasts and is not worried in the least by your intrusion.
 ~
 2|4|64 8|128 -400 S
 44 0 -100 1d1+2000 1d20+60
@@ -24,8 +24,8 @@ Battlemaster~
 The cyclops battlemaster.
 ~
 As the battlemaster turns toward you, you notice the many scars on his face
-and body. This cyclops is very experianced and he is moving toward you
-shouting " Ahhhh some REAL practice for me at last. MUHAHAHAHAHAHA."
+and body. This cyclops is very experienced and he is moving toward you
+shouting, "Ahhhh some REAL practice for me at last. MUHAHAHAHAHAHA."
 ~
 2|32|64 8|16|32|128|512 -1000 S
 46 -2 -200 1d1+2000 1d50+50
@@ -37,7 +37,7 @@ the cyclops worker~
 The cyclops worker is here gathering corn.
 ~
 The cyclops worker is dressed in grubby overalls and uses a scythe to collect
-the corn. He is far too busy to notice you enter his part fo the field.
+the corn. He is far too busy to notice you enter his part of the field.
 ~
 64|128 0 -500 S
 35 0 0 0d0+0 0d0+0
@@ -46,10 +46,10 @@ the corn. He is far too busy to notice you enter his part fo the field.
 #14004
 supervisor cyclops~
 the supervisor~
-The workers supervisor sits in a chair here.
+The workers' supervisor sits in a chair here.
 ~
 The supervisor is 10 feet tall and wields a nasty looking whip . He is also not
-very happy to see you and springs to attack yelling "HUMAN SCUM MUST DIE!"
+very happy to see you and springs to attack, yelling "HUMAN SCUM MUST DIE!"
 ~
 2|32|64 0 -1000 S
 40 0 0 0d0+0 0d0+0
@@ -58,12 +58,12 @@ very happy to see you and springs to attack yelling "HUMAN SCUM MUST DIE!"
 #14005
 guard cyclops~
 the cyclops guard~
-The cyclops guard stand here looking for intruders.
+The cyclops guard stands here looking for intruders.
 ~
-The guard towers over you, he is 9 feet tall, and you estimate him to be 500
+The guard towers over you. He is 9 feet tall, and you estimate him to be 500
 pounds of pure muscle. His large eye in the centre of his head is pitch black
-and eminates evil. The huge spiked club that he swings about like a toy is
-something you would not like to be seeing coming your way.
+and emanates evil. The huge spiked club he swings about like a toy is something
+you would definitely not like to see heading your way.
 ~
 2|32|64 0 -1000 S
 40 0 0 0d0+0 0d0+0
@@ -72,11 +72,11 @@ something you would not like to be seeing coming your way.
 #14006
 guard cyclops~
 the guard~
-The cyclops guard is asleep and snoring loudly
+The cyclops guard is asleep and snoring loudly.
 ~
-The guard towers over you, he is 9 feet tall, and you estimate him to be 500
+The guard towers over you; he is 9 feet tall, and you estimate him to be 500
 pounds of pure muscle. His large eye in the centre of his head is pitch black
-and eminates evil.
+and emanates evil.
 ~
 2|32|64 0 -1000 S
 40 0 0 0d0+0 0d0+0
@@ -85,7 +85,7 @@ and eminates evil.
 #14007
 cyclops fisherman~
 A cyclops fisherman~
-The cyclops fisherman lies here watching his net
+The cyclops fisherman lies here watching his net.
 ~
 The fisherman is clothed only in a pair of overalls, and lies on the bank half
 asleep.
@@ -97,7 +97,7 @@ asleep.
 #14008
 cyclops warrior~
 the cyclops warrior~
-A cyclops warrior is here preparing for battle
+A cyclops warrior is here preparing for battle.
 ~
 The cyclops warrior is dressed in banded armour, and is ready for battle.
 He stands 10 feet tall and wields a rather large warhammer.
@@ -111,7 +111,7 @@ elite guard cyclops~
 the elite cyclops guard~
 The elite guard charges you as you enter the room.
 ~
-Looking at the huge guard you realise that he is trained not only is the art of
+Looking at the huge guard you realise that he is trained not only in the art of
 warfare, but also in the art of magic, as he holds in one of his hands a yellow
 wand.
 ~
@@ -122,11 +122,11 @@ wand.
 #14011
 king cyclops xoric~
 Xoric~
-The Cyclops King, Xoric is here in his throne room.
+The Cyclops King, Xoric, is here in his throne room.
 ~
 The king stands 15 feet tall and is the most nasty cyclops you have seen so
-far. His face is covered with many scars from the hard fought battles that he
-has come from victorious. You shudder as you see the mighty jaggered dagger he
+far. His face is covered with many scars from all the hard fought battles that he
+has emerged from, victorious. You shudder as you see the mighty jagged dagger he
 holds in his right hand. The orb that he holds seem to draw you to it.
 ~
 2|32|64 0 -1000 S
@@ -138,19 +138,19 @@ goddess leia~
 Leia~
 You recognise this awesome creature as Leia, goddess of the next dimension.
 ~
-You stare in awe at the beautiful goddess, her wonderous form covered only
+You stare in awe at the beautiful goddess, her wondrous form covered only
 by a translucent gown that covers her whole body. As you look she relates a
 story to you:-
   "I have watched your progress with great interest and I am in debt to you.
 Four months ago an earthquake opened a fissure leading to the jewelled cave.
 The cyclops king and the dark wizard that ruled with him knew that the void
-that lied beyond the physical and magical barrier formed by my statue could
+that lay beyond the physical and magical barrier formed by my statue could
 take them into the heart of any city in this great land. This would mean that
 they could strike anywhere and at anytime. I watched the cyclops king summon
 together the most evil leaders to these very caves to discuss the invasion
 plans. They plotted together while clerics tried to dispel the magical
-barriers into this void. My only hope rested on your sholders and I rejoiced
-when I saw your slay the King for I knew that the good cities would no longer
+barriers into this void. My only hope rested on your shoulders and I rejoiced
+when I saw you slay the King, for I knew that the good cities would no longer
 be in danger. For this I am indebted to you.
 ~
 2|8|64|128|1024|4096 8|32|128|512|2048|8192|524288 1000 S
@@ -176,7 +176,7 @@ cyclops female woman~
 the cyclops female~
 The cyclops woman is here.
 ~
-The cyclops female upon seeing you screams, and calls for help.
+The cyclops female, upon seeing you, screams and calls for help.
 ~
 64|128 0 -1000 S
 33 0 0 0d0+0 0d0+0
@@ -187,7 +187,7 @@ cyclops child~
 a cyclops child~
 A cyclops child is here playing in the dirt.
 ~
-A cyclops child quitely plays here in the dirt, upon seeing you he stands and
+A cyclops child quietly plays here in the dirt; upon seeing you he stands and
 runs to a corner of the cave, hiding his face from you.
 ~
 64|128 0 -200 S
@@ -199,7 +199,7 @@ chimera head goat~
 A chimera's goat head~
 The first head of a chimera, that being a goat, turns towards you.
 ~
-The first head of the great chimera, is that of a goat. It has an evil, angry
+The first head of the great chimera is that of a goat. It has an evil, angry
 look in its eyes. It would be best to stay away from those nasty looking horns.
 ~
 2|64 0 -500 S
@@ -221,10 +221,10 @@ fearsome roar sends a shiver down your spine.
 #14018
 dragon head chimera~
 A chimera's dragon head~
-The third head of a chimera, that being a dragon, prepares to breath on you.
+The third head of a chimera, that being a dragon, prepares to breathe on you.
 ~
 The fearsome dragons head alone would be a worthy adversary, but with the
-other 2 heads, you might be lucky to escape alive.
+other 2 heads to contend with also, you will be lucky to escape alive.
 ~
 2|32|64 8|32 -1000 S
 45 0 0 0d0+0 0d0+0
@@ -233,7 +233,7 @@ other 2 heads, you might be lucky to escape alive.
 #14019
 cyclops worker~
 the cyclops construction worker~
-The cyclops construction worker stands here
+The cyclops construction worker stands here.
 ~
 The worker looks as though he is thinking, and with that giant sledgehammer,
 he can do all the thinking he wants.
@@ -245,10 +245,11 @@ he can do all the thinking he wants.
 #14020
 cyclops supervisor~
 the cyclops construction supervisor~
-The construction supervisor stands here ......... supervising.
+The construction supervisor stands here... supervising.
 ~
 The supervisor is one huge cyclops. He is almost as wide as he is tall and you
-can see why as he carries a great log upon his shoulder.
+can see why he's the supervisor, as he strolls past, carrying a gigantic log
+upon his shoulder.
 ~
 2|4|32|64 0 -1000 S
 41 0 0 0d0+0 0d0+0
@@ -259,7 +260,7 @@ cleric cyclops~
 the cyclops cleric~
 The cleric is here, angry at your intrusion.
 ~
-The Cleric tunrs to face you after dispelling the last of the magical barriers.
+The Cleric turns to face you after dispelling the last of the magical barriers.
 He does not seem pleased to see you.
 ~
 2|4|32|64 8|32|128|512 -1000 S
@@ -269,11 +270,11 @@ He does not seem pleased to see you.
 #14022
 Mage cyclops~
 the cyclops mage~
-A cyclops mage is here training his students.
+A cyclops mage is here, training his students.
 ~
-The mage turns to face the intruders, you notice a confident look in his eye as
-he starts to gesture and pronounce unknown words, sparks leap from one finger to
-another. He then attacks.
+The mage turns to face the intruders. You notice a confident look in his eye as
+he starts to gesture and pronounce unfamiliar words; sparks leap from one finger to
+another and he attacks.
 ~
 2|32|64|512 8|32|128 -1000 S
 46 0 0 0d0+0 0d0+0
@@ -282,7 +283,7 @@ another. He then attacks.
 #14023
 cyclops psionic~
 the cyclops psionic~
-The cyclops psionic is here focusing his thoughts.
+The cyclops psionic is here, focusing his thoughts.
 ~
 The psionic seemed to be expecting you as he attacks immediately.
 ~
@@ -293,7 +294,7 @@ The psionic seemed to be expecting you as he attacks immediately.
 #14024
 torturer cyclops~
 the cyclops torturer~
-The torturer bends over another victim laughing.
+The torturer bends over another victim, laughing.
 ~
 The torturer wields a scorching hot iron and seems to be enjoying the fact that
 he is inflicting so much pain to the poor prisoner. The cyclops is far too
@@ -310,8 +311,9 @@ A skinny prisoner is chained to the wall here, near death.
 ~
 The prisoner has burns covering most of his body and is near death. With the
 last of his energy he whispers something to you.
-The prisoner says " Th-the key to the palace is in the b-b-barrac.....".
-And with that he collapses.
+The prisoner says " Th-the key to the palace is in the b-b-barrac...".
+
+With that, he collapses.
 ~
 2|64|512 0 1000 S
 1 0 0 0d0+0 0d0+0
@@ -320,16 +322,19 @@ And with that he collapses.
 #14026
 prisoner human~
 the human prisoner~
-A human prisoner is chained to the wall here
+A human prisoner is chained to the wall here.
 ~
-The prisoners face lites up as you enter the room.
-The prisoner says " At last I am rescued, I feared the worse for my self as I
+The prisoners face lights up as you enter the room.
+
+The prisoner says " At last, I am rescued! I feared the worst for myself as I
 heard the screams to the west. I was in a party of bold adventurers that
-ventured into the cave searching for the legendary jeweled cave. Most people
-thought it was a legend, but it exists, it does, far to the south across an
+ventured into the cave searching for the legendary jewelled cave. Most people
+thought it was a legend, but it exists, it does! Far to the south across an
 underground river. In the cave is a most beatiful statue with a most powerful
 artifact on its head. We nearly escaped with it but we were caught leaving the
-cave, and have spent the last 3 months in this hell."                                                                                                                  With that you break his chains and let the prisoner go.
+cave, and have spent the last 3 months in this hell."
+
+With that you break his chains and let the prisoner go.
 ~
 2|64|512 0 1000 S
 20 0 0 0d0+0 0d0+0
@@ -338,15 +343,17 @@ cave, and have spent the last 3 months in this hell."                           
 #14027
 dwarf prisoner~
 the dwarven prisoner~
-A dwarf is here chained to the wall.
+A dwarf is here, chained to the wall.
 ~
 The dwarf stands only 4 feet tall but you know the fearsome fighting abilities
-of this race. He stand up and greets you then relays to you this story.
-" The jewelled cave has a mighty statue that is a gateway to other worlds, it
-has two barriers, a physical barrier which can be unlocked by and orb, and a
+of this race. He stand up and greets you then relays to you this story:
+
+"The jewelled cave has a mighty statue that is a gateway to other worlds. It
+has two barriers: a physical barrier which can be unlocked by an orb, and a
 magical one. Our party went to the cave to try and capture the orb, so that the
-cyclops king could not use the gateway. We nearly escaped but were caught. I
+cyclops king could not use the gateway. We nearly escaped, but were caught. I
 fear now that the King has the Orb and is planning something."
+
 With that you smash his chains and free the dwarf.
 ~
 2|64|512 0 1000 S
@@ -356,15 +363,17 @@ With that you smash his chains and free the dwarf.
 #14028
 mage prisoner elf elven~
 the mage prisoner~
-An elven mage is chained to the wall here
+An elven mage is chained to the wall here.
 ~
 The elven mage bows to you as you enter his cell.
-He then speaks to you. "Thank-you for coming and setting me free, for that I
-will tell you all I know about the King. Although a great and mighty warrior
-the King has one weakness - he is very afraid of magic. For this reason he will
-let no clerics cast sanctuary uopn him, nor will he let any mages shield him.
-I hope this has been of help."
-With that you break his chains.
+He then speaks to you:
+
+"Thank you for coming and setting me free, for that I will tell you all I know
+about the King. Although a great and mighty warrior, the King has one weakness -
+he is very afraid of magic. For this reason he will let no clerics cast sanctuary
+upon him, nor will he let any mages shield him. I hope this has been of help."
+
+With that, you break his chains.
 ~
 2|64|512 0 1000 S
 10 0 0 0d0+0 0d0+0
@@ -376,14 +385,15 @@ a human psionic prisoner~
 A human psionic is chained to the wall here.
 ~
 The human psionic smiles at you as you enter his cell.
-He then speaks " These cells are made from an anti-magical material which
+He then speaks: "These cells are made from an anti-magical material that
 prevents us from casting spells so we can free our selves. The doors to the
 palace and the king's chamber are also made from this material. No pass door
-spell will work nor will the finest thief in this world be able to pick the
+spell will work, nor will the finest thief in this world be able to pick the
 locks. There are many dangers between here and the King, The most fearsome
 being his elite guard, trained in both the ways of battle and of magic. I hope
-this has helped"
-With that you smash his chains.
+this has helped."
+
+With that, you smash his chains.
 ~
 2|64|512 0 1000 S
 35 0 0 0d0+0 0d0+0
@@ -415,10 +425,10 @@ The cyclops is training to be a magician. Maybe you will be his first victim.
 #14032
 cyclops smithy~
 the cyclops smithy~
-The cyclops smithy is here pounding on some armour
+The cyclops smithy is here, pounding on some armour.
 ~
 With the roar of the furnace and the banging of the hammer, the smithy did not
-hear you come in. Just as well as this cyclops has muscles on his muscles.
+hear you come in. Just as well, as this cyclops has muscles on his muscles.
 ~
 2|64 0 -1000 S
 46 0 0 0d0+0 0d0+0
@@ -439,14 +449,14 @@ and deepset eyes.
 #14034
 fanatic priest~
 the fanatic priest~
-The fanatic priest is here, foretelling the destruction of Midgaard
+The fanatic priest is here, foretelling the destruction of Midgaard.
 ~
-No-one beleived the priest when he predicted the fall of Old Thalos, thats
+No one believed the priest when he predicted the fall of Old Thalos; that's
 mainly because he was the one responsible for letting in the cyclops who
-quickly over-ran the city. For his co-operation he was rewarded by becoming
-Xoric's right-hand man, the brains behind the brawn. He still wears his black
-silk robe and demon-faced talisman, but your guess is that the have been
-greatly enhanced. The priests right hand is covered in golden silk and he
+quickly overran the city. For his co-operation he was rewarded by becoming
+Xoric's right-hand man; the brains behind the brawn. He still wears his black
+silk robe and demon-faced talisman, but your guess is that they have been
+greatly enhanced. The priest's right hand is covered in golden silk and he
 clenches it at you as he attacks.
 ~
 2|32|64|128 8|32|128 -1000 S
@@ -458,7 +468,7 @@ old cyclops~
 the old cyclops~
 An old cyclops rests here, not bothering to acknowledge you.
 ~
-The old cyclops is weather beaten and wrinkly. His one eye stares off into
+The old cyclops is weatherbeaten and wrinkly. His one eye stares off into
 space, probably recalling some past battle.
 ~
 2|64 0 -1000 S
@@ -468,7 +478,7 @@ space, probably recalling some past battle.
 #14036
 cyclops trainee warrior~
 the cyclops trainee~
-A cyclops trainee warrior is here trying to emulate the battlemaster.
+A cyclops trainee warrior is here, trying to emulate the battlemaster.
 ~
 This cyclops isnt fully trained yet, but will put up a good fight.
 ~
@@ -479,9 +489,9 @@ This cyclops isnt fully trained yet, but will put up a good fight.
 #14037
 cyclops cook~
 The Cook~
-The cook stands here stirring a pot on the stove
+The cook stands here, stirring a pot on the stove.
 ~
-The cook is here, cooking something
+The cook is here, cooking something.
 ~
 2|4|64 0 0 S
 44 0 0 0d0+0 0d0+0
@@ -490,11 +500,11 @@ The cook is here, cooking something
 #14038
 cyclops thief~
 The thief~
-A thief scans the area looking for victims.
+A thief scans the area, looking for victims.
 ~
 This cyclops is smaller than other you have seen. Its small size lets
-it sneak in the shadows with great success. Its dual wielded weapons will be
-a great problem to overcome..
+it sneak in the shadows with great success. Its dual-wielded weapons will be
+a great problem for you to overcome.
 ~
 2|4|64|4096 2|8|128|2048|65536 -400 S
 45 0 0 0d0+0 0d0+0
@@ -549,7 +559,7 @@ A
 #14005
 Banded armour~
 some Banded Armour~
-Some very large , sturdy banded armour has been left here.~
+Some very large, sturdy banded armour has been left here.~
 ~
 9 0 1|8
 9~ 0~ 0~ 0~
@@ -559,7 +569,7 @@ A
 #14006
 spiked club~
 a large spiked club~
-A VERY vicious spiked club leans against the wall here pulsating!~
+A VERY vicious spiked club lies here, pulsating!~
 ~
 5 16|64|512 1|8192
 0~ 20~ 40~ 7~
@@ -615,7 +625,7 @@ A
 #14013
 helm~
 the helm of accuracy~
-A very evil looking helmet glows as you look at it.~
+A very evil-looking helmet glows as you look at it.~
 ~
 9 1|16|64 1|16
 10~ 0~ 0~ 0~
@@ -625,7 +635,7 @@ A
 #14014
 ring wizardy~
 the ring of wizardry~
-The ring of a powerful sorcerer looks like it needs a new home~
+The ring of a powerful sorcerer looks like it needs a new home.~
 ~
 9 2|32|64|512 1|2
 6~ 0~ 0~ 0~
@@ -657,7 +667,7 @@ A staff made from animal bone gathers dust at your feet.~
 #14017
 quarterstaff~
 the quarterstaff of protection~
-The quarterstaff hums quitely has you look at it.~
+The quarterstaff hums quietly as you look at it.~
 ~
 5 2|16|64 1|8192
 0~ 30~ 40~ 8~
@@ -701,7 +711,7 @@ A
 #14021
 orb power~
 the orb of power~
-A mighty orb seems to draw you to it, as it glow eminates through the room.~
+A mighty orb seems to draw you to it, as it glow emanates through the room.~
 ~
 1 1|2|512|2048 1
 0~ 0~ -1~ 0~
@@ -711,9 +721,9 @@ A
 A
 18 7
 #14022
-dagger jaggered~
-the jaggered dagger of pain~
-A vicious jaggered dagger is here, covered with the blood of its last victim.~
+dagger jagged~
+the jagged dagger of pain~
+A vicious jagged dagger is here, covered with the blood of its last victim.~
 ~
 5 1|2|16|64|512|2048 1|8192
 0~ 40~ 65~ 11~
@@ -724,8 +734,8 @@ A
 19 12
 #14023
 belt jeweled~
-the kings jeweled belt~
-A jeweled belt of great splender lies before you~
+the king's jeweled belt~
+A jeweled belt of great splendor lies before you.~
 ~
 9 64|128|512 1|2048
 13~ 0~ 0~ 0~
@@ -737,7 +747,7 @@ A
 #14024
 crown~
 a crown of protection~
-A magnificent crown lies here radiating.~
+A magnificent crown lies here, radiating.~
 ~
 9 1|2|64 1|16
 10~ 0~ 0~ 0~
@@ -760,8 +770,8 @@ A
 5 1
 #14026
 goat horn~
-a goats horn~
-You recognise this as a goats horn from one of the heads of a great chimera.~
+a goat's horn~
+You recognise this as a goat's horn from one of the heads of a great chimera.~
 ~
 9 1 1|16
 8~ 0~ 0~ 0~
@@ -821,8 +831,8 @@ A finely crafted obsidian key lies forgotten on the ground~
 0~ 0~ 0~ 0~
 5 0 0
 #14031
-immitation armor~
-immitation armor~
+imitation armor~
+imitation armor~
 This could be really cool armour but its just an illusion.~
 ~
 18 0 1|8
@@ -848,8 +858,8 @@ A piece of old, expensive paper covered in giant script:-
 Your Gracious Majesty Man-thor
 We have dicovered the 'gate' discussed previously and our clerics will soon
 dispel the magic that surronds it. Therefore we should disscuss the plans
-concerning Midgaard, Solace and of course Ofcol. Could you send therefore an
-envoy to talk about operation 'bloody dagger' and our immenient victory.
+concerning Midgaard, Solace and, of course, Ofcol. Could you send therefore an
+envoy to talk about operation 'bloody dagger' and our imminent victory.
 Yours in faith
 Xoric the Great,
 Cyclops leader
@@ -857,7 +867,7 @@ Cyclops leader
 #14033
 warhammer hammer~
 a large warhammer~
-A large warhammer lies here, it is doubtful you could wield such a large weapon.~
+A large warhammer lies here; it is doubtful you could wield such a large weapon.~
 ~
 5 16|64 1|8192
 0~ 15~ 35~ 8~
@@ -869,7 +879,7 @@ A
 #14034
 yellow wand~
 a yellow wand~
-A yellow wand engraved with symbols of fire and the sun, glows on the floor.~
+A yellow wand engraved with symbols of fire and the sun glows on the floor.~
 ~
 3 1|64 1|16384
 40~ 5~ 5~ fireball~
@@ -877,7 +887,7 @@ A yellow wand engraved with symbols of fire and the sun, glows on the floor.~
 #14035
 sledgehammer~
 a sledgehammer~
-A massive sledgehammer rests against the wall here~
+A massive sledgehammer rests against the wall here.~
 ~
 5 0 1|8192
 0~ 20~ 30~ 8~
@@ -889,7 +899,7 @@ A
 #14036
 pickaxe axe pick~
 a pickaxe~
-A pickaxe used for digging up dirt or rocks lies against the wall~
+A pickaxe used for digging up dirt or rocks lies against the wall.~
 ~
 5 0 1|8192
 0~ 20~ 30~ 2~
@@ -897,7 +907,7 @@ A pickaxe used for digging up dirt or rocks lies against the wall~
 #14037
 hot branding iron~
 a hot branding iron~
-A red hot branding iron is burning a hole in the ground here~
+A red hot branding iron is burning a hole in the ground here.~
 ~
 5 1|64|512 1|8192
 0~ 25~ 45~ 6~
@@ -907,7 +917,7 @@ A
 #14038
 green orb~
 a green translucent orb~
-An green see through orb lies sparking on the ground before you.~
+An green see-through orb lies sparking on the ground before you.~
 ~
 4 1|16|32|2048 1|16384
 0~ 3~ 3~ power heal~
@@ -921,9 +931,9 @@ A helm and visor made from crimson steel rests here.~
 10~ 0~ 0~ 0~
 8 0 0
 #14040
-steel breast plate~
-a steel breast plate~
-A breast plate of thick steel rests here.~
+steel breastplate~
+a steel breastplate~
+A breastplate of thick steel rests here.~
 ~
 9 0 1|8
 6~ 0~ 0~ 0~
@@ -943,7 +953,7 @@ Your Gracious Majesty, Primus the worthy
 We have dicovered the 'gate' discussed previously and our clerics will soon
 dispel the magic that surronds it. Therefore we should disscuss the plans
 concerning Midgaard, Solace and of course Ofcol. Could you send therefore an
-envoy to talk about operation 'bloody dagger' and our immenient victory.
+envoy to talk about operation 'bloody dagger' and our imminent victory.
 Yours in faith
 Xoric the Great,
 Cyclops Leader
@@ -959,7 +969,7 @@ An axe used for chopping wood lies here.~
 #14043
 rope coil~
 a coil of rope~
-A thick coil of rope lies in the dust here~
+A thick coil of rope lies in the dust here.~
 ~
 13 0 1|8192
 0~ 0~ 0~ 0~
@@ -967,7 +977,7 @@ A thick coil of rope lies in the dust here~
 #14044
 saw~
 a saw~
-A saw designed for two people is here needing a sharpen~
+A saw designed for two people is here, needing a sharpen.~
 ~
 5 0 1|8192
 0~ 10~ 15~ 1~
@@ -983,7 +993,7 @@ Some rusty armor is here badly needing attention.~
 #14046
 mace spiked broken~
 a broken spiked mace~
-A mace has been broken two-thirds the way up the handle, and many of the spikes are now blunt.~
+The mace has been broken two-thirds the way up the handle, and many of the spikes are now blunt.~
 ~
 5 0 1|8192
 0~ 10~ 20~ 7~
@@ -1003,7 +1013,7 @@ A rather large piece of timber that has just been felled lies here.~
 #14048
 cart wooden~
 a wooden cart~
-A cart used for hauling logs is here still half laden.~
+A cart used for hauling logs is here, still half-laden.~
 ~
 15 0 0
 1000~ 1~ 6~ 0~
@@ -1011,7 +1021,7 @@ A cart used for hauling logs is here still half laden.~
 #14049
 robe black~
 a pitch-black robe~
-The pitch-black robe eminates darkness.~
+The pitch-black robe emanates darkness.~
 ~
 9 2|512 1|1024
 12~ 0~ 0~ 0~
@@ -1021,7 +1031,7 @@ A
 #14050
 blunt hammer smithy's~
 a smithy's hammer~
-A smithy's hammer lies here waiting to pound some more metal~
+A smithy's hammer lies here waiting to pound some more metal.~
 ~
 37 64|512 1|8192
 0~ 40~ 45~ 7~
@@ -1045,7 +1055,7 @@ A
 #14052
 apron smithy's~
 a smithy's apron~
-An apron belonging to a smithy lies here~
+An apron belonging to a smithy lies here.~
 ~
 9 1 1|2048
 8~ 0~ 0~ 0~
@@ -1111,7 +1121,7 @@ A
 #14057
 vambraces crimson steel~
 a pair of crimson steel vambraces~
-Some vambraces made of crimson steel rest here~
+Some vambraces made of crimson steel rest here.~
 ~
 9 0 1|256
 10~ 0~ 0~ 0~
@@ -1119,7 +1129,7 @@ Some vambraces made of crimson steel rest here~
 #14058
 greaves steel crimson~
 a pair of crimson steel greaves~
-Some greaves made from crimson steel rest here~
+Some greaves made from crimson steel rest here.~
 ~
 9 0 1|32
 10~ 0~ 0~ 0~
@@ -1127,7 +1137,7 @@ Some greaves made from crimson steel rest here~
 #14059
 star morning morningstar~
 a huge morningstar~
-A huge morning star rests here~
+A huge morning star rests here.~
 ~
 5 64 1|8192
 0~ 7~ 30~ 11~
@@ -1154,7 +1164,7 @@ A
 #14061
 black silk robe~
 a black silk robe~
-A black silk robe lies heaped in one corner~
+A black silk robe lies heaped in one corner.~
 ~
 9 0 1|1024
 15~ 0~ 0~ 0~
@@ -1166,7 +1176,7 @@ A
 #14062
 long slim dagger~
 a long slim dagger~
-A long slim dagger has been left here~
+A long slim dagger has been left here.~
 ~
 5 0 1|8192
 0~ 20~ 45~ 11~
@@ -1190,7 +1200,7 @@ A
 #14064
 silk golden~
 golden silk~
-Some golden silk lies in a heap here~
+Some golden silk lies in a heap here.~
 ~
 9 1|2|64 1|128
 12~ 0~ 0~ 0~
@@ -1220,7 +1230,7 @@ A piece of corn lies on the floor.~
 #14067
 dark amulet~
 a dark amulet~
-A dark amulet eminates evil as you look at it.~
+A dark amulet emanates evil as you look at it.~
 ~
 9 1|16|128|512 1|4
 6~ 0~ 0~ 0~
@@ -1242,7 +1252,7 @@ A rickety cart is here half full with wood.~
 #14069
 padded armor~
 some padded armor~
-Some well padded armor lies forgotten in a heap~
+Some well-padded armor lies forgotten in a heap.~
 ~
 9 512 1|8
 14~ 0~ 0~ 0~
@@ -1252,7 +1262,7 @@ A
 #14070
 club~
 a club~
-An ordinary club lies here~
+An ordinary club lies here.~
 ~
 5 0 1|8192
 0~ 10~ 15~ 8~
@@ -1262,7 +1272,7 @@ A
 #14071
 robe translucent~
 a translucent robe~
-A translucent pile of cloth glows in the corner~
+A translucent pile of cloth glows in the corner.~
 ~
 9 1|64|1024 1|1024
 14~ 0~ 0~ 0~
@@ -1276,7 +1286,7 @@ A
 #14072
 deer skin~
 a deer skin~
-A skin of a deer is lying at your feet~
+A skin of a deer is lying at your feet.~
 ~
 9 0 1|8
 3~ 0~ 0~ 0~
@@ -1292,7 +1302,7 @@ A hunting knife is here still covered in blood.~
 #14074
 potion indigo~
 an indigo potion~
-An indigo potion lies here~
+An indigo potion lies here.~
 ~
 10 1 1
 40~ shield~ energy containment~ inertial barrier~
@@ -1300,7 +1310,7 @@ An indigo potion lies here~
 #14075
 wooden spoon~
 a wooden spoon~
-A large wooden spoon is here~
+A large wooden spoon is here.~
 ~
 5 64 1|8192
 0~ 30~ 40~ 7~
@@ -1308,7 +1318,7 @@ A large wooden spoon is here~
 #14076
 net fishermans~
 a fishermans net~
-A net used for catching fish is here~
+A net used for catching fish is here.~
 ~
 5 0 1|8192
 0~ 20~ 35~ 9~
@@ -1344,7 +1354,7 @@ A
 #14001
 Woodland~
 You travel through the dense woodland. You cannot see the sky as the limbs
-of the huge trees that surrond you block the view and the light. To the
+of the huge trees that surround you block the view and the light. To the
 west you can just see a clearing; to get to it would mean pushing your way
 through the thick foliage.
 ~
@@ -2210,9 +2220,9 @@ The furnace~
 As you enter the furnace youe hair quickly catches on fire, followed by your
 skin. As you feel the fire burn you to ashes you figure it would be wise to
 read discriptions of rooms and exits in the future.
-YOU ARE DEAD!!
+YOU ARE DYING!!
 ~
-0 1|4 0
+0 1|4|262144 0
 S
 #14055
 The long tunnel~
@@ -2627,7 +2637,7 @@ S
 Narrow Fissure~
 The tunnel narrows here to be just 2 feet wide and 6 feet high, just right for
 you but a bit of a squeeze for a 10 foot cyclops. As you bend your head to
-pass you notice that there are alot of hand-prints in the dust on the floor.
+pass you notice that there are a lot of hand-prints in the dust on the floor.
 Obviously ALOT of cyclops have crawled on there hands and knees through here.
 Looking southwards you see light, perhaps an exit? Heading north you can go
 back towards the underground river.
@@ -3919,7 +3929,7 @@ D 1 14028 3 1                        ; Cave Dwelling Close West
 D 1 14030 1 1                        ; Cave Dwelling. Close East
 D 1 14029 3 1                        ; T-intersection Close West
 *
-M 1 14038 1 14031			a cyclops thief to abandoned dwelling
+M 1 14038 1 14031               a cyclops thief to abandoned dwelling
 E 1 14028 100 11
 E 1 14053 100 9
 E 1 14003 100 16

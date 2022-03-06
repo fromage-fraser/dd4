@@ -144,7 +144,7 @@ char* spec_fun_name (CHAR_DATA *ch)
     // fprintf(stderr, "spec lookup var: %p\r\n", spec_lookup("spec_cast_hooker"));
 
     if ( IS_NPC(ch)
-        &&   ch->spec_fun )
+         &&   ch->spec_fun )
     {
         if (ch->spec_fun == spec_lookup("spec_breath_any"))         return "spec_breath_any";
         if (ch->spec_fun == spec_lookup("spec_breath_acid"))        return "spec_breath_acid";
@@ -2482,7 +2482,7 @@ bool spec_demon( CHAR_DATA *ch )
                     case  12: do_say(ch,"{RPerish in flame!{x");
                                 min_level = 50; spell = "fire breath";    break;
                     default: do_say(ch,"{RBy the Dark Lord's power!{x");
-                                min_level = 25; spell = "hells fire";     break;
+                                min_level = 25; spell = "hellfire";     break;
                 }
 
                 if ( ch->level >= min_level )

@@ -6,9 +6,9 @@
 
 /* Starting Skills */
 
-{&gsn_group_armed,              &gsn_ranger_base,      30,     PRE_RANGER},
-{&gsn_group_defense,            &gsn_ranger_base,      30,     PRE_RANGER},
-{&gsn_group_thievery,           &gsn_ranger_base,      30,     PRE_RANGER},
+{&gsn_group_armed,              &gsn_ranger_base,       30,     PRE_RANGER},
+{&gsn_group_defense,            &gsn_ranger_base,       30,     PRE_RANGER},
+{&gsn_group_thievery,           &gsn_ranger_base,       30,     PRE_RANGER},
 
 {&gsn_forage,                   &gsn_ranger_base,       39,     PRE_RANGER},
 {&gsn_dowse,                    &gsn_ranger_base,       39,     PRE_RANGER},

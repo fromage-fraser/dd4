@@ -747,10 +747,12 @@ S
 #SPECIALS
 M 9900 spec_cast_cleric
 M 9901 spec_cast_mage
-M 9904 spec_cast_mage
-M 9906 spec_cast_mage
-M 9907 spec_cast_undead
-M 9908 spec_cast_mage
+M 9903 spec_demon
+M 9904 spec_demon
+M 9905 spec_demon
+M 9906 spec_demon
+M 9907 spec_demon
+M 9908 spec_demon
 M 9909 spec_breath_gas
 M 9910 spec_cast_cleric
 M 9911 spec_thief

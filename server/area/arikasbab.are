@@ -1,4 +1,4 @@
-#AREA	Thorne~ Arika's Bed & Breakfast~
+#AREA   Thorne~ Arika's Bed & Breakfast~
 -2 -2 0 100
 
 #MOBILES
@@ -911,7 +911,7 @@ E
 white shirt~
 The white shirt looks very clean and a little stiff as if it has been starched many times.
 There is a red emblem embroidered onto the pocket with the letters     A    in the centre.
-								      B&B
+                                                                      B&B
 ~
 #28326
 white trousers~
@@ -1012,7 +1012,7 @@ white apron~
 The white linen apron looks very clean and a little stiff as if it has been
 starched many times.
 There is a red emblem embroidered onto one corner of the apron with the letters  A
-in the centre.                              					B&B
+in the centre.                                                                  B&B
 ~
 #28332
 long white dress~
@@ -3471,18 +3471,18 @@ S
 
 
 #RESETS
-O 1 28300 100 28309			a large mahogany desk to the office
-O 1 28301 100 28347			a large oven to in the kitchen
-O 1 28302 100 28348			a long bench to in the kitchen
+O 1 28300 100 28309         a large mahogany desk to the office
+O 1 28301 100 28347         a large oven to in the kitchen
+O 1 28302 100 28348         a long bench to in the kitchen
 *
-M 1 28300 1 28301			the shadow to a cosy dining room
+M 1 28300 1 28301           the shadow to a cosy dining room
 E 1 28384 100 17
 E 1 28386 100 12
 E 1 28385 100 16
-O 1 28303 100 28330			a small antique table to a corridor
-O 1 28303 100 28313			a small antique table to a corridor
+O 1 28303 100 28330         a small antique table to a corridor
+O 1 28303 100 28313         a small antique table to a corridor
 *
-M 1 28301 1 28344			the Vampire to a dusty attic
+M 1 28301 1 28344           the Vampire to a dusty attic
 E 1 28304 100 12
 E 1 28305 100 18
 E 1 28306 100 16
@@ -3490,22 +3490,22 @@ E 1 28307 100 7
 E 1 28308 100 5
 E 1 28309 100 6
 E 1 28310 100 8
-O 1 28311 100 28344			a four-poster bed to a dusty attic
-O 1 28312 100 28322			a wrought-iron table and chairs to on the balcony
-O 1 28313 100 28320			a large plant box to on the balcony
-P 1 28314 100 28313			small purple herbs to container plant box
-P 1 28315 100 28313			small purple herbs to container plant box
-P 1 28316 100 28313			small purple herbs to container plant box
-O 1 28317 100 28317			a large plant box to on the balcony
-O 1 28320 100 28316			a four-poster bed to Arika's private quarters
-P 1 28318 100 28317			fuzzy red herbs to container plant box
-P 1 28319 100 28317			tiny blue flowers to container plant box
-O 1 28321 100 28302			a large plant box to outside a homestead
-P 1 28322 100 28321			red carnations to container plant box
-O 1 28323 100 28303			a large plant box to outside a homestead
-P 1 28324 100 28323			purple violets to container plant box
+O 1 28311 100 28344         a four-poster bed to a dusty attic
+O 1 28312 100 28322         a wrought-iron table and chairs to on the balcony
+O 1 28313 100 28320         a large plant box to on the balcony
+P 1 28314 100 28313         small purple herbs to container plant box
+P 1 28315 100 28313         small purple herbs to container plant box
+P 1 28316 100 28313         small purple herbs to container plant box
+O 1 28317 100 28317         a large plant box to on the balcony
+O 1 28320 100 28316         a four-poster bed to Arika's private quarters
+P 1 28318 100 28317         fuzzy red herbs to container plant box
+P 1 28319 100 28317         tiny blue flowers to container plant box
+O 1 28321 100 28302         a large plant box to outside a homestead
+P 1 28322 100 28321         red carnations to container plant box
+O 1 28323 100 28303         a large plant box to outside a homestead
+P 1 28324 100 28323         purple violets to container plant box
 *
-M 1 28302 1 28347			the Chef to in the kitchen
+M 1 28302 1 28347           the Chef to in the kitchen
 E 1 28325 100 5
 E 1 28326 100 7
 E 1 28327 100 6
@@ -3514,154 +3514,154 @@ E 1 28329 100 1
 E 1 28330 100 16
 E 1 28331 100 13
 *
-M 1 28304 1 28349			the waitress to a dusty wine cellar
+M 1 28304 1 28349           the waitress to a dusty wine cellar
 E 1 28331 100 13
 E 1 28332 100 5
 E 1 28333 100 6
 E 1 28334 100 8
 E 1 28336 100 4
 G 1 28347 100
-O 1 28335 100 28349			a large iron lamp to a dusty wine cellar
-O 1 28337 100 28312			a wrought-iron chair to a guest room
-O 1 28338 100 28312			a wrought-iron bed to a guest room
+O 1 28335 100 28349         a large iron lamp to a dusty wine cellar
+O 1 28337 100 28312         a wrought-iron chair to a guest room
+O 1 28338 100 28312         a wrought-iron bed to a guest room
 *
-M 1 28305 1 28314			the Fat Merchant to a guest room
+M 1 28305 1 28314           the Fat Merchant to a guest room
 E 1 28339 100 12
 G 1 28383 100
 *
-M 1 28303 1 28315			the Powerful Centaur to Arika's private quarters
+M 1 28303 1 28315           the Powerful Centaur to Arika's private quarters
 E 1 28341 100 16
 E 1 28342 100 5
 E 1 28343 100 10
 E 1 28344 100 8
 E 1 28392 100 18
 *
-M 1 28307 1 28306			wizinvis mob to at the counter
-O 1 28350 100 28314			a statue of an Egyptian dog to a guest room
-O 1 28351 100 28314			a raised sleeping platform to a guest room
-O 1 28352 100 28315			a mahogany bookcase to Arika's private quarters
-O 1 28353 100 28319			a four-poster bed to a guest room
-O 1 28354 100 28319			a tall candelabra to a guest room
+M 1 28307 1 28306           wizinvis mob to at the counter
+O 1 28350 100 28314         a statue of an Egyptian dog to a guest room
+O 1 28351 100 28314         a raised sleeping platform to a guest room
+O 1 28352 100 28315         a mahogany bookcase to Arika's private quarters
+O 1 28353 100 28319         a four-poster bed to a guest room
+O 1 28354 100 28319         a tall candelabra to a guest room
 *
-M 1 28308 1 28329			the Pretty Blonde to a guest room
+M 1 28308 1 28329           the Pretty Blonde to a guest room
 E 1 28355 100 5
 E 1 28356 100 14
 G 1 28360 100
-D 1 28300 0 1			; outside a homestead Close North
-D 1 28310 3 1			; before the stairs Close West
-D 1 28348 5 1			; in the kitchen Close Down
-D 1 28349 4 1			; a dusty wine cellar Close Up
-D 1 28311 0 2			; top of the stairs Lock North
-D 1 28313 0 2			; a corridor Lock North
-D 1 28313 2 1			; a corridor Close South
-D 1 28318 0 2			; a corridor Lock North
-D 1 28318 3 1			; a corridor Close West
-D 1 28321 3 1			; a corridor Close West
-D 1 28316 2 1			; Arika's private quarters Close South
-D 1 28326 4 2			; top of the stairs Lock Up
-D 1 28327 1 1			; a corridor Close East
-D 1 28328 0 2			; a corridor Lock North
-D 1 28330 0 2			; a corridor Lock North
-D 1 28330 2 1			; a corridor Close South
-D 1 28333 0 2			; a corridor Lock North
-D 1 28333 2 2			; a corridor Lock South
+D 1 28300 0 1           ; outside a homestead Close North
+D 1 28310 3 1           ; before the stairs Close West
+D 1 28348 5 1           ; in the kitchen Close Down
+D 1 28349 4 1           ; a dusty wine cellar Close Up
+D 1 28311 0 2           ; top of the stairs Lock North
+D 1 28313 0 2           ; a corridor Lock North
+D 1 28313 2 1           ; a corridor Close South
+D 1 28318 0 2           ; a corridor Lock North
+D 1 28318 3 1           ; a corridor Close West
+D 1 28321 3 1           ; a corridor Close West
+D 1 28316 2 1           ; Arika's private quarters Close South
+D 1 28326 4 2           ; top of the stairs Lock Up
+D 1 28327 1 1           ; a corridor Close East
+D 1 28328 0 2           ; a corridor Lock North
+D 1 28330 0 2           ; a corridor Lock North
+D 1 28330 2 1           ; a corridor Close South
+D 1 28333 0 2           ; a corridor Lock North
+D 1 28333 2 2           ; a corridor Lock South
 *
-M 1 28306 1 28309			the Proprietor to the office
+M 1 28306 1 28309           the Proprietor to the office
 G 1 28393 100
 *
-D 1 28312 2 2			; a guest room Lock South
-D 1 28314 2 2			; a guest room Lock South
-D 1 28319 2 2			; a guest room Lock South
-D 1 28320 1 1			; on the balcony Close East
-D 1 28322 1 1			; on the balcony Close East
-D 1 28341 5 2			; a dusty attic Lock Down
-D 1 28350 3 1			; the linen closet Close West
-D 1 28329 2 2			; a guest room Lock South
-D 1 28331 2 2			; a guest room Lock South
-D 1 28332 0 1			; a guest room Close North
-D 1 28334 2 2			; a guest room Lock South
-D 1 28335 0 2			; a guest room Lock North
-D 1 28315 0 1			; Arika's private quarters Close North
-D 1 28317 0 1			; on the balcony Close North
-D 1 28345 1 1			; behind the counter Close East
-D 1 28301 2 1			; a cosy dining room Close South
-O 1 28365 100 28329			a four-poster bed to a guest room
-O 1 28366 100 28335			a four-poster bed to a guest room
-O 1 28367 100 28335			a lounge suite to a guest room
-O 1 28368 100 28331			a large suit of armour to a guest room
-O 1 28369 100 28331			a wrought-iron chair to a guest room
-O 1 28370 100 28331			a wrought-iron bed to a guest room
+D 1 28312 2 2           ; a guest room Lock South
+D 1 28314 2 2           ; a guest room Lock South
+D 1 28319 2 2           ; a guest room Lock South
+D 1 28320 1 1           ; on the balcony Close East
+D 1 28322 1 1           ; on the balcony Close East
+D 1 28341 5 2           ; a dusty attic Lock Down
+D 1 28350 3 1           ; the linen closet Close West
+D 1 28329 2 2           ; a guest room Lock South
+D 1 28331 2 2           ; a guest room Lock South
+D 1 28332 0 1           ; a guest room Close North
+D 1 28334 2 2           ; a guest room Lock South
+D 1 28335 0 2           ; a guest room Lock North
+D 1 28315 0 1           ; Arika's private quarters Close North
+D 1 28317 0 1           ; on the balcony Close North
+D 1 28345 1 1           ; behind the counter Close East
+D 1 28301 2 1           ; a cosy dining room Close South
+O 1 28365 100 28329         a four-poster bed to a guest room
+O 1 28366 100 28335         a four-poster bed to a guest room
+O 1 28367 100 28335         a lounge suite to a guest room
+O 1 28368 100 28331         a large suit of armour to a guest room
+O 1 28369 100 28331         a wrought-iron chair to a guest room
+O 1 28370 100 28331         a wrought-iron bed to a guest room
 *
-M 1 28309 1 28350			the Maid to the linen closet
+M 1 28309 1 28350           the Maid to the linen closet
 E 1 28372 100 8
 E 1 28373 100 5
 E 1 28331 100 13
 E 1 28371 100 17
 G 1 28362 100
 G 1 28379 100
-D 1 28333 1 1			; a corridor Close East
-D 1 28336 3 1			; a large bathroom Close West
-D 1 28336 0 2			; a large bathroom Lock North
-D 1 28337 2 1			; a laundry room Close South
-D 1 28336 2 1			; a large bathroom Close South
-D 1 28338 0 1			; a toilet cubicle Close North
-D 1 28311 1 1			; top of the stairs Close East
-D 1 28324 3 1			; A large bathroom Close West
-D 1 28324 0 2			; A large bathroom Lock North
-D 1 28325 2 1			; a laundry room Close South
-D 1 28324 2 1			; A large bathroom Close South
-D 1 28339 0 1			; a toilet cubicle Close North
-D 1 28340 0 1			private bathroom Close North
-D 1 28355 2 1			toilet cubicle Close South
-O 1 28375 100 28339			a toilet to a toilet cubicle
-O 1 28375 100 28338			a toilet to a toilet cubicle
-O 1 28376 100 28337			storage cupboards to a laundry room
-O 1 28377 100 28325			storage cupboards to a laundry room
-P 1 28378 100 28376			mops, brooms and cleaning products to container storage cupboards
-P 1 28378 100 28377			mops, brooms and cleaning products to container storage cupboards
+D 1 28333 1 1           ; a corridor Close East
+D 1 28336 3 1           ; a large bathroom Close West
+D 1 28336 0 2           ; a large bathroom Lock North
+D 1 28337 2 1           ; a laundry room Close South
+D 1 28336 2 1           ; a large bathroom Close South
+D 1 28338 0 1           ; a toilet cubicle Close North
+D 1 28311 1 1           ; top of the stairs Close East
+D 1 28324 3 1           ; A large bathroom Close West
+D 1 28324 0 2           ; A large bathroom Lock North
+D 1 28325 2 1           ; a laundry room Close South
+D 1 28324 2 1           ; A large bathroom Close South
+D 1 28339 0 1           ; a toilet cubicle Close North
+D 1 28340 0 1           private bathroom Close North
+D 1 28355 2 1           toilet cubicle Close South
+O 1 28375 100 28339         a toilet to a toilet cubicle
+O 1 28375 100 28338         a toilet to a toilet cubicle
+O 1 28376 100 28337         storage cupboards to a laundry room
+O 1 28377 100 28325         storage cupboards to a laundry room
+P 1 28378 100 28376         mops, brooms and cleaning products to container storage cupboards
+P 1 28378 100 28377         mops, brooms and cleaning products to container storage cupboards
 *
-M 1 28310 1 28334			the Ghostly Apparition to a guest room
+M 1 28310 1 28334           the Ghostly Apparition to a guest room
 *
-M 1 28311 1 28316			the fat black cat to Arika's private quarters
-O 1 28380 100 28337			laundry basket to a laundry room
-P 1 28381 100 28380			a fluorescent green stone to container basket
-O 1 28382 100 28352			{Y the Golden Dragon Idol {x to The Sanctuary
-P 1 28346 100 28301			travel bread to container oven
-P 1 28357 100 28300			key one to the desk
-P 1 28358 100 28300			key two to the desk
-P 1 28359 100 28300			key three to the desk
-P 1 28360 100 28300			key four to the desk
-P 1 28361 100 28300			key five to the desk
-P 1 28362 100 28300			key six to the desk
-P 1 28363 100 28300			key seven to the desk
-P 1 28364 100 28300			key eight to the desk
-P 1 28340 100 28339			purse to container silk robe
-P 1 28358 100 28339			key to container silk robe
+M 1 28311 1 28316           the fat black cat to Arika's private quarters
+O 1 28380 100 28337         laundry basket to a laundry room
+P 1 28381 100 28380         a fluorescent green stone to container basket
+O 1 28382 100 28352         {Y the Golden Dragon Idol {x to The Sanctuary
+P 1 28346 100 28301         travel bread to container oven
+P 1 28357 100 28300         key one to the desk
+P 1 28358 100 28300         key two to the desk
+P 1 28359 100 28300         key three to the desk
+P 1 28360 100 28300         key four to the desk
+P 1 28361 100 28300         key five to the desk
+P 1 28362 100 28300         key six to the desk
+P 1 28363 100 28300         key seven to the desk
+P 1 28364 100 28300         key eight to the desk
+P 1 28340 100 28339         purse to container silk robe
+P 1 28358 100 28339         key to container silk robe
 *
-M 1 28312 1 28351			Bob to The Sanctuary
+M 1 28312 1 28351           Bob to The Sanctuary
 E 1 28387 100 17
 E 1 28388 100 5
 E 1 28389 100 7
 E 1 28390 100 8
-O 1 28391 100 28332			a wrought-iron bed to a guest room
+O 1 28391 100 28332         a wrought-iron bed to a guest room
 S
 
 
 #SHOPS
-28304 0 0 0 0 0 100 100 0 23			the Waitress
-28305 8 36 0 0 0 200 300 0 23			the Fat Merchant
+28304 0 0 0 0 0 100 100 0 23            the Waitress
+28305 8 36 0 0 0 200 300 0 23           the Fat Merchant
 0
 
 
 #SPECIALS
-M  28300 spec_guard						the Shadow
-M  28301 spec_mast_vampire				the Vampire
-M  28303 spec_warrior					Centaur
-M  28306 spec_cast_archmage				Arika
-M  28308 spec_cast_adept				the Pretty Blonde
-M  28309 spec_janitor					the Maid
-M  28311 spec_fido						the Fat Black Cat
-M  28312 spec_cast_psionicist			Bob
+M  28300 spec_guard                     the Shadow
+M  28301 spec_mast_vampire              the Vampire
+M  28303 spec_warrior                   Centaur
+M  28306 spec_cast_archmage             Arika
+M  28308 spec_cast_adept                the Pretty Blonde
+M  28309 spec_janitor                   the Maid
+M  28311 spec_fido                      the Fat Black Cat
+M  28312 spec_cast_psionicist           Bob
 S
 
 

@@ -1,4 +1,4 @@
-#AREA	Anon~    Tower of Sorcery~
+#AREA   Anon~    Tower of Sorcery~
 10 30 0 100
 
 
@@ -4953,7 +4953,7 @@ S
 
 
 #RESETS
-R 0 1301 4		 Randomize exits in shadow grove
+R 0 1301 4       Randomize exits in shadow grove
 R 0 1302 4
 R 0 1303 4
 R 0 1304 4
@@ -4963,7 +4963,7 @@ R 0 1307 4
 R 0 1308 4
 R 0 1309 4
 *
-R 0 1392 6		Randomize master summoner's chamber
+R 0 1392 6      Randomize master summoner's chamber
 *
 M 0 1300 6 1302          Shadow Guardian
 M 0 1300 6 1304          Shadow Guardian
@@ -5378,8 +5378,8 @@ S
 
 
 #SHOPS
- 1305	17 19  0  0  0	 210  50	 0 23	; Strick the Bartender
- 1306	 2  3  4 10 21	 250  30	 0 23	; Tatorious the Wizard
+ 1305   17 19  0  0  0   210  50     0 23   ; Strick the Bartender
+ 1306    2  3  4 10 21   250  30     0 23   ; Tatorious the Wizard
 0
 
 

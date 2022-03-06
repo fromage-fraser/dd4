@@ -1627,11 +1627,14 @@ void do_pray (CHAR_DATA *ch, char *argument)
         if (!allow_deity_command(ch))
                 return;
 
+        /*
         if (ch->level > LEVEL_HERO)
         {
                 send_to_char("Immortals may not pray to deities.\n\r", ch);
                 return;
         }
+        Religious bigotry removed 2/3/22 by Owl.  Add back if it creates problems, Gezhp. ;)
+        */
 
         /*
          * Temporary

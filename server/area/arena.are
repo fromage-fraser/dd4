@@ -21,7 +21,7 @@ S
 #14201
 Junction~
 An entrance-way leads to a bridge just to the east.  The bridge runs over a
-moat of acid that surronds a square battlefield.  You can head east across
+moat of acid that surrounds a square battlefield.  You can head east across
 the bridge or north-south along a red hallway.
 ~
 0 8|32768 0
@@ -105,7 +105,7 @@ S
 Hallway of the Holy~
 This hall seems to commemorate the victories of the most holy of clerics.
 A painting is etched here on the wall.  It depicts a fight between the great
-Cleric Vyana and a huge giant warrior. T he warrior is surronded by a pink
+Cleric Vyana and a huge giant warrior. T he warrior is surrounded by a pink
 aura, and the cleric by a white aura.  The giant seems scorched , probably
 by a column of flame called to earth by the cleric.  Vyana with her huge
 mace is now finishing off the giant with a strike to the crotch.
@@ -127,7 +127,7 @@ S
 Hallway of the Holy~
 This hall seems to commemorate the victories of the most holy of clerics.
 A painting is etched here on the wall.  It depicts a fight between the great
-Cleric Vyana and a huge giant warrior. T he warrior is surronded by a pink
+Cleric Vyana and a huge giant warrior. T he warrior is surrounded by a pink
 aura, and the cleric by a white aura.  The giant seems scorched , probably
 by a column of flame called to earth by the cleric.  Vyana with her huge
 mace is now finishing off the giant with a strike to the crotch.
@@ -147,7 +147,7 @@ S
 #14207
 Junction~
 An entrance-way leads to a bridge just to the south.  The bridge runs over a
-moat of acid that surronds a square battlefield.  You can head south across
+moat of acid that surrounds a square battlefield.  You can head south across
 the bridge or west-east along a white hallway.
 ~
 0 8|32768 0
@@ -169,12 +169,12 @@ A white hallway.
 S
 #14208
 Hallway of the Holy~
-You stand in a white hallway dedicated to the galant clerics who have
+You stand in a white hallway dedicated to the gallant clerics who have
 triumphed in this hell-hole.  Depicted on the wall is a battle of magic.
 A human cleric and an elven mage exchange spells from across a large square
-surronded by a green liquid.  The mage is down on one knee clutching his
+surrounded by a green liquid.  The mage is down on one knee clutching his
 chest as a harm spell rips through him.  The fireball he has just sent
-injures the cleric, but the white aura that surounds him prevents much of
+injures the cleric, but the white aura that surrounds him prevents much of
 the damage.
 ~
 0 8|32768 0
@@ -191,12 +191,12 @@ An intersection.
 S
 #14209
 Hallway of the Holy~
-You stand in a white hallway dedicated to the galant clerics who have
+You stand in a white hallway dedicated to the gallant clerics who have
 triumphed in this hell-hole.  Depicted on the wall is a battle of magic.
 A human cleric and an elven mage exchange spells from across a large square
-surronded by a green liquid.  The mage is down on one knee clutching his
+surrounded by a green liquid.  The mage is down on one knee clutching his
 chest as a harm spell rips through him.  The fireball he has just sent
-injures the cleric, but the white aura that surounds him prevents much of
+injures the cleric, but the white aura that surrounds him prevents much of
 the damage.
 ~
 0 8|32768 0
@@ -233,7 +233,7 @@ S
 #14211
 Hallway of the Warrior~
 You stand in a blue hall dedicated to the legendary warriors who have
-overcome immense obstacles and triumped in this Castle of Death.  A massive
+overcome immense obstacles and triumphed in this Castle of Death.  A massive
 mural covers the wall here and to the north.  It shows a great battle
 between a group of warriors and magic-users.  Fireballs leap from one magic
 user's hand just as he is slain by a fighter dressed in obsidian.  Another
@@ -255,7 +255,7 @@ S
 #14212
 Hallway of the Warrior~
 You stand in a blue hall dedicated to the legendary warriors who have
-overcome immense obstacles and triumped in this Castle of Death.  A massive
+overcome immense obstacles and triumphed in this Castle of Death.  A massive
 mural covers the wall here and to the north.  It shows a great battle
 between a group of warriors and magic-users.  Fireballs leap from one magic
 user's hand just as he is slain by a fighter dressed in obsidian.  Another
@@ -306,12 +306,12 @@ S
 #14214
 Hallway of the Warrior~
 You stand in a blue hall dedicated to the legendary warriors who have
-overcome immense obstacles and triumped in this Castle of Death.  A huge
+overcome immense obstacles and triumphed in this Castle of Death.  A huge
 mural covers the wall, depicting a battle between three magic-users and a
 solitary dwarven warrior.  The fighter wields a large two-headed axe, and
 systematically slays the magic-users whilst taking damage from their
 fireballs.  This mural seems to be blackened, probably from a magic-user's
-fireball trying to erase this obviously embarrasing scene.
+fireball trying to erase this obviously embarrassing scene.
 ~
 0 8|32768 0
 D0
@@ -328,12 +328,12 @@ S
 #14215
 Hallway of the Warrior~
 You stand in a blue hall dedicated to the legendary warriors who have
-overcome immense obstacles and triumped in this Castle of Death.  A huge
+overcome immense obstacles and triumphed in this Castle of Death.  A huge
 mural covers the wall, depicting a battle between three magic-users and a
 solitary dwarven warrior.  The fighter wields a large two-headed axe, and
 systematically slays the magic-users whilst taking damage from their
 fireballs.  This mural seems to be blackened, probably from a magic-user's
-fireball trying to erase this obviously embarrasing scene.
+fireball trying to erase this obviously embarrassing scene.
 ~
 0 8|32768 0
 D0
@@ -408,7 +408,7 @@ S
 #14219
 Junction~
 An entrance-way leads to a bridge just to the north.  The bridge runs over a
-moat of acid that surronds a square battlefield.  You can head north across
+moat of acid that surrounds a square battlefield.  You can head north across
 the bridge or west-east along a black hallway.
 ~
 0 1|8|32768 0
@@ -531,7 +531,7 @@ S
 Wooden Bridge~
 You stand on a wooden bridge.  It runs over a stream of acid that completely
 encircles an open square battle field to the west.  Looking down, you notice
-the thick green acid, slowly comsuming a corpse.  The acid hisses and a
+the thick green acid, slowly consuming a corpse.  The acid hisses and a
 lucid green smoke rises from the corpse, burning your eyes and throat.  You
 can proceed to the east to meet your maker, or back to the junction to the
 west.
@@ -673,7 +673,7 @@ your maker, or back to the junction to the north.
 ~
 0 32768 1
 D0
-An interestion.
+An intersection.
 ~
 ~
 0 -1 14207
@@ -687,9 +687,9 @@ S
 The Arena~
 You stand in the arena of this mighty castle.  Many a battle has been fought
 on this very ground.  Looking around the dirt beneath your feet has been
-stained a dark red, and many bones lie scatterd around.  The odd weapon can
+stained a dark red, and many bones lie scattered around.  The odd weapon can
 be seen as well as many corpses and limbs...  You feel your stomach moves as
-you trip over a body, half of which has been eated away by a blast of acid.
+you trip over a body, half of which has been eaten away by a blast of acid.
 ~
 0 32768 2
 D0
@@ -717,10 +717,10 @@ S
 The Arena~
 You stand in the arena of this mighty castle.  Many a battle has been fought
 on this very ground.  Looking around the dirt beneath your feet has been
-stained a dark red, and many bones lie scatterd around.  The odd weapon can
+stained a dark red, and many bones lie scattered around.  The odd weapon can
 be seen as well as many corpses and limbs...  There is a black crispy
-substance lying at your feet surronded by alot of armor.  It seems some poor
-warrior has been disintergrated.
+substance lying at your feet surrounded by a lot of armor.  It seems some poor
+warrior has been disintegrated.
 ~
 0 32768 2
 D0
@@ -770,7 +770,7 @@ You stand in the arena of this mighty castle.  Many a battle has been fought
 on this very ground.  Looking around the dirt beneath your feet has been
 stained a dark red, and many bones lie scattered around.  The odd weapon can
 be seen as well as many corpses and limbs...  Squish!!  Looking down you see
-what you have stood in.  Some poor cleric has been disemboweled, and you have
+what you have stood in.  Some poor cleric has been disembowelled, and you have
 got intestine all over your boots.
 ~
 0 32768 2
@@ -810,8 +810,8 @@ The Arena~
 You stand in the arena of this mighty castle.  Many a battle has been fought
 on this very ground.  Looking around the dirt beneath your feet has been
 stained a dark red, and many bones lie scattered around.  The odd weapon can
-be seen as well as many corpses and limbs...  You tred carefully, trying not
-to stand in the brains leaking from a gaping wound in a thieve's skull.
+be seen as well as many corpses and limbs...  You tread carefully, trying not
+to stand in the brains leaking from a gaping wound in a thief's skull.
 ~
 0 32768 2
 D2
@@ -855,7 +855,7 @@ S
 #14239
 The Pit~
 You stand in a dark, damp smelly pit.  You can head in any direction, except
-down.  There is a ladder leading upto the arena.
+down.  There is a ladder leading up to the arena.
 ~
 0 1|8|512|32768 0
 D0
@@ -881,7 +881,7 @@ D4
 S
 #14240
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -902,7 +902,7 @@ D3
 S
 #14241
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -923,7 +923,7 @@ D3
 S
 #14242
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -944,7 +944,7 @@ D2
 S
 #14243
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -965,7 +965,7 @@ D3
 S
 #14244
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -982,7 +982,7 @@ D3
 S
 #14245
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -1011,11 +1011,11 @@ D3
 E
 sign~
 {x                      Welcome to the Arena
-		In these four walls , anything goes.
-		 Here your firends are your enemies.
-		   Complaining is frowned upon
-	 		    And lastly:
-		May your stay here be ....... brief!
+                In these four walls , anything goes.
+                 Here your friends are your enemies.
+                   Complaining is frowned upon
+                            And lastly:
+                May your stay here be ....... brief!
 ~
 S
 #14247
@@ -1038,7 +1038,7 @@ An intersection
 S
 #14249
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.
@@ -1055,7 +1055,7 @@ D1
 S
 #14250
 The Pit~
-This dark smely hell hole churns your stomach.  Rats scurry beneath your
+This dark smelly hell hole churns your stomach.  Rats scurry beneath your
 feet, trying to escape with what they can.  This pit has been designed with
 one thing in mind... so that you can meet one-on-one with your opponent
 with no chance of double teaming.

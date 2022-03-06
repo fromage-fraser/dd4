@@ -1,4 +1,4 @@
-#AREA	Alfa~    Ofcol~
+#AREA   Alfa~    Ofcol~
 -2 -2 0 100
 
 
@@ -193,8 +193,8 @@ S
 
 
 #SHOPS
-  306	 1 10 11 19  0	 120   60	 0 23	; Luxan
-  308	 0  0  0  0  0	 110  100	 0 23	; Ofcol Innkeeper
+  306    1 10 11 19  0   120   60    0 23   ; Luxan
+  308    0  0  0  0  0   110  100    0 23   ; Ofcol Innkeeper
 0
 
 

@@ -66,6 +66,9 @@ but she need not be.
 & 75 'evocation magiks'
 & 75 'protective magiks'
 & 75 'armed combat knowledge'
+& 75 'unarmed combat knowledge'
+& 75 'defense knowledge'
+& 75 'inner force'
 #604
 jim blacksmith~
 Jim the Blacksmith~
@@ -3028,7 +3031,7 @@ S
 
 
 #RESETS
-*			Doors to close and lock
+*                       Doors to close and lock
 D 0 618 2 1
 D 0 619 0 1
 D 0 600 1 1
@@ -3048,275 +3051,275 @@ D 0 637 3 1
 D 0 638 3 1
 D 0 640 1 1
 *
-M 0 600 8 608		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 622 99 6		Brass helm
-M 0 600 8 604		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 623 99 7		Brass leggings
-M 0 600 8 601		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 624 99 8		Brass boots
-M 0 600 8 650		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 625 99 9		Brass gauntlets
-M 0 600 8 642		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 626 99 10		Brass sleeves
-M 0 600 8 647		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-M 0 600 8 667		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 628 99 13		Brass girth
-M 0 600 8 637		Ofcol Cityguard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 629 99 14		Brass bracer
-M 0 601 1 601		Marshal Diana
-E 1 620 99 1		Signet ring
-E 1 639 99 5		Platinum plate
-E 1 640 99 6		Platinum helm
-E 1 641 99 7		Platinum leggings
-E 1 642 99 8		Platinum boots
-E 1 643 99 9		Platinum gauntlets
-E 1 644 99 10		Platinum sleeves
-E 1 645 99 11		Spiked shield
-E 1 646 99 13		Platinum girth
-E 1 647 99 16		Holy Avenger
-M 0 602 1 669		Captain Derrick
-E 1 620 99 1		Signet ring
-E 1 631 99 5		Silver plate
-E 1 653 99 16		Ranseur
-E 1 632 99 6		Silver helm
-E 1 633 99 7		Silver leggings
-E 1 634 99 8		Silver boots
-E 1 635 99 9		Silver gauntlets
-E 1 626 99 10		Brass sleeves
-E 1 627 99 11		Brass shield
-E 1 628 99 13		Brass girth
-M 0 603 1 699		Captain Jacklyn
-E 1 620 99 1		Signet ring
-E 1 631 99 5		Silver Plate
-E 1 653 99 16		Ranseur
-E 1 632 99 6		Silver helm
-E 1 623 99 7		Brass leggings
-E 1 624 99 8		Brass boots
-E 1 625 99 9		Brass gauntlets
-E 1 636 99 10		Silver sleeves
-E 1 637 99 11		Silver shield
-E 1 638	99 13		Silver girth
-M 0 623 3 699		Sentinel Ofcol Outer Gate Guard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-G 1 651 99		Key to the Citadel Gate
-M 0 623 3 699		Sentinel Ofcol Outer Gate Guard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-G 1 651 99		Key to the Citadel Gate
-M 0 623 3 699		Sentinel Ofcol Outer Gate Guard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-G 1 651 99		Key to the Citadel Gate
-M 0 634 3 698		Sentinel Ofcol Inner Gate Guard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-G 1 651 99		Key to the Citadel Gate
-M 0 634 3 698		Sentinel Ofcol Inner Gate Guard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-G 1 651 99		Key to the Citadel Gate
-M 0 634 3 698		Sentinel Ofcol Inner Gate Guard
-E 1 620 99 1		Signet ring
-E 1 621 99 5		Brass plate
-E 1 630 99 16		Claymore
-E 1 627 99 11		Brass shield
-G 1 651 99		Key to the Citadel Gate
-M 0 604 1 603		Jim the Blacksmith
-G 1 600 99		Hand Axe
-G 1 601 99		Cleaver
-G 1 615 99		Pitchfork
-G 1 667 99		Chest
-M 0 605 1 604		Sam the Leatherworker
-G 1 616 99		leather vest
-G 1 617 99		leather sleeves
-G 1 618 99		leather leggings
-G 1 619 99		leather boots
-M 0 606 1 606		Madam Tracy (pawn girl)
-G 1 606 99		Ring
-G 1 607 99		Trinket
-G 1 608 99		Necklace
-M 0 607 1 607		Marty the Meat Store Owner
-G 1 602 99		Beef
-G 1 603 99		Pork
-G 1 604 99		Horse
-G 1 605 99		Chicken
-M 0 622 1 609		Nyles the Bartender
-G 1 648 99		Whiskey
-G 1 649 99		Ale
-G 1 650 99		Port Brew
-M 0 608 1 610		Farmer Elizabeth
-G 1 609 99		Cabbage
-G 1 610 99		Lettuce
-G 1 611 99		Milk
-G 1 612 99		Apple
-G 1 613 99		Corn
-M 0 609 1 600		Granny Jenkins
-O 0 649 99 600		Ale
-M 0 610 1 617		Jack
-E 1 601 99 16		Wielding the Cleaver
-M 0 611 1 620		Sara the Farm Girl
-E 1 615 99 16		Wielding the Pitchfork
-O 0 614 99 620		Bunch of Hay
-O 0 611 99 620		Milk on the Floor
-M 0 612 4 619		Chicken
-M 0 612 4 619		Chicken
-M 0 612 4 619		Chicken
-M 0 612 4 619		Chicken
-M 0 613 3 623		Cows
-M 0 613 3 623		Cows
-M 0 613 3 623		Cows
-M 0 614 2 620		Cow to be milked
-M 0 614 2 620		Cow to be milked
-M 0 615 4 622		Horse
-M 0 615 4 622		Horse
-M 0 615 4 622		Horse
-M 0 615 4 622		Horse
-M 0 616 4 624		Pig
-M 0 616 4 624		Pig
-M 0 616 4 624		Pig
-M 0 616 4 624		Pig
-M 0 617 3 601		Citizen Man
-M 0 617 3 650		Citizen Man
-M 0 617 3 648		Citizen Man
-M 0 618 3 611		Citizen Woman
-M 0 618 3 666		Citizen Woman
-M 0 618 3 637		Citizen Woman
-M 0 619 2 661		Citizen Boy
-M 0 619 2 655		Citizen Boy
-M 0 620 2 635		Citizen Girl
-M 0 620 2 652		Citizen Girl
-M 0 624 1 609		Bard in Bar
-M 0 621 3 627		Maid in House
-G 1 665 99		Key to House
-E 1 666 99 16		Holding (Wielding) a Broom
-M 0 621 3 629		Maid in House
-G 1 665 99		Key to House
-E 1 666 99 16		Holding (Wielding) a Broom
-M 0 621 3 643		Maid in House
-G 1 665 99		Key to House
-E 1 666 99 16		Holding (Wielding) a Broom
-M 0 625 2 674		Servant
-M 0 625 2 673		Servant
-M 0 626 2 682		Squire
-M 0 626 2 683		Squire
-M 0 627 1 678		Page
-M 0 628 1 669		Priestess of the Temple
-E 1 620 99 1		Signet Ring
-E 1 664 99 12		Wearing a Golden Robe
-E 1 652 99 3		Wearing the Holy Symbol of Bahamut
-M 0 629 1 688		Chaplain
-E 1 664 99 12		Wearing a Golden Robe
-M 0 630 3 688		Dragonlord
-E 1 620 99 1		Signet Ring
-E 1 654 99 5		Gold Plate
-E 1 660 99 11		Gold Shield
-E 1 662 99 16		Gold Claw
-E 1 656 99 6		Gold Helm
-E 1 657 99 7		Gold Leggings
-M 0 630 3 688		Dragonlord
-E 1 620 99 1		Signet Ring
-E 1 654 99 5		Gold Plate
-E 1 660 99 11		Gold Shield
-E 1 662 99 16		Gold Claw
-E 1 657 99 8		Gold Boots
-E 1 658 99 9		Gold Gauntlets
-M 0 630 3 688		Dragonlord
-E 1 620 99 1		Signet Ring
-E 1 654 99 5		Gold Plate
-E 1 660 99 11		Gold Shield
-E 1 662 99 16		Gold Claw
-E 1 659 99 10		Gold Sleeves
-E 1 661 99 13		Gold Girth
-M 0 631 1 693		Gold Dragon
-E 1 620 99 1		Signet Ring
-E 1 662 99 16		Gold Claw
-E 1 663 99 17		Dragon Orb
-M 0 632 2 693		Attendant to Dragon
-E 1 620 99 1		Signet Ring
-E 1 664 99 12		Golden Robe
-M 0 632 2 693		Attendant to Dragon
-E 1 620 99 1		Signet Ring
-E 1 664 99 12		Golden Robe
-M 0 633 3 690		Dragonknight
-E 1 620 99 1		Signet Ring
-E 1 654 99 5		Gold Plate
-E 1 660 99 11		Gold Shield
-E 1 662 99 16		Gold Claw
-M 0 633 3 676		Dragonknight
-E 1 620 99 1		Signet Ring
-E 1 654 99 5		Gold Plate
-E 1 660 99 11		Gold Shield
-E 1 662 99 16		Gold Claw
-M 0 633 3 681		Dragonknight
-E 1 620 99 1		Signet Ring
-E 1 654 99 5		Gold Plate
-E 1 660 99 11		Gold Shield
-E 1 662 99 16		Gold Claw
+M 0 600 8 608           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 622 99 6            Brass helm
+M 0 600 8 604           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 623 99 7            Brass leggings
+M 0 600 8 601           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 624 99 8            Brass boots
+M 0 600 8 650           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 625 99 9            Brass gauntlets
+M 0 600 8 642           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 626 99 10           Brass sleeves
+M 0 600 8 647           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+M 0 600 8 667           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 628 99 13           Brass girth
+M 0 600 8 637           Ofcol Cityguard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 629 99 14           Brass bracer
+M 0 601 1 601           Marshal Diana
+E 1 620 99 1            Signet ring
+E 1 639 99 5            Platinum plate
+E 1 640 99 6            Platinum helm
+E 1 641 99 7            Platinum leggings
+E 1 642 99 8            Platinum boots
+E 1 643 99 9            Platinum gauntlets
+E 1 644 99 10           Platinum sleeves
+E 1 645 99 11           Spiked shield
+E 1 646 99 13           Platinum girth
+E 1 647 99 16           Holy Avenger
+M 0 602 1 669           Captain Derrick
+E 1 620 99 1            Signet ring
+E 1 631 99 5            Silver plate
+E 1 653 99 16           Ranseur
+E 1 632 99 6            Silver helm
+E 1 633 99 7            Silver leggings
+E 1 634 99 8            Silver boots
+E 1 635 99 9            Silver gauntlets
+E 1 626 99 10           Brass sleeves
+E 1 627 99 11           Brass shield
+E 1 628 99 13           Brass girth
+M 0 603 1 699           Captain Jacklyn
+E 1 620 99 1            Signet ring
+E 1 631 99 5            Silver Plate
+E 1 653 99 16           Ranseur
+E 1 632 99 6            Silver helm
+E 1 623 99 7            Brass leggings
+E 1 624 99 8            Brass boots
+E 1 625 99 9            Brass gauntlets
+E 1 636 99 10           Silver sleeves
+E 1 637 99 11           Silver shield
+E 1 638 99 13           Silver girth
+M 0 623 3 699           Sentinel Ofcol Outer Gate Guard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+G 1 651 99              Key to the Citadel Gate
+M 0 623 3 699           Sentinel Ofcol Outer Gate Guard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+G 1 651 99              Key to the Citadel Gate
+M 0 623 3 699           Sentinel Ofcol Outer Gate Guard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+G 1 651 99              Key to the Citadel Gate
+M 0 634 3 698           Sentinel Ofcol Inner Gate Guard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+G 1 651 99              Key to the Citadel Gate
+M 0 634 3 698           Sentinel Ofcol Inner Gate Guard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+G 1 651 99              Key to the Citadel Gate
+M 0 634 3 698           Sentinel Ofcol Inner Gate Guard
+E 1 620 99 1            Signet ring
+E 1 621 99 5            Brass plate
+E 1 630 99 16           Claymore
+E 1 627 99 11           Brass shield
+G 1 651 99              Key to the Citadel Gate
+M 0 604 1 603           Jim the Blacksmith
+G 1 600 99              Hand Axe
+G 1 601 99              Cleaver
+G 1 615 99              Pitchfork
+G 1 667 99              Chest
+M 0 605 1 604           Sam the Leatherworker
+G 1 616 99              leather vest
+G 1 617 99              leather sleeves
+G 1 618 99              leather leggings
+G 1 619 99              leather boots
+M 0 606 1 606           Madam Tracy (pawn girl)
+G 1 606 99              Ring
+G 1 607 99              Trinket
+G 1 608 99              Necklace
+M 0 607 1 607           Marty the Meat Store Owner
+G 1 602 99              Beef
+G 1 603 99              Pork
+G 1 604 99              Horse
+G 1 605 99              Chicken
+M 0 622 1 609           Nyles the Bartender
+G 1 648 99              Whiskey
+G 1 649 99              Ale
+G 1 650 99              Port Brew
+M 0 608 1 610           Farmer Elizabeth
+G 1 609 99              Cabbage
+G 1 610 99              Lettuce
+G 1 611 99              Milk
+G 1 612 99              Apple
+G 1 613 99              Corn
+M 0 609 1 600           Granny Jenkins
+O 0 649 99 600          Ale
+M 0 610 1 617           Jack
+E 1 601 99 16           Wielding the Cleaver
+M 0 611 1 620           Sara the Farm Girl
+E 1 615 99 16           Wielding the Pitchfork
+O 0 614 99 620          Bunch of Hay
+O 0 611 99 620          Milk on the Floor
+M 0 612 4 619           Chicken
+M 0 612 4 619           Chicken
+M 0 612 4 619           Chicken
+M 0 612 4 619           Chicken
+M 0 613 3 623           Cows
+M 0 613 3 623           Cows
+M 0 613 3 623           Cows
+M 0 614 2 620           Cow to be milked
+M 0 614 2 620           Cow to be milked
+M 0 615 4 622           Horse
+M 0 615 4 622           Horse
+M 0 615 4 622           Horse
+M 0 615 4 622           Horse
+M 0 616 4 624           Pig
+M 0 616 4 624           Pig
+M 0 616 4 624           Pig
+M 0 616 4 624           Pig
+M 0 617 3 601           Citizen Man
+M 0 617 3 650           Citizen Man
+M 0 617 3 648           Citizen Man
+M 0 618 3 611           Citizen Woman
+M 0 618 3 666           Citizen Woman
+M 0 618 3 637           Citizen Woman
+M 0 619 2 661           Citizen Boy
+M 0 619 2 655           Citizen Boy
+M 0 620 2 635           Citizen Girl
+M 0 620 2 652           Citizen Girl
+M 0 624 1 609           Bard in Bar
+M 0 621 3 627           Maid in House
+G 1 665 99              Key to House
+E 1 666 99 16           Holding (Wielding) a Broom
+M 0 621 3 629           Maid in House
+G 1 665 99              Key to House
+E 1 666 99 16           Holding (Wielding) a Broom
+M 0 621 3 643           Maid in House
+G 1 665 99              Key to House
+E 1 666 99 16           Holding (Wielding) a Broom
+M 0 625 2 674           Servant
+M 0 625 2 673           Servant
+M 0 626 2 682           Squire
+M 0 626 2 683           Squire
+M 0 627 1 678           Page
+M 0 628 1 669           Priestess of the Temple
+E 1 620 99 1            Signet Ring
+E 1 664 99 12           Wearing a Golden Robe
+E 1 652 99 3            Wearing the Holy Symbol of Bahamut
+M 0 629 1 688           Chaplain
+E 1 664 99 12           Wearing a Golden Robe
+M 0 630 3 688           Dragonlord
+E 1 620 99 1            Signet Ring
+E 1 654 99 5            Gold Plate
+E 1 660 99 11           Gold Shield
+E 1 662 99 16           Gold Claw
+E 1 656 99 6            Gold Helm
+E 1 657 99 7            Gold Leggings
+M 0 630 3 688           Dragonlord
+E 1 620 99 1            Signet Ring
+E 1 654 99 5            Gold Plate
+E 1 660 99 11           Gold Shield
+E 1 662 99 16           Gold Claw
+E 1 657 99 8            Gold Boots
+E 1 658 99 9            Gold Gauntlets
+M 0 630 3 688           Dragonlord
+E 1 620 99 1            Signet Ring
+E 1 654 99 5            Gold Plate
+E 1 660 99 11           Gold Shield
+E 1 662 99 16           Gold Claw
+E 1 659 99 10           Gold Sleeves
+E 1 661 99 13           Gold Girth
+M 0 631 1 693           Gold Dragon
+E 1 620 99 1            Signet Ring
+E 1 662 99 16           Gold Claw
+E 1 663 99 17           Dragon Orb
+M 0 632 2 693           Attendant to Dragon
+E 1 620 99 1            Signet Ring
+E 1 664 99 12           Golden Robe
+M 0 632 2 693           Attendant to Dragon
+E 1 620 99 1            Signet Ring
+E 1 664 99 12           Golden Robe
+M 0 633 3 690           Dragonknight
+E 1 620 99 1            Signet Ring
+E 1 654 99 5            Gold Plate
+E 1 660 99 11           Gold Shield
+E 1 662 99 16           Gold Claw
+M 0 633 3 676           Dragonknight
+E 1 620 99 1            Signet Ring
+E 1 654 99 5            Gold Plate
+E 1 660 99 11           Gold Shield
+E 1 662 99 16           Gold Claw
+M 0 633 3 681           Dragonknight
+E 1 620 99 1            Signet Ring
+E 1 654 99 5            Gold Plate
+E 1 660 99 11           Gold Shield
+E 1 662 99 16           Gold Claw
 S
 
 
 
 #SHOPS
-  604	5  9 15  0  0	120  80	 0 23; Jim the Blacksmith
-  605	9  0  0  0  0	120  80	 0 23; Sam the Leatherworker
-  606	8 12 13  0  0   120  80  0 23; Madam Tracy
-  607	0 19  0  0  0	120  10	 0 23; Marty the Butcher
-  608	0 17 19  0  0	120  10  0 23; Elizabeth the Grocer
-  622	0 17  0  0  0	120  10  0 23; Nyles the Bartender
+  604   5  9 15  0  0   120  80  0 23; Jim the Blacksmith
+  605   9  0  0  0  0   120  80  0 23; Sam the Leatherworker
+  606   8 12 13  0  0   120  80  0 23; Madam Tracy
+  607   0 19  0  0  0   120  10  0 23; Marty the Butcher
+  608   0 17 19  0  0   120  10  0 23; Elizabeth the Grocer
+  622   0 17  0  0  0   120  10  0 23; Nyles the Bartender
 0
 
 
 
 #SPECIALS
-M  600	spec_guard		Ofcol cityguard
-M  601	spec_cast_cleric	Marshal Diana
-M  602  spec_cast_cleric	Captain Derrick
-M  603	spec_cast_mage		Captain Jacklyn
-M  621  spec_janitor		Maid
-M  623  spec_guard		Ofcol outer gate guard
-M  634  spec_guard		Ofcol inner gate guard
-M  628  spec_cast_adept		Priestess of Ofcol
-M  629  spec_guard		Chaplain
-M  630	spec_breath_any		Dragonlord
-M  631  spec_breath_any		Gold Dragon
-M  632  spec_cast_mage		Attendant to Gold Dragon
-M  633  spec_breath_any		Dragonknight
+M  600  spec_guard              Ofcol cityguard
+M  601  spec_cast_cleric        Marshal Diana
+M  602  spec_cast_cleric        Captain Derrick
+M  603  spec_cast_mage          Captain Jacklyn
+M  621  spec_janitor            Maid
+M  623  spec_guard              Ofcol outer gate guard
+M  634  spec_guard              Ofcol inner gate guard
+M  628  spec_cast_adept         Priestess of Ofcol
+M  629  spec_guard              Chaplain
+M  630  spec_breath_any         Dragonlord
+M  631  spec_breath_any         Gold Dragon
+M  632  spec_cast_mage          Attendant to Gold Dragon
+M  633  spec_breath_any         Dragonknight
 S
 
 

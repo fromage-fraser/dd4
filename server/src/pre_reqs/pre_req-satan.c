@@ -6,13 +6,16 @@
 {&gsn_second_attack,            &gsn_satanist_base,     40,     PRE_SATANIST},
 
 /* Starting Skills - have decided what worldly is going to be yet?*/
-{&gsn_group_dark,              &gsn_satanist_base,      30,     PRE_SATANIST},
+{&gsn_group_dark,               &gsn_satanist_base,     30,     PRE_SATANIST},
 
 {&gsn_dark_ritual,              &gsn_group_dark,        30,     PRE_SATANIST},
 {&gsn_steal_strength,           &gsn_group_dark,        50,     PRE_SATANIST},
 
 {&gsn_hand_of_lucifer,          &gsn_group_dark,        65,     PRE_SATANIST},
 {&gsn_hand_of_lucifer,          &gsn_steal_strength,    60,     PRE_SATANIST},
+
+{&gsn_chaos_blast,              &gsn_group_dark,        75,     PRE_SATANIST},
+{&gsn_chaos_blast,              &gsn_hand_of_lucifer,   80,     PRE_SATANIST},
 
 {&gsn_steal_soul,               &gsn_steal_strength,    95,     PRE_SATANIST},
 {&gsn_steal_soul,               &gsn_group_dark,        95,     PRE_SATANIST},

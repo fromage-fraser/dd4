@@ -1,4 +1,4 @@
-#AREA	Raff~    Elemental Canyon~
+#AREA   Raff~    Elemental Canyon~
 5 30 0 100
 
 
@@ -709,7 +709,7 @@ A
 17 -3
 #9230
 shock whip~
-the Shock Whip~
+the shock whip~
 A whip hums innocently to itself.~
 ~
 5 2 8193
@@ -820,7 +820,7 @@ S
 Vista~
 This is a stunning vista overlooking a canyon.  There is a sign here that says:
 
-	BEHOLD -- ELEMENTAL CANYON
+    BEHOLD -- ELEMENTAL CANYON
 
 Fire leaps up from firepits in the western part of the canyon.  The sky looks
 funny, and the air seems hazy to the northwest.  Electricity sparks
@@ -1794,11 +1794,11 @@ S
 * Files: ele_cany.wld, ele_cany.mons, ele_cany.obj, ele_cany.shop,
 * ele_cany.zone, ele_cany.doc
 * Suggested level: all (1-30) *
-*	This is an attempt at an all-levels area. please do what you see
-*	fit to keep it that way.  The original canyon was small but
-*	very popular. This is a revised, expanded edition of the original.
-*	changes from the original include: 4 monsters changed, 25 monsters
-*	added, 27 rooms added, and 17 objects added.
+*   This is an attempt at an all-levels area. please do what you see
+*   fit to keep it that way.  The original canyon was small but
+*   very popular. This is a revised, expanded edition of the original.
+*   changes from the original include: 4 monsters changed, 25 monsters
+*   added, 27 rooms added, and 17 objects added.
 *
 * Geography:  The entrance is to the north, the map then proceeds up a
 * mountain and then down into the canyon on the other side.
@@ -1989,35 +1989,35 @@ S
 
 
 #SHOPS
- 9238	 0  0  0  0  0	 105  15	 0 23	; Elixir Vendor
+ 9238    0  0  0  0  0   105  15     0 23   ; Elixir Vendor
 0
 
 
 
 #SPECIALS
-M  9202 spec_cast_cleric	* cyclops
-M  9204 spec_breath_any		* elemental guardian
-M  9207 spec_breath_any		* large elemental
-M  9208 spec_cast_cleric	* earth ruler
-M  9209 spec_breath_fire	* fire ruler
-M  9210 spec_breath_gas		* air ruler
-M  9211 spec_breath_lightning	* lightning ruler
-M  9212 spec_breath_acid	* water ruler
-M  9219 spec_breath_acid	* acid blob
-M  9223 spec_breath_lightning	* elemental particle
-M  9224 spec_thief		* dust
-M  9225 spec_thief		* 'fast' eddie
-M  9226 spec_breath_fire	* the Blue Flame
-M  9227 spec_breath_lightning	* the Magneto
-M  9228 spec_breath_frost	* the Ice Bandit
-M  9230 spec_breath_gas		* the Hurricane
-M  9231 spec_cast_mage		* elemental magician
-M  9232 spec_cast_cleric	* rainbow warrior
-M  9233 spec_cast_mage		* the illusionist
-M  9234 spec_thief		* the alchemist
-M  9235 spec_breath_any		* baby rainbow dragon
-M  9237 spec_breath_any		* HUGE elemental
-M  9238 spec_cast_mage		* Elixir vendor
+M  9202 spec_cast_cleric        * cyclops
+M  9204 spec_breath_any         * elemental guardian
+M  9207 spec_breath_any         * large elemental
+M  9208 spec_cast_cleric        * earth ruler
+M  9209 spec_breath_fire        * fire ruler
+M  9210 spec_breath_gas         * air ruler
+M  9211 spec_breath_lightning   * lightning ruler
+M  9212 spec_breath_acid        * water ruler
+M  9219 spec_breath_acid        * acid blob
+M  9223 spec_breath_lightning   * elemental particle
+M  9224 spec_thief              * dust
+M  9225 spec_thief              * 'fast' eddie
+M  9226 spec_breath_fire        * the Blue Flame
+M  9227 spec_breath_lightning   * the Magneto
+M  9228 spec_breath_frost       * the Ice Bandit
+M  9230 spec_breath_gas         * the Hurricane
+M  9231 spec_cast_mage          * elemental magician
+M  9232 spec_cast_cleric        * rainbow warrior
+M  9233 spec_cast_mage          * the illusionist
+M  9234 spec_thief              * the alchemist
+M  9235 spec_breath_any         * baby rainbow dragon
+M  9237 spec_breath_any         * HUGE elemental
+M  9238 spec_cast_mage          * Elixir vendor
 S
 
 

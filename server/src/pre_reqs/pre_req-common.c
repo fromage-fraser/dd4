@@ -14,6 +14,9 @@
 {&gsn_sense_traps,              &gsn_detect_invis,      50,     11},
 {&gsn_sense_traps,              &gsn_detect_magic,      50,     11},
 
+{&gsn_detect_curse,             &gsn_group_divination,  60,     11},
+{&gsn_detect_curse,             &gsn_detect_magic,      60,     11},
+
 {&gsn_know_alignment,           &gsn_detect_evil,       50,     11},
 {&gsn_know_alignment,           &gsn_group_divination,  50,     11},
 

@@ -1,4 +1,4 @@
-#AREA Thorne~	Bastion of Shadows~
+#AREA Thorne~   Bastion of Shadows~
 80 100 0 100
 
 #AREA_SPECIAL
@@ -538,9 +538,9 @@ Scraps of white meat that you are unable to identify by looking at them.
 
 ~
 #30605
-vial red ~
+vial red~
 a vial of red liquid~
-A vile filled with bright red liquid is here.~
+A vial filled with bright red liquid is here.~
 ~
 10 16|64 1
 100~ faerie fire~ curse~ hex~
@@ -5834,93 +5834,93 @@ S
 
 #RESETS
 *
-M 1 30600 5 30624			the Stone Gargoyle to Before the gate
+M 1 30600 5 30624           the Stone Gargoyle to Before the gate
 E 1 30600 100 12
 E 1 30601 100 4
 G 1 30652 100
-O 1 30619 100 30755			wrought-iron armour rack to armoury
-P 1 30617 100 30619			a black gothik breastplate  to container wrought-iron armour rack
-O 1 30620 100 30749			wrought-iron armour rack to armoury
-P 1 30622 100 30620			steel gauntlets to container wrought-iron armour rack
-O 1 30621 100 30756			wrought-iron weapon rack to armoury
-P 1 30623 100 30621			a heavy crossbow to container wrought-iron weapon rack
+O 1 30619 100 30755         wrought-iron armour rack to armoury
+P 1 30617 100 30619         a black gothik breastplate  to container wrought-iron armour rack
+O 1 30620 100 30749         wrought-iron armour rack to armoury
+P 1 30622 100 30620         steel gauntlets to container wrought-iron armour rack
+O 1 30621 100 30756         wrought-iron weapon rack to armoury
+P 1 30623 100 30621         a heavy crossbow to container wrought-iron weapon rack
 *
-M 1 30600 5 30738			the Stone Gargoyle to On the battlements
+M 1 30600 5 30738           the Stone Gargoyle to On the battlements
 E 1 30601 100 4
 E 1 30600 100 12
 *
-M 1 30600 5 30716			the Stone Gargoyle to On the battlements
+M 1 30600 5 30716           the Stone Gargoyle to On the battlements
 E 1 30601 100 4
 E 1 30600 100 12
 *
-M 1 30600 5 30723			the Stone Gargoyle to On the battlements
+M 1 30600 5 30723           the Stone Gargoyle to On the battlements
 E 1 30601 100 4
 E 1 30600 100 12
 *
-M 1 30600 5 30731			the Stone Gargoyle to On the battlements
+M 1 30600 5 30731           the Stone Gargoyle to On the battlements
 E 1 30601 100 4
 E 1 30600 100 12
 *
-M 1 30601 3 30600			the Hungry Demon to In the shadows
+M 1 30601 3 30600           the Hungry Demon to In the shadows
 E 1 30602 100 5
-O 1 30655 100 30744		; a mahogany wardrobe to A richly furnished room
-P 1 30653 100 30655		; a large iron key to container wardrobe
-P 1 30660 100 30655		; a dusty vial to mahogany wardrobe
-P 2 30661 100 30655		; a dusty vial to mahogany wardrobe
+O 1 30655 100 30744     ; a mahogany wardrobe to A richly furnished room
+P 1 30653 100 30655     ; a large iron key to container wardrobe
+P 1 30660 100 30655     ; a dusty vial to mahogany wardrobe
+P 2 30661 100 30655     ; a dusty vial to mahogany wardrobe
 *
-M 1 30601 3 30613			the Hungry Demon to In the shadows
-E 1 30602 100 5
-*
-M 1 30601 3 30628			the Hungry Demon to In the shadows
+M 1 30601 3 30613           the Hungry Demon to In the shadows
 E 1 30602 100 5
 *
-M 1 30602 2 30649			the Dark Demon to Stables
+M 1 30601 3 30628           the Hungry Demon to In the shadows
+E 1 30602 100 5
+*
+M 1 30602 2 30649           the Dark Demon to Stables
 E 1 30603 100 12
 *
-M 1 30602 2 30653			the Dark Demon to Stables
+M 1 30602 2 30653           the Dark Demon to Stables
 E 1 30603 100 12
 *
-M 1 30603 1 30652			the shadow lords mount to Stables
+M 1 30603 1 30652           the shadow lords mount to Stables
 E 1 30603 100 12
 G 1 30604 100
-O 1 30604 100 30647			scraps of meat to a chiller
-O 1 30604 100 30650			scraps of meat to Stables
+O 1 30604 100 30647         scraps of meat to a chiller
+O 1 30604 100 30650         scraps of meat to Stables
 *
-M 1 30604 1 30666			the Soul Collector to The dungeon
+M 1 30604 1 30666           the Soul Collector to The dungeon
 E 1 30608 100 4
 E 1 30606 100 19
 E 1 30607 100 16
 E 1 30610 100 5
 E 1 30636 100 17
 G 1 30605 100
-O 1 30609 100 30666			a brazier of hot coals to The dungeon
-O 1 30611 100 30665			a torture rack to The dungeon
+O 1 30609 100 30666         a brazier of hot coals to The dungeon
+O 1 30611 100 30665         a torture rack to The dungeon
 *
-M 1 30605 1 30661			a Captive Angel to The dungeon
+M 1 30605 1 30661           a Captive Angel to The dungeon
 E 1 30612 100 12
 E 1 30613 100 10
 E 1 30614 100 6
 E 1 30615 100 5
 *
-M 1 30606 1 30662			a Captive angel to The dungeon
+M 1 30606 1 30662           a Captive angel to The dungeon
 E 1 30612 100 12
 E 1 30613 100 10
 E 1 30614 100 6
 E 1 30615 100 5
 *
 *
-M 1 30607 1 30773			the Dark Stalker to A dark corridor
+M 1 30607 1 30773           the Dark Stalker to A dark corridor
 E 1 30625 100 16
 E 1 30626 100 5
 E 1 30629 100 6
 E 1 30628 100 7
 E 1 30627 100 8
 E 1 30630 100 17
-O 1 30618 100 30750			a wrought-iron weapon rack to armoury
-P 1 30616 100 30618			a black bastard sword to container wroughtironweaponrack
+O 1 30618 100 30750         a wrought-iron weapon rack to armoury
+P 1 30616 100 30618         a black bastard sword to container wroughtironweaponrack
 *
 *
-M 1 30608 1 30751			the Dark Stalker to armoury
+M 1 30608 1 30751           the Dark Stalker to armoury
 E 1 30626 100 5
 E 1 30629 100 6
 E 1 30628 100 7
@@ -5928,15 +5928,7 @@ E 1 30627 100 8
 E 1 30625 100 16
 E 1 30630 100 17
 *
-M 1 30611 1 30687			the Dark Stalker to Inside the bastion
-E 1 30625 100 16
-E 1 30626 100 5
-E 1 30629 100 6
-E 1 30628 100 7
-E 1 30627 100 8
-E 1 30630 100 17
-*
-M 1 30609 1 30695			the Dark Stalker to A dark corridor
+M 1 30611 1 30687           the Dark Stalker to Inside the bastion
 E 1 30625 100 16
 E 1 30626 100 5
 E 1 30629 100 6
@@ -5944,7 +5936,7 @@ E 1 30628 100 7
 E 1 30627 100 8
 E 1 30630 100 17
 *
-M 1 30610 1 30675			the Dark Stalker to A dark corridor
+M 1 30609 1 30695           the Dark Stalker to A dark corridor
 E 1 30625 100 16
 E 1 30626 100 5
 E 1 30629 100 6
@@ -5952,87 +5944,95 @@ E 1 30628 100 7
 E 1 30627 100 8
 E 1 30630 100 17
 *
-M 1 30613 1 30654			the Spectral Minion to Passage to the stables
+M 1 30610 1 30675           the Dark Stalker to A dark corridor
+E 1 30625 100 16
+E 1 30626 100 5
+E 1 30629 100 6
+E 1 30628 100 7
+E 1 30627 100 8
+E 1 30630 100 17
+*
+M 1 30613 1 30654           the Spectral Minion to Passage to the stables
 E 1 30624 100 12
 *
-M 1 30614 1 30698			the Spectral Minion to A dark corridor
+M 1 30614 1 30698           the Spectral Minion to A dark corridor
 E 1 30624 100 12
 *
-M 1 30615 1 30681			the Spectral Minion to A dark corridor
+M 1 30615 1 30681           the Spectral Minion to A dark corridor
 E 1 30624 100 12
 *
-M 1 30616 1 30765			the Spectral Minion to A dark corridor
+M 1 30616 1 30765           the Spectral Minion to A dark corridor
 E 1 30624 100 12
 *
-M 1 30617 1 30777			the Spectral Minion to A dark corridor
+M 1 30617 1 30777           the Spectral Minion to A dark corridor
 E 1 30624 100 12
 *
-M 1 30618 1 30784			the Spectral Minion to corridor to the lords chambers
+M 1 30618 1 30784           the Spectral Minion to corridor to the lords chambers
 E 1 30624 100 12
 *
-M 1 30619 1 30802			the Angel to In the clouds
+M 1 30619 1 30802           the Angel to In the clouds
 E 1 30631 100 5
 E 1 30632 100 17
 E 1 30633 100 19
 E 1 30634 100 12
 *
-M 1 30620 1 30784			the Dark Angel to corridor to the lords chambers
+M 1 30620 1 30784           the Dark Angel to corridor to the lords chambers
 E 1 30610 100 5
 E 1 30635 100 12
 E 1 30608 100 4
 E 1 30636 100 17
 G 1 30654 100
 *
-M 1 30621 1 30740			the Dark Angel to On the battlements
+M 1 30621 1 30740           the Dark Angel to On the battlements
 E 1 30608 100 4
 E 1 30610 100 5
 E 1 30635 100 12
 E 1 30636 100 17
 *
 *
-M 1 30623 1 30708			the Dark Angel to The war room
+M 1 30623 1 30708           the Dark Angel to The war room
 E 1 30608 100 4
 E 1 30610 100 5
 E 1 30635 100 12
 E 1 30636 100 17
 *
-M 1 30624 1 30778			the Fallen Angel to A room
+M 1 30624 1 30778           the Fallen Angel to A room
 E 1 30610 100 5
 E 1 30637 100 12
 *
-M 1 30625 1 30772			the Fallen Angel to A room
+M 1 30625 1 30772           the Fallen Angel to A room
 E 1 30610 100 5
 E 1 30637 100 12
 *
-M 1 30626 1 30766			the Fallen Angel to A room
+M 1 30626 1 30766           the Fallen Angel to A room
 E 1 30610 100 5
 E 1 30637 100 12
 *
 *
-M 1 30612 1 30767			the Dark Stalker to A dark corridor
+M 1 30612 1 30767           the Dark Stalker to A dark corridor
 *
-M 1 30622 1 30768			the Dark Angel to A cold room
+M 1 30622 1 30768           the Dark Angel to A cold room
 E 1 30608 100 4
 E 1 30610 100 5
 E 1 30635 100 12
 E 1 30636 100 17
 *
-M 1 30627 1 30803			the Weapon Smith to the workshop
+M 1 30627 1 30803           the Weapon Smith to the workshop
 E 1 30640 100 5
 E 1 30642 100 7
 E 1 30639 100 8
 E 1 30641 100 9
 E 1 30638 100 16
-G 1 30656 100				whetstone to smith
-O 1 30643 100 30787			a candelabra to shadow lords chambers
-O 1 30643 100 30793			a candelabra to shadow lords chambers
-O 1 30643 100 30789			a candelabra to shadow lords chambers
-O 1 30644 100 30700			a marble pedestal to A scrying chamber
-O 1 30645 100 30701			a conference table to The war room
-O 1 30645 100 30704			a conference table to The war room
-O 1 30645 100 30707			a conference table to The war room
+G 1 30656 100               whetstone to smith
+O 1 30643 100 30787         a candelabra to shadow lords chambers
+O 1 30643 100 30793         a candelabra to shadow lords chambers
+O 1 30643 100 30789         a candelabra to shadow lords chambers
+O 1 30644 100 30700         a marble pedestal to A scrying chamber
+O 1 30645 100 30701         a conference table to The war room
+O 1 30645 100 30704         a conference table to The war room
+O 1 30645 100 30707         a conference table to The war room
 *
-M 1 30628 1 30795			the Shadow Lord to Top of the spire
+M 1 30628 1 30795           the Shadow Lord to Top of the spire
 E 1 30617 100 5
 E 1 30627 100 8
 E 1 30616 100 16
@@ -6042,129 +6042,130 @@ E 1 30647 100 7
 E 1 30649 100 11
 G 1 30654 100
 *
-M 1 30629 1 30786			the Giant owl to shadow lords chambers
+M 1 30629 1 30786           the Giant owl to shadow lords chambers
 E 1 30650 100 6
 E 1 30651 100 8
-D 1 30641 2 2			; Floating In the shadows Lock South
-D 1 30642 0 2			; Tunnel from the stables Lock North
-D 1 30648 1 1			; Stables Close East
-D 1 30648 3 1			; Stables Close West
-D 1 30649 3 1			; Stables Close West
-D 1 30650 1 1			; Stables Close East
-D 1 30646 3 1			; Stables Close West
-D 1 30647 1 1			; A chiller Close East
-D 1 30646 0 2			; Stables Lock North
-D 1 30654 2 2			; Passage to the stables Lock South
-D 1 30651 3 1			; Stables Close West
-D 1 30653 1 1			; Stables Close East
-D 1 30651 1 1			; Stables Close East
-D 1 30652 3 1			; Stables Close West
-D 1 30651 2 2			; Stables Lock South
-D 1 30801 0 2			; An access shaft Lock North
-D 1 30659 2 2			; Passage to the dungeon Lock South
-D 1 30660 0 2			; The dungeon Lock North
-D 1 30668 2 2			; The dungeon Lock South
-D 1 30799 0 2			; An access shaft Lock North
-D 1 30670 2 1			; A dark corridor Close South
-D 1 30698 0 1			; A dark corridor Close North
-D 1 30698 3 2			; A dark corridor Lock West
-D 1 30700 1 2			; A scrying chamber Lock East
-D 1 30698 1 1			; A dark corridor Close East
-D 1 30699 3 1			; An empty room Close West
-D 1 30698 2 1			; A dark corridor Close South
-D 1 30701 0 1			; The war room Close North
-D 1 30705 1 1			; The war room Close East
-D 1 30677 3 1			; A dark corridor Close West
-D 1 30706 3 1			; The war room Close West
-D 1 30691 1 1			; A dark corridor Close East
-D 1 30709 2 2			; The war room Lock South
-D 1 30798 0 2			; An access shaft Lock North
-D 1 30699 5 1			; An empty room Close Down
-D 1 30804 4 1			; A hidden passage Close Up
-D 1 30809 4 1			; A hidden passage Close Up
-D 1 30600 5 1			; In the shadows Close Down
-D 1 30624 0 2			; Before the gate Lock North
-D 1 30684 2 2			; Inside the gate Lock South
-D 1 30710 1 1			; Staircase in the spire Close East
-D 1 30713 3 1			; On the battlements Close West
-D 1 30710 3 1			; Staircase in the spire Close West
-D 1 30741 1 1			; On the battlements Close East
-D 1 30742 3 1			; A dark corridor Close West
-D 1 30744 1 1			; A richly furnished room Close East
-D 1 30742 1 1			; A dark corridor Close East
-D 1 30743 3 1			; A meditation chamber Close West
-D 1 30745 3 1			; A dark corridor Close West
-D 1 30747 1 1			; A trophy room. Close East
-D 1 30745 1 1			; A dark corridor Close East
-D 1 30746 3 1			; An arcane library Close West
-D 1 30745 2 1			; A dark corridor Close South
-D 1 30748 0 1			; armoury Close North
-D 1 30754 2 1			; armoury Close South
-D 1 30803 0 1			; The workshop Close North
-D 1 30753 3 1			; armoury Close West
-D 1 30769 1 1			; A dark corridor Close East
-D 1 30775 3 2			; A dark corridor Lock West
-D 1 30776 1 2			; A bare room Lock East
-D 1 30777 3 2			; A dark corridor Lock West
-D 1 30778 1 2			; A bare room Lock East
-D 1 30779 3 1			; A dark corridor Close West
-D 1 30780 1 1			; A cold room Close East
-D 1 30771 3 1			; A dark corridor Close West
-D 1 30772 1 1			; A cold room Close East
-D 1 30773 3 1			; A dark corridor Close West
-D 1 30774 1 1			; A cold room Close East
-D 1 30752 1 1			; armoury Close East
-D 1 30757 3 1			; A dark corridor Close West
-D 1 30763 1 2			; A dark corridor Lock East
-D 1 30764 3 2			; A bare room Lock West
-D 1 30765 1 2			; A dark corridor Lock East
-D 1 30766 3 2			; A bare room Lock West
-D 1 30767 1 1			; A dark corridor Close East
-D 1 30768 3 1			; A cold room Close West
-D 1 30759 1 1			; A dark corridor Close East
-D 1 30760 3 1			; A cold room Close West
-D 1 30761 1 1			; A dark corridor Close East
-D 1 30762 3 1			; A cold room Close West
-D 1 30734 0 1			; Staircase in the spire Close North
-D 1 30735 2 1			; On the battlements Close South
-D 1 30734 2 1			; Staircase in the spire Close South
-D 1 30733 0 1			; On the battlements Close North
-D 1 30720 0 1			; Staircase in the spire Close North
-D 1 30719 2 1			; On the battlements Close South
-D 1 30720 2 1			; Staircase in the spire Close South
-D 1 30721 0 1			; On the battlements Close North
-D 1 30784 2 2			; Corridor to the lords chambers Lock South
-D 1 30785 0 2			; Shadow lords chambers Lock North
-D 1 30791 2 2			; Shadow lords chambers Lock South
-D 1 30794 0 2			; Staircase in the spire Lock North
-D 1 30794 3 2			; Staircase in the spire Lock West
-D 1 30796 1 2			; An access shaft Lock East
-O 1 30657 100 30600		; shadowy portal to entrance
-O 1 30658 100 30792		; clouded portal to shadow lord's chambers
-O 1 30659 100 30802		; clouded portal to in the clouds
+D 1 30641 2 2           ; Floating In the shadows Lock South
+D 1 30642 0 2           ; Tunnel from the stables Lock North
+D 1 30648 1 1           ; Stables Close East
+D 1 30648 3 1           ; Stables Close West
+D 1 30649 3 1           ; Stables Close West
+D 1 30650 1 1           ; Stables Close East
+D 1 30646 3 1           ; Stables Close West
+D 1 30647 1 1           ; A chiller Close East
+D 1 30646 0 2           ; Stables Lock North
+D 1 30654 2 2           ; Passage to the stables Lock South
+D 1 30651 3 1           ; Stables Close West
+D 1 30653 1 1           ; Stables Close East
+D 1 30651 1 1           ; Stables Close East
+D 1 30652 3 1           ; Stables Close West
+D 1 30651 2 2           ; Stables Lock South
+D 1 30801 0 2           ; An access shaft Lock North
+D 1 30659 2 2           ; Passage to the dungeon Lock South
+D 1 30660 0 2           ; The dungeon Lock North
+D 1 30668 2 2           ; The dungeon Lock South
+D 1 30799 0 2           ; An access shaft Lock North
+D 1 30670 2 1           ; A dark corridor Close South
+D 1 30698 0 1           ; A dark corridor Close North
+D 1 30698 3 2           ; A dark corridor Lock West
+D 1 30700 1 2           ; A scrying chamber Lock East
+D 1 30698 1 1           ; A dark corridor Close East
+D 1 30699 3 1           ; An empty room Close West
+D 1 30698 2 1           ; A dark corridor Close South
+D 1 30701 0 1           ; The war room Close North
+D 1 30705 1 1           ; The war room Close East
+D 1 30677 3 1           ; A dark corridor Close West
+D 1 30706 3 1           ; The war room Close West
+D 1 30691 1 1           ; A dark corridor Close East
+D 1 30709 2 2           ; The war room Lock South
+D 1 30798 0 2           ; An access shaft Lock North
+D 1 30699 5 1           ; An empty room Close Down
+D 1 30804 4 1           ; A hidden passage Close Up
+D 1 30809 4 1           ; A hidden passage Close Up
+D 1 30600 5 1           ; In the shadows Close Down
+D 1 30624 0 2           ; Before the gate Lock North
+D 1 30684 2 2           ; Inside the gate Lock South
+D 1 30710 1 1           ; Staircase in the spire Close East
+D 1 30713 3 1           ; On the battlements Close West
+D 1 30710 3 1           ; Staircase in the spire Close West
+D 1 30741 1 1           ; On the battlements Close East
+D 1 30742 3 1           ; A dark corridor Close West
+D 1 30744 1 1           ; A richly furnished room Close East
+D 1 30742 1 1           ; A dark corridor Close East
+D 1 30743 3 1           ; A meditation chamber Close West
+D 1 30745 3 1           ; A dark corridor Close West
+D 1 30747 1 1           ; A trophy room. Close East
+D 1 30745 1 1           ; A dark corridor Close East
+D 1 30746 3 1           ; An arcane library Close West
+D 1 30745 2 1           ; A dark corridor Close South
+D 1 30748 0 1           ; armoury Close North
+D 1 30754 2 1           ; armoury Close South
+D 1 30803 0 1           ; The workshop Close North
+D 1 30753 3 1           ; armoury Close West
+D 1 30769 1 1           ; A dark corridor Close East
+D 1 30775 3 2           ; A dark corridor Lock West
+D 1 30776 1 2           ; A bare room Lock East
+D 1 30777 3 2           ; A dark corridor Lock West
+D 1 30778 1 2           ; A bare room Lock East
+D 1 30779 3 1           ; A dark corridor Close West
+D 1 30780 1 1           ; A cold room Close East
+D 1 30771 3 1           ; A dark corridor Close West
+D 1 30772 1 1           ; A cold room Close East
+D 1 30773 3 1           ; A dark corridor Close West
+D 1 30774 1 1           ; A cold room Close East
+D 1 30752 1 1           ; armoury Close East
+D 1 30757 3 1           ; A dark corridor Close West
+D 1 30763 1 2           ; A dark corridor Lock East
+D 1 30764 3 2           ; A bare room Lock West
+D 1 30765 1 2           ; A dark corridor Lock East
+D 1 30766 3 2           ; A bare room Lock West
+D 1 30767 1 1           ; A dark corridor Close East
+D 1 30768 3 1           ; A cold room Close West
+D 1 30759 1 1           ; A dark corridor Close East
+D 1 30760 3 1           ; A cold room Close West
+D 1 30761 1 1           ; A dark corridor Close East
+D 1 30762 3 1           ; A cold room Close West
+D 1 30734 0 1           ; Staircase in the spire Close North
+D 1 30735 2 1           ; On the battlements Close South
+D 1 30734 2 1           ; Staircase in the spire Close South
+D 1 30733 0 1           ; On the battlements Close North
+D 1 30720 0 1           ; Staircase in the spire Close North
+D 1 30719 2 1           ; On the battlements Close South
+D 1 30720 2 1           ; Staircase in the spire Close South
+D 1 30721 0 1           ; On the battlements Close North
+D 1 30784 2 2           ; Corridor to the lords chambers Lock South
+D 1 30785 0 2           ; Shadow lords chambers Lock North
+D 1 30791 2 2           ; Shadow lords chambers Lock South
+D 1 30794 0 2           ; Staircase in the spire Lock North
+D 1 30794 3 2           ; Staircase in the spire Lock West
+D 1 30796 1 2           ; An access shaft Lock East
+O 1 30657 100 30600     ; shadowy portal to entrance
+O 1 30658 100 30792     ; clouded portal to shadow lord's chambers
+O 1 30659 100 30802     ; clouded portal to in the clouds
 S
 
 
 #SPECIALS
-M  30600 spec_cast_archmage			the Gargoyle
-M  30601 spec_fido				the Hungry Demon
-M  30603 spec_breath_fire			the Shadow Lords mount
-M  30604 spec_cast_undead			the Soul Collector
-M  30613 spec_spectral_minion			the Spectral Minion
-M  30614 spec_spectral_minion			the Spectral Minion
-M  30615 spec_spectral_minion			the Spectral Minion
-M  30616 spec_spectral_minion			the Spectral Minion
-M  30617 spec_spectral_minion			the Spectral Minion
-M  30618 spec_spectral_minion			the Spectral Minion
-M  30619 spec_cast_adept			the Angel
-M  30620 spec_cast_undead			the Dark Angel
-M  30621 spec_cast_undead			the Dark Angel
-M  30622 spec_cast_undead			the Dark Angel
-M  30623 spec_cast_undead			the Dark Angel
-M  30624 spec_cast_archmage			the Fallen Angel
-M  30625 spec_cast_archmage			the Fallen Angel
-M  30626 spec_cast_archmage			the Fallen Angel
-M  30628 spec_cast_psionicist			the Shadow Lord
+M  30600 spec_cast_archmage         the Gargoyle
+M  30601 spec_fido                  the Hungry Demon
+M  30602 spec_demon                 the Dark Demon
+M  30603 spec_breath_fire           the Shadow Lords mount
+M  30604 spec_cast_undead           the Soul Collector
+M  30613 spec_spectral_minion       the Spectral Minion
+M  30614 spec_spectral_minion       the Spectral Minion
+M  30615 spec_spectral_minion       the Spectral Minion
+M  30616 spec_spectral_minion       the Spectral Minion
+M  30617 spec_spectral_minion       the Spectral Minion
+M  30618 spec_spectral_minion       the Spectral Minion
+M  30619 spec_cast_adept            the Angel
+M  30620 spec_cast_undead           the Dark Angel
+M  30621 spec_cast_undead           the Dark Angel
+M  30622 spec_cast_undead           the Dark Angel
+M  30623 spec_cast_undead           the Dark Angel
+M  30624 spec_cast_archmage         the Fallen Angel
+M  30625 spec_cast_archmage         the Fallen Angel
+M  30626 spec_cast_archmage         the Fallen Angel
+M  30628 spec_cast_psionicist       the Shadow Lord
 S
 
 

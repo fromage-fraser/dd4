@@ -14,7 +14,7 @@ $
                                            |
                           Temple of Brutus-|
                           Temple of Jammer-|-Temple of Samxin
-              Temple of Ascedant Immortals-|-Temple of Descendant Immortals
+             Temple of Ascendant Immortals-|-Temple of Descendant Immortals
                                            |   Warden's
                                            |       Home-----Watch Tower
                                            |            |
@@ -43,7 +43,7 @@ $
                                 Western Docks - |  |
                                        |        - -
                                      Rusty
-                                  Anchor Taven
+                                  Anchor Tavern
 
 ~
 0 $~
@@ -65,7 +65,7 @@ you as he keeps a careful eye on the other servants of the house.
 #28056
 the rumour mill~
 the rumour mill~
-the rumour mill cranks out the rumour about the sword
+The rumour mill cranks out the rumour about the sword.
 ~
 Can't see him!
 ~
@@ -232,9 +232,9 @@ The King looks back at you... in a benevolent kind of way.
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
->give_prog imperial favor document~
+>give_prog imperial favour document~
 if number($o) == 28092
-say I can't refuse the bearer of a imperial favor. Very well, I shall
+say I can't refuse the bearer of a imperial favour. Very well, I shall
 say issue orders to the Templar Warden to release the Magus tower key
 say to your keeping. Do with it what you will.
 mpoload 28093 1
@@ -383,9 +383,9 @@ covered with flour and whistles cheerily as he waits for your order.
 #28008
 Jeweller High Quarter~
 the Jeweller~
-The Jeweller of the High Quarter proudly hordes his wares.
+The Jeweller of the High Quarter proudly hoards his wares.
 ~
-This sniveling little man radiates magic and you can see that his store is
+This snivelling little man radiates magic and you can see that his store is
 well defended.  Better not steal from him.
 ~
 2|4|64|128 8|32|128|8192 500 S
@@ -416,10 +416,10 @@ if number($o) == 28095
 say Blayde sent you, did she? Well, here's what I want - the Flames of
 say Wisdom. As you may or may not know the King has it under Royal Lock
 say in the Magus Tower. He wont listen to any pleas to release it. So,
-say we need an Imperial Favor. The King grants these rarely, they give
+say we need an Imperial Favour. The King grants these rarely, they give
 say the bearer any one thing they wish. The only man that I know of
 say that has one is Captain Exxd. Take this letter to him with my
-say plea and do say whatever it takes to get the Favor, and then bring
+say plea and do say whatever it takes to get the Favour, and then bring
 say me the Flames. Then the block of platinum is yours.
 mpoload 28096 1
 give captain $n
@@ -440,7 +440,7 @@ say What's this garbage?
 give $o $n
 endif
 ~
->give_prog imperial favor document~
+>give_prog imperial favour document~
 say Do I look like the King to you? Give this to him and get me the Flame.
 give $o $n
 ~
@@ -766,7 +766,7 @@ the Jailor~
 The Jailor stands here, keeping an eye on his prisoners.
 ~
 This huge, muscled man is the pride of the High Quarter Elite Guards.  A
-former Gateman, he has found the ultimate honor among the military forces of
+former Gateman, he has found the ultimate honour among the military forces of
 this city by being appointed Jailor.  He prides this position, and takes
 extra care in his duties.
 {RNO ONE ESCAPES.{x
@@ -868,7 +868,7 @@ gate watch guard~
 the Gate Guard~
 The gate guard stands here, proudly protecting the city.
 ~
-These men are chosen for their tall menacing demeanor, a necessary evil in
+These men are chosen for their tall menacing demeanour, a necessary evil in
 the current times of unrest and uncertainty.
 ~
 2|64 8|32|512|8192 400 S
@@ -994,7 +994,7 @@ Alvyn~
 Alvyn looks at you over her glasses.
 ~
 Alvyn is a small, wizened old half-elf.  She seems to take pride in
-her little shop as he continually pores over her latest stock.
+her little shop as she continually pores over her latest stock.
 ~
 2|64 8|32 0 S
 100 0 0 0d0+0 0d0+0
@@ -1150,14 +1150,14 @@ right hand, but it doesn't seem to interfere with normal operating procedure.
 0 0 1
 >give_prog letter captain exxd~
 if number($o) == 28096
-say So, you want my Imperial Favor. Fine. All you need to
+say So, you want my Imperial Favour. Fine. All you need to
 say do is kill Charybdis, the thing that almost destroyed
 say my ship, Windthief. I saw it take a piece of the ship,
 say it must keep trophies. I trapped it in the Lake in the
 say City Park, the Lake is under lock and key. Give this to
 say the guard and he'll unlock the fence for you.
 say Bring me proof of Charybdis's death and I'll hand over my
-say imperial favor.
+say imperial favour.
 mpoload 28097 1
 give key $n
 mpjunk all
@@ -1168,11 +1168,11 @@ endif
 ~
 >give_prog piece mast windthief~
 if number($o) == 28090
-say So, it's dead. I earned my imperial favor by saving the
+say So, it's dead. I earned my imperial favour by saving the
 say Windthief when it attacked, did you know that? Only
 say fitting the one who slew the beast ends up with it. Here.
 mpoload 28092 1
-give favor $n
+give favour $n
 mpjunk all
 else
 say You can just have this back.
@@ -2021,16 +2021,16 @@ fairly close by.
 ~
 
 #28044
-sulfurous sulfuric pool~
-a sulfurous pool~
-Acrid steam wafts from a churning, sulfuric hot pool.~
+sulphurous sulphuric pool~
+a sulphurous pool~
+Acrid steam wafts from a churning, sulphuric hot pool.~
 ~
 25 16 0
 ~ ~ ~ ~
 0 0 0
 E
-pool sulfurous~
-This sulfurous pool must be where Shroud cavorts with his handmaidens
+pool sulphurous~
+This sulphurous pool must be where Shroud cavorts with his handmaidens
 in his time off.
 ~
 
@@ -2321,17 +2321,17 @@ The magus tower key.~
 1 0 0
 
 #28092
-imperial favor document~
-an imperial favor document~
-A royal document granting the bearer an imperial favor is here.~
+imperial favour document~
+an imperial favour document~
+A royal document granting the bearer an imperial favour is here.~
 ~
 8 0 1
 ~ ~ ~ ~
 1 0 0
 E
-imperial favor document~
+imperial favour document~
 It's a document with the royal seal on it that declared the holder the
-privilege of being granted one Imperial Favor for services the Crown.
+privilege of being granted one Imperial Favour for services the Crown.
 ~
 
 #28093
@@ -2533,7 +2533,7 @@ S
 #28194
 Silvre Blayde's Quality Arms~
 The sea breeze blows in as you open the door then the door swings
-silently shut behind you as you enter the dark shop.  The meager
+silently shut behind you as you enter the dark shop.  The meagre
 light of the torches on the walls gleams off the highly polished
 weapons arrayed around this room. The sound of a hammer striking
 metal beats in the background.
@@ -2609,7 +2609,7 @@ The drawbridge~
 The drawbridge seems to be here more for effect than as a hindrance
 to an attacking force.  The sides of the drawbridge are draped with
 ivy and the water flowing beneath is crystal clear.  The bed of the
-moat is made up of pebbles and rocks which are home to many colorful
+moat is made up of pebbles and rocks which are home to many colourful
 fish.  To the north you see some beautiful gardens surrounding the
 palace and to the south are the gates.
 ~
@@ -2653,7 +2653,7 @@ S
 #28183
 The western gardens~
 The idyllic setting of the western gardens fills you with a sense of
-serenity and peace as you gaze around at the vivid colors of the
+serenity and peace as you gaze around at the vivid colours of the
 flowers.  A whitewashed fountain stands here sending a small rivulet
 flowing down into the moat.
 ~
@@ -2926,7 +2926,7 @@ S
 
 #28055
 Stairs~
-A set of stairs leads up to a set of french-doors and the gate north
+A set of stairs leads up to a set of French doors and the gate north
 onto the street.
 ~
 0 0 1
@@ -2962,7 +2962,7 @@ S
 The kitchen~
 You find yourself standing in a small, tidy kitchen.  Large bay
 windows take up most of the eastern wall affording a brilliant view
-of the harbor, rivaling that of the lounge.  To the south a door
+of the harbour, rivalling that of the lounge.  To the south a door
 leads to the butler's quarters and a door in the north leads back out
 into the lounge area.  To the west is the South Wall.
 ~
@@ -3105,7 +3105,7 @@ S
 #28045
 The Southern Docks~
 A fresh breeze blows in from across the water carrying with it the
-tangy odor of brine. Many people crowd this wide street some
+tangy odour of brine. Many people crowd this wide street some
 strolling and other carrying heavy loads from the boats moored here.
 There is a jetty here to the south.
 ~
@@ -3340,7 +3340,7 @@ S
 #28161
 Silvre Blayde's Quality Arms~
 The sea breeze blows in as you open the door then the door swings
-silently shut behind you as you enter the dark shop.  The meager
+silently shut behind you as you enter the dark shop.  The meagre
 light of the torches on the walls gleams off the highly polished
 weapons arrayed around this room. The sound of a hammer striking
 metal beats in the background.
@@ -3848,7 +3848,7 @@ S
 #28094
 Titan Avenue~
 Titan Avenue is a pleasant lane leading in a north-south direction.  Its name
-however, belies a gentle less traveled road.  People in this area are
+however, belies a gentle, less-travelled road.  People in this area are
 usually here for pleasure, not war or business.  Young couples can be seen
 walking the streets here at any hour of the day or night.
 ~
@@ -3925,7 +3925,7 @@ Mystic Lane~
 Here is the area of the High Quarter where the people in tune with the realm
 of magic make both their home and living under the shadow of the Magus Tower.
 To the west, you can see the Crossing.  To the east, there is a large wall,
-almost rivaling the city wall in stature.  A large gate in the wall lets the
+almost rivalling the city wall in stature.  A large gate in the wall lets the
 lane through.
 ~
 0 0 1
@@ -3946,8 +3946,8 @@ S
 #28086
 The Courtyard~
 You are standing in the courtyard of the Magus's Tower.  A solid wooden door
-in the tower is in front of you.  The walls around are High and unclimbable.
-There is a street leading westwards out of the courtyard.
+in the tower is in front of you.  The walls around are high and unable to be
+climbed. There is a street leading westwards out of the courtyard.
 ~
 0 0 1
 D 1
@@ -4067,7 +4067,7 @@ S
 #28104
 East Way~
 This stretch of road is hardly used, and seems more like an alley way.  To
-the east you can see the northeastern corner of the citywall, and the guard
+the east you can see the northeastern corner of the city wall, and the guard
 tower that stands there.  To the west the road wanders back toward the
 hustle of the main streets.
 ~
@@ -4406,7 +4406,7 @@ S
 
 #28082
 The Jeweller~
-A clean and cozy store assaults your vision as you enter the Jeweller's store.
+A clean and cosy store assaults your vision as you enter the Jeweller's store.
 In glass cases around the store there are examples of the jeweller's
 handiwork, all of exquisite design and precise construction.
 ~
@@ -4607,7 +4607,7 @@ S
 
 #28144
 A room~
-You are standing in a small but cozy hotel suite.  A silver heal orb hangs
+You are standing in a small but cosy hotel suite.  A silver heal orb hangs
 suspended in the air above the bed.
 ~
 0 8 0
@@ -4619,7 +4619,7 @@ S
 
 #28142
 A room~
-You are standing in a small but cozy hotel suite.  This is fully equipped with
+You are standing in a small but cosy hotel suite.  This is fully equipped with
 the latest in heal orbs.  Your own private healer.
 ~
 0 8 0
@@ -4631,7 +4631,7 @@ S
 
 #28141
 A room~
-You are standing a small but cozy hotel suite.
+You are standing a small but cosy hotel suite.
 ~
 0 8 0
 D 3
@@ -4642,7 +4642,7 @@ S
 
 #28139
 A room~
-You are standing in a small but cozy hotel suite.
+You are standing in a small but cosy hotel suite.
 ~
 0 8 0
 D 1
@@ -4653,7 +4653,7 @@ S
 
 #28138
 A room~
-You are standing in a small but cozy hotel suite.
+You are standing in a small but cosy hotel suite.
 ~
 0 8 0
 D 3
@@ -4664,7 +4664,7 @@ S
 
 #28137
 A room~
-You are standing in a small but cozy hotel suite.
+You are standing in a small but cosy hotel suite.
 ~
 0 8 0
 D 1
@@ -4784,7 +4784,7 @@ S
 
 #28154
 Bottom of the lake~
-You find a small feeder pipe, channeling fresh water into the park lake.
+You find a small feeder pipe, channelling fresh water into the park lake.
 This High Quarter is obviously very rich, as water is a precious commodity
 in this land. A raging whirl pool has taken up existence here as well!
 ~
@@ -4880,7 +4880,7 @@ S
 
 #28166
 The toilets~
-Odorless and spotlessly maintained, the toilets here have the latest in
+Odourless and spotlessly maintained, the toilets here have the latest in
 plumbing technology.  This place has had a lot of money invested here!
 ~
 0 8 0
@@ -4892,7 +4892,7 @@ S
 
 #28168
 The Hallway~
-This hallway is richly paneled and carpeted.  Doors lead off on either side
+This hallway is richly panelled and carpeted.  Doors lead off on either side
 along the hall, with names on gold plaques above the doors.  The hallway seems
 to go on forever; it is clearly magical, as the Millionaire's Club does not
 seem to be this big from the outside.  The door to the north is larger than
@@ -4932,7 +4932,7 @@ S
 
 #28170
 The Hallway~
-This hallway is richly paneled and carpeted.  Doors lead off on either side
+This hallway is richly panelled and carpeted.  Doors lead off on either side
 along the hall, with names on gold plaques above the doors.  The hallway seems
 to go on forever; it is clearly magical, as the Millionaire's Club does not
 seem to be this big from the outside.  The plaque above the door to the north
@@ -5135,7 +5135,7 @@ Your mind just can't handle the load and-
 
 {RYou have been KILLED!!{x
 
-Your vision clouds, your senses become dulled.  Strange vapors
+Your vision clouds, your senses become dulled.  Strange vapours
 gather about your twitching and bleeding body, and there is the
 sensation of flight.  Dazzling lights flicker within your mind
 and strange whispers are heard from all directions.
@@ -5148,7 +5148,7 @@ S
 
 #28173
 The Hallway~
-This hallway is richly paneled and carpeted.  Doors lead off on either side
+This hallway is richly panelled and carpeted.  Doors lead off on either side
 along the hall, with names on gold plaques above the doors.  The hallway seems
 to go on forever; it is clearly magical, as the Millionaire's Club does not
 seem to be this big from the outside.  The plaque above the door to the north
@@ -5177,7 +5177,7 @@ S
 Adrioth's Elysian Fields~
 You step through the door and suddenly sunlight hits you, you wonder if you
 died and are in heaven or some such thing. The door behind you leads back to
-the club hallway, but the door itself is floating in midair; all around you is
+the club hallway, but the door itself is floating in mid-air; all around you is
 a field of flowers and grass, and you slowly begin to remember stories of this
 place. It is very peaceful here and all you see is flowers, gentle streams,
 and soft hued mountains in the distance; butterflies float around you, and in
@@ -5256,7 +5256,7 @@ S
 
 #28175
 The Hallway~
-This hallway is richly paneled and carpeted.  The hallway seems to go on
+This hallway is richly panelled and carpeted.  The hallway seems to go on
 forever; it is clearly magical, as the Millionaire's Club does not seem to be
 this big from the outside.  This section of the hallway seems warmer to you,
 and yet you shiver all the same.  You feel an evil presence somewhere nearby.
@@ -5283,11 +5283,11 @@ S
 #28177
 Shroud's Lair~
 You stumble upon a cavernous chamber.  The fires of Hell burn hotter here
-and the stench of sulfur permeates the air.  The skulls of challengers
+and the stench of sulphur permeates the air.  The skulls of challengers
 ruthlessly destroyed line the walls, while their tormented souls hover in
 eternal servitude.
 
-Shroud is here relaxing in a bubbling pool of sulfur.  Your blood runs
+Shroud is here relaxing in a bubbling pool of sulphur.  Your blood runs
 cold as he turns his fiery eyes upon you and intones in a thunderous
 voice, 'What foolish mortal dares to enter my lair?'
 ~
@@ -5332,7 +5332,7 @@ S
 
 #28179
 The Hallway~
-This hallway is richly paneled and carpeted.  Doors lead off on either side
+This hallway is richly panelled and carpeted.  Doors lead off on either side
 along the hall, with names on gold plaques above the doors.  The hallway seems
 to go on forever; it is clearly magical, as the Millionaire's Club does not
 seem to be this big from the outside.  The plaque above the door to the north
@@ -5379,7 +5379,7 @@ D 2
 E
 bed~
 You see an enormous four posted bed made out of what looks like large
-smooth bones. Centered on the footboard is an engraved dragon's head. It looks
+smooth bones. Centred on the footboard is an engraved dragon's head. It looks
 vaguely familiar but when you think about it all you can remember is the
 dragon's head lying in a circle of trees.
 ~
@@ -5427,7 +5427,7 @@ bed.
 ~
 E
 table~
-As you peer into the glass table you notice a swirling of colors and
+As you peer into the glass table you notice a swirling of colours and
 see a reflection of the past. You can see many mighty hero's roaming the land
 helping new adventurers. You also notice big wars between many of the various
 clans. And that's when at the height of this Domain that the GODS sent their
@@ -5534,7 +5534,7 @@ Temple of Descendant Immortals~
 This room has a number of alcoves spotted around it.  Inside are
 small dedicated shrines to the other Immortals of the Domain.  You see
 a small statue of a barn owl (Owl), a black coffin (Thorne), a small metallic
-container labeled "Mountain Dew" (Archon), a Tusk (Umgook), and a stethoscope
+container labelled "Mountain Dew" (Archon), a Tusk (Umgook), and a stethoscope
 (Sacrifis).
 ~
 0 8 0
@@ -5863,7 +5863,7 @@ S
 
 #28119
 The Inner Gates~
-You are on the south road.  Northwards, you can see the splendor of
+You are on the south road.  Northwards, you can see the splendour of
 the Draagdim Palace square.  Westwards, the sprawl of small tents,
 stone fixtures and lean-to's all chaotically mix together to form
 the Draagdim Market.  The road south runs alongside the estuary and
@@ -5987,7 +5987,7 @@ The South Road~
 The South Road runs straight from the south gate to the palace square
 alongside the tidal inlet that is the only entrance by sea into the
 mighty city.  You notice, to the west, a small entranceway into the
-massive shantytown that is the Draagdim market.
+massive shanty town that is the Draagdim market.
 ~
 0 0 1
 D 0
@@ -6252,7 +6252,7 @@ S
 
 #28199
 The Hallway~
-This hallway is richly paneled and carpeted.  Doors lead off on either side
+This hallway is richly panelled and carpeted.  Doors lead off on either side
 along the hall, with names on gold plaques above the doors.  The hallway seems
 to go on forever; it is clearly magical, as the Millionaire's Club does not
 seem to be this big from the outside.  The plaques in this section of the
@@ -6729,7 +6729,7 @@ E 0 28084 0 16                      equip a sword (wield)
 I 28075 100 28190 1             Where Will it GO? to Temple of Samxin
 I 28103 100 28174 1             A portal to Thrasher to Dexx's {dArmory{x
 I 28014 99 28090 1              the Flame of Wisdom to The Flame of Wisdom
-I 28044 100 28177 1             a sulfurous pool to Shroud's Lair
+I 28044 100 28177 1             a sulphurous pool to Shroud's Lair
 I 28037 1 28171 1               a king-sized bed to Sonne's Room
 I 28038 1 28171 1               a computer to Sonne's Room
 I 28039 1 28171 1               a pile of magazines to Sonne's Room
