@@ -1231,8 +1231,8 @@ S
 Owl's dungeon~
 This room is very dark, lit only by a few candles. Through the shadows you
 can make out many metal tools and implements hanging on the wall, but you
-doubt the room's owner is a gardener. An air of despondency and gloom hangs
-over the room.
+doubt the room's owner is a gardener. An air of despondency and gloom 
+permeates the room.
 ~
 0 1|8|8192 0
 E
@@ -1261,7 +1261,7 @@ corner, with a book open on one arm.  Next to the armchair is a large beanbag.
 0 4|8|1024|8192 0
 E
 notepads~
-The notepads seem to have plans for new areas, and changes to existing ones,
+The notepads seem to have plans for new areas and changes to existing ones
 scribbled on them.  The plans are incomprehensible to your untrained eye.
 ~
 E
