@@ -14,7 +14,7 @@
  *  In particular, you may not remove either of these copyright notices.   *
  *                                                                         *
  *  Much time and thought has gone into this software and you are          *
- *  benefitting.  We hope that you share your changes too.  What goes      *
+ *  benefiting.  We hope that you share your changes too.  What goes      *
  *  around, comes around.                                                  *
  ***************************************************************************/
 
@@ -665,7 +665,7 @@ const   struct  pose_table_type pose_table [] =
             "You hit your head, and your eyes roll.",
             "$n hits $s head, and $s eyes roll.",
             "A will-o-the-wisp arrives with your slippers.",
-            "A will-o-the-wisp affives with $n's slippers.",
+            "A will-o-the-wisp arrives with $n's slippers.",
             "You pull a rabbit out of you pants.",
             "$n pulls a rabbit from $s pants.",
             "You juggle with knives.",
@@ -700,8 +700,8 @@ const   struct  pose_table_type pose_table [] =
             "An angel consults $n.",
             "The dice roll ... and you win again.",
             "The dice roll ... and $n wins again.",
-            "... 98, 99, 100 ... you do pushups.",
-            "... 98, 99, 100 ... $n does pushups.",
+            "... 98, 99, 100 ... you do push-ups.",
+            "... 98, 99, 100 ... $n does push-ups.",
             "The spoons flee as you begin to concentrate.",
             "The spoons flee as $n begins to concentrate.",
             "You pull a rabbit out of you pants.",
@@ -869,8 +869,8 @@ const   struct  pose_table_type pose_table [] =
             "Your clothes are transparent, and $n is laughing.",
             "An eye in a pyramid winks at you.",
             "An eye in a pyramid winks at $n.",
-            "Everyone discovers your dagger a centimeter from their eye.",
-            "You discover $n's dagger a centimeter from your eye.",
+            "Everyone discovers your dagger a centimetre from their eye.",
+            "You discover $n's dagger a centimetre from your eye.",
             "Mercenaries arrive to do your bidding.",
             "Mercenaries arrive to do $n's bidding.",
             "You run off at the mouth about 'mind over matter'.",
