@@ -84,6 +84,7 @@
 {&gsn_breathe_water,            &gsn_mage_base,         30,     PRE_MAGE},
 
 {&gsn_blindness,                &gsn_group_alteration,  50,     PRE_MAGE},
+{&gsn_blindness,                &gsn_mage_base,         30,     PRE_MAGE},
 
 {&gsn_curse,                    &gsn_group_alteration,  70,     PRE_MAGE},
 {&gsn_curse,                    &gsn_mage_base,         30,     PRE_MAGE},
