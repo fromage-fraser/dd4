@@ -21,7 +21,7 @@ new: $(O_FILES)
 	-rm -f envy.new
 	$(CC) -o envy.new $(O_FILES) $(L_FLAGS)
 
-.c.o: merc.h
+%.o: %.c merc.h
 	$(CC) -c $(C_FLAGS) $<
 
 clean:
