@@ -256,7 +256,7 @@ void do_killsocket( CHAR_DATA *ch, char *argument )
                         }
                         else
                         {
-                                send_to_char("That character is playing.  Use disconnect\n\r" ,ch);
+                                send_to_char("That character is playing.  Use disconnect.\n\r" ,ch);
                                 return;
                         }
                 }
@@ -614,7 +614,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
         {
                 act( "$n $T.", ch, NULL,
                     ( ch->pcdata && ch->pcdata->bamfout[0] != '\0' )
-                    ? ch->pcdata->bamfout : "leaves in a swirling mist",  TO_ROOM );
+                    ? ch->pcdata->bamfout : "leaves in a swirling mist.",  TO_ROOM );
         }
 
         /*  Don't forget your mount!  Gezhp  */
@@ -632,7 +632,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
         {
                 act( "$n $T.", ch, NULL,
                     ( ch->pcdata && ch->pcdata->bamfin[0] != '\0' )
-                    ? ch->pcdata->bamfin : "appears in a swirling mist", TO_ROOM );
+                    ? ch->pcdata->bamfin : "appears in a swirling mist.", TO_ROOM );
         }
 
         if (ch->mount)
@@ -2058,9 +2058,9 @@ void do_addfame( CHAR_DATA *ch, char *argument )
 
         level = atoi( arg2 );
 
-        if ( level < -50 || level > 50  || level == 0)
+        if ( level < -500 || level > 500  || level == 0)
         {
-                send_to_char("The amount of fame added must be between -50 and 50.\n\r",ch);
+                send_to_char("The amount of fame added must be between -500 and 500.\n\r",ch);
                 return;
         }
 
@@ -2098,7 +2098,7 @@ void do_addqp( CHAR_DATA *ch, char *argument )
         if ( IS_NPC( ch ) && !IS_SET(ch->act, ACT_NOCHARM )  )
                 return;
 
-        if  (!IS_NPC(ch) && !IS_IMMORTAL(ch)) /* surely imms can use this? --Owl 2/3/22 */
+        if  (!IS_NPC(ch) && !IS_IMMORTAL(ch)) /* So imms can use this --Owl 2/3/22 */
         {
                 if (!authorized( ch, gsn_addqp ) )
                         return;
@@ -2553,8 +2553,8 @@ void do_ronin (CHAR_DATA *ch, char *argument)
         {
                 REMOVE_BIT(victim->status, PLR_RONIN);
                 send_to_char("Ronin flag removed.\n\r", ch);
-                send_to_char("You are no longer a Ronin.\n\r", victim );
-                sprintf(buf, "%s is no longer RONIN.\n\r", victim->name);
+                send_to_char("You are no longer a ronin.\n\r", victim );
+                sprintf(buf, "%s is no longer a RONIN.\n\r", victim->name);
                 do_info(victim, buf);
                 remove_from_wanted_table(victim->name);
         }
@@ -2575,7 +2575,7 @@ void do_ronin (CHAR_DATA *ch, char *argument)
                 SET_BIT(victim->status, PLR_RONIN);
                 send_to_char("Ronin flag set.\n\r", ch);
                 send_to_char("You are now a RONIN!\n\r", victim);
-                sprintf(buf, "%s is now RONIN!\n\r", victim->name);
+                sprintf(buf, "%s is now a RONIN!\n\r", victim->name);
                 do_info(victim, buf);
         }
 
@@ -3231,7 +3231,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  bounty fame questpoints totalqp questtime\n\r"
                              "  bank plat gold silver copper\n\r"
                              "  patron deity_timer deity_flags\n\r"
-                             "  rage\n\r"
+                             "  rage spec\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec\n\r", ch);
                 return;
