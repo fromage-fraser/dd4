@@ -2,7 +2,7 @@
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
  *                                                                         *
- *  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
+ *  Merc Diku Mud improvements copyright (C) 1992, 1993 by Michael          *
  *  Chastain, Michael Quan, and Mitchell Tse.                              *
  *                                                                         *
  *  Envy Diku Mud improvements copyright (C) 1994 by Michael Quan, David   *
@@ -14,7 +14,7 @@
  *  In particular, you may not remove either of these copyright notices.   *
  *                                                                         *
  *  Much time and thought has gone into this software and you are          *
- *  benefitting.  We hope that you share your changes too.  What goes      *
+ *  benefiting.  We hope that you share your changes too.  What goes      *
  *  around, comes around.                                                  *
  ***************************************************************************/
 
@@ -200,7 +200,7 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
                 return;
 
         /*
-         * Alloc space for output lines.
+         * Allocate space for output lines.
          */
         for (obj = list; obj; obj = obj->next_content)
         {
@@ -430,7 +430,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
             case POS_DEAD:     strcat( buf, " is DEAD!!"              ); break;
             case POS_MORTAL:   strcat( buf, " is mortally wounded."   ); break;
             case POS_INCAP:    strcat( buf, " is incapacitated."      ); break;
-            case POS_STUNNED:  strcat( buf, " is lying here stunned." ); break;
+            case POS_STUNNED:  strcat( buf, " is lying here, stunned." ); break;
             case POS_SLEEPING: strcat( buf, " is sleeping here."      ); break;
             case POS_RESTING:  strcat( buf, " is resting here."       ); break;
             case POS_STANDING: strcat( buf, " is here."               ); break;
@@ -1037,7 +1037,7 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         /*
          *  Experience bar.  `full_length' is length of bar in chars;
-         *  string `bar' has each printed symbol preceded by ansi colour
+         *  string `bar' has each printed symbol preceded by ANSI colour
          *  escape sequence; string `empty' is colour and symbol for
          *  unfilled length of the bar.
          */
@@ -2585,7 +2585,7 @@ int has_pre_req(CHAR_DATA *ch, int sn)
                         if (*vampire_gag_table[iter].skill == sn)
                                 return 0;
 
-        /* init sub group test */
+        /* initiate sub group test */
         for (iter = 0; iter < SUB_GROUPS; iter++)
         {
                 found[iter] = FALSE;
@@ -2875,7 +2875,7 @@ void do_practice (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        /* check the pcs pre_req */
+        /* check the PC's pre_req */
         if (has_pre_req(ch, sn))
         {
                 /* practice */
@@ -3016,7 +3016,7 @@ void do_slist (CHAR_DATA *ch, char *argument)
         /* natural slist */
         if (arg[0] == '\0')
         {
-                /* show slist relevant to the pcs class / sub-class */
+                /* show slist relevant to the PC's class / sub-class */
                 if (!ch->sub_class)
                         show_slist(ch, ch->class);
                 else
@@ -3422,6 +3422,7 @@ void do_channels( CHAR_DATA *ch, char *argument )
                 else if ( !str_cmp( arg+1, "clan"     ) ) bit = CHANNEL_CLAN;
                 else if ( !str_cmp( arg+1, "server"   ) ) bit = CHANNEL_SERVER;
                 else if ( !str_cmp( arg+1, "arena"    ) ) bit = CHANNEL_ARENA;
+                else if ( !str_cmp( arg+1, "newbie"   ) ) bit = CHANNEL_NEWBIE;
                 else
                 {
                         send_to_char( "Set or clear which channel?\n\r", ch );
@@ -3484,8 +3485,8 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                                         color_table[19].code );
                                 send_to_char( buf, ch );
                         }
-                send_to_char( "\n\rTo toggle ansi-color, type 'COLOR'.\n\r"
-                             "Type 'HELP ANSI' for more more information.\n\r", ch );
+                send_to_char( "\n\rTo toggle ANSI-color, type 'COLOR'.\n\r"
+                             "Type 'HELP ANSI' for more information.\n\r", ch );
                 return;
         }
 

@@ -2,7 +2,7 @@
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
  *                                                                         *
- *  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
+ *  Merc Diku Mud improvements copyright (C) 1992, 1993 by Michael          *
  *  Chastain, Michael Quan, and Mitchell Tse.                              *
  *                                                                         *
  *  Envy Diku Mud improvements copyright (C) 1994 by Michael Quan, David   *
@@ -83,7 +83,7 @@ void do_scan (CHAR_DATA *ch, char *argument)
 
         if (argument[0] == '\0')
         {
-                act ("$n scans intensly all around.", ch, NULL, NULL, TO_ROOM);
+                act ("$n scans intently all around.", ch, NULL, NULL, TO_ROOM);
 
                 found = FALSE;
 
@@ -1284,7 +1284,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
                         sprintf(sLockpickBroken, "a broken lockpick");
                         free_string(wobj->short_descr);
                         wobj->short_descr = str_dup(sLockpickBroken);
-                        send_to_char("You hear the sound of tortured metal as you reduce your lockpick to rubbish.\n\r", ch);
+                        send_to_char("You hear a tortured metallic sound. You have rendered your lockpick useless.\n\r", ch);
                         return;
                 }
 
@@ -1303,7 +1303,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
                 }
 
                 REMOVE_BIT(obj->value[1], CONT_LOCKED);
-                send_to_char("*Click*  You hear the lock mechanism release.\n\r", ch);
+                send_to_char("*Click*  The lock mechanism releases.\n\r", ch);
                 act ("$n unlocks $p.", ch, obj, NULL, TO_ROOM);
                 return;
         }
@@ -1352,7 +1352,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
                         sprintf(sLockpickBroken, "a broken lockpick");
                         free_string(wobj->short_descr);
                         wobj->short_descr = str_dup(sLockpickBroken);
-                        send_to_char("You hear the sound of tortured metal as you reduce your lockpick to rubbish.\n\r", ch);
+                        send_to_char("You hear a tortured metallic sound. You have rendered your lockpick useless.\n\r", ch);
                         return;
                 }
 
@@ -1379,7 +1379,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
                 }
 
                 REMOVE_BIT(pexit->exit_info, EX_LOCKED);
-                send_to_char("*Click*  You work the lock and hear the mechanism release.\n\r", ch);
+                send_to_char("*Click*  The lock mechanism releases.\n\r", ch);
                 act ("$n unlocks the $d.", ch, NULL, pexit->keyword, TO_ROOM);
         }
 }
@@ -1913,7 +1913,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
 
                         if (ch->pcdata->fame > 500)
                         {
-                                sprintf(buf, "Thine cowardly actions cover you in shame! You lose %d fame.\n\r", ch->pcdata->fame/40);
+                                sprintf(buf, "Your cowardly actions cover you in shame! You lose %d fame.\n\r", ch->pcdata->fame/40);
                                 send_to_char(buf, ch);
                                 ch->pcdata->fame = ch->pcdata->fame - (ch->pcdata->fame/40);
                                 check_fame_table(ch);
@@ -2105,7 +2105,7 @@ void do_home (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->fame > 500)
                 {
-                        sprintf(buf, "Thine cowardly actions cover you in shame! You lose %d fame.\n\r", ch->pcdata->fame/20);
+                        sprintf(buf, "Your cowardly actions cover you in shame! You lose %d fame.\n\r", ch->pcdata->fame/20);
                         send_to_char(buf, ch);
                         ch->pcdata->fame = ch->pcdata->fame - (ch->pcdata->fame/20);
                 }
@@ -2328,7 +2328,7 @@ void do_change (CHAR_DATA *ch, char *argument)
                         if (!remove_eq)
                         {
                                 remove_eq = TRUE;
-                                send_to_char ("Your new subclass prevents you from wearing some of your equipment any further.\n\r", ch);
+                                send_to_char ("Your new subclass does not allow you to continue wearing some of your equipment.\n\r", ch);
                         }
 
                         unequip_char (ch, obj);
@@ -2616,7 +2616,7 @@ void do_rage (CHAR_DATA *ch, char *argument)
                 affect_to_char(ch, &af);
 
                 act ("$n starts to growl horribly... I'd stand back if I were you.\n\r",ch,NULL,NULL,TO_ROOM);
-                send_to_char("You being to growl softly, focusing on your next target.\n\r", ch);
+                send_to_char("You begin to growl softly, focusing on your next target.\n\r", ch);
 
                 WAIT_STATE(ch, PULSE_VIOLENCE);
                 return;
@@ -2858,7 +2858,7 @@ void do_pattern(CHAR_DATA* ch, char* argument)
 
                 if (ch->in_room->area->low_level == -4 && ch->in_room->area->high_level == -4)
                 {
-                        send_to_char("You cannot create a mystic pattern her.\n\r", ch);
+                        send_to_char("You cannot create a mystic pattern here.\n\r", ch);
                         return;
                 }
 
