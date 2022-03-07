@@ -1178,7 +1178,7 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        //return;  Re-enabled 22/09/2018.  I too like to live dangerously. --Owl
+        /* return;  Re-enabled 22/09/2018.  I too like to live dangerously. --Owl */
 
         if ( victim == ch )
         {

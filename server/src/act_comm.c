@@ -977,13 +977,6 @@ void do_delete( CHAR_DATA *ch, char *argument)
         char strsave[MAX_INPUT_LENGTH];
         char buf[MAX_INPUT_LENGTH];
 
-        char *initial( const char *str )
-        {
-                static char strint [MAX_STRING_LENGTH];
-                strint[0] = LOWER( str[0] );
-                return strint;
-        }
-
         if (IS_NPC(ch))
         {
                 send_to_char("Mobs can't delete themselves.\n\r",ch);
