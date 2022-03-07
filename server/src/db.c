@@ -4081,6 +4081,16 @@ char *capitalize_initial( const char *str )
         return strcap;
 }
 
+/*
+ * Initial letter of a string, lower-cased.
+ */
+char *initial (const char *str)
+{
+        static char initial [1];
+        initial[0] = LOWER(str[0]);
+        return initial;
+}
+
 
 /*
  * Append a string to a file.

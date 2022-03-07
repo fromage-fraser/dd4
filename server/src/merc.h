@@ -234,7 +234,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL               497
-#define MAX_PRE_REQ             1284
+#define MAX_PRE_REQ             1283
 #define MAX_SPELL_GROUP         377
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
@@ -4007,6 +4007,7 @@ bool    str_infix                       args( ( const char *astr, const char *bs
 bool    str_suffix                      args( ( const char *astr, const char *bstr ) );
 char *  capitalize                      args( ( const char *str ) );
 char *  capitalize_initial              args( ( const char *str ) );
+char *  initial                         args( ( const char *str ) );
 void    append_file                     args( ( CHAR_DATA *ch, char *file, char *str ) );
 void    bug                             args( ( const char *str, int param ) );
 void    log_string                      args( ( const char *str ) );

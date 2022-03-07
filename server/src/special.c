@@ -140,8 +140,8 @@ SPEC_FUN *spec_lookup (const char *name )
 */
 char* spec_fun_name (CHAR_DATA *ch)
 {
-    // fprintf(stderr, "has spec fun var: %p\r\n", ch->spec_fun);
-    // fprintf(stderr, "spec lookup var: %p\r\n", spec_lookup("spec_cast_hooker"));
+    /* fprintf(stderr, "has spec fun var: %p\r\n", ch->spec_fun); */
+    /* fprintf(stderr, "spec lookup var: %p\r\n", spec_lookup("spec_cast_hooker")); */
 
     if ( IS_NPC(ch)
          &&   ch->spec_fun )
