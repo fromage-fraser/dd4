@@ -40,7 +40,7 @@
  Each of the note boards has its own file. Each of the boards can have its own
  "rights": who can read/write.
 
- Each character has an extra field added, namele the timestamp of the last note
+ Each character has an extra field added, namely the timestamp of the last note
  read by him/her on a certain board.
 
  The note entering system is changed too, making it more interactive. When
@@ -124,7 +124,7 @@ NOTE_DATA *new_note ()
         else
                 note = alloc_mem (sizeof(NOTE_DATA));
 
-        /* Zero all the field - Envy does not gurantee zeroed memory */
+        /* Zero all the field - Envy does not guarantee zeroed memory */
         note->next = NULL;
         note->sender = NULL;
         note->expire = 0;
@@ -1045,7 +1045,7 @@ void handle_con_note_subject (DESCRIPTOR_DATA *d, char * argument)
         }
         else if (strlen(buf) > 50)
         {
-                send_to_char("No, no. This is just the Subject. You're note writing the note yet.\n\r", ch);
+                send_to_char("No, no. This is just the Subject. You're not writing the note yet.\n\r", ch);
         }
         else
         /* advance to next stage */
@@ -1152,11 +1152,11 @@ void handle_con_note_text (DESCRIPTOR_DATA *d, char * argument)
 
         smash_tilde (buf); /* smash it now */
 
-        /* Check for too long lines. Do not allow lines longer than 80 chars */
+        /* Check for lines that are too long. Do not allow lines longer than 80 chars */
 
         if (strlen (buf) > MAX_LINE_LENGTH)
         {
-                write_to_buffer (d, "Too long line rejected. Do NOT go over 80 characters!\n\r",0);
+                write_to_buffer (d, "Long line rejected. Do NOT go over 80 characters!\n\r",0);
                 return;
         }
 

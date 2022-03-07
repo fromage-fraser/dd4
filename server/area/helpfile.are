@@ -12,21 +12,20 @@ command can be used to configure ansi for your system.  This command lets
 you configure the communication channels to the color of your choice.
 Type ANSI to see the color state of your channels.
 
-Here is a list of the channel names (the capitalized column to the right) and
-all the color names and their respect index numbers (on left):
+Here is a list of the channel names (the capitalized names to the right) and
+all the color names and their respective index numbers (on left):
 
-01 blue              09 light_blue         17 flashing        IMMTALK
-02 green             10 light_green        18 inverse         SAY
-03 cyan              11 light_cyan         19 normal          TELL
-04 red               12 light_red                             CHAT
-05 purple            13 magenta                               ARENA
-06 brown             14 yellow                                DIRTALK
-07 grey              15 white                                 SHOUT
-                                                              YELL
-
+01 blue              09 light_blue         17 flashing        AUCTION
+02 green             10 light_green        18 inverse         CHAT
+03 cyan              11 light_cyan         19 normal          IMMTALK
+04 red               12 light_red                             MUSIC
+05 purple            13 magenta            CLAN               QUESTION
+06 brown             14 yellow             ARENA              SHOUT
+07 grey              15 white              TELL               YELL
+                                                              INFO
+ 
 NOTE: Your prompt can also be colourised, see 'HELP PROMPT'.
       Only Immortals may use the IMMTALK and DIRTALK channels.
-      The NEWBIE channel uses the same color as the SAY channel.
 ~
 
 

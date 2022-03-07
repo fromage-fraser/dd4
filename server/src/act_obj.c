@@ -365,7 +365,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                         {
                                 obj_next = obj->next_content;
                                 /* detect curse prevents autolooting of cursed items */
-
+                                /* Fix this so it checks spell num AND name at some point -- Owl 7/3/22 */
                                 if ( ( ( IS_OBJ_STAT( obj, ITEM_NODROP )
                                         || IS_OBJ_STAT( obj, ITEM_NOREMOVE )
                                         || ( obj->value[1] == 33 )
@@ -577,7 +577,7 @@ void do_drop (CHAR_DATA *ch, char *argument)
 
                 if (amount <= 0 )
                 {
-                        send_to_char("You can't drop negative amounts.\n\r", ch);
+                        send_to_char("You can't drop negative coin amounts.\n\r", ch);
                         return;
                 }
 
@@ -692,7 +692,7 @@ void do_drop (CHAR_DATA *ch, char *argument)
 
                 obj_to_room(create_money(plat, gold, silver, copper), ch->in_room);
 
-                send_to_char("OK.\n\r", ch);
+                send_to_char("Ok.\n\r", ch);
                 act("$n drops some coins.", ch, NULL, NULL, TO_ROOM);
                 return;
         }
@@ -720,8 +720,8 @@ void do_drop (CHAR_DATA *ch, char *argument)
                 if (obj->item_type == ITEM_CLAN_OBJECT
                     && ch->in_room->vnum == clan_table[ch->clan].heal_room )
                 {
-                        act("A orange glow eminates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_CHAR);
-                        act("A orange glow eminates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_ROOM);
+                        act("A orange glow emanates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_CHAR);
+                        act("A orange glow emanates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_ROOM);
                 }
         }
         else
@@ -747,8 +747,8 @@ void do_drop (CHAR_DATA *ch, char *argument)
 
                                 if (obj->item_type == ITEM_CLAN_OBJECT &&  ch->in_room->vnum == clan_table[ch->clan].heal_room )
                                 {
-                                        act("A orange glow eminates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_CHAR);
-                                        act("A orange glow eminates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_ROOM);
+                                        act("A orange glow emanates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_CHAR);
+                                        act("A orange glow emanates from $p as it is dropped, filling the room with warmth.",ch,obj,NULL,TO_ROOM);
                                 }
                         }
                 }
@@ -1241,7 +1241,7 @@ void do_enter (CHAR_DATA *ch, char *argument)
          * If value1 > 0, attempt made to take random room vnum within low-high
          * range.
          *
-         * Level limits restrict morts entering the portal
+         * Level limits restrict mortals entering the portal
          */
 
         if (obj->value[0] < 1)
@@ -2149,7 +2149,7 @@ void do_bounty (CHAR_DATA *ch, char *argument)
 
         if (!(victim = get_char_world(ch, arg1)))
         {
-                send_to_char("Put a bounty on who's head?\n\r", ch);
+                send_to_char("Put a bounty on whose head?\n\r", ch);
                 return;
         }
 
@@ -2175,7 +2175,7 @@ void do_bounty (CHAR_DATA *ch, char *argument)
 
         if (!ch->clan)
         {
-                send_to_char("You must join a clan in order to offer bountys.\n\r", ch);
+                send_to_char("You must join a clan in order to offer bounties.\n\r", ch);
                 return;
         }
 
@@ -2187,7 +2187,7 @@ void do_bounty (CHAR_DATA *ch, char *argument)
 
         if (ch->clan == victim->clan)
         {
-                send_to_char("Traitors are not liked, why offer a reward for your own brethren's scalp?\n\r", ch);
+                send_to_char("Traitors are reviled, why offer a reward for the scalp of your own brethren?\n\r", ch);
                 return;
         }
 
@@ -2214,7 +2214,7 @@ void do_bounty (CHAR_DATA *ch, char *argument)
 
         if (amnt < 100000)
         {
-                send_to_char("Bounty hunting is a highly paid service, a person's death comes at a higher price...\n\r",ch);
+                send_to_char("Bounty-hunting is a highly-paid profession; murder comes at a higher price than that...\n\r",ch);
                 return;
         }
 
@@ -2926,8 +2926,8 @@ void do_zap(CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && !wear_table[eff_class].can_wear[wand->item_type])
         {
-                send_to_char("You vigousously shake the wand in different directions.\n\r", ch);
-                send_to_char("You succeed only in atracting some small rodents.\n\r", ch);
+                send_to_char("You vigorously shake the wand in different directions.\n\r", ch);
+                send_to_char("You succeed only in attracting some small rodents.\n\r", ch);
                 return;
         }
 
@@ -3113,7 +3113,7 @@ void do_steal (CHAR_DATA *ch, char *argument)
 
                         coins_from_char(amount, victim);
                         coins_to_char(amount, ch, COINS_ADD);
-                        sprintf(buf, "Bingo!  You have stolen %d coppers worth of coins.\n\r", amount);
+                        sprintf(buf, "Jackpot!  You have stolen %d coppers worth of coins.\n\r", amount);
                         send_to_char(buf, ch);
                         return;
                 }
@@ -3146,7 +3146,7 @@ void do_steal (CHAR_DATA *ch, char *argument)
 
                 obj_from_char(obj);
                 obj_to_char(obj, ch);
-                send_to_char("Muha!! They did not even notice. You slink away from them grinning.\n\r", ch);
+                send_to_char("Muhaha! They didn't even notice! You slink away from them, grinning.\n\r", ch);
                 return;
         }
 }
@@ -3470,7 +3470,7 @@ void do_buy (CHAR_DATA *ch, char *argument)
                 }
 
                 if (ch->pcdata->fame < 400)
-                        act("$n nods solemly at you.", keeper, NULL, ch, TO_VICT);
+                        act("$n nods solemnly at you.", keeper, NULL, ch, TO_VICT);
 
                 else if (ch->pcdata->fame < 700)
                         act("$n tells you 'I have heard rumors of your courage.'",
@@ -4780,7 +4780,7 @@ void do_deposit (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->bank + (amnt * COIN_PLAT) > max_balance)
                 {
-                        sprintf (buf, "Sorry %s, but you may only keep the eqivalent of one million "
+                        sprintf (buf, "Sorry %s, but you may only keep the equivalent of one million "
                                  "platinum in your account.", ch->name);
                         do_say (banker, buf);
                         return;
@@ -4813,7 +4813,7 @@ void do_deposit (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->bank + (amnt * COIN_GOLD) > max_balance)
                 {
-                        sprintf (buf, "Sorry %s, but you may only keep the eqivalent of one million "
+                        sprintf (buf, "Sorry %s, but you may only keep the equivalent of one million "
                                  "platinum in your account.", ch->name);
                         do_say (banker, buf);
                         return;
@@ -4845,7 +4845,7 @@ void do_deposit (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->bank + (amnt * COIN_SILVER) > max_balance)
                 {
-                        sprintf (buf, "Sorry %s, but you may only keep the eqivalent of one million "
+                        sprintf (buf, "Sorry %s, but you may only keep the equivalent of one million "
                                  "platinum in your account.", ch->name);
                         do_say (banker, buf);
                         return;
@@ -4877,7 +4877,7 @@ void do_deposit (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->bank + (amnt * COIN_COPPER) > max_balance)
                 {
-                        sprintf (buf, "Sorry %s, but you may only keep the eqivalent of one million "
+                        sprintf (buf, "Sorry %s, but you may only keep the equivalent of one million "
                                  "platinum in your account.", ch->name);
                         do_say (banker, buf);
                         return;
@@ -4935,7 +4935,7 @@ void do_withdraw (CHAR_DATA *ch, char *argument)
 
         if (arg1[0] == '\0' || arg2[0] == '\0')
         {
-                sprintf(buf, "What denomination and how many coins do you wish to withdraw?\n\r");
+                sprintf(buf, "How many coins of what denomination do you wish to withdraw?\n\r");
                 send_to_char(buf, ch);
                 return;
         }
