@@ -1176,6 +1176,7 @@ struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 #include "pre_reqs/pre_req-ranger.c"
 #include "pre_reqs/pre_req-barbarian.c"
 
+        // Is this for testing, or a sentinel value? Can we remove this?
         { &gsn_sstime,  &gsn_sstime,    100,    0 }
 };
 
