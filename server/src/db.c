@@ -3664,8 +3664,8 @@ void do_areas (CHAR_DATA *ch, char *argument)
                         && (pArea->high_level >= level || pArea->high_level == -1 || pArea->low_level == -2)))
                 {
                         /*
-                        added last || evaluation to if_check above so you see 'all' areas if you supply
-                        an area number argument to 'area' --Owl 13/2/22
+                         * added last || evaluation to if_check above so you see 'all' areas if you supply
+                         * an area number argument to 'area' --Owl 13/2/22
                         */
 
                         /*fprintf(stderr, "var: %d\r\n", pArea->low_level);*/
