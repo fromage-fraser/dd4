@@ -40,7 +40,7 @@ void fame_table_swap (int one, int two)
 
 
 /*
- * check the table for a change when pc's fame modified 
+ * check the table for a change when PC's fame modified 
  */
 void check_fame_table (CHAR_DATA *ch) 
 {
@@ -79,7 +79,7 @@ void check_fame_table (CHAR_DATA *ch)
                 
                 /* 
                  * Umgook - added so messages only print if people added 
-                 * to the prinable length
+                 * to the printable length
                  */
                 if (i < FAME_TABLE_LENGTH_PRINT) 
                 {
@@ -95,7 +95,7 @@ void check_fame_table (CHAR_DATA *ch)
                 }
         }
         /* 
-         * internal movement withing table 
+         * internal movement within table 
          */
         else
         {
@@ -451,7 +451,7 @@ void check_clan_vanq_table ( CHAR_DATA *ch, CHAR_DATA *victim )
                 
                 clan_vanq_table[clan][i].killed = 1;
                 
-                sprintf(buf, "Congratulations, you have now entered the ranks of the vanqished for clan %s.\n\r", clan_table[clan].who_name);
+                sprintf(buf, "Congratulations, you have now entered the ranks of the vanquished for clan %s.\n\r", clan_table[clan].who_name);
                 send_to_char( buf, victim );
                 sprintf(buf, "%s has been added to the ranks of the vanquished.", victim->name);
                 do_clantalk(ch, buf);

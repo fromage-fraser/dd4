@@ -56,7 +56,7 @@ void    fread_obj       args((CHAR_DATA *ch,  FILE *fp));
 /*
  * Save a character and inventory.
  * Would be cool to save NPC's too for quest purposes,
- *   some of the infrastructure is provided.
+ * some of the infrastructure is provided.
  */
 void save_char_obj (CHAR_DATA *ch)
 {
@@ -1555,7 +1555,7 @@ void load_pkill_table (int clan)
 
 
 /*
- * New code for loading DD III heros from file.
+ * New code for loading DD III heroes from file.
  */
 bool fread_hero(HERO_DATA *hero, FILE *fp)
 {

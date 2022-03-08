@@ -2328,7 +2328,7 @@ void do_change (CHAR_DATA *ch, char *argument)
                         if (!remove_eq)
                         {
                                 remove_eq = TRUE;
-                                send_to_char ("Your new subclass does not allow you to continue wearing some of your equipment.\n\r", ch);
+                                send_to_char ("Your new subclass does not permit the wearing of some of your equipment.\n\r", ch);
                         }
 
                         unequip_char (ch, obj);

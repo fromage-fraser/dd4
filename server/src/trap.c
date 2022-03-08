@@ -77,7 +77,7 @@ void do_disable(CHAR_DATA *ch, char *argument)
                 chance += 10;
 
         if ( number_percent( ) > chance ) {
-                send_to_char("As you begin to disable the trap, you slip, and hear a faint *click*.\n\r",ch);
+                send_to_char("As you begin to disable the trap you slip, and hear a faint *click*.\n\r",ch);
                 damage( ch, ch, ch->level*4,gsn_disable, FALSE);
                 return;
         }
@@ -339,7 +339,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
         if (!str_cmp(arg2, "object") ) {
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_OBJECT) )
                         SET_BIT(obj->trap_eff, TRAP_EFF_OBJECT);
-                send_to_char("You have set an object(get or put) trap!\n\r", ch);
+                send_to_char("You have set an object (get or put) trap!\n\r", ch);
                 return;
         }
 
@@ -417,11 +417,11 @@ void do_trapset(CHAR_DATA *ch, char *argument)
 
                 if ( !str_cmp(arg3, "poison") ) {
                         obj->trap_dam = TRAP_DAM_POISON;
-                        send_to_char("The trap with now poison its victims!\n\r", ch );
+                        send_to_char("The trap will now poison its victims!\n\r", ch );
                         return;
                 }
 
-                send_to_char("That is not an allowed value!\n\r", ch);
+                send_to_char("That is not a permitted value!\n\r", ch);
                 return;
         }
 
@@ -439,7 +439,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char("That is not an allowed option!\n\r", ch);
+        send_to_char("That is not a permitted option!\n\r", ch);
         return;
 }
 
@@ -631,7 +631,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         if ( ch->in_room == NULL
                             ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
                             || ( !IS_NPC(ch) && ch->fighting != NULL ) ) {
-                                send_to_char( "Wow that was close...you set off a trap and it malfunctioned!\n\r", ch );
+                                send_to_char( "Wow, that was close... you set off a trap and it malfunctioned!\n\r", ch );
                                 return;
                         }
 
@@ -655,7 +655,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 if ( wch->in_room == NULL
                                     ||   IS_SET(wch->in_room->room_flags, ROOM_NO_RECALL)
                                     || ( !IS_NPC(wch) && wch->fighting != NULL ) ) {
-                                        send_to_char( "Wow that was close... A trap was set off and malfunctioned!\n\r", wch);
+                                        send_to_char( "Wow, that was close... a trap was set off and malfunctioned!\n\r", wch);
                                         continue;
                                 }
 
@@ -753,7 +753,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
         if (obj->trap_dam == TRAP_DAM_PIERCE) {
                 if (!IS_SET( obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        act("$n sets of a trap on $p and is pierced in the chest!", ch, obj, NULL, TO_ROOM);
+                        act("$n sets off a trap on $p and is pierced in the chest!", ch, obj, NULL, TO_ROOM);
                         act("You set off a trap on $p and are pierced through the chest!", ch, obj, NULL, TO_CHAR);
                 }
                 else {
@@ -787,9 +787,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                  * Stop up any residual loopholes
                  */
 
-                if ( dam > 1500 ) {
-                        bug( "Damage: %d: more than 1500 points in trap", dam );
-                        dam = 1500;
+                if ( dam > 6000 ) {
+                        bug( "Damage: %d: more than 6000 points in trap", dam );
+                        dam = 6000;
                 }
 
                 if ( IS_AFFECTED(ch, AFF_INVISIBLE) ) {
@@ -886,9 +886,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                          * Stop up any residual loopholes
                          */
 
-                        if ( dam > 1500 ) {
-                                bug( "Trap damage: %d: more than 1500 points!", dam );
-                                dam = 1500;
+                        if ( dam > 6000 ) {
+                                bug( "Trap damage: %d: more than 6000 points!", dam );
+                                dam = 6000;
                         }
 
                         if ( IS_AFFECTED(wch, AFF_INVISIBLE) ) {
@@ -1001,7 +1001,11 @@ void trap_damage_message (CHAR_DATA *ch, int dam) {
         else if (dam <= 600)    verb = "$4-=*>|$FCRIPPLES$R$4|<*=-$R";
         else if (dam <= 900)    verb = "$4-=**>>$FBRUTALISES$R$4<<**=-$R";
         else if (dam <= 1200)   verb = "$4-=**>>$FVAPOURISES$R$4<<**=-$R";
-        else                    verb = "$4-+*>>>$FATOMIZES$R$4<<<*+-$R";
+        else if (dam <= 1500)   verb = "$4-+*>>>$FATOMIZE$R$4<<<*+-$R";
+        else if (dam <= 2000)   verb = "$4-+*>#$FELIMINATE$R$4#<*+-$R";
+        else if (dam <= 2500)   verb = "$4-+*###$FEXTERMINATE$R$4###*+-$R";
+        else if (dam <= 3000)   verb = "$4--=##>>$FUTTERLY DESTROYS$R$4<<##=--$R";
+        else                    verb = "$4-+<<[[ $FPARTICLIZES$R$4 ]]>>+-$R";
 
         sprintf (buf, "The trap %s $n!", verb);
         act (buf, ch, NULL, NULL, TO_ROOM);

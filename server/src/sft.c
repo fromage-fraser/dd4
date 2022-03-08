@@ -104,7 +104,7 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_cat] > 50) 
                 {
                         affect_strip(ch, gsn_detect_hidden);
-                        send_to_char("Your new form causes your awarness to improve.\n\r", ch);
+                        send_to_char("Your new form causes your awareness to improve.\n\r", ch);
 
                         af.type      = gsn_detect_hidden;
                         af.duration  = -1;
@@ -206,9 +206,9 @@ void do_coil (CHAR_DATA *ch, char *argument)
   
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_coil]) 
         {
-                act ("You entwine $N with your body.", ch, NULL, victim, TO_CHAR); 
-                act ("$n entwines you in coils of flesh - you are trapped!", ch, NULL, victim, TO_VICT);
-                act ("$n coils its length about $N.", ch, NULL, victim, TO_NOTVICT);
+                act ("You coil your body around $N.", ch, NULL, victim, TO_CHAR); 
+                act ("$n encoils you in $s flesh - you are trapped!", ch, NULL, victim, TO_VICT);
+                act ("$n coils $s length about $N.", ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n coils about $N.", ch, victim);
                 
                 WAIT_STATE(ch, 1 * PULSE_VIOLENCE);
@@ -228,7 +228,7 @@ void do_coil (CHAR_DATA *ch, char *argument)
                 affect_to_char(victim, &af);
         } 
         else 
-                send_to_char("You fail to entwine your target.\n\r",ch);
+                send_to_char("You fail to encoil your target.\n\r",ch);
 }
 
 
@@ -259,7 +259,7 @@ void do_constrict (CHAR_DATA *ch, char *argument)
         
         if (!is_affected(victim, gsn_coil)) 
         {
-                send_to_char("Your coils cannot reach at the moment!\n\r", ch);
+                send_to_char("You need to encoil them first!\n\r", ch);
                 return;
         }
 
@@ -299,7 +299,7 @@ void do_strangle (CHAR_DATA *ch, char *argument)
 
         if (!is_affected(victim, gsn_coil)) 
         {
-                send_to_char("Your coils cannot reach at the moment!\n\r", ch);
+                send_to_char("You need to encoil them first!\n\r", ch);
                 return;
         }
 
@@ -309,7 +309,7 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         
         if (victim->hit > (victim->max_hit / 2)) 
         {
-                send_to_char("You attempt to wrap yourself around your victim's neck, but fail.\n\r",ch);
+                send_to_char("You attempt to wrap your coils around your victim's neck, but fail.\n\r",ch);
                 return; 
         }
         
@@ -413,7 +413,7 @@ void do_morph_scorpion (CHAR_DATA *ch, bool to_form)
                 obj_to_char(sting, ch);
                 form_equip_char(ch, sting, WEAR_WIELD);
                 
-                send_to_char("Your sting allows backstabbing...\n\r", ch);
+                send_to_char("You may backstab with your stinger...\n\r", ch);
         }
         else 
         {
@@ -488,7 +488,7 @@ void do_web (CHAR_DATA *ch, char *argument)
         
         if (arg[0] == '\0') 
         {
-                send_to_char("Whom do you want to capture in your web?\n\r", ch);
+                send_to_char("Whom do you want to trap in your web?\n\r", ch);
                 return;
         }
         
@@ -752,7 +752,7 @@ void do_wolfbite (CHAR_DATA *ch, char *argument)
         {
                 if (arg[0] == '\0')
                 {
-                        send_to_char("Wolfbite who?\n\r", ch);
+                        send_to_char("Wolfbite whom?\n\r", ch);
                         return;
                 }
         
@@ -1036,7 +1036,7 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
                 affect_to_char(ch, &af);
                 
                 affect_strip(ch, gsn_detect_hidden);
-                send_to_char("Your new form causes your awarness to improve.\n\r", ch);
+                send_to_char("Your new form causes your awareness to improve.\n\r", ch);
 
                 af.type      = gsn_detect_hidden;
                 af.duration  = -1;
@@ -1685,11 +1685,14 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /*
         if (ch->mount)
         {
                 send_to_char ("You may not morph while mounted.\n\r", ch);
                 return;   
         }
+            Makes mount useless for shifters.  Disabled.  -- Owl 8/3/22
+        */
         
         if( ch->sub_class == SUB_CLASS_VAMPIRE && form != FORM_NORMAL ) 
         {
@@ -1731,7 +1734,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
         
         if ((ch->pcdata->learned[sn] < 20) && (form != 0)) 
         {
-                send_to_char("You have insufficient knowledge to morph into that form.\n\r", ch);
+                send_to_char("You don't know that form well enough to morph into it.\n\r", ch);
                 return;
         }
   

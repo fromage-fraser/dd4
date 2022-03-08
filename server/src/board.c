@@ -124,7 +124,7 @@ NOTE_DATA *new_note ()
         else
                 note = alloc_mem (sizeof(NOTE_DATA));
 
-        /* Zero all the field - Envy does not guarantee zeroed memory */
+        /* Zero all the fields - Envy does not guarantee zeroed memory */
         note->next = NULL;
         note->sender = NULL;
         note->expire = 0;
