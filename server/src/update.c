@@ -338,16 +338,6 @@ void gain_exp( CHAR_DATA *ch, int gain )
         char buf [ MAX_STRING_LENGTH ];
         int tmp;
 
-        /*
-         * if (ch->level >= LEVEL_HERO)
-         * {
-         *         send_to_char("The experience you gain is irrelevant.\n\r", ch);
-         *         return;
-         * }
-         *     This seems like scroll spam to me, but feel free to convince me
-         *     otherwise -- Owl 5/3/22
-         */
-
         /* This is the new quest points required for level - Shade Sept 99 */
         /* It's this hacky on purpose because we don't want the player to */
         /* get the xp until we've checked they can advance! */
@@ -1596,7 +1586,7 @@ void aggr_update()
                                 mch->mpactnum = 0;
                                 mch->mpact    = NULL;
                         }
-                        
+
                         if (!IS_NPC(mch)
                             || !IS_SET(mch->act, ACT_AGGRESSIVE)
                             || !can_see(mch, ch)
