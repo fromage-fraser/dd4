@@ -63,7 +63,7 @@ char *mprog_type_to_name( int type )
     }
 }
 
-/* A trivial rehack of do_mstat.  This doesnt show all the data, but just
+/* A trivial rehack of do_mstat.  This doesn't show all the data, but just
  * enough to identify the mob and give its basic condition.  It does however,
  * show the MOBprograms which are set.
  */
@@ -143,7 +143,7 @@ void do_mpstat( CHAR_DATA *ch, char *argument )
 
 }
 
-/* prints the argument to all the rooms aroud the mobile */
+/* prints the argument to all the rooms around the mobile */
 
 void do_mpasound( CHAR_DATA *ch, char *argument )
 {
@@ -500,7 +500,7 @@ void do_mpoload( CHAR_DATA *ch, char *argument )
     return;
 }
 
-/* lets the mobile purge all objects and other npcs in the room,
+/* lets the mobile purge all objects and other NPCs in the room,
    or purge a specified object or mob in the room.  It can purge
    itself, but this had best be the last command in the MOBprogram
    otherwise ugly stuff will happen */
@@ -657,7 +657,7 @@ void do_mpat( CHAR_DATA *ch, char *argument )
 }
 
 /*
- * lets the mobile transfer people.  the all argument transfers
+ * lets the mobile transfer people.  the 'all' argument transfers
  * everyone in the current room to the specified location
  *
  * Extended by Gezhp

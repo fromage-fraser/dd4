@@ -141,7 +141,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel stronger", ch);
 
                 if (!check_stat_advance(ch, APPLY_STR))
-                        send_to_char("; your strength is at maximum", ch);
+                        send_to_char("; your strength is at maximum.", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -152,7 +152,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel smarter", ch);
 
                 if (!check_stat_advance(ch, APPLY_INT))
-                        send_to_char("; your intelligence is at maximum", ch);
+                        send_to_char("; your intelligence is at maximum.", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -163,7 +163,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel wiser", ch);
 
                 if (!check_stat_advance(ch, APPLY_WIS))
-                        send_to_char("; your wisdom is at maximum", ch);
+                        send_to_char("; your wisdom is at maximum.", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -174,7 +174,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel more dexterous", ch);
 
                 if (!check_stat_advance(ch, APPLY_DEX))
-                        send_to_char("; your dexterity is at maximum", ch);
+                        send_to_char("; your dexterity is at maximum.", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -185,7 +185,7 @@ void advance_stat (CHAR_DATA *ch)
                 send_to_char("{WYou feel fitter", ch);
 
                 if (!check_stat_advance(ch, APPLY_CON))
-                        send_to_char("; your constitution is at maximum", ch);
+                        send_to_char("; your constitution is at maximum.", ch);
 
                 send_to_char(".{x\n\r", ch);
 
@@ -339,14 +339,14 @@ void gain_exp( CHAR_DATA *ch, int gain )
         int tmp;
 
         /*
-        if (ch->level >= LEVEL_HERO)
-        {
-                send_to_char("The experience you gain is irrelevant.\n\r", ch);
-                return;
-        }
-            This seems like scroll spam to me, but feel free to convince me
-            otherwise -- Owl 5/3/22
-        */
+         * if (ch->level >= LEVEL_HERO)
+         * {
+         *         send_to_char("The experience you gain is irrelevant.\n\r", ch);
+         *         return;
+         * }
+         *     This seems like scroll spam to me, but feel free to convince me
+         *     otherwise -- Owl 5/3/22
+         */
 
         /* This is the new quest points required for level - Shade Sept 99 */
         /* It's this hacky on purpose because we don't want the player to */
@@ -387,7 +387,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
 
                 if (ch->level == LEVEL_HERO)
                 {
-                        sprintf(buf, "-=>>  A time of celebration arrives as %s reaches the ultimate level of Hero!  <<=-",ch->name);
+                        sprintf(buf, "-=>>  A time of celebration arrives as %s reaches the ultimate level of HERO!  <<=-",ch->name);
                         do_info(ch,buf);
                         sprintf(buf, "-=>>  The name of %s has been recorded for all time in the Hall of Heroes!  <<=-\n\r",ch->name);
                         do_info(ch,buf);
@@ -721,7 +721,7 @@ int rage_gain( CHAR_DATA *ch )
         if (ch->sub_class == SUB_CLASS_VAMPIRE)
         {
                 if (ch->rage < ch->max_rage / 10)
-                        send_to_char( "You feel weak - You crave for {Rblood!{x\n\r", ch);
+                        send_to_char( "You feel weak - You crave {Rblood!{x\n\r", ch);
 
                 if (!ch->pcdata->condition[COND_THIRST] && ch->level < LEVEL_HERO)
                         gain *= 2;
@@ -806,7 +806,7 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        send_to_char("Your parched throat cries out for liquid.\n\r", ch);
+                        send_to_char("Your throat is parched; you cry out for liquid.\n\r", ch);
                         gain = - number_range(1, 2) * ch->level;
 
                         if (ch->hit + gain <= 0)
@@ -1167,7 +1167,7 @@ void weather_update ()
                         if (d->character->position != POS_FIGHTING)
                                 d->character->position = POS_STANDING;
 
-                        send_to_char("{WThe full moon brings you glorious lust for blood!{x\n\r",
+                        send_to_char("{WThe full moon inspires a glorious {Rbloodlust{x} in you!{x\n\r",
                                      d->character);
 
                         if (d->character->form != FORM_WOLF && d->character->form != FORM_DIREWOLF)
@@ -1499,7 +1499,7 @@ void obj_update()
                         else if (obj->item_type == ITEM_ARMOR
                                  && IS_OBJ_STAT(obj, ITEM_FORGED))
                         {
-                                act("$p's metal looks to be in bad condition.",
+                                act("$p's metal looks to be in poor condition.",
                                     obj->carried_by, obj, NULL, TO_CHAR);
                         }
                 }
@@ -1570,6 +1570,9 @@ void aggr_update()
                         /*
                          * MOBProgs ACT_PROG trigger.  Walker.
                          * Modified to free the mpact list w/o regard to nplayer.  Walker
+                         * 
+                         * This was disabled and I re-enabled it 8/3/22.  Don't @ me -- Owl
+                         */
 
                         if (IS_NPC(mch) && mch->mpactnum > 0)
                         {
@@ -1593,7 +1596,7 @@ void aggr_update()
                                 mch->mpactnum = 0;
                                 mch->mpact    = NULL;
                         }
-                        */
+                        
                         if (!IS_NPC(mch)
                             || !IS_SET(mch->act, ACT_AGGRESSIVE)
                             || !can_see(mch, ch)

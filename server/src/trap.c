@@ -787,9 +787,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                  * Stop up any residual loopholes
                  */
 
-                if ( dam > 6000 ) {
-                        bug( "Damage: %d: more than 6000 points in trap", dam );
-                        dam = 6000;
+                if ( dam > MAX_DAMAGE ) {
+                        bug( "Damage: %d: more than MAX_DAMAGE points in trap", dam);
+                        dam = MAX_DAMAGE;
                 }
 
                 if ( IS_AFFECTED(ch, AFF_INVISIBLE) ) {
@@ -886,9 +886,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                          * Stop up any residual loopholes
                          */
 
-                        if ( dam > 6000 ) {
-                                bug( "Trap damage: %d: more than 6000 points!", dam );
-                                dam = 6000;
+                        if ( dam > MAX_DAMAGE ) {
+                                bug( "Trap damage: %d: more than MAX_DAMAGE points!", dam );
+                                dam = MAX_DAMAGE;
                         }
 
                         if ( IS_AFFECTED(wch, AFF_INVISIBLE) ) {

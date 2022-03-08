@@ -329,7 +329,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->fame < 0)
                 {
-                        sprintf(buf, "You are not worthy to receive a quest, %s.", ch->name);
+                        sprintf(buf, "You are not worthy of receiving a quest, %s.", ch->name);
                         do_say(questman, buf);
                         return;
                 }
@@ -632,7 +632,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
             case 1:
                 sprintf (buf, "{c\n\r%s exclaims, 'One of the Domain's most heinous criminals, {C%s{x{c, "
                          "has escaped from captivity!  Since the escape, %s has murdered %d "
-                         "defenseless civillians!'  %s looks grave.  'The penalty for these "
+                         "defenseless civilians!'  %s looks grave.  'The penalty for these "
                          "crimes is death, and you are to deliver the sentence!  Begin your search "
                          "in the general area of {C%s{x{c; your target has been spotted in the vicinity "
                          "of {C%s{x{c.'{x\n\r\n\r",
