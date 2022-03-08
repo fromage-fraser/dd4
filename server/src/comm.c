@@ -3340,16 +3340,15 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
 void bit_explode (CHAR_DATA *ch, char* buf, unsigned long int n)
 {
     char tmp [MAX_STRING_LENGTH] = {0};
+    char *sep = "";
+    unsigned long int arr[31] = {0};
+    int i = 0;
+    int j;
 
     /* Doesn't accept stupid values */
     if (n <= 0 || n > 2147483647)
         return;
 
-    char *sep;
-    sep = "";
-    unsigned long int arr[31] = {0};
-    int i = 0;
-    int j;
     strcpy( buf, tmp );
 
     while (n) {
@@ -3374,7 +3373,7 @@ void bit_explode (CHAR_DATA *ch, char* buf, unsigned long int n)
             {
                 sep = "";
             }
-            sprintf(tmp, "%s%lu", sep,arr[j]);
+            sprintf(tmp, "%s%lu", sep, arr[j]);
             strcat( buf, tmp );
             sep = "|";
         }

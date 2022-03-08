@@ -271,7 +271,7 @@ const struct song song_table [ MAX_SONGS ] =
 
 const struct pattern_points pattern_list [ MAX_PATTERN ] =
 {
-        {       },
+        {     0 },
         {  3017 },
         { 10300 },
         {   693 },
@@ -1175,8 +1175,6 @@ struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 #include "pre_reqs/pre_req-bard.c"
 #include "pre_reqs/pre_req-ranger.c"
 #include "pre_reqs/pre_req-barbarian.c"
-
-        { &gsn_sstime,  &gsn_sstime,    100,    0 }
 };
 
 
