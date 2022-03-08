@@ -2713,12 +2713,25 @@ int form_skill_allow (CHAR_DATA *ch, int sn)
 
 void generate_stats (CHAR_DATA *ch)
 {
-        /* initial random number 11 -> 15 */
-        ch->pcdata->perm_str = number_range(11, 15);
-        ch->pcdata->perm_int = number_range(11, 15);
-        ch->pcdata->perm_wis = number_range(11, 15);
-        ch->pcdata->perm_dex = number_range(11, 15);
-        ch->pcdata->perm_con = number_range(11, 15);
+
+        /*
+         * Shade - 9.3.22
+         *
+         * Make it a bit friendlier to new players and reduce randomisation, ensure base stats aren't too bad.
+         * 
+         */
+        int sum = 0;
+
+        while (sum < 63) 
+        {
+                /* initial random number 11 -> 15 */
+                ch->pcdata->perm_str = number_range(11, 15);
+                ch->pcdata->perm_int = number_range(11, 15);
+                ch->pcdata->perm_wis = number_range(11, 15);
+                ch->pcdata->perm_dex = number_range(11, 15);
+                ch->pcdata->perm_con = number_range(11, 15);
+                sum = ch->pcdata->perm_str + ch->pcdata->perm_int + ch->pcdata->perm_wis + ch->pcdata->perm_dex + ch->pcdata->perm_con;
+        }
 
         /* racial modification */
         ch->pcdata->perm_str += race_table[ch->race].str_bonus;
