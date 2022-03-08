@@ -1030,6 +1030,17 @@ const struct social_type social_table [] =
         },
 
         {
+                "dab",
+                        "You dab triumphantly.",
+                        "$n dabs triumphantly.",
+                        "You dab triumphantly at $N.",
+                        "$n dabs triumphantly at $N.",
+                        "$n dabs triumphantly at you.",
+                        "You dab triumphantly at yourself.",
+                        "$n dabs triumphantly in response to $mself."
+        },
+
+        {
                 "dance",
                         "Feels silly, doesn't it?",
                         "$n tries to break dance, but nearly breaks $s neck!",
@@ -1141,6 +1152,18 @@ const struct social_type social_table [] =
                         "You raise an eyebrow at yourself.  That hurt!",
                         "$n raises an eyebrow at $mself.  That must have hurt!"
         },
+        
+        /* OR THIS ONE -- Owl 2/3/22 */
+        {
+                "facepalm",
+                        "You hold your face in your hands and groan.",
+                        "$n holds $s face in $s hands and groans.",
+                        "You facepalm at $N's groanworthy remark.",
+                        "$n groans and facepalms at $N.",
+                        "$n groans and facepalms at you.",
+                        "You hold your face in your hands and groan to yourself.",
+                        "$n groans and facepalms at $mself."
+        },
 
         {
                 "faint",
@@ -1152,7 +1175,7 @@ const struct social_type social_table [] =
                         "You look down at your condition and faint.",
                         "$n looks down at $s condition and faints dead away."
         },
-
+        
         {
                 "fakerep",
                         "You report: 12874/13103 hp 9238/10230 mana 2483/3451 mv 2.31E13 xp.",
@@ -1437,6 +1460,17 @@ const struct social_type social_table [] =
                         "$n grunts to you.  What a pig!",
                         "GRNNNHTTTT.",
                         "$n grunts to $mself.  What a pig!"
+        },
+
+        {
+                "gulp",
+                        "You gulp nervously.",
+                        "$n gulps nervously.",
+                        "You gulp nervously at $M.",
+                        "$n gulps nervously at $N.",
+                        "$n gulps nervously at you.",
+                        "You gulp nervously, hoping no one notices.",
+                        "$n gulps nervously to $mself."
         },
 
         {
@@ -2737,6 +2771,18 @@ const struct social_type social_table [] =
                         "$n is getting a crazy look in $s eye again."
         },
 
+        /* I can't believe this one was missing -- Owl 22/2/22 */
+        {
+                "thumbs",
+                        "You give a thumbs-up.",
+                        "$n gives a thumbs-up.",
+                        "You give $m a thumbs-up.",
+                        "$n gives $N a thumbs-up.",
+                        "$n gives you a thumbs-up.",
+                        "You give yourself a thumbs-up.",
+                        "$n gives $mself a thumbs-up."
+        },
+
         {
                 "tickle",
                         "Whom do you want to tickle?",
@@ -2813,29 +2859,7 @@ const struct social_type social_table [] =
                         "You twiddle your ears like Dumbo.",
                         "$n twiddles $s own ears like Dumbo."
         },
-        /* I can't believe this one was missing -- Owl 22/2/22 */
-        {
-                "thumbs",
-                        "You give a thumbs-up.",
-                        "$n gives a thumbs-up.",
-                        "You give $m a thumbs-up.",
-                        "$n gives $N a thumbs-up.",
-                        "$n gives you a thumbs-up.",
-                        "You give yourself a thumbs-up.",
-                        "$n gives $mself a thumbs-up."
-        },
-        /* OR THIS ONE -- Owl 2/3/22 */
-        {
-                "facepalm",
-                        "You hold your face in your hands and groan.",
-                        "$n holds $s face in $s hands and groans.",
-                        "You facepalm at $N's groanworthy remark.",
-                        "$n groans and facepalms at $N.",
-                        "$n groans and facepalms at you.",
-                        "You hold your face in your hands and groan to yourself.",
-                        "$n groans and facepalms at $mself."
-        },
-
+        
         {
                 "type",
                         "You throw up yor handz in dizgust at yur losy typing skils.",

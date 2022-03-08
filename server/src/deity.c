@@ -71,7 +71,7 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
 
         { "Lloth",
                 "Queen of Darkness",
-                "Spawned in inpenetrable vaults sunken deep in the Earth, consuming all "
+                "Spawned in impenetrable vaults sunken deep in the Earth, consuming all "
                         "that is light and goodness, the Spider Queen Lloth commands the "
                         "legion of Drow as they spread chaos throughout the Domain.  Her "
                         "mind is malignant and evil, and her cruelness is unparalleled; "
@@ -130,7 +130,7 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 "Her beauty and gentleness are unrivaled, her purity and kindness "
                         "absolute.  The princess Ealindel treads among the "
                         "sacred glades of the high elves, her gentle singing spreading "
-                        "waves of rejuvination and hope throughout the great forests.",
+                        "waves of rejuvenation and hope throughout the great forests.",
                 SEX_FEMALE,
                 1000,
                 DEITY_TYPE_PEACEFUL,
@@ -294,7 +294,7 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
 
         { "Swyft",
                 "Prince of Thieves",
-                "A master thief and scurrelous rogue, Swyft is the patron of thieves, "
+                "A master thief and scurrilous rogue, Swyft is the patron of thieves, "
                         "bandits, gamblers and fools.  He delights in mischief, "
                         "trickery and theft.  Devious, cunning and sneaky, Swyft ensures "
                         "that nothing stays safe for long.",
@@ -315,7 +315,7 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 "Through deep meditation, mental discipline, contemplation and reflection, "
                         "Nystis perceives the inner workings of the universe.  He seeks "
                         "harmony and peace amongst the creatures of the Domain, so that "
-                        "they may be atuned to this cosmic mechanism.  Nystis ignores what "
+                        "they may be attuned to this cosmic mechanism.  Nystis ignores what "
                         "form followers take or how they have behaved in the past, hoping "
                         "to enlighten them and bring them happiness.",
                 SEX_MALE,
@@ -367,7 +367,7 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Morfus",
-                "the Sorceror",
+                "the Sorcerer",
                 "A mortal wizard of great learning and power, Morfus became divine after "
                         "gleaning the secrets of eternal life while experimenting with alchemy "
                         "and other sciences.  Now he roams the magical planes, always "
@@ -450,7 +450,7 @@ bool init_pantheon()
 
         /*
          *  Okay: set up the initial state of the Pantheon.  This is done
-         *  by chosing a dominant deity at random, setting the 'atmosphere'
+         *  by choosing a dominant deity at random, setting the 'atmosphere'
          *  of the Pantheon to that deity's alignment, and then ranking the
          *  rest of the Gods accordingly.
          *
@@ -872,7 +872,7 @@ void do_pantheoninfo (CHAR_DATA *ch, char *argument)
                                 "Chaotic", "Lawful", "Nature" };
         const char      *personality [DEITY_NUMBER_PERSONALITIES] = { "Helpful", "Cruel",
                                 "Judgemental", "Mysterious", "Protective", "Proud",
-                                "Mischievious" };
+                                "Mischievous" };
 
         if (!authorized (ch, gsn_pantheoninfo))
                 return;
@@ -1527,7 +1527,7 @@ void update_player_favour (CHAR_DATA *ch, int deity)
         }
 
 
-        /*  Check whever offended by releases  */
+        /*  Check whoever offended by releases  */
 
         if ((deity_info_table[deity].alignment < -349
              && IS_SET (ch->pcdata->deity_flags, DEITY_PFLAG_LEFT_EVIL))
@@ -1626,15 +1626,6 @@ void do_pray (CHAR_DATA *ch, char *argument)
 
         if (!allow_deity_command(ch))
                 return;
-
-        /*
-        if (ch->level > LEVEL_HERO)
-        {
-                send_to_char("Immortals may not pray to deities.\n\r", ch);
-                return;
-        }
-        Religious bigotry removed 2/3/22 by Owl.  Add back if it creates problems, Gezhp. ;)
-        */
 
         /*
          * Temporary

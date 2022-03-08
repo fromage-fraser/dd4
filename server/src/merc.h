@@ -541,7 +541,7 @@ struct  auction_data
         OBJ_DATA  *     item;           /* a pointer to the item */
         CHAR_DATA *     seller;         /* a pointer to the seller - which may NOT quit */
         CHAR_DATA *     buyer;          /* a pointer to the buyer - which may NOT quit */
-        int             bet;            /* last bet - or 0 if noone has bet anything */
+        int             bet;            /* last bet - or 0 if no one has bet anything */
         int             going;          /* 1,2, sold */
         int             pulse;          /* how many pulses (.25 sec) until another call-out ? */
         int             reserve;        /* Reserve price */

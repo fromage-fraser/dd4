@@ -233,7 +233,7 @@ void do_choke (CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                send_to_char ("Choke who?\n\r", ch);
+                send_to_char ("Choke whom?\n\r", ch);
                 return;
         }
         
@@ -351,7 +351,7 @@ void do_battle_aura (CHAR_DATA *ch, char *argument)
                 
                 act ("$n closes his eyes, shakes violently, screams loudly and starts to emit a silvery glow.",
                      ch, NULL, NULL, TO_ROOM);
-                send_to_char("Concentrating intensly to the point of shaking, you feel your body stiffen for battle.\n\r", ch);
+                send_to_char("Concentrating intently to the point of shaking, you feel your body stiffen for battle.\n\r", ch);
         }
         else
                 send_to_char("You focus your mental energies but your concentration is lacking...\n\r", ch);
@@ -524,7 +524,7 @@ void do_mount(CHAR_DATA *ch, char *argument)
         
         if (victim == ch)
         {
-                send_to_char("You really can't mount yourself.\n\r", ch);
+                send_to_char("You can't mount yourself.\n\r", ch);
                 return;
         }
         
@@ -536,7 +536,7 @@ void do_mount(CHAR_DATA *ch, char *argument)
         
         if ((victim->master && victim->master != ch) || ch->level < victim->level)
         {
-                send_to_char("Your intended mount thinks you're unworthy and prevents you from mounting.\n\r", ch);
+                send_to_char("Your intended mount thinks you're unworthy and will not allow you to mount.\n\r", ch);
                 return;
         }
         
@@ -723,7 +723,7 @@ void do_combo (CHAR_DATA *ch, char *argument)
                         }
                         else
                         {
-                                act ("$n atempts to break $N's arms, but fails.", ch, NULL, victim,TO_NOTVICT);
+                                act ("$n attempts to break $N's arms, but fails.", ch, NULL, victim,TO_NOTVICT);
                                 damage(ch , victim, 0 , gsn_kansetsu, FALSE);
                         }
                         
@@ -872,7 +872,7 @@ void do_atemi (CHAR_DATA *ch, char *argument)
         {
                 if (!(victim = get_char_room  (ch, arg)))
                 {
-                        send_to_char("Who shall be your target?\n\r", ch);
+                        send_to_char("Who is your target?\n\r", ch);
                         return;
                 }
         }
@@ -924,7 +924,7 @@ void do_kansetsu (CHAR_DATA *ch, char *argument)
         {
                 if (!(victim = get_char_room  (ch, arg)))
                 {   
-                        send_to_char("Who shall be your target?\n\r", ch);
+                        send_to_char("Who is your target?\n\r", ch);
                         return;
                 }
         }
@@ -971,7 +971,7 @@ void do_tetsui (CHAR_DATA *ch, char *argument)
         {
                 if (!(victim = get_char_room  (ch, arg)))
                 {   
-                        send_to_char("Who shall be your target?\n\r", ch);
+                        send_to_char("Who is your target?\n\r", ch);
                         return;
                 }
         }
@@ -1021,7 +1021,7 @@ void do_shuto (CHAR_DATA *ch, char *argument)
         {
                 if (!(victim = get_char_room  (ch, arg)))
                 {   
-                        send_to_char("Who shall be your target?\n\r", ch);
+                        send_to_char("Who is your target?\n\r", ch);
                         return;
                 }
         }
@@ -1070,7 +1070,7 @@ void do_yokogeri (CHAR_DATA *ch, char *argument)
         {
                 if (!(victim = get_char_room  (ch, arg)))
                 {   
-                        send_to_char("Who shall be your target?\n\r", ch);
+                        send_to_char("Who is your target?\n\r", ch);
                         return;
                 }
         }
@@ -1437,7 +1437,7 @@ void do_focus (CHAR_DATA *ch, char *argument)
         
         if (is_affected(ch, gsn_berserk))
         {
-                send_to_char("You cant focus on another, you're BERSERK!\n\r", ch);
+                send_to_char("You cant focus on others, you're BERSERK!\n\r", ch);
                 return;
         }
         
@@ -1532,7 +1532,7 @@ void do_suck (CHAR_DATA *ch, char *argument)
         
         if (victim == ch)
         {
-                send_to_char("You can't suck yourself!\n\r", ch);
+                send_to_char("Sucking oneself is an unwholesome activity.\n\r", ch);
                 return;
         }
         
@@ -2198,7 +2198,7 @@ void do_intimidate (CHAR_DATA *ch, char *argument)
         af.bitvector = AFF_DETER;
         affect_to_char(ch, &af );
         
-        send_to_char("You are god, no mortal can touch you!\n\r", ch);
+        send_to_char("You are a god, no mortal can touch you!\n\r", ch);
         return;
 }
 
@@ -2233,7 +2233,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
         
         if( target[0] == '\0')
         {
-                send_to_char("Who did you think to extort money from?\n\r", extortionist);
+                send_to_char("Who did you want to extort money from?\n\r", extortionist);
                 return;
         }
         
@@ -2254,7 +2254,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
         
         if( !IS_NPC( victim))
         {
-                act("You muscle on up to $n, they dont seem amused at your act.\n",
+                act("You muscle on up to $n; they dont seem amused at your act.\n",
                     victim, NULL, extortionist, TO_VICT);
                 act("$n tries some bully tactics on you in an attempt to get money.  Isn't it sad?\n",
                     extortionist, NULL, victim, TO_VICT);
@@ -2321,7 +2321,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                                 act("$n pleads you to leave them enough coin to feed their family.", 
                                     victim, NULL, extortionist, TO_VICT);
                                 send_to_char("You make them grovel piteously before tossing them a copper back.", extortionist);
-                                send_to_char("Sensitivity, it's your middle name isn't it?", extortionist);
+                                send_to_char("Sensitivity is your middle name, isn't it?", extortionist);
                                 act("$N makes $n grovel piteously for one lousy copper piece.",
                                     victim, NULL, extortionist, TO_NOTVICT);
                                 special_event = number_range(3, 7);
@@ -2374,7 +2374,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                                     victim, NULL, extortionist, TO_VICT);
                                 send_to_char("How you gonna build a reputation as a hard-ass when they smile at ya?\n",
                                              extortionist);
-                                act("$n smiles happily at $N as $m slips $N a small parcel, wonder what it was.",
+                                act("$n smiles happily at $N as $m slips $N a small parcel. Wonder what it was?",
                                     victim, NULL, extortionist, TO_NOTVICT);
                         }
                 }
@@ -2382,7 +2382,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                 {
                         act("Your attempt to increase $n's awareness of social issues such as personal", victim, NULL, extortionist, TO_VICT);
                         act("safety through sound protection plans and suddenly realise you, yourself", victim, NULL, extortionist, TO_VICT);
-                        act("are a small player in the game of life... scary aint it?", victim, NULL, extortionist, TO_VICT);
+                        act("are a small player in the game of life... scary ain't it?", victim, NULL, extortionist, TO_VICT);
                         act("$n convinces you that your best interest lies in paying $m a small amount", victim, NULL, extortionist, TO_VICT);
                         act("of money to remain safe.", victim, NULL, extortionist, TO_VICT);
                         
@@ -2609,7 +2609,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                         return;
                 }
                 
-                act( "$n recites a viscous sounding chant.", ch, NULL, NULL, TO_ROOM );
+                act( "$n recites a vicious-sounding chant.", ch, NULL, NULL, TO_ROOM );
                 WAIT_STATE( ch, PULSE_VIOLENCE );
                 
                 chance = URANGE( 5, ch->pcdata->learned[gsn_chant_of_enfeeblement],95 );
@@ -2650,7 +2650,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                         return;
                 }
                 
-                act( "$n recites a viscous sounding chant.", ch, NULL, NULL, TO_ROOM );
+                act( "$n recites a vicious-sounding chant.", ch, NULL, NULL, TO_ROOM );
                 WAIT_STATE( ch, PULSE_VIOLENCE );
                 
                 chance = URANGE( 5, ch->pcdata->learned[gsn_chant_of_pain], 95 );
@@ -3044,7 +3044,7 @@ void do_classify( CHAR_DATA *ch, char *arg )
         {
                 sprintf( buf, "%s looks like food", capitalize( obj->short_descr ) );
                 if( obj->value[3] != 0 )
-                        strcat( buf, ".  It's probably not safe to consume" );
+                        strcat( buf, ".  It's probably not safe to consume." );
         }
         else
         {

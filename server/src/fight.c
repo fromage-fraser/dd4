@@ -1231,7 +1231,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
 /*
  *  Chat help when attacked by another player
- *  Shade & Geshp Jan 2000
+ *  Shade & Gezhp Jan 2000
  */
 void chat_killer(CHAR_DATA *ch, CHAR_DATA *victim)
 {
@@ -1326,7 +1326,7 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
                 if (IS_SET(victim->in_room->room_flags, ROOM_SAFE)
                     || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE))
                 {
-                        send_to_char("Not in a place of Sanctuary.\n\r", ch);
+                        send_to_char("Not in a place of sanctuary.\n\r", ch);
                         return TRUE;
                 }
 
@@ -1367,7 +1367,7 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_SET(victim->in_room->room_flags, ROOM_SAFE)
             || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE))
         {
-                send_to_char("Not in a place of Sanctuary.\n\r", ch);
+                send_to_char("Not in a place of sanctuary.\n\r", ch);
                 return TRUE;
         }
 
@@ -1578,7 +1578,7 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (victim->mana < 5)
         {
-                send_to_char("Your body returns to a more corporeal state.\n\r", victim);
+                send_to_char("Your body returns to a more stable state.\n\r", victim);
                 victim->pcdata->blink = FALSE;
                 return FALSE;
         }
@@ -1831,7 +1831,7 @@ void set_fighting (CHAR_DATA *ch, CHAR_DATA *victim)
             && !is_affected(ch, gsn_berserk))
         {
                 AFFECT_DATA af;
-                send_to_char("\n\r{GYour RAGE for Blood drives your senses... you BERSERK!{x\n\r\r",ch);
+                send_to_char("\n\r{GYour LUST for {Rblood{G overwhelms your senses... you go BERSERK!{x\n\r\r",ch);
 
                 af.type      = gsn_berserk;
                 af.duration  = -1;
@@ -2151,7 +2151,7 @@ void raw_kill (CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
         /*
          * Need to remember prayer effects because we want to
          * call reset_char_stats, wipe the slate clean and add them back;
-         * reseting stats helps fix occassional stat weirdness (this is a
+         * reseting stats helps fix occasional stat weirdness (this is a
          * good thing :)
          */
         for (paf = victim->affected; paf; paf = paf->next)
@@ -2282,7 +2282,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                         if (!(gch->exp == (level_table[gch->level].exp_total - 1)
                               && !check_questpoints_allow_level_gain(gch, FALSE)))
                         {
-                                sprintf(buf, "{YFor your Heroic actions, you gain %d fame!{x\n\r", fame);
+                                sprintf(buf, "{YFor your heroic actions, you gain %d fame!{x\n\r", fame);
                                 send_to_char(buf, gch);
                                 gch->pcdata->fame += fame;
                                 check_fame_table(gch);
@@ -2304,7 +2304,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                 if (IS_SET(victim->act, ACT_LOSE_FAME))
                 {
                         fame = victim->level / 2;
-                        sprintf(buf, "{RFor your Cowardly actions, you lose %d fame!{x\n\r", fame);
+                        sprintf(buf, "{RFor your cowardly actions, you lose %d fame!{x\n\r", fame);
                         send_to_char(buf, gch);
                         gch->pcdata->fame -= fame;
                         check_fame_table(gch);
@@ -2934,14 +2934,14 @@ void do_circle (CHAR_DATA *ch, char *argument)
         {
                 if (!(victim = get_char_room  (ch, arg)))
                 {
-                        send_to_char("Circle Whom?\n\r", ch);
+                        send_to_char("Circle whom?\n\r", ch);
                         return;
                 }
         }
 
         if (victim == ch)
         {
-                send_to_char("You cant circle yourself!\n\r", ch);
+                send_to_char("You can't circle yourself!\n\r", ch);
                 return;
         }
 
@@ -3099,13 +3099,13 @@ void do_dive (CHAR_DATA *ch, char *argument)
 
         if (victim->fighting)
         {
-                send_to_char("You can't dive a fighting person.\n\r", ch);
+                send_to_char("You can't dive upon a fighting person.\n\r", ch);
                 return;
         }
 
         if ((victim->hit < victim->max_hit) && IS_NPC(victim))
         {
-                send_to_char("They seem too alert for you to successfully suprise them.\n\r", ch);
+                send_to_char("They seem too alert for you to successfully surprise them.\n\r", ch);
                 return;
         }
 
@@ -3177,7 +3177,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
 
         if ( ch->mount && ch->mount == victim )
         {
-                send_to_char("Not while your riding it!\n\r",ch);
+                send_to_char("Not while you're riding it!\n\r",ch);
                 return;
         }
 
@@ -3218,14 +3218,14 @@ void do_backstab (CHAR_DATA *ch, char *argument)
             && IS_NPC(victim)
             && victim->pIndexData->vnum != BOT_VNUM)
         {
-                act ("$C is hurt and suspicious... you can't sneak up.",
+                act ("$C is hurt and suspicious... you can't sneak up on $m.",
                      ch, NULL, victim, TO_CHAR);
                 return;
         }
 
         if (is_affected(victim, gsn_gaias_warning))
         {
-                act ("You attempt to backstab $N, but they deftly step aside!",
+                act ("You attempt to backstab $N, but $e deftly steps aside!",
                      ch, NULL, victim, TO_CHAR);
                 act ("Sensing impending danger, you step to one side, just as $n's blade flashes by.",
                      ch, NULL, victim, TO_VICT);
@@ -3353,7 +3353,7 @@ void do_lunge (CHAR_DATA *ch, char *argument)
 
         if ((victim->hit < victim->max_hit) && (IS_NPC(victim)))
         {
-                act ("$N is hurt and suspicious... you can't sneak up.",
+                act ("$N is hurt and suspicious... you can't sneak up on $m.",
                      ch, NULL, victim, TO_CHAR);
                 return;
         }
@@ -3363,7 +3363,7 @@ void do_lunge (CHAR_DATA *ch, char *argument)
 
         if (is_affected(victim, gsn_gaias_warning))
         {
-                act ("You attempt to lunge at $N but they deftly step aside.",
+                act ("You attempt to lunge at $N but $e deftly steps aside.",
                      ch, NULL, victim, TO_CHAR);
                 act ("Sensing impending danger you step to one side, just as $n's fangs flash by.",
                      ch, NULL, victim, TO_VICT);
@@ -3488,7 +3488,7 @@ void do_joust (CHAR_DATA *ch, char *argument)
 
         if (is_affected(victim, gsn_gaias_warning))
         {
-                act ("You attempt to joust at $N but they deftly step aside.",
+                act ("You attempt to joust at $N but $e deftly steps aside.",
                      ch, NULL, victim, TO_CHAR);
                 act ("Sensing impending danger you step to one side, just as $n's blade flashes by.",
                      ch, NULL, victim, TO_VICT);
@@ -3545,7 +3545,7 @@ void do_berserk (CHAR_DATA *ch, char *argument)
         if ((!IS_NPC(ch) && !CAN_DO(ch, gsn_berserk))
             || ch->sub_class == SUB_CLASS_WEREWOLF)
         {
-                send_to_char("You're not enough of a warrior to go Berserk.\n\r", ch);
+                send_to_char("You're not enough of a warrior to go berserk.\n\r", ch);
                 return;
         }
 
@@ -3742,13 +3742,13 @@ void do_flee (CHAR_DATA *ch, char *argument)
                         {
                                 if (str_cmp("Wimpy", argument))
                                 {
-                                        sprintf(buf, "Thine cowardly actions cover you in shame!  You lose %d fame.\n\r", ch->pcdata->fame/40);
+                                        sprintf(buf, "Your cowardly actions cover you in shame!  You lose %d fame.\n\r", ch->pcdata->fame/40);
                                         send_to_char(buf, ch);
                                         ch->pcdata->fame = ch->pcdata->fame - (ch->pcdata->fame/40);
                                 }
                                 else
                                 {
-                                        sprintf(buf, "Thine cowardly actions cover you in shame!  You lose %d fame.\n\r", ch->pcdata->fame/20);
+                                        sprintf(buf, "Your cowardly actions cover you in shame!  You lose %d fame.\n\r", ch->pcdata->fame/20);
                                         send_to_char(buf, ch);
                                         ch->pcdata->fame = ch->pcdata->fame - (ch->pcdata->fame/20);
                                 }
@@ -3787,7 +3787,7 @@ void do_rescue (CHAR_DATA *ch, char *argument)
 
         if (is_affected(ch, gsn_berserk))
         {
-                send_to_char("You cant rescue anyone, your BERSERK!\n\r", ch);
+                send_to_char("You cant rescue anyone, you're BERSERK!\n\r", ch);
                 return;
         }
 
@@ -3813,7 +3813,7 @@ void do_rescue (CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && IS_NPC(victim))
         {
-                send_to_char("Doesn't need your help!\n\r", ch);
+                send_to_char("They don't need your help!\n\r", ch);
                 return;
         }
 
@@ -4573,7 +4573,7 @@ void do_snap_neck (CHAR_DATA *ch, char *argument)
 
         if (victim->hit > victim->max_hit / 5)
         {
-                act ("$N's reflex's are still to good.", ch, NULL, victim, TO_CHAR);
+                act ("$N's reflexes are still too good.", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
@@ -4594,7 +4594,7 @@ void do_snap_neck (CHAR_DATA *ch, char *argument)
         {
                 act ("You grab $N's head and violently wrench it around.... *CRACK*!!",
                      ch, NULL, victim, TO_CHAR);
-                act ("$n grabs $N's head and twists voilently... *CRACK*!!",
+                act ("$n grabs $N's head and twists violently... *CRACK*!!",
                      ch, NULL, victim, TO_NOTVICT);
                 act ("$n violently twists your head!!", ch, NULL, victim, TO_VICT);
                 arena_commentary("$n snaps $N's neck.", ch, victim);
@@ -5382,7 +5382,7 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
                         count = 1;
                 }
 
-                act ("You attack $N in a bloodlusted frenzy!", ch, NULL, vch, TO_CHAR);
+                act ("You attack $N in a frenzy of bloodlust!", ch, NULL, vch, TO_CHAR);
                 WAIT_STATE(ch, skill_table[gsn_whirlwind].beats);
                 one_hit(ch, vch, gsn_whirlwind);
         }

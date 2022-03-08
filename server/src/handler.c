@@ -323,7 +323,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         if( is_affected( ch, af.type ) )
                         {
-                                send_to_char( "You are already in sanctuary.\n\r", ch );
+                                send_to_char( "You are already sanctified.\n\r", ch );
                                 break;
                         }
                         af.duration = -1;
@@ -2338,25 +2338,6 @@ char* area_flag_name (int vector)
         return "none";
 }
 
-
-#define ITEM_WEAR_NECK                  BIT_2
-#define ITEM_WEAR_BODY                  BIT_3
-#define ITEM_WEAR_HEAD                  BIT_4
-#define ITEM_WEAR_LEGS                  BIT_5
-#define ITEM_WEAR_FEET                  BIT_6
-#define ITEM_WEAR_HANDS                 BIT_7
-#define ITEM_WEAR_ARMS                  BIT_8
-#define ITEM_WEAR_SHIELD                BIT_9
-#define ITEM_WEAR_ABOUT                 BIT_10
-#define ITEM_WEAR_WAIST                 BIT_11
-#define ITEM_WEAR_WRIST                 BIT_12
-#define ITEM_WIELD                      BIT_13
-#define ITEM_HOLD                       BIT_14
-#define ITEM_FLOAT                      BIT_15
-#define ITEM_WEAR_POUCH                 BIT_16
-#define ITEM_RANGED_WEAPON              BIT_17
-#define ITEM_LAST_WEAR_BIT              BIT_17
-
 /*
 * ASCII name for wear flags, used in ostat --Owl 12/2/22
 *
@@ -2494,22 +2475,22 @@ char *full_class_name (int class)
 
 char *full_sub_class_name (int sub_class)
 {
-        if (sub_class == SUB_CLASS_NECROMANCER) return "Necromancer";
-        if (sub_class == SUB_CLASS_WARLOCK) return "Warlock";
-        if (sub_class == SUB_CLASS_TEMPLAR) return "Templar";
-        if (sub_class == SUB_CLASS_DRUID) return "Druid";
-        if (sub_class == SUB_CLASS_NINJA) return "Ninja";
-        if (sub_class == SUB_CLASS_BOUNTY) return "Bounty Hunter";
-        if (sub_class == SUB_CLASS_THUG) return "Thug";
-        if (sub_class == SUB_CLASS_KNIGHT) return "Knight";
-        if (sub_class == SUB_CLASS_SATANIST) return "Satanist";
-        if (sub_class == SUB_CLASS_WITCH) return "Witch";
-        if (sub_class == SUB_CLASS_WEREWOLF) return "Werewolf";
-        if (sub_class == SUB_CLASS_VAMPIRE) return "Vampire";
-        if (sub_class == SUB_CLASS_MONK) return "Monk";
-        if (sub_class == SUB_CLASS_MARTIAL_ARTIST) return "Martial Artist";
-        if (sub_class == SUB_CLASS_BARBARIAN) return "Barbarian";
-        if (sub_class == SUB_CLASS_BARD) return "Bard";
+        if (sub_class == SUB_CLASS_NECROMANCER)         return "Necromancer";
+        if (sub_class == SUB_CLASS_WARLOCK)             return "Warlock";
+        if (sub_class == SUB_CLASS_TEMPLAR)             return "Templar";
+        if (sub_class == SUB_CLASS_DRUID)               return "Druid";
+        if (sub_class == SUB_CLASS_NINJA)               return "Ninja";
+        if (sub_class == SUB_CLASS_BOUNTY)              return "Bounty Hunter";
+        if (sub_class == SUB_CLASS_THUG)                return "Thug";
+        if (sub_class == SUB_CLASS_KNIGHT)              return "Knight";
+        if (sub_class == SUB_CLASS_SATANIST)            return "Satanist";
+        if (sub_class == SUB_CLASS_WITCH)               return "Witch";
+        if (sub_class == SUB_CLASS_WEREWOLF)            return "Werewolf";
+        if (sub_class == SUB_CLASS_VAMPIRE)             return "Vampire";
+        if (sub_class == SUB_CLASS_MONK)                return "Monk";
+        if (sub_class == SUB_CLASS_MARTIAL_ARTIST)      return "Martial Artist";
+        if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
+        if (sub_class == SUB_CLASS_BARD)                return "Bard";
 
         return "NO SUB CLASS";
 }
