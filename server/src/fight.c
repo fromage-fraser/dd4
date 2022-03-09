@@ -4024,6 +4024,77 @@ void do_kick (CHAR_DATA *ch, char *argument)
 }
 
 
+void do_knife_toss (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA       *victim;
+        char            arg [ MAX_INPUT_LENGTH ];
+        int             dam;
+        int             chance;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_knife_toss))
+        {
+                send_to_char("You'd better leave the street fighting to thieves.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        victim = ch->fighting;
+
+        if (arg[0] != '\0' && !(victim = get_char_room(ch, arg)))
+        {
+                send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        WAIT_STATE(ch, skill_table[gsn_knife_toss].beats);
+
+        chance = number_percent();
+        
+        if (IS_NPC(ch) || chance < ch->pcdata->learned[gsn_knife_toss])
+        {
+                arena_commentary("$n tosses a knife at $N.", ch, victim);
+
+                if (!IS_NPC(ch)) 
+                {
+                        dam = (ch->level / 2) + number_range(1, ch->level);
+
+                        if( (IS_NPC(victim) && HAS_EYES(victim)) || !IS_NPC(victim) )                        
+                        {
+                                if (chance <= 10 )
+                                {
+                                        /*sprintf( buf, "{WYour knife catches the %s right in the face!{x\n\r", victim->name );
+                                        send_to_char(buf, ch); */
+
+                                        act("{WYour knife catches $N in the face!{x", ch, NULL, victim, TO_CHAR);
+
+                                        if (!IS_NPC(victim))
+                                                act("{W$n's knife catches you right in the face!{x", ch, NULL, victim, TO_VICT);
+
+                                        act("{W$n's knife catches $N in the face!{x", ch, NULL, victim, TO_NOTVICT);
+
+                                        dam *= 2;
+                                }                
+                        }
+
+                        damage(ch, victim, dam, gsn_knife_toss, FALSE);
+                }
+                else
+                        damage(ch, victim, (ch->level) + number_range(1, ch->level), gsn_knife_toss, FALSE);
+        }
+        else
+                damage(ch, victim, 0, gsn_knife_toss, FALSE);
+
+        return;
+}
+
+
 void do_trap (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;

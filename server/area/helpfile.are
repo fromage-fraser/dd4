@@ -197,6 +197,8 @@ Dragons Domain version 4.2020
 
     {GAfter 10 years resting up - we're back for another round!{x
 
+    Refer HELP CHANGES for recent changes, we'll post releases there.
+
     New players, a big hello!  If you need any help please check out
     our website which has a FAQ at {Yhttps://smihilist.com/dd4/web/{x or look
     for players with a {CGuide{x flag.
@@ -264,32 +266,29 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 
-1st September 2002 / 22 October 2002
+{WMarch 2022{x}
 
-There are no major changes to worry about! Version 4 is considered the
-release of the deity code and the numerous minor changes that were made
-throughout v3.
+We're back!
 
-You'll have noticed that races have changed when you created your new
-character. You'll have also noticed your old character didn't survive
-the transition. However your deeds are not lost (if you made Hero) and
-you can view HELP PAST HEROES to see yourself forever.
+Apart from getting everything running again, the following new skills have 
+been added;
 
-There are a couple of changes to communications with a newbie channel and
-restricting chat. You'll probably have found that one out by now.
+- Chaos Blast for Satanists
+- Detect Curse for those with Divination
+- Knife Toss for Thieves
 
-Clans are slowly starting to be recreated, see HELP CLANS for more
-information. See the help files for rules on recreating old clans.
+Refer appropriate HELP entries.
 
-Some of the more powerful skill / race / class combinations have been
-toned down, mainly by increasing the pre-reqs required for some skills
-so they cannot be gained as early. You'll find these as you go, but the
-skill dual cannot be learned at low level trainers any more as it is too
-powerful [{WEditors note: clear enough Cort / Lyth :p{x]
+We're also trying to tidy up a lot of minor issues, formating, spelling, 
+links in areas, and things like that.  
 
-Otherwise should be fairly familiar to you. Enjoy :)
+There are skills that open up which you then can't practice at that 
+teacher which we're trying to track down as well.
 
-Shade & the DD Team
+Please let us know if you see anything along those lines and we'll attempt
+to get them tidied up.
+
+Gezhp, Owl and Shade
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
@@ -890,6 +889,13 @@ Syntax: kick <target>
 
 Kick an opponent during battle, causing some damage.
 ~
+
+0 'KNIFE TOSS'~
+Syntax: KNIFE TOSS <target>
+
+Thieves are good with small throwing knives and can toss them at enemies during combat doing some damage.
+~
+
 
 0 BACKSTAB BS 'DOUBLE BACKSTAB'~
 Syntax: backstab <target>

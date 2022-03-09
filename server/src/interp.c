@@ -247,7 +247,7 @@ const struct cmd_type cmd_table [] =
         { "yokogeri",   do_yokogeri,    POS_FIGHTING,    0,  LOG_NORMAL },
         { "whirlwind",  do_whirlwind,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "wolfbite",   do_wolfbite,    POS_FIGHTING,    0,  LOG_NORMAL },
-
+        { "knife toss", do_knife_toss,  POS_FIGHTING,    0,  LOG_NORMAL },
         /*
          * Miscellaneous commands.
          */
