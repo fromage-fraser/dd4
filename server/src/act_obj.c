@@ -1319,6 +1319,23 @@ void do_eat (CHAR_DATA *ch, char *argument)
 
         one_argument(argument, arg);
 
+        /* Imms can scoff their entire inventories.  Why not?  -- Owl 9/3/22 */
+
+        if ( ( !str_cmp(arg, "all") ) 
+         &&  ( ch->level > LEVEL_HERO ) )
+        {
+                OBJ_DATA *obj_next;
+
+                for (obj = ch->carrying; obj; obj = obj_next)
+                {
+                        obj_next = obj->next_content;
+                        extract_obj(obj);
+                }
+                act("You eat everything you are carrying.", ch, obj, NULL, TO_CHAR);
+                act("$n eats everything $e is carrying.", ch, obj, NULL, TO_ROOM);
+                return;
+        }
+
         if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
         {
                 send_to_char("Not in your current form.\n\r", ch);

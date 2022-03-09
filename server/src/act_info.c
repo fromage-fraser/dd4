@@ -2908,21 +2908,30 @@ void do_train (CHAR_DATA *ch, char *argument)
                 return;
 
         if (!str_prefix("str", argument))
+        {
                 ch->pcdata->stat_train = APPLY_STR;
-
+                send_to_char( "You commit yourself to strength training.\n\r", ch );
+        }
         else if (!str_prefix("int", argument))
+        {       
                 ch->pcdata->stat_train = APPLY_INT;
-
+                send_to_char( "You will labour to sharpen your intellect.\n\r", ch );
+        }
         else if (!str_prefix("wis", argument))
+        {       
                 ch->pcdata->stat_train = APPLY_WIS;
-
+                send_to_char( "You dedicate yourself to the pursuit of wisdom.\n\r", ch );
+        }
         else if (!str_prefix("dex", argument))
+        {
                 ch->pcdata->stat_train = APPLY_DEX;
-
+                send_to_char( "You will focus on improving your dexterity.\n\r", ch );
+        }
         else if (!str_prefix("con", argument))
+        {
                 ch->pcdata->stat_train = APPLY_CON;
-
-        /* default output */
+                send_to_char( "You intend to cultivate a hardier constitution.\n\r", ch );
+        }
         else
         {
                 send_to_char("Syntax: train <str|int|wis|dex|con>\n\r", ch);
@@ -2951,7 +2960,6 @@ void do_train (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        send_to_char( "Ok.\n\r", ch );
 }
 
 

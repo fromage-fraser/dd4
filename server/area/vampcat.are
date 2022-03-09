@@ -287,9 +287,10 @@ Joan~
 Joan stands in the shower, washing her hair.
 ~
 Joan stands here naked in the shower tray, her long wet hair draped languorously
-about her lithe frame. Actually you notice her hair looks really great; bet
-she's using some mighty expensive hair cleaning products. Uhm.. don't think
-she's too happy about being disturbed..
+about her lithe frame. You imagine she'd be hard for a lot of men to resist. 
+Actually you notice her hair looks to be in particularly great condition--bet 
+she's using some mighty expensive hair cleaning products. Uhm.. don't think 
+she'll be too happy about being disturbed..
 ~
 2|32|64 8|32|512 -250 S
 35 0 0 0d0+0 0d0+0
@@ -353,12 +354,12 @@ Grok~
 Grok the vampire warrior stands here, bristling with muscles.
 ~
 Grok, while not overly tall is a fearsome sight. He stands almost as wide as tall
-and every inch muscle. Clad in chain armor and wielding a sword that dwarfs him
+and every inch muscle. Clad in chain mail armor and wielding a sword that dwarfs him
 he glares at you with cold fury.
 
-"Thou shalt come no further. I hold Herne's key and thou wilst take it only from
-mine corpse." He swings his massive blade, "I advise thee to turntail whilst thou hast
-yet legs to convey thee as mine patience hath already been sorely tested this day."
+"Thou shalt come no further. I hold Herne's key and thou wilt take it only from
+mine corpse." He swings his massive blade, "I advise thee to turn tail whilst thou hast
+yet legs to convey thee, as mine patience hath already been sorely tested this day."
 
 "I await thy decision."
 ~
@@ -400,7 +401,7 @@ Martin~
 Martin~
 Martin strides about purposefully.
 ~
-A middleaged man with a balding pate, Martin would be unremarkable but for the
+A middle-aged man with a balding pate, Martin would be unremarkable but for the
 sharp incisors visible as he smiles at your approach.
 ~
 64 512 -100 S
@@ -413,7 +414,7 @@ Sally~
 Sally rushes up to you, twittering like a teenager.
 ~
 Young, blonde and immature Sally has the manner of a flighty teenage girl, her
-speech punctuated by giggles and `ya knows'. You feel it'd be dangerous to let
+speech punctuated by giggles and 'ya knows'. You feel it'd be dangerous to let
 her live. The world is way over its idiot quota as it is.
 ~
 64 512 0 S
@@ -745,7 +746,7 @@ Porl regards you quixotically.
 Porl regards you curiously for a second before deciding to speak.
 
 "I have not seen your like here for some time. Perhaps you have come to see the
-exhibition and accidently stumbled into my abode. I suggest you leave the way
+exhibition and accidentally stumbled into my abode. I suggest you leave the way
 you came in, the exhibition, which is clearly signposted, lies to the far south
 at the end of the corridor. I bid you farewell and return to my artistic
 contemplation."
@@ -1045,9 +1046,9 @@ facemask he reveals his fangs and shrieks.
 0 0
 8 8 1
 #9550
-kitchenhand~
-a kitchenhand~
-A kitchenhand cowers before his master's rage.
+kitchenhand kitchen hand~
+a kitchen hand~
+A kitchen hand cowers before his master's rage.
 ~
 A callow and servile man of indeterminate age.
 ~
@@ -1542,16 +1543,16 @@ The urinal is absolutely filthy. Scum has formed on the top panel and on the
 fixtures connected to it and great clots of blood float in the trough, bobbing
 up and down like crab apples in the murky red soup.~
 #9528
-handbasin faucet~
-a handbasin~
-A handbasin stands beside the urinal, its faucet leaking.~
+hand basin faucet handbasin~
+a hand basin~
+A hand basin stands beside the urinal, its faucet leaking.~
 ~
 25 2 16384
 0~ 0~ 0~ 0~
 150 0 0
 E
-faucet handbasin~
-The handbasin could use some seeing to. The faucet appears to be jammed and
+faucet hand basin handbasin~
+The hand basin could use some seeing to. The faucet appears to be jammed and
 water leaks from it at an alarming rate.~
 #9529
 toilet paper roll~
@@ -4077,7 +4078,7 @@ An exhibit stands here.~
 2500 0 0
 E
 psychedelic painting exhibit~
-A psychedelic work by `Symon of the Catacombs'. Looking at it makes you feel
+A psychedelic work by 'Symon of the Catacombs'. Looking at it makes you feel
 vaguely seasick.~
 #9699
 exhibit demon sculpture~
@@ -4657,7 +4658,7 @@ S
 Herne's bedroom~
 A black four-postered bed dominates this room. Against the wall is a torture rack
 and manacles and implements of all descriptions hang from the ceiling. A bolted
-steel doorway lies to the west and you hear a faint snorting noise emanate form it.
+steel doorway lies to the west and you hear a faint snorting noise emanate from it.
 ~
 0 8|8192 0
 D2
@@ -6913,6 +6914,7 @@ M 1 9506 1 9517         Joan to Showers
 G 1 9537 100
 G 1 9539 100
 G 1 9540 100
+G 1 9565 100
 *
 M 1 9507 1 9517         Peter to Showers
 E 1 9536 100 16
