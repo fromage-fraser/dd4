@@ -1562,7 +1562,7 @@ void aggr_update()
                          * Modified to free the mpact list w/o regard to nplayer.  Walker
                          * 
                          * This was disabled and I re-enabled it 8/3/22.  Don't @ me -- Owl
-                         */
+                         * Re-disabled 10/3/22 because I think the MUD was crashing. @ me. --Owl
 
                         if (IS_NPC(mch) && mch->mpactnum > 0)
                         {
@@ -1586,7 +1586,7 @@ void aggr_update()
                                 mch->mpactnum = 0;
                                 mch->mpact    = NULL;
                         }
-
+                        */
                         if (!IS_NPC(mch)
                             || !IS_SET(mch->act, ACT_AGGRESSIVE)
                             || !can_see(mch, ch)
