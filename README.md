@@ -233,11 +233,11 @@ Run the server:
 
     root@container:/dd4-dev/src# cd ../area
 
-    root@container:/dd4-dev/area# ../src/envy
+    root@container:/dd4-dev/area# ../src/dd4
 
 Debug the server:
 
-    root@container:/dd4-dev/area# gdb ../src/envy
+    root@container:/dd4-dev/area# gdb ../src/dd4
 
     (gdb) run
 
