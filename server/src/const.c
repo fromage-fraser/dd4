@@ -1251,6 +1251,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_climb,                                   0 },
         { &gsn_intimidate,                              0 },
         { &gsn_extort,                                  0 },
+        { &gsn_knife_toss,                              0 },
 
         { &gsn_group_stealth,                           0 },
         { &gsn_hide,                                    0 },
@@ -4984,6 +4985,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_detect_curse, 5, 12,
                 "", "You no longer feel an affinity for the accursed."
+        },
+
+        {
+                "knife toss", &gsn_knife_toss,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_null, 0, 8,
+                "knife toss", "!Knife Toss!"
         },
 
         /*

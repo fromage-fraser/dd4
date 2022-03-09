@@ -84,8 +84,12 @@ Last modified 29/7/97 @ 15:45 - Mat
   {&gsn_find_traps,             &gsn_group_thievery,    40,     PRE_THIEF},
   {&gsn_find_traps,             &gsn_thief_base,        30,     PRE_THIEF},
 
+  {&gsn_knife_toss,             &gsn_group_thievery,    40,     PRE_THIEF},
+  {&gsn_knife_toss,             &gsn_thief_base,        30,     PRE_THIEF},
+
   {&gsn_disable,                &gsn_find_traps,        40,     PRE_THIEF},
   {&gsn_disable,                &gsn_group_thievery,    60,     PRE_THIEF},
+
 
 /* Defense Skills */
 

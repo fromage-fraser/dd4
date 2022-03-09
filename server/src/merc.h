@@ -233,9 +233,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               497
-#define MAX_PRE_REQ             1283
-#define MAX_SPELL_GROUP         377
+#define MAX_SKILL               498
+#define MAX_PRE_REQ             1285
+#define MAX_SPELL_GROUP         378
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
 #define MAX_VAMPIRE_GAG         24      /* ugly vampire/werewolf hack */
@@ -3110,7 +3110,7 @@ extern int gsn_mass_heal;
 extern int gsn_mass_power_heal;
 extern int gsn_chaos_blast;
 extern int gsn_detect_curse;
-
+extern int gsn_knife_toss;
 
 /*
  *  Deity gsns
@@ -3652,6 +3652,7 @@ DECLARE_DO_FUN( do_chant                        );
 DECLARE_DO_FUN( do_wizbrew                      );      /* Gezhp goes crazy with power */
 DECLARE_DO_FUN( do_suicid                       );
 DECLARE_DO_FUN( do_suicide                      );
+DECLARE_DO_FUN( do_knife_toss                   );
 
 
 /*
