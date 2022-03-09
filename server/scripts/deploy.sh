@@ -4,7 +4,7 @@
 
 # Below for maximum portability. Used so you can work from a local repo pull and
 # move only essential files to a server directory (avoid copying over pfiles and
-# tables, etc.
+# tables when you update your local, etc).
 
 CP_PATH=/bin/cp
 # Change -v below to nothing (blank) to reduce output spam
@@ -19,8 +19,8 @@ LOCAL_DOC_DIR=/home/dd/dd4/server/doc/
 SERVER_DOC_DIR=/home/dakur/dd4/doc/
 LOCAL_STARTUP_SCRIPT=/home/dd/dd4/server/scripts/start_dd4
 SERVER_STARTUP_SCRIPT=/home/dakur/dd4/scripts/start_dd4
-LOCAL_EXECUTABLE=/home/dd/dd4/server/src/envy
-SERVER_EXECUTABLE=/home/dakur/dd4/src/envy.new
+LOCAL_EXECUTABLE=/home/dd/dd4/server/src/dd4
+SERVER_EXECUTABLE=/home/dakur/dd4/src/dd4.new
 
 if [[ $EUID -ne 0 ]]; then
    $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mThis script must be run as root, exiting without doing anything...\e[0m\r\n" 

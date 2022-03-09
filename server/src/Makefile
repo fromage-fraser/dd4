@@ -14,13 +14,13 @@ O_FILES = act_comm.o act_info.o act_move.o act_obj.o act_wiz.o board.o comm.o co
           mob_prog.o save.o special.o update.o quest.o trap.o skill.o sft.o table.o \
           deity.o tournament.o bot.o
 
-envy: $(O_FILES)
-	-rm -f envy
-	$(CC) -o envy $(O_FILES) $(L_FLAGS)
+dd4: $(O_FILES)
+	-rm -f dd4
+	$(CC) -o dd4 $(O_FILES) $(L_FLAGS)
 
 new: $(O_FILES)
-	-rm -f envy.new
-	$(CC) -o envy.new $(O_FILES) $(L_FLAGS)
+	-rm -f dd4.new
+	$(CC) -o dd4.new $(O_FILES) $(L_FLAGS)
 
 const.o: const.c pre_reqs/*.c merc.h
 
@@ -28,4 +28,4 @@ const.o: const.c pre_reqs/*.c merc.h
 	$(CC) -c $(C_FLAGS) $<
 
 clean:
-	-rm *.o envy
+	-rm *.o dd4

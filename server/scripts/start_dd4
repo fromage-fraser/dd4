@@ -2,6 +2,8 @@
 # Written by Furey.
 # With additions from Tony.
 # With changes from Kahn.
+# With changes from Gezhp.
+# With changes from Owl.
 
 # Set the port number.
 set port = 8888
@@ -29,9 +31,9 @@ while ( 1 )
     end
 
     # Update to new code if possible.
-    if ( -e ../src/envy.new ) then
-	\mv ../src/envy ../src/envy.old
-	\mv ../src/envy.new ../src/envy
+    if ( -e ../src/dd4.new ) then
+	\mv ../src/dd4 ../src/dd4.old
+	\mv ../src/dd4.new ../src/dd4
     endif
 
     # Compile last command list
@@ -42,7 +44,7 @@ while ( 1 )
     endif
 
     # Run envy.
-    ../src/envy $port >&! $logfile
+    ../src/dd4 $port >&! $logfile
 
     if ( -e core ) then
 	\mv core ../src/
