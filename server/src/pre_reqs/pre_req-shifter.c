@@ -20,10 +20,8 @@
 {&gsn_strangle,                 &gsn_form_snake,        53,     PRE_SHIFTER},
 {&gsn_strangle,                 &gsn_constrict,         53,     PRE_SHIFTER},
 
-
 {&gsn_form_scorpion,            &gsn_form_snake,        50,     PRE_SHIFTER},
 {&gsn_form_scorpion,            &gsn_group_forms,       50,     PRE_SHIFTER},
-
 
 {&gsn_form_spider,              &gsn_group_forms,       50,     PRE_SHIFTER},
 {&gsn_venom,                    &gsn_form_spider,       20,     PRE_SHIFTER},
@@ -37,7 +35,7 @@
 {&gsn_bite,                     &gsn_form_tiger,        40,     PRE_SHIFTER},
 {&gsn_maul,                     &gsn_form_tiger,        60,     PRE_SHIFTER},
 
-/* due to populare demand this has been added for straight sfters */
+/* due to popular demand this has been added for straight shifters */
 {&gsn_dodge,                    &gsn_shifter_base,      60,     PRE_SHIFTER},
 {&gsn_second_attack,            &gsn_shifter_base,      60,     PRE_SHIFTER},
 
@@ -47,6 +45,7 @@
 
 { &gsn_form_phoenix,            &gsn_form_hydra,        80,     PRE_SHIFTER},
 { &gsn_form_phoenix,            &gsn_group_forms,       80,     PRE_SHIFTER},
+
 { &gsn_form_fly,                &gsn_group_forms,       85,     PRE_SHIFTER},
 { &gsn_form_fly,                &gsn_shifter_base,      60,     PRE_SHIFTER},
 

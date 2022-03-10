@@ -40,7 +40,7 @@ This mean bastard looks like he could tear you limb from limb.
 0 11000
 8 8 1
 #8304
-thing~
+swamp thing~
 the Swamp Thing~
 the Swamp Thing shambles about here.  It seems hungry.
 ~
@@ -53,7 +53,7 @@ The Swamp Thing has huge fists, which look like they could pound you flat.
 #8305
 gnoll~
 a gnoll~
-There is a mean looking gnoll here.
+There is a mean-looking gnoll here.
 ~
 The Gnoll seems annoyed at your presence.
 ~
@@ -62,7 +62,7 @@ The Gnoll seems annoyed at your presence.
 0 100000
 8 8 1
 #8306
-beast~
+huge hairy beast~
 a huge hairy beast~
 A huge hairy beast shambles towards you with death in his eyes.
 ~
@@ -86,7 +86,7 @@ sword blow.
 0 200
 8 8 1
 #8308
-will will-o-wisp~
+will wisp will-o-wisp~
 the Will-O-Wisp~
 A Will-O-Wisp darts hear and there, making fun of you.
 ~
@@ -99,7 +99,7 @@ are just able to notice a small pair of glowing eyes.
 96 5000
 8 8 0
 #8309
-snake anaconda~
+snake monstrous anaconda~
 the monstrous snake~
 A monstrous snake slithers towards you, thinking 'breakfast'.
 ~
@@ -110,7 +110,7 @@ This 10 meter anaconda looks rather hungry.
 60 26000
 8 8 1
 #8310
-snake python~
+large snake python~
 a large snake~
 A rather large python rests in a coil here.
 ~
@@ -121,7 +121,7 @@ It's the largest Amazon python you have ever seen.
 60 9000
 8 8 2
 #8312
-hag~
+hag marsh~
 the Marsh Hag~
 A Marsh Hag is here.
 ~
@@ -161,7 +161,7 @@ mound shambling~
 a shambling mound~
 A heap of garbage shambles towards you.
 ~
-This grotesque pile of plant matter fills you with utmost horror.
+This grotesque pile of plant matter fills you with the utmost horror.
 ~
 4|64 65536 -100 S
 13 8 10 10d10+150 3d6+2
@@ -180,7 +180,7 @@ painted on his face and hands.
 0 10000
 8 8 1
 #8320
-giant~
+giant marsh~
 a marsh giant~
 A marsh giant stomps towards you.
 ~
@@ -191,7 +191,7 @@ This huge monster of a man has green gnarly teeth and a BIG stick.
 0 18000
 8 8 1
 #8321
-gargoyle~
+gargoyle large~
 a gargoyle~
 A large gargoyle lands next to you, baring his fangs at you.
 ~
@@ -235,8 +235,8 @@ A
 3 -3
 #8303
 chain mail chainmail~
-a suit of chainmail~
-An old suit of chainmail lies here, corroded by the marsh.~
+a suit of chain mail~
+An old suit of chain mail lies here, corroded by the marsh.~
 ~
 9 128|512 9
 7~ 0~ 0~ 0~
@@ -320,7 +320,7 @@ Marshy Forest~
 This area is by no means a forest, but for those who dwell in these sparse
 trees it is one.  Occasionally you see a whole humanoid form floating face down
 in the water, but mostly you only find pieces.  You hear a loud bellow in the
-distance.  And feel fear creep into your heart.
+distance and feel fear creep into your heart.
 ~
 83 1 5
 D1
@@ -329,7 +329,7 @@ Eastward is the thick bog of ooze...
 ~
 0 -1 8305
 D3
-Westward lies the remanents of a broken and shattered roadway being swallowed
+Westward lies the remnants of a broken and shattered roadway being swallowed
 by the marsh.
 ~
 ~
@@ -408,7 +408,7 @@ The limb looks like it is attached to a trap door in the ground.
 S
 #8307
 Swamp Thing's Lair~
-A horrible swamp thing resides here.  Mutilated corpses suffuse the air with
+A horrible swamp thing resides here.  Mutilated corpses fill the air with
 the overwhelming stench of putrid flesh.
 ~
 83 1 6
@@ -419,7 +419,7 @@ A pool of quick sand lies to the west.
 0 -1 8308
 E
 corpses~
-You notice a note on one of the corpses reading:  'Best ye forget the temple,
+You see a note on one of the corpses that reads:  'Best ye forget the temple,
 it is not for the likes of you...'
 ~
 S
@@ -707,7 +707,7 @@ M 0 8303 2 8313         mean ogre
 M 0 8303 2 8307         mean ogre
 M 0 8304 1 8307         swamp thing
 M 0 8305 2 8306         mean gnoll
-E 1 8303 20 5                   give him the chainmail
+E 1 8303 20 5                   give him the chain mail
 E 1 2200 20 16                  give him the jagged spear
 M 0 8306 2 8304         huge hairy beast
 M 0 8306 2 8310         huge hairy beast
