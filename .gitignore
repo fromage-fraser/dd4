@@ -3,7 +3,8 @@
 .idea/
 
 *.o
-envy
-server/area/bugs.txt
-server/src/shutdown.txt
-server/player/
+/server/src/envy
+/server/src/dd4
+/server/src/shutdown.txt
+/server/area/bugs.txt
+/server/player/
