@@ -21,7 +21,7 @@ the alligator~
 A log is silently floating in the swamp.
 ~
 Jaws snap as you near what you thought was just a log floating in the swampy
-waters.  Yellow eyes flick open and satre at you, firmly believing that you are
+waters.  Yellow eyes flick open and stare at you, firmly believing that you are
 his next meal.
 ~
 32|64|128 8|32|512|32768 0 S
@@ -272,7 +272,8 @@ The swamp bubbles all around.  It is tough to tell in which direction solid
 ground lies.  The noises of the swamp echo from everywhere.  Off in the
 distance dances a glowing ball of light that seems always just out of reach.
 
-To the east a misty portal hangs in the air.~
+To the east a misty portal hangs in the air.
+~
 0 1|4 6
 D3
 ~

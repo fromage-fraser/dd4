@@ -2979,7 +2979,8 @@ Junction in the sewer tunnels~
 You stand at a four-way junction in a dank concrete sewer tunnel. Untreated
 sewage congeals about your feet and the stench of filth and decay is overpowering.
 The air is heavy with a feeling of malevolent evil and menace and a part of
-your mind is screaming at you to flee madly into the darkness.~
+your mind is screaming at you to flee madly into the darkness.
+~
 0 1|4|8|8192 0
 D0
 ~
@@ -6175,7 +6176,8 @@ S
 The Archives~
 This long rectangular vault is full of shelves stacked with documents and files.
 You stand at its northern end, it continues south. There is an odd painting on
-the northern wall.~
+the northern wall.
+~
 0 8|8192 0
 D2
 ~
@@ -6208,7 +6210,8 @@ You stand in a strange otherdimensional place, the rainbow-coloured walls
 shimmer and flicker as magical energies play across their surface. The ground
 you are standing on at least seems to be solid, oak perhaps, and the magical
 painting that serves as the room's only entrance remains hanging on the southern
-wall, though you cannot see the means of its attachment.~
+wall, though you cannot see the means of its attachment.
+~
 0 4|8|8192 0
 E
 odd magical painting~

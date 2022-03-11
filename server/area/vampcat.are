@@ -4396,7 +4396,8 @@ S
 #9501
 Rubbish room~
 This room is piled high with all sorts of rubbish. Broken furniture, meat scraps
-and tied black bags litter the floor.~
+and tied black bags litter the floor.
+~
 0 1|8 0
 D3
 An old green door lies west, leading out into a dark corridor.~
@@ -4583,7 +4584,8 @@ S
 Greg's bedroom~
 What immediately strikes you about this room is the empty flasks strewn all over
 the floor. Your attention then shifts to the posters that cover the walls. They
-aren't of anyone you recognize.~
+aren't of anyone you recognize.
+~
 0 8 0
 D3
 The plain wooden door leads out of Greg's bedroom into a dark corridor.~
@@ -4968,7 +4970,8 @@ the most recent occupant was creating space in the center in order to do
 something. Huge leering visages loom out at you from the poster-splattered walls
 and the weird art-terrorist decor creates an atmosphere of distinct unease.
 
-The only exit out appears to be the door to your west.~
+The only exit out appears to be the door to your west.
+~
 0 8 0
 D3
 ~
@@ -5086,7 +5089,8 @@ S
 #9527
 A corridor in the catacombs~
 You stand in an underground catacomb, ancient stone walls bound you to your east
-and west and the corridor continues southward.~
+and west and the corridor continues southward.
+~
 0 1|8 0
 D0
 ~
@@ -5161,7 +5165,8 @@ S
 A corridor in the catacombs~
 At this point in the corridor you can see quite clearly without your light source.
 Light spills out from doors set in the limestone walls to the west and east and
-small signs have been attached at eye level to both of them.~
+small signs have been attached at eye level to both of them.
+~
 0 8 0
 D0
 ~
@@ -5593,7 +5598,8 @@ This study has been opulently decorated in stained mahogany and gilt. In the
 center of the room is a large cedar writing desk with a split-log along its
 diameter and facing velvet-backed chairs on the north and south sides. The desk
 must have been assembled in this room as neither of the entrances are wide
-enough to carry it out of.~
+enough to carry it out of.
+~
 0 8 0
 D1
 ~
@@ -5642,7 +5648,8 @@ S
 A corridor in the catacombs~
 You stand in a particularly dank and dark part of a long stone corridor running
 west-east. A steel doorway lies south and you detect the faint odour of meat on
-the air.~
+the air.
+~
 0 1|8 0
 D1
 ~
@@ -5866,7 +5873,8 @@ S
 The cloakroom~
 This smallish room contains the assorted coats and jackets of visitors to the
 exhibition. A chair and desk is to the left of the entrance, presumably in order
-that an attendant might wait here to receive the visitors' vestments.~
+that an attendant might wait here to receive the visitors' vestments.
+~
 0 4|8 0
 D2
 ~
@@ -6104,7 +6112,8 @@ S
 #9560
 Inside the cupboard~
 The cupboard is quite small and cramped inside but you feel certain its nooks and
-crannies conceal treasure of great worth.~
+crannies conceal treasure of great worth.
+~
 0 1|4|8|2048|8192 0
 D1
 ~
@@ -6122,7 +6131,8 @@ S
 Scorpios' quarters~
 You stand in an elegantly decorated collection of open-plan rooms dominated by a
 large oak table east of the entrance. This is obviously the dwelling place of
-someone of great taste and refinement.~
+someone of great taste and refinement.
+~
 0 4|8|8192 0
 D1
 ~
@@ -6289,7 +6299,8 @@ This room is dominated by a large phrenological poster describing the parts of
 the brain and their functions. `Trophies' consisting of mounted heads of various
 kinds of creatures - including sentient ones - cover the walls, and a chair sits
 in the northwestern corner of the room, a little to the left of an antique coal
-range.~
+range.
+~
 0 8 0
 D2
 ~
@@ -6329,7 +6340,8 @@ S
 A cavernous recess~
 This recess winds up and around a little before opening into a small dark chamber.
 The stone walls are damp to the touch and the floor seems to be covered in
-something strong-smelling and squishy.~
+something strong-smelling and squishy.
+~
 0 1|512 0
 D5
 ~
@@ -6751,7 +6763,8 @@ You stand inside the cavernous space of the Catacomb Galleria. Artworks construc
 using a variety of media dot the room and groups of curious spectators drift about
 examining them.
 
-Exits to other exhibition areas from this part of the Galleria are south and west.~
+Exits to other exhibition areas from this part of the Galleria are south and west.
+~
 0 8 0
 D2
 ~

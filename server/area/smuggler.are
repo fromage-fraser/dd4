@@ -289,7 +289,7 @@ buccaneer~
 A Buccaneer~
 A buccaneer leans on the rail here.
 ~
-The buccaneer looks calmy back at you assessing your strengths with an
+The buccaneer looks calmly back at you assessing your strengths with an
 experienced eye.
 ~
 2|64 8192 -200 S
@@ -301,7 +301,7 @@ Punjak~
 Punjak the Mage~
 Punjak looks arrogantly back at you.
 ~
-Punjak is a crual and vain man, the world will be a better place without
+Punjak is a cruel and vain man, the world will be a better place without
 his presence.
 ~
 2|32|64 2|8|32|128|524288 -500 S
@@ -866,7 +866,7 @@ A
 24 -5
 #17545
 main-gauche~
-a main-guache~
+a main-gauche~
 A fencer's main-gauche is here.~
 ~
 5 0 1|8192
@@ -1872,13 +1872,14 @@ of how much has been drunk, this is hardly surprising.
 ~
 S
 #17541
-Mates Cabin~
+Mate's Cabin~
 The door opens into a rough looking room. There are two unmade bunks, one
 against each of the east and west walls. On the south wall are a large desk
 and a cabinet with a drinks tray. Against the north wall, just along from
 the door is a thick dart board which has several throwing knives stuck into
 it. Standing in the centre of the room is a rugged looking man, holding
-a throwing knife poised for a throw. He looks up as you enter.~
+a throwing knife poised for a throw. He looks up as you enter.
+~
 0 8 0
 D0
 ~
@@ -2059,13 +2060,13 @@ may be loose.
 ~
 S
 #17549
-Punjaks Quarters~
-The door opens into a lavishly furnished room of roughly thirty five feet
+Punjak's Quarters~
+The door opens into a lavishly furnished room of roughly thirty-five feet
 in length. A large bed takes up most of the eastern wall and next to
 it is a ornate bedside table. On the northern wall is a large bookcase
 and shelving unit. On the southern wall is large desk unit with many
-containers and books stacked neatly. Sitting at the desk is thin man. With
-an arrogant raise of his eyebrows he enquires what you are doing in his
+containers and books stacked neatly. Sitting at the desk is a thin man. With
+an arrogant raise of his eyebrows he inquires what you are doing in his
 quarters.
 To the south is a door leading to the twin of this cabin.
 ~
