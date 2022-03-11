@@ -330,7 +330,7 @@ The prisoner says " At last, I am rescued! I feared the worst for myself as I
 heard the screams to the west. I was in a party of bold adventurers that
 ventured into the cave searching for the legendary jewelled cave. Most people
 thought it was a legend, but it exists, it does! Far to the south across an
-underground river. In the cave is a most beatiful statue with a most powerful
+underground river. In the cave is a most beautiful statue with a most powerful
 artifact on its head. We nearly escaped with it but we were caught leaving the
 cave, and have spent the last 3 months in this hell."
 
@@ -440,7 +440,7 @@ secundus~
 Secundus, Viceroy of the quarter, is here.
 ~
 The secundi appear as incredibly thin, tall humanoids with long, narrow faces
-and deepset eyes.
+and deep-set eyes.
 ~
 2|32|64 8|32|128 -1000 S
 42 0 0 0d0+0 0d0+0
@@ -480,7 +480,7 @@ cyclops trainee warrior~
 the cyclops trainee~
 A cyclops trainee warrior is here, trying to emulate the battlemaster.
 ~
-This cyclops isnt fully trained yet, but will put up a good fight.
+This cyclops isn't fully trained yet, but will put up a good fight.
 ~
 2|64|128 0 -600 S
 38 0 0 0d0+0 0d0+0
@@ -527,7 +527,7 @@ A
 #14002
 overalls workers~
 a pair of workers overalls~
-A huge pair of gruby overalls lie here needing a wash.~
+A huge pair of grubby overalls lie here needing a wash.~
 ~
 9 0 1|8
 3~ 0~ 0~ 0~
@@ -649,7 +649,7 @@ A
 #14015
 mace ~
 mace of Damage~
-A HUGE mace capable of infliting great pain waits to maim another victim.~
+A HUGE mace capable of inflicting great pain waits to maim another victim.~
 ~
 5 1|16|64 1|8192
 0~ 25~ 45~ 7~
@@ -799,7 +799,7 @@ A
 #14028
 chair shield~
 a chair~
-A chair sits in the corner but its last owner didnt use it to sit on.~
+A chair sits in the corner but its last owner didn't use it to sit on.~
 ~
 9 2|64 1|512
 8~ 0~ 0~ 0~
@@ -856,8 +856,8 @@ E
 writing ~
 A piece of old, expensive paper covered in giant script:-
 Your Gracious Majesty Man-thor
-We have dicovered the 'gate' discussed previously and our clerics will soon
-dispel the magic that surronds it. Therefore we should disscuss the plans
+We have discovered the 'gate' discussed previously and our clerics will soon
+dispel the magic that surrounds it. Therefore we should discuss the plans
 concerning Midgaard, Solace and, of course, Ofcol. Could you send therefore an
 envoy to talk about operation 'bloody dagger' and our imminent victory.
 Yours in faith
@@ -950,8 +950,8 @@ E
 writing script~
 A piece of old, expensive paper covered in giant script:-
 Your Gracious Majesty, Primus the worthy
-We have dicovered the 'gate' discussed previously and our clerics will soon
-dispel the magic that surronds it. Therefore we should disscuss the plans
+We have discovered the 'gate' discussed previously and our clerics will soon
+dispel the magic that surrounds it. Therefore we should discuss the plans
 concerning Midgaard, Solace and of course Ofcol. Could you send therefore an
 envoy to talk about operation 'bloody dagger' and our imminent victory.
 Yours in faith
@@ -1152,7 +1152,7 @@ It looks damaging~
 #14060
 talisman demon~
 a demon-faced talisman~
-A demon-faced talisman glaers at you angrily.~
+A demon-faced talisman glares at you angrily.~
 ~
 9 1|64 1|4
 5~ 0~ 0~ 0~
@@ -1316,8 +1316,8 @@ A large wooden spoon is here.~
 0~ 30~ 40~ 7~
 20 0 0
 #14076
-net fishermans~
-a fishermans net~
+net fisherman's~
+a fisherman's net~
 A net used for catching fish is here.~
 ~
 5 0 1|8192
@@ -1370,8 +1370,8 @@ D3
 S
 #14002
 The Clearing~
-A great path of distruction eminating from the south can be seen here. The
-once peaceful forest has been distroyed. Great footprints and cart tracks can
+A great path of destruction emanating from the south can be seen here. The
+once peaceful forest has been destroyed. Great footprints and cart tracks can
 be seen leading off to the south. To the west you can see a field of corn.
 ~
 0 4 2
@@ -1417,7 +1417,7 @@ A corn field
 S
 #14004
 Corn Field~
-Corn extends in every diection.
+Corn extends in every direction.
 ~
 0 0 2
 D0
@@ -1458,8 +1458,7 @@ Corn extends in every direction. A shed lies to the north however.
 ~
 0 0 2
 D0
-The rickity shed door looks as though it will fall off its hinges if you touch
-it.
+The rickety shed door looks as though it will fall off its hinges if you touch it.
 ~
 Shed door~
 1 -1 14007
@@ -1525,7 +1524,7 @@ S
 #14010
 Path through the forest.~
 The tracks continue to the south where you can see hills rise from the
-horizorn. To the north is a large clearing.
+horizon. To the north is a large clearing.
 ~
 0 0 2
 D0
@@ -1542,7 +1541,7 @@ S
 #14011
 Before the great cave.~
 You can see what looks like a large cave opening to the south. To the east
-stands a guard house from which you can hear snoring eminate.
+stands a guard house from which you can hear snoring emanate.
 ~
 0 0 2
 D0
@@ -1577,7 +1576,7 @@ S
 #14013
 Entrance to the cave.~
 You stand at the entrance to a HUGE cave, the footprints and cart tracks
-disappear into the darkness. You can sense an earie, evil feeling standing
+disappear into the darkness. You get an eerie, evil feeling standing
 here and it seems to be coming from the mouth of the cave. You wonder to
 yourself whether it is wise to proceed or do you recall back to safety?
 ~
@@ -1743,7 +1742,7 @@ D2
 S
 #14021
 Barracks.~
-Here is the resting place of the Cyclop guard. about 20 bunks line the cave
+Here is the resting place of the Cyclops guard. about 20 bunks line the cave
 walls and tables and chairs stand in the middle. You notice a chest in the
 corner of the room. It may be a little hard to reach with the cyclops guards
 currently charging you!!
@@ -1778,7 +1777,7 @@ S
 The Great Cave.~
 As you shout you hear you echo continue down the huge cavern for a couple of
 seconds. Then you realise that the noise may bring extra attention to your
-presense. The massive cavern extends to the north, west and east.
+presence. The massive cavern extends to the north, west and east.
 ~
 0 8 0
 D0
@@ -1815,7 +1814,7 @@ D2
 S
 #14025
 The Great Cave.~
-You stand at an apparant intersection. Extending to the south and east is the
+You stand at an apparent intersection. Extending to the south and east is the
 large cavern that leads to the exit, however, tunnels lead of the the north
 and west. You notice movement in the tunnel to the west.
 ~
@@ -1869,7 +1868,7 @@ S
 Cave Dwelling.~
 You burst in upon an unsuspecting family about to eat tea. The young child
 screams seeing you in full battle gear while the farther reaches for a knife
-to try and defend his family. The cave has a primitve fireplace in the corner
+to try and defend his family. The cave has a primitive fireplace in the corner
 from which the smoke rises to a small hole in the ceiling. A table sits in the
 middle of the room while 3 large mats lie to your left.
 ~
@@ -1940,7 +1939,7 @@ S
 #14031
 Abandoned Dwelling.~
 There is an over turned table laying in the middle of the room and the
-fireplace has long since been distroyed. Debris litters the floor and the
+fireplace has long since been destroyed. Debris litters the floor and the
 smell here is quite foul. There is nothing of interest here.
 ~
 0 0 0
@@ -1954,7 +1953,7 @@ S
 The Slimy Tunnel~
 No torches burn in this tunnel. As you hold you light source up to the wall
 you are startled in the fact the walls are green with slime. To the south you
-can see an opening with light eminating from it. Fom the west you can hear
+can see an opening with light emanating from it. Fom the west you can hear
 cries of battle but can see nothing.
 ~
 0 1|8 0
@@ -2002,7 +2001,7 @@ S
 #14034
 The Lair.~
 This Lair is inhabited by a VERY nasty creature judging by the claw and
-scorchmarks on the side of the wall. To the north you can enter the pit or
+scorch marks on the side of the wall. To the north you can enter the pit or
 see if there is any way out to the south.
 ~
 0 0 0
@@ -2074,7 +2073,7 @@ S
 #14038
 Eastern side of the Arena.~
 Looking to the west you see still more half-bodies and various limbs lying
-on the ground of the pit. Soemthing very nasty must have done that much
+on the ground of the pit. Something very nasty must have done that much
 damage. To the north and south, you can continue around the edge of the pit,
 and if you are really game you can jump the 20 feet into the pit to the west.
 ~
@@ -2168,7 +2167,7 @@ S
 The Basement~
 There are no exits here as there are no entrances! Funny that. This is just
 a very big basement in the virtual space that is this mud. If you are reading
-this you shouldnt be so recall now!
+this you shouldn't be so recall now!
 ~
 0 4 0
 S
@@ -2217,9 +2216,9 @@ door wooden~
 S
 #14054
 The furnace~
-As you enter the furnace youe hair quickly catches on fire, followed by your
+As you enter the furnace your hair quickly catches on fire, followed by your
 skin. As you feel the fire burn you to ashes you figure it would be wise to
-read discriptions of rooms and exits in the future.
+read descriptions of rooms and exits in the future.
 YOU ARE DYING!!
 ~
 0 1|4|262144 0
@@ -2310,7 +2309,7 @@ S
 #14059
 Prison Cell~
 This cramped little cave houses captives that the cyclops guard find intruding
-upon there existance. Let you fall not into the same fate.
+upon there existence. Let you fall not into the same fate.
 ~
 0 1|8 0
 D2
@@ -2322,7 +2321,7 @@ S
 #14060
 Prison Cave~
 This cramped little cave houses captives that the cyclops guard find intruding
-upon there existance. Let you fall not into the same fate.
+upon there existence. Let you fall not into the same fate.
 ~
 0 1|8 0
 D0
@@ -2415,7 +2414,7 @@ D3
 S
 #14066
 The tunnel~
-You stand in a non-discript tunnel. The cart tracks are still present. As you
+You stand in a nondescript tunnel. The cart tracks are still present. As you
 stop to examine the tracks you think you can hear running water to the south.
 ~
 0 1|8 0
@@ -2432,7 +2431,7 @@ S
 #14067
 Before the bridge.~
 The tunnel opens up to reveal an underground river running in an east-west
-direction 100 feet below you. The tunnel end abuptly here as you look over
+direction 100 feet below you. The tunnel end abruptly here as you look over
 the cliffs edge to the running water 100 feet below. A half constructed wooden
 bridge attempts to span the 50 foot gap to the other side where you see the
 tunnel continue. Looking around you notice about 15 carts laden with many
@@ -2459,7 +2458,7 @@ D3
 0 -1 14068
 E
 bridge wooden~
-The Bridge seems to be well construscted although it spans only half the way
+The Bridge seems to be well constructed although it spans only half the way
 across the gap to the other side.
 ~
 S
@@ -2478,7 +2477,7 @@ You see the bridge entrance
 E
 Cart~
 The cart is crude in design but does its jobs of carrying the trees felled in
-the forest nnorth of the cave entrance.
+the forest north of the cave entrance.
 ~
 S
 #14069
@@ -2487,7 +2486,7 @@ You stand upon the first half of the bridge. The construction seems sound. 25
 feet to the south the tunnel continues into the darkness but it would be
 suicide to try to jump the gap. To the north you can see the tunnel that
 brought you here, the many carts to the north-west and a trail that leads
-down the cliffside to the river below.
+down the cliff side to the river below.
 ~
 0 1|8 0
 D0
@@ -2496,7 +2495,7 @@ D0
 0 -1 14067
 D2
 There is a large gap between the end of the bridge and the other side. You
-couldnt possibly jump it.
+couldn't possibly jump it.
 ~
 ~
 0 -1 14070
@@ -2506,7 +2505,7 @@ Mid-air~
 What a fool you are for thinking you could jump the gap. The rocks below see
 to come towards you at a surprising rate of knots. If only I had gone down the
 path to the rivers edge. This is the last thing you think of as your head
-smashes against the jaggered rocks.
+smashes against the jagged rocks.
 ~
 0 1|4 0
 S
@@ -2619,7 +2618,7 @@ S
 #14077
 Top of the cliff~
 Looking to the north you see the half finished bridge, while south the tunnel
-dissapppears into the darkness. The cyclops are building a bridge - but to
+disappears into the darkness. The cyclops are building a bridge - but to
 what?? You can head down here via steps carved into the cliff.
 ~
 0 1|8 0
@@ -2638,7 +2637,7 @@ Narrow Fissure~
 The tunnel narrows here to be just 2 feet wide and 6 feet high, just right for
 you but a bit of a squeeze for a 10 foot cyclops. As you bend your head to
 pass you notice that there are a lot of hand-prints in the dust on the floor.
-Obviously ALOT of cyclops have crawled on there hands and knees through here.
+Obviously A LOT of cyclops have crawled on there hands and knees through here.
 Looking southwards you see light, perhaps an exit? Heading north you can go
 back towards the underground river.
 ~
@@ -2655,9 +2654,9 @@ S
 #14079
 Jewelled Cave~
 The light you saw in the fissure was not daylight but from a magnificent
-Jewelled cave.  The cave forms a half-cirlce in which you stand at the top of.
+Jewelled cave.  The cave forms a half-circle in which you stand at the top of.
 The walls glow from within with an awesome radiance. You have to cover your
-eyes as they adjust to the light af the truely wonderous cave. Further to the
+eyes as they adjust to the light af the truly wondrous cave. Further to the
 south you can make out a statue of a beautiful woman. Before you can admire
 the beauty of this natural wonder you quickly realise you are not alone. You
 can circle around the cave edge by going west or east or you can head towards
@@ -2701,7 +2700,7 @@ D3
 S
 #14081
 Training rooms~
-These taing grounds are far removed from the ones to the east for insted of
+These training grounds are far removed from the ones to the east. Instead of
 spiked clubs and armour, desks, scrolls, staffs and wands fill this rooms.
 The master Magician and HIS trainees may prove to be tougher than the previous
 ones.
@@ -2745,7 +2744,7 @@ S
 #14083
 The Palace~
 Looking all around you, you cannot believe that you have left a cave behind
-you and are now standing in what can only be discribed as a palace. The walls
+you and are now standing in what can only be described as a palace. The walls
 and floors are not rough and grey but smooth and white, while the torches are
 held by brass fittings. This part of the 'cave' must hold something or someone
 very important.
@@ -2763,7 +2762,7 @@ The palace~
 S
 #14084
 The palace corridor.~
-You stand in another part of the palace. The many torches afixed to the wall
+You stand in another part of the palace. The many torches affixed to the wall
 light the corridor well. To the north and south you can see elegant doors.
 This main corridor in the palace extends west and east.
 ~
@@ -2789,7 +2788,7 @@ The palace~
 S
 #14085
 Cleric quarters~
-This room belongs to the cyclops cleric judging by the arcane sysbols and the
+This room belongs to the cyclops cleric judging by the arcane symbols and the
 small alter on the east side of the room. There is a 15 foot bed on the west
 side of the room and a large table next to it. The cleric is however not here,
 you can only wonder as to his whereabouts.
@@ -2816,7 +2815,7 @@ door ~
 S
 #14087
 The palace corridor. ~
-You stand in another part of the corodor. The many torches afixed to the wall
+You stand in another part of the corridor. The many torches affixed to the wall
 light the corridor well. To the north and south you can see elegant doors.
 This main corridor in the palace extends west and east.
 ~
@@ -2867,7 +2866,7 @@ door elegant~
 S
 #14090
 The palace corridor.~
-You stand in another part of the corodor. The many torches afixed to the wall
+You stand in another part of the corridor. The many torches affixed to the wall
 light the corridor well. This main corridor in the palace extends west and
 east. To the west the corridor appears to end.
 ~
@@ -2884,8 +2883,8 @@ D3
 S
 #14091
 A dead end?~
-The corridor appears to stop abrubtly here. However two things bug you.
-Firstly you notice footprints dissappear under the western wall and secondly
+The corridor appears to stop abruptly here. However two things bug you.
+Firstly you notice footprints disappear under the western wall and secondly
 there is a VERY big guard standing here. Why is a guard guarding a dead end
 for?
 ~
@@ -2902,7 +2901,7 @@ stone door~
 S
 #14092
 Top of the stairwell.~
-The elite guard didnt do his job very well and you stand above a large spiral
+The elite guard didn't do his job very well and you stand above a large spiral
 stairway which circles downwards.
 ~
 0 8 0
@@ -2917,8 +2916,8 @@ D5
 0 -1 14093
 S
 #14093
-On the stariwell~
-This staiwell is carved straght from the rock itself. Each step is 1 foot high
+On the stairwell~
+This stairwell is carved straight from the rock itself. Each step is 1 foot high
 and 6 feet long which makes negotiating this stair very difficult. The stair
 extends up and down.
 ~
@@ -2934,7 +2933,7 @@ D5
 S
 #14094
 Bottom of the stairwell~
-You are at the bottom of the stariwell and a corridor extends to your west.
+You are at the bottom of the stairwell and a corridor extends to your west.
 Looking up the stairwell you cannot see anything.
 ~
 0 8 0
@@ -2976,7 +2975,7 @@ You look at the picture on the wall. It shows a great army of heavily clad
 cyclops walking out of their caves. There appears to be much jubilation as
 woman and children cheer on the sides of the great column of soldiers. At
 the head of the group a bulky cyclops holds high their banner in one hand and
-in the other holds aloft a great jaggered dagger that seems to sparkle in the
+in the other holds aloft a great jagged dagger that seems to sparkle in the
 sunlight.
 ~
 S
@@ -3007,7 +3006,7 @@ E
 picture wall~
 This picture shows the cyclops army camped outside of a great city. There is a
 half moon in the sky and the gates to the city are being opened by a figure
-clad in black. The city looks very familar and you recognise it as...  THALOS!
+clad in black. The city looks very familiar and you recognise it as...  THALOS!
 ~
 S
 #14097
@@ -3035,7 +3034,7 @@ D3
 E
 picture wall~
 This picture depicts a great battle scene. In the dead of night the guards and
-the great warrior Gordon the Brave, did not expect an attack and many galant
+the great warrior Gordon the Brave, did not expect an attack and many gallant
 soldiers where killed in there beds before they had a chance to defend
 themselves. The remaining guards and shopkeepers are armed with little and
 appear to be outnumbered 3:1. The golems in the towers are locked in, and
@@ -3068,11 +3067,11 @@ D3
 E
 picture wall~
 This picture shows the final moments of the city of Thalos. The town has been
-thoughourly looted by the cyclops warriors not slain by Gordon. Pet lamias
+thoroughly looted by the cyclops warriors not slain by Gordon. Pet lamias
 run around screaming and the baby beholder has also been spared. At the bottom
 of the picture the cyclops leader has Gordon the Brave on his knees and is
-dealing the fianl death blow, - he is decapitating poor Gordon with his
-jaggered dagger. The cyclops warriors standing around him look on cheering.
+dealing the final death blow, - he is decapitating poor Gordon with his
+jagged dagger. The cyclops warriors standing around him look on, cheering.
 ~
 S
 #14099
@@ -3080,7 +3079,7 @@ Dining room~
 You are standing in a great dining room. The table itself is at least 100 feet
 long and the chairs are 10 feet wide each. The walls are covered with pictures
 of cyclops, but they all seem to look the same. Also attached to the walls are
-decromental weapons such as polearms, shields and axes. You quickly recognise
+decorative weapons such as polearms, shields and axes. You quickly recognise
 they are there merely for decoration and would not perform in the heat of
 battle. Exits lead to the north and south.
 ~
@@ -3135,7 +3134,7 @@ The steam room~
 As you enter the room, thick smoke consumes you, forcing you to cover your
 mouth and eyes. It appears that this is where the cyclops store all there
 meat. By using the smoke from the ovens next door, they smoke there meats
-thus improving its 'shelf life'. You spy various wild animals inculding deer,
+thus improving its 'shelf life'. You spy various wild animals including deer,
 and a large number of fish. The only exit is to the south
 ~
 0 1|8 0
@@ -3173,11 +3172,11 @@ The inner palace
 1 -1 14097
 S
 #14105
-The confrence room.~
-Youe are standing in a large circular room with a very large round table in
-the middle of it. Decorations are afixed to the walls and you notice a large
+The conference room.~
+You are standing in a large circular room with a very large round table in
+the middle of it. Decorations are affixed to the walls and you notice a large
 desk on the east side of the room. There are 3 figures in this room a
-minotaur, a demon and a black robed figure. The minoatur and demon charge
+minotaur, a demon and a black robed figure. The minotaur and demon charge
 toward you while the robed figure runs to the west wall and pulls a torch.
 The wall opens, he runs through it, and it closes just as quickly.
 ~
@@ -3195,7 +3194,7 @@ S
 #14106
 The secret passage~
 You enter a secret passage just in time to see the black robed figure run
-futher down the corridor to your west. You give chase.
+further down the corridor to your west. You give chase.
 ~
 0 8 0
 D1
@@ -3211,8 +3210,8 @@ S
 #14107
 The secret passage~
 You come to an apparent end to the musty tunnel and come upon the black robed
-figure pulling framtically on a torch on the south wall. He turns and faces
-you realising that you shall now fight to the death. The only apparant exit
+figure pulling frantically on a torch on the south wall. He turns and faces
+you realising that you shall now fight to the death. The only apparent exit
 is to the east.
 ~
 0 8 0
@@ -3228,9 +3227,9 @@ secret door~
 S
 #14108
 Before the throne room.~
-Two large doors similar to the ones at the etrance to the palace block your
+Two large doors similar to the ones at the entrance to the palace block your
 way to the west. Not only do the doors block your way but also an elite guard
-currently charging toward you. The throne room you beleive lies beyond the
+currently charging toward you. The throne room you believe lies beyond the
 doors to the west while to the east is a corridor.
 ~
 0 8 0
@@ -3552,7 +3551,7 @@ S
 #14129
 The Jewelled Cave~
 The walls glow from within with an awesome radiance. You have to cover your
-eyes as they adjust to the light of the truely wonderous cave. You can circle
+eyes as they adjust to the light of the truly wondrous cave. You can circle
 around the great cave by heading to the north or you can head toward the
 statue to the east.
 ~
@@ -3602,7 +3601,7 @@ S
 #14131
 Jewelled Cave~
 The walls glow from within with an awesome radiance. You have to cover your
-eyes as they adjust to the light of the truely wonderous cave. You can circle
+eyes as they adjust to the light of the truly wondrous cave. You can circle
 around the cave by heading to the north or you can head toward the statue to
 the west.
 ~
@@ -3639,7 +3638,7 @@ S
 The void~
 You stand in a completely white corridor. The whiteness is almost blinding as
 you cannot see where the floor meets the walls, nor the walls the ceiling.
-You constanly bang into the side of the walls which seem to guide you in a
+You constantly bang into the side of the walls which seem to guide you in a
 north-south direction.
 ~
 0 8 0
@@ -3656,7 +3655,7 @@ S
 The void~
 You stand in a completely white corridor. The whiteness is almost blinding as
 you cannot see where the floor meets the walls, nor the walls the ceiling.
-You constanly bang into the side of the walls which seem to guide you in a
+You constantly bang into the side of the walls which seem to guide you in a
 north-south direction.
 ~
 0 8 0
@@ -3675,7 +3674,7 @@ You suddenly stumble into a white chamber. Time and space seemed to be warped
 within this room. You can make many exits from here and you can recognise
 where they lead to! As you look around the exits a figure of a woman
 materialises before you. It is the same person as portrayed in the statue and
-eminates a warm glow which seems to fill this void. As you look at her she
+emanates a warm glow which seems to fill this void. As you look at her she
 relates a story to you.
 ~
 0 8|8192 0
@@ -3754,12 +3753,12 @@ D2
 0 -1 14139
 E
 river water~
-The river runs to the south and eminates from the mountain range to the north.
+The river runs to the south and emanates from the mountain range to the north.
 ~
 S
 #14139
 End of the path.~
-The great river dissappears into a rather large cave just to the south. The
+The great river disappears into a rather large cave just to the south. The
 path also stops here as hills rise from the ground to the south. Another net
 is set here.
 ~
@@ -3771,8 +3770,8 @@ You see the banks of a river
 0 -1 14138
 E
 river water cave~
-The river runs to the south and eminates from the mountain range to the north.
-The river dissappears into the cave mouth - its course unknown.
+The river runs to the south and emanates from the mountain range to the north.
+The river disappears into the cave mouth - its course unknown.
 ~
 S
 #0
