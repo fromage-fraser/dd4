@@ -46,7 +46,7 @@ void check_fame_table (CHAR_DATA *ch)
 {
         int prev = 0;
         int in = 0;
-        int i;
+        int i = 0;
         char buf[ MAX_STRING_LENGTH ];
         char buf1[ MAX_STRING_LENGTH ];
         
@@ -64,16 +64,32 @@ void check_fame_table (CHAR_DATA *ch)
         
         if (!in && (ch->pcdata->fame < fame_table[FAME_TABLE_LENGTH - 1].fame))
                 return;
-        
+
         if (!in) 
         {
-                for (i = FAME_TABLE_LENGTH - 1;  
-                     (fame_table[i - 1].fame <= ch->pcdata->fame && i != 0);
-                     i--)
+                for (i = FAME_TABLE_LENGTH - 1; (fame_table[i - 1].fame <= ch->pcdata->fame); i--)
                 {
                         strncpy(fame_table[i].name, fame_table[i - 1].name, sizeof(fame_table[i].name));
                         fame_table[i].fame = fame_table[i - 1].fame;
+
+                        /*
+                         * Shade 11.3.22
+                         *
+                         * Something about this has changed - the table appears to copy correctly but i gets decremented one time too many meaning players are promoted to the 0th position
+                         * 
+                         * Pretty sure it'll also mess up the fame table and character "1" will be kind of everywhere
+                         */
+
+                        if (i == 1) 
+                        {
+                                /* Might just log this for a bit; just in case */
+                                sprintf(buf, "Promoting %s to 1st position in fame table", ch->name);
+                                log_string(buf);  
+                                i = 0;
+                                break;
+                        }
                 }
+                                
                 strncpy(fame_table[i].name, ch->name, sizeof(fame_table[i].name));
                 fame_table[i].fame = ch->pcdata->fame;
                 
@@ -83,14 +99,16 @@ void check_fame_table (CHAR_DATA *ch)
                  */
                 if (i < FAME_TABLE_LENGTH_PRINT) 
                 {
+                     
                         sprintf(buf, "You are now ranked %d%s amongst famous mortals.\n\r", 
                                 i + 1,
-                                number_suffix(i+1));
+                                number_suffix(i + 1));
                         send_to_char( buf, ch );
+                        
                         sprintf(buf, "%s is now ranked number %d%s amongst famous mortals.",
                                 ch->name, 
                                 i + 1,
-                                number_suffix(i+1));
+                                number_suffix(i + 1));
                         do_info(ch, buf);
                 }
         }
@@ -151,6 +169,7 @@ void check_fame_table (CHAR_DATA *ch)
                 if (ch->desc->connected == CON_PLAYING
                     && prev < FAME_TABLE_LENGTH_PRINT && ((i && i != prev) || !i)) 
                 {
+
                         sprintf(buf, "You are now ranked %d%s amongst famous mortals.\n\r", 
                                 prev + 1,
                                 number_suffix(prev+1));
