@@ -554,7 +554,7 @@ reeks of blood and death.
 sleep
 ~
 >death_prog 100~
-mpecho {RAs Mavros' body is destroyed a giant black leech erupts from his skin!{x
+mpecho {RAs Mavros's body is destroyed a giant black leech erupts from his skin!{x
     mpmload 20626
 ~
 |
@@ -653,7 +653,7 @@ The demon form of Faraq, Wamphyri overlord is here.
 ~
 Faraq's demon form is awe-inspiring and fearsome to behold. Blazing with
 intolerable heat the demon turns from his reverie and pins you with his furious
-gaze. You perceive no capacity for mercy in his black and souless eyes. In
+gaze. You perceive no capacity for mercy in his black and soulless eyes. In
 retaliation for daring to threaten his mortal host he has now bent his implacable
 will upon your utter destruction.
 ~
@@ -731,7 +731,7 @@ E
 white cotton faded dress~
 The one piece cotton dress is faded and worn. It is bloodstained.~
 #20604
-red scarf tassles~
+red scarf tassels~
 a red scarf~
 A long red scarf has been left here.~
 ~
@@ -739,8 +739,8 @@ A long red scarf has been left here.~
 0~ 0~ 0~ 0~
 5 0 0
 E
-red scarf tassles long~
-The long red scarf has been decorated with golden tassles and floral patterning.~
+red scarf tassels long~
+The long red scarf has been decorated with golden tassels and floral patterning.~
 #20605
 claws~
 claws~

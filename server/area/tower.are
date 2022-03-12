@@ -105,7 +105,7 @@ A hobbit leaps out of the shadows, obviously happy to have visitors.
 This hobbit is dressed in workers overalls, and is obviously happy to see you.
 The hobbit says
         "God-dam, hmmm, I wonder if you can help me. I lost
-        my key to my workshop, just across the corridor. I accidently threw
+        my key to my workshop, just across the corridor. I accidentally threw
         it down the garbage shute on the eastern side of this floor. The shute
         leads to the towers sewers. I don't suppose you would like to retrieve
         it for me? You can take anything you want from my workshop if you do
@@ -348,9 +348,9 @@ slimer~
 a slimer~
 A slimer rises from the murky depths and attacks.
 ~
-A long snake like being, the slimers most outstanding features are the large,
+A long snake-like being, the slimer's most outstanding features are the large,
 sharp teeth that extrude from its mouth. Getting in the way of these will be
-hazardous to your health. The slimers body is snake like, and covered with
+hazardous to your health. The slimer's body is snake like, and covered with
 green sludge.
 ~
 2|32|64 8|32|512 -1000 S
@@ -378,7 +378,7 @@ A dark-robed figure sits before you, waiting.
 This archmage is dressed in a black robe, the hood covering her eyes. A
 golden necklace falls around her neck. She rotates her head in your general
 direction and begins to speak in a soft tongue:-
-    "I have seen your coming. I am here in Zyklors tower to assist him with his
+    "I have seen your coming. I am here in Zyklor's tower to assist him with his
 quest for 4 parts of an ancient sword that have been scattered around the
 lands. I do my best to slow his progress, however. The way to Zyklor is long
 and dangerous, the black maze is one obstacle. This may help you find your way
@@ -413,11 +413,11 @@ You nod politely to the little man, then run quickly from the room.
 #14526
 witch black~
 the black witch~
-A witch dressed in black, cackles gleefully before attacking.
+A witch dressed in black cackles gleefully before attacking.
 ~
 This witch is an ugly bitch. Many a wart covers her face, and a long pointed
-nose accentuates her raw features. She wears runed black robes, and holds in
-one hand a translucent skull.
+nose accentuates her raw features. She wears black robes covered in runes, and 
+holds a translucent skull in one hand.
 ~
 2|32|64|128 8|32|128|512 -1000 S
 80 0 0 0d0+0 0d0+0
@@ -469,7 +469,7 @@ mercenary man dark~
 the mercenary~
 A dark-skinned man searches for intruders.
 ~
-This dark-skinned man, probably a foreigner for the east, wanders the castle
+This dark-skinned man, probably a foreigner from the east, wanders the castle
 looking for unwanteds.
 ~
 4|32|64 32768 0 S
@@ -526,7 +526,7 @@ An apparition of a man materializes in a chair before you.
 ~
 This man looks at you with hollow eyes. He begins to speak in a deep haunting
 voice.
-    " I was once Zyklors trusted lieutenant. He and I were best of friends,
+    " I was once Zyklor's trusted lieutenant. He and I were best of friends,
 however, as my fighting prowess began to surpass his, he started to become
 jealous. He invited me to a dinner, here in the dining room. The cook had
 poisoned my meal. The last thing I saw was Zyklor laughing at me, as I fell to
@@ -633,7 +633,7 @@ accepts, after drinking she relates to you what she knows about your quest.
 Zyklor has them in the top level of this tower. The portals themselves are
 guarded by elementals. I know the location of 3 of the portals. One is located
 above Midgaard, in mid-air, the other below Midgaard in the sewers. The third
-is deep in the firey pit that is Hell. That is all I know, may this knowledge
+is deep in the fiery pit that is Hell. That is all I know, may this knowledge
 help you in recovering the sword."
 ~
 2|64 256 1000 S
@@ -835,7 +835,7 @@ of death.
 #14555
 burrower worm~
 the burrower~
-A HUGE worm-like creature gnaws at the rockface
+A HUGE worm-like creature gnaws at the rock face.
 ~
 This giant worm, has no legs as such, and moves as worms do. Its head is
 somewhat different however, having 8 large circular 'fangs' centered around
