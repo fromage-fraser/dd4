@@ -891,7 +891,7 @@ Kick an opponent during battle, causing some damage.
 ~
 
 0 'KNIFE TOSS'~
-Syntax: KNIFE TOSS <target>
+Syntax: KNIFE <target>
 
 Thieves are good with small throwing knives and can toss them at enemies during combat doing some damage.
 ~
