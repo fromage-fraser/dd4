@@ -533,7 +533,7 @@ greasy sheepskin pants~
 greasy sheepskin pants~
 Greasy sheepskin pants lie here in a heap.  They really reek.~
 ~
-9 0 1|2|32
+9 2 1|32
 0~ 0~ 0~ 0~
 4 0 0
 A
@@ -2421,7 +2421,7 @@ You are not yet at the top of the tower; you must open a trap-door to get out.
 D4
 You see a trap-door.
 ~
-trap door trapdoor~
+trap-door trap door trapdoor~
 2 0 11608
 D5
 ~
@@ -2499,7 +2499,7 @@ functions as a buffer with regard to possible harm from above.
 D4
 There is a trap-door above you.
 ~
-trap trap-door up door~
+trap-door trap up door~
 2 0 11612
 D5
 ~
@@ -2515,7 +2515,7 @@ move towards him, hoping the bright light from the beacon conceals your approach
 D5
 There is a trap-door here.
 ~
-trap door down trap-door~
+trap-door trap door down~
 2 0 11611
 E
 north~
@@ -2608,7 +2608,7 @@ the trap-door above you.
 D4
 A trap-door opens out to the top of the tower.
 ~
-up trap door trapdoor~
+trap-door door trap door trapdoor~
 2 0 11618
 D5
 ~
@@ -2624,12 +2624,12 @@ very pleasant given how cold and miserable the weather is.
 D5
 A trap-door is here.
 ~
-door trap trapdoor down~
+trap-door door trap trapdoor down~
 2 0 11617
 S
 #11619
 In the cellar~
-A fine mess the keeper made of this room, how he can find anything here? Food remnants 
+A fine mess the keeper made of this room, how can he can find anything here? Food remnants 
 and empty bottles of scotch are strewn about haphazardly.
 ~
 115 8 0
@@ -2673,7 +2673,7 @@ rose in a vase, a rose on a table, a rose held in a hand and that's just for sta
 D4
 A trap-door is above you.
 ~
-door trapdoor up~
+trap-door door trapdoor up~
 2 0 11622
 D5
 ~
@@ -2689,7 +2689,7 @@ the surrounding landscape.
 D5
 A trap-door is here.
 ~
-door trapdoor down~
+trap-door door trapdoor down~
 2 0 11621
 E
 north~
@@ -3310,7 +3310,7 @@ D1
 D3
 You see a door.
 ~
-west door~
+door west~
 1 11517 11663
 S
 #11663
@@ -3517,8 +3517,9 @@ D1
 S
 #11677
 In the north of the foyer~
-You stand in the northern corner of the foyer. There are stairs to the
-north of here. Shimmering teleporters surround you.
+You stand in the northern corner of the foyer. There are stairs nearby,
+but you're having trouble figuring out how to get to them. Shimmering 
+teleporters surround you.
 ~
 115 8 0
 D0
@@ -3562,7 +3563,8 @@ D3
 S
 #11679
 In the south of the foyer~
-You stand in the south of the foyer. South of here you see some stairs.
+You stand in the south of the foyer. There are stairs nearby,
+but you're having trouble figuring out how to get to them.
 Shimmering teleporters surround you.
 ~
 115 8 0
@@ -4083,6 +4085,15 @@ R 0 11681 4
 R 0 11682 4
 R 0 11683 4
 *
+D 0 11608 5 1
+D 0 11607 4 1
+D 0 11611 4 1
+D 0 11612 5 1
+D 0 11617 4 1
+D 0 11618 5 1
+D 0 11619 3 1
+D 0 11621 4 1
+D 0 11622 5 1
 D 0 11667 0 1
 D 0 11668 2 1
 D 0 11670 0 1

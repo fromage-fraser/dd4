@@ -1114,16 +1114,16 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 get_curr_con( victim ) );
         strcat( buf1, buf );
 
-        sprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Act: %d.  Status: %d.\n\r",
+        sprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Status: %d.  Hp: %d/%d.\n\r",
                 get_age( victim ),
                 (int) victim->played,
-                victim->timer,
-                victim->act,
-                !IS_NPC( victim ) ? victim->status : 0 );
+                victim->timer,  
+                !IS_NPC( victim ) ? victim->status : 0,
+                victim->hit,            victim->max_hit);
         strcat( buf1, buf );
 
-        sprintf( buf, "Hp: %d/%d.  Aggro_dam: %d.  Mana: %d/%d.  Mv: %d/%d.  Rage: %d. \n\r",
-                victim->hit,         victim->max_hit,   victim->aggro_dam,
+        sprintf( buf, "Aggro_dam: %d.  Mana: %d/%d.  Mv: %d/%d.  Rage: %d. \n\r",
+                victim->aggro_dam,
                 victim->mana,        victim->max_mana,
                 victim->move,        victim->max_move,  victim->rage);
         strcat( buf1, buf );
@@ -1187,7 +1187,12 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
         if (victim->act)
         {
-                strcat(buf1, "Act flags:");
+                sprintf(buf, "Act flags (num): ");
+                strcat( buf1, buf );
+                bit_explode(ch, buf, victim->act);
+                strcat(buf1, buf );
+                strcat(buf1, "\n\r");
+                strcat(buf1, "Act flags (txt):");
                 /* fix the bit 29/30 thing */
                 for (next = 1; next <= BIT_29; next *= 2)
                 {
@@ -1210,7 +1215,13 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
         if (victim->affected_by)
         {
-                strcat(buf1, "Affected by:");
+                sprintf(buf, "Affected by (num): ");
+                strcat( buf1, buf );
+                bit_explode(ch, buf, victim->affected_by);
+                strcat(buf1, buf );
+                strcat(buf1, "\n\r");
+
+                strcat(buf1, "Affected by (txt):");
 
                 /*
                         If you change the following to BIT_30 or just evaluate i, do_mstat might break and hang the server.

@@ -46,7 +46,7 @@ $CHOWN_PATH ${SERVER_USER}:${SERVER_USER} $SERVER_STARTUP_SCRIPT
 
 # Copy envy executable to server directory
 
-$ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mCopying envy executable to $SERVER_EXECUTABLE...\e[0m\r\n"
+$ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mCopying executable to $SERVER_EXECUTABLE...\e[0m\r\n"
 $CP_PATH $CP_VERBOSE $LOCAL_EXECUTABLE $SERVER_EXECUTABLE
 $CHOWN_PATH ${SERVER_USER}:${SERVER_USER} $SERVER_EXECUTABLE
 $ECHO_PATH -e "\r\n\e[38;5;0;48;5;196mMaking $SERVER_EXECUTABLE executable...\e[0m\r\n"
