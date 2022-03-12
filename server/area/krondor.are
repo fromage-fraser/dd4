@@ -679,7 +679,7 @@ the Quartz Demon~
 A humanoid form made out of quartz studies the machine.
 ~
 One of the few forms of demons known to be lawful, the quartz
-demon appears to interested in the observatory's equipment instead
+demon appears to be interested in the observatory's equipment instead
 of you.  According to folklore it appears only at night.  Fortunately
 you are one of the few who have seen it.
 ~
@@ -694,7 +694,7 @@ A tiny demon is here carefully changing the wording in books.
 ~
 The imp appears to be enjoying his work.  The small, skeletal
 looking demon is perched on one of the book shelves and is
-carefully erasing part of a book and adding in its own words.
+carefully erasing part of a book and adding in his own words.
 ~
 2|128 8|512|32768 -500 S
 70 10 0 3d15+50 8d6+25
@@ -703,7 +703,7 @@ carefully erasing part of a book and adding in its own words.
 #30053
 produce seller vegetable head man~
 the giant vegetable head~
-A man whose head you swear looks like a giant vegetable enters the room.
+A man--whose head you swear looks like a giant vegetable--enters the room.
 ~
 You have seen some odd-looking people, but this man appears to
 have been cursed.  His head is shaped like a giant turnip - complete
@@ -755,7 +755,6 @@ his first work as an apprentice.
 #30057
 shrine icon~
 a gilded icon~
-
 ~
 You start to pass off the shrine as another religious icon,
 but notice that it's breathing.  The shrine is a small golden
@@ -772,7 +771,7 @@ A large man is here mumbling and scratching his crotch.
 ~
 The master appears to be close to his trade.  In fact he appears to
 have a few live-in guests.  He is wearing durable leather breeches
-and a heavily-padded, long-sleeve tunic.
+and a heavily-padded, long-sleeved tunic.
 ~
 2 8|512 600 S
 81 0 -10 30d30+30 3d6+40
@@ -785,7 +784,7 @@ Several vines shoot out at you.
 ~
 A huge plant fills the greenhouse.  The plant appears to be an experiment
 gone wrong.  It behaves as if it has a mind of it own.  Thick branches
-and constantly moving vines almost make it almost impossible to hit it.
+and constantly-moving vines make it almost impossible to hit.
 ~
 2|4|32 8|16|32|512 -10 S
 75 20 -35 8d8+10 2d4+60
@@ -868,7 +867,7 @@ a young lady~
 A young but attractive lady is standing behind the counter.
 ~
 While being plainly dressed this young lady is very attractive,
-about 5 ft 8" she is well built.  Standing tall and straight in a flowing
+about 5' 8" she is well built.  Standing tall and straight in a flowing
 floral dress she is a handsome lady.
 ~
 2|64 0 1000 S
@@ -888,13 +887,13 @@ pair of boots at his stand.
 0 0
 8 8 1
 #30067
-head hunter~
-the Head hunter.~
-A massive Giant of a man is here weapons glistening from his side.
+head hunter headhunter~
+the Headhunter~
+A massive giant of a man is here, weapons glistening from his side.
 ~
-Huge is the only size this giants feet would be described as. Thick heavy
-armour sparkles, with heavy sword hanging from one side and a sharp dagger
-on the other this man looks tough.
+Huge is the only size this giant's feet would be described as. His thick, heavy
+armour sparkles. With a heavy sword hanging from one side and a sharp dagger
+on the other, this man looks tough.
 ~
 2|64 2|8|128|8192 0 S
 150 0 0 0d0+0 0d0+0
@@ -945,7 +944,7 @@ endif
 & 100 'shifter base'
 & 100 'werewolf base'
 #30068
-slayer evil attendant.~
+slayer evil attendant~
 the slayer~
 Standing here in long white robes is a tall slim attendant.
 ~
@@ -967,7 +966,7 @@ endif
 |
 #30069
 high priest adonai.~
-the high priest.~
+the high priest~
 The high priest stands here.
 ~
 Red robes flow from shoulders that are just able to hold upright
@@ -5832,7 +5831,7 @@ E 1 30074 100 18
 G 1 30072 100
 G 1 30073 100
 *
-M 1 30067 1 30000           the head hunter. to Outside the Grand Gate of Krondor
+M 1 30067 1 30000           the head hunter to Outside the Grand Gate of Krondor
 E 1 30077 100 5
 E 1 30078 100 6
 E 1 30075 100 16
@@ -5842,13 +5841,13 @@ M 1 30068 1 30116           the slayer to Shrine of Adonai.
 E 1 30080 100 16
 E 1 30079 100 18
 *
-M 1 30069 1 30121           the high priest. to The altar
+M 1 30069 1 30121           the high priest to The altar
 *
-M 1 30070 1 30122           the attendant. to Before the altar.
+M 1 30070 1 30122           the attendant to Before the altar.
 E 1 30083 100 16
 E 1 30083 100 18
 *
-M 1 30070 1 30123           the attendant. to Front of the Hall.
+M 1 30070 1 30123           the attendant to Front of the Hall.
 E 1 30083 100 16
 E 1 30083 100 18
 *
