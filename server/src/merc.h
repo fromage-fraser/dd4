@@ -4097,6 +4097,7 @@ int     item_name_type                  args( ( char *name ) );
 char *  affect_loc_name                 args( ( int location ) );
 char *  affect_bit_name                 args( ( int vector ) );
 char *  affect_bit_name_nice            args( ( int vector ) );
+char *  act_bit_name                    args( ( int vector ) );
 char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( int extra_flags ) );

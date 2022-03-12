@@ -2282,6 +2282,39 @@ char* affect_bit_name_nice (int vector)
 }
 
 /*
+ * Return ascii name of an act bit vector. Used by mstat. --Owl 12/3/22
+ */
+
+char *act_bit_name (int vector)
+{
+        if ( vector & ACT_IS_NPC                ) return "is_npc";
+        if ( vector & ACT_SENTINEL              ) return "sentinel";
+        if ( vector & ACT_SCAVENGER             ) return "scavenger";
+        if ( vector & ACT_QUESTMASTER           ) return "questmaster";
+        if ( vector & ACT_AGGRESSIVE            ) return "aggressive";
+        if ( vector & ACT_STAY_AREA             ) return "stay_area";
+        if ( vector & ACT_WIMPY                 ) return "wimpy";
+        if ( vector & ACT_PET                   ) return "pet";
+        if ( vector & ACT_NO_QUEST              ) return "no_quest";
+        if ( vector & ACT_PRACTICE              ) return "practice";
+        if ( vector & ACT_GAMBLE                ) return "gamble";
+        if ( vector & ACT_NOCHARM               ) return "no_charm";
+        if ( vector & ACT_IS_HEALER             ) return "is_healer";
+        if ( vector & ACT_IS_FAMOUS             ) return "_is_famous";
+        if ( vector & ACT_WIZINVIS_MOB          ) return "wizinvis_mob";
+        if ( vector & ACT_MOUNTABLE             ) return "mountable";
+        if ( vector & ACT_free                  ) return "free";
+        if ( vector & ACT_BANKER                ) return "banker";
+        if ( vector & ACT_IDENTIFY              ) return "identify";
+        if ( vector & ACT_DIE_IF_MASTER_GONE    ) return "die_if_master_gone";
+        if ( vector & ACT_CLAN_GUARD            ) return "clan_guard";
+        if ( vector & ACT_NO_SUMMON             ) return "no_summon";
+        if ( vector & ACT_NO_EXPERIENCE         ) return "no_experience";
+
+        return "none";
+}
+
+/*
  * ASCII name for body_form flags, used in mstat --Owl 9/2/22
  *
  */

@@ -1185,6 +1185,29 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 victim->rider ? victim->rider->name : "(none)");
         strcat( buf1, buf );
 
+        if (victim->act)
+        {
+                strcat(buf1, "Act flags:");
+                /* fix the bit 29/30 thing */
+                for (next = 1; next <= BIT_29; next *= 2)
+                {
+                        if (IS_SET(victim->act, next))
+                        {
+                                strcat(buf1, " ");
+                                strcat(buf1, act_bit_name(next));
+                        }
+                }
+
+                if (IS_SET(victim->act, BIT_30))
+                {
+                        strcat(buf1, " ");
+                        strcat(buf1, act_bit_name(BIT_30));
+                }
+
+                strcat(buf1, "\n\r");
+
+        }
+
         if (victim->affected_by)
         {
                 strcat(buf1, "Affected by:");
