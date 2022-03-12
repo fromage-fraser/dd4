@@ -11,5 +11,7 @@
 FROM gcc:4.9
 RUN apt-get update && \
     apt-get -y install gdb vim less screen
+COPY ./docker/dev_content/.screenrc /root/
+COPY ./docker/dev_content/.gdbinit /root/
 EXPOSE 8888
 CMD ["/bin/bash"]

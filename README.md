@@ -241,6 +241,10 @@ Debug the server:
 
     (gdb) run
 
+Rebuilding the dev container (if you want to update installed programs or config):
+
+    user@host$ make build-dev
+
 
 ## Notes
 

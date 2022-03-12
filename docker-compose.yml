@@ -6,7 +6,7 @@ services:
     image: dd4-server
     build:
       context: .
-      dockerfile: server.Dockerfile
+      dockerfile: docker/server.Dockerfile
     ports:
       - "8888:8888"
     volumes:
@@ -20,7 +20,7 @@ services:
     image: dd4-dev
     build:
       context: .
-      dockerfile: dev.Dockerfile
+      dockerfile: docker/dev.Dockerfile
     ports:
       - "18888:8888"
     volumes:
