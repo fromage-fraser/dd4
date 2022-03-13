@@ -2013,89 +2013,92 @@ TO_ROOM );
 void death_cry (CHAR_DATA *ch)
 {
         ROOM_INDEX_DATA *was_in_room;
-        char             msg [MAX_STRING_LENGTH];
-        int              vnum = 0;
+        char             msg[MAX_STRING_LENGTH];
+        int              body_part_vnum = 0;
         int              door;
 
-        strcpy(msg, "$n slumps to the ground... DEAD.");
+        /* Default messages */
+        if (!MAKES_CORPSE(ch))
+                strcpy(msg, "$c's form withers and dissolves into nothing.");
+        else if (IS_HUGE(ch))
+                strcpy(msg, "$c's huge body crashes to the ground... DEAD.");
+        else
+                strcpy(msg, "$c slumps to the ground... DEAD.");
 
-        if( IS_HUGE(ch) )
-                strcpy(msg, "$n's huge body crashes to the ground... DEAD.");
-        if( !MAKES_CORPSE(ch) )
-                strcpy(msg, "{w$n's form withers and dissolves into nothing.{x");
-
-        switch( number_bits(4) )
+        /* Random variations, including bits of bodies being dropped */
+        switch (number_bits(4))
         {
-            case  0:
-                if( !IS_INORGANIC(ch) && MAKES_CORPSE(ch) )
-                        strcpy(msg, "$n collapses, blood leaking from many horrible wounds.");
+            case 0:
+                if (!IS_INORGANIC(ch) && MAKES_CORPSE(ch))
+                        strcpy(msg, "$c collapses, blood leaking from many horrible wounds.");
                 break;
 
-            case  1:
-                if( CAN_SPEAK(ch) )
+            case 1:
+                if (CAN_SPEAK(ch))
                         strcpy(msg, "You hear $n's horrible death cry.");
                 break;
 
-            case  2:
-                if( !IS_INORGANIC(ch) && MAKES_CORPSE(ch) )
-                        strcpy(msg, "$n's hot blood splatters your body.");
+            case 2:
+                if (!IS_INORGANIC(ch) && MAKES_CORPSE(ch))
+                        strcpy(msg, "$c's hot blood splatters your body.");
                 break;
 
-            case  3:
-                if( HAS_HEAD(ch) && MAKES_CORPSE(ch) )
+            case 3:
+                if (HAS_HEAD(ch) && MAKES_CORPSE(ch))
                 {
-                        strcpy(msg, "$n's severed head falls to the ground.");
-                        vnum = OBJ_VNUM_SEVERED_HEAD;
+                        strcpy(msg, "$c's severed head falls to the ground.");
+                        body_part_vnum = OBJ_VNUM_SEVERED_HEAD;
                 }
                 break;
 
-            case  4:
-                if( MAKES_CORPSE(ch) && HAS_HEART(ch) )
+            case 4:
+                if (MAKES_CORPSE(ch) && HAS_HEART(ch))
                 {
-                        strcpy(msg, "$n's heart is torn from $s chest.");
-                        vnum = OBJ_VNUM_TORN_HEART;
+                        strcpy(msg, "$c's heart is torn from $s chest.");
+                        body_part_vnum = OBJ_VNUM_TORN_HEART;
                 }
                 break;
 
-            case  5:
-                if( MAKES_CORPSE(ch) && HAS_ARMS(ch) )
+            case 5:
+                if (MAKES_CORPSE(ch) && HAS_ARMS(ch))
                 {
-                        strcpy(msg, "$n's arm is sliced from $s body.");
-                        vnum = OBJ_VNUM_SLICED_ARM;
+                        strcpy(msg, "$c's arm is sliced from $s body.");
+                        body_part_vnum = OBJ_VNUM_SLICED_ARM;
                 }
                 break;
 
-            case  6:
-                if( MAKES_CORPSE(ch) && HAS_LEGS(ch) )
+            case 6:
+                if (MAKES_CORPSE(ch) && HAS_LEGS(ch))
                 {
-                        strcpy(msg, "$n's leg is sliced from $s body.");
-                        vnum = OBJ_VNUM_SLICED_LEG;
+                        strcpy(msg, "$c's leg is sliced from $s body.");
+                        body_part_vnum = OBJ_VNUM_SLICED_LEG;
                 }
                 break;
 
             case 7:
-                if( MAKES_CORPSE(ch) && HAS_HEAD(ch) && !IS_INORGANIC(ch) )
-                        strcpy(msg, "$n's head splits apart, revealing $s brain.");
+                if (MAKES_CORPSE(ch) && HAS_HEAD(ch) && !IS_INORGANIC(ch))
+                        strcpy(msg, "$c's head splits apart, revealing $s brain.");
                 break;
         }
 
-        act (msg, ch, NULL, NULL, TO_ROOM);
+        act(msg, ch, NULL, NULL, TO_ROOM);
 
-        if (vnum != 0)
+        /* Body parts */
+        if (body_part_vnum != 0)
         {
                 OBJ_DATA *obj;
                 char     *name;
-                char      buf [ MAX_STRING_LENGTH ];
+                char      buf[MAX_STRING_LENGTH];
 
                 name = IS_NPC(ch) ? ch->short_descr : ch->name;
-                obj = create_object(get_obj_index(vnum), 0);
+                obj = create_object(get_obj_index(body_part_vnum), 0);
                 obj->timer = number_range(4, 7);
 
                 /* Set body_part flag so you can't locate magically */
                 SET_BIT(obj->extra_flags, ITEM_BODY_PART);
 
                 /*  Make body parts from inorganic mobs inedible.  */
-                if( IS_INORGANIC(ch) )
+                if (IS_INORGANIC(ch))
                         obj->item_type = ITEM_TRASH;
 
                 sprintf(buf, obj->short_descr, name);
@@ -2109,29 +2112,32 @@ void death_cry (CHAR_DATA *ch)
                 obj_to_room(obj, ch->in_room);
         }
 
-        if (IS_NPC(ch))
-                strcpy(msg, "You hear something's death cry.");
-        else
-                strcpy(msg, "You hear someone's death cry.");
-
-        was_in_room = ch->in_room;
-        for (door = 0; door <= 5; door++)
+        /* Death cry heard in neighbouring locations */
+        if (!IS_NPC(ch) || CAN_SPEAK(ch))
         {
-                EXIT_DATA *pexit;
+                if (IS_NPC(ch))
+                        strcpy(msg, "You hear something's death cry.");
+                else
+                        strcpy(msg, "You hear someone's death cry.");
 
-                if ((pexit = was_in_room->exit[door])
-                    && pexit->to_room
-                    && pexit->to_room != was_in_room)
+                was_in_room = ch->in_room;
+
+                for (door = 0; door <= 5; door++)
                 {
-                        ch->in_room = pexit->to_room;
-                        act (msg, ch, NULL, NULL, TO_ROOM);
+                        EXIT_DATA *pexit;
+
+                        if ((pexit = was_in_room->exit[door])
+                            && pexit->to_room
+                            && pexit->to_room != was_in_room)
+                        {
+                                ch->in_room = pexit->to_room;
+                                act(msg, ch, NULL, NULL, TO_ROOM);
+                        }
                 }
+
+                ch->in_room = was_in_room;
         }
-        ch->in_room = was_in_room;
-
-        return;
 }
-
 
 
 void raw_kill (CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
@@ -4056,16 +4062,16 @@ void do_knife_toss (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, skill_table[gsn_knife_toss].beats);
 
         chance = number_percent();
-        
+
         if (IS_NPC(ch) || chance < ch->pcdata->learned[gsn_knife_toss])
         {
                 arena_commentary("$n tosses a knife at $N.", ch, victim);
 
-                if (!IS_NPC(ch)) 
+                if (!IS_NPC(ch))
                 {
                         dam = (ch->level / 2) + number_range(1, ch->level);
 
-                        if( (IS_NPC(victim) && HAS_EYES(victim)) || !IS_NPC(victim) )                        
+                        if( (IS_NPC(victim) && HAS_EYES(victim)) || !IS_NPC(victim) )
                         {
                                 if (chance <= 10 )
                                 {
@@ -4080,7 +4086,7 @@ void do_knife_toss (CHAR_DATA *ch, char *argument)
                                         act("{W$n's knife catches $N in the face!{x", ch, NULL, victim, TO_NOTVICT);
 
                                         dam *= 2;
-                                }                
+                                }
                         }
 
                         damage(ch, victim, dam, gsn_knife_toss, FALSE);
