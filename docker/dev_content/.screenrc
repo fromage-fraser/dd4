@@ -1,0 +1,25 @@
+shell /bin/bash
+
+term xterm-colour
+altscreen on
+vbell off
+startup_message off
+defscrollback 10000
+
+# display running command in titlebar
+# (see also .bashrc, where PROMPT_COMMAND is set)
+shelltitle '] |bash'
+
+# display list of screens in titlebar
+#hardstatus string "[%w] %h"
+
+caption always "%?%F%{= Kw}%:%{=u kR}%?  %h %-024=%{+b} %C%a %D %d %M %Y%{= db}"
+hardstatus alwayslastline "%{= kR} %-Lw%{=b Kw} %n%f %t %{-}%+Lw %=%{= dd}"
+
+# Let's remove some dangerous key bindings ...
+bind k kill # "ctl-a k" kill
+bind K kill
+bind ^\
+bind \\
+bind ^h
+bind h

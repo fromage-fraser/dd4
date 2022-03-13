@@ -5132,6 +5132,16 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         one_argument(argument,arg);
         victim = ch->fighting;
 
+        /*
+         * Moved to before the head/huge checks
+         */
+
+        if (arg[0] != '\0' && !(victim = get_char_room(ch, arg)))
+        {
+                send_to_char("They aren't here.\n\r",ch);
+                return;
+        }
+
         if (!HAS_HEAD (victim))
         {
                 act ("$C has no head for you to butt!", ch, NULL, victim, TO_CHAR);
@@ -5141,12 +5151,6 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         if (IS_HUGE (victim))
         {
                 act ("$C is too large for you to headbutt!", ch, NULL, victim, TO_CHAR);
-                return;
-        }
-
-        if (arg[0] != '\0' && !(victim = get_char_room(ch, arg)))
-        {
-                send_to_char("They aren't here.\n\r",ch);
                 return;
         }
 

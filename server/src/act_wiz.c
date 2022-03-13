@@ -1211,6 +1211,29 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
         }
 
+        if (victim->act)
+        {
+                strcat(buf1, "Act flags:");
+                /* fix the bit 29/30 thing */
+                for (next = 1; next <= BIT_29; next *= 2)
+                {
+                        if (IS_SET(victim->act, next))
+                        {
+                                strcat(buf1, " ");
+                                strcat(buf1, act_bit_name(next));
+                        }
+                }
+
+                if (IS_SET(victim->act, BIT_30))
+                {
+                        strcat(buf1, " ");
+                        strcat(buf1, act_bit_name(BIT_30));
+                }
+
+                strcat(buf1, "\n\r");
+
+        }
+
         if (victim->affected_by)
         {
                 sprintf(buf, "Affected by (num): ");

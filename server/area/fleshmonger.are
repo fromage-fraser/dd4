@@ -102,7 +102,7 @@ seems to be a cross between a human and a goblin, but is not as well-trained
 as his guards.  He doesn't appear to be able to talk.
 ~
 2|64|128 0 -500 S
-8 0 0 0d0+0 0d0+0
+10 0 0 0d0+0 0d0+0
 32 0
 0 0 1
 
@@ -117,7 +117,7 @@ appears to be a cross between a human and an orc, but is not as well trained
 as the guards above.  He doesn't appear to be able to talk.
 ~
 2|64|128 0 -500 S
-8 0 0 0d0+0 0d0+0
+10 0 0 0d0+0 0d0+0
 32 0
 0 0 1
 
@@ -131,7 +131,7 @@ look at him.  He is covered in dirt and grime, and his hair is long, matted,
 and very dirty.  He appears to have been treated very badly.
 ~
 2|64|128 0 0 S
-8 0 0 0d0+0 0d0+0
+10 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 
@@ -145,7 +145,7 @@ rushes from the floor in one hand.  Covered in bruises and festering cuts, he
 appears to have been treated very badly.
 ~
 2|64|128 0 -1000 S
-8 0 0 0d0+0 0d0+0
+10 0 0 0d0+0 0d0+0
 32 0
 0 0 1
 
@@ -159,7 +159,7 @@ clothe himself in his disgusting bedding.  He grovels in the dirt before you,
 unsure if you are his saviour or executioner.
 ~
 2|64|128 0 -1000 S
-8 0 0 0d0+0 0d0+0
+10 0 0 0d0+0 0d0+0
 32 0
 0 0 1
 
