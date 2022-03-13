@@ -1114,23 +1114,23 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 get_curr_con( victim ) );
         strcat( buf1, buf );
 
-        sprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Status: %d.  Hp: %d/%d.\n\r",
+        sprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Status: %d.\n\r",
                 get_age( victim ),
                 (int) victim->played,
                 victim->timer,  
-                !IS_NPC( victim ) ? victim->status : 0,
-                victim->hit,            victim->max_hit);
+                !IS_NPC( victim ) ? victim->status : 0);
         strcat( buf1, buf );
 
-        sprintf( buf, "Aggro_dam: %d.  Mana: %d/%d.  Mv: %d/%d.  Rage: %d. \n\r",
+        sprintf( buf, "Hp: %d/%d.  Aggro_dam: %d.  Mana: %d/%d.  Mv: %d/%d.\n\r",
+                victim->hit,            victim->max_hit,
                 victim->aggro_dam,
                 victim->mana,        victim->max_mana,
-                victim->move,        victim->max_move,  victim->rage);
+                victim->move,        victim->max_move);
         strcat( buf1, buf );
 
         sprintf( buf,
-                "Lv: %d.  Class: %d.  SubCl: %d.  Exp: %d.\n\rAlign: %d.  Fame: %d.  Form: %s.\n\r",
-                victim->level,       victim->class,       victim->sub_class,
+                "Rage: %d.  Lv: %d.  Class: %d.  SubCl: %d.\n\rExp: %d.  Align: %d.  Fame: %d.  Form: %s.\n\r",
+                victim->rage, victim->level,       victim->class,       victim->sub_class,
                 (level_table[victim->level].exp_total) - victim->exp,
                 victim->alignment,
                 !IS_NPC( victim ) ? victim->pcdata->fame : 0,
@@ -1184,7 +1184,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 victim->mount ? victim->mount->name : "(none)",
                 victim->rider ? victim->rider->name : "(none)");
         strcat( buf1, buf );
-
+        
+        /*
+         * Show act and aff bits nicely. --Owl 13/3/22
+         */
+        
         if (victim->act)
         {
                 sprintf(buf, "Act flags (num): ");
@@ -1193,20 +1197,14 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, buf );
                 strcat(buf1, "\n\r");
                 strcat(buf1, "Act flags (txt):");
-                /* fix the bit 29/30 thing */
-                for (next = 1; next <= BIT_29; next *= 2)
+
+                for (next = 1; next > 0 && next <= BIT_30; next *= 2)
                 {
                         if (IS_SET(victim->act, next))
                         {
                                 strcat(buf1, " ");
                                 strcat(buf1, act_bit_name(next));
                         }
-                }
-
-                if (IS_SET(victim->act, BIT_30))
-                {
-                        strcat(buf1, " ");
-                        strcat(buf1, act_bit_name(BIT_30));
                 }
 
                 strcat(buf1, "\n\r");
@@ -1223,23 +1221,13 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                 strcat(buf1, "Affected by (txt):");
 
-                /*
-                        If you change the following to BIT_30 or just evaluate i, do_mstat might break and hang the server.
-                        Leave the ugly hack unless you know how to fix the loop.  --Owl 22/09/18
-                */
-                for (next = 1; next <= BIT_29; next *= 2)
+                for (next = 1; next > 0 && next <= BIT_30; next *= 2)
                 {
                         if (IS_AFFECTED(victim, next))
                         {
                                 strcat(buf1, " ");
                                 strcat(buf1, affect_bit_name(next));
                         }
-                }
-
-                if (IS_AFFECTED(victim, BIT_30))
-                {
-                        strcat(buf1, " ");
-                        strcat(buf1, affect_bit_name(BIT_30));
                 }
 
                 strcat(buf1, "\n\r");

@@ -229,6 +229,42 @@ mpecho {WThe hideous bogleech explodes in a shower of blood and entrails.{x
 mpoload 11525
 ~
 |
+#11518
+Keeper~
+The Keeper of the Tower~
+The keeper greets you.
+~
+His sole duty is to see that his beacon stays lit. It's really the only 
+thing he cares about.
+~
+2 0 0 S
+16 0 0 0d0+0 0d0+0
+0 17500
+0 0 1
+#11519
+Keeper~
+The Keeper of the Tower~
+The keeper greets you.
+~
+His sole duty is to see that his beacon stays lit. It's really the only 
+thing he cares about.
+~
+2 0 0 S
+16 0 0 0d0+0 0d0+0
+0 17500
+0 0 1
+#11520
+Keeper~
+The Keeper of the Tower~
+The keeper greets you.
+~
+His sole duty is to see that his beacon stays lit. It's really the only 
+thing he cares about.
+~
+2 0 0 S
+16 0 0 0d0+0 0d0+0
+0 17500
+0 0 1
 #0
 
 
@@ -1154,7 +1190,7 @@ D3
 0 0 11528
 S
 #11530
-A path uphill~
+Before the southeastern tower~
 The path is getting steeper as it continues uphill, and the terrain gets 
 more difficult to handle. The tower is nearby.
 ~
@@ -1245,9 +1281,9 @@ D3
 0 0 11536
 S
 #11536
-A path uphill~
-The path is getting steeper and steeper while it continues uphill. Also the
-terrain is getting more difficult to handle. The tower is before you.
+Before the southwestern tower~
+The path is getting steeper and steeper while it continues uphill. The
+terrain is also getting more difficult to handle. The tower is before you.
 ~
 115 1 4
 D0
@@ -1908,7 +1944,7 @@ You're on the lake. The water is calmer than it looks, surprisingly. You glance
 back at the shore and the Highlander waves at you sadly, like he doesn't expect
 he'll be seeing you again.
 ~
-115 4 7
+115 4 6
 D0
 ~
 ~
@@ -1922,7 +1958,7 @@ S
 On the Lake~
 You are on the lake, heading towards the island.
 ~
-115 4 7
+115 4 6
 D0
 ~
 ~
@@ -1936,7 +1972,7 @@ S
 Near the Isle~
 You are on the lake, near the isle. You are moving closer to the shore.
 ~
-115 4 7
+115 4 6
 D0
 ~
 ~
@@ -1950,7 +1986,7 @@ S
 On the Isle~
 You are on the isle. It's just a wee isle, with little by way of vegetation 
 or other notable features; in general it seems a godforsaken place. To the 
-north you can explore the it further.
+north you can explore the isle further.
 ~
 115 4 4
 D0
@@ -2067,7 +2103,7 @@ D1
 0 0 11582
 S
 #11584
-In front of the tower~
+In front of the northwestern tower~
 The keeper greets you stiffly and takes another slug from his bottle of scotch.
 'Ahhh, that makes me stomach burn,' he growls. You think you could use some of 
 his draught too, as the cold, wet weather here permeates your body.
@@ -2172,7 +2208,7 @@ D2
 0 0 11589
 S
 #11591
-On a hill~
+Before the northeastern tower~
 You find yourself atop a hill again, fortunately this time it's the correct one.
 The tower is to the east.
 ~
@@ -2273,7 +2309,7 @@ D2
 ~
 ~
 0 0 11597
-D5
+D4
 ~
 ~
 0 0 11577
@@ -2283,6 +2319,10 @@ In Nessy's cave~
 Faint sounds come from the west. A light shines towards the south.
 ~
 115 8 0
+D0
+~
+~
+0 0 11596
 D2
 ~
 ~
@@ -3908,13 +3948,13 @@ S
 #0
 #RESETS
 D 0 11530 2 2
-D 0 11536 0 1
-D 0 11584 0 1
+D 0 11536 0 2
+D 0 11584 0 2
 D 0 11591 1 2
 D 0 11592 0 2
 D 0 11593 2 2
 D 0 11594 2 2
-D 0 11595 3 1
+D 0 11595 3 2
 D 0 11609 0 1
 D 0 11613 2 1
 D 0 11614 0 1
@@ -4043,13 +4083,13 @@ M 0 11511 1 11690
 E 1 11510 1 16
 E 1 11511 1 8
 *
-M 0 11512 4 11530
+M 0 11512 1 11530
 G 1 11518 1
-M 0 11512 4 11536
+M 0 11518 1 11536
 G 1 11519 1
-M 0 11512 4 11584
+M 0 11519 1 11584
 G 1 11520 1
-M 0 11512 4 11591
+M 0 11520 1 11591
 G 1 11521 1
 *
 M 0 11513 1 11601
