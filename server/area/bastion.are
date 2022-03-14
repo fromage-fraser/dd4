@@ -13,7 +13,7 @@ A large stone gargoyle is guarding the bastion.
 ~
 The stone gargoyle sits with its wings folded. Here and there you can see
 cracks and chips on its body as if it has been here for eternity. It appears
-to be lifeless though you can't really be sure.
+to be lifeless, though you can't really be sure.
 ~
 2|32|64 8|32|512|8192|524288|4194304|8388608 0 S
 85 0 0 0d0+0 0d0+0
@@ -42,10 +42,10 @@ mpkill $n
 #30602
 dark demon~
 the Dark Demon~
-The Dark Demon fixes you with it's glowing red eyes.
+The Dark Demon fixes you with its glowing red eyes.
 ~
-The dark demon has smooth mottled grey flesh and sinister red eyes that
-regard you with the look of death. It howls now and then, baring its sharp
+The dark demon has smooth, mottled-grey flesh and sinister red eyes that
+regard you with deathly intensity. It howls now and then, baring its sharp
 fangs and flapping its bony wings.
 ~
 2|131072 8|32|512|8192|524288|1048576|8388608 -1000 S
@@ -95,12 +95,12 @@ mpecho {wA menacing voice says "Ah, another soul for the master..."{x
 #30605
 angel captive~
 a Captive Angel~
-A dishevelled looking angel is being held captive here.
+A dishevelled-looking angel is being held captive here.
 ~
-This battered looking angel has obviously been tortured in more ways than
+This battered-looking angel has obviously been tortured in more ways than
 one and you don't get any response from trying to attract its attention.
 Either the ordeal it has suffered or something beyond your grasp has
-drained it of its will to communicate.
+drained it of all its will to communicate.
 ~
 2|64 8|256|512 1000 S
 100 0 0 0d0+0 0d0+0
@@ -114,7 +114,7 @@ The pale figure of an  angel is being held captive here.
 This battered looking angel has obviously been tortured in more ways than
 one and you don't get any response from trying to attract its attention.
 Either the ordeal it has suffered or something beyond your grasp has drained
-it of its will to communicate.
+it of all its will to communicate.
 ~
 2|64 8|256|512 1000 S
 100 0 0 0d0+0 0d0+0
@@ -127,7 +127,7 @@ A dark assassin is hiding in the shadows.
 ~
 The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
-You see a brief glimmer of steel in the darkness.
+Something metallic glimmers in the darkness.
 ~
 64 8|32|512|32768|65536|524288|8388608 -1000 S
 95 0 0 0d0+0 0d0+0
@@ -140,7 +140,7 @@ A dark assassin is hiding in the shadows.
 ~
 The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
-You see a brief glimmer of steel in the darkness.
+Something metallic glimmers in the darkness.
 ~
 64 8|32|512|32768|65536|524288|8388608 -1000 S
 95 0 0 0d0+0 0d0+0
@@ -153,7 +153,7 @@ A dark assassin is hiding in the shadows.
 ~
 The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
-You see a brief glimmer of steel in the darkness.
+Something metallic glimmers in the darkness.
 ~
 64 8|32|512|32768|65536|524288|8388608 -1000 S
 95 0 0 0d0+0 0d0+0
@@ -166,7 +166,7 @@ A dark assassin is hiding in the shadows.
 ~
 The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
-You see a brief glimmer of steel in the darkness.
+Something metallic glimmers in the darkness.
 ~
 64 8|32|512|32768|65536|524288|8388608 -1000 S
 95 0 0 0d0+0 0d0+0
@@ -179,7 +179,7 @@ A dark assassin is hiding in the shadows.
 ~
 The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
-You see a brief glimmer of steel in the darkness.
+Something metallic glimmers in the darkness.
 ~
 2|64 8|32|512|32768|65536|524288|8388608 -1000 S
 95 0 0 0d0+0 0d0+0
@@ -192,7 +192,7 @@ A dark assassin is hiding in the shadows.
 ~
 The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
-You see a brief glimmer of steel in the darkness.
+Something metallic glimmers in the darkness.
 ~
 2|64 8|32|512|32768|65536|524288|8388608 -1000 S
 95 0 0 0d0+0 0d0+0
@@ -406,11 +406,11 @@ grey eyes.
 16 0
 8 8 0
 #30627
-weapon smith~
-the Weapon Smith~
-The bastion's weapon smith is intently sharpening a longsword.
+weapon smith weaponsmith~
+the Weaponsmith~
+The bastion's weaponsmith is intently sharpening a long sword.
 ~
-The weapon smith pauses long enough to inspect the blade he is sharpening
+The weaponsmith pauses long enough to inspect the blade he is sharpening
 before continuing with his task. His muscles bunch and ripple as he
 skillfully runs the whetstone down the blade. He seems to be too intent
 upon his work to notice you have arrived.
@@ -424,11 +424,11 @@ shadow lord~
 the Shadow Lord~
 The Shadow Lord is absently staring out one of the slits, lost in thought.
 ~
-He is a terrifying being to behold, who appears to be half man and half
-demon. His body is somewhat misshapen and standing upright he has to hunch
-over. His feet seem to be human but his hands have long claws protruding
-from the ends of his bony fingers. He grinds his teeth in his lumpy head
-and seems to be regarding you as a tasty morsel.
+He is a terrifying being to behold, appearing to be half man and half
+demon. His body is somewhat misshapen and he has to hunch over when 
+attempting to stand upright. His feet seem to be human but his hands 
+have long claws protruding from the ends of his bony fingers. He grinds 
+his teeth in his lumpy head and seems to be regarding you as a tasty morsel.
 ~
 2|32|64|512 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
 115 0 0 0d0+0 0d0+0
@@ -440,13 +440,13 @@ mpkill $n
 ~
 |
 #30629
-giant owl~
-the Giant owl~
-A giant owl is sitting on a perch screeching loudly.
+giant crow~
+the Giant crow~
+A giant crow is sitting on a perch, screeching loudly.
 ~
-The huge owl is secured to its perch with a heavy thong that is tied
+The huge crow is secured to its perch with a heavy thong that is tied
 around one of its feet. Its head and eyes are covered by a leather hood
-with black and red feathers sprouting from the top.
+with black feathers sprouting from the top.
 ~
 2|64|512 8|32|512|8192|524288|8388608 0 S
 95 0 0 0d0+0 0d0+0
@@ -496,7 +496,7 @@ E
 jade collar~
 The jade collar doesn't seem to have an opening to allow you to put it on.
 As you hold it in your hand it causes small tingling sensations in your skin
-and you suspect it is being caused by the presence of magic.
+which you suspect are being caused by the presence of magic.
 
 ~
 #30602
@@ -587,7 +587,7 @@ E
 amulet underworld~
 The amulet hangs on a heavy chain that is made from a mysterious black
 metal you have not encountered before. It is etched with mystical symbols
-you are unable to decipher and a soft humming is issuing from it.
+you are unable to decipher and a soft humming sound issues from it.
 
 ~
 #30609
@@ -693,7 +693,7 @@ E
 grubby white robe~
 The robe is tattered and torn and singed in several places. It looks as if
 it has been dragged through the mud. The remains of gold trim can be seen
-in places, what a shame it's in such a terrible state.
+in places; what a shame it's in such a terrible state.
 
 ~
 #30616
@@ -885,7 +885,7 @@ A
 2 4
 E
 black leather jerkin~
-A loose fitting jerkin fashioned from soft black leather and fastened together
+A loose-fitting jerkin fashioned from soft black leather and fastened together
 with thonging.
 
 ~
@@ -926,7 +926,7 @@ A
 17 -15
 E
 black pants~
-A pair of loose-fitting ink-black pants the exact shade of night. Allowing
+A pair of loose-fitting ink-black pants the exact shade of night. They allow
 the wearer to blend invisibly into the evening shadows.
 
 ~
@@ -960,7 +960,7 @@ A
 19 10
 E
 throwing star~
-The edges of the throwing star have been sharpened to a razor finish, you
+The edges of the throwing star have been sharpened to a razor-like fineness, you
 must handle it carefully to avoid serious injury.
 
 ~

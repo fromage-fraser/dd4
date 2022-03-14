@@ -2437,9 +2437,9 @@ bool check_parse_name (char *name)
                 return FALSE;
 
         /*
-         * Obsenities
+         * Obscenities
          */
-        if (is_name(name, "damn fuck screw shit ass asshole bitch bastard gay lesbian pussy fucker fart vagina penis cunt"))
+        if (is_name(name, "fuck shit ass arse asshole bitch bastard gay lesbian pussy fucker fucked fart vagina penis cunt faggot nigger"))
                 return FALSE;
 
         /*
