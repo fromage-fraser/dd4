@@ -24,6 +24,7 @@ mpecho {W The jeweller says 'Far to the east in a mighty desert
 mpecho {W there is a dragons lair. Deep within the lair many
 mpecho {W jewels lie. Find me a lapis gem. I will reward you
 mpecho {W well for it..'{x
+    break
 endif
 mpecho {W The jeweller says 'I have no quests for someone of your
 mpecho {W calibre.  Perhaps the Adventurers' Guild can help you.'{x
@@ -41,7 +42,6 @@ endif
         give $o $n
         break
     endif
-
     if number($o) == 3822
             say Well done $n, here is your reward.
             mpoload 3382 1
@@ -60,7 +60,6 @@ endif
         give $o $n
         break
     endif
-
     if number($o) == 5029
             say Great work $n, thanks a lot.
             mpoload 3383 20
@@ -80,7 +79,6 @@ endif
         give $o $n
         break
     endif
-
     if number($o) == 4451
             say Good work, $n, you have returned my missing diamond!!
             mpoload 10311 1
