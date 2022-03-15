@@ -579,7 +579,7 @@ crimson jewel~
 a crimson jewel~
 A crimson jewel hovers in the air above the ground.~
 ~
-18 1|2|64 1|32768
+9 1|2|64 1|32768
 0~ 0~ 0~ 0~
 1 0 0
 A
@@ -2985,7 +2985,7 @@ D0
 ~
 ~
 0 0 11639
-D2
+D3
 ~
 ~
 0 0 11637
