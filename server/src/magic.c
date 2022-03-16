@@ -4934,7 +4934,7 @@ void spell_enhanced_strength ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
-        send_to_char( "You feel stronger!\n\r", victim );
+        send_to_char( "Your strength is enhanced!\n\r", victim );
         return;
 }
 
