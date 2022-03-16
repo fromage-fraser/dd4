@@ -2058,7 +2058,7 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define PLR_DENY                        BIT_20
 #define PLR_FREEZE                      BIT_21
 #define PLR_GUIDE                       BIT_22  /* was PLR_THIEF */
-/* #define PLR_KILLER                   BIT_23 */
+#define PLR_AUTOLEVEL                   BIT_23  /* Owl 16/3/22 */
 #define PLR_ANSI                        BIT_24
 #define PLR_VT100                       BIT_25
 #define PLR_AFK                         BIT_26
@@ -3327,6 +3327,7 @@ DECLARE_DO_FUN( do_autocoin                     );      /* autoloot coin from co
 DECLARE_DO_FUN( do_autoexit                     );
 DECLARE_DO_FUN( do_autowield                    );
 DECLARE_DO_FUN( do_autoloot                     );
+DECLARE_DO_FUN( do_autolevel                    );      /* automatically level when you have enough experience; Owl */
 DECLARE_DO_FUN( do_autosac                      );
 DECLARE_DO_FUN( do_backstab                     );
 DECLARE_DO_FUN( do_balance                      );      /* for bank - Brutus */

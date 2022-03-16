@@ -1118,12 +1118,16 @@ void do_score (CHAR_DATA *ch, char *argument)
                 get_age(ch), (get_age(ch)-17)*4 );
         strcat( buf1, buf );
 
-        sprintf( buf, "Autoexit: %s  Autoloot: %s  Autocoin: %s  Autosac: %s  Autowield: %s\n\r\n\r",
-                IS_SET(ch->act, PLR_AUTOEXIT)   ? "{GYES{x" : "{RNO{x",
-                IS_SET(ch->act, PLR_AUTOLOOT)   ? "{GYES{x" : "{RNO{x",
-                IS_SET(ch->act, PLR_AUTOCOIN)   ? "{GYES{x" : "{RNO{x",
-                IS_SET(ch->act, PLR_AUTOSAC)    ? "{GYES{x" : "{RNO{x",
-                IS_SET(ch->act, PLR_AUTOWIELD)  ? "{GYES{x" : "{RNO{x" );
+        sprintf( buf, "Autoexit: %s  Autoloot: %s  Autocoin: %s\n\r",
+                IS_SET(ch->act, PLR_AUTOEXIT)   ? "{GYES {x" : "{RNO  {x",
+                IS_SET(ch->act, PLR_AUTOLOOT)   ? "{GYES {x" : "{RNO  {x",
+                IS_SET(ch->act, PLR_AUTOCOIN)   ? "{GYES{x" : "{RNO {x");
+        strcat( buf1, buf );
+
+        sprintf( buf, "Autosac: %s  Autowield: %s  Autolevel: %s\n\r\n\r",
+                IS_SET(ch->act, PLR_AUTOSAC)    ? "{G YES{x" : "{R NO {x",
+                IS_SET(ch->act, PLR_AUTOWIELD)  ? "{GYES{x" : "{RNO {x",
+                IS_SET(ch->act, PLR_AUTOLEVEL)  ? "{GYES{x" : "{RNO {x" );
         strcat( buf1, buf );
 
         print_player_status (ch, buf);
@@ -3582,6 +3586,11 @@ void do_config( CHAR_DATA *ch, char *argument )
                              : "[-autosac  ] You don't automatically sacrifice corpses.\n\r"
                              , ch );
 
+                send_to_char(  IS_SET( ch->act, PLR_AUTOLEVEL  )
+                             ? "[+AUTOLEVEL] You automatically level if you have enough experience.\n\r"
+                             : "[-autolevel] You don't automatically level if you have enough experience.\n\r"
+                             , ch );
+
                 send_to_char(  IS_SET( ch->act, PLR_BLANK     )
                              ? "[+BLANK    ] You have a blank line before your prompt.\n\r"
                              : "[-blank    ] You have no blank line before your prompt.\n\r"
@@ -3665,6 +3674,7 @@ void do_config( CHAR_DATA *ch, char *argument )
                 else if ( !str_cmp( arg+1, "autoloot" ) ) bit = PLR_AUTOLOOT;
                 else if ( !str_cmp( arg+1, "autocoin" ) ) bit = PLR_AUTOCOIN;
                 else if ( !str_cmp( arg+1, "autosac"  ) ) bit = PLR_AUTOSAC;
+                else if ( !str_cmp( arg+1, "autolevel") ) bit = PLR_AUTOLEVEL;
                 else if ( !str_cmp( arg+1, "blank"    ) ) bit = PLR_BLANK;
                 else if ( !str_cmp( arg+1, "brief"    ) ) bit = PLR_BRIEF;
                 else if ( !str_cmp( arg+1, "combine"  ) ) bit = PLR_COMBINE;
@@ -3799,6 +3809,17 @@ void do_autocoin (CHAR_DATA *ch, char *argument)
         (IS_SET(ch->act, PLR_AUTOCOIN))
                 ? sprintf(buf, "-autocoin")
                         : sprintf(buf, "+autocoin");
+        do_config(ch, buf);
+}
+
+
+void do_autolevel (CHAR_DATA *ch, char *argument)
+{
+        char buf [16];
+
+        (IS_SET(ch->act, PLR_AUTOLEVEL))
+                ? sprintf(buf, "-autolevel")
+                        : sprintf(buf, "+autolevel");
         do_config(ch, buf);
 }
 

@@ -191,7 +191,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [22 February 2022]
+    [16 March 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -203,6 +203,12 @@ Dragons Domain version 4.2020
     our website which has a FAQ at {Yhttps://smihilist.com/dd4/web/{x or look
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
+
+    {WNew config option in: AUTOLEVEL{x (see 'help autolevel'). {RWARNING, 
+    VERY IMPORTANT READ THIS:{x Unless your character is new, you will need to
+    type "autolevel" and turn the feature ON after logging in the first time
+    you see this message in order to gain levels.  You should only have to do 
+    this once!
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -277,10 +283,11 @@ been added;
 - Chaos Blast for Satanists
 - Detect Curse for those with Divination
 - Knife Toss for Thieves
+- New config option: "AUTOLEVEL"
 
 Refer appropriate HELP entries.
 
-We're also trying to tidy up a lot of minor issues, formating, spelling, 
+We're also trying to tidy up a lot of minor issues, formatting, spelling, 
 links in areas, and things like that.  
 
 There are skills that open up which you then can't practice at that 
@@ -1104,10 +1111,11 @@ service.
   wear wield hold                       spells affect practice train whois
   list buy sell value donate
   recite brandish quaff zap           {WConfiguration:{x
-  {wlock unlock open close pick bash      config channels password autocoin
+  {wlock unlock open close pick bash    config channels password autocoin
   inventory equipment look compare      autoloot autosac autoexit autowield
-  eat drink fill smear                  blank prompt color ansi pagelength
-                                        attacks gag brief notell quiet
+  eat drink fill smear                  autolevel blank prompt color ansi 
+                                        pagelength attacks gag brief notell
+                                        quiet 
 {WCommunication:{x
   {wsay chat shout answer music yell    {WCombat:{x
   {wgtell clantalk tell reply review      kill murder flee wimpy cast
@@ -1504,6 +1512,7 @@ The options are:
     AUTOSAC   You automatically sacrifice corpses.
     AUTOCOIN  You automatically take coin from corpses.
     AUTOWIELD You automatically wield weapons picked up when in combat.
+    AUTOLEVEL You automatically level when you gain enough experience.
     BLANK     You have a blank line before your prompt.
     BRIEF     You see brief descriptions only.
     COMBINE   You see object lists in combined format.
@@ -1550,6 +1559,16 @@ AUTOLOOT toggles your ability to automatically loot corpses after you deal
 the final blow.
 
 See CONFIGURE to find out which toggle is on and which is off.
+~
+
+0 AUTOLEVEL~
+Syntax: autolevel
+
+AUTOLEVEL toggles your ability to automatically level when you gain sufficient
+experience.  It is ON by default for new characters.  With it OFF you will not 
+be able to gain levels until you turn it back ON.
+
+Type CONFIG or SCORE to find out if it's currently ON or OFF.
 ~
 
 0 AUTOSAC~
