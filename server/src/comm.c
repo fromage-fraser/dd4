@@ -2116,7 +2116,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                 send_to_char("\n\r\n\r{WCharacter generation complete.{x\n\r"
                              "You are now ready to enter the Dragons Domain and begin your training!\n\r", ch);
-                ch->pcdata->pagelen = 25;
+                SET_BIT(ch->act, PLR_AUTOLEVEL);
+                ch->pcdata->pagelen = 100;
                 d->connected = CON_READ_MOTD;
                 break;
 

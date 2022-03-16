@@ -350,6 +350,13 @@ void gain_exp( CHAR_DATA *ch, int gain )
                         ch->exp = level_table[ch->level].exp_total - 1;
                         return;
                 }
+                /* Check to see if level lock is on */
+                if (!( IS_SET ( ch->act, PLR_AUTOLEVEL ) ) )
+                {
+                        ch->exp = level_table[ch->level].exp_total - 1;
+                        send_to_char("You cannot level while {WAUTOLEVEL{x is set to {RNO{x.\n\r", ch);
+                        return;
+                }
 
                 if(ch->pcdata->fame < 0)
                 {
