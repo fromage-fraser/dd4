@@ -2755,7 +2755,7 @@ void generate_stats (CHAR_DATA *ch)
          */
         int sum = 0;
 
-        while (sum < 63) 
+        while (sum < 66) 
         {
                 /* initial random number 11 -> 15 */
                 ch->pcdata->perm_str = number_range(11, 15);
@@ -2846,11 +2846,20 @@ int mana_cost (CHAR_DATA *ch, int sn)
         if (IS_NPC(ch))
                 return 0;
 
-        if ((IS_RACE_ONE(ch) == sn || IS_RACE_TWO(ch) == sn)
-            && !has_pre_req(ch, sn))
-                return 50;
+        if (IS_RACE_ONE(ch) == sn || IS_RACE_TWO(ch) == sn)            
+                return skill_table[sn].min_mana; /* reduced default cost - Shade 17.3.22 */
 
-        return UMAX (skill_table[sn].min_mana, 60 - ch->pcdata->learned[sn]);
+        /*
+         * Shade 17.3.22
+         *
+         * Defensive spells for low level casters are costly.  Reduce the cost of those and utility spells
+         */
+
+        if (skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE || skill_table[sn].target == TAR_CHAR_OFFENSIVE)        
+                return UMAX (skill_table[sn].min_mana, 60 - ch->pcdata->learned[sn]);
+        else
+                return UMAX (skill_table[sn].min_mana, 45 - ch->pcdata->learned[sn]);
+
 }
 
 
