@@ -14,9 +14,12 @@ mpecho {W reward you well...'{x
     break
 else
  if level($n) < 20
-        think
-mpecho {W The jeweller says 'I cannot think of any errands that
-mpecho {W need doing.  Perhaps the Adventurers' Guild can help you.'{x
+mpecho {W The jeweller says 'I have long been interested in the enchanted
+mpecho {W items adventurers use.  I have seen the stones from the nearby{x
+mpecho {W city of Thalos but never a jewel.  I have heard rumour that the{x
+mpecho {W Lord Mage in the Highlands to the North East has such a jewel. If{x
+mpecho {W you could... persuade her... to part with it, I can make it worth{x
+mpecho {W your while.'{x
     break
 else
  if level($n) < 30
@@ -89,6 +92,24 @@ endif
     else
             mpecho $I examines $O closely.
             say I'm sorry $n, but this isn't my diamond.
+            give $o $n
+    endif
+~
+> give_prog crimson jewel~
+    if level($n) > 25
+        say That mission was for someone a little less experienced.
+        give $o $n
+        break
+    endif
+    if number($o) == 11529
+            say Well done $n, here is your reward.
+            mpoload 3390 15
+            give pink $n
+            mpjunk jewel
+            break
+    else
+            mpecho $I examines $O closely.
+            say I only accept the genuine article, take it away $n!
             give $o $n
     endif
 ~
