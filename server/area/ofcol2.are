@@ -216,7 +216,7 @@ A young horse is here, grazing.
 The horse whinnies at you, then runs around you a few times, then just goes
 back to grazing.
 ~
-128 0 0 S
+128|131072 0 0 S
 6 15 4 6d6+60 1d8+4
 36 750
 8 8 0
