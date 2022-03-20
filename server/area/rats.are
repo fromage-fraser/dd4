@@ -34,7 +34,7 @@ Sammy, Hatchet's cute flesh-clawing kitten, meows in a corner.
 ~
 Sammy is a cute little kitten, probably weighs less than 3 pounds, but she has
 claws long enough and leap high enough to jump up and claw your eyes out!  She
-is currently purring and washing herself, oblivious to your presense.
+is currently purring and washing herself, oblivious to your presence.
 ~
 2 128|8192 1000 S
 40 -20 -10 40d40+999 2d40+40
@@ -96,7 +96,7 @@ A humanoid rat sits here, discussing some business.
 ~
 This beast looks like a combination rat and human, as it has properties of
 both, namely standing erect, wielding a weapon, but with fur, ears, and tail
-of a rat.  They don't notice you in their duscussion.
+of a rat.  They don't notice you in their discussion.
 ~
 2|64|128 0 -5 S
 4 16 6 4d4+44 1d4+4
@@ -108,7 +108,7 @@ a firedrake~
 A red dragon-beast sits here, staring at you and blowing fire at you!
 ~
 This beast looks a lot like a red dragon, except that it's a bit smaller.  It
-has red scales over it's four-legged reptilian body, with sharp claws and
+has red scales over its four-legged reptilian body, with sharp claws and
 piercing tail.  It is disturbed by your intrusion.
 ~
 2|32 8 -700 S
@@ -234,7 +234,7 @@ A silver key rest here, making a clean perimeter wherever it touches.~
 1 0 0
 E
 silver key~
-Inscribed on this key are unintelliglble runes.
+Inscribed on this key are unintelligible runes.
 ~
 E
 runes~
@@ -836,7 +836,7 @@ S
 #3814
 A Dark Hallway~
 You are in a dark hallway.  You see more exposed rock than wood now, as this
-unfinished place reveals it's state of incompleteness.  Someone must have
+unfinished place reveals its state of incompleteness.  Someone must have
 abandoned this place for a reason.  To the west and east are some makeshift
 bedrooms, and this hallway leads north and south.
 ~
@@ -895,7 +895,7 @@ S
 #3818
 A Bedroom~
 You are in a makeshift bedroom.  A pile of rags against a wall makes a bed, and
-a crate on it's side makes a rough cabinet.  The exit is to the west.
+a crate on its side makes a rough cabinet.  The exit is to the west.
 ~
 38 9 0
 D3
@@ -1289,7 +1289,7 @@ S
 #3842
 Icaza's Study~
 You are in a small room.  A large bed is in the corner, and a wooden rocker
-creaks of it's own will on the hardwood floors.  You can see a stuffed ducky
+creaks of its own will on the hardwood floors.  You can see a stuffed ducky
 and a stuffed piggie on the bed.  This bed looks like it's for display use
 only, as the owner of this room must sleep somewhere else.  You can hear the
 ringing of a small bell in the background.  The exit is to the north.
@@ -1305,7 +1305,7 @@ Icaza's and Hatchet's Bedroom~
 You are in a large room.  Strangely, you see THREE beds in this room, a large
 brass bed, an equally large waterbed, and a smaller low futon.  All three look
 used, as if the owners of this room use all three beds depending on their
-moods.  The smell of roses and perfumes permeates this room, and you can hear
+moods.  The smell of roses and perfumes permeate this room, and you can hear
 some soft jazzy music (Kenny G?) in the background.  There is no mortal exit
 from this room.
 ~
