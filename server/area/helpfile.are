@@ -191,7 +191,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [16 March 2022]
+    [21 March 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -204,11 +204,8 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew config option in: AUTOLEVEL{x (see 'help autolevel'). {RWARNING, 
-    VERY IMPORTANT READ THIS:{x Unless your character is new, you will need to
-    type "autolevel" and turn the feature ON after logging in the first time
-    you see this message in order to gain levels.  You should only have to do 
-    this once!
+    {WGravity now exists!  Be careful about hanging out in the air without
+    being able to fly!{x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -284,6 +281,7 @@ been added;
 - Detect Curse for those with Divination
 - Knife Toss for Thieves
 - New config option: "AUTOLEVEL"
+- Gravity exists! Beware of not being able to fly in the air!
 
 Refer appropriate HELP entries.
 
