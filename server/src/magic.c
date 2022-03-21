@@ -2550,8 +2550,18 @@ void spell_fly( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_FLYING;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your feet rise off the ground.\n\r", victim );
-        act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
+        if ( IS_SET (victim->act, PLR_FALLING ))
+        {
+                send_to_char( "Your descent slows and stops--you are no longer falling!\n\r", victim );
+                act( "$n stops falling and rises back into the air.", victim, NULL, NULL, TO_ROOM );
+                REMOVE_BIT( victim->act, PLR_FALLING );
+        }
+        else {
+                send_to_char( "Your feet rise off the ground.\n\r", victim );
+                act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
+        }
+
+        
         return;
 }
 
@@ -5067,8 +5077,17 @@ void spell_levitation ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_FLYING;
         affect_to_char( victim, &af );
 
-        send_to_char( "You rise up into the air.\n\r", victim );
-        act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
+        if ( IS_SET (victim->act, PLR_FALLING ))
+        {
+                send_to_char( "You stabilise and come to a halt--you are no longer falling!\n\r", victim );
+                act( "$n stops falling and rises back into the air.", victim, NULL, NULL, TO_ROOM );
+                REMOVE_BIT( victim->act, PLR_FALLING );
+        }
+        else {
+                send_to_char( "You rise up into the air.\n\r", victim );
+                act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
+        }
+
         return;
 }
 

@@ -1188,50 +1188,29 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         /*
          * Show act and aff bits nicely. --Owl 13/3/22
          */
-        
-        if (victim->act)
-        {
-                sprintf(buf, "Act flags (num): ");
-                strcat( buf1, buf );
-                bit_explode(ch, buf, victim->act);
-                strcat(buf1, buf );
-                strcat(buf1, "\n\r");
-                strcat(buf1, "Act flags (txt):");
-
-                for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+        if ( IS_NPC( victim ) )
+        { 
+                if (victim->act)
                 {
-                        if (IS_SET(victim->act, next))
+                        sprintf(buf, "Act flags (num): ");
+                        strcat( buf1, buf );
+                        bit_explode(ch, buf, victim->act);
+                        strcat(buf1, buf );
+                        strcat(buf1, "\n\r");
+                        strcat(buf1, "Act flags (txt):");
+
+                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
                         {
-                                strcat(buf1, " ");
-                                strcat(buf1, act_bit_name(next));
+                                if (IS_SET(victim->act, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, act_bit_name(next));
+                                }
                         }
+
+                        strcat(buf1, "\n\r");
+
                 }
-
-                strcat(buf1, "\n\r");
-
-        }
-
-        if (victim->act)
-        {
-                strcat(buf1, "Act flags:");
-                /* fix the bit 29/30 thing */
-                for (next = 1; next <= BIT_29; next *= 2)
-                {
-                        if (IS_SET(victim->act, next))
-                        {
-                                strcat(buf1, " ");
-                                strcat(buf1, act_bit_name(next));
-                        }
-                }
-
-                if (IS_SET(victim->act, BIT_30))
-                {
-                        strcat(buf1, " ");
-                        strcat(buf1, act_bit_name(BIT_30));
-                }
-
-                strcat(buf1, "\n\r");
-
         }
 
         if (victim->affected_by)
@@ -1295,6 +1274,28 @@ void do_mstat( CHAR_DATA *ch, char *argument )
          */
         if (!IS_NPC(victim))
         {
+                if (victim->act)
+                {
+                        sprintf(buf, "Act flags (num): ");
+                        strcat( buf1, buf );
+                        bit_explode(ch, buf, victim->act);
+                        strcat(buf1, buf );
+                        strcat(buf1, "\n\r");
+                        strcat(buf1, "Act flags (txt):");
+
+                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        {
+                                if (IS_SET(victim->act, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, pact_bit_name(next));
+                                }
+                        }
+
+                        strcat(buf1, "\n\r");
+
+                }
+
                 if (deities_active() && ch->level == L_IMM)
                 {
                         sprintf (buf, "Patron: %d (%s).  Deity timer: %d.  "

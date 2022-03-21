@@ -405,7 +405,11 @@ void gain_exp( CHAR_DATA *ch, int gain )
 int hit_gain( CHAR_DATA *ch )
 {
         CHAR_DATA *gch;
+        CHAR_DATA *fch;
+        CHAR_DATA *fch_next;
         OBJ_DATA *obj;
+        ROOM_INDEX_DATA *in_room;
+        ROOM_INDEX_DATA *to_room;
         int gain;
         int amt;
         int count;
@@ -489,7 +493,7 @@ int hit_gain( CHAR_DATA *ch )
                 if (ch->hit + gain <= 0)
                         gain = ch->hit -1;
         }
-
+        
         /*
          *  Burning and freezing rooms; Gez 2000
          */
@@ -512,6 +516,183 @@ int hit_gain( CHAR_DATA *ch )
                         send_to_char("{WThe freezing temperature drains your energy!{x\n\r", ch);
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
+                }
+
+                /*
+                 *  Gravity; Owl 20/3/22
+                 */
+                
+                if ( ( ch->in_room->sector_type == SECT_AIR) 
+                  && ( !IS_AFFECTED(ch, AFF_FLYING) ) )
+                {
+                         /* Don't set below until we're sure there's an open exit down */
+                         /* Is there an exit down that's open ? */
+                         
+                        in_room = ch->in_room;
+                        
+
+                         if ( ch->in_room->exit[5] )
+                         {
+                                to_room = in_room->exit[5]->to_room;
+                                /* Can we fall into it tho? headache coming */
+                                
+                                if  ( room_is_private(to_room) )
+                                {
+                                        return 0;
+                                }
+                                
+                                /* You -can- fall into a SECT_WATER_NOSWIM room you need a boat to enter, just bad luck. */
+
+                                /* Don't fall into level-restricted rooms. */
+                                if ( ( ch->level < to_room->area->low_enforced
+                                    || ch->level > to_room->area->high_enforced )
+                                    && ch->level <= LEVEL_HERO )
+                                {
+                                        return 0;
+                                }
+
+                                if ( to_room->area->low_level == -4
+                                  && to_room->area->high_level == -4
+                                  && !IS_NPC(ch)
+                                  && !ch->clan
+                                  && !IS_SET( ch->status, PLR_RONIN )
+                                  && ch->level <= LEVEL_HERO )
+                                {
+                                        return 0;
+                                }
+
+                                /* Mount checks */
+
+                                if (ch->mount)
+                                {
+                                        if ( IS_SET( to_room->room_flags, ROOM_SOLITARY )
+                                        ||   IS_SET( to_room->room_flags, ROOM_PRIVATE ) )
+                                        {
+                                                return 0;
+                                        }
+
+                                        if ( IS_AFFECTED( ch->mount, AFF_FLYING ) )
+                                        {
+                                                /* Don't fall if mount is flying */
+                                                return 0;
+                                        }
+
+                                        if ( IS_SET( to_room->room_flags, ROOM_NO_MOUNT ) )
+                                        {
+                                                act ("$c falls from $s mount.", ch, NULL, NULL, TO_ROOM);
+                                                strip_mount (ch);
+                                        }
+                                }
+
+                                /* If we passed above mount checks you can both fall.  Check to damage mount. */
+                                /* Push char into room and add PLR_FALLING bit */
+
+                                SET_BIT(ch->act, PLR_FALLING);
+
+                                if (!IS_IMMORTAL( ch ))
+                                {
+                                        WAIT_STATE(ch, 1);
+                                }
+                                
+                                send_to_char("{CUnable to stay aloft, you fall through the air!{x\n\r", ch);
+
+                                char_from_room(ch);
+                                char_to_room(ch, to_room);
+
+                                if (ch->position == POS_STANDING ) 
+                                {
+                                        do_look(ch, "auto");
+                                }
+
+                                if (ch->mount && !IS_NPC(ch) && !IS_SET(ch->act, PLR_WIZINVIS))
+                                {
+                                        act_move ("$n and $N hurtle down from above.", ch, NULL, ch->mount, TO_ROOM);
+                                }
+                                else if (!ch->rider && (IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS)))
+                                {
+                                        act_move ("$n hurtles down from above.", ch, NULL, NULL, TO_ROOM);
+                                }
+
+                                for (fch = in_room->people; fch; fch = fch_next)
+                                {
+                                        fch_next = fch->next_in_room;
+
+                                        if (fch->deleted)
+                                                continue;
+
+                                        if (fch->rider == ch
+                                        && fch->position == POS_STANDING
+                                        && ch->in_room != fch->in_room)
+                                                move_char (fch, 5);
+
+                                        else if (fch->master == ch
+                                                && fch->position == POS_STANDING
+                                                && ch->in_room != fch->in_room)
+                                        {
+                                                act ("You follow $N.\n\r", fch, NULL, ch, TO_CHAR);
+                                                move_char(fch, 5);
+                                        }
+                                }
+
+                                if (ch->mount && ch->in_room != ch->mount->in_room)
+                                {
+                                        send_to_char ("\n\rYou seem to have lost your mount!\n\r", ch);
+                                        strip_mount (ch);
+                                        ch->position = POS_STANDING;
+                                }
+
+                                if ( IS_SET( ch->act, PLR_FALLING ) 
+                                &&   ch->in_room->sector_type != SECT_AIR )
+                                {       
+                                        if ( ch->in_room->sector_type == SECT_WATER_NOSWIM
+                                        ||   ch->in_room->sector_type == SECT_WATER_SWIM
+                                        ||   ch->in_room->sector_type == SECT_UNDERWATER )
+                                        {
+                                                send_to_char("{BYou splashdown into water!{x\n\r", ch);
+                                                if (ch->mount && !IS_NPC(ch) && !IS_SET(ch->act, PLR_WIZINVIS))
+                                                {
+                                                        act_move ("$n and $N splashdown into the water!", ch, NULL, ch->mount, TO_ROOM);
+                                                }
+                                                else if (!ch->rider && (IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS)))
+                                                {
+                                                        act_move ("$n splashes down into the water.", ch, NULL, NULL, TO_ROOM);
+                                                }
+                                                damage(ch, ch, (ch->hit / 4), TYPE_UNDEFINED, FALSE);
+                                        }
+                                        else {
+                                                send_to_char("{yYou crash down onto the ground! OOOF!{x\n\r", ch);
+                                                if (ch->mount && !IS_NPC(ch) && !IS_SET(ch->act, PLR_WIZINVIS))
+                                                {
+                                                        act_move ("$n and $N crash into the ground!", ch, NULL, ch->mount, TO_ROOM);
+                                                }
+                                                else if (!ch->rider && (IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS)))
+                                                {
+                                                        act_move ("$n crashes into the ground!", ch, NULL, NULL, TO_ROOM);
+                                                }
+                                                damage(ch, ch, (ch->hit / 3), TYPE_UNDEFINED, FALSE);
+                                        }
+                                        REMOVE_BIT( ch->act, PLR_FALLING );
+
+                                        if (!IS_NPC(ch))
+                                        {
+                                                mprog_entry_trigger(ch);      
+                                                mprog_greet_trigger(ch);       
+                                        }
+
+                                        return 0;
+                                }
+
+                                if (!IS_NPC(ch))
+                                {
+                                        mprog_entry_trigger(ch);        
+                                        mprog_greet_trigger(ch);        
+                                }
+
+                         }
+                         else {
+                               /* No down exit */
+                               return 0;  
+                         }
                 }
         }
 

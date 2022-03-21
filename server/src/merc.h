@@ -2051,6 +2051,7 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define PLR_TELNET_GA                   BIT_11
 #define PLR_HOLYLIGHT                   BIT_12
 #define PLR_WIZINVIS                    BIT_13
+#define PLR_FALLING                     BIT_14 /* Owl 20/3/22, 'gravity' code */
 #define PLR_SILENCE                     BIT_15
 #define PLR_NO_EMOTE                    BIT_16
 #define PLR_NO_TELL                     BIT_18
@@ -4096,9 +4097,11 @@ bool    can_drop_obj                    args( ( CHAR_DATA *ch, OBJ_DATA *obj ) )
 char *  item_type_name                  args( ( OBJ_DATA *obj ) );
 int     item_name_type                  args( ( char *name ) );
 char *  affect_loc_name                 args( ( int location ) );
+char *  affect_loc_name                 args( ( int location ) );
 char *  affect_bit_name                 args( ( int vector ) );
 char *  affect_bit_name_nice            args( ( int vector ) );
 char *  act_bit_name                    args( ( int vector ) );
+char *  pact_bit_name                   args( ( int vector ) );
 char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( int extra_flags ) );

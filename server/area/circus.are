@@ -309,7 +309,7 @@ The horse has been trained by the bare back rider.  These are magnificent
 animals, although they look like they could use more food.  More evidence
 of the cheapness of the Circus Owner.
 ~
-2 0 0 S
+2|131072 0 0 S
 4 8 8 8d8+8 10d10+10
 36 8
 8 8 0
@@ -321,7 +321,7 @@ A poor white horse is here, about to have a horn implanted in it's head.
 This poor animal had the unfortunate luck of being white.  Just what the
 Circus Owner was looking for.
 ~
-2 0 0 S
+2|131072 0 0 S
 3 8 8 8d8+8 10d10+10
 36 8
 8 8 0

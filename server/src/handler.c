@@ -2282,7 +2282,45 @@ char* affect_bit_name_nice (int vector)
 }
 
 /*
- * Return ascii name of an act bit vector. Used by mstat. --Owl 12/3/22
+ * Return ascii name of player act bit vectors. Used by mstat. --Owl 21/3/22
+ */
+
+char *pact_bit_name (int vector)
+{ 
+        if ( vector & PLR_IS_NPC                ) return "is_npc";
+        if ( vector & PLR_BOUGHT_PET            ) return "bought_pet";
+        if ( vector & PLR_QUESTOR               ) return "questor";
+        if ( vector & PLR_AUTOEXIT              ) return "autoexit";
+        if ( vector & PLR_AUTOLOOT              ) return "autoloot";
+        if ( vector & PLR_AUTOSAC               ) return "autosac";
+        if ( vector & PLR_BLANK                 ) return "blank";
+        if ( vector & PLR_BRIEF                 ) return "brief";
+        if ( vector & PLR_LEADER                ) return "leader";
+        if ( vector & PLR_COMBINE               ) return "combine";
+        if ( vector & PLR_PROMPT                ) return "prompt";
+        if ( vector & PLR_TELNET_GA             ) return "telnet_ga";
+        if ( vector & PLR_HOLYLIGHT             ) return "holylight";
+        if ( vector & PLR_WIZINVIS              ) return "wisinvis";
+        if ( vector & PLR_FALLING               ) return "falling";
+        if ( vector & PLR_SILENCE               ) return "silenced";
+        if ( vector & PLR_NO_EMOTE              ) return "no_emote";
+        if ( vector & PLR_NO_TELL               ) return "no_tell";
+        if ( vector & PLR_LOG                   ) return "logged";
+        if ( vector & PLR_DENY                  ) return "denied";
+        if ( vector & PLR_FREEZE                ) return "frozen";
+        if ( vector & PLR_GUIDE                 ) return "guide";
+        if ( vector & PLR_AUTOLEVEL             ) return "autolevel";
+        if ( vector & PLR_ANSI                  ) return "ansi";
+        if ( vector & PLR_VT100                 ) return "vt100";
+        if ( vector & PLR_AFK                   ) return "afk";
+        if ( vector & PLR_AUTOWIELD             ) return "autowield";
+        if ( vector & PLR_AUTOCOIN              ) return "autocoin";
+
+        return "none";
+}
+
+/*
+ * Return ascii name of a mob's act bit vector. Used by mstat. --Owl 12/3/22
  */
 
 char *act_bit_name (int vector)
