@@ -234,7 +234,7 @@ A massive Giant of a man is here weapons glistening from his side.
 Before you stands the huge figure of Krondor's Head hunter - or so it would seem..
 ~
 2|64|4096 2|8|32|128|512|8192 0 S
-75 0 0 0d0+0 0d0+0
+76 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25611
@@ -246,7 +246,7 @@ He is dressed for the desert, and he looks quite formidable.  The guard
 regards you with cold contempt.
 ~
 64|4096 8|32|128|512|8192 0 S
-70 0 0 0d0+0 0d0+0
+69 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25612
@@ -258,7 +258,7 @@ You can dimly perceive the form of a large clawed cat-like creature in the
 moving shadow that attacks you.
 ~
 2|32|64|4096 8|32|512|32768|524288|8388608 0 S
-65 0 0 0d0+0 0d0+0
+66 0 0 0d0+0 0d0+0
 36 0
 8 8 0
 #25613
@@ -270,7 +270,7 @@ Out of nowhere a shapeshifter materializes. He regards you blankly, as if
 waiting for you to announce the reason for your intrusion.
 ~
 64|4096 8|32|512|32768 0 S
-75 0 0 0d0+0 0d0+0
+74 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25614
@@ -282,7 +282,7 @@ Cuervo has lopped more heads off with his trusty guillotine than you EVER
 will with your weapons. He smiles at you slyly.
 ~
 64|4096 8|32|128|512 -750 S
-75 0 0 0d0+0 0d0+0
+77 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25615
@@ -295,7 +295,7 @@ mad beast that struggles against its chains in the Temple of Krondor and a
 dark malice glistens in the depths of his hooded reptilian eyes..
 ~
 2|64|4096 8|32|128|512|524288 63 S
-70 0 0 0d0+0 0d0+0
+69 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25616
@@ -307,7 +307,7 @@ Alix sneers and does not ask you to tell him the name of the item you wish to be
 rid of, as he normally would.
 ~
 2|64|4096 8|32|128|512 -250 S
-70 0 0 0d0+0 0d0+0
+71 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25617
@@ -318,7 +318,7 @@ A beautiful golden statue of a naked Adonis stands in the corner.
 The golden statue seems most lifelike.
 ~
 2|4|32|64|4096 8|32|512|8388608 0 S
-85 0 0 0d0+0 0d0+0
+84 0 0 0d0+0 0d0+0
 304 0
 8 8 0
 #25618
@@ -329,7 +329,7 @@ Clea the Artificer is ready to recharge your magic items.
 Clea smiles languidly and nods politely in your direction.
 ~
 64|4096 8|32|128|512 -350 S
-70 0 0 0d0+0 0d0+0
+71 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25619
@@ -341,7 +341,7 @@ The Captain has a true love of civilized fighting.  He raises his
 eyebrow to you...shall we have a go at it?
 ~
 2|64|4096 8|32|512 84 S
-70 0 0 0d0+0 0d0+0
+69 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25620
@@ -352,7 +352,7 @@ A bank teller watches you with a keen eye.
 This `teller' is a giant of a man.
 ~
 2|64|4096|524288 8|32|512 0 S
-70 0 0 0d0+0 0d0+0
+72 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25621
@@ -363,7 +363,7 @@ A janitor is walking around, cleaning up.
 You see nothing special about him.
 ~
 64|4096 0 -500 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25622
@@ -402,7 +402,7 @@ A vagabond is here, looking for victims.
 He looks pretty mean.
 ~
 64|4096 8|32|512 0 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25625
@@ -417,7 +417,7 @@ panthers, wolves, bears, or horses. For some reason, this particular Joining
 strikes you as odd.
 ~
 128|4096 8|32|512 0 S
-65 0 0 0d0+0 0d0+0
+66 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #25626
@@ -443,7 +443,7 @@ breeches and a heavily-padded, long-sleeve tunic. Noticing your interest in
 him he smiles slyly.
 ~
 64|4096 8|32|128|512 -450 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25628
@@ -454,7 +454,7 @@ A footpad stalks around looking for an easy victim.
 The footpad skulks about, looking for someone to conk over the head.
 ~
 64|4096 8|32|512 0 S
-65 0 0 0d0+0 0d0+0
+66 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25629
@@ -478,7 +478,7 @@ Rats! Eeyew! They come up out of the sewer and steal the children of Anon.
 This one regards you curiously, as if waiting for you to explain your presence.
 ~
 64|4096 8|32|512 -175 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 36 0
 8 8 0
 #25631
@@ -490,7 +490,7 @@ The Bookstore Owner looks very bored.  From the way his fingers twitch and
 his eyes dart, you wonder if he really is what he appears...
 ~
 2|64|4096 8|32|512 135 S
-65 0 0 0d0+0 0d0+0
+66 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25632
@@ -517,7 +517,7 @@ hair that stick straight up and wears an electric blue robe to hide
 the rest of his features.
 ~
 64|4096 8|32|512|524288 0 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25634
@@ -529,7 +529,7 @@ Horror of horrors! A creature that lives, nay THRIVES on raw filth and effluent.
 It's BIG, it's DIRTY, it's UGLY and it has YOU on its dinner menu!
 ~
 2|4|32|64 8|32|512|32768|65536|1048576 -1000 S
-55 0 0 0d0+0 0d0+0
+56 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >death_prog 100~
@@ -546,7 +546,7 @@ Horror of horrors! A creature that lives, nay THRIVES on raw filth and effluent.
 It's BIG, it's DIRTY, it's UGLY and it has YOU on its dinner menu!
 ~
 2|4|32|64 8|32|512|32768|65536|1048576 -1000 S
-60 0 0 0d0+0 0d0+0
+59 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 >death_prog 100~
@@ -565,7 +565,7 @@ relatively unperturbed by your appearance, it must be a common mistake for peopl
 to wander into this room accidentally.
 ~
 2|64|4096 8|32|512|8388608 -600 S
-60 0 0 0d0+0 0d0+0
+61 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >greet_prog 25~
@@ -619,7 +619,7 @@ relatively unperturbed by your appearance, it must be a common mistake for peopl
 to wander into this room accidentally.
 ~
 2|64|4096 8|32|512|8388608 -350 S
-60 0 0 0d0+0 0d0+0
+59 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >greet_prog 25~
@@ -696,7 +696,7 @@ is he of his abilities he has had his fangs ground down to demonstrate his
 freedom from reliance on them.
 ~
 2|64|4096 8|32|512 0 S
-75 0 0 0d0+0 0d0+0
+74 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25640
@@ -708,7 +708,7 @@ This assassin officer is highly skilled in the art of avoiding detection and is
 passing on her knowledge and skill to new recruits.
 ~
 64|4096 2|8|32|512|32768|65536|1048576 -120 S
-75 0 0 0d0+0 0d0+0
+76 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25641
@@ -720,7 +720,7 @@ This assassin recruit is brushing up on his skill with a polearm, using a plain
 length of wood to practice with.
 ~
 2|64|4096 8|32|512 0 S
-70 0 0 0d0+0 0d0+0
+69 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25642
@@ -744,7 +744,7 @@ This recruit is practicing her daggerwork, slicing and jabbing at her shadow
 on the wall.
 ~
 2|64|4096 8|32|512 -115 S
-70 0 0 0d0+0 0d0+0
+71 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25644
@@ -756,7 +756,7 @@ This recruit wanders about the barracks looking for ways to spend his time
 profitably while he waits for his next job.
 ~
 64|4096 8|32|512|32768 0 S
-70 0 0 0d0+0 0d0+0
+68 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25645
@@ -768,7 +768,7 @@ This recruit wanders about the barracks looking for ways to spend her time
 profitably while she waits for her next job.
 ~
 64|4096 8|32|512|32768 60 S
-70 0 0 0d0+0 0d0+0
+72 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25646
@@ -793,7 +793,7 @@ doesn't behave in an overtly hostile manner. You wonder if perhaps she's mistake
 you for someone else.
 ~
 2|64|4096 8|32|512|32768 125 S
-75 0 0 0d0+0 0d0+0
+76 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25648
@@ -806,7 +806,7 @@ are a messenger from the spy wing, represses his obvious desire to separate your
 head from your neck.
 ~
 2|64|4096 8|32|512|32768 -450 S
-80 0 0 0d0+0 0d0+0
+79 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25649
@@ -829,7 +829,7 @@ A tall woman clad in black stands here looking thoughtful.
 The assassin elder seems to be pondering something, wonder what?
 ~
 2|64|4096 8|32|512 150 S
-80 0 0 0d0+0 0d0+0
+81 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25651
@@ -857,7 +857,7 @@ incomprehension and as he turns you catch a glimpse of fangs in his mouth - a va
 He then shrugs vaguely and returns to his stumbling and burbling...
 ~
 64|128|4096 8|32|256|512 -125 S
-60 0 0 0d0+0 0d0+0
+59 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 >rand_prog 3~
@@ -921,7 +921,7 @@ You hear the soft padding of feet.
 A male humanoid shape can be seen in the darkness, flitting from shadow to shadow.
 ~
 64|4096 8|32|512|32768|65536|8388608 -40 S
-60 0 0 0d0+0 0d0+0
+61 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25654
@@ -932,7 +932,7 @@ You detect movement in the gloom.
 You catch a glimpse of a female face in the darkness.. a female face with fangs..
 ~
 64|4096 8|32|512|32768|65536|8388608 -125 S
-60 0 0 0d0+0 0d0+0
+59 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25655
@@ -957,7 +957,7 @@ The woman regards you loftily, considering it beneath her dignity to engage in
 conversation with mortals .
 ~
 64|4096 8|32|512|8388608 0 S
-60 0 0 0d0+0 0d0+0
+61 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25657
@@ -969,7 +969,7 @@ The tall vampire's preternatural senses have detected that you are no ordinary
 visitor and he turns on you with cold fury.
 ~
 32|64|4096 8|32|512|8388608 -69 S
-60 0 0 0d0+0 0d0+0
+59 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25658
@@ -1005,7 +1005,7 @@ Something metal flashes in the dim light.
 A dark female shape is crouched in the shadows, whispering apparently to no one.
 ~
 2|64|4096 2|8|32|512|32768|65536|8388608 -400 S
-65 0 0 0d0+0 0d0+0
+66 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25661
@@ -1018,7 +1018,7 @@ what speed his demeanor might be turned to one of savage ferocity and
 bloodthirsty terror.
 ~
 2|64|4096 8|32|512|131072|8388608 0 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 0 0
 8 8 1
 #25662
@@ -1056,7 +1056,7 @@ This vampire is an intensely serious looking individual and stalks about the
 corridor with an air of confidence and authority.
 ~
 64|4096 8|32|512|8388608 -125 S
-65 0 0 0d0+0 0d0+0
+64 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25665
@@ -1067,7 +1067,7 @@ A tall woman in a state of half-dress wanders the corridor.
 She seems to have just gotten out of her coffin, perhaps she's looking for breakfast.
 ~
 64|4096 8|32|512|8388608 200 S
-65 0 0 0d0+0 0d0+0
+66 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25666
@@ -1095,7 +1095,7 @@ unperturbed by your presence, evidently not thinking it possible you could have
 arrived here without having good reason.
 ~
 64|4096 8|32|512|32768|8388608 -700 S
-70 0 0 0d0+0 0d0+0
+71 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25668
@@ -1107,7 +1107,7 @@ The vampire is calm and beautiful in repose, but you remind yourself of the
 bloodthirsty monster that lurks beneath her pale flesh and are repulsed.
 ~
 2|64|4096 8|32|512|131072|8388608 200 S
-70 0 0 0d0+0 0d0+0
+69 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25669
@@ -1119,7 +1119,7 @@ The vampire here feasting on a fresh corpse turns on you savagely when you
 interrupt her meal..
 ~
 2|4|32|64|4096 8|32|512|524288|8388608 0 S
-70 0 0 0d0+0 0d0+0
+71 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 >all_greet_prog 100~
@@ -1138,7 +1138,7 @@ for sharing a small portion of their vampyric powers with them. You wonder if
 this might be an example of such a case.
 ~
 2|64 8|32|128|512 -350 S
-75 0 0 0d0+0 0d0+0
+74 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25671
@@ -1150,7 +1150,7 @@ The huge frozen troll's nervous system doesn't quite seem to realize it's dead
 yet and its limbs thrash wildly, devoid of mind or reason.
 ~
 2|32|64 8|32|256|512 0 S
-75 0 0 0d0+0 0d0+0
+76 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25672
@@ -1164,7 +1164,7 @@ get an odd tingling feeling when you come closer to her, she may be a magic-user
 of some sort...
 ~
 2|64|128|4096 8|32|128|256|512|8192 35 S
-85 0 0 0d0+0 0d0+0
+84 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #25673
@@ -1229,7 +1229,7 @@ business during daylight hours. Tragically they retain their mortal memories
 and dispositions yet are powerless to disobey their masters' commands.
 ~
 64|4096 524288 1000 S
-60 0 0 0d0+0 0d0+0
+61 0 0 0d0+0 0d0+0
 0 0
 8 8 2
 #0
