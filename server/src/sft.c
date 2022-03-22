@@ -50,7 +50,90 @@ void do_morph_chameleon (CHAR_DATA *ch, bool to_form)
 
 void do_spy (CHAR_DATA *ch, char *argument) 
 {
-        send_to_char("This skill has been removed.\n\r", ch);
+        CHAR_DATA       *wch;
+        CHAR_DATA       *victim;
+        ROOM_INDEX_DATA *location;
+        ROOM_INDEX_DATA *original;
+        char             arg [ MAX_INPUT_LENGTH ];
+
+        argument = one_argument( argument, arg );
+
+        /* swap do_spy, gsn_spy etc  out for surveil once it's working */
+        if ( IS_NPC( ch ) )
+                return;
+
+        if ( !IS_AWAKE( ch ) || !check_blind( ch ) )
+                return;
+
+        if ( !IS_NPC( ch ) && !CAN_DO( ch, gsn_spy ) ) 
+        {
+                send_to_char("You do not have that ability.\n\r", ch);
+                return;
+        }
+
+        if (ch->form != FORM_HAWK) 
+        {
+                send_to_char("You must be in hawk form to surveil someone.\n\r", ch);
+                return;
+        }
+
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Surveil whom?\n\r", ch );
+                return;
+        }
+        
+        if ( !( victim = get_char_world( ch, arg ) ) || !victim->desc )
+        {
+                send_to_char( "They are not currently in the domain.\n\r", ch );
+                return;
+        } 
+
+        if ( victim == ch )
+        {
+                send_to_char( "You don't need to surveil yourself, you're right here!\n\r", ch );
+                return;
+        }
+
+        if ( IS_IMMORTAL( victim ) )
+        {
+                send_to_char("You may not surveil the gods.\n\r", ch);
+                return;
+        }
+
+        if ( !IS_OUTSIDE( ch ) )
+        {
+                act( "You must be outdoors to attempt that.", ch, NULL, victim, TO_CHAR );
+                return;
+        }
+
+        if ( !IS_OUTSIDE( victim ) )
+        {
+                act( "You can't surveil $N; they must be indoors.", ch, NULL, victim, TO_CHAR );
+                return;
+        }
+
+        /* 
+           Do the spying. basically check victim is in same area and force look output 
+           You can also surveil mobs.
+        */
+        location = find_location( ch, arg );
+
+        original = ch->in_room;
+        char_from_room( ch );
+        char_to_room( ch, location );
+        act( "{YWith your keen hawk senses you track down $N--you see what they see!{x\n\r", ch, NULL, victim, TO_CHAR );
+        interpret( ch, "look" );
+
+        for ( wch = char_list; wch; wch = wch->next )
+        {
+                if ( wch == ch )
+                {
+                        char_from_room( ch );
+                        char_to_room( ch, original );
+                        break;
+                }
+        }
 }
 
 
@@ -554,7 +637,9 @@ void do_web (CHAR_DATA *ch, char *argument)
         {
                 act ("$n attempts to spin a web around $N, but $N breaks free!",
                      ch, NULL, victim, TO_ROOM);
-                send_to_char("You fail to spin a web around your victim, $e breaks free!\n\r", ch);
+                act ("You fail to spin a web around your victim, $e breaks free!",
+                     ch, NULL, victim, TO_ROOM);
+                arena_commentary("$n tries to trap $N in a sticky web, but $N breaks free!", ch, victim);
 
                 /*
                  * Web gets worse.
