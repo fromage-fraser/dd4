@@ -523,9 +523,9 @@ int hit_gain( CHAR_DATA *ch )
                  */
 
                 /* 
-                  This goes here in case an imm transfers a player while they're falling, or they teleport or whatever.
-                  Makes sure the PLR_FALLING gets stripped and doesn't do crash damage. 
-                */
+                 * Below check goes here in case an imm transfers a player while they're falling, or they teleport or whatever.
+                 * Makes sure the PLR_FALLING gets stripped and doesn't do crash damage. 
+                 */
 
                 if ( IS_SET( ch->act, PLR_FALLING ) 
                 &&   ch->in_room->sector_type != SECT_AIR )
