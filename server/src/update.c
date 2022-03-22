@@ -521,6 +521,17 @@ int hit_gain( CHAR_DATA *ch )
                 /*
                  *  Gravity; Owl 20/3/22
                  */
+
+                /* 
+                  This goes here in case an imm transfers a player while they're falling, or they teleport or whatever.
+                  Makes sure the PLR_FALLING gets stripped and doesn't do crash damage. 
+                */
+
+                if ( IS_SET( ch->act, PLR_FALLING ) 
+                &&   ch->in_room->sector_type != SECT_AIR )
+                {
+                        REMOVE_BIT( ch->act, PLR_FALLING );
+                }
                 
                 if ( ( ch->in_room->sector_type == SECT_AIR) 
                   && ( !IS_AFFECTED(ch, AFF_FLYING) ) )
