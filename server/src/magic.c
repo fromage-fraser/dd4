@@ -1518,7 +1518,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_strip(victim, gsn_poison);
 
         if (ch != victim)
-                send_to_char("You purge the poison from $M.\n\r", ch);
+                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
 
         send_to_char("A warm feeling runs through your body.\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);

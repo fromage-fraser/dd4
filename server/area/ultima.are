@@ -82,7 +82,7 @@ great warrior and an able guardian of New Magincia.
 #2406
 rat~
 the giant rat~
-A rat is knawing on a book.
+A rat is gnawing on a book.
 ~
 This giant rat is smelly and fleas jump up from its fur.  The rats
 have been a great problem in the Library because they eat and
@@ -539,7 +539,7 @@ A tinker is fiddling with one device or another.
 ~
 The tinker has huge rippling muscles and a scarred skin.  You
 realize that his great Sacrifice to his craft has led to his
-incredible strength and weaponskill.  This is not one you wish to
+incredible strength and weapon skill.  This is not one you wish to
 fight.
 ~
 0 0 1000 S
@@ -1295,7 +1295,7 @@ move.
 A
 4 1
 #2435
-sword~
+geoffrey sword~
 a sword~
 Geoffrey's sword gleams in the sun.~
 ~
@@ -2304,7 +2304,7 @@ The Library continues here, with exits to the west and south.
 0 8 0
 E
 book books shelves~
-'Mahatma Teachs French' and 'MC Echser: The Rap Star and
+'Mahatma Teaches French' and 'MC Echser: The Rap Star and
 Paradoxical Artist'.
 ~
 D2

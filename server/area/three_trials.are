@@ -32,7 +32,7 @@ Dreadguard guard~
 the Dreadguard~
 The Dreadguard is on patrol
 ~
-Foolish Mortal - you unterestimate the power of the Dreadking!
+Foolish Mortal - you underestimate the power of the Dreadking!
 Die foolishly then.  These creatures are not human - you don't have a clue
 as to what they are!
 ~
@@ -134,7 +134,7 @@ The grotto beast stirs,  then attacks...
 ~
 This strange creature has a bulbous body which emits a cascade of
 differing shades and hues of light.  Its huge ugly head has two rows of
-wickedly razorlike teeth.  It's claws could rend adamantium and it 's tail
+wickedly razorlike teeth.  Its claws could rend adamantium and its tail
 could smash a house in.
 ~
 2|32|64 8|32 -900 S
@@ -166,7 +166,7 @@ provoke it though...
 #13190
 Ahrganite~
 the Ahrganite~
-The Ahrganite is visiting this plane of existance...
+The Ahrganite is visiting this plane of existence...
 ~
 This creature has no stable form to look at!
 ~
@@ -549,7 +549,7 @@ D3
 S
 #13103
 Hallway~
-There is light from a doorway to the west creating wierd shadows on the
+There is light from a doorway to the west creating weird shadows on the
 wall. You can't see anything to the east.
 ~
 0 1|8|8192 0
@@ -758,7 +758,7 @@ D3
 S
 #13114
 A black square~
-You are standing on a black square.  To the North there is a white sqaure.
+You are standing on a black square.  To the North there is a white square.
 To the East there is a white square.  To the West there is a white square.
 ~
 0 8|8192 0
@@ -1508,7 +1508,7 @@ D3
 S
 #13148
 A black square~
-You are standing on a black square.  All four sqaures next you are white
+You are standing on a black square.  All four squares next you are white
 squares.
 ~
 0 8|8192 0
@@ -1621,7 +1621,7 @@ D3
 S
 #13153
 A white square~
-You are standing on a white square.  All around you are black sqaures.
+You are standing on a white square.  All around you are black squares.
 ~
 0 8|8192 0
 D0
@@ -1756,7 +1756,7 @@ A white square~
 This mammoth sized room defies all explanation.  The floor is made up of
 black and white squares.
 You are standing on a white square.  There is an archway to the East.
-The other directions all lead to black sqaures.
+The other directions all lead to black squares.
 ~
 0 4|8|8192 0
 D0
@@ -2274,7 +2274,7 @@ Jammer 95.~
 S
 #13185
 The Lower Reaches~
-You are standing in a small sparcely furnished room.  There is a stairway
+You are standing in a small, sparsely-furnished room.  There is a stairway
 leading up and a passage leads south. A plain looking sign attracts your
 attention.
 ~
@@ -2297,7 +2297,7 @@ This room is recall capable.
 Jammer 1995.~
 S
 #13186
-The Maze of dispair~
+The Maze of despair~
 This room is a plain looking room with 4 exits.
 North,  East,  West and South.
 ~
@@ -2320,8 +2320,8 @@ D3
 0 -1 13188
 S
 #13187
-The Maze of dispair~
-Another rather non-descript room hardly registers on your senses.
+The Maze of despair~
+Another rather nondescript room hardly registers on your senses.
 It has... yes you guessed it,  four exits.
 North,  East,  West,  South.
 ~
@@ -2344,7 +2344,7 @@ D3
 0 -1 13190
 S
 #13188
-The Maze of dispair~
+The Maze of despair~
 Hmm,  we've been here before,  haven't we?
 Four exits are the best feature of this room.
 North,  East,  West,  South.
@@ -2368,7 +2368,7 @@ D3
 0 -1 13189
 S
 #13189
-The Maze of dispair~
+The Maze of despair~
 Deja vu runs amok amongst your common senses.
 You MUST have been here before,  well,  in this life time anyway.
 Four exits:
@@ -2393,7 +2393,7 @@ D3
 0 -1 13187
 S
 #13190
-The Maze of dispair~
+The Maze of despair~
 Oh no!  Another plain room with four exits.
 North,  East,  West,  South.
 ~
@@ -2416,7 +2416,7 @@ D3
 0 -1 13187
 S
 #13191
-The Maze of dispair~
+The Maze of despair~
 Is this the same room as you left?  It must be an illusion.  Four exits
 are not really there(?),  but you could try going:
 North,  East,  West,  South.
@@ -2440,7 +2440,7 @@ D3
 0 -1 13189
 S
 #13192
-The Maze of dispair~
+The Maze of despair~
 OK. This is just another room with four exits:
 North,  East,  West,  South.
 ~
@@ -2463,7 +2463,7 @@ D3
 0 -1 13191
 S
 #13193
-The Maze of dispair~
+The Maze of despair~
 There must be a way out of this place!
 Try:  North,  East,  West,  South.
 ~
@@ -2486,7 +2486,7 @@ D3
 0 -1 13192
 S
 #13194
-The Maze of dispair~
+The Maze of despair~
 Tired are we?  Longing for change?  Bored with the same old mazes?
 Try this out for size!
 North,  South,  East, West.
@@ -2562,8 +2562,8 @@ S
 The Glowing Grotto~
 You are standing in a massive cavern.  It is lit up by millions of
 glow-worms. There is a tunnel leading off to the West.
-There are some stairs leading Down. There is an old decrepit sign hanging
-off rusty hinges creakes loudly in a slight breeze...
+There are some stairs leading down. There is an old decrepit sign hanging
+off rusty hinges.  It creaks loudly with the slightest  breeze...
 ~
 0 8 0
 D3
@@ -2788,14 +2788,14 @@ E 1 13103 100 5
 E 1 13100 100 16
 O 1 13108 100 13104                    a scroll to North-South Corridor
 O 1 13190 100 13204                    Daeron's Robes to The chamber
-R 1 13186 4             ; Randomize The Maze of dispair
-R 1 13187 4             ; Randomize The Maze of dispair
-R 1 13188 4             ; Randomize The Maze of dispair
-R 1 13189 4             ; Randomize The Maze of dispair
-R 1 13190 4             ; Randomize The Maze of dispair
-R 1 13191 4             ; Randomize The Maze of dispair
-R 1 13192 4             ; Randomize The Maze of dispair
-R 1 13193 4             ; Randomize The Maze of dispair
+R 1 13186 4             ; Randomize The Maze of despair
+R 1 13187 4             ; Randomize The Maze of despair
+R 1 13188 4             ; Randomize The Maze of despair
+R 1 13189 4             ; Randomize The Maze of despair
+R 1 13190 4             ; Randomize The Maze of despair
+R 1 13191 4             ; Randomize The Maze of despair
+R 1 13192 4             ; Randomize The Maze of despair
+R 1 13193 4             ; Randomize The Maze of despair
 *
 M 1 13187 1 13199                     the Grottobeast to The grotto
 G 1 13187 100
@@ -2808,25 +2808,25 @@ D 1 13199 5 2                   ; The Glowing Grotto Lock Down
 *
 M 1 13189 2 13196                      the Yagnid to The dark tunnel
 *
-M 1 13190 1 13193                      the Ahrganite to The Maze of dispair
+M 1 13190 1 13193                      the Ahrganite to The Maze of despair
 *
-M 1 13185 2 13186                      the Visigoth to The Maze of dispair
+M 1 13185 2 13186                      the Visigoth to The Maze of despair
 E 1 13186 100 5
 E 1 13185 100 16
 *
-M 1 13186 1 13192                      the Freebooter to The Maze of dispair
+M 1 13186 1 13192                      the Freebooter to The Maze of despair
 E 1 13188 100 5
 E 1 13187 100 16
 *
-M 1 13185 1 13190                      the Visigoth to The Maze of dispair
+M 1 13185 1 13190                      the Visigoth to The Maze of despair
 E 1 13186 100 5
 E 1 13185 100 16
 *
-M 1 13191 2 13187                      the Bleeder to The Maze of dispair
+M 1 13191 2 13187                      the Bleeder to The Maze of despair
 *
-M 1 13191 2 13192                      the Bleeder to The Maze of dispair
+M 1 13191 2 13192                      the Bleeder to The Maze of despair
 *
-M 1 13192 1 13188                      the Janitor to The Maze of dispair
+M 1 13192 1 13188                      the Janitor to The Maze of despair
 *
 M 1 13189 2 13195                      the Yagnid to The dark tunnel
 *

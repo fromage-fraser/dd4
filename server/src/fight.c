@@ -1323,8 +1323,9 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (IS_NPC(victim) && victim->rider)
         {
-                if (IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-                    || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE))
+                if ( ( IS_SET(victim->in_room->room_flags, ROOM_SAFE)
+                    || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE) )
+                    && ( !IS_IMMORTAL( ch ) ) )
                 {
                         send_to_char("Not in a place of sanctuary.\n\r", ch);
                         return TRUE;
@@ -1364,8 +1365,9 @@ bool is_safe (CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
         }
 
-        if (IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-            || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE))
+        if ( ( IS_SET(victim->in_room->room_flags, ROOM_SAFE)
+            || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE) )
+            && ( !IS_IMMORTAL( ch ) ) )
         {
                 send_to_char("Not in a place of sanctuary.\n\r", ch);
                 return TRUE;
