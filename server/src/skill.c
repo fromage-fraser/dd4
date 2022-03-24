@@ -204,6 +204,9 @@ void do_gouge (CHAR_DATA *ch, char *argument)
                 af.modifier  = -4;
                 af.bitvector = AFF_BLIND;
                 affect_to_char(victim, &af);
+
+                check_group_bonus(ch);
+
         }
         else
                 damage(ch, victim, 0, gsn_gouge, FALSE);
@@ -299,8 +302,9 @@ void do_choke (CHAR_DATA *ch, char *argument)
                 affect_to_char(victim, &af);
                 
                 do_sleep(victim, "");
+                check_group_bonus(ch);
                 
-                WAIT_STATE(victim, 3 * PULSE_VIOLENCE);
+                WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
         }
         else
                 damage(ch, victim, 0, gsn_choke, FALSE);
@@ -1647,6 +1651,9 @@ void do_break_wrist (CHAR_DATA *ch, char *argument)
                 obj_from_char(obj);
                 obj_to_room(obj, victim->in_room);
                 damage(ch, victim, number_range (20, ch->level), gsn_break_wrist, FALSE);
+
+                check_group_bonus(ch);
+
         }
         else
                 damage(ch , victim, 0 , gsn_break_wrist, FALSE);

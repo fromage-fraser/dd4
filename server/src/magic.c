@@ -478,17 +478,22 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        /*
+        
         if ( str_cmp( skill_table[sn].name, "ventriloquate" ) )
         {
                 say_spell( ch, sn );
         }
+       
+        /*
         Below probably fixes above?  --Owl 23/09/18
-        */
+
+        Maybe? say_spell has disappeared let's see if we can get that back
+
         if ( (strcmp( skill_table[sn].name, "ventriloquate" )) == 0 )
         {
                 say_spell( ch, sn );
         }
+        */
 
         WAIT_STATE( ch, skill_table[sn].beats );
 
@@ -514,6 +519,18 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 spell_attack_number = 1;
                 ch->mana -= mana;
                 (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
+
+                /*
+                 * Add a counter for support spells cast on your group members
+                 */
+
+                if (skill_table[sn].target == TAR_CHAR_DEFENSIVE && victim && ch != victim)
+                {
+                        if (is_same_group(ch, victim))
+                        {
+                                ch->pcdata->group_support_bonus += 1;
+                        }
+                }
 
                 if (skill_table[sn].target == TAR_CHAR_OFFENSIVE)
                 {
@@ -881,7 +898,10 @@ void spell_armor (int sn, int level, CHAR_DATA *ch, void *vo)
         affect_to_char( victim, &af );
 
         if (ch != victim)
+        {
                 send_to_char( "They are now protected.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char("You feel someone protecting you.\n\r", victim);
 }
@@ -941,10 +961,14 @@ void spell_bless (int sn, int level, CHAR_DATA *ch, void *vo)
         af.modifier  = 0 - level / 8;
         affect_to_char( victim, &af );
 
-        if ( ch != victim )
+        if ( ch != victim ) 
+        {
                 send_to_char( "They are surrounded by righteousness.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char( "You feel righteous.\n\r", victim );
+
         return;
 }
 
@@ -986,6 +1010,9 @@ void spell_blindness (int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char( "You are blinded!\n\r", victim );
         act( "{W$C is blinded!{x", ch, NULL, victim, TO_NOTVICT );
         damage(ch, victim, number_range(1, ch->level/2) + 10, gsn_blindness, FALSE);
+
+        check_group_bonus(ch);
+
         return;
 }
 
@@ -1378,8 +1405,11 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_strip(victim, gsn_gouge);
         affect_strip(victim, gsn_dirt);
 
-        if (ch != victim)
+        if (ch != victim) 
+        {
                 send_to_char( "You restore their vision.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char( "Your vision returns!\n\r", victim );
 }
@@ -1431,8 +1461,11 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( buf, ch );
         }
 
-        if ( ch != victim )
+        if ( ch != victim ) 
+        {
                 send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char( "You feel better!\n\r", victim );
 }
@@ -1484,7 +1517,10 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         if ( ch != victim )
+        {
                 send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char( "You feel better!\n\r", victim );
 }
@@ -1518,7 +1554,10 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_strip(victim, gsn_poison);
 
         if (ch != victim)
+        {
                 send_to_char("You purge the poison from $M.\n\r", ch);
+                check_group_bonus(ch);
+        }
 
         send_to_char("A warm feeling runs through your body.\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
@@ -1572,7 +1611,10 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         if ( ch != victim )
+        {
                 send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char( "You feel better!\n\r", victim );
         return;
@@ -2415,6 +2457,9 @@ void spell_entrapment( int sn, int level, CHAR_DATA *ch, void *vo )
             ch, NULL, victim, TO_VICT);
         act( "A stasis field forms around $N, preventing $m from moving.",
             ch, NULL, victim, TO_ROOM );
+
+        check_group_bonus(ch);        
+
         return;
 }
 
@@ -2501,6 +2546,9 @@ void spell_faerie_fire( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "You are surrounded by a pink outline.\n\r", victim );
         act( "$n is surrounded by a pink outline.", victim, NULL, NULL, TO_ROOM );
+
+        check_group_bonus(ch);
+
         return;
 }
 
@@ -2561,6 +2609,8 @@ void spell_fly( int sn, int level, CHAR_DATA *ch, void *vo )
                 act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
         }
 
+        if (ch != victim)
+                check_group_bonus(ch);
         
         return;
 }
@@ -2631,7 +2681,11 @@ void spell_giant_strength( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         if ( ch != victim )
+        {
                 send_to_char( "You strengthen them.\n\r", ch );
+                check_group_bonus(ch);
+        }
+
         send_to_char( "You feel stronger.\n\r", victim );
         return;
 }
@@ -2696,6 +2750,9 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
                 send_to_char( "Ok.\n\r", ch );
+
+                check_group_bonus(ch);
+
         }
 
         send_to_char( "A warm feeling fills your body.\n\r", victim );
@@ -2750,7 +2807,11 @@ void spell_power_heal (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if ( ch != victim )
+        {
                 send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
+
         send_to_char( "A pulse of energy surges through your body.\n\r", victim );
         return;
 }
@@ -3148,6 +3209,9 @@ void spell_invis( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_INVISIBLE;
         affect_to_char( victim, &af );
 
+        if (ch != victim)
+                check_group_bonus(ch);
+
         return;
 }
 
@@ -3327,6 +3391,9 @@ void spell_mass_invis( int sn, int level, CHAR_DATA *ch, void *vo )
                 af.bitvector = AFF_INVISIBLE;
                 affect_to_char( gch, &af );
         }
+
+        /* Need this out of the main loop so they don't get a bonus for casting it on themselves */        
+        check_group_bonus(ch);
 
         send_to_char( "Ok.\n\r", ch );
         return;
@@ -3522,8 +3589,12 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 yesno = 1;
         }
 
-        if ( ch != victim && yesno )
+        if ( ch != victim && yesno ) 
+        {
                 send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
+
 }
 
 
@@ -3549,6 +3620,12 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "You are surrounded by a white aura.\n\r", victim );
         act( "$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM );
+
+        if (ch != victim)
+                check_group_bonus(ch);
+
+        return;
+
 }
 
 
@@ -3556,9 +3633,14 @@ void spell_sense_traps( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+        char    buf     [MAX_STRING_LENGTH];
 
         if ( IS_AFFECTED( victim, AFF_DETECT_TRAPS ) )
+        {
+                sprintf( buf, "%s is already affected by that spell.\n\r", victim->name);
+                send_to_char( buf, ch );
                 return;
+        }        
 
         af.type      = sn;
         af.duration  = level;
@@ -3579,9 +3661,14 @@ void spell_shield( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+        char    buf     [MAX_STRING_LENGTH];
 
         if ( is_affected( victim, sn ) )
+        {
+                sprintf( buf, "%s is already affected by a force shield.\n\r", victim->name);
+                send_to_char( buf, ch );
                 return;
+        }
 
         af.type      = sn;
         af.duration  = 8 + level;
@@ -3592,6 +3679,10 @@ void spell_shield( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "You are surrounded by a force shield.\n\r", victim );
         act( "$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM );
+
+        if (ch != victim)
+                check_group_bonus(ch);
+
         return;
 }
 
@@ -3639,6 +3730,9 @@ void spell_sleep( int sn, int level, CHAR_DATA *ch, void *vo )
 
                 do_sleep( victim, "" );
         }
+
+        check_group_bonus(ch);
+        
 }
 
 
@@ -3939,14 +4033,21 @@ void spell_ventriloquate( int sn, int level, CHAR_DATA *ch, void *vo )
 
         target_name = one_argument( target_name, speaker );
 
-        sprintf( buf1, "%s says '%s'.\n\r",              speaker, target_name );
-        sprintf( buf2, "Someone makes %s say '%s'.\n\r", speaker, target_name );
-        buf1[0] = UPPER( buf1[0] );
+        /*
+         * Shade 22.3.22 - minor fixes
+         */ 
+
+        sprintf( buf1, "{W%s says '%s'{x\n\r",              speaker, target_name );
+        sprintf( buf2, "{WSomeone makes %s say '%s'{x\n\r", speaker, target_name );
+        buf1[2] = UPPER( buf1[2] );
 
         for ( vch = ch->in_room->people; vch; vch = vch->next_in_room )
         {
-                if ( !is_name( speaker, vch->name ) )
+                /* if ( !is_name( speaker, vch->name ) ) */
+                if (vch != ch)
                         send_to_char( saves_spell( level, vch ) ? buf2 : buf1, vch );
+                else
+                        send_to_char(buf1, ch);
         }
 
         return;
@@ -4427,7 +4528,10 @@ void spell_combat_mind ( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         if ( victim != ch )
+        {
                 send_to_char( "You heighten their combat skills.\n\r", ch );
+                check_group_bonus(ch);
+        }
 
         send_to_char( "You gain a keen understanding of battle tactics.\n\r", victim );
         return;
@@ -4478,7 +4582,10 @@ void spell_complete_healing (int sn, int level, CHAR_DATA *ch, void *vo)
         update_pos(victim);
 
         if (ch != victim)
+        {
                 send_to_char("Ok.\n\r", ch);
+                check_group_bonus(ch);
+        }
 
         send_to_char( "Ahhhhhh... you are completely healed!\n\r", victim );
         arena_commentary("$n is completely healed.", ch, ch);
@@ -5057,6 +5164,8 @@ void spell_lend_health ( int sn, int level, CHAR_DATA *ch, void *vo )
 
         act( "You lend some of your health to $N.", ch, NULL, victim, TO_CHAR );
         act( "$n lends you some of $s health.",     ch, NULL, victim, TO_VICT );
+
+        check_group_bonus(ch);
 }
 
 
@@ -5715,6 +5824,10 @@ void spell_mass_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         send_to_char( "Ok.\n\r", ch );
+
+        /* Needs to be outside the main loop to avoid a bonus for casting on themselves */
+        check_group_bonus(ch);
+
 }
 
 
@@ -5733,6 +5846,10 @@ void spell_mass_heal( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         send_to_char( "Ok.\n\r", ch );
+
+        /* Needs to be outside the main loop to avoid a bonus for casting on themselves */
+        check_group_bonus(ch);
+
 }
 
 
@@ -5751,6 +5868,9 @@ void spell_mass_power_heal( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         send_to_char( "Ok.\n\r", ch );
+
+        /* Needs to be outside the main loop to avoid a bonus for casting on themselves */
+        check_group_bonus(ch);
 }
 
 
@@ -6821,6 +6941,10 @@ void spell_dragon_shield( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_to_char( victim, &af );
 
         send_to_char( "You feel less vulnerable.\n\r",victim );
+
+        if (ch != victim)
+                check_group_bonus(ch);
+
 }
 
 

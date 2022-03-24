@@ -632,6 +632,8 @@ void do_web (CHAR_DATA *ch, char *argument)
 
                 WAIT_STATE(victim, PULSE_VIOLENCE);
 
+                check_group_bonus(ch);
+
         }
         else 
         {
