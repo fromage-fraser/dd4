@@ -497,6 +497,7 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->pcdata->stat_train = APPLY_STR;
         ch->pcdata->pagelen = 25;
         ch->pcdata->switched = FALSE;
+        ch->pcdata->group_support_bonus = 0;
 
         for (next = 0; next < MAX_WEAR; next++)
                 ch->pcdata->morph_list[next] = NULL;

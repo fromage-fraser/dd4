@@ -2341,6 +2341,7 @@ struct  pc_data
         int                             allow_look;
         time_t                          review_stamp;
         int                             pattern;
+        int                             group_support_bonus;
 };
 
 
@@ -4035,6 +4036,7 @@ void    chat_killer                     args( ( CHAR_DATA *ch, CHAR_DATA *victim
 void    reset_char_stats                      ( CHAR_DATA *ch);
 bool    aggro_damage                          ( CHAR_DATA *ch, CHAR_DATA *victim, int damage );
 void    check_autoloot                        ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    check_group_bonus                     (CHAR_DATA *ch) ;
 
 /* handler.c */
 int     get_dir                         args( ( char *txt  ) );

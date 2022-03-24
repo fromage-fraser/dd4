@@ -695,6 +695,38 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
 
 /*
+ * 22.3.22 - Shade group support bonus
+ */
+
+void check_group_bonus(CHAR_DATA *ch) 
+{
+        CHAR_DATA *vch;
+        CHAR_DATA *vch_next;
+
+        for (vch = ch->in_room->people; vch; vch = vch_next)
+        {
+                vch_next = vch->next_in_room;
+
+                if (ch == vch)
+                        continue;
+
+                if (vch->deleted)
+                        continue;
+
+                if (IS_NPC(vch))
+                        continue;
+
+                if (is_same_group(vch, ch)) 
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                        break;
+                }
+                
+        }
+
+}
+
+/*
  * Inflict damage from a hit.
  */
 void death_penalty (CHAR_DATA *ch, CHAR_DATA *victim)
@@ -2307,6 +2339,45 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                         sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
                         send_to_char(buf, gch);
                         gain_exp(gch, grxp);
+
+                        /*
+                         * Shade 22.3.22
+                         *
+                         * Grouping support bonus
+                         * 
+                         * The aim is to give a little boost to casters doing defensive and otherwise useful spells but not damage which gives XP.  Help lower level
+                         * casters who won't do a lot of damage relative to someone tanking for them.
+                         * 
+                         * group_support_bonus is incremented in most defensive/support spells and some non damaging skills / spells eg Trap, Web, Faerie Fire
+                         * 
+                         */
+
+                        if (gch->pcdata->group_support_bonus > 0)
+                        {
+                                /*
+                                 * Starting point - let's try 33% xp bonus per helpful action
+                                 */
+
+                                grxp = (xp / 3) * gch->pcdata->group_support_bonus;
+
+                                /*
+                                 * So players will figure out how to abuse this I'm sure so let's cap it 
+                                 */
+
+                                if (grxp > (2 * xp)) 
+                                {
+                                        sprintf(buf, "Capping max group bonus for %s", gch->name);
+                                        log_string(buf);
+                                        grxp = 2 * xp;
+                                }
+
+                                sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
+                                send_to_char(buf, gch);
+                                gain_exp(gch, grxp);
+
+                                gch->pcdata->group_support_bonus = 0;       
+                        }
+
                 }
 
                 if (IS_SET(victim->act, ACT_LOSE_FAME))
@@ -2743,6 +2814,9 @@ void disarm (CHAR_DATA *ch, CHAR_DATA *victim)
                 obj_to_char(obj, victim);
         else
                 obj_to_room(obj, victim->in_room);
+
+        check_group_bonus(ch);
+
 }
 
 
@@ -3979,6 +4053,9 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
                 af.bitvector    = AFF_BLIND;
 
                 affect_to_char(victim,&af);
+
+                check_group_bonus(ch);
+
         }
         else
                 damage(ch, victim, 0, gsn_dirt, FALSE);
@@ -4191,6 +4268,8 @@ void do_trap (CHAR_DATA *ch, char *argument)
 
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
                         ch->pcdata->tailing = str_dup( "" );
+
+                check_group_bonus(ch);
         }
         else
         {
@@ -4296,6 +4375,9 @@ void do_transfix (CHAR_DATA *ch, char *argument)
 
                 affect_to_char(victim, &af);
                 WAIT_STATE (victim,    2 * PULSE_VIOLENCE);
+
+                check_group_bonus(ch);
+
 
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
                         ch->pcdata->tailing = str_dup( "" );
@@ -4829,6 +4911,8 @@ void do_stun (CHAR_DATA *ch, char *argument)
                 affect_to_char(victim,&af);
 
                 do_sleep(victim,"");
+
+                check_group_bonus(ch);
 
                 WAIT_STATE (victim, 2 * PULSE_VIOLENCE);
         }
