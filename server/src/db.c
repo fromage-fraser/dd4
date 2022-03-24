@@ -3646,6 +3646,7 @@ void do_areas (CHAR_DATA *ch, char *argument)
         AREA_DATA *pArea;
         char buf  [MAX_STRING_LENGTH * 2];
         char buf1 [MAX_STRING_LENGTH];
+        char buf_all [MAX_STRING_LENGTH];
         int level = 0;
 
         if ( argument[0] != '\0' && is_number(argument))
@@ -3657,6 +3658,8 @@ void do_areas (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "Areas around level %d:\n\r", level);
         else
                 sprintf(buf, "Complete area list:\n\r");
+        
+        sprintf(buf_all, "\n\r");
 
         for (pArea = area_first; pArea; pArea = pArea->next)
         {
@@ -3691,17 +3694,29 @@ void do_areas (CHAR_DATA *ch, char *argument)
 
                         else
                                 sprintf(buf1, "(%3d %3d)   ", pArea->low_level, pArea->high_level);
-
+ 
                         if (!(pArea->low_level == -4 && level))
                         {
-                                strcat(buf, buf1);
-                                sprintf(buf1, "%-26s %-15s\n\r", pArea->name, pArea->author);
-                                strcat(buf, buf1);
+                                if (pArea->low_level == ROOM_LABEL_ALL || pArea->low_level == ROOM_LABEL_CLAN)
+                                {
+                                        strcat(buf_all, buf1);
+                                        sprintf(buf1, "%-26s %-20s\n\r", pArea->name, pArea->author);
+                                        strcat(buf_all, buf1);
+                                }
+                                else
+                                {
+                                        strcat(buf, buf1);
+                                        sprintf(buf1, "%-26s %-20s\n\r", pArea->name, pArea->author);
+                                        strcat(buf, buf1);
+                                }
                         }
                 }
         }
 
+        strcat(buf, buf_all);
         send_to_char(buf, ch);
+
+
         return;
 }
 
