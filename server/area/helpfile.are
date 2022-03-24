@@ -282,6 +282,7 @@ been added;
 - Knife Toss for Thieves
 - New config option: "AUTOLEVEL"
 - Gravity exists!
+- Grouping Bonuses for support skills & spells
 
 Refer appropriate HELP entries.
 
@@ -1051,6 +1052,9 @@ Syntax: socials
 
 AREAS shows you all of the areas in the game, with the author's name and
 the suggested levels.
+
+AREAS # will show you all areas for a particular level # eg AREA 10 will
+show all areas where 10 is within the suggested levels.
 
 COMMANDS shows you all of the commands (except socials) available to you.
 
@@ -1985,9 +1989,11 @@ FOLLOW starts you following another character.  To stop following anyone
 else, just 'FOLLOW <yourself>'.
 
 'GROUP <character>' makes someone who is following you a member of your
-group.  Group members share experience points from kills and may use the
-GTELL and SPLIT commands.  If anyone in your group is attacked, you will
-automatically join the fight.
+group.  Group members share experience points from kills and will gain
+bonus experience for supporting each other from some skills and spells.  
+If anyone in your group is attacked, you will automatically join the fight.
+
+Group members may use the GTELL and SPLIT commands.
 
 If <character> is already a member of your group, then GROUP will kick
 them out of your group.  Characters can also leave your group by using a
