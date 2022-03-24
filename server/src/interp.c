@@ -2807,6 +2807,17 @@ const struct social_type social_table [] =
         },
 
         {
+                "tip",
+                        "You tip your hat.",
+                        "$n tips $s hat.",
+                        "You tip your hat at $M.",
+                        "$n tips $s hat at $N.",
+                        "$n tips $s hat at you.",
+                        "You tip your hat at yourself.  Weirdo.",
+                        "$n tips $s hat at $mself.  What a weirdo."
+        },
+
+        {
                 "tongue",
                         "You stick out your tongue.",
                         "$n sticks out $s tongue.",

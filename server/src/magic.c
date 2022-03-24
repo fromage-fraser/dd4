@@ -1555,7 +1555,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (ch != victim)
         {
-                send_to_char("You purge the poison from $M.\n\r", ch);
+                act( "You purge the poison from $M.", ch, NULL, victim, TO_CHAR );
                 check_group_bonus(ch);
         }
 

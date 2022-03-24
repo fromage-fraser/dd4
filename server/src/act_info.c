@@ -970,6 +970,9 @@ void do_cscore( CHAR_DATA *ch, char *argument )
 {
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
+        int          age_hours;
+        
+        age_hours = (get_age( ch ) - 17) * 4;
 
         ansi_color( NTEXT, ch );
 
@@ -983,14 +986,15 @@ void do_cscore( CHAR_DATA *ch, char *argument )
         }
 
         buf1[0] = '\0';
+
         sprintf( buf, "You are %s%s, level %d, %d years old (%d hours).\n\r",
                 ch->name,
                 IS_NPC( ch ) ? "" : ch->pcdata->title,
                 ch->level,
                 get_age( ch ),
-                (get_age( ch ) - 17) * 4 );
+                age_hours);
         strcat( buf1, buf );
-
+        
         sprintf( buf, "You belong to clan %s (%s).\n\r",
                 clan_table[ch->clan].who_name,
                 clan_table[ch->clan].name );
@@ -1403,7 +1407,7 @@ void do_affects( CHAR_DATA *ch, char *argument )
                                 printed = TRUE;
                         }
 
-                        sprintf( buf, "{W%-18s{x", skill_table[paf->type].name );
+                        sprintf( buf, "{W%-25s{x", skill_table[paf->type].name );
                         strcat( buf1, buf );
 
                         if ( ch->level >= 20 )
@@ -1424,9 +1428,19 @@ void do_affects( CHAR_DATA *ch, char *argument )
                                         strcat( buf1, buf );
                                 }
 
-                                if( paf->duration >= 0 )
+                                if( paf->duration > 1 )
                                 {
                                         sprintf( buf, " for {G%d{x hours", paf->duration );
+                                        strcat( buf1, buf );
+                                }
+                                else if( paf->duration == 1 )
+                                {
+                                        sprintf( buf, " for {G%d{x hour", paf->duration );
+                                        strcat( buf1, buf );
+                                }
+                                else if( paf->duration == 0 )
+                                {
+                                        sprintf( buf, " for less than an hour");
                                         strcat( buf1, buf );
                                 }
                                 else strcat( buf1, " indefinitely" );
