@@ -1623,7 +1623,7 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
                 act ("{W$C shimmers and you miss your attack.{x", ch, NULL, victim, TO_CHAR);
 
         if (!victim->gag)
-                act ("{wYou fade away before $n's attack.{x", ch, NULL, victim, TO_VICT);
+                act ("{WYou fade away before $n's attack.{x", ch, NULL, victim, TO_VICT);
 
         return TRUE;
 }
