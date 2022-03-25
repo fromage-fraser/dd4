@@ -3934,6 +3934,9 @@ void do_rescue (CHAR_DATA *ch, char *argument)
 
         stop_fighting(fch, FALSE);
         set_fighting(fch, ch);
+
+        ch->pcdata->group_support_bonus += 1; 
+
 }
 
 
