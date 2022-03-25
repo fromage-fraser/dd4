@@ -2558,7 +2558,7 @@ void do_warcry (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_warcry])
         {
                 af.type     = gsn_warcry;
-                af.duration = temp / 4;
+                af.duration = temp / 2;
                 af.modifier = temp /8;
                 af.location = APPLY_HITROLL;
                 af.bitvector = 0;

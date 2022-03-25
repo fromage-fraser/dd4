@@ -391,12 +391,22 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                 do_say(questman,buf);
                                 send_to_char ("The money is placed into your bank account.\n\r", ch);
 
-                                if (ch->pcdata->str_prac < 30 && chance(8))
+                                if (ch->pcdata->str_prac < 10 && chance(8))
                                 {
                                         pracreward = number_range(3, 6);
                                         sprintf(buf, "You also gain %d physical practice points for your effort!\n\r", pracreward);
                                         send_to_char (buf, ch);
                                         ch->pcdata->str_prac += pracreward;
+                                }
+                                else
+                                {
+                                        if (ch->pcdata->int_prac < 10 && chance(8))
+                                        {
+                                                pracreward = number_range(3, 6);
+                                                sprintf(buf, "You also gain %d intellectual practice points for your effort!\n\r", pracreward);
+                                                send_to_char (buf, ch);
+                                                ch->pcdata->int_prac += pracreward;
+                                        }
                                 }
 
                                 ch->pcdata->fame += famereward;
@@ -451,7 +461,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                         do_say(questman,buf);
                                         send_to_char ("The money is placed into your bank account.\n\r", ch);
 
-                                        if (ch->pcdata->str_prac < 30 && chance(8))
+                                        if (ch->pcdata->str_prac < 10 && chance(8))
                                         {
                                                 pracreward = number_range(3, 6);
                                                 sprintf(buf, "You also gain %d physical practice points for your effort!\n\r",
@@ -459,6 +469,16 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                                 send_to_char (buf, ch);
                                                 ch->pcdata->str_prac += pracreward;
                                         }
+                                        else
+                                        {
+                                                if (ch->pcdata->int_prac < 10 && chance(8))
+                                                {
+                                                        pracreward = number_range(3, 6);
+                                                        sprintf(buf, "You also gain %d intellectual practice points for your effort!\n\r", pracreward);
+                                                        send_to_char (buf, ch);
+                                                        ch->pcdata->int_prac += pracreward;
+                                                }
+                                        }                                        
 
                                         REMOVE_BIT(ch->act, PLR_QUESTOR);
                                         ch->pcdata->questgiver = NULL;
