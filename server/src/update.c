@@ -2221,7 +2221,7 @@ void form_equipment_update (CHAR_DATA *ch)
                 {
                         if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
                         {
-                                unequip_char(ch, obj);
+                               unequip_char(ch, obj);
                                 extract_obj(obj);
                         }
 

@@ -1461,7 +1461,7 @@ void do_affects( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
 
                 if (ch->level >= 20)
-                        strcat (buf1, "               until you change form");
+                        strcat (buf1, "                      until you change form");
 
                 strcat( buf1, "\n\r" );
         }
