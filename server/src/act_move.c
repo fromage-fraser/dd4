@@ -1738,13 +1738,21 @@ void do_visible (CHAR_DATA *ch, char *argument)
         affect_strip (ch, gsn_astral_sidestep);
         affect_strip (ch, gsn_invis);
         affect_strip (ch, gsn_mass_invis);
-        affect_strip (ch, gsn_hide);
         affect_strip (ch, gsn_chameleon_power);
         affect_strip (ch, gsn_sneak);
         affect_strip (ch, gsn_shadow_form);
-        REMOVE_BIT (ch->affected_by, AFF_HIDE);
         REMOVE_BIT (ch->affected_by, AFF_INVISIBLE);
         REMOVE_BIT (ch->affected_by, AFF_SNEAK);
+
+        /* Owl 26/3/22, to produce expected behaviour */
+        if (ch->form != FORM_CHAMELEON)
+        {
+                affect_strip (ch, gsn_hide);
+                REMOVE_BIT (ch->affected_by, AFF_HIDE);
+        }
+        else {
+                send_to_char("You will continue to hide as as long as you are in chameleon form.\n\r",ch);
+        }
 
         if (is_affected(ch,gsn_mist_walk))
         {

@@ -673,7 +673,8 @@ Syntax: cast 'astral sidestep'
 
 Slip from the material world into the astral plane.  While in this
 parallel dimension, you won't be able to interact with the creatures and
-objects in the real world in any tangible way.
+objects in the real world in any tangible way. You will not experience
+hunger and thirst while in the astral plane.
 
 Type VISIBLE to return to the material plane.
 ~
@@ -5094,7 +5095,8 @@ One of the most difficult forms to master, the humble fly may seem puny
 but its uses are many.  Being so small, it poses no threat to any creature
 in the Domain.  Of course its lack of size means that it cannot carry
 anything.  Additional to that, is its ability to get through the locks of
-Doors.  Of course this only applies to doors who have locks!
+Doors.  Of course this only applies to doors who have locks!  You will
+not experience hunger or thirst while in fly form.
 ~
 
 0 'PHOENIX FORM'~
@@ -6119,7 +6121,7 @@ delete status.
 WARNING!  This command is irreversible!  It is not the Imms' responsibility if
 you were drunk/your little brother did it/your cat stood on your keyboard/you
 wanted to see how it worked/whatever!  Only delete if you are totally sure you
-will not want your character or any of its equipment of inventory again.
+will not want your character or any of its equipment or inventory again.
 ~
 
 0 NEWSOCIALS~

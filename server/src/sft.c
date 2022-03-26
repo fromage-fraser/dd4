@@ -140,12 +140,14 @@ void do_spy (CHAR_DATA *ch, char *argument)
 void do_morph_hawk (CHAR_DATA *ch, bool to_form) 
 {
         AFFECT_DATA af;
-        
+
         if (to_form)
         {
                 if (ch->pcdata->learned[gsn_form_hawk] > 40 || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
+                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
                         send_to_char("Your new form enables you to fly.\n\r", ch);
 
                         af.type      = gsn_fly;
@@ -159,6 +161,7 @@ void do_morph_hawk (CHAR_DATA *ch, bool to_form)
         else
         {      
                 affect_strip(ch, gsn_fly);
+                affect_strip(ch, gsn_levitation);
                 REMOVE_BIT(ch->affected_by, AFF_FLYING);
         }
 }
@@ -1358,6 +1361,8 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                     || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
+                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
                         send_to_char("Your new form enables you to fly.\n\r", ch);
                         
                         af.type      = gsn_fly;
@@ -1470,6 +1475,7 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
         else 
         {
                 affect_strip(ch, gsn_fly);
+                affect_strip(ch, gsn_levitation);
                 affect_strip(ch, gsn_dragon_aura);
                 REMOVE_BIT(ch->affected_by, AFF_FLYING);
                 
@@ -1501,6 +1507,7 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
                     || (ch->pcdata->learned[gsn_fly])) 
                 {
                         affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
                         send_to_char("Your new form enables you to fly.\n\r", ch);
  
                         af.type      = gsn_fly;
@@ -1547,6 +1554,7 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
         else 
         {
                 affect_strip(ch, gsn_fly);
+                affect_strip(ch, gsn_levitation);
                 REMOVE_BIT(ch->affected_by, AFF_FLYING);
                 affect_strip(ch,gsn_fireshield);
                 REMOVE_BIT(ch->affected_by, AFF_FLAMING);
@@ -1583,6 +1591,9 @@ void do_morph_fly (CHAR_DATA *ch, bool to_form)
                 if ((ch->pcdata->learned[gsn_form_fly] > 10) || (ch->pcdata->learned[gsn_fly])) 
                 {
                         affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
+                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
+
                         send_to_char("Your new form enables you to fly.\n\r", ch);
                         
                         af.type      = gsn_form_fly;
@@ -1614,6 +1625,9 @@ void do_morph_demon (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_demon] > 10 || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
+                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
+
                         send_to_char("Your new form enables you to fly.\n\r", ch);
                         
                         af.type      = gsn_fly;
@@ -1627,6 +1641,7 @@ void do_morph_demon (CHAR_DATA *ch, bool to_form)
         else
         {
                 affect_strip(ch, gsn_fly);
+                affect_strip(ch, gsn_levitation);
                 REMOVE_BIT(ch->affected_by, AFF_FLYING);
         }
 }
@@ -1644,6 +1659,9 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_fly] > 10 || ch->pcdata->learned[gsn_fly])
                 {
                         affect_strip(ch, gsn_fly);
+                        affect_strip(ch, gsn_levitation);
+                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
+
                         send_to_char("Your new form enables you to fly.\n\r", ch);
                         
                         af.type      = gsn_fly;
@@ -1714,6 +1732,7 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
         else
         {
                 affect_strip(ch, gsn_fly);   
+                affect_strip(ch, gsn_levitation);
                 REMOVE_BIT(ch->affected_by, AFF_FLYING);
                  
                 claws = get_obj_wear(ch, "sftclaws");
@@ -1771,15 +1790,6 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 send_to_char("Which form was that?\n\r", ch);
                 return;
         }
-
-        /*
-        if (ch->mount)
-        {
-                send_to_char ("You may not morph while mounted.\n\r", ch);
-                return;   
-        }
-            Makes mount useless for shifters.  Disabled.  -- Owl 8/3/22
-        */
         
         if( ch->sub_class == SUB_CLASS_VAMPIRE && form != FORM_NORMAL ) 
         {
@@ -1870,7 +1880,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
         form_equipment_update(ch);
         
         sprintf(buf, "\n\rYou morph from %s", extra_form_name(old_form));       
-        sprintf(buf1, " to %s forms.\n\r", extra_form_name(form));
+        sprintf(buf1, " to %s form.\n\r", extra_form_name(form));
         strcat(buf, buf1);
         
         send_to_char(buf, ch);

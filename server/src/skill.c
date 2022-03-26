@@ -36,9 +36,10 @@ void do_fly (CHAR_DATA *ch, char* argument )
 
         if (IS_AFFECTED(ch, AFF_FLYING))
         {
-                send_to_char ("You stop flying.\n\r", ch);
+                send_to_char ("You slowly float to the ground.\n\r", ch);
                 act ("$c stops flying.", ch, NULL, NULL, TO_ROOM);
                 affect_strip (ch, gsn_fly);
+                REMOVE_BIT(ch->affected_by, AFF_FLYING);
                 return;
         }
         
