@@ -944,7 +944,8 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
             || value == -10
             || ch->level >= LEVEL_HERO
             || ch->level < 2
-            || ch->sub_class == SUB_CLASS_VAMPIRE)
+            || ch->sub_class == SUB_CLASS_VAMPIRE
+            || IS_AFFECTED(ch, AFF_NON_CORPOREAL) )
                 return;
 
         condition = ch->pcdata->condition[iCond];
