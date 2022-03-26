@@ -953,6 +953,8 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         if (IS_NPC(ch)
                             && !IS_AFFECTED(victim, AFF_FLYING)
                             && !is_affected(victim, gsn_haste)
+                            && !is_affected(victim, gsn_fly)
+                            && !is_affected(victim, gsn_levitation)
                             && number_percent() < (leveldiff < -5
                                                    ? ch->level / 2
                                                    : UMAX(20, leveldiff))
