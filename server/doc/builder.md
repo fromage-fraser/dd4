@@ -63,6 +63,11 @@ Old area files can have these redundant values still set.
 |       |               | 2     | Spell two name (optional)
 |       |               | 3     | Spell three name (optional)
 |       |               |       |
+| 15    | container     | 0     | Capacity
+|       |               | 1     | Flags (see below)
+|       |               | 2     | Key vnum
+|       |               | 3     | -
+|       |               |       |
 | 26    | pill          | 0     | Spell level
 |       |               | 1     | Spell one name
 |       |               | 2     | Spell two name (optional)
@@ -95,3 +100,14 @@ Old area files can have these redundant values still set.
 | 14    | rake          |
 | 15    | swipe         |
 | 16    | sting         | Bladed
+
+
+#### Container flags
+
+| Flag  | Description
+| ----- | -----------
+| 1     | Closeable
+| 2     | Pick-proof
+| 4     | Closed
+| 8     | Locked
+
