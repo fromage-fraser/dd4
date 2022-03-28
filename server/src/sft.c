@@ -224,12 +224,13 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
         else
         {      
                 affect_strip(ch, gsn_infravision);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                REMOVE_BIT(ch->affected_by, AFF_INFRARED);
                 affect_strip(ch, gsn_detect_hidden);
                 REMOVE_BIT(ch->affected_by, AFF_DETECT_HIDDEN);
                 affect_strip(ch, gsn_detect_invis);
                 REMOVE_BIT(ch->affected_by, AFF_DETECT_INVIS);
                 affect_strip(ch, gsn_detect_sneak);
+                REMOVE_BIT(ch->affected_by, AFF_DETECT_SNEAK);
                 affect_strip(ch, gsn_heighten);   
         }
 }
