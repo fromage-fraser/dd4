@@ -234,7 +234,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL               498
-#define MAX_PRE_REQ             1285
+#define MAX_PRE_REQ             1286
 #define MAX_SPELL_GROUP         378
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */

@@ -412,7 +412,9 @@ void move_char(CHAR_DATA *ch, int door)
                             || IS_AFFECTED(ch, AFF_SWIM)
                             || IS_IMMORTAL( ch )
                             || ch->mount
-                            || is_affected(ch,gsn_mist_walk))
+                            || is_affected(ch,gsn_mist_walk)
+                            || is_affected(ch,gsn_astral_sidestep)
+                            || ch->form == FORM_FLY)
                         {
                                 found = TRUE;
                         }

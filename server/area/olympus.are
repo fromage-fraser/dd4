@@ -529,7 +529,7 @@ a orange~
 A orange is here.~
 ~
 26 0 1
-24~ armour~ ~ ~
+24~ armor~ ~ ~
 1 1000 25
 #921
 kiwi~
@@ -585,7 +585,7 @@ nectar~
 A vial of nectar is lying here.~
 ~
 26 0 1
-12~ sanctuary~ giant strength~ armour~
+12~ sanctuary~ giant strength~ armor~
 1 80000 500
 #927
 key cell~
