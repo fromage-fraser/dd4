@@ -69,7 +69,7 @@ do not harm any in the temple or there shall be trouble."
 #13006
 rat creature~
 An extremely large rat~
-A huge rat scrables around here for tidbits to eat.
+A huge rat scrabbles around here for tidbits to eat.
 ~
 The huge rat salivates as you stand looking at it. It looks hungry and you
 appear to be on it's menu.
@@ -170,7 +170,7 @@ A shiny key lies here, seemingly untarnished by the ages.~
 #13002
 Temple Guard Breastplate ~
 a bronze breastplate~
-A bronze breastplate from one of the long-dead Temple Guards~
+A bronze breastplate from one of the long-dead Temple Guards.~
 ~
 9 64|1024 1|8
 3~ ~ ~ ~
@@ -242,7 +242,7 @@ A
 #13008
 Wand~
 a short, white wand~
-A short wand made of a substance similar to bone~
+A short wand made of a substance similar to bone.~
 ~
 3 64 1|16384
 12~ 1~ 5~ 61~
@@ -265,7 +265,7 @@ A skeleton lies here in the corner. It is wearing mouldy, rotting robes. ~
 10 0 0
 E
 Robes~
-The robes are decayed beyond use and disintergrate as you move the skeleton.
+The robes are decayed beyond use and disintegrate as you move the skeleton.
 ~
 #13011
 Gate~
@@ -325,7 +325,7 @@ guard and a nose guard. This helm is commonly worn by Temple Sergeants.~
 #13014
 Font~
 a font~
-A font containing, what appears to be, holy water~
+A font containing what appears to be holy water.~
 ~
 25 0 0
 ~ ~ ~ ~
@@ -434,7 +434,7 @@ A
 #13024
 Temple Signet ring~
 a signet ring~
-A ring with the temple crest on it~
+A ring with the temple crest on it lies here.~
 ~
 9 64|1024 1|2
 2~ ~ ~ ~
@@ -448,7 +448,7 @@ A
 #13025
 Sword longsword daeron captain's~
 Sword of Daeron~
-A shiny new longsword has been carelessly discarded here...~
+A shiny new longsword has been carelessly discarded here.~
 ~
 5 128|1024|2048|4096 1|8192
 0~ 9~ 24~ 3~
@@ -472,7 +472,7 @@ The blade is otherwise in perfect condition.
 #13026
 Captain's Plate platemail~
 the Captains Platemail~
-The Captains Platemail suit lies here~
+The Captains Platemail suit lies here.~
 ~
 9 64 1|8
 9~ ~ ~ ~
@@ -484,7 +484,7 @@ A
 #13027
 Captain's Boots~
 the Captain's Boots~
-A pair of Guard Captains Boots are lying here~
+A pair of Guard Captains Boots are lying here.~
 ~
 9 2|64 1|64
 6~ ~ ~ ~
@@ -494,7 +494,7 @@ A
 #13028
 Captain's Sleeves~
 the Captain's Sleeves~
-The Captains Sleeves are lying here~
+The Captains Sleeves are lying here.~
 ~
 9 1|64 1|256
 3~ ~ ~ ~
@@ -506,7 +506,7 @@ A
 #13029
 Captain's Leggings~
 the Captain's Leggings~
-The Captains Leggings are lying here~
+The Captains Leggings are lying here.~
 ~
 9 64 1|32
 3~ ~ ~ ~
@@ -518,10 +518,10 @@ A
 #13030
 MacKurian's Staff~
 a long, white staff~
-A long, white staff with many glyphs and sigils lies here~
+A long, white staff with many glyphs and sigils lies here.~
 ~
 4 64|1024|2048 1|8192
-50~ 1~ 1000~ 30~
+50~ 1~ 1000~ curse~
 1 0 0
 A
 1 3
@@ -558,7 +558,7 @@ A
 #13032
 Captain's Helmet~
 the Captain's Helmet~
-A battle scarred helmet is lying here~
+A battle-scarred helmet is lying here.~
 ~
 9 1|64|1024|2048|4096 1|16
 7~ ~ ~ ~
@@ -604,7 +604,7 @@ This key appears to be nothing more than a short, featureless rod.~
 #13036
 scroll~
 a scroll~
-A rolled up,  rather non-descript scroll is lying in the corner of the room...~
+A rolled up, rather nondescript scroll is lying in the corner of the room.~
 ~
 2 1024|2048 1|8192
 50~ bless~ armor~ ~
@@ -718,7 +718,7 @@ The Entranceway to the Temple~
 This short passageway takes you not only inside the structure,  but back it
 time as well.  Through the archway ahead you can glimpse at the
 magnificence yet to come...
-There is an ancient poster on the other wall - reminescent of old times?
+There is an ancient poster on the other wall - reminiscent of old times?
 ~
 0 8|0 0
 D0
@@ -1303,7 +1303,7 @@ S
 The Temple~
 You are standing in the temple itself. There are many Temple guards in this
 room. Immediately to your left and right are rows of pews. To the north is
-an aisle leading up a low set of steps to a large altar and a lecturn with
+an aisle leading up a low set of steps to a large altar and a lectern with
 an undead priest giving a sermon to the undead congregation of Temple
 Guards, Temple Sergeants and acolytes. This light in this room seems to
 come from the very walls themselves bathing the room in bright light.
@@ -1359,7 +1359,7 @@ S
 #13047
 The Temple~
 You are standing in the temple itself in among the rows of pews. Light
-seems to eminate from the very walls to light this chamber. To the north is
+seems to emanate from the very walls to light this chamber. To the north is
 the Altar. To the west in the corner is a font for holy water. To the
 north-west is a set of double doors. To the east is the aisle leading north
 to the altar and south to some double doors. Far to the east is another
@@ -1381,10 +1381,10 @@ D3
 S
 #13049
 The Temple~
-You are standing in the temple itself. Light seems to eminate from the very
+You are standing in the temple itself. Light seems to emanate from the very
 walls themselves. To the south is a font. To the east are rows of pews.
 Over towards the north-east is an altar and a priest stands behind a
-lecturn giving a sermon to Temple Guards, Sergeants and acolytes. The
+lectern giving a sermon to Temple Guards, Sergeants and acolytes. The
 temple seems to have a feel of peace and serenity.
 ~
 0 8|0|8192|16384 0
@@ -1407,7 +1407,7 @@ D3
 S
 #13050
 The Temple~
-You are standing in the temple. Light seems to eminate from the walls.
+You are standing in the temple. Light seems to emanate from the walls.
 Here, there are rows of pews. To the south are more pews. To the north are
 steps up to the altar. To the east is an aisle running from north to south.
 To the west is a pair of double doors.
@@ -1539,10 +1539,10 @@ D3
 S
 #13056
 The Temple~
-You are standing in the temple. Light seems to eminate from the very walls
+You are standing in the temple. Light seems to emanate from the very walls
 lighting this room quite brightly. To the south you see a font for holy
 water. To the west and south-west are rows of pews. To the north-west is an
-altar. From there a priest gives a sermon from behind a lecturn to a large
+altar. From there a priest gives a sermon from behind a lectern to a large
 group of Temple guards, Sergeants and acolytes. There is a feel of peace
 and serenity here.
 ~
@@ -1650,7 +1650,7 @@ S
 #13061
 The Temple~
 You are standing at the top of the steps before the altar. Behind the altar
-is the lecturn where the sermons are read. A large group of undead stand
+is the lectern where the sermons are read. A large group of undead stand
 here listening to the priest's sermon.
 ~
 0 8|0|8192|16384 0

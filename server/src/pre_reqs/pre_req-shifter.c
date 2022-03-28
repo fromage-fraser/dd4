@@ -35,9 +35,10 @@
 {&gsn_bite,                     &gsn_form_tiger,        40,     PRE_SHIFTER},
 {&gsn_maul,                     &gsn_form_tiger,        60,     PRE_SHIFTER},
 
-/* due to popular demand this has been added for straight shifters */
+/* due to popular demand these have been added for straight shifters */
 {&gsn_dodge,                    &gsn_shifter_base,      60,     PRE_SHIFTER},
 {&gsn_second_attack,            &gsn_shifter_base,      60,     PRE_SHIFTER},
+{&gsn_fast_healing,             &gsn_shifter_base,      60,     PRE_SHIFTER},
 
 { &gsn_form_hydra,              &gsn_form_tiger,        70,     PRE_SHIFTER},
 { &gsn_form_hydra,              &gsn_shifter_base,      60,     PRE_SHIFTER},
