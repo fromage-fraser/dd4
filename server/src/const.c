@@ -282,7 +282,6 @@ const struct pattern_points pattern_list [ MAX_PATTERN ] =
         { 28003 },
 };
 
-/* added for soar, fix vnums once everything else working */
 const struct soar_points soar_list [ MAX_SOAR ] =
 {
         {     0 },
