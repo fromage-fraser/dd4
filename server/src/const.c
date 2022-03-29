@@ -282,6 +282,21 @@ const struct pattern_points pattern_list [ MAX_PATTERN ] =
         { 28003 },
 };
 
+/* added for soar, fix vnums once everything else working */
+const struct soar_points soar_list [ MAX_SOAR ] =
+{
+        {     0 },
+        {  6125 },
+        {  5272 },
+        {   305 },
+        { 18410 },
+        { 18530 },
+        {   510 },
+        { 18208 },
+        { 20400 },
+        {   753 },
+};
+
 
 /*
  * Clan titles
@@ -648,7 +663,7 @@ struct form_skill_struct form_skill_table [ MAX_FORM_SKILL ] =
         {       &gsn_sneak,                     FORM_NONE               },
         {       &gsn_morph,                     FORM_ALL                },
         {       &gsn_venom,                     FORM_SPIDER             },
-        {       &gsn_spy,                       FORM_HAWK               },
+        {       &gsn_soar,                      FORM_HAWK               },
         {       &gsn_swim,                      FORM_SNAKE              },
         {       &gsn_constrict,                 FORM_SNAKE              },
         {       &gsn_coil,                      FORM_SNAKE              },
@@ -1371,7 +1386,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_morph,                                   0 },
         { &gsn_form_chameleon,                          0 },
         { &gsn_form_hawk,                               0 },
-        { &gsn_spy,                                     0 },
+        { &gsn_soar,                                    0 },
         { &gsn_form_cat,                                0 },
         { &gsn_form_snake,                              0 },
         { &gsn_coil,                                    0 },
@@ -4992,6 +5007,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_null, 0, 8,
                 "knife toss", "!Knife Toss!"
+        },
+
+        {
+                "soar", &gsn_soar,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 24,
+                "", "!Soar!"
         },
 
         /*

@@ -467,6 +467,7 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->pcdata->int_prac = 0;
         ch->pcdata->review_stamp = current_time;
         ch->pcdata->pattern = 0;
+        ch->pcdata->soar = 0;
 
         for (next = 0; next < NUMBER_DEITIES; next++)
                 ch->pcdata->deity_favour[next] = -1;

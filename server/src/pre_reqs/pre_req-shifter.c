@@ -10,6 +10,7 @@
 {&gsn_form_chameleon,           &gsn_group_forms,       20,     PRE_SHIFTER},
 
 {&gsn_form_hawk,                &gsn_form_chameleon,    40,     PRE_SHIFTER},
+{&gsn_soar,                     &gsn_form_hawk,         32,     PRE_SHIFTER},
 
 {&gsn_form_cat,                 &gsn_form_hawk,         32,     PRE_SHIFTER},
 

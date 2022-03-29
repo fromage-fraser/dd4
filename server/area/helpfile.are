@@ -191,7 +191,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [21 March 2022]
+    [30 March 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -204,8 +204,7 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WGravity now exists!  Be careful about hanging out in the air without
-    being able to fly!{x
+    {WSoar is in!  New pattern-like skill for shifters in hawk form. {x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -283,6 +282,7 @@ been added;
 - New config option: "AUTOLEVEL"
 - Gravity exists!
 - Grouping Bonuses for support skills & spells
+- Soar for Shifters
 
 Refer appropriate HELP entries.
 
@@ -293,7 +293,7 @@ There are skills that open up which you then can't practice at that
 teacher which we're trying to track down as well.
 
 Please let us know if you see anything along those lines and we'll attempt
-to get them tidied up.
+to get it sorted.
 
 Gezhp, Owl and Shade
 ~
@@ -5355,6 +5355,31 @@ even more devastating.
 0 'RIDING TECHNIQUES'~
 
 This group contains the skills needed for riding a mount.
+~
+
+0 SOAR~
+Syntax: soar
+Syntax: soar <number> | <mem> | <return>
+
+A skilled shapeshifter can use the SOAR ability while in HAWK FORM to
+fly great distances across the domain.  Such travel must take place between
+outdoors locations.  Locations at greater distances from Midgaard become 
+available as HAWK FORM and the SOAR ability are mastered, and as the shifter
+gains experience generally.
+
+SOAR lists all the currently available locations.
+
+SOAR <number> will make the shifter fly to the location indicated by the
+selected number.
+
+SOAR MEM enables the shifter to temporarily memorise the shifter's current 
+location, which must be outdoors.
+
+SOAR RETURN allows the shifter to travel to their memorised location 
+(assuming their current location is outdoors).  After returning once, the 
+not-terribly-bright hawk form of the shifter will forget the destination,
+and it will have to be re-memorised to return there again.
+
 ~
 
 0 PATTERN~
