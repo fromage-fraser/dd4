@@ -335,75 +335,10 @@ bool is_valid_soar (CHAR_DATA *ch, int soar_index )
         {
                 return 0;
         }
-
-        if ( soar_index == 1
-        && ch->pcdata->learned[gsn_form_hawk]
-        && ch->pcdata->learned[gsn_soar]
-        && ch->level >= 1 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 2
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 30 )
-        && ( ch->pcdata->learned[gsn_soar] >= 25 ) 
-        &&   ch->level >= 5 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 3
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 40 )
-        && ( ch->pcdata->learned[gsn_soar] >= 45 ) 
-        &&   ch->level >= 10 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 4
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 50 )
-        && ( ch->pcdata->learned[gsn_soar] >= 55 ) 
-        &&   ch->level >= 15 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 5
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 60 )
-        && ( ch->pcdata->learned[gsn_soar] >= 65 ) 
-        &&   ch->level >= 20 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 6
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 70 )
-        && ( ch->pcdata->learned[gsn_soar] >= 75 ) 
-        &&   ch->level >= 30 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 7
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 80 )
-        && ( ch->pcdata->learned[gsn_soar] >= 85 ) 
-        &&   ch->level >= 40 )
-        {
-                return 1;
-        }
-
-        if ( soar_index == 8
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 90 )
-        && ( ch->pcdata->learned[gsn_soar] >= 95 ) 
-        &&   ch->level >= 50 )
-        {
-                return 1;
-        }
-
-        if ( ( soar_index == 9 || ( ( soar_index > 9 ) && ( soar_index <= ( MAX_SOAR - 1 ) ) ) )
-        && ( ch->pcdata->learned[gsn_form_hawk] >= 99 )
-        && ( ch->pcdata->learned[gsn_soar] >= 99 ) 
-        &&   ch->level >= 60 )
+  
+        if ( ch->pcdata->learned[gsn_form_hawk] >= soar_access[soar_index].hawkform_perc
+        &&   ch->pcdata->learned[gsn_soar]      >= soar_access[soar_index].soar_perc
+        &&   ch->level                          >= soar_access[soar_index].char_level )
         {
                 return 1;
         }

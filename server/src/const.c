@@ -798,6 +798,25 @@ const struct color_data color_table [] =
         { "\x1b[0m",            "$R",           "normal",               19 }
 };
 
+/*
+ * To validate ch access to do_soar locations -- Owl 30/3/22
+ * min gsn_hawk %, min gsn_soar %, min char level
+ */
+
+const struct soar_struct soar_access [ MAX_SOAR ] =
+{
+        {       0,      0,      0 },
+        {       5,      5,      1 },
+        {      30,     25,      5 },
+        {      40,     45,     10 },
+        {      50,     55,     15 },
+        {      60,     65,     20 },
+        {      70,     75,     30 },
+        {      80,     85,     40 },
+        {      90,     95,     50 },
+        {      99,     99,     60 }
+};
+
 
 /*
  *  Old experience table
