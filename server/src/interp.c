@@ -1377,6 +1377,17 @@ const struct social_type social_table [] =
         },
 
         {
+                "golfclap",
+                        "You clap with sardonic quietness, a wry expression on your face.",
+                        "$c claps with sardonic quietness, a wry expression on $s face.",
+                        "You clap with sardonic quietness at $M.",
+                        "$c claps with sardonic quietness at $N.",
+                        "$c claps with sardonic quietness at you.",
+                        "You clap with sardonic quietness at yourself.  Great job, winner.",
+                        "$c claps with sardonic quietness at $mself."
+        },
+
+        {
                 "goose",
                         "You honk like a goose.",
                         "$n honks like a goose.",

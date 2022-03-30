@@ -839,6 +839,14 @@ struct level_struct
         int     exp_total;
 };
 
+/* soar struct to figure our what soar locations a char has access to. -- Owl 30/3/22 */
+struct soar_struct
+{
+        int     hawkform_perc;
+        int     soar_perc;
+        int     char_level;
+};
+
 
 /*
  *  Data Un color type
@@ -3258,6 +3266,7 @@ extern char *   const  clan_title               [ MAX_CLAN ]                    
 extern const    struct race_struct              race_table                      [ MAX_RACE ];
 extern const    struct level_struct             level_table                     [ MAX_LEVEL - 6 ];
 extern const    struct level_struct             old_level_table                 [ MAX_LEVEL - 6 ];
+extern const    struct soar_struct              soar_access                     [ MAX_SOAR ];
 extern const    struct loc_wear_struct          form_wear_table                 [ MAX_FORM ];
 extern const    struct wear_struct              wear_table                      [ MAX_CLASS + MAX_SUB_CLASS - 1 ];
 extern const    struct loc_wear_struct          loc_wear_table                  [ MAX_CLASS + MAX_SUB_CLASS - 1 ];
