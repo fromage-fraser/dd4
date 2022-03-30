@@ -335,14 +335,14 @@ bool is_valid_soar (CHAR_DATA *ch, int soar_index )
         {
                 return 0;
         }
-
+  
         if ( ch->pcdata->learned[gsn_form_hawk] >= soar_access[soar_index].hawkform_perc
         &&   ch->pcdata->learned[gsn_soar]      >= soar_access[soar_index].soar_perc
         &&   ch->level                          >= soar_access[soar_index].char_level )
         {
                 return 1;
         }
-        
+
         return 0;
 }
 
