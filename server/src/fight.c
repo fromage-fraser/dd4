@@ -3860,7 +3860,9 @@ void do_flee (CHAR_DATA *ch, char *argument)
 void do_rescue (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
-        CHAR_DATA *fch;
+        CHAR_DATA *vch;
+        CHAR_DATA *vch_next;
+
         char arg [ MAX_INPUT_LENGTH ];
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_rescue))
@@ -3907,7 +3909,7 @@ void do_rescue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(fch = victim->fighting))
+        if (!(victim->fighting))
         {
                 send_to_char("That person is not fighting right now.\n\r", ch);
                 return;
@@ -3922,6 +3924,34 @@ void do_rescue (CHAR_DATA *ch, char *argument)
         if (!check_blind (ch))
                 return;
 
+        /*
+         * Shade 30.3.22
+         *
+         * We want to rescue only if a player is being attacked; find the first mob that is attacking
+         * the victim and rescue them
+         */
+
+        for (vch = ch->in_room->people; vch; vch = vch_next)
+        {
+                vch_next = vch->next_in_room;
+
+                if (ch == vch)
+                        continue;
+
+                if (vch->deleted)
+                        continue;
+
+                if (vch->fighting == victim)
+                        break;
+
+        }
+
+        if (!vch)
+        {
+                send_to_char("No one is attacking them!\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_rescue].beats);
 
         if (!IS_NPC(ch) && number_percent() > ch->pcdata->learned[gsn_rescue])
@@ -3934,8 +3964,8 @@ void do_rescue (CHAR_DATA *ch, char *argument)
         act ("$n rescues you!", ch, NULL, victim, TO_VICT);
         act ("$n rescues $N!",  ch, NULL, victim, TO_NOTVICT);
 
-        stop_fighting(fch, FALSE);
-        set_fighting(fch, ch);
+        stop_fighting(vch, FALSE);
+        set_fighting(vch, ch);
 
         ch->pcdata->group_support_bonus += 1; 
 
