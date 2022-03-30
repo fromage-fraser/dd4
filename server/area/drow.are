@@ -1009,12 +1009,12 @@ is a door while to the north is an altar.
 D0
 ~
 ~
-0 0 5145
+0 0 5155
 D1
 ~
 ~
 1 -1 5146
-D2
+D3
 ~
 ~
 0 0 5141
@@ -1033,13 +1033,13 @@ S
 #5144
 Western side of Chamber~
      You are on the western side of the main chamber overlooking a sacrificial
-pit. To the north is an altar.
+pit. To the north-east is an altar.
 ~
 51 9 0
 D0
 ~
 ~
-0 0 5145
+0 0 5154
 D1
 ~
 ~
@@ -1059,11 +1059,11 @@ D0
 D1
 ~
 ~
-0 0 5142
+0 0 5155
 D3
 ~
 ~
-0 0 5144
+0 0 5154
 D5
 ~
 ~
@@ -1175,6 +1175,36 @@ D1
 ~
 ~
 1 -1 5152
+S
+#5154
+Western side of Chamber~
+     You are on the western side of the main chamber overlooking a sacrificial
+pit. To the east is an altar.
+~
+51 9 0
+D1
+~
+~
+0 0 5145
+D2
+~
+~
+0 0 5144
+S
+#5155
+Eastern side of Chamber~
+     You are on the eestern side of the main chamber overlooking a sacrificial
+pit. To the west is an altar.
+~
+51 9 0
+D2
+~
+~
+0 0 5142
+D3
+~
+~
+0 0 5145
 S
 #0
 
