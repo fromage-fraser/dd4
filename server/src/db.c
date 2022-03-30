@@ -561,6 +561,7 @@ int     gsn_hells_fire;
 int     gsn_chaos_blast;
 int     gsn_detect_curse;
 int     gsn_knife_toss;
+int     gsn_soar;
 
 /*
  *  Spell groups

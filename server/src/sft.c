@@ -136,6 +136,280 @@ void do_spy (CHAR_DATA *ch, char *argument)
         }
 }
 
+void do_soar(CHAR_DATA* ch, char* argument)
+{
+        char arg [ MAX_INPUT_LENGTH ];
+        int place, i, target;
+        ROOM_INDEX_DATA *location;
+        char buf[MAX_STRING_LENGTH];
+        char tmp[MAX_STRING_LENGTH];
+
+        if( IS_NPC( ch ) )
+                return;
+        
+        if( ch->class != CLASS_SHAPE_SHIFTER 
+        &&  !IS_IMMORTAL( ch ) )
+        {
+                send_to_char("You don't know how to do that.\n\r", ch);
+                return;
+        }
+
+        if(ch->form != FORM_HAWK)
+        {
+                send_to_char("You need to be in hawk form to do that.\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("You can't think about long-distance travel while you're fighting!\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                sprintf(buf, "Soar locations available are:\n");
+
+                for (i=1;i<MAX_SOAR;i++)
+                {
+                        if (is_valid_soar(ch, i))
+                        {
+                                place = soar_list[i].destination;
+                                location = get_room_index(place);
+                                sprintf(tmp, "%d. %s\n", i, location->name);
+                                strcat(buf, tmp);
+                        }
+                }
+
+                send_to_char(buf, ch);
+                return;
+        }
+
+        if (!str_cmp(arg, "mem"))
+        {
+                if ( ch->in_room->sector_type != SECT_FIELD 
+                &&   ch->in_room->sector_type != SECT_FOREST 
+                &&   ch->in_room->sector_type != SECT_HILLS 
+                &&   ch->in_room->sector_type != SECT_MOUNTAIN 
+                &&   ch->in_room->sector_type != SECT_DESERT ) 
+                {
+                        send_to_char("You can't land in this sort of terrain.\n\r", ch);
+                        return;
+                }
+        
+
+                if (ch->in_room->area->low_level == -4 && ch->in_room->area->high_level == -4)
+                {
+                        send_to_char("You can't memorise this location.\n\r", ch);
+                        return;
+                }
+
+                if(ch->move < 50)
+                {
+                        send_to_char("You are too tired to memorise this location.\n\r",ch);
+                        return;
+                }
+
+                ch->move -= 50;
+                ch->pcdata->soar = ch->in_room->vnum;
+                send_to_char("{yYou concentrate hard and memorise your surroundings.{x\n\r", ch);
+                act("{y$n concentrates hard and studies $s surroundings.{x",
+                        ch, NULL, NULL, TO_ROOM);
+                WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+                return;
+        }
+
+        if (!str_cmp(arg, "return"))
+        {
+                /* 
+                 * You CAN soar to and from a no_recall room if other criteria are met.  Feature not a bug.
+                 */
+
+                if ( ch->in_room->sector_type != SECT_FIELD 
+                &&   ch->in_room->sector_type != SECT_FOREST 
+                &&   ch->in_room->sector_type != SECT_HILLS 
+                &&   ch->in_room->sector_type != SECT_MOUNTAIN 
+                &&   ch->in_room->sector_type != SECT_DESERT ) 
+                {
+                        send_to_char("You can't take off from this terrain.\n\r", ch);
+                        return;
+                } 
+                else 
+                {
+                        if (ch->pcdata->soar)
+                        {
+                                location = get_room_index(ch->pcdata->soar);
+                                ch->pcdata->soar = 0;
+                        }
+                        else
+                        {
+                                send_to_char("You have no location memorised.\n\r", ch);
+                                return;
+                        }
+                }
+        }
+        else
+        {
+                target = atoi(arg);
+
+                if ((target < 1) || (target > MAX_SOAR - 1))
+                {
+                        send_to_char("Syntax: soar # | soar mem | soar return\n\r", ch);
+                        return;
+                }
+
+                if (!is_valid_soar(ch, target))
+                {
+                        send_to_char("You don't know of that destination.\n\r", ch);
+                        return;
+                }
+
+                location = get_room_index(soar_list[target].destination);
+        }
+
+        if ( ch->in_room->sector_type != SECT_FIELD 
+        &&   ch->in_room->sector_type != SECT_FOREST 
+        &&   ch->in_room->sector_type != SECT_HILLS 
+        &&   ch->in_room->sector_type != SECT_MOUNTAIN 
+        &&   ch->in_room->sector_type != SECT_DESERT ) 
+        {
+                send_to_char("You can't take off from this terrain.\n\r", ch);
+                return;
+
+        }
+
+        if(ch->move < 25)
+        {
+                send_to_char("You are too exhausted to take off from this location.\n\r",ch);
+                return;
+        }
+
+        if (get_room_index(ch->in_room->vnum) == location)
+        {
+                send_to_char("You're there right now!\n\r",ch);
+                return;   
+        }
+
+        if (ch->mount)
+        {
+                act ("{yYou pick up $N with your talons.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
+                act ("{y$C picks up $n in $S talons.{x\n\r", ch->mount, NULL, ch, TO_NOTVICT);
+        }
+
+        act ("{y$c soars into the sky and quickly vanishes from your sight.{x", ch, NULL, NULL, TO_ROOM);
+        send_to_char("{yYou fly into the air and soar through the skies...{x\n\r\n\r", ch);
+
+        char_from_room(ch);
+        char_to_room(ch, location);
+
+        if (ch->mount)
+        {
+                char_from_room(ch->mount);
+                char_to_room(ch->mount, location);
+        }
+
+        if (ch->mount)
+        {
+                act ("{yYou release $N from your talons and $E tumbles to the ground.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
+                act ("{y$N releases $n from $S talons and $e tumbles to the ground.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
+        }
+
+        act ("{y$c swoops down from the sky and alights nearby.{x", ch, NULL, NULL, TO_ROOM);
+        do_look(ch, "auto");
+
+        
+
+        ch->move -= 25;
+        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+        return;
+}
+
+bool is_valid_soar (CHAR_DATA *ch, int soar_index )
+{
+        /* Figures out which soar locations a character has access to. */
+
+        if (soar_index > MAX_SOAR || soar_index < 1)
+        {
+                return 0;
+        }
+
+        if ( soar_index == 1
+        && ch->pcdata->learned[gsn_form_hawk]
+        && ch->pcdata->learned[gsn_soar]
+        && ch->level >= 1 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 2
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 30 )
+        && ( ch->pcdata->learned[gsn_soar] >= 25 ) 
+        &&   ch->level >= 5 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 3
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 40 )
+        && ( ch->pcdata->learned[gsn_soar] >= 45 ) 
+        &&   ch->level >= 10 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 4
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 50 )
+        && ( ch->pcdata->learned[gsn_soar] >= 55 ) 
+        &&   ch->level >= 15 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 5
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 60 )
+        && ( ch->pcdata->learned[gsn_soar] >= 65 ) 
+        &&   ch->level >= 20 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 6
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 70 )
+        && ( ch->pcdata->learned[gsn_soar] >= 75 ) 
+        &&   ch->level >= 30 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 7
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 80 )
+        && ( ch->pcdata->learned[gsn_soar] >= 85 ) 
+        &&   ch->level >= 40 )
+        {
+                return 1;
+        }
+
+        if ( soar_index == 8
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 90 )
+        && ( ch->pcdata->learned[gsn_soar] >= 95 ) 
+        &&   ch->level >= 50 )
+        {
+                return 1;
+        }
+
+        if ( ( soar_index == 9 || ( ( soar_index > 9 ) && ( soar_index <= ( MAX_SOAR - 1 ) ) ) )
+        && ( ch->pcdata->learned[gsn_form_hawk] >= 99 )
+        && ( ch->pcdata->learned[gsn_soar] >= 99 ) 
+        &&   ch->level >= 60 )
+        {
+                return 1;
+        }
+
+        return 0;
+}
 
 void do_morph_hawk (CHAR_DATA *ch, bool to_form) 
 {

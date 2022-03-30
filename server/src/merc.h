@@ -233,8 +233,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               498
-#define MAX_PRE_REQ             1286
+#define MAX_SKILL               499     /* Increased to 499, 1287 for soar. Replaced spy */
+#define MAX_PRE_REQ             1287    /* with soar in table so didn't increase MAX_FORM_SKILL -- Owl 29/3/22 */
 #define MAX_SPELL_GROUP         378
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
@@ -346,6 +346,9 @@ DECLARE_DO_FUN ( do_board );
 
 /* Patterns - note they start from 1 */
 #define MAX_PATTERN 9
+
+/* Soar - as above.  Pattern-like ability for straight shifters, used in hawk form */
+#define MAX_SOAR 10
 
 /* types for skills */
 #define TYPE_INT                 1
@@ -754,6 +757,12 @@ struct clan_items
 struct pattern_points
 {
         int location;
+};
+
+
+struct soar_points
+{
+        int destination;
 };
 
 
@@ -2341,6 +2350,7 @@ struct  pc_data
         int                             allow_look;
         time_t                          review_stamp;
         int                             pattern;
+        int                             soar;
         int                             group_support_bonus;
 };
 
@@ -3113,6 +3123,7 @@ extern int gsn_mass_power_heal;
 extern int gsn_chaos_blast;
 extern int gsn_detect_curse;
 extern int gsn_knife_toss;
+extern int gsn_soar;
 
 /*
  *  Deity gsns
@@ -3239,6 +3250,7 @@ extern const    struct liq_type                 liq_table                       
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
+extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list               [ MAX_COLOR_LIST ];
@@ -3473,6 +3485,7 @@ DECLARE_DO_FUN( do_mount                        );      /* mounting mobs for rid
 DECLARE_DO_FUN( do_dismount                     );
 DECLARE_DO_FUN( do_destrier                     );
 DECLARE_DO_FUN( do_pattern                      );
+DECLARE_DO_FUN( do_soar                         );
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4228,8 +4241,9 @@ PKSCORE_DATA            swap_pkscore_table              args( ( PKSCORE_DATA tem
 void                    update_pkscore_table            args( ( CHAR_DATA *ch ) );
 
 /* sft.c */
-void do_morph_wolf      ( CHAR_DATA *ch, bool to_form );
-void do_morph_direwolf  ( CHAR_DATA *ch, bool to_form );
+void do_morph_wolf              ( CHAR_DATA *ch, bool to_form );
+void do_morph_direwolf          ( CHAR_DATA *ch, bool to_form );
+bool is_valid_soar              args( ( CHAR_DATA *ch, int soar_index ) );
 
 /* skill.c */
 void strip_mount        ( CHAR_DATA *ch );

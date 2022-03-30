@@ -62,7 +62,7 @@ a half-goblin~
 A small half-goblin scrounges around in the mud.
 ~
 The ugly, despised half-goblin squats in the dirt, avoiding your gaze.
-His mottley grey skin is covered in nasty sores.
+His mottled grey skin is covered in nasty sores.
 ~
 4|128|512 0 -400 S
 6 0 0 0d0+0 0d0+0
@@ -116,7 +116,7 @@ a field worker~
 A field worker stoops in the dirt, tending to the vegetables.
 ~
 The peasant works tirelessly in this large patch of leafy vegetables,
-diligenty grubbing the earty and removing weeds and rubbish.
+diligently grubbing the earth and removing weeds and rubbish.
 ~
 2|512 0 0 S
 17 0 0 0d0+0 0d0+0
@@ -165,7 +165,7 @@ to bother it as it eats mouthful after mouthful of grass.
 #712
 bull~
 a bull~
-A fiesty bull looks like it wants to cause trouble.
+A feisty bull looks like it wants to cause trouble.
 ~
 The bull takes it job of watching the cows very seriously.  It constantly
 snorts and stomps as you wander about.
@@ -180,7 +180,7 @@ hill giant~
 a hill giant~
 A hill giant lurks in the vegetation.
 ~
-The hill gaint is a least nine foot tall and incredibly muscular.  He has
+The hill giant is a least nine foot tall and incredibly muscular.  He has
 dirty brown skin and is covered in disgusting wiry hair.  His black eyes
 are full of hatred and rage; his maw is lined with evil yellow teeth.
 ~
@@ -360,7 +360,7 @@ from the battlements, alert for trouble makers.
 area immediately outside the gate is orderly enough, but further away from
 the soldiers a chaotic rabble of peasants, beggars and adventurers mills
 about.  The gate guards scare off the more miserable looking creatures,
-who harrass farmers and town-dwellers as they passage to and from the city.
+who harass farmers and town-dwellers as they passage to and from the city.
      The guards will let you head west into the city, otherwise you can head
 along the road as it travels east.
 ~
@@ -432,7 +432,7 @@ S
 
 #703
 Dirty Encampment~
-Canvas tents have been haphazardy raised along the northern edge of the
+Canvas tents have been haphazardly raised along the northern edge of the
 road.  Most are in bad condition, sodden and covered in mold.  The sides
 of many tents have been rolled up, exposing forlorn groups of beggars and
 gypsies lying on straw pelts or sitting in despondent groups.  The once
@@ -454,7 +454,7 @@ S
 
 #704
 Dirty Encampment~
-Canvas tents have been haphazardy raised along the northern edge of the
+Canvas tents have been haphazardly raised along the northern edge of the
 road.  Most are in bad condition, sodden and covered in mold.  The sides
 of many tents have been rolled up, exposing forlorn groups of beggars and
 gypsies lying on straw pelts or sitting in despondent groups.  The once
@@ -608,7 +608,7 @@ The East Road near Dwimmermere Hamlet~
 The east road travels through the rich and productive farmland to the east
 of Draagdim.  The road wanders east and west.  The small but lively hamlet
 of Dwimmermere is settled south from here.  Smoke rises from low-walled
-houses in thin grey tendrils; laughter and shouts can be occassionally
+houses in thin grey tendrils; laughter and shouts can be occasionally
 heard from the road.  A small dirt track heads south towards the buildings.
 ~
 0 0 2
@@ -901,7 +901,7 @@ Barn and Grain Silo~
 A large communal barn dominates this part of the hamlet.  A tall grain
 silo stands close by.  The barn doors are wide open and the interior seems
 fairly empty: a few carts, sacks and wicker baskets can be seen.  Several
-men stand lazily by the entrance and occassionally talk.
+men stand lazily by the entrance and occasionally talk.
      Houses can be seen east from here, and the entrance to the hamlet
 lies directly north.
 ~
