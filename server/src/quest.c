@@ -561,7 +561,8 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                     && !IS_SET(vsearch->act, ACT_LOSE_FAME)
                     && !IS_SET(vsearch->act, ACT_NO_EXPERIENCE)
                     && !IS_SET(vsearch->act, ACT_IS_HEALER))
-                        break;
+                        /* Shade 31.3.22 - If we want to check area levels before continueing, need to move the room lookup to here */                    
+                        break; 
                 else
                         vsearch = NULL;
         }
@@ -576,10 +577,16 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 return;
         }
 
+        /* 
+         * Shade 31.3.22
+         *
+         * Changed from enforced levels to low/high levels, most areas don't enforce they just pop up the warning
+         */
+
         if ((number_percent() < 10)
             || !(room = find_qlocation(ch, victim->name, victim->pIndexData->vnum))
-            || (room->area->low_enforced > ch->level
-                && room->area->high_enforced < ch->level))
+            || (room->area->low_level > ch->level
+                && room->area->high_level < ch->level))
         {
                 sprintf(buf, "$N says 'I'm sorry, but I don't have any quests for you at this time.'");
                 act(buf, ch, NULL, questman, TO_CHAR);
