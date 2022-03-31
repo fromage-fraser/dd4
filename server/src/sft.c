@@ -189,16 +189,20 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
         if (!str_cmp(arg, "mem"))
         {
-                if ( ch->in_room->sector_type != SECT_FIELD 
+                if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
+                ||   IS_SET( ch->in_room->room_flags, ROOM_PRIVATE ) 
+                ||   IS_SET( ch->in_room->room_flags, ROOM_NO_MOUNT )
+                || ( ch->in_room->sector_type != SECT_FIELD 
                 &&   ch->in_room->sector_type != SECT_FOREST 
                 &&   ch->in_room->sector_type != SECT_HILLS 
                 &&   ch->in_room->sector_type != SECT_MOUNTAIN 
-                &&   ch->in_room->sector_type != SECT_DESERT ) 
+                &&   ch->in_room->sector_type != SECT_DESERT
+                &&   ch->in_room->sector_type != SECT_WATER_SWIM
+                &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) ) 
                 {
                         send_to_char("You can't land in this sort of terrain.\n\r", ch);
                         return;
                 }
-        
 
                 if (ch->in_room->area->low_level == -4 && ch->in_room->area->high_level == -4)
                 {
@@ -214,8 +218,10 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
                 ch->move -= 50;
                 ch->pcdata->soar = ch->in_room->vnum;
-                send_to_char("{yYou concentrate hard and memorise your surroundings.{x\n\r", ch);
-                act("{y$n concentrates hard and studies $s surroundings.{x",
+
+                send_to_char("{WYou concentrate hard and memorise your surroundings.{x\n\r", ch);
+                act("{W$c concentrates hard and studies $s surroundings.{x",
+
                         ch, NULL, NULL, TO_ROOM);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
                 return;
@@ -227,11 +233,17 @@ void do_soar(CHAR_DATA* ch, char* argument)
                  * You CAN soar to and from a no_recall room if other criteria are met.  Feature not a bug.
                  */
 
-                if ( ch->in_room->sector_type != SECT_FIELD 
+                if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
+                ||   IS_SET( ch->in_room->room_flags, ROOM_PRIVATE ) 
+                ||   IS_SET( ch->in_room->room_flags, ROOM_NO_MOUNT )
+                || ( ch->in_room->sector_type != SECT_FIELD 
                 &&   ch->in_room->sector_type != SECT_FOREST 
                 &&   ch->in_room->sector_type != SECT_HILLS 
                 &&   ch->in_room->sector_type != SECT_MOUNTAIN 
-                &&   ch->in_room->sector_type != SECT_DESERT ) 
+                &&   ch->in_room->sector_type != SECT_DESERT
+                &&   ch->in_room->sector_type != SECT_WATER_SWIM
+                &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) ) 
+
                 {
                         send_to_char("You can't take off from this terrain.\n\r", ch);
                         return;
@@ -269,11 +281,17 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 location = get_room_index(soar_list[target].destination);
         }
 
-        if ( ch->in_room->sector_type != SECT_FIELD 
+        if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
+        ||   IS_SET( ch->in_room->room_flags, ROOM_PRIVATE ) 
+        ||   IS_SET( ch->in_room->room_flags, ROOM_NO_MOUNT )
+        || ( ch->in_room->sector_type != SECT_FIELD 
         &&   ch->in_room->sector_type != SECT_FOREST 
         &&   ch->in_room->sector_type != SECT_HILLS 
         &&   ch->in_room->sector_type != SECT_MOUNTAIN 
-        &&   ch->in_room->sector_type != SECT_DESERT ) 
+        &&   ch->in_room->sector_type != SECT_DESERT
+        &&   ch->in_room->sector_type != SECT_WATER_SWIM
+        &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) ) 
+
         {
                 send_to_char("You can't take off from this terrain.\n\r", ch);
                 return;
@@ -292,9 +310,9 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 return;   
         }
 
-        if (ch->mount)
+        if ( ch->mount )
         {
-                act ("{yYou pick up $N with your talons.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
+                act ("{yYou pick up $N in your talons.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
                 act ("{y$C picks up $n in $S talons.{x\n\r", ch->mount, NULL, ch, TO_NOTVICT);
         }
 
@@ -310,16 +328,33 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 char_to_room(ch->mount, location);
         }
 
-        if (ch->mount)
+        if ( ch->mount
+        && ( ch->in_room->sector_type == SECT_WATER_SWIM
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM ) )
+        {
+                act ("{yYou release $N from your talons and $E splashes down into the water.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
+                act ("{y$N releases $n from $S talons and $e splashes down into the water.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
+        }
+        
+        if ( ch->mount 
+        &&   ch->in_room->sector_type != SECT_WATER_SWIM
+        &&   ch->in_room->sector_type != SECT_WATER_NOSWIM )
         {
                 act ("{yYou release $N from your talons and $E tumbles to the ground.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
                 act ("{y$N releases $n from $S talons and $e tumbles to the ground.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
         }
 
-        act ("{y$c swoops down from the sky and alights nearby.{x", ch, NULL, NULL, TO_ROOM);
-        do_look(ch, "auto");
+        if ( ch->in_room->sector_type == SECT_WATER_SWIM
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM )
+        { 
+                act ("{y$c swoops down from the sky and lands gracefully on the water.{x", ch, NULL, NULL, TO_ROOM);
+        }
+        else 
+        {
+                act ("{y$c swoops down from the sky and alights nearby.{x", ch, NULL, NULL, TO_ROOM);
+        }
 
-        
+        do_look(ch, "auto");
 
         ch->move -= 25;
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
@@ -335,7 +370,7 @@ bool is_valid_soar (CHAR_DATA *ch, int soar_index )
         {
                 return 0;
         }
-  
+
         if ( ch->pcdata->learned[gsn_form_hawk] >= soar_access[soar_index].hawkform_perc
         &&   ch->pcdata->learned[gsn_soar]      >= soar_access[soar_index].soar_perc
         &&   ch->level                          >= soar_access[soar_index].char_level )
