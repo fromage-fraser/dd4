@@ -1956,8 +1956,11 @@ fighting, and will attempt to RECALL from time to time.  Your chances of
 making the recall are reduced, and you will lose much more experience.
 
 RESCUE lets you save a group member from being the focus of their
-attacker.  Whoever is fighting the rescued member must attack the rescuer.
-In order to RESCUE successfully, you must practice the appropriate skill.
+attacker.  Whoever is fighting the rescued group member will change the focus 
+of their attacks to the rescuer.  If your group member is facing multiple 
+opponents you'll need to rescue them multiple times.  Note you can set the
+order of your group so that when you walk into a room one member gets 
+attacked initially - see HELP GRORDER for details.
 ~
 
 0 'BASH DOOR'~

@@ -218,8 +218,10 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
                 ch->move -= 50;
                 ch->pcdata->soar = ch->in_room->vnum;
+
                 send_to_char("{WYou concentrate hard and memorise your surroundings.{x\n\r", ch);
                 act("{W$c concentrates hard and studies $s surroundings.{x",
+
                         ch, NULL, NULL, TO_ROOM);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
                 return;
@@ -241,6 +243,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 &&   ch->in_room->sector_type != SECT_DESERT
                 &&   ch->in_room->sector_type != SECT_WATER_SWIM
                 &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) ) 
+
                 {
                         send_to_char("You can't take off from this terrain.\n\r", ch);
                         return;
@@ -288,6 +291,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
         &&   ch->in_room->sector_type != SECT_DESERT
         &&   ch->in_room->sector_type != SECT_WATER_SWIM
         &&   ch->in_room->sector_type != SECT_WATER_NOSWIM ) ) 
+
         {
                 send_to_char("You can't take off from this terrain.\n\r", ch);
                 return;
@@ -373,7 +377,7 @@ bool is_valid_soar (CHAR_DATA *ch, int soar_index )
         {
                 return 1;
         }
-        
+
         return 0;
 }
 
