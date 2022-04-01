@@ -3,14 +3,13 @@
 The _Dragons Domain IV_ (or _DD4_) MUD is based on the Envy MUD codebase.
 It has been significantly customised, with many original game mechanics and areas.
 
-_DD4_ is currently hosted in New Zealand and can be accessed at dd4.webredirect.org on port 8888.
-It also has a relatively up-to-date website online [here](https://smihilist.com/dd4/web/).
+🐉 _DD4_ is currently hosted in New Zealand and can be accessed at **dd4.webredirect.org** on port **8888**.
 
-The codebase is ancient, but can be built and run fairly easily with Docker.
+🐲 Visit [smihilist.com/dd4/web/](https://smihilist.com/dd4/web/) for more information!
 
-I had a lot of fun playing and extending this MUD.
+The codebase is ancient, but can be built and run fairly easily with Docker (see below).
 
-_Gezhp 2019_
+_Owl, Shade, Gezhp_
 
 
     O---=<  Dragons Domain IV   >=---------------- __----^^^^^^^^^^^------__ ---O
@@ -245,13 +244,3 @@ Rebuilding the dev container (if you want to update installed programs or config
 
     user@host$ make build-dev
 
-
-## Notes
-
--   _Shouldn't it be "Dragon's Domain"?_
-
-    Probably.
-
--   I used [tinyfugue](http://tinyfugue.sourceforge.net/) as a game client.
-
--   The server seems to crash hard if directories it expects to exist do not. E.g. subdirectories of `/server/player`.
