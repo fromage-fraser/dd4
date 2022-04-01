@@ -1722,9 +1722,15 @@ S
 The base of the mountain.~
 You are standing at the foot of a tremendously large mountain.  The
 snow-capped peak reaches high into the sky.  Piles of rubble and
-some large boulders lie at the foot of the mountain.
+some large boulders lie at the foot of the mountain--they look 
+climbable. You also see a spiral staircase carved into the mountain
+to the east.
 ~
 0 1|8 5
+D1
+~
+~
+0 -1 4775
 D2
 ~
 ~

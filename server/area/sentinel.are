@@ -1,5 +1,5 @@
 #AREA   Prozak~  Sentinel Pass~
--2 -2 0 100
+-2 -2 10 100
 
 #MOBILES
 #18500
@@ -35,7 +35,7 @@ Bigfoot?
 0 0
 8 8 1
 #18503
-beast stone~
+beast stone boulder granite slab~
 The boulder beast~
 A large granite slab leans inanimate against the mountainside.
 ~
@@ -859,14 +859,21 @@ D1
 S
 #18540
 A Narrow Canyon~
-The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the north.
+The trail you are following ends suddenly in a huge rock fall.  At the top
+of the rock pile you see a very strange-looking cloud that you think you 
+could probably reach by climbing up the fall. You may also return to the north.
 ~
 0 0 5
 D0
 ~
 ~
 0 -1 18537
+D4
+There's a very odd-looking cloud atop the rock pile, it looks like it might
+support your weight(?)
+~
+~
+0 -1 9101
 S
 #18541
 A Narrow Canyon~
@@ -883,7 +890,7 @@ S
 #18542
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the south.
+forward is impassable.  Your only choice is to return to the south.
 ~
 0 0 5
 D2
@@ -894,7 +901,7 @@ S
 #18543
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the north.
+forward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
 D0
@@ -905,7 +912,7 @@ S
 #18544
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the north.
+forward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
 D0
@@ -952,7 +959,7 @@ S
 #18548
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the north.
+forward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
 D0
@@ -963,7 +970,7 @@ S
 #18549
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the north.
+forward is impassable.  Your only choice is to return to the north.
 ~
 0 0 5
 D0
@@ -1012,9 +1019,9 @@ S
 #18552
 Lofty Peak~
 Having reached the apex of this lofty spire you stand stunned.  The view
-is truly magnificent - day or night. From here you may truly appreciatethe
+is truly magnificent - day or night. From here you may truly appreciate the
 majesty of the alps in which you find yourself.  Far to the west you catch
-a glimpse of a cityport nestled in rolling plains.
+a glimpse of a city port nestled in rolling plains.
 ~
 0 0 5
 D5
@@ -1025,7 +1032,7 @@ S
 #18553
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the west.
+forward is impassable.  Your only choice is to return to the west.
 ~
 0 0 5
 D3
@@ -1097,7 +1104,7 @@ S
 #18558
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the south.
+forward is impassable.  Your only choice is to return to the south.
 ~
 0 0 5
 D2
@@ -1108,7 +1115,7 @@ S
 #18559
 A Narrow Canyon~
 The trail you are following ends suddenly in a huge rock fall.  The way
-foward is impassable.  Your only choice is to return to the south.
+forward is impassable.  Your only choice is to return to the south.
 ~
 0 0 5
 D2
@@ -1190,7 +1197,7 @@ S
 #18566
 Dank Tunnel~
 The tunnel ends abruptly here. The slime beneath your feet
-feels weird.  The floor has a slight inconsistancy with it.
+feels weird.  The floor has a slight inconsistency with it.
 ~
 0 1|8 0
 D1
@@ -1248,8 +1255,8 @@ S
 #18571
 Forgotten Depths~
 All about you stretch forgotten halls, never seen by mortal eyes.
-Fantastic rock formations compete with shadowy recesses for your
-uncomprimised attention.  Many secrets, dark and dangerous, reside here.
+Fantastic rock formations compete with shadowy recesses which compel
+your undivided attention.  Many secrets, dark and dangerous, reside here.
 ~
 0 1|8 0
 S
