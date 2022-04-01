@@ -204,7 +204,8 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew area in! "Harpy Haven" for levels 45-55. Look for it in Sentinel Pass.{x
+    {WNew areas in! "Harpy Haven" for levels 45-55. Look for it in Sentinel Pass,
+    also "Kingdom of Juargan" for levels 45-65 (try Lea'Non for this one). {x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -284,6 +285,7 @@ been added;
 - Grouping Bonuses for support skills & spells
 - Soar for Shifters
 - New area: 'Harpy Haven'
+- New area: 'Kingdom of Juargan'
 
 Refer appropriate HELP entries.
 
@@ -5790,7 +5792,7 @@ Skills in this group include:
         inner fire
 ~
 
-0 'MOBILE BODY FORM'~
+0 'MOBILE BODY FORM' 'BODY FORM'~
 Mobile 'body form': Information for builders
 --------------------------------------------
 
@@ -5798,7 +5800,7 @@ Summary
 
 'Body_form' is a value we have introduced that describes the morphology
 of mobiles, to improve corpse and carnage production upon death, and
-prevent some rather silly player:mobile interactions (tripping up snakes,
+prevent some rather silly player/mobile interactions (tripping up snakes,
 for example).
 
 
