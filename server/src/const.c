@@ -749,7 +749,7 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
         {       &gsn_form_bear                  },
         {       &gsn_form_tiger                 },
         {       &gsn_venom                      },
-        {       &gsn_spy                        },
+        {       &gsn_soar                       },
         {       &gsn_swim                       },
         {       &gsn_constrict                  },
         {       &gsn_coil                       },
