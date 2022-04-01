@@ -3,9 +3,9 @@
 The _Dragons Domain IV_ (or _DD4_) MUD is based on the Envy MUD codebase.
 It has been significantly customised, with many original game mechanics and areas.
 
-🐉 _DD4_ is currently hosted in New Zealand and can be accessed at **dd4.webredirect.org** on port **8888**.
+🐉 &ensp; _DD4_ is currently hosted in New Zealand and can be accessed at **dd4.webredirect.org** on port **8888**.
 
-🐲 Visit [smihilist.com/dd4/web/](https://smihilist.com/dd4/web/) for more information!
+🐲 &ensp; Visit [smihilist.com/dd4/web/](https://smihilist.com/dd4/web/) for more information!
 
 The codebase is ancient, but can be built and run fairly easily with Docker (see below).
 
