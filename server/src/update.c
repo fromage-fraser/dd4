@@ -493,7 +493,17 @@ int hit_gain( CHAR_DATA *ch )
                 if (ch->hit + gain <= 0)
                         gain = ch->hit -1;
         }
-        
+
+        /* Being in watery rooms rehydrates Sahuagin */
+
+        if ( ch->race == RACE_SAHUAGIN
+        && (  ( ch->in_room->sector_type == SECT_UNDERWATER ) 
+           || ( ch->in_room->sector_type == SECT_WATER_SWIM ) 
+           || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
+        {
+                ch->pcdata->condition[COND_THIRST] = 48;
+        }
+
         /*
          *  Burning and freezing rooms; Gez 2000
          */
@@ -517,7 +527,7 @@ int hit_gain( CHAR_DATA *ch )
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
                 }
-
+                
                 /*
                  *  Gravity; Owl 20/3/22
                  */
@@ -537,7 +547,6 @@ int hit_gain( CHAR_DATA *ch )
                   && ( !IS_AFFECTED(ch, AFF_FLYING) ) )
                 {
                          /* Don't set below until we're sure there's an open exit down */
-                         /* Is there an exit down that's open ? */
                          
                         in_room = ch->in_room;
                         
@@ -967,7 +976,13 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        send_to_char( "You're dying of thirst!\n\r", ch);
+                        if ( ch->race == RACE_SAHUAGIN )
+                        {       
+                             send_to_char("You're dying of dehydration!  You NEED water!\n\r", ch);   
+                        }
+                        else {
+                                send_to_char( "You're dying of thirst!\n\r", ch);
+                        }
                         gain = - number_range( 15, 30);
 
                         if ( ch->hit + gain <= 0)
@@ -996,7 +1011,13 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        send_to_char("Your throat is parched; you cry out for liquid.\n\r", ch);
+                        if ( ch->race == RACE_SAHUAGIN )
+                        {       
+                             send_to_char("You're drying out; you badly need water.\n\r", ch);   
+                        }
+                        else {
+                                send_to_char("Your throat is parched; you cry out for liquid.\n\r", ch);
+                        }
                         gain = - number_range(1, 2) * ch->level;
 
                         if (ch->hit + gain <= 0)
@@ -1018,7 +1039,13 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        send_to_char("You are thirsty.\n\r", ch);
+                        if ( ch->race == RACE_SAHUAGIN )
+                        {       
+                                send_to_char("Your body is starting to lose its moisture.\n\r", ch);   
+                        }
+                        else {
+                                send_to_char("You are thirsty.\n\r", ch);
+                        }
                         break;
                 }
         }
@@ -1555,6 +1582,7 @@ void char_update( void )
                             && ch->level <= LEVEL_HERO
                             && ch->position > POS_INCAP
                             && ch->form != FORM_SNAKE
+                            && ch->race != RACE_SAHUAGIN
                             && ch->in_room->sector_type == SECT_UNDERWATER
                             && !is_affected(ch, gsn_breathe_water))
                         {

@@ -510,6 +510,54 @@ const struct race_struct race_table [MAX_RACE] =
                 "Hide", "Resist Toxin",
                 CHAR_SIZE_MEDIUM
         },
+
+        {
+                "Fae    ", "Fae",
+                -3, 3, 3, 1, -3,
+                -30, 30, 20,
+                "Faerie Fire", "Fly",
+                CHAR_SIZE_SMALL
+        },
+
+        {
+                "Sahuagn", "Sahuagin",
+                2, -1, -1, -1, 2,
+                20, 0, 0,
+                "Gouge", "Dowse",
+                CHAR_SIZE_MEDIUM
+        },
+
+        {
+                "Tieflng", "Tiefling",
+                0, 1, 0, -2, 2,
+                20, 10, -10,
+                "Hand of Lucifer", "Resist Heat",
+                CHAR_SIZE_MEDIUM
+        },
+
+        {
+                "Jotun  ", "Jotun",
+                3, -1, -2, -2, 3,
+                30, -20, -10,
+                "Berserk", "Resist Cold",
+                CHAR_SIZE_LARGE
+        },
+
+        {
+                "Genasi ", "Genasi",
+                -1, 2, -1, -1, 2,
+                10, 10, 0,
+                "Infravision", "Resist Magic",
+                CHAR_SIZE_MEDIUM
+        },
+
+        {
+                "Illithd", "Illithid",
+                -2, 2, 3, -2, 0,
+                0, 30, -20,
+                "Fear", "Energy Drain",
+                CHAR_SIZE_MEDIUM
+        },
 };
 
 

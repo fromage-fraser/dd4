@@ -77,6 +77,15 @@ COMMANDS'.
 ~
 
 
+-1 FAE FAIRY FAERIE FAERY FAIRIES FAERIES~
+FAE, or 'FAERIES' as many of them prefer to be called, are very small, 
+winged, magical creatures who are often found inhabiting countryside regions 
+of exceptional natural beauty.  While their diminutive stature and physical
+weakness makes them a poor choice for fighting classes, they are an excellent
+choice for pure spellcasting classes of all kinds.
+~
+
+
 0 RONIN~
 Ronin are masterless pkillers that have no allegiance to any clan.  They
 do not have access to clan headquarters or clan equipment, but otherwise
@@ -191,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [2 April 2022]
+    [3 April 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -204,8 +213,7 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew areas in! "Harpy Haven" for levels 45-55. Look for it in Sentinel Pass,
-    also "Kingdom of Juargan" for levels 45-65 (try Lea'Non for this one). {x
+    {WNew races! Check out Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid.{x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -286,6 +294,7 @@ been added;
 - Soar for Shifters
 - New area: 'Harpy Haven'
 - New area: 'Kingdom of Juargan'
+- New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
 
 Refer appropriate HELP entries.
 
@@ -683,29 +692,34 @@ Type VISIBLE to return to the material plane.
 ~
 
 
--1 RACES~
-------------------------------------------------------------------------------
-  AVAILABLE   | Stat Modifiers |        INHERENT RACE           |  Heal bonus
-    RACES     | ST IN WI DE CO |        SKILLS/SPELLS           |  HP MANA MV
-------------------------------------------------------------------------------
-A) Human      |  0  1  0  0  0 | Identify       Detect Evil     |   0   0   0
-B) Elf        | -2  2  1  1 -1 | Infravision    Refresh         | -20  20  10
-C) Wild-Elf   |  1 -1 -2  1  2 | Infravision    Forage          |  10 -10  10
-D) Orc        |  2 -1 -1 -1  2 | Trip           Dirt Kick       |   0 -20  10
-E) Giant      |  3 -2 -2 -1  3 | Giant Strength Bash            |  30 -30   0
-F) Satyr      | -1 -1  2  2 -1 | Sleep          Sneak           | -10 -10  30
-G) Ogre       |  3 -2 -2  0  2 | Kick           Stone Skin      |  20 -30  10
-H) Goblin     | -2  1  3  1 -2 | Shield         Hide            | -10   0  10
-I) Half-Dragon|  2 -2  2 -1  0 | Fly            Dragon Shield   |  20 -20  10
-J) Halfling   | -2  0  1  3 -1 | Sneak          Blindness       | -20  10  30
-K) Dwarf      |  2 -2  1 -1  1 | Grip           Armor           |  30 -20 -20
-L) Centaur    |  1 -1 -1  2  0 | Kick           Shield          | -10  10  20
-M) Drow       | -3  3  1  2 -2 | Sneak          Heighten Senses | -20  30 -20
-N) Troll      |  2 -1 -2 -1  3 | Fast Healing   Cell Adjustment |  30 -30 -10
-O) Alaghi     |  1 -1 -1 -1  3 | Berserk        Bash            |  20 -20  10
-P) Hobgoblin  |  1 -1 -1  0  2 | Resist Magic   Teleport        |  10  10 -10
-Q) Yuan-ti    |  1  0  0  1 -1 | Hide           Resist Toxin    | -10 -10  30
-------------------------------------------------------------------------------
+-1 RACES RACE~
+|   AVAILABLE   | Stat Modifiers |        INHERENT RACE            |  Heal bonus |
+|     RACES     | ST IN WI DE CO |        SKILLS/SPELLS            |  HP MANA MV |
+|--------------------------------------------------------------------------------|
+| A) Human      |  0  1  0  0  0 | Identify        Detect Evil     |   0   0   0 |
+| B) Elf        | -2  2  1  1 -1 | Infravision     Refresh         | -20  20  10 |
+| C) Wild-Elf   |  1 -1 -2  1  2 | Infravision     Forage          |  10 -10  10 |
+| D) Orc        |  2 -1 -1 -1  2 | Trip            Dirt Kick       |   0 -20  10 |
+| E) Giant      |  3 -2 -2 -1  3 | Giant Strength  Bash            |  30 -30   0 |
+| F) Satyr      | -1 -1  2  2 -1 | Sleep           Sneak           | -10 -10  30 |
+| G) Ogre       |  3 -2 -2  0  2 | Kick            Stone Skin      |  20 -30  10 |
+| H) Goblin     | -2  1  3  1 -2 | Shield          Hide            | -10   0  10 |
+| I) Half-Dragon|  2 -2  2 -1  0 | Fly             Dragon Shield   |  20 -20  10 |
+| J) Halfling   | -2  0  1  3 -1 | Sneak           Blindness       | -20  10  30 |
+| K) Dwarf      |  2 -2  1 -1  1 | Grip            Armor           |  30 -20 -20 |
+| L) Centaur    |  1 -1 -1  2  0 | Kick            Shield          | -10  10  20 |
+| M) Drow       | -3  3  1  2 -2 | Sneak           Heighten Senses | -20  30 -20 |
+| N) Troll      |  2 -1 -2 -1  3 | Fast Healing    Cell Adjustment |  30 -30 -10 |
+| O) Alaghi     |  1 -1 -1 -1  3 | Berserk         Bash            |  20 -20  10 |
+| P) Hobgoblin  |  1 -1 -1  0  2 | Resist Magic    Teleport        |  10  10 -10 |
+| Q) Yuan-ti    |  1  0  0  1 -1 | Hide            Resist Toxin    | -10 -10  30 |
+| R) Fae        | -3  3  3  1 -3 | Faerie Fire     Fly             | -30  30  20 |
+| S) Sahuagin   |  2 -1 -1 -1  2 | Gouge           Dowse           |  20   0   0 |
+| T) Tiefling   |  0  1  0 -2  2 | Hand of Lucifer Resist Heat     |  20  10 -10 |
+| U) Jotun      |  3 -1 -2 -2  3 | Berserk         Resist Cold     |  30 -20 -10 |
+| V) Genasi     | -1  2 -1 -1  2 | Infravision     Resist Magic    |  10  10   0 |
+| W) Illithid   | -2  2  3 -2  0 | Fear            Energy Drain    |  0   30 -20 |
+
 ~
 
 0 HUNT~
@@ -3301,40 +3315,40 @@ psionicist does not become too weak.
 
 -1 HUMAN~
 Humans are the most common race in the world, and make up the majority of
-citizens in the Domain.  Although they have no special talents like the
-other races, they are more versatile, being skilled in all the classes.
-They are neither particularly weak in any manner nor are they particularly
-strong in any respect.
+citizens in the Domain.  Although they have no startling talents like some
+other races, they are quite bright and very versatile, managing to achieve
+competence with regard to anything they put their minds to. Humans are a 
+good choice for any class.
 ~
 
 -1 ELF~
-The Elven race has been around for a long time, if not the longest.  This
-race is famous for being excellent archers as well as magicians, however
-they do not grow very strong due to their small and often times fine bone
+The elven race has been around for a long time, perhaps the longest of any 
+of the Domain's races.  They are famous for being excellent archers as well 
+as magicians, however they do not grow very strong due to their fine bone
 structure.  The tracking abilities of Elves, due to their INFRAVISION and
-extraordinary movement regeneration, are legendary.  Elves make good spell
+extraordinary movement regeneration are legendary.  Elves make good spell
 casters, rangers and thieves.
 ~
 
 
 -1 WILD-ELF WILDELF~
-Wild-elves are tall, strong yet nimble, and handsome beings in a wild way.
-Although not as wise or intelligent as elves, they are more suited to
+Wild-elves are tall, strong yet nimble, and handsome, wild beings.
+Although not as wise or intelligent as high elves, they are suited to
 roguish arts and hand to hand combat. Wild elves are a good choice for
 thieves and warrior types, and generally suit most classes.
 ~
 
 -1 ORC~
-The orcs are a brutal and savage race of warriors exhibiting strength and
+Orcs are a brutal and savage race of warriors exhibiting strength and
 stamina during battle.  They are naturally skilled in hand to hand combat
 making them very dangerous adversaries.  Although they do not exhibit much
-intelligence never under estimate an orc.  Orcs are a good choice for any
+intelligence never underestimate an orc.  Orcs are a good choice for any
 of the warrior classes.
 ~
 
 -1 SATYR~
 The satyr is a half-man, half-goat.  They like to drink wine and party and
-tend to lead many a traveller astray.  The satyr makes for a good all round
+tend to lead unwary travellers astray.  The satyr makes for a good all-round
 character and suits most classes.
 ~
 
@@ -3345,47 +3359,93 @@ regeneration rate.  Like the giant, the ogre does not make a very good
 spell caster but make a good selection for all fighting classes.
 ~
 
+-1 SAHUAGIN~
+Sahuagin are a fish-like monstrous humanoid species that live in oceans, 
+seas, underground lakes, and underwater caves.  As such, they can 
+automatically adapt to watery environments as soon as they enter them.
+Rough-and-ready types, they excel at GOUGING opponents, and their affinity
+for water makes them excellent DOWSERS.  Sahuagin are a solid choice for 
+fighters, and also perform well as mixed fighting/spellcasting classes.
+~
+
+-1 TIEFLING~
+Suspicious and self-reliant, tieflings are the products of blood-mingling 
+between humanity and demonkind, with appearances that reflect their
+infernal heritage (including prominent horns and prehensile tails).  Due 
+to their demonic nature, they are highly resistant to heat, and often have 
+another diabolical trick or two up their sleeves.  They make particularly 
+good SHAPE-SHIFTERS, but are generally quite versatile.
+~
+
+-1 JOTUN~
+JOTUN are giants from the frozen northern climes. They are distant cousins 
+of 'regular' mountain giants but are more rotund, blue-skinned, a little 
+shorter and sport huge beards made of permanently-frozen ice. They have the 
+ability to BERSERK when provoked, destroying and rampaging wantonly. They 
+alse have a strong ability to resist cold temperatures.  Jotun make an 
+excellent choice for all physical fighting classes.
+~
+
+-1 GENASI~
+Genasi are a very rare planar class of humanoid, the offspring of genies and 
+mortals.  A winning combination of intellectually bright and physically hardy, 
+they also have a strong resistance to magical attacks as a result of their 
+heritage.  Genasi make a good choice for both SHAPE-SHIFTERS and everyday 
+spellcasting classes.
+~
+
+-1 ILLITHID~
+Illithids, also known as mind flayers, have a reputation as sadistic 
+aberrations, feared by sentient creatures on many worlds across the multiverse 
+due to their powerful psionic abilities and penchant for extracting and 
+devouring the brains of those unlucky enough to encounter them.  They make
+an excellent choice for PSIONICISTS and are a good choice for spell casters 
+in general, but perform poorly as physical combatants.
+~
+
 -1 GOBLIN~
-Short with a tough leathery yellow skin, and mesmerized by jewels and
-small intricate treasures made of fine precious metals, these durable
-little people do not have the outright strength as most of the feared
-warrior races.  However, they make up for it with mental ability, making
-them a good selection for spell casters.
+Short, with a tough, leathery yellow skin, GOBLINS are mesmerized by jewels 
+and any small, intricate treasures made of fine precious metals.  These durable
+little people do not have the raw physical strength to be counted amongst the 
+more fearsome warrior races, but they make up for this lack with mental ability, 
+and are a good race to select for spell-casting classes.
 ~
 
 -1 HALF-DRAGON HALFDRAGON~
 Considered the most feared of the Domain, the half-dragon has to be the
 most respected of all creatures that inhabit the realm.  The powerful
 wings of the half-dragon enable them to take FLIGHT and they are also able
-to protect themselves from breath attacks.  With their strength and agility
-they make excellent warriors but never underestimate the half-dragon's
-clerical spell casting ability.
+to protect themselves from breath attacks with their DRAGON SHIELD spell.  
+With their strength and agility they make excellent warriors, but the 
+spell-casting ability of the half-dragon cleric should never be 
+underestimated.
 ~
 
 -1 HALFLING~
-Halflings are extremely secretive races; slim and agile, they have
-incredibly fast reflexes.  While not being strong they make up for it in
-their ability to BLIND their enemies; being shifty by nature they are able
-to conceal their movements from innocent bystanders.  Halflings are much
-like tiny humans, usually about 3-4 feet in height.  They resemble children
-in their appearance and are often mistaken as such by unknowing humans.  They
-are extremely quick and tend to make great thieves.
+Halflings are an extremely secretive race: slim and agile, with incredibly 
+fast reflexes.  While not being strong, they make up their lack of strength
+with their ability to BLIND enemies, and being shifty by nature they are able
+to conceal their movements from innocent bystanders.  Halflings appear much
+like scaled-down humans, usually about 3-4 feet in height.  They resemble 
+children in their appearance ,and are often mistaken as such by unknowing 
+humans.  They are extremely dextrous and tend to make great thieves.
 ~
 
 -1 DWARF~
-Dwarves have a long history associated with their race.  The typical dwarf
-is short, bad tempered and likes to drink a lot; they usually have big
-beards and a fondness for gold and metals.  The dwarves learn to fight
-from an early age and are sturdy and strong.  Dwarves make a good choice
-for all warrior classes.
+Dwarves have a long racial history, stretching back thousands of years.  
+The typical dwarf is short, bad tempered and likes to drink a lot; they 
+usually have big beards and a fondness for gold and metals.  The dwarves 
+learn to fight from an early age and are sturdy and strong.  Dwarves make 
+a good choice for all warrior classes.
 ~
 
 -1 CENTAUR~
-Half man half horse this race is both strong and agile.  With their powerful
-rear leg muscles this race is able to deliver quite a blow from those sharp
-hooves.  With the spell SHIELD to help along with their inherent agility they
-are often quite hard to hit in combat.  Centaurs cannot use mounts.  Centaurs
-are versatile and make a good choice for most classes.
+Half-man, half-horse the centaur race is both strong and agile.  Using their
+powerful rear leg muscles centaurs are able to deliver quite a KICK with their 
+sharp hooves.  With the spell SHIELD to help along with their inherent agility they
+are often difficult to hit in combat. Being essentially a mount themselves, however,
+centaurs are unable to use mounts.  Centaurs are versatile and make a good choice 
+for most classes.
 ~
 
 -1 DROW~
@@ -3397,9 +3457,9 @@ all spell casting classes and make fair thieves.
 ~
 
 -1 TROLL~
-As a race that has grown up in conflicts and war, the trolls are
-powerfully built fighting machines.  Trolls also have an incredible
-regeneration rate, as they have an inherent ability to regenerate wounds.
+As a race that has grown up in constant conflict and war, trolls are
+powerfully-built fighting machines.  Trolls also have an incredible
+regeneration rate, as they have an inherent racial ability to heal wounds.
 Although trolls lack the the mental ability for a spell caster they make
 an excellent choice for all warrior classes.
 ~
@@ -3408,13 +3468,13 @@ an excellent choice for all warrior classes.
 The alaghi are a beast race, exhibiting great strength and combat
 abilities.  The alaghi are large in size and very tough. As a race with
 very little patience they sometimes work themselves into such a frenzy
-that they go BERSERK.  The alaghi make good choices for fighting classes.
+that they go BERSERK.  The alaghi is a good choice for a fighting class.
 ~
 
 -1 HOBGOBLIN~
 Hobgoblins are slow and lazy, tending to run to fat when left to their own
 devices.  Due to their physical slowness they have naturally evolved the
-defensive capability of TELEPORTing out of danger.  Hobgoblins are short
+defensive capability of TELEPORTING out of danger.  Hobgoblins are short
 in stature, even smaller than dwarves, rarely cresting four feet. However,
 like the dwarf they exhibit unusual strength and stamina making up for the
 mental strength they lack.  Hobgoblins make good warrior types and useful
@@ -3422,10 +3482,10 @@ thieves.
 ~
 
 -1 YUAN-TI YUANTI~
-The Yuan-ti are a snake-like race, and not much is known of them.  It is
-rumoured that the yuan-ti are the result of mutating experiments on humans
-as they are similar in build to humans.  Yuan-ti are very versatile and
-make good choices for all classes.
+Yuan-ti are a snake-like race, and not much is known about them.  It is
+rumoured that they are the result of mutation experiments on humans,
+as they are similar in build to them, their snakelike features aside.  
+Yuan-ti are versatile and make a good choice for any class.
 ~
 
 0 BALANCE DEPOSIT WITHDRAW COINS BANK~

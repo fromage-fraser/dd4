@@ -1627,7 +1627,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
         char      *pwdnew;
         char      *classname;
         char      *p;
-        char       buf [MAX_STRING_LENGTH];
+        char       buf [ MAX_STRING_LENGTH ];
         int        iClass;
         bool       fOld;
         int        startcoinsamt;
@@ -1866,8 +1866,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
             case CON_WELCOME_RACE:
                 send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
-                do_help(ch, "race");
-                send_to_char("\n\r{cPlease choose a race for your character. {C[a-q]{x ", ch);
+                do_help(ch, "races");
+                send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
                 d->connected = CON_GET_NEW_RACE;
                 break;
 
@@ -1877,7 +1877,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                         do_help(ch, "race");
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-q]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
                         break;
                 }
 
@@ -1900,16 +1900,22 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     case 'o': case 'O': ch->race = 15;      break;
                     case 'p': case 'P': ch->race = 16;      break;
                     case 'q': case 'Q': ch->race = 17;      break;
+                    case 'r': case 'R': ch->race = 18;      break;
+                    case 's': case 'S': ch->race = 19;      break;
+                    case 't': case 'T': ch->race = 20;      break;
+                    case 'u': case 'U': ch->race = 21;      break;
+                    case 'v': case 'V': ch->race = 22;      break;
+                    case 'w': case 'W': ch->race = 23;      break;
 
                     default:
                         send_to_char("\n\r{Y}rInvalid race!{x\n\r"
-                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-q]{x ", ch);
+                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-w]{x ", ch);
                         return;
                 }
 
-                if (ch->race < 1 || ch->race > 17)
+                if (ch->race < 1 || ch->race > ( MAX_RACE - 1 ) )
                 {
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-q]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
                         return;
                 }
 
@@ -1928,7 +1934,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                         do_help (ch, "race");
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-q]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
                         d->connected = CON_GET_NEW_RACE;
                         return;
                 }
@@ -2114,8 +2120,8 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                send_to_char("\n\r\n\r{WCharacter generation complete.{x\n\r"
-                             "You are now ready to enter the Dragons Domain and begin your training!\n\r", ch);
+                send_to_char("\n\r{WCharacter generation complete.{x\n\r\n\r"
+                             "You are now ready to enter the Dragons Domain and begin your training!\n\r\n\r", ch);
                 SET_BIT(ch->act, PLR_AUTOLEVEL);
                 ch->pcdata->pagelen = 100;
                 d->connected = CON_READ_MOTD;
@@ -3650,7 +3656,7 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
         char            buf [MAX_STRING_LENGTH];
         int             pos, max, max_line, i, j, k, l;
         bool            indent_line = FALSE;
-
+        
         if (!text)
                 return;
 
@@ -3659,6 +3665,7 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
 
         pos = 0;
         max = strlen (text);
+
         buf[0] = '\0';
 
         for (i = 0; i < max; i++)

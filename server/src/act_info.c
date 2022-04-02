@@ -1672,7 +1672,7 @@ void do_weather( CHAR_DATA *ch, char *argument )
 void do_help( CHAR_DATA *ch, char *argument )
 {
         HELP_DATA *pHelp;
-        char buf [MAX_STRING_LENGTH];
+        char buf [ MAX_STRING_LENGTH ];
 
         if (argument[0] == '\0')
                 argument = "summary";

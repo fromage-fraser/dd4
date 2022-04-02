@@ -1093,7 +1093,13 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
                 if (!obj)
                 {
-                        send_to_char("Drink what?\n\r", ch);
+                        if ( ch->race == RACE_SAHUAGIN )
+                        {       
+                                send_to_char("Get water from what?\n\r", ch);   
+                        }
+                        else {
+                                send_to_char("Drink what?\n\r", ch);
+                        }
                         return;
                 }
         }
@@ -1108,22 +1114,42 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
         {
-                send_to_char("You fail to reach your mouth.  *Hic*\n\r", ch);
+                if ( ch->race == RACE_SAHUAGIN )
+                {       
+                        send_to_char("You're too drunk to do that.  *Hic*\n\r", ch);   
+                }
+                else {
+                        send_to_char("You fail to reach your mouth.  *Hic*\n\r", ch);
+                }
                 return;
         }
 
         switch (obj->item_type)
         {
             default:
-                send_to_char("You can't drink from that.\n\r", ch);
+                if ( ch->race == RACE_SAHUAGIN )
+                {       
+                        send_to_char("You can't get water from that.\n\r", ch);   
+                }
+                else {
+                        send_to_char("You can't drink from that.\n\r", ch);
+                }
                 break;
 
             case ITEM_FOUNTAIN:
                 if (!IS_NPC(ch))
                         ch->pcdata->condition[COND_THIRST] = 48;
-                act("You drink from $p.",ch,obj,NULL,TO_CHAR);
-                send_to_char("You are not thirsty.\n\r",ch);
-                act("$n drinks from $p.", ch, obj, NULL, TO_ROOM);
+                if ( ch->race == RACE_SAHUAGIN )
+                {      
+                        act("You bathe yourself in $p.",ch,obj,NULL,TO_CHAR);
+                        send_to_char("You are no longer dehydrated.\n\r",ch);
+                        act("$n bathes $mself in $p.", ch, obj, NULL, TO_ROOM);
+                }
+                else {
+                        act("You drink from $p.",ch,obj,NULL,TO_CHAR);
+                        send_to_char("You are not thirsty.\n\r",ch);
+                        act("$n drinks from $p.", ch, obj, NULL, TO_ROOM);
+                }
                 break;
 
             case ITEM_DRINK_CON:
@@ -1139,11 +1165,19 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         liquid = obj->value[2] = 0;
                 }
 
-                act("You drink $T from $p.",
-                    ch, obj, liq_table[liquid].liq_name, TO_CHAR);
-                act("$n drinks $T from $p.",
-                    ch, obj, liq_table[liquid].liq_name, TO_ROOM);
-
+                if ( ch->race == RACE_SAHUAGIN )
+                {
+                        act("You cover yourself in $T from $p.",
+                                ch, obj, liq_table[liquid].liq_name, TO_CHAR);
+                        act("$n covers $mself in $T from $p.",
+                                ch, obj, liq_table[liquid].liq_name, TO_ROOM);
+                }
+                else {
+                        act("You drink $T from $p.",
+                                ch, obj, liq_table[liquid].liq_name, TO_CHAR);
+                        act("$n drinks $T from $p.",
+                                ch, obj, liq_table[liquid].liq_name, TO_ROOM);
+                }
                 amount = number_range(3, 10);
                 amount = UMIN(amount, obj->value[1]);
 
@@ -1160,10 +1194,21 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 40)
                         send_to_char("You are full.\n\r", ch);
 
-                if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
-                        send_to_char("You do not feel thirsty.\n\r", ch);
+                if ( ch->race == RACE_SAHUAGIN )
+                {  
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
+                                send_to_char("Your body's moisture is completely restored.\n\r", ch);
+                }
+                else {
+                        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
+                                send_to_char("You do not feel thirsty.\n\r", ch);
+                }
 
-                if (obj->value[3] != 0)
+                /* Sahuagin can drink salt water as well -- Owl 3/4/22 */
+                if ( obj->value[3] != 0
+                || (  ( ch->race == RACE_SAHUAGIN )
+                     &&  ( ( obj->value[3] != 0 )
+                        && ( obj->value[3] != 14 ) ) ) )
                 {
                         AFFECT_DATA af;
 

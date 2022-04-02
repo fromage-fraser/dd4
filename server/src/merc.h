@@ -212,7 +212,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  */
 #define MAX_CLASS                          8
 #define MAX_SUB_CLASS                     17    /* thats 16 plus 'none' - Brutus */
-#define MAX_RACE                          18    /* thats 17 races plus 'none' - Brutus*/
+#define MAX_RACE                          24    /* thats 23 races plus 'none' - Owl 2/4/22 */
 #define MAX_STAT                          32    /* 0->31  - Shade */
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
@@ -487,6 +487,12 @@ struct quest_recall
 #define RACE_ALAGHI                     15
 #define RACE_HOBGOBLIN                  16
 #define RACE_YUAN_TI                    17
+#define RACE_FAE                        18
+#define RACE_SAHUAGIN                   19
+#define RACE_TIEFLING                   20
+#define RACE_JOTUN                      21
+#define RACE_GENASI                     22
+#define RACE_ILLITHID                   23
 
 
 /*

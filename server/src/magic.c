@@ -308,6 +308,13 @@ void do_cast( CHAR_DATA *ch, char *argument )
         mana = 0;
         mana = mana_cost(ch, sn);
 
+        /* Hack for Tieflings to have hand of lucifer as a (useful) race skill -- Owl 3/4/22 */
+         if ( ( ( str_cmp( skill_table[sn].name, "hand of lucifer" ) ) == 0 ) 
+         &&   ch->race == RACE_TIEFLING )
+         {
+                 mana = 25;
+         }
+
         if (ch->level >= LEVEL_IMMORTAL || IS_NPC(ch))
                 mana = 0;
 
@@ -5475,7 +5482,7 @@ void spell_feeblemind( int sn, int level, CHAR_DATA *ch, void *vo )
         af.modifier  = - level;
         affect_to_char( victim, &af );
 
-        send_to_char( "Your victim turns into a simpleton..\n\r", ch );
+        send_to_char( "Your victim turns into a simpleton.\n\r", ch );
         send_to_char( "Huh... What?... Where?... You are dazed!\n\r", victim);
         return;
 }
@@ -6979,9 +6986,10 @@ void spell_breathe_water (int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        if (IS_NPC(victim)
+        if ( IS_NPC( victim )
             || victim->position == POS_FIGHTING
-            || is_affected(victim, sn))
+            || victim->race == RACE_SAHUAGIN
+            || is_affected(victim, sn) )
                 return;
 
         af.type = sn;
