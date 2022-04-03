@@ -1659,6 +1659,12 @@ void do_weather( CHAR_DATA *ch, char *argument )
                 return;
         }
 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER )
+        {
+                send_to_char( "You can't see the weather underwater.\n\r", ch );
+                return;
+        }
+
         sprintf( buf, "The sky is %s and %s.\n\r",
                 sky_look[weather_info.sky],
                 weather_info.change >= 0

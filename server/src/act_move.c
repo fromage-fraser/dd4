@@ -596,10 +596,19 @@ void move_char(CHAR_DATA *ch, int door)
         {
                 act_move ("$n rides in on $N.", ch, NULL, ch->mount, TO_ROOM);
         }
+        else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
+                ||  ( to_room->sector_type == SECT_WATER_SWIM )
+                ||  ( to_room->sector_type == SECT_UNDERWATER ) )
+                &&  ( ch->race == RACE_SAHUAGIN ) 
+                &&  ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) ) )
+        {
+                act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
+        }
         else if (!ch->rider && (IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS)))
         {
                 act_move ("$n has arrived.", ch, NULL, NULL, TO_ROOM);
         }
+        
 
         for (fch = in_room->people; fch; fch = fch_next)
         {

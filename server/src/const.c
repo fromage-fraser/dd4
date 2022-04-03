@@ -1768,6 +1768,11 @@ const struct skill_type skill_table [MAX_SKILL] =
          * practice type, target, minimum position,
          * pointer to spell function, minimum mana, beats
          * damage noun, wear off message
+         * 
+         * When adding new spells add them near the end, just
+         * before the base skills.  Elements are accessed by
+         * index and results will be unpredictable if the current
+         * order gets screwed up.
          */
         {
                 "reserved", NULL,
