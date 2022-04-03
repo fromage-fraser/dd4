@@ -1255,6 +1255,7 @@ void day_weather_update()
         {
                 if (d->connected == CON_PLAYING
                     && IS_OUTSIDE(d->character)
+                    && ( d->character->in_room->sector_type != SECT_UNDERWATER )
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
         }
@@ -1373,6 +1374,7 @@ void weather_update ()
                 if (buf[0] != '\0'
                     && d->connected == CON_PLAYING
                     && IS_OUTSIDE(d->character)
+                    && ( d->character->in_room->sector_type != SECT_UNDERWATER )
                     && IS_AWAKE(d->character))
                         send_to_char(buf, d->character);
 

@@ -1297,8 +1297,9 @@ void do_push (CHAR_DATA *ch, char *argument)
                 return;
         }
         
-        if (ch->level - victim->level > 5
-            || victim->level - ch->level > 5)
+        if ( ( ( ch->level - victim->level > 5 )
+        ||     ( victim->level - ch->level > 5 ) )
+        &&   !IS_IMMORTAL( ch ) )
         {
                 send_to_char("There is too great an experience difference for you to even bother.\n\r", ch);
                 return;
@@ -1384,7 +1385,7 @@ void do_push (CHAR_DATA *ch, char *argument)
                 return;
         }
         
-        act ("You shove $M.", ch, NULL, victim, TO_CHAR);
+        act ("You shove $N.", ch, NULL, victim, TO_CHAR);
         act ("$n shoves you.", ch, NULL, victim, TO_VICT);
         move_char(victim, exit_dir);
         
