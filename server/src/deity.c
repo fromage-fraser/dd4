@@ -48,8 +48,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  0,  0,  1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  1,  1, -1,  0,  1,  0, -1,  0,  0,  0,  1,  0, -1,  0, -1,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  1,  1, -1,  0,  1,  0, -1,  0,  0,  0,  1,  0, -1,  0, -1,  0,  1,  0,  0,  0,  0, -1 }},
 
         { "Tulgor",
                 "the Lord of Lightning",
@@ -66,8 +66,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   {-1,  0,  0,  1,  0,  0,  1, -1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  0, -1,  0,  0,  1, -1,  0,  0,  0,  0,  0,  0,  1,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0, -1, -1,  0,  1,  0,  1,  0,  0, -1, -1,  0, -1,  1,  1,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0, -1, -1,  0,  1,  0,  1,  0,  0, -1, -1,  0, -1,  1,  1,  0,  0, -1,  1,  0,  1,  0,  1 }},
 
         { "Lloth",
                 "Queen of Darkness",
@@ -85,8 +85,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 1,  1,  0,  1,  0,  0,  0, -1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  0, -1,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0, -1, -1,  1,  0,  0,  0,  1,  0, -1, -1,  0,  1,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0, -1, -1,  1,  0,  0,  0,  1,  0, -1, -1,  0,  1,  0,  0,  0,  0, -1,  1,  0,  0,  0,  1 }},
 
         { "Sephusia",
                 "the Serpent",
@@ -104,8 +104,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 1,  0,  0,  0,  0,  1,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0, -1, -1,  0,  0,  0,  0,  0,  1, -1, -1,  0,  0,  0,  0,  0,  1 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0, -1, -1,  0,  0,  0,  0,  0,  1, -1, -1,  0,  0,  0,  0,  0,  1, -1, -1,  0,  0,  0,  1 }},
 
         { "Torm",
                 "Hand of Justice",
@@ -122,8 +122,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  1, -1,  0,  0,  0,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0, -1,  0,  1,  0, -1,  0, -1,  1, -1,  0, -1, -1,  1,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0, -1 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0, -1,  1, -1,  0,  0,  0, -1 }},
 
         { "Ealindel",
                 "the Elfin Maiden",
@@ -140,8 +140,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  1,  0,  0,  0,  0,  0,  1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  1,  1,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  1,  1,  1, -1,  0,  0,  0, -1,  0,  0,  0,  0, -1,  0,  0, -1, -1 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  1,  1,  1, -1,  0,  0,  0, -1,  0,  0,  0,  0, -1,  0,  0, -1, -1,  1,  0,  0,  0,  0, -1 }},
 
         { "Thalin",
                 "Hammer of the Dwarves",
@@ -158,8 +158,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   {-1,  1,  0,  1, -1,  0,  1,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0, -1, -1,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0,  0,  0,  1,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0, -1, -1,  0, -1, -1, -1,  0,  1,  0,  0, -1,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0, -1, -1,  0, -1, -1, -1,  0,  1,  0,  0, -1,  0,  0,  0,  0,  0,  0, -1,  0, -1 }},
 
         { "Televar",
                 "Lord Morning",
@@ -178,8 +178,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0, -1,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0, -1,  0,  0,  1,  0,  0,  0,  0, -1,  0, -1, -1,  1,  0,  0,  1 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0, -1 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0, -1, -1,  1, -1,  0, -1, -1 }},
 
         { "Gorthrond",
                 "the Warmonger",
@@ -196,8 +196,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0, -1,  1,  0, -1,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  1,  1,  0, -1, -1,  1,  1,  0,  0, -1, -1,  1,  1,  1,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Minerva",
                 "the Shieldmaiden",
@@ -215,8 +215,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0, -1,  1,  0,  0,  1,  1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  1,  1,  0, -1,  0,  0,  1,  0,  0, -1, -1,  1,  1,  1,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Xuul",
                 "the Tyrant",
@@ -233,8 +233,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  1,  0,  0,  1, -1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  1, -1,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0,  1,  1,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1 }},
 
         { "Mira",
                 "the White Goddess",
@@ -252,8 +252,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  1,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  0,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0, -1,  0, -1,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0, -1,  0, -1,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0, -1,  1,  0, -1,  0,  1 }},
 
         { "Death",
                 "Reaper of Souls",
@@ -270,8 +270,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  0,  0, -1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  1,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  1, -1,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Azazel",
                 "Prince of Hell",
@@ -289,8 +289,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0, -1,  0,  0,  0,  0,  0, -1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0, -1,  0,  0,  0,  0, -1,  1,  1,  1,  1,  0,  0, -1, -1 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1 }},
 
         { "Swyft",
                 "Prince of Thieves",
@@ -307,8 +307,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0, -1,  1,  0,  0,  0,  1, -1 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0, -1,  0,  1,  1,  1, -1,  0,  0,  0,  0,  0,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Nystis",
                 "the Enlightened",
@@ -327,8 +327,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Tractacus",
                 "God of Wine and Music",
@@ -345,8 +345,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  0,  1,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0, -1,  0, -1,  0,  0,  0,  0, -1,  0,  0,  0, -1, -1,  0,  0,  1 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0, -1,  0,  0,  0,  1,  0,  0,  0,  1,  1,  1, -1,  0, -1,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0, -1,  0,  0,  0,  1,  0,  0,  0,  1,  1,  1, -1,  0, -1,  0,  0,  1, -1,  1,  0,  0, -1 }},
 
         { "Brutus",
                 "the Watcher",
@@ -363,8 +363,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
         { "Morfus",
                 "the Sorcerer",
@@ -381,8 +381,8 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                   { 1,  1,  0, -1,  1,  0, -1,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
                   { 0,  1,  1,  1,  1,  0,  0, -1,  0,  1,  1,  0,  0,  0, -1, -1,  1 },
-                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti */
-                  { 0,  1,  1,  0, -1, -1,  0, -1,  0,  1,  0,  0,  0,  1, -1, -1,  0,  0 }}
+                /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
+                  { 0,  1,  1,  0, -1, -1,  0, -1,  0,  1,  0,  0,  0,  1, -1, -1,  0,  0,  1, -1,  0, -1,  1,  0 }}
 };
 
 
@@ -543,7 +543,9 @@ void do_pantheon (CHAR_DATA *ch, char *argument)
         const char *races [MAX_RACE] = {"", "Human", "Elvish", "Wild-Elf",
                         "Orcish", "Giant", "Satyr", "Ogre", "Goblin",
                         "Half-Dragon", "Halfling", "Dwarvish", "Centaur",
-                        "Drow", "Troll", "Alaghi", "Hobgoblin", "Yuan-ti"};
+                        "Drow", "Troll", "Alaghi", "Hobgoblin", "Yuan-ti",
+                        "Fae", "Sahuagin", "Tiefling", "Jotun", "Genasi",
+                        "Illithid"};
 
         const char *classes [MAX_CLASS + MAX_SUB_CLASS -1] = {"Mage", "Cleric",
                         "Thief", "Warrior", "Psionic", "Shapeshifter",

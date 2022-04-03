@@ -191,6 +191,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
         {
                 if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
                 ||   IS_SET( ch->in_room->room_flags, ROOM_PRIVATE ) 
+                ||   IS_SET( ch->in_room->room_flags, ROOM_SOLITARY ) 
                 ||   IS_SET( ch->in_room->room_flags, ROOM_NO_MOUNT )
                 || ( ch->in_room->sector_type != SECT_FIELD 
                 &&   ch->in_room->sector_type != SECT_FOREST 
@@ -235,6 +236,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
                 if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
                 ||   IS_SET( ch->in_room->room_flags, ROOM_PRIVATE ) 
+                ||   IS_SET( ch->in_room->room_flags, ROOM_SOLITARY ) 
                 ||   IS_SET( ch->in_room->room_flags, ROOM_NO_MOUNT )
                 || ( ch->in_room->sector_type != SECT_FIELD 
                 &&   ch->in_room->sector_type != SECT_FOREST 
@@ -283,6 +285,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
 
         if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
         ||   IS_SET( ch->in_room->room_flags, ROOM_PRIVATE ) 
+        ||   IS_SET( ch->in_room->room_flags, ROOM_SOLITARY ) 
         ||   IS_SET( ch->in_room->room_flags, ROOM_NO_MOUNT )
         || ( ch->in_room->sector_type != SECT_FIELD 
         &&   ch->in_room->sector_type != SECT_FOREST 

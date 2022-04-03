@@ -2999,7 +2999,8 @@ void do_circle (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
+        && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You cannot circle underwater.\n\r", ch);
                 return;
@@ -3087,7 +3088,8 @@ void do_destrier (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't do that underwater.\n\r", ch);
                 return;
@@ -3253,7 +3255,8 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't backstab while underwater.\n\r", ch);
                 return;
@@ -3423,7 +3426,8 @@ void do_lunge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
+        && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't lunge while underwater.\n\r", ch);
                 return;
@@ -3543,7 +3547,8 @@ void do_joust (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_UNDERWATER)
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
+        && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't joust while underwater.\n\r", ch);
                 return;

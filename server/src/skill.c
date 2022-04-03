@@ -99,7 +99,7 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() < ch->pcdata->learned[gsn_heighten]) 
+        if (number_percent() < ch->pcdata->learned[gsn_swim]) 
         {
                 af.type      = gsn_swim;
                 af.duration  = -1;
@@ -1351,14 +1351,27 @@ void do_push (CHAR_DATA *ch, char *argument)
         
         switch (ch->race) 
         {
-            case 1: race_bonus = -3; break;
-            case 2: race_bonus =  3; break;
-            case 3: race_bonus = -5; break;
-            case 4: race_bonus = -7; break;
-            case 6: race_bonus =  5; break;
-            case 7: race_bonus =  7; break;
-            case 8: race_bonus = 10; break;
-            case 9: race_bonus = -2; break;
+            case 2:  race_bonus =  -4; break;
+            case 3:  race_bonus =   2; break;
+            case 4:  race_bonus =   4; break;
+            case 5:  race_bonus =  10; break;
+            case 6:  race_bonus =  -2; break;
+            case 7:  race_bonus =  10; break;
+            case 8:  race_bonus =  -4; break;
+            case 9:  race_bonus =   7; break;
+            case 10: race_bonus =  -5; break;
+            case 11: race_bonus =   6; break;
+            case 12: race_bonus =   4; break;
+            case 13: race_bonus =  -4; break;
+            case 14: race_bonus =   8; break;
+            case 15: race_bonus =   5; break;
+            case 16: race_bonus =   3; break;
+            case 17: race_bonus =   4; break;
+            case 18: race_bonus = -10; break;
+            case 19: race_bonus =   6; break;
+            case 21: race_bonus =  10; break;
+            case 22: race_bonus =  -3; break;
+            case 23: race_bonus =  -6; break;
             default: break;
         }
         
