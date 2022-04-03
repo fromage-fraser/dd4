@@ -3710,6 +3710,7 @@ Spells in divination magiks include:
     detect good
     detect invis
     detect magic
+    detect curse
     locate object
     identify
     sense traps
@@ -4642,7 +4643,7 @@ mass invis              second spell            shield block
 holy word               unholy word             detect good
 blink                   second attack           pattern
 invis                   teleport                knock
-create spring           control weather
+create spring           control weather         detect curse
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -4719,7 +4720,7 @@ shield                  summon                  cast sleep
 fireball                mass invis              sense traps
 acid blast              pass door               dispel magic
 second spell            detect evil             detect good
-pattern                 breathe water
+pattern                 breathe water           detect curse
 
 True mages (those who don't change to warlocks or necromancers) may also
 learn these skills above level 30:
