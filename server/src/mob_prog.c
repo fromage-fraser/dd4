@@ -671,6 +671,46 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
           return -1;
         }
     }
+  
+  /* Add testing based on race, Owl 5/4/22 */
+  
+  if ( !str_cmp( buf, "race" ) )
+    {
+      switch ( arg[1] )  /* arg should be "$*" so just get the letter */
+        {
+        case 'i': lhsvl = mob->race;
+                  rhsvl = atoi( val );
+                  return mprog_veval( lhsvl, opr, rhsvl );
+        case 'n': if ( actor )
+                  {
+                    lhsvl = actor->race;
+                    rhsvl = atoi( val );
+                    return mprog_veval( lhsvl, opr, rhsvl );
+                  }
+                  else 
+                    return -1;
+        case 't': if ( vict )
+                  {
+                    lhsvl = vict->race;
+                    rhsvl = atoi( val );
+                    return mprog_veval( lhsvl, opr, rhsvl );
+                  }
+                  else
+                    return -1;
+        case 'r': if ( rndm )
+                  {
+                    lhsvl = rndm->race;
+                    rhsvl = atoi( val );
+                    return mprog_veval( lhsvl, opr, rhsvl );
+                  }
+                  else
+                    return -1;
+        default:
+          bug ( "Mob: %d bad argument to 'race'", mob->pIndexData->vnum ); 
+          return -1;
+        }
+    }
+
 
   if ( !str_cmp( buf, "class" ) )
     {
