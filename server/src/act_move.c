@@ -574,7 +574,7 @@ void move_char(CHAR_DATA *ch, int door)
                         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                              ||     ( to_room->sector_type == SECT_WATER_SWIM )
                              ||     ( to_room->sector_type == SECT_UNDERWATER ) )
-                             &&   ( ch->race == RACE_SAHUAGIN ) )
+                             &&   (  !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN ) )
                         {
                                 act_move ("$n swims $T.", ch, NULL, directions[door].name, TO_ROOM);
                         }
@@ -599,8 +599,8 @@ void move_char(CHAR_DATA *ch, int door)
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
                 ||  ( to_room->sector_type == SECT_UNDERWATER ) )
-                &&  ( ch->race == RACE_SAHUAGIN ) 
-                &&  ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) ) )
+                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN ) 
+                &&  ( !IS_SET(ch->act, PLR_WIZINVIS) ) )
         {
                 act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
         }
