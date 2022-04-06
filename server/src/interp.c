@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "faction.h"
 
 
 bool check_social (CHAR_DATA *ch, char *command, char *argument);
@@ -439,31 +440,37 @@ const struct cmd_type cmd_table [] =
         /*
          * Clan commands
          */
-        { "clantalk",   do_clantalk,    POS_SLEEPING,   0,   LOG_NORMAL  },
-        { ">",          do_clantalk,    POS_SLEEPING,       0,   LOG_NORMAL  },
-        { "cscore",     do_cscore,      POS_SLEEPING,       0,   LOG_NORMAL },
-        { "guild",      do_guild,       POS_SLEEPING,   0,   LOG_ALWAYS },
-        { "home",       do_home,        POS_FIGHTING,   0,   LOG_NORMAL },
+        { "clantalk",   do_clantalk,    POS_SLEEPING,   0,      LOG_NORMAL },
+        { ">",          do_clantalk,    POS_SLEEPING,   0,      LOG_NORMAL },
+        { "cscore",     do_cscore,      POS_SLEEPING,   0,      LOG_NORMAL },
+        { "guild",      do_guild,       POS_SLEEPING,   0,      LOG_ALWAYS },
+        { "home",       do_home,        POS_FIGHTING,   0,      LOG_NORMAL },
         { "leader",     do_leader,      POS_DEAD,       L_APP,  LOG_ALWAYS },
         { "ronin",      do_ronin,       POS_DEAD,       L_APP,  LOG_ALWAYS },
-        { "leav",       do_leav,        POS_DEAD,       0,   LOG_NORMAL },
-        { "leave",      do_leave,       POS_DEAD,       0,   LOG_NORMAL },
-        { "bounty",     do_bounty,      POS_SLEEPING,   0,   LOG_NORMAL },
-        { "promote",    do_promote,     POS_RESTING,    0,   LOG_NORMAL },
-        { "attack",     do_attack,      POS_SLEEPING,   0,   LOG_NORMAL },
+        { "leav",       do_leav,        POS_DEAD,       0,      LOG_NORMAL },
+        { "leave",      do_leave,       POS_DEAD,       0,      LOG_NORMAL },
+        { "bounty",     do_bounty,      POS_SLEEPING,   0,      LOG_NORMAL },
+        { "promote",    do_promote,     POS_RESTING,    0,      LOG_NORMAL },
+        { "attack",     do_attack,      POS_SLEEPING,   0,      LOG_NORMAL },
 
         /*
          *  Deity system commands; Gezhp
          */
-        { "pray",               do_pray,         POS_RESTING,   0,      LOG_NORMAL },
-        { "pantheon",           do_pantheon,     POS_DEAD,      0,      LOG_NORMAL },
-        { "pantheoninfo",       do_pantheoninfo, POS_DEAD,      L_IMM,  LOG_NORMAL },
-        { "pantheonrank",       do_pantheonrank, POS_DEAD,      L_IMM,  LOG_NORMAL },
+        { "pray",               do_pray,                POS_RESTING,    0,      LOG_NORMAL },
+        { "pantheon",           do_pantheon,            POS_DEAD,       0,      LOG_NORMAL },
+        { "pantheoninfo",       do_pantheoninfo,        POS_DEAD,       L_IMM,  LOG_NORMAL },
+        { "pantheonrank",       do_pantheonrank,        POS_DEAD,       L_IMM,  LOG_NORMAL },
+
+        /*
+         * Factions feature.
+         */
+        { "factions",   do_factions,    POS_DEAD,       L_IMM,  LOG_NORMAL },
+
 
         /*
          * End of list.
          */
-        { "",           0,              POS_DEAD,        0,  LOG_NORMAL }
+        { "",           0,              POS_DEAD,       0,      LOG_NORMAL }
 };
 
 

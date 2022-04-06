@@ -233,8 +233,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               499     /* Increased to 499, 1287 for soar. Replaced spy */
-#define MAX_PRE_REQ             1287    /* with soar in table so didn't increase MAX_FORM_SKILL -- Owl 29/3/22 */
+#define MAX_SKILL               500
+#define MAX_PRE_REQ             1287
 #define MAX_SPELL_GROUP         378
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
@@ -3133,6 +3133,7 @@ extern int gsn_chaos_blast;
 extern int gsn_detect_curse;
 extern int gsn_knife_toss;
 extern int gsn_soar;
+extern int gsn_factions;
 
 /*
  *  Deity gsns
@@ -4034,6 +4035,7 @@ bool    str_infix                       args( ( const char *astr, const char *bs
 bool    str_suffix                      args( ( const char *astr, const char *bstr ) );
 char *  capitalize                      args( ( const char *str ) );
 char *  capitalize_initial              args( ( const char *str ) );
+char *  capitalize_words                args( ( const char *str ) );
 char *  initial                         args( ( const char *str ) );
 void    append_file                     args( ( CHAR_DATA *ch, char *file, char *str ) );
 void    bug                             args( ( const char *str, int param ) );

@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       5902
+Playd       10367
 Note        0
 Room        72
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -29,7 +29,7 @@ Bounty      0
 Exp         -1
 Act         151000648
 Status      0
-AffdBy      536870912
+AffdBy      0
 Pos         7
 Prac        3
 SplPrac     2
@@ -67,7 +67,7 @@ RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       100
 ChSub       0
 Fame        0
-Saved       1646527232
+Saved       1649608194
 Patron      None~
 DeityTimer  360
 DeityFlags  0
@@ -90,9 +90,9 @@ DeityFavour Nystis~ 400
 DeityFavour Tractacus~ 400
 DeityFavour Brutus~ 600
 DeityFavour Morfus~ 600
-DeityType   0 0 0 0 0 0
-DeityPerson 0 0 0 0 0 0 0
-Boards      5 General 0 Ideas 0 Announce 0 Bugs 0 Personal 0
+DeityType   0 0 0 0 0 0 
+DeityPerson 0 0 0 0 0 0 0 
+Boards      5 General 0 Ideas 0 Announce 0 Bugs 0 Personal 0 
 Skll        100 'reserved'
 Skll        100 'acid blast'
 Skll        100 'inner fire'
@@ -146,7 +146,6 @@ Skll        100 'fireball'
 Skll        100 'fireshield'
 Skll        100 'flamestrike'
 Skll        100 'fly'
-Skll        100 '__EMPTY__'
 Skll        100 '__EMPTY__'
 Skll        100 'gate'
 Skll        100 'giant strength'
@@ -249,7 +248,6 @@ Skll        100 'choke'
 Skll        100 'break wrist'
 Skll        100 'snap_neck'
 Skll        100 'grapple'
-Skll        100 'fly'
 Skll        100 'flying headbutt'
 Skll        100 'gouge'
 Skll        100 'pugilism'
@@ -565,6 +563,9 @@ Skll        100 'dual parry'
 Skll        100 'addqp'
 Skll        100 'chaos blast'
 Skll        100 'detect curse'
+Skll        100 'knife toss'
+Skll        100 'soar'
+Skll        100 'factions'
 Skll        100 'mage base'
 Skll        100 'cleric base'
 Skll        100 'thief base'
@@ -590,7 +591,6 @@ Skll        100 'artist base'
 Skll        100 'barbarian base'
 Skll        100 'bard base'
 Skll        100 'teacher base'
-Aff         471  64   0   0  536870912
 End
 
 #END

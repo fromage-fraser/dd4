@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "faction.h"
 
 #if !defined( macintosh )
 extern  int     _filbuf         args( (FILE *) );
@@ -562,6 +563,7 @@ int     gsn_chaos_blast;
 int     gsn_detect_curse;
 int     gsn_knife_toss;
 int     gsn_soar;
+int     gsn_factions;
 
 /*
  *  Spell groups
@@ -841,6 +843,14 @@ void boot_db( void )
                         if ( skill_table[sn].pgsn )
                                 *skill_table[sn].pgsn = sn;
                 }
+        }
+
+        /*
+         * Initialize factions before the first area reset.
+         * See server/docs/factions.md for more information.
+         */
+        {
+                faction_init();
         }
 
         /*
@@ -3659,7 +3669,7 @@ void do_areas (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "Areas around level %d:\n\r", level);
         else
                 sprintf(buf, "Complete area list:\n\r");
-        
+
         sprintf(buf_all, "\n\r");
 
         for (pArea = area_first; pArea; pArea = pArea->next)
@@ -3695,7 +3705,7 @@ void do_areas (CHAR_DATA *ch, char *argument)
 
                         else
                                 sprintf(buf1, "(%3d %3d)   ", pArea->low_level, pArea->high_level);
- 
+
                         if (!(pArea->low_level == -4 && level))
                         {
                                 if (pArea->low_level == ROOM_LABEL_ALL || pArea->low_level == ROOM_LABEL_CLAN)
@@ -4086,7 +4096,7 @@ char *capitalize( const char *str )
 /*
  * Capitalizes initial of string only
  */
-char *capitalize_initial( const char *str )
+char *capitalize_initial(const char *str)
 {
         static char strcap [ MAX_STRING_LENGTH ];
         int  i;
@@ -4099,6 +4109,29 @@ char *capitalize_initial( const char *str )
 }
 
 /*
+ * Capitalize every word in a string
+ */
+char *capitalize_words(const char * const str)
+{
+        static char buf[MAX_STRING_LENGTH];
+        int i;
+        bool cap_next = TRUE;
+
+        for (i = 0; str[i] != '\0'; i++) {
+                buf[i] = str[i];
+                if (cap_next) {
+                        buf[i] = UPPER(buf[i]);
+                        cap_next = FALSE;
+                } else if (isspace(buf[i])) {
+                        cap_next = TRUE;
+                }
+        }
+
+        buf[i] = '\0';
+        return buf;
+}
+
+/*
  * Initial letter of a string, lower-cased.
  */
 char *initial (const char *str)
@@ -4107,7 +4140,6 @@ char *initial (const char *str)
         initial[0] = LOWER(str[0]);
         return initial;
 }
-
 
 /*
  * Append a string to a file.
