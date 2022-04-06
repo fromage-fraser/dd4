@@ -461,11 +461,6 @@ const struct cmd_type cmd_table [] =
         { "pantheonrank",       do_pantheonrank, POS_DEAD,      L_IMM,  LOG_NORMAL },
 
         /*
-         *  Temporary bullshit
-         */
-        { "initiative",         do_initiative,   POS_DEAD,      L_IMM,  LOG_NORMAL },
-
-        /*
          * End of list.
          */
         { "",           0,              POS_DEAD,        0,  LOG_NORMAL }
@@ -1154,7 +1149,7 @@ const struct social_type social_table [] =
                         "You raise an eyebrow at yourself.  That hurt!",
                         "$n raises an eyebrow at $mself.  That must have hurt!"
         },
-        
+
         /* OR THIS ONE -- Owl 2/3/22 */
         {
                 "facepalm",
@@ -1177,7 +1172,7 @@ const struct social_type social_table [] =
                         "You look down at your condition and faint.",
                         "$n looks down at $s condition and faints dead away."
         },
-        
+
         {
                 "fakerep",
                         "You report: 12874/13103 hp 9238/10230 mana 2483/3451 mv 2.31E13 xp.",
@@ -2883,7 +2878,7 @@ const struct social_type social_table [] =
                         "You twiddle your ears like Dumbo.",
                         "$n twiddles $s own ears like Dumbo."
         },
-        
+
         {
                 "type",
                         "You throw up yor handz in dizgust at yur losy typing skils.",

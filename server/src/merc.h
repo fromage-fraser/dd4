@@ -1376,12 +1376,6 @@ extern  WANTED_DATA *wanted_list_first;
 extern  WANTED_DATA *wanted_list_last;
 
 
-/*
- * Initiative system
- */
-DECLARE_DO_FUN( do_initiative );
-
-
 /***************************************************************************
  *                                                                         *
  *                   VALUES OF INTEREST TO AREA BUILDERS                   *
