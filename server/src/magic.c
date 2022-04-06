@@ -1642,7 +1642,7 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         af.type      = sn;
-        af.duration  = level;
+        af.duration  = level / 8;
         af.location  = APPLY_HITROLL;
         af.modifier  = -1;
         af.bitvector = AFF_CURSE;
@@ -3460,7 +3460,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
          */
 
         af.type      = sn;
-        af.duration  = level;
+        af.duration  = 2 + level / 5;
         af.location  = APPLY_STR;
         af.modifier  = -2;
         af.bitvector = AFF_POISON;
@@ -6627,7 +6627,7 @@ void spell_hand_of_lucifer( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type     = sn;
-        af.duration = level/2;
+        af.duration = level / 20;
         af.location = APPLY_HITROLL;
         af.modifier = -8;
         af.bitvector= AFF_HOLD;
