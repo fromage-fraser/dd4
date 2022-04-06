@@ -244,8 +244,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
-#define REVIEW_BUFFER_SIZE              300  /* bytes per line */
-#define REVIEW_BUFFER_LENGTH             20      /* lines per channel */
+#define REVIEW_BUFFER_SIZE              300     /* bytes per line */
+#define REVIEW_BUFFER_LENGTH             50     /* lines per channel */
 #define REVIEW_CHAT                       0
 #define REVIEW_MUSIC                      1
 #define REVIEW_SHOUT                      2
