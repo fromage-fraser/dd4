@@ -971,7 +971,7 @@ void do_cscore( CHAR_DATA *ch, char *argument )
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
         int          age_hours;
-        
+
         age_hours = (get_age( ch ) - 17) * 4;
 
         ansi_color( NTEXT, ch );
@@ -994,7 +994,7 @@ void do_cscore( CHAR_DATA *ch, char *argument )
                 get_age( ch ),
                 age_hours);
         strcat( buf1, buf );
-        
+
         sprintf( buf, "You belong to clan %s (%s).\n\r",
                 clan_table[ch->clan].who_name,
                 clan_table[ch->clan].name );
@@ -1678,37 +1678,53 @@ void do_weather( CHAR_DATA *ch, char *argument )
 void do_help( CHAR_DATA *ch, char *argument )
 {
         HELP_DATA *pHelp;
-        char buf [ MAX_STRING_LENGTH ];
+        char buf [MAX_STRING_LENGTH];
 
         if (argument[0] == '\0')
                 argument = "summary";
 
+        /* First, attempt to find an entry with the exact name */
         for (pHelp = help_first; pHelp; pHelp = pHelp->next)
         {
                 if (pHelp->level > get_trust(ch))
                         continue;
 
-                if (is_name(argument, pHelp->keyword))
+                if (is_full_name(argument, pHelp->keyword))
+                        break;
+        }
+
+        /* Then attempt a partial match */
+        if (!pHelp)
+        {
+                for (pHelp = help_first; pHelp; pHelp = pHelp->next)
                 {
-                        if (pHelp->level >= 0 && str_cmp(argument, "imotd"))
-                        {
-                                sprintf(buf, "{c[Help for: %s]{x\n\r\n\r",
-                                        pHelp->keyword);
-                                send_paragraph_to_char(buf, ch, 11);
-                        }
+                        if (pHelp->level > get_trust(ch))
+                                continue;
 
-                        /* Strip leading '.' to allow initial blanks */
-                        if ( pHelp->text[0] == '.' )
-                                send_to_char( pHelp->text+1, ch );
-                        else
-                                send_to_char( pHelp->text  , ch );
-
-                        return;
+                        if (is_name(argument, pHelp->keyword))
+                                break;
                 }
         }
 
-        sprintf(buf, "There is no help entry for '%s'.\n\r", argument);
-        send_to_char(buf, ch);
+        if (!pHelp)
+        {
+                sprintf(buf, "There is no help entry for '%s'.\n\r", argument);
+                send_to_char(buf, ch);
+                return;
+        }
+
+        if (pHelp->level >= 0 && str_cmp(argument, "imotd"))
+        {
+                sprintf(buf, "{c[Help for: %s]{x\n\r\n\r",
+                        pHelp->keyword);
+                send_paragraph_to_char(buf, ch, 11);
+        }
+
+        /* Strip leading '.' to allow initial blanks */
+        if ( pHelp->text[0] == '.' )
+                send_to_char( pHelp->text+1, ch );
+        else
+                send_to_char( pHelp->text  , ch );
 }
 
 
@@ -2937,12 +2953,12 @@ void do_train (CHAR_DATA *ch, char *argument)
                 send_to_char( "You commit yourself to strength training.\n\r", ch );
         }
         else if (!str_prefix("int", argument))
-        {       
+        {
                 ch->pcdata->stat_train = APPLY_INT;
                 send_to_char( "You will labour to sharpen your intellect.\n\r", ch );
         }
         else if (!str_prefix("wis", argument))
-        {       
+        {
                 ch->pcdata->stat_train = APPLY_WIS;
                 send_to_char( "You dedicate yourself to the pursuit of wisdom.\n\r", ch );
         }
