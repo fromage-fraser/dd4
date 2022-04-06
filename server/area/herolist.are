@@ -35,10 +35,10 @@ Here we honour those who attained the mighty rank of {WHERO{x on DD2:
 {wWarblade{B      (Thief)                 {wSherry{Y        (Necromancer){x
 {x
 
-See also HELP PAST HEROLIST.
+See also HELP DD3 HEROES and HELP PAST HEROLIST.
 ~
 
--1 'PAST HEROLIST'~
+-1 'DD3 HEROES'~
 
 Here we honour those who attained the mighty rank of {WHERO{x on DD3
 (after the cataclysm):
@@ -83,7 +83,46 @@ Here we honour those who attained the mighty rank of {WHERO{x on DD3
 {WNazareh{x      {M(Warrior){x
 {WBelial{x       {W(Satanist){x
 
-See also HELP DD2 HEROES, HELP PAST LEGENDS, and HELP PAST PKILLERS.
+See also HELP PAST HEROLIST, HELP DD2 HEROES, HELP PAST LEGENDS, and HELP PAST PKILLERS.
+~
+
+-1 'PAST HEROLIST'~
+
+Here we honour those who attained the mighty rank of {WHERO{x on DD4
+(prior to the restart):
+
+{WShroud{x           {MThug{x
+{WXeddicus{x         {YMage{x
+{WSonne{x            {RWerewolf{x
+{WNatas{x            {CBrawler{x
+{WKokain{x           {BNinja{x
+{WAdrioth{x          {CMonk{x
+{WDrakkyn{x          {RShifter{x
+{WAllurna{x          {BNinja{x
+{WDexx{x             {MKnight{x
+{WFiretongue{x       {YWarlock{x
+{WTruk{x             {MThug{x
+{WMondena{x          {GDruid{x
+{WLantrue{x          {GTemplar{x
+{WKiaransalee{x      {YNecromncr{x
+{WNebel{x            {MWarrior{x
+{WRaZe{x             {CMonk{x
+{WCrecent{x          {RVampire{x
+{WAzurna{x           {BThief{x
+{WSlythe{x           {MWarrior{x
+{WNinafer{x          {YMage{x
+{WRand{x             {YWarlock{x
+{WJenna{x            Bard{x
+{WConflict{x         {YMage{x
+{WCassius{x          {CM. Artist{x
+{WVixen{x            {BThief{x
+{WThoTh{x            {RVampire{x
+{WRift{x             {RShifter{x
+{WUzume{x            {CM. Artist{x
+{WShania{x           {GCleric{x
+
+See also HELP DD2 HEROES, HELP DD3 HEROES, HELP PAST LEGENDS, and HELP PAST PKILLERS.
+
 ~
 
 -1 'PAST LEGENDS'~
