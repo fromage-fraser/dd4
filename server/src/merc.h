@@ -1600,6 +1600,7 @@ DECLARE_DO_FUN( do_initiative );
 #define OBJ_DRAGON_FANGS           56
 #define OBJ_DRAGON_CLAWS           57
 #define OBJ_HYDRA_TEETH            58
+#define OBJ_SNAKE_BITE             59
 
 /* this will be for the quest mobs */
 #define QUEST_JUN1                              1
