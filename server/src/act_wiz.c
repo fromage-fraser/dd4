@@ -1099,10 +1099,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 }
         }
 
-        sprintf( buf, "Vnum: %d.  Sex: %s.  Room: %d.\n\r",
+        sprintf( buf, "Vnum: %d.  Sex: %s.  Race: %d.  Room: %d.\n\r",
                 IS_NPC( victim ) ? victim->pIndexData->vnum : 0,
                 victim->sex == SEX_MALE    ? "male"   :
                 victim->sex == SEX_FEMALE  ? "female" : "neutral",
+                victim->race,
                 !victim->in_room           ?        0 : victim->in_room->vnum );
         strcat( buf1, buf );
 
@@ -1146,7 +1147,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         if ( !IS_NPC( victim ) )
         {
                 sprintf( buf,
-                        "Thirst: %d.  Full: %d.  Drunk: %d.  Position: %s [%d.  Wimpy: %d.  Page Lines: %d.\n\r",
+                        "Thirst: %d.  Full: %d.  Drunk: %d.\n\r  Position: %s [%d].  Wimpy: %d.  Page Lines: %d.\n\r",
                         victim->pcdata->condition[COND_THIRST],
                         victim->pcdata->condition[COND_FULL  ],
                         victim->pcdata->condition[COND_DRUNK ],
@@ -3473,7 +3474,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                ch->race = value;
+                victim->race = value;
                 return;
         }
 

@@ -1132,7 +1132,7 @@ service.
   wear wield hold                       spells affect practice train whois
   list buy sell value donate
   recite brandish quaff zap           {WConfiguration:{x
-  {wlock unlock open close pick bash    config channels password autocoin
+  {wlock unlock open close pick bash      config channels password autocoin
   inventory equipment look compare      autoloot autosac autoexit autowield
   eat drink fill smear                  autolevel blank prompt color ansi
                                         pagelength attacks gag brief notell
@@ -2558,6 +2558,8 @@ and improves their performance in combat.
 
 PRAYER is similar to a group bless, and its effects are much more
 powerful.
+
+See 'HELP PRAY' for information on how to pray to DEITIES.
 ~
 
 0 BLINDNESS~
