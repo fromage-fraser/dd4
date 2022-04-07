@@ -146,7 +146,9 @@
                 say The City thanks you for your brave service.
                 mpoload 25307 35
                 give mithril $n
-                say May this choker serve you well in combat.
+                mpoload 25307 35
+                give mithril $n
+                say May these chokers serve you well in combat.
                 mpjunk scepter
         else
                 mpecho $I examines $O closely.
