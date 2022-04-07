@@ -18,10 +18,16 @@ The Reaper of the Dead awaits here to decide your fate.
 Ever smiling, he doesn't seems to mind being stuck here for eternity.
 ~
 2|512 8|128|8192 -1000 S
-100 0 0 0d0+0 0d0+0
+50 0 0 0d0+0 0d0+0
 96 0
 8 8 0
-
+>all_greet_prog 100~
+c 'giant strength' $n
+mpoload 401 1
+give tear $n
+mpforce $n quaff tear
+~
+|
 #402
 lost soul~
 A lost soul~
@@ -45,7 +51,7 @@ a drop of elves' tear~
 A small drop of clear liquid is drying up fast on the ground.~
 ~
 10 64 1
-1~ detect invis~ ~ ~
+30~ detect invis~ ~ ~
 5 0 0
 
 #402
