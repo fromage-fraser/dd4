@@ -1,0 +1,3598 @@
+#AREA Owl~ Undersea~
+15 25 5 100
+
+#MOBILES
+#27000
+megalodon shark giant~
+the megalodon~
+A {Wgigantic shark{x swims here, on the lookout for prey.
+~
+You are face to face with one of the largest and most powerful predators to
+have ever lived; he must be 20 metres long!  His jaws are full of gigantic
+serrated teeth, and open wide enough for a full-grown man to walk around
+inside them. Best hope he's not hungry.
+~
+4|32|64 8|32|512|33554432|67108864 -250 S
+20 0 0 0d0+0 0d0+0
+172 0
+8 8 2
+>all_greet_prog 1~
+mpecho The megalodon lunges suddenly at you!
+mpkill $n
+~
+|
+#27001
+vampire squid~
+a vampire squid~
+A {Rvampire squid{x floats past you, turning itself inside-out.
+~
+The vampire squid is a blood-red cephalopod with milky blue eyes and spiny
+tentacles. It floats peacefully through the sea, waiting for food to fall
+into its clutches.
+~
+64 8|32|512|67108864 50 S
+18 0 0 0d0+0 0d0+0
+40 0
+8 8 2
+>rand_prog 2~
+mpecho {bA cloud of black ink forms in the water.{x
+sneak
+north
+hide
+~
+>rand_prog 2~
+mpecho {bA cloud of black ink forms in the water.{x
+sneak
+south
+hide
+~
+>rand_prog 2~
+mpecho {bA cloud of black ink forms in the water.{x
+sneak
+east
+hide
+~
+>rand_prog 2~
+mpecho {bA cloud of black ink forms in the water.{x
+sneak
+west
+hide
+~
+>rand_prog 2~
+mpecho {bA cloud of black ink forms in the water.{x
+sneak
+up
+hide
+~
+>rand_prog 2~
+mpecho {bA cloud of black ink forms in the water.{x
+sneak
+down
+hide
+~
+>rand_prog 7~
+vis
+~
+|
+#27002
+spider crab~
+a spider crab~
+A long-legged {mspider crab{x scuttles from rock to rock, snapping its claws.
+~
+The spider crab is large and heavy for a crab, with very long legs.  It
+doesn't seem much interested in you, busying itself looking for food
+and material to camouflage itself with.
+~
+4|64 512|67108864 0 S
+22 0 0 0d0+0 0d0+0
+32 0
+8 8 2
+>rand_prog 5~
+mpasound ::KLALKLAKALKALKAK::
+~
+|
+#27003
+sea anemone~
+a sea anemone~
+A sea anemone is here, waving its tentacles in the gentle currents.
+~
+The garishly-colored sea anemone spends most of its time attached to
+rocks waiting for fish to pass close enough to get ensnared in its
+venom-filled tentacles.
+~
+2|64 8|32|256|67108864 -100 S
+21 0 0 0d0+0 0d0+0
+63 0
+8 8 0
+#27004
+anglerfish fish~
+the anglerfish~
+An {Canglerfish{x lurks here, waiting to ambush its prey.
+~
+This hideous, carnivorous fish has a large head and a mouth full of
+long fang-like teeth that angle inwards for efficient prey grabbing.
+It is an ambush predator, lying camouflaged in dark nooks and crannies
+for unsuspecting prey to wander by.  Will you be on the menu today?
+~
+2|32|64 8|32|512|65536|8388608|67108864 0 S
+24 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+#27005
+baby dolphin~
+a baby dolphin~
+A {cbaby dolphin{x swims here.  He seems distressed.
+~
+While technically a baby, this bottlenose dolphin probably still
+weighs over 200lbs. He seems to be swimming rather frantically about,
+as though he's desperately looking for someone or something.
+~
+64|128 8|32|512|67108864 500 S
+20 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+>rand_prog 5~
+mpasound ::ickickiiiick!::
+~
+|
+#27006
+dolphin female~
+the female dolphin~
+A {cfemale dolphin{x swims frantically about.
+~
+This large, female bottlenose dolphin is swimming frantically about;
+you get the feeling she's looking for someone or something.
+Better not get in her way!
+~
+64 8|32|512|67108864 600 S
+23 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+>all_greet_prog 100~
+follow baby
+kiss baby
+~
+>rand_prog 5~
+mpasound ::ICKICKICKIIICKCICK!::
+~
+|
+#27007
+sea lion sealion~
+a sea lion~
+{yA sea lion playfully cavorts in the water.{x
+~
+The sea lion is a pinniped with long foreflippers, short, thick hair,
+and a big chest and belly.  It resembles nothing so much as a playful
+aquatic dog.  It's curious about you, but more interested in finding
+something to eat.  Arf arf!
+~
+64 8|32|512|67108864 0 S
+21 0 0 0d0+0 0d0+0
+44 0
+8 8 0
+>rand_prog 3~
+mpasound {W::Arf!:: ::Arf Arf!::{x
+~
+|
+#27008
+sea snake seasnake~
+a sea snake~
+A {Bs{We{Ba {Ws{Bn{Wa{Bk{We{x glides through the ocean, rippling and writhing.
+~
+The sea snake has a laterally-compressed body and paddle-like tail,
+giving it an eel-ish appearance.  It has a gentle disposition, but
+will respond aggressively if provoked.
+
+Some sea snakes are venomous, but you're not sure how to tell which
+is which.
+~
+64 8|32|512|32768|67108864 0 S
+19 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27009
+sea snake seasnake~
+a sea snake~
+A {Bs{We{Ba {Ws{Bn{Wa{Bk{We{x glides through the ocean, rippling and writhing.
+~
+The sea snake has a laterally-compressed body and paddle-like tail,
+giving it an eel-ish appearance.  It has a gentle disposition, but
+will respond aggressively if provoked.
+
+Some sea snakes are venomous, but you're not sure how to tell which
+is which.
+~
+64 8|32|512|32768|67108864 -300 S
+19 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+>greet_prog 2~
+mpecho A {Bs{We{Ba {Ws{Bn{Wa{Bk{We{x lashes out suddenly at you!
+mpkill $n
+~
+|
+#27010
+cuttlefish~
+a cuttlefish~
+The {Mcuttlefish{x patrols the depths, its fins rippling along its sides.
+~
+The cuttlefish is a cephalopod similar in appearance to an octopus or
+squid, with a flattened body bordered by a pair of narrow, undulating
+fins it uses to manoeuvre.  It's covered in millions of chromatophores,
+which let it blend in with its surroundings.
+
+This one is unusually large and has a somewhat fearsome demeanour, but
+doesn't appear to be too bothered by your presence, as it has decided
+you're unlikely to make a good meal.
+~
+64 8|32|512|1048576|67108864 -270 S
+17 0 0 0d0+0 0d0+0
+40 0
+8 8 2
+>rand_prog 3~
+mpecho A {Mcuttlefish{x attempts to blend in with its surroundings...
+hide
+~
+>rand_prog 4~
+vis
+~
+|
+#27011
+jellyfish~
+a jellyfish~
+A {Cjellyfish{w drifts through the water, its bell pulsating.
+~
+Gelatinous and transparent, the jellyfish pulsates its domelike bell
+to push itself through the water, as its long, stinging tentacles
+dangle underneath it.
+~
+4|64 256|32768|1048576|67108864 0 S
+15 0 0 0d0+0 0d0+0
+59 0
+8 8 0
+#27012
+jellyfish~
+a jellyfish~
+A {Cjellyfish{x drifts through the water, its bell pulsating.
+~
+Gelatinous and transparent, the jellyfish pulsates its domelike bell
+to push itself through the water, as its long tentacles dangle
+underneath it.
+~
+4|64 256|32768|1048576|67108864 0 S
+15 0 0 0d0+0 0d0+0
+59 0
+8 8 1
+#27013
+goblin shark~
+a goblin shark~
+A {Ggoblin shark{x moves sluggishly through the brine.
+~
+This unusual shark has a distinctive profile with an elongated, flat
+snout, and highly protrusile jaws containing prominent nail-like teeth.
+Happier at greater depths, you suspect there's some reason these sizeable
+predators have migrated closer to the surface.
+~
+64 8|32|512|67108864 -125 S
+16 0 0 0d0+0 0d0+0
+44 0
+8 8 2
+>greet_prog 10~
+mpecho A {Ggoblin shark{x turns suddenly to attack you!
+mpkill $n
+~
+|
+#27014
+porcupinefish fish porcupine~
+a porcupinefish~
+A {Yporcupinefish{x inflates herself, alarmed at your presence!
+~
+This largeish, round fish is covered in sharp spines, which radiate
+outwards when it is inflated.  You know some porcupinefish species
+are poisonous, but aren't sure how to tell which ones.
+~
+64 8|32|512|8192|67108864 0 S
+15 0 0 0d0+0 0d0+0
+0 0
+8 8 2
+#27015
+porcupine fish porcupinefish~
+a porcupinefish~
+A {Yporcupinefish{x inflates himself, alarmed at your presence!
+~
+This largeish, round fish is covered in sharp spines, which radiate
+outwards when it is inflated.  You know some porcupinefish species
+are poisonous, but aren't sure how to tell which ones.
+~
+64 8|32|512|8192|67108864 -300 S
+15 0 0 0d0+0 0d0+0
+44 0
+8 8 1
+#27016
+a giant lobster~
+a giant lobster~
+A {Rgiant lobster{x scuttles about the undersea cave, clacking its large claws.
+~
+The giant lobster has a long body covered by a protective exoskeleton
+which terminates in a heavily-armoured, muscular tail. Three of its
+five pairs of legs have claws, including the first pair, which are much
+larger than the others.
+~
+64 8192|67108864 -60 S
+23 0 0 0d0+0 0d0+0
+32 0
+8 8 2
+>rand_prog 5~
+mpasound ::CLACKCLACKCLACK::
+~
+|
+#27017
+kraken octopus~
+the kraken~
+{GThe largest octopus you've ever seen bristles at your intrusion.{x
+~
+The largest octopus you've ever seen resides here; it looks big enough
+to pull a sailing ship underwater, and seems VERY angry at your intrusion
+into its domain!
+~
+2|32|64 8|32|512|8192|8388608|67108864 0 S
+25 0 0 0d0+0 0d0+0
+168 0
+8 8 2
+>all_greet_prog 100~
+mpecho {GThe huge kraken lunges at you, its tentacles flailing!{x
+mpkill $n
+~
+>rand_prog 2~
+mpasound ::shLOooOOOoOooRp::
+~
+>rand_prog 2~
+mpasound ::SHLOoOOoOOOOORP::
+~
+|
+#27018
+sahuagin warrior~
+a sahuagin warrior~
+A sahuagin warrior swims purposefully, fiercely alert.
+~
+The sahuagin warrior is fish-like yet humanoid in appearance, with a
+finned tail and webbed feet and arms.  You can tell by his armour and
+demeanour that this one is a guard of some sort, but employed by whom
+to do what you couldn't say.
+~
+64 8|32|512|67108864 -400 S
+23 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>all_greet_prog 100~
+if race($n) == 19
+    if sex($n) == 1
+        say Brother!  What are you doing so far from Ota'ar Dar?
+        say No, it doesn't matter.  I have a very important job to do...
+        if rand(20)
+            sigh
+            north
+            break
+        else
+        if rand(20)
+            sigh
+            east
+            break
+        else
+        if rand(20)
+            sigh
+            south
+            break
+        else
+        if rand(20)
+            sigh
+            down
+            break
+        else
+        if rand(20)
+            sigh
+            west
+            break
+        else
+        sigh
+        north
+        break
+        endif
+        endif
+        endif
+        endif
+        endif
+    else
+    if sex($n) == 2
+        say Sister!  What are you doing so far from Ota'ar Dar?
+        say No, it doesn't matter.  I have a very important job to do...
+        if rand(20)
+            sigh
+            north
+            break
+        else
+        if rand(20)
+            sigh
+            east
+            break
+        else
+        if rand(20)
+            sigh
+            south
+            break
+        else
+        if rand(20)
+            sigh
+            down
+            break
+        else
+        if rand(20)
+            sigh
+            west
+            break
+        else
+        sigh
+        south
+        break
+        endif
+        endif
+        endif
+        endif
+        endif
+    else
+    if sex($n) == 3
+        say Clutchmate!  What are you doing so far from Ota'ar Dar?
+        say No, it doesn't matter.  I have a very important job to do...
+        if rand(20)
+            sigh
+            north
+            break
+        else
+        if rand(20)
+            sigh
+            east
+            break
+        else
+        if rand(20)
+            sigh
+            south
+            break
+        else
+        if rand(20)
+            sigh
+            down
+            break
+        else
+        if rand(20)
+            sigh
+            west
+            break
+        else
+        sigh
+        east
+        break
+        endif
+        endif
+        endif
+        endif
+        endif
+    endif
+    endif
+    endif
+endif
+~
+|
+#0
+
+
+#OBJECTS
+#27000
+jaws~
+savage jaws~
+The jaws of a giant sea predator float through the water here.~
+~
+5 128 8192
+0~ 1~ 6~ 10~
+200 0 0
+A
+19 8
+A
+18 8
+#27001
+pool sticky bioluminescent mucus globules~
+bioluminescent mucus~
+Globules of sticky, bioluminescent mucus float through the water here.~
+~
+4 1 16384
+18~ 3~ 3~ colour spray~
+2 0 0
+#27002
+orange carapace large~
+a large orange carapace~
+An orange crab carapace lies here, adorned with sponges and other marine detritus.~
+~
+9 0 1|1024|536870912
+0~ 1~ 6~ 11~
+10 0 0
+A
+17 -20
+#27003
+pieces sponge~
+some pieces of sea sponge~
+Pieces of cut-up sea sponge lie here.~
+~
+13 4096 1|16384
+0~ 1~ 6~ 11~
+1 0 0
+#27004
+conch shell~
+a conch shell~
+A large conch shell lies here.~
+~
+23 0 1|16384
+0~ 1~ 6~ 11~
+1 0 0
+#27005
+venomous tentacles~
+venomous tentacles~
+A sea anemone's venomous tentacles float through the water here.~
+~
+5 2 8192
+0~ 1~ 6~ 2~
+1 0 0
+#27006
+lure anglerfish~
+an anglerfish lure~
+A fleshy stalk with a glowing tip floats through the water here.~
+~
+1 1 1
+0~ 1~ 6~ 11~
+1 0 0
+A
+12 15
+E
+lure~
+The anglerfish's lure consists of a luminescent organ called an 'esca'
+at the tip of a modified dorsal ray called the illicium. The organ has
+been hypothesised to serve both the obvious purpose of luring prey in
+dark, deep-sea environments, but also serves to call males' attention
+to the females to facilitate mating.~
+#27007
+fanged maw hideous~
+a hideous fanged maw~
+The ripped-out jaw of an anglerfish floats through the water here.~
+~
+5 0 8192
+0~ 1~ 6~ 10~
+1 0 0
+A
+19 6
+#27008
+teeth~
+teeth~
+A sea lion's teeth float through the water here.~
+~
+5 0 8192
+0~ 1~ 6~ 10~
+3 0 0
+A
+18 10
+#27009
+eggs clutch sea~
+a clutch of sea snake eggs~
+A clutch of sea snake eggs are here.~
+~
+26 0 1|16384
+45~ cure critical~ ~ ~
+1 0 0
+E
+clutch eggs~
+You have heard that venomous sea snake eggs have unusual, paradoxical
+properties of revitalisation.  Could it be true?~
+#27010
+ink sac organ gelatinous~
+ink sac~
+A gelatinous, inky organ floats here.~
+~
+4 4096 16384
+20~ 1~ 6~ blindness~
+1 0 0
+E
+ink sac organ gelatinous~
+The ink sac is a muscular bag which originated as an extension of the
+hind gut; it is a modified hypobranchial gland.  It lies beneath the
+gut and opens into the anus, into which its contents � almost pure
+melanin � can be squirted; its proximity to the base of the funnel
+means that the ink can be distributed by ejected water as the cephalopod
+uses its jet propulsion. The ejected cloud of melanin is bound by mucus
+particles, so it forms a lump approximately the size and shape of the
+cephalopod, fixing the predator's attention while the mollusc itself
+makes a hasty escape.  GROSS.~
+#27011
+fluorescent slime~
+fluorescent slime~
+You see fluorescent slime here.~
+~
+28 1|32 1|16384
+15~ pass door~ cure poison~ ~
+1 0 0
+#27012
+nail-like teeth~
+nail-like teeth~
+The jaw of some gruesome undersea creature floats here.~
+~
+5 128|4096 1|8192
+0~ 1~ 6~ 10~
+3 0 0
+A
+19 -8
+A
+18 -8
+#27013
+shark egg sac~
+a shark's egg sac~
+A shark's egg sac floats through the water here.~
+~
+26 0 1|16384
+30~ infravision~ cure blindness~ ~
+1 0 0
+#27014
+claws large~
+large claws~
+Some large claws float in the water here.~
+~
+5 128|4096 8192
+0~ 1~ 6~ 5~
+15 0 0
+#27015
+feeding tentacle~
+a huge feeding tentacle~
+A huge feeding tentacle floats in the water here.~
+~
+5 16384 8192
+0~ 1~ 6~ 12~
+300 0 0
+A
+19 20
+#27016
+mysterious amulet~
+a mysterious amulet~
+You see a mysterious amulet is here.~
+~
+18 1|64 1|16384
+0~ 1~ 6~ 11~
+1 0 0
+E
+mysterious amulet~
+This large amulet has a very finely-etched relief of a city on it.  The city
+looks like a giant wagon-wheel, with 6 large segments resembling negative space
+around the wheel's "spokes" containing three banded rings of  buildings
+perpendicular to them.  The sections with buildings in them are connected to
+each other by bridges.
+
+Outside the city are the dark outlines of irregularly-shaped islands.  Curious.
+
+The amulet glows unnaturally, and carries the distinct feeling of magic about it.
+
+~
+#27017
+spiked pauldron~
+a spiked pauldron~
+A spiked pauldron is here.~
+~
+9 16|64 1|4
+0~ 1~ 6~ 11~
+8 0 0
+A
+17 -10
+#27018
+crude trident~
+a crude trident~
+A crude trident is here.~
+~
+5 16|64 1|8192
+0~ 1~ 6~ 2~
+10 0 0
+A
+18 8
+#27019
+purple loincloth tasselled~
+a purple loincloth~
+A tasselled purple loincloth is here.~
+~
+9 0 1|2048
+0~ 1~ 6~ 11~
+2 0 0
+#27020
+potion breathe water~
+a potion of breathe water~
+A potion of breathe water.~
+~
+10 64 1|4096|8192|16384
+50~ armor~ ~ ~
+1 0 0
+#27021
+letter seal~
+a letter with an unusual seal~
+A letter with an unusual seal is here.~
+~
+2 0 1|16384
+0~ ~ ~ ~
+1 0 0
+E
+letter seal unusual~
+The seal resembles a city, shaped like a spoked wheel divided into 3 concentric
+rings.  You remove it and read the letter:
+
+"From Elb'kl Ala, King of Ota'ar Dar, to Klaabu of the Midgaard Morkoth.
+
+While our uneasy truce with the cursed Alu'Tel'Quessir holds, we continue to
+utilise any and all backchannels to seek our advantage, desiring most to drive
+them from our realm forever and to reclaim the lands of ours they now occupy.
+
+I therefore send you this letter in the hands of one of my most trusted emissaries
+in the hope that he might convince you to meet with me and my princes, seeking an
+alliance to our mutual benefit and the setting aside of old scores in the face of
+a common enemy.
+
+Send my emissary back, unharmed, with news of your decision.
+
+
+-Elb'kl Ala"~
+#0
+
+
+#ROOMS
+#27000
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the east it becomes too shallow to remain submerged, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27001
+D2
+~
+~
+0 -1 27011
+D3
+~
+~
+0 -1 27007
+D4
+~
+~
+0 -1 213
+D5
+~
+~
+0 -1 27028
+S
+#27001
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the east jagged coastal rocks prevent further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27002
+D2
+~
+~
+0 -1 27000
+D3
+~
+~
+0 -1 27006
+D4
+~
+~
+0 -1 214
+D5
+~
+~
+0 -1 27029
+S
+#27002
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the east jagged coastal rocks prevent further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27003
+D2
+~
+~
+0 -1 27001
+D3
+~
+~
+0 -1 27005
+D4
+~
+~
+0 -1 217
+D5
+~
+~
+0 -1 27030
+S
+#27003
+Below the Frozen Ocean~
+{WYou are just below the frozen ocean's surface; it's fairly calm and quite light,
+but extremely cold--you probably don't want to spend too long here!
+
+To the north huge blocks of ice block further passage, while to the east jagged
+coastal rocks prevent your movement. You may travel in any other direction.{x
+~
+0 131072 8
+D2
+~
+~
+0 -1 27002
+D3
+~
+~
+0 -1 27004
+D4
+~
+~
+0 -1 218
+D5
+~
+~
+0 -1 27031
+S
+#27004
+Below the Frozen Ocean~
+{WYou are just below the frozen ocean's surface; it's fairly calm and quite light,
+but extremely cold--you probably don't want to spend too long here!
+
+To the north and west huge blocks of ice block further passage. You may travel
+in any other direction.{x
+~
+0 131072 8
+D1
+~
+~
+0 -1 27003
+D2
+~
+~
+0 -1 27005
+D4
+~
+~
+0 -1 219
+D5
+~
+~
+0 -1 27032
+S
+#27005
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+The sea hazes out in every direction you look; you may travel in any direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27004
+D1
+~
+~
+0 -1 27002
+D2
+~
+~
+0 -1 27006
+D3
+~
+~
+0 -1 27010
+D4
+~
+~
+0 -1 220
+D5
+~
+~
+0 -1 27033
+S
+#27006
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+The sea hazes out in every direction you look; you may travel in any direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27005
+D1
+~
+~
+0 -1 27001
+D2
+~
+~
+0 -1 27007
+D3
+~
+~
+0 -1 27009
+D4
+~
+~
+0 -1 221
+D5
+~
+~
+0 -1 27034
+S
+#27007
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+The sea hazes out in every direction you look; you may travel in any direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27006
+D1
+~
+~
+0 -1 27000
+D2
+~
+~
+0 -1 27014
+D3
+~
+~
+0 -1 27008
+D4
+~
+~
+0 -1 216
+D5
+~
+~
+0 -1 27035
+S
+#27008
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the west, a large land mass prevents further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27009
+D1
+~
+~
+0 -1 27007
+D2
+~
+~
+0 -1 27015
+D4
+~
+~
+0 -1 229
+D5
+~
+~
+0 -1 27036
+S
+#27009
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the west, a large land mass prevents further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27010
+D1
+~
+~
+0 -1 27006
+D2
+~
+~
+0 -1 27008
+D4
+~
+~
+0 -1 233
+D5
+~
+~
+0 -1 27037
+S
+#27010
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the west, a large land mass prevents further movement, and the water is too
+shallow to remain submerged to the north. You may travel east, south, up, or down
+from here.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27005
+D2
+~
+~
+0 -1 27009
+D4
+~
+~
+0 -1 234
+D5
+~
+~
+0 -1 27038
+S
+#27011
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the east jagged coastal rocks prevent further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27000
+D2
+~
+~
+0 -1 27012
+D3
+~
+~
+0 -1 27014
+D4
+~
+~
+0 -1 215
+D5
+~
+~
+0 -1 27039
+S
+#27012
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the east a sheer cliff prevents further movement, and the water grows too
+agitated to the south to enter, but you may travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27011
+D3
+~
+~
+0 -1 27013
+D4
+~
+~
+0 -1 222
+D5
+~
+~
+0 -1 27040
+S
+#27013
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+To the south large chunks of undersea ice make the waters impassable, but you may
+travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27014
+D1
+~
+~
+0 -1 27012
+D3
+~
+~
+0 -1 27016
+D4
+~
+~
+0 -1 223
+D5
+~
+~
+0 -1 27041
+S
+#27014
+Below the Ocean Surface~
+{CYou are just below the ocean's surface; it's fairly calm and quite light here.
+
+The sea hazes out in every direction you look; you may travel in any direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27007
+D1
+~
+~
+0 -1 27011
+D2
+~
+~
+0 -1 27013
+D3
+~
+~
+0 -1 27015
+D4
+~
+~
+0 -1 224
+D5
+~
+~
+0 -1 27042
+S
+#27015
+Below the Stormy Ocean Surface~
+{BYou are just below the ocean's surface; it's rather dark here, and the sea is
+very agitated, making movement exhausting.
+
+You detect no impediment to your travel in any direction.{x
+~
+0 1|8192 8
+D0
+~
+~
+0 -1 27008
+D1
+~
+~
+0 -1 27014
+D2
+~
+~
+0 -1 27016
+D3
+~
+~
+0 -1 27027
+D4
+~
+~
+0 -1 226
+D5
+~
+~
+0 -1 27043
+S
+#27016
+Below the Raging Ocean Surface~
+{BYou are just below the ocean's surface; it's very dark here, and the sea is
+extremely agitated by the storm overhead, making movement exhausting.
+
+You detect no physical impediment to your travel in any direction, but expect
+quite a struggle.{x
+~
+0 1|8192 8
+D0
+~
+~
+0 -1 27015
+D1
+~
+~
+0 -1 27013
+D2
+~
+~
+0 -1 27017
+D3
+~
+~
+0 -1 27020
+D4
+~
+~
+0 -1 225
+D5
+~
+~
+0 -1 27044
+S
+#27017
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the south and east volcanic lava flows prevent your movement, but you may
+travel freely in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27016
+D3
+~
+~
+0 -1 27018
+D4
+~
+~
+0 -1 227
+D5
+~
+~
+0 -1 27045
+S
+#27018
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+The clear waters stretch out in all directions, you may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27020
+D1
+~
+~
+0 -1 27017
+D2
+~
+~
+0 -1 27019
+D3
+~
+~
+0 -1 27022
+D4
+~
+~
+0 -1 231
+D5
+~
+~
+0 -1 27046
+S
+#27019
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the south and east volcanic lava flows prevent your movement, but you may
+travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27018
+D3
+~
+~
+0 -1 27021
+D4
+~
+~
+0 -1 236
+D5
+~
+~
+0 -1 27047
+S
+#27020
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+The waters stretch out in all directions, you may travel where you wish.
+You notice the waters are noticeably darker and more agitated to the east.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27027
+D1
+~
+~
+0 -1 27016
+D2
+~
+~
+0 -1 27018
+D3
+~
+~
+0 -1 27023
+D4
+~
+~
+0 -1 228
+D5
+~
+~
+0 -1 27048
+S
+#27021
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the south and west volcanic lava flows prevent your movement, but you may
+travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27022
+D1
+~
+~
+0 -1 27019
+D4
+~
+~
+0 -1 240
+D5
+~
+~
+0 -1 27049
+S
+#27022
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+The clear waters stretch out in all directions, you may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27023
+D1
+~
+~
+0 -1 27018
+D2
+~
+~
+0 -1 27021
+D3
+~
+~
+0 -1 27024
+D4
+~
+~
+0 -1 237
+D5
+~
+~
+0 -1 27050
+S
+#27023
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+The clear waters stretch out in all directions, you may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27026
+D1
+~
+~
+0 -1 27020
+D2
+~
+~
+0 -1 27022
+D3
+~
+~
+0 -1 27025
+D4
+~
+~
+0 -1 232
+D5
+~
+~
+0 -1 27051
+S
+#27024
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the south and west steeply-rising underwater land prevents your movement,
+but you may travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27025
+D1
+~
+~
+0 -1 27022
+D4
+~
+~
+0 -1 241
+D5
+~
+~
+0 -1 27052
+S
+#27025
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the north and west steeply-rising underwater banks prevents your movement,
+but you may travel in any other direction.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27023
+D2
+~
+~
+0 -1 27024
+D4
+~
+~
+0 -1 238
+D5
+~
+~
+0 -1 27054
+S
+#27026
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the west an undersea land mass prevents further travel, while to the north
+you can see the underwater moorings of a small dock--you'll have to go up to
+get to it, though.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27027
+D2
+~
+~
+0 -1 27023
+D4
+~
+~
+0 -1 235
+S
+#27027
+Below the Surface of the Yeats Sea~
+{CYou are just below the surface of the tropical Yeats sea; it's calm, warm,
+and very light here.
+
+To the north a steeply-rising underwater bank prevents your movement, but you
+may travel in any other direction.
+
+The waters grow dark and agitated to the east.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27015
+D2
+~
+~
+0 -1 27020
+D3
+~
+~
+0 -1 27026
+D4
+~
+~
+0 -1 230
+D5
+~
+~
+0 -1 27055
+S
+#27028
+Deeper Down~
+{cYou are a fair way below the ocean's surface; it's calm here, but starting
+to grow darker.
+
+To the east the ocean floor rises steeply to a river mouth, but you may travel
+in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27029
+D2
+~
+~
+0 -1 27039
+D3
+~
+~
+0 -1 27035
+D4
+~
+~
+0 -1 27000
+D5
+~
+~
+0 -1 27079
+S
+#27029
+Deeper Down~
+{cYou are a fair way below the ocean's surface; it's calm here, but starting
+to grow darker.
+
+To the east a steep coastal shelf prevents further movement, but you may travel
+in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27030
+D2
+~
+~
+0 -1 27028
+D3
+~
+~
+0 -1 27034
+D4
+~
+~
+0 -1 27001
+D5
+~
+~
+0 -1 27077
+S
+#27030
+Deeper Down~
+{cYou are a fair way below the ocean's surface; it's calm here, but starting
+to grow darker.
+
+To the east a steep coastal shelf prevents further movement, but you may travel
+in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27031
+D2
+~
+~
+0 -1 27029
+D3
+~
+~
+0 -1 27033
+D4
+~
+~
+0 -1 27002
+D5
+~
+~
+0 -1 27076
+S
+#27031
+In the Freezing Deep~
+{CYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker, and it is VERY cold.
+
+To the north, a huge ice wall blocks further passage, while to the east a
+coastal shelf prevents your movement. You may travel in any other direction.{x
+~
+0 131072 8
+D2
+~
+~
+0 -1 27030
+D3
+~
+~
+0 -1 27032
+D4
+~
+~
+0 -1 27003
+D5
+~
+~
+0 -1 27075
+S
+#27032
+In the Freezing Deep~
+{CYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker, and it is VERY cold.
+
+To the north and west huge ice walls block further passage, but you may travel
+in any other direction.{x
+~
+0 131072 8
+D1
+~
+~
+0 -1 27031
+D2
+~
+~
+0 -1 27033
+D4
+~
+~
+0 -1 27004
+D5
+~
+~
+0 -1 27073
+S
+#27033
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27032
+D1
+~
+~
+0 -1 27030
+D2
+~
+~
+0 -1 27034
+D3
+~
+~
+0 -1 27038
+D4
+~
+~
+0 -1 27005
+D5
+~
+~
+0 -1 27072
+S
+#27034
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27033
+D1
+~
+~
+0 -1 27029
+D2
+~
+~
+0 -1 27035
+D3
+~
+~
+0 -1 27037
+D4
+~
+~
+0 -1 27006
+D5
+~
+~
+0 -1 27074
+S
+#27035
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27034
+D1
+~
+~
+0 -1 27028
+D2
+~
+~
+0 -1 27042
+D3
+~
+~
+0 -1 27036
+D4
+~
+~
+0 -1 27007
+D5
+~
+~
+0 -1 27078
+S
+#27036
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the west a large land mass prevents further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27037
+D1
+~
+~
+0 -1 27035
+D2
+~
+~
+0 -1 27043
+D4
+~
+~
+0 -1 27008
+D5
+~
+~
+0 -1 27069
+S
+#27037
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the west a large land mass prevents further movement, but you may travel in
+any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27038
+D1
+~
+~
+0 -1 27034
+D2
+~
+~
+0 -1 27036
+D4
+~
+~
+0 -1 27009
+D5
+~
+~
+0 -1 27070
+S
+#27038
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the west a large land mass prevents further movement, while a steep sandy
+shelf to the north prevents travel in that direction.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27033
+D2
+~
+~
+0 -1 27037
+D4
+~
+~
+0 -1 27010
+D5
+~
+~
+0 -1 27071
+S
+#27039
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the east jagged coastal rocks prevent further movement, but you may travel
+in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27028
+D2
+~
+~
+0 -1 27040
+D3
+~
+~
+0 -1 27042
+D4
+~
+~
+0 -1 27011
+D5
+~
+~
+0 -1 27081
+S
+#27040
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the east a sheer cliff prevents further movement, and the water to your
+south is too agitated for you to enter, but you may travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27039
+D3
+~
+~
+0 -1 27041
+D4
+~
+~
+0 -1 27012
+D5
+~
+~
+0 -1 27056
+S
+#27041
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the south a giant wall of ice prevents further movement, but you may travel
+in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27042
+D1
+~
+~
+0 -1 27040
+D3
+~
+~
+0 -1 27044
+D4
+~
+~
+0 -1 27013
+D5
+~
+~
+0 -1 27057
+S
+#27042
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27035
+D1
+~
+~
+0 -1 27039
+D2
+~
+~
+0 -1 27041
+D3
+~
+~
+0 -1 27043
+D4
+~
+~
+0 -1 27014
+D5
+~
+~
+0 -1 27080
+S
+#27043
+The Stormy Deep~
+{BYou are a fair way below the ocean's surface, but can tell a storm is raging
+overhead. It's turbulent and dark here, making movement exhausting and difficult.
+
+The roiling water is unobstructed in every direction as far as you can tell; you
+may travel where you wish.{x
+~
+0 1|8192 8
+D0
+~
+~
+0 -1 27036
+D1
+~
+~
+0 -1 27042
+D2
+~
+~
+0 -1 27044
+D3
+~
+~
+0 -1 27055
+D4
+~
+~
+0 -1 27015
+D5
+~
+~
+0 -1 27068
+S
+#27044
+The Raging Deep~
+{BYou are a fair way below the ocean's surface, but can still tell a storm is
+raging overhead. It's turbulent and dark here, making movement exhausting and
+difficult.
+
+The churning water is unobstructed in every direction as far as you can tell;
+you may travel where you wish.{x
+~
+0 1|8192 8
+D0
+~
+~
+0 -1 27043
+D1
+~
+~
+0 -1 27041
+D2
+~
+~
+0 -1 27045
+D3
+~
+~
+0 -1 27048
+D4
+~
+~
+0 -1 27016
+D5
+~
+~
+0 -1 27058
+S
+#27045
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the south and east walls of hardened volcanic rock prevent further movement,
+but you may travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27044
+D3
+~
+~
+0 -1 27046
+D4
+~
+~
+0 -1 27017
+D5
+~
+~
+0 -1 27059
+S
+#27046
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see;
+you may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27048
+D1
+~
+~
+0 -1 27045
+D2
+~
+~
+0 -1 27047
+D3
+~
+~
+0 -1 27050
+D4
+~
+~
+0 -1 27018
+D5
+~
+~
+0 -1 27060
+S
+#27047
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the south and east walls of hardened volcanic rock prevent further movement,
+but you may travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27046
+D3
+~
+~
+0 -1 27049
+D4
+~
+~
+0 -1 27019
+D5
+~
+~
+0 -1 27061
+S
+#27048
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.
+
+The water grows noticeably darker and more agitated to the east.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27055
+D1
+~
+~
+0 -1 27044
+D2
+~
+~
+0 -1 27046
+D3
+~
+~
+0 -1 27051
+D4
+~
+~
+0 -1 27020
+D5
+~
+~
+0 -1 27066
+S
+#27049
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the south and west walls of hardened volcanic rock prevent further movement,
+but you may travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27050
+D1
+~
+~
+0 -1 27047
+D4
+~
+~
+0 -1 27021
+D5
+~
+~
+0 -1 27062
+S
+#27050
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27051
+D1
+~
+~
+0 -1 27046
+D2
+~
+~
+0 -1 27049
+D3
+~
+~
+0 -1 27052
+D4
+~
+~
+0 -1 27022
+D5
+~
+~
+0 -1 27063
+S
+#27051
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+The murky water is  unobstructed in every direction as far as you can see; you
+may travel where you wish.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27048
+D2
+~
+~
+0 -1 27050
+D3
+~
+~
+0 -1 27054
+D4
+~
+~
+0 -1 27023
+D5
+~
+~
+0 -1 27065
+S
+#27052
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the south and west steep land banks prevent further movement, but you may
+travel in any other direction.{x
+~
+0 0 8
+D0
+~
+~
+0 -1 27054
+D1
+~
+~
+0 -1 27050
+D4
+~
+~
+0 -1 27024
+D5
+~
+~
+0 -1 27053
+S
+#27053
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27064
+D1
+~
+~
+0 -1 27063
+D4
+~
+~
+0 -1 27052
+S
+#27054
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the north and west steep land banks prevent further movement, but you may
+travel in any other direction.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27051
+D2
+~
+~
+0 -1 27052
+D4
+~
+~
+0 -1 27025
+D5
+~
+~
+0 -1 27064
+S
+#27055
+Deeper Down~
+{cYou are a fair way below the ocean's surface. It's calm here, but starting
+to grow darker.
+
+To the north a steep land bank prevents further movement, but you may travel
+in any other direction.
+
+The water grows dark and agitated to the east.{x
+~
+0 0 8
+D1
+~
+~
+0 -1 27043
+D2
+~
+~
+0 -1 27048
+D4
+~
+~
+0 -1 27027
+D5
+~
+~
+0 -1 27067
+S
+#27056
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27081
+D3
+~
+~
+0 -1 27057
+D4
+~
+~
+0 -1 27040
+S
+#27057
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27080
+D1
+~
+~
+0 -1 27056
+D3
+~
+~
+0 -1 27058
+D4
+~
+~
+0 -1 27041
+S
+#27058
+The Raging Ocean Deep~
+{bYou are a long way down from the ocean surface. It's uncomfortably turbulent
+here, and extremely dark. The water pressure has grown too great for you to dive
+down any deeper.
+
+You must feel your way around.{x
+~
+0 1|8192 8
+D0
+~
+~
+0 -1 27068
+D1
+~
+~
+0 -1 27057
+D2
+~
+~
+0 -1 27059
+D3
+~
+~
+0 -1 27066
+D4
+~
+~
+0 -1 27044
+S
+#27059
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27058
+D3
+~
+~
+0 -1 27060
+D4
+~
+~
+0 -1 27045
+S
+#27060
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27066
+D1
+~
+~
+0 -1 27059
+D2
+~
+~
+0 -1 27061
+D3
+~
+~
+0 -1 27063
+D4
+~
+~
+0 -1 27046
+S
+#27061
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27060
+D2
+~
+~
+0 -1 27082
+D3
+~
+~
+0 -1 27062
+D4
+~
+~
+0 -1 27047
+S
+#27062
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27063
+D1
+~
+~
+0 -1 27061
+D4
+~
+~
+0 -1 27049
+S
+#27063
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27065
+D1
+~
+~
+0 -1 27060
+D2
+~
+~
+0 -1 27062
+D3
+~
+~
+0 -1 27053
+D4
+~
+~
+0 -1 27050
+S
+#27064
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D1
+~
+~
+0 -1 27065
+D2
+~
+~
+0 -1 27053
+D4
+~
+~
+0 -1 27054
+S
+#27065
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D1
+~
+~
+0 -1 27066
+D2
+~
+~
+0 -1 27063
+D3
+~
+~
+0 -1 27064
+D4
+~
+~
+0 -1 27051
+S
+#27066
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27067
+D1
+~
+~
+0 -1 27058
+D2
+~
+~
+0 -1 27060
+D3
+~
+~
+0 -1 27065
+D4
+~
+~
+0 -1 27048
+S
+#27067
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D1
+~
+~
+0 -1 27068
+D2
+~
+~
+0 -1 27066
+D4
+~
+~
+0 -1 27055
+S
+#27068
+The Stormy Ocean Deep~
+{bYou are a long way down from the ocean surface. It's uncomfortably turbulent
+here, and extremely dark. The water pressure has grown too great for you to dive
+down any deeper.
+
+You must feel your way around.{x
+~
+0 1|8192 8
+D0
+~
+~
+0 -1 27069
+D1
+~
+~
+0 -1 27080
+D2
+~
+~
+0 -1 27058
+D3
+~
+~
+0 -1 27067
+D4
+~
+~
+0 -1 27043
+S
+#27069
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27070
+D1
+~
+~
+0 -1 27078
+D2
+~
+~
+0 -1 27068
+D4
+~
+~
+0 -1 27036
+S
+#27070
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27071
+D1
+~
+~
+0 -1 27074
+D2
+~
+~
+0 -1 27069
+D4
+~
+~
+0 -1 27037
+S
+#27071
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D1
+~
+~
+0 -1 27072
+D2
+~
+~
+0 -1 27070
+D3
+~
+~
+0 -1 27094
+D4
+~
+~
+0 -1 27038
+S
+#27072
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27073
+D1
+~
+~
+0 -1 27076
+D2
+~
+~
+0 -1 27074
+D3
+~
+~
+0 -1 27071
+D4
+~
+~
+0 -1 27033
+S
+#27073
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D1
+~
+~
+0 -1 27075
+D2
+~
+~
+0 -1 27072
+D4
+~
+~
+0 -1 27032
+S
+#27074
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark, but less cold than it feels like it is above you. You think you see
+dim lights and moving shapes far below, but the water pressure has grown too
+great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27072
+D1
+~
+~
+0 -1 27077
+D2
+~
+~
+0 -1 27078
+D3
+~
+~
+0 -1 27070
+D4
+~
+~
+0 -1 27034
+S
+#27075
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark, but less cold than it feels like it is above you. You think you see
+dim lights and moving shapes far below, but the water pressure has grown too
+great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D2
+~
+~
+0 -1 27076
+D3
+~
+~
+0 -1 27073
+D4
+~
+~
+0 -1 27031
+S
+#27076
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27075
+D2
+~
+~
+0 -1 27077
+D3
+~
+~
+0 -1 27072
+D4
+~
+~
+0 -1 27030
+S
+#27077
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27076
+D2
+~
+~
+0 -1 27079
+D3
+~
+~
+0 -1 27074
+D4
+~
+~
+0 -1 27029
+S
+#27078
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27074
+D1
+~
+~
+0 -1 27079
+D2
+~
+~
+0 -1 27080
+D3
+~
+~
+0 -1 27069
+D4
+~
+~
+0 -1 27035
+S
+#27079
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27077
+D2
+~
+~
+0 -1 27081
+D3
+~
+~
+0 -1 27078
+D4
+~
+~
+0 -1 27028
+S
+#27080
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27078
+D1
+~
+~
+0 -1 27081
+D2
+~
+~
+0 -1 27057
+D3
+~
+~
+0 -1 27068
+D4
+~
+~
+0 -1 27042
+S
+#27081
+The Ocean Deep~
+{BYou are a long way down from the ocean surface. It's eerily calm here, and
+very dark. You think you see dim lights and moving shapes far below, but the
+water pressure has grown too great for you to dive down any deeper.
+
+You must feel your way around.{x
+~
+0 1 8
+D0
+~
+~
+0 -1 27079
+D2
+~
+~
+0 -1 27056
+D3
+~
+~
+0 -1 27080
+D4
+~
+~
+0 -1 27039
+S
+#27082
+Entrance to an Underwater Cave~
+{yYou bump into the gaping entrance to a dark, rocky underwater cavern.
+You can't see anything much inside the cave mouth from here, but chitinous
+clacking sounds issue from deep within it.{x
+~
+0 1|4|8|512 8
+D0
+~
+~
+0 -1 27061
+D2
+~
+~
+0 -1 27083
+S
+#27083
+An Underwater Cave~
+{yYou are in a dark, rocky underwater cavern that travels north and east.
+Curiously, a pale blue light issuing from deeper within the cavern means
+that you are not in total darkness, and can make out the surface of its
+rocky walls, covered in deep-sea marine life.
+
+To the north, the cavern lets out into the open sea, while east seems to
+lead to a larger, more open cave chamber.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27082
+D1
+~
+~
+0 -1 27084
+S
+#27084
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the northwest corner of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue from
+the northeast.
+
+To the west, the chamber narrows, while you can travel further into the
+chamber east and south of here.{x
+~
+0 8 8
+D1
+~
+~
+0 -1 27092
+D2
+~
+~
+0 -1 27085
+D3
+~
+~
+0 -1 27083
+S
+#27085
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the westernmost part of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue from
+the northeast.
+
+You can travel further into the chamber to the north, east, and south
+of here.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27084
+D1
+~
+~
+0 -1 27091
+D2
+~
+~
+0 -1 27086
+S
+#27086
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the southwestern corner of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue from
+the northeast.
+
+You can travel further into the chamber to the north and east of here.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27085
+D1
+~
+~
+0 -1 27087
+S
+#27087
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the southernmost part of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue from
+the northeast.
+
+You can travel further into the chamber to the north, west, and east
+of here.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27091
+D1
+~
+~
+0 -1 27088
+D3
+~
+~
+0 -1 27086
+S
+#27088
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the northeasternmost part of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue directly
+from the north.
+
+You can travel further into the chamber to the north and east of here.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27089
+D3
+~
+~
+0 -1 27087
+S
+#27089
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the easternmost part of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue directly
+from the north.
+
+You can travel further into the chamber to the north, south, and west of here.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27090
+D2
+~
+~
+0 -1 27088
+D3
+~
+~
+0 -1 27091
+S
+#27090
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the northeasternmost part of a large, rocky, underwater
+cave chamber. It is bathed in a blue light that issues directly from the north.
+
+You can travel further into the chamber to the north, south, and west of here.{x
+~
+0 4|8|512 8
+D0
+~
+~
+0 -1 27093
+D2
+~
+~
+0 -1 27089
+D3
+~
+~
+0 -1 27092
+S
+#27091
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the centre of a large, rocky, underwater cave chamber.
+It is bathed in a pale blue light that seems to issue from the northeast.
+
+You can travel further into the chamber to the north, south, west, and east
+of here.{x
+~
+0 8 8
+D0
+~
+~
+0 -1 27092
+D1
+~
+~
+0 -1 27089
+D2
+~
+~
+0 -1 27087
+D3
+~
+~
+0 -1 27085
+S
+#27092
+Large Chamber in an Underwater Cave~
+{yYou find yourself in the northernmost part of a large, rocky, underwater
+cave chamber. It is bathed in a pale blue light that seems to issue from
+the northeast.
+
+You can travel further into the chamber south, west, and east of here.{x
+~
+0 8 8
+D1
+~
+~
+0 -1 27090
+D2
+~
+~
+0 -1 27091
+D3
+~
+~
+0 -1 27084
+S
+#27093
+A Rocky Alcove~
+{yYou find yourself in a small alcove off a large underground cave chamber.
+It is large enough to fit a couple of man-sized humanoids uncomfortably, and
+is bathed in a bright blue light that you suspect of being bioluminescent in
+origin.  It seems like the sort of place to have something nasty living in it.{x
+~
+0 1|8|512|8192 8
+D2
+~
+~
+0 -1 27090
+S
+#27094
+Entrance to a Large Underwater Cave~
+{yYou bump into the gaping entrance to a very large, dark, rocky underwater
+cavern. It must measure 20 metres across!  It's too dark to see what's inside
+it, but your curiosity is certainly piqued.{x
+~
+0 1|4|8|512 8
+D1
+~
+~
+0 -1 27071
+D3
+~
+~
+0 -1 27095
+S
+#27095
+A Large Underwater Cave Tunnel~
+{yYou are inside a very large, dark, rocky underwater cave tunnel. You can
+travel north from here, deeper into the cave system, or return to the
+entrance, to your east.{x
+~
+0 1|8 8
+D0
+~
+~
+0 -1 27096
+D1
+~
+~
+0 -1 27094
+S
+#27096
+A Large Underwater Cave Tunnel~
+{yYou are inside a very large, dark, rocky underwater cave tunnel travelling
+north and south. North takes you deeper into the cave system, and going south
+will have you heading back outside it, to the open sea.{x
+~
+0 1|8 8
+D0
+~
+~
+0 -1 27097
+D2
+~
+~
+0 -1 27095
+S
+#27097
+A Large Underwater Cave Tunnel~
+{yYou are inside a very large, dark, rocky underwater cave tunnel that runs
+south and east.  It feels unnaturally quiet.{x
+~
+0 1|8 8
+D1
+~
+~
+0 -1 27098
+D2
+~
+~
+0 -1 27096
+S
+#27098
+A Large Underwater Cave Tunnel~
+{yYou are inside a very large, dark, rocky underwater cave tunnel that runs
+west and south.  It feels unnaturally quiet.{x
+~
+0 1|8 8
+D2
+~
+~
+0 -1 27099
+D3
+~
+~
+0 -1 27097
+S
+#27099
+A Large Underwater Cave Tunnel~
+{yYou are inside a very large, dark, rocky underwater cave tunnel that runs
+north and east.  An unearthly silence dominates the environment, broken only
+by heavy, slithering sounds coming from your immediate east, where the tunnel
+looks to open up into an even larger chamber.{x
+~
+0 1|8 8
+D0
+~
+~
+0 -1 27098
+D1
+~
+~
+0 -1 27100
+S
+#27100
+A Huge Underwater Cave Chamber~
+{yYou stand inside a huge, rocky underwater cave chamber, covered in the
+mutilated corpses, picked-clean skeletons, and assorted body parts of large
+marine creatures.  What unholy deep-sea monster could have dragged them in
+here to feast upon?{x
+~
+0 1|4|8 8
+D3
+~
+~
+0 -1 27099
+S
+#0
+
+
+#RESETS
+*
+M 1 27000 1 27081			the megalodon
+E 1 27000 100 16
+*
+M 1 27001 4 27057			vampire squid
+E 1 27001 100 17
+*
+M 1 27001 4 27063			vampire squid
+E 1 27001 100 17
+*
+M 1 27001 4 27070			vampire squid
+E 1 27001 100 17
+*
+M 1 27001 4 27075			vampire squid
+E 1 27001 100 17
+*
+M 1 27002 3 27084			spider crab
+E 1 27002 100 12
+*
+M 1 27002 3 27091			a spider crab to Anglerfish lair
+E 1 27002 100 12
+G 1 27003 100
+*
+M 1 27002 3 27088			a spider crab to Anglerfish lair
+E 1 27002 100 12
+G 1 27004 100
+*
+M 1 27003 3 27086			sea anemone
+E 1 27005 100 16
+*
+M 1 27003 3 27092			a sea anemone to Anglerfish lair
+E 1 27005 100 16
+*
+M 1 27004 1 27093			the anglerfish
+E 1 27006 100 0
+E 1 27007 100 16
+*
+M 1 27005 1 27073			baby dolphin
+*
+M 1 27006 1 27053			the female dolphin to Under A Tropical Sea VNUM 241
+*
+M 1 27007 3 27059			a sea lion
+E 1 27008 100 16
+*
+M 1 27007 3 27067			a sea lion
+E 1 27008 100 16
+*
+M 1 27007 3 27077			a sea lion
+E 1 27008 100 16
+*
+M 1 27008 6 27038			sea snake non-venomous
+*
+M 1 27008 6 27036			sea snake non-venomous
+*
+M 1 27008 6 27028			sea snake non-venomous
+*
+M 1 27008 6 27048			sea snake non-venomous
+*
+M 1 27008 6 27041			sea snake non-venomous
+*
+M 1 27008 6 27047			sea snake non-venomous
+*
+M 1 27009 2 27030			sea snake venomous
+G 1 27009 100
+G 1 27009 100
+*
+M 1 27009 2 27052			sea snake venomous
+G 1 27009 100
+G 1 27009 100
+*
+M 1 27010 3 27046			a cuttlefish
+E 1 27010 100 17
+*
+M 1 27010 3 27043			a cuttlefish to Under A Ferocious Sea VNUM 226
+E 1 27010 100 17
+*
+M 1 27010 3 27034			a cuttlefish
+E 1 27010 100 17
+*
+M 1 27011 3 27004			a venomous jellyfish
+G 1 27011 100
+*
+M 1 27011 3 27013			venomous jellyfish
+G 1 27011 100
+*
+M 1 27011 3 27021			venomous jellyfish
+G 1 27011 100
+*
+M 1 27012 5 27010			a jellyfish
+*
+M 1 27012 5 27001			a jellyfish
+*
+M 1 27012 5 27008			a jellyfish
+*
+M 1 27012 5 27000			a jellyfish
+*
+M 1 27012 5 27020			a jellyfish
+*
+M 1 27013 5 27003			goblin shark
+E 1 27012 100 16
+G 1 27013 100
+*
+M 1 27013 5 27006			a goblin shark
+E 1 27012 100 16
+*
+M 1 27013 5 27015			a goblin shark
+E 1 27012 100 16
+*
+M 1 27013 5 27025			a goblin shark
+E 1 27012 100 16
+*
+M 1 27013 5 27022			a goblin shark
+E 1 27012 100 16
+G 1 27013 100
+*
+M 1 27015 1 27026			venomous porcupinefish
+*
+M 1 27014 2 27011			a porcupinefish
+*
+M 1 27014 2 27018			a porcupinefish
+*
+M 1 27003 3 27097			a sea anemone
+E 1 27005 100 16
+*
+M 1 27016 2 27095			a giant lobster
+E 1 27014 100 16
+*
+M 1 27016 2 27098			a giant lobster
+E 1 27014 100 16
+*
+M 1 27017 1 27100			the kraken
+E 1 27015 100 16
+E 1 27015 100 18
+G 1 27016 100
+*
+M 1 27018 1 27062			sahuagin warrior
+E 1 27017 100 4
+E 1 27019 100 13
+E 1 27018 100 16
+G 1 27021 100
+S
+
+
+#SPECIALS
+M  27000 spec_fido			the megalodon
+M  27001 spec_fido			a vampire squid
+M  27002 spec_fido			a spider crab
+M  27003 spec_poison			a sea anemone
+M  27004 spec_fido			the anglerfish
+M  27007 spec_fido			a sea lion
+M  27009 spec_poison			a sea snake
+M  27011 spec_poison			a jellyfish
+M  27015 spec_poison			a porcupinefish
+M  27018 spec_warrior			sahuagin warrior
+S
+
+
+#$

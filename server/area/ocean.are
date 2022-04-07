@@ -12,10 +12,11 @@ a witch~
 A robust woman grins as she watches you in her cottage.
 ~
 She appears to be an old woman whom you guess to be a witch since
-she has in her hand a wand, and in the room is a magical red book.
+she has in her hand a wand, which she is waving over a glowing
+red book.
 
-Witches of course are Derived from Psionics. The witch may be useful
-in relating what she knows about the ways of Psionics and witches.
+Witches, of course, are learned in the psionic arts. Perhaps she
+can educate you in psionicism and witchery?
 ~
 1|2|512 0 0 S
 28 0 0 0d0+0 0d0+0
@@ -35,7 +36,7 @@ in relating what she knows about the ways of Psionics and witches.
 #202
 sailor~
 the sailor~
-A stranded sailor stands here, selling boats.
+A stranded sailor stands here, selling canoes and potions.
 ~
 It appears that this sailor's captain has left him here on the dock.
 ~
@@ -76,12 +77,15 @@ A canoe has been left here.~
 ~
 22 0 1
 0~ 0~ 0~ 0~
-32 1000 10000
-E
-canoe~
-The canoe is fairly light.
+32 1000 0
+#204
+potion breathe water~
+a potion of breathe water~
+A potion of breathe water.~
 ~
-
+10 64 1|4096|8192|16384
+50~ breathe water~ ~ ~
+1 0 0
 #0
 
 #ROOMS
@@ -95,7 +99,7 @@ river flows west and upstream to the east.
 ~
 2 4 7
 D1
-A bridge leading from northern to sourthern Midgaard crosses the river there.
+A bridge leading from northern to southern Midgaard crosses the river there.
 ~
 ~
 0 -1 3200
@@ -193,7 +197,7 @@ S
 #206
 On the River~
     You are on the river which is flowing westward past the north side
-of a small island.  The island is thich with vegetation which makes it
+of a small island.  The island is thick with vegetation which makes it
 impossible to get on shore from here. The river flows west and upstream
 to the east.
 ~
@@ -283,7 +287,7 @@ downstream to the west.
 ~
 2 4 7
 D0
-You see a river flowing west and upsteam to the east.
+You see a river flowing west and upstream to the east.
 ~
 ~
 0 -1 209
@@ -364,6 +368,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 216
+D5
+The water below you teems with life.
+~
+~
+0 -1 27000
 S
 #214
 The Big Blue Ocean~
@@ -388,6 +397,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 221
+D5
+The water below you teems with life.
+~
+~
+0 -1 27001
 S
 #215
 The Big Blue Ocean~
@@ -412,6 +426,11 @@ To the west only the ocean can ben seen.
 ~
 ~
 0 -1 224
+D5
+The water below you teems with life.
+~
+~
+0 -1 27011
 S
 #216
 The Big Blue Ocean~
@@ -440,6 +459,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 229
+D5
+The water below you teems with life.
+~
+~
+0 -1 27007
 S
 #217
 The Big Blue Ocean~
@@ -464,6 +488,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 220
+D5
+The water below you teems with life.
+~
+~
+0 -1 27002
 S
 #218
 In a Frozen Ocean~
@@ -484,6 +513,11 @@ To the west the ocean appears frozen.
 ~
 ~
 0 -1 219
+D5
+The water below you teems with life.
+~
+~
+0 -1 27003
 S
 #219
 In a Frozen Ocean~
@@ -502,6 +536,11 @@ To the south only the ocean can be seen.
 ~
 ~
 0 -1 220
+D5
+The water below you teems with life.
+~
+~
+0 -1 27004
 S
 #220
 The Big Blue Ocean~
@@ -530,6 +569,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 234
+D5
+The water below you teems with life.
+~
+~
+0 -1 27005
 S
 #221
 The Big Blue Ocean~
@@ -558,13 +602,18 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 233
+D5
+The water below you teems with life.
+~
+~
+0 -1 27006
 S
 #222
 The Big Blue Ocean~
     You are in the ocean. Waves rock you back and forth occasionally
 crashing over you, drenching you in salt water. To the north and west the
 ocean continues as far as your eyes can see. To the east the shore rises steeply
-into a verticle cliff. To the south the water seem to be turning cooler.
+into a vertical cliff. To the south the water seem to be turning cooler.
 ~
 2 4 7
 D0
@@ -582,6 +631,11 @@ To the south appears a dangerous region inhabited by polar bears.
 ~
 ~
 0 -1 1801
+D5
+The water below you teems with life.
+~
+~
+0 -1 27012
 S
 #223
 The Big Blue Ocean~
@@ -606,6 +660,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 225
+D5
+The water below you teems with life.
+~
+~
+0 -1 27013
 S
 #224
 The Big Blue Ocean~
@@ -634,6 +693,11 @@ To the west the ocean grows in ferocity.
 ~
 ~
 0 -1 226
+D5
+The water below you teems with life.
+~
+~
+0 -1 27014
 S
 #225
 The Angry Sea~
@@ -662,6 +726,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 228
+D5
+The water below you teems with life.
+~
+~
+0 -1 27016
 S
 #226
 A Ferocious Sea~
@@ -691,6 +760,11 @@ To the west only the ocean can be seen.
 ~
 ~
 0 -1 230
+D5
+The water below you teems with life.
+~
+~
+0 -1 27015
 S
 #227
 A Tropical Sea~
@@ -710,6 +784,11 @@ To the west only the smooth sea can be seen.
 ~
 ~
 0 -1 231
+D5
+The water below you teems with life.
+~
+~
+0 -1 27017
 S
 #228
 A Tropical Sea~
@@ -739,6 +818,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 232
+D5
+The water below you teems with life.
+~
+~
+0 -1 27020
 S
 #229
 The Big Blue Ocean~
@@ -763,6 +847,11 @@ To the south the clouds gather in manner meant as a warning.
 ~
 ~
 0 -1 226
+D5
+The water below you teems with life.
+~
+~
+0 -1 27008
 S
 #230
 A Tropical Sea~
@@ -788,6 +877,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 235
+D5
+The water below you teems with life.
+~
+~
+0 -1 27027
 S
 #231
 A Tropical Sea~
@@ -816,6 +910,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 237
+D5
+The water below you teems with life.
+~
+~
+0 -1 27018
 S
 #232
 A Tropical Sea~
@@ -844,6 +943,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 238
+D5
+The water below you teems with life.
+~
+~
+0 -1 27023
 S
 #233
 The Big Blue Ocean~
@@ -868,6 +972,11 @@ To the south only the ocean can be seen..
 ~
 ~
 0 -1 229
+D5
+The water below you teems with life.
+~
+~
+0 -1 27009
 S
 #234
 The Big Blue Ocean~
@@ -893,6 +1002,11 @@ To the south only the ocean can be seen.
 ~
 ~
 0 -1 233
+D5
+The water below you teems with life.
+~
+~
+0 -1 27010
 S
 #235
 A Tropical Sea~
@@ -918,6 +1032,11 @@ To the south only the sea can be seen.
 ~
 ~
 0 -1 232
+D5
+The water below you teems with life.
+~
+~
+0 -1 27026
 S
 #236
 A Tropical Sea~
@@ -937,6 +1056,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 240
+D5
+The water below you teems with life.
+~
+~
+0 -1 27019
 S
 #237
 A Tropical Sea~
@@ -965,6 +1089,11 @@ To the west only the sea can be seen.
 ~
 ~
 0 -1 241
+D5
+The water below you teems with life.
+~
+~
+0 -1 27022
 S
 #238
 A Tropical Sea~
@@ -985,6 +1114,11 @@ To the south only the sea can be seen.
 ~
 ~
 0 -1 241
+D5
+The water below you teems with life.
+~
+~
+0 -1 27025
 S
 #239
 The Dock~
@@ -1018,6 +1152,11 @@ To the east only the sea can be seen.
 ~
 ~
 0 -1 236
+D5
+The water below you teems with life.
+~
+~
+0 -1 27021
 S
 #241
 A Tropical Sea~
@@ -1038,6 +1177,11 @@ To the east only the sea can be seen.
 ~
 ~
 0 -1 237
+D5
+The water below you teems with life.
+~
+~
+0 -1 27024
 S
 #242
 A Small Path~
@@ -1157,24 +1301,26 @@ S
 #RESETS
 
 *This area was created by Picard for EnvyMud
-*you are welcome to use the area as long as apropriate
+*you are welcome to use the area as long as appropriate
 *credit remains with me for the original.
 *
 M 0 201 1 244       Put witch in cottage
 E 1 202 1 17            Give flask to witch
 *
-M 0 202 1 239       Put sailor on dock
-G 1 203 10              Give canoe to Sailor
-*
 O 0 201 1 244      Put book in cottage
 *
+M 0 202 1 239       Put sailor on dock
+G 1 203 500              Give canoe to Sailor
+G 1 204 500              Give potion of breathe water to Sailor
+*
+
 D 0 243 3 1             Closes door to cottage
 D 0 244 1 1
 *
 S
 
 #SHOPS
- 202    22  0  0  0  0  120  90     6 22  ; The sailor
+202 22  10  0  0  0  120 90 0 23            ; The sailor
 0
 
 #SPECIALS
