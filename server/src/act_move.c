@@ -601,7 +601,7 @@ void move_char(CHAR_DATA *ch, int door)
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
                 ||  ( to_room->sector_type == SECT_UNDERWATER ) )
-                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN )
+                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN ) )
         {
                 act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
         }
