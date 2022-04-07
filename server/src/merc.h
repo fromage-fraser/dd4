@@ -244,8 +244,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 /*
  * Channel recall, 'review' command; Gezhp 2001
  */
-#define REVIEW_BUFFER_SIZE              300  /* bytes per line */
-#define REVIEW_BUFFER_LENGTH             20      /* lines per channel */
+#define REVIEW_BUFFER_SIZE              300     /* bytes per line */
+#define REVIEW_BUFFER_LENGTH             50     /* lines per channel */
 #define REVIEW_CHAT                       0
 #define REVIEW_MUSIC                      1
 #define REVIEW_SHOUT                      2
@@ -1376,12 +1376,6 @@ extern  WANTED_DATA *wanted_list_first;
 extern  WANTED_DATA *wanted_list_last;
 
 
-/*
- * Initiative system
- */
-DECLARE_DO_FUN( do_initiative );
-
-
 /***************************************************************************
  *                                                                         *
  *                   VALUES OF INTEREST TO AREA BUILDERS                   *
@@ -1600,6 +1594,7 @@ DECLARE_DO_FUN( do_initiative );
 #define OBJ_DRAGON_FANGS           56
 #define OBJ_DRAGON_CLAWS           57
 #define OBJ_HYDRA_TEETH            58
+#define OBJ_SNAKE_BITE             59
 
 /* this will be for the quest mobs */
 #define QUEST_JUN1                              1

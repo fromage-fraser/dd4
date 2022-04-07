@@ -206,11 +206,13 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
 
 void do_chat( CHAR_DATA *ch, char *argument )
 {
-        if (ch->level < 5)
+       
+/*        if (ch->level < 5)
         {
                 send_to_char("You must be level 5 to chat, use NEWBIE instead.\n\r", ch);
                 return;
         }
+*/
 
         talk_channel( ch, argument, CHANNEL_CHAT, "chat" );
         if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))

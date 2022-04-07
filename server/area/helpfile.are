@@ -23,7 +23,7 @@ all the color names and their respective index numbers (on left):
 06 brown             14 yellow             ARENA              SHOUT
 07 grey              15 white              TELL               YELL
                                                               INFO
- 
+
 NOTE: Your prompt can also be colourised, see 'HELP PROMPT'.
       Only Immortals may use the IMMTALK and DIRTALK channels.
 ~
@@ -78,8 +78,8 @@ COMMANDS'.
 
 
 -1 FAE FAIRY FAERIE FAERY FAIRIES FAERIES~
-FAE, or 'FAERIES' as many of them prefer to be called, are very small, 
-winged, magical creatures who are often found inhabiting countryside regions 
+FAE, or 'FAERIES' as many of them prefer to be called, are very small,
+winged, magical creatures who are often found inhabiting countryside regions
 of exceptional natural beauty.  While their diminutive stature and physical
 weakness makes them a poor choice for fighting classes, they are an excellent
 choice for pure spellcasting classes of all kinds.
@@ -282,7 +282,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 We're back!
 
-Apart from getting everything running again, the following new skills have 
+Apart from getting everything running again, the following new skills have
 been added;
 
 - Chaos Blast for Satanists
@@ -295,13 +295,14 @@ been added;
 - New area: 'Harpy Haven'
 - New area: 'Kingdom of Juargan'
 - New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
+- Reaper is now a bit friendlier
 
 Refer appropriate HELP entries.
 
-We're also trying to tidy up a lot of minor issues, formatting, spelling, 
-links in areas, and things like that.  
+We're also trying to tidy up a lot of minor issues, formatting, spelling,
+links in areas, and things like that.
 
-There are skills that open up which you then can't practice at that 
+There are skills that open up which you then can't practice at that
 teacher which we're trying to track down as well.
 
 Please let us know if you see anything along those lines and we'll attempt
@@ -1131,11 +1132,11 @@ service.
   wear wield hold                       spells affect practice train whois
   list buy sell value donate
   recite brandish quaff zap           {WConfiguration:{x
-  {wlock unlock open close pick bash    config channels password autocoin
+  {wlock unlock open close pick bash      config channels password autocoin
   inventory equipment look compare      autoloot autosac autoexit autowield
-  eat drink fill smear                  autolevel blank prompt color ansi 
+  eat drink fill smear                  autolevel blank prompt color ansi
                                         pagelength attacks gag brief notell
-                                        quiet 
+                                        quiet
 {WCommunication:{x
   {wsay chat shout answer music yell    {WCombat:{x
   {wgtell clantalk tell reply review      kill murder flee wimpy cast
@@ -1585,7 +1586,7 @@ See CONFIGURE to find out which toggle is on and which is off.
 Syntax: autolevel
 
 AUTOLEVEL toggles your ability to automatically level when you gain sufficient
-experience.  It is ON by default for new characters.  With it OFF you will not 
+experience.  It is ON by default for new characters.  With it OFF you will not
 be able to gain levels until you turn it back ON.
 
 Type CONFIG or SCORE to find out if it's currently ON or OFF.
@@ -1973,10 +1974,10 @@ fighting, and will attempt to RECALL from time to time.  Your chances of
 making the recall are reduced, and you will lose much more experience.
 
 RESCUE lets you save a group member from being the focus of their
-attacker.  Whoever is fighting the rescued group member will change the focus 
-of their attacks to the rescuer.  If your group member is facing multiple 
+attacker.  Whoever is fighting the rescued group member will change the focus
+of their attacks to the rescuer.  If your group member is facing multiple
 opponents you'll need to rescue them multiple times.  Note you can set the
-order of your group so that when you walk into a room one member gets 
+order of your group so that when you walk into a room one member gets
 attacked initially - see HELP GRORDER for details.
 ~
 
@@ -2011,7 +2012,7 @@ else, just 'FOLLOW <yourself>'.
 
 'GROUP <character>' makes someone who is following you a member of your
 group.  Group members share experience points from kills and will gain
-bonus experience for supporting each other from some skills and spells.  
+bonus experience for supporting each other from some skills and spells.
 If anyone in your group is attacked, you will automatically join the fight.
 
 Group members may use the GTELL and SPLIT commands.
@@ -2557,6 +2558,8 @@ and improves their performance in combat.
 
 PRAYER is similar to a group bless, and its effects are much more
 powerful.
+
+See 'HELP PRAY' for information on how to pray to DEITIES.
 ~
 
 0 BLINDNESS~
@@ -2959,8 +2962,8 @@ Syntax: blink
 Toggle whether you are BLINKing or not.  Blink is a skill for spell
 casters that allows them to control the mana around them.  If successful,
 the spell caster uses the mana around them to shift their mass momentarily
-out of our reality, causing any attack to miss.  There is no limit to the 
-amount of times you can potentially blink, but each successful blink uses 
+out of our reality, causing any attack to miss.  There is no limit to the
+amount of times you can potentially blink, but each successful blink uses
 up some mana.
 ~
 
@@ -3317,13 +3320,13 @@ psionicist does not become too weak.
 Humans are the most common race in the world, and make up the majority of
 citizens in the Domain.  Although they have no startling talents like some
 other races, they are quite bright and very versatile, managing to achieve
-competence with regard to anything they put their minds to. Humans are a 
+competence with regard to anything they put their minds to. Humans are a
 good choice for any class.
 ~
 
 -1 ELF~
-The elven race has been around for a long time, perhaps the longest of any 
-of the Domain's races.  They are famous for being excellent archers as well 
+The elven race has been around for a long time, perhaps the longest of any
+of the Domain's races.  They are famous for being excellent archers as well
 as magicians, however they do not grow very strong due to their fine bone
 structure.  The tracking abilities of Elves, due to their INFRAVISION and
 extraordinary movement regeneration are legendary.  Elves make good spell
@@ -3360,56 +3363,56 @@ spell caster but make a good selection for all fighting classes.
 ~
 
 -1 SAHUAGIN~
-Sahuagin are a fish-like monstrous humanoid species that live in oceans, 
-seas, underground lakes, and underwater caves.  As such, they can 
+Sahuagin are a fish-like monstrous humanoid species that live in oceans,
+seas, underground lakes, and underwater caves.  As such, they can
 automatically adapt to watery environments as soon as they enter them.
 Rough-and-ready types, they excel at GOUGING opponents, and their affinity
-for water makes them excellent DOWSERS.  They must be careful not to dry 
+for water makes them excellent DOWSERS.  They must be careful not to dry
 out while on land, but recover quickly from dessication by 'drinking' water
-or taking a dip. Sahuagin make a solid choice for fighters, and also perform 
+or taking a dip. Sahuagin make a solid choice for fighters, and also perform
 well as mixed fighting/spellcasting classes.
 ~
 
 -1 TIEFLING~
-Suspicious and self-reliant, tieflings are the products of blood-mingling 
+Suspicious and self-reliant, tieflings are the products of blood-mingling
 between humanity and demonkind, with appearances that reflect their
-infernal heritage (including prominent horns and prehensile tails).  Due 
-to their demonic nature, they are highly resistant to heat, and often have 
-another diabolical trick or two up their sleeves.  They make particularly 
+infernal heritage (including prominent horns and prehensile tails).  Due
+to their demonic nature, they are highly resistant to heat, and often have
+another diabolical trick or two up their sleeves.  They make particularly
 good SHAPE-SHIFTERS, but are generally quite versatile.
 ~
 
 -1 JOTUN~
-JOTUN are giants from the frozen northern climes. They are distant cousins 
-of 'regular' mountain giants but are more rotund, blue-skinned, a little 
-shorter and sport huge beards made of permanently-frozen ice. They have the 
-ability to BERSERK when provoked, destroying and rampaging wantonly. They 
-alse have a strong ability to resist cold temperatures.  Jotun make an 
+JOTUN are giants from the frozen northern climes. They are distant cousins
+of 'regular' mountain giants but are more rotund, blue-skinned, a little
+shorter and sport huge beards made of permanently-frozen ice. They have the
+ability to BERSERK when provoked, destroying and rampaging wantonly. They
+alse have a strong ability to resist cold temperatures.  Jotun make an
 excellent choice for all physical fighting classes.
 ~
 
 -1 GENASI~
-Genasi are a very rare planar class of humanoid, the offspring of genies and 
-mortals.  A winning combination of intellectually bright and physically hardy, 
-they also have a strong resistance to magical attacks as a result of their 
-heritage.  Genasi make a good choice for both SHAPE-SHIFTERS and everyday 
+Genasi are a very rare planar class of humanoid, the offspring of genies and
+mortals.  A winning combination of intellectually bright and physically hardy,
+they also have a strong resistance to magical attacks as a result of their
+heritage.  Genasi make a good choice for both SHAPE-SHIFTERS and everyday
 spellcasting classes.
 ~
 
 -1 ILLITHID~
-Illithids, also known as mind flayers, have a reputation as sadistic 
-aberrations, feared by sentient creatures on many worlds across the multiverse 
-due to their powerful psionic abilities and penchant for extracting and 
+Illithids, also known as mind flayers, have a reputation as sadistic
+aberrations, feared by sentient creatures on many worlds across the multiverse
+due to their powerful psionic abilities and penchant for extracting and
 devouring the brains of those unlucky enough to encounter them.  They make
-an excellent choice for PSIONICISTS and are a good choice for spell casters 
+an excellent choice for PSIONICISTS and are a good choice for spell casters
 in general, but perform poorly as physical combatants.
 ~
 
 -1 GOBLIN~
-Short, with a tough, leathery yellow skin, GOBLINS are mesmerized by jewels 
+Short, with a tough, leathery yellow skin, GOBLINS are mesmerized by jewels
 and any small, intricate treasures made of fine precious metals.  These durable
-little people do not have the raw physical strength to be counted amongst the 
-more fearsome warrior races, but they make up for this lack with mental ability, 
+little people do not have the raw physical strength to be counted amongst the
+more fearsome warrior races, but they make up for this lack with mental ability,
 and are a good race to select for spell-casting classes.
 ~
 
@@ -3417,36 +3420,36 @@ and are a good race to select for spell-casting classes.
 Considered the most feared of the Domain, the half-dragon has to be the
 most respected of all creatures that inhabit the realm.  The powerful
 wings of the half-dragon enable them to take FLIGHT and they are also able
-to protect themselves from breath attacks with their DRAGON SHIELD spell.  
-With their strength and agility they make excellent warriors, but the 
-spell-casting ability of the half-dragon cleric should never be 
+to protect themselves from breath attacks with their DRAGON SHIELD spell.
+With their strength and agility they make excellent warriors, but the
+spell-casting ability of the half-dragon cleric should never be
 underestimated.
 ~
 
 -1 HALFLING~
-Halflings are an extremely secretive race: slim and agile, with incredibly 
+Halflings are an extremely secretive race: slim and agile, with incredibly
 fast reflexes.  While not being strong, they make up their lack of strength
 with their ability to BLIND enemies, and being shifty by nature they are able
 to conceal their movements from innocent bystanders.  Halflings appear much
-like scaled-down humans, usually about 3-4 feet in height.  They resemble 
-children in their appearance ,and are often mistaken as such by unknowing 
+like scaled-down humans, usually about 3-4 feet in height.  They resemble
+children in their appearance ,and are often mistaken as such by unknowing
 humans.  They are extremely dextrous and tend to make great thieves.
 ~
 
 -1 DWARF~
-Dwarves have a long racial history, stretching back thousands of years.  
-The typical dwarf is short, bad tempered and likes to drink a lot; they 
-usually have big beards and a fondness for gold and metals.  The dwarves 
-learn to fight from an early age and are sturdy and strong.  Dwarves make 
+Dwarves have a long racial history, stretching back thousands of years.
+The typical dwarf is short, bad tempered and likes to drink a lot; they
+usually have big beards and a fondness for gold and metals.  The dwarves
+learn to fight from an early age and are sturdy and strong.  Dwarves make
 a good choice for all warrior classes.
 ~
 
 -1 CENTAUR~
 Half-man, half-horse the centaur race is both strong and agile.  Using their
-powerful rear leg muscles centaurs are able to deliver quite a KICK with their 
+powerful rear leg muscles centaurs are able to deliver quite a KICK with their
 sharp hooves.  With the spell SHIELD to help along with their inherent agility they
 are often difficult to hit in combat. Being essentially a mount themselves, however,
-centaurs are unable to use mounts.  Centaurs are versatile and make a good choice 
+centaurs are unable to use mounts.  Centaurs are versatile and make a good choice
 for most classes.
 ~
 
@@ -3486,7 +3489,7 @@ thieves.
 -1 YUAN-TI YUANTI~
 Yuan-ti are a snake-like race, and not much is known about them.  It is
 rumoured that they are the result of mutation experiments on humans,
-as they are similar in build to them, their snakelike features aside.  
+as they are similar in build to them, their snakelike features aside.
 Yuan-ti are versatile and make a good choice for any class.
 ~
 
@@ -5432,7 +5435,7 @@ Syntax: soar <number> | <mem> | <return>
 
 A skilled shapeshifter can use the SOAR ability while in HAWK FORM to
 fly great distances across the domain.  Such travel must take place between
-outdoors locations.  Locations at greater distances from Midgaard become 
+outdoors locations.  Locations at greater distances from Midgaard become
 available as HAWK FORM and the SOAR ability are mastered, and as the shifter
 gains experience generally.
 
@@ -5441,11 +5444,11 @@ SOAR lists all the currently available locations.
 SOAR <number> will make the shifter fly to the location indicated by the
 selected number.
 
-SOAR MEM enables the shifter to temporarily memorise the shifter's current 
+SOAR MEM enables the shifter to temporarily memorise the shifter's current
 location, which must be outdoors.
 
-SOAR RETURN allows the shifter to travel to their memorised location 
-(assuming their current location is outdoors).  After returning once, the 
+SOAR RETURN allows the shifter to travel to their memorised location
+(assuming their current location is outdoors).  After returning once, the
 not-terribly-bright hawk form of the shifter will forget the destination,
 and it will have to be re-memorised to return there again.
 

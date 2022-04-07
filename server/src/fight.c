@@ -58,7 +58,7 @@ const char* purgatory_message =
         "gather about your twitching and bleeding body, and there is the\n\r"
         "sensation of flight.  Dazzling lights flicker within your mind\n\r"
         "and strange whispers are heard from all directions.\n\r\n\r"
-        "After an age, your head clears.  You sit bewildered in the hazy\n\r"
+        "After an age, your head clears.  You stand bewildered in the hazy\n\r"
         "gloom of the Underworld...\n\r\n\r";
 
 
@@ -698,7 +698,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
  * 22.3.22 - Shade group support bonus
  */
 
-void check_group_bonus(CHAR_DATA *ch) 
+void check_group_bonus(CHAR_DATA *ch)
 {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
@@ -716,12 +716,12 @@ void check_group_bonus(CHAR_DATA *ch)
                 if (IS_NPC(vch))
                         continue;
 
-                if (is_same_group(vch, ch)) 
+                if (is_same_group(vch, ch))
                 {
                         ch->pcdata->group_support_bonus += 1;
                         break;
                 }
-                
+
         }
 
 }
@@ -2346,12 +2346,12 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                          * Shade 22.3.22
                          *
                          * Grouping support bonus
-                         * 
+                         *
                          * The aim is to give a little boost to casters doing defensive and otherwise useful spells but not damage which gives XP.  Help lower level
                          * casters who won't do a lot of damage relative to someone tanking for them.
-                         * 
+                         *
                          * group_support_bonus is incremented in most defensive/support spells and some non damaging skills / spells eg Trap, Web, Faerie Fire
-                         * 
+                         *
                          */
 
                         if (gch->pcdata->group_support_bonus > 0)
@@ -2363,10 +2363,10 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 grxp = (xp / 3) * gch->pcdata->group_support_bonus;
 
                                 /*
-                                 * So players will figure out how to abuse this I'm sure so let's cap it 
+                                 * So players will figure out how to abuse this I'm sure so let's cap it
                                  */
 
-                                if (grxp > (2 * xp)) 
+                                if (grxp > (2 * xp))
                                 {
                                         sprintf(buf, "Capping max group bonus for %s", gch->name);
                                         log_string(buf);
@@ -2377,7 +2377,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 send_to_char(buf, gch);
                                 gain_exp(gch, grxp);
 
-                                gch->pcdata->group_support_bonus = 0;       
+                                gch->pcdata->group_support_bonus = 0;
                         }
 
                 }
@@ -3088,7 +3088,7 @@ void do_destrier (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't do that underwater.\n\r", ch);
@@ -3255,7 +3255,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't backstab while underwater.\n\r", ch);
@@ -3972,7 +3972,7 @@ void do_rescue (CHAR_DATA *ch, char *argument)
         stop_fighting(vch, FALSE);
         set_fighting(vch, ch);
 
-        ch->pcdata->group_support_bonus += 1; 
+        ch->pcdata->group_support_bonus += 1;
 
 }
 
@@ -6077,7 +6077,7 @@ void reset_char_stats (CHAR_DATA *ch)
                 return;
 
         ch->armor        = 100;
-        ch->position     = POS_RESTING;
+        ch->position     = POS_STANDING; /* Changed from POS_RESTING 7/4/22 -- Owl 7/4/22 */
         ch->hit          = 1;
         ch->mana         = 1;
         ch->move         = UMAX(1, ch->move);

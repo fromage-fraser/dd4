@@ -672,10 +672,15 @@ void do_strangle (CHAR_DATA *ch, char *argument)
 void do_morph_snake (CHAR_DATA *ch, bool to_form) 
 {
         AFFECT_DATA af;
+        OBJ_DATA *bite;
 
         if (to_form)
         {
-                if (ch->pcdata->learned[gsn_form_snake] > 50) 
+                bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level);
+                obj_to_char(bite, ch);
+                form_equip_char(ch, bite, WEAR_WIELD);
+
+                if (ch->pcdata->learned[gsn_form_snake] > 30) 
                 {
                         affect_strip(ch, gsn_swim);
                         send_to_char("Your new form enables you to swim.\n\r", ch);
@@ -686,6 +691,10 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
                         af.modifier  = 0;
                         af.bitvector = AFF_SWIM;
                         affect_to_char(ch, &af);
+                }
+
+                if (ch->pcdata->learned[gsn_form_snake] > 50) 
+                {
                         
                         send_to_char("Your new form enables you to breathe underwater.\n\r", ch);
                         affect_strip(ch, gsn_breathe_water);
@@ -696,6 +705,14 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
         }
         else
         {      
+
+                bite = get_obj_wear(ch, "bite");
+                if (bite) 
+                {
+                        unequip_char(ch, bite);
+                        extract_obj(bite);
+                }
+
                 affect_strip(ch, gsn_swim);
                 affect_strip(ch, gsn_breathe_water);
                 REMOVE_BIT(ch->affected_by, AFF_SWIM);
