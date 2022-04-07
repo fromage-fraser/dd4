@@ -408,12 +408,14 @@ void move_char(CHAR_DATA *ch, int door)
                         found = FALSE;
 
                         /* Immortals are boats -- Owl 22/2/22 */
+                        /* You can move into a NOSWIM sector from an UNDERWATER one... rather than drown */
 
                         if (IS_AFFECTED(ch, AFF_FLYING)
                             || IS_AFFECTED(ch, AFF_SWIM)
                             || IS_IMMORTAL( ch )
                             || ( ch->race == RACE_SAHUAGIN )
                             || ch->mount
+                            || ( ch->in_room->sector_type == SECT_UNDERWATER )
                             || is_affected(ch,gsn_mist_walk)
                             || is_affected(ch,gsn_astral_sidestep)
                             || ch->form == FORM_FLY)
@@ -599,8 +601,7 @@ void move_char(CHAR_DATA *ch, int door)
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
                 ||  ( to_room->sector_type == SECT_UNDERWATER ) )
-                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN ) 
-                &&  ( !IS_SET(ch->act, PLR_WIZINVIS) ) )
+                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN )
         {
                 act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
         }
@@ -608,7 +609,7 @@ void move_char(CHAR_DATA *ch, int door)
         {
                 act_move ("$n has arrived.", ch, NULL, NULL, TO_ROOM);
         }
-        
+
 
         for (fch = in_room->people; fch; fch = fch_next)
         {
@@ -1518,7 +1519,7 @@ void do_sleep (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't sleep underwater.\n\r", ch);
@@ -1612,7 +1613,7 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("Not while you're underwater.\n\r", ch);
@@ -1739,7 +1740,7 @@ void do_meditate (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
         && ( ch->race != RACE_SAHUAGIN ) )
         {
                 send_to_char("You can't meditate underwater.\n\r", ch);
