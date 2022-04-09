@@ -2735,6 +2735,7 @@ void end_of_game( void )
         save_fame_table();
         save_all_clan_tables();
         save_wanted_table();
+        save_infamy_table();
 }
 
 

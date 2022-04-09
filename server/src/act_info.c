@@ -4071,6 +4071,10 @@ void do_fame( CHAR_DATA *ch, char *argument )
         print_fame_table(ch, argument);
 }
 
+void do_infamy (CHAR_DATA *ch, char *argument)
+{
+        print_infamy_table(ch, argument);
+}
 
 void do_pkillers( CHAR_DATA *ch, char *argument )
 {

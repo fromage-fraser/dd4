@@ -99,6 +99,7 @@ const struct cmd_type cmd_table [] =
         { "fame",               do_fame,        POS_DEAD,        0,  LOG_NORMAL },
         { "help",               do_help,        POS_DEAD,        0,  LOG_NORMAL },
         { "hero",               do_hero,        POS_DEAD,        0,  LOG_NORMAL },
+        { "infamy",             do_infamy,      POS_DEAD,        0,  LOG_NORMAL },
         { "legends",            do_legend,      POS_DEAD,        0,  LOG_NORMAL },
         { "levels",             do_levels,      POS_DEAD,        0,  LOG_NORMAL },
         { "pkillers",           do_pkillers,    POS_DEAD,        0,  LOG_NORMAL },

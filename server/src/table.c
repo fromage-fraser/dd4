@@ -201,7 +201,7 @@ void print_fame_table ( CHAR_DATA *ch, char *argument )
         int i;
         char* colour;
         
-        sprintf(buf, "Brutus appears before you and speaks:\n\r"
+        sprintf(buf, "Gezhp appears before you and speaks:\n\r"
                 "\"The following are recognised as being\n\r"
                 "amongst the most famous mortals...\"\n\r\n\r");
         
@@ -222,6 +222,207 @@ void print_fame_table ( CHAR_DATA *ch, char *argument )
                                 number_suffix (i+1),
                                 fame_table[i].name, 
                                 fame_table[i].fame);
+                        strcat(buf, tmpbuf);
+                }
+        }
+        
+        send_to_char(buf, ch);
+}
+
+
+/*
+ * Infamy table - Shade Apr 2022, copied from Fame
+ */
+
+void infamy_table_swap (int one, int two) 
+{
+        char buf [MAX_STRING_LENGTH];
+        int ibuf;
+        int vbuf;
+        
+        strncpy(buf, infamy_table[one].name, sizeof(buf));
+        ibuf = infamy_table[one].kills;
+        vbuf = infamy_table[one].vnum;
+
+        strncpy(infamy_table[one].name, infamy_table[two].name, sizeof(infamy_table[one].name));
+        infamy_table[one].kills = infamy_table[two].kills;
+        infamy_table[one].vnum = infamy_table[two].vnum;
+
+        strncpy(infamy_table[two].name, buf, sizeof(infamy_table[two].name));
+        infamy_table[two].kills = ibuf;
+        infamy_table[two].vnum = vbuf;
+}
+
+
+/*
+ * check the table for a change when a PC is killed
+ */
+
+void check_infamy_table (CHAR_DATA *mob) 
+{
+        int prev = 0;
+        int in = 0;
+        int i = 0;
+        int kills = 0;
+        char buf[ MAX_STRING_LENGTH ];
+        char buf1[ MAX_STRING_LENGTH ];
+        
+        /*
+         * Are they in the table
+         */
+
+        for (i = 0; i < INFAMY_TABLE_LENGTH; i++) 
+        {
+                if (infamy_table[i].vnum == mob->pIndexData->vnum ) 
+                {
+                        prev = i;
+                        in = 1;
+                        kills = infamy_table[i].kills + 1;
+                }
+        }
+        
+        if (!in && (1 < infamy_table[INFAMY_TABLE_LENGTH - 1].kills))
+                return;
+
+        /* if they aren't in the table, this is their first kill */
+        if (!in) 
+        {
+                for (i = INFAMY_TABLE_LENGTH - 1; (infamy_table[i - 1].kills <= 1); i--)
+                {
+                        strncpy(infamy_table[i].name, infamy_table[i - 1].name, sizeof(infamy_table[i].name));
+                        infamy_table[i].kills = infamy_table[i - 1].kills;
+                        infamy_table[i].vnum = infamy_table[i - 1].vnum;
+
+                        /*
+                         * Shade 11.3.22
+                         *
+                         * Something about this has changed - the table appears to copy correctly but i gets decremented one time too many meaning players are promoted to the 0th position
+                         * 
+                         * Pretty sure it'll also mess up the fame table and character "1" will be kind of everywhere
+                         */
+
+                        if (i == 1) 
+                        {
+                                /* Might just log this for a bit; just in case */
+                                sprintf(buf, "Promoting %s to 1st position in infamy table", mob->name);
+                                log_string(buf);  
+                                i = 0;
+                                break;
+                        }
+                }
+
+                strncpy(infamy_table[i].name, mob->short_descr, sizeof(infamy_table[i].name));
+                strncpy(infamy_table[i].name, capitalize_initial(infamy_table[i].name), sizeof(infamy_table[i].name));
+                infamy_table[i].kills = 1;
+                infamy_table[i].vnum = mob->pIndexData->vnum;
+                
+                if (i < INFAMY_TABLE_LENGTH_PRINT) 
+                {
+                                             
+                        sprintf(buf, "%s is now ranked number %d%s amongst infamous monsters!",
+                                capitalize_initial(mob->short_descr), 
+                                i + 1,
+                                number_suffix(i + 1));
+                        do_info(mob, buf);
+                }
+        }
+        /* 
+         * internal movement within table 
+         */
+        else
+        {
+                i = prev;
+
+                /*
+                 * Already top of the table
+                 */        
+
+                if (!prev)
+                {
+                        infamy_table[prev].kills = kills;
+                        save_infamy_table();
+                        return;
+                }
+                
+                /* 
+                 * Already bottom of the table
+                 */
+                if (prev == INFAMY_TABLE_LENGTH - 1 && kills < infamy_table[INFAMY_TABLE_LENGTH - 2].kills)
+                {
+                        infamy_table[prev].kills = kills;
+                        save_infamy_table();
+                        return;
+                }
+
+                infamy_table[prev].kills = kills;
+
+                if (prev == INFAMY_TABLE_LENGTH - 1) 
+                {
+                        infamy_table_swap(INFAMY_TABLE_LENGTH - 1, INFAMY_TABLE_LENGTH - 2);
+                        prev = INFAMY_TABLE_LENGTH - 2;
+                        i = INFAMY_TABLE_LENGTH;
+                }
+                
+                while (prev && prev != INFAMY_TABLE_LENGTH - 1)
+                {
+                        if (kills > infamy_table[prev - 1].kills) 
+                        {
+                                infamy_table_swap(prev, prev - 1);
+                                prev--;
+                        }
+                        else if (kills < infamy_table[prev + 1].kills) 
+                        {
+                                infamy_table_swap(prev, prev + 1);
+                                prev++;
+                        }
+                        else 
+                                break;
+                }
+                
+                if (prev < INFAMY_TABLE_LENGTH_PRINT && ((i && i != prev) || !i)) 
+                {
+                        
+                        sprintf(buf, "%s has been", capitalize_initial(mob->short_descr));
+                        sprintf(buf1, " promoted "); /* Can't lose kills so this is strictly up */
+                        strcat(buf, buf1);
+                        sprintf(buf1, "to number %d amongst infamous monsters!\n\r", prev + 1);
+                        strcat(buf, buf1);                        
+                        do_info(mob, buf);
+                }
+        }
+        
+        save_infamy_table();
+}       
+
+
+void print_infamy_table ( CHAR_DATA *ch, char *argument ) 
+{
+        char buf  [ MAX_STRING_LENGTH ];
+        char tmpbuf  [ MAX_STRING_LENGTH ];
+        int i;
+        char* colour;
+        
+        sprintf(buf, "Shade appears before you and speaks:\n\r"
+                "\"The following are recognised as being\n\r"
+                "amongst the most infamous monsters...\"\n\r\n\r");
+        
+        for (i = 0; i < INFAMY_TABLE_LENGTH_PRINT; i++) 
+        {
+                if (i == 0)     colour = "{W";
+                else if (i < 2) colour = "{Y";
+                else if (i < 4) colour = "{G";
+                else if (i < 7) colour = "{C";
+                else if (i <12) colour = "{c";
+                else            colour = "{w";
+                
+                if (infamy_table[i].kills != 0) 
+                {
+                        sprintf(tmpbuf, "  %s%2d%s    %-20s %2d{x\n\r",
+                                colour, 
+                                i+1,
+                                number_suffix (i+1),
+                                infamy_table[i].name, 
+                                infamy_table[i].kills);
                         strcat(buf, tmpbuf);
                 }
         }
@@ -598,7 +799,7 @@ void OLD_print_clan_vanq_table ( CHAR_DATA *ch, char *argument )
         if (!clan)
                 return;
         
-        sprintf(buf,"\n\rBrutus appears before you and speaks:\n\r\"The following are "
+        sprintf(buf,"\n\rShade appears before you and speaks:\n\r\"The following are "
                 "recognised as those most frequently vanquished by %s...\"\n\r",
                 clan_table[clan].who_name);
         
@@ -717,7 +918,7 @@ void print_legend_table ( CHAR_DATA *ch, char *argument )
         int i;
         char* colour;
         
-        sprintf (buf, "Brutus appears from out of thin air and proclaims: \"The\n\r"
+        sprintf (buf, "Owl appears from out of thin air and proclaims: \"The\n\r"
                  "following Adventurers are the most legendary within\n\r"
                  "the Domain...\"\n\r"); 
         strcat( buf, "\n\r  Rank    Name            Class       Greatest fame");

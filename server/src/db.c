@@ -78,6 +78,7 @@ LEGEND_DATA             legend_table[LEGEND_TABLE_LENGTH];
 PKSCORE_DATA            pkscore_table[PKSCORE_TABLE_LENGTH];
 WANTED_DATA             *wanted_list_first;
 WANTED_DATA             *wanted_list_last;
+INFAMY_TABLE            infamy_table[INFAMY_TABLE_LENGTH];
 
 /*
  * Skill bases
@@ -1003,6 +1004,21 @@ void boot_db( void )
         }
 
         /*
+         * Init infamy table
+         */
+        {
+                int i;
+
+                for (i = 0; i < INFAMY_TABLE_LENGTH; i++)
+                {
+                        infamy_table[i].kills = 0;
+                        infamy_table[i].vnum = 0;
+                        sprintf(infamy_table[i].name, "*");
+                }
+        }
+
+
+        /*
          * Load all tables
          */
         {
@@ -1012,6 +1028,7 @@ void boot_db( void )
                 load_pkscore_table();
                 load_all_clan_tables();
                 load_wanted_table();
+                load_infamy_table();
         }
 
         /*

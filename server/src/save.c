@@ -1346,6 +1346,87 @@ void load_fame_table ()
         fpReserve = fopen(NULL_FILE, "r");
 }
 
+void save_infamy_table ()
+{
+        FILE *fp;
+        char infamy_file [MAX_INPUT_LENGTH];
+        char buf [MAX_STRING_LENGTH];
+
+        sprintf(infamy_file, "%s%s", PLAYER_DIR, "TABLES/infamy.table");
+
+        fclose(fpReserve);
+
+        if (!(fp = fopen(infamy_file, "w+")))
+        {
+                sprintf(buf, "Save_infamy_table: fopen %s: ", infamy_file);
+                bug(buf, 0);
+                perror(infamy_file);
+                log_string(buf);
+        }
+        else
+        {
+                int iter;
+
+                for (iter = 0; iter < INFAMY_TABLE_LENGTH; iter++) {
+
+                        fprintf(fp, "%s~\n%d\n%d\n",
+                                infamy_table[iter].name,
+                                infamy_table[iter].kills,
+                                infamy_table[iter].vnum
+                                );
+                }
+
+                fprintf(fp, "#END~\n");
+                fclose(fp);
+        }
+
+        fpReserve = fopen(NULL_FILE, "r");
+}
+
+
+void load_infamy_table ()
+{
+        FILE *fp;
+        char infamy_file [MAX_INPUT_LENGTH];
+        char buf [MAX_STRING_LENGTH];
+
+
+        sprintf(buf, "Loading Infamy Table");
+        log_string(buf);
+
+        sprintf(infamy_file, "%s%s", PLAYER_DIR, "TABLES/infamy.table");
+
+        fclose(fpReserve);
+
+        if (!(fp = fopen(infamy_file, "r")))
+        {
+                sprintf(buf, "missing infamy table file: %s", infamy_file);
+                log_string(buf);
+        }
+        else
+        {
+                int iter;
+
+                for (iter = 0; iter < INFAMY_TABLE_LENGTH; iter++)
+                {
+
+                        char *word;
+                        
+                        word = fread_string(fp); /* The executioner */
+
+                        if (!str_cmp(word, "#END"))
+                                break;
+
+                        strncpy(infamy_table[iter].name, word, strlen(word));
+                        infamy_table[iter].kills = fread_number(fp);
+                        infamy_table[iter].vnum = fread_number(fp);
+                }
+
+                fclose(fp);
+        }
+
+        fpReserve = fopen(NULL_FILE, "r");
+}
 
 
 void save_all_clan_tables()

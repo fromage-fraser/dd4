@@ -134,6 +134,7 @@ typedef struct coin_data                        COIN_DATA;
  * Tables - geoff
  */
 typedef struct fame_data                        FAME_TABLE;
+typedef struct infamy_data                      INFAMY_TABLE;
 typedef struct clan_pkill_data                  CLAN_PKILL_TABLE;
 typedef struct clan_vanquished_data             CLAN_VANQ_TABLE;
 typedef struct clan_member_data                 CLAN_MEMBER_TABLE;
@@ -415,7 +416,8 @@ struct quest_recall
 #define PKSCORE_TABLE_LENGTH                    125
 #define PKSCORE_TABLE_LENGTH_PRINT              25
 #define LEGEND_TABLE_LENGTH                     20
-
+#define INFAMY_TABLE_LENGTH                     200 /* Shade Apr 22 */
+#define INFAMY_TABLE_LENGTH_PRINT               20
 
 /*
  * Classes and subclasses
@@ -984,6 +986,17 @@ struct fame_data
         char name [ 15 ];
         char title [ 2 ];
         int fame;
+};
+
+/* 
+ * Mob infamy table
+ */
+
+struct infamy_data
+{
+        char name[40];
+        int kills;
+        int vnum;
 };
 
 /*
@@ -3322,6 +3335,7 @@ extern HERO_DATA                * hero_first;
 extern HERO_DATA                * hero_last;
 extern LEGEND_DATA              legend_table  [ LEGEND_TABLE_LENGTH ];
 extern PKSCORE_DATA             pkscore_table [ PKSCORE_TABLE_LENGTH ];
+extern INFAMY_TABLE             infamy_table [ INFAMY_TABLE_LENGTH ];
 
 
 /*
@@ -3496,6 +3510,7 @@ DECLARE_DO_FUN( do_dismount                     );
 DECLARE_DO_FUN( do_destrier                     );
 DECLARE_DO_FUN( do_pattern                      );
 DECLARE_DO_FUN( do_soar                         );
+DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4208,6 +4223,9 @@ void load_legend_table          ( );
 void save_legend_table          ( );
 void load_pkscore_table         ( );
 void save_pkscore_table         ( );
+void load_infamy_table          ( );
+void save_infamy_table          ( );
+
 
 /* special.c */
 SF * spec_lookup        args( ( const char *name ) );
@@ -4249,6 +4267,8 @@ void                    update_legend_table             args( ( CHAR_DATA *ch ) 
 void                    print_pkscore_table             ( CHAR_DATA *ch, int start);
 PKSCORE_DATA            swap_pkscore_table              args( ( PKSCORE_DATA temp, int position ) );
 void                    update_pkscore_table            args( ( CHAR_DATA *ch ) );
+void                    check_infamy_table              ( CHAR_DATA *ch);
+void                    print_infamy_table              ( CHAR_DATA *ch, char *argument);
 
 /* sft.c */
 void do_morph_wolf              ( CHAR_DATA *ch, bool to_form );
