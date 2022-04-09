@@ -147,18 +147,6 @@ the location of any objects; the location of any mobiles (beyond healers, teache
 | [The City of Anon](maps/area/tcwn.html)   | Key mid-level city
 
 
-#### World maps
-
-World maps can be found in `maps/world` directory.
-
-| File                                          | Notes
-| ---                                           | ---
-| [world-map.svg](maps/world/world-map.svg)     | All areas linked to the world. Note the layout is not "geographic": locations are not arranged accurately with respect to the cardinal directions. Portals between areas are shown in this map.
-
-(This map was a first attempt at trying to figure out where everything was again after all these years, but the lack
-of any sense of direction made it difficult to use.)
-
-
 ## Immortals
 
 Three original immortals are provided. Log in as one of the following; passwords are blank.
