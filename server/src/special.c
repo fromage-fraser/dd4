@@ -1694,6 +1694,9 @@ bool spec_assassin( CHAR_DATA *ch )
                 {
                         v_next = victim->next_in_room;
 
+                        if (ch->position < POS_STANDING)  /* Prevent backstabbing if stunned etc --Owl 10/4/22 */
+                                continue;
+
                         if (IS_NPC(victim))
                                 continue;
 

@@ -281,6 +281,10 @@ predators have migrated closer to the surface.
 mpecho A {Ggoblin shark{x turns suddenly to attack you!
 mpkill $n
 ~
+>entry_prog 10~
+mpecho A {Ggoblin shark{x turns suddenly to attack you!
+mpkill $n
+~
 |
 #27014
 porcupinefish fish porcupine~
