@@ -497,8 +497,8 @@ int hit_gain( CHAR_DATA *ch )
         /* Being in watery rooms rehydrates Sahuagin */
 
         if ( ch->race == RACE_SAHUAGIN
-        && (  ( ch->in_room->sector_type == SECT_UNDERWATER ) 
-           || ( ch->in_room->sector_type == SECT_WATER_SWIM ) 
+        && (  ( ch->in_room->sector_type == SECT_UNDERWATER )
+           || ( ch->in_room->sector_type == SECT_WATER_SWIM )
            || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
         {
                 ch->pcdata->condition[COND_THIRST] = 48;
@@ -527,40 +527,40 @@ int hit_gain( CHAR_DATA *ch )
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
                 }
-                
+
                 /*
                  *  Gravity; Owl 20/3/22
                  */
 
-                /* 
+                /*
                  * Below check goes here in case an imm transfers a player while they're falling, or they teleport or whatever.
-                 * Makes sure the PLR_FALLING gets stripped and doesn't do crash damage. 
+                 * Makes sure the PLR_FALLING gets stripped and doesn't do crash damage.
                  */
 
-                if ( IS_SET( ch->act, PLR_FALLING ) 
+                if ( IS_SET( ch->act, PLR_FALLING )
                 &&   ch->in_room->sector_type != SECT_AIR )
                 {
                         REMOVE_BIT( ch->act, PLR_FALLING );
                 }
-                
-                if ( ( ch->in_room->sector_type == SECT_AIR) 
+
+                if ( ( ch->in_room->sector_type == SECT_AIR)
                   && ( !IS_AFFECTED(ch, AFF_FLYING) ) )
                 {
                          /* Don't set below until we're sure there's an open exit down */
-                         
+
                         in_room = ch->in_room;
-                        
+
 
                          if ( ch->in_room->exit[5] )
                          {
                                 to_room = in_room->exit[5]->to_room;
                                 /* Can we fall into it tho? headache coming */
-                                
+
                                 if  ( room_is_private(to_room) )
                                 {
                                         return 0;
                                 }
-                                
+
                                 /* You -can- fall into a SECT_WATER_NOSWIM room you need a boat to enter, just bad luck. */
 
                                 /* Don't fall into level-restricted rooms. */
@@ -613,13 +613,13 @@ int hit_gain( CHAR_DATA *ch )
                                 {
                                         WAIT_STATE(ch, 1);
                                 }
-                                
+
                                 send_to_char("{CUnable to stay aloft, you fall through the air!{x\n\r", ch);
 
                                 char_from_room(ch);
                                 char_to_room(ch, to_room);
 
-                                if (ch->position == POS_STANDING ) 
+                                if (ch->position == POS_STANDING )
                                 {
                                         do_look(ch, "auto");
                                 }
@@ -661,9 +661,9 @@ int hit_gain( CHAR_DATA *ch )
                                         ch->position = POS_STANDING;
                                 }
 
-                                if ( IS_SET( ch->act, PLR_FALLING ) 
+                                if ( IS_SET( ch->act, PLR_FALLING )
                                 &&   ch->in_room->sector_type != SECT_AIR )
-                                {       
+                                {
                                         if ( ch->in_room->sector_type == SECT_WATER_NOSWIM
                                         ||   ch->in_room->sector_type == SECT_WATER_SWIM
                                         ||   ch->in_room->sector_type == SECT_UNDERWATER )
@@ -695,8 +695,8 @@ int hit_gain( CHAR_DATA *ch )
 
                                         if (!IS_NPC(ch))
                                         {
-                                                mprog_entry_trigger(ch);      
-                                                mprog_greet_trigger(ch);       
+                                                mprog_entry_trigger(ch);
+                                                mprog_greet_trigger(ch);
                                         }
 
                                         return 0;
@@ -704,14 +704,14 @@ int hit_gain( CHAR_DATA *ch )
 
                                 if (!IS_NPC(ch))
                                 {
-                                        mprog_entry_trigger(ch);        
-                                        mprog_greet_trigger(ch);        
+                                        mprog_entry_trigger(ch);
+                                        mprog_greet_trigger(ch);
                                 }
 
                          }
                          else {
                                /* No down exit */
-                               return 0;  
+                               return 0;
                          }
                 }
         }
@@ -977,8 +977,8 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
 
                     case COND_THIRST:
                         if ( ch->race == RACE_SAHUAGIN )
-                        {       
-                             send_to_char("You're dying of dehydration!  You NEED water!\n\r", ch);   
+                        {
+                             send_to_char("You're dying of dehydration!  You NEED water!\n\r", ch);
                         }
                         else {
                                 send_to_char( "You're dying of thirst!\n\r", ch);
@@ -1012,8 +1012,8 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
 
                     case COND_THIRST:
                         if ( ch->race == RACE_SAHUAGIN )
-                        {       
-                             send_to_char("You're drying out; you badly need water.\n\r", ch);   
+                        {
+                             send_to_char("You're drying out; you badly need water.\n\r", ch);
                         }
                         else {
                                 send_to_char("Your throat is parched; you cry out for liquid.\n\r", ch);
@@ -1040,8 +1040,8 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
 
                     case COND_THIRST:
                         if ( ch->race == RACE_SAHUAGIN )
-                        {       
-                                send_to_char("Your body is starting to lose its moisture.\n\r", ch);   
+                        {
+                                send_to_char("Your body is starting to lose its moisture.\n\r", ch);
                         }
                         else {
                                 send_to_char("You are thirsty.\n\r", ch);
@@ -1790,7 +1790,7 @@ void aggr_update()
                         /*
                          * MOBProgs ACT_PROG trigger.  Walker.
                          * Modified to free the mpact list w/o regard to nplayer.  Walker
-                         * 
+                         *
                          * This was disabled and I re-enabled it 8/3/22.  Don't @ me -- Owl
                          * Re-disabled 10/3/22 because I think the MUD was crashing. @ me. --Owl
 
