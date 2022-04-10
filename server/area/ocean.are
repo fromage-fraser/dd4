@@ -86,6 +86,22 @@ A potion of breathe water.~
 10 64 1|4096|8192|16384
 50~ breathe water~ ~ ~
 1 0 0
+#205
+bladder inflatable~
+an inflatable bladder~
+The bladder sac of some large animal lies here.~
+~
+9 0 1|1024
+4~ 0~ 0~ 0~
+2 0 0
+A
+40 -1
+E
+bladder inflatable~
+This large animal's bladder is filled with air and has various straps and
+buckles sewn to it that allow it to be worn about the body.  It has a long
+tube protruding from one end that is placed in the mouth, allowing its wearer
+to breathe underwater for long periods of time.~
 #0
 
 #ROOMS
@@ -1304,14 +1320,15 @@ S
 *you are welcome to use the area as long as appropriate
 *credit remains with me for the original.
 *
-M 0 201 1 244       Put witch in cottage
+M 0 201 1 244      Put witch in cottage
 E 1 202 1 17            Give flask to witch
 *
 O 0 201 1 244      Put book in cottage
 *
-M 0 202 1 239       Put sailor on dock
+M 0 202 1 239      Put sailor on dock
 G 1 203 500              Give canoe to Sailor
 G 1 204 500              Give potion of breathe water to Sailor
+G 1 205 500              Give bladder to Sailor
 *
 
 D 0 243 3 1             Closes door to cottage

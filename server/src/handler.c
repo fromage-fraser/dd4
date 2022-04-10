@@ -666,6 +666,28 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         send_to_char("You feel vulnerable to acid.\n\r", ch);
                 }
                 break;
+
+            case APPLY_BREATHE_WATER:
+                af.type = skill_lookup("breathe water");
+                if( fAdd )
+                {
+                        if( is_affected( ch, af.type ) )
+                                break;
+
+                        af.duration = -1;
+                        af.location = APPLY_NONE;
+                        af.modifier = 0;
+                        af.bitvector = 0;
+                        affect_to_char( ch, &af );
+
+                        send_to_char( "Your lungs begin to tingle and pulse.\n\r", ch );
+                }
+                else
+                {
+                        affect_strip( ch, af.type );
+                        send_to_char("Your lungs revert to normal.\n\r", ch);
+                }
+                break;
         }
 
         if (IS_NPC(ch))
@@ -2164,6 +2186,7 @@ char *affect_loc_name( int location )
             case APPLY_RESIST_COLD:             return "cold resistance";
             case APPLY_RESIST_LIGHTNING:        return "lightning resistance";
             case APPLY_RESIST_ACID:             return "acid resistance";
+            case APPLY_BREATHE_WATER:           return "breathe water";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );
@@ -2286,7 +2309,7 @@ char* affect_bit_name_nice (int vector)
  */
 
 char *pact_bit_name (int vector)
-{ 
+{
         if ( vector & PLR_IS_NPC                ) return "is_npc";
         if ( vector & PLR_BOUGHT_PET            ) return "bought_pet";
         if ( vector & PLR_QUESTOR               ) return "questor";
@@ -2789,11 +2812,11 @@ void generate_stats (CHAR_DATA *ch)
          * Shade - 9.3.22
          *
          * Make it a bit friendlier to new players and reduce randomisation, ensure base stats aren't too bad.
-         * 
+         *
          */
         int sum = 0;
 
-        while (sum < 66) 
+        while (sum < 66)
         {
                 /* initial random number 11 -> 15 */
                 ch->pcdata->perm_str = number_range(11, 15);
@@ -2884,7 +2907,7 @@ int mana_cost (CHAR_DATA *ch, int sn)
         if (IS_NPC(ch))
                 return 0;
 
-        if (IS_RACE_ONE(ch) == sn || IS_RACE_TWO(ch) == sn)            
+        if (IS_RACE_ONE(ch) == sn || IS_RACE_TWO(ch) == sn)
                 return skill_table[sn].min_mana; /* reduced default cost - Shade 17.3.22 */
 
         /*
@@ -2893,7 +2916,7 @@ int mana_cost (CHAR_DATA *ch, int sn)
          * Defensive spells for low level casters are costly.  Reduce the cost of those and utility spells
          */
 
-        if (skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE || skill_table[sn].target == TAR_CHAR_OFFENSIVE)        
+        if (skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE || skill_table[sn].target == TAR_CHAR_OFFENSIVE)
                 return UMAX (skill_table[sn].min_mana, 60 - ch->pcdata->learned[sn]);
         else
                 return UMAX (skill_table[sn].min_mana, 45 - ch->pcdata->learned[sn]);

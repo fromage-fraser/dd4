@@ -1873,6 +1873,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_RESIST_COLD                       37
 #define APPLY_RESIST_LIGHTNING                  38
 #define APPLY_RESIST_ACID                       39
+#define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
 
 
 /*
