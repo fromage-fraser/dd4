@@ -9,6 +9,10 @@
 #include "merc.h"
 #include "lexicon.h"
 
+/* We will only consider up to 2000 candidates when searching for words.
+   Bump this limit if any one word list gets larger! */
+#define MAX_CANDIDATES (2000)
+
 const LEXICON_ENTRY lexicon_adjectives[] =
 {
         { "red",        LEXICON_FILTER_GENERAL },
@@ -259,14 +263,13 @@ const char *_lexicon_random_entry_text(
         const unsigned int filter,
         const char * const entry_list_debug
 ) {
-        /* We will only consider up to 2000 candidates. Bump this limit if any one list gets larger! */
-        const LEXICON_ENTRY *candidate_entries[2000];
+        const LEXICON_ENTRY *candidate_entries[MAX_CANDIDATES];
         const LEXICON_ENTRY *candidate_entry;
         int candidate_count = 0;
         int i;
         char buf[1024];
 
-        for (i = 0; i < all_entries_count; i++) {
+        for (i = 0; i < all_entries_count && i < MAX_CANDIDATES; i++) {
                 candidate_entry = &all_entries[i];
                 if (candidate_entry->filter & filter) {
                         candidate_entries[candidate_count++] = candidate_entry;
