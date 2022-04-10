@@ -26,9 +26,9 @@ Judas Priest - "The Sentinel"~
 #13700
 pit official~
 the Pit Official~
-The Pit Official stands here,  ready to help.
+The Pit Official stands here, ready to help.
 ~
-This human is dressed in a white robe and looks rather knowledgable.
+This human is dressed in a white robe and looks rather knowledgeable.
 ~
 2|64|4096 8|32|128|512 0 S
 39 0 0 0d0+0 0d0+0
@@ -48,7 +48,7 @@ Turbo~
 Turbo smiles at you then attacks!
 ~
 Turbo appears to be a pretty, young and unarmed girl.  But then
-that's what she wants you to think coz she's gonna kick your arse!
+that's what she wants you to think, coz she's gonna kick your arse!
 ~
 4|32|64|128|4096 8|32|512|32768|65536 0 S
 50 0 0 0d0+0 0d0+0
@@ -66,7 +66,7 @@ endif
 #13702
 Defender faith paladin~
 The Defender of the Faith~
-An paladin in half-plate struggles through the mire here
+An paladin in half-plate struggles through the mire here.
 ~
 The Defender of the Faith tries, unsuccessfully, to navigate his way
 through this swampy area without getting his armour too dirty.
@@ -87,9 +87,9 @@ endif
 #13703
 Painkiller~
 Painkiller~
-Painkiller stands here sharpening his bladed armour
+Painkiller stands here, sharpening his bladed armour.
 ~
-Oh, dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
+Oh dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
 ~
 4|32|64|4096 8|32|512|8192 -650 S
 55 0 0 0d0+0 0d0+0
@@ -136,7 +136,7 @@ The arms dealer grins toothily.... his teeth appear to be too sharp...
 #13706
 valan rich~
 Valan the rich~
-Valan the rich stands here absorbed in the games
+Valan the rich stands here, absorbed in the games.
 ~
 Valan takes no notice of you as he watches the events unfold below.
 ~
@@ -147,9 +147,9 @@ Valan takes no notice of you as he watches the events unfold below.
 #13707
 Myra~
 Myra~
-Myra, Valan's wife, stands here looking bored
+Myra, Valan's wife, stands here looking bored.
 ~
-Myra appears not to have her husband's avid excitement for the battles in the pit
+Myra appears not to have her husband's avid excitement for the battles in the pit.
 ~
 2|64|128 0 0 S
 1 0 0 0d0+0 0d0+0
@@ -158,7 +158,7 @@ Myra appears not to have her husband's avid excitement for the battles in the pi
 #13708
 osarr~
 Osarr the gambler~
-Osarr stands here trying to play dice with everyone
+Osarr stands here trying to play dice with everyone.
 ~
 Osarr looks back at you and grins.  Want to bet on the action?
 ~
@@ -325,7 +325,7 @@ A
 #13708
 darklaw wolf claws~
 Darklaw's Wolf-Claws~
-Some black steels claws rests here.~
+Some black steel claws rests here.~
 ~
 5 2|64 1|8192
 0~ 1~ 6~ 5~
@@ -457,7 +457,7 @@ A
 #13718
 Painkiller breastplate bladed~
 Painkiller's bladed breastplate~
-A red breastplate with thin, sharp protrusions lies here~
+A red breastplate with thin, sharp protrusions lies here.~
 ~
 9 64|512 1|8
 0~ 1~ 6~ 11~
@@ -469,7 +469,7 @@ A
 #13719
 Painkiller spiked boots~
 Painkiller's spiked boots~
-A pair of spike-toed boots rest here~
+A pair of spike-toed boots rest here.~
 ~
 13 64|512 1|64
 0~ 1~ 6~ 11~
@@ -481,7 +481,7 @@ A
 #13720
 Painkiller blade shield~
 Painkiller's blade-edged shield~
-A round shield with an extremely sharp serrated edge rests here~
+A round shield with an extremely sharp serrated edge rests here.~
 ~
 9 64|512 1|512|8192
 0~ 1~ 6~ 3~
@@ -495,7 +495,7 @@ A
 #13721
 Painkiller spiked bracer~
 Painkiller's spiked bracer~
-A bracer with sharp spikes lies here~
+A bracer with sharp spikes lies here.~
 ~
 9 64|512 1|4096
 0~ 1~ 6~ 11~
@@ -507,7 +507,7 @@ A
 #13722
 Painkiller spike chain leggings~
 Painkiller's spiked chainmail leggings~
-A spiked chainmail leggings rests here.~
+Spiked chainmail leggings rest here.~
 ~
 9 64|512 1|32
 0~ 1~ 6~ 11~
@@ -531,7 +531,7 @@ A
 #13724
 Painkiller bladed gauntlets~
 Painkiller's bladed gauntlets~
-A pair of bladed gauntlets lie here~
+A pair of bladed gauntlets lie here.~
 ~
 9 64|512 1|128
 0~ 1~ 6~ 11~
@@ -543,7 +543,7 @@ A
 #13725
 Painkiller serrated sword~
 Painkiller's serrated sword~
-A heavy, serrated sword lies here~
+A heavy, serrated sword lies here.~
 ~
 5 64|512 1|8192
 0~ 1~ 6~ 1~
@@ -585,7 +585,7 @@ A
 #13728
 plate defender armour breast breastplate~
 Breastplate of the Defender~
-A white breastplate rests here~
+A white breastplate rests here.~
 ~
 9 64|1024 1|8
 0~ 1~ 6~ 11~
@@ -647,7 +647,7 @@ A
 #13732
 greaves ~
 a pair of greaves~
-A pair of ornate greaves rests here~
+A pair of ornate greaves rests here.~
 ~
 9 64|1024 1|32
 0~ 1~ 6~ 11~
@@ -657,7 +657,7 @@ A
 #13733
 helm defender~
 Helm of the Defender~
-A white helm rests here~
+A white helm rests here.~
 ~
 9 64|1024 1|16
 0~ 1~ 6~ 11~
@@ -669,7 +669,7 @@ A
 #13734
 amulet magic proof~
 Amulet of proof against magic~
-A sword rests here.~
+An amulet rests here.~
 ~
 9 64|1024 1|4
 0~ 1~ 6~ 11~
@@ -679,7 +679,7 @@ A
 #13735
 bag  holding~
 a Bag of Holding~
-A large pouch lies here~
+A large pouch lies here.~
 ~
 8 64 1
 200~ 5~ -1~ 11~
@@ -707,7 +707,7 @@ A pile of white cloth lies here.~
 #13738
 lantern daeron~
 Daeron's Lantern~
-A iron lantern rests here~
+A iron lantern rests here.~
 ~
 1 1|1024 1
 0~ 1~ -1~ 11~
@@ -737,7 +737,7 @@ A pile of golden cloth rests here.~
 #13740
 bottle~
 a bottle~
-A long, thin bottle sits here~
+A long, thin bottle sits here.~
 ~
 17 0 1
 5~ 2~ 18~ 0~
@@ -745,7 +745,7 @@ A long, thin bottle sits here~
 #13741
 velvet robes~
 some purple velvet robes~
-A pile of purple velvet lies here~
+A pile of purple velvet lies here.~
 ~
 12 0 1|1024
 0~ 1~ 6~ 11~
@@ -753,7 +753,7 @@ A pile of purple velvet lies here~
 #13742
 money coins~
 some coins~
-A small pile of coins rests here~
+A small pile of coins rests here.~
 ~
 20 0 1
 4~ 7~ 6~ 0~
@@ -764,9 +764,9 @@ A small pile of coins rests here~
 #ROOMS
 #13700
 The dark tunnel~
-Darkness surrounds you.  There is a closed door above and a badly lit tunnel leading
+Darkness surrounds you.  There is a closed door above and a badly-lit tunnel leading
 downwards. Although the tunnel is roughly hewn and looks as though it may collapse at
-any moment, you notice that the tunnel has recent and heavy usage...
+any moment, you notice that it has had recent and heavy usage...
 ~
 0 4|8|1024|8192 0
 D4
@@ -781,7 +781,8 @@ S
 #13701
 The dark tunnel~
 The tunnel at this part is quite wide and better lit but you can see that the walls
-are stained... with blood.  Your skin creeps as you ponder the fate of those whose lifeblood paints these walls.
+are stained... with blood.  Your skin crawls as you ponder the fate of those whose
+lifeblood paints these walls.
 ~
 0 4|8|1024|8192 0
 D2
@@ -821,7 +822,7 @@ E
 sign~
 All spectators please move through the southern door to the spectator's lounge.
 All challengers please take the stairway down to the changing barracks.  You will
- receive further instruction there.
+receive further instruction there.
 Both spectators and challengers please note:
 You are all safe from any of the authorities that would close down this establishment
 or incarcerate any spectator or challenger by a powerful magic-damping field.  This
@@ -865,8 +866,9 @@ E
 sign~
 The gate at the southern end of the room has a self-locking mechanism.  If you pass
 through here you will be sent out into the waiting area before the arena proper.
-Passing through the gate shall be taken as consent to enter the Pit.  We take no liability
-for any damage caused in any way, shape of form by any being, spell or weapon within the arena.
+Passing through the gate shall be taken as consent to enter the Pit.  We take no
+liability for any damage caused in any way, shape of form by any being, spell or
+weapon within the arena.
 
 ENTER AT YOUR OWN RISK.
 
@@ -1228,7 +1230,8 @@ D5
 S
 #13723
 Rocky plateau - At the wall~
-The wall here appears to be about ten feet high but has sharp spikes to prevent anyone climbing out of the pit.
+The wall here appears to be about ten feet high but has sharp spikes
+to prevent anyone climbing out of the pit.
 ~
 0 8|1024|8192 5
 D1
