@@ -1014,6 +1014,7 @@ void boot_db( void )
                         infamy_table[i].kills = 0;
                         infamy_table[i].vnum = 0;
                         sprintf(infamy_table[i].name, "*");
+                        sprintf(infamy_table[i].loc, "*");
                 }
         }
 
