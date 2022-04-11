@@ -761,6 +761,15 @@ void death_penalty (CHAR_DATA *ch, CHAR_DATA *victim)
                         check_fame_table(victim);
                 }
 
+                /*
+                 * Shade Apr 2022
+                 */
+
+                if (IS_NPC(ch))
+                {
+                        check_infamy_table(ch);
+                }
+
                 if (ch != victim)
                 {
                         if (victim->pcdata->bounty
