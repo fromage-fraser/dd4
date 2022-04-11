@@ -237,18 +237,22 @@ void print_fame_table ( CHAR_DATA *ch, char *argument )
 void infamy_table_swap (int one, int two) 
 {
         char buf [MAX_STRING_LENGTH];
+        char buf1 [MAX_STRING_LENGTH];
         int ibuf;
         int vbuf;
         
         strncpy(buf, infamy_table[one].name, sizeof(buf));
+        strncpy(buf1,infamy_table[one].loc, sizeof(buf1));
         ibuf = infamy_table[one].kills;
         vbuf = infamy_table[one].vnum;
 
         strncpy(infamy_table[one].name, infamy_table[two].name, sizeof(infamy_table[one].name));
+        strncpy(infamy_table[one].loc, infamy_table[two].loc, sizeof(infamy_table[one].loc));
         infamy_table[one].kills = infamy_table[two].kills;
         infamy_table[one].vnum = infamy_table[two].vnum;
 
         strncpy(infamy_table[two].name, buf, sizeof(infamy_table[two].name));
+        strncpy(infamy_table[two].loc, buf1, sizeof(infamy_table[two].loc));
         infamy_table[two].kills = ibuf;
         infamy_table[two].vnum = vbuf;
 }
@@ -290,6 +294,7 @@ void check_infamy_table (CHAR_DATA *mob)
                 for (i = INFAMY_TABLE_LENGTH - 1; (infamy_table[i - 1].kills <= 1); i--)
                 {
                         strncpy(infamy_table[i].name, infamy_table[i - 1].name, sizeof(infamy_table[i].name));
+                        strncpy(infamy_table[i].loc, infamy_table[i - 1].loc, sizeof(infamy_table[i].loc));
                         infamy_table[i].kills = infamy_table[i - 1].kills;
                         infamy_table[i].vnum = infamy_table[i - 1].vnum;
 
@@ -313,6 +318,7 @@ void check_infamy_table (CHAR_DATA *mob)
 
                 strncpy(infamy_table[i].name, mob->short_descr, sizeof(infamy_table[i].name));
                 strncpy(infamy_table[i].name, capitalize_initial(infamy_table[i].name), sizeof(infamy_table[i].name));
+                strncpy(infamy_table[i].loc, mob->in_room->area->name, sizeof(infamy_table[i].loc));
                 infamy_table[i].kills = 1;
                 infamy_table[i].vnum = mob->pIndexData->vnum;
                 
@@ -417,11 +423,12 @@ void print_infamy_table ( CHAR_DATA *ch, char *argument )
                 
                 if (infamy_table[i].kills != 0) 
                 {
-                        sprintf(tmpbuf, "  %s%2d%s    %-20s %2d{x\n\r",
+                        sprintf(tmpbuf, "  %s%2d%s    %-20s %-30s %2d{x\n\r",
                                 colour, 
                                 i+1,
                                 number_suffix (i+1),
                                 infamy_table[i].name, 
+                                infamy_table[i].loc,
                                 infamy_table[i].kills);
                         strcat(buf, tmpbuf);
                 }

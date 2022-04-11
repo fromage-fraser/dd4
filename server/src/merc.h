@@ -995,6 +995,7 @@ struct fame_data
 struct infamy_data
 {
         char name[40];
+        char loc[40];
         int kills;
         int vnum;
 };

@@ -1369,8 +1369,9 @@ void save_infamy_table ()
 
                 for (iter = 0; iter < INFAMY_TABLE_LENGTH; iter++) {
 
-                        fprintf(fp, "%s~\n%d\n%d\n",
+                        fprintf(fp, "%s~\n%s~\n%d\n%d\n",
                                 infamy_table[iter].name,
+                                infamy_table[iter].loc,
                                 infamy_table[iter].kills,
                                 infamy_table[iter].vnum
                                 );
@@ -1418,6 +1419,10 @@ void load_infamy_table ()
                                 break;
 
                         strncpy(infamy_table[iter].name, word, strlen(word));
+
+                        word = fread_string(fp); /* location */
+                        strncpy(infamy_table[iter].loc, word, strlen(word));
+
                         infamy_table[iter].kills = fread_number(fp);
                         infamy_table[iter].vnum = fread_number(fp);
                 }
