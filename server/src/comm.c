@@ -1451,7 +1451,7 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         break;
 
                     case 'z' :
-                        if(ch->level > LEVEL_HERO && ch->in_room)
+                        if(ch->in_room)
                                 sprintf(buf2, "%s", ch->in_room->area->name);
                         else
                                 sprintf(buf2, " ");
@@ -2166,7 +2166,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         ch->move        = ch->max_move;
                         set_title(ch, " is a newbie");
                         free_string(ch->prompt);
-                        ch->prompt = str_dup("<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move> ");
+                        ch->prompt = str_dup("<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
 
                         obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_BANNER), 0);
                         obj_to_char(obj, ch);
@@ -3656,7 +3656,7 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
         char            buf [MAX_STRING_LENGTH];
         int             pos, max, max_line, i, j, k, l;
         bool            indent_line = FALSE;
-        
+
         if (!text)
                 return;
 

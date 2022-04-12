@@ -4009,7 +4009,7 @@ void do_prompt( CHAR_DATA *ch, char *argument )
         }
 
         if( !strcmp( argument, "all" ) || !strcmp (argument, "default") )
-                strcat (buf, "<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move> ");
+                strcat (buf, "<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
         else
         {
                 if ( strlen( argument ) > 100 )
