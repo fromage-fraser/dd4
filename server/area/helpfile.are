@@ -1674,11 +1674,14 @@ The PASSWORD command is protected against being snooped or logged.
 0 PROMPT~
 Syntax: prompt
 Syntax: prompt all
+Syntax: prompt current
 Syntax: prompt <%*>
 
 PROMPT without an argument will toggle your prompt on and off.
 
 PROMPT ALL sets the default "<hits/hitmax mana/manamax moves/movesmax area>" prompt.
+
+PROMPT CURRENT shows your current prompt.
 
 PROMPT <%*> creates a prompt where %* represents the following variables:
 
