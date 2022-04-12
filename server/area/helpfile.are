@@ -281,7 +281,14 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 
-{WMarch 2022{x}
+{WApril 2022{x
+
+- New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
+- Reaper is now a bit friendlier
+- New original area "The Undersea" [15-25]
+- New INFAMY table
+
+{WMarch 2022{x
 
 We're back!
 
@@ -297,9 +304,6 @@ been added;
 - Soar for Shifters
 - New area: 'Harpy Haven'
 - New area: 'Kingdom of Juargan'
-- New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
-- Reaper is now a bit friendlier
-- New original area "The Undersea" [15-25]
 
 Refer appropriate HELP entries.
 
@@ -383,6 +387,16 @@ you are famous enough.
 Being infamous, i.e. having negative fame, is a bad thing.  You will not
 be able to level and shopkeepers will not serve you.
 ~
+
+0 INFAMY~
+Infamy is the record of the most dangerous mobs, those that most frequently
+kill players.
+
+Killing infamous mobs has its advantages; you'll get a little bonus for doing
+so.  But beware, there is a reason they are infamous so proceed with caution,
+you don't want to add to their trophy count!
+~
+
 
 0 RULES~
 Bugs
