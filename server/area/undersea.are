@@ -397,10 +397,8 @@ if race($n) == 19
             sigh
             west
             break
-        else
-        sigh
-        north
-        break
+        endif
+        endif
         endif
         endif
         endif
@@ -434,10 +432,8 @@ if race($n) == 19
             sigh
             west
             break
-        else
-        sigh
-        south
-        break
+        endif
+        endif
         endif
         endif
         endif
@@ -471,10 +467,8 @@ if race($n) == 19
             sigh
             west
             break
-        else
-        sigh
-        east
-        break
+        endif
+        endif
         endif
         endif
         endif
@@ -495,7 +489,7 @@ jaws~
 savage jaws~
 The jaws of a giant sea predator float through the water here.~
 ~
-5 128 8192
+5 128|67108864 8192
 0~ 1~ 6~ 10~
 200 0 0
 A
@@ -507,7 +501,7 @@ pool sticky bioluminescent mucus globules~
 bioluminescent mucus~
 Globules of sticky, bioluminescent mucus float through the water here.~
 ~
-4 1 16384
+4 1|67108864 16384
 18~ 3~ 3~ colour spray~
 2 0 0
 #27002
@@ -541,7 +535,7 @@ venomous tentacles~
 venomous tentacles~
 A sea anemone's venomous tentacles float through the water here.~
 ~
-5 2 8192
+5 2|67108864 8192
 0~ 1~ 6~ 2~
 1 0 0
 #27006
@@ -566,7 +560,7 @@ fanged maw hideous~
 a hideous fanged maw~
 The ripped-out jaw of an anglerfish floats through the water here.~
 ~
-5 0 8192
+5 67108864 8192
 0~ 1~ 6~ 10~
 1 0 0
 A
@@ -576,7 +570,7 @@ teeth~
 teeth~
 A sea lion's teeth float through the water here.~
 ~
-5 0 8192
+5 67108864 8192
 0~ 1~ 6~ 10~
 3 0 0
 A
@@ -598,7 +592,7 @@ ink sac organ gelatinous~
 ink sac~
 A gelatinous, inky organ floats here.~
 ~
-4 4096 16384
+4 4096|67108864 16384
 20~ 1~ 6~ blindness~
 1 0 0
 E
@@ -625,7 +619,7 @@ nail-like teeth~
 nail-like teeth~
 The jaw of some gruesome undersea creature floats here.~
 ~
-5 128|4096 1|8192
+5 128|4096|67108864 1|8192
 0~ 1~ 6~ 10~
 3 0 0
 A
@@ -645,7 +639,7 @@ claws large~
 large claws~
 Some large claws float in the water here.~
 ~
-5 128|4096 8192
+5 128|4096|67108864 8192
 0~ 1~ 6~ 5~
 15 0 0
 #27015
@@ -653,7 +647,7 @@ feeding tentacle~
 a huge feeding tentacle~
 A huge feeding tentacle floats in the water here.~
 ~
-5 16384 8192
+5 16384|67108864 8192
 0~ 1~ 6~ 12~
 300 0 0
 A
@@ -728,14 +722,14 @@ letter seal unusual~
 The seal resembles a city, shaped like a spoked wheel divided into 3 concentric
 rings.  You remove it and read the letter:
 
-"From Elb'kl Ala, King of Ota'ar Dar, to Klaabu of the Midgaard Morkoth.
+"From Elb'kl Ala, Prince of Ota'ar Dar, to Klaabu of the Midgaard Morkoth.
 
 While our uneasy truce with the cursed Alu'Tel'Quessir holds, we continue to
 utilise any and all backchannels to seek our advantage, desiring most to drive
 them from our realm forever and to reclaim the lands of ours they now occupy.
 
 I therefore send you this letter in the hands of one of my most trusted emissaries
-in the hope that he might convince you to meet with me and my princes, seeking an
+in the hope that he might convince you to meet with me and my barons, seeking an
 alliance to our mutual benefit and the setting aside of old scores in the face of
 a common enemy.
 
@@ -1567,7 +1561,7 @@ D5
 0 -1 27055
 S
 #27028
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface; it's calm here, but starting
 to grow darker.
 
@@ -1597,7 +1591,7 @@ D5
 0 -1 27079
 S
 #27029
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface; it's calm here, but starting
 to grow darker.
 
@@ -1627,7 +1621,7 @@ D5
 0 -1 27077
 S
 #27030
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface; it's calm here, but starting
 to grow darker.
 
@@ -1709,7 +1703,7 @@ D5
 0 -1 27073
 S
 #27033
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1743,7 +1737,7 @@ D5
 0 -1 27072
 S
 #27034
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1777,7 +1771,7 @@ D5
 0 -1 27074
 S
 #27035
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1811,7 +1805,7 @@ D5
 0 -1 27078
 S
 #27036
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1841,7 +1835,7 @@ D5
 0 -1 27069
 S
 #27037
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1871,7 +1865,7 @@ D5
 0 -1 27070
 S
 #27038
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1897,7 +1891,7 @@ D5
 0 -1 27071
 S
 #27039
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1927,7 +1921,7 @@ D5
 0 -1 27081
 S
 #27040
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1953,7 +1947,7 @@ D5
 0 -1 27056
 S
 #27041
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -1983,7 +1977,7 @@ D5
 0 -1 27057
 S
 #27042
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2017,7 +2011,7 @@ D5
 0 -1 27080
 S
 #27043
-The Stormy Deep~
+{cThe Stormy Deep{x~
 {BYou are a fair way below the ocean's surface, but can tell a storm is raging
 overhead. It's turbulent and dark here, making movement exhausting and difficult.
 
@@ -2051,7 +2045,7 @@ D5
 0 -1 27068
 S
 #27044
-The Raging Deep~
+{cThe Raging Deep{x~
 {BYou are a fair way below the ocean's surface, but can still tell a storm is
 raging overhead. It's turbulent and dark here, making movement exhausting and
 difficult.
@@ -2086,7 +2080,7 @@ D5
 0 -1 27058
 S
 #27045
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2112,7 +2106,7 @@ D5
 0 -1 27059
 S
 #27046
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2146,7 +2140,7 @@ D5
 0 -1 27060
 S
 #27047
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2172,7 +2166,7 @@ D5
 0 -1 27061
 S
 #27048
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2208,7 +2202,7 @@ D5
 0 -1 27066
 S
 #27049
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2234,7 +2228,7 @@ D5
 0 -1 27062
 S
 #27050
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2268,7 +2262,7 @@ D5
 0 -1 27063
 S
 #27051
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2298,7 +2292,7 @@ D5
 0 -1 27065
 S
 #27052
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2324,7 +2318,7 @@ D5
 0 -1 27053
 S
 #27053
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2346,7 +2340,7 @@ D4
 0 -1 27052
 S
 #27054
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2372,7 +2366,7 @@ D5
 0 -1 27064
 S
 #27055
-Deeper Down~
+{CDeeper Down{x~
 {cYou are a fair way below the ocean's surface. It's calm here, but starting
 to grow darker.
 
@@ -2400,7 +2394,7 @@ D5
 0 -1 27067
 S
 #27056
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2422,7 +2416,7 @@ D4
 0 -1 27040
 S
 #27057
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2448,7 +2442,7 @@ D4
 0 -1 27041
 S
 #27058
-The Raging Ocean Deep~
+{BThe Raging Ocean Deep{x~
 {bYou are a long way down from the ocean surface. It's uncomfortably turbulent
 here, and extremely dark. The water pressure has grown too great for you to dive
 down any deeper.
@@ -2478,7 +2472,7 @@ D4
 0 -1 27044
 S
 #27059
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2500,7 +2494,7 @@ D4
 0 -1 27045
 S
 #27060
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2530,7 +2524,7 @@ D4
 0 -1 27046
 S
 #27061
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2556,7 +2550,7 @@ D4
 0 -1 27047
 S
 #27062
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2578,7 +2572,7 @@ D4
 0 -1 27049
 S
 #27063
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2608,7 +2602,7 @@ D4
 0 -1 27050
 S
 #27064
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2630,7 +2624,7 @@ D4
 0 -1 27054
 S
 #27065
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2656,7 +2650,7 @@ D4
 0 -1 27051
 S
 #27066
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2686,7 +2680,7 @@ D4
 0 -1 27048
 S
 #27067
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2708,7 +2702,7 @@ D4
 0 -1 27055
 S
 #27068
-The Stormy Ocean Deep~
+{BThe Stormy Ocean Deep{x~
 {bYou are a long way down from the ocean surface. It's uncomfortably turbulent
 here, and extremely dark. The water pressure has grown too great for you to dive
 down any deeper.
@@ -2738,7 +2732,7 @@ D4
 0 -1 27043
 S
 #27069
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2764,7 +2758,7 @@ D4
 0 -1 27036
 S
 #27070
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2790,7 +2784,7 @@ D4
 0 -1 27037
 S
 #27071
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2816,7 +2810,7 @@ D4
 0 -1 27038
 S
 #27072
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2846,7 +2840,7 @@ D4
 0 -1 27033
 S
 #27073
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2868,7 +2862,7 @@ D4
 0 -1 27032
 S
 #27074
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark, but less cold than it feels like it is above you. You think you see
 dim lights and moving shapes far below, but the water pressure has grown too
@@ -2899,7 +2893,7 @@ D4
 0 -1 27034
 S
 #27075
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark, but less cold than it feels like it is above you. You think you see
 dim lights and moving shapes far below, but the water pressure has grown too
@@ -2922,7 +2916,7 @@ D4
 0 -1 27031
 S
 #27076
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2948,7 +2942,7 @@ D4
 0 -1 27030
 S
 #27077
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -2974,7 +2968,7 @@ D4
 0 -1 27029
 S
 #27078
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -3004,7 +2998,7 @@ D4
 0 -1 27035
 S
 #27079
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -3030,7 +3024,7 @@ D4
 0 -1 27028
 S
 #27080
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -3060,7 +3054,7 @@ D4
 0 -1 27042
 S
 #27081
-The Ocean Deep~
+{cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
 very dark. You think you see dim lights and moving shapes far below, but the
 water pressure has grown too great for you to dive down any deeper.
@@ -3086,7 +3080,7 @@ D4
 0 -1 27039
 S
 #27082
-Entrance to an Underwater Cave~
+{YEntrance to an Underwater Cave{x~
 {yYou bump into the gaping entrance to a dark, rocky underwater cavern.
 You can't see anything much inside the cave mouth from here, but chitinous
 clacking sounds issue from deep within it.{x
@@ -3102,7 +3096,7 @@ D2
 0 -1 27083
 S
 #27083
-An Underwater Cave~
+{YAn Underwater Cave{x~
 {yYou are in a dark, rocky underwater cavern that travels north and east.
 Curiously, a pale blue light issuing from deeper within the cavern means
 that you are not in total darkness, and can make out the surface of its
@@ -3122,7 +3116,7 @@ D1
 0 -1 27084
 S
 #27084
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the northwest corner of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue from
 the northeast.
@@ -3145,7 +3139,7 @@ D3
 0 -1 27083
 S
 #27085
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the westernmost part of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue from
 the northeast.
@@ -3168,7 +3162,7 @@ D2
 0 -1 27086
 S
 #27086
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the southwestern corner of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue from
 the northeast.
@@ -3186,7 +3180,7 @@ D1
 0 -1 27087
 S
 #27087
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the southernmost part of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue from
 the northeast.
@@ -3209,7 +3203,7 @@ D3
 0 -1 27086
 S
 #27088
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the northeasternmost part of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue directly
 from the north.
@@ -3227,7 +3221,7 @@ D3
 0 -1 27087
 S
 #27089
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the easternmost part of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue directly
 from the north.
@@ -3249,7 +3243,7 @@ D3
 0 -1 27091
 S
 #27090
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the northeasternmost part of a large, rocky, underwater
 cave chamber. It is bathed in a blue light that issues directly from the north.
 
@@ -3270,7 +3264,7 @@ D3
 0 -1 27092
 S
 #27091
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the centre of a large, rocky, underwater cave chamber.
 It is bathed in a pale blue light that seems to issue from the northeast.
 
@@ -3296,7 +3290,7 @@ D3
 0 -1 27085
 S
 #27092
-Large Chamber in an Underwater Cave~
+{YLarge Chamber in an Underwater Cave{x~
 {yYou find yourself in the northernmost part of a large, rocky, underwater
 cave chamber. It is bathed in a pale blue light that seems to issue from
 the northeast.
@@ -3318,7 +3312,7 @@ D3
 0 -1 27084
 S
 #27093
-A Rocky Alcove~
+{YA Rocky Alcove{x~
 {yYou find yourself in a small alcove off a large underground cave chamber.
 It is large enough to fit a couple of man-sized humanoids uncomfortably, and
 is bathed in a bright blue light that you suspect of being bioluminescent in
@@ -3331,7 +3325,7 @@ D2
 0 -1 27090
 S
 #27094
-Entrance to a Large Underwater Cave~
+{YEntrance to a Large Underwater Cave{x~
 {yYou bump into the gaping entrance to a very large, dark, rocky underwater
 cavern. It must measure 20 metres across!  It's too dark to see what's inside
 it, but your curiosity is certainly piqued.{x
@@ -3347,7 +3341,7 @@ D3
 0 -1 27095
 S
 #27095
-A Large Underwater Cave Tunnel~
+{YA Large Underwater Cave Tunnel{x~
 {yYou are inside a very large, dark, rocky underwater cave tunnel. You can
 travel north from here, deeper into the cave system, or return to the
 entrance, to your east.{x
@@ -3363,7 +3357,7 @@ D1
 0 -1 27094
 S
 #27096
-A Large Underwater Cave Tunnel~
+{YA Large Underwater Cave Tunnel{x~
 {yYou are inside a very large, dark, rocky underwater cave tunnel travelling
 north and south. North takes you deeper into the cave system, and going south
 will have you heading back outside it, to the open sea.{x
@@ -3379,7 +3373,7 @@ D2
 0 -1 27095
 S
 #27097
-A Large Underwater Cave Tunnel~
+{YA Large Underwater Cave Tunnel{x~
 {yYou are inside a very large, dark, rocky underwater cave tunnel that runs
 south and east.  It feels unnaturally quiet.{x
 ~
@@ -3394,7 +3388,7 @@ D2
 0 -1 27096
 S
 #27098
-A Large Underwater Cave Tunnel~
+{YA Large Underwater Cave Tunnel{x~
 {yYou are inside a very large, dark, rocky underwater cave tunnel that runs
 west and south.  It feels unnaturally quiet.{x
 ~
@@ -3409,7 +3403,7 @@ D3
 0 -1 27097
 S
 #27099
-A Large Underwater Cave Tunnel~
+{YA Large Underwater Cave Tunnel{x~
 {yYou are inside a very large, dark, rocky underwater cave tunnel that runs
 north and east.  An unearthly silence dominates the environment, broken only
 by heavy, slithering sounds coming from your immediate east, where the tunnel
@@ -3426,7 +3420,7 @@ D1
 0 -1 27100
 S
 #27100
-A Huge Underwater Cave Chamber~
+{YA Huge Underwater Cave Chamber{x~
 {yYou stand inside a huge, rocky underwater cave chamber, covered in the
 mutilated corpses, picked-clean skeletons, and assorted body parts of large
 marine creatures.  What unholy deep-sea monster could have dragged them in
