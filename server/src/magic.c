@@ -309,7 +309,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
         mana = mana_cost(ch, sn);
 
         /* Hack for Tieflings to have hand of lucifer as a (useful) race skill -- Owl 3/4/22 */
-         if ( ( ( str_cmp( skill_table[sn].name, "hand of lucifer" ) ) == 0 ) 
+         if ( ( ( str_cmp( skill_table[sn].name, "hand of lucifer" ) ) == 0 )
          &&   ch->race == RACE_TIEFLING )
          {
                  mana = 25;
@@ -485,12 +485,12 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        
+
         if ( str_cmp( skill_table[sn].name, "ventriloquate" ) )
         {
                 say_spell( ch, sn );
         }
-       
+
         /*
         Below probably fixes above?  --Owl 23/09/18
 
@@ -968,7 +968,7 @@ void spell_bless (int sn, int level, CHAR_DATA *ch, void *vo)
         af.modifier  = 0 - level / 8;
         affect_to_char( victim, &af );
 
-        if ( ch != victim ) 
+        if ( ch != victim )
         {
                 send_to_char( "They are surrounded by righteousness.\n\r", ch );
                 check_group_bonus(ch);
@@ -1043,7 +1043,7 @@ void spell_call_lightning (int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *vch;
         int        dam;
 
-        if ( !IS_OUTSIDE( ch ) 
+        if ( !IS_OUTSIDE( ch )
         ||   ch->in_room->sector_type == SECT_UNDERWATER )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
@@ -1354,8 +1354,8 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
         spring->timer = level;
         obj_to_room( spring, ch->in_room );
 
-        act( "$p flows from the ground.", ch, spring, NULL, TO_CHAR );
-        act( "$p flows from the ground.", ch, spring, NULL, TO_ROOM );
+        act( "$p flows from a magical spring.", ch, spring, NULL, TO_CHAR );
+        act( "$p flows from a magical spring.", ch, spring, NULL, TO_ROOM );
         return;
 }
 
@@ -1414,7 +1414,7 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_strip(victim, gsn_gouge);
         affect_strip(victim, gsn_dirt);
 
-        if (ch != victim) 
+        if (ch != victim)
         {
                 send_to_char( "You restore their vision.\n\r", ch );
                 check_group_bonus(ch);
@@ -1470,7 +1470,7 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( buf, ch );
         }
 
-        if ( ch != victim ) 
+        if ( ch != victim )
         {
                 send_to_char( "Ok.\n\r", ch );
                 check_group_bonus(ch);
@@ -2097,8 +2097,8 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_FLYING) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_FLYING);
-                        send_to_char( "You are no longer flying.\n\r", victim );
-                        act( "$n slowly floats to the ground.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "You feel the pull of gravity slowly return.\n\r", victim );
+                        act( "$n seems to be affected by gravity once more.", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2318,7 +2318,7 @@ void spell_earthquake (int sn, int level, CHAR_DATA *ch, void *vo)
                         send_to_char( "The earth trembles and shivers.\n\r", vch );
                         if ( !IS_NPC( vch ) && number_percent( ) < 50 )
                         {
-                                send_to_char("You are knocked to the ground by the tremor.\n\r", vch );
+                                send_to_char("The tremor causes you to lose your equilibrium.\n\r", vch );
                                 vch->position = POS_RESTING;
                                 update_pos( vch );
                         }
@@ -2467,7 +2467,7 @@ void spell_entrapment( int sn, int level, CHAR_DATA *ch, void *vo )
         act( "A stasis field forms around $N, preventing $m from moving.",
             ch, NULL, victim, TO_ROOM );
 
-        check_group_bonus(ch);        
+        check_group_bonus(ch);
 
         return;
 }
@@ -2614,16 +2614,15 @@ void spell_fly( int sn, int level, CHAR_DATA *ch, void *vo )
                 REMOVE_BIT( victim->act, PLR_FALLING );
         }
         else {
-                send_to_char( "Your feet rise off the ground.\n\r", victim );
-                act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
+                send_to_char( "The sensation of gravity leaves your body.\n\r", victim );
+                act( "$n seems no longer to be affected by gravity.", victim, NULL, NULL, TO_ROOM );
         }
 
         if (ch != victim)
                 check_group_bonus(ch);
-        
+
         return;
 }
-
 
 void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
 {
@@ -3401,7 +3400,7 @@ void spell_mass_invis( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_to_char( gch, &af );
         }
 
-        /* Need this out of the main loop so they don't get a bonus for casting it on themselves */        
+        /* Need this out of the main loop so they don't get a bonus for casting it on themselves */
         check_group_bonus(ch);
 
         send_to_char( "Ok.\n\r", ch );
@@ -3572,8 +3571,8 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                         unequip_char( victim, obj );
                         obj_from_char( obj );
                         obj_to_room( obj, victim->in_room );
-                        act( "You toss $p to the ground.",  victim, obj, NULL, TO_CHAR );
-                        act( "$n tosses $p to the ground.", victim, obj, NULL, TO_ROOM );
+                        act( "You toss $p away.",  victim, obj, NULL, TO_CHAR );
+                        act( "$n tosses $p away.", victim, obj, NULL, TO_ROOM );
                         yesno = 1;
                 }
         }
@@ -3586,7 +3585,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 {
                         obj_from_char(obj);
                         obj_to_room(obj, victim->in_room);
-                        act("$p drops to the ground.", victim, obj, NULL, TO_CHAR);
+                        act("$p is dropped.", victim, obj, NULL, TO_CHAR);
                         act("$n drops $p.", victim, obj, NULL, TO_ROOM);
                 }
         }
@@ -3598,7 +3597,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 yesno = 1;
         }
 
-        if ( ch != victim && yesno ) 
+        if ( ch != victim && yesno )
         {
                 send_to_char( "Ok.\n\r", ch );
                 check_group_bonus(ch);
@@ -3649,7 +3648,7 @@ void spell_sense_traps( int sn, int level, CHAR_DATA *ch, void *vo )
                 sprintf( buf, "%s is already affected by that spell.\n\r", victim->name);
                 send_to_char( buf, ch );
                 return;
-        }        
+        }
 
         af.type      = sn;
         af.duration  = level;
@@ -3741,7 +3740,7 @@ void spell_sleep( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         check_group_bonus(ch);
-        
+
 }
 
 
@@ -3827,7 +3826,7 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim= (CHAR_DATA *) vo;
         char    buf     [MAX_STRING_LENGTH];
 
-        if ( !IS_OUTSIDE( ch ) 
+        if ( !IS_OUTSIDE( ch )
         && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch);
@@ -3906,10 +3905,10 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
                 mob->hit = mob->max_hit;
         }
 
-        sprintf( buf, "You draw a pentagram on the ground and the form of %s rises "
+        sprintf( buf, "You outline a pentagram before you and the form of %s rises "
                 "from its centre!\n\r", mob->short_descr);
         send_to_char( buf, ch );
-        act("The form of $N slowly rises from the ground before $n!", ch, NULL, mob, TO_ROOM);
+        act("The form of $N slowly rises before $n!", ch, NULL, mob, TO_ROOM);
 
         char_to_room(mob, ch->in_room);
         add_follower(mob, ch );
@@ -4045,7 +4044,7 @@ void spell_ventriloquate( int sn, int level, CHAR_DATA *ch, void *vo )
 
         /*
          * Shade 22.3.22 - minor fixes
-         */ 
+         */
 
         sprintf( buf1, "{W%s says '%s'{x\n\r",              speaker, target_name );
         sprintf( buf2, "{WSomeone makes %s say '%s'{x\n\r", speaker, target_name );
@@ -5203,13 +5202,12 @@ void spell_levitation ( int sn, int level, CHAR_DATA *ch, void *vo )
                 REMOVE_BIT( victim->act, PLR_FALLING );
         }
         else {
-                send_to_char( "You rise up into the air.\n\r", victim );
-                act( "$n's feet rise off the ground.", victim, NULL, NULL, TO_ROOM );
+                send_to_char( "The feeling of weight leaves your body.\n\r", victim );
+                act( "$n becomes weightless.", victim, NULL, NULL, TO_ROOM );
         }
 
         return;
 }
-
 
 void spell_mental_barrier ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
@@ -5983,7 +5981,7 @@ void spell_moonray( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *vch;
         int        dam;
 
-        if ( !IS_OUTSIDE( ch ) 
+        if ( !IS_OUTSIDE( ch )
         && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
@@ -6041,7 +6039,7 @@ void spell_sunray( int sn, int level, CHAR_DATA *ch, void *vo )
         int        dam;
         AFFECT_DATA af;
 
-        if ( !IS_OUTSIDE( ch ) 
+        if ( !IS_OUTSIDE( ch )
         && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
         {
                 send_to_char( "You can't be indoors or underwater.\n\r", ch );
@@ -7117,7 +7115,7 @@ void spell_hells_fire (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (spell_attack_number == 1)
         {
-                act("{RFlames{x burst forth from the ground around $N!", ch, NULL, victim, TO_NOTVICT);
+                act("{RFlames{x burst into existence and surround $N!", ch, NULL, victim, TO_NOTVICT);
                 act("You summon {Rflames{x from the pits of Hell!", ch, NULL, NULL, TO_CHAR);
         }
 

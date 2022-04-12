@@ -1764,9 +1764,9 @@ void update_pos (CHAR_DATA *victim)
          */
         if (victim->rider)
         {
-                send_to_char ("Your mount collapses, throwing you to the ground!\n\r",
+                send_to_char ("Your mount collapses, throwing you off it!\n\r",
                               victim->rider);
-                act ("$c collapses, throwing $N to the ground!", victim, NULL,
+                act ("$c collapses, throwing $N off!", victim, NULL,
                      victim->rider, TO_NOTVICT);
                 victim->rider->position = POS_RESTING;
                 strip_mount (victim->rider);
@@ -2066,9 +2066,9 @@ void death_cry (CHAR_DATA *ch)
         if (!MAKES_CORPSE(ch))
                 strcpy(msg, "$c's form withers and dissolves into nothing.");
         else if (IS_HUGE(ch))
-                strcpy(msg, "$c's huge body crashes to the ground... DEAD.");
+                strcpy(msg, "$c's huge body collapses before you... DEAD.");
         else
-                strcpy(msg, "$c slumps to the ground... DEAD.");
+                strcpy(msg, "$c slumps before you... DEAD.");
 
         /* Random variations, including bits of bodies being dropped */
         switch (number_bits(4))
@@ -2091,7 +2091,7 @@ void death_cry (CHAR_DATA *ch)
             case 3:
                 if (HAS_HEAD(ch) && MAKES_CORPSE(ch))
                 {
-                        strcpy(msg, "$c's severed head falls to the ground.");
+                        strcpy(msg, "$c's head is separated from $s body.");
                         body_part_vnum = OBJ_VNUM_SEVERED_HEAD;
                 }
                 break;
@@ -3130,9 +3130,9 @@ void do_destrier (CHAR_DATA *ch, char *argument)
 
         if (number_percent () < chance)
         {
-                act ("$n's mount {Gtramples{x you to the ground!", ch, NULL, victim,TO_VICT);
-                act ("$n's mount {Gtramples{x $N to the ground!", ch, NULL,victim,TO_NOTVICT);
-                act ("Your mount {Gtramples{x $N to the ground!", ch, NULL,victim,TO_CHAR);
+                act ("$n's mount {Gtramples{x you!", ch, NULL, victim,TO_VICT);
+                act ("$n's mount {Gtramples{x $N!", ch, NULL,victim,TO_NOTVICT);
+                act ("Your mount {Gtramples{x $N!", ch, NULL,victim,TO_CHAR);
 
                 arena_commentary("$n's mount tramples $N to the ground.", ch, victim);
 
@@ -3261,13 +3261,6 @@ void do_backstab (CHAR_DATA *ch, char *argument)
         if (!(victim = get_char_room(ch, arg)))
         {
                 send_to_char("They aren't here.\n\r", ch);
-                return;
-        }
-
-        if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
-        {
-                send_to_char("You can't backstab while underwater.\n\r", ch);
                 return;
         }
 
@@ -3435,13 +3428,6 @@ void do_lunge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
-        {
-                send_to_char("You can't lunge while underwater.\n\r", ch);
-                return;
-        }
-
         if (victim->fighting)
         {
                 send_to_char("You can't lunge at a fighting person.\n\r", ch);
@@ -3556,13 +3542,6 @@ void do_joust (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
-        {
-                send_to_char("You can't joust while underwater.\n\r", ch);
-                return;
-        }
-
         if ((victim->hit < victim->max_hit) && IS_NPC(victim))
         {
                 send_to_char("They won't fall for that twice!\n\r", ch);
@@ -3577,7 +3556,7 @@ void do_joust (CHAR_DATA *ch, char *argument)
 
         if (victim->position < POS_STANDING)
         {
-                send_to_char("They're too low to the ground to be jousted.\n\r", ch);
+                send_to_char("They're too low down to be jousted.\n\r", ch);
                 return;
         }
 
@@ -3586,9 +3565,9 @@ void do_joust (CHAR_DATA *ch, char *argument)
 
         if (is_affected(victim, gsn_gaias_warning))
         {
-                act ("You attempt to joust at $N but $e deftly steps aside.",
+                act ("You attempt to joust at $N but $e deftly moves aside.",
                      ch, NULL, victim, TO_CHAR);
-                act ("Sensing impending danger you step to one side, just as $n's blade flashes by.",
+                act ("Sensing impending danger you move to one side, just as $n's blade flashes by.",
                      ch, NULL, victim, TO_VICT);
                 act ("$n's jousting is thwarted by $N's acute awareness.",
                      ch, NULL, victim, TO_NOTVICT);
@@ -4590,7 +4569,7 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
         {
                 act ("Your {Cheadbutt{x causes $N to fall.", ch, NULL, victim, TO_CHAR);
                 act ("$n {Cheadbutts{x you - you see red!", ch, NULL, victim, TO_VICT);
-                act ("$n {Cheadbutts{x $N to the ground!", ch, NULL, victim, TO_NOTVICT);
+                act ("$n {Cheadbutts{x $N!", ch, NULL, victim, TO_NOTVICT);
 
                 arena_commentary("$n headbutts $N to the ground.", ch, victim);
 
@@ -4696,15 +4675,15 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
         if (number_percent() < chance)
         {
                 act ("{B$C's head is detached from $S neck!!{x", ch, NULL, victim, TO_CHAR);
-                act ("{B$n swings $s blade at $N, causing $N's head to fly across the room!!{x",
+                act ("{B$n swings $s blade at $N, causing $N's head to separate from $S body and fly away!!{x",
                      ch, NULL, victim, TO_NOTVICT);
                 act ("{B$n DECAPITATES you!!{x", ch, NULL, victim, TO_VICT);
 
                 if (IS_NPC(victim))
-                        sprintf(msg, "%s's severed head rolls along the ground.",
+                        sprintf(msg, "%s's severed head rolls around in front of you.",
                                 victim->short_descr);
                 else
-                        sprintf(msg, "%s's severed head rolls along the ground.",
+                        sprintf(msg, "%s's severed head rolls around in front of you.",
                                 victim->name);
 
                 act (msg, ch, NULL, NULL, TO_ROOM);
@@ -4945,10 +4924,10 @@ void do_stun (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch) || number_percent() < chance)
         {
-                act ("You viciously pound $N causing $M to fall to the ground.",
+                act ("You viciously pound $N, causing $M to buckle and collapse.",
                      ch, NULL, victim, TO_CHAR);
-                act ("You fall to the ground, unable to get up.", ch, NULL, victim, TO_VICT);
-                act ("$n walks up and pounds $N on the head causing $N to fall to the ground.",
+                act ("You legs buckles and you collapse, unable to arise.", ch, NULL, victim, TO_VICT);
+                act ("$n walks up and pounds $N on the head causing $N to collapse.",
                      ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n stuns $N.", ch, victim);
 
@@ -5097,6 +5076,14 @@ void do_trip (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( ch->in_room->sector_type == SECT_UNDERWATER
+        ||   ch->in_room->sector_type == SECT_WATER_SWIM
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM )
+        {
+                send_to_char ("You can't trip in the water.\n\r", ch);
+                return;
+        }
+
         if (IS_AFFECTED(victim,AFF_FLYING))
         {
                 act ("$S feet aren't on the ground.", ch, NULL, victim, TO_CHAR);
@@ -5228,9 +5215,9 @@ void do_grapple (CHAR_DATA *ch, char *argument)
         if ((IS_NPC(ch) || number_percent() < chance)
             && victim->position == POS_FIGHTING)
         {
-                act ("You {Wgrapple{x $N to the ground, winding them.", ch, NULL, victim, TO_CHAR);
-                act ("$n {Wgrapples{x you to the ground!", ch, NULL, victim, TO_VICT);
-                act ("$n {Wgrapples{x $N to the ground!", ch, NULL, victim, TO_NOTVICT);
+                act ("You {Wgrapple{x $N down, winding them.", ch, NULL, victim, TO_CHAR);
+                act ("$n {Wgrapples{x you down!", ch, NULL, victim, TO_VICT);
+                act ("$n {Wgrapples{x $N down!", ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n grapples $N to the ground.", ch, victim);
 
                 WAIT_STATE (ch,        2 * PULSE_VIOLENCE);
@@ -5303,9 +5290,9 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
 
         if (victim == ch)
         {
-                send_to_char("You leap into the air and fall flat on your face!\n\r", ch);
+                send_to_char("You leap up and fall face-first!\n\r", ch);
                 WAIT_STATE(ch, 2 * skill_table[gsn_flying_headbutt].beats);
-                act ("$n leaps into the air and crashes to the ground!", ch, NULL, NULL, TO_ROOM);
+                act ("$n leaps up and crashes down in a pile!", ch, NULL, NULL, TO_ROOM);
                 return;
         }
 
@@ -5319,11 +5306,11 @@ void do_flying_headbutt (CHAR_DATA *ch, char *argument)
         if ((IS_NPC(ch) || number_percent() < chance )
             && victim->position == POS_FIGHTING)
         {
-                act ("You leap in the air and {Cheadbutt{x $N to the ground!",
+                act ("You leap upand {Cheadbutt{x $N down!",
                      ch, NULL, victim, TO_CHAR);
-                act ("$n leaps at you and {Cheadbutts{x you to the ground!",
+                act ("$n leaps at you and {Cheadbutts{x you down!",
                      ch, NULL, victim, TO_VICT);
-                act ("$n leaps through the air and {Cheadbutts{x $N to the ground!",
+                act ("$n leaps upand {Cheadbutts{x $N down!",
                      ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n's flying headbutt knocks $N to the ground.", ch, victim);
 
@@ -5509,9 +5496,9 @@ void do_slay (CHAR_DATA *ch, char *argument)
 
         if (victim->rider)
         {
-                send_to_char ("Your mount collapses, throwing you to the ground!\n\r",
+                send_to_char ("Your mount collapses, throwing you off it!\n\r",
                               victim->rider);
-                act ("$c collapses, throwing $N to the ground!", victim, NULL,
+                act ("$c collapses, throwing $N off!", victim, NULL,
                      victim->rider, TO_NOTVICT);
                 victim->rider->position = POS_RESTING;
                 strip_mount (victim->rider);
@@ -5838,10 +5825,10 @@ void do_tailwhip (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act ("You whip your tail at $N and smash $M to the ground!", ch, NULL, victim, TO_CHAR);
-        act ("$c whips $s tail at you and smashes you to the ground!",  ch, NULL, victim, TO_VICT);
-        act ("$c whips $s tail at $N and smashes $M to the ground!", ch, NULL, victim, TO_NOTVICT);
-        arena_commentary("$n tailwhips $N to the ground.", ch, victim);
+        act ("You whip your tail at $N and smash $M down!", ch, NULL, victim, TO_CHAR);
+        act ("$c whips $s tail at you and smashes you down!",  ch, NULL, victim, TO_VICT);
+        act ("$c whips $s tail at $N and smashes $M down!", ch, NULL, victim, TO_NOTVICT);
+        arena_commentary("$n tailwhips $N down.", ch, victim);
 
         WAIT_STATE (victim, 2 * PULSE_VIOLENCE);
         WAIT_STATE (ch, 2 * PULSE_VIOLENCE);
