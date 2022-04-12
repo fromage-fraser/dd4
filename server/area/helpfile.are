@@ -1678,7 +1678,7 @@ Syntax: prompt <%*>
 
 PROMPT without an argument will toggle your prompt on and off.
 
-PROMPT ALL sets a standard "<hits/hitmax mana/manamax moves/movesmax>" prompt.
+PROMPT ALL sets the default "<hits/hitmax mana/manamax moves/movesmax area>" prompt.
 
 PROMPT <%*> creates a prompt where %* represents the following variables:
 
@@ -1697,6 +1697,7 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %t :  Current quest timer        (minutes until quest finishes)
     %T :  Time until next quest
     %x :  Total experience points
+    %z :  Name of the area ("{Wz{xone") your character is in
     %e :  Experience needed to level
     %g :  Coins carried
     %a :  Alignment                  (`evil', `neutral' or `good')
