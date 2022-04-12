@@ -513,15 +513,15 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_FLYING;
                         affect_to_char( ch, &af );
-                        send_to_char( "Your feet rise off the ground.\n\r", ch );
-                        act( "$n's feet rise off the ground.", ch, NULL, NULL, TO_ROOM );
+                        send_to_char( "The sensation of gravity leaves your body.\n\r", ch );
+                        act( "$n seems no longer to be affected by gravity.", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
                 else
                 {
                         affect_strip( ch, af.type );
-                        send_to_char( "You fall back to earth.\n\r", ch );
-                        act( "$n slowly floats to the ground.", ch,
+                        send_to_char( "You feel the pull of gravity slowly return.\n\r", ch );
+                        act( "$n seems to be affected by gravity once more.", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }

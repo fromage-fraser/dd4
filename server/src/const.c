@@ -1768,7 +1768,7 @@ const struct skill_type skill_table [MAX_SKILL] =
          * practice type, target, minimum position,
          * pointer to spell function, minimum mana, beats
          * damage noun, wear off message
-         * 
+         *
          * When adding new spells add them near the end, just
          * before the base skills.  Elements are accessed by
          * index and results will be unpredictable if the current
@@ -2142,7 +2142,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "fly", &gsn_fly,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
                 spell_fly, 10, 18,
-                "", "You slowly float to the ground."
+                "", "You feel the pull of gravity slowly return."
         },
 
         {
@@ -3782,7 +3782,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "levitation", &gsn_levitation,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_levitation, 10, 18,
-                "", "You gently float to the ground."
+                "", "The sensation of gravity gently returns to your body."
         },
 
         {

@@ -916,7 +916,7 @@ void do_climb(CHAR_DATA *ch, char *argument)
                 {
                         if (number_percent () > 50)
                         {
-                                act ("You misjudge completely the $d, and tumble to the ground.",
+                                act ("You misjudge completely the $d, and tumble down.",
                                      ch, NULL, pexit->keyword, TO_CHAR);
                                 ch->position = POS_RESTING;
                                 damage(ch, ch, ch->level/2, gsn_climb, FALSE);
@@ -1306,7 +1306,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
 
                         if (IS_NPC(gch) && IS_AWAKE(gch) && ch->level + 5 < gch->level)
                         {
-                                act ("$N is standing too close to the lock.", ch, NULL, gch, TO_CHAR);
+                                act ("$N is too close to the lock.", ch, NULL, gch, TO_CHAR);
                                 return;
                         }
                 }
@@ -1374,7 +1374,7 @@ void do_pick(CHAR_DATA *ch, char *argument)
 
                         if (IS_NPC(gch) && IS_AWAKE(gch) && ch->level + 5 < gch->level)
                         {
-                                act ("$N is standing too close to the lock.", ch, NULL, gch, TO_CHAR);
+                                act ("$N is too close to the lock.", ch, NULL, gch, TO_CHAR);
                                 return;
                         }
                 }
@@ -1431,14 +1431,14 @@ void do_stand(CHAR_DATA *ch, char *argument)
                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
-                send_to_char("You wake and stand up.\n\r", ch);
-                act ("$n wakes and stands up.", ch, NULL, NULL, TO_ROOM);
+                send_to_char("You wake and ready yourself for action.\n\r", ch);
+                act ("$n wakes and readies $mself for action.", ch, NULL, NULL, TO_ROOM);
                 ch->position = POS_STANDING;
                 break;
 
             case POS_RESTING:
-                send_to_char("You stand up.\n\r", ch);
-                act ("$n stands up.", ch, NULL, NULL, TO_ROOM);
+                send_to_char("You ready yourself for action.\n\r", ch);
+                act ("$n readies $mself for action.", ch, NULL, NULL, TO_ROOM);
                 ch->position = POS_STANDING;
                 break;
 
@@ -1447,7 +1447,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
                 break;
 
             case POS_STANDING:
-                send_to_char("You are already standing.\n\r",  ch);
+                send_to_char("You are already conscious and alert.\n\r",  ch);
                 break;
         }
 }
@@ -1519,10 +1519,11 @@ void do_sleep (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
+        if ( (!IS_NPC(ch))
+        && ch->in_room->sector_type == SECT_UNDERWATER
+        && ( ch->race != RACE_SAHUAGIN && ( !is_affected(ch, gsn_breathe_water) ) ) )
         {
-                send_to_char("You can't sleep underwater.\n\r", ch);
+                send_to_char("You can't sleep underwater if you can't breathe underwater.\n\r", ch);
                 return;
         }
 
@@ -2492,7 +2493,7 @@ void do_smash (CHAR_DATA *ch, char *argument)
         {
                 act("Your powerful {Bsmash{x stuns $N!", ch, NULL, ch->fighting, TO_CHAR);
                 act("$n's {Bsmash{x stuns you!  You see nothing but stars.", ch, NULL, ch->fighting, TO_VICT);
-                act ("$n {Bsmahes{x $N to the ground with $s shield!", ch, NULL, ch->fighting, TO_NOTVICT);
+                act ("$n {Bsmashes{x $N with $s shield!", ch, NULL, ch->fighting, TO_NOTVICT);
                 arena_commentary("$n smashes $N to the ground.", ch, ch->fighting);
 
                 WAIT_STATE(ch->fighting, 2 * PULSE_VIOLENCE);
@@ -2864,7 +2865,7 @@ void do_pattern(CHAR_DATA* ch, char* argument)
 
         if(!CAN_DO(ch, gsn_pattern))
         {
-                send_to_char("You draw a mystical-looking pattern on the ground, but nothing seems to happen...\n\r", ch);
+                send_to_char("You create a mystical-looking pattern before you, but nothing seems to happen...\n\r", ch);
                 return;
         }
 
@@ -2914,8 +2915,8 @@ void do_pattern(CHAR_DATA* ch, char* argument)
 
                 ch->mana -= 200;
                 ch->pcdata->pattern = ch->in_room->vnum;
-                send_to_char("{CYou etch a mystic pattern on the ground and fill it with magical energy.{x\n\r", ch);
-                act("{Y$n etches a mystical pattern on the ground and fills it with magical energy.{x",
+                send_to_char("{CYou create a mystical pattern before you and imbue it with magical energy.{x\n\r", ch);
+                act("{Y$n creates a mystical pattern before them and imbues it with magical energy.{x",
                         ch, NULL, NULL, TO_ROOM);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
                 return;
