@@ -24,7 +24,7 @@ FACTION *factions[MAX_FACTIONS];
  * Set _feature_enabled to FALSE to disable at startup.
  * Use faction_feature_enabled() to test the value.
  */
-bool _feature_enabled = TRUE;
+bool _feature_enabled = FALSE;
 
 bool faction_feature_enabled()
 {

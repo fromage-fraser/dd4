@@ -271,7 +271,7 @@ const char *_lexicon_random_entry_text(
 
         for (i = 0; i < all_entries_count && i < MAX_CANDIDATES; i++) {
                 candidate_entry = &all_entries[i];
-                if (candidate_entry->filter & filter) {
+                if (filter == 0 || candidate_entry->filter & filter) {
                         candidate_entries[candidate_count++] = candidate_entry;
                 }
         }
