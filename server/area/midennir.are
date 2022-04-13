@@ -1,6 +1,9 @@
 #AREA   Copper~  Miden'nir~
 5 15 0 100
 
+#AREA_SPECIAL
+exp_mod 115
+$
 
 #MOBILES
 #3500

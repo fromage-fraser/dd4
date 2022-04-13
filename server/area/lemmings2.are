@@ -1,6 +1,10 @@
 #AREA Solias~ The Lemming Caves~
 5 15 0 100
 
+#AREA_SPECIAL
+exp_mod 115
+$
+
 #MOBILES
 #29950
 Small lemming~

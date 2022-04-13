@@ -1,6 +1,10 @@
 #AREA   Lok~     Ambush~
 6 16 0 100
 
+#AREA_SPECIAL
+exp_mod 115
+$
+
 #HELPS
 101 ambush~
 This area is designed to be connected south from an east west trail.
