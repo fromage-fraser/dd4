@@ -206,7 +206,7 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
 
 void do_chat( CHAR_DATA *ch, char *argument )
 {
-       
+
 /*        if (ch->level < 5)
         {
                 send_to_char("You must be level 5 to chat, use NEWBIE instead.\n\r", ch);
@@ -2037,7 +2037,11 @@ void add_to_public_review_buffer (CHAR_DATA *ch, int channel, char *text)
         if (ch)
                 sprintf(buf, "%s  {W%s{x: %s{x\n\r",
                         &when[4],
-                        IS_NPC(ch) ? capitalize_initial(ch->short_descr) : ch->name,
+                        IS_NPC(ch)
+                                ? capitalize_initial(ch->short_descr)
+                                : IS_SET(ch->act, PLR_WIZINVIS)
+                                        ? "Someone"
+                                        : ch->name,
                         text);
         else
                 sprintf(buf, "%s  %s{x\n\r",
