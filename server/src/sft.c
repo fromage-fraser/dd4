@@ -1018,7 +1018,7 @@ void do_forage(CHAR_DATA *ch,  char *argument)
 void do_morph_bear (CHAR_DATA *ch, bool to_form) 
 {
         OBJ_DATA *claws;
-        
+
         if (to_form) 
         {
                 claws = create_object(get_obj_index(OBJ_BEAR_CLAWS), ch->level);
@@ -1030,8 +1030,15 @@ void do_morph_bear (CHAR_DATA *ch, bool to_form)
                         form_equip_char(ch, claws, WEAR_WIELD);
                 }
         }
-        else 
+        else        
         {
+
+                /*
+                 * form_equipment_update has already been called before coming here; claws are probably removed
+                 *
+                 * if things aren't working, don't try and fix here
+                 */
+
                 claws = get_obj_wear(ch, "sftclaws");
                 if (claws) 
                 {
