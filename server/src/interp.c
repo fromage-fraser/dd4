@@ -2011,7 +2011,7 @@ const struct social_type social_table [] =
         },
 
         {
-        "pinch",
+                "pinch",
                         "You toss a pinch of salt over your shoulder.",
                         "$n tosses a pinch of salt over $s shoulder.",
                         "You pinch $S rosy cheeks.",
@@ -2206,6 +2206,17 @@ const struct social_type social_table [] =
                         "$n exclaims, 'Oh Happy Happy, Joy Joy!' when $e sees you approach.",
                         "You exclaim, 'Oh Happy Happy, Joy Joy!' at the thought of yourself.",
                         "$n exclaims, 'Oh Happy Happy, Joy Joy!' at the thought of $mself."
+        },
+
+        {
+                "roar",
+                        "You throw back your head and roar like a lion.",
+                        "$c throws back $s head and roars like a lion.",
+                        "You throw back your head and roar like a lion at $M.",
+                        "$c roars like a lion at $N.",
+                        "$c throws back $s head and roars like a lion at you.",
+                        "You roar like a lion, in recognition of your mighty accomplishment.",
+                        "$c throws back $s head and roars at $mself."
         },
 
         {
