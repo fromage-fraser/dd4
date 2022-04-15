@@ -1104,8 +1104,12 @@ void form_equip_char (CHAR_DATA *ch, OBJ_DATA *obj, int iWear)
         OBJ_DATA *removed = NULL;
 
         /* force removal of old weapon */
-        if ((removed = get_eq_char(ch, iWear)))
+        if ((removed = get_eq_char(ch, iWear))) 
+        {
+                /* Shade Apr 2022 - don't forget to remember the weapon if applicable */        
                 unequip_char(ch, removed);
+                ch->pcdata->morph_list[iWear] = removed;
+        }
 
         /* do the equipping */
         equip_char(ch, obj, iWear);

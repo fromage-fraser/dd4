@@ -2212,6 +2212,7 @@ void add_morph_list(CHAR_DATA *ch, int iWear)
 
         unequip_char(ch, theObj);
         ch->pcdata->morph_list[iWear] = theObj;
+        
 }
 
 
@@ -2242,6 +2243,10 @@ void form_equipment_update (CHAR_DATA *ch)
 
                 obj = get_eq_char(ch, iter);
 
+                /*
+                 * no object currently worn - reapply what was there
+                 */
+
                 if (!obj)
                 {
                         if (form_wear_table[ch->form].can_wear[jter])
@@ -2250,14 +2255,20 @@ void form_equipment_update (CHAR_DATA *ch)
 
                 else
                 {
+                        /*
+                         * there is an object there
+                         */
+
                         if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
                         {
-                               unequip_char(ch, obj);
+                                unequip_char(ch, obj);
                                 extract_obj(obj);
+                                rem_morph_list(ch, iter); /* Shade added April 2022 */
                         }
 
                         else if (!form_wear_table[ch->form].can_wear[jter])
                                 add_morph_list(ch, iter);
+                                
                 }
         }
 }
