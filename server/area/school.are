@@ -5,6 +5,7 @@
 school
 no_quest
 safe
+exp_mod 125
 $
 
 #MOBILES
@@ -743,6 +744,17 @@ The portal hangs in the air.~
 33 1 0
 3725~ -1~ 0~ 100~
 0 0 0
+
+#3721
+snowy white stone~
+a snowy white stone~
+A small snowy white stone lies here.~
+~
+8 64 32769
+0~ 0~ 0~ 0~
+10 5500 2000
+A
+4 2
 
 #0
 
@@ -1869,6 +1881,7 @@ G 0 3713 0
 G 0 3715 0
 G 0 3714 0
 G 0 3710 0
+G 0 3721 0
 
 O 0 3719 1 3723     Portal to victory
 O 0 3720 1 3737     Portal to safety

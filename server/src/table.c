@@ -176,16 +176,19 @@ void check_fame_table (CHAR_DATA *ch)
                         send_to_char( buf, ch );
                         
                         sprintf(buf, "%s has been", ch->name);
-                        if (!i || prev < i) 
+
+                        if (prev < i) 
                                 sprintf(buf1, " promoted ");
                         else
                                 sprintf(buf1, " demoted ");
+
                         strcat(buf, buf1);
                         sprintf(buf1, "to number %d amongst famous mortals.\n\r", 
                                 prev + 1);
                         strcat(buf, buf1);
                         
                         do_info(ch, buf);
+
                 }
         }
         
@@ -325,7 +328,7 @@ void check_infamy_table (CHAR_DATA *mob)
                 if (i < INFAMY_TABLE_LENGTH_PRINT) 
                 {
                                              
-                        sprintf(buf, "%s is now ranked number %d%s amongst infamous monsters!",
+                        sprintf(buf, "%s is now ranked %d%s amongst infamous monsters!",
                                 capitalize_initial(mob->short_descr), 
                                 i + 1,
                                 number_suffix(i + 1));

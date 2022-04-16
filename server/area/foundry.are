@@ -1,6 +1,10 @@
 #AREA   Gezhp~ The Foundry~
 1 5 0 100
 
+#AREA_SPECIAL
+exp_mod 125
+$
+
 #MOBILES
 #101
 wild dog~
