@@ -1104,9 +1104,9 @@ void form_equip_char (CHAR_DATA *ch, OBJ_DATA *obj, int iWear)
         OBJ_DATA *removed = NULL;
 
         /* force removal of old weapon */
-        if ((removed = get_eq_char(ch, iWear))) 
+        if ((removed = get_eq_char(ch, iWear)))
         {
-                /* Shade Apr 2022 - don't forget to remember the weapon if applicable */        
+                /* Shade Apr 2022 - don't forget to remember the weapon if applicable */
                 unequip_char(ch, removed);
                 ch->pcdata->morph_list[iWear] = removed;
         }
@@ -2248,22 +2248,23 @@ char *affect_bit_name (int vector)
         if ( vector & AFF_FLAMING       ) return "flaming";
         if ( vector & AFF_POISON        ) return "poison";
         if ( vector & AFF_PROTECT       ) return "protect";
-        if ( vector & AFF_SLEEP         ) return "sleep";
+        if ( vector & AFF_MEDITATE      ) return "meditating";
         if ( vector & AFF_SNEAK         ) return "sneak";
         if ( vector & AFF_HIDE          ) return "hide";
+        if ( vector & AFF_SLEEP         ) return "sleep";
         if ( vector & AFF_CHARM         ) return "charm";
         if ( vector & AFF_FLYING        ) return "flying";
         if ( vector & AFF_PASS_DOOR     ) return "pass_door";
-        if ( vector & AFF_MEDITATE      ) return "meditating";
-        if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
-        if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
-        if ( vector & AFF_GLOBE         ) return "globed";
         if ( vector & AFF_DETECT_TRAPS  ) return "detect_traps";
-        if ( vector & AFF_DETECT_SNEAK  ) return "detect_sneak";
-        if ( vector & AFF_DETER         ) return "deter";
         if ( vector & AFF_BATTLE_AURA   ) return "battle_aura";
+        if ( vector & AFF_DETECT_SNEAK  ) return "detect_sneak";
+        if ( vector & AFF_GLOBE         ) return "globed";
+        if ( vector & AFF_DETER         ) return "deter";
         if ( vector & AFF_SWIM          ) return "swim";
         if ( vector & AFF_PRAYER_PLAGUE ) return "plague";
+        if ( vector & AFF_NON_CORPOREAL ) return "non_corporeal";
+        if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
+        if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
 
         return "none";
 }
