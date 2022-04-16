@@ -2320,8 +2320,8 @@ S
 #27053
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2338,6 +2338,10 @@ D4
 ~
 ~
 0 -1 27052
+D5
+~
+~
+0 -1 27122
 S
 #27054
 {CDeeper Down{x~
@@ -2396,8 +2400,8 @@ S
 #27056
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2414,12 +2418,16 @@ D4
 ~
 ~
 0 -1 27040
+D5
+~
+~
+0 -1 27115
 S
 #27057
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2440,12 +2448,17 @@ D4
 ~
 ~
 0 -1 27041
+D5
+~
+~
+0 -1 27116
 S
 #27058
 {BThe Raging Ocean Deep{x~
 {bYou are a long way down from the ocean surface. It's uncomfortably turbulent
-here, and extremely dark. The water pressure has grown too great for you to dive
-down any deeper.
+here, and extremely dark. You can make out dim lights and moving shapes far
+below; you think if you made an effort you could dive down a little deeper to
+investigate them.
 
 You must feel your way around.{x
 ~
@@ -2470,12 +2483,16 @@ D4
 ~
 ~
 0 -1 27044
+D5
+~
+~
+0 -1 27117
 S
 #27059
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2492,12 +2509,16 @@ D4
 ~
 ~
 0 -1 27045
+D5
+~
+~
+0 -1 27125
 S
 #27060
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2522,12 +2543,16 @@ D4
 ~
 ~
 0 -1 27046
+D5
+~
+~
+0 -1 27124
 S
 #27061
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2548,12 +2573,16 @@ D4
 ~
 ~
 0 -1 27047
+D5
+~
+~
+0 -1 27127
 S
 #27062
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2570,12 +2599,16 @@ D4
 ~
 ~
 0 -1 27049
+D5
+~
+~
+0 -1 27126
 S
 #27063
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2600,12 +2633,16 @@ D4
 ~
 ~
 0 -1 27050
+D5
+~
+~
+0 -1 27123
 S
 #27064
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2622,12 +2659,16 @@ D4
 ~
 ~
 0 -1 27054
+D5
+~
+~
+0 -1 27121
 S
 #27065
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2648,12 +2689,16 @@ D4
 ~
 ~
 0 -1 27051
+D5
+~
+~
+0 -1 27120
 S
 #27066
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2678,12 +2723,16 @@ D4
 ~
 ~
 0 -1 27048
+D5
+~
+~
+0 -1 27118
 S
 #27067
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2700,12 +2749,17 @@ D4
 ~
 ~
 0 -1 27055
+D5
+~
+~
+0 -1 27119
 S
 #27068
 {BThe Stormy Ocean Deep{x~
 {bYou are a long way down from the ocean surface. It's uncomfortably turbulent
-here, and extremely dark. The water pressure has grown too great for you to dive
-down any deeper.
+here, and extremely dark. You can make out dim lights and moving shapes far
+below; you think if you made an effort you could dive down a little deeper to
+investigate them.
 
 You must feel your way around.{x
 ~
@@ -2730,12 +2784,16 @@ D4
 ~
 ~
 0 -1 27043
+D5
+~
+~
+0 -1 27112
 S
 #27069
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2756,12 +2814,16 @@ D4
 ~
 ~
 0 -1 27036
+D5
+~
+~
+0 -1 27111
 S
 #27070
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2782,12 +2844,16 @@ D4
 ~
 ~
 0 -1 27037
+D5
+~
+~
+0 -1 27106
 S
 #27071
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2808,12 +2874,16 @@ D4
 ~
 ~
 0 -1 27038
+D5
+~
+~
+0 -1 27105
 S
 #27072
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2838,12 +2908,16 @@ D4
 ~
 ~
 0 -1 27033
+D5
+~
+~
+0 -1 27104
 S
 #27073
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2860,13 +2934,17 @@ D4
 ~
 ~
 0 -1 27032
+D5
+~
+~
+0 -1 27102
 S
 #27074
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark, but less cold than it feels like it is above you. You think you see
-dim lights and moving shapes far below, but the water pressure has grown too
-great for you to dive down any deeper.
+very dark, but less cold than it feels like it is above you. You can make out
+dim lights and moving shapes far below; you think if you made an effort you
+could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2891,13 +2969,17 @@ D4
 ~
 ~
 0 -1 27034
+D5
+~
+~
+0 -1 27107
 S
 #27075
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark, but less cold than it feels like it is above you. You think you see
-dim lights and moving shapes far below, but the water pressure has grown too
-great for you to dive down any deeper.
+very dark, but less cold than it feels like it is above you. You can make out
+dim lights and moving shapes far below; you think if you made an effort you
+could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2914,12 +2996,16 @@ D4
 ~
 ~
 0 -1 27031
+D5
+~
+~
+0 -1 27101
 S
 #27076
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2940,12 +3026,16 @@ D4
 ~
 ~
 0 -1 27030
+D5
+~
+~
+0 -1 27103
 S
 #27077
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2966,12 +3056,16 @@ D4
 ~
 ~
 0 -1 27029
+D5
+~
+~
+0 -1 27108
 S
 #27078
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -2996,12 +3090,16 @@ D4
 ~
 ~
 0 -1 27035
+D5
+~
+~
+0 -1 27110
 S
 #27079
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -3022,12 +3120,16 @@ D4
 ~
 ~
 0 -1 27028
+D5
+~
+~
+0 -1 27109
 S
 #27080
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -3052,12 +3154,16 @@ D4
 ~
 ~
 0 -1 27042
+D5
+~
+~
+0 -1 27113
 S
 #27081
 {cThe Ocean Deep{x~
 {BYou are a long way down from the ocean surface. It's eerily calm here, and
-very dark. You think you see dim lights and moving shapes far below, but the
-water pressure has grown too great for you to dive down any deeper.
+very dark. You can make out dim lights and moving shapes far below; you think
+if you made an effort you could dive down a little deeper to investigate them.
 
 You must feel your way around.{x
 ~
@@ -3078,6 +3184,10 @@ D4
 ~
 ~
 0 -1 27039
+D5
+~
+~
+0 -1 27114
 S
 #27082
 {YEntrance to an Underwater Cave{x~

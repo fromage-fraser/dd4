@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [8 April 2022]
+    [16 April 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,10 +213,12 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew races! Check out Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid.{x
-
     {WNew original area "Undersea" [15-25] in!  Head west along Midgaard's river,
     south of the levee...{x
+
+    {WNew original area "Shadowsea" [25-30] in!  Look for it at the bottom of
+    Undersea...{x
+
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -254,8 +256,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 - New races: Fae, Sahuagin, Tiefling, Jotun, Genasi, and Illithid
 - Reaper is now a bit friendlier
-- New original area "The Undersea" [15-25]
+- New original area "Undersea" [15-25]
 - New INFAMY table
+- New original area "Shadowsea" [25-30]
 
 {WMarch 2022{x
 
