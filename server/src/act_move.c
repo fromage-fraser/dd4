@@ -1605,6 +1605,12 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
                 return;
         }
 
+        if (ch->pcdata->group_leader == ch)
+        {
+                send_to_char("You can't lead a group in a non-corporeal form.\n\r", ch);
+                return;
+        }
+
         if (is_affected(ch, gsn_mist_walk))
                 return;
 

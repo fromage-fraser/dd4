@@ -1570,6 +1570,12 @@ void do_group_order( CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
+        {
+                send_to_char("Groups may not be led by the non-corporeal.\n\r", ch);
+                return;
+        }
+
         if (!is_same_group(ch, victim))
         {
                 send_to_char("They're not in your group.\n\r", ch);

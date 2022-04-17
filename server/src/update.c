@@ -1853,22 +1853,27 @@ void aggr_update()
                         {
                                 if (IS_NPC(vch)
                                     || vch->deleted
+                                    || IS_AFFECTED(vch, AFF_NON_CORPOREAL)
                                     || vch->level >= LEVEL_IMMORTAL)
                                         continue;
 
-                                if ((!IS_SET(mch->act, ACT_WIMPY) || !IS_AWAKE(vch))
-                                    && can_see(mch, vch))
+                                if ( ( !IS_SET( mch->act, ACT_WIMPY )
+                                    || !IS_AWAKE( vch ) )
+                                    && can_see( mch, vch ) )
                                 {
-                                        if (!number_range(0, count))
+                                        if ( !number_range( 0, count ) )
                                         {
-                                                if (vch->pcdata->group_leader
-                                                    && can_see(mch, vch->pcdata->group_leader)
-                                                    && vch->pcdata->group_leader->in_room == mch->in_room)
+                                                if ( vch->pcdata->group_leader == vch
+                                                &&   !(IS_AFFECTED(vch->pcdata->group_leader, AFF_NON_CORPOREAL))
+                                                &&   can_see(mch, vch->pcdata->group_leader)
+                                                &&   vch->pcdata->group_leader->in_room == mch->in_room)
                                                 {
                                                         victim = vch->pcdata->group_leader;
                                                 }
                                                 else
+                                                {
                                                         victim = vch;
+                                                }
                                         }
                                         count++;
                                 }
@@ -2212,7 +2217,7 @@ void add_morph_list(CHAR_DATA *ch, int iWear)
 
         unequip_char(ch, theObj);
         ch->pcdata->morph_list[iWear] = theObj;
-        
+
 }
 
 
@@ -2268,7 +2273,7 @@ void form_equipment_update (CHAR_DATA *ch)
 
                         else if (!form_wear_table[ch->form].can_wear[jter])
                                 add_morph_list(ch, iter);
-                                
+
                 }
         }
 }
