@@ -6672,6 +6672,12 @@ void spell_astral_sidestep( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_NPC(ch) )
                 return;
 
+        if (ch->pcdata->group_leader == ch)
+        {
+                send_to_char("You can't lead a group in a non-corporeal form.\n\r", ch);
+                return;
+        }
+
         if (is_entered_in_tournament(ch)
             && tournament_status == TOURNAMENT_STATUS_RUNNING
             && is_still_alive_in_tournament(ch))
