@@ -679,14 +679,14 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
         buf1[0] = '\0';
 
-        sprintf( buf, "Name: '%s.'\n\rArea: '%s'.\n\r",
+        sprintf( buf, "Room: {W%s{x\n\rArea: {Y%s{x\n\r",
                 location->name,
                 location->area->name);
                 strcat( buf1, buf );
 
         if (location->area->area_flags)
         {
-                sprintf( buf, "Area flags (txt):");
+                sprintf( buf, "Area flags (txt):{W");
                 strcat( buf1, buf );
 
                 for (next = 1; next <= BIT_20; next *= 2)
@@ -698,25 +698,25 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
-                strcat(buf1, "\n\r");
+                strcat(buf1, "{x\n\r");
 
-                sprintf( buf, "Area flags (num): ");
+                sprintf( buf, "Area flags (num): {W");
                 strcat( buf1, buf );
                 bit_explode(ch, buf, location->area->area_flags);
                 strcat( buf1, buf );
 
-                strcat(buf1, "\n\r");
+                strcat(buf1, "{x\n\r");
         }
         else {
-                strcat(buf1, "Area flags: none [0]\n\r");
+                strcat(buf1, "Area flags: {Wnone {x[{W0{x]\n\r");
         }
 
-        sprintf( buf, "Exp modifier: %d.  ",
+        sprintf( buf, "Exp modifier: {R%d{x  ",
                 location->area->exp_modifier);
         strcat( buf1, buf );
 
         sprintf( buf,
-                "Vnum: %d.  Sector: %s [%d].  Light: %d.\n\r",
+                "Vnum: {R%d{x  Sector: {R%s{x [{W%d{x]  Light: {R%d{x\n\r",
                 location->vnum,
         sector_name(location->sector_type),
                 location->sector_type,
@@ -725,7 +725,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
         if (location->room_flags)
         {
-                strcat(buf1, "Room flags (txt):");
+                strcat(buf1, "Room flags (txt):{W");
 
                 for (next = 1; next <= BIT_20; next *= 2)
                 {
@@ -735,21 +735,21 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                                 strcat(buf1, room_flag_name(next));
                         }
                 }
-                strcat(buf1, "\n\r");
+                strcat(buf1, "{x\n\r");
 
-                sprintf( buf, "Room flags (num): ");
+                sprintf( buf, "Room flags (num): {W");
                 strcat( buf1, buf );
                 bit_explode(ch, buf, location->room_flags);
                 strcat( buf1, buf );
 
-                strcat(buf1, "\n\r");
+                strcat(buf1, "{x\n\r");
         }
         else {
-                strcat(buf1, "Room flags: none [0]\n\r");
+                strcat(buf1, "Room flags: {Wnone [0]{x\n\r");
         }
 
         sprintf( buf,
-                "Description:\n\r%s",
+                "Description:\n\r  {C%s{x",
                 location->description );
         strcat( buf1, buf );
 
@@ -757,62 +757,67 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         {
                 EXTRA_DESCR_DATA *ed;
 
-                strcat( buf1, "Extra description keywords: '" );
+                strcat( buf1, "Extra description keywords:\n\r  {W" );
                 for ( ed = location->extra_descr; ed; ed = ed->next )
                 {
                         strcat( buf1, ed->keyword );
                         if ( ed->next )
                                 strcat( buf1, " " );
                 }
-                strcat( buf1, "'.\n\r" );
+                strcat( buf1, "{x\n\r" );
         }
 
-        strcat( buf1, "Characters:" );
+        strcat( buf1, "Characters:{W" );
 
         /* Yes, we are reusing the variable rch.  - Kahn */
         for ( rch = location->people; rch; rch = rch->next_in_room )
         {
-                strcat( buf1, " " );
+                strcat( buf1, "{W " );
                 one_argument( rch->name, buf );
                 strcat( buf1, buf );
 
                 if (IS_NPC(rch)) {
-                        sprintf(buf, " (%d)", rch->pIndexData->vnum);
+                        sprintf(buf, "{x ({R%d{x){W", rch->pIndexData->vnum);
                         strcat(buf1, buf);
                 }
         }
 
-        strcat( buf1, ".\n\rObjects:   " );
+        strcat( buf1, "{x\n\rObjects:" );
         for ( obj = location->contents; obj; obj = obj->next_content )
         {
-                strcat( buf1, " " );
+                strcat( buf1, " {W" );
                 one_argument( obj->name, buf );
                 strcat( buf1, buf );
-                sprintf( buf, " (%d)", obj->pIndexData->vnum );
+                sprintf( buf, " {x({R%d{x)", obj->pIndexData->vnum );
                 strcat( buf1, buf );
         }
-        strcat( buf1, ".\n\r" );
+        strcat( buf1, "\n\r" );
 
         for ( door = 0; door <= 5; door++ )
         {
                 EXIT_DATA *pexit;
 
-                if ( ( pexit = location->exit[door] ) )
+                if ( ( pexit = location->exit[door] ))
                 {
                         sprintf( buf,
-                                "Door: %d.  To: %d.  Key: %d.  Exit flags: %d.\n\r",
+                                "Door: {W%d{x [{G%-5s{x] To: {R%-5d{x Key: {Y%-5d{x Exit flags: {W%-3d{x\n\r",
                                 door,
+                                directions[door].name,
                                 pexit->to_room ? pexit->to_room->vnum : 0,
                                 pexit->key,
                                 pexit->exit_info );
+
                         strcat( buf1, buf );
 
-                        sprintf( buf,
-                                "Keyword: '%s'.  Description: %s",
+                        if ( pexit->keyword[0]    != '\0'
+                        &&  pexit->description[0] != '\0')
+                        {       sprintf( buf,
+                                "Keyword: {W%s{x  \n\rDescription: \n\r{c%s{x",
                                 pexit->keyword,
                                 pexit->description[0] != '\0' ? pexit->description
-                                : "(none).\n\r" );
-                        strcat( buf1, buf );
+                                : "{c(none){x\n\r");
+                                strcat( buf1, buf );
+                        }
                 }
         }
 
@@ -1118,7 +1123,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         sprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Status: %d.\n\r",
                 get_age( victim ),
                 (int) victim->played,
-                victim->timer,  
+                victim->timer,
                 !IS_NPC( victim ) ? victim->status : 0);
         strcat( buf1, buf );
 
@@ -1185,12 +1190,12 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 victim->mount ? victim->mount->name : "(none)",
                 victim->rider ? victim->rider->name : "(none)");
         strcat( buf1, buf );
-        
+
         /*
          * Show act and aff bits nicely. --Owl 13/3/22
          */
         if ( IS_NPC( victim ) )
-        { 
+        {
                 if (victim->act)
                 {
                         sprintf(buf, "Act flags (num): ");
