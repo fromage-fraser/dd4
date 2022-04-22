@@ -4615,14 +4615,14 @@ dispel magic            combat mind             enhance armor
 psionic blast           biofeedback             ectoplasmic form
 inertial barrier        inner fire              second spell
 blink                   animate weapon          pattern
-
+detonate
 
 True psionics (those that don't change to witches or satanists) may also
 learn these skills above level 30:
 
-detonate                synaptic blast          death field
+synaptic blast          death field             globe of invulnerability
 ultrablast              disintegrate            fireshield
-third spell             globe of invulnerability
+third spell
 
 See 'HELP SWITCH' and 'HELP SSATANIST' for lists of witch and satanist
 skills respectively.
