@@ -40,7 +40,7 @@ A stranded sailor stands here, selling canoes and potions.
 ~
 It appears that this sailor's captain has left him here on the dock.
 ~
-1|2 0 900 S
+1|2|64|512|4096|32768|8388608|16777216  0 900 S
 23 2 2 1d30000+0 1d8+32
 0 80000
 8 8 1
@@ -1143,7 +1143,7 @@ stop at so small a dock with such shallow water around it. There are no
 apparent reasons for a dock even being here, since there is no visible
 trail in any direction. The only exit takes you back to the Sea.
 ~
-2 1024 1
+2 4|1024 1
 D2
 To the south only the sea can be seen.
 ~
@@ -1270,6 +1270,7 @@ The beach continues toward the mountain.
 D2
 You see the vast ocean before you.
 ~
+
 ~
 0 0 234
 S
