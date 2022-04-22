@@ -2561,6 +2561,14 @@ Syntax: cast blindness <victim>
 This spell renders the target character blind.
 ~
 
+0 'bless weapon'~
+Syntax: cast 'bless weapon' <weapon>
+
+This spell can be used to add mana and save vs spell bonuses to a
+weapon that has not been previously blessed.  It will also imbue it
+with anti-alignment properties based on the alignment of the caster.
+~
+
 0 'CALL LIGHTNING'~
 Syntax: cast 'call lightning'
 
@@ -4607,14 +4615,14 @@ dispel magic            combat mind             enhance armor
 psionic blast           biofeedback             ectoplasmic form
 inertial barrier        inner fire              second spell
 blink                   animate weapon          pattern
-
+detonate
 
 True psionics (those that don't change to witches or satanists) may also
 learn these skills above level 30:
 
-detonate                synaptic blast          death field
+synaptic blast          death field             globe of invulnerability
 ultrablast              disintegrate            fireshield
-third spell             globe of invulnerability
+third spell
 
 See 'HELP SWITCH' and 'HELP SSATANIST' for lists of witch and satanist
 skills respectively.
