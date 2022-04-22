@@ -2561,6 +2561,14 @@ Syntax: cast blindness <victim>
 This spell renders the target character blind.
 ~
 
+0 'bless weapon'~
+Syntax: cast 'bless weapon' <weapon>
+
+This spell can be used to add mana and save vs spell bonuses to a
+weapon that has not been previously blessed.  It will also imbue it
+with anti-alignment properties based on the alignment of the caster.
+~
+
 0 'CALL LIGHTNING'~
 Syntax: cast 'call lightning'
 
