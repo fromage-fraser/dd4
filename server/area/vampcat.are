@@ -4360,7 +4360,7 @@ north~
 D1
 The entrance to the east is through a
 green door.~
-east~
+door east~
 1 -1 9501
 D2
 ~
@@ -4401,7 +4401,7 @@ and tied black bags litter the floor.
 0 1|8 0
 D3
 An old green door lies west, leading out into a dark corridor.~
-west~
+door west~
 1 -1 9500
 E
 broken furniture~
@@ -4427,7 +4427,7 @@ D0
 0 -1 9504
 D1
 ~
-bright orange door~
+door bright orange~
 1 -1 9506
 D2
 The dark corridor continues in this
@@ -4497,7 +4497,7 @@ north~
 0 -1 9507
 D1
 ~
-plain wooden door~
+door plain wooden~
 1 -1 9508
 D2
 The dark corridor continues to the south.~
@@ -4546,7 +4546,7 @@ D3
 The bright orange door that leads out of
 this room into the corridor screams `hippy'
 at you.~
-bright orange door~
+door bright orange~
 1 -1 9502
 E
 decor fluorescent~
@@ -4690,11 +4690,11 @@ ensuite.
 0 8|8192 0
 D1
 A thin white door here leads to Saturnina's ensuite.~
-east ensuite~
+door east ensuite~
 0 -1 9513
 D2
 This door leads back out to the kitchen, and sanity.~
-silvery door~
+door silvery~
 2 9514 9509
 E
 pictures Saturnina~
@@ -4718,7 +4718,7 @@ notes scrawled on them in the shower.
 0 8 0
 D3
 The door leads back into Saturnina's boudoir.~
-west white thin door~
+door west white thin~
 0 -1 9512
 E
 shampoo conditioner note notes~
@@ -4780,11 +4780,11 @@ door flimsy~
 1 -1 9514
 D1
 ~
-east black curtain~
+curtain east black~
 1 -1 9517
 D3
 ~
-west black curtain~
+curtain west black~
 1 -1 9516
 E
 west ~
@@ -4805,7 +4805,7 @@ and pornography.
 0 8|512 0
 D1
 the black curtain leads back out to the main bathroom area.~
-east curtain black~
+curtain east black~
 1 -1 9515
 E
 cartoons cartoon~
@@ -4826,7 +4826,7 @@ the shower heads; seems the vamps aren't shy.
 0 8 0
 D3
 ~
-west curtain black~
+curtain west black~
 1 -1 9515
 E
 black curtains west~
@@ -6160,7 +6160,7 @@ D1
 ~
 1 -1 9556
 E
-east door~
+door east~
 The door leads out into a large public space of some sort.~
 E
 rubbish mess~
