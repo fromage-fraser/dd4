@@ -4354,12 +4354,13 @@ A green door with flaking paintwork lies east.
 0 1|8 0
 D0
 The darkened corridor continues in this direction. You think you see some doors
-further down but can't be sure.~
+further down but can't be sure.
+~
 north~
 0 -1 9502
 D1
-The entrance to the east is through a
-green door.~
+The entrance to the east is through a green door.
+~
 door east~
 1 -1 9501
 D2
@@ -4368,30 +4369,36 @@ D2
 8 -1 9573
 D3
 The corridor continues in this direction.
-It seems to terminate far to the west.~
+It seems to terminate far to the west.
+~
 west~
 0 -1 9503
 E
 symbols macabre black~
 Examining the symbols you arrive at the conclusion that they deal principally
 with the artist's desire to consume blood and participate in unwholesome sexual
-activities.~
+activities.
+~
 E
 cracked plaster walls~
 The walls are in a sad state of disrepair. Obviously the inhabitants care little
-for first impressions.~
+for first impressions.
+~
 E
 green door flaking~
 The door is open a crack and the room beyond appears to be full of rubbish. They
-say you might know a man by what he throws away and you contemplate investigation.~
+say you might know a man by what he throws away and you contemplate investigation.
+~
 E
 south imposing steel~
 The door looks like it was built to withstand a siege. It is both locked and barred
 from the other side. Obviously you're not going to be able to get through it from
-here, and it occurs to you there must be another exit on this level.~
+here, and it occurs to you there must be another exit on this level.
+~
 E
 hinges~
-They could use oiling.~
+They could use oiling.
+~
 S
 #9501
 Rubbish room~
@@ -4400,18 +4407,21 @@ and tied black bags litter the floor.
 ~
 0 1|8 0
 D3
-An old green door lies west, leading out into a dark corridor.~
+An old green door lies west, leading out into a dark corridor.
+~
 door west~
 1 -1 9500
 E
 broken furniture~
 The furniture seems to have been smashed to pieces in a drunken rage. You are
 surprised it hasn't been salvaged for firewood; do the inhabitants of these
-catacombs not feel the piercing cold?~
+catacombs not feel the piercing cold?
+~
 E
 tied black bags~
 These bags seem rather odd on a closer inspection. They are peculiarly heavy for
-rubbish and some of them are quite warm. You decide against opening one.~
+rubbish and some of them are quite warm. You decide against opening one.
+~
 S
 #9502
 A dark corridor~
@@ -4430,9 +4440,9 @@ D1
 door bright orange~
 1 -1 9506
 D2
-The dark corridor continues in this
-direction briefly before coming to a stop
-underneath a rusty grate leading up.~
+The dark corridor continues in this direction briefly before coming to a stop
+underneath a rusty grate leading up.
+~
 south~
 0 -1 9500
 D3
@@ -4442,21 +4452,25 @@ door steel~
 E
 steel~
 The door is dented in numerous places and covered in stickers. In the lower
-lefthand corner you notice a small hole has been punched right through it.~
+lefthand corner you notice a small hole has been punched right through it.
+~
 E
 stickers~
 The stickers promote various libertarian ideologies. You glean from them the
-inhabitant is not overly fond of right wing hierarchal religious organizations.~
+inhabitant is not overly fond of right wing hierarchal religious organizations.
+~
 E
 hole small~
 Peering through the small hole you see what appears to be a living space of some
 sort. Various items that might be used in dark ceremonial magiks lie scattered
-about in the portion of the room viewable through the hole.~
+about in the portion of the room viewable through the hole.
+~
 E
 bright orange~
 In sharp contrast to the door opposite this bright orange door positively screams
 fun and sunshine. Although after what you've seen so far you'd hesitate to make
-any assumption about whomsoever might lie behind it.~
+any assumption about whomsoever might lie behind it.
+~
 S
 #9503
 A dark corridor~
@@ -4466,12 +4480,14 @@ the south?!?
 ~
 0 1|8 0
 D1
-You look down a dark corridor that terminates in a green door.~
+You look down a dark corridor that terminates in a green door.
+~
 east~
 0 -1 9500
 D3
 The corridor continues westward and you see a door hanging off its hinges just
-west and south.~
+west and south.
+~
 west~
 0 -1 9514
 E
@@ -4480,7 +4496,8 @@ small north wall notice~
 before she drives me stark raving mad and I have to start inflicting my personal
 misery on the rest of you. Thanks a lot."
 
--Herne~
+-Herne
+~
 S
 #9504
 A dark corridor~
@@ -4490,9 +4507,9 @@ door lies eastward. It seems to have suddenly gotten even colder.
 ~
 0 1|8 0
 D0
-The dark corridor continues to the north.
-You think you can make out light far to
-the northeast.~
+The dark corridor continues to the north. You think you can make out light far to
+the northeast.
+~
 north~
 0 -1 9507
 D1
@@ -4500,12 +4517,14 @@ D1
 door plain wooden~
 1 -1 9508
 D2
-The dark corridor continues to the south.~
+The dark corridor continues to the south.
+~
 south~
 0 -1 9502
 E
 plain wooden door~
-This door is unremarkable apart from a large picture of a hemp leaf tacked to it.~
+This door is unremarkable apart from a large picture of a hemp leaf tacked to it.
+~
 S
 #9505
 Herne's lounge~
@@ -4527,13 +4546,16 @@ steel door~
 8 9502 9502
 E
 paraphernalia arcane evil magikal magical~
-You deduce from the decor that the owner of this room is deeply involved with the occult.~
+You deduce from the decor that the owner of this room is deeply involved with the occult.
+~
 E
 black ebony north~
-The door to the north looms before you, black, solid and imposing. Take a deep breath.~
+The door to the north looms before you, black, solid and imposing. Take a deep breath.
+~
 E
 east~
-The door to the east is heavily damaged in stark contrast to the northern door.~
+The door to the east is heavily damaged in stark contrast to the northern door.
+~
 S
 #9506
 Anton's bedroom~
@@ -4543,20 +4565,22 @@ the whole room.
 ~
 0 8 0
 D3
-The bright orange door that leads out of
-this room into the corridor screams `hippy'
-at you.~
+The bright orange door that leads out of this room into the corridor screams 'hippy'
+to you.
+~
 door bright orange~
 1 -1 9502
 E
 decor fluorescent~
 Whoever painted this room must have been into some heavy psychedelics. Dayglo
-oranges and greens blare out at you from every angle.~
+oranges and greens blare out at you from every angle.
+~
 E
 murals mural~
 Although at first you can't make much sense of the mural you eventually come to
 the conclusion that it's a pop-art inspired abstract meditation upon the act of
-human blood consumption.~
+human blood consumption.
+~
 S
 #9507
 A dark corridor~
@@ -4567,16 +4591,18 @@ feel yourself drawn in that direction.
 ~
 0 1|8 0
 D1
-The kitchen used by all the inhabitants of
-this floor lies in this direction.~
+The kitchen used by all the inhabitants of this floor lies in this direction.
+~
 east~
 0 -1 9509
 D2
-The dark corridor continues in this direction.~
+The dark corridor continues in this direction.
+~
 south~
 0 -1 9504
 D3
-The dark corridor continues in this direction.~
+The dark corridor continues in this direction.
+~
 west~
 0 -1 9510
 S
@@ -4588,16 +4614,19 @@ aren't of anyone you recognize.
 ~
 0 8 0
 D3
-The plain wooden door leads out of Greg's bedroom into a dark corridor.~
+The plain wooden door leads out of Greg's bedroom into a dark corridor.
+~
 door~
 1 -1 9504
 E
 flask empty~
-You peer inside the flask. You ascertain that it was most recently filled with blood.~
+You peer inside the flask. You ascertain that it was most recently filled with blood.
+~
 E
 posters walls~
 You don't recognize any of the people in the posters, although there seem to be
-many of a black human with an odd haircut playing some sort of stringed instrument.~
+many of a black human with an odd haircut playing some sort of stringed instrument.
+~
 S
 #9509
 The kitchen~
@@ -4615,17 +4644,20 @@ D0
 ~
 2 9514 9512
 D3
-You see the darkened corridor in this direction~
+You see the darkened corridor in this direction.
+~
 west~
 0 -1 9507
 E
 door~
 This door is covered in worthless trinkets and baubles framing a picture of a
-dark-haired pinup girl from days gone by.~
+dark-haired pinup girl from days gone by.
+~
 E
 pans~
 The pans have been used recently for frying meat. You shudder as the realisation
-of what sort of meat it was strikes you.~
+of what sort of meat it was strikes you.
+~
 S
 #9510
 A dark corridor~
@@ -4634,8 +4666,8 @@ communal kitchen to the east. A large board is screwed to the northern wall.
 ~
 0 1|8 0
 D1
-The kitchen used by all the inhabitants of
-this floor lies in this direction.~
+The kitchen used by all the inhabitants of this floor lies in this direction.
+~
 ~
 0 -1 9507
 D3
@@ -4644,17 +4676,21 @@ D3
 0 -1 9519
 E
 east~
-Light comes from this direction. You think something is glowing in the kitchen.~
+Light comes from this direction. You think something is glowing in the kitchen.
+~
 E
 west~
-At the end of the corridor you see facing north/south doors~
+At the end of the corridor you see facing north/south doors
+~
 E
 north northern wall board~
 The board is covered in bills. A square piece of paper at the bottom has "Pay
-these by the end of the week or LEAVE. -Herne." written on it in large letters.~
+these by the end of the week or LEAVE. -Herne." written on it in large letters.
+~
 E
 bills~
-Many of the bills are overdue and for sizeable sums. Glad you're not paying them.~
+Many of the bills are overdue and for sizeable sums. Glad you're not paying them.
+~
 S
 #9511
 Herne's bedroom~
@@ -4674,11 +4710,13 @@ D3
 E
 manacles implements~
 Herne seems to be a prolific constructer of torture devices, suspension manacles
-and implements of pain infliction abound in his private quarters.~
+and implements of pain infliction abound in his private quarters.
+~
 E
 black ebony door~
 The southern door is black, smooth, unmarked and unadorned; it also is the only
-way out.~
+way out.
+~
 S
 #9512
 Saturnina's bedroom~
@@ -4689,24 +4727,29 @@ ensuite.
 ~
 0 8|8192 0
 D1
-A thin white door here leads to Saturnina's ensuite.~
+A thin white door here leads to Saturnina's ensuite.
+~
 door east ensuite~
 0 -1 9513
 D2
-This door leads back out to the kitchen, and sanity.~
+This door leads back out to the kitchen, and sanity.
+~
 door silvery~
 2 9514 9509
 E
 pictures Saturnina~
-You regard the narcissistic self-tribute with contempt. ~
+You regard the narcissistic self-tribute with contempt.
+~
 E
 endearing messages scribbled~
 Some highlights: "Love you doll - Sat", "You're the greatest babe XOXOXOX,
 Satch-doll", "You were phenomenal, best sex I ever had - Satty-poo".. you get
-the idea and stop reading.~
+the idea and stop reading.
+~
 E
 lipstick marks~
-Seems she prefers purple, black and blood-red.~
+Seems she prefers purple, black and blood-red.
+~
 S
 #9513
 Saturnina's bathroom~
@@ -4717,7 +4760,8 @@ notes scrawled on them in the shower.
 ~
 0 8 0
 D3
-The door leads back into Saturnina's boudoir.~
+The door leads back into Saturnina's boudoir.
+~
 door west white thin~
 0 -1 9512
 E
@@ -4737,7 +4781,8 @@ E
 cosmetics aging anti-aging shelves lotions potions shelf~
 Looking at the huge variety and number of cosmetics and the like here, you
 wonder how she ever managed to get out of her room. It must have taken her days
-to get ready to go anywhere.~
+to get ready to go anywhere.
+~
 S
 #9514
 A dark corridor~
@@ -4747,11 +4792,13 @@ colder than ever.
 ~
 0 1|8 0
 D1
-You look down a dark corridor that terminates in a green door.~
+You look down a dark corridor that terminates in a green door.
+~
 east~
 0 -1 9503
 D2
-As you turn to face southwards a strange meaty odour catches your nostrils.~
+As you turn to face southwards a strange meaty odour catches your nostrils.
+~
 door~
 1 -1 9515
 D3
@@ -4761,10 +4808,12 @@ west~
 E
 hinges hinge~
 Nothing a few screws wouldn't fix. Guess vampires are too busy drinking blood
-and murdering for DIY.~
+and murdering for DIY.
+~
 E
 west~
-To the west the corridor ends. You see a door there facing north.~
+To the west the corridor ends. You see a door there facing north.
+~
 S
 #9515
 Communal bathroom~
@@ -4775,7 +4824,8 @@ fester. Black curtains separate showers to the east and a stall to the west.
 ~
 0 8 0
 D0
-Northwards a flimsy door leads out to the corridor.~
+Northwards a flimsy door leads out to the corridor.
+~
 door flimsy~
 1 -1 9514
 D1
@@ -4788,13 +4838,16 @@ curtain west black~
 1 -1 9516
 E
 west ~
-A black curtain stands between you and the toilet stall to the west.~
+A black curtain stands between you and the toilet stall to the west.
+~
 E
 east~
-A black curtain separates the toilet area from the showers in this direction~
+A black curtain separates the toilet area from the showers in this direction
+~
 E
 black curtains~
-The black curtains are made of shiny reflective material.~
+The black curtains are made of shiny reflective material.
+~
 S
 #9516
 A toilet stall~
@@ -4804,18 +4857,21 @@ and pornography.
 ~
 0 8|512 0
 D1
-the black curtain leads back out to the main bathroom area.~
+The black curtain leads back out to the main bathroom area.
+~
 curtain east black~
 1 -1 9515
 E
 cartoons cartoon~
 One of the cartoons that catches your eye depicts two cannibals feasting on the
 corpse of an unfortunate clown. The cannibal on the left turns to the one on the
-right and asks him, "Hey, does this taste funny to you?"~
+right and asks him, "Hey, does this taste funny to you?"
+~
 E
 pornography porn~
 Most of the pictures are from the July '97 issue of `Vamp babes on bikes'. Not
-that you're familiar with it.~
+that you're familiar with it.
+~
 S
 #9517
 Showers~
@@ -4831,14 +4887,17 @@ curtain west black~
 E
 black curtains west~
 The black curtain hangs here to the west, separating the showers from the main
-bathroom area.~
+bathroom area.
+~
 E
 shower heads rusty ~
-They look like they need a good scrubbing.~
+They look like they need a good scrubbing.
+~
 E
 chunks gore~
 Skin, hair, meat, blood and other bodily substances lie randomly about the
-shower trays.~
+shower trays.
+~
 S
 #9518
 End of a dark corridor~
@@ -4852,14 +4911,16 @@ D0
 ~
 1 -1 9520
 D1
-You look down a dark corridor that terminates in a green door.~
+You look down a dark corridor that terminates in a green door.
+~
 east~
 0 -1 9514
 E
 north door firestop~
 The door is primarily composed of glass with metal wires crisscrossed through it
 to prevent it from fragmenting under extremes of heat. Posters covering much of
-the glass on the other side prevent you from getting a good look in.~
+the glass on the other side prevent you from getting a good look in.
+~
 S
 #9519
 End of a dark corridor~
@@ -4873,8 +4934,8 @@ D0
 ~
 1 -1 9523
 D1
-The kitchen used by all the inhabitants of
-this floor lies in this direction.~
+The kitchen used by all the inhabitants of this floor lies in this direction.
+~
 east~
 0 -1 9510
 D2
@@ -4883,11 +4944,13 @@ D2
 1 -1 9521
 E
 north~
-A solidly constructed oak door lies before you in this direction.~
+A solidly constructed oak door lies before you in this direction.
+~
 E
 south~
 The southern door is a firestop one, but posters on the other side prevent you
-from being able to see through the glass~
+from being able to see through the glass.
+~
 S
 #9520
 Ganymede's lounge~
@@ -4915,18 +4978,22 @@ E
 posters pictures paintings drawings~
 The walls and ceiling have been plastered with pictures of extreme acts of
 sadomasochism and bodily modification, including ritualistic nullification and
-genitalia dismemberment. Ack.~
+genitalia dismemberment. Ack.
+~
 E
 east~
-A loud whooshing can be heard emanating from behind the eastern door.~
+A loud whooshing can be heard emanating from behind the eastern door.
+~
 E
 south~
 A fire escape door covered in posters of a similar flavour to the ones in the
-lounge can be seen to the south. ~
+lounge can be seen to the south.
+~
 E
 north~
 A fire escape door covered in posters of a similar flavour to the ones here in
-the lounge can be seen to the north. ~
+the lounge can be seen to the north.
+~
 S
 #9521
 A foyer~
@@ -4949,19 +5016,23 @@ paintings~
 A few paintings lie scattered on the floor and a large half-finished canvas lies
 to the immediate east. Someone seems to be working on an interpretive self-portrait.
 Looking at the hideously diseased and malformed individual taking shape you
-wonder nervously about the mental stability of these rooms' occupants.~
+wonder nervously about the mental stability of these rooms' occupants.
+~
 E
 sculptures~
 Large alien sculptures constructed of scrap metal adorn the room. You shudder;
-they seem half alive and profoundly disapproving of your presence here.~
+they seem half alive and profoundly disapproving of your presence here.
+~
 E
 south living lounge~
-Southward lies the lounge/living area. It is dominated by eerie metallic sculptures.~
+Southward lies the lounge/living area. It is dominated by eerie metallic sculptures.
+~
 E
 north door~
 The firestop door has posters plastered all over it. The posters seem primarily
 concerned with the ritualistic piercing of flesh and decoration of the skin with
-coloured pigments.~
+coloured pigments.
+~
 S
 #9522
 Ganymede's bedroom~
@@ -4980,17 +5051,21 @@ D3
 E
 items~
 Amongst the clutter of items piled about the sides of the room you spot a
-metallic hipflask.~
+metallic hipflask.
+~
 E
 huge leering visages poster posters~
 Upon closer inspection you realise the faces in the pictures are of disfigured
-human babies.~
+human babies.
+~
 E
 atmosphere~
-It's distinctly uneasy, didn't you read the room description?~
+It's distinctly uneasy, didn't you read the room description?
+~
 E
 weird art-terrorist decor~
-Bizarre objects d'Art occupy all the room's nooks and crannies.~
+Bizarre objects d'Art occupy all the room's nooks and crannies.
+~
 S
 #9523
 Grok's bedroom~
@@ -5010,16 +5085,20 @@ D2
 E
 mattress~
 The mattress is thin and does not look at all comfortable. There are no pillows
-or sheets on it.~
+or sheets on it.
+~
 E
 weapon rack ~
-The weapons/armour rack is bare, wonder where all the stuff is?~
+The weapons/armour rack is bare, wonder where all the stuff is?
+~
 E
 cupboard study steel east~
-The cupboard is solid steel. You doubt anyone could get into it without a key.~
+The cupboard is solid steel. You doubt anyone could get into it without a key.
+~
 E
 south~
-A plain steel door lies to the south.~
+A plain steel door lies to the south.
+~
 S
 #9524
 Through the cupboard~
@@ -5040,10 +5119,12 @@ D5
 E
 down shaft~
 The shaft goes no further up but its bottom descends into impenetrable darkness,
-time to take a deep breath and jump for it.~
+time to take a deep breath and jump for it.
+~
 E
 west ~
-West lies the door of the cupboard leading into Grok's bedroom.~
+West lies the door of the cupboard leading into Grok's bedroom.
+~
 S
 #9525
 A dark shaft~
@@ -5061,10 +5142,12 @@ D5
 E
 up ~
 Even with your light source it seems that above you lies only a roof of
-impenetrable blackness.~
+impenetrable blackness.
+~
 E
 down~
-You really can't see much below you, even with your light source. It's damn dark.~
+You really can't see much below you, even with your light source. It's damn dark.
+~
 S
 #9526
 Bottom of the shaft~
@@ -5084,7 +5167,8 @@ D4
 E
 up~
 The blackness above remains as impenetrable as ever. It's good to be standing on
-solid ground again.~
+solid ground again.
+~
 S
 #9527
 A corridor in the catacombs~
@@ -5104,7 +5188,8 @@ E
 ancient stone walls granite~
 The granite walls seem impossibly ancient. They are covered in lichen and moss
 and are wet and cool to the touch. You think you could probably rip some of the
-moss and lichen off to examine it more closely.~
+moss and lichen off to examine it more closely.
+~
 S
 #9528
 A corridor in the catacombs~
@@ -5123,11 +5208,13 @@ D2
 E
 north~
 The corridor runs northward a while before terminating at a door set into the
-limestone.~
+limestone.
+~
 E
 south~
 You think you can see faint light being emitted from some source lying in this
-direction.~
+direction.
+~
 E
 walls limestone~
 You marvel at the walls, rough-hewn from the living earth by hands unknown.~
@@ -5149,17 +5236,21 @@ D2
 0 -1 9530
 E
 north~
-In this direction the corridor disappears into murky blackness.~
+In this direction the corridor disappears into murky blackness.
+~
 E
 south~
-Light emanates in this direction from underneath facing east-west doors further along.~
+Light emanates in this direction from underneath facing east-west doors further along.
+~
 E
 doors~
-The doors have been cut fro the stone, hinged and then replaced almost seamlessly.~
+The doors have been cut fro the stone, hinged and then replaced almost seamlessly.
+~
 E
 bedrock~
 "Ah bedrock, that solid rock underlying unconsolidated surface materials", you
-think to yourself.~
+think to yourself.
+~
 S
 #9530
 A corridor in the catacombs~
@@ -5186,27 +5277,33 @@ D3
 1 -1 9531
 E
 north~
-The corridor trails away into darkness.~
+The corridor trails away into darkness.
+~
 E
 south~
-To the south the corridor seems to turn eastward but you can't be sure in this light.~
+To the south the corridor seems to turn eastward but you can't be sure in this light.
+~
 E
 west~
-The door has been carved out of the stone and blends seamlessly into the wall.~
+The door has been carved out of the stone and blends seamlessly into the wall.
+~
 E
 east~
-The door has been carved out of the stone and blends seamlessly into the wall.~
+The door has been carved out of the stone and blends seamlessly into the wall.
+~
 E
 limestone walls~
 You see here patches of lichen and moss. You think you could scrape some off to
-have a closer look.~
+have a closer look.
+~
 E
 sign signs~
 "These doors lead to private residences whose inhabitants do not wish to be
 disturbed. Those here for the exhibition are advised to continue down the corridor
 to the galleria."
 
--Your hosts.~
+-Your hosts.
+~
 S
 #9531
 A living area~
@@ -5236,11 +5333,13 @@ E
 skulls~
 You recognize all manner of creature amongst the skulls. What manner of hunter
 is this that would claim the lives of sentient creatures and hang their skulls
-about as trophies?~
+about as trophies?
+~
 E
 books novels trashy horror~
 You'd hate to draw any conclusions about the people that read these things as
-appearances can be deceptive, but, well, REALLY!~
+appearances can be deceptive, but, well, REALLY!
+~
 S
 #9532
 A living area~
@@ -5270,13 +5369,16 @@ E
 wall painting canvas artwork artworks~
 Through metaphor and symbolism the enormous canvas on the northern wall seems to
 rail against the cruelty of immortality sustained by the death of others. It's
-really rather good.~
+really rather good.
+~
 E
 east north south~
-A door is set into this wall, leading to an adjoining room.~
+A door is set into this wall, leading to an adjoining room.
+~
 E
 west~
-The door set in this wall leads out into a dark corridor.~
+The door set in this wall leads out into a dark corridor.
+~
 S
 #9533
 Velkyn's laboratory~
@@ -5298,20 +5400,24 @@ D3
 E
 potions brews liquids potion brew liquid~
 The fashioning of the potions and brews is clearly not complete, and the foul
-smell and toxic fumes that rise from them dissuades you from trying them out.~
+smell and toxic fumes that rise from them dissuades you from trying them out.
+~
 E
 clear tubes tube~
 Much of the tubing seems to be involved in the process of distillation, yet it
 seems odd that the heat does not affect whatever clear material it is of which
-they are composed. Dark sorcery is at work.~
+they are composed. Dark sorcery is at work.
+~
 E
 corpse corpses human~
 Looking closely you see the corpses have all been dismembered to various degrees,
-and put to some diabolical purpose, no doubt.~
+and put to some diabolical purpose, no doubt.
+~
 E
 dark floating shapes~
 You can't make them out clearly through the walls of the vats, but they look
-solid. And large.~
+solid. And large.
+~
 S
 #9534
 Mavralyn's lair~
@@ -5340,15 +5446,18 @@ cavernous cavern recesses south up~
 There are two recesses at the rear of the cavern, one to the south and one
 upwards. Both look like tight fits but you think you could squeeze into them.
 You peer at them intently, straining to see if anything lurks in their depths
-but the darkness within is absolute.~
+but the darkness within is absolute.
+~
 E
 skulls jewellery walls~
 "Boy", you think, "That all sure has been meticulously arranged for maximum
-aesthetic impact."~
+aesthetic impact."
+~
 E
 walls~
 The walls have been rough-hewn, as in they've been hacked out of the rock with a
-sledgehammer or something similar.~
+sledgehammer or something similar.
+~
 S
 #9535
 Symon's studio~
@@ -5363,7 +5472,8 @@ D2
 1 -1 9532
 E
 south~
-Southwards lies a living area of some sort.~
+Southwards lies a living area of some sort.
+~
 S
 #9536
 Nathaniel's studio~
@@ -5390,15 +5500,18 @@ coffin lid~
 E
 east small~
 The small door in the east wall has a sign with the words `isolation booth'
-scrawled on it.~
+scrawled on it.
+~
 E
 south coffin lid~
 The coffin has been decorated over with the portraits of great composers. Leaning
 close to inspect them, you think you hear breathing from within the coffin -
-surely your imagination.~
+surely your imagination.
+~
 E
 north~
-The northern door leads out into a living area of some kind.~
+The northern door leads out into a living area of some kind.
+~
 S
 #9537
 Porl's studio~
@@ -5420,11 +5533,13 @@ D3
 1 -1 9532
 E
 west~
-A door opens west into a living area.~
+A door opens west into a living area.
+~
 E
 north iron~
 The northern door has had an intricate bas-relief carved into it, it seems to
-have been inspired by a grim personal vision of the afterlife.~
+have been inspired by a grim personal vision of the afterlife.
+~
 S
 #9538
 A corridor in the catacombs~
@@ -5443,11 +5558,13 @@ D2
 E
 north cracks~
 Peering more closely you can discern that the chinks of light in the walls
-northward describe square shapes. Doors?~
+northward describe square shapes. Doors?
+~
 E
 south bend~
 Up ahead in this direction you see a bend to the east, and what could conceivably
-be doors set in the western and southern walls.~
+be doors set in the western and southern walls.
+~
 S
 #9539
 A bend in the corridor~
@@ -5473,25 +5590,31 @@ D3
 1 -1 9540
 E
 coppery scent odour smell peculiar~
-Hmmm... blood, you think. But not fresh. Its source seems to lie southward.~
+Hmmm... blood, you think. But not fresh. Its source seems to lie southward.
+~
 E
 east~
 The corridor continues in this direction for some distance, terminating in a door
-set in the wall to the far east adjoining a turn southward.~
+set in the wall to the far east adjoining a turn southward.
+~
 E
 south~
 The door southward seems to be of enormously sturdy construction and the lock on
 it looks daunting. Something of enormous value to the denizens of these quarters
-must lie behind it. A small sign with the letters `TR' is bolted to the door.~
+must lie behind it. A small sign with the letters `TR' is bolted to the door.
+~
 E
 north~
-A dank and dimly-lit stone corridor trails away into blackness in this direction.~
+A dank and dimly-lit stone corridor trails away into blackness in this direction.
+~
 E
 west~
-The door set into the wall here is of flimsy construction and hangs loosely on its hinges.~
+The door set into the wall here is of flimsy construction and hangs loosely on its hinges.
+~
 E
 letters TR sign~
-Treasure Room perhaps?~
+"Treasure Room," perhaps?
+~
 S
 #9540
 A living area~
@@ -5516,21 +5639,26 @@ D3
 0 -1 9543
 E
 east~
-The door set into the wall here is of flimsy construction and hangs loosely on its hinges.~
+The door set into the wall here is of flimsy construction and hangs loosely on its hinges.
+~
 E
 west study~
 The study westward contains a large and impressive desk and two velvet-backed
-chairs, along with the generic sorts of equipment that one associates with writing.~
+chairs, along with the generic sorts of equipment that one associates with writing.
+~
 E
 cobwebs silky gossamer~
-They're very pretty, but how how do you feel about the creatures that made them?~
+They're very pretty, but how how do you feel about the creatures that made them?
+~
 E
 furnishing~
-The furnishings are of particularly high quality and pedigree.~
+The furnishings are of particularly high quality and pedigree.
+~
 E
 south~
 The door has a number of ornate engravings on it that tell the story of Kane the
-first Vampire and his exploits in the wilderness after being cursed by God.~
+first Vampire and his exploits in the wilderness after being cursed by God.
+~
 S
 #9541
 The tithe room~
@@ -5551,22 +5679,27 @@ D5
 E
 byproducts~
 Plasma, various sorts of normal food soaked in blood and frozen bloody treats.
-Delicacies and tidbits.~
+Delicacies and tidbits.
+~
 E
 blood~
-There's an awful lot of it.~
+There's an awful lot of it.
+~
 E
 north~
 A nigh-impenetrable door of solid rock leads out of the room. You feel a faint
 aura of magick radiating from it and realise there isn't any easy way through
-this door without a key.~
+this door without a key.
+~
 E
 shelves cabinets devices device cabinet shelf~
 Blood in all manner of container and mode of preparation is carefully arranged
-within various cabinets, shelves and devices, many of which are locked and bolted.~
+within various cabinets, shelves and devices, many of which are locked and bolted.
+~
 E
 locked locks bolt bolted~
-You don't have the key to any of them.~
+You don't have the key to any of them.
+~
 S
 #9542
 Grieb's Quarters~
@@ -5581,16 +5714,20 @@ D0
 1 -1 9540
 E
 books stacked~
-Various works of fiction demonstrating a strong penchant for the gothic horror genre.~
+Various works of fiction demonstrating a strong penchant for the gothic horror genre.
+~
 E
 faint atmosphere frustration~
-The atmosphere is one of faint frustration.~
+The atmosphere is one of faint frustration.
+~
 E
 north wood panel door~
-The wood panel door to the north leads to an artfully decorated living area.~
+The wood panel door to the north leads to an artfully decorated living area.
+~
 E
 screw ball paper~
-The papers are abandoned drafts of a somewhat tacky horror novel.~
+The papers are abandoned drafts of a somewhat tacky horror novel.
+~
 S
 #9543
 A study~
@@ -5611,13 +5748,16 @@ D2
 1 -1 9544
 E
 stained mahogany gilt~
-It must have cost someone a fortune to decorate a room in such splendor.~
+It must have cost someone a fortune to decorate a room in such splendor.
+~
 E
 east~
-A living area decorated in truly macabre style lies in this direction.~
+A living area decorated in truly macabre style lies in this direction.
+~
 E
 south~
-An elegant door of stained mahogany permits entrance to a room south of here.~
+An elegant door of stained mahogany permits entrance to a room south of here.
+~
 S
 #9544
 Augus' Quarters~
@@ -5633,10 +5773,12 @@ D0
 1 -1 9543
 E
 north door~
-An elegant door of stained mahogany permits entrance to a room north of here.~
+An elegant door of stained mahogany permits entrance to a room north of here.
+~
 E
 bed~
-It's a black 4-poster with matching satin sheets and pillows. Of course.~
+It's a black 4-poster with matching satin sheets and pillows. Of course.
+~
 E
 large sign~
 You read:
@@ -5666,14 +5808,17 @@ D3
 E
 west~
 The stone corridor continues in this direction, terminating a few hundred metres
-along at a northward turn and a flimsy door set into the western wall.~
+along at a northward turn and a flimsy door set into the western wall.
+~
 E
 east~
 In this direction light emanates from a southern source, illuminating a door set
-in the eastern wall.~
+in the eastern wall.
+~
 E
 faint odour meat~
-It seems particularly strong to the south.~
+It seems particularly strong to the south.
+~
 E
 steel doorway south door~
 The door seems to enjoy much usage. It is from behind this door, you feel, lies
@@ -5711,20 +5856,24 @@ large notice wall north northern~
 * 3 months only!
 * Tickets available at Galleria entrance
   to your south and wherever quality
-  artworks are traded.~
+  artworks are traded.
+  ~
 E
 south reception area  light stream foyer southward~
 An illuminated room lies to your south. You can see a large desk and a number of
 leather-backed couches in it arranged around a central oak desk staffed by a
-middle-aged woman.~
+middle-aged woman.
+~
 E
 west~
 The dank stone corridor continues in this direction, terminating at a northward
-bend to the far west.~
+bend to the far west.
+~
 E
 door east~
 A heavy door is set here into the bedrock. A small paper sign tacked on it says
-"deathstone talismans are required for today's service".~
+"deathstone talismans are required for today's service".
+~
 S
 #9547
 Worship Hall~
@@ -5743,25 +5892,31 @@ D3
 8 9690 9546
 E
 blood stains ground~
-Looks human. Surprise, surprise.~
+Looks human. Surprise, surprise.
+~
 E
 pews~
 These look like ordinary church pews, save for their construction material - Old
 World tropical dicotyledonous trees (genus Diospyros of the family Ebonaceae,
-that is).~
+that is).
+~
 E
 west~
-A heavy door set into the bedrock leads out into a dank corridor.~
+A heavy door set into the bedrock leads out into a dank corridor.
+~
 E
 floorboards~
-The floorboards are stained black with the blood of innocents.~
+The floorboards are stained black with the blood of innocents.
+~
 E
 podium~
-The podium raises the altar and lectern several feet above the floor.~
+The podium raises the altar and lectern several feet above the floor.
+~
 E
 lectern~
 The lectern is a small upright wooden rectangle behind which the vampire priests
-stand to deliver their sermons.~
+stand to deliver their sermons.
+~
 S
 #9548
 The reception area~
@@ -5785,23 +5940,28 @@ D3
 1 -1 9550
 E
 north~
-A dank stone corridor lies to the reception area's north.~
+A dank stone corridor lies to the reception area's north.
+~
 E
 leather-backed couches leather backed ~
 The couches are of the finest quality and have been upholstered in charcoal-stained
-leather of a sort you have not come across before.~
+leather of a sort you have not come across before.
+~
 E
 artworks~
 Although all are exercises in technical brilliance the dark subject matter causes
 you to feel vaguely uneasy, as if you've just stepped into the pages of a gothic
-horror novel.~
+horror novel.
+~
 E
 south~
-The door southward leads into the Galleria proper.~
+The door southward leads into the Galleria proper.
+~
 E
 steel west swing-door~
 The steel door leads out into a kitchen/galley where, apparently, snacks are
-prepared for gallery visitors. A large sign on the door reads STAFF ONLY.~
+prepared for gallery visitors. A large sign on the door reads STAFF ONLY.
+~
 S
 #9549
 The Galleria~
@@ -5857,17 +6017,21 @@ D3
 3 -1 9593
 E
 north~
-The northward door leads into a dank stone corridor.~
+The northward door leads into a dank stone corridor.
+~
 E
 east steel swing-door~
-The eastern swing-door leads out into the Galleria reception area.~
+The eastern swing-door leads out into the Galleria reception area.
+~
 E
 west fridge~
-The walk in fridge door is unlocked.~
+The walk in fridge door is unlocked.
+~
 E
 passthrough south~
 A passthrough has been constructed in the south wall leading to the Galleria, in
-order that the kitchen staff might have easy serving access to the Galleria patrons.~
+order that the kitchen staff might have easy serving access to the Galleria patrons.
+~
 S
 #9551
 The cloakroom~
@@ -5887,7 +6051,8 @@ E
 coast jackets coat jacket dress vestments~
 Amongst the rows of coats and jackets one particularly gaudy dress jacket
 attracts your attention. It is of an unusual cut and has a large interior
-pocket which looks perfect for concealing small objects.~
+pocket which looks perfect for concealing small objects.
+~
 S
 #9552
 The Galleria~
@@ -5918,10 +6083,12 @@ D3
 E
 door western wall~
 The door seems to lead into an large cupboard/store space. It is of exceptionally
-heavy construction.~
+heavy construction.
+~
 E
 kitchen passthrough north~
-The kitchen passthrough is a tight fit, but you could probably wriggle through.~
+The kitchen passthrough is a tight fit, but you could probably wriggle through.
+~
 S
 #9553
 The Galleria~
@@ -6121,11 +6288,13 @@ D1
 8 9705 9552
 E
 treasure great worth~
-Examine the nooks and crannies!~
+Examine the nooks and crannies!
+~
 E
 east door cupboard~
 If you've finished examining all the nooks and crannies, the east door will lead
-you out into the Catacomb Galleria. ~
+you out into the Catacomb Galleria.
+~
 S
 #9561
 Scorpios' quarters~
@@ -6141,11 +6310,13 @@ D1
 E
 elegant decor~
 Whomever lives here has gone to great lengths to cause the rooms to appear decent
-and respectable, such great lengths in fact you doubt they really are.~
+and respectable, such great lengths in fact you doubt they really are.
+~
 E
 oak table~
 It certainly is a beautiful piece of furniture. While examining it you locate a
-small drawer on the underside.~
+small drawer on the underside.
+~
 S
 #9562
 Christian's room~
@@ -6161,16 +6332,19 @@ D1
 1 -1 9556
 E
 door east~
-The door leads out into a large public space of some sort.~
+The door leads out into a large public space of some sort.
+~
 E
 rubbish mess~
 The floor is covered in the typical sort of junk that accumulates in the
 dwelling space of a disorganized person - Books, papers, food wrappers, cutlery
-etc.. but it appears it has been allowed to build a lot longer than is common.~
+etc.. but it appears it has been allowed to build a lot longer than is common.
+~
 E
 pile desk~
 The simple, functional desk is covered with a great pile of books and papers,
-one document in particular catches your eye..~
+one document in particular catches your eye..
+~
 E
 note document~
 You read:
@@ -6179,7 +6353,8 @@ You read:
 although physically a vampire my heart is yet mortal and the taking of life
 pains me greatly.
  So it is that I turn to these opiates, for it is only in their blissful embrace
-that my conscience can finally be freed of its burden."~
+that my conscience can finally be freed of its burden."
+~
 S
 #9563
 The master vat~
@@ -6213,25 +6388,31 @@ swing-panel~
 E
 bright liquids~
 The liquids seem to burn in an odd way, as if from the inside out.. you feel that
-over time immersion in them would change you somehow.~
+over time immersion in them would change you somehow.
+~
 E
 animal vampire human flesh chunks~
 You observe the chunks and notice that at regular intervals they move as if by
-their own accord into one or another of the other three vats that adjoin this one.~
+their own accord into one or another of the other three vats that adjoin this one.
+~
 E
 tubes small man-sized~
 The short tubes lead into the other vats, they are large enough for you to swim
-through.~
+through.
+~
 E
 swing-panel swing panel up~
 The swing-panel opens from the outside in. You speculate that the flesh-components
-enter the vat through it.~
+enter the vat through it.
+~
 E
 west~
-Strange elongated fibrous shapes lie in the vat to this direction.~
+Strange elongated fibrous shapes lie in the vat to this direction.
+~
 E
 south~
-Sharp, chitinous chunks of flesh float in the vat to your south.~
+Sharp, chitinous chunks of flesh float in the vat to your south.
+~
 S
 #9564
 An enormous vat~
@@ -6247,14 +6428,17 @@ D2
 E
 chunks flesh wasted withered~
 Looking at the chunks closely you see they are highly porous and thus absorbent,
-designed perhaps for the leeching of liquids.~
+designed perhaps for the leeching of liquids.
+~
 E
 south~
 The largest of the vats lies southward and seems to be full of fleshy chunks of
-all kinds~
+all kinds.
+~
 E
 tube tubes~
-The short tube leads southward into the master vat.~
+The short tube leads southward into the master vat.
+~
 S
 #9565
 An enormous vat~
@@ -6269,10 +6453,12 @@ D0
 E
 sharp armoured floating flesh components flesh-components~
 The chunks of flesh here are for the most part sharp and bony, as if meant for a
-creature of war.~
+creature of war.
+~
 E
 north~
-You see flesh chunks of all variety and shape to your north.~
+You see flesh chunks of all variety and shape to your north.
+~
 S
 #9566
 An enormous vat~
@@ -6288,10 +6474,12 @@ E
 fleshy chunks~
 You grab a chunk and examine it.. it seems to be made of flesh, bone and
 cartilage that has been sculpted and modified somehow, perhaps by a combination
-of the chemicals in the vat and dark sorcery.~
+of the chemicals in the vat and dark sorcery.
+~
 E
 east~
-You see fleshy chunks of all variety in the vat to your east.~
+You see fleshy chunks of all variety in the vat to your east.
+~
 S
 #9567
 Xundus' quarters~
@@ -6310,16 +6498,19 @@ E
 poster phrenological~
 Apparently Xundus subscribes to the belief that a brain's inner workings can be
 divined by close examination of the skull. Oh well, people have bought crazier
-notions.~
+notions.
+~
 E
 trophies heads mounted creatures~
 A wide variety of once-sentient beings glare down at you from the wall. You spot
 trolls, orcs and drow, but predominantly the heads are those of humans. You hear
 they taste best. The largest of the trophies is a huge alligator's head set above
-the fireplace.~
+the fireplace.
+~
 E
 south~
-The southern door takes you to a communal living area.~
+The southern door takes you to a communal living area.
+~
 S
 #9568
 A cavernous recess~
@@ -6334,7 +6525,8 @@ D0
 E
 north~
 You can't see anything in this direction but strange broiling noises emanate
-from it. Best guess is it's your way out.~
+from it. Best guess is it's your way out.
+~
 S
 #9569
 A cavernous recess~
@@ -6349,10 +6541,12 @@ D5
 0 -1 9534
 E
 something smelly squishy strong-smelling~
-You pick some of the foreign substance up and sniff it.. ERGH!.. It's bat guano.~
+You pick some of the foreign substance up and sniff it.. ERGH!.. It's bat guano.
+~
 E
 down~
-Sound emanates from this direction, indicating to you the exit lies downward.~
+Sound emanates from this direction, indicating to you the exit lies downward.
+~
 S
 #9570
 Isolation booth~
@@ -6406,7 +6600,8 @@ it is unremarkable in appearance.
 0 1|4|8|1024 0
 D0
 The darkened corridor continues in this direction. You think you see some doors
-further down but can't be sure.~
+further down but can't be sure.
+~
 north~
 8 -1 9500
 D2
@@ -6440,18 +6635,22 @@ D2
 E
 marble pillar~
 The pillars hold up the iron box. They are rectangular cuboids with no
-distinguishing features.~
+distinguishing features.
+~
 E
 iron box coffin~
-The interior of the iron box is lined with padded black vinyl.~
+The interior of the iron box is lined with padded black vinyl.
+~
 E
 padded black vinyl.~
 The padding on the inside of the box looks comfortable enough, but is fairly
-spartan as such creature comforts go.~
+spartan as such creature comforts go.
+~
 E
 south~
 An iron door decorated with pictures of heaven and hell opens southward and
-appears to be the only exit from this room.~
+appears to be the only exit from this room.
+~
 S
 #9576
 A bathroom~
@@ -6467,7 +6666,8 @@ E
 south southern wall~
 You read:
 
-"Yes it's all very stylish and well   executed, but is it ART?"~
+"Yes it's all very stylish and well   executed, but is it ART?"
+~
 S
 #9577
 Dank passage~
@@ -6485,7 +6685,8 @@ D3
 0 -1 9578
 E
 west~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 S
 #9578
 Dank passage~
@@ -6503,10 +6704,12 @@ D1
 0 9656 9577
 E
 north~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 E
 east~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 S
 #9579
 Dank passage~
@@ -6524,10 +6727,12 @@ D2
 0 -1 9578
 E
 north~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 E
 south~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 S
 #9580
 Dank passage~
@@ -6545,10 +6750,12 @@ D2
 0 -1 9579
 E
 north~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 E
 south~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 S
 #9581
 Dank passage~
@@ -6566,10 +6773,12 @@ D3
 0 -1 9582
 E
 west~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 E
 south~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 S
 #9582
 Dank passage~
@@ -6587,10 +6796,12 @@ D3
 0 -1 9583
 E
 west~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 E
 east~
-It is too dark to make out anything in this direction.~
+It is too dark to make out anything in this direction.
+~
 S
 #9583
 Dank passage~
@@ -6608,16 +6819,19 @@ D4
 0 -1 9584
 E
 east~
-It is too dark in this direction to make anything out.~
+It is too dark in this direction to make anything out.
+~
 E
 up rope ladder upward~
 The rope ladder leads upward into what passes in these parts for a well-lit room.
 A mixture of scents (the strongest being manure) drifts downward to your nostrils.
-You wonder what kind of an animal can climb ladders.~
+You wonder what kind of an animal can climb ladders.
+~
 E
 snort snorting loud~
 It could be a horse, but if it is it doesn't sound quite like one you've ever
-heard before.~
+heard before.
+~
 S
 #9584
 Herne's stables~
@@ -6643,17 +6857,21 @@ D5
 E
 down rope ladder~
 The rope ladder leads down into darkness. Peering into it you think you can make
-out the contours of a tunnel, but you can't be sure.~
+out the contours of a tunnel, but you can't be sure.
+~
 E
 north west~
-Horizontally split swing doors lead into a horsebox in this direction.~
+Horizontally split swing doors lead into a horsebox in this direction.
+~
 E
 split swing doors~
 You notice the split swing-doors are barred on the top half, indicating that the
-horses within are dangerous, valuable, or both.~
+horses within are dangerous, valuable, or both.
+~
 E
 accoutrements equestrian endeavour~
-Bridles, bits, saddles, that sort of thing.~
+Bridles, bits, saddles, that sort of thing.
+~
 S
 #9585
 A horse box~
@@ -6670,10 +6888,12 @@ smell manure~
 ::ech::~
 E
 east~
-The split swing-door leads eastward out into the stable's tack room.~
+The split swing-door leads eastward out into the stable's tack room.
+~
 E
 scorch marks walls~
-The walls have been singed black, as if by fire.~
+The walls have been singed black, as if by fire.
+~
 S
 #9586
 A horse box~
@@ -6687,13 +6907,16 @@ D2
 1 -1 9584
 E
 south~
-The split swing-doors lead south into the tack room.~
+The split swing-doors lead south into the tack room.
+~
 E
 smell manure~
-::ech!::~
+::ech!::
+~
 E
 scorch marks~
-The walls have been singed black as if by flame.~
+The walls have been singed black as if by flame.
+~
 S
 #9587
 The Galleria~
@@ -6832,11 +7055,13 @@ D1
 3 -1 9550
 E
 east door~
-The heavy bolt-door leads out into the galleria kitchen.~
+The heavy bolt-door leads out into the galleria kitchen.
+~
 E
 meat human beings fridge~
 The fridge is full of human body parts. It would appear humans are the vampire
-sentient being-of choice. Bile rises in your throat.~
+sentient being-of choice. Bile rises in your throat.
+~
 S
 #9594
 In a tiny room behind a secret panel~
@@ -6846,7 +7071,8 @@ It looks to have been used as a bolthole for someone.
 0 1|4|8|2048|8192 0
 D0
 A wooden panel in the wall swings out at your secret knock to reveal the viewing
-space of an art gallery.~
+space of an art gallery.
+~
 panel secret~
 8 9712 9592
 S
