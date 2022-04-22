@@ -1863,7 +1863,7 @@ void aggr_update()
                                 {
                                         if ( !number_range( 0, count ) )
                                         {
-                                                if ( vch->pcdata->group_leader == vch
+                                                if ( vch->pcdata->group_leader
                                                 &&   !(IS_AFFECTED(vch->pcdata->group_leader, AFF_NON_CORPOREAL))
                                                 &&   can_see(mch, vch->pcdata->group_leader)
                                                 &&   vch->pcdata->group_leader->in_room == mch->in_room)
