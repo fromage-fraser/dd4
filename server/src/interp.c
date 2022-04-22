@@ -1659,6 +1659,17 @@ const struct social_type social_table [] =
         },
 
         {
+                "leer",
+                        "You leer slyly.",
+                        "$n leers slyly.",
+                        "You gaze at $N in a distastefully lascivious way.",
+                        "$n stares at $N in a distastefully lascivious way.",
+                        "$n leers at you, licking $s lips unpleasantly.",
+                        "You leer at yourself.  Hubba hubba.",
+                        "$n leers unpleasantly at $mself.  What is $s damage?"
+        },
+
+        {
                 "lick",
                         "You lick your lips and smile.",
                         "$n licks $s lips and smiles.",
