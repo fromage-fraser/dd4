@@ -1305,7 +1305,8 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                         }
 
-                        strcat(buf1, "\n\rDeity type timers:        {W");
+                        strcat(buf1, "\n\rDeity type timers:       {W");
+
 
                         for (next = 0; next < DEITY_NUMBER_TYPES; next++)
                         {
