@@ -1354,8 +1354,8 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
         spring->timer = level;
         obj_to_room( spring, ch->in_room );
 
-        act( "$p flows from a magical spring.", ch, spring, NULL, TO_CHAR );
-        act( "$p flows from a magical spring.", ch, spring, NULL, TO_ROOM );
+        act( "Water flows from $p.", ch, spring, NULL, TO_CHAR );
+        act( "Water flows from $p.", ch, spring, NULL, TO_ROOM );
         return;
 }
 

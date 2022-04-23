@@ -2524,6 +2524,41 @@ char* sector_name (int sector_num)
 }
 
 /*
+* ASCII name for character races, used in mstat --Owl 23/04/22
+*
+*/
+
+char* race_name (int race_num)
+{
+        if (race_num == RACE_NONE)              return "none";
+        if (race_num == RACE_HUMAN)             return "human";
+        if (race_num == RACE_ELF)               return "elf";
+        if (race_num == RACE_WILD_ELF)          return "wild elf";
+        if (race_num == RACE_ORC)               return "orc";
+        if (race_num == RACE_GIANT)             return "giant";
+        if (race_num == RACE_SATYR)             return "satyr";
+        if (race_num == RACE_OGRE )             return "ogre";
+        if (race_num == RACE_GOBLIN)            return "goblin";
+        if (race_num == RACE_HALF_DRAGON)       return "half dragon";
+        if (race_num == RACE_HALFLING)          return "halfling";
+        if (race_num == RACE_DWARF)             return "dwarf";
+        if (race_num == RACE_CENTAUR)           return "centaur";
+        if (race_num == RACE_DROW)              return "drow";
+        if (race_num == RACE_TROLL)             return "troll";
+        if (race_num == RACE_ALAGHI)            return "alaghi";
+        if (race_num == RACE_HOBGOBLIN)         return "hobgoblin";
+        if (race_num == RACE_YUAN_TI)           return "yuan-ti";
+        if (race_num == RACE_FAE)               return "fae";
+        if (race_num == RACE_SAHUAGIN)          return "sahuagin";
+        if (race_num == RACE_TIEFLING)          return "tiefling";
+        if (race_num == RACE_JOTUN)             return "jotun";
+        if (race_num == RACE_GENASI)            return "genasi";
+        if (race_num == RACE_ILLITHID)          return "illithid";
+
+        return "NO RACE NUM";
+}
+
+/*
  * Return ascii name of anti-class vector - brutus
  */
 char *extra_class_name (int extra_flags)
@@ -2568,7 +2603,7 @@ char *full_class_name (int class)
         if (class == CLASS_SHAPE_SHIFTER)   return "Shape Shifter";
         if (class == CLASS_RANGER)          return "Ranger";
 
-        return "NO CLASS";
+        return "none";
 }
 
 
@@ -2591,7 +2626,7 @@ char *full_sub_class_name (int sub_class)
         if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
         if (sub_class == SUB_CLASS_BARD)                return "Bard";
 
-        return "NO SUB CLASS";
+        return "none";
 }
 
 
