@@ -748,7 +748,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
         }
         else {
-                strcat(buf1, "Room flags: {Rnone [{W0{x}]{x\n\r");
+                strcat(buf1, "Room flags: {Rnone {x[{W0{x]\n\r");
         }
 
         sprintf( buf,
