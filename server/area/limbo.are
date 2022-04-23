@@ -1017,10 +1017,7 @@ a small Donut Robot is making donuts here, lots of donuts.~
 magical stat item~
 the amazing magical stat item~
 The amazing magical stat item lies here.~
-This item was created by Owl to test some stuff on the 4000 port, please
-don't delete it. I'll do it myself when I've finished with it.
-
--Owl
+This item was created by Owl for testing.
 ~
 9 1|64 1|64
 20~ 1~ 6~ 11~
@@ -1242,7 +1239,7 @@ S
 Owl's dungeon~
 This room is very dark, lit only by a few candles. Through the shadows you
 can make out many metal tools and implements hanging on the wall, but you
-doubt the room's owner is a gardener. An air of despondency and gloom 
+doubt the room's owner is a gardener. An air of despondency and gloom
 permeates the room.
 ~
 0 1|8|8192 0
