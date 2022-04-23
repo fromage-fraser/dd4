@@ -747,7 +747,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, "{x\n\r");
         }
         else {
-                strcat(buf1, "Room flags: {Rnone [{W0{x}]{x\n\r");
+                strcat(buf1, "Room flags: {Rnone {x[{W0{x]\n\r");
         }
 
         sprintf( buf,
@@ -1363,6 +1363,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                 sprintf( buf, " for {G%d{x hour",
                                         paf->duration );
                                 strcat( buf1, buf );
+                          
                         }
                         else if( paf->duration == 0 )
                         {
