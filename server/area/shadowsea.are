@@ -183,7 +183,7 @@ unrecognised on dry land?
 108 0
 8 8 1
 >death_prog 100~
-mpecho {YAs the seal dies, he casts off his seal skin and attacks you in a human form!{x
+mpecho {YAs the seal dies, he casts off his seal skin and reveals his human form!{x
     mpmload 27116
 ~
 |
@@ -202,7 +202,7 @@ humans, walking about unrecognised on dry land?
 108 0
 8 8 2
 >death_prog 100~
-mpecho {YAs the seal dies, she casts off her seal skin and attacks you in a human form!{x
+mpecho {YAs the seal dies, she casts off her seal skin and reveals her human form!{x
     mpmload 27117
 ~
 |
@@ -289,14 +289,14 @@ poke $n
 ~
 |
 #27116
-selkie human male~
+selkie human male gloober~
 a male selkie~
 {WA male selkie in his human form is here, incandescent with rage!{x
 ~
 This selkie is in his human form, and appears to you as a handsome, muscular
 adult man.  He seems furious with you, and is DROWNING!
 ~
-32|64 8|32|8192|8388608 -75 S
+2|32|64 8|32|8192|8388608 -75 S
 29 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -306,14 +306,14 @@ mpkill $n
 ~
 |
 #27117
-selkie human form female woman~
+selkie human form female woman gloober~
 a female selkie~
 {WA female selkie in her human form is here, incandescent with rage!{x
 ~
 This selkie is in her human form, and appears to you as a beautiful, svelte
 adult woman.  She seems furious with you, and is DROWNING!
 ~
-32|64 8|32|8192|8388608 -100 S
+2|32|64 8|32|8192|8388608 -100 S
 29 0 0 0d0+0 0d0+0
 0 0
 8 8 2

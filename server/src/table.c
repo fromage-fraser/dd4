@@ -426,7 +426,7 @@ void print_infamy_table ( CHAR_DATA *ch, char *argument )
                 
                 if (infamy_table[i].kills != 0) 
                 {
-                        sprintf(tmpbuf, "  %s%2d%s    %-20s %-30s %2d{x\n\r",
+                        sprintf(tmpbuf, "  %s%2d%s    %-30s %-30s %2d{x\n\r",
                                 colour, 
                                 i+1,
                                 number_suffix (i+1),
