@@ -706,6 +706,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, "{x\n\r");
 
                 sprintf( buf, "Area flags (txt):{R");
+
                 strcat( buf1, buf );
 
                 for (next = 1; next <= BIT_20; next *= 2)
@@ -718,7 +719,6 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 }
 
                 strcat(buf1, "{x\n\r");
-
 
         }
         else {
@@ -745,7 +745,6 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                         }
                 }
                 strcat(buf1, "{x\n\r");
-
         }
         else {
                 strcat(buf1, "Room flags: {Rnone {x[{W0{x]\n\r");
@@ -798,6 +797,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         {
                 strcat( buf1, "{x\n\rObjects:" );
         }
+
         for ( obj = location->contents; obj; obj = obj->next_content )
         {
                 strcat( buf1, " {W" );
@@ -1251,6 +1251,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         strcat(buf1, buf );
                         strcat(buf1, "{x\n\r");
 
+
                         strcat(buf1, "Affected by (txt):{R");
 
                         for (next = 1; next > 0 && next <= BIT_30; next *= 2)
@@ -1263,6 +1264,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                         strcat(buf1, "{x\n\r");
                 }
+          
                 if (victim->act)
                 {
                         sprintf(buf, "Act flags (num): {W");
@@ -1362,6 +1364,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                 sprintf( buf, " for {G%d{x hour",
                                         paf->duration );
                                 strcat( buf1, buf );
+
                         }
                         else if( paf->duration == 0 )
                         {
@@ -1372,6 +1375,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         {
                                 strcat( buf1, " indefinitely" );
                         }
+
 
                         sprintf( buf, " with bit {R%s{x\n\r",
                                 affect_bit_name( paf->bitvector ) );
@@ -1521,7 +1525,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 if (victim->body_form)
                 {
                         strcat(buf1, "Body form (txt):{R");
-
                         for (next = 1; next <= BIT_8; next *= 2)
                         {
                                 if (IS_SET(victim->body_form, next))
