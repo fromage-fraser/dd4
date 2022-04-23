@@ -781,10 +781,12 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                         strcat(buf1, buf);
                 }
         }
+
         if ((obj = location->contents))
         {
                 strcat( buf1, "{x\n\rObjects:" );
         }
+
         for ( obj = location->contents; obj; obj = obj->next_content )
         {
                 strcat( buf1, " {W" );
@@ -1250,6 +1252,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                         strcat(buf1, "{x\n\r");
                 }
+
                 if (victim->act)
                 {
                         sprintf(buf, "Act flags (num): {W");
@@ -1303,6 +1306,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
 
                         strcat(buf1, "\n\rDeity type timers:       {W");
+
 
                         for (next = 0; next < DEITY_NUMBER_TYPES; next++)
                         {
