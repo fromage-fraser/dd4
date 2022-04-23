@@ -23,7 +23,7 @@ it's finely-crafted spear at you threateningly.It wears a bronze
 breastplate and appears to have superior fighting skills.
 ~
 2|64 8|512|8192 0 S
-25 0 0 0d0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #13003
@@ -36,7 +36,7 @@ threateningly. The spear appears to be of a superior quality as does it's
 bronze breastplate.
 ~
 32|64 8|512|8192 0 S
-27 0 0 0d0+0 0d0+0
+36 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #13004
@@ -48,7 +48,7 @@ The Temple Sergeant resembles the Temple guards in every way with the
 exception that he wields a sword and wears a helmet.
 ~
 2|64 8|32|512|8192 0 S
-30 0 0 0d0+0 0d0+0
+37 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #13005
@@ -75,7 +75,7 @@ The huge rat salivates as you stand looking at it. It looks hungry and you
 appear to be on it's menu.
 ~
 32|64 32|32768 0 S
-25 0 0 0d0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 36 0
 8 8 1
 #13007
@@ -99,7 +99,7 @@ tautly over it's body giving it a mummified look. Rags hang where once
 plush robes did.
 ~
 64 8|512|8192 750 S
-25 0 0 0d0+0 0d0+0
+38 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #13009
@@ -127,7 +127,7 @@ The Temple Guards stand to attention.
 The rotting Temple Guard does not look happy with his fate.
 ~
 64 8|512|8192 0 S
-29 0 0 0d0+0 0d0+0
+35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #13011
@@ -138,7 +138,7 @@ The Temple Sergeant stands to attention.
 The Temple Sergeant does not look happy with his fate.
 ~
 64 8|32|512|8192 0 S
-32 0 0 0d0+0 0d0+0
+39 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 #13012
