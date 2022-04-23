@@ -1363,7 +1363,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                 sprintf( buf, " for {G%d{x hour",
                                         paf->duration );
                                 strcat( buf1, buf );
-                          
                         }
                         else if( paf->duration == 0 )
                         {
