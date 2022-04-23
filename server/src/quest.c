@@ -580,13 +580,14 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         /* 
          * Shade 31.3.22
          *
-         * Changed from enforced levels to low/high levels, most areas don't enforce they just pop up the warning
+         * Changed from enforced levels to low/high levels, most areas don't enforce they just pop up the warning.
+         * 
+         * Test was && not || - have adjusted
          */
 
         if ((number_percent() < 10)
             || !(room = find_qlocation(ch, victim->name, victim->pIndexData->vnum))
-            || (room->area->low_level > ch->level
-                && room->area->high_level < ch->level))
+            || (room->area->low_level > ch->level || room->area->high_level < ch->level))
         {
                 sprintf(buf, "$N says 'I'm sorry, but I don't have any quests for you at this time.'");
                 act(buf, ch, NULL, questman, TO_CHAR);
