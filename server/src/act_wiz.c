@@ -682,11 +682,31 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         sprintf( buf, "Room: {W%s{x\n\rArea: {Y%s{x\n\r",
                 location->name,
                 location->area->name);
-                strcat( buf1, buf );
+        strcat( buf1, buf );
+
+        sprintf( buf, "Exp modifier: {W%d{x  ",
+                location->area->exp_modifier);
+        strcat( buf1, buf );
+
+        sprintf( buf,
+                "Vnum: {R%d{x  Sector: {G%s{x [{W%d{x]  Light: {W%d{x\n\r",
+                location->vnum,
+        sector_name(location->sector_type),
+                location->sector_type,
+                location->light );
+        strcat( buf1, buf );
 
         if (location->area->area_flags)
         {
-                sprintf( buf, "Area flags (txt):{W");
+                sprintf( buf, "Area flags (num): {W");
+                strcat( buf1, buf );
+                bit_explode(ch, buf, location->area->area_flags);
+                strcat( buf1, buf );
+
+                strcat(buf1, "{x\n\r");
+
+                sprintf( buf, "Area flags (txt):{R");
+
                 strcat( buf1, buf );
 
                 for (next = 1; next <= BIT_20; next *= 2)
@@ -700,32 +720,21 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
                 strcat(buf1, "{x\n\r");
 
-                sprintf( buf, "Area flags (num): {W");
-                strcat( buf1, buf );
-                bit_explode(ch, buf, location->area->area_flags);
-                strcat( buf1, buf );
-
-                strcat(buf1, "{x\n\r");
         }
         else {
-                strcat(buf1, "Area flags: {Wnone {x[{W0{x]\n\r");
+                strcat(buf1, "Area flags: {Rnone {x[{W0{x]\n\r");
         }
-
-        sprintf( buf, "Exp modifier: {R%d{x  ",
-                location->area->exp_modifier);
-        strcat( buf1, buf );
-
-        sprintf( buf,
-                "Vnum: {R%d{x  Sector: {R%s{x [{W%d{x]  Light: {R%d{x\n\r",
-                location->vnum,
-        sector_name(location->sector_type),
-                location->sector_type,
-                location->light );
-        strcat( buf1, buf );
 
         if (location->room_flags)
         {
-                strcat(buf1, "Room flags (txt):{W");
+                sprintf( buf, "Room flags (num): {W");
+                strcat( buf1, buf );
+                bit_explode(ch, buf, location->room_flags);
+                strcat( buf1, buf );
+
+                strcat(buf1, "{x\n\r");
+
+                strcat(buf1, "Room flags (txt):{R");
 
                 for (next = 1; next <= BIT_20; next *= 2)
                 {
@@ -736,16 +745,9 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                         }
                 }
                 strcat(buf1, "{x\n\r");
-
-                sprintf( buf, "Room flags (num): {W");
-                strcat( buf1, buf );
-                bit_explode(ch, buf, location->room_flags);
-                strcat( buf1, buf );
-
-                strcat(buf1, "{x\n\r");
         }
         else {
-                strcat(buf1, "Room flags: {Wnone [0]{x\n\r");
+                strcat(buf1, "Room flags: {Rnone [{W0{x}]{x\n\r");
         }
 
         sprintf( buf,
@@ -772,15 +774,24 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         /* Yes, we are reusing the variable rch.  - Kahn */
         for ( rch = location->people; rch; rch = rch->next_in_room )
         {
-                strcat( buf1, "{W " );
-                one_argument( rch->name, buf );
-                strcat( buf1, buf );
-
-                if (IS_NPC(rch)) {
-                        sprintf(buf, "{x ({R%d{x){W", rch->pIndexData->vnum);
+                if (!IS_NPC(rch))
+                {
+                        strcat( buf1, "{Y " );
+                        sprintf( buf, "%s{x,",
+                                rch->name );
+                        strcat( buf1, buf );
+                }
+                else {
+                        strcat( buf1, "{W " );
+                        sprintf( buf, "%s{x",
+                                rch->short_descr );
+                        strcat( buf1, buf );
+                        sprintf(buf, "{x ({R%d{x){W,", rch->pIndexData->vnum);
                         strcat(buf1, buf);
                 }
         }
+
+        buf1[strlen(buf1)-1] = 0; /* Deletes last char of buffer (a comma)... remember this one. */
 
         if ((obj = location->contents))
         {
