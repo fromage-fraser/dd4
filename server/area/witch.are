@@ -1,6 +1,6 @@
 #AREA Shade~ Witch's Tower~
 25 35 1 100
-
+ 
 #MOBILES
 #10102
 brown bear~
@@ -14,7 +14,7 @@ ignores your presence.
 28 0 0 0d0+0 0d0+0
 32|128 0
 0 0 1
->rand_prog 15~
+>rand_prog 25~
     mpecho The bear sniffs about in the trees looking for food.
 ~
 |
