@@ -5511,7 +5511,7 @@ void spell_wither( int sn, int level, CHAR_DATA *ch, void *vo)
 }
 
 
-void OLD_spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
+void spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *obj = (OBJ_DATA *) vo;
         int sp_slot, i, mana;
@@ -5613,18 +5613,21 @@ void OLD_spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
 
         obj->short_descr = str_dup(buf);
 
-        sprintf( buf, "%s %s", obj->name, item_type_name(obj) );
+        sprintf( buf, "%s %s %s",
+                obj->name,
+                item_type_name(obj),
+                skill_table[sn].name );
         free_string( obj->name );
         obj->name = str_dup( buf );
 
-        sprintf(buf, "You have imbued a new spell to the %s.\n\r", item_type_name(obj) );
+        sprintf(buf, "You have imbued the %s with a new spell.\n\r", item_type_name(obj) );
         send_to_char( buf, ch );
 
         return;
 }
 
 
-void spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
+void OLD_spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *obj = (OBJ_DATA *) vo;
         int sp_slot, i, mana;

@@ -4318,14 +4318,11 @@ void do_brew (CHAR_DATA *ch, char *argument)
         obj->value[0] = ch->level/2;
         spell_imprint(sn, ch->level, ch, obj);
 
-        if (sn == skill_lookup("complete heal")
-            || sn == skill_lookup("globe")
-            || sn == skill_lookup("power heal")
-            || sn == skill_lookup("haste")
-            || sn == skill_lookup("fireshield"))
+        if (skill_table[sn].target == TAR_CHAR_SELF)
         {
                 set_obj_owner(obj, ch->name);
         }
+
 }
 
 
@@ -4386,10 +4383,7 @@ void do_scribe (CHAR_DATA *ch, char *argument)
         obj->value[0] = ch->level/2;
         spell_imprint(sn, ch->level, ch, obj);
 
-        if (sn == skill_lookup("complete heal")
-            || sn == skill_lookup("globe")
-            || sn == skill_lookup("fireshield")
-            || sn == skill_lookup("haste"))
+        if (skill_table[sn].target == TAR_CHAR_SELF)
         {
                 set_obj_owner(obj, ch->name);
         }
