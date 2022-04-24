@@ -572,13 +572,14 @@ Project a force ball at your opponent to inflict horrible damage.
 Syntax: scribe <spell name>
 
 Enchant a scroll to release a spell or spells upon being recited.  You may
-only scribe spells that you know how to cast already.  You must find a
-suitable piece of parchment to contain the spell in.  Each scribed scroll
-may contain up to three spells: just repeat the scribing process using the
-same scroll.
+only scribe spells that you know how to cast already.  You must find a suitable
+piece of parchment to inscribe the spells onto.  Each scroll may contain up to
+three spells: just repeat the 'scribe' process using the same parchment.
+It becomes successively more difficult to add multiple spells to one scroll.
 
-Scrolls of fireshield, complete heal, haste and globe may only be used by the
-scriber.
+Spells that are self-only will set an ownership flag on the scroll, meaning
+you will be the only one who can use it.  Scrolls will also respond to the
+names of the spells that are on them.
 ~
 
 0 BREW~
@@ -587,10 +588,12 @@ Syntax: brew <spell name>
 Brew a potion to contain a spell or spells.  You may only brew potions of
 spells that you know how to cast already.  You must find a suitable vial
 to brew the potion in.  Each brewed potion may contain up to three spells:
-just repeat the brewing process using the same vial.
+just repeat the brewing process using the same vial.  It becomes successively
+more difficult to add multiple spells to one vial.
 
-Brews of fireshield, complete heal, haste and globe may only be used by the
-brewer.
+Spells that are self-only will set an ownership flag on the potion, meaning
+you will be the only one who can use it.  Potions will also respond to the
+names of the spells that are on them.
 ~
 
 0 DONATE DONATION~
