@@ -3473,7 +3473,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
                              "  hp mana move str_prac int_prac align\n\r"
                              "  thirst drunk full sub_class form race \n\r"
                              "  bounty fame questpoints totalqp questtime\n\r"
-                             "  bank plat gold silver copper\n\r"
+                             "  bank plat gold silver copper age\n\r"
                              "  patron deity_timer deity_flags\n\r"
                              "  rage spec\n\r"
                              "String being one of:\n\r"
@@ -3722,6 +3722,21 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         send_to_char( "You can't set body form on PCs.\n\r", ch );
                 else
                         victim->body_form = value;
+                return;
+        }
+
+
+        if ( !str_cmp( arg2, "age" ) )
+        {
+                if ( ( value < 17 )
+                ||   ( value > 100000 ) )
+                {
+                        send_to_char("Age must be between 17 and 100000 years.\n\r", ch);
+                        return;
+                }
+
+                value = (value * 14400) - (17 * 14400);
+                victim->played = value;
                 return;
         }
 
