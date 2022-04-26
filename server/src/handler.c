@@ -2630,7 +2630,7 @@ char *full_sub_class_name (int sub_class)
 }
 
 
-/* Return assci name for character levels. */
+/* Return ascii name for character levels. */
 char *extra_level_name (CHAR_DATA *ch)
 {
         switch (get_trust(ch))

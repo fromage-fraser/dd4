@@ -242,12 +242,21 @@ void scan (CHAR_DATA *ch, int door)
                                                         dist_name[distance],
                                                         dir_desc[door]);
                                         }
-                                        else
+                                        else if (rch->level <= 100)
                                         {
                                                 sprintf(buf, "%s%s{x%s who is %s %s.\n\r",
                                                         IS_NPC(rch) ? "{Y" : "{W",
                                                         capitalize_initial(PERS(rch, ch)),
                                                         IS_NPC(rch) ? "" : " {g({GPLAYER{x{g){x",
+                                                        dist_name[distance],
+                                                        dir_desc[door]);
+                                        }
+                                        else
+                                        {
+                                                sprintf(buf, "%s%s{x%s who is %s %s.\n\r",
+                                                        IS_NPC(rch) ? "{Y" : "{W",
+                                                        capitalize_initial(PERS(rch, ch)),
+                                                        IS_NPC(rch) ? "" : " {c({CIMM{x{c){x",
                                                         dist_name[distance],
                                                         dir_desc[door]);
                                         }
