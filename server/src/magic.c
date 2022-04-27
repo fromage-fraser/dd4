@@ -5577,7 +5577,7 @@ void spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
                 break;
 
             case 2:
-                if ( number_percent() > 25 )
+                if ( number_percent() > 60 )
                 {
                         sprintf(buf, "The magic enchantment has failed --- the %s vanishes.\n\r", item_type_name( obj ) );
                         send_to_char( buf, ch );
@@ -5587,7 +5587,7 @@ void spell_imprint( int sn, int level, CHAR_DATA *ch, void *vo )
                 break;
 
             case 3:
-                if ( number_percent() > 10 )
+                if ( number_percent() > 40 )
                 {
                         sprintf(buf, "The magic enchantment has failed --- the %s vanishes.\n\r", item_type_name( obj ) );
                         send_to_char( buf, ch );
