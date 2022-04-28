@@ -907,7 +907,7 @@ void do_web (CHAR_DATA *ch, char *argument)
         {
                 act ("$n attempts to spin a web around $N, but $N breaks free!",
                      ch, NULL, victim, TO_ROOM);
-                act ("You fail to spin a web around your victim, $e breaks free!",
+                act ("You fail to spin a web around your victim, $E breaks free!",
                      ch, NULL, victim, TO_CHAR);
                 arena_commentary("$n tries to trap $N in a sticky web, but $N breaks free!", ch, victim);
 
