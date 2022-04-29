@@ -4363,6 +4363,13 @@ void do_snare (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+        if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
+        || ( ch->in_room->sector_type == SECT_INSIDE ) )
+        {
+                send_to_char("You can't snare indoors.\n\r", ch);
+                return;
+        }
+
         WAIT_STATE(ch, skill_table[gsn_snare].beats);
 
         if (IS_NPC(ch))
@@ -4372,22 +4379,22 @@ void do_snare (CHAR_DATA *ch, char *argument)
 
         chance += (ch->level - victim->level) * 5;
 
-        if (chance < 5)
-                chance = 5;
+        if (chance < 3)
+                chance = 3;
 
-        if (chance > 95)
-                chance = 95;
+        if (chance > 97)
+                chance = 97;
 
         if (number_percent() < chance)
         {
                 AFFECT_DATA af;
 
                 arena_commentary("$n snares $N.", ch, victim);
-                act ("You skillfully entangle $N in your snare!", ch, NULL, victim, TO_CHAR);
+                act ("$N becomes entangled in your snare!", ch, NULL, victim, TO_CHAR);
                 act ("$n skillfully entangles $N in $s snare!", ch, NULL, victim, TO_ROOM);
 
                 af.type         = gsn_snare;
-                af.duration     = 4;
+                af.duration     = 6;
                 af.location     = APPLY_HITROLL;
                 af.modifier     = -10;
                 af.bitvector    = AFF_HOLD;

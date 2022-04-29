@@ -275,6 +275,7 @@ been added;
 - Soar for Shifters
 - New area: 'Harpy Haven'
 - New area: 'Kingdom of Juargan'
+- Snare for Rangers
 
 Refer appropriate HELP entries.
 
@@ -633,8 +634,17 @@ Trip up your opponent, making him easier to hit and unable to cast spells.
 0 TRAP~
 Syntax: trap <target>
 
-Ensnare your opponent so that they cannot move.  Trapped opponents are
-also less able to successfully flee from combat.
+Catch your opponent in a trap so that they cannot move.  Trapped opponents are
+also poorer fighters and less able to successfully flee combat.
+~
+
+0 SNARE~
+Syntax: snare <target>
+
+Use your ranger's wilderness craft to trap your opponent in a snare so that they
+cannot move.  Snared opponents are also poorer fighters and less able to successfully
+flee combat.  While a little more powerful than the trap skill, snare has the
+disadvantage that it cannot be used indoors.
 ~
 
 0 SNARE~
