@@ -1756,10 +1756,11 @@ void do_meditate (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
+        if ( (!IS_NPC(ch))
+        && ch->in_room->sector_type == SECT_UNDERWATER
+        && ( ch->race != RACE_SAHUAGIN && ( !is_affected(ch, gsn_breathe_water) ) ) )
         {
-                send_to_char("You can't meditate underwater.\n\r", ch);
+                send_to_char("You can't meditate underwater if you can't breathe underwater.\n\r", ch);
                 return;
         }
 
