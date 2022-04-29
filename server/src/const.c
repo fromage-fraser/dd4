@@ -1349,6 +1349,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_group_hunting,                           0 },
         { &gsn_trap,                                    0 },
         { &gsn_hunt,                                    0 },
+        { &gsn_snare,                                   0 },
 
         { &gsn_group_riding,                            0 },
         { &gsn_mount,                                   0 },
@@ -4811,7 +4812,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "snare", &gsn_snare,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
-                "snare", "!Snare!"
+                "slip up", "You finally break free from the snare!"
         },
 
         {

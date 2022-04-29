@@ -637,6 +637,13 @@ Ensnare your opponent so that they cannot move.  Trapped opponents are
 also less able to successfully flee from combat.
 ~
 
+0 SNARE~
+Syntax: snare <target>
+
+Trap your opponent with a snare so that they cannot move.  Snared opponents are
+also less able to successfully flee from combat.
+~
+
 
 0 DISABLE~
 Syntax: disable <object>
@@ -4704,9 +4711,10 @@ learn these skills after level 30:
 
 shoot                   thrust                  second shot
 barkskin                third shot              hunt
-detect hidden           infravision             enhanced hit
-advanced consider       dual                    classify
-gather                  faerie fire             accuracy
+detect hidden           infravision             snare
+dual                    enhanced hit            classify
+advanced consider       faerie fire             accuracy
+gather
 
 See 'HELP SBARBARIAN' and 'HELP SBARD' for lists of barbarian and bard
 skills respectively.

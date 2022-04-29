@@ -123,6 +123,9 @@
 
 {&gsn_group_hunting,            &gsn_ranger_base,       60,     PRE_RANGER},
 
+{&gsn_snare,                    &gsn_group_hunting,     50,     PRE_RANGER},
+{&gsn_snare,                    &gsn_ranger_base,       60,     PRE_RANGER},
+
 {&gsn_hunt,                     &gsn_group_hunting,     80,     PRE_RANGER},
 {&gsn_hunt,                     &gsn_ranger_base,       60,     PRE_RANGER},
 

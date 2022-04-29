@@ -3677,7 +3677,7 @@ void do_areas (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "Areas around level %d:\n\r", level);
         else
                 sprintf(buf, "Complete area list:\n\r");
-        
+
         sprintf(buf_all, "\n\r");
 
         for (pArea = area_first; pArea; pArea = pArea->next)
@@ -3713,7 +3713,7 @@ void do_areas (CHAR_DATA *ch, char *argument)
 
                         else
                                 sprintf(buf1, "(%3d %3d)   ", pArea->low_level, pArea->high_level);
- 
+
                         if (!(pArea->low_level == -4 && level))
                         {
                                 if (pArea->low_level == ROOM_LABEL_ALL || pArea->low_level == ROOM_LABEL_CLAN)
