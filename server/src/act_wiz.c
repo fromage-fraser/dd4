@@ -815,7 +815,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 if ( ( pexit = location->exit[door] ))
                 {
                         sprintf( buf,
-                                "Door: {W%d{x [{G%-5s{x] To: {R%-5d{x Key: {Y%-5d{x Exit flags: {W%-3d{x\n\r",
+                                "Door: {W%d{x [{G%-5s{x] To: {R%-5d{x Key: {Y%-5d{x Exit flags: {W%d{x\n\r",
                                 door,
                                 directions[door].name,
                                 pexit->to_room ? pexit->to_room->vnum : 0,

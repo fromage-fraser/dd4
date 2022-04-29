@@ -1763,8 +1763,8 @@ tome politics political structure~
 THE POLITICAL STRUCTURE OF ANON-
 
 Although the races of Anon now mingle in relative harmony, each of them still
-has their own seperate states, most of these semi-independent city states.
-The major staes of each race are listed in the relevant chapters. Type read
+has their own separate states, most of these semi-independent city states.
+The major states of each race are listed in the relevant chapters. Type read
 Human, Elf, Dwarf, and Dryad to read the
 organisation of the relevant races.
 ~
@@ -2337,7 +2337,7 @@ adventurers pass you in both directions. Tall buildings rise in all
 directions, the most notable being the magnificent temple, towering high
 directly to the east of here.
 ~
-0 8|1024 0
+0 1024 1
 D1
 The Temple of Anon
 ~
@@ -2357,7 +2357,7 @@ enters the grounds of the Temple.
 
 To the west lies a locksmith while to the east you can see a bookshop.
 ~
-0 8|1024 0
+0 1024 1
 D0
 The Temple of Anon
 ~
@@ -2386,7 +2386,7 @@ residents of the city line the road here. High fences and savage guard dogs
 deter you from trespassing however, as does the constant eye of the city
 guards. Stalwart Lane cuts across Victory Parade directly east of here.
 ~
-0 8|1024 0
+0 1024 1
 D1
 Victory Parade East
 ~
@@ -2405,7 +2405,7 @@ Liberty Lane. To the south you can hear the sounds of a hammer striking
 an anvil, while to the north you hear nothing. But clearly visible in
 both directions are the distinctive walls of Guildhalls.
 ~
-0 8|1024 0
+0 1024 1
 D0
 Liberty Lane
 ~
@@ -2433,7 +2433,7 @@ You have come to a crossroads, where the north-south running Glory Avenue
 meets the east-west running Valiant Street. Shops line Valiant to the east
 and west, while Glory Avenue runs south toward the Clerics' Guild.
 ~
-0 8|1024 0
+0 1024 1
 D0
 Glory Avenue
 ~
@@ -2462,7 +2462,7 @@ east. Shops and residences line Stalwart Lane to the north and south, while
 the gates of the city loom far to the east. The Temple is just to the west
 of here.
 ~
-0 8|1024 0
+0 1024 1
 D0
 Liberty Lane
 ~
@@ -2493,7 +2493,7 @@ dazzling in the sun. Surely they are magical creations of the Mages of the city.
 To the north of here lies the Thaumaturgist's house, while to the south you
 can see the Artificer's workshop.
 ~
-0 8|1024 0
+0 1024 1
 D0
 Alix the Thaumaturgist can be seen reading a book.
 ~
@@ -2522,7 +2522,7 @@ Avenue to the east and west, while to the south lies the Clerics'
 Guild. The great Temple of the city lies to the north, and you are as
 ever awed by its size and beauty.
 ~
-0 8|1024 0
+0 1024 1
 D0
 Glory Avenue
 ~
@@ -2547,7 +2547,7 @@ enter the city's dungeons in search of glory and loot?
 
 To the south you can see Thom the would-be Enhancer's place.
 ~
-0 8|1024 0
+0 1024 1
 D0
 Trial of Champions
 ~
@@ -2578,7 +2578,7 @@ depicts him officially opening the city.
 
 A small cafe lies to the north.
 ~
-0 8|1024 0
+0 1024 1
 D0
 A small cafe lies to the north.
 ~
@@ -2605,7 +2605,7 @@ disturbance.
 The portal chambers are situated south of here. You'll need to buy a key
 from the Locksmith to get in, though.
 ~
-0 8|1024 0
+0 1024 1
 D1
 Victory Parade East
 ~
@@ -2630,7 +2630,7 @@ gatehouse. You see guards patrolling the walls around it. There is no-one
 else about here, as the concentration of residences and shops is nearer to
 the Temple.
 ~
-0 8|1024 0
+0 1024 1
 D1
 Victory Parade West
 ~
@@ -2674,7 +2674,7 @@ to storm the gates.
 Doors to the north and south allow you to enter the towers flanking the
 gatehouse.
 ~
-0 8|1024 1
+0 1024 1
 D0
 A door to the north leads into the walls of Anon.
 ~
@@ -2708,7 +2708,7 @@ to storm the gates.
 Doors to the north and south allow you to enter the towers flanking the
 gatehouse.
 ~
-0 8|1024 1
+0 1024 1
 D0
 A door to the north leads into the walls of Anon.
 ~
