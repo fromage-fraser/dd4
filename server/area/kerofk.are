@@ -141,8 +141,8 @@ drunk person~
 the Drunk~
 A drunk person is here, babbling about something incessantly.
 ~
-The drunk person looks at you and slurs, 'Whatre you lookin' at,
-bozo?'
+The drunk person looks at you and slurs, "What're you lookin' at,
+bozo?"
 ~
 2 0 0 S
 11 19 60 5d10+50 1d6+1
@@ -226,7 +226,7 @@ your attention wanders until you're ready to go.
 #30214
 receptionist wife~
 the Receptionist~
-The receptionst smiles and offers you a room.
+The receptionist smiles and offers you a room.
 ~
 Myrama is all smiles as you look at her.  She is bright, witty, and
 the only reason why Kell is so successful.  Myrama is truly marvelous!
@@ -257,7 +257,7 @@ the Lawyer~
 The lawyer is here, ready to lie his tongue out.
 ~
 The lawyer looks at you, ready to spot anything he can sue you for.
-This has got to be one of the most loathesome mobs in the whole mud!
+This has got to be one of the most loathsome mobs in the whole mud!
 ~
 2|128 0 -1000 S
 31 3 60 3d10+150 2d8+3
@@ -783,9 +783,9 @@ be able to teach you some of his ways..
 #30256
 psionic woman master~
 the Psionic master~
-A woman in flowing robes, levitates before you.
+A woman in flowing robes levitates before you.
 ~
-The psionic master seems at one with his surrondings as she floats
+The psionic master seems at one with his surroundings as she floats
 effortlessly before you. Before you can speak, a reply to your questions
 appears in your minds eye. You could well learn a great deal here.
 ~
@@ -802,19 +802,21 @@ appears in your minds eye. You could well learn a great deal here.
 & 80 'mana control disciplines'
 & 80 'evocation magiks'
 & 80 'divination magiks'
+& 80 'alteration magiks'
+& 80 'illusion magiks'
 & 80 'summoning magiks'
 & 80 'enchantment magiks'
 & 30 'psionic base'
 & 30 'satanist base'
 & 30 'witch base'
 #30257
-shifter background shimmer presense~
+shifter background shimmer presence~
 the shifter~
 The background shimmers before your eyes, you feel a presence...
 ~
-Out of no-where a shapeshifter materializes. Preferring to move in
-Chameleon form, shapeshifters are nearly impossible to spot and are
-greatly fear in battle. This rare incounter may prove a great learning
+Out of nowhere a shapeshifter materializes. Preferring to move in
+chameleon form, shapeshifters are nearly impossible to spot and are
+greatly feared in battle. This rare encounter may prove a great learning
 opportunity.
 ~
 64|512|32768|16777216 8 200 S
@@ -1018,7 +1020,7 @@ There is a tin can of worms lying here.~
 #30215
 amulet~
 an amulet of Huang~
-There is a valuble amulet inscribed with Huang's symbol here.~
+There is a valuable amulet inscribed with Huang's symbol here.~
 ~
 9 1|32|64 1|4
 5~ 0~ 0~ 0~
@@ -1217,7 +1219,7 @@ A painting of the goddess of healing hangs here.~
 E
 painting art arla~
 This is a painting of Arla, goddess of healing.
-There seems to be no artist's signiture, however.
+There seems to be no artist's signature, however.
 ~
 #30237
 axe~
@@ -1352,8 +1354,8 @@ A wooden carafe sits on a table here.~
 1 20 0
 #30250
 glass shot shotglass~
-a shotglass~
-A shotglass has been discarded here.~
+a shot glass~
+A shot glass has been discarded here.~
 ~
 17 0 1
 2~ 2~ 7~ 0~
