@@ -235,8 +235,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL               499     /* Increased to 499, 1287 for soar. Replaced spy */
-#define MAX_PRE_REQ             1287    /* with soar in table so didn't increase MAX_FORM_SKILL -- Owl 29/3/22 */
-#define MAX_SPELL_GROUP         378
+#define MAX_PRE_REQ             1289    /* Added (+2) snare pre-reqs for ranger -- Owl 29/4/22 */
+#define MAX_SPELL_GROUP         379
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
 #define MAX_VAMPIRE_GAG         24      /* ugly vampire/werewolf hack */

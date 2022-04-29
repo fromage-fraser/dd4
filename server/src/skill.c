@@ -3098,14 +3098,6 @@ void do_classify( CHAR_DATA *ch, char *arg )
         WAIT_STATE( ch, PULSE_VIOLENCE );
 }
 
-
-void do_snare(CHAR_DATA *ch, char *arg)
-{
-        do_trap( ch, arg );
-        return;
-}
-
-
 bool is_bladed_weapon (OBJ_DATA *obj)
 {
         if (!obj || obj->item_type != ITEM_WEAPON)

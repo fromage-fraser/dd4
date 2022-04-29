@@ -4207,7 +4207,6 @@ void do_knife_toss (CHAR_DATA *ch, char *argument)
         return;
 }
 
-
 void do_trap (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -4309,6 +4308,109 @@ void do_trap (CHAR_DATA *ch, char *argument)
 
         WAIT_STATE (ch, 1 * PULSE_VIOLENCE);
 }
+
+void do_snare (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        char    arg[MAX_INPUT_LENGTH];
+        int     chance;
+
+        if (IS_NPC(ch))
+        {
+                if (ch->pIndexData->vnum != BOT_VNUM)
+                    return;
+        }
+        else if (!CAN_DO(ch, gsn_snare))
+        {
+                send_to_char("You don't know how to do that.\n\r", ch);
+                return;
+        }
+
+        WAIT_STATE(ch, 2);  /* Not too much spam thanks */
+
+        one_argument (argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Who do you want to snare?\n\r", ch);
+                return;
+        }
+
+        if (!(victim = get_char_room(ch, arg)))
+        {
+                send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(victim, AFF_HOLD))
+        {
+                act ("$N is already snared.", ch, NULL, victim, TO_CHAR);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("You want to snare yourself?\n\r", ch);
+                return;
+        }
+
+        if (victim->fighting)
+        {
+                send_to_char("You cannot snare a fighting person.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        WAIT_STATE(ch, skill_table[gsn_snare].beats);
+
+        if (IS_NPC(ch))
+                chance = 40 + ch->level / 2;
+        else
+                chance = ch->pcdata->learned[gsn_snare];
+
+        chance += (ch->level - victim->level) * 5;
+
+        if (chance < 5)
+                chance = 5;
+
+        if (chance > 95)
+                chance = 95;
+
+        if (number_percent() < chance)
+        {
+                AFFECT_DATA af;
+
+                arena_commentary("$n snares $N.", ch, victim);
+                act ("You skillfully entangle $N in your snare!", ch, NULL, victim, TO_CHAR);
+                act ("$n skillfully entangles $N in $s snare!", ch, NULL, victim, TO_ROOM);
+
+                af.type         = gsn_snare;
+                af.duration     = 4;
+                af.location     = APPLY_HITROLL;
+                af.modifier     = -10;
+                af.bitvector    = AFF_HOLD;
+
+                affect_to_char(victim, &af);
+                WAIT_STATE (victim, 3 * PULSE_VIOLENCE);
+
+                if (!IS_NPC(ch) && ch->pcdata->tailing)
+                        ch->pcdata->tailing = str_dup( "" );
+
+                check_group_bonus(ch);
+        }
+        else
+        {
+                act ("$n attempts to snare $N, but snares $mself instead!",
+                     ch, NULL, victim, TO_ROOM);
+                send_to_char("You unwittingly step into your own snare!!\n\r", ch);
+                damage(ch, victim, 0, gsn_trap, FALSE);
+        }
+
+        WAIT_STATE (ch, 1 * PULSE_VIOLENCE);
+}
+
 
 
 void do_transfix (CHAR_DATA *ch, char *argument)
