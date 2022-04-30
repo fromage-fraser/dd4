@@ -821,7 +821,8 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 if ( objroom_cnt <= MAX_RSTAT_OBJ )
                 {
                         strcat( buf1, " {W" );
-                        one_argument( obj->name, buf );
+                        sprintf( buf, "%s",
+                                obj->short_descr );
                         strcat( buf1, buf );
                         sprintf( buf, " {x({R%d{x),", obj->pIndexData->vnum );
                         strcat( buf1, buf );
