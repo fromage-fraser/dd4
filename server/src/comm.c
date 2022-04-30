@@ -989,7 +989,7 @@ bool read_from_descriptor (DESCRIPTOR_DATA *d)
 
         /* Check for overflow. */
         iStart = strlen(d->inbuf);
-        if (iStart >= sizeof(d->inbuf) - 10)
+        if ( iStart >= sizeof(d->inbuf) - 10 )
         {
                 sprintf(log_buf, "%s input overflow!", d->host);
                 log_string(log_buf);
@@ -1112,7 +1112,7 @@ void read_from_buffer (DESCRIPTOR_DATA *d)
                 }
                 else
                 {
-                        if (++d->repeat >= 30)
+                        if ( ( ++d->repeat >= 50 ) )
                         {
                                 sprintf(log_buf, "%s input spamming!", d->host);
                                 log_string(log_buf);

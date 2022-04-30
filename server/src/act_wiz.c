@@ -657,6 +657,8 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         char             arg  [ MAX_INPUT_LENGTH  ];
         int              door;
         int              next;
+        int              chroom_cnt      = 1;
+        int              objroom_cnt     = 1;
 
         rch = get_char( ch );
 
@@ -774,39 +776,68 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         /* Yes, we are reusing the variable rch.  - Kahn */
         for ( rch = location->people; rch; rch = rch->next_in_room )
         {
-                if (!IS_NPC(rch))
+                chroom_cnt++;
+                if ( chroom_cnt <= MAX_RSTAT_CHAR )
                 {
-                        strcat( buf1, "{Y " );
-                        sprintf( buf, "%s{x,",
-                                rch->name );
-                        strcat( buf1, buf );
+                        if (!IS_NPC(rch))
+                        {
+                                strcat( buf1, "{Y " );
+                                sprintf( buf, "%s{x,",
+                                        rch->name );
+                                strcat( buf1, buf );
+                        }
+                        else {
+                                strcat( buf1, "{W " );
+                                sprintf( buf, "%s{x",
+                                        rch->short_descr );
+                                strcat( buf1, buf );
+                                sprintf(buf, "{x ({R%d{x){W,", rch->pIndexData->vnum);
+                                strcat(buf1, buf);
+                        }
                 }
                 else {
-                        strcat( buf1, "{W " );
-                        sprintf( buf, "%s{x",
-                                rch->short_descr );
-                        strcat( buf1, buf );
-                        sprintf(buf, "{x ({R%d{x){W,", rch->pIndexData->vnum);
-                        strcat(buf1, buf);
+                        strcat( buf1, " ...[{WMORE{x] " );
+                        break;
                 }
         }
 
         buf1[strlen(buf1)-1] = 0; /* Deletes last char of buffer (a comma)... remember this one. */
+        strcat( buf1, "{x\n\r" );
 
         if ((obj = location->contents))
         {
-                strcat( buf1, "{x\n\rObjects:" );
+                strcat( buf1, "{xObjects:" );
         }
-
+/*
+        int              chroom_cnt      = 1;
+        int              chroom_max      = 100;
+        int              objroom_cnt     = 1;
+        int              objroom_max     = 100;
+        */
         for ( obj = location->contents; obj; obj = obj->next_content )
         {
-                strcat( buf1, " {W" );
-                one_argument( obj->name, buf );
-                strcat( buf1, buf );
-                sprintf( buf, " {x({R%d{x)", obj->pIndexData->vnum );
-                strcat( buf1, buf );
+                objroom_cnt++;
+
+                if ( objroom_cnt <= MAX_RSTAT_OBJ )
+                {
+                        strcat( buf1, " {W" );
+                        sprintf( buf, "%s",
+                                obj->short_descr );
+                        strcat( buf1, buf );
+                        sprintf( buf, " {x({R%d{x),", obj->pIndexData->vnum );
+                        strcat( buf1, buf );
+                }
+                else {
+                        strcat( buf1, " ...[{WMORE{x] " );
+                        break;
+                }
         }
-        strcat( buf1, "\n\r" );
+        buf1[strlen(buf1)-1] = 0;
+
+        if ((obj = location->contents))
+        {
+                strcat( buf1, "\n\r" );
+        }
 
         for ( door = 0; door <= 5; door++ )
         {
@@ -2048,7 +2079,10 @@ void do_oload( CHAR_DATA *ch, char *argument )
         OBJ_INDEX_DATA *pObjIndex;
         char            arg1 [ MAX_INPUT_LENGTH ];
         char            arg2 [ MAX_INPUT_LENGTH ];
+        char            arg3 [ MAX_INPUT_LENGTH ];
         int             level;
+        int             copies;
+        int             cc_def;
 
         rch = get_char( ch );
 
@@ -2057,37 +2091,55 @@ void do_oload( CHAR_DATA *ch, char *argument )
 
         argument = one_argument( argument, arg1 );
         argument = one_argument( argument, arg2 );
+        argument = one_argument( argument, arg3 );
 
         if ( arg1[0] == '\0' || !is_number( arg1 ) )
         {
-                send_to_char( "Syntax: oload <vnum> <level>.\n\r", ch );
+                send_to_char( "Syntax: oload <vnum> <level> <copies>.\n\r", ch );
                 return;
         }
 
         if ( arg2[0] == '\0' )
         {
-                level = get_trust( ch );
+                level   = get_trust( ch );
+                copies  = 1;
         }
-        else
+
+        if ( arg2[0] != '\0' && arg3[0] == '\0' )
         {
-                /*
-                 * New feature from Alander.
-                 */
                 if ( !is_number( arg2 ) )
                 {
-                        send_to_char( "Syntax: oload <vnum> <level>.\n\r", ch );
+                        send_to_char( "Syntax: oload <vnum> <level> <copies>.\n\r", ch );
                         return;
                 }
                 level = atoi( arg2 );
+                copies  = 1;
+        }
 
-                /*
-                if ( level < 0 || level > get_trust( ch ) )
+        if ( arg2[0] != '\0' && arg3[0] != '\0' )
+        {
+                if ( !is_number( arg2 ) || !is_number( arg3 ) )
                 {
-                        send_to_char( "Limited to your trust level.\n\r", ch );
+                        send_to_char( "Syntax: oload <vnum> <level> <copies>.\n\r", ch );
                         return;
                 }
-                Removed 2/3/22. imms do what they want. --Owl
-                */
+                level  = atoi( arg2 );
+                copies = atoi( arg3 );
+
+                if ( copies > MAX_OLOAD_COPIES )
+                {
+                        char buf [ MAX_STRING_LENGTH ];
+                        sprintf( buf, "You cannot oload more than %d of the same item at a time.\n\r", MAX_OLOAD_COPIES );
+                        send_to_char( buf, ch );
+                        return;
+                }
+        }
+
+        if (copies < 1)
+        {
+                send_to_char( "Number of copies must be >= 1 if argument is supplied.\n\r", ch );
+                return;
+
         }
 
         if ( !( pObjIndex = get_obj_index( atoi( arg1 ) ) ) )
@@ -2096,15 +2148,42 @@ void do_oload( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        obj = create_object( pObjIndex, level );
-        if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
+        for ( cc_def = 1; cc_def <= copies; cc_def++ )
         {
-                obj_to_char( obj, ch );
-        }
-        else
-        {
-                obj_to_room( obj, ch->in_room );
-                act( "$n has created $p!", ch, obj, NULL, TO_ROOM );
+                obj = create_object( pObjIndex, level );
+                if ( IS_SET(obj->wear_flags, ITEM_TAKE) )
+                {
+                        if ( (ch->carry_number + copies) > can_carry_n( ch ))
+                        {
+                                char buf [ MAX_STRING_LENGTH ];
+                                if (copies == 1)
+                                {
+                                        sprintf( buf, "You can carry up to {W%d{x items.  oloading {W1{x more item will exceed that limit.\n\r",
+                                                can_carry_n( ch ));
+                                        send_to_char( buf, ch );
+                                }
+                                else {
+                                        sprintf( buf, "You can carry up to {W%d{x items.  oloading {W%d{x more items will exceed that limit.\n\r",
+                                                can_carry_n( ch ),
+                                                copies );
+                                        send_to_char( buf, ch );
+                                }
+                                return;
+                        }
+                        obj_to_char( obj, ch );
+                }
+                else
+                {
+                        obj_to_room( obj, ch->in_room );
+                        if (cc_def == 1)
+                        {
+                                act( "$n creates $p!", ch, obj, NULL, TO_ROOM );
+                        }
+                        if (cc_def == 2)
+                        {
+                                act( "$n creates more of '$p'!", ch, obj, NULL, TO_ROOM );
+                        }
+                }
         }
         send_to_char( "Ok.\n\r", ch );
         return;
@@ -2274,6 +2353,7 @@ void do_addfame( CHAR_DATA *ch, char *argument )
         CHAR_DATA *victim;
         char       arg1 [ MAX_INPUT_LENGTH ];
         char       arg2 [ MAX_INPUT_LENGTH ];
+        char       buf  [ MAX_STRING_LENGTH ];
         int        level;
 
         if ( IS_NPC( ch ) && !IS_SET(ch->act, ACT_NOCHARM )  )
@@ -2302,15 +2382,17 @@ void do_addfame( CHAR_DATA *ch, char *argument )
 
         level = atoi( arg2 );
 
-        if ( level < -500 || level > 500  || level == 0)
+        if ( level < MIN_ADDFAME || level > MAX_ADDFAME  || level == 0)
         {
-                send_to_char("The amount of fame added must be between -500 and 500.\n\r",ch);
+                sprintf( buf, "The amount of fame added must be between %d and %d, and not 0.\n\r",
+                        MIN_ADDFAME,
+                        MAX_ADDFAME );
+                send_to_char( buf, ch );
                 return;
         }
 
         if (level < 0 )
         {
-                char buf [ MAX_STRING_LENGTH ];
                 send_to_char( "Lowering a players fame!\n\r", ch );
                 victim->pcdata->fame += level;
                 sprintf( buf, "You lose %d fame for your cowardly acts!\n\r", -level );
@@ -2319,8 +2401,7 @@ void do_addfame( CHAR_DATA *ch, char *argument )
         }
         else
         {
-                char buf [ MAX_STRING_LENGTH ];
-                send_to_char( "Raising a players Fame.\n\r", ch );
+                send_to_char( "Raising a player's fame!\n\r", ch );
                 victim->pcdata->fame += level;
                 sprintf( buf, "You gain %d fame for your heroic deeds!\n\r", level );
                 send_to_char( buf, victim );
@@ -2370,13 +2451,14 @@ void do_addqp( CHAR_DATA *ch, char *argument )
 
         points = atoi( arg2 );
 
-        if ( points < 1 || points > 10000 ) /* Increased 100->10000 --Owl 2/3/22 */
+        if ( points < 1 || points > MAX_ADDQP )
         {
-                send_to_char("The number of quest points added must be between 1 and 10000.\n\r", ch);
+                sprintf( buf, "The number of quest points added must be between 1 and %d.\n\r", MAX_ADDQP );
+                send_to_char( buf, ch );
                 return;
         }
 
-        send_to_char( "Raising player's quest points.\n\r", ch );
+        send_to_char( "Increasing player's quest points!\n\r", ch );
         victim->pcdata->questpoints += points;
         victim->pcdata->totalqp += points;
         sprintf( buf, "You gain %d quest point%s!\n\r", points, (points > 1) ? "s" : "");
@@ -3649,20 +3731,6 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "race" ) )
         {
-                /*
-                 if ( !IS_NPC( victim ) )
-                {
-                        send_to_char( "Not on PCs.\n\r", ch );
-                        return;
-                }
-
-                if (victim->race != 0)
-                {
-                        send_to_char( "Can only be done if player has a none race.\n\r", ch);
-                        return;
-                }
-                 */
-
                 if (value < 1 || value >= MAX_RACE )
                 {
                         char buf [ MAX_STRING_LENGTH ];
@@ -3683,11 +3751,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 100 )
+                if ( value < 0 || value > LEVEL_HERO )
                 {
-                        send_to_char( "Level range is 0 to 100.\n\r", ch );
+                        sprintf( buf, "Level range is 0 to %d.\n\r", LEVEL_HERO );
+                        send_to_char( buf, ch );
                         return;
                 }
+
                 victim->level = value;
                 return;
         }
@@ -3728,10 +3798,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "age" ) )
         {
-                if ( ( value < 17 )
-                ||   ( value > 100000 ) )
+                if ( ( value < MIN_MSET_AGE )
+                ||   ( value > MAX_MSET_AGE ) )
                 {
-                        send_to_char("Age must be between 17 and 100000 years.\n\r", ch);
+                        sprintf( buf, "Age must be between %d and %d years.\n\r",
+                                MIN_MSET_AGE,
+                                MAX_MSET_AGE );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3778,9 +3851,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "hp" ) )
         {
-                if ( value < -10 || value > 30000 )
+                if ( value < MIN_MSET_HP || value > MAX_MSET_HP )
                 {
-                        send_to_char( "Hp range is -10 to 30,000 hit points.\n\r", ch );
+                        sprintf( buf, "Hp range is %d to %d hit points.\n\r",
+                                MIN_MSET_HP,
+                                MAX_MSET_HP );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3804,9 +3880,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "mana" ) )
         {
-                if ( value < 0 || value > 30000 )
+                if ( value < MIN_MSET_MANA || value > MAX_MSET_MANA )
                 {
-                        send_to_char( "Mana range is 0 to 30,000 mana points.\n\r", ch );
+                        sprintf( buf, "Mana range is %d to %d mana points.\n\r",
+                                MIN_MSET_MANA,
+                                MAX_MSET_MANA );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3816,9 +3895,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "move" ) )
         {
-                if ( value < 0 || value > 30000 )
+                if ( value < MIN_MSET_MOVE || value > MAX_MSET_MOVE )
                 {
-                        send_to_char( "Move range is 0 to 30,000 move points.\n\r", ch );
+                        sprintf( buf, "Move range is %d to %d move points.\n\r",
+                                MIN_MSET_MOVE,
+                                MAX_MSET_MOVE );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3834,9 +3916,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 1000 )
+                if ( value < MIN_MSET_STR_PRAC || value > MAX_MSET_STR_PRAC )
                 {
-                        send_to_char( "Practice range is 0 to 1000 sessions.\n\r", ch );
+                        sprintf( buf, "Physical practices range is %d to %d sessions.\n\r",
+                                MIN_MSET_STR_PRAC,
+                                MAX_MSET_STR_PRAC );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3852,9 +3937,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 1000 )
+                if ( value < MIN_MSET_INT_PRAC || value > MAX_MSET_INT_PRAC )
                 {
-                        send_to_char( "Practice range is 0 to 1000 sessions.\n\r", ch );
+                        sprintf( buf, "Int practices range is %d to %d sessions.\n\r",
+                                MIN_MSET_INT_PRAC,
+                                MAX_MSET_INT_PRAC );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3871,9 +3959,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 50000 )
+                if ( value < MIN_MSET_TOTALQP || value > MAX_MSET_TOTALQP )
                 {
-                        send_to_char( "Questpoint range is 0 to 50000.\n\r", ch);
+                        sprintf( buf, "Total QP range is %d to %d.\n\r",
+                                MIN_MSET_TOTALQP,
+                                MAX_MSET_TOTALQP );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3889,9 +3980,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 50000 )
+                if ( value < MIN_MSET_QUESTPOINTS || value > MAX_MSET_QUESTPOINTS )
                 {
-                        send_to_char( "Questpoint range is 0 to 50000.\n\r", ch);
+                        sprintf( buf, "Questpoint range is %d to %d.\n\r",
+                                MIN_MSET_QUESTPOINTS,
+                                MAX_MSET_QUESTPOINTS );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -3907,9 +4001,12 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if ( value < 0 || value > 15 )
+                if ( value < MIN_MSET_QUESTTIME || value > MAX_MSET_QUESTTIME )
                 {
-                        send_to_char( "Questtime range is 0 to 15.\n\r", ch);
+                        sprintf( buf, "Questtime range is %d to %d.\n\r",
+                                MIN_MSET_QUESTTIME,
+                                MAX_MSET_QUESTTIME );
+                        send_to_char( buf, ch );
                         return;
                 }
 
@@ -4103,9 +4200,13 @@ void do_mset( CHAR_DATA *ch, char *argument )
                         return;
                 }
 
-                if (value < -1 || value > 10000)
+                if ( value < MIN_MSET_DEITYTIMER || value > MAX_MSET_DEITYTIMER )
                 {
-                        send_to_char ("You may set the timer from -1 to 10000 ticks.\n\r", ch);
+                        sprintf( buf, "You may set the timer from %d to %d ticks.\n\r",
+                                MIN_MSET_DEITYTIMER,
+                                MAX_MSET_DEITYTIMER );
+                        send_to_char( buf, ch );
+                        return;
                 }
                 else
                 {

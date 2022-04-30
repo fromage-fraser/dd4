@@ -202,7 +202,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * String and memory management parameters
  */
 #define MAX_KEY_HASH             1024   /* 1024 */
-#define MAX_STRING_LENGTH        8192   /* 4096  */
+#define MAX_STRING_LENGTH        32768   /* 8192  */
 #define MAX_INPUT_LENGTH          256
 
 
@@ -341,7 +341,7 @@ void handle_con_note_finish     ( DESCRIPTOR_DATA *d, char * argument );
 DECLARE_DO_FUN ( do_note  );
 DECLARE_DO_FUN ( do_board );
 
-/* for multiple recalls - see also the #define DEFAUL_RECALL below */
+/* for multiple recalls - see also the #define DEFAULT_RECALL below */
 #define MAX_RECALL_POINTS       16
 #define CLAN_RECALL              1
 
@@ -350,6 +350,35 @@ DECLARE_DO_FUN ( do_board );
 
 /* Soar - as above.  Pattern-like ability for straight shifters, used in hawk form */
 #define MAX_SOAR 10
+
+/* Parameter limits for imm commands in act_wiz.c */
+#define MAX_RSTAT_OBJ             100
+#define MAX_RSTAT_CHAR            100
+#define MAX_OLOAD_COPIES          500
+#define MAX_ADDFAME               500
+#define MIN_ADDFAME              -500
+#define MAX_ADDQP               10000
+#define MIN_MSET_AGE               17
+#define MAX_MSET_AGE            10000
+#define MIN_MSET_HP               -10
+#define MAX_MSET_HP             30000
+#define MIN_MSET_MANA               0
+#define MAX_MSET_MANA           30000
+#define MIN_MSET_MOVE               0
+#define MAX_MSET_MOVE           30000
+#define MIN_MSET_STR_PRAC           0
+#define MAX_MSET_STR_PRAC        1000
+#define MIN_MSET_INT_PRAC           0
+#define MAX_MSET_INT_PRAC        1000
+#define MIN_MSET_TOTALQP            0
+#define MAX_MSET_TOTALQP        50000
+#define MIN_MSET_QUESTPOINTS        0
+#define MAX_MSET_QUESTPOINTS    50000
+#define MIN_MSET_QUESTTIME          0
+#define MAX_MSET_QUESTTIME         15
+#define MIN_MSET_DEITYTIMER        -1
+#define MAX_MSET_DEITYTIMER     10000
+
 
 /* types for skills */
 #define TYPE_INT                 1
