@@ -2323,11 +2323,12 @@ communication.
 
 102 MLOAD OLOAD~
 Syntax: mload <vnum>
-Syntax: oload <vnum>
+Syntax: oload <vnum> <level> <copies>
 
 MLOAD loads a mobile given its vnum (virtual number).
 
-OLOAD loads an object given its vnum.
+OLOAD loads (optional) number of copies of an object at (optional) level
+given its (required) vnum.
 ~
 
 103 PARDON~

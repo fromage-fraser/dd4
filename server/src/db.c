@@ -684,7 +684,7 @@ void            mprog_read_programs     (FILE *fp, MOB_INDEX_DATA *pMobIndex);
  * Increase MAX_STRING if you have to.
  * Tune the others only if you understand what you're doing.
  */
-#define                 MAX_STRING      5000000     /* 4500000 */
+#define                 MAX_STRING      5500000     /* 5000000 */
 
 #if defined( machintosh )
 # define                        MAX_PERM_BLOCK  131072
