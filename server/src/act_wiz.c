@@ -1125,6 +1125,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         char         arg         [ MAX_INPUT_LENGTH ];
 
         int          next;
+        int          count;
 
         rch = get_char( ch );
 
@@ -1328,7 +1329,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                                  victim->pcdata->deity_timer,
                                  victim->pcdata->deity_flags);
                         strcat (buf1, buf);
-                        int count = 1;
+                        count = 1;
                         for (next = 0; next < NUMBER_DEITIES; next++)
                         {
                                 if (count != 5)
