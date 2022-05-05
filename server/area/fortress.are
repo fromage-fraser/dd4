@@ -2410,7 +2410,7 @@ This is where the scientists of the Goblin kingdom do all of their experiments.
 There are lab tables around the room, and many vials and beakers are lying
 about. There is a door leading north.
 ~
-0 8 0
+0 8|256 0
 D0
 The hallway lies to the north.~
 door~

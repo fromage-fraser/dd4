@@ -548,12 +548,12 @@ Velkyn~
 Velkyn is here, fussing over his chemicals and magiks.
 ~
 Velkyn exudes the dark aura of a necromancer. With typical Wamphyri arrogance he
-ignores you, regarding you as no threat to his person - for whom could threaten
+ignores you, regarding you as no threat to his person - for who could threaten
 one amongst those who are fear incarnate?
 
 "His downfall", you think.
 
-He barely glances up before returning to his alchemical and necromantical labours.
+He barely glances up before returning to his alchemical and necromantic labours.
 ~
 2|64 8|32|512 -500 S
 42 0 0 0d0+0 0d0+0
@@ -5388,7 +5388,7 @@ clear tubes, and human corpses - some fresh, some not - are piled high in the
 northernmost corner of the room. Enormous vats lies to the west, filled with
 liquids of incandescent colour and other dark floating shapes of sinister design.
 ~
-0 8 0
+0 8|256 0
 D1
 ~
 ~

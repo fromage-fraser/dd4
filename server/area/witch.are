@@ -1377,7 +1377,7 @@ disturbs you more is the blood.  The ceiling, floor and walls are covered in
 dried blood and hair, and you can taste death in the air.  Exits lead from
 the room to the south and east.
 ~
-0 1|8 0
+0 1|8|256 0
 D 2
 A Narrow Corridor
 ~

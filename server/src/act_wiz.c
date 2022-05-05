@@ -1123,7 +1123,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         char         buf1        [ MAX_STRING_LENGTH ];
         char         spec_result [ MAX_STRING_LENGTH ];
         char         arg         [ MAX_INPUT_LENGTH ];
-
         int          next;
         int          count;
 

@@ -1169,7 +1169,7 @@ And usually, a dwarven smith would be pounding the Yitrite ore into
 weapons and armours.  But times here are strange and something is
 going on that has shut the mines.  You wonder what it could be.
 ~
-0 1|8 0
+0 1|8|128 0
 D2
 ~
 ~
@@ -1722,7 +1722,7 @@ S
 The base of the mountain.~
 You are standing at the foot of a tremendously large mountain.  The
 snow-capped peak reaches high into the sky.  Piles of rubble and
-some large boulders lie at the foot of the mountain--they look 
+some large boulders lie at the foot of the mountain--they look
 climbable. You also see a spiral staircase carved into the mountain
 to the east.
 ~

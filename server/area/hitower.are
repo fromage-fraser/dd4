@@ -3161,7 +3161,7 @@ A rune-encrusted mithril anvil is in the center of the room, looking well
 used. Other tools of metallurgy hang on a rack which floats about three
 meters in the air of its own force.
 ~
-13 8 0
+13 8|128 0
 D0
 ~
 ~
@@ -3250,7 +3250,7 @@ and some scrawled notes are piled about a workbench. This room is very
 untidy, looking almost abandoned, or used by a madman.
   The only apparent exits are east and north.
 ~
-13 8 0
+13 8|256 0
 D0
 ~
 door steel~

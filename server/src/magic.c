@@ -1306,8 +1306,26 @@ void spell_colour_spray (int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_continual_light (int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *light;
+        bool in_sc_room;
+        in_sc_room = FALSE;
 
-        light = create_object( get_obj_index( OBJ_VNUM_LIGHT_BALL ), 0 );
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
+
+        if ( in_sc_room )
+                send_to_char( "{MYour use of spellcrafting resources improves the light you create!{x\n\r", ch);
+
+
+        light = create_object( get_obj_index( (in_sc_room) ? OBJ_VNUM_LIGHT_BALL_CRAFT : OBJ_VNUM_LIGHT_BALL ), (in_sc_room) ? ch->level : 0 );
+
+        if ( in_sc_room )
+        {
+                set_obj_owner(light, ch->name);
+                light->timer = ( ch->level * 2 * CRAFT_BONUS_CONTINUAL_LIGHT ) / 100;
+        }
+
         obj_to_room( light, ch->in_room );
 
         act( "You twiddle your thumbs and $p appears.", ch, light, NULL, TO_CHAR );
@@ -1335,9 +1353,20 @@ void spell_control_weather ( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_create_food ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *mushroom;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
+
+        if ( in_sc_room )
+                send_to_char( "{MYou use spellcrafting resources to make the food extra satiating!{x\n\r", ch);
+
 
         mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
-        mushroom->value[0] = 5 + level;
+        mushroom->value[0] = (in_sc_room) ? 5 + ( level * CRAFT_BONUS_CREATE_FOOD ) / 100 : 5 + level;
         obj_to_room( mushroom, ch->in_room );
 
         act( "$p suddenly appears.", ch, mushroom, NULL, TO_CHAR );
@@ -1349,9 +1378,19 @@ void spell_create_food ( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *spring;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
+
+        if ( in_sc_room )
+                send_to_char( "{MYou use spellcrafting resources to give your magical spring more longevity!{x\n\r", ch);
 
         spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0 );
-        spring->timer = level;
+        spring->timer = ( in_sc_room ) ? ( level * CRAFT_BONUS_CREATE_SPRING )  / 100 : level;
         obj_to_room( spring, ch->in_room );
 
         act( "Water flows from $p.", ch, spring, NULL, TO_CHAR );
@@ -1364,6 +1403,13 @@ void spell_create_water( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *obj   = (OBJ_DATA *) vo;
         int       water;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if ( obj->item_type != ITEM_DRINK_CON )
         {
@@ -1377,8 +1423,12 @@ void spell_create_water( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        water = UMIN( level * ( weather_info.sky >= SKY_RAINING ? 4 : 2 ),
-                     obj->value[0] - obj->value[1] );
+        if ( in_sc_room )
+                send_to_char( "{MYour use of spellcrafting resources increases the quantity of water you create!{x\n\r", ch);
+
+        water = UMIN( level * ( weather_info.sky >= SKY_RAINING ? 4 : 2 ), obj->value[0] - obj->value[1] );
+        water = ( in_sc_room ) ? ( water * CRAFT_BONUS_CREATE_WATER )  / 100 : water;
+        water = ( water >= ( obj->value[0] - obj->value[1] ) ) ? ( obj->value[0] - obj->value[1] ) : water;
 
         if ( water > 0 )
         {
@@ -2331,6 +2381,13 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *obj = (OBJ_DATA *) vo;
         AFFECT_DATA *paf;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if (obj->item_type != ITEM_WEAPON
             || IS_OBJ_STAT(obj, ITEM_MAGIC)
@@ -2350,10 +2407,13 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
                 affect_free = affect_free->next;
         }
 
+        if ( in_sc_room )
+                send_to_char( "{MYour use of spellcrafting resources increases the power of your enchantment!{x\n\r", ch);
+
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_HITROLL;
-        paf->modifier   = level / 5;
+        paf->modifier   = ( in_sc_room ) ? ( level / ( ( 5 * 100 ) / CRAFT_BONUS_ENCHANT_WEAPON ) ) : level / 5;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -2371,7 +2431,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_DAMROLL;
-        paf->modifier   = level / 10;
+        paf->modifier   = ( in_sc_room ) ? ( level / ( ( 10 * 100 ) / CRAFT_BONUS_ENCHANT_WEAPON ) ) : level / 10;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -3748,14 +3808,24 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+        bool in_sc_room;
+        in_sc_room = FALSE;
 
-        if ( is_affected( ch, sn ) )
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
+
+        if ( is_affected( victim, sn ) )
                 return;
+
+        if ( in_sc_room )
+                send_to_char( "{MUsing spellcrafting reagents increases the toughness of your skin!{x\n\r", ch);
 
         af.type      = sn;
         af.duration  = level;
         af.location  = APPLY_AC;
-        af.modifier  = -40;
+        af.modifier  = ( in_sc_room ) ? - (  ( 40 * CRAFT_BONUS_STONE_SKIN ) / 100 ) : -40;
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
@@ -3825,6 +3895,13 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim= (CHAR_DATA *) vo;
         char    buf     [MAX_STRING_LENGTH];
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if ( !IS_OUTSIDE( ch )
         && ( ch->in_room->sector_type != SECT_UNDERWATER ) )
@@ -3834,7 +3911,7 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
         if (ch->level < 25)
-                victim=(create_mobile( get_mob_index( MOB_VNUM_PONY) ) );
+                victim = (create_mobile( get_mob_index( MOB_VNUM_PONY) ) );
 
         else if (ch->level < 50 )
                 victim = (create_mobile( get_mob_index( MOB_VNUM_HORSE) ) );
@@ -3844,6 +3921,12 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
 
         else
                 victim = (create_mobile( get_mob_index( MOB_VNUM_SILVER) ) );
+
+        if (in_sc_room)
+                send_to_char("{MThe use of spellcrafting reagents increases the hardiness of your familiar!\n\r{x", ch);
+
+        victim->max_hit = ( in_sc_room ) ? ( victim->max_hit * CRAFT_BONUS_SUMMON_FAMILIAR ) / 100 : victim->max_hit;
+        victim->hit = victim->max_hit;
 
         sprintf( buf, "You raise your hands and the form of %s appears before you.\n\r",
                 victim->short_descr);
@@ -3861,6 +3944,13 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *mob;
         char buf [MAX_STRING_LENGTH];
         int count;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if (ch->class == CLASS_SHAPE_SHIFTER && ch->form != FORM_DEMON)
         {
@@ -3868,7 +3958,7 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        /*  Check for exisiting demons a'la 'summon avatar'.  Gezhp  */
+        /*  Check for existing demons a'la 'summon avatar'.  Gezhp  */
         count = 0;
 
         for (mob = char_list; mob; mob = mob->next)
@@ -3888,20 +3978,29 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if (in_sc_room)
+                send_to_char("{MThe use of spellcrafting resources increases the power of your demon!\n\r{x", ch);
+
         if (ch->class == CLASS_SHAPE_SHIFTER)
         {
                 mob = create_mobile(get_mob_index(MOB_VNUM_LESSER));
-                mob->level = ch->level - 10;
-
-                mob->max_hit = mob->level * 10
+                mob->level = (in_sc_room) ? ( ( ch->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) - 10 : ch->level - 10;
+                if ( mob->level > ch->level )
+                        mob->level = ch->level;
+                mob->max_hit = (in_sc_room) ? ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) * 10
+                        + number_range(mob->level * mob->level/4, ( mob->level * ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) ) ) : mob->level * 10
                         + number_range(mob->level * mob->level/4, mob->level * mob->level);
                 mob->hit = mob->max_hit;
         }
         else
         {
                 mob = create_mobile(get_mob_index(MOB_VNUM_DEMON));
-                mob->level = ch->level - 10;
-                mob->max_hit = mob->level * 8 + number_range(mob->level * mob->level/4, mob->level * mob->level);
+                mob->level = (in_sc_room) ? ( ( ch->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) - 10 : ch->level - 10;
+                if ( mob->level > ch->level )
+                        mob->level = ch->level;
+                mob->max_hit = (in_sc_room) ? ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) * 8
+                        + number_range(mob->level * mob->level/4, ( mob->level * ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) ) ) : mob->level * 8
+                        + number_range(mob->level * mob->level/4, mob->level * mob->level);
                 mob->hit = mob->max_hit;
         }
 
@@ -4994,6 +5093,13 @@ void spell_enhance_armor (int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA    *obj = (OBJ_DATA *) vo;
         AFFECT_DATA *paf;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if ( obj->item_type != ITEM_ARMOR
             || IS_OBJ_STAT( obj, ITEM_MAGIC )
@@ -5013,12 +5119,15 @@ void spell_enhance_armor (int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_free = affect_free->next;
         }
 
+        if ( in_sc_room )
+                send_to_char( "{MYour use of spellcrafting resources increases the power of your enchantment!{x\n\r", ch);
+
         paf->type = sn;
         paf->duration = -1;
         paf->location = APPLY_AC;
         paf->bitvector = 0;
         paf->next = obj->affected;
-        paf->modifier   = -level / 8;
+        paf->modifier   = ( in_sc_room ) ? - ( level / ( ( 8 * 100 ) / CRAFT_BONUS_ENHANCE_ARMOR ) ) : - level / 8;
 
         obj->affected = paf;
 
@@ -5069,20 +5178,31 @@ void spell_flesh_armor ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if ( is_affected( victim, sn ) )
                 return;
 
+        if ( in_sc_room )
+                send_to_char( "{MYour use of spellcrafting resources increases the thickness of your spell armor!{x\n\r", ch);
+
         af.type = sn;
         af.duration = level;
         af.location = APPLY_AC;
-        af.modifier = -40;
+        af.modifier = ( in_sc_room ) ? - (  ( 40 * CRAFT_BONUS_FLESH_ARMOR ) / 100 ) : -40;
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
         send_to_char( "Your flesh turns to steel.\n\r", victim );
         act( "$N's flesh turns to steel.", ch, NULL, victim, TO_NOTVICT);
         return;
+
 }
 
 
@@ -5889,6 +6009,13 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA    *obj = (OBJ_DATA *) vo;
         AFFECT_DATA *paf;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if ( obj->item_type != ITEM_WEAPON
             || IS_OBJ_STAT( obj, ITEM_BLESS )
@@ -5908,10 +6035,13 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_free     = affect_free->next;
         }
 
+        if ( in_sc_room )
+                send_to_char( "{MYour use of divine crafting resources increases the strength of your blessing!{x\n\r", ch);
+
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_MANA;
-        paf->modifier   = level * 2;
+        paf->modifier   = ( in_sc_room ) ? ( 2 * ( level * CRAFT_BONUS_BLESS_WEAPON / 100 ) ) : 2 * level;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -5929,7 +6059,7 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_SAVING_SPELL;
-        paf->modifier   = - level / 5;
+        paf->modifier   = ( in_sc_room ) ? - ( level / ( ( 5 * 100 ) / CRAFT_BONUS_BLESS_WEAPON ) ) : - level / 5;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -5963,15 +6093,26 @@ void spell_bark_skin( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
+        bool in_sc_room;
+        in_sc_room = FALSE;
 
         if ( is_affected( victim, sn ) )
                 return;
 
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
+
+        if ( in_sc_room )
+                send_to_char( "{MYour bark skin spell is improved by the use of magical components!{x\n\r", victim);
+
         af.type      = sn;
-        af.duration  = 2 * level;
+        af.duration  = ( in_sc_room ) ? ( 2 * ( level * CRAFT_BONUS_BARK_SKIN / 100 ) ) : 2 * level;
         af.location  = APPLY_AC;
-        af.modifier  = -30;
+        af.modifier  = ( in_sc_room ) ? ( ( -30 * CRAFT_BONUS_BARK_SKIN ) / 100 ) : -30 ;
         af.bitvector = 0;
+
         affect_to_char( victim, &af );
 
         send_to_char( "Your skin turns to bark.\n\r", victim );
@@ -6159,6 +6300,13 @@ void spell_natures_fury( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_recharge_item( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *obj = (OBJ_DATA *) vo;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if ( obj->item_type != ITEM_WAND && obj->item_type != ITEM_STAFF )
         {
@@ -6170,7 +6318,9 @@ void spell_recharge_item( int sn, int level, CHAR_DATA *ch, void *vo )
 
         /*
          * increase charge by one, and level and another charge if spell in item
-         * is less than half of the caster's level.
+         * is less than half of the caster's level. Craft bonus gives you a shot
+         * at not having overcharged items explode, and adding charge capacity to
+         * them instead.
          */
 
         if ( obj->level < ( level / 2 ) )
@@ -6194,10 +6344,37 @@ void spell_recharge_item( int sn, int level, CHAR_DATA *ch, void *vo )
                         send_to_char( "The staff glows softly.\n\r", ch );
         }
 
-        if ( obj->value[2] > obj->value[1] )
+        if (in_sc_room)
+                send_to_char("{CUsing spellcrafting resources makes your item more resistant to overcharging...\n\r{x", ch);
+
+
+        if ( obj->value[2] > obj->value[1]
+        &&   in_sc_room == FALSE )
         {
                 act ("It then shudders violently and implodes!", ch, obj, NULL, TO_CHAR );
                 extract_obj ( obj );
+        }
+
+        if ( obj->value[2] > obj->value[1]
+        &&   in_sc_room == TRUE )
+        {
+                if ( number_percent() > ( CRAFT_BONUS_RECHARGE_ITEM - 100 ) )
+                {
+                        act ("... but it still shudders violently and implodes!", ch, obj, NULL, TO_CHAR );
+                        extract_obj ( obj );
+                }
+                else {
+                        if ( number_percent() > ( CRAFT_BONUS_RECHARGE_ITEM - 100 ) )
+                        {
+                                obj->value[1]++;
+                                act ("You increase its charge capacity!", ch, obj, NULL, TO_CHAR );
+
+                        }
+                        else {
+                                obj->value[2] = obj->value[1];
+                                act ("You can't charge it any further!", ch, obj, NULL, TO_CHAR );
+                        }
+                }
         }
 }
 

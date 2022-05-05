@@ -2201,7 +2201,7 @@ dented armour and broken weapons. To the east a huge metal door opens into
 the furnace where the smithy heats his tool. You can exit the smithy's cave
 to the west.
 ~
-0 1|8 0
+0 1|8|128 0
 D1
 Opening the furnace door you see embers glowing. The heat is intense and only
 an idiot would want to go in there.

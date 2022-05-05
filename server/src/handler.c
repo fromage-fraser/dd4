@@ -156,6 +156,52 @@ int can_carry_w( CHAR_DATA *ch )
         return str_app[get_curr_str( ch )].carry;
 }
 
+/*
+ * Check to see if ch has any crafting or spellcrafting skills.  Update these functions if you add spells/skills
+ * that fit into either of those categories. --Owl 4/5/22
+ */
+
+bool can_craft( CHAR_DATA *ch )
+{
+        if ( ( ch->pcdata->learned[gsn_forge]
+        ||     ch->pcdata->learned[gsn_poison_weapon]
+        ||     ch->pcdata->learned[gsn_sharpen] )
+        && ( !IS_NPC( ch ) ) )
+        {
+                return TRUE;
+        }
+        else {
+                return FALSE;
+        }
+}
+
+bool can_spellcraft( CHAR_DATA *ch )
+{
+        if ( ( ch->pcdata->learned[gsn_bark_skin]
+        ||     ch->pcdata->learned[gsn_bladethirst]
+        ||     ch->pcdata->learned[gsn_bless_weapon]
+        ||     ch->pcdata->learned[gsn_brew]
+        ||     ch->pcdata->learned[gsn_continual_light]
+        ||     ch->pcdata->learned[gsn_create_food]
+        ||     ch->pcdata->learned[gsn_create_spring]
+        ||     ch->pcdata->learned[gsn_create_water]
+        ||     ch->pcdata->learned[gsn_enchant_weapon]
+        ||     ch->pcdata->learned[gsn_enhance_armor]
+        ||     ch->pcdata->learned[gsn_flesh_armor]
+        ||     ch->pcdata->learned[gsn_scribe]
+        ||     ch->pcdata->learned[gsn_summon_demon]
+        ||     ch->pcdata->learned[gsn_summon_familiar]
+        ||     ch->pcdata->learned[gsn_recharge_item]
+        ||     ch->pcdata->learned[gsn_stone_skin] )
+        && ( !IS_NPC( ch ) ) )
+        {
+                return TRUE;
+        }
+        else {
+                return FALSE;
+        }
+}
+
 
 /*
  * See if a string is one of the names of an object.
@@ -2409,6 +2455,8 @@ char* room_flag_name (int vector)
         if ( vector & ROOM_DARK             ) return "dark";
         if ( vector & ROOM_NO_MOB           ) return "no_mob";
         if ( vector & ROOM_INDOORS          ) return "indoors";
+        if ( vector & ROOM_CRAFT            ) return "craft";
+        if ( vector & ROOM_SPELLCRAFT       ) return "spellcraft";
         if ( vector & ROOM_PRIVATE          ) return "private";
         if ( vector & ROOM_SAFE             ) return "safe";
         if ( vector & ROOM_SOLITARY         ) return "solitary";

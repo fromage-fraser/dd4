@@ -379,6 +379,30 @@ DECLARE_DO_FUN ( do_board );
 #define MIN_MSET_DEITYTIMER        -1
 #define MAX_MSET_DEITYTIMER     10000
 
+/*
+ * Crafting 'effectiveness' bonuses for skills/spells when performed in ROOM_CRAFT or
+ * ROOM_SPELLCRAFT.  '120' = +20%.  Bonus percentages are interpreted to mean different
+ * things by different spells/skills.  Don't set them below 100 (+0%).
+ */
+#define CRAFT_BONUS_BARK_SKIN           120
+#define CRAFT_BONUS_BLADETHIRST         120
+#define CRAFT_BONUS_BLESS_WEAPON        120
+#define CRAFT_BONUS_BREW                120
+#define CRAFT_BONUS_CONTINUAL_LIGHT     120
+#define CRAFT_BONUS_CREATE_FOOD         120
+#define CRAFT_BONUS_CREATE_SPRING       120
+#define CRAFT_BONUS_CREATE_WATER        120
+#define CRAFT_BONUS_ENCHANT_WEAPON      120
+#define CRAFT_BONUS_ENHANCE_ARMOR       120
+#define CRAFT_BONUS_FLESH_ARMOR         120
+#define CRAFT_BONUS_FORGE               120
+#define CRAFT_BONUS_POISON_WEAPON       130
+#define CRAFT_BONUS_RECHARGE_ITEM       150
+#define CRAFT_BONUS_SCRIBE              120
+#define CRAFT_BONUS_SHARPEN             120
+#define CRAFT_BONUS_SUMMON_DEMON        120
+#define CRAFT_BONUS_SUMMON_FAMILIAR     120
+#define CRAFT_BONUS_STONE_SKIN          120
 
 /* types for skills */
 #define TYPE_INT                 1
@@ -1689,6 +1713,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_LIGHT_BALL                21
 #define OBJ_VNUM_SPRING                    22
 #define OBJ_VNUM_PORTAL                    26
+#define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 
 #define OBJ_VNUM_SCHOOL_MACE             3700
 #define OBJ_VNUM_SCHOOL_DAGGER           3701
@@ -1966,6 +1991,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_DARK                       BIT_0
 #define ROOM_NO_MOB                     BIT_2
 #define ROOM_INDOORS                    BIT_3
+#define ROOM_CRAFT                      BIT_7 /* Improve outcomes of crafting skills and spells */
+#define ROOM_SPELLCRAFT                 BIT_8 /* --Owl 2/5/22 */
 #define ROOM_PRIVATE                    BIT_9
 #define ROOM_SAFE                       BIT_10
 #define ROOM_SOLITARY                   BIT_11
@@ -4165,6 +4192,8 @@ bool    room_is_private                 args( ( ROOM_INDEX_DATA *pRoomIndex ) );
 bool    can_see                         args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 bool    can_see_obj                     args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
 bool    can_drop_obj                    args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
+bool    can_craft                       args( ( CHAR_DATA *ch ) );
+bool    can_spellcraft                  args( ( CHAR_DATA *ch ) );
 char *  item_type_name                  args( ( OBJ_DATA *obj ) );
 int     item_name_type                  args( ( char *name ) );
 char *  affect_loc_name                 args( ( int location ) );

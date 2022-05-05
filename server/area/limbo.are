@@ -335,6 +335,23 @@ It looks like a duck. It also seems to be wearing a collar.
 #0
 
 #OBJECTS
+#1
+magical resistance item~
+the amazing magical resistance item~
+The amazing magical resistance item lies here.~
+~
+9 1|128 1|64
+20~ 1~ 6~ 11~
+5 0 0
+A
+36 -1
+A
+37 -1
+A
+38 -1
+A
+39 -1
+
 #2
 coin~
 a coin~
@@ -657,6 +674,70 @@ Your fangs protrude from your mouth ready to bite something...~
 1 10000 7500
 A
 2 2
+
+#60
+psychiatrist couch~
+a {rred{x psychiatrist's couch~
+A {rred{x psychiatrist's couch is here to rest on.~
+~
+12 0 0
+~ ~ ~ ~
+1 0 0
+
+#61
+Samxins desk~
+Samxins desk~
+Samxins desk.~
+~
+15 0 0
+50~ 5~ -1~ ~
+1 0 0
+
+#62
+duck collar~
+a duck collar~
+A duck collar has been dropped here.~
+~
+9 0 1|4
+~ ~ ~ ~
+1 0 0
+E
+duck collar~
+The collar has a tag that reads "{rDucky{x."
+~
+
+#63
+note to Samxin~
+a note to Samxin~
+A note to Samxin is inside the desk.~
+~
+13 0 1
+~ ~ ~ ~
+1 0 0
+E
+note Samxin~
+Note to self:{RTEST ALL YOUR AREAS CAREFULLY! AND MAKE SURE MOBS THAT
+ARE SUPPOSED TO BE WIZINVIS -ARE- WIZINVIS!.{x
+~
+
+#64
+ball red light~
+a bright red ball of light~
+A bright red ball of light shimmers in the air.~
+~
+1 0 1
+0~ 0~ -1~ 0~
+1 0 0
+A
+1 1
+A
+2 1
+A
+3 1
+A
+4 1
+A
+5 1
 
 #70
 guitar ibanez jpm 100~
@@ -1049,15 +1130,6 @@ This sulfurous pool must be where Torment cavorts with his handmaidens
 in his time off.
 ~
 
-#100
-herb~
-some herbs~
-There are some herbs here.~
-~
-26 0 1|16384
-0~ 0~ 0~ 0~
-1 0 0
-
 #99
 potion brew wizbrew~
 a wizbrew~
@@ -1067,69 +1139,17 @@ A wizbrew lies here.~
 0~ 0~ 0~ 0~
 1 0 0
 
-#1
-magical resistance item~
-the amazing magical resistance item~
-The amazing magical resistance item lies here.~
+#100
+herb~
+some herbs~
+There are some herbs here.~
 ~
-9 1|128 1|64
-20~ 1~ 6~ 11~
-5 0 0
-A
-36 -1
-A
-37 -1
-A
-38 -1
-A
-39 -1
-
-#60
-psychiatrist couch~
-a {rred{x psychiatrist's couch~
-A {rred{x psychiatrist's couch is here to rest on.~
-~
-12 0 0
-~ ~ ~ ~
+26 0 1|16384
+0~ 0~ 0~ 0~
 1 0 0
-
-#61
-Samxins desk~
-Samxins desk~
-Samxins desk.~
-~
-15 0 0
-50~ 5~ -1~ ~
-1 0 0
-
-#62
-duck collar~
-a duck collar~
-A duck collar has been dropped here.~
-~
-9 0 1|4
-~ ~ ~ ~
-1 0 0
-E
-duck collar~
-The collar has a tag that reads "{rDucky{x."
-~
-
-#63
-note to Samxin~
-a note to Samxin~
-A note to Samxin is inside the desk.~
-~
-13 0 1
-~ ~ ~ ~
-1 0 0
-E
-note Samxin~
-Note to self:{RTEST ALL YOUR AREAS CAREFULLY! AND MAKE SURE MOBS THAT
-ARE SUPPOSED TO BE WIZINVIS -ARE- WIZINVIS!.{x
-~
-
 #0
+
+
 
 #ROOMS
 #1

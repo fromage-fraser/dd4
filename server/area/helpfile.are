@@ -693,6 +693,30 @@ hunger and thirst while in the astral plane.
 Type VISIBLE to return to the material plane.
 ~
 
+0 'CRAFTING'~
+Certain physical skills and magic spells can have the power
+of their effects improved by being performed or cast in locations
+that are equipped to assist them.  Such locations will reveal
+themselves to those who have the relevant skills or spells.
+
+Current physical skills that benefit from crafting locations:
+
+forge
+sharpen
+poison weapon
+
+Current spells that benefit from spellcrafting locations:
+
+bark skin           enchant weapon
+bladethirst         enhance armor
+bless weapon        flesh armor
+brew                recharge item
+continual light     scribe
+create food         summon demon
+create spring       summon familiar
+create water        stone skin
+~
+
 
 -1 RACES RACE~
 |   AVAILABLE   | Stat Modifiers |        INHERENT RACE            |  Heal bonus |
@@ -4793,7 +4817,7 @@ advanced consider       fear                    resist toxin
 resist magic            astral sidestep         gaias warning
 summon avatar           second attack           third attack
 fourth attack           enhanced hit            dual
-dodge {Y*{x             parry                   wolf form
+dodge {Y*{x                 parry                   wolf form
 howl                    wolfbite                ravage
 
 {Y*{x The skill 'dodge' is only available in normal form.
@@ -4808,7 +4832,7 @@ Vampire skills and spells{x
 
 fast healing            advanced consider       transfix
 disarm                  mist walk               suck
-feed {Y*{x              lunge                   second attack
+feed {Y*{x                  lunge                   second attack
 third attack            fourth attack           enhanced hit
 dual                    climb                   resist magic
 deter                   fear                    resist toxin

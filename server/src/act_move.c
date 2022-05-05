@@ -118,7 +118,7 @@ void do_scan (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                act ("$n scans intensly $T.", ch, NULL, dir_desc[dir], TO_ROOM);
+                act ("$n scans intensely $T.", ch, NULL, dir_desc[dir], TO_ROOM);
 
                 if (!ch->in_room->exit[dir])
                 {

@@ -1270,7 +1270,7 @@ The Blacksmith~
 the floor, and a wave of heat from a big furnace hits you.  An anvil sits on
 one side of the room, and on the other side is a workbench.  The exit is east.
 ~
-6 8 0
+6 8|128 0
 D1
 You see Impy Way.
 ~

@@ -1684,6 +1684,13 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         OBJ_DATA *wobj;
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
+        bool in_c_room;
+        in_c_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
 
         if ( IS_NPC( ch ) )
                 return;
@@ -1757,12 +1764,15 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
 
         if (number_percent() > ch->pcdata->learned[gsn_sharpen])
         {
-                send_to_char("You slip while sharpening your blade, you ruin the stone, and cut yourself!!\n\r", ch);
+                send_to_char("You slip while sharpening your blade! You ruin the stone and cut yourself!!\n\r", ch);
                 damage(ch, ch, ch->level, gsn_sharpen, FALSE);
                 act ("$n cuts $mself while sharpening $m blade!", ch, NULL, NULL, TO_ROOM);
                 extract_obj(wobj);
                 return;
         }
+
+        if (in_c_room)
+                send_to_char("{CThe use of specialised tools improves the quality of your metalsmithing!\n\r{x", ch);
 
         act ("You run $p down the blade of $P, creating a deadly weapon!",
              ch, wobj, obj, TO_CHAR);
@@ -1782,15 +1792,14 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_sharpen;
         paf->duration       = -1;
         paf->location       = APPLY_DAMROLL;
-        paf->modifier       = 2 + ch->level / 5;
+        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / CRAFT_BONUS_SHARPEN ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
-        obj->timer = 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timer          = (in_c_room) ? ( ( 30  * CRAFT_BONUS_SHARPEN ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
         set_obj_owner(obj, ch->name);
 }
-
 
 /*
  *  improve armour skill _ Brutus
@@ -1803,6 +1812,13 @@ void do_forge (CHAR_DATA *ch, char *argument)
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool found;
+        bool in_c_room;
+        in_c_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
 
         if (IS_NPC(ch))
                 return;
@@ -1893,6 +1909,9 @@ void do_forge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (in_c_room)
+                send_to_char("{CYour use of specialised crafting tools improves your forging!\n\r{x", ch);
+
         act ("You skillfully enhance $P with $p!", ch, wobj, obj, TO_CHAR);
         act ("$n skillfully enhances $P using $p!", ch, wobj, obj, TO_ROOM);
 
@@ -1906,15 +1925,16 @@ void do_forge (CHAR_DATA *ch, char *argument)
                 affect_free = affect_free->next;
         }
 
+
         paf->type           = gsn_forge;
         paf->duration       = -1;
         paf->location       = APPLY_AC;
-        paf->modifier       = 0 - ch->level / 5;
+        paf->modifier       = (in_c_room) ? 0 - ( ch->level / ( ( 5 * 100 ) / CRAFT_BONUS_FORGE ) ) : 0 - ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
-        obj->timer = 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timer = (in_c_room) ? ( ( 30  * CRAFT_BONUS_FORGE ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
         set_obj_owner(obj, ch->name);
 }
 

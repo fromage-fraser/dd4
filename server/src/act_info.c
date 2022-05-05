@@ -647,6 +647,23 @@ void do_look( CHAR_DATA *ch, char *argument )
 
                 ansi_color( NTEXT, ch );
 
+                /* Insert "crafting room" messages here. --Owl 4/5/22 */
+                if ( !IS_NPC(ch)
+                &&   can_craft( ch )
+                &&   IS_SET( ch->in_room->room_flags, ROOM_CRAFT ) )
+                {
+                        sprintf(buf, "{CYou see tools and a workspace here for superior crafting.{x\n\r");
+                        send_to_char(buf, ch);
+                }
+
+                if ( !IS_NPC(ch)
+                &&   can_spellcraft( ch )
+                &&   IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ) )
+                {
+                        sprintf(buf, "{MYou have everything you need here to do magical crafting.{x\n\r");
+                        send_to_char(buf, ch);
+                }
+
                 show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE );
                 show_char_to_char( ch->in_room->people,   ch );
 
