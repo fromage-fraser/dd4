@@ -251,6 +251,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WMay 2022{x
+
+- Ranger skill 'snare' added
 - Crafting and Spellcrafting have been added
 
 {WApril 2022{x
@@ -695,7 +697,7 @@ hunger and thirst while in the astral plane.
 Type VISIBLE to return to the material plane.
 ~
 
-0 'CRAFTING'~
+0 CRAFTING SPELLCRAFTING 'SPELL CRAFTING'~
 Certain physical skills and magic spells can have the power
 of their effects improved by being performed or cast in locations
 that are equipped to assist them.  Such locations will reveal
