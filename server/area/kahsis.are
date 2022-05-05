@@ -3816,7 +3816,7 @@ wall to the north; several manuals and surgical instruments are visible on its
 surface.  You can move west and south throughout the laboratory, or return to
 the hallway via a door to the east.
 ~
-0 1|8 0
+0 1|8|256 0
 D1
 A door stands eastwards.
 ~

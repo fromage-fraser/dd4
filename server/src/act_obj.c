@@ -3879,6 +3879,13 @@ void do_poison_weapon(CHAR_DATA *ch, char *argument)
         OBJ_DATA *pobj = NULL;
         OBJ_DATA *wobj = NULL;
         char      arg [ MAX_INPUT_LENGTH ];
+        bool in_c_room;
+        in_c_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
 
         if (IS_NPC(ch))
                 return;
@@ -3965,12 +3972,15 @@ void do_poison_weapon(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (in_c_room)
+                send_to_char("{CYour use of specialised tools improves the longevity of your poison!\n\r{x", ch);
+
         act("You pour poison over $p, which glistens wickedly!", ch, obj, NULL, TO_CHAR);
         act("$n pours poison over $p, which glistens wickedly!", ch, obj, NULL, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_POISONED);
         set_obj_owner(obj, ch->name);
-        obj->timer = 30 + ch->level * 2;
+        obj->timer = (in_c_room) ? 30 + ( ( ch->level * CRAFT_BONUS_POISON_WEAPON ) / 100 ) * 2  : 30 + ch->level * 2;
 
         act("The remainder of the poison eats through $p.", ch, wobj, NULL, TO_CHAR);
         act("The remainder of the poison eats through $p.", ch, wobj, NULL, TO_ROOM);
@@ -3986,6 +3996,13 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
         OBJ_DATA *wobj;
         AFFECT_DATA *paf;
         char arg [ MAX_INPUT_LENGTH ];
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if (IS_NPC(ch))
             return;
@@ -4070,14 +4087,20 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
             ch, pobj, wobj, TO_CHAR);
         act("$n mixes $p in $P, creating an evil looking potion!",
             ch, pobj, wobj, TO_ROOM);
+
+        if ( in_sc_room )
+                send_to_char( "{MYour use of spellcrafting resources improves your potion's potency!{x\n\r", ch);
+
         act("You pour the potion over $p, which glistens wickedly!",
             ch, obj, NULL, TO_CHAR);
         act("$n pours the potion over $p, which glistens wickedly!",
             ch, obj, NULL, TO_ROOM);
 
+
+
         SET_BIT(obj->extra_flags, ITEM_BLADE_THIRST);
         set_obj_owner(obj, ch->name);
-        obj->timer = 60 + (ch->level / 15) * 30;
+        obj->timer = ( in_sc_room ) ? 60 + (ch->level / 15) * ( 30 * CRAFT_BONUS_BLADETHIRST / 100) : 60 + (ch->level / 15) * 30;
 
         act("The remainder of the potion eats through $p.", ch, wobj, NULL, TO_CHAR);
         act("The remainder of the potion eats through $p.", ch, wobj, NULL, TO_ROOM);
@@ -4097,7 +4120,7 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
         paf->type           = -1;
         paf->duration       = -1;
         paf->location       = APPLY_DAMROLL;
-        paf->modifier       = 2 + ch->level / 5;
+        paf->modifier       = ( in_sc_room ) ? 2 + ( ch->level / ( CRAFT_BONUS_BLADETHIRST / 20 ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -4264,6 +4287,13 @@ void do_brew (CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         OBJ_DATA *obj;
         int sn;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if (IS_NPC(ch))
                 return;
@@ -4314,8 +4344,11 @@ void do_brew (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( in_sc_room )
+                send_to_char( "{MYour brew's strength will be increased by the use of spellcrafting resources!{x\n\r", ch);
+
         obj->level = ch->level;
-        obj->value[0] = ch->level/2;
+        obj->value[0] = (in_sc_room) ? ( ch->level / 2 * CRAFT_BONUS_BREW ) / 100 : ch->level / 2;
         spell_imprint(sn, ch->level, ch, obj);
 
         if (skill_table[sn].target == TAR_CHAR_SELF)
@@ -4331,6 +4364,13 @@ void do_scribe (CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         OBJ_DATA *obj;
         int sn;
+        bool in_sc_room;
+        in_sc_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        {
+             in_sc_room = TRUE;
+        }
 
         if (IS_NPC(ch))
                 return;
@@ -4366,6 +4406,7 @@ void do_scribe (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+
         act("$n begins writing a scroll.", ch, obj, NULL, TO_ROOM);
         WAIT_STATE(ch, skill_table[gsn_scribe].beats);
 
@@ -4379,8 +4420,11 @@ void do_scribe (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( in_sc_room )
+                send_to_char( "{MYour scroll's power will be increased by the use of spellcrafting resources!{x\n\r", ch);
+
         obj->level = ch->level;
-        obj->value[0] = ch->level/2;
+        obj->value[0] = (in_sc_room) ? ( ch->level / 2 * CRAFT_BONUS_SCRIBE ) / 100 : ch->level / 2;
         spell_imprint(sn, ch->level, ch, obj);
 
         if (skill_table[sn].target == TAR_CHAR_SELF)

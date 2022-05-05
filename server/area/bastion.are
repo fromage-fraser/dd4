@@ -425,9 +425,9 @@ the Shadow Lord~
 The Shadow Lord is absently staring out one of the slits, lost in thought.
 ~
 He is a terrifying being to behold, appearing to be half man and half
-demon. His body is somewhat misshapen and he has to hunch over when 
-attempting to stand upright. His feet seem to be human but his hands 
-have long claws protruding from the ends of his bony fingers. He grinds 
+demon. His body is somewhat misshapen and he has to hunch over when
+attempting to stand upright. His feet seem to be human but his hands
+have long claws protruding from the ends of his bony fingers. He grinds
 his teeth in his lumpy head and seems to be regarding you as a tasty morsel.
 ~
 2|32|64|512 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
@@ -5710,12 +5710,12 @@ There is a clouded portal swirling before you.
 S
 #30803
 The workshop~
-You are standing in a well organised workshop. There is a work bench along the
+You are standing in a well-organised workshop. There is a work bench along the
 far wall with several pieces of unfinished armour on it. Various metal working
 tools are hanging in neat rows above the bench. There is a large forge to your
 right and a heavy anvil is in the centre of the room.
 ~
-0 4|8 0
+0 4|8|128 0
 D0
 ~
 ~

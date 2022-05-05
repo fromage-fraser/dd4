@@ -197,7 +197,7 @@ int     gsn_paralysis;
 int     gsn_scribe;
 int     gsn_sleep;
 int     gsn_addfame;
-int gsn_addqp;
+int     gsn_addqp;
 int     gsn_advance;
 int     gsn_allow;
 int     gsn_at;
@@ -3748,10 +3748,9 @@ void do_memory( CHAR_DATA *ch, char *argument )
         static int      mob_max = 0, obj_max = 0;
         OBJ_DATA*       obj;
         CHAR_DATA*      mob;
-        /*
         int             desc_count;
         DESCRIPTOR_DATA *d;
-        */
+
 
         rch = get_char(ch);
 
@@ -3759,21 +3758,21 @@ void do_memory( CHAR_DATA *ch, char *argument )
                 return;
 
         sprintf(buf,
-                "Affects %5d      Areas   %5d      ExDes   %5d\n\r"
-                "Exits   %5d      Helps   %5d      Mobs    %5d\n\r"
-                "Objs    %5d      Resets  %5d      Rooms   %5d\n\r"
-                "Shops   %5d\n\r",
+                "Affects {W%5d{x      Areas   {W%5d{x      ExDes   {W%5d{x\n\r"
+                "Exits   {W%5d{x      Helps   {W%5d{x      Mobs    {W%5d{x\n\r"
+                "Objs    {W%5d{x      Resets  {W%5d{x      Rooms   {W%5d{x\n\r"
+                "Shops   {W%5d{x\n\r",
                 top_affect, top_area, top_ed,
                 top_exit, top_help, top_mob_index,
                 top_obj_index, top_reset, top_room,
                 top_shop);
         send_to_char(buf, ch);
 
-        sprintf( buf, "\n\rStrings %5d strings of %7d bytes (max %d).\n\r",
+        sprintf( buf, "\n\rStrings {C%7d{x strings of {c%8d{x bytes (max {W%d{x)\n\r",
                 nAllocString, sAllocString, MAX_STRING );
         send_to_char( buf, ch );
 
-        sprintf( buf, "Perms   %5d blocks of %7d bytes.\n\r",
+        sprintf( buf, "Perms   {C%7d{x  blocks of {c%8d{x bytes\n\r",
                 nAllocPerm, sAllocPerm );
         send_to_char( buf, ch );
 
@@ -3789,27 +3788,25 @@ void do_memory( CHAR_DATA *ch, char *argument )
         if (obj_count > obj_max)
                 obj_max = obj_count;
 
-        sprintf (buf, "\n\rMobile list: %5d  (highest %5d)\n\r"
-                 "Object list: %5d  (highest %5d)\n\r",
+        sprintf (buf, "\n\rMobile list: {W%5d{x  (highest {C%5d{x)\n\r"
+                 "Object list: {W%5d{x  (highest {C%5d{x)\n\r",
                  mob_count, mob_max,
                  obj_count, obj_max);
         send_to_char (buf, ch);
 
-        /*
         send_to_char("\n\rDescriptor information:\n\r", ch);
 
         for (d = descriptor_list, desc_count = 1; d; d = d->next, desc_count++)
         {
-                sprintf(buf, "%2d  char=%-12s  desc=%-3d  connected=%-2d  host=%-s\n\r",
+                sprintf(buf, "{G%2d{x  char={W%-12s{x  desc={W%-3d{x  connected={W%-2d{x  host={C%-s{x\n\r",
                         desc_count,
                         d->original ? d->original->name :
-                        d->character ? d->character->name : "(none)",
+                        d->character ? d->character->name : "{c(none){x",
                         d->descriptor,
                         d->connected,
-                        d->host ? d->host : "(none)");
+                        d->host ? d->host : "{c(none){x");
                 send_to_char(buf, ch);
         }
-        */
 }
 
 

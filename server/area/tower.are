@@ -416,7 +416,7 @@ the black witch~
 A witch dressed in black cackles gleefully before attacking.
 ~
 This witch is an ugly bitch. Many a wart covers her face, and a long pointed
-nose accentuates her raw features. She wears black robes covered in runes, and 
+nose accentuates her raw features. She wears black robes covered in runes, and
 holds a translucent skull in one hand.
 ~
 2|32|64|128 8|32|128|512 -1000 S
@@ -4916,7 +4916,7 @@ bubbling inside them. At the end of the zigzag tubing, a glowing crystal
 collects a slow drip of liquid from the end of an open tube. A man rises from
 a stool to greet you.
 ~
-0 8|1024 0
+0 8|256|1024 0
 D1
 A door heads back into the hallway.
 ~

@@ -59,8 +59,8 @@ Juargan the Dwarven King~
 Juargan the Dwarven King sits upon his throne, looking out over his gardens.
 ~
   The small king is bulging at the seams with muscle.  He is dressed in nothing
-but a noble robe made of a grey silk.  His face has a similarly stony look to 
-that of his surroundings, as if the burden of his authority has become entirely 
+but a noble robe made of a grey silk.  His face has a similarly stony look to
+that of his surroundings, as if the burden of his authority has become entirely
 too much for him.
 ~
 2 8 1000 S
@@ -214,9 +214,9 @@ A large and intricate staff rests here.~
 #ROOMS
 #4700
 At the Top of the Spiral Stair~
-  You climb the stone stair high up into the mountain, as it spirals into 
-its great rocky face.  Light shows through a chink in the rock ceiling above 
-you--it looks like it may be an exit from this route.  Alternatively, you may 
+  You climb the stone stair high up into the mountain, as it spirals into
+its great rocky face.  Light shows through a chink in the rock ceiling above
+you--it looks like it may be an exit from this route.  Alternatively, you may
 proceed towards the cave opening to your west, into the mountain itself, or
 start the trek back down to the mountain's base, far below.
 ~
@@ -1049,7 +1049,7 @@ Blacksmith's Home~
 heat into your face, barley allowing you to stand within the entranceway.  A
 large trough of water and several anvils are resting here as well.
 ~
-47 8 1
+47 8|128 1
 D1
 ~
 ~
@@ -1395,9 +1395,9 @@ You see fish falling down the waterfall.
 S
 #4774
 By the beautiful waterfall~
-  There is a very beautiful waterfall here, surrounded by cliffs.  It looks 
-almost as if diamonds are falling down the mountain.  (You reach out to grab 
-at it and no, it IS only water.)  It is so nice and calm here, you feel like 
+  There is a very beautiful waterfall here, surrounded by cliffs.  It looks
+almost as if diamonds are falling down the mountain.  (You reach out to grab
+at it and no, it IS only water.)  It is so nice and calm here, you feel like
 it would be a safe place to take a nap.
 ~
 47 1024|65536 4
@@ -1409,7 +1409,7 @@ You see fish falling down the waterfall.
 S
 #4775
 At the Bottom of the Spiral Stair~
-  A spiral stone staircase starts here, winding its way up the mountain's face.  
+  A spiral stone staircase starts here, winding its way up the mountain's face.
 You may also travel due west, back to the mountain's base.
 ~
 47 0 1
@@ -1424,7 +1424,7 @@ D4
 S
 #4776
 On The Spiral Stair~
-  You climb a spiral stone staircase as it winds its way up to and into the 
+  You climb a spiral stone staircase as it winds its way up to and into the
 mountain's face.  You may travel up or down it from here.
 ~
 47 0 1
@@ -1439,7 +1439,7 @@ D5
 S
 #4777
 Approaching the Top of the Spiral Stair~
-  You climb a spiral stone staircase as it winds its way up to and into the 
+  You climb a spiral stone staircase as it winds its way up to and into the
 mountain's face--you're getting close to the top now, and are a fair way inside
 the mountain.  You can travel up or down the staircase from here.
 ~

@@ -887,7 +887,7 @@ surface.  There are no windows.  In two places under the desk, there are
 sleeping pallets.  One is more luxurious than the other.  There is a stairwell
 in the middle of the floor, which winds down through a trapdoor.
 ~
-0 8 0
+0 8|256 0
 D 5
 The stairwell is made of iron, and the stairs wind down through a trapdoor
 into the tower.
