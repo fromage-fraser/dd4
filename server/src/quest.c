@@ -529,13 +529,16 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         long mcounter;
         int level_diff, mob_vnum, upper_limit;
 
-        for (mcounter = 0; mcounter < 100; mcounter ++)
+        for (mcounter = 0; mcounter < 100; mcounter ++) 
         {
                 do
                         mob_vnum = number_range(100, 32200);
                 while
                         (!get_mob_index(mob_vnum)
                          || mob_vnum == BOT_VNUM);
+
+                room = NULL;
+                victim = NULL;
 
                 vsearch = get_mob_index(mob_vnum);
                 level_diff = vsearch->level - ch->level;
@@ -561,15 +564,31 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                     && !IS_SET(vsearch->act, ACT_LOSE_FAME)
                     && !IS_SET(vsearch->act, ACT_NO_EXPERIENCE)
                     && !IS_SET(vsearch->act, ACT_IS_HEALER))
+                
                         /* Shade 31.3.22 - If we want to check area levels before continueing, need to move the room lookup to here */                    
-                        break; 
+                {
+                        /* Shade 3.5.22 - moved test here */
+                        victim = get_qchar_world(ch, vsearch->player_name, vsearch->vnum);
+                        if (victim) 
+                        {
+                                room = find_qlocation(ch, victim->name, victim->pIndexData->vnum);
+
+                                if (room && room->area->low_level <= ch->level && room->area->high_level >= ch->level)
+                                        break;
+                        
+                                else
+                                        vsearch = NULL;
+                        }
+                        else
+                                vsearch = NULL;
+                }
                 else
                         vsearch = NULL;
         }
 
-        if (!vsearch || !(victim = get_qchar_world(ch, vsearch->player_name, vsearch->vnum)))
+        if (!vsearch)
         {
-                sprintf(buf, "$N says 'I'm sorry, but I don't have any quests for you at this time.'");
+                sprintf(buf, "$N says 'I'm sorry, but I can't find any suitable quests for you at this time.'");
                 act(buf, ch, NULL, questman, TO_CHAR);
                 sprintf(buf, "$N says 'Try again later.'");
                 act(buf, ch, NULL, questman, TO_CHAR);
@@ -583,11 +602,12 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
          * Changed from enforced levels to low/high levels, most areas don't enforce they just pop up the warning.
          * 
          * Test was && not || - have adjusted
+         * 
+         * And now moved test up as that was resulting in not enough quests
+         *          
          */
 
-        if ((number_percent() < 10)
-            || !(room = find_qlocation(ch, victim->name, victim->pIndexData->vnum))
-            || (room->area->low_level > ch->level || room->area->high_level < ch->level))
+        if (number_percent() < 15)
         {
                 sprintf(buf, "$N says 'I'm sorry, but I don't have any quests for you at this time.'");
                 act(buf, ch, NULL, questman, TO_CHAR);
