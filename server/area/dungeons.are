@@ -4048,7 +4048,6 @@ E 1 13323 100 1
 *
 D 1 13436 0 1                   ; A narrow tunnel Close North
 *
-M 1 13303 1 13437
 D 1 13437 3 1                   ; The Quartermaster's office Close West
 D 1 13436 1 1                   ; A narrow tunnel Close East
 D 1 13431 2 1                   ; The Night master's  office Close South
