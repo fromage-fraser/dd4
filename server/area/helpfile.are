@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [16 April 2022]
+    [5 May 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,11 +213,10 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew original area "Undersea" [15-25] in!  Head west along Midgaard's river,
-    south of the levee...{x
-
     {WNew original area "Shadowsea" [25-30] in!  Look for it at the bottom of
     Undersea...{x
+
+    {WCrafting and spellcrafting is in!  Read HELP CRAFTING.{x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -250,6 +249,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{WMay 2022{x
+- Crafting and Spellcrafting have been added
 
 {WApril 2022{x
 
