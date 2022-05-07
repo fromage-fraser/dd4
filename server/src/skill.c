@@ -1697,7 +1697,7 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
 
         if (!CAN_DO(ch, gsn_sharpen))
         {
-                send_to_char("What do you think you are, a metalsmith?\n\r", ch);
+                send_to_char("What do you think you are, a smith?\n\r", ch);
                 return;
         }
 
@@ -1772,7 +1772,7 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         }
 
         if (in_c_room)
-                send_to_char("{CThe use of specialised tools improves the quality of your metalsmithing!\n\r{x", ch);
+                send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
 
         act ("You run $p down the blade of $P, creating a deadly weapon!",
              ch, wobj, obj, TO_CHAR);
