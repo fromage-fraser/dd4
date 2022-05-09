@@ -2255,6 +2255,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
         int        tlevel;
         int        level_dif;
         int        fame;
+        int        total_xp;
+        int        total_message;
 
         /*
          * Monsters don't get kill xp's or alignment changes.
@@ -2284,6 +2286,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 OBJ_DATA *obj;
                 OBJ_DATA *obj_next;
+                total_xp = 0;
+                total_message = 0;
 
                 if (!is_same_group(gch, ch))
                         continue;
@@ -2307,6 +2311,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 gch->pcdata->dam_bonus);
                         send_to_char(buf, gch);
                         gain_exp(gch, gch->pcdata->dam_bonus);
+                        total_xp += gch->pcdata->dam_bonus;
+                        total_message = 1;
                         gch->pcdata->dam_bonus = 0;
                 }
 
@@ -2319,6 +2325,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                 send_to_char(buf, gch);
                 gch->pcdata->kills++;
                 gain_exp(gch, xp);
+                total_xp += xp;
 
                 if (!IS_SET(gch->status, PLR_KILLER)
                     && ((IS_SET(victim->act, ACT_IS_FAMOUS) && level_dif > -10)
@@ -2350,6 +2357,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                         sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
                         send_to_char(buf, gch);
                         gain_exp(gch, grxp);
+                        total_xp += grxp;
 
                         /*
                          * Shade 22.3.22
@@ -2385,10 +2393,23 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
                                 send_to_char(buf, gch);
                                 gain_exp(gch, grxp);
+                                total_xp += grxp;
 
                                 gch->pcdata->group_support_bonus = 0;
                         }
 
+                }
+
+                /*
+                 * Shade 10.5.22 - add total XP
+                 */
+
+                if (total_message)
+                {
+                        sprintf(buf, "{WYou gained a total of %d experience points for the kill!{x\n\r", total_xp);
+                        send_to_char(buf, gch);
+                        total_xp = 0;                
+                        total_message = 0;
                 }
 
                 if (IS_SET(victim->act, ACT_LOSE_FAME))
@@ -2737,10 +2758,15 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         attack  = attack_table[0];
                 }
 
+                /*
+                 * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
+                 */
+
+
                 if (dt > TYPE_HIT && poison)
                 {
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "$n's poisoned %s %s you%c", attack, vp, punct);
+                        sprintf(buf2, "{W$n's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
                         sprintf(buf3, "$n's poisoned %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your poisoned %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$n's poisoned %s %s $n%c",  attack, vp, punct);
@@ -2749,7 +2775,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "$n's %s %s you%c", attack, vp, punct);
+                        sprintf(buf2, "{W$n's %s{x %s {Wyou%c{x", attack, vp, punct);
                         sprintf(buf3, "$n's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$n's %s %s $n%c",  attack, vp, punct);
