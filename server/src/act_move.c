@@ -2362,13 +2362,20 @@ void do_change (CHAR_DATA *ch, char *argument)
 
         /* do the change */
 
-        sprintf(buf, "A wise choice %s... may you fare well as a %s.",
-                ch->name, full_sub_class_name(ch->sub_class));
+        sprintf(buf, "A wise choice %s... may you fare well as a %s.", ch->name, full_sub_class_name(ch->sub_class));
         do_say(mob, buf);
 
         ch->pcdata->choose_subclass = TRUE;
         ch->pcdata->learned[gsn_ranger_base + ch->sub_class ] = 30;
 
+        if (ch->sub_class == SUB_CLASS_VAMPIRE || ch->sub_class == SUB_CLASS_WEREWOLF)
+        {
+                sprintf(buf, "%ss are a challenging class %s, I shall grant you some additional practices to help.", full_sub_class_name(ch->sub_class), ch->name);
+                do_say(mob, buf);
+
+                ch->pcdata->int_prac += 5;
+                ch->pcdata->str_prac += 5;
+        }
 
         /* remove any eq the new class can't wear; Gezhp */
 

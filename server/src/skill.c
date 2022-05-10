@@ -1432,6 +1432,10 @@ void do_feed (CHAR_DATA *ch, char *argument)
 
         send_to_char("You feed on the fresh corpse!\n\r", ch);
         ch->rage = UMIN(ch->rage +5, ch->max_rage);
+
+        if (ch->rage > (ch->max_rage * 3 / 4))
+                send_to_char("You feel the power of {Rblood{x surge through your fangs!\n\r", ch);
+
         update_pos(ch);
         act ("$n feeds on $p.", ch, corpse, NULL, TO_ROOM);
         extract_obj(corpse);
@@ -1573,6 +1577,10 @@ void do_suck (CHAR_DATA *ch, char *argument)
                 one_hit(ch, victim, gsn_suck);
                 ch->rage += 2;
                 ch->rage = UMIN(ch->rage, ch->max_rage);
+
+                if (ch->rage > (ch->max_rage * 3 / 4))
+                        send_to_char("You feel the power of {Rblood{x surge through your fangs!\n\r", ch);
+
         }
         else
         {

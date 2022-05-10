@@ -918,8 +918,11 @@ int rage_gain( CHAR_DATA *ch )
 
         if (ch->sub_class == SUB_CLASS_VAMPIRE)
         {
+
                 if (ch->rage < ch->max_rage / 10)
-                        send_to_char( "You feel weak - You crave {Rblood!{x\n\r", ch);
+                        send_to_char( "You feel weak - you crave {Rblood!{x\n\r", ch);
+                else if (ch->rage < ch->max_rage / 4)
+                        send_to_char(" You feel weakened - the power of your {Rlunge{x is reduced!\n\r", ch);
 
                 if (!ch->pcdata->condition[COND_THIRST] && ch->level < LEVEL_HERO)
                         gain *= 2;

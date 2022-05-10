@@ -23,7 +23,7 @@
 
 { &gsn_transfix,                &gsn_group_vampyre,             30,     PRE_VAMPIRE},
 
-{ &gsn_suck,                    &gsn_group_vampyre,             50,     PRE_VAMPIRE},
+{ &gsn_suck,                    &gsn_group_vampyre,             30,     PRE_VAMPIRE},
 
 { &gsn_lunge,                   &gsn_suck,                      70,     PRE_VAMPIRE},
 { &gsn_lunge,                   &gsn_group_vampyre,             70,     PRE_VAMPIRE},
@@ -40,7 +40,8 @@
 { &gsn_deter,                   &gsn_vampire_base,              35,     PRE_VAMPIRE},
 
 {&gsn_group_armed,              &gsn_vampire_base,      30,     PRE_VAMPIRE},
-{&gsn_second_attack,            &gsn_group_armed,       50,     PRE_VAMPIRE},
+{&gsn_second_attack,            &gsn_group_armed,       20,     PRE_VAMPIRE},
+
 {&gsn_enhanced_hit,             &gsn_group_armed,       95,     PRE_VAMPIRE},
 {&gsn_enhanced_hit,             &gsn_vampire_base,      30,     PRE_VAMPIRE},
 

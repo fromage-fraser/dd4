@@ -661,8 +661,19 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         else if (dt == gsn_joust || dt == gsn_dive )
                                 dam *= 2 + (ch->level / 20);
 
-                        else if (dt == gsn_lunge)
+                        else if (dt == gsn_lunge) 
+                        {
                                 dam += dam / 2;
+
+                                /*
+                                 * Shade 10.5.22 - make high / low blood have an impact
+                                 */
+
+                                if (ch->rage > (ch->max_rage * 3 / 4))
+                                        dam += dam / 10;
+                                else if (ch->rage < ch->max_rage / 4)
+                                        dam -= dam / 10;                                                
+                        }
 
                         else if (dt == gsn_shoot)
                         {
@@ -670,8 +681,22 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                 dam += dam * ch->pcdata->learned[gsn_accuracy] / 300;
                         }
 
-                        else if (dt == gsn_circle || dt == gsn_constrict || dt == gsn_suck || dt == gsn_thrust)
+                        else if (dt == gsn_circle || dt == gsn_constrict || dt == gsn_thrust)
                                 dam += dam / 2;
+
+                        else if (dt == gsn_suck)
+                        {
+                                dam += dam / 2;
+
+                                /*
+                                 * Shade 10.5.22 - make high / low blood have an impact
+                                 */
+
+                                if (ch->rage > (ch->max_rage * 3 / 4))
+                                        dam += dam / 10;
+                                else if (ch->rage < ch->max_rage / 4)
+                                        dam -= dam / 10;                                                
+                        }
 
                         else if (dt == gsn_second_circle)
                                 dam *= 2;
@@ -1872,7 +1897,7 @@ void set_fighting (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!IS_NPC(ch)
             && ch->sub_class == SUB_CLASS_WEREWOLF
-            && (ch->rage > 85 || IS_FULL_MOON)
+            && (ch->rage > 80 || IS_FULL_MOON)
             && !is_affected(ch, gsn_berserk))
         {
                 AFFECT_DATA af;
@@ -3428,7 +3453,7 @@ void do_lunge (CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_lunge))
         {
-                send_to_char("Thou are not a Vampyre.\n\r", ch);
+                send_to_char("Thou are not a Vampire.\n\r", ch);
                 return;
         }
 
