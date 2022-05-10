@@ -1355,6 +1355,14 @@ E
 stone archwizard~
 The magical stone of the Arch-Wizard floats above the ground, glowing and radiating
 peaceful and harmonious energy.~
+#13378
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+15~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -3666,6 +3674,7 @@ S
 
 
 #RESETS
+O 1 13378 100 13407
 D 1 13306 2 1                   ; A room Close South
 D 1 13305 0 1                   ; The Stairway Close North
 *

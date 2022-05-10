@@ -3079,7 +3079,7 @@ The Quarters of the Archmage~
 You have barged into the quarters of Axtraxes, arch mage of Krothgar, and
 ruined his experiment. He's BOUND to be upset.
 ~
-0 8 0
+0 8|256 0
 D0
 ~
 ~
@@ -3092,7 +3092,7 @@ alembics and a hundred other items scattered about on desks, benches, chairs
 and floors. Everything appears rather damaged, as if someone (or something)
 has recently gone berserk in here...
 ~
-0 8 0
+0 8|256 0
 D0
 ~
 ~
@@ -3117,7 +3117,7 @@ alembics and a hundred other items scattered about on desks, benches, chairs
 and floors. Everything appears rather damaged, as if someone (or something)
 has recently gone berserk in here...
 ~
-0 8 0
+0 8|256 0
 D1
 ~
 ~
@@ -3130,7 +3130,7 @@ alembics and a hundred other items scattered about on desks, benches, chairs
 and floors. Everything appears rather damaged, as if someone (or something)
 has recently gone berserk in here...
 ~
-0 8 0
+0 8|256 0
 D2
 ~
 ~
@@ -3143,7 +3143,7 @@ alembics and a hundred other items scattered about on desks, benches, chairs
 and floors. Everything appears rather damaged, as if someone (or something)
 has recently gone berserk in here...
 ~
-0 8 0
+0 8|256 0
 D3
 ~
 ~

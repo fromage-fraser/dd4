@@ -1792,6 +1792,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ARMOURERS_HAMMER                   37
 #define ITEM_MITHRIL                            38
 #define ITEM_WHETSTONE                          39
+#define ITEM_CRAFT                              40 /* Increase bonus to crafting that takes place in ROOM_CRAFT */
+#define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
 
 
 /*
@@ -4053,6 +4055,8 @@ bool  is_obj_owner                            ( OBJ_DATA *obj, CHAR_DATA *ch );
 void  destroy_clan_items                      ( CHAR_DATA *ch );
 bool  has_ego_item_effect                     ( CHAR_DATA *ch, int flag );
 void  player_leaves_clan                      ( CHAR_DATA *ch );
+int   get_craft_obj_bonus                     ( CHAR_DATA *ch );
+int   get_spellcraft_obj_bonus                ( CHAR_DATA *ch );
 
 /* act_wiz.c */
 ROOM_INDEX_DATA *       find_location   args( ( CHAR_DATA *ch, char *arg ) );

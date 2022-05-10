@@ -3880,7 +3880,13 @@ void do_poison_weapon(CHAR_DATA *ch, char *argument)
         OBJ_DATA *wobj = NULL;
         char      arg [ MAX_INPUT_LENGTH ];
         bool in_c_room;
+        int obj_craft_bonus;
+        int mod_room_bonus;
+
         in_c_room = FALSE;
+
+        obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_POISON_WEAPON + obj_craft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
@@ -3980,7 +3986,7 @@ void do_poison_weapon(CHAR_DATA *ch, char *argument)
 
         SET_BIT(obj->extra_flags, ITEM_POISONED);
         set_obj_owner(obj, ch->name);
-        obj->timer = (in_c_room) ? 30 + ( ( ch->level * CRAFT_BONUS_POISON_WEAPON ) / 100 ) * 2  : 30 + ch->level * 2;
+        obj->timer = (in_c_room) ? 30 + ( ( ch->level * mod_room_bonus ) / 100 ) * 2  : 30 + ch->level * 2;
 
         act("The remainder of the poison eats through $p.", ch, wobj, NULL, TO_CHAR);
         act("The remainder of the poison eats through $p.", ch, wobj, NULL, TO_ROOM);
@@ -3997,7 +4003,12 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
         AFFECT_DATA *paf;
         char arg [ MAX_INPUT_LENGTH ];
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_BLADETHIRST + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -4100,7 +4111,7 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
 
         SET_BIT(obj->extra_flags, ITEM_BLADE_THIRST);
         set_obj_owner(obj, ch->name);
-        obj->timer = ( in_sc_room ) ? 60 + (ch->level / 15) * ( 30 * CRAFT_BONUS_BLADETHIRST / 100) : 60 + (ch->level / 15) * 30;
+        obj->timer = ( in_sc_room ) ? 60 + (ch->level / 15) * ( 30 * mod_room_bonus / 100) : 60 + (ch->level / 15) * 30;
 
         act("The remainder of the potion eats through $p.", ch, wobj, NULL, TO_CHAR);
         act("The remainder of the potion eats through $p.", ch, wobj, NULL, TO_ROOM);
@@ -4120,7 +4131,7 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
         paf->type           = -1;
         paf->duration       = -1;
         paf->location       = APPLY_DAMROLL;
-        paf->modifier       = ( in_sc_room ) ? 2 + ( ch->level / ( CRAFT_BONUS_BLADETHIRST / 20 ) ) : 2 + ch->level / 5;
+        paf->modifier       = ( in_sc_room ) ? 2 + ( ch->level / ( mod_room_bonus / 20 ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -4288,7 +4299,12 @@ void do_brew (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         int sn;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_BREW + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -4348,7 +4364,7 @@ void do_brew (CHAR_DATA *ch, char *argument)
                 send_to_char( "{MYour brew's strength will be increased by the use of spellcrafting resources!{x\n\r", ch);
 
         obj->level = ch->level;
-        obj->value[0] = (in_sc_room) ? ( ch->level / 2 * CRAFT_BONUS_BREW ) / 100 : ch->level / 2;
+        obj->value[0] = (in_sc_room) ? ( ch->level / 2 * mod_room_bonus ) / 100 : ch->level / 2;
         spell_imprint(sn, ch->level, ch, obj);
 
         if (skill_table[sn].target == TAR_CHAR_SELF)
@@ -4365,7 +4381,12 @@ void do_scribe (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         int sn;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_SCRIBE + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -4424,7 +4445,7 @@ void do_scribe (CHAR_DATA *ch, char *argument)
                 send_to_char( "{MYour scroll's power will be increased by the use of spellcrafting resources!{x\n\r", ch);
 
         obj->level = ch->level;
-        obj->value[0] = (in_sc_room) ? ( ch->level / 2 * CRAFT_BONUS_SCRIBE ) / 100 : ch->level / 2;
+        obj->value[0] = (in_sc_room) ? ( ch->level / 2 * mod_room_bonus ) / 100 : ch->level / 2;
         spell_imprint(sn, ch->level, ch, obj);
 
         if (skill_table[sn].target == TAR_CHAR_SELF)
@@ -5546,6 +5567,56 @@ void player_leaves_clan (CHAR_DATA *ch)
         ch->pcdata->recall_points[CLAN_RECALL] = -1;
         destroy_clan_items(ch);
         remove_from_wanted_table(ch->name);
+}
+
+int get_craft_obj_bonus(CHAR_DATA *ch)
+{
+        /*
+         * Check if there is a crafting object in the room ch is in, if so
+         * check its bonus value and return it. Shouldn't be multiple in a
+         * room, so only return value of first object found.
+         */
+
+        OBJ_DATA *obj;
+
+        int craft_bonus;
+        craft_bonus = 0;
+
+        for (obj = ch->in_room->contents; obj; obj = obj->next_content)
+        {
+                if (obj->item_type == ITEM_CRAFT )
+                {
+                        craft_bonus = obj->value[0];
+                        return craft_bonus;
+                }
+        }
+
+        return craft_bonus;
+}
+
+int get_spellcraft_obj_bonus(CHAR_DATA *ch)
+{
+        /*
+         * Check if there is a crafting object in the room ch is in, if so
+         * check its bonus value and return it. Shouldn't be multiple in a
+         * room, so only return value of first object found.
+         */
+
+        OBJ_DATA *obj;
+
+        int spellcraft_bonus;
+        spellcraft_bonus = 0;
+
+        for (obj = ch->in_room->contents; obj; obj = obj->next_content)
+        {
+                if (obj->item_type == ITEM_SPELLCRAFT )
+                {
+                        spellcraft_bonus = obj->value[0];
+                        return spellcraft_bonus;
+                }
+        }
+
+        return spellcraft_bonus;
 }
 
 

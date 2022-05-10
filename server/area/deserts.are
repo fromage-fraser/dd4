@@ -614,6 +614,14 @@ A small key half hidden, lies here.~
 18 128 1|16384
 0~ 1~ 6~ 11~
 1 0 0
+#13635
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+15~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -1543,6 +1551,7 @@ S
 
 
 #RESETS
+O 1 13635 100 13639
 D 1 13615 4 1           ; The hidden tunnel Close Up
 D 1 13614 5 2           ; The Clearing Lock Down
 D 1 13616 4 1           ; The tomb Close Up

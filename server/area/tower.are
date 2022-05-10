@@ -2119,9 +2119,9 @@ A concentrated mass of energy floats in the middle of the room.~
 A
 19 9
 #14601
-coins horde~
+coins hoard~
 coins~
-A horde of coins lies in he corner of the room.~
+A hoard of coins lies in the corner of the room.~
 ~
 20 0 1
 1208~ 650~ 457~ 221~
@@ -2352,6 +2352,14 @@ A
 18 35
 A
 19 35
+#14625
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+15~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -7560,6 +7568,7 @@ S
 
 
 #RESETS
+O 1 14625 100 14644 ; magical workbench to The Laboratory
 D 1 14520 2 2       ; Entrance-way to the Castle Lock South
 D 1 14519 0 2       ; Before the gates. Lock North
 D 1 14521 2 2        ; Entrance to the Castle Lock South

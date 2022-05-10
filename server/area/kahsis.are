@@ -1501,6 +1501,14 @@ E
 egg crocodile~
 The large spherical egg is soft and moist, carrying a faint odour.
 ~
+#25069
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+15~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -4229,6 +4237,7 @@ S
 
 
 #RESETS
+O 1 25069 100 25107             ; a magical workbench to Transformation Lab
 D 1 25011 0 2                   ; The Seal Lock North
 D 1 25011 1 1                   ; The Seal Close East
 D 1 25011 2 1                   ; The Seal Close South

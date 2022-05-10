@@ -1347,6 +1347,14 @@ A
 18 15
 A
 19 5
+#14079
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+15~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -3778,6 +3786,7 @@ S
 
 
 #RESETS
+O 1 14079 100 14053         ; A forge to The smithy's cave
 D 1 14101 3 1               ; The pantry Close West
 D 1 14100 1 1               ; The kitchen Close East
 D 1 14102 2 1               ; The steam room Close South

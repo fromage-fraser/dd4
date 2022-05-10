@@ -1678,6 +1678,7 @@ void do_break_wrist (CHAR_DATA *ch, char *argument)
 /*
  *  sharpen weapon skill _ Brutus
  */
+
 void do_sharpen (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
@@ -1685,7 +1686,14 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool in_c_room;
+        int obj_craft_bonus;
+        int mod_room_bonus;
+
+        obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus;
+
         in_c_room = FALSE;
+
 
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
@@ -1792,12 +1800,12 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_sharpen;
         paf->duration       = -1;
         paf->location       = APPLY_DAMROLL;
-        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / CRAFT_BONUS_SHARPEN ) ) : 2 + ch->level / 5;
+        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
-        obj->timer          = (in_c_room) ? ( ( 30  * CRAFT_BONUS_SHARPEN ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timer          = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
         set_obj_owner(obj, ch->name);
 }
 
@@ -1813,7 +1821,13 @@ void do_forge (CHAR_DATA *ch, char *argument)
         AFFECT_DATA *paf;
         bool found;
         bool in_c_room;
+        int obj_craft_bonus;
+        int mod_room_bonus;
+
         in_c_room = FALSE;
+
+        obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
@@ -1929,12 +1943,12 @@ void do_forge (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_forge;
         paf->duration       = -1;
         paf->location       = APPLY_AC;
-        paf->modifier       = (in_c_room) ? 0 - ( ch->level / ( ( 5 * 100 ) / CRAFT_BONUS_FORGE ) ) : 0 - ch->level / 5;
+        paf->modifier       = (in_c_room) ? 0 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 0 - ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
-        obj->timer = (in_c_room) ? ( ( 30  * CRAFT_BONUS_FORGE ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timer = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
         set_obj_owner(obj, ch->name);
 }
 
@@ -3034,7 +3048,6 @@ void do_gather (CHAR_DATA *ch, char *arg)
 
         return;
 }
-
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {

@@ -1425,6 +1425,14 @@ A dust-covered vial of clear liquid is here.~
 10 16|64 1
 100~ power heal~ remove curse~ energy containment~
 1 0 0
+#30662
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+15~ 0~ 0~ 0~
+1000 0 0
 #0
 
 #ROOMS
@@ -5833,6 +5841,7 @@ S
 
 
 #RESETS
+O 1 30662 100 30803         forge to The workshop
 *
 M 1 30600 5 30624           the Stone Gargoyle to Before the gate
 E 1 30600 100 12
