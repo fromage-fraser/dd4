@@ -560,8 +560,13 @@ void show_char_to_char (CHAR_DATA *list, CHAR_DATA *ch)
                 if (can_see(ch, rch))
                         show_char_to_char_0(rch, ch);
 
+                /*
+                 * Shade - 10.5.22 - Vampires shouldn't see hidden mobs in teh dark
+                 */
+
                 else if (room_is_dark(ch->in_room)
                          && IS_AFFECTED(rch, AFF_INFRARED)
+                         && ch->sub_class != SUB_CLASS_VAMPIRE
                          && (!IS_NPC(rch) || !IS_SET(rch->act, ACT_WIZINVIS_MOB)))
                         send_to_char("You see glowing red eyes watching YOU!\n\r", ch);
         }
