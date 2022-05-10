@@ -1345,6 +1345,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_steal,                                   0 },
         { &gsn_assassinate,                             0 },
         { &gsn_double_backstab,                         0 },
+        { &gsn_smoke_bomb,                              0 },
 
         { &gsn_group_hunting,                           0 },
         { &gsn_trap,                                    0 },
@@ -5086,6 +5087,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 24,
                 "", "!Soar!"
+        },
+
+        {
+                "smoke bomb", &gsn_smoke_bomb,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_null, 0, 8,
+                "smoke bomb", "!Smoke Bomb!"
         },
 
         /*

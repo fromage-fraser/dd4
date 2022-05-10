@@ -213,10 +213,10 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew original area "Shadowsea" [25-30] in!  Look for it at the bottom of
-    Undersea...{x
+    {WCrafting and spellcrafting - now including crafting item bonuses is 
+    in!  Read HELP CRAFTING.{x
 
-    {WCrafting and spellcrafting is in!  Read HELP CRAFTING.{x
+    {WNew skill Smoke Bomb for Thieves is in!{x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -254,6 +254,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 - Ranger skill 'snare' added
 - Crafting and Spellcrafting have been added
+- Crating and Spellcrafting items have been added
+- Total XP message added
+- Thief skill 'smoke bomb' added
 
 {WApril 2022{x
 
@@ -279,7 +282,6 @@ been added;
 - Soar for Shifters
 - New area: 'Harpy Haven'
 - New area: 'Kingdom of Juargan'
-- Snare for Rangers
 
 Refer appropriate HELP entries.
 
@@ -948,7 +950,15 @@ Kick an opponent during battle, causing some damage.
 0 'KNIFE TOSS'~
 Syntax: KNIFE <target>
 
-Thieves are good with small throwing knives and can toss them at enemies during combat doing some damage.
+Thieves are good with small throwing knives and can toss them at enemies during combat doing 
+some damage.
+~
+
+0 'SMOKE BOMB'~
+Syntax: SMOKE
+
+Thieves are good at escaping from dangerous situations and can drop smoke bombs to cause enough 
+confusion to escape from combat.
 ~
 
 
@@ -4714,7 +4724,8 @@ sneak                   steal                   trip
 climb                   disarm                  third attack
 parry                   disable                 circle
 find traps              fast healing            tail
-feint                   dirt kick
+feint                   dirt kick               knife toss
+smoke bomb
 
 True thieves (those who don't change to bounty hunters or ninjas) may
 also learn these skills above level 30:

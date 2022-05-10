@@ -3875,6 +3875,147 @@ void do_flee (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
 }
 
+void do_smoke_bomb (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA       *victim;
+        ROOM_INDEX_DATA *was_in;
+        ROOM_INDEX_DATA *now_in;
+        int              attempt;
+        EXIT_DATA       *pexit;
+        int             door;
+        AFFECT_DATA     af;
+
+        if (!(victim = ch->fighting))
+        {
+                if (ch->position == POS_FIGHTING)
+                        ch->position = POS_STANDING;
+
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HOLD) && number_percent() < 80)
+        {
+                send_to_char("You fail to break free from your prison!\n\r", ch);
+                act ("$n attemps to break free from $s prison, but fails!!",
+                     ch, NULL, victim, TO_ROOM);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (is_affected(ch, gsn_coil))
+        {
+                send_to_char("You cannot flee from the coils!\n\r", ch);
+                act ("$n attemps in vain to break free from $s coils!!",
+                     ch, NULL, victim, TO_ROOM);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (is_affected(ch, gsn_berserk) || is_affected(ch, gsn_rage))
+        {
+                send_to_char("The battle madness consumes you, you cannot flee!\n\r", ch);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (is_affected( ch, gsn_frenzy))
+        {
+                send_to_char("The divine rage flowing through your body overrides your desire to flee...\n\r", ch);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (IS_NPC(ch) || number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2)))
+        {
+                act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
+                act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        was_in = ch->in_room;
+
+        /*
+         * Have 30 goes at randomly finding an exit to escape too          
+         */
+
+        for (attempt = 0; attempt < 30; attempt++)
+        {                
+                /* Randomly find an exit */
+                door = number_range(0, 5);
+
+                if ((pexit = was_in->exit[door]) == 0
+                    || !pexit->to_room
+                    || (IS_SET(pexit->exit_info, EX_CLOSED)
+                        && (IS_SET(pexit->exit_info, EX_PASSPROOF)
+                            || !IS_AFFECTED(ch, AFF_PASS_DOOR)))
+                    )
+                {
+                        continue;
+                }
+                
+                stop_fighting(ch, TRUE);
+                send_to_char ("{WYou drop a smoke bomb and escape!{x\n\r\n\r", ch);
+                act ("{W$c drops a smoke bomb and escapes!{x", ch, NULL, NULL, TO_ROOM);
+                arena_commentary("$c drops a smoke bomb and escapes!", ch, ch);
+
+                /*
+                 * Make the character sneak so characters in the room don't see which way they go
+                 */
+
+                af.type = gsn_sneak;
+                af.duration = 0;
+                af.location = APPLY_NONE;
+                af.modifier = 0;
+                af.bitvector = AFF_SNEAK;                
+
+                affect_to_char(ch, &af);                
+
+                /*
+                 * I think this handles random rooms looping back on itself
+                 */
+
+                move_char(ch, door);
+                if ((now_in = ch->in_room) == was_in)
+                        continue;
+
+                /*
+                 * Valid exit - we escape
+                 */
+
+
+                if (IS_AFFECTED(ch, AFF_HOLD))
+                {
+                        act ("$n breaks free from $s prison!",ch,NULL,victim,TO_ROOM);
+                        affect_strip(ch, gsn_trap);
+                        REMOVE_BIT(ch->affected_by, AFF_HOLD);
+                }
+
+                if (ch->mount)
+                {
+                        char_from_room (ch->mount);
+                        char_to_room (ch->mount, ch->in_room);
+                        stop_fighting (ch->mount, TRUE);
+                }
+
+                if (ch->rider)
+                {
+                        char_from_room (ch->rider);
+                        char_to_room (ch->rider, ch->in_room);
+                        stop_fighting (ch->rider, TRUE);
+                }
+
+                ch->in_room = now_in;
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        act ("You throw a smoke bomb but find no way to escape!", ch, NULL, NULL, TO_CHAR);
+        act ("$n drops a smoke bomb but finds no way to escape!", ch, NULL, NULL, TO_ROOM);
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+}
+
+
 
 void do_rescue (CHAR_DATA *ch, char *argument)
 {
