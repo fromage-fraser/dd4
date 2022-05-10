@@ -59,6 +59,10 @@ Last modified 29/7/97 @ 15:45 - Mat
   {&gsn_steal,                  &gsn_sneak,             40,     PRE_THIEF},
   {&gsn_steal,                  &gsn_group_stealth,     40,     PRE_THIEF},
 
+  {&gsn_smoke_bomb,             &gsn_group_stealth,     50,     PRE_THIEF},
+  {&gsn_smoke_bomb,             &gsn_sneak,             50,     PRE_THIEF},
+  {&gsn_smoke_bomb,             &gsn_thief_base,        30,     PRE_THIEF},
+
   {&gsn_backstab,               &gsn_sneak,             40,     PRE_THIEF},
   {&gsn_backstab,               &gsn_group_stealth,     60,     PRE_THIEF},
   {&gsn_backstab,               &gsn_thief_base,        30,     PRE_THIEF},

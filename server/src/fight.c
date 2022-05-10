@@ -2255,6 +2255,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
         int        tlevel;
         int        level_dif;
         int        fame;
+        int        total_xp;
+        int        total_message;
 
         /*
          * Monsters don't get kill xp's or alignment changes.
@@ -2284,6 +2286,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 OBJ_DATA *obj;
                 OBJ_DATA *obj_next;
+                total_xp = 0;
+                total_message = 0;
 
                 if (!is_same_group(gch, ch))
                         continue;
@@ -2307,6 +2311,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 gch->pcdata->dam_bonus);
                         send_to_char(buf, gch);
                         gain_exp(gch, gch->pcdata->dam_bonus);
+                        total_xp += gch->pcdata->dam_bonus;
+                        total_message = 1;
                         gch->pcdata->dam_bonus = 0;
                 }
 
@@ -2319,6 +2325,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                 send_to_char(buf, gch);
                 gch->pcdata->kills++;
                 gain_exp(gch, xp);
+                total_xp += xp;
 
                 if (!IS_SET(gch->status, PLR_KILLER)
                     && ((IS_SET(victim->act, ACT_IS_FAMOUS) && level_dif > -10)
@@ -2350,6 +2357,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                         sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
                         send_to_char(buf, gch);
                         gain_exp(gch, grxp);
+                        total_xp += grxp;
 
                         /*
                          * Shade 22.3.22
@@ -2385,10 +2393,23 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
                                 send_to_char(buf, gch);
                                 gain_exp(gch, grxp);
+                                total_xp += grxp;
 
                                 gch->pcdata->group_support_bonus = 0;
                         }
 
+                }
+
+                /*
+                 * Shade 10.5.22 - add total XP
+                 */
+
+                if (total_message)
+                {
+                        sprintf(buf, "{WYou gained a total of %d experience points for the kill!{x\n\r", total_xp);
+                        send_to_char(buf, gch);
+                        total_xp = 0;                
+                        total_message = 0;
                 }
 
                 if (IS_SET(victim->act, ACT_LOSE_FAME))
@@ -2737,10 +2758,15 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         attack  = attack_table[0];
                 }
 
+                /*
+                 * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
+                 */
+
+
                 if (dt > TYPE_HIT && poison)
                 {
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "$n's poisoned %s %s you%c", attack, vp, punct);
+                        sprintf(buf2, "{W$n's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
                         sprintf(buf3, "$n's poisoned %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your poisoned %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$n's poisoned %s %s $n%c",  attack, vp, punct);
@@ -2749,7 +2775,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "$n's %s %s you%c", attack, vp, punct);
+                        sprintf(buf2, "{W$n's %s{x %s {Wyou%c{x", attack, vp, punct);
                         sprintf(buf3, "$n's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$n's %s %s $n%c",  attack, vp, punct);
@@ -3848,6 +3874,147 @@ void do_flee (CHAR_DATA *ch, char *argument)
         send_to_char("You failed!\n\r", ch);
         WAIT_STATE(ch, PULSE_VIOLENCE);
 }
+
+void do_smoke_bomb (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA       *victim;
+        ROOM_INDEX_DATA *was_in;
+        ROOM_INDEX_DATA *now_in;
+        int              attempt;
+        EXIT_DATA       *pexit;
+        int             door;
+        AFFECT_DATA     af;
+
+        if (!(victim = ch->fighting))
+        {
+                if (ch->position == POS_FIGHTING)
+                        ch->position = POS_STANDING;
+
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_HOLD) && number_percent() < 80)
+        {
+                send_to_char("You fail to break free from your prison!\n\r", ch);
+                act ("$n attemps to break free from $s prison, but fails!!",
+                     ch, NULL, victim, TO_ROOM);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (is_affected(ch, gsn_coil))
+        {
+                send_to_char("You cannot flee from the coils!\n\r", ch);
+                act ("$n attemps in vain to break free from $s coils!!",
+                     ch, NULL, victim, TO_ROOM);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (is_affected(ch, gsn_berserk) || is_affected(ch, gsn_rage))
+        {
+                send_to_char("The battle madness consumes you, you cannot flee!\n\r", ch);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (is_affected( ch, gsn_frenzy))
+        {
+                send_to_char("The divine rage flowing through your body overrides your desire to flee...\n\r", ch);
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        if (IS_NPC(ch) || number_percent() > (50 + (ch->pcdata->learned[gsn_smoke_bomb] / 2)))
+        {
+                act ("You throw a smoke bomb but your enemies aren't confused!", ch, NULL, NULL, TO_CHAR);
+                act ("$n drops a smoke bomb but fails to escape!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        was_in = ch->in_room;
+
+        /*
+         * Have 30 goes at randomly finding an exit to escape too          
+         */
+
+        for (attempt = 0; attempt < 30; attempt++)
+        {                
+                /* Randomly find an exit */
+                door = number_range(0, 5);
+
+                if ((pexit = was_in->exit[door]) == 0
+                    || !pexit->to_room
+                    || (IS_SET(pexit->exit_info, EX_CLOSED)
+                        && (IS_SET(pexit->exit_info, EX_PASSPROOF)
+                            || !IS_AFFECTED(ch, AFF_PASS_DOOR)))
+                    )
+                {
+                        continue;
+                }
+                
+                stop_fighting(ch, TRUE);
+                send_to_char ("{WYou drop a smoke bomb and escape!{x\n\r\n\r", ch);
+                act ("{W$c drops a smoke bomb and escapes!{x", ch, NULL, NULL, TO_ROOM);
+                arena_commentary("$c drops a smoke bomb and escapes!", ch, ch);
+
+                /*
+                 * Make the character sneak so characters in the room don't see which way they go
+                 */
+
+                af.type = gsn_sneak;
+                af.duration = 0;
+                af.location = APPLY_NONE;
+                af.modifier = 0;
+                af.bitvector = AFF_SNEAK;                
+
+                affect_to_char(ch, &af);                
+
+                /*
+                 * I think this handles random rooms looping back on itself
+                 */
+
+                move_char(ch, door);
+                if ((now_in = ch->in_room) == was_in)
+                        continue;
+
+                /*
+                 * Valid exit - we escape
+                 */
+
+
+                if (IS_AFFECTED(ch, AFF_HOLD))
+                {
+                        act ("$n breaks free from $s prison!",ch,NULL,victim,TO_ROOM);
+                        affect_strip(ch, gsn_trap);
+                        REMOVE_BIT(ch->affected_by, AFF_HOLD);
+                }
+
+                if (ch->mount)
+                {
+                        char_from_room (ch->mount);
+                        char_to_room (ch->mount, ch->in_room);
+                        stop_fighting (ch->mount, TRUE);
+                }
+
+                if (ch->rider)
+                {
+                        char_from_room (ch->rider);
+                        char_to_room (ch->rider, ch->in_room);
+                        stop_fighting (ch->rider, TRUE);
+                }
+
+                ch->in_room = now_in;
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                return;
+        }
+
+        act ("You throw a smoke bomb but find no way to escape!", ch, NULL, NULL, TO_CHAR);
+        act ("$n drops a smoke bomb but finds no way to escape!", ch, NULL, NULL, TO_ROOM);
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+}
+
 
 
 void do_rescue (CHAR_DATA *ch, char *argument)
