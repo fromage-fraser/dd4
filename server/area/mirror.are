@@ -785,6 +785,14 @@ A
 24 -2
 A
 17 -2
+#5332
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -2650,6 +2658,7 @@ S
 
 
 #RESETS
+O 1 5332 100 5321       forge to The smithy
 M 0 5306 1 5319         Fanatic Priest
 E 1 5218 8  3           (talisman)
 E 1 5222 8 12           (black robe)

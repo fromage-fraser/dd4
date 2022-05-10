@@ -1,4 +1,4 @@
-#AREA    Sneak~    City Of Thieves ~
+#AREA    Sneak~    City Of Thieves~
 30 50 0 100
 
 #MOBILES
@@ -7,7 +7,7 @@ spirit stalker~
 the Spirit Stalker~
 A spirit stalker stands here.
 ~
-This asassin looks like he could kill death itself.
+This assassin looks like he could kill death itself.
 ~
 2|32|64 65536 -500 S
 48 0 0 0d0+0 0d0+0
@@ -18,7 +18,7 @@ moon dog~
 a moon dog~
 A moondog stands here ready to pounce.
 ~
-A strange glow eminates from the dogs coat.
+A strange glow emanates from the dogs coat.
 ~
 2|64 0 -500 S
 40 0 0 0d0+0 0d0+0
@@ -1364,6 +1364,14 @@ A copper key lies here~
 18 0 1|16384
 0~ 0~ 0~ 0~
 5 0 0
+#23588
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -3268,6 +3276,7 @@ S
 
 
 #RESETS
+O 1 23588 100 23586     ; forge to A Stable
 D 1 23595 0 2           ; A Dark Tower Lock North
 D 1 23596 2 2           ; Tower Hallway. Lock South
 D 1 23598 2 1           ; 1st Floor Room. Close South

@@ -96,7 +96,7 @@ A black robed witch cackles insanely to herself.
 ~
 The witch mutters and cackles away to herself.  She appears to be out of her
 mind, her eyes are glazed over and she looks right through you.  Her robes
-are almost compelely ruined, nothing but rags now.
+are almost completely ruined, nothing but rags now.
 ~
 2|64 8192 -350 S
 35 0 0 0d0+0 0d0+0
@@ -259,6 +259,14 @@ A pair of hunter's bracers are here.~
 5 0 0
 A
 13 50
+#10108
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 #ROOMS
@@ -1916,6 +1924,7 @@ S
 #0
 
 #RESETS
+O 1 10108 100 10148             magical bench to A Laboratory
 D 0 10114 0 1                   close north in Tower Gates
 M 0 10102 3 10102               add a brown bear to A Woody Path
 E 0 10103 0 16                      equip teeth (wield)

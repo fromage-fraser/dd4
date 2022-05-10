@@ -207,6 +207,14 @@ A large and intricate staff rests here.~
 4 2 16385
 50~ 10~ 10~ charm person~
 10 10000 100
+#4709
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -1458,6 +1466,7 @@ S
 
 
 #RESETS
+O 1 4709 100 4752       ; forge to a Blacksmith's Home
 M 0 4700 10 4705           *A couple of miners.
 E 1 4701 100 16
 M 0 4700 10 4709

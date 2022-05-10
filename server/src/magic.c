@@ -1307,7 +1307,13 @@ void spell_continual_light (int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *light;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_CONTINUAL_LIGHT + obj_spellcraft_bonus;
+
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -1323,7 +1329,7 @@ void spell_continual_light (int sn, int level, CHAR_DATA *ch, void *vo)
         if ( in_sc_room )
         {
                 set_obj_owner(light, ch->name);
-                light->timer = ( ch->level * 2 * CRAFT_BONUS_CONTINUAL_LIGHT ) / 100;
+                light->timer = ( ch->level * 2 * mod_room_bonus ) / 100;
         }
 
         obj_to_room( light, ch->in_room );
@@ -1354,7 +1360,13 @@ void spell_create_food ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *mushroom;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
+
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -1366,7 +1378,7 @@ void spell_create_food ( int sn, int level, CHAR_DATA *ch, void *vo )
 
 
         mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
-        mushroom->value[0] = (in_sc_room) ? 5 + ( level * CRAFT_BONUS_CREATE_FOOD ) / 100 : 5 + level;
+        mushroom->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
         obj_to_room( mushroom, ch->in_room );
 
         act( "$p suddenly appears.", ch, mushroom, NULL, TO_CHAR );
@@ -1379,7 +1391,12 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *spring;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_CREATE_SPRING + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -1390,7 +1407,7 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYou use spellcrafting resources to give your magical spring more longevity!{x\n\r", ch);
 
         spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0 );
-        spring->timer = ( in_sc_room ) ? ( level * CRAFT_BONUS_CREATE_SPRING )  / 100 : level;
+        spring->timer = ( in_sc_room ) ? ( level * mod_room_bonus )  / 100 : level;
         obj_to_room( spring, ch->in_room );
 
         act( "Water flows from $p.", ch, spring, NULL, TO_CHAR );
@@ -1404,7 +1421,12 @@ void spell_create_water( int sn, int level, CHAR_DATA *ch, void *vo )
         OBJ_DATA *obj   = (OBJ_DATA *) vo;
         int       water;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_CREATE_WATER + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -1427,7 +1449,7 @@ void spell_create_water( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYour use of spellcrafting resources increases the quantity of water you create!{x\n\r", ch);
 
         water = UMIN( level * ( weather_info.sky >= SKY_RAINING ? 4 : 2 ), obj->value[0] - obj->value[1] );
-        water = ( in_sc_room ) ? ( water * CRAFT_BONUS_CREATE_WATER )  / 100 : water;
+        water = ( in_sc_room ) ? ( water * mod_room_bonus )  / 100 : water;
         water = ( water >= ( obj->value[0] - obj->value[1] ) ) ? ( obj->value[0] - obj->value[1] ) : water;
 
         if ( water > 0 )
@@ -2382,7 +2404,12 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         OBJ_DATA *obj = (OBJ_DATA *) vo;
         AFFECT_DATA *paf;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_ENCHANT_WEAPON + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -2413,7 +2440,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_HITROLL;
-        paf->modifier   = ( in_sc_room ) ? ( level / ( ( 5 * 100 ) / CRAFT_BONUS_ENCHANT_WEAPON ) ) : level / 5;
+        paf->modifier   = ( in_sc_room ) ? ( level / ( ( 5 * 100 ) / mod_room_bonus ) ) : level / 5;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -2431,7 +2458,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_DAMROLL;
-        paf->modifier   = ( in_sc_room ) ? ( level / ( ( 10 * 100 ) / CRAFT_BONUS_ENCHANT_WEAPON ) ) : level / 10;
+        paf->modifier   = ( in_sc_room ) ? ( level / ( ( 10 * 100 ) / mod_room_bonus ) ) : level / 10;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -3809,7 +3836,12 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_STONE_SKIN + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -3820,12 +3852,12 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         if ( in_sc_room )
-                send_to_char( "{MUsing spellcrafting reagents increases the toughness of your skin!{x\n\r", ch);
+                send_to_char( "{MUsing spellcrafting reagents increases the hardness of your petrified skin!{x\n\r", ch);
 
         af.type      = sn;
         af.duration  = level;
         af.location  = APPLY_AC;
-        af.modifier  = ( in_sc_room ) ? - (  ( 40 * CRAFT_BONUS_STONE_SKIN ) / 100 ) : -40;
+        af.modifier  = ( in_sc_room ) ? - (  ( 40 * mod_room_bonus ) / 100 ) : -40;
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
@@ -3896,7 +3928,12 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim= (CHAR_DATA *) vo;
         char    buf     [MAX_STRING_LENGTH];
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_SUMMON_FAMILIAR + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -3925,7 +3962,7 @@ void spell_summon_familiar( int sn, int level, CHAR_DATA *ch, void *vo )
         if (in_sc_room)
                 send_to_char("{MThe use of spellcrafting reagents increases the hardiness of your familiar!\n\r{x", ch);
 
-        victim->max_hit = ( in_sc_room ) ? ( victim->max_hit * CRAFT_BONUS_SUMMON_FAMILIAR ) / 100 : victim->max_hit;
+        victim->max_hit = ( in_sc_room ) ? ( victim->max_hit * mod_room_bonus ) / 100 : victim->max_hit;
         victim->hit = victim->max_hit;
 
         sprintf( buf, "You raise your hands and the form of %s appears before you.\n\r",
@@ -3945,7 +3982,12 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
         char buf [MAX_STRING_LENGTH];
         int count;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_SUMMON_DEMON + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -3984,22 +4026,22 @@ void spell_summon_demon( int sn, int level, CHAR_DATA *ch, void *vo )
         if (ch->class == CLASS_SHAPE_SHIFTER)
         {
                 mob = create_mobile(get_mob_index(MOB_VNUM_LESSER));
-                mob->level = (in_sc_room) ? ( ( ch->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) - 10 : ch->level - 10;
+                mob->level = (in_sc_room) ? ( ( ch->level * mod_room_bonus ) / 100 ) - 10 : ch->level - 10;
                 if ( mob->level > ch->level )
                         mob->level = ch->level;
-                mob->max_hit = (in_sc_room) ? ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) * 10
-                        + number_range(mob->level * mob->level/4, ( mob->level * ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) ) ) : mob->level * 10
+                mob->max_hit = (in_sc_room) ? ( ( mob->level * mod_room_bonus ) / 100 ) * 10
+                        + number_range(mob->level * mob->level/4, ( mob->level * ( ( mob->level * mod_room_bonus ) / 100 ) ) ) : mob->level * 10
                         + number_range(mob->level * mob->level/4, mob->level * mob->level);
                 mob->hit = mob->max_hit;
         }
         else
         {
                 mob = create_mobile(get_mob_index(MOB_VNUM_DEMON));
-                mob->level = (in_sc_room) ? ( ( ch->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) - 10 : ch->level - 10;
+                mob->level = (in_sc_room) ? ( ( ch->level * mod_room_bonus ) / 100 ) - 10 : ch->level - 10;
                 if ( mob->level > ch->level )
                         mob->level = ch->level;
-                mob->max_hit = (in_sc_room) ? ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) * 8
-                        + number_range(mob->level * mob->level/4, ( mob->level * ( ( mob->level * CRAFT_BONUS_SUMMON_DEMON ) / 100 ) ) ) : mob->level * 8
+                mob->max_hit = (in_sc_room) ? ( ( mob->level * mod_room_bonus ) / 100 ) * 8
+                        + number_range(mob->level * mob->level/4, ( mob->level * ( ( mob->level * mod_room_bonus ) / 100 ) ) ) : mob->level * 8
                         + number_range(mob->level * mob->level/4, mob->level * mob->level);
                 mob->hit = mob->max_hit;
         }
@@ -5094,7 +5136,12 @@ void spell_enhance_armor (int sn, int level, CHAR_DATA *ch, void *vo )
         OBJ_DATA    *obj = (OBJ_DATA *) vo;
         AFFECT_DATA *paf;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_ENHANCE_ARMOR + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -5127,7 +5174,7 @@ void spell_enhance_armor (int sn, int level, CHAR_DATA *ch, void *vo )
         paf->location = APPLY_AC;
         paf->bitvector = 0;
         paf->next = obj->affected;
-        paf->modifier   = ( in_sc_room ) ? - ( level / ( ( 8 * 100 ) / CRAFT_BONUS_ENHANCE_ARMOR ) ) : - level / 8;
+        paf->modifier   = ( in_sc_room ) ? - ( level / ( ( 8 * 100 ) / mod_room_bonus ) ) : - level / 8;
 
         obj->affected = paf;
 
@@ -5179,7 +5226,12 @@ void spell_flesh_armor ( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_FLESH_ARMOR + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -5190,12 +5242,12 @@ void spell_flesh_armor ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         if ( in_sc_room )
-                send_to_char( "{MYour use of spellcrafting resources increases the thickness of your spell armor!{x\n\r", ch);
+                send_to_char( "{MYour use of spellcrafting resources increases the toughness of your flesh armor!{x\n\r", ch);
 
         af.type = sn;
         af.duration = level;
         af.location = APPLY_AC;
-        af.modifier = ( in_sc_room ) ? - (  ( 40 * CRAFT_BONUS_FLESH_ARMOR ) / 100 ) : -40;
+        af.modifier = ( in_sc_room ) ? - (  ( 40 * mod_room_bonus ) / 100 ) : -40;
         af.bitvector = 0;
         affect_to_char( victim, &af );
 
@@ -6010,7 +6062,12 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
         OBJ_DATA    *obj = (OBJ_DATA *) vo;
         AFFECT_DATA *paf;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_BLESS_WEAPON + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -6041,7 +6098,7 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_MANA;
-        paf->modifier   = ( in_sc_room ) ? ( 2 * ( level * CRAFT_BONUS_BLESS_WEAPON / 100 ) ) : 2 * level;
+        paf->modifier   = ( in_sc_room ) ? ( 2 * ( level * mod_room_bonus / 100 ) ) : 2 * level;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -6059,7 +6116,7 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
         paf->type       = sn;
         paf->duration   = -1;
         paf->location   = APPLY_SAVING_SPELL;
-        paf->modifier   = ( in_sc_room ) ? - ( level / ( ( 5 * 100 ) / CRAFT_BONUS_BLESS_WEAPON ) ) : - level / 5;
+        paf->modifier   = ( in_sc_room ) ? - ( level / ( ( 5 * 100 ) / mod_room_bonus ) ) : - level / 5;
         paf->bitvector  = 0;
         paf->next       = obj->affected;
         obj->affected   = paf;
@@ -6094,7 +6151,12 @@ void spell_bark_skin( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_BARK_SKIN + obj_spellcraft_bonus;
 
         if ( is_affected( victim, sn ) )
                 return;
@@ -6108,9 +6170,9 @@ void spell_bark_skin( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYour bark skin spell is improved by the use of magical components!{x\n\r", victim);
 
         af.type      = sn;
-        af.duration  = ( in_sc_room ) ? ( 2 * ( level * CRAFT_BONUS_BARK_SKIN / 100 ) ) : 2 * level;
+        af.duration  = ( in_sc_room ) ? ( 2 * ( level * mod_room_bonus / 100 ) ) : 2 * level;
         af.location  = APPLY_AC;
-        af.modifier  = ( in_sc_room ) ? ( ( -30 * CRAFT_BONUS_BARK_SKIN ) / 100 ) : -30 ;
+        af.modifier  = ( in_sc_room ) ? ( ( -30 * mod_room_bonus ) / 100 ) : -30 ;
         af.bitvector = 0;
 
         affect_to_char( victim, &af );
@@ -6301,7 +6363,12 @@ void spell_recharge_item( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA *obj = (OBJ_DATA *) vo;
         bool in_sc_room;
+        int obj_spellcraft_bonus;
+        int mod_room_bonus;
+
         in_sc_room = FALSE;
+        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_RECHARGE_ITEM + obj_spellcraft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
         {
@@ -6358,13 +6425,13 @@ void spell_recharge_item( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( obj->value[2] > obj->value[1]
         &&   in_sc_room == TRUE )
         {
-                if ( number_percent() > ( CRAFT_BONUS_RECHARGE_ITEM - 100 ) )
+                if ( number_percent() > ( mod_room_bonus - 100 ) )
                 {
                         act ("... but it still shudders violently and implodes!", ch, obj, NULL, TO_CHAR );
                         extract_obj ( obj );
                 }
                 else {
-                        if ( number_percent() > ( CRAFT_BONUS_RECHARGE_ITEM - 100 ) )
+                        if ( number_percent() > ( mod_room_bonus - 100 ) )
                         {
                                 obj->value[1]++;
                                 act ("You increase its charge capacity!", ch, obj, NULL, TO_CHAR );

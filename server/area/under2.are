@@ -2887,6 +2887,14 @@ mirror portal~
 The mirror offers a view of the world, constantly changing with such
 complexity that only a god could understand what is being shown.
 It looks almost as if you could step through it...~
+#16096
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -11670,7 +11678,7 @@ twenty feet by twenty.  There are shelves along all the walls and a few
 counters that hold different items of magic.  The shopkeeper stands at the
 far side of the shop behind a counter.
 
-The only way out is north
+The only way out is north.
 ~
 0 1|8|8192 1
 D0
@@ -11687,7 +11695,7 @@ by pins, a few counters provide space for daggers and other assorted small
 arms.  The shopkeeper walks around the shop watching you and is ready to
 buy and sell merchandise.
 
-The sole way out is north
+The sole way out is north.
 ~
 0 1|8|8192 1
 D0
@@ -11702,9 +11710,9 @@ This is the armor shop for the Underdark.  The shop is about thirty feet by
 thirty.  The walls are covered with shields and helms.  There are full suits
 of armor that form rows in the center of the shop.  This is a shop where
 you can get any sort of armor you wish.  The shopkeeper wanders about
-waiting for you to buy something
+waiting for you to buy something.
 
-The sole exit is to the north
+The sole exit is to the north.
 ~
 0 1|8|8192 1
 D0
@@ -11721,7 +11729,7 @@ counter is see through and beneath the barrier lie many different gems and
 stones.  A large wizard eye floats in the air watching you to make sure you
 do not steal anything.
 
-The only exit is north
+The only exit is north.
 ~
 0 1|8|8192 1
 D0
@@ -11736,7 +11744,7 @@ You are standing in a food shop.  This shop is about twenty feet by twenty
 feet.  The shop is dark and the air is musty.  The air smells heavily of
 spice.  There are many counters with all sorts of spices and foods on them.
 
-The sole exit is to the north
+The sole exit is to the north.
 ~
 0 1|8|8192 1
 D0
@@ -11753,7 +11761,7 @@ should they come into trouble here.  The building has a low ceiling, about
 seven feet off the ground.  The walls and ground are earthy in color and
 texture.
 
-The door out is east, and the hallway goes west
+The door out is east, and the hallway goes west.
 ~
 0 1|8|8192 1
 D1
@@ -11776,7 +11784,7 @@ You are standing in the hallway of this building.  The floor in this section
 is a polished stone.  The walls have been carved out of solid rock.  It is
 dark in the hallway and cool.
 
-The entrance is to the east, the hallway continues south
+The entrance is to the east, the hallway continues south.
 ~
 0 1|8|8192 1
 D1
@@ -11797,7 +11805,7 @@ the floor.  The hallway has been carved out of rock and thus the color
 here is gray.  The air is cool and moist, with the sounds of the city a distant
 memory.
 
-The hallway continues north and south, to the east is a door
+The hallway continues north and south, to the east is a door.
 ~
 0 1|8|8192 1
 D0
@@ -11827,7 +11835,7 @@ those who are in need of the help this building offers sleep.  There is a
 simple bed against the far wall and a mirror on the southern wall.  It is
 obvious that people are not meant to stay here long.
 
-The only way out is the door to the west
+The only way out is the door to the west.
 ~
 0 1|8|8192 1
 D3
@@ -11876,7 +11884,7 @@ important guests of the gnome community stay.  The bed looks
 comfortable even if it only five feet long.  The ceiling is a mere six and a
 half feet high here.  There is a large rug that covers the floor.
 
-The sole exit is the door to the west
+The sole exit is the door to the west.
 ~
 0 1|8|8192 1
 D3
@@ -11923,7 +11931,7 @@ the comforts of home, a bed, a desk, and a chest with drawers.  There is a
 chair propped up against the desk.  The ceiling is about six feet off the
 ground.  The room is about fifteen feet by fifteen.
 
-The sole exit is the door to the west
+The sole exit is the door to the west.
 ~
 0 1|8|8192 1
 D3
@@ -11933,7 +11941,7 @@ door~
 1 -1 16367
 E
 door~
-The door is small, wooden and looks to be very strong
+The door is small, wooden and looks to be very strong.
 ~
 S
 #16369
@@ -11943,7 +11951,7 @@ spacious.  There are many statues and other objects that have been stolen
 from the various rich members of the world.  The floor is dark green and
 polished.  The walls are made of white marble.
 
-The hall continues to the south, there are doors east and west
+The hall continues to the south, there are doors east and west.
 ~
 0 8|8192 1
 D0
@@ -11968,7 +11976,7 @@ door~
 1 -1 16371
 E
 exit~
-The exit door is huge and well built.  There is little else to say about it
+The exit door is huge and well built.  There is little else to say about it.
 ~
 E
 door~
@@ -11983,7 +11991,7 @@ room is about fifteen feet by fifteen feet.  The floor is black and the
 walls are gray.  Small rods that are held in little holders along the walls
 light the room.
 
-The sole exit it the door to the west
+The sole exit it the door to the west.
 ~
 0 8|8192 1
 D3
@@ -12003,7 +12011,7 @@ along the walls and a table in the middle.  There are a few chairs around
 the table and on the table is a deck of cards.  The floor is gray and the
 walls are black.  Small rods light the room.
 
-The only exit it the door to the east
+The only exit it the door to the east.
 ~
 0 8|8192 1
 D1
@@ -12054,7 +12062,7 @@ green that has been polished.  The walls are covered in white marble and
 you see little rivulets of gold creating chaotic patterns in the marble.
 Small rods that are being held on the walls light the way.
 
-The hallway continues east and west
+The hallway continues east and west.
 ~
 0 1|8|8192 1
 D1
@@ -12075,7 +12083,7 @@ is a large mural of a thief picking the gate to a palace.  The floor is dark
 green and glints in the light.  Next to the door on the north wall is a
 pedestal with a large glowing hand.
 
-Door lie north and south, the hallway continues east
+Door lie north and south, the hallway continues east.
 ~
 0 8|8192 1
 D0
@@ -12138,7 +12146,7 @@ wall and the other against the western wall.  There is a small round table in
 the center of the room with four chairs around it.  On the table is a deck of
 cards.
 
-The sole exit is the door to the north
+The sole exit is the door to the north.
 ~
 0 8|8192 1
 D0
@@ -12157,7 +12165,7 @@ lock picks, daggers, swords, darts and anything else they would need to rob
 the world blind.  The room is ten feet by ten feet and the walls are covered
 with shelves.  The shelves are lined with these items.
 
-The sole exit is the door to the east
+The sole exit is the door to the east.
 ~
 0 1|8|8192 1
 D1
@@ -12176,7 +12184,7 @@ changed from dark green to dark red.  The walls are pure white and seem
 to create an atmosphere of good and well being.  The walls glitter with
 gold since there are little rivulets of gold that create many chaotic patterns.
 
-The hallway continues north and south, there is a door to the west
+The hallway continues north and south, there is a door to the west.
 ~
 0 8|8192 1
 D0
@@ -12207,7 +12215,7 @@ You also hear the faint melodious sounds of music.  The whole effect of
 the white walls, soft music and incense makes you feel at ease as if you
 were in a holy place of worship.
 
-The hallway heads north, there is a door to the west
+The hallway heads north, there is a door to the west.
 ~
 0 8|8192 1
 D0
@@ -12231,7 +12239,7 @@ contain many different containers, each of the containers is locked with a
 different kind of lock.  The floor is dark red and the walls are dark gray.
 Small rods provide a soft glow that lights everything in the room.
 
-There are doors to the east and west
+There are doors to the east and west.
 ~
 0 8|8192 1
 D1
@@ -14900,6 +14908,7 @@ S
 
 
 #RESETS
+O 1 16096 100 16437         ; magic workbench to Experimentation room
 M 1 16001 35 16001          ; enforcer eyes, the guards of the city
 E 1 16001 0 5           ; wears eye plate
 M 1 16001 35 16008          ; these ones walk the streets

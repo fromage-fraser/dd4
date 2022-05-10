@@ -1804,6 +1804,14 @@ hand the feeling evaporates. Truly, this is an artifact of great
 power, and should not be allowed to fall into the wrong hands.
 
 ~
+#2470
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+5~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -5163,6 +5171,7 @@ S
 #0
 
 #RESETS
+O 1 2470 100 2503 ;forge to the Armourer
 M 0 2400 5 2408 ;load insects on humility street
 M 0 2401 1 2411 ;load a bat in the attic
 G 0 2408 0 ; and have it hold the moonstone

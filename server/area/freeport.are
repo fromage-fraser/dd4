@@ -867,6 +867,14 @@ A prism shimmers on the ground here.~
 3 32|64 1|16384
 50~ 30~ 30~ invis~
 1 0 0
+#29135
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -2368,6 +2376,7 @@ S
 
 
 #RESETS
+O 1 29135 100 29151
 M 1 29101 2 29140           Blue Lizard
 G 1 29102 0    tongue
 M 1 29102 2 29130           Red Lizard

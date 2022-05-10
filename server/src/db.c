@@ -2993,6 +2993,8 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_LOCK_PICK:
             case ITEM_WHETSTONE:
             case ITEM_MITHRIL:
+            case ITEM_CRAFT:
+            case ITEM_SPELLCRAFT:
                 break;
 
             case ITEM_TREASURE:

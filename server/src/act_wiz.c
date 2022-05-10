@@ -919,7 +919,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 obj->weight, get_obj_weight( obj ) );
         strcat( buf1, buf );
 
-        sprintf( buf, "Type: {G%s{x  ",item_type_name( obj ));
+        sprintf( buf, "Type: {G%s{x [{W%d{x] ",item_type_name( obj ), obj->item_type);
         strcat( buf1, buf );
 
         sprintf( buf, "\n\r");
@@ -4490,7 +4490,9 @@ void do_rename( CHAR_DATA *ch, char *argument )
          * Place a few restrictions
          */
 
-        if (obj->item_type == ITEM_CLAN_OBJECT || !is_obj_owner(obj, ch))
+        if ( ( obj->item_type == ITEM_CLAN_OBJECT
+        ||    !is_obj_owner( obj, ch ) )
+        &&    !IS_IMMORTAL( ch ) )
         {
                 send_to_char("You may not rename that item.\n\r", ch);
                 return;

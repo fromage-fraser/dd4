@@ -1715,7 +1715,7 @@ void obj_update()
                         else if (obj->item_type == ITEM_WEAPON
                                  && (IS_OBJ_STAT(obj, ITEM_SHARP) || IS_OBJ_STAT(obj, ITEM_BLADE_THIRST)))
                         {
-                                act("$p's blade is beginning to deteriorate.",
+                                act("$p is beginning to deteriorate.",
                                     obj->carried_by, obj, NULL, TO_CHAR);
                         }
 

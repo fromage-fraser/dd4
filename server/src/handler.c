@@ -2172,6 +2172,8 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_MITHRIL:          return "mithril";
             case ITEM_WHETSTONE:        return "whetstone";
             case ITEM_ANVIL:            return "anvil";
+            case ITEM_CRAFT:            return "crafting";
+            case ITEM_SPELLCRAFT:       return "spellcrafting";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )

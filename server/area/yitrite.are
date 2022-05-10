@@ -754,6 +754,14 @@ A small glass of whiskey lies here.~
 10 0 1|16384
 40~ heal~ heal~ heal~
 12 0 0
+#24037
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -4720,6 +4728,8 @@ M 1 24000 1 24163              The Dragon to The charred mines.
 E 1 24002 100 0                The Eye of The Dragon
 E 1 24000 100 11               A Scale of The Dragon
 E 1 24001 100 16               A Talon of The Dragon
+*
+O 1 24037 100 24023           A forge to The Cobresh Smithy
 S
 
 #SHOPS

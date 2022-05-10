@@ -4339,6 +4339,14 @@ E
 jade stone~
 The jade stone glows a brilliant green. You feel somehow more physically
 resilient when you hold it in your hand.~
+#9717
+bench workbench~
+a spellcrafting bench~
+A workbench for magical crafting stands here.~
+~
+41 64 0
+10~ 0~ 0~ 0~
+1000 0 0
 #0
 
 
@@ -7080,6 +7088,7 @@ S
 
 
 #RESETS
+O 1 9717 100 9533           magical bench to Velkyn's Laboratory
 O 1 9500 100 9501           meat scraps to Rubbish room
 *
 M 1 9500 1 9501         a dying man to Rubbish room
