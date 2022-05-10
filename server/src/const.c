@@ -4103,7 +4103,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "Vampyre skills", &gsn_group_vampyre,
+                "vampyre skills", &gsn_group_vampyre,
                 TYPE_INT, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
                 "", "!Group Vampyre!"

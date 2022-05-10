@@ -257,6 +257,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 - Crating and Spellcrafting items have been added
 - Total XP message added
 - Thief skill 'smoke bomb' added
+- Vampires and Werewolfs will gain bonus pracs at 30
+- Lunge and suck damage modified by current blood status
 
 {WApril 2022{x
 
@@ -4581,9 +4583,10 @@ it will let the player concentrate on the enemy that is most dangerous.
 0 SUCK~
 Syntax: suck <target>
 
-This Vampire skill attempts to suck the blood from a victim.  A successful
-attack will cause damage to the victim, while increasing the blood points
-of the Vampire.
+This Vampire skill attempts to suck the blood from a victim.  A Vampire who
+is full with blood will have a stronger suck than one craving blood. 
+A successful attack will cause damage to the victim, while also increasing 
+the blood points of the Vampire.
 ~
 
 0 FEED~
@@ -5473,9 +5476,11 @@ Using this spell a caster drains the life force of their enemy.
 0 LUNGE 'DOUBLE LUNGE'~
 Syntax: lunge <target>
 
-A bloodthirsty VAMPIRE may lunge for an opponent's neck, causing heavy
+A bloodthirsty Vampire may lunge for an opponent's neck, causing heavy
 damage.  Lunge can only be used on an unprepared enemy.  DOUBLE LUNGE is
-even more devastating.
+even more devastating.  Vampires full on blood will have a more powerful
+lunge, Vampires weak on blood will have a weaker lunge.
+
 ~
 
 0 'RIDING TECHNIQUES'~
