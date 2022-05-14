@@ -52,6 +52,7 @@ knowledge.
 & 60 'body control disciplines'
 & 60 'mana control disciplines'
 & 60 'morphing knowledge'
+& 60 'archery knowledge'
 
 #3701
 manservant~
@@ -755,6 +756,19 @@ A small snowy white stone lies here.~
 10 5500 2000
 A
 4 2
+
+#3722
+short bow~
+a short bow~
+A short bow lies here.~
+~
+5 1073741824 1|8192
+0~ 2~ 16~ 11~
+5 150 20
+E
+short bow~
+It looks like a simple bow used by rangers.
+~
 
 #0
 
