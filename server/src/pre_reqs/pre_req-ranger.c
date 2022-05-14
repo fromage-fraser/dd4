@@ -102,13 +102,17 @@
 
 /* Archery Skills */
 
-{&gsn_group_archery,            &gsn_ranger_base,       60,     PRE_RANGER},
+{&gsn_group_archery,            &gsn_ranger_base,       30,     PRE_RANGER},
 
-{&gsn_shoot,                    &gsn_group_archery,     50,     PRE_RANGER},
-{&gsn_shoot,                    &gsn_ranger_base,       60,     PRE_RANGER},
+{&gsn_shoot,                    &gsn_group_archery,     20,     PRE_RANGER},
+{&gsn_shoot,                    &gsn_ranger_base,       30,     PRE_RANGER},
 
-{&gsn_second_shot,              &gsn_group_archery,     85,     PRE_RANGER},
-{&gsn_second_shot,              &gsn_shoot,             85,     PRE_RANGER},
+/*
+ * add some kind of between rounds quick shot to archery at about 60%
+ */
+
+{&gsn_second_shot,              &gsn_group_archery,     80,     PRE_RANGER},
+{&gsn_second_shot,              &gsn_shoot,             80,     PRE_RANGER},
 {&gsn_second_shot,              &gsn_ranger_base,       60,     PRE_RANGER},
 
 {&gsn_third_shot,               &gsn_second_shot,       90,     PRE_RANGER},

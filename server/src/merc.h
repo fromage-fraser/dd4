@@ -1724,6 +1724,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_SCHOOL_CLUB             3717
 #define OBJ_VNUM_SCHOOL_NULL                2
 #define OBJ_VNUM_POUCH                   3370
+#define OBJ_VNUM_SCHOOL_BOW              3722
 
 #define ITEM_VNUM_HERB                    100
 #define ITEM_VNUM_WIZBREW_VIAL             99

@@ -2197,6 +2197,13 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                                 SET_BIT(ch->act, PLR_AUTOWIELD);
                         }
 
+                        if (ch->class == CLASS_RANGER)
+                        {
+                                obj = create_object (get_obj_index(OBJ_VNUM_SCHOOL_BOW), 0);
+                                obj_to_char(obj, ch);
+                                equip_char(ch, obj, WEAR_RANGED_WEAPON);
+                        }
+
                         char_to_room(ch, get_room_index(ROOM_VNUM_SCHOOL));
                 }
 
