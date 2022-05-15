@@ -533,7 +533,7 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
                 ch->pcdata->in_progress->date = str_dup (strtime);
         }
 
-        act ("{G$n starts writing a note.{x", ch, NULL, NULL, TO_ROOM);
+        act ("{G$c starts writing a note.{x", ch, NULL, NULL, TO_ROOM);
 
         /* Begin writing the note ! */
         sprintf (buf, "You are now %s a new note on the {W%s{x board.\n\r"
@@ -1230,7 +1230,7 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                                 d->connected = CON_PLAYING;
                                 /* remove AFK status */
                                 ch->pcdata->in_progress = NULL;
-                                act ("{G$n finishes $s note.{x", ch, NULL, NULL, TO_ROOM);
+                                act ("{G$c finishes $s note.{x", ch, NULL, NULL, TO_ROOM);
 
                                 if (ch->pcdata->board->announce_post)
                                 {

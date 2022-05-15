@@ -3041,12 +3041,12 @@ void prayer_rescue (CHAR_DATA *ch)
         if (ch->mount)
                 strip_mount(ch);
 
-        act("{W$n is surrounded by holy light and disappears!{x", ch, NULL, NULL, TO_ROOM);
+        act("{W$c is surrounded by holy light and disappears!{x", ch, NULL, NULL, TO_ROOM);
         send_to_char("{WYou are surrounded by holy light!{x\n\r\n\r", ch);
 
         char_from_room(ch);
         char_to_room(ch, get_room_index(ROOM_VNUM_TEMPLE));
-        act("{W$n appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
+        act("{W$c appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
 
         do_look(ch, "");
 
@@ -3062,7 +3062,7 @@ void prayer_healing (CHAR_DATA *ch)
         if (!allow_deity_command (ch))
                 return;
 
-        act("{Y$n is briefly surrounded by a warm golden fire!{x", ch, NULL, NULL, TO_ROOM);
+        act("{Y$c is briefly surrounded by a warm golden fire!{x", ch, NULL, NULL, TO_ROOM);
         sprintf(buf, "{C%s revives your battered and weary body!{x\n\r",
                 deity_info_table[ch->pcdata->deity_patron].name);
         send_to_char(buf, ch);
@@ -3379,7 +3379,7 @@ void prayer_transport (CHAR_DATA *ch, char *text)
 
         patron_message("As you wish.", ch);
 
-        act("{C$n disappears in a flash of holy light!{x",
+        act("{C$c disappears in a flash of holy light!{x",
             ch, NULL, NULL, TO_ROOM);
 
         char_from_room(ch);
@@ -3387,15 +3387,15 @@ void prayer_transport (CHAR_DATA *ch, char *text)
 
         if (ch->mount)
         {
-                act ("{W$n disappears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
+                act ("{W$c disappears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
                 char_from_room(ch->mount);
                 char_to_room(ch->mount, victim->in_room);
         }
 
-        act("{C$n appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
+        act("{C$c appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
 
         if (ch->mount)
-                act("{C$n appears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
+                act("{C$c appears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
 
         send_to_char("\n\r", ch);
         do_look(ch, "");

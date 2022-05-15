@@ -2939,7 +2939,7 @@ void do_pattern(CHAR_DATA* ch, char* argument)
                 ch->mana -= 200;
                 ch->pcdata->pattern = ch->in_room->vnum;
                 send_to_char("{CYou create a mystical pattern before you and imbue it with magical energy.{x\n\r", ch);
-                act("{Y$n creates a mystical pattern before them and imbues it with magical energy.{x",
+                act("{Y$c creates a mystical pattern before them and imbues it with magical energy.{x",
                         ch, NULL, NULL, TO_ROOM);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
                 return;
@@ -2983,7 +2983,7 @@ void do_pattern(CHAR_DATA* ch, char* argument)
                 return;
         }
 
-        act ("{Y$n steps into a mystic pattern and is gone.{x", ch, NULL, NULL, TO_ROOM);
+        act ("{Y$c steps into a mystic pattern and is gone.{x", ch, NULL, NULL, TO_ROOM);
         send_to_char("{YYou create a mystic pattern and step into it...{x\n\r\n\r", ch);
 
         char_from_room(ch);
