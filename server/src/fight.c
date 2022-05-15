@@ -661,7 +661,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         else if (dt == gsn_joust || dt == gsn_dive )
                                 dam *= 2 + (ch->level / 20);
 
-                        else if (dt == gsn_lunge) 
+                        else if (dt == gsn_lunge)
                         {
                                 dam += dam / 2;
 
@@ -672,7 +672,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                 if (ch->rage > (ch->max_rage * 3 / 4))
                                         dam += dam / 10;
                                 else if (ch->rage < ch->max_rage / 4)
-                                        dam -= dam / 10;                                                
+                                        dam -= dam / 10;
                         }
 
                         else if (dt == gsn_shoot)
@@ -695,7 +695,7 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                 if (ch->rage > (ch->max_rage * 3 / 4))
                                         dam += dam / 10;
                                 else if (ch->rage < ch->max_rage / 4)
-                                        dam -= dam / 10;                                                
+                                        dam -= dam / 10;
                         }
 
                         else if (dt == gsn_second_circle)
@@ -2433,7 +2433,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                 {
                         sprintf(buf, "{WYou gained a total of %d experience points for the kill!{x\n\r", total_xp);
                         send_to_char(buf, gch);
-                        total_xp = 0;                
+                        total_xp = 0;
                         total_message = 0;
                 }
 
@@ -2512,7 +2512,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 && (!can_use_poison_weapon(ch))))
                         {
                                 act ("{YYou are zapped by $p and drop it.{x", ch, obj, NULL, TO_CHAR);
-                                act ("{Y$n is zapped by $p and drops it.{x",   ch, obj, NULL, TO_ROOM);
+                                act ("{Y$c is zapped by $p and drops it.{x",   ch, obj, NULL, TO_ROOM);
                                 obj_from_char(obj);
                                 obj_to_room(obj, ch->in_room);
                         }
@@ -2791,19 +2791,19 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 if (dt > TYPE_HIT && poison)
                 {
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "{W$n's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
-                        sprintf(buf3, "$n's poisoned %s %s $N%c",  attack, vp, punct);
+                        sprintf(buf2, "{W$c's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
+                        sprintf(buf3, "$c's poisoned %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your poisoned %s %s you%c", attack, vp, punct);
-                        sprintf(buf5, "$n's poisoned %s %s $n%c",  attack, vp, punct);
+                        sprintf(buf5, "$c's poisoned %s %s $n%c",  attack, vp, punct);
                 }
 
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "{W$n's %s{x %s {Wyou%c{x", attack, vp, punct);
-                        sprintf(buf3, "$n's %s %s $N%c",  attack, vp, punct);
+                        sprintf(buf2, "{W$c's %s{x %s {Wyou%c{x", attack, vp, punct);
+                        sprintf(buf3, "$c's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
-                        sprintf(buf5, "$n's %s %s $n%c",  attack, vp, punct);
+                        sprintf(buf5, "$c's %s %s $n%c",  attack, vp, punct);
                 }
         }
 
@@ -3961,11 +3961,11 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
         was_in = ch->in_room;
 
         /*
-         * Have 30 goes at randomly finding an exit to escape too          
+         * Have 30 goes at randomly finding an exit to escape too
          */
 
         for (attempt = 0; attempt < 30; attempt++)
-        {                
+        {
                 /* Randomly find an exit */
                 door = number_range(0, 5);
 
@@ -3978,7 +3978,7 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
                 {
                         continue;
                 }
-                
+
                 stop_fighting(ch, TRUE);
                 send_to_char ("{WYou drop a smoke bomb and escape!{x\n\r\n\r", ch);
                 act ("{W$c drops a smoke bomb and escapes!{x", ch, NULL, NULL, TO_ROOM);
@@ -3992,9 +3992,9 @@ void do_smoke_bomb (CHAR_DATA *ch, char *argument)
                 af.duration = 0;
                 af.location = APPLY_NONE;
                 af.modifier = 0;
-                af.bitvector = AFF_SNEAK;                
+                af.bitvector = AFF_SNEAK;
 
-                affect_to_char(ch, &af);                
+                affect_to_char(ch, &af);
 
                 /*
                  * I think this handles random rooms looping back on itself
@@ -4380,9 +4380,9 @@ void do_knife_toss (CHAR_DATA *ch, char *argument)
                                         act("{WYour knife catches $N in the face!{x", ch, NULL, victim, TO_CHAR);
 
                                         if (!IS_NPC(victim))
-                                                act("{W$n's knife catches you right in the face!{x", ch, NULL, victim, TO_VICT);
+                                                act("{W$c's knife catches you right in the face!{x", ch, NULL, victim, TO_VICT);
 
-                                        act("{W$n's knife catches $N in the face!{x", ch, NULL, victim, TO_NOTVICT);
+                                        act("{W$c's knife catches $N in the face!{x", ch, NULL, victim, TO_NOTVICT);
 
                                         dam *= 2;
                                 }
@@ -4976,9 +4976,9 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
         if (number_percent() < chance)
         {
                 act ("{B$C's head is detached from $S neck!!{x", ch, NULL, victim, TO_CHAR);
-                act ("{B$n swings $s blade at $N, causing $N's head to separate from $S body and fly away!!{x",
+                act ("{B$c swings $s blade at $N, causing $N's head to separate from $S body and fly away!!{x",
                      ch, NULL, victim, TO_NOTVICT);
-                act ("{B$n DECAPITATES you!!{x", ch, NULL, victim, TO_VICT);
+                act ("{B$c DECAPITATES you!!{x", ch, NULL, victim, TO_VICT);
 
                 if (IS_NPC(victim))
                         sprintf(msg, "%s's severed head rolls around in front of you.",
@@ -4988,7 +4988,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
                                 victim->name);
 
                 act (msg, ch, NULL, NULL, TO_ROOM);
-                arena_commentary("$n decapitates $N!", ch, victim);
+                arena_commentary("$c decapitates $N!", ch, victim);
 
                 vnum = OBJ_VNUM_SEVERED_HEAD;
 
