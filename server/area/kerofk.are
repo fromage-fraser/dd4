@@ -249,7 +249,8 @@ an expert in her field.
 0 0
 8 8 2
 & 20 'teacher base'
-& 85 'herb lore'
+& 80 'herb lore'
+& 80 'archery knowledge'
 & 30 'bard base'
 #30216
 lawyer~
@@ -356,7 +357,7 @@ Jenk~
 Jenk is here, ready to sell you anything!
 ~
 Jenk is a lowdown no good shopkeeper who'll sell anything to make a
-gold!  He's corrupt, greedy, and you're kind of man!
+gold!  He's corrupt, greedy, and your kind of man!
 ~
 2|512|32768|16777216 0 -500 S
 53 0 0 6d10+590 1d8+18

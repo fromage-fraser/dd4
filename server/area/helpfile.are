@@ -5201,14 +5201,14 @@ Level 10
 All your masters are in Midgaard.
 
 Level 15
-Brawler   .   .   A wandering Ranger patrols a lake (defence only).
+Brawler   .   .   A wandering Ranger patrols a lake (defence, inner force only).
 Cleric    .   .   Near Solace a fair maiden sings a beautiful song.
 Mage  .   .   .   A warrior Mage residing over the guards in Ofcol.
 Psionic   .   .   In a small cottage overlooking a river.
 Shapeshifter  .   None.
 Thief .   .   .   In an Olive Grove, a leader of Cut-throats.
 Warrior   .   .   A warrior Mage residing over the guards in Ofcol.
-Ranger    .   .   Shop around.
+Ranger    .   .   A wandering Ranger patrols a lake (archery only)
 
 Level 20
 Seek trainers for all classes in Kerofk.
@@ -5223,11 +5223,11 @@ Level 28
 Psionic   .   .   Hidden in a circle of trees in the middle of water.
 Shapeshifter  .   A flying island over a vast sea - seek the leader of birdmen.
 Brawler   .   .   Seek your inner demon - for your trainer shall be near.
-Ranger    .   .   Shop around.
 
 Level 30
 Warrior   .   .   A knight up a chain (lore etc... only)
 Bard  .   .   .   Seek a sullen bard, drowning his sorrows in an Inn.
+Ranger            A ranger of course, sitting at a table
 
 Level 35
 Seek all trainers in the town of Anon.
