@@ -1729,6 +1729,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_second_shot,                             0 },
         { &gsn_third_shot,                              0 },
         { &gsn_accuracy,                                0 },
+        { &gsn_snap_shot,                               0 },
 
         { &gsn_group_music,                             0 },
         { &gsn_song_of_shadows,                         0 },
@@ -5094,6 +5095,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_null, 0, 8,
                 "smoke bomb", "!Smoke Bomb!"
+        },
+
+        {
+                "snap shot", &gsn_snap_shot,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "snap shot", "!Snap Shot!"
         },
 
         /*

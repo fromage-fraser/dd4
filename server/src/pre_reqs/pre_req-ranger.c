@@ -107,6 +107,8 @@
 {&gsn_shoot,                    &gsn_group_archery,     20,     PRE_RANGER},
 {&gsn_shoot,                    &gsn_ranger_base,       30,     PRE_RANGER},
 
+{&gsn_snap_shot,                &gsn_group_archery,     30,     PRE_RANGER},
+
 /*
  * add some kind of between rounds quick shot to archery at about 60%
  */
