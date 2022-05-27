@@ -234,9 +234,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               500     /* Increased to 499, 1287 for soar. Replaced spy */
-#define MAX_PRE_REQ             1292    /* Added (+3) smoke bomb pre-reqs for thief -- Shade 10/5/22 */
-#define MAX_SPELL_GROUP         380
+#define MAX_SKILL               501     /* Increased to 501, 1293 for snap shot. */
+#define MAX_PRE_REQ             1293    /* Added for snap shot Shade 27/5/22 */
+#define MAX_SPELL_GROUP         381     /* Added for snap shot */
 #define MAX_GROUPS              52
 #define MAX_FORM_SKILL          71      /* for form skill table */
 #define MAX_VAMPIRE_GAG         24      /* ugly vampire/werewolf hack */
@@ -3208,6 +3208,7 @@ extern int gsn_detect_curse;
 extern int gsn_knife_toss;
 extern int gsn_soar;
 extern int gsn_smoke_bomb;
+extern int gsn_snap_shot;
 
 /*
  *  Deity gsns
@@ -3757,6 +3758,7 @@ DECLARE_DO_FUN( do_suicid                       );
 DECLARE_DO_FUN( do_suicide                      );
 DECLARE_DO_FUN( do_knife_toss                   );
 DECLARE_DO_FUN( do_smoke_bomb                   );
+DECLARE_DO_FUN( do_snap_shot                    );
 
 
 /*

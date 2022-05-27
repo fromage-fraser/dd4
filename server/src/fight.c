@@ -283,7 +283,8 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
             || dt == gsn_circle
             || dt == gsn_thrust
             || dt == gsn_constrict
-            || dt == gsn_suck)
+            || dt == gsn_suck
+            || dt == gsn_snap_shot)
                 return;
 
         /*
@@ -444,7 +445,8 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                             || dt == gsn_shoot
                             || dt == gsn_dive
                             || dt == gsn_joust
-                            || dt == gsn_risposte)
+                            || dt == gsn_risposte
+                            || dt == gsn_snap_shot)
                                 break;
 
                         /* Do we get another attack? */
@@ -683,6 +685,12 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
                         else if (dt == gsn_circle || dt == gsn_constrict || dt == gsn_thrust)
                                 dam += dam / 2;
+
+                        else if (dt == gsn_snap_shot)
+                        {
+                                dam += dam / 4;
+                                dam += dam * ch->pcdata->learned[gsn_accuracy] / 300;
+                        }
 
                         else if (dt == gsn_suck)
                         {
@@ -5993,6 +6001,81 @@ void do_shoot (CHAR_DATA *ch, char *argument)
         else
         {
                 damage (ch, victim, 0, gsn_shoot, FALSE);
+        }
+
+        /*  Double check bow is still being held  */
+        if (get_eq_char (ch, WEAR_WIELD))
+        {
+                unequip_char(ch, obj);
+                equip_char(ch, obj, WEAR_RANGED_WEAPON);
+        }
+
+        if(objWield)
+                equip_char(ch, objWield, WEAR_WIELD);
+
+        if(objShield)
+                equip_char(ch, objShield, WEAR_SHIELD);
+
+        if(objDual)
+                equip_char(ch, objDual, WEAR_DUAL);
+}
+
+void do_snap_shot (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA  *obj, *objWield, *objShield, *objDual;
+        CHAR_DATA *victim;
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_snap_shot))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You're not fighting anyone!\n\r", ch);
+                return;
+        }
+
+        victim = ch->fighting;
+
+        obj = get_eq_char(ch, WEAR_RANGED_WEAPON);
+
+        if (!obj || !IS_OBJ_STAT(obj, ITEM_BOW))
+        {
+                send_to_char("With what?!?\n\r", ch);
+                return;
+        }
+
+        /* Remove weapons and shield, equip bow */
+        objWield = get_eq_char(ch, WEAR_WIELD);
+        if (objWield)
+                unequip_char(ch, objWield);
+
+        objShield = get_eq_char(ch, WEAR_SHIELD);
+        if (objShield)
+                unequip_char(ch, objShield);
+
+        objDual = get_eq_char(ch, WEAR_DUAL);
+        if (objDual)
+                unequip_char(ch, objDual);
+
+        equip_char(ch, obj, WEAR_WIELD);
+        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+        send_to_char("{WYou quickly grab you bow fire off a shot!{x\n\r", ch);
+
+        if (number_percent () < 50 + ch->pcdata->learned[gsn_snap_shot] / 2)
+        {
+                arena_commentary("$n shoots a quick snap shot at $N.", ch, victim);
+                one_hit(ch, victim, gsn_snap_shot);
+        }
+        else
+        {
+                damage (ch, victim, 0, gsn_snap_shot, FALSE);
         }
 
         /*  Double check bow is still being held  */

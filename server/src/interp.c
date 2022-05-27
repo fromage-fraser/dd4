@@ -250,7 +250,8 @@ const struct cmd_type cmd_table [] =
         { "whirlwind",  do_whirlwind,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "wolfbite",   do_wolfbite,    POS_FIGHTING,    0,  LOG_NORMAL },
         { "knife toss", do_knife_toss,  POS_FIGHTING,    0,  LOG_NORMAL },
-        { "smoke bomb",  do_smoke_bomb,  POS_FIGHTING,    0,  LOG_NORMAL },
+        { "smoke bomb", do_smoke_bomb,  POS_FIGHTING,    0,  LOG_NORMAL },
+        { "snapshot",   do_snap_shot,   POS_FIGHTING,    0,  LOG_NORMAL },
 
         /*
          * Miscellaneous commands.

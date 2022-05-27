@@ -564,6 +564,7 @@ int     gsn_detect_curse;
 int     gsn_knife_toss;
 int     gsn_soar;
 int     gsn_smoke_bomb;
+int     gsn_snap_shot;
 
 /*
  *  Spell groups
