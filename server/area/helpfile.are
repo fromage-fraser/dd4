@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [5 May 2022]
+    [27 May 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,10 +213,9 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WCrafting and spellcrafting - now including crafting item bonuses is 
-    in!  Read HELP CRAFTING.{x
-
     {WNew skill Smoke Bomb for Thieves is in!{x
+
+    {WNew skill Snap Shot for Rangers is in!{x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -259,6 +258,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 - Thief skill 'smoke bomb' added
 - Vampires and Werewolfs will gain bonus pracs at 30
 - Lunge and suck damage modified by current blood status
+- Ranger skill Snap Shot added
 
 {WApril 2022{x
 
@@ -4794,17 +4794,16 @@ second attack           sneak                   third attack
 hide                    forage                  dowse
 dodge                   disarm                  parry
 find traps              disarm traps            grip
-feint
+feint                   shoot                   snap shot
 
 True rangers (those that don't change to barbarians or bards) may also
 learn these skills after level 30:
 
-shoot                   thrust                  second shot
+gather                   thrust                  second shot
 barkskin                third shot              hunt
 detect hidden           infravision             snare
 dual                    enhanced hit            classify
 advanced consider       faerie fire             accuracy
-gather
 
 See 'HELP SBARBARIAN' and 'HELP SBARD' for lists of barbarian and bard
 skills respectively.
@@ -5901,6 +5900,15 @@ Equipped with a bow, a ranger can start each fight by ambushing their
 prey, catching them unawares and allowing the ranger to inflict a shot of
 high damage.  Rangers who have practised ACCURACY can also increase the
 amount of damage inflicted by each shot they land.
+~
+
+0 'SNAP SHOT'~
+Syntax: snapshot
+
+During combat, if they have a bow ready, skilled Rangers can get away a 
+quick snap shot to deal extra damage to their foes. Rangers who have 
+practised ACCURACY can also increase the amount of damage inflicted by 
+each shot they land.
 ~
 
 0 THRUST~
