@@ -4794,12 +4794,12 @@ second attack           sneak                   third attack
 hide                    forage                  dowse
 dodge                   disarm                  parry
 find traps              disarm traps            grip
-feint                   shoot                   snap shot
+feint                   shoot                   snapshot
 
 True rangers (those that don't change to barbarians or bards) may also
 learn these skills after level 30:
 
-gather                   thrust                  second shot
+gather                  thrust                  second shot
 barkskin                third shot              hunt
 detect hidden           infravision             snare
 dual                    enhanced hit            classify
@@ -5902,7 +5902,7 @@ high damage.  Rangers who have practised ACCURACY can also increase the
 amount of damage inflicted by each shot they land.
 ~
 
-0 'SNAP SHOT'~
+0 'SNAP SHOT' 'SNAPSHOT'~
 Syntax: snapshot
 
 During combat, if they have a bow ready, skilled Rangers can get away a 
