@@ -592,7 +592,13 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         if (wield)
                                 dam = number_range(wield->value[1], wield->value[2]);
                         else
+                        {
                                 dam = number_range(1, 4);
+
+                                /* Give low level Brawlers a boost, won't make any difference at high levels */
+                                if (ch->class == CLASS_BRAWLER)
+                                        dam += number_range(4, 8);
+                        }
 
                         if (wield && dam > 2000)
                         {
@@ -2769,7 +2775,16 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
         if (dt == TYPE_HIT)
         {
                 sprintf(buf1, "You %s $N%c",       vs, punct);
-                sprintf(buf2, "$n %s you%c",       vp, punct);
+
+                /*
+                 * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
+                 */
+
+                if (dam > 0)
+                        sprintf(buf2, "{W$c{x %s {Wyou%c{x",       vp, punct);
+                else
+                        sprintf(buf2, "$n %s you%c",       vp, punct);
+                
                 sprintf(buf3, "$n %s $N%c",        vp, punct);
                 sprintf(buf4, "You %s yourself%c", vs, punct);
                 sprintf(buf5, "$n %s $mself%c",    vp, punct);
@@ -2799,7 +2814,12 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 if (dt > TYPE_HIT && poison)
                 {
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "{W$c's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
+
+                        if (dam > 0)
+                                sprintf(buf2, "{W$c's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
+                        else
+                                sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
+
                         sprintf(buf3, "$c's poisoned %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your poisoned %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$c's poisoned %s %s $n%c",  attack, vp, punct);
@@ -2808,7 +2828,12 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-                        sprintf(buf2, "{W$c's %s{x %s {Wyou%c{x", attack, vp, punct);
+
+                        if (dam > 0)
+                                sprintf(buf2, "{W$c's %s{x %s {Wyou%c{x", attack, vp, punct);
+                        else
+                                sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
+
                         sprintf(buf3, "$c's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$c's %s %s $n%c",  attack, vp, punct);
@@ -6064,11 +6089,11 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
                 unequip_char(ch, objDual);
 
         equip_char(ch, obj, WEAR_WIELD);
-        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+        WAIT_STATE(ch, 2 * PULSE_VIOLENCE); /* change of equipment, we'll make the wait state count regardless of hit */
 
         send_to_char("{WYou quickly grab you bow fire off a shot!{x\n\r", ch);
 
-        if (number_percent () < 50 + ch->pcdata->learned[gsn_snap_shot] / 2)
+        if (number_percent () < 50 + (ch->pcdata->learned[gsn_snap_shot] / 2))
         {
                 arena_commentary("$n shoots a quick snap shot at $N.", ch, victim);
                 one_hit(ch, victim, gsn_snap_shot);
