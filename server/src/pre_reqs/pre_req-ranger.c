@@ -24,9 +24,9 @@
 {&gsn_parry,                    &gsn_dodge,             40,     PRE_RANGER},
 {&gsn_parry,                    &gsn_ranger_base,       30,     PRE_RANGER},
 
-{&gsn_grip,                     &gsn_group_defense,     75,     PRE_RANGER},
-{&gsn_grip,                     &gsn_parry,             60,     PRE_RANGER},
-{&gsn_grip,                     &gsn_dodge,             60,     PRE_RANGER},
+{&gsn_grip,                     &gsn_group_defense,     70,     PRE_RANGER},
+{&gsn_grip,                     &gsn_parry,             70,     PRE_RANGER},
+{&gsn_grip,                     &gsn_dodge,             70,     PRE_RANGER},
 {&gsn_grip,                     &gsn_ranger_base,       30,     PRE_RANGER},
 
 /* Armed Combat Skills */
@@ -34,7 +34,7 @@
 {&gsn_second_attack,            &gsn_group_armed,       20,     PRE_RANGER},
 {&gsn_second_attack,            &gsn_ranger_base,       30,     PRE_RANGER},
 
-{&gsn_third_attack,             &gsn_group_armed,       40,     PRE_RANGER},
+{&gsn_third_attack,             &gsn_group_armed,       60,     PRE_RANGER},
 {&gsn_third_attack,             &gsn_second_attack,     60,     PRE_RANGER},
 {&gsn_third_attack,             &gsn_ranger_base,       30,     PRE_RANGER},
 
