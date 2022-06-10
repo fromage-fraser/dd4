@@ -6091,7 +6091,7 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
         equip_char(ch, obj, WEAR_WIELD);
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE); /* change of equipment, we'll make the wait state count regardless of hit */
 
-        send_to_char("{WYou quickly grab you bow fire off a shot!{x\n\r", ch);
+        send_to_char("{WYou quickly grab your bow and fire off a shot!{x\n\r", ch);
 
         if (number_percent () < 50 + (ch->pcdata->learned[gsn_snap_shot] / 2))
         {
