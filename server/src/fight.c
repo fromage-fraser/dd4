@@ -5979,16 +5979,28 @@ void do_shoot (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
         send_to_char("{WYou take aim and let loose!{x\n\r", ch);
 
-        if (number_percent () < ch->pcdata->learned[gsn_shoot])
+        if ( ( number_percent () < ch->pcdata->learned[gsn_shoot] )
+        ||   ( IS_AFFECTED(victim, AFF_HOLD) ) )
         {
+                /* Shot check won't fail if victim is trapped/snared - Owl 11/6/22 */
+
                 arena_commentary("$n shoots a volley of missiles at $N.", ch, victim);
 
                 num = 1;
 
-                if (number_percent() < ch->pcdata->learned[gsn_second_shot])
+                if ( ( number_percent() < ch->pcdata->learned[gsn_second_shot] ) 
+                ||    ( ( IS_AFFECTED(victim, AFF_HOLD) ) 
+                     && ( ch->pcdata->learned[gsn_second_shot]) ) )
+                {
                         num++;
-                if (number_percent() < ch->pcdata->learned[gsn_third_shot])
+                }
+
+                if ( ( number_percent() < ch->pcdata->learned[gsn_third_shot] ) 
+                ||   ( ( IS_AFFECTED(victim, AFF_HOLD) ) 
+                     && ( ch->pcdata->learned[gsn_third_shot]) ) )
+                {
                         num++;
+                }
 
                 for (i = 0; i < num; i++)
                 {
