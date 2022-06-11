@@ -210,6 +210,7 @@ const struct cmd_type cmd_table [] =
         { "coil",       do_coil,        POS_FIGHTING,    0,  LOG_NORMAL },
         { "combo",      do_combo,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "constrict",  do_constrict,   POS_FIGHTING,    0,  LOG_NORMAL },
+        { "crush",      do_crush,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "decapitate", do_decapitate,  POS_FIGHTING,    0,  LOG_NORMAL },
         { "destrier",   do_destrier,    POS_FIGHTING,    0,  LOG_NORMAL },
         { "dirt kick",  do_dirt_kick,   POS_FIGHTING,    0,  LOG_NORMAL },
