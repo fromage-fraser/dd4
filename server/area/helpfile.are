@@ -5899,7 +5899,9 @@ Syntax: shoot <target>
 Equipped with a bow, a ranger can start each fight by ambushing their
 prey, catching them unawares and allowing the ranger to inflict a shot of
 high damage.  Rangers who have practised ACCURACY can also increase the
-amount of damage inflicted by each shot they land.
+amount of damage inflicted by each shot they land.  SHOOT has some synergy
+with SNARE, as a snared or trapped victim will be easier for the ranger to
+SHOOT.
 ~
 
 0 'SNAP SHOT' 'SNAPSHOT'~
