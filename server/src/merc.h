@@ -234,12 +234,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               501     /* Increased to 501, 1293 for snap shot. */
-#define MAX_PRE_REQ             1293    /* Added for snap shot Shade 27/5/22 */
-#define MAX_SPELL_GROUP         381     /* Added for snap shot */
+#define MAX_SKILL               502     /* Increased to 502, 1294, 382 for crush. */
+#define MAX_PRE_REQ             1294    /* Added for crush Owl 11/6/22 */
+#define MAX_SPELL_GROUP         382     /* Added for crush */
 #define MAX_GROUPS              52
-#define MAX_FORM_SKILL          71      /* for form skill table */
-#define MAX_VAMPIRE_GAG         24      /* ugly vampire/werewolf hack */
+#define MAX_FORM_SKILL          72      /* for form skill table */
+#define MAX_VAMPIRE_GAG         25      /* ugly vampire/werewolf hack */
 
 
 /*
@@ -3209,6 +3209,7 @@ extern int gsn_knife_toss;
 extern int gsn_soar;
 extern int gsn_smoke_bomb;
 extern int gsn_snap_shot;
+extern int gsn_crush;
 
 /*
  *  Deity gsns
@@ -3471,6 +3472,7 @@ DECLARE_DO_FUN( do_compare                      );
 DECLARE_DO_FUN( do_config                       );
 DECLARE_DO_FUN( do_consider                     );
 DECLARE_DO_FUN( do_credits                      );
+DECLARE_DO_FUN( do_crush                        );      /* crush for shifter bear form - Owl */
 DECLARE_DO_FUN( do_cscore                       );      /* clan score - Brutus */
 DECLARE_DO_FUN( do_decapitate                   );      /* New ninja skill - Brutus */
 DECLARE_DO_FUN( do_delet                        );

@@ -30,6 +30,7 @@
 
 {&gsn_form_bear,                &gsn_group_forms,       60,     PRE_SHIFTER},
 {&gsn_forage,                   &gsn_form_bear,         20,     PRE_SHIFTER},
+{&gsn_crush,                    &gsn_form_bear,         40,     PRE_SHIFTER},
 
 {&gsn_form_tiger,               &gsn_group_forms,       70,     PRE_SHIFTER},
 {&gsn_form_tiger,               &gsn_form_bear,         70,     PRE_SHIFTER},
