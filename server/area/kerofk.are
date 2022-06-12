@@ -251,7 +251,10 @@ an expert in her field.
 & 20 'teacher base'
 & 80 'herb lore'
 & 80 'archery knowledge'
+& 80 'dowse'
+& 80 'forage'
 & 30 'bard base'
+& 30 'ranger base'
 #30216
 lawyer~
 the Lawyer~
@@ -450,10 +453,13 @@ eyebrow to you...shall we have a go at it?
 & 80 'defense knowledge'
 & 80 'archery knowledge'
 & 80 'inner force'
+& 80 'dowse'
+& 80 'forage'
 & 30 'knight base'
 & 30 'thug base'
 & 30 'warrior base'
 & 30 'barbarian base'
+& 30 'ranger base'
 #30230
 beggar~
 the Beggar~

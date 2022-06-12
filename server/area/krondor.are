@@ -929,6 +929,8 @@ endif
 & 100 'poison arts'
 & 100 'hunting arts'
 & 100 'martial arts'
+& 100 'dowse'
+& 100 'forage'
 & 100 'knowledge'
 & 30 'thief base'
 & 30 'ninja base'

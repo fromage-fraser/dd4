@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [27 May 2022]
+    [11 June 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,9 +213,10 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
+    {WNew skill Crush for Shifters is in!{x
+
     {WNew skill Smoke Bomb for Thieves is in!{x
 
-    {WNew skill Snap Shot for Rangers is in!{x
 
 To Enter the Dragons Domain press <Return>.
 ~
@@ -248,6 +249,11 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{WJune 2022{x
+
+- Added 'crush' as in-between round attack for shifter in bear form
+- Made sure rangers can get 'dowse' and 'forage' from all trainers
 
 {WMay 2022{x
 
@@ -4604,6 +4610,13 @@ or WOLF sink its powerful jaws into anything, and the reason will become
 obvious.
 ~
 
+0 CRUSH~
+Syntax: crush
+
+A shifter, in their bear form, can attempt to CRUSH a foe in their powerful
+embrace, doing damage and temporarily rendering their opponent immobile.
+~
+
 0 HOWL~
 Syntax: howl <target>
 
@@ -4967,7 +4980,7 @@ chameleon form          cat form                hawk form
 snake form                infravision {Y*{x         bear form
   swim {Y*{x                                          enhanced damage {Y*{x
   coil                  spider form               forage
-  constrict               web
+  constrict               web                     crush
   strangle                venom
   breathe water {Y*{x
                         tiger form              morph
@@ -5899,7 +5912,9 @@ Syntax: shoot <target>
 Equipped with a bow, a ranger can start each fight by ambushing their
 prey, catching them unawares and allowing the ranger to inflict a shot of
 high damage.  Rangers who have practised ACCURACY can also increase the
-amount of damage inflicted by each shot they land.
+amount of damage inflicted by each shot they land.  SHOOT has some synergy
+with SNARE, as a snared or trapped victim will be easier for the ranger to
+SHOOT.
 ~
 
 0 'SNAP SHOT' 'SNAPSHOT'~

@@ -2816,7 +2816,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
+                                sprintf(buf2, "{W$c's poisoned %s %s {Wyou%c{x", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
 
@@ -2830,7 +2830,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's %s{x %s {Wyou%c{x", attack, vp, punct);
+                                sprintf(buf2, "{W$c's %s %s {Wyou%c{x", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
 
@@ -6004,16 +6004,28 @@ void do_shoot (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
         send_to_char("{WYou take aim and let loose!{x\n\r", ch);
 
-        if (number_percent () < ch->pcdata->learned[gsn_shoot])
+        if ( ( number_percent () < ch->pcdata->learned[gsn_shoot] )
+        ||   ( IS_AFFECTED(victim, AFF_HOLD) ) )
         {
+                /* Shot check won't fail if victim is trapped/snared - Owl 11/6/22 */
+
                 arena_commentary("$n shoots a volley of missiles at $N.", ch, victim);
 
                 num = 1;
 
-                if (number_percent() < ch->pcdata->learned[gsn_second_shot])
+                if ( ( number_percent() < ch->pcdata->learned[gsn_second_shot] ) 
+                ||    ( ( IS_AFFECTED(victim, AFF_HOLD) ) 
+                     && ( ch->pcdata->learned[gsn_second_shot]) ) )
+                {
                         num++;
-                if (number_percent() < ch->pcdata->learned[gsn_third_shot])
+                }
+
+                if ( ( number_percent() < ch->pcdata->learned[gsn_third_shot] ) 
+                ||   ( ( IS_AFFECTED(victim, AFF_HOLD) ) 
+                     && ( ch->pcdata->learned[gsn_third_shot]) ) )
+                {
                         num++;
+                }
 
                 for (i = 0; i < num; i++)
                 {
@@ -6091,7 +6103,7 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
         equip_char(ch, obj, WEAR_WIELD);
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE); /* change of equipment, we'll make the wait state count regardless of hit */
 
-        send_to_char("{WYou quickly grab you bow fire off a shot!{x\n\r", ch);
+        send_to_char("{WYou quickly grab your bow and fire off a shot!{x\n\r", ch);
 
         if (number_percent () < 50 + (ch->pcdata->learned[gsn_snap_shot] / 2))
         {

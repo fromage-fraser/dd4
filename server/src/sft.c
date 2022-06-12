@@ -1087,6 +1087,51 @@ void do_bite (CHAR_DATA *ch, char *argument)
                 damage (ch, victim, 0, gsn_bite, FALSE);
 }
 
+void do_crush (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_crush))
+        {
+                send_to_char("What do you think you are, a bear?\n\r", ch);
+                return;
+        }
+
+        if (!(ch->form == FORM_BEAR))
+        {
+                send_to_char("You are not in the correct form.\n\r", ch);
+                return;
+        }
+
+        if (!(victim = ch->fighting))
+        {
+                send_to_char("You are not fighting anyone.\n\r", ch);
+                return;
+        }
+
+        WAIT_STATE(ch, skill_table[gsn_crush].beats);
+
+        send_to_char("{WYou wrap your arms around your victim and attempt to crush them!{x\n\r", ch);
+
+        if (number_percent() < ch->pcdata->learned[gsn_crush])
+        {
+                AFFECT_DATA af;
+                arena_commentary("$c crushes $N in $s powerful arms.", ch, victim);
+                act ("$c crushes $N in $s powerful arms!\n\r", ch, NULL, victim, TO_NOTVICT);
+                damage(ch,victim,number_range(ch->level*3, ch->level*4), gsn_crush, FALSE);
+                af.type         = gsn_crush;
+                af.duration     = 1;
+                af.location     = APPLY_HITROLL;
+                af.modifier     = -4;
+                af.bitvector    = AFF_HOLD;
+                affect_to_char(victim, &af);
+        }
+        else
+                damage (ch, victim, 0, gsn_crush, FALSE);
+}
 
 void do_wolfbite (CHAR_DATA *ch, char *argument)
 {
