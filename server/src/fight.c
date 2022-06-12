@@ -2816,7 +2816,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's poisoned %s{x %s {Wyou%c{x", attack, vp, punct);
+                                sprintf(buf2, "{W$c's poisoned %s %s {Wyou%c{x", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
 
@@ -2830,7 +2830,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's %s{x %s {Wyou%c{x", attack, vp, punct);
+                                sprintf(buf2, "{W$c's %s %s {Wyou%c{x", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
 

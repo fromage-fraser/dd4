@@ -1504,7 +1504,10 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         int heal;
 
-        heal = dice( 3, 8 ) + level - 6;
+        heal = 4 + dice( 4, 8 ) + level;
+
+        if (heal > 75) 
+                heal = 75;
 
         if( victim->hit > victim->max_hit )
                 return;
@@ -1560,7 +1563,10 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         int heal;
 
-        heal = dice( 1, 8 ) + level / 3;
+        heal = 4 + dice( 1, 8 ) + level / 2;
+
+        if (heal > 35)
+                heal = 35;
 
         if( victim->hit > victim->max_hit )
                 return;
@@ -1654,7 +1660,10 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
         int heal;
 
-        heal = dice( 2, 8 ) + level / 2 ;
+        heal = 4 + dice( 3, 8 ) + level / 2 ;
+
+        if (heal > 50)
+                heal = 50;
 
         if( victim->hit > victim->max_hit )
                 return;
