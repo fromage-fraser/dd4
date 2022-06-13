@@ -1817,9 +1817,19 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
 void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 {
         AFFECT_DATA af;
+        OBJ_DATA *beak;
 
         if (to_form)
         {
+                beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level);
+                if (beak)
+                {
+                        beak->value[1] *= 1.5;
+                        beak->value[2] *= 1.5;
+                        obj_to_char(beak, ch);
+                        form_equip_char(ch, beak, WEAR_WIELD);
+                }
+
                 if ((ch->pcdata->learned[gsn_form_phoenix] > 40)
                     || (ch->pcdata->learned[gsn_fly]))
                 {
@@ -1878,6 +1888,13 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
                 affect_strip(ch,gsn_globe);
                 REMOVE_BIT(ch->affected_by, AFF_GLOBE);
                 affect_strip(ch, gsn_resist_heat);
+
+                beak = get_obj_wear(ch, "sftbeak");
+                if (beak)
+                {
+                        unequip_char(ch, beak);
+                        extract_obj(beak);
+                }
         }
 }
 

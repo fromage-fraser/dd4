@@ -735,6 +735,7 @@ struct form_skill_struct form_skill_table [ MAX_FORM_SKILL ] =
         {       &gsn_third_attack,              FORM_HYDRA              },
         {       &gsn_second_attack,             FORM_PHOENIX            },
         {       &gsn_rescue,                    FORM_PHOENIX            },
+        {       &gsn_swoop,                     FORM_PHOENIX            },
         {       &gsn_second_attack,             FORM_DRAGON             },
         {       &gsn_enhanced_damage,           FORM_DRAGON             },
         {       &gsn_dual,                      FORM_DRAGON             },
@@ -809,6 +810,7 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
         {       &gsn_bite                       },
         {       &gsn_maul                       },
         {       &gsn_crush                      },
+        {       &gsn_swoop                      },
 
         /*
          * Skills below gagged by vamps but shown by werewolves
@@ -1479,6 +1481,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_tailwhip,                                0 },
         { &gsn_form_demon,                              0 },
         { &gsn_form_phoenix,                            0 },
+        { &gsn_swoop,                                   0 },
         { &gsn_form_hydra,                              0 },
         { &gsn_breathe,                                 0 },
         { &gsn_form_direwolf,                           0 },
@@ -5112,6 +5115,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_null, 0, 18,
                 "crush", "!Crush!"
+        },
+
+        {
+                "swoop", &gsn_swoop,
+                TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
+                spell_null, 0, 18,
+                "swoop", "!Swoop!"
         },
 
         /*
