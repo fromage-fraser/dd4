@@ -5857,6 +5857,76 @@ void do_slay (CHAR_DATA *ch, char *argument)
         return;
 }
 
+void do_swoop (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        char arg[MAX_INPUT_LENGTH];
+
+        if (IS_NPC(ch))
+                return;
+        
+        if(ch->form != FORM_PHOENIX)
+        {
+                send_to_char("You need to be in phoenix form to swoop.\n\r", ch);
+                return;
+        }
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_swoop))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You aren't in combat with anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument (argument, arg);
+        victim = ch->fighting;
+
+        if (arg[0] != '\0' && !(victim = get_char_room  (ch, arg)))
+        {
+                send_to_char("Swoop whom?\n\r", ch);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("You can't swoop yourself!\n\r", ch);
+                return;
+        }
+
+        if (is_safe (ch, victim))
+                return;
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+
+        send_to_char("{RYou spread your flaming wings and swoop at your opponent!{x\n\r", ch);
+        act ("$c swoops towards $N with $s flaming wings!", ch, NULL, victim, TO_ROOM);
+
+        if (number_percent () < ch->pcdata->learned[gsn_swoop])
+        {
+                arena_commentary("$n swoops at $N in their phoenix form!", ch, victim);
+
+                WAIT_STATE(ch, 1.5 * PULSE_VIOLENCE);
+                one_hit(ch,victim,gsn_swoop);
+
+                if (number_percent () < ( ch->pcdata->learned[gsn_swoop] / 3))
+                {
+                        send_to_char("{WYou circle back to swoop your opponent a second time!{x\n\r", ch);
+                        act ("$c attacks $N a second time with $s flaming wings!", ch, NULL, victim, TO_ROOM);
+                        one_hit(ch,victim,gsn_swoop);
+                }
+
+                if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                        return;
+        }
+        else
+                damage (ch, victim, 0, gsn_swoop, FALSE);
+}
+
 
 void do_whirlwind (CHAR_DATA *ch, char *argument)
 {

@@ -48,6 +48,7 @@
 
 { &gsn_form_phoenix,            &gsn_form_hydra,        80,     PRE_SHIFTER},
 { &gsn_form_phoenix,            &gsn_group_forms,       80,     PRE_SHIFTER},
+{ &gsn_swoop,                   &gsn_form_phoenix,      75,     PRE_SHIFTER},
 
 { &gsn_form_fly,                &gsn_group_forms,       85,     PRE_SHIFTER},
 { &gsn_form_fly,                &gsn_shifter_base,      60,     PRE_SHIFTER},
