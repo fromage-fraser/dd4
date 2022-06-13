@@ -1476,7 +1476,15 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-        if (!IS_AFFECTED(victim, AFF_BLIND))
+        if (!IS_AFFECTED(victim, AFF_BLIND)
+        && ( victim == ch ) )
+        {
+                send_to_char( "You can see just fine.\n\r", ch );
+                return;
+        }
+
+        if (!IS_AFFECTED(victim, AFF_BLIND)
+        && ( victim != ch ) )
         {
                 send_to_char( "They can see just fine.\n\r", ch );
                 return;
