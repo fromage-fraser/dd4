@@ -234,12 +234,12 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               502     /* Increased to 502, 1294, 382 for crush. */
-#define MAX_PRE_REQ             1294    /* Added for crush Owl 11/6/22 */
-#define MAX_SPELL_GROUP         382     /* Added for crush */
+#define MAX_SKILL               503     /* Increased to 503, 1295, 383, 73, 26 for swoop. */
+#define MAX_PRE_REQ             1295    /* Added for swoop Owl 13/6/22 */
+#define MAX_SPELL_GROUP         383     /* Added for swoop */
 #define MAX_GROUPS              52
-#define MAX_FORM_SKILL          72      /* for form skill table */
-#define MAX_VAMPIRE_GAG         25      /* ugly vampire/werewolf hack */
+#define MAX_FORM_SKILL          73      /* for form skill table */
+#define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */
 
 
 /*
@@ -1662,6 +1662,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_DRAGON_CLAWS           57
 #define OBJ_HYDRA_TEETH            58
 #define OBJ_SNAKE_BITE             59
+#define OBJ_PHOENIX_BEAK           500
 
 /* this will be for the quest mobs */
 #define QUEST_JUN1                              1
@@ -3210,6 +3211,7 @@ extern int gsn_soar;
 extern int gsn_smoke_bomb;
 extern int gsn_snap_shot;
 extern int gsn_crush;
+extern int gsn_swoop;
 
 /*
  *  Deity gsns
@@ -3761,6 +3763,7 @@ DECLARE_DO_FUN( do_suicide                      );
 DECLARE_DO_FUN( do_knife_toss                   );
 DECLARE_DO_FUN( do_smoke_bomb                   );
 DECLARE_DO_FUN( do_snap_shot                    );
+DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
 
 
 /*

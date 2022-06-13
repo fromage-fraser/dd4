@@ -239,6 +239,7 @@ const struct cmd_type cmd_table [] =
         { "stun",       do_stun,        POS_STANDING,    0,  LOG_NORMAL },
         { "smash",      do_smash,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "strangle",   do_strangle,    POS_FIGHTING,    0,  LOG_NORMAL },
+        { "swoop",      do_swoop,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "suck",       do_suck,        POS_FIGHTING,    0,  LOG_NORMAL },
         { "tetsui",     do_tetsui,      POS_FIGHTING,    0,  LOG_NORMAL },
         { "thrust",     do_thrust,      POS_FIGHTING,    0,  LOG_NORMAL },

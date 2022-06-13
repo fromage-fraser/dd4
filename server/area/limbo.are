@@ -1147,6 +1147,19 @@ There are some herbs here.~
 26 0 1|16384
 0~ 0~ 0~ 0~
 1 0 0
+
+#500
+sftbeak~
+beak~
+Your beak clacks as you screech at your enemies.~
+~
+5 16777216|67108864 0
+0~ 15~ 20~ 14~
+1 10000 7500
+A
+18 15
+A
+19 10
 #0
 
 

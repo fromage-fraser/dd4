@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [11 June 2022]
+    [13 June 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,9 +213,9 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew skill Crush for Shifters is in!{x
+    {WShifter phoenix form now has a beak and the ability to Swoop!{x
 
-    {WNew skill Smoke Bomb for Thieves is in!{x
+    {WNew skill Crush for Shifters is in!{x
 
 
 To Enter the Dragons Domain press <Return>.
@@ -252,6 +252,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 {WJune 2022{x
 
+- Shifter phoenix form has a beak and the 'swoop' ability
 - Added 'crush' as in-between round attack for shifter in bear form
 - Made sure rangers can get 'dowse' and 'forage' from all trainers
 
@@ -4608,6 +4609,18 @@ Syntax: wolfbite <target>
 A tiger's BITE or the werewolf's WOLFBITE is a feared attack. Let a TIGER
 or WOLF sink its powerful jaws into anything, and the reason will become
 obvious.
+~
+
+0 SWOOP~
+Syntax: swoop <optional target>
+
+A shifter, in their phoenix form, can attempt to SWOOP at a foe during 
+battle, doing damage to them with their fiery wings.  They have a chance 
+of being fast enough to quickly circle back and SWOOP the same opponent 
+a second time.  
+
+This attack may optionally be directed at a different opponent from the one 
+with the shifter's current focus, in a group battle situation.
 ~
 
 0 CRUSH~
