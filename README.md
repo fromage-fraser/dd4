@@ -98,12 +98,13 @@ if you don't want this behaviour.
 ## Files
 
 | Directory         | Contents                          | Notes
-| ---               | ---                               | ---
+| ---------         | --------                          | -----
 | `server/area/`    | Area files                        | *
 | `server/player/`  | Player files ("pfiles")           | *
 | `server/src/`     | Source code                       |
 | `faq/`            | Frequently Asked Questions        | See below
 | `maps/`           | Maps generated from area files    | See below
+| `builder/`        | Docs and tools for area building  |
 
 `*` These directories are both mounted when using the docker-compose file to run the MUD.
     Areas can be modified and characters saved.
