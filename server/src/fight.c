@@ -1961,6 +1961,14 @@ void stop_fighting (CHAR_DATA *ch, bool fBoth)
                         if (is_affected(fch, gsn_coil))
                                 affect_strip(fch, gsn_coil);
 
+                        /* 
+                         * Shade - 15.6.22 belongs here
+                         */
+
+                        if (is_affected(fch, gsn_unarmed_combat))
+                                affect_strip(fch, gsn_unarmed_combat);
+
+
                         update_pos(fch);
                 }
         }
@@ -2466,7 +2474,12 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                         gch->rage -= UMIN(gain, gch->rage);
                 }
 
-                affect_strip(gch, gsn_unarmed_combat);
+                /* 
+                 * Shade 15.6.22
+                 *
+                 * This should be in stop_fighting
+                 *        affect_strip(gch, gsn_unarmed_combat); 
+                 * */
 
                 if (gch->pcdata->questmob == victim->pIndexData->vnum)
                 {
@@ -2781,7 +2794,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                  */
 
                 if (dam > 0)
-                        sprintf(buf2, "{W$c{x %s {Wyou%c{x",       vp, punct);
+                        sprintf(buf2, "{W$c %s {Wyou%c{x",       vp, punct);
                 else
                         sprintf(buf2, "$n %s you%c",       vp, punct);
                 
