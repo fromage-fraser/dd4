@@ -1567,25 +1567,25 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_IS_NPC                      BIT_0   /* Auto set for mobs */
 #define ACT_SENTINEL                    BIT_1   /* Stays in one room */
 #define ACT_SCAVENGER                   BIT_2   /* Picks up objects */
-#define ACT_QUESTMASTER                 BIT_3   /* for quests */
+#define ACT_QUESTMASTER                 BIT_3   /* For quests */
 #define ACT_AGGRESSIVE                  BIT_5   /* Attacks PC's */
 #define ACT_STAY_AREA                   BIT_6   /* Won't leave area */
 #define ACT_WIMPY                       BIT_7   /* Flees when hurt */
 #define ACT_PET                         BIT_8   /* Auto set for pets */
-#define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as test target */
+#define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as quest target */
 #define ACT_PRACTICE                    BIT_10  /* Can practice PC's */
 #define ACT_GAMBLE                      BIT_11  /* Runs a gambling game */
 #define ACT_NOCHARM                     BIT_12  /* Not charmable - Brutus */
-#define ACT_IS_HEALER                   BIT_13  /* for healer spec */
-#define ACT_IS_FAMOUS                   BIT_14  /* award fame for kill */
-#define ACT_LOSE_FAME                   BIT_15  /* lose fame for kill */
-#define ACT_WIZINVIS_MOB                BIT_16  /* mob cant be seen by players */
-#define ACT_MOUNTABLE                   BIT_17  /* mob can be ridden */
-#define ACT_free                        BIT_18  /* FREE :) was ACT_MOUNTED */
+#define ACT_IS_HEALER                   BIT_13  /* For healer spec */
+#define ACT_IS_FAMOUS                   BIT_14  /* Award fame for kill */
+#define ACT_LOSE_FAME                   BIT_15  /* Lose fame for kill */
+#define ACT_WIZINVIS_MOB                BIT_16  /* Mob cant be seen by players */
+#define ACT_MOUNTABLE                   BIT_17  /* Mob can be ridden */
+#define ACT_TINKER                      BIT_18  /* Mob can repair equipment  - Owl */
 #define ACT_BANKER                      BIT_19  /* Banker Mobs  - Brutus */
-#define ACT_IDENTIFY                    BIT_20  /* mob can ID things */
-#define ACT_DIE_IF_MASTER_GONE          BIT_21  /* destroy mob if master not in room; Gezhp */
-#define ACT_CLAN_GUARD                  BIT_22  /* protects from some combat skills; Gezhp */
+#define ACT_IDENTIFY                    BIT_20  /* Mob can ID things */
+#define ACT_DIE_IF_MASTER_GONE          BIT_21  /* Destroy mob if master not in room; Gezhp */
+#define ACT_CLAN_GUARD                  BIT_22  /* Protects from some combat skills; Gezhp */
 #define ACT_NO_SUMMON                   BIT_23  /* Mob may not be summoned; Gezhp */
 #define ACT_NO_EXPERIENCE               BIT_24  /* No exp rewarded for kill; Gezhp */
 
@@ -2493,6 +2493,11 @@ struct obj_index_data
         int             ego_flags;
 };
 
+/*
+ * Timer-remaining ticks at which an object either becomes visibly DAMAGED or appears nearly destroyed (ALERT)
+ */
+#define TIMER_DAMAGED        20
+#define TIMER_ALERT          10
 
 /*
  * One object.
@@ -2520,6 +2525,7 @@ struct obj_data
         int             cost;
         int             level;
         int             timer;
+        int             timermax;
         int             value [ 4 ];
         bool            deleted;
         int             trap_eff;
@@ -3578,6 +3584,7 @@ DECLARE_DO_FUN( do_destrier                     );
 DECLARE_DO_FUN( do_pattern                      );
 DECLARE_DO_FUN( do_soar                         );
 DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
+DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );

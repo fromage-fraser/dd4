@@ -3986,7 +3986,8 @@ void do_poison_weapon(CHAR_DATA *ch, char *argument)
 
         SET_BIT(obj->extra_flags, ITEM_POISONED);
         set_obj_owner(obj, ch->name);
-        obj->timer = (in_c_room) ? 30 + ( ( ch->level * mod_room_bonus ) / 100 ) * 2  : 30 + ch->level * 2;
+        obj->timer    = (in_c_room) ? 30 + ( ( ch->level * mod_room_bonus ) / 100 ) * 2  : 30 + ch->level * 2;
+        obj->timermax = (in_c_room) ? 30 + ( ( ch->level * mod_room_bonus ) / 100 ) * 2  : 30 + ch->level * 2;
 
         act("The remainder of the poison eats through $p.", ch, wobj, NULL, TO_CHAR);
         act("The remainder of the poison eats through $p.", ch, wobj, NULL, TO_ROOM);
@@ -4111,7 +4112,8 @@ void do_bladethirst (CHAR_DATA *ch, char *argument)
 
         SET_BIT(obj->extra_flags, ITEM_BLADE_THIRST);
         set_obj_owner(obj, ch->name);
-        obj->timer = ( in_sc_room ) ? 60 + (ch->level / 15) * ( 30 * mod_room_bonus / 100) : 60 + (ch->level / 15) * 30;
+        obj->timer    = ( in_sc_room ) ? 60 + (ch->level / 15) * ( 30 * mod_room_bonus / 100) : 60 + (ch->level / 15) * 30;
+        obj->timermax = ( in_sc_room ) ? 60 + (ch->level / 15) * ( 30 * mod_room_bonus / 100) : 60 + (ch->level / 15) * 30;
 
         act("The remainder of the potion eats through $p.", ch, wobj, NULL, TO_CHAR);
         act("The remainder of the potion eats through $p.", ch, wobj, NULL, TO_ROOM);

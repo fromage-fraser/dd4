@@ -2185,6 +2185,7 @@ void death_cry (CHAR_DATA *ch)
                 name = IS_NPC(ch) ? ch->short_descr : ch->name;
                 obj = create_object(get_obj_index(body_part_vnum), 0);
                 obj->timer = number_range(4, 7);
+                obj->timermax = obj->timer;
 
                 /* Set body_part flag so you can't locate magically */
                 SET_BIT(obj->extra_flags, ITEM_BODY_PART);
@@ -5047,6 +5048,7 @@ void do_decapitate (CHAR_DATA *ch, char *argument)
                         name = IS_NPC(victim) ? victim->short_descr : victim->name;
                         obj = create_object(get_obj_index(vnum), 0);
                         obj->timer = number_range(4, 7);
+                        obj->timermax = obj->timer;
 
                         sprintf(buf, obj->short_descr, name);
                         free_string(obj->short_descr);
