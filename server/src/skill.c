@@ -1814,6 +1814,7 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         obj->affected       = paf;
 
         obj->timer          = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timermax       = obj->timer;
         set_obj_owner(obj, ch->name);
 }
 
@@ -1956,7 +1957,8 @@ void do_forge (CHAR_DATA *ch, char *argument)
         paf->next           = obj->affected;
         obj->affected       = paf;
 
-        obj->timer = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timer    = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timermax = obj->timer; 
         set_obj_owner(obj, ch->name);
 }
 
@@ -2907,7 +2909,8 @@ void do_dowse(CHAR_DATA *ch, char *arg)
         else
         {
                 spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0 );
-                spring->timer = ch->level;
+                spring->timer    = ch->level;
+                spring->timermax = spring->timer;
                 obj_to_room( spring, ch->in_room );
                 send_to_char( "You search for a water source and find a small spring.\n\r", ch);
                 act( "$n searches for a water source, and locates a small spring.",
@@ -3043,6 +3046,7 @@ void do_gather (CHAR_DATA *ch, char *arg)
                 herb->description       = str_dup( herb_table[ herb_type ].long_desc );
                 herb->item_type         = herb_table[ herb_type ].type;
                 herb->timer             = number_range( 200, 250 );
+                herb->timermax          = herb->timer;
                 herb->level             = ch->level;
                 herb->value[0]          = 10;
                 herb->value[1]          = skill_lookup( herb_table[ herb_type ].spell );

@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [13 June 2022]
+    [16 June 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,9 +213,10 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
+    {WTINKER mobs can repair damaged gear (sharpened/forged/poisoned items etc)!{x
+
     {WShifter phoenix form now has a beak and the ability to Swoop!{x
 
-    {WNew skill Crush for Shifters is in!{x
 
 
 To Enter the Dragons Domain press <Return>.
@@ -251,7 +252,8 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WJune 2022{x
-
+- Added ACT_TINKER.  Mobs with it can repair items that have
+  timers on them (sharpened/forged/poisoned weapons etc)
 - Shifter phoenix form has a beak and the 'swoop' ability
 - Added 'crush' as in-between round attack for shifter in bear form
 - Made sure rangers can get 'dowse' and 'forage' from all trainers
@@ -332,6 +334,13 @@ sufficiently hurt for the decapitation attempt to succeed.  You also need
 to be using a 'vorpal' weapon.
 ~
 
+0 REPAIR~
+Syntax: repair <target>
+
+Certain mobs marked as "tinkers" can repair items that degrade, such as 
+sharpened, forged, and poisoned items.  The higher level and more damaged 
+an item is, the more it will cost to repair.
+~
 
 0 MOONRAY SUNRAY~
 Syntax: cast moonray

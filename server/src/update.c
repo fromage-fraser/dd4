@@ -1703,7 +1703,7 @@ void obj_update()
                         }
                 }
 
-                if (obj->timer == 20 && obj->carried_by)
+                if (obj->timer == TIMER_DAMAGED && obj->carried_by)
                 {
                         if (obj->item_type == ITEM_WEAPON
                             && IS_OBJ_STAT(obj, ITEM_POISONED))
