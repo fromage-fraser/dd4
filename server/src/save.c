@@ -342,6 +342,7 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
         fprintf(fp, "Weight       %d\n",        obj->weight                 );
         fprintf(fp, "Level        %d\n",        obj->level                  );
         fprintf(fp, "Timer        %d\n",        obj->timer                  );
+        fprintf(fp, "TimerMax     %d\n",        obj->timermax               );
         fprintf(fp, "Cost         %d\n",        obj->cost                   );
         fprintf(fp, "Values       %d %d %d %d\n",
                 obj->value[0], obj->value[1], obj->value[2], obj->value[3]  );
@@ -1217,6 +1218,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
 
                     case 'T':
                         KEY("Timer",    obj->timer,             fread_number(fp));
+                        KEY("TimerMax", obj->timermax,          fread_number(fp));
                         break;
 
                     case 'V':
@@ -1250,9 +1252,9 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'W':
-                        KEY("WearFlags",        obj->wear_flags,        fread_number(fp));
-                        KEY("WearLoc",  obj->wear_loc,          fread_number(fp));
-                        KEY("Weight",   obj->weight,            fread_number(fp));
+                        KEY("WearFlags", obj->wear_flags,        fread_number(fp));
+                        KEY("WearLoc",   obj->wear_loc,          fread_number(fp));
+                        KEY("Weight",    obj->weight,            fread_number(fp));
                         break;
 
                 }

@@ -154,7 +154,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat(buf, "{R(Thirsty){x ");
 
         if (obj->timer > 0
-            && obj->timer < 21
+            && obj->timer <= TIMER_DAMAGED
             && ((obj->item_type == ITEM_WEAPON
                  && (IS_OBJ_STAT(obj, ITEM_POISONED)
                      || IS_OBJ_STAT(obj, ITEM_SHARP)
@@ -912,7 +912,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         }
 
                     case ITEM_WEAPON:
-                        if (obj->timer > 0 && obj->timer < 11)
+                        if (obj->timer > 0 && obj->timer <= TIMER_ALERT)
                         {
                                 if (IS_SET(obj->extra_flags, ITEM_POISONED))
                                         send_to_char("Poison is beginning to seriously corrode the blade.\n\r", ch);
@@ -924,7 +924,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         break;
 
                     case ITEM_ARMOR:
-                        if (obj->timer > 0 && obj->timer < 11
+                        if (obj->timer > 0 && obj->timer <= TIMER_ALERT 
                             && IS_SET(obj->extra_flags, ITEM_FORGED))
                                 send_to_char("The forged metal looks to be in poor condition.\n\r", ch);
                         break;
@@ -4107,6 +4107,82 @@ void do_pkillers( CHAR_DATA *ch, char *argument )
 void do_vanquished( CHAR_DATA *ch, char *argument )
 {
         print_clan_vanq_table(ch, argument);
+}
+
+
+/*
+ *  Repair objects from special 'tinker' mobs
+ */
+
+void do_repair( CHAR_DATA *ch, char *argument )
+{
+        OBJ_DATA *obj;
+        CHAR_DATA *rch;
+        char buf [ MAX_STRING_LENGTH ];
+        int cost;
+        for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
+        {
+                if (IS_NPC(rch) && IS_SET(rch->act, ACT_TINKER))
+                        break;
+        }
+
+        if (!rch)
+        {
+                send_to_char("No one here seems to know much about fixing anything.\n\r", ch);
+                return;
+        }
+
+        if (argument[0] == '\0')
+        {
+                act("$C asks you, 'What would you like to have repaired?'",
+                    ch, NULL, rch, TO_CHAR);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, argument)))
+        {
+                send_to_char("You don't have that item.\n\r", ch);
+                return;
+        }
+
+        /* Should be able to fix anything inorganic, pretty much */
+        if ( ( obj->item_type == ITEM_POTION )
+        ||   ( obj->item_type == ITEM_FOOD )
+        ||   ( obj->item_type == ITEM_PILL )
+        ||   ( obj->item_type == ITEM_PAINT )
+        ||   ( obj->item_type == ITEM_POISON_POWDER )
+        ||   ( obj->item_type == ITEM_MOB )
+        ||   ( obj->item_type == ITEM_CORPSE_NPC )
+        ||   ( obj->item_type == ITEM_CORPSE_PC ) )
+        {
+                act("$C says, 'I'm sorry, $n, I can't fix that kind of thing.'",
+                    ch, NULL, rch, TO_CHAR);
+                return;
+        }
+
+        if (total_coins_char(ch) < ( ( obj->timermax - obj->timer ) * obj->level ) )
+        {
+                act( "$C decides you do not have enough money for $s services.",
+                    ch, obj, rch, TO_CHAR );
+                return;
+        }
+
+        if ( ( obj->timer <= 0 )
+        ||   ( obj->timer == obj->timermax )
+        ||   ( obj->timermax <= 0 ) )
+        {
+                act( "$C rejects your item.  It is not a suitable candidate for $s services.",
+                    ch, obj, rch, TO_CHAR );
+                return;
+        }
+
+        cost = (obj->timermax - obj->timer) * obj->level;
+
+        sprintf( buf, "{WYou pay %d coppers for the repair.{x\n\r", cost);
+        send_to_char( buf, ch );
+        coins_from_char(cost, ch);
+        act("$C goes to work on $p and soon has it looking as good as new!", ch, obj, rch, TO_CHAR);
+        obj->timer = obj->timermax;
 }
 
 

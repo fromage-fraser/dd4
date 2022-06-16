@@ -860,6 +860,18 @@ He seems like a man who knows many secrets.
 & 70 'archery knowledge'
 & 70 'dowse'
 & 70 'forage'
+#3160
+tinker tinkerer~
+the tinker~
+The tinker stands here.
+~
+An cheerful older man with a rougish gleam in his eye, the Tinker has the air of an intelligent, 
+well-travelled, and good-natured person who really knows his business.
+~
+2|32768|262144|16777216 0 900 S
+50 2 2 1d1+30000 1d8+32
+0 0
+8 8 1
 #0
 
 #MOBPROGS
@@ -3413,7 +3425,8 @@ S
 #3046
 Eastern end of Alley~
 You are standing at the eastern end of the alley.  An old three-story
-warehouse is directly south of here.
+warehouse is directly south of here, while a tinker's shop lies to
+the east.
 ~
 0 1024 1
 D0
@@ -3421,6 +3434,11 @@ The Shapeshifter Guild is north.
 ~
 ~
 0 -1 3219
+D1
+The Tinker's shop is east.
+~
+~
+0 -1 3222
 D2
 You see the warehouse.
 ~
@@ -4875,7 +4893,7 @@ D3
 0 -1 3204
 S
 #3206
-Entrance To the Brawlers Guild.~
+Entrance To the Brawlers Guild~
 You are standing in the entrance to the Brawlers Guild.  The building is made
 from oak which gives it a lived in feel. You can proceed to the south, or back
 to the alley to the north.
@@ -4910,7 +4928,7 @@ The practice yard.
 0 -1 3218
 S
 #3218
-Practice Yard.~
+Practice Yard~
 Here your Guildmaster waits to train you. The only exit is to the west.
 ~
 0 8|1024 0
@@ -4921,7 +4939,7 @@ There is a bar there.
 0 -1 3207
 S
 #3208
-The Weapon Donation Room.~
+The Weapon Donation Room~
 Scattered around the room lie various weapons. A perfect place for finding a
 backup weapon, or if you have lost yours.
 ~
@@ -4932,7 +4950,7 @@ D2
 0 -1 3216
 S
 #3209
-The Armor Donation Room.~
+The Armor Donation Room~
 This room is where unwanted armor comes to die, perhaps you can use some?
 ~
 0 8|1024 0
@@ -4942,7 +4960,7 @@ D3
 0 -1 3216
 S
 #3210
-The Magical donation room.~
+The Magical Donation Room~
 Scanning around, you see a lot of magical items on the floor; perhaps some could
 be useful.
 ~
@@ -4953,7 +4971,7 @@ D0
 0 -1 3216
 S
 #3211
-The Miscellaneous Donation Room.~
+The Miscellaneous Donation Room~
 The room is coverd with miscellaneous junk.
 ~
 0 8|1024 0
@@ -4963,7 +4981,7 @@ D5
 0 -1 3216
 S
 #3212
-The Newbie Donation Room.~
+The Newbie Donation Room~
 You walk into newbie paradise. From wall to wall, you can see items that are
 level 5 or below, great for getting started in this cruel virtual world.
 ~
@@ -4974,7 +4992,7 @@ D4
 0 -1 3216
 S
 #3216
-Donation Temple.~
+Donation Temple~
 The donation Temple. Where the generousity of others, means you can equip
 yourself. To the north is where weapon donations are kept, to the east, armor
 to the south, magic-items, above you miscellaneous items, and a stairwell leads
@@ -5007,7 +5025,7 @@ D5
 0 -1 3212
 S
 #3219
-Entrance To the Shapeshifters Guild.~
+Entrance To the Shapeshifters Guild~
 You are standing in the entrance to the Shapeshifters Guild.  The building is
 made from oak which gives it a lived in feel. You can proceed to the north, or
 back to the alley to the south.
@@ -5040,7 +5058,7 @@ The practice yard.
 0 -1 3221
 S
 #3221
-Practice Yard.~
+Practice Yard~
 Here your Guildmaster waits to train you. The only exit is to the west.
 ~
 0 8|1024 0
@@ -5049,6 +5067,26 @@ There is a bar here.
 ~
 ~
 0 -1 3220
+S
+#3222
+The Tinker's Shop~
+The Tinker's shop is crammed with all kind of materials and tools, which he uses to repair 
+the wide variety of damaged items that adventurers bring him.  You doubt there's much he 
+can't fix.  To the west, outside, is the eastern end of Dark Alley.
+On the wall is a small note.
+~
+0 8|1024 0
+D3
+You see the eastern end of Dark Alley.
+~
+~
+0 -1 3046
+E
+note~
+You can use this command to repair items here:
+
+  repair <item>     Repair a degrading item you own, assuming you can afford it.
+~
 S
 
 #0
@@ -5382,6 +5420,8 @@ M 1 3154 1 3206                 the brawler to Entrance To the Brawlers Guild.
 M 1 3156 1 3207                 the waiter to Guild of the Brawler
 G 1 3001 100
 G 1 3004 100
+*
+M 1 3160 1 3222                 the Tinker to his shop
 *
 M 1 3155 1 3218                 the guildmaster to Practice Yard.( brawler)
 *

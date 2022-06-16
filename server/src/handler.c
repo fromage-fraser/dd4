@@ -2414,10 +2414,11 @@ char *act_bit_name (int vector)
         if ( vector & ACT_GAMBLE                ) return "gamble";
         if ( vector & ACT_NOCHARM               ) return "no_charm";
         if ( vector & ACT_IS_HEALER             ) return "is_healer";
-        if ( vector & ACT_IS_FAMOUS             ) return "_is_famous";
+        if ( vector & ACT_IS_FAMOUS             ) return "is_famous";
+        if ( vector & ACT_LOSE_FAME             ) return "lose_fame";
         if ( vector & ACT_WIZINVIS_MOB          ) return "wizinvis_mob";
         if ( vector & ACT_MOUNTABLE             ) return "mountable";
-        if ( vector & ACT_free                  ) return "free";
+        if ( vector & ACT_TINKER                ) return "tinker";
         if ( vector & ACT_BANKER                ) return "banker";
         if ( vector & ACT_IDENTIFY              ) return "identify";
         if ( vector & ACT_DIE_IF_MASTER_GONE    ) return "die_if_master_gone";

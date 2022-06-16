@@ -914,8 +914,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 obj->description );
         strcat( buf1, buf );
 
-        sprintf( buf, "Level: {W%d{x  Cost: {W%d{x  Timer: {W%d{x  Number: {W%d{x/{W%d{x  Weight: {W%d{x/{W%d{x\n\r",
-                obj->level, obj->cost, obj->timer, 1, get_obj_number( obj ),
+        sprintf( buf, "Level: {W%d{x  Cost: {W%d{x  Timer: {W%d{x ({R%d{x) Number: {W%d{x/{W%d{x  Weight: {W%d{x/{W%d{x\n\r",
+                obj->level, obj->cost, obj->timer, obj->timermax, 1, get_obj_number( obj ),
                 obj->weight, get_obj_weight( obj ) );
         strcat( buf1, buf );
 
@@ -4276,7 +4276,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
                              "or:     oset <object> <string> <value>\n\r\n\r"
                              "Field being one of:\n\r"
                              "  value0 value1 value2 value3 owner ego\n\r"
-                             "  extra wear level weight cost timer\n\r\n\r"
+                             "  extra wear level weight cost timer timermax\n\r\n\r"
                              "String being one of:\n\r"
                              "  name short long ed\n\r", ch );
                 return;
@@ -4359,6 +4359,12 @@ void do_oset( CHAR_DATA *ch, char *argument )
         if ( !str_cmp( arg2, "timer" ) )
         {
                 obj->timer = value;
+                return;
+        }
+
+        if ( !str_cmp( arg2, "timermax" ) )
+        {
+                obj->timermax = value;
                 return;
         }
 

@@ -1330,6 +1330,7 @@ void spell_continual_light (int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 set_obj_owner(light, ch->name);
                 light->timer = ( ch->level * 2 * mod_room_bonus ) / 100;
+                light->timermax = light->timer;
         }
 
         obj_to_room( light, ch->in_room );
@@ -1408,6 +1409,7 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
 
         spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), 0 );
         spring->timer = ( in_sc_room ) ? ( level * mod_room_bonus )  / 100 : level;
+        spring->timermax = spring->timer;
         obj_to_room( spring, ch->in_room );
 
         act( "Water flows from $p.", ch, spring, NULL, TO_CHAR );
