@@ -2161,9 +2161,30 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         ch->copper = startcoins->copper;
                         free (startcoins);
 
+                        /*
+                         * Shade 17.6.22
+                         *
+                         * Make it easier for starting characters; will edit here in the level 0 code not in clear_char
+                         * 
+                         * Give them a few of each pracs to get going, make starting hits 50 not 20
+                         */
+
+                        
+                        ch->max_hit = 50;                        
                         ch->hit = ch->max_hit;
+
+                        ch->pcdata->str_prac = 2;
+                        ch->pcdata->int_prac = 2;
+
+                        if (ch->class == CLASS_CLERIC || ch->class == CLASS_MAGE || ch->class == CLASS_PSIONICIST)
+                        {
+                                ch->pcdata->int_prac += 3;
+                                ch->max_mana = 150;
+                        }
+
                         ch->mana        = ch->max_mana;
                         ch->move        = ch->max_move;
+
                         set_title(ch, " is a newbie");
                         free_string(ch->prompt);
                         ch->prompt = str_dup("<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
