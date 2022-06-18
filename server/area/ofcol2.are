@@ -97,13 +97,13 @@ last sale from you.  He grins at you slightly.
 #606
 madam tracy~
 Madam Tracy~
-Madam Tracy is here, selling and buying little treasures.
+Madam Tracy is here, selling, buying, and repairing items.
 ~
 Madam Tracy is a bit old, but not to the point of senility.  Besides, she knows
 the hard ways of this world and is ready for it.  She spends her time at the
-shop, trading little things (for a wee bit of profit).
+shop, trading and repairing things (for a tidy profit).
 ~
-2|32768 8192 1000 S
+2|32768|262144 8192 1000 S
 20 1 -10 1d1+1500 1d4+15
 0 20000
 8 8 2
@@ -1320,10 +1320,12 @@ You see the Pawn Shop.
 0 0 606
 S
 #606
-The Pawn Shop.~
+The Pawn & Repair Shop~
      You are in a little shop filled with a lot of knick knacks and semi-
 valuable goods.  There is a display case full of little treasures that you are
-sure that you or any other little kid would like to touch!  The exit is east.
+sure that you or any other little kid would like to touch!  As well as pawning
+items, you can also get items repaired here, as Madam Tracy is a competent
+tinker.  The exit is east.
 ~
 6 8 0
 D1

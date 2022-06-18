@@ -3468,9 +3468,15 @@ void do_buy (CHAR_DATA *ch, char *argument)
                 cost = get_cost(keeper, obj, TRUE);
                 cost -= cost * discount / 100;
 
-                if (cost <= 0 || !can_see_obj(ch, obj))
+                if (cost <= 0)
                 {
                         act("$n tells you 'I don't sell that -- try LIST.", keeper, NULL, ch, TO_VICT);
+                        return;
+                }
+
+                if (!can_see_obj(ch, obj))
+                {
+                        send_to_char ("Buy what?  You can't see anything to buy.\n\r",ch);
                         return;
                 }
 

@@ -360,7 +360,7 @@ Jenk~
 Jenk is here, ready to sell you anything!
 ~
 Jenk is a lowdown no good shopkeeper who'll sell anything to make a
-gold!  He's corrupt, greedy, and your kind of man!
+gold coin!  He's corrupt, greedy, and your kind of man!
 ~
 2|512|32768|16777216 0 -500 S
 53 0 0 6d10+590 1d8+18
@@ -732,7 +732,7 @@ this creature...
 #30252
 Farmer~
 the Farmer~
-The farmer sells her lackluster with all the excitement it warrants.
+The farmer sells her lackluster wares with all the enthusiasm they warrant.
 ~
 She looks wearied, but keeps hanging in there!
 ~
@@ -834,6 +834,21 @@ opportunity.
 & 80 'morphing knowledge'
 & 30 'vampire base'
 & 30 'werewolf base'
+#30258
+tim timothy tinker~
+Tim the Tinker~
+Tim the tinker grins broadly as you enter his store.
+~
+Tim is Kerofk's legendary tinker; there's not much he can't fix if he puts
+his mind to it.  A ginger-haired, affable man, there's nothing he enjoys
+more than rescuing old, tired equipment from the scrap heap.   He welcomes
+you to his establishment and asks you just to let him know if you want him
+to REPAIR something.
+~
+2|32768|262144|16777216 0 800 S
+49 0 20 6d10+390 1d8+12
+0 0
+8 8 1
 #0
 
 
@@ -2103,13 +2118,17 @@ Business Road, South~
 Shops line this road , some open and some closed.  Northwards you
 see the intersection of of Center Road and Business Road, and
 southwards is another intersection--Business Road and Moon Gate Road.
-   There is a shop to the west, a dirty sign proclaiming it 'OPEN'.
+   There is a shop to the west, and another to the east.
 ~
 0 8 1
 D0
 ~
 ~
 0 -1 30224
+D1
+~
+~
+0 -1 30355
 D2
 ~
 ~
@@ -4332,6 +4351,19 @@ D5
 ~
 0 0 30200
 S
+#30355
+Tinker Tim's Timely Repairs~
+This cluttered but cheerful store is full of the bits and pieces a tinker 
+needs to mend damaged items, as well as repaired items for sale that unscrupulous 
+or indigent customers haven't uplifted.  You imagine you could get just about 
+anything fixed here if you had the money!
+~
+0 4|8|1024 0
+D3
+~
+~
+0 0 30230
+S
 #0
 
 
@@ -4380,6 +4412,7 @@ G 1 30217 100           /*fly lure*/
 G 1 30243 1000          /*breast plate*/
 G 1 30244 1000          /*round cap*/
 G 1 30245 1000          /*chain leggings*/
+M 1 30258 1 30355               /*Tim*/
 M 1 30212 4 30207               /*unlucky gambler*/
 M 1 30212 4 30207               /*unlucky gambler*/
 M 1 30212 4 30241               /*unlucky gambler*/

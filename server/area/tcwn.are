@@ -978,6 +978,19 @@ The direwolf is a dangerous and fierce pet, treat it with respect.
 40 0 0 0d0+0 0d0+0
 36 0
 8 8 0
+#31066
+simeon tinker~
+Simeon the tinker~
+Simeon the tinker stands calmly here, ready to serve.
+~
+Simeon is a trim, orderly-looking gentleman in his mid-60s.  He politely
+informs you that if you'd like him to repair an item simply to let him 
+know and he'll get to work on it straight away.
+~
+2|64|262144|16777216 0 0 S
+6 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -3223,7 +3236,7 @@ S
 Stalwart Lane~
 You are marching along the northern half of Stalwart Lane. To the south lies
 Victory Parade, the main road of the City, while to the north runs Justice
-Street. There is an armory to the east here.
+Street. There is an armory to the east of here, and a tinkery to the west.
 ~
 0 1024 1
 D0
@@ -3241,6 +3254,11 @@ Victory Parade
 ~
 ~
 0 -1 31008
+D3
+The Tinkery
+~
+~
+0 -1 31324
 S
 #31043
 The Armory~
@@ -4492,6 +4510,20 @@ Victory Parade East
 ~
 0 -1 31011
 S
+#31324
+The Tinkery~
+This is Anon's Tinkery, where the town's tinker repairs damaged and degraded
+equipment.  This tinker keeps a clean, organised shop; much less cluttered
+and chaotic than some others you have seen!  Just let him know if you'd like
+something repaired and he'll be more than happy to help.
+~
+0 8|1024 0
+D1
+Stalwart Lane
+~
+~
+0 -1 31042
+S
 #0
 
 
@@ -4804,6 +4836,8 @@ M 1 31062 1 31071      loads merchant
 M 1 31063 1 31064      loads ATM machine
 *
 M 1 31064 1 31086      loads bard trainer
+*
+M 1 31066 1 31324      loads Simeon to Tinkery
 S
 
 

@@ -535,6 +535,22 @@ him.
 & 110 'forage'
 & 110 'musicianship'
 & 110 'resistance magiks'
+
+#29135
+heralt tinker~
+Heralt, tinker of Freeport~
+Heralt, tinker of Freeport stands here.
+~
+A somewhat surly older man, Heralt has a beaten-down look about him; you 
+suspect he doesn't really love his job.  The orderliness of the store, and 
+the quality of the repairs you can see he's done, however, suggest he's 
+a more than competent tinker, able to repair any degrading items you might 
+have on you.
+~
+2|262144|524288 0 100 S
+48 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 #0
 
 
@@ -1932,9 +1948,14 @@ Naval Street~
 You stand on Naval street, which has been paved with engraved stones,
 each stone commemorating a naval engagement in the city's history. Cadets
 drill at the end of the street, marching up and down, over and over in
-tight formation. To the south is an inn called The Crew's Quarters.
+tight formation. To the south is an inn called The Crew's Quarters, while
+a tinker's shop lies to the north.
 ~
 0 0 1
+D0
+Freeport Tinkery~
+~
+0 -1 29177
 D1
 Naval Street~
 ~
@@ -2373,6 +2394,19 @@ Naval Street~
 ~
 0 -1 29154
 S
+#29177
+The Freeport Tinkery~
+This large tinkery is very efficiently organised for the repair of items, with
+tools, current, and finished orders neatly arranged around the room.  It has the
+look of a place that could be quickly scaled up or down to accomodate more or less
+work, as might be demanded by the vagaries of demand in a port city.
+~
+0 8 0
+D2
+Naval Street~
+~
+0 -1 29154
+S
 #0
 
 
@@ -2493,6 +2527,7 @@ D 1 29164 4 2              ; On a Secret Staircase Lock Up
 D 1 29175 4 1             ; On the Hidden Harbor Close South
 D 1 29169 0 1              ; In the Hidden Cavern Close North
 M 1 29134 1 29153           Stathog
+M 1 29135 1 29177           Heralt to Tinkery
 S
 
 
