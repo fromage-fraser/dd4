@@ -1007,7 +1007,7 @@ mpecho Alvn suddenly flinches back.
 say That sword...that's...Dear Goddess....Thasei protect me....
 say Please, leave. Please! Go!
 mpecho {YThasei's voice enters your mind:{x
-mpecho "{CI suggest you leave. I find it irkesome when my followers are{x"
+mpecho "{CI suggest you leave. I find it irksome when my followers are{x"
 mpecho "{Cterrified by people who may go crazy at any moment. It distracts{x"
 mpecho "{Cthem from loving me. Now, get. Or else...{x"
 else
@@ -1296,6 +1296,20 @@ tell Gillix $n killed me!
 tell Zylix $n killed me!
 ~
 |
+
+#28060
+tinker gyrne~
+Gyrne the tinker~
+Gyrne the tinker is working here, tinkering away.
+~
+Gyrne the tinker is one of Draagdim's finest repairsmiths.  Just ask hmi to
+fix anything you have that is falling apart, and assuming you can pay for it
+he will!
+~
+2|64|262144 8|32|8192 100 S
+45 0 0 0d0+0 0d0+0
+0 0
+0 0 1
 #0
 
 #OBJECTS
@@ -3303,14 +3317,19 @@ S
 #28039
 The Square~
 You are standing in a large square whose centre is dominated by a
-large statue. To the west is a heavy, iron-bound door.  To the north
-and south the square continues. A sign hangs here.
+large statue. To the west is a heavy, iron-bound door, while a tinker'S
+shop lies to the east.  To the north and south the square continues. 
+A sign hangs here.
 ~
 0 0 1
 D 0
 ~
 ~
 0 -1 28038
+D 1
+~
+~
+0 -1 28200
 D 2
 ~
 ~
@@ -6266,6 +6285,21 @@ D 3
 0 -1 28179
 S
 
+#28200
+The Adventurer's Repairs~
+You stand in Draagdim's tinkery, where for a fee you may repair any of your
+damaged equipment.  The walls are lined with before and after paintings of
+repaired items, some you struggle to believe have been restored to such fine
+condition based on how they looked when they came in.  Clearly, a master
+tinker runs this establishment.
+~
+0 8|8192 0
+D 3
+~
+~
+0 -1 28039
+S
+
 #0
 
 #RESETS
@@ -6720,6 +6754,7 @@ M 0 28047 7 28189               add The Royal Guardsman to The Throne Room
 M 0 28047 7 28189               add The Royal Guardsman to The Throne Room
 M 0 28047 7 28188               add The Royal Guardsman to The palace hall
 M 0 28048 2 28181               add a city guard to The gates
+M 0 28060 2 28200               add Gyrne to the tinkery
 E 0 28086 0 5                       equip a chain shirt (body)
 E 0 28085 0 11                      equip a shield (shield)
 E 0 28084 0 16                      equip a sword (wield)

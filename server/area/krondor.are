@@ -12,7 +12,7 @@ If you are reading this then you have either met or are planning to meet
 Kennan the Stablemaster located in Krondor.
 He has the most desired mounts to offer all you have to do is ask him the
 price?  All the horses are very obedient and if you tell them to stay they
-will lie down and sleep to rest as well but you have to dismounted to do
+will lie down and sleep to rest as well but you have to dismount them to do
 that.   syntax :- say 'stallion stay' if you have a stallion and so forth.
 Everything else will be revealed to you.
 ~
@@ -1256,6 +1256,20 @@ the disk quickly rotates to expose the many tendrils used for defense.
 68 20 -25 30d30+300 3d8+25
 0 0
 8 8 0
+
+#30078
+tinker master~
+the master tinker~
+Krondor's master tinker is busy repairing something.
+~
+Krondor's master tinker is a serious-looking man with a grim expression on his
+face.  While not friendly, he reeks of competence, and of someone who has put
+in the thousands of gruelling, lonely hours required ot master such a craft.
+~
+2|64|262144 0 1000 S
+50 0 0 0d0+0 0d0+0
+0 0
+8 8 1
 
 #0
 
@@ -2650,6 +2664,11 @@ From the great smell, the meat and poultry stand must be south!
 ~
 ~
 0 0 30017
+D3
+A large stall full of miscellanous objects lies to the west!
+~
+~
+0 0 30126
 S
 #30009
 Beggars Gate~
@@ -5379,6 +5398,20 @@ D2
 ~
 0 -1 30121
 S
+#30126
+Krondor's Tinkery~
+This magnificent stall is overflowing with metal and wooden goods of all 
+kinds, as well as the tools used to repair and remake them.  This is 
+Krondor's Tinkery, where Krondori's citizens great and small come to have 
+their worn goods refurbished by the city's master tinker.
+~
+0 4 1
+D1
+You see the centre of the inner city market square.
+~
+~
+0 -1 30008
+S
 #0
 
 
@@ -5884,6 +5917,8 @@ E 1 30088 100 5
 E 1 30087 100 6
 E 1 30086 100 7
 E 1 30085 100 12
+*
+M 1 30078 1 30126           Master tinker to Krondor's Tinkery
 
 D 0 30121 0 1               close the altar
 O 0 30089 0 30125           portal to room behind altar

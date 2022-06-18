@@ -588,7 +588,7 @@ The macaw looks like a strong, fearless fighter. It is a beautiful bird.
 #10251
 Raven~
 the raven~
-A large, black raven is here.
+A large black raven is here.
 ~
 The raven looks like a strong, fearless fighter.
 ~
@@ -599,7 +599,7 @@ The raven looks like a strong, fearless fighter.
 #10252
 hunting hawk~
 the hunting hawk~
-A large, hunting hawk is here.
+A large hunting hawk is here.
 ~
 The hawk looks like a strong, fearless fighter. It has been trained for
 hunting game.
@@ -611,7 +611,7 @@ hunting game.
 #10253
 Battle falcon~
 the battle falcon~
-A giant, falcon is here.
+A giant falcon is here.
 ~
 The battle falcon looks like a strong, fearless fighter. This giant breed has
 been trained especially for combat.
@@ -630,6 +630,19 @@ The Prophet talks to those who listen.
 2|8|64|512 8|32|524288|8388608 0 S
 20 0 0 0d0+0 0d0+0
 0 0
+8 8 1
+#10255
+Alex~
+Alex~
+Alex stands here.
+~
+Alex is a youngish man who has not long been practising the art of tinkery.  
+This is the first shop he has owned. Ask him to repair your equipment, if 
+you have the coin handy to pay for it.
+~
+2|32768|262144 0 800 S
+25 15 -2 1d1+999 2d10+20
+0 19000
 8 8 1
 #0
 
@@ -1193,7 +1206,7 @@ A peanut butter cookie has been left here.~
 5 15 0
 #10247
 oatmeal cookie~
-oatmeal  cookie~
+oatmeal cookie~
 A oatmeal cookie has been left here.~
 ~
 19 0 1
@@ -1440,9 +1453,9 @@ A pair of flippers are here.~
 A
 2 2
 #10277
-scuba snorkle~
-scuba snorkle~
-A scuba snorkle is on the ground.~
+scuba snorkel~
+scuba snorkel~
+A scuba snorkel is on the ground.~
 ~
 9 0 1|16
 5~ 0~ 0~ 0~
@@ -2545,8 +2558,8 @@ Marketplace~
 This is the Marketplace of Solace. Where the farmers come to sell their
 crops. The smell of vegetables and fruit fill the air. There are a couple
 other vendors selling trinkets and other items.
-These are the last stalls in the marketplace. Next to you stands the West wall
-of the town.
+These are the last stalls in the marketplace. Beyond the westernmost stall
+lies the west wall of the town.
 ~
 102 0 1
 D1
@@ -2560,10 +2573,15 @@ You see Molin's Mulburry Extract Distillery.
 ~
 0 -1 10238
 D2
-You see Jhen's Vegtable Cart.
+You see Jhen's Vegetable Cart.
 ~
 ~
 0 -1 10234
+D3
+You see Alex's Tinkery.
+~
+~
+0 -1 10318
 S
 #10234
 Jhen's Vegetable Cart~
@@ -4205,6 +4223,19 @@ You see a hallway.
 ~
 0 -1 10316
 S
+#10318
+Alex's Tinkery~
+This is Solace's tinkery, a great place to get your damaged gear fixed up.
+Metal and wooden objects are everywehre, along with the various tools the
+shop's craftsman uses to restore them.
+~
+102 8 1
+D1
+You see the Solace markets.
+~
+~
+0 -1 10233
+S
 #0
 
 
@@ -4703,6 +4734,8 @@ M 0 10248 1 10295      Secretary-Lieutenant Commander
 *
 M 0 10249 1 10273      Secretary-Sergeant at Arms
 *
+M 0 10255 1 10318      Alex to his Tinkery
+* 
 D 0 10202 3 1              close house door outside
 D 0 10246 1 1              close house door inside
 *
