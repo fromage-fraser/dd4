@@ -4156,6 +4156,7 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
                 pRoomIndex = get_room_index(number_range(0, 65535));
                 if (pRoomIndex
                     && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
+                    && !IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT)
                     && !IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER)
                     && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
                     && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY))
