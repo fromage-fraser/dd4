@@ -6900,7 +6900,7 @@ void spell_hand_of_lucifer( int sn, int level, CHAR_DATA *ch, void *vo )
         act( "A dark hand materialises to grab $N, immobilising them.", ch, NULL, victim, TO_CHAR );
         act( "A giant hand grabs you, preventing any chance of escape!",  ch, NULL, victim, TO_VICT);
         act( "Dark mist forms into a hand which grabs $N, preventing their escape.",
-            ch, NULL, victim, TO_ROOM );
+            ch, NULL, victim, TO_NOTVICT );
 }
 
 
