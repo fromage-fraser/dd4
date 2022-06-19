@@ -1468,6 +1468,9 @@ void load_area_special (FILE *fp)
                 else if (!str_cmp(next, "safe"))
                         SET_BIT(area_last->area_flags, AREA_FLAG_SAFE);
 
+                else if (!str_cmp(next, "no_teleport"))
+                        SET_BIT(area_last->area_flags, AREA_FLAG_NO_TELEPORT);
+
                 else if (!str_cmp(next, "exp_mod"))
                 {
                         num = fread_number(fp);

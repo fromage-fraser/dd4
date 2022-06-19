@@ -2481,10 +2481,11 @@ char* room_flag_name (int vector)
 
 char* area_flag_name (int vector)
 {
-        if ( vector & AREA_FLAG_SCHOOL      ) return "school";
-        if ( vector & AREA_FLAG_NO_QUEST    ) return "no_quest";
-        if ( vector & AREA_FLAG_HIDDEN      ) return "hidden";
-        if ( vector & AREA_FLAG_SAFE        ) return "safe";
+        if ( vector & AREA_FLAG_SCHOOL          ) return "school";
+        if ( vector & AREA_FLAG_NO_QUEST        ) return "no_quest";
+        if ( vector & AREA_FLAG_HIDDEN          ) return "hidden";
+        if ( vector & AREA_FLAG_SAFE            ) return "safe";
+        if ( vector & AREA_FLAG_NO_TELEPORT     ) return "no_teleport";
         return "none";
 }
 

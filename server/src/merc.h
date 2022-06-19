@@ -2096,6 +2096,7 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define AREA_FLAG_NO_QUEST      BIT_1   /* No mobs defined in area used for quests */
 #define AREA_FLAG_HIDDEN        BIT_2   /* Area not seen on 'AREA' output */
 #define AREA_FLAG_SAFE          BIT_3   /* All rooms SAFE */
+#define AREA_FLAG_NO_TELEPORT   BIT_4   /* No rooms in area can be teleported into */
 
 
 /***************************************************************************
