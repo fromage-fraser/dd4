@@ -6892,15 +6892,15 @@ void spell_hand_of_lucifer( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type     = sn;
-        af.duration = level / 20;
+        af.duration = level / 10;
         af.location = APPLY_HITROLL;
         af.modifier = -8;
         af.bitvector= AFF_HOLD;
         affect_to_char( victim, &af );
 
-        act( "A dark hand materialises to grab $N, immobilising them.", ch, NULL, victim, TO_CHAR );
-        act( "A giant hand grabs you, preventing any chance of escape!",  ch, NULL, victim, TO_VICT);
-        act( "Dark mist forms into a hand which grabs $N, preventing their escape.",
+        act( "A dark hand materialises to grab $N, immobilising $M.", ch, NULL, victim, TO_CHAR );
+        act( "{RA giant hand grabs you, preventing any chance of escape!{x",  ch, NULL, victim, TO_VICT);
+        act( "Dark mist forms into a hand which grabs $N, preventing $S escape.",
             ch, NULL, victim, TO_NOTVICT );
 }
 
