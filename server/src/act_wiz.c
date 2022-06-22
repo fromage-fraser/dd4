@@ -1119,6 +1119,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         CHAR_DATA   *rch;
         CHAR_DATA   *victim;
         AFFECT_DATA *paf;
+        MPROG_DATA *mprg;
         char         buf         [ MAX_STRING_LENGTH ];
         char         buf1        [ MAX_STRING_LENGTH ];
         char         spec_result [ MAX_STRING_LENGTH ];
@@ -1607,6 +1608,20 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         sprintf( buf, " with bit {R%s{x\n\r",
                                 affect_bit_name( paf->bitvector ) );
                         strcat( buf1, buf );
+                }
+
+                if ( victim->pIndexData->progtypes )
+                {       
+                        strcat(buf1, "{WMobprog:{x\n\r");
+                        for ( mprg = victim->pIndexData->mobprogs; mprg != NULL;
+                        mprg = mprg->next )
+                        {
+                                sprintf( buf, ">%s %s\n\r%s\n\r",
+                                mprog_type_to_name( mprg->type ),
+                                mprg->arglist,
+                                mprg->comlist );
+                                strcat( buf1, buf );
+                        }
                 }
 
         }
