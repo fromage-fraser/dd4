@@ -471,13 +471,25 @@ to eat...?
 36 0
 8 8 1
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I looks at you hopefully. He looks like he's starving to death.
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I neighs piteously.
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho ::rumble::
+endif
 ~
 >give_prog bale hay~
 mpecho $I neighs and prances about before chomping on the fresh hay.
@@ -551,7 +563,11 @@ reeks of blood and death.
 0 0
 8 8 1
 >rand_prog 50~
+if isfight($i)
+break
+else
 sleep
+endif
 ~
 >death_prog 100~
 mpecho {RAs Mavros's body is destroyed a giant black leech erupts from his skin!{x
@@ -571,7 +587,11 @@ to somewhere safe and revive its host.
 63 0
 8 8 0
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I wriggles and writhes on the ground before you.
+endif
 ~
 |
 #20627
