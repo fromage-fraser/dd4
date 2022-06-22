@@ -1260,7 +1260,7 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
 
         if (d->original)
         {
-                sprintf (buf, "[{WSwitched as %s{x] ", d->character->short_descr);
+                sprintf (buf, "[Switched as %s] ", d->character->short_descr);
                 write_to_buffer (d, buf, 0);
                 return;
         }
