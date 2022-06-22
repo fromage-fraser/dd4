@@ -861,30 +861,45 @@ He then shrugs vaguely and returns to his stumbling and burbling...
 0 0
 8 8 1
 >rand_prog 3~
+if isfight($i)
+break
+else
 wake
 say need coffin.. must get back...
 n
 n
 w
 w
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 wake
 say ... didn't know.. didn't even see it coming..
 w
 w
 s
 s
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 wake
 say how can something like that.. life from.. sewage..? must get back..
 e
 e
 n
 n
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 wake
 say errrgggh...
 if rand(50)
@@ -892,14 +907,19 @@ if rand(50)
     else
         w
 endif
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 wake
 say must get home.. to coffin...
 n
 n
 w
 w
+endif
 ~
 >greet_prog 35~
 if rand(50)
@@ -1182,7 +1202,11 @@ moving shadow that attacks you.
 mpasound groooOoowwwwl...
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpasound You hear the heavy breathing of a large animal...
+endif
 ~
 >rand_prog 2~
 mpasound ::snort::

@@ -73,22 +73,46 @@ Saturnina's eyes narrow and she advances.
 0 0
 8 8 2
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I describes to you in lurid detail the things she will do for gold.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I strokes your crotch with her hand.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I eyes you up and down seductively.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I playfully starts to suck on your finger.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I cracks her whip.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I asks you if you know the whereabouts of her expensive haircare products.
+endif
 ~
 >act_prog p licks you.~
 lick $n
@@ -459,25 +483,53 @@ yell $n is looking at me! Make $m stop!!
 hide
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I says 'OhmiGOD I'm SO ugly!'
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I whimpers 'Looking at me makes you sick, doesn't it?'
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I looks up at you tearfully, `You hate me don't you?'
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I pinches at her thighs and wails, 'I'm SO fat!'
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I shrieks, 'DON'T LOOK AT ME! GET OUT!'
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I giggles and takes a swig from a vodka bottle.
+endif
 ~
 >rand_prog 2~
+if isfight($i)
+break
+else
 mpecho $I sighs, `You say you're my friend, but I know you're not really.'
+endif
 ~
 |
 #9517
@@ -495,7 +547,11 @@ pounding head.
 0 0
 8 8 1
 >rand_prog 10~
+if isfight($i)
+break
+else
 mpecho $I looks at you appraisingly, `Hey man, got an aspirin?'
+endif
 ~
 |
 #9518
@@ -886,21 +942,37 @@ clutches fiercely in his right hand.
 0 0
 8 8 1
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I snores.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho $I rolls over and yawns.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 wake
 yawn
 say Oh.. who are you then?
 stretch
 say Oh well, back to sleep.
 sleep
+endif
 ~
 >rand_prog 10~
+if isfight($i)
+break
+else
 sleep
+endif
 ~
 |
 #9540
@@ -918,7 +990,11 @@ life and consuming blood.
 0 0
 8 8 1
 >rand_prog 3~
-mpecho $I pounds his fist against the lectorum to emphasize a point in his sermon.
+if isfight($i)
+break
+else
+mpecho $I pounds his fist against the lectern to emphasize a point in his sermon.
+endif
 ~
 |
 #9541
@@ -1080,19 +1156,39 @@ shadowthief, feared inner-circle member of Midgaard's most notorious thief cult?
 0 0
 8 8 1
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho You hear a scuffling noise coming from the shadows.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho You think you catch a glimpse of movement out of the corner of your eye.
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho ::chink::
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho ::fffttt::
+endif
 ~
 >rand_prog 3~
+if isfight($i)
+break
+else
 mpecho Something metal flashes in the darkness.
+endif
 ~
 |
 #0
