@@ -18,7 +18,7 @@ moon dog~
 a moon dog~
 A moondog stands here ready to pounce.
 ~
-A strange glow emanates from the dogs coat.
+A strange glow emanates from the dog's coat.
 ~
 2|64 0 -500 S
 40 0 0 0d0+0 0d0+0
@@ -29,7 +29,7 @@ city guard~
 a city guard~
 A guard stands to attention here.
 ~
-The guard is covered in black clothing
+The guard is covered in black clothing.
 ~
 2|4|64 0 0 S
 40 0 0 0d0+0 0d0+0
@@ -139,7 +139,7 @@ small boy~
 the boy~
 A small boy sits in the gutter.
 ~
-What you want mister?.
+"What you want, mister?"
 ~
 2|4|64 0 0 S
 30 0 0 0d0+0 0d0+0
@@ -148,7 +148,7 @@ What you want mister?.
 #23513
 dwarf thief~
 the dwarf~
-A dwarf stands here waiting for somone to mug.
+A dwarf stands here waiting for someone to mug.
 ~
 He snarls at you.
 ~
@@ -172,7 +172,7 @@ woman~
 the woman~
 A woman sits here gazing into a crystal ball.
 ~
-She smiles at you and says 'Tis a pity you are going to die soon'.
+She smiles at you and says, "Tis a pity you are going to die soon".
 ~
 2|64 0 0 S
 50 0 0 0d0+0 0d0+0
@@ -216,7 +216,7 @@ mad woman~
 the mad woman~
 A mad woman struggles here.
 ~
-She is chewing on her straight jacket.
+She is chewing on her straitjacket.
 ~
 2|64 0 0 S
 40 0 0 0d0+0 0d0+0
@@ -258,9 +258,9 @@ He smiles at you.
 #23523
 silver smith~
 the silversmith~
-A Silver smith smiles at you as you enter.
+A silversmith smiles at you as you enter.
 ~
-Well what do you want?
+"Well, what do you want?"
 ~
 2|64 0 0 S
 50 0 0 0d0+0 0d0+0
@@ -271,7 +271,7 @@ drunk man~
 the drunk~
 A drunk staggers towards you here.
 ~
-Ish tooo basd ya going ta bee dead.
+"Ish tooo basd ya going ta bee dead."
 ~
 4|64 0 0 S
 35 0 0 0d0+0 0d0+0
@@ -282,7 +282,7 @@ giant centipede~
 the centipede~
 A giant centipede crawls towards you.
 ~
-Whoa look at all those legs.
+Whoa, look at all those legs!
 ~
 2|64 0 0 S
 43 0 0 0d0+0 0d0+0
@@ -293,7 +293,7 @@ giant rat~
 the rat~
 A giant rat snarls at you.
 ~
-It's teeth look rather large.
+Its teeth look rather large.
 ~
 2|64 0 0 S
 40 0 0 0d0+0 0d0+0
@@ -302,7 +302,7 @@ It's teeth look rather large.
 #23527
 woman hag~
 the hag~
-A Old hag curses and spits at you.
+A old hag curses and spits at you.
 ~
 Her eyes shy away from the light.
 ~
@@ -337,7 +337,7 @@ blacksmith smith~
 the blacksmith~
 A blacksmith stands here.
 ~
-He has muscles in places you never knew about.
+He has muscles in places you never knew existed.
 ~
 2|64 0 0 S
 50 0 0 0d0+0 0d0+0
@@ -370,7 +370,7 @@ tattooist man jimmy~
 the tattooist~
 A tattooist snorts at you as you enter.
 ~
-He has tattoo's all over his body.
+He has tattoos all over his body.
 ~
 2|64 0 0 S
 50 0 0 0d0+0 0d0+0
@@ -403,7 +403,7 @@ mummy~
 the mummy~
 A mummy lumbers toward you.
 ~
-It has bandages from head to toe.
+It is bandaged from head to toe.
 ~
 2|32|64 0 0 S
 43 0 0 0d0+0 0d0+0
@@ -436,7 +436,7 @@ mayor~
 the mayor~
 The mayor smiles and shakes your hand.
 ~
-He smiles like a politician. YEEECH
+He smiles like a politician. YEEECH.
 ~
 4|64 524288 0 S
 50 0 0 0d0+0 0d0+0
@@ -489,7 +489,7 @@ He smiles and burps in your direction.
 #23545
 florist~
 the florist~
-A florist moves about the room and attends her flowers
+A florist moves about the room and attends to her flowers.
 ~
 The florist looks up and smiles.
 ~
@@ -502,7 +502,7 @@ jeweller~
 the jeweller~
 A jeweller stands here with a cheesy smile on his face.
 ~
-He smiles at you showing off his few remaining black teeth.
+He smiles at you, showing off his few remaining black teeth.
 ~
 2|4|64 0 0 S
 50 0 0 0d0+0 0d0+0
@@ -511,7 +511,7 @@ He smiles at you showing off his few remaining black teeth.
 #23547
 man~
 the man~
-A man stands here looking for a bargain
+A man stands here looking for a bargain.
 ~
 The man eyes you suspiciously.
 ~
@@ -535,8 +535,8 @@ vendor~
 the vendor~
 The vendor peddles his wares here.
 ~
-Psst have i got a deal for you!
-Look at my list of wares.
+"Psst, have I got a deal for you!"
+"Look at my list of wares."
 ~
 2|64 0 0 S
 50 0 0 0d0+0 0d0+0
@@ -545,7 +545,7 @@ Look at my list of wares.
 #23550
 sin man black~
 Sin~
-A powerful man stands here .
+A powerful man stands here.
 ~
 SIN and die!
 ~
@@ -558,7 +558,7 @@ horse~
 the horse~
 A horse stands here tied to a post.
 ~
-It whinnies and snorts at you with eyes of terror.
+It whinnies and snorts at you with eyes full of terror.
 ~
 2|64|131072 0 0 S
 30 0 0 0d0+0 0d0+0
@@ -663,7 +663,7 @@ Some black chainmail lies here.~
 20~ 1~ 6~ 11~
 15 0 0
 #23508
-irol helmet~
+iron helmet~
 iron helmet~
 A iron helmet lies here.~
 ~
@@ -709,8 +709,8 @@ Some thief robes lie here.~
 A
 2 2
 #23513
-thiefs dagger black~
-a thiefs dagger~
+thief's dagger black~
+a thief's dagger~
 A black dagger lies here.~
 ~
 5 0 1|8192
@@ -719,7 +719,7 @@ A black dagger lies here.~
 #23514
 imp horns red~
 imp horns~
-A pair of red horns lie here~
+A pair of red horns lie here.~
 ~
 9 0 1|16
 5~ 1~ 6~ 11~
@@ -728,7 +728,7 @@ A
 24 -10
 #23515
 baggy yellow suit~
-baggy yelllow suit~
+a baggy yellow suit~
 A baggy yellow suit lies here.~
 ~
 9 0 1|8
@@ -788,8 +788,8 @@ A cutlass rests here.~
 5 0 0
 #23522
 eyepatch~
-a eyepatch~
-A eyepatch rests here.~
+an eyepatch~
+An eyepatch rests here.~
 ~
 9 0 1|16
 5~ 1~ 6~ 11~
@@ -816,7 +816,7 @@ A wooden stick rests here.~
 5 0 0
 #23525
 leather ball~
-leather ball~
+a leather ball~
 A ball rests here.~
 ~
 13 0 1|16384
@@ -832,8 +832,8 @@ A leather vest lies here.~
 10 0 0
 #23527
 ball chain~
-ball & chain~
-A ball & chain lie here.~
+a ball and chain~
+A ball and chain lie here.~
 ~
 9 128|4096 1|32
 3~ 1~ 6~ 11~
@@ -842,7 +842,7 @@ A
 14 -250
 #23528
 dead rat necklace~
-dead rat necklace~
+a dead rat necklace~
 A necklace made of rats lies here.~
 ~
 9 0 1|4
@@ -939,7 +939,7 @@ A small key lies here~
 #23538
 black key~
 a black key~
-A black key smolders on the ground here.~
+A black key smoulders on the ground here.~
 ~
 18 1 1
 0~ 1~ 6~ 11~
@@ -947,7 +947,7 @@ A black key smolders on the ground here.~
 #23539
 chest solid~
 a chest~
-A solid looking chest stands here~
+A solid-looking chest stands here~
 ~
 15 0 0
 50~ 13~ 23551~ 11~
@@ -962,7 +962,7 @@ A hand axe rests here.~
 8 0 0
 #23541
 neckbone undead~
-a undead neckbone~
+an undead neckbone~
 A neckbone lies here.~
 ~
 9 1|64|4096 1|4
@@ -1006,7 +1006,7 @@ A glass of aakavit lies here~
 5 0 0
 #23546
 red herb~
-a Red herb~
+a red herb~
 A red herb lies here.~
 ~
 26 0 1
@@ -1029,9 +1029,9 @@ A silver scroll lies here.~
 60~ enchant weapon~ ~ ~
 5 0 0
 #23549
-thiefs mask~
-a thiefs mask~
-A thiefs mask lies here.~
+thief's mask~
+a thief's mask~
+A thief's mask lies here.~
 ~
 9 0 1|16
 7~ 1~ 6~ 11~
@@ -1071,7 +1071,7 @@ A black rose lies here.~
 0~ 1~ 6~ 4~
 5 0 0
 #23554
-pansie tasty~
+pansies tasty~
 tasty pansies~
 Some sweet smelling pansies lie here.~
 ~
@@ -1079,9 +1079,9 @@ Some sweet smelling pansies lie here.~
 0~ change sex~ ~ ~
 5 0 0
 #23555
-daffodill~
-a daffodill~
-A daffodill lies here.~
+daffodil~
+a daffodil~
+A daffodil lies here.~
 ~
 13 0 1|16384
 0~ 1~ 6~ 11~
@@ -1145,7 +1145,7 @@ A blue dress lies here.~
 #23563
 tartan pants~
 tartan pants~
-A pair of tartan pants lie here making your eyes sore.~
+A pair of tartan pants lie here, making your eyes sore.~
 ~
 9 128|4096 1|32
 20~ 1~ 6~ 11~
@@ -1204,8 +1204,8 @@ A crystal sparkles here.~
 5 0 0
 #23570
 rotting corpse~
-a rotting Corpse~
-A rotting corpse lies here covered in maggots.~
+a rotting corpse~
+A rotting corpse lies here, covered in maggots.~
 ~
 15 0 0
 50~ 1~ -1~ 11~
@@ -1213,7 +1213,7 @@ A rotting corpse lies here covered in maggots.~
 #23571
 drink skin~
 a drink skin~
-A Drink Skin lies here.~
+A drink skin lies here.~
 ~
 25 1 1
 0~ 0~ 0~ 0~
@@ -1221,7 +1221,7 @@ A Drink Skin lies here.~
 #23572
 night robes dark~
 dark robes~
-Some robes the colour of night lie here~
+Some robes the colour of night lie here.~
 ~
 9 1|64 1|1024
 30~ 1~ 6~ 11~
@@ -1305,7 +1305,7 @@ A
 #23581
 red hot iron poker~
 a red hot poker~
-A red hot iron poker smolders on the ground.~
+A red hot iron poker smoulders on the ground.~
 ~
 5 1 1|8192
 0~ 20~ 30~ 0~
@@ -1345,13 +1345,13 @@ A green scroll lies here.~
 #23586
 large stone~
 a large stone~
-A Large Stone Stands Here.~
+A large stone Stands Here.~
 ~
 12 0 0
 0~ 1~ 6~ 11~
 5 0 0
 E
-Large Stone~
+large stone~
 City Of Thieves
 Levels 30-50
 
@@ -1377,7 +1377,7 @@ A large forge dominates the room.~
 
 #ROOMS
 #23500
-Entrance To Port Blacksand.~
+Entrance To Port Blacksand~
 As you approach the main gate a chill runs down your spine and you
 grasp your weapon in reassurance. At the gate you are confronted
 by a tall guard wearing black chainmail and a iron helmet.
@@ -1394,7 +1394,7 @@ D2
 0 -1 23613
 S
 #23501
-An Intersection.~
+An Intersection~
 Through the main gates you see that the rubbish filled streets of the
 port are narrow and cobbled. Old and decrepit buildings line them
 closely, with their upper storeys overhanging menacingly.
@@ -1440,7 +1440,7 @@ D3
 0 -1 23504
 S
 #23503
-J. B. Wraggins, Locksmith.~
+J. B. Wraggins, Locksmith~
 Sitting on a stool at the back of the shop is an old bespectacled Dwarf.
 He is busy cutting a key on a cast iron treadle machine which squeaks
 and grinds noisily.
@@ -1453,12 +1453,12 @@ D0
 1 -1 23502
 E
 sign~
-Todays Special is a Small key.~
+Today's special is a small key.~
 S
 #23504
 Key Street~
 You pass a cluster of small houses and are aware of unseen people
-watching you as you walk by.Key street continues on to the north.
+watching you as you walk by. Key street continues on to the north.
 ~
 0 0 1
 D0
@@ -1473,7 +1473,7 @@ S
 #23505
 Key Street~
 You pass a cluster of small houses and are aware of unseen people
-watching you as you walk by.Key street continues on to the north.
+watching you as you walk by. Key street continues on to the north.
 To the west an old house has its doors open.
 ~
 0 0 1
@@ -1527,7 +1527,7 @@ S
 A Clean House~
 Inside the house you find yourself in a room painted red and empty apart
 from a old wooden table sitting in the middle of the room. A scuffling
-sound is comming from some wooden stairs that lead upstairs.
+sound is coming from some wooden stairs that lead upstairs.
 ~
 0 0 1
 D1
@@ -1540,7 +1540,7 @@ D4
 0 -1 23509
 S
 #23509
-A Lounge.~
+A Lounge~
 A fire is crackling at the end of the room and giving off a warm glow to
 the room. Comfy chairs are scattered about the room and in one a Lizard
 sits glaring at you.
@@ -1570,7 +1570,7 @@ S
 #23511
 Key Street~
 The street soon takes a turn to the east. Outside one of the houses is a
-pile of rubish that looks like the wind has blown it there. Key street
+pile of rubbish that looks like the wind has blown it there. Key street
 continues to the east.
 ~
 0 0 1
@@ -1583,8 +1583,8 @@ D2
 ~
 0 -1 23510
 E
-pile rubish~
-Phew i dont think it is a good idea to go in there.~
+pile rubbish~
+Phew, I don't think it is a good idea to go in there.~
 S
 #23512
 Key Street~
@@ -1657,8 +1657,8 @@ S
 A Musty Room~
 You enter a large room with brown walls and straw covered floor, there is
 a musty smell hanging in the air which reminds you of the dirty old trolls
-that live on northern borders. A high archway leads through the room to
-the back of the house, from where you hear a low murmering voice.
+that live on the northern borders. A high archway leads through the room to
+the back of the house, from where a low, murmuring voice issues.
 ~
 0 0 1
 D1
@@ -1671,7 +1671,7 @@ D3
 0 -1 23517
 S
 #23517
-An Ogre Lair.~
+An Ogre Lair~
 The archway leads into a large room, in the centre of which crouches a
 human-like creature, some 3 metres tall.
 ~
@@ -1734,7 +1734,7 @@ D3
 0 -1 23533
 S
 #23521
-A Dark Alleyway.~
+A Dark Alleyway~
 The alley is narrow and dark, and runs some 20 metres before coming to a
 dead end at a stone wall. Some rotting corpses and rusting weapons lie
 scattered throughout the alley.
@@ -1770,7 +1770,7 @@ Herbalist Shop~
 You can see a old wooden counter with a pair of scales upon it, and many
 sacks of different herbs crowding the floor. The shop owner appears
 human-like but has very ugly facial features and pointed teeth. You
-realize he is a crossbreed half man half orc.
+realize he is a crossbreed--half man, half orc.
 ~
 0 8 1
 D1
@@ -1864,7 +1864,7 @@ D3
 1 23537 23529
 S
 #23529
-Entranceway.~
+Entranceway~
 The owner of the house is obviously quite wealthy. Lavish furnishing and
 fine 'objets d'art' adorn the marble floored room in which you stand. An
 archway leads into a back room and stairs lead up to another floor.
@@ -1959,7 +1959,7 @@ S
 A Flower Shop~
 You make your way into a shop filled with flowers, the sweet smelling
 scents are a welcome relief to your nostrils after the pungent odours
-from outside.
+outside.
 ~
 0 8 1
 D0
@@ -1988,7 +1988,7 @@ D3
 0 -1 23532
 S
 #23536
-Jewellers.~
+Jewellers~
 Inside the shop you notice a large glass case. Several ornate antique
 rings inset with diamonds, emeralds and rubies are on display. The
 shopkeeper looks at you with a sly knowing look.
@@ -2054,7 +2054,7 @@ D2
 0 -1 23538
 S
 #23540
-Madam Star Clairvoyant.~
+Madam Star Clairvoyant~
 Sitting behind a small table is a plump woman wearing bright yellow
 clothes and a shawl over her head. She smiles as you enter, bidding you
 to sit down. She eyes knowingly at her  ball.
@@ -2070,9 +2070,9 @@ Mist swirls around inside the ball, clearing for a moment to reveal a
 dark tower, a chained wolf and a chest containing a dark key.~
 S
 #23541
-Bridge Street.~
+Bridge Street~
 The Markets end here and a old wooden sign pointing north tells that
-before you lies Bridge Street. To the east lies an old derelect looking
+before you lies Bridge Street. To the east lies an old derelict-looking
 house with the windows boarded up and a old rotting door rattling in the
 chill of the wind.
 ~
@@ -2091,10 +2091,10 @@ D2
 0 -1 23539
 S
 #23542
-A Gloomy House.~
+A Gloomy House~
 Litter and rubble are strewn all over the floor. Broken chairs and other
 bits of old furniture lie thrown against the far wall in a pile and you
-can hear a strange slithering noise comming from it.
+can hear a strange slithering noise coming from it.
 ~
 0 1|8 0
 D3
@@ -2102,7 +2102,7 @@ D3
 ~
 1 -1 23541
 E
-Pile funiture~
+Pile furniture~
 It looks as if someone has gone through here and taken whatever they
 were looking for.~
 S
@@ -2110,9 +2110,10 @@ S
 A Bridge~
 Ahead you can see a wooden bridge stretching over a dirty river. Various
 bits of rubbish are floating down to the sea on its black surface, and
-what looks to be a human hand passes by disappearing beneath the ripples
-on the surface. The Bridge supports and columns reach high above and you
+what looks to be a human hand passes by, disappearing beneath the ripples
+on the surface. The bridge supports and columns reach high above and you
 see skulls, both human and non-human, tied to them.
+
 Almost hidden from view is a small flight of steps going down underneath
 the bridge from where you are standing.
 ~
@@ -2131,11 +2132,11 @@ D5
 0 -1 23544
 S
 #23544
-Under A Bridge.~
-The smell by the waters edge is terrible. Above you can hear the sound of
+Under A Bridge~
+The smell by the water's edge is terrible. Above you can hear the sound of
 footsteps crossing the wooden bridge echoing in the cold gusting air. It
-looks as if this is the dumping place for those who did not meet the
-fighting skills of this city.
+looks as if this is the dumping place for those whose fighting skills weren't
+good enough to have them survive in the city.
 ~
 0 1|8 0
 D4
@@ -2144,12 +2145,13 @@ D4
 0 -1 23543
 S
 #23545
-Over Catfish River.~
+Over Catfish River~
 As you cross over the bridge the wind starts to howl and the heads tied
 to the bridge start to bang against the supports like the beating of a
 unholy heart. You feel suddenly cold and the hair starts to stand up on
 the back of your neck.
-The street here splits in two with a faded white sign proclaming that to
+
+The street here splits in two with a faded white sign proclaiming that to
 the west lies Harbour street and to the east Candle street.
 ~
 0 0 1
@@ -2170,9 +2172,10 @@ S
 Candle Street~
 The street seems to get narrower or the houses seem to be closing in on
 you. The cobblestones are slick with a red slippery coating that looks
-like a symbol of Dark magic painted onto the road. You cant help but think
-that whoever painted it here wanted to keep something out or in?
-A small dark alley leads to the north stopping at a door with six skulls
+like a symbol of Dark magic painted onto the road. You can't help but think
+that whoever painted it here wanted to keep something out... or in?
+
+A small, dark alley leads to the north, stopping at a door with six skulls
 painted on it. Candle street continues to the east.
 ~
 0 0 1
@@ -2207,14 +2210,14 @@ For I sell a pill of great benefit.
 Alas I also sell some pills that are not so good for your health.
 Choose wisely for failure could mean DEATH!
 
-Sin.~
+-Sin~
 S
 #23548
-Candle Street.~
+Candle Street~
 Old buildings line the street here, the black windows look like eye
 sockets and the wind howling through them give you a impression of walking
 through a line of skulls. A scream from the north sends a shiver up your
-spine. A closed door lies here to the north while candle street continues
+spine. A closed door lies here to the north, while Candle street continues
 to the east.
 ~
 0 0 1
@@ -2232,7 +2235,7 @@ D3
 0 -1 23546
 S
 #23549
-Mad House.~
+Mad House~
 You enter the house and find yourself in a room full of toys. But they
 are not ordinary toys. These are stuffed creatures with nails through
 there heads, dolls houses that are made to look like they are on fire.
@@ -2246,7 +2249,7 @@ D2
 1 -1 23548
 S
 #23550
-End of Candle Street.~
+End of Candle Street~
 The road ends here and the wind whisks itself into a fury lifting rubbish
 and litter into the air and throwing it about like small children in a
 tornado.
@@ -2263,11 +2266,11 @@ D4
 0 -1 23551
 S
 #23551
-On the wall.~
+On the wall~
 From the top of the wall you see that encircles a group of brown creatures
 playing some kind of game with a wooden stick and a small leather ball.
-You realise that these creatures are Bays, playing their favourite game
-'Bays ball'.
+You realise that these creatures are bays, playing their favourite game
+'bays ball'.
 ~
 0 0 1
 D5
@@ -2276,7 +2279,7 @@ D5
 0 -1 23550
 S
 #23552
-Harbour Street.~
+Harbour Street~
 Harbour street widens out here. The cobblestones are well worn and a nippy
 breeze blows lashing into your face, bringing with it the smells of the
 ocean.
@@ -2314,7 +2317,7 @@ D3
 0 -1 23555
 S
 #23554
-An Alley.~
+An Alley~
 Ahead the alleyway is strewn with rubbish and discarded possessions. It
 smells of rotting flesh and decay.
 ~
@@ -2329,7 +2332,7 @@ Harbour Street~
 The street gradually starts to run downhill and opens out into a quayside.
 A stone jetty runs out to sea and tied to it is an old galleon. It is
 flying the skull and crossbones, and is probably one of the many pirate
-ships that anchor in port Blacksand to off-load their booty.
+ships that anchor in port Blacksand to offload their booty.
 Harbour street continues to the north and a jetty lies to the west.
 ~
 0 0 1
@@ -2347,7 +2350,7 @@ D3
 0 -1 23556
 S
 #23556
-Jetty.~
+Jetty~
 Barnacles cover the side of the ship and some scorch marks show where it
 has had some close shaves. A rope ladder hangs down over the edge of the
 galleon.
@@ -2367,7 +2370,7 @@ D4
 0 -1 23557
 S
 #23557
-On A Pirate Ship.~
+On A Pirate Ship~
 On the deck are wooden boxes, barrels and coils of rope. Two large masts
 rise into the air from the deck with sails lashed to them.
 The deck continues to the north.
@@ -2383,7 +2386,7 @@ D5
 0 -1 23556
 S
 #23558
-Deck.~
+Deck~
 On the deck are wooden boxes, barrels and coils of rope. Two large masts
 rise into the air from the deck with sails lashed to them.
 Stairs lead down into the cargo hold.
@@ -2399,7 +2402,7 @@ D5
 0 -1 23559
 S
 #23559
-Cargo Hold.~
+Cargo Hold~
 The cargo hold is completely empty. It looks as if the booty has already
 been off-loaded onto shore.
 A narrow corridor leads off to the north.
@@ -2415,7 +2418,7 @@ D4
 0 -1 23558
 S
 #23560
-A Narrow Corridor.~
+A Narrow Corridor~
 Scuff marks and gouges in the floor and walls show where the pirates have
 made a quick exit.
 Closed doors lie to the east and to the west.
@@ -2435,7 +2438,7 @@ D3
 1 -1 23561
 S
 #23561
-The Crews Cabin.~
+The Crews Cabin~
 Small hammocks hang from the ceiling and various chests lie scattered
 about the room. There is a small wooden table in the middle of the room
 with a dagger jammed into it, with playing cards thrown on the table and
@@ -2448,7 +2451,7 @@ D1
 1 -1 23560
 S
 #23562
-A Cabin.~
+A Cabin~
 Maps and charts cover the walls with a few red crosses marked on certain
 islands. A comfortable bunk and an old wooden desk take up most of this
 room. It looks as if the captain is on shore leave.
@@ -2460,7 +2463,7 @@ D3
 1 -1 23560
 S
 #23563
-Harbour Street.~
+Harbour Street~
 Harbour street continues along the waters edge for a few hundred metres
 until you come to a junction.
 To the north you can see a large anchor, and to the east lies Clog street.
@@ -2480,7 +2483,7 @@ D2
 0 -1 23555
 S
 #23564
-Clog Street.~
+Clog Street~
 Clog street is very narrow and lined with terraced cottages and the
 occasional shop. Lying face down on the cobblestones looks to be a small
 boy. A hood is pulled over his head and you cannot see his face.
@@ -2496,7 +2499,7 @@ D3
 0 -1 23563
 S
 #23565
-Clog Street.~
+Clog Street~
 Clog street is very narrow and lined with terraced cottages and the
 occasional shop. To the north lies a shop with its door closed. In the
 window burns a candle. Clog street continues to the east.
@@ -2516,7 +2519,7 @@ D3
 0 -1 23564
 S
 #23566
-Candle Makers.~
+Candle Makers~
 Inside the shop is a tall, thin man with pointed ears and fair hair,
 pouring hot wax from a iron pan into a mould. He smiles at you and says
 "We are closed, Sorry" .
@@ -2528,7 +2531,7 @@ D2
 1 -1 23565
 S
 #23567
-Clog Street.~
+Clog Street~
 Clog street is very narrow and lined with terraced cottages and the
 occasional shop. To the north lies a shop with its door closed.A silver
 sign hanging outside reads "Ben Borryman, Silversmith."
@@ -2548,7 +2551,7 @@ D3
 0 -1 23565
 S
 #23568
-Ben Borryman 'Silversmith'.~
+Ben Borryman 'Silversmith'~
 A man wearing a apron is sitting here at a bench busily polishing a silver
 goblet. There are several silver objects in a glass cupboard secured by
 an iron grill at the back of the shop. The man looks at you and says
@@ -2561,8 +2564,8 @@ D2
 1 -1 23567
 S
 #23569
-Iron Anchor.~
-Fishermans huts line the sides of the road and various nets hang drying
+Iron Anchor~
+Fishermen's huts line the sides of the road and various nets hang drying
 in the wind from the window sills. The street ends at a large iron anchor.
 ~
 0 0 1
@@ -2576,7 +2579,7 @@ This huge iron anchor looks like it's from a massive ship that must have
 sunk in the harbour.~
 S
 #23570
-Clog Street.~
+Clog Street~
 Clog street is very narrow and lined with terraced cottages and the
 occasional shop. The road here comes to a junction and a old white sign
 says that to the north lies Tower street and to the east lies Stable
@@ -2597,10 +2600,10 @@ D3
 0 -1 23567
 S
 #23571
-Tower Street.~
+Tower Street~
 A few buildings have been smashed over the street here. Black scorch marks
 scar the remnants of the houses and cobblestones . There does not appear
-to be anyway through the rubble.
+to be any way through the rubble.
 ~
 0 0 1
 D2
@@ -2609,9 +2612,9 @@ D2
 0 -1 23570
 S
 #23572
-Stable Street.~
-Stable street narrows even more than clog street and it almost becomes a
-alleyway. Strange scuffings and moans echo from the dark looking houses.
+Stable Street~
+Stable street narrows even more than Clog street and it almost becomes an
+alleyway. Strange scuffling and moans echo from the dark looking houses.
 Filth and rubbish fill the street and the cobblestones break up into stones.
 ~
 0 0 1
@@ -2625,9 +2628,9 @@ D3
 0 -1 23570
 S
 #23573
-Stable Street.~
-Stable street narrows even more than clog street and it almost becomes a
-alleyway. Strange scuffings and moans echo from the dark looking houses.
+Stable Street~
+Stable street narrows even more than Clog street and it almost becomes an
+alleyway. Strange scuffling and moans echo from the dark looking houses.
 Filth and rubbish fill the street and the cobblestones break up into stones.
 A small grate leads down.
 ~
@@ -2646,9 +2649,9 @@ grate~
 1 -1 23574
 S
 #23574
-Iron Ladder.~
+Iron Ladder~
 The old iron ladder is attached to stone blocks which are slick with a
-green slimey substance. The smell from below is awful and you cant help
+green slimy substance. The smell from below is awful and you cant help
 but wonder what is making it. From below you can hear a high pitch wailing
 sound.
 ~
@@ -2663,10 +2666,10 @@ D5
 0 -1 23575
 S
 #23575
-Sewers.~
+Sewers~
 The ladder ends in a wide tunnel with the floor of it covered in deep
 brown water. The same green slime covers the walls and it seems to quiver
-as the light from your torch touches it. A high pitch wailing can be heard
+as the light from your torch touches it. A high-pitched wailing can be heard
 to the north and the tunnel continues to the south into darkness.
 ~
 0 1|8 7
@@ -2684,7 +2687,7 @@ D4
 0 -1 23574
 S
 #23576
-Sewers.~
+Sewers~
 Ahead you can hear the sound of squealing and frantic splashing. Long
 shadows are cast by something moving towards you.
 ~
@@ -2695,8 +2698,8 @@ D2
 0 -1 23575
 S
 #23578
-Sewers.~
-The darkness gives way to a slime covered tunnel the water here seems to
+Sewers~
+The darkness gives way to a slime-covered tunnel. The water here seems to
 ripple as you approach. Something is moving in the water. The tunnel
 continues to the south.
 ~
@@ -2711,8 +2714,8 @@ D2
 0 -1 23579
 S
 #23579
-Dead End.~
-The darkness gives way to a slime covered tunnel the water here seems to
+Dead End~
+The darkness gives way to a slime-covered tunnel. The water here seems to
 ripple as you approach. Something is moving in the water. The tunnel ends
 at a strong metal grate. There does not appear to be any way through
 ~
@@ -2727,9 +2730,9 @@ The Grate looks like it cound stop the executioner, there is no way
 past it.~
 S
 #23580
-Stable Street.~
-Stable street narrows even more than clog street and it almost becomes a
-alleyway. Strange scuffings and moans echo from the dark looking houses.
+Stable Street~
+Stable street narrows even more than Clog street and it almost becomes an
+alleyway. Strange scuffling and moans echo from the dark looking houses.
 Filth and rubbish fill the street and the cobblestones break up into stones.
 The road makes a sharp turn to the north here.
 ~
@@ -2744,10 +2747,10 @@ D3
 0 -1 23573
 S
 #23581
-Stable Street.~
+Stable Street~
 Standing in a line across the street are three tall men each armed with
 a spiked club. You notice that each has a red star tattooed on his
-forehead. They are the Murderers of this city. Markey street continues
+forehead. They are the murderers of this city. Markey street continues
 to the north.
 ~
 0 0 1
@@ -2761,9 +2764,9 @@ D2
 0 -1 23580
 S
 #23582
-Stable Street.~
-The houses in this section of stable street consist of two rows of
-terraces. They are all made of sandstone Apart from one to your west.
+Stable Street~
+The houses in this section of Stable street consist of two rows of
+terraces. They are all made of sandstone apart from one to your west.
 The door is made of solid oak and there is a serpent's head carved into it.
 ~
 0 0 1
@@ -2781,8 +2784,8 @@ D3
 1 -1 23583
 S
 #23583
-Serpent Queens Home.~
-You walk into a room with sparce furnishings and a polished wooden floor.
+Serpent Queens Home~
+You walk into a room with sparse furnishings and a polished wooden floor.
 Dark green silk curtains hang on the walls and give the room an eerie
 feeling.
 ~
@@ -2793,7 +2796,7 @@ D1
 1 -1 23582
 S
 #23584
-Stable Street.~
+Stable Street~
 The houses in this section of stable street consist of two rows of
 terraces. They are all made of sandstone and look like they could do
 with a bit of a fix up. A cold clinging mist seems to envelope the road.
@@ -2809,7 +2812,7 @@ D2
 0 -1 23582
 S
 #23585
-Stable Street.~
+Stable Street~
 The mist is getting thicker here and the houses drift in and out of your
 vision. To the west stands a large wooden barn set back from the houses.
 Two horses are tied to a post outside the barn, and smoke drifts into the
@@ -2830,8 +2833,8 @@ D3
 1 -1 23586
 S
 #23586
-A Stable.~
-You soon realise that you are in a stable when you see a large, barechested
+A Stable~
+You soon realise that you are in a stable when you see a large, bare-chested
 man wearing a grubby apron busy at work at a open fire. He takes a red hot
 iron bar from the fire with his gloved hand and starts to hammer it into
 the shape of a horseshoe on his anvil.
@@ -2843,10 +2846,10 @@ D1
 1 -1 23585
 S
 #23587
-Stable Street.~
+Stable Street~
 Coming towards you as fast as he can is a man in tattered rags with a ball
 and chain attached to his leg. He is exhausted and collapses in your arms.
-His face is dirty and unshaven. He croaks at you 'Please cut me free'.
+His face is dirty and unshaven. He croaks at you, 'Please cut me free!'
 ~
 0 0 1
 D0
@@ -2859,7 +2862,7 @@ D2
 0 -1 23585
 S
 #23588
-Stable Street.~
+Stable Street~
 The mist is getting thicker here and the houses drift in and out of your
 vision. To the east the houses are separated from the street by a wooden
 fence with shrubs, trees, bushes and flowers behind it. There is a
@@ -2881,7 +2884,7 @@ D2
 0 -1 23587
 S
 #23589
-Gardens.~
+Gardens~
 The garden is not very large, extending some sixty metres to where some
 houses back onto them. The shrubs here seem to have been shaped into
 shapes of animals, you can see a rabbit, a deer and what looks to be a
@@ -2895,7 +2898,7 @@ D3
 0 -1 23588
 S
 #23590
-Mill Street.~
+Mill Street~
 The street ends at a junction which runs east along the city wall. The
 mist seems to cling to everything and at times you feel like cold fingers
 are grasping at your throat. A closed door to the north has a sign
@@ -2917,11 +2920,11 @@ D2
 0 -1 23588
 S
 #23591
-'Jimmy Quicktint', Best Tattooist In Town.~
+'Jimmy Quicktint', Best Tattooist In Town~
 The room is dimly lit and is taken up by a large table and an even larger
  man standing in the middle of the room. His arms, hands, feet and even
-his face are completely covered in tattoo's of horific beasts and battles.
-He looks at you and SCREAMS 'GET OUT NOW'.
+his face are completely covered in tattoo's of horrific beasts and battles.
+He looks at you and screams, 'GET OUT NOW!'
 ~
 0 8 0
 D2
@@ -2930,7 +2933,7 @@ D2
 1 -1 23590
 S
 #23592
-Mill Street.~
+Mill Street~
 This looks to be the east gate of the city, a large tunnel leads east
 through the wall towards a gloomy looking forest and the mist seems to
 scream as it mixes with the wind gusting from the tunnel.
@@ -2963,9 +2966,9 @@ D3
 S
 #23594
 A Dark Forest~
-Strange the wind has completely stopped. Not even a bird or animal can
+Strange, the wind has completely stopped. Not even a bird or animal can
 be heard, although the mist seems to be even thicker here now and you
-feel as if something evil is watching your everymove. To the north looms
+feel as if something evil is watching your every move. To the north looms
 a dark encompassing shape that seems to suck the light from this area.
 The tunnel lies back to the west.
 ~
@@ -2997,7 +3000,7 @@ D2
 0 -1 23594
 S
 #23596
-Tower Hallway.~
+Tower Hallway~
 You have entered a beautiful marble floored hallway. On three of the four
 walls hang portraits of evil-looking men and women but on the far wall
 hang two iron shields. A spiral staircase leads up from the center of the
@@ -3017,7 +3020,7 @@ iron shield~
 The crest on one is a tower and on the other a unicorn.~
 S
 #23597
-1st Floor.~
+1st Floor~
 Looking up you can see that the staircase winds its way all the way up
 to the top of the tower. A cold chill seems to be coming from above. A
 heavy wooden door stands closed to the north.
@@ -3037,7 +3040,7 @@ D5
 0 -1 23596
 S
 #23598
-1st Floor Room.~
+1st Floor Room~
 The room appears to be a guests quarters by the look of all the bloodstains
 on the bed and the floor around the bed. You imagine that the master of
 the tower does not get many visitors.
@@ -3049,7 +3052,7 @@ D2
 1 -1 23597
 S
 #23599
-2nd Floor.~
+2nd Floor~
 Looking up you can see that the staircase winds its way all the way up
 to the top of the tower. A cold chill seems to be coming from above. A
 solid looking wooden door stands to the north.
@@ -3069,7 +3072,7 @@ D5
 0 -1 23597
 S
 #23600
-2nd Floor Room.~
+2nd Floor Room~
 You walk into a lavishly furnished room.
 Standing before you is a young woman dressed in a black silk gown. She
 has long black hair and bright red lips. She smiles and motions for you
@@ -3082,7 +3085,7 @@ D2
 1 -1 23599
 S
 #23601
-3rd Floor.~
+3rd Floor~
 Looking up you can see that the staircase winds its way all the way up to
 the top of the tower. A cold chill seems to be coming from above. Standing
 closed to the north is a solid looking wooden door.
@@ -3102,7 +3105,7 @@ D5
 0 -1 23599
 S
 #23602
-3rd Floor Room.~
+3rd Floor Room~
 This room is covered in a strange silvery mist. The only thing in the room
 is a Large copper urn standing on a pedestal which appears to be the
 source of the mist.
@@ -3114,7 +3117,7 @@ D2
 1 -1 23601
 S
 #23603
-4th Floor.~
+4th Floor~
 Looking up you can see that the staircase winds its way all the way up to
 the top of the tower. A cold chill seems to be coming from above. A large
 door made out of white stone stands to the north and a large door made of
@@ -3139,7 +3142,7 @@ D5
 0 -1 23601
 S
 #23604
-A White Room.~
+A White Room~
 You enter the room which is dark and very cold. The walls and floors are
 made of rough stone and the room is empty except for the smelly mummy
 attacking you at the moment.
@@ -3151,7 +3154,7 @@ D2
 1 -1 23603
 S
 #23605
-A Black Room.~
+A Black Room~
 Before you stands a black robed skeleton with green translucent eyes, wearing
 a black helm on his skull.
 Zanbar bone ATTACKS!
@@ -3163,7 +3166,7 @@ D0
 8 23538 23603
 S
 #23606
-5th Floor.~
+5th Floor~
 Looking up you can see that the staircase winds its way all the way up to
 the top of the tower. A cold chill seems to be coming from above. A solid
 wooden door stands to the north.
@@ -3183,7 +3186,7 @@ D5
 0 -1 23603
 S
 #23607
-5th Floor Room.~
+5th Floor Room~
 The room you enter is full of debris and rotting food. Standing in the
 middle of all the mess are two men wearing tattered clothing. They have
 hollow eyes and vacant expressions.
