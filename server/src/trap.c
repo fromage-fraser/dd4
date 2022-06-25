@@ -109,6 +109,7 @@ void do_trapstat(CHAR_DATA *ch, char *argument)
         }
         else {
                 send_to_char("That object in not registered as a trap.\n\r", ch);
+                return;
         }
 
         switch (obj->trap_dam) {
@@ -198,13 +199,14 @@ void do_traplist(CHAR_DATA *ch, char *argument)
                         ;
 
                 if ( in_obj->carried_by != NULL ) {
-                        sprintf( buf, "%s carried by %s.\n\r",
+                        sprintf( buf, "{g%s{x carried by {W%s{x\n\r",
                                 obj->short_descr, PERS(in_obj->carried_by, ch) );
                 }
                 else {
-                        sprintf( buf, "%s in %s.\n\r",
+                        sprintf( buf, "{g%s{x in {W%s [{R%d{x{W]{x\n\r",
                                 obj->short_descr,
-                                in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+                                in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name,
+                                in_obj->in_room->vnum);
                 }
 
                 buf[0] = UPPER(buf[0]);
