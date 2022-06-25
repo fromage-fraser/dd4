@@ -1178,6 +1178,15 @@ Reanimate a freshly dead corpse, and command the monstrosity to your
 service.
 ~
 
+0 'ANIMATE WEAPON'~
+Syntax: cast 'animate weapon' <victim> (optional)
+
+If successful, this combat spell will cause your opponent to fumble and drop 
+their weapon.  It can be aimed at a particular foe if you are fighting 
+multiple opponents, otherwise it will default to targeting whichever of your
+adversaries has the current focus.
+~
+
 
 -1 SUMMARY~
 {WMovement:                             Grouping:{x
