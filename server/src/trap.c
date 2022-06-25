@@ -108,7 +108,7 @@ void do_trapstat(CHAR_DATA *ch, char *argument)
                 send_to_char("That object is registered as a trap.\n\r", ch);
         }
         else {
-                send_to_char("That object in not registered as a trap.\n\r", ch);
+                send_to_char("That object is not registered as a trap.\n\r", ch);
                 return;
         }
 
