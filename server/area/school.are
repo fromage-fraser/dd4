@@ -340,7 +340,8 @@ and protective magiks on the tired and injured recruits.
 >all_greet_prog 100~
     if level($n) < 6
         say Greetings $n, I am here to assist you.
-        mpecho {WA Cleric says 'If you say "fly" I will cast fly on you, this will aid you in your adventures.'
+        mpecho {WA Cleric says 'If you say "fly" I will cast fly on you.  This will aid you in your adventures'
+        mpecho {Wby protecting you from being tripped by monsters.'
         break
     else
         break
@@ -1451,9 +1452,10 @@ A door opens south.
 1 0 3716
 E
 imp~
-The Imp tells you "Kill the gladiator and loot his corpse.  He has two
+The Imp tells you "Kill the gladiator and loot his corpse.  He has three
 important pieces of equipment: a Mud School diploma, which has magical
-effects if you hold it in your hand, and a large key.  Use the key to
+effects if you hold it in your hand, a snowy white stone which provides 
+wisdom while floating by your head, and a large key.  Use the key to
 unlock the northern door: enter `UNLOCK NORTH'.  After that, leave north
 to the next room."
 ~
@@ -1559,9 +1561,10 @@ Stairs lead down to the Temple of Midgaard.
 E
 imp~
 The Imp says "If you have just come back from training for the first
-time, then you should head east to see the Loremaster.  Then you can
-return here and head south to practice your combat skills until you raise
-a level.  Once you have levelled, you'll be able to SAVE.
+time, then you should head east to see the Loremaster to use your
+initial practices to learn your first set of skills and spells.  Then 
+you can return here and head south to practice your combat skills until 
+you raise a level.  Once you have levelled, you'll be able to SAVE.
 
 "If you head down and north, you can rest at the Altar of the Temple,
 where the Healer will restore you.  You can return to the School whenever
