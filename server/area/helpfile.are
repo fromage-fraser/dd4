@@ -5484,9 +5484,14 @@ to see others sneaking into the room.
 ~
 
 0 BREATHE~
-This skill allows the shifter in DRAGON form to use their breath weapons
-to harm an opponent.  The more skilled a dragon is, the more powerful his
-attack.
+Syntax: breathe (hydra form)
+Syntax: breathe <type> (dragon form)
+
+This skill allows the shifter in HYDRA or DRAGON form to use breath weapons
+to harm an opponent.  HYDRA form will automatically BREATHE either colour 
+spray, fireball, or acid blast depending on how skilled the SHIFTER is at 
+the form, whereas SHIFTERs in DRAGON form may choose between fire, lightning, 
+frost, gas or acid by supplying those words as arguments to BREATHE. 
 ~
 
 0 'SUMMON LESSER DEMON' 'SUMMON DEMON'~
