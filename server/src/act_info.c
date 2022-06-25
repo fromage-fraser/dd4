@@ -130,7 +130,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat( buf, "{b(Cursed){x " );
 
         if ( IS_OBJ_STAT( obj, ITEM_TRAP) && IS_AFFECTED( ch, AFF_DETECT_TRAPS) )
-                strcat( buf, "(Trapped) " );
+                strcat( buf, "{r(Trapped){x " );
 
         if ( IS_OBJ_STAT( obj, ITEM_GLOW ) )
                 strcat( buf, "{Y(Glowing){x " );
