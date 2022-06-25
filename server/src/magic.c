@@ -506,7 +506,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
         if ( !IS_NPC(ch)
             && ch->level <= LEVEL_HERO
-            && number_percent() > (49 + (ch->pcdata->learned[sn] / 2))
+            && number_percent() > (65 + (ch->pcdata->learned[sn] / 3))
             && ((sn = skill_lookup(arg1)) >= 0)
             && ch->pcdata->learned[sn] > 0)
         {
@@ -557,7 +557,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
                                 return;
                         }
 
-                        chance = 45 + (ch->pcdata->learned[gsn_second_spell] / 2);
+                        chance = 50 + (ch->pcdata->learned[gsn_second_spell] / 2);
 
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                             ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
