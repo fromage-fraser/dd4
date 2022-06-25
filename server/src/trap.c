@@ -1007,6 +1007,11 @@ void trap_damage_message (CHAR_DATA *ch, int dam) {
         else if (dam <= 2000)   verb = "$4-+*>#$FELIMINATE$R$4#<*+-$R";
         else if (dam <= 2500)   verb = "$4-+*###$FEXTERMINATE$R$4###*+-$R";
         else if (dam <= 3000)   verb = "$4--=##>>$FUTTERLY DESTROYS$R$4<<##=--$R";
+        else if (dam <= 3500)   verb = "$4-=*<|[$FNULLIFIES$R$4]|>*=-$R"; 
+        else if (dam <= 4000)   verb = "$4-=**[|<$FBUTCHERS$R$4>|]**=-$R"; 
+        else if (dam <= 4500)   verb = "$4--=<#[|$FLIQUIDATES$R$4|]#=--$R"; 
+        else if (dam <= 5000)   verb = "$4-=+<##$FSLAUGHTERS$R$4##>+=-$R"; 
+        else if (dam <= 5500)   verb = "$4-=+*<(|[ $FEXTIRPATES$R$4 ]|)>*+=-$R"; 
         else                    verb = "$4-+<<[[ $FPARTICLIZES$R$4 ]]>>+-$R";
 
         sprintf (buf, "The trap %s $n!", verb);

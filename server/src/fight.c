@@ -2778,6 +2778,31 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 vs = "$4--=##>>$FUTTERLY DESTROY$R$4<<##=--$R";
                 vp = "$4--=##>>$FUTTERLY DESTROYS$R$4<<##=--$R";
         }
+        else if (dam <= 3500)   
+        {
+                vs = "$4-=*<|[$FNULLIFY$R$4]|>*=-$R"; 
+                vp = "$4-=*<|[$FNULLIFIES$R$4]|>*=-$R"; 
+        }
+        else if (dam <= 4000)   
+        {
+                vs = "$4-=**[|<$FBUTCHER$R$4>|]**=-$R"; 
+                vp = "$4-=**[|<$FBUTCHERS$R$4>|]**=-$R"; 
+        }
+        else if (dam <= 4500)   
+        {
+                vs = "$4--=<#[|$FLIQUIDATE$R$4|]#=--$R"; 
+                vp = "$4--=<#[|$FLIQUIDATES$R$4|]#=--$R"; 
+        }
+        else if (dam <= 5000)   
+        {
+                vs = "$4-=+<##$FSLAUGHTER$R$4##>+=-$R"; 
+                vp = "$4-=+<##$FSLAUGHTERS$R$4##>+=-$R"; 
+        }
+        else if (dam <= 5500)   
+        {
+                vs = "$4-=+*<(|[ $FEXTIRPATE$R$4 ]|)>*+=-$R"; 
+                vp = "$4-=+*<(|[ $FEXTIRPATES$R$4 ]|)>*+=-$R"; 
+        }
         else
         {
                 vs = "$4-+<<[[ $FPARTICLIZE$R$4 ]]>>+-$R";
