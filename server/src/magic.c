@@ -7461,7 +7461,9 @@ bool skill_cannot_be_dispelled (int sn)
             || sn == gsn_trap
             || sn == gsn_gouge
             || sn == gsn_choke
+            || sn == gsn_crush
             || sn == gsn_howl
+            || sn == gsn_snare
             || sn == gsn_web
             || sn == gsn_mount
             || sn == gsn_battle_aura

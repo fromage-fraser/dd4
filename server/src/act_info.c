@@ -871,7 +871,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch) && IS_SET(obj->extra_flags, ITEM_TRAP)
                     && number_percent() < ch->pcdata->learned[gsn_find_traps])
                 {
-                        send_to_char( "You believe that it is trapped!!\n\r", ch );
+                        send_to_char( "\n\r{RYou believe that it is trapped.{x\n\r", ch );
                         return;
                 }
 
