@@ -10,25 +10,25 @@ $
 0 City Anon~
 {x
  The City of Anon
-
-     Psionic                     Mage                      ShapeShifter
-      Guild     Merc    Magic    Guild              Pet    Guild
-        |       Hire    Shop       |       Sage     Shop     |
-        |________|________|________|________|________|_______|______Brawler
-                 |                                   |               Guild
-  Castellan _____|               Healer  Deathtrap   |_____ Armorer
-                 |                 |     Dungeon     |
-W. Gate _________|_______________Temple_____|________|_________ E. Gate
-                 |                 |                 |
-      Smith _____|       Locksmith_|_Book Shop       |_____ Weapon Smith
-                 |                 |                 |
-        _________|_________________|_________________|________
-        |        |        |        |        |        |       |
-        |       Bank   Grocer      |      Baker     Bar      |
-        |                        Cleric                      |
-        |                        Guild                       |
-     Warrior                                                 Thief
-     Guild                                                   Guild
+  
+     Psionic                     Mage                        ShapeShifter
+      Guild     Merc    Magic    Guild                  Pet      Guild
+        |       Hire    Shop       |        Sage        Shop       |
+        |________|________|________|___________|___________|_______|______Brawler
+                 |                                         |               Guild
+  Castellan _____|               Healer  Deathtrap  Tinker_|_____ Armorer
+                 |                 |      Dungeon          |
+W. Gate _________|_______________Temple________|___________|_________ E. Gate
+                 |                 |                       |
+      Smith _____|       Locksmith_|_Book Shop             |_____ Weapon Smith
+                 |                 |                       |
+        _________|_________________|_______________________|________
+        |        |        |        |           |           |       |
+        |       Bank   Grocer      |         Baker        Bar      |
+        |                        Cleric                            |
+        |                        Guild                             |
+     Warrior                                                     Thief
+     Guild                                                       Guild
 
 ~
 
@@ -996,24 +996,24 @@ know and he'll get to work on it straight away.
 
 #OBJECTS
 #31000
-key~
+key tasselled~
 a tasselled key~
-The Key to the City Gates.~
+The key to the city gates.~
 ~
 18 0 1|16384
 0~ 0~ 0~ 0~
 1 0 0
 #31001
-key~
+key bronze~
 a bronze key~
-The Key to the City Dungeon.~
+The key to the city dungeon.~
 ~
 18 0 1|16384
 0~ 0~ 0~ 0~
 1 0 0
 #31002
 barrel beer~
-a Barrel of Mo-Hi's (TM) beer~
+a barrel of Mo-Hi's (TM) beer~
 A beer barrel has been left here.~
 ~
 17 0 1
@@ -1029,7 +1029,7 @@ A beer bottle has been left here.~
 10 20 0
 #31004
 bottle ale~
-a Bottle of Mo-Hi's (TM) ale~
+a bottle of Mo-Hi's (TM) ale~
 A dark bottle of Mo-Hi's (TM) ale has been left here.~
 ~
 17 0 1
@@ -1037,8 +1037,8 @@ A dark bottle of Mo-Hi's (TM) ale has been left here.~
 10 10 0
 #31005
 bottle firebreather~
-a Bottle of firebreather~
-A firebreather has been left here.~
+a bottle of firebreather~
+A bottle of firebreather has been left here.~
 ~
 17 0 1
 8~ 8~ 7~ 0~
@@ -1060,7 +1060,7 @@ A large torch.~
 0~ 0~ 24~ 0~
 1 10 0
 #31008
-lantern~
+lantern hooded brass~
 a hooded brass lantern~
 A hooded brass lantern has been left here.~
 ~
@@ -1086,7 +1086,7 @@ A scroll has carelessly been left here.~
 12~ identify~ ~ ~
 1 2000 0
 #31010
-potion yellow~
+potion yellow invisible~
 a yellow potion of see invisible~
 A small yellow potion has carelessly been left here.~
 ~
@@ -1113,7 +1113,7 @@ A large jug of water sloshes on the floor.~
 60~ 60~ 0~ 0~
 85 0 0
 #31013
-club~
+club heavy lead~
 a heavy lead-sheathed club~
 A heavy club sheathed in lead lies here.~
 ~
@@ -1126,8 +1126,8 @@ A
 19 4
 #31014
 mace~
-a Sturdy Mace~
-A Sturdy Mace lies here.~
+a sturdy mace~
+A sturdy mace lies here.~
 ~
 5 0 1|8192
 0~ 0~ 0~ 7~
@@ -1138,7 +1138,7 @@ A
 19 1
 #31015
 dagger~
-a Dagger~
+a dagger~
 A good backstabbing weapon, this.~
 ~
 5 0 1|8192
@@ -1149,9 +1149,9 @@ A
 A
 19 -2
 #31016
-scimitar~
-a Wickedly-Curved Scimitar~
-A Wickedly-Curved Scimitar hums ominously here.~
+scimitar curved~
+a wickedly-curved scimitar~
+A wickedly-curved scimitar hums ominously here.~
 ~
 5 2|16|64|512 1|8192
 0~ 0~ 0~ 3~
@@ -1161,7 +1161,7 @@ A
 A
 19 4
 #31017
-boots~
+boots tough leather~
 a pair of tough leather boots~
 A pair of tough leather boots lie here.~
 ~
@@ -1173,7 +1173,7 @@ A
 A
 5 1
 #31018
-belt~
+belt narrow leather~
 a narrow leather belt~
 A narrow leather belt is curled up here.~
 ~
@@ -1196,7 +1196,7 @@ A
 18 2
 #31020
 scarf~
-a Scarf~
+a scarf~
 A scarf is here.~
 ~
 9 0 1|4
@@ -1419,21 +1419,21 @@ A shimmering potion is here.~
 5~ invis~ fly~ infravision~
 1 400 0
 #31043
-tent~
+tent canvas sturdy~
 a sturdy canvas tent~
 A sturdy canvas tent is here.~
 ~
 15 262144 1
 1000~ 1~ 0~ 0~
-25 1000 0
+25 1000 40
 #31044
-rowboat~
+rowboat wooden sturdy~
 a sturdy wooden rowboat~
 A sturdy wooden rowboat is moored here.~
 ~
 15 262144|524288 1
 1000~ 0~ 0~ 1~
-50 500 0
+50 500 30
 #31045
 battered fried fish~
 a piece of battered fried fish~
