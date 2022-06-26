@@ -2775,6 +2775,7 @@ char *extra_bit_name (int extra_flags)
             case ITEM_ANTI_CLERIC:          return "anti_cleric";
             case ITEM_ANTI_THIEF:           return "anti_thief";
             case ITEM_ANTI_WARRIOR:         return "anti_warrior";
+            case ITEM_ANTI_PSIONIC:         return "anti_psionic";
             case ITEM_VORPAL:               return "vorpal";
             case ITEM_TRAP:                 return "trapped";
             case ITEM_DONATED:              return "donated";
