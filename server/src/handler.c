@@ -2131,6 +2131,36 @@ bool can_drop_obj( CHAR_DATA *ch, OBJ_DATA *obj )
         return FALSE;
 }
 
+/*
+ * Return damage type description for a weapon given array element location
+ */
+
+char* weapon_damage_type_name (int dt_num)
+{
+        /* For use in ostat -- Owl 27/6/22 */
+
+        if (dt_num == 0)        return "hit";
+        if (dt_num == 1)        return "slice";
+        if (dt_num == 2)        return "stab";
+        if (dt_num == 3)        return "slash";
+        if (dt_num == 4)        return "whip";
+        if (dt_num == 5)        return "claw";
+        if (dt_num == 6)        return "blast";
+        if (dt_num == 7)        return "pound";
+        if (dt_num == 8)        return "crush";
+        if (dt_num == 9)        return "grep";
+        if (dt_num == 10)       return "bite";
+        if (dt_num == 11)       return "pierce";
+        if (dt_num == 12)       return "suction";
+        if (dt_num == 13)       return "chop";
+        if (dt_num == 14)       return "rake";
+        if (dt_num == 15)       return "swipe";
+        if (dt_num == 16)       return "sting";
+        
+        return "(unknown)";
+}
+
+
 
 /*
  * Return ascii name of an item type.
