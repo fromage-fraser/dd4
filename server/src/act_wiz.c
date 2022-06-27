@@ -977,11 +977,32 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         sprintf( buf, "%s {x]\n\r", wear_location_name(obj->wear_loc) );
         strcat( buf1, buf );
 
-        sprintf( buf, "In room: {R%d{x  In object: {W%s{x  Carried by: {W%s{x  \n\r",
-                !obj->in_room    ?        0 : obj->in_room->vnum,
+        if (!obj->carried_by)
+        {
+                sprintf( buf, "In room: {R%d{x  In object: {W%s{x\n\r",
+                !obj->in_room    ?            0 : obj->in_room->vnum,
+                !obj->in_obj     ? "{W(none){x" : obj->in_obj->short_descr);
+                strcat( buf1, buf );
+
+        }
+        else if(IS_NPC(obj->carried_by))
+        {
+                sprintf( buf, "In room: {R%d{x  In object: {W%s{x  \n\rCarried by: {W%s{x ({G%s{x) [{R%d{x]  \n\r",
+                        !obj->in_room    ?            0 : obj->in_room->vnum,
+                        !obj->in_obj     ? "{W(none){x" : obj->in_obj->short_descr,
+                        obj->carried_by->short_descr, 
+                        obj->carried_by->name,
+                        obj->carried_by->pIndexData->vnum);
+                strcat( buf1, buf );
+        }
+        else
+        {
+                sprintf( buf, "In room: {R%d{x  In object: {W%s{x  Carried by: {W%s{x\n\r",
+                !obj->in_room    ?            0 : obj->in_room->vnum,
                 !obj->in_obj     ? "{W(none){x" : obj->in_obj->short_descr,
-                !obj->carried_by ? "{W(none){x" : obj->carried_by->name);
-        strcat( buf1, buf );
+                obj->carried_by->name);
+                strcat( buf1, buf );
+        }
 
         sprintf( buf, "Values: {W%d %d %d %d{x\n\r",
                 obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
