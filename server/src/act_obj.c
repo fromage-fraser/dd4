@@ -2652,11 +2652,9 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 send_to_char("You can't Smelt that!\n\r", ch);
                 return;
         }
-                 
-                extract_obj(obj);
-
-                act("$n Smelts $p into is raw materials", ch, obj, NULL, TO_ROOM);
-                act("You smelt $p.", ch, obj, NULL, TO_CHAR);
+        act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+        act("You smelt $p into its raw materials.", ch, obj, NULL, TO_CHAR);        
+        extract_obj(obj);        
 }
         
 
