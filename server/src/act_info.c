@@ -1214,11 +1214,11 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->class == CLASS_WARRIOR )
         {
-        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Mithral: {y%d{x  Adamantite: {w%d{x  Electrum: {Y%d{x  starmetal: {W%d{x\n\r",
+        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Mithral: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
                 ch->smelted_steel, ch->smelted_mithral, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
         strcat(buf1, buf);
         }
-        
+
         sprintf( buf, "You're carrying {C%d{x/{c%d{x items, or {C%d{x/{c%d{x lbs in weight.\n\r",
                 ch->carry_number, can_carry_n( ch ), (ch->carry_weight +
                 ch->coin_weight), can_carry_w( ch ) );

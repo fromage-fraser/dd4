@@ -2640,12 +2640,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         if (obj->item_type == ITEM_WEAPON)
         {
-                ch->gold++;
+                ch->smelted_steel++;
         }
 
         else if (obj->item_type == ITEM_ARMOR)
         {
-                ch->copper++;
+                ch->smelted_mithral++;
         }
         else
         {

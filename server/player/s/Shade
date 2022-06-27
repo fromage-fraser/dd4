@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       4870
+Playd       5239
 Note        0
 Room        55091
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -21,7 +21,7 @@ Rage        50
 Rage_Max    100
 Aggro_Dam   0
 Platinum    0
-Gold        11
+Gold        12
 Silver      5
 Copper      1
 Bank        0
@@ -67,7 +67,7 @@ RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1656323589
+Saved       1656324004
 Patron      None~
 DeityTimer  360
 DeityFlags  0
@@ -588,9 +588,189 @@ Skll        100 'artist base'
 Skll        100 'barbarian base'
 Skll        100 'bard base'
 Skll        100 'teacher base'
-Aff          11  45 -23  24          0
-Aff          11  45  23  18          0
-Aff          35  44   0   0          4
+Aff          35  31   0   0          4
+Aff          11  32  23  18          0
+Aff          11  32 -23  24          0
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         99
+Values       0 5 11 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         102
+Values       0 5 13 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         102
+Values       0 5 13 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         115
+Values       0 5 14 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         109
+Values       0 5 13 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         116
+Values       0 3 14 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         116
+Values       0 4 12 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         104
+Values       0 5 15 3
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         geoffrey sword~
+ShortDescr   a sword~
+Description  Geoffrey's sword gleams in the sun.~
+Vnum         2435
+ExtraFlags   1025
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       7
+Level        10
+Timer        -2
+TimerMax     0
+Cost         93
+Values       0 3 14 3
+Owner        ~
 End
 
 #END
