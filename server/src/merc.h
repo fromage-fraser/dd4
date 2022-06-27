@@ -4232,6 +4232,7 @@ char *  room_flag_name                  args( ( int vector ) );
 char *  area_flag_name                  args( ( int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );
 char *  wear_location_name              args( ( int wearloc_num ) );
+char *  weapon_damage_type_name         args( ( int dt_num) );
 char *  sector_name                     args( ( int sector_num ) );
 char *  race_name                       args( ( int race_num ) );
 char *  spec_fun_name                         ( CHAR_DATA *ch );
