@@ -772,11 +772,11 @@ struct coin_data
 /* Smelting MAterials - Brutus */
 struct smelting_data
 {
-        int     iron;
-        int     mithral;
-        int     adamantite;
-        int     electrum;
-        int     starmetal;
+        int     smelted_iron;
+        int     smelted_mithral;
+        int     smelted_adamantite;
+        int     smelted_electrum;
+        int     smelted_starmetal;
 };
 
 /*
@@ -1705,6 +1705,14 @@ extern  WANTED_DATA *wanted_list_last;
 #define COIN_SILVER                    10
 #define COIN_COPPER                     1
 
+/* 
+ * Smelted MAterials - Brutus
+ */
+#define SMELTED_STEEL                   1
+#define SMELTED_MITHRAL                 2
+#define SMELTED_ADAMANTITE              3
+#define SMELTED_ELECTRUM                4
+#define SMELTED_STARMETAL               5
 
 /*
  * Well known object virtual numbers.
@@ -2311,6 +2319,11 @@ struct char_data
         int             silver;
         int             copper;
         int             coin_weight;
+        int             smelted_steel;
+        int             smelted_mithral;
+        int             smelted_adamantite;
+        int             smelted_electrum;
+        int             smelted_starmetal;
         int             exp;
         int             act;
         int             status;
@@ -4212,6 +4225,7 @@ OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) 
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
+OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_mithral, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );
