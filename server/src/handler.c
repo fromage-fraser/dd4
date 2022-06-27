@@ -2800,6 +2800,7 @@ char *extra_bit_name (int extra_flags)
             case ITEM_ANTI_EVIL:            return "anti_evil";
             case ITEM_ANTI_NEUTRAL:         return "anti_neutral";
             case ITEM_NOREMOVE:             return "no_remove";
+            case ITEM_INVENTORY:            return "inventory";
             case ITEM_POISONED:             return "poisoned";
             case ITEM_ANTI_MAGE:            return "anti_mage";
             case ITEM_ANTI_CLERIC:          return "anti_cleric";
