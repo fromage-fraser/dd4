@@ -129,6 +129,7 @@ typedef struct mob_prog_data                    MPROG_DATA;
 typedef struct mob_prog_act_list                MPROG_ACT_LIST;
 typedef struct auction_data                     AUCTION_DATA;
 typedef struct coin_data                        COIN_DATA;
+typedef struct smelting_data                    SMELTING_DATA;
 
 /*
  * Tables - geoff
@@ -768,6 +769,15 @@ struct coin_data
         int     copper;
 };
 
+/* Smelting MAterials - Brutus */
+struct smelting_data
+{
+        int     iron;
+        int     mithral;
+        int     adamantite;
+        int     electrum;
+        int     starmetal;
+};
 
 /*
  * Per-class stuff.
@@ -3694,6 +3704,7 @@ DECLARE_DO_FUN( do_slist                        );
 DECLARE_DO_FUN( do_slookup                      );
 DECLARE_DO_FUN( do_smash                        );      /* Smash skill (WS) */
 DECLARE_DO_FUN( do_smear                        );
+DECLARE_DO_FUN( do_smelt                        );      /* Smithy - Brutus */
 DECLARE_DO_FUN( do_snap_neck                    );      /* brawler goodie - brutus */
 DECLARE_DO_FUN( do_sneak                        );
 DECLARE_DO_FUN( do_tail                         );

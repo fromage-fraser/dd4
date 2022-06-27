@@ -2597,6 +2597,69 @@ void do_sacrifice (CHAR_DATA *ch, char *argument)
         extract_obj(obj);
 }
 
+/* New Smelt Code - Brutus */
+
+void do_smelt (CHAR_DATA *ch, char *argument)
+{
+       
+        ROOM_INDEX_DATA *pRoomIndex;
+        char arg[MAX_INPUT_LENGTH];
+        OBJ_DATA *obj;
+        OBJ_DATA *obj_next;
+        bool found;
+
+        argument = one_argument(argument, arg);
+        if (IS_NPC(ch))
+        return;
+
+         if (arg[0] == '0')
+        {
+                send_to_char("Smelt what?\n\r", ch);
+                return;
+        }
+        
+        if (arg[0] == '\0' || !str_cmp(arg, ch->name))
+        {
+                send_to_char("God appreciates your offer and may accept it later.\n\r", ch);
+                act("$n offers $mself to God, who graciously declines.",
+                    ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that item.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_NODROP))
+        {
+                send_to_char("You can't let go of it!\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type == ITEM_WEAPON)
+        {
+                ch->gold++;
+        }
+
+        else if (obj->item_type == ITEM_ARMOR)
+        {
+                ch->copper++;
+        }
+        else
+        {
+                send_to_char("You can't Smelt that!\n\r", ch);
+                return;
+        }
+                 
+                extract_obj(obj);
+
+                act("$n Smelts $p into is raw materials", ch, obj, NULL, TO_ROOM);
+                act("You smelt $p.", ch, obj, NULL, TO_CHAR);
+}
+        
+
 
 void do_smear (CHAR_DATA *ch, char *argument)
 {
