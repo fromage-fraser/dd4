@@ -3130,7 +3130,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
         {
                 if (number_percent() >= 98)
-                        starmetal = (obj->level/70);
+                        starmetal = (obj->level/60);
                 if (number_percent() >= 94)
                         electrum = (obj->level/45);
                 if (number_percent() >= 75)
@@ -3140,20 +3140,36 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
-                ch->smelted_steel++;
+                ch->smelted_steel = (ch->smelted_steel + steel);
+                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
+                ch->smelted_electrum = (ch->smelted_electrum + electrum);
+                ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
         }
-
-        else if (obj->item_type == ITEM_ARMOR)
+        else if (obj->item_type == ITEM_ARMOR && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
         {
-                ch->smelted_mithral++;
+                if (number_percent() >= 98)
+                        starmetal = (obj->level/60);
+                if (number_percent() >= 94)
+                        electrum = (obj->level/45);
+                if (number_percent() >= 75)
+                        adamantite = (obj->level/30);
+                if (number_percent() >= 50)
+                        mithral = (obj->level/10);
+                if (number_percent() >= 30)
+                        steel = (obj->level/3);
+
+                ch->smelted_steel = (ch->smelted_steel + steel);
+                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
+                ch->smelted_electrum = (ch->smelted_electrum + electrum);
+                ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
         }
         else
         {
                 send_to_char("You can't Smelt that!\n\r", ch);
                 return;
         }
-
-
 
         act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
