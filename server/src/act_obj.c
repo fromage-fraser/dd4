@@ -2603,7 +2603,7 @@ void do_sacrifice (CHAR_DATA *ch, char *argument)
 void do_smelt (CHAR_DATA *ch, char *argument)
 {
        
-        ROOM_INDEX_DATA *pRoomIndex;
+       /*  ROOM_INDEX_DATA *pRoomIndex; */
         char            arg[MAX_INPUT_LENGTH];
         OBJ_DATA        *obj;
         bool            found;
