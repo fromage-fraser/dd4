@@ -2671,11 +2671,11 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 94)
                         electrum = (obj->level/45);
                 if (number_percent() >= 75)
-                        adamantite = (obj->level/45);
+                        adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/45);
+                        mithral = (obj->level/10);
                 if (number_percent() >= 30)
-                        steel = (obj->level/45);
+                        steel = (obj->level/3);
 
                 ch->smelted_steel++;
         }
@@ -2694,7 +2694,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
-        sprintf(buf, "You recover the following.. \n Steel: %d\n Mithral: %d\n Adamantite: %d\n Electrum: %d\n Starmetal: %d!\n\r", steel, mithral, adamantite, electrum, starmetal);
+        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nMithral: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, mithral, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
         extract_obj(obj);        
 }
