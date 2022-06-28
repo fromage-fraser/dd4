@@ -107,6 +107,9 @@ int     gsn_monk_base;
 int     gsn_martist_base;
 int     gsn_barbarian_base;
 int     gsn_bard_base;
+int     gsn_smith_base;
+int     gsn_engineer_base;
+int     gsn_alchemist_base;
 int     gsn_teacher_base;
 
 
