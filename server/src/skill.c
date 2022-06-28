@@ -3069,6 +3069,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
        
        /*  ROOM_INDEX_DATA *pRoomIndex; */
         char            arg[MAX_INPUT_LENGTH];
+        char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
         int             percent;
         int             starmetal=0;
