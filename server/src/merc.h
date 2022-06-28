@@ -431,6 +431,7 @@ DECLARE_DO_FUN ( do_board );
 #define CLASS_SHAPE_SHIFTER             5
 #define CLASS_BRAWLER                   6
 #define CLASS_RANGER                    7
+#define CLASS_SMITHY                    8
 
 
 /* constants for fame quest lengths and stuff Umgook 2/10/98 */
@@ -493,6 +494,8 @@ struct quest_recall
 #define SUB_CLASS_MARTIAL_ARTIST                14
 #define SUB_CLASS_BARBARIAN                     15
 #define SUB_CLASS_BARD                          16
+#define SUB_CLASS_ENGINEER                      17
+#define SUB_CLASS_ALCHEMIST                     18
 
 #define CLASS_WARLOCK   SUB_CLASS_WARLOCK
 
@@ -504,6 +507,7 @@ struct quest_recall
 #define PRE_SHIFTER             CLASS_SHAPE_SHIFTER     + 1
 #define PRE_BRAWLER             CLASS_BRAWLER           + 1
 #define PRE_RANGER              CLASS_RANGER            + 1
+#define PRE_SMITHY              CLASS_SMITHY            + 1
 
 #define PRE_NECRO               SUB_CLASS_NECROMANCER                   + MAX_CLASS
 #define PRE_WARLOCK             SUB_CLASS_WARLOCK                       + MAX_CLASS
@@ -521,6 +525,8 @@ struct quest_recall
 #define PRE_ARTIST              SUB_CLASS_MARTIAL_ARTIST                + MAX_CLASS
 #define PRE_BARBARIAN           SUB_CLASS_BARBARIAN                     + MAX_CLASS
 #define PRE_BARD                SUB_CLASS_MONK                          + MAX_CLASS
+#define PRE_ENGINEER            SUB_CLASS_ENGINEER                      + MAX_CLASS
+#define PRE_ALCHEMIST           SUB_CLASS_ALCHEMIST                     + MAX_CLASS
 
 /*
  * Races
@@ -2693,6 +2699,9 @@ extern int gsn_psionic_base;
 extern int gsn_shifter_base;
 extern int gsn_brawler_base;
 extern int gsn_ranger_base;
+extern int gsn_smithy_base;
+extern int gsn_engineer_base;
+extern int gsn_alchemist_base;
 extern int gsn_necro_base;
 extern int gsn_warlock_base;
 extern int gsn_templar_base;
@@ -2914,6 +2923,7 @@ extern int gsn_chameleon_power;
 extern int gsn_domination;
 extern int gsn_heighten;
 extern int gsn_shadow_form;
+extern int gsn_smelt;
 
 extern int gsn_group_evocation;
 extern int gsn_group_dark;
@@ -2969,6 +2979,12 @@ extern int gsn_group_herb_lore;
 extern int gsn_spellcraft;
 extern int gsn_group_resistance;
 extern int gsn_group_last;
+extern int gsn_group_weaponsmith;
+extern int gsn_group_armoursmith;
+extern int gsn_group_inscription;
+extern int gsn_group_alchemy;
+extern int gsn_group_turret_tech;
+extern int gsn_group_mechanical_tech;
 
 extern int gsn_form_chameleon;
 extern int gsn_form_hawk;

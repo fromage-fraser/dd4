@@ -2599,29 +2599,49 @@ void do_sacrifice (CHAR_DATA *ch, char *argument)
 
 /* New Smelt Code - Brutus */
 
+
 void do_smelt (CHAR_DATA *ch, char *argument)
 {
        
         ROOM_INDEX_DATA *pRoomIndex;
-        char arg[MAX_INPUT_LENGTH];
-        OBJ_DATA *obj;
-        OBJ_DATA *obj_next;
-        bool found;
+        char            arg[MAX_INPUT_LENGTH];
+        OBJ_DATA        *obj;
+        bool            found;
+        int             percent;
 
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
         return;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_smelt))
+        {
+                send_to_char("You don't know how to smelt anything.\n\r", ch);
+                return;
+        }
 
          if (arg[0] == '0')
         {
                 send_to_char("Smelt what?\n\r", ch);
                 return;
         }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        if (!check_blind(ch))
+        {
+                send_to_char("you can't see anything.\n\r", ch);
+                return;
+        }
+
         
         if (arg[0] == '\0' || !str_cmp(arg, ch->name))
         {
-                send_to_char("God appreciates your offer and may accept it later.\n\r", ch);
-                act("$n offers $mself to God, who graciously declines.",
+                send_to_char("You're unlikely to contain any elements of value.\n\r", ch);
+                act("$n considers smelting $mself, but determins they hold no value.",
                     ch, NULL, NULL, TO_ROOM);
                 return;
         }

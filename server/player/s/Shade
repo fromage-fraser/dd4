@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       5239
+Playd       8657
 Note        0
 Room        55091
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -29,14 +29,14 @@ Bounty      0
 Exp         -1
 Act         151000648
 Status      0
-AffdBy      4
+AffdBy      0
 Pos         7
 Prac        3
 SplPrac     2
 StatTrain   1
-SavThr      -24
+SavThr      -1
 Align       0
-Hit         28
+Hit         5
 Dam         5
 Armr        80
 Wimp        0
@@ -67,7 +67,7 @@ RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1656324004
+Saved       1656377904
 Patron      None~
 DeityTimer  360
 DeityFlags  0
@@ -588,9 +588,6 @@ Skll        100 'artist base'
 Skll        100 'barbarian base'
 Skll        100 'bard base'
 Skll        100 'teacher base'
-Aff          35  31   0   0          4
-Aff          11  32  23  18          0
-Aff          11  32 -23  24          0
 End
 
 #OBJECT
@@ -755,21 +752,181 @@ End
 
 #OBJECT
 Nest         0
-Name         geoffrey sword~
-ShortDescr   a sword~
-Description  Geoffrey's sword gleams in the sun.~
-Vnum         2435
-ExtraFlags   1025
-WearFlags    8193
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
 EgoFlags     0
 WearLoc      -1
-ItemType     5
-Weight       7
+ItemType     9
+Weight       20
 Level        10
 Timer        -2
 TimerMax     0
-Cost         93
-Values       0 3 14 3
+Cost         108
+Values       3 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         103
+Values       4 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         103
+Values       4 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         112
+Values       3 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         106
+Values       5 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         117
+Values       4 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         112
+Values       4 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         121
+Values       4 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         rigid leather armour~
+ShortDescr   some rigid leather armour~
+Description  Some rigid leather body armour looks in bad condition.~
+Vnum         708
+ExtraFlags   0
+WearFlags    9
+EgoFlags     0
+WearLoc      -1
+ItemType     9
+Weight       20
+Level        10
+Timer        -2
+TimerMax     0
+Cost         94
+Values       5 0 0 0
 Owner        ~
 End
 
