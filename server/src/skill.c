@@ -3067,11 +3067,11 @@ void do_gather (CHAR_DATA *ch, char *arg)
 void do_smelt (CHAR_DATA *ch, char *argument)
 {
        
-       /*  ROOM_INDEX_DATA *pRoomIndex; */
+        /*  ROOM_INDEX_DATA *pRoomIndex; */
         char            arg[MAX_INPUT_LENGTH];
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
-        int             percent;
+        /*   int             percent; */
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
