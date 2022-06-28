@@ -2625,9 +2625,9 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!ch->fighting)
+        if (ch->fighting)
         {
-                send_to_char("You aren't fighting anyone.\n\r", ch);
+                send_to_char("Not while fighting.\n\r", ch);
                 return;
         }
 
