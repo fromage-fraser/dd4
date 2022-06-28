@@ -3061,6 +3061,108 @@ void do_gather (CHAR_DATA *ch, char *arg)
         return;
 }
 
+/* New Smelt Code - Brutus */
+
+
+void do_smelt (CHAR_DATA *ch, char *argument)
+{
+       
+       /*  ROOM_INDEX_DATA *pRoomIndex; */
+        char            arg[MAX_INPUT_LENGTH];
+        char            buf [MAX_STRING_LENGTH];
+        OBJ_DATA        *obj;
+        int             percent;
+        int             starmetal=0;
+        int             electrum=0;
+        int             adamantite=0;
+        int             mithral=0;
+        int             steel=0;
+
+        argument = one_argument(argument, arg);
+        if (IS_NPC(ch))
+        return;
+
+        if (!CAN_DO(ch, gsn_smelt))
+        {
+                send_to_char("You don't know how to smelt anything.\n\r", ch);
+                return;
+        }
+
+         if (arg[0] == '0')
+        {
+                send_to_char("Smelt what?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("Not while fighting.\n\r", ch);
+                return;
+        }
+
+        if (!check_blind(ch))
+        {
+                send_to_char("you can't see anything.\n\r", ch);
+                return;
+        }
+
+        
+        if (arg[0] == '\0' || !str_cmp(arg, ch->name))
+        {
+                send_to_char("You're unlikely to contain any elements of value.\n\r", ch);
+                act("$n considers smelting $mself, but determins they hold no value.",
+                    ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that item.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_NODROP))
+        {
+                send_to_char("You can't let go of it!\n\r", ch);
+                return;
+        }
+
+        if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
+        {
+                if (number_percent() >= 98)
+                        starmetal = (obj->level/70);
+                if (number_percent() >= 94)
+                        electrum = (obj->level/45);
+                if (number_percent() >= 75)
+                        adamantite = (obj->level/30);
+                if (number_percent() >= 50)
+                        mithral = (obj->level/10);
+                if (number_percent() >= 30)
+                        steel = (obj->level/3);
+
+                ch->smelted_steel++;
+        }
+
+        else if (obj->item_type == ITEM_ARMOR)
+        {
+                ch->smelted_mithral++;
+        }
+        else
+        {
+                send_to_char("You can't Smelt that!\n\r", ch);
+                return;
+        }
+
+
+
+        act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
+        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nMithral: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, mithral, adamantite, electrum, starmetal);
+        send_to_char (buf, ch);
+        extract_obj(obj);        
+}
+
+
 void do_classify( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA *obj;
