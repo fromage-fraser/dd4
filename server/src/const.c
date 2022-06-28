@@ -5135,7 +5135,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "smelt", "!Smelt!"
 
-        }
+        },
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
