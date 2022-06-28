@@ -235,10 +235,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               503     /* Increased to 503, 1295, 383, 73, 26 for swoop. */
-#define MAX_PRE_REQ             1295    /* Added for swoop Owl 13/6/22 */
-#define MAX_SPELL_GROUP         383     /* Added for swoop */
-#define MAX_GROUPS              52
+#define MAX_SKILL               504     /* Increased to 504(503), 1299(1295), 385(383), 53(52) for smelt */
+#define MAX_PRE_REQ             1299    /* Added for smelt*/
+#define MAX_SPELL_GROUP         385     /* Added for smelt */
+#define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
 #define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */
 
