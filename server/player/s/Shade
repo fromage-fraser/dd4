@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       27207
+Playd       27443
 Note        0
 Room        55091
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -61,13 +61,13 @@ AtrMd       0 0 0 0 0
 Cond        -1 47 47
 Colors      13 14 12 9 15 10 7 11 3 13
 CurRecall   0
-SpellAttk   0
+SpellAttk   1
 Blink       0
 RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1656396589
+Saved       1656396863
 Patron      None~
 DeityTimer  360
 DeityFlags  0
@@ -592,86 +592,6 @@ End
 
 #OBJECT
 Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         101
-Values       0 4 14 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         117
-Values       0 5 13 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         121
-Values       0 5 14 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         128
-Values       0 5 12 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
 Name         mace~
 ShortDescr   a mace~
 Description  A mace has been left here.~
@@ -847,126 +767,6 @@ Timer        -2
 TimerMax     0
 Cost         1101
 Values       0 25 81 0
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         mace~
-ShortDescr   a mace~
-Description  A mace has been left here.~
-Vnum         20505
-ExtraFlags   17891328
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       75
-Level        100
-Timer        -2
-TimerMax     0
-Cost         1006
-Values       0 28 80 0
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         106
-Values       0 2 14 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         122
-Values       0 5 14 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         95
-Values       0 3 13 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         95
-Values       0 5 12 1
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         sword~
-ShortDescr   a sword~
-Description  A simple sword is here.~
-Vnum         2436
-ExtraFlags   0
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       5
-Level        10
-Timer        -2
-TimerMax     0
-Cost         117
-Values       0 3 12 1
 Owner        ~
 End
 
