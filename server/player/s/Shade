@@ -5,7 +5,7 @@ LngDsc      ~
 Dscr        ~
 Prmpt       [%z %R] ~
 Sx          1
-Cla         3
+Cla         7
 SbCla       0
 Rce         1
 Clan        0
@@ -13,7 +13,7 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       37454
+Playd       38618
 Note        0
 Room        31041
 HpMnMv      2711 2711 1184 1184 1178 1178
@@ -67,29 +67,29 @@ RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1656406976
+Saved       1656408194
 Patron      None~
 DeityTimer  360
 DeityFlags  0
-DeityFavour Hurin~ 400
-DeityFavour Tulgor~ 450
-DeityFavour Lloth~ 450
+DeityFavour Hurin~ 450
+DeityFavour Tulgor~ 350
+DeityFavour Lloth~ 350
 DeityFavour Sephusia~ 400
 DeityFavour Torm~ 450
-DeityFavour Ealindel~ 450
-DeityFavour Thalin~ 450
+DeityFavour Ealindel~ 500
+DeityFavour Thalin~ 400
 DeityFavour Televar~ 600
-DeityFavour Gorthrond~ 650
+DeityFavour Gorthrond~ 600
 DeityFavour Minerva~ 450
-DeityFavour Xuul~ 450
+DeityFavour Xuul~ 350
 DeityFavour Mira~ 600
-DeityFavour Death~ 600
-DeityFavour Azazel~ 400
-DeityFavour Swyft~ 600
+DeityFavour Death~ 550
+DeityFavour Azazel~ 350
+DeityFavour Swyft~ 550
 DeityFavour Nystis~ 400
 DeityFavour Tractacus~ 400
 DeityFavour Brutus~ 600
-DeityFavour Morfus~ 600
+DeityFavour Morfus~ 650
 DeityType   0 0 0 0 0 0 
 DeityPerson 0 0 0 0 0 0 0 
 Boards      5 General 0 Ideas 0 Announce 0 Bugs 0 Personal 0 
@@ -647,86 +647,6 @@ Timer        -2
 TimerMax     0
 Cost         1093
 Values       0 26 81 0
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         mace~
-ShortDescr   a mace~
-Description  A mace has been left here.~
-Vnum         20505
-ExtraFlags   17891328
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       75
-Level        100
-Timer        -2
-TimerMax     0
-Cost         1007
-Values       0 26 81 0
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         mace~
-ShortDescr   a mace~
-Description  A mace has been left here.~
-Vnum         20505
-ExtraFlags   17891328
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       75
-Level        100
-Timer        -2
-TimerMax     0
-Cost         917
-Values       0 27 83 0
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         mace~
-ShortDescr   a mace~
-Description  A mace has been left here.~
-Vnum         20505
-ExtraFlags   17891328
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       75
-Level        100
-Timer        -2
-TimerMax     0
-Cost         1011
-Values       0 28 81 0
-Owner        ~
-End
-
-#OBJECT
-Nest         0
-Name         mace~
-ShortDescr   a mace~
-Description  A mace has been left here.~
-Vnum         20505
-ExtraFlags   17891328
-WearFlags    8193
-EgoFlags     0
-WearLoc      -1
-ItemType     5
-Weight       75
-Level        100
-Timer        -2
-TimerMax     0
-Cost         1010
-Values       0 28 82 0
 Owner        ~
 End
 
