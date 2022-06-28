@@ -2605,9 +2605,15 @@ void do_smelt (CHAR_DATA *ch, char *argument)
        
        /*  ROOM_INDEX_DATA *pRoomIndex; */
         char            arg[MAX_INPUT_LENGTH];
+        char buf [MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
         bool            found;
         int             percent;
+        int             starmetal;
+        int             electrum;
+        int             adamantite;
+        int             mithral;
+        int             steel;
 
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
@@ -2658,9 +2664,19 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-
-        if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_poison_weapon]))
+        if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
         {
+                if (number_percent() >= 98)
+                        starmetal = (obj->level/70);
+                if (number_percent() >= 94)
+                        electrum = (obj->level/45);
+                if (number_percent() >= 75)
+                        adamantite = (obj->level/45);
+                if (number_percent() >= 50)
+                        mithral = (obj->level/45);
+                if (number_percent() >= 30)
+                        steel = (obj->level/45);
+
                 ch->smelted_steel++;
         }
 
@@ -2673,8 +2689,13 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 send_to_char("You can't Smelt that!\n\r", ch);
                 return;
         }
+
+
+
         act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-        act("You smelt $p into its raw materials.", ch, obj, NULL, TO_CHAR);        
+        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
+        sprintf(buf, "You recover the following.. \n Steel: %d\n Mithral: %d\n Adamantite: %d\n Electrum: %d\n Starmetal: %d!\n\r", steel, mithral, adamantite, electrum, starmetal);
+        send_to_char (buf, ch);
         extract_obj(obj);        
 }
         
