@@ -2613,7 +2613,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch))
         return;
 
-        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_smelt))
+        if (!CAN_DO(ch, gsn_smelt))
         {
                 send_to_char("You don't know how to smelt anything.\n\r", ch);
                 return;
@@ -2658,7 +2658,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (obj->item_type == ITEM_WEAPON)
+
+        if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_poison_weapon]))
         {
                 ch->smelted_steel++;
         }
