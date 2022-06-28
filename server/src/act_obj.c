@@ -2609,11 +2609,11 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         OBJ_DATA        *obj;
         bool            found;
         int             percent;
-        int             starmetal;
-        int             electrum;
-        int             adamantite;
-        int             mithral;
-        int             steel;
+        int             starmetal=0;
+        int             electrum=0;
+        int             adamantite=0;
+        int             mithral=0;
+        int             steel=0;
 
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
