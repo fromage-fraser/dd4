@@ -212,7 +212,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * Increase the maxes if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
-#define MAX_CLASS                          8
+#define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     17    /* thats 16 plus 'none' - Brutus */
 #define MAX_RACE                          24    /* thats 23 races plus 'none' - Owl 2/4/22 */
 #define MAX_STAT                          32    /* 0->31  - Shade */

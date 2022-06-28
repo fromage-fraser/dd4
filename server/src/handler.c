@@ -2654,6 +2654,7 @@ char *full_class_name (int class)
         if (class == CLASS_BRAWLER)         return "Brawler";
         if (class == CLASS_SHAPE_SHIFTER)   return "Shape Shifter";
         if (class == CLASS_RANGER)          return "Ranger";
+        if (class == CLASS_SMITHY)          return "Smithy";
 
         return "none";
 }
@@ -2677,6 +2678,8 @@ char *full_sub_class_name (int sub_class)
         if (sub_class == SUB_CLASS_MARTIAL_ARTIST)      return "Martial Artist";
         if (sub_class == SUB_CLASS_BARBARIAN)           return "Barbarian";
         if (sub_class == SUB_CLASS_BARD)                return "Bard";
+        if (sub_class == SUB_CLASS_ENGINEER)            return "Engineer";
+        if (sub_class == SUB_CLASS_ALCHEMIST)           return "Alchemist";
 
         return "none";
 }

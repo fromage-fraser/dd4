@@ -1212,7 +1212,7 @@ void do_score (CHAR_DATA *ch, char *argument)
                 ch->plat, ch->gold, ch->silver, ch->copper);
         strcat(buf1, buf);
 
-        if( ch->class == CLASS_WARRIOR )
+        if( ch->class == CLASS_SMITHY )
         {
         sprintf(buf, "Raw Materials:  Steel: {w%d{x  Mithral: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
                 ch->smelted_steel, ch->smelted_mithral, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
