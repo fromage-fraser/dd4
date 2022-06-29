@@ -2597,6 +2597,7 @@ void do_sacrifice (CHAR_DATA *ch, char *argument)
         extract_obj(obj);
 }
 
+
 void do_smear (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
