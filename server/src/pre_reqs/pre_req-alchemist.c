@@ -29,7 +29,7 @@
 
 /* Inscription */
 
-{&gsn_group_inscription 	        &gsn_alchemist_base,	30,	PRE_ALCHEMIST},
+{&gsn_group_inscription, 	        &gsn_alchemist_base,	  30,	PRE_ALCHEMIST},
 
 {&gsn_inscribe,                 	&gsn_group_inscription,       95,     PRE_ALCHEMIST},
 {&gsn_protection,                   &gsn_group_inscription,       95,     PRE_ALCHEMIST},
