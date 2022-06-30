@@ -1260,6 +1260,9 @@ struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 #include "pre_reqs/pre_req-bard.c"
 #include "pre_reqs/pre_req-ranger.c"
 #include "pre_reqs/pre_req-barbarian.c"
+#include "pre_reqs/pre_req-smithy.c"
+#include "pre_reqs/pre_req-engineer.c"
+#include "pre_reqs/pre_req-alchemist.c"
 };
 
 
