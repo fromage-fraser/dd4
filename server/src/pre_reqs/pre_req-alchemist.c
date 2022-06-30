@@ -16,16 +16,16 @@
 
 /* Alchemy: */
 
-{&gsn_group_alchemy,                &gsn_alchemist_base,       30,     PRE_ALCHEMIST},
+{&gsn_group_alchemy,                &gsn_alchemist_base,      30,     PRE_ALCHEMIST},
 
-{&gsn_hurl,                 	    &gsn_group_alchemist,       30,     PRE_ALCHEMIST},
-{&gsn_fire_flask,                 	&gsn_group_alchemist,       30,     PRE_ALCHEMIST},
-{&gsn_frost_flask,                 	&gsn_group_alchemist,       60,     PRE_ALCHEMIST},
-{&gsn_stun_flask,                 	&gsn_group_alchemist,       70,     PRE_ALCHEMIST},
-{&gsn_blind_flask,                 	&gsn_group_alchemist,       80,     PRE_ALCHEMIST},
-{&gsn_lightning_flask,           	&gsn_group_alchemist,       80,     PRE_ALCHEMIST},
-{&gsn_acid_flask,                 	&gsn_group_alchemist,       90,     PRE_ALCHEMIST},
-{&gsn_bmf_flask,                 	&gsn_group_alchemist,       95,     PRE_ALCHEMIST},
+{&gsn_hurl,                 	    &gsn_group_alchemy,       30,     PRE_ALCHEMIST},
+{&gsn_fire_flask,                 	&gsn_group_alchemy,       30,     PRE_ALCHEMIST},
+{&gsn_frost_flask,                 	&gsn_group_alchemy,       60,     PRE_ALCHEMIST},
+{&gsn_stun_flask,                 	&gsn_group_alchemy,       70,     PRE_ALCHEMIST},
+{&gsn_blind_flask,                 	&gsn_group_alchemy,       80,     PRE_ALCHEMIST},
+{&gsn_lightning_flask,           	&gsn_group_alchemy,       80,     PRE_ALCHEMIST},
+{&gsn_acid_flask,                 	&gsn_group_alchemy,       90,     PRE_ALCHEMIST},
+{&gsn_bmf_flask,                 	&gsn_group_alchemy,       95,     PRE_ALCHEMIST},
 
 /* Inscription */
 
