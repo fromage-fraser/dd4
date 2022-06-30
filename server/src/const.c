@@ -1319,7 +1319,9 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_herb_lore,
         &gsn_group_morph,
         &gsn_group_resistance,
+        &gsn_group_armoursmith,
         &gsn_group_last
+        
 };
 
 
@@ -1762,6 +1764,9 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_resist_cold,                             0 },
         { &gsn_resist_acid,                             0 },
         { &gsn_resist_lightning,                        0 },
+
+        { &gsn_group_armoursmith,                       0 },
+        { &gsn_smelt,                                   0 },
 
         { &gsn_group_last,                              0 }
 };
@@ -5124,6 +5129,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "swoop", "!Swoop!"
         },
 
+        {
+                "smelt", &gsn_smelt,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "smelt", "!Smelt!"
+
+        },
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -5298,6 +5310,27 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "", "!-bard base-!"
+        },
+
+        {
+                "smithy base", &gsn_smithy_base,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "", "!-smithy base-!"
+        },
+
+        {
+                "engineer base", &gsn_engineer_base,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "", "!-engineer base-!"
+        },
+
+        {
+                "alchemist base", &gsn_alchemist_base,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "", "!-alchemist base-!"
         },
 
         /*

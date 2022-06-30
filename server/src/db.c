@@ -107,6 +107,9 @@ int     gsn_monk_base;
 int     gsn_martist_base;
 int     gsn_barbarian_base;
 int     gsn_bard_base;
+int     gsn_smithy_base;
+int     gsn_engineer_base;
+int     gsn_alchemist_base;
 int     gsn_teacher_base;
 
 
@@ -567,6 +570,7 @@ int     gsn_smoke_bomb;
 int     gsn_snap_shot;
 int     gsn_crush;
 int     gsn_swoop;
+int     gsn_smelt;
 
 /*
  *  Spell groups
@@ -622,6 +626,12 @@ int     gsn_spellcraft;
 int     gsn_group_morph;
 int     gsn_group_resistance;
 int     gsn_group_last;
+int     gsn_group_weaponsmith;
+int     gsn_group_armoursmith;
+int     gsn_group_inscription;
+int     gsn_group_alchemy;
+int     gsn_group_turret_tech;
+int     gsn_group_mechanical_tech;
 
 
 /*

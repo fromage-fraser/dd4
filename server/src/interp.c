@@ -189,6 +189,7 @@ const struct cmd_type cmd_table [] =
         { "sell",       do_sell,        POS_STANDING,    0,  LOG_NORMAL },
         { "take",       do_get,         POS_RESTING,     0,  LOG_NORMAL },
         { "sacrifice",  do_sacrifice,   POS_RESTING,     0,  LOG_NORMAL },
+        { "smelt",      do_smelt,       POS_STANDING,    0,  LOG_NORMAL },
         { "unlock",     do_unlock,      POS_RESTING,     0,  LOG_NORMAL },
         { "value",      do_value,       POS_STANDING,    0,  LOG_NORMAL },
         { "wear",       do_wear,        POS_RESTING,     0,  LOG_NORMAL },

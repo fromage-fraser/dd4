@@ -129,6 +129,7 @@ typedef struct mob_prog_data                    MPROG_DATA;
 typedef struct mob_prog_act_list                MPROG_ACT_LIST;
 typedef struct auction_data                     AUCTION_DATA;
 typedef struct coin_data                        COIN_DATA;
+typedef struct smelting_data                    SMELTING_DATA;
 
 /*
  * Tables - geoff
@@ -211,7 +212,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * Increase the maxes if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
-#define MAX_CLASS                          8
+#define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     17    /* thats 16 plus 'none' - Brutus */
 #define MAX_RACE                          24    /* thats 23 races plus 'none' - Owl 2/4/22 */
 #define MAX_STAT                          32    /* 0->31  - Shade */
@@ -234,10 +235,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               503     /* Increased to 503, 1295, 383, 73, 26 for swoop. */
-#define MAX_PRE_REQ             1295    /* Added for swoop Owl 13/6/22 */
-#define MAX_SPELL_GROUP         383     /* Added for swoop */
-#define MAX_GROUPS              52
+#define MAX_SKILL               507     /* Increased to 507(503), 1299(1295), 385(383), 53(52) for smelt */
+#define MAX_PRE_REQ             1295    /* Added for smelt*/
+#define MAX_SPELL_GROUP         385     /* Added for smelt */
+#define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
 #define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */
 
@@ -430,6 +431,7 @@ DECLARE_DO_FUN ( do_board );
 #define CLASS_SHAPE_SHIFTER             5
 #define CLASS_BRAWLER                   6
 #define CLASS_RANGER                    7
+#define CLASS_SMITHY                    8
 
 
 /* constants for fame quest lengths and stuff Umgook 2/10/98 */
@@ -492,6 +494,8 @@ struct quest_recall
 #define SUB_CLASS_MARTIAL_ARTIST                14
 #define SUB_CLASS_BARBARIAN                     15
 #define SUB_CLASS_BARD                          16
+#define SUB_CLASS_ENGINEER                      17
+#define SUB_CLASS_ALCHEMIST                     18
 
 #define CLASS_WARLOCK   SUB_CLASS_WARLOCK
 
@@ -503,6 +507,7 @@ struct quest_recall
 #define PRE_SHIFTER             CLASS_SHAPE_SHIFTER     + 1
 #define PRE_BRAWLER             CLASS_BRAWLER           + 1
 #define PRE_RANGER              CLASS_RANGER            + 1
+#define PRE_SMITHY              CLASS_SMITHY            + 1
 
 #define PRE_NECRO               SUB_CLASS_NECROMANCER                   + MAX_CLASS
 #define PRE_WARLOCK             SUB_CLASS_WARLOCK                       + MAX_CLASS
@@ -520,6 +525,8 @@ struct quest_recall
 #define PRE_ARTIST              SUB_CLASS_MARTIAL_ARTIST                + MAX_CLASS
 #define PRE_BARBARIAN           SUB_CLASS_BARBARIAN                     + MAX_CLASS
 #define PRE_BARD                SUB_CLASS_MONK                          + MAX_CLASS
+#define PRE_ENGINEER            SUB_CLASS_ENGINEER                      + MAX_CLASS
+#define PRE_ALCHEMIST           SUB_CLASS_ALCHEMIST                     + MAX_CLASS
 
 /*
  * Races
@@ -768,6 +775,15 @@ struct coin_data
         int     copper;
 };
 
+/* Smelting MAterials - Brutus */
+struct smelting_data
+{
+        int     smelted_iron;
+        int     smelted_mithral;
+        int     smelted_adamantite;
+        int     smelted_electrum;
+        int     smelted_starmetal;
+};
 
 /*
  * Per-class stuff.
@@ -1695,6 +1711,14 @@ extern  WANTED_DATA *wanted_list_last;
 #define COIN_SILVER                    10
 #define COIN_COPPER                     1
 
+/* 
+ * Smelted MAterials - Brutus
+ */
+#define SMELTED_STEEL                   1
+#define SMELTED_MITHRAL                 2
+#define SMELTED_ADAMANTITE              3
+#define SMELTED_ELECTRUM                4
+#define SMELTED_STARMETAL               5
 
 /*
  * Well known object virtual numbers.
@@ -2301,6 +2325,11 @@ struct char_data
         int             silver;
         int             copper;
         int             coin_weight;
+        int             smelted_steel;
+        int             smelted_mithral;
+        int             smelted_adamantite;
+        int             smelted_electrum;
+        int             smelted_starmetal;
         int             exp;
         int             act;
         int             status;
@@ -2670,6 +2699,9 @@ extern int gsn_psionic_base;
 extern int gsn_shifter_base;
 extern int gsn_brawler_base;
 extern int gsn_ranger_base;
+extern int gsn_smithy_base;
+extern int gsn_engineer_base;
+extern int gsn_alchemist_base;
 extern int gsn_necro_base;
 extern int gsn_warlock_base;
 extern int gsn_templar_base;
@@ -2891,6 +2923,7 @@ extern int gsn_chameleon_power;
 extern int gsn_domination;
 extern int gsn_heighten;
 extern int gsn_shadow_form;
+extern int gsn_smelt;
 
 extern int gsn_group_evocation;
 extern int gsn_group_dark;
@@ -2946,6 +2979,12 @@ extern int gsn_group_herb_lore;
 extern int gsn_spellcraft;
 extern int gsn_group_resistance;
 extern int gsn_group_last;
+extern int gsn_group_weaponsmith;
+extern int gsn_group_armoursmith;
+extern int gsn_group_inscription;
+extern int gsn_group_alchemy;
+extern int gsn_group_turret_tech;
+extern int gsn_group_mechanical_tech;
 
 extern int gsn_form_chameleon;
 extern int gsn_form_hawk;
@@ -3694,6 +3733,7 @@ DECLARE_DO_FUN( do_slist                        );
 DECLARE_DO_FUN( do_slookup                      );
 DECLARE_DO_FUN( do_smash                        );      /* Smash skill (WS) */
 DECLARE_DO_FUN( do_smear                        );
+DECLARE_DO_FUN( do_smelt                        );      /* Smithy - Brutus */
 DECLARE_DO_FUN( do_snap_neck                    );      /* brawler goodie - brutus */
 DECLARE_DO_FUN( do_sneak                        );
 DECLARE_DO_FUN( do_tail                         );
@@ -4201,6 +4241,7 @@ OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) 
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
+OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_mithral, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );
