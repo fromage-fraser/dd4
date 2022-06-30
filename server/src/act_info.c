@@ -1337,14 +1337,17 @@ void do_score (CHAR_DATA *ch, char *argument)
                 strcat(buf1, "\n\r{WThis is the last level that you can use the default Midgaard recall.{x\n\r");
 
         /* Quest point message hack */
-        if (ch->level == 49 && ch->pcdata->totalqp < 1)
-                strcat(buf1, "\n\r{RYou need at least 1 quest point before you can reach level 50.{x\n\r");
+        if (ch->level == 29 && ch->pcdata->totalqp < 1)
+                strcat(buf1, "\n\r{RYou need at least 1 quest point before you can reach level 30.{x\n\r");
 
-        if (ch->level == 69 && ch->pcdata->totalqp < 200)
-                strcat(buf1, "\n\r{RYou need at least 200 total quest points before you can reach level 70.{x\n\r");
+        if (ch->level == 49 && ch->pcdata->totalqp < 200)
+                strcat(buf1, "\n\r{RYou need at least 200 quest point before you can reach level 50.{x\n\r");
 
-        if (ch->level == 99 && ch->pcdata->totalqp < 500)
-                strcat(buf1, "\n\r{RYou need at least 500 total quest points before you can reach level 100.{x\n\r");
+        if (ch->level == 69 && ch->pcdata->totalqp < 500)
+                strcat(buf1, "\n\r{RYou need at least 500 total quest points before you can reach level 70.{x\n\r");
+
+        if (ch->level == 99 && ch->pcdata->totalqp < 1000)
+                strcat(buf1, "\n\r{RYou need at least 1000 total quest points before you can reach level 100.{x\n\r");
 
         send_to_char(buf1, ch);
 }
