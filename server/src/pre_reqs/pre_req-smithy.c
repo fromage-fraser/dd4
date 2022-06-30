@@ -1,4 +1,5 @@
 /* SMITHY BASE */
+/* 18 skill s- Brutus Jun 2022 */
 
 /* Armousmith */
 {&gsn_group_armoursmith, &gsn_smithy_base,          30,     PRE_SMITHY},
