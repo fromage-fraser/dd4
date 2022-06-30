@@ -10,7 +10,7 @@
  * 
  *  Written by Helix of Twilight and Vego Mud
  * 
- *  Tidied by Gezhp 2000
+ *  Tidied by Gezhp 2000 
  */
 
 
