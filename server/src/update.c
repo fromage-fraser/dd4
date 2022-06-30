@@ -2380,16 +2380,20 @@ bool check_questpoints_allow_level_gain (CHAR_DATA* ch, bool verbose)
 
             /* You'll also need to change the messages in do_score if you change these values. */
 
-            case 49:
+            case 29:
                 qp = 1;
                 break;
 
-            case 69:
+            case 49:
                 qp = 200;
                 break;
 
-            case 99:
+            case 79:
                 qp = 500;
+                break;
+
+            case 99:
+                qp = 1000;
                 break;
 
             default:
