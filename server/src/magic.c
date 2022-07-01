@@ -6691,7 +6691,33 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         OBJ_DATA    *obj = (OBJ_DATA *) vo;
 
-        if (obj->item_type != ITEM_ARMOR && obj->item_type != ITEM_WEAPON)
+        /* Updated this 1/7/22. Should ID most typically-not-magical items --Owl */
+        if ( obj->item_type != ITEM_ARMOR 
+        &&   obj->item_type != ITEM_WEAPON
+        &&   obj->item_type != ITEM_LIGHT
+        &&   obj->item_type != ITEM_TREASURE
+        &&   obj->item_type != ITEM_TRASH
+        &&   obj->item_type != ITEM_CONTAINER
+        &&   obj->item_type != ITEM_FURNITURE
+        &&   obj->item_type != ITEM_DRINK_CON
+        &&   obj->item_type != ITEM_KEY
+        &&   obj->item_type != ITEM_FOOD
+        &&   obj->item_type != ITEM_MONEY
+        &&   obj->item_type != ITEM_BOAT
+        &&   obj->item_type != ITEM_CORPSE_PC
+        &&   obj->item_type != ITEM_CORPSE_NPC
+        &&   obj->item_type != ITEM_FOUNTAIN
+        &&   obj->item_type != ITEM_CLIMBING_EQ
+        &&   obj->item_type != ITEM_ANVIL
+        &&   obj->item_type != ITEM_MOB
+        &&   obj->item_type != ITEM_AUCTION_TICKET
+        &&   obj->item_type != ITEM_POISON_POWDER
+        &&   obj->item_type != ITEM_LOCK_PICK
+        &&   obj->item_type != ITEM_INSTRUMENT
+        &&   obj->item_type != ITEM_ARMOURERS_HAMMER
+        &&   obj->item_type != ITEM_MITHRIL
+        &&   obj->item_type != ITEM_WHETSTONE
+        &&   obj->item_type != ITEM_CRAFT )
         {
                 send_to_char ( "You can't determine this item's properties.\n\r", ch );
                 return;
