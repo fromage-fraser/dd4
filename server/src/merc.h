@@ -244,7 +244,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               508     /* 508 for Imbue */
+#define MAX_SKILL               509     /* 509 for counterbalance */
 #define MAX_PRE_REQ             1350    /* Added for smithy*/
 #define MAX_SPELL_GROUP         432    /* Added for smithy */
 #define MAX_GROUPS              53
@@ -1933,7 +1933,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_FIREBRAND              BIT_2   /* Weapon: inflicts fire damage after some successful hits */
 #define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit; may become terrified and unable to act in combat */
 #define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */                                                 
-
+#define EGO_ITEM_BALANCED               BIT_5   /* shaprned weapon */
 /*
  * Apply types (for affects).
  * Used in #OBJECTS.
@@ -1979,7 +1979,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_RESIST_LIGHTNING                  38
 #define APPLY_RESIST_ACID                       39
 #define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
-
+#define APPLY_BALANCE                           41      /* for Balance Skill - Brutus Jul 2022 */
 
 /*
  * Values for containers (value[1]).
@@ -3276,7 +3276,7 @@ extern int gsn_legendary_set;
 extern int gsn_repelling;
 extern int gsn_group_weaponsmith;
 extern int gsn_craft_weapon;
-extern int gsn_balance;
+extern int gsn_counterbalance;
 extern int gsn_weaponchain;
 extern int gsn_shieldchain;
 extern int gsn_hurl;
@@ -3573,6 +3573,7 @@ DECLARE_DO_FUN( do_commands                     );
 DECLARE_DO_FUN( do_compare                      );
 DECLARE_DO_FUN( do_config                       );
 DECLARE_DO_FUN( do_consider                     );
+DECLARE_DO_FUN( do_counterbalance               );      /* foe wmithys JUl 2022 - Brutus */
 DECLARE_DO_FUN( do_credits                      );
 DECLARE_DO_FUN( do_crush                        );      /* crush for shifter bear form - Owl */
 DECLARE_DO_FUN( do_cscore                       );      /* clan score - Brutus */

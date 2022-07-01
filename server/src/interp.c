@@ -270,6 +270,7 @@ const struct cmd_type cmd_table [] =
         { "change",     do_change,      POS_RESTING,     0,  LOG_NEVER },
         { "chant",      do_chant,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "chameleon power",do_chameleon,POS_STANDING,   0,  LOG_NORMAL },
+        { "counterbalance", do_counterbalace,POS_STANDING,0, LOG_NORMAL },
         { "delet",      do_delet,       POS_DEAD,        0,  LOG_ALWAYS },
         { "delete",     do_delete,      POS_DEAD,        0,  LOG_ALWAYS },
         { "deposit",    do_deposit,     POS_RESTING,     0,  LOG_NORMAL },

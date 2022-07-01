@@ -1138,7 +1138,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                         strcat (buf, " firebrand");
                 
-                if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
+                if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                         strcat (buf, " imbued");
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
