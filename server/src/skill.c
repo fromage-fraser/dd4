@@ -3287,8 +3287,18 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
+
+        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+        paf->bitvector      = 1;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+
         set_obj_owner(obj, ch->name);
 
+        act ("You imerse the $p within the flames of the Forge Imbuing it with power!", ch, obj, NULL, TO_CHAR);
+        act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
+        
         return;
 }
 
