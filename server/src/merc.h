@@ -1979,7 +1979,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_RESIST_LIGHTNING                  38
 #define APPLY_RESIST_ACID                       39
 #define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
-#define APPLY_BALANCE                           41      /* for Balance Skill - Brutus Jul 2022 */
+#define APPLY_COUNTERBALANCE                    41      /* for Balance Skill - Brutus Jul 2022 */
 
 /*
  * Values for containers (value[1]).
