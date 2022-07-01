@@ -3246,7 +3246,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_SET(obj->extra_flags, ITEM_EGO))
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && (obj->ego_flags, EGO_ITEM_IMBUED))
         {
                 send_to_char("That is already embued.\n\r", ch);
                 return;
@@ -3311,6 +3311,113 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         return;
 }
 
+
+void do_balance (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *wobj;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool in_c_room;
+        int obj_craft_bonus;
+        int mod_room_bonus;
+
+        obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus;
+
+        in_c_room = FALSE;
+
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
+
+        if ( IS_NPC( ch ) )
+                return;
+
+        if (!CAN_DO(ch, gsn_balance))
+        {
+                send_to_char("What do you think you are, a smith?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What do you want to balance?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that weapon.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && (obj->ego_flags, EGO_ITEM_BALANCED))
+        {
+                send_to_char("That is already balanced.\n\r", ch);
+                return;
+        }
+
+        if (ch->pcdata->condition[COND_DRUNK] > 0)
+        {
+                send_to_char("Your hands aren't steady enough to safely sharpen your blade.\n\r", ch);
+                return;
+        }
+
+        if (number_percent() > ch->pcdata->learned[gsn_sharpen])
+        {
+                send_to_char("You slip while balancing your weapon!!\n\r", ch);
+                damage(ch, ch, ch->level, gsn_sharpen, FALSE);
+                act ("$n cuts $mself while balcing $m weapon!", ch, NULL, NULL, TO_ROOM);
+                extract_obj(wobj);
+                return;
+        }
+
+        if (in_c_room)
+                send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
+
+        act ("You run $p down the blade of $P, creating a deadly weapon!",
+             ch, wobj, obj, TO_CHAR);
+        act ("$n runs $p down the blade of $P, creating a deadly blade!",
+             ch, wobj, obj, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_BALANCED);
+
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_balance;
+        paf->duration       = -1;
+        paf->location       = APPLY_BALANCE;
+        paf->modifier       = (ch->pcdata->learned[gsn_sharpen]) + (number_range(0,10));
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+        set_obj_owner(obj, ch->name);
+}
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {

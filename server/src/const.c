@@ -171,7 +171,7 @@ const struct clan_items clan_item_list [ MAX_CLAN ] =
 
 const struct imbue_types imbue_list [ MAX_IMBUE ] = 
 {
-        /* modifer, level obtainable */
+        /* short name, description, modifer, level obtainable */
         { "to_damage", "More damage", "APPLY_DAMROLL", 40 },
         { "to_hit", "More damage", "APPLY_HITROLL", 40 },
         { "to_mana", "More damage", "APPLY_MANA", 40 },
