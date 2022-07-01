@@ -3312,7 +3312,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 }
 
 
-void do_balance (CHAR_DATA *ch, char *argument)
+void do_counterbalance (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *wobj;
@@ -3346,7 +3346,7 @@ void do_balance (CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                send_to_char("What do you want to balance?\n\r", ch);
+                send_to_char("What do you want to counterbalance?\n\r", ch);
                 return;
         }
 
@@ -3370,7 +3370,7 @@ void do_balance (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
         {
-                send_to_char("That is already balanced.\n\r", ch);
+                send_to_char("That is already counterbalanced.\n\r", ch);
                 return;
         }
 
@@ -3380,11 +3380,11 @@ void do_balance (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_sharpen])
+        if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
         {
                 send_to_char("You slip while balancing your weapon!!\n\r", ch);
-                damage(ch, ch, ch->level, gsn_sharpen, FALSE);
-                act ("$n cuts $mself while balcing $m weapon!", ch, NULL, NULL, TO_ROOM);
+                damage(ch, ch, ch->level, gsn_counterbalance, FALSE);
+                act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
                 extract_obj(wobj);
                 return;
         }
@@ -3408,10 +3408,10 @@ void do_balance (CHAR_DATA *ch, char *argument)
                 affect_free = affect_free->next;
         }
 
-        paf->type           = gsn_balance;
+        paf->type           = gsn_counterbalance;
         paf->duration       = -1;
         paf->location       = APPLY_BALANCE;
-        paf->modifier       = (ch->pcdata->learned[gsn_sharpen]) + (number_range(0,10));
+        paf->modifier       = (ch->pcdata->learned[gsn_counterbalance]) + (number_range(0,10));
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
