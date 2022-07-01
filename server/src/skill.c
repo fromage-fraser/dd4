@@ -3288,6 +3288,13 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->next           = obj->affected;
         obj->affected       = paf;
 
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
         paf->location           = APPLY_AC;
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
