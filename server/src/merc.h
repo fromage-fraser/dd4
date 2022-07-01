@@ -1931,8 +1931,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BLOODLUST              BIT_0   /* Wearer may not flee; wimpy ignored; attacks creatures at random */
 #define EGO_ITEM_SOUL_STEALER           BIT_1   /* Weapon: drains hits, mana and move after some successful hits */
 #define EGO_ITEM_FIREBRAND              BIT_2   /* Weapon: inflicts fire damage after some successful hits */
-#define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit;
-                                                   may become terrified and unable to act in combat */
+#define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit; may become terrified and unable to act in combat */
+#define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */                                                 
 
 /*
  * Apply types (for affects).
