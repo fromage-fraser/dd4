@@ -5729,6 +5729,8 @@ void use_magical_item(CHAR_DATA *ch)
                 if ((obj->item_type == ITEM_SCROLL
                      || obj->item_type == ITEM_WAND
                      || obj->item_type == ITEM_STAFF
+                     || obj->item_type == ITEM_POTION
+                     || obj->item_type == ITEM_PAINT
                      || obj->item_type == ITEM_PILL)
                     && number_range(0, number) == 0)
                 {
@@ -5745,6 +5747,21 @@ void use_magical_item(CHAR_DATA *ch)
             case ITEM_SCROLL:
                 if (cobj->wear_loc == WEAR_HOLD)
                         do_recite(ch, "scroll");
+                return;
+
+            case ITEM_POTION:
+                sprintf(buf, "%s", cobj->name);
+                do_quaff(ch, buf);
+                return;
+
+            case ITEM_PAINT:
+                sprintf(buf, "%s", cobj->name);
+                do_smear(ch, buf);
+                return;
+
+            case ITEM_PILL:
+                sprintf(buf, "%s", cobj->name);
+                do_eat(ch, buf);
                 return;
 
             case ITEM_WAND:
@@ -5799,15 +5816,6 @@ void use_magical_item(CHAR_DATA *ch)
                 }
                 break;
 
-            case ITEM_POTION:
-                sprintf(buf, "%s", cobj->name);
-                do_quaff(ch, buf);
-                break;
-
-            case ITEM_PILL:
-                sprintf(buf, "%s", cobj->name);
-                do_eat(ch, buf);
-                break;
         }
 }
 
