@@ -3288,8 +3288,9 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->next           = obj->affected;
         obj->affected       = paf;
 
+        paf->location           = APPLY_AC;
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
-        paf->bitvector      = 1;
+        paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
