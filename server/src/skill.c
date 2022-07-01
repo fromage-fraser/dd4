@@ -3249,6 +3249,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         if (IS_SET(obj->extra_flags, ITEM_EGO))
         {
                 send_to_char("That is already embued.\n\r", ch);
+                return;
         }
 
         random_buff = number_range( 1, MAX_IMBUE);
@@ -3304,7 +3305,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         set_obj_owner(obj, ch->name);
 
-        act ("You imerse the $p within the flames of the Forge Imbuing it with power!", ch, obj, NULL, TO_CHAR);
+        act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
         act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
         
         return;
