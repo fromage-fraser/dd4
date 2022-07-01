@@ -1794,7 +1794,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         {&gsn_group_weaponsmith,	                0 },
         {&gsn_craft_weapon,		                0 },
-        {&gsn_balance,		                        0 },
+        {&gsn_counterbalance,		                0 },
         {&gsn_weaponchain,		                0 },
         {&gsn_shieldchain,		                0 },
         {&gsn_hurl,		                        0 },
