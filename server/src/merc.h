@@ -3640,7 +3640,7 @@ DECLARE_DO_FUN( do_idea                         );
 DECLARE_DO_FUN( do_immtalk                      );
 DECLARE_DO_FUN( do_dirtalk                      );
 DECLARE_DO_FUN( do_identify                     );      /* new identify code */
-DECLARE_DO_FUN{ do_imbue                        };      /* Smithy Imbue - Brutus Jun 2022 */
+DECLARE_DO_FUN( do_imbue                        );      /* Smithy Imbue - Brutus Jun 2022 */
 DECLARE_DO_FUN( do_imprint                      );      /* For brew/scribe skills */
 DECLARE_DO_FUN( do_info                         );      /* new info channel */
 DECLARE_DO_FUN( do_intimidate                   );      /* intimidate - thugs */
