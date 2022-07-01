@@ -3368,7 +3368,7 @@ void do_balance (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_SET(obj->extra_flags, ITEM_EGO) && (obj->ego_flags, EGO_ITEM_BALANCED))
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
         {
                 send_to_char("That is already balanced.\n\r", ch);
                 return;
