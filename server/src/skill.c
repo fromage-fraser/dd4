@@ -3246,10 +3246,16 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        random_buff = number_range( 1, MAX_IMBUE);
+        if (IS_SET(obj->extra_flags, ITEM_EGO))
+        {
+                send_to_char("That is already embued.\n\r", ch);
+        }
 
+        random_buff = number_range( 1, MAX_IMBUE);
+        /* random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
+*/
        SET_BIT(obj->extra_flags, ITEM_EGO);
-       SET_BIT(obj->ego_flags, EGO_ITEM_FIREBRAND);
+       SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
 
         if (!affect_free)
                 paf = alloc_perm(sizeof(*paf));
@@ -3261,7 +3267,22 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-        paf->location       = APPLY_DAMROLL;
+        if (random_buff = 1) 
+                paf->location       = APPLY_DAMROLL;
+        else if (random_buff  = 2)
+                paf->location   = APPLY_HITROLL;
+        else if (random_buff  = 2)
+                paf->location   = APPLY_AC;
+        else if (random_buff  = 2)
+                paf->location   = APPLY_STR;
+        else if (random_buff  = 2)
+                paf->location   = APPLY_DEX;
+        else if (random_buff  = 2)
+                paf->location   = APPLY_MANA;
+        else if (random_buff  = 2)
+                paf->location   = APPLY_MOVE;
+        else paf->location   = APPLY_AC;
+
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;

@@ -612,7 +612,6 @@ int     gsn_enhancement;
 int     gsn_healing;
 int     gsn_ward;
 int     gsn_strengthen;
-int     gsn_imbue;
 int     gsn_uncommon_set;
 int     gsn_rare_set;
 int     gsn_epic_set;
