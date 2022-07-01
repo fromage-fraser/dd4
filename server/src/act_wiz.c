@@ -922,6 +922,16 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         sprintf( buf, "Type: {G%s{x [{W%d{x] ",item_type_name( obj ), obj->item_type);
         strcat( buf1, buf );
 
+        /* Show liquid type if drink container. -- Owl 1/7/22 */
+        if (obj->item_type == 17)
+        {
+                sprintf( buf, "\n\rLiquid: {G%s{x [{W%d{x]  Colour: {G%s{x", 
+                        liq_table[obj->value[2]].liq_name, 
+                        obj->value[2],
+                        liq_table[obj->value[2]].liq_color);
+                strcat( buf1, buf );
+        }
+
         sprintf( buf, "\n\r");
         strcat( buf1, buf );
 
