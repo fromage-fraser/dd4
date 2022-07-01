@@ -182,6 +182,15 @@ struct HERB
 
 #define MAX_HERBS 11
 
+struct imbue_types
+{
+        char    *name;
+        char    *short_desc;
+        char    *apply_buff;
+        int     min_level;       
+};
+
+#define MAX_IMBUE 9
 
 /*
  * Songs for bards
@@ -235,7 +244,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               507     /* Increased to 507(503), 1350(1295), 432(383), 53(52) for smelt */
+#define MAX_SKILL               508     /* 508 for Imbue */
 #define MAX_PRE_REQ             1350    /* Added for smithy*/
 #define MAX_SPELL_GROUP         432    /* Added for smithy */
 #define MAX_GROUPS              53
@@ -3430,6 +3439,7 @@ extern const    struct social_type              social_table                    
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
+extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
@@ -3630,6 +3640,7 @@ DECLARE_DO_FUN( do_idea                         );
 DECLARE_DO_FUN( do_immtalk                      );
 DECLARE_DO_FUN( do_dirtalk                      );
 DECLARE_DO_FUN( do_identify                     );      /* new identify code */
+DECLARE_DO_FUN{ do_imbue                        };      /* Smithy Imbue - Brutus Jun 2022 */
 DECLARE_DO_FUN( do_imprint                      );      /* For brew/scribe skills */
 DECLARE_DO_FUN( do_info                         );      /* new info channel */
 DECLARE_DO_FUN( do_intimidate                   );      /* intimidate - thugs */
