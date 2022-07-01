@@ -181,7 +181,7 @@ const struct imbue_types imbue_list [ MAX_IMBUE ] =
         { "to_dex", "More damage", "APPLY_DAMROLL", 40 },
         { "to_damage", "More damage", "APPLY_DAMROLL", 40 },
         { "to_ac", "More damage", "APPLY_DAMROLL", 40 },
-}
+};
 
 
 const struct HERB herb_table [ MAX_HERBS ] =
