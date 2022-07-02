@@ -3196,6 +3196,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
     /*    bool            found; */
         bool            in_c_room;
         bool            random;
+        char            buf[ MAX_STRING_LENGTH ];
 
         in_c_room = FALSE;
         random_buff = -1;
@@ -3253,8 +3254,11 @@ void do_imbue (CHAR_DATA *ch, char *argument)
        random_buff = number_range( 1, MAX_IMBUE -1);
  /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
-       modifier = imbue_list[random_buff].apply_buff;
-
+   /*    modifier = imbue_list[random_buff].apply_buff;
+*/
+        sprintf( buf, "You search the area but cannot find any %s.\n\r",
+                                 imbue_list[random_buff].apply_buff );
+                        send_to_char( buf, ch );
 
        SET_BIT(obj->extra_flags, ITEM_EGO);
        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
@@ -3269,7 +3273,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-        paf->location           = modifier; 
+        paf->location           = APPLY_DAMROLL; 
     /*    paf->location   = imbue_list[random_buff].apply_buff; */
 
   /*
