@@ -3187,15 +3187,14 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         OBJ_DATA *anvil;
         char            arg[MAX_INPUT_LENGTH];
         char            buf[ MAX_STRING_LENGTH ];
- 
         char            modifier;
         int             random_buff;
         int             i;
-        int obj_craft_bonus;
-        int mod_room_bonus;
-        AFFECT_DATA *paf;
-        bool found;
-        bool in_c_room;
+        int             obj_craft_bonus;
+        int             mod_room_bonus;
+        AFFECT_DATA     *paf;
+        bool            found;
+        bool            in_c_room;
         bool            random;
 
         in_c_room = FALSE;
@@ -3254,7 +3253,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
        random_buff = number_range( 1, MAX_IMBUE);
  /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
-       modifier = imbue_list[random_buff].apply_buff; 
+       modifier = skill_lookup(imbue_list[random_buff].apply_buff);
+
 
        SET_BIT(obj->extra_flags, ITEM_EGO);
        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
