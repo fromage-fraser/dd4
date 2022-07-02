@@ -3187,7 +3187,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
      /*   OBJ_DATA *anvil; */
         char            arg[MAX_INPUT_LENGTH];
      /*   char            buf[ MAX_STRING_LENGTH ]; */
-        char            *modifier;
+        char            modifier;
         int             random_buff;
     /*    int             i; */
         int             obj_craft_bonus;
