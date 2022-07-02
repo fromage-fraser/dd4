@@ -3187,7 +3187,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
      /*   OBJ_DATA *anvil; */
         char            arg[MAX_INPUT_LENGTH];
      /*   char            buf[ MAX_STRING_LENGTH ]; */
-        char            modifier;
+        char            *modifier;
         int             random_buff;
     /*    int             i; */
         int             obj_craft_bonus;
@@ -3250,10 +3250,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-       random_buff = number_range( 1, MAX_IMBUE);
+       random_buff = number_range( 1, MAX_IMBUE -1);
  /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
-       modifier = skill_lookup(imbue_list[random_buff].apply_buff);
+       modifier = imbue_list[random_buff].apply_buff;
 
 
        SET_BIT(obj->extra_flags, ITEM_EGO);
@@ -3269,8 +3269,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-       /* paf->location           = modifier; */
-        paf->location   = imbue_list[random_buff].apply_buff;
+        paf->location           = modifier; 
+    /*    paf->location   = imbue_list[random_buff].apply_buff; */
 
   /*
         if (random_buff = 1) 
