@@ -3260,7 +3260,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_imbue;
         paf->duration       = -1;
         paf->location       = modifier; 
-        paf->modifier       = imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 5;
+        paf->modifier       = imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
