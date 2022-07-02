@@ -3260,10 +3260,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_imbue;
         paf->duration       = -1;
         paf->location       = modifier; 
-     /*   if (paf->location = APPLY_AC)
-                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-        else */
-        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+        paf->modifier       = imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -3284,10 +3281,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-        /*        if (paf->location = APPLY_AC)
-                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-                else */
-                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+                paf->modifier       = imbue_list[random_buff2].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
@@ -3309,11 +3303,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-  /*              if (paf->location = APPLY_AC)
-                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-                else */
-                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
-                paf->bitvector      = 0;
+                paf->modifier       = imbue_list[random_buff3].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
                 random_buff = -1;

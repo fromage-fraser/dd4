@@ -187,7 +187,7 @@ struct imbue_types
         char    *name;
         char    *short_desc;
         char    apply_buff;
-        int     min_level;       
+        int     base_gain;       
 };
 
 #define MAX_IMBUE 9
