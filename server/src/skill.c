@@ -3246,12 +3246,11 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_SET(obj->extra_flags, ITEM_EGO) && (obj->ego_flags, EGO_ITEM_IMBUED))
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
         {
                 send_to_char("That is already imbued.\n\r", ch);
                 return;
         }
-
         random_buff = number_range( 1, MAX_IMBUE);
         /* random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
@@ -3411,7 +3410,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_counterbalance;
         paf->duration       = -1;
         paf->location       = APPLY_BALANCE;
-        paf->modifier       = (ch->pcdata->learned[gsn_counterbalance]) + (number_range(0,10));
+        paf->modifier       = (ch->pcdata->learned[gsn_counterbalance]);
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
