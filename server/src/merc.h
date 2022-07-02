@@ -186,7 +186,7 @@ struct imbue_types
 {
         char    *name;
         char    *short_desc;
-        char    *apply_buff;
+        char    apply_buff;
         int     min_level;       
 };
 
