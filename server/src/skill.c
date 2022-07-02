@@ -3183,13 +3183,14 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA        *imbue_types;
         OBJ_DATA *obj;
-        OBJ_DATA *wobj;
+     /*   OBJ_DATA *wobj; */
         OBJ_DATA *anvil;
         char            arg[MAX_INPUT_LENGTH];
         char            buf[ MAX_STRING_LENGTH ];
  
-        int             modifier;
-        char             random_buff;
+        char            modifier;
+        int             random_buff;
+        char            apply_buff;
         int             i;
         int obj_craft_bonus;
         int mod_room_bonus;
@@ -3199,7 +3200,6 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         bool            random;
 
         in_c_room = FALSE;
-        modifier = -1;
         random_buff = -1;
         random = FALSE;
 
@@ -3252,10 +3252,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
- /*      random_buff = number_range( 1, MAX_IMBUE);
-        random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
+       random_buff = number_range( 1, MAX_IMBUE);
+ /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
-        random_buff = (imbue_list[random_buff].apply_buff); 
+       apply_buff = (imbue_list[random_buff].apply_buff); 
 
        SET_BIT(obj->extra_flags, ITEM_EGO);
        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
@@ -3270,7 +3270,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-        paf->location           = random_buff;
+        paf->location           = apply_buff;
   /*
         if (random_buff = 1) 
                 paf->location       = APPLY_DAMROLL;
