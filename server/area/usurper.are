@@ -3708,6 +3708,9 @@ D 1 29824 3 1           ; Before the barracks Close West
 D 1 29827 2 1           ; Inside the barracks Close South
 D 1 29833 2 1           ; Before the stables Close South
 D 1 29842 1 1           ; By the dungheap and the pigpen Close East
+D 1 29845 1 1           ; pigpen Close East
+D 1 29845 3 1           ; pigpen Close West
+D 1 29845 0 1           ; pigpen Close North
 D 1 29846 2 1           ; In the courtyard Close South
 D 1 29848 3 1           ; In the courtyard Close West
 D 1 29850 2 1           ; Before the chapel Close South
