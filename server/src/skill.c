@@ -3252,17 +3252,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         }
 
        random_buff = number_range( 1, MAX_IMBUE -1);
- /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
-*/
        modifier = imbue_list[random_buff].apply_buff;
 
-  /*      sprintf( buf, "You search the area but cannot find any %s.\n\r",
-                                 imbue_list[random_buff].apply_buff );
-                        send_to_char( buf, ch );
-*/
-       SET_BIT(obj->extra_flags, ITEM_EGO);
-       SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
-
         if (!affect_free)
                 paf = alloc_perm(sizeof(*paf));
         else
@@ -3273,47 +3264,66 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-        paf->location           = modifier; 
-    /*    paf->location   = imbue_list[random_buff].apply_buff; */
-
-  /*
-        if (random_buff = 1) 
-                paf->location       = APPLY_DAMROLL;
-        if (random_buff  = 2)
-                paf->location   = APPLY_HITROLL;
-        if (random_buff  = 3)
-                paf->location   = APPLY_AC;
-        if (random_buff  = 4)
-                 paf->location   = APPLY_STR;
-        if (random_buff  = 5)
-                paf->location   = APPLY_DEX;
-        if (random_buff  = 6)
-                paf->location   = APPLY_MANA;
-        if (random_buff  = 7)
-                paf->location   = APPLY_MOVE;
-        else paf->location   = APPLY_AC;
-*/
-        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
-        paf->bitvector      = 0;
-        paf->next           = obj->affected;
-        obj->affected       = paf;
-
-        if (!affect_free)
-                paf = alloc_perm(sizeof(*paf));
+        paf->location       = modifier; 
+        if (paf->location = APPLY_AC)
+                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
         else
-        {
-                paf = affect_free;
-                affect_free = affect_free->next;
-        }
-        paf->type           = gsn_imbue;
-        paf->duration       = -1;
-        paf->location       = APPLY_AC;
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
+   
+        if (ch->pcdata->learned[gsn_imbue] > 75)
+        {
+                random_buff = number_range( 1, MAX_IMBUE -1);
+                modifier = imbue_list[random_buff].apply_buff;
 
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = gsn_imbue;
+                paf->duration       = -1;
+                paf->location       = modifier;
+                if (paf->location = APPLY_AC)
+                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
+                else
+                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+        }
+
+        if (ch->pcdata->learned[gsn_imbue] > 97)
+        {
+                random_buff = number_range( 1, MAX_IMBUE -1);
+                modifier = imbue_list[random_buff].apply_buff;
+
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = gsn_imbue;
+                paf->duration       = -1;
+                paf->location       = modifier;
+                if (paf->location = APPLY_AC)
+                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
+                else
+                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+        }
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
         set_obj_owner(obj, ch->name);
 
         act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
