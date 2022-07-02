@@ -3254,8 +3254,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
        random_buff = number_range( 1, MAX_IMBUE -1);
  /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
-   /*    modifier = imbue_list[random_buff].apply_buff;
-*/
+       modifier = imbue_list[random_buff].apply_buff;
+
         sprintf( buf, "You search the area but cannot find any %s.\n\r",
                                  imbue_list[random_buff].apply_buff );
                         send_to_char( buf, ch );
