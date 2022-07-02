@@ -3251,7 +3251,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-       random_buff = number_range( 1, MAX_IMBUE -1);
+       random_buff = number_range( 0, MAX_IMBUE-1);
        modifier = imbue_list[random_buff].apply_buff;
 
         if (!affect_free)
@@ -3272,11 +3272,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
+        random_buff = -1;
 
    
         if (ch->pcdata->learned[gsn_imbue] > 75)
         {
-                random_buff = number_range( 1, MAX_IMBUE -1);
+                random_buff = number_range( 0, MAX_IMBUE-1);
                 modifier = imbue_list[random_buff].apply_buff;
 
                 if (!affect_free)
@@ -3296,11 +3297,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
+                random_buff = -1;
         }
 
         if (ch->pcdata->learned[gsn_imbue] > 97)
         {
-                random_buff = number_range( 1, MAX_IMBUE -1);
+                random_buff = number_range( 0, MAX_IMBUE-1);
                 modifier = imbue_list[random_buff].apply_buff;
 
                 if (!affect_free)
@@ -3320,6 +3322,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
+                random_buff = -1;
         }
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
