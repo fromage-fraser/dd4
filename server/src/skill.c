@@ -3269,9 +3269,9 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_imbue;
         paf->duration       = -1;
         paf->location       = modifier; 
-        if (paf->location = APPLY_AC)
+     /*   if (paf->location = APPLY_AC)
                         paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-        else
+      */  else
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
@@ -3293,9 +3293,9 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-                if (paf->location = APPLY_AC)
+        /*        if (paf->location = APPLY_AC)
                         paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-                else
+          */      else
                 paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
@@ -3345,11 +3345,11 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool in_c_room;
-        int obj_craft_bonus;
-    /*    int mod_room_bonus; */
+   /*     int obj_craft_bonus;
+        int mod_room_bonus; */
 
-        obj_craft_bonus = get_craft_obj_bonus( ch );
-      /*  mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus; */
+    /*    obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus; */
 
         in_c_room = FALSE;
 
