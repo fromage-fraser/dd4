@@ -3181,7 +3181,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
 void do_imbue (CHAR_DATA *ch, char *argument)
 {
-        OBJ_DATA        *imbue_types;
+    /*    OBJ_DATA        *imbue_types; */
         OBJ_DATA *obj;
      /*   OBJ_DATA *wobj; */
      /*   OBJ_DATA *anvil; */
