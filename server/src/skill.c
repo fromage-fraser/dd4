@@ -3390,10 +3390,10 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         if (in_c_room)
                 send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
 
-        act ("You run $p down the blade of $P, creating a deadly weapon!",
-             ch, wobj, obj, TO_CHAR);
-        act ("$n runs $p down the blade of $P, creating a deadly blade!",
-             ch, wobj, obj, TO_ROOM);
+        act ("You expertly balance $p!",
+             ch, obj, NULL, TO_CHAR);
+        act ("$n expertly balances $p!",
+             ch, obj, NULL, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_BALANCED);
