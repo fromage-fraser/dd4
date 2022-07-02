@@ -1878,6 +1878,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_blindness, 5, 12,
                 "spell", "You can see again."
         },
+        
 
         {
                 "burning hands", &gsn_burning_hands,
@@ -2374,7 +2375,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "sleep", &gsn_sleep,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
                 spell_sleep, 15, 12,
-                "", "You feel less tired."
+                "spell", "You feel less tired."
         },
 
         {
