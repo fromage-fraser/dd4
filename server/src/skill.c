@@ -3181,21 +3181,15 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
 void do_imbue (CHAR_DATA *ch, char *argument)
 {
-    /*    OBJ_DATA        *imbue_types; */
         OBJ_DATA *obj;
-     /*   OBJ_DATA *wobj; */
-     /*   OBJ_DATA *anvil; */
         char            arg[MAX_INPUT_LENGTH];
-     /*   char            buf[ MAX_STRING_LENGTH ]; */
         char            modifier;
         int             random_buff;
         int             random_buff2;
         int             random_buff3;
-    /*    int             i; */
         int             obj_craft_bonus;
         int             mod_room_bonus;
         AFFECT_DATA     *paf;
-    /*    bool            found; */
         bool            in_c_room;
      
         in_c_room = FALSE;
@@ -3338,18 +3332,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 void do_counterbalance (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
- /*       OBJ_DATA *wobj; */
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool in_c_room;
-   /*     int obj_craft_bonus;
-        int mod_room_bonus; */
-
-    /*    obj_craft_bonus = get_craft_obj_bonus( ch );
-        mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus; */
-
         in_c_room = FALSE;
-
 
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
