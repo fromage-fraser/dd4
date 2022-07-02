@@ -3270,17 +3270,17 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->duration       = -1;
         if (random_buff = 1) 
                 paf->location       = APPLY_DAMROLL;
-        else if (random_buff  = 2)
+        if (random_buff  = 2)
                 paf->location   = APPLY_HITROLL;
-        else if (random_buff  = 2)
+        if (random_buff  = 3)
                 paf->location   = APPLY_AC;
-        else if (random_buff  = 2)
-                paf->location   = APPLY_STR;
-        else if (random_buff  = 2)
+        if (random_buff  = 4)
+                 paf->location   = APPLY_STR;
+        if (random_buff  = 5)
                 paf->location   = APPLY_DEX;
-        else if (random_buff  = 2)
+        if (random_buff  = 6)
                 paf->location   = APPLY_MANA;
-        else if (random_buff  = 2)
+        if (random_buff  = 7)
                 paf->location   = APPLY_MOVE;
         else paf->location   = APPLY_AC;
 
@@ -3383,9 +3383,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
         {
                 send_to_char("You slip while balancing your weapon!!\n\r", ch);
-                damage(ch, ch, ch->level, gsn_counterbalance, FALSE);
                 act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
-                extract_obj(wobj);
                 return;
         }
 
