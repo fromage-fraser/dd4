@@ -3175,7 +3175,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if IS_SET(obj->extra_flags, ITEM_EGO) 
         {
-                sprintf( buf, "Specalist Enhancements:");
+                sprintf( buf, "Specialist Enhancements:");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
                         strcat (buf, " Bloodlust");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))

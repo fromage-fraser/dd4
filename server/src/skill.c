@@ -3189,7 +3189,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         char            buf[ MAX_STRING_LENGTH ];
  
         int             modifier;
-        int             random_buff;
+        char             random_buff;
         int             i;
         int obj_craft_bonus;
         int mod_room_bonus;
@@ -3251,9 +3251,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 send_to_char("That is already imbued.\n\r", ch);
                 return;
         }
-        random_buff = number_range( 1, MAX_IMBUE);
-        /* random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
+
+ /*      random_buff = number_range( 1, MAX_IMBUE);
+        random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
+        random_buff = (imbue_list[random_buff].apply_buff); 
+
        SET_BIT(obj->extra_flags, ITEM_EGO);
        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
 
@@ -3267,6 +3270,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
+        paf->location           = random_buff;
+  /*
         if (random_buff = 1) 
                 paf->location       = APPLY_DAMROLL;
         if (random_buff  = 2)
@@ -3282,7 +3287,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         if (random_buff  = 7)
                 paf->location   = APPLY_MOVE;
         else paf->location   = APPLY_AC;
-
+*/
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
