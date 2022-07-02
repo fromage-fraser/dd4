@@ -3173,7 +3173,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_paragraph_to_char (buf, ch, 4);
         }
 
-        if (IS_SET(obj->extra_flags, ITEM_EGO) && obj->ego_flags)
+        if IS_SET(obj->extra_flags, ITEM_EGO) 
         {
                 send_to_char("Specalist Enhancements:\n\r", ch);
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
