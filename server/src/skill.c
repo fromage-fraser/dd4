@@ -3273,7 +3273,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-        paf->location           = APPLY_DAMROLL; 
+        paf->location           = modifier; 
     /*    paf->location   = imbue_list[random_buff].apply_buff; */
 
   /*
