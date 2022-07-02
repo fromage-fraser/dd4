@@ -182,6 +182,15 @@ struct HERB
 
 #define MAX_HERBS 11
 
+struct imbue_types
+{
+        char    *name;
+        char    *short_desc;
+        char    apply_buff;
+        int     min_level;       
+};
+
+#define MAX_IMBUE 9
 
 /*
  * Songs for bards
@@ -235,7 +244,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               507     /* Increased to 507(503), 1350(1295), 432(383), 53(52) for smelt */
+#define MAX_SKILL               509     /* 509 for counterbalance */
 #define MAX_PRE_REQ             1350    /* Added for smithy*/
 #define MAX_SPELL_GROUP         432    /* Added for smithy */
 #define MAX_GROUPS              53
@@ -1922,9 +1931,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BLOODLUST              BIT_0   /* Wearer may not flee; wimpy ignored; attacks creatures at random */
 #define EGO_ITEM_SOUL_STEALER           BIT_1   /* Weapon: drains hits, mana and move after some successful hits */
 #define EGO_ITEM_FIREBRAND              BIT_2   /* Weapon: inflicts fire damage after some successful hits */
-#define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit;
-                                                   may become terrified and unable to act in combat */
-
+#define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit; may become terrified and unable to act in combat */
+#define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */                                                 
+#define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 /*
  * Apply types (for affects).
  * Used in #OBJECTS.
@@ -1970,7 +1979,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_RESIST_LIGHTNING                  38
 #define APPLY_RESIST_ACID                       39
 #define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
-
+#define APPLY_BALANCE                    41      /* for Balance Skill - Brutus Jul 2022 */
 
 /*
  * Values for containers (value[1]).
@@ -3267,7 +3276,7 @@ extern int gsn_legendary_set;
 extern int gsn_repelling;
 extern int gsn_group_weaponsmith;
 extern int gsn_craft_weapon;
-extern int gsn_balance;
+extern int gsn_counterbalance;
 extern int gsn_weaponchain;
 extern int gsn_shieldchain;
 extern int gsn_hurl;
@@ -3430,6 +3439,7 @@ extern const    struct social_type              social_table                    
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
 extern const    struct soar_points              soar_list                       [ MAX_SOAR ];
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
+extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
 extern char *   const  color_list               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
@@ -3563,6 +3573,7 @@ DECLARE_DO_FUN( do_commands                     );
 DECLARE_DO_FUN( do_compare                      );
 DECLARE_DO_FUN( do_config                       );
 DECLARE_DO_FUN( do_consider                     );
+DECLARE_DO_FUN( do_counterbalance               );      /* foe wmithys JUl 2022 - Brutus */
 DECLARE_DO_FUN( do_credits                      );
 DECLARE_DO_FUN( do_crush                        );      /* crush for shifter bear form - Owl */
 DECLARE_DO_FUN( do_cscore                       );      /* clan score - Brutus */
@@ -3630,6 +3641,7 @@ DECLARE_DO_FUN( do_idea                         );
 DECLARE_DO_FUN( do_immtalk                      );
 DECLARE_DO_FUN( do_dirtalk                      );
 DECLARE_DO_FUN( do_identify                     );      /* new identify code */
+DECLARE_DO_FUN( do_imbue                        );      /* Smithy Imbue - Brutus Jun 2022 */
 DECLARE_DO_FUN( do_imprint                      );      /* For brew/scribe skills */
 DECLARE_DO_FUN( do_info                         );      /* new info channel */
 DECLARE_DO_FUN( do_intimidate                   );      /* intimidate - thugs */

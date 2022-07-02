@@ -169,6 +169,20 @@ const struct clan_items clan_item_list [ MAX_CLAN ] =
         {       "COB",  488,    489,    491,    490             }
 };
 
+const struct imbue_types imbue_list [ MAX_IMBUE ] = 
+{
+        /* name, short_desc, apply_buff, min_level */
+        { "to_damage", "More damage", APPLY_DAMROLL, 40 },
+        { "to_hit", "More damage", APPLY_HITROLL, 40 },
+        { "to_mana", "More damage", APPLY_MANA, 40 },
+        { "to_hps", "More damage", APPLY_HIT, 40 },
+        { "to_move", "More damage", APPLY_MOVE, 40 },
+        { "to_str", "More damage", APPLY_STR, 40 },
+        { "to_dex", "More damage", APPLY_DEX, 40 },
+        { "to_damage", "More damage", APPLY_DAMROLL, 40 },
+        { "to_ac", "More damage", APPLY_AC, 40 },
+};
+
 
 const struct HERB herb_table [ MAX_HERBS ] =
 {
@@ -1780,7 +1794,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         {&gsn_group_weaponsmith,	                0 },
         {&gsn_craft_weapon,		                0 },
-        {&gsn_balance,		                        0 },
+        {&gsn_counterbalance,		                0 },
         {&gsn_weaponchain,		                0 },
         {&gsn_shieldchain,		                0 },
         {&gsn_hurl,		                        0 },
@@ -5193,6 +5207,22 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "smelt", "!Smelt!"
 
         },
+
+        {
+                "imbue", &gsn_imbue,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "imbue", "!Imbue!"
+
+        },
+
+        {
+                "counterbalance", &gsn_counterbalance,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "counterbalance", "!Counterbalance!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

@@ -20,7 +20,7 @@
 {&gsn_group_weaponsmith, 	&gsn_smithy_base,       30,     PRE_SMITHY},
 
 {&gsn_craft_weapon,		&gsn_group_armoursmith,	    30, 	PRE_SMITHY},
-{&gsn_balance,		    &gsn_group_weaponsmith,	    30, 	PRE_SMITHY},
+{&gsn_counterbalance,   &gsn_group_weaponsmith,	    30, 	PRE_SMITHY},
 {&gsn_weaponchain,		&gsn_group_weaponsmith,	    30, 	PRE_SMITHY},
 {&gsn_shieldchain,		&gsn_group_weaponsmith,	    30, 	PRE_SMITHY},
 {&gsn_hurl,			    &gsn_group_weaponsmith,	    30, 	PRE_SMITHY},

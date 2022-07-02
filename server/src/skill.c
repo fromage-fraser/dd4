@@ -3179,6 +3179,253 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 }
 
 
+void do_imbue (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char            arg[MAX_INPUT_LENGTH];
+        char            modifier;
+        int             random_buff;
+        int             random_buff2;
+        int             random_buff3;
+        int             obj_craft_bonus;
+        int             mod_room_bonus;
+        AFFECT_DATA     *paf;
+        bool            in_c_room;
+     
+        in_c_room = FALSE;
+        random_buff = -1;
+        random_buff2 = -1;
+        random_buff3 = -1;
+     
+        obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_imbue))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        argument = one_argument(argument, arg);
+ 
+        if( arg[0] == '\0' )
+        {
+                send_to_char("Imbue what?\n\r", ch);
+                return;
+        }
+       
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that weapon.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+        {
+                send_to_char("That is already imbued.\n\r", ch);
+                return;
+        }
+
+       random_buff = number_range( 0, MAX_IMBUE-1);
+       modifier = imbue_list[random_buff].apply_buff;
+
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_imbue;
+        paf->duration       = -1;
+        paf->location       = modifier; 
+     /*   if (paf->location = APPLY_AC)
+                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
+        else */
+        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+   
+        if (ch->pcdata->learned[gsn_imbue] > 75)
+        {
+                random_buff2 = number_range( 0, MAX_IMBUE-1);
+                modifier = imbue_list[random_buff2].apply_buff;
+
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = gsn_imbue;
+                paf->duration       = -1;
+                paf->location       = modifier;
+        /*        if (paf->location = APPLY_AC)
+                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
+                else */
+                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+                
+        }
+
+        if (ch->pcdata->learned[gsn_imbue] > 97)
+        {
+                random_buff3 = number_range( 0, MAX_IMBUE-1);
+                modifier = imbue_list[random_buff3].apply_buff;
+
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = gsn_imbue;
+                paf->duration       = -1;
+                paf->location       = modifier;
+  /*              if (paf->location = APPLY_AC)
+                        paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
+                else */
+                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+                random_buff = -1;
+        }
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
+        set_obj_owner(obj, ch->name);
+
+        act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
+        act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
+        return;
+}
+
+
+void do_counterbalance (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool in_c_room;
+        in_c_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
+
+        if ( IS_NPC( ch ) )
+                return;
+
+        if (!CAN_DO(ch, gsn_counterbalance))
+        {
+                send_to_char("What do you think you are, a smith?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What do you want to counterbalance?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that weapon.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+        {
+                send_to_char("That is already counterbalanced.\n\r", ch);
+                return;
+        }
+
+        if (ch->pcdata->condition[COND_DRUNK] > 0)
+        {
+                send_to_char("Your hands aren't steady enough to safely sharpen your blade.\n\r", ch);
+                return;
+        }
+
+        if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
+        {
+                send_to_char("You slip while balancing your weapon!!\n\r", ch);
+                act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if (in_c_room)
+                send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
+
+        act ("You expertly balance $p!",
+             ch, obj, NULL, TO_CHAR);
+        act ("$n expertly balances $p!",
+             ch, obj, NULL, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_BALANCED);
+
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_counterbalance;
+        paf->duration       = -1;
+        paf->location       = APPLY_BALANCE;
+        paf->modifier       = (ch->pcdata->learned[gsn_counterbalance]);
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+        set_obj_owner(obj, ch->name);
+}
+
 void do_classify( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA *obj;
