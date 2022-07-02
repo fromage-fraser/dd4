@@ -3318,7 +3318,6 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
         act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
-        l
         return;
 }
 
