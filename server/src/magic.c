@@ -3820,11 +3820,18 @@ void spell_sleep( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA  *victim = (CHAR_DATA *) vo;
         AFFECT_DATA af;
 
-        if ( IS_AFFECTED( victim, AFF_SLEEP )
-            || level < victim->level
-            || saves_spell( level, victim ) )
+        if ( IS_AFFECTED( victim, AFF_SLEEP ) )
         {
-                send_to_char( "You failed.\n\r", ch );
+                send_to_char( "They are already sleeping.\n\r", ch );
+                return;
+        }
+
+        if (saves_spell(level, victim))
+        {
+                send_to_char( "They resist your spell!\n\r", ch );
+                /* Shade 12.2.22 */
+                /* Make a save initiate combat and do a minor amount of damage */
+                damage(ch, victim, number_range(1, ch->level/4), gsn_sleep, FALSE);
                 return;
         }
 

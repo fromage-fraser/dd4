@@ -4596,7 +4596,7 @@ void do_snare (CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                send_to_char("Who do you want to snare?\n\r", ch);
+                send_to_char("Who do you want to ensnare?\n\r", ch);
                 return;
         }
 
@@ -4608,19 +4608,19 @@ void do_snare (CHAR_DATA *ch, char *argument)
 
         if (IS_AFFECTED(victim, AFF_HOLD))
         {
-                act ("$N is already snared.", ch, NULL, victim, TO_CHAR);
+                act ("$N is already ensnared.", ch, NULL, victim, TO_CHAR);
                 return;
         }
 
         if (victim == ch)
         {
-                send_to_char("You want to snare yourself?\n\r", ch);
+                send_to_char("You want to ensnare yourself?\n\r", ch);
                 return;
         }
 
         if (victim->fighting)
         {
-                send_to_char("You cannot snare a fighting person.\n\r", ch);
+                send_to_char("You cannot ensnare a fighting person.\n\r", ch);
                 return;
         }
 
@@ -4630,7 +4630,7 @@ void do_snare (CHAR_DATA *ch, char *argument)
         if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
         || ( ch->in_room->sector_type == SECT_INSIDE ) )
         {
-                send_to_char("You can't snare indoors.\n\r", ch);
+                send_to_char("You can't set a snare indoors.\n\r", ch);
                 return;
         }
 
@@ -4673,7 +4673,7 @@ void do_snare (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                act ("$n attempts to snare $N, but snares $mself instead!",
+                act ("$n attempts to ensnare $N, but ensnares $mself instead!",
                      ch, NULL, victim, TO_ROOM);
                 send_to_char("You unwittingly step into your own snare!!\n\r", ch);
                 damage(ch, victim, 0, gsn_trap, FALSE);
