@@ -5215,6 +5215,13 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         },
 
+        {
+                "counterbalance", &gsn_counterbalance,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "counterbalance", "!Counterbalance!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
