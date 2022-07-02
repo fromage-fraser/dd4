@@ -5,7 +5,7 @@
 #10102
 brown bear~
 a brown bear~
-A Brown Bear moves through the woods here.
+A brown bear moves through the woods here.
 ~
 The bear is foraging for food amongst the low lying trees and bushes.  It
 ignores your presence.
@@ -22,9 +22,9 @@ ignores your presence.
 #10100
 black bear~
 a black bear~
-A Black Bear menaces you here.
+A black bear menaces you here.
 ~
-A terrible Black Bear towers above you and roars!  The bear's eyes are
+A terrible black bear towers above you and roars!  The bear's eyes are
 bloodshot and it snarls and snaps at you angrily.
 ~
 2|32|64 0 -250 S
@@ -34,11 +34,11 @@ bloodshot and it snarls and snaps at you angrily.
 
 #10101
 two hydra~
-a two headed hydra~
+a two-headed hydra~
 A huge dark shape lurks here.
 ~
-The Hydra has two heads, both of which hiss evilly at you.  It is
-massive, its sleek scales dripping water.  From its maw comes a
+The hydra has two heads, both of which hiss evilly at you.  It is
+massive; its sleek scales drip water.  From its maw comes a
 frightening roar that fills your bones with terror.
 ~
 2|32|64 8|65536|8388608 -500 S
@@ -78,7 +78,7 @@ a spectral elf drifts about here.
 ~
 The elf appears to have been male, although its outline is hazy and the
 features blurry, so it is hard to tell.  You can make out a general expression
-of sadness, this spirit is not resting peacefully.
+of sadness; this spirit is not resting peacefully.
 ~
 64 524288 500 S
 30 0 0 0d0+0 0d0+0
@@ -96,7 +96,7 @@ A black robed witch cackles insanely to herself.
 ~
 The witch mutters and cackles away to herself.  She appears to be out of her
 mind, her eyes are glazed over and she looks right through you.  Her robes
-are almost completely ruined, nothing but rags now.
+are almost completely ruined; nothing but rags now.
 ~
 2|64 8192 -350 S
 35 0 0 0d0+0 0d0+0
@@ -121,7 +121,7 @@ imp small~
 a small imp~
 A small imp is here grinning at you.
 ~
-The imp is about three feet tall, with reddish brown skin.  He wields a
+The imp is about three feet tall, with reddish-brown skin.  He wields a
 small trident, and his tail is cockily wrapped around the end.  The imp
 grins back at you.
 ~
@@ -161,7 +161,7 @@ gaze falls upon you.
 #10109
 wight~
 a wight~
-a long dead wight lurks here.
+a long-dead wight lurks here.
 ~
 The wight is rotting, almost before your eyes, and has clearly been dead for
 a long time.  Its form is still humanoid but exactly what it was in life
@@ -243,7 +243,7 @@ A
 #10106
 tail~
 a tail~
-A pointy tail has been seperated from its owner.~
+A pointy tail has been separated from its owner.~
 ~
 5 67108864 0
 ~ ~ ~ 11~
@@ -378,7 +378,7 @@ S
 #10105
 A Woody Path~
 You move along a small woodland path.  It is very quiet in this part of
-the woods, only the occasional small animal or bird can be seen amoung
+the woods, only the occasional small animal or bird can be seen among
 the trees.  To the west the path continues and you can see a junction in
 the distance, to the north the path ends at what looks like a small cave.
 ~
@@ -495,7 +495,7 @@ S
 #10111
 An Overgrown Path~
 You move along an overgrown woodland path.  Tree roots and small shrubs
-are scattered about the path making progress difficut.  To the west the
+are scattered about the path making progress difficult.  To the west the
 path opens to a small woodland clearing, to the east the path continues
 and turns to the north.
 ~
@@ -968,7 +968,7 @@ A Narrow Corridor
 0 -1 10131
 E
 desk~
-The desk is badly damaged and is unusuable for its original intentions.  You
+The desk is badly damaged and is unusable for its original purpose.  You
 have a quick search through its remains but find nothing of interest.
 ~
 E
@@ -1106,7 +1106,7 @@ S
 #10138
 A Lounge~
 You stand in an open lounge area.  A large fireplace dominates the northern
-wall, but it shows little sign of recent use and the mantlepiece is badly
+wall, but it shows little sign of recent use and the mantelpiece is badly
 damaged.  The remains of couches and seats line the other three walls, all
 are moth eaten and dirty.  In the south eastern corner is what remains of a
 drinks cabinet, a lot of broken glass litters the floor around it.  Exits
@@ -1140,8 +1140,8 @@ The fireplace hasn't been used in some time.  A few ashes fill the base of
 the fireplace, but there is no wood that you can see.
 ~
 E
-mantlepiece~
-The mantlepiece is in pieces, the once fine wood chipped and broken.  Before
+mantelpiece~
+The mantelpiece is in pieces, the once fine wood chipped and broken.  Before
 its destruction, it looks to have been decorated in the form of a bow.
 ~
 E
@@ -1277,7 +1277,7 @@ E
 bed double~
 The bed is of elegant design with sweeping head and foot boards.  They are
 carved in the shape of embracing lovers, the heads looking down onto the bed
-where the occupants would sleep.  A quick search of the matress and sheets
+where the occupants would sleep.  A quick search of the mattress and sheets
 yields nothing of interest.
 ~
 E
@@ -1336,7 +1336,7 @@ S
 
 #10146
 A Narrow Corridor~
-You stand in a narror corridor within the tower.  The corridor is dirty but
+You stand in a narrow corridor within the tower.  The corridor is dirty but
 shows signs of recent passage.  The stub of a torch burns silently here
 lighting your way.  To the west the corridor reaches an intersection, to the
 east you see a grand stairway.
@@ -1582,7 +1582,7 @@ elemental sense of evil.  You suppress a shudder.
 ~
 E
 bench stone table~
-The benchtop is clear of any objects, and is surprisingly clean all things
+The bench top is clear of any objects, and is surprisingly clean, all things
 considered.  You're relieved to think it is simply a space to store things on.
 ~
 S

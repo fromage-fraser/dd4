@@ -465,9 +465,9 @@ A statue of a hydra stands here~
 1000 0 0
 E
 hydra statue~
-This multi-headed beast is an impressive site. No moss nor
-mould covers this rocky statue, even though the walls are thick
-with moss. It is warm to the touch. A little unnerving.~
+This multi-headed beast is an impressive sight. No moss or
+mould covers the rocky statue, even though the walls are thick
+with it. It is warm to the touch. Unnerving.~
 #14810
 statue medusa~
 statue medusa~
@@ -479,12 +479,12 @@ A statue of a medusa~
 E
 statue medusa~
 Fear is etched into the stone face of this queen of evil.
-The stone snakes atop the head are so fine in detail, you spy
-a stop drop of venom from one of the snakes fangs. ~
+The stone snakes atop the head are amazingly detailed; you
+swear you see venom drip from one of their fangs. ~
 #14811
 mirror~
 a mirror~
-A small mirror lies in the dust~
+A small mirror lies in the dust.~
 ~
 13 0 1|16384
 0~ 1~ 6~ 11~
@@ -492,22 +492,22 @@ A small mirror lies in the dust~
 E
 mirror~
 You realise you need to take a break, the lines on your face
-brought on by the stresses of monster slaying are beginning to
+brought on by the stresses of monster-slaying are beginning to
 show.~
 #14812
-statue three headed dragon~
-statue three headed dragon~
-A Huge statue of a three-headed dragons stands in the centre of the corridor~
+statue three-headed dragon~
+statue three-headed dragon~
+A huge statue of a three-headed dragon stands in the centre of the corridor.~
 ~
 12 0 0
 0~ 1~ 6~ 11~
 1000 0 0
 E
 statue three headed dragon~
-You are awe-struck at the size, and detail of this great beast.
-Many mortals have run in fear at the sight of such a beast.
-to stands so close to such a details work of art sets your
-heart racing~
+You are awestruck at the size of the statue and by how
+skilfully it has been constructed. Many mortals have run in 
+fear at the sight of it. To stand so close to such a 
+magnificent work of art sets your heart racing.~
 #14813
 bridge~
 a bridge~
@@ -518,14 +518,14 @@ a bridge~
 1005 0 0
 E
 bridge~
-the rickety bridge is about to give way. The boards and rope
+The rickety bridge is about to give way. The boards and rope
 which make up the structure are shaking loose. A large rope
-dangles from the wooden board in front of you, it may be useful.
+dangles from the wooden board in front of you; it may be useful.
 ~
 #14814
 stone slab~
 a stone slab~
-A stone slab.~
+A stone slab is here.~
 ~
 23 0|2097152 1|4|8|16|32|64 1 100 0
 0~ 1~ 6~ 11~
@@ -547,9 +547,9 @@ A stone hole? ( put the stone rod in here - mob-prog will figure out to open doo
 0~ 1~ 6~ 11~
 50 0 0
 #14817
-dragons tail~
-a dragons tail~
-An intricate stone carving of a dragons tail~
+dragon's tail~
+a dragon's tail~
+An intricate stone carving of a dragon's tail.~
 ~
 18 0 1
 0~ 1~ 6~ 11~
@@ -557,7 +557,7 @@ An intricate stone carving of a dragons tail~
 #14818
 rope ladder~
 a rope ladder~
-A rope ladder dangles here~
+A rope ladder dangles here.~
 ~
 15 0 0
 0~ 1~ 6~ 11~
@@ -566,51 +566,51 @@ E
 rope ladder~
 While very old, it should still be able to support your weight.
 There is a length of rope dangling from it, not serving a purpose.
-It may be useful~
+It may be useful.~
 #14819
 portal black~
 black portal~
-A Portal stands here, glowing gently.~
+A portal stands here, glowing softly.~
 ~
 33 1 0
 14804~ -1~ 0~ 100~
 5 0 0
 #14820
-parts~
-body Parts~
-Various body parts lay scattered around the room~
+body parts~
+body parts~
+Various body parts lay scattered around the room.~
 ~
 23 0|2097152 1|4|16|32|64 4 100 0
 0~ 1~ 6~ 11~
 5 0 0
 #14821
 body parts~
-body Parts~
-Various body parts lay scattered around the room~
+body parts~
+Various body parts lay scattered around the room.~
 ~
 23 0|2097152 1|4|8|32|64 4 100 0
 0~ 1~ 6~ 11~
 5 0 0
 #14822
 body parts~
-body Parts~
-Various body parts lay scattered around the room~
+body parts~
+Various body parts lay scattered around the room.~
 ~
 23 0|2097152 1|4|8|16|64 4 100 0
 0~ 1~ 6~ 11~
 5 0 0
 #14823
-Body Parts~
-body Parts~
-Various body parts lay scattered around the room~
+body parts~
+body parts~
+Various body parts lay scattered around the room.~
 ~
 23 0|2097152 1|4|8|16|32 4 100 0
 0~ 1~ 6~ 11~
 5 0 0
 #14824
 body parts~
-body Parts~
-Various body parts lay scattered around the room~
+body parts~
+Various body parts lay scattered around the room.~
 ~
 5 0 1|8192
 0~ 1~ 6~ 11~
@@ -618,7 +618,7 @@ Various body parts lay scattered around the room~
 #14825
 ankh red~
 a red ankh~
-A red luminous ankh glows here.~
+A red, luminous ankh glows here.~
 ~
 8 1|2|64 0
 0~ 1~ 6~ 11~
@@ -626,7 +626,7 @@ A red luminous ankh glows here.~
 #14826
 red ankh blue~
 a blue ankh~
-A blue luminous ankh glows here.~
+A blue, luminous ankh glows here.~
 ~
 12 1|2|64 1
 0~ 1~ 6~ 11~
@@ -634,7 +634,7 @@ A blue luminous ankh glows here.~
 #14827
 book bound~
 a roughly bound book~
-A Roughly bound book rests here in the dust.~
+A roughly-bound book rests here in the dust.~
 ~
 5 0 1|8192
 0~ 1~ 6~ 11~
@@ -643,7 +643,7 @@ E
 book roughly bound~
 Opening the book, you take a step back. It is written in blood. There
 are only 5 pages to the book. The first page, is an index of sorts,
-roughly written it states the following:
+roughly written, it states the following:
 
        Page 1 - Dragons Domain
        Page 2 - The Castle
@@ -764,12 +764,12 @@ A rotting skeleton is curled up before you.~
 100 0 0
 E
 rotting skeleton~
-The skeleton is curled up in the fetus position.
+The skeleton is curled up in the foetal position.
 ~
 #14829
 portal~
 a green portal~
-A Huge green portal towers above you~
+A huge green portal towers above you.~
 ~
 33 1|2|16|64 0
 14839~ -1~ 0~ 100~
@@ -777,23 +777,23 @@ A Huge green portal towers above you~
 #14830
 stone key~
 a stone key~
-A stone key rests here~
+A stone key rests here.~
 ~
 18 0 1
 0~ 1~ 6~ 11~
 5 0 0
 #14831
 claw dragon~
-a dragons claw~
-A huge Dragons claw.~
+a dragon's claw~
+A huge dragon's claw.~
 ~
 5 0 1|8192
 0~ 1~ 6~ 5~
 5 0 0
 #14832
-dragons tooth~
+dragon's tooth~
 a dragon's tooth~
-A dragon's tooth~
+A dragon's tooth lies here.~
 ~
 9 0 1|16
 0~ 1~ 6~ 11~
@@ -803,7 +803,7 @@ A
 #14833
 dragon scale~
 a dragon's scale~
-A large dragon's scale~
+A large dragon's scale lies here.~
 ~
 5 2 1|512
 0~ 1~ 6~ 11~
@@ -815,7 +815,7 @@ A
 A
 17 -30
 #14834
-robe~
+robe medusa snakes~
 robe of the medusa~
 A robe decorated with snakes lies here.~
 ~
@@ -837,7 +837,7 @@ A curved dagger~
 A
 18 0
 #14836
-Hydra claws~
+hydra claws~
 hydra claws~
 A set of hydra claws lie here.~
 ~
@@ -911,7 +911,7 @@ D3
 0 -1 14803
 S
 #14803
-Large Rough Cavern.~
+Large Rough Cavern~
 A basic cavern extends eastward from your current position. A narrow
 tunnel leads east. The cavern seems big, from the sounds of the
 echoes. A green mossy substance clings to the walls of the cavern.
@@ -936,7 +936,7 @@ D3
 0 -1 14804
 S
 #14804
-Before the Pillars.~
+Before the Pillars~
 Two Huge stone doors stand affixed in the western wall. From between
 the cracks in the floor and ceiling, a green light pulsates at regular
 intervals.
@@ -967,7 +967,7 @@ meet.
 ~
 S
 #14805
-Cavern Entrance.~
+Cavern Entrance~
 A dark musty Cavern extends to the south and east. To the south, a
 green light emanates from the right hand side. It seems to pulsate at
 regular intervals. The cavern walls have a green moss growing from
@@ -988,7 +988,7 @@ D2
 0 -1 14804
 S
 #14806
-Corner of a Cavern.~
+Corner of a Cavern~
 You stand in a corner of a large cavern. Your light source does
 nothing to reveal the contents to the south and west. A green mossy
 substance clings to the walls of the cavern. You can explorer to
@@ -1005,7 +1005,7 @@ D3
 0 -1 14805
 S
 #14807
-Corner of a Cavern.~
+Corner of a Cavern~
 You stand in a corner of a large cavern. Your light source does
 nothing to reveal the contents to the north and west. A green mossy
 substance clings to the walls of the cavern. You can explorer to
@@ -1022,7 +1022,7 @@ D3
 0 -1 14808
 S
 #14808
-A Cavern Entrance.~
+A Cavern Entrance~
 A dark musty Cavern extends to the north and east. To the north, a
 green light emanates from the left hand side. It seems to pulsate at
 regular intervals. The cavern walls have a green moss growing from
@@ -1043,7 +1043,7 @@ D2
 0 -1 14828
 S
 #14809
-A Tight Tunnel.~
+A Tight Tunnel~
 The tunnel here is less well defined. Beneath the mossy exterior,
 jagged boulders and rocks protrude from the tunnel walls at oblique
 angels. It is as though this cave was chiselled from the earth in a
@@ -1060,7 +1060,7 @@ D3
 0 -1 14810
 S
 #14810
-A Rough Tunnel.~
+A Rough Tunnel~
 The jagged tunnel winds in an east-west direction. Both ways look
 uninviting as your light source fails to reveal the secrets farther
 ahead.
@@ -1076,7 +1076,7 @@ D3
 0 -1 14811
 S
 #14811
-The Huge Stone Wheel.~
+The Huge Stone Wheel~
 A Huge stone wheel blocks the way west. The tunnel turns abruptly
 here to the north and east. Blackness descends to the east while
 northward, a flicker of torchlight dances on the cavern walls.
@@ -1181,7 +1181,7 @@ D3
 0 -1 14813
 S
 #14815
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1205,7 +1205,7 @@ D3
 0 -1 14816
 S
 #14816
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1229,7 +1229,7 @@ D3
 0 -1 14819
 S
 #14817
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1253,7 +1253,7 @@ D3
 0 -1 14818
 S
 #14818
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1277,7 +1277,7 @@ D3
 0 -1 14821
 S
 #14819
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1301,7 +1301,7 @@ D3
 0 -1 14820
 S
 #14820
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1325,7 +1325,7 @@ D3
 0 -1 14815
 S
 #14821
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1349,7 +1349,7 @@ D3
 0 -1 14826
 S
 #14822
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1373,7 +1373,7 @@ D3
 0 -1 14827
 S
 #14823
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1397,7 +1397,7 @@ D3
 0 -1 14822
 S
 #14824
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1421,7 +1421,7 @@ D3
 0 -1 14823
 S
 #14825
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1445,7 +1445,7 @@ D3
 0 -1 14824
 S
 #14826
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1469,7 +1469,7 @@ D3
 0 -1 14817
 S
 #14827
-Black Portal.~
+Black Portal~
 A small circular room reveals itself from the darkness. The walls are
 smooth and absent of moss totally unlike what you have seen before.
 In the center of the room, a light source of immense intensity fills
@@ -1495,7 +1495,7 @@ prepare for the invasion of the worlds"
 ~
 S
 #14828
-A Tight Tunnel.~
+A Tight Tunnel~
 The tunnel here is less well defined. Beneath the mossy exterior,
 jagged boulders and rocks protrude from the tunnel walls at oblique
 angels. It is as though this cave was chiselled from the earth in a
@@ -1512,7 +1512,7 @@ D3
 0 -1 14829
 S
 #14829
-The Jagged Tunnel.~
+The Jagged Tunnel~
 The Jagged tunnel winds in an east-west direction. Both ways look
 uninviting as your light source fails to reveal the secrets farther
 ahead.
@@ -1580,7 +1580,7 @@ Above you, dancing as the light flickers, is written one word.
 ~
 S
 #14832
-The Entrance-way~
+The Entranceway~
 The air is still here, almost peaceful. The small cavern you stand in
 is neatly form from the earth. The floor is regular in design, like
 a cobblestone highway, with slabs of a grey-brown stone forming
@@ -1765,15 +1765,15 @@ are sure you can climb through.
 ~
 S
 #14839
-Congrats.~
-You made it through
-Well done
-Unfortunately the next part of the are isnt complete yet.
-however know this.
-that book you hold is going to be important.
+Congrats!~
+You made it through.
+Well done.
+Unfortunately the next part of the area isn't complete yet.
+However, know this.
+That book you hold is going to be important.
 Keep it with you.
-Also be aware that there will be things , although not obvious, that will
-be important to completing the are - be aware of everything.
+Also be aware that there will be things, although not obvious, that will
+be important to completing the area - pay attention to everything.
 Brutus
 ~
 0 1|4|8 0
@@ -1944,7 +1944,7 @@ D1
 0 -1 14848
 D2
 The symbols that cover the door are of a time long ago. You cannot
-make sense of them however you know they are there for a purpose.
+make sense of them, however you know they are there for a purpose.
 ~
 door wooden symbols~
 1 -1 14855
@@ -1955,7 +1955,7 @@ D3
 S
 #14850
 Glowing Hallway~
-A green hue dominates the hall way. It is coming from the south-west.
+A green hue dominates the hallway. It is coming from the south-west.
 ~
 0 1|8|16384 0
 D1
@@ -1993,7 +1993,7 @@ dragon dragons door wings~
 S
 #14852
 Glowing Hallway~
-A green hue dominates the hall way. It is coming from the north-east.
+A green hue dominates the hallway. It is coming from the north-east.
 ~
 0 1|8|16384 0
 D0
@@ -2026,7 +2026,7 @@ D3
 S
 #14854
 Glowing Hallway~
-A green hue dominates the hall way. It is coming from the north-west.
+A green hue dominates the hallway. It is coming from the north-west.
 ~
 0 1|8|16384 0
 D0
@@ -2040,8 +2040,8 @@ D3
 S
 #14855
 The PORTAL~
-A Huge portal dominates the room. Its green glow is so bright,
-your eyes have difficulty adjusting.
+A huge portal dominates the room. Its green glow is so bright
+your eyes have difficulty adjusting to it.
 ~
 0 1|8 0
 D0
@@ -2276,7 +2276,7 @@ it is doubtful if it could support more than 1 person at a time.
 ~
 S
 #14867
-On the bridge.~
+On the bridge~
 A rickety bridge bridges the gap between two sides of a chasm.
 Beneath you, a river of lava flows, currents of hot dry rush up to
 meet you, swinging the bridge precariously.
@@ -2292,7 +2292,7 @@ D3
 0 -1 14866
 S
 #14868
-Before the chasm.~
+Before the chasm~
 You stand at the edge of a huge chasm. Looking over the edge, a
 strong current of hot air rushes to meet you. A river of lava
 bubbles at least 100 feet below. Across the chasm to the east swings a
@@ -2309,7 +2309,7 @@ D3
 0 -1 14867
 S
 #14869
-Steamy tunnel.~
+Steamy tunnel~
 The earth here feels hot underfoot. The walls are bare rock, hot to
 the touch, and hence no moss grows on them. In fact the walls seem
 to breath as they give off steam. A red glow emanates from the west.
@@ -2343,7 +2343,7 @@ D2
 0 -1 14871
 S
 #14871
-Steamy tunnel.~
+Steamy tunnel~
 The earth here feels hot underfoot. The walls are bare rock, hot to
 the touch, and hence no moss grows on them. In fact the walls seem
 to breath as they give off steam.
@@ -2447,7 +2447,7 @@ D3
 0 -1 14877
 S
 #14877
-Bend in the steamy tunnel.~
+Bend in the steamy tunnel~
 The earth here feels hot underfoot. The walls are bare rock, hot to
 the touch, and hence no moss grows on them. In fact the walls seem
 to breath as they give off steam. A red glow emanates from the east.
@@ -2464,7 +2464,7 @@ D1
 0 -1 14876
 S
 #14878
-Bend in the steamy tunnel.~
+Bend in the steamy tunnel~
 The earth here feels hot underfoot. The walls are bare rock, hot to
 the touch, and hence no moss grows on them. In fact the walls seem
 to breath as they give off steam. A red glow emanates from the east.
@@ -2625,7 +2625,7 @@ D5
 0 -1 14887
 S
 #14887
-The Ankh.~
+The Ankh~
 Wafting red gasses makes in hard to see in this hole. The walls that
 surround you, the floor, even your hands seem red. A Red Ankh
 dominates the centre of the room. It seems to bathe your in a aura
@@ -2912,7 +2912,7 @@ S
 #14906
 shake - bend in tunnel~
 The earth here feels hot underfoot. The walls are bare rock, they
-emit great heat. You being to cook from the intense heat.
+emit great heat. You begin to cook from the intense heat.
 A red glow emanates from the west, while a blue gas creeps forward
 from the south.
 ~
@@ -2962,7 +2962,7 @@ D3
 0 -1 14909
 S
 #14909
-Fiery cavern.~
+Fiery Cavern~
 The lava begins to enter the tunnel you are in. Its intense heat
 beats on your back. the violent earth shaking intensifies once more.
 Boulders fall around you, and into the lava and consumed in a
@@ -3068,7 +3068,7 @@ meet.
 ~
 S
 #14915
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -3092,7 +3092,7 @@ D3
 0 -1 14916
 S
 #14916
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -3171,7 +3171,7 @@ M 1 14801 1 14845           _MOBPROG2 idle to More Skeletons
 *
 M 1 14802 1 14846           _mobprog3 dragons tail to The Question.
 *
-O 1 14810 100 14865         statue medussa to Steamy tunnnel
+O 1 14810 100 14865         statue medusa to Steamy tunnnel
 O 1 14808 100 14869         titan Statue to Steamy tunnel.
 O 1 14809 100 14873         hydra statue to Bend in the steamy tunnel
 O 1 14812 100 14877         statue three headed dragon to Bend in the steamy tunnel.
@@ -3196,7 +3196,7 @@ E 1 14803 100 14
 E 1 14803 100 15
 E 1 14801 100 16
 *
-M 1 14808 1 14910           the medussa to Fiery Cavern
+M 1 14808 1 14910           the medusa to Fiery Cavern
 E 1 14834 100 12
 E 1 14835 100 16
 *
@@ -3263,7 +3263,7 @@ S
 M  14805 spec_breath_acid           the titan
 M  14806 spec_breath_any            the hydra
 M  14807 spec_breath_any            the 3-headed dragon
-M  14808 spec_cast_psionicist       the medussa
+M  14808 spec_cast_psionicist       the medusa
 M  14809 spec_breath_acid           the acid-worm
 M  14812 spec_breath_acid           the acid-worm
 M  14813 spec_breath_acid           the acid-worm

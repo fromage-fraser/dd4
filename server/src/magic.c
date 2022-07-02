@@ -4154,17 +4154,43 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
         for ( ; ; )
         {
                 pRoomIndex = get_room_index(number_range(0, 65535));
-                if (pRoomIndex
-                    && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-                    && !IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT)
-                    && !IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER)
-                    && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
-                    && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY))
-                        break;
+
+                if (!is_affected(ch, gsn_mount))
+                {
+                        if(pRoomIndex
+                        && !IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE))
+                                break;
+                }
+                else {
+                        if (pRoomIndex
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_NO_MOUNT )
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
+                        && !IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY)
+                        && !IS_SET(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE))
+                                break;
+                }     
         }
 
-        act( "$n slowly fades out of existence.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "{cYou slowly fade out of existence.{x\n\r", victim );
+        act( "{c$n slowly fades out of existence.{x", victim, NULL, NULL, TO_ROOM );
         arena_commentary("$n teleports away.", ch, NULL);
+
+        if (is_affected(ch, gsn_mount) )
+        {
+                CHAR_DATA *mount;
+                mount = ch->mount;
+                act_move( "$n fades out of existence.\n\r", mount, NULL, NULL, TO_ROOM );
+        }
+        else {
+             send_to_char( "\n\r", victim );    
+        }
 
         stop_fighting(victim, TRUE);
         char_from_room( victim );
@@ -4178,7 +4204,11 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         char_to_room( victim, pRoomIndex );
-        act( "$n slowly fades into existence.", victim, NULL, NULL, TO_ROOM );
+        act( "{c$n slowly fades into existence.{x", victim, NULL, NULL, TO_ROOM );
+
+        do_look( victim, "auto" );
+
+        send_to_char( "\n\r{cYou slowly fade into existence.{x\n\r", victim );
 
         if (is_affected(ch, gsn_mount) )
         {
@@ -4186,10 +4216,9 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
                 mount = ch->mount;
                 char_from_room( mount );
                 char_to_room( mount, pRoomIndex );
-                act_move( "$n fades into existence..", mount, NULL, NULL, TO_ROOM );
+                act_move( "$n fades into existence.\n\r", mount, NULL, NULL, TO_ROOM );
         }
 
-        do_look( victim, "auto" );
         return;
 }
 

@@ -182,7 +182,7 @@ prism dragon prismdragon~
 the prism dragon~
 The light shines off a beautiful but dangerous dragon lurking here.
 ~
-The spray of colored light bouncing off his scales is almost blinding.
+The spray of coloured light bouncing off his scales is almost blinding.
 ~
 34 40 -303 S
 20 0 -5 20d20+200 6d3+14
@@ -191,7 +191,7 @@ The spray of colored light bouncing off his scales is almost blinding.
 #2017
 darken dark beast darkenbeast~
 The DarkenBeast~
-You hear and smell the presense of the darkenbeast.
+You hear and smell the presence of the darkenbeast.
 ~
 You see nothing more than the sense of darkness and evil.
 ~
@@ -214,8 +214,8 @@ A circular, glowing key radiates a bright aura around it.~
 1 10000 1000000
 #2002
 granite plate mail platemail~
-a suit of granite platemail~
-A suit of platemail hewn from granite stands by itself in the corner.~
+a suit of granite plate mail~
+A suit of plate mail hewn from granite stands by itself in the corner.~
 ~
 9 512|2 9
 9~ 0~ 0~ 0~
@@ -282,8 +282,8 @@ A flask of holy water is here.~
 2 5000 10
 #2009
 chainmail chain mail suit~
-a suit of chainmail~
-A nice suit of chainmail has been left behind.~
+a suit of chain mail~
+A nice suit of chain mail has been left behind.~
 ~
 9 256 9
 5~ 0~ 0~ 0~
@@ -398,7 +398,7 @@ a large cross painted on the floor of the tunnel.To the south it seems
 maybe a bit lighter for some odd reason.  To the north a ray of light
 comes in from a hole in the ceiling.
 ~
-20 264 0
+20 8 0
 D0
 ~
 ~
@@ -418,7 +418,7 @@ This is a place to keep up on there weapon skills.  Much of the
 equipment looks old and worn but upon further inspection seems quite
 sturdy in fact.
 ~
-20 264 0
+20 8 0
 D1
 ~
 ~
@@ -434,7 +434,7 @@ The templar's curious mix of religion and fighting is evident here.
 A central painting depicts a cross composed of swords.  The elders
 teach the ancient art of prayer to the young pages.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -450,7 +450,7 @@ Training facilities are evident to the west. To the south lies a hallway
 which has doors every couple of feet, looks like living quarters of some
 sort.  To the east the tunnel leads back into the natural catacombs.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -482,9 +482,9 @@ S
 #2007
 Intersection~
 The tunnel continues to the north and the south, becoming less hewn and
-more natural to the south.  A passageway lined with paneling leads west.
+more natural to the south.  A passageway lined with panelling leads west.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -504,7 +504,7 @@ Several bunk beds are lined up across the room.  It looks rather spartan
 and there is little evidence of toys or games.  Most of the desks are
 filled with books and papers of little interest.
 ~
-20 264 0
+20 8 0
 D1
 ~
 ~
@@ -520,7 +520,7 @@ This is a huge room which is filled wall to wall with beds. Apparently
 all the low level knights all sleep in this one room.  A door on the
 south wall is labelled "Elders only!".
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -535,7 +535,7 @@ N/S hallway~
 The hallway leads north an south.  A door leads to a templar's room to
 the east.  The decoration looks rather sparse here.
 ~
-20 264 0
+20 8 0
 D1
 ~
 ~
@@ -555,7 +555,7 @@ This is a room furnished in a room becoming a low level templar scribe.
 No real amenities but better than a communal sleeping quarters. As far
 as you can tell he would be a rank equivalent to a Sergeant.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -583,7 +583,7 @@ The elders gather here to discuss training strategies and count their
 loot.  You notice papers which look like important secret documents
 lying around. An escape passage leads west.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -609,7 +609,7 @@ The hallway continues to become more important-looking as you wander
 south.  A room to the east looks rather more pleasant that some of the
 others.
 ~
-20 264 0
+20 8 0
 D1
 ~
 ~
@@ -629,7 +629,7 @@ A rather nice looking room considering the drab conditions down here.
 Through all the signs of decoration you can still see evidence of water
 leaks.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -639,9 +639,9 @@ S
 Mess hall~
 The a huge table with an immaculate white table cloth stretches way off
 to the south.  The room is kept immaculately clean by the knights
-themselves.  They truly belive that cleanliness is next to godliness.
+themselves.  They truly believe that cleanliness is next to godliness.
 ~
-20 264 0
+20 8 0
 D2
 ~
 ~
@@ -657,7 +657,7 @@ The hallway continues north and south.  A peculiar kind of glow seems
 to come from somewhere further along the hallway to the south. The room
 to the east looks like the lap of luxury.
 ~
-20 264 0
+20 8 0
 D1
 ~
 ~
@@ -674,10 +674,10 @@ S
 #2018
 High officer's room~
 First thing you notice in this room is the pleasant aroma of cedar.  All
-the paneling in the room is made of fine cedar.  A painting of an
+the panelling in the room is made of fine cedar.  A painting of an
 elegant knight hangs on the wall.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -771,7 +771,7 @@ Mess hall~
 contrary, it is immaculately clean.  A very long table stretches way off
 to the north. A hallway is to the east.
 ~
-20 264 0
+20 8 0
 D1
 ~
 ~
@@ -786,7 +786,7 @@ End of a hallway~
 You hear voices coming from a room to the west.  the hallway goes north.
 To the east lies a room which seems to glow with power and piety.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -805,7 +805,7 @@ Grand Templar's room~
 All the items in this room look ancient yet strangely very powerful and
 rich.  There is an aura of great holiness about the room.
 ~
-20 264 0
+20 8 0
 D3
 ~
 ~
@@ -885,8 +885,8 @@ S
 Deep within the catacombs~
 It stinks like a lair in here.  A rotten smell of humanoid flesh
 lingers.  You stumble over what you think are corpses in the utter
-darkness. You sense a evil growl from somewhere in the room. maybe
-everywhere in the room. . ..
+darkness. You hear a evil growl from somewhere in the room... maybe
+from everywhere in the room...
 ~
 20 9 5
 D3
@@ -1215,7 +1215,7 @@ D0
 S
 #2049
 Striped tunnel~
-The walls of the tunnels have many brilliant colors in them from the
+The walls of the tunnels have many brilliant colours in them from the
 various veins of crystals running in them.  An odd twinkling comes from
 the east.
 ~
@@ -1232,9 +1232,9 @@ S
 #2050
 Prism cave~
 The roof of this cave peaks over a hundred feet high making it one of
-the biggest in the catacombs.  Crystals of every color cast prismatic
+the biggest in the catacombs.  Crystals of every colour cast prismatic
 sprays of light everywhere.  The light from your lamp causes almost a
-blinding flare of brilliance as more light is added to the multi-colored
+blinding flare of brilliance as more light is added to the multi-coloured
 twinkling phenomenon that exists here.  This is also the lair of the
 fabled and feared Prism Dragon.
 ~
@@ -1523,7 +1523,7 @@ S
 #2066
 Unknown passage~
 Oh dear you seem to have lost your way.  You look back from whence you
-came but there's no exit there anymore.  There are exits in other
+came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
 20 269 2
@@ -1539,7 +1539,7 @@ S
 #2067
 Unknown passage~
 Oh dear you seem to have lost your way.  You look back from whence you
-came but there's no exit there anymore.  There are exits in other
+came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
 20 269 2
@@ -1555,7 +1555,7 @@ S
 #2068
 Unknown passage~
 Oh dear you seem to have lost your way.  You look back from whence you
-came but there's no exit there anymore.  There are exits in other
+came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
 20 269 2
@@ -1571,7 +1571,7 @@ S
 #2069
 Unknown passage~
 Oh dear you seem to have lost your way.  You look back from whence you
-came but there's no exit there anymore.  There are exits in other
+came but there's no exit there any more.  There are exits in other
 directions but you have a feeling that you are hopelessly lost.
 ~
 20 269 2
