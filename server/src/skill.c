@@ -3189,6 +3189,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
      /*   char            buf[ MAX_STRING_LENGTH ]; */
         char            modifier;
         int             random_buff;
+        int             random_buff2;
+        int             random_buff3;
     /*    int             i; */
         int             obj_craft_bonus;
         int             mod_room_bonus;
@@ -3200,6 +3202,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         in_c_room = FALSE;
         random_buff = -1;
+        random_buff2 = -1;
+        random_buff3 = -1;
         random = FALSE;
 
         obj_craft_bonus = get_craft_obj_bonus( ch );
@@ -3272,13 +3276,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
-        random_buff = -1;
 
    
         if (ch->pcdata->learned[gsn_imbue] > 75)
         {
-                random_buff = number_range( 0, MAX_IMBUE-1);
-                modifier = imbue_list[random_buff].apply_buff;
+                random_buff2 = number_range( 0, MAX_IMBUE-1);
+                modifier = imbue_list[random_buff2].apply_buff;
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -3297,13 +3300,13 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
-                random_buff = -1;
+                
         }
 
         if (ch->pcdata->learned[gsn_imbue] > 97)
         {
-                random_buff = number_range( 0, MAX_IMBUE-1);
-                modifier = imbue_list[random_buff].apply_buff;
+                random_buff3 = number_range( 0, MAX_IMBUE-1);
+                modifier = imbue_list[random_buff3].apply_buff;
 
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
@@ -3315,10 +3318,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
-                if (paf->location = APPLY_AC)
+  /*              if (paf->location = APPLY_AC)
                         paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
                 else
-                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+   */             paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
@@ -3343,10 +3346,10 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         AFFECT_DATA *paf;
         bool in_c_room;
         int obj_craft_bonus;
-        int mod_room_bonus;
+    /*    int mod_room_bonus; */
 
         obj_craft_bonus = get_craft_obj_bonus( ch );
-        mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus;
+      /*  mod_room_bonus = CRAFT_BONUS_SHARPEN + obj_craft_bonus; */
 
         in_c_room = FALSE;
 
