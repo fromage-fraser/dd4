@@ -3256,10 +3256,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 */
        modifier = imbue_list[random_buff].apply_buff;
 
-        sprintf( buf, "You search the area but cannot find any %s.\n\r",
+  /*      sprintf( buf, "You search the area but cannot find any %s.\n\r",
                                  imbue_list[random_buff].apply_buff );
                         send_to_char( buf, ch );
-
+*/
        SET_BIT(obj->extra_flags, ITEM_EGO);
        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
 
@@ -3318,7 +3318,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
         act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
-        
+        l
         return;
 }
 
