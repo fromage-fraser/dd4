@@ -3188,12 +3188,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, "Counterbalanced.\n\r");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
                         strcat (buf, "Battle Terror.\n\r");
-
-                strcat(buf, "{x\n\r");
-                strcat(buf1, buf);
-
-
-
+        }
+                
         sprintf( buf, "It weighs {W%d{x lbs, is worth {W%d{x copper coins and is level {W%d{x.\n\r",
                 obj->weight,
                 obj->cost,
