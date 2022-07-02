@@ -171,16 +171,16 @@ const struct clan_items clan_item_list [ MAX_CLAN ] =
 
 const struct imbue_types imbue_list [ MAX_IMBUE ] = 
 {
-        /* name, short_desc, apply_buff, min_level */
-        { "to_damage", "More damage", APPLY_DAMROLL, 40 },
-        { "to_hit", "More damage", APPLY_HITROLL, 40 },
+        /* name, short_desc, apply_buff, base_gain */
+        { "to_damage", "More damage", APPLY_DAMROLL, 12 },
+        { "to_hit", "More damage", APPLY_HITROLL, 11 },
         { "to_mana", "More damage", APPLY_MANA, 40 },
         { "to_hps", "More damage", APPLY_HIT, 40 },
         { "to_move", "More damage", APPLY_MOVE, 40 },
-        { "to_str", "More damage", APPLY_STR, 40 },
-        { "to_dex", "More damage", APPLY_DEX, 40 },
-        { "to_damage", "More damage", APPLY_DAMROLL, 40 },
-        { "to_ac", "More damage", APPLY_AC, 40 },
+        { "to_str", "More damage", APPLY_STR, 1 },
+        { "to_dex", "More damage", APPLY_DEX, 1 },
+        { "to_damage", "More damage", APPLY_DAMROLL, 12 },
+        { "to_ac", "More damage", APPLY_AC, -22 },
 };
 
 
