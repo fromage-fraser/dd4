@@ -3254,10 +3254,10 @@ void do_imbue (CHAR_DATA *ch, char *argument)
        random_buff = number_range( 1, MAX_IMBUE -1);
  /*       random_buff = (const char *rand_string = imbue_list[rand() % MAX_IMBUE]);
 */
-       modifier = skill_lookup(imbue_list[random_buff].apply_buff);
+       modifier = imbue_list[random_buff].apply_buff;
 
         sprintf( buf, "You search the area but cannot find any %s.\n\r",
-                                 skill_lookup(imbue_list[random_buff].apply_buff ));
+                                 imbue_list[random_buff].apply_buff );
                         send_to_char( buf, ch );
 
        SET_BIT(obj->extra_flags, ITEM_EGO);
