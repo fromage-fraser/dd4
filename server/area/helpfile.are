@@ -1770,6 +1770,8 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %a :  Alignment                  (`evil', `neutral' or `good')
     %A :  Alignment numerical value  (not shown before level 10)
     %b :  Spell 'blink' status       ('on' or 'off')
+    %z :  Area name
+    %r :  Room name
 
     %s :  Personal safety: whether you personally are safe or unsafe
           from being pkilled at your current location.
@@ -1780,9 +1782,7 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %B :  Displays bold text colour
     %N :  Displays normal text colour
 
-    %r :  Room name                  (Immortals only)
     %R :  Room vnum                  (Immortals only)
-    %z :  Area name                  (Immortals only)
     %W :  Wizinvisible or visible    (Immortals only)
 
 E.g. 'PROMPT <%hhp %mm %vmv>' will set your prompt to "<10hp 100m 100mv>".
@@ -5984,7 +5984,7 @@ includes such skills as Sing and Chant.
 
 0 'HERB LORE'~
 Rangers often have to call on Nature for assistance.  This group includes
-skills such as Classify and Gather Herbs to assist Rangers in this way.
+skills such as CLASSIFY and GATHER to assist Rangers in this way.
 ~
 
 -1 SBARD~
