@@ -3197,15 +3197,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         AFFECT_DATA     *paf;
     /*    bool            found; */
         bool            in_c_room;
-        bool            random;
-        char            buf[ MAX_STRING_LENGTH ];
-
+     
         in_c_room = FALSE;
         random_buff = -1;
         random_buff2 = -1;
         random_buff3 = -1;
-        random = FALSE;
-
+     
         obj_craft_bonus = get_craft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
 
@@ -3271,7 +3268,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         paf->location       = modifier; 
      /*   if (paf->location = APPLY_AC)
                         paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-      */  else
+        else */
         paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
@@ -3295,7 +3292,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->location       = modifier;
         /*        if (paf->location = APPLY_AC)
                         paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-          */      else
+                else */
                 paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
@@ -3320,8 +3317,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 paf->location       = modifier;
   /*              if (paf->location = APPLY_AC)
                         paf->modifier       = 0- ( in_c_room ) ? 2 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 - ch->level / 5;        
-                else
-   */             paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+                else */
+                paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
                 obj->affected       = paf;
