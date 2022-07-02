@@ -3269,7 +3269,9 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         paf->type           = gsn_imbue;
         paf->duration       = -1;
-        paf->location           = modifier;
+       /* paf->location           = modifier; */
+        paf->location   = skill_lookup(imbue_list[random_buff].apply_buff);
+
   /*
         if (random_buff = 1) 
                 paf->location       = APPLY_DAMROLL;
