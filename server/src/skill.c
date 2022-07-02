@@ -3336,7 +3336,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         if ( IS_NPC( ch ) )
                 return;
 
-        if (!CAN_DO(ch, gsn_balance))
+        if (!CAN_DO(ch, gsn_counterbalance))
         {
                 send_to_char("What do you think you are, a smith?\n\r", ch);
                 return;
