@@ -3174,7 +3174,25 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (IS_SET(obj->extra_flags, ITEM_EGO) && obj->ego_flags)
-                send_to_char("There is something special about this item.\n\r", ch);
+        {
+                send_to_char("Specalist Enhancements:\n\r", ch);
+                if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
+                        strcat (buf, "Bloodlust.\n\r");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
+                        strcat (buf, "Soul Stealer.\n\r");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
+                        strcat (buf, "Firebrand.\n\r");              
+                if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+                        strcat (buf, "Imbued.\n\r");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+                        strcat (buf, "Counterbalanced.\n\r");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
+                        strcat (buf, "Battle Terror.\n\r");
+
+                strcat(buf, "{x\n\r");
+                strcat(buf1, buf);
+
+
 
         sprintf( buf, "It weighs {W%d{x lbs, is worth {W%d{x copper coins and is level {W%d{x.\n\r",
                 obj->weight,
@@ -3259,8 +3277,6 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         if (paf->location < APPLY_SANCTUARY)
                                 sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
                                         affect_loc_name( paf->location ), paf->modifier );
-                        if (paf->location == APPLY_BALANCE)
-                                sprintf (buf, "The weapon is {W%s{x percent balanced\n\r",paf->modifier );
                         else    sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
                                          affect_loc_name (paf->location));
                         send_to_char( buf, ch );
@@ -3276,8 +3292,6 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         if (paf->location < APPLY_SANCTUARY)
                                 sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
                                         affect_loc_name( paf->location ), paf->modifier );
-                        if (paf->location == APPLY_BALANCE)
-                                sprintf (buf, "The weapon is {W%s{x percent balanced\n\r",paf->modifier );
                         else
                                 sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
                                          affect_loc_name (paf->location));
