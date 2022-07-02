@@ -3248,7 +3248,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(obj->extra_flags, ITEM_EGO) && (obj->ego_flags, EGO_ITEM_IMBUED))
         {
-                send_to_char("That is already embued.\n\r", ch);
+                send_to_char("That is already imbued.\n\r", ch);
                 return;
         }
 

@@ -3175,20 +3175,20 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if IS_SET(obj->extra_flags, ITEM_EGO) 
         {
-                send_to_char("Specalist Enhancements:\r", ch);
+                sprintf( buf, "Specalist Enhancements:");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
-                        strcat (buf, " Bloodlust\r");
+                        strcat (buf, " Bloodlust");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
-                        strcat (buf, " Soul Stealer.r");
+                        strcat (buf, " Soul Stealer");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
-                        strcat (buf, " Firebrand\r");              
+                        strcat (buf, " Firebrand");              
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
-                        strcat (buf, " Imbued\r");
+                        strcat (buf, " Imbued");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                        strcat (buf, " Counterbalanced\r");
+                        strcat (buf, " Counterbalanced");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
-                        strcat (buf, " Battle Terror\r");
-                        strcat (buf, ".\r\n");
+                        strcat (buf, " Battle Terror");
+                        strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
                 
