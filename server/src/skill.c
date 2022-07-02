@@ -3338,7 +3338,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 void do_counterbalance (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
-        OBJ_DATA *wobj;
+ /*       OBJ_DATA *wobj; */
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool in_c_room;
