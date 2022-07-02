@@ -3175,19 +3175,21 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if IS_SET(obj->extra_flags, ITEM_EGO) 
         {
-                send_to_char("Specalist Enhancements:\n\r", ch);
+                send_to_char("Specalist Enhancements:\r", ch);
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
-                        strcat (buf, "Bloodlust.\n\r");
+                        strcat (buf, " Bloodlust\r");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
-                        strcat (buf, "Soul Stealer.\n\r");
+                        strcat (buf, " Soul Stealer.r");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
-                        strcat (buf, "Firebrand.\n\r");              
+                        strcat (buf, " Firebrand\r");              
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
-                        strcat (buf, "Imbued.\n\r");
+                        strcat (buf, " Imbued\r");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                        strcat (buf, "Counterbalanced.\n\r");
+                        strcat (buf, " Counterbalanced\r");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
-                        strcat (buf, "Battle Terror.\n\r");
+                        strcat (buf, " Battle Terror\r");
+                        strcat (buf, ".\r\n");
+                send_paragraph_to_char (buf, ch, 4);
         }
                 
         sprintf( buf, "It weighs {W%d{x lbs, is worth {W%d{x copper coins and is level {W%d{x.\n\r",
