@@ -3259,7 +3259,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         if (paf->location < APPLY_SANCTUARY)
                                 sprintf( buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
                                         affect_loc_name( paf->location ), paf->modifier );
-                        else if (paf->location == APPLY_BALANCE)
+                        if (paf->location == APPLY_BALANCE)
                                 sprintf (buf, "The weapon is {W%s{x percent balanced\n\r",paf->modifier );
                         else    sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
                                          affect_loc_name (paf->location));
