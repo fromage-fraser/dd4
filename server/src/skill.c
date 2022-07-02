@@ -3184,16 +3184,16 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         OBJ_DATA        *imbue_types;
         OBJ_DATA *obj;
      /*   OBJ_DATA *wobj; */
-        OBJ_DATA *anvil;
+     /*   OBJ_DATA *anvil; */
         char            arg[MAX_INPUT_LENGTH];
-        char            buf[ MAX_STRING_LENGTH ];
+     /*   char            buf[ MAX_STRING_LENGTH ]; */
         char            modifier;
         int             random_buff;
-        int             i;
+    /*    int             i; */
         int             obj_craft_bonus;
         int             mod_room_bonus;
         AFFECT_DATA     *paf;
-        bool            found;
+    /*    bool            found; */
         bool            in_c_room;
         bool            random;
 
