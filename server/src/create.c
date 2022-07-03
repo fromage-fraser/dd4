@@ -156,7 +156,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        if  ( ( !str_cmp( arg, "steel")  && ch->smelted_steel <35 ) )
+        if  ( ( str_cmp( arg, "steel")  && ch->smelted_steel <35 ) )
       /*   ||
         (!str_cmp( arg, "mithral") && ch->smelted_mithral < 35) ||
         (!str_cmp( arg, "adamantite") && ch->smelted_adamantite < 35) ||
