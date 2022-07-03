@@ -139,16 +139,12 @@ void do_create( CHAR_DATA *ch, char *argument )
  
         WAIT_STATE( ch, skill_table[sn].beats );
 
-        if ( !IS_NPC(ch)
-            && ch->level <= LEVEL_HERO
-            && ((sn = skill_lookup(arg1)) >= 0)
-            && ch->pcdata->learned[sn] > 0)
-        {
-                send_to_char("You fail to correctly recite the spell!\n\r", ch);
-
-               /* ch->mana -= mana / 2; */
-        }
-
+   
+        send_to_char("You start on the creation of your\n\r", ch);
+        (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
+        /*
+        (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
+*/
         /* successfully cast */
    
 
