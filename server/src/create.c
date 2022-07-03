@@ -156,7 +156,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
 
-        one_argument( *mat_base, arg);
+        one_argument( mat_base, arg);
 
         if ( arg[0] == '\0' )
         {
