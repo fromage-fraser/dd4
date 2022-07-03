@@ -33,8 +33,7 @@
 
 /*
  * The kludgy global is for skills that want more stuff from command line.
-
-char *target_name; */
+*/
 char *mat_base;
 
 
@@ -137,24 +136,18 @@ void do_create( CHAR_DATA *ch, char *argument )
 
 */
  
+        mat_base = "";
+        send_to_char("You set to work...\n\r", ch);
         WAIT_STATE( ch, skill_table[sn].beats );
-
-   
-        send_to_char("You start on the creation of your\n\r", ch);
-        (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
-        /*
-        (*skill_table[sn].spell_fun) (sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
-*/
+        (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
         /* successfully cast */
-   
-
 }
-
 
 
 void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
-        OBJ_DATA *mushroom;
+        char arg [MAX_STRING_LENGTH];
+        OBJ_DATA *creation;
         bool in_sc_room;
         int obj_spellcraft_bonus;
         int mod_room_bonus;
@@ -163,8 +156,28 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
 
+        one_argument( *mat_base, arg);
 
-        if (IS_SET( ch->in_room->room_flags, ROOM_SPELLCRAFT ))
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "What base material should be used? 35 units required.\n\r", ch );
+                send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
+                return;
+        }
+
+        if  ( ( *mat_base == "steel" && ch->smelted_steel <35 ) ||
+        (*mat_base == "mithral" && ch->smelted_mithral < 35) ||
+        (*mat_base == "adamantite" && ch->smelted_adamantite < 35) ||
+        (*mat_base == "electrum" && ch->smelted_electrum < 35) ||
+        (*mat_base == "starmetal" && ch->smelted_starmetal < 35) )
+        {
+              send_to_char( "Not enough raw materials - 35 required.\n\r", ch );
+                return;  
+        }
+        
+
+        if ( arg[0])
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
              in_sc_room = TRUE;
         }
@@ -173,12 +186,12 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYou summon a turret in teh form of a mushroom!{x\n\r", ch);
 
 
-        mushroom = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
-        mushroom->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
-        obj_to_room( mushroom, ch->in_room );
-
-        act( "$p a secret turret appears.", ch, mushroom, NULL, TO_CHAR );
-        act( "$p a secret turret appears.", ch, mushroom, NULL, TO_ROOM );
+        creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
+        creation->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
+        obj_to_room( creation, ch->in_room );
+ 
+        act( "Behold your $p is formed.", ch, creation, NULL, TO_CHAR );
+        act( "$n creates a $p.", ch, creation, NULL, TO_ROOM );
         return;
 }
 
