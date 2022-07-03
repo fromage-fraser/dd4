@@ -165,11 +165,11 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        if  ( ( *mat_base == "steel" && ch->smelted_steel <35 ) ||
-        (*mat_base == "mithral" && ch->smelted_mithral < 35) ||
-        (*mat_base == "adamantite" && ch->smelted_adamantite < 35) ||
-        (*mat_base == "electrum" && ch->smelted_electrum < 35) ||
-        (*mat_base == "starmetal" && ch->smelted_starmetal < 35) )
+        if  ( ( *mat_base = "steel" && ch->smelted_steel <35 ) ||
+        (*mat_base = "mithral" && ch->smelted_mithral < 35) ||
+        (*mat_base = "adamantite" && ch->smelted_adamantite < 35) ||
+        (*mat_base = "electrum" && ch->smelted_electrum < 35) ||
+        (*mat_base = "starmetal" && ch->smelted_starmetal < 35) )
         {
               send_to_char( "Not enough raw materials - 35 required.\n\r", ch );
                 return;  
