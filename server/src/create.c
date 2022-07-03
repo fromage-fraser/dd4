@@ -52,8 +52,8 @@ void do_create( CHAR_DATA *ch, char *argument )
         if (IS_NPC(ch))
                 return;
 
-        argument = one_argument( argument, arg1 );
-        argument = one_argument( argument, arg2 );
+        target_name = one_argument( argument, arg1 );
+        one_argument( target_name, arg2 );
      
         if ( arg1[0] == '\0' )
         {
@@ -61,6 +61,12 @@ void do_create( CHAR_DATA *ch, char *argument )
                 return;
         }
 
+       if ( arg2[0] == '\0'  )
+                {
+                        send_to_char( "Syntax: create <object> <material Steel|Mithral|adamantite|electrum|Starmetal>\n\r", ch );
+                        return;
+                }
+        
         sn = skill_lookup(arg1);
         if (sn == -1)
         {
@@ -101,32 +107,6 @@ void do_create( CHAR_DATA *ch, char *argument )
         obj     = NULL;
         vo      = NULL;
 
-        switch ( skill_table[sn].target )
-        {
-            default:
-                bug( "Do_cast: bad target for sn %d.", sn );
-                return;
-
-            case TAR_IGNORE:
-                break;
-
-            case TAR_OBJ_INV:
-                if ( arg2[0] == '\0' )
-                {
-                        send_to_char( "What should the spell be cast upon?\n\r", ch );
-                        return;
-                }
-
-                if ( !( obj = get_obj_carry( ch, arg2 ) ) )
-                {
-                        send_to_char( "You are not carrying that.\n\r", ch );
-                        return;
-                }
-
-                vo = (void *) obj;
-                break;
-        }
-
 /*
         if ( ch-> < mana )
         {
@@ -135,8 +115,7 @@ void do_create( CHAR_DATA *ch, char *argument )
         }
 
 */
- 
-        mat_base = "";
+         
         send_to_char("You set to work...\n\r", ch);
 
         sprintf( buf, "You search the area but cannot find any %s.\n\r",
@@ -152,35 +131,36 @@ void do_create( CHAR_DATA *ch, char *argument )
 void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         char            buf [MAX_INPUT_LENGTH];
-        char arg [MAX_STRING_LENGTH];
-        OBJ_DATA *creation;
-        bool in_sc_room;
-        int obj_spellcraft_bonus;
-        int mod_room_bonus;
+        char            arg [MAX_STRING_LENGTH];
+        OBJ_DATA        *creation;
+        OBJ_DATA        *obj = (OBJ_DATA *) vo;
+        bool            in_sc_room;
+        int             obj_spellcraft_bonus;
+        int             mod_room_bonus;
 
         in_sc_room = FALSE;
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
 
-        one_argument( mat_base, arg);
+        one_argument( target_name, arg);
 
                 sprintf( buf, "You search the area but cannot find any %s or %s.\n\r",
                                  arg[0], mat_base );
                         send_to_char( buf, ch );
 
 
-        if ( mat_base == '\0' )
+        if ( arg[0] == '\0' )
         {
                 send_to_char( "What base material should be used? 35 units required.\n\r", ch );
                 send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
                 return;
         }
 
-        if  ( ( *mat_base = "steel" && ch->smelted_steel <35 ) ||
-        (*mat_base = "mithral" && ch->smelted_mithral < 35) ||
-        (*mat_base = "adamantite" && ch->smelted_adamantite < 35) ||
-        (*mat_base = "electrum" && ch->smelted_electrum < 35) ||
-        (*mat_base = "starmetal" && ch->smelted_starmetal < 35) )
+        if  ( ( arg[0] = "steel" && ch->smelted_steel <35 ) ||
+        (arg[0] = "mithral" && ch->smelted_mithral < 35) ||
+        (arg[0] = "adamantite" && ch->smelted_adamantite < 35) ||
+        (arg[0] = "electrum" && ch->smelted_electrum < 35) ||
+        (arg[0] = "starmetal" && ch->smelted_starmetal < 35) )
         {
               send_to_char( "Not enough raw materials - 35 required.\n\r", ch );
                 return;  
