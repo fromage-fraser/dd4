@@ -5223,6 +5223,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "counterbalance", "!Counterbalance!"
         },
 
+        {
+                "turret", &gsn_turret,
+                TYPE_STR, TAR_OBJ_INV, POS_STANDING,
+                create_turret, 0, 0,
+                "turret", "!Turret!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

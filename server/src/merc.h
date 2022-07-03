@@ -36,6 +36,7 @@
 #define DECLARE_DO_FUN( fun )           DO_FUN          fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN        fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN       fun
+#define DECLARE_CREATE_FUN ( fun )      CREATE_FUN      fun
 #endif
 
 /* System calls - for delete ( from ROM ) */
@@ -162,7 +163,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
-
+typedef void CREATE_FUN args( ( int sn, int level, CHAR_DATA *ch, void *vo ) )
 
 /*
  * Herb info for ranger skill 'gather'
@@ -244,7 +245,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               509     /* 509 for counterbalance */
+#define MAX_SKILL               510     /* 510 for Turret */
 #define MAX_PRE_REQ             1350    /* Added for smithy*/
 #define MAX_SPELL_GROUP         432    /* Added for smithy */
 #define MAX_GROUPS              53
@@ -3869,6 +3870,11 @@ DECLARE_DO_FUN( do_smoke_bomb                   );
 DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
 
+
+/* 
+ Creat functions, primarily for Smithy
+*/
+DECLARE_CREATE_FUN( create_turret               );      /* turret - Brutus Jul 2022 */
 
 /*
  * Spell functions.
