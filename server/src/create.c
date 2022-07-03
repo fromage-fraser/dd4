@@ -149,18 +149,19 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                         send_to_char( buf, ch );
 
 
-        if ( arg[0] == '\0' )
+        if ( !arg )
         {
                 send_to_char( "What base material should be used? 35 units required.\n\r", ch );
                 send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
                 return;
         }
 
-        if  ( ( str_cmp( arg, "steel")  && ch->smelted_steel <35 ) ||
-        (str_cmp( arg, "mithral") && ch->smelted_mithral < 35) ||
-        (str_cmp( arg, "adamantite") && ch->smelted_adamantite < 35) ||
-        (str_cmp( arg, "electrum") && ch->smelted_electrum < 35) ||
-        (str_cmp( arg, "starmetal") && ch->smelted_starmetal < 35) )
+        if  ( ( !str_cmp( arg, "steel")  && ch->smelted_steel <35 ) )
+      /*   ||
+        (!str_cmp( arg, "mithral") && ch->smelted_mithral < 35) ||
+        (!str_cmp( arg, "adamantite") && ch->smelted_adamantite < 35) ||
+        (!str_cmp( arg, "electrum") && ch->smelted_electrum < 35) ||
+        (!str_cmp( arg, "starmetal") && ch->smelted_starmetal < 35) ) */
         {
               send_to_char( "Not enough raw materials - 35 required.\n\r", ch );
                 return;  
