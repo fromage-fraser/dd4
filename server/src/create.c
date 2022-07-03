@@ -138,13 +138,18 @@ void do_create( CHAR_DATA *ch, char *argument )
  
         mat_base = "";
         send_to_char("You set to work...\n\r", ch);
+
+        sprintf( buf, "You search the area but cannot find any %s.\n\r",
+                                 arg2 );
+                        send_to_char( buf, ch );
+
         WAIT_STATE( ch, skill_table[sn].beats );
         (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
         /* successfully cast */
 }
 
 
-void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
+void create_turret ( int sn, int level, CHAR_DATA *ch, char *mat_base )
 {
         char arg [MAX_STRING_LENGTH];
         OBJ_DATA *creation;
