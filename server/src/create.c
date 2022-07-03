@@ -149,7 +149,7 @@ void do_create( CHAR_DATA *ch, char *argument )
 }
 
 
-void create_turret ( int sn, int level, CHAR_DATA *ch, char *mat_base )
+void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         char arg [MAX_STRING_LENGTH];
         OBJ_DATA *creation;

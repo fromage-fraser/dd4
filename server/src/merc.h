@@ -164,7 +164,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
-typedef void CREATE_FUN args( ( int sn, int level, CHAR_DATA *ch, char *mat_base ) );
+typedef void CREATE_FUN args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
 
 /*
  * Herb info for ranger skill 'gather'
