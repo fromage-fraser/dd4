@@ -67,6 +67,7 @@ const struct cmd_type cmd_table [] =
          */
         { "buy",                do_buy,             POS_STANDING,   0,  LOG_NORMAL      },
         { "cast",               do_cast,            POS_FIGHTING,   0,  LOG_NORMAL      },
+        { "create",             do_create,          POS_STANDING,   0,  LOG_NORMAL      },
         { "exits",              do_exits,           POS_RESTING,    0,  LOG_NORMAL      },
         { "get",                do_get,             POS_RESTING,    0,  LOG_NORMAL      },
         { "inventory",          do_inventory,       POS_DEAD,       0,  LOG_NORMAL      },
