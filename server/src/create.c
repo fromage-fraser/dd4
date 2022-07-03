@@ -34,12 +34,12 @@
 /*
  * The kludgy global is for skills that want more stuff from command line.
 */
-char *mat_base;
+
 
 
 void do_create( CHAR_DATA *ch, char *argument )
 {
-        void           *vo;
+        char           *mat_base;
         OBJ_DATA       *obj;
         CHAR_DATA      *rch;
         OBJ_INDEX_DATA *pObjIndex;
