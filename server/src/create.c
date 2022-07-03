@@ -151,6 +151,7 @@ void do_create( CHAR_DATA *ch, char *argument )
 
 void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
+        char            buf [MAX_INPUT_LENGTH];
         char arg [MAX_STRING_LENGTH];
         OBJ_DATA *creation;
         bool in_sc_room;
@@ -163,7 +164,12 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 
         one_argument( mat_base, arg);
 
-        if ( arg[0] == '\0' )
+                sprintf( buf, "You search the area but cannot find any %s or %s.\n\r",
+                                 arg[0], mat_base );
+                        send_to_char( buf, ch );
+
+
+        if ( mat_base == '\0' )
         {
                 send_to_char( "What base material should be used? 35 units required.\n\r", ch );
                 send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
