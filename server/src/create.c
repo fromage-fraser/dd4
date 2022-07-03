@@ -56,7 +56,7 @@ void do_create( CHAR_DATA *ch, char *argument )
         argument = one_argument( argument, arg1 );
         argument = one_argument( argument, arg2 );
      
-        if ( arg1[0] == '\0' || !is_number( arg1 ) )
+        if ( arg1[0] == '\0' )
         {
                 send_to_char( "Syntax: create <object> (optional: material).\n\r", ch );
                 return;
