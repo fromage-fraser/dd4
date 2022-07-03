@@ -3576,6 +3576,7 @@ DECLARE_DO_FUN( do_compare                      );
 DECLARE_DO_FUN( do_config                       );
 DECLARE_DO_FUN( do_consider                     );
 DECLARE_DO_FUN( do_counterbalance               );      /* foe wmithys JUl 2022 - Brutus */
+DECLARE_DO_FUN( do_create                       );
 DECLARE_DO_FUN( do_credits                      );
 DECLARE_DO_FUN( do_crush                        );      /* crush for shifter bear form - Owl */
 DECLARE_DO_FUN( do_cscore                       );      /* clan score - Brutus */

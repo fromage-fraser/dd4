@@ -5225,7 +5225,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "turret", &gsn_turret,
-                TYPE_STR, TAR_OBJ_INV, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
                 create_turret, 0, 0,
                 "turret", "!Turret!"
         },
