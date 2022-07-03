@@ -34,7 +34,7 @@
 /*
  * The kludgy global is for skills that want more stuff from command line.
 */
-char *mat_base;
+char *target_name;
 
 
 void do_create( CHAR_DATA *ch, char *argument )
@@ -145,7 +145,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         one_argument( target_name, arg);
 
                 sprintf( buf, "You search the area but cannot find any %s or %s.\n\r",
-                                 arg[0], mat_base );
+                                 arg[0], target_name );
                         send_to_char( buf, ch );
 
 
