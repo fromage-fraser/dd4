@@ -119,7 +119,7 @@ void do_create( CHAR_DATA *ch, char *argument )
         send_to_char("You set to work...\n\r", ch);
 
         sprintf( buf, "You search the area but cannot find any %s.\n\r",
-                                 arg2 );
+                                 arg2);
                         send_to_char( buf, ch );
 
         WAIT_STATE( ch, skill_table[sn].beats );
@@ -133,7 +133,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         char            buf [MAX_INPUT_LENGTH];
         char            arg [MAX_STRING_LENGTH];
         OBJ_DATA        *creation;
-        OBJ_DATA        *obj = (OBJ_DATA *) vo;
+        CHAR_DATA   *smelting_data = (CHAR_DATA *) vo;
         bool            in_sc_room;
         int             obj_spellcraft_bonus;
         int             mod_room_bonus;
@@ -143,11 +143,6 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
 
         one_argument( target_name, arg);
-
-                sprintf( buf, "You search the area but cannot find any %s or %s.\n\r",
-                                 arg[0], target_name );
-                        send_to_char( buf, ch );
-
 
         if ( arg[0] == '\0' )
         {
