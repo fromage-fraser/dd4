@@ -32,26 +32,6 @@
 #include "merc.h"
 
 /*
- * Lookup a skill by name.
- */
-int skill_lookup( const char *name )
-{
-        int sn;
-
-        for ( sn = 0; sn < MAX_SKILL; sn++ )
-        {
-                if ( !skill_table[sn].name )
-                        break;
-
-                if ( LOWER( name[0] ) == LOWER( skill_table[sn].name[0] )
-                    && !str_prefix( name, skill_table[sn].name ) )
-                        return sn;
-        }
-
-        return -1;
-}
-
-/*
  * The kludgy global is for skills that want more stuff from command line.
 
 char *target_name; */
