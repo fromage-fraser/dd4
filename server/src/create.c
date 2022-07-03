@@ -144,6 +144,11 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 
         one_argument( target_name, arg);
 
+  sprintf( buf, "In create_turret You search the area but cannot find any %s.\n\r",
+                                 arg);
+                        send_to_char( buf, ch );
+
+
         if ( arg[0] == '\0' )
         {
                 send_to_char( "What base material should be used? 35 units required.\n\r", ch );
