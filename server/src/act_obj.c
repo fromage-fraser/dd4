@@ -1139,6 +1139,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
             case ITEM_FOUNTAIN:
                 if (!IS_NPC(ch))
                         ch->pcdata->condition[COND_THIRST] = 48;
+
                 if ( ch->race == RACE_SAHUAGIN )
                 {
                         act("You bathe yourself in $p.",ch,obj,NULL,TO_CHAR);
@@ -1181,6 +1182,12 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 amount = number_range(3, 10);
                 amount = UMIN(amount, obj->value[1]);
 
+                /* Salt water has the same effect as regular water for sahuagin */
+
+                if ( ( ch->race == RACE_SAHUAGIN ) 
+                &&   ( liquid == 14 ) )
+                        liquid = 0;
+
                 gain_condition(ch, COND_DRUNK,
                                amount * liq_table[liquid].liq_effect[COND_DRUNK  ]);
                 gain_condition(ch, COND_FULL,
@@ -1210,11 +1217,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                                 send_to_char("You do not feel thirsty.\n\r", ch);
                 }
 
-                /* Sahuagin can drink salt water as well -- Owl 3/4/22 */
-                if ( obj->value[3] != 0
-                || (  ( ch->race == RACE_SAHUAGIN )
-                     &&  ( ( obj->value[3] != 0 )
-                        && ( obj->value[3] != 14 ) ) ) )
+                if ( obj->value[3] != 0 )
                 {
                         AFFECT_DATA af;
 

@@ -72,16 +72,16 @@ void do_heal(CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                send_to_char("The folowing spells are available from the healer:\n\r\n\r", ch);
+                send_to_char("\n\r{WThe following spells are available from the healer:{x\n\r\n\r", ch);
                 for (i = 0; i < NUMBER_SPELLS; i++)
                 {
-                        sprintf(buf, " {W%-13s{x {w%-22s %5d gold{x\n\r",
+                        sprintf(buf, " {W%-13s{x {w%-22s {Y%5d gold{x\n\r",
                                 spell_list[i].keyword,
                                 spell_list[i].spell_name,
                                 spell_list[i].price);
                         send_to_char(buf, ch);
                 }
-                send_to_char("\n\rType 'HEAL <spell>' to receive healing.\n\r", ch);
+                send_to_char("\n\rType '{WHEAL <spell>{x' to receive healing.\n\r", ch);
                 return;
         }
 

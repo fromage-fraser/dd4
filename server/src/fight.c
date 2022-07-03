@@ -2773,7 +2773,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 vs = "$4-+*###$FEXTERMINATE$R$4###*+-$R";
                 vp = "$4-+*###$FEXTERMINATES$R$4###*+-$R";
         }
-        else if (dam < 3000)
+        else if (dam <= 3000)
         {
                 vs = "$4--=##>>$FUTTERLY DESTROY$R$4<<##=--$R";
                 vp = "$4--=##>>$FUTTERLY DESTROYS$R$4<<##=--$R";
