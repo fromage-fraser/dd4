@@ -128,7 +128,7 @@ void do_create( CHAR_DATA *ch, char *argument )
               /*   if (ch->smelted_steel == 0)
                         send_to_char("You have no smelted steel.\n\r", ch); 
                         liq_table[obj->value[2]].liq_color); */
-                obj = raw_mats_table->mat_name[0];
+                obj = raw_mats_table[0].mat_name    ;
                 vo = (void *) obj;
         }
         WAIT_STATE( ch, skill_table[sn].beats );
