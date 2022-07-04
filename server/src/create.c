@@ -129,12 +129,11 @@ void do_create( CHAR_DATA *ch, char *argument )
  if( !str_prefix(arg1, "steel") )
         {
             
-              /*     liq_table[obj->value[2]].liq_color);  skill_table[sn].name[0] */ 
-                material = raw_mats_table[0].mat_name[0];
-
-                vo = (void *) material; 
+              /*     liq_table[obj->value[2]].liq_color); */
+             /*   material = raw_mats_table[0]; */
+                vo = (void *) arg1; 
         }
-        WAIT_STATE( ch, skill_table[sn].beats );
+
         (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
         /* successfully cast */
 }
