@@ -2387,9 +2387,11 @@ You see the entrance to Mud School.
 0 0 3725
 E
 plaque~
-This entire world has been integrated, modified, debugged, and enhanced by
+This area has been integrated, modified, debugged, and enhanced by
 Hatchet, Kahn, and Furey of MERC Industries to be run by any MERC Mud.
-1992 December 17
+
+Many subsequent additions and enhancements have been made by the
+immortals of Dragons Domain.
 ~
 S
 #3002
@@ -3724,8 +3726,8 @@ S
 #3061
 General Meeting Room~
 You are inside the general meeting room, where the issues of this mud are
-discussed.  You see a large table and chairs, along with three seats at the far
-end, meant for the three directors of this mud, Yaz, Kahn, and Hatchet.  The
+discussed.  You see a large table and chairs, along with four seats at the far
+end, meant for the four gods of this MUD: Brutus, Gezhp, Shade, and Owl.  The
 exit is to the south.
 ~
 0 4|8|1024 0
@@ -3742,8 +3744,7 @@ S
 Builders' Room~
 You are inside the Builders' room, where the issues regarding areas of this
 mud are discussed.  You see a large table and chairs, along with a large seat
-at the far end, meant for the director of areas, Hatchet.  The exit is to the
-west.
+at the far end, meant for the director of areas. The exit is to the west.
 ~
 0 4|8|1024 0
 D3
@@ -3755,8 +3756,7 @@ S
 Implementors' Room~
 You are inside the Implementors' room, where the issues regarding this mud are
 discussed.  You see a large table and chairs, along with a large seat at the
-far end, meant for the director of implementors, Kith.  The exit is to the
-north.
+far end. The exit is to the north.
 ~
 0 4|8|1024 0
 D0
@@ -3768,8 +3768,7 @@ S
 Coders' Room~
 You are inside the Coders' room, where the issues regarding the code of this
 mud are discussed.  You see a large table and chairs, along with a large seat
-at the far end, meant for the director of coders, Kahn.  The exit is to the
-east.
+at the far end, meant for the director of coders.  The exit is to the east.
 ~
 0 4|8|1024 0
 D1
