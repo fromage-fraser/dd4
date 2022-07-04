@@ -1432,11 +1432,28 @@ void do_stand(CHAR_DATA *ch, char *argument)
         switch (ch->position)
         {
             case POS_SLEEPING:
-                if (IS_AFFECTED(ch, AFF_SLEEP))
+                if ( IS_AFFECTED(ch, AFF_SLEEP)
+                && ( ch->race == RACE_SAHUAGIN) 
+                && ( ch->in_room->sector_type == SECT_UNDERWATER) )
                 {
                         send_to_char("You can't wake up!\n\r", ch);
                         return;
                 }
+
+                if ( IS_AFFECTED( ch, AFF_SLEEP )
+                && ( ch->in_room->sector_type == SECT_UNDERWATER) 
+                && !is_affected( ch, gsn_breathe_water ) )
+                {
+                        REMOVE_BIT(ch->affected_by, AFF_SLEEP);
+                         affect_strip(ch, gsn_sleep);
+                }
+
+                if ( IS_AFFECTED(ch, AFF_SLEEP ) )
+                {
+                        send_to_char("You can't wake up!\n\r", ch);
+                        return;
+                }
+
                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
@@ -1526,14 +1543,6 @@ void do_sleep (CHAR_DATA *ch, char *argument)
                         ch->position = POS_RESTING;
                         return;
                 }
-        }
-
-        if ( (!IS_NPC(ch))
-        && ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN && ( !is_affected(ch, gsn_breathe_water) ) ) )
-        {
-                send_to_char("You can't sleep underwater if you can't breathe underwater.\n\r", ch);
-                return;
         }
 
         switch (ch->position)

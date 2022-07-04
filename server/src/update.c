@@ -1602,6 +1602,13 @@ void char_update( void )
                                         act("$n is drowning!", ch, NULL, NULL, TO_ROOM);
                                         damage(ch, ch, number_range(ch->level * 3, ch->level * 5),
                                                TYPE_UNDEFINED, FALSE);
+
+                                        if ( ch->position == POS_SLEEPING ) 
+                                        {
+                                                send_to_char("You decide that drowning is no fun and try to wake yourself up.\n\r", ch);
+                                                do_wake( ch, "" );
+                                        }
+
                                 }
                         }
                 }
