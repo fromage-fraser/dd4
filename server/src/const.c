@@ -1243,14 +1243,25 @@ const struct liq_type liq_table [ LIQ_MAX ] =
         { "cola",                       "cherry",               {  0, 1,  5 } }   /* 15 */
 };
 
+
+/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
+const struct raw_mats_data raw_mats_table [ RAW_MATS_MAX ] = 
+{
+        { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
+        { "mithral",     "A silver metal",                              { 100, 1, 1, 0 } },
+        { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
+        { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
+        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } },
+};
+
 /* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
 const struct raw_mats_type raw_mats_table [ RAW_MATS_MAX ] = 
 {
-        { "steel",      "A dull greyish metal",         { 100, 1, 1, 0 } },
-        { "mithral",     "A silver metal",         { 100, 1, 1, 0 } },
+        { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
+        { "mithral",     "A silver metal",                              { 100, 1, 1, 0 } },
         { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
-        { "electrum",      "A natural pale yellow alloy",         { 100, 1, 1, 0 } },
-        { "starmetal",      "A extraterrestrial mineral",         { 100, 1, 1, 0 } },
+        { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
+        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } },
 };
 
 /*

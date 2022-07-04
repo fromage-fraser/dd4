@@ -132,6 +132,8 @@ typedef struct mob_prog_act_list                MPROG_ACT_LIST;
 typedef struct auction_data                     AUCTION_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
+typedef struct raw_mats_data                    RAW_MATERIAL_DATA;
+
 
 /*
  * Tables - geoff
@@ -1446,6 +1448,7 @@ bool            bot_consider_target             ( int num, CHAR_DATA *victim );
 CHAR_DATA*      bot_choose_target               ( int num );
 
 
+
 /*
  *  Wanted board; Gezhp 2001
  */
@@ -1468,6 +1471,8 @@ void    load_wanted_table ( );
 void    save_wanted_table ( );
 extern  WANTED_DATA *wanted_list_first;
 extern  WANTED_DATA *wanted_list_last;
+
+
 
 
 /***************************************************************************
@@ -2497,6 +2502,20 @@ struct liq_type
 /* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
 #define RAW_MATS_MAX        5
 
+
+
+
+
+
+
+struct raw_mats_data
+{
+        char *  mat_name;
+        char *  mat_desc;
+        int     mat_properties [ 4 ];
+};
+
+
 struct raw_mats_type
 {
         char *  mat_name;
@@ -3446,6 +3465,7 @@ extern const    struct color_data               color_table                     
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
 extern const    struct raw_mats_type            raw_mats_table                  [ RAW_MATS_MAX ];
+extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ];
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];

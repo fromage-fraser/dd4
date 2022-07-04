@@ -48,6 +48,10 @@ void do_create( CHAR_DATA *ch, char *argument )
         char            buf [MAX_INPUT_LENGTH];
         int             sn;
         int             mats;
+        char         buf [MAX_STRING_LENGTH];
+        RAW_MATERIAL_DATA * material;
+
+
      
         if (IS_NPC(ch))
                 return;
@@ -57,13 +61,13 @@ void do_create( CHAR_DATA *ch, char *argument )
      
         if ( arg1[0] == '\0' )
         {
-                send_to_char( "Syntax: create <object> (optional: material).\n\r", ch );
+                send_to_char( "Syntax: create <material> <object>\n\r", ch );
                 return;
         }
 
        if ( arg2[0] == '\0'  )
                 {
-                        send_to_char( "Syntax: create <object> <material Steel|Mithral|adamantite|electrum|Starmetal>\n\r", ch );
+                        send_to_char( "Syntax: create  <material> <object>\n\r", ch );
                         return;
                 }
         
@@ -125,11 +129,10 @@ void do_create( CHAR_DATA *ch, char *argument )
  if( !str_prefix(arg1, "steel") )
         {
             
-              /*   if (ch->smelted_steel == 0)
-                        send_to_char("You have no smelted steel.\n\r", ch); 
-                        liq_table[obj->value[2]].liq_color); */
-                obj = raw_mats_table[0].mat_name    ;
-                vo = (void *) obj;
+              /*     liq_table[obj->value[2]].liq_color); */
+                material = raw_mats_table->mat_name[0];
+
+                vo = (void *) material; 
         }
         WAIT_STATE( ch, skill_table[sn].beats );
         (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
