@@ -2502,12 +2502,6 @@ struct liq_type
 /* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
 #define RAW_MATS_MAX        5
 
-
-
-
-
-
-
 struct raw_mats_data
 {
         char *  mat_name;
@@ -2516,13 +2510,15 @@ struct raw_mats_data
 };
 
 extern  RAW_MATERIAL_DATA *raw_mats_table[];
-
+/*
 struct raw_mats_type
 {
         char *  mat_name;
         char *  mat_desc;
         int     mat_properties [ 4 ];
 };
+
+*/
 /*
  * Extra description data for a room or object.
  */
@@ -3465,7 +3461,7 @@ extern const    struct clan_type                clan_table                      
 extern const    struct color_data               color_table                     [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
-extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ];
+/* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
