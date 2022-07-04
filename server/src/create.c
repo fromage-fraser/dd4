@@ -129,8 +129,8 @@ void do_create( CHAR_DATA *ch, char *argument )
  if( !str_prefix(arg1, "steel") )
         {
             
-              /*     liq_table[obj->value[2]].liq_color); */
-                material = raw_mats_table->mat_name[0];
+              /*     liq_table[obj->value[2]].liq_color);  skill_table[sn].name[0] */ 
+                material = raw_mats_table[0].mat_name[0];
 
                 vo = (void *) material; 
         }
