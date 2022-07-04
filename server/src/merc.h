@@ -2515,6 +2515,7 @@ struct raw_mats_data
         int     mat_properties [ 4 ];
 };
 
+extern  RAW_MATERIAL_DATA *raw_mats_table[];
 
 struct raw_mats_type
 {
