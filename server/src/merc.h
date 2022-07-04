@@ -2499,8 +2499,8 @@ struct liq_type
 
 struct raw_mats_type
 {
-        char    *mat_name;
-        char    *mat_desc;
+        char *  mat_name;
+        char *  mat_desc;
         int     mat_properties [ 4 ];
 };
 /*
