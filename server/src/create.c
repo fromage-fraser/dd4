@@ -67,7 +67,7 @@ void do_create( CHAR_DATA *ch, char *argument )
                         return;
                 }
         
-        sn = skill_lookup(arg1);
+        sn = skill_lookup(arg2);
         if (sn == -1)
         {
                 send_to_char( "That skill doesn't exist.\n\r", ch );
@@ -115,14 +115,31 @@ void do_create( CHAR_DATA *ch, char *argument )
         }
 
 */
-         
+          if ( arg1[0] == '\0'  )
+                {
+                        send_to_char( "What Metal should be used?\n\r", ch );
+                        return;
+                }
+       /* SET OBJ to the METAL and set VO to that. */
+
+ if( !str_prefix(arg1, "steel") )
+        {
+                
+             /*   if (ch->smelted_steel == 0)
+                        send_to_char("You have no smelted steel.\n\r", ch); 
+                        liq_table[obj->value[2]].liq_color); */
+                obj = raw_mats_table[obj->value[0]].mat_name;
+
+                vo = (void *) obj;
+        }
+        WAIT_STATE( ch, skill_table[sn].beats );
+        (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
         /* successfully cast */
 }
 
 
 void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
-        char            buf [MAX_INPUT_LENGTH];
         char            arg [MAX_STRING_LENGTH];
         OBJ_DATA        *creation;
         CHAR_DATA   *smelting_data = (CHAR_DATA *) vo;
@@ -167,7 +184,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         creation->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
         obj_to_room( creation, ch->in_room );
  
-        act( "Behold your $p is formed.", ch, creation, NULL, TO_CHAR )
+        act( "Behold your $p is formed.", ch, creation, NULL, TO_CHAR );
         act( "$n creates a $p.", ch, creation, NULL, TO_ROOM );
         return;
 }
