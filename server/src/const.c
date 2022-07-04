@@ -1251,7 +1251,7 @@ const struct raw_mats_type raw_mats_table [ RAW_MATS_MAX ] =
         { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
         { "electrum",      "A natural pale yellow alloy",         { 100, 1, 1, 0 } },
         { "starmetal",      "A extraterrestrial mineral",         { 100, 1, 1, 0 } },
-}
+};
 
 /*
  *  Skill pre-reqs
