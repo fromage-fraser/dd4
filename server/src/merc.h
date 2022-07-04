@@ -2502,7 +2502,7 @@ struct raw_mats_type
         char    *mat_name;
         char    *mat_desc;
         int     mat_properties [ 4 ];
-}
+};
 /*
  * Extra description data for a room or object.
  */
