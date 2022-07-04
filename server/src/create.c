@@ -116,14 +116,6 @@ void do_create( CHAR_DATA *ch, char *argument )
 
 */
          
-        send_to_char("You set to work...\n\r", ch);
-
-        sprintf( buf, "You search the area but cannot find any %s.\n\r",
-                                 arg2);
-                        send_to_char( buf, ch );
-
-        WAIT_STATE( ch, skill_table[sn].beats );
-        (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
         /* successfully cast */
 }
 
@@ -143,11 +135,6 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
 
         one_argument( target_name, arg);
-
-  sprintf( buf, "In create_turret You search the area but cannot find any %s.\n\r",
-                                 arg);
-                        send_to_char( buf, ch );
-
 
         if ( !arg )
         {
@@ -180,7 +167,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         creation->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
         obj_to_room( creation, ch->in_room );
  
-        act( "Behold your $p is formed.", ch, creation, NULL, TO_CHAR );
+        act( "Behold your $p is formed.", ch, creation, NULL, TO_CHAR )
         act( "$n creates a $p.", ch, creation, NULL, TO_ROOM );
         return;
 }
