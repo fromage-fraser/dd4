@@ -1245,7 +1245,7 @@ const struct liq_type liq_table [ LIQ_MAX ] =
 
 
 /* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
-const struct raw_mats_data raw_mats_table [ RAW_MATS_MAX ] = 
+struct raw_mats_data raw_mats_table [RAW_MATS_MAX] = 
 {
         { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
         { "mithral",     "A silver metal",                              { 100, 1, 1, 0 } },
