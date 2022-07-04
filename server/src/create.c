@@ -52,8 +52,8 @@ void do_create( CHAR_DATA *ch, char *argument )
         if (IS_NPC(ch))
                 return;
 
-        target_name = one_argument( argument, arg1 );
-        one_argument( target_name, arg2 );
+        argument = one_argument( argument, arg1 );
+        argument = one_argument( argument, arg2 );
      
         if ( arg1[0] == '\0' )
         {
@@ -124,11 +124,11 @@ void do_create( CHAR_DATA *ch, char *argument )
 
  if( !str_prefix(arg1, "steel") )
         {
-                
-             /*   if (ch->smelted_steel == 0)
+            
+              /*   if (ch->smelted_steel == 0)
                         send_to_char("You have no smelted steel.\n\r", ch); 
                         liq_table[obj->value[2]].liq_color); */
-                obj = raw_mats_table->mat_name[0];
+                obj = raw_mats_table[0].mat_desc;
                 vo = (void *) obj;
         }
         WAIT_STATE( ch, skill_table[sn].beats );
