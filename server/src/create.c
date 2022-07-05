@@ -37,7 +37,7 @@
 char *target_name;
 
 
-void do_create( CHAR_DATA *ch, char *argument )
+void do_onstruct( CHAR_DATA *ch, char *argument )
 {
         void           *vo;
         OBJ_DATA       *obj;
@@ -61,13 +61,13 @@ void do_create( CHAR_DATA *ch, char *argument )
      
         if ( arg1[0] == '\0' )
         {
-                send_to_char( "Syntax: create <material> <object>\n\r", ch );
+                send_to_char( "Syntax: create <object> <material>\n\r", ch );
                 return;
         }
 
        if ( arg2[0] == '\0'  )
                 {
-                        send_to_char( "Syntax: create  <material> <object>\n\r", ch );
+                        send_to_char( "Syntax: create <object> <material>\n\r", ch );
                         return;
                 }
         
@@ -139,7 +139,7 @@ void do_create( CHAR_DATA *ch, char *argument )
 }
 
 
-void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
+void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         char            arg [MAX_STRING_LENGTH];
         OBJ_DATA        *creation;
@@ -152,7 +152,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
 
-        one_argument( target_name, arg);
+  /*      one_argument( target_name, arg);
 
         if ( !arg )
         {
@@ -160,7 +160,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
                 return;
         }
-
+*/
         if  ( ( !str_cmp( arg, "steel")  && ch->smelted_steel <35 ) )
       /*   ||
         (!str_cmp( arg, "mithral") && ch->smelted_mithral < 35) ||
@@ -168,7 +168,7 @@ void create_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         (!str_cmp( arg, "electrum") && ch->smelted_electrum < 35) ||
         (!str_cmp( arg, "starmetal") && ch->smelted_starmetal < 35) ) */
         {
-              send_to_char( "Not enough raw materials - 35 required.\n\r", ch );
+              send_to_char( "Not enough raw materials - 35 steel required.\n\r", ch );
                 return;  
         }
         

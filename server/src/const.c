@@ -1251,8 +1251,17 @@ struct raw_mats_data raw_mats_table [RAW_MATS_MAX] =
         { "mithral",     "A silver metal",                              { 100, 1, 1, 0 } },
         { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
         { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
-        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } },
+        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } }
 };
+
+/* Blueprint structure : name, description, cost (steel,mithral,adamantite,elctrum,starmetal) */
+const struct blueprint_type blueprint_list [BLUEPRINTS_MAX] = 
+{
+        { "A turret",    "A collapsable mechanical turret",      { 30, 1, 0, 0, 0 } },
+        { "A dart module", "A dart module for a turret",        { 10, 1, 0, 0, 0 } }    
+};
+
+
 
 /*
  *  Skill pre-reqs
@@ -5236,7 +5245,7 @@ const struct skill_type skill_table [MAX_SKILL] =
         {
                 "turret", &gsn_turret,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
-                create_turret, 0, 24,
+                construct_turret, 0, 24,
                 "turret", "!Turret!"
         },
 

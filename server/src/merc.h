@@ -31,13 +31,13 @@
 #define DECLARE_DO_FUN( fun )           void fun( )
 #define DECLARE_SPEC_FUN( fun )         bool fun( )
 #define DECLARE_SPELL_FUN( fun )        void fun( )
-#define DECLARE_CREATE_FUN( fun )       void fun( )
+#define DECLARE_CONSTRUCT_FUN( fun )    void fun( )
 #else
 #define args( list )                    list
 #define DECLARE_DO_FUN( fun )           DO_FUN          fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN        fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN       fun
-#define DECLARE_CREATE_FUN( fun )       CREATE_FUN      fun
+#define DECLARE_CONSTRUCT_FUN( fun )    CONSTRUCT_FUN      fun
 #endif
 
 /* System calls - for delete ( from ROM ) */
@@ -133,7 +133,7 @@ typedef struct auction_data                     AUCTION_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
 typedef struct raw_mats_data                    RAW_MATERIAL_DATA;
-
+typedef struct blueprint_data                   BLUEPRINT_DATA;
 
 /*
  * Tables - geoff
@@ -166,7 +166,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
-typedef void CREATE_FUN args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
+typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
 
 /*
  * Herb info for ranger skill 'gather'
@@ -2498,6 +2498,16 @@ struct liq_type
         int      liq_effect [ 3 ];
 };
 
+#define BLUEPRINTS_MAX  2
+
+/* Blueprint structure : name, description, cost (steel,mithral,adamantite,elctrum,starmetal) */
+struct blueprint_list
+{
+        char    *blueprint_name;
+        char    *blueprint_desc;
+        int     blue_print_cost [5];
+
+};
 
 /* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
 #define RAW_MATS_MAX        5
@@ -2509,16 +2519,6 @@ struct raw_mats_data
         int     mat_properties [ 4 ];
 };
 
-extern  RAW_MATERIAL_DATA *raw_mats_table[];
-/*
-struct raw_mats_type
-{
-        char *  mat_name;
-        char *  mat_desc;
-        int     mat_properties [ 4 ];
-};
-
-*/
 /*
  * Extra description data for a room or object.
  */
@@ -3461,6 +3461,7 @@ extern const    struct clan_type                clan_table                      
 extern const    struct color_data               color_table                     [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
+extern const    struct blueprint_type          blueprint_list                  [ MAX_BLUEPRINTS ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
@@ -3484,6 +3485,7 @@ extern struct           spell_group_struct      spell_group_table               
 extern const int        *spell_groups                                           [ MAX_GROUPS ];
 extern struct           form_skill_struct       form_skill_table                [ MAX_FORM_SKILL ];
 extern struct           vampire_gag             vampire_gag_table               [ MAX_VAMPIRE_GAG ];
+
 
 
 /*
@@ -3602,7 +3604,7 @@ DECLARE_DO_FUN( do_compare                      );
 DECLARE_DO_FUN( do_config                       );
 DECLARE_DO_FUN( do_consider                     );
 DECLARE_DO_FUN( do_counterbalance               );      /* foe wmithys JUl 2022 - Brutus */
-DECLARE_DO_FUN( do_create                       );
+DECLARE_DO_FUN( do_construct                    );
 DECLARE_DO_FUN( do_credits                      );
 DECLARE_DO_FUN( do_crush                        );      /* crush for shifter bear form - Owl */
 DECLARE_DO_FUN( do_cscore                       );      /* clan score - Brutus */
@@ -3902,7 +3904,7 @@ DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter pho
 /* 
  Creat functions, primarily for Smithy
 */
-DECLARE_CREATE_FUN( create_turret               );      /* turret - Brutus Jul 2022 */
+DECLARE_CONSTRUCT_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
 
 /*
  * Spell functions.
