@@ -165,7 +165,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
-typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
+typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch ) );
 
 /*
  * Herb info for ranger skill 'gather'
@@ -2719,6 +2719,7 @@ struct skill_type
         int             target;                         /* Legal targets */
         int             minimum_position;               /* Position for caster / user */
         SPELL_FUN *     spell_fun;                      /* Spell pointer (for spells) */
+        CONSTRUCT_FUN * construct_fun;                  /* Construct Pointer */
         int             min_mana;                       /* Minimum mana used */
         int             beats;                          /* Waiting time after use */
         char *          noun_damage;                    /* Damage message */
@@ -3904,7 +3905,7 @@ DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter pho
 /* 
  Creat functions, primarily for Smithy
 */
-DECLARE_SPELL_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
+DECLARE_CONSTRUCT_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
 
 /*
  * Spell functions.
