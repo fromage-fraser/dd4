@@ -111,7 +111,7 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
         
-        if ( blueprint_list[0].blue_print_cost[0] > smelting_data->smelted_steel 
+    /*    if ( blueprint_list[0].blue_print_cost[0] > smelting_data->smelted_steel 
                 ||  blueprint_list[0].blue_print_cost[1] > smelting_data->smelted_mithral 
                 ||  blueprint_list[0].blue_print_cost[2] > smelting_data->smelted_adamantite
                 ||  blueprint_list[0].blue_print_cost[3] > smelting_data->smelted_electrum
@@ -121,15 +121,8 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return; 
         }
 
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-             in_sc_room = TRUE;
-        }
-
-        if ( in_sc_room )
-                send_to_char( "{MYou summon a turret in teh form of a mushroom!{x\n\r", ch);
-
-
+    */
+   
         creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
         creation->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
         obj_to_room( creation, ch->in_room );
