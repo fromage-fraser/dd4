@@ -40,13 +40,8 @@ char *target_name;
 void do_construct( CHAR_DATA *ch, char *argument )
 {
         void           *vo;
-        OBJ_DATA       *obj;
-        CHAR_DATA      *rch;
-        OBJ_INDEX_DATA *pObjIndex;
         char            arg1 [ MAX_INPUT_LENGTH ];
         int             sn;
-        int             mats;
- 
      
         if (IS_NPC(ch))
                 return;
@@ -68,12 +63,11 @@ void do_construct( CHAR_DATA *ch, char *argument )
         /*
                 Below code converts an int (e.g. 'sn') to a string and logs it.
                 Which is sometimes useful.
-*/
+
                 int length = snprintf( NULL, 0, "%d", sn );
                 char* mystr = malloc( length + 1 );
                 snprintf( mystr, length + 1, "%d", sn );
                 log_string(mystr);
-/*
                 -- Owl 23/09/18
   */
 
@@ -97,9 +91,8 @@ void do_construct( CHAR_DATA *ch, char *argument )
 
 void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
-        char            arg [MAX_STRING_LENGTH];
         OBJ_DATA        *creation;
-        CHAR_DATA   *smelting_data = (CHAR_DATA *) vo;
+        CHAR_DATA       *smelting_data = (CHAR_DATA *) vo;
         bool            in_sc_room;
         int             obj_spellcraft_bonus;
         int             mod_room_bonus;
