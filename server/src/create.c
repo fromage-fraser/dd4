@@ -31,12 +31,6 @@
 #include <time.h>
 #include "merc.h"
 
-/*
- * The kludgy global is for skills that want more stuff from command line.
-*/
-char *target_name;
-
-
 void do_construct( CHAR_DATA *ch, char *argument )
 {
         void           *vo;
@@ -56,6 +50,7 @@ void do_construct( CHAR_DATA *ch, char *argument )
         }
  
         sn = skill_lookup(arg);
+
         if (sn == -1)
         {
                 send_to_char( "That skill doesn't exist.\n\r", ch );
@@ -64,12 +59,12 @@ void do_construct( CHAR_DATA *ch, char *argument )
         /*
                 Below code converts an int (e.g. 'sn') to a string and logs it.
                 Which is sometimes useful.
-
+*/
                 int length = snprintf( NULL, 0, "%d", sn );
                 char* mystr = malloc( length + 1 );
                 snprintf( mystr, length + 1, "%d", sn );
                 log_string(mystr);
-                -- Owl 23/09/18
+  /*              -- Owl 23/09/18
   */
 
         if (!IS_NPC(ch) && !CAN_DO(ch, sn))
@@ -85,7 +80,7 @@ void do_construct( CHAR_DATA *ch, char *argument )
         }
 
         sprintf( buf, "Spells cast per round is set at %d. and $s\n\r", sn, arg );
-
+        send_to_char ( buf, ch );
 
         vo      = NULL;
         (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
