@@ -3461,7 +3461,7 @@ extern const    struct clan_type                clan_table                      
 extern const    struct color_data               color_table                     [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
-extern const    struct blueprint_type          blueprint_list                  [ MAX_BLUEPRINTS ];
+extern const    struct blueprint_type          blueprint_list                   [ BLUEPRINTS_MAX ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
