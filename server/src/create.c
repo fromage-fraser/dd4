@@ -45,7 +45,7 @@ void do_construct( CHAR_DATA *ch, char *argument )
        
         if ( arg[0] == '\0' )
         {
-                send_to_char( "Syntax: create <object> <material>\n\r", ch );
+                send_to_char( "Syntax: Construct <object> <material>\n\r", ch );
                 return;
         }
  
@@ -58,6 +58,15 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 send_to_char( "That skill doesn't exist.\n\r", ch );
                 return;
         }
+
+        if (sn)
+        {
+                sprintf( buf, "Spells cast per round is set at %d. and %s\n\r", sn, arg );
+                send_to_char ( buf, ch );
+                return;
+        }
+
+
         /*
                 Below code converts an int (e.g. 'sn') to a string and logs it.
                 Which is sometimes useful.
