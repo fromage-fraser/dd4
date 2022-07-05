@@ -81,7 +81,7 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        sprintf( buf, "Spells cast per round is set at %d. and $s\n\r", sn, arg );
+        sprintf( buf, "Spells cast per round is set at %d. and %s\n\r", sn, arg );
         send_to_char ( buf, ch );
 
         vo      = NULL;
