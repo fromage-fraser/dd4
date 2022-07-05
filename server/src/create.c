@@ -146,11 +146,11 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
         
-        if (smelting_data->smelted_steel < blueprint_list[0].blue_print_cost[0] 
-                || smelting_data->smelted_mithral < blueprint_list[0].blue_print_cost[1]
-                || smelting_data->smelted_adamantite < blueprint_list[0].blue_print_cost[2]
-                || smelting_data->smelted_electrum < blueprint_list[0].blue_print_cost[3]
-                || smelting_data->smelted_starmetal < blueprint_list[0].blue_print_cost[4])
+        if ( blueprint_list[0].blue_print_cost[0] > smelting_data->smelted_steel 
+                ||  blueprint_list[0].blue_print_cost[1] > smelting_data->smelted_mithral 
+                ||  blueprint_list[0].blue_print_cost[2] > smelting_data->smelted_adamantite
+                ||  blueprint_list[0].blue_print_cost[3] > smelting_data->smelted_electrum
+                ||  blueprint_list[0].blue_print_cost[4] > smelting_data->smelted_starmetal)
         {
                 send_to_char( "Not enough raw materials - 35 steel required.\n\r", ch );
                 return; 
