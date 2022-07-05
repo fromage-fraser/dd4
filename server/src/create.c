@@ -40,21 +40,22 @@ char *target_name;
 void do_construct( CHAR_DATA *ch, char *argument )
 {
         void           *vo;
-        char            arg1 [ MAX_INPUT_LENGTH ];
+        char            arg [ MAX_INPUT_LENGTH ];
         int             sn;
-     
+        char            buf[MAX_STRING_LENGTH];
+        
         if (IS_NPC(ch))
                 return;
 
-        argument = one_argument( argument, arg1 );
+        argument = one_argument( argument, arg );
        
-        if ( arg1[0] == '\0' )
+        if ( arg[0] == '\0' )
         {
                 send_to_char( "Syntax: create <object> <material>\n\r", ch );
                 return;
         }
  
-        sn = skill_lookup(arg1);
+        sn = skill_lookup(arg);
         if (sn == -1)
         {
                 send_to_char( "That skill doesn't exist.\n\r", ch );
@@ -82,6 +83,9 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 send_to_char( "You can't concentrate enough.\n\r", ch );
                 return;
         }
+
+        sprintf( buf, "Spells cast per round is set at %d. and $s\n\r", sn, arg );
+
 
         vo      = NULL;
         (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
