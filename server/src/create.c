@@ -37,7 +37,7 @@
 char *target_name;
 
 
-void do_onstruct( CHAR_DATA *ch, char *argument )
+void do_construct( CHAR_DATA *ch, char *argument )
 {
         void           *vo;
         OBJ_DATA       *obj;
