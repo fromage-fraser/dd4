@@ -45,12 +45,9 @@ void do_construct( CHAR_DATA *ch, char *argument )
         OBJ_INDEX_DATA *pObjIndex;
         char            arg1 [ MAX_INPUT_LENGTH ];
         char            arg2 [ MAX_INPUT_LENGTH ];
-        char            buf [MAX_INPUT_LENGTH];
         int             sn;
         int             mats;
-        char         buf [MAX_STRING_LENGTH];
-
-
+ 
      
         if (IS_NPC(ch))
                 return;
@@ -150,7 +147,7 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         in_sc_room = FALSE;
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
-
+        
   /*      one_argument( target_name, arg);
 
         if ( !arg )
