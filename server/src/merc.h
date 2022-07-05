@@ -2719,7 +2719,6 @@ struct skill_type
         int             target;                         /* Legal targets */
         int             minimum_position;               /* Position for caster / user */
         SPELL_FUN *     spell_fun;                      /* Spell pointer (for spells) */
-        CONSTRUCT_FUN * construct_fun;                  /* Construct Pointer */
         int             min_mana;                       /* Minimum mana used */
         int             beats;                          /* Waiting time after use */
         char *          noun_damage;                    /* Damage message */
@@ -3905,7 +3904,7 @@ DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter pho
 /* 
  Creat functions, primarily for Smithy
 */
-DECLARE_CONSTRUCT_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
+DECLARE_SPELL_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
 
 /*
  * Spell functions.
