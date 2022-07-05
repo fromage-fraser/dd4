@@ -3904,7 +3904,7 @@ DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter pho
 /* 
  Creat functions, primarily for Smithy
 */
-DECLARE_CONSTRUCT_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
+DECLARE_SPELL_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
 
 /*
  * Spell functions.
