@@ -59,13 +59,12 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-   /*    if (sn)
+    if (sn)
         {
                 sprintf( buf, "Spells cast per round is set at %d. and %s\n\r", sn, arg );
                 send_to_char ( buf, ch );
-                return;
         }
-*/
+
 
         /*
                 Below code converts an int (e.g. 'sn') to a string and logs it.

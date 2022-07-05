@@ -5,7 +5,7 @@ LngDsc      ~
 Dscr        ~
 Prmpt       [%z %R] ~
 Sx          1
-Cla         3
+Cla         8
 SbCla       0
 Rce         1
 Clan        0
@@ -13,10 +13,10 @@ ClnLvl      0
 Lvl         106
 Trst        0
 Wizbt       0
-Playd       836
+Playd       73166
 Note        0
-Room        75
-HpMnMv      1017 2711 1160 1184 1178 1178
+Room        20124
+HpMnMv      2711 2711 1194 1194 1228 1228
 Rage        50
 Rage_Max    100
 Aggro_Dam   0
@@ -26,22 +26,22 @@ Silver      5
 Copper      0
 Bank        0
 Bounty      0
-Exp         -1
+Exp         3375
 Act         151000648
 Status      0
-AffdBy      4
+AffdBy      0
 Pos         7
 Prac        3
 SplPrac     2
 StatTrain   1
-SavThr      -24
+SavThr      -1
 Align       0
-Hit         28
-Dam         5
-Armr        80
+Hit         5
+Dam         28
+Armr        -9
 Wimp        0
 Deaf        0
-Kills       7
+Kills       8
 Killed      0
 Pdeaths     0
 Pkills      0
@@ -57,31 +57,31 @@ Bmfin       ~
 Bmfout      ~
 Ttle        ~
 AtrPrm      24 21 19 22 23
-AtrMd       0 0 0 0 0
+AtrMd       0 0 0 1 1
 Cond        -1 47 47
 Colors      13 14 12 9 15 10 7 11 3 13
 CurRecall   0
-SpellAttk   0
+SpellAttk   1
 Blink       0
 RecPoints   3001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 Pglen       25
 ChSub       0
 Fame        0
-Saved       1646527270
+Saved       1657016366
 Patron      None~
 DeityTimer  360
 DeityFlags  0
 DeityFavour Hurin~ 400
-DeityFavour Tulgor~ 450
-DeityFavour Lloth~ 450
+DeityFavour Tulgor~ 400
+DeityFavour Lloth~ 400
 DeityFavour Sephusia~ 400
 DeityFavour Torm~ 450
 DeityFavour Ealindel~ 450
-DeityFavour Thalin~ 450
+DeityFavour Thalin~ 400
 DeityFavour Televar~ 600
-DeityFavour Gorthrond~ 650
-DeityFavour Minerva~ 450
-DeityFavour Xuul~ 450
+DeityFavour Gorthrond~ 600
+DeityFavour Minerva~ 400
+DeityFavour Xuul~ 400
 DeityFavour Mira~ 600
 DeityFavour Death~ 600
 DeityFavour Azazel~ 400
@@ -89,7 +89,7 @@ DeityFavour Swyft~ 600
 DeityFavour Nystis~ 400
 DeityFavour Tractacus~ 400
 DeityFavour Brutus~ 600
-DeityFavour Morfus~ 600
+DeityFavour Morfus~ 650
 DeityType   0 0 0 0 0 0 
 DeityPerson 0 0 0 0 0 0 0 
 Boards      5 General 0 Ideas 0 Announce 0 Bugs 0 Personal 0 
@@ -146,7 +146,6 @@ Skll        100 'fireball'
 Skll        100 'fireshield'
 Skll        100 'flamestrike'
 Skll        100 'fly'
-Skll        100 '__EMPTY__'
 Skll        100 '__EMPTY__'
 Skll        100 'gate'
 Skll        100 'giant strength'
@@ -249,7 +248,6 @@ Skll        100 'choke'
 Skll        100 'break wrist'
 Skll        100 'snap_neck'
 Skll        100 'grapple'
-Skll        100 'fly'
 Skll        100 'flying headbutt'
 Skll        100 'gouge'
 Skll        100 'pugilism'
@@ -426,7 +424,7 @@ Skll        100 'evocation magiks'
 Skll        100 'dark magiks'
 Skll        100 'death magiks'
 Skll        100 'lycanthropy skills'
-Skll        100 'Vampyre skills'
+Skll        100 'vampyre skills'
 Skll        100 'draconian magiks'
 Skll        100 'destructive magiks'
 Skll        100 'major protective magiks'
@@ -565,6 +563,10 @@ Skll        100 'dual parry'
 Skll        100 'addqp'
 Skll        100 'chaos blast'
 Skll        100 'detect curse'
+Skll        100 'smelt'
+Skll        99 'imbue'
+Skll        100 'counterbalance'
+Skll        100 'turret'
 Skll        100 'mage base'
 Skll        100 'cleric base'
 Skll        100 'thief base'
@@ -590,9 +592,1353 @@ Skll        100 'artist base'
 Skll        100 'barbarian base'
 Skll        100 'bard base'
 Skll        100 'teacher base'
-Aff          11 185 -23  24          0
-Aff          11 185  23  18          0
-Aff          35 184   0   0          4
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   4
+WearFlags    8193
+EgoFlags     4
+WearLoc      16
+ItemType     5
+Weight       5
+Level        10
+Timer        -2
+TimerMax     0
+Cost         95
+Values       0 2 14 1
+Affect       479 -1 23 19 0
+Owner        Shade~
+End
+
+#OBJECT
+Nest         0
+Name         candle lighted~
+ShortDescr   a lighted candle~
+Description  A lighted candle stands here, providing little light and warm.~
+Vnum         20101
+ExtraFlags   128
+WearFlags    1
+EgoFlags     0
+WearLoc      -1
+ItemType     12
+Weight       10
+Level        27
+Timer        -2
+TimerMax     0
+Cost         248
+Values       0 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         manual book Yijinjing yijinjing~
+ShortDescr   a Yijinjing manual~
+Description  A book of some sort is left on the floor.~
+Vnum         20111
+ExtraFlags   0
+WearFlags    1
+EgoFlags     0
+WearLoc      -1
+ItemType     2
+Weight       2
+Level        27
+Timer        -2
+TimerMax     0
+Cost         255
+Values       31 29 56 59
+Spell 1      'cure critical'
+Spell 2      'giant strength'
+Spell 3      'heal'
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         garters~
+ShortDescr   monk's garters~
+Description  A material of some sort is left here.~
+Vnum         20118
+ExtraFlags   2
+WearFlags    33
+EgoFlags     0
+WearLoc      7
+ItemType     9
+Weight       10
+Level        27
+Timer        -2
+TimerMax     0
+Cost         291
+Values       8 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         robe~
+ShortDescr   a monk's robe~
+Description  A rough and cheap looking piece of cloth is discarded here.~
+Vnum         20119
+ExtraFlags   0
+WearFlags    1025
+EgoFlags     0
+WearLoc      12
+ItemType     9
+Weight       20
+Level        25
+Timer        -2
+TimerMax     0
+Cost         254
+Values       8 0 0 0
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   4
+WearFlags    8193
+EgoFlags     16
+WearLoc      18
+ItemType     5
+Weight       5
+Level        10
+Timer        -2
+TimerMax     0
+Cost         117
+Values       0 4 12 1
+Affect       479 -1 -19 17 0
+Affect       479 -1 -19 17 0
+Affect       479 -1 -19 17 0
+Owner        Shade~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        106
+Timer        -2
+TimerMax     0
+Cost         971
+Values       0 28 86 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         666
+Values       0 18 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         546
+Values       0 16 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         602
+Values       0 18 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         611
+Values       0 18 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         559
+Values       0 16 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         672
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         671
+Values       0 16 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         568
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         670
+Values       0 15 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         678
+Values       0 18 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         601
+Values       0 19 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         618
+Values       0 16 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         667
+Values       0 18 53 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         668
+Values       0 16 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         543
+Values       0 17 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         668
+Values       0 17 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         687
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         674
+Values       0 17 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         624
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         599
+Values       0 15 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         602
+Values       0 16 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         546
+Values       0 17 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         687
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         616
+Values       0 16 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         552
+Values       0 16 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         676
+Values       0 17 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         612
+Values       0 16 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         613
+Values       0 18 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         688
+Values       0 18 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         609
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         672
+Values       0 15 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         611
+Values       0 19 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         610
+Values       0 17 53 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         677
+Values       0 16 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         549
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         662
+Values       0 18 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         553
+Values       0 19 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         602
+Values       0 18 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         654
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         548
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         543
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         612
+Values       0 19 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         597
+Values       0 16 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         610
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         555
+Values       0 19 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         688
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         657
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         601
+Values       0 16 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         606
+Values       0 19 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         629
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         687
+Values       0 18 52 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         616
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         652
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         604
+Values       0 16 53 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         627
+Values       0 16 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         668
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         554
+Values       0 17 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         617
+Values       0 16 50 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         613
+Values       0 18 51 1
+Owner        ~
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a sword~
+Description  A simple sword is here.~
+Vnum         2436
+ExtraFlags   0
+WearFlags    8193
+EgoFlags     0
+WearLoc      -1
+ItemType     5
+Weight       5
+Level        60
+Timer        -2
+TimerMax     0
+Cost         608
+Values       0 17 50 1
+Owner        ~
 End
 
 #END
