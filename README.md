@@ -42,10 +42,19 @@ _Owl, Shade, Gezhp_
 
 ## Quick start
 
-1.  Install `docker`.
-1.  Install `docker-compose`.
-1.  Recommended: install `make`.
-1.  From the root directory, build the server image:
+1. Install `docker`.
+2. Install `docker-compose`.
+3. Recommended: install `make`.
+
+4. From the root directory, initialise the player directory:
+
+    ```
+    cp -r server/player_skeleton server/player
+    ```
+
+    This only has to be done once.
+
+5. From the root directory, build the server image:
 
     ```
     // With make
@@ -55,11 +64,10 @@ _Owl, Shade, Gezhp_
     docker-compose build --no-cache server
     ```
 
-    This will build a `dd4-server` docker image.
-    Repeating this command will rebuild the server.
+   This will build a `dd4-server` docker image.
+   Repeating this command will rebuild the server.
 
-
-1.  From the root directory, start the server:
+6. From the root directory, start the server:
 
     ```
     // With make
@@ -71,7 +79,7 @@ _Owl, Shade, Gezhp_
 
     The MUD server will start up on port 8888.
 
-1.  To view the log of the running server:
+7. To view the log of the running server:
 
     ```
     // With make
@@ -81,7 +89,7 @@ _Owl, Shade, Gezhp_
     docker-compose logs -f server
     ```
 
-1.  To stop the server:
+8. To stop the server:
 
     ```
     // With make
@@ -97,17 +105,36 @@ if you don't want this behaviour.
 
 ## Files
 
-| Directory         | Contents                          | Notes
-| ---------         | --------                          | -----
-| `server/area/`    | Area files                        | *
-| `server/player/`  | Player files ("pfiles")           | *
-| `server/src/`     | Source code                       |
-| `faq/`            | Frequently Asked Questions        | See below
-| `maps/`           | Maps generated from area files    | See below
-| `builder/`        | Docs and tools for area building  |
+| Directory                 | Contents                           | Notes                                     |
+|---------------------------|------------------------------------|-------------------------------------------|
+| `server/area/`            | Area files                         | *                                         |
+| `server/player/`          | Player files ("pfiles") and tables | The directory actively used by the server |
+| `server/player_skeleton/` | Initial player and table data      | Initial player data: see below            |
+| `server/src/`             | Source code                        |                                           |
+| `faq/`                    | Frequently Asked Questions         | See below                                 |
+| `maps/`                   | Maps generated from area files     | See below                                 |
+| `builder/`                | Docs and tools for area building   |                                           |
 
 `*` These directories are both mounted when using the docker-compose file to run the MUD.
     Areas can be modified and characters saved.
+
+
+### The _server/player/_ and _server/player_skeleton/_ directories
+
+The MUD server expects a _server/player/_ directory with the correct structure to exist when it starts up.
+There are subdirectories for each letter of the alphabet, plus a _TABLES/_ directory that stores the current values
+of various tables shown in the game.
+
+As files in this location often change, we do not keep them under version control. The _server/player_skeleton/_ is
+provided as a starting point for new installations or checkouts.
+
+Please create a copy of the _server/player_skeleton/_ directory as _server/player/ before running the server for the
+first time. This only has to happen once.
+
+    cp -r server/player_skeleton server/player
+
+> **Note** The server will start if the player directory is missing, however it will crash when later attempting to
+> save player and table information.
 
 
 ## FAQ
@@ -138,15 +165,14 @@ There are currently some very strange layouts!
 all exits (apart from portals). However, the following are not shown: whether doors are locked or bash/pick/pass-proof;
 the location of any objects; the location of any mobiles (beyond healers, teachers and shopkeepers).
 
-| File                                      | Notes
-| ---                                       | ---
-| [Index](maps/area/index.html)             | Index of all maps
-| [Midgaard](maps/area/midgaard.html)       | Starting city
-| [Haon Dor](maps/area/haon.html)           | Wilderness west of Midgaard (many low-level areas nearby)
-| [Miden'nir](maps/area/midennir.html)      | Wilderness east and south of Midgaard (many low-level areas nearby)
-| [Town Of Solace](maps/area/solace.html)   | Low-level city with many areas nearby
-| [The City of Anon](maps/area/tcwn.html)   | Key mid-level city
-
+| File                                    | Notes                                                               |
+|-----------------------------------------|---------------------------------------------------------------------|
+| [Index](maps/area/index.html)           | Index of all maps                                                   |
+| [Midgaard](maps/area/midgaard.html)     | Starting city                                                       |
+| [Haon Dor](maps/area/haon.html)         | Wilderness west of Midgaard (many low-level areas nearby)           |
+| [Miden'nir](maps/area/midennir.html)    | Wilderness east and south of Midgaard (many low-level areas nearby) |
+| [Town Of Solace](maps/area/solace.html) | Low-level city with many areas nearby                               |
+| [The City of Anon](maps/area/tcwn.html) | Key mid-level city                                                  |
 
 ## Immortals
 
