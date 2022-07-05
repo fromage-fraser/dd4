@@ -172,10 +172,6 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         (!str_cmp( arg, "adamantite") && ch->smelted_adamantite < 35) ||
         (!str_cmp( arg, "electrum") && ch->smelted_electrum < 35) ||
         (!str_cmp( arg, "starmetal") && ch->smelted_starmetal < 35) ) */
-        {
-              send_to_char( "Not enough raw materials - 35 steel required.\n\r", ch );
-                return;  
-        }
         
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
