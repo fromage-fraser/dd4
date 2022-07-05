@@ -3187,8 +3187,6 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         int             random_buff;
         int             random_buff2;
         int             random_buff3;
-        int             obj_craft_bonus;
-        int             mod_room_bonus;
         AFFECT_DATA     *paf;
         bool            in_c_room;
      
@@ -3197,8 +3195,6 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         random_buff2 = -1;
         random_buff3 = -1;
      
-        obj_craft_bonus = get_craft_obj_bonus( ch );
-        mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
 
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
