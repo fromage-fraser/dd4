@@ -60,14 +60,14 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 send_to_char( "Syntax: create <object> <material>\n\r", ch );
                 return;
         }
-
+/*
        if ( arg2[0] == '\0'  )
                 {
                         send_to_char( "Syntax: create <object> <material>\n\r", ch );
                         return;
                 }
-        
-        sn = skill_lookup(arg2);
+  */      
+        sn = skill_lookup(arg1);
         if (sn == -1)
         {
                 send_to_char( "That skill doesn't exist.\n\r", ch );
@@ -114,23 +114,21 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-*/
+
           if ( arg1[0] == '\0'  )
                 {
                         send_to_char( "What Metal should be used?\n\r", ch );
                         return;
                 }
+*/
        /* SET OBJ to the METAL and set VO to that. */
 
- if( !str_prefix(arg1, "steel") )
+ /* if( !str_prefix(arg1, "steel") )
         {
-            
-              /*     liq_table[obj->value[2]].liq_color); */
-             /*   material = raw_mats_table[0]; */
                 vo = (void *) arg1; 
         }
-
-        (*skill_table[sn].spell_fun) (sn, ch->level, ch, arg2);
+*/
+        (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
         /* successfully cast */
 }
 
@@ -148,6 +146,16 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
         obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
         mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
         
+        if (smelting_data->smelted_steel < blueprint_list[0].blue_print_cost[0] 
+                || smelting_data->smelted_mithral < blueprint_list[0].blue_print_cost[1]
+                || smelting_data->smelted_adamantite < blueprint_list[0].blue_print_cost[2]
+                || smelting_data->smelted_electrum < blueprint_list[0].blue_print_cost[3]
+                || smelting_data->smelted_starmetal < blueprint_list[0].blue_print_cost[4])
+        {
+                send_to_char( "Not enough raw materials - 35 steel required.\n\r", ch );
+                return; 
+        }
+
   /*      one_argument( target_name, arg);
 
         if ( !arg )
@@ -156,8 +164,9 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
                 return;
         }
-*/
+
         if  ( ( !str_cmp( arg, "steel")  && ch->smelted_steel <35 ) )
+*/ 
       /*   ||
         (!str_cmp( arg, "mithral") && ch->smelted_mithral < 35) ||
         (!str_cmp( arg, "adamantite") && ch->smelted_adamantite < 35) ||
