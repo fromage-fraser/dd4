@@ -3171,7 +3171,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
         sprintf(buf, "You recover the following raw materials: \nSteel: %d\nMithral: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, mithral, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
@@ -3313,8 +3313,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
         set_obj_owner(obj, ch->name);
 
-        act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
-        act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
+        act ("You immerse the $p within the flames of the forge, imbuing it with power!", ch, obj, NULL, TO_CHAR);
+        act ("$n immerses the $p within the flames of the forge, imbuing it with power!", ch, obj, NULL, TO_ROOM);
         return;
 }
 

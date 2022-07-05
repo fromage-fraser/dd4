@@ -44,7 +44,6 @@ void do_construct( CHAR_DATA *ch, char *argument )
         CHAR_DATA      *rch;
         OBJ_INDEX_DATA *pObjIndex;
         char            arg1 [ MAX_INPUT_LENGTH ];
-        char            arg2 [ MAX_INPUT_LENGTH ];
         int             sn;
         int             mats;
  
@@ -53,20 +52,13 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 return;
 
         argument = one_argument( argument, arg1 );
-        argument = one_argument( argument, arg2 );
-     
+       
         if ( arg1[0] == '\0' )
         {
                 send_to_char( "Syntax: create <object> <material>\n\r", ch );
                 return;
         }
-/*
-       if ( arg2[0] == '\0'  )
-                {
-                        send_to_char( "Syntax: create <object> <material>\n\r", ch );
-                        return;
-                }
-  */      
+ 
         sn = skill_lookup(arg1);
         if (sn == -1)
         {
@@ -76,14 +68,14 @@ void do_construct( CHAR_DATA *ch, char *argument )
         /*
                 Below code converts an int (e.g. 'sn') to a string and logs it.
                 Which is sometimes useful.
-
+*/
                 int length = snprintf( NULL, 0, "%d", sn );
                 char* mystr = malloc( length + 1 );
                 snprintf( mystr, length + 1, "%d", sn );
                 log_string(mystr);
-
+/*
                 -- Owl 23/09/18
-        */
+  */
 
         if (!IS_NPC(ch) && !CAN_DO(ch, sn))
         {
@@ -97,37 +89,7 @@ void do_construct( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        /* mats calc */
-        mats = 0;
-        mats = mana_cost(ch, sn);
-
-         /*
-         * Locate targets.
-         */
-        obj     = NULL;
         vo      = NULL;
-
-/*
-        if ( ch-> < mana )
-        {
-                send_to_char( "You don't have enough mana.\n\r", ch );
-                return;
-        }
-
-
-          if ( arg1[0] == '\0'  )
-                {
-                        send_to_char( "What Metal should be used?\n\r", ch );
-                        return;
-                }
-*/
-       /* SET OBJ to the METAL and set VO to that. */
-
- /* if( !str_prefix(arg1, "steel") )
-        {
-                vo = (void *) arg1; 
-        }
-*/
         (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
         /* successfully cast */
 }
@@ -156,23 +118,6 @@ void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return; 
         }
 
-  /*      one_argument( target_name, arg);
-
-        if ( !arg )
-        {
-                send_to_char( "What base material should be used? 35 units required.\n\r", ch );
-                send_to_char( "Steel, Mithral, Adamantite, Electrum, Starmetal.\n\r", ch );
-                return;
-        }
-
-        if  ( ( !str_cmp( arg, "steel")  && ch->smelted_steel <35 ) )
-*/ 
-      /*   ||
-        (!str_cmp( arg, "mithral") && ch->smelted_mithral < 35) ||
-        (!str_cmp( arg, "adamantite") && ch->smelted_adamantite < 35) ||
-        (!str_cmp( arg, "electrum") && ch->smelted_electrum < 35) ||
-        (!str_cmp( arg, "starmetal") && ch->smelted_starmetal < 35) ) */
-        
         if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
              in_sc_room = TRUE;
