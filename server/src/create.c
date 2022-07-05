@@ -50,8 +50,7 @@ void do_construct( CHAR_DATA *ch, char *argument )
         }
  
         sn = skill_lookup(arg);
-                int length = snprintf( NULL, 0, "%d", sn );
-                char* mystr = malloc( length + 1 );
+
 
 
         if (sn == -1)
@@ -62,11 +61,12 @@ void do_construct( CHAR_DATA *ch, char *argument )
         /*
                 Below code converts an int (e.g. 'sn') to a string and logs it.
                 Which is sometimes useful.
-*/
 
+                int length = snprintf( NULL, 0, "%d", sn );
+                char* mystr = malloc( length + 1 );
                 snprintf( mystr, length + 1, "%d", sn );
                 log_string(mystr);
-  /*              -- Owl 23/09/18
+              -- Owl 23/09/18
   */
 
         if (!IS_NPC(ch) && !CAN_DO(ch, sn))
