@@ -49,7 +49,6 @@ void do_onstruct( CHAR_DATA *ch, char *argument )
         int             sn;
         int             mats;
         char         buf [MAX_STRING_LENGTH];
-        RAW_MATERIAL_DATA * material;
 
 
      

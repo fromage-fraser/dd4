@@ -132,8 +132,7 @@ typedef struct mob_prog_act_list                MPROG_ACT_LIST;
 typedef struct auction_data                     AUCTION_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
-typedef struct raw_mats_data                    RAW_MATERIAL_DATA;
-typedef struct blueprint_data                   BLUEPRINT_DATA;
+/* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
 
 /*
  * Tables - geoff
@@ -2500,8 +2499,8 @@ struct liq_type
 
 #define BLUEPRINTS_MAX  2
 
-/* Blueprint structure : name, description, cost (steel,mithral,adamantite,elctrum,starmetal) */
-struct blueprint_list
+/* Blueprint structure : name, description, cost steel,mithral,adamantite,elctrum,starmetal */
+struct blueprint_type
 {
         char    *blueprint_name;
         char    *blueprint_desc;
@@ -2509,15 +2508,16 @@ struct blueprint_list
 
 };
 
-/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022*/
+/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022
 #define RAW_MATS_MAX        5
 
 struct raw_mats_data
 {
-        char *  mat_name;
-        char *  mat_desc;
+        char    *mat_name;
+        char    *mat_desc;
         int     mat_properties [ 4 ];
 };
+*/
 
 /*
  * Extra description data for a room or object.
@@ -3461,7 +3461,7 @@ extern const    struct clan_type                clan_table                      
 extern const    struct color_data               color_table                     [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
-extern const    struct blueprint_type          blueprint_list                   [ BLUEPRINTS_MAX ];
+extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
