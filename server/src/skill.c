@@ -3075,7 +3075,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
-        int             mithral=0;
+        int             titanium=0;
         int             steel=0;
 
         argument = one_argument(argument, arg);
@@ -3136,12 +3136,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 75)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/10);
+                        titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
                 ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_titanium = (ch->smelted_titanium + titanium);
                 ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
                 ch->smelted_electrum = (ch->smelted_electrum + electrum);
                 ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
@@ -3155,12 +3155,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 75)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/10);
+                        titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
                 ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_titanium = (ch->smelted_titanium + titanium);
                 ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
                 ch->smelted_electrum = (ch->smelted_electrum + electrum);
                 ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
@@ -3173,7 +3173,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
-        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nMithral: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, mithral, adamantite, electrum, starmetal);
+        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
         extract_obj(obj);        
 }
@@ -3239,13 +3239,13 @@ void do_construct( CHAR_DATA *ch, char *arg )
         }
 
         if ( blueprint_list[i].blueprint_cost[0] > ch->smelted_steel 
-                ||  blueprint_list[i].blueprint_cost[1] > ch->smelted_mithral 
+                ||  blueprint_list[i].blueprint_cost[1] > ch->smelted_titanium 
                 ||  blueprint_list[i].blueprint_cost[2] > ch->smelted_adamantite
                 ||  blueprint_list[i].blueprint_cost[3] > ch->smelted_electrum
                 ||  blueprint_list[i].blueprint_cost[4] > ch->smelted_starmetal)
         {
                 send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
-                sprintf(buf, "%d Steel %d Mithral %d Adamantite %d Electrum %d Starmetal", 
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal", 
                 blueprint_list[i].blueprint_cost[0], 
                 blueprint_list[i].blueprint_cost[1],
                 blueprint_list[i].blueprint_cost[2], 

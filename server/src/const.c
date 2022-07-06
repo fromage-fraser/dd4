@@ -270,7 +270,7 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
-/* Blueprint structure : name, description, cost (steel,mithral,adamantite,elctrum,starmetal) */
+/* Blueprint structure : name, description, cost (steel,titanium,adamantite,elctrum,starmetal) */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
         { "turret",           "a turret",      { 30, 1, 0, 0, 0 } },
@@ -1253,7 +1253,7 @@ const struct liq_type liq_table [ LIQ_MAX ] =
 struct raw_mats_data raw_mats_table [RAW_MATS_MAX] = 
 {
         { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
-        { "mithral",     "A silver metal",                              { 100, 1, 1, 0 } },
+        { "titanium",     "A silver metal",                              { 100, 1, 1, 0 } },
         { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
         { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
         { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } }

@@ -197,7 +197,7 @@ struct imbue_types
 
 #define BLUEPRINTS_MAX  2
 
-/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_cost steel,mithral,adamantite,elctrum,starmetal */
+/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
 {
         char    *blueprint_name;
@@ -803,7 +803,7 @@ struct coin_data
 struct smelting_data
 {
         int     smelted_iron;
-        int     smelted_mithral;
+        int     smelted_titanium;
         int     smelted_adamantite;
         int     smelted_electrum;
         int     smelted_starmetal;
@@ -1742,7 +1742,7 @@ extern  WANTED_DATA *wanted_list_last;
  * Smelted MAterials - Brutus
  */
 #define SMELTED_STEEL                   1
-#define SMELTED_MITHRAL                 2
+#define SMELTED_TITANIUM                2
 #define SMELTED_ADAMANTITE              3
 #define SMELTED_ELECTRUM                4
 #define SMELTED_STARMETAL               5
@@ -2353,7 +2353,7 @@ struct char_data
         int             copper;
         int             coin_weight;
         int             smelted_steel;
-        int             smelted_mithral;
+        int             smelted_titanium;
         int             smelted_adamantite;
         int             smelted_electrum;
         int             smelted_starmetal;
@@ -4328,7 +4328,7 @@ OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) 
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
-OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_mithral, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
+OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_titanium, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );
