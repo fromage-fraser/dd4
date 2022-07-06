@@ -197,7 +197,7 @@ struct imbue_types
 
 #define BLUEPRINTS_MAX  2
 
-/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
+/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
 {
         char    *blueprint_name;
