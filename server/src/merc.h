@@ -259,7 +259,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               510     /* 510 for Turret */
+#define MAX_SKILL               509     /* 510 for Trigger */
 #define MAX_PRE_REQ             1350    /* Added for smithy*/
 #define MAX_SPELL_GROUP         432    /* Added for smithy */
 #define MAX_GROUPS              53
@@ -3312,7 +3312,6 @@ extern int gsn_hurl;
 extern int gsn_serate;
 extern int gsn_engrave;
 extern int gsn_discharge;
-extern int gsn_turret;
 extern int gsn_trigger;
 extern int gsn_dart;
 extern int gsn_launcher;
@@ -3901,12 +3900,6 @@ DECLARE_DO_FUN( do_knife_toss                   );
 DECLARE_DO_FUN( do_smoke_bomb                   );
 DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
-
-
-/* 
- Creat functions, primarily for Smithy
-*/
-DECLARE_SPELL_FUN( construct_turret            );      /* turret - Brutus Jul 2022 */
 
 /*
  * Spell functions.

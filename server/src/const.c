@@ -1819,7 +1819,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         {&gsn_discharge,		                0 },
 
         {&gsn_group_turret_tech,	                0 },
-        {&gsn_turret,			                0 },
         {&gsn_trigger,			                0 },
         {&gsn_dart,			                0 },
         {&gsn_launcher,			                0 },
@@ -5237,13 +5236,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "counterbalance", "!Counterbalance!"
-        },
-
-        {
-                "turret", &gsn_turret,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
-                construct_turret, 0, 24,
-                "turret", "!Turret!"
         },
 
         /*
