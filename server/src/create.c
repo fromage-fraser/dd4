@@ -97,7 +97,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 ||  blueprint_list[i].blueprint_cost[3] > ch->smelted_electrum
                 ||  blueprint_list[i].blueprint_cost[4] > ch->smelted_starmetal)
         {
-                sprintf(buf, "Blueprint cost: %d Steel %d Mithral %d Adamantite %d Electrum %d Starmetal", 
+                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                sprintf(buf, "%d Steel %d Mithral %d Adamantite %d Electrum %d Starmetal", 
                 blueprint_list[i].blueprint_cost[0], 
                 blueprint_list[i].blueprint_cost[1],
                 blueprint_list[i].blueprint_cost[2], 
@@ -110,10 +111,10 @@ void do_construct( CHAR_DATA *ch, char *arg )
         creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
         obj_to_room( creation, ch->in_room );
 
-        sprintf(buf, "You start to construct '%s'", blueprint_list[i].blueprint_desc);
+        sprintf(buf, "You expertly construct %s", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_CHAR);
 
-        sprintf(buf, "$n constructs a '%s'.", blueprint_list[i].blueprint_desc);
+        sprintf(buf, "$n constructs a %s.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_ROOM);
 
         return;
