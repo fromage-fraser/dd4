@@ -3410,7 +3410,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         obj->affected       = paf;
 
         set_obj_owner(obj, ch->name);
-}
+};
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {
