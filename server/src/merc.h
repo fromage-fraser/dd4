@@ -31,11 +31,13 @@
 #define DECLARE_DO_FUN( fun )           void fun( )
 #define DECLARE_SPEC_FUN( fun )         bool fun( )
 #define DECLARE_SPELL_FUN( fun )        void fun( )
+#define DECLARE_CONSTRUCT_FUN( fun )    void fun( )
 #else
 #define args( list )                    list
 #define DECLARE_DO_FUN( fun )           DO_FUN          fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN        fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN       fun
+#define DECLARE_CONSTRUCT_FUN( fun )    CONSTRUCT_FUN      fun
 #endif
 
 /* System calls - for delete ( from ROM ) */
@@ -130,6 +132,7 @@ typedef struct mob_prog_act_list                MPROG_ACT_LIST;
 typedef struct auction_data                     AUCTION_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
+/* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
 
 /*
  * Tables - geoff
@@ -162,7 +165,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
-
+typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch ) );
 
 /*
  * Herb info for ranger skill 'gather'
@@ -191,6 +194,18 @@ struct imbue_types
 };
 
 #define MAX_IMBUE 9
+
+#define BLUEPRINTS_MAX  2
+
+/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
+struct blueprint_type
+{
+        char    *blueprint_name;
+        char    *blueprint_desc;
+        int     blueprint_cost [5];
+
+};
+
 
 /*
  * Songs for bards
@@ -244,8 +259,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               509     /* 509 for counterbalance */
-#define MAX_PRE_REQ             1350    /* Added for smithy*/
+#define MAX_SKILL               509     /* 510 for Trigger */
+#define MAX_PRE_REQ             1349    /* Added for smithy*/
 #define MAX_SPELL_GROUP         432    /* Added for smithy */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
@@ -788,7 +803,7 @@ struct coin_data
 struct smelting_data
 {
         int     smelted_iron;
-        int     smelted_mithral;
+        int     smelted_titanium;
         int     smelted_adamantite;
         int     smelted_electrum;
         int     smelted_starmetal;
@@ -1444,6 +1459,7 @@ bool            bot_consider_target             ( int num, CHAR_DATA *victim );
 CHAR_DATA*      bot_choose_target               ( int num );
 
 
+
 /*
  *  Wanted board; Gezhp 2001
  */
@@ -1466,6 +1482,8 @@ void    load_wanted_table ( );
 void    save_wanted_table ( );
 extern  WANTED_DATA *wanted_list_first;
 extern  WANTED_DATA *wanted_list_last;
+
+
 
 
 /***************************************************************************
@@ -1724,7 +1742,7 @@ extern  WANTED_DATA *wanted_list_last;
  * Smelted MAterials - Brutus
  */
 #define SMELTED_STEEL                   1
-#define SMELTED_MITHRAL                 2
+#define SMELTED_TITANIUM                2
 #define SMELTED_ADAMANTITE              3
 #define SMELTED_ELECTRUM                4
 #define SMELTED_STARMETAL               5
@@ -2335,7 +2353,7 @@ struct char_data
         int             copper;
         int             coin_weight;
         int             smelted_steel;
-        int             smelted_mithral;
+        int             smelted_titanium;
         int             smelted_adamantite;
         int             smelted_electrum;
         int             smelted_starmetal;
@@ -2491,6 +2509,17 @@ struct liq_type
         int      liq_effect [ 3 ];
 };
 
+
+/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022
+#define RAW_MATS_MAX        5
+
+struct raw_mats_data
+{
+        char    *mat_name;
+        char    *mat_desc;
+        int     mat_properties [ 4 ];
+};
+*/
 
 /*
  * Extra description data for a room or object.
@@ -3283,7 +3312,6 @@ extern int gsn_hurl;
 extern int gsn_serate;
 extern int gsn_engrave;
 extern int gsn_discharge;
-extern int gsn_turret;
 extern int gsn_trigger;
 extern int gsn_dart;
 extern int gsn_launcher;
@@ -3434,6 +3462,8 @@ extern const    struct clan_type                clan_table                      
 extern const    struct color_data               color_table                     [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
+extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
+/* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
 extern const    struct pattern_points           pattern_list                    [ MAX_PATTERN ];
@@ -3456,6 +3486,7 @@ extern struct           spell_group_struct      spell_group_table               
 extern const int        *spell_groups                                           [ MAX_GROUPS ];
 extern struct           form_skill_struct       form_skill_table                [ MAX_FORM_SKILL ];
 extern struct           vampire_gag             vampire_gag_table               [ MAX_VAMPIRE_GAG ];
+
 
 
 /*
@@ -3574,6 +3605,7 @@ DECLARE_DO_FUN( do_compare                      );
 DECLARE_DO_FUN( do_config                       );
 DECLARE_DO_FUN( do_consider                     );
 DECLARE_DO_FUN( do_counterbalance               );      /* foe wmithys JUl 2022 - Brutus */
+DECLARE_DO_FUN( do_construct                    );
 DECLARE_DO_FUN( do_credits                      );
 DECLARE_DO_FUN( do_crush                        );      /* crush for shifter bear form - Owl */
 DECLARE_DO_FUN( do_cscore                       );      /* clan score - Brutus */
@@ -3868,7 +3900,6 @@ DECLARE_DO_FUN( do_knife_toss                   );
 DECLARE_DO_FUN( do_smoke_bomb                   );
 DECLARE_DO_FUN( do_snap_shot                    );
 DECLARE_DO_FUN( do_swoop                        );      /* swoop for shifter phoenix form - Owl */
-
 
 /*
  * Spell functions.
@@ -4297,7 +4328,7 @@ OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) 
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
-OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_mithral, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
+OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_titanium, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
 int     get_inv_number                  args( ( OBJ_DATA *obj ) );
 int     get_obj_weight                  args( ( OBJ_DATA *obj ) );

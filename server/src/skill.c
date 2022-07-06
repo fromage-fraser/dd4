@@ -3075,7 +3075,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
-        int             mithral=0;
+        int             titanium=0;
         int             steel=0;
 
         argument = one_argument(argument, arg);
@@ -3136,12 +3136,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 75)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/10);
+                        titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
                 ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_titanium = (ch->smelted_titanium + titanium);
                 ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
                 ch->smelted_electrum = (ch->smelted_electrum + electrum);
                 ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
@@ -3155,12 +3155,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 75)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/10);
+                        titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
                 ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_titanium = (ch->smelted_titanium + titanium);
                 ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
                 ch->smelted_electrum = (ch->smelted_electrum + electrum);
                 ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
@@ -3171,13 +3171,101 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
-        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nMithral: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, mithral, adamantite, electrum, starmetal);
+        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
         extract_obj(obj);        
 }
 
+/* Construct Code - Brutus Jul 2023 */
+void do_construct( CHAR_DATA *ch, char *arg )
+{
+        OBJ_DATA        *creation;
+        int             found, i;
+        char            buf[MAX_STRING_LENGTH];
+
+        if (IS_NPC(ch))
+                return;
+
+        if (ch->class != CLASS_SMITHY)
+        {
+                send_to_char("You are unble to build anything you clumst oath.\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("You can't construct while fighting.\n\r", ch);
+                return;
+        }
+
+        if( arg[0] == '\0' )
+        {
+               
+                send_to_char("What do you want to construct?\n\r", ch);
+                return;
+        }
+
+        found = -1;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (is_name(arg, blueprint_list[i].blueprint_name))
+                {
+                        found = i;
+                        break;
+                }
+        }
+
+        if (found == -1)
+        {
+                send_to_char("You are studying the following blueprints:\n\r", ch);
+                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                {
+                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
+                        {
+                                sprintf(buf, "%s: %d percent.", blueprint_list[i].blueprint_name,ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] );
+                                act(buf, ch, NULL, NULL, TO_CHAR);
+                        }
+                        
+                }
+                return;
+        }
+
+        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char( "You don't know how to construct that.\n\r", ch );
+                return;
+        }
+
+        if ( blueprint_list[i].blueprint_cost[0] > ch->smelted_steel 
+                ||  blueprint_list[i].blueprint_cost[1] > ch->smelted_titanium 
+                ||  blueprint_list[i].blueprint_cost[2] > ch->smelted_adamantite
+                ||  blueprint_list[i].blueprint_cost[3] > ch->smelted_electrum
+                ||  blueprint_list[i].blueprint_cost[4] > ch->smelted_starmetal)
+        {
+                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal", 
+                blueprint_list[i].blueprint_cost[0], 
+                blueprint_list[i].blueprint_cost[1],
+                blueprint_list[i].blueprint_cost[2], 
+                blueprint_list[i].blueprint_cost[3], 
+                blueprint_list[i].blueprint_cost[4]);
+                act(buf, ch, NULL, NULL, TO_CHAR);
+                return; 
+        }
+
+        creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
+        obj_to_room( creation, ch->in_room );
+
+        sprintf(buf, "You expertly construct %s", blueprint_list[i].blueprint_desc);
+        act(buf, ch, NULL, NULL, TO_CHAR);
+
+        sprintf(buf, "$n constructs a %s.", blueprint_list[i].blueprint_desc);
+        act(buf, ch, NULL, NULL, TO_ROOM);
+
+        return;
+}
 
 void do_imbue (CHAR_DATA *ch, char *argument)
 {
@@ -3187,23 +3275,14 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         int             random_buff;
         int             random_buff2;
         int             random_buff3;
-        int             obj_craft_bonus;
-        int             mod_room_bonus;
         AFFECT_DATA     *paf;
-        bool            in_c_room;
-     
-        in_c_room = FALSE;
+ 
         random_buff = -1;
         random_buff2 = -1;
         random_buff3 = -1;
      
-        obj_craft_bonus = get_craft_obj_bonus( ch );
-        mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
 
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-             in_c_room = TRUE;
-        }
+
 
         if (IS_NPC(ch))
                 return;
@@ -3213,6 +3292,14 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 send_to_char("Huh?\n\r", ch);
                 return;
         }
+
+/* disabled while testing
+        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+                send_to_char("You need ot find a forge?\n\r", ch);
+                return;
+        }
+*/
 
         argument = one_argument(argument, arg);
  
@@ -3313,8 +3400,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
         set_obj_owner(obj, ch->name);
 
-        act ("You immerse the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_CHAR);
-        act ("$n immerses the $p within the flames of the Forge, Imbuing it with power!", ch, obj, NULL, TO_ROOM);
+        act ("You immerse the $p within the flames of the forge, imbuing it with power!", ch, obj, NULL, TO_CHAR);
+        act ("$n immerses the $p within the flames of the forge, imbuing it with power!", ch, obj, NULL, TO_ROOM);
         return;
 }
 

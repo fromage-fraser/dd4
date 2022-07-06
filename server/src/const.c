@@ -270,6 +270,12 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
+/* Blueprint structure : name, description, cost (steel,titanium,adamantite,elctrum,starmetal) */
+const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
+{
+        { "turret",           "a turret",      { 30, 1, 0, 0, 0 } },
+        { "dart",      "a dart module",           { 10, 1, 0, 0, 0 } }   
+};
 
 const struct song song_table [ MAX_SONGS ] =
 {
@@ -1243,6 +1249,16 @@ const struct liq_type liq_table [ LIQ_MAX ] =
         { "cola",                       "cherry",               {  0, 1,  5 } }   /* 15 */
 };
 
+/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022
+struct raw_mats_data raw_mats_table [RAW_MATS_MAX] = 
+{
+        { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
+        { "titanium",     "A silver metal",                              { 100, 1, 1, 0 } },
+        { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
+        { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
+        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } }
+};
+*/
 
 /*
  *  Skill pre-reqs
@@ -1803,7 +1819,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         {&gsn_discharge,		                0 },
 
         {&gsn_group_turret_tech,	                0 },
-        {&gsn_turret,			                0 },
         {&gsn_trigger,			                0 },
         {&gsn_dart,			                0 },
         {&gsn_launcher,			                0 },

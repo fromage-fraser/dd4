@@ -586,7 +586,6 @@ int     gsn_hurl;
 int     gsn_serate;
 int     gsn_engrave;
 int     gsn_discharge;
-int     gsn_turret;
 int     gsn_trigger;
 int     gsn_dart;
 int     gsn_launcher;
