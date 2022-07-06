@@ -1217,8 +1217,8 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->class == CLASS_SMITHY )
         {
-        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Mithral: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
-                ch->smelted_steel, ch->smelted_mithral, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
+        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Titanium: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
+                ch->smelted_steel, ch->smelted_titanium, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
         strcat(buf1, buf);
         }
 
