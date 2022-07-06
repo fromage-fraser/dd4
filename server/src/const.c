@@ -270,11 +270,11 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
-/* Blueprint structure : name, description, cost (steel,titanium,adamantite,elctrum,starmetal) */
+/* Blueprint structure : name, description, blueprint_ref, cost (steel,titanium,adamantite,elctrum,starmetal) */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
-        { "turret",           "a turret",      { 30, 1, 0, 0, 0 } },
-        { "dart",      "a dart module",           { 10, 1, 0, 0, 0 } }   
+        { "turret",           "a turret",    OBJ_VNUM_TURRET,  { 30, 1, 0, 0, 0 } },
+        { "dart",      "a dart module",      OBJ_VNUM_DART,  { 10, 1, 0, 0, 0 } }   
 };
 
 const struct song song_table [ MAX_SONGS ] =
