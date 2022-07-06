@@ -3259,10 +3259,10 @@ void do_construct( CHAR_DATA *ch, char *arg )
         obj_to_room( creation, ch->in_room );
 
         send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
-        sprintf(buf, "Expertly you assempble your compoents to create %s.", blueprint_list[i].blueprint_desc);
+        sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_CHAR);
 
-        sprintf(buf, "$n constructs %s.", blueprint_list[i].blueprint_desc);
+        sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_ROOM);
 
         return;
