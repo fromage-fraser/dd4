@@ -1066,8 +1066,9 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 break;
 
             case ITEM_WEAPON:
-                sprintf( buf, "Damage type is {G%s{x\n\r",
-                        weapon_damage_type_name(obj->value[3]) );
+                sprintf( buf, "Damage type is {G%s{x [{W%d{x]\n\r",
+                        weapon_damage_type_name(obj->value[3]),
+                        obj->value[3] );
                 strcat( buf1, buf );
 
                 sprintf( buf, "Damage is {G%d{x to {G%d{x (average {W%d{x)\n\r",
