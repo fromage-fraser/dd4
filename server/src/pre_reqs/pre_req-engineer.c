@@ -5,7 +5,6 @@
 
 {&gsn_group_turret_tech,    &gsn_engineer_base,         60,     PRE_ENGINEER},
 
-{&gsn_turret,			    &gsn_group_turret_tech,	    30, 	PRE_ENGINEER},
 {&gsn_trigger,			    &gsn_group_turret_tech,	    30, 	PRE_ENGINEER},
 {&gsn_dart,			        &gsn_group_turret_tech,	    30, 	PRE_ENGINEER},
 {&gsn_launcher,		        &gsn_group_turret_tech,	    50, 	PRE_ENGINEER},
