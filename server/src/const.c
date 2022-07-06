@@ -270,6 +270,12 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
+/* Blueprint structure : name, description, cost (steel,mithral,adamantite,elctrum,starmetal) */
+const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
+{
+        { "turret",           "a turret",      { 30, 1, 0, 0, 0 } },
+        { "dart",      "a dart module",           { 10, 1, 0, 0, 0 } }   
+};
 
 const struct song song_table [ MAX_SONGS ] =
 {
@@ -1253,14 +1259,6 @@ struct raw_mats_data raw_mats_table [RAW_MATS_MAX] =
         { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } }
 };
 */
-
-/* Blueprint structure : name, description, cost (steel,mithral,adamantite,elctrum,starmetal) */
-
-const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
-{
-        { "turret",           "turret",      { 30, 1, 0, 0, 0 } },
-        { "dart",      "dart",           { 10, 1, 0, 0, 0 } }   
-};
 
 /*
  *  Skill pre-reqs

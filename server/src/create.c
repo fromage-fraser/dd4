@@ -31,103 +31,92 @@
 #include <time.h>
 #include "merc.h"
 
-void do_construct( CHAR_DATA *ch, char *argument )
+void do_construct( CHAR_DATA *ch, char *arg )
 {
-        void           *vo;
-        char            arg [ MAX_INPUT_LENGTH ];
-        int             sn;
+        OBJ_DATA        *creation;
+        int             found, i;
+        AFFECT_DATA     af;
         char            buf[MAX_STRING_LENGTH];
-        
+        OBJ_DATA        *obj;
+
         if (IS_NPC(ch))
                 return;
 
-        argument = one_argument( argument, arg );
-       
-        if ( arg[0] == '\0' )
+        if (ch->class != CLASS_SMITHY)
         {
-                send_to_char( "Syntax: Construct <object> <material>\n\r", ch );
-                return;
-        }
- 
-        sn = skill_lookup(arg);
-
-
-
-        if (sn == -1)
-        {
-                send_to_char( "That skill doesn't exist.\n\r", ch );
+                send_to_char("You are unble to build anything you clumst oath.\n\r", ch);
                 return;
         }
 
-    if (sn)
+        if (ch->fighting)
         {
-                sprintf( buf, "Spells cast per round is set at %d. and %s\n\r", sn, arg );
-                send_to_char ( buf, ch );
-        }
-
-
-        /*
-                Below code converts an int (e.g. 'sn') to a string and logs it.
-                Which is sometimes useful.
-
-                int length = snprintf( NULL, 0, "%d", sn );
-                char* mystr = malloc( length + 1 );
-                snprintf( mystr, length + 1, "%d", sn );
-                log_string(mystr);
-              -- Owl 23/09/18
-  */
-
-        if (!IS_NPC(ch) && !CAN_DO(ch, sn))
-        {
-                send_to_char("You fail miserably.\n\r", ch);
-                return;
-        }
- 
-        if ( ch->position < skill_table[sn].minimum_position )
-        {
-                send_to_char( "You can't concentrate enough.\n\r", ch );
+                send_to_char("You can't construct while fighting.\n\r", ch);
                 return;
         }
 
-        sprintf( buf, "Spells cast per round is set at %d. and %s\n\r", sn, arg );
-        send_to_char ( buf, ch );
+        if( arg[0] == '\0' )
+        {
+               
+                send_to_char("What do you want to construct?\n\r", ch);
+                return;
+        }
 
-        vo      = NULL;
-        (*skill_table[sn].spell_fun) (sn, ch->level, ch, vo);
-        /* successfully cast */
+        found = -1;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (is_name(arg, blueprint_list[i].blueprint_name))
+                {
+                        found = i;
+                        break;
+                }
+        }
+
+        if (found == -1)
+        {
+                send_to_char("You're building what now?\n\r", ch);
+                return;
+        }
+
+        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char( "You don't know how to construct that.\n\r", ch );
+                return;
+        }
+
+        if ( blueprint_list[i].blueprint_cost[0] > ch->smelted_steel 
+                ||  blueprint_list[i].blueprint_cost[1] > ch->smelted_mithral 
+                ||  blueprint_list[i].blueprint_cost[2] > ch->smelted_adamantite
+                ||  blueprint_list[i].blueprint_cost[3] > ch->smelted_electrum
+                ||  blueprint_list[i].blueprint_cost[4] > ch->smelted_starmetal)
+        {
+                sprintf(buf, "Blueprint cost: %d Steel %d Mithral %d Adamantite %d Electrum %d Starmetal", 
+                blueprint_list[i].blueprint_cost[0], 
+                blueprint_list[i].blueprint_cost[1],
+                blueprint_list[i].blueprint_cost[2], 
+                blueprint_list[i].blueprint_cost[3], 
+                blueprint_list[i].blueprint_cost[4]);
+                return; 
+        }
+
+        creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
+        obj_to_room( creation, ch->in_room );
+
+        sprintf(buf, "You start to construct '%s'", blueprint_list[i].blueprint_desc);
+        act(buf, ch, NULL, NULL, TO_CHAR);
+
+        sprintf(buf, "$n constructs a '%s'.", blueprint_list[i].blueprint_desc);
+        act(buf, ch, NULL, NULL, TO_ROOM);
+
+        return;
 }
 
 
 void construct_turret ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
-        OBJ_DATA        *creation;
-        CHAR_DATA       *smelting_data = (CHAR_DATA *) vo;
-        bool            in_sc_room;
-        int             obj_spellcraft_bonus;
-        int             mod_room_bonus;
 
-        in_sc_room = FALSE;
-        obj_spellcraft_bonus = get_spellcraft_obj_bonus( ch );
-        mod_room_bonus = CRAFT_BONUS_CREATE_FOOD + obj_spellcraft_bonus;
-        
-    /*    if ( blueprint_list[0].blue_print_cost[0] > smelting_data->smelted_steel 
-                ||  blueprint_list[0].blue_print_cost[1] > smelting_data->smelted_mithral 
-                ||  blueprint_list[0].blue_print_cost[2] > smelting_data->smelted_adamantite
-                ||  blueprint_list[0].blue_print_cost[3] > smelting_data->smelted_electrum
-                ||  blueprint_list[0].blue_print_cost[4] > smelting_data->smelted_starmetal)
-        {
-                send_to_char( "Not enough raw materials - 35 steel required.\n\r", ch );
-                return; 
-        }
 
-    */
-
-        creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
-        creation->value[0] = (in_sc_room) ? 5 + ( level * mod_room_bonus ) / 100 : 5 + level;
-        obj_to_room( creation, ch->in_room );
- 
-        act( "Behold your $p is formed.", ch, creation, NULL, TO_CHAR );
-        act( "$n creates a $p.", ch, creation, NULL, TO_ROOM );
+        send_to_char( "Howd you get here....\n\r", ch );
         return;
+
 }
 

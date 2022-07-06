@@ -165,7 +165,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
-typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
+typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch ) );
 
 /*
  * Herb info for ranger skill 'gather'
@@ -194,6 +194,18 @@ struct imbue_types
 };
 
 #define MAX_IMBUE 9
+
+#define BLUEPRINTS_MAX  2
+
+/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_cost steel,mithral,adamantite,elctrum,starmetal */
+struct blueprint_type
+{
+        char    *blueprint_name;
+        char    *blueprint_desc;
+        int     blueprint_cost [5];
+
+};
+
 
 /*
  * Songs for bards
@@ -2497,16 +2509,6 @@ struct liq_type
         int      liq_effect [ 3 ];
 };
 
-#define BLUEPRINTS_MAX  2
-
-/* Blueprint structure : name, description, cost steel,mithral,adamantite,elctrum,starmetal */
-struct blueprint_type
-{
-        char    *blueprint_name;
-        char    *blueprint_desc;
-        int     blue_print_cost [5];
-
-};
 
 /* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022
 #define RAW_MATS_MAX        5
