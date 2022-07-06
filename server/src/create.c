@@ -35,7 +35,6 @@ void do_construct( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA        *creation;
         int             found, i;
-        AFFECT_DATA     af;
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
 
