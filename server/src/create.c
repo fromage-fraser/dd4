@@ -36,7 +36,6 @@ void do_construct( CHAR_DATA *ch, char *arg )
         OBJ_DATA        *creation;
         int             found, i;
         char            buf[MAX_STRING_LENGTH];
-        OBJ_DATA        *obj;
 
         if (IS_NPC(ch))
                 return;

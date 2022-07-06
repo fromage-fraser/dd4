@@ -3188,18 +3188,13 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         int             random_buff2;
         int             random_buff3;
         AFFECT_DATA     *paf;
-        bool            in_c_room;
-     
-        in_c_room = FALSE;
+ 
         random_buff = -1;
         random_buff2 = -1;
         random_buff3 = -1;
      
 
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-             in_c_room = TRUE;
-        }
+
 
         if (IS_NPC(ch))
                 return;
@@ -3209,6 +3204,14 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 send_to_char("Huh?\n\r", ch);
                 return;
         }
+
+/* disabled while testing
+        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+                send_to_char("You need ot find a forge?\n\r", ch);
+                return;
+        }
+*/
 
         argument = one_argument(argument, arg);
  
@@ -3410,7 +3413,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         obj->affected       = paf;
 
         set_obj_owner(obj, ch->name);
-};
+}
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {
