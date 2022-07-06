@@ -2192,16 +2192,19 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_CORPSE_PC:        return "pc corpse";
             case ITEM_FOUNTAIN:         return "fountain";
             case ITEM_PILL:             return "pill";
+            case ITEM_CLIMBING_EQ:      return "climbing eq";
             case ITEM_PAINT:            return "paint pigment";
+            case ITEM_MOB:              return "mob";
+            case ITEM_ANVIL:            return "anvil";
+            case ITEM_AUCTION_TICKET:   return "auction ticket";
             case ITEM_CLAN_OBJECT:      return "clan item";
-            case ITEM_LOCK_PICK:        return "lockpick";
-            case ITEM_INSTRUMENT:       return "musical instrument";
             case ITEM_PORTAL:           return "portal";
             case ITEM_POISON_POWDER:    return "poison powder";
+            case ITEM_LOCK_PICK:        return "lock pick";
+            case ITEM_INSTRUMENT:       return "musical instrument";
             case ITEM_ARMOURERS_HAMMER: return "armourer's hammer";
             case ITEM_MITHRIL:          return "mithril";
             case ITEM_WHETSTONE:        return "whetstone";
-            case ITEM_ANVIL:            return "anvil";
             case ITEM_CRAFT:            return "crafting";
             case ITEM_SPELLCRAFT:       return "spellcrafting";
         }
