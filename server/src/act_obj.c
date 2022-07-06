@@ -3106,10 +3106,16 @@ void do_steal (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        /* Can't steal off people in mist form - Owl 07/10/00 */
-        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        /* Can't steal off people if they or you are in mist form - Owl 07/10/00 */
+        if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
         {
                 send_to_char("You cannot rob your victim in their current form.\n\r", ch);
+                return;
+        }
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You cannot rob your victim in your current form.\n\r", ch);
                 return;
         }
 
@@ -3212,57 +3218,58 @@ void do_steal (CHAR_DATA *ch, char *argument)
                         save_char_obj(ch);
                         return;
                 }
+        }
 
-                if (!str_prefix(arg1, "coins") )
+        if (!str_prefix(arg1, "coins") )
+        {
+                int amount;
+                amount = (total_coins_char(victim) * number_range(10, 30)) / 50;
+
+                if (amount <= 0)
                 {
-                        int amount;
-                        amount = (total_coins_char(victim) * number_range(10, 30)) / 50;
-
-                        if (amount <= 0)
-                        {
-                                send_to_char("You couldn't get any coins.\n\r", ch);
-                                return;
-                        }
-
-                        coins_from_char(amount, victim);
-                        coins_to_char(amount, ch, COINS_ADD);
-                        sprintf(buf, "Jackpot!  You have stolen %d coppers worth of coins.\n\r", amount);
-                        send_to_char(buf, ch);
+                        send_to_char("You couldn't get any coins.\n\r", ch);
                         return;
                 }
 
-                if (!(obj = get_obj_carry(victim, arg1)))
-                {
-                        send_to_char("You can't find it.\n\r", ch);
-                        return;
-                }
-
-                if (!can_drop_obj(ch, obj)
-                    || IS_SET(obj->extra_flags, ITEM_INVENTORY)
-                    || obj->level > ch->level)
-                {
-                        send_to_char("You can't pry it away.\n\r", ch);
-                        return;
-                }
-
-                if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
-                {
-                        send_to_char("You have your hands full.\n\r", ch);
-                        return;
-                }
-
-                if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
-                {
-                        send_to_char("You can't carry that much weight.\n\r", ch);
-                        return;
-                }
-
-                obj_from_char(obj);
-                obj_to_char(obj, ch);
-                send_to_char("Muhaha! They didn't even notice! You slink away from them, grinning.\n\r", ch);
+                coins_from_char(amount, victim);
+                coins_to_char(amount, ch, COINS_ADD);
+                sprintf(buf, "Jackpot!  You have stolen %d coppers worth of coins.\n\r", amount);
+                send_to_char(buf, ch);
                 return;
         }
+
+        if (!(obj = get_obj_carry(victim, arg1)))
+        {
+                send_to_char("You can't find it.\n\r", ch);
+                return;
+        }
+
+        if (!can_drop_obj(ch, obj)
+            || IS_SET(obj->extra_flags, ITEM_INVENTORY)
+            || obj->level > ch->level)
+        {
+                send_to_char("You can't pry it away.\n\r", ch);
+                return;
+        }
+
+        if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+        {
+                send_to_char("You have your hands full.\n\r", ch);
+                return;
+        }
+
+        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        {
+                send_to_char("You can't carry that much weight.\n\r", ch);
+                return;
+        }
+
+        obj_from_char(obj);
+        obj_to_char(obj, ch);
+        send_to_char("Muhaha! They didn't even notice! You slink away from them, grinning.\n\r", ch);
+        return;
 }
+
 
 
 /*
@@ -3366,7 +3373,7 @@ int get_cost (CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy)
                 {
                         if (obj->item_type == pShop->buy_type[itype])
                         {
-                                cost = obj->cost * pShop->profit_sell / 100;
+                                cost = obj->cost * ( pShop->profit_sell / 100 );
                                 break;
                         }
                 }
