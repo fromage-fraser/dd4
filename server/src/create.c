@@ -73,7 +73,16 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char("You're building what now?\n\r", ch);
+                send_to_char("You are studing the following blueprints:\n\r", ch);
+                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                {
+                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
+                        {
+                                sprintf(buf, "%s: %d percent.", blueprint_list[i].blueprint_name,ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] );
+                                act(buf, ch, NULL, NULL, TO_CHAR);
+                        }
+                        
+                }
                 return;
         }
 
@@ -95,6 +104,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 blueprint_list[i].blueprint_cost[2], 
                 blueprint_list[i].blueprint_cost[3], 
                 blueprint_list[i].blueprint_cost[4]);
+                act(buf, ch, NULL, NULL, TO_CHAR);
                 return; 
         }
 
