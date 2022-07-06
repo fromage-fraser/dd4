@@ -202,6 +202,7 @@ struct blueprint_type
 {
         char    *blueprint_name;
         char    *blueprint_desc;
+        int     blueprint_ref;
         int     blueprint_cost [5];
 
 };
@@ -1764,6 +1765,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_MUSHROOM                  20
 #define OBJ_VNUM_LIGHT_BALL                21
 #define OBJ_VNUM_SPRING                    22
+#define OBJ_VNUM_TURRET                    40
+#define OBJ_VNUM_DART                      41
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 

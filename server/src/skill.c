@@ -3255,7 +3255,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return; 
         }
 
-        creation = create_object( get_obj_index( OBJ_VNUM_MUSHROOM ), 0 );
+        creation = create_object( get_obj_index( blueprint_list[1].blueprint_ref ), 0 );
         obj_to_room( creation, ch->in_room );
 
         sprintf(buf, "You expertly construct %s", blueprint_list[i].blueprint_desc);

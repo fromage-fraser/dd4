@@ -555,6 +555,25 @@ A brass lockpick lies here.~
 E
 lockpick pick brass~
 The lockpick device is made of brass and doesn't look especially robust.~
+#40
+turret metal mechanical~
+a turret~
+A finely crafted mechanical turret is deployed, ready for action.~
+~
+39 0 1
+2~ 0~ 0~ 0~
+1 300 10
+E
+turret metal mechanical~
+The turret has been finely craft from steel and Titanium. Its has 4 legs to support a body that contains modular compartments for modules.~
+#41
+dart module~
+a dart module~
+A modular dart component for an Engineers turret.~
+~
+39 0 1
+2~ 0~ 0~ 0~
+1 300 10
 #50
 talons~
 talons~
