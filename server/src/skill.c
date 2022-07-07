@@ -3518,6 +3518,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
+        OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         int     chance;
@@ -3583,7 +3584,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         break;
         }
         
-        OBJ_DATA *obj_next;
+
 
         for (obj = turret->contains; obj; obj = obj_next)
         {
