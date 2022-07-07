@@ -2646,6 +2646,13 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
+                "dart", &gsn_dart,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "dart module", "!Dart!"
+        },
+
+        {
                 "decapitate", &gsn_decapitate,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 12,
