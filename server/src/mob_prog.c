@@ -1714,7 +1714,7 @@ void mprog_percent_check( CHAR_DATA *mob, CHAR_DATA *actor, OBJ_DATA *obj,
 
  for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
    if ( ( mprg->type & type )
-       && ( number_percent( ) < atoi( mprg->arglist ) ) )
+       && ( number_percent( ) <= atoi( mprg->arglist ) ) )
      {
        mprog_driver( mprg->comlist, mob, actor, obj, vo );
        if ( type != GREET_PROG && type != ALL_GREET_PROG )
