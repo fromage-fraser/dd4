@@ -204,6 +204,7 @@ struct blueprint_type
         char    *blueprint_desc;
         int     blueprint_ref;
         int     blueprint_ego;
+        int     blueprint_damage [2];
         int     blueprint_cost [5];
 
 };
@@ -3860,6 +3861,7 @@ DECLARE_DO_FUN( do_trapset                      );
 DECLARE_DO_FUN( do_trapremove                   );
 DECLARE_DO_FUN( do_trapstat                     );
 DECLARE_DO_FUN( do_traplist                     );      /* new trap skills */
+DECLARE_DO_FUN( do_trigger                      );      /* Trigger skill */
 DECLARE_DO_FUN( do_trip                         );      /* New trip skill (from ROM) */
 DECLARE_DO_FUN( do_trust                        );
 DECLARE_DO_FUN( do_typo                         );

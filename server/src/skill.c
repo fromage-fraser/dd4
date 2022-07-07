@@ -3251,7 +3251,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 blueprint_list[i].blueprint_cost[2], 
                 blueprint_list[i].blueprint_cost[3], 
                 blueprint_list[i].blueprint_cost[4]);
-                
+
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 return; 
         }
@@ -3512,6 +3512,107 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
 
         set_obj_owner(obj, ch->name);
 }
+
+void do_trigger (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        OBJ_DATA *turret;
+        OBJ_DATA *obj;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        int     chance;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if (IS_NPC(ch))
+        {
+                return;
+        }
+
+        else if (!CAN_DO(ch, gsn_trigger))
+        {
+                send_to_char("Your cant trigger other mechanisms.\n\r", ch);
+                return;
+        }
+
+        if (!str_cmp(arg2, "all") || !str_prefix("all.", arg2))
+        {
+                send_to_char("You can't do that.\n\r", ch);
+                return;
+        }
+
+        if ( (ch->position <= POS_STANDING) && (arg1[0] == '\0' || arg2[0] == '\0') )
+        {
+                send_to_char( "Trigger what against who?\n\r", ch );
+                return;
+        }
+
+        WAIT_STATE(ch, 2);  /* Not too much spam thanks */
+
+        if (arg2[0] == '\0')
+        {
+                send_to_char ("Who would you trigger an attack on?\n\r", ch);
+                return;
+        }
+
+        if (!(victim = get_char_room(ch, arg2)) || !can_see(ch, victim))
+        {
+                send_to_char ("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("You cant target yourself.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        chance = ch->pcdata->learned[gsn_gouge];
+        chance += (ch->level - victim->level) * 3;
+        chance = URANGE(5, chance, 95);
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+
+        for (turret = ch->in_room->contents; turret; turret = turret->next_content)
+        {
+                if (turret->ego_flags == EGO_ITEM_TURRET )
+                        break;
+        }
+        
+        OBJ_DATA *obj_next;
+
+        for (obj = turret->contains; obj; obj = obj_next)
+        {
+                obj_next = obj->next_content; 
+                if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
+                {
+                        damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);    
+                }   
+
+        }
+
+/*
+        if (number_percent() < chance)
+        {
+                act ("You deftly lunge at $N's eyes, and gouge them out!", ch, NULL, victim, TO_CHAR);
+                act ("$n scratches your eyes -- you see red!", ch, NULL, victim, TO_VICT);
+                act ("$n gouges $N's eyes out!", ch, NULL, victim, TO_NOTVICT);
+                arena_commentary("$n gouges out $N's eyes.", ch, victim);
+
+                damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);
+
+                check_group_bonus(ch);
+
+        }
+        else
+                damage(ch, victim, 0, gsn_gouge, FALSE);
+*/
+}
+
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {
