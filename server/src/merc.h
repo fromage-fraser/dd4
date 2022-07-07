@@ -203,6 +203,7 @@ struct blueprint_type
         char    *blueprint_name;
         char    *blueprint_desc;
         int     blueprint_ref;
+        int     blueprint_ego;
         int     blueprint_cost [5];
 
 };
@@ -435,7 +436,7 @@ DECLARE_DO_FUN ( do_board );
 #define TYPE_STR                 2
 #define TYPE_WIZ                 3
 #define TYPE_NULL                4
-#define MAX_ITEM_TYPE           39
+#define MAX_ITEM_TYPE           42
 #define MAX_WEAR                22
 #define MAX_COLOR_LIST          18
 
@@ -1850,7 +1851,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_WHETSTONE                          39
 #define ITEM_CRAFT                              40 /* Increase bonus to crafting that takes place in ROOM_CRAFT */
 #define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
-
+#define ITEM_TURRET_MODULE                      42
 
 /*
  * Extra flags.
@@ -1955,6 +1956,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit; may become terrified and unable to act in combat */
 #define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */                                                 
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
+#define EGO_ITEM_TURRET                 BIT_6
+#define EGO_ITEM_TURRET_MODULE          BIT_7
+
 /*
  * Apply types (for affects).
  * Used in #OBJECTS.

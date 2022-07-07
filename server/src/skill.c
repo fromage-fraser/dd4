@@ -3251,12 +3251,21 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 blueprint_list[i].blueprint_cost[2], 
                 blueprint_list[i].blueprint_cost[3], 
                 blueprint_list[i].blueprint_cost[4]);
+                
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 return; 
         }
 
         creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), 0 );
         obj_to_room( creation, ch->in_room );
+        
+        if (blueprint_list[i].blueprint_ego)
+        {               
+                SET_BIT(creation->extra_flags, ITEM_EGO);
+                SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
+        }
+
+        set_obj_owner(creation, ch->name);
 
         send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);

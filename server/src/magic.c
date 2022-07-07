@@ -3024,7 +3024,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "something strange",    "an anvil",             "an auction ticket",
                 "a special clan artefact",                      "a magical portal",
                 "some poison powder",   "a lockpick",           "a musical instrument",
-                "an armourer's hammer", "some mithril",         "a whetstone"
+                "an armourer's hammer", "some mithril",         "a whetstone",
+                "a crafting tool",      "a mgical crafting tool", "a turret module"
         };
 
         const char* extras [31] =

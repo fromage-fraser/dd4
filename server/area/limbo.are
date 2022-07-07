@@ -560,9 +560,9 @@ turret metal mechanical~
 a turret~
 A finely crafted mechanical turret is deployed, ready for action.~
 ~
-39 0 1
-2~ 0~ 0~ 0~
-1 300 10
+15 2 1
+22~ 0~ 0~ 0~
+10 0 0
 E
 turret metal mechanical~
 The turret has been finely craft from Steel and Titanium. 
@@ -571,12 +571,12 @@ The main chassis has 4 front facing modular components that contain gearing and 
 ~
 #41
 dart module~
-a dart module~
+[Module] A dart module~
 A modular dart component for an Engineers turret.~
 ~
-39 0 1
-2~ 0~ 0~ 0~
-1 300 10
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
 #50
 talons~
 talons~
