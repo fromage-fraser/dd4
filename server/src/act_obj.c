@@ -1843,7 +1843,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                         if (IS_SET(obj->extra_flags, ITEM_BOW) || IS_SET(obj->extra_flags, ITEM_LANCE))
                         {
                                 if (IS_SET(obj->extra_flags, ITEM_BOW)
-                                    && !(ch->class == CLASS_RANGER && !ch->sub_class))
+                                    && !(ch->class == CLASS_RANGER))
                                 {
                                         send_to_char("You cannot use bows.\n\r", ch);
                                         return;
@@ -1924,7 +1924,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                             || (IS_SET(obj->extra_flags,ITEM_LANCE)))
                         {
                                 if (IS_SET(obj->extra_flags, ITEM_BOW)
-                                    && !(ch->class == CLASS_RANGER && !ch->sub_class))
+                                    && !(ch->class == CLASS_RANGER))
                                 {
                                         send_to_char("You cannot use bows.\n\r", ch);
                                         return;
