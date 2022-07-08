@@ -3521,11 +3521,9 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
-        bool    found_v;
-        int     found, i;
+         int     found, i;
         int        sn;
         int        glookup;
-
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -3575,20 +3573,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
-/*                
-        if ( ( turret = get_obj_here(ch, "turret") ) == NULL) {
-                send_to_char("Nothing like that here!\n\r", ch);
-                return;
-        }
-
-        if ( (turret->ego_flags == EGO_ITEM_TURRET) && (!str_cmp(get_obj_owner(obj), ch->name)) )
-        {
-                send_to_char("You dont own that.\n\r", ch);
-                return;
-        }
-
-*/
-
         turret = get_obj_here(ch, "turret");
         
         if (ch->position >= POS_STANDING)
@@ -3619,24 +3603,17 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        found = -1;
         for (i = 0; i < BLUEPRINTS_MAX; i++)
         {
                 if (is_name(arg1, blueprint_list[i].blueprint_name))
-                {
-                        found = i;
                         break;
-                }
         }
-
 
         glookup = -1;
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
                 if (!str_cmp(skill_table[sn].name,arg1))
                 {
-                          /*       sprintf( buf, "Sn: %4d Skill/spell: '%s'\n\r",
-                                sn, skill_table[sn].name ); */
                         glookup = sn;
                         break;
                 }
@@ -3646,10 +3623,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
         else
         {
-/* moght do a case here depending on type of module                obj->level = obj->value[0];
-                obj_cast_spell(obj->value[1], obj->level, ch, ch, NULL);
-                obj_cast_spell(obj->value[2], obj->level, ch, ch, NULL);
-                obj_cast_spell(obj->value[3], obj->level, ch, ch, NULL); */
+                /* moght do a case here depending on type of module      */
                 act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
                 act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
                 damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
