@@ -3518,6 +3518,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
+          OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         char      buf[MAX_STRING_LENGTH];
@@ -3590,7 +3591,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
 
                         /* 'get all container' or 'get all.obj container' */
-                        OBJ_DATA *obj_next;
+                      
                           bool      found;
 
                         found = FALSE;
@@ -3630,10 +3631,9 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         {
                 obj_next = obj->next_content; 
                 send_to_char("found something.\n\r", ch);
-                                        /* sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart ); 
-                             send_to_char( buf, ch ); */
-                                         /*damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
-      
+                                         sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart ); 
+                             send_to_char( buf, ch ); 
+                                         damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
 /*
         if (number_percent() < chance)
         {
