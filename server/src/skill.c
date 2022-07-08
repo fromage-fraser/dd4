@@ -3582,23 +3582,22 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         {
                 if (turret->ego_flags == EGO_ITEM_TURRET && (!str_cmp(get_obj_owner(obj), ch->name) ) )
                 {
-                 send_to_char("Your Turret is deployed.\n\r", ch);
-                        break;
+                        send_to_char("Your Turret is deployed.\n\r", ch);       
+                        for (obj = turret->contains; obj; obj = obj_next)
+                        {
+                                obj_next = obj->next_content; 
+                                if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
+                                {
+                                        send_to_char("You found a module.\n\r", ch);
+                                        damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);    
+                                }   
+                        }
                 }
         }
         
 
 
-        for (obj = turret->contains; obj; obj = obj_next)
-        {
-                obj_next = obj->next_content; 
-                if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
-                {
-                        send_to_char("You found a module.\n\r", ch);
-                        damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);    
-                }   
-
-        }
+        
 
 /*
         if (number_percent() < chance)
