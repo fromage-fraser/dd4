@@ -3518,7 +3518,8 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
-        bool      found;
+        int             found, i;
+        bool     found_v;
           OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
@@ -3551,13 +3552,17 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+
+        
         if (arg2[0] == '\0')
         {
                 send_to_char ("Who would you trigger an attack on?\n\r", ch);
                 return;
         }
 
-        if (!(victim = get_char_room(ch, arg2)) || !can_see(ch, victim))
+        if (victim = get_char_room( ch, arg2) )
+                found_v = TRUE;
+        else
         {
                 send_to_char ("They aren't here.\n\r", ch);
                 return;
@@ -3568,8 +3573,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 send_to_char("You cant target yourself.\n\r", ch);
                 return;
         }
-
-        victim = get_char_room( ch, arg2);
 
         if (is_safe(ch, victim))
                 return;
@@ -3589,11 +3592,31 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
   /*   WAIT_STATE(ch, PULSE_VIOLENCE); */
 
+/*
+        found = -1;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (is_name(arg1, blueprint_list[i].blueprint_name))
+                {
+                        found = i;
+                        break;
+                }
+        }
+*/
+                        /* 'get all container' or 'get all.obj container' */  
 
-
-                        /* 'get all container' or 'get all.obj container' */
-                      
-                          
+                if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+                {
+                        /* 'get obj container' */
+                        obj = get_obj_list(ch, arg1, turret->contains);
+                        if (!obj)
+                        {
+                                act("You see nothing like that in the $T.",
+                                    ch, NULL, arg2, TO_CHAR);
+                                return;
+                        }
+                }
+                else                       
 
                         found = FALSE;
                         for (obj = turret->contains; obj; obj = obj_next)
@@ -3607,13 +3630,11 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         continue;
                                 }
 */
-                                if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
-                                    && can_see_obj(ch, obj))
-                                {
+                              
                                         found = TRUE;
-                                        send_to_char("found something.\n\r", ch);
-                                }
+                                        send_to_char("found something.\n\r", ch);      
                         }
+
                         if (!found)
                         {
                                 if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
@@ -3625,6 +3646,10 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                 else
                                         act("You see nothing like that in the $T.",
                                             ch, NULL, arg2, TO_CHAR);
+                        }
+                        else
+                        {
+                          send_to_char("found something 2.\n\r", ch);          
                         }
 /*
 
