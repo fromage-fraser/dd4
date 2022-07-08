@@ -3521,6 +3521,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
+        char      buf[MAX_STRING_LENGTH];
         int     chance;
 
         argument = one_argument(argument, arg1);
@@ -3572,11 +3573,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
-     /*   chance = ch->pcdata->learned[gsn_gouge];
-        chance += (ch->level - victim->level) * 3; */
-        chance = URANGE(5, chance, 95);
-
-        WAIT_STATE(ch, PULSE_VIOLENCE);
+/*        WAIT_STATE(ch, PULSE_VIOLENCE); */
 
         for (turret = ch->in_room->contents; turret; turret = turret->next_content)
         {
@@ -3588,8 +3585,10 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                 obj_next = obj->next_content; 
                                 if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
                                 {
-                                        send_to_char("You found a module.\n\r", ch);
-                                        damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);    
+                                                {
+                                        sprintf( buf, "some data %s %s %d %d \n\r", ch,victim, 1 , gsn_dart );
+                                        send_to_char( buf, ch );
+                                         /*damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
                                 }   
                         }
                 }
