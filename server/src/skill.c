@@ -3627,6 +3627,26 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }
 
+        char       buf1 [ MAX_STRING_LENGTH*3];
+        int        sn;
+        int        glookup;
+        buf1[0] = '\0';
+        for ( sn = 0; sn < MAX_SKILL; sn++ )
+        {
+                if (!str_cmp(skill_table[sn].name,arg2))
+                {
+                          /*       sprintf( buf, "Sn: %4d Skill/spell: '%s'\n\r",
+                                sn, skill_table[sn].name ); */
+                        glookup = sn;
+                        break;
+                }
+                else
+                {
+                        send_to_char("This is a bug - report it : Lookup gsn for module.\n\r", ch);
+                        return;
+                }
+        }        
+
 
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
@@ -3638,7 +3658,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 obj_cast_spell(obj->value[3], obj->level, ch, ch, NULL); */
                 act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
                 act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
-                damage(ch, victim, number_range(10, ch->level), TYPE_UNDEFINED, FALSE);
+                damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
         }
 
         return;
