@@ -3521,7 +3521,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
-         int     found, i;
+        int        i;
         int        sn;
         int        glookup;
 
@@ -3545,7 +3545,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( (ch->position <= POS_STANDING) && (arg1[0] == '\0' || arg2[0] == '\0') )
+        if (  (arg1[0] == '\0' || arg2[0] == '\0') )
         {
                 send_to_char( "Trigger what against who?\n\r", ch );
                 return;
@@ -3573,25 +3573,36 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+        if (ch->position < POS_STANDING)
+        {
+                send_to_char("Your not ready.\n\r", ch);
+                return;
+        }
+
         turret = get_obj_here(ch, "turret");
         
-        if (ch->position >= POS_STANDING)
+        if (!turret)
         {
-                if (!turret)
-                {
-                        send_to_char("Your turret is not deployed!\n\r", ch);
-                        return;
-                }
-                else
-                {
+                send_to_char("Your turret is not deployed!\n\r", ch);
+                return;
+        }
+        else
+        {
                         /*
                         if (!check_blind(ch))
                                 return;
                         */
 
-                        if (!(obj = get_obj_list(ch, arg1, turret->contains )))
+                if (!(obj = get_obj_list(ch, arg1, turret->contains )))
+                {
+                        send_to_char("That module is not in your turret.\n\r", ch);
+                        return;
+                }
+                else
+                {
+                        if (obj->level > ch->level)
                         {
-                                send_to_char("That module is not in your turret.\n\r", ch);
+                                act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
                                 return;
                         }
                 }
@@ -3599,14 +3610,8 @@ void do_trigger (CHAR_DATA *ch, char *argument)
        
         if (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
         {
-                send_to_char("How did that get in there - its not a turret module.\n\r", ch);
+                send_to_char("How did that get in there - its not a turret module (report bug).\n\r", ch);
                 return;
-        }
-
-        for (i = 0; i < BLUEPRINTS_MAX; i++)
-        {
-                if (is_name(arg1, blueprint_list[i].blueprint_name))
-                        break;
         }
 
         glookup = -1;
@@ -3619,9 +3624,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }        
 
-        if (obj->level > ch->level)
-                act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
-        else
         {
                 /* moght do a case here depending on type of module      */
                 act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
