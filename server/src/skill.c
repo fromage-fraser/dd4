@@ -3595,9 +3595,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }
         
-}
-        
-
 /*
         if (number_percent() < chance)
         {
