@@ -498,10 +498,9 @@ void move_char(CHAR_DATA *ch, int door)
                                 return;
                         }
 
-                        if (to_room->sector_type == SECT_UNDERWATER
-                            || (to_room->sector_type == SECT_WATER_NOSWIM
-                                && !(IS_AFFECTED (ch->mount, AFF_SWIM)
-                                     || IS_AFFECTED (ch->mount, AFF_FLYING))))
+                        if ( ( to_room->sector_type == SECT_WATER_NOSWIM 
+                            || to_room->sector_type == SECT_UNDERWATER )
+                                && !IS_AFFECTED (ch->mount, AFF_SWIM) )
                         {
                                 send_to_char ("Your mount refuses to enter the water.\n\r", ch);
                                 return;
