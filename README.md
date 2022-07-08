@@ -241,7 +241,7 @@ Compile the server:
 
     root@container:/dd4-dev# cd src
 
-    # Or `make -j` for parallel processing
+    // Or `make -j` for parallel processing
     root@container:/dd4-dev/src# make
 
 Run the server:
