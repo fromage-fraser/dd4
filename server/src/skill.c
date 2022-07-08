@@ -3627,7 +3627,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj->next_content)
         {
         
-                if ( number_range(0,100) < ch->pcdata->learned[glookup])
+                if ( number_range(0,100) < ch->pcdata->learned[gsn_dart])
                 {
                         /* moght do a case here depending on type of module      */
                         act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
