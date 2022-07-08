@@ -3521,7 +3521,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
-        char      buf[MAX_STRING_LENGTH];
         bool    found_v;
         int     found, i;
 
@@ -3629,6 +3628,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }
 
+
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
         else
@@ -3639,7 +3639,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 obj_cast_spell(obj->value[3], obj->level, ch, ch, NULL); */
                 act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
                 act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
-                damage(ch, victim, number_range(10, ch->level), blueprint_list[i].blueprint_gsn, FALSE);
+                damage(ch, victim, number_range(10, ch->level), TYPE_UNDEFINED, FALSE);
         }
 
         return;
