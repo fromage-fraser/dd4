@@ -3613,7 +3613,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }
        
-        if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
+        if (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
         {
                 send_to_char("How did that get in there - its not a turret module.\n\r", ch);
                 return;
