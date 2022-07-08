@@ -3634,7 +3634,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
-                if (!str_cmp(skill_table[sn].name,arg2))
+                if (!str_cmp(skill_table[sn].name,arg1))
                 {
                           /*       sprintf( buf, "Sn: %4d Skill/spell: '%s'\n\r",
                                 sn, skill_table[sn].name ); */
