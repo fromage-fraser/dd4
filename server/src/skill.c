@@ -3524,6 +3524,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         char      buf[MAX_STRING_LENGTH];
         int     chance;
         bool    found_v;
+        int     found, i;
 
 
         argument = one_argument(argument, arg1);
@@ -3619,8 +3620,16 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
-        act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
+        found = -1;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (is_name(arg1, blueprint_list[i].blueprint_name))
+                {
+                        found = i;
+                        break;
+                }
+        }
+
 
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
@@ -3630,8 +3639,9 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 obj_cast_spell(obj->value[1], obj->level, ch, ch, NULL);
                 obj_cast_spell(obj->value[2], obj->level, ch, ch, NULL);
                 obj_cast_spell(obj->value[3], obj->level, ch, ch, NULL); */
-                 send_to_char("The end.\n\r", ch);
-                damage(ch, victim, number_range(10, ch->level), gsn_gouge, FALSE);
+                act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
+                act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
+                damage(ch, victim, number_range(10, ch->level), blueprint_list[i].blueprint_ref, FALSE);
         }
 
         return;
