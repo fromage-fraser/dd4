@@ -3627,10 +3627,10 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        char       buf1 [MAX_STRING_LENGTH];
+
         int        sn;
         int        glookup;
-        buf1[0] = '\0';
+
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
                 if (!str_cmp(skill_table[sn].name,arg2))
