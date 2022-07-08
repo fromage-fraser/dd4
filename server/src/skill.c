@@ -3534,7 +3534,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
         else if (!CAN_DO(ch, gsn_trigger))
         {
-                send_to_char("Your cant trigger other mechanisms.\n\r", ch);
+                send_to_char("You cant trigger mechanisms.\n\r", ch);
                 return;
         }
 
@@ -3550,13 +3550,13 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        WAIT_STATE(ch, 2);  /* Not too much spam thanks */
-
         if (arg2[0] == '\0')
         {
                 send_to_char ("Who would you trigger an attack on?\n\r", ch);
                 return;
         }
+
+
 
         if (!(victim = get_char_room(ch, arg2)) || !can_see(ch, victim))
         {
@@ -3570,29 +3570,33 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        victim = get_char_room( ch, arg2);
+        
         if (is_safe(ch, victim))
                 return;
 
-/*        WAIT_STATE(ch, PULSE_VIOLENCE); */
+        if ( ( turret = get_obj_here(ch, "turret") ) == NULL) {
+                send_to_char("Nothing like that here!\n\r", ch);
+                return;
+        }
 
-        for (turret = ch->in_room->contents; turret; turret = turret->next_content)
+        if ( (turret->ego_flags == EGO_ITEM_TURRET) && (!str_cmp(get_obj_owner(obj), ch->name)) )
         {
-                if (turret->ego_flags == EGO_ITEM_TURRET && (!str_cmp(get_obj_owner(obj), ch->name) ) )
-                {
-                        send_to_char("Your Turret is deployed.\n\r", ch);       
-                        for (obj = turret->contains; obj; obj = obj_next)
-                        {
-                                obj_next = obj->next_content; 
-                                if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
-                                {
-                                        {
-                                        sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart );
-                                        send_to_char( buf, ch );
+                send_to_char("You dont own that.\n\r", ch);
+                return;
+        }
+
+/*        WAIT_STATE(ch, 2);   Not too much spam thanks */
+
+  /*   WAIT_STATE(ch, PULSE_VIOLENCE); */
+
+        for (obj = turret->contains; obj; obj = obj_next)
+        {
+                obj_next = obj->next_content; 
+                send_to_char("found something.\n\r", ch);
+                                        /* sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart ); 
+                             send_to_char( buf, ch ); */
                                          /*damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
-                                        }   
-                                }
-                        }
-                }
         }
         
 /*
