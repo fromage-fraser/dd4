@@ -3190,7 +3190,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (ch->class != CLASS_SMITHY)
         {
-                send_to_char("You are unble to build anything you clumst oath.\n\r", ch);
+                send_to_char("You are unble to build anything you clumsy oath.\n\r", ch);
                 return;
         }
 
@@ -3572,16 +3572,19 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
-        chance = ch->pcdata->learned[gsn_gouge];
-        chance += (ch->level - victim->level) * 3;
+     /*   chance = ch->pcdata->learned[gsn_gouge];
+        chance += (ch->level - victim->level) * 3; */
         chance = URANGE(5, chance, 95);
 
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
         for (turret = ch->in_room->contents; turret; turret = turret->next_content)
         {
-                if (turret->ego_flags == EGO_ITEM_TURRET )
+                if (turret->ego_flags == EGO_ITEM_TURRET && (!str_cmp(get_obj_owner(obj), ch->name) ) )
+                {
+                 send_to_char("Your Turret is deployed.\n\r", ch);
                         break;
+                }
         }
         
 
@@ -3591,7 +3594,8 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 obj_next = obj->next_content; 
                 if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
                 {
-                        damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);    
+                        send_to_char("You found a module.\n\r", ch);
+                        damage(ch, victim, number_range(10, ch->level), &gsn_dart, FALSE);    
                 }   
 
         }
