@@ -3557,10 +3557,9 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (victim = get_char_room( ch, arg2) )
-                found_v = TRUE;
-        else
+        if (!( victim = get_char_room( ch, arg2) ) )
         {
+
                 send_to_char ("They aren't here.\n\r", ch);
                 return;
         }
