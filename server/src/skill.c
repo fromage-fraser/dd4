@@ -3627,7 +3627,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        char       buf1 [ MAX_STRING_LENGTH*3];
+        char       buf1 [MAX_STRING_LENGTH];
         int        sn;
         int        glookup;
         buf1[0] = '\0';
