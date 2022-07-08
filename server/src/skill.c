@@ -3585,17 +3585,17 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                 obj_next = obj->next_content; 
                                 if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
                                 {
-                                                {
-                                        sprintf( buf, "some data %s %s %d %d \n\r", ch->name,victim, 1 , gsn_dart );
+                                        {
+                                        sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart );
                                         send_to_char( buf, ch );
                                          /*damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
-                                }   
+                                        }   
+                                }
                         }
                 }
         }
         
-
-
+}
         
 
 /*
