@@ -3521,7 +3521,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
-        int        i;
         int        sn;
         int        glookup;
 
