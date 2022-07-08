@@ -204,12 +204,11 @@ struct blueprint_type
         char    *blueprint_desc;
         int     blueprint_ref;
         int     blueprint_ego;
-        int     blueprint_gsn;
+        int *   blueprint_gsn;
         int     blueprint_damage [2];
         int     blueprint_cost [5];
 
 };
-
 
 /*
  * Songs for bards
