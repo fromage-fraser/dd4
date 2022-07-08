@@ -3630,8 +3630,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         }
 
 
-
-
+        glookup = -1;
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
                 if (!str_cmp(skill_table[sn].name,arg1))
@@ -3641,13 +3640,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         glookup = sn;
                         break;
                 }
-                else
-                {
-                        send_to_char("This is a bug - report it : Lookup gsn for module.\n\r", ch);
-                        return;
-                }
         }        
-
 
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
