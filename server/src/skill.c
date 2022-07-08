@@ -3265,6 +3265,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
         }
 
+
         set_obj_owner(creation, ch->name);
 
         send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
@@ -3518,9 +3519,8 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
-        int             found, i;
         bool     found_v;
-          OBJ_DATA *obj_next;
+        OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         char      buf[MAX_STRING_LENGTH];
