@@ -260,9 +260,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               509     /* 510 for Trigger */
+#define MAX_SKILL               509     /* 509 for Trigger */
 #define MAX_PRE_REQ             1349    /* Added for smithy*/
-#define MAX_SPELL_GROUP         432    /* Added for smithy */
+#define MAX_SPELL_GROUP         430   /* Added for smithy */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
 #define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */

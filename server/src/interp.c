@@ -67,7 +67,6 @@ const struct cmd_type cmd_table [] =
          */
         { "buy",                do_buy,             POS_STANDING,   0,  LOG_NORMAL      },
         { "cast",               do_cast,            POS_FIGHTING,   0,  LOG_NORMAL      },
-        { "construct",          do_construct,       POS_STANDING,   0,  LOG_NORMAL      },
         { "exits",              do_exits,           POS_RESTING,    0,  LOG_NORMAL      },
         { "get",                do_get,             POS_RESTING,    0,  LOG_NORMAL      },
         { "inventory",          do_inventory,       POS_DEAD,       0,  LOG_NORMAL      },
@@ -170,6 +169,7 @@ const struct cmd_type cmd_table [] =
         { "brandish",   do_brandish,    POS_RESTING,     0,  LOG_NORMAL },
         { "close",      do_close,       POS_RESTING,     0,  LOG_NORMAL },
         { "climb",      do_climb,       POS_STANDING,    0,  LOG_NORMAL },
+        { "construct",  do_construct,   POS_STANDING,    0,  LOG_NORMAL },
         { "drink",      do_drink,       POS_RESTING,     0,  LOG_NORMAL },
         { "drop",       do_drop,        POS_RESTING,     0,  LOG_NORMAL },
         { "eat",        do_eat,         POS_RESTING,     0,  LOG_NORMAL },
