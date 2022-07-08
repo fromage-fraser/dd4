@@ -3552,8 +3552,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-
-        
         if (arg2[0] == '\0')
         {
                 send_to_char ("Who would you trigger an attack on?\n\r", ch);
@@ -3577,6 +3575,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+/*                
         if ( ( turret = get_obj_here(ch, "turret") ) == NULL) {
                 send_to_char("Nothing like that here!\n\r", ch);
                 return;
@@ -3588,94 +3587,53 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-/*        WAIT_STATE(ch, 2);   Not too much spam thanks */
-
-  /*   WAIT_STATE(ch, PULSE_VIOLENCE); */
-
-/*
-        found = -1;
-        for (i = 0; i < BLUEPRINTS_MAX; i++)
-        {
-                if (is_name(arg1, blueprint_list[i].blueprint_name))
-                {
-                        found = i;
-                        break;
-                }
-        }
 */
-                        /* 'get all container' or 'get all.obj container' */  
 
-                if (str_cmp(arg1, "all") && str_prefix("all.", arg1))
+        turret = get_obj_here(ch, "turret");
+        
+        if (ch->position >= POS_STANDING)
+        {
+                if (!turret)
                 {
-                        /* 'get obj container' */
-                        obj = get_obj_list(ch, arg1, turret->contains);
-                        if (!obj)
+                        send_to_char("Your turret is not deployed!\n\r", ch);
+                        return;
+                }
+                else
+                {
+                        /*
+                        if (!check_blind(ch))
+                                return;
+                        */
+
+                        if (!(obj = get_obj_list(ch, arg1, turret->contains )))
                         {
-                                act("You see nothing like that in the $T.",
-                                    ch, NULL, arg2, TO_CHAR);
+                                send_to_char("That module is not in your turret.\n\r", ch);
                                 return;
                         }
                 }
-                else                       
-
-                        found = FALSE;
-                        for (obj = turret->contains; obj; obj = obj_next)
-                        {
-                                obj_next = obj->next_content;
-                                /* detect curse prevents autolooting of cursed items */
-                                /* Fix this so it checks spell num AND name at some point -- Owl 7/3/22 */
-                               /* if ( IS_OBJ_STAT( obj, ITEM_TURRET_MODULE ) )
-                                {
-                                        send_to_char("{WYou are reluctant to acquire a cursed item.{x\n\r", ch);
-                                        continue;
-                                }
-*/
-                              
-                                        found = TRUE;
-                                        send_to_char("found something.\n\r", ch);      
-                        }
-
-                        if (!found)
-                        {
-                                if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
-                                        act("You see nothing in the $T.",
-                                            ch, NULL, arg2, TO_CHAR);
-                                else if (arg1[3] == '\0' && IS_AFFECTED( ch, AFF_DETECT_CURSE ))
-                                        act("You see nothing desirable in the $T.",
-                                            ch, NULL, arg2, TO_CHAR);
-                                else
-                                        act("You see nothing like that in the $T.",
-                                            ch, NULL, arg2, TO_CHAR);
-                        }
-                        else
-                        {
-                          send_to_char("found something 2.\n\r", ch);          
-                        }
-/*
-
-        for (obj = turret->contains; obj; obj = obj_next)
-        {
-                obj_next = obj->next_content; 
-                send_to_char("found something.\n\r", ch);
-                                         sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart ); 
-                             send_to_char( buf, ch ); 
-                                         damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
-/*
-        if (number_percent() < chance)
-        {
-                act ("You deftly lunge at $N's eyes, and gouge them out!", ch, NULL, victim, TO_CHAR);
-                act ("$n scratches your eyes -- you see red!", ch, NULL, victim, TO_VICT);
-                act ("$n gouges $N's eyes out!", ch, NULL, victim, TO_NOTVICT);
-                arena_commentary("$n gouges out $N's eyes.", ch, victim);
-
-                damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);
-
-                check_group_bonus(ch);
-
         }
+       
+        if (obj->item_type != ITEM_TURRET_MODULE)
+        {
+                send_to_char("How did that get in there - its not a turret module.\n\r", ch);
+                return;
+        }
+
+        act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
+        act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
+
+        if (obj->level > ch->level)
+                act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
         else
-                damage(ch, victim, 0, gsn_gouge, FALSE);
-*/
+        {
+/* moght do a case here depending on type of module                obj->level = obj->value[0];
+                obj_cast_spell(obj->value[1], obj->level, ch, ch, NULL);
+                obj_cast_spell(obj->value[2], obj->level, ch, ch, NULL);
+                obj_cast_spell(obj->value[3], obj->level, ch, ch, NULL); */
+                 send_to_char("The end.\n\r", ch);
+        }
+
+        return;
 }
 
 
