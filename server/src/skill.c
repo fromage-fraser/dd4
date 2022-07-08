@@ -3612,7 +3612,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 send_to_char("How did that get in there - its not a turret module (report bug).\n\r", ch);
                 return;
         }
-
+        
         glookup = -1;
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
@@ -3621,13 +3621,24 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                         glookup = sn;
                         break;
                 }
-        }        
+        }
 
+
+        for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj->next_content)
         {
-                /* moght do a case here depending on type of module      */
-                act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
-                act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
-                damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+        
+                if ( number_range(0,100) < ch->pcdata->learned[glookup])
+                {
+                        /* moght do a case here depending on type of module      */
+                        act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
+                        act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
+                        damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+                }
+                else
+                {
+                        act("The triggering mechanism collapses for the $p. Nothing happens..", ch, obj, NULL ,TO_CHAR);
+                        act("$n triggers $m $p, but nothing happens.", ch, obj, NULL, TO_ROOM);    
+                }
         }
 
         return;
