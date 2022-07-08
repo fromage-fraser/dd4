@@ -3613,20 +3613,22 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
         
-        glookup = -1;
-        for ( sn = 0; sn < MAX_SKILL; sn++ )
-        {
-                if (!str_cmp(skill_table[sn].name,arg1))
-                {
-                        glookup = sn;
-                        break;
-                }
-        }
+
 
 
         for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj->next_content)
         {
         
+                glookup = -1;
+                for ( sn = 0; sn < MAX_SKILL; sn++ )
+                {
+                        if (!str_cmp(skill_table[sn].name,arg1))
+                        {
+                                glookup = sn;
+                                break;
+                        }
+                }
+
                 if ( number_range(0,100) < ch->pcdata->learned[gsn_dart])
                 {
                         /* moght do a case here depending on type of module      */
