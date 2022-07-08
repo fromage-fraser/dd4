@@ -2664,7 +2664,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "trigger", &gsn_trigger,
-                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
                 "turret module", "!Trigger!"
         },
