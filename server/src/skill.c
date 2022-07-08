@@ -3523,6 +3523,8 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         char      arg2 [ MAX_INPUT_LENGTH ];
         bool    found_v;
         int     found, i;
+        int        sn;
+        int        glookup;
 
 
         argument = one_argument(argument, arg1);
@@ -3628,8 +3630,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         }
 
 
-        int        sn;
-        int        glookup;
+
 
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
