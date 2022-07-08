@@ -3518,6 +3518,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
+        bool      found;
           OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
@@ -3592,7 +3593,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
                         /* 'get all container' or 'get all.obj container' */
                       
-                          bool      found;
+                          
 
                         found = FALSE;
                         for (obj = turret->contains; obj; obj = obj_next)
