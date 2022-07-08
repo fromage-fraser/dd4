@@ -3518,7 +3518,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
-        OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         char      buf[MAX_STRING_LENGTH];
@@ -3556,8 +3555,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-
-
         if (!(victim = get_char_room(ch, arg2)) || !can_see(ch, victim))
         {
                 send_to_char ("They aren't here.\n\r", ch);
@@ -3571,7 +3568,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         }
 
         victim = get_char_room( ch, arg2);
-        
+
         if (is_safe(ch, victim))
                 return;
 
@@ -3590,6 +3587,45 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
   /*   WAIT_STATE(ch, PULSE_VIOLENCE); */
 
+
+
+                        /* 'get all container' or 'get all.obj container' */
+                        OBJ_DATA *obj_next;
+                          bool      found;
+
+                        found = FALSE;
+                        for (obj = turret->contains; obj; obj = obj_next)
+                        {
+                                obj_next = obj->next_content;
+                                /* detect curse prevents autolooting of cursed items */
+                                /* Fix this so it checks spell num AND name at some point -- Owl 7/3/22 */
+                               /* if ( IS_OBJ_STAT( obj, ITEM_TURRET_MODULE ) )
+                                {
+                                        send_to_char("{WYou are reluctant to acquire a cursed item.{x\n\r", ch);
+                                        continue;
+                                }
+*/
+                                if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name))
+                                    && can_see_obj(ch, obj))
+                                {
+                                        found = TRUE;
+                                        send_to_char("found something.\n\r", ch);
+                                }
+                        }
+                        if (!found)
+                        {
+                                if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
+                                        act("You see nothing in the $T.",
+                                            ch, NULL, arg2, TO_CHAR);
+                                else if (arg1[3] == '\0' && IS_AFFECTED( ch, AFF_DETECT_CURSE ))
+                                        act("You see nothing desirable in the $T.",
+                                            ch, NULL, arg2, TO_CHAR);
+                                else
+                                        act("You see nothing like that in the $T.",
+                                            ch, NULL, arg2, TO_CHAR);
+                        }
+/*
+
         for (obj = turret->contains; obj; obj = obj_next)
         {
                 obj_next = obj->next_content; 
@@ -3597,8 +3633,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                         /* sprintf( buf, "some data %s %s %d %d \n\r", ch->name ,victim->name, 1 , gsn_dart ); 
                              send_to_char( buf, ch ); */
                                          /*damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE); */    
-        }
-        
+      
 /*
         if (number_percent() < chance)
         {
