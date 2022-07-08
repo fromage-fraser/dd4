@@ -3595,7 +3595,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 if (obj->ego_flags == EGO_ITEM_TURRET_MODULE)
                 {
                         send_to_char("You found a module.\n\r", ch);
-                        damage(ch, victim, number_range(10, ch->level), &gsn_dart, FALSE);    
+                        damage(ch, victim, number_range(10, ch->level), gsn_dart, FALSE);    
                 }   
 
         }
