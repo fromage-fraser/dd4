@@ -3522,7 +3522,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         char      buf[MAX_STRING_LENGTH];
-        int     chance;
         bool    found_v;
         int     found, i;
 
