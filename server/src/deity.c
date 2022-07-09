@@ -361,7 +361,7 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 0,
                 /* Mag Cle Thi War Psi Shi Bra Ran */
                   { 0,  0,  0,  0,  0,  0,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0, 0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
@@ -549,10 +549,11 @@ void do_pantheon (CHAR_DATA *ch, char *argument)
 
         const char *classes [MAX_CLASS + MAX_SUB_CLASS -1] = {"Mage", "Cleric",
                         "Thief", "Warrior", "Psionic", "Shapeshifter",
-                        "Brawler", "Ranger", "Necromancer", "Warlock",
+                        "Brawler", "Ranger", "Smithy", "Necromancer", "Warlock",
                         "Templar", "Druid", "Ninja", "Bounty Hunter", "Thug",
                         "Knight", "Satanist", "Witch", "Werewolf", "Vampire",
-                        "Monk", "Martial Artist", "Barbarian", "Bard"};
+                        "Monk", "Martial Artist", "Barbarian", "Bard", "Engineer",
+                        "Alchemist"};
 
         if (!allow_deity_command (ch))
                 return;
