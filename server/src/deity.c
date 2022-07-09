@@ -44,10 +44,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_NATURE,
                 DEITY_PERSONALITY_PROTECTIVE,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0,  0,  0,  1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0 , 0 ,0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0,  0,  0,  1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  1,  1, -1,  0,  1,  0, -1,  0,  0,  0,  1,  0, -1,  0, -1,  0,  1,  0,  0,  0,  0, -1 }},
 
@@ -62,10 +62,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_CHAOTIC,
                 DEITY_PERSONALITY_JUDGEMENTAL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  {-1,  0,  0,  1,  0,  0,  1, -1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0,  0, -1,  0,  0,  1, -1,  0,  0,  0,  0,  0,  0,  1,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  {-1,  0,  0,  1,  0,  0,  1, -1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0,  0, -1,  0,  0,  1, -1,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0, -1, -1,  0,  1,  0,  1,  0,  0, -1, -1,  0, -1,  1,  1,  0,  0, -1,  1,  0,  1,  0,  1  }},
 
@@ -81,10 +81,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_CHAOTIC,
                 DEITY_PERSONALITY_CRUEL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 1,  1,  0,  1,  0,  0,  0, -1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0,  0, -1,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 1,  1,  0,  1,  0,  0,  0, -1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0,  0, -1,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0, -1, -1,  1,  0,  0,  0,  1,  0, -1, -1,  0,  1,  0,  0,  0,  0, -1,  1,  0,  0,  0,  1 }},
 
@@ -100,10 +100,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_WARLIKE,
                 DEITY_PERSONALITY_CRUEL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 1,  0,  0,  0,  0,  1,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 1,  0,  0,  0,  0,  1,  0,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0, -1, -1,  0,  0,  0,  0,  0,  1, -1, -1,  0,  0,  0,  0,  0,  1, -1, -1,  0,  0,  0,  1 }},
 
@@ -118,10 +118,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_LAWFUL,
                 DEITY_PERSONALITY_PROTECTIVE,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  1, -1,  0,  0,  0,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0, -1,  0,  1,  0, -1,  0, -1,  1, -1,  0, -1, -1,  1,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  1, -1,  0,  0,  0,  0,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0, -1,  0,  1,  0, -1,  0, -1,  1, -1,  0, -1, -1,  1,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0, -1,  1, -1,  0,  0,  0, -1 }},
 
@@ -136,10 +136,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_PEACEFUL,
                 DEITY_PERSONALITY_PROTECTIVE,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  1,  0,  0,  0,  0,  0,  1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0,  1,  1,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  1,  0,  0,  0,  0,  0,  1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0,  1,  1,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  1,  1,  1, -1,  0,  0,  0, -1,  0,  0,  0,  0, -1,  0,  0, -1, -1,  1,  0,  0,  0,  0, -1 }},
 
@@ -154,10 +154,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_LAWFUL,
                 DEITY_PERSONALITY_PROUD,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  {-1,  1,  0,  1, -1,  0,  1,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0, -1, -1,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0,  0,  0,  1,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  {-1,  1,  0,  1, -1,  0,  1,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0, -1, -1,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0,  0,  0,  1,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0, -1, -1,  0, -1, -1, -1,  0,  1,  0,  0, -1,  0,  0,  0,  0,  0,  0, -1,  0, -1 }},
 
@@ -174,10 +174,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_NATURE,
                 DEITY_PERSONALITY_PROUD,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0, -1,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0, -1,  0,  0,  1,  0,  0,  0,  0, -1,  0, -1, -1,  1,  0,  0,  1, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0, -1,  0,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0, -1,  0,  0,  1,  0,  0,  0,  0, -1,  0, -1, -1,  1,  0,  0,  1,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0, -1, -1,  1, -1,  0, -1, -1 }},
 
@@ -192,10 +192,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_WARLIKE,
                 DEITY_PERSONALITY_PROUD,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0, -1,  1,  0, -1,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  1,  1,  0, -1, -1,  1,  1,  0,  0, -1, -1,  1,  1,  1,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0, -1,  1,  0, -1,  0,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  1,  1,  0, -1, -1,  1,  1,  0,  0, -1, -1,  1,  1,  1,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
@@ -211,10 +211,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_WARLIKE,
                 DEITY_PERSONALITY_PROTECTIVE,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0, -1,  1,  0,  0,  1,  1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  1,  1,  0, -1,  0,  0,  1,  0,  0, -1, -1,  1,  1,  1,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0, -1,  1,  0,  0,  1,  1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  1,  1,  0, -1,  0,  0,  1,  0,  0, -1, -1,  1,  1,  1,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
@@ -229,10 +229,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_WARLIKE,
                 DEITY_PERSONALITY_CRUEL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  1,  0,  0,  1, -1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  1, -1,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0,  1,  1,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  1,  0,  0,  1, -1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  1, -1,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1 }},
 
@@ -248,10 +248,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_NATURE,
                 DEITY_PERSONALITY_MYSTERIOUS,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0,  1,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  0,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0,  1,  0,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0, -1,  0, -1,  0,  0,  0,  0,  0,  0, -1, -1,  0,  0, -1,  1,  0, -1,  0,  1 }},
 
@@ -266,10 +266,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_DEATH,
                 DEITY_PERSONALITY_JUDGEMENTAL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0,  0,  0, -1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  1,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  1, -1,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0,  0,  0, -1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  1,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  1, -1,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
@@ -285,10 +285,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_DEATH,
                 DEITY_PERSONALITY_CRUEL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0, -1,  0,  0,  0,  0,  0, -1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0, -1,  0,  0,  0,  0, -1,  1,  1,  1,  1,  0,  0, -1, -1, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0, -1,  0,  0,  0,  0,  0, -1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0, -1,  0,  0,  0,  0, -1,  1,  1,  1,  1,  0,  0, -1, -1,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1 }},
 
@@ -303,10 +303,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_CHAOTIC,
                 DEITY_PERSONALITY_MISCHIEVIOUS,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0, -1,  1,  0,  0,  0,  1, -1, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0, -1,  0,  1,  1,  1, -1,  0,  0,  0,  0,  0,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0, -1,  1,  0,  0,  0,  1, -1,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0, -1,  0,  1,  1,  1, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
@@ -323,10 +323,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_PEACEFUL,
                 DEITY_PERSONALITY_HELPFUL,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0,  0,  0,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
@@ -341,10 +341,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_PEACEFUL,
                 DEITY_PERSONALITY_MISCHIEVIOUS,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0,  0,  1,  0, 0 },
-                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd */
-                  { 0, -1,  0, -1,  0,  0,  0,  0, -1,  0,  0,  0, -1, -1,  0,  0,  1, 0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0,  0,  1,  0,  0 },
+                /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
+                  { 0, -1,  0, -1,  0,  0,  0,  0, -1,  0,  0,  0, -1, -1,  0,  0,  1,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0, -1,  0,  0,  0,  1,  0,  0,  0,  1,  1,  1, -1,  0, -1,  0,  0,  1, -1,  1,  0,  0, -1 }},
 
@@ -359,10 +359,10 @@ const struct deity_info deity_info_table [NUMBER_DEITIES] =
                 DEITY_TYPE_LAWFUL,
                 DEITY_PERSONALITY_MYSTERIOUS,
                 0,
-                /* Mag Cle Thi War Psi Shi Bra Ran */
-                  { 0,  0,  0,  0,  0,  0,  0,  0, 0 },
+                /* Mag Cle Thi War Psi Shi Bra Ran Smi*/
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Nec Wlk Tem Dru Nin Bou Thg Kni Sat Wit Wer Vam Mon Mar Brb Brd Eng Alc*/
-                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 0, 0 },
+                  { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 },
                 /* --- Hum Elf Hef Orc Gia Sat Ogr Gob Hdr Hfl Dwa Cen Dro Trl Ala Hob Yti Fae Sah Tfl Jtn Gen Ill */
                   { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 }},
 
