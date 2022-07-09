@@ -3519,6 +3519,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         OBJ_DATA *turret;
         OBJ_DATA *obj;
+        OBJ_DATA *obj_next;
         char      arg1 [ MAX_INPUT_LENGTH ];
         char      arg2 [ MAX_INPUT_LENGTH ];
         int        sn;
@@ -3616,9 +3617,12 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
 
 
-        for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj->next_content)
+
+
+
+        for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj = obj_next)
         {
-        
+                obj_next = obj->next_content;
                 glookup = -1;
                 for ( sn = 0; sn < MAX_SKILL; sn++ )
                 {
