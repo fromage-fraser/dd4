@@ -3203,14 +3203,14 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg[0] == '\0' )
         {
-                send_to_char( "Blueprints              Learned                   Damage\n\r", ch);
+                send_to_char( "        Blueprints              Learned                   Damage\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
                         if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
                         {
-                                sprintf(buf, "{W%20s{x {G%3d{x%% {r%5d{x {R%5d{x", 
+                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
                                 blueprint_list[i].blueprint_damage[0],
@@ -3236,13 +3236,20 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char("You are studying the following blueprints:\n\r", ch);
+                send_to_char( "        Blueprints              Learned                   Damage\n\r", ch);
+                send_to_char(bar, ch);
+
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
                         if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
                         {
-                                sprintf(buf, "%s: %d percent.", blueprint_list[i].blueprint_name,ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] );
-                                act(buf, ch, NULL, NULL, TO_CHAR);
+                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                blueprint_list[i].blueprint_name,
+                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
+                                blueprint_list[i].blueprint_damage[0],
+                                blueprint_list[i].blueprint_damage[1] 
+                                );
+                                send_to_char(buf, ch);
                         }
                         
                 }
