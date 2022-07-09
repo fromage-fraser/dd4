@@ -261,7 +261,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               510     /* 510 for dart */
+#define MAX_SKILL               511     /* 511 for dart */
 #define MAX_PRE_REQ             1349    /* Added for smithy*/
 #define MAX_SPELL_GROUP         431   /* Added for smithy */
 #define MAX_GROUPS              53
