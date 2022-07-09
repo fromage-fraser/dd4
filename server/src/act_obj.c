@@ -928,10 +928,19 @@ void do_give (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                act("You give $N some coins.",  ch, NULL, victim, TO_CHAR);
-                act("$n gives you some coins.", ch, NULL, victim, TO_VICT);
-                act("$n gives $N some coins.",  ch, NULL, victim, TO_NOTVICT);
+                if (amount == 1)
+                {
+                        act("You give $N a coin.",  ch, NULL, victim, TO_CHAR);
+                        act("$n gives you a coin.", ch, NULL, victim, TO_VICT);
+                        act("$n gives $N a coin.",  ch, NULL, victim, TO_NOTVICT);}
+                else {
+                        act("You give $N some coins.",  ch, NULL, victim, TO_CHAR);
+                        act("$n gives you some coins.", ch, NULL, victim, TO_VICT);
+                        act("$n gives $N some coins.",  ch, NULL, victim, TO_NOTVICT);
+                }
+
                 mprog_bribe_trigger(victim, ch, amount);
+                
                 return;
         }
 
@@ -3331,7 +3340,7 @@ int get_cost (CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy)
                 {
                         if (obj->item_type == pShop->buy_type[itype])
                         {
-                                cost = obj->cost * ( pShop->profit_sell / 100 );
+                                cost = ( obj->cost * pShop->profit_sell ) / 100;
                                 break;
                         }
                 }
