@@ -3203,8 +3203,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg[0] == '\0' )
         {
-                sprintf ( buf, "Blueprints              Learned                   Damage\n\r", ch);
-                send_to_char(buf, ch);
+                send_to_char( "Blueprints              Learned                   Damage\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
@@ -3214,8 +3213,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
                                 sprintf(buf, "{W%20s{x {G%3d{x%% {r%5d{x {R%5d{x", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
-                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_damage[0])],
-                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_damage[1])] 
+                                blueprint_list[i].blueprint_damage[0],
+                                blueprint_list[i].blueprint_damage[1] 
                                 );
                                 send_to_char(buf, ch);
                         }
