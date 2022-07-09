@@ -128,7 +128,7 @@ of various tables shown in the game.
 As files in this location often change, we do not keep them under version control. The _server/player_skeleton/_ is
 provided as a starting point for new installations or checkouts.
 
-Please create a copy of the _server/player_skeleton/_ directory as _server/player/ before running the server for the
+Please create a copy of the _server/player_skeleton/_ directory as _server/player/_ before running the server for the
 first time. This only has to happen once.
 
     cp -r server/player_skeleton server/player
@@ -241,6 +241,7 @@ Compile the server:
 
     root@container:/dd4-dev# cd src
 
+    // Or `make -j` for parallel processing
     root@container:/dd4-dev/src# make
 
 Run the server:
@@ -254,6 +255,12 @@ Debug the server:
     root@container:/dd4-dev/area# gdb ../src/dd4
 
     (gdb) run
+
+Clean rebuild of the server:
+
+    root@container:/dd4-dev/src# make clean
+
+    root@container:/dd4-dev/src# make
 
 Rebuilding the dev container (if you want to update installed programs or config):
 
