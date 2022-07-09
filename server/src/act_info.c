@@ -143,6 +143,9 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                 strcat( buf, "{R(Searing){x " );
+        
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+                strcat( buf, "{W(Imbued){x " );
 
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "{W(Sharp){x " );
@@ -1214,8 +1217,8 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->class == CLASS_SMITHY )
         {
-        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Mithral: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
-                ch->smelted_steel, ch->smelted_mithral, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
+        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Titanium: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
+                ch->smelted_steel, ch->smelted_titanium, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
         strcat(buf1, buf);
         }
 
@@ -1337,14 +1340,17 @@ void do_score (CHAR_DATA *ch, char *argument)
                 strcat(buf1, "\n\r{WThis is the last level that you can use the default Midgaard recall.{x\n\r");
 
         /* Quest point message hack */
-        if (ch->level == 49 && ch->pcdata->totalqp < 1)
-                strcat(buf1, "\n\r{RYou need at least 1 quest point before you can reach level 50.{x\n\r");
+        if (ch->level == 29 && ch->pcdata->totalqp < 1)
+                strcat(buf1, "\n\r{RYou need at least 1 quest point before you can reach level 30.{x\n\r");
 
-        if (ch->level == 69 && ch->pcdata->totalqp < 200)
-                strcat(buf1, "\n\r{RYou need at least 200 total quest points before you can reach level 70.{x\n\r");
+        if (ch->level == 49 && ch->pcdata->totalqp < 200)
+                strcat(buf1, "\n\r{RYou need at least 200 quest point before you can reach level 50.{x\n\r");
 
-        if (ch->level == 99 && ch->pcdata->totalqp < 500)
-                strcat(buf1, "\n\r{RYou need at least 500 total quest points before you can reach level 100.{x\n\r");
+        if (ch->level == 69 && ch->pcdata->totalqp < 500)
+                strcat(buf1, "\n\r{RYou need at least 500 total quest points before you can reach level 70.{x\n\r");
+
+        if (ch->level == 99 && ch->pcdata->totalqp < 1000)
+                strcat(buf1, "\n\r{RYou need at least 1000 total quest points before you can reach level 100.{x\n\r");
 
         send_to_char(buf1, ch);
 }

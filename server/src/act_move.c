@@ -1447,7 +1447,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
                          affect_strip(ch, gsn_sleep);
                 }
 
-                /* Let's not have imms hosed by sleep traps etc -- Owl 8/7/22 */
+               /* Let's not have imms hosed by sleep traps etc -- Owl 8/7/22 */
 
                 if ( IS_IMMORTAL(ch) )
                 {

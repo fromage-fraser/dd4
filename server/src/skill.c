@@ -3075,7 +3075,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
-        int             mithral=0;
+        int             titanium=0;
         int             steel=0;
 
         argument = one_argument(argument, arg);
@@ -3136,12 +3136,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 75)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/10);
+                        titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
                 ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_titanium = (ch->smelted_titanium + titanium);
                 ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
                 ch->smelted_electrum = (ch->smelted_electrum + electrum);
                 ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
@@ -3155,12 +3155,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 75)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
-                        mithral = (obj->level/10);
+                        titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
                 ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_mithral = (ch->smelted_mithral + mithral);
+                ch->smelted_titanium = (ch->smelted_titanium + titanium);
                 ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
                 ch->smelted_electrum = (ch->smelted_electrum + electrum);
                 ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
@@ -3171,13 +3171,338 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act("$n Smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
-        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nMithral: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, mithral, adamantite, electrum, starmetal);
+        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
         extract_obj(obj);        
 }
 
+/* Construct Code - Brutus Jul 2023 */
+void do_construct( CHAR_DATA *ch, char *arg )
+{
+        OBJ_DATA        *creation;
+        int             found, i;
+        char            buf[MAX_STRING_LENGTH];
+
+        if (IS_NPC(ch))
+                return;
+
+        if (ch->class != CLASS_SMITHY)
+        {
+                send_to_char("You are unble to build anything you clumst oath.\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("You can't construct while fighting.\n\r", ch);
+                return;
+        }
+
+        if( arg[0] == '\0' )
+        {
+               
+                send_to_char("What do you want to construct?\n\r", ch);
+                return;
+        }
+
+        found = -1;
+        for (i = 0; i < BLUEPRINTS_MAX; i++)
+        {
+                if (is_name(arg, blueprint_list[i].blueprint_name))
+                {
+                        found = i;
+                        break;
+                }
+        }
+
+        if (found == -1)
+        {
+                send_to_char("You are studying the following blueprints:\n\r", ch);
+                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                {
+                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
+                        {
+                                sprintf(buf, "%s: %d percent.", blueprint_list[i].blueprint_name,ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] );
+                                act(buf, ch, NULL, NULL, TO_CHAR);
+                        }
+                        
+                }
+                return;
+        }
+
+        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char( "You don't know how to construct that.\n\r", ch );
+                return;
+        }
+
+        if ( blueprint_list[i].blueprint_cost[0] > ch->smelted_steel 
+                ||  blueprint_list[i].blueprint_cost[1] > ch->smelted_titanium 
+                ||  blueprint_list[i].blueprint_cost[2] > ch->smelted_adamantite
+                ||  blueprint_list[i].blueprint_cost[3] > ch->smelted_electrum
+                ||  blueprint_list[i].blueprint_cost[4] > ch->smelted_starmetal)
+        {
+                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal", 
+                blueprint_list[i].blueprint_cost[0], 
+                blueprint_list[i].blueprint_cost[1],
+                blueprint_list[i].blueprint_cost[2], 
+                blueprint_list[i].blueprint_cost[3], 
+                blueprint_list[i].blueprint_cost[4]);
+                act(buf, ch, NULL, NULL, TO_CHAR);
+                return; 
+        }
+
+        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), 0 );
+        obj_to_room( creation, ch->in_room );
+
+        send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
+        sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
+        act(buf, ch, NULL, NULL, TO_CHAR);
+
+        sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
+        act(buf, ch, NULL, NULL, TO_ROOM);
+
+        return;
+}
+
+void do_imbue (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char            arg[MAX_INPUT_LENGTH];
+        char            modifier;
+        int             random_buff;
+        int             random_buff2;
+        int             random_buff3;
+        AFFECT_DATA     *paf;
+ 
+        random_buff = -1;
+        random_buff2 = -1;
+        random_buff3 = -1;
+     
+
+
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_imbue))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+/* disabled while testing
+        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+                send_to_char("You need ot find a forge?\n\r", ch);
+                return;
+        }
+*/
+
+        argument = one_argument(argument, arg);
+ 
+        if( arg[0] == '\0' )
+        {
+                send_to_char("Imbue what?\n\r", ch);
+                return;
+        }
+       
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that weapon.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
+        {
+                send_to_char("That is already imbued.\n\r", ch);
+                return;
+        }
+
+       random_buff = number_range( 0, MAX_IMBUE-1);
+       modifier = imbue_list[random_buff].apply_buff;
+
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_imbue;
+        paf->duration       = -1;
+        paf->location       = modifier; 
+        paf->modifier       = imbue_list[random_buff].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+   
+        if (ch->pcdata->learned[gsn_imbue] > 75)
+        {
+                random_buff2 = number_range( 0, MAX_IMBUE-1);
+                modifier = imbue_list[random_buff2].apply_buff;
+
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = gsn_imbue;
+                paf->duration       = -1;
+                paf->location       = modifier;
+                paf->modifier       = imbue_list[random_buff2].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+                
+        }
+
+        if (ch->pcdata->learned[gsn_imbue] > 97)
+        {
+                random_buff3 = number_range( 0, MAX_IMBUE-1);
+                modifier = imbue_list[random_buff3].apply_buff;
+
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = gsn_imbue;
+                paf->duration       = -1;
+                paf->location       = modifier;
+                paf->modifier       = imbue_list[random_buff3].base_gain * ch->pcdata->learned[gsn_imbue] / 20;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+                random_buff = -1;
+        }
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
+        set_obj_owner(obj, ch->name);
+
+        act ("You immerse the $p within the flames of the forge, imbuing it with power!", ch, obj, NULL, TO_CHAR);
+        act ("$n immerses the $p within the flames of the forge, imbuing it with power!", ch, obj, NULL, TO_ROOM);
+        return;
+}
+
+
+void do_counterbalance (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool in_c_room;
+        in_c_room = FALSE;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
+
+        if ( IS_NPC( ch ) )
+                return;
+
+        if (!CAN_DO(ch, gsn_counterbalance))
+        {
+                send_to_char("What do you think you are, a smith?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What do you want to counterbalance?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that weapon.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+        {
+                send_to_char("That is already counterbalanced.\n\r", ch);
+                return;
+        }
+
+        if (ch->pcdata->condition[COND_DRUNK] > 0)
+        {
+                send_to_char("Your hands aren't steady enough to safely sharpen your blade.\n\r", ch);
+                return;
+        }
+
+        if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
+        {
+                send_to_char("You slip while balancing your weapon!!\n\r", ch);
+                act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if (in_c_room)
+                send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
+
+        act ("You expertly balance $p!",
+             ch, obj, NULL, TO_CHAR);
+        act ("$n expertly balances $p!",
+             ch, obj, NULL, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_BALANCED);
+
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_counterbalance;
+        paf->duration       = -1;
+        paf->location       = APPLY_BALANCE;
+        paf->modifier       = (ch->pcdata->learned[gsn_counterbalance]);
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+        set_obj_owner(obj, ch->name);
+}
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {

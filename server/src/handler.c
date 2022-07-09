@@ -2272,6 +2272,7 @@ char *affect_loc_name( int location )
             case APPLY_RESIST_LIGHTNING:        return "lightning resistance";
             case APPLY_RESIST_ACID:             return "acid resistance";
             case APPLY_BREATHE_WATER:           return "breathe water";
+            case APPLY_BALANCE:                 return "attack speed";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );

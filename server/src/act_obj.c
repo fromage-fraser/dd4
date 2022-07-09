@@ -1415,7 +1415,8 @@ void do_eat (CHAR_DATA *ch, char *argument)
 
         pouch = get_eq_char(ch, WEAR_POUCH);
 
-        if (ch->position == POS_FIGHTING)
+        if ( ch->position == POS_FIGHTING 
+        &&  !IS_NPC(ch) )
         {
                 if (!pouch)
                 {
@@ -1438,7 +1439,8 @@ void do_eat (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                if (!(obj = get_obj_carry(ch, arg)) )
+                if (!(obj = get_obj_carry(ch, arg)) 
+                &&  !IS_NPC(ch) )
                 {
                         if (!pouch) {
                                 send_to_char("You do not have that pill on your person.\n\r", ch);
@@ -1450,6 +1452,18 @@ void do_eat (CHAR_DATA *ch, char *argument)
                                 return;
                         }
                 }
+        }
+
+        if ( ch->position == POS_FIGHTING 
+        &&   IS_NPC(ch) )
+        {
+                /* Mobs can only eat pills they are holding during combat -- Owl 1/7/22 */
+                if (!(obj = get_eq_char(ch, WEAR_HOLD))) 
+                {
+                        send_to_char("You can only eat pills you are holding during combat!\n\r", ch);
+                        return;
+                }
+
         }
 
         if (ch->level <= LEVEL_HERO)
@@ -1838,7 +1852,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                         if (IS_SET(obj->extra_flags, ITEM_BOW) || IS_SET(obj->extra_flags, ITEM_LANCE))
                         {
                                 if (IS_SET(obj->extra_flags, ITEM_BOW)
-                                    && !(ch->class == CLASS_RANGER && !ch->sub_class))
+                                    && !(ch->class == CLASS_RANGER))
                                 {
                                         send_to_char("You cannot use bows.\n\r", ch);
                                         return;
@@ -1919,7 +1933,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                             || (IS_SET(obj->extra_flags,ITEM_LANCE)))
                         {
                                 if (IS_SET(obj->extra_flags, ITEM_BOW)
-                                    && !(ch->class == CLASS_RANGER && !ch->sub_class))
+                                    && !(ch->class == CLASS_RANGER))
                                 {
                                         send_to_char("You cannot use bows.\n\r", ch);
                                         return;
@@ -2628,7 +2642,8 @@ void do_smear (CHAR_DATA *ch, char *argument)
 
         pouch = get_eq_char(ch, WEAR_POUCH);
 
-        if (ch->position == POS_FIGHTING)
+        if ( ch->position == POS_FIGHTING 
+        &&  !IS_NPC(ch) )
         {
                 if (!pouch)
                 {
@@ -2651,7 +2666,8 @@ void do_smear (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                if (!(obj = get_obj_carry(ch, arg)) )
+                if (!(obj = get_obj_carry(ch, arg)) 
+                &&  !IS_NPC(ch) )
                 {
                         if (!pouch)
                         {
@@ -2664,6 +2680,18 @@ void do_smear (CHAR_DATA *ch, char *argument)
                                 return;
                         }
                 }
+        }
+
+        if ( ch->position == POS_FIGHTING 
+        &&   IS_NPC(ch) )
+        {
+                /* Mobs can only smear paints they are holding during combat -- Owl 1/7/22 */
+                if (!(obj = get_eq_char(ch, WEAR_HOLD))) 
+                {
+                        send_to_char("You can only smear paints you are holding during combat!\n\r", ch);
+                        return;
+                }
+
         }
 
         if (obj->item_type != ITEM_PAINT)
@@ -2706,8 +2734,9 @@ void do_quaff (CHAR_DATA *ch, char *argument)
 
         pouch = get_eq_char(ch, WEAR_POUCH);
 
-        if (ch->position == POS_FIGHTING)
+        if ( ch->position == POS_FIGHTING && !IS_NPC(ch))
         {
+                
                 if (!pouch)
                 {
                         send_to_char("You are not wearing a pouch to get a potion from!\n\r", ch);
@@ -2724,7 +2753,8 @@ void do_quaff (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                if (!(obj = get_obj_carry(ch, arg)) )
+                if (!(obj = get_obj_carry(ch, arg)) 
+                &&  !IS_NPC(ch))
                 {
                         if (!pouch)
                         {
@@ -2737,6 +2767,18 @@ void do_quaff (CHAR_DATA *ch, char *argument)
                                 return;
                         }
                 }
+        }
+
+        if ( ch->position == POS_FIGHTING 
+        &&   IS_NPC(ch) )
+        {
+                /* Mobs can only quaff potions they are holding during combat -- Owl 1/7/22 */
+                if (!(obj = get_eq_char(ch, WEAR_HOLD))) 
+                {
+                        send_to_char("You can only quaff potions you are holding during combat!\n\r", ch);
+                        return;
+                }
+
         }
 
         if (obj->item_type != ITEM_POTION)
@@ -3222,6 +3264,12 @@ void do_steal (CHAR_DATA *ch, char *argument)
         if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
         {
                 send_to_char("You have your hands full.\n\r", ch);
+                return;
+        }
+
+        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        {
+                send_to_char("You can't carry that much weight.\n\r", ch);
                 return;
         }
 
