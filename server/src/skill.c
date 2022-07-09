@@ -3203,7 +3203,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg[0] == '\0' )
         {
-                send_to_char( "        Blueprints              Learned                   Damage\n\r", ch);
+                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
@@ -3236,7 +3236,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char( "        Blueprints              Learned                   Damage\n\r", ch);
+                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
