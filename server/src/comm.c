@@ -2045,6 +2045,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     case 5:  classname = "Shapeshifter"; break;
                     case 6:  classname = "Brawler";     break;
                     case 7:  classname = "Ranger";      break;
+                    case 8:  classname = "Smithy";      break;
                 }
 
                 if (strlen(classname) > 0)
