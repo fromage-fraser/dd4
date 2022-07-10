@@ -1374,8 +1374,8 @@ A huge pile of gold coins is lying here, just waiting to be taken!~
 0~ 500~ 100~ 5~
 5 0 0
 #21508
-map atlantis demondium~
-a map to the realms of Atlantis~
+map pavlopetri demondium~
+a map to the realms of Pavlopetri~
 The map has some drawings on it...~
 ~
 13 0 0
@@ -1389,7 +1389,7 @@ hidden passageway.
 
 Find also, amongst the workers, a shrine...
 it is rumoured that the Demons may be at work
-in Atlantis....~
+in Pavlopetri....~
 #21509
 amarth stone fragment~
 a fragment of the Amarth stone~
@@ -1584,7 +1584,7 @@ A key made of sand lies here.~
 #21527
 silver spoon~
 a silver spoon~
-A tarnished silver spoon lies here, bearing the crest of Atlantis.~
+A tarnished silver spoon lies here, bearing the crest of Pavlopetri.~
 ~
 13 0 1
 0~ 1~ 6~ 11~
@@ -1976,9 +1976,9 @@ A
 A
 19 5
 #21564
-medallion atlantis~
-the medallion of Atlantis~
-A medallion with the symbol of Atlantis on it has been discarded here.~
+medallion pavlopetri~
+the medallion of Pavlopetri~
+A medallion with the symbol of Pavlopetri on it has been discarded here.~
 ~
 9 0 1|4
 10~ 1~ 6~ 11~
@@ -9616,7 +9616,7 @@ D2
 S
 #21933
 Recruiting Room~
-This is where captured citizens of Atlantis are taken to be "converted" to the
+This is where captured citizens of Pavlopetri are taken to be "converted" to the
 worship of Thrasher. The pure unmitigated evilness of this place almost causes
 you to lose consciousness. The room is packed with various kinds of torture and
 brainwashing equipment.
@@ -9629,7 +9629,7 @@ D0
 S
 #21934
 Prison Cell~
-This cramped grimy cell houses captured citizens of Atlantis before they are either
+This cramped grimy cell houses captured citizens of Pavlopetri before they are either
 converted or sacrificed.
 ~
 0 1|8|8192 0
