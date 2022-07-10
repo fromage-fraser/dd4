@@ -3184,13 +3184,14 @@ void do_construct( CHAR_DATA *ch, char *arg )
         OBJ_DATA        *creation;
         int             found, i;
         char            buf[MAX_STRING_LENGTH];
+        const char* bar = "_____________________________________________________________________________\n\r\n\r";
 
         if (IS_NPC(ch))
                 return;
 
         if (ch->class != CLASS_SMITHY)
         {
-                send_to_char("You are unble to build anything you clumst oath.\n\r", ch);
+                send_to_char("You are unble to build anything you clumsy oath.\n\r", ch);
                 return;
         }
 
@@ -3202,9 +3203,25 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg[0] == '\0' )
         {
-               
-                send_to_char("What do you want to construct?\n\r", ch);
+                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
+                send_to_char(bar, ch);
+
+                for (i = 0; i < BLUEPRINTS_MAX; i++)
+                {
+                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
+                        {
+                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                blueprint_list[i].blueprint_name,
+                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
+                                blueprint_list[i].blueprint_damage[0],
+                                blueprint_list[i].blueprint_damage[1] 
+                                );
+                                send_to_char(buf, ch);
+                        }
+                        
+                }
                 return;
+               
         }
 
         found = -1;
@@ -3219,13 +3236,20 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (found == -1)
         {
-                send_to_char("You are studying the following blueprints:\n\r", ch);
+                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
+                send_to_char(bar, ch);
+
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
                         if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
                         {
-                                sprintf(buf, "%s: %d percent.", blueprint_list[i].blueprint_name,ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] );
-                                act(buf, ch, NULL, NULL, TO_CHAR);
+                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                blueprint_list[i].blueprint_name,
+                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
+                                blueprint_list[i].blueprint_damage[0],
+                                blueprint_list[i].blueprint_damage[1] 
+                                );
+                                send_to_char(buf, ch);
                         }
                         
                 }
@@ -3251,12 +3275,22 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 blueprint_list[i].blueprint_cost[2], 
                 blueprint_list[i].blueprint_cost[3], 
                 blueprint_list[i].blueprint_cost[4]);
+
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 return; 
         }
 
         creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), 0 );
         obj_to_room( creation, ch->in_room );
+        
+        if (blueprint_list[i].blueprint_ego)
+        {               
+                SET_BIT(creation->extra_flags, ITEM_EGO);
+                SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
+        }
+
+
+        set_obj_owner(creation, ch->name);
 
         send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
@@ -3503,6 +3537,143 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
 
         set_obj_owner(obj, ch->name);
 }
+
+void do_trigger (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        OBJ_DATA *turret;
+        OBJ_DATA *obj;
+        OBJ_DATA *obj_next;
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        int        sn;
+        int        glookup;
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+
+        if (IS_NPC(ch))
+        {
+                return;
+        }
+
+        else if (!CAN_DO(ch, gsn_trigger))
+        {
+                send_to_char("You cant trigger mechanisms.\n\r", ch);
+                return;
+        }
+
+        if (!str_cmp(arg2, "all") || !str_prefix("all.", arg2))
+        {
+                send_to_char("You can't do that.\n\r", ch);
+                return;
+        }
+
+        if (  (arg1[0] == '\0' || arg2[0] == '\0') )
+        {
+                send_to_char( "Trigger what against who?\n\r", ch );
+                return;
+        }
+
+        if (arg2[0] == '\0')
+        {
+                send_to_char ("Who would you trigger an attack on?\n\r", ch);
+                return;
+        }
+
+        if (!( victim = get_char_room( ch, arg2) ) )
+        {
+
+                send_to_char ("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("You cant target yourself.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        if (ch->position < POS_STANDING)
+        {
+                send_to_char("Your not ready.\n\r", ch);
+                return;
+        }
+
+        turret = get_obj_here(ch, "turret");
+        
+        if (!turret)
+        {
+                send_to_char("Your turret is not deployed!\n\r", ch);
+                return;
+        }
+        else
+        {
+                        /*
+                        if (!check_blind(ch))
+                                return;
+                        */
+
+                if (!(obj = get_obj_list(ch, arg1, turret->contains )))
+                {
+                        send_to_char("That module is not in your turret.\n\r", ch);
+                        return;
+                }
+                else
+                {
+                        if (obj->level > ch->level)
+                        {
+                                act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
+                                return;
+                        }
+                }
+        }
+       
+        if (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
+        {
+                send_to_char("How did that get in there - its not a turret module (report bug).\n\r", ch);
+                return;
+        }
+        
+
+
+
+
+
+
+        for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj = obj_next)
+        {
+                obj_next = obj->next_content;
+                glookup = -1;
+                for ( sn = 0; sn < MAX_SKILL; sn++ )
+                {
+                        if (!str_cmp(skill_table[sn].name,arg1))
+                        {
+                                glookup = sn;
+                                break;
+                        }
+                }
+
+                if ( number_range(0,100) < ch->pcdata->learned[gsn_dart])
+                {
+                        /* moght do a case here depending on type of module      */
+                        act("You trigger your $p.", ch, obj, NULL ,TO_CHAR);
+                        act("$n triggers $m $p.", ch, obj, NULL, TO_ROOM);
+                        damage(ch, victim, number_range(10, ch->level), glookup, FALSE);
+                }
+                else
+                {
+                        act("The triggering mechanism collapses for the $p. Nothing happens..", ch, obj, NULL ,TO_CHAR);
+                        act("$n triggers $m $p, but nothing happens.", ch, obj, NULL, TO_ROOM);    
+                }
+        }
+
+        return;
+}
+
 
 void do_classify( CHAR_DATA *ch, char *arg )
 {

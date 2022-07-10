@@ -496,6 +496,12 @@ void do_put (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if ( (IS_SET(container->ego_flags, EGO_ITEM_TURRET )) && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)))
+                {
+                        send_to_char("You can only put modules into the turret slots.\n\r", ch);
+                        return;  
+                };
+
                 if (get_obj_weight(obj) + get_obj_weight(container)
                     > container->value[0])
                 {

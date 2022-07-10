@@ -3024,7 +3024,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "something strange",    "an anvil",             "an auction ticket",
                 "a special clan artefact",                      "a magical portal",
                 "some poison powder",   "a lockpick",           "a musical instrument",
-                "an armourer's hammer", "some mithril",         "a whetstone"
+                "an armourer's hammer", "some mithril",         "a whetstone",
+                "a crafting tool",      "a mgical crafting tool", "a turret module"
         };
 
         const char* extras [31] =
@@ -3188,6 +3189,10 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Counterbalanced");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
                         strcat (buf, " Battle Terror");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
+                        strcat (buf, " Engineers Turret");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
+                        strcat (buf, " Turret Module");
                         strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
