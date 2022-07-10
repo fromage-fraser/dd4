@@ -1070,13 +1070,13 @@ void print_pkscore_table (CHAR_DATA *ch, int start)
 
         const char* class_colours[] =
         {
-                "{Y", "{G", "{B", "{M", "{W", "{R", "{C", "{w"
+                "{Y", "{G", "{B", "{M", "{W", "{R", "{C", "{w", "{G"
         };
         
         const char* sub_class_colours[] =
         {
                 "{x", "{Y", "{Y", "{G", "{G", "{B", "{B", "{M", "{M",
-                "{W", "{W", "{R", "{R", "{C", "{C", "{w", "{w" 
+                "{W", "{W", "{R", "{R", "{C", "{C", "{w", "{w", "{G", "{G" 
         }; 
         
         sprintf( buf, "                                                 Raw    Final\n\r"   

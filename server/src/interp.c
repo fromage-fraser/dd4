@@ -169,6 +169,7 @@ const struct cmd_type cmd_table [] =
         { "brandish",   do_brandish,    POS_RESTING,     0,  LOG_NORMAL },
         { "close",      do_close,       POS_RESTING,     0,  LOG_NORMAL },
         { "climb",      do_climb,       POS_STANDING,    0,  LOG_NORMAL },
+        { "construct",  do_construct,   POS_STANDING,    0,  LOG_NORMAL },
         { "drink",      do_drink,       POS_RESTING,     0,  LOG_NORMAL },
         { "drop",       do_drop,        POS_RESTING,     0,  LOG_NORMAL },
         { "eat",        do_eat,         POS_RESTING,     0,  LOG_NORMAL },
@@ -255,6 +256,7 @@ const struct cmd_type cmd_table [] =
         { "knife toss", do_knife_toss,  POS_FIGHTING,    0,  LOG_NORMAL },
         { "smoke bomb", do_smoke_bomb,  POS_FIGHTING,    0,  LOG_NORMAL },
         { "snapshot",   do_snap_shot,   POS_FIGHTING,    0,  LOG_NORMAL },
+        { "trigger",    do_trigger,     POS_FIGHTING,    0,  LOG_NORMAL },
 
         /*
          * Miscellaneous commands.
@@ -270,6 +272,7 @@ const struct cmd_type cmd_table [] =
         { "change",     do_change,      POS_RESTING,     0,  LOG_NEVER },
         { "chant",      do_chant,       POS_FIGHTING,    0,  LOG_NORMAL },
         { "chameleon power",do_chameleon,POS_STANDING,   0,  LOG_NORMAL },
+        { "counterbalance",do_counterbalance,POS_STANDING,0, LOG_NORMAL },
         { "delet",      do_delet,       POS_DEAD,        0,  LOG_ALWAYS },
         { "delete",     do_delete,      POS_DEAD,        0,  LOG_ALWAYS },
         { "deposit",    do_deposit,     POS_RESTING,     0,  LOG_NORMAL },
@@ -291,6 +294,7 @@ const struct cmd_type cmd_table [] =
         { "hide",       do_hide,        POS_RESTING,     0,  LOG_NORMAL },
         { "hunt",       do_hunt,        POS_STANDING,    0,  LOG_NORMAL },
         { "identify",   do_identify,    POS_STANDING,    0,  LOG_NORMAL },
+        { "imbue",      do_imbue,       POS_STANDING,    0,  LOG_NORMAL },
         { "intimidate", do_intimidate,  POS_STANDING,    0,  LOG_NORMAL },
         { "extort",     do_extort,      POS_STANDING,    0,  LOG_NORMAL },
         { "mist walk",  do_mist_walk,   POS_STANDING,    0,  LOG_NORMAL },

@@ -571,6 +571,45 @@ int     gsn_snap_shot;
 int     gsn_crush;
 int     gsn_swoop;
 int     gsn_smelt;
+int     gsn_strengthen;
+int     gsn_imbue;
+int     gsn_uncommon_set;
+int     gsn_rare_set;
+int     gsn_epic_set;
+int     gsn_legendary_set;
+int     gsn_repelling;
+int     gsn_craft_weapon;
+int     gsn_counterbalance;
+int     gsn_weaponchain;
+int     gsn_shieldchain;
+int     gsn_hurl;
+int     gsn_serate;
+int     gsn_engrave;
+int     gsn_discharge;
+int     gsn_trigger;
+int     gsn_dart;
+int     gsn_launcher;
+int     gsn_reflector;
+int     gsn_arrestor;
+int     gsn_driver;
+int     gsn_emergency;
+int     gsn_deploy;
+int     gsn_forager;
+int     gsn_spyglass;
+int     gsn_base;
+int     gsn_miner;
+int     gsn_hurl;
+int     gsn_fire_flask;
+int     gsn_frost_flask;
+int     gsn_stun_flask;
+int     gsn_blind_flask;
+int     gsn_lightning_flask;
+int     gsn_acid_flask;
+int     gsn_bmf_flask;
+int     gsn_inscribe;
+int     gsn_enhancement;
+int     gsn_healing;
+int     gsn_ward;
 
 /*
  *  Spell groups
@@ -631,7 +670,7 @@ int     gsn_group_armoursmith;
 int     gsn_group_inscription;
 int     gsn_group_alchemy;
 int     gsn_group_turret_tech;
-int     gsn_group_mechanical_tech;
+int     gsn_group_mech_tech;
 
 
 /*

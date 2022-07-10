@@ -1988,7 +1988,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                              "New characters may choose one of the following classes:\n\r\n\r",
                              ch);
 
-                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
                 {
                         sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                         send_to_char(buf, ch);
@@ -2005,7 +2005,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r",
                                      ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);
@@ -2015,7 +2015,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                for (iClass = 0; iClass < MAX_CLASS; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
                 {
                         if (!str_prefix(argument, class_table[iClass].show_name))
                         {
@@ -2024,7 +2024,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         }
                 }
 
-                if (iClass == MAX_CLASS)
+                if (iClass == MAX_CLASS -1 )
                 {
                         send_to_char("\n\r{Y}rInvalid class!{x\n\r"
                                      "{cPlease choose a class, or press ENTER to list available classes:{x ", ch);
@@ -2045,6 +2045,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     case 5:  classname = "Shapeshifter"; break;
                     case 6:  classname = "Brawler";     break;
                     case 7:  classname = "Ranger";      break;
+                    case 8:  classname = "Smithy";      break;
                 }
 
                 if (strlen(classname) > 0)
@@ -2068,7 +2069,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r", ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);

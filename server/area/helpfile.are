@@ -5734,9 +5734,10 @@ You need at least the number specified to get to each level.
 
                     Level      Quest points needed
 
-                      50                  1
-                      70                200
-                     100                500
+                      30                  1
+                      50                200
+                      70                500
+                     100               1000
 
 You will not progress to the next level if these amounts are not met.
 There will be a message advising the quest points you require if you do

@@ -103,7 +103,16 @@ const struct class_type class_table [ MAX_CLASS ] =
                 2,  85, 18,  0,  10, 13,  FALSE,
                 "Barbarian",  "Bard",  "Brb",  "Brd",
                 { 1, -1, -1, 2, 2 }
+        },
+
+        {
+                "Smi",  "Smithy",
+                APPLY_STR,  OBJ_VNUM_SCHOOL_SWORD,
+                2,  85, 18,  0,  10, 13,  FALSE,
+                "Engineer",  "Alchemist",  "Eng",  "Alc",
+                { 3, 0, -1, -2, 1 }
         }
+
 };
 
 
@@ -130,7 +139,9 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         {       "Mon",  "Monk",                 APPLY_WIS,      TRUE    },
         {       "Mar",  "M. Artist",            APPLY_STR,      FALSE   },
         {       "Brb",  "Barbarian",            APPLY_STR,      FALSE   },
-        {       "Brd",  "Bard",                 APPLY_DEX,      TRUE    }
+        {       "Brd",  "Bard",                 APPLY_DEX,      TRUE    },
+        {       "Eng",  "Engineer",             APPLY_INT,      FALSE   },
+        {       "Alc",  "Alchemist",            APPLY_INT,      FALSE   }
 };
 
 
@@ -167,6 +178,20 @@ const struct clan_items clan_item_list [ MAX_CLAN ] =
         {       "MOC",  368,    369,    370,    371             },
         {       "SOM",  476,    477,    479,    478             },
         {       "COB",  488,    489,    491,    490             }
+};
+
+const struct imbue_types imbue_list [ MAX_IMBUE ] = 
+{
+        /* name, short_desc, apply_buff, base_gain */
+        { "to_damage", "More damage", APPLY_DAMROLL, 12 },
+        { "to_hit", "More damage", APPLY_HITROLL, 11 },
+        { "to_mana", "More damage", APPLY_MANA, 100 },
+        { "to_hps", "More damage", APPLY_HIT, 100 },
+        { "to_move", "More damage", APPLY_MOVE, 40 },
+        { "to_str", "More damage", APPLY_STR, 1 },
+        { "to_dex", "More damage", APPLY_DEX, 1 },
+        { "to_damage", "More damage", APPLY_DAMROLL, 12 },
+        { "to_ac", "More damage", APPLY_AC, -22 },
 };
 
 
@@ -256,6 +281,12 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
+/* Blueprint structure : name, description, blueprint_ref, bluepring_ego, blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) */
+const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
+{
+        { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET, { 0, 0 }, { 30, 1, 0, 0, 0 } },
+        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE, { 10, 20 }, { 10, 1, 0, 0, 0 } }   
+};
 
 const struct song song_table [ MAX_SONGS ] =
 {
@@ -612,6 +643,7 @@ const struct loc_wear_struct loc_wear_table [MAX_CLASS + MAX_SUB_CLASS - 1] =
         { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* sft */
         { { 1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0 } }, /* bra */
         { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } }, /* rng */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* smi */
         { { 1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0 } }, /* nec */
         { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* wlk */
         { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* tem */
@@ -626,8 +658,10 @@ const struct loc_wear_struct loc_wear_table [MAX_CLASS + MAX_SUB_CLASS - 1] =
         { { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* vam */
         { { 1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0 } }, /* mon */
         { { 1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0 } }, /* mar */
-        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* brb */
-        { { 1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0 } }  /* brd */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } }, /* brb */
+        { { 1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1 } }, /* brd */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }, /* eng */
+        { { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0 } }  /* alc */
 };
 
 
@@ -652,6 +686,7 @@ const struct wear_struct wear_table [ MAX_CLASS + MAX_SUB_CLASS - 1 ] =
         {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* sft */
         {{ 0,1,0,0,0,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 0,1,1,1,0,0,1,1,1 }}, /* bra */
         {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* rng */
+        {{ 0,1,0,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* smi */
         {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* nec */
         {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* wlk */
         {{ 0,1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,0,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* tem */
@@ -667,7 +702,9 @@ const struct wear_struct wear_table [ MAX_CLASS + MAX_SUB_CLASS - 1 ] =
         {{ 0,1,1,1,1,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* mon */
         {{ 0,1,0,0,0,0,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* mar */
         {{ 0,1,1,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* brb */
-        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,1,1,1,1 }}  /* brd */
+        {{ 0,1,1,0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,1,1,1,1,1 }}, /* brd */
+        {{ 0,1,0,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}, /* eng */
+        {{ 0,1,0,0,0,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,0,1, 0,1,1,1,0,0,1,1,1 }}  /* alc */
 };
 
 
@@ -1229,6 +1266,16 @@ const struct liq_type liq_table [ LIQ_MAX ] =
         { "cola",                       "cherry",               {  0, 1,  5 } }   /* 15 */
 };
 
+/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022
+struct raw_mats_data raw_mats_table [RAW_MATS_MAX] = 
+{
+        { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
+        { "titanium",     "A silver metal",                              { 100, 1, 1, 0 } },
+        { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
+        { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
+        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } }
+};
+*/
 
 /*
  *  Skill pre-reqs
@@ -1260,6 +1307,9 @@ struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 #include "pre_reqs/pre_req-bard.c"
 #include "pre_reqs/pre_req-ranger.c"
 #include "pre_reqs/pre_req-barbarian.c"
+#include "pre_reqs/pre_req-smithy.c"
+#include "pre_reqs/pre_req-engineer.c"
+#include "pre_reqs/pre_req-alchemist.c"
 };
 
 
@@ -1767,6 +1817,58 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         { &gsn_group_armoursmith,                       0 },
         { &gsn_smelt,                                   0 },
+        { &gsn_strengthen,		                0 },
+        { &gsn_imbue,			                0 },
+        { &gsn_uncommon_set,	                        0 },
+        { &gsn_rare_set,		                0 },
+        { &gsn_epic_set,		                0 },
+        { &gsn_legendary_set,	                        0 },
+        { &gsn_repelling,		                0 },
+
+        {&gsn_group_weaponsmith,	                0 },
+        {&gsn_craft_weapon,		                0 },
+        {&gsn_counterbalance,		                0 },
+        {&gsn_weaponchain,		                0 },
+        {&gsn_shieldchain,		                0 },
+        {&gsn_hurl,		                        0 },
+        {&gsn_serate,		                        0 },
+        {&gsn_engrave,		                        0 },
+        {&gsn_discharge,		                0 },
+
+        {&gsn_group_turret_tech,	                0 },
+        {&gsn_trigger,			                0 },
+        {&gsn_dart,			                0 },
+        {&gsn_launcher,			                0 },
+        {&gsn_reflector,		                0 },
+        {&gsn_shield,			                0 },
+        {&gsn_arrestor,		  	                0 },
+        {&gsn_driver,			                0 },
+        {&gsn_emergency,		                0 },
+
+        {&gsn_group_mech_tech,                          0 },
+        {&gsn_deploy,			                0 },
+        {&gsn_forager,        		                0 },
+        {&gsn_spyglass,       		                0 },
+        {&gsn_base,          		                0 },
+        {&gsn_miner,          		                0 },
+
+        {&gsn_group_alchemy,          		        0 },
+        {&gsn_hurl,              		        0 },
+        {&gsn_fire_flask,            		        0 },
+        {&gsn_frost_flask,           		        0 },
+        {&gsn_stun_flask,              		        0 },
+        {&gsn_blind_flask,                   	        0 },
+        {&gsn_lightning_flask,           		0 },
+        {&gsn_acid_flask,                               0 },
+        {&gsn_bmf_flask,                                0 },
+
+        {&gsn_group_inscription, 	       	        0 },
+        {&gsn_inscribe,                  	        0 },
+        {&gsn_protection,                   	        0 },
+        {&gsn_enhancement,                   	        0 },
+        {&gsn_healing,                                  0 },
+        {&gsn_ward,                                     0 },
+
 
         { &gsn_group_last,                              0 }
 };
@@ -2558,6 +2660,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 12,
                 "", "!Berserk!"
+        },
+
+        {
+                "trigger", &gsn_trigger,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "turret module", "!Trigger!"
+        },
+
+        {
+                "dart", &gsn_dart,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "dart module", "!Dart!"
         },
 
         {
@@ -5137,6 +5253,22 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "smelt", "!Smelt!"
 
         },
+
+        {
+                "imbue", &gsn_imbue,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "imbue", "!Imbue!"
+
+        },
+
+        {
+                "counterbalance", &gsn_counterbalance,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "counterbalance", "!Counterbalance!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

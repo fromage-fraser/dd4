@@ -1449,6 +1449,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
 
                 /* Let's not have imms hosed by sleep traps etc -- Owl 8/7/22 */
 
+
                 if ( IS_IMMORTAL(ch) )
                 {
                         REMOVE_BIT(ch->affected_by, AFF_SLEEP);
