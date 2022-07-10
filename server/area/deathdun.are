@@ -4736,14 +4736,6 @@ O 1 17744 1 17745 hand
 *
 M 1 17744 1 17746 prisoner
 *
-O 1 17741 1 17747 plinth
-P 1 17737 1 17741 skull
-P 1 17738 1 17737 topaz
-P 1 17738 1 17737 topaz
-O 1 17740 1 17747 crossbow
-O 1 17742 1 17747 red ball
-O 1 17743 1 17747 blue ball
-*
 O 1 17745 1 17750 box
 P 1 17746 1 17745 key
 P 1 17747 1 17745 sapphire
@@ -4784,6 +4776,14 @@ M 1 17717 1 17767 dwarf
 E 1 17740 1 16   crossbow
 E 1 17741 1 5    mail
 G 1 17827 0 0    key
+*
+O 1 17741 1 17747 plinth
+P 1 17737 1 17741 skull
+P 1 17738 1 17737 topaz
+P 1 17738 1 17737 topaz
+O 1 17740 1 17747 crossbow
+O 1 17742 1 17747 red ball
+O 1 17743 1 17747 blue ball
 *
 O 1 17767 1 17770 crown
 M 1 17720 1 17770 swarm

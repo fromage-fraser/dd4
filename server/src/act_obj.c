@@ -3279,12 +3279,6 @@ void do_steal (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
-        {
-                send_to_char("You can't carry that much weight.\n\r", ch);
-                return;
-        }
-
         obj_from_char(obj);
         obj_to_char(obj, ch);
         send_to_char("Muhaha! They didn't even notice! You slink away from them, grinning.\n\r", ch);

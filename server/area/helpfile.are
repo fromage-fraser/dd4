@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [16 June 2022]
+    [10 July 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,9 +213,11 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
+    {WNew Area 'Ota'ar Dar - Market Canton' is in for levels 30-35.  Access it
+    by heading down from the Yeats Sea.{x
+
     {WTINKER mobs can repair damaged gear (sharpened/forged/poisoned items etc)!{x
 
-    {WShifter phoenix form now has a beak and the ability to Swoop!{x
 
 
 
@@ -250,6 +252,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{WJuly 2022{x
+- Added new area 'Ota'ar Dar - Market Canton' for levels 30-35
+- Added new special 'spec_cast_electric'
 
 {WJune 2022{x
 - Added ACT_TINKER.  Mobs with it can repair items that have
@@ -1564,6 +1570,7 @@ your own clan are not shown.
 -1 WIZLIST~
 {x
 {cThe Implementors{x
+    {WBrutus{x     {wThe OG, The Legend{x
     {WShade{x      {wArbitrary Rule Maker and Bringer of Furious Wrath{x
     {WGezhp{x      {wBorn-again DD Code-Base Bug-Creationist{x
     {WOwl{x        {wJust Pathetically Happy to be Included{x
@@ -1877,12 +1884,12 @@ Also, read the relevant section of the FAQ ('HELP FAQ').
 
 0 QUESTMASTERS~
 
-There are four questmasters scattered throughout the Domain.  For those
+There are five questmasters scattered throughout the Domain.  For those
 characters level 25 and under, Suturb in the Adventurer's Guild in Midgaard
 will provide quests.  After level 25, you will need to range further afield.
-Goldmoon, near Solace, the Mercenary Master in Anon, and Dahij, near Kerofk,
-all provide quests.  Note that the questmasters who are more difficult to
-journey to provide greater rewards for your efforts.
+Goldmoon, near Solace, Reaver Maeril in Ota'ar Dar, the Mercenary Master 
+in Anon, and Dahij, near Kerofk all provide quests.  Note that questmasters 
+who are more difficult to journey to provide greater rewards for your efforts.
 ~
 
 0 CHAT . MUSIC QUESTION ANSWER SHOUT YELL~
@@ -2240,40 +2247,42 @@ Crafting and spellcrafting locations:
 {CCRAFTING{x
 --------
 {WVNUM    ROOM                        AREA                        LEVEL       FILENAME{x
-29966   [The lemming smithy]        [The Lemming Caves]         [5 15]      [lemmings2.are]
-2503    [The Armourer]              [Ultima]                    [5 30]      [ultima.are] {R*{x
-5321    [The smithy]                [Old Thalos]                [10 25]     [mirror.are] {R*{x
-5221    [The smithy]                [Thalos]                    [10 25]     [thalos.are]
-1381    [A very hot room]           [Tower of Sorcery]          [10 30]     [hitower.are]
-937     [Smithy]                    [Olympus]                   [20 35]     [olympus.are]
-29868   [The smithy]                [Prince's Fortress]         [20 40]     [usurper.are]
-23586   [A Stable.]                 [City Of Thieves]           [30 50]     [citie.are] {R*{x
-14053   [The smithy's cave]         [Cyclops Caves]             [35 55]     [cyclops.are] {R*{x
-31254   [Base of Southwest Tower]   [The Walls of Anon]         [45 60]     [tcwn2.are]
-4752    [Blacksmith's Home]         [Kingdom of Juargan]        [45 65]     [juargan.are] {R*{x
-24023   [The Cobresh Smithy.]       [The Yitrite Mines]         [50 75]     [yitrite.are] {R*{x
-30021   [Gryphon Smithy]            [Krondor]                   [0 100]     [krondor.are]
-28096   [Jasmir's Armory]           [Draagdim]                  [0 100]     [draagdim.are]
-29151   [The Bronze Scabbard]       [Freeport]                  [0 100]     [freeport.are] {R*{x
-30803   [The workshop]              [Bastion of Shadows]        [80 100]    [bastion.are] {R*{x
-5321    [The smithy]                [Old Thalos]                [10 25]     [mirror.are] {R*{x
-603     [The Blacksmith]            [New Ofcol]                 [0 100]     [ofcol2.are]
-31041   [The Smithy]                [The City of Anon]          [0 100]     [tcwn.are]
+29966   [The lemming smithy]        [The Lemming Caves]          [5 15]      [lemmings2.are]
+2503    [The Armourer]              [Ultima]                     [5 30]      [ultima.are] {R*{x
+5321    [The smithy]                [Old Thalos]                 [10 25]     [mirror.are] {R*{x
+5221    [The smithy]                [Thalos]                     [10 25]     [thalos.are]
+1381    [A very hot room]           [Tower of Sorcery]           [10 30]     [hitower.are]
+937     [Smithy]                    [Olympus]                    [20 35]     [olympus.are]
+29868   [The smithy]                [Prince's Fortress]          [20 40]     [usurper.are]
+27335,27635 [Metalworkers' Forge]   [Ota'ar Dar - Market Canton] [30 35]     [sahuagin_market.are] {R*{x
+23586   [A Stable.]                 [City Of Thieves]            [30 50]     [citie.are] {R*{x
+14053   [The smithy's cave]         [Cyclops Caves]              [35 55]     [cyclops.are] {R*{x
+31254   [Base of Southwest Tower]   [The Walls of Anon]          [45 60]     [tcwn2.are]
+4752    [Blacksmith's Home]         [Kingdom of Juargan]         [45 65]     [juargan.are] {R*{x
+24023   [The Cobresh Smithy.]       [The Yitrite Mines]          [50 75]     [yitrite.are] {R*{x
+30021   [Gryphon Smithy]            [Krondor]                    [0 100]     [krondor.are]
+28096   [Jasmir's Armory]           [Draagdim]                   [0 100]     [draagdim.are]
+29151   [The Bronze Scabbard]       [Freeport]                   [0 100]     [freeport.are] {R*{x
+30803   [The workshop]              [Bastion of Shadows]         [80 100]    [bastion.are] {R*{x
+5321    [The smithy]                [Old Thalos]                 [10 25]     [mirror.are] {R*{x
+603     [The Blacksmith]            [New Ofcol]                  [0 100]     [ofcol2.are]
+31041   [The Smithy]                [The City of Anon]           [0 100]     [tcwn.are]
 
 {MSPELLCRAFTING{x
 -------------
-3019    [Mage's Laboratory]         [Midgaard]                  [0 100]     [midgaard.are]
-9419    [The Laboratory]            [Fleshmonger's Tower]       [5 15]      [fleshmonger.are]
-1386    [A laboratory]              [Tower of Sorcery]          [10 30]     [hitower.are]
-16437   [Experimentation Room]      [Underdark]                 [20 60]     [under2.are] {R*{x
-9533    [Velkyn's laboratory]       [Vampire Catacombs]         [25 35]     [vampcat.are] {R*{x
-10148   [A Laboratory]              [Witch's Tower]             [25 35]     [witch.are] {R*{x
-25107   [Transformation Laboratory] [Kahsis]                    [35 60]     [kahsis.are] {R*{x
-20387   [The Laboratory]            [The Fortress of Goblins]   [40 60]     [fortress.are]
-13639   [A small laboratory]        [The Valley of Dreams]      [45 60]     [deserts.are] {R*{x
-13407   [The Laboratory]            [The Catacombs]             [0 100]     [dungeons.are] {R*{x
-15782-15786  [Various]              [Mount Doom]                [60 85]     [mtdoom2.are]
-14644   [The Laboratory]            [Zyklor's Tower]            [60 100]    [tower.are] {R*{x
+3019    [Mage's Laboratory]         [Midgaard]                   [0 100]     [midgaard.are]
+9419    [The Laboratory]            [Fleshmonger's Tower]        [5 15]      [fleshmonger.are]
+1386    [A laboratory]              [Tower of Sorcery]           [10 30]     [hitower.are]
+16437   [Experimentation Room]      [Underdark]                  [20 60]     [under2.are] {R*{x
+9533    [Velkyn's laboratory]       [Vampire Catacombs]          [25 35]     [vampcat.are] {R*{x
+10148   [A Laboratory]              [Witch's Tower]              [25 35]     [witch.are] {R*{x
+27352,27652 [Mohmit's Laboratory]   [Ota'ar Dar - Market Canton] [30 35]     [sahuagin_market.are] {R*{x
+25107   [Transformation Laboratory] [Kahsis]                     [35 60]     [kahsis.are] {R*{x
+20387   [The Laboratory]            [The Fortress of Goblins]    [40 60]     [fortress.are]
+13639   [A small laboratory]        [The Valley of Dreams]       [45 60]     [deserts.are] {R*{x
+13407   [The Laboratory]            [The Catacombs]              [0 100]     [dungeons.are] {R*{x
+15782-15786  [Various]              [Mount Doom]                 [60 85]     [mtdoom2.are]
+14644   [The Laboratory]            [Zyklor's Tower]             [60 100]    [tower.are] {R*{x
 
 {R*{x Contain crafting bonus objects
 ~
@@ -5269,9 +5278,12 @@ Shapeshifter  .   A flying island over a vast sea - seek the leader of birdmen.
 Brawler   .   .   Seek your inner demon - for your trainer shall be near.
 
 Level 30
-Warrior   .   .   A knight up a chain (lore etc... only)
+Warrior   .   .   A knight up a chain (lore etc... only).
+Warrior   .   .   A four-armed warrior in an underwater city (Sahuagin only).
+Brawler   .   .   Short and fishy in a watery city (Sahuagin only).
 Bard  .   .   .   Seek a sullen bard, drowning his sorrows in an Inn.
-Ranger            A ranger of course, sitting at a table
+Ranger    .   .   A ranger of course, sitting at a table.
+Cleric    .   .   A temple matron, deep under the sea.
 
 Level 35
 Seek all trainers in the town of Anon.
@@ -5292,6 +5304,7 @@ A lizardman in a sea-side town can provide you with the last secrets.
 Special teachers
 Hunt .    .   .   A ranger of course, sitting at a table.
 Mount     .   .   A Grand Knight will help.
+Mount     .   .   An aquatic mount specialist.
 ~
 
 0 RIPOSTE~
@@ -6408,6 +6421,11 @@ If you want to include a social, just send a note to IMM with the
 social texts in natural English (as in the above example).
 
 Swedish socials will have to pass a rigorous translation process.
+~
+
+0 OTA'AR DAR OTAAR~
+A large city belonging to the sahuagin, ruled over by their prince, Elb'kl Ala.
+It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
 ~
 
 -1 MIDGAARD~

@@ -82,6 +82,7 @@ DECLARE_SPEC_FUN( spec_celestial_repairman );
 DECLARE_SPEC_FUN( spec_sahuagin            );
 DECLARE_SPEC_FUN( spec_evil_evil_gezhp     );
 DECLARE_SPEC_FUN( spec_demon               );
+DECLARE_SPEC_FUN( spec_cast_electric       );
 
 
 /*
@@ -129,6 +130,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_sahuagin"))             return spec_sahuagin;
         if (!str_cmp(name, "spec_evil_evil_gezhp"))      return spec_evil_evil_gezhp;
         if (!str_cmp(name, "spec_demon"))                return spec_demon;
+        if (!str_cmp(name, "spec_cast_electric"))        return spec_cast_electric;
 
         return 0;
 
@@ -185,6 +187,7 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_sahuagin"))           return "spec_sahuagin";
         if (ch->spec_fun == spec_lookup("spec_evil_evil_gezhp"))    return "spec_evil_evil_gezhp";
         if (ch->spec_fun == spec_lookup("spec_demon"))              return "spec_demon";
+        if (ch->spec_fun == spec_lookup("spec_cast_electric"))      return "spec_cast_electric";
     }
     else {
         return "none";
@@ -2502,3 +2505,90 @@ bool spec_demon( CHAR_DATA *ch )
 
         return TRUE;
 }
+
+/* For 'electric' mobs, electric eels etc.  Owl 10/7/22 */
+
+bool spec_cast_electric (CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        char *spell;
+        int sn;
+        char buf[MAX_STRING_LENGTH];
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        while (1)
+        {
+                int min_level;
+                int random = number_range(0,12);
+
+                switch (random)
+                {
+                    case 0:
+                    case 1:
+                        min_level = 1;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Let's hold hands..."); }
+                        spell = "shocking grasp";
+                        break;
+
+                    case 2:
+                        min_level = 16;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"I need a recharge... you'll do!"); }
+                        spell = "energy drain";
+                        break;
+
+                    case 3:
+                        min_level = 25;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Hear me, gods of the storm!"); }
+                        spell = "call lightning";
+                        break;
+
+                    case 4:
+                        min_level = 30;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Let's charge your BRAIN!"); }
+                        spell = "synaptic blast";
+                        break;
+
+                    case 5:
+                        min_level = 40;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Let's share the love around..."); }
+                        spell = "chain lightning";
+                        break;
+
+                    case 6:
+                        min_level = 50;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf, "Behold, the electric breath of DEATH!"); }
+                        spell = "lightning breath";
+                        break;
+
+                    default:
+                        min_level = 5;
+                        if ( CAN_SPEAK(ch) ) { sprintf(buf,"Hahaha, feel my power!"); }
+                        spell = "lightning bolt";
+                }
+
+                if (ch->level >= min_level)
+                        break;
+        }
+
+        sn = skill_lookup(spell);
+
+        if (!sn)
+                return FALSE;
+
+        do_say(ch,buf);
+
+        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        return TRUE;
+}
+
