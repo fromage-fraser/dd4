@@ -3057,6 +3057,7 @@ void show_slist (CHAR_DATA *ch, int number)
                     case CLASS_PSIONICIST: do_help(ch, "spsi"); break;
                     case CLASS_SHAPE_SHIFTER: do_help(ch, "sshape"); break;
                     case CLASS_RANGER: do_help(ch, "sranger"); break;
+                    case CLASS_SMITHY: do_help(ch, "sranger"); break;
 
                     default: break;
                 }
@@ -3081,6 +3082,8 @@ void show_slist (CHAR_DATA *ch, int number)
             case SUB_CLASS_MARTIAL_ARTIST: do_help(ch, "smartial"); break;
             case SUB_CLASS_BARBARIAN: do_help(ch, "sbarbarian"); break;
             case SUB_CLASS_BARD: do_help(ch, "sbard"); break;
+            case SUB_CLASS_ENGINEER: do_help(ch, "sbard"); break;
+            case SUB_CLASS_ALCHEMIST: do_help(ch, "sbard"); break;
 
             default: break;
         }
@@ -4442,7 +4445,7 @@ void print_who_data (CHAR_DATA *ch, char *buf)
         bool note = FALSE;
 
         const char *class_colours[]
-                = { "{Y", "{G", "{B", "{M", "{W", "{R", "{C", "{w" };
+                = { "{Y", "{G", "{B", "{M", "{W", "{R", "{C", "{w", "{G" };
 
         const char *idle_flag = "{r<{RIdle{x{r>{x ";
         const char *note_flag = "{g<{GNote{x{g>{x ";
