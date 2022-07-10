@@ -1447,6 +1447,15 @@ void do_stand(CHAR_DATA *ch, char *argument)
                          affect_strip(ch, gsn_sleep);
                 }
 
+               /* Let's not have imms hosed by sleep traps etc -- Owl 8/7/22 */
+
+                if ( IS_IMMORTAL(ch) )
+                {
+                        REMOVE_BIT(ch->affected_by, AFF_SLEEP);
+                        affect_strip(ch, gsn_sleep);
+                        affect_strip(ch, gsn_trap);
+                }
+
                 if ( IS_AFFECTED(ch, AFF_SLEEP ) )
                 {
                         send_to_char("You can't wake up!\n\r", ch);

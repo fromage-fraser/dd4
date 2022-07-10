@@ -934,10 +934,19 @@ void do_give (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                act("You give $N some coins.",  ch, NULL, victim, TO_CHAR);
-                act("$n gives you some coins.", ch, NULL, victim, TO_VICT);
-                act("$n gives $N some coins.",  ch, NULL, victim, TO_NOTVICT);
+                if (amount == 1)
+                {
+                        act("You give $N a coin.",  ch, NULL, victim, TO_CHAR);
+                        act("$n gives you a coin.", ch, NULL, victim, TO_VICT);
+                        act("$n gives $N a coin.",  ch, NULL, victim, TO_NOTVICT);}
+                else {
+                        act("You give $N some coins.",  ch, NULL, victim, TO_CHAR);
+                        act("$n gives you some coins.", ch, NULL, victim, TO_VICT);
+                        act("$n gives $N some coins.",  ch, NULL, victim, TO_NOTVICT);
+                }
+
                 mprog_bribe_trigger(victim, ch, amount);
+                
                 return;
         }
 
@@ -3270,6 +3279,12 @@ void do_steal (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        {
+                send_to_char("You can't carry that much weight.\n\r", ch);
+                return;
+        }
+
         obj_from_char(obj);
         obj_to_char(obj, ch);
         send_to_char("Muhaha! They didn't even notice! You slink away from them, grinning.\n\r", ch);
@@ -3379,7 +3394,7 @@ int get_cost (CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy)
                 {
                         if (obj->item_type == pShop->buy_type[itype])
                         {
-                                cost = obj->cost * ( pShop->profit_sell / 100 );
+                                cost = ( obj->cost * pShop->profit_sell ) / 100;
                                 break;
                         }
                 }
