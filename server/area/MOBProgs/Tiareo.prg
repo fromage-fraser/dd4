@@ -1,5 +1,5 @@
 >greet_prog 100~
-        say Welcome, I am Tiareo, the receptionist for the Reaver guildhall.  Are you interested in 'quests'?
+        say Welcome, I am Tiareo, the receptionist for the Reaver guildhall.  Are you interested in a 'quest'?
 ~
 >speech_prog help quest task~
         if level($n) < 30
