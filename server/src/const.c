@@ -294,11 +294,11 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
 const struct set_type   set_list [MAX_SETS] = 
 {
-        { "uncommon set",       "uncommon set", EGO_ITEM_UNCOMMON_SET,  gsn_fly,        gsn_infravision, gsn_sense_traps},
-        { "rare set",           "rare set",      EGO_ITEM_RARE_SET,     gsn_second_attack, gsn_trip,    gsn_enhanced_hit},
-        { "epic set",           "epic set",     EGO_ITEM_EPIC_SET,      gsn_fireshield,    gsn_second_attack, gsn_parry},
-        { "legendary set",      "legendart set",  EGO_ITEM_LEGENDARY_SET,       gsn_sanctuary, gsn_accuracy, gsn_enhanced_damage}
-}
+        { "uncommon",       "uncommon set", EGO_ITEM_UNCOMMON_SET,  "fly",        "infravision", "sense_traps"},
+        { "rare",           "rare set",      EGO_ITEM_RARE_SET,     "second attack", "trip",    "enhanced hit"},
+        { "epic",           "epic set",     EGO_ITEM_EPIC_SET,      "fireshield",    "second attack", "parry"},
+        { "legendary",      "legendart set",  EGO_ITEM_LEGENDARY_SET,  "sanctuary", "accuracy", "enhanced damage"}
+};
 
 
 const struct song song_table [ MAX_SONGS ] =
@@ -5262,14 +5262,6 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         },
 
-                {
-                "empower", &gsn_empower,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
-                spell_null, 0, 0,
-                "empower", "!Empower!"
-
-        },
-
         {
                 "counterbalance", &gsn_counterbalance,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
@@ -5289,6 +5281,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
                 "dart module", "!Dart!"
+        },
+
+        {
+                "empower", &gsn_empower,
+                TYPE_INT, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "empower", "!Empower!"
+
         },
 
         /*

@@ -3307,16 +3307,27 @@ void do_empower (CHAR_DATA *ch, char *argument)
 {
 
         char      arg1 [ MAX_INPUT_LENGTH ];
-        char      arg2 [ MAX_INPUT_LENGTH ];
-        char      arg3 [ MAX_INPUT_LENGTH ];
-        char      arg4 [ MAX_INPUT_LENGTH ];
-        char      arg5 [ MAX_INPUT_LENGTH ];
+        char     arg2 [ MAX_INPUT_LENGTH ];
+        char     arg3 [ MAX_INPUT_LENGTH ];
+        char     arg4 [ MAX_INPUT_LENGTH ];
+        char     arg5 [ MAX_INPUT_LENGTH ];
 
         int        sn;
         int        glookup;
-
+        int     found, i;
+        char    * bonus1; 
+        char    * bonus2; 
+        char    * bonus3;
+        int     ibonus1, ibonus2, ibonus3;
+        int     modifier;
+        int     bitv;
+                
         OBJ_DATA *obj;
-
+        OBJ_DATA *obj2;
+        OBJ_DATA *obj3;
+        OBJ_DATA *obj4;
+        OBJ_DATA *obj5;
+        AFFECT_DATA     *paf;
 
 
       if( !CAN_DO( ch, gsn_empower ) )
@@ -3325,65 +3336,87 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-
         if( arg1[0] == '\0' )
         {
-                        send_to_char("What do you want to empower?\n\r", ch);
+                        send_to_char("What set do you wish to empower?\n\r", ch);
                 return;
         }
 
-        (!str_cmp(set_list[sn].set_name,arg1))
-
-
-
-
-             if (!(obj = get_obj_carry(ch, arg1)))
-                {
-                        send_to_char("You do not have that item.\n\r", ch);
-                        return;
-                }
-
-                if (obj->wear_loc == WEAR_BODY)
-                {
-                        send_to_char("Not while fighting.\n\r", ch);
-                        return;
-                }
-
-                wear_obj(ch, obj, TRUE);
-
-        
-
-        if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_BODY, BIT_WEAR_BODY))
+        if ( !strcmp(arg1, "uncommon") || !strcmp(arg1, "rare") || !strcmp(arg1, "epic") || !strcmp(arg1, "legendary") )
         {
+                send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
+                send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
+                return;                
+
+        }
+
+        /* clunky logic for all the set bonuses I know - Brutus */
+        if ( strcmp(arg1, "uncommon") )
+        {
+                if ( !(obj = get_obj_carry(ch, arg2) ) || !(obj2 = get_obj_carry(ch, arg3) ) ) 
+                {
+                        send_to_char( "You arent carrying that\n\r",ch );
+                        return;
+                }
+
                
-                act("You wear $p on your body.", ch, obj, NULL, TO_CHAR);
-                act("$n wears $p on $s body.",   ch, obj, NULL, TO_ROOM);
-                equip_char(ch, obj, WEAR_BODY);
-                return;
+                switch (number_range( 1, 3 ))
+                {
+                        default :
+                        {       
+                                send_to_char("This is a bug - tell the Imms - (Determine random buff in empower).\n\r", ch);
+                                return;
+                        }
+                        case 1:
+                        {
+                                modifier = gsn_fly;
+                                break;
+                        }
+                                
+                        case 2:
+                        {
+                                modifier = gsn_infravision;
+                                break;
+                        }
+
+                        case 3:
+                        {       
+                                modifier = gsn_sense_traps;
+                                break;
+                        }
+
+                }
+
+
+                if (!affect_free)
+                        paf = alloc_perm(sizeof(*paf));
+                else
+                {
+                        paf = affect_free;
+                        affect_free = affect_free->next;
+                }
+                paf->type           = modifier;
+                paf->duration       = -1;
+                paf->location       = APPLY_NONE;
+                paf->modifier       = 0;
+                paf->bitvector      = 0;
+                paf->next           = obj->affected;
+                obj->affected       = paf;
+                obj2->affected      = paf;
+
+                SET_BIT(obj->extra_flags, ITEM_EGO);
+                SET_BIT(obj->ego_flags, EGO_ITEM_UNCOMMON_SET);
+                SET_BIT(obj2->extra_flags, ITEM_EGO);
+                SET_BIT(obj2->ego_flags, EGO_ITEM_UNCOMMON_SET);
+
+        set_obj_owner(obj, ch->name);
+        act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
+        act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
+
+
         }
-
-        if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_HEAD, BIT_WEAR_HEAD))
-        {
-                if (!remove_obj(ch, WEAR_HEAD, fReplace))
-                        return;
-                act("You wear $p on your head.", ch, obj, NULL, TO_CHAR);
-                act("$n wears $p on $s head.",   ch, obj, NULL, TO_ROOM);
-                equip_char(ch, obj, WEAR_HEAD);
-                return;
-        }
-
-        if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_LEGS, BIT_WEAR_LEGS))
-        {
-                if (!remove_obj(ch, WEAR_LEGS, fReplace))
-                        return;
-                act("You wear $p on your legs.", ch, obj, NULL, TO_CHAR);
-                act("$n wears $p on $s legs.",   ch, obj, NULL, TO_ROOM);
-                equip_char(ch, obj, WEAR_LEGS);
-                return;
-        }
-
-
-
+        else
+                return; 
 }
 
 void do_imbue (CHAR_DATA *ch, char *argument)

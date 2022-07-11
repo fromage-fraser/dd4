@@ -219,9 +219,9 @@ struct set_type
         char    *set_name;
         char    *set_desc;
         int     set_ego;
-        int     set_bonus1;
-        int     set_bonus2;
-        int     set_bonus3;
+        char    * set_bonus1;
+        char     * set_bonus2;
+        char     * set_bonus3;
 };
 
 /*
@@ -1999,6 +1999,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_RARE_SET               BIT_9
 #define EGO_ITEM_EPIC_SET               BIT_10
 #define EGO_ITEM_LEGENDARY_SET          BIT_11
+#define EGO_ITEM_SETBONUS_1
+#define EGO_ITEM_SETBONUS_2
+#define EGO_ITEM_SETBONUS_3
+
 
 /*
  * Apply types (for affects).
@@ -2046,6 +2050,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_RESIST_ACID                       39
 #define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
 #define APPLY_BALANCE                    41      /* for Balance Skill - Brutus Jul 2022 */
+#define APPLY_SET_UNCOMMON                      42
+#define APPLY_SET_RARE                          43
+#define APPLY_SET_EPIC                         44
+#define APPLY_SET_LEGENDARY                     45
 
 /*
  * Values for containers (value[1]).
