@@ -160,11 +160,11 @@ The lucky gambler looks at you and snickers.  Poor Boy!
 0 0
 8 8 1
 #30209
-dealer~
-the Dealer~
-The dealer sets out a new hand for all to play.
+croupier~
+the croupier~
+The croupier swears none of the dice are loaded.
 ~
-The dealer looks at you flatly and says, 'Are you in or out?'  He
+The croupier looks at you flatly and says, 'Are you in or out?'  He
 really doesn't seem to care one way or another.
 ~
 2 0 200 S
@@ -4595,6 +4595,9 @@ D 1 30331 0 1
 D 1 30332 0 1
 S
 
+#GAMES
+M 30209  game_seven		1000000   8	0	   /* the croupier */
+S
 
 #SHOPS
 30203 2 3 2 0 0 150 50 0 23                     (mobile is from another zone)
