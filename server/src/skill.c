@@ -3344,17 +3344,20 @@ void do_empower (CHAR_DATA *ch, char *argument)
         if( arg1[0] == '\0' )
         {
                         send_to_char("What set do you wish to empower?\n\r", ch);
+                        send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
+                        send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
                 return;
         }
 
-        if ( !strcmp(arg1, "uncommon") || !strcmp(arg1, "rare") || !strcmp(arg1, "epic") || !strcmp(arg1, "legendary") )
+    /*    if ( !strcmp(arg1, "uncommon") || !strcmp(arg1, "rare") || !strcmp(arg1, "epic") || !strcmp(arg1, "legendary") )
         {
                 send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
                 send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
                 return;                
 
         }
-
+*/
+  
         /* clunky logic for all the set bonuses I know - Brutus */
         if ( !strcmp(arg1, "uncommon") )
         {
