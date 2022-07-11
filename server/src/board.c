@@ -316,6 +316,7 @@ static void load_board (BOARD_DATA *board)
         FILE *fp, *fp_archive;
         NOTE_DATA *last_note;
         char filename[200];
+        int stat;
 
         sprintf (filename, "%s%s", NOTE_DIR, board->short_name);
 
@@ -358,11 +359,11 @@ static void load_board (BOARD_DATA *board)
 
         if ( str_cmp( fread_word( fp ), "stamp" ) )
             break;
-        pnote->date_stamp = fread_number( fp );
+        pnote->date_stamp = fread_number( fp, &stat);
 
         if ( str_cmp( fread_word( fp ), "expire" ) )
             break;
-        pnote->expire = fread_number( fp );
+        pnote->expire = fread_number( fp, &stat);
 
         if ( str_cmp( fread_word( fp ), "to" ) )
             break;
