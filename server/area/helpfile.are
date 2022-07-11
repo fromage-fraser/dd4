@@ -200,7 +200,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [10 July 2022]
+    [11 July 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -213,10 +213,11 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
+    {WGAMBLING is in!  Check Midgaard's circus for games, more to come...{x
+
     {WNew Area 'Ota'ar Dar - Market Canton' is in for levels 30-35.  Access it
     by heading down from the Yeats Sea.{x
 
-    {WTINKER mobs can repair damaged gear (sharpened/forged/poisoned items etc)!{x
 
 
 
@@ -254,6 +255,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WJuly 2022{x
+- Added gambling mob functionality
 - Added new area 'Ota'ar Dar - Market Canton' for levels 30-35
 - Added new special 'spec_cast_electric'
 
