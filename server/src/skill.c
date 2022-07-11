@@ -3311,13 +3311,6 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char     arg3 [ MAX_INPUT_LENGTH ];
         char     arg4 [ MAX_INPUT_LENGTH ];
         char     arg5 [ MAX_INPUT_LENGTH ];
-
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-        argument = one_argument(argument, arg3);
-        argument = one_argument(argument, arg4);
-        argument = one_argument(argument, arg5);
-
         int        sn;
         int        glookup;
         int     found, i;
@@ -3335,6 +3328,12 @@ void do_empower (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj5;
         AFFECT_DATA     *paf;
 
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+        argument = one_argument(argument, arg3);
+        argument = one_argument(argument, arg4);
+        argument = one_argument(argument, arg5);
+        
 
       if( !CAN_DO( ch, gsn_empower ) )
         {
