@@ -198,7 +198,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  2
+#define BLUEPRINTS_MAX  3
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -277,7 +277,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL               512     /* 512 for Empower */
-#define MAX_PRE_REQ             1350    /* Added for Empower*/
+#define MAX_PRE_REQ             1351    /* Added for Empower*/
 #define MAX_SPELL_GROUP         431   /* Added for smithy */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
