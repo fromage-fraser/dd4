@@ -277,8 +277,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL               512     /* 512 for Empower */
-#define MAX_PRE_REQ             1353    /* Added for Empower*/
-#define MAX_SPELL_GROUP         431   /* Added for smithy */
+#define MAX_PRE_REQ             1350    /* Added for Empower*/
+#define MAX_SPELL_GROUP         432   /* Added for smithy */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
 #define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */
