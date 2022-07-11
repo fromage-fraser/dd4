@@ -3341,7 +3341,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if( arg1[0] == '\0' )
+        if( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0'  )
         {
                         send_to_char("What set do you wish to empower?\n\r", ch);
                         send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
@@ -3361,7 +3361,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         /* clunky logic for all the set bonuses I know - Brutus */
         if ( !strcmp(arg1, "uncommon") )
         {
-                if ( !(obj = get_obj_carry(ch, arg2) ) || !(obj2 = get_obj_carry(ch, arg3) ) ) 
+                if ( ( (obj = get_obj_carry(ch, arg2) ) == NULL ) || ( (obj2 = get_obj_carry(ch, arg3) ) == NULL ) ) 
                 {
                         send_to_char( "You arent carrying that..\n\r",ch );
                         return;
