@@ -3312,6 +3312,12 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char     arg4 [ MAX_INPUT_LENGTH ];
         char     arg5 [ MAX_INPUT_LENGTH ];
 
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+        argument = one_argument(argument, arg3);
+        argument = one_argument(argument, arg4);
+        argument = one_argument(argument, arg5);
+
         int        sn;
         int        glookup;
         int     found, i;
@@ -3351,11 +3357,11 @@ void do_empower (CHAR_DATA *ch, char *argument)
         }
 
         /* clunky logic for all the set bonuses I know - Brutus */
-        if ( strcmp(arg1, "uncommon") )
+        if ( !strcmp(arg1, "uncommon") )
         {
                 if ( !(obj = get_obj_carry(ch, arg2) ) || !(obj2 = get_obj_carry(ch, arg3) ) ) 
                 {
-                        send_to_char( "You arent carrying that\n\r",ch );
+                        send_to_char( "You arent carrying that..\n\r",ch );
                         return;
                 }
 
