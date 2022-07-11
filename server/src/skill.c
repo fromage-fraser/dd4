@@ -3333,7 +3333,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         argument = one_argument(argument, arg3);
         argument = one_argument(argument, arg4);
         argument = one_argument(argument, arg5);
-        
+
 
       if( !CAN_DO( ch, gsn_empower ) )
         {
@@ -3363,7 +3363,11 @@ void do_empower (CHAR_DATA *ch, char *argument)
                         send_to_char( "You arent carrying that..\n\r",ch );
                         return;
                 }
-
+                else
+                {
+                        send_to_char ( "missed the object check\n\r", ch);
+                        return;
+                }
                
                 switch (number_range( 1, 3 ))
                 {
@@ -3375,18 +3379,21 @@ void do_empower (CHAR_DATA *ch, char *argument)
                         case 1:
                         {
                                 modifier = gsn_fly;
+                                send_to_char ( "random buff 1\n\r", ch);
                                 break;
                         }
                                 
                         case 2:
                         {
                                 modifier = gsn_infravision;
+                                send_to_char ( "random buff 2\n\r", ch);
                                 break;
                         }
 
                         case 3:
                         {       
                                 modifier = gsn_sense_traps;
+                                send_to_char ( "random buff 3\n\r", ch);
                                 break;
                         }
 
@@ -3421,7 +3428,12 @@ void do_empower (CHAR_DATA *ch, char *argument)
 
         }
         else
+        { 
+                send_to_char ( "The uncommon end\n\r", ch);
                 return; 
+        }
+        send_to_char ( "The end\n\r", ch );
+        return;
 }
 
 void do_imbue (CHAR_DATA *ch, char *argument)
