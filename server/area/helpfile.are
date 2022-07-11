@@ -6464,6 +6464,60 @@ It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
 
 ~
 
+-1 GAMES GAMBLE GAMBLING~
+The current games available on Dragons Domain are:
+    Seven
+    High Dice
+    Upper-Lower-Triple
+~
+
+-1 HIGH-DICE 'HIGH DICE' HIGH DICE~
+HIGH DICE is a simple dice game. The croupier rolls 2 dice for the player, 
+then rolls 2 dicefor himself. If the player's total is higher he wins double
+his money back, and if the player's total is equal to or lower than the 
+croupier's the bank wins and the player loses his money.
+~
+
+-1 SEVEN~
+SEVEN is a very simple and easy dice game. The player can choose to bet on 
+under 7, 7, or over 7.  The croupier rolls 2d6 and pays double if the player
+correctly choses under or over 7, and five times the wagered amount if the player
+choses 7 correctly.
+~
+
+-1 UPPER-LOWER-TRIPLE 'UPPER LOWER TRIPLE' UPPER LOWER TRIPLE~
+UPPER-LOWER-TRIPLE is a simple dice game.  You place a BET with a choice 
+of upper, lower, or triple.  The dealer then rolls three dice, and their
+values are added up.  If the result is 11 or greater, it is an "Upper",
+and if the resut is 10 or less, it is a "Lower".  If, however, all three
+dice show the same numbers, it is a "Triple" and those who bet on it win
+back 36 times their wager!  Unfortunately, all other bets are off if a 
+Triple is rolled.
+~
+
+-1 DEALER CROUPIER~
+
+Each gambling game must have someone in charge, and this person is 
+traditionally known as a CROUPIER.  For card games, the term DEALER is
+more common.  The CROUPIER is in total control of the game, and can
+turn away unwelcome customers.  Keep your eyes out, though...some of 
+the croupiers have been known to take advantage of unwary players.
+~
+
+0 BET WAGER~
+Syntax: bet   <amount>
+Syntax: bet   <amount> <choice>
+Syntax: bet    limit
+Syntax: wager <amount>
+Syntax: wager <amount> <choice>
+Syntax: wager  limit
+
+During a gambling game, you will occasionally need to place a BET.  The
+syntax of the wager will depend on the particular game in which you are
+participating.  Wagering the 'limit' will automatically place the maximum
+bet, if you have enough gold.
+~
+
 0 $~
 #$
 

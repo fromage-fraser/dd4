@@ -46,6 +46,9 @@ HELP_DATA *             help_first;
 HELP_DATA *             help_last;
 SHOP_DATA *             shop_first;
 SHOP_DATA *             shop_last;
+GAME_DATA *		game_free;
+GAME_DATA *		game_first;
+GAME_DATA *		game_last;
 CHAR_DATA *             char_free;
 EXTRA_DESCR_DATA *      extra_descr_free;
 NOTE_DATA *             note_free;
@@ -724,6 +727,7 @@ int                     top_obj_index;
 int                     top_reset;
 int                     top_room;
 int                     top_shop;
+int			top_game;
 
 
 int             mprog_name_to_type      (char* name);
@@ -777,20 +781,21 @@ char                    strArea                 [ MAX_INPUT_LENGTH   ];
 /*
  * Local booting procedures.
  */
-void    init_mm         args( ( void ) );
-void    load_area       args( ( FILE *fp ) );
-void    load_area_special args( ( FILE *fp ) );
-void    load_helps      args( ( FILE *fp ) );
-void    load_recall     args( ( FILE *fp ) );
-void    load_mobiles    args( ( FILE *fp ) );
-void    load_objects    args( ( FILE *fp ) );
-void    load_resets     args( ( FILE *fp ) );
-void    load_rooms      args( ( FILE *fp ) );
-void    load_shops      args( ( FILE *fp ) );
-void    load_specials   args( ( FILE *fp ) );
-void    load_notes      args( ( void ) );
-void    load_down_time  args( ( void ) );
-void    fix_exits       args( ( void ) );
+void    init_mm                 args( ( void ) );
+void    load_area               args( ( FILE *fp ) );
+void    load_area_special       args( ( FILE *fp ) );
+void    load_helps              args( ( FILE *fp ) );
+void    load_recall             args( ( FILE *fp ) );
+void    load_mobiles            args( ( FILE *fp ) );
+void    load_objects            args( ( FILE *fp ) );
+void    load_resets             args( ( FILE *fp ) );
+void    load_rooms              args( ( FILE *fp ) );
+void    load_shops              args( ( FILE *fp ) );
+void    load_specials           args( ( FILE *fp ) );
+void	load_games	        args( ( FILE *fp ) );
+void    load_notes              args( ( void ) );
+void    load_down_time          args( ( void ) );
+void    fix_exits               args( ( void ) );
 
 
 /*
@@ -964,6 +969,8 @@ void boot_db( void )
                                         load_shops   ( fpArea );
                                 else if ( !str_cmp( word, "SPECIALS" ) )
                                         load_specials( fpArea );
+                                else if ( !str_cmp( word, "GAMES"    ) )
+	                                load_games( fpArea );
                                 else
                                 {
                                         bug( "Boot_db: bad section name.", 0 );
@@ -1251,6 +1258,7 @@ void load_mobprogs( FILE *fp )
         MPROG_DATA     *working;
         char            letter;
         int             value;
+        int             stat;
 
         for (;;)
         {
@@ -1272,7 +1280,7 @@ void load_mobprogs( FILE *fp )
 
                     case 'M':
                     case 'm':
-                        value = fread_number( fp );
+                        value = fread_number( fp, &stat );
                         if ( ( iMob = get_mob_index( value ) ) == NULL )
                         {
                                 bug( "Load_mobprogs: vnum %d doesnt exist", value );
@@ -1391,6 +1399,7 @@ void mprog_read_programs( FILE *fp, MOB_INDEX_DATA *pMobIndex)
 void load_area( FILE *fp )
 {
         AREA_DATA *pArea;
+        int stat;
 
         pArea               = alloc_perm( sizeof( *pArea ) );
         pArea->reset_first  = NULL;
@@ -1398,10 +1407,10 @@ void load_area( FILE *fp )
         pArea->author       = fread_string( fp );
         pArea->name         = fread_string( fp );
         pArea->recall       = DEFAULT_RECALL;
-        pArea->low_level    = fread_number(fp);
-        pArea->high_level   = fread_number(fp);
-        pArea->low_enforced = fread_number(fp);
-        pArea->high_enforced = fread_number(fp);
+        pArea->low_level    = fread_number(fp, &stat);
+        pArea->high_level   = fread_number(fp, &stat);
+        pArea->low_enforced = fread_number(fp, &stat);
+        pArea->high_enforced = fread_number(fp, &stat);
         pArea->age          = 15;
         pArea->nplayer      = 0;
         pArea->low_r_vnum   = 0;
@@ -1435,11 +1444,12 @@ void load_area( FILE *fp )
 void load_helps( FILE *fp )
 {
         HELP_DATA *pHelp;
+        int stat;
 
         for ( ; ; )
         {
                 pHelp           = alloc_perm( sizeof( *pHelp ) );
-                pHelp->level    = fread_number( fp );
+                pHelp->level    = fread_number( fp, &stat );
                 pHelp->keyword  = fread_string( fp );
 
                 if ( pHelp->keyword[0] == '$' )
@@ -1470,9 +1480,10 @@ void load_recall( FILE *fp )
 {
         AREA_DATA *pArea;
         char       buf [ MAX_STRING_LENGTH ];
+        int        stat;
 
         pArea         = area_last;
-        pArea->recall = fread_number( fp );
+        pArea->recall = fread_number( fp, &stat );
 
         if ( pArea->recall < 1 )
         {
@@ -1495,6 +1506,7 @@ void load_area_special (FILE *fp)
         char buf [MAX_STRING_LENGTH];
         char *next;
         int num;
+        int stat;
 
         while (1)
         {
@@ -1522,7 +1534,7 @@ void load_area_special (FILE *fp)
 
                 else if (!str_cmp(next, "exp_mod"))
                 {
-                        num = fread_number(fp);
+                        num = fread_number(fp, &stat);
 
                         if (num < 0)
                         {
@@ -1551,6 +1563,7 @@ void load_teacher (FILE *fp, MOB_INDEX_DATA *pMobIndex)
 {
         int sn;
         int value;
+        int stat;
         char letter;
         char *buf;
         char buf2[100];
@@ -1563,7 +1576,7 @@ void load_teacher (FILE *fp, MOB_INDEX_DATA *pMobIndex)
 
         while (letter == '&')
         {
-                value = fread_number( fp );
+                value = fread_number( fp, &stat );
                 buf = fread_word(fp);
                 sn = skill_lookup(buf);
 
@@ -1596,6 +1609,7 @@ void load_mobiles( FILE *fp )
                 char letter;
                 int  vnum;
                 int  iHash;
+                int  stat;
 
                 letter = fread_letter( fp );
                 if ( letter != '#' )
@@ -1604,7 +1618,7 @@ void load_mobiles( FILE *fp )
                         exit( 1 );
                 }
 
-                vnum = fread_number( fp );
+                vnum = fread_number( fp, &stat );
                 if ( vnum == 0 )
                         break;
 
@@ -1635,36 +1649,36 @@ void load_mobiles( FILE *fp )
                 pMobIndex->long_descr[0]        = UPPER( pMobIndex->long_descr[0]  );
                 pMobIndex->description[0]       = UPPER( pMobIndex->description[0] );
 
-                pMobIndex->act                  = fread_number( fp ) | ACT_IS_NPC;
+                pMobIndex->act                  = fread_number( fp, &stat ) | ACT_IS_NPC;
 
-                pMobIndex->affected_by          = fread_number( fp );
+                pMobIndex->affected_by          = fread_number( fp, &stat );
                 REMOVE_BIT (pMobIndex->affected_by, AFF_CHARM);
 
                 pMobIndex->pShop                = NULL;
-                pMobIndex->alignment            = fread_number( fp );
+                pMobIndex->alignment            = fread_number( fp, &stat );
                 letter                          = fread_letter( fp );
-                pMobIndex->level                = number_fuzzy( fread_number( fp ) );
+                pMobIndex->level                = number_fuzzy( fread_number( fp, &stat ) );
 
-                fread_number( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
                 fread_letter( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
 
-                pMobIndex->body_form = fread_number( fp );   /* Gezhp 99 */
+                pMobIndex->body_form = fread_number( fp, &stat );   /* Gezhp 99 */
 
-                fread_number( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
-                fread_number( fp );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
+                fread_number( fp, &stat );   /* Unused */
 
-                pMobIndex->sex = fread_number( fp );
+                pMobIndex->sex = fread_number( fp, &stat );
 
                 if ( letter != 'S' )
                 {
@@ -1726,6 +1740,7 @@ void load_objects( FILE *fp )
 {
         OBJ_INDEX_DATA *pObjIndex;
         char buf [MAX_STRING_LENGTH];
+        int stat;
 
         for ( ; ; )
         {
@@ -1741,7 +1756,7 @@ void load_objects( FILE *fp )
                         exit( 1 );
                 }
 
-                vnum = fread_number( fp );
+                vnum = fread_number( fp, &stat );
                 if ( vnum == 0 )
                         break;
 
@@ -1769,15 +1784,15 @@ void load_objects( FILE *fp )
                 pObjIndex->description          = fread_string( fp );
                 /* Action description */          fread_string( fp );
                 pObjIndex->description[0]       = UPPER( pObjIndex->description[0] );
-                pObjIndex->item_type            = fread_number( fp );
-                pObjIndex->extra_flags          = fread_number( fp );
+                pObjIndex->item_type            = fread_number( fp, &stat );
+                pObjIndex->extra_flags          = fread_number( fp, &stat );
 
 
                 if (IS_SET(pObjIndex->extra_flags, ITEM_TRAP) )
                 {
-                        pObjIndex->trap_eff             = fread_number( fp );
-                        pObjIndex->trap_dam             = fread_number( fp );
-                        pObjIndex->trap_charge          = fread_number( fp );
+                        pObjIndex->trap_eff             = fread_number( fp, &stat );
+                        pObjIndex->trap_dam             = fread_number( fp, &stat );
+                        pObjIndex->trap_charge          = fread_number( fp, &stat );
                 }
                 else
                 {
@@ -1792,19 +1807,19 @@ void load_objects( FILE *fp )
                                 pObjIndex->short_descr,
                                 pObjIndex->vnum);
                         log_string(buf);
-                        pObjIndex->ego_flags = fread_number(fp);
+                        pObjIndex->ego_flags = fread_number( fp, &stat );
                 }
                 else
                         pObjIndex->ego_flags = 0;
 
-                pObjIndex->wear_flags           = fread_number( fp );
+                pObjIndex->wear_flags           = fread_number( fp, &stat );
                 value[0]                        = fread_string( fp );
                 value[1]                        = fread_string( fp );
                 value[2]                        = fread_string( fp );
                 value[3]                        = fread_string( fp );
-                pObjIndex->weight               = fread_number( fp );
-                pObjIndex->cost                 = fread_number( fp );
-                pObjIndex->level                = fread_number( fp );
+                pObjIndex->weight               = fread_number( fp, &stat );
+                pObjIndex->cost                 = fread_number( fp, &stat );
+                pObjIndex->level                = fread_number( fp, &stat );
 
                 /*
                  * Check here for the redundancy of invisible light sources - Kahn
@@ -1828,8 +1843,8 @@ void load_objects( FILE *fp )
                                 paf                     = alloc_perm( sizeof( *paf ) );
                                 paf->type               = -1;
                                 paf->duration           = -1;
-                                paf->location           = fread_number( fp );
-                                paf->modifier           = fread_number( fp );
+                                paf->location           = fread_number( fp, &stat );
+                                paf->modifier           = fread_number( fp, &stat );
                                 paf->bitvector          = 0;
                                 paf->next               = pObjIndex->affected;
                                 pObjIndex->affected     = paf;
@@ -1903,6 +1918,7 @@ void load_objects( FILE *fp )
 void load_resets( FILE *fp )
 {
         RESET_DATA *pReset;
+        int stat;
 
         if ( !area_last )
         {
@@ -1932,15 +1948,15 @@ void load_resets( FILE *fp )
 
                 /*
                  * if_flag
-                 * fread_number( fp );
+                 * fread_number( fp, &stat );
                  * (replaced by arg0 assignment by Gezhp 2000
                  */
 
-                pReset->arg0    = fread_number( fp );
-                pReset->arg1    = fread_number( fp );
-                pReset->arg2    = fread_number( fp );
+                pReset->arg0    = fread_number( fp, &stat );
+                pReset->arg1    = fread_number( fp, &stat );
+                pReset->arg2    = fread_number( fp, &stat );
                 pReset->arg3    = ( letter == 'G' || letter == 'R' || letter == 'F' )
-                        ? 0 : fread_number( fp );
+                        ? 0 : fread_number( fp, &stat );
                 fread_to_eol( fp );
 
                 /*
@@ -2049,6 +2065,7 @@ void load_resets( FILE *fp )
 void load_rooms( FILE *fp )
 {
         ROOM_INDEX_DATA *pRoomIndex;
+        int stat;
 
         if ( !area_last )
         {
@@ -2070,7 +2087,7 @@ void load_rooms( FILE *fp )
                         exit( 1 );
                 }
 
-                vnum = fread_number( fp );
+                vnum = fread_number( fp, &stat );
                 if ( vnum == 0 )
                         break;
 
@@ -2099,9 +2116,9 @@ void load_rooms( FILE *fp )
 
                 pRoomIndex->name                = fread_string( fp );
                 pRoomIndex->description         = fread_string( fp );
-                /* Area number */                 fread_number( fp );   /* Unused */
-                pRoomIndex->room_flags          = fread_number( fp );
-                pRoomIndex->sector_type         = fread_number( fp );
+                /* Area number */                 fread_number( fp, &stat );   /* Unused */
+                pRoomIndex->room_flags          = fread_number( fp, &stat );
+                pRoomIndex->sector_type         = fread_number( fp, &stat );
                 pRoomIndex->light               = 0;
 
                 for ( door = 0; door <= 5; door++ )
@@ -2123,7 +2140,7 @@ void load_rooms( FILE *fp )
                                 EXIT_DATA *pexit;
                                 int        locks;
 
-                                door = fread_number( fp );
+                                door = fread_number( fp, &stat );
                                 if ( door < 0 || door > 5 )
                                 {
                                         bug( "Fread_rooms: vnum %d has bad door number.", vnum );
@@ -2134,9 +2151,9 @@ void load_rooms( FILE *fp )
                                 pexit->description      = fread_string( fp );
                                 pexit->keyword          = fread_string( fp );
                                 pexit->exit_info        = 0;
-                                locks                   = fread_number( fp );
-                                pexit->key              = fread_number( fp );
-                                pexit->vnum             = fread_number( fp );
+                                locks                   = fread_number( fp, &stat );
+                                pexit->key              = fread_number( fp, &stat );
+                                pexit->vnum             = fread_number( fp, &stat );
 
                                 switch ( locks )
                                 {
@@ -2231,6 +2248,7 @@ void load_rooms( FILE *fp )
 void load_shops( FILE *fp )
 {
         SHOP_DATA *pShop;
+        int stat;
 
         for ( ; ; )
         {
@@ -2238,17 +2256,17 @@ void load_shops( FILE *fp )
                 int iTrade;
 
                 pShop                   = alloc_perm( sizeof( *pShop ) );
-                pShop->keeper           = fread_number( fp );
+                pShop->keeper           = fread_number( fp, &stat );
                 if ( pShop->keeper == 0 )
                         break;
 
                 for ( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
-                        pShop->buy_type[iTrade] = fread_number( fp );
+                        pShop->buy_type[iTrade] = fread_number( fp, &stat );
 
-                pShop->profit_buy       = fread_number( fp );
-                pShop->profit_sell      = fread_number( fp );
-                pShop->open_hour        = fread_number( fp );
-                pShop->close_hour       = fread_number( fp );
+                pShop->profit_buy       = fread_number( fp, &stat );
+                pShop->profit_sell      = fread_number( fp, &stat );
+                pShop->open_hour        = fread_number( fp, &stat );
+                pShop->close_hour       = fread_number( fp, &stat );
                 fread_to_eol( fp );
                 pMobIndex               = get_mob_index( pShop->keeper );
                 pMobIndex->pShop        = pShop;
@@ -2276,6 +2294,7 @@ void load_shops( FILE *fp )
 void load_specials( FILE *fp )
 {
         int bonus;
+        int stat;
 
         for ( ; ; )
         {
@@ -2295,7 +2314,7 @@ void load_specials( FILE *fp )
                         break;
 
                     case 'M':
-                        pMobIndex           = get_mob_index ( fread_number ( fp ) );
+                        pMobIndex           = get_mob_index ( fread_number ( fp, &stat ) );
                         pMobIndex->spec_fun = spec_lookup   ( fread_word   ( fp ) );
 
                         if ( pMobIndex->spec_fun == 0 )
@@ -3354,53 +3373,55 @@ char fread_letter( FILE *fp )
 /*
  * Read a number from a file.
  */
-int fread_number( FILE *fp )
+int fread_number( FILE *fp, int *status )
 {
-        char c;
-        int  number;
-        bool sign;
+    int  c;
+    bool sign;
+    int  number;
+    int  stat;
 
-        do
-        {
-                c = getc( fp );
-        }
-        while ( isspace( c ) );
+    do
+    {
+	c = getc( fp );
+    }
+    while ( isspace( c ) );
 
-        number = 0;
+    number = 0;
 
-        sign   = FALSE;
-        if ( c == '+' )
-        {
-                c = getc( fp );
-        }
-        else if ( c == '-' )
-        {
-                sign = TRUE;
-                c = getc( fp );
-        }
+    sign   = FALSE;
+    if ( c == '+' )
+    {
+	c = getc( fp );
+    }
+    else if ( c == '-' )
+    {
+	sign = TRUE;
+	c = getc( fp );
+    }
 
-        if ( !isdigit( c ) )
-        {
-                bug( "Fread_number: bad format.", 0 );
-                bug( "   If bad object, check for missing '~' in value[] fields.", 0 );
-                exit( 1 );
-        }
+    if ( !isdigit( c ) )
+    {
+        *status = 1;
+	bug( "Fread_number: bad format.", 0 );
+	bug( "   If bad object, check for missing '~' in value[] fields.", 0 );
+	return 0;
+    }
 
-        while ( isdigit(c) )
-        {
-                number = number * 10 + c - '0';
-                c      = getc( fp );
-        }
+    while ( isdigit(c) )
+    {
+	number = number * 10 + c - '0';
+	c      = getc( fp );
+    }
 
-        if ( sign )
-                number = 0 - number;
+    if ( sign )
+	number = 0 - number;
 
-        if ( c == '|' )
-                number += fread_number( fp );
-        else if ( c != ' ' )
-                ungetc( c, fp );
+    if ( c == '|' )
+	number += fread_number( fp, &stat );
+    else if ( c != ' ' )
+	ungetc( c, fp );
 
-        return number;
+    return number;
 }
 
 
@@ -4353,6 +4374,111 @@ void do_zones( CHAR_DATA *ch, char *argument )
 
         show_vnums( ch, low, high, TRUE, "", " X" );
 }
+
+GAME_DATA *new_game( void )
+{
+    GAME_DATA *pGame;
+
+    if ( !game_free )
+    {
+	pGame = alloc_perm( sizeof( *pGame ) );
+	top_game++;
+    }
+    else
+    {
+	pGame		= game_free;
+	game_free	= game_free->next;
+    }
+
+    pGame->next		= NULL;
+    pGame->croupier	= 0;
+    pGame->game_fun	= NULL;
+    pGame->bankroll	= 5000;
+    pGame->max_wait	= 100;
+    pGame->cheat	= 0;
+
+    return pGame;
+}
+
+void free_game( GAME_DATA * pGame )
+{
+    pGame->next	= game_free;
+    game_free	= pGame;
+    return;
+}
+
+/*
+ * Snarf games proc declarations.
+ */
+void load_games( FILE *fp )
+{
+    int        croupier = 0;
+
+    for ( ; ; )
+    {
+	MOB_INDEX_DATA *pMobIndex;
+	GAME_DATA      *pGame;
+        char            letter;
+	int             stat;
+        char            buf[MAX_STRING_LENGTH];
+
+	pGame = alloc_perm( sizeof( GAME_DATA ) );
+
+        switch ( letter = fread_letter( fp ) )
+        {
+        default:
+            bug( "Load_games: letter '%c' not *MS.", letter );
+            exit( 1 );
+
+        case 'S':
+            return;
+
+        case '*':
+            break;
+
+        case 'M':
+	    croupier			= fread_number( fp, &stat );
+	    if ( croupier == 0 )
+	    {
+		free_mem( pGame, sizeof( GAME_DATA ) );
+		return;
+	    }
+	    pMobIndex			= get_mob_index( croupier );
+	    pMobIndex->pGame		= pGame;
+	    pGame->croupier		= croupier;
+	    pGame->game_fun		= game_lookup( fread_word ( fp ) );
+	    pGame->bankroll		= fread_number( fp, &stat );
+	    pGame->max_wait		= fread_number( fp, &stat );
+	    pGame->cheat		= fread_number( fp, &stat );
+            
+            sprintf(buf, "[croupier] %s (vnum %d).",
+                        pMobIndex->short_descr, 
+                        pMobIndex->vnum
+            );
+            log_string(buf);
+
+	    if ( pGame->game_fun == 0 )
+            {
+                bug( "Load_games: 'M': vnum %d.", pMobIndex->vnum );
+                exit( 1 );
+            }
+					  fread_to_eol( fp );
+            break;
+        }
+
+	if ( !game_first )
+	    game_first = pGame;
+	if (  game_last  )
+	    game_last->next = pGame;
+
+	game_last	= pGame;
+	pGame->next	= NULL;
+	top_game++;
+    }
+
+    return;
+}
+
 
 
 /*

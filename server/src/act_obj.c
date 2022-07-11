@@ -5698,6 +5698,7 @@ int get_spellcraft_obj_bonus(CHAR_DATA *ch)
 /*
  * Auction betting bollocks
  */
+/*
 int advatoi (const char *s)
 {
         char string[MAX_INPUT_LENGTH];
@@ -5718,7 +5719,7 @@ int advatoi (const char *s)
         switch (UPPER(*stringptr))
         {
             case 'K'  : multiplier = 1000;    number *= multiplier; stringptr++; break;
-            /* case 'M'  : multiplier = 1000000; number *= multiplier; stringptr++; break; */
+            case 'M'  : multiplier = 1000000; number *= multiplier; stringptr++; break;
             case '\0' : break;
             default   : return 0;
         }
@@ -5736,7 +5737,7 @@ int advatoi (const char *s)
 
         return (number);
 }
-
+*/
 
 int parsebet (const int currentbet, const char *argument)
 {

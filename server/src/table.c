@@ -1400,6 +1400,7 @@ void load_wanted_table ()
         char buf [MAX_STRING_LENGTH];
         FILE *file;
         char *word;
+        int   stat;
         
         wanted_list_first = NULL;
         next = NULL;
@@ -1430,7 +1431,7 @@ void load_wanted_table ()
                         next->name = fread_string(file);
                         next->class = fread_string(file);
                         next->clan = fread_string(file);
-                        next->reward = fread_number(file);
+                        next->reward = fread_number(file, &stat);
                         next->next = NULL;
                         
                         if (!wanted_list_first)

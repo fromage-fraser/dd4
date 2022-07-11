@@ -607,6 +607,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
         char  buf [ MAX_STRING_LENGTH ];
         bool  fMatch, read = TRUE;
         int   next;
+        int   stat;
 
         while (read)
         {
@@ -621,13 +622,13 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'A':
-                        KEY("Act", ch->act, fread_number(fp));
-                        KEY("AirSupply", ch->pcdata->air_supply, fread_number(fp));
-                        KEY("AffdBy", ch->affected_by, fread_number(fp));
-                        KEY("Aggro_Dam", ch->aggro_dam, fread_number(fp));
-                        KEY("Align", ch->alignment, fread_number(fp));
-                        KEY("Armr", ch->armor, fread_number(fp));
-                        KEY("AllowLook", ch->pcdata->allow_look, fread_number(fp));
+                        KEY("Act", ch->act, fread_number( fp, &stat ));
+                        KEY("AirSupply", ch->pcdata->air_supply, fread_number( fp, &stat ));
+                        KEY("AffdBy", ch->affected_by, fread_number( fp, &stat ));
+                        KEY("Aggro_Dam", ch->aggro_dam, fread_number( fp, &stat ));
+                        KEY("Align", ch->alignment, fread_number( fp, &stat ));
+                        KEY("Armr", ch->armor, fread_number( fp, &stat ));
+                        KEY("AllowLook", ch->pcdata->allow_look, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Aff"))
                         {
@@ -641,11 +642,11 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                         affect_free = affect_free->next;
                                 }
 
-                                paf->type       = fread_number(fp);
-                                paf->duration   = fread_number(fp);
-                                paf->modifier   = fread_number(fp);
-                                paf->location   = fread_number(fp);
-                                paf->bitvector  = fread_number(fp);
+                                paf->type       = fread_number( fp, &stat );
+                                paf->duration   = fread_number( fp, &stat );
+                                paf->modifier   = fread_number( fp, &stat );
+                                paf->location   = fread_number( fp, &stat );
+                                paf->bitvector  = fread_number( fp, &stat );
                                 paf->deleted    = FALSE;
                                 paf->next       = ch->affected;
                                 ch->affected    = paf;
@@ -656,11 +657,11 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
 
                         if (!str_cmp(word, "AtrMd" ))
                         {
-                                ch->pcdata->mod_str  = fread_number(fp);
-                                ch->pcdata->mod_int  = fread_number(fp);
-                                ch->pcdata->mod_wis  = fread_number(fp);
-                                ch->pcdata->mod_dex  = fread_number(fp);
-                                ch->pcdata->mod_con  = fread_number(fp);
+                                ch->pcdata->mod_str  = fread_number( fp, &stat );
+                                ch->pcdata->mod_int  = fread_number( fp, &stat );
+                                ch->pcdata->mod_wis  = fread_number( fp, &stat );
+                                ch->pcdata->mod_dex  = fread_number( fp, &stat );
+                                ch->pcdata->mod_con  = fread_number( fp, &stat );
 
                                 fMatch = TRUE;
                                 break;
@@ -668,11 +669,11 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
 
                         if (!str_cmp(word, "AtrPrm"))
                         {
-                                ch->pcdata->perm_str = fread_number(fp);
-                                ch->pcdata->perm_int = fread_number(fp);
-                                ch->pcdata->perm_wis = fread_number(fp);
-                                ch->pcdata->perm_dex = fread_number(fp);
-                                ch->pcdata->perm_con = fread_number(fp);
+                                ch->pcdata->perm_str = fread_number( fp, &stat );
+                                ch->pcdata->perm_int = fread_number( fp, &stat );
+                                ch->pcdata->perm_wis = fread_number( fp, &stat );
+                                ch->pcdata->perm_dex = fread_number( fp, &stat );
+                                ch->pcdata->perm_con = fread_number( fp, &stat );
 
                                 fMatch = TRUE;
                                 break;
@@ -680,15 +681,15 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'B':
-                        KEY("Bank", ch->pcdata->bank, fread_number(fp));
+                        KEY("Bank", ch->pcdata->bank, fread_number( fp, &stat ));
                         KEY("Bmfin", ch->pcdata->bamfin, fread_string(fp));
                         KEY("Bmfout", ch->pcdata->bamfout, fread_string(fp));
-                        KEY("Blink", ch->pcdata->blink, fread_number(fp));
-                        KEY("Bounty", ch->pcdata->bounty, fread_number(fp));
+                        KEY("Blink", ch->pcdata->blink, fread_number( fp, &stat ));
+                        KEY("Bounty", ch->pcdata->bounty, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Boards"))
                         {
-                                int i, num = fread_number(fp);
+                                int i, num = fread_number( fp, &stat );
                                 char *boardname;
 
                                 for (; num ; num--)
@@ -700,10 +701,10 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                         {
                                                 sprintf (buf, "fread_char: %s had unknown board name: %s. Skipped.", ch->name, boardname);
                                                 log_string (buf);
-                                                fread_number (fp);
+                                                fread_number (fp, &stat);
                                         }
                                         else
-                                                ch->pcdata->last_note[i] = fread_number (fp);
+                                                ch->pcdata->last_note[i] = fread_number (fp, &stat);
                                 }
 
                                 fMatch = TRUE;
@@ -711,51 +712,51 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'C':
-                        KEY("ChSub", ch->pcdata->choose_subclass, fread_number(fp));
-                        KEY("Cla", ch->class, fread_number(fp));
-                        KEY("Clan", ch->clan, fread_number(fp));
-                        KEY("ClnLvl", ch->clan_level, fread_number(fp));
-                        KEY("Copper", ch->copper, fread_number(fp));
-                        KEY("CurRecall", ch->pcdata->current_recall, fread_number(fp));
+                        KEY("ChSub", ch->pcdata->choose_subclass, fread_number( fp, &stat ));
+                        KEY("Cla", ch->class, fread_number( fp, &stat ));
+                        KEY("Clan", ch->clan, fread_number( fp, &stat ));
+                        KEY("ClnLvl", ch->clan_level, fread_number( fp, &stat ));
+                        KEY("Copper", ch->copper, fread_number( fp, &stat ));
+                        KEY("CurRecall", ch->pcdata->current_recall, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Cond"))
                         {
-                                ch->pcdata->condition[0] = fread_number(fp);
-                                ch->pcdata->condition[1] = fread_number(fp);
-                                ch->pcdata->condition[2] = fread_number(fp);
+                                ch->pcdata->condition[0] = fread_number( fp, &stat );
+                                ch->pcdata->condition[1] = fread_number( fp, &stat );
+                                ch->pcdata->condition[2] = fread_number( fp, &stat );
                                 fMatch = TRUE;
                                 break;
                         }
 
                         if (!str_cmp(word, "Colors"))
                         {
-                                ch->colors[0] = fread_number(fp);
-                                ch->colors[1] = fread_number(fp);
-                                ch->colors[2] = fread_number(fp);
-                                ch->colors[3] = fread_number(fp);
-                                ch->colors[4] = fread_number(fp);
-                                ch->colors[5] = fread_number(fp);
-                                ch->colors[6] = fread_number(fp);
-                                ch->colors[7] = fread_number(fp);
-                                ch->colors[8] = fread_number(fp);
-                                ch->colors[9] = fread_number(fp);
+                                ch->colors[0] = fread_number( fp, &stat );
+                                ch->colors[1] = fread_number( fp, &stat );
+                                ch->colors[2] = fread_number( fp, &stat );
+                                ch->colors[3] = fread_number( fp, &stat );
+                                ch->colors[4] = fread_number( fp, &stat );
+                                ch->colors[5] = fread_number( fp, &stat );
+                                ch->colors[6] = fread_number( fp, &stat );
+                                ch->colors[7] = fread_number( fp, &stat );
+                                ch->colors[8] = fread_number( fp, &stat );
+                                ch->colors[9] = fread_number( fp, &stat );
                                 fMatch = TRUE;
                                 break;
                         }
                         break;
 
                     case 'D':
-                        KEY("Dam", ch->damroll, fread_number(fp));
-                        KEY("Deaf", ch->deaf, fread_number(fp));
-                        KEY("DeityFlags", ch->pcdata->deity_flags, fread_number(fp));
-                        KEY("DeityTimer", ch->pcdata->deity_timer, fread_number(fp));
+                        KEY("Dam", ch->damroll, fread_number( fp, &stat ));
+                        KEY("Deaf", ch->deaf, fread_number( fp, &stat ));
+                        KEY("DeityFlags", ch->pcdata->deity_flags, fread_number( fp, &stat ));
+                        KEY("DeityTimer", ch->pcdata->deity_timer, fread_number( fp, &stat ));
                         KEY("Dscr", ch->description, fread_string(fp));
 
                         if (!str_cmp(word, "DeityFavour"))
                         {
                                 int tmp;
                                 sprintf(buf, "%s", fread_string(fp));
-                                tmp = fread_number(fp);
+                                tmp = fread_number( fp, &stat );
 
                                 for (next = 0; next < NUMBER_DEITIES; next++)
                                 {
@@ -772,7 +773,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         if (!str_cmp(word, "DeityType"))
                         {
                                 for (next = 0; next < DEITY_NUMBER_TYPES; next++)
-                                        ch->pcdata->deity_type_timer[next] = fread_number(fp);
+                                        ch->pcdata->deity_type_timer[next] = fread_number( fp, &stat );
 
                                 fMatch = TRUE;
                                 break;
@@ -781,7 +782,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         if (!str_cmp(word, "DeityPerson"))
                         {
                                 for (next = 0; next < DEITY_NUMBER_PERSONALITIES; next++)
-                                        ch->pcdata->deity_personality_timer[next] = fread_number(fp);
+                                        ch->pcdata->deity_personality_timer[next] = fread_number( fp, &stat );
 
                                 fMatch = TRUE;
                                 break;
@@ -796,42 +797,42 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                 break;
                         }
 
-                        KEY("Exp", ch->exp, fread_number(fp));
+                        KEY("Exp", ch->exp, fread_number( fp, &stat ));
                         break;
 
                     case 'F':
-                        KEY("Fame", ch->pcdata->fame, fread_number(fp));
-                        KEY("Form", ch->form, fread_number(fp));
+                        KEY("Fame", ch->pcdata->fame, fread_number( fp, &stat ));
+                        KEY("Form", ch->form, fread_number( fp, &stat ));
                         break;
 
                     case 'G':
-                        KEY("Gag", ch->gag, fread_number(fp));
-                        KEY("Gold", ch->gold, fread_number(fp));
+                        KEY("Gag", ch->gag, fread_number( fp, &stat ));
+                        KEY("Gold", ch->gold, fread_number( fp, &stat ));
                         break;
 
                     case 'H':
-                        KEY("Hit", ch->hitroll, fread_number(fp));
+                        KEY("Hit", ch->hitroll, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "HpMnMv"))
                         {
-                                ch->hit         = fread_number(fp);
-                                ch->max_hit     = fread_number(fp);
-                                ch->mana        = fread_number(fp);
-                                ch->max_mana    = fread_number(fp);
-                                ch->move        = fread_number(fp);
-                                ch->max_move    = fread_number(fp);
+                                ch->hit         = fread_number( fp, &stat );
+                                ch->max_hit     = fread_number( fp, &stat );
+                                ch->mana        = fread_number( fp, &stat );
+                                ch->max_mana    = fread_number( fp, &stat );
+                                ch->move        = fread_number( fp, &stat );
+                                ch->max_move    = fread_number( fp, &stat );
                                 fMatch = TRUE;
                                 break;
                         }
                         break;
 
                     case 'K':
-                        KEY("Kills", ch->pcdata->kills, fread_number(fp));
-                        KEY("Killed", ch->pcdata->killed, fread_number(fp));
+                        KEY("Kills", ch->pcdata->kills, fread_number( fp, &stat ));
+                        KEY("Killed", ch->pcdata->killed, fread_number( fp, &stat ));
                         break;
 
                     case 'L':
-                        KEY("Lvl", ch->level, fread_number(fp));
+                        KEY("Lvl", ch->level, fread_number( fp, &stat ));
                         KEY("LngDsc", ch->long_descr, fread_string(fp));
                         break;
 
@@ -843,19 +844,19 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                 fMatch = TRUE;
                                 break;
                         }
-                        KEY("Note", ch->last_note, fread_number(fp));
+                        KEY("Note", ch->last_note, fread_number( fp, &stat ));
                         break;
 
                     case 'P':
-                        KEY("Pdeaths", ch->pcdata->pdeaths, fread_number(fp));
-                        KEY("Pkills", ch->pcdata->pkills, fread_number(fp));
-                        KEY("Pkscore", ch->pcdata->pkscore, fread_number(fp));
-                        KEY("Pglen", ch->pcdata->pagelen, fread_number(fp));
+                        KEY("Pdeaths", ch->pcdata->pdeaths, fread_number( fp, &stat ));
+                        KEY("Pkills", ch->pcdata->pkills, fread_number( fp, &stat ));
+                        KEY("Pkscore", ch->pcdata->pkscore, fread_number( fp, &stat ));
+                        KEY("Pglen", ch->pcdata->pagelen, fread_number( fp, &stat ));
                         KEY("Paswd", ch->pcdata->pwd, fread_string(fp));
-                        KEY("Platinum", ch->plat, fread_number(fp));
-                        KEY("Playd", ch->played, fread_number(fp));
-                        KEY("Pos", ch->position, fread_number(fp));
-                        KEY("Prac", ch->pcdata->str_prac, fread_number(fp));
+                        KEY("Platinum", ch->plat, fread_number( fp, &stat ));
+                        KEY("Playd", ch->played, fread_number( fp, &stat ));
+                        KEY("Pos", ch->position, fread_number( fp, &stat ));
+                        KEY("Prac", ch->pcdata->str_prac, fread_number( fp, &stat ));
                         KEY("Prmpt", ch->prompt, fread_string(fp));
 
                         if (!str_cmp(word, "Patron"))
@@ -876,20 +877,20 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'Q':
-                        KEY("QuestPnts", ch->pcdata->questpoints, fread_number(fp));
-                        KEY("QPTotal", ch->pcdata->totalqp, fread_number(fp));
-                        KEY("QuestNext", ch->pcdata->nextquest, fread_number(fp));
-                        KEY("Quiet", ch->silent_mode, fread_number(fp));
+                        KEY("QuestPnts", ch->pcdata->questpoints, fread_number( fp, &stat ));
+                        KEY("QPTotal", ch->pcdata->totalqp, fread_number( fp, &stat ));
+                        KEY("QuestNext", ch->pcdata->nextquest, fread_number( fp, &stat ));
+                        KEY("Quiet", ch->silent_mode, fread_number( fp, &stat ));
                         break;
 
                     case 'R':
-                        KEY("Rce", ch->race, fread_number(fp));
-                        KEY("Rage", ch->rage, fread_number(fp));
-                        KEY("Rage_Max", ch->max_rage, fread_number(fp));
+                        KEY("Rce", ch->race, fread_number( fp, &stat ));
+                        KEY("Rage", ch->rage, fread_number( fp, &stat ));
+                        KEY("Rage_Max", ch->max_rage, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Room"))
                         {
-                                ch->in_room = get_room_index(fread_number(fp));
+                                ch->in_room = get_room_index(fread_number( fp, &stat ));
 
                                 if (!ch->in_room)
                                         ch->in_room = get_room_index(ROOM_VNUM_LIMBO);
@@ -901,7 +902,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         if (!str_cmp(word, "RecPoints"))
                         {
                                 for (next = 0; next < MAX_RECALL_POINTS; next++)
-                                        ch->pcdata->recall_points[next] = fread_number(fp);
+                                        ch->pcdata->recall_points[next] = fread_number( fp, &stat );
 
                                 fMatch = TRUE;
                                 break;
@@ -909,22 +910,22 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'S':
-                        KEY("SavThr", ch->saving_throw, fread_number(fp));
-                        KEY("Status", ch->status, fread_number(fp));
-                        KEY("Sx", ch->sex, fread_number(fp));
+                        KEY("SavThr", ch->saving_throw, fread_number( fp, &stat ));
+                        KEY("Status", ch->status, fread_number( fp, &stat ));
+                        KEY("Sx", ch->sex, fread_number( fp, &stat ));
                         KEY("ShtDsc", ch->short_descr, fread_string(fp));
-                        KEY("Silver", ch->silver, fread_number(fp));
-                        KEY("SbCla", ch->sub_class, fread_number(fp));
-                        KEY("SplPrac", ch->pcdata->int_prac, fread_number(fp));
-                        KEY("StatTrain", ch->pcdata->stat_train, fread_number(fp));
-                        KEY("SpellAttk", ch->pcdata->spell_attacks, fread_number(fp));
+                        KEY("Silver", ch->silver, fread_number( fp, &stat ));
+                        KEY("SbCla", ch->sub_class, fread_number( fp, &stat ));
+                        KEY("SplPrac", ch->pcdata->int_prac, fread_number( fp, &stat ));
+                        KEY("StatTrain", ch->pcdata->stat_train, fread_number( fp, &stat ));
+                        KEY("SpellAttk", ch->pcdata->spell_attacks, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Saved"))
                         {
                                 int num_days, fame_loss_calc;
                                 char log_buf [MAX_STRING_LENGTH];
 
-                                ch->save_time = fread_number(fp);
+                                ch->save_time = fread_number( fp, &stat );
                                 num_days = (current_time - ch->save_time) / (24 * 3600);
 
                                 if (num_days > 10 && ch->pcdata->fame > 500)
@@ -951,7 +952,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                 int sn;
                                 int value;
 
-                                value = fread_number(fp);
+                                value = fread_number( fp, &stat );
                                 strncpy(buf, fread_word(fp), sizeof(buf));
                                 sn = skill_lookup(buf);
 
@@ -970,7 +971,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'T':
-                        KEY("Trst", ch->trust, fread_number(fp));
+                        KEY("Trst", ch->trust, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Ttle"))
                         {
@@ -990,12 +991,12 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'W':
-                        KEY("Wimp", ch->wimpy, fread_number(fp));
-                        KEY("Wizbt", ch->wizbit, fread_number(fp));
+                        KEY("Wimp", ch->wimpy, fread_number( fp, &stat ));
+                        KEY("Wizbt", ch->wizbit, fread_number( fp, &stat ));
                         break;
 
                     case 'X':
-                        KEY("XPLevel", ch->pcdata->level_xp_loss, fread_number(fp));
+                        KEY("XPLevel", ch->pcdata->level_xp_loss, fread_number( fp, &stat ));
                         break;
                 }
 
@@ -1034,6 +1035,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
         OBJ_DATA        *obj;
         char            *word;
         int             iNest;
+        int             stat;
         bool            fMatch;
         bool            fNest;
         bool            fVnum;
@@ -1081,11 +1083,11 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                                         affect_free     = affect_free->next;
                                 }
 
-                                paf->type       = fread_number(fp);
-                                paf->duration   = fread_number(fp);
-                                paf->modifier   = fread_number(fp);
-                                paf->location   = fread_number(fp);
-                                paf->bitvector  = fread_number(fp);
+                                paf->type       = fread_number( fp, &stat );
+                                paf->duration   = fread_number( fp, &stat );
+                                paf->modifier   = fread_number( fp, &stat );
+                                paf->location   = fread_number( fp, &stat );
+                                paf->bitvector  = fread_number( fp, &stat );
                                 paf->next       = obj->affected;
                                 obj->affected   = paf;
                                 fMatch          = TRUE;
@@ -1095,7 +1097,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'C':
-                        KEY("Cost", obj->cost, fread_number(fp));
+                        KEY("Cost", obj->cost, fread_number( fp, &stat ));
                         break;
 
                     case 'D':
@@ -1103,8 +1105,8 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'E':
-                        KEY("EgoFlags", obj->ego_flags, fread_number(fp));
-                        KEY("ExtraFlags", obj->extra_flags, fread_number(fp));
+                        KEY("EgoFlags", obj->ego_flags, fread_number( fp, &stat ));
+                        KEY("ExtraFlags", obj->extra_flags, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "ExtraDescr"))
                         {
@@ -1154,11 +1156,11 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'I':
-                        KEY("ItemType", obj->item_type, fread_number(fp));
+                        KEY("ItemType", obj->item_type, fread_number( fp, &stat ));
                         break;
 
                     case 'L':
-                        KEY("Level", obj->level, fread_number(fp));
+                        KEY("Level", obj->level, fread_number( fp, &stat ));
                         break;
 
                     case 'N':
@@ -1166,7 +1168,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
 
                         if (!str_cmp(word, "Nest"))
                         {
-                                iNest = fread_number(fp);
+                                iNest = fread_number( fp, &stat );
 
                                 if (iNest < 0 || iNest >= MAX_NEST)
                                         bug("Fread_obj: bad nest %d.", iNest);
@@ -1196,7 +1198,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                                 int iValue;
                                 int sn;
 
-                                iValue = fread_number(fp);
+                                iValue = fread_number( fp, &stat );
                                 sn     = skill_lookup(fread_word(fp));
                                 if (iValue < 0 || iValue > 3)
                                 {
@@ -1217,17 +1219,17 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'T':
-                        KEY("Timer",    obj->timer,             fread_number(fp));
-                        KEY("TimerMax", obj->timermax,          fread_number(fp));
+                        KEY("Timer",    obj->timer,             fread_number( fp, &stat ));
+                        KEY("TimerMax", obj->timermax,          fread_number( fp, &stat ));
                         break;
 
                     case 'V':
                         if (!str_cmp(word, "Values"))
                         {
-                                obj->value[0]   = fread_number(fp);
-                                obj->value[1]   = fread_number(fp);
-                                obj->value[2]   = fread_number(fp);
-                                obj->value[3]   = fread_number(fp);
+                                obj->value[0]   = fread_number( fp, &stat );
+                                obj->value[1]   = fread_number( fp, &stat );
+                                obj->value[2]   = fread_number( fp, &stat );
+                                obj->value[3]   = fread_number( fp, &stat );
                                 fMatch          = TRUE;
                                 break;
                         }
@@ -1237,7 +1239,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                                 int vnum;
                                 char buf2[100];
 
-                                vnum = fread_number(fp);
+                                vnum = fread_number( fp, &stat );
                                 if (!(obj->pIndexData = get_obj_index(vnum))) {
                                         obj->deleted = TRUE;
                                         sprintf(buf2, "[*****] BUG: Fread_obj: bad vnum %d (%s)",
@@ -1252,9 +1254,9 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'W':
-                        KEY("WearFlags", obj->wear_flags,        fread_number(fp));
-                        KEY("WearLoc",   obj->wear_loc,          fread_number(fp));
-                        KEY("Weight",    obj->weight,            fread_number(fp));
+                        KEY("WearFlags", obj->wear_flags,        fread_number( fp, &stat ));
+                        KEY("WearLoc",   obj->wear_loc,          fread_number( fp, &stat ));
+                        KEY("Weight",    obj->weight,            fread_number( fp, &stat ));
                         break;
 
                 }
@@ -1311,6 +1313,7 @@ void save_fame_table ()
 void load_fame_table ()
 {
         FILE *fp;
+        int  stat;
         char fame_file [MAX_INPUT_LENGTH];
         char buf [MAX_STRING_LENGTH];
 
@@ -1339,7 +1342,7 @@ void load_fame_table ()
                         strncpy(fame_table[iter].name, word, strlen(word));
                         word = fread_string(fp);
                         strncpy(fame_table[iter].title, word, strlen(word));
-                        fame_table[iter].fame = fread_number(fp);
+                        fame_table[iter].fame = fread_number( fp, &stat );
                 }
 
                 fclose(fp);
@@ -1390,6 +1393,7 @@ void save_infamy_table ()
 void load_infamy_table ()
 {
         FILE *fp;
+        int  stat;
         char infamy_file [MAX_INPUT_LENGTH];
         char buf [MAX_STRING_LENGTH];
 
@@ -1425,8 +1429,8 @@ void load_infamy_table ()
                         word = fread_string(fp); /* location */
                         strncpy(infamy_table[iter].loc, word, strlen(word));
 
-                        infamy_table[iter].kills = fread_number(fp);
-                        infamy_table[iter].vnum = fread_number(fp);
+                        infamy_table[iter].kills = fread_number( fp, &stat );
+                        infamy_table[iter].vnum = fread_number( fp, &stat );
                 }
 
                 fclose(fp);
@@ -1514,6 +1518,7 @@ void load_vanq_table (int clan)
                 int iter;
                 int pos = 0;
                 int killed;
+                int stat;
 
                 for (iter = 0; iter < CLAN_VANQ_TABLE_LENGTH; iter++)
                 {
@@ -1527,7 +1532,7 @@ void load_vanq_table (int clan)
                                 return;
                         }
 
-                        killed = fread_number(fp);
+                        killed = fread_number( fp, &stat );
 
                         /*
                          * Temporary hack to deal with brain dead table implementation
@@ -1606,6 +1611,7 @@ void load_pkill_table (int clan)
                 int iter;
                 int pos = 0;
                 int pkills;
+                int stat;
 
                 for (iter = 0; iter < FAME_TABLE_LENGTH; iter++)
                 {
@@ -1619,7 +1625,7 @@ void load_pkill_table (int clan)
                                 return;
                         }
 
-                        pkills = fread_number(fp);
+                        pkills = fread_number( fp, &stat );
 
                         /*
                          *  Temporary hack to deal with brain dead table implementation
@@ -1651,7 +1657,8 @@ bool fread_hero(HERO_DATA *hero, FILE *fp)
 {
         char *word;
         bool  fMatch;
-        char buf [MAX_STRING_LENGTH];
+        int   stat;
+        char  buf [MAX_STRING_LENGTH];
 
         while (1)
         {
@@ -1666,7 +1673,7 @@ bool fread_hero(HERO_DATA *hero, FILE *fp)
                         break;
 
                     case 'C':
-                        KEY("Class", hero->class,       fread_number(fp));
+                        KEY("Class", hero->class,       fread_number( fp, &stat ));
                         break;
 
                     case 'D':
@@ -1683,7 +1690,7 @@ bool fread_hero(HERO_DATA *hero, FILE *fp)
                         break;
 
                     case 'S':
-                        KEY("Subclassed", hero->subclassed,       fread_number(fp));
+                        KEY("Subclassed", hero->subclassed,       fread_number( fp, &stat ));
                         break;
 
                 }
@@ -1813,6 +1820,7 @@ void save_hero_table ()
 void load_legend_table ()
 {
         FILE *fp;
+        int   stat;
         char legend_file [MAX_STRING_LENGTH];
         char buf [MAX_STRING_LENGTH];
         int i = 0;
@@ -1862,7 +1870,7 @@ void load_legend_table ()
                                 switch (UPPER(word[0]))
                                 {
                                     case 'C':
-                                        KEY("Class", legend_table[i].class,       fread_number(fp));
+                                        KEY("Class", legend_table[i].class,       fread_number( fp, &stat ));
                                         break;
 
                                     case 'E':
@@ -1873,7 +1881,7 @@ void load_legend_table ()
                                         break;
 
                                     case 'F':
-                                        KEY("Fame", legend_table[i].fame,       fread_number(fp));
+                                        KEY("Fame", legend_table[i].fame,       fread_number( fp, &stat ));
                                         break;
 
                                     case 'N':
@@ -1885,7 +1893,7 @@ void load_legend_table ()
                                         break;
 
                                     case 'S':
-                                        KEY("Subclassed", legend_table[i].subclassed,       fread_number(fp));
+                                        KEY("Subclassed", legend_table[i].subclassed,       fread_number( fp, &stat ));
                                         break;
 
                                 }
@@ -1954,6 +1962,7 @@ void save_legend_table ()
 void load_pkscore_table ()
 {
         FILE    *fp;
+        int     stat;
         char    pkscore_file [ MAX_STRING_LENGTH ];
         char    buf [MAX_STRING_LENGTH];
         int     i = 0;
@@ -2006,7 +2015,7 @@ void load_pkscore_table ()
                                 switch (UPPER(word[0]))
                                 {
                                     case 'C':
-                                        KEY("Class", pkscore_table[i].class,       fread_number(fp));
+                                        KEY("Class", pkscore_table[i].class,       fread_number( fp, &stat ));
                                         if (!str_cmp(word, "Clan"))
                                         {
                                                 tmpname = fread_string(fp);
@@ -2033,13 +2042,13 @@ void load_pkscore_table ()
                                         break;
 
                                     case 'P':
-                                        KEY("Pkills",  pkscore_table[i].pkills,       fread_number(fp));
-                                        KEY("Pkscore", pkscore_table[i].pkscore,      fread_number(fp));
-                                        KEY("Pdeaths", pkscore_table[i].pdeaths,      fread_number(fp));
+                                        KEY("Pkills",  pkscore_table[i].pkills,       fread_number( fp, &stat ));
+                                        KEY("Pkscore", pkscore_table[i].pkscore,      fread_number( fp, &stat ));
+                                        KEY("Pdeaths", pkscore_table[i].pdeaths,      fread_number( fp, &stat ));
                                         break;
 
                                     case 'S':
-                                        KEY("Subclassed", pkscore_table[i].subclassed,       fread_number(fp));
+                                        KEY("Subclassed", pkscore_table[i].subclassed,       fread_number( fp, &stat ));
                                         break;
 
                                 }

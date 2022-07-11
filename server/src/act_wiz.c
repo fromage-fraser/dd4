@@ -1480,6 +1480,16 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         strcat( buf1, buf );
                 }
 
+                if ( IS_NPC( victim )
+	          && victim->pIndexData
+	          && victim->pIndexData->pGame
+	          && victim->pIndexData->pGame->game_fun != 0 )
+                {
+	                sprintf( buf, "Game function: {Y%s{x\n\r",
+		        game_string( victim->pIndexData->pGame->game_fun ) );
+                        strcat( buf1, buf );
+                }
+
                 sprintf( buf, "Lvl: {W%d{x  Room: {R%d{x  Align: {W%d{x  Sex: {W%s{x\n\r",
                         victim->level,
                         !victim->in_room           ?        0 : victim->in_room->vnum,
