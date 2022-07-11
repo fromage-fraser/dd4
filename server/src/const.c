@@ -1883,7 +1883,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         {&gsn_healing,                                  0 },
         {&gsn_ward,                                     0 },
 
-        { &gsn_group_last,                              0 }
+        {&gsn_group_last,                              0 }
 };
 
 
