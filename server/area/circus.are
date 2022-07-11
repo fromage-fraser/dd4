@@ -206,7 +206,7 @@ the knife thrower~
 The knife thrower is getting ready to throw 4 knifes at his assistant.
 ~
 He is getting ready to put on a blind fold.  He has spent years of practice,
-and is completely confident in his skills.  He also has a hankerchief he keeps
+and is completely confident in his skills.  He also has a handkerchief he keeps
 wiping his face with.  You here him mumble, 'maybe I shouldn't have stopped
 by the Grunting Boar before my act'.
 ~
@@ -405,6 +405,28 @@ The Midget is very good at his trade, and makes quit a bit of money buy picking
 pockets of the unwary.
 ~
 64 512 -900 S
+3 8 8 8d8+8 10d10+10
+0 8
+8 8 1
+#4452
+croupier~
+a croupier~
+A croupier is here, running an "upper-lower-triple" game.
+~
+She loves gambling and believes in the old adage 'there's one born every minute'.
+~
+2|64 8192 1000 S
+3 8 8 8d8+8 10d10+10
+0 8
+8 8 2
+#4453
+games huckster grimy~
+a games huckster~
+A grimy huckster is here, running a "high dice" game.
+~
+He loves gambling and believes in the old adage 'there's one born every minute'.
+~
+2|64 8192 1000 S
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 1
@@ -691,7 +713,7 @@ A chest sits in the corner.~
 #4427
 slip paper~
 a paper~
-A piece of wadded up paper has been left on the ground.~
+A piece of wadded-up paper has been left on the ground.~
 ~
 18 0 1
 0~ 0~ 0~ 0~
@@ -754,8 +776,8 @@ A juicy steak dinner lies here.~
 100~ 0~ 0~ 0~
 1 0 0
 #4434
-bigmac~
-a delicious BigMac~
+big mac~
+a delicious Big Mac~
 Some food lies here, wrapped in paper.~
 ~
 19 0 1
@@ -855,8 +877,8 @@ A plump turkey sits on the table.~
 1 0 0
 #4445
 stuffing~
-homemade stuffing~
-A bowl of homemade stuffing sits upon the table.~
+home-made stuffing~
+A bowl of home-made stuffing sits upon the table.~
 ~
 19 0 1
 100~ 0~ 0~ 0~
@@ -972,26 +994,24 @@ D1
 0 0 4405
 S
 #4404
-The Game Booths~
-        This area seems deserted.  The booths are boarded up, and the only
-Circus employee you see is sitting on a counter, muttering obscenities at the
-Mayor and City council.  He makes it a point to let you know that he knows
-you are there, and he is ignoring you on purpose.
+A Game Booth~
+        This booth has been set up for people to play the dice game 
+'upper-lower-triple'.  It's a bit run-down and grubby, but seems popular
+nonetheless. You hope it's not rigged.
 ~
-0 0 1
+0 4 1
 D1
 ~
 ~
 0 0 4403
 S
 #4405
-The Game Booths~
-        This area seems deserted.  The booths are boarded up, and the only
-Circus employee you see is sitting on a counter, muttering obscenities at the
-Mayor and City council.  He makes it a point to let you know that he knows
-you are there, and he is ignoring you on purpose.
+A Game Booths~
+        This booth has been set up for people to play the gambling 
+game 'high dice'. It's a bit run-down and grubby, but seems popular
+nonetheless. You hope it's not rigged.
 ~
-0 0 1
+0 4 1
 D3
 ~
 ~
@@ -1062,7 +1082,7 @@ The Tent of the Bearded Lady~
         This tent consists of chairs for you to rest in, and a rickety wooden
 stage up front.  You hear the stage creak as you enter, and you understand
 why when you see who is standing on it.  She is bearded all right.  And big.
-Very big.  Colosally huge.  You don't seem to have any problem finding a seat.
+Very big.  Colossally huge.  You don't seem to have any problem finding a seat.
 The place is deserted of spectators.
 ~
 0 8 0
@@ -1115,7 +1135,7 @@ The Midget's Tent~
         This tent has a mat laid out, no doubt where the Midget performs his
 acrobatics.  You overhear another member of the audience telling his friend,
 'I'd watch out for that Midget.  I hear that a new rash of robberies broke out
-right after the Circus came to town.  Wouldn't suprise me if he is the one
+right after the Circus came to town.  Wouldn't surprise me if he is the one
 responsible.'
 ~
 0 8 0
@@ -1273,7 +1293,7 @@ D3
 S
 #4419
 First Look at the Big Top~
-        You recieve your first good look at the Big Top.  The size of this
+        You receive your first good look at the Big Top.  The size of this
 tent was amazing from the outside, but is even more breathtaking from the
 inside.  You feel as if you are in a different world, where the sky is only
 a little closer.  You see 3 Rings spread out in front of you.  A high wire
@@ -1338,7 +1358,7 @@ D1
 S
 #4422
 The 2nd Ring - You'd better read the description of this room. ~
-        You are in the 2nd Ring.  You see a rickity carriage, which a line of
+        You are in the 2nd Ring.  You see a rickety carriage, which a line of
 clowns are trying to squeeze into.  You've already seen many more fit into it
 than could possibly fit.  The 1st Ring is to the west and the 3rd Ring is
 to the east.  A ladder on a pole here provides access to the tightrope above.
@@ -1459,7 +1479,7 @@ D3
 0 0 4426
 S
 #4428
-The End of the Highwire~
+The End of the High wire~
         You made it safely.  Now you may climb down and sneak out the back
 entrance of the Big Top.  Or you can brave the Tightrope again.  You hear
 the noises of animals outside the Big Top.  Below you is the trapdoor.
@@ -1541,7 +1561,7 @@ door~
 S
 #4431
 The Elephant Pen~
-        The first thing you notice in this pen is the rather pungent odor.  Oh
+        The first thing you notice in this pen is the rather pungent odour.  Oh
 my, you seem to have stepped in an extremely large pile of droppings.  Maybe
 you should leave to the north?
 ~
@@ -1578,7 +1598,7 @@ door~
 S
 #4434
 The Row of Trailers~
-        You are between the two rows of trailers where the performets live.
+        You are between the two rows of trailers where the performers live.
 To the north is the Strongman's Trailer, to the south the Bearded Lady's
 Trailer.  You may also continue east or west.
 ~
@@ -1639,7 +1659,7 @@ door~
 S
 #4438
 The Row of Trailers~
-        You are between the two rows of trailers where the performets live.
+        You are between the two rows of trailers where the performers live.
 To the north is the Sword Swallower's Trailer, to the south is the Midget's
 Trailer.  You may also continue east or west.
 ~
@@ -1678,7 +1698,7 @@ door~
 S
 #4440
 The Row of Trailers~
-        You are between the two rows of trailers where the performets live.
+        You are between the two rows of trailers where the performers live.
 To the north is the Illusionist's Trailer, to the south is a very large
 Trailer.  You may also go back to the west, or enter a trailer to the east.
 ~
@@ -1706,7 +1726,7 @@ The Illusionist's Trailer~
 outside.  You see a spacious, king-sized bed, a large table and kitchenette,
 and a separate sitting room.  The longer that you look though, you see that
 all the objects in the room have a slight shimmer to them.  Closer examination
-reveals that the bed is a cot, the table a nightstand, and the sitting room
+reveals that the bed is a cot, the table a night stand, and the sitting room
 is a chair.  It appears the Illusionist tries to fool even himself sometimes.
 ~
 0 8 0
@@ -1819,19 +1839,19 @@ S
 Binky's Kitchen~
         A rather small room really, but the aromas drifting to you make your
 mouth water.  A feast fit for a king, or an immortal is spread upon the table
-before you.  You feel compelled to sit and at least taste some of the deli-
-cacies.  Somehow, you know that everything you find here will be very filling,
-yet completely fat free.
+before you.  You feel compelled to sit and at taste some of the delicacies.  
+Somehow, you know that everything you find here will be very filling, yet 
+completely fat-free.
 ~
 0 0 1
 S
 #4475
 StrayKat's Abode~
-You find yourself up to the knees in a soft, slimy mass. Wouldnt be all that
+You find yourself up to the knees in a soft, slimy mass. Wouldn't be all that
 bad... but the smell and that thing wrapping itself around your ankle. The
 floor somehow seems to be moving but as you look closer you realize that it
 is a thick layer of feasting maggots. You frantically look for an exit but
-all you see are the unclimbable slimecoated walls of a huge.... TRASHCAN!!!
+all you see are the unclimbable, slime-coated walls of a huge.... TRASHCAN!!!
 ~
 44 8 0
 S
@@ -2023,11 +2043,9 @@ M 0 4429 1 4439         guard dog
 *
 *
 * various items in rooms
-O 0 4415 0 4404                 sign in games booth room
-O 0 4415 0 4405                 sign in games booth room
 O 0 4429 0 4402                 note at ticket booth
 O 0 4449 0 4469                 Binky's refrigerator
-P 1 4434 0 4449                         put bigmac in refrigerator
+P 1 4434 0 4449                         put big mac in refrigerator
 P 1 4435 0 4449                         put coke in refrigerator
 P 1 4432 0 4449                         put pizza in refrigerator
 P 1 4433 0 4449                         put steak in refrigerator
@@ -2038,9 +2056,17 @@ O 0 4446 0 4469                         cherry pie
 O 0 4447 0 4469                         wineskin
 M 0 4450 1 4469                 Binky's chef
 E 1 4450 1 16                           carving knife
-* M 0 4451 1 4401              midget thief, not loaded unless asterik removed
+* M 0 4451 1 4401              midget thief, not loaded unless asterisk removed
+M 0 4452 1 4404                 croupier
+M 0 4453 1 4405                 huckster
 S
 
+#GAMES
+*
+M 4452 game_u_l_t		1000000   8	1	/* Croupier      */
+M 4453 game_high_dice		1000000   8	0	/* Huckster     */
+*
+S
 
 #SHOPS
 4400     0 0 0 0 0         100 50         0 23  ; ticket clerk

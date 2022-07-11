@@ -3067,6 +3067,56 @@ int get_int_penalty (CHAR_DATA *ch)
         return (30 - ((get_curr_wis(ch) + (get_curr_int(ch)) * 2) / 3));
 }
 
+/*
+  14k42 = 14 * 1000 + 14 * 100 + 2 * 10 = 14420
+  Of course, it only pays off to use that notation when you can skip many 0's.
+  There is not much point in writing 66k666 instead of 66666, except maybe
+  when you want to make sure that you get 66,666.
+  More than 3 (in case of 'k') or 6 ('m') digits after 'k'/'m' are automatically
+  disregarded. Example:
+  14k1234 = 14,123
+  If the number contains any other characters than digits, 'k' or 'm', the
+  function returns 0. It also returns 0 if 'k' or 'm' appear more than
+  once.
+  the pointer to buffer stuff is not really necessary, but originally I
+  modified the buffer, so I had to make a copy of it. What the hell, it
+  works :) (read: it seems to work :)
+*/
+int advatoi( const char *s )
+{
+    int number		= 0;
+    int multiplier	= 0;
+
+    /*
+     * as long as the current character is a digit add to current number.
+     */
+    while ( isdigit( s[0] ) )
+        number = ( number * 10 ) + ( *s++ - '0' );
+
+    switch (UPPER(s[0]))
+    {
+        case 'K'  : number *= ( multiplier = 1000 );      ++s; break;
+        case 'M'  : number *= ( multiplier = 1000000 );   ++s; break;
+        case '\0' : break;
+        default   : return 0; /* not k nor m nor NULL - return 0! */
+    }
+
+    /* if any digits follow k/m, add those too */
+    while ( isdigit( s[0] ) && ( multiplier > 1 ) )
+    {
+        /* the further we get to right, the less the digit 'worth' */
+        multiplier /= 10;
+        number = number + ( ( *s++ - '0' ) * multiplier );
+    }
+
+    /* return 0 if non-digit character was found, other than NULL */
+    if ( s[0] != '\0' && !isdigit( s[0] ) )
+        return 0;
+
+    /* anything left is likely extra digits (ie: 14k4443  -> 3 is extra) */
+
+    return number;
+}
 
 /* EOF handler.c */
 

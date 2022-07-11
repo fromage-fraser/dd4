@@ -1,8 +1,8 @@
 #AREA Owl~ Shadowsea~
-25 30 10 100
+20 30 10 100
 
 #AREA_SPECIAL
-exp_mod 110
+exp_mod 115
 $
 
 #MOBILES
@@ -583,12 +583,9 @@ A
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -611,18 +608,19 @@ D4
 ~
 ~
 0 -1 27075
+D5
+~
+~
+0 -1 27650
 S
 #27102
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -645,18 +643,19 @@ D4
 ~
 ~
 0 -1 27073
+D5
+~
+~
+0 -1 27649
 S
 #27103
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -679,18 +678,19 @@ D4
 ~
 ~
 0 -1 27076
+D5
+~
+~
+0 -1 27644
 S
 #27104
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -713,18 +713,19 @@ D4
 ~
 ~
 0 -1 27072
+D5
+~
+~
+0 -1 27643
 S
 #27105
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -747,18 +748,19 @@ D4
 ~
 ~
 0 -1 27071
+D5
+~
+~
+0 -1 27642
 S
 #27106
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -781,18 +783,19 @@ D4
 ~
 ~
 0 -1 27070
+D5
+~
+~
+0 -1 27637
 S
 #27107
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -815,18 +818,19 @@ D4
 ~
 ~
 0 -1 27074
+D5
+~
+~
+0 -1 27638
 S
 #27108
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -849,18 +853,19 @@ D4
 ~
 ~
 0 -1 27077
+D5
+~
+~
+0 -1 27639
 S
 #27109
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -883,18 +888,19 @@ D4
 ~
 ~
 0 -1 27079
+D5
+~
+~
+0 -1 27634
 S
 #27110
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -917,18 +923,19 @@ D4
 ~
 ~
 0 -1 27078
+D5
+~
+~
+0 -1 27633
 S
 #27111
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -951,6 +958,10 @@ D4
 ~
 ~
 0 -1 27069
+D5
+~
+~
+0 -1 27632
 S
 #27112
 {BThe Eerie Deep{x~
@@ -958,12 +969,9 @@ S
 environment feels unnatural and oppressive.  It is a little more
 turbulent here than usual, but not a great deal. While it is too dark
 here to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -986,18 +994,19 @@ D4
 ~
 ~
 0 -1 27068
+D5
+~
+~
+0 -1 27628
 S
 #27113
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1020,18 +1029,19 @@ D4
 ~
 ~
 0 -1 27080
+D5
+~
+~
+0 -1 27629
 S
 #27114
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1054,18 +1064,19 @@ D4
 ~
 ~
 0 -1 27081
+D5
+~
+~
+0 -1 27630
 S
 #27115
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1088,18 +1099,19 @@ D4
 ~
 ~
 0 -1 27056
+D5
+~
+~
+0 -1 27625
 S
 #27116
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1122,6 +1134,10 @@ D4
 ~
 ~
 0 -1 27057
+D5
+~
+~
+0 -1 27624
 S
 #27117
 {BThe Eerie Deep{x~
@@ -1129,12 +1145,9 @@ S
 environment feels unnatural and oppressive.  It is a little more
 turbulent here than usual, but not a great deal. While it is too dark
 here to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1157,18 +1170,19 @@ D4
 ~
 ~
 0 -1 27058
+D5
+~
+~
+0 -1 27623
 S
 #27118
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1191,18 +1205,19 @@ D4
 ~
 ~
 0 -1 27066
+D5
+~
+~
+0 -1 27622
 S
 #27119
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1225,18 +1240,19 @@ D4
 ~
 ~
 0 -1 27067
+D5
+~
+~
+0 -1 27627
 S
 #27120
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1259,18 +1275,19 @@ D4
 ~
 ~
 0 -1 27065
+D5
+~
+~
+0 -1 27621
 S
 #27121
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1293,18 +1310,19 @@ D4
 ~
 ~
 0 -1 27064
+D5
+~
+~
+0 -1 27621
 S
 #27122
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1327,18 +1345,19 @@ D4
 ~
 ~
 0 -1 27053
+D5
+~
+~
+0 -1 27615
 S
 #27123
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1361,18 +1380,19 @@ D4
 ~
 ~
 0 -1 27063
+D5
+~
+~
+0 -1 27617
 S
 #27124
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1395,18 +1415,19 @@ D4
 ~
 ~
 0 -1 27060
+D5
+~
+~
+0 -1 27617
 S
 #27125
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1429,18 +1450,19 @@ D4
 ~
 ~
 0 -1 27059
+D5
+~
+~
+0 -1 27619
 S
 #27126
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1463,18 +1485,19 @@ D4
 ~
 ~
 0 -1 27062
+D5
+~
+~
+0 -1 27611
 S
 #27127
 {BThe Eerie Deep{x~
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  Bizarrely,
-if you try to force yourself down farther the cityscape recedes from
-you even faster than you travel towards it, and the water pressure
-quickly becomes too intense to continue.  Foul magiks are at play.
+movement, and the ruined outlines of a vast undersea city.  
 
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1497,6 +1520,10 @@ D4
 ~
 ~
 0 -1 27061
+D5
+~
+~
+0 -1 27613
 S
 #27128
 {BThe Eerie Deep{x~
@@ -1505,13 +1532,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1534,6 +1557,10 @@ D4
 ~
 ~
 0 -1 27073
+D5
+~
+~
+0 -1 27649
 S
 #27129
 {BThe Eerie Deep{x~
@@ -1542,13 +1569,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1571,6 +1594,10 @@ D4
 ~
 ~
 0 -1 27057
+D5
+~
+~
+0 -1 27620
 S
 #27130
 {BThe Eerie Deep{x~
@@ -1579,13 +1606,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1608,6 +1631,10 @@ D4
 ~
 ~
 0 -1 27075
+D5
+~
+~
+0 -1 27650
 S
 #27131
 {BThe Eerie Deep{x~
@@ -1616,13 +1643,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1645,6 +1668,10 @@ D4
 ~
 ~
 0 -1 27056
+D5
+~
+~
+0 -1 27620
 S
 #27132
 {BThe Eerie Deep{x~
@@ -1653,13 +1680,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1682,6 +1705,10 @@ D4
 ~
 ~
 0 -1 27071
+D5
+~
+~
+0 -1 27648
 S
 #27133
 {BThe Eerie Deep{x~
@@ -1690,13 +1717,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1719,6 +1742,10 @@ D4
 ~
 ~
 0 -1 27059
+D5
+~
+~
+0 -1 27614
 S
 #27134
 {BThe Eerie Deep{x~
@@ -1727,13 +1754,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1756,6 +1779,10 @@ D4
 ~
 ~
 0 -1 27069
+D5
+~
+~
+0 -1 27631
 S
 #27135
 {BThe Eerie Deep{x~
@@ -1764,13 +1791,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1793,6 +1816,10 @@ D4
 ~
 ~
 0 -1 27070
+D5
+~
+~
+0 -1 27636
 S
 #27136
 {BThe Eerie Deep{x~
@@ -1801,13 +1828,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1830,6 +1853,10 @@ D4
 ~
 ~
 0 -1 27071
+D5
+~
+~
+0 -1 27641
 S
 #27137
 {BThe Eerie Deep{x~
@@ -1838,13 +1865,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1867,6 +1890,10 @@ D4
 ~
 ~
 0 -1 27075
+D5
+~
+~
+0 -1 27652
 S
 #27138
 {BThe Eerie Deep{x~
@@ -1875,13 +1902,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1904,6 +1927,10 @@ D4
 ~
 ~
 0 -1 27076
+D5
+~
+~
+0 -1 27646
 S
 #27139
 {BThe Eerie Deep{x~
@@ -1912,13 +1939,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1941,6 +1964,10 @@ D4
 ~
 ~
 0 -1 27061
+D5
+~
+~
+0 -1 27609
 S
 #27140
 {BThe Eerie Deep{x~
@@ -1949,13 +1976,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -1978,6 +2001,10 @@ D4
 ~
 ~
 0 -1 27077
+D5
+~
+~
+0 -1 27640
 S
 #27141
 {BThe Eerie Deep{x~
@@ -1986,13 +2013,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2015,6 +2038,10 @@ D4
 ~
 ~
 0 -1 27079
+D5
+~
+~
+0 -1 27635
 S
 #27142
 {BThe Eerie Deep{x~
@@ -2023,13 +2050,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2052,6 +2075,10 @@ D4
 ~
 ~
 0 -1 27081
+D5
+~
+~
+0 -1 27630
 S
 #27143
 {BThe Eerie Deep{x~
@@ -2060,13 +2087,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2089,6 +2112,10 @@ D4
 ~
 ~
 0 -1 27056
+D5
+~
+~
+0 -1 27625
 S
 #27144
 {BThe Eerie Deep{x~
@@ -2097,13 +2124,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2126,6 +2149,10 @@ D4
 ~
 ~
 0 -1 27064
+D5
+~
+~
+0 -1 27621
 S
 #27145
 {BThe Eerie Deep{x~
@@ -2134,13 +2161,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2163,6 +2186,10 @@ D4
 ~
 ~
 0 -1 27053
+D5
+~
+~
+0 -1 27616
 S
 #27146
 {BThe Eerie Deep{x~
@@ -2171,13 +2198,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2200,6 +2223,10 @@ D4
 ~
 ~
 0 -1 27065
+D5
+~
+~
+0 -1 27626
 S
 #27147
 {BThe Eerie Deep{x~
@@ -2208,13 +2235,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2237,6 +2260,10 @@ D4
 ~
 ~
 0 -1 27064
+D5
+~
+~
+0 -1 27626
 S
 #27148
 {BThe Eerie Deep{x~
@@ -2245,13 +2272,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2274,6 +2297,10 @@ D4
 ~
 ~
 0 -1 27062
+D5
+~
+~
+0 -1 27608
 S
 #27149
 {BThe Eerie Deep{x~
@@ -2282,13 +2309,9 @@ environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
 movement, and the ruined outlines of a vast undersea city, but with
 bizarrely overlapping imagery, as if you are seeing multiple locations
-in the city simultaneously.  Bizarrely, if you try to force yourself
-down farther the cityscape recedes from you even faster than you travel
-towards it, and the water pressure quickly becomes too intense to continue.
+in the city simultaneously.  Foul magiks are at play.
 
-Foul magiks are at play.
-
-You can move in any direction except down.{x
+You can move in any direction.{x
 ~
 0 1|8192 8
 D0
@@ -2311,6 +2334,10 @@ D4
 ~
 ~
 0 -1 27062
+D5
+~
+~
+0 -1 27612
 S
 #0
 

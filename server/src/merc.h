@@ -37,7 +37,8 @@
 #define DECLARE_DO_FUN( fun )           DO_FUN          fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN        fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN       fun
-#define DECLARE_CONSTRUCT_FUN( fun )    CONSTRUCT_FUN      fun
+#define DECLARE_GAME_FUN( fun )		GAME_FUN        fun
+#define DECLARE_CONSTRUCT_FUN( fun )    CONSTRUCT_FUN   fun
 #endif
 
 /* System calls - for delete ( from ROM ) */
@@ -130,6 +131,7 @@ typedef struct weather_data                     WEATHER_DATA;
 typedef struct mob_prog_data                    MPROG_DATA;
 typedef struct mob_prog_act_list                MPROG_ACT_LIST;
 typedef struct auction_data                     AUCTION_DATA;
+typedef struct game_data		        GAME_DATA;
 typedef struct coin_data                        COIN_DATA;
 typedef struct smelting_data                    SMELTING_DATA;
 /* typedef struct raw_mats_data                    RAW_MATERIAL_DATA; */
@@ -165,6 +167,7 @@ typedef struct mapbook_data             MAPBOOK_DATA;           /* This struct i
 typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA *ch ) );
 typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
+typedef void GAME_FUN   args( ( CHAR_DATA *ch, CHAR_DATA *croupier, int amount, int cheat, char *argument ) );
 typedef void CONSTRUCT_FUN args( ( int sn, int level, CHAR_DATA *ch ) );
 
 /*
@@ -801,6 +804,20 @@ struct shop_data
         int             profit_sell;                    /* Cost multiplier for selling */
         int             open_hour;                      /* First opening hour */
         int             close_hour;                     /* First closing hour */
+};
+
+
+/*
+ * Game stuff
+ */
+struct	game_data
+{
+    GAME_DATA *	next;			/* Next game in list		*/
+    int 	croupier;		/* Vnum of croupier mob		*/
+    GAME_FUN *	game_fun;		/* Game fun run by mob		*/
+    int		bankroll;		/* Amount of gold in the bank	*/
+    int		max_wait;		/* Number of pulse to decision	*/
+    bool	cheat;			/* True if mob cheats		*/
 };
 
 
@@ -1472,7 +1489,15 @@ int             bot_can_see                     ( int num, char *argument );
 bool            bot_consider_target             ( int num, CHAR_DATA *victim );
 CHAR_DATA*      bot_choose_target               ( int num );
 
+/*
+ *  Game type; Owl 2022
+ */
 
+struct game_type
+{
+    char *      game_name;
+    GAME_FUN *  game_fun;
+};
 
 /*
  *  Wanted board; Gezhp 2001
@@ -2295,6 +2320,7 @@ struct  mob_index_data
 {
         MOB_INDEX_DATA *        next;
         SPEC_FUN *              spec_fun;
+        GAME_DATA *		pGame;
         SHOP_DATA *             pShop;
         MPROG_DATA *            mobprogs;
         LEARNED_DATA *          skills;         /* used by practicers only */
@@ -3519,6 +3545,7 @@ extern struct           vampire_gag             vampire_gag_table               
  */
 extern HELP_DATA                * help_first;
 extern SHOP_DATA                * shop_first;
+extern GAME_DATA	        * game_first;
 extern BAN_DATA                 * ban_list;
 extern CHAR_DATA                * char_list;
 extern DESCRIPTOR_DATA          * descriptor_list;
@@ -3598,6 +3625,7 @@ DECLARE_DO_FUN( do_ban                          );
 DECLARE_DO_FUN( do_bash                         );
 DECLARE_DO_FUN( do_battle_aura                  );      /* brawler skill - Brutus */
 DECLARE_DO_FUN( do_berserk                      );      /* Berserk from ENVY2.0 */
+DECLARE_DO_FUN( do_bet                          );      /* For gambling */
 DECLARE_DO_FUN( do_bite                         );      /* tiger skill */
 DECLARE_DO_FUN( do_wolfbite                     );      /* bite for werewolves */
 DECLARE_DO_FUN( do_bladethirst                  );      /* nec skill - like poison weapon */
@@ -4175,6 +4203,7 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define RID     ROOM_INDEX_DATA
 #define SF      SPEC_FUN
 #define ED      EXIT_DATA
+#define GF      GAME_FUN
 
 
 /* act_comm.c */
@@ -4259,7 +4288,7 @@ OID *   get_obj_index                   args( ( int vnum ) );
 RID *   get_room_index                  args( ( int vnum ) );
 void    obj_strings                     args( ( OBJ_DATA *obj ) );
 char    fread_letter                    args( ( FILE *fp ) );
-int     fread_number                    args( ( FILE *fp ) );
+int	fread_number	                args( ( FILE *fp, int *status ) );
 char *  fread_string                    args( ( FILE *fp ) );
 void    fread_to_eol                    args( ( FILE *fp ) );
 char *  fread_word                      args( ( FILE *fp ) );
@@ -4401,6 +4430,7 @@ bool    longstring                      args( ( CHAR_DATA *ch, char *argument ) 
 bool    authorized                      args( ( CHAR_DATA *ch, int gsn ) );
 void    end_of_game                     args( ( void ) );
 int     form_skill_allow                args( ( CHAR_DATA *ch, int sn ) );
+int	advatoi		                args( ( const char *s ) );
 void    generate_stats                        ( CHAR_DATA *ch );
 int     mana_cost                             ( CHAR_DATA *ch, int sn );
 int     get_phys_penalty                      ( CHAR_DATA *ch );
@@ -4426,6 +4456,9 @@ bool mob_interacts_players            ( CHAR_DATA *mob );
 
 /* mob_commands.c */
 char*   mprog_type_to_name      args( ( int type ) );
+
+/* gamble.c */
+char *  game_string     args( ( GAME_FUN *fun ) );
 
 /* mob_prog.c */
 #ifdef DUNNO_STRSTR
@@ -4465,6 +4498,8 @@ void save_pkscore_table         ( );
 void load_infamy_table          ( );
 void save_infamy_table          ( );
 
+/* gamble.c */
+GF *    game_lookup     args( ( const char *name ) );
 
 /* special.c */
 SF * spec_lookup        args( ( const char *name ) );

@@ -3279,12 +3279,6 @@ void do_steal (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ( (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
-        {
-                send_to_char("You can't carry that much weight.\n\r", ch);
-                return;
-        }
-
         obj_from_char(obj);
         obj_to_char(obj, ch);
         send_to_char("Muhaha! They didn't even notice! You slink away from them, grinning.\n\r", ch);
@@ -5704,6 +5698,7 @@ int get_spellcraft_obj_bonus(CHAR_DATA *ch)
 /*
  * Auction betting bollocks
  */
+/*
 int advatoi (const char *s)
 {
         char string[MAX_INPUT_LENGTH];
@@ -5724,7 +5719,7 @@ int advatoi (const char *s)
         switch (UPPER(*stringptr))
         {
             case 'K'  : multiplier = 1000;    number *= multiplier; stringptr++; break;
-            /* case 'M'  : multiplier = 1000000; number *= multiplier; stringptr++; break; */
+            case 'M'  : multiplier = 1000000; number *= multiplier; stringptr++; break;
             case '\0' : break;
             default   : return 0;
         }
@@ -5742,7 +5737,7 @@ int advatoi (const char *s)
 
         return (number);
 }
-
+*/
 
 int parsebet (const int currentbet, const char *argument)
 {
