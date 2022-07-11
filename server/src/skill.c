@@ -3300,6 +3300,90 @@ void do_construct( CHAR_DATA *ch, char *arg )
         act(buf, ch, NULL, NULL, TO_ROOM);
 
         return;
+        
+}
+
+void do_empower (CHAR_DATA *ch, char *argument)
+{
+
+        char      arg1 [ MAX_INPUT_LENGTH ];
+        char      arg2 [ MAX_INPUT_LENGTH ];
+        char      arg3 [ MAX_INPUT_LENGTH ];
+        char      arg4 [ MAX_INPUT_LENGTH ];
+        char      arg5 [ MAX_INPUT_LENGTH ];
+
+        int        sn;
+        int        glookup;
+
+        OBJ_DATA *obj;
+
+
+
+      if( !CAN_DO( ch, gsn_empower ) )
+        {
+                send_to_char( "You dont know how to do that.\n\r", ch );
+                return;
+        }
+
+
+        if( arg1[0] == '\0' )
+        {
+                        send_to_char("What do you want to empower?\n\r", ch);
+                return;
+        }
+
+        (!str_cmp(set_list[sn].set_name,arg1))
+
+
+
+
+             if (!(obj = get_obj_carry(ch, arg1)))
+                {
+                        send_to_char("You do not have that item.\n\r", ch);
+                        return;
+                }
+
+                if (obj->wear_loc == WEAR_BODY)
+                {
+                        send_to_char("Not while fighting.\n\r", ch);
+                        return;
+                }
+
+                wear_obj(ch, obj, TRUE);
+
+        
+
+        if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_BODY, BIT_WEAR_BODY))
+        {
+               
+                act("You wear $p on your body.", ch, obj, NULL, TO_CHAR);
+                act("$n wears $p on $s body.",   ch, obj, NULL, TO_ROOM);
+                equip_char(ch, obj, WEAR_BODY);
+                return;
+        }
+
+        if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_HEAD, BIT_WEAR_HEAD))
+        {
+                if (!remove_obj(ch, WEAR_HEAD, fReplace))
+                        return;
+                act("You wear $p on your head.", ch, obj, NULL, TO_CHAR);
+                act("$n wears $p on $s head.",   ch, obj, NULL, TO_ROOM);
+                equip_char(ch, obj, WEAR_HEAD);
+                return;
+        }
+
+        if (CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_LEGS, BIT_WEAR_LEGS))
+        {
+                if (!remove_obj(ch, WEAR_LEGS, fReplace))
+                        return;
+                act("You wear $p on your legs.", ch, obj, NULL, TO_CHAR);
+                act("$n wears $p on $s legs.",   ch, obj, NULL, TO_ROOM);
+                equip_char(ch, obj, WEAR_LEGS);
+                return;
+        }
+
+
+
 }
 
 void do_imbue (CHAR_DATA *ch, char *argument)
@@ -3638,12 +3722,6 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
         
-
-
-
-
-
-
         for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj = obj_next)
         {
                 obj_next = obj->next_content;

@@ -573,6 +573,7 @@ int     gsn_swoop;
 int     gsn_smelt;
 int     gsn_strengthen;
 int     gsn_imbue;
+int     gsn_empower;
 int     gsn_uncommon_set;
 int     gsn_rare_set;
 int     gsn_epic_set;

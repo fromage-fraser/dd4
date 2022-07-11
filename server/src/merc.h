@@ -209,6 +209,18 @@ struct blueprint_type
 
 };
 
+#define MAX_SETS 4
+
+struct set_type
+{
+        char    *set_name;
+        char    *set_desc;
+        int     set_ego;
+        int     set_bonus1;
+        int     set_bonus2;
+        int     set_bonus3;
+};
+
 /*
  * Songs for bards
  */
@@ -261,8 +273,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               511     /* 511 for dart */
-#define MAX_PRE_REQ             1349    /* Added for smithy*/
+#define MAX_SKILL               512     /* 512 for Empower */
+#define MAX_PRE_REQ             1350    /* Added for Empower*/
 #define MAX_SPELL_GROUP         431   /* Added for smithy */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
@@ -1958,6 +1970,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
+#define EGO_ITEM_UNCOMMON_SET           BIT_8
+#define EGO_ITEM_RARE_SET               BIT_9
+#define EGO_ITEM_EPIC_SET               BIT_10
+#define EGO_ITEM_LEGENDARY_SET          BIT_11
 
 /*
  * Apply types (for affects).
@@ -3305,6 +3321,7 @@ extern int gsn_swoop;
 extern int gsn_smelt;
 extern int gsn_strengthen;
 extern int gsn_imbue;
+extern int gsn_empower;
 extern int gsn_uncommon_set;
 extern int gsn_rare_set;
 extern int gsn_epic_set;
@@ -3470,6 +3487,7 @@ extern const    struct color_data               color_table                     
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
 extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
+extern const    struct set_type                 set_list                        [ MAX_SETS ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
@@ -3636,6 +3654,7 @@ DECLARE_DO_FUN( do_eat                          );
 DECLARE_DO_FUN( do_echo                         );
 DECLARE_DO_FUN( do_emote                        );
 DECLARE_DO_FUN( do_enter                        );      /* enter for portal.. - Brutus */
+DECLARE_DO_FUN( do_empower                      );      /* smithy Brutus Jul 2022 */
 DECLARE_DO_FUN( do_equipment                    );
 DECLARE_DO_FUN( do_examine                      );
 DECLARE_DO_FUN( do_exits                        );
