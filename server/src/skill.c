@@ -3320,6 +3320,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         int     ibonus1, ibonus2, ibonus3;
         int     modifier;
         int     bitv;
+        char            buf[MAX_STRING_LENGTH];
                 
         OBJ_DATA *obj;
         OBJ_DATA *obj2;
@@ -3423,8 +3424,10 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
                 act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
 
-                act (" flag %d", ch, obj->affected->type, NULL, TO_CHAR);
-                act (" flag %d", ch, obj->affected->location, NULL, TO_CHAR);
+                sprintf(buf, "$n constructs {W%d{x.", obj->affected->type);
+                act(buf, ch, NULL, NULL, TO_ROOM);
+                sprintf(buf, "$n constructs {W%s{x.", obj->affected->location);
+                act(buf, ch, NULL, NULL, TO_ROOM);
 
         }
         else
