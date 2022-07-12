@@ -4319,6 +4319,7 @@ void    reset_char_stats                      ( CHAR_DATA *ch);
 bool    aggro_damage                          ( CHAR_DATA *ch, CHAR_DATA *victim, int damage );
 void    check_autoloot                        ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    check_group_bonus                     (CHAR_DATA *ch) ;
+char *  get_damage_string               args( ( int damage_value, bool is_singular ) );
 
 /* handler.c */
 int     get_dir                         args( ( char *txt  ) );
