@@ -3312,7 +3312,9 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char     arg4 [ MAX_INPUT_LENGTH ];
         char     arg5 [ MAX_INPUT_LENGTH ];
         char            buf[MAX_STRING_LENGTH];
-                
+        
+        int     modifer;
+        
         OBJ_DATA *obj;
         OBJ_DATA *obj2;
         OBJ_DATA *obj3;
