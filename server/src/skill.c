@@ -3425,9 +3425,9 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
 
                 sprintf(buf, "constructs {W%d{x.", obj->affected->type);
-                act(buf, ch, NULL, NULL, TO_ROOM);
+                act(buf, ch, NULL, NULL, TO_CHAR);
                 sprintf(buf, "constructs {W%s{x.", obj->affected->location);
-                act(buf, ch, NULL, NULL, TO_ROOM);
+                act(buf, ch, NULL, NULL, TO_CHAR);
 
         }
         else
