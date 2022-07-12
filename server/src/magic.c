@@ -3321,13 +3321,18 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         || obj->ego_flags == EGO_ITEM_EPIC_SET
                         || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
                 {
-                        if (paf->location < APPLY_SANCTUARY)
-                                sprintf( buf, "Its [SET BONUS] modifies {Y%s{x by {Y%d{x.\n\r",
-                                        affect_loc_name( paf->location ), paf->modifier );
-                        else
-                                sprintf (buf, "Its [SET BONUS] gives the wearer {Y%s{x.\n\r",
-                                         affect_loc_name (paf->location));
-                        send_to_char( buf, ch );
+                        switch (obj->ego_flags)
+                        {
+                        case EGO_ITEM_UNCOMMON_SET: /* constant-expression */
+                        {
+                                sprintf (buf, "Its uncommon {G[SET BONUS]{x gives the wearer {W%s{x.\n\r",
+                                         skill_table[paf->type].name);
+                                send_to_char( buf, ch );        /* code */
+                                break;
+                        }
+                        default:
+                                break;
+                        }
                 }
         }
 
