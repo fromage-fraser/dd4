@@ -3428,8 +3428,6 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 sprintf(buf, "constructs {W%s{x.", obj->affected->bitvector);
                 act(buf, ch, NULL, NULL, TO_CHAR);
-                sprintf(buf, "constructs {W%s{x.", obj->ego_flags);
-                act(buf, ch, NULL, NULL, TO_CHAR);
 
 
         }
