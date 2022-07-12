@@ -3311,13 +3311,6 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char     arg3 [ MAX_INPUT_LENGTH ];
         char     arg4 [ MAX_INPUT_LENGTH ];
         char     arg5 [ MAX_INPUT_LENGTH ];
-        int     found, i;
-        char    * bonus1; 
-        char    * bonus2; 
-        char    * bonus3;
-        int     ibonus1, ibonus2, ibonus3;
-        int     modifier;
-        int     bitv;
         char            buf[MAX_STRING_LENGTH];
                 
         OBJ_DATA *obj;
