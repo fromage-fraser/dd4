@@ -3366,11 +3366,6 @@ void do_empower (CHAR_DATA *ch, char *argument)
                         send_to_char( "You arent carrying that..\n\r",ch );
                         return;
                 }
-                else
-                {
-                        send_to_char ( "missed the object check\n\r", ch);
-                        return;
-                }
                
                 switch (number_range( 1, 3 ))
                 {
