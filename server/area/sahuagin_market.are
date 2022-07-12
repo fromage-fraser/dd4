@@ -234,7 +234,7 @@ you have no doubt he is a savage and capable fighter, even if a veteran.
 
 He regards you coldly, waiting for you to make the first move.
 ~
-2|64 32|512|67108864 -700 S
+2|64 8|32|512|4194304|8388608|67108864 -700 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -247,7 +247,7 @@ else
 	mptransfer $n 27316
 	mpgoto 27316
 	mpforce $n look
-	yell And STAY out, $n!
+	yell And STAY out!
 	mpecho {WCluh'g Mani swims back to the training hall.{x
 	mpgoto 27616
 endif
@@ -782,7 +782,7 @@ Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in
 weaponless combat.  Not overly-tall but very wide and muscular, he is an 
 intimidating presence.
 ~
-2|64 32|512|4194304|67108864 -310 S
+2|64 8|32|512|4194304|8388608|67108864 -310 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -795,7 +795,7 @@ else
 	mptransfer $n 27330
 	mpgoto 27330
 	mpforce $n look
-	yell And STAY out, $n!
+	yell And STAY out!
 	mpecho {WLuanar swims back to the training hall.{x
 	mpgoto 27630
 endif
