@@ -3311,8 +3311,6 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char     arg3 [ MAX_INPUT_LENGTH ];
         char     arg4 [ MAX_INPUT_LENGTH ];
         char     arg5 [ MAX_INPUT_LENGTH ];
-        int        sn;
-        int        glookup;
         int     found, i;
         char    * bonus1; 
         char    * bonus2; 

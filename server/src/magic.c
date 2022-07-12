@@ -3193,6 +3193,15 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Engineers Turret");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
                         strcat (buf, " Turret Module");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_UNCOMMON_SET)
+                        || IS_SET(obj->ego_flags, EGO_ITEM_RARE_SET)
+                        || IS_SET(obj->ego_flags, EGO_ITEM_EPIC_SET)
+                        || IS_SET(obj->ego_flags, EGO_ITEM_LEGENDARY_SET) )
+                        {
+                                strcat (buf, "[SET PIECE]");
+                                sprint( tmp, "%d", obj->affected->type);
+                                strcat ( buf, tmp);
+                        }
                         strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
