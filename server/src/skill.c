@@ -3426,8 +3426,11 @@ void do_empower (CHAR_DATA *ch, char *argument)
 
                 sprintf(buf, "constructs {W%d{x.", obj->affected->type);
                 act(buf, ch, NULL, NULL, TO_CHAR);
-                sprintf(buf, "constructs {W%s{x.", obj->affected->location);
+                sprintf(buf, "constructs {W%s{x.", obj->affected->bitvector);
                 act(buf, ch, NULL, NULL, TO_CHAR);
+                sprintf(buf, "constructs {W%s{x.", obj->ego_flags);
+                act(buf, ch, NULL, NULL, TO_CHAR);
+
 
         }
         else
