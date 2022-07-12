@@ -6468,10 +6468,17 @@ It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
 ~
 
 -1 GAMES GAMBLE GAMBLING~
+Certain mobs in the MUD run GAMBLING games, which you can participate in
+by using the BET or WAGER command while in the same room as them. Trying
+to use these commands will also let you know if you're able to GAMBLE in
+the room you're in.
+
 The current games available on Dragons Domain are:
     Seven
     High Dice
     Upper-Lower-Triple
+
+See individual HELP entries for the above games.
 ~
 
 -1 HIGH-DICE 'HIGH DICE' HIGH DICE~
