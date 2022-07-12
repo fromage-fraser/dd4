@@ -3407,7 +3407,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 }
                 paf->type           = gsn_fly;
                 paf->duration       = -1;
-                paf->location       = APPLY_NONE;
+                paf->location       = APPLY_FLY;
                 paf->modifier       = 0;
                 paf->bitvector      = 0;
                 paf->next           = obj->affected;
@@ -3419,10 +3419,12 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 SET_BIT(obj2->extra_flags, ITEM_EGO);
                 SET_BIT(obj2->ego_flags, EGO_ITEM_UNCOMMON_SET);
 
-        set_obj_owner(obj, ch->name);
-        act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
-        act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
+                set_obj_owner(obj, ch->name);
+                act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
+                act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
 
+                act (" flag %s", ch, obj->affected->type, NULL, TO_CHAR);
+                act (" flag %s", ch, obj->affected->location, NULL, TO_CHAR);
 
         }
         else
