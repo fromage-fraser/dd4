@@ -3423,12 +3423,12 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 set_obj_owner(obj, ch->name);
                 act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
                 act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
-
+/*
                 sprintf(buf, "constructs {W%d{x.", obj->affected->type);
                 act(buf, ch, NULL, NULL, TO_CHAR);
                 sprintf(buf, "constructs {W%s{x.", obj->affected->bitvector);
                 act(buf, ch, NULL, NULL, TO_CHAR);
-
+*/
 
         }
         else
