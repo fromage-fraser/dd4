@@ -1240,13 +1240,14 @@ When one character attacks another, the severity of the damage is shown in the
 verb used in the damage message.  Here are all the damage verbs listed from
 least damage to most damage:
 
-       {wmiss          decimate         {RDEMOLISH          VAPOURIZE{x
-       {wscratch       mangle           {RDEVASTATE         ATOMIZE{x
-       {wgraze         maim             {RANNIHILATE        ELIMINATE{x
-       {whit           MUTILATE         {ROBLITERATE        EXTERMINATE{x
-       {winjure        DISEMBOWEL       {RRAVAGE            UTTERLY DESTROY{x
-       {wwound         {WEVISCERATE       {RCRIPPLE           PARTICLIZE{x
-       {wmaul          {WMASSACRE         {RBRUTALISE{x
+       {wmiss           mangle          {RANNIHILATE{x      {rEXTERMINATE{x                               
+       {wscratch        maim            {rOBLITERATE{x      {rUTTERLY DESTROY{x               
+       {wgraze          MUTILATE        {rRAVAGE{x          {rNULLIFY{x                     
+       {whit            DISEMBOWEL      {rCRIPPLE{x         {rBUTCHER{x             
+       {winjure         {WEVISCERATE{x      {rBRUTALISE{x       {rLIQUIDATE{x                                    
+       {wwound          {WMASSACRE{x        {rVAPOURIZE{x       {rSLAUGHTER{x                        
+       {wmaul           {RDEMOLISH{x        {rATOMIZE{x         {rEXTIRPATE{x                        
+       {wdecimate       {RDEVASTATE{x       {rELIMINATE{x       {rPARTICLIZE{x       
 ~
 
 0 DEATH~
