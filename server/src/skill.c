@@ -3405,7 +3405,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                         paf = affect_free;
                         affect_free = affect_free->next;
                 }
-                paf->type           = modifier;
+                paf->type           = gsn_fly;
                 paf->duration       = -1;
                 paf->location       = APPLY_NONE;
                 paf->modifier       = 0;
