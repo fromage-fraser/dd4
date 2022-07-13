@@ -3754,9 +3754,13 @@ void do_areas (CHAR_DATA *ch, char *argument)
         pArea = area_first;
 
         if (level)
-                sprintf(buf, "Areas around level %d:\n\r", level);
+        {
+                sprintf(buf, "----------------------------------------------------\n\r   {CAreas Around Level %d{x\n\r----------------------------------------------------\n\r", level);
+        }
         else
-                sprintf(buf, "Complete area list:\n\r");
+        {
+                sprintf(buf, "----------------------------------------------------\n\r   {CComplete Area List{x\n\r----------------------------------------------------\n\r");
+        }
 
         sprintf(buf_all, "\n\r");
 
@@ -3777,35 +3781,35 @@ void do_areas (CHAR_DATA *ch, char *argument)
                                 continue;
 
                         if (pArea->low_level == ROOM_LABEL_CLAN)
-                                sprintf(buf1, "(  clan )   ");
+                                sprintf(buf1, "{W({x  clan {W){x{x   ");
 
                         else if (pArea->low_level == ROOM_LABEL_NONE)
-                                sprintf(buf1, "(  none )   ");
+                                sprintf(buf1, "{W({x  none {W){x   ");
 
                         else if (pArea->low_level == ROOM_LABEL_ALL)
-                                sprintf(buf1, "(  all  )   ");
+                                sprintf(buf1, "{W({x  all  {W){x   ");
 
                         else if (pArea->low_level == ROOM_LABEL_NOTELEPORT )
-                                sprintf(buf1, "(not finished) ");
+                                sprintf(buf1, "{W({xnot finished{W){x ");
 
                         else if (pArea->high_level == ROOM_LABEL_PLUS)
-                                sprintf(buf1, "(%3d  + )   ", pArea->low_level);
+                                sprintf(buf1, "{W({x%3d  + {W){x   ", pArea->low_level);
 
                         else
-                                sprintf(buf1, "(%3d %3d)   ", pArea->low_level, pArea->high_level);
+                                sprintf(buf1, "{W({x%3d %3d{W){x   ", pArea->low_level, pArea->high_level);
 
                         if (!(pArea->low_level == -4 && level))
                         {
                                 if (pArea->low_level == ROOM_LABEL_ALL || pArea->low_level == ROOM_LABEL_CLAN)
                                 {
                                         strcat(buf_all, buf1);
-                                        sprintf(buf1, "%-26s %-20s\n\r", pArea->name, pArea->author);
+                                        sprintf(buf1, "{W%-30s{x {G%-20s{x\n\r", pArea->name, pArea->author);
                                         strcat(buf_all, buf1);
                                 }
                                 else
                                 {
                                         strcat(buf, buf1);
-                                        sprintf(buf1, "%-26s %-20s\n\r", pArea->name, pArea->author);
+                                        sprintf(buf1, "{W%-30s{x {G%-20s{x\n\r", pArea->name, pArea->author);
                                         strcat(buf, buf1);
                                 }
                         }

@@ -1516,12 +1516,12 @@ Syntax: pagelength
 Syntax: pagelength <number>
 
 Pagelength without an argument sets the number of lines before page pause
-to the default of 20 lines.
+to the default of 100 lines.
 
 Pagelength with an argument sets the number of lines you wish to see on
 screen before page pausing.
 
-The maximum number of lines allowable before page pausing is 100.
+The maximum number of lines allowable before page pausing is 1000.
 
 For more help on the pager, type 'h' while in the pager.
 ~
