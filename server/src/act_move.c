@@ -534,7 +534,8 @@ void move_char(CHAR_DATA *ch, int door)
                 if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||     ( to_room->sector_type == SECT_WATER_SWIM )
                 ||     ( to_room->sector_type == SECT_UNDERWATER ) )
-                && ( ch->race == RACE_SAHUAGIN ) )
+                && ( ( ch->race == RACE_SAHUAGIN ) 
+                  || ( IS_AFFECTED(ch, AFF_SWIM) ) ) )
                 {
                         move /= 3;
                         move = UMAX(move, 1);
