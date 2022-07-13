@@ -497,7 +497,7 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->pcdata->condition[COND_THIRST] = 48;
         ch->pcdata->condition[COND_FULL] = 48;
         ch->pcdata->stat_train = APPLY_STR;
-        ch->pcdata->pagelen = 30;
+        ch->pcdata->pagelen = 100;
         ch->pcdata->switched = FALSE;
         ch->pcdata->group_support_bonus = 0;
 
@@ -1017,13 +1017,13 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
         ch->pcdata->suicide_code = 0;
 
         if (!ch->pcdata->pagelen)
-                ch->pcdata->pagelen = 30;
+                ch->pcdata->pagelen = 100;
 
         if (!ch->prompt || ch->prompt == '\0')
                 ch->prompt = str_dup ("<%hhp %mm %vmv> ");
 
-        if (ch->pcdata->pagelen > 100)
-                ch->pcdata->pagelen = 100;
+        if (ch->pcdata->pagelen > 1000)
+                ch->pcdata->pagelen = 1000;
 
         calc_coin_weight(ch);
 }
