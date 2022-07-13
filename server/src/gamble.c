@@ -476,7 +476,7 @@ void game_seven( CHAR_DATA *ch, CHAR_DATA *croupier,
  *  Now we have a wagering amount, and a choice.
  *  Let's place the bets and roll the dice, shall we?
  */
-    act( "You place {Y$t gold coins{x on the table, and bet '$T'.",
+    act( "You place {Y$t gold coins{x on the table, and bet '{W$T{x'.",
         ch, wager, choice,   TO_CHAR    );
     act( "$n places a bet with you.",
         ch, NULL,  croupier, TO_VICT    );
@@ -489,7 +489,7 @@ void game_seven( CHAR_DATA *ch, CHAR_DATA *croupier,
     die2 = number_range( 1, 6 );
     total = die1 + die2;
 
-    sprintf( msg, "$n rolls the dice: they come up {G%d{x, and {G%d{x",
+    sprintf( msg, "$n rolls the dice: they come up {G%d{x and {G%d{x",
             die1, die2 );
 
     if( total == 7 )

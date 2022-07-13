@@ -234,7 +234,7 @@ you have no doubt he is a savage and capable fighter, even if a veteran.
 
 He regards you coldly, waiting for you to make the first move.
 ~
-2|64 32|512|67108864 -700 S
+2|64 8|32|512|4194304|8388608|67108864 -700 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -247,7 +247,7 @@ else
 	mptransfer $n 27316
 	mpgoto 27316
 	mpforce $n look
-	yell And STAY out, $n!
+	yell And STAY out!
 	mpecho {WCluh'g Mani swims back to the training hall.{x
 	mpgoto 27616
 endif
@@ -782,7 +782,7 @@ Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in
 weaponless combat.  Not overly-tall but very wide and muscular, he is an 
 intimidating presence.
 ~
-2|64 32|512|4194304|67108864 -310 S
+2|64 8|32|512|4194304|8388608|67108864 -310 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -795,7 +795,7 @@ else
 	mptransfer $n 27330
 	mpgoto 27330
 	mpforce $n look
-	yell And STAY out, $n!
+	yell And STAY out!
 	mpecho {WLuanar swims back to the training hall.{x
 	mpgoto 27630
 endif
@@ -863,18 +863,37 @@ endif
 ~
 |
 #27232
+Slymah diceboss~
 Slymah~
-Slymah~
-Slymah the cook looks up at you from his greasy kitchen.
+Slymah the diceboss raises a lazy eyelid at you.
 ~
-Slymah is a short, greasy, fat sahuagin and the owner of the eponymous 
-'Slymah's Grub,' a lower-class Ota'ar Dar eatery.  He's willing to serve 
-you a variety of overpriced tasteless slop.
+Slymah is a short, greasy, fat sahuagin and the owner of 'Sekolah's Whim
+Casino,' a lower-class Ota'ar Dar gambling den.  To see what game he's
+offering, try to 'bet' or 'wager' some gold coins.
 ~
 2|64|512|4096|32768|8388608|16777216 32|512|67108864 -430 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+>greet_prog 35~
+if rand(25)
+	grunt
+	say You playin'?
+else 
+	if rand (25)
+		say We play 'Seven' down here.  You can play Upper-Lower-Triple up above.
+		else
+		if rand(25)
+			leer
+			say Gold only, I'm afraid.
+		else
+			say There's one born every minute.
+			smirk
+		endif
+	endif
+endif
+~
+|
 #27233
 Ahomar Weaponsmith~
 Ahomar the Weaponsmith~
@@ -1281,7 +1300,7 @@ endif
 if isfight($i)
 break
 else
-say These messages sponsored by The Kraken's Den.  Quality treasures that are reall more affordable.  Finance available to selected buyers.
+say These messages sponsored by The Kraken's Den.  Quality treasures that are really more affordable.  Finance available to selected buyers.
 endif
 ~
 |
@@ -1562,6 +1581,37 @@ break
 else
 say ... all this buttoning and unbuttoning...
 sigh
+endif
+~
+|
+#27266
+Dae'yn pit critter sahuaginr~
+Dae'yn~
+Dae'yn the pit critter waits for you to wager gold.
+~
+Dae'yn is a lean, taciturn sahuagin and a pit critter working at 'Sekolah's 
+Whim Casino,' a lower-class Ota'ar Dar gambling den.  To see what game he's
+offering, try to 'bet' or 'wager' some gold coins here.
+~
+2|64|512|4096|32768|8388608|16777216 32|512|67108864 -430 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+>greet_prog 35~
+if rand(25)
+	grunt
+	say You betting?
+else 
+	if rand (25)
+		say We play 'Upper-Lower-Triple' down here.  You can play 'Seven' down below.
+		else
+		if rand(25)
+			emote grins mirthlessly
+			say Gold only, stranger.
+		else
+			say Fair play keeps the gold flowing.  Would you like to wager?
+		endif
+	endif
 endif
 ~
 |
@@ -3505,8 +3555,8 @@ A very strong-smelling tin of black powder has been left here.~
 -2~ 0~ 0~ 0~
 1 300 10
 E
-powder black tin strong-smelling~
-Definitely poison.  Perhaps the expensive and rare one that sahuagin use to poison their finest weapons?
+powder black tin~
+Definitely toxic.  Perhaps the expensive and rare liquid sahuagin use on their finest weapons?
 ~
 #27367
 robber's cudgel~
@@ -4148,9 +4198,9 @@ Dae'as Street, Lower~
 amongst the inhabited ruins of a great, ancient city. You may continue for some 
 distance further along the street to the south, or travel a short way north, 
 to the intersection of Dae'as Street and Malana Bridge Road.  To the west you 
-see the entrance to "The Fisher's Crust" bakery/eaterie, while to the east is 
-a building that appears to be currently unused. You can also swim upwards, towards 
-a huge, looming area of darkness in the water above. {x
+see the entrance to "The Fisher's Crust" bakery/eaterie, while to the east you
+a sign for 'Sekolah's Whim Casino'. You can also swim upwards, towards a huge, 
+looming area of darkness in the water above. {x
 ~
 0 0 8
 D0
@@ -4175,10 +4225,11 @@ D4
 0 -1 27632
 S
 #27333
-An Empty Building, Lower~
-{GYou stand inside the lower floor of a ruined, empty two-storey building, 
-deep under the sea.  There is a sign attached to the far wall. You can leave 
-west, out to Dae'as Street, or swim up to the second floor of the building.{x
+Sekolah's Whim Casino, Lower~
+{GYou stand inside the lower floor of a ruined, two-storey building, deep 
+under the sea. It has been set up as a casino, and there are various mostly
+dice-based games of chance available here. You can leave west, out to Dae'as 
+Street, or swim up from here to the second floor of the casino.{x
 ~
 0 8 8
 D3
@@ -4189,9 +4240,6 @@ D4
 ~
 ~
 0 -1 27633
-E
-sign~
-"Sekolah's Whim Casino, Coming Soon!"~
 S
 #27334
 Pillagers' Arms~
@@ -5276,11 +5324,12 @@ D5
 0 -1 27332
 S
 #27633
-An Empty Building, Upper~
-{gYou stand in an empty room on the second floor of a ruined building, deep 
-underwater.  There is a sign attached to the far wall. You may travel down 
-rom here, to the first floor of the building, or directly up, into the huge, 
-looming area of dark water above you.{x
+Sekolah's Whim Casino, Upper~
+{gYou stand on the second floor of a ruined building, deep underwater, 
+in a large room that has been crudely set up as a casino.  It seems that mostly 
+dice-based games are being offered here. You may travel down, to the lower 
+floor of the casino, or directly up, into the huge, looming area of dark water 
+above you.{x
 ~
 0 0 8
 D4
@@ -5291,9 +5340,6 @@ D5
 ~
 ~
 0 -1 27333
-E
-sign~
-"Sekolah's Whim Casino, Coming Soon!"~
 S
 #27634
 Weaponsmith's Quarters~
@@ -6472,8 +6518,19 @@ O 1 27363 100 27646			a large wooden chair to Torturers' Training Dungeon
 M 1 27265 1 27336			Sogesk to Malana Bridge Road, Lower
 E 1 27231 100 13
 *
+M 1 27232 1 27333			Slymah to Sekolah's Whim Lower
+E 1 27231 100 13
+*
+M 1 27266 1 27633			Dae'yn to Sekolah's Whim Upper
+E 1 27231 100 13
 S
 
+#GAMES
+*
+M 27232 game_seven			1000000   8	0	/* Slymah */
+M 27266 game_u_l_t			1000000   8	0	/* Dae'yn */
+*
+S
 
 #SHOPS
 27206 0 0 0 0 0 100 100 0 23			Kianar
@@ -6501,7 +6558,7 @@ M  27218 spec_cast_hooker	    A lecherous sahuagin
 M  27222 spec_cast_druid        a dryad
 M  27229 spec_warrior			Luanar 'Barehands' Teha
 M  27236 spec_cast_adept		Nirlisk the Healer
-M  27239 spec_sahuagin			Mafite Kilim, Sekolah Guildmaster
+M  27239 spec_cast_cleric		Mafite Kilim, Sekolah Guildmaster
 M  27240 spec_sahuagin			an acolyte of Sekolah
 M  27241 spec_sahuagin			an acolyte of Sekolah
 M  27242 spec_cast_mage			Mala't the Sage

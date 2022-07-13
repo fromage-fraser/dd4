@@ -3774,9 +3774,19 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         AFFECT_DATA af;
         char    buf     [MAX_STRING_LENGTH];
 
-        if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
+        if ( IS_AFFECTED( victim, AFF_SANCTUARY )
+        && ( ch != victim ) )
         {
-                sprintf( buf, "%s is already affected by that spell.\n\r", victim->name);
+                sprintf( buf, "%s is already affected by that spell.\n\r", 
+                        IS_NPC(victim) ? victim->short_descr : victim->name);
+                send_to_char( buf, ch );
+                return;
+        }
+
+        if ( IS_AFFECTED( victim, AFF_SANCTUARY )
+        && ( ch == victim ) )
+        {
+                sprintf( buf, "You are already affected by that spell.\n\r");
                 send_to_char( buf, ch );
                 return;
         }
@@ -7385,6 +7395,7 @@ void spell_breathe_water (int sn, int level, CHAR_DATA *ch, void *vo)
         if ( IS_NPC( victim )
             || victim->position == POS_FIGHTING
             || victim->race == RACE_SAHUAGIN
+            || victim->race == RACE_GRUNG
             || is_affected(victim, sn) )
                 return;
 

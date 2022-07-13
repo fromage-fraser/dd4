@@ -494,9 +494,9 @@ int hit_gain( CHAR_DATA *ch )
                         gain = ch->hit -1;
         }
 
-        /* Being in watery rooms rehydrates Sahuagin */
+        /* Being in watery rooms rehydrates Sahuagin & Grung */
 
-        if ( ch->race == RACE_SAHUAGIN
+        if ( ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
         && (  ( ch->in_room->sector_type == SECT_UNDERWATER )
            || ( ch->in_room->sector_type == SECT_WATER_SWIM )
            || ( ch->in_room->sector_type == SECT_WATER_NOSWIM ) ) )
@@ -979,7 +979,7 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        if ( ch->race == RACE_SAHUAGIN )
+                        if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                         {
                              send_to_char("You're dying of dehydration!  You NEED water!\n\r", ch);
                         }
@@ -1014,7 +1014,7 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        if ( ch->race == RACE_SAHUAGIN )
+                        if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                         {
                              send_to_char("You're drying out; you badly need water.\n\r", ch);
                         }
@@ -1042,7 +1042,7 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
                         break;
 
                     case COND_THIRST:
-                        if ( ch->race == RACE_SAHUAGIN )
+                        if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                         {
                                 send_to_char("Your body is starting to lose its moisture.\n\r", ch);
                         }
@@ -1588,6 +1588,7 @@ void char_update( void )
                             && ch->position > POS_INCAP
                             && ch->form != FORM_SNAKE
                             && ch->race != RACE_SAHUAGIN
+                            && ch->race != RACE_GRUNG
                             && ch->in_room->sector_type == SECT_UNDERWATER
                             && !is_affected(ch, gsn_breathe_water))
                         {

@@ -602,6 +602,14 @@ const struct race_struct race_table [MAX_RACE] =
                 "Fear", "Energy Drain",
                 CHAR_SIZE_MEDIUM
         },
+
+        {
+                "Grung  ", "Grung",
+                0, -2, -1, 3, +1,
+                20, -10, 10,
+                "Resist Toxin", "Poison",
+                CHAR_SIZE_SMALL
+        },
 };
 
 

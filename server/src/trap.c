@@ -843,14 +843,14 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
                     case POS_DEAD:
                         act( "$n is DEAD!!", ch, 0, 0, TO_ROOM );
-                        send_to_char( "You have been KILLED!!\n\r\n\r", ch );
+                        send_to_char( "{RYou have been KILLED!!{x\n\r\n\r", ch );
                         break;
 
                     default:
                         if ( dam > ch->max_hit / 4 )
-                                send_to_char( "That really did HURT!\n\r", ch );
+                                send_to_char( "{WThat really did HURT!{x\n\r", ch );
                         if ( ch->hit < ch->max_hit / 4 )
-                                send_to_char( "You sure are BLEEDING!\n\r", ch );
+                                send_to_char( "{WYou sure are {x{RBLEEDING!{x\n\r", ch );
                         break;
                 }
 
@@ -941,14 +941,14 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 
                             case POS_DEAD:
                                 act( "$n is DEAD!!", wch, 0, 0, TO_ROOM );
-                                send_to_char( "You have been KILLED!!\n\r\n\r", wch );
+                                send_to_char( "{RYou have been KILLED!!{x\n\r\n\r", wch );
                                 break;
 
                             default:
                                 if ( dam > wch->max_hit / 4 )
-                                        send_to_char( "That really did HURT!\n\r", wch );
+                                        send_to_char( "{WThat really did HURT!{x\n\r", wch );
                                 if ( wch->hit < wch->max_hit / 4 )
-                                        send_to_char( "You sure are BLEEDING!\n\r", wch );
+                                        send_to_char( "{WYou sure are {x{RBLEEDING!{x\n\r", wch );
                                 break;
                         }
                         
@@ -975,44 +975,22 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 /*
  *  Let's print a damage message; verbs taken from fight.c
  *  Gezhp 2000
+ * 
+ *  Updated with new helper function by Owl 12/7/22
  */
 void trap_damage_message (CHAR_DATA *ch, int dam) {
         
         char buf [MAX_STRING_LENGTH];
         char* verb;
 
-        if (dam < 1)            return;
-        else if (dam < 4)       verb = "scratches";
-        else if (dam < 8)       verb = "grazes";
-        else if (dam < 12)      verb = "hits";
-        else if (dam < 16)      verb = "injures";
-        else if (dam < 20)      verb = "wounds";
-        else if (dam < 24)      verb = "mauls";
-        else if (dam < 28)      verb = "decimates";
-        else if (dam < 32)      verb = "mangles";
-        else if (dam < 36)      verb = "maims";
-        else if (dam <= 40)     verb = "$7MUTILATES$R";
-        else if (dam <= 44)     verb = "$7DISEMBOWELS$R";
-        else if (dam <= 48)     verb = "$BEVISCERATES$R";
-        else if (dam <= 52)     verb = "$BMASSACRES$R";
-        else if (dam <= 75)     verb = "$4*** $BDEMOLISHES$R$4 ***$R";
-        else if (dam <= 100)    verb = "$4*** $BDEVASTATES$R$4 ***$R";
-        else if (dam <= 150)    verb = "$4*** $BANNIHILATES$R$4 ***$R";
-        else if (dam <= 250)    verb = "$4-=<**$FOBLITERATES$R$4**>=-$R";
-        else if (dam <= 400)    verb = "$4-=<||$FRAVAGES$R$4||>=-$R";
-        else if (dam <= 600)    verb = "$4-=*>|$FCRIPPLES$R$4|<*=-$R";
-        else if (dam <= 900)    verb = "$4-=**>>$FBRUTALISES$R$4<<**=-$R";
-        else if (dam <= 1200)   verb = "$4-=**>>$FVAPOURISES$R$4<<**=-$R";
-        else if (dam <= 1500)   verb = "$4-+*>>>$FATOMIZE$R$4<<<*+-$R";
-        else if (dam <= 2000)   verb = "$4-+*>#$FELIMINATE$R$4#<*+-$R";
-        else if (dam <= 2500)   verb = "$4-+*###$FEXTERMINATE$R$4###*+-$R";
-        else if (dam <= 3000)   verb = "$4--=##>>$FUTTERLY DESTROYS$R$4<<##=--$R";
-        else if (dam <= 3500)   verb = "$4-=*<|[$FNULLIFIES$R$4]|>*=-$R"; 
-        else if (dam <= 4000)   verb = "$4-=**[|<$FBUTCHERS$R$4>|]**=-$R"; 
-        else if (dam <= 4500)   verb = "$4--=<#[|$FLIQUIDATES$R$4|]#=--$R"; 
-        else if (dam <= 5000)   verb = "$4-=+<##$FSLAUGHTERS$R$4##>+=-$R"; 
-        else if (dam <= 5500)   verb = "$4-=+*<(|[ $FEXTIRPATES$R$4 ]|)>*+=-$R"; 
-        else                    verb = "$4-+<<[[ $FPARTICLIZES$R$4 ]]>>+-$R";
+        if (dam < 1)
+        {
+                return;
+        }
+        else
+        { 
+                verb = get_damage_string(dam, FALSE);
+        }
 
         sprintf (buf, "The trap %s $n!", verb);
         act (buf, ch, NULL, NULL, TO_ROOM);

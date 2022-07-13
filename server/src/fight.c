@@ -1197,9 +1197,9 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         if (!IS_NPC(fighter) && fighter->gag > 1)
                                 break;
                         if ((dam > fighter->max_hit / 4) && fighter == victim)
-                                send_to_char("That really did HURT!\n\r", fighter);
+                                send_to_char("{WThat really did HURT!{x\n\r", fighter);
                         if ((fighter->hit < fighter->max_hit / 4) && fighter == victim)
-                                send_to_char("You sure are BLEEDING!\n\r", fighter);
+                                send_to_char("{WYou sure are {x{RBLEEDING!{x\n\r", fighter);
 
                 } /* Close switch */
 
@@ -2648,166 +2648,8 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
         char          buf5         [ 256 ];
         char          punct;
 
-        if (dam == 0)
-        {
-                vs = "miss";
-                vp = "misses";
-        }
-        else if (dam <= 4)
-        {
-                vs = "scratch";
-                vp = "scratches";
-        }
-        else if (dam <= 8)
-        {
-                vs = "graze";
-                vp = "grazes";
-        }
-        else if (dam <= 12)
-        {
-                vs = "hit";
-                vp = "hits";
-        }
-        else if (dam <= 16)
-        {
-                vs = "injure";
-                vp = "injures";
-        }
-        else if (dam <= 20)
-        {
-                vs = "wound";
-                vp = "wounds";
-        }
-        else if (dam <= 24)
-        {
-                vs = "maul";
-                vp = "mauls";
-        }
-        else if (dam <= 28)
-        {
-                vs = "decimate";
-                vp = "decimates";
-        }
-        else if (dam <= 32)
-        {
-                vs = "mangle";
-                vp = "mangles";
-        }
-        else if (dam <= 36)
-        {
-                vs = "maim";
-                vp = "maims";
-        }
-        else if (dam <= 40)
-        {
-                vs = "$7MUTILATE$R";
-                vp = "$7MUTILATES$R";
-        }
-        else if (dam <= 44)
-        {
-                vs = "$7DISEMBOWEL$R";
-                vp = "$7DISEMBOWELS$R";
-        }
-        else if (dam <= 48)
-        {
-                vs = "$BEVISCERATE$R";
-                vp = "$BEVISCERATES$R";
-        }
-        else if (dam <= 52)
-        {
-                vs = "$BMASSACRE$R";
-                vp = "$BMASSACRES$R";
-        }
-        else if (dam <= 75)
-        {
-                vs = "$4*** $BDEMOLISH$R$4 ***$R";
-                vp = "$4*** $BDEMOLISHES$R$4 ***$R";
-        }
-        else if (dam <= 100)
-        {
-                vs = "$4*** $BDEVASTATE$R$4 ***$R";
-                vp = "$4*** $BDEVASTATES$R$4 ***$R";
-        }
-        else if (dam <= 150)
-        {
-                vs = "$4*** $BANNIHILATE$R$4 ***$R";
-                vp = "$4*** $BANNIHILATES$R$4 ***$R";
-        }
-        else if (dam <= 250)
-        {
-                vs = "$4-=<**$FOBLITERATE$R$4**>=-$R";
-                vp = "$4-=<**$FOBLITERATES$R$4**>=-$R";
-        }
-        else if (dam <= 400)
-        {
-                vs = "$4-=<||$FRAVAGE$R$4||>=-$R";
-                vp = "$4-=<||$FRAVAGES$R$4||>=-$R";
-        }
-        else if (dam <= 600)
-        {
-                vs = "$4-=*>|$FCRIPPLE$R$4|<*=-$R";
-                vp = "$4-=*>|$FCRIPPLES$R$4|<*=-$R";
-        }
-        else if (dam <= 900)
-        {
-                vs = "$4-=**>>$FBRUTALISE$R$4<<**=-$R";
-                vp = "$4-=**>>$FBRUTALISES$R$4<<**=-$R";
-        }
-        else if (dam <= 1200)
-        {
-                vs = "$4-=**>>$FVAPOURISE$R$4<<**=-$R";
-                vp = "$4-=**>>$FVAPOURISES$R$4<<**=-$R";
-        }
-        else if (dam <= 1500)
-        {
-                vs = "$4-+*>>>$FATOMIZE$R$4<<<*+-$R";
-                vp = "$4-+*>>>$FATOMIZES$R$4<<<*+-$R";
-        }
-        else if (dam <= 2000)
-        {
-                vs = "$4-+*>#$FELIMINATE$R$4#<*+-$R";
-                vp = "$4-+*>#$FELIMINATES$R$4#<*+-$R";
-        }
-        else if (dam <= 2500)
-        {
-                vs = "$4-+*###$FEXTERMINATE$R$4###*+-$R";
-                vp = "$4-+*###$FEXTERMINATES$R$4###*+-$R";
-        }
-        else if (dam <= 3000)
-        {
-                vs = "$4--=##>>$FUTTERLY DESTROY$R$4<<##=--$R";
-                vp = "$4--=##>>$FUTTERLY DESTROYS$R$4<<##=--$R";
-        }
-        else if (dam <= 3500)   
-        {
-                vs = "$4-=*<|[$FNULLIFY$R$4]|>*=-$R"; 
-                vp = "$4-=*<|[$FNULLIFIES$R$4]|>*=-$R"; 
-        }
-        else if (dam <= 4000)   
-        {
-                vs = "$4-=**[|<$FBUTCHER$R$4>|]**=-$R"; 
-                vp = "$4-=**[|<$FBUTCHERS$R$4>|]**=-$R"; 
-        }
-        else if (dam <= 4500)   
-        {
-                vs = "$4--=<#[|$FLIQUIDATE$R$4|]#=--$R"; 
-                vp = "$4--=<#[|$FLIQUIDATES$R$4|]#=--$R"; 
-        }
-        else if (dam <= 5000)   
-        {
-                vs = "$4-=+<##$FSLAUGHTER$R$4##>+=-$R"; 
-                vp = "$4-=+<##$FSLAUGHTERS$R$4##>+=-$R"; 
-        }
-        else if (dam <= 5500)   
-        {
-                vs = "$4-=+*<(|[ $FEXTIRPATE$R$4 ]|)>*+=-$R"; 
-                vp = "$4-=+*<(|[ $FEXTIRPATES$R$4 ]|)>*+=-$R"; 
-        }
-        else
-        {
-                vs = "$4-+<<[[ $FPARTICLIZE$R$4 ]]>>+-$R";
-                vp = "$4-+<<[[ $FPARTICLIZES$R$4 ]]>>+-$R";
-        }
+        vs = get_damage_string(dam, TRUE);
+        vp = get_damage_string(dam, FALSE);
 
         punct = (dam <= 24) ? '.' : '!';
 
@@ -2855,7 +2697,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's poisoned %s %s {Wyou%c{x", attack, vp, punct);
+                                sprintf(buf2, "{W$c's poisoned %s %s {x{Wyou%c{x", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
 
@@ -3132,7 +2974,7 @@ void do_circle (CHAR_DATA *ch, char *argument)
         }
 
         if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
+        && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
                 send_to_char("You cannot circle underwater.\n\r", ch);
                 return;
@@ -3221,7 +3063,7 @@ void do_destrier (CHAR_DATA *ch, char *argument)
         }
 
         if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
+        && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
                 send_to_char("You can't do that underwater.\n\r", ch);
                 return;
@@ -6698,5 +6540,186 @@ void check_autoloot (CHAR_DATA *ch, CHAR_DATA *victim)
         }
 }
 
+/* 
+ * Get the damage string for the amount of damage you're doing. 
+ * takes damage amount and TRUE/FALSE depending on if you want
+ * a singular or plural string returned.
+ * --Owl 12/7/22 
+ */
+ 
+char *get_damage_string( int damage_value, bool is_singular )
+{
+        char *vs;
+        char *vp;
+
+        if (damage_value == 0)
+        {
+                vs = "miss";
+                vp = "misses";
+        }
+        else if (damage_value <= 8)
+        {
+                vs = "scratch";
+                vp = "scratches";
+        }
+        else if (damage_value <= 16)
+        {
+                vs = "graze";
+                vp = "grazes";
+        }
+        else if (damage_value <= 24)
+        {
+                vs = "hit";
+                vp = "hits";
+        }
+        else if (damage_value <= 32)
+        {
+                vs = "injure";
+                vp = "injures";
+        }
+        else if (damage_value <= 40)
+        {
+                vs = "wound";
+                vp = "wounds";
+        }
+        else if (damage_value <= 48)
+        {
+                vs = "maul";
+                vp = "mauls";
+        }
+        else if (damage_value <= 56)
+        {
+                vs = "decimate";
+                vp = "decimates";
+        }
+        else if (damage_value <= 64)
+        {
+                vs = "mangle";
+                vp = "mangles";
+        }
+        else if (damage_value <= 72)
+        {
+                vs = "maim";
+                vp = "maims";
+        }
+        else if (damage_value <= 80)
+        {
+                vs = "MUTILATE";
+                vp = "MUTILATES";
+        }
+        else if (damage_value <= 88)
+        {
+                vs = "DISEMBOWEL";
+                vp = "DISEMBOWELS";
+        }
+        else if (damage_value <= 96)
+        {
+                vs = "{x{WEVISCERATE{x";
+                vp = "{x{WEVISCERATES{x";
+        }
+        else if (damage_value <= 104)
+        {
+                vs = "{x{WMASSACRE{x";
+                vp = "{x{WMASSACRES{x";
+        }
+        else if (damage_value <= 120)
+        {
+                vs = "{x{R*** DEMOLISH ***{x";
+                vp = "{x{R*** DEMOLISHES ***{x";
+        }
+        else if (damage_value <= 140)
+        {
+                vs = "{x{r***{x {RDEVASTATE{x {r***{x";
+                vp = "{x{r***{x {RDEVASTATES{x {r***{x";
+        }
+        else if (damage_value <= 180)
+        {
+                vs = "{x{r***{x {RANNIHILATE{x {r***{x";
+                vp = "{x{r***{x {RANNIHILATES{x {r***{x";
+        }
+        else if (damage_value <= 250)
+        {
+                vs = "{x{r-=<**$FOBLITERATE$R{x{r**>=-{x";
+                vp = "{x{r-=<**$FOBLITERATES$R{x{r**>=-{x";
+        }
+        else if (damage_value <= 400)
+        {
+                vs = "{x{r-=<||$FRAVAGE$R{x{r||>=-{x";
+                vp = "{x{r-=<||$FRAVAGES$R{x{r||>=-{x";
+        }
+        else if (damage_value <= 600)
+        {
+                vs = "{x{r-=*>|$FCRIPPLE$R{x{r|<*=-{x";
+                vp = "{x{r-=*>|$FCRIPPLES$R{x{r|<*=-{x";
+        }
+        else if (damage_value <= 900)
+        {
+                vs = "{x{r-=**>>$FBRUTALISE$R{x{r<<**=-{x";
+                vp = "{x{r-=**>>$FBRUTALISES$R{x{r<<**=-{x";
+        }
+        else if (damage_value <= 1200)
+        {
+                vs = "{x{r-=**>>$FVAPOURISE$R{x{r<<**=-{x";
+                vp = "{x{r-=**>>$FVAPOURISES$R{x{r<<**=-{x";
+        }
+        else if (damage_value <= 1500)
+        {
+                vs = "{x{r-+*>>>$FATOMIZE$R{x{r<<<*+-{x";
+                vp = "{x{r-+*>>>$FATOMIZES$R{x{r<<<*+-{x";
+        }
+        else if (damage_value <= 2000)
+        {
+                vs = "{x{r-+*>#$FELIMINATE$R{x{r#<*+-{x";
+                vp = "{x{r-+*>#$FELIMINATES$R{x{r#<*+-{x";
+        }
+        else if (damage_value <= 2500)
+        {
+                vs = "{x{r-+*###$FEXTERMINATE$R{x{r###*+-{x";
+                vp = "{x{r-+*###$FEXTERMINATES$R{x{r###*+-{x";
+        }
+        else if (damage_value <= 3000)
+        {
+                vs = "{x{r--=##>>$FUTTERLY DESTROY$R{x{r<<##=--{x";
+                vp = "{x{r--=##>>$FUTTERLY DESTROYS$R{x{r<<##=--{x";
+        }
+        else if (damage_value <= 3500)   
+        {
+                vs = "{x{r-=*<|[$FNULLIFY$R{x{r]|>*=-{x"; 
+                vp = "{x{r-=*<|[$FNULLIFIES$R{x{r]|>*=-{x"; 
+        }
+        else if (damage_value <= 4000)   
+        {
+                vs = "{x{r-=**[|<$FBUTCHER$R{x{r>|]**=-{x"; 
+                vp = "{x{r-=**[|<$FBUTCHERS$R{x{r>|]**=-{x"; 
+        }
+        else if (damage_value <= 4500)   
+        {
+                vs = "{x{r--=<#[|$FLIQUIDATE$R{x{r|]#=--{x"; 
+                vp = "{x{r--=<#[|$FLIQUIDATES$R{x{r|]#=--{x"; 
+        }
+        else if (damage_value <= 5000)   
+        {
+                vs = "{x{r-=+<##$FSLAUGHTER$R{x{r##>+=-{x"; 
+                vp = "{x{r-=+<##$FSLAUGHTERS$R{x{r##>+=-{x"; 
+        }
+        else if (damage_value <= 5500)   
+        {
+                vs = "{x{r-=+*<(|[ $FEXTIRPATE$R{x{r ]|)>*+=-{x"; 
+                vp = "{x{r-=+*<(|[ $FEXTIRPATES$R{x{r ]|)>*+=-{x"; 
+        }
+        else
+        {
+                vs = "{x{r-+<<[[ $FPARTICLIZE$R{x{r ]]>>+-{x";
+                vp = "{x{r-+<<[[ $FPARTICLIZES$R{x{r ]]>>+-{x";
+        }
+       
+        if (is_singular == TRUE)
+        {
+                return vs;
+        }
+        else {
+                return vp;
+        }
+}
 
 /* EOF fight.c */

@@ -1373,6 +1373,7 @@ void do_push (CHAR_DATA *ch, char *argument)
             case 21: race_bonus =  10; break;
             case 22: race_bonus =  -3; break;
             case 23: race_bonus =  -6; break;
+            case 24: race_bonus =  -1; break;
             default: break;
         }
 
