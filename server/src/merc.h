@@ -242,8 +242,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * Adjust the pulse numbers to suit yourself.
  */
 #define MAX_CLASS                          9
-#define MAX_SUB_CLASS                     19    /* thats 18 plus 'none' - Shade 8.7.22 */
-#define MAX_RACE                          24    /* thats 23 races plus 'none' - Owl 2/4/22 */
+#define MAX_SUB_CLASS                     19    /* that's 18 plus 'none' - Shade 8.7.22 */
+#define MAX_RACE                          25    /* that's 24 races plus 'none' - Owl 13/7/22 */
 #define MAX_STAT                          32    /* 0->31  - Shade */
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
@@ -584,6 +584,7 @@ struct quest_recall
 #define RACE_JOTUN                      21
 #define RACE_GENASI                     22
 #define RACE_ILLITHID                   23
+#define RACE_GRUNG                      24
 
 
 /*

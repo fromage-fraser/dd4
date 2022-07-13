@@ -7359,6 +7359,7 @@ void spell_breathe_water (int sn, int level, CHAR_DATA *ch, void *vo)
         if ( IS_NPC( victim )
             || victim->position == POS_FIGHTING
             || victim->race == RACE_SAHUAGIN
+            || victim->race == RACE_GRUNG
             || is_affected(victim, sn) )
                 return;
 
