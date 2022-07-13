@@ -3972,7 +3972,7 @@ void do_pagelen ( CHAR_DATA *ch, char *argument )
         char buf [ MAX_STRING_LENGTH ];
         char arg [ MAX_INPUT_LENGTH  ];
         int  lines;
-        const int default_len = 25;
+        const int default_len = 30;
         const int max_len = 1000;
 
         if (IS_NPC(ch))

@@ -1867,7 +1867,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
             case CON_WELCOME_RACE:
                 send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                 do_help(ch, "races");
-                send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
+                send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
                 d->connected = CON_GET_NEW_RACE;
                 break;
 
@@ -1877,7 +1877,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                         do_help(ch, "race");
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
                         break;
                 }
 
@@ -1906,16 +1906,17 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     case 'u': case 'U': ch->race = 21;      break;
                     case 'v': case 'V': ch->race = 22;      break;
                     case 'w': case 'W': ch->race = 23;      break;
+                    case 'x': case 'X': ch->race = 24;      break;
 
                     default:
                         send_to_char("\n\r{Y}rInvalid race!{x\n\r"
-                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-w]{x ", ch);
+                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-x]{x ", ch);
                         return;
                 }
 
                 if (ch->race < 1 || ch->race > ( MAX_RACE - 1 ) )
                 {
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
                         return;
                 }
 
@@ -1934,7 +1935,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                         do_help (ch, "race");
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-w]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
                         d->connected = CON_GET_NEW_RACE;
                         return;
                 }
@@ -3751,7 +3752,7 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
                 buf[pos++] = '\r';
                 i += k;
         }
-
+        
         buf[pos] = '\0';
         send_to_char (buf, ch);
 }

@@ -2640,6 +2640,7 @@ char* race_name (int race_num)
         if (race_num == RACE_JOTUN)             return "jotun";
         if (race_num == RACE_GENASI)            return "genasi";
         if (race_num == RACE_ILLITHID)          return "illithid";
+        if (race_num == RACE_GRUNG)             return "grung";
 
         return "NO RACE NUM";
 }
