@@ -1100,7 +1100,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         AFFECT_DATA *paf;
         char         buf [ MAX_STRING_LENGTH ];
         bool            gets_bonus;
-        gets_bonus = TRUE;
+        gets_bonus = FALSE;
 
 
 
@@ -1141,9 +1141,10 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         {
                                 for ( obj2 = ch->carrying; obj2; obj2 = obj2->next_content )
                                 {
-                                        if ( !( obj2->wear_loc != WEAR_NONE
+                                        if ( ( obj2->wear_loc != WEAR_NONE
                                         && obj2->ego_flags == EGO_ITEM_UNCOMMON_SET ) ) /*if wearing & is ego */
-                                                gets_bonus = FALSE;
+                                                gets_bonus = TRUE;
+                                                break;
                                               /*  send_to_char( "You dont get an uncommon bonus.\n\r", ch ); */
                                 }
                                    
