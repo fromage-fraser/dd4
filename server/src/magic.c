@@ -3199,7 +3199,6 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         || IS_SET(obj->ego_flags, EGO_ITEM_LEGENDARY_SET) )
                         {
                                 strcat( buf, "[SET PIECE]");
-                                strcat( buf, tmp);
                         }
                         strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
