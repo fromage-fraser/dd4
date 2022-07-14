@@ -1151,7 +1151,6 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                                         {
                                                 gets_bonus = FALSE;
                                                 send_to_char( "You dont get an uncommon bonus.\n\r", ch);
-                                                return;
                                         }
                                 }
                                    
