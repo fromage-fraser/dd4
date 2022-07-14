@@ -1163,7 +1163,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                                 break;
                         }                       
                 }
-                else /* End nasty set bonus hack */
+                else  End nasty set bonus hack */
 
                         for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
