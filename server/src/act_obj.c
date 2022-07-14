@@ -1108,7 +1108,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
                 if (!obj)
                 {
-                        if ( ch->race == RACE_SAHUAGIN )
+                        if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                         {
                                 send_to_char("Get water from what?\n\r", ch);
                         }
@@ -1129,7 +1129,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
         {
-                if ( ch->race == RACE_SAHUAGIN )
+                if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
                         send_to_char("You're too drunk to do that.  *Hic*\n\r", ch);
                 }
@@ -1142,7 +1142,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
         switch (obj->item_type)
         {
             default:
-                if ( ch->race == RACE_SAHUAGIN )
+                if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
                         send_to_char("You can't get water from that.\n\r", ch);
                 }
@@ -1155,7 +1155,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch))
                         ch->pcdata->condition[COND_THIRST] = 48;
 
-                if ( ch->race == RACE_SAHUAGIN )
+                if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
                         act("You bathe yourself in $p.",ch,obj,NULL,TO_CHAR);
                         send_to_char("You are no longer dehydrated.\n\r",ch);
@@ -1181,7 +1181,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         liquid = obj->value[2] = 0;
                 }
 
-                if ( ch->race == RACE_SAHUAGIN )
+                if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
                         act("You cover yourself in $T from $p.",
                                 ch, obj, liq_table[liquid].liq_name, TO_CHAR);
@@ -1213,7 +1213,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK ] > 10)
                         send_to_char("You feel drunk.\n\r", ch);
 
-                if ( ch->race != RACE_SAHUAGIN )
+                if ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
                 {
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 40)
                                 send_to_char("You are full.\n\r", ch);
@@ -1222,7 +1222,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL  ] > 40)
                                 send_to_char("You are fully hydrated.\n\r", ch);
                 }
-                if ( ch->race == RACE_SAHUAGIN )
+                if ( ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG )
                 {
                         if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
                                 send_to_char("Your body's moisture is completely restored.\n\r", ch);

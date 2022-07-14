@@ -369,9 +369,10 @@ void move_char(CHAR_DATA *ch, int door)
                 return;
         }
 
-        if (to_room->sector_type == SECT_UNDERWATER
-            && is_affected(ch, gsn_mist_walk)
-            && ( ch->race != RACE_SAHUAGIN ) )
+        if ( to_room->sector_type == SECT_UNDERWATER
+          && is_affected(ch, gsn_mist_walk)
+          && ( ( ch->race != RACE_SAHUAGIN ) 
+            && ( ch->race != RACE_GRUNG ) ) )
         {
                 send_to_char("You may not dive underwater in mist form.\n\r", ch);
                 return;
@@ -422,6 +423,7 @@ void move_char(CHAR_DATA *ch, int door)
                         if (IS_AFFECTED(ch, AFF_FLYING)
                             || IS_IMMORTAL( ch )
                             || ( ch->race == RACE_SAHUAGIN )
+                            || ( ch->race == RACE_GRUNG )
                             || ch->mount
                             || ( ch->in_room->sector_type == SECT_UNDERWATER )
                             || is_affected(ch,gsn_mist_walk)
@@ -534,6 +536,7 @@ void move_char(CHAR_DATA *ch, int door)
                 ||     ( to_room->sector_type == SECT_WATER_SWIM )
                 ||     ( to_room->sector_type == SECT_UNDERWATER ) )
                 && ( ( ch->race == RACE_SAHUAGIN ) 
+                  || ( ch->race == RACE_GRUNG ) 
                   || ( IS_AFFECTED(ch, AFF_SWIM) ) ) )
                 {
                         move /= 3;
@@ -584,7 +587,9 @@ void move_char(CHAR_DATA *ch, int door)
                         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                              ||     ( to_room->sector_type == SECT_WATER_SWIM )
                              ||     ( to_room->sector_type == SECT_UNDERWATER ) )
-                             &&   (  !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN ) )
+                             &&   (  ( !IS_AFFECTED(ch, AFF_FLYING) )
+                                  || ( ch->race == RACE_SAHUAGIN )
+                                  || ( ch->race == RACE_GRUNG ) ) )
                         {
                                 act_move ("$n swims $T.", ch, NULL, directions[door].name, TO_ROOM);
                         }
@@ -609,7 +614,7 @@ void move_char(CHAR_DATA *ch, int door)
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
                 ||  ( to_room->sector_type == SECT_UNDERWATER ) )
-                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN ) )
+                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) )
         {
                 act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
         }
@@ -1447,7 +1452,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
         {
             case POS_SLEEPING:
                 if ( IS_AFFECTED(ch, AFF_SLEEP)
-                && ( ch->race == RACE_SAHUAGIN) 
+                && ( (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) ) 
                 && ( ch->in_room->sector_type == SECT_UNDERWATER) )
                 {
                         send_to_char("You can't wake up!\n\r", ch);
@@ -1663,7 +1668,7 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
         }
 
         if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN ) )
+        && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
         {
                 send_to_char("Not while you're underwater.\n\r", ch);
                 return;
@@ -1791,7 +1796,8 @@ void do_meditate (CHAR_DATA *ch, char *argument)
 
         if ( (!IS_NPC(ch))
         && ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN && ( !is_affected(ch, gsn_breathe_water) ) ) )
+        && ( ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) 
+          && ( !is_affected(ch, gsn_breathe_water) ) ) )
         {
                 send_to_char("You can't meditate underwater if you can't breathe underwater.\n\r", ch);
                 return;
