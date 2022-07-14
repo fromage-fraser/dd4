@@ -1150,13 +1150,12 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                                 {
                                         if ( obj2->wear_loc != WEAR_NONE
                                         && obj->ego_flags == EGO_ITEM_UNCOMMON_SET )
-                                       break;
-                                if ( !obj2 )
-                                {
-                                        send_to_char( "Wear the other set item to get the bonus.\n\r", ch );
-                                        return;
+                                        if ( !obj2 )
+                                        {
+                                                send_to_char( "Wear the other set item to get the bonus.\n\r", ch );
+                                                return;
+                                        }
                                 }
-                }
                                 sprintf (buf, "Equipping uncommon {G[SET BONUS]{x giving {W%s{x.\n\r",
                                          skill_table[paf->type].name);
                                 send_to_char( buf, ch );   
