@@ -420,7 +420,6 @@ void move_char(CHAR_DATA *ch, int door)
                         /* You can move into a NOSWIM sector from an UNDERWATER one... rather than drown */
 
                         if (IS_AFFECTED(ch, AFF_FLYING)
-                            || IS_AFFECTED(ch, AFF_SWIM)
                             || IS_IMMORTAL( ch )
                             || ( ch->race == RACE_SAHUAGIN )
                             || ch->mount
@@ -649,6 +648,21 @@ void move_char(CHAR_DATA *ch, int door)
                 bug (buf, 0);
                 strip_mount (ch);
                 ch->position = POS_STANDING;
+        }
+
+        /* Strip swim if room we move to isn't wet.. AFTER moving. Imms can dispel themselves. */
+
+        if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
+        ||       ( is_affected( ch, gsn_swim ) ) )
+        &&       ( ch->form != FORM_SNAKE ) 
+        &&       ( ch->level <= LEVEL_HERO ) )
+            && ( ch->in_room->sector_type != SECT_UNDERWATER )
+            && ( ch->in_room->sector_type != SECT_WATER_SWIM )
+            && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
+        {
+                affect_strip(ch, gsn_swim);
+                REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                send_to_char("{cNo longer in the water, you stop swimming.{x\n\r", ch);
         }
 
         /* Lets check we're a pc BEFORE we call the trigger */
