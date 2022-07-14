@@ -1141,16 +1141,16 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         {
                                 for ( obj2 = ch->carrying; obj2; obj2 = obj2->next_content )
                                 {
-                                        if ( obj2->wear_loc != WEAR_NONE
-                                        && obj2->ego_flags == EGO_ITEM_UNCOMMON_SET )
+                                        if ( !( obj2->wear_loc != WEAR_NONE
+                                        && obj2->ego_flags == EGO_ITEM_UNCOMMON_SET ) ) /*if wearing & is ego */
                                         {
-                                                gets_bonus = TRUE;
-                                                send_to_char( "You get an uncommon bonus.\n\r", ch );
+                                                gets_bonus = FALSE;
+                                                send_to_char( "You dont get an uncommon bonus.\n\r", ch );
                                         }
                                         else
                                         {
-                                                gets_bonus = FALSE;
-                                                send_to_char( "You dont get an uncommon bonus.\n\r", ch);
+                                                gets_bonus = TRUE;
+                                                send_to_char( "You get an uncommon bonus.\n\r", ch);
                                         }
                                 }
                                    
@@ -1161,6 +1161,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         }                       
                 }
                 /* End nasty set bonus hack */
+
 
 
 

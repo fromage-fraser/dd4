@@ -3400,7 +3400,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                         paf = affect_free;
                         affect_free = affect_free->next;
                 }
-                paf->type           = gsn_fly;
+                paf->type           = gsn_uncommon_set;
                 paf->duration       = -1;
                 paf->location       = APPLY_FLY;
                 paf->modifier       = 0;
