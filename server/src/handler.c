@@ -1151,9 +1151,6 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                                         {
                                                 gets_bonus = FALSE;
                                                 send_to_char( "You dont ge a bonus.\n\r", ch);
-                                                sprintf (buf, "Equipping uncommon {G[SET BONUS]{x giving {W%s{x.\n\r",
-                                                skill_table[paf->type].name);
-                                                send_to_char( buf, ch );
                                                 return;
                                         }
                                 }
