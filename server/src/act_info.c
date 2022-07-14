@@ -2655,8 +2655,10 @@ int has_pre_req(CHAR_DATA *ch, int sn)
                         if (*vampire_gag_table[iter].skill == sn)
                                 return 0;
 
+        /* Change the '-4' value here if you add more wolf-only skills to the gag table */
+        
         if (ch->sub_class == SUB_CLASS_WEREWOLF)
-                for (iter = 0; iter < MAX_VAMPIRE_GAG-3; iter++)
+                for (iter = 0; iter < MAX_VAMPIRE_GAG-4; iter++)
                         if (*vampire_gag_table[iter].skill == sn)
                                 return 0;
 

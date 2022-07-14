@@ -17,6 +17,9 @@
 
 /* Defense Skills */
 
+{&gsn_swim,                     &gsn_group_defense,     20,     PRE_RANGER},
+{&gsn_swim,                     &gsn_ranger_base,       20,     PRE_RANGER},
+
 {&gsn_dodge,                    &gsn_group_defense,     40,     PRE_RANGER},
 {&gsn_dodge,                    &gsn_ranger_base,       30,     PRE_RANGER},
 

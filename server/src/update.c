@@ -528,6 +528,26 @@ int hit_gain( CHAR_DATA *ch )
                         return 0;
                 }
 
+                /* 
+                 *  Anti-swim (?); Owl 14/7/22
+                 *
+                 *  Strip the swim skill and affect for PCs when they're not in 'wet' rooms.  Leaves
+                 *  shifter snake form unaffected.
+                 */
+
+                if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
+                ||       ( is_affected( ch, gsn_swim ) ) )
+                &&     ( ch->form != FORM_SNAKE ) )
+                   && ( ch->in_room->sector_type != SECT_UNDERWATER )
+                   && ( ch->in_room->sector_type != SECT_WATER_SWIM )
+                   && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
+                {
+                        affect_strip(ch, gsn_swim);
+                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                        send_to_char("{cNo longer in the water, you stop swimming.{w\n\r", ch);
+                }
+
+
                 /*
                  *  Gravity; Owl 20/3/22
                  */

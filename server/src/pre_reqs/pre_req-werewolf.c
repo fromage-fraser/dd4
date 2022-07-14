@@ -56,6 +56,9 @@
 
 {&gsn_group_defense,            &gsn_werewolf_base,     45,     PRE_WEREWOLF},
 
+{&gsn_swim,                     &gsn_group_defense,     20,     PRE_WEREWOLF},
+{&gsn_swim,                     &gsn_werewolf_base,     30,     PRE_WEREWOLF},
+
 {&gsn_dodge,                    &gsn_group_defense,     80,     PRE_WEREWOLF},
 {&gsn_dodge,                    &gsn_werewolf_base,     30,     PRE_WEREWOLF},
 
