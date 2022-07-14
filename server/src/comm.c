@@ -45,6 +45,7 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <ctype.h>
+#include <dirent.h>
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -165,6 +166,7 @@ bool    process_output          args((DESCRIPTOR_DATA *d, bool fPrompt));
 void    read_from_buffer        args((DESCRIPTOR_DATA *d));
 void    stop_idling             args((CHAR_DATA *ch));
 void    bust_a_prompt           args((DESCRIPTOR_DATA *d));
+void    assert_directory_exists args((const char *path));
 
 
 int main(int argc, char **argv)
@@ -214,6 +216,12 @@ int main(int argc, char **argv)
                         exit(1);
                 }
         }
+
+
+        /*
+         * Check certain directories exist. This helps to avoid surprising errors once the server is running.
+         */
+        assert_directory_exists(PLAYER_DIR);
 
         /*
          * Run the game.
@@ -2167,12 +2175,12 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                          * Shade 17.6.22
                          *
                          * Make it easier for starting characters; will edit here in the level 0 code not in clear_char
-                         * 
+                         *
                          * Give them a few of each pracs to get going, make starting hits 50 not 20
                          */
 
-                        
-                        ch->max_hit = 50;                        
+
+                        ch->max_hit = 50;
                         ch->hit = ch->max_hit;
 
                         ch->pcdata->str_prac = 2;
@@ -3752,10 +3760,24 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
                 buf[pos++] = '\r';
                 i += k;
         }
-        
+
         buf[pos] = '\0';
         send_to_char (buf, ch);
 }
 
+void assert_directory_exists(const char *path)
+{
+        DIR * dir;
+        char buf[MAX_STRING_LENGTH];
+
+        dir = opendir(path);
+        if (dir) {
+                closedir(dir);
+        } else {
+                sprintf(buf, "Required directory does not exist or cannot be opened: %s", path);
+                bug(buf, MAX_STRING_LENGTH);
+                exit(1);
+        }
+}
 
 /* EOF comm.c */
