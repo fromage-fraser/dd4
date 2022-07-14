@@ -1165,18 +1165,19 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                 {
-                        affect_modify( ch, paf, TRUE, obj );
                         if ( !(paf->type == gsn_uncommon_set) 
                         || ( paf->type == gsn_uncommon_set && gets_bonus == TRUE ) )
-                        /* If the object your wearing is NOT an uncommon_set OR it is AND you get a bonus then Apply effect */ 
-                        send_to_char ( "You get a bonus applied.\n\r", ch);
+                        affect_modify( ch, paf, TRUE, obj );
+                        /* If the object your wearing is NOT a set  OR it is AND you get a bonus then Apply effect 
+                        send_to_char ( "You get a bonus applied.\n\r", ch); */ 
                 }
                 for ( paf = obj->affected; paf; paf = paf->next )
-                {       affect_modify( ch, paf, TRUE, obj );
+                {       
                         if ( !(paf->type == gsn_uncommon_set) 
                         || ( paf->type == gsn_uncommon_set && gets_bonus == TRUE ) )
-                        /* If the object your wearing is NOT an uncommon_set OR it is and you get a bonus then Apply effect */ 
-                        send_to_char ( "You get a bonus applied.\n\r", ch);
+                        affect_modify( ch, paf, TRUE, obj );
+                        /* If the object your wearing is NOT a set OR it is and you get a bonus then Apply effect 
+                        send_to_char ( "You get a bonus applied.\n\r", ch); */ 
                 }
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT

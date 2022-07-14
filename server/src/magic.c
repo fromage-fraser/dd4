@@ -3322,7 +3322,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         {
                         case EGO_ITEM_UNCOMMON_SET: /* constant-expression */
                         {
-                                sprintf (buf, "Its uncommon {G[SET BONUS]{x gives the wearer {W%s{x.\n\r",
+                                sprintf (buf, "Its 2-piece {G[SET BONUS]{x gives the wearer {W%s{x.\n\r",
                                          affect_loc_name (paf->location) );
                                 send_to_char( buf, ch );        /* code */
                                 break;
