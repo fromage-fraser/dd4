@@ -213,9 +213,9 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew playable race available!  See HELP GRUNG!{x
+    {W'Swim' skill has been fixed and given to a number of classes.{x
 
-    {WGAMBLING is in!  Check Circus, Kerofk, Ota'ar Dar for games, more to come...{x
+    {WNew playable race available!  See HELP GRUNG!{x
 
 
 
@@ -253,6 +253,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WJuly 2022{x
+- Swim skill (hopefully) fixed and given to a number of classes
 - New race: Grung
 - Added gambling mob functionality
 - Added new area 'Ota'ar Dar - Market Canton' for levels 30-35
