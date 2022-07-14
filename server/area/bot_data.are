@@ -1,6 +1,10 @@
 #AREA Gezhp~ Arena Bots~
 -3 -3 0 100
 
+#AREA_SPECIAL
+hidden
+$
+
 #MOBILES
 #11000
 reserved vnum for arena bots~
