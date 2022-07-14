@@ -108,7 +108,7 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() < ch->pcdata->learned[gsn_swim])
+        if ( number_percent() < ch->pcdata->learned[gsn_swim] )
         {
                 af.type      = gsn_swim;
                 af.duration  = -1;
@@ -120,6 +120,13 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 af.modifier = (get_curr_dex(ch) / 5);
                 af.location = APPLY_HITROLL;
                 affect_to_char(ch, &af);
+
+                send_to_char("You start swimming.\n\r", ch);
+                return;
+        }
+        else {
+                send_to_char("You thrash about in the water ineffectively.\n\r", ch);
+                return;
         }
 
         send_to_char("You start swimming.\n\r", ch);

@@ -43,6 +43,9 @@
 {&gsn_rescue,                   &gsn_group_defense,     20,     PRE_WARRIOR},
 {&gsn_rescue,                   &gsn_warrior_base,      30,     PRE_WARRIOR},
 
+{&gsn_swim,                     &gsn_group_defense,     20,     PRE_WARRIOR},
+{&gsn_swim,                     &gsn_warrior_base,      20,     PRE_WARRIOR},
+
 {&gsn_dodge,                    &gsn_group_defense,     40,     PRE_WARRIOR},
 {&gsn_dodge,                    &gsn_shield_block,      20,     PRE_WARRIOR},
 {&gsn_dodge,                    &gsn_warrior_base,      30,     PRE_WARRIOR},

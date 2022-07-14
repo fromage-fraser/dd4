@@ -410,6 +410,52 @@ void move_char(CHAR_DATA *ch, int door)
                         }
                 }
 
+                else if (to_room->sector_type == SECT_WATER_SWIM)
+                {
+                        OBJ_DATA *obj;
+                        bool      found;
+
+                        found = FALSE;
+
+                        /* 
+                         * You can move into a SWIM sector from an UNDERWATER one... rather than drown.
+                         * You can also move into one from any non-water room so you get a chance to turn
+                         * your swim skill ON. 
+                         */
+
+                        if ( IS_AFFECTED(ch, AFF_FLYING)
+                            || IS_IMMORTAL( ch )
+                            || ( ch->race == RACE_SAHUAGIN )
+                            || ( ch->race == RACE_GRUNG )
+                            || ch->mount
+                            || IS_AFFECTED( ch, AFF_SWIM )
+                            || ( ( ch->in_room->sector_type != SECT_UNDERWATER )
+                              && ( ch->in_room->sector_type != SECT_WATER_SWIM )
+                              && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
+                            || is_affected(ch,gsn_mist_walk)
+                            || is_affected(ch,gsn_astral_sidestep)
+                            || ch->form == FORM_FLY)
+                        {
+                                found = TRUE;
+                        }
+                        else
+                        {
+                                for (obj = ch->carrying; obj; obj = obj->next_content)
+                                {
+                                        if (obj->item_type == ITEM_BOAT)
+                                        {
+                                                found = TRUE;
+                                                break;
+                                        }
+                                }
+                        }
+
+                        if (!found)
+                        {
+                                send_to_char("You need to be able to swim, fly, or have a boat to go there.\n\r", ch);
+                                return;
+                        }
+                }
                 else if (to_room->sector_type == SECT_WATER_NOSWIM)
                 {
                         OBJ_DATA *obj;
@@ -446,7 +492,7 @@ void move_char(CHAR_DATA *ch, int door)
 
                         if (!found)
                         {
-                                send_to_char("You need a boat to go there.\n\r", ch);
+                                send_to_char("You need to be flying or have a boat to go there.\n\r", ch);
                                 return;
                         }
                 }
@@ -479,6 +525,10 @@ void move_char(CHAR_DATA *ch, int door)
                  */
                 if (ch->mount)
                 {
+                        OBJ_DATA *obj;
+                        bool found_boat;
+                        found_boat = FALSE;
+
                         if (ch->mount->position < POS_STANDING)
                         {
                                 send_to_char ("Your mount isn't awake!\n\r", ch);
@@ -492,21 +542,56 @@ void move_char(CHAR_DATA *ch, int door)
                         }
 
                         if (IS_SET(to_room->room_flags, ROOM_SOLITARY)
-                            || IS_SET(to_room->room_flags, ROOM_PRIVATE)
-                            || IS_SET(to_room->room_flags, ROOM_NO_MOUNT))
+                        ||  IS_SET(to_room->room_flags, ROOM_PRIVATE)
+                        ||  IS_SET(to_room->room_flags, ROOM_NO_MOUNT))
                         {
                                 send_to_char ("You can't go there while mounted.\n\r", ch);
                                 return;
                         }
 
-                        if ( ( to_room->sector_type == SECT_WATER_NOSWIM 
-                            || to_room->sector_type == SECT_UNDERWATER )
-                                && !IS_AFFECTED (ch->mount, AFF_SWIM) )
+                        if ( to_room->sector_type == SECT_WATER_NOSWIM 
+                        &&   !IS_AFFECTED( ch->mount, AFF_FLYING ) )
                         {
-                                send_to_char ("Your mount refuses to enter the water.\n\r", ch);
-                                return;
+                                found_boat = FALSE;
+
+                                for (obj = ch->carrying; obj; obj = obj->next_content)
+                                {
+                                        if (obj->item_type == ITEM_BOAT)
+                                        {
+                                                found_boat = TRUE;
+                                                break;
+                                        }
+                                }
+
+                                if (!found_boat)
+                                {
+                                        send_to_char ("Your mount refuses to enter the water.\n\r", ch);
+                                        return;
+                                }
                         }
 
+                        if ( to_room->sector_type == SECT_WATER_SWIM 
+                        && ( ( !IS_AFFECTED( ch->mount, AFF_FLYING ) )
+                          && ( !IS_AFFECTED( ch->mount, AFF_SWIM ) ) ) )
+                        {
+                                found_boat = FALSE;
+
+                                for (obj = ch->carrying; obj; obj = obj->next_content)
+                                {
+                                        if (obj->item_type == ITEM_BOAT)
+                                        {
+                                                found_boat = TRUE;
+                                                break;
+                                        }
+                                }
+
+                                if (!found_boat)
+                                {
+                                        send_to_char ("Your mount refuses to enter the water.\n\r", ch);
+                                        return;
+                                }
+                        }
+                        
                         if (to_room->sector_type == SECT_AIR
                             && !IS_AFFECTED(ch->mount, AFF_FLYING))
                         {
@@ -614,7 +699,9 @@ void move_char(CHAR_DATA *ch, int door)
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
                 ||  ( to_room->sector_type == SECT_UNDERWATER ) )
-                &&  ( !IS_AFFECTED(ch, AFF_FLYING) || ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) )
+                &&  ( !IS_AFFECTED(ch, AFF_FLYING) 
+                   || ch->race == RACE_SAHUAGIN 
+                   || ch->race == RACE_GRUNG ) )
         {
                 act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
         }
@@ -655,7 +742,8 @@ void move_char(CHAR_DATA *ch, int door)
                 ch->position = POS_STANDING;
         }
 
-        /* Strip swim if room we move to isn't wet.. AFTER moving. Imms can dispel themselves. */
+
+         /* Strip swim if room we move to isn't wet.. AFTER moving. Imms can dispel themselves. */
 
         if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
         ||       ( is_affected( ch, gsn_swim ) ) )
@@ -669,7 +757,7 @@ void move_char(CHAR_DATA *ch, int door)
                 REMOVE_BIT(ch->affected_by, AFF_SWIM);
                 send_to_char("{cNo longer in the water, you stop swimming.{x\n\r", ch);
         }
-
+        
         /* Lets check we're a pc BEFORE we call the trigger */
         /* CPU utilisation -= 50% */
         if (!IS_NPC(ch))
@@ -1668,7 +1756,8 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
         }
 
         if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) )
+        && ( ch->race != RACE_SAHUAGIN 
+          && ch->race != RACE_GRUNG ) )
         {
                 send_to_char("Not while you're underwater.\n\r", ch);
                 return;

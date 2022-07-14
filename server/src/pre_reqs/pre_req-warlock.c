@@ -31,6 +31,9 @@
 
 /* **** DEFENSE **** */
 
+{&gsn_swim,                     &gsn_group_defense,     20,     PRE_WARLOCK},
+{&gsn_swim,                     &gsn_warlock_base,      30,     PRE_WARLOCK},
+
 {&gsn_rescue,                   &gsn_group_defense,     50,     PRE_WARLOCK},
 {&gsn_rescue,                   &gsn_warlock_base,      30,     PRE_WARLOCK},
 

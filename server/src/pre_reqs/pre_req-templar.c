@@ -32,7 +32,11 @@
 {&gsn_frenzy,                   &gsn_templar_base,      30,     PRE_TEMPLAR},
 
 {&gsn_prayer,                   &gsn_templar_base,      49,     PRE_TEMPLAR},
+
 /* **** DEFENSE **** */
+
+{&gsn_swim,                     &gsn_group_defense,     20,     PRE_TEMPLAR},
+{&gsn_swim,                     &gsn_templar_base,      30,     PRE_TEMPLAR},
 
 {&gsn_rescue,                   &gsn_group_defense,     75,     PRE_TEMPLAR},
 {&gsn_rescue,                   &gsn_templar_base,      30,     PRE_TEMPLAR},
