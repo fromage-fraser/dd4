@@ -3402,7 +3402,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 }
                 paf->type           = gsn_fly;
                 paf->duration       = -1;
-                paf->location       = APPLY_NONE;
+                paf->location       = APPLY_FLY;
                 paf->modifier       = 0;
                 paf->bitvector      = AFF_FLYING;
                 paf->next           = obj->affected;

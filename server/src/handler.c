@@ -1133,9 +1133,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         affect_modify( ch, paf, TRUE, obj );
 
                 /* set bonus hack - Brutus Jul 2022 */
-                if ( !IS_NPC(ch) 
-                    && paf->location == APPLY_NONE
-                    && paf->modifier == 0
+                if ( !IS_NPC(ch) && paf->location == APPLY_NONE && paf->modifier == 0 
                     && strcmp (affect_loc_name (paf->location), "(unknown)") 
                     && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
                         || obj->ego_flags == EGO_ITEM_RARE_SET
