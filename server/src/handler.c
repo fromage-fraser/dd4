@@ -1127,11 +1127,8 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 return;
         }
 
-
-
-
                 /* set bonus hack - Brutus Jul 2022 */
-        if ( !IS_NPC(ch) && paf->modifier == 0 
+        if ( !IS_NPC(ch) 
                 && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
                 || obj->ego_flags == EGO_ITEM_RARE_SET
                 || obj->ego_flags == EGO_ITEM_EPIC_SET
