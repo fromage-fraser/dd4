@@ -4128,22 +4128,22 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (victim->fighting && !is_same_group(ch,victim->fighting))
+        if ( victim->fighting && !is_same_group( ch,victim->fighting ) )
         {
                 send_to_char("Kill stealing is not permitted.\n\r",ch);
                 return;
         }
 
-        if (IS_AFFECTED(ch,AFF_CHARM) && ch->master == victim)
+        if ( IS_AFFECTED(ch,AFF_CHARM) && ch->master == victim )
         {
                 act ("But $N is such a good friend!",ch,NULL,victim,TO_CHAR);
                 return;
         }
 
-        if (ch->in_room->sector_type == SECT_WATER_SWIM
-            || ch->in_room->sector_type == SECT_WATER_NOSWIM
-            || ch->in_room->sector_type == SECT_UNDERWATER
-            || ch->in_room->sector_type == SECT_AIR)
+        if ( ch->in_room->sector_type == SECT_WATER_SWIM
+        ||   ch->in_room->sector_type == SECT_WATER_NOSWIM
+        ||   ch->in_room->sector_type == SECT_UNDERWATER
+        ||   ch->in_room->sector_type == SECT_AIR )
         {
                 send_to_char("There is no dirt to kick here.\n\r", ch);
                 return;

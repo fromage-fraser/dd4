@@ -88,6 +88,10 @@ This captain has killed more sharks than you have eaten peas.
 23 2 2 1d1+30000 1d8+32
 0 0
 8 8 1
+>greet_prog 35~
+    say Visiting the western sea?  You'll want a boat, if so.  I can help!
+~
+|
 #3007
 sailor~
 the sailor~
@@ -4795,7 +4799,7 @@ The arch under the bridge is covered by seaweed for one foot above the
 surface of the river.  The water gently flows through an opening in the lower
 part of the city wall.
 ~
-0 0 7
+0 0 6
 D1
 ~
 ~
@@ -4815,7 +4819,7 @@ On the River~
 North of here you see the miserable buildings of the poor alley.  The
 river flows west towards the bridge.  The riverbanks are too steep to climb.
 ~
-0 0 7
+0 0 6
 D1
 ~
 ~
@@ -4830,7 +4834,7 @@ On the River~
 North of here you see the dump.  The river flows from east to west.  The
 riverbanks are too steep to climb.
 ~
-0 0 7
+0 0 6
 D1
 ~
 ~
@@ -4845,7 +4849,7 @@ On the River~
 The levee is directly north of here.  The river flows in an east west
 direction.
 ~
-0 4 7
+0 4 6
 D0
 ~
 ~
@@ -4864,7 +4868,7 @@ On the River~
 You see the warehouse on the northern riverbank.  East of here you see the
 city wall.  The river flows west towards the levee.
 ~
-0 0 7
+0 0 6
 D1
 ~
 ~
@@ -4879,7 +4883,7 @@ On the River~
 The river enters from a hole in the eastern city wall.  The hole has been
 blocked by several vertically positioned iron bars set into the wall.
 ~
-0 0 7
+0 0 6
 D1
 The iron bars are broken, allowing passage through the hole in the wall.
 Beyond the bars you see a dark tunnel.

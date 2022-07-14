@@ -97,6 +97,9 @@ Last modified 29/7/97 @ 15:45 - Mat
 
 /* Defense Skills */
 
+  {&gsn_swim,                   &gsn_group_defense,     20,     PRE_THIEF},
+  {&gsn_swim,                   &gsn_thief_base,        20,     PRE_THIEF},
+
   {&gsn_dodge,                  &gsn_group_defense,     20,     PRE_THIEF},
   {&gsn_dodge,                  &gsn_thief_base,        30,     PRE_THIEF},
 

@@ -10,8 +10,13 @@
 {&gsn_group_inner,              &gsn_brawler_base,      39,     PRE_BRAWLER},
 
 /* **** DEFENSE **** */
+
+{&gsn_swim,                     &gsn_brawler_base,      20,     PRE_BRAWLER},
+{&gsn_swim,                     &gsn_group_defense,     20,     PRE_BRAWLER},
+
 {&gsn_dodge,                    &gsn_group_defense,     20,     PRE_BRAWLER},
 {&gsn_dodge,                    &gsn_brawler_base,      20,     PRE_BRAWLER},
+
 {&gsn_rescue,                   &gsn_group_defense,     40,     PRE_BRAWLER},
 {&gsn_rescue,                   &gsn_brawler_base,      30,     PRE_BRAWLER},
 
@@ -89,7 +94,6 @@
 {&gsn_unarmed_combat,           &gsn_group_unarmed,     50,     PRE_BRAWLER},
 {&gsn_unarmed_combat,           &gsn_warcry,            45,     PRE_BRAWLER},
 {&gsn_unarmed_combat,           &gsn_brawler_base,      30,     PRE_BRAWLER},
-
 
 {&gsn_advanced_consider,        &gsn_group_inner,       70,     PRE_BRAWLER},
 {&gsn_advanced_consider,        &gsn_brawler_base,      70,     PRE_BRAWLER},

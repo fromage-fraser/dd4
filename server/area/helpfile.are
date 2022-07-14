@@ -213,9 +213,9 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {WNew playable race available!  See HELP GRUNG!{x
+    {W'Swim' skill has been fixed and given to a number of classes.{x
 
-    {WGAMBLING is in!  Check Circus, Kerofk, Ota'ar Dar for games, more to come...{x
+    {WNew playable race available!  See HELP GRUNG!{x
 
 
 
@@ -253,6 +253,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 0 CHANGES~
 
 {WJuly 2022{x
+- Swim skill (hopefully) fixed and given to a number of classes
 - New race: Grung
 - Added gambling mob functionality
 - Added new area 'Ota'ar Dar - Market Canton' for levels 30-35
@@ -2210,6 +2211,15 @@ while moving, having the same effect as the skill SNEAK.  Type VISIBLE to
 come out of shadow form.
 ~
 
+0 'SWIM'~
+Syntax: swim
+
+This physical skill will enable you to travel through swimmable water zones,
+will reduce the movement cost of doing so, and will provide a small bonus to
+your combat skill in aquatic environments.  You will automatically stop
+swimming once you're out of the water.
+~
+
 0 SPELLS~
 Syntax: spells
 
@@ -2375,7 +2385,7 @@ SUB_CLASS_DRUID              4           CLASS_PSIONICIST       4
 SUB_CLASS_NINJA              5           CLASS_SHAPE_SHIFTER    5
 SUB_CLASS_BOUNTY             6           CLASS_BRAWLER          6
 SUB_CLASS_THUG               7           CLASS_RANGER           7
-SUB_CLASS_KNIGHT             8
+SUB_CLASS_KNIGHT             8           CLASS_SMITHY           8
 SUB_CLASS_SATANIST           9
 SUB_CLASS_WITCH             10
 SUB_CLASS_WEREWOLF          11
@@ -2384,6 +2394,8 @@ SUB_CLASS_MONK              13
 SUB_CLASS_MARTIAL_ARTIST    14
 SUB_CLASS_BARBARIAN         15
 SUB_CLASS_BARD              16
+SUB_CLASS_ENGINEER          17
+SUB_CLASS_ALCHEMIST         18
 ~
 
 103 FORCE~
@@ -4838,7 +4850,7 @@ climb                   disarm                  third attack
 parry                   disable                 circle
 find traps              fast healing            tail
 feint                   dirt kick               knife toss
-smoke bomb
+smoke bomb              swim
 
 True thieves (those who don't change to bounty hunters or ninjas) may
 also learn these skills above level 30:
@@ -4860,6 +4872,7 @@ hide                    forage                  dowse
 dodge                   disarm                  parry
 find traps              disarm traps            grip
 feint                   shoot                   snapshot
+swim
 
 True rangers (those that don't change to barbarians or bards) may also
 learn these skills after level 30:
@@ -4918,7 +4931,7 @@ second attack           enhanced damage         rescue
 bash door               grip                    third attack
 warcry                  headbutt                stun
 shield block            fast healing            feint
-disarm
+disarm                  swim
 
 True warriors (those that don't change to thugs or knights) may also
 learn these skills above level 30:
@@ -4947,6 +4960,7 @@ summon avatar           second attack           third attack
 fourth attack           enhanced hit            dual
 dodge {Y*{x                 parry                   wolf form
 howl                    wolfbite                ravage
+swim
 
 {Y*{x The skill 'dodge' is only available in normal form.
 ~
@@ -5011,7 +5025,7 @@ gouge                   third attack            enhanced damage
 punch                   bash door               second punch
 headbutt                rescue                  pre-empt
 grapple                 warcry                  fast healing
-unarmed combat          feint
+unarmed combat          feint                   swim
 
 True brawlers (those that don't change to martial artists or monks) are
 able to learn these skills after level 30:
@@ -5157,7 +5171,7 @@ rescue                  parry                   third attack
 bash door               fast healing            grip
 recharge item           warcry                  enhanced hit
 dual                    frenzy                  prayer
-forge
+forge                   swim
 ~
 
 -1 SWARLOCK~
@@ -5169,7 +5183,7 @@ parry                   third attack            bash door
 fast healing            grip                    recharge item
 warcry                  enhanced hit            whirlwind
 dual                    forge                   dragon shield
-fireshield              transport item
+fireshield              transport item          swim
 ~
 
 -1 SWITCH~

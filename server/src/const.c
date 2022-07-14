@@ -861,7 +861,6 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
         {       &gsn_form_tiger                 },
         {       &gsn_venom                      },
         {       &gsn_soar                       },
-        {       &gsn_swim                       },
         {       &gsn_constrict                  },
         {       &gsn_coil                       },
         {       &gsn_web                        },
@@ -875,12 +874,13 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
 
         /*
          * Skills below gagged by vamps but shown by werewolves
-         * Need to edit prac_slist() if the number of wolf-only
-         * skills is changed
+         * Need to edit has_pre_req() in act_info.c if the number 
+         * of wolf-only skills is changed
          */
         {       &gsn_morph                      },
         {       &gsn_wolfbite                   },
         {       &gsn_ravage                     },
+        {       &gsn_swim                       },
 };
 
 
@@ -1459,6 +1459,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_group_defense,                           0 },
         { &gsn_rescue,                                  0 },
         { &gsn_dodge,                                   0 },
+        { &gsn_swim,                                   0 },
         { &gsn_parry,                                   0 },
         { &gsn_pre_empt,                                0 },
         { &gsn_disarm,                                  0 },
