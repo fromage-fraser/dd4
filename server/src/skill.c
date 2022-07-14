@@ -129,6 +129,8 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        send_to_char("You start swimming.\n\r", ch);
+        return;
 }
 
 

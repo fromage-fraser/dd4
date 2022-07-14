@@ -547,7 +547,6 @@ int hit_gain( CHAR_DATA *ch )
                         send_to_char("{cNo longer in the water, you stop swimming.{w\n\r", ch);
                 }
 
-
                 /*
                  *  Gravity; Owl 20/3/22
                  */

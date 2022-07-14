@@ -757,7 +757,6 @@ void move_char(CHAR_DATA *ch, int door)
                 send_to_char("{cNo longer in the water, you stop swimming.{x\n\r", ch);
         }
 
-
         /* Lets check we're a pc BEFORE we call the trigger */
         /* CPU utilisation -= 50% */
         if (!IS_NPC(ch))
