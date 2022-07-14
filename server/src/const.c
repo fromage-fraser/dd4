@@ -294,10 +294,13 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
 const struct set_type   set_list [MAX_SETS] = 
 {
-        { "uncommon",       "uncommon set", EGO_ITEM_UNCOMMON_SET,  "fly",        "infravision", "sense_traps"},
-        { "rare",           "rare set",      EGO_ITEM_RARE_SET,     "second attack", "trip",    "enhanced hit"},
-        { "epic",           "epic set",     EGO_ITEM_EPIC_SET,      "fireshield",    "second attack", "parry"},
-        { "legendary",      "legendart set",  EGO_ITEM_LEGENDARY_SET,  "sanctuary", "accuracy", "enhanced damage"}
+        { "Smithys Set",       "Desc for the Smithy set", { FALSE, TRUE, TRUE, FALSE}, 
+        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY}, 
+        {APPLY_FLY, 0, 0, APPLY_SANCTUARY} },
+
+        { "Smithys Set",       "Desc for uncommon set", { FALSE, TRUE, TRUE, FALSE}, 
+        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY}, 
+        {APPLY_FLY, 0, 0, APPLY_SANCTUARY} }        
 };
 
 

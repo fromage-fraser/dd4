@@ -212,16 +212,16 @@ struct blueprint_type
 
 };
 
-#define MAX_SETS 4
+#define MAX_SETS 2
 
 struct set_type
 {
         char    *set_name;
         char    *set_desc;
-        int     set_ego;
-        char    * set_bonus1;
-        char     * set_bonus2;
-        char     * set_bonus3;
+        bool    is_skill [4];
+        int     * skill_gsn [4];
+        int     apply [4];
+        int     affect [4];
 };
 
 /*
