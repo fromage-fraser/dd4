@@ -278,7 +278,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 
 #define MAX_SKILL               512     /* 512 for Empower */
 #define MAX_PRE_REQ             1363    /* Increased for swim --Owl 14/7/22 */
-#define MAX_SPELL_GROUP         432     /* Increased for swim --Owl 14/7/22 */
+#define MAX_SPELL_GROUP         433     /* Increased for swim --Owl 14/7/22 */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
 #define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */
