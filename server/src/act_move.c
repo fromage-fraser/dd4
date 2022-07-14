@@ -742,7 +742,6 @@ void move_char(CHAR_DATA *ch, int door)
                 ch->position = POS_STANDING;
         }
 
-
          /* Strip swim if room we move to isn't wet.. AFTER moving. Imms can dispel themselves. */
 
         if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
@@ -757,7 +756,7 @@ void move_char(CHAR_DATA *ch, int door)
                 REMOVE_BIT(ch->affected_by, AFF_SWIM);
                 send_to_char("{cNo longer in the water, you stop swimming.{x\n\r", ch);
         }
-        
+
         /* Lets check we're a pc BEFORE we call the trigger */
         /* CPU utilisation -= 50% */
         if (!IS_NPC(ch))
