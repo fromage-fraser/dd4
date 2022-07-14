@@ -1099,6 +1099,11 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 {
         AFFECT_DATA *paf;
         char         buf [ MAX_STRING_LENGTH ];
+        bool            gets_bonus;
+        gets_bonus = TRUE;
+
+
+
 
         if ( get_eq_char( ch, iWear ) )
         {
@@ -1122,21 +1127,15 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 return;
         }
 
-        if( iWear != WEAR_RANGED_WEAPON )
-        {
-                ch->armor -= apply_ac( obj, iWear );
-
-                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
 
 
 
-                /* set bonus hack - Brutus Jul 2022 
-                if ( !IS_NPC(ch) && paf->modifier == 0 
-                    && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
-                        || obj->ego_flags == EGO_ITEM_RARE_SET
-                        || obj->ego_flags == EGO_ITEM_EPIC_SET
-                        || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
+                /* set bonus hack - Brutus Jul 2022 */
+        if ( !IS_NPC(ch) && paf->modifier == 0 
+                && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
+                || obj->ego_flags == EGO_ITEM_RARE_SET
+                || obj->ego_flags == EGO_ITEM_EPIC_SET
+                || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
                 {
                         OBJ_DATA *obj2;
                         switch (obj->ego_flags)
@@ -1147,25 +1146,39 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                                 {
                                         if ( obj2->wear_loc != WEAR_NONE
                                         && obj->ego_flags == EGO_ITEM_UNCOMMON_SET )
-                                        if ( !obj2 )
                                         {
-                                                send_to_char( "Wear the other set item to get the bonus.\n\r", ch );
+                                                gets_bonus = TRUE;
+                                                send_to_char( "You get a bonus.\n\r", ch );
+                                        }
+                                        else
+                                        {
+                                                gets_bonus = FALSE;
+                                                send_to_char( "You dont ge a bonus.\n\r", ch);
+                                                sprintf (buf, "Equipping uncommon {G[SET BONUS]{x giving {W%s{x.\n\r",
+                                                skill_table[paf->type].name);
+                                                send_to_char( buf, ch );
                                                 return;
                                         }
                                 }
-                                sprintf (buf, "Equipping uncommon {G[SET BONUS]{x giving {W%s{x.\n\r",
-                                         skill_table[paf->type].name);
-                                send_to_char( buf, ch );   
-                                affect_modify( ch, paf, TRUE, obj );    
+                                   
                                 break;
                         }
                         default:
                                 break;
                         }                       
                 }
-                else  End nasty set bonus hack */
+                /* End nasty set bonus hack */
 
-                        for ( paf = obj->affected; paf; paf = paf->next )
+
+
+        if( iWear != WEAR_RANGED_WEAPON )
+        {
+                ch->armor -= apply_ac( obj, iWear );
+
+                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+                        affect_modify( ch, paf, TRUE, obj );
+
+                for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
 
                 if ( obj->item_type == ITEM_LIGHT
