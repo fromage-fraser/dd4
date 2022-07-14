@@ -1170,8 +1170,10 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 }
                 for ( paf = obj->affected; paf; paf = paf->next )
                 {       affect_modify( ch, paf, TRUE, obj );
-                        if ( !( paf->type == gsn_uncommon_set && gets_bonus ) )
-                        send_to_char ( "2\n\r", ch);
+                        if ( !(paf->type == gsn_uncommon_set) 
+                        || ( paf->type == gsn_uncommon_set && gets_bonus ) )
+                        /* If the object your wearing is NOT an uncommon_set AND you get a bonus then pply effect */ 
+                        send_to_char ( "You get a bonus applied.\n\r", ch);
                 }
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
