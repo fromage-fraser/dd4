@@ -1129,11 +1129,10 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
 
-                for ( paf = obj->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
+
 
                 /* set bonus hack - Brutus Jul 2022 */
-                if ( !IS_NPC(ch) && paf->modifier == 0 && strcmp (affect_loc_name (paf->location), "(unknown)") 
+                if ( !IS_NPC(ch) && paf->modifier == 0 
                     && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
                         || obj->ego_flags == EGO_ITEM_RARE_SET
                         || obj->ego_flags == EGO_ITEM_EPIC_SET
@@ -1162,11 +1161,14 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                         }
                         default:
                                 break;
-                        }
-
+                        }                       
                 }
+                else /* End nasty set bonus hack */
+                {
 
-                /* End nasty set bonus hack */
+                        for ( paf = obj->affected; paf; paf = paf->next )
+                        affect_modify( ch, paf, TRUE, obj );
+                }
 
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
