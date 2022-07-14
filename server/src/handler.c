@@ -1143,15 +1143,8 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                                 {
                                         if ( !( obj2->wear_loc != WEAR_NONE
                                         && obj2->ego_flags == EGO_ITEM_UNCOMMON_SET ) ) /*if wearing & is ego */
-                                        {
                                                 gets_bonus = FALSE;
-                                                send_to_char( "You dont get an uncommon bonus.\n\r", ch );
-                                        }
-                                        else
-                                        {
-                                                gets_bonus = TRUE;
-                                                send_to_char( "You get an uncommon bonus.\n\r", ch);
-                                        }
+                                              /*  send_to_char( "You dont get an uncommon bonus.\n\r", ch ); */
                                 }
                                    
                                 break;
@@ -1170,11 +1163,14 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 ch->armor -= apply_ac( obj, iWear );
 
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+                {
                         affect_modify( ch, paf, TRUE, obj );
-
+                        send_to_char ( "1\n\r", ch);
+                }
                 for ( paf = obj->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
-
+                {        affect_modify( ch, paf, TRUE, obj );
+                        send_to_char ( "2\n\r", ch);
+                }
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
