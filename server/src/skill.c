@@ -99,6 +99,15 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ( ( ch->form != FORM_SNAKE ) 
+        && ( ch->in_room->sector_type != SECT_UNDERWATER )
+        && ( ch->in_room->sector_type != SECT_WATER_SWIM )
+        && ( ch->in_room->sector_type != SECT_WATER_NOSWIM ) )
+        {
+                send_to_char("You need to be in the water to swim.\n\r", ch);
+                return;
+        }
+
         if (number_percent() < ch->pcdata->learned[gsn_swim])
         {
                 af.type      = gsn_swim;
@@ -108,12 +117,12 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 af.bitvector = AFF_SWIM;
                 affect_to_char(ch, &af);
 
-                af.modifier = (get_curr_dex(ch) - 30);
+                af.modifier = (get_curr_dex(ch) / 5);
                 af.location = APPLY_HITROLL;
                 affect_to_char(ch, &af);
         }
 
-        send_to_char("You can now swim.\n\r", ch);
+        send_to_char("You start swimming.\n\r", ch);
         return;
 }
 
