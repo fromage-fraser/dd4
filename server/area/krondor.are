@@ -918,12 +918,11 @@ endif
 & 100 'advanced combat knowledge'
 & 100 'archery knowledge'
 & 100 'metal working techniques'
-& 30 'ranger base'
-& 30 'bard base'
-& 30 'barbarian base'
-& 30 'knight base'
-& 30 'thug base'
-& 30 'warrior base'
+& 100 'combination moves'
+& 100 'morphing knowledge'
+& 100 'lycanthropy skills'
+& 100 'vampyre skills'
+& 100 'pugilism knowledge'
 & 100 'stealth techniques'
 & 100 'thievery skills'
 & 100 'poison arts'
@@ -932,19 +931,20 @@ endif
 & 100 'dowse'
 & 100 'forage'
 & 100 'knowledge'
+& 30 'ranger base'
+& 30 'bard base'
+& 30 'barbarian base'
+& 30 'knight base'
+& 30 'thug base'
+& 30 'warrior base'
 & 30 'thief base'
 & 30 'ninja base'
 & 30 'bounty base'
-& 100 'pugilism knowledge'
 & 30 'brawler base'
 & 30 'artist base'
-& 100 'combination moves'
-& 100 'morphing knowledge'
-& 100 'lycanthropy skills'
-& 100 'vampyre skills'
-& 100 'vampire base'
-& 100 'shifter base'
-& 100 'werewolf base'
+& 30 'vampire base'
+& 30 'shifter base'
+& 30 'werewolf base'
 #30068
 slayer evil attendant~
 the slayer~
@@ -967,7 +967,7 @@ endif
 ~
 |
 #30069
-high priest adonai.~
+high priest adonai~
 the high priest~
 The high priest stands here.
 ~
