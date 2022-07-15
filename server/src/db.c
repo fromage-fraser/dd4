@@ -790,6 +790,7 @@ void    load_recall             args( ( FILE *fp ) );
 void    load_mobiles            args( ( FILE *fp ) );
 void    load_objects            args( ( FILE *fp ) );
 void    load_resets             args( ( FILE *fp ) );
+void    load_object_sets        args( ( FILE *fp ) );
 void    load_rooms              args( ( FILE *fp ) );
 void    load_shops              args( ( FILE *fp ) );
 void    load_specials           args( ( FILE *fp ) );
@@ -964,6 +965,8 @@ void boot_db( void )
                                         load_objects ( fpArea );
                                 else if ( !str_cmp( word, "RESETS"   ) )
                                         load_resets  ( fpArea );
+                                else if ( !str_cmp( word, "OBJECT_SETS"   ) )
+                                        load_object_sets  ( fpArea );
                                 else if ( !str_cmp( word, "ROOMS"    ) )
                                         load_rooms   ( fpArea );
                                 else if ( !str_cmp( word, "SHOPS"    ) )
@@ -1768,7 +1771,6 @@ void load_objects( FILE *fp )
                         exit( 1 );
                 }
 
-                fBootDb = TRUE;
                 pObjIndex = alloc_perm( sizeof( *pObjIndex ) );
                 pObjIndex->vnum = vnum;
 
@@ -2058,6 +2060,94 @@ void load_resets( FILE *fp )
 
         return;
 }
+
+
+void load_object_sets( FILE *fp )
+{
+        OBJECT_SET_DATA *pObjset;
+        int stat;
+
+        if ( !area_last )
+        {
+                bug( "Load_Object_sets: no #AREA seen yet.", 0 );
+                exit( 1 );
+        }
+
+        for ( ; ; )
+        {
+                char  letter;
+                int   vnum;
+                int   stat;
+
+                letter = fread_letter( fp );
+                if ( letter != '#' )
+                {
+                        bug( "Load_objects: # not found.", 0 );
+                        exit( 1 );
+                }
+
+                vnum = fread_number( fp, &stat );
+                if ( vnum == 0 )
+                        break;
+
+                fBootDb = FALSE;
+                if ( get_object_set_index( vnum ) )
+                {
+                        bug( "Load_objects: vnum %d duplicated.", vnum );
+                        exit( 1 );
+                }
+
+                pObjset = alloc_perm( sizeof( *pObjset ) );
+                pObjset->vnum = vnum;
+                
+                pObjset->name                 = fread_string( fp );
+                pObjset->description          = fread_string( fp );
+                pObjset->bonus_num[0]           = fread_number( fp, &stat );
+                pObjset->bonus_num[1]           = fread_number( fp, &stat );
+                pObjset->bonus_num[2]           = fread_number( fp, &stat );
+                pObjset->bonus_num[3]           = fread_number( fp, &stat );
+                
+                /*
+                 * Validate parameters.
+                 * We're calling the index functions for the side effect.
+                 */
+               for ( ; ; )
+                {
+                        char letter;
+                        letter = fread_letter( fp );
+
+                        if ( letter == 'A' )
+                        {
+                                AFFECT_DATA *paf;
+
+                                paf                     = alloc_perm( sizeof( *paf ) );
+                                paf->type               = -1;
+                                paf->duration           = -1;
+                                paf->location           = fread_number( fp, &stat );
+                                paf->modifier           = fread_number( fp, &stat );
+                                paf->bitvector          = 0;
+                                paf->next               = pObjset->affected;
+                                pObjset->affected     = paf;
+                                top_affect++;
+                        }
+                        else if ( letter == 'O' )
+                        {
+                                OBJ_DATA *pobj;
+
+                                pobj            = alloc_perm( sizeof( *pobj ) );
+                                pobj->pIndexData->vnum   =    fread_number( fp, &stat ); 
+                                pObjset->objects        = pobj;
+                        }
+                        else
+                        {
+                                ungetc( letter, fp );
+                                break;
+                        }
+                }
+        }
+        return;
+}
+
 
 
 /*

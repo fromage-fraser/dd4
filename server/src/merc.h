@@ -124,6 +124,7 @@ typedef struct obj_data                         OBJ_DATA;
 typedef struct obj_index_data                   OBJ_INDEX_DATA;
 typedef struct pc_data                          PC_DATA;
 typedef struct reset_data                       RESET_DATA;
+typedef struct object_set_data                  OBJECT_SET_DATA;
 typedef struct room_index_data                  ROOM_INDEX_DATA;
 typedef struct shop_data                        SHOP_DATA;
 typedef struct time_info_data                   TIME_INFO_DATA;
@@ -1021,6 +1022,19 @@ struct affect_data
         int             modifier;
         int             bitvector;
         bool            deleted;
+};
+
+/* Set items struct */
+struct object_set_data
+{
+        OBJECT_SET_DATA *       next;
+        AFFECT_DATA *           affected;
+        OBJ_DATA *              objects;
+
+        char *  name;
+        char *  description;
+        int     vnum;
+        int     bonus_num [ 4 ];
 };
 
 
@@ -2662,6 +2676,7 @@ struct obj_data
 };
 
 
+
 /*
  * Exit data.
  */
@@ -4210,6 +4225,7 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define OD      OBJ_DATA
 #define OID     OBJ_INDEX_DATA
 #define RID     ROOM_INDEX_DATA
+#define OSID    OBJECT_SET_DATA
 #define SF      SPEC_FUN
 #define ED      EXIT_DATA
 #define GF      GAME_FUN
@@ -4295,6 +4311,7 @@ char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DA
 MID *   get_mob_index                   args( ( int vnum ) );
 OID *   get_obj_index                   args( ( int vnum ) );
 RID *   get_room_index                  args( ( int vnum ) );
+OSID *  get_object_set_index            args( ( int vnum ) );
 void    obj_strings                     args( ( OBJ_DATA *obj ) );
 char    fread_letter                    args( ( FILE *fp ) );
 int	fread_number	                args( ( FILE *fp, int *status ) );
@@ -4574,6 +4591,7 @@ bool mob_is_quest_target (CHAR_DATA *ch);
 #undef  OD
 #undef  OID
 #undef  RID
+#undef  OSID
 #undef  SF
 
 
