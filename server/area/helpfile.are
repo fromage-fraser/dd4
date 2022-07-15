@@ -3831,9 +3831,24 @@ brace '{{', following that you should use one of the following letters:
     {c{{c  cyan{x         {C{{C  bright cyan{x        {{/  newline
     {y{{y  orange{x       {Y{{Y  yellow{x
     {w{{w  grey{x         {W{{W  white{x
+    {W{k{{k  black{x
 
 Always end your colourised line with a {{x to reset the color.  The TITLE
 command will do this automatically.
+
+You can also set text background colours by using right-handed brace 
+('}}') codes.  The following codes are available:
+
+    }r}}r  red}x          }R}}R  bright red}x         Other characters:
+    }g}}g  green}x        }G}}G  bright green{x
+    }b}}b  blue}x         }B}}B  bright blue{x        }}}}  right brace
+    }m}}m  magenta{x      }M}}M  bright magenta{x     }}x  clear (reset bgcolour)
+    }c}}c  cyan}x         }C}}C  bright cyan{x        
+    }y}}y  orange{x       }Y}}Y  yellow{x
+    {k}w}}w  grey{x}x         }W}}W  white{x
+    }k}}k  {wblack{x}x        }K}}K  bright black(!){x 
+    {r}d}}d  grey (bolds foreground text){x}x   
+    {r}D}}D  white (bolds foreground text){x}x        
 
 ColoUr was written by Lope (ant@solace.mh.se)
 ~

@@ -1524,7 +1524,7 @@ This hideous sea worm must be 4 metres long.  Bright pink, smooth, and eyeless,
 it uses its electrical and other senses to navigate the ocean's depths in its 
 relentless quest for sustenance.
 ~
-4|32|64|128 8|32|512|32768|524288|67108864 0 S
+4|32|64|128 1|8|32|512|32768|524288|67108864 0 S
 35 0 0 0d0+0 0d0+0
 46 0
 8 8 0
