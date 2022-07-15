@@ -1542,14 +1542,23 @@ extern  WANTED_DATA *wanted_list_last;
 #define D_GREY          "\x1b[1m\x1b[30m"
 
 #define B_BLACK         "\x1b[40m"                      /* These are background color codes */
+#define B_B_BLACK       "\x1b[100m"                     
 #define B_RED           "\x1b[41m"
+#define B_B_RED         "\x1b[101m"
 #define B_GREEN         "\x1b[42m"
+#define B_B_GREEN       "\x1b[102m"
 #define B_YELLOW        "\x1b[43m"
+#define B_B_YELLOW      "\x1b[103m"
 #define B_BLUE          "\x1b[44m"
+#define B_B_BLUE        "\x1b[104m"
 #define B_PURPLE        "\x1b[45m"
+#define B_B_PURPLE      "\x1b[105m"
 #define B_CYAN          "\x1b[46m"
+#define B_B_CYAN        "\x1b[106m"
 #define B_GREY          "\x1b[47m"
+#define B_B_GREY        "\x1b[107m"
 #define B_D_GREY        "\x1b[1;47m"
+#define B_D_B_GREY      "\x1b[1;107m"
 
 /* Below are VT100 and ANSI codes (above are ANSI exclusively) */
 

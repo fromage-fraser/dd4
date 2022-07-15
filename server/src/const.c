@@ -1918,6 +1918,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_inner_fire, 20, 12,
                 "{Rin{Yne{Wr {Yfi{Rre{x", "!Inner Fire!"
+                
         },
 
         {

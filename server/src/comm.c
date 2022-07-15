@@ -3484,13 +3484,12 @@ int colour (char type, CHAR_DATA *ch, char *string)
             case 'd':
                 sprintf(code, D_GREY);
                 break;
-            /*  Beep removed by Gezhp
-             case '*':
+            case '*':
                  sprintf(code, "%c", 007);
-                 break; */
-            /* case '/':
+                 break; 
+            case '/':
                 sprintf(code, "%c", 012);
-                break; */
+                break; 
             case '{':
                 sprintf(code, "%c", '{');
                 break;
@@ -3521,31 +3520,58 @@ int bgcolour (char type, CHAR_DATA *ch, char *string)
                 sprintf(code, B_BLACK);
                 break;
             case 'k':
+                sprintf(code, B_B_BLACK);
+                break;
+            case 'K':
                 sprintf(code, B_BLACK);
                 break;
             case 'b':
+                sprintf(code, B_B_BLUE);
+                break;
+            case 'B':
                 sprintf(code, B_BLUE);
                 break;
             case 'c':
                 sprintf(code, B_CYAN);
                 break;
+            case 'C':
+                sprintf(code, B_B_CYAN);
+                break;
             case 'g':
                 sprintf(code, B_GREEN);
+                break;
+            case 'G':
+                sprintf(code, B_B_GREEN);
                 break;
             case 'm':
                 sprintf(code, B_PURPLE);
                 break;
+            case 'M':
+                sprintf(code, B_B_PURPLE);
+                break;
             case 'r':
                 sprintf(code, B_RED);
+                break;
+            case 'R':
+                sprintf(code, B_B_RED);
                 break;
             case 'w':
                 sprintf(code, B_GREY);
                 break;
+            case 'W':
+                sprintf(code, B_B_GREY);
+                break;
             case 'd':
                 sprintf(code, B_D_GREY);
                 break;
+            case 'D':
+                sprintf(code, B_D_B_GREY);
+                break;
             case 'y':
                 sprintf(code, B_YELLOW);
+                break;
+            case 'Y':
+                sprintf(code, B_B_YELLOW);
                 break;
             case '}':
                 sprintf(code, "%c", '}');
