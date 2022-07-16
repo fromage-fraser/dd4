@@ -60,6 +60,7 @@ char *                  help_greeting;
 char                    log_buf                 [ MAX_INPUT_LENGTH*2 ];
 KILL_DATA               kill_table              [ MAX_LEVEL          ];
 OBJ_DATA *              object_list;
+OBJECT_SET_DATA *       objset_list;
 TIME_INFO_DATA          time_info;
 WEATHER_DATA            weather_info;
 char *                  down_time;

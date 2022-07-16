@@ -1868,6 +1868,30 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 }
 
 
+OBJECT_SET_DATA *get_objset_world( CHAR_DATA *ch, char *argument )
+{
+        OBJECT_SET_DATA *obj;
+        char      arg [ MAX_INPUT_LENGTH ];
+        int       number;
+        int       count;
+
+        number = number_argument( argument, arg );
+        count  = 0;
+
+        for ( obj = objset_list; obj; obj = obj->next )
+        {
+                if ( multi_keyword_match( arg, obj->name ) )
+                {
+                        if ( ++count == number )
+                                return obj;
+                }
+        }
+
+        return NULL;
+}
+
+
+
 /*
  * Create a 'money' obj.
  */

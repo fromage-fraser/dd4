@@ -1160,7 +1160,55 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         send_to_char( buf1, ch );
 }
 
+void do_osstat( CHAR_DATA *ch, char *argument )
+{
+        OBJECT_SET_DATA    *obj;
+        CHAR_DATA   *rch;
+        AFFECT_DATA *paf;
+        char         buf  [ MAX_STRING_LENGTH ];
+        char         buf1 [ MAX_STRING_LENGTH ];
+        char         arg  [ MAX_INPUT_LENGTH  ];
+        int          i;
+        int          next;
 
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_osstat ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Ostat what?\n\r", ch );
+                return;
+        }
+
+        buf1[0] = '\0';
+
+        if ( !( obj = get_objset_world( ch, arg ) ) )
+        {
+                send_to_char( "Nothing like that in these realms.\n\r", ch);
+                return;
+        }
+
+        sprintf( buf, "Vnum: {R%d{x\n\r",
+                obj->vnum );
+        strcat( buf1, buf );
+
+        sprintf( buf, "Short description: {W%s{x\n\rLong description: {W%s{x\n\r",
+                obj->name,
+                obj->description );
+        strcat( buf1, buf );
+
+
+
+        strcat(buf, "{x\n\r");
+        strcat(buf1, buf);
+        send_to_char( buf1, ch );
+
+
+}
 void do_mstat( CHAR_DATA *ch, char *argument )
 {
         CHAR_DATA   *rch;

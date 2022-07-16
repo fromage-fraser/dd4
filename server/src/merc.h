@@ -3576,6 +3576,7 @@ extern CHAR_DATA                * char_list;
 extern DESCRIPTOR_DATA          * descriptor_list;
 extern NOTE_DATA                * note_list;
 extern OBJ_DATA                 * object_list;
+extern OBJECT_SET_DATA          * objset_list;
 extern AFFECT_DATA              * affect_free;
 extern BAN_DATA                 * ban_free;
 extern CHAR_DATA                * char_free;
@@ -3825,6 +3826,7 @@ DECLARE_DO_FUN( do_note                         );
 DECLARE_DO_FUN( do_notell                       );
 DECLARE_DO_FUN( do_numlock                      );
 DECLARE_DO_FUN( do_ofind                        );
+DECLARE_DO_FUN( do_osfind                       );
 DECLARE_DO_FUN( do_oload                        );
 DECLARE_DO_FUN( do_open                         );
 DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
