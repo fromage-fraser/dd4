@@ -1238,10 +1238,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         get_curr_con( victim ) );
                 strcat( buf1, buf );
 
-                sprintf( buf, "Hp: {G%d{x/{G%d{x  Mana: {C%d{x/{C%d{x  Mv: {Y%d{x/{Y%d{x\n\r",
-                        victim->hit,            victim->max_hit,
+                sprintf( buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
+                        victim->hit,         victim->max_hit,
                         victim->mana,        victim->max_mana,
-                        victim->move,        victim->max_move);
+                        victim->move,        victim->max_move,
+                        victim->wait);
                 strcat( buf1, buf );
 
                 sprintf( buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x\n\r",
@@ -1498,10 +1499,11 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->sex == SEX_FEMALE  ? "female" : "neutral");
                 strcat( buf1, buf );
 
-                sprintf( buf, "Hp: {G%d{x/{G%d{x  Mana: {C%d{x/{C%d{x  Mv: {Y%d{x/{Y%d{x\n\r",
-                        victim->hit,            victim->max_hit,
+                sprintf( buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
+                        victim->hit,         victim->max_hit,
                         victim->mana,        victim->max_mana,
-                        victim->move,        victim->max_move);
+                        victim->move,        victim->max_move,
+                        victim->wait);
                 strcat( buf1, buf );
 
                 sprintf( buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x\n\r",

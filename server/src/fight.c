@@ -1289,6 +1289,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         if (IS_NPC(victim)
             && dam > 0
             && !victim->rider
+            && victim->wait == 0
             && IS_SET(victim->act, ACT_WIMPY)
             && number_bits(1) == 0
             && (victim->hit < victim->max_hit / 2
@@ -4743,8 +4744,10 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
 
-        if (IS_NPC(ch) && !(ch->spec_fun == spec_lookup("spec_warrior") || ch->spec_fun == spec_lookup("spec_grail")
-                        || ch->spec_fun == spec_lookup("spec_guard")))
+        if (IS_NPC(ch) 
+        && !( ch->spec_fun == spec_lookup("spec_warrior") 
+           || ch->spec_fun == spec_lookup("spec_grail")
+           || ch->spec_fun == spec_lookup("spec_guard") ) )
                 return;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_headbutt))
