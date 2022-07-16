@@ -708,6 +708,7 @@ int     gsn_form_griffin;
  */
 MOB_INDEX_DATA *        mob_index_hash          [ MAX_KEY_HASH ];
 OBJ_INDEX_DATA *        obj_index_hash          [ MAX_KEY_HASH ];
+OBJECT_SET_DATA *       objset_index_hash       [ MAX_KEY_HASH ];
 ROOM_INDEX_DATA *       room_index_hash         [ MAX_KEY_HASH ];
 char *                  string_hash             [ MAX_KEY_HASH ];
 
@@ -725,6 +726,7 @@ int                     top_exit;
 int                     top_help;
 int                     top_mob_index;
 int                     top_obj_index;
+int                     top_objset_index;
 int                     top_reset;
 int                     top_room;
 int                     top_shop;
@@ -2078,6 +2080,7 @@ void load_object_sets( FILE *fp )
                 char  letter;
                 int   vnum;
                 int   stat;
+                int   iHash;
 
                 letter = fread_letter( fp );
                 if ( letter != '#' )
@@ -2106,6 +2109,12 @@ void load_object_sets( FILE *fp )
                 pObjset->bonus_num[1]           = fread_number( fp, &stat );
                 pObjset->bonus_num[2]           = fread_number( fp, &stat );
                 pObjset->bonus_num[3]           = fread_number( fp, &stat );
+                pObjset->bonus_num[4]           = fread_number( fp, &stat );
+                pObjset->objects[0]             = fread_number( fp, &stat );
+                pObjset->objects[1]             = fread_number( fp, &stat );
+                pObjset->objects[2]             = fread_number( fp, &stat );
+                pObjset->objects[3]             = fread_number( fp, &stat );
+                pObjset->objects[4]             = fread_number( fp, &stat );
                 
                 /*
                  * Validate parameters.
@@ -2130,20 +2139,16 @@ void load_object_sets( FILE *fp )
                                 pObjset->affected     = paf;
                                 top_affect++;
                         }
-                        else if ( letter == 'O' )
-                        {
-                                OBJ_DATA *pobj;
-
-                                pobj            = alloc_perm( sizeof( *pobj ) );
-                                pobj->pIndexData->vnum   =    fread_number( fp, &stat ); 
-                                pObjset->objects        = pobj;
-                        }
                         else
                         {
                                 ungetc( letter, fp );
                                 break;
                         }
                 }
+                iHash                   = vnum % MAX_KEY_HASH;
+                pObjset->next         = objset_index_hash[iHash];
+                objset_index_hash[iHash]   = pObjset;
+                top_objset_index++;
         }
         return;
 }
@@ -3936,11 +3941,11 @@ void do_memory( CHAR_DATA *ch, char *argument )
                 "Affects {W%5d{x      Areas   {W%5d{x      ExDes   {W%5d{x\n\r"
                 "Exits   {W%5d{x      Helps   {W%5d{x      Mobs    {W%5d{x\n\r"
                 "Objs    {W%5d{x      Resets  {W%5d{x      Rooms   {W%5d{x\n\r"
-                "Shops   {W%5d{x\n\r",
+                "Shops   {W%5d{x      ObjSets {W%5d{x\n\r",
                 top_affect, top_area, top_ed,
                 top_exit, top_help, top_mob_index,
                 top_obj_index, top_reset, top_room,
-                top_shop);
+                top_shop,top_objset_index);
         send_to_char(buf, ch);
 
         sprintf( buf, "\n\rStrings {C%7d{x strings of {c%8d{x bytes (max {W%d{x)\n\r",

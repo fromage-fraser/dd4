@@ -1826,6 +1826,70 @@ void do_ofind( CHAR_DATA *ch, char *argument )
         return;
 }
 
+void do_osfind( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA      *rch;
+        OBJECT_SET_DATA *pObjset;
+        char            buf  [ MAX_STRING_LENGTH   ];
+        char            buf1 [ MAX_STRING_LENGTH*2 ];
+        char            arg  [ MAX_INPUT_LENGTH    ];
+        extern int      top_objset_index;
+        int             vnum;
+        int             nMatch;
+        bool            fAll;
+        bool            found;
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_osfind ) )
+                return;
+
+        one_argument( argument, arg );
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Ofind what?\n\r", ch );
+                return;
+        }
+
+        if (strlen (arg) < 3)
+        {
+                send_to_char ("Argument must be at least three letters long.\n\r", ch);
+                return;
+        }
+
+        buf1[0] = '\0';
+        fAll    = FALSE;
+        found   = FALSE;
+        nMatch  = 0;
+
+        for ( vnum = 0; nMatch < top_objset_index; vnum++ )
+        {
+                if ( ( pObjset = get_objset_index( vnum ) ) )
+                {
+                        nMatch++;
+                        if ( fAll || multi_keyword_match( arg, pObjset->name ) )
+                        {
+                                found = TRUE;
+                                sprintf( buf, "[%5d] %s\n\r",
+                                        pObjset->vnum, pObjset->description );
+                                if ( !fAll )
+                                        strcat( buf1, buf );
+                                else
+                                        send_to_char( buf, ch );
+                        }
+                }
+        }
+
+        if ( !found )
+        {
+                send_to_char( "Nothing like that in the domain.\n\r", ch);
+                return;
+        }
+
+        if ( !fAll )
+                send_to_char( buf1, ch );
+        return;
+}
 
 void do_mwhere( CHAR_DATA *ch, char *argument )
 {

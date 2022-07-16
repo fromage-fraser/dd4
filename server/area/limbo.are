@@ -1504,19 +1504,16 @@ I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's Reality
 P 0 63 0 61               put a note to Samxin inside Samxins desk
 S
 
-#OBJECT_SET
+#OBJECT_SETS
 #1
-The Test Legendary set~
+Test Legendary~
 Maybe a description, dunno...
 ~
-2~ 5~ 0~ 0~     
+89 90 91 92 93 
+2 5 0 0 0
 A 14 100 
 A 27 100
-O 89
-O 90
-O 91
-O 92
-O 93
+#0
 
 #SPECIALS
 M  75 spec_grail                the Hunter

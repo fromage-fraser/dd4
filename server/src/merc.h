@@ -277,7 +277,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               512     /* 512 for Empower */
+#define MAX_SKILL               513     /* 513 for osstat 512 for Empower */
 #define MAX_PRE_REQ             1363    /* Increased for swim --Owl 14/7/22 */
 #define MAX_SPELL_GROUP         433     /* Increased for swim --Owl 14/7/22 */
 #define MAX_GROUPS              53
@@ -1029,12 +1029,12 @@ struct object_set_data
 {
         OBJECT_SET_DATA *       next;
         AFFECT_DATA *           affected;
-        OBJ_DATA *              objects;
 
         char *  name;
         char *  description;
         int     vnum;
-        int     bonus_num [ 4 ];
+        int     bonus_num [ 5 ];
+        int     objects [ 5 ];
 };
 
 
@@ -3000,6 +3000,7 @@ extern int gsn_ofind;
 extern int gsn_oload;
 extern int gsn_oset;
 extern int gsn_ostat;
+extern int gsn_osstat;
 extern int gsn_owhere;
 extern int gsn_pardon;
 extern int gsn_peace;
@@ -3830,6 +3831,7 @@ DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
 DECLARE_DO_FUN( do_oset                         );
 DECLARE_DO_FUN( do_ostat                        );
+DECLARE_DO_FUN( do_osstat                       );
 DECLARE_DO_FUN( do_owhere                       );
 DECLARE_DO_FUN( do_pagelen                      );
 DECLARE_DO_FUN( do_pardon                       );
@@ -4462,6 +4464,8 @@ void    generate_stats                        ( CHAR_DATA *ch );
 int     mana_cost                             ( CHAR_DATA *ch, int sn );
 int     get_phys_penalty                      ( CHAR_DATA *ch );
 int     get_int_penalty                       ( CHAR_DATA *ch );
+bool    is_partof_set                         ( OBJ_DATA *obj );
+OSID *  get_objset                      args( (OBJ_DATA * obj ) );
 
 /* hunt.c   */
 void hunt_victim                args( ( CHAR_DATA *ch ));
