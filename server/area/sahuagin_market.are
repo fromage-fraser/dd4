@@ -3616,6 +3616,26 @@ This robust weapon has a thick single-edged blade which curves outwards towards
 the tip.  The long handle of this thieves' weapon is long enough to allow two
 handed stabs to the back and solid swings to the body.
 ~
+#27371
+fountain freshwater water~
+a freshwater fountain~
+A freshwater fountain burbles happily here.~
+~
+25 0 0
+50~ 50~ 0~ 0~
+500 3000 0
+E
+fountain freshwater~
+A charming white marble fountain burbles freshwater here.  It has gruesome scenes
+of battle carved into it in bas relief, and a plaque that reads:
+
+"Fountain installed by Elb'kl Ala, Prince of Ota'ar Dar, for the use of his subjects."
+~
+E
+gruesome scenesr~
+Seems to be a lot of sahuagin warriors decapitating and otherwise dismembering sea
+elves, actually.
+~
 #0
 
 
@@ -6457,6 +6477,7 @@ P 1 27233 100 27298			a veteran's spear to container heavy steel chest
 O 1 27299 100 27335			a forge to The Armoury's Forge, Lower
 O 1 27299 100 27635			a forge to The Armoury's Forge, Upper
 O 1 27300 100 27341			a blood-stained altar to House of the Joyful Hunter, Lower
+O 1 27371 100 27336                     a fountain to Malana Bridge Road, Lower
 D 1 27348 5 2			; Sekolah's Depths Lock Down
 *
 M 1 27262 2 27801			a giant sea-worm to {YUnder Sekolah's Depths{x
