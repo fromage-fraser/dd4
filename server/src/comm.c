@@ -1365,6 +1365,11 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
 
+                    case 'p' :
+                        sprintf(buf2, "%s", position_name(ch->position));
+                        i = buf2;
+                        break;
+
                     case 'q' :
                         sprintf(buf2, "%d", ch->rage);
                         i = buf2;

@@ -3577,7 +3577,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char( "You resist the poison surging through your veins.\n\r",victim );
             return;
         }
-
+ 
         /*
          * Tinkered with by Gezhp:
          * Let's limit the amount of strength that poison can reduce;
@@ -3603,7 +3603,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                         break;
                 }
         }
-
+        
         affect_join( victim, &af );
 
         if ( ch != victim )
@@ -3611,6 +3611,8 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "You feel very sick.\n\r", victim );
         return;
+
+        
 }
 
 
