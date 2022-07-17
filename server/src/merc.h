@@ -121,10 +121,11 @@ typedef struct learned_data                     LEARNED_DATA;
 typedef struct mob_index_data                   MOB_INDEX_DATA;
 typedef struct note_data                        NOTE_DATA;
 typedef struct obj_data                         OBJ_DATA;
+typedef struct objset_data                      OBJSET_DATA;
 typedef struct obj_index_data                   OBJ_INDEX_DATA;
 typedef struct pc_data                          PC_DATA;
 typedef struct reset_data                       RESET_DATA;
-typedef struct object_set_data                  OBJECT_SET_DATA;
+typedef struct objset_index_data                OBJSET_INDEX_DATA;
 typedef struct room_index_data                  ROOM_INDEX_DATA;
 typedef struct shop_data                        SHOP_DATA;
 typedef struct time_info_data                   TIME_INFO_DATA;
@@ -277,7 +278,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               513     /* 513 for osstat 512 for Empower */
+#define MAX_SKILL               514     /* 514 osfind, 513 osstat, 512 for Empower */
 #define MAX_PRE_REQ             1363    /* Increased for swim --Owl 14/7/22 */
 #define MAX_SPELL_GROUP         433     /* Increased for swim --Owl 14/7/22 */
 #define MAX_GROUPS              53
@@ -1025,9 +1026,9 @@ struct affect_data
 };
 
 /* Set items struct */
-struct object_set_data
+struct objset_data
 {
-        OBJECT_SET_DATA *       next;
+        OBJSET_INDEX_DATA *       next;
         AFFECT_DATA *           affected;
 
         char *  name;
@@ -2997,6 +2998,7 @@ extern int gsn_noemote;
 extern int gsn_notell;
 extern int gsn_numlock;
 extern int gsn_ofind;
+extern int gsn_osfind;
 extern int gsn_oload;
 extern int gsn_oset;
 extern int gsn_ostat;
@@ -3576,7 +3578,7 @@ extern CHAR_DATA                * char_list;
 extern DESCRIPTOR_DATA          * descriptor_list;
 extern NOTE_DATA                * note_list;
 extern OBJ_DATA                 * object_list;
-extern OBJECT_SET_DATA          * objset_list;
+extern OBJSET_DATA              * objset_list;
 extern AFFECT_DATA              * affect_free;
 extern BAN_DATA                 * ban_free;
 extern CHAR_DATA                * char_free;
@@ -4227,9 +4229,10 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define CD      CHAR_DATA
 #define MID     MOB_INDEX_DATA
 #define OD      OBJ_DATA
+#define OSD     OBJSET_DATA
 #define OID     OBJ_INDEX_DATA
 #define RID     ROOM_INDEX_DATA
-#define OSID    OBJECT_SET_DATA
+#define OSID    OBJSET_INDEX_DATA
 #define SF      SPEC_FUN
 #define ED      EXIT_DATA
 #define GF      GAME_FUN
@@ -4315,7 +4318,7 @@ char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DA
 MID *   get_mob_index                   args( ( int vnum ) );
 OID *   get_obj_index                   args( ( int vnum ) );
 RID *   get_room_index                  args( ( int vnum ) );
-OSID *  get_object_set_index            args( ( int vnum ) );
+OSID *  get_objset_index                args( ( int vnum ) );
 void    obj_strings                     args( ( OBJ_DATA *obj ) );
 char    fread_letter                    args( ( FILE *fp ) );
 int	fread_number	                args( ( FILE *fp, int *status ) );
@@ -4414,6 +4417,7 @@ OD *    get_obj_carry                   args( ( CHAR_DATA *ch, char *argument ) 
 OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
+OSD *   get_objset_world                args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
 OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_titanium, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );
@@ -4467,7 +4471,7 @@ int     mana_cost                             ( CHAR_DATA *ch, int sn );
 int     get_phys_penalty                      ( CHAR_DATA *ch );
 int     get_int_penalty                       ( CHAR_DATA *ch );
 bool    is_partof_set                         ( OBJ_DATA *obj );
-OSID *  get_objset                      args( (OBJ_DATA * obj ) );
+
 
 /* hunt.c   */
 void hunt_victim                args( ( CHAR_DATA *ch ));
@@ -4595,6 +4599,7 @@ bool mob_is_quest_target (CHAR_DATA *ch);
 #undef  CD
 #undef  MID
 #undef  OD
+#undef  OSD
 #undef  OID
 #undef  RID
 #undef  OSID

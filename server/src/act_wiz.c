@@ -1162,7 +1162,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
 void do_osstat( CHAR_DATA *ch, char *argument )
 {
-        OBJECT_SET_DATA    *obj;
+        OBJSET_DATA *obj;
         CHAR_DATA   *rch;
         AFFECT_DATA *paf;
         char         buf  [ MAX_STRING_LENGTH ];
@@ -1209,6 +1209,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
 
 
 }
+
 void do_mstat( CHAR_DATA *ch, char *argument )
 {
         CHAR_DATA   *rch;
@@ -1876,8 +1877,8 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 
 void do_osfind( CHAR_DATA *ch, char *argument )
 {
-        CHAR_DATA      *rch;
-        OBJECT_SET_DATA *pObjset;
+        CHAR_DATA       *rch;
+        OBJSET_DATA     *pObjset;
         char            buf  [ MAX_STRING_LENGTH   ];
         char            buf1 [ MAX_STRING_LENGTH*2 ];
         char            arg  [ MAX_INPUT_LENGTH    ];
