@@ -1868,16 +1868,40 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 }
 
 
-OBJSET_INDEX_DATA *get_objset_world( CHAR_DATA *ch, char *argument )
+OBJSET_INDEX_DATA *get_objset( char *argument )
 {
         OBJSET_INDEX_DATA *obj;
+        OBJSET_INDEX_DATA *pObjSetIndex;
         char      arg [ MAX_INPUT_LENGTH ];
+        char            buf  [ MAX_STRING_LENGTH   ];
+        char            buf1 [ MAX_STRING_LENGTH*2 ];
         int       number;
         int       count;
+        extern int      top_objset_index;
+        int vnum;
+        int nMatch;
+                bool            fAll;
+        bool            found;
 
         number = number_argument( argument, arg );
-        count  = 0;
+        buf1[0] = '\0';
+        fAll    = FALSE;
+        found   = FALSE;
+        nMatch  = 0;
 
+        for ( vnum = 0; nMatch < top_objset_index; vnum++ )
+        {
+                if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
+                {
+                        nMatch++;
+                        if ( multi_keyword_match( arg, pObjSetIndex->name ) )
+                        {
+                                return pObjSetIndex;
+                        }
+                }
+        }
+
+/*
         for ( obj = objset_list; obj; obj = obj->next )
         {
                 if ( multi_keyword_match( arg, obj->name ) )
@@ -1886,7 +1910,7 @@ OBJSET_INDEX_DATA *get_objset_world( CHAR_DATA *ch, char *argument )
                                 return obj;
                 }
         }
-
+*/
         return NULL;
 }
 

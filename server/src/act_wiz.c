@@ -1162,14 +1162,18 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
 void do_osstat( CHAR_DATA *ch, char *argument )
 {
-        OBJSET_DATA *obj;
+        OBJSET_INDEX_DATA *obj;
         CHAR_DATA   *rch;
         AFFECT_DATA *paf;
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
         char         arg  [ MAX_INPUT_LENGTH  ];
         int          i;
-        int          next;
+        int bonus2;
+        int bonus3;
+        int bonus4;
+        int bonus5;
+        int bonust;
 
         rch = get_char( ch );
 
@@ -1186,7 +1190,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
 
         buf1[0] = '\0';
 
-        if ( !( obj = get_objset_world( ch, arg ) ) )
+        if ( !( obj = get_objset( arg ) ) )
         {
                 send_to_char( "Nothing like that in these realms.\n\r", ch);
                 return;
@@ -1201,10 +1205,78 @@ void do_osstat( CHAR_DATA *ch, char *argument )
                 obj->description );
         strcat( buf1, buf );
 
+        sprintf ( buf, "Vnums of items within the set: {W%d{x {W%d{x {W%d{x {W%d{x {W%d{x\n\r\n\r",
+                obj->objects[0], obj->objects[1], obj->objects[2], obj->objects[3], obj->objects[4] );
+        strcat( buf1, buf );
+
+        bonus2 = 0;
+        bonus3 = 0;
+        bonus4 = 0;
+        bonus5 = 0;
+        bonust = 0;
+
+       for( i=0; i < 5; i++ )
+        {
+                if( obj->bonus_num[i] == 2)
+                        bonus2++;
+                if( obj->bonus_num[i] == 3)
+                        bonus3++;
+                if( obj->bonus_num[i] == 4)
+                        bonus4++;
+                if( obj->bonus_num[i] == 5)
+                        bonus5++;
+        }
+
+        if ( bonus2 > 0)
+        {       
+                bonust = bonus2;
+                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
+                strcat( buf1, buf );
+        }
+        if ( (bonus3 > 0) || ( bonus3 > bonust) )
+        {       
+                bonust += bonus3;
+                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
+                strcat( buf1, buf );
+                
+        }
+        if ( (bonus4 > 0) || ( bonus4 > bonust) )
+        {       
+                bonust += bonus4;
+                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
+                strcat( buf1, buf );
+                
+        }
+        if ( (bonus5 > 0) || ( bonus5 > bonust) )
+        {       
+                bonust += bonus5;
+                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
+                strcat( buf1, buf );
+        }
+
+    
 
 
+
+        sprintf( buf, "{CAffects Given:{x\n\r");
+                strcat( buf1, buf );
+
+        for ( paf = obj->affected; paf; paf = paf->next )
+        {
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                        affect_loc_name( paf->location ), paf->modifier );
+                strcat( buf1, buf );
+        }
+
+   /*     for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        {
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                        affect_loc_name( paf->location ), paf->modifier );
+                strcat( buf1, buf );
+        }
+*/
         strcat(buf, "{x\n\r");
-        strcat(buf1, buf);
+ 
         send_to_char( buf1, ch );
 
 
@@ -1920,7 +1992,7 @@ void do_osfind( CHAR_DATA *ch, char *argument )
                         {
                                 found = TRUE;
                                 sprintf( buf, "[%5d] %s\n\r",
-                                        pObjSetIndex->vnum, pObjSetIndex->description );
+                                        pObjSetIndex->vnum, pObjSetIndex->name );
                                 if ( !fAll )
                                         strcat( buf1, buf );
                                 else

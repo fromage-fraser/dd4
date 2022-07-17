@@ -60,7 +60,7 @@ char *                  help_greeting;
 char                    log_buf                 [ MAX_INPUT_LENGTH*2 ];
 KILL_DATA               kill_table              [ MAX_LEVEL          ];
 OBJ_DATA *              object_list;
-OBJSET_DATA *           objset_list;
+OBJSET_INDEX_DATA *     objset_list;
 TIME_INFO_DATA          time_info;
 WEATHER_DATA            weather_info;
 char *                  down_time;
@@ -2108,16 +2108,17 @@ void load_object_sets( FILE *fp )
                 
                 pObjSetIndex->name                 = fread_string( fp );
                 pObjSetIndex->description          = fread_string( fp );
-                pObjSetIndex->bonus_num[0]           = fread_number( fp, &stat );
-                pObjSetIndex->bonus_num[1]           = fread_number( fp, &stat );
-                pObjSetIndex->bonus_num[2]           = fread_number( fp, &stat );
-                pObjSetIndex->bonus_num[3]           = fread_number( fp, &stat );
-                pObjSetIndex->bonus_num[4]           = fread_number( fp, &stat );
                 pObjSetIndex->objects[0]             = fread_number( fp, &stat );
                 pObjSetIndex->objects[1]             = fread_number( fp, &stat );
                 pObjSetIndex->objects[2]             = fread_number( fp, &stat );
                 pObjSetIndex->objects[3]             = fread_number( fp, &stat );
                 pObjSetIndex->objects[4]             = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[0]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[1]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[2]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[3]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[4]           = fread_number( fp, &stat );
+
                 
                 /*
                  * Validate parameters.
