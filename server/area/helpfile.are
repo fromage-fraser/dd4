@@ -1773,6 +1773,7 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %f :  Current form (incl. mist)  (Shifters/Vampires/Werewolves only)
     %i :  Invisible or visible
     %w :  Current waitstate          (time until next command is read)
+    %p :  Current position           (standing, sleeping, fighting etc)
     %t :  Current quest timer        (minutes until quest finishes)
     %T :  Time until next quest
     %x :  Total experience points

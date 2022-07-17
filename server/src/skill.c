@@ -2348,8 +2348,8 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
 
         if( store
            || IS_SET( victim->pIndexData->act, ACT_BANKER)
-           || IS_SET( victim->pIndexData->act, ACT_GAMBLE)
            || IS_SET( victim->pIndexData->act, ACT_IS_HEALER)
+           || ( victim->pIndexData->pGame->game_fun != 0 )
            || victim->spec_fun == spec_lookup("spec_cast_hooker")
            || victim->spec_fun == spec_lookup("spec_thief"))
         {
