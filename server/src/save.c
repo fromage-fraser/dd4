@@ -1019,7 +1019,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
         if (!ch->pcdata->pagelen)
                 ch->pcdata->pagelen = 100;
 
-        if (!ch->prompt || ch->prompt == '\0')
+        if (!ch->prompt)
                 ch->prompt = str_dup ("<%hhp %mm %vmv> ");
 
         if (ch->pcdata->pagelen > 1000)

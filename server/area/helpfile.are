@@ -1783,7 +1783,6 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %a :  Alignment                  (`evil', `neutral' or `good')
     %A :  Alignment numerical value  (not shown before level 10)
     %b :  Spell 'blink' status       ('on' or 'off')
-    %z :  Area name
     %r :  Room name
 
     %s :  Personal safety: whether you personally are safe or unsafe
