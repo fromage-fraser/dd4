@@ -60,7 +60,7 @@ char *                  help_greeting;
 char                    log_buf                 [ MAX_INPUT_LENGTH*2 ];
 KILL_DATA               kill_table              [ MAX_LEVEL          ];
 OBJ_DATA *              object_list;
-OBJECT_SET_DATA *       objset_list;
+OBJSET_DATA *           objset_list;
 TIME_INFO_DATA          time_info;
 WEATHER_DATA            weather_info;
 char *                  down_time;
@@ -237,9 +237,11 @@ int     gsn_noemote;
 int     gsn_notell;
 int     gsn_numlock;
 int     gsn_ofind;
+int     gsn_osfind;
 int     gsn_oload;
 int     gsn_oset;
 int     gsn_ostat;
+int     gsn_osstat;
 int     gsn_owhere;
 int     gsn_pardon;
 int     gsn_peace;
@@ -709,7 +711,7 @@ int     gsn_form_griffin;
  */
 MOB_INDEX_DATA *        mob_index_hash          [ MAX_KEY_HASH ];
 OBJ_INDEX_DATA *        obj_index_hash          [ MAX_KEY_HASH ];
-OBJECT_SET_DATA *       objset_index_hash       [ MAX_KEY_HASH ];
+OBJSET_INDEX_DATA *     objset_index_hash       [ MAX_KEY_HASH ];
 ROOM_INDEX_DATA *       room_index_hash         [ MAX_KEY_HASH ];
 char *                  string_hash             [ MAX_KEY_HASH ];
 
@@ -2067,7 +2069,7 @@ void load_resets( FILE *fp )
 
 void load_object_sets( FILE *fp )
 {
-        OBJECT_SET_DATA *pObjset;
+        OBJSET_INDEX_DATA *pObjSetIndex;
         int stat;
 
         if ( !area_last )
@@ -2095,27 +2097,27 @@ void load_object_sets( FILE *fp )
                         break;
 
                 fBootDb = FALSE;
-                if ( get_object_set_index( vnum ) )
+                if ( get_objset_index( vnum ) )
                 {
                         bug( "Load_objects: vnum %d duplicated.", vnum );
                         exit( 1 );
                 }
 
-                pObjset = alloc_perm( sizeof( *pObjset ) );
-                pObjset->vnum = vnum;
+                pObjSetIndex = alloc_perm( sizeof( *pObjSetIndex ) );
+                pObjSetIndex->vnum = vnum;
                 
-                pObjset->name                 = fread_string( fp );
-                pObjset->description          = fread_string( fp );
-                pObjset->bonus_num[0]           = fread_number( fp, &stat );
-                pObjset->bonus_num[1]           = fread_number( fp, &stat );
-                pObjset->bonus_num[2]           = fread_number( fp, &stat );
-                pObjset->bonus_num[3]           = fread_number( fp, &stat );
-                pObjset->bonus_num[4]           = fread_number( fp, &stat );
-                pObjset->objects[0]             = fread_number( fp, &stat );
-                pObjset->objects[1]             = fread_number( fp, &stat );
-                pObjset->objects[2]             = fread_number( fp, &stat );
-                pObjset->objects[3]             = fread_number( fp, &stat );
-                pObjset->objects[4]             = fread_number( fp, &stat );
+                pObjSetIndex->name                 = fread_string( fp );
+                pObjSetIndex->description          = fread_string( fp );
+                pObjSetIndex->bonus_num[0]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[1]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[2]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[3]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[4]           = fread_number( fp, &stat );
+                pObjSetIndex->objects[0]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[1]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[2]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[3]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[4]             = fread_number( fp, &stat );
                 
                 /*
                  * Validate parameters.
@@ -2136,8 +2138,8 @@ void load_object_sets( FILE *fp )
                                 paf->location           = fread_number( fp, &stat );
                                 paf->modifier           = fread_number( fp, &stat );
                                 paf->bitvector          = 0;
-                                paf->next               = pObjset->affected;
-                                pObjset->affected     = paf;
+                                paf->next               = pObjSetIndex->affected;
+                                pObjSetIndex->affected     = paf;
                                 top_affect++;
                         }
                         else
@@ -2147,8 +2149,8 @@ void load_object_sets( FILE *fp )
                         }
                 }
                 iHash                   = vnum % MAX_KEY_HASH;
-                pObjset->next         = objset_index_hash[iHash];
-                objset_index_hash[iHash]   = pObjset;
+                pObjSetIndex->next         = objset_index_hash[iHash];
+                objset_index_hash[iHash]   = pObjSetIndex;
                 top_objset_index++;
         }
         return;
@@ -3420,6 +3422,27 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
         return NULL;
 }
 
+
+OBJSET_INDEX_DATA *get_objset_index( int vnum )
+{
+        OBJSET_INDEX_DATA *pObjSetIndex;
+
+        for ( pObjSetIndex  = objset_index_hash[vnum % MAX_KEY_HASH];
+             pObjSetIndex;
+             pObjSetIndex  = pObjSetIndex->next )
+        {
+                if ( pObjSetIndex->vnum == vnum )
+                        return pObjSetIndex;
+        }
+
+        if ( fBootDb )
+        {
+                bug( "Get_objset_index: bad vnum %d.", vnum );
+                exit( 1 );
+        }
+
+        return NULL;
+}
 
 /*
  * Translates mob virtual number to its room index struct.

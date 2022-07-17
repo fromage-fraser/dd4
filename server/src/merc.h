@@ -1028,6 +1028,18 @@ struct affect_data
 /* Set items struct */
 struct objset_data
 {
+        OBJSET_DATA *       next;
+        AFFECT_DATA *           affected;
+
+        char *  name;
+        char *  description;
+        int     vnum;
+        int     bonus_num [ 5 ];
+        int     objects [ 5 ];
+};
+
+struct objset_index_data
+{
         OBJSET_INDEX_DATA *       next;
         AFFECT_DATA *           affected;
 
@@ -1037,6 +1049,7 @@ struct objset_data
         int     bonus_num [ 5 ];
         int     objects [ 5 ];
 };
+
 
 
 /*

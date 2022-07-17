@@ -1878,7 +1878,7 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 void do_osfind( CHAR_DATA *ch, char *argument )
 {
         CHAR_DATA       *rch;
-        OBJSET_DATA     *pObjset;
+        OBJSET_INDEX_DATA *pObjSetIndex;
         char            buf  [ MAX_STRING_LENGTH   ];
         char            buf1 [ MAX_STRING_LENGTH*2 ];
         char            arg  [ MAX_INPUT_LENGTH    ];
@@ -1913,14 +1913,14 @@ void do_osfind( CHAR_DATA *ch, char *argument )
 
         for ( vnum = 0; nMatch < top_objset_index; vnum++ )
         {
-                if ( ( pObjset = get_objset_index( vnum ) ) )
+                if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
                 {
                         nMatch++;
-                        if ( fAll || multi_keyword_match( arg, pObjset->name ) )
+                        if ( fAll || multi_keyword_match( arg, pObjSetIndex->name ) )
                         {
                                 found = TRUE;
                                 sprintf( buf, "[%5d] %s\n\r",
-                                        pObjset->vnum, pObjset->description );
+                                        pObjSetIndex->vnum, pObjSetIndex->description );
                                 if ( !fAll )
                                         strcat( buf1, buf );
                                 else
