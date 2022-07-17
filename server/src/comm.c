@@ -3121,6 +3121,8 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                                             && ch->pcdata->deity_patron > -1
                                             && ch->pcdata->deity_patron < NUMBER_DEITIES)
                                                 i = deity_info_table[ch->pcdata->deity_patron].name;
+                                        else if (ch->sub_class == SUB_CLASS_SATANIST)
+                                                i = "Satan";
                                         else
                                                 i = "God";
                                         break;
