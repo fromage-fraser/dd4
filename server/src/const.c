@@ -5302,8 +5302,8 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         },
 
-                {
-                "osfind", &gsn_osstat,
+        {
+                "osstat", &gsn_osstat,
                 TYPE_WIZ, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
                 "", "!Osstat!"

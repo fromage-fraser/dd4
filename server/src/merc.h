@@ -4430,7 +4430,7 @@ OD *    get_obj_carry                   args( ( CHAR_DATA *ch, char *argument ) 
 OD *    get_obj_wear                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_here                    args( ( CHAR_DATA *ch, char *argument ) );
 OD *    get_obj_world                   args( ( CHAR_DATA *ch, char *argument ) );
-OSD *   get_objset_world                args( ( CHAR_DATA *ch, char *argument ) );
+OSID *  get_objset_world                args( ( CHAR_DATA *ch, char *argument ) );
 OD *    create_money                    args( ( int plat, int gold, int silver, int copper ) );
 OD *    create_smelted_materials        args( ( int smelted_steel, int smelted_titanium, int smelted_adamantite, int smelted_electrum, int smelted_starmetal ) );
 int     get_obj_number                  args( ( OBJ_DATA *obj ) );

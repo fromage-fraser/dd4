@@ -1868,9 +1868,9 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 }
 
 
-OBJSET_DATA *get_objset_world( CHAR_DATA *ch, char *argument )
+OBJSET_INDEX_DATA *get_objset_world( CHAR_DATA *ch, char *argument )
 {
-        OBJSET_DATA *obj;
+        OBJSET_INDEX_DATA *obj;
         char      arg [ MAX_INPUT_LENGTH ];
         int       number;
         int       count;
