@@ -3193,7 +3193,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Engineers Turret");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
                         strcat (buf, " Turret Module");
-                        
+
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
@@ -3385,9 +3385,9 @@ void spell_dark_ritual( int sn, int level, CHAR_DATA *ch, void *vo )
         extract_obj ( obj );
         ch->alignment = UMAX(-1000, ch->alignment - ch->level * 2);
 
-        act("You give up an offering to $D and their blessing fills you with ecstasy!\n\r",
+        act("You make a blood sacrifice to $D and their blessing fills you with ecstasy!\n\r",
             ch, NULL, NULL, TO_CHAR);
-        act("$n offers up a foul sacrifice... a darkness surrounds the corpse and it smolders and burns!",
+        act("$n sacrifices a corpse to $D... a dark cloud surrounds the body and it smoulders and burns!",
             ch, NULL, NULL, TO_ROOM);
 }
 
