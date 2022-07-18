@@ -4484,6 +4484,7 @@ int     get_phys_penalty                      ( CHAR_DATA *ch );
 int     get_int_penalty                       ( CHAR_DATA *ch );
 bool    is_partof_set                         ( char *argument );
 OSID *  get_objset                            ( char *argument );
+OSID *  objset_bonus                          ( OBJSET_INDEX_DATA *pObjSetIndex, int num );
 
 
 /* hunt.c   */

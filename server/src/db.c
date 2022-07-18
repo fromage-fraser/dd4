@@ -2070,8 +2070,7 @@ void load_resets( FILE *fp )
 void load_object_sets( FILE *fp )
 {
         OBJSET_INDEX_DATA *pObjSetIndex;
-        int stat;
-
+ 
         if ( !area_last )
         {
                 bug( "Load_Object_sets: no #AREA seen yet.", 0 );

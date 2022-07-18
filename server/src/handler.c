@@ -1868,25 +1868,62 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 }
 
 
-OBJSET_INDEX_DATA *get_objset( char *argument )
+
+/* Returns object_bonus from an int - Brutus */
+OBJSET_INDEX_DATA *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
 {
-        OBJSET_INDEX_DATA *obj;
+
+        extern int      top_objset_index;
+        int i;
+    
+
+                if ( num == pObjSetIndex->bonus_num[i] )
+                {
+                        return pObjSetIndex;
+                }
+        return NULL;
+}
+
+/* Returns the Object set from a objects vnum - Brutus */
+OBJSET_INDEX_DATA *objects_objset( int vnum )
+{
+       
         OBJSET_INDEX_DATA *pObjSetIndex;
         char      arg [ MAX_INPUT_LENGTH ];
-        char            buf  [ MAX_STRING_LENGTH   ];
-        char            buf1 [ MAX_STRING_LENGTH*2 ];
-        int       number;
-        int       count;
         extern int      top_objset_index;
-        int vnum;
+        int osvnum;
         int nMatch;
-                bool            fAll;
-        bool            found;
+        int i;
+        nMatch  = 0;
+
+        for ( osvnum = 0; nMatch < top_objset_index; osvnum++ )
+        {
+                if ( ( pObjSetIndex = get_objset_index( osvnum ) ) )
+                {
+                        nMatch++;
+                        for( i=0; i < 5; i++ )
+                        {
+                                if ( vnum == pObjSetIndex->objects[i] )
+                                {
+                                        return pObjSetIndex;
+                                }
+                        }
+                }
+        }
+        return NULL;
+}
+
+/*  Returns the objectset from a name  -Brutus  */
+OBJSET_INDEX_DATA *get_objset( char *argument )
+{
+        OBJSET_INDEX_DATA *pObjSetIndex;
+        char            arg [ MAX_INPUT_LENGTH ];
+        int             number;
+        extern int      top_objset_index;
+        int             vnum;
+        int             nMatch;
 
         number = number_argument( argument, arg );
-        buf1[0] = '\0';
-        fAll    = FALSE;
-        found   = FALSE;
         nMatch  = 0;
 
         for ( vnum = 0; nMatch < top_objset_index; vnum++ )
@@ -1900,19 +1937,9 @@ OBJSET_INDEX_DATA *get_objset( char *argument )
                         }
                 }
         }
-
-/*
-        for ( obj = objset_list; obj; obj = obj->next )
-        {
-                if ( multi_keyword_match( arg, obj->name ) )
-                {
-                        if ( ++count == number )
-                                return obj;
-                }
-        }
-*/
         return NULL;
 }
+
 
 
 

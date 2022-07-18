@@ -875,6 +875,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 void do_ostat( CHAR_DATA *ch, char *argument )
 {
         OBJ_DATA    *obj;
+        OBJSET_INDEX_DATA *pObjSetIndex;
         CHAR_DATA   *rch;
         AFFECT_DATA *paf;
         char         buf  [ MAX_STRING_LENGTH ];
@@ -904,7 +905,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        sprintf( buf, "Vnum: {R%d{x\n\r",
+         sprintf( buf, "Vnum: {R%d{x\n\r",
                 obj->pIndexData->vnum );
         strcat( buf1, buf );
 
@@ -1157,13 +1158,22 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, buf);
         }
 
+  /*      if ( ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
+        {
+                sprintf(buf, "Part of SET: {C%s{x\n\r\n\r", pObjSetIndex->name);
+                strcat(buf1, buf);
+                sprintf(buf, "{c%s{x\n\r", pObjSetIndex->description);
+                strcat(buf1, buf);
+
+        }
+*/
         send_to_char( buf1, ch );
 }
 
 void do_osstat( CHAR_DATA *ch, char *argument )
 {
         OBJSET_INDEX_DATA *obj;
-        CHAR_DATA   *rch;
+         CHAR_DATA   *rch;
         AFFECT_DATA *paf;
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
@@ -1174,7 +1184,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         int bonus4;
         int bonus5;
         int bonust;
-
+ 
         rch = get_char( ch );
 
         if ( !authorized( rch, gsn_osstat ) )
@@ -1214,6 +1224,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         bonus4 = 0;
         bonus5 = 0;
         bonust = 0;
+
 
        for( i=0; i < 5; i++ )
         {
