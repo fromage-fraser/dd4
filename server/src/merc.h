@@ -1582,14 +1582,23 @@ extern  WANTED_DATA *wanted_list_last;
 #define D_GREY          "\x1b[1m\x1b[30m"
 
 #define B_BLACK         "\x1b[40m"                      /* These are background color codes */
+#define B_B_BLACK       "\x1b[100m"                     
 #define B_RED           "\x1b[41m"
+#define B_B_RED         "\x1b[101m"
 #define B_GREEN         "\x1b[42m"
+#define B_B_GREEN       "\x1b[102m"
 #define B_YELLOW        "\x1b[43m"
+#define B_B_YELLOW      "\x1b[103m"
 #define B_BLUE          "\x1b[44m"
+#define B_B_BLUE        "\x1b[104m"
 #define B_PURPLE        "\x1b[45m"
+#define B_B_PURPLE      "\x1b[105m"
 #define B_CYAN          "\x1b[46m"
+#define B_B_CYAN        "\x1b[106m"
 #define B_GREY          "\x1b[47m"
+#define B_B_GREY        "\x1b[107m"
 #define B_D_GREY        "\x1b[1;47m"
+#define B_D_B_GREY      "\x1b[1;107m"
 
 /* Below are VT100 and ANSI codes (above are ANSI exclusively) */
 
@@ -1685,7 +1694,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_PET                         BIT_8   /* Auto set for pets */
 #define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as quest target */
 #define ACT_PRACTICE                    BIT_10  /* Can practice PC's */
-#define ACT_GAMBLE                      BIT_11  /* Runs a gambling game */
+#define ACT_HEALING_FACTOR              BIT_11  /* Mob heals at accelerated rate.  Was ACT_GAMBLE. - Owl */
 #define ACT_NOCHARM                     BIT_12  /* Not charmable - Brutus */
 #define ACT_IS_HEALER                   BIT_13  /* For healer spec */
 #define ACT_IS_FAMOUS                   BIT_14  /* Award fame for kill */

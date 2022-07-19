@@ -45,6 +45,7 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <ctype.h>
+#include <dirent.h>
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -165,6 +166,7 @@ bool    process_output          args((DESCRIPTOR_DATA *d, bool fPrompt));
 void    read_from_buffer        args((DESCRIPTOR_DATA *d));
 void    stop_idling             args((CHAR_DATA *ch));
 void    bust_a_prompt           args((DESCRIPTOR_DATA *d));
+void    assert_directory_exists args((const char *path));
 
 
 int main(int argc, char **argv)
@@ -214,6 +216,12 @@ int main(int argc, char **argv)
                         exit(1);
                 }
         }
+
+
+        /*
+         * Check certain directories exist. This helps to avoid surprising errors once the server is running.
+         */
+        assert_directory_exists(PLAYER_DIR);
 
         /*
          * Run the game.
@@ -1357,6 +1365,11 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
 
+                    case 'p' :
+                        sprintf(buf2, "%s", position_name(ch->position));
+                        i = buf2;
+                        break;
+
                     case 'q' :
                         sprintf(buf2, "%d", ch->rage);
                         i = buf2;
@@ -2167,12 +2180,12 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                          * Shade 17.6.22
                          *
                          * Make it easier for starting characters; will edit here in the level 0 code not in clear_char
-                         * 
+                         *
                          * Give them a few of each pracs to get going, make starting hits 50 not 20
                          */
 
-                        
-                        ch->max_hit = 50;                        
+
+                        ch->max_hit = 50;
                         ch->hit = ch->max_hit;
 
                         ch->pcdata->str_prac = 2;
@@ -3108,6 +3121,8 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                                             && ch->pcdata->deity_patron > -1
                                             && ch->pcdata->deity_patron < NUMBER_DEITIES)
                                                 i = deity_info_table[ch->pcdata->deity_patron].name;
+                                        else if (ch->sub_class == SUB_CLASS_SATANIST)
+                                                i = "Satan";
                                         else
                                                 i = "God";
                                         break;
@@ -3484,13 +3499,12 @@ int colour (char type, CHAR_DATA *ch, char *string)
             case 'd':
                 sprintf(code, D_GREY);
                 break;
-            /*  Beep removed by Gezhp
-             case '*':
+            case '*':
                  sprintf(code, "%c", 007);
-                 break; */
-            /* case '/':
+                 break; 
+            case '/':
                 sprintf(code, "%c", 012);
-                break; */
+                break; 
             case '{':
                 sprintf(code, "%c", '{');
                 break;
@@ -3521,31 +3535,58 @@ int bgcolour (char type, CHAR_DATA *ch, char *string)
                 sprintf(code, B_BLACK);
                 break;
             case 'k':
+                sprintf(code, B_B_BLACK);
+                break;
+            case 'K':
                 sprintf(code, B_BLACK);
                 break;
             case 'b':
+                sprintf(code, B_B_BLUE);
+                break;
+            case 'B':
                 sprintf(code, B_BLUE);
                 break;
             case 'c':
                 sprintf(code, B_CYAN);
                 break;
+            case 'C':
+                sprintf(code, B_B_CYAN);
+                break;
             case 'g':
                 sprintf(code, B_GREEN);
+                break;
+            case 'G':
+                sprintf(code, B_B_GREEN);
                 break;
             case 'm':
                 sprintf(code, B_PURPLE);
                 break;
+            case 'M':
+                sprintf(code, B_B_PURPLE);
+                break;
             case 'r':
                 sprintf(code, B_RED);
+                break;
+            case 'R':
+                sprintf(code, B_B_RED);
                 break;
             case 'w':
                 sprintf(code, B_GREY);
                 break;
+            case 'W':
+                sprintf(code, B_B_GREY);
+                break;
             case 'd':
                 sprintf(code, B_D_GREY);
                 break;
+            case 'D':
+                sprintf(code, B_D_B_GREY);
+                break;
             case 'y':
                 sprintf(code, B_YELLOW);
+                break;
+            case 'Y':
+                sprintf(code, B_B_YELLOW);
                 break;
             case '}':
                 sprintf(code, "%c", '}');
@@ -3752,10 +3793,24 @@ void send_paragraph_to_char (char* text, CHAR_DATA* ch, unsigned int indent)
                 buf[pos++] = '\r';
                 i += k;
         }
-        
+
         buf[pos] = '\0';
         send_to_char (buf, ch);
 }
 
+void assert_directory_exists(const char *path)
+{
+        DIR * dir;
+        char buf[MAX_STRING_LENGTH];
+
+        dir = opendir(path);
+        if (dir) {
+                closedir(dir);
+        } else {
+                sprintf(buf, "Required directory does not exist or cannot be opened: %s", path);
+                bug(buf, MAX_STRING_LENGTH);
+                exit(1);
+        }
+}
 
 /* EOF comm.c */

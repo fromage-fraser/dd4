@@ -3193,14 +3193,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Engineers Turret");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
                         strcat (buf, " Turret Module");
-                if (IS_SET(obj->ego_flags, EGO_ITEM_UNCOMMON_SET)
-                        || IS_SET(obj->ego_flags, EGO_ITEM_RARE_SET)
-                        || IS_SET(obj->ego_flags, EGO_ITEM_EPIC_SET)
-                        || IS_SET(obj->ego_flags, EGO_ITEM_LEGENDARY_SET) )
-                        {
-                                strcat( buf, "[SET PIECE]");
-                        }
-                        strcat (buf, ".\n\r");
+                        
+                strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
                 
@@ -3417,9 +3411,9 @@ void spell_dark_ritual( int sn, int level, CHAR_DATA *ch, void *vo )
         extract_obj ( obj );
         ch->alignment = UMAX(-1000, ch->alignment - ch->level * 2);
 
-        act("You give up an offering to $D and their blessing fills you with ecstasy!\n\r",
+        act("You make a blood sacrifice to $D and their blessing fills you with ecstasy!\n\r",
             ch, NULL, NULL, TO_CHAR);
-        act("$n offers up a foul sacrifice... a darkness surrounds the corpse and it smolders and burns!",
+        act("$n sacrifices a corpse to $D... a dark cloud surrounds the body and it smoulders and burns!",
             ch, NULL, NULL, TO_ROOM);
 }
 
@@ -3610,7 +3604,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char( "You resist the poison surging through your veins.\n\r",victim );
             return;
         }
-
+ 
         /*
          * Tinkered with by Gezhp:
          * Let's limit the amount of strength that poison can reduce;
@@ -3636,7 +3630,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                         break;
                 }
         }
-
+        
         affect_join( victim, &af );
 
         if ( ch != victim )
@@ -3644,6 +3638,8 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "You feel very sick.\n\r", victim );
         return;
+
+        
 }
 
 

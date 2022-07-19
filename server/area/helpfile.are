@@ -1773,6 +1773,7 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %f :  Current form (incl. mist)  (Shifters/Vampires/Werewolves only)
     %i :  Invisible or visible
     %w :  Current waitstate          (time until next command is read)
+    %p :  Current position           (standing, sleeping, fighting etc)
     %t :  Current quest timer        (minutes until quest finishes)
     %T :  Time until next quest
     %x :  Total experience points
@@ -1782,7 +1783,6 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %a :  Alignment                  (`evil', `neutral' or `good')
     %A :  Alignment numerical value  (not shown before level 10)
     %b :  Spell 'blink' status       ('on' or 'off')
-    %z :  Area name
     %r :  Room name
 
     %s :  Personal safety: whether you personally are safe or unsafe
@@ -3831,9 +3831,24 @@ brace '{{', following that you should use one of the following letters:
     {c{{c  cyan{x         {C{{C  bright cyan{x        {{/  newline
     {y{{y  orange{x       {Y{{Y  yellow{x
     {w{{w  grey{x         {W{{W  white{x
+    {W{k{{k  black{x
 
 Always end your colourised line with a {{x to reset the color.  The TITLE
 command will do this automatically.
+
+You can also set text background colours by using right-handed brace 
+('}}') codes.  The following codes are available:
+
+    }r}}r  red}x          }R}}R  bright red}x         Other characters:
+    }g}}g  green}x        }G}}G  bright green{x
+    }b}}b  blue}x         }B}}B  bright blue{x        }}}}  right brace
+    }m}}m  magenta{x      }M}}M  bright magenta{x     }}x  clear (reset bgcolour)
+    }c}}c  cyan}x         }C}}C  bright cyan{x        
+    }y}}y  orange{x       }Y}}Y  yellow{x
+    {k}w}}w  grey{x}x         }W}}W  white{x
+    }k}}k  {wblack{x}x        }K}}K  bright black(!){x 
+    {r}d}}d  grey (bolds foreground text){x}x   
+    {r}D}}D  white (bolds foreground text){x}x        
 
 ColoUr was written by Lope (ant@solace.mh.se)
 ~
@@ -4353,8 +4368,8 @@ all those who stand in the same room as the caster.
 0 'DEMON FLAMES'~
 Syntax: cast 'demon flames' <victim>
 
-This spell will create the illusion that a Horde of Demons are tormenting
-the victim, causing them to become distracted, and fight less effectively.
+This spell will create the illusion that a horde of demons are tormenting
+the victim, causing them to become distracted and fight less effectively.
 ~
 
 0 'DARK RITUAL'~

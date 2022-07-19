@@ -4398,15 +4398,15 @@ void bug( const char *str, int param )
         sprintf( buf + strlen( buf ), str, param );
         log_string( buf );
 
-        fclose( fpReserve );
+        /* We used to close the fpReserve file handle here then reopen it after writing to the bug file,
+           but this can cause the wrong error to be logged (and a hard crash to occur) under some conditions.
+           We probably don't need to ever reserve a file handle on a modern server.
+           It is better to just assume we will not hit open file limits rather than risk exploding... */
         if ( ( fp = fopen( BUG_FILE, "a" ) ) )
         {
                 fprintf( fp, "%s\n", buf );
                 fclose( fp );
         }
-        fpReserve = fopen( NULL_FILE, "r" );
-
-        return;
 }
 
 
@@ -4574,9 +4574,9 @@ void load_games( FILE *fp )
 	    pGame->bankroll		= fread_number( fp, &stat );
 	    pGame->max_wait		= fread_number( fp, &stat );
 	    pGame->cheat		= fread_number( fp, &stat );
-            
+
             sprintf(buf, "[croupier] %s (vnum %d).",
-                        pMobIndex->short_descr, 
+                        pMobIndex->short_descr,
                         pMobIndex->vnum
             );
             log_string(buf);
