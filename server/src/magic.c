@@ -3302,6 +3302,32 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         send_to_char( buf, ch );
                 }
         }
+
+        for ( paf = obj->affected; paf; paf = paf->next )
+        {
+                if ( paf->modifier == 0
+                    && strcmp (affect_loc_name (paf->location), "(unknown)") 
+                    && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
+                        || obj->ego_flags == EGO_ITEM_RARE_SET
+                        || obj->ego_flags == EGO_ITEM_EPIC_SET
+                        || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
+                {
+                        switch (obj->ego_flags)
+                        {
+                        case EGO_ITEM_UNCOMMON_SET: /* constant-expression */
+                        {
+                                sprintf (buf, "Its 2-piece {G[SET BONUS]{x gives the wearer {W%s{x.\n\r",
+                                         affect_loc_name (paf->location) );
+                                send_to_char( buf, ch );        /* code */
+                                break;
+                        }
+                        default:
+                                break;
+                        }
+                }
+        }
+
+
 }
 
 

@@ -121,9 +121,11 @@ typedef struct learned_data                     LEARNED_DATA;
 typedef struct mob_index_data                   MOB_INDEX_DATA;
 typedef struct note_data                        NOTE_DATA;
 typedef struct obj_data                         OBJ_DATA;
+typedef struct objset_data                      OBJSET_DATA;
 typedef struct obj_index_data                   OBJ_INDEX_DATA;
 typedef struct pc_data                          PC_DATA;
 typedef struct reset_data                       RESET_DATA;
+typedef struct objset_index_data                OBJSET_INDEX_DATA;
 typedef struct room_index_data                  ROOM_INDEX_DATA;
 typedef struct shop_data                        SHOP_DATA;
 typedef struct time_info_data                   TIME_INFO_DATA;
@@ -198,7 +200,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  2
+#define BLUEPRINTS_MAX  3
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -210,6 +212,18 @@ struct blueprint_type
         int     blueprint_damage [2];
         int     blueprint_cost [5];
 
+};
+
+#define MAX_SETS 2
+
+struct set_type
+{
+        char    *set_name;
+        char    *set_desc;
+        bool    is_skill [4];
+        int     * skill_gsn [4];
+        int     apply [4];
+        int     affect [4];
 };
 
 /*
@@ -264,9 +278,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL               511     /* 511 for dart */
+#define MAX_SKILL               514     /* 514 osfind, 513 osstat, 512 for Empower */
 #define MAX_PRE_REQ             1363    /* Increased for swim --Owl 14/7/22 */
-#define MAX_SPELL_GROUP         432     /* Increased for swim --Owl 14/7/22 */
+#define MAX_SPELL_GROUP         433     /* Increased for swim --Owl 14/7/22 */
 #define MAX_GROUPS              53
 #define MAX_FORM_SKILL          73      /* for form skill table */
 #define MAX_VAMPIRE_GAG         26      /* ugly vampire/werewolf hack */
@@ -1010,6 +1024,32 @@ struct affect_data
         int             bitvector;
         bool            deleted;
 };
+
+/* Set items struct */
+struct objset_data
+{
+        OBJSET_DATA *       next;
+        AFFECT_DATA *       affected;
+
+        char *  name;
+        char *  description;
+        int     vnum;
+        int     bonus_num [ 5 ];
+        int     objects [ 5 ];
+};
+
+struct objset_index_data
+{
+        OBJSET_INDEX_DATA *       next;
+        AFFECT_DATA *           affected;
+
+        char *  name;
+        char *  description;
+        int     vnum;
+        int     bonus_num [ 5 ];
+        int     objects [ 5 ];
+};
+
 
 
 /*
@@ -1993,6 +2033,14 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
+#define EGO_ITEM_UNCOMMON_SET           BIT_8
+#define EGO_ITEM_RARE_SET               BIT_9
+#define EGO_ITEM_EPIC_SET               BIT_10
+#define EGO_ITEM_LEGENDARY_SET          BIT_11
+#define EGO_ITEM_SETBONUS_1
+#define EGO_ITEM_SETBONUS_2
+#define EGO_ITEM_SETBONUS_3
+
 
 /*
  * Apply types (for affects).
@@ -2040,6 +2088,10 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_RESIST_ACID                       39
 #define APPLY_BREATHE_WATER                     40      /* So we can sell aqualungs -- Owl 11/4/22 */
 #define APPLY_BALANCE                    41      /* for Balance Skill - Brutus Jul 2022 */
+#define APPLY_SET_UNCOMMON                      42
+#define APPLY_SET_RARE                          43
+#define APPLY_SET_EPIC                         44
+#define APPLY_SET_LEGENDARY                     45
 
 /*
  * Values for containers (value[1]).
@@ -2647,6 +2699,7 @@ struct obj_data
 };
 
 
+
 /*
  * Exit data.
  */
@@ -2967,9 +3020,11 @@ extern int gsn_noemote;
 extern int gsn_notell;
 extern int gsn_numlock;
 extern int gsn_ofind;
+extern int gsn_osfind;
 extern int gsn_oload;
 extern int gsn_oset;
 extern int gsn_ostat;
+extern int gsn_osstat;
 extern int gsn_owhere;
 extern int gsn_pardon;
 extern int gsn_peace;
@@ -3341,6 +3396,7 @@ extern int gsn_swoop;
 extern int gsn_smelt;
 extern int gsn_strengthen;
 extern int gsn_imbue;
+extern int gsn_empower;
 extern int gsn_uncommon_set;
 extern int gsn_rare_set;
 extern int gsn_epic_set;
@@ -3506,6 +3562,7 @@ extern const    struct color_data               color_table                     
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
 extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
+extern const    struct set_type                 set_list                        [ MAX_SETS ];
 /* extern const    struct raw_mats_data            raw_mats_table                  [ RAW_MATS_MAX ]; */
 extern const    struct skill_type               skill_table                     [ MAX_SKILL ];
 extern const    struct social_type              social_table                    [ ];
@@ -3543,6 +3600,7 @@ extern CHAR_DATA                * char_list;
 extern DESCRIPTOR_DATA          * descriptor_list;
 extern NOTE_DATA                * note_list;
 extern OBJ_DATA                 * object_list;
+extern OBJSET_INDEX_DATA        * objset_list;
 extern AFFECT_DATA              * affect_free;
 extern BAN_DATA                 * ban_free;
 extern CHAR_DATA                * char_free;
@@ -3674,6 +3732,7 @@ DECLARE_DO_FUN( do_eat                          );
 DECLARE_DO_FUN( do_echo                         );
 DECLARE_DO_FUN( do_emote                        );
 DECLARE_DO_FUN( do_enter                        );      /* enter for portal.. - Brutus */
+DECLARE_DO_FUN( do_empower                      );      /* smithy Brutus Jul 2022 */
 DECLARE_DO_FUN( do_equipment                    );
 DECLARE_DO_FUN( do_examine                      );
 DECLARE_DO_FUN( do_exits                        );
@@ -3791,12 +3850,14 @@ DECLARE_DO_FUN( do_note                         );
 DECLARE_DO_FUN( do_notell                       );
 DECLARE_DO_FUN( do_numlock                      );
 DECLARE_DO_FUN( do_ofind                        );
+DECLARE_DO_FUN( do_osfind                       );
 DECLARE_DO_FUN( do_oload                        );
 DECLARE_DO_FUN( do_open                         );
 DECLARE_DO_FUN( do_open_seal                    );      /*for werewolfs*/
 DECLARE_DO_FUN( do_order                        );
 DECLARE_DO_FUN( do_oset                         );
 DECLARE_DO_FUN( do_ostat                        );
+DECLARE_DO_FUN( do_osstat                       );
 DECLARE_DO_FUN( do_owhere                       );
 DECLARE_DO_FUN( do_pagelen                      );
 DECLARE_DO_FUN( do_pardon                       );
@@ -4190,8 +4251,10 @@ char * crypt args( ( const char *key, const char *salt ) );
 #define CD      CHAR_DATA
 #define MID     MOB_INDEX_DATA
 #define OD      OBJ_DATA
+#define OSD     OBJSET_DATA
 #define OID     OBJ_INDEX_DATA
 #define RID     ROOM_INDEX_DATA
+#define OSID    OBJSET_INDEX_DATA
 #define SF      SPEC_FUN
 #define ED      EXIT_DATA
 #define GF      GAME_FUN
@@ -4277,6 +4340,7 @@ char *  get_extra_descr                 args( ( const char *name, EXTRA_DESCR_DA
 MID *   get_mob_index                   args( ( int vnum ) );
 OID *   get_obj_index                   args( ( int vnum ) );
 RID *   get_room_index                  args( ( int vnum ) );
+OSID *  get_objset_index                args( ( int vnum ) );
 void    obj_strings                     args( ( OBJ_DATA *obj ) );
 char    fread_letter                    args( ( FILE *fp ) );
 int	fread_number	                args( ( FILE *fp, int *status ) );
@@ -4427,6 +4491,10 @@ void    generate_stats                        ( CHAR_DATA *ch );
 int     mana_cost                             ( CHAR_DATA *ch, int sn );
 int     get_phys_penalty                      ( CHAR_DATA *ch );
 int     get_int_penalty                       ( CHAR_DATA *ch );
+bool    is_partof_set                         ( char *argument );
+OSID *  get_objset                            ( char *argument );
+OSID *  objects_objset                        ( int vnum );
+OSID *  objset_bonus                          ( OBJSET_INDEX_DATA *pObjSetIndex, int num );
 
 /* hunt.c   */
 void hunt_victim                args( ( CHAR_DATA *ch ));
@@ -4554,8 +4622,10 @@ bool mob_is_quest_target (CHAR_DATA *ch);
 #undef  CD
 #undef  MID
 #undef  OD
+#undef  OSD
 #undef  OID
 #undef  RID
+#undef  OSID
 #undef  SF
 
 
