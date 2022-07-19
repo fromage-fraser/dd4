@@ -1873,11 +1873,7 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 OBJSET_INDEX_DATA *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
 {
 
-        extern int      top_objset_index;
-        int i;
-    
-
-                if ( num == pObjSetIndex->bonus_num[i] )
+                if ( num == pObjSetIndex->bonus_num[num] )
                 {
                         return pObjSetIndex;
                 }
@@ -1889,7 +1885,6 @@ OBJSET_INDEX_DATA *objects_objset( int vnum )
 {
        
         OBJSET_INDEX_DATA *pObjSetIndex;
-        char      arg [ MAX_INPUT_LENGTH ];
         extern int      top_objset_index;
         int osvnum;
         int nMatch;
@@ -1918,12 +1913,10 @@ OBJSET_INDEX_DATA *get_objset( char *argument )
 {
         OBJSET_INDEX_DATA *pObjSetIndex;
         char            arg [ MAX_INPUT_LENGTH ];
-        int             number;
         extern int      top_objset_index;
         int             vnum;
         int             nMatch;
-
-        number = number_argument( argument, arg );
+  
         nMatch  = 0;
 
         for ( vnum = 0; nMatch < top_objset_index; vnum++ )

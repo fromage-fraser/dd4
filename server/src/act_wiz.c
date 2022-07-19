@@ -1158,15 +1158,12 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, buf);
         }
 
-  /*      if ( ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
+        if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
         {
                 sprintf(buf, "Part of SET: {C%s{x\n\r\n\r", pObjSetIndex->name);
                 strcat(buf1, buf);
-                sprintf(buf, "{c%s{x\n\r", pObjSetIndex->description);
-                strcat(buf1, buf);
 
         }
-*/
         send_to_char( buf1, ch );
 }
 

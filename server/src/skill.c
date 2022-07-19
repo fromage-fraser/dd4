@@ -3328,15 +3328,12 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char     arg3 [ MAX_INPUT_LENGTH ];
         char     arg4 [ MAX_INPUT_LENGTH ];
         char     arg5 [ MAX_INPUT_LENGTH ];
-        char            buf[MAX_STRING_LENGTH];
-        
-        int     modifier;
-
+    
         OBJ_DATA *obj;
         OBJ_DATA *obj2;
-        OBJ_DATA *obj3;
+ /*       OBJ_DATA *obj3;
         OBJ_DATA *obj4;
-        OBJ_DATA *obj5;
+        OBJ_DATA *obj5; */
         AFFECT_DATA     *paf;
 
         argument = one_argument(argument, arg1);
@@ -3377,9 +3374,11 @@ void do_empower (CHAR_DATA *ch, char *argument)
                         send_to_char( "You arent carrying that..\n\r",ch );
                         return;
                 }
-               
+  /*             
                 switch (number_range( 1, 3 ))
                 {
+                        int modifier;
+                        modifier = -1;
                         default :
                         {       
                                 send_to_char("This is a bug - tell the Imms - (Determine random buff in empower).\n\r", ch);
@@ -3408,7 +3407,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
 
                 }
 
-
+*/
                 if (!affect_free)
                         paf = alloc_perm(sizeof(*paf));
                 else
