@@ -1912,19 +1912,17 @@ OBJSET_INDEX_DATA *objects_objset( int vnum )
 OBJSET_INDEX_DATA *get_objset( char *argument )
 {
         OBJSET_INDEX_DATA *pObjSetIndex;
-        char            arg [ MAX_INPUT_LENGTH ];
         extern int      top_objset_index;
         int             vnum;
         int             nMatch;
-  
-        nMatch  = 0;
+        nMatch = 0;
 
         for ( vnum = 0; nMatch < top_objset_index; vnum++ )
         {
                 if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
                 {
                         nMatch++;
-                        if ( multi_keyword_match( arg, pObjSetIndex->name ) )
+                        if ( multi_keyword_match( argument, pObjSetIndex->name ) )
                         {
                                 return pObjSetIndex;
                         }
