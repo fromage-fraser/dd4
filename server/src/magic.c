@@ -5105,7 +5105,7 @@ void spell_displacement ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type = sn;
-        af.duration = level - 4;
+        af.duration = 12 + level;
         af.location = APPLY_AC;
         af.modifier = 4 - level;
         af.bitvector = 0;
@@ -5325,7 +5325,7 @@ void spell_enhanced_strength ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type = sn;
-        af.duration = level;
+        af.duration = 12 + level;
         af.location = APPLY_STR;
         af.modifier = 1 + ( level >= 15 ) + ( level >= 25 );
         af.bitvector = 0;
@@ -5360,7 +5360,7 @@ void spell_flesh_armor ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "{MYour use of spellcrafting resources increases the toughness of your flesh armor!{x\n\r", ch);
 
         af.type = sn;
-        af.duration = level;
+        af.duration = 12 + level;
         af.location = APPLY_AC;
         af.modifier = ( in_sc_room ) ? - (  ( 40 * mod_room_bonus ) / 100 ) : -40;
         af.bitvector = 0;
@@ -5387,7 +5387,7 @@ void spell_inertial_barrier ( int sn, int level, CHAR_DATA *ch, void *vo )
                 send_to_char( "An inertial barrier forms around you.\n\r", gch );
 
                 af.type      = sn;
-                af.duration  = 24;
+                af.duration  = 12 + level;
                 af.modifier  = 0;
                 af.location  = APPLY_NONE;
                 af.bitvector = AFF_PROTECT;
@@ -5418,7 +5418,7 @@ void spell_intellect_fortress ( int sn, int level, CHAR_DATA *ch, void *vo )
                 act( "A virtual fortress forms around $N.", gch, NULL, gch, TO_ROOM );
 
                 af.type      = sn;
-                af.duration  = 24;
+                af.duration  = 12 + level;
                 af.location  = APPLY_AC;
                 af.modifier  = -40;
                 af.bitvector = 0;
@@ -5476,7 +5476,7 @@ void spell_levitation ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
         af.type = sn;
-        af.duration = level + 3;
+        af.duration = 12 + level;
         af.location = APPLY_NONE;
         af.modifier = 0;
         af.bitvector = AFF_FLYING;
@@ -5505,7 +5505,7 @@ void spell_mental_barrier ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type = sn;
-        af.duration = 24;
+        af.duration = 12 + level;
         af.location = APPLY_AC;
         af.modifier = -20;
         af.bitvector = 0;
@@ -5632,7 +5632,7 @@ void spell_thought_shield ( int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
 
         af.type = sn;
-        af.duration = level;
+        af.duration = 12 + level;
         af.location = APPLY_AC;
         af.modifier = -20;
         af.bitvector = 0;
