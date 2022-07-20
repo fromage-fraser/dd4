@@ -1160,7 +1160,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
         {
-                sprintf(buf, "Part of SET: {C%s{x\n\r\n\r", pObjSetIndex->name);
+                sprintf(buf, "This is part of a %s set.\n\rSet tags: %s. Vnum [%d]\n\r\n\r", objset_type(pObjSetIndex->vnum), pObjSetIndex->name, pObjSetIndex->vnum);
                 strcat(buf1, buf);
 
         }
@@ -1263,8 +1263,13 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         }
 
     
+        sprintf( buf, "There are %d set bonuses\n\r", object_bonus_num(obj->vnum));
+        strcat( buf1, buf );
 
-
+        sprintf( buf, "First:  %s set bonus\n\r", object_bonus(obj,1));
+        strcat( buf1, buf );
+        sprintf( buf, "2nd:  %s set bonus\n\r", object_bonus(obj,2));
+        strcat( buf1, buf );
 
         sprintf( buf, "{CAffects Given:{x\n\r");
                 strcat( buf1, buf );

@@ -1869,16 +1869,111 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 
 
 
-/* Returns object_bonus from an int - Brutus */
+/* Returns object_bonus from an objset set vnum and the position - Brutus */
 OBJSET_INDEX_DATA *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
 {
-
-                if ( num == pObjSetIndex->bonus_num[num] )
-                {
-                        return pObjSetIndex;
-                }
+        AFFECT_DATA *paf;
+        int count;
+        count = 0;
+      
+        if (  pObjSetIndex  )
+        {
+        for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+        {
+                count++;
+                if (count == num);
+                return paf; 
+        }
+        
+        }
         return NULL;
 }
+
+/* REturns number of set bonuses in a set */
+int objset_bonus_num( int vnum)
+{
+        OBJSET_INDEX_DATA *objset;
+        int bonus2;
+        int bonus3;
+        int bonus4;
+        int bonus5;
+        int bonust;
+        int i;
+
+        if ( ( objset = get_objset_index( vnum ) ) )
+        {
+
+                bonus2 = 0;
+                bonus3 = 0;
+                bonus4 = 0;
+                bonus5 = 0;
+                bonust = 0;
+
+                for( i=0; i < 5; i++ )
+                {
+                        if( objset->bonus_num[i] == 2)
+                                bonus2++;
+                        if( objset->bonus_num[i] == 3)
+                                bonus3++;
+                        if( objset->bonus_num[i] == 4)
+                                bonus4++;
+                        if( objset->bonus_num[i] == 5)
+                                bonus5++;
+                }
+                if ( bonus2 > 0)
+                        bonust++;
+                if (bonus3 > 0) 
+                        bonust++;
+                if (bonus4 > 0)
+                        bonust++;
+                if (bonus5 > 0) 
+                        bonust++;
+                return bonust;
+        }
+        return 0;
+}
+
+/* Returns the type of the objset e.g. rare or epic from the vnum of the objset */
+char *objset_type( int vnum)
+{
+        OBJSET_INDEX_DATA *pObjSetIndex;
+        int i;
+        int bonus2;
+        int bonus3;
+        int bonus4;
+        int bonus5;
+        bonus2 = 0;
+        bonus3 = 0;
+        bonus4 = 0;
+        bonus5 = 0;
+
+        if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
+                {
+                       for( i=0; i < 5; i++ )
+                        {
+                        if( pObjSetIndex->bonus_num[i] == 2)
+                        bonus2++;
+                        if( pObjSetIndex->bonus_num[i] == 3)
+                        bonus3++;
+                        if( pObjSetIndex->bonus_num[i] == 4)
+                        bonus4++;
+                        if( pObjSetIndex->bonus_num[i] == 5)
+                        bonus5++;
+                        }
+                }
+
+        if (bonus5 > 0)
+                return "{rLegendary{x";
+        if (bonus4 > 0)
+                return "{MEpic{x";
+        if (bonus3 > 0)
+                return "{BRare{x";
+        if (bonus2 > 0)
+                return "{GUncommon{x";
+                
+        return "BUG: Log this as a fault, Lookup type of set in objset_type\n\r";
+}
+
 
 /* Returns the Object set from a objects vnum - Brutus */
 OBJSET_INDEX_DATA *objects_objset( int vnum )

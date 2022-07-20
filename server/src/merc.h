@@ -4495,6 +4495,8 @@ bool    is_partof_set                         ( char *argument );
 OSID *  get_objset                            ( char *argument );
 OSID *  objects_objset                        ( int vnum );
 OSID *  objset_bonus                          ( OBJSET_INDEX_DATA *pObjSetIndex, int num );
+char *  objset_type                           ( int vnum );
+int     objset_bonus_num                      ( int vnum );
 
 /* hunt.c   */
 void hunt_victim                args( ( CHAR_DATA *ch ));
