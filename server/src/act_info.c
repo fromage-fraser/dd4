@@ -4042,14 +4042,16 @@ void do_prompt( CHAR_DATA *ch, char *argument )
         {
                 send_to_char("Your current prompt:\n\r", ch);
                 strcat(buf, ch->prompt);
-                send_to_char(buf, ch);
-                send_to_char("\n\r", ch);
+
+                /* Use send_to_char_bw() so we don't interpolate or strip colour codes. */
+                send_to_char_bw(buf, ch);
+                send_to_char_bw("\n\r", ch);
 
                 return;
         }
 
         if( !strcmp( argument, "all" ) || !strcmp (argument, "default") )
-                strcat (buf, "<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
+                strcat (buf, "<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
         else
         {
                 if ( strlen( argument ) > 100 )

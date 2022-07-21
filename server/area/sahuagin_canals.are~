@@ -1,0 +1,7980 @@
+#AREA Owl~ Ota'ar Dar Canals~
+30 60 20 100
+
+#AREA_SPECIAL
+no_teleport
+no_quest
+hidden
+$
+
+#MOBILES
+#27267
+placeholder mob~
+a placeholder mob~
+A placeholder mob stands here.
+~
+This mob is a placeholder.  Start at this number.
+~
+2|64 2|8|32|524288 0 S
+35 0 0 0d0+0 0d0+0
+0 0
+8 8 1
+#0
+
+
+#OBJECTS
+#27371
+placeholder object~
+a placeholder object~
+A placeholder object is here.~
+~
+5 0 1|8192
+0~ 0~ 0~ 0~
+4 0 0
+A
+2 2
+A
+19 1
+A
+14 15
+A
+4 1
+E
+placeholder object~
+This is a placeholder object.  Start with this number.
+~
+#0
+
+
+#ROOMS
+#27244
+Bridge to Military Canton~
+You are standing in room #27244.
+~
+0 0 8
+D0
+~
+~
+0 -1 27283
+D1
+~
+~
+0 -1 27248
+D2
+~
+~
+0 -1 27235
+D3
+~
+~
+0 -1 27246
+D4
+~
+~
+0 -1 27544
+S
+#27246
+Canton Canal~
+You are standing in room #27246.
+~
+0 0 8
+D1
+~
+~
+0 -1 27244
+D3
+~
+~
+0 -1 27247
+D4
+~
+~
+0 -1 27546
+S
+#27247
+Canton Canal~
+You are standing in room #27247.
+~
+0 0 8
+D1
+~
+~
+0 -1 27246
+D4
+~
+~
+0 -1 27547
+S
+#27248
+Canton Canal~
+You are standing in room #27248.
+~
+0 0 8
+D0
+~
+~
+0 -1 27249
+D3
+~
+~
+0 -1 27244
+D4
+~
+~
+0 -1 27548
+S
+#27249
+Canton Canal~
+You are standing in room #27249.
+~
+0 0 8
+D1
+~
+~
+0 -1 27250
+D2
+~
+~
+0 -1 27248
+D4
+~
+~
+0 -1 27549
+S
+#27250
+Canton Canal~
+You are standing in room #27250.
+~
+0 0 8
+D1
+~
+~
+0 -1 27251
+D3
+~
+~
+0 -1 27249
+D4
+~
+~
+0 -1 27550
+S
+#27251
+Canton Canal~
+You are standing in room #27251.
+~
+0 0 8
+D0
+~
+~
+0 -1 27252
+D3
+~
+~
+0 -1 27250
+D4
+~
+~
+0 -1 27551
+S
+#27252
+Canton Canal~
+You are standing in room #27252.
+~
+0 0 8
+D1
+~
+~
+0 -1 27253
+D2
+~
+~
+0 -1 27251
+D4
+~
+~
+0 -1 27552
+S
+#27253
+Canton Canal~
+You are standing in room #27253.
+~
+0 0 8
+D0
+~
+~
+0 -1 27259
+D1
+~
+~
+0 -1 27254
+D3
+~
+~
+0 -1 27252
+D4
+~
+~
+0 -1 27553
+S
+#27254
+Canton Canal~
+You are standing in room #27254.
+~
+0 0 8
+D0
+~
+~
+0 -1 27260
+D1
+~
+~
+0 -1 27255
+D3
+~
+~
+0 -1 27253
+D4
+~
+~
+0 -1 27554
+S
+#27255
+Canton Canal~
+You are standing in room #27255.
+~
+0 0 8
+D2
+~
+~
+0 -1 27256
+D3
+~
+~
+0 -1 27254
+D4
+~
+~
+0 -1 27555
+S
+#27256
+Canton Canal~
+You are standing in room #27256.
+~
+0 0 8
+D0
+~
+~
+0 -1 27255
+D1
+~
+~
+0 -1 27257
+D4
+~
+~
+0 -1 27556
+S
+#27257
+Canton Canal~
+You are standing in room #27257.
+~
+0 0 8
+D2
+~
+~
+0 -1 27258
+D3
+~
+~
+0 -1 27256
+D4
+~
+~
+0 -1 27557
+S
+#27258
+Canton Canal~
+You are standing in room #27258.
+~
+0 0 8
+D0
+~
+~
+0 -1 27257
+D1
+~
+~
+0 -1 27307
+D4
+~
+~
+0 -1 27558
+S
+#27259
+Canton Canal~
+You are standing in room #27259.
+~
+0 0 8
+D0
+~
+~
+0 -1 27261
+D1
+~
+~
+0 -1 27260
+D2
+~
+~
+0 -1 27253
+D4
+~
+~
+0 -1 27559
+S
+#27260
+Canton Canal~
+You are standing in room #27260.
+~
+0 0 8
+D0
+~
+~
+0 -1 27262
+D2
+~
+~
+0 -1 27254
+D3
+~
+~
+0 -1 27259
+D4
+~
+~
+0 -1 27560
+S
+#27261
+Canton Canal~
+You are standing in room #27261.
+~
+0 0 8
+D1
+~
+~
+0 -1 27262
+D2
+~
+~
+0 -1 27259
+D3
+~
+~
+0 -1 27267
+D4
+~
+~
+0 -1 27561
+S
+#27262
+Canton Canal~
+You are standing in room #27262.
+~
+0 0 8
+D1
+~
+~
+0 -1 27263
+D2
+~
+~
+0 -1 27260
+D3
+~
+~
+0 -1 27261
+D4
+~
+~
+0 -1 27562
+S
+#27263
+Canton Canal~
+You are standing in room #27263.
+~
+0 0 8
+D0
+~
+~
+0 -1 27264
+D3
+~
+~
+0 -1 27262
+D4
+~
+~
+0 -1 27563
+S
+#27264
+Canton Canal~
+You are standing in room #27264.
+~
+0 0 8
+D0
+~
+~
+0 -1 27265
+D2
+~
+~
+0 -1 27263
+D4
+~
+~
+0 -1 27564
+S
+#27265
+Canton Canal~
+You are standing in room #27265.
+~
+0 0 8
+D1
+~
+~
+0 -1 27266
+D2
+~
+~
+0 -1 27264
+D4
+~
+~
+0 -1 27565
+S
+#27266
+Canton Canal~
+You are standing in room #27266.
+~
+0 0 8
+D0
+~
+~
+0 -1 27353
+D3
+~
+~
+0 -1 27265
+D4
+~
+~
+0 -1 27566
+S
+#27267
+Canton Canal~
+You are standing in room #27267.
+~
+0 0 8
+D0
+~
+~
+0 -1 27268
+D1
+~
+~
+0 -1 27261
+D4
+~
+~
+0 -1 27567
+S
+#27268
+Canton Canal~
+You are standing in room #27268.
+~
+0 0 8
+D2
+~
+~
+0 -1 27267
+D3
+~
+~
+0 -1 27269
+D4
+~
+~
+0 -1 27568
+S
+#27269
+Canton Canal~
+You are standing in room #27269.
+~
+0 0 8
+D0
+~
+~
+0 -1 27270
+D1
+~
+~
+0 -1 27268
+D4
+~
+~
+0 -1 27569
+S
+#27270
+Canton Canal~
+You are standing in room #27270.
+~
+0 0 8
+D2
+~
+~
+0 -1 27269
+D3
+~
+~
+0 -1 27271
+D4
+~
+~
+0 -1 27570
+S
+#27271
+Canton Canal~
+You are standing in room #27271.
+~
+0 0 8
+D0
+~
+~
+0 -1 27272
+D1
+~
+~
+0 -1 27270
+D4
+~
+~
+0 -1 27571
+S
+#27272
+Canton Canal~
+You are standing in room #27272.
+~
+0 0 8
+D2
+~
+~
+0 -1 27271
+D3
+~
+~
+0 -1 27273
+D4
+~
+~
+0 -1 27572
+S
+#27273
+Canton Canal~
+You are standing in room #27273.
+~
+0 0 8
+D1
+~
+~
+0 -1 27272
+D3
+~
+~
+0 -1 27274
+D4
+~
+~
+0 -1 27573
+S
+#27274
+Canton Canal~
+You are standing in room #27274.
+~
+0 0 8
+D1
+~
+~
+0 -1 27273
+D2
+~
+~
+0 -1 27275
+D4
+~
+~
+0 -1 27574
+S
+#27275
+Canton Canal~
+You are standing in room #27275.
+~
+0 0 8
+D0
+~
+~
+0 -1 27274
+D4
+~
+~
+0 -1 27575
+S
+#27307
+Bridge to Market Canton~
+You are standing in room #27307.
+~
+0 0 8
+D0
+~
+~
+8 -1 27308
+D2
+~
+~
+0 -1 27243
+D3
+~
+~
+0 -1 27258
+D4
+~
+~
+0 -1 27607
+S
+#27354
+Canton Canal~
+You are standing in room #27354.
+~
+0 0 8
+D0
+~
+~
+0 -1 27355
+D2
+~
+~
+0 -1 27353
+D4
+~
+~
+0 -1 27654
+S
+#27355
+Canton Canal~
+You are standing in room #27355.
+~
+0 0 8
+D0
+~
+~
+0 -1 27356
+D2
+~
+~
+0 -1 27354
+D4
+~
+~
+0 -1 27655
+S
+#27356
+Canton Canal~
+You are standing in room #27356.
+~
+0 0 8
+D0
+~
+~
+0 -1 27363
+D1
+~
+~
+0 -1 27359
+D2
+~
+~
+0 -1 27355
+D3
+~
+~
+0 -1 27357
+D4
+~
+~
+0 -1 27656
+S
+#27357
+Canton Canal~
+You are standing in room #27357.
+~
+0 0 8
+D0
+~
+~
+0 -1 27362
+D1
+~
+~
+0 -1 27356
+D3
+~
+~
+0 -1 27358
+D4
+~
+~
+0 -1 27657
+S
+#27358
+Canton Canal~
+You are standing in room #27358.
+~
+0 0 8
+D0
+~
+~
+0 -1 27361
+D1
+~
+~
+0 -1 27357
+D3
+~
+~
+0 -1 27388
+D4
+~
+~
+0 -1 27658
+S
+#27359
+Canton Canal~
+You are standing in room #27359.
+~
+0 0 8
+D0
+~
+~
+0 -1 27364
+D1
+~
+~
+0 -1 27360
+D3
+~
+~
+0 -1 27356
+D4
+~
+~
+0 -1 27659
+S
+#27360
+Canton Canal~
+You are standing in room #27360.
+~
+0 0 8
+D0
+~
+~
+0 -1 27365
+D1
+~
+~
+0 -1 27419
+D3
+~
+~
+0 -1 27359
+D4
+~
+~
+0 -1 27660
+S
+#27361
+Canton Canal~
+You are standing in room #27361.
+~
+0 0 8
+D1
+~
+~
+0 -1 27362
+D2
+~
+~
+0 -1 27358
+D3
+~
+~
+0 -1 27389
+D4
+~
+~
+0 -1 27661
+S
+#27362
+Canton Canal~
+You are standing in room #27362.
+~
+0 0 8
+D1
+~
+~
+0 -1 27363
+D2
+~
+~
+0 -1 27357
+D3
+~
+~
+0 -1 27361
+D4
+~
+~
+0 -1 27662
+S
+#27363
+Canton Canal~
+You are standing in room #27363.
+~
+0 0 8
+D0
+~
+~
+0 -1 27366
+D1
+~
+~
+0 -1 27364
+D2
+~
+~
+0 -1 27356
+D3
+~
+~
+0 -1 27362
+D4
+~
+~
+0 -1 27663
+S
+#27364
+Canton Canal~
+You are standing in room #27364.
+~
+0 0 8
+D1
+~
+~
+0 -1 27365
+D2
+~
+~
+0 -1 27359
+D3
+~
+~
+0 -1 27363
+D4
+~
+~
+0 -1 27664
+S
+#27365
+Canton Canal~
+You are standing in room #27365.
+~
+0 0 8
+D1
+~
+~
+0 -1 27420
+D2
+~
+~
+0 -1 27360
+D3
+~
+~
+0 -1 27364
+D4
+~
+~
+0 -1 27665
+S
+#27366
+Canton Canal~
+You are standing in room #27366.
+~
+0 0 8
+D0
+~
+~
+0 -1 27367
+D2
+~
+~
+0 -1 27363
+D4
+~
+~
+0 -1 27666
+S
+#27367
+Canton Canal~
+You are standing in room #27367.
+~
+0 0 8
+D0
+~
+~
+0 -1 27418
+D2
+~
+~
+0 -1 27366
+D4
+~
+~
+0 -1 27667
+S
+#27388
+Bridge to North Living Canton~
+You are standing in room #27388.
+~
+0 0 8
+D0
+~
+~
+0 -1 27389
+D1
+~
+~
+0 -1 27358
+D2
+~
+~
+0 -1 27385
+D3
+~
+~
+0 -1 27390
+D4
+~
+~
+0 -1 27688
+S
+#27389
+Bridge to North Living Canton~
+You are standing in room #27389.
+~
+0 0 8
+D0
+~
+~
+0 -1 27398
+D1
+~
+~
+0 -1 27361
+D2
+~
+~
+0 -1 27388
+D3
+~
+~
+0 -1 27397
+D4
+~
+~
+0 -1 27689
+S
+#27390
+Canton Canal~
+You are standing in room #27390.
+~
+0 0 8
+D0
+~
+~
+0 -1 27397
+D1
+~
+~
+0 -1 27388
+D3
+~
+~
+0 -1 27391
+D4
+~
+~
+0 -1 27690
+S
+#27391
+Canton Canal~
+You are standing in room #27391.
+~
+0 0 8
+D0
+~
+~
+0 -1 27396
+D1
+~
+~
+0 -1 27390
+D3
+~
+~
+0 -1 27392
+D4
+~
+~
+0 -1 27691
+S
+#27392
+Canton Canal~
+You are standing in room #27392.
+~
+0 0 8
+D0
+~
+~
+0 -1 27394
+D1
+~
+~
+0 -1 27391
+D2
+~
+~
+0 -1 27393
+D4
+~
+~
+0 -1 27692
+S
+#27393
+Canton Canal~
+You are standing in room #27393.
+~
+0 0 8
+D0
+~
+~
+0 -1 27392
+D4
+~
+~
+0 -1 27693
+S
+#27394
+Canton Canal~
+You are standing in room #27394.
+~
+0 0 8
+D0
+~
+~
+0 -1 27395
+D1
+~
+~
+0 -1 27396
+D2
+~
+~
+0 -1 27392
+D4
+~
+~
+0 -1 27694
+S
+#27395
+Canton Canal~
+You are standing in room #27395.
+~
+0 0 8
+D2
+~
+~
+0 -1 27394
+D4
+~
+~
+0 -1 27695
+S
+#27396
+Canton Canal~
+You are standing in room #27396.
+~
+0 0 8
+D1
+~
+~
+0 -1 27397
+D2
+~
+~
+0 -1 27391
+D3
+~
+~
+0 -1 27394
+D4
+~
+~
+0 -1 27696
+S
+#27397
+Canton Canal~
+You are standing in room #27397.
+~
+0 0 8
+D1
+~
+~
+0 -1 27389
+D2
+~
+~
+0 -1 27390
+D3
+~
+~
+0 -1 27396
+D4
+~
+~
+0 -1 27697
+S
+#27418
+Bridge to Prince's Canton~
+You are standing in room #27418.
+~
+0 0 8
+D0
+~
+~
+0 -1 27744
+D1
+~
+~
+0 -1 27439
+D2
+~
+~
+0 -1 27367
+D3
+~
+~
+0 -1 27412
+D4
+~
+~
+0 -1 27718
+S
+#27419
+Bridge to Prince's Canton~
+You are standing in room #27419.
+~
+0 0 8
+D0
+~
+~
+0 -1 27420
+D1
+~
+~
+0 -1 27421
+D2
+~
+~
+8 -1 27349
+D3
+~
+~
+0 -1 27360
+D4
+~
+~
+0 -1 27719
+S
+#27420
+Bridge to Prince's Canton~
+You are standing in room #27420.
+~
+0 0 8
+D0
+~
+~
+0 -1 27427
+D1
+~
+~
+0 -1 27424
+D2
+~
+~
+0 -1 27419
+D3
+~
+~
+0 -1 27365
+D4
+~
+~
+0 -1 27720
+S
+#27421
+Canton Canal~
+You are standing in room #27421.
+~
+0 0 8
+D0
+~
+~
+0 -1 27424
+D1
+~
+~
+0 -1 27422
+D3
+~
+~
+0 -1 27419
+D4
+~
+~
+0 -1 27721
+S
+#27422
+Canton Canal~
+You are standing in room #27422.
+~
+0 0 8
+D0
+~
+~
+0 -1 27425
+D1
+~
+~
+0 -1 27423
+D3
+~
+~
+0 -1 27421
+D4
+~
+~
+0 -1 27722
+S
+#27423
+Canton Canal~
+You are standing in room #27423.
+~
+0 0 8
+D0
+~
+~
+0 -1 27426
+D3
+~
+~
+0 -1 27422
+D4
+~
+~
+0 -1 27723
+S
+#27424
+Canton Canal~
+You are standing in room #27424.
+~
+0 0 8
+D1
+~
+~
+0 -1 27425
+D2
+~
+~
+0 -1 27421
+D3
+~
+~
+0 -1 27420
+D4
+~
+~
+0 -1 27724
+S
+#27425
+Canton Canal~
+You are standing in room #27425.
+~
+0 0 8
+D1
+~
+~
+0 -1 27426
+D2
+~
+~
+0 -1 27422
+D3
+~
+~
+0 -1 27424
+D4
+~
+~
+0 -1 27725
+S
+#27426
+Canton Canal~
+You are standing in room #27426.
+~
+0 0 8
+D2
+~
+~
+0 -1 27423
+D3
+~
+~
+0 -1 27425
+D4
+~
+~
+0 -1 27726
+S
+#27444
+Canton Canal~
+You are standing in room #27444.
+~
+0 0 8
+D3
+~
+~
+0 -1 27445
+D4
+~
+~
+0 -1 27744
+S
+#27445
+Canton Canal~
+You are standing in room #27445.
+~
+0 0 8
+D0
+~
+~
+0 -1 27446
+D1
+~
+~
+0 -1 27444
+D4
+~
+~
+0 -1 27745
+S
+#27446
+Canton Canal~
+You are standing in room #27446.
+~
+0 0 8
+D0
+~
+~
+0 -1 27447
+D2
+~
+~
+0 -1 27445
+D4
+~
+~
+0 -1 27746
+S
+#27447
+Canton Canal~
+You are standing in room #27447.
+~
+0 0 8
+D2
+~
+~
+0 -1 27446
+D3
+~
+~
+0 -1 27448
+D4
+~
+~
+0 -1 27747
+S
+#27448
+Canton Canal~
+You are standing in room #27448.
+~
+0 0 8
+D0
+~
+~
+0 -1 27459
+D1
+~
+~
+0 -1 27447
+D3
+~
+~
+0 -1 27449
+D4
+~
+~
+0 -1 27748
+S
+#27449
+Canton Canal~
+You are standing in room #27449.
+~
+0 0 8
+D0
+~
+~
+0 -1 27460
+D1
+~
+~
+0 -1 27448
+D3
+~
+~
+0 -1 27450
+D4
+~
+~
+0 -1 27749
+S
+#27450
+Canton Canal~
+You are standing in room #27450.
+~
+0 0 8
+D1
+~
+~
+0 -1 27449
+D2
+~
+~
+0 -1 27451
+D4
+~
+~
+0 -1 27750
+S
+#27451
+Canton Canal~
+You are standing in room #27451.
+~
+0 0 8
+D0
+~
+~
+0 -1 27450
+D3
+~
+~
+0 -1 27452
+D4
+~
+~
+0 -1 27751
+S
+#27452
+Canton Canal~
+You are standing in room #27452.
+~
+0 0 8
+D1
+~
+~
+0 -1 27451
+D2
+~
+~
+0 -1 27453
+D4
+~
+~
+0 -1 27752
+S
+#27453
+Canton Canal~
+You are standing in room #27453.
+~
+0 0 8
+D0
+~
+~
+0 -1 27452
+D3
+~
+~
+0 -1 27454
+D4
+~
+~
+0 -1 27753
+S
+#27454
+Canton Canal~
+You are standing in room #27454.
+~
+0 0 8
+D1
+~
+~
+0 -1 27453
+D2
+~
+~
+0 -1 27455
+D4
+~
+~
+0 -1 27754
+S
+#27455
+Canton Canal~
+You are standing in room #27455.
+~
+0 0 8
+D0
+~
+~
+0 -1 27454
+D3
+~
+~
+0 -1 27456
+D4
+~
+~
+0 -1 27755
+S
+#27456
+Canton Canal~
+You are standing in room #27456.
+~
+0 0 8
+D1
+~
+~
+0 -1 27455
+D3
+~
+~
+0 -1 27457
+D4
+~
+~
+0 -1 27756
+S
+#27457
+Canton Canal~
+You are standing in room #27457.
+~
+0 0 8
+D0
+~
+~
+0 -1 27458
+D1
+~
+~
+0 -1 27456
+D4
+~
+~
+0 -1 27757
+S
+#27458
+Canton Canal~
+You are standing in room #27458.
+~
+0 0 8
+D2
+~
+~
+0 -1 27457
+D4
+~
+~
+0 -1 27758
+S
+#27459
+Canton Canal~
+You are standing in room #27459.
+~
+0 0 8
+D0
+~
+~
+0 -1 27461
+D2
+~
+~
+0 -1 27448
+D3
+~
+~
+0 -1 27460
+D4
+~
+~
+0 -1 27759
+S
+#27460
+Canton Canal~
+You are standing in room #27460.
+~
+0 0 8
+D0
+~
+~
+0 -1 27466
+D1
+~
+~
+0 -1 27459
+D2
+~
+~
+0 -1 27449
+D4
+~
+~
+0 -1 27760
+S
+#27461
+Canton Canal~
+You are standing in room #27461.
+~
+0 0 8
+D1
+~
+~
+0 -1 27462
+D2
+~
+~
+0 -1 27459
+D3
+~
+~
+0 -1 27466
+D4
+~
+~
+0 -1 27761
+S
+#27462
+Canton Canal~
+You are standing in room #27462.
+~
+0 0 8
+D0
+~
+~
+0 -1 27463
+D3
+~
+~
+0 -1 27461
+D4
+~
+~
+0 -1 27762
+S
+#27463
+Canton Canal~
+You are standing in room #27463.
+~
+0 0 8
+D1
+~
+~
+0 -1 27464
+D2
+~
+~
+0 -1 27462
+D4
+~
+~
+0 -1 27763
+S
+#27464
+Canton Canal~
+You are standing in room #27464.
+~
+0 0 8
+D0
+~
+~
+0 -1 27465
+D3
+~
+~
+0 -1 27463
+D4
+~
+~
+0 -1 27764
+S
+#27465
+Canton Canal~
+You are standing in room #27465.
+~
+0 0 8
+D2
+~
+~
+0 -1 27464
+D4
+~
+~
+0 -1 27765
+S
+#27466
+Canton Canal~
+You are standing in room #27466.
+~
+0 0 8
+D1
+~
+~
+0 -1 27461
+D2
+~
+~
+0 -1 27460
+D3
+~
+~
+0 -1 27467
+D4
+~
+~
+0 -1 27766
+S
+#27467
+Canton Canal~
+You are standing in room #27467.
+~
+0 0 8
+D0
+~
+~
+0 -1 27468
+D1
+~
+~
+0 -1 27466
+D4
+~
+~
+0 -1 27767
+S
+#27468
+Canton Canal~
+You are standing in room #27468.
+~
+0 0 8
+D2
+~
+~
+0 -1 27467
+D3
+~
+~
+0 -1 27469
+D4
+~
+~
+0 -1 27768
+S
+#27469
+Canton Canal~
+You are standing in room #27469.
+~
+0 0 8
+D1
+~
+~
+0 -1 27468
+D3
+~
+~
+0 -1 27470
+D4
+~
+~
+0 -1 27769
+S
+#27470
+Canton Canal~
+You are standing in room #27470.
+~
+0 0 8
+D1
+~
+~
+0 -1 27469
+D4
+~
+~
+0 -1 27770
+S
+#27471
+Prince's Canton~
+You are standing in room #27471.
+~
+0 0 8
+D0
+~
+~
+0 -1 27476
+D1
+~
+~
+0 -1 27472
+D2
+~
+~
+0 -1 27439
+D4
+~
+~
+0 -1 27771
+S
+#27472
+Prince's Canton~
+You are standing in room #27472.
+~
+0 0 8
+D0
+~
+~
+0 -1 27478
+D1
+~
+~
+0 -1 27473
+D2
+~
+~
+0 -1 27440
+D3
+~
+~
+0 -1 27471
+D4
+~
+~
+0 -1 27772
+S
+#27473
+Prince's Canton~
+You are standing in room #27473.
+~
+0 0 8
+D0
+~
+~
+0 -1 27479
+D1
+~
+~
+0 -1 27474
+D2
+~
+~
+0 -1 27441
+D3
+~
+~
+0 -1 27472
+D4
+~
+~
+0 -1 27773
+S
+#27474
+Prince's Canton~
+You are standing in room #27474.
+~
+0 0 8
+D0
+~
+~
+0 -1 27480
+D1
+~
+~
+0 -1 27475
+D2
+~
+~
+0 -1 27442
+D3
+~
+~
+0 -1 27473
+D4
+~
+~
+0 -1 27774
+S
+#27475
+Prince's Canton~
+You are standing in room #27475.
+~
+0 0 8
+D2
+~
+~
+0 -1 27443
+D3
+~
+~
+0 -1 27474
+D4
+~
+~
+0 -1 27775
+S
+#27476
+Prince's Canton~
+You are standing in room #27476.
+~
+0 0 8
+D0
+~
+~
+0 -1 27482
+D1
+~
+~
+0 -1 27478
+D2
+~
+~
+0 -1 27471
+D3
+~
+~
+0 -1 27477
+D4
+~
+~
+0 -1 27776
+S
+#27477
+Prince's Canton~
+You are standing in room #27477.
+~
+0 0 8
+D0
+~
+~
+0 -1 27481
+D1
+~
+~
+0 -1 27476
+D4
+~
+~
+0 -1 27777
+S
+#27478
+Prince's Canton~
+You are standing in room #27478.
+~
+0 0 8
+D0
+~
+~
+0 -1 27483
+D1
+~
+~
+0 -1 27479
+D2
+~
+~
+0 -1 27472
+D3
+~
+~
+0 -1 27476
+D4
+~
+~
+0 -1 27778
+S
+#27479
+Prince's Canton~
+You are standing in room #27479.
+~
+0 0 8
+D0
+~
+~
+0 -1 27484
+D1
+~
+~
+0 -1 27480
+D2
+~
+~
+0 -1 27473
+D3
+~
+~
+0 -1 27478
+D4
+~
+~
+0 -1 27779
+S
+#27480
+Prince's Canton~
+You are standing in room #27480.
+~
+0 0 8
+D0
+~
+~
+0 -1 27485
+D2
+~
+~
+0 -1 27474
+D3
+~
+~
+0 -1 27479
+D4
+~
+~
+0 -1 27780
+S
+#27481
+Prince's Canton~
+You are standing in room #27481.
+~
+0 0 8
+D0
+~
+~
+0 -1 27486
+D1
+~
+~
+0 -1 27482
+D2
+~
+~
+0 -1 27477
+D4
+~
+~
+0 -1 27781
+S
+#27482
+Prince's Canton~
+You are standing in room #27482.
+~
+0 0 8
+D0
+~
+~
+0 -1 27488
+D1
+~
+~
+0 -1 27483
+D2
+~
+~
+0 -1 27476
+D3
+~
+~
+0 -1 27481
+D4
+~
+~
+0 -1 27782
+S
+#27483
+Prince's Canton~
+You are standing in room #27483.
+~
+0 0 8
+D0
+~
+~
+0 -1 27489
+D1
+~
+~
+0 -1 27484
+D2
+~
+~
+0 -1 27478
+D3
+~
+~
+0 -1 27482
+D4
+~
+~
+0 -1 27783
+S
+#27484
+Prince's Canton~
+You are standing in room #27484.
+~
+0 0 8
+D0
+~
+~
+0 -1 27490
+D1
+~
+~
+0 -1 27485
+D2
+~
+~
+0 -1 27479
+D3
+~
+~
+0 -1 27483
+D4
+~
+~
+0 -1 27784
+S
+#27485
+Prince's Canton~
+You are standing in room #27485.
+~
+0 0 8
+D0
+~
+~
+0 -1 27491
+D2
+~
+~
+0 -1 27480
+D3
+~
+~
+0 -1 27484
+D4
+~
+~
+0 -1 27785
+S
+#27486
+Prince's Canton~
+You are standing in room #27486.
+~
+0 0 8
+D0
+~
+~
+0 -1 27492
+D1
+~
+~
+0 -1 27488
+D2
+~
+~
+0 -1 27481
+D3
+~
+~
+0 -1 27487
+D4
+~
+~
+0 -1 27786
+S
+#27487
+Prince's Canton~
+You are standing in room #27487.
+~
+0 0 8
+D1
+~
+~
+0 -1 27486
+D4
+~
+~
+0 -1 27787
+S
+#27488
+Prince's Canton~
+You are standing in room #27488.
+~
+0 0 8
+D0
+~
+~
+0 -1 27493
+D1
+~
+~
+0 -1 27489
+D2
+~
+~
+0 -1 27482
+D3
+~
+~
+0 -1 27486
+D4
+~
+~
+0 -1 27788
+S
+#27489
+Prince's Canton~
+You are standing in room #27489.
+~
+0 0 8
+D0
+~
+~
+0 -1 27494
+D1
+~
+~
+0 -1 27490
+D2
+~
+~
+0 -1 27483
+D3
+~
+~
+0 -1 27488
+D4
+~
+~
+0 -1 27789
+S
+#27490
+Prince's Canton~
+You are standing in room #27490.
+~
+0 0 8
+D0
+~
+~
+0 -1 27495
+D1
+~
+~
+0 -1 27491
+D2
+~
+~
+0 -1 27484
+D3
+~
+~
+0 -1 27489
+D4
+~
+~
+0 -1 27790
+S
+#27491
+Prince's Canton~
+You are standing in room #27491.
+~
+0 0 8
+D2
+~
+~
+0 -1 27485
+D3
+~
+~
+0 -1 27490
+D4
+~
+~
+0 -1 27791
+S
+#27492
+Prince's Canton~
+You are standing in room #27492.
+~
+0 0 8
+D1
+~
+~
+0 -1 27493
+D2
+~
+~
+0 -1 27486
+D4
+~
+~
+0 -1 27792
+S
+#27493
+Prince's Canton~
+You are standing in room #27493.
+~
+0 0 8
+D0
+~
+~
+0 -1 27496
+D1
+~
+~
+0 -1 27494
+D2
+~
+~
+0 -1 27488
+D3
+~
+~
+0 -1 27492
+D4
+~
+~
+0 -1 27793
+S
+#27494
+Prince's Canton~
+You are standing in room #27494.
+~
+0 0 8
+D0
+~
+~
+0 -1 27497
+D1
+~
+~
+0 -1 27495
+D2
+~
+~
+0 -1 27489
+D3
+~
+~
+0 -1 27493
+D4
+~
+~
+0 -1 27794
+S
+#27495
+Prince's Canton~
+You are standing in room #27495.
+~
+0 0 8
+D0
+~
+~
+0 -1 27498
+D2
+~
+~
+0 -1 27490
+D3
+~
+~
+0 -1 27494
+D4
+~
+~
+0 -1 27795
+S
+#27496
+Prince's Canton~
+You are standing in room #27496.
+~
+0 0 8
+D1
+~
+~
+0 -1 27497
+D2
+~
+~
+0 -1 27493
+D4
+~
+~
+0 -1 27796
+S
+#27497
+Prince's Canton~
+You are standing in room #27497.
+~
+0 0 8
+D1
+~
+~
+0 -1 27498
+D2
+~
+~
+0 -1 27494
+D3
+~
+~
+0 -1 27496
+D4
+~
+~
+0 -1 27797
+S
+#27498
+Prince's Canton~
+You are standing in room #27498.
+~
+0 0 8
+D2
+~
+~
+0 -1 27495
+D3
+~
+~
+0 -1 27497
+D4
+~
+~
+0 -1 27798
+S
+#27500
+Arena-Prison Upper~
+You are standing in room #27500.
+~
+0 0 8
+D0
+~
+~
+0 -1 27503
+D1
+~
+~
+0 -1 27501
+D5
+~
+~
+0 -1 27200
+S
+#27501
+Arena-Prison Upper~
+You are standing in room #27501.
+~
+0 0 8
+D0
+~
+~
+0 -1 27504
+D3
+~
+~
+0 -1 27500
+D5
+~
+~
+0 -1 27201
+S
+#27503
+Arena-Prison Upper~
+You are standing in room #27503.
+~
+0 0 8
+D0
+~
+~
+0 -1 27507
+D1
+~
+~
+0 -1 27504
+D2
+~
+~
+0 -1 27500
+D5
+~
+~
+0 -1 27203
+S
+#27504
+Arena-Prison Upper~
+You are standing in room #27504.
+~
+0 0 8
+D0
+~
+~
+0 -1 27508
+D1
+~
+~
+0 -1 27505
+D2
+~
+~
+0 -1 27501
+D3
+~
+~
+0 -1 27503
+D5
+~
+~
+0 -1 27204
+S
+#27505
+Arena-Prison Upper~
+You are standing in room #27505.
+~
+0 0 8
+D0
+~
+~
+0 -1 27509
+D1
+~
+~
+0 -1 27506
+D3
+~
+~
+0 -1 27504
+D5
+~
+~
+0 -1 27205
+S
+#27506
+Arena-Prison Upper~
+You are standing in room #27506.
+~
+0 0 8
+D0
+~
+~
+0 -1 27510
+D3
+~
+~
+0 -1 27505
+D5
+~
+~
+0 -1 27206
+S
+#27507
+Arena-Prison Upper~
+You are standing in room #27507.
+~
+0 0 8
+D0
+~
+~
+0 -1 27514
+D1
+~
+~
+0 -1 27508
+D2
+~
+~
+0 -1 27503
+D5
+~
+~
+0 -1 27207
+S
+#27508
+Arena-Prison Upper~
+You are standing in room #27508.
+~
+0 0 8
+D0
+~
+~
+0 -1 27515
+D1
+~
+~
+0 -1 27509
+D2
+~
+~
+0 -1 27504
+D3
+~
+~
+0 -1 27507
+D5
+~
+~
+0 -1 27208
+S
+#27509
+Arena-Prison Upper~
+You are standing in room #27509.
+~
+0 0 8
+D0
+~
+~
+0 -1 27516
+D1
+~
+~
+0 -1 27510
+D2
+~
+~
+0 -1 27505
+D3
+~
+~
+0 -1 27508
+D5
+~
+~
+0 -1 27209
+S
+#27510
+Arena-Prison Upper~
+You are standing in room #27510.
+~
+0 0 8
+D0
+~
+~
+0 -1 27517
+D1
+~
+~
+0 -1 27511
+D2
+~
+~
+0 -1 27506
+D3
+~
+~
+0 -1 27509
+D5
+~
+~
+0 -1 27210
+S
+#27511
+Arena-Prison Upper~
+You are standing in room #27511.
+~
+0 0 8
+D0
+~
+~
+0 -1 27518
+D1
+~
+~
+0 -1 27512
+D3
+~
+~
+0 -1 27510
+D5
+~
+~
+0 -1 27211
+S
+#27512
+Arena-Prison Upper~
+You are standing in room #27512.
+~
+0 0 8
+D0
+~
+~
+0 -1 27519
+D1
+~
+~
+0 -1 27513
+D3
+~
+~
+0 -1 27511
+D5
+~
+~
+0 -1 27212
+S
+#27513
+Arena-Prison Upper~
+You are standing in room #27513.
+~
+0 0 8
+D0
+~
+~
+0 -1 27520
+D3
+~
+~
+0 -1 27512
+D5
+~
+~
+0 -1 27213
+S
+#27514
+Arena-Prison Upper~
+You are standing in room #27514.
+~
+0 0 8
+D0
+~
+~
+0 -1 27523
+D1
+~
+~
+0 -1 27515
+D2
+~
+~
+0 -1 27507
+D5
+~
+~
+0 -1 27214
+S
+#27515
+Arena-Prison Upper~
+You are standing in room #27515.
+~
+0 0 8
+D0
+~
+~
+0 -1 27524
+D1
+~
+~
+0 -1 27516
+D2
+~
+~
+0 -1 27508
+D3
+~
+~
+0 -1 27514
+D5
+~
+~
+0 -1 27215
+S
+#27516
+Arena-Prison Upper~
+You are standing in room #27516.
+~
+0 0 8
+D0
+~
+~
+0 -1 27525
+D1
+~
+~
+0 -1 27517
+D2
+~
+~
+0 -1 27509
+D3
+~
+~
+0 -1 27515
+D5
+~
+~
+0 -1 27216
+S
+#27517
+Arena-Prison Upper~
+You are standing in room #27517.
+~
+0 0 8
+D0
+~
+~
+0 -1 27526
+D1
+~
+~
+0 -1 27518
+D2
+~
+~
+0 -1 27510
+D3
+~
+~
+0 -1 27516
+D5
+~
+~
+0 -1 27217
+S
+#27518
+Arena-Prison Upper~
+You are standing in room #27518.
+~
+0 0 8
+D0
+~
+~
+0 -1 27527
+D1
+~
+~
+0 -1 27519
+D2
+~
+~
+0 -1 27511
+D3
+~
+~
+0 -1 27517
+D5
+~
+~
+0 -1 27218
+S
+#27519
+Arena-Prison Upper~
+You are standing in room #27519.
+~
+0 0 8
+D0
+~
+~
+0 -1 27528
+D1
+~
+~
+0 -1 27520
+D2
+~
+~
+0 -1 27512
+D3
+~
+~
+0 -1 27518
+D5
+~
+~
+0 -1 27219
+S
+#27520
+Arena-Prison Upper~
+You are standing in room #27520.
+~
+0 0 8
+D0
+~
+~
+0 -1 27529
+D1
+~
+~
+0 -1 27521
+D2
+~
+~
+0 -1 27513
+D3
+~
+~
+0 -1 27519
+D5
+~
+~
+0 -1 27220
+S
+#27521
+Arena-Prison Upper~
+You are standing in room #27521.
+~
+0 0 8
+D0
+~
+~
+0 -1 27530
+D1
+~
+~
+0 -1 27522
+D3
+~
+~
+0 -1 27520
+D5
+~
+~
+0 -1 27221
+S
+#27522
+Arena-Prison Upper~
+You are standing in room #27522.
+~
+0 0 8
+D0
+~
+~
+0 -1 27531
+D3
+~
+~
+0 -1 27521
+D5
+~
+~
+0 -1 27222
+S
+#27523
+Arena-Prison Upper~
+You are standing in room #27523.
+~
+0 0 8
+D0
+~
+~
+0 -1 27533
+D1
+~
+~
+0 -1 27524
+D2
+~
+~
+0 -1 27514
+D5
+~
+~
+0 -1 27223
+S
+#27524
+Arena-Prison Upper~
+You are standing in room #27524.
+~
+0 0 8
+D0
+~
+~
+0 -1 27534
+D1
+~
+~
+0 -1 27525
+D2
+~
+~
+0 -1 27515
+D3
+~
+~
+0 -1 27523
+D5
+~
+~
+0 -1 27224
+S
+#27525
+Arena-Prison Upper~
+You are standing in room #27525.
+~
+0 0 8
+D0
+~
+~
+0 -1 27535
+D1
+~
+~
+0 -1 27526
+D2
+~
+~
+0 -1 27516
+D3
+~
+~
+0 -1 27524
+D5
+~
+~
+0 -1 27225
+S
+#27526
+Arena-Prison Upper~
+You are standing in room #27526.
+~
+0 0 8
+D0
+~
+~
+0 -1 27536
+D1
+~
+~
+0 -1 27527
+D2
+~
+~
+0 -1 27517
+D3
+~
+~
+0 -1 27525
+D5
+~
+~
+0 -1 27226
+S
+#27527
+Arena-Prison Upper~
+You are standing in room #27527.
+~
+0 0 8
+D0
+~
+~
+0 -1 27537
+D1
+~
+~
+0 -1 27528
+D2
+~
+~
+0 -1 27518
+D3
+~
+~
+0 -1 27526
+D5
+~
+~
+0 -1 27227
+S
+#27528
+Arena-Prison Upper~
+You are standing in room #27528.
+~
+0 0 8
+D0
+~
+~
+0 -1 27538
+D1
+~
+~
+0 -1 27529
+D2
+~
+~
+0 -1 27519
+D3
+~
+~
+0 -1 27527
+D5
+~
+~
+0 -1 27228
+S
+#27529
+Arena-Prison Upper~
+You are standing in room #27529.
+~
+0 0 8
+D0
+~
+~
+0 -1 27539
+D1
+~
+~
+0 -1 27530
+D2
+~
+~
+0 -1 27520
+D3
+~
+~
+0 -1 27528
+D5
+~
+~
+0 -1 27229
+S
+#27530
+Arena-Prison Upper~
+You are standing in room #27530.
+~
+0 0 8
+D0
+~
+~
+0 -1 27540
+D1
+~
+~
+0 -1 27531
+D2
+~
+~
+0 -1 27521
+D3
+~
+~
+0 -1 27529
+D5
+~
+~
+0 -1 27230
+S
+#27531
+Arena-Prison Upper~
+You are standing in room #27531.
+~
+0 0 8
+D0
+~
+~
+0 -1 27541
+D1
+~
+~
+0 -1 27532
+D2
+~
+~
+0 -1 27522
+D3
+~
+~
+0 -1 27530
+D5
+~
+~
+0 -1 27231
+S
+#27532
+Arena-Prison Upper~
+You are standing in room #27532.
+~
+0 0 8
+D0
+~
+~
+0 -1 27542
+D3
+~
+~
+0 -1 27531
+D5
+~
+~
+0 -1 27232
+S
+#27533
+Arena-Prison Upper~
+You are standing in room #27533.
+~
+0 0 8
+D1
+~
+~
+0 -1 27534
+D2
+~
+~
+0 -1 27523
+D5
+~
+~
+0 -1 27233
+S
+#27534
+Arena-Prison Upper~
+You are standing in room #27534.
+~
+0 0 8
+D1
+~
+~
+0 -1 27535
+D2
+~
+~
+0 -1 27524
+D3
+~
+~
+0 -1 27533
+D5
+~
+~
+0 -1 27234
+S
+#27535
+Arena-Prison Upper~
+You are standing in room #27535.
+~
+0 0 8
+D0
+~
+~
+0 -1 27544
+D1
+~
+~
+0 -1 27536
+D2
+~
+~
+0 -1 27525
+D3
+~
+~
+0 -1 27534
+D5
+~
+~
+0 -1 27235
+S
+#27536
+Arena-Prison Upper~
+You are standing in room #27536.
+~
+0 0 8
+D1
+~
+~
+0 -1 27537
+D2
+~
+~
+0 -1 27526
+D3
+~
+~
+0 -1 27535
+D5
+~
+~
+0 -1 27236
+S
+#27537
+Arena-Prison Upper~
+You are standing in room #27537.
+~
+0 0 8
+D0
+~
+~
+0 -1 27576
+D1
+~
+~
+0 -1 27538
+D2
+~
+~
+0 -1 27527
+D3
+~
+~
+0 -1 27536
+D5
+~
+~
+0 -1 27237
+S
+#27538
+Arena-Prison Upper~
+You are standing in room #27538.
+~
+0 0 8
+D0
+~
+~
+0 -1 27577
+D1
+~
+~
+0 -1 27539
+D2
+~
+~
+0 -1 27528
+D3
+~
+~
+0 -1 27537
+D5
+~
+~
+0 -1 27238
+S
+#27539
+Arena-Prison Upper~
+You are standing in room #27539.
+~
+0 0 8
+D0
+~
+~
+0 -1 27578
+D1
+~
+~
+0 -1 27540
+D2
+~
+~
+0 -1 27529
+D3
+~
+~
+0 -1 27538
+D5
+~
+~
+0 -1 27239
+S
+#27540
+Arena-Prison Upper~
+You are standing in room #27540.
+~
+0 0 8
+D0
+~
+~
+0 -1 27579
+D1
+~
+~
+0 -1 27541
+D2
+~
+~
+0 -1 27530
+D3
+~
+~
+0 -1 27539
+D5
+~
+~
+0 -1 27240
+S
+#27541
+Arena-Prison Upper~
+You are standing in room #27541.
+~
+0 0 8
+D0
+~
+~
+0 -1 27580
+D1
+~
+~
+0 -1 27542
+D2
+~
+~
+0 -1 27531
+D3
+~
+~
+0 -1 27540
+D5
+~
+~
+0 -1 27241
+S
+#27542
+Arena-Prison Upper~
+You are standing in room #27542.
+~
+0 0 8
+D1
+~
+~
+0 -1 27543
+D2
+~
+~
+0 -1 27532
+D3
+~
+~
+0 -1 27541
+D5
+~
+~
+0 -1 27242
+S
+#27543
+Arena-Prison Upper~
+You are standing in room #27543.
+~
+0 0 8
+D0
+~
+~
+0 -1 27607
+D3
+~
+~
+0 -1 27542
+D5
+~
+~
+0 -1 27243
+S
+#27544
+Above Bridge to Military Canton~
+You are standing in room #27544.
+~
+0 0 8
+D0
+~
+~
+0 -1 27583
+D1
+~
+~
+0 -1 27548
+D2
+~
+~
+0 -1 27535
+D3
+~
+~
+0 -1 27546
+D5
+~
+~
+0 -1 27244
+S
+#27546
+Above Canton Canal~
+You are standing in room #27546.
+~
+0 0 8
+D1
+~
+~
+0 -1 27544
+D3
+~
+~
+0 -1 27547
+D5
+~
+~
+0 -1 27246
+S
+#27547
+Above Canton Canal~
+You are standing in room #27547.
+~
+0 0 8
+D1
+~
+~
+0 -1 27546
+D5
+~
+~
+0 -1 27247
+S
+#27548
+Above Canton Canal~
+You are standing in room #27548.
+~
+0 0 8
+D0
+~
+~
+0 -1 27549
+D3
+~
+~
+0 -1 27544
+D5
+~
+~
+0 -1 27248
+S
+#27549
+Above Canton Canal~
+You are standing in room #27549.
+~
+0 0 8
+D1
+~
+~
+0 -1 27550
+D2
+~
+~
+0 -1 27548
+D5
+~
+~
+0 -1 27249
+S
+#27550
+Above Canton Canal~
+You are standing in room #27550.
+~
+0 0 8
+D1
+~
+~
+0 -1 27551
+D3
+~
+~
+0 -1 27549
+D5
+~
+~
+0 -1 27250
+S
+#27551
+Above Canton Canal~
+You are standing in room #27551.
+~
+0 0 8
+D0
+~
+~
+0 -1 27552
+D3
+~
+~
+0 -1 27550
+D5
+~
+~
+0 -1 27251
+S
+#27552
+Above Canton Canal~
+You are standing in room #27552.
+~
+0 0 8
+D1
+~
+~
+0 -1 27553
+D2
+~
+~
+0 -1 27551
+D5
+~
+~
+0 -1 27252
+S
+#27553
+Above Canton Canal~
+You are standing in room #27553.
+~
+0 0 8
+D0
+~
+~
+0 -1 27559
+D1
+~
+~
+0 -1 27554
+D3
+~
+~
+0 -1 27552
+D5
+~
+~
+0 -1 27253
+S
+#27554
+Above Canton Canal~
+You are standing in room #27554.
+~
+0 0 8
+D0
+~
+~
+0 -1 27560
+D1
+~
+~
+0 -1 27555
+D3
+~
+~
+0 -1 27553
+D5
+~
+~
+0 -1 27254
+S
+#27555
+Above Canton Canal~
+You are standing in room #27555.
+~
+0 0 8
+D2
+~
+~
+0 -1 27556
+D3
+~
+~
+0 -1 27554
+D5
+~
+~
+0 -1 27255
+S
+#27556
+Above Canton Canal~
+You are standing in room #27556.
+~
+0 0 8
+D0
+~
+~
+0 -1 27555
+D1
+~
+~
+0 -1 27557
+D5
+~
+~
+0 -1 27256
+S
+#27557
+Above Canton Canal~
+You are standing in room #27557.
+~
+0 0 8
+D2
+~
+~
+0 -1 27558
+D3
+~
+~
+0 -1 27556
+D5
+~
+~
+0 -1 27257
+S
+#27558
+Above Canton Canal~
+You are standing in room #27558.
+~
+0 0 8
+D0
+~
+~
+0 -1 27557
+D5
+~
+~
+0 -1 27258
+S
+#27559
+Above Canton Canal~
+You are standing in room #27559.
+~
+0 0 8
+D0
+~
+~
+0 -1 27561
+D1
+~
+~
+0 -1 27560
+D2
+~
+~
+0 -1 27553
+D5
+~
+~
+0 -1 27259
+S
+#27560
+Above Canton Canal~
+You are standing in room #27560.
+~
+0 0 8
+D0
+~
+~
+0 -1 27562
+D2
+~
+~
+0 -1 27554
+D3
+~
+~
+0 -1 27559
+D5
+~
+~
+0 -1 27260
+S
+#27561
+Above Canton Canal~
+You are standing in room #27561.
+~
+0 0 8
+D1
+~
+~
+0 -1 27562
+D2
+~
+~
+0 -1 27559
+D3
+~
+~
+0 -1 27567
+D5
+~
+~
+0 -1 27261
+S
+#27562
+Above Canton Canal~
+You are standing in room #27562.
+~
+0 0 8
+D1
+~
+~
+0 -1 27563
+D2
+~
+~
+0 -1 27560
+D3
+~
+~
+0 -1 27561
+D5
+~
+~
+0 -1 27262
+S
+#27563
+Above Canton Canal~
+You are standing in room #27563.
+~
+0 0 8
+D0
+~
+~
+0 -1 27564
+D3
+~
+~
+0 -1 27562
+D5
+~
+~
+0 -1 27263
+S
+#27564
+Above Canton Canal~
+You are standing in room #27564.
+~
+0 0 8
+D0
+~
+~
+0 -1 27565
+D2
+~
+~
+0 -1 27563
+D5
+~
+~
+0 -1 27264
+S
+#27565
+Above Canton Canal~
+You are standing in room #27565.
+~
+0 0 8
+D1
+~
+~
+0 -1 27566
+D2
+~
+~
+0 -1 27564
+D5
+~
+~
+0 -1 27265
+S
+#27566
+Above Canton Canal~
+You are standing in room #27566.
+~
+0 0 8
+D0
+~
+~
+0 -1 27653
+D3
+~
+~
+0 -1 27565
+D5
+~
+~
+0 -1 27266
+S
+#27567
+Above Canton Canal~
+You are standing in room #27567.
+~
+0 0 8
+D0
+~
+~
+0 -1 27568
+D1
+~
+~
+0 -1 27561
+D5
+~
+~
+0 -1 27267
+S
+#27568
+Above Canton Canal~
+You are standing in room #27568.
+~
+0 0 8
+D2
+~
+~
+0 -1 27567
+D3
+~
+~
+0 -1 27569
+D5
+~
+~
+0 -1 27268
+S
+#27569
+Above Canton Canal~
+You are standing in room #27569.
+~
+0 0 8
+D0
+~
+~
+0 -1 27570
+D1
+~
+~
+0 -1 27568
+D5
+~
+~
+0 -1 27269
+S
+#27570
+Above Canton Canal~
+You are standing in room #27570.
+~
+0 0 8
+D2
+~
+~
+0 -1 27569
+D3
+~
+~
+0 -1 27571
+D5
+~
+~
+0 -1 27270
+S
+#27571
+Above Canton Canal~
+You are standing in room #27571.
+~
+0 0 8
+D0
+~
+~
+0 -1 27572
+D1
+~
+~
+0 -1 27570
+D5
+~
+~
+0 -1 27271
+S
+#27572
+Above Canton Canal~
+You are standing in room #27572.
+~
+0 0 8
+D2
+~
+~
+0 -1 27571
+D3
+~
+~
+0 -1 27573
+D5
+~
+~
+0 -1 27272
+S
+#27573
+Above Canton Canal~
+You are standing in room #27573.
+~
+0 0 8
+D1
+~
+~
+0 -1 27572
+D3
+~
+~
+0 -1 27574
+D5
+~
+~
+0 -1 27273
+S
+#27574
+Above Canton Canal~
+You are standing in room #27574.
+~
+0 0 8
+D1
+~
+~
+0 -1 27573
+D2
+~
+~
+0 -1 27575
+D5
+~
+~
+0 -1 27274
+S
+#27575
+Above Canton Canal~
+You are standing in room #27575.
+~
+0 0 8
+D0
+~
+~
+0 -1 27574
+D5
+~
+~
+0 -1 27275
+S
+#27576
+Arena-Prison Upper~
+You are standing in room #27576.
+~
+0 0 8
+D1
+~
+~
+0 -1 27577
+D2
+~
+~
+0 -1 27537
+D5
+~
+~
+0 -1 27276
+S
+#27577
+Arena-Prison Upper~
+You are standing in room #27577.
+~
+0 0 8
+D1
+~
+~
+0 -1 27578
+D2
+~
+~
+0 -1 27538
+D3
+~
+~
+0 -1 27576
+D5
+~
+~
+0 -1 27277
+S
+#27578
+Arena-Prison Upper~
+You are standing in room #27578.
+~
+0 0 8
+D0
+~
+~
+0 -1 27581
+D1
+~
+~
+0 -1 27579
+D2
+~
+~
+0 -1 27539
+D3
+~
+~
+0 -1 27577
+D5
+~
+~
+0 -1 27278
+S
+#27579
+Arena-Prison Upper~
+You are standing in room #27579.
+~
+0 0 8
+D0
+~
+~
+0 -1 27582
+D1
+~
+~
+0 -1 27580
+D2
+~
+~
+0 -1 27540
+D3
+~
+~
+0 -1 27578
+D5
+~
+~
+0 -1 27279
+S
+#27580
+Arena-Prison Upper~
+You are standing in room #27580.
+~
+0 0 8
+D2
+~
+~
+0 -1 27541
+D3
+~
+~
+0 -1 27579
+D5
+~
+~
+0 -1 27280
+S
+#27581
+Arena-Prison Upper~
+You are standing in room #27581.
+~
+0 0 8
+D1
+~
+~
+0 -1 27582
+D2
+~
+~
+0 -1 27578
+D5
+~
+~
+0 -1 27281
+S
+#27582
+Arena-Prison Upper~
+You are standing in room #27582.
+~
+0 0 8
+D2
+~
+~
+0 -1 27579
+D3
+~
+~
+0 -1 27581
+D5
+~
+~
+0 -1 27282
+S
+#27583
+Above Military Canton~
+You are standing in room #27583.
+~
+0 0 8
+D0
+~
+~
+0 -1 27588
+D2
+~
+~
+0 -1 27544
+D3
+~
+~
+0 -1 27584
+D5
+~
+~
+0 -1 27283
+S
+#27584
+Above Military Canton~
+You are standing in room #27584.
+~
+0 0 8
+D0
+~
+~
+0 -1 27587
+D1
+~
+~
+0 -1 27583
+D3
+~
+~
+0 -1 27585
+D5
+~
+~
+0 -1 27284
+S
+#27585
+Above Military Canton~
+You are standing in room #27585.
+~
+0 0 8
+D0
+~
+~
+0 -1 27586
+D1
+~
+~
+0 -1 27584
+D5
+~
+~
+0 -1 27285
+S
+#27586
+Above Military Canton~
+You are standing in room #27586.
+~
+0 0 8
+D0
+~
+~
+0 -1 27591
+D1
+~
+~
+0 -1 27587
+D2
+~
+~
+0 -1 27585
+D5
+~
+~
+0 -1 27286
+S
+#27587
+Above Military Canton~
+You are standing in room #27587.
+~
+0 0 8
+D0
+~
+~
+0 -1 27592
+D1
+~
+~
+0 -1 27588
+D2
+~
+~
+0 -1 27584
+D3
+~
+~
+0 -1 27586
+D5
+~
+~
+0 -1 27287
+S
+#27588
+Above Military Canton~
+You are standing in room #27588.
+~
+0 0 8
+D0
+~
+~
+0 -1 27593
+D1
+~
+~
+0 -1 27589
+D2
+~
+~
+0 -1 27583
+D3
+~
+~
+0 -1 27587
+D5
+~
+~
+0 -1 27288
+S
+#27589
+Above Military Canton~
+You are standing in room #27589.
+~
+0 0 8
+D0
+~
+~
+0 -1 27594
+D1
+~
+~
+0 -1 27590
+D3
+~
+~
+0 -1 27588
+D5
+~
+~
+0 -1 27289
+S
+#27590
+Above Military Canton~
+You are standing in room #27590.
+~
+0 0 8
+D0
+~
+~
+0 -1 27595
+D3
+~
+~
+0 -1 27589
+D5
+~
+~
+0 -1 27290
+S
+#27591
+Above Military Canton~
+You are standing in room #27591.
+~
+0 0 8
+D0
+~
+~
+0 -1 27597
+D1
+~
+~
+0 -1 27592
+D2
+~
+~
+0 -1 27586
+D5
+~
+~
+0 -1 27291
+S
+#27592
+Above Military Canton~
+You are standing in room #27592.
+~
+0 0 8
+D0
+~
+~
+0 -1 27598
+D1
+~
+~
+0 -1 27593
+D2
+~
+~
+0 -1 27587
+D3
+~
+~
+0 -1 27591
+D5
+~
+~
+0 -1 27292
+S
+#27593
+Above Military Canton~
+You are standing in room #27593.
+~
+0 0 8
+D0
+~
+~
+0 -1 27599
+D1
+~
+~
+0 -1 27594
+D2
+~
+~
+0 -1 27588
+D3
+~
+~
+0 -1 27592
+D5
+~
+~
+0 -1 27293
+S
+#27594
+Above Military Canton~
+You are standing in room #27594.
+~
+0 0 8
+D0
+~
+~
+0 -1 27600
+D1
+~
+~
+0 -1 27595
+D2
+~
+~
+0 -1 27589
+D3
+~
+~
+0 -1 27593
+D5
+~
+~
+0 -1 27294
+S
+#27595
+Above Military Canton~
+You are standing in room #27595.
+~
+0 0 8
+D0
+~
+~
+0 -1 27601
+D1
+~
+~
+0 -1 27596
+D2
+~
+~
+0 -1 27590
+D3
+~
+~
+0 -1 27594
+D5
+~
+~
+0 -1 27295
+S
+#27596
+Above Military Canton~
+You are standing in room #27596.
+~
+0 0 8
+D3
+~
+~
+0 -1 27595
+D5
+~
+~
+0 -1 27296
+S
+#27597
+Above Military Canton~
+You are standing in room #27597.
+~
+0 0 8
+D0
+~
+~
+0 -1 27602
+D1
+~
+~
+0 -1 27598
+D2
+~
+~
+0 -1 27591
+D5
+~
+~
+0 -1 27297
+S
+#27598
+Above Military Canton~
+You are standing in room #27598.
+~
+0 0 8
+D0
+~
+~
+0 -1 27603
+D1
+~
+~
+0 -1 27599
+D2
+~
+~
+0 -1 27592
+D3
+~
+~
+0 -1 27597
+D5
+~
+~
+0 -1 27298
+S
+#27599
+Above Military Canton~
+You are standing in room #27599.
+~
+0 0 8
+D0
+~
+~
+0 -1 27604
+D1
+~
+~
+0 -1 27600
+D2
+~
+~
+0 -1 27593
+D3
+~
+~
+0 -1 27598
+D5
+~
+~
+0 -1 27299
+S
+#27600
+Above Military Canton~
+You are standing in room #27600.
+~
+0 0 8
+D0
+~
+~
+0 -1 27605
+D1
+~
+~
+0 -1 27601
+D2
+~
+~
+0 -1 27594
+D3
+~
+~
+0 -1 27599
+D5
+~
+~
+0 -1 27300
+S
+#27601
+Above Military Canton~
+You are standing in room #27601.
+~
+0 0 8
+D2
+~
+~
+0 -1 27595
+D3
+~
+~
+0 -1 27600
+D5
+~
+~
+0 -1 27301
+S
+#27602
+Above Military Canton~
+You are standing in room #27602.
+~
+0 0 8
+D1
+~
+~
+0 -1 27603
+D2
+~
+~
+0 -1 27597
+D5
+~
+~
+0 -1 27302
+S
+#27603
+Above Military Canton~
+You are standing in room #27603.
+~
+0 0 8
+D1
+~
+~
+0 -1 27604
+D2
+~
+~
+0 -1 27598
+D3
+~
+~
+0 -1 27602
+D5
+~
+~
+0 -1 27303
+S
+#27604
+Above Military Canton~
+You are standing in room #27604.
+~
+0 0 8
+D0
+~
+~
+0 -1 27606
+D1
+~
+~
+0 -1 27605
+D2
+~
+~
+0 -1 27599
+D3
+~
+~
+0 -1 27603
+D5
+~
+~
+0 -1 27304
+S
+#27605
+Above Military Canton~
+You are standing in room #27605.
+~
+0 0 8
+D2
+~
+~
+0 -1 27600
+D3
+~
+~
+0 -1 27604
+D5
+~
+~
+0 -1 27305
+S
+#27606
+Above Military Canton~
+You are standing in room #27606.
+~
+0 0 8
+D2
+~
+~
+0 -1 27604
+D5
+~
+~
+0 -1 27306
+S
+#27607
+Above Bridge to Market Canton~
+You are standing in room #27607.
+~
+0 0 8
+D0
+~
+~
+8 -1 27608
+D2
+~
+~
+0 -1 27543
+D5
+~
+~
+0 -1 27307
+S
+#27653
+Malana Bridge, Upper~
+You are standing in room #27653.
+~
+0 0 8
+D0
+~
+~
+0 -1 27654
+D1
+~
+~
+8 -1 27636
+D2
+~
+~
+0 -1 27566
+D3
+~
+~
+0 -1 27668
+D4
+~
+~
+0 -1 27135
+D5
+~
+~
+0 -1 27353
+S
+#27654
+Above Canton Canal~
+You are standing in room #27654.
+~
+0 0 8
+D0
+~
+~
+0 -1 27655
+D2
+~
+~
+0 -1 27653
+D5
+~
+~
+0 -1 27354
+S
+#27655
+Above Canton Canal~
+You are standing in room #27655.
+~
+0 0 8
+D0
+~
+~
+0 -1 27656
+D2
+~
+~
+0 -1 27654
+D5
+~
+~
+0 -1 27355
+S
+#27656
+Above Canton Canal~
+You are standing in room #27656.
+~
+0 0 8
+D0
+~
+~
+0 -1 27663
+D1
+~
+~
+0 -1 27659
+D2
+~
+~
+0 -1 27655
+D3
+~
+~
+0 -1 27657
+D5
+~
+~
+0 -1 27356
+S
+#27657
+Above Canton Canal~
+You are standing in room #27657.
+~
+0 0 8
+D0
+~
+~
+0 -1 27662
+D1
+~
+~
+0 -1 27656
+D3
+~
+~
+0 -1 27658
+D5
+~
+~
+0 -1 27357
+S
+#27658
+Above Canton Canal~
+You are standing in room #27658.
+~
+0 0 8
+D0
+~
+~
+0 -1 27661
+D1
+~
+~
+0 -1 27657
+D3
+~
+~
+0 -1 27688
+D5
+~
+~
+0 -1 27358
+S
+#27659
+Above Canton Canal~
+You are standing in room #27659.
+~
+0 0 8
+D0
+~
+~
+0 -1 27664
+D1
+~
+~
+0 -1 27660
+D3
+~
+~
+0 -1 27656
+D5
+~
+~
+0 -1 27359
+S
+#27660
+Above Canton Canal~
+You are standing in room #27660.
+~
+0 0 8
+D0
+~
+~
+0 -1 27665
+D1
+~
+~
+0 -1 27719
+D3
+~
+~
+0 -1 27659
+D5
+~
+~
+0 -1 27360
+S
+#27661
+Above Canton Canal~
+You are standing in room #27661.
+~
+0 0 8
+D1
+~
+~
+0 -1 27662
+D2
+~
+~
+0 -1 27658
+D3
+~
+~
+0 -1 27689
+D5
+~
+~
+0 -1 27361
+S
+#27662
+Above Canton Canal~
+You are standing in room #27662.
+~
+0 0 8
+D1
+~
+~
+0 -1 27663
+D2
+~
+~
+0 -1 27657
+D3
+~
+~
+0 -1 27661
+D5
+~
+~
+0 -1 27362
+S
+#27663
+Above Canton Canal~
+You are standing in room #27663.
+~
+0 0 8
+D0
+~
+~
+0 -1 27666
+D1
+~
+~
+0 -1 27664
+D2
+~
+~
+0 -1 27656
+D3
+~
+~
+0 -1 27662
+D5
+~
+~
+0 -1 27363
+S
+#27664
+Above Canton Canal~
+You are standing in room #27664.
+~
+0 0 8
+D1
+~
+~
+0 -1 27665
+D2
+~
+~
+0 -1 27659
+D3
+~
+~
+0 -1 27663
+D5
+~
+~
+0 -1 27364
+S
+#27665
+Above Canton Canal~
+You are standing in room #27665.
+~
+0 0 8
+D1
+~
+~
+0 -1 27720
+D2
+~
+~
+0 -1 27660
+D3
+~
+~
+0 -1 27664
+D5
+~
+~
+0 -1 27365
+S
+#27666
+Above Canton Canal~
+You are standing in room #27666.
+~
+0 0 8
+D0
+~
+~
+0 -1 27667
+D2
+~
+~
+0 -1 27663
+D5
+~
+~
+0 -1 27366
+S
+#27667
+Above Canton Canal~
+You are standing in room #27667.
+~
+0 0 8
+D0
+~
+~
+0 -1 27718
+D2
+~
+~
+0 -1 27666
+D5
+~
+~
+0 -1 27367
+S
+#27668
+Above South Living Canton~
+You are standing in room #27668.
+~
+0 0 8
+D0
+~
+~
+0 -1 27682
+D1
+~
+~
+0 -1 27653
+D3
+~
+~
+0 -1 27669
+D5
+~
+~
+0 -1 27368
+S
+#27669
+Above South Living Canton~
+You are standing in room #27669.
+~
+0 0 8
+D0
+~
+~
+0 -1 27681
+D1
+~
+~
+0 -1 27668
+D2
+~
+~
+0 -1 27670
+D3
+~
+~
+0 -1 27675
+D5
+~
+~
+0 -1 27369
+S
+#27670
+Above South Living Canton~
+You are standing in room #27670.
+~
+0 0 8
+D0
+~
+~
+0 -1 27669
+D2
+~
+~
+0 -1 27671
+D3
+~
+~
+0 -1 27673
+D5
+~
+~
+0 -1 27370
+S
+#27671
+Above South Living Canton~
+You are standing in room #27671.
+~
+0 0 8
+D0
+~
+~
+0 -1 27670
+D3
+~
+~
+0 -1 27672
+D5
+~
+~
+0 -1 27371
+S
+#27672
+Above South Living Canton~
+You are standing in room #27672.
+~
+0 0 8
+D0
+~
+~
+0 -1 27673
+D1
+~
+~
+0 -1 27671
+D5
+~
+~
+0 -1 27372
+S
+#27673
+Above South Living Canton~
+You are standing in room #27673.
+~
+0 0 8
+D0
+~
+~
+0 -1 27675
+D1
+~
+~
+0 -1 27670
+D2
+~
+~
+0 -1 27672
+D3
+~
+~
+0 -1 27674
+D5
+~
+~
+0 -1 27373
+S
+#27674
+Above South Living Canton~
+You are standing in room #27674.
+~
+0 0 8
+D0
+~
+~
+0 -1 27676
+D1
+~
+~
+0 -1 27673
+D5
+~
+~
+0 -1 27374
+S
+#27675
+Above South Living Canton~
+You are standing in room #27675.
+~
+0 0 8
+D0
+~
+~
+0 -1 27680
+D1
+~
+~
+0 -1 27669
+D2
+~
+~
+0 -1 27673
+D3
+~
+~
+0 -1 27676
+D5
+~
+~
+0 -1 27375
+S
+#27676
+Above South Living Canton~
+You are standing in room #27676.
+~
+0 0 8
+D0
+~
+~
+0 -1 27679
+D1
+~
+~
+0 -1 27675
+D2
+~
+~
+0 -1 27674
+D3
+~
+~
+0 -1 27677
+D5
+~
+~
+0 -1 27376
+S
+#27677
+Above South Living Canton~
+You are standing in room #27677.
+~
+0 0 8
+D0
+~
+~
+0 -1 27678
+D1
+~
+~
+0 -1 27676
+D5
+~
+~
+0 -1 27377
+S
+#27678
+Above South Living Canton~
+You are standing in room #27678.
+~
+0 0 8
+D0
+~
+~
+0 -1 27683
+D1
+~
+~
+0 -1 27679
+D2
+~
+~
+0 -1 27677
+D5
+~
+~
+0 -1 27378
+S
+#27679
+Above South Living Canton~
+You are standing in room #27679.
+~
+0 0 8
+D0
+~
+~
+0 -1 27684
+D1
+~
+~
+0 -1 27680
+D2
+~
+~
+0 -1 27676
+D3
+~
+~
+0 -1 27678
+D5
+~
+~
+0 -1 27379
+S
+#27680
+Above South Living Canton~
+You are standing in room #27680.
+~
+0 0 8
+D0
+~
+~
+0 -1 27685
+D1
+~
+~
+0 -1 27681
+D2
+~
+~
+0 -1 27675
+D3
+~
+~
+0 -1 27679
+D5
+~
+~
+0 -1 27380
+S
+#27681
+Above South Living Canton~
+You are standing in room #27681.
+~
+0 0 8
+D0
+~
+~
+0 -1 27686
+D1
+~
+~
+0 -1 27682
+D2
+~
+~
+0 -1 27669
+D3
+~
+~
+0 -1 27680
+D5
+~
+~
+0 -1 27381
+S
+#27682
+Above South Living Canton~
+You are standing in room #27682.
+~
+0 0 8
+D0
+~
+~
+0 -1 27687
+D2
+~
+~
+0 -1 27668
+D3
+~
+~
+0 -1 27681
+D5
+~
+~
+0 -1 27382
+S
+#27683
+Above South Living Canton~
+You are standing in room #27683.
+~
+0 0 8
+D1
+~
+~
+0 -1 27684
+D2
+~
+~
+0 -1 27678
+D5
+~
+~
+0 -1 27383
+S
+#27684
+Above South Living Canton~
+You are standing in room #27684.
+~
+0 0 8
+D1
+~
+~
+0 -1 27685
+D2
+~
+~
+0 -1 27679
+D3
+~
+~
+0 -1 27683
+D5
+~
+~
+0 -1 27384
+S
+#27685
+Above South Living Canton~
+You are standing in room #27685.
+~
+0 0 8
+D0
+~
+~
+0 -1 27688
+D1
+~
+~
+0 -1 27686
+D2
+~
+~
+0 -1 27680
+D3
+~
+~
+0 -1 27684
+D5
+~
+~
+0 -1 27385
+S
+#27686
+Above South Living Canton~
+You are standing in room #27686.
+~
+0 0 8
+D1
+~
+~
+0 -1 27687
+D2
+~
+~
+0 -1 27681
+D3
+~
+~
+0 -1 27685
+D5
+~
+~
+0 -1 27386
+S
+#27687
+Above South Living Canton~
+You are standing in room #27687.
+~
+0 0 8
+D2
+~
+~
+0 -1 27682
+D3
+~
+~
+0 -1 27686
+D5
+~
+~
+0 -1 27387
+S
+#27688
+Above Bridge to North Living Canton~
+You are standing in room #27688.
+~
+0 0 8
+D0
+~
+~
+0 -1 27689
+D1
+~
+~
+0 -1 27658
+D2
+~
+~
+0 -1 27685
+D3
+~
+~
+0 -1 27690
+D5
+~
+~
+0 -1 27388
+S
+#27689
+Above Bridge to North Living Canton~
+You are standing in room #27689.
+~
+0 0 8
+D0
+~
+~
+0 -1 27698
+D1
+~
+~
+0 -1 27661
+D2
+~
+~
+0 -1 27688
+D3
+~
+~
+0 -1 27697
+D5
+~
+~
+0 -1 27389
+S
+#27690
+Above Canton Canal~
+You are standing in room #27690.
+~
+0 0 8
+D0
+~
+~
+0 -1 27697
+D1
+~
+~
+0 -1 27688
+D3
+~
+~
+0 -1 27691
+D5
+~
+~
+0 -1 27390
+S
+#27691
+Above Canton Canal~
+You are standing in room #27691.
+~
+0 0 8
+D0
+~
+~
+0 -1 27696
+D1
+~
+~
+0 -1 27690
+D3
+~
+~
+0 -1 27692
+D5
+~
+~
+0 -1 27391
+S
+#27692
+Above Canton Canal~
+You are standing in room #27692.
+~
+0 0 8
+D0
+~
+~
+0 -1 27694
+D1
+~
+~
+0 -1 27691
+D2
+~
+~
+0 -1 27693
+D5
+~
+~
+0 -1 27392
+S
+#27693
+Above Canton Canal~
+You are standing in room #27693.
+~
+0 0 8
+D0
+~
+~
+0 -1 27692
+D5
+~
+~
+0 -1 27393
+S
+#27694
+Above Canton Canal~
+You are standing in room #27694.
+~
+0 0 8
+D0
+~
+~
+0 -1 27695
+D1
+~
+~
+0 -1 27696
+D2
+~
+~
+0 -1 27692
+D5
+~
+~
+0 -1 27394
+S
+#27695
+Above Canton Canal~
+You are standing in room #27695.
+~
+0 0 8
+D2
+~
+~
+0 -1 27694
+D5
+~
+~
+0 -1 27395
+S
+#27696
+Above Canton Canal~
+You are standing in room #27696.
+~
+0 0 8
+D1
+~
+~
+0 -1 27697
+D2
+~
+~
+0 -1 27691
+D3
+~
+~
+0 -1 27694
+D5
+~
+~
+0 -1 27396
+S
+#27697
+Above Canton Canal~
+You are standing in room #27697.
+~
+0 0 8
+D1
+~
+~
+0 -1 27689
+D2
+~
+~
+0 -1 27690
+D3
+~
+~
+0 -1 27696
+D5
+~
+~
+0 -1 27397
+S
+#27698
+Above North Living Canton~
+You are standing in room #27698.
+~
+0 0 8
+D0
+~
+~
+0 -1 27705
+D1
+~
+~
+0 -1 27701
+D2
+~
+~
+0 -1 27689
+D3
+~
+~
+0 -1 27699
+D5
+~
+~
+0 -1 27398
+S
+#27699
+Above North Living Canton~
+You are standing in room #27699.
+~
+0 0 8
+D0
+~
+~
+0 -1 27704
+D1
+~
+~
+0 -1 27698
+D3
+~
+~
+0 -1 27700
+D5
+~
+~
+0 -1 27399
+S
+#27700
+Above North Living Canton~
+You are standing in room #27700.
+~
+0 0 8
+D0
+~
+~
+0 -1 27703
+D1
+~
+~
+0 -1 27699
+D5
+~
+~
+0 -1 27400
+S
+#27701
+Above North Living Canton~
+You are standing in room #27701.
+~
+0 0 8
+D0
+~
+~
+0 -1 27706
+D1
+~
+~
+0 -1 27702
+D3
+~
+~
+0 -1 27698
+D5
+~
+~
+0 -1 27401
+S
+#27702
+Above North Living Canton~
+You are standing in room #27702.
+~
+0 0 8
+D0
+~
+~
+0 -1 27707
+D3
+~
+~
+0 -1 27701
+D5
+~
+~
+0 -1 27402
+S
+#27703
+Above North Living Canton~
+You are standing in room #27703.
+~
+0 0 8
+D0
+~
+~
+0 -1 27708
+D1
+~
+~
+0 -1 27704
+D2
+~
+~
+0 -1 27700
+D5
+~
+~
+0 -1 27403
+S
+#27704
+Above North Living Canton~
+You are standing in room #27704.
+~
+0 0 8
+D0
+~
+~
+0 -1 27709
+D1
+~
+~
+0 -1 27705
+D2
+~
+~
+0 -1 27699
+D3
+~
+~
+0 -1 27703
+D5
+~
+~
+0 -1 27404
+S
+#27705
+Above North Living Canton~
+You are standing in room #27705.
+~
+0 0 8
+D0
+~
+~
+0 -1 27710
+D1
+~
+~
+0 -1 27706
+D2
+~
+~
+0 -1 27698
+D3
+~
+~
+0 -1 27704
+D5
+~
+~
+0 -1 27405
+S
+#27706
+Above North Living Canton~
+You are standing in room #27706.
+~
+0 0 8
+D0
+~
+~
+0 -1 27711
+D1
+~
+~
+0 -1 27707
+D2
+~
+~
+0 -1 27701
+D3
+~
+~
+0 -1 27705
+D5
+~
+~
+0 -1 27406
+S
+#27707
+Above North Living Canton~
+You are standing in room #27707.
+~
+0 0 8
+D0
+~
+~
+0 -1 27712
+D2
+~
+~
+0 -1 27702
+D3
+~
+~
+0 -1 27706
+D5
+~
+~
+0 -1 27407
+S
+#27708
+Above North Living Canton~
+You are standing in room #27708.
+~
+0 0 8
+D1
+~
+~
+0 -1 27709
+D2
+~
+~
+0 -1 27703
+D5
+~
+~
+0 -1 27408
+S
+#27709
+Above North Living Canton~
+You are standing in room #27709.
+~
+0 0 8
+D0
+~
+~
+0 -1 27713
+D1
+~
+~
+0 -1 27710
+D2
+~
+~
+0 -1 27704
+D3
+~
+~
+0 -1 27708
+D5
+~
+~
+0 -1 27409
+S
+#27710
+Above North Living Canton~
+You are standing in room #27710.
+~
+0 0 8
+D0
+~
+~
+0 -1 27714
+D1
+~
+~
+0 -1 27711
+D2
+~
+~
+0 -1 27705
+D3
+~
+~
+0 -1 27709
+D5
+~
+~
+0 -1 27410
+S
+#27711
+Above North Living Canton~
+You are standing in room #27711.
+~
+0 0 8
+D0
+~
+~
+0 -1 27715
+D1
+~
+~
+0 -1 27712
+D2
+~
+~
+0 -1 27706
+D3
+~
+~
+0 -1 27710
+D5
+~
+~
+0 -1 27411
+S
+#27712
+Above North Living Canton~
+You are standing in room #27712.
+~
+0 0 8
+D1
+~
+~
+0 -1 27718
+D2
+~
+~
+0 -1 27707
+D3
+~
+~
+0 -1 27711
+D5
+~
+~
+0 -1 27412
+S
+#27713
+Above North Living Canton~
+You are standing in room #27713.
+~
+0 0 8
+D1
+~
+~
+0 -1 27714
+D2
+~
+~
+0 -1 27709
+D5
+~
+~
+0 -1 27413
+S
+#27714
+Above North Living Canton~
+You are standing in room #27714.
+~
+0 0 8
+D0
+~
+~
+0 -1 27716
+D1
+~
+~
+0 -1 27715
+D2
+~
+~
+0 -1 27710
+D3
+~
+~
+0 -1 27713
+D5
+~
+~
+0 -1 27414
+S
+#27715
+Above North Living Canton~
+You are standing in room #27715.
+~
+0 0 8
+D0
+~
+~
+0 -1 27717
+D2
+~
+~
+0 -1 27711
+D3
+~
+~
+0 -1 27714
+D5
+~
+~
+0 -1 27415
+S
+#27716
+Above North Living Canton~
+You are standing in room #27716.
+~
+0 0 8
+D1
+~
+~
+0 -1 27717
+D2
+~
+~
+0 -1 27714
+D5
+~
+~
+0 -1 27416
+S
+#27717
+Above North Living Canton~
+You are standing in room #27717.
+~
+0 0 8
+D2
+~
+~
+0 -1 27715
+D3
+~
+~
+0 -1 27716
+D5
+~
+~
+0 -1 27417
+S
+#27718
+Above Bridge to Prince's Canton~
+You are standing in room #27718.
+~
+0 0 8
+D0
+~
+~
+0 -1 27744
+D1
+~
+~
+0 -1 27739
+D2
+~
+~
+0 -1 27667
+D3
+~
+~
+0 -1 27712
+D5
+~
+~
+0 -1 27418
+S
+#27719
+Above Bridge to Prince's Canton~
+You are standing in room #27719.
+~
+0 0 8
+D0
+~
+~
+0 -1 27720
+D1
+~
+~
+0 -1 27721
+D2
+~
+~
+8 -1 27649
+D3
+~
+~
+0 -1 27660
+D5
+~
+~
+0 -1 27419
+S
+#27720
+Above Bridge to Prince's Canton~
+You are standing in room #27720.
+~
+0 0 8
+D0
+~
+~
+0 -1 27727
+D1
+~
+~
+0 -1 27724
+D2
+~
+~
+0 -1 27719
+D3
+~
+~
+0 -1 27665
+D5
+~
+~
+0 -1 27420
+S
+#27721
+Above Canton Canal~
+You are standing in room #27721.
+~
+0 0 8
+D0
+~
+~
+0 -1 27724
+D1
+~
+~
+0 -1 27722
+D3
+~
+~
+0 -1 27719
+D5
+~
+~
+0 -1 27421
+S
+#27722
+Above Canton Canal~
+You are standing in room #27722.
+~
+0 0 8
+D0
+~
+~
+0 -1 27725
+D1
+~
+~
+0 -1 27723
+D3
+~
+~
+0 -1 27721
+D5
+~
+~
+0 -1 27422
+S
+#27723
+Above Canton Canal~
+You are standing in room #27723.
+~
+0 0 8
+D0
+~
+~
+0 -1 27726
+D3
+~
+~
+0 -1 27722
+D5
+~
+~
+0 -1 27423
+S
+#27724
+Above Canton Canal~
+You are standing in room #27724.
+~
+0 0 8
+D1
+~
+~
+0 -1 27725
+D2
+~
+~
+0 -1 27721
+D3
+~
+~
+0 -1 27720
+D5
+~
+~
+0 -1 27424
+S
+#27725
+Above Canton Canal~
+You are standing in room #27725.
+~
+0 0 8
+D1
+~
+~
+0 -1 27726
+D2
+~
+~
+0 -1 27722
+D3
+~
+~
+0 -1 27724
+D5
+~
+~
+0 -1 27425
+S
+#27726
+Above Canton Canal~
+You are standing in room #27726.
+~
+0 0 8
+D2
+~
+~
+0 -1 27723
+D3
+~
+~
+0 -1 27725
+D5
+~
+~
+0 -1 27426
+S
+#27727
+Above Prince's Canton~
+You are standing in room #27727.
+~
+0 0 8
+D0
+~
+~
+0 -1 27735
+D1
+~
+~
+0 -1 27730
+D2
+~
+~
+0 -1 27720
+D3
+~
+~
+0 -1 27728
+D5
+~
+~
+0 -1 27427
+S
+#27728
+Above Prince's Canton~
+You are standing in room #27728.
+~
+0 0 8
+D0
+~
+~
+0 -1 27734
+D1
+~
+~
+0 -1 27727
+D3
+~
+~
+0 -1 27729
+D5
+~
+~
+0 -1 27428
+S
+#27729
+Above Prince's Canton~
+You are standing in room #27729.
+~
+0 0 8
+D0
+~
+~
+0 -1 27733
+D1
+~
+~
+0 -1 27728
+D5
+~
+~
+0 -1 27429
+S
+#27730
+Above Prince's Canton~
+You are standing in room #27730.
+~
+0 0 8
+D0
+~
+~
+0 -1 27736
+D1
+~
+~
+0 -1 27731
+D3
+~
+~
+0 -1 27727
+D5
+~
+~
+0 -1 27430
+S
+#27731
+Above Prince's Canton~
+You are standing in room #27731.
+~
+0 0 8
+D0
+~
+~
+0 -1 27737
+D1
+~
+~
+0 -1 27732
+D3
+~
+~
+0 -1 27730
+D5
+~
+~
+0 -1 27431
+S
+#27732
+Above Prince's Canton~
+You are standing in room #27732.
+~
+0 0 8
+D0
+~
+~
+0 -1 27738
+D3
+~
+~
+0 -1 27731
+D5
+~
+~
+0 -1 27432
+S
+#27733
+Above Prince's Canton~
+You are standing in room #27733.
+~
+0 0 8
+D0
+~
+~
+0 -1 27739
+D1
+~
+~
+0 -1 27734
+D2
+~
+~
+0 -1 27729
+D5
+~
+~
+0 -1 27433
+S
+#27734
+Above Prince's Canton~
+You are standing in room #27734.
+~
+0 0 8
+D0
+~
+~
+0 -1 27740
+D1
+~
+~
+0 -1 27735
+D2
+~
+~
+0 -1 27728
+D3
+~
+~
+0 -1 27733
+D5
+~
+~
+0 -1 27434
+S
+#27735
+Above Prince's Canton~
+You are standing in room #27735.
+~
+0 0 8
+D0
+~
+~
+0 -1 27741
+D1
+~
+~
+0 -1 27736
+D2
+~
+~
+0 -1 27727
+D3
+~
+~
+0 -1 27734
+D5
+~
+~
+0 -1 27435
+S
+#27736
+Above Prince's Canton~
+You are standing in room #27736.
+~
+0 0 8
+D0
+~
+~
+0 -1 27742
+D1
+~
+~
+0 -1 27737
+D2
+~
+~
+0 -1 27730
+D3
+~
+~
+0 -1 27735
+D5
+~
+~
+0 -1 27436
+S
+#27737
+Above Prince's Canton~
+You are standing in room #27737.
+~
+0 0 8
+D0
+~
+~
+0 -1 27743
+D1
+~
+~
+0 -1 27738
+D2
+~
+~
+0 -1 27731
+D3
+~
+~
+0 -1 27736
+D5
+~
+~
+0 -1 27437
+S
+#27738
+Above Prince's Canton~
+You are standing in room #27738.
+~
+0 0 8
+D2
+~
+~
+0 -1 27732
+D3
+~
+~
+0 -1 27737
+D5
+~
+~
+0 -1 27438
+S
+#27739
+Above Prince's Canton~
+You are standing in room #27739.
+~
+0 0 8
+D0
+~
+~
+0 -1 27771
+D1
+~
+~
+0 -1 27740
+D2
+~
+~
+0 -1 27733
+D3
+~
+~
+0 -1 27718
+D5
+~
+~
+0 -1 27439
+S
+#27740
+Above Prince's Canton~
+You are standing in room #27740.
+~
+0 0 8
+D0
+~
+~
+0 -1 27772
+D1
+~
+~
+0 -1 27741
+D2
+~
+~
+0 -1 27734
+D3
+~
+~
+0 -1 27739
+D5
+~
+~
+0 -1 27440
+S
+#27741
+Above Prince's Canton~
+You are standing in room #27741.
+~
+0 0 8
+D0
+~
+~
+0 -1 27773
+D1
+~
+~
+0 -1 27742
+D2
+~
+~
+0 -1 27735
+D3
+~
+~
+0 -1 27740
+D5
+~
+~
+0 -1 27441
+S
+#27742
+Above Prince's Canton~
+You are standing in room #27742.
+~
+0 0 8
+D0
+~
+~
+0 -1 27774
+D1
+~
+~
+0 -1 27743
+D2
+~
+~
+0 -1 27736
+D3
+~
+~
+0 -1 27741
+D5
+~
+~
+0 -1 27442
+S
+#27743
+Above Prince's Canton~
+You are standing in room #27743.
+~
+0 0 8
+D0
+~
+~
+0 -1 27775
+D2
+~
+~
+0 -1 27737
+D3
+~
+~
+0 -1 27742
+D5
+~
+~
+0 -1 27443
+S
+#27744
+Above Canton Canal~
+You are standing in room #27744.
+~
+0 0 8
+D2
+~
+~
+0 -1 27718
+D3
+~
+~
+0 -1 27745
+D5
+~
+~
+0 -1 27444
+S
+#27745
+Above Canton Canal~
+You are standing in room #27745.
+~
+0 0 8
+D0
+~
+~
+0 -1 27746
+D1
+~
+~
+0 -1 27744
+D5
+~
+~
+0 -1 27445
+S
+#27746
+Above Canton Canal~
+You are standing in room #27746.
+~
+0 0 8
+D0
+~
+~
+0 -1 27747
+D2
+~
+~
+0 -1 27745
+D5
+~
+~
+0 -1 27446
+S
+#27747
+Above Canton Canal~
+You are standing in room #27747.
+~
+0 0 8
+D2
+~
+~
+0 -1 27746
+D3
+~
+~
+0 -1 27748
+D5
+~
+~
+0 -1 27447
+S
+#27748
+Above Canton Canal~
+You are standing in room #27748.
+~
+0 0 8
+D0
+~
+~
+0 -1 27759
+D1
+~
+~
+0 -1 27747
+D3
+~
+~
+0 -1 27749
+D5
+~
+~
+0 -1 27448
+S
+#27749
+Above Canton Canal~
+You are standing in room #27749.
+~
+0 0 8
+D0
+~
+~
+0 -1 27760
+D1
+~
+~
+0 -1 27748
+D3
+~
+~
+0 -1 27750
+D5
+~
+~
+0 -1 27449
+S
+#27750
+Above Canton Canal~
+You are standing in room #27750.
+~
+0 0 8
+D1
+~
+~
+0 -1 27749
+D2
+~
+~
+0 -1 27751
+D5
+~
+~
+0 -1 27450
+S
+#27751
+Above Canton Canal~
+You are standing in room #27751.
+~
+0 0 8
+D0
+~
+~
+0 -1 27750
+D3
+~
+~
+0 -1 27752
+D5
+~
+~
+0 -1 27451
+S
+#27752
+Above Canton Canal~
+You are standing in room #27752.
+~
+0 0 8
+D1
+~
+~
+0 -1 27751
+D2
+~
+~
+0 -1 27753
+D5
+~
+~
+0 -1 27452
+S
+#27753
+Above Canton Canal~
+You are standing in room #27753.
+~
+0 0 8
+D0
+~
+~
+0 -1 27752
+D3
+~
+~
+0 -1 27754
+D5
+~
+~
+0 -1 27453
+S
+#27754
+Above Canton Canal~
+You are standing in room #27754.
+~
+0 0 8
+D1
+~
+~
+0 -1 27753
+D2
+~
+~
+0 -1 27755
+D5
+~
+~
+0 -1 27454
+S
+#27755
+Above Canton Canal~
+You are standing in room #27755.
+~
+0 0 8
+D0
+~
+~
+0 -1 27754
+D3
+~
+~
+0 -1 27756
+D5
+~
+~
+0 -1 27455
+S
+#27756
+Above Canton Canal~
+You are standing in room #27756.
+~
+0 0 8
+D1
+~
+~
+0 -1 27755
+D3
+~
+~
+0 -1 27757
+D5
+~
+~
+0 -1 27456
+S
+#27757
+Above Canton Canal~
+You are standing in room #27757.
+~
+0 0 8
+D0
+~
+~
+0 -1 27758
+D1
+~
+~
+0 -1 27756
+D5
+~
+~
+0 -1 27457
+S
+#27758
+Above Canton Canal~
+You are standing in room #27758.
+~
+0 0 8
+D2
+~
+~
+0 -1 27757
+D5
+~
+~
+0 -1 27458
+S
+#27759
+Above Canton Canal~
+You are standing in room #27759.
+~
+0 0 8
+D0
+~
+~
+0 -1 27761
+D2
+~
+~
+0 -1 27748
+D3
+~
+~
+0 -1 27760
+D5
+~
+~
+0 -1 27459
+S
+#27760
+Above Canton Canal~
+You are standing in room #27760.
+~
+0 0 8
+D0
+~
+~
+0 -1 27766
+D1
+~
+~
+0 -1 27759
+D2
+~
+~
+0 -1 27749
+D5
+~
+~
+0 -1 27460
+S
+#27761
+Above Canton Canal~
+You are standing in room #27761.
+~
+0 0 8
+D1
+~
+~
+0 -1 27762
+D2
+~
+~
+0 -1 27759
+D3
+~
+~
+0 -1 27766
+D5
+~
+~
+0 -1 27461
+S
+#27762
+Above Canton Canal~
+You are standing in room #27762.
+~
+0 0 8
+D0
+~
+~
+0 -1 27763
+D3
+~
+~
+0 -1 27761
+D5
+~
+~
+0 -1 27462
+S
+#27763
+Above Canton Canal~
+You are standing in room #27763.
+~
+0 0 8
+D1
+~
+~
+0 -1 27764
+D2
+~
+~
+0 -1 27762
+D5
+~
+~
+0 -1 27463
+S
+#27764
+Above Canton Canal~
+You are standing in room #27764.
+~
+0 0 8
+D0
+~
+~
+0 -1 27765
+D3
+~
+~
+0 -1 27763
+D5
+~
+~
+0 -1 27464
+S
+#27765
+Above Canton Canal~
+You are standing in room #27765.
+~
+0 0 8
+D2
+~
+~
+0 -1 27764
+D5
+~
+~
+0 -1 27465
+S
+#27766
+Above Canton Canal~
+You are standing in room #27766.
+~
+0 0 8
+D1
+~
+~
+0 -1 27761
+D2
+~
+~
+0 -1 27760
+D3
+~
+~
+0 -1 27767
+D5
+~
+~
+0 -1 27466
+S
+#27767
+Above Canton Canal~
+You are standing in room #27767.
+~
+0 0 8
+D0
+~
+~
+0 -1 27768
+D1
+~
+~
+0 -1 27766
+D5
+~
+~
+0 -1 27467
+S
+#27768
+Above Canton Canal~
+You are standing in room #27768.
+~
+0 0 8
+D2
+~
+~
+0 -1 27767
+D3
+~
+~
+0 -1 27769
+D5
+~
+~
+0 -1 27468
+S
+#27769
+Above Canton Canal~
+You are standing in room #27769.
+~
+0 0 8
+D1
+~
+~
+0 -1 27768
+D3
+~
+~
+0 -1 27770
+D5
+~
+~
+0 -1 27469
+S
+#27770
+Above Canton Canal~
+You are standing in room #27770.
+~
+0 0 8
+D1
+~
+~
+0 -1 27769
+D5
+~
+~
+0 -1 27470
+S
+#27771
+Above Prince's Canton~
+You are standing in room #27771.
+~
+0 0 8
+D0
+~
+~
+0 -1 27776
+D1
+~
+~
+0 -1 27772
+D2
+~
+~
+0 -1 27739
+D5
+~
+~
+0 -1 27471
+S
+#27772
+Above Prince's Canton~
+You are standing in room #27772.
+~
+0 0 8
+D0
+~
+~
+0 -1 27778
+D1
+~
+~
+0 -1 27773
+D2
+~
+~
+0 -1 27740
+D3
+~
+~
+0 -1 27771
+D5
+~
+~
+0 -1 27472
+S
+#27773
+Above Prince's Canton~
+You are standing in room #27773.
+~
+0 0 8
+D0
+~
+~
+0 -1 27779
+D1
+~
+~
+0 -1 27774
+D2
+~
+~
+0 -1 27741
+D3
+~
+~
+0 -1 27772
+D5
+~
+~
+0 -1 27473
+S
+#27774
+Above Prince's Canton~
+You are standing in room #27774.
+~
+0 0 8
+D0
+~
+~
+0 -1 27780
+D1
+~
+~
+0 -1 27775
+D2
+~
+~
+0 -1 27742
+D3
+~
+~
+0 -1 27773
+D5
+~
+~
+0 -1 27474
+S
+#27775
+Above Prince's Canton~
+You are standing in room #27775.
+~
+0 0 8
+D2
+~
+~
+0 -1 27743
+D3
+~
+~
+0 -1 27774
+D5
+~
+~
+0 -1 27475
+S
+#27776
+Above Prince's Canton~
+You are standing in room #27776.
+~
+0 0 8
+D0
+~
+~
+0 -1 27782
+D1
+~
+~
+0 -1 27778
+D2
+~
+~
+0 -1 27771
+D3
+~
+~
+0 -1 27777
+D5
+~
+~
+0 -1 27476
+S
+#27777
+Above Prince's Canton~
+You are standing in room #27777.
+~
+0 0 8
+D0
+~
+~
+0 -1 27781
+D1
+~
+~
+0 -1 27776
+D5
+~
+~
+0 -1 27477
+S
+#27778
+Above Prince's Canton~
+You are standing in room #27778.
+~
+0 0 8
+D0
+~
+~
+0 -1 27783
+D1
+~
+~
+0 -1 27779
+D2
+~
+~
+0 -1 27772
+D3
+~
+~
+0 -1 27776
+D5
+~
+~
+0 -1 27478
+S
+#27779
+Above Prince's Canton~
+You are standing in room #27779.
+~
+0 0 8
+D0
+~
+~
+0 -1 27784
+D1
+~
+~
+0 -1 27780
+D2
+~
+~
+0 -1 27773
+D3
+~
+~
+0 -1 27778
+D5
+~
+~
+0 -1 27479
+S
+#27780
+Above Prince's Canton~
+You are standing in room #27780.
+~
+0 0 8
+D0
+~
+~
+0 -1 27785
+D2
+~
+~
+0 -1 27774
+D3
+~
+~
+0 -1 27779
+D5
+~
+~
+0 -1 27480
+S
+#27781
+Above Prince's Canton~
+You are standing in room #27781.
+~
+0 0 8
+D0
+~
+~
+0 -1 27786
+D1
+~
+~
+0 -1 27782
+D2
+~
+~
+0 -1 27777
+D5
+~
+~
+0 -1 27481
+S
+#27782
+Above Prince's Canton~
+You are standing in room #27782.
+~
+0 0 8
+D0
+~
+~
+0 -1 27788
+D1
+~
+~
+0 -1 27783
+D2
+~
+~
+0 -1 27776
+D3
+~
+~
+0 -1 27781
+D5
+~
+~
+0 -1 27482
+S
+#27783
+Above Prince's Canton~
+You are standing in room #27783.
+~
+0 0 8
+D0
+~
+~
+0 -1 27789
+D1
+~
+~
+0 -1 27784
+D2
+~
+~
+0 -1 27778
+D3
+~
+~
+0 -1 27782
+D5
+~
+~
+0 -1 27483
+S
+#27784
+Above Prince's Canton~
+You are standing in room #27784.
+~
+0 0 8
+D0
+~
+~
+0 -1 27790
+D1
+~
+~
+0 -1 27785
+D2
+~
+~
+0 -1 27779
+D3
+~
+~
+0 -1 27783
+D5
+~
+~
+0 -1 27484
+S
+#27785
+Above Prince's Canton~
+You are standing in room #27785.
+~
+0 0 8
+D0
+~
+~
+0 -1 27791
+D2
+~
+~
+0 -1 27780
+D3
+~
+~
+0 -1 27784
+D5
+~
+~
+0 -1 27485
+S
+#27786
+Above Prince's Canton~
+You are standing in room #27786.
+~
+0 0 8
+D0
+~
+~
+0 -1 27792
+D1
+~
+~
+0 -1 27788
+D2
+~
+~
+0 -1 27781
+D3
+~
+~
+0 -1 27787
+D5
+~
+~
+0 -1 27486
+S
+#27787
+Above Prince's Canton~
+You are standing in room #27787.
+~
+0 0 8
+D1
+~
+~
+0 -1 27786
+D5
+~
+~
+0 -1 27487
+S
+#27788
+Above Prince's Canton~
+You are standing in room #27788.
+~
+0 0 8
+D0
+~
+~
+0 -1 27793
+D1
+~
+~
+0 -1 27789
+D2
+~
+~
+0 -1 27782
+D3
+~
+~
+0 -1 27786
+D5
+~
+~
+0 -1 27488
+S
+#27789
+Above Prince's Canton~
+You are standing in room #27789.
+~
+0 0 8
+D0
+~
+~
+0 -1 27794
+D1
+~
+~
+0 -1 27790
+D2
+~
+~
+0 -1 27783
+D3
+~
+~
+0 -1 27788
+D5
+~
+~
+0 -1 27489
+S
+#27790
+Above Prince's Canton~
+You are standing in room #27790.
+~
+0 0 8
+D0
+~
+~
+0 -1 27795
+D1
+~
+~
+0 -1 27791
+D2
+~
+~
+0 -1 27784
+D3
+~
+~
+0 -1 27789
+D5
+~
+~
+0 -1 27490
+S
+#27791
+Above Prince's Canton~
+You are standing in room #27791.
+~
+0 0 8
+D2
+~
+~
+0 -1 27785
+D3
+~
+~
+0 -1 27790
+D5
+~
+~
+0 -1 27491
+S
+#27792
+Above Prince's Canton~
+You are standing in room #27792.
+~
+0 0 8
+D1
+~
+~
+0 -1 27793
+D2
+~
+~
+0 -1 27786
+D5
+~
+~
+0 -1 27492
+S
+#27793
+Above Prince's Canton~
+You are standing in room #27793.
+~
+0 0 8
+D0
+~
+~
+0 -1 27796
+D1
+~
+~
+0 -1 27794
+D2
+~
+~
+0 -1 27788
+D3
+~
+~
+0 -1 27792
+D5
+~
+~
+0 -1 27493
+S
+#27794
+Above Prince's Canton~
+You are standing in room #27794.
+~
+0 0 8
+D0
+~
+~
+0 -1 27797
+D1
+~
+~
+0 -1 27795
+D2
+~
+~
+0 -1 27789
+D3
+~
+~
+0 -1 27793
+D5
+~
+~
+0 -1 27494
+S
+#27795
+Above Prince's Canton~
+You are standing in room #27795.
+~
+0 0 8
+D0
+~
+~
+0 -1 27798
+D2
+~
+~
+0 -1 27790
+D3
+~
+~
+0 -1 27794
+D5
+~
+~
+0 -1 27495
+S
+#27796
+Above Prince's Canton~
+You are standing in room #27796.
+~
+0 0 8
+D1
+~
+~
+0 -1 27797
+D2
+~
+~
+0 -1 27793
+D5
+~
+~
+0 -1 27496
+S
+#27797
+Above Prince's Canton~
+You are standing in room #27797.
+~
+0 0 8
+D1
+~
+~
+0 -1 27798
+D2
+~
+~
+0 -1 27794
+D3
+~
+~
+0 -1 27796
+D5
+~
+~
+0 -1 27497
+S
+#27798
+Above Prince's Canton~
+You are standing in room #27798.
+~
+0 0 8
+D2
+~
+~
+0 -1 27795
+D3
+~
+~
+0 -1 27797
+D5
+~
+~
+0 -1 27498
+S
+
+#27810
+A Placeholder room~
+{cStart new rooms from this number.{x
+~
+0 1|4|8|512 8
+S
+#0
+
+
+#$

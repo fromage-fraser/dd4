@@ -956,7 +956,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                 if (dam > MAX_DAMAGE)
                 {
-                        char buf[MAX_STRING_LENGTH];
+                        /*char buf[MAX_STRING_LENGTH];
 
                         if (IS_NPC(ch) && ch->desc)
                                 sprintf(buf, "Damage: %d from %s by %s: > %d points with %d dt!",
@@ -972,7 +972,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                                         MAX_DAMAGE,
                                         dt);
 
-                        log_string(buf);
+                        log_string(buf);*/
                         dam = MAX_DAMAGE;
                 }
 
@@ -2663,7 +2663,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                  */
 
                 if (dam > 0)
-                        sprintf(buf2, "{W$c %s {Wyou%c{x",       vp, punct);
+                        sprintf(buf2, "$c %s you%c",       vp, punct);
                 else
                         sprintf(buf2, "$n %s you%c",       vp, punct);
                 
@@ -2698,7 +2698,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's poisoned %s %s {x{Wyou%c{x", attack, vp, punct);
+                                sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
 
@@ -2710,12 +2710,15 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-
+                        
                         if (dam > 0)
-                                sprintf(buf2, "{W$c's %s %s {Wyou%c{x", attack, vp, punct);
-                        else
+                        {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
-
+                        }
+                        else
+                        {       
+                                sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
+                        }
                         sprintf(buf3, "$c's %s %s $N%c",  attack, vp, punct);
                         sprintf(buf4, "Your %s %s you%c", attack, vp, punct);
                         sprintf(buf5, "$c's %s %s $n%c",  attack, vp, punct);
@@ -6543,177 +6546,179 @@ void check_autoloot (CHAR_DATA *ch, CHAR_DATA *victim)
         }
 }
 
-/* 
- * Get the damage string for the amount of damage you're doing. 
- * takes damage amount and TRUE/FALSE depending on if you want
- * a singular or plural string returned.
- * --Owl 12/7/22 
- */
- 
+
 char *get_damage_string( int damage_value, bool is_singular )
 {
+        /* 
+        * Get the damage string for the amount of damage you're doing. 
+        * takes damage amount and TRUE/FALSE depending on if you want
+        * a singular or plural string returned.
+        * --Owl 12/7/22 
+        */
+
         char *vs;
         char *vp;
 
         if (damage_value == 0)
+
         {
-                vs = "miss";
-                vp = "misses";
+                vs = "<0><534><124>miss<0>";
+                vp = "<0><534><124>misses<0>";
         }
         else if (damage_value <= 8)
         {
-                vs = "scratch";
-                vp = "scratches";
+                vs = "<0><236>scratch<0>";
+                vp = "<0><236>scratches<0>";
         }
         else if (damage_value <= 16)
         {
-                vs = "graze";
-                vp = "grazes";
+                vs = "<0><237>graze<0>";
+                vp = "<0><237>grazes<0>";
         }
         else if (damage_value <= 24)
         {
-                vs = "hit";
-                vp = "hits";
+                vs = "<0><239>hit<0>";
+                vp = "<0><239>hits<0>";
         }
         else if (damage_value <= 32)
         {
-                vs = "injure";
-                vp = "injures";
+                vs = "<0><240>injure<0>";
+                vp = "<0><240>injures<0>";
         }
         else if (damage_value <= 40)
         {
-                vs = "wound";
-                vp = "wounds";
+                vs = "<0><241>wound<0>";
+                vp = "<0><241>wounds<0>";
         }
         else if (damage_value <= 48)
         {
-                vs = "maul";
-                vp = "mauls";
+                vs = "<0><242>maul<0>";
+                vp = "<0><242>mauls<0>";
         }
         else if (damage_value <= 56)
         {
-                vs = "decimate";
-                vp = "decimates";
+                vs = "<0><243>decimate<0>";
+                vp = "<0><243>decimates<0>";
         }
         else if (damage_value <= 64)
         {
-                vs = "mangle";
-                vp = "mangles";
+                vs = "<0><245>mangle<0>";
+                vp = "<0><245>mangles<0>";
         }
         else if (damage_value <= 72)
         {
-                vs = "maim";
-                vp = "maims";
+                vs = "<0><247>maim<0>";
+                vp = "<0><247>maims<0>";
         }
         else if (damage_value <= 80)
         {
-                vs = "MUTILATE";
-                vp = "MUTILATES";
+                vs = "<0><249>MUTILATE<0>";
+                vp = "<0><249>MUTILATES<0>";
         }
         else if (damage_value <= 88)
         {
-                vs = "DISEMBOWEL";
-                vp = "DISEMBOWELS";
+                vs = "<0><251>DISEMBOWEL<0>";
+                vp = "<0><251>DISEMBOWELS<0>";
         }
         else if (damage_value <= 96)
         {
-                vs = "{x{WEVISCERATE{x";
-                vp = "{x{WEVISCERATES{x";
+                vs = "<0><253>EVISCERATE<0>";
+                vp = "<0><253>EVISCERATES<0>";
         }
         else if (damage_value <= 104)
         {
-                vs = "{x{WMASSACRE{x";
-                vp = "{x{WMASSACRES{x";
+                vs = "<0><255>MASSACRE<0>";
+                vp = "<0><255>MASSACRES<0>";
         }
         else if (damage_value <= 120)
         {
-                vs = "{x{R*** DEMOLISH ***{x";
-                vp = "{x{R*** DEMOLISHES ***{x";
+                vs = "<0><196>*** DEMOLISH ***<0>";
+                vp = "<0><196>*** DEMOLISHES ***<0>";
         }
         else if (damage_value <= 140)
         {
-                vs = "{x{r***{x {RDEVASTATE{x {r***{x";
-                vp = "{x{r***{x {RDEVASTATES{x {r***{x";
+                vs = "<0><160>***<0> <196>DEVASTATE<0> <160>***<0>";
+                vp = "<0><160>***<0> <196>DEVASTATES<0> <160>***<0>";
         }
         else if (damage_value <= 180)
         {
-                vs = "{x{r***{x {RANNIHILATE{x {r***{x";
-                vp = "{x{r***{x {RANNIHILATES{x {r***{x";
+                vs = "<0><124>***<0> <196>ANNIHILATE<0> <124>***<0>";
+                vp = "<0><124>***<0> <196>ANNIHILATES<0> <124>***<0>";
         }
         else if (damage_value <= 250)
         {
-                vs = "{x{r-=<**$FOBLITERATE$R{x{r**>=-{x";
-                vp = "{x{r-=<**$FOBLITERATES$R{x{r**>=-{x";
+                vs = "<0><124>-=<<**<160>$FOBLITERATE<0><124>**>=-<0>";
+                vp = "<0><124>-=<<**<160>$FOBLITERATES<0><124>**>=-<0>";
         }
         else if (damage_value <= 400)
         {
-                vs = "{x{r-=<||$FRAVAGE$R{x{r||>=-{x";
-                vp = "{x{r-=<||$FRAVAGES$R{x{r||>=-{x";
+                vs = "<0><88>-=<<||<160>$FRAVAGE<0><88>||>=-<0>";
+                vp = "<0><88>-=<<||<160>$FRAVAGES<0><88>||>=-<0>";
         }
         else if (damage_value <= 600)
         {
-                vs = "{x{r-=*>|$FCRIPPLE$R{x{r|<*=-{x";
-                vp = "{x{r-=*>|$FCRIPPLES$R{x{r|<*=-{x";
+                vs = "<0><52>-=*>|<160>$FCRIPPLE$R<0><52>|<<*=-<0>";
+                vp = "<0><52>-=*>|<160>$FCRIPPLES$R<0><52>|<<*=-<0>";
         }
         else if (damage_value <= 900)
         {
-                vs = "{x{r-=**>>$FBRUTALISE$R{x{r<<**=-{x";
-                vp = "{x{r-=**>>$FBRUTALISES$R{x{r<<**=-{x";
+                vs = "<0><124>-=**>><124>$FBRUTALISE$R<0><124><<<<**=-<0>";
+                vp = "<0><124>-=**>><124>$FBRUTALISES$R<0><124><<<<**=-<0>";
         }
         else if (damage_value <= 1200)
         {
-                vs = "{x{r-=**>>$FVAPOURISE$R{x{r<<**=-{x";
-                vp = "{x{r-=**>>$FVAPOURISES$R{x{r<<**=-{x";
+                vs = "<0><88>-=**>><124>$FVAPOURISE$R<0><88><<<<**=-<0>";
+                vp = "<0><88>-=**>><124>$FVAPOURISES$R<0><88><<<<**=-<0>";
         }
         else if (damage_value <= 1500)
         {
-                vs = "{x{r-+*>>>$FATOMIZE$R{x{r<<<*+-{x";
-                vp = "{x{r-+*>>>$FATOMIZES$R{x{r<<<*+-{x";
+                vs = "<0><52>-+*>>><124>$FATOMIZE$R<0><52><<<<<<*+-<0>";
+                vp = "<0><52>-+*>>><124>$FATOMIZES$R<0><52><<<<<<*+-<0>";
         }
         else if (damage_value <= 2000)
         {
-                vs = "{x{r-+*>#$FELIMINATE$R{x{r#<*+-{x";
-                vp = "{x{r-+*>#$FELIMINATES$R{x{r#<*+-{x";
+                vs = "<0><88>-+*>>##$FELIMINATE$R<0><88>##<<<<*+-<0>";
+                vp = "<0><88>-+*>>##$FELIMINATES$R<0><88>##<<<<*+-<0>";
         }
         else if (damage_value <= 2500)
         {
-                vs = "{x{r-+*###$FEXTERMINATE$R{x{r###*+-{x";
-                vp = "{x{r-+*###$FEXTERMINATES$R{x{r###*+-{x";
+                vs = "<0><52>-+*###<88>$FEXTERMINATE$R<0><52>###*+-<0>";
+                vp = "<0><52>-+*###<88>$FEXTERMINATES$R<0><52>###*+-<0>";
         }
         else if (damage_value <= 3000)
         {
-                vs = "{x{r--=##>>$FUTTERLY DESTROY$R{x{r<<##=--{x";
-                vp = "{x{r--=##>>$FUTTERLY DESTROYS$R{x{r<<##=--{x";
+                vs = "<0><52>--=##>>$FUTTERLY DESTROY$R<52><<<<##=--<0>";
+                vp = "<0><52>--=##>>$FUTTERLY DESTROYS$R<52><<<<##=--<0>";
         }
         else if (damage_value <= 3500)   
         {
-                vs = "{x{r-=*<|[$FNULLIFY$R{x{r]|>*=-{x"; 
-                vp = "{x{r-=*<|[$FNULLIFIES$R{x{r]|>*=-{x"; 
+                vs = "<0><52>-=*<<|[$FNULLIFY$R<52>]|>*=-<0>"; 
+                vp = "<0><52>-=*<<|[$FNULLIFIES$R<52>]|>*=-<0>"; 
         }
         else if (damage_value <= 4000)   
         {
-                vs = "{x{r-=**[|<$FBUTCHER$R{x{r>|]**=-{x"; 
-                vp = "{x{r-=**[|<$FBUTCHERS$R{x{r>|]**=-{x"; 
+                vs = "<0><52>-=**[|<<<<$FBUTCHER$R<52>>|]**=-<0>"; 
+                vp = "<0><52>-=**[|<<<<$FBUTCHERS$R<52>>|]**=-<0>"; 
         }
         else if (damage_value <= 4500)   
         {
-                vs = "{x{r--=<#[|$FLIQUIDATE$R{x{r|]#=--{x"; 
-                vp = "{x{r--=<#[|$FLIQUIDATES$R{x{r|]#=--{x"; 
+                vs = "<0><52>--=<<#[|$FLIQUIDATE$R<52>|]#>=--<0>"; 
+                vp = "<0><52>--=<<#[|$FLIQUIDATES$R<52>|]#>=--<0>"; 
         }
         else if (damage_value <= 5000)   
         {
-                vs = "{x{r-=+<##$FSLAUGHTER$R{x{r##>+=-{x"; 
-                vp = "{x{r-=+<##$FSLAUGHTERS$R{x{r##>+=-{x"; 
+                vs = "<0><52>-=+<<##SLAUGHTER<52>##>+=-<0>"; 
+                vp = "<0><52>-=+<<##SLAUGHTERS<52>##>+=-<0>"; 
         }
         else if (damage_value <= 5500)   
         {
-                vs = "{x{r-=+*<(|[ $FEXTIRPATE$R{x{r ]|)>*+=-{x"; 
-                vp = "{x{r-=+*<(|[ $FEXTIRPATES$R{x{r ]|)>*+=-{x"; 
+                vs = "<0><52>-=+*<<(|[ EXTIRPATE ]|)>*+=-<0>"; 
+                vp = "<0><52>-=+*<<(|[ EXTIRPATES ]|)>*+=-<0>"; 
         }
         else
         {
-                vs = "{x{r-+<<[[ $FPARTICLIZE$R{x{r ]]>>+-{x";
-                vp = "{x{r-+<<[[ $FPARTICLIZES$R{x{r ]]>>+-{x";
+                vs = "<0><52>-+<<<<[[ <352><196>P A R T I C L I Z E<0><52> ]]>>+-<0>";
+                vp = "<0><52>-+<<<<[[ <352><196>P A R T I C L I Z E S<0><52> ]]>>+-<0>";
         }
        
         if (is_singular == TRUE)
@@ -6724,5 +6729,6 @@ char *get_damage_string( int damage_value, bool is_singular )
                 return vp;
         }
 }
+
 
 /* EOF fight.c */
