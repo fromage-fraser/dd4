@@ -1504,17 +1504,6 @@ I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's Reality
 P 0 63 0 61               put a note to Samxin inside Samxins desk
 S
 
-#OBJECT_SETS
-#1
-Test Legendary~
-The long lost Legendary Set of the Immortals. But actually this is just a test.
-~
-89 90 91 92 93 
-2 2 4 4 5
-A 34 0
-A 27 0
-A 14 100 
-#0
 
 #SPECIALS
 M  75 spec_grail                the Hunter
