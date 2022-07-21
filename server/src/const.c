@@ -281,28 +281,12 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
-/* Blueprint structure : name, description, blueprint_ref, blueprint_ego,  
-   blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) */
+/* Blueprint structure : name, description, blueprint_ref, bluepring_ego, blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
-        { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 } },
-        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 } },   
-        { "uncommon set","uncommon set", -1,             EGO_ITEM_UNCOMMON_SET, { 0, 0 },       { 100, 10, 0, 0, 0 } }
+        { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET, { 0, 0 }, { 30, 1, 0, 0, 0 } },
+        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE, { 10, 20 }, { 10, 1, 0, 0, 0 } }   
 };
-
-
-/* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
-const struct set_type   set_list [MAX_SETS] = 
-{
-        { "Smithys Set",       "Desc for the Smithy set", { FALSE, TRUE, TRUE, FALSE}, 
-        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY}, 
-        {APPLY_FLY, 0, 0, APPLY_SANCTUARY} },
-
-        { "Smithys Set",       "Desc for uncommon set", { FALSE, TRUE, TRUE, FALSE}, 
-        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY}, 
-        {APPLY_FLY, 0, 0, APPLY_SANCTUARY} }        
-};
-
 
 const struct song song_table [ MAX_SONGS ] =
 {
@@ -1844,7 +1828,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_smelt,                                   0 },
         { &gsn_strengthen,		                0 },
         { &gsn_imbue,			                0 },
-        { &gsn_empower,                                 0 },
         { &gsn_uncommon_set,	                        0 },
         { &gsn_rare_set,		                0 },
         { &gsn_epic_set,		                0 },
@@ -1895,7 +1878,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         {&gsn_healing,                                  0 },
         {&gsn_ward,                                     0 },
 
-        {&gsn_group_last,                              0 }
+
+        { &gsn_group_last,                              0 }
 };
 
 
@@ -5293,28 +5277,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
                 "dart module", "!Dart!"
-        },
-
-        {
-                "empower", &gsn_empower,
-                TYPE_INT, TAR_IGNORE, POS_STANDING,
-                spell_null, 0, 0,
-                "empower", "!Empower!"
-
-        },
-
-        {
-                "osstat", &gsn_osstat,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
-                spell_null, 0, 0,
-                "", "!Osstat!"
-        },
-
-        {
-                "osfind", &gsn_osfind,
-                TYPE_WIZ, TAR_IGNORE, POS_DEAD,
-                spell_null, 0, 0,
-                "", "!Ostat!"
         },
 
         /*

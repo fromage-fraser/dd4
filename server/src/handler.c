@@ -1099,11 +1099,6 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 {
         AFFECT_DATA *paf;
         char         buf [ MAX_STRING_LENGTH ];
-        bool            gets_bonus;
-        gets_bonus = FALSE;
-
-
-
 
         if ( get_eq_char( ch, iWear ) )
         {
@@ -1127,58 +1122,16 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 return;
         }
 
-                /* set bonus hack - Brutus Jul 2022 */
-        if ( !IS_NPC(ch) 
-                && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
-                || obj->ego_flags == EGO_ITEM_RARE_SET
-                || obj->ego_flags == EGO_ITEM_EPIC_SET
-                || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
-                {
-                        OBJ_DATA *obj2;
-                        switch (obj->ego_flags)
-                        {
-                        case EGO_ITEM_UNCOMMON_SET: 
-                        {
-                                for ( obj2 = ch->carrying; obj2; obj2 = obj2->next_content )
-                                {
-                                        if ( ( obj2->wear_loc != WEAR_NONE
-                                        && obj2->ego_flags == EGO_ITEM_UNCOMMON_SET ) ) /*if wearing & is ego */
-                                                gets_bonus = TRUE;
-                                                break;
-                                              /*  send_to_char( "You dont get an uncommon bonus.\n\r", ch ); */
-                                }
-                                   
-                                break;
-                        }
-                        default:
-                                break;
-                        }                       
-                }
-                /* End nasty set bonus hack */
-
-
-
-
         if( iWear != WEAR_RANGED_WEAPON )
         {
                 ch->armor -= apply_ac( obj, iWear );
 
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                {
-                        if ( !(paf->type == gsn_uncommon_set) 
-                        || ( paf->type == gsn_uncommon_set && gets_bonus == TRUE ) )
                         affect_modify( ch, paf, TRUE, obj );
-                        /* If the object your about to wear is NOT a set  OR it is AND you get a bonus then Apply effect 
-                        send_to_char ( "You get a bonus applied.\n\r", ch); */ 
-                }
+
                 for ( paf = obj->affected; paf; paf = paf->next )
-                {       
-                        if ( !(paf->type == gsn_uncommon_set) 
-                        || ( paf->type == gsn_uncommon_set && gets_bonus == TRUE ) )
                         affect_modify( ch, paf, TRUE, obj );
-                        /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect 
-                        send_to_char ( "You get a bonus applied.\n\r", ch); */ 
-                }
+
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
@@ -1866,72 +1819,6 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 
         return NULL;
 }
-
-
-
-/* Returns object_bonus from an int - Brutus */
-OBJSET_INDEX_DATA *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
-{
-
-                if ( num == pObjSetIndex->bonus_num[num] )
-                {
-                        return pObjSetIndex;
-                }
-        return NULL;
-}
-
-/* Returns the Object set from a objects vnum - Brutus */
-OBJSET_INDEX_DATA *objects_objset( int vnum )
-{
-       
-        OBJSET_INDEX_DATA *pObjSetIndex;
-        extern int      top_objset_index;
-        int osvnum;
-        int nMatch;
-        int i;
-        nMatch  = 0;
-
-        for ( osvnum = 0; nMatch < top_objset_index; osvnum++ )
-        {
-                if ( ( pObjSetIndex = get_objset_index( osvnum ) ) )
-                {
-                        nMatch++;
-                        for( i=0; i < 5; i++ )
-                        {
-                                if ( vnum == pObjSetIndex->objects[i] )
-                                {
-                                        return pObjSetIndex;
-                                }
-                        }
-                }
-        }
-        return NULL;
-}
-
-/*  Returns the objectset from a name  -Brutus  */
-OBJSET_INDEX_DATA *get_objset( char *argument )
-{
-        OBJSET_INDEX_DATA *pObjSetIndex;
-        extern int      top_objset_index;
-        int             vnum;
-        int             nMatch;
-        nMatch = 0;
-
-        for ( vnum = 0; nMatch < top_objset_index; vnum++ )
-        {
-                if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
-                {
-                        nMatch++;
-                        if ( multi_keyword_match( argument, pObjSetIndex->name ) )
-                        {
-                                return pObjSetIndex;
-                        }
-                }
-        }
-        return NULL;
-}
-
-
 
 
 /*
