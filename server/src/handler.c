@@ -1870,7 +1870,7 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
 
 
 /* Returns object_bonus from an objset set vnum and the position - Brutus */
-OBJSET_INDEX_DATA *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
+char  *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
 {
         AFFECT_DATA *paf;
         int count;
@@ -1882,11 +1882,145 @@ OBJSET_INDEX_DATA *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
         {
                 count++;
                 if (count == num);
-                return paf; 
+                return "oh dear"; 
         }
         
         }
         return NULL;
+
+
+
+/********************************
+ * 
+ * 
+ * void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon )
+ *      OBJ_DATA *wield;
+        char buf [MAX_STRING_LENGTH];
+        int mod;
+        AFFECT_DATA af;
+
+        mod = paf->modifier;
+
+        if ( fAdd )
+        {
+                SET_BIT   ( ch->affected_by, paf->bitvector );
+        }
+        else
+        {
+                REMOVE_BIT( ch->affected_by, paf->bitvector );
+                mod = 0 - mod;
+        }
+
+   switch ( paf->location )
+        {
+            default:
+                sprintf( buf, "Affect_modify: unknown location %d on %s.",
+                        paf->location, ch->name );
+                bug ( buf, 0 );
+                return;
+
+            case APPLY_NONE:
+
+           case APPLY_SANCTUARY:
+                af.type = skill_lookup( "sanctuary" );
+                if( fAdd )
+                {
+                        if( is_affected( ch, af.type ) )
+                        {
+                                send_to_char( "You are already sanctified.\n\r", ch );
+                                break;
+                        }
+                        af.duration = -1;
+                        af.location = APPLY_NONE;
+                        af.modifier = 0;
+                        af.bitvector = AFF_SANCTUARY;
+                        affect_to_char( ch, &af );
+                        send_to_char( "You are surrounded by a white aura.\n\r", ch );
+                        act( "$n is surrounded by a white aura.", ch, NULL, NULL, TO_ROOM );
+                        break;
+                }
+                else
+                {
+                        affect_strip( ch, af.type );
+
+*************************************/
+
+
+
+
+
+        
+}
+
+/* Return how many itesm need to be worn to get a bonus from a 
+objsetvnum and position */
+int objset_bonus_num_pos( int vnum, int pos)
+{
+        OBJSET_INDEX_DATA *objset;
+        int bonus2;
+        int bonus3;
+        int bonus4;
+        int bonus5;
+        int bonust;
+        int count;
+        int i;
+
+        if ( ( objset = get_objset_index( vnum ) ) )
+        {
+
+                bonus2 = 0;
+                bonus3 = 0;
+                bonus4 = 0;
+                bonus5 = 0;
+                bonust = 0;
+                count = 0;
+
+                for( i=0; i < 5; i++ )
+                {
+                        if( objset->bonus_num[i] == 2)
+                                bonus2++;
+                        if( objset->bonus_num[i] == 3)
+                                bonus3++;
+                        if( objset->bonus_num[i] == 4)
+                                bonus4++;
+                        if( objset->bonus_num[i] == 5)
+                                bonus5++;
+                }
+
+                if ( bonus2 > 0)
+                {       
+                        bonust = bonus2;
+                        count++;
+                        if (pos = count);
+                                return bonust;
+                        
+                }
+                if ( (bonus3 > 0) || ( bonus3 > bonust) )
+                {       
+                        bonust += bonus3;
+                        count++;
+                        if (pos = count)
+                                return bonust;
+                        
+                }
+                if ( (bonus4 > 0) || ( bonus4 > bonust) )
+                {       
+                        bonust += bonus4;
+                        count++;
+                        if (pos = count)
+                                return bonust;
+                        
+                }
+                if ( (bonus5 > 0) || ( bonus5 > bonust) )
+                {       
+                        bonust += bonus5;
+                        count++;
+                        if (pos = count )
+                                return bonust;
+                }
+                return 0;
+        }
+
 }
 
 /* REturns number of set bonuses in a set */
