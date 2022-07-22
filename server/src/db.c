@@ -1776,6 +1776,7 @@ void load_objects( FILE *fp )
                         exit( 1 );
                 }
 
+                fBootDb = TRUE;
                 pObjIndex = alloc_perm( sizeof( *pObjIndex ) );
                 pObjIndex->vnum = vnum;
 
