@@ -1500,7 +1500,7 @@ M 1 6 2 75                      Monkeys to Grail's lair (2 now, were 3)
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                       equip a duck collar (neck1)
 I 61 1 82 1               Samxins desk to Samxin's Reality
-I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's Reality
+I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's reality
 P 0 63 0 61               put a note to Samxin inside Samxins desk
 S
 
