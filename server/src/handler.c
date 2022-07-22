@@ -1991,7 +1991,7 @@ int objset_bonus_num_pos( int vnum, int pos)
                 {       
                         bonust = bonus2;
                         count++;
-                        if (pos = count);
+                        if ( (pos == count) )
                                 return bonust;
                         
                 }
@@ -1999,7 +1999,7 @@ int objset_bonus_num_pos( int vnum, int pos)
                 {       
                         bonust += bonus3;
                         count++;
-                        if (pos = count)
+                        if ( (pos == count) )
                                 return bonust;
                         
                 }
@@ -2007,7 +2007,7 @@ int objset_bonus_num_pos( int vnum, int pos)
                 {       
                         bonust += bonus4;
                         count++;
-                        if (pos = count)
+                        if ( (pos == count) )
                                 return bonust;
                         
                 }
@@ -2015,12 +2015,12 @@ int objset_bonus_num_pos( int vnum, int pos)
                 {       
                         bonust += bonus5;
                         count++;
-                        if (pos = count )
+                        if (( pos == count )) 
                                 return bonust;
                 }
-                return 0;
+               
         }
-
+        return 0;
 }
 
 /* REturns number of set bonuses in a set */

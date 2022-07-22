@@ -3333,6 +3333,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
         {
+                int count;
+                count = 0;
                 sprintf (buf, "{W-=-=-=-=-=-=-=-=-=-=-=-=-=-=-={x\n\r");
                 send_to_char( buf,ch);
                 sprintf(buf, "This is part of a %s set.\n\r", 
@@ -3343,13 +3345,14 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 sprintf(buf, "Its Set Bonuses are:\n\r");
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
-                        sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
-                                affect_loc_name( paf->location ), paf->modifier );
+                        count++;
+                        sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
+                        objset_bonus_num_pos(pObjSetIndex->vnum, count), 
+                        affect_loc_name( paf->location ), 
+                        paf->modifier );
                         send_to_char( buf,ch);
                 }
         }
-
-
 }
 
 

@@ -1175,13 +1175,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
         char         arg  [ MAX_INPUT_LENGTH  ];
-        int          i;
-        int bonus2;
-        int bonus3;
-        int bonus4;
-        int bonus5;
-        int bonust;
-        int num_bonus;
+        int count;
  
         rch = get_char( ch );
 
@@ -1204,7 +1198,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        sprintf( buf, "Vnum: {R%d{x\n\r",
+        sprintf( buf, "This is a %s set. Vnum: {R%d{x\n\r", objset_type(obj->vnum),
                 obj->vnum );
         strcat( buf1, buf );
 
@@ -1217,72 +1211,33 @@ void do_osstat( CHAR_DATA *ch, char *argument )
                 obj->objects[0], obj->objects[1], obj->objects[2], obj->objects[3], obj->objects[4] );
         strcat( buf1, buf );
 
-        bonus2 = 0;
-        bonus3 = 0;
-        bonus4 = 0;
-        bonus5 = 0;
-        bonust = 0;
-
-
-       for( i=0; i < 5; i++ )
-        {
-                if( obj->bonus_num[i] == 2)
-                        bonus2++;
-                if( obj->bonus_num[i] == 3)
-                        bonus3++;
-                if( obj->bonus_num[i] == 4)
-                        bonus4++;
-                if( obj->bonus_num[i] == 5)
-                        bonus5++;
-        }
-
-        if ( bonus2 > 0)
-        {       
-                bonust = bonus2;
-                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
-                strcat( buf1, buf );
-        }
-        if ( (bonus3 > 0) || ( bonus3 > bonust) )
-        {       
-                bonust += bonus3;
-                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
-                strcat( buf1, buf );
-                
-        }
-        if ( (bonus4 > 0) || ( bonus4 > bonust) )
-        {       
-                bonust += bonus4;
-                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
-                strcat( buf1, buf );
-                
-        }
-        if ( (bonus5 > 0) || ( bonus5 > bonust) )
-        {       
-                bonust += bonus5;
-                sprintf ( buf, "Bonus when {W%d{x set pieces are worn.\n\r", bonust );
-                strcat( buf1, buf );
-        }
-
-        num_bonus = objset_bonus_num(obj->vnum);
-        sprintf( buf, "There are %d set bonuses\n\r", num_bonus);
+/*         num_bonus = objset_bonus_num(obj->vnum); 
+        sprintf( buf, "There are %d set bonuses\n\r", objset_bonus_num(obj->vnum));
         strcat( buf1, buf );
 
 
-        sprintf( buf, "you need %d for set bonus 1\n\r", objset_bonus_num_pos(obj->vnum, 1) );
+        sprintf( buf, "you need {W%d{x for set bonus 1\n\r", objset_bonus_num_pos(obj->vnum, 1) );
         strcat( buf1, buf );
-                sprintf( buf, "you need %d for set bonus 2\n\r", objset_bonus_num_pos(obj->vnum, 2) );
+                sprintf( buf, "you need {W%d{x for set bonus 2\n\r", objset_bonus_num_pos(obj->vnum, 2) );
         strcat( buf1, buf );
-                sprintf( buf, "you need %d for set bonus 3\n\r", objset_bonus_num_pos(obj->vnum, 3) );
+                sprintf( buf, "you need {W%d{x for set bonus 3\n\r", objset_bonus_num_pos(obj->vnum, 3) );
         strcat( buf1, buf );
-  
+*/
         sprintf( buf, "{CAffects Given:{x\n\r");
                 strcat( buf1, buf );
 
+        count = 0;
         for ( paf = obj->affected; paf; paf = paf->next )
         {
-                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
-                        affect_loc_name( paf->location ), paf->modifier );
+                count++;
+                sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
+                        objset_bonus_num_pos(obj->vnum, count), 
+                        affect_loc_name( paf->location ), 
+                        paf->modifier );
                 strcat( buf1, buf );
+  /*              sprintf( buf, "you need {W%d{x for set bonus %d\n\r", objset_bonus_num_pos(obj->vnum, count), count );
+                strcat( buf1, buf ); 
+*/
         }
 
    /*     for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
