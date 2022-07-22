@@ -3317,136 +3317,6 @@ void do_construct( CHAR_DATA *ch, char *arg )
         act(buf, ch, NULL, NULL, TO_ROOM);
 
         return;
-        
-}
-
-void do_empower (CHAR_DATA *ch, char *argument)
-{
-
-        char      arg1 [ MAX_INPUT_LENGTH ];
-        char     arg2 [ MAX_INPUT_LENGTH ];
-        char     arg3 [ MAX_INPUT_LENGTH ];
-        char     arg4 [ MAX_INPUT_LENGTH ];
-        char     arg5 [ MAX_INPUT_LENGTH ];
-    
-        OBJ_DATA *obj;
-        OBJ_DATA *obj2;
- /*       OBJ_DATA *obj3;
-        OBJ_DATA *obj4;
-        OBJ_DATA *obj5; */
-        AFFECT_DATA     *paf;
-
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-        argument = one_argument(argument, arg3);
-        argument = one_argument(argument, arg4);
-        argument = one_argument(argument, arg5);
-
-
-      if( !CAN_DO( ch, gsn_empower ) )
-        {
-                send_to_char( "You dont know how to do that.\n\r", ch );
-                return;
-        }
-
-        if( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0'  )
-        {
-                        send_to_char("What set do you wish to empower?\n\r", ch);
-                        send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
-                        send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
-                return;
-        }
-
-    /*    if ( !strcmp(arg1, "uncommon") || !strcmp(arg1, "rare") || !strcmp(arg1, "epic") || !strcmp(arg1, "legendary") )
-        {
-                send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
-                send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
-                return;                
-
-        }
-*/
-  
-        /* clunky logic for all the set bonuses I know - Brutus */
-        if ( !strcmp(arg1, "uncommon") )
-        {
-                if ( ( (obj = get_obj_carry(ch, arg2) ) == NULL ) || ( (obj2 = get_obj_carry(ch, arg3) ) == NULL ) ) 
-                {
-                        send_to_char( "You arent carrying that..\n\r",ch );
-                        return;
-                }
-  /*             
-                switch (number_range( 1, 3 ))
-                {
-                        int modifier;
-                        modifier = -1;
-                        default :
-                        {       
-                                send_to_char("This is a bug - tell the Imms - (Determine random buff in empower).\n\r", ch);
-                                return;
-                        }
-                        case 1:
-                        {
-                                modifier = gsn_fly;
-                                send_to_char ( "random buff 1\n\r", ch);
-                                break;
-                        }
-                                
-                        case 2:
-                        {
-                                modifier = gsn_infravision;
-                                send_to_char ( "random buff 2\n\r", ch);
-                                break;
-                        }
-
-                        case 3:
-                        {       
-                                modifier = gsn_sense_traps;
-                                send_to_char ( "random buff 3\n\r", ch);
-                                break;
-                        }
-
-                }
-
-*/
-                if (!affect_free)
-                        paf = alloc_perm(sizeof(*paf));
-                else
-                {
-                        paf = affect_free;
-                        affect_free = affect_free->next;
-                }
-                paf->type           = gsn_uncommon_set;
-                paf->duration       = -1;
-                paf->location       = APPLY_FLY;
-                paf->modifier       = 0;
-                paf->bitvector      = AFF_FLYING;
-                paf->next           = obj->affected;
-                obj->affected       = paf;
-                obj2->affected      = paf;
-
-                SET_BIT(obj->extra_flags, ITEM_EGO);
-                SET_BIT(obj->ego_flags, EGO_ITEM_UNCOMMON_SET);
-                SET_BIT(obj2->extra_flags, ITEM_EGO);
-                SET_BIT(obj2->ego_flags, EGO_ITEM_UNCOMMON_SET);
-
-                set_obj_owner(obj, ch->name);
-                act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
-                act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
-/*
-                sprintf(buf, "constructs {W%d{x.", obj->affected->type);
-                act(buf, ch, NULL, NULL, TO_CHAR);
-                sprintf(buf, "constructs {W%s{x.", obj->affected->bitvector);
-                act(buf, ch, NULL, NULL, TO_CHAR);
-*/
-
-        }
-        else
-        { 
-                send_to_char ( "The uncommon end\n\r", ch);
-                return; 
-        }
-        send_to_char ( "The end\n\r", ch );
-        return;
 }
 
 void do_imbue (CHAR_DATA *ch, char *argument)
@@ -3785,6 +3655,12 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 return;
         }
         
+
+
+
+
+
+
         for (obj = get_obj_list(ch, arg1, turret->contains ); obj; obj = obj_next)
         {
                 obj_next = obj->next_content;

@@ -3008,7 +3008,6 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         int          i, j, k, list [50];
         char         buf [MAX_STRING_LENGTH];
         char         tmp [MAX_STRING_LENGTH];
-        OBJSET_INDEX_DATA *pObjSetIndex;
 
         const char* type [MAX_ITEM_TYPE+1] =
         {
@@ -3301,56 +3300,6 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                                 sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
                                          affect_loc_name (paf->location));
                         send_to_char( buf, ch );
-                }
-        }
-
-/* first pass at sets - will be re-written - Brutus*/
-        for ( paf = obj->affected; paf; paf = paf->next )
-        {
-                if ( paf->modifier == 0
-                    && strcmp (affect_loc_name (paf->location), "(unknown)") 
-                    && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
-                        || obj->ego_flags == EGO_ITEM_RARE_SET
-                        || obj->ego_flags == EGO_ITEM_EPIC_SET
-                        || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
-                {
-                        switch (obj->ego_flags)
-                        {
-                        case EGO_ITEM_UNCOMMON_SET: /* constant-expression */
-                        {
-                                sprintf (buf, "Its 2-piece {G[SET BONUS]{x gives the wearer {W%s{x.\n\r",
-                                         affect_loc_name (paf->location) );
-                                send_to_char( buf, ch );        /* code */
-                                break;
-                        }
-                        default:
-                                break;
-                        }
-                }
-        }
-
-/* 2nd pass at sets - Brutus */
-
-        if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
-        {
-                int count;
-                count = 0;
-                sprintf (buf, "{W-=-=-=-=-=-=-=-=-=-=-=-=-=-=-={x\n\r");
-                send_to_char( buf,ch);
-                sprintf(buf, "This is part of a %s set.\n\r", 
-                objset_type(pObjSetIndex->vnum));
-                send_to_char( buf,ch);
-                sprintf(buf, "%s", pObjSetIndex->description );
-                send_to_char( buf,ch);
-                sprintf(buf, "Its Set Bonuses are:\n\r");
-                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
-                {
-                        count++;
-                        sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
-                        objset_bonus_num_pos(pObjSetIndex->vnum, count), 
-                        affect_loc_name( paf->location ), 
-                        paf->modifier );
-                        send_to_char( buf,ch);
                 }
         }
 }

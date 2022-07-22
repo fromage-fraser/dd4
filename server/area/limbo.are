@@ -1500,30 +1500,10 @@ M 1 6 2 75                      Monkeys to Grail's lair (2 now, were 3)
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                       equip a duck collar (neck1)
 I 61 1 82 1               Samxins desk to Samxin's Reality
-I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's reality
+I 60 1 82 1               a {rred{x psychiatrist's couch to Samxin's Reality
 P 0 63 0 61               put a note to Samxin inside Samxins desk
 S
 
-#OBJECT_SETS
-#1
-Test Legendary~
-The long lost Legendary Set of the Immortals. But actually this is just a test.
-~
-89 90 91 92 93
-2 2 4 4 5
-A 34 -1
-A 27 -1
-A 14 100
-#2
-Test2 epic~
-The long lost epic Set of the Immortals. But actually this is just a test.
-~
-80 81 82 83 0
-2 2 3 4 0
-A 34 -1
-A 27 -1
-A 14 100
-#0
 
 #SPECIALS
 M  75 spec_grail                the Hunter
