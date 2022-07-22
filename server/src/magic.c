@@ -3008,6 +3008,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
         int          i, j, k, list [50];
         char         buf [MAX_STRING_LENGTH];
         char         tmp [MAX_STRING_LENGTH];
+        OBJSET_INDEX_DATA *pObjSetIndex;
 
         const char* type [MAX_ITEM_TYPE+1] =
         {
@@ -3303,6 +3304,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
+/* first pass at sets - will be re-written - Brutus*/
         for ( paf = obj->affected; paf; paf = paf->next )
         {
                 if ( paf->modifier == 0
@@ -3324,6 +3326,26 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         default:
                                 break;
                         }
+                }
+        }
+
+/* 2nd pass at sets - Brutus */
+
+        if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
+        {
+                sprintf (buf, "{W-=-=-=-=-=-=-=-=-=-=-=-=-=-=-={x\n\r");
+                send_to_char( buf,ch);
+                sprintf(buf, "This is part of a %s set.\n\r", 
+                objset_type(pObjSetIndex->vnum));
+                send_to_char( buf,ch);
+                sprintf(buf, "%s", pObjSetIndex->description );
+                send_to_char( buf,ch);
+                sprintf(buf, "Its Set Bonuses are:\n\r");
+                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+                {
+                        sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                                affect_loc_name( paf->location ), paf->modifier );
+                        send_to_char( buf,ch);
                 }
         }
 

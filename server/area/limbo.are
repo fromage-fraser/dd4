@@ -1509,10 +1509,10 @@ S
 Test Legendary~
 The long lost Legendary Set of the Immortals. But actually this is just a test.
 ~
-89 90 91 92 93 
+89 90 91 92 93
 2 2 4 4 5
-A 34 0
-A 27 0
+A 34 -1
+A 27 -1
 A 14 100 
 #0
 

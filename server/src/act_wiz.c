@@ -1160,7 +1160,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
         {
-                sprintf(buf, "Part of SET: {C%s{x\n\r\n\r", pObjSetIndex->name);
+                sprintf(buf, "This is part of a %s set.\n\rSet tags: %s. Vnum [%d]\n\r\n\r", objset_type(pObjSetIndex->vnum), pObjSetIndex->name, pObjSetIndex->vnum);
                 strcat(buf1, buf);
 
         }
@@ -1181,6 +1181,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         int bonus4;
         int bonus5;
         int bonust;
+        int num_bonus;
  
         rch = get_char( ch );
 
@@ -1199,7 +1200,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
 
         if ( !( obj = get_objset( arg ) ) )
         {
-                send_to_char( "Nothing like that in these realms.\n\r", ch);
+                send_to_char( "Nothing like that in these realms..\n\r", ch);
                 return;
         }
 
@@ -1262,10 +1263,18 @@ void do_osstat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
         }
 
-    
+        num_bonus = objset_bonus_num(obj->vnum);
+        sprintf( buf, "There are %d set bonuses\n\r", num_bonus);
+        strcat( buf1, buf );
 
 
-
+        sprintf( buf, "you need %d for set bonus 1\n\r", objset_bonus_num_pos(obj->vnum, 1) );
+        strcat( buf1, buf );
+                sprintf( buf, "you need %d for set bonus 2\n\r", objset_bonus_num_pos(obj->vnum, 2) );
+        strcat( buf1, buf );
+                sprintf( buf, "you need %d for set bonus 3\n\r", objset_bonus_num_pos(obj->vnum, 3) );
+        strcat( buf1, buf );
+  
         sprintf( buf, "{CAffects Given:{x\n\r");
                 strcat( buf1, buf );
 
