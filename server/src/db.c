@@ -60,6 +60,7 @@ char *                  help_greeting;
 char                    log_buf                 [ MAX_INPUT_LENGTH*2 ];
 KILL_DATA               kill_table              [ MAX_LEVEL          ];
 OBJ_DATA *              object_list;
+OBJSET_INDEX_DATA *     objset_list;
 TIME_INFO_DATA          time_info;
 WEATHER_DATA            weather_info;
 char *                  down_time;
@@ -236,9 +237,11 @@ int     gsn_noemote;
 int     gsn_notell;
 int     gsn_numlock;
 int     gsn_ofind;
+int     gsn_osfind;
 int     gsn_oload;
 int     gsn_oset;
 int     gsn_ostat;
+int     gsn_osstat;
 int     gsn_owhere;
 int     gsn_pardon;
 int     gsn_peace;
@@ -576,6 +579,7 @@ int     gsn_swoop;
 int     gsn_smelt;
 int     gsn_strengthen;
 int     gsn_imbue;
+int     gsn_empower;
 int     gsn_uncommon_set;
 int     gsn_rare_set;
 int     gsn_epic_set;
@@ -707,6 +711,7 @@ int     gsn_form_griffin;
  */
 MOB_INDEX_DATA *        mob_index_hash          [ MAX_KEY_HASH ];
 OBJ_INDEX_DATA *        obj_index_hash          [ MAX_KEY_HASH ];
+OBJSET_INDEX_DATA *     objset_index_hash       [ MAX_KEY_HASH ];
 ROOM_INDEX_DATA *       room_index_hash         [ MAX_KEY_HASH ];
 char *                  string_hash             [ MAX_KEY_HASH ];
 
@@ -724,6 +729,7 @@ int                     top_exit;
 int                     top_help;
 int                     top_mob_index;
 int                     top_obj_index;
+int                     top_objset_index;
 int                     top_reset;
 int                     top_room;
 int                     top_shop;
@@ -789,6 +795,7 @@ void    load_recall             args( ( FILE *fp ) );
 void    load_mobiles            args( ( FILE *fp ) );
 void    load_objects            args( ( FILE *fp ) );
 void    load_resets             args( ( FILE *fp ) );
+void    load_object_sets        args( ( FILE *fp ) );
 void    load_rooms              args( ( FILE *fp ) );
 void    load_shops              args( ( FILE *fp ) );
 void    load_specials           args( ( FILE *fp ) );
@@ -963,6 +970,8 @@ void boot_db( void )
                                         load_objects ( fpArea );
                                 else if ( !str_cmp( word, "RESETS"   ) )
                                         load_resets  ( fpArea );
+                                else if ( !str_cmp( word, "OBJECT_SETS"   ) )
+                                        load_object_sets  ( fpArea );
                                 else if ( !str_cmp( word, "ROOMS"    ) )
                                         load_rooms   ( fpArea );
                                 else if ( !str_cmp( word, "SHOPS"    ) )
@@ -2057,6 +2066,97 @@ void load_resets( FILE *fp )
 
         return;
 }
+
+
+void load_object_sets( FILE *fp )
+{
+        OBJSET_INDEX_DATA *pObjSetIndex;
+ 
+        if ( !area_last )
+        {
+                bug( "Load_Object_sets: no #AREA seen yet.", 0 );
+                exit( 1 );
+        }
+
+        for ( ; ; )
+        {
+                char  letter;
+                int   vnum;
+                int   stat;
+                int   iHash;
+
+                letter = fread_letter( fp );
+                if ( letter != '#' )
+                {
+                        bug( "Load_objects: # not found.", 0 );
+                        exit( 1 );
+                }
+
+                vnum = fread_number( fp, &stat );
+                if ( vnum == 0 )
+                        break;
+
+                fBootDb = FALSE;
+                if ( get_objset_index( vnum ) )
+                {
+                        bug( "Load_objects: vnum %d duplicated.", vnum );
+                        exit( 1 );
+                }
+
+                pObjSetIndex = alloc_perm( sizeof( *pObjSetIndex ) );
+                pObjSetIndex->vnum = vnum;
+                
+                pObjSetIndex->name                 = fread_string( fp );
+                pObjSetIndex->description          = fread_string( fp );
+                pObjSetIndex->objects[0]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[1]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[2]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[3]             = fread_number( fp, &stat );
+                pObjSetIndex->objects[4]             = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[0]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[1]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[2]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[3]           = fread_number( fp, &stat );
+                pObjSetIndex->bonus_num[4]           = fread_number( fp, &stat );
+
+                
+                /*
+                 * Validate parameters.
+                 * We're calling the index functions for the side effect.
+                 */
+               for ( ; ; )
+                {
+                        char letter;
+                        letter = fread_letter( fp );
+
+                        if ( letter == 'A' )
+                        {
+                                AFFECT_DATA *paf;
+
+                                paf                     = alloc_perm( sizeof( *paf ) );
+                                paf->type               = -1;
+                                paf->duration           = -1;
+                                paf->location           = fread_number( fp, &stat );
+                                paf->modifier           = fread_number( fp, &stat );
+                                paf->bitvector          = 0;
+                                paf->next               = pObjSetIndex->affected;
+                                pObjSetIndex->affected     = paf;
+                                top_affect++;
+                        }
+                        else
+                        {
+                                ungetc( letter, fp );
+                                break;
+                        }
+                }
+                iHash                   = vnum % MAX_KEY_HASH;
+                pObjSetIndex->next         = objset_index_hash[iHash];
+                objset_index_hash[iHash]   = pObjSetIndex;
+                top_objset_index++;
+        }
+        return;
+}
+
 
 
 /*
@@ -3324,6 +3424,27 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
 }
 
 
+OBJSET_INDEX_DATA *get_objset_index( int vnum )
+{
+        OBJSET_INDEX_DATA *pObjSetIndex;
+
+        for ( pObjSetIndex  = objset_index_hash[vnum % MAX_KEY_HASH];
+             pObjSetIndex;
+             pObjSetIndex  = pObjSetIndex->next )
+        {
+                if ( pObjSetIndex->vnum == vnum )
+                        return pObjSetIndex;
+        }
+
+        if ( fBootDb )
+        {
+                bug( "Get_objset_index: bad vnum %d.", vnum );
+                exit( 1 );
+        }
+
+        return NULL;
+}
+
 /*
  * Translates mob virtual number to its room index struct.
  * Hash table lookup.
@@ -3845,11 +3966,11 @@ void do_memory( CHAR_DATA *ch, char *argument )
                 "Affects {W%5d{x      Areas   {W%5d{x      ExDes   {W%5d{x\n\r"
                 "Exits   {W%5d{x      Helps   {W%5d{x      Mobs    {W%5d{x\n\r"
                 "Objs    {W%5d{x      Resets  {W%5d{x      Rooms   {W%5d{x\n\r"
-                "Shops   {W%5d{x\n\r",
+                "Shops   {W%5d{x      ObjSets {W%5d{x\n\r",
                 top_affect, top_area, top_ed,
                 top_exit, top_help, top_mob_index,
                 top_obj_index, top_reset, top_room,
-                top_shop);
+                top_shop,top_objset_index);
         send_to_char(buf, ch);
 
         sprintf( buf, "\n\rStrings {C%7d{x strings of {c%8d{x bytes (max {W%d{x)\n\r",
