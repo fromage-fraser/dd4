@@ -3573,8 +3573,8 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                                         color_table[19].code );
                                 send_to_char( buf, ch );
                         }
-                send_to_char( "\n\rTo toggle ANSI-color, type 'COLOR'.\n\r"
-                             "Type 'HELP ANSI' for more information.\n\r", ch );
+                send_to_char( "\n\rTo toggle colour, type 'COLOUR'.\n\r"
+                             "Type 'HELP COLOUR,' 'HELP COLOUR2,' and 'HELP COLOUR3' for more information.\n\r", ch );
                 return;
         }
 

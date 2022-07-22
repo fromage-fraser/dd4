@@ -1,8 +1,8 @@
 #HELPS
 
 0 ANSI COLOR COLOUR~
-Syntax: ansi <channel> <color name>
-Syntax: ansi <channel> <color index number>
+Syntax: ansi <<channel> <<color name>
+Syntax: ansi <<channel> <<color index number>
 Syntax: config +ansi
 
 To toggle color on and off, simply type COLOR.
@@ -72,7 +72,7 @@ You WILL get a KILLER flag if you kill non-clan members.
 
 There are currently five active clans: {GTRV{x, {MSOM{x, {YAES{x, {dCOB{x and {RLOE{x.
 
-See 'HELP <clan>' for individual clan information.  Also see 'HELP CLAN
+See 'HELP <<clan>' for individual clan information.  Also see 'HELP CLAN
 COMMANDS'.
 ~
 
@@ -107,25 +107,25 @@ success and FOURTH SPELL a 45% chance, due to the enormous drain on the
 caster.
 
 NOTE: you need to change the frequency of your spell-casting per round
-using the ATTACK command.  Enter 'ATTACK <1-4>'.  Non-combat spells are
+using the ATTACK command.  Enter 'ATTACK <<1-4>'.  Non-combat spells are
 not cast multiple times.
 ~
 
 
 0 'CLAN COMMANDS' CLANTALK CSCORE GUILD PROMOTE LEAVE~
-CLANTALK <text>
+CLANTALK <<text>
         Lets you talk to your clan members only.  `>' is the shortcut key.
 
 CSCORE
         Displays your clan score.
 
-GUILD <character> [remove]
+GUILD <<character> [remove]
         Clan leaders may add people to their clan by typing `GUILD
-        <character>'.  They may remove clan members by typing `GUILD
-        <character> REMOVE'; leaders may not remove other leaders. The
+        <<character>'.  They may remove clan members by typing `GUILD
+        <<character> REMOVE'; leaders may not remove other leaders. The
         character must be between below level 40 and above level 20.
 
-PROMOTE <character> <level>
+PROMOTE <<character> <<level>
         Leaders may promote clan members from levels 0 through 3.
         Use the PROMOTE command to demote clan level also.
 
@@ -139,7 +139,7 @@ Leaders should read 'HELP CLAN ITEMS' for information on clan equipment.
 
 
 102 LEADER~
-Syntax: leader <target>
+Syntax: leader <<target>
 
 This command will make the target a clan leader, able to add people into
 their clan with the GUILD command and load clan equipment using OCLANITEM.
@@ -147,7 +147,7 @@ You must guild intended leaders first before giving them their leader flag.
 ~
 
 102 GUIDE~
-Syntax: guide <target>
+Syntax: guide <<target>
 
 This command will make the target a guide, able to use the newbie channel
 after level 5.  Clanned players cannot be guides but otherwise there are
@@ -155,14 +155,14 @@ no restrictions.
 ~
 
 102 'RONIN COMMANDS'~
-Syntax: ronin <target>
+Syntax: ronin <<target>
 
 Toggle whether a player is flagged RONIN.
 ~
 
 
 -1 GREETING~
-O---=<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
+O---=<<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |          .              .         _//^    ^//====......          __--^^^  |
 |    )              -_       _..--+^o`\     ||_   ^^^^^^::::... /^    .     |
 | .              ___-==_     `--=;_`_  \   ||  -_             _/^^-         |
@@ -172,7 +172,7 @@ O---=<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 | /  _|__   #|       |      - ^-_/  /|- _/   .||        -/      |   '  |    |
 | |^^ |     +|^^^^--_|_     ^==-/   | \--===^^        ./        |-_ [],|  . |
 |     |- . '*|       ^|       /|    |-^\^       __--^^   .     _|______|_   |
-|     |     +|   +    |^^^^-_/ |  ]--I-[-]-I--[   .         /\<=-=-==-=-=>  |
+|     |     +|   +    |^^^^-_/ |  ]--I-[-]-I--[   .         /\<<=-=-==-=-=>  |
 |  ___| _ '_*|___         __/ _-_ (-(-|---|-)-)              \ \__   _'_/   |
 |  I_I|_I__I_|I_I _   _  ((->/_   _|        ||            .   ^^|`    ||    |
 |  \-\--|--|--/-/' `-' `-' `-' `-' | []     #|------_-_-_-_-_-_-|_'   #|    |
@@ -182,12 +182,12 @@ O---=<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |   /_'_v_.___  |.__,|_|_|_|_|     |   `  , *|          _.___,__/v_.._.|  ' |
 |   .        __----    _---^^^^^--/_._v_Y_,_v))-----^^^^       .        '   |
 |     :   ---          --        `                       `          `       |
-O---<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
+O---<<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
 | DikuMud created by H.Starfeldt, K.Nyboe, T.Madsen, M.Seifert, & S.Hammer. |
 | Based on the original Merc 2.2 source written by Kahn, Hatchet and Furey. |
 | DD III code by Shade, Gezhp, Owl, Brutus, Jyhad, Tavolir, and Danath.     |
 | DD IV code by Shade, Owl, Gezhp and the rest of the team.                 |
-O-----< MobCode from Merc 2.2 >-----< Quest Code (c) 1996 Ryan Addams >-----O
+O-----<< MobCode from Merc 2.2 >-----<< Quest Code (c) 1996 Ryan Addams >-----O
 Enter thy Name: ~
 
 
@@ -220,11 +220,11 @@ Dragons Domain version 4.2020
 
 
 
-To Enter the Dragons Domain press <Return>.
+To Enter the Dragons Domain press <<Return>.
 ~
 
 0 CHANGE~
-Syntax: change <subclass abbreviation>
+Syntax: change <<subclass abbreviation>
 
 When you reach level 30, you have the opportunity to select a subclass:
 to specialise in one of the two subclasses for your base class.  Head to the
@@ -343,7 +343,7 @@ to be using a 'vorpal' weapon.
 ~
 
 0 REPAIR~
-Syntax: repair <target>
+Syntax: repair <<target>
 
 Certain mobs marked as "tinkers" can repair items that degrade, such as 
 sharpened, forged, and poisoned items.  The higher level and more damaged 
@@ -359,7 +359,7 @@ need to be outside and in the presence of the moon or sun.
 ~
 
 0 'FURY OF NATURE'~
-Syntax: cast 'fury of nature' <victim>
+Syntax: cast 'fury of nature' <<victim>
 
 This spells summons the power of the surrounding environment to assault your
 victim.  This spell is less effective when not in natural surrounds.
@@ -436,12 +436,12 @@ Newbie, eh?  Finding things a little difficult?  Well there are the
 answers to all your questions and more in the DD FAQ and Newbie Guide:
 available for browsing and download at
 
-<https://smihilist.com/dd4/web/main/faq/dd-faq.html>.
+<<https://smihilist.com/dd4/web/main/faq/dd-faq.html>.
 
 You can also use your own special newbie channel up to level 5.  To use
 the newbie channel type:
 
-newbie <your question>
+newbie <<your question>
 
 Immortals, heroes, and players flagged as Guides will be able to answer your
 questions.  There should be someone around who can help most of the time.
@@ -485,7 +485,7 @@ base class has two specialised subclasses.  The base classes are:
     {YMage            {GCleric             {BThief           {MWarrior
     {WPsionicist      {RShape Shifter      {CBrawler         {x{wRanger{x
 
-See 'HELP <class name>' for more information.  See 'HELP SUBCLASSES' for
+See 'HELP <<class name>' for more information.  See 'HELP SUBCLASSES' for
 information on the sixteen subclasses.
 ~
 
@@ -507,9 +507,9 @@ Each base class has two subclasses:
         SHAPE SHIFTER:       Werewolf       Vampire
         RANGER:              Barbarian      Bard
 
-See 'HELP <subclass name>' for information on each subclass.
+See 'HELP <<subclass name>' for information on each subclass.
 
-See 'HELP S<subclass name>' (e.g. 'HELP STEMPLAR') for a list of skills
+See 'HELP S<<subclass name>' (e.g. 'HELP STEMPLAR') for a list of skills
 available to each subclass.
 
 See 'HELP CHANGE' for how to change to choose a subclass.
@@ -596,13 +596,13 @@ can then ANIMATE DEAD to torment the living.
 ~
 
 0 KIAI~
-Syntax: kiai <target>
+Syntax: kiai <<target>
 
 Project a force ball at your opponent to inflict horrible damage.
 ~
 
 0 SCRIBE~
-Syntax: scribe <spell name>
+Syntax: scribe <<spell name>
 
 Enchant a scroll to release a spell or spells upon being recited.  You may
 only scribe spells that you know how to cast already.  You must find a suitable
@@ -616,7 +616,7 @@ names of the spells that are on them.
 ~
 
 0 BREW~
-Syntax: brew <spell name>
+Syntax: brew <<spell name>
 
 Brew a potion to contain a spell or spells.  You may only brew potions of
 spells that you know how to cast already.  You must find a suitable vial
@@ -630,7 +630,7 @@ names of the spells that are on them.
 ~
 
 0 DONATE DONATION~
-Syntax: donate <object>
+Syntax: donate <<object>
 
 Donate an object: send it from your inventory to the Donation Temple,
 found east from the Healer in Midgaard, where others can feast on your
@@ -643,35 +643,35 @@ increased rate.  This skill is automatic once practised.
 ~
 
 0 CLIMB~
-Syntax: climb <object or direction>
+Syntax: climb <<object or direction>
 
 Climb over an obstacle that blocks your way.  If you do not have the CLIMB
 skill, then you will need some climbing gear for any chance of success.
 ~
 
 0 'CHAIN LIGHTNING'~
-Syntax: cast 'chain lightning' <target>
+Syntax: cast 'chain lightning' <<target>
 
 Release a bolt of lightning that will arc between multiple targets in the
 room.  Be careful: the bolt may hit you in the process!
 ~
 
 0 TRIP~
-Syntax: trip <target>
+Syntax: trip <<target>
 
 Trip up your opponent, making him easier to hit and unable to cast spells.
 ~
 
 
 0 TRAP~
-Syntax: trap <target>
+Syntax: trap <<target>
 
 Catch your opponent in a trap so that they cannot move.  Trapped opponents are
 also poorer fighters and less able to successfully flee combat.
 ~
 
 0 SNARE~
-Syntax: snare <target>
+Syntax: snare <<target>
 
 Use your ranger's wilderness craft to trap your opponent in a snare so that they
 cannot move.  Snared opponents are also poorer fighters and less able to successfully
@@ -680,7 +680,7 @@ disadvantage that it cannot be used indoors.
 ~
 
 0 DISABLE~
-Syntax: disable <object>
+Syntax: disable <<object>
 
 Disarm a trap contained in an object.
 ~
@@ -695,7 +695,7 @@ while EXAMINING it.
 ~
 
 0 'DIRT KICK'~
-Syntax: dirt <target>
+Syntax: dirt <<target>
 
 Kick dirt into your opponent's eyes, temporarily blinding them.  You must
 be in suitable terrain for this skill to work.
@@ -785,14 +785,14 @@ create water        stone skin
 ~
 
 0 HUNT~
-Syntax: hunt <target>
+Syntax: hunt <<target>
 
 Hunt down a creature from almost anywhere in the world.  Good for finding
 difficult targets, or working through mazes and random areas.
 ~
 
 0 STUN~
-Syntax: stun <target>
+Syntax: stun <<target>
 
 Smash a person on the head and render them unconscious.  A stunned
 opponent is an easy target to hit, and is vulnerable to damage.  You
@@ -802,7 +802,7 @@ must use a pounding weapon if you want to be able to stun.
 
 0 SCAN~
 Syntax: scan
-Syntax: scan <direction>
+Syntax: scan <<direction>
 
 Look briefly about you to account for the exits and creatures nearby.
 ~
@@ -828,7 +828,7 @@ gone berserk, you will not be able to FLEE or RESCUE.
 ~
 
 0 SMASH~
-Syntax: smash <target>
+Syntax: smash <<target>
 
 Smash an opponent to the ground, and gain a free attack as they try to
 recover.  You must be wearing a shield to smash your opponent with.
@@ -857,20 +857,20 @@ Use these commands to walk in a particular direction.
 ~
 
 0 BUY LIST SELL VALUE~
-Syntax: buy   <object>
-Syntax: buy   <number> <object>
-Syntax: list  <object>
-Syntax: sell  <object>
-Syntax: value <object>
+Syntax: buy   <<object>
+Syntax: buy   <<number> <<object>
+Syntax: list  <<object>
+Syntax: sell  <<object>
+Syntax: value <<object>
 
 BUY buys an object from a shop keeper.
 
-'BUY <number> <object>' will let you buy multiple items at once.
+'BUY <<number> <<object>' will let you buy multiple items at once.
 E.g. 'BUY 20 PIE' will let you collect 20 pies at once.
 
 LIST with no argument lists the objects the shop keeper will sell you.
 
-'LIST <object>' lists only the items corresponding with <object> the shop
+'LIST <<object>' lists only the items corresponding with <<object> the shop
 keeper will sell you.
 
 SELL sells an object to a shop keeper.
@@ -894,7 +894,7 @@ a good idea to refrain from attacking creatures labelled '(Charmed)'.
 ~
 
 0 CAST~
-Syntax: cast <spell> [target]
+Syntax: cast <<spell> [target]
 
 Before you can cast a spell, you have to practice it.  The more you
 practice, the higher chance you have of success when casting.  Casting
@@ -926,13 +926,13 @@ walk into a room.
 ~
 
 0 DROP GET GIVE PUT TAKE~
-Syntax: drop <object>
-Syntax: drop <amount> <coin type>
-Syntax: get  <object>
-Syntax: get  <object> <container>
-Syntax: give <object> <character>
-Syntax: give <amount> <coin type> <character>
-Syntax: put  <object> <container>
+Syntax: drop <<object>
+Syntax: drop <<amount> <<coin type>
+Syntax: get  <<object>
+Syntax: get  <<object> <<container>
+Syntax: give <<object> <<character>
+Syntax: give <<amount> <<coin type> <<character>
+Syntax: put  <<object> <<container>
 
 DROP drops an object, or some coins, on the ground.
 
@@ -953,7 +953,7 @@ type 'DROP ALL.PIE'.
 
 0 EQUIPMENT INVENTORY ALLOWEQ~
 Syntax: equipment
-Syntax: equipment <any argument>
+Syntax: equipment <<any argument>
 Syntax: inventory
 Syntex: alloweq
 
@@ -972,13 +972,13 @@ Other players can never view your inventory.
 ~
 
 0 KICK~
-Syntax: kick <target>
+Syntax: kick <<target>
 
 Kick an opponent during battle, causing some damage.
 ~
 
 0 'KNIFE TOSS'~
-Syntax: KNIFE <target>
+Syntax: KNIFE <<target>
 
 Thieves are good with small throwing knives and can toss them at enemies during combat doing 
 some damage.
@@ -993,8 +993,8 @@ confusion to escape from combat.
 
 
 0 BACKSTAB BS 'DOUBLE BACKSTAB'~
-Syntax: backstab <target>
-Syntax: bs <target>
+Syntax: backstab <<target>
+Syntax: bs <<target>
 
 Sneak behind your opponent and plunge a blade into their back, causing
 grievous damage.  If you've practised DOUBLE BACKSTAB, you can repeat the
@@ -1018,8 +1018,8 @@ in order to disarm.
 ~
 
 0 KILL MURDER~
-Syntax: kill   <target>
-Syntax: murder <target>
+Syntax: kill   <<target>
+Syntax: murder <<target>
 
 Attack a creature, with mind to end their life.  If you want to attack
 another player, you must use MURDER.
@@ -1028,27 +1028,27 @@ another player, you must use MURDER.
 
 0 EXAMINE LOOK READ~
 Syntax: look
-Syntax: look    <object>
-Syntax: look    <character>
-Syntax: look    <direction>
-Syntax: look    <keyword>
-Syntax: look in <container>
-Syntax: look in <corpse>
-Syntax: examine <container>
-Syntax: examine <corpse>
-Syntax: read    <keyword>
+Syntax: look    <<object>
+Syntax: look    <<character>
+Syntax: look    <<direction>
+Syntax: look    <<keyword>
+Syntax: look in <<container>
+Syntax: look in <<corpse>
+Syntax: examine <<container>
+Syntax: examine <<corpse>
+Syntax: read    <<keyword>
 
 LOOK looks at something and sees what you can see.  LOOK by itself will
 give the description of the room you are in.  See also BRIEF.
 
-EXAMINE is short for 'LOOK <container>' followed by 'LOOK IN <container>'.
+EXAMINE is short for 'LOOK <<container>' followed by 'LOOK IN <<container>'.
 
-READ is the same as LOOK, but it sounds better to 'READ <sign>' than to
-'LOOK <sign>', doesn't it?
+READ is the same as LOOK, but it sounds better to 'READ <<sign>' than to
+'LOOK <<sign>', doesn't it?
 ~
 
 0 ORDER~
-Syntax: order <character> command
+Syntax: order <<character> command
 Syntax: order all         command
 
 ORDER orders one or all of your charmed followers (including pets) to
@@ -1068,7 +1068,7 @@ Syntax: rest
 Syntax: sleep
 Syntax: stand
 Syntax: wake
-Syntax: wake <character>
+Syntax: wake <<character>
 
 These commands change your position.  When you REST or SLEEP, you
 regenerate hit points, mana and movement points faster.  However, you are
@@ -1080,12 +1080,12 @@ other sleeping characters.
 ~
 
 0 GTELL ; REPLY SAY TELL~
-Syntax: gtell <message>
-Syntax: ;     <message>
-Syntax: say   <message>
-Syntax: '     <message>
-Syntax: tell  <character> <message>
-Syntax: reply <message>
+Syntax: gtell <<message>
+Syntax: ;     <<message>
+Syntax: say   <<message>
+Syntax: '     <<message>
+Syntax: tell  <<character> <<message>
+Syntax: reply <<message>
 
 All of these commands send messages to other players.  GTELL sends a
 message to all of the characters in your group, wherever they are, even if
@@ -1106,11 +1106,11 @@ You must be awake to SAY or TELL, but you can still REPLY while sleeping.
 ~
 
 0 HOLD REMOVE WEAR WIELD~
-Syntax: hold   <object>
-Syntax: remove <object>
-Syntax: wear   <object>
+Syntax: hold   <<object>
+Syntax: remove <<object>
+Syntax: wear   <<object>
 Syntax: wear   all
-Syntax: wield  <object>
+Syntax: wield  <<object>
 
 Three of these commands will take an object from your inventory and start
 using it as equipment.  HOLD is for light sources, wands, and staves.
@@ -1151,14 +1151,14 @@ See 'HELP NEWSOCIALS' for some remarks on how to create new socials.
 ~
 
 0 FEEBLEMIND~
-Syntax: cast feeblemind <target>
+Syntax: cast feeblemind <<target>
 
 This powerful spell temporarily reduces the mental powers of your
 opponent.
 ~
 
 0 SPIRITWRACK~
-Syntax: cast spiritwrack <target>
+Syntax: cast spiritwrack <<target>
 
 Summon a horde of demons to plague your victim's soul, making them perform
 poorly during battle.
@@ -1166,7 +1166,7 @@ poorly during battle.
 
 
 0 ENTRAPMENT~
-Syntax: cast entrapment <target>
+Syntax: cast entrapment <<target>
 
 Create a stasis field around the target so that they are incapable of
 motion.
@@ -1182,14 +1182,14 @@ of the damage inflicted upon by your opponents will be removed.
 
 
 0 'ANIMATE DEAD'~
-Syntax: cast 'animate dead' <corpse>
+Syntax: cast 'animate dead' <<corpse>
 
 Reanimate a freshly dead corpse, and command the monstrosity to your
 service.
 ~
 
 0 'ANIMATE WEAPON'~
-Syntax: cast 'animate weapon' <victim> (optional)
+Syntax: cast 'animate weapon' <<victim> (optional)
 
 If successful, this combat spell will cause your opponent to fumble and drop 
 their weapon.  It can be aimed at a particular foe if you are fighting 
@@ -1228,7 +1228,7 @@ adversaries has the current focus.
 {WDeities:{x
   pantheon pray
 
-For more help, type 'help <topic>' for any command, skill, or spell.
+For more help, type 'help <<topic>' for any command, skill, or spell.
 Also see help for: DAMAGE DEATH EXPERIENCE DEITY SUBCLASSES RACES TICK
                    RULES 'PKILL RULES' 'PKILL SCORE' QUEST 'QP LEVEL'
                    TEACHER CLAN
@@ -1344,8 +1344,8 @@ You can tell when an area is about to reset by the patter of little feet.
 
 
 0 COMPARE~
-Syntax: compare <object 1> <object 2>
-Syntax: compare <object>
+Syntax: compare <<object 1> <<object 2>
+Syntax: compare <<object>
 
 COMPARE compares two objects in your inventory.  If both objects are
 weapons, it will report the one with the better average damage.  If both
@@ -1360,7 +1360,7 @@ COMPARE.
 ~
 
 104 ADVANCE~
-Syntax: advance <character> <level>
+Syntax: advance <<character> <<level>
 
 ADVANCE sets a character's level to the specified value.  It is the only
 way to create new immortal characters within the game.  ADVANCE may also
@@ -1368,7 +1368,7 @@ be used to demote characters.
 ~
 
 0 CONSIDER 'ADVANCED CONSIDER'~
-Syntax: consider <target>
+Syntax: consider <<target>
 
 CONSIDER tells you what your chances are of killing a character, as well
 as a comparison of your relative health.  Of course, it's only a rough
@@ -1484,11 +1484,11 @@ else?) in the vicinity of profit-minded thieves.
 
 0 HELP~
 Syntax: help
-Syntax: help <keyword>
+Syntax: help <<keyword>
 
 HELP without any arguments shows a one-page command summary.
 
-'HELP <keyword>' shows a page of help on that keyword.  The keywords
+'HELP <<keyword>' shows a page of help on that keyword.  The keywords
 include all the commands, spells, and skills listed in the game.
 ~
 
@@ -1514,7 +1514,7 @@ WEATHER shows the current game weather.
 
 0 PAGELENGTH PAGER~
 Syntax: pagelength
-Syntax: pagelength <number>
+Syntax: pagelength <<number>
 
 Pagelength without an argument sets the number of lines before page pause
 to the default of 100 lines.
@@ -1532,19 +1532,19 @@ Syntax: slist
 
 This command shows you ALL the spells available for your class.
 
-Type 'HELP S<class or subclass name>' for the skill lists of other classes.
+Type 'HELP S<<class or subclass name>' for the skill lists of other classes.
 ~
 
 0 WHO WHOIS~
 Syntax: who
-Syntax: who   <level range>
-Syntax: who   <base class>
-Syntax: who   <base class> <level range>
+Syntax: who   <<level range>
+Syntax: who   <<base class>
+Syntax: who   <<base class> <<level range>
 Syntax: who   immortal
 Syntax: who   clan
-Syntax: who   clan <clan name>
+Syntax: who   clan <<clan name>
 Syntax: who   target
-Syntax: whois <character>
+Syntax: whois <<character>
 
 WHO shows the people currently in the game.
 
@@ -1563,13 +1563,13 @@ example:
 
 'WHO CLAN' will display all clanned players.
 
-'WHO CLAN <clan name>' displays all the members of a particular clan.
+'WHO CLAN <<clan name>' displays all the members of a particular clan.
 
 'WHO TARGET' will display all clanned or ronin players that are within the
 legal pkill limits that apply outside of clan headquarters.  Members of
 your own clan are not shown.
 
-'WHOIS <player>' provides some detailed statistics on one player.
+'WHOIS <<player>' provides some detailed statistics on one player.
 ~
 
 -1 WIZLIST~
@@ -1596,8 +1596,8 @@ your own clan are not shown.
 0 AUTO CONFIG~
 Syntax: auto
 Syntax: config
-Syntax: config +<option>
-Syntax: config -<option>
+Syntax: config +<<option>
+Syntax: config -<<option>
 
 AUTO shows the status of some of your character behaviour options.
 
@@ -1719,16 +1719,16 @@ See CONFIGURE to find out which toggle is on and which is off.
 
 0 CHANNELS~
 Syntax: channels
-Syntax: channels +<channel>
-Syntax: channels -<channel>
+Syntax: channels +<<channel>
+Syntax: channels -<<channel>
 
 With no options, CHANNELS shows you your current channels.  With a plus or
 minus sign and an option, CHANNELS turns that channel on or off.
 ~
 
 0 DESCRIPTION~
-Syntax: description   <text>
-Syntax: description + <text>
+Syntax: description   <<text>
+Syntax: description + <<text>
 
 Sets your long description to the given string.  If the description string
 starts with a '+', the part after the '+' is appended to your current
@@ -1739,7 +1739,7 @@ You can include your equipment in your description, see HELP ALLOWEQ.
 ~
 
 0 PASSWORD~
-Syntax: password <old password> <new password>
+Syntax: password <<old password> <<new password>
 
 PASSWORD changes your character's password.  The first argument must be
 your old password.  The second argument is your new password.
@@ -1751,15 +1751,15 @@ The PASSWORD command is protected against being snooped or logged.
 Syntax: prompt
 Syntax: prompt all
 Syntax: prompt current
-Syntax: prompt <%*>
+Syntax: prompt <<%*>
 
 PROMPT without an argument will toggle your prompt on and off.
 
-PROMPT ALL sets the default "<hits/hitmax mana/manamax moves/movesmax area>" prompt.
+PROMPT ALL sets the default "<<hits/hitmax mana/manamax moves/movesmax area>" prompt.
 
 PROMPT CURRENT shows your current prompt.
 
-PROMPT <%*> creates a prompt where %* represents the following variables:
+PROMPT <<%*> creates a prompt where %* represents the following variables:
 
     %h :  Current hits
     %H :  Maximum hits
@@ -1790,18 +1790,20 @@ PROMPT <%*> creates a prompt where %* represents the following variables:
     %S :  General safety: whether your current location is flagged
           as safe or unsafe for pkilling in general.
 
-    %1-%7 : Color codes              (see `HELP ANSI')
+    %1-%7 : Standard colour codes                        (see `HELP ANSI')
+    {{x,}}x,{{R}}C, various : 'Brace'-style colour codes (see `HELP ANSI2')
+    <<0>-<<555> : Extended 8-bit (256) colour codes      (see `HELP ANSI3')
     %B :  Displays bold text colour
     %N :  Displays normal text colour
 
     %R :  Room vnum                  (Immortals only)
     %W :  Wizinvisible or visible    (Immortals only)
 
-E.g. 'PROMPT <%hhp %mm %vmv>' will set your prompt to "<10hp 100m 100mv>".
+E.g. 'PROMPT <<%hhp %mm %vmv>' will set your prompt to "<<10hp 100m 100mv>".
 ~
 
 0 TITLE~
-Syntax: title <text>
+Syntax: title <<text>
 Syntax: title
 
 Sets your title to a given string.  Typing TITLE alone will force your
@@ -1810,7 +1812,7 @@ title blank.
 
 0 WIMPY~
 Syntax: wimpy
-Syntax: wimpy <number>
+Syntax: wimpy <<number>
 
 WIMPY sets your wimpy value.  When your character takes damage that
 reduces your hit points below your wimpy value, you will automatically
@@ -1871,7 +1873,7 @@ QUEST ABORT
 QUEST LIST
         List what recall points you may buy with your quest points.
 
-QUEST BUY <recall point name>
+QUEST BUY <<recall point name>
         Buy a recall point.
 
 Quest points spent will still be recorded in your total quest points
@@ -1898,10 +1900,10 @@ who are more difficult to journey to provide greater rewards for your efforts.
 ~
 
 0 CHAT . MUSIC QUESTION ANSWER SHOUT YELL~
-Syntax: chat     <message>
-Syntax: music    <message>
-Syntax: shout    <message>
-Syntax: yell     <message>
+Syntax: chat     <<message>
+Syntax: music    <<message>
+Syntax: shout    <<message>
+Syntax: yell     <<message>
 
 These commands send messages through communication channels to other
 players.
@@ -1920,7 +1922,7 @@ channels.
 ~
 
 0 EMOTE , POSE~
-Syntax: emote <action>
+Syntax: emote <<action>
 Syntax: pose
 
 EMOTE is used to express emotions or actions.  Besides EMOTE, there are
@@ -1934,7 +1936,7 @@ POSE is a variant of EMOTE.
 board [number or name]                Shows or changes board.
 note                                  Reads next note.
 note read [number]                    Reads a certain note.
-note remove <number>                  Removes a note written by you.
+note remove <<number>                  Removes a note written by you.
 note list [number]                    Shows up to number notes.
 note write                            Posts a note.
 note catchup                          Marks all notes in this board read.
@@ -1944,11 +1946,11 @@ board, there are several, each with its special purpose.
 
 Changing between the boards is accomplished using the BOARD command. BOARD
 without any arguments gives you a list of all boards together with number
-of unread message. To change, type 'BOARD <number>' or 'BOARD <name of the
+of unread message. To change, type 'BOARD <<number>' or 'BOARD <<name of the
 board>'.
 
 To read next unread note, type NOTE.  To read a note with a specified
-number, type 'NOTE READ <number>'.  Typing NOTE while in a board with no
+number, type 'NOTE READ <<number>'.  Typing NOTE while in a board with no
 unread notes shifts you to the next board.  Note that unlike the standard
 note system, a note has the same number in 'NOTE LIST' and 'NOTE READ'.
 
@@ -1958,9 +1960,9 @@ into interactive mode, where all you see are prompts for the fields like
 note.
 
 To see the list of the notes in the current board, type 'NOTE LIST'.
-Typing 'NOTE LIST <number>' will list only <number> of the latest notes.
+Typing 'NOTE LIST <<number>' will list only <<number> of the latest notes.
 
-You can remove your own note by using 'NOTE REMOVE <number>'.  Immortals
+You can remove your own note by using 'NOTE REMOVE <<number>'.  Immortals
 may remove other people's notes.  Immortals can also select how many days
 their note is kept before being purged.  Purging happens automatically at
 bootup.  Purged notes are not deleted, but saved into a file.
@@ -1977,18 +1979,18 @@ Mystic Adventure's note system (mud.gel.ulaval.ca 4000).
 
 0 BRANDISH QUAFF RECITE ZAP~
 Syntax: brandish
-Syntax: quaff    <potion>
+Syntax: quaff    <<potion>
 Syntax: recite
-Syntax: recite   <scroll> <target>
+Syntax: recite   <<scroll> <<target>
 Syntax: zap
-Syntax: zap      <target>
+Syntax: zap      <<target>
 
 BRANDISH brandishes a magical staff.  You must be HOLDing the staff.
 
 QUAFF quaffs a magical potion (as opposed to DRINK, which drinks mundane
 liquids).
 
-RECITE recites a magical scroll; the <target> is optional, depending on
+RECITE recites a magical scroll; the <<target> is optional, depending on
 the nature of the scroll.  You must be HOLDing the scroll.
 
 ZAP zaps a magical wand at a target.  If the target is not specified, and
@@ -2001,11 +2003,11 @@ object has no more charges, it will be consumed.
 ~
 
 0 OPEN CLOSE LOCK UNLOCK 'PICK LOCK'~
-Syntax: open   <object or direction>
-Syntax: close  <object or direction>
-Syntax: lock   <object or direction>
-Syntax: unlock <object or direction>
-Syntax: pick   <object or direction>
+Syntax: open   <<object or direction>
+Syntax: close  <<object or direction>
+Syntax: lock   <<object or direction>
+Syntax: unlock <<object or direction>
+Syntax: pick   <<object or direction>
 
 OPEN and CLOSE open and close an object or a door.
 
@@ -2022,9 +2024,9 @@ Also see 'HELP BASH'.
 ~
 
 0 DRINK EAT FILL~
-Syntax: drink <object>
-Syntax: eat   <object>
-Syntax: fill  <object>
+Syntax: drink <<object>
+Syntax: eat   <<object>
+Syntax: fill  <<object>
 
 When you are thirsty, DRINK something. There is a drinking fountain in
 the Temple Square in Midgaard, as well as others throughout the Domain.
@@ -2036,7 +2038,7 @@ FILL fills a drink container with water.
 ~
 
 0 SACRIFICE~
-Syntax: sacrifice <object>
+Syntax: sacrifice <<object>
 
 SACRIFICE offers an object to your god.  Your god may reward you for the
 sacrifice. The nature of the reward depends upon the type of object.
@@ -2046,7 +2048,7 @@ Hint: Gods like corpses.
 
 0 FLEE RESCUE~
 Syntax: flee
-Syntax: rescue <character>
+Syntax: rescue <<character>
 
 Once you start a fight, you can't just walk away from it.  If the fight is
 not going well, you can attempt to FLEE, or another character can RESCUE
@@ -2066,7 +2068,7 @@ attacked initially - see HELP GRORDER for details.
 ~
 
 0 'BASH DOOR'~
-Syntax: bash <direction>
+Syntax: bash <<direction>
 
 A powerful warrior can attempt to by-pass the intricacies of unlocking and
 opening doors by simply BASHING through them.  This, of course, tends to
@@ -2085,23 +2087,23 @@ if the psionicist remains absolutely still.
 ~
 
 0 FOLLOW GROUP GRLEADER GRORDER~
-Syntax: follow   <character>
+Syntax: follow   <<character>
 Syntax: group
-Syntax: group    <character>
-Syntax: grorder  <character>
+Syntax: group    <<character>
+Syntax: grorder  <<character>
 Syntax: grleader
 
 FOLLOW starts you following another character.  To stop following anyone
-else, just 'FOLLOW <yourself>'.
+else, just 'FOLLOW <<yourself>'.
 
-'GROUP <character>' makes someone who is following you a member of your
+'GROUP <<character>' makes someone who is following you a member of your
 group.  Group members share experience points from kills and will gain
 bonus experience for supporting each other from some skills and spells.
 If anyone in your group is attacked, you will automatically join the fight.
 
 Group members may use the GTELL and SPLIT commands.
 
-If <character> is already a member of your group, then GROUP will kick
+If <<character> is already a member of your group, then GROUP will kick
 them out of your group.  Characters can also leave your group by using a
 FOLLOW command to stop following you.
 
@@ -2143,14 +2145,14 @@ making you visible again.
 
 
 0 POISON~
-Syntax: cast poison <victim>
+Syntax: cast poison <<victim>
 
 This spell reduces the strength of the victim, as well as reducing their
 regeneration rate.
 ~
 
 0 'POISON WEAPON'~
-Syntax: poison <weapon>
+Syntax: poison <<weapon>
 
 Create a deadly poison that can be poured onto any weapon, rendering it
 more deadly.  This skill is not easy, however, because the poison itself
@@ -2181,7 +2183,7 @@ same room.  QUIT automatically performs a SAVE.
 0 RECALL / HOME~
 Syntax: recall
 Syntax: recall list
-Syntax: recall set <number of recall point>
+Syntax: recall set <<number of recall point>
 Syntax: home
 
 Pray for miraculous transportation to your current recall point.  '/' is a
@@ -2194,7 +2196,7 @@ Type 'RECALL LIST' for a list of what recalls you may use, and which
 recall is set as your current destination.  You gain extra recall points
 as quest rewards (see 'HELP QUEST').
 
-Type 'RECALL SET <number>' to change your recall destination.
+Type 'RECALL SET <<number>' to change your recall destination.
 
 If you RECALL during combat, you will lose experience (more than for
 fleeing), and you will have a chance of failing (again, more than for
@@ -2230,14 +2232,14 @@ For a list of all available spells for your class, type SLIST.
 ~
 
 0 SPLIT~
-Syntax: split <equivalent amount of copper coins>
+Syntax: split <<equivalent amount of copper coins>
 
 Share an amount of coins between all members of your group.
 ~
 
 0 STEAL~
-Syntax: steal coins    <character>
-Syntax: steal <object> <character>
+Syntax: steal coins    <<character>
+Syntax: steal <<object> <<character>
 
 STEAL attempts to steal coins, or an object, from a character.
 
@@ -2246,7 +2248,7 @@ There are penalties for using STEAL on other players, see HELP RULES.
 
 0 WHERE~
 Syntax: where
-Syntax: where <character>
+Syntax: where <<character>
 
 WHERE without an argument tells you the location of visible players in the
 same area as you are.
@@ -2260,7 +2262,7 @@ Crafting and spellcrafting locations:
 
 {CCRAFTING{x
 --------
-{WVNUM    ROOM                        AREA                        LEVEL       FILENAME{x
+{WVNUM    ROOM                        AREA                         LEVEL       FILENAME{x
 29966   [The lemming smithy]        [The Lemming Caves]          [5 15]      [lemmings2.are]
 2503    [The Armourer]              [Ultima]                     [5 30]      [ultima.are] {R*{x
 5321    [The smithy]                [Old Thalos]                 [10 25]     [mirror.are] {R*{x
@@ -2302,7 +2304,7 @@ Crafting and spellcrafting locations:
 ~
 
 104 TRUST~
-Syntax: trust <character> <level>
+Syntax: trust <<character> <<level>
 
 TRUST sets a character's trust to the specified level.  This is similar to
 advancing the character for accessing immortal commands, but has no effect
@@ -2315,12 +2317,12 @@ A trust of 0 means to use the character's natural level again.
 ~
 
 103 ALLOW BAN~
-Syntax: allow <site>
-Syntax: ban   <site>
+Syntax: allow <<site>
+Syntax: ban   <<site>
 Syntax: ban
 
-'BAN <site>' prohibits players from that site from logging in.  BAN with
-no arguments lists the banned sites.  'ALLOW <site>' removes a site from
+'BAN <<site>' prohibits players from that site from logging in.  BAN with
+no arguments lists the banned sites.  'ALLOW <<site>' removes a site from
 the ban list.
 
 The site ban test works by suffix comparison, so if you ban 'foo.edu', all
@@ -2334,7 +2336,7 @@ list is cleared.
 Syntax: reboot
 Syntax: shutdown
 Syntax: wizlock
-Syntax: numlock <number>
+Syntax: numlock <<number>
 Syntax: newlock
 
 REBOOT shuts down the server.  When the normal 'startup' script is used to
@@ -2350,7 +2352,7 @@ their links, however, may reconnect.
 
 NUMLOCK shows at which character level and below may not log in.
 
-NUMLOCK <number> sets which character level and below MAY NOT log in.
+NUMLOCK <<number> sets which character level and below MAY NOT log in.
 Players level immortal and above with a special bit set MAY log in.
 Players who lose their links, however, may reconnect.
 
@@ -2359,18 +2361,18 @@ not turn off if currently set.
 ~
 
 103 DENY DISCONNECT FREEZE~
-Syntax: deny       <character>
-Syntax: disconnect <character>
-Syntax: freeze     <character>
+Syntax: deny       <<character>
+Syntax: disconnect <<character>
+Syntax: freeze     <<character>
 
 DENY denies access to a particular player and throws them out of the game.
 DENY is permanent (persists across reboots) and is not undoable from
 within the game.  Only someone with access to the player files directory
 may repeal a DENY by editing the appropriate player file.
 
-DISCONNECT <character> immediately disconnects that character.
+DISCONNECT <<character> immediately disconnects that character.
 
-FREEZE <character> is a toggle which prevents a character from issuing any
+FREEZE <<character> is a toggle which prevents a character from issuing any
 commands at all.
 ~
 
@@ -2399,8 +2401,8 @@ SUB_CLASS_ALCHEMIST         18
 ~
 
 103 FORCE~
-Syntax: force <character> <command>
-Syntax: force all <command>
+Syntax: force <<character> <<command>
+Syntax: force all <<command>
 
 FORCE forces one character to execute a command.
 
@@ -2409,11 +2411,11 @@ typically used for 'force all save'.
 ~
 
 102 LOG SNOOP~
-Syntax: log   <character>
+Syntax: log   <<character>
 Syntax: log   all
-Syntax: snoop <character>
+Syntax: snoop <<character>
 
-LOG <character> causes all of a character's commands to be logged into the
+LOG <<character> causes all of a character's commands to be logged into the
 server's log file.  Like FREEZE, it is a permanent character toggle.
 
 Certain commands (PASSWORD) are protected against LOG.  Conversely,
@@ -2430,24 +2432,24 @@ SNOOP yourself to cancel all outstanding snoops.
 ~
 
 102 MSET OSET RSET SSET~
-Syntax: mset <character> <field> <value>
-Syntax: oset <object>    <field> <value>
-Syntax: rset <location>  <field> <value>
-Syntax: sset <character> <skill> <value>
-Syntax: sset <character> all     <value>
+Syntax: mset <<character> <<field> <<value>
+Syntax: oset <<object>    <<field> <<value>
+Syntax: rset <<location>  <<field> <<value>
+Syntax: sset <<character> <<skill> <<value>
+Syntax: sset <<character> all     <<value>
 
 MSET, OSET, and RSET set the properties of mobiles, objects, and rooms,
 respectively.  SSET sets a skill or spell level on a PC.
 
 There is currently no way to enter more than one line of text for a
-string-valued option.  In this case, MSET <character> description is not
+string-valued option.  In this case, MSET <<character> description is not
 supported.
 ~
 
 103 NOEMOTE NOTELL SILENCE~
-Syntax: noemote <character>
-Syntax: notell  <character>
-Syntax: silence <character>
+Syntax: noemote <<character>
+Syntax: notell  <<character>
+Syntax: silence <<character>
 
 NOEMOTE, NOTELL, and SILENCE are used to muffle other characters, by
 preventing them from emoting, telling, and using channels, respectively.
@@ -2456,8 +2458,8 @@ communication.
 ~
 
 102 MLOAD OLOAD~
-Syntax: mload <vnum>
-Syntax: oload <vnum> <level> <copies>
+Syntax: mload <<vnum>
+Syntax: oload <<vnum> <<level> <<copies>
 
 MLOAD loads a mobile given its vnum (virtual number).
 
@@ -2466,14 +2468,14 @@ given its (required) vnum.
 ~
 
 103 PARDON~
-Syntax: pardon <character> <killer|thief|hunted|deserter>
+Syntax: pardon <<character> <<killer|thief|hunted|deserter>
 
 PARDON pardons a player for their crimes.
 ~
 
 103 PURGE~
 Syntax: purge
-Syntax: purge <character>
+Syntax: purge <<character>
 
 PURGE is used to clean up the world.  PURGE with no arguments removes all
 the NPCs and objects in the current room.  PURGE with an argument purges
@@ -2483,7 +2485,7 @@ PURGE will not get rid of PC's.
 ~
 
 103 RESTORE~
-Syntax: restore <character>
+Syntax: restore <<character>
 Syntax: restore all
 Syntax: restore tournament
 
@@ -2497,7 +2499,7 @@ target character.  Aggravated damage is also removed.
 
 104 SSTIME~
 Syntax: sstime
-Syntax: sstime <field> <value>
+Syntax: sstime <<field> <<value>
 
 This Directorship command sets the time of the warnings of shutdown and
 the shutdown time.
@@ -2506,7 +2508,7 @@ SSTIME without an argument shows the time at which the fields are set.
 ~
 
 103 SLAY~
-Syntax: slay <character>
+Syntax: slay <<character>
 
 SLAY kills a character in cold blood, no saving throw.
 
@@ -2514,10 +2516,10 @@ SLAY bypasses auto actions such as AUTOLOOT and AUTOSAC.
 ~
 
 103 TRANSFER~
-Syntax: transfer <character>
+Syntax: transfer <<character>
 Syntax: transfer all
-Syntax: transfer <character> <location>
-Syntax: transfer all         <location>
+Syntax: transfer <<character> <<location>
+Syntax: transfer all         <<location>
 
 TRANSFER transfers the target character, or ALL player characters,
 to your current location (default) or to a specified location.
@@ -2534,15 +2536,15 @@ logging in.
 ~
 
 103 WIZIFY~
-Syntax: wizify <character>
+Syntax: wizify <<character>
 
 WIZIFY toggles the wizbit flag of a character.  This enables the wizified
 character to enter the game despite a WIZLOCK.
 ~
 
 102 ECHO RECHO~
-Syntax: echo  <message>
-Syntax: recho <message>
+Syntax: echo  <<message>
+Syntax: recho <<message>
 
 ECHO sends a message to all players in the game, without any prefix
 indicating who sent it.
@@ -2567,8 +2569,8 @@ limit on the number and size of these blocks.
 ~
 
 102 MFIND OFIND~
-Syntax: mfind <name>
-Syntax: ofind <name>
+Syntax: mfind <<name>
+Syntax: ofind <<name>
 
 MFIND finds all mobile types with a particular name.
 
@@ -2576,9 +2578,9 @@ OFIND finds all object types with a particular name.
 ~
 
 102 MSTAT OSTAT RSTAT~
-Syntax: mstat <character>
-Syntax: ostat <object>
-Syntax: rstat <location>
+Syntax: mstat <<character>
+Syntax: ostat <<object>
+Syntax: rstat <<location>
 Syntax: rstat
 
 MSTAT shows you statistics on a character.
@@ -2590,13 +2592,13 @@ a vnum, as the name of a mobile, or as the name of an object.
 ~
 
 102 OWHERE~
-Syntax: owhere <object>
+Syntax: owhere <<object>
 
 OWHERE shows you the locations of all objects with a particular name.
 ~
 
 102 MWHERE~
-Syntax: mwhere <name>
+Syntax: mwhere <<name>
 
 MWHERE shows you the locations of all mobiles with a particular name.
 ~
@@ -2608,7 +2610,7 @@ PEACE causes all characters and mobiles in a room to stop fighting.
 ~
 
 102 SLOOKUP~
-Syntax: slookup <skill-or-spell>
+Syntax: slookup <<skill-or-spell>
 Syntax: slookup all
 
 SLOOKUP shows you the internal 'sn' and external 'slot' for the given
@@ -2620,7 +2622,7 @@ SLOOKUP ALL shows this information for all skills and spells.
 ~
 
 102 RETURN~
-Syntax: switch <character>
+Syntax: switch <<character>
 Syntax: return
 
 SWITCH switches you into the body of another character (who must not
@@ -2630,7 +2632,7 @@ RETURN returns you to your original body.
 ~
 
 101 AT~
-Syntax: at <location> <command>
+Syntax: at <<location> <<command>
 
 AT executes the given command (which may have arguments) at the given
 location.  The location may be specified as a vnum, as the name of a
@@ -2643,9 +2645,9 @@ location).  Thus, AT will not work to private locations.
 
 101 BAMFIN BAMFOUT~
 Syntax: bamfin
-Syntax: bamfin  <message>
+Syntax: bamfin  <<message>
 Syntax: bamfout
-Syntax: bamfout <message>
+Syntax: bamfout <<message>
 
 The standard messages for GOTO are 'arrives in a swirling mist' and
 'leaves in a swirling mist'.  You can replace these messages with messages
@@ -2654,7 +2656,7 @@ arguments, these reset the messages to their defaults.
 ~
 
 101 GOTO~
-Syntax: goto <location>
+Syntax: goto <<location>
 
 GOTO takes you to a location.  The location may be specified as a vnum,
 as the name of a mobile, or as the name of an object.
@@ -2672,26 +2674,26 @@ characters of lower level than you, and to all mobiles.
 ~
 
 0 'ACID BLAST' 'BURNING HANDS' 'COLOUR SPRAY' FIREBALL 'LIGHTNING BOLT' 'MAGIC MISSILE' 'SHOCKING GRASP'~
-Syntax: cast 'acid blast'     <victim>
-Syntax: cast 'burning hands'  <victim>
-Syntax: cast 'colour spray'   <victim>
-Syntax: cast  fireball        <victim>
-Syntax: cast 'lightning bolt' <victim>
-Syntax: cast 'magic missile'  <victim>
-Syntax: cast 'shocking grasp' <victim>
+Syntax: cast 'acid blast'     <<victim>
+Syntax: cast 'burning hands'  <<victim>
+Syntax: cast 'colour spray'   <<victim>
+Syntax: cast  fireball        <<victim>
+Syntax: cast 'lightning bolt' <<victim>
+Syntax: cast 'magic missile'  <<victim>
+Syntax: cast 'shocking grasp' <<victim>
 
 These spells inflict damage on the victim.  The higher-level spells do
 more damage.
 ~
 
 0 ARMOR~
-Syntax: cast armor <character>
+Syntax: cast armor <<character>
 
 This spell decreases (improves) the armor class of the target character.
 ~
 
 0 BLESS PRAYER~
-Syntax: cast bless <character>
+Syntax: cast bless <<character>
 Syntax: cast prayer
 
 BLESS renders the target worthy of favour in the eyes of their god,
@@ -2704,13 +2706,13 @@ See 'HELP PRAY' for information on how to pray to DEITIES.
 ~
 
 0 BLINDNESS~
-Syntax: cast blindness <victim>
+Syntax: cast blindness <<victim>
 
 This spell renders the target character blind.
 ~
 
 0 'bless weapon'~
-Syntax: cast 'bless weapon' <weapon>
+Syntax: cast 'bless weapon' <<weapon>
 
 This spell can be used to add mana and save vs spell bonuses to a
 weapon that has not been previously blessed.  It will also imbue it
@@ -2725,10 +2727,10 @@ It calls down lightning bolts to strike your foes.
 ~
 
 0 'CAUSE LIGHT' 'CAUSE SERIOUS' 'WRATH OF GOD' 'CAUSE CRITICAL' HARM~
-Syntax: cast 'cause light'    <victim>
-Syntax: cast 'cause serious'  <victim>
-Syntax: cast 'cause critical' <victim>
-Syntax: cast  harm            <victim>
+Syntax: cast 'cause light'    <<victim>
+Syntax: cast 'cause serious'  <<victim>
+Syntax: cast 'cause critical' <<victim>
+Syntax: cast  harm            <<victim>
 Syntax: cast 'wrath of god'
 
 These spells inflict damage on the victim.  The higher-level spells do
@@ -2738,14 +2740,14 @@ Note that WRATH OF GOD affects every monster in the room as the caster.
 ~
 
 0 'CHANGE SEX'~
-Syntax: cast 'change sex' <victim>
+Syntax: cast 'change sex' <<victim>
 
 This spell changes the sex of the victim (temporarily).
 ~
 
 
 0 'CHILL TOUCH'~
-Syntax: cast 'chill touch' <victim>
+Syntax: cast 'chill touch' <<victim>
 
 This spell inflicts damage on the victim and also reduces the victim's
 strength by one.
@@ -2779,13 +2781,13 @@ same properties as a fountain.
 ~
 
 0 'CREATE WATER'~
-Syntax: cast 'create water' <drink container>
+Syntax: cast 'create water' <<drink container>
 
 This spell replenishes a drink container with water.
 ~
 
 0 'CURE BLINDNESS'~
-Syntax: cast 'cure blindness' <character>
+Syntax: cast 'cure blindness' <<character>
 
 This spell cures blindness in one so unfortunate.  Gouged and dirtkicked
 victims are also restored.
@@ -2793,11 +2795,11 @@ victims are also restored.
 
 0 'CURE LIGHT' 'CURE SERIOUS' 'CURE CRITICAL' 'HEAL' 'POWER HEAL' 'PSYCHIC HEALING' 'COMPLETE HEALING'~
 
-Syntax: cast 'cure light'       <character>
-Syntax: cast 'cure serious'     <character>
-Syntax: cast 'cure critical'    <character>
-Syntax: cast  heal              <character>
-Syntax: cast 'power heal'       <character>
+Syntax: cast 'cure light'       <<character>
+Syntax: cast 'cure serious'     <<character>
+Syntax: cast 'cure critical'    <<character>
+Syntax: cast  heal              <<character>
+Syntax: cast 'power heal'       <<character>
 Syntax: cast 'psychic healing'
 Syntax: cast 'complete healing'
 
@@ -2807,14 +2809,14 @@ limited to the psionicist alone.
 ~
 
 0 'CURE POISON'~
-Syntax: cast 'cure poison' <character>
+Syntax: cast 'cure poison' <<character>
 
 This spell cures poison in one so unfortunate.
 ~
 
 0 CURSE HEX~
-Syntax: cast 'curse' <target>
-Syntax: cast 'hex' <target>
+Syntax: cast 'curse' <<target>
+Syntax: cast 'hex' <<target>
 
 CURSE leaves your victim unclean in the eyes of their god, weakening their
 performance in combat and making them unable to RECALL.
@@ -2864,23 +2866,23 @@ This spell enables the caster to detect cursed objects and creatures.
 
 Additionally, it will make you reluctant to remove cursed items from
 a corpse if you have AUTOLOOT on (see "help autoloot").  You will
-still be able to manually remove the items (i.e. get <item> corpse).
+still be able to manually remove the items (i.e. get <<item> corpse).
 ~
 
 0 'DETECT POISON'~
-Syntax: cast 'detect poison' <object>
+Syntax: cast 'detect poison' <<object>
 
 This spell detects the presence of poison in food or drink.
 ~
 
 0 'DISPEL EVIL'~
-Syntax: cast 'dispel evil' <victim>
+Syntax: cast 'dispel evil' <<victim>
 
 This spell invokes the wrath of God on an evil victim, inflicting damage.
 ~
 
 0 'DISPEL MAGIC'~
-Syntax: cast 'dispel magic' <target>
+Syntax: cast 'dispel magic' <<target>
 
 This spell dispels magical affects on a character.  It may be used as an
 offensive spell to remove an enemy's magical advantages, or as a benign
@@ -2895,7 +2897,7 @@ that other characters who are not yet fighting may attack you as a result!
 ~
 
 0 'ENCHANT WEAPON'~
-Syntax: cast 'enchant weapon' <weapon>
+Syntax: cast 'enchant weapon' <<weapon>
 
 This spell magically enchants a weapon, increasing its to-hit and to-dam
 bonuses.  The weapon must be un-magical to start with.  This spell also
@@ -2903,14 +2905,14 @@ causes the weapon to be aligned with the alignment with the caster.
 ~
 
 0 'ENERGY DRAIN'~
-Syntax: cast 'energy drain' <victim>
+Syntax: cast 'energy drain' <<victim>
 
 This powerful spell saps the life force of your enemy.  It is an extremely
 evil spell, and hence has evil effects on the caster.
 ~
 
 0 'FAERIE FIRE'~
-Syntax: cast 'faerie fire' <victim>
+Syntax: cast 'faerie fire' <<victim>
 
 This spell increases (makes worse) the armor class of its victim.  For
 each level of the caster, the victim's armor class is increased by two
@@ -2925,14 +2927,14 @@ in the same room as you.
 ~
 
 0 FLAMESTRIKE~
-Syntax: cast 'flamestrike' <victim>
+Syntax: cast 'flamestrike' <<victim>
 
 This spell inflicts damage on the victim.
 ~
 
 0 FLY LEVITATION FLIGHT~
-Syntax: cast fly <target>
-Syntax: cast levitation <target>
+Syntax: cast fly <<target>
+Syntax: cast levitation <<target>
 Syntax: fly
 
 The spells FLY and LEVITATE enable the target to fly above the ground.
@@ -2958,22 +2960,22 @@ intelligence and wisdom but are excellent for warrior classes.
 ~
 
 0 'GIANT STRENGTH' 'ENHANCED STRENGTH'~
-Syntax: cast 'giant strength' <target>
+Syntax: cast 'giant strength' <<target>
 Syntax: cast 'enhanced strength'
 
 These spells increase the strength of the target character.
 ~
 
 0 IDENTIFY LORE~
-Syntax: cast identify <object>
-Syntax: cast lore     <object>
-Syntax: identify      <object>
+Syntax: cast identify <<object>
+Syntax: cast lore     <<object>
+Syntax: identify      <<object>
 
 The spell IDENTIFY reveals detailed information about an object.  LORE
 works similar to identify, except can only be used on armour and weapons.
 
 Some creatures will identify objects for you if you are unable to cast
-these spells.  Type 'IDENTIFY <object>' to receive their services.  The
+these spells.  Type 'IDENTIFY <<object>' to receive their services.  The
 Sage in Anon, Magnus in Solace and the Loremaster in the Mud School will
 identify items, for a small price.
 ~
@@ -2985,7 +2987,7 @@ This spell enables you to see in the dark.
 ~
 
 0 INVIS 'MASS INVIS'~
-Syntax: cast invis <target>
+Syntax: cast invis <<target>
 Syntax: cast 'mass invis'
 
 The INVIS spell makes the target character invisible.  Invisible
@@ -2996,14 +2998,14 @@ including the caster.
 ~
 
 0 'KNOW ALIGNMENT' 'AURA SIGHT'~
-Syntax: cast 'know alignment' <target>
-Syntax: cast 'aura sight'     <target>
+Syntax: cast 'know alignment' <<target>
+Syntax: cast 'aura sight'     <<target>
 
 These spells reveal the alignment of the target character.
 ~
 
 0 'LOCATE OBJECT'~
-Syntax: cast 'locate object' <object name>
+Syntax: cast 'locate object' <<object name>
 
 This spell reveals the location of all objects with the given name.
 ~
@@ -3017,7 +3019,7 @@ These spells enable the caster to pass through closed doors.
 
 0 PROTECTION 'MASS SANCTUARY' SANCTUARY GLOBE 'GLOBE OF INVUNERABILITY'~
 Syntax: cast protection
-Syntax: cast sanctuary <character>
+Syntax: cast sanctuary <<character>
 Syntax: cast 'mass sanctuary'
 
 The PROTECTION spell reduces the damage taken from any attack by an opposite-
@@ -3036,13 +3038,13 @@ These spells may be used simultaneously for cumulative effect.
 ~
 
 0 REFRESH~
-Syntax: cast refresh <target>
+Syntax: cast refresh <<target>
 
 This spell refreshes the movement points of a character.
 ~
 
 0 'REMOVE CURSE'~
-Syntax: cast 'remove curse' <target>
+Syntax: cast 'remove curse' <<target>
 
 This spell removes a curse from a character.  If the target character is
 wearing a noremove item, the item will be automatically expelled from the
@@ -3058,7 +3060,7 @@ class.
 ~
 
 0 SUMMON 'SUMMON FAMILIAR'~
-Syntax: cast summon <character>
+Syntax: cast summon <<character>
 Syntax: cast 'summon familiar'
 
 This spell summons a character from anywhere else in your zone into your
@@ -3068,15 +3070,15 @@ SUMMON FAMILIAR will summon a beast to aid you in battles.
 ~
 
 0 TELEPORT~
-Syntax: cast <teleport>
+Syntax: cast <<teleport>
 
 This spell takes you from your current location to a random location
 somewhere in the world.
 ~
 
 0 VENTRILOQUATE 'CREATE SOUND'~
-Syntax: cast ventriloquate  <speaker> <message>
-Syntax: cast 'create sound' <speaker> <message>
+Syntax: cast ventriloquate  <<speaker> <<message>
+Syntax: cast 'create sound' <<speaker> <<message>
 
 This spell throws your voice, making it appear that some other object or
 character in the room is saying your message.  Victims who make their
@@ -3086,17 +3088,17 @@ character really did say your message.
 ~
 
 0 WEAKEN~
-Syntax: cast weaken <victim>
+Syntax: cast weaken <<victim>
 
 This spell reduces the strength of the victim by two points.
 ~
 
 0 'ACID BREATH' 'FIRE BREATH' 'FROST BREATH' 'GAS BREATH' 'LIGHTNING BREATH'~
-Syntax: cast 'acid breath'      <victim>
-Syntax: cast 'fire breath'      <victim>
-Syntax: cast 'frost breath'     <victim>
+Syntax: cast 'acid breath'      <<victim>
+Syntax: cast 'fire breath'      <<victim>
+Syntax: cast 'frost breath'     <<victim>
 Syntax: cast 'gas breath'
-Syntax: cast 'lightning breath' <victim>
+Syntax: cast 'lightning breath' <<victim>
 
 These spells are for the use of dragons.  Acid, fire, frost, and lightning
 damage one victim, whereas gas damages every target in the room.  Fire and
@@ -3284,7 +3286,7 @@ hey, even psionicists get a little excited from time to time.
 ~
 
 0 AGITATION~
-Syntax: cast 'agitation' <target>
+Syntax: cast 'agitation' <<target>
 
 This skill is nearly identical to the Mage spell BURNING HANDS.  With this
 skill, a psionicist can cause the cells in his or her victim to become
@@ -3292,7 +3294,7 @@ agitated, moving so fast as to cause burn damage.
 ~
 
 0 AWE~
-Syntax: cast awe <target>
+Syntax: cast awe <<target>
 
 With this discipline, a skilled psionicist can use the power of his or her
 mind to affect the morale of an opponent.  If successful, the enemy will
@@ -3302,7 +3304,7 @@ a brief lull in the action.
 ~
 
 0 'BALLISTIC ATTACK'~
-Syntax: cast 'ballistic attack' <target>
+Syntax: cast 'ballistic attack' <<target>
 
 BALLISTIC ATTACK lets a psionicist use the powers of his or her mind to
 throw small objects, usually a rock or other debris that happens to be in
@@ -3337,7 +3339,7 @@ this knowledge can also be shared with the his or her companions.
 ~
 
 0 'CONTROL FLAMES'~
-Syntax: cast 'control flames' <target>
+Syntax: cast 'control flames' <<target>
 
 With this skill, a psionicist can will the flames in his or her light
 source to leap out and strike an enemy.  And if you don't think your light
@@ -3359,8 +3361,8 @@ attack and only take minor damage.
 ~
 
 0 DETONATE DISINTEGRATE~
-Syntax: cast 'detonate'     <character>
-Syntax: cast 'disintegrate' <character>
+Syntax: cast 'detonate'     <<character>
+Syntax: cast 'disintegrate' <<character>
 
 With both of these skills, a psionicist uses his or her mind to affect the
 latent energy inside inanimate objects.  If these objects are close enough
@@ -3398,7 +3400,7 @@ damage inflicted by creatures of negative energy.
 ~
 
 0 'EGO WHIP'~
-Syntax: cast 'ego whip' <character>
+Syntax: cast 'ego whip' <<character>
 
 Because a psionicist understands the inner workings of the mind so well,
 he or she can attempt to EGO WHIP a victim, making them less confident by
@@ -3415,7 +3417,7 @@ without damage.  As the psionicist gains experience, this skill improves.
 ~
 
 0 'ENHANCE ARMOR'~
-Syntax: cast 'enhance armor' <object>
+Syntax: cast 'enhance armor' <<object>
 
 With this devotion, a psionicist can change the molecular makeup of
 objects, making them stronger and more durable.  This has obvious
@@ -3424,11 +3426,11 @@ psionicist cannot rearrange its molecules.
 ~
 
 0 'MIND THRUST' 'INFLICT PAIN' 'PSYCHIC CRUSH' 'PSIONIC BLAST' ULTRABLAST~
-Syntax: cast 'mind thrust'   <character>
-Syntax: cast 'inflict pain'  <character>
-Syntax: cast 'psychic crush' <character>
-Syntax: cast 'psionic blast' <character>
-Syntax: cast  ultrablast     <character>
+Syntax: cast 'mind thrust'   <<character>
+Syntax: cast 'inflict pain'  <<character>
+Syntax: cast 'psychic crush' <<character>
+Syntax: cast 'psionic blast' <<character>
+Syntax: cast  ultrablast     <<character>
 
 With these skills, a psionicist can telepathically cause damage to the
 neural synapses of his or her victim.  The devotions are listed in
@@ -3436,28 +3438,28 @@ increasing order of damage inflicted.
 ~
 
 0 'LEND HEALTH'~
-Syntax: cast 'lend health' <character>
+Syntax: cast 'lend health' <<character>
 
 A psionicist can LEND HEALTH to a companion in need, but only at his or
 her own expense.  That's what friends are for, right?
 ~
 
 0 'PROJECT FORCE'~
-Syntax: cast 'project force' <character>
+Syntax: cast 'project force' <<character>
 
 If a psionicist successfully PROJECTS FORCE, the force of his or her mind
 will strike against the victim's body, causing moderate damage.
 ~
 
 0 'PSYCHIC DRAIN'~
-Syntax: cast 'psychic drain' <character>
+Syntax: cast 'psychic drain' <<character>
 
 With this discipline, a psionicist can drain the strength of an opponent.
 The skill becomes more effective as the psionicist gains experience.
 ~
 
 0 'SHARE STRENGTH'~
-Syntax: cast 'share strength' <character>
+Syntax: cast 'share strength' <<character>
 
 With this skill, a psionicist can augment the strength of a companion.
 However, the psionicist's own strength is reduced at the same time.  It is
@@ -3652,10 +3654,10 @@ Yuan-ti are versatile and make a good choice for any class.
 
 0 BALANCE DEPOSIT WITHDRAW COINS BANK~
 Syntax: balance
-Syntax: deposit  <amount> <coin type>
-Syntax: deposit  all      <coin type>
+Syntax: deposit  <<amount> <<coin type>
+Syntax: deposit  all      <<coin type>
 Syntax: deposit  all
-Syntax: withdraw <amount> <coin type>
+Syntax: withdraw <<amount> <<coin type>
 
 These commands are used at banks to deposit and withdraw cash.
 
@@ -3663,7 +3665,7 @@ BALANCE displays your current bank balance, broken down into the different
 available coin types.
 
 DEPOSIT and WITHDRAW allow you to deposit into and withdraw money from
-your bank account.  You can 'DEPOSIT ALL' and 'DEPOSIT ALL <coin type>'.
+your bank account.  You can 'DEPOSIT ALL' and 'DEPOSIT ALL <<coin type>'.
 
 The DEPOSIT and WITHDRAW commands will only work when you are inside a
 BANK.  When you DEPOSIT money, it will be converted into the different coin
@@ -3727,18 +3729,18 @@ To see the list of characters who have reached level 100, the syntax is HERO.
 There are many benefits to being a hero:
 
 IMMTALK CHANNEL
-Syntax: immtalk <message>
+Syntax: immtalk <<message>
 Heroes can communicate on the IMMTALK channel, which can be accessed only by
 heroes and immortals.  ':' is a synonym for IMMTALK.
 
 NEWBIE CHANNEL
-Syntax: newbie <message>
+Syntax: newbie <<message>
 Because Heroes are obviously experienced players, they gain access to the
 NEWBIE channel to enable them to give something back to the game.  See HELP
 NEWBIE for more information.
 
 RENAME
-Syntax: rename <object> <string> <value>
+Syntax: rename <<object> <<string> <<value>
 Heroes are able to RENAME their equipment.  The strings that can be changed
 are: name, short, long, ed (ed being the extra description on the item).
 Heroes are not permitted to rename items for other characters, except for
@@ -3767,7 +3769,7 @@ special "hero quest" areas that contain items only available for heroes.
 0 HERO LEGEND PKILLERS~
 Syntax: legend
 Syntax: pkillers
-Syntax: pkillers <clan name>
+Syntax: pkillers <<clan name>
 
 LEGEND is similar to FAME in that it shows who has received the most fame
 within the Dragons Domain.  The difference between LEGEND and FAME is that
@@ -3791,7 +3793,7 @@ Very wise!  Read the friendly manual at:
 ~
 
 0 BOUNTY WANTED~
-Syntax: bounty <character> <number of copper coins>
+Syntax: bounty <<character> <<number of copper coins>
 Syntax: wanted
 
 Bounties are cash rewards for the murder of other players.  If you are
@@ -3801,7 +3803,7 @@ the '{Y({W${Y){x' flag.  If you kill these characters, you receive their
 total bounty.
 
 You can add to a character's bounty if one already exists.  To see how
-large a character's bounty is, type 'WHOIS <character>'.  You must offer
+large a character's bounty is, type 'WHOIS <<character>'.  You must offer
 at least 100000 copper coins for a bounty.
 
 To see a list of outstanding bounties, type 'WANTED'.
@@ -3810,15 +3812,15 @@ To see a list of outstanding bounties, type 'WANTED'.
 0 'BOUNTY HUNTER'~
 Bounty Hunter subclass (base class Thief)
 
-The Bounty Hunter is a quiet seldom seen class, preferring to keep to
+The Bounty Hunter is a quiet, seldom-seen class, preferring to keep to
 themselves.  They make the perfect assassin, being able to HUNT their
-victim and attempt to STUN and ASSASSINATE them.
+victim as well as attempting to STUN and ASSASSINATE them.
 ~
 
 0 COLOUR2 COLOR2 ANSI2~
 Syntax: colour
 
-COLOUR toggles ANSI colour on and off.
+COLOUR toggles ANSI colour (including extended 8-bit colour) on and off.
 
 You may talk in colour, and colourise your title.  The format is as
 follows: the 'escape character' to specify a colour is the left handed
@@ -3851,6 +3853,33 @@ You can also set text background colours by using right-handed brace
     {r}D}}D  white (bolds foreground text){x}x        
 
 ColoUr was written by Lope (ant@solace.mh.se)
+~
+
+0 COLOUR3 COLOR3 ANSI3~
+
+This MUD supports 8-bit (256) terminal colours.  You will see 8-bit 
+colour used throughout the MUD's text and may use it yourself in your 
+prompt, title, speech, et cetera.  It is expected that over time it 
+will be rolled out to more areas and used increasingly to enrich the
+ MUD environment and gameplay.
+
+The format for a colour tag is <<NUMBER>.  Similar to using standard
+colours, you add 8-bit colour to text by enclosing it in tags.
+
+To print a literal '<<' character, just type it twice: '<<<<'.
+Close your tags with <<0> to stop your colours from bleeding.
+
+Example: <<196>{RThis text will be turned bright red.{x<<0>
+
+For a list of all the colours available and their corresponding 
+tag numbers, see the table at: {Yhttps://tinyurl.com/dd4colours{x
+
+You will notice the numbers for foreground colours run from 1-255.
+You can also colour the background--just add 300 to the foreground
+colour number, so that $Fe.g.$R to colour the background {CBrightCyan{x (14)
+you would use the tag <<314>, producing <314><1>this effect<0>.
+
+8-bit colour was added to DD by Owl.
 ~
 
 0 'SUMMONING MAGIKS'~
@@ -4081,7 +4110,7 @@ Spells in healing magiks include:
     heal
 ~
 0 'PRISMATIC SPRAY'~
-Syntax: cast 'prismatic spray' <target>
+Syntax: cast 'prismatic spray' <<target>
 
 This spell creates an array of magical affects, lightning, fire, acid,
 heat all at once.  This does terrible things to the victims who feel the
@@ -4089,7 +4118,7 @@ combined effects of a mages most powerful magik.
 ~
 
 0 'INNER FIRE'~
-Syntax: cast 'inner fire' <target>
+Syntax: cast 'inner fire' <<target>
 
 With this spell, a psionic uses the power of their mind to set the blood
 of there victim on fire, inflicting powerful damage.
@@ -4105,7 +4134,7 @@ will only give you one warning if your language is unacceptable.
 
 
 0 ADVICE~
-Syntax : advice <skill, spell or knowledge group>
+Syntax : advice <<skill, spell or knowledge group>
 
 A teacher is able to give limited advice on skills that they can practice.
 Advice can be given on any skill that you have learned and the teacher can
@@ -4159,12 +4188,12 @@ will no longer advance.  If a new attribute is not selected prior to the
 next advance it defaults to the prime requisite, then to random order.
 
 The attribute to be trained can be set at any time by typing 'TRAIN
-<attribute>'.  Type TRAIN to see what you will attempt to train next.
+<<attribute>'.  Type TRAIN to see what you will attempt to train next.
 ~
 
 0 PRACTICE~
 Syntax:  practice
-Syntax:  practice <skill>
+Syntax:  practice <<skill>
 
 PRACTICE without an argument will list all the skills a character can
 currently learn and those they currently know.
@@ -4212,7 +4241,7 @@ the relevant section in the FAQ ('HELP FAQ').
 
 
 0 COMBO COMBO2 COMBO3 COMBO4~
-Syntax: combo <skill 1> [skill2] [skill3] [skill4]
+Syntax: combo <<skill 1> [skill2] [skill3] [skill4]
 
 The combo skill lets the martial artist combo together up to four of his
 skills in one attack round.  Only the skills that the Martial Artist gets
@@ -4245,7 +4274,7 @@ moderate damage.
 ~
 
 0 KANSETSU~
-Syntax: kansetsu <victim>
+Syntax: kansetsu <<victim>
 
 You will attempt an arm lock on your victim by trying this skill. If
 successful you will break the victim's arms, causing them to drop any
@@ -4254,14 +4283,14 @@ you will inflict moderate damage.
 ~
 
 0 TETSUI~
-Syntax: tetsui <victim>
+Syntax: tetsui <<victim>
 
 This can be described as the Hammer Fist technique.  A move requiring
 great precision and power, a successful hit will inflict heavy damage.
 ~
 
 0 SHUTO~
-Syntax: shuto <victim>
+Syntax: shuto <<victim>
 
 This can best be described as a Knife hand strike.  Again great
 concentration is needed for a successful strike, which will inflict heavy
@@ -4284,7 +4313,7 @@ combined in a combo then the effects on the opponent are devastating.
 ~
 
 0 CHOKE~
-Syntax: choke <victim>
+Syntax: choke <<victim>
 
 A skilled brawler will be able to choke their victim, by placing a choker
 hold around the victim's neck.  A choked victim becomes unconscious for a
@@ -4292,7 +4321,7 @@ short time and prone to attack.
 ~
 
 0 GRAPPLE~
-Syntax: grapple <victim>
+Syntax: grapple <<victim>
 
 The grappling technique will enable the brawler to bring his/her victim to
 the ground.  The force of this manoeuvre is enough to stun the victim for a
@@ -4300,7 +4329,7 @@ short while, making them more vulnerable to attacks.
 ~
 
 0 'FLYING HEADBUTT'~
-Syntax: flying <target>
+Syntax: flying <<target>
 
 A spectacular version of a headbutt, with this skill the experienced
 brawler leaps through the air and headbutts their victim.  If successful,
@@ -4309,7 +4338,7 @@ a follow-up attack.
 ~
 
 0 GOUGE~
-Syntax: gouge <victim>
+Syntax: gouge <<victim>
 
 Because the brawlers techniques are under-hand, they have devised a way to
 blind their enemies by gouging their eyes out, blinding them.
@@ -4332,14 +4361,14 @@ clearly on the battle, increasing the chances to hit.
 ~
 
 0 'STEAL STRENGTH'~
-Syntax: cast 'steal strength' <victim>
+Syntax: cast 'steal strength' <<victim>
 
 A handy combat tool, this spell allows a Satanist to drain the strength
 from a victim, and use it to add to their own strength reserves.
 ~
 
 0 'HAND OF LUCIFER'~
-Syntax: cast 'hand of lucifer' <victim>
+Syntax: cast 'hand of lucifer' <<victim>
 
 A particularly nasty spell, the Satanist summons an evil force from the
 depths of Hell itself to encircle the victim, trapping them, so that
@@ -4349,7 +4378,7 @@ hand of Lucifer himself.
 ~
 
 0 'STEAL SOUL'~
-Syntax: cast 'steal soul' <corpse>
+Syntax: cast 'steal soul' <<corpse>
 
 Once a Satanist successfully vanquishes their foe, they may attempt to
 capture the soul of the freshly slain.  Of course, this requires a fresh
@@ -4358,7 +4387,7 @@ themselves.
 ~
 
 0 'SATANIC FURY'~
-Syntax: cast 'satanic fury' <victim>
+Syntax: cast 'satanic fury' <<victim>
 
 A skilled Satanist can invoke the will of his esteemed master to invoke
 damage, pain and suffering on their foes.  This spell will cause damage to
@@ -4366,21 +4395,21 @@ all those who stand in the same room as the caster.
 ~
 
 0 'DEMON FLAMES'~
-Syntax: cast 'demon flames' <victim>
+Syntax: cast 'demon flames' <<victim>
 
 This spell will create the illusion that a horde of demons are tormenting
 the victim, causing them to become distracted and fight less effectively.
 ~
 
 0 'DARK RITUAL'~
-Syntax: cast 'dark ritual" <corpse>
+Syntax: cast 'dark ritual" <<corpse>
 
 This spell allows the satanist to summon their god to consume a corpse for
 sacrifice.  Their god rewards the satanist with renewed ecstasy for evil.
 ~
 
 0 FEAR~
-Syntax: cast fear <victim>
+Syntax: cast fear <<victim>
 
 One who is fearful, invariably flees. That is the theory behind this
 spell.  It will invoke great fear in the eyes of the victim, causing them
@@ -4405,7 +4434,7 @@ attempted BACKSTAB or STUN.
 ~
 
 0 JOUST~
-Syntax: joust <victim>
+Syntax: joust <<victim>
 
 In the spirit of Chivalry, the greatest of Knights would mount their mighty
 horses, and wielding a lance, would charge towards their target and basically
@@ -4417,7 +4446,7 @@ to make the charge.
 ~
 
 0 DESTRIER~
-Syntax: destrier <victim>
+Syntax: destrier <<victim>
 
 This difficult skill requires great strength and control of a mount.  A
 skill only known to the greatest KNIGHTS of the land the knight uses their
@@ -4431,21 +4460,21 @@ Knights of the centaur race may destrier without a mount.
 
 0 AUCTION~
 Syntax: auction
-Syntax: auction <item>
-Syntax: auction <item> <reserve price in platinum>
-Syntax: auction bet <amount in platinum>
+Syntax: auction <<item>
+Syntax: auction <<item> <<reserve price in platinum>
+Syntax: auction bet <<amount in platinum>
 Syntax: auction stop
 
 Auction an item.  Any mortals may place bids on the item, and the
 character to place the highest bid will receive the item for that amount
 of platinum coins.
 
-To auction an item, enter 'AUCTION <item>'.  The item must be in your
+To auction an item, enter 'AUCTION <<item>'.  The item must be in your
 inventory, and you must also have an auction ticket (tickets are sold in
 town).
 
 The 'reserve price' is the minimum bid allowed on the item.  To indicate a
-reserve price, enter 'AUCTION <item> <reserve in platinum coins>'.  If no
+reserve price, enter 'AUCTION <<item> <<reserve in platinum coins>'.  If no
 reserve is indicated, then a base reserve is automatically calculated.
 This base reserve is also the minimum reserve that can be set.
 
@@ -4453,14 +4482,14 @@ Once an item has been offered for sale, you can type 'AUCTION' to see the
 item's properties and how much has been bid on it.
 
 Auction betting is done solely with platinum coins.  To place a bet, type
-'AUCTION BET <bid in platinum coins>'.  There are a number of shortcuts
+'AUCTION BET <<bid in platinum coins>'.  There are a number of shortcuts
 available for placing bets:
 
     To bet a certain percentage above the current bet, type 'AUCTION BET
-        +<percentage>', e.g. 'AUCTION BET +30'.
+        +<<percentage>', e.g. 'AUCTION BET +30'.
 
     To bet a certain multiple of the current bet, type 'AUCTION BET
-        *<number>', e.g. 'AUCTION BET *3'.
+        *<<number>', e.g. 'AUCTION BET *3'.
 
     To bet a large amount, you can use 'k' to indicate thousands of coins.
         E.g. 'AUCTION BET 17k4' bets 17,400 platinum.
@@ -4481,7 +4510,7 @@ rounds.
 ~
 
 0 KNOCK~
-Syntax: cast knock <door or direction>
+Syntax: cast knock <<door or direction>
 
 This spell will let the caster attempt to unlock a door via magical means.
 By focusing their powers on the door, they will often invoke the lock
@@ -4535,7 +4564,7 @@ See 'HELP WEREWOLF' and 'HELP VAMPIRE' for more information.
 ~
 
 0 MORPH~
-Syntax: morph <form>
+Syntax: morph <<form>
 
 This skill is the ability that lets you change from one form to another.
 E.g. if you wanted to change to Hawk Form, simply type 'MORPH HAWK'.  To
@@ -4560,7 +4589,7 @@ This form allows you to FLY.
 ~
 
 0 'HOLY WORD'~
-Syntax: cast 'holy word' <victim>
+Syntax: cast 'holy word' <<victim>
 
 A powerful clerical attack spell in which the cleric, using the power of
 their religion, inflicts pain upon their enemy.  Evil opponents suffer
@@ -4602,14 +4631,14 @@ victim, and VENOM, to poison them.
 ~
 
 0 WEB~
-Syntax: web <victim>
+Syntax: web <<victim>
 
 Webbing a victim will surround them in a sticky mesh of web, making
 movement difficult, and making fleeing extremely difficult.
 ~
 
 0 VENOM~
-Syntax: venom <victim>
+Syntax: venom <<victim>
 
 This skill will poison a victim, making sure they do not recover from
 wounds that you inflict on them.
@@ -4670,7 +4699,7 @@ enraged wolf.
 
 0 BITE WOLFBITE~
 Syntax: bite
-Syntax: wolfbite <target>
+Syntax: wolfbite <<target>
 
 A tiger's BITE or the werewolf's WOLFBITE is a feared attack. Let a TIGER
 or WOLF sink its powerful jaws into anything, and the reason will become
@@ -4678,7 +4707,7 @@ obvious.
 ~
 
 0 SWOOP~
-Syntax: swoop <optional target>
+Syntax: swoop <<optional target>
 
 A shifter, in their phoenix form, can attempt to SWOOP at a foe during 
 battle, doing damage to them with their fiery wings.  They have a chance 
@@ -4697,7 +4726,7 @@ embrace, doing damage and temporarily rendering their opponent immobile.
 ~
 
 0 HOWL~
-Syntax: howl <target>
+Syntax: howl <<target>
 
 The blood-curdling HOWL of the wolf can terrify, reducing victims to
 quivering wrecks incapable of action.
@@ -4710,7 +4739,7 @@ automatically once learned.
 ~
 
 0 FOCUS~
-Syntax: focus <target>
+Syntax: focus <<target>
 
 Focus allows a skilled player to shift the focus of their attacks if being
 attacked by more than one enemy at once.  This is very useful in groups as
@@ -4718,7 +4747,7 @@ it will let the player concentrate on the enemy that is most dangerous.
 ~
 
 0 SUCK~
-Syntax: suck <target>
+Syntax: suck <<target>
 
 This Vampire skill attempts to suck the blood from a victim.  A Vampire who
 is full with blood will have a stronger suck than one craving blood. 
@@ -4727,7 +4756,7 @@ the blood points of the Vampire.
 ~
 
 0 FEED~
-Syntax: feed <corpse>
+Syntax: feed <<corpse>
 
 Once an enemy has been slain, the vampire can feed on the victims fresh
 corpse, extracting any blood left in it.  Vampires automatically gain
@@ -4743,8 +4772,8 @@ aggressive enemies.
 ~
 
 0 FORGE SHARPEN~
-Syntax: sharpen <weapon>
-Syntax: forge   <armor>
+Syntax: sharpen <<weapon>
+Syntax: forge   <<armor>
 
 SHARPEN will increase the deadliness of certain weapons.
 
@@ -4756,14 +4785,14 @@ flag will appear on these items as their condition deteriorates.
 ~
 
 0 PUSH~
-Syntax: push <target> <direction>
+Syntax: push <<target> <<direction>
 
 This skill will enable you to push an enemy or player out of the room you
 are currently in.
 ~
 
 0 MOUNT DISMOUNT~
-Syntax: mount <creature>
+Syntax: mount <<creature>
 Syntax: dismount
 
 This skill will let you ride on some poor beastie, saving you energy and
@@ -4773,7 +4802,7 @@ DISMOUNT will obviously get you off your ride.  You do not need to
 practice dismount.
 
 Note that to prevent maltreatment of creatures, a creature has to have a
-'<Mount>' flag in order to be mounted.
+'<<Mount>' flag in order to be mounted.
 ~
 
 0 'SNAP NECK' 'BREAK WRIST'~
@@ -5406,7 +5435,7 @@ well as having a range of BREATH attacks, the dragon has no equal.
 
 The level limits (enforced by the server) for pkill are:
 
- < 20  : Pkill prohibited
+ << 20  : Pkill prohibited
  20-30 :  5 levels
  31-50 : 10 levels
  51-99 : 25 levels*
@@ -5469,14 +5498,14 @@ give you a rating of Stalker.
 
 
 0 'RECHARGE ITEM'~
-Syntax: cast 'recharge item' <stave or wand>
+Syntax: cast 'recharge item' <<stave or wand>
 
 This spell recharges any item or stave to its full potential.  Bear in
 mind that once an item is empty, it disappears.
 ~
 
 101 WIZBREW~
-Syntax: wizbrew <potion level> <spell level> <spell 1> [spell 2] [spell 3]
+Syntax: wizbrew <<potion level> <<spell level> <<spell 1> [spell 2] [spell 3]
 
 Create a potion out of thin air.  The level of the potion object will be
 set to 'potion level'.  The potion will contain between 1 and 3 spells
@@ -5484,7 +5513,7 @@ of level 'spell level'.
 ~
 
 0 'CAST SLEEP'~
-Syntax: cast sleep <target>
+Syntax: cast sleep <<target>
 
 This spell makes the target fall magically asleep, unable to be woken.
 ~
@@ -5499,7 +5528,7 @@ opponents causing moderate damage.
 ~
 
 0 HASTE~
-Syntax: cast haste <target>
+Syntax: cast haste <<target>
 
 Casting this spell causes the target to speed up, so they can attack
 faster and therefore receive an extra attack per round.  Being such a
@@ -5507,7 +5536,7 @@ potent spell, it uses much of the caster's reserves.
 ~
 
 0 'UNHOLY WORD'~
-Syntax: cast 'unholy word' <target>
+Syntax: cast 'unholy word' <<target>
 
 Call upon your god to deal painful damage to your opponent.  Good
 opponents suffer twice the damage that non-good opponents suffer.
@@ -5527,8 +5556,8 @@ group.
 ~
 
 0 TAIL STALK~
-Syntax: tail  <player>
-Syntax: stalk <player>
+Syntax: tail  <<player>
+Syntax: stalk <<player>
 
 A highly skilled thief can tail their prey, blending into the crowds and
 becoming seemingly invisible.
@@ -5548,7 +5577,7 @@ to see others sneaking into the room.
 
 0 BREATHE~
 Syntax: breathe (hydra form)
-Syntax: breathe <type> (dragon form)
+Syntax: breathe <<type> (dragon form)
 
 This skill allows the shifter in HYDRA or DRAGON form to use breath weapons
 to harm an opponent.  HYDRA form will automatically BREATHE a combination of 
@@ -5566,7 +5595,7 @@ battle. A DEMON is of course more powerful than a LESSER DEMON.
 ~
 
 0 DIVE~
-Syntax: dive <target>
+Syntax: dive <<target>
 
 This is a powerful opening attack which skilled shifters in DRAGON form
 have at their disposal.
@@ -5594,14 +5623,14 @@ and avoid their attack.  It is automatic once learned.
 ~
 
 0 'SYNAPTIC BLAST'~
-Syntax: cast 'synaptic blast' <target>
+Syntax: cast 'synaptic blast' <<target>
 
 The most powerful of all psionic spells, this wreaks havoc in the neural
 synapses of the target's brain, causing intense agony.
 ~
 
 0 BLADETHIRST~
-Syntax: bladethirst <weapon>
+Syntax: bladethirst <<weapon>
 
 This enhances the effectiveness of the target weapon, increasing its
 effectiveness in combat. Being such a potent skill, weapons eventually
@@ -5616,13 +5645,13 @@ This self-only spell enhances a druid's defence by encasing them in bark.
 ~
 
 0 WITHER~
-Syntax: cast wither <target>
+Syntax: cast wither <<target>
 
 Using this spell a caster drains the life force of their enemy.
 ~
 
 0 LUNGE 'DOUBLE LUNGE'~
-Syntax: lunge <target>
+Syntax: lunge <<target>
 
 A bloodthirsty Vampire may lunge for an opponent's neck, causing heavy
 damage.  Lunge can only be used on an unprepared enemy.  DOUBLE LUNGE is
@@ -5638,7 +5667,7 @@ This group contains the skills needed for riding a mount.
 
 0 SOAR~
 Syntax: soar
-Syntax: soar <number> | <mem> | <return>
+Syntax: soar <<number> | <<mem> | <<return>
 
 A skilled shapeshifter can use the SOAR ability while in HAWK FORM to
 fly great distances across the domain.  Such travel must take place between
@@ -5648,7 +5677,7 @@ gains experience generally.
 
 SOAR lists all the currently available locations.
 
-SOAR <number> will make the shifter fly to the location indicated by the
+SOAR <<number> will make the shifter fly to the location indicated by the
 selected number.
 
 SOAR MEM enables the shifter to temporarily memorise the shifter's current
@@ -5663,14 +5692,14 @@ and it will have to be re-memorised to return there again.
 
 0 PATTERN~
 Syntax: pattern
-Syntax: pattern <number> | <set> | <return>
+Syntax: pattern <<number> | <<set> | <<return>
 
 Using patterns, a spellcaster can magically transport themselves through
 mystic gateways in the Domain.
 
 PATTERN lists all the available fixed patterns.
 
-PATTERN <number> transports the caster to their chosen destination.
+PATTERN <<number> transports the caster to their chosen destination.
 
 PATTERN SET creates a temporary pattern at the casters current location.
 
@@ -5742,7 +5771,7 @@ protect, sustain and invigorate him or herself, and any companions.
 ~
 
 0 FRENZY~
-Syntax: cast 'frenzy' <target>
+Syntax: cast 'frenzy' <<target>
 
 Templars are religious fanatics, and live solely to incite others to follow
 their God, or kill them if they refuse.  By using FRENZY, they can work
@@ -5761,7 +5790,7 @@ of the thug and can not be kept up very long.
 ~
 
 0 EXTORT~
-Syntax: extort <target>
+Syntax: extort <<target>
 
 This skill is used by a thug to get "protection" money from shopkeepers
 and the like.  There is some risk associated with this skill if the
@@ -5828,7 +5857,7 @@ fist and roundhouse kick can be combined for deadly effect.
 
 
 0 'TRANSPORT ITEM'~
-Syntax: cast transport <object> <target>
+Syntax: cast transport <<object> <<target>
 
 Using this skill, a Warlock can transport any item in their inventory to
 another player on the mud.
@@ -5853,14 +5882,14 @@ Spells in body control include:
 ~
 
 0 TRANSFIX~
-Syntax: transfix <target>
+Syntax: transfix <<target>
 
 With this skill the character attempts to transfix their victim by gazing
 into their eyes and overriding their will.
 ~
 
 0 SING SONGS~
-Syntax: sing <song name>
+Syntax: sing <<song name>
 Syntax: sing
 
 A bard, instrument in hand, can sing songs for protection, peace, or many
@@ -5927,7 +5956,7 @@ learn to pass unseen when needed.
 ~
 
 0 CHANT~
-Syntax: chant <chant name>
+Syntax: chant <<chant name>
 
 As well as songs, bards have chants to ready them for combat, or aid them
 during combat if caught unawares.
@@ -5976,14 +6005,14 @@ more moves during combat.
 ~
 
 0 CLASSIFY~
-Syntax: classify <object>
+Syntax: classify <<object>
 
 Experienced rangers are as one with their surroundings, and are thus able
 to identify herbs and other foodstuffs or medicines in their environment.
 ~
 
 0 GATHER~
-Syntax: gather <full name of herb>
+Syntax: gather <<full name of herb>
 Syntax: gather
 
 Rangers may search woodland areas for medicinal herbs, looking for
@@ -5999,7 +6028,7 @@ of water deep underground, and cause them to well up from the ground.
 ~
 
 0 SHOOT 'SECOND SHOT' 'THIRD SHOT' ACCURACY~
-Syntax: shoot <target>
+Syntax: shoot <<target>
 
 Equipped with a bow, a ranger can start each fight by ambushing their
 prey, catching them unawares and allowing the ranger to inflict a shot of
@@ -6190,7 +6219,7 @@ leaders.
 ~
 
 0 OCLANITEM~
-Syntax: oclanitem <character> <low|mid|high|pouch>
+Syntax: oclanitem <<character> <<low|mid|high|pouch>
 
 Clan leaders may use OCLANITEM to load clan equipment for fellow clan
 members.  You may load any of the four clan items for a player so long as
@@ -6256,7 +6285,7 @@ your prompt: see 'HELP PROMPT'.
 1 TOURNAMENTS~
 Syntax:  tournament [info]        View tournament information and entrants
          tournament enter         Enter the current tournament
-         tournament enter <team>  Enter for a particular team
+         tournament enter <<team>  Enter for a particular team
          tournament withdraw      Withdraw from the current tournament
 
 Immortals can run special pkilling 'tournaments' in the Arena for players
@@ -6285,7 +6314,7 @@ Type 'TOURNAMENT WITHDRAW' to remove yourself from the tournament if
 necessary.
 
 Some tournaments involve two or more teams fighting each other until only
-one team is left.  To enter a team tournament, type 'TOURNAMENT ENTER <team
+one team is left.  To enter a team tournament, type 'TOURNAMENT ENTER <<team
 name>', e.g. 'TOURNAMENT ENTER RED' for the Red team.
 
 When it's time to begin, the countdown will be started and you'll be
@@ -6301,12 +6330,12 @@ tournaments.
 ~
 
 101 'TOURNAMENT CONTROLS'~
-Syntax:  tournament set <open|team|tag> [number teams] <lower level> \
-                 <upper level> [noflee] [nowimpy] [noquaff] [sameroom]
+Syntax:  tournament set <<open|team|tag> [number teams] <<lower level> \
+                 <<upper level> [noflee] [nowimpy] [noquaff] [sameroom]
          tournament cancel
          tournament close
          tournament start
-         tournament ban <character>
+         tournament ban <<character>
 
 There are three types of tournament: 'open', 'team' and 'tag'.  'Open'
 tournaments involve all fighters killing each other until one is left.
@@ -6370,7 +6399,7 @@ Allows the caster to remain underwater without beginning to drown.
 ~
 
 0 'RESIST COLD' 'RESIST HEAT' 'RESIST ACID' 'RESIST LIGHTNING'~
-Syntax: cast 'resist <cold|heat|acid|lightning>'
+Syntax: cast 'resist <<cold|heat|acid|lightning>'
 
 These spells improve the caster's ability to resist elemental attacks,
 including spells and breath weapons.  'Resist heat' and 'resist cold' also
@@ -6378,14 +6407,14 @@ protect the caster from extremely hot and extremely cold environments.
 ~
 
 0 'HELLFIRE' 'HELL FIRE'~
-Syntax: cast 'hellfire' <target>
+Syntax: cast 'hellfire' <<target>
 
 A powerful Satanist may summon forth white-hot fires from the pits of
 Hell to sear their victims' flesh from their bones.
 ~
 
 0 'CHAOS BLAST' 'CHAOSBLAST'~
-Syntax: cast 'chaos blast' <target>
+Syntax: cast 'chaos blast' <<target>
 
 A Satanist able to summon chaotic energies from the nether realms may
 focus and direct them at a target, inflicting unpredictable amounts
@@ -6396,10 +6425,10 @@ otherwise rendered immobile are more vulnerable to its depredations.
 ~
 
 0 REVIEW~
-Syntax: review <chat|music|shout|info|tournament|immtalk|dirtalk|clan|newbie>
+Syntax: review <<chat|music|shout|info|tournament|immtalk|dirtalk|clan|newbie>
 
 Review recent communication on many of the MUD's talk channels.  Enter
-'REVIEW <channel name>' to list up to twenty broadcast statements.  You
+'REVIEW <<channel name>' to list up to twenty broadcast statements.  You
 may only review the immtalk and dirtalk channels if you are authorized to
 use those channels.  You can only review the clan channel for the clan you
 are a member of.  You may only review the newbie channel if you are a newbie
@@ -6423,7 +6452,7 @@ Commit suicide: you will die, lose some experience and possibly fame.
 Use this command as a last resort if you are hopelessly stuck.
 
 First, you must type SUICIDE to receive a numerical code.  Then type
-'SUICIDE <code>' to commit suicide.
+'SUICIDE <<code>' to commit suicide.
 ~
 
 0 DELETE~
@@ -6431,7 +6460,7 @@ Syntax: delete
 
 To delete your character, type DELETE.  You will be asked for confirmation
 that you wish to do this.  Type DELETE again to delete your character and
-leave the Dragons Domain, or type DELETE <any argument> to remove your
+leave the Dragons Domain, or type DELETE <<any argument> to remove your
 delete status.
 
 WARNING!  This command is irreversible!  It is not the Imms' responsibility if
@@ -6450,11 +6479,11 @@ different interactions that the social could be used in.  E.g. a social
 
   1.  'wink' as seen by you              E.g. "You wink."
   2.  'wink' as seen by others                "Gezhp winks."
-  3.  'wink <target>' as seen by you          "You wink at Milli."
-  4.  'wink <target>' as seen by others       "Gezhp winks at Milli."
-  5.  'wink <target>' as seen by target       "Gezhp winks at you."
-  6.  'wink <self>' as seen by you            "You wink at yourself."
-  7.  'wink <self>' as seen by others         "Gezhp winks at himself."
+  3.  'wink <<target>' as seen by you          "You wink at Milli."
+  4.  'wink <<target>' as seen by others       "Gezhp winks at Milli."
+  5.  'wink <<target>' as seen by target       "Gezhp winks at you."
+  6.  'wink <<self>' as seen by you            "You wink at yourself."
+  7.  'wink <<self>' as seen by others         "Gezhp winks at himself."
 
 Not every interaction needs to be unique for the social to work.
 
@@ -6476,7 +6505,7 @@ It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
        |                            |      /
   {YThe City of{x                 {W}gTemple/Recall{x
    {WMidgaard{x                         |
- <-----+----->    {W}rCleric Guild{x -- {k}wTemple{x -- {W}bMidgaard Bank and {x
+ <<-----+----->    {W}rCleric Guild{x -- {k}wTemple{x -- {W}bMidgaard Bank and {x
        O                          {k}wSquare{x    {W}bAdventurer's Guild{x
                                     |
           Goblin   {W}bMagic{x            |     {W}bGeneral{x  {W}bWeapon{x  {W}rPsionicist{x
@@ -6553,11 +6582,11 @@ the croupiers have been known to take advantage of unwary players.
 ~
 
 0 BET WAGER~
-Syntax: bet   <amount>
-Syntax: bet   <amount> <choice>
+Syntax: bet   <<amount>
+Syntax: bet   <<amount> <<choice>
 Syntax: bet    limit
-Syntax: wager <amount>
-Syntax: wager <amount> <choice>
+Syntax: wager <<amount>
+Syntax: wager <<amount> <<choice>
 Syntax: wager  limit
 
 During a gambling game, you will occasionally need to place a BET.  The

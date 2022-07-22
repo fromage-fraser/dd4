@@ -846,8 +846,8 @@ can support ANSI colour, enter the command COLOR to toggle colour on or
 off.  Enter the command AUTO to bring up a list of options.  Your prompt
 can also be changed using the PROMPT command.
 
-Enter `HELP ANSI', `HELP ANSI2', `HELP AUTO' and `HELP PROMPT' for more
-information.
+Enter `HELP ANSI', `HELP ANSI2', `HELP ANSI3', `HELP AUTO' and 
+`HELP PROMPT' for more information.
 
 You fly DOWN towards a vast, forested continent.
 ~
@@ -861,7 +861,7 @@ S
 
 #3703
 Approaching a City~
-Freefalling through the bright sky, a small city settled within the
+Free-falling through the bright sky, a small city settled within the
 forests comes into view.  A large Temple rises from its midst.  Crackling
 blue energy sparks from its tall spire: you can feel this energy pulling
 you closer to the Temple's heart.
@@ -989,7 +989,7 @@ Obstacle Course~
 You clamber into another small room.  A hole in the floor exposes a rope
 ladder into the room below.  A small iron hatch dominates the western wall.
 
-The {RImp{x pirches on the floor.
+The {RImp{x perches on the floor.
 ~
 0 8|1024|8192 0
 D 5
@@ -1092,7 +1092,7 @@ Exercise Yard~
 You step from the portal into a stone yard similar to the one before the
 obstacle course.  About half-a-dozen feeble looking recruits are being
 put through exercises by several muscular soldiers.  The ranking officer
-yells and barks at the recruits, most whom look asthough they're about to
+yells and barks at the recruits, most whom look as though they're about to
 collapse.
      A few solid looking doors lead from the yard, but are guarded by
 soldiers that prevent your exit.  A wide tunnel leads through the
@@ -1106,7 +1106,7 @@ imp~
 The Imp says "You're about to begin your combat training.  Before you go,
 there are some commands that will report your status and progress.
 
-"Type SCORE to bring up your scoresheet: it contains a lot of
+"Type SCORE to bring up your score sheet: it contains a lot of
 information, and more information will be revealed as you increase in
 level.  Type AFFECT to list any spells that you are affected by: you
 probably won't be affected by anything yet.  Type WIMPY to set your wimpy
@@ -1578,7 +1578,7 @@ S
 #3726
 The Loremaster~
 This chamber is large and cluttered with bookcases, shelves, models,
-scientific apparatus, armor and weapons.  Several large tables fill the
+scientific apparatus, armour and weapons.  Several large tables fill the
 centre of the room, and the walls are lined with simple benches.  The
 central tables are covered with what looks like ancient junk.
      The Loremaster works here to train new recruits.  He has a diverse
@@ -1619,7 +1619,7 @@ S
 The Mud School Arena~
 You jump down through the door from the School into a small arena.  You
 appear to be at its northern end.  The walls are steep and high, but
-contain numerous footholes for you to clamber up to safety.
+contain numerous foot holes for you to clamber up to safety.
 
 The {RImp{x watches you closely.
 ~
@@ -1637,7 +1637,7 @@ D 3
 ~
 0 0 3729
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1656,7 +1656,7 @@ here to escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1677,7 +1677,7 @@ here to escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1698,7 +1698,7 @@ escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1747,7 +1747,7 @@ escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1772,7 +1772,7 @@ here to escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1793,7 +1793,7 @@ escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1818,7 +1818,7 @@ here to escape.
 ~
 0 4|8|1024 0
 D 4
-Footholes will take you up out of the arena.
+Foot holes will take you up out of the arena.
 ~
 ~
 0 0 3737
@@ -1851,7 +1851,7 @@ S
 
 #SPECIALS
 
-M 3710  spec_cast_adept     Cleric
+M 3710  spec_cast_adept         Cleric
 M 3700  spec_cast_psionicist    Loremaster
 
 S
