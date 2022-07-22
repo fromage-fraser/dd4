@@ -2103,6 +2103,8 @@ void load_object_sets( FILE *fp )
                         exit( 1 );
                 }
 
+                fBootDb = TRUE;
+                
                 pObjSetIndex = alloc_perm( sizeof( *pObjSetIndex ) );
                 pObjSetIndex->vnum = vnum;
                 
