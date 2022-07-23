@@ -4220,9 +4220,6 @@ int colour_8bit (int icode, CHAR_DATA *ch, char *string)
         char *p = '\0';
         int i;
 
-        /*sprintf(buf, "icode passed to function: %d\r\n", icode);
-        log_string(buf);*/
-
         if (IS_NPC(ch))
                 return 0;
 
@@ -4231,8 +4228,6 @@ int colour_8bit (int icode, CHAR_DATA *ch, char *string)
                 if( icode == color_table_8bit[i].number )
                 {
                       sprintf(code, color_table_8bit[i].code);
-                      /*sprintf(buf, "code from table: %d\r\n\r\n", i);
-                      log_string(buf);*/
                 }
         }
         p = code;
