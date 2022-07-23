@@ -1992,7 +1992,7 @@ Syntax: title <<text>
 Syntax: title
 
 Sets your title to a given string.  Typing TITLE alone will force your
-title blank.
+title blank.  TITLEs may be colourised, see 'HELP COLOUR3'.
 ~
 
 0 WIMPY~
