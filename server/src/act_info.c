@@ -94,7 +94,20 @@ int max_on = 0;
 char *  format_obj_to_char      args( ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort ) );
 void    show_char_to_char_0     args( ( CHAR_DATA *victim, CHAR_DATA *ch ) );
 void    show_char_to_char_1     args( ( CHAR_DATA *victim, CHAR_DATA *ch ) );
-void    prac_slist              (CHAR_DATA *ch);
+void    prac_slist                    ( CHAR_DATA *ch );
+
+int get_colour_index_by_code ( int ccode )
+{
+        int i;
+        /* given the color code (int) for color_table_8bit in const.c, return
+        the associated array index value */
+        for ( i = 0; i < MAX_8BIT_COLORS; i++ )
+        {
+                if ( ccode == color_table_8bit[i].number )
+                        break;
+        }
+        return i;
+}
 
 
 char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
@@ -3528,28 +3541,12 @@ void do_channels( CHAR_DATA *ch, char *argument )
         return;
 }
 
-
-char * const color_name [] =
-{
-        "AUCTION",
-        "CHAT",
-        "SHOUT",
-        "IMMTALK",
-        "SAY",
-        "TELL",
-        "CLAN",
-        "DIRTALK",
-        "SERVER",
-        "ARENA",
-        "NEWBIE"
-};
-
-
 void do_ansi( CHAR_DATA *ch, char *argument )
 {
         char arg[MAX_INPUT_LENGTH];
         char arg1[MAX_INPUT_LENGTH];
         char buf[MAX_STRING_LENGTH];
+        char buf2[MAX_STRING_LENGTH];
         int c;
         int c2;
         bool found;
@@ -3560,59 +3557,121 @@ void do_ansi( CHAR_DATA *ch, char *argument )
         argument = one_argument( argument, arg );
         strcpy(arg1, argument );
 
+        if ( !str_cmp( arg, "reset" ) )
+        {
+                ch->colors[COLOR_AUCTION]      = 13;
+                ch->colors[COLOR_GOSSIP]       = 11;
+                ch->colors[COLOR_SHOUT]        = 9;
+                ch->colors[COLOR_SAY]          = 15;
+                ch->colors[COLOR_TELL]         = 10;
+                ch->colors[COLOR_CLAN]         = 7;
+                ch->colors[COLOR_DIRTALK]      = 25;
+                ch->colors[COLOR_IMMTALK]      = 12;
+                ch->colors[COLOR_ARENA]        = 13;
+                ch->colors[COLOR_SERVER]       = 6;
+                ch->colors[COLOR_NEWBIE]       = 14;
+                
+                send_to_char( "Channel colours reset to defaults.\n\r", ch );
+                return;
+        }
+
         if ( arg[0] == '\0' || arg1[0] == '\0' )
         {
-                if ( IS_SET( ch->act, PLR_ANSI ) )
-                        for ( c = 1; c < 10; c++ )
+                sprintf( buf, "\n\r");
+
+                for ( c = 0; c < MAX_CHANNELS; c++ )
+                {
+                        if ( ( !str_cmp( channel_names[c], "DIRTALK" ) 
+                                || !str_cmp( channel_names[c], "IMMTALK" ) 
+                                || !str_cmp( channel_names[c], "SERVER" )  )
+                        && !IS_IMMORTAL(ch) )
                         {
-                                sprintf( buf, "%s%10ss will appear in %s%s%s\n\r",
-                                        color_table[19].code,
-                                        color_name[c],
-                                        color_table[ch->colors[c]].code,
-                                        color_table[ch->colors[c]].name,
-                                        color_table[19].code );
-                                send_to_char( buf, ch );
+                                continue;
                         }
-                send_to_char( "\n\rTo toggle ANSI-color, type 'COLOR'.\n\r"
-                             "Type 'HELP ANSI' for more information.\n\r", ch );
+                        else {
+                                if (IS_SET(ch->act, PLR_ANSI))
+                                {
+                                        sprintf( buf, "%s%10ss will appear in %s%s%s\n\r",
+                                                color_table_8bit[0].code,
+                                                channel_names[c],
+                                                color_table_8bit[get_colour_index_by_code(ch->colors[c])].code,
+                                                color_table_8bit[get_colour_index_by_code(ch->colors[c])].name,
+                                                color_table_8bit[0].code );
+                                }
+                                else 
+                                {
+                                        sprintf( buf, "%s%10ss will appear in %s%s\n\r",
+                                                color_table_8bit[0].code,
+                                                channel_names[c],
+                                                color_table_8bit[get_colour_index_by_code(ch->colors[c])].name,
+                                                color_table_8bit[0].code );
+                                }
+                        }
+                        send_to_char( buf, ch );
+                }
+                
+                send_to_char( "\n\rTo toggle colour, type 'COLOUR'. Text/numerical colour codes can be viewed with 'HELP COLOURCODES'.\n\r"
+                             "Type 'HELP COLOUR,' 'HELP COLOUR2,' and 'HELP COLOUR3,' and 'HELP ANSI' for more information.\n\r", ch );
                 return;
         }
 
         found = FALSE;
 
-        for ( c = 0; c < 10; c++ )
+        for ( c = 0; c < MAX_CHANNELS; c++ )
         {
-                if ( !str_cmp( arg, color_name[c] ) )
+                if ( !str_cmp( arg, channel_names[c] ) )
                         found = TRUE;
 
                 if (found)
                         break;
         }
 
-        if (( c > MAX_COLORS) || (c <= 0) || (!found) )
+        if (( c > MAX_CHANNELS) || (c < 0) || (!found) )
         {
-                send_to_char( "Not valid.\n\r", ch );
+                send_to_char( "Not a valid request.\n\r", ch );
                 return;
         }
 
         if ( !is_number( arg1 ) )
         {
-                for ( c2 = 0; c2 < 20; c2++ )
+                for ( c2 = 0; c2 < MAX_8BIT_COLORS; c2++ )
                 {
-                        if ( !str_cmp( arg1, color_table[c2].name ) )
+                        if ( !str_cmp( arg1, color_table_8bit[c2].name ) )
                                 break;
                 }
         }
-        else c2 = atoi( arg1 );
+        else
+        {
+                for ( c2 = 0; c2 < MAX_8BIT_COLORS; c2++ )
+                {
+                        if ( atoi(arg1) == color_table_8bit[c2].number )
+                                break;
+                }
+
+        }
+        
+        /* c2 = atoi( arg1 ); */
 
         sprintf( buf, "Invalid color index.\n\r" );
 
-        if ((c < MAX_COLORS) && (c >= 0) && (c2 < 20) && (c2 >= 0))
+        if ((c < MAX_CHANNELS) && (c >= 0) && (c2 < MAX_8BIT_COLORS) && (c2 >= 0))
         {
-                ch->colors[c] = c2;
-                sprintf( buf, "Set %s color to %s%s{x.\n\r", color_name[c],
-                        color_table[c2].code,
-                        color_table[c2].name);
+                 if ( ( !str_cmp( channel_names[c], "DIRTALK" ) 
+                     || !str_cmp( channel_names[c], "IMMTALK" ) 
+                     || !str_cmp( channel_names[c], "SERVER" )  )
+                 && !IS_IMMORTAL(ch) )
+                {
+                        send_to_char( "You do not have access to that channel.\n\r", ch );
+                        return;
+                }
+
+                sprintf(buf2, "color code to set channel %d is %d \r\n", c, color_table_8bit[c2].number);
+                log_string(buf2);
+
+                ch->colors[c] = color_table_8bit[c2].number;
+                sprintf( buf, "Set %s color to %s%s{x.\n\r", channel_names[c],
+                        color_table_8bit[c2].code,
+                        color_table_8bit[c2].name);
         }
 
         send_to_char( buf, ch );
@@ -4042,14 +4101,16 @@ void do_prompt( CHAR_DATA *ch, char *argument )
         {
                 send_to_char("Your current prompt:\n\r", ch);
                 strcat(buf, ch->prompt);
-                send_to_char(buf, ch);
-                send_to_char("\n\r", ch);
+
+                /* Use send_to_char_bw() so we don't interpolate or strip colour codes. */
+                send_to_char_bw(buf, ch);
+                send_to_char_bw("\n\r", ch);
 
                 return;
         }
 
         if( !strcmp( argument, "all" ) || !strcmp (argument, "default") )
-                strcat (buf, "<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
+                strcat (buf, "<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
         else
         {
                 if ( strlen( argument ) > 100 )

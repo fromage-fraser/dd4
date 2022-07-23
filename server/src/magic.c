@@ -7562,14 +7562,14 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         && IS_NPC(victim)
         && victim->pIndexData->vnum != BOT_VNUM)
     {
-        act ("{W$C is too alert for you to unleash chaos energy on $m!{x",
+        act ("{W$C is too alert for you to unleash <242>c<251>h<242>a<251>o<242>s<0> energy on $m!{x",
                 ch, NULL, victim, TO_CHAR);
         return;
     }
 
     if ( !IS_EVIL( ch ) )
     {
-        act ("{WYou are not evil enough to summon chaos energy.{x",
+        act ("{WYou are not evil enough to summon <242>c<251>h<242>a<251>o<242>s<0> energy.{x",
              ch, NULL, victim, TO_CHAR);
         return;
     }
@@ -7588,8 +7588,8 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
 
     /*fprintf(stderr, "rnd_idx = %d | rnd_factorial = %f | dam = %d | flip = %d | fuzz = %f\r\n", rnd_idx, rnd_factorial, dam, flip, fuzz_value  );*/
 
-    act("Tendrils of chaos energy snake from $n's hand!", ch, NULL, NULL, TO_ROOM);
-    act("You unleash a blast of pure {Wc{Bh{Wa{Bo{Ws{x energy!", ch, NULL, NULL, TO_CHAR);
+    act("Tendrils of <242>c<251>h<242>a<251>o<242>s<0> energy snake from $n's hand!", ch, NULL, NULL, TO_ROOM);
+    act("You unleash a blast of pure <242>c<251>h<242>a<251>o<242>s<0> energy!", ch, NULL, NULL, TO_CHAR);
 
     damage(ch, victim, dam, sn, FALSE);
 

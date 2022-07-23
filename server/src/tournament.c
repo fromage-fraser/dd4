@@ -1245,7 +1245,7 @@ void arena_commentary (char *text, CHAR_DATA *ch, CHAR_DATA *victim)
                 }
 
                 sprintf(buf2, "%s<Arena> %s$R",
-                        color_table[d->character->colors[COLOR_ARENA]].act_code,
+                        color_table_8bit[get_colour_index_by_code(d->character->colors[COLOR_ARENA])].act_code,
                         buf);
                 act(buf2, d->character, NULL, NULL, TO_CHAR);
         }

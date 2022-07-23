@@ -127,7 +127,8 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
         else if ( channel == CHANNEL_IMMTALK )
         {
                 sprintf( buf, "%s$c: $t$R",
-                        color_table[ch->colors[chan(channel)]].act_code);
+                        color_table_8bit[get_colour_index_by_code(ch->colors[chan(channel)])].act_code);
+
                 position = ch->position;
                 ch->position = POS_STANDING;
                 act( buf, ch, argument, NULL, TO_CHAR );
@@ -138,7 +139,7 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
         else if ( channel == CHANNEL_DIRTALK )
         {
                 sprintf( buf, "%s$c-| $t$R",
-                        color_table[ch->colors[chan(channel)]].act_code);
+                        color_table_8bit[get_colour_index_by_code(ch->colors[chan(channel)])].act_code);
                 position = ch->position;
                 ch->position = POS_STANDING;
                 act( buf, ch, argument, NULL, TO_CHAR );
@@ -155,7 +156,7 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
                     case '?': verb2 = " asking"; break;
                 }
                 sprintf( buf, "%sYou %s%s '$t'$R",
-                        color_table[ch->colors[chan(channel)]].act_code, verb, verb2 );
+                        color_table_8bit[get_colour_index_by_code(ch->colors[chan(channel)])].act_code, verb, verb2 );
                 position = ch->position;
                 ch->position = POS_STANDING;
                 act( buf, ch, argument, NULL, TO_CHAR );
@@ -193,7 +194,7 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
                         if ( channel != CHANNEL_SHOUT && channel != CHANNEL_YELL )
                                 vch->position   = POS_STANDING;
 
-                        sprintf( buf2, "%s%s$R", color_table[vch->colors[chan(channel)]].act_code, buf );
+                        sprintf( buf2, "%s%s$R", color_table_8bit[get_colour_index_by_code(vch->colors[chan(channel)])].act_code, buf );
 
                         act( buf2, ch, argument, vch, TO_VICT );
                         vch->position = position;
@@ -396,7 +397,7 @@ void do_say( CHAR_DATA *ch, char *argument )
             case '?': verb = "ask";   break;
         }
 
-        sprintf( buf, "%sYou %s '$t'$R", color_table[ch->colors[COLOR_SAY]].act_code, verb );
+        sprintf( buf, "%sYou %s '$t'$R", color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_SAY])].act_code, verb );
 
         if (ch->desc)
                 act( buf, ch, argument, NULL, TO_CHAR );
@@ -404,7 +405,7 @@ void do_say( CHAR_DATA *ch, char *argument )
         for ( mob = ch->in_room->people; mob !=NULL; mob = mob->next_in_room )
         {
                 sprintf( buf, "%s%s %ss '$t'$R",
-                        color_table[mob->colors[COLOR_SAY]].act_code,
+                        color_table_8bit[get_colour_index_by_code(mob->colors[COLOR_SAY])].act_code,
                         capitalize_initial(PERS(ch, mob)), verb );
 
                 if ( mob != ch && mob->desc != NULL )
@@ -469,11 +470,11 @@ void do_tell( CHAR_DATA *ch, char *argument )
         }
 
         sprintf( buf, "%sYou tell $N '$t'$R",
-                color_table[ch->colors[COLOR_TELL]].act_code);
+                color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
         act( buf, ch, argument, victim, TO_CHAR );
 
         sprintf( buf, "%s$C tells you '$t'$R",
-                color_table[victim->colors[COLOR_TELL]].act_code);
+                color_table_8bit[get_colour_index_by_code(victim->colors[COLOR_TELL])].act_code);
 
         position            = victim->position;
         victim->position    = POS_STANDING;
@@ -525,13 +526,13 @@ void do_reply( CHAR_DATA *ch, char *argument )
         }
 
         sprintf( buf, "%sYou tell $N '$t'$R",
-                color_table[ch->colors[COLOR_TELL]].act_code );
+                color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code );
         act( buf,  ch, argument, victim, TO_CHAR );
         position            = victim->position;
         victim->position    = POS_STANDING;
 
         sprintf( buf, "%s$c tells you '$t'$R",
-                color_table[ch->colors[COLOR_TELL]].act_code );
+                color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code );
         act( buf, ch, argument, victim, TO_VICT );
         victim->position    = position;
         victim->reply       = ch;
@@ -1807,7 +1808,7 @@ void do_gtell( CHAR_DATA *ch, char *argument )
         for ( gch = char_list; gch; gch = gch->next )
         {
                 sprintf( buf, "%s%s tells the group '%s'$R",
-                        color_table[gch->colors[COLOR_TELL]].act_code, ch->name, argument );
+                        color_table_8bit[get_colour_index_by_code(gch->colors[COLOR_TELL])].act_code, ch->name, argument );
                 position = gch->position;
                 gch->position = POS_STANDING;
                 if ( is_same_group( gch, ch ) )
@@ -1867,7 +1868,7 @@ void talk_auction (char *argument)
                     && !IS_SET(original->deaf, CHANNEL_AUCTION))
                 {
                         sprintf(buf, "%sAUCTION: $t$R",
-                                color_table[original->colors[COLOR_AUCTION]].act_code);
+                                color_table_8bit[original->colors[COLOR_AUCTION]].act_code);
                         act(buf, original, argument, NULL, TO_CHAR);
                 }
         }
@@ -1891,7 +1892,7 @@ void server_message (const char* text)
                     && ch->level > L_DIR)
                 {
                         sprintf (buf, "%s[Server] $t$R",
-                                 color_table[ch->colors[COLOR_SERVER]].act_code);
+                                 color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_SERVER])].act_code);
                         act (buf, ch, text, NULL, TO_CHAR);
                 }
         }
@@ -1912,7 +1913,6 @@ void do_review (CHAR_DATA *ch, char *argument)
 
         const char *usage = "Syntax: review <chat|music|shout|info|arena|immtalk|dirtalk|clan|newbie>\n\r";
 
-        /* and you defined max_review Henry because??? - bastard! */
         const char *channels [] =
         {
                 "chat",

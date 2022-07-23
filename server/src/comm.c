@@ -1539,11 +1539,14 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
         }
 
         /*write_to_buffer(d, buf, point - buf); */
+
         *point = '\0';
         pbuff = buffer;
-        colourconv(pbuff, buf, ch);
+        colourconv_8bit(pbuff, buf, ch);
+
         write_to_buffer(d, buffer, 0);
         return;
+
 }
 
 
@@ -1849,7 +1852,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 }
 
                 write_to_buffer(d, echo_on_str, 0);
-                write_to_buffer(d, "Do you want to enable ANSI colour? [y/n] ",0);
+                write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
                 d->connected = CON_CHECK_ANSI;
                 break;
 
@@ -1866,7 +1869,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         break;
 
                     default:
-                        write_to_buffer(d, "Do you want to enable ANSI colour? [y/n] ",0);
+                        write_to_buffer(d, "Do you want to enable colour? [y/n] ",0);
                         return;
                 }
 
@@ -2389,6 +2392,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 /*
  * Send to one char, new colour version, by Lope.
  */
+/*
 void send_to_char (const char *txt, CHAR_DATA *ch)
 {
         const char    *point;
@@ -2471,7 +2475,256 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         }
         return;
 }
+*/
+void send_to_char (const char *txt, CHAR_DATA *ch)
+{
+        const char    *point;
+        char    *point2;
+        char    buf[ MAX_STRING_LENGTH*4 ];
+        int     skip = 0;
+        char cur_code[3];
+        int cd_count = 2;
+        int cv_int;
+        char open_token;
+        char close_token;
 
+        /* If you change these tokens, you should change the color_table_8bit act_codes as well */
+        open_token   = '<';
+        close_token  = '>';
+
+        buf[0] = '\0';
+        point2 = buf;
+
+        if (txt && ch->desc)
+        {
+                if (IS_SET(ch->act, PLR_ANSI))
+                {
+                        for(point = txt ; *point ; point++)
+                        {
+                                if(*point == '{')
+                                {
+                                        point++;
+                                        skip = colour(*point, ch, point2);
+                                        while(skip-- > 0)
+                                                ++point2;
+                                        continue;
+                                }
+
+                                if(*point == '}')
+                                {
+                                        point++;
+                                        skip = bgcolour(*point, ch, point2);
+                                        while(skip-- > 0)
+                                                ++point2;
+                                        continue;
+                                }
+
+                                if (*point == open_token)
+                                {
+                                        point++;
+
+                                        if (*point == open_token)
+                                        {
+                                                
+                                                *point2 = *point;
+                                                *++point2 = '\0';
+                                                continue;
+                                        }
+                                        
+                                        if (isdigit(*point))
+                                        {
+                                                if (cd_count < 0)
+                                                        continue;
+                                                
+                                                cur_code[cd_count] = *point;
+                                                cd_count--;
+                                                point++;
+
+                                                if (isdigit(*point))
+                                                {
+                                                        if (cd_count < 0)
+                                                                continue;
+                                                        
+                                                        cur_code[cd_count] = *point;
+                                                        cd_count--;
+                                                        point++;
+
+                                                        if (isdigit(*point))
+                                                        {
+                                                                if (cd_count < 0)
+                                                                        continue;
+                                                                
+                                                                cur_code[cd_count] = *point;
+                                                                cd_count--;
+                                                                point++;
+                                                        }
+                                                }
+                                        }
+                                        else {
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+                                                continue;
+                                        }
+                                        
+                                        if (*point == close_token)
+                                        {
+
+                                                reverse_char_array(cur_code, 3);
+                                                
+                                                cv_int = atoi( cur_code );
+
+
+                                                skip = colour_8bit(cv_int, ch, point2);
+
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+
+                                                while (skip-- > 0)
+                                                        ++point2;
+                                                
+                                                continue;
+                                        }
+                                        else {
+
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+
+                                                continue;
+                                        }
+                                }
+
+                                *point2 = *point;
+                                *++point2 = '\0';
+                        }
+                        *point2 = '\0';
+                        free_string(ch->desc->showstr_head);
+                        ch->desc->showstr_head  = str_dup(buf);
+                        ch->desc->showstr_point = ch->desc->showstr_head;
+                        show_string(ch->desc, "");
+                }
+                else
+                {
+
+                        cur_code[0] = '\0';
+                        cur_code[1] = '\0';
+                        cur_code[2] = '\0';
+                        cd_count = 2;
+
+                        for(point = txt ; *point ; point++)
+                        {
+                                if(*point == '{')
+                                {
+                                        point++;
+                                        if(*point == '{')
+                                        {
+                                                *point2 = *point;
+                                                *++point2 = '\0';
+                                        }
+                                        continue;
+                                }
+
+                                if(*point == '}')
+                                {
+                                        point++;
+                                        if(*point == '}')
+                                        {
+                                                *point2 = *point;
+                                                *++point2 = '\0';
+                                        }
+                                        continue;
+                                }
+
+                                if (*point == open_token)
+                                {
+                                        point++;
+
+                                        if (*point == open_token)
+                                        {
+                                                
+                                                *point2 = *point;
+                                                *++point2 = '\0';
+                                                continue;
+                                        }
+                                        
+                                        if (isdigit(*point))
+                                        {
+                                                if (cd_count < 0)
+                                                        continue;
+                                                
+                                                cur_code[cd_count] = *point;
+                                                cd_count--;
+                                                point++;
+
+                                                if (isdigit(*point))
+                                                {
+                                                        if (cd_count < 0)
+                                                                continue;
+                                                        
+                                                        cur_code[cd_count] = *point;
+                                                        cd_count--;
+                                                        point++;
+
+                                                        if (isdigit(*point))
+                                                        {
+                                                                if (cd_count < 0)
+                                                                        continue;
+                                                                
+                                                                cur_code[cd_count] = *point;
+                                                                cd_count--;
+                                                                point++;
+                                                        }
+                                                }
+                                        }
+                                        else {
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+                                                continue;
+                                        }
+                                        
+                                        if (*point == close_token)
+                                        {
+                                                reverse_char_array(cur_code, 3);
+                                                cv_int = atoi( cur_code );
+                                                strip_colour_8bit(cv_int, ch, point2);
+
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+                                                
+                                                continue;
+                                        }
+                                        else {
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+
+                                                continue;
+                                        }
+                                }
+
+
+                                *point2 = *point;
+                                *++point2 = '\0';
+                        }
+                        *point2 = '\0';
+                        free_string(ch->desc->showstr_head);
+                        ch->desc->showstr_head  = str_dup(buf);
+                        ch->desc->showstr_point = ch->desc->showstr_head;
+                        show_string(ch->desc, "");
+                }
+        }
+        return;
+}
 
 /*
  * Parse a name for acceptability.
@@ -2904,7 +3157,7 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
         const  char            *i;
         char            *point;
         char            *pbuff;
-        char             buffer  [ MAX_STRING_LENGTH*2 ];
+        char             buffer  [ MAX_STRING_LENGTH * 2 ];
         char             buf     [ MAX_STRING_LENGTH ];
         char             buf1    [ 2*  MAX_STRING_LENGTH ];
         char             fname   [ MAX_INPUT_LENGTH  ];
@@ -2946,6 +3199,7 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
 
                 point   = buf;
                 str     = format;
+                
                 while (*str != '\0')
                 {
                         if (*str != '$')
@@ -3137,9 +3391,10 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                 *point++        = '\n';
                 *point++        = '\r';
                 *point          = '\0';
-                buf[0]          = UPPER(buf[0]);
+                buf[0]         = UPPER(buf[0]);
+
                 pbuff           = buffer;
-                colourconv(pbuff, buf, to);
+                colourconv_8bit(pbuff, buf, to);
 
                 if (to->desc && (to->desc->connected == CON_PLAYING))
                         write_to_buffer(to->desc, buffer, 0);
@@ -3432,95 +3687,6 @@ void bit_explode (CHAR_DATA *ch, char* buf, unsigned long int n)
     }
 }
 
-int colour (char type, CHAR_DATA *ch, char *string)
-{
-        char code[ 20 ];
-        char *p = '\0';
-
-        if (IS_NPC(ch))
-                return 0;
-
-        switch (type)
-        {
-            default:
-                sprintf(code, CLEAR);
-                break;
-            case 'x':
-                sprintf(code, CLEAR);
-                break;
-            case 'k':
-                sprintf(code, BLACK);
-                break;
-            case 'b':
-                sprintf(code, C_BLUE);
-                break;
-            case 'c':
-                sprintf(code, C_CYAN);
-                break;
-            case 'g':
-                sprintf(code, C_GREEN);
-                break;
-            case 'm':
-                sprintf(code, C_MAGENTA);
-                break;
-            case 'r':
-                sprintf(code, C_RED);
-                break;
-            case 'w':
-                sprintf(code, C_WHITE);
-                break;
-            case 'y':
-                sprintf(code, C_YELLOW);
-                break;
-            case 'B':
-                sprintf(code, C_B_BLUE);
-                break;
-            case 'C':
-                sprintf(code, C_B_CYAN);
-                break;
-            case 'G':
-                sprintf(code, C_B_GREEN);
-                break;
-            case 'M':
-                sprintf(code, C_B_MAGENTA);
-                break;
-            case 'R':
-                sprintf(code, C_B_RED);
-                break;
-            case 'W':
-                sprintf(code, C_B_WHITE);
-                break;
-            case 'Y':
-                sprintf(code, C_B_YELLOW);
-                break;
-            case 'D':
-                sprintf(code, C_D_GREY);
-                break;
-            case 'd':
-                sprintf(code, D_GREY);
-                break;
-            case '*':
-                 sprintf(code, "%c", 007);
-                 break; 
-            case '/':
-                sprintf(code, "%c", 012);
-                break; 
-            case '{':
-                sprintf(code, "%c", '{');
-                break;
-        }
-
-        p = code;
-        while(*p != '\0')
-        {
-                *string = *p++;
-                *++string = '\0';
-        }
-
-        return (strlen(code));
-}
-
-
 int bgcolour (char type, CHAR_DATA *ch, char *string)
 {
         char code[ 20 ];
@@ -3603,58 +3769,6 @@ int bgcolour (char type, CHAR_DATA *ch, char *string)
         return (strlen(code));
 }
 
-
-void colourconv (char *buffer, const char *txt , CHAR_DATA *ch)
-{
-        const char *point;
-        int skip = 0;
-
-        if (ch->desc && txt)
-        {
-                if (IS_SET(ch->act, PLR_ANSI))
-                {
-                        for (point = txt ; *point ; point++)
-                        {
-                                if (*point == '{')
-                                {
-                                        point++;
-                                        skip = colour(*point, ch, buffer);
-                                        while (skip-- > 0)
-                                                ++buffer;
-                                        continue;
-                                }
-
-                                if (*point == '}')
-                                {
-                                        point++;
-                                        skip = bgcolour(*point, ch, buffer);
-                                        while (skip-- > 0)
-                                                ++buffer;
-                                        continue;
-                                }
-
-                                *buffer = *point;
-                                *++buffer = '\0';
-                        }
-                        *buffer = '\0';
-                }
-                else
-                {
-                        for (point = txt ; *point ; point++)
-                        {
-                                if (*point == '{' || *point == '}')
-                                {
-                                        point++;
-                                        continue;
-                                }
-                                *buffer = *point;
-                                *++buffer = '\0';
-                        }
-                        *buffer = '\0';
-                }
-        }
-        return;
-}
 
 
 void wizPort_handler (int wizPort)
@@ -3812,5 +3926,508 @@ void assert_directory_exists(const char *path)
                 exit(1);
         }
 }
+
+void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
+{
+        /* 
+         * Yes this is terrible, yes it's the best I can do right now, 
+         * yes it works, yes there are 8(!) levels of nesting, yes you 
+         * are welcome to try and make it Actually Good.
+         * 
+         * I pray I never have to revisit this unholy hellscape where 
+         * all good things go to die.  --Owl
+         */ 
+
+        const char *point;
+        /* char buf78 [MAX_STRING_LENGTH];*/
+        int skip = 0;
+        char cur_code[3];
+        int cd_count = 2;
+        int cv_int;
+        char open_token;
+        char close_token;
+        
+        /* If you change these tokens, you should change the color_table_8bit act_codes as well */
+        open_token   = '<';
+        close_token  = '>';
+
+        if (ch->desc && txt)
+        {
+                if (IS_SET(ch->act, PLR_ANSI))
+                {
+                        for (point = txt ; *point ; point++)
+                        {       
+                                if (*point == '{')
+                                {
+                                        point++;
+                                        skip = colour(*point, ch, buffer);
+                                        while (skip-- > 0)
+                                                ++buffer;
+                                        continue;
+                                }
+
+                                if (*point == '}')
+                                {
+                                        point++;
+                                        skip = bgcolour(*point, ch, buffer);
+                                        while (skip-- > 0)
+                                                ++buffer;
+                                        continue;
+                                }
+
+                                if (*point == open_token)
+                                {
+                                        point++;
+
+                                        if (*point == open_token)
+                                        {
+                                                /* An escaped open_token */
+                                                
+                                                *buffer = *point;
+                                                *++buffer = '\0';
+                                                continue;
+                                        }
+                                        
+                                        if (isdigit(*point))
+                                        {
+                                                if (cd_count < 0)
+                                                        continue;
+                                                
+                                                cur_code[cd_count] = *point;
+                                                cd_count--;
+                                                point++;
+
+                                                if (isdigit(*point))
+                                                {
+                                                        if (cd_count < 0)
+                                                                continue;
+                                                        
+                                                        cur_code[cd_count] = *point;
+                                                        cd_count--;
+                                                        point++;
+
+                                                        if (isdigit(*point))
+                                                        {
+                                                                if (cd_count < 0)
+                                                                        continue;
+                                                                
+                                                                cur_code[cd_count] = *point;
+                                                                cd_count--;
+                                                                point++;
+                                                        }
+                                                }
+                                        }
+                                        else {
+                                                /* zero code array, lonely token opener */
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+                                                continue;
+                                        }
+                                        
+                                        if (*point == close_token)
+                                        {
+                                                /* 
+                                                * If we end up here we have the color code
+                                                * and everything is sweet. 
+                                                */
+                                                /*sprintf(buf78, "cv_int pre-reverse: %s\r\n", cur_code);
+                                                log_string(buf78);*/
+
+                                                reverse_char_array(cur_code, 3);
+                                                
+                                                /*sprintf(buf78, "cur_code char reversed: %s\r\n", cur_code);
+                                                log_string(buf78);*/
+                                                
+                                                cv_int = atoi( cur_code );
+
+                                                /*sprintf(buf78, "cv_int to go to colour_8bit(): %d\r\n", cv_int);
+                                                log_string(buf78);*/
+
+                                                skip = colour_8bit(cv_int, ch, buffer);
+
+                                                /* zero code array */
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+
+                                                while (skip-- > 0)
+                                                        ++buffer;
+                                                
+                                                continue;
+                                        }
+                                        else {
+                                                /* We have an unclosed token error */
+                                                /* cv_int = reverse_number( atoi( cur_code ) ); */
+
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+
+                                                continue;
+                                        }
+                                }
+                                *buffer = *point;
+                                *++buffer = '\0';
+                        }
+                        *buffer = '\0';
+                }
+                else
+                {
+                        /* 
+                         * If the player has ANSI disabled we need to 
+                         * run a modified version of the above nightmare 
+                         * code to strip the tokens out of the string.
+                         */
+
+                       /* zero code array  to start */
+                        cur_code[0] = '\0';
+                        cur_code[1] = '\0';
+                        cur_code[2] = '\0';
+                        cd_count = 2;
+
+                        for (point = txt ; *point ; point++)
+                        {
+
+                                if (*point == '{' || *point == '}')
+                                {
+                                        point++;
+                                        continue;
+                                }
+
+                                if (*point == open_token)
+                                {
+                                        point++;
+
+                                        if (*point == open_token)
+                                        {
+                                                /* An escaped open_token */
+                                                
+                                                *buffer = *point;
+                                                *++buffer = '\0';
+                                                continue;
+                                        }
+                                        
+                                        if (isdigit(*point))
+                                        {
+                                                if (cd_count < 0)
+                                                        continue;
+                                                
+                                                cur_code[cd_count] = *point;
+                                                cd_count--;
+                                                point++;
+
+                                                if (isdigit(*point))
+                                                {
+                                                        if (cd_count < 0)
+                                                                continue;
+                                                        
+                                                        cur_code[cd_count] = *point;
+                                                        cd_count--;
+                                                        point++;
+
+                                                        if (isdigit(*point))
+                                                        {
+                                                                if (cd_count < 0)
+                                                                        continue;
+                                                                
+                                                                cur_code[cd_count] = *point;
+                                                                cd_count--;
+                                                                point++;
+                                                        }
+                                                }
+                                        }
+                                        else {
+                                                /* zero code array, lonely token opener */
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+                                                continue;
+                                        }
+                                        
+                                        if (*point == close_token)
+                                        {
+                                                /* 
+                                                * have the color code
+                                                */
+                                                reverse_char_array(cur_code, 3);
+                                                cv_int = atoi( cur_code );
+                                                strip_colour_8bit(cv_int, ch, buffer);
+                                                
+                                                /*sprintf(buf78, "cvint = %d skip = %d \n\r", cv_int, skip);
+                                                log_string(buf78);*/
+
+                                                /* zero code array */
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+                                                
+                                                continue;
+                                        }
+                                        else {
+                                                /* unclosed token error */
+                                                /* cv_int = reverse_number( atoi( cur_code ) ); */
+
+                                                cur_code[0] = '\0';
+                                                cur_code[1] = '\0';
+                                                cur_code[2] = '\0';
+                                                cd_count = 2;
+
+                                                continue;
+                                        }
+                                }
+                                *buffer = *point;
+                                *++buffer = '\0';
+                        }
+
+                        *buffer = '\0';
+                        return;
+                }
+
+        }
+        return;
+
+}
+
+void strip_colour_8bit (int icode, CHAR_DATA *ch, char *string)
+{
+        char code[ 20 ];
+        char *p = '\0';
+
+        if (IS_NPC(ch))
+                return;
+
+        sprintf(code, "%d", icode);
+
+        p = code;
+        
+        while(*p != '\0')
+        {
+                *string = *p++;
+                *++string = '\0';
+        }
+}
+
+int colour_8bit (int icode, CHAR_DATA *ch, char *string)
+{
+        char code[ 20 ];
+        /* char buf[2048]; */
+        char *p = '\0';
+        int i;
+
+        /*sprintf(buf, "icode passed to function: %d\r\n", icode);
+        log_string(buf);*/
+
+        if (IS_NPC(ch))
+                return 0;
+
+        for (i = 0; i < MAX_8BIT_COLORS; i++)
+        {
+                if( icode == color_table_8bit[i].number )
+                {
+                      sprintf(code, color_table_8bit[i].code);
+                      /*sprintf(buf, "code from table: %d\r\n\r\n", i);
+                      log_string(buf);*/
+                }
+        }
+        p = code;
+
+        while(*p != '\0')
+        {
+                *string = *p++;
+                *++string = '\0';
+        }
+
+        return (strlen(code));
+}
+
+int colour (char type, CHAR_DATA *ch, char *string)
+{
+        char code[ 20 ];
+        char *p = '\0';
+
+        if (IS_NPC(ch))
+                return 0;
+
+        switch (type)
+        {
+            default:
+                sprintf(code, CLEAR);
+                break;
+            case 'x':
+                sprintf(code, CLEAR);
+                break;
+            case 'k':
+                sprintf(code, BLACK);
+                break;
+            case 'b':
+                sprintf(code, C_BLUE);
+                break;
+            case 'c':
+                sprintf(code, C_CYAN);
+                break;
+            case 'g':
+                sprintf(code, C_GREEN);
+                break;
+            case 'm':
+                sprintf(code, C_MAGENTA);
+                break;
+            case 'r':
+                sprintf(code, C_RED);
+                break;
+            case 'w':
+                sprintf(code, C_WHITE);
+                break;
+            case 'y':
+                sprintf(code, C_YELLOW);
+                break;
+            case 'B':
+                sprintf(code, C_B_BLUE);
+                break;
+            case 'C':
+                sprintf(code, C_B_CYAN);
+                break;
+            case 'G':
+                sprintf(code, C_B_GREEN);
+                break;
+            case 'M':
+                sprintf(code, C_B_MAGENTA);
+                break;
+            case 'R':
+                sprintf(code, C_B_RED);
+                break;
+            case 'W':
+                sprintf(code, C_B_WHITE);
+                break;
+            case 'Y':
+                sprintf(code, C_B_YELLOW);
+                break;
+            case 'D':
+                sprintf(code, C_D_GREY);
+                break;
+            case 'd':
+                sprintf(code, D_GREY);
+                break;
+            case '*':
+                 sprintf(code, "%c", 007);
+                 break; 
+            case '/':
+                sprintf(code, "%c", 012);
+                break; 
+            case '{':
+                sprintf(code, "%c", '{');
+                break;
+        }
+
+        p = code;
+        while(*p != '\0')
+        {
+                *string = *p++;
+                *++string = '\0';
+        }
+
+        return (strlen(code));
+}
+
+void colourconv (char *buffer, const char *txt , CHAR_DATA *ch)
+{
+        const char *point;
+        int skip = 0;
+
+        if (ch->desc && txt)
+        {
+                if (IS_SET(ch->act, PLR_ANSI))
+                {
+                        for (point = txt ; *point ; point++)
+                        {
+                                if (*point == '{')
+                                {
+                                        point++;
+                                        skip = colour(*point, ch, buffer);
+                                        while (skip-- > 0)
+                                                ++buffer;
+                                        continue;
+                                }
+
+                                if (*point == '}')
+                                {
+                                        point++;
+                                        skip = bgcolour(*point, ch, buffer);
+                                        while (skip-- > 0)
+                                                ++buffer;
+                                        continue;
+                                }
+
+                                *buffer = *point;
+                                *++buffer = '\0';
+                        }
+                        *buffer = '\0';
+                }
+                else
+                {
+                        for (point = txt ; *point ; point++)
+                        {
+                                if (*point == '{' || *point == '}')
+                                {
+                                        point++;
+                                        continue;
+                                }
+                                *buffer = *point;
+                                *++buffer = '\0';
+                        }
+                        *buffer = '\0';
+                }
+        }
+        return;
+}
+
+int reverse_number ( int number )
+{
+        int reversed;
+        reversed = 0;
+
+        while (number != 0)
+        {
+                reversed = reversed * 10;
+                reversed = reversed + number % 10;
+                number   = number / 10;
+        }
+        return reversed;
+}
+
+
+void reverse_char_array(char arr[], int n)
+{
+    /* Reverse elements of an array in-place where n = num of elements */
+    int low;
+    int high;
+    int temp;
+
+    for (low = 0, high = n - 1; low < high; low++, high--)
+    {
+        temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+    }
+}
+
+int digits_in_int (int number )
+{
+        int count = 0;
+        
+        do {
+                number /= 10;
+                ++count;
+        } 
+        while ( number != 0 );
+
+        return count;
+}
+
 
 /* EOF comm.c */

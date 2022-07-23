@@ -262,7 +262,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
 #define MAX_FORM                          20
-#define MAX_COLORS                        11
+#define MAX_CHANNELS                      11    /* The number of comms channels we currently have -Owl 22/7/22 */
+#define MAX_8BIT_COLORS                  521    /* Number of entries in color_table_8bit in const.c */
 #define MAX_LEVEL                        106
 #define MAX_TRADE                          5
 #define MAX_DAMAGE                      6000    /* Increased from 3k->6k for chaos blast --Owl 2/3/22 */
@@ -991,6 +992,17 @@ struct color_data
         char    code [ 10 ];
         char    act_code [ 5 ];
         char    name [ 15 ];
+        int     number;
+};
+
+/*
+ * For 8-bit colour
+ */
+struct color_data_8bit 
+{
+        char    code [ 19 ];
+        char    act_code [ 6 ];
+        char    name [ 21 ];
         int     number;
 };
 
@@ -2467,7 +2479,7 @@ struct char_data
         int             wimpy;
         int             deaf;
         int             silent_mode;
-        int             colors [ MAX_COLORS ];
+        int             colors [ MAX_CHANNELS ];
         int             mpactnum;
         bool            deleted;
         int             form;
@@ -3559,6 +3571,8 @@ extern const    struct sub_class_type           sub_class_table                 
 extern const    struct clan_items               clan_item_list                  [ MAX_CLAN ];
 extern const    struct clan_type                clan_table                      [ MAX_CLAN ];
 extern const    struct color_data               color_table                     [ ];
+extern char *   const  channel_names                                               [ MAX_CHANNELS ];
+extern const    struct color_data_8bit          color_table_8bit                [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
 extern const    struct blueprint_type           blueprint_list                  [ BLUEPRINTS_MAX ];
@@ -3571,7 +3585,7 @@ extern const    struct soar_points              soar_list                       
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
 extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
-extern char *   const  color_list               [ MAX_COLOR_LIST ];
+extern char *   const  color_list                                               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
 extern const    struct race_struct              race_table                      [ MAX_RACE ];
 extern const    struct level_struct             level_table                     [ MAX_LEVEL - 6 ];
@@ -4268,9 +4282,8 @@ bool is_same_group                      args( ( CHAR_DATA *ach, CHAR_DATA *bch )
 bool is_note_to                         args( ( CHAR_DATA *ch, NOTE_DATA *pnote ) );
 void talk_auction                       args( ( char *argument ) );
 void do_quit                            args( ( CHAR_DATA *ch, char *argument ) );
-bool is_group_members_mount               ( CHAR_DATA *mount, CHAR_DATA *ch );
-void server_message                       ( const char *text );
-
+bool is_group_members_mount                   ( CHAR_DATA *mount, CHAR_DATA *ch );
+void server_message                           ( const char *text );
 
 /*
  * Colour stuff by Lope of Loping Through The MUD
@@ -4289,6 +4302,7 @@ int   has_pre_req                     ( CHAR_DATA *ch, int sn );
 char* number_suffix                   ( int num );
 void  print_player_status             ( CHAR_DATA *ch, char *buf );
 void  print_who_data                  ( CHAR_DATA *ch, char *buf );
+int   get_colour_index_by_code        ( int ccode );
 
 /* act_move.c */
 void move_char          args( ( CHAR_DATA *ch, int door ) );
@@ -4328,6 +4342,12 @@ void show_string                        args( ( DESCRIPTOR_DATA *d, char *input 
 void act                                args( ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type ) );
 void act_move                                 ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type );
 void bit_explode                              ( CHAR_DATA *ch, char *buf, unsigned long int n);
+void colourconv_8bit                    args( ( char *buffer, const char *txt, CHAR_DATA *ch ) );
+int  reverse_number                           ( int number );
+int  colour_8bit                        args( ( int icode, CHAR_DATA *ch, char *string ) );
+void strip_colour_8bit                  args( ( int icode, CHAR_DATA *ch, char *string ) );
+int  digits_in_int                            ( int number );
+void reverse_char_array                       ( char arr[], int n );
 
 /* db.c */
 void    boot_db                         args( ( void ) );
