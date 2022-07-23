@@ -1357,7 +1357,7 @@ void chat_killer(CHAR_DATA *ch, CHAR_DATA *victim)
                         vch->position = POS_STANDING;
 
                         sprintf(buf, "%s%s$R",
-                                color_table[vch->colors[COLOR_GOSSIP]].act_code,
+                                color_table_8bit[get_colour_index_by_code(vch->colors[COLOR_GOSSIP])].act_code,
                                 chat_buf);
 
                         act(buf, ch, NULL, vch, TO_VICT);
@@ -2663,7 +2663,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                  */
 
                 if (dam > 0)
-                        sprintf(buf2, "$c %s you%c",       vp, punct);
+                        sprintf(buf2, "{W$c %s {Wyou%c{x",       vp, punct);
                 else
                         sprintf(buf2, "$n %s you%c",       vp, punct);
                 
@@ -2698,7 +2698,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "Your poisoned %s %s $N%c",  attack, vp, punct);
 
                         if (dam > 0)
-                                sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
+                                sprintf(buf2, "{W$c's poisoned %s %s {x{Wyou%c{x", attack, vp, punct);
                         else
                                 sprintf(buf2, "$c's poisoned %s %s you%c", attack, vp, punct);
 
@@ -6647,63 +6647,63 @@ char *get_damage_string( int damage_value, bool is_singular )
         }
         else if (damage_value <= 250)
         {
-                vs = "<0><124>-=<<**<160>$FOBLITERATE<0><124>**>=-<0>";
-                vp = "<0><124>-=<<**<160>$FOBLITERATES<0><124>**>=-<0>";
+                vs = "<0><124>-=<<**<160><558>OBLITERATE<0><124>**>=-<0>";
+                vp = "<0><124>-=<<**<160><558>OBLITERATES<0><124>**>=-<0>";
         }
         else if (damage_value <= 400)
         {
-                vs = "<0><88>-=<<||<160>$FRAVAGE<0><88>||>=-<0>";
-                vp = "<0><88>-=<<||<160>$FRAVAGES<0><88>||>=-<0>";
+                vs = "<0><88>-=<<||<160><558>RAVAGE<0><88>||>=-<0>";
+                vp = "<0><88>-=<<||<160><558>RAVAGES<0><88>||>=-<0>";
         }
         else if (damage_value <= 600)
         {
-                vs = "<0><52>-=*>|<160>$FCRIPPLE$R<0><52>|<<*=-<0>";
-                vp = "<0><52>-=*>|<160>$FCRIPPLES$R<0><52>|<<*=-<0>";
+                vs = "<0><52>-=*>|<160><558>CRIPPLE<559><0><52>|<<*=-<0>";
+                vp = "<0><52>-=*>|<160><558>CRIPPLES<559><0><52>|<<*=-<0>";
         }
         else if (damage_value <= 900)
         {
-                vs = "<0><124>-=**>><124>$FBRUTALISE$R<0><124><<<<**=-<0>";
-                vp = "<0><124>-=**>><124>$FBRUTALISES$R<0><124><<<<**=-<0>";
+                vs = "<0><124>-=**>><124><558>BRUTALISE<559><0><124><<<<**=-<0>";
+                vp = "<0><124>-=**>><124><558>BRUTALISES<559><0><124><<<<**=-<0>";
         }
         else if (damage_value <= 1200)
         {
-                vs = "<0><88>-=**>><124>$FVAPOURISE$R<0><88><<<<**=-<0>";
-                vp = "<0><88>-=**>><124>$FVAPOURISES$R<0><88><<<<**=-<0>";
+                vs = "<0><88>-=**>><124><558>VAPOURISE<559><0><88><<<<**=-<0>";
+                vp = "<0><88>-=**>><124><558>VAPOURISES<559><0><88><<<<**=-<0>";
         }
         else if (damage_value <= 1500)
         {
-                vs = "<0><52>-+*>>><124>$FATOMIZE$R<0><52><<<<<<*+-<0>";
-                vp = "<0><52>-+*>>><124>$FATOMIZES$R<0><52><<<<<<*+-<0>";
+                vs = "<0><52>-+*>>><124><558>ATOMIZE<559><0><52><<<<<<*+-<0>";
+                vp = "<0><52>-+*>>><124><558>ATOMIZES<559><0><52><<<<<<*+-<0>";
         }
         else if (damage_value <= 2000)
         {
-                vs = "<0><88>-+*>>##$FELIMINATE$R<0><88>##<<<<*+-<0>";
-                vp = "<0><88>-+*>>##$FELIMINATES$R<0><88>##<<<<*+-<0>";
+                vs = "<0><88>-+*>>##<558>ELIMINATE<559><0><88>##<<<<*+-<0>";
+                vp = "<0><88>-+*>>##<558>ELIMINATES<559><0><88>##<<<<*+-<0>";
         }
         else if (damage_value <= 2500)
         {
-                vs = "<0><52>-+*###<88>$FEXTERMINATE$R<0><52>###*+-<0>";
-                vp = "<0><52>-+*###<88>$FEXTERMINATES$R<0><52>###*+-<0>";
+                vs = "<0><52>-+*###<88><558>EXTERMINATE<559><0><52>###*+-<0>";
+                vp = "<0><52>-+*###<88><558>EXTERMINATES<559><0><52>###*+-<0>";
         }
         else if (damage_value <= 3000)
         {
-                vs = "<0><52>--=##>>$FUTTERLY DESTROY$R<52><<<<##=--<0>";
-                vp = "<0><52>--=##>>$FUTTERLY DESTROYS$R<52><<<<##=--<0>";
+                vs = "<0><52>--=##>><558>UTTERLY DESTROY<559><52><<<<##=--<0>";
+                vp = "<0><52>--=##>><558>UTTERLY DESTROYS<559><52><<<<##=--<0>";
         }
         else if (damage_value <= 3500)   
         {
-                vs = "<0><52>-=*<<|[$FNULLIFY$R<52>]|>*=-<0>"; 
-                vp = "<0><52>-=*<<|[$FNULLIFIES$R<52>]|>*=-<0>"; 
+                vs = "<0><52>-=*<<|[<558>NULLIFY<559><52>]|>*=-<0>"; 
+                vp = "<0><52>-=*<<|[<558>NULLIFIES<559><52>]|>*=-<0>"; 
         }
         else if (damage_value <= 4000)   
         {
-                vs = "<0><52>-=**[|<<<<$FBUTCHER$R<52>>|]**=-<0>"; 
-                vp = "<0><52>-=**[|<<<<$FBUTCHERS$R<52>>|]**=-<0>"; 
+                vs = "<0><52>-=**[|<<<558>BUTCHER<559><52>>|]**=-<0>"; 
+                vp = "<0><52>-=**[|<<<558>BUTCHERS<559><52>>|]**=-<0>"; 
         }
         else if (damage_value <= 4500)   
         {
-                vs = "<0><52>--=<<#[|$FLIQUIDATE$R<52>|]#>=--<0>"; 
-                vp = "<0><52>--=<<#[|$FLIQUIDATES$R<52>|]#>=--<0>"; 
+                vs = "<0><52>--=<<#[|<558>LIQUIDATE<559><52>|]#>=--<0>"; 
+                vp = "<0><52>--=<<#[|<558>LIQUIDATES<559><52>|]#>=--<0>"; 
         }
         else if (damage_value <= 5000)   
         {

@@ -3197,17 +3197,18 @@ void clear_char( CHAR_DATA *ch )
         ch->deleted             = FALSE;
         ch->exp_modifier        = 100;
 
-        ch->colors[COLOR_AUCTION]       = 13;
-        ch->colors[COLOR_GOSSIP]        = 14;
-        ch->colors[COLOR_SHOUT]         = 12;
-        ch->colors[COLOR_SAY]           = 15;
-        ch->colors[COLOR_TELL]          = 10;
-        ch->colors[COLOR_CLAN]          = 7;
-        ch->colors[COLOR_DIRTALK]       = 11;
-        ch->colors[COLOR_IMMTALK]       = 9;
-        ch->colors[COLOR_ARENA]         = 13;
-        ch->colors[COLOR_SERVER]        = 3;
-        ch->colors[COLOR_NEWBIE]        = 11; /* --Owl 2/3/22, didn't want it same colour as 'say' */
+        ch->colors[COLOR_AUCTION]      = 13;
+        ch->colors[COLOR_GOSSIP]       = 11;
+        ch->colors[COLOR_SHOUT]        = 9;
+        ch->colors[COLOR_IMMTALK]      = 12;
+        ch->colors[COLOR_SAY]          = 15;
+        ch->colors[COLOR_TELL]         = 10;
+        ch->colors[COLOR_CLAN]         = 7;
+        ch->colors[COLOR_DIRTALK]      = 25;
+        ch->colors[COLOR_SERVER]       = 6;
+        ch->colors[COLOR_ARENA]        = 13;
+        ch->colors[COLOR_NEWBIE]       = 14; /* --Owl 2/3/22, didn't want it same colour as 'say' */
+   
 }
 
 

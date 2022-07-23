@@ -3642,13 +3642,13 @@ elves, actually.
 #ROOMS
 #27308
 Sekolah Way South, Lower~
-{C<45>You stand in the middle of a pedestrian throughfare on the sandy ocean floor, 
-<81>amongst the inhabited ruins of a great, ancient city.  To the south a huge gate 
-<117>looms, cutting off access to this canton from the rest of the city.  To the east 
-<153>you see the entrance to a shop.  The sign above it reads "Phesak's Maps".  
+{CYou stand in the middle of a pedestrian throughfare on the sandy ocean floor, 
+amongst the inhabited ruins of a great, ancient city.  To the south a huge gate 
+looms, cutting off access to this canton from the rest of the city.  To the east 
+you see the entrance to a shop.  The sign above it reads "Phesak's Maps".  
 
-<189>The road continues north, and you may also swim upwards, towards a huge, looming 
-<225>area of darkness in the water above. {x<0>
+The road continues north, and you may also swim upwards, towards a huge, looming 
+area of darkness in the water above.{x
 ~
 0 0 8
 D0

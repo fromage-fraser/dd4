@@ -248,8 +248,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
 #define MAX_FORM                          20
-#define MAX_COLORS                        11
-#define MAX_8BIT_COLORS                  511
+#define MAX_CHANNELS                      11    /* The number of comms channels we currently have -Owl 22/7/22 */
+#define MAX_8BIT_COLORS                  521    /* Number of entries in color_table_8bit in const.c */
 #define MAX_LEVEL                        106
 #define MAX_TRADE                          5
 #define MAX_DAMAGE                      6000    /* Increased from 3k->6k for chaos blast --Owl 2/3/22 */
@@ -987,6 +987,7 @@ struct color_data
 struct color_data_8bit 
 {
         char    code [ 19 ];
+        char    act_code [ 6 ];
         char    name [ 21 ];
         int     number;
 };
@@ -2426,7 +2427,7 @@ struct char_data
         int             wimpy;
         int             deaf;
         int             silent_mode;
-        int             colors [ MAX_COLORS ];
+        int             colors [ MAX_CHANNELS ];
         int             mpactnum;
         bool            deleted;
         int             form;
@@ -3514,6 +3515,7 @@ extern const    struct sub_class_type           sub_class_table                 
 extern const    struct clan_items               clan_item_list                  [ MAX_CLAN ];
 extern const    struct clan_type                clan_table                      [ MAX_CLAN ];
 extern const    struct color_data               color_table                     [ ];
+extern char *   const  channel_names                                               [ MAX_CHANNELS ];
 extern const    struct color_data_8bit          color_table_8bit                [ ];
 extern const    struct cmd_type                 cmd_table                       [ ];
 extern const    struct liq_type                 liq_table                       [ LIQ_MAX  ];
@@ -3526,7 +3528,7 @@ extern const    struct soar_points              soar_list                       
 extern const    struct HERB                     herb_table                      [ MAX_HERBS ];
 extern const    struct imbue_types              imbue_list                      [ MAX_IMBUE ];
 extern const    struct song                     song_table                      [ MAX_SONGS ];
-extern char *   const  color_list               [ MAX_COLOR_LIST ];
+extern char *   const  color_list                                               [ MAX_COLOR_LIST ];
 extern char *   const  clan_title               [ MAX_CLAN ]                    [ MAX_CLAN_LEVEL + 1 ];
 extern const    struct race_struct              race_table                      [ MAX_RACE ];
 extern const    struct level_struct             level_table                     [ MAX_LEVEL - 6 ];
@@ -4237,6 +4239,7 @@ int   has_pre_req                     ( CHAR_DATA *ch, int sn );
 char* number_suffix                   ( int num );
 void  print_player_status             ( CHAR_DATA *ch, char *buf );
 void  print_who_data                  ( CHAR_DATA *ch, char *buf );
+int   get_colour_index_by_code        ( int ccode );
 
 /* act_move.c */
 void move_char          args( ( CHAR_DATA *ch, int door ) );

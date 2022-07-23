@@ -2488,6 +2488,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
         char open_token;
         char close_token;
 
+        /* If you change these tokens, you should change the color_table_8bit act_codes as well */
         open_token   = '<';
         close_token  = '>';
 
@@ -3945,7 +3946,8 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
         int cv_int;
         char open_token;
         char close_token;
-
+        
+        /* If you change these tokens, you should change the color_table_8bit act_codes as well */
         open_token   = '<';
         close_token  = '>';
 
