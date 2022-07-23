@@ -4216,7 +4216,6 @@ void strip_colour_8bit (int icode, CHAR_DATA *ch, char *string)
 int colour_8bit (int icode, CHAR_DATA *ch, char *string)
 {
         char code[ 20 ];
-        /* char buf[2048]; */
         char *p = '\0';
         int i;
 
@@ -4227,7 +4226,7 @@ int colour_8bit (int icode, CHAR_DATA *ch, char *string)
         {
                 if( icode == color_table_8bit[i].number )
                 {
-                      sprintf(code, color_table_8bit[i].code);
+                      sprintf(code, "%s", color_table_8bit[i].code);
                 }
         }
         p = code;
