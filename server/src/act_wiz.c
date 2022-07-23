@@ -1776,6 +1776,22 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
+                if ( IS_SET(victim->act, ACT_PRACTICE ) )
+                {
+                        int sn;
+                        sprintf( buf, "This mob {WTEACHES{x\n\r" );
+                        strcat( buf1, buf );   
+                        for  ( sn = 0; sn < MAX_SKILL; sn++ )
+                        {
+                              /* if (CAN_DO(victim, sn) ) */
+                              if ( victim->pIndexData->skills->learned[sn] > 0 )
+                              {
+                                sprintf( buf, "%3d %30s\n\r", victim->pIndexData->skills->learned[sn], skill_table[sn].name );
+                                strcat( buf1, buf );   
+                              }  
+                        }
+                }
+
         }
 
         send_to_char( buf1, ch );
