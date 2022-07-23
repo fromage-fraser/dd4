@@ -875,6 +875,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 void do_ostat( CHAR_DATA *ch, char *argument )
 {
         OBJ_DATA    *obj;
+        OBJSET_INDEX_DATA *pObjSetIndex;
         CHAR_DATA   *rch;
         AFFECT_DATA *paf;
         char         buf  [ MAX_STRING_LENGTH ];
@@ -904,7 +905,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 return;
         }
 
-        sprintf( buf, "Vnum: {R%d{x\n\r",
+         sprintf( buf, "Vnum: {R%d{x\n\r",
                 obj->pIndexData->vnum );
         strcat( buf1, buf );
 
@@ -1148,13 +1149,110 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
                         strcat (buf, " battle_terror");
 
+                if (IS_SET(obj->ego_flags, EGO_ITEM_UNCOMMON_SET)
+                        || IS_SET(obj->ego_flags, EGO_ITEM_RARE_SET)
+                        || IS_SET(obj->ego_flags, EGO_ITEM_EPIC_SET)
+                        || IS_SET(obj->ego_flags, EGO_ITEM_LEGENDARY_SET) )
+                        strcat (buf, "[SET PIECE]");
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);
         }
 
+        if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum) ) )
+        {
+                sprintf(buf, "This is part of a %s set.\n\rSet tags: %s. Vnum [%d]\n\r\n\r", objset_type(pObjSetIndex->vnum), pObjSetIndex->name, pObjSetIndex->vnum);
+                strcat(buf1, buf);
+
+        }
         send_to_char( buf1, ch );
 }
 
+void do_osstat( CHAR_DATA *ch, char *argument )
+{
+        OBJSET_INDEX_DATA *obj;
+         CHAR_DATA   *rch;
+        AFFECT_DATA *paf;
+        char         buf  [ MAX_STRING_LENGTH ];
+        char         buf1 [ MAX_STRING_LENGTH ];
+        char         arg  [ MAX_INPUT_LENGTH  ];
+        int count;
+ 
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_osstat ) )
+                return;
+
+        one_argument( argument, arg );
+
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Ostat what?\n\r", ch );
+                return;
+        }
+
+        buf1[0] = '\0';
+
+        if ( !( obj = get_objset( arg ) ) )
+        {
+                send_to_char( "Nothing like that in these realms..\n\r", ch);
+                return;
+        }
+
+        sprintf( buf, "This is a %s set. Vnum: {R%d{x\n\r", objset_type(obj->vnum),
+                obj->vnum );
+        strcat( buf1, buf );
+
+        sprintf( buf, "Short description: {W%s{x\n\rLong description: {W%s{x\n\r",
+                obj->name,
+                obj->description );
+        strcat( buf1, buf );
+
+        sprintf ( buf, "Vnums of items within the set: {W%d{x {W%d{x {W%d{x {W%d{x {W%d{x\n\r\n\r",
+                obj->objects[0], obj->objects[1], obj->objects[2], obj->objects[3], obj->objects[4] );
+        strcat( buf1, buf );
+
+/*         num_bonus = objset_bonus_num(obj->vnum); 
+        sprintf( buf, "There are %d set bonuses\n\r", objset_bonus_num(obj->vnum));
+        strcat( buf1, buf );
+
+
+        sprintf( buf, "you need {W%d{x for set bonus 1\n\r", objset_bonus_num_pos(obj->vnum, 1) );
+        strcat( buf1, buf );
+                sprintf( buf, "you need {W%d{x for set bonus 2\n\r", objset_bonus_num_pos(obj->vnum, 2) );
+        strcat( buf1, buf );
+                sprintf( buf, "you need {W%d{x for set bonus 3\n\r", objset_bonus_num_pos(obj->vnum, 3) );
+        strcat( buf1, buf );
+*/
+        sprintf( buf, "{CAffects Given:{x\n\r");
+                strcat( buf1, buf );
+
+        count = 0;
+        for ( paf = obj->affected; paf; paf = paf->next )
+        {
+                count++;
+                sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
+                        objset_bonus_num_pos(obj->vnum, count), 
+                        affect_loc_name( paf->location ), 
+                        paf->modifier );
+                strcat( buf1, buf );
+  /*              sprintf( buf, "you need {W%d{x for set bonus %d\n\r", objset_bonus_num_pos(obj->vnum, count), count );
+                strcat( buf1, buf ); 
+*/
+        }
+
+   /*     for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+        {
+                sprintf( buf, "Affects {Y%s{x by {Y%d{x\n\r",
+                        affect_loc_name( paf->location ), paf->modifier );
+                strcat( buf1, buf );
+        }
+*/
+        strcat(buf, "{x\n\r");
+ 
+        send_to_char( buf1, ch );
+
+
+}
 
 void do_mstat( CHAR_DATA *ch, char *argument )
 {
@@ -1678,6 +1776,22 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
+                if ( IS_SET(victim->act, ACT_PRACTICE ) )
+                {
+                        int sn;
+                        sprintf( buf, "This mob {WTEACHES{x\n\r" );
+                        strcat( buf1, buf );   
+                        for  ( sn = 0; sn < MAX_SKILL; sn++ )
+                        {
+                              /* if (CAN_DO(victim, sn) ) */
+                              if ( victim->pIndexData->skills->learned[sn] > 0 )
+                              {
+                                sprintf( buf, "%3d %30s\n\r", victim->pIndexData->skills->learned[sn], skill_table[sn].name );
+                                strcat( buf1, buf );   
+                              }  
+                        }
+                }
+
         }
 
         send_to_char( buf1, ch );
@@ -1823,6 +1937,70 @@ void do_ofind( CHAR_DATA *ch, char *argument )
         return;
 }
 
+void do_osfind( CHAR_DATA *ch, char *argument )
+{
+        CHAR_DATA       *rch;
+        OBJSET_INDEX_DATA *pObjSetIndex;
+        char            buf  [ MAX_STRING_LENGTH   ];
+        char            buf1 [ MAX_STRING_LENGTH*2 ];
+        char            arg  [ MAX_INPUT_LENGTH    ];
+        extern int      top_objset_index;
+        int             vnum;
+        int             nMatch;
+        bool            fAll;
+        bool            found;
+
+        rch = get_char( ch );
+
+        if ( !authorized( rch, gsn_osfind ) )
+                return;
+
+        one_argument( argument, arg );
+        if ( arg[0] == '\0' )
+        {
+                send_to_char( "Ofind what?\n\r", ch );
+                return;
+        }
+
+        if (strlen (arg) < 3)
+        {
+                send_to_char ("Argument must be at least three letters long.\n\r", ch);
+                return;
+        }
+
+        buf1[0] = '\0';
+        fAll    = FALSE;
+        found   = FALSE;
+        nMatch  = 0;
+
+        for ( vnum = 0; nMatch < top_objset_index; vnum++ )
+        {
+                if ( ( pObjSetIndex = get_objset_index( vnum ) ) )
+                {
+                        nMatch++;
+                        if ( fAll || multi_keyword_match( arg, pObjSetIndex->name ) )
+                        {
+                                found = TRUE;
+                                sprintf( buf, "[%5d] %s\n\r",
+                                        pObjSetIndex->vnum, pObjSetIndex->name );
+                                if ( !fAll )
+                                        strcat( buf1, buf );
+                                else
+                                        send_to_char( buf, ch );
+                        }
+                }
+        }
+
+        if ( !found )
+        {
+                send_to_char( "Nothing like that in the domain.\n\r", ch);
+                return;
+        }
+
+        if ( !fAll )
+                send_to_char( buf1, ch );
+        return;
+}
 
 void do_mwhere( CHAR_DATA *ch, char *argument )
 {
