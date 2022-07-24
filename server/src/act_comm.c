@@ -1403,7 +1403,7 @@ void do_group( CHAR_DATA *ch, char *argument )
         char       buf [ MAX_STRING_LENGTH ];
         char       buf1 [ MAX_INPUT_LENGTH  ];
         char       arg [ MAX_INPUT_LENGTH  ];
-        int            npc_count;
+        int        npc_count;
 
         one_argument( argument, arg );
 
@@ -1615,7 +1615,7 @@ void do_group_leader( CHAR_DATA *ch, char *argument)
         if (ch->pcdata->group_leader)
         {
                 if (ch->pcdata->group_leader == ch)
-                        send_to_char("You are genius!\n\r", ch);
+                        send_to_char("You are, genius!\n\r", ch);
                 else
                 {
                         sprintf(buf, "%s is leading the group.\n\r",
