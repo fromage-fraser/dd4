@@ -4131,8 +4131,8 @@ void do_prompt( CHAR_DATA *ch, char *argument )
                 strcat (buf, "<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
         else
         {
-                if ( strlen( argument ) > 100 )
-                        argument[100] = '\0';
+                if ( strlen( argument ) > MAX_PROMPT_LENGTH )
+                        argument[MAX_PROMPT_LENGTH] = '\0';
                 smash_tilde( argument );
                 strcat( buf, argument );
         }
