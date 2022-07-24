@@ -3628,8 +3628,8 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                         send_to_char( buf, ch );
                 }
                 
-                send_to_char( "\n\rTo toggle colour, type 'COLOUR'. Text/numerical colour codes can be viewed with 'HELP COLOURCODES'.\n\r"
-                             "Type 'HELP COLOUR,' 'HELP COLOUR2,' and 'HELP COLOUR3,' and 'HELP ANSI' for more information.\n\r", ch );
+                send_to_char( "\n\rTo toggle colour, type 'COLOUR'. Colour codes can be viewed with 'HELP COLOURCODES'.\n\r"
+                             "See 'HELP COLOUR,' 'HELP COLOUR2,' 'HELP COLOUR3,' and 'HELP ANSI' for more information.\n\r", ch );
                 return;
         }
 
