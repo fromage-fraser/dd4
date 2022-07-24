@@ -2012,15 +2012,20 @@ void do_kiai (CHAR_DATA *ch, char *argument)
 void do_recall (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA       *victim;
+        CHAR_DATA       *mob;
+        CHAR_DATA       *vnext;
         ROOM_INDEX_DATA *location;
         char             buf [ MAX_STRING_LENGTH ];
         int              place;
+        int              followers_found;
 
         char arg[MAX_INPUT_LENGTH];
         char arg2[MAX_INPUT_LENGTH];
 
         argument = one_argument(argument, arg);
         argument = one_argument(argument, arg2);
+        
+        followers_found = 0;
 
         if (IS_NPC(ch))
                 return;
@@ -2108,6 +2113,30 @@ void do_recall (CHAR_DATA *ch, char *argument)
                         }
                 }
 
+                /* 
+                 * Check the room for mobs where victim->master == ch.  If you find one,
+                 * Send them to the room ch will recall to. Put in to make life a little
+                 * less painful for Satanists -- Owl 24/7/22 
+                 */
+                
+                for(mob = ch->in_room->people; mob; mob = vnext)
+                {
+                        vnext = mob->next_in_room;
+
+                        if ( ( mob != ch )
+                        &&   ( mob->master == ch )
+                        &&   ( IS_NPC( mob ) ) )
+                        {       
+                                followers_found++;
+                                /* act_move ("$n disappears.", mob, NULL, NULL, TO_ROOM); */
+                                char_from_room(mob);
+                                char_to_room(mob, location);
+                                act_move("$n appears suddenly.", mob, NULL, NULL, TO_ROOM);
+                                mob = mob->next_in_room;
+                        }
+                        
+                }
+
                 if (tournament_status == TOURNAMENT_STATUS_RUNNING
                     && is_entered_in_tournament(ch)
                     && IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER)
@@ -2137,6 +2166,17 @@ void do_recall (CHAR_DATA *ch, char *argument)
                         act_move ("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
 
                 do_look(ch, "auto");
+
+                if (followers_found == 1)
+                {
+                        sprintf(buf, "<228>Your follower has joined you in safety.<0>\n\r");
+                        send_to_char(buf, ch);
+                }
+                else if (followers_found > 1)
+                {
+                        sprintf(buf, "<228>Your followers have joined you in safety.<0>\n\r");
+                        send_to_char(buf, ch);
+                }
 
                 return;
         }
