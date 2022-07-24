@@ -1084,6 +1084,11 @@ void do_score (CHAR_DATA *ch, char *argument)
          *  unfilled length of the bar.
          */
 
+        /*
+        int             bar_length, bar_left, i, full_length = 30;
+        const char      bar [] = "<92>|<91>|<90>|<89>|<53>|<18>|<19>|<20>|<21>|<27>|<51>|<87>|<123>|<159>|<195>|<231>|"
+                                 "<46>|<82>|<118>|<154>|<190|<226>|<220>|<214>|<208|<202>|<196>|<160>|<124>|<88>|<52>|";
+        */
         int             bar_length, bar_left, i, full_length = 30;
         const char      bar [] = "{m|{m|{m|{m|{m|{B|{B|{B|{B|{B|{C|{C|{C|{C|{C|"
                                  "{G|{G|{G|{G|{G|{Y|{Y|{Y|{Y|{Y|{R|{R|{R|{R|{R|";

@@ -2458,8 +2458,8 @@ const struct skill_type skill_table [MAX_SKILL] =
          *
          * When adding new spells add them near the end, just
          * before the base skills.  Elements are accessed by
-         * index and results will be unpredictable if the current
-         * order gets screwed up.
+         * index and results will be unpredictable (BUT BAD) 
+         * if the current order gets screwed up.
          */
         {
                 "reserved", NULL,
@@ -2472,15 +2472,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "acid blast", &gsn_acid_blast,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_acid_blast, 20, 12,
-                "{Ga{Yci{Wd bl{Yas{Gt{x", "!Acid Blast!"
+                "<28>a<106>c<178>i<229>d <15>b<229>l<178>a<106>s<28>t<0>", "!Acid Blast!"
         },
 
         {
                 "inner fire", &gsn_inner_fire,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_inner_fire, 20, 12,
-                "{Rin{Yne{Wr {Yfi{Rre{x", "!Inner Fire!"
-                /*"<1>in<23>ne<357>r <32>fi<512>re<0>", "!Inner Fire!"*/
+                "<124>i<196>n<11>n<229>e<15>r <229>f<11>i<196>r<124>e<0>", "!Inner Fire!"
                 
         },
 
@@ -2488,14 +2487,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                  "synaptic blast", &gsn_synaptic_blast,
                  TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                  spell_synaptic_blast, 30, 12,
-                 "{Bsy{Cnap{Wtic {Cbla{Bst{x", "!Synaptic Blast!"
+                 "<12>s<27>y<14>n<123>a<159>p<195>t<231>i<195>c <159>b<123>l<14>a<27>s<12>t<0>", "!Synaptic Blast!"
         },
 
         {
                 "prismatic spray", &gsn_prismatic_spray,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_prismatic_spray, 25, 12,
-                /*"{Rpri{Ysm{Gat{Cic {Bsp{Mray{x", "!Prismatic Spray!"*/
                 "<196>p<160>r<124>i<226>s<154>m<10>a<118>t<51>i<87>c <21>s<20>p<201>r<165>a<129>y<0>", "!Prismatic Spray!"
         },
 
@@ -2503,14 +2501,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "holy word", &gsn_holy_word,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_holy_word, 20, 12,
-                "{Wholy word{x", "!Holy Word!"
+                "<556><196>+*(<15>holy word<196>)*+<557>", "!Holy Word!"
         },
 
         {
                 "unholy word", &gsn_unholy_word,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_unholy_word, 20, 12,
-                "{Munholy word{x", "!Unholy Word!"
+                "<556><55>un<56>ho<57>ly <56>wo<55>rd<0>", "!Unholy Word!"
         },
 
         {
@@ -2560,14 +2558,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "burning hands", &gsn_burning_hands,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_burning_hands, 15, 12,
-                "{Rburning{x hands", "!Burning Hands!"
+                "<196>bu<202>r<208>n<202>i<196>ng<0> hand", "!Burning Hands!"
         },
 
         {
                 "call lightning", &gsn_call_lightning,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_call_lightning, 15, 12,
-                "{Bl{Cig{Wh{Ct{Wnin{Cg {Wb{Col{Bt{x", "!Call Lightning!"
+                "<27>l<123>i<51>g<15>h<51>t<15>nin<51>g <15>b<51>o<123>l<27>t<0>", "!Call Lightning!"
         },
 
         {
@@ -2602,7 +2600,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "chain lightning", &gsn_chain_lightning,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
                 spell_chain_lightning, 15, 24,
-                "{Bl{Cig{Wh{Ct{Wnin{Cg {Wb{Col{Bt{x", "!Chain Lightning!"
+                "<27>l<123>i<51>g<15>h<51>t<15>nin<51>g <15>b<51>o<123>l<27>t<0>", "!Chain Lightning!"
         },
 
         {
@@ -2616,14 +2614,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "chill touch", &gsn_chill_touch,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_chill_touch, 10, 12,
-                "{Bch{Ci{Wlling to{Cu{Bch{x", "You feel less cold."
+                "<27>c<32>h<14>i<87>l<123>l<159>i<15>n<159>g <123>t<87>o<14>u<32>c<27>h<0>", "You feel less cold."
         },
 
         {
                 "colour spray", &gsn_colour_spray,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_colour_spray, 15, 12,
-                "{Mco{Blo{Cur {Gs{Ypr{Ray{x", "!Colour Spray!"
+                "<198>c<201>o<12>l<33>o<14>u<49>r <34>s<106>p<11>r<202>a<196>y<0>", "!Colour Spray!"
         },
 
         {
@@ -2700,7 +2698,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "curse", &gsn_curse,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_curse, 20, 12,
-                "{Mcurse{x", "The curse wears off."
+                "<199>c<200>u<201>r<200>s<199>e<0>", "The curse wears off."
         },
 
         {
@@ -2784,7 +2782,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "energy drain", &gsn_energy_drain,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
                 spell_energy_drain, 35, 12,
-                "{Ben{Ce{Yr{Wgy d{Yr{Ca{Bin{x", "!Energy Drain!"
+                "<20>e<21>n<14>e<11>r<229>g<15>y <229>d<11>r<14>a<21>i<20>n<0>", "!Energy Drain!"
         },
 
         {
@@ -2798,7 +2796,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "faerie fire", &gsn_faerie_fire,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
                 spell_faerie_fire, 5, 12,
-                "{mfa{Merie fi{x{mre{x","The pink aura around you fades away."
+                "<54>f<90>a<126>e<162>r<198>ie <162>f<126>i<90>r<54>e<0>","The pink aura around you fades away."
         },
 
         {
@@ -2812,21 +2810,21 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "fireball", &gsn_fireball,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_fireball, 15, 12,
-                "{Rfi{Yr{Web{Ya{Rll{x", "!Fireball!"
+                "<556><196>fi<11>r<15>e<11>b<15>a<196>ll<0>", "!Fireball!"
         },
 
         {
                 "fireshield", &gsn_fireshield,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_fireshield, 75, 18,
-                "{Rfi{Yre{Wsh{Yie{Rld{x", "The flames around your body fizzle out."
+                "<196>fi<202>r<11>e<15>sh<11>i<202>e<196>ld<0>", "The flames around your body fizzle out."
         },
 
         {
                 "flamestrike", &gsn_flamestrike,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_flamestrike, 20, 12,
-                "{Rfla{Yme{Ws{Ytr{Rike{x", "!Flamestrike!"
+                "<196>fl<202>a<11>me<15>s<11>tr<202>i<196>ke<0>", "!Flamestrike!"
         },
 
         {
@@ -2939,7 +2937,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "lightning bolt", &gsn_lightning_bolt,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_lightning_bolt, 15, 12,
-                "{Bl{Cig{Wh{Ct{Wnin{Cg {Wb{Col{Bt{x", "!Lightning Bolt!"
+                "<27>l<123>i<51>g<15>h<51>t<15>nin<51>g <15>b<51>o<123>l<27>t<0>", "!Lightning Bolt!"
         },
 
         {
@@ -2974,7 +2972,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "poison", &gsn_poison,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
                 spell_poison, 10, 12,
-                "{Mpoisoned blood{x", "You feel less sick."
+                "<201>p<200>o<199>i<198>s<197>o<198>n<199>e<200>d <201>b<200>l<199>o<198>o<197>d<0>", "You feel less sick."
         },
 
         {
@@ -3044,7 +3042,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "shocking grasp", &gsn_shocking_grasp,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_shocking_grasp, 15, 12,
-                "{Bsh{Co{Yc{Wking g{Yr{Ca{Bsp{x", "!Shocking Grasp!"
+                "<21>s<27>h<14>o<226>c<228>k<15>ing <228>g<226>r<14>a<27>s<21>p<0>", "!Shocking Grasp!"
         },
 
         {
@@ -3121,35 +3119,35 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "acid breath", &gsn_acid_breath,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_acid_breath, 50, 12,
-                "{Gblast of acid{x", "!Acid Breath!"
+                "<112>bl<76>as<40>t of <76>ac<112>id<0>", "!Acid Breath!"
         },
 
         {
                 "fire breath", &gsn_fire_breath,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_fire_breath, 50, 12,
-                "{Rbla{Yst {Wof {Yfl{Rame{x", "!Fire Breath!"
+                "<202>b<196>l<160>a<124>s<88>t<52> of <88>f<124>l<160>a<196>m<202>e<0>", "!Fire Breath!"
         },
 
         {
                 "frost breath", &gsn_frost_breath,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_frost_breath, 50, 12,
-                "{Bbl{Cast {Wof {Cfr{Bost{x", "!Frost Breath!"
+                "<14>bl<87>a<159>s<195>t <15>o<195>f<159> f<87>ro<14>st<0>", "!Frost Breath!"
         },
 
         {
                 "gas breath", &gsn_gas_breath,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_gas_breath, 50, 12,
-                "{Mblast of gas{x", "!Gas Breath!"
+                "<201>b<165>l<129>a<93>s<57>t o<93>f <129>g<165>a<201>s<0>", "!Gas Breath!"
         },
 
         {
                 "lightning breath", &gsn_lightning_breath,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_lightning_breath, 50, 12,
-                "{Bb{Cla{Ws{Ct o{Wf l{Ci{Wghtni{Cn{Bg{x", "!Lightning Breath!"
+                "<21>b<27>l<51>a<159>s<51>t o<159>f l<51>i<195>g<15>htn<51>i<27>n<21>g<0>", "!Lightning Breath!"
         },
 
         {
@@ -3436,42 +3434,42 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "atemi", &gsn_atemi,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 8,
-                "{Wstrike{x", "!Atemi!"
+                "<15><556>strike<0>", "!Atemi!"
         },
 
         {
                 "kansetsu", &gsn_kansetsu,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 8,
-                "{Warm lock{x", "!Kansetsu!"
+                "<15><556>arm lock<0>", "!Kansetsu!"
         },
 
         {
                 "tetsui", &gsn_tetsui,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 8,
-                "{Whammer fist{x", "!Tetsui!"
+                "<15><556>hammer fist<0>", "!Tetsui!"
         },
 
         {
                 "shuto", &gsn_shuto,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 8,
-                "{Wknife hand strike{x", "!Shuto!"
+                "<15><556>knife hand strike<0>", "!Shuto!"
         },
 
         {
                 "yokogeri", &gsn_yokogeri,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 8,
-                "{Yside kick{x", "!Yokogeri!"
+                "<11><556>side kick<0>", "!Yokogeri!"
         },
 
         {
                 "mawasigeri", &gsn_mawasigeri,
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 8,
-                "{Yround house{x", "!Mawasigeri!"
+                "<11><556>round house<0>", "!Mawasigeri!"
         },
 
         {
@@ -4552,7 +4550,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "ultrablast", &gsn_ultrablast,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_ultrablast, 25, 12,
-                "{Cu{Gl{Ytr{Wab{Yla{Gs{Ct{x", "!Ultrablast!"
+                "<14>u<121>l<191>t<226>r<15>ab<226>l<191>a<121>s<14>t<0>", "!Ultrablast!"
         },
 
         {
@@ -4580,7 +4578,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "wither", &gsn_wither,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_wither, 20, 12,
-                "{Gwit{Yhe{Wring {Ygr{Gasp{x", "You feel less brittle."
+                "<112>w<76>i<40>t<11>h<227>e<254>r<15>in<254>g <227>g<11>r<40>a<76>s<112>p<0>", "You feel less brittle."
         },
 
         {
@@ -4622,14 +4620,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "moonray", &gsn_moonray,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_moonray, 20, 12,
-                "{Wmoon beam{x", "!moonray!"
+                "<230>m<229>o<228>on be<229>a<230>m<0>", "!moonray!"
         },
 
         {
                 "sunray", &gsn_sunray,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_sunray, 25, 12,
-                "{Ysun ray{x", "!sunray!"
+                "<214>s<220>u<11>n r<220>a<214>y<0>", "!sunray!"
         },
 
         {
@@ -4692,7 +4690,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "meteor storm", &gsn_meteor_storm,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_meteor_storm, 25, 18,
-                "{Rmeteor storm{x", "!Meteor storm!"
+                "<196>me<202>te<11>o<214>r <196>st<202>or<11>m<0>", "!Meteor storm!"
         },
 
         {
@@ -4713,7 +4711,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "kiai", &gsn_kiai,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 20, 12,
-                "{Bf{Co{Wrce-ba{Cl{Bl{x", "!Kiai!"
+                "<11>f<227>o<229>r<230>c<15>e-<230>b<229>a<227>l<11>l<0>", "!Kiai!"
         },
 
         {
@@ -4741,7 +4739,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "satanic fury", &gsn_satans_fury,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
                 spell_satans_fury, 25, 12,
-                "summoned {Rdevil{x", "!Satans_Fury!"
+                "summoned <124>d<160>e<196>v<160>i<124>l<0>", "!Satans_Fury!"
         },
 
         {
@@ -5707,14 +5705,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "hellfire", &gsn_hells_fire,
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_hells_fire, 20, 12,
-                "{Whellfire{x", "!Hellfire!"
+                "<160>h<124>e<88>l<124>l<160>f<124>i<88>r<124>e<0>", "!Hellfire!"
         },
 
         {
                 "holy prayer of destruction", &gsn_prayer_destruction,
                 TYPE_INT, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
-                "{Wdeity{x", "!holy prayer of destruction"
+                "<556><196>+*(<15>deity<196>)*+<557>", "!holy prayer of destruction"
         },
 
         {
