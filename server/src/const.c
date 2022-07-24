@@ -2705,14 +2705,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "detect good", &gsn_detect_good,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_detect_good, 5, 12,
-                "", "The yellow in your vision disappears."
+                "", "<228>The yellow in your vision disappears.<0>"
         },
 
         {
                 "detect evil", &gsn_detect_evil,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_detect_evil, 5, 12,
-                "", "The red in your vision disappears."
+                "", "<124>The red in your vision disappears.<0>"
         },
 
         {
@@ -2740,7 +2740,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "detect magic", &gsn_detect_magic,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_detect_magic, 5, 12,
-                "", "The blue in your vision disappears."
+                "", "<27>The blue in your vision disappears.<0>"
         },
 
         {

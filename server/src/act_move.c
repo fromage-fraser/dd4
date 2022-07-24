@@ -2128,7 +2128,6 @@ void do_recall (CHAR_DATA *ch, char *argument)
                         &&   ( IS_NPC( mob ) ) )
                         {       
                                 followers_found++;
-                                /* act_move ("$n disappears.", mob, NULL, NULL, TO_ROOM); */
                                 char_from_room(mob);
                                 char_to_room(mob, location);
                                 act_move("$n appears suddenly.", mob, NULL, NULL, TO_ROOM);

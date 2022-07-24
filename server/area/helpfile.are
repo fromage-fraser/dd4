@@ -1430,8 +1430,8 @@ least damage to most damage:
        <237>graze<0>          <249>MUTILATE<0>        <160><558>RAVAGE<0>         <52><558>NULLIFY<559>                    
        <239>hit<0>            <251>DISEMBOWEL<0>      <160><558>CRIPPLE<559><0>        <52><558>BUTCHER<559>             
        <240>injure<0>         <253>EVISCERATE<0>      <124><558>BRUTALISE<559><0>      <52><558>LIQUIDATE<559>                                   
-       <241>wound<0>          <255>MASSACRE<0>        <124><558>VAPOURISE<559><0>      <52>SLAUGHTER<0>                       
-       <242>maul<0>           <196>DEMOLISH<0>        <124><558>ATOMIZE<559><0>        <52>EXTIRPATE<0>                        
+       <241>wound<0>          <255>MASSACRE<0>        <124><558>VAPOURISE<559><0>      <52>S L A U G H T E R<0>                       
+       <242>maul<0>           <196>DEMOLISH<0>        <124><558>ATOMIZE<559><0>        <352><160>E X T I R P A T E<0>                        
        <243>decimate<0>       <196>DEVASTATE<0>       <88><558>ELIMINATE<559><0>      <352><196>P A R T I C L I Z E<0>       
 ~
 

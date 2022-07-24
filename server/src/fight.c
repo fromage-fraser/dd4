@@ -2656,7 +2656,24 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
 
         if (dt == TYPE_HIT)
         {
-                sprintf(buf1, "You %s $N%c",       vs, punct);
+                /* Combat gagging level 2 now gags 'misses' -- Owl */
+
+                if ( ( ( ch->gag == 2 )
+                    && ( dam > 0 ) ) )
+                {
+                        sprintf(buf1, "You %s $N%c",       vs, punct);
+                }
+                else if ( dam > 0 )
+                {
+                        sprintf(buf1, "You %s $N%c",       vs, punct);
+                }
+                else if ( ch->gag < 2 )
+                {
+                        sprintf(buf1, "You %s $N%c",       vs, punct);
+                }
+                else {
+                       sprintf(buf1, "\0");  
+                }
 
                 /*
                  * Shade 10.5.2022 - make you getting hit stand out more, help when a lot of room spam
@@ -3968,6 +3985,19 @@ void do_rescue (CHAR_DATA *ch, char *argument)
 
         char arg [ MAX_INPUT_LENGTH ];
 
+        if ( IS_NPC(ch)
+        &&  ( ch->master) )
+        {
+                /* 
+                 * Ordering an NPC you're grouped with to rescue you disconnects you and often crashes the MUD.
+                 * be warned if you decide you want charmed/grouped mobs to be able to rescue players you will
+                 * need to fix this issue, not just delete this check. Note the issue does not exist if the charmed 
+                 * NPC is not grouped with you. -- Owl 24/7/22
+                 */ 
+                
+                return;
+        }
+
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_rescue))
         {
                 send_to_char("You'd better leave the heroic acts to warriors.\n\r", ch);
@@ -3976,7 +4006,7 @@ void do_rescue (CHAR_DATA *ch, char *argument)
 
         if (is_affected(ch, gsn_berserk))
         {
-                send_to_char("You cant rescue anyone, you're BERSERK!\n\r", ch);
+                send_to_char("You can't rescue anyone, you're BERSERK!\n\r", ch);
                 return;
         }
 
@@ -6707,13 +6737,13 @@ char *get_damage_string( int damage_value, bool is_singular )
         }
         else if (damage_value <= 5000)   
         {
-                vs = "<0><52>-=+<<##SLAUGHTER<52>##>+=-<0>"; 
-                vp = "<0><52>-=+<<##SLAUGHTERS<52>##>+=-<0>"; 
+                vs = "<0><52>-=+<<##S L A U G H T E R<52>##>+=-<0>"; 
+                vp = "<0><52>-=+<<##S L A U G H T E R S<52>##>+=-<0>"; 
         }
         else if (damage_value <= 5500)   
         {
-                vs = "<0><52>-=+*<<(|[ EXTIRPATE ]|)>*+=-<0>"; 
-                vp = "<0><52>-=+*<<(|[ EXTIRPATES ]|)>*+=-<0>"; 
+                vs = "<0><52>-=+*<<(|[ <352><160>E X T I R P A T E<0><52> ]|)>*+=-<0>"; 
+                vp = "<0><52>-=+*<<(|[ <352><160>E X T I R P A T E S<0><52> ]|)>*+=-<0>"; 
         }
         else
         {
