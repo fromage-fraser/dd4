@@ -3628,8 +3628,8 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                         send_to_char( buf, ch );
                 }
                 
-                send_to_char( "\n\rTo toggle colour, type 'COLOUR'. Text/numerical colour codes can be viewed with 'HELP COLOURCODES'.\n\r"
-                             "Type 'HELP COLOUR,' 'HELP COLOUR2,' and 'HELP COLOUR3,' and 'HELP ANSI' for more information.\n\r", ch );
+                send_to_char( "\n\rTo toggle colour, type 'COLOUR'. Colour codes can be viewed with 'HELP COLOURCODES'.\n\r"
+                             "See 'HELP COLOUR,' 'HELP COLOUR2,' 'HELP COLOUR3,' and 'HELP ANSI' for more information.\n\r", ch );
                 return;
         }
 
@@ -4131,8 +4131,8 @@ void do_prompt( CHAR_DATA *ch, char *argument )
                 strcat (buf, "<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
         else
         {
-                if ( strlen( argument ) > 100 )
-                        argument[100] = '\0';
+                if ( strlen( argument ) > MAX_PROMPT_LENGTH )
+                        argument[MAX_PROMPT_LENGTH] = '\0';
                 smash_tilde( argument );
                 strcat( buf, argument );
         }
