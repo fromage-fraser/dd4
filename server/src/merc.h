@@ -4518,6 +4518,8 @@ char *  objset_bonus                          ( OBJSET_INDEX_DATA *pObjSetIndex,
 char *  objset_type                           ( int vnum );
 int     objset_bonus_num                      ( int vnum );
 int     objset_bonus_num_pos                  ( int vnum, int pos);
+bool    gets_bonus_objset                     ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
+bool    rem_bonus_objset                      ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
 
 /* hunt.c   */
 void hunt_victim                        args( ( CHAR_DATA *ch ) );

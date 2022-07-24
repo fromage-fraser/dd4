@@ -113,9 +113,22 @@ int get_colour_index_by_code ( int ccode )
 char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 {
         static char buf [ MAX_STRING_LENGTH ];
+        OBJSET_INDEX_DATA *pObjSetIndex;
 
         buf[0] = '\0';
 
+        if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum)) )
+        {
+                 if ( (objset_type(pObjSetIndex->vnum)) == ("<34>Uncommon<0>")) 
+                        strcat( buf, "<34>[SET]<0> ");
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<32>Rare<0>") ) 
+                        strcat( buf, "<32>[SET]<0> ");
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<93>Epic<0>") ) 
+                        strcat( buf, "<93>[SET]<0> ");
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<178>Legendary<0>") ) 
+                        strcat( buf, "<178>[SET]<0> ");        
+        }               
+        
         if ( IS_OBJ_STAT( obj, ITEM_INVIS) )
                 strcat( buf, "{c(Invis){x " );
 

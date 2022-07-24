@@ -1098,13 +1098,9 @@ OBJ_DATA *get_eq_char( CHAR_DATA *ch, int iWear )
 void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 {
         AFFECT_DATA *paf;
+        OBJSET_INDEX_DATA *pObjSetIndex;
         char         buf [ MAX_STRING_LENGTH ];
-        bool            gets_bonus;
-        gets_bonus = FALSE;
-
-
-
-
+ 
         if ( get_eq_char( ch, iWear ) )
         {
                 sprintf( buf, "Equip_char: %s already equipped at %d.",
@@ -1127,58 +1123,39 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 return;
         }
 
+
                 /* set bonus hack - Brutus Jul 2022 */
-        if ( !IS_NPC(ch) 
-                && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
-                || obj->ego_flags == EGO_ITEM_RARE_SET
-                || obj->ego_flags == EGO_ITEM_EPIC_SET
-                || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
-                {
-                        OBJ_DATA *obj2;
-                        switch (obj->ego_flags)
-                        {
-                        case EGO_ITEM_UNCOMMON_SET: 
-                        {
-                                for ( obj2 = ch->carrying; obj2; obj2 = obj2->next_content )
-                                {
-                                        if ( ( obj2->wear_loc != WEAR_NONE
-                                        && obj2->ego_flags == EGO_ITEM_UNCOMMON_SET ) ) /*if wearing & is ego */
-                                                gets_bonus = TRUE;
-                                                break;
-                                              /*  send_to_char( "You dont get an uncommon bonus.\n\r", ch ); */
-                                }
-                                   
+        if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
+        {
+                int count;
+                count=0;
+
+                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+                {       
+                        count++;
+                        
+                        if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
+                        { 
+                                affect_modify( ch, paf, TRUE, obj );
+                                /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect */
+                                send_to_char ( "You obtain a Set Bonus.\n\r", ch); 
                                 break;
                         }
-                        default:
-                                break;
-                        }                       
                 }
-                /* End nasty set bonus hack */
 
-
-
+        }
+                /* End set bonus hack */
 
         if( iWear != WEAR_RANGED_WEAPON )
         {
                 ch->armor -= apply_ac( obj, iWear );
 
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                {
-                        if ( !(paf->type == gsn_uncommon_set) 
-                        || ( paf->type == gsn_uncommon_set && gets_bonus == TRUE ) )
                         affect_modify( ch, paf, TRUE, obj );
-                        /* If the object your about to wear is NOT a set  OR it is AND you get a bonus then Apply effect 
-                        send_to_char ( "You get a bonus applied.\n\r", ch); */ 
-                }
+                
                 for ( paf = obj->affected; paf; paf = paf->next )
-                {       
-                        if ( !(paf->type == gsn_uncommon_set) 
-                        || ( paf->type == gsn_uncommon_set && gets_bonus == TRUE ) )
                         affect_modify( ch, paf, TRUE, obj );
-                        /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect 
-                        send_to_char ( "You get a bonus applied.\n\r", ch); */ 
-                }
+                
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
@@ -1216,6 +1193,7 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 {
         AFFECT_DATA *paf;
         char         buf [ MAX_STRING_LENGTH ];
+        OBJSET_INDEX_DATA *pObjSetIndex;
 
         if ( obj->wear_loc == WEAR_NONE )
         {
@@ -1225,6 +1203,27 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                 return;
         }
 
+
+        /* set bonus hack - Brutus Jul 2022 */
+        if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
+        {
+                int count;
+                count=0;
+
+                for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+                {       
+                        count++;
+                        
+                        if ( rem_bonus_objset ( pObjSetIndex, ch, obj, count) )
+                        { 
+                                affect_modify( ch, paf, FALSE, obj );
+                                send_to_char ( "Your setbonus is removed.\n\r", ch); 
+                                break;
+                        }
+                }
+
+        }  /* End set bonus hack */
+                
         if( obj->wear_loc != WEAR_RANGED_WEAPON )
         {
                 ch->armor += apply_ac( obj, obj->wear_loc );
@@ -2097,17 +2096,100 @@ char *objset_type( int vnum)
                 }
 
         if (bonus5 > 0)
-                return "{rLegendary{x";
+                return "<178>Legendary<0>";
         if (bonus4 > 0)
-                return "{MEpic{x";
+                return "<93>Epic<0>";
         if (bonus3 > 0)
-                return "{BRare{x";
+                return "<32>Rare<0>";
         if (bonus2 > 0)
-                return "{GUncommon{x";
+                return "<34>Uncommon<0>";
                 
         return "BUG: Log this as a fault, Lookup type of set in objset_type\n\r";
 }
 
+/* returnes TRUE/FALSE when wearing an object. */
+bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
+{
+        int worn;
+        OBJ_DATA *objworn;
+        OBJSET_INDEX_DATA *pobjsetworn;
+        AFFECT_DATA *paf;
+ 
+        worn=0;
+        for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
+        {
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
+                { 
+                if ( (pObjSetIndex->vnum != pobjsetworn->vnum))
+                        return FALSE;
+
+                if ( (objworn->wear_loc != WEAR_NONE)  )/*count worn items of set */
+                        worn++;
+                }               
+        }
+        bug( "OBJSET DEBUG: Total worn items %d.", worn );
+
+        if ( worn == 0 )
+                return FALSE;
+
+       for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+        {
+                if ( worn >= objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
+                {
+                        bug( "OBJSSET ADD FALSE: check if worn is great than current paf count %d", pos);
+                        return FALSE;
+                }
+                if ( (worn+1) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
+                {
+                        bug( "OBJSET ADD TRUE: Total worm items %d", worn);
+                        return TRUE;              
+                }
+        }
+        return FALSE;
+}
+
+bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
+{
+
+        int worn;
+        OBJ_DATA *objworn;
+        OBJSET_INDEX_DATA *pobjsetworn;
+        AFFECT_DATA *paf;
+ 
+        worn=0;
+        for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
+        {
+                if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
+                { 
+                if ( (pObjSetIndex->vnum != pobjsetworn->vnum))
+                        return FALSE;
+
+                if ( (objworn->wear_loc != WEAR_NONE)  )/*count worn items of set */
+                        worn++;
+                }               
+        }
+        bug( "OBJSET DEBUG: Total worn items %d.", worn );
+
+        if ( worn == 0 )
+                return FALSE;
+
+       for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
+        {
+                if ( worn > objset_bonus_num_pos(pObjSetIndex->vnum, pos)  )
+                {
+                        bug( "OBJSSET REM FALSE: check if worn is great than current paf count %d", pos);
+                        return FALSE;
+                }
+                if ( (worn) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
+                {
+                        bug( "OBJSET REM TRUE: Total worm items %d", worn);
+                        return TRUE;              
+                }
+                if ( (worn) < ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
+                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);  
+        }
+        return FALSE;
+}
 
 /* Returns the Object set from a objects vnum - Brutus */
 OBJSET_INDEX_DATA *objects_objset( int vnum )
