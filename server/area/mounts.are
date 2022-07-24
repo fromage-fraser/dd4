@@ -73,26 +73,28 @@ powerful ally this beast would make.
 #19905
 greater demon~
 a greater demon~
-An evil greater demon menaces at you.
+A greater demon glares menacingly at you.
 ~
-The demon is too evil to be looked upon by mortal eyes, you cower
-away in fear.
+A hideous native of the Abyss, this huge demon delights in dispensing death and 
+destruction wherever it goes. While having no true ruler, a sufficiently powerful
+(and evil!) magic-user might have one temporarily under his sway.
 ~
-2097152 8|128|512|262144|524288 0 S
-45 0 0 0d0+0 0d0+0
-0 0
+2097152 8|32|512|1024|2048|262144|524288|8388608|536870912|1073741824  -1000 S
+46 0 0 0d0+0 0d0+0
+16|128 0
 8 8 1
 #19906
 lesser demon~
 a lesser demon~
-An evil lesser demon menaces at you.
+An lesser demon glares menacingly at you.
 ~
-The demon is too evil to be looked upon by mortal eyes, you cower
-away in fear.
+A hideous native of the Abyss, this demon delights in dispensing death and 
+destruction wherever it goes. While having no true ruler, a sufficiently powerful
+(and evil!) magic-user might have one temporarily under his sway.
 ~
-2097152 8|512|262144|524288 0 S
-45 0 0 0d0+0 0d0+0
-0 0
+2097152 8|32|512|1024|2048|262144|524288|8388608|536870912|1073741824  -1000 S
+46 0 0 0d0+0 0d0+0
+16 0
 8 8 1
 #0
 
