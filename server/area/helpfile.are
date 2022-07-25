@@ -342,7 +342,7 @@ Toggle whether a player is flagged RONIN.
 
 
 -1 GREETING~
-O---=<<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
+O---=<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |          .              .         _//^    ^//====......          __--^^^  |
 |    )              -_       _..--+^o`\     ||_   ^^^^^^::::... /^    .     |
 | .              ___-==_     `--=;_`_  \   ||  -_             _/^^-         |
@@ -352,7 +352,7 @@ O---=<<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 | /  _|__   #|       |      - ^-_/  /|- _/   .||        -/      |   '  |    |
 | |^^ |     +|^^^^--_|_     ^==-/   | \--===^^        ./        |-_ [],|  . |
 |     |- . '*|       ^|       /|    |-^\^       __--^^   .     _|______|_   |
-|     |     +|   +    |^^^^-_/ |  ]--I-[-]-I--[   .         /\<<=-=-==-=-=>  |
+|     |     +|   +    |^^^^-_/ |  ]--I-[-]-I--[   .         /\<=-=-==-=-=>  |
 |  ___| _ '_*|___         __/ _-_ (-(-|---|-)-)              \ \__   _'_/   |
 |  I_I|_I__I_|I_I _   _  ((->/_   _|        ||            .   ^^|`    ||    |
 |  \-\--|--|--/-/' `-' `-' `-' `-' | []     #|------_-_-_-_-_-_-|_'   #|    |
@@ -362,12 +362,12 @@ O---=<<  Dragons Domain IV  >=----------------- __----^^^^^^^^^^^------__ ---O
 |   /_'_v_.___  |.__,|_|_|_|_|     |   `  , *|          _.___,__/v_.._.|  ' |
 |   .        __----    _---^^^^^--/_._v_Y_,_v))-----^^^^       .        '   |
 |     :   ---          --        `                       `          `       |
-O---<<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
+O---<   Welcome Traveller, to the   D r a g o n s   D o m a i n   IV    >---O
 | DikuMud created by H.Starfeldt, K.Nyboe, T.Madsen, M.Seifert, & S.Hammer. |
 | Based on the original Merc 2.2 source written by Kahn, Hatchet and Furey. |
 | DD III code by Shade, Gezhp, Owl, Brutus, Jyhad, Tavolir, and Danath.     |
 | DD IV code by Shade, Owl, Gezhp and the rest of the team.                 |
-O-----<< MobCode from Merc 2.2 >-----<< Quest Code (c) 1996 Ryan Addams >-----O
+O-----< MobCode from Merc 2.2 >-----< Quest Code (c) 1996 Ryan Addams >-----O
 Enter thy Name: ~
 
 
