@@ -1063,9 +1063,9 @@ void print_pkscore_table (CHAR_DATA *ch, int start)
                 "{B  Brigand   ", 
                 "{B  Stalker   ",
                 "{M  -Hunter-  ",
-                "{M <Assassin> ",
+                "{M <<Assassin> ",
                 "{R-=Predator=-", 
-                "{R <<Slayer>> " 
+                "{R <<<<Slayer>> " 
         };
 
         const char* class_colours[] =

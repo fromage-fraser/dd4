@@ -3515,7 +3515,7 @@ void do_buy (CHAR_DATA *ch, char *argument)
                 {
                         if (!is_number(arg))
                         {
-                                send_to_char ("Syntax for BUY is: BUY [number] <item>\n\r\"number\" is an optional number of items to buy.\n\r",ch);
+                                send_to_char ("Syntax for BUY is: BUY [number] <<>item>\n\r\"number\" is an optional number of items to buy.\n\r",ch);
                                 return;
                         }
 

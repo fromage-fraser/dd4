@@ -196,7 +196,7 @@ written in a strange, alien hand:
 
 o    WARNING! WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!   o
 o                                                                     o
-o    MSGS: MATRIX CONTROL      TO   SUBSYSTEMS/<ALL>                  o
+o    MSGS: MATRIX CONTROL      TO   SUBSYSTEMS/<<ALL>                  o
 o    ACT : REQUIRED            T:   NOW                               o
 o                                                                     o
 o    RECENT DATAQUAKE EVALUATED... EVALUATION FOLLOWS...              o
@@ -212,9 +212,9 @@ o    .                                                                o
 o    .                                                                o
 o    .                                                                o
 o                                                                     o
-o    MSGS: MATRIX CONTROL      TO   SUBSYSTEMS/<Sark>                 o
-o                                              <101110101101>         o
-o                                              <1101111010101101>     o
+o    MSGS: MATRIX CONTROL      TO   SUBSYSTEMS/<<Sark>                 o
+o                                              <<101110101101>         o
+o                                              <<1101111010101101>     o
 o    ACT : URGENT              T:   IMMEDIATE                         o
 o                                                                     o
 o    INTRUDERS DETECTED IN MAIN MATRIX... DIRECTIVE SEARCH AND        o

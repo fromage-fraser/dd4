@@ -240,7 +240,7 @@ void do_killsocket( CHAR_DATA *ch, char *argument )
 
         if ( !is_number(arg) )
         {
-                send_to_char( "killsocket <socket #>\n\r", ch);
+                send_to_char( "killsocket <<socket #>\n\r", ch);
                 return;
         }
 
@@ -284,7 +284,7 @@ void do_pardon(CHAR_DATA *ch, char *argument)
 
         if (arg1[0] == '\0' || arg2[0] == '\0')
         {
-                send_to_char( "Syntax: pardon <character> <killer|thief|hunted|deserter>.\n\r", ch );
+                send_to_char( "Syntax: pardon <<character> <<killer|thief|hunted|deserter>.\n\r", ch );
                 return;
         }
 
@@ -345,7 +345,7 @@ void do_pardon(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char("Syntax: pardon <character> <killer|thief|hunted|deserter>.\n\r", ch);
+        send_to_char("Syntax: pardon <<character> <<killer|thief|hunted|deserter>.\n\r", ch);
         return;
 }
 
@@ -2301,7 +2301,7 @@ void do_mload( CHAR_DATA *ch, char *argument )
 
         if ( arg[0] == '\0' || !is_number( arg ) )
         {
-                send_to_char( "Syntax: mload <vnum>.\n\r", ch );
+                send_to_char( "Syntax: mload <<vnum>.\n\r", ch );
                 return;
         }
 
@@ -2342,7 +2342,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || !is_number( arg1 ) )
         {
-                send_to_char( "Syntax: oload <vnum> <level> <copies>.\n\r", ch );
+                send_to_char( "Syntax: oload <<vnum> <<level> <<copies>.\n\r", ch );
                 return;
         }
 
@@ -2356,7 +2356,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
         {
                 if ( !is_number( arg2 ) )
                 {
-                        send_to_char( "Syntax: oload <vnum> <level> <copies>.\n\r", ch );
+                        send_to_char( "Syntax: oload <<vnum> <<level> <<copies>.\n\r", ch );
                         return;
                 }
                 level = atoi( arg2 );
@@ -2367,7 +2367,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
         {
                 if ( !is_number( arg2 ) || !is_number( arg3 ) )
                 {
-                        send_to_char( "Syntax: oload <vnum> <level> <copies>.\n\r", ch );
+                        send_to_char( "Syntax: oload <<vnum> <<level> <<copies>.\n\r", ch );
                         return;
                 }
                 level  = atoi( arg2 );
@@ -2518,7 +2518,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) )
         {
-                send_to_char( "Syntax: advance <char> <level>.\n\r", ch );
+                send_to_char( "Syntax: advance <<char> <<level>.\n\r", ch );
                 return;
         }
 
@@ -2681,7 +2681,7 @@ void do_addqp( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) )
         {
-                send_to_char( "Usage: addqp <character> <quest points>\n\r", ch );
+                send_to_char( "Usage: addqp <<character> <<quest points>\n\r", ch );
                 return;
         }
                 if ( !( victim = get_char_room( ch, arg1 ) ) )
@@ -2732,7 +2732,7 @@ void do_trust( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) )
         {
-                send_to_char( "Syntax: trust <char> <level>.\n\r", ch );
+                send_to_char( "Syntax: trust <<char> <<level>.\n\r", ch );
                 return;
         }
 
@@ -2958,7 +2958,7 @@ void do_promote( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) )
         {
-                send_to_char( "Syntax: promote <char> <level>.\n\r", ch );
+                send_to_char( "Syntax: promote <<char> <<level>.\n\r", ch );
                 return;
         }
 
@@ -3596,8 +3596,8 @@ void do_sset( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
-                send_to_char( "Syntax: sset <victim> <skill> <value>\n\r"
-                             "or:     sset <victim> all     <value>\n\r"
+                send_to_char( "Syntax: sset <<victim> <<skill> <<value>\n\r"
+                             "or:     sset <<victim> all     <<value>\n\r"
                              "Skill being any skill or spell.\n\r", ch );
                 return;
         }
@@ -3691,7 +3691,7 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
 
         if (arg1[0] == '\0' || arg2[0] == '\0')
         {
-                send_to_char("Syntax: oclanitem <character> <low|mid|high|pouch>\n\r", ch);
+                send_to_char("Syntax: oclanitem <<character> <<low|mid|high|pouch>\n\r", ch);
                 return;
         }
 
@@ -3745,7 +3745,7 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                send_to_char("Syntax: oclanitem <character> <low|mid|high|pouch>\n\r", ch);
+                send_to_char("Syntax: oclanitem <<character> <<low|mid|high|pouch>\n\r", ch);
                 return;
         }
 
@@ -3795,8 +3795,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
-                send_to_char("Syntax: mset <victim> <field>  <value>\n\r"
-                             "or:     mset <victim> <string> <value>\n\r\n\r"
+                send_to_char("Syntax: mset <<victim> <<field>  <<value>\n\r"
+                             "or:     mset <<victim> <<string> <<>value>\n\r\n\r"
                              "Field being one of:\n\r"
                              "  str int wis dex con class level body_form\n\r"
                              "  hp mana move str_prac int_prac align\n\r"
@@ -4519,8 +4519,8 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
-                send_to_char( "Syntax: oset <object> <field>  <value>\n\r"
-                             "or:     oset <object> <string> <value>\n\r\n\r"
+                send_to_char( "Syntax: oset <<object> <<field>  <<value>\n\r"
+                             "or:     oset <<object> <<string> <<value>\n\r\n\r"
                              "Field being one of:\n\r"
                              "  value0 value1 value2 value3 owner ego\n\r"
                              "  extra wear level weight cost timer timermax\n\r\n\r"
@@ -4669,7 +4669,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
                 if ( arg4[0] == '\0' )
                 {
-                        send_to_char( "Syntax: oset <object> ed <keyword> <string>\n\r", ch );
+                        send_to_char( "Syntax: oset <<object> ed <<keyword> <<string>\n\r", ch );
                         return;
                 }
 
@@ -4720,7 +4720,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
-                send_to_char( "Syntax: oset <object> <string> <value>\n\r",     ch );
+                send_to_char( "Syntax: oset <<object> <<string> <<value>\n\r",     ch );
                 send_to_char( "\n\r",                                           ch );
                 send_to_char( "String being one of:\n\r",                       ch );
                 send_to_char( "  name short long ed\n\r",                       ch );
@@ -4794,7 +4794,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
 
                 if ( arg4[0] == '\0' )
                 {
-                        send_to_char( "Syntax: oset <object> ed <keyword> <string>\n\r", ch );
+                        send_to_char( "Syntax: oset <<object> ed <<keyword> <<string>\n\r", ch );
                         return;
                 }
 
@@ -4846,7 +4846,7 @@ void do_rset( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
         {
-                send_to_char( "Syntax: rset <location> <field> value\n\r",      ch );
+                send_to_char( "Syntax: rset <<location> <<field> value\n\r",      ch );
                 send_to_char( "\n\r",                                           ch );
                 send_to_char( "Field being one of:\n\r",                        ch );
                 send_to_char( "  flags sector\n\r",                             ch );
@@ -5109,7 +5109,7 @@ void do_wizify( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' )
         {
-                send_to_char( "Syntax: wizify <name>\n\r" , ch );
+                send_to_char( "Syntax: wizify <<name>\n\r" , ch );
                 return;
         }
 
@@ -5164,7 +5164,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 
         if( arg[0] == '\0' )
         {
-                send_to_char( "Syntax:  owhere <object>.\n\r", ch );
+                send_to_char( "Syntax:  owhere <<object>.\n\r", ch );
                 return;
         }
         else
@@ -5316,7 +5316,7 @@ void do_sstime( CHAR_DATA *ch, char *argument )
         if ( arg1[0] == '\0' || arg2[0] == '\0'
             || ( strlen( arg2 ) != 8 && ( arg2[0] != '*' && strlen( arg2 ) != 1 ) ) )
         {
-                send_to_char( "Syntax: sstime <field> <value>\n\r",               ch );
+                send_to_char( "Syntax: sstime <<field> <<value>\n\r",               ch );
                 send_to_char( "\n\r",                                             ch );
                 send_to_char( "Field being one of:\n\r",                          ch );
                 send_to_char( "  downtime  1warning  2warning\n\r",               ch );
@@ -5465,7 +5465,7 @@ void do_cando (CHAR_DATA *ch, char *argument)
 
         if (arg1[0] == '\0')
         {
-                send_to_char("Syntax: cando <victim> <skill>\n\r", ch);
+                send_to_char("Syntax: cando <<victim> <<skill>\n\r", ch);
                 send_to_char("No skill argument will list all.\n\r", ch);
                 return;
         }
@@ -5656,7 +5656,7 @@ void do_wizbrew (CHAR_DATA *ch, char *argument)
 
         if (!okay)
         {
-                send_to_char ("To wizbrew: wizbrew <item level> <spell level> <spell 1> [spell 2] [spell 3]\n\r", ch);
+                send_to_char ("To wizbrew: wizbrew <<item level> <<spell level> <<spell 1> [spell 2] [spell 3]\n\r", ch);
                 if (buf[0] != '\0')
                         send_to_char (buf, ch);
                 else

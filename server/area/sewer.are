@@ -801,7 +801,7 @@ S
 #7004
 The Dark Pit~
 You are standing by the edge of a dark pit that leads down into even
-deeper darkness. >BWWAAADDRR< - The smell from down there is unbearable.
+deeper darkness. >BWWAAADDRR<< - The smell from down there is unbearable.
 The sewer stretches into the darkness to the east.
 ~
 70 9 0
@@ -949,7 +949,7 @@ a bend that goes east.
 0 -1 7010
 D3
 A few yards ahead - away from this junction - there is a pit leading down,
-but the smell from there...>PHEWW<.
+but the smell from there...>PHEWW<<.
 ~
 ~
 0 -1 7004
@@ -1032,7 +1032,7 @@ S
 #7013
 A MUDDY intersection~
 You wouldn't want to know the true feeling of standing in this mud up to
-your hips. >BWAADR<. All that fills your mind right now is the dream of
+your hips. >BWAADR<<. All that fills your mind right now is the dream of
 a hot bath. This is NOT very clean mud you know, remember you're in the
 sewer! The pipes leads north, south and east.
 ~
@@ -2132,7 +2132,7 @@ S
 #7101
 Under the mudhole~
 You stand in a small room with a great big opening in the ceiling. From this
-opening there's mud dripping down in large lumps. >YUCK<. You can smell the
+opening there's mud dripping down in large lumps. >YUCK<<. You can smell the
 foul stench of the slimy sediment as you try not to get covered by the
 falling sludge. To the east there is an entryway leading out from here and
 it seems absolutely impossible to force the muddy decent.
