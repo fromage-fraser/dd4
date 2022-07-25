@@ -17,8 +17,8 @@
 {&gsn_group_body,               &gsn_levitation,           20,     PRE_PSIONIC},
 
 
-/* Skills to Add : Decay and Awe. Also gotta do
-some of the high level skills, in fact most of them ? */
+/* Skills to Add : Decay. Also gotta do some of the high level skills, in fact 
+most of them ? */
 
 /* **** PROTECTION **** */
 
@@ -140,7 +140,11 @@ some of the high level skills, in fact most of them ? */
 {&gsn_group_advtele,            &gsn_psionic_base,         60,     PRE_PSIONIC},
    
 {&gsn_ultrablast,               &gsn_group_advtele,        50,     PRE_PSIONIC},
+
+{&gsn_awe,                      &gsn_group_advtele,        80,     PRE_PSIONIC},
+
 {&gsn_death_field,              &gsn_group_advtele,        90,     PRE_PSIONIC},
+
 {&gsn_disintergrate,            &gsn_group_advtele,        100,    PRE_PSIONIC},
    
 {&gsn_synaptic_blast,           &gsn_group_advtele,        95,     PRE_PSIONIC},
