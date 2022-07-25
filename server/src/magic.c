@@ -4709,12 +4709,22 @@ void spell_awe ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
+        if (ch == victim)
+        {
+                send_to_char("You are awestruck by your own brilliance!\n\r", ch);
+                return;
+        }
+
         if ( victim->fighting == ch && !saves_spell( level, victim ) )
         {
                 stop_fighting ( victim, TRUE);
-                act( "$N is in AWE of you!", ch, NULL, victim, TO_CHAR    );
-                act( "You are in AWE of $n!",ch, NULL, victim, TO_VICT    );
-                act( "$N is in AWE of $n!",  ch, NULL, victim, TO_NOTVICT );
+                act( "$N is in AWE of you, and refuses to continue fighting!", ch, NULL, victim, TO_CHAR    );
+                act( "You are in AWE of $n and refuse to continue fighting them!",ch, NULL, victim, TO_VICT    );
+                act( "$N is in AWE of $n, and refuses to continue fighting them!",  ch, NULL, victim, TO_NOTVICT );
+        }
+        else {
+                send_to_char( "You fail to inspire awe in your enemy.\n\r", ch );
+                return;
         }
         return;
 }

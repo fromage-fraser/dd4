@@ -2672,8 +2672,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "You %s $N%c",       vs, punct);
                 }
                 else {
-                
-                       sprintf(buf1, '\0');  
+                       *buf1 = '\0';  
                 }
 
                 /*

@@ -2205,7 +2205,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
 
                         set_title(ch, " is a newbie");
                         free_string(ch->prompt);
-                        ch->prompt = str_dup("<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
+                        ch->prompt = str_dup("<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x]> ");
 
                         obj = create_object(get_obj_index(OBJ_VNUM_SCHOOL_BANNER), 0);
                         obj_to_char(obj, ch);
