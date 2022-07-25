@@ -2672,7 +2672,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "You %s $N%c",       vs, punct);
                 }
                 else {
-                       sprintf(buf1, "\0");  
+                       sprintf(buf1, '\0');  
                 }
 
                 /*
@@ -6592,8 +6592,8 @@ char *get_damage_string( int damage_value, bool is_singular )
         if (damage_value == 0)
 
         {
-                vs = "<0><534><124>miss<0>";
-                vp = "<0><534><124>misses<0>";
+                vs = "<0><235>miss<0>";
+                vp = "<0><235>misses<0>";
         }
         else if (damage_value <= 8)
         {

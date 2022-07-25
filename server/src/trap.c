@@ -233,7 +233,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
         argument = one_argument(argument, arg3);
 
         if (arg1[0] == '\0' || arg2[0] == '\0' ) {
-                send_to_char("Syntax: trapset <object> <field> <value>\n\r\n\r", ch);
+                send_to_char("Syntax: trapset <<object> <<field> <<value>\n\r\n\r", ch);
                 send_to_char("Field: move, object(get and put), room, open, damage, charge\n\r\n\r", ch);
                 send_to_char("Values: Move> north, south, east, west, up, down, and all.\n\r\n\r", ch);
                 send_to_char("        Damage> sleep, teleport, fire, cold, acid, energy,\n\r", ch);
@@ -252,7 +252,7 @@ void do_trapset(CHAR_DATA *ch, char *argument)
 
         if (!str_cmp( arg2, "move") ) {
                 if (arg3[0] == '\0') {
-                        send_to_char("Syntax: trapset <object> <field> <value>\n\r\n\r", ch);
+                        send_to_char("Syntax: trapset <<object> <<field> <<value>\n\r\n\r", ch);
                         send_to_char("Field: move, object(get and put), room, open, damage\n\r\n\r", ch);
                         send_to_char("Values: Move> north, south, east, west, up, down, and all.\n\r", ch);
                         send_to_char("        Damage> sleep, teleport, fire, cold, acid, energy,\n\r", ch);

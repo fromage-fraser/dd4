@@ -4371,7 +4371,7 @@ sign signs~
 The sign on the west says,                 The sign on the east says,
 
 "The Holly Bush Restaurant and Bar.....      "The Sorcery"
-<--------------------------------------    ------------------------->~
+<<--------------------------------------    ------------------------->~
 S
 #19070
 The Sorcery~
@@ -4397,10 +4397,10 @@ One says, "Looks can be deceiving....especially when evil is involved."  Another
 says,
 
     list--Type list to see a list of what the shopkeeper has.
-    buy <item>--to buy the item.  If there are two items with the same name,
+    buy <<item>--to buy the item.  If there are two items with the same name,
                 use "buy 2.item" to buy the second, and so on.
-    sell <item>--to sell something, assuming this shopkeeper buys anything.
-    value <item>--will tell you how much this shopkeeper will pay for a given
+    sell <<item>--to sell something, assuming this shopkeeper buys anything.
+    value <<item>--will tell you how much this shopkeeper will pay for a given
                   item.
 
 (Reg Felix Dept Mud Admin)~
@@ -4489,7 +4489,7 @@ sign signs~
 The sign to the west says,                  The sign to the east says,
 
      "The Library"                            "The Travellers' Shop"
-<------------------------                   ------------------------->
+<<------------------------                   ------------------------->
 
 ~
 S
@@ -5258,7 +5258,7 @@ sign signs~
 The sign to the west reads:                     The sign to the east reads:
 
      "The Sorcery"                                  "The Hemlock Bush"
-<--------------------------                     --------------------------->~
+<<--------------------------                     --------------------------->~
 S
 #19111
 The Bar of the Hemlock Bush~

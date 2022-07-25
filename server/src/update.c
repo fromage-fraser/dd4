@@ -384,9 +384,9 @@ void gain_exp( CHAR_DATA *ch, int gain )
 
                 if (ch->level == LEVEL_HERO)
                 {
-                        sprintf(buf, "-=>>  A time of celebration arrives as %s reaches the ultimate level of HERO!  <<=-",ch->name);
+                        sprintf(buf, "-=>>  A time of celebration arrives as %s reaches the ultimate level of HERO!  <<<<=-",ch->name);
                         do_info(ch,buf);
-                        sprintf(buf, "-=>>  The name of %s has been recorded for all time in the Hall of Heroes!  <<=-\n\r",ch->name);
+                        sprintf(buf, "-=>>  The name of %s has been recorded for all time in the Hall of Heroes!  <<<<=-\n\r",ch->name);
                         do_info(ch,buf);
                         ch->pcdata->condition[COND_FULL] = 0;
                         ch->pcdata->condition[COND_THIRST] = 0;
@@ -395,7 +395,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
                 }
                 else
                 {
-                        sprintf(buf,"-=>>%s has made it to level %d<<=-\n\r",ch->name,ch->level);
+                        sprintf(buf,"-=>>%s has made it to level %d<<<<=-\n\r",ch->name,ch->level);
                         do_info(ch,buf);
                 }
         }

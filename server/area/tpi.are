@@ -3096,8 +3096,8 @@ D 1
 E
 sign~
 To identify an item simply use the following syntax:
-{gidentify <item>{x
-Where <item> is the name of an item in your inventory.
+{gidentify <<item>{x
+Where <<item> is the name of an item in your inventory.
 ~
 S
 

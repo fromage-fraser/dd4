@@ -798,7 +798,7 @@ To leave the Domain, enter QUIT.  Beware: if you quit before you gain a
 level, your new character will not be saved.
 
            We hope you enjoy your time here...  Good luck!
-                         <The DD Immortals>
+                         <<The DD Immortals>
 
 Enter LOOK to re-read this message; enter DOWN to begin your descent...
 ~
@@ -816,7 +816,7 @@ You are beginning to be pulled towards the planet far below.
 
 {WGetting Help{x
 
-The Dragons Domain has a website posted at <{Bhttps://smihilist.com/dd4/web/{x>:
+The Dragons Domain has a website posted at <<{Bhttps://smihilist.com/dd4/web/{x>:
 you are encouraged to check it out!  If this is the first time you have visited
 the Domain, you should also read the `Frequently Asked Questions' at
 <{Bhttps://smihilist.com/dd4/web/main/faq/dd-faq.html{x>.
@@ -913,7 +913,7 @@ thing you'll need to complete is the obstacle course.  There are a few
 commands that let you observe your environment and move about it.
 
 "The command LOOK describes your current location.  You can also enter
-`LOOK <creature>', `LOOK <object>', `LOOK IN <container>' and `LOOK
+`LOOK <<creature>', `LOOK <<object>', `LOOK IN <<container>' and `LOOK
 <direction>' for specific information.  The command SCAN will let you
 survey the area.  EXITS will list visible exits.
 
@@ -1170,12 +1170,12 @@ east are a range of captured beasts: try your hand at dispatching them.
 
 "It is always a good idea to determine how strong your opponent will be,
 by LOOKing to see if they are carrying weapons and armour, and by
-entering `CONSIDER <target>' for an estimate of your relative strengths.
+entering `CONSIDER <<target>' for an estimate of your relative strengths.
 
-"To start a fight, enter `KILL <target>'.  If things are going badly for
+"To start a fight, enter `KILL <<target>'.  If things are going badly for
 you, you can attempt to escape by entering FLEE.  If you have set your
 WIMPY, you will automatically try to flee when your hit points reach your
-`wimpy' value.  You can `SACRIFICE <corpse>' when you're done.
+`wimpy' value.  You can `SACRIFICE <<corpse>' when you're done.
 
 "Don't try to gain a level here: there will be more beasts for you to
 kill later.  When you are done, exit through the northern gate."
@@ -1268,18 +1268,18 @@ and criminals that this garrison has captured.  They will be stronger and
 carry some equipment.
 
 "Once you have killed them, you can loot their corpses by typing `GET ALL
-CORPSE'.  You can wear any equipment by typing `WEAR <item>' or `WEAR ALL'
-to wear everything.  You can take off equipment by typing `REMOVE <item>'
+CORPSE'.  You can wear any equipment by typing `WEAR <<item>' or `WEAR ALL'
+to wear everything.  You can take off equipment by typing `REMOVE <<item>'
 or `REMOVE ALL'.  Type EQUIPMENT to view what you are wearing, and
 INVENTORY to see what you are carrying.  If you type EQUIPMENT and then
 any text as an argument (e.g. `EQUIPMENT FOO'), your unfilled equipment
 slots are also shown.
 
-"You can look inside a container by typing `LOOK IN <item>', e.g. `LOOK
-IN POUCH'.  To put something inside a container, enter `PUT <object>
-<container>'.  To get something out, type `GET <object> <container>'.
+"You can look inside a container by typing `LOOK IN <<item>', e.g. `LOOK
+IN POUCH'.  To put something inside a container, enter `PUT <<object>
+<<container>'.  To get something out, type `GET <<object> <<container>'.
 You can GET ALL and PUT ALL.  To drop an item on the floor, enter `DROP
-<object>'.
+<<object>'.
 
 "You should kill all four creatures in this hall, loot their corpses and
 wear their equipment.  You should then leave through the northern exit."
@@ -1503,11 +1503,11 @@ stairs staircase wooden~
 E
 imp~
 The Imp tells you "Type LIST to find out what this store is selling.
-Enter `BUY <item>' to purchase something; enter `BUY <number> <item>' to
+Enter `BUY <<item>' to purchase something; enter `BUY <<number> <<item>' to
 make multiple purchases.  You might also SELL objects here too.
 
 "You'll want to buy food and drink from here.  When you are hungry or
-thirsty, enter `EAT <food>' or `DRINK <water container>'.  When you are
+thirsty, enter `EAT <<food>' or `DRINK <<water container>'.  When you are
 near a fountain, you may simply DRINK, and can also FILL any water
 containers you have.
 
@@ -1598,12 +1598,12 @@ E
 imp~
 The Imp tells you "The Loremaster will train you until you are able to
 learn from your Guildmaster at level ten.  You increase your attributes
-automatically as raise in level: enter `TRAIN <attribute>' to select
+automatically as raise in level: enter `TRAIN <<attribute>' to select
 which attribute you wish to be improved.
 
 "Type PRACTICE to list what skills you have and which skills you may
 learn.  Enter SLIST for a list of skills you may eventually learn.  Enter
-`PRACTICE <skill name>' to ask the Loremaster to train you.  It is wise
+`PRACTICE <<skill name>' to ask the Loremaster to train you.  It is wise
 to spell out the name skill you want in full, as he is easily confused!
 
 "You will need to have the correct type of practice point in order to be

@@ -1751,7 +1751,7 @@ void do_pray (CHAR_DATA *ch, char *argument)
         if (patron < 0 || patron >= NUMBER_DEITIES)
         {
                 send_to_char ("You have no patron.  To seek patronage, enter "
-                              "'PRAY PATRONAGE <deity>'.\n\r", ch);
+                              "'PRAY PATRONAGE <<deity>'.\n\r", ch);
                 return;
         }
 

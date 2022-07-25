@@ -34,26 +34,26 @@
 char * const where_name [] =
 {
     "{d[{x{wused as light{d]{x     ",
-    "{d<{x{wworn on finger{d>{x    ",
-    "{d<{x{wworn on finger{d>{x    ",
-    "{d<{x{wworn around neck{d>{x  ",
-    "{d<{x{wworn around neck{d>{x  ",
-    "{d<{x{wworn on body{d>{x      ",
-    "{d<{x{wworn on head{d>{x      ",
-    "{d<{x{wworn on legs{d>{x      ",
-    "{d<{x{wworn on feet{d>{x      ",
-    "{d<{x{wworn on hands{d>{x     ",
-    "{d<{x{wworn on arms{d>{x      ",
+    "{d<<{x{wworn on finger{d>{x    ",
+    "{d<<{x{wworn on finger{d>{x    ",
+    "{d<<{x{wworn around neck{d>{x  ",
+    "{d<<{x{wworn around neck{d>{x  ",
+    "{d<<{x{wworn on body{d>{x      ",
+    "{d<<{x{wworn on head{d>{x      ",
+    "{d<<{x{wworn on legs{d>{x      ",
+    "{d<<{x{wworn on feet{d>{x      ",
+    "{d<<{x{wworn on hands{d>{x     ",
+    "{d<<{x{wworn on arms{d>{x      ",
     "{d[{x{wshield{d]{x            ",
-    "{d<{x{wworn about body{d>{x   ",
-    "{d<{x{wworn about waist{d>{x  ",
-    "{d<{x{wworn around wrist{d>{x ",
-    "{d<{x{wworn around wrist{d>{x ",
+    "{d<<{x{wworn about body{d>{x   ",
+    "{d<<{x{wworn about waist{d>{x  ",
+    "{d<<{x{wworn around wrist{d>{x ",
+    "{d<<{x{wworn around wrist{d>{x ",
     "{d[{x{wweapon{d]{x            ",
     "{d[{x{wheld{d]{x              ",
     "{d[{x{wsecond weapon{d]{x     ",
-    "{d<{x{wfloating nearby{d>{x   ",
-    "{d<{x{wsecured to belt{d>{x   ",
+    "{d<<{x{wfloating nearby{d>{x   ",
+    "{d<<>{x{wsecured to belt{d>{x   ",
     "{d[{x{wranged weapon{d]{x     "
 };
 
@@ -376,10 +376,10 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         {
                 if (victim->rider)
                 {
-                        sprintf (tmp, "<Mounted by %s> ", PERS(victim->rider, ch));
+                        sprintf (tmp, "<<Mounted by %s> ", PERS(victim->rider, ch));
                         strcat (buf, tmp);
                 }
-                else strcat(buf, "<Mount> " );
+                else strcat(buf, "<<Mount> " );
         }
 
         if (IS_AFFECTED(victim, AFF_PASS_DOOR))
@@ -430,7 +430,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         */
 
         if (!IS_NPC(victim ) && IS_SET(victim->act, PLR_AFK )  )
-                strcat(buf, "{g<{GAFK{x{g>{x ");
+                strcat(buf, "{g<<{GAFK{x{g>{x ");
 
 
         if (victim->form != FORM_NORMAL)
@@ -2016,7 +2016,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 
    if( name[0] == '\0' )
    {
-           send_to_char( "Usage: whois <name>\n\r", ch );
+           send_to_char( "Usage: whois <<>name>\n\r", ch );
            return;
    }
 
@@ -3042,7 +3042,7 @@ void do_train (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                send_to_char("Syntax: train <str|int|wis|dex|con>\n\r", ch);
+                send_to_char("Syntax: train <<str|int|wis|dex|con>\n\r", ch);
 
                 switch (ch->pcdata->stat_train)
                 {
@@ -3144,7 +3144,7 @@ void do_slist (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        send_to_char( "To view the skills/spells for another class type 'HELP S<class>'.\n\r", ch );
+        send_to_char( "To view the skills/spells for another class type 'HELP S<<class>'.\n\r", ch );
         send_to_char( "E.g. for a warlock, 'HELP SWARLOCK'; for a warrior: 'HELP SWARRIOR'.\n\r",ch);
 }
 
@@ -3340,7 +3340,7 @@ void do_password( CHAR_DATA *ch, char *argument )
 
         if ( arg1[0] == '\0' || arg2[0] == '\0' )
         {
-                send_to_char( "Syntax: password <old> <new>.\n\r", ch );
+                send_to_char( "Syntax: password <<old> <<new>.\n\r", ch );
                 return;
         }
 
@@ -4528,10 +4528,10 @@ void print_who_data (CHAR_DATA *ch, char *buf)
         const char *class_colours[]
                 = { "{Y", "{G", "{B", "{M", "{W", "{R", "{C", "{w", "{G" };
 
-        const char *idle_flag = "{r<{RIdle{x{r>{x ";
-        const char *note_flag = "{g<{GNote{x{g>{x ";
-        const char *quiet_flag = "{g<{GQuiet{x{g>{x ";
-        const char *afk_flag = "{g<{GAFK{x{g>{x ";
+        const char *idle_flag = "{r<<{RIdle{x{r>{x ";
+        const char *note_flag = "{g<<{GNote{x{g>{x ";
+        const char *quiet_flag = "{g<<{GQuiet{x{g>{x ";
+        const char *afk_flag = "{g<<{GAFK{x{g>{x ";
         const char *leader_flag = "{c[{CLeader{x{c]{x ";
         const char *guide_flag = "{c[{CGuide{x{c]{x ";
         const char *killer_flag = "{w({WKILLER{x{w){x ";

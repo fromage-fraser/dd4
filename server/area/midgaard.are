@@ -1816,7 +1816,7 @@ map~
        |                            |      /
   The City of                 Temple/Recall
    Midgaard                         |
- <-----+----->    Cleric Guild -- Temple --  Midgaard Bank and
+ <<-----+----->    Cleric Guild -- Temple --  Midgaard Bank and
        |                          Square     Adventurer's Guild
        |                            |
        o  Goblin   Magic            |     General  Weapon  Psionicist
@@ -2538,9 +2538,9 @@ The sign reads:
 Free instructions provided by the Bank of Midgaard.
 
    Balance      Will find your current Balance, from anywhere.
-   Withdraw <x> Will withdraw x coins from your account.
-   Deposit <x>  Will Deposit x amount of coins to your account.
-   Borrow <x>   Will borrow x amount from the bank.
+   Withdraw <<x> Will withdraw x coins from your account.
+   Deposit <<x>  Will Deposit x amount of coins to your account.
+   Borrow <<x>   Will borrow x amount from the bank.
 ~
 E
 writing carving carvings symbols symbol~
@@ -2851,9 +2851,9 @@ E
 note~
 You can use these commands for trading:
 
-  value <item>     To get the price of an item in your possession.
-  sell <item>      To sell something.
-  buy <item>       To buy something (provided that the shop has it in store).
+  value <<item>     To get the price of an item in your possession.
+  sell <<item>      To sell something.
+  buy <<item>       To buy something (provided that the shop has it in store).
   list             Gives you a listing of the shop's inventory.
 
         WE DON'T GIVE CREDIT; WE DON'T EXPECT TO RECEIVE CREDIT!
@@ -3107,9 +3107,9 @@ sign~
 The sign reads:
 
   Use 'List' to see the available pets.
-  Use 'Buy <pet> <name>' to buy yourself a pet and name it.
+  Use 'Buy <<pet> <<name>' to buy yourself a pet and name it.
 
-  You can use 'order <pet> <instructions>' to order your pets around.
+  You can use 'order <<pet> <<instructions>' to order your pets around.
   If you abuse your pet, it will no longer regard you as its master.
   If you have several pets you may use 'order all <instructions>'
 
@@ -3179,9 +3179,9 @@ sign~
 The golden letters say :-
 
     Use 'list' to see what is in store,
-        'buy <item>' to buy an item,
-        'sell <item>' to sell an item and
-        'value <item>' to make the jeweller evaluate an item.
+        'buy <<item>' to buy an item,
+        'sell <<item>' to sell an item and
+        'value <<item>' to make the jeweller evaluate an item.
 ~
 S
 #3035
@@ -3217,9 +3217,9 @@ sign~
 The wooden sign says :-
 
     Use 'list' to see what is in store,
-        'buy <item>' to buy an item,
-        'sell <item>' to sell an item and
-        'value <item>' to make the leather worker evaluate an item.
+        'buy <<item>' to buy an item,
+        'sell <<item>' to sell an item and
+        'value <<item>' to make the leather worker evaluate an item.
 ~
 S
 #3040
@@ -5088,7 +5088,7 @@ E
 note~
 You can use this command to repair items here:
 
-  repair <item>     Repair a degrading item you own, assuming you can afford it.
+  repair <<item>     Repair a degrading item you own, assuming you can afford it.
 ~
 S
 

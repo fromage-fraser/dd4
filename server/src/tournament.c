@@ -808,7 +808,7 @@ void do_tournament_countdown ()
         
         else if (tournament_countdown-- <= COUNTDOWN)
         {
-                sprintf(buf, ">> %d <<", tournament_countdown);
+                sprintf(buf, ">> %d <<<<", tournament_countdown);
                 tournament_message(buf, tournament_host);
                 return;
         }
