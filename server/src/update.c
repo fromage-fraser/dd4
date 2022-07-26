@@ -1299,22 +1299,22 @@ void weather_update ()
         {
             case  5:
                 weather_info.sunlight = SUN_LIGHT;
-                strcat( buf, "{MThe day has begun.{x\n\r" );
+                strcat( buf, "<229>The day has begun.<0>\n\r" );
                 break;
 
             case  6:
                 weather_info.sunlight = SUN_RISE;
-                strcat( buf, "The {Ysun{x rises in the east.\n\r" );
+                strcat( buf, "The <226>sun<0> rises in the east.\n\r" );
                 break;
 
             case 19:
                 weather_info.sunlight = SUN_SET;
-                strcat( buf, "The {Ysun{x slowly disappears in the west.\n\r" );
+                strcat( buf, "The <202>sun<0> slowly disappears in the west.\n\r" );
                 break;
 
             case 20:
                 weather_info.sunlight = SUN_DARK;
-                strcat( buf, "{BThe night has begun.{x\n\r" );
+                strcat( buf, "<19>The night has begun.<0>\n\r" );
                 break;
 
             case 24:
@@ -1349,7 +1349,7 @@ void weather_update ()
                 if (weather_info.mmhg < 990
                     || (weather_info.mmhg < 1010 && !number_bits(2)))
                 {
-                        strcat( buf, "{wThe sky is getting cloudy.{x\n\r" );
+                        strcat( buf, "<240>The sky is getting cloudy.<0>\n\r" );
                         weather_info.sky = SKY_CLOUDY;
                 }
                 break;
@@ -1358,13 +1358,13 @@ void weather_update ()
                 if (weather_info.mmhg < 970
                     || ( weather_info.mmhg < 990 && !number_bits(2)))
                 {
-                        strcat( buf, "{BIt starts to rain.{x\n\r" );
+                        strcat( buf, "<67>It starts to rain.<0>\n\r" );
                         weather_info.sky = SKY_RAINING;
                 }
 
                 if (weather_info.mmhg > 1030 && !number_bits(2))
                 {
-                        strcat( buf, "{CThe clouds disappear.{x\n\r" );
+                        strcat( buf, "<87>The clouds disappear.<0>\n\r" );
                         weather_info.sky = SKY_CLOUDLESS;
                 }
                 break;
@@ -1372,14 +1372,14 @@ void weather_update ()
             case SKY_RAINING:
                 if (weather_info.mmhg < 970 && !number_bits(2))
                 {
-                        strcat( buf, "{WLightning flashes in the sky.{x\n\r" );
+                        strcat( buf, "<15>Lightning flashes in the sky.<0>\n\r" );
                         weather_info.sky = SKY_LIGHTNING;
                 }
 
                 if (weather_info.mmhg > 1030
                     || (weather_info.mmhg > 1010 && !number_bits(2)))
                 {
-                        strcat( buf, "{BThe rain stopped.{x\n\r" );
+                        strcat( buf, "<189>The rain stopped.<0>\n\r" );
                         weather_info.sky = SKY_CLOUDY;
                 }
                 break;
@@ -1388,7 +1388,7 @@ void weather_update ()
                 if (weather_info.mmhg > 1010
                     || (weather_info.mmhg > 990 && !number_bits(2)))
                 {
-                        strcat( buf, "{wThe lightning has stopped.{x\n\r" );
+                        strcat( buf, "<241>The lightning has stopped.<0>\n\r" );
                         weather_info.sky = SKY_RAINING;
                 }
                 break;
@@ -1411,13 +1411,13 @@ void weather_update ()
                         if (d->character->position != POS_FIGHTING)
                                 d->character->position = POS_STANDING;
 
-                        send_to_char("{WThe full moon inspires a glorious {Rbloodlust{x} in you!{x\n\r",
+                        send_to_char("<230>The full moon inspires a glorious <88>bloodlust<0><230> in you!<0>\n\r",
                                      d->character);
 
                         if (d->character->form != FORM_WOLF && d->character->form != FORM_DIREWOLF)
                                 do_morph(d->character, "wolf");
 
-                        act("$n bays at the {Wmoon{x!", d->character, NULL, NULL, TO_ROOM);
+                        act("$n bays at the <230>moon<0>!", d->character, NULL, NULL, TO_ROOM);
                 }
 
                 if (time_info.hour == 5
@@ -1425,7 +1425,7 @@ void weather_update ()
                     && (d->character->sub_class == SUB_CLASS_VAMPIRE
                         || d->character->sub_class == SUB_CLASS_WEREWOLF))
                 {
-                        send_to_char("You sense the {Ysun{x rising...\n\r", d->character);
+                        send_to_char("You sense the <226>sun<0> rising...\n\r", d->character);
                 }
 
                 if (time_info.hour == 19
@@ -1433,7 +1433,7 @@ void weather_update ()
                     && (d->character->sub_class == SUB_CLASS_VAMPIRE
                         || d->character->sub_class == SUB_CLASS_WEREWOLF))
                 {
-                        send_to_char("You sense the {Ysun{x setting...\n\r", d->character);
+                        send_to_char("You sense the <202>sun<0> setting...\n\r", d->character);
                 }
         }
 }

@@ -7572,14 +7572,14 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         && IS_NPC(victim)
         && victim->pIndexData->vnum != BOT_VNUM)
     {
-        act ("{W$C is too alert for you to unleash <242>c<251>h<242>a<251>o<242>s<0> energy on $m!{x",
+        act ("<15>$C is too alert for you to unleash <242>c<251>h<242>a<251>o<242>s<0> <15>energy on $m!<0>",
                 ch, NULL, victim, TO_CHAR);
         return;
     }
 
     if ( !IS_EVIL( ch ) )
     {
-        act ("{WYou are not evil enough to summon <242>c<251>h<242>a<251>o<242>s<0> energy.{x",
+        act ("<15>You are not evil enough to summon <242>c<251>h<242>a<251>o<242>s<0><15> energy.<0>",
              ch, NULL, victim, TO_CHAR);
         return;
     }
