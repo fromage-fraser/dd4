@@ -6932,6 +6932,10 @@ void spell_demon_flames( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "Summoned demons breathe on you; you are surrounded by a fiery aura.\n\r", victim );
         act( "$c is surrounded by the fiery breath of summoned demons.", victim, NULL, NULL, TO_ROOM );
+
+        check_group_bonus(ch);
+
+        return;
 }
 
 
@@ -7058,6 +7062,10 @@ void spell_hand_of_lucifer( int sn, int level, CHAR_DATA *ch, void *vo )
         act( "{RA giant hand grabs you, preventing any chance of escape!{x",  ch, NULL, victim, TO_VICT);
         act( "Dark mist forms into a hand which grabs $N, preventing $S escape.",
             ch, NULL, victim, TO_NOTVICT );
+        
+        check_group_bonus(ch);
+        
+        return;
 }
 
 
