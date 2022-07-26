@@ -282,7 +282,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 
 #define MAX_SKILL                   514     /* 514 osfind, 513 osstat, 512 for Empower */
 #define MAX_PRE_REQ                 1364    /* Increased for awe --Owl 25/7/22 */
-#define MAX_SPELL_GROUP             433     /* Increased for awe --Owl 25/7/22 */
+#define MAX_SPELL_GROUP             434     /* Increased for awe --Owl 25/7/22 */
 #define MAX_GROUPS                  53
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */

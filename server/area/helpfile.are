@@ -1425,8 +1425,8 @@ When one character attacks another, the severity of the damage is shown in the
 verb used in the damage message.  Here are all the damage verbs listed from
 least damage to most damage:
 
-       <534><124>miss<0>           <245>mangle<0>          <196>ANNIHILATE<0>     <88><558>EXTERMINATE<559><0>                              
-       <0><236>scratch<0>        <247>maim<0>            <160><558>OBLITERATE<0>     <52><558>UTTERLY DESTROY<559>               
+       <235>miss<0>           <245>mangle<0>          <196>ANNIHILATE<0>     <88><558>EXTERMINATE<559><0>                              
+       <236>scratch<0>        <247>maim<0>            <160><558>OBLITERATE<0>     <52><558>UTTERLY DESTROY<559>               
        <237>graze<0>          <249>MUTILATE<0>        <160><558>RAVAGE<0>         <52><558>NULLIFY<559>                    
        <239>hit<0>            <251>DISEMBOWEL<0>      <160><558>CRIPPLE<559><0>        <52><558>BUTCHER<559>             
        <240>injure<0>         <253>EVISCERATE<0>      <124><558>BRUTALISE<559><0>      <52><558>LIQUIDATE<559>                                   
