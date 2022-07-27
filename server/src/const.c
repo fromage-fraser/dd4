@@ -287,9 +287,10 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
         { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 } },
         { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 } },   
-        { "uncommon set","uncommon set", -1,             EGO_ITEM_UNCOMMON_SET, { 0, 0 },       { 100, 10, 0, 0, 0 } }
+        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 } },
+        { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 } },
+        { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 } }   
 };
-
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
 const struct set_type   set_list [MAX_SETS] = 
@@ -5863,6 +5864,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_WIZ, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
                 "", "!Ostat!"
+        },
+
+        {
+                "hurl", &gsn_hurl,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "hurl", "!Hurl!"
         },
 
         /*

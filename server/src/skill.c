@@ -3202,13 +3202,18 @@ void do_construct( CHAR_DATA *ch, char *arg )
         int             found, i;
         char            buf[MAX_STRING_LENGTH];
         const char* bar = "_____________________________________________________________________________\n\r\n\r";
+        char            arg1[MAX_INPUT_LENGTH];
+        char            arg2[MAX_INPUT_LENGTH];
+
+        arg = one_argument(arg, arg1);
+        arg = one_argument(arg, arg2);
 
         if (IS_NPC(ch))
                 return;
 
         if (ch->class != CLASS_SMITHY)
         {
-                send_to_char("You are unble to build anything you clumsy oath.\n\r", ch);
+                send_to_char("You are unable to construct anything you fool.\n\r", ch);
                 return;
         }
 
@@ -3218,7 +3223,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if( arg[0] == '\0' )
+        if( arg1[0] == '\0' )
         {
                 send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
                 send_to_char(bar, ch);
@@ -3244,7 +3249,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
         found = -1;
         for (i = 0; i < BLUEPRINTS_MAX; i++)
         {
-                if (is_name(arg, blueprint_list[i].blueprint_name))
+                if (is_name(arg1, blueprint_list[i].blueprint_name))
                 {
                         found = i;
                         break;
@@ -3297,17 +3302,57 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return; 
         }
 
+        if  ( !strcmp( blueprint_list[i].blueprint_name, "weaponchain") 
+                ||  !strcmp(  blueprint_list[i].blueprint_name, "shieldchain") )
+        {
+                OBJ_DATA *obj;
+                int eff_class;
+                eff_class = ch->class;
+
+                if( arg2[0] == '\0' )
+                {
+                        send_to_char("What object would you like to add the chain to?\n\r", ch);
+                        return;
+                }
+
+                if (!(obj = get_obj_carry(ch, arg2)))
+                {
+                        send_to_char("You do not have that in your inventory.\n\r", ch);
+                        return;
+                }
+
+                if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && (obj->item_type != ITEM_WEAPON)) 
+                ||  (!strcmp(blueprint_list[i].blueprint_name, "shieldchain") && ( !CAN_WEAR(eff_class, ch->form, obj, ITEM_WEAR_SHIELD, BIT_WEAR_SHIELD)))  )
+                {
+                        send_to_char("You cannot add a chain to that.\n\r", ch);
+                        return;
+                }
+                if (blueprint_list[i].blueprint_ego)
+                {               
+                        SET_BIT(obj->extra_flags, ITEM_EGO);
+                        SET_BIT(obj->ego_flags, blueprint_list[i].blueprint_ego);
+                        send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
+                        sprintf(buf, "Expertly you attach your {W%s{x to {W%s{x.", blueprint_list[i].blueprint_name, obj->name);
+                        act(buf, ch, NULL, NULL, TO_CHAR);
+
+                        sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
+                        act(buf, ch, NULL, NULL, TO_ROOM);
+                }
+                set_obj_owner(obj, ch->name);
+                return;
+        }
+        
         creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), 0 );
         obj_to_room( creation, ch->in_room );
-        
         if (blueprint_list[i].blueprint_ego)
         {               
                 SET_BIT(creation->extra_flags, ITEM_EGO);
                 SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
         }
-
-
         set_obj_owner(creation, ch->name);
+        
+
+  
 
         send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
@@ -3425,9 +3470,8 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 obj2->affected      = paf;
 
                 SET_BIT(obj->extra_flags, ITEM_EGO);
-                SET_BIT(obj->ego_flags, EGO_ITEM_UNCOMMON_SET);
+
                 SET_BIT(obj2->extra_flags, ITEM_EGO);
-                SET_BIT(obj2->ego_flags, EGO_ITEM_UNCOMMON_SET);
 
                 set_obj_owner(obj, ch->name);
                 act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);

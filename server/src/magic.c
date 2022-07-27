@@ -3194,6 +3194,9 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Engineers Turret");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
                         strcat (buf, " Turret Module");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                        strcat (buf, " Chain Attached");
+                        
                         
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
@@ -3301,31 +3304,6 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                                 sprintf (buf, "It gives the wearer {Y%s{x.\n\r",
                                          affect_loc_name (paf->location));
                         send_to_char( buf, ch );
-                }
-        }
-
-/* first pass at sets - will be re-written - Brutus*/
-        for ( paf = obj->affected; paf; paf = paf->next )
-        {
-                if ( paf->modifier == 0
-                    && strcmp (affect_loc_name (paf->location), "(unknown)") 
-                    && ( obj->ego_flags == EGO_ITEM_UNCOMMON_SET
-                        || obj->ego_flags == EGO_ITEM_RARE_SET
-                        || obj->ego_flags == EGO_ITEM_EPIC_SET
-                        || obj->ego_flags == EGO_ITEM_LEGENDARY_SET) )
-                {
-                        switch (obj->ego_flags)
-                        {
-                        case EGO_ITEM_UNCOMMON_SET: /* constant-expression */
-                        {
-                                sprintf (buf, "Its 2-piece {G[SET BONUS]{x gives the wearer {W%s{x.\n\r",
-                                         affect_loc_name (paf->location) );
-                                send_to_char( buf, ch );        /* code */
-                                break;
-                        }
-                        default:
-                                break;
-                        }
                 }
         }
 
