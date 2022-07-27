@@ -335,7 +335,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
                 if ( CAN_SEE_MIST(ch) )
                         sprintf(buf, "[%s] ", victim->name);
 
-                strcat(buf, "{G(Glowing){x A strange mist floats about.\n\r");
+                strcat(buf, "<121>(Glowing)<0> A strange mist floats about.\n\r");
                 send_to_char(buf, ch);
                 return;
         }
@@ -355,22 +355,22 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
             && !IS_NPC(ch)
             && ch->pcdata->questmob > 0
             && victim->pIndexData->vnum == ch->pcdata->questmob)
-                strcat(buf, "{R[TARGET]{x ");
+                strcat(buf, "<160>[TARGET]<0> ");
 
         if (IS_AFFECTED(victim, AFF_MEDITATE))
-                strcat(buf, "{W[Meditating]{x ");
+                strcat(buf, "<135>[Meditating]<0> ");
 
         if (IS_AFFECTED(victim, AFF_HOLD))
-                strcat(buf, "{g(Held){x ");
+                strcat(buf, "<28>(Held)<0> ");
 
         if (IS_AFFECTED(victim, AFF_INVISIBLE))
-                strcat(buf, "{c(Invis){x ");
+                strcat(buf, "<39>(Invis)<0> ");
 
         if (IS_AFFECTED(victim, AFF_HIDE))
-                strcat(buf, "{m(Hidden){x ");
+                strcat(buf, "<93>(Hidden)<0> ");
 
         if (IS_AFFECTED(victim, AFF_CHARM))
-                strcat(buf, "{y(Charmed){x ");
+                strcat(buf, "<136>(Charmed)<0> ");
 
         if (IS_SET(victim->act, ACT_MOUNTABLE))
         {
@@ -383,46 +383,46 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         }
 
         if (IS_AFFECTED(victim, AFF_PASS_DOOR))
-                strcat(buf, "(Translucent) ");
+                strcat(buf, "<230>(Translucent)<0> ");
 
         if (IS_AFFECTED(victim, AFF_FAERIE_FIRE))
-                strcat(buf, "{M(Pink Aura){x "  );
+                strcat(buf, "<197>(Pink Aura)<0> "  );
 
         if (IS_EVIL(victim )
             && (IS_AFFECTED(ch, AFF_DETECT_EVIL) || is_affected(ch, gsn_song_of_revelation)))
-                strcat(buf, "{r(Red Aura){x "   );
+                strcat(buf, "<88>(Red Aura)<0> "   );
 
         if (IS_AFFECTED(ch, AFF_DETECT_CURSE)
             && ( is_affected(victim, gsn_prayer_weaken)
               || is_affected(victim, gsn_hex)
               || is_affected(victim, gsn_curse)
               || IS_AFFECTED(victim, AFF_CURSE) ) )
-                strcat(buf, "{b(Cursed){x "   );
+                strcat(buf, "<19>(Cursed)<0> "   );
 
         if (IS_GOOD(victim )
             && (IS_AFFECTED(ch, AFF_DETECT_GOOD) || is_affected(ch, gsn_song_of_revelation)))
-                strcat(buf, "{y(Yellow Aura){x "   );
+                strcat(buf, "<226>(Yellow Aura)<0> "   );
 
         if (IS_AFFECTED(victim, AFF_SANCTUARY )   )
-                strcat(buf, "{W(White Aura){x " );
+                strcat(buf, "<15>(White Aura)<0> " );
 
         if (IS_AFFECTED(victim, AFF_BATTLE_AURA) )
-                strcat(buf, "{w(Silvery Glow){x " );
+                strcat(buf, "<243>(Silvery Glow)<0> " );
 
         if (IS_AFFECTED(victim, AFF_FLAMING )   )
-                strcat(buf, "{R(Flaming){x "    );
+                strcat(buf, "<196>(Flaming)<0> "    );
 
         if (IS_AFFECTED (victim, AFF_GLOBE ))
-                strcat(buf, "{Y(Globed){x " );
+                strcat(buf, "<220>(Globed)<0> " );
 
         if (!IS_NPC(victim ) && IS_SET(victim->status, PLR_KILLER )  )
-                strcat(buf, "{W(KILLER){x " );
+                strcat(buf, "<254>(KILLER)<0> " );
 
         if (!IS_NPC(victim ) && IS_SET(victim->status, PLR_THIEF  )  )
-                strcat(buf, "{Y(THIEF){x " );
+                strcat(buf, "<190>(THIEF)<0> " );
 
         if (!IS_NPC(victim ) && IS_SET(victim->status, PLR_RONIN  )  )
-                strcat(buf, "{R(RONIN){x " );
+                strcat(buf, "<124>(RONIN)<0> " );
 
         /*
         if (!IS_NPC(victim ) && IS_SET(victim->status, PLR_HUNTED  )  )
@@ -430,7 +430,7 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         */
 
         if (!IS_NPC(victim ) && IS_SET(victim->act, PLR_AFK )  )
-                strcat(buf, "{g<<{GAFK{x{g>{x ");
+                strcat(buf, "<22><<<40>AFK<0><22>><0> ");
 
 
         if (victim->form != FORM_NORMAL)

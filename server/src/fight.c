@@ -75,7 +75,9 @@ void violence_update (void)
         CHAR_DATA *victim;
         CHAR_DATA *rch;
         bool       mobfighting;
+        bool       grmobfighting;
         int        tmp;
+        /* char buf2 [ MAX_STRING_LENGTH ];*/
 
         sprintf(last_function, "entering violence_update");
 
@@ -109,8 +111,10 @@ void violence_update (void)
                  * Ok. So ch is not fighting anyone.
                  * Is there a fight going on?
                  */
+                
 
                 mobfighting = FALSE;
+                grmobfighting = FALSE;
 
                 for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
                 {
@@ -134,8 +138,21 @@ void violence_update (void)
                             && (!IS_NPC(rch) || IS_AFFECTED(rch, AFF_CHARM))
                             && is_same_group(ch, rch)
                             && IS_NPC(victim))
+                        {
                                 break;
+                        }
 
+                        /* one of our grouped mobs is fighting */
+                        if ( IS_NPC(rch)
+                        &&   IS_NPC(victim)
+                        &&   is_same_group(ch, rch)
+                        &&   ( rch != victim ) )
+                        {
+                                mobfighting = TRUE;
+                                grmobfighting = TRUE;
+                                break;
+                        }
+                        
                         /* another mob is fighting a player */
                         if (IS_NPC(ch)
                             && IS_NPC(rch)
@@ -158,6 +175,54 @@ void violence_update (void)
                         CHAR_DATA *vch;
                         int        number;
                         number = 0;
+                        tmp = number_percent();
+
+                        /*sprintf(buf2, "vch: %s rch: %s victim: %s\r\n", 
+                        vch->short_descr, rch->short_descr, victim->short_descr);*/
+                        /* sprintf(buf2, "ch: %s victim: %s\r\n", 
+                                IS_NPC(ch) ? ch->short_descr : ch->name, 
+                                victim->short_descr );
+                        log_string(buf2);*/
+
+                        if (grmobfighting)
+                        {
+                                /*It's a mob we're grouped with fighting, join in. */
+                                if( CAN_SPEAK(ch) ) 
+                                {
+                                        if (tmp < 33)
+                                        {
+                                                act( "{Y$c shrieks '$N must be DESTROYED!'{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c shrieks 'You must be DESTROYED!'{x", ch, NULL, victim, TO_VICT );
+                                        }
+                                        else if (tmp < 66)
+                                        {
+                                                act( "{Y$c screeches 'I will feast on $N's BLOOD!'{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c screeches 'I will feast on your BLOOD!'{x", ch, NULL, victim, TO_VICT );
+                                        }
+                                        else
+                                        {
+                                                act( "{Y$c screams 'Unhand my comrade, $N!'{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c screams 'Unhand my comrade, fiend!'{x", ch, NULL, victim, TO_VICT );
+                                        }
+                                }
+                                else
+                                {
+                                        if (tmp < 50)
+                                        {
+                                                act( "{Y$c suddenly lunges at $C!{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c suddenly lunges at you!{x", ch, NULL, victim, TO_VICT );
+                                        }
+                                        else
+                                        {
+                                                act( "{Y$c rears and leaps at $C!{x", ch, NULL, victim, TO_NOTVICT );
+                                                act( "{Y$c rears and leaps at you!{x", ch, NULL, victim, TO_VICT );
+                                        }
+                                }
+                                
+                                multi_hit(ch, victim, TYPE_UNDEFINED);
+                                return;
+                        }
+
                         /* mob attacks member of pc's group */
                         for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
                         {
@@ -1211,7 +1276,22 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 /* payoff for killing things */
                 if (fighter->position == POS_DEAD)
                 {
-                        group_gain(opponent, fighter);
+                        /* If a mob you're grouped with killsteals for you, you get the reward */
+                        if ( opponent->master
+                        && ( opponent->master->sub_class == SUB_CLASS_WITCH
+                          || opponent->master->sub_class == SUB_CLASS_SATANIST
+                          || opponent->master->sub_class == SUB_CLASS_NECROMANCER
+                          || opponent->master->sub_class == SUB_CLASS_KNIGHT
+                          || ( ( opponent->master->class == CLASS_SHAPE_SHIFTER ) 
+                            && ( opponent->master->sub_class == 0 ) )
+                          || opponent->master->sub_class == SUB_CLASS_WEREWOLF ) )
+                        {
+                                group_gain(opponent->master, fighter);
+                        }
+                        else 
+                        {
+                                group_gain(opponent, fighter);
+                        }
 
                         if (IS_NPC(fighter))
                         {
@@ -1871,8 +1951,24 @@ void set_fighting (CHAR_DATA *ch, CHAR_DATA *victim)
                 affect_strip(ch, gsn_meditate);
         }
 
-        if (ch == victim->master)
-                stop_follower(victim);
+        /* 
+         * The case we're trying to protect below is having your summoned/charmed mob
+         * that you're grouped with attack an NPC for you, which is permitted. Possibly
+         * exploitable, revert if so.  --Owl 26/7/22
+         */
+
+        if ( ch == victim->master )
+        {
+                if ( ( !IS_NPC(ch) 
+                    && !IS_NPC(victim) )
+                ||   ( !IS_NPC(ch) 
+                     && IS_NPC(victim) ) 
+                ||   ( IS_NPC(ch) 
+                   && !IS_NPC(victim) ) )
+                {
+                        stop_follower(victim);
+                }
+        }
 
         if (IS_AFFECTED(ch, AFF_INVISIBLE))
         {
@@ -2299,6 +2395,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
         CHAR_DATA *gch;
         char       buf[ MAX_STRING_LENGTH ];
         int        members;
+        int        npc_members;
+        int        pc_members;
         int        grxp;
         int        xp;
         int        tlevel;
@@ -2321,6 +2419,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
 
         tlevel = 0;
         members = 0;
+        npc_members = 0;
+        pc_members = 0;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
@@ -2328,6 +2428,15 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                 {
                         tlevel += gch->level;
                         members++;
+
+                        if (IS_NPC(gch))
+                        {
+                                npc_members++;
+                        }
+                        else {
+                                pc_members++;
+                        }
+
                 }
         }
 
@@ -2396,7 +2505,13 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                         }
                 }
 
-                if (members > 1)
+                /* 
+                 * Shouldn't get grouping xp bonus if the number of npcs you're grouped
+                 * with are >= the number of PCs in your group.
+                 */
+
+                if ( members > 1 
+                &&   pc_members > npc_members)
                 {
                         grxp = (xp / 4) * members;
 
@@ -3357,7 +3472,23 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                         }
                         else
                         {
-                                group_gain(ch, victim);
+                                /* If a mob you're grouped with killsteals, you get the reward */
+                                if ( ch->master
+                                && ( ch->master->sub_class == SUB_CLASS_WITCH
+                                  || ch->master->sub_class == SUB_CLASS_SATANIST
+                                  || ch->master->sub_class == SUB_CLASS_NECROMANCER
+                                  || ch->master->sub_class == SUB_CLASS_KNIGHT
+                                  || ( ( ch->master->class == CLASS_SHAPE_SHIFTER ) 
+                                    && ( ch->master->sub_class == 0 ) )
+                                  || ch->master->sub_class == SUB_CLASS_WEREWOLF ) )
+                                {
+                                        group_gain(ch->master, victim);
+                                }
+                                else 
+                                {
+                                        group_gain(ch, victim);
+                                }
+
                                 check_player_death(ch, victim);
                                 death_penalty(ch, victim);
                                 raw_kill(ch, victim, TRUE);
@@ -6539,7 +6670,26 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
 
         if (victim->hit < 1)
         {
-                group_gain(ch, victim);
+                /* 
+                 * If a mob you're grouped with killsteals, and you're a fights-with-mobs class, 
+                 * you get the reward. -- Owl 26/7/22 
+                 */
+                if ( ch->master
+                &&  ( ch->master->sub_class == SUB_CLASS_WITCH
+                   || ch->master->sub_class == SUB_CLASS_SATANIST
+                   || ch->master->sub_class == SUB_CLASS_NECROMANCER
+                   || ch->master->sub_class == SUB_CLASS_KNIGHT
+                   || ( ( ch->master->class == CLASS_SHAPE_SHIFTER ) 
+                     && ( ch->master->sub_class == 0 ) )
+                   || ch->master->sub_class == SUB_CLASS_WEREWOLF) )
+                {
+                        group_gain(ch->master, victim);
+                }
+                else 
+                {
+                        group_gain(ch, victim);
+                }
+
                 check_player_death(ch, victim);
                 death_penalty(ch, victim);
                 raw_kill(ch, victim, TRUE);
