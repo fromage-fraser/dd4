@@ -2413,7 +2413,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         {&gsn_dart,			                0 },
         {&gsn_launcher,			                0 },
         {&gsn_reflector,		                0 },
-        {&gsn_shield,			                0 },
         {&gsn_arrestor,		  	                0 },
         {&gsn_driver,			                0 },
         {&gsn_emergency,		                0 },
