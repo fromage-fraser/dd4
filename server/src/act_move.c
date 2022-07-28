@@ -2168,12 +2168,12 @@ void do_recall (CHAR_DATA *ch, char *argument)
 
                 if (followers_found == 1)
                 {
-                        sprintf(buf, "<228>Your follower has joined you in safety.<0>\n\r");
+                        sprintf(buf, "<15>Your follower has joined you in safety.<0>\n\r");
                         send_to_char(buf, ch);
                 }
                 else if (followers_found > 1)
                 {
-                        sprintf(buf, "<228>Your followers have joined you in safety.<0>\n\r");
+                        sprintf(buf, "<15>Your followers have joined you in safety.<0>\n\r");
                         send_to_char(buf, ch);
                 }
 
