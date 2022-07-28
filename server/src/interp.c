@@ -257,6 +257,7 @@ const struct cmd_type cmd_table [] =
         { "smoke bomb",         do_smoke_bomb,  POS_FIGHTING,    0,  LOG_NORMAL },
         { "snapshot",           do_snap_shot,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "trigger",            do_trigger,     POS_FIGHTING,    0,  LOG_NORMAL },
+        { "hurl",               do_hurl,        POS_FIGHTING,    0,  LOG_NORMAL },
 
         /*
          * Miscellaneous commands.

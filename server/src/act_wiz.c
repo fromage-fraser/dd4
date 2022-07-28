@@ -1149,11 +1149,9 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
                         strcat (buf, " battle_terror");
 
-                if (IS_SET(obj->ego_flags, EGO_ITEM_UNCOMMON_SET)
-                        || IS_SET(obj->ego_flags, EGO_ITEM_RARE_SET)
-                        || IS_SET(obj->ego_flags, EGO_ITEM_EPIC_SET)
-                        || IS_SET(obj->ego_flags, EGO_ITEM_LEGENDARY_SET) )
-                        strcat (buf, "[SET PIECE]");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                        strcat (buf, " chained");       
+
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);
         }

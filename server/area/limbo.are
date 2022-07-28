@@ -577,6 +577,30 @@ A modular dart component for an Engineers turret.~
 8 0 1
 0~ 0~ 0~ 0~
 3 0 0
+#42
+weaponchain chain~
+weaponchain chain~
+A Weaponchain with a springloaded return mechanism.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#43
+shieldchain chain~
+shieldchain chain~
+A Shieldhain with a springloaded return mechanism.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#44
+arrow module~
+arrow module~
+A modular arrow component for an Engineers turret.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
 #50
 talons~
 talons~

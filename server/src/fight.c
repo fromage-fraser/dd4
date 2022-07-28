@@ -6053,6 +6053,155 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
 }
 
 
+void do_hurl (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        CHAR_DATA *victim;
+        char arg1 [ MAX_INPUT_LENGTH ];
+        char buf[MAX_STRING_LENGTH];
+
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_hurl))
+        {
+                send_to_char("You better leave that to a smithy.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument (argument, arg1);
+        victim = ch->fighting;
+
+        if (IS_AFFECTED(ch, AFF_BLIND))
+        {
+                send_to_char("You can't see anything!\n\r", ch);
+                return;
+        }
+        
+        if (arg1[0] == '\0')
+        {
+                send_to_char("hurl what?\n\r", ch);    
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("You can't hurl anything at yourself!\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_wear(ch, arg1)))
+        {
+                send_to_char("You do not have that item.\n\r", ch);
+                return;
+        }
+
+        if (is_safe (ch, victim))
+                return;
+        
+        if (! IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+        {
+                send_to_char("You're not going to throw away something thats not chained.\n\r", ch);
+                return;
+        }
+
+        if ( obj->item_type != ITEM_WEAPON) /*do this if hurling a shield */
+        {
+                int chance;
+                AFFECT_DATA af;
+                if (is_affected(victim, gsn_stun))
+                {
+                        send_to_char("They are already stunned.\n\r",ch);
+                        return;
+                }
+
+                if (is_safe(ch, victim))
+                        return;
+
+                WAIT_STATE(ch, skill_table[gsn_hurl].beats);
+
+                if (!IS_NPC(ch))
+                {
+                        chance = ch->pcdata->learned[gsn_hurl];
+                        chance += (ch->level - victim->level) * 5;
+
+                        if (chance < 5)
+                                chance = 5;
+
+                        if (chance > 95)
+                                chance = 95;
+                }
+
+                WAIT_STATE (ch, PULSE_VIOLENCE);
+
+                if (IS_NPC(ch) || number_percent() < chance)
+                {
+                        act ("You hurl your shield. It slams into the side of their head.. THUNK!!",
+                        ch, NULL, victim, TO_CHAR);
+                        act ("Your knowed out cold by a shield to the head.", ch, NULL, victim, TO_VICT);
+                        act ("$n hurls their shield at $N. It slams into teh side of their head.. THUNK!!",
+                        ch, NULL, victim, TO_NOTVICT);
+                        arena_commentary("$n knocks out $N cold.", ch, victim);
+
+                        af.type = gsn_stun;
+                        af.modifier = 0;
+                        af.location = APPLY_NONE;
+                        af.duration = 0;
+                        af.bitvector = AFF_SLEEP;
+                        affect_to_char(victim,&af);
+
+                        if ( victim->position == POS_FIGHTING )
+                        stop_fighting( victim, TRUE );
+
+                        do_sleep(victim,"");
+
+                        check_group_bonus(ch);
+
+                        WAIT_STATE (victim, 2 * PULSE_VIOLENCE);
+                }
+                else
+                {
+                        act ("You hurl your shield. It sails past their head, and returns. MISS!!",
+                        ch, NULL, victim, TO_CHAR);
+                        damage(ch, victim, 0, gsn_stun, FALSE);
+                }
+        }
+        else if ( obj->item_type == ITEM_WEAPON) /* do this is hurling a weapon */
+        {
+
+                WAIT_STATE(ch, PULSE_VIOLENCE);
+                sprintf (buf, "You hurl your {W%s{x at your opponent.\n\r", obj->name);
+                send_to_char(buf, ch);
+
+                if ((!IS_AWAKE(victim) || !IS_NPC (ch))
+                && number_percent () < ch->pcdata->learned[gsn_hurl])
+                {
+                        arena_commentary("$n hurls their equipment at $N.", ch, victim);
+
+                        WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+                        damage(ch, victim, (ch->level / 2) + number_range(ch->level, ch->level * 2), gsn_hurl, FALSE);
+
+                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                                return;
+                }
+        }
+        else
+        {
+                
+                act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
+                        ch, NULL, victim, TO_CHAR);
+                damage (ch, victim, 0, gsn_hurl, FALSE);
+        }
+}
+
+
 void do_shoot (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA  *obj, *objWield, *objShield, *objDual;

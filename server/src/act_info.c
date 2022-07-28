@@ -173,6 +173,9 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                 strcat( buf, "{W(Imbued){x " );
 
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                strcat( buf, "{W(Chained){x " );
+        
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "{W(Sharp){x " );
 

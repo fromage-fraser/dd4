@@ -200,7 +200,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  3
+#define BLUEPRINTS_MAX  5
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -280,9 +280,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   514     /* 514 osfind, 513 osstat, 512 for Empower */
+#define MAX_SKILL                   515     /* 515 Hurl 514 osfind, 513 osstat, 512 for Empower */
 #define MAX_PRE_REQ                 1364    /* Increased for awe --Owl 25/7/22 */
-#define MAX_SPELL_GROUP             434     /* Increased for awe --Owl 25/7/22 */
+#define MAX_SPELL_GROUP             433     /* REduced for shield removal --Brutus 28/7/22 */
 #define MAX_GROUPS                  53
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
@@ -1856,6 +1856,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_SPRING                    22
 #define OBJ_VNUM_TURRET                    40
 #define OBJ_VNUM_DART                      41
+#define OBJ_VNUM_WEAPONCHAIN               42
+#define OBJ_VNUM_SHIELDCHAIN               43
+#define OBJ_VNUM_ARROW                     44
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 
@@ -2046,14 +2049,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
-#define EGO_ITEM_UNCOMMON_SET           BIT_8
-#define EGO_ITEM_RARE_SET               BIT_9
-#define EGO_ITEM_EPIC_SET               BIT_10
-#define EGO_ITEM_LEGENDARY_SET          BIT_11
-#define EGO_ITEM_SETBONUS_1
-#define EGO_ITEM_SETBONUS_2
-#define EGO_ITEM_SETBONUS_3
-
+#define EGO_ITEM_CHAINED            BIT_8
 
 /*
  * Apply types (for affects).
@@ -3437,7 +3433,6 @@ extern int gsn_forager;
 extern int gsn_spyglass;
 extern int gsn_base;
 extern int gsn_miner;
-extern int gsn_hurl;
 extern int gsn_fire_flask;
 extern int gsn_frost_flask;
 extern int gsn_stun_flask;
@@ -3788,6 +3783,7 @@ DECLARE_DO_FUN( do_hide                         );
 DECLARE_DO_FUN( do_holylight                    );
 DECLARE_DO_FUN( do_home                         );      /* clan recall - Brutus */
 DECLARE_DO_FUN( do_hunt                         );      /* Ranger skill */
+DECLARE_DO_FUN( do_hurl                         );      /* hurl skill - smithy - Brutus */
 DECLARE_DO_FUN( do_idea                         );
 DECLARE_DO_FUN( do_immtalk                      );
 DECLARE_DO_FUN( do_dirtalk                      );
