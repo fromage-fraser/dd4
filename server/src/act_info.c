@@ -130,14 +130,14 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         }               
         
         if ( IS_OBJ_STAT( obj, ITEM_INVIS) )
-                strcat( buf, "{c(Invis){x " );
+                strcat( buf, "<39>(Invis)<0> " );
 
         if (( IS_AFFECTED( ch, AFF_DETECT_EVIL  ) || is_affected(ch, gsn_song_of_revelation))
              && IS_OBJ_STAT( obj, ITEM_EVIL ) )
-                strcat( buf, "{r(Red Aura){x " );
+                strcat( buf, "<88>(Red Aura)<0> " );
 
         if ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) && IS_OBJ_STAT( obj, ITEM_MAGIC ) )
-                strcat( buf, "{B(Magical){x " );
+                strcat( buf, "<27>(Magical)<0> " );
 
         /* Below is ugly, sorry -- Owl 4/3/22 */
 
@@ -153,37 +153,37 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
               || ( obj->value[3] == 304 )
               || ( obj->value[3] == 458 ) )
             && IS_AFFECTED( ch, AFF_DETECT_CURSE ) ) )
-                strcat( buf, "{b(Cursed){x " );
+                strcat( buf, "<19>(Cursed)<0> " );
 
         if ( IS_OBJ_STAT( obj, ITEM_TRAP) && IS_AFFECTED( ch, AFF_DETECT_TRAPS) )
-                strcat( buf, "{r(Trapped){x " );
+                strcat( buf, "<124>(Trapped)<0> " );
 
         if ( IS_OBJ_STAT( obj, ITEM_GLOW ) )
-                strcat( buf, "{Y(Glowing){x " );
+                strcat( buf, "<121>(Glowing)<0> " );
 
         if ( IS_OBJ_STAT( obj, ITEM_HUM ) )
-                strcat( buf, "{C(Humming){x " );
+                strcat( buf, "<123>(Humming)<0> " );
 
         if ( IS_OBJ_STAT( obj, ITEM_POISONED ) )
-                strcat( buf, "{M(Poisoned){x " );
+                strcat( buf, "<200>(<201>P<200>o<199>i<198>s<197>o<198>n<199>e<200>d<201>)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
-                strcat( buf, "{R(Searing){x " );
+                strcat( buf, "<202>Searing)<0> " );
         
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
-                strcat( buf, "{W(Imbued){x " );
+                strcat( buf, "<15>(Imbued)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
                 strcat( buf, "{W(Chained){x " );
         
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
-                strcat( buf, "{W(Sharp){x " );
+                strcat( buf, "<195>(Sharp)<0> " );
 
         if ( IS_OBJ_STAT( obj, ITEM_FORGED ) )
-                strcat( buf, "{B(Forged){x " );
+                strcat( buf, "<26>(Forged)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_BLADE_THIRST))
-                strcat(buf, "{R(Thirsty){x ");
+                strcat(buf, "<160>(Thirsty)<0> ");
 
         if (obj->timer > 0
             && obj->timer <= TIMER_DAMAGED
@@ -194,7 +194,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 || (obj->item_type == ITEM_ARMOR
                     && IS_OBJ_STAT(obj, ITEM_FORGED))))
         {
-                strcat(buf, "{R(Damaged){x ");
+                strcat(buf, "<196>(Damaged)<0> ");
         }
 
         if ( fShort )
