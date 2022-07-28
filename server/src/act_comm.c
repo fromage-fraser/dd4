@@ -119,10 +119,10 @@ void talk_channel ( CHAR_DATA *ch, char *argument, int channel, const char *verb
                 ch->silent_mode = 0;
 
         if ( channel == CHANNEL_INFO )
-                sprintf ( buf, "<INFO>: $t" );
+                sprintf ( buf, "<<INFO>: $t" );
 
         else if ( channel == CHANNEL_ARENA )
-                sprintf ( buf, "<Arena> $t" );
+                sprintf ( buf, "<<Arena> $t" );
 
         else if ( channel == CHANNEL_IMMTALK )
         {
@@ -1321,7 +1321,8 @@ void do_order( CHAR_DATA *ch, char *argument )
             || !str_prefix(arg2, "mppurge" )
             || !str_prefix(arg2, "oclanitem" )
             || !str_prefix(arg2, "cast")
-            || !str_prefix(arg2, "murder"))
+            || !str_prefix(arg2, "murder")
+            || !str_prefix(arg2, "kick"))
         {
                 return;
         }
@@ -1911,7 +1912,7 @@ void do_review (CHAR_DATA *ch, char *argument)
         char *when;
         bool found = FALSE;
 
-        const char *usage = "Syntax: review <chat|music|shout|info|arena|immtalk|dirtalk|clan|newbie>\n\r";
+        const char *usage = "Syntax: review <<chat|music|shout|info|arena|immtalk|dirtalk|clan|newbie>\n\r";
 
         const char *channels [] =
         {

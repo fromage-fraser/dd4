@@ -56,7 +56,7 @@ The Cleric Guildmaster stands here, patiently watching you.
 ~
 "Welcome, my child, to the Guild of the Clerics. Should you wish to
  practice a skill or spell that is within my area of expertise, simply
- type PRAC <skillname>. Typing PRAC without an argument will display what
+ type PRAC <<skillname>. Typing PRAC without an argument will display what
  skills or spells you may learn here".
 ~
 2|64|8192|16777216 128|8192 1000 S
@@ -107,11 +107,11 @@ the Armorer~
 The Armorer offers to show you some of his wares.
 ~
 "Welcome to my place of business, adventurer. Got something you're after?
- Just type BUY <Item>. If you want to know WHAT you can buy (usually a wise
- move) tpye LIST. If you're just after a specific type of item, say a shield,
+ Just type BUY <<Item>. If you want to know WHAT you can buy (usually a wise
+ move) type LIST. If you're just after a specific type of item, say a shield,
  type LIST shield, and I'll show you what I have that matches that
- description. If you want to sell me something, type SELL <item>. If you
- just want to know what it's worth, type VALUE <item> and I'll give you a
+ description. If you want to sell me something, type SELL <<item>. If you
+ just want to know what it's worth, type VALUE <<item> and I'll give you a
  free estimation".
 ~
 2|64|32768|16777216 512 1000 S
@@ -126,9 +126,9 @@ The Weaponsmith eyes you curiously.
 ~
 "Greetings stranger, or have we met before? Never mind. Either way, to
  see what I have for sale, type LIST. If you want to buy an item you see
- there, type BUY <item> (simple, huh?). If you want me to buy something off
- you, type SELL <item>. If you just want an estimation of the worth of your
- item, type VALUE <item> and I'll let you know what its worth for free".
+ there, type BUY <<item> (simple, huh?). If you want me to buy something off
+ you, type SELL <<item>. If you just want an estimation of the worth of your
+ item, type VALUE <<item> and I'll let you know what its worth for free".
 ~
 2|64|32768|16777216 2097152 1000 S
 99 0 0 0d0+0 0d0+0
@@ -139,7 +139,7 @@ mercenary master~
 the Mercenary Master~
 The Mercenary Master grunts as you enter.
 ~
-"Want a Mercenary? Then type LIST to see what I sell, then type BUY <name>
+"Want a Mercenary? Then type LIST to see what I sell, then type BUY <<name>
  to hire 'im. That's it. If yer wantin a quest, type QUEST REQUEST and i'll
  see what I can do.".
 ~
@@ -153,9 +153,9 @@ the Mage~
 The Mage smiles sweetly and asks how she may be of service.
 ~
 "To see what you can buy here," she begins sweetly, "type LIST. If you
- see something you'd like, type BUY <item>. If you have something you
- think I may like to buy, type SELL <item>. Alternatively I can give you
- a free appraisal of the item- simply type VALUE <item>".
+ see something you'd like, type BUY <<item>. If you have something you
+ think I may like to buy, type SELL <<item>. Alternatively I can give you
+ a free appraisal of the item- simply type VALUE <<item>".
 ~
 2|64|32768|16777216 8|16 1000 S
 99 0 0 0d0+0 0d0+0
@@ -172,7 +172,7 @@ Mitzak the Sage waves at you feebly as you enter his home.
 Mitzak the Sage greets you as you come in, and invites you to have a seat.
 He smiles dodderingly at you and asks if he can identify anything for you.
 He says 'If you would like me to identify an object, make sure you have it
-in your inventory, then type IDENTIFY <OBJECT>.  Or if you've just come to
+in your inventory, then type IDENTIFY <<OBJECT>.  Or if you've just come to
 hear an old adventurer tell tales of their exploits, well, have I got a
 tale for you...'  You thank him quickly and rise to leave.
 ~
@@ -188,7 +188,7 @@ The Pet Shop Owner smiles politely and waits for your request.
 "Greetings. You wish to buy a pet? Well, to see what I have in stock, type
  LIST. Be sure to note the Level of the items that interest you, as you can
  not buy a pet of higher level than yourself. When you see one that you want
- to buy, simply type BUY <pet>, and if you wish to name it, add the name that
+ to buy, simply type BUY <<pet>, and if you wish to name it, add the name that
  you want it to have to the same line, i.e, BUY mouse harold".
 ~
 2|64|32768|16777216 4 1000 S
@@ -202,7 +202,7 @@ The Mage Guildmaster welcomes you to his office.
 ~
 "Welcome, friend, to the Guild of the Mages. Should you wish to practice
  a skill or spell that is within my area of expertise, simply type PRAC
- <skillname>. Typing PRAC without an argument will display what skills or
+ <<skillname>. Typing PRAC without an argument will display what skills or
  spells you may learn here".
 ~
 2|64|1024|32768|16777216 8|16|32 1000 S
@@ -224,8 +224,13 @@ The Mage Guildmaster welcomes you to his office.
 & 95 'major protective magiks'
 & 95 'mana craft'
 & 95 'destructive magiks'
+& 95 'telepathy disciplines'
+& 95 'nature skills'
+& 95 'curative magiks'
+& 95 'harmful magiks'
 & 95 'death magiks'
 & 95 'necro base'
+& 95 'shield'
 & 30 'warlock base'
 & 30 'mage base'
 #31010
@@ -234,9 +239,9 @@ the Grocer~
 The Grocer smiles and welcomes you to her store.
 ~
 "To see what you can buy here," she begins sweetly, "type LIST. If you
- see something you'd like, type BUY <item>. If you have something you
- think I may like to buy, type SELL <item>. Also I can give you
- a free evaluation of the item- simply type VALUE <item>".
+ see something you'd like, type BUY <<item>. If you have something you
+ think I may like to buy, type SELL <<item>. Also I can give you
+ a free evaluation of the item- simply type VALUE <<item>".
 ~
 2|64|32768|16777216 4 1000 S
 99 0 0 0d0+0 0d0+0
@@ -247,10 +252,10 @@ dwarf baker~
 the Baker~
 The Baker, a rough-looking dwarf, demands your business.
 ~
-"Bread? Course I got bread! Thats why it's called a BAKERY. I also
+"Bread? Course I got bread! That's why it's called a BAKERY. I also
  got pies, rolls an' sandwiches. If ya want an exact list, then type LIST.
- If ya wanna buy something, then type BUY <item>. If ya think ya got sumptin'
- I might wanna buy, type SELL <item>, but it better not be rotten.
+ If ya wanna buy something, then type BUY <<item>. If ya think ya got sumptin'
+ I might wanna buy, type SELL <<item>, but it better not be rotten.
  Now buy up!"
 ~
 2|64|32768|16777216 4 1000 S
@@ -263,7 +268,7 @@ the Bartender~
 The Bartender grins smugly as he cleans a glass.
 ~
 "Want a drink, friend? Of COURSE you do. To see whats on tap, type LIST.
- If you see something you fancy, well, then type BUY <item>. OK?"
+ If you see something you fancy, well, then type BUY <<item>. OK?"
 ~
 2|64|32768|16777216 4 1000 S
 99 0 0 0d0+0 0d0+0
@@ -276,7 +281,7 @@ The Warrior Guildmaster stares at you grimly.
 ~
 "You want to train to fight? Good. You want to train to kill? Better. To
  see if I can help you, type PRAC, and that will list what you can learn
- currently. If you see something you want to learn, type PRAC <skill>.
+ currently. If you see something you want to learn, type PRAC <<skill>.
  Then you can kill Kill KILL!"
 ~
 2|64|16777216 4 1000 S
@@ -308,7 +313,7 @@ The Thief Guildmaster grins impishly at you.
 "Sooooo... How can I help you? You want to learn how to steal? How
  insulting! Are you insinuating that I am a- a thief? Listen, Thieves
  do not steal! We borrow... Now with that out of the way, type PRAC to see
- what you can learn, and PRAC <skill> to learn one of the skills shown."
+ what you can learn, and PRAC <<skill> to learn one of the skills shown."
 ~
 2|4|64|16384|16777216 3276 1000 S
 70 0 0 0d0+0 0d0+0
@@ -470,7 +475,7 @@ The Psionic Guildmaster greets you telepathically.
 ~
 "Greetings," intones the Guildmaster, his thoughts ringing in your head.
 "You wish to train in my arts? Very well. Type PRAC to see what you can
- learn from me, then PRAC <skill> to learn the skill that you desire.
+ learn from me, then PRAC <<skill> to learn the skill that you desire.
  Say... you have a NICE cranium..."
 ~
 2|16|64|16777216 128|8192 0 S
@@ -481,6 +486,9 @@ The Psionic Guildmaster greets you telepathically.
 & 95 'mental defense disciplines'
 & 95 'matter control disciplines'
 & 95 'energy control disciplines'
+& 95 'major protective magiks'
+& 95 'protective magiks'
+& 95 'alteration magiks'
 & 95 'telepathy disciplines'
 & 95 'body control disciplines'
 & 95 'mana control disciplines'
@@ -493,6 +501,7 @@ The Psionic Guildmaster greets you telepathically.
 & 95 'death magiks'
 & 30 'satanist base'
 & 30 'psionic base'
+& 95 'awe'
 #31027
 brawler guildmaster~
 the Brawler Guildmaster~
@@ -500,7 +509,7 @@ The Brawler Guildmaster bows before you.
 ~
 "Welcome, honorable student, to the most honorable Guild of the brawler. If
  you wish to learn here, type PRAC to see what I may teach you. If you see
- a skill you'd like to learn, type PRAC <skill> to learn it. Practice well,
+ a skill you'd like to learn, type PRAC <<skill> to learn it. Practice well,
  train hard, and dedicate yourself to the higher disciplines of the martial
  arts, that you may crush your enemies."
 ~
@@ -526,7 +535,7 @@ The phoenix form of the ShapeShifter Guildmaster welcomes you to her home.
 ~
 "Welcome to the ShapeShifter guild. Type PRAC to see what I can
  teach you, and if there is something I can teach you that you wish to learn,
- type PRAC <skill>."
+ type PRAC <<skill>."
 ~
 2|64|16777216 2048|16777216 1000 S
 70 0 0 0d0+0 0d0+0
@@ -2231,7 +2240,7 @@ E
 compendium book~
 This book contains excerpts from the biographies of some of the world's most
 famous Adventurers. To see if someone you know has an entry, try READ
-<character name>, i.e, read Daeron or read Githad, though neither are as
+<<character name>, i.e, read Daeron or read Githad, though neither are as
 yet in here.
 ~
 #31091
@@ -3689,9 +3698,9 @@ A sign says-
 
 "Hello! Welcome to the Anon Bank! You may:
 
- 1.To withdraw cash, type WITHDRAW <amount> <coin>, and your account
+ 1.To withdraw cash, type WITHDRAW <<amount> <<coin>, and your account
    will be automatically debited while the money is transferred to you.
- 2.To deposit cash, type DEPOSIT <amount> <coin>, and your account
+ 2.To deposit cash, type DEPOSIT <<amount> <<coin>, and your account
    will be automatically credited.
  3.To simply check your balance, type BALANCE.
 

@@ -4687,12 +4687,22 @@ void spell_awe ( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
+        if (ch == victim)
+        {
+                send_to_char("You are awestruck by your own brilliance!\n\r", ch);
+                return;
+        }
+
         if ( victim->fighting == ch && !saves_spell( level, victim ) )
         {
                 stop_fighting ( victim, TRUE);
-                act( "$N is in AWE of you!", ch, NULL, victim, TO_CHAR    );
-                act( "You are in AWE of $n!",ch, NULL, victim, TO_VICT    );
-                act( "$N is in AWE of $n!",  ch, NULL, victim, TO_NOTVICT );
+                act( "$N is in AWE of you, and refuses to continue fighting!", ch, NULL, victim, TO_CHAR    );
+                act( "You are in AWE of $n and refuse to continue fighting them!",ch, NULL, victim, TO_VICT    );
+                act( "$N is in AWE of $n, and refuses to continue fighting them!",  ch, NULL, victim, TO_NOTVICT );
+        }
+        else {
+                send_to_char( "You fail to inspire awe in your enemy.\n\r", ch );
+                return;
         }
         return;
 }
@@ -6900,6 +6910,10 @@ void spell_demon_flames( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char( "Summoned demons breathe on you; you are surrounded by a fiery aura.\n\r", victim );
         act( "$c is surrounded by the fiery breath of summoned demons.", victim, NULL, NULL, TO_ROOM );
+
+        check_group_bonus(ch);
+
+        return;
 }
 
 
@@ -7026,6 +7040,10 @@ void spell_hand_of_lucifer( int sn, int level, CHAR_DATA *ch, void *vo )
         act( "{RA giant hand grabs you, preventing any chance of escape!{x",  ch, NULL, victim, TO_VICT);
         act( "Dark mist forms into a hand which grabs $N, preventing $S escape.",
             ch, NULL, victim, TO_NOTVICT );
+        
+        check_group_bonus(ch);
+        
+        return;
 }
 
 
@@ -7221,6 +7239,7 @@ void spell_animate_weapon (int sn, int level, CHAR_DATA *ch, void *vo)
 
                 act("Your weapon slips from your hands!", ch, NULL, victim, TO_VICT);
                 act("$N's weapon slips from $s hands.", ch, NULL, victim, TO_NOTVICT);
+                check_group_bonus(ch);
                 if (ch != victim)
                         send_to_char("Success!\n\r",ch);
                 return;
@@ -7540,14 +7559,14 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         && IS_NPC(victim)
         && victim->pIndexData->vnum != BOT_VNUM)
     {
-        act ("{W$C is too alert for you to unleash <242>c<251>h<242>a<251>o<242>s<0> energy on $m!{x",
+        act ("<15>$C is too alert for you to unleash <242>c<251>h<242>a<251>o<242>s<0> <15>energy on $m!<0>",
                 ch, NULL, victim, TO_CHAR);
         return;
     }
 
     if ( !IS_EVIL( ch ) )
     {
-        act ("{WYou are not evil enough to summon <242>c<251>h<242>a<251>o<242>s<0> energy.{x",
+        act ("<15>You are not evil enough to summon <242>c<251>h<242>a<251>o<242>s<0><15> energy.<0>",
              ch, NULL, victim, TO_CHAR);
         return;
     }

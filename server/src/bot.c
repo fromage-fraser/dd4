@@ -193,8 +193,8 @@ void do_bot (CHAR_DATA *ch, char *argument)
         else
                 send_to_char("Usage: bot list\n\r"
                              "       bot status\n\r"
-                             "       bot enter <name> <level> [team]\n\r"
-                             "       bot remove <name>\n\r", ch);
+                             "       bot enter <<name> <<level> [team]\n\r"
+                             "       bot remove <<name>\n\r", ch);
 }
 
 
@@ -304,7 +304,7 @@ void do_bot_enter (CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         AFFECT_DATA *paf;
 
-        const char *usage = "Syntax: bot enter <bot name> <bot level> [team]\n\r";
+        const char *usage = "Syntax: bot enter <<bot name> <<bot level> [team]\n\r";
 
         if (IS_NPC(ch))
                 return;

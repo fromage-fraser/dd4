@@ -743,7 +743,7 @@ high pitched screech-like sounds.
 0 0
 0 0 0
 >all_greet_prog 100~
-   say (roughly translated){c <Good job. You want prize now?>{x
+   say (roughly translated){c <<Good job. You want prize now?>{x
 ~
 >speech_prog 100 Yes.~
    mpoload 26034

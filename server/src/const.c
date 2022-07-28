@@ -2337,6 +2337,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_inner_fire,                              0 },
         { &gsn_synaptic_blast,                          0 },
         { &gsn_ultrablast,                              0 },
+        { &gsn_awe,                                     0 },
         { &gsn_death_field,                             0 },
         { &gsn_disintergrate,                           0 },
 

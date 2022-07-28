@@ -93,8 +93,8 @@ endif
 	mpecho {wTestris cricks his neck and stretches his arms.{x
 	mpecho {wTestris's whip {x{r***{x {RDEVASTATES{x {r***{x {wSogesk!{x
 	mpecho {wTestris's whip {x{r***{x {RDEVASTATES{x {r***{x {wSogesk!{x
-	mpecho {wTestris's whip {x{r***{x {RANNIHILATES{X {r***{x {wSogesk!{x
-	mpecho {wTestris's whip {x{r-=<**OBLITERATES**>=-{x {wSogesk!{x
+	mpecho {wTestris's whip <0><124>***<0> <196>ANNIHILATES<0> <124>***<0> {wSogesk!{x
+	mpecho {wTestris's whip <0><124>-=<<**<160><558>OBLITERATES<0><124>**>=-<0> {wSogesk!{x
 	mpecho Sogesk cries out with every blow.
 	emote bends over, breathing heavily
 	say Thirsty work!  It can help to have a few people working in rotation to deliver the beating.

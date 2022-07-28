@@ -666,6 +666,7 @@ mpecho {dWhispered promises of power and wisdom enter your mind.{x
 & 105 'forage'
 & 105 'resistance magiks'
 & 105 'musicianship'
+& 105 'awe'
 
 #28019
 green mage~
@@ -836,22 +837,22 @@ The tattoo of Xuul, God of Destruction crowning his forehead looks as if it
 belongs there, as if he was born with it.
 
 Firetongue is using:
-<floating nearby>   {Y(Glowing){x {C(Humming){x {rpure hatred{x
-<worn on head>      {rDeceit{x
-<worn around neck>  {Y(Glowing){x {ban Elder sign{x
-<worn around neck>  {Y(Glowing){x {ban Elder sign{x
-<worn on arms>      {dBones of the Nexus beast{x
-<worn around wrist> {r(Cursed){x {dshackles of the damned{x
-<worn around wrist> {r(Cursed){x {dshackles of the damned{x
-<worn on hands>     {dsome black velvet gloves{x
-<worn on finger>    {c(Invis){x {bring of the Dark Path{x
-<worn on finger>    {c(Invis){x {bring of the Dark Path{x
-<worn on body>      {C(Humming){x {da rune covered breastplate{x
-<worn about body>   {c(Invis){x {bshadows{x
-<worn about waist>  {ra belt of thorns{x
-<secured to belt>   {ban oxskin pouch{x
-<worn on legs>      {rGreaves of War{x
-<worn on feet>      {C(Humming){x {bsome boots of searing shadows{x
+<<floating nearby>   {Y(Glowing){x {C(Humming){x {rpure hatred{x
+<<worn on head>      {rDeceit{x
+<<worn around neck>  {Y(Glowing){x {ban Elder sign{x
+<<worn around neck>  {Y(Glowing){x {ban Elder sign{x
+<<worn on arms>      {dBones of the Nexus beast{x
+<<worn around wrist> {r(Cursed){x {dshackles of the damned{x
+<<worn around wrist> {r(Cursed){x {dshackles of the damned{x
+<<worn on hands>     {dsome black velvet gloves{x
+<<worn on finger>    {c(Invis){x {bring of the Dark Path{x
+<<worn on finger>    {c(Invis){x {bring of the Dark Path{x
+<<worn on body>      {C(Humming){x {da rune covered breastplate{x
+<<worn about body>   {c(Invis){x {bshadows{x
+<<worn about waist>  {ra belt of thorns{x
+<<secured to belt>   {ban oxskin pouch{x
+<<worn on legs>      {rGreaves of War{x
+<<worn on feet>      {C(Humming){x {bsome boots of searing shadows{x
 [used as light]     {Y(Glowing){x {dan oath of Vengeance{x
 [held in hand]      {C(Humming){x {drune of warding{x
 [weapon]            {c(Invis){x {Y(Glowing){x {C(Humming){x {M(Poisoned){x
@@ -5089,7 +5090,7 @@ engraving~
 Upon closer examination there are actually numerous engravings. They are just
 set close together. Some of them read; "East then sign, west and death, east
 then eye.", "Wibble!", "The bunnies agreed to it. Should be great.",
-"<Unreadable>", "The Scifi channel is run by idiots. Here's to their
+"<<Unreadable>", "The Scifi channel is run by idiots. Here's to their
 bankruptcy.", "If you can't beat em, shoot 'em instead.", "Microsoft Messenger
 is a damn virus. A virus, I say!", "Draagdim was a total mess." "Have you
 hugged your friendly Immie today?", "Nina is the traitor? That's bullcrap

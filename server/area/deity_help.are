@@ -15,7 +15,7 @@ the deity system works, and how you may use it:
     help deity prayers          Prayers to Deities
 
 The following commands may be used by players to gain information about
-and interact with deities; read the respective online HELP entires for
+and interact with deities; read the respective online HELP entries for
 each command for details.
 
     pantheon                    View the Pantheon of Gods
@@ -74,21 +74,21 @@ For more information, read the help entries listed in 'HELP DEITY'.
 {W
 The Pantheon of Gods{x
 
-The 'Pantheon' is the total collection of deities exisiting within the
+The 'Pantheon' is the total collection of deities existing within the
 Domain.  There are many deities, good and evil natured, some warlike and
 others peaceful.  They vie constantly for dominance within the Pantheon.
 At any point in time, good, neutral or evil deities will be dominant.
 Deities who are dominant are able to exert powerful effects on their
 followers and can influence the followers of other deities in good or bad
 ways.  Deities who are not highly ranked within the Pantheon have much
-weaker powers, and answer the prayers of their worshipers less effectively.
+weaker powers, and answer the prayers of their worshippers less effectively.
 
 You may view the Pantheon by using the PANTHEON command.  It will list all
 of the deities, and the favour that you have with each.  Favour is ranked
 from 'strong favour' through to 'strong disfavour'.
 
 You may view a description of any deity within the Pantheon by entering
-'PANTHEON <deity name>'.
+'PANTHEON <<deity name>'.
 
 With the exception of their patron deity, if they have one, characters can
 not know how individual deities are ranked within the Pantheon (i.e. how
@@ -105,7 +105,7 @@ See 'HELP DEITY' for more information.
 
 0 PANTHEON~
 Usage: pantheon
-Usage: pantheon <deity name>
+Usage: pantheon <<deity name>
 
 PANTHEON without argument lists the Pantheon of the Gods: their names and
 titles, and what favour you have with each.  It will also indicate your
@@ -143,7 +143,7 @@ personality of the deity and the way you behave in the Domain.  Important
 factors include your alignment relative to the deity's alignment, your
 race and your class.  Use the PANTHEON command for a description of the
 deity and a list of classes and races that they favour and disfavour
-(enter PANTHEON for a list of deities, and 'PANTHEON <deity name>' for
+(enter PANTHEON for a list of deities, and 'PANTHEON <<deity name>' for
 specific information).  Depending on the nature of the deity, your
 aggressiveness or helpfulness will also influence your favour.
 
@@ -163,12 +163,12 @@ Patron Deities{x
 You have the option of selecting a deity within the Pantheon as your
 'patron'.  You will then be able to 'pray' for assistance or guidance from
 that deity.  There are certain restrictions placed on you successfully
-chosing a patron: you must be at least level 15, and you must be in
+choosing a patron: you must be at least level 15, and you must be in
 favour, or at least close to favour, with that deity (determined by using
 the PANTHEON command).
 
 You must beg a deity for them to give you patronage by using the PRAY
-command: 'PRAY PATRONAGE <deity name>'.  The worst thing that can happen
+command: 'PRAY PATRONAGE <<deity name>'.  The worst thing that can happen
 to you when you pray for patronage is that you will not be accepted as a
 follower.  Once you have a patron, you may then PRAY normally (see 'HELP
 DEITY PRAYERS' and 'HELP PRAY').
@@ -201,7 +201,7 @@ and protective Gods can rescue you from trouble or death or protect you
 from danger and injury.
 
 For a list of prayers available to you, enter PRAY without argument.
-Enter 'PRAY <prayer name>' or 'PRAY <prayer name> <target>' as necessary
+Enter 'PRAY <<prayer name>' or 'PRAY <<prayer name> <<target>' as necessary
 to channel your patron's power.
 
 Whether your prayers are answered depends on your current favour with your
@@ -221,19 +221,19 @@ See 'HELP DEITY' for more information.
 
 0 PRAY~
 Usage: pray
-Usage: pray <prayer name>
-Usage: pray <prayer name> <target>
-Usage: pray patronage <deity name>
+Usage: pray <<prayer name>
+Usage: pray <<prayer name> <<target>
+Usage: pray patronage <<deity name>
 Usage: pray patronage release
 
 Pray to a deity for patronage, or pray for assistance from your patron.
 
 Typing PRAY alone gives you a list of prayers available to you if you have
-chosen a patron.  Enter 'PRAY <prayer name>' or 'PRAY <prayer name>
-<target>' to use these prayers.
+chosen a patron.  Enter 'PRAY <<prayer name>' or 'PRAY <prayer name>
+<<target>' to use these prayers.
 
 If you don't have a patron, you can beg a deity to accept you as a follower
-by entering 'PRAY PATRONAGE <deity name>'.  You can attempt to leave the
+by entering 'PRAY PATRONAGE <<deity name>'.  You can attempt to leave the
 service of your patron by entering 'PRAY PATRONAGE RELEASE'.
 
 See 'HELP DEITY PATRON' and 'HELP DEITY PRAYERS' for background, and 'HELP
@@ -259,7 +259,7 @@ Pray to your patron for increased power and skill during melee.
 
 
 0 'PRAYER LOCATE'~
-Usage: pray locate <target>
+Usage: pray locate <<target>
 
 Pray to your patron to reveal the whereabouts of any creature within the
 Domain.  You may locate other players.
@@ -267,7 +267,7 @@ Domain.  You may locate other players.
 
 
 0 'PRAYER WEAKEN'~
-Usage: pray weaken <target>
+Usage: pray weaken <<target>
 
 Pray for your patron to weaken any creature, where ever they may reside.
 If you are clanned, you may target other players, so long as they are
@@ -276,7 +276,7 @@ within your pkilling range.
 
 
 0 'PRAYER REVEAL'~
-Usage: pray reveal <target>
+Usage: pray reveal <<target>
 
 Pray for your patron to reveal information about any creature, where ever
 they may be in the Domain.  If you are clanned, you may target other
@@ -329,7 +329,7 @@ Pray to your patron for safe passage through the dangerous wilderness.
 
 
 0 'PRAYER TRANSPORT'~
-Usage: pray transport <target>
+Usage: pray transport <<target>
 
 Pray to your patron for transportation to any creature within the Domain.
 You will not be transported to other players.
@@ -337,7 +337,7 @@ You will not be transported to other players.
 
 
 0 'PRAYER DEATH'~
-Usage: pray death <target>
+Usage: pray death <<>target>
 
 Pray for your patron to deliver instant death to any creature at your
 location.  You may not target other players.
