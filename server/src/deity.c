@@ -545,7 +545,7 @@ void do_pantheon (CHAR_DATA *ch, char *argument)
                         "Half-Dragon", "Halfling", "Dwarvish", "Centaur",
                         "Drow", "Troll", "Alaghi", "Hobgoblin", "Yuan-ti",
                         "Fae", "Sahuagin", "Tiefling", "Jotun", "Genasi",
-                        "Illithid"};
+                        "Illithid", "Grung"};
 
         const char *classes [MAX_CLASS + MAX_SUB_CLASS -1] = {"Mage", "Cleric",
                         "Thief", "Warrior", "Psionic", "Shapeshifter",

@@ -1209,7 +1209,7 @@ void mobile_update( void )
                     && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB)
                     && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE)
                     && (!IS_SET(ch->act, ACT_STAY_AREA)
-                        || pexit->to_room->area == ch->in_room->area))
+                        || pexit->to_room->area == ch->in_room->area) )
                 {
                         move_char(ch, door);
 
