@@ -578,17 +578,17 @@ A modular dart component for an Engineers turret.~
 0~ 0~ 0~ 0~
 3 0 0
 #42
-weaponchain chain~
-weaponchain chain~
-A Weaponchain with a springloaded return mechanism.~
+Wrench Crow~
+Enchanted Wrench of the Crow~
+An expertly crafted wrench glows faintly.~
 ~
 8 0 1
 0~ 0~ 0~ 0~
 3 0 0
 #43
-shieldchain chain~
-shieldchain chain~
-A Shieldhain with a springloaded return mechanism.~
+Splayed Wings Crow~
+Splayed Wings of the Crow~
+A cloak with metallic, played fan blades rests here.~
 ~
 8 0 1
 0~ 0~ 0~ 0~
@@ -597,6 +597,30 @@ A Shieldhain with a springloaded return mechanism.~
 arrow module~
 arrow module~
 A modular arrow component for an Engineers turret.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#45
+Huntsmiths Pauldrons~
+Huntsmiths pauldrons of the flame~
+TBD.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#46
+Huntsmiths Spaulders~
+Huntsmiths spaulders of the flame~
+TBD.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#47
+Huntsmiths Boots~
+Huntsmiths boots of the flame~
+TBD.~
 ~
 8 0 1
 0~ 0~ 0~ 0~
@@ -1547,6 +1571,22 @@ The long lost epic Set of the Immortals. But actually this is just a test.
 A 34 -1
 A 27 -1
 A 14 100
+#3
+uncommon crow~
+The Smithys Set of the Crow. 
+Crow were the pseudo pets of the Smiths, often seen perching across the Smithys Forge in Winter months basking in teh heat of the Forge, and scavenging any food scraps.
+An Ancient Forgeing process embues the essense of Crow into the armour sets allowing it to take on properties of the black feathered denizens.
+~
+42 43 0 0 0
+2 2 0 0 0
+A 27 -1
+#4
+rare huntsmith~
+somethig goes here...
+~
+45 46 47 0 0
+3 3 3 0 0
+A 27 -1
 #0
 
 #SPECIALS

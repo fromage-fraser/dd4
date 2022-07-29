@@ -3084,11 +3084,9 @@ void do_gather (CHAR_DATA *ch, char *arg)
 void do_smelt (CHAR_DATA *ch, char *argument)
 {
        
-        /*  ROOM_INDEX_DATA *pRoomIndex; */
         char            arg[MAX_INPUT_LENGTH];
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
-        /*   int             percent; */
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
@@ -3156,12 +3154,6 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                         titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
-
-                ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_titanium = (ch->smelted_titanium + titanium);
-                ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
-                ch->smelted_electrum = (ch->smelted_electrum + electrum);
-                ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
         }
         else if (obj->item_type == ITEM_ARMOR && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
         {
@@ -3176,11 +3168,11 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
 
-                ch->smelted_steel = (ch->smelted_steel + steel);
-                ch->smelted_titanium = (ch->smelted_titanium + titanium);
-                ch->smelted_adamantite = (ch->smelted_adamantite + adamantite);
-                ch->smelted_electrum = (ch->smelted_electrum + electrum);
-                ch->smelted_starmetal = (ch->smelted_starmetal + starmetal);
+                ch->smelted_steel += steel;
+                ch->smelted_titanium += titanium;
+                ch->smelted_adamantite += adamantite;
+                ch->smelted_electrum += electrum;
+                ch->smelted_starmetal += starmetal;
         }
         else
         {
@@ -3189,7 +3181,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         }
 
         act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);        
+        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
+        smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
         sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
         extract_obj(obj);        
@@ -3206,7 +3199,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
         char            arg2[MAX_INPUT_LENGTH];
 
         arg = one_argument(arg, arg1);
-        arg = one_argument(arg, arg2);
+        arg = one_argument(arg, arg2);    
 
         if (IS_NPC(ch))
                 return;
@@ -3230,11 +3223,12 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
-                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
+
+                        if(ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) 
                         {
                                 sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
-                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
+                                ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
                                 blueprint_list[i].blueprint_damage[1] 
                                 );
@@ -3263,11 +3257,11 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
                 {
-                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] > 0)
+                        if( ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)] > 0)
                         {
                                 sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
-                                ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)],
+                                ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
                                 blueprint_list[i].blueprint_damage[1] 
                                 );

@@ -150,6 +150,11 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Gold        %d\n", ch->gold);
         fprintf(fp, "Silver      %d\n", ch->silver);
         fprintf(fp, "Copper      %d\n", ch->copper);
+        fprintf(fp, "Steel       %d\n", ch->smelted_steel);
+        fprintf(fp, "Titanium    %d\n", ch->smelted_titanium);
+        fprintf(fp, "Adamantite  %d\n", ch->smelted_adamantite);
+        fprintf(fp, "Electrum    %d\n", ch->smelted_electrum);
+        fprintf(fp, "Starmetal   %d\n", ch->smelted_starmetal);
         fprintf(fp, "Bank        %d\n", ch->pcdata->bank);
         fprintf(fp, "Bounty      %d\n", ch->pcdata->bounty);
         fprintf(fp, "Exp         %d\n", ch->exp);
@@ -628,6 +633,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Aggro_Dam", ch->aggro_dam, fread_number( fp, &stat ));
                         KEY("Align", ch->alignment, fread_number( fp, &stat ));
                         KEY("Armr", ch->armor, fread_number( fp, &stat ));
+                        KEY("Adamantite", ch->smelted_adamantite, fread_number( fp, &stat ));
                         KEY("AllowLook", ch->pcdata->allow_look, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Aff"))
@@ -798,6 +804,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         }
 
                         KEY("Exp", ch->exp, fread_number( fp, &stat ));
+                        KEY("Electrum", ch->smelted_electrum, fread_number( fp, &stat ));
                         break;
 
                     case 'F':
@@ -919,6 +926,8 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("SplPrac", ch->pcdata->int_prac, fread_number( fp, &stat ));
                         KEY("StatTrain", ch->pcdata->stat_train, fread_number( fp, &stat ));
                         KEY("SpellAttk", ch->pcdata->spell_attacks, fread_number( fp, &stat ));
+                        KEY("Steel", ch->smelted_steel, fread_number( fp, &stat ));
+                        KEY("Starmetal", ch->smelted_starmetal, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Saved"))
                         {
@@ -972,6 +981,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
 
                     case 'T':
                         KEY("Trst", ch->trust, fread_number( fp, &stat ));
+                        KEY("Titanium", ch->smelted_titanium, fread_number( fp, &stat ));
 
                         if (!str_cmp(word, "Ttle"))
                         {

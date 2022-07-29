@@ -595,6 +595,8 @@ int     gsn_engrave;
 int     gsn_discharge;
 int     gsn_trigger;
 int     gsn_dart;
+int     gsn_arrow;
+int     gsn_turret;
 int     gsn_launcher;
 int     gsn_reflector;
 int     gsn_arrestor;
