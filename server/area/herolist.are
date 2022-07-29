@@ -30,8 +30,8 @@ Here we honour those who attained the mighty rank of {WHERO{x on DD2:
 {wMitakasi{M      (Warrior)               {wRevenge{R       (Werewolf){x
 {wKakita{G        (Cleric)                {wBleurgh{B       (Ninja){x
 {wSquee{R         (Werewolf)              {wMonopoly{M      (Barbarian){x
-{wDachau{W        (Witch)                 {wDragco{M        (Warrior){x
-{wVortigern{M     (Knight)                {wDarksol{W       (Satanist){x
+{wDach{W          (Witch)                 {wDragco{M        (Warrior){x
+{wVortigern{M     (Knight)                {wDarksol{W       (Infernalist){x
 {wWarblade{B      (Thief)                 {wSherry{Y        (Necromancer){x
 {x
 
@@ -81,7 +81,7 @@ Here we honour those who attained the mighty rank of {WHERO{x on DD3
 {WGreel{x        {M(Warrior){x
 {WRangor{x       {B(Ninja){x
 {WNazareh{x      {M(Warrior){x
-{WBelial{x       {W(Satanist){x
+{WBelial{x       {W(Infernalist){x
 
 See also HELP PAST HEROLIST, HELP DD2 HEROES, HELP PAST LEGENDS, and HELP PAST PKILLERS.
 ~
@@ -132,7 +132,7 @@ Here we honour those most legendary adventurers from DD3
 
 {WRank    Name            Class       Greatest Fame
 {W-------------------------------------------------
-{W1st     Belial          Satanist        28181{x
+{W1st     Belial          Infernalist     28181{x
 {Y2nd     Malignant       Witch           23169{x
 {G3rd     Soriki          Shifter         15466{x
 {G4th     Rogun           Mage            12890{x
@@ -146,7 +146,7 @@ Here we honour those most legendary adventurers from DD3
 {c12th    Loong           Werewolf         7768{x
 {w13th    Serra           Brawler          7179{x
 {w14th    Drakkyn         Shifter          7013{x
-{w15th    Darkmyst        Satanist         6718{x
+{w15th    Darkmyst        Infernalist      6718{x
 {w16th    Xeddicus        Mage             6312{x
 {w17th    Volrath         Mage             6185{x
 {w18th    Nimbus          Monk             5620{x

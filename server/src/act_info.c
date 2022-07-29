@@ -1339,7 +1339,7 @@ void do_score (CHAR_DATA *ch, char *argument)
         else if ( ch->alignment > -350 ) strcat( buf1, "mean.\n\r"    );
         else if ( ch->alignment > -700 ) strcat( buf1, "evil.\n\r"    );
         else if ( ch->alignment > -900 ) strcat( buf1, "demonic.\n\r" );
-        else strcat( buf1, "satanic.\n\r" );
+        else strcat( buf1, "diabolical.\n\r" );
 
         if (ch->pcdata->condition[COND_DRUNK] > 1)
                 strcat(buf1, "You are drunk.\n\r");
@@ -3110,7 +3110,7 @@ void show_slist (CHAR_DATA *ch, int number)
             case SUB_CLASS_BOUNTY: do_help(ch, "sbounty"); break;
             case SUB_CLASS_THUG: do_help(ch, "sthug"); break;
             case SUB_CLASS_KNIGHT: do_help(ch, "sknight"); break;
-            case SUB_CLASS_SATANIST: do_help(ch, "ssatanist"); break;
+            case SUB_CLASS_INFERNALIST: do_help(ch, "sinfernalist"); break;
             case SUB_CLASS_WITCH: do_help(ch, "switch"); break;
             case SUB_CLASS_WEREWOLF: do_help(ch, "swerewolf"); break;
             case SUB_CLASS_VAMPIRE: do_help(ch, "svampire"); break;
