@@ -3376,7 +3376,7 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
                                             && ch->pcdata->deity_patron < NUMBER_DEITIES)
                                                 i = deity_info_table[ch->pcdata->deity_patron].name;
                                         else if (ch->sub_class == SUB_CLASS_INFERNALIST)
-                                                i = "Infernal Powers";
+                                                i = "demonic entities";
                                         else
                                                 i = "God";
                                         break;
