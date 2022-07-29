@@ -3092,15 +3092,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         int             adamantite=0;
         int             titanium=0;
         int             steel=0;
-        SMELTING_DATA       *smelted; 
 
-   /*     smelted->smelted_steel=0;
-        smelted->smelted_titanium=0;
-        smelted->smelted_adamantite=0;
-        smelted->smelted_electrum=0;
-        smelted->smelted_starmetal=0;
-
-*/
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
         return;
@@ -3162,13 +3154,6 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                         titanium = (obj->level/10);
                 if (number_percent() >= 30)
                         steel = (obj->level/3);
-
-                smelted->smelted_steel = steel;
-                smelted->smelted_titanium       = titanium;
-                smelted->smelted_adamantite     = adamantite;
-                smelted->smelted_electrum       = electrum;
-                smelted->smelted_starmetal      = starmetal;
-                
         }
         else if (obj->item_type == ITEM_ARMOR && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
         {
@@ -3197,8 +3182,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
         act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
-        smelted_to_char(smelted, ch, COINS_ADD);  
-        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", smelted->smelted_steel, titanium, adamantite, electrum, starmetal);
+        smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
+        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
         send_to_char (buf, ch);
         extract_obj(obj);        
 }

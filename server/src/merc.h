@@ -200,7 +200,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  7
+#define BLUEPRINTS_MAX  10
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -4324,7 +4324,7 @@ ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir )
 void  do_auction                        args( ( CHAR_DATA *ch, char *argument ) );
 void  calc_coin_weight                  args( ( CHAR_DATA *ch ) );
 void  coins_to_char                     args( ( int numcoins, CHAR_DATA *ch, int mode ) );
-void  smelted_to_char                   args( ( SMELTING_DATA *smelted, CHAR_DATA *ch, int mode ) );
+void  smelted_to_char                   args( ( int st, int ti, int ad, int el, int sm, CHAR_DATA *ch, int mode ) );
 void  coins_from_char                   args( ( int numcoins, CHAR_DATA *ch ) );
 void  coin_crunch                       args( ( int numcoins , COIN_DATA *coins ) );
 int   total_coins_char                  args( ( CHAR_DATA *ch ) );

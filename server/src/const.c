@@ -290,8 +290,11 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "weaponchain" },
         { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "shieldchain" },
         { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },   
-        { "wrench",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
-        { "wings",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" }
+        { "wrench of the crow",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
+        { "wings of the crow",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
+        { "huntsmiths pauldrons",      "Huntsmiths pauldrons of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" },
+        { "huntsmiths spaulders",      "Huntsmiths spaulders of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" },
+        { "hunstmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
