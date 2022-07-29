@@ -5546,7 +5546,7 @@ bool can_use_poison_weapon(CHAR_DATA *ch)
             || ch->sub_class == SUB_CLASS_WITCH
             || ch->sub_class == SUB_CLASS_WEREWOLF
             || ch->sub_class == SUB_CLASS_VAMPIRE
-            || ch->sub_class == SUB_CLASS_SATANIST
+            || ch->sub_class == SUB_CLASS_INFERNALIST
             || ch->sub_class == SUB_CLASS_NECROMANCER)
                 return TRUE;
 

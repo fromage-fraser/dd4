@@ -2483,7 +2483,7 @@ bool spec_demon( CHAR_DATA *ch )
                                 min_level = 20; spell = "wither";         break;
                     case  7:
                     case  8: if ( CAN_SPEAK(ch) ) { do_say(ch,"{RBe still, carrion!{x"); }
-                                min_level = 18; spell = "hand of lucifer";break;
+                                min_level = 18; spell = "abyssal hand";break;
                     case  9: if ( CAN_SPEAK(ch) ) { do_say(ch,"{RFEEL MY MASTER'S CURSE!{x"); }
                                 min_level = 40; spell = "hex";            break;
                     case  10:

@@ -7,7 +7,7 @@ sailor young~
 a young sailor~
 A young sailor is here swimming through the ocean.
 ~
-The sailor looks exausted.
+The sailor looks exhausted.
 He must have been shipwrecked, or maybe he was made to walk the plank...
 ~
 4|64 0 0 S
@@ -55,7 +55,7 @@ hammer head shark~
 a hammerhead shark~
 A hammer head shark attacks you !
 ~
-Arrg, what a hassel !
+Arrg, what a hassle!
 Getting attacked by sharks is not a good idea.
 ~
 2|32|64 0 -300 S
@@ -65,9 +65,9 @@ Getting attacked by sharks is not a good idea.
 #18805
 small fish~
 a small fish~
-A small fish oggles you with it's big eyes.
+A small fish ogles you with its big eyes.
 ~
-The fish is looking at you as if to say "What are you doing down here".
+The fish is looking at you as if to say "What are you doing down here?"
 You wonder the same thing yourself.
 ~
 2|64|128 0 100 S
@@ -81,7 +81,7 @@ A mystical looking man in a brown robe watches you carefully.
 ~
 The man speaks as you walk closer to look at him --
 "My name is Dahij. I can see into the future. I see you many years from now as a
-powerful adventurer, wreaking havok against the forces of evil."
+powerful adventurer, wreaking havoc against the forces of evil."
 
 He points a finger at you and continues --
 "You have been chosen to perform a special deed. One that requires courage,
@@ -106,7 +106,7 @@ accept the quest, and it will begin."
 & 85 'enchantment magiks'
 & 85 'dark magiks'
 & 85 'death magiks'
-& 30 'satanist base'
+& 30 'infernalist base'
 #0
 
 
@@ -169,7 +169,7 @@ You are sailing out to sea.
 Be wary of unpredictable weather patterns and make sure you keen an eye on the
 sun to navigate your way over the ocean.
 The port opens up to the wide open ocean to the west.
-You can head back to the safety of terra-firma to the east.
+You can head back to the safety of Terra Firma to the east.
 ~
 0 8192 7
 D3
@@ -180,9 +180,11 @@ S
 #18801
 Caught in a rip !~
 You are being pulled further out to sea and there is nothing you can do
-about it !
-The power of the rip is enormous.  It's as if some thing is pulling the sea out
+about it!
+
+The power of the rip is enormous.  It's as if something is pulling the sea out
 from under you just as they might pull out a rug.
+
 You're just going to have to ride it out and see where it leads.
 ~
 0 0 7
@@ -193,7 +195,7 @@ D3
 S
 #18802
 Travelling along a great rip~
-You are racing westwards over the sea.  The rip has complete comtrol of your
+You are racing westwards over the sea.  The rip has complete control of your
 vessel and you just have to hang on for the ride.
 ~
 0 0 7
@@ -206,7 +208,7 @@ S
 Calmer waters~
 You have reached calmer waters.
 The sea here is unnaturally flat and placid.   Something is very wrong.  You
-can't even sea any sea birds - infact, there are no signs of life at all.
+can't even see any sea birds - in fact, there are no signs of life at all.
 You can head in any direction.  Although you can't see anything anywhere.
 ~
 0 0 7
@@ -292,12 +294,15 @@ S
 #18807
 Floating beside a dark Sloop~
 You pull up beside a ship-wrecked dark sloop.
+
 You can't see any movement onboard, nevertheless it would be wise to keep at a
-cautious distance incase the occupants are pirates.
+cautious distance in case the occupants are pirates.
+
 At the bow of the boat the is a wooden plaque, it must have the name of the ship
 engraved upon it.
-The sea continues in all directions apart from west where jaggard rocks prevent
-movement..
+
+The sea continues in all directions apart from west, where jagged rocks prevent
+movement.
 ~
 0 0 7
 D0
@@ -314,7 +319,7 @@ D2
 0 -1 18808
 E
 wooden plaque~
-The plaque is made of some kind of dark wood and is emblazened with the name -
+The plaque is made of some kind of dark wood and is emblazoned with the name -
 
              "SKARAE"
 ~
@@ -322,7 +327,7 @@ S
 #18808
 Lost at sea~
 You're completely lost.
-The sea can take your life if you don't respect it.  Do you respect it ?
+The sea can take your life if you don't respect it.  Do you respect it?
 You can see nothing on the horizon but more sea.
 ~
 0 0 7
@@ -361,7 +366,7 @@ D3
 S
 #18810
 Out to sea~
-The sea here is...well...blue.
+The sea here is, well, blue.
 It's very blue.   And very big.   And very wet.
 You're very lost.
 ~
@@ -385,7 +390,7 @@ D3
 S
 #18811
 Out to sea~
-Gee, what a supprise you're still at sea.  Being lost at sea is not good for
+Gee, what a surprise you're still at sea.  Being lost at sea is not good for
 your skin at all.
 You can head north, towards the sea.  East towards the sea.  West towards the
 sea.  Or for a change, South towards the sea.
@@ -460,7 +465,7 @@ D3
 S
 #18814
 Out to sea~
-Gee, what a supprise you're still at sea.  Being lost at sea is not good for
+Gee, what a surprise you're still at sea.  Being lost at sea is not good for
 your skin at all.
 You can head north, towards the sea.  East towards the sea.  West towards the
 sea.  Or for a change, South towards the sea.
@@ -509,10 +514,10 @@ D3
 S
 #18816
 A powerful whirlpool~
-You are floating right beside a deadly whirlpool !
+You are floating right beside a deadly whirlpool!
 If you make a false move here you could be sucked into it and pulled down to
 your death at the bottom of the ocean.
-On the other hand, it could be a great ride !
+On the other hand, it could be a great ride!
 ~
 0 0 7
 D0
@@ -674,12 +679,12 @@ D5
 S
 #18823
 Ocean floor~
-You are standing directly below a raging whirlpool !
+You are standing directly below a raging whirlpool!
 The weight of your armour is keeping you from floating back up to the surface.
 The ground underfoot is quite hard, but it gets softer to the north, south and
 east. Going in those directions could prove fatal if you fell into a deep pool
 of mud.
-To the west a cliff face towers upwards for about 75 meters. However, there is a
+To the west a cliff face towers upwards for about 75 metres. However, there is a
 crack just large enough for you to walk through.
 ~
 0 8|8192 8
@@ -705,8 +710,8 @@ Diving Underwater~
 You hold your breath and dive underwater!
 The cold water splashes over your head as you swim down into the ocean.
 You open your eyes, but everything is blurry and the saltwater stings them. You
-quickly shut them again, but not before you glimse a huge grey shark about to
-attack you !
+quickly shut them again, but not before you glimpse a huge grey shark about to
+attack you!
 ~
 0 4|8|8192 8
 D4
@@ -717,7 +722,7 @@ S
 #18825
 Exploring the ocean floor~
 You are following a faint path through the towering cliffs above you.
-You feel awed at natures power to be able to create such things far from mans
+You feel awed at nature's power to be able to create such things far from man's
 reach. The sea bottom turns to a sandy yellow and you kick up clouds of it as
 you walk further between the cliffs.
 ~
@@ -734,7 +739,7 @@ S
 #18826
 Exploring the ocean floor~
 You come to a strange hole in the ground.  Feeling the temperature of the water
-go from cold to warm, you assume walm water must be coming from the hole in the
+go from cold to warm, you assume warm water must be coming from the hole in the
 ground. Although you can see nothing.
 If you like you could jump up into the stream of hot water and catch a ride to
 the surface.
@@ -756,7 +761,7 @@ D4
 S
 #18827
 Exploring the ocean floor~
-The twisting path straigtens out here.
+The twisting path straightens out here.
 All sorts of underwater wildlife are swimming around you, wondering what you are
 doing down here.
 ~
@@ -795,7 +800,7 @@ D3
 0 -1 18834
 S
 #18829
-Being sucked down the whirlpool !~
+Being sucked down the whirlpool!~
 The whirlpool has you firmly in it's grasp as it pulls you down into the murky
 depths of the ocean.
 Whatever method you were using to cross the vast ocean above has been totally
@@ -870,9 +875,9 @@ S
 Exploring the ocean floor~
 The ground is soft and gluggy here, making it difficult to walk so most of your
 movement is a kind of jump-swim.
-A huge crevace prevents your travel west, while to the north it gets to dark to
+A huge crevice prevents your travel west, while to the north it gets to dark to
 see.
-A sudden updraft of warm water makes it possible to head to the surface from
+A sudden updraught of warm water makes it possible to head to the surface from
 here.
 ~
 0 8 8
@@ -892,7 +897,7 @@ S
 #18834
 A magical floating island~
 You have arrived on a beach of yellow sand.
-This tiny island is just floating around in the ocean, as it isn't attatched to
+This tiny island is just floating around in the ocean, as it isn't attached to
 any other landmass.
 You can head west into a circle of trees, or back east to try your luck in the
 sea.
@@ -1020,8 +1025,8 @@ S
 #18844
 Riding a tsunami~
 Travelling at incredible speed of the surface of the sea is quite
-exhilerating, but your ride must end soon as you can see land looming up to the
-east.
+exhilarating, but your ride must end soon as you can see land looming 
+to the east.
 The wave is starting to break and foam is lashing your face.
 ~
 0 4 6

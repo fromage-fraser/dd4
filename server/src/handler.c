@@ -3129,7 +3129,7 @@ char *full_sub_class_name (int sub_class)
         if (sub_class == SUB_CLASS_BOUNTY)              return "Bounty Hunter";
         if (sub_class == SUB_CLASS_THUG)                return "Thug";
         if (sub_class == SUB_CLASS_KNIGHT)              return "Knight";
-        if (sub_class == SUB_CLASS_SATANIST)            return "Satanist";
+        if (sub_class == SUB_CLASS_INFERNALIST)         return "Infernalist";
         if (sub_class == SUB_CLASS_WITCH)               return "Witch";
         if (sub_class == SUB_CLASS_WEREWOLF)            return "Werewolf";
         if (sub_class == SUB_CLASS_VAMPIRE)             return "Vampire";

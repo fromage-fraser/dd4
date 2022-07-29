@@ -2116,7 +2116,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
                 /* 
                  * Check the room for mobs where victim->master == ch.  If you find one,
                  * Send them to the room ch will recall to. Put in to make life a little
-                 * less painful for Satanists -- Owl 24/7/22 
+                 * less painful for Infernalists -- Owl 24/7/22 
                  */
                 
                 for(mob = ch->in_room->people; mob; mob = vnext)
@@ -2168,12 +2168,12 @@ void do_recall (CHAR_DATA *ch, char *argument)
 
                 if (followers_found == 1)
                 {
-                        sprintf(buf, "<228>Your follower has joined you in safety.<0>\n\r");
+                        sprintf(buf, "<15>Your follower has joined you in safety.<0>\n\r");
                         send_to_char(buf, ch);
                 }
                 else if (followers_found > 1)
                 {
-                        sprintf(buf, "<228>Your followers have joined you in safety.<0>\n\r");
+                        sprintf(buf, "<15>Your followers have joined you in safety.<0>\n\r");
                         send_to_char(buf, ch);
                 }
 
@@ -2528,8 +2528,18 @@ void do_change (CHAR_DATA *ch, char *argument)
 
         /* do the change */
 
-        sprintf(buf, "A wise choice %s... may you fare well as a %s.", ch->name, full_sub_class_name(ch->sub_class));
-        do_say(mob, buf);
+        if ( ch->sub_class == SUB_CLASS_INFERNALIST
+        ||   ch->sub_class == SUB_CLASS_ENGINEER
+        ||   ch->sub_class == SUB_CLASS_ALCHEMIST )
+        {
+                /* Grammar! -- Owl 29/7/22 */
+                sprintf(buf, "A wise choice %s... may you fare well as an %s.", ch->name, full_sub_class_name(ch->sub_class));
+                do_say(mob, buf);
+        }
+        else {
+                sprintf(buf, "A wise choice %s... may you fare well as a %s.", ch->name, full_sub_class_name(ch->sub_class));
+                do_say(mob, buf);
+        }
 
         ch->pcdata->choose_subclass = TRUE;
         ch->pcdata->learned[gsn_ranger_base + ch->sub_class ] = 30;

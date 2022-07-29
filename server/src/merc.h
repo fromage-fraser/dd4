@@ -268,6 +268,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_TRADE                          5
 #define MAX_DAMAGE                      6000    /* Increased from 3k->6k for chaos blast --Owl 2/3/22 */
 #define MAX_PROMPT_LENGTH                200    /* Was defined locally, thought better as global -- Owl 24/7/22 */
+#define MAX_TITLE_LENGTH                 150    /* Was defined locally, thought better as global -- Owl 29/7/22 */
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
 
 #define L_IMM                       MAX_LEVEL
@@ -531,7 +532,7 @@ struct quest_recall
 #define SUB_CLASS_BOUNTY                        6
 #define SUB_CLASS_THUG                          7
 #define SUB_CLASS_KNIGHT                        8
-#define SUB_CLASS_SATANIST                      9
+#define SUB_CLASS_INFERNALIST                   9
 #define SUB_CLASS_WITCH                         10
 #define SUB_CLASS_WEREWOLF                      11
 #define SUB_CLASS_VAMPIRE                       12
@@ -562,7 +563,7 @@ struct quest_recall
 #define PRE_BOUNTY         SUB_CLASS_BOUNTY            + MAX_CLASS
 #define PRE_THUG           SUB_CLASS_THUG              + MAX_CLASS
 #define PRE_KNIGHT         SUB_CLASS_KNIGHT            + MAX_CLASS
-#define PRE_SATANIST       SUB_CLASS_SATANIST          + MAX_CLASS
+#define PRE_INFERNALIST    SUB_CLASS_INFERNALIST       + MAX_CLASS
 #define PRE_WITCH          SUB_CLASS_WITCH             + MAX_CLASS
 #define PRE_WEREWOLF       SUB_CLASS_WEREWOLF          + MAX_CLASS
 #define PRE_VAMPIRE        SUB_CLASS_VAMPIRE           + MAX_CLASS
@@ -2865,7 +2866,7 @@ extern int gsn_ninja_base;
 extern int gsn_bounty_base;
 extern int gsn_thug_base;
 extern int gsn_knight_base;
-extern int gsn_satanist_base;
+extern int gsn_infernalist_base;
 extern int gsn_witch_base;
 extern int gsn_werewolf_base;
 extern int gsn_vampire_base;
@@ -3183,8 +3184,8 @@ extern int gsn_dragon_aura;
 extern int gsn_possession;
 extern int gsn_demon_flames;
 extern int gsn_steal_strength;
-extern int gsn_hand_of_lucifer;
-extern int gsn_satans_fury;
+extern int gsn_abyssal_hand;
+extern int gsn_infernal_fury;
 extern int gsn_steal_soul;
 extern int gsn_summon_demon;
 
@@ -4045,7 +4046,7 @@ DECLARE_SPELL_FUN( spell_prismatic_spray        );
 DECLARE_SPELL_FUN( spell_holy_word              );
 DECLARE_SPELL_FUN( spell_unholy_word            );
 DECLARE_SPELL_FUN( spell_animate_weapon         );      /* for psi's - Istari*/
-DECLARE_SPELL_FUN( spell_dark_ritual            );      /* for satanists - Simon */
+DECLARE_SPELL_FUN( spell_dark_ritual            );      /* for Infernalists - Shade */
 DECLARE_SPELL_FUN( spell_transport              );
 DECLARE_SPELL_FUN( spell_armor                  );
 DECLARE_SPELL_FUN( spell_astral_sidestep        );      /* werewolf - Brutus */
@@ -4205,8 +4206,8 @@ DECLARE_SPELL_FUN( spell_possession             );
 DECLARE_SPELL_FUN( spell_demon_flames           );
 DECLARE_SPELL_FUN( spell_steal_strength         );
 DECLARE_SPELL_FUN( spell_steal_soul             );
-DECLARE_SPELL_FUN( spell_satans_fury            );
-DECLARE_SPELL_FUN( spell_hand_of_lucifer        );
+DECLARE_SPELL_FUN( spell_infernal_fury          );
+DECLARE_SPELL_FUN( spell_abyssal_hand           );
 DECLARE_SPELL_FUN( spell_summon_demon           );
 DECLARE_SPELL_FUN( spell_knock                  );
 DECLARE_SPELL_FUN( spell_vitalize               );

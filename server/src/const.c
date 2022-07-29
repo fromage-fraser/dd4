@@ -77,7 +77,7 @@ const struct class_type class_table [ MAX_CLASS ] =
                 "Psi",  "Psionic",
                 APPLY_WIS,  OBJ_VNUM_SCHOOL_DAGGER,
                 3151,  95,  18,  9,  7,  10,  TRUE,
-                "Satanist",  "Witch",  "Sat",  "Wit",
+                "Infernlst",  "Witch",  "Inf",  "Wit",
                 { -1, 2, 2, 0, 0 }
         },
 
@@ -132,7 +132,7 @@ const struct sub_class_type sub_class_table [ MAX_SUB_CLASS ] =
         {       "Bou",  "B. Hunter",            APPLY_STR,      FALSE   },
         {       "Thg",  "Thug",                 APPLY_CON,      FALSE   },
         {       "Kni",  "Knight",               APPLY_WIS,      TRUE    },
-        {       "Sat",  "Satanist",             APPLY_STR,      TRUE    },
+        {       "Inf",  "Infernlst",            APPLY_STR,      TRUE    },
         {       "Wit",  "Witch",                APPLY_INT,      TRUE    },
         {       "Wer",  "Werewolf",             APPLY_STR,      FALSE   },
         {       "Vam",  "Vampire",              APPLY_STR,      FALSE   },
@@ -560,7 +560,7 @@ const struct race_struct race_table [MAX_RACE] =
                 "Tieflng", "Tiefling",
                 0, 1, 0, -2, 2,
                 20, 10, -10,
-                "Hand of Lucifer", "Resist Heat",
+                "Abyssal Hand", "Resist Heat",
                 CHAR_SIZE_MEDIUM
         },
 
@@ -1873,7 +1873,7 @@ struct pre_req_struct pre_req_table [ MAX_PRE_REQ ] =
 #include "pre_reqs/pre_req-psionic.c"
 #include "pre_reqs/pre_req-shifter.c"
 #include "pre_reqs/pre_req-artist.c"
-#include "pre_reqs/pre_req-satan.c"
+#include "pre_reqs/pre_req-infernal.c"
 #include "pre_reqs/pre_req-druid.c"
 #include "pre_reqs/pre_req-necro.c"
 #include "pre_reqs/pre_req-werewolf.c"
@@ -2236,8 +2236,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_possession,                              0 },
         { &gsn_demon_flames,                            0 },
         { &gsn_steal_strength,                          0 },
-        { &gsn_hand_of_lucifer,                         0 },
-        { &gsn_satans_fury,                             0 },
+        { &gsn_abyssal_hand,                            0 },
+        { &gsn_infernal_fury,                           0 },
         { &gsn_steal_soul,                              0 },
         { &gsn_summon_demon,                            0 },
         { &gsn_hells_fire,                              0 },
@@ -4744,17 +4744,17 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "satanic fury", &gsn_satans_fury,
+                "infernal fury", &gsn_infernal_fury,
                 TYPE_INT, TAR_IGNORE, POS_FIGHTING,
-                spell_satans_fury, 25, 12,
-                "summoned <124>d<160>e<196>v<160>i<124>l<0>", "!Satans_Fury!"
+                spell_infernal_fury, 25, 12,
+                "summoned <124>d<160>e<196>v<160>i<124>l<0>", "!Infernal_Fury!"
         },
 
         {
-                "hand of lucifer", &gsn_hand_of_lucifer,
+                "abyssal hand", &gsn_abyssal_hand,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_STANDING,
-                spell_hand_of_lucifer, 100, 12,
-                "hand of lucifer", "You break free from the black hand that holds you."
+                spell_abyssal_hand, 100, 12,
+                "abyssal hand", "You break free from the black hand that holds you."
         },
 
         {
@@ -6043,10 +6043,10 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "satanist base", &gsn_satanist_base,
+                "infernalist base", &gsn_infernalist_base,
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
-                "", "!-satanist base-!"
+                "", "!-infernalist base-!"
         },
 
         {

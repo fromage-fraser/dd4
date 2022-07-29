@@ -423,7 +423,7 @@ Necromancer     Nec             Warlock         Wlk
 Templar         Tem             Druid           Dru
 Ninja           Nin             Bounty Hunter   Bou
 Thug            Thg             Knight          Kni
-Satanist        Sat             Witch           Wit
+Infernalist     Inf             Witch           Wit
 Werewolf        Wer             Vampire         Vam
 Monk            Mon             Martial Artist  Mar
 Barbarian       Brb             Bard            Brd
@@ -475,7 +475,7 @@ We're back!
 Apart from getting everything running again, the following new skills have
 been added;
 
-- Chaos Blast for Satanists
+- Chaos Blast for Infernalists
 - Detect Curse for those with Divination
 - Knife Toss for Thieves
 - New config option: "AUTOLEVEL"
@@ -685,7 +685,7 @@ Each base class has two subclasses:
         CLERIC:              Templar        Druid
         THIEF:               Ninja          Bounty Hunter
         WARRIOR:             Knight         Thug
-        PSIONICIST           Satanist       Witch
+        PSIONICIST:          Infernalist    Witch
         BRAWLER:             Monk           Martial Artist
         SHAPE SHIFTER:       Werewolf       Vampire
         RANGER:              Barbarian      Bard
@@ -959,7 +959,7 @@ create water        stone skin
 | Q) Yuan-ti    |  1  0  0  1 -1 | Hide            Resist Toxin    | -10 -10  30 |
 | R) Fae        | -3  3  3  1 -3 | Faerie Fire     Fly             | -30  30  20 |
 | S) Sahuagin   |  2 -1 -1 -1  2 | Gouge           Dowse           |  20   0   0 |
-| T) Tiefling   |  0  1  0 -2  2 | Hand of Lucifer Resist Heat     |  20  10 -10 |
+| T) Tiefling   |  0  1  0 -2  2 | Abyssal Hand    Resist Heat     |  20  10 -10 |
 | U) Jotun      |  3 -1 -2 -2  3 | Berserk         Resist Cold     |  30 -20 -10 |
 | V) Genasi     | -1  2 -1 -1  2 | Infravision     Resist Magic    |  10  10   0 |
 | W) Illithid   | -2  2  3 -2  0 | Fear            Energy Drain    |  0   30 -20 |
@@ -2573,7 +2573,7 @@ SUB_CLASS_NINJA              5           CLASS_SHAPE_SHIFTER    5
 SUB_CLASS_BOUNTY             6           CLASS_BRAWLER          6
 SUB_CLASS_THUG               7           CLASS_RANGER           7
 SUB_CLASS_KNIGHT             8           CLASS_SMITHY           8
-SUB_CLASS_SATANIST           9
+SUB_CLASS_INFERNALIST           9
 SUB_CLASS_WITCH             10
 SUB_CLASS_WEREWOLF          11
 SUB_CLASS_VAMPIRE           12
@@ -3453,11 +3453,11 @@ powers.
 DD has a class structure whereby at level 30 you may specialise into one
 of three sub-classes.  The psionic sub-classes are:
 
-          SATANIST              PSIONIC               WITCH
+          INFERNALIST            PSIONIC               WITCH
 
 Note:  Psionicists will be a difficult class for inexperienced players.
 ^^^^^
-See 'HELP SATANIST' and 'HELP WITCH' for more information.
+See 'HELP INFERNALIST' and 'HELP WITCH' for more information.
 ~
 
 
@@ -4562,33 +4562,33 @@ clearly on the battle, increasing the chances to hit.
 0 'STEAL STRENGTH'~
 Syntax: cast 'steal strength' <<victim>
 
-A handy combat tool, this spell allows a Satanist to drain the strength
+A handy combat tool, this spell allows an Infernalist to drain the strength
 from a victim, and use it to add to their own strength reserves.
 ~
 
-0 'HAND OF LUCIFER'~
-Syntax: cast 'hand of lucifer' <<victim>
+0 'ABYSSAL HAND'~
+Syntax: cast 'abyssal hand' <<victim>
 
-A particularly nasty spell, the Satanist summons an evil force from the
-depths of Hell itself to encircle the victim, trapping them, so that
-escape is not possible.  Those who have seen this force say it looks like
-a translucent black hand rising from the ground, some believe it is the
-hand of Lucifer himself.
+A particularly nasty spell, the Infernalist summons an evil force from a 
+hell dimension to take hold of their victim, making escape impossible.  Those 
+who have seen this spell cast say the manifestation resembles a huge, translucent 
+black hand rising from the ground, in all likelihood a partial extraplanar 
+manifestation by a powerful demonic entity.
 ~
 
 0 'STEAL SOUL'~
 Syntax: cast 'steal soul' <<corpse>
 
-Once a Satanist successfully vanquishes their foe, they may attempt to
+Once an Infernalist successfully vanquishes their foe, they may attempt to
 capture the soul of the freshly slain.  Of course, this requires a fresh
-victims corpse.  If successful, the Satanist uses the soul to revitalise
+victims corpse.  If successful, the Infernalist uses the soul to revitalise
 themselves.
 ~
 
-0 'SATANIC FURY'~
-Syntax: cast 'satanic fury' <<victim>
+0 'INFERNAL FURY'~
+Syntax: cast 'infernal fury' <<victim>
 
-A skilled Satanist can invoke the will of his esteemed master to invoke
+A skilled Infernalist can invoke the will of infernal powers to invoke
 damage, pain and suffering on their foes.  This spell will cause damage to
 all those who stand in the same room as the caster.
 ~
@@ -4603,8 +4603,9 @@ the victim, causing them to become distracted and fight less effectively.
 0 'DARK RITUAL'~
 Syntax: cast 'dark ritual" <<corpse>
 
-This spell allows the satanist to summon their god to consume a corpse for
-sacrifice.  Their god rewards the satanist with renewed ecstasy for evil.
+This spell allows the Infernalist to summon infernal powers to consume a 
+corpse for sacrifice.  Their god rewards the Infernalist with renewed 
+vigour to pursue evil.
 ~
 
 0 FEAR~
@@ -5036,14 +5037,14 @@ inertial barrier        inner fire              second spell
 blink                   animate weapon          pattern
 detonate
 
-True psionics (those that don't change to witches or satanists) may also
+True psionics (those that don't change to witches or infernalists) may also
 learn these skills above level 30:
 
 synaptic blast          death field             globe of invulnerability
 ultrablast              disintegrate            fireshield
 third spell             awe
 
-See 'HELP SWITCH' and 'HELP SSATANIST' for lists of witch and satanist
+See 'HELP SWITCH' and 'HELP SINFERNALIST' for lists of witch and infernalist
 skills respectively.
 ~
 
@@ -5395,12 +5396,12 @@ poison weapon           trap                    fourth attack
 decapitate              enhanced hit
 ~
 
--1 SSATANIST~
+-1 SINFERNALIST~
 {W
-Satanist skills and spells{x
+Infernalist skills and spells{x
 
-steal strength          hand of lucifer         globe of invulnerability
-steal soul              demon flames            satanic fury
+steal strength          abyssal hand            globe of invulnerability
+steal soul              demon flames            infernal fury
 fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast
@@ -6037,12 +6038,12 @@ hard to kill, being able to RESIST TOXIN, and they have a sixth sense for
 danger.
 ~
 
--1 SATANIST~
-Satanist subclass (base class Psionicist)
+-1 INFERNALIST~
+Infernalist subclass (base class Psionicist)
 
-Practitioners of dark arts, satanists have an array of evil magicks to
-inflict pain and suffering on others.  SATANIC FURY, HELLFIRE and HAND
-OF LUCIFER are a few of the horrible spells in their arsenal.
+Practitioners of dark arts, Infernalists have an array of evil magicks to
+inflict pain and suffering on others.  INFERNAL FURY, HELLFIRE and ABYSSAL
+HAND are a few of the horrible spells in their arsenal.
 ~
 
 -1 'MARTIAL ARTIST'~
@@ -6608,14 +6609,14 @@ protect the caster from extremely hot and extremely cold environments.
 0 'HELLFIRE' 'HELL FIRE'~
 Syntax: cast 'hellfire' <<target>
 
-A powerful Satanist may summon forth white-hot fires from the pits of
-Hell to sear their victims' flesh from their bones.
+A powerful Infernalist may summon forth white-hot fires from the pits of
+a hell dimension to sear their victims' flesh from their bones.
 ~
 
 0 'CHAOS BLAST' 'CHAOSBLAST'~
 Syntax: cast 'chaos blast' <<target>
 
-A Satanist able to summon chaotic energies from the nether realms may
+An Infernalist able to summon chaotic energies from the nether realms may
 focus and direct them at a target, inflicting unpredictable amounts
 of damage on their foe.  As it requires ignorance on the part of the
 victim to be successful, this spell may not be cast on alert or
