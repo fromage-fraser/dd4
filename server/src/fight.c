@@ -1253,7 +1253,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         break;
 
                     case POS_DEAD:
-                        send_to_char("{RYou have been KILLED!!{x\n\r\n\r", fighter);
+                        send_to_char("<196>You have been KILLED!!<0>\n\r\n\r", fighter);
                         send_to_char(purgatory_message, fighter);
                         act ("$c is DEAD!!", fighter, NULL, NULL, TO_ROOM);
                         break;
@@ -1262,9 +1262,9 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         if (!IS_NPC(fighter) && fighter->gag > 1)
                                 break;
                         if ((dam > fighter->max_hit / 4) && fighter == victim)
-                                send_to_char("{WThat really did HURT!{x\n\r", fighter);
+                                send_to_char("<15>That really did HURT!<0>\n\r", fighter);
                         if ((fighter->hit < fighter->max_hit / 4) && fighter == victim)
-                                send_to_char("{WYou sure are {x{RBLEEDING!{x\n\r", fighter);
+                                send_to_char("<15>You sure are <0><160>BLEEDING!<0>\n\r", fighter);
 
                 } /* Close switch */
 
@@ -1279,7 +1279,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                         /* If a mob you're grouped with killsteals for you, you get the reward */
                         if ( opponent->master
                         && ( opponent->master->sub_class == SUB_CLASS_WITCH
-                          || opponent->master->sub_class == SUB_CLASS_SATANIST
+                          || opponent->master->sub_class == SUB_CLASS_INFERNALIST
                           || opponent->master->sub_class == SUB_CLASS_NECROMANCER
                           || opponent->master->sub_class == SUB_CLASS_KNIGHT
                           || ( ( opponent->master->class == CLASS_SHAPE_SHIFTER ) 
@@ -1354,12 +1354,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
                 if (number_bits(1))
                 {
-                        send_to_char("{YYou are terrified!  You must flee!{x\n\r", victim);
+                        send_to_char("<11>You are terrified!  You must flee!<0>\n\r", victim);
                         do_flee(victim, "");
                 }
                 else
                 {
-                        send_to_char("{YYou are terrified, you cannot fight!{x\n\r", victim);
+                        send_to_char("<11>You are terrified, you cannot fight!<0>\n\r", victim);
                         WAIT_STATE(victim, PULSE_VIOLENCE);
                 }
 
@@ -1573,7 +1573,7 @@ void check_killer (CHAR_DATA *ch, CHAR_DATA *victim)
                 || !(victim->clan || IS_SET(victim->status, PLR_RONIN))))
         {
                 SET_BIT(ch->status, PLR_KILLER);
-                send_to_char("{r*** {RYou are now a KILLER!!{x{r ***{x\n\r", ch);
+                send_to_char("<88>*** <196>You are now a KILLER!!<0><88> ***<0>\n\r", ch);
 
                 if (ch->pcdata->fame > 0)
                         ch->pcdata->fame = -ch->pcdata->fame / 2;
@@ -1655,18 +1655,18 @@ bool check_parry (CHAR_DATA *ch, CHAR_DATA *victim)
         if (victim->class == CLASS_BRAWLER)
         {
                 if (!IS_NPC(ch) && !ch->gag)
-                        act ("{Y$C pre-empts your attack.{x", ch, NULL, victim, TO_CHAR);
+                        act ("<11>$C pre-empts your attack.<0>", ch, NULL, victim, TO_CHAR);
 
                 if (!IS_NPC(victim) && !victim->gag)
-                        act ("{CYou pre-empt $n's attack.{x",  ch, NULL, victim, TO_VICT);
+                        act ("<14>You pre-empt $n's attack.<0>",  ch, NULL, victim, TO_VICT);
         }
         else
         {
                 if (!IS_NPC(ch) && !ch->gag)
-                        act ("{Y$C parries your attack.{x", ch, NULL, victim, TO_CHAR);
+                        act ("<11>$C parries your attack.<0>", ch, NULL, victim, TO_CHAR);
 
                 if (!IS_NPC(victim) && !victim->gag)
-                        act ("{CYou parry $n's attack.{x",  ch, NULL, victim, TO_VICT);
+                        act ("<14>You parry $n's attack.<0>",  ch, NULL, victim, TO_VICT);
         }
 
         return TRUE;
@@ -1709,10 +1709,10 @@ bool check_shield_block (CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if(!IS_NPC(victim) && !victim->gag)
-                act ("{CYou block $n's attack with your shield.{x",  ch, NULL, victim, TO_VICT);
+                act ("<14>You block $n's attack with your shield.<0>",  ch, NULL, victim, TO_VICT);
 
         if (!IS_NPC(ch) && !ch->gag)
-                act ("{YYour blow bounces off $N's shield.{x", ch, NULL, victim, TO_CHAR);
+                act ("<208>Your blow bounces off $N's shield.<0>", ch, NULL, victim, TO_CHAR);
 
         return TRUE;
 }
@@ -1743,7 +1743,7 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (victim->mana < 5)
         {
-                send_to_char("Your body returns to a more stable state.\n\r", victim);
+                send_to_char("<117>Your body returns to a more stable state.<0>\n\r", victim);
                 victim->pcdata->blink = FALSE;
                 return FALSE;
         }
@@ -1751,10 +1751,10 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
         victim->mana -= 5;
 
         if (!IS_NPC(ch) && !ch->gag)
-                act ("{W$C shimmers and you miss your attack.{x", ch, NULL, victim, TO_CHAR);
+                act ("<117>$C shimmers and you miss your attack.<0>", ch, NULL, victim, TO_CHAR);
 
         if (!victim->gag)
-                act ("{WYou fade away before $n's attack.{x", ch, NULL, victim, TO_VICT);
+                act ("<117>You fade away before $n's attack.<0>", ch, NULL, victim, TO_VICT);
 
         return TRUE;
 }
@@ -1795,10 +1795,10 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(ch) && !ch->gag)
-                act ("{Y$C dodges your attack.{x", ch, NULL, victim, TO_CHAR);
+                act ("<11>$C dodges your attack.<0>", ch, NULL, victim, TO_CHAR);
 
         if(!IS_NPC(victim) && !victim->gag)
-                act ("{CYou dodge $n's attack.{x", ch, NULL, victim, TO_VICT);
+                act ("<14>You dodge $n's attack.<0>", ch, NULL, victim, TO_VICT);
 
         return TRUE;
 }
@@ -1831,10 +1831,10 @@ bool check_acrobatics (CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(ch) && !ch->gag)
-                act ("{Y$C evades your attack.{x", ch, NULL, victim, TO_CHAR);
+                act ("<11>$C evades your attack.<0>", ch, NULL, victim, TO_CHAR);
 
         if (!victim->gag)
-                act ("{CYou flip away from $n's attack!{x", ch, NULL, victim, TO_VICT);
+                act ("<14>You flip away from $n's attack!<0>", ch, NULL, victim, TO_VICT);
 
         return TRUE;
 }
@@ -1861,10 +1861,10 @@ bool check_aura_of_fear (CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         if (!IS_NPC(ch) && !ch->gag)
-                act ("{YYou cower in fear at the sight of $C!{x", ch, NULL, victim, TO_CHAR);
+                act ("<11>You cower in fear at the sight of $C!<0>", ch, NULL, victim, TO_CHAR);
 
         if (!victim->gag)
-                act ("{CYou terrify $n, preventing $m from attacking!{x", ch, NULL, victim, TO_VICT);
+                act ("<14>You terrify $n, preventing $m from attacking!<0>", ch, NULL, victim, TO_VICT);
 
         return TRUE;
 }
@@ -3475,7 +3475,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                                 /* If a mob you're grouped with killsteals, you get the reward */
                                 if ( ch->master
                                 && ( ch->master->sub_class == SUB_CLASS_WITCH
-                                  || ch->master->sub_class == SUB_CLASS_SATANIST
+                                  || ch->master->sub_class == SUB_CLASS_INFERNALIST
                                   || ch->master->sub_class == SUB_CLASS_NECROMANCER
                                   || ch->master->sub_class == SUB_CLASS_KNIGHT
                                   || ( ( ch->master->class == CLASS_SHAPE_SHIFTER ) 
@@ -6825,7 +6825,7 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                  */
                 if ( ch->master
                 &&  ( ch->master->sub_class == SUB_CLASS_WITCH
-                   || ch->master->sub_class == SUB_CLASS_SATANIST
+                   || ch->master->sub_class == SUB_CLASS_INFERNALIST
                    || ch->master->sub_class == SUB_CLASS_NECROMANCER
                    || ch->master->sub_class == SUB_CLASS_KNIGHT
                    || ( ( ch->master->class == CLASS_SHAPE_SHIFTER ) 

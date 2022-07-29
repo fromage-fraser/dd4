@@ -308,8 +308,8 @@ void do_cast( CHAR_DATA *ch, char *argument )
         mana = 0;
         mana = mana_cost(ch, sn);
 
-        /* Hack for Tieflings to have hand of lucifer as a (useful) race skill -- Owl 3/4/22 */
-         if ( ( ( str_cmp( skill_table[sn].name, "hand of lucifer" ) ) == 0 )
+        /* Hack for Tieflings to have abyssal hand as a (useful) race skill -- Owl 3/4/22 */
+         if ( ( ( str_cmp( skill_table[sn].name, "abyssal hand" ) ) == 0 )
          &&   ch->race == RACE_TIEFLING )
          {
                  mana = 25;
@@ -6582,7 +6582,7 @@ void spell_globe( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_GLOBE ) )
                 return;
 
-        if (ch->sub_class == SUB_CLASS_SATANIST)
+        if (ch->sub_class == SUB_CLASS_INFERNALIST)
                 af.type = skill_lookup("dark globe");
         else
                 af.type = sn;
@@ -6593,7 +6593,7 @@ void spell_globe( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_GLOBE;
         affect_to_char( victim, &af );
 
-        if (ch->sub_class == SUB_CLASS_SATANIST)
+        if (ch->sub_class == SUB_CLASS_INFERNALIST)
         {
                 send_to_char( "You are surrounded by a globe of dark energy.\n\r",victim );
                 act( "$n is surrounded by a ominous-looking globe.", victim, NULL, NULL, TO_ROOM );
@@ -6970,7 +6970,7 @@ void spell_steal_soul( int sn, int level, CHAR_DATA *ch, void *vo )
 }
 
 
-void spell_satans_fury (int sn, int level, CHAR_DATA *ch, void *vo )
+void spell_infernal_fury (int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
@@ -6986,8 +6986,8 @@ void spell_satans_fury (int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
-        send_to_char( "You summon {RSatan{x to aid in your battle!\n\r", ch );
-        act( "$n calls upon Satan to wreak havoc on $s enemies!", ch, NULL, NULL, TO_ROOM );
+        send_to_char( "You summon {Rinfernal entities{x to aid in your battle!\n\r", ch );
+        act( "$n calls upon infernal powers to wreak havoc on $s enemies!", ch, NULL, NULL, TO_ROOM );
 
         for ( vch = ch->in_room->people; vch; vch = vch_next )
         {
@@ -7015,7 +7015,7 @@ void spell_satans_fury (int sn, int level, CHAR_DATA *ch, void *vo )
 }
 
 
-void spell_hand_of_lucifer( int sn, int level, CHAR_DATA *ch, void *vo )
+void spell_abyssal_hand( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim   = ( CHAR_DATA *) vo;
         AFFECT_DATA af;
@@ -7542,7 +7542,7 @@ void spell_hells_fire (int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
 {
     /*
-     Does factorial damage, somewhat comical opener spell for Satanists --Owl 1/3/22
+     Does factorial damage, somewhat comical opener spell for Infernalists --Owl 1/3/22
     */
 
     CHAR_DATA *victim = (CHAR_DATA *) vo;
@@ -7571,7 +7571,7 @@ void spell_chaos_blast (int sn, int level, CHAR_DATA *ch, void *vo)
         return;
     }
 
-    /* better chance of good damage if victim is held, i.e. by hand of lucifer */
+    /* better chance of good damage if victim is held, i.e. by abyssal hand */
     if (IS_AFFECTED(victim, AFF_HOLD) &&
         (rnd_idx != 6))
     {

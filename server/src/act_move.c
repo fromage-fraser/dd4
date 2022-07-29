@@ -2116,7 +2116,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
                 /* 
                  * Check the room for mobs where victim->master == ch.  If you find one,
                  * Send them to the room ch will recall to. Put in to make life a little
-                 * less painful for Satanists -- Owl 24/7/22 
+                 * less painful for Infernalists -- Owl 24/7/22 
                  */
                 
                 for(mob = ch->in_room->people; mob; mob = vnext)
