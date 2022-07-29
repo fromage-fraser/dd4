@@ -2512,7 +2512,7 @@ void do_title (CHAR_DATA *ch, char *argument)
          */
         len = strlen(argument);
 
-        for (i = 0, k = 0; i < len && k < 50; i++, k++)
+        for (i = 0, k = 0; i < len && k < MAX_TITLE_LENGTH; i++, k++)
         {
                 if (argument[i] == '~')
                         continue;
