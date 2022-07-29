@@ -200,7 +200,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  5
+#define BLUEPRINTS_MAX  7
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -211,7 +211,7 @@ struct blueprint_type
         int     blueprint_ego;
         int     blueprint_damage [2];
         int     blueprint_cost [5];
-
+        char    *skill_name;
 };
 
 #define MAX_SETS 2
@@ -280,9 +280,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   515     /* 515 Hurl 514 osfind, 513 osstat, 512 for Empower */
-#define MAX_PRE_REQ                 1364    /* Increased for awe --Owl 25/7/22 */
-#define MAX_SPELL_GROUP             433     /* REduced for shield removal --Brutus 28/7/22 */
+#define MAX_SKILL                   521     /* 521-514 sets and modules for Smithy - Brutus 29 Jul */
+#define MAX_PRE_REQ                 1366    /* Increased for turret and arrow --Owl 25/7/22 */
+#define MAX_SPELL_GROUP             435     /* turret and arrow smithy blueprints --Brutus 28/7/22 */
 #define MAX_GROUPS                  53
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
@@ -838,7 +838,7 @@ struct coin_data
 /* Smelting MAterials - Brutus */
 struct smelting_data
 {
-        int     smelted_iron;
+        int     smelted_steel;
         int     smelted_titanium;
         int     smelted_adamantite;
         int     smelted_electrum;
@@ -1856,9 +1856,21 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_SPRING                    22
 #define OBJ_VNUM_TURRET                    40
 #define OBJ_VNUM_DART                      41
-#define OBJ_VNUM_WEAPONCHAIN               42
-#define OBJ_VNUM_SHIELDCHAIN               43
-#define OBJ_VNUM_ARROW                     44
+#define OBJ_VNUM_UNCOMMON1              42
+#define OBJ_VNUM_UNCOMMON2              43
+#define OBJ_VNUM_ARROW                  44
+#define OBJ_VNUM_RARE1                  45
+#define OBJ_VNUM_RARE2                  46
+#define OBJ_VNUM_RARE3                  47
+#define OBJ_VNUM_EPIC1                  48
+#define OBJ_VNUM_EPIC2                  49
+#define OBJ_VNUM_EPIC3                  65
+#define OBJ_VNUM_EPIC4                  66
+#define OBJ_VNUM_LEGENDARY1             67
+#define OBJ_VNUM_LEGENDARY2             68
+#define OBJ_VNUM_LEGENDARY3             69
+#define OBJ_VNUM_LEGENDARY4             101
+#define OBJ_VNUM_LEGENDARY5             102
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 
@@ -3422,6 +3434,8 @@ extern int gsn_engrave;
 extern int gsn_discharge;
 extern int gsn_trigger;
 extern int gsn_dart;
+extern int gsn_arrow;
+extern int gsn_turret;
 extern int gsn_launcher;
 extern int gsn_reflector;
 extern int gsn_shield;
@@ -4310,6 +4324,7 @@ ED * get_exit                           args( ( ROOM_INDEX_DATA *room, int dir )
 void  do_auction                        args( ( CHAR_DATA *ch, char *argument ) );
 void  calc_coin_weight                  args( ( CHAR_DATA *ch ) );
 void  coins_to_char                     args( ( int numcoins, CHAR_DATA *ch, int mode ) );
+void  smelted_to_char                   args( ( SMELTING_DATA *smelted, CHAR_DATA *ch, int mode ) );
 void  coins_from_char                   args( ( int numcoins, CHAR_DATA *ch ) );
 void  coin_crunch                       args( ( int numcoins , COIN_DATA *coins ) );
 int   total_coins_char                  args( ( CHAR_DATA *ch ) );

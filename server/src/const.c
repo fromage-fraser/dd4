@@ -285,11 +285,13 @@ const struct HERB herb_table [ MAX_HERBS ] =
    blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
-        { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 } },
-        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 } },   
-        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 } },
-        { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 } },
-        { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 } }   
+        { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 }, "turret" },
+        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 }, "dart" },   
+        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "weaponchain" },
+        { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "shieldchain" },
+        { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },   
+        { "wrench",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
+        { "wings",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
@@ -2412,6 +2414,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         {&gsn_group_turret_tech,	                0 },
         {&gsn_trigger,			                0 },
         {&gsn_dart,			                0 },
+        {&gsn_arrow,                                    0 },
+        {&gsn_turret,                                   0 },
         {&gsn_launcher,			                0 },
         {&gsn_reflector,		                0 },
         {&gsn_arrestor,		  	                0 },
@@ -5871,6 +5875,48 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 24,
                 "hurl", "!Hurl!"
+        },
+
+        {
+                "arrow module", &gsn_arrow,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "arrow module", "!Arrow!"
+        },
+        
+        {
+                "turret", &gsn_turret,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "turret base", "!Turret!"
+        },
+
+        {
+                "uncommon set", &gsn_uncommon_set,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "uncommon set", "!Uncommon_set!"
+        },
+
+        {
+                "rare set", &gsn_rare_set,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "rare set", "!Rare_set!"
+        },
+
+        {
+                "epic set", &gsn_epic_set,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "epic set", "!Epic_set!"
+        },
+        
+        {
+                "legendary set", &gsn_legendary_set,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "legendary set", "!Legendary_set!"
         },
 
         /*
