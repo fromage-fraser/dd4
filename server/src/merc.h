@@ -268,6 +268,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define MAX_TRADE                          5
 #define MAX_DAMAGE                      6000    /* Increased from 3k->6k for chaos blast --Owl 2/3/22 */
 #define MAX_PROMPT_LENGTH                200    /* Was defined locally, thought better as global -- Owl 24/7/22 */
+#define MAX_TITLE_LENGTH                 150    /* Was defined locally, thought better as global -- Owl 29/7/22 */
 #define FULL_AIR_SUPPLY                    2    /* ticks before drowning; Gez */
 
 #define L_IMM                       MAX_LEVEL
