@@ -165,7 +165,8 @@ bool can_craft( CHAR_DATA *ch )
 {
         if ( ( ch->pcdata->learned[gsn_forge]
         ||     ch->pcdata->learned[gsn_poison_weapon]
-        ||     ch->pcdata->learned[gsn_sharpen] )
+        ||     ch->pcdata->learned[gsn_sharpen]
+        ||     ch->class == CLASS_SMITHY )
         && ( !IS_NPC( ch ) ) )
         {
                 return TRUE;
@@ -542,6 +543,19 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char( "You feel less protected.\n\r", ch );
+                        break;
+                }
+
+            case APPLY_BALANCE:
+                af.type = skill_lookup( "counterbalance" );
+                                if( fAdd )
+                {
+                        send_to_char( "The perfectly weighted weapon fills you with confidence.\n\r", ch );
+                        break;
+                }
+                else
+                {
+                        send_to_char( "You feel less prepared for battle.\n\r", ch );
                         break;
                 }
 

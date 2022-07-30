@@ -1946,6 +1946,11 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_morph,
         &gsn_group_resistance,
         &gsn_group_armoursmith,
+        &gsn_group_weaponsmith,
+        &gsn_group_turret_tech,
+        &gsn_group_mech_tech,
+        &gsn_group_alchemy, 
+        &gsn_group_inscription, 
         &gsn_group_last
         
 };
@@ -5922,6 +5927,34 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "legendary set", "!Legendary_set!"
         },
 
+        {
+                "weaponsmithing", &gsn_group_weaponsmith,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Weaponsmith!"
+        },
+
+        {
+                "armoursmithing", &gsn_group_armoursmith,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Armoursmith!"
+        },
+
+        {
+                "weaponchain", &gsn_weaponchain,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "chained weapon", "!Weaponchain!"
+        },
+
+        {
+                "shieldchain", &gsn_shieldchain,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "chained shield", "!Shieldchain!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -5984,6 +6017,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "", "!-ranger base-!"
+        },
+
+        {
+                "smithy base", &gsn_smithy_base,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "", "!-smithy base-!"
         },
 
         {
@@ -6096,13 +6136,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "", "!-bard base-!"
-        },
-
-        {
-                "smithy base", &gsn_smithy_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
-                spell_null, 0, 0,
-                "", "!-smithy base-!"
         },
 
         {

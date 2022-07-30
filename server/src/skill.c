@@ -3103,6 +3103,13 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+                send_to_char("your going to have to find a crafting room.\n\r", ch);
+                return;
+        }
+
+
          if (arg[0] == '0')
         {
                 send_to_char("Smelt what?\n\r", ch);
@@ -3142,7 +3149,13 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
+        if (obj->level > ch->level)
+        {
+                send_to_char("You worldy knowledge of weapons is not at the point to allow you to smelt that.\n\r", ch);
+                return;
+        }
+
+        if ((obj->item_type == ITEM_WEAPON) && is_bladed_weapon(obj) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
         {
                 if (number_percent() >= 98)
                         starmetal = (obj->level/60);
@@ -3210,6 +3223,12 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+                send_to_char("your going to have to find a crafting room.\n\r", ch);
+                return;
+        }
+        
         if (ch->fighting)
         {
                 send_to_char("You can't construct while fighting.\n\r", ch);
@@ -3218,7 +3237,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg1[0] == '\0' )
         {
-                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
+                send_to_char( "          {WBlueprints{x  {GLearned{x      {CDamage{x          {YCost{x\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
@@ -3226,13 +3245,18 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                         if(ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) 
                         {
-                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {Y%6d{x {Y%3d{x {Y%3d{x {Y%3d{x {Y%3d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
-                                blueprint_list[i].blueprint_damage[1] 
+                                blueprint_list[i].blueprint_damage[1],
+                                blueprint_list[i].blueprint_cost[0],
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4]
                                 );
-                                send_to_char(buf, ch);
+                                send_to_char(buf, ch); 
                         }
                         
                 }

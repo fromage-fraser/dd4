@@ -2675,7 +2675,7 @@ int has_groups(CHAR_DATA *ch, int sn)
 
 int has_pre_req(CHAR_DATA *ch, int sn)
 {
-#define SUB_GROUPS 25
+#define SUB_GROUPS 28
 
         int iter;
         bool found[SUB_GROUPS];
@@ -3093,7 +3093,7 @@ void show_slist (CHAR_DATA *ch, int number)
                     case CLASS_PSIONICIST: do_help(ch, "spsi"); break;
                     case CLASS_SHAPE_SHIFTER: do_help(ch, "sshape"); break;
                     case CLASS_RANGER: do_help(ch, "sranger"); break;
-                    case CLASS_SMITHY: do_help(ch, "sranger"); break;
+                    case CLASS_SMITHY: do_help(ch, "ssmithy"); break;
 
                     default: break;
                 }

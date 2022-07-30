@@ -380,6 +380,23 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (is_affected(ch, gsn_haste))
                 one_hit(ch, victim, dt);
 
+        /* for counterbalance */
+
+        if ( !IS_NPC(ch) && ch->pcdata->learned[gsn_counterbalance] > 0 )
+        {
+                OBJ_DATA *wield; 
+                AFFECT_DATA *paf; 
+                wield = get_eq_char(ch, WEAR_WIELD); 
+           /*     send_to_char( "YRES TESYDSFSDFSDFSFD i \n\r", ch); */
+                for ( paf = wield->affected; paf; paf = paf->next )
+                {
+                        if ( paf->location == APPLY_BALANCE )
+                        {
+                                if (number_percent() < paf->modifier)
+                                        one_hit(ch, victim, dt);
+                        }
+                } 
+        }
         /*
          * Multiple attacks for shifter forms
          */

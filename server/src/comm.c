@@ -2005,7 +2005,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                              "New characters may choose one of the following classes:\n\r\n\r",
                              ch);
 
-                for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                 {
                         sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                         send_to_char(buf, ch);
@@ -2022,7 +2022,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r",
                                      ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);
@@ -2032,7 +2032,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                 {
                         if (!str_prefix(argument, class_table[iClass].show_name))
                         {
@@ -2041,7 +2041,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         }
                 }
 
-                if (iClass == MAX_CLASS -1 )
+                if (iClass == MAX_CLASS )
                 {
                         send_to_char("\n\r{Y}rInvalid class!{x\n\r"
                                      "{cPlease choose a class, or press ENTER to list available classes:{x ", ch);
@@ -2086,7 +2086,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r", ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);
