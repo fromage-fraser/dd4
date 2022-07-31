@@ -1981,25 +1981,18 @@ void do_forge (CHAR_DATA *ch, char *argument)
 
 void do_strengthen (CHAR_DATA *ch, char *argument)
 {
+        char            buf[MAX_STRING_LENGTH];
         OBJ_DATA *obj;
         OBJ_DATA *wobj;
         OBJ_DATA *anvil;
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool found;
-        bool in_c_room;
-        int obj_craft_bonus;
-        int mod_room_bonus;
-
-        in_c_room = FALSE;
-
-        obj_craft_bonus = get_craft_obj_bonus( ch );
-        mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
-
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-             in_c_room = TRUE;
-        }
+        int cost_st;
+        int cost_ti; 
+        int cost_ad; 
+        int cost_el;
+        int cost_sm;
 
         if (IS_NPC(ch))
                 return;
@@ -2015,6 +2008,12 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
         if (arg[0] == '\0')
         {
                 send_to_char("What are you trying to srengthen?\n\r", ch);
+                return;
+        }
+
+        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+                send_to_char("You are going to have to find a crafting room.\n\r", ch);
                 return;
         }
 
@@ -2041,7 +2040,29 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 send_to_char("That is already strengthened.\n\r", ch);
                 return;
         }
+
+        if (obj->wear_flags)
+        {
+                int next;
+                 bit_explode(ch, buf, obj->wear_flags);
         
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))
+                        {
+                                if ( !str_cmp( wear_flag_name(next), "finger") 
+                                || !str_cmp( wear_flag_name(next), "float") 
+                                || !str_cmp( wear_flag_name(next), "hold" ) 
+                                || !str_cmp( wear_flag_name(next), "neck") 
+                                || !str_cmp( wear_flag_name(next), "about" ) )
+                                {
+                                        send_to_char("You cannot strengthen that type of armour..\n\r", ch);
+                                        return;        
+                                }
+                        }
+                }
+        }
+
         for (wobj = ch->carrying; wobj; wobj = wobj->next_content)
         {
                 if (wobj->item_type == ITEM_ARMOURERS_HAMMER)
@@ -2070,6 +2091,40 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        cost_sm =0;
+        cost_ad = 0;
+        cost_el = 0;
+        cost_st = 0;
+        cost_ti = 0;
+
+        if ( (obj->level > 90) )
+                cost_sm = 1;
+
+        if (obj->level > 70 )
+                cost_el = 10;
+
+        if (obj->level > 50 )
+                cost_ad = 15;
+        if (obj->level > 25 )
+                cost_ti = 20;
+        if (obj->level > 15 )
+                cost_st = 10;
+        if (obj->level > 1 )
+                cost_st += 12;
+        
+        if ( cost_st > ch->smelted_steel 
+        ||  cost_ti > ch->smelted_titanium 
+        ||  cost_ad > ch->smelted_adamantite
+        ||  cost_el > ch->smelted_electrum
+        ||  cost_sm > ch->smelted_starmetal)
+        {
+                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d", 
+                cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level); 
+                act(buf, ch, NULL, NULL, TO_CHAR);
+                return; 
+        }
+
 
         if (number_percent() > ch->pcdata->learned[gsn_strengthen])
         {
@@ -2079,14 +2134,12 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (in_c_room)
-                send_to_char("{CYour use of specialised crafting tools improves your forging!\n\r{x", ch);
-
         act ("You skillfully strengthen $P with $p!", ch, wobj, obj, TO_CHAR);
         act ("$n skillfully strengthens $P using $p!", ch, wobj, obj, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
-        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
+        SET_BIT(obj->ego_flags, EGO_ITEM_STRENGTHEN);
+        smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);  
  
         if (!affect_free)
                 paf = alloc_perm(sizeof(*paf));
@@ -2096,17 +2149,14 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 affect_free = affect_free->next;
         }
 
-
         paf->type           = gsn_strengthen;
         paf->duration       = -1;
-        paf->location       = APPLY_AC;
-        paf->modifier       = (in_c_room) ? 0 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 0 - ch->level / 5;
+        paf->location       = APPLY_STRENGTHEN;
+        paf->modifier       = 1 + ( ch->level / 50 );
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
 
-        obj->timer    = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
-        obj->timermax = obj->timer; 
         set_obj_owner(obj, ch->name);
 }
 
@@ -3234,14 +3284,13 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
-                send_to_char("your going to have to find a crafting room.\n\r", ch);
+                send_to_char("You are going to have to find a crafting room.\n\r", ch);
                 return;
         }
 
-
-         if (arg[0] == '0')
+         if (arg[0] == '\0')
         {
                 send_to_char("Smelt what?\n\r", ch);
                 return;
@@ -3260,7 +3309,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         }
 
         
-        if (arg[0] == '\0' || !str_cmp(arg, ch->name))
+        if (!str_cmp(arg, ch->name))
         {
                 send_to_char("You're unlikely to contain any elements of value.\n\r", ch);
                 act("$n considers smelting $mself, but determins they hold no value.",
@@ -3354,9 +3403,9 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
-                send_to_char("your going to have to find a crafting room.\n\r", ch);
+                send_to_char("You are going to have to find a crafting room.\n\r", ch);
                 return;
         }
         
@@ -3486,6 +3535,11 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                         sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
                         act(buf, ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
                 }
                 set_obj_owner(obj, ch->name);
                 return;
@@ -3509,6 +3563,11 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_ROOM);
+        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+        blueprint_list[i].blueprint_cost[1],
+        blueprint_list[i].blueprint_cost[2],
+        blueprint_list[i].blueprint_cost[3],
+        blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);  
 
         return;
         
@@ -3668,13 +3727,11 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-/* disabled while testing
         if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
         {
-                send_to_char("You need ot find a forge?\n\r", ch);
+                send_to_char("You need to find a forge.\n\r", ch);
                 return;
         }
-*/
 
         argument = one_argument(argument, arg);
  

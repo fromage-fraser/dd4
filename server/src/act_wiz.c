@@ -1150,7 +1150,10 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                         strcat (buf, " battle_terror");
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                        strcat (buf, " chained");       
+                        strcat (buf, " chained");   
+
+                if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+                        strcat (buf, " strengthened");        
 
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);
@@ -1341,11 +1344,12 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->wait);
                 strcat( buf1, buf );
 
-                sprintf( buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x\n\r",
+                sprintf( buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x Damage Mitigation: {W%d{x\n\r",
                         GET_HITROLL( victim ),
                         GET_DAMROLL( victim ),
                         GET_AC( victim ),
-                        victim->saving_throw);
+                        victim->saving_throw,
+                        victim->damage_mitigation);
                 strcat( buf1, buf );
 
                 sprintf( buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{x\n\r",

@@ -2115,6 +2115,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_SET_RARE                          43
 #define APPLY_SET_EPIC                          44
 #define APPLY_SET_LEGENDARY                     45
+#define APPLY_STRENGTHEN                        46
 
 /*
  * Values for containers (value[1]).
@@ -2500,6 +2501,7 @@ struct char_data
         int             body_form;
         int             tournament_team;        /* mobs can use this too */
         int             exp_modifier;
+        int             damage_mitigation;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */

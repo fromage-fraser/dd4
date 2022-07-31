@@ -3196,6 +3196,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Turret Module");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
                         strcat (buf, " Chain Attached");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+                        strcat (buf, " Strengthened");
                         
                         
                 strcat (buf, ".\n\r");

@@ -6737,8 +6737,8 @@ It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
           Wall -- End --  Poor -- {k}wCommon{x -- Dark --  Alley -- End of --  Mob
           Road   Alley   Alley    {k}wSquare{x    Alley   At Levee  Alley    Factory
             |      |       |        |        |         |        |
-            |   {W}rBrawler{x  Lusty      |      {W}rThief{x     Levee   Abandoned
-          Wall  {W}r Guild {x  Ogres      |      {W}rGuild{x       |     Warehouse
+            |   {W}rBrawler{x  Lusty      |      {W}rThief{x     Levee   {W}rSmithy Trainer{x
+          Wall  {W}r Guild {x  Ogres      |      {W}rGuild{x       |       & Forge
           Road           Tavern     |                  |
             |                       |                River
             |                       |
@@ -6889,6 +6889,15 @@ This allows a Smithy to build items in a set, or a WEAPONCHAIN for example.
 Expert ENGINEERS will use this to construct a TURRET or modules for the 
 turret.
 ~
+
+1 STRENGTHEN~
+
+Syntax: strengthen <<armour>>
+
+This allows the smithy to strengthen certain armour types to improve their 
+mitigation of incoming damage.
+~
+
 
 0 $~
 #$

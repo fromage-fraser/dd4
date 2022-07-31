@@ -382,12 +382,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
         /* for counterbalance */
 
-        if ( !IS_NPC(ch) && ch->pcdata->learned[gsn_counterbalance] > 0 )
+        if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 )
         {
                 OBJ_DATA *wield; 
                 AFFECT_DATA *paf; 
                 wield = get_eq_char(ch, WEAR_WIELD); 
-           /*     send_to_char( "YRES TESYDSFSDFSDFSFD i \n\r", ch); */
                 for ( paf = wield->affected; paf; paf = paf->next )
                 {
                         if ( paf->location == APPLY_BALANCE )
@@ -1027,6 +1026,10 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
+        /* this is to support strengthen, but could b aplied for aonther thigs - Brutus */
+                if (!IS_NPC(victim))
+                        dam *= ( (100 - victim->damage_mitigation) / 100 );
+        
                 if (IS_AFFECTED(victim, AFF_PROTECT))
                 {
                         if (MOD(ch->alignment - victim->alignment) > 750)

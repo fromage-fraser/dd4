@@ -364,6 +364,22 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 ch->saving_throw += mod;
                 break;
 
+            case APPLY_STRENGTHEN:
+                af.type = skill_lookup( "strengthen");
+                if ( fAdd )
+                {
+                        ch->damage_mitigation += mod;
+                        send_to_char( "Your armour provides additional damage mitigation.\n\r", ch );
+                        break;
+                }
+                else
+                {
+                        ch->damage_mitigation += mod;  
+                        send_to_char( "Your damage mitigation reduces somewhat.\n\r", ch );    
+                        break;
+                }
+
+
             case APPLY_SANCTUARY:
                 af.type = skill_lookup( "sanctuary" );
                 if( fAdd )
@@ -2711,6 +2727,7 @@ char *affect_loc_name( int location )
             case APPLY_RESIST_ACID:             return "acid resistance";
             case APPLY_BREATHE_WATER:           return "breathe water";
             case APPLY_BALANCE:                 return "attack speed";
+            case APPLY_STRENGTHEN:              return "damage mitigation";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );

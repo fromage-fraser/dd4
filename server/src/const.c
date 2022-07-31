@@ -5957,7 +5957,7 @@ const struct skill_type skill_table [MAX_SKILL] =
 
         {
                 "strengthen", &gsn_strengthen,
-                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "strengthen", "!Strengthen!"
         },
