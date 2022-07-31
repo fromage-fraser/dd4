@@ -59,7 +59,7 @@ mpforce rat wie incis
 |
 #25603
 giant bat vampire form~
-A giant vampire bat~
+a giant vampire bat~
 A giant winged form looms out of the darkness.
 ~
 The giant vampire bat hisses and screeches as it swoops through the air on its
@@ -79,7 +79,7 @@ mpforce bat wie fangs
 |
 #25604
 giant vampire bat~
-A giant vampire bat~
+a giant vampire bat~
 A giant vampire bat swoops down from the ceiling.
 ~
 You catch a glimpse of the huge bat's hideous leering visage as it swoops past
@@ -6817,7 +6817,8 @@ even with a light source you cannot see more than a few inches in front of
 your face and are forced to grope your way blindly, determining the tunnel's
 course by touch alone.
 
-{WYour foot strikes something metallic.{x~
+{WYour foot strikes something metallic.{x
+~
 0 1|8 0
 D2
 ~
@@ -6835,7 +6836,8 @@ E
 something metallic grate~
 There is a metallic grate set in the concrete at your feet through which you can
 feel the filth and sludge of the sewer draining. It feels rusty and loose and you
-think a good yank would pull it out.~
+think a good yank would pull it out.
+~
 S
 #25805
 A dark tunnel~

@@ -1224,6 +1224,7 @@ void mobile_update( void )
                     && !IS_SET(ch->act, ACT_SENTINEL)
                     && (door = number_bits(3)) <= 5
                     && (pexit = ch->in_room->exit[door])
+                    && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE)
                     && pexit->to_room
                     && !IS_SET(pexit->exit_info, EX_CLOSED)
                     && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB))

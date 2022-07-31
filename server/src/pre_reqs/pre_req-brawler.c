@@ -52,8 +52,8 @@
 {&gsn_grapple,                  &gsn_punch,             60,     PRE_BRAWLER},
 {&gsn_grapple,                  &gsn_group_pugalism,    60,     PRE_BRAWLER},
 
-{&gsn_second_punch,              &gsn_punch,             51,     PRE_BRAWLER},
-{&gsn_second_punch,              &gsn_group_pugalism,    51,     PRE_BRAWLER},
+{&gsn_second_punch,              &gsn_punch,            51,     PRE_BRAWLER},
+{&gsn_second_punch,              &gsn_group_pugalism,   51,     PRE_BRAWLER},
 
 /* above level 30 */
 {&gsn_choke,                    &gsn_group_pugalism,    75,     PRE_BRAWLER},
@@ -81,8 +81,8 @@
 {&gsn_headbutt,                 &gsn_group_unarmed,     30,     PRE_BRAWLER},
 {&gsn_headbutt,                 &gsn_brawler_base,      30,     PRE_BRAWLER},
 
-{&gsn_warcry,                     &gsn_group_inner,     40,     PRE_BRAWLER},
-{&gsn_warcry,                    &gsn_brawler_base,      30,     PRE_BRAWLER},
+{&gsn_warcry,                   &gsn_group_inner,       40,     PRE_BRAWLER},
+{&gsn_warcry,                   &gsn_brawler_base,      30,     PRE_BRAWLER},
 
 {&gsn_bash,                     &gsn_group_inner,       50,     PRE_BRAWLER},
 {&gsn_bash,                     &gsn_brawler_base,      30,     PRE_BRAWLER},
