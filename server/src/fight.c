@@ -42,7 +42,7 @@ bool    check_parry          args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    dam_message          args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison));
 bool    check_shield_block   args((CHAR_DATA *ch, CHAR_DATA *victim));
 void    death_cry            args((CHAR_DATA *ch));
-void    group_gain           args((CHAR_DATA *ch, CHAR_DATA *victim));
+void    group_gain           args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called));
 int     xp_compute           args((CHAR_DATA *gch, CHAR_DATA *victim));
 void    make_corpse          args((CHAR_DATA *ch));
 void    disarm               args((CHAR_DATA *ch, CHAR_DATA *victim));
@@ -1277,7 +1277,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (fighter->position == POS_DEAD)
                 {
                         /* If a mob you're grouped with killsteals for you, you get the reward */
-                        if ( opponent->master
+                        if ( ( IS_NPC(opponent) && opponent->master)
                         && ( opponent->master->sub_class == SUB_CLASS_WITCH
                           || opponent->master->sub_class == SUB_CLASS_INFERNALIST
                           || opponent->master->sub_class == SUB_CLASS_NECROMANCER
@@ -1286,11 +1286,11 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                             && ( opponent->master->sub_class == 0 ) )
                           || opponent->master->sub_class == SUB_CLASS_WEREWOLF ) )
                         {
-                                group_gain(opponent->master, fighter);
+                                group_gain(opponent->master, fighter, TRUE);
                         }
                         else 
                         {
-                                group_gain(opponent, fighter);
+                                group_gain(opponent, fighter, FALSE);
                         }
 
                         if (IS_NPC(fighter))
@@ -2390,7 +2390,7 @@ void raw_kill (CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
  * GG_MARK
  */
 
-void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
+void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 {
         CHAR_DATA *gch;
         char       buf[ MAX_STRING_LENGTH ];
@@ -2415,7 +2415,9 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
             || !IS_NPC(victim)
             || IS_SET(victim->act, ACT_DIE_IF_MASTER_GONE)
             || IS_SET(victim->act, ACT_NO_EXPERIENCE))
+        {
                 return;
+        }
 
         tlevel = 0;
         members = 0;
@@ -2437,6 +2439,20 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                                 pc_members++;
                         }
 
+                }
+        }
+
+        /* 
+         * If function called by a mob on behalf of ch and there are no npc group members in room, 
+         * return, as this implies that the player's mobs have killed the victim mob after the player
+         * has fled.  --Owl 31/7/22 
+         */
+
+        if (mob_called)
+        {
+                if (npc_members == 0)
+                {
+                        return;
                 }
         }
 
@@ -2479,6 +2495,8 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
                 if (level_dif < -5)
                         xp = victim->level * 10;
 
+                log_string(ch->name);
+                log_string(gch->name);
                 sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
                 send_to_char(buf, gch);
                 gch->pcdata->kills++;
@@ -2570,6 +2588,7 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim)
 
                 if (total_message)
                 {
+
                         sprintf(buf, "{WYou gained a total of %d experience points for the kill!{x\n\r", total_xp);
                         send_to_char(buf, gch);
                         total_xp = 0;
@@ -3473,7 +3492,7 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                         else
                         {
                                 /* If a mob you're grouped with killsteals, you get the reward */
-                                if ( ch->master
+                                if ( ( IS_NPC(ch) && ch->master )
                                 && ( ch->master->sub_class == SUB_CLASS_WITCH
                                   || ch->master->sub_class == SUB_CLASS_INFERNALIST
                                   || ch->master->sub_class == SUB_CLASS_NECROMANCER
@@ -3482,11 +3501,11 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                                     && ( ch->master->sub_class == 0 ) )
                                   || ch->master->sub_class == SUB_CLASS_WEREWOLF ) )
                                 {
-                                        group_gain(ch->master, victim);
+                                        group_gain(ch->master, victim, TRUE);
                                 }
                                 else 
                                 {
-                                        group_gain(ch, victim);
+                                        group_gain(ch, victim, FALSE);
                                 }
 
                                 check_player_death(ch, victim);
@@ -6823,7 +6842,7 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                  * If a mob you're grouped with killsteals, and you're a fights-with-mobs class, 
                  * you get the reward. -- Owl 26/7/22 
                  */
-                if ( ch->master
+                if ( ( IS_NPC(ch) && ch->master )
                 &&  ( ch->master->sub_class == SUB_CLASS_WITCH
                    || ch->master->sub_class == SUB_CLASS_INFERNALIST
                    || ch->master->sub_class == SUB_CLASS_NECROMANCER
@@ -6832,11 +6851,11 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                      && ( ch->master->sub_class == 0 ) )
                    || ch->master->sub_class == SUB_CLASS_WEREWOLF) )
                 {
-                        group_gain(ch->master, victim);
+                        group_gain(ch->master, victim, TRUE);
                 }
                 else 
                 {
-                        group_gain(ch, victim);
+                        group_gain(ch, victim, FALSE);
                 }
 
                 check_player_death(ch, victim);
