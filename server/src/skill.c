@@ -1979,6 +1979,137 @@ void do_forge (CHAR_DATA *ch, char *argument)
         set_obj_owner(obj, ch->name);
 }
 
+void do_strengthen (CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        OBJ_DATA *wobj;
+        OBJ_DATA *anvil;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool found;
+        bool in_c_room;
+        int obj_craft_bonus;
+        int mod_room_bonus;
+
+        in_c_room = FALSE;
+
+        obj_craft_bonus = get_craft_obj_bonus( ch );
+        mod_room_bonus = CRAFT_BONUS_FORGE + obj_craft_bonus;
+
+        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        {
+             in_c_room = TRUE;
+        }
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_strengthen))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What are you trying to srengthen?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that piece of armour.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_ARMOR)
+        {
+                send_to_char("That item is not armour.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+        {
+                send_to_char("That is already strengthened.\n\r", ch);
+                return;
+        }
+        
+        for (wobj = ch->carrying; wobj; wobj = wobj->next_content)
+        {
+                if (wobj->item_type == ITEM_ARMOURERS_HAMMER)
+                        break;
+        }
+        if (!wobj)
+        {
+                send_to_char("You need a armourer's hammer to forge your armour.\n\r", ch);
+                return;
+        }
+
+        found = FALSE;
+
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no anvil here!\n\r", ch);
+                return;
+        }
+
+
+        if (number_percent() > ch->pcdata->learned[gsn_strengthen])
+        {
+                send_to_char("You slip while hammering your armour and pound yourself!\n\r", ch);
+                damage(ch, ch, ch->level, gsn_forge, FALSE);
+                act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if (in_c_room)
+                send_to_char("{CYour use of specialised crafting tools improves your forging!\n\r{x", ch);
+
+        act ("You skillfully strengthen $P with $p!", ch, wobj, obj, TO_CHAR);
+        act ("$n skillfully strengthens $P using $p!", ch, wobj, obj, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_IMBUED);
+ 
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+
+        paf->type           = gsn_strengthen;
+        paf->duration       = -1;
+        paf->location       = APPLY_AC;
+        paf->modifier       = (in_c_room) ? 0 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 0 - ch->level / 5;
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
+        obj->timer    = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
+        obj->timermax = obj->timer; 
+        set_obj_owner(obj, ch->name);
+}
+
 
 void do_breathe (CHAR_DATA *ch, char *argument)
 {

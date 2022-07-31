@@ -5955,6 +5955,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "chained shield", "!Shieldchain!"
         },
 
+        {
+                "strengthen", &gsn_strengthen,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "strengthen", "!Strengthen!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */

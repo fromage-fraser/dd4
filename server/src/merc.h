@@ -281,7 +281,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   525     /* 525 -522 chains, armour and weaponsmithing - Brutus 29 Jul */
+#define MAX_SKILL                   526     /* 526 -522 chains, armour and weaponsmithing - Brutus 29 Jul */
 #define MAX_PRE_REQ                 1367    /* Smithy changes 30/7/22 */
 #define MAX_SPELL_GROUP             435     /* turret and arrow smithy blueprints --Brutus 28/7/22 */
 #define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
@@ -2062,7 +2062,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
-#define EGO_ITEM_CHAINED            BIT_8
+#define EGO_ITEM_CHAINED                BIT_8
+#define EGO_ITEM_STRENGTHEN             BIT_9
 
 /*
  * Apply types (for affects).
@@ -3843,6 +3844,7 @@ DECLARE_DO_FUN( do_pattern                      );
 DECLARE_DO_FUN( do_soar                         );
 DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
 DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
+DECLARE_DO_FUN( do_strengthen                   );
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
