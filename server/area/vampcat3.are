@@ -2374,7 +2374,7 @@ D2
 0 -1 20626
 D3
 ~
-~
+thicket~
 1 -1 20622
 S
 #20624
@@ -4677,6 +4677,7 @@ O 1 20644 100 20617         some green herbs to Undergrowth
 O 1 20644 100 20667         some green herbs to Land
 O 1 20644 100 20632         some green herbs to Undergrowth
 O 1 20645 100 20679         some purple herbs to Land
+O 1 20682 100 20648         some orange herbs to Undergrowth
 *
 M 1 20606 7 20626           the wolf cub to The wolves' den
 *
@@ -4883,7 +4884,6 @@ E 1 20671 100 12
 *
 M 1 20630 1 20744           the demon form of Faraq to The Circle of Summoning
 D 1 20741 4 2           ; Faraq's Chambers Lock Up
-O 1 20682 100 20648         some orange herbs to Undergrowth
 *
 M 1 20631 1 20650       ; the spy recruit wolf
 S

@@ -2740,7 +2740,7 @@ void do_unarmed_combat (CHAR_DATA *ch, char *argument)
                                 affect_remove(ch, paf);
                 }
 
-                send_to_char("You mind wanders from the arts of unarmed combat.\n\r", ch);
+                send_to_char("Your mind wanders from the arts of unarmed combat.\n\r", ch);
                 return;
         }
 
