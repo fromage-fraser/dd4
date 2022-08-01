@@ -1028,8 +1028,10 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 
         /* this is to support strengthen, but could b aplied for aonther thigs - Brutus */
                 if (!IS_NPC(victim))
-                        dam *= ( (100 - victim->damage_mitigation) / 100 );
-        
+                {
+                        dam *=  (100 - victim->damage_mitigation);
+                        dam /= 100;
+                }
                 if (IS_AFFECTED(victim, AFF_PROTECT))
                 {
                         if (MOD(ch->alignment - victim->alignment) > 750)
