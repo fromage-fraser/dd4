@@ -1159,11 +1159,11 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         {
                 int count;
                 count=0;
-
+                send_to_char ( "You wear a part of a set.\n\r", ch);
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {       
                         count++;
-                        
+                     /*   bug( "EQUIP_CHAR DEBUG: total count %d.", count ); */
                         if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         { 
                                 affect_modify( ch, paf, TRUE, obj );
@@ -2130,7 +2130,7 @@ char *objset_type( int vnum)
         if (bonus4 > 0)
                 return "<93>Epic<0>";
         if (bonus3 > 0)
-                return "<32>Rare<0>";
+                return "<39>Rare<0>";
         if (bonus2 > 0)
                 return "<34>Uncommon<0>";
                 
@@ -2150,14 +2150,13 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         {
                 if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
                 { 
-                if ( (pObjSetIndex->vnum != pobjsetworn->vnum))
-                        return FALSE;
-
-                if ( (objworn->wear_loc != WEAR_NONE)  )/*count worn items of set */
+                
+                if ( (objworn->wear_loc != WEAR_NONE) && (pObjSetIndex->vnum == pobjsetworn->vnum) )/*count worn items of set */
                         worn++;
+                   /*     bug( "I find worn %d.", worn ); */
                 }               
         }
-        bug( "OBJSET DEBUG: Total worn items %d.", worn );
+        /* bug( "OBJSET DEBUG: Total worn items %d.", worn ); */
 
         if ( worn == 0 )
                 return FALSE;

@@ -108,9 +108,9 @@ const struct class_type class_table [ MAX_CLASS ] =
         {
                 "Smi",  "Smithy",
                 APPLY_STR,  OBJ_VNUM_SCHOOL_SWORD,
-                2,  85, 18,  0,  10, 13,  FALSE,
+                0,  85, 18,  0,  10, 13,  FALSE,
                 "Engineer",  "Alchemist",  "Eng",  "Alc",
-                { 3, 0, -1, -2, 1 }
+                { 2, 2, 0, -2, 0 }
         }
 
 };
@@ -287,14 +287,14 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
         { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 }, "turret" },
         { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 }, "dart" },   
-        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "weaponchain" },
+        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 50, 1, 0, 0, 0 }, "weaponchain" },
         { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "shieldchain" },
         { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },   
         { "wrench of the crow",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
         { "wings of the crow",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
-        { "huntsmiths pauldrons",      "Huntsmiths pauldrons of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" },
-        { "huntsmiths spaulders",      "Huntsmiths spaulders of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" },
-        { "hunstmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" }
+        { "huntsmiths gloves",      "Huntsmiths gloves of the flame", OBJ_VNUM_RARE1, -1, { 0, 0 },  { 40, 10, 1, 0, 0 }, "rare set" },
+        { "huntsmiths belt",      "Huntsmiths belt of the flame", OBJ_VNUM_RARE2, -1, { 0, 0 },  { 50, 20, 2, 0, 0 }, "rare set" },
+        { "huntsmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_RARE3, -1, { 0, 0 },  { 70, 30, 5, 0, 0 }, "rare set" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */

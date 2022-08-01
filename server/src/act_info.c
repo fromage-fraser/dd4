@@ -121,7 +121,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         {
                  if ( (objset_type(pObjSetIndex->vnum)) == ("<34>Uncommon<0>")) 
                         strcat( buf, "<34>[SET]<0> ");
-                if ( (objset_type(pObjSetIndex->vnum)) == ("<32>Rare<0>") ) 
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<39>Rare<0>") ) 
                         strcat( buf, "<32>[SET]<0> ");
                 if ( (objset_type(pObjSetIndex->vnum)) == ("<93>Epic<0>") ) 
                         strcat( buf, "<93>[SET]<0> ");
@@ -1251,7 +1251,7 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->class == CLASS_SMITHY )
         {
-        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Titanium: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
+        sprintf(buf, "Materials:  Steel: {w%d{x  Titanium: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
                 ch->smelted_steel, ch->smelted_titanium, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
         strcat(buf1, buf);
         }
@@ -1279,6 +1279,12 @@ void do_score (CHAR_DATA *ch, char *argument)
         else if ( ch->saving_throw >= -40 )
                 strcat( buf1, "have a strong magical resistance\n\r" );
         else strcat( buf1, "are a magic TANK!!\n\r" );
+
+        if( ch->class == CLASS_SMITHY )
+        {
+                sprintf( buf, "Dam Reduction: {W%d%%{x  ", ch->damage_mitigation );
+                strcat( buf1, buf );                 
+        }
 
         if( ch->level >= 20 )
         {

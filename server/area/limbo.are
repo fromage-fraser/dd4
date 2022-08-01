@@ -582,17 +582,21 @@ Wrench Crow~
 Enchanted Wrench of the Crow~
 An expertly crafted wrench glows faintly.~
 ~
-8 0 1
+9 0 1|16384
 0~ 0~ 0~ 0~
-3 0 0
+5 0 0
+A
+3 0
 #43
 Splayed Wings Crow~
 Splayed Wings of the Crow~
 A cloak with metallic, played fan blades rests here.~
 ~
-8 0 1
+9 0 1|1024
 0~ 0~ 0~ 0~
-3 0 0
+5 0 0
+A
+2 0
 #44
 arrow module~
 arrow module~
@@ -602,29 +606,45 @@ A modular arrow component for an Engineers turret.~
 0~ 0~ 0~ 0~
 3 0 0
 #45
-Huntsmiths Pauldrons~
-Huntsmiths pauldrons of the flame~
-TBD.~
+huntsmith gloves~
+huntsmiths gloves of the flame~
+Finely crafted gloves rest here.~
 ~
-8 0 1
+9 0 1|128
 0~ 0~ 0~ 0~
-3 0 0
+2 0 0
+A
+2 2
+A
+18 2
 #46
-Huntsmiths Spaulders~
-Huntsmiths spaulders of the flame~
-TBD.~
+belt huntsmith~
+Huntsmiths belt of the flame~
+A finely crafted belt rests here~
 ~
-8 0 1
+9 0 1|2048
 0~ 0~ 0~ 0~
-3 0 0
+5 0 0
+A
+5 2
+A
+17 -50
+A
+19 3
 #47
-Huntsmiths Boots~
+huntsmiths boots~
 Huntsmiths boots of the flame~
-TBD.~
+A pair of finely crafed boots are here.~
 ~
-8 0 1
+9 0 1|64
 0~ 0~ 0~ 0~
-3 0 0
+5 0 0
+A
+4 2
+A
+18 2
+A
+17 -20
 #50
 talons~
 talons~
@@ -1574,19 +1594,24 @@ A 14 100
 #3
 uncommon crow~
 The Smithys Set of the Crow. 
-Crow were the pseudo pets of the Smiths, often seen perching across the Smithys Forge in Winter months basking in teh heat of the Forge, and scavenging any food scraps.
-An Ancient Forgeing process embues the essense of Crow into the armour sets allowing it to take on properties of the black feathered denizens.
+Crow were the pseudo pets of the Smiths, often seen perching across the Smithys
+Forge in Winter months basking in teh heat of the Forge, and scavenging any 
+food scraps. An Ancient Forgeing process embues the essense of Crow into the 
+armour sets allowing it to take on properties of the black feathered denizens.
 ~
 42 43 0 0 0
 2 2 0 0 0
 A 27 -1
 #4
 rare huntsmith~
-somethig goes here...
+<153>The huntsmith set tradditional was worn by smithys that frequented
+the battle front. Smithys were often called upon to participate in
+battle<0>.
 ~
 45 46 47 0 0
-3 3 3 0 0
-A 27 -1
+2 2 3 0 0
+A 19 12
+A 18 10
 #0
 
 #SPECIALS
