@@ -2825,7 +2825,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "fireshield", &gsn_fireshield,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_fireshield, 75, 18,
-                "<196>fi<202>r<11>e<15>sh<11>i<202>e<196>ld<0>", "The flames around your body fizzle out."
+                "<196>fi<202>r<11>e<15>sh<11>i<202>e<196>ld<0>", "<88>The flames around your body fizzle out.<0>"
         },
 
         {
@@ -3022,7 +3022,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "sanctuary", &gsn_sanctuary,
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
                 spell_sanctuary, 75, 12,
-                "", "The white aura around your body fades."
+                "", "<250>The white aura around your body fades.<0>"
         },
 
         {
@@ -4299,7 +4299,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "biofeedback", &gsn_biofeedback,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_biofeedback, 75, 12,
-                "", "Your biofeedback is no longer effective."
+                "", "<250>Your biofeedback is no longer effective.<0>"
         },
 
         {
@@ -4670,21 +4670,21 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "mass sanctuary", &gsn_mass_sanctuary,
                 TYPE_INT, TAR_IGNORE, POS_STANDING,
                 spell_mass_sanctuary, 200, 36,
-                "", "The white aura around your body fades."
+                "", "<250>The white aura around your body fades.<0>"
         },
 
         {
                 "globe of invulnerability", &gsn_globe,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_globe, 120, 12,
-                "", "The globe about you implodes."
+                "", "<208>The globe about you implodes.<0>"
         },
 
         {
                 "dark globe of invulnerability", &gsn_dark_globe,
                 TYPE_INT, TAR_CHAR_SELF, POS_STANDING,
                 spell_dark_globe, 120, 12,
-                "", "The dark globe about you implodes."
+                "", "<208>The dark globe about you implodes.<0>"
         },
 
         {

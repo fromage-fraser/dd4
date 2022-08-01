@@ -2066,8 +2066,8 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_SANCTUARY) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))) )
                 {
                         REMOVE_BIT(victim->affected_by, AFF_SANCTUARY);
-                        send_to_char( "The white aura around your body fades.\n\r", victim );
-                        act( "The white aura around $n's body fades.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "<250>The white aura around your body fades.<0>\n\r", victim );
+                        act( "<250>The white aura around $n's body fades.<0>", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2075,8 +2075,8 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_GLOBE) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_GLOBE);
-                        send_to_char( "The globe around your body dissipates.\n\r", victim );
-                        act( "The globe around $n's body fades.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "<208>The globe around your body dissipates.<0>\n\r", victim );
+                        act( "<208>The globe around $n's body fades.<0>", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2084,8 +2084,8 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_FLAMING) && (!saves_spell(level, victim ) || (IS_IMMORTAL( ch ))))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_FLAMING);
-                        send_to_char( "The flames around your body fizzle out.\n\r", victim );
-                        act( "The flames around $n's body fade.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "<88>The flames around your body fizzle out.<0>\n\r", victim );
+                        act( "<88>The flames around $n's body fade.<0>", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2268,8 +2268,8 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_DETECT_EVIL) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_DETECT_EVIL);
-                        send_to_char( "The red in your vision disappears.\n\r", victim );
-                        act( "$n can no longer detect evil.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "<124>The red in your vision disappears.<0>\n\r", victim );
+                        act( "<124>$n can no longer detect evil.<0>", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2284,16 +2284,16 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                 if (IS_AFFECTED(victim, AFF_DETECT_GOOD) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_DETECT_GOOD);
-                        send_to_char( "The yellow in your vision disappears.\n\r", victim );
-                        act( "$n can no longer detect goodness.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "<222>The yellow in your vision disappears.<0>\n\r", victim );
+                        act( "<222>$n can no longer detect goodness.<0>", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
                 if (IS_AFFECTED(victim, AFF_DETECT_MAGIC) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_DETECT_MAGIC);
-                        send_to_char( "The blue in your vision disappears.\n\r", victim );
-                        act( "$n can no longer detect magic.", victim, NULL, NULL, TO_ROOM );
+                        send_to_char( "<27>The blue in your vision disappears.<0>\n\r", victim );
+                        act( "<27>$n can no longer detect magic.<0>", victim, NULL, NULL, TO_ROOM );
                         return;
                 }
 
@@ -2614,8 +2614,8 @@ void spell_fireshield (int sn, int level, CHAR_DATA *ch, void *vo)
         af.bitvector= AFF_FLAMING;
         affect_to_char( victim, &af );
 
-        send_to_char( "A flaming aura forms around you!\n\r", victim );
-        act("The air around $n's form bursts into flame!",victim,NULL,NULL,TO_ROOM);
+        send_to_char( "<196>A flaming aura forms around you!<0>\n\r", victim );
+        act("<196>The air around $n's form bursts into flame!<0>",victim,NULL,NULL,TO_ROOM);
         return;
 }
 
@@ -3794,8 +3794,8 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_SANCTUARY;
         affect_to_char( victim, &af );
 
-        send_to_char( "You are surrounded by a white aura.\n\r", victim );
-        act( "$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", victim );
+        act( "<15>$n is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM );
 
         if (ch != victim)
                 check_group_bonus(ch);
@@ -4754,8 +4754,8 @@ void spell_biofeedback ( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_SANCTUARY;
         affect_to_char( victim, &af );
 
-        send_to_char( "A white aura surrounds you.\n\r", victim );
-        act( "$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "<15>A white aura surrounds you.<0>\n\r", victim );
+        act( "<15>$n is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM );
         return;
 }
 
@@ -6130,8 +6130,8 @@ void spell_mass_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
                 af.bitvector = AFF_SANCTUARY;
                 affect_to_char( gch, &af );
 
-                send_to_char( "You are surrounded by a white aura.\n\r", gch );
-                act( "$n is surrounded by a white aura.", gch, NULL, NULL, TO_ROOM );
+                send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", gch );
+                act( "<15>$n is surrounded by a white aura.<0>", gch, NULL, NULL, TO_ROOM );
         }
 
         send_to_char( "Ok.\n\r", ch );

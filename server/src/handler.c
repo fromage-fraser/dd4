@@ -377,15 +377,15 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_SANCTUARY;
                         affect_to_char( ch, &af );
-                        send_to_char( "You are surrounded by a white aura.\n\r", ch );
-                        act( "$n is surrounded by a white aura.", ch, NULL, NULL, TO_ROOM );
+                        send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", ch );
+                        act( "<15>$n is surrounded by a white aura.<0>", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
                 else
                 {
                         affect_strip( ch, af.type );
-                        send_to_char( "The white aura around your body vanishes.\n\r", ch );
-                        act( "The white aura around $n's body vanishes.", ch,
+                        send_to_char( "<250>The white aura around your body vanishes.<0>\n\r", ch );
+                        act( "<250>The white aura around $n's body vanishes.<0>", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
@@ -508,15 +508,15 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         af.modifier = 0;
                         af.bitvector = AFF_FLAMING;
                         affect_to_char( ch, &af );
-                        send_to_char( "A flaming aura surrounds you!\n\r", ch );
-                        act( "The air around $n's form bursts into flame.", ch, NULL, NULL, TO_ROOM );
+                        send_to_char( "<196>A flaming aura surrounds you!<0>\n\r", ch );
+                        act( "<196>The air around $n's form bursts into flame.<0>", ch, NULL, NULL, TO_ROOM );
                         break;
                 }
                 else
                 {
                         affect_strip( ch, af.type );
-                        send_to_char( "The flames around your body fizzle out.\n\r", ch );
-                        act( "The flames around $n's body fizzle out.", ch,
+                        send_to_char( "<88>The flames around your body fizzle out.<0>\n\r", ch );
+                        act( "<88>The flames around $n's body fizzle out.<0>", ch,
                             NULL, NULL, TO_ROOM);
                         break;
                 }
@@ -1886,72 +1886,10 @@ char  *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
         
         }
         return NULL;
-
-
-
-/********************************
- * 
- * 
- * void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon )
- *      OBJ_DATA *wield;
-        char buf [MAX_STRING_LENGTH];
-        int mod;
-        AFFECT_DATA af;
-
-        mod = paf->modifier;
-
-        if ( fAdd )
-        {
-                SET_BIT   ( ch->affected_by, paf->bitvector );
-        }
-        else
-        {
-                REMOVE_BIT( ch->affected_by, paf->bitvector );
-                mod = 0 - mod;
-        }
-
-   switch ( paf->location )
-        {
-            default:
-                sprintf( buf, "Affect_modify: unknown location %d on %s.",
-                        paf->location, ch->name );
-                bug ( buf, 0 );
-                return;
-
-            case APPLY_NONE:
-
-           case APPLY_SANCTUARY:
-                af.type = skill_lookup( "sanctuary" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already sanctified.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_SANCTUARY;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You are surrounded by a white aura.\n\r", ch );
-                        act( "$n is surrounded by a white aura.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-
-*************************************/
-
-
-
-
-
         
 }
 
-/* Return how many itesm need to be worn to get a bonus from a 
+/* Return how many items need to be worn to get a bonus from a 
 objsetvnum and position */
 int objset_bonus_num_pos( int vnum, int pos)
 {
