@@ -3196,6 +3196,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Turret Module");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
                         strcat (buf, " Chain Attached");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+                        strcat (buf, " Strengthened");
                         
                         
                 strcat (buf, ".\n\r");
@@ -3320,7 +3322,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( buf,ch);
                 sprintf(buf, "%s", pObjSetIndex->description );
                 send_to_char( buf,ch);
-                sprintf(buf, "Its Set Bonuses are:\n\r");
+                sprintf(buf, "<560>Its Set Bonuses are:<0>\n\r");
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
                         count++;

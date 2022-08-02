@@ -380,6 +380,22 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (is_affected(ch, gsn_haste))
                 one_hit(ch, victim, dt);
 
+        /* for counterbalance */
+
+        if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 )
+        {
+                OBJ_DATA *wield; 
+                AFFECT_DATA *paf; 
+                wield = get_eq_char(ch, WEAR_WIELD); 
+                for ( paf = wield->affected; paf; paf = paf->next )
+                {
+                        if ( paf->location == APPLY_BALANCE )
+                        {
+                                if (number_percent() < paf->modifier)
+                                        one_hit(ch, victim, dt);
+                        }
+                } 
+        }
         /*
          * Multiple attacks for shifter forms
          */
@@ -1010,6 +1026,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
+        /* this is to support strengthen, but could b aplied for aonther thigs - Brutus */
+                if (!IS_NPC(victim))
+                {
+                        dam *=  (100 - victim->damage_mitigation);
+                        dam /= 100;
+                }
                 if (IS_AFFECTED(victim, AFF_PROTECT))
                 {
                         if (MOD(ch->alignment - victim->alignment) > 750)

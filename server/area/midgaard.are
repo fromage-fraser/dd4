@@ -876,6 +876,22 @@ well-travelled, and good-natured person who really knows his business.
 50 2 2 1d1+30000 1d8+32
 0 0
 8 8 1
+#3161
+smithy master craftsman~
+the master craftsman~
+A master craftsman is here, bent over the forge.
+~
+Stocky, weathered and knowledgable
+
+He seems like a man who knows many secrets.
+~
+2|512|1024|32768|16777216 128 1000 S
+24 0 0 6d10+440 3d8+24
+0 0
+8 8 1
+& 10 'teacher base'
+& 70 'weaponsmithing'
+& 70 'armoursmithing'
 #0
 
 #MOBPROGS
@@ -1836,10 +1852,10 @@ map~
           Wall -- End --  Poor -- Common -- Dark -- Alley --   End   --  Mob
           Road   Alley   Alley    Square    Alley  At Levee  of Alley  Factory
             |      |       |        |        |        |        |
-            |   Brawler  Lusty      |      Thief    Levee   Abandoned
-          Wall   Guild   Ogres      |      Guild      |     Warehouse
-          Road           Tavern     |                 |
-            |                       |               River
+            |   Brawler  Lusty      |      Thief    Levee   Midgaard
+          Wall   Guild   Ogres      |      Guild      |      Forge
+          Road           Tavern     |                 |     & Smithy
+            |                       |               River   Trainer
             |                       |
     To South Midgaard              Dump
 ~
@@ -2357,6 +2373,22 @@ A glowing pink crystal sits here.~
 A
 12 50
 
+#3391
+forge~
+a forge~
+A large forge dominates the room.~
+~
+40 1 0
+5~ 0~ 0~ 0~
+1000 0 0
+#3392
+anvil~
+a large anvil~
+A large anvil sits in the corner of the room, waiting to be used.~
+~
+30 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
 
 #0
 
@@ -3508,12 +3540,11 @@ You see the river flowing west.
 0 -1 3203
 S
 #3050
-Abandoned Warehouse~
-You are inside the only room in the old warehouse.  The place is very dusty
-and appears to have been unused for many years.  The skylight spills
-violet-tinged light.
+Midgaard Forge~
+The room is littered with armour and weapons from the ages. The air is 
+thick with the smell of acrid smoke.
 ~
-0 8|1024 0
+0 4|8|128 0
 D0
 You see the alley.
 ~
@@ -5158,7 +5189,7 @@ M 1 3006 1 3049      A Captain (selling boats) at Levee
 G 1 3050 20                                  Give a raft to the captain
 G 1 3051 10                                  Give canoe to Captain
 *
-M 1 3007 1 3050      Sailor training in the warehouse
+M 1 3161 1 3050      Master Smithy to the Forge
 *
 M 1 3040 1 3007      The bartender
 E 1 3022 100 16                            wields a longsword
@@ -5303,6 +5334,8 @@ E 1 3020 99 16
 O 1 3135 10 3005                                fountain at temple
 O 1 3139 15 3008                                letter at receptionist
 O 1 3140 15 3008                                notice at receptionist
+O 1 3391 10 3050                                forge to the smithy
+O 1 3392 10 3050                                anvil to the smithy
 *
 * -- southern Midgaard --
 *
