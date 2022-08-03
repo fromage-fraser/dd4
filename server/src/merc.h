@@ -282,8 +282,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
 #define MAX_SKILL                   526     /* 526 -522 chains, armour and weaponsmithing - Brutus 29 Jul */
-#define MAX_PRE_REQ                 1367    /* Smithy changes 30/7/22 */
-#define MAX_SPELL_GROUP             435     /* turret and arrow smithy blueprints --Brutus 28/7/22 */
+#define MAX_PRE_REQ                 1367    /* smithy stuff */
+#define MAX_SPELL_GROUP             434     /* -1 for hurl  --Brutus 28/7/22 */
 #define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */

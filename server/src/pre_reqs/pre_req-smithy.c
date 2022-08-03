@@ -17,18 +17,17 @@
 
 /* Weaponsmith */
 
-{&gsn_imbue,			&gsn_group_weaponsmith,     50, 	PRE_SMITHY},
-{&gsn_counterbalance,   &gsn_group_weaponsmith,	    40, 	PRE_SMITHY},
+{&gsn_counterbalance,   &gsn_group_weaponsmith,	    10, 	PRE_SMITHY},
 {&gsn_weaponchain,		&gsn_group_weaponsmith,	    40, 	PRE_SMITHY},
-{&gsn_shieldchain,		&gsn_group_weaponsmith,	    60, 	PRE_SMITHY},
 {&gsn_hurl,			    &gsn_group_weaponsmith,	    40, 	PRE_SMITHY},
+{&gsn_imbue,			&gsn_group_weaponsmith,     50, 	PRE_SMITHY},
+{&gsn_shieldchain,		&gsn_group_weaponsmith,	    64, 	PRE_SMITHY},
+
 
 /* 30+ skills */
 {&gsn_epic_set,		    &gsn_group_armoursmith,	    70, 	PRE_SMITHY},
 {&gsn_legendary_set,	&gsn_group_armoursmith,	    80, 	PRE_SMITHY},
 {&gsn_repelling,		&gsn_group_armoursmith,    	90,	    PRE_SMITHY},
-
-
 
 
 /* 30+ */
