@@ -2131,6 +2131,7 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 send_to_char("You slip while hammering your armour and pound yourself!\n\r", ch);
                 damage(ch, ch, ch->level, gsn_forge, FALSE);
                 act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE); 
                 return;
         }
 
@@ -3331,54 +3332,103 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 
         if (obj->level > ch->level)
         {
-                send_to_char("You worldy knowledge of weapons is not at the point to allow you to smelt that.\n\r", ch);
+                send_to_char("You worldy knowledge of items is not at the point to allow you to smelt that yet.\n\r", ch);
                 return;
         }
 
-        if ((obj->item_type == ITEM_WEAPON) && is_bladed_weapon(obj) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
+        if ((obj->item_type == ITEM_WEAPON) && is_bladed_weapon(obj))
         {
-                if (number_percent() >= 98)
-                        starmetal = (obj->level/60);
-                if (number_percent() >= 94)
-                        electrum = (obj->level/45);
-                if (number_percent() >= 75)
-                        adamantite = (obj->level/30);
-                if (number_percent() >= 50)
-                        titanium = (obj->level/10);
-                if (number_percent() >= 30)
-                        steel = (obj->level/3);
-        }
-        else if (obj->item_type == ITEM_ARMOR && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
-        {
-                if (number_percent() >= 98)
-                        starmetal = (obj->level/60);
-                if (number_percent() >= 94)
-                        electrum = (obj->level/45);
-                if (number_percent() >= 75)
-                        adamantite = (obj->level/30);
-                if (number_percent() >= 50)
-                        titanium = (obj->level/10);
-                if (number_percent() >= 30)
-                        steel = (obj->level/3);
+                if (number_percent() <= ch->pcdata->learned[gsn_smelt])
+                {
+                        if (number_percent() >= 98)
+                                starmetal = (obj->level/60);
+                        if (number_percent() >= 94)
+                                electrum = (obj->level/45);
+                        if (number_percent() >= 75)
+                                adamantite = (obj->level/30);
+                        if (number_percent() >= 50)
+                                titanium = (obj->level/10);
+                        if (number_percent() >= 30)
+                                steel = (obj->level/3);
+                        
+                        ch->smelted_steel += steel;
+                        ch->smelted_titanium += titanium;
+                        ch->smelted_adamantite += adamantite;
+                        ch->smelted_electrum += electrum;
+                        ch->smelted_starmetal += starmetal;
+                        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+                        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
+                        smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
+                        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
+                        send_to_char (buf, ch);
+                        extract_obj(obj);
+                        return;
+                }
+                else
+                {  
+                        send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                        extract_obj(obj); 
+                        return;      
+                }
 
-                ch->smelted_steel += steel;
-                ch->smelted_titanium += titanium;
-                ch->smelted_adamantite += adamantite;
-                ch->smelted_electrum += electrum;
-                ch->smelted_starmetal += starmetal;
-        }
-        else
-        {
-                send_to_char("You can't Smelt that!\n\r", ch);
-                return;
         }
 
-        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
-        smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
-        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
-        send_to_char (buf, ch);
-        extract_obj(obj);        
+        if (obj->wear_flags)
+        {
+                int next;
+                 bit_explode(ch, buf, obj->wear_flags);
+        
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))  /*obj->item_type == ITEM_ARMOR */
+                        {
+                                if ( !str_cmp( wear_flag_name(next), "finger") 
+                                || !str_cmp( wear_flag_name(next), "float") 
+                                || !str_cmp( wear_flag_name(next), "hold" ) 
+                                || !str_cmp( wear_flag_name(next), "neck") 
+                                || !str_cmp( wear_flag_name(next), "about" ) )
+                                {
+                                        send_to_char("You cannot smelt that type of armour.\n\r", ch);
+                                        return;        
+                                }
+                                else
+                                {
+                                        if (number_percent() <= ch->pcdata->learned[gsn_smelt])
+                                        {
+                                                if (number_percent() >= 98)
+                                                        starmetal = (obj->level/60);
+                                                if (number_percent() >= 94)
+                                                        electrum = (obj->level/45);
+                                                if (number_percent() >= 75)
+                                                        adamantite = (obj->level/30);
+                                                if (number_percent() >= 50)
+                                                        titanium = (obj->level/10);
+                                                if (number_percent() >= 30)
+                                                        steel = (obj->level/3);
+
+                                                ch->smelted_steel += steel;
+                                                ch->smelted_titanium += titanium;
+                                                ch->smelted_adamantite += adamantite;
+                                                ch->smelted_electrum += electrum;
+                                                ch->smelted_starmetal += starmetal;  
+                                                act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+                                                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
+                                                smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
+                                                sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
+                                                send_to_char (buf, ch);
+                                                extract_obj(obj);   
+                                                return;
+                                        }
+                                        else
+                                        {
+                                                send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                                                extract_obj(obj); 
+                                                return; 
+                                        }                        
+                                }
+                        }
+                }
+        }  
 }
 
 /* Construct Code - Brutus Jul 2023 */
@@ -3525,6 +3575,33 @@ void do_construct( CHAR_DATA *ch, char *arg )
                         send_to_char("You cannot add a chain to that.\n\r", ch);
                         return;
                 }
+
+                if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && number_percent() > ch->pcdata->learned[gsn_weaponchain]) )
+                {
+                        send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                        send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE); 
+                        return;
+                }
+                if ((!strcmp(blueprint_list[i].blueprint_name, "shieldchain") && number_percent() > ch->pcdata->learned[gsn_shieldchain]) )
+                {
+                        send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                        send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE); 
+                        return;
+                }
+
+
                 if (blueprint_list[i].blueprint_ego)
                 {               
                         SET_BIT(obj->extra_flags, ITEM_EGO);
@@ -3542,6 +3619,19 @@ void do_construct( CHAR_DATA *ch, char *arg )
                                 blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
                 }
                 set_obj_owner(obj, ch->name);
+                return;
+        }
+
+        if ( number_percent() > ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
+                smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                        blueprint_list[i].blueprint_cost[1],
+                        blueprint_list[i].blueprint_cost[2],
+                        blueprint_list[i].blueprint_cost[3],
+                        blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE); 
                 return;
         }
         
