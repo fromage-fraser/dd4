@@ -590,10 +590,18 @@ const struct race_struct race_table [MAX_RACE] =
 
         {
                 "Grung  ", "Grung",
-                0, -2, -1, 3, +1,
+                0, -2, -1, 3, 1,
                 20, -10, 10,
                 "Resist Toxin", "Poison",
                 CHAR_SIZE_SMALL
+        },
+
+        {
+                "Duergar", "Duergar",
+                2, 2, -2, -2, 1,
+                30, -20, -20,
+                "Infravision", "Invis",
+                CHAR_SIZE_MEDIUM
         },
 };
 
