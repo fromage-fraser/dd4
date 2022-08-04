@@ -3012,37 +3012,37 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         const char* type [MAX_ITEM_TYPE+1] =
         {
-                "something strange",    "a light source",       "a scroll",
-                "a wand",               "a staff",              "a weapon",
-                "something strange",    "something strange",    "treasure",
-                "a piece of armour",    "a potion",             "something strange",
-                "a piece of furniture", "a piece of trash",     "something strange",
-                "a container",          "something strange",    "a drink container",
-                "a key",                "food",                 "money",
-                "something strange",    "a boat",               "a corpse",
-                "a corpse",             "a fountain",           "a pill",
-                "some climbing equipment",                      "some paint",
-                "something strange",    "an anvil",             "an auction ticket",
-                "a special clan artefact",                      "a magical portal",
-                "some poison powder",   "a lockpick",           "a musical instrument",
-                "an armourer's hammer", "some mithril",         "a whetstone",
-                "a crafting tool",      "a mgical crafting tool", "a turret module"
+                "something strange",       "a light source",             "a scroll",
+                "a wand",                  "a staff",                    "a weapon",
+                "something strange",       "something strange",          "treasure",
+                "a piece of armour",       "a potion",                   "something strange",
+                "a piece of furniture",    "a piece of trash",           "something strange",
+                "a container",             "something strange",          "a drink container",
+                "a key",                   "food",                       "money",
+                "something strange",       "a boat",                     "a corpse",
+                "a corpse",                "a fountain",                 "a pill",
+                "some climbing equipment",                               "some paint",
+                "something strange",       "an anvil",                   "an auction ticket",
+                "a special clan artefact",                               "a magical portal",
+                "some poison powder",      "a lockpick",                 "a musical instrument",
+                "an armourer's hammer",    "some mithril",               "a whetstone",
+                "a crafting tool",         "a magical crafting tool",    "a turret module"
         };
 
         const char* extras [31] =
         {
-                "glows faintly",        "emits a low humming noise",
-                "?",                    "?",                    "is evil",
-                "is invisible",         "has a magical aura",   "cannot be dropped",
-                "has been blessed",     "?",                    "?",
-                "?",
-                "cannot be removed",    "?",                    "is coated in poison",
-                "?",                    "?",                    "?",
-                "?",                    "?",                    "is a vorpal weapon",
-                "?",                    "?",                    "is bloodthirsty",
-                "has been sharpened",   "has been forged",      "is a body part",
-                "can be used as a lance",                       "?",
-                "?",                    "can be used as a bow"
+                "glows faintly",           "emits a low humming noise",
+                "?",                       "?",                          "is evil",
+                "is invisible",            "has a magical aura",         "cannot be dropped",
+                "has been blessed",        "?",                          "?",
+                "?",         
+                "cannot be removed",       "?",                          "is coated in poison",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "is a vorpal weapon",
+                "?",                       "?",                          "is bloodthirsty",
+                "has been sharpened",      "has been forged",            "is a body part",
+                "can be used as a lance",                                "?",
+                "?",                       "can be used as a bow"
         };
 
         const int class_restrictions [MAX_CLASS] =
@@ -3177,11 +3177,11 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if IS_SET(obj->extra_flags, ITEM_EGO) 
         {
-                sprintf( buf, "Specialist Enhancements:");
+                sprintf( buf, "Specialist enhancements:");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
                         strcat (buf, " Bloodlust");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
-                        strcat (buf, " Soul Stealer");
+                        strcat (buf, " Soul stealer");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                         strcat (buf, " Firebrand");              
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
@@ -3189,13 +3189,13 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
                         strcat (buf, " Counterbalanced");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
-                        strcat (buf, " Battle Terror");
+                        strcat (buf, " Battle terror");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
-                        strcat (buf, " Engineers Turret");
+                        strcat (buf, " Engineer's turret");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
-                        strcat (buf, " Turret Module");
+                        strcat (buf, " Turret module");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                        strcat (buf, " Chain Attached");
+                        strcat (buf, " Chain attached");
                         
                         
                 strcat (buf, ".\n\r");
@@ -3320,7 +3320,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( buf,ch);
                 sprintf(buf, "%s", pObjSetIndex->description );
                 send_to_char( buf,ch);
-                sprintf(buf, "Its Set Bonuses are:\n\r");
+                sprintf(buf, "Its set bonuses are:\n\r");
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
                         count++;

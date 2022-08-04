@@ -19,6 +19,7 @@
  ***************************************************************************/
 #pragma once
 #include <math.h>
+#include <stdint.h>
 #include <unistd.h>
 #define _XOPEN_SOURCE
 
@@ -71,39 +72,72 @@ typedef short int sh_int;
 
 /*
  *  Bit values.  View online with 'HELP BITZ'.  Gezhp
- */
-#define BIT_0   0x00000001      /*            1 */
-#define BIT_1   0x00000002      /*            2 */
-#define BIT_2   0x00000004      /*            4 */
-#define BIT_3   0x00000008      /*            8 */
-#define BIT_4   0x00000010      /*           16 */
-#define BIT_5   0x00000020      /*           32 */
-#define BIT_6   0x00000040      /*           64 */
-#define BIT_7   0x00000080      /*          128 */
-#define BIT_8   0x00000100      /*          256 */
-#define BIT_9   0x00000200      /*          512 */
-#define BIT_10  0x00000400      /*         1024 */
-#define BIT_11  0x00000800      /*         2048 */
-#define BIT_12  0x00001000      /*         4096 */
-#define BIT_13  0x00002000      /*         8192 */
-#define BIT_14  0x00004000      /*        16384 */
-#define BIT_15  0x00008000      /*        32768 */
-#define BIT_16  0x00010000      /*        65536 */
-#define BIT_17  0x00020000      /*       131072 */
-#define BIT_18  0x00040000      /*       262144 */
-#define BIT_19  0x00080000      /*       524288 */
-#define BIT_20  0x00100000      /*      1048576 */
-#define BIT_21  0x00200000      /*      2097152 */
-#define BIT_22  0x00400000      /*      4194304 */
-#define BIT_23  0x00800000      /*      8388608 */
-#define BIT_24  0x01000000      /*     16777216 */
-#define BIT_25  0x02000000      /*     33554432 */
-#define BIT_26  0x04000000      /*     67108864 */
-#define BIT_27  0x08000000      /*    134217728 */
-#define BIT_28  0x10000000      /*    268435456 */
-#define BIT_29  0x20000000      /*    536870912 */
-#define BIT_30  0x40000000      /*   1073741824 */
-
+ */  
+#define BIT_0   0x00000001            /*                    1  */
+#define BIT_1   0x00000002            /*                    2  */
+#define BIT_2   0x00000004            /*                    4  */
+#define BIT_3   0x00000008            /*                    8  */
+#define BIT_4   0x00000010            /*                   16  */
+#define BIT_5   0x00000020            /*                   32  */
+#define BIT_6   0x00000040            /*                   64  */
+#define BIT_7   0x00000080            /*                  128  */
+#define BIT_8   0x00000100            /*                  256  */
+#define BIT_9   0x00000200            /*                  512  */
+#define BIT_10  0x00000400            /*                 1024  */
+#define BIT_11  0x00000800            /*                 2048  */
+#define BIT_12  0x00001000            /*                 4096  */
+#define BIT_13  0x00002000            /*                 8192  */
+#define BIT_14  0x00004000            /*                16384  */
+#define BIT_15  0x00008000            /*                32768  */
+#define BIT_16  0x00010000            /*                65536  */
+#define BIT_17  0x00020000            /*               131072  */
+#define BIT_18  0x00040000            /*               262144  */
+#define BIT_19  0x00080000            /*               524288  */
+#define BIT_20  0x00100000            /*              1048576  */
+#define BIT_21  0x00200000            /*              2097152  */
+#define BIT_22  0x00400000            /*              4194304  */
+#define BIT_23  0x00800000            /*              8388608  */
+#define BIT_24  0x01000000            /*             16777216  */
+#define BIT_25  0x02000000            /*             33554432  */
+#define BIT_26  0x04000000            /*             67108864  */
+#define BIT_27  0x08000000            /*            134217728  */
+#define BIT_28  0x10000000            /*            268435456  */
+#define BIT_29  0x20000000            /*            536870912  */
+#define BIT_30  0x40000000            /*           1073741824  */
+#define BIT_31  0x80000000            /*           2147483648  */
+#define BIT_32  0x100000000           /*           4294967296  */
+#define BIT_33  0x200000000           /*           8589934592  */
+#define BIT_34  0x400000000           /*          17179869184  */
+#define BIT_35  0x800000000           /*          34359738368  */
+#define BIT_36	0x1000000000          /*          68719476736  */
+#define BIT_37	0x2000000000          /*         137438953472  */
+#define BIT_38	0x4000000000          /*         274877906944  */
+#define BIT_39	0x8000000000          /*         549755813888  */
+#define BIT_40	0x10000000000         /*        1099511627776  */
+#define BIT_41	0x20000000000         /*        2199023255552  */
+#define BIT_42	0x40000000000         /*        4398046511104  */
+#define BIT_43	0x80000000000         /*        8796093022208  */
+#define BIT_44	0x100000000000        /*       17592186044416  */
+#define BIT_45	0x200000000000        /*       35184372088832  */
+#define BIT_46	0x400000000000        /*       70368744177664  */
+#define BIT_47	0x800000000000        /*      140737488355328  */
+#define BIT_48	0x1000000000000       /*      281474976710656  */
+#define BIT_49	0x2000000000000       /*      562949953421312  */
+#define BIT_50	0x4000000000000       /*     1125899906842624  */
+#define BIT_51	0x8000000000000       /*     2251799813685248  */
+#define BIT_52	0x10000000000000      /*     4503599627370496  */
+#define BIT_53	0x20000000000000      /*     9007199254740992  */
+#define BIT_54	0x40000000000000      /*    18014398509481984  */
+#define BIT_55	0x80000000000000      /*    36028797018963968  */
+#define BIT_56	0x100000000000000     /*    72057594037927936  */
+#define BIT_57	0x200000000000000     /*   144115188075855872  */
+#define BIT_58	0x400000000000000     /*   288230376151711744  */
+#define BIT_59	0x800000000000000     /*   576460752303423488  */
+#define BIT_60	0x1000000000000000    /*  1152921504606846976  */
+#define BIT_61	0x2000000000000000    /*  2305843009213693952  */
+#define BIT_62	0x4000000000000000    /*  4611686018427387904  */
+#define BIT_63	0x8000000000000000    /*  9223372036854775808  */
+#define BIT_MAX 0x8000000000000000    /*  9223372036854775808  */
 
 /*
  * Structure types.
@@ -1991,7 +2025,15 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_LANCE                      BIT_27
 #define ITEM_ANTI_BRAWLER               BIT_28
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
-#define ITEM_BOW                        BIT_30  /* last */
+#define ITEM_BOW                        BIT_30
+#define ITEM_TESTA                      BIT_31
+#define ITEM_TESTB                      BIT_32
+#define ITEM_TESTC                      BIT_33
+#define ITEM_TESTD                      BIT_34
+#define ITEM_TESTE                      BIT_35  
+#define ITEM_TESTX                      BIT_61  
+#define ITEM_TESTY                      BIT_62 
+#define ITEM_ANTI_INFERNALIST           BIT_63  
 
 
 /*
@@ -2665,7 +2707,7 @@ struct obj_index_data
         char *          description;
         int             vnum;
         int             item_type;
-        int             extra_flags;
+        unsigned long int             extra_flags;
         int             wear_flags;
         int             count;
         int             weight;
@@ -2699,25 +2741,25 @@ struct obj_data
         OBJ_INDEX_DATA *       pIndexData;
         ROOM_INDEX_DATA *      in_room;
 
-        char *          name;
-        char *          short_descr;
-        char *          description;
-        int             item_type;
-        int             extra_flags;
-        int             wear_flags;
-        int             wear_loc;
-        int             weight;
-        int             cost;
-        int             level;
-        int             timer;
-        int             timermax;
-        int             value [ 4 ];
-        bool            deleted;
-        int             trap_eff;
-        int             trap_dam;
-        int             trap_charge;
-        char            owner [ 32 ];
-        int             ego_flags;
+        char *                  name;
+        char *                  short_descr;
+        char *                  description;
+        int                     item_type;
+        unsigned long int       extra_flags;
+        int                     wear_flags;
+        int                     wear_loc;
+        int                     weight;
+        int                     cost;
+        int                     level;
+        int                     timer;
+        int                     timermax;
+        int                     value [ 4 ];
+        bool                    deleted;
+        int                     trap_eff;
+        int                     trap_dam;
+        int                     trap_charge;
+        char                    owner [ 32 ];
+        int                     ego_flags;
 };
 
 
@@ -4376,7 +4418,8 @@ RID *   get_room_index                  args( ( int vnum ) );
 OSID *  get_objset_index                args( ( int vnum ) );
 void    obj_strings                     args( ( OBJ_DATA *obj ) );
 char    fread_letter                    args( ( FILE *fp ) );
-int	fread_number	                args( ( FILE *fp, int *status ) );
+int     fread_number	                args( ( FILE *fp, int *status ) );
+unsigned long int fread_number64        args( ( FILE *fp, int *status ) );
 char *  fread_string                    args( ( FILE *fp ) );
 void    fread_to_eol                    args( ( FILE *fp ) );
 char *  fread_word                      args( ( FILE *fp ) );
@@ -4499,7 +4542,7 @@ char *  act_bit_name                    args( ( int vector ) );
 char *  pact_bit_name                   args( ( int vector ) );
 char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
-char *  extra_bit_name                  args( ( int extra_flags ) );
+char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
 char *  body_form_name                  args( ( int vector ) );
 char *  room_flag_name                  args( ( int vector ) );
 char *  area_flag_name                  args( ( int vector ) );

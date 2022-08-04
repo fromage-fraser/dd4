@@ -3153,7 +3153,7 @@ int extra_form_int (char *name)
 /*
  * Return ascii name of extra flags vector.
  */
-char *extra_bit_name (int extra_flags)
+char *extra_bit_name (unsigned long int extra_flags)
 {
         switch (extra_flags)
         {
@@ -3188,6 +3188,14 @@ char *extra_bit_name (int extra_flags)
             case ITEM_ANTI_BRAWLER:         return "anti_brawler";
             case ITEM_ANTI_SHAPE_SHIFTER:   return "anti_shifter";
             case ITEM_BOW:                  return "bow";
+            case ITEM_TESTA:                return "testa";
+            case ITEM_TESTB:                return "testb";
+            case ITEM_TESTC:                return "testc";
+            case ITEM_TESTD:                return "testd";
+            case ITEM_TESTE:                return "teste";
+            case ITEM_TESTX:                return "testx";
+            case ITEM_TESTY:                return "testy";
+            case ITEM_ANTI_INFERNALIST:     return "anti_infernalist";
 
             default: return "(unknown)";
         }
