@@ -1983,7 +1983,6 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
 {
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA *obj;
-        OBJ_DATA *wobj;
         OBJ_DATA *anvil;
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
@@ -2008,12 +2007,6 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
         if (arg[0] == '\0')
         {
                 send_to_char("What are you trying to srengthen?\n\r", ch);
-                return;
-        }
-
-        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-                send_to_char("You are going to have to find a crafting room.\n\r", ch);
                 return;
         }
 
@@ -2061,17 +2054,6 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                                 }
                         }
                 }
-        }
-
-        for (wobj = ch->carrying; wobj; wobj = wobj->next_content)
-        {
-                if (wobj->item_type == ITEM_ARMOURERS_HAMMER)
-                        break;
-        }
-        if (!wobj)
-        {
-                send_to_char("You need a armourer's hammer to forge your armour.\n\r", ch);
-                return;
         }
 
         found = FALSE;
@@ -2135,8 +2117,8 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act ("You skillfully strengthen $P with $p!", ch, wobj, obj, TO_CHAR);
-        act ("$n skillfully strengthens $P using $p!", ch, wobj, obj, TO_ROOM);
+        act ("You skillfully strengthen $P!", ch, NULL, obj, TO_CHAR);
+        act ("$n skillfully strengthens $P!", ch, NULL, obj, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_STRENGTHEN);
@@ -3269,11 +3251,13 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         char            arg[MAX_INPUT_LENGTH];
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
+        OBJ_DATA        *forge;
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
         int             titanium=0;
         int             steel=0;
+        bool found;
 
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
@@ -3285,9 +3269,18 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        for (forge = ch->in_room->contents; forge; forge = forge->next_content)
         {
-                send_to_char("You are going to have to find a crafting room.\n\r", ch);
+                if (forge->item_type == ITEM_FORGE)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no forge here!\n\r", ch);
                 return;
         }
 
@@ -3348,8 +3341,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                                 adamantite = (obj->level/30);
                         if (number_percent() >= 50)
                                 titanium = (obj->level/10);
-                        if (number_percent() >= 30)
-                                steel = (obj->level/3);
+                        if (number_percent() >= 1)
+                                steel = (1 + obj->level/6);
                         
                         ch->smelted_steel += steel;
                         ch->smelted_titanium += titanium;
@@ -3367,6 +3360,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 else
                 {  
                         send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                        act("You watch as your $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
+                        act("$n failes to recover any materials from their $p.",ch, obj, NULL, TO_CHAR);
                         extract_obj(obj); 
                         return;      
                 }
@@ -3386,6 +3381,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                                 || !str_cmp( wear_flag_name(next), "float") 
                                 || !str_cmp( wear_flag_name(next), "hold" ) 
                                 || !str_cmp( wear_flag_name(next), "neck") 
+                                || !str_cmp( wear_flag_name(next), "pouch")
                                 || !str_cmp( wear_flag_name(next), "about" ) )
                                 {
                                         send_to_char("You cannot smelt that type of armour.\n\r", ch);
@@ -3403,8 +3399,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                                                         adamantite = (obj->level/30);
                                                 if (number_percent() >= 50)
                                                         titanium = (obj->level/10);
-                                                if (number_percent() >= 30)
-                                                        steel = (obj->level/3);
+                                                if (number_percent() >= 1)
+                                                        steel = (1 + obj->level/6);
 
                                                 ch->smelted_steel += steel;
                                                 ch->smelted_titanium += titanium;
@@ -3422,6 +3418,8 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                                         else
                                         {
                                                 send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                                                act("You watch as your $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
+                                                act("$n failes to recover any materials from their $p.",ch, obj, NULL, TO_CHAR);
                                                 extract_obj(obj); 
                                                 return; 
                                         }                        
@@ -3435,6 +3433,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
 void do_construct( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA        *creation;
+        OBJ_DATA        *anvil;
         int             found, i;
         char            buf[MAX_STRING_LENGTH];
         const char* bar = "_____________________________________________________________________________\n\r\n\r";
@@ -3453,9 +3452,18 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
         {
-                send_to_char("You are going to have to find a crafting room.\n\r", ch);
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no Anvil here!\n\r", ch);
                 return;
         }
         
@@ -3931,16 +3939,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 void do_counterbalance (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
+        OBJ_DATA *anvil;
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
-        bool in_c_room;
-        in_c_room = FALSE;
-
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-             in_c_room = TRUE;
-        }
-
+        bool found;
+        char            buf[MAX_STRING_LENGTH];
+    
         if ( IS_NPC( ch ) )
                 return;
 
@@ -3961,6 +3965,23 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         if (ch->fighting)
         {
                 send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        found = FALSE;
+
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no anvil here!\n\r", ch);
                 return;
         }
 
@@ -3988,18 +4009,20 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
+  /* always suceed - but percentage based on skill      if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
         {
                 send_to_char("You slip while balancing your weapon!!\n\r", ch);
                 act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
                 return;
         }
+*/
 
-        if (in_c_room)
-                send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
-
-        act ("You expertly balance $p!",
-             ch, obj, NULL, TO_CHAR);
+        sprintf( buf, "You counter balance %s.\n\r", obj->short_descr );
+        send_to_char( buf, ch );
+        sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance], (100-ch->pcdata->learned[gsn_counterbalance]) );
+        send_to_char( buf, ch );
+        
+        
         act ("$n expertly balances $p!",
              ch, obj, NULL, TO_ROOM);
 

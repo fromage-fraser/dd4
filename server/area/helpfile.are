@@ -924,8 +924,8 @@ poison weapon
 smelt
 construct
 
-(The first Crafting Location is Eastern end of Alley in Midgaard 
-see HELP MIDGAARD)
+(If your looking for a FORGE or ANVIL try the 
+Eastern end of Alley in Midgaard see HELP MIDGAARD)
 
 Current spells that benefit from spellcrafting locations:
 
@@ -6829,7 +6829,7 @@ Smithys can break down existing weapons and armour into their raw
 materials. They then use these materials as the basis for more 
 powerfull weapons, armour and augments.
 
-NOTE: You will need to find a Forge for this. see HELP CRAFTING
+NOTE: You will need to find a FORGE for this. see HELP CRAFTING
 ~
 
 1 IMBUE~
@@ -6840,7 +6840,7 @@ Smithys can add enchancements to weapons via their craft. The art of
 imbuing a weapon can sometimes be unpredictable and often enchancements
 follow this unpredictablity.
 
-NOTE: You will need to find a Forge for this. see HELP CRAFTING
+NOTE: You will need to find a FORGE for this. see HELP CRAFTING
 ~
 
 1 COUNTERBALANCE~
@@ -6850,6 +6850,8 @@ Syntax: counterbalance <<weapon>
 To improve combat effectiveness, a skilled Smithy is able to counterbalance
 a weapon to provide the perfect weighting. The improve handling and 
 weight of a weapon can often lead to additional attacks.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
 
 1 WEAPONCHAIN~
@@ -6860,6 +6862,8 @@ A Smithys weapon is firstly part of their culture, and their ability to fend
 for themselves in battle. Smithys can chain weapons to their wrist, to 
 prevent them being disarmed in battle. Smithys may then HURL their weapon
 during combat, and have it return safely
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
 
 1 SHIELDCHAIN~
@@ -6868,6 +6872,8 @@ Syntax: construct shieldchain <<shield>
 
 A Smithy can chain a shield to them. This process must be done first before 
 attempting to HURL your shield.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
 
 1 HURL~
@@ -6886,6 +6892,8 @@ Syntax: construct <<blueprint>
 Smithys are able to create sets of armour with additional bonuses. These
 bonuses are activated when certain pieces are worn together. Set pieces will
 be listed as seperate items to be learned.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
 
 1 CONSTRUCT~
@@ -6896,7 +6904,7 @@ This allows a Smithy to build items in a set, or a WEAPONCHAIN for example.
 Expert ENGINEERS will use this to construct a TURRET or modules for the 
 turret.
 
-NOTE: You will need to find a Forge for this. see HELP CRAFTING
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
 
 1 STRENGTHEN~
@@ -6906,7 +6914,7 @@ Syntax: strengthen <<armour>
 This allows the smithy to strengthen certain armour types to improve their 
 mitigation of incoming damage.
 
-NOTE: You will need to find a Forge for this. see HELP CRAFTING
+NOTE: You will need to find an ANVIL for this. see HELP CRAFTING
 ~
 
 

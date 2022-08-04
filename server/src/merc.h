@@ -1956,7 +1956,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_CRAFT                              40 /* Increase bonus to crafting that takes place in ROOM_CRAFT */
 #define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
 #define ITEM_TURRET_MODULE                      42
-
+#define ITEM_FORGE                              43
 /*
  * Extra flags.
  * Used in #OBJECTS.

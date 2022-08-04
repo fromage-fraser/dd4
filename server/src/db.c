@@ -3174,6 +3174,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_MITHRIL:
             case ITEM_CRAFT:
             case ITEM_SPELLCRAFT:
+            case ITEM_FORGE:
                 break;
 
             case ITEM_TREASURE:

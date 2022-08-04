@@ -2378,7 +2378,7 @@ forge~
 a forge~
 A large forge dominates the room.~
 ~
-40 1 0
+43 1 0
 5~ 0~ 0~ 0~
 1000 0 0
 #3392
@@ -3462,9 +3462,9 @@ The alley leads west.
 S
 #3046
 Eastern end of Alley~
-You are standing at the eastern end of the alley.  An old three-story
-warehouse is directly south of here, while a tinker's shop lies to
-the east.
+You are standing at the eastern end of the alley. Smoke bellows from 
+the chimneys of Midgaards' Forge is to the south, while a tinker's 
+shop lies to the east.
 ~
 0 1024 1
 D0
@@ -3478,7 +3478,7 @@ The Tinker's shop is east.
 ~
 0 -1 3222
 D2
-You see the warehouse.
+Midgaard Forge.
 ~
 ~
 0 -1 3050
@@ -3544,7 +3544,7 @@ Midgaard Forge~
 The room is littered with armour and weapons from the ages. The air is 
 thick with the smell of acrid smoke.
 ~
-0 4|8|128 0
+0 4|8 0
 D0
 You see the alley.
 ~
