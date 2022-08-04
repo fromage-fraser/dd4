@@ -257,7 +257,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  */
 #define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     19    /* that's 18 plus 'none' - Shade 8.7.22 */
-#define MAX_RACE                          25    /* that's 24 races plus 'none' - Owl 13/7/22 */
+#define MAX_RACE                          26    /* that's 25 races plus 'none' - Owl 4/8/22 */
 #define MAX_STAT                          32    /* 0->31  - Shade */
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
@@ -602,6 +602,7 @@ struct quest_recall
 #define RACE_GENASI                     22
 #define RACE_ILLITHID                   23
 #define RACE_GRUNG                      24
+#define RACE_DUERGAR                    25
 
 
 /*
