@@ -3187,7 +3187,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                         strcat (buf, " Imbued");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                        strcat (buf, " Counterbalanced");
+                        strcat (buf, " Balanced");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
                         strcat (buf, " Battle Terror");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
