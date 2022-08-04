@@ -380,7 +380,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [14 July 2022]
+    [4 August 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -396,9 +396,9 @@ Dragons Domain version 4.2020
     {W8-bit colour is in! Type 'ansi reset' for your current characters, then 
     read 'HELP COLOR3' and 'HELP ANSI'!{x
 
-    {W'Swim' skill has been fixed and given to a number of classes.{x
-
     {WSMITHY class is now beta testing!!!!{x    
+
+    {WDUERGAR is a new playable race.{x
 
 
 
@@ -433,6 +433,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{WAugust 2022{x
+- Smithy is in for testing
+- Duergar added as playable race
 
 {WJuly 2022{x
 - Added 8-bit colour to MUD
