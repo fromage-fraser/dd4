@@ -3308,7 +3308,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         if (!str_cmp(arg, ch->name))
         {
                 send_to_char("You're unlikely to contain any elements of value.\n\r", ch);
-                act("$n considers smelting $mself, but determins they hold no value.",
+                act("$n considers smelting $mself, but determines they hold no value.",
                     ch, NULL, NULL, TO_ROOM);
                 return;
         }
@@ -3765,12 +3765,14 @@ void do_empower (CHAR_DATA *ch, char *argument)
 void do_imbue (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
+        OBJ_DATA *forge;
         char            arg[MAX_INPUT_LENGTH];
         char            modifier;
         int             random_buff;
         int             random_buff2;
         int             random_buff3;
         AFFECT_DATA     *paf;
+        bool found;
  
         random_buff = -1;
         random_buff2 = -1;
@@ -3788,9 +3790,18 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        for (forge = ch->in_room->contents; forge; forge = forge->next_content)
         {
-                send_to_char("You need to find a forge.\n\r", ch);
+                if (forge->item_type == ITEM_FORGE)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no forge here!\n\r", ch);
                 return;
         }
 
