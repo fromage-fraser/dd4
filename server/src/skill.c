@@ -3259,6 +3259,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         int             titanium=0;
         int             steel=0;
         bool found;
+        int next;
 
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
@@ -3324,110 +3325,71 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if ((obj->item_type == ITEM_WEAPON) && !is_bladed_weapon(obj))
+        {
+                send_to_char("You cant smelt that type of weapon. Find something with a blade.\n\r", ch);
+                return;
+        }
+
+        if (obj->wear_flags)
+        {
+                bit_explode(ch, buf, obj->wear_flags);
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))
+                        {
+                               if ( !str_cmp( wear_flag_name(next), "float")
+                               || !str_cmp( wear_flag_name(next), "neck")
+                               || !str_cmp( wear_flag_name(next), "about")
+                               || !str_cmp( wear_flag_name(next), "hold") )
+                                {
+                                        send_to_char("You cant smelt that type of armour.\n\r", ch);
+                                        return;     
+                                }
+                        }
+                }
+        }
+
         if (obj->level > ch->level)
         {
                 send_to_char("You worldy knowledge of items is not at the point to allow you to smelt that yet.\n\r", ch);
                 return;
         }
-
-        if ((obj->item_type == ITEM_WEAPON) && is_bladed_weapon(obj))
+  
+        if (number_percent() <= ch->pcdata->learned[gsn_smelt])
         {
-                if (number_percent() <= ch->pcdata->learned[gsn_smelt])
-                {
-                        if (number_percent() >= 98)
-                                starmetal = (obj->level/60);
-                        if (number_percent() >= 94)
-                                electrum = (obj->level/45);
-                        if (number_percent() >= 75)
-                                adamantite = (obj->level/30);
-                        if (number_percent() >= 50)
-                                titanium = (obj->level/10);
-                        if (number_percent() >= 1)
-                                steel = (1 + obj->level/6);
-                        
-                        ch->smelted_steel += steel;
-                        ch->smelted_titanium += titanium;
-                        ch->smelted_adamantite += adamantite;
-                        ch->smelted_electrum += electrum;
-                        ch->smelted_starmetal += starmetal;
-                        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-                        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
-                        smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
-                        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
-                        send_to_char (buf, ch);
-                        extract_obj(obj);
-                        return;
-                }
-                else
-                {  
-                        send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
-                        act("You watch as your $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
-                        act("$n failes to recover any materials from their $p.",ch, obj, NULL, TO_CHAR);
-                        extract_obj(obj); 
-                        return;      
-                }
-
+                if (number_percent() >= 98)
+                        starmetal = (obj->level/60);
+                if (number_percent() >= 94)
+                        electrum = (obj->level/45);
+                if (number_percent() >= 75)
+                        adamantite = (obj->level/30);
+                if (number_percent() >= 50)
+                        titanium = (obj->level/10);
+                if (number_percent() >= 1)
+                        steel = (1 + obj->level/6);
+                
+                ch->smelted_steel += steel;
+                ch->smelted_titanium += titanium;
+                ch->smelted_adamantite += adamantite;
+                ch->smelted_electrum += electrum;
+                ch->smelted_starmetal += starmetal;
+                act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
+                smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
+                sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
+                send_to_char (buf, ch);
+                extract_obj(obj);
+                return;
         }
-
-        if (obj->wear_flags)
-        {
-                int next;
-                 bit_explode(ch, buf, obj->wear_flags);
-        
-                for (next = 1; next <= BIT_17; next *= 2)
-                {
-                        if (IS_SET(obj->wear_flags, next))  /*obj->item_type == ITEM_ARMOR */
-                        {
-                                if ( !str_cmp( wear_flag_name(next), "finger") 
-                                || !str_cmp( wear_flag_name(next), "float") 
-                                || !str_cmp( wear_flag_name(next), "hold" ) 
-                                || !str_cmp( wear_flag_name(next), "neck") 
-                                || !str_cmp( wear_flag_name(next), "pouch")
-                                || !str_cmp( wear_flag_name(next), "about" ) )
-                                {
-                                        send_to_char("You cannot smelt that type of armour.\n\r", ch);
-                                        return;        
-                                }
-                                else
-                                {
-                                        if (number_percent() <= ch->pcdata->learned[gsn_smelt])
-                                        {
-                                                if (number_percent() >= 98)
-                                                        starmetal = (obj->level/60);
-                                                if (number_percent() >= 94)
-                                                        electrum = (obj->level/45);
-                                                if (number_percent() >= 75)
-                                                        adamantite = (obj->level/30);
-                                                if (number_percent() >= 50)
-                                                        titanium = (obj->level/10);
-                                                if (number_percent() >= 1)
-                                                        steel = (1 + obj->level/6);
-
-                                                ch->smelted_steel += steel;
-                                                ch->smelted_titanium += titanium;
-                                                ch->smelted_adamantite += adamantite;
-                                                ch->smelted_electrum += electrum;
-                                                ch->smelted_starmetal += starmetal;  
-                                                act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-                                                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
-                                                smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
-                                                sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
-                                                send_to_char (buf, ch);
-                                                extract_obj(obj);   
-                                                return;
-                                        }
-                                        else
-                                        {
-                                                send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
-                                                act("You watch as your $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
-                                                act("$n failes to recover any materials from their $p.",ch, obj, NULL, TO_CHAR);
-                                                extract_obj(obj); 
-                                                return; 
-                                        }                        
-                                }
-                        }
-                }
-        }  
+        else
+        {  
+                send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                act("You watch as $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
+                act("$n fails to recover any materials from $p.",ch, obj, NULL, TO_ROOM);
+                extract_obj(obj); 
+                return;      
+        }         
 }
 
 /* Construct Code - Brutus Jul 2023 */
@@ -4020,7 +3982,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
 
         sprintf( buf, "You counter balance %s.\n\r", obj->short_descr );
         send_to_char( buf, ch );
-        sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance], (100-ch->pcdata->learned[gsn_counterbalance]) );
+        sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
         send_to_char( buf, ch );
         
         
