@@ -2896,39 +2896,46 @@ char* body_form_name (int vector)
  *
 */
 
-char* room_flag_name (int vector)
+char* room_flag_name (unsigned long int vector)
 {
-        if ( vector & ROOM_DARK             ) return "dark";
-        if ( vector & ROOM_NO_MOB           ) return "no_mob";
-        if ( vector & ROOM_INDOORS          ) return "indoors";
-        if ( vector & ROOM_CRAFT            ) return "craft";
-        if ( vector & ROOM_SPELLCRAFT       ) return "spellcraft";
-        if ( vector & ROOM_PRIVATE          ) return "private";
-        if ( vector & ROOM_SAFE             ) return "safe";
-        if ( vector & ROOM_SOLITARY         ) return "solitary";
-        if ( vector & ROOM_PET_SHOP         ) return "pet_shop";
-        if ( vector & ROOM_NO_RECALL        ) return "no_recall";
-        if ( vector & ROOM_CONE_OF_SILENCE  ) return "cone_of_silence";
-        if ( vector & ROOM_PLAYER_KILLER    ) return "player_killer";
-        if ( vector & ROOM_HEALING          ) return "healing";
-        if ( vector & ROOM_FREEZING         ) return "freezing";
-        if ( vector & ROOM_BURNING          ) return "burning";
-        if ( vector & ROOM_NO_MOUNT         ) return "no_mount";
-        return "";
+        switch (vector)
+        {
+                case ROOM_DARK:             return "dark";
+                case ROOM_NO_MOB:           return "no_mob";
+                case ROOM_INDOORS:          return "indoors";
+                case ROOM_CRAFT:            return "craft";
+                case ROOM_SPELLCRAFT:       return "spellcraft";
+                case ROOM_PRIVATE:          return "private";
+                case ROOM_SAFE:             return "safe";
+                case ROOM_SOLITARY:         return "solitary";
+                case ROOM_PET_SHOP:         return "pet_shop";
+                case ROOM_NO_RECALL:        return "no_recall";
+                case ROOM_CONE_OF_SILENCE:  return "cone_of_silence";
+                case ROOM_PLAYER_KILLER:    return "player_killer";
+                case ROOM_HEALING:          return "healing";
+                case ROOM_FREEZING:         return "freezing";
+                case ROOM_BURNING:          return "burning";
+                case ROOM_NO_MOUNT:         return "no_mount";
+                case ROOM_NO_DROP:          return "no_drop";
+
+                default: return "(unknown)";
+        }
 }
+
 
 /*
  * ASCII name for area flags, used in rstat --Owl 10/2/22
  *
 */
 
-char* area_flag_name (int vector)
+char* area_flag_name (unsigned long int vector)
 {
         if ( vector & AREA_FLAG_SCHOOL          ) return "school";
         if ( vector & AREA_FLAG_NO_QUEST        ) return "no_quest";
         if ( vector & AREA_FLAG_HIDDEN          ) return "hidden";
         if ( vector & AREA_FLAG_SAFE            ) return "safe";
         if ( vector & AREA_FLAG_NO_TELEPORT     ) return "no_teleport";
+        if ( vector & AREA_FLAG_NO_MAGIC        ) return "no_magic";
         return "none";
 }
 

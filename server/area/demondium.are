@@ -1908,7 +1908,7 @@ cursed ring~
 an ancient cursed ring~
 A small black ring hums quietly to itself.~
 ~
-9 1|2|16 1|2
+9 1|2|16|2305843009213693952 1|2
 0~ 1~ 6~ 11~
 5 0 0
 A
@@ -2304,7 +2304,7 @@ cursed spike~
 an ancient cursed spike~
 An ancient cursed spike sits here waiting to possess someone.~
 ~
-5 16|64|128|512|2048|4096 1|8192
+5 16|64|128|512|2048|4096|2305843009213693952 1|8192
 0~ 15~ 21~ 11~
 5 0 0
 A
@@ -2314,7 +2314,7 @@ cursed spike~
 a old cursed spike~
 An old, but not ancient cursed spike waits to possess someone.~
 ~
-5 16|64|128|512|2048|4096 1|8192
+5 16|64|128|512|2048|4096|2305843009213693952 1|8192
 0~ 10~ 19~ 11~
 5 0 0
 A
