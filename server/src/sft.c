@@ -884,9 +884,9 @@ void do_web (CHAR_DATA *ch, char *argument)
         if (number_percent() < chance)
         {
                 AFFECT_DATA af;
-                act ("You skillfully spin a sticky web around $N, trapping $M here!",
+                act ("You skilfully spin a sticky web around $N, trapping $M here!",
                      ch, NULL, victim, TO_CHAR);
-                act ("$n skillfully spins a sticky web around $N, trapping $M here!",
+                act ("$n skilfully spins a sticky web around $N, trapping $M here!",
                      ch, NULL, victim, TO_ROOM);
                 arena_commentary("$n traps $N in a sticky web.", ch, victim);
 

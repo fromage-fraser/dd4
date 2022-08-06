@@ -3027,7 +3027,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "a special clan artefact",                               "a magical portal",
                 "some poison powder",      "a lockpick",                 "a musical instrument",
                 "an armourer's hammer",    "some mithril",               "a whetstone",
-                "a crafting tool",         "a magical crafting tool",    "a turret module"
+                "a crafting tool",         "a magical crafting tool",    "a turret module",
+                "a forge"
         };
 
         const char* extras [MAX_BITS] =

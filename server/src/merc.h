@@ -492,7 +492,7 @@ DECLARE_DO_FUN ( do_board );
 #define TYPE_STR                          2
 #define TYPE_WIZ                          3
 #define TYPE_NULL                         4
-#define MAX_ITEM_TYPE                    42
+#define MAX_ITEM_TYPE                    43
 #define MAX_WEAR                         22
 #define MAX_COLOR_LIST                   18
 
@@ -2002,7 +2002,7 @@ extern  WANTED_DATA *wanted_list_last;
  */
 #define ITEM_GLOW                       BIT_0
 #define ITEM_HUM                        BIT_1
-#define ITEM_EGO                        BIT_2   /* Item has special effects and powers; was ITEM_DARK */
+#define ITEM_EGO                        BIT_2   /* Item has special effects/powers; was ITEM_DARK */
 #define ITEM_ANTI_RANGER                BIT_3   /* Was ITEM_LOCK */
 #define ITEM_EVIL                       BIT_4
 #define ITEM_INVIS                      BIT_5
