@@ -4606,8 +4606,8 @@ void do_trap (CHAR_DATA *ch, char *argument)
                 AFFECT_DATA af;
 
                 arena_commentary("$n traps $N.", ch, victim);
-                act ("You skillfully snare $N in your trap!", ch, NULL, victim, TO_CHAR);
-                act ("$n skillfully snares $N in $s trap!", ch, NULL, victim, TO_ROOM);
+                act ("You skilfully snare $N in your trap!", ch, NULL, victim, TO_CHAR);
+                act ("$n skilfully snares $N in $s trap!", ch, NULL, victim, TO_ROOM);
 
                 af.type         = gsn_trap;
                 af.duration     = 5;
@@ -4716,7 +4716,7 @@ void do_snare (CHAR_DATA *ch, char *argument)
 
                 arena_commentary("$n snares $N.", ch, victim);
                 act ("$N becomes entangled in your snare!", ch, NULL, victim, TO_CHAR);
-                act ("$n skillfully entangles $N in $s snare!", ch, NULL, victim, TO_ROOM);
+                act ("$n skilfully entangles $N in $s snare!", ch, NULL, victim, TO_ROOM);
 
                 af.type         = gsn_snare;
                 af.duration     = 6;

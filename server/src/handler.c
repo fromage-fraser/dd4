@@ -2598,6 +2598,8 @@ char *item_type_name( OBJ_DATA *obj  )
             case ITEM_WHETSTONE:        return "whetstone";
             case ITEM_CRAFT:            return "crafting";
             case ITEM_SPELLCRAFT:       return "spellcrafting";
+            case ITEM_TURRET_MODULE:    return "turret module";
+            case ITEM_FORGE:            return "forge";
         }
 
         for ( in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj )
@@ -2674,31 +2676,46 @@ char *affect_loc_name( int location )
 
 int item_name_type( char *name )
 {
-        if ( !str_cmp( name, "light"     ) ) return ITEM_LIGHT;
-        if ( !str_cmp( name, "scroll"    ) ) return ITEM_SCROLL;
-        if ( !str_cmp( name, "wand"      ) ) return ITEM_WAND;
-        if ( !str_cmp( name, "staff"     ) ) return ITEM_STAFF;
-        if ( !str_cmp( name, "weapon"    ) ) return ITEM_WEAPON;
-        if ( !str_cmp( name, "treasure"  ) ) return ITEM_TREASURE;
-        if ( !str_cmp( name, "armor"     ) ) return ITEM_ARMOR;
-        if ( !str_cmp( name, "potion"    ) ) return ITEM_POTION;
-        if ( !str_cmp( name, "furniture" ) ) return ITEM_FURNITURE;
-        if ( !str_cmp( name, "trash"     ) ) return ITEM_TRASH;
-        if ( !str_cmp( name, "container" ) ) return ITEM_CONTAINER;
-        if ( !str_cmp( name, "drink"     ) ) return ITEM_DRINK_CON;
-        if ( !str_cmp( name, "key"       ) ) return ITEM_KEY;
-        if ( !str_cmp( name, "food"      ) ) return ITEM_FOOD;
-        if ( !str_cmp( name, "money"     ) ) return ITEM_MONEY;
-        if ( !str_cmp( name, "boat"      ) ) return ITEM_BOAT;
-        if ( !str_cmp( name, "corpse"    ) ) return ITEM_CORPSE_NPC;
-        if ( !str_cmp( name, "fountain"  ) ) return ITEM_FOUNTAIN;
-        if ( !str_cmp( name, "pill"      ) ) return ITEM_PILL;
+        if ( !str_cmp( name, "light"                ) ) return ITEM_LIGHT;
+        if ( !str_cmp( name, "scroll"               ) ) return ITEM_SCROLL;
+        if ( !str_cmp( name, "wand"                 ) ) return ITEM_WAND;
+        if ( !str_cmp( name, "staff"                ) ) return ITEM_STAFF;
+        if ( !str_cmp( name, "weapon"               ) ) return ITEM_WEAPON;
+        if ( !str_cmp( name, "treasure"             ) ) return ITEM_TREASURE;
+        if ( !str_cmp( name, "armor"                ) ) return ITEM_ARMOR;
+        if ( !str_cmp( name, "potion"               ) ) return ITEM_POTION;
+        if ( !str_cmp( name, "furniture"            ) ) return ITEM_FURNITURE;
+        if ( !str_cmp( name, "trash"                ) ) return ITEM_TRASH;
+        if ( !str_cmp( name, "container"            ) ) return ITEM_CONTAINER;
+        if ( !str_cmp( name, "drink"                ) ) return ITEM_DRINK_CON;
+        if ( !str_cmp( name, "key"                  ) ) return ITEM_KEY;
+        if ( !str_cmp( name, "food"                 ) ) return ITEM_FOOD;
+        if ( !str_cmp( name, "money"                ) ) return ITEM_MONEY;
+        if ( !str_cmp( name, "boat"                 ) ) return ITEM_BOAT;
+        if ( !str_cmp( name, "corpse"               ) ) return ITEM_CORPSE_NPC;
+        if ( !str_cmp( name, "player corpse"        ) ) return ITEM_CORPSE_PC;
+        if ( !str_cmp( name, "fountain"             ) ) return ITEM_FOUNTAIN;
+        if ( !str_cmp( name, "pill"                 ) ) return ITEM_PILL;
+        if ( !str_cmp( name, "climbing equipment"   ) ) return ITEM_CLIMBING_EQ;
+        if ( !str_cmp( name, "paint"                ) ) return ITEM_PAINT;
+        if ( !str_cmp( name, "mob"                  ) ) return ITEM_MOB;
+        if ( !str_cmp( name, "anvil"                ) ) return ITEM_ANVIL;
+        if ( !str_cmp( name, "auction ticket"       ) ) return ITEM_AUCTION_TICKET;
+        if ( !str_cmp( name, "clan object"          ) ) return ITEM_CLAN_OBJECT;
+        if ( !str_cmp( name, "portal"               ) ) return ITEM_PORTAL;
         if ( !str_cmp( name, "poison powder"        ) ) return ITEM_POISON_POWDER;
+        if ( !str_cmp( name, "lockpick"             ) ) return ITEM_LOCK_PICK;
+        if ( !str_cmp( name, "instrument"           ) ) return ITEM_INSTRUMENT;
         if ( !str_cmp( name, "armourer's hammer"    ) ) return ITEM_ARMOURERS_HAMMER;
         if ( !str_cmp( name, "mithril"              ) ) return ITEM_MITHRIL;
         if ( !str_cmp( name, "whetstone"            ) ) return ITEM_WHETSTONE;
+        if ( !str_cmp( name, "crafting item"        ) ) return ITEM_CRAFT;
+        if ( !str_cmp( name, "spellcrafting item"   ) ) return ITEM_SPELLCRAFT ;
+        if ( !str_cmp( name, "turret module"        ) ) return ITEM_TURRET_MODULE;
+        if ( !str_cmp( name, "forge"                ) ) return ITEM_FORGE;
 
         return 0;
+
 }
 
 

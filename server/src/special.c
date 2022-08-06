@@ -2245,7 +2245,7 @@ bool spec_celestial_repairman (CHAR_DATA *ch)
                 {
                         REMOVE_BIT(pexit->exit_info, EX_BASHED);
                         act ("You repair the $d.", ch, NULL, pexit->keyword, TO_CHAR);
-                        act ("$n skillfully repairs the $d.", ch, NULL, pexit->keyword, TO_ROOM);
+                        act ("$n skilfully repairs the $d.", ch, NULL, pexit->keyword, TO_ROOM);
 
                         if ((to_room = pexit->to_room)
                             && (pexit_rev = to_room->exit[directions[door].reverse])

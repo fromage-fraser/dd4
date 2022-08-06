@@ -170,7 +170,7 @@ void do_gouge (CHAR_DATA *ch, char *argument)
 
         if (victim == ch)
         {
-                send_to_char("You want to rip your own eyes out???\n\r", ch);
+                send_to_char("You want to rip your own eyes out?\n\r", ch);
                 return;
         }
 
@@ -209,7 +209,7 @@ void do_gouge (CHAR_DATA *ch, char *argument)
         if (number_percent() < chance)
         {
                 act ("You deftly lunge at $N's eyes, and gouge them out!", ch, NULL, victim, TO_CHAR);
-                act ("$n scratches your eyes -- you see red!", ch, NULL, victim, TO_VICT);
+                act ("$n scratches your eyes -- you see <124>red<0>!", ch, NULL, victim, TO_VICT);
                 act ("$n gouges $N's eyes out!", ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n gouges out $N's eyes.", ch, victim);
 
@@ -265,7 +265,7 @@ void do_choke (CHAR_DATA *ch, char *argument)
 
         if (victim == ch)
         {
-                send_to_char("You want to choke yourself??\n\r", ch);
+                send_to_char("You want to choke yourself?\n\r", ch);
                 return;
         }
 
@@ -305,7 +305,7 @@ void do_choke (CHAR_DATA *ch, char *argument)
         {
                 act ("You circle around $N and apply a choker hold on them until they turn blue.",
                      ch, NULL, victim, TO_CHAR);
-                act ("$n begins to choke you.. you feel dizzy... you black out.",
+                act ("$n begins to choke you... you feel dizzy... you black out.",
                      ch, NULL, victim, TO_VICT);
                 act ("$n applies a choker hold on $N until they collapse, unconscious!",
                      ch, NULL, victim, TO_NOTVICT);
@@ -347,7 +347,7 @@ void do_battle_aura (CHAR_DATA *ch, char *argument)
 
         if (get_curr_int (ch) < 19 && get_curr_wis(ch) <19)
         {
-                send_to_char ("Your lack of intellect and concentration prevents this..\n\r", ch);
+                send_to_char ("Your lack of intellect and concentration prevents this...\n\r", ch);
                 return;
         }
 
@@ -375,7 +375,7 @@ void do_battle_aura (CHAR_DATA *ch, char *argument)
                 send_to_char("Concentrating intently to the point of shaking, you feel your body stiffen for battle.\n\r", ch);
         }
         else
-                send_to_char("You focus your mental energies but your concentration is lacking...\n\r", ch);
+                send_to_char("You focus your mental energies, but your concentration is lacking...\n\r", ch);
 
         return;
 }
@@ -418,7 +418,7 @@ void do_punch (CHAR_DATA *ch, char *argument)
 
         if (victim == ch)
         {
-                send_to_char("You want to knock yourself out??\n\r", ch);
+                send_to_char("You want to knock yourself out?\n\r", ch);
                 return;
         }
 
@@ -459,7 +459,7 @@ void do_dismount (CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, skill_table[gsn_mount].beats);
 
         act("You dismount $N.", ch, NULL, ch->mount, TO_CHAR);
-        act("$n skillfully dismounts $N.", ch, NULL, ch->mount, TO_NOTVICT);
+        act("$n skilfully dismounts $N.", ch, NULL, ch->mount, TO_NOTVICT);
         act("$n dismounts you.  Whew!", ch, NULL, ch->mount, TO_VICT);
 
         strip_mount(ch);
@@ -1953,8 +1953,8 @@ void do_forge (CHAR_DATA *ch, char *argument)
         if (in_c_room)
                 send_to_char("{CYour use of specialised crafting tools improves your forging!\n\r{x", ch);
 
-        act ("You skillfully enhance $P with $p!", ch, wobj, obj, TO_CHAR);
-        act ("$n skillfully enhances $P using $p!", ch, wobj, obj, TO_ROOM);
+        act ("You skilfully enhance $P with $p!", ch, wobj, obj, TO_CHAR);
+        act ("$n skilfully enhances $P using $p!", ch, wobj, obj, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_FORGED);
 
@@ -2007,7 +2007,7 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                send_to_char("What are you trying to srengthen?\n\r", ch);
+                send_to_char("What are you trying to strengthen?\n\r", ch);
                 return;
         }
 
@@ -2050,7 +2050,7 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                                 || !str_cmp( wear_flag_name(next), "neck") 
                                 || !str_cmp( wear_flag_name(next), "about" ) )
                                 {
-                                        send_to_char("You cannot strengthen that type of armour..\n\r", ch);
+                                        send_to_char("You cannot strengthen that type of armour.\n\r", ch);
                                         return;        
                                 }
                         }
@@ -2118,8 +2118,8 @@ void do_strengthen (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act ("You skillfully strengthen $P!", ch, NULL, obj, TO_CHAR);
-        act ("$n skillfully strengthens $P!", ch, NULL, obj, TO_ROOM);
+        act ("You skilfully strengthen $P!", ch, NULL, obj, TO_CHAR);
+        act ("$n skilfully strengthens $P!", ch, NULL, obj, TO_ROOM);
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_STRENGTHEN);
@@ -3524,7 +3524,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (!found)
         {
-                send_to_char("You will need to find an Anvil.\n\r", ch);
+                send_to_char("You will need to find an anvil.\n\r", ch);
                 return;
         }
 
@@ -3558,7 +3558,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && number_percent() > ch->pcdata->learned[gsn_weaponchain]) )
                 {
                         send_to_char("You heat the forge, and ready your materials.\n\r", ch);
-                        send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
                         act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
                         smelted_to_char( blueprint_list[i].blueprint_cost[0], 
                                 blueprint_list[i].blueprint_cost[1],
@@ -3569,8 +3569,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 }
                 if ((!strcmp(blueprint_list[i].blueprint_name, "shieldchain") && number_percent() > ch->pcdata->learned[gsn_shieldchain]) )
                 {
-                        send_to_char("You heat the forge, and ready your materials.\n\r", ch);
-                        send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        send_to_char("You heat the forge and ready your materials.\n\r", ch);
+                        send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
                         act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
                         smelted_to_char( blueprint_list[i].blueprint_cost[0], 
                                 blueprint_list[i].blueprint_cost[1],
@@ -3585,7 +3585,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 {               
                         SET_BIT(obj->extra_flags, ITEM_EGO);
                         SET_BIT(obj->ego_flags, blueprint_list[i].blueprint_ego);
-                        send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
+                        send_to_char( "You heat the forge and ready your materials.\n\r", ch );
                         sprintf(buf, "Expertly you attach your {W%s{x to {W%s{x.", blueprint_list[i].blueprint_name, obj->name);
                         act(buf, ch, NULL, NULL, TO_CHAR);
 
@@ -3603,8 +3603,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if ( number_percent() > ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
         {
-                send_to_char("You heat the forge, and ready your materials.\n\r", ch);
-                send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                send_to_char("You heat the forge and ready your materials.\n\r", ch);
+                send_to_char("You fumble... your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
                 act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
                 smelted_to_char( blueprint_list[i].blueprint_cost[0], 
                         blueprint_list[i].blueprint_cost[1],
@@ -3626,7 +3626,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
   
 
-        send_to_char( "You heat the forge, and ready your materials.\n\r", ch );
+        send_to_char( "You heat the forge and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_CHAR);
 
@@ -3645,7 +3645,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 void do_empower (CHAR_DATA *ch, char *argument)
 {
 
-        char      arg1 [ MAX_INPUT_LENGTH ];
+        char     arg1 [ MAX_INPUT_LENGTH ];
         char     arg2 [ MAX_INPUT_LENGTH ];
         char     arg3 [ MAX_INPUT_LENGTH ];
         char     arg4 [ MAX_INPUT_LENGTH ];
@@ -3674,7 +3674,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         if( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0'  )
         {
                         send_to_char("What set do you wish to empower?\n\r", ch);
-                        send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
+                        send_to_char("Options <<uncommon|rare|epic|legendary> <<armour1> <<armour2>.... etc\n", ch);
                         send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
                 return;
         }
@@ -3693,7 +3693,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         {
                 if ( ( (obj = get_obj_carry(ch, arg2) ) == NULL ) || ( (obj2 = get_obj_carry(ch, arg3) ) == NULL ) ) 
                 {
-                        send_to_char( "You arent carrying that..\n\r",ch );
+                        send_to_char( "You aren't carrying that...\n\r",ch );
                         return;
                 }
   /*             
@@ -3999,7 +3999,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         }
 */
 
-        sprintf( buf, "You counter balance %s.\n\r", obj->short_descr );
+        sprintf( buf, "You counterbalance %s.\n\r", obj->short_descr );
         send_to_char( buf, ch );
         sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
         send_to_char( buf, ch );
@@ -4051,7 +4051,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
         else if (!CAN_DO(ch, gsn_trigger))
         {
-                send_to_char("You cant trigger mechanisms.\n\r", ch);
+                send_to_char("You can't trigger mechanisms.\n\r", ch);
                 return;
         }
 
@@ -4091,7 +4091,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
         if (ch->position < POS_STANDING)
         {
-                send_to_char("Your not ready.\n\r", ch);
+                send_to_char("You're not ready.\n\r", ch);
                 return;
         }
 
@@ -4126,7 +4126,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
        
         if (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE) )
         {
-                send_to_char("How did that get in there - its not a turret module (report bug).\n\r", ch);
+                send_to_char("How did that get in there - it's not a turret module! (report bug).\n\r", ch);
                 return;
         }
         
@@ -4152,7 +4152,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
-                        act("The triggering mechanism collapses for the $p. Nothing happens..", ch, obj, NULL ,TO_CHAR);
+                        act("The triggering mechanism collapses for the $p. Nothing happens.", ch, obj, NULL ,TO_CHAR);
                         act("$n triggers $m $p, but nothing happens.", ch, obj, NULL, TO_ROOM);    
                 }
         }
@@ -4196,7 +4196,7 @@ void do_classify( CHAR_DATA *ch, char *arg )
             && obj->item_type != ITEM_PAINT
             && obj->item_type != ITEM_POTION )
         {
-                send_to_char( "Your herb lore doesn't describe that type of object.\n\r", ch );
+                send_to_char( "Your herb lore won't help you describe that type of object.\n\r", ch );
                 return;
         }
 
