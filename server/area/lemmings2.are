@@ -9,9 +9,9 @@ $
 #29950
 Small lemming~
 a small lemming~
-A small lemming scurries about you, jabbering in an incomprehensible voice.
+A small lemming scurries about you, jabbering incomprehensibly.
 ~
-The lemming looks harmless, but who can tell? However, his voice is
+The lemming looks harmless, but who can be sure? However, his voice is
 really grating on your nerves...
 ~
 32|128 0 0 S
@@ -23,7 +23,7 @@ Large lemming~
 a large lemming~
 A large lemming blinks at you curiously.
 ~
-Much larger than the smaller lemmings, still he only comes to about waist height.
+Much larger than the smaller lemmings, he still comes only to about waist height.
 ~
 128 32 0 S
 9 0 0 0d0+0 0d0+0
@@ -44,7 +44,7 @@ but you can tell that it did see you...
 #29953
 Lemming smithy~
 the lemming smithy~
-The lemming smithy busily hammers away at a new pickaxe
+The lemming smithy busily hammers away at a new pickaxe.
 ~
 It appears to be making a new pickaxe... maybe the lemmings are
 digging a new tunnel somewhere deeper in the cave.
@@ -54,7 +54,7 @@ digging a new tunnel somewhere deeper in the cave.
 0 0
 8 8 0
 #29954
-miner~
+miner lemming~
 a miner lemming~
 A lemming miner stands here, looking frightened.
 ~
@@ -68,7 +68,7 @@ tries to hide in the shadows.
 #29955
 Lemming Doctor~
 the lemming doctor~
-The lemming doctor stands here, tending the wounded
+The lemming doctor stands here, tending the wounded.
 ~
 The doctor seems rather busy today, with quite a few wounded
 lemmings laying on cots, all with various claw wounds, and
@@ -115,7 +115,7 @@ with large, fearsome claws, a muscular body, and a lupine head.
 0 0
 8 8 1
 #29959
-Shadowy figure mage~
+Shadowy figure mage lemming~
 a lemming mage~
 A lemming in black robes glares at you.
 ~
@@ -220,8 +220,8 @@ A
 2 -2
 #29957
 beasts bedding~
-a stinky Beast Bed~
-A pile of straw stinking of Beast lies in the corner.~
+a stinky beast bed~
+A pile of straw stinking of beast lies in the corner.~
 ~
 15 0 0
 600~ 5~ 0~ 0~
@@ -259,7 +259,7 @@ E
 helm heroic~
 This helm used to belong to the hero of the lemmings,
 who attempted to slay the beast who menaced their settlement,
-but he failed.. it now belongs to you, for you have slayed
+but failed... it now belongs to you, for you have slain
 the dreaded beast and saved the settlement.
 ~
 #29960
@@ -328,13 +328,13 @@ A small path leads north into the trees.~
 north path~
 0 -1 6006
 D5
-The tunnel looks just large enough for you to enter..
-Looks kinda dark down there though... ~
+The tunnel looks just large enough for you to enter--seems kinda dark 
+down there though...~
 down tunnel cave~
 0 -1 29951
 E
 footprints~
-Tiny little footprints.... you cannot tell if the creature was wearing
+Tiny little footprints... you cannot tell if the creature was wearing
 shoes or not.~
 E
 dark hole~
@@ -343,7 +343,7 @@ S
 #29951
 A dark tunnel~
 The tunnel continues downward here. It is quite dark but you can
-still make out the little footprints, seeming to cover the entire floor.
+still make out the little footprints, covering the entire floor.
 You think you see a light below you.
 ~
 0 4|8 0
@@ -409,26 +409,26 @@ You can see the entrance in the central cave to the east.~
 east~
 0 -1 29952
 D3
-Standing at the edge, you see nothing but darkness below you..
+Standing at the edge, you see nothing but darkness below you.
 There doesn't appear to be a safe way to descend, nor does there
 seem to be any way to climb out of the pit.~
 west ledge drop~
 0 -1 29954
 E
 west ledge drop~
-Standing on the edge, you can see nothing but blackness below..
-There doesn't appear to be anyway to safely descend, nor does
+Standing on the edge, you can see nothing but blackness below.
+There doesn't appear to be any way to safely descend, nor does
 there look to be a way to get back out from the pit.~
 S
 #29954
 The bottom of the pit..~
-Well, you fell down into the pit.. Ouchie!  Hope nothings broken..
+Well, you fell down into the pit.. ouchie!  Hope nothing's broken.
 Standing and looking around you see many lemming corpses in various
-stages of decay..
+stages of decay.
 ~
 0 4|8 0
 D4
-You dont think you could climb out, but maybe if you could fly...~
+You don't think you could climb out, but maybe if you could fly...~
 up~
 0 -1 29955
 E
@@ -438,7 +438,7 @@ You'd best find a way out before you lose your lunch.~
 S
 #29955
 Above the pit~
-You are hovering above the pit.. below you is darkness and
+You are hovering above the pit... below you is darkness and
 to the east you see solid ground.
 ~
 0 4|8 9
@@ -454,7 +454,7 @@ S
 #29956
 The rear of the cave~
 You are in a darker part of the cave. It continues to the east
-and to the south.  The lemmings dont seem to come to this area of
+and to the south.  The lemmings don't seem to come to this area of
 the cave as often, perhaps because it is so dark.
 ~
 0 1|8 0
@@ -469,11 +469,11 @@ south~
 S
 #29957
 A side cave~
-More lemmings.. you begin to wonder where the all came from.
+More lemmings.. you begin to wonder where they all came from.
 Where DO lemmings come from, anyway? Is there some queen lemming
 deeper in the cave? Or is there a portal to the lemming planet
 and this is merely an outpost from which they plan to take over
-the world? Nah, lemmings are too cute to take over the world.
+the world?
 ~
 0 8 0
 D2
@@ -486,8 +486,8 @@ west~
 0 -1 29956
 E
 lemmings~
-Hmm.. one of them looks rather suspicious however..
-Perhaps this one DOES want to take over the world!
+Hmm... one of them looks rather suspicious...
+perhaps it DOES want to take over the world!
 ~
 S
 #29958
@@ -512,20 +512,20 @@ Before you get a chance to see him he zips off to his destination.
 ~
 E
 sign~
-A small sign with a message written on it in lemming-ese..
-too bad they don't offer that course at your local mud-school.
+A small sign with a message written on it in Lemmingese;
+too bad they don't offer that course at MUD school.
 ~
 S
 #29959
 The carpenter's workshop~
 Sawdust covers the floor, and many tiny footprints trail through
 the dust.  A rather large lemming saws away at a board set across
-a table in the center of the room.. There is a pile of boards
-off to the sides, but you see no use in lugging around boards.
+a table in the center of the room. There is a pile of boards
+off to the sides, but you see no point in lugging around boards.
 ~
 0 8 0
 D2
-To the south you can see the exit to the carpenters workshop.~
+To the south you can see the exit to the carpenter's workshop.~
 south~
 1 -1 29958
 E
@@ -533,24 +533,24 @@ pile boards~
 Yes, it's a big pile of boards, probably more than you can
 carry anyway. Besides, what do you need boards for? Building
 a new house? Making your own trireme? Why? Do you even know
-HOW to build a trireme? Just go steal one from
-a pirate or something..
+HOW to build a trireme? Just go steal one from a pirate or 
+something..
 ~
 E
 dust~
 Man that's a lotta dust.. just looking at it makes your nose itch.
 The air is filled with dust as well and it gets in your eyes and
-irritates them.. best just to leave before you're blinded by dust.
+irritates them... best just to leave before you're blinded by dust.
 ~
 S
 #29960
 The top of the stairs~
 Here is a stairway leading down into a darker area of the
-lemming cave.. hope you have a light with you.
+lemming cave... hope you have a light with you.
 ~
 0 8 0
 D0
-The central cavern and exit lies just to the north of you~
+The central cavern and exit lies just to the north of you.~
 north~
 0 -1 29952
 D5
@@ -560,7 +560,7 @@ down~
 0 -1 29961
 E
 stairway stairs~
-The stairs are rather small.. appropriate for lemmings but
+The stairs are rather small... appropriate for lemmings but
 rather difficult to descend for someone your size.
 ~
 S
@@ -661,7 +661,7 @@ S
 #29965
 The north-east corner of the lemming cave's second floor~
 This seems to be where the lemming climbers practice their
-proffesion, by competing against each other, climbing up a
+profession, by competing against each other and climbing up a
 wall into a hole in the ceiling. You think you could climb up
 the wall here fairly easily.
 ~
@@ -689,7 +689,7 @@ The lemming smithy~
 This is the workshop of the lemming smithy. He is the only
 lemming that knows how to work metal, and as such is a very
 important lemming. Were he to die, they would be unable
-to make nails or pickaxe heads or those little umbrellas.
+to make nails, pickaxe heads or little umbrellas.
 ~
 0 1|8|128 0
 D3
@@ -795,13 +795,13 @@ deep, bleeding wounds. Wonder what sort of trouble lemmings run into?
 ~
 0 1|8 0
 D2
-You can reenter the corridor by heading south.
+You can re-enter the corridor by heading south.
 ~
 south~
 1 -1 29971
 E
 wounds~
-The wounds seem to have been made by a set of large claws...
+The wounds seem to have been made by a set of large claws.
 ~
 S
 #29973
@@ -829,11 +829,11 @@ down~
 E
 door sign~
 Even though the sign is much larger than the others, you still
-cannot read lemming-ese. The red letters make you think it might
+cannot read Lemmingese. The red letters make you think it might
 be dangerous to enter, however.~
 S
 #29974
-Ohno! You are fried!~
+Oh no! You are fried!~
 It seems your intuition was right. It WAS dangerous to enter here.
 But it's too late now, you are dead! Maybe if you pray really nicely,
 a god will bring you back.
@@ -844,7 +844,7 @@ S
 A dark corner~
 You can hardly see in this darkness, where the corridor turns east.
 You see a few pickaxes resting against the wall where they were
-left by the tunnelling lemmings, they must have gone for a break.
+left by the tunnelling lemmings; they must have gone for a break.
 ~
 0 1|8 0
 D1
@@ -862,7 +862,7 @@ S
 The dark corridor~
 You continue down the dark corridor as it continues eastwards.
 A few solid beams hold up the ceiling, and you hope they don't
-collapse, at least not until you get out of here.
+collapse; at least not until you get out of here.
 ~
 0 1|8 0
 D1
@@ -878,8 +878,8 @@ west~
 S
 #29977
 The dark corridor ends~
-Here the corridor ends.. there are several places
-where the dirt floor has been greatly scuffled and disturbed,
+Here the corridor ends... there are several places where 
+the dirt floor has been greatly scuffled and disturbed,
 and you hear a deep grumbling noise through a hole in the
 southern wall. It sounds like a great beast has a lair there,
 and the lemmings unknowingly tunnelled into a deathtrap.
@@ -898,7 +898,7 @@ west~
 0 -1 29976
 E
 dirt floor~
-It looks like many tiny feet, fleeing for their lives.
+It looks like the imprints of many tiny feet, running for their lives.
 ~
 S
 #29978
