@@ -6912,11 +6912,14 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 
 1 CONSTRUCT~
 
+Syntax: construct  
 Syntax: construct <<blueprint>
 
-This allows a Smithy to build items in a set, or a WEAPONCHAIN for example.
-Expert ENGINEERS will use this to construct a TURRET or modules for the 
-turret.
+Without an argument, CONSTRUCT will show your known BLUEPRINTS.
+
+With a target this allows a Smithy to build items, for exaple
+WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build  
+TURRETS or modules for the turret.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 ~
@@ -6931,6 +6934,15 @@ mitigation of incoming damage.
 NOTE: You will need to find an ANVIL for this. see HELP CRAFTING
 ~
 
+1 BLUEPRINTS~
+
+Syntax: construct
+
+Blueprints are learned as you increase your knowledge in weaponsmithing
+or armoursmithing. Blueprints allow a SMITHY to build a number of 
+different items, and augments. Using the CONSTRUCT skill without an 
+argument will list known blueprints.
+~
 
 0 $~
 #$

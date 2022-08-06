@@ -2954,6 +2954,19 @@ void disarm (CHAR_DATA *ch, CHAR_DATA *victim)
                 }
         }
 
+        if (!IS_NPC(victim) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+        {
+                chance = (IS_NPC(victim) ? victim->level : victim->pcdata->learned[gsn_weaponchain]);
+
+                if (number_percent() < chance)
+                {
+                        act ("$N holds the weapon tight!", ch, NULL, victim, TO_CHAR);
+                        act ("$n attempts to disarm you but your weaponchain snaps your weapon back to your hand!",
+                             ch, NULL, victim, TO_VICT);
+                        return;
+                }
+        }
+
         act ("You {Gdisarm{x $N!",  ch, NULL, victim, TO_CHAR);
         act ("$n {GDISARMS{x you!", ch, NULL, victim, TO_VICT);
         act ("$n {GDISARMS{x $N!",  ch, NULL, victim, TO_NOTVICT);
@@ -6218,7 +6231,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
         {
 
                 WAIT_STATE(ch, PULSE_VIOLENCE);
-                sprintf (buf, "You hurl your {W%s{x at your opponent.\n\r", obj->name);
+                sprintf (buf, "You hurl {W%s{x at %s.\n\r", obj->short_descr, victim->short_descr);
                 send_to_char(buf, ch);
 
                 if ((!IS_AWAKE(victim) || !IS_NPC (ch))
@@ -6232,13 +6245,13 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                 return;
                 }
-        }
-        else
-        {
-                
-                act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
-                        ch, NULL, victim, TO_CHAR);
-                damage (ch, victim, 0, gsn_hurl, FALSE);
+                else
+                {
+                        
+                        act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
+                                ch, NULL, victim, TO_CHAR);
+                        damage (ch, victim, 0, gsn_hurl, FALSE);
+                }
         }
 }
 

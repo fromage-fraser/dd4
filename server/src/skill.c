@@ -3402,6 +3402,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
         const char* bar = "_____________________________________________________________________________\n\r\n\r";
         char            arg1[MAX_INPUT_LENGTH];
         char            arg2[MAX_INPUT_LENGTH];
+        
 
         arg = one_argument(arg, arg1);
         arg = one_argument(arg, arg2);    
@@ -3411,25 +3412,10 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (ch->class != CLASS_SMITHY)
         {
-                send_to_char("You are unable to construct anything you fool.\n\r", ch);
+                send_to_char("You are unable to construct anything. Try asking a Smithy.\n\r", ch);
                 return;
         }
-
-        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
-        {
-                if (anvil->item_type == ITEM_ANVIL)
-                {
-                        found = TRUE;
-                        break;
-                }
-        }
-
-        if (!found)
-        {
-                send_to_char("There is no Anvil here!\n\r", ch);
-                return;
-        }
-        
+      
         if (ch->fighting)
         {
                 send_to_char("You can't construct while fighting.\n\r", ch);
@@ -3438,7 +3424,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg1[0] == '\0' )
         {
-                send_to_char( "          {WBlueprints{x  {GLearned{x      {CDamage{x          {YCost{x\n\r", ch);
+                send_to_char( "          {WBlueprints{x  {GLearned{x       {CDamage{x         {YMetal Cost{x\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
@@ -3446,7 +3432,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                         if(ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) 
                         {
-                                sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {Y%6d{x {Y%3d{x {Y%3d{x {Y%3d{x {Y%3d{x\n\r", 
+                                sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
@@ -3484,11 +3470,16 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 {
                         if( ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)] > 0)
                         {
-                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                 sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
-                                blueprint_list[i].blueprint_damage[1] 
+                                blueprint_list[i].blueprint_damage[1],
+                                blueprint_list[i].blueprint_cost[0],
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4]
                                 );
                                 send_to_char(buf, ch);
                         }
@@ -3521,6 +3512,23 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return; 
         }
 
+        found = FALSE;
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("You will need to find an Anvil.\n\r", ch);
+                return;
+        }
+
+        /* go through a loop if your adding a chain */
         if  ( !strcmp( blueprint_list[i].blueprint_name, "weaponchain") 
                 ||  !strcmp(  blueprint_list[i].blueprint_name, "shieldchain") )
         {
@@ -3606,9 +3614,9 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
         
-        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), 0 );
-        obj_to_room( creation, ch->in_room );
-        if (blueprint_list[i].blueprint_ego)
+        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level );
+        obj_to_char( creation, ch );
+        if (blueprint_list[i].blueprint_ego >= 1 )
         {               
                 SET_BIT(creation->extra_flags, ITEM_EGO);
                 SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);

@@ -21,6 +21,8 @@
 {&gsn_weaponchain,		&gsn_group_weaponsmith,	    40, 	PRE_SMITHY},
 {&gsn_hurl,			    &gsn_group_weaponsmith,	    40, 	PRE_SMITHY},
 {&gsn_imbue,			&gsn_group_weaponsmith,     50, 	PRE_SMITHY},
+{&gsn_steel_broadsword, &gsn_group_weaponsmith,     52,     PRE_SMITHY},
+{&gsn_titanium_rapier,  &gsn_group_weaponsmith,     66,     PRE_SMITHY},
 {&gsn_shieldchain,		&gsn_group_weaponsmith,	    64, 	PRE_SMITHY},
 
 

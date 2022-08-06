@@ -168,7 +168,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat( buf, "<200>(<201>P<200>o<199>i<198>s<197>o<198>n<199>e<200>d<201>)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
-                strcat( buf, "<202>Searing)<0> " );
+                strcat( buf, "<202>(Searing)<0> " );
         
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                 strcat( buf, "<15>(Imbued)<0> " );

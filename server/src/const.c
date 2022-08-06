@@ -294,7 +294,9 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "wings of the crow",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
         { "huntsmiths gloves",      "Huntsmiths gloves of the flame", OBJ_VNUM_RARE1, -1, { 0, 0 },  { 40, 10, 1, 0, 0 }, "rare set" },
         { "huntsmiths belt",      "Huntsmiths belt of the flame", OBJ_VNUM_RARE2, -1, { 0, 0 },  { 50, 20, 2, 0, 0 }, "rare set" },
-        { "huntsmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_RARE3, -1, { 0, 0 },  { 70, 30, 5, 0, 0 }, "rare set" }
+        { "huntsmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_RARE3, -1, { 0, 0 },  { 70, 30, 5, 0, 0 }, "rare set" },
+        { "steel broadsword",      "Fierce steel broadsword", OBJ_VNUM_ST_SWORD1, -1, { 8, 18 },  { 25, 0, 0, 0, 0 }, "steel broadsword" },
+        { "titanium rapier",      "Titanium rapier of torment", OBJ_VNUM_TI_SWORD1, -1, { 14, 23 },  { 40, 15, 0, 0, 0 }, "titanium rapier" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
@@ -2415,6 +2417,8 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_epic_set,		                0 },
         { &gsn_legendary_set,	                        0 },
         { &gsn_repelling,		                0 },
+        { &gsn_steel_broadsword,                        0 },
+        { &gsn_titanium_rapier,                         0 },
 
         { &gsn_group_weaponsmith,	                0 },
         { &gsn_counterbalance,		                0 },
@@ -5967,6 +5971,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "strengthen", "!Strengthen!"
+        },
+
+        {
+                "steel broadsword", &gsn_steel_broadsword,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "steel broadsword", "!Steel_Broadsword!"
+        },
+
+        {
+                "titanium rapier", &gsn_titanium_rapier,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "titanium rapier", "!Titanium_rapier!"
         },
 
         /*
