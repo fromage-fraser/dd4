@@ -289,6 +289,8 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * Increase the maxes if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
+#define MAX_BITS                          64    /* Maximum number of bit flags available per attribute class, 
+                                                 * includes 'BIT_0' and assumes unsigned values only */
 #define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     19    /* that's 18 plus 'none' - Shade 8.7.22 */
 #define MAX_RACE                          25    /* that's 24 races plus 'none' - Owl 13/7/22 */
@@ -2026,14 +2028,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_BRAWLER               BIT_28
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
 #define ITEM_BOW                        BIT_30
-#define ITEM_TESTA                      BIT_31
-#define ITEM_TESTB                      BIT_32
-#define ITEM_TESTC                      BIT_33
-#define ITEM_TESTD                      BIT_34
-#define ITEM_TESTE                      BIT_35  
-#define ITEM_TESTX                      BIT_61  
-#define ITEM_TESTY                      BIT_62 
-#define ITEM_ANTI_INFERNALIST           BIT_63  
+#define ITEM_ANTI_SMITHY                BIT_34 
+#define ITEM_CURSED                     BIT_61  
 
 
 /*
@@ -4552,7 +4548,7 @@ char *  weapon_damage_type_name         args( ( int dt_num) );
 char *  sector_name                     args( ( int sector_num ) );
 char *  race_name                       args( ( int race_num ) );
 char *  spec_fun_name                         ( CHAR_DATA *ch );
-char *  extra_class_name                args( ( int extra_flags ) );
+char *  extra_class_name                args( ( unsigned long int extra_flags ) );
 char *  position_name                   args( ( int position) );
 char *  full_class_name                       ( int class );
 char *  full_sub_class_name                   ( int sub_class );

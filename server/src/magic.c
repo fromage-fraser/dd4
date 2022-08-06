@@ -3003,12 +3003,13 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Rewritten by Gezhp, 2000
          */
 
-        OBJ_DATA    *obj = (OBJ_DATA *) vo;
-        AFFECT_DATA *paf;
-        int          i, j, k, list [50];
-        char         buf [MAX_STRING_LENGTH];
-        char         tmp [MAX_STRING_LENGTH];
-        OBJSET_INDEX_DATA *pObjSetIndex;
+        OBJ_DATA                *obj = (OBJ_DATA *) vo;
+        AFFECT_DATA             *paf;
+        int                     j, list [50];
+        unsigned long int       i, k;
+        char                    buf [MAX_STRING_LENGTH];
+        char                    tmp [MAX_STRING_LENGTH];
+        OBJSET_INDEX_DATA       *pObjSetIndex;
 
         const char* type [MAX_ITEM_TYPE+1] =
         {
@@ -3029,7 +3030,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "a crafting tool",         "a magical crafting tool",    "a turret module"
         };
 
-        const char* extras [31] =
+        const char* extras [MAX_BITS] =
         {
                 "glows faintly",           "emits a low humming noise",
                 "?",                       "?",                          "is evil",
@@ -3042,14 +3043,25 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "?",                       "?",                          "is bloodthirsty",
                 "has been sharpened",      "has been forged",            "is a body part",
                 "can be used as a lance",                                "?",
-                "?",                       "can be used as a bow"
-        };
+                "?",                       "can be used as a bow",       "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "is cursed",
+                "?",                       "?"
+        }; 
 
-        const int class_restrictions [MAX_CLASS] =
+        const long unsigned int class_restrictions [MAX_CLASS] =
         {
                 ITEM_ANTI_MAGE,         ITEM_ANTI_CLERIC,       ITEM_ANTI_THIEF,
                 ITEM_ANTI_WARRIOR,      ITEM_ANTI_PSIONIC,      ITEM_ANTI_SHAPE_SHIFTER,
-                ITEM_ANTI_BRAWLER,      ITEM_ANTI_RANGER
+                ITEM_ANTI_BRAWLER,      ITEM_ANTI_RANGER,       ITEM_ANTI_SMITHY
         };
 
         const int align_restriction_bits [3] =
@@ -3102,7 +3114,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Any extra flags
          */
         i = 0;
-        for (j = 0, k = 1; j < 31; j++, k *= 2)
+        for (j = 0, k = 1; j < MAX_BITS; j++, k *= 2)
         {
                 if ((k & obj->extra_flags) && strcmp (extras[j], "?"))
                         list[i++] = j;
@@ -3152,11 +3164,14 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Any class restrictions
          */
         i = 0;
-        for (j = 0; j < MAX_CLASS; j++)
+        for (j = 0; j < MAX_CLASS; j++) 
         {
                 if (class_restrictions[j] & obj->extra_flags)
+                {
                         list[i++] = j;
+                }
         }
+
         if (i)
         {
                 sprintf (buf, "{cIt cannot be used by those of the");

@@ -3647,8 +3647,8 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
 void bit_explode (CHAR_DATA *ch, char* buf, long unsigned int n)
 {
     char tmp [MAX_STRING_LENGTH] = {0};
-    char buf2    [ MAX_STRING_LENGTH ];
-    char buf3    [ MAX_STRING_LENGTH ];
+    /*char buf2    [ MAX_STRING_LENGTH ];
+    char buf3    [ MAX_STRING_LENGTH ];*/
     char *sep = "";
     unsigned long int arr[63] = {0};
     unsigned long int total;

@@ -940,8 +940,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         {
 
                 strcat( buf1, "Item flags (num): {W");
-                sprintf(buf, "extra flags for item are %lu\n\r", obj->extra_flags);
-                log_string(buf);
+                /*sprintf(buf, "extra flags for item are %lu\n\r", obj->extra_flags);
+                log_string(buf);*/
                 bit_explode( ch, buf, obj->extra_flags);
                 strcat( buf1, buf );
                 strcat( buf1, "{x\n\r");
@@ -4499,13 +4499,15 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
 void do_oset( CHAR_DATA *ch, char *argument )
 {
-        OBJ_DATA  *obj;
-        CHAR_DATA *rch;
-        char       arg1 [ MAX_INPUT_LENGTH ];
-        char       arg2 [ MAX_INPUT_LENGTH ];
-        char       arg3 [ MAX_INPUT_LENGTH ];
-        char       arg4 [ MAX_INPUT_LENGTH ];
-        int        value;
+        OBJ_DATA                *obj;
+        CHAR_DATA               *rch;
+        char                    arg1 [ MAX_INPUT_LENGTH ];
+        char                    arg2 [ MAX_INPUT_LENGTH ];
+        char                    arg3 [ MAX_INPUT_LENGTH ];
+        char                    arg4 [ MAX_INPUT_LENGTH ];
+        int                     value;
+        unsigned long int       bvalue;
+        char                    *bptr;
 
         rch = get_char( ch );
 
@@ -4538,8 +4540,8 @@ void do_oset( CHAR_DATA *ch, char *argument )
         /*
          * Snarf the value (which need not be numeric).
          */
-        value = atoi( arg3 );
-
+        value = atoi(arg3);
+        bvalue = strtoul(arg3, &bptr, 10);
         /*
          * Set something.
          */
@@ -4569,7 +4571,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "extra" ) )
         {
-                obj->extra_flags = value;
+                obj->extra_flags = bvalue;
                 return;
         }
 

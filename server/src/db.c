@@ -1752,7 +1752,7 @@ void load_objects( FILE *fp )
         OBJ_INDEX_DATA *pObjIndex;
         char buf [MAX_STRING_LENGTH];
         char buf2 [MAX_STRING_LENGTH];
-        char buf3 [MAX_STRING_LENGTH];
+        /*char buf3 [MAX_STRING_LENGTH];*/
         int stat;
 
         for ( ; ; )
@@ -3565,7 +3565,7 @@ unsigned long int fread_number64( FILE *fp, int *status )
 {
     int c;
     bool sign;
-    char buf [MAX_INPUT_LENGTH];
+    /*char buf [MAX_INPUT_LENGTH]; */ 
     unsigned long int number;
     int stat;
 
@@ -3610,11 +3610,11 @@ unsigned long int fread_number64( FILE *fp, int *status )
     else if ( c != ' ' )
 	ungetc( c, fp );
 
-    if (number > BIT_31)
+    /*if (number > BIT_31)
     {   
         sprintf(buf, "fread_number64 says: %lu", number);
         log_string(buf); 
-    }
+    }*/
     return number;
 }
 
