@@ -200,7 +200,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  10
+#define BLUEPRINTS_MAX  12
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -281,9 +281,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   526     /* 526 -522 chains, armour and weaponsmithing - Brutus 29 Jul */
-#define MAX_PRE_REQ                 1367    /* smithy stuff */
-#define MAX_SPELL_GROUP             434     /* -1 for hurl  --Brutus 28/7/22 */
+#define MAX_SKILL                   528     /* 528 527 2 new blueprints- Brutus Aug 2022 */
+#define MAX_PRE_REQ                 1369    /* 2 new blueprints */
+#define MAX_SPELL_GROUP             436     /* 2 new blueprints  --Brutus Aug 22 */
 #define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
@@ -1873,6 +1873,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_LEGENDARY3             69
 #define OBJ_VNUM_LEGENDARY4             101
 #define OBJ_VNUM_LEGENDARY5             102
+#define OBJ_VNUM_ST_SWORD1              27
+#define OBJ_VNUM_TI_SWORD1              28
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 
@@ -2065,6 +2067,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_TURRET_MODULE          BIT_7
 #define EGO_ITEM_CHAINED                BIT_8
 #define EGO_ITEM_STRENGTHEN             BIT_9
+#define EGO_ITEM_CONSTRUCTED            BIT_10 /* for ny constructed weapon */
 
 /*
  * Apply types (for affects).
@@ -3427,6 +3430,8 @@ extern int gsn_uncommon_set;
 extern int gsn_rare_set;
 extern int gsn_epic_set;
 extern int gsn_legendary_set;
+extern int gsn_steel_broadsword;
+extern int gsn_titanium_rapier;
 extern int gsn_repelling;
 extern int gsn_group_weaponsmith;
 extern int gsn_craft_weapon;

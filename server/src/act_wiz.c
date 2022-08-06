@@ -1153,7 +1153,10 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                         strcat (buf, " chained");   
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
-                        strcat (buf, " strengthened");        
+                        strcat (buf, " strengthened");    
+
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
+                        strcat (buf, " constructed");      
 
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);

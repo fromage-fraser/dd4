@@ -484,6 +484,37 @@ A misty portal beckons you to the unknown.~
 33 64 0
 0~ -1~ 0~ 100~
 100 10 1
+
+#27
+steel sword broadsword~
+a steel broadsword~
+A finely crafted broadsword rests here.~
+~
+5 4 1024 8193
+0~ 8~ 18~ 1~
+5 0 0 
+A
+1 2
+A
+2 2
+A
+19 2
+
+#28
+titanium rapier~
+a titanium rapier~
+A thin titanium rapier lies here.~
+~
+5 1|4 1024 8193
+0~ 14~ 23~ 1~
+5 0 0
+A
+2 2
+A
+18 5
+A
+19 6
+
 #30
 the magical barrier~
 the magical barrier~
