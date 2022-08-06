@@ -182,6 +182,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Pkscore     %d\n", ch->pcdata->pkscore);
         fprintf(fp, "Form        %d\n", ch->form);
         fprintf(fp, "Gag         %d\n", ch->gag);
+        fprintf(fp, "DamageMit   %d\n", ch->damage_mitigation);
         fprintf(fp, "Quiet       %d\n", ch->silent_mode);
         fprintf(fp, "AllowLook   %d\n", ch->pcdata->allow_look);
         fprintf(fp, "XPLevel     %d\n", ch->pcdata->level_xp_loss);
@@ -753,6 +754,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
 
                     case 'D':
                         KEY("Dam", ch->damroll, fread_number( fp, &stat ));
+                        KEY("DamageMit", ch->damage_mitigation, fread_number( fp, &stat ));
                         KEY("Deaf", ch->deaf, fread_number( fp, &stat ));
                         KEY("DeityFlags", ch->pcdata->deity_flags, fread_number( fp, &stat ));
                         KEY("DeityTimer", ch->pcdata->deity_timer, fread_number( fp, &stat ));

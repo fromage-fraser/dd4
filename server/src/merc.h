@@ -234,7 +234,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  10
+#define BLUEPRINTS_MAX  12
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -293,7 +293,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
                                                  * includes 'BIT_0' and assumes unsigned values only */
 #define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     19    /* that's 18 plus 'none' - Shade 8.7.22 */
-#define MAX_RACE                          25    /* that's 24 races plus 'none' - Owl 13/7/22 */
+#define MAX_RACE                          26    /* that's 25 races plus 'none' - Owl 4/8/22 */
 #define MAX_STAT                          32    /* 0->31  - Shade */
 #define MAX_CLAN                           7
 #define MAX_CLAN_LEVEL                     3
@@ -317,10 +317,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   521     /* 521-514 sets and modules for Smithy - Brutus 29 Jul */
-#define MAX_PRE_REQ                 1366    /* Increased for turret and arrow --Owl 25/7/22 */
-#define MAX_SPELL_GROUP             435     /* turret and arrow smithy blueprints --Brutus 28/7/22 */
-#define MAX_GROUPS                  53
+#define MAX_SKILL                   528     /* 528 527 2 new blueprints- Brutus Aug 2022 */
+#define MAX_PRE_REQ                 1369    /* 2 new blueprints */
+#define MAX_SPELL_GROUP             436     /* 2 new blueprints  --Brutus Aug 22 */
+#define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
 
@@ -638,6 +638,7 @@ struct quest_recall
 #define RACE_GENASI                     22
 #define RACE_ILLITHID                   23
 #define RACE_GRUNG                      24
+#define RACE_DUERGAR                    25
 
 
 /*
@@ -1908,6 +1909,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_LEGENDARY3             69
 #define OBJ_VNUM_LEGENDARY4             101
 #define OBJ_VNUM_LEGENDARY5             102
+#define OBJ_VNUM_ST_SWORD1              27
+#define OBJ_VNUM_TI_SWORD1              28
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 
@@ -1992,7 +1995,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_CRAFT                              40 /* Increase bonus to crafting that takes place in ROOM_CRAFT */
 #define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
 #define ITEM_TURRET_MODULE                      42
-
+#define ITEM_FORGE                              43
 /*
  * Extra flags.
  * Used in #OBJECTS.
@@ -2100,7 +2103,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
-#define EGO_ITEM_CHAINED            BIT_8
+#define EGO_ITEM_CHAINED                BIT_8
+#define EGO_ITEM_STRENGTHEN             BIT_9
+#define EGO_ITEM_CONSTRUCTED            BIT_10 /* for ny constructed weapon */
 
 /*
  * Apply types (for affects).
@@ -2152,6 +2157,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_SET_RARE                          43
 #define APPLY_SET_EPIC                          44
 #define APPLY_SET_LEGENDARY                     45
+#define APPLY_STRENGTHEN                        46
 
 /*
  * Values for containers (value[1]).
@@ -2537,6 +2543,7 @@ struct char_data
         int             body_form;
         int             tournament_team;        /* mobs can use this too */
         int             exp_modifier;
+        int             damage_mitigation;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -3461,6 +3468,8 @@ extern int gsn_uncommon_set;
 extern int gsn_rare_set;
 extern int gsn_epic_set;
 extern int gsn_legendary_set;
+extern int gsn_steel_broadsword;
+extern int gsn_titanium_rapier;
 extern int gsn_repelling;
 extern int gsn_group_weaponsmith;
 extern int gsn_craft_weapon;
@@ -3881,6 +3890,7 @@ DECLARE_DO_FUN( do_pattern                      );
 DECLARE_DO_FUN( do_soar                         );
 DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
 DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
+DECLARE_DO_FUN( do_strengthen                   );
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );

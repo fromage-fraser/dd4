@@ -380,7 +380,7 @@ Dragons Domain version 4.2020
 
 -1 MOTD~
 {x
-    [14 July 2022]
+    [4 August 2022]
     ---------------------------------------------------------------------
     {WDragons Domain 4.0{x
 
@@ -396,9 +396,9 @@ Dragons Domain version 4.2020
     {W8-bit colour is in! Type 'ansi reset' for your current characters, then 
     read 'HELP COLOR3' and 'HELP ANSI'!{x
 
-    {W'Swim' skill has been fixed and given to a number of classes.{x
+    {WSMITHY class is now beta testing!!!!{x    
 
-
+    {WDUERGAR is a new playable race.{x
 
 
 
@@ -433,6 +433,10 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+
+{WAugust 2022{x
+- Smithy is in for testing
+- Duergar added as playable race
 
 {WJuly 2022{x
 - Added 8-bit colour to MUD
@@ -921,6 +925,11 @@ Current physical skills that benefit from crafting locations:
 forge
 sharpen
 poison weapon
+smelt
+construct
+
+(If your looking for a FORGE or ANVIL try the 
+Eastern end of Alley in Midgaard see HELP MIDGAARD)
 
 Current spells that benefit from spellcrafting locations:
 
@@ -964,6 +973,7 @@ create water        stone skin
 | V) Genasi     | -1  2 -1 -1  2 | Infravision     Resist Magic    |  10  10   0 |
 | W) Illithid   | -2  2  3 -2  0 | Fear            Energy Drain    |  0   30 -20 |
 | X) Grung      |  0 -2 -1  3  1 | Resist Toxin    Poison          |  20 -10  10 |
+| Y) Duergar    |  2  2 -2 -2  1 | Infravision     Invis           |  30 -20 -20 |
 ----------------------------------------------------------------------------------
 ~
 
@@ -3788,6 +3798,15 @@ learn to fight from an early age and are sturdy and strong.  Dwarves make
 a good choice for all warrior classes.
 ~
 
+-1 DUERGAR~
+DUERGAR, also known as 'gray dwarves' or 'underdwarves' are a subterranean 
+subrace of dwarves. They carved out an existence in the Underdark, often near 
+volcanoes.  Their kinship to other dwarven subraces could be compared to that 
+of the drow to surface elves. DUERGAR make a solid choice for many classes, 
+save those that require great dexterity or wisdom.  They are particularly 
+well-suited to the SMITHY class and its subclasses.
+~
+
 -1 CENTAUR~
 Half-man, half-horse the centaur race is both strong and agile.  Using their
 powerful rear leg muscles centaurs are able to deliver quite a KICK with their
@@ -5165,6 +5184,16 @@ See 'HELP SWARLOCK' and 'HELP SNECROMANCER' for lists of warlock and
 necromancer skills respectively.
 ~
 
+-1 SSMITHY~
+{W 
+
+Smithy skills{x
+
+smelt                   shield block        STRENGTHEN
+construct               imbue               counterbalance
+weaponchain             shieldchain         hurl
+uncommon set            rare set    
+~
 
 -1 SWARRIOR~
 {W
@@ -6761,8 +6790,8 @@ It may be accessed via the Yeats Sea, south and west of the Midgaard levee.
           Wall -- End --  Poor -- {k}wCommon{x -- Dark --  Alley -- End of --  Mob
           Road   Alley   Alley    {k}wSquare{x    Alley   At Levee  Alley    Factory
             |      |       |        |        |         |        |
-            |   {W}rBrawler{x  Lusty      |      {W}rThief{x     Levee   Abandoned
-          Wall  {W}r Guild {x  Ogres      |      {W}rGuild{x       |     Warehouse
+            |   {W}rBrawler{x  Lusty      |      {W}rThief{x     Levee   {W}rSmithy Trainer{x
+          Wall  {W}r Guild {x  Ogres      |      {W}rGuild{x       |       & Forge
           Road           Tavern     |                  |
             |                       |                River
             |                       |
@@ -6829,6 +6858,126 @@ During a gambling game, you will occasionally need to place a BET.  The
 syntax of the wager will depend on the particular game in which you are
 participating.  Wagering the 'limit' will automatically place the maximum
 bet, if you have enough gold.
+~
+
+0 SMITHY~
+
+The origins of the SMITHY steam back to the beginning of time. Always in 
+high demand across the realm for their ability to craft superior weapons
+and armour, they have evolved to an extend that their culture is craft
+focused. The can break down armour and weapons for raw materials via their 
+ability to SMELT. They can IMBUE and COUNTERBALANCE weapons, and STRENGTHEN
+armour. Expert Smithys can create powerful armour sets, with extraordinary
+set bonuses.
+~
+
+1 SMELT~
+
+Syntax: smelt <<armour> or <<weapon>
+
+Smithys can break down existing weapons and armour into their raw
+materials. They then use these materials as the basis for more 
+powerfull weapons, armour and augments.
+
+NOTE: You will need to find a FORGE for this. see HELP CRAFTING
+~
+
+1 IMBUE~
+
+Syntax: imbue <<weapon>
+
+Smithys can add enchancements to weapons via their craft. The art of 
+imbuing a weapon can sometimes be unpredictable and often enchancements
+follow this unpredictablity.
+
+NOTE: You will need to find a FORGE for this. see HELP CRAFTING
+~
+
+1 COUNTERBALANCE~
+
+Syntax: counterbalance <<weapon>
+
+To improve combat effectiveness, a skilled Smithy is able to counterbalance
+a weapon to provide the perfect weighting. The improve handling and 
+weight of a weapon can often lead to additional attacks.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+~
+
+1 WEAPONCHAIN~
+
+Syntax: construct weaponchain <<weapon>
+
+A Smithys weapon is firstly part of their culture, and their ability to fend
+for themselves in battle. Smithys can chain weapons to their wrist, to 
+prevent them being disarmed in battle. Smithys may then HURL their weapon
+during combat, and have it return safely
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+~
+
+1 SHIELDCHAIN~
+
+Syntax: construct shieldchain <<shield>
+
+A Smithy can chain a shield to them. This process must be done first before 
+attempting to HURL your shield.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+~
+
+1 HURL~
+
+Syntax: hurl <<weapon> or <<shield> <<target>
+
+Hurling either your weapon or shield at your enemey provides a means to 
+inflict extra damage. Hurling your shield will provide an opportunity to
+knock your opponent out. It can however knock you off balance if it does not
+connect
+~
+
+1 'UNCOMMON SET' 'RARE SET' 'EPIC SET' 'LEGENDARY SET'~
+
+Syntax: construct <<blueprint>
+Smithys are able to create sets of armour with additional bonuses. These
+bonuses are activated when certain pieces are worn together. Set pieces will
+be listed as seperate items to be learned.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+~
+
+1 CONSTRUCT~
+
+Syntax: construct  
+Syntax: construct <<blueprint>
+
+Without an argument, CONSTRUCT will show your known BLUEPRINTS.
+
+With a target this allows a Smithy to build items, for exaple
+WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build  
+TURRETS or modules for the turret.
+
+NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
+~
+
+1 STRENGTHEN~
+
+Syntax: strengthen <<armour>
+
+This allows the smithy to strengthen certain armour types to improve their 
+mitigation of incoming damage.
+
+NOTE: You will need to find an ANVIL for this. see HELP CRAFTING
+~
+
+1 BLUEPRINTS~
+
+Syntax: construct
+
+Blueprints are learned as you increase your knowledge in weaponsmithing
+or armoursmithing. Blueprints allow a SMITHY to build a number of 
+different items, and augments. Using the CONSTRUCT skill without an 
+argument will list known blueprints.
 ~
 
 0 $~

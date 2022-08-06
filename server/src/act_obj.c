@@ -5371,15 +5371,6 @@ void coins_to_char( int numcoins, CHAR_DATA *ch, int mode )
 
 void smelted_to_char( int st, int ti, int ad, int el, int sm, CHAR_DATA *ch, int mode )
 {
-     /*   SMELTING_DATA       *smelted; 
-
-        smelted = (SMELTING_DATA *) malloc (sizeof(SMELTING_DATA));
-        if (!smelted)
-        {
-                bug ("smelted_to_char: SMELTING_DATA - not enough memory to allocate", 0);
-                exit (1);
-        }
-      */
         if (mode == COINS_ADD)
         {
                 ch->smelted_steel       += st;
@@ -5396,9 +5387,7 @@ void smelted_to_char( int st, int ti, int ad, int el, int sm, CHAR_DATA *ch, int
                 ch->smelted_electrum    -= el;
                 ch->smelted_starmetal   -= sm;
         }
-/*
-        free(smelted);
-  */      return;
+    return;
 }
 
 

@@ -1390,6 +1390,7 @@ void do_push (CHAR_DATA *ch, char *argument)
             case 22: race_bonus =  -3; break;
             case 23: race_bonus =  -6; break;
             case 24: race_bonus =  -1; break;
+            case 25: race_bonus =   2; break;
             default: break;
         }
 
@@ -1976,6 +1977,170 @@ void do_forge (CHAR_DATA *ch, char *argument)
 
         obj->timer    = (in_c_room) ? ( ( 30  * mod_room_bonus ) / 100 ) * (ch->level / 15) + 60 : 30 * (ch->level / 15) + 60;  /* 1-2 real hours */
         obj->timermax = obj->timer; 
+        set_obj_owner(obj, ch->name);
+}
+
+void do_strengthen (CHAR_DATA *ch, char *argument)
+{
+        char            buf[MAX_STRING_LENGTH];
+        OBJ_DATA *obj;
+        OBJ_DATA *anvil;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool found;
+        int cost_st;
+        int cost_ti; 
+        int cost_ad; 
+        int cost_el;
+        int cost_sm;
+
+        if (IS_NPC(ch))
+                return;
+
+        if (!CAN_DO(ch, gsn_strengthen))
+        {
+                send_to_char("Huh?\n\r", ch);
+                return;
+        }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What are you trying to srengthen?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that piece of armour.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_ARMOR)
+        {
+                send_to_char("That item is not armour.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+        {
+                send_to_char("That is already strengthened.\n\r", ch);
+                return;
+        }
+
+        if (obj->wear_flags)
+        {
+                int next;
+                 bit_explode(ch, buf, obj->wear_flags);
+        
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))
+                        {
+                                if ( !str_cmp( wear_flag_name(next), "finger") 
+                                || !str_cmp( wear_flag_name(next), "float") 
+                                || !str_cmp( wear_flag_name(next), "hold" ) 
+                                || !str_cmp( wear_flag_name(next), "neck") 
+                                || !str_cmp( wear_flag_name(next), "about" ) )
+                                {
+                                        send_to_char("You cannot strengthen that type of armour..\n\r", ch);
+                                        return;        
+                                }
+                        }
+                }
+        }
+
+        found = FALSE;
+
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no anvil here!\n\r", ch);
+                return;
+        }
+
+        cost_sm =0;
+        cost_ad = 0;
+        cost_el = 0;
+        cost_st = 0;
+        cost_ti = 0;
+
+        if ( (obj->level > 90) )
+                cost_sm = 1;
+
+        if (obj->level > 70 )
+                cost_el = 10;
+
+        if (obj->level > 50 )
+                cost_ad = 15;
+        if (obj->level > 25 )
+                cost_ti = 20;
+        if (obj->level > 15 )
+                cost_st = 10;
+        if (obj->level > 1 )
+                cost_st += 12;
+        
+        if ( cost_st > ch->smelted_steel 
+        ||  cost_ti > ch->smelted_titanium 
+        ||  cost_ad > ch->smelted_adamantite
+        ||  cost_el > ch->smelted_electrum
+        ||  cost_sm > ch->smelted_starmetal)
+        {
+                send_to_char( "You don't have enough raw materials, you need:\n\r", ch );
+                sprintf(buf, "%d Steel %d Titanium %d Adamantite %d Electrum %d Starmetal and %d", 
+                cost_st, cost_ti, cost_ad, cost_el, cost_sm, obj->level); 
+                act(buf, ch, NULL, NULL, TO_CHAR);
+                return; 
+        }
+
+
+        if (number_percent() > ch->pcdata->learned[gsn_strengthen])
+        {
+                send_to_char("You slip while hammering your armour and pound yourself!\n\r", ch);
+                damage(ch, ch, ch->level, gsn_forge, FALSE);
+                act ("$n pounds $mself while forging $s armour!", ch, NULL, NULL, TO_ROOM);
+                smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE); 
+                return;
+        }
+
+        act ("You skillfully strengthen $P!", ch, NULL, obj, TO_CHAR);
+        act ("$n skillfully strengthens $P!", ch, NULL, obj, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_STRENGTHEN);
+        smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);  
+ 
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
+        else
+        {
+                paf = affect_free;
+                affect_free = affect_free->next;
+        }
+
+        paf->type           = gsn_strengthen;
+        paf->duration       = -1;
+        paf->location       = APPLY_STRENGTHEN;
+        paf->modifier       = 1 + ( ch->level / 50 );
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+
         set_obj_owner(obj, ch->name);
 }
 
@@ -3087,11 +3252,14 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         char            arg[MAX_INPUT_LENGTH];
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
+        OBJ_DATA        *forge;
         int             starmetal=0;
         int             electrum=0;
         int             adamantite=0;
         int             titanium=0;
         int             steel=0;
+        bool found;
+        int next;
 
         argument = one_argument(argument, arg);
         if (IS_NPC(ch))
@@ -3103,7 +3271,22 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-         if (arg[0] == '0')
+        for (forge = ch->in_room->contents; forge; forge = forge->next_content)
+        {
+                if (forge->item_type == ITEM_FORGE)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no forge here!\n\r", ch);
+                return;
+        }
+
+         if (arg[0] == '\0')
         {
                 send_to_char("Smelt what?\n\r", ch);
                 return;
@@ -3122,10 +3305,10 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         }
 
         
-        if (arg[0] == '\0' || !str_cmp(arg, ch->name))
+        if (!str_cmp(arg, ch->name))
         {
                 send_to_char("You're unlikely to contain any elements of value.\n\r", ch);
-                act("$n considers smelting $mself, but determins they hold no value.",
+                act("$n considers smelting $mself, but determines they hold no value.",
                     ch, NULL, NULL, TO_ROOM);
                 return;
         }
@@ -3142,20 +3325,38 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((obj->item_type == ITEM_WEAPON) && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
+        if ((obj->item_type == ITEM_WEAPON) && !is_bladed_weapon(obj))
         {
-                if (number_percent() >= 98)
-                        starmetal = (obj->level/60);
-                if (number_percent() >= 94)
-                        electrum = (obj->level/45);
-                if (number_percent() >= 75)
-                        adamantite = (obj->level/30);
-                if (number_percent() >= 50)
-                        titanium = (obj->level/10);
-                if (number_percent() >= 30)
-                        steel = (obj->level/3);
+                send_to_char("You cant smelt that type of weapon. Find something with a blade.\n\r", ch);
+                return;
         }
-        else if (obj->item_type == ITEM_ARMOR && (number_percent() <= ch->pcdata->learned[gsn_smelt]))
+
+        if (obj->wear_flags)
+        {
+                bit_explode(ch, buf, obj->wear_flags);
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))
+                        {
+                               if ( !str_cmp( wear_flag_name(next), "float")
+                               || !str_cmp( wear_flag_name(next), "neck")
+                               || !str_cmp( wear_flag_name(next), "about")
+                               || !str_cmp( wear_flag_name(next), "hold") )
+                                {
+                                        send_to_char("You cant smelt that type of armour.\n\r", ch);
+                                        return;     
+                                }
+                        }
+                }
+        }
+
+        if (obj->level > ch->level)
+        {
+                send_to_char("You worldy knowledge of items is not at the point to allow you to smelt that yet.\n\r", ch);
+                return;
+        }
+  
+        if (number_percent() <= ch->pcdata->learned[gsn_smelt])
         {
                 if (number_percent() >= 98)
                         starmetal = (obj->level/60);
@@ -3165,38 +3366,43 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                         adamantite = (obj->level/30);
                 if (number_percent() >= 50)
                         titanium = (obj->level/10);
-                if (number_percent() >= 30)
-                        steel = (obj->level/3);
-
+                if (number_percent() >= 1)
+                        steel = (1 + obj->level/6);
+                
                 ch->smelted_steel += steel;
                 ch->smelted_titanium += titanium;
                 ch->smelted_adamantite += adamantite;
                 ch->smelted_electrum += electrum;
                 ch->smelted_starmetal += starmetal;
-        }
-        else
-        {
-                send_to_char("You can't Smelt that!\n\r", ch);
+                act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
+                act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
+                smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
+                sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
+                send_to_char (buf, ch);
+                extract_obj(obj);
                 return;
         }
-
-        act("$n smelts $p into its raw materials.", ch, obj, NULL, TO_ROOM);
-        act("You place $p into the Forge.", ch, obj, NULL, TO_CHAR);      
-        smelted_to_char( steel, titanium, adamantite, electrum, starmetal, ch, COINS_ADD);  
-        sprintf(buf, "You recover the following raw materials: \nSteel: %d\nTitanium: %d\nAdamantite: %d\nElectrum: %d\nStarmetal: %d\n\r", steel, titanium, adamantite, electrum, starmetal);
-        send_to_char (buf, ch);
-        extract_obj(obj);        
+        else
+        {  
+                send_to_char("You skill in smelting lets you down. You fail to recover anything.\n\r", ch);
+                act("You watch as $p slowly disolves into the belly of the forge.",ch, obj, NULL, TO_CHAR);
+                act("$n fails to recover any materials from $p.",ch, obj, NULL, TO_ROOM);
+                extract_obj(obj); 
+                return;      
+        }         
 }
 
 /* Construct Code - Brutus Jul 2023 */
 void do_construct( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA        *creation;
+        OBJ_DATA        *anvil;
         int             found, i;
         char            buf[MAX_STRING_LENGTH];
         const char* bar = "_____________________________________________________________________________\n\r\n\r";
         char            arg1[MAX_INPUT_LENGTH];
         char            arg2[MAX_INPUT_LENGTH];
+        
 
         arg = one_argument(arg, arg1);
         arg = one_argument(arg, arg2);    
@@ -3206,10 +3412,10 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if (ch->class != CLASS_SMITHY)
         {
-                send_to_char("You are unable to construct anything you fool.\n\r", ch);
+                send_to_char("You are unable to construct anything. Try asking a Smithy.\n\r", ch);
                 return;
         }
-
+      
         if (ch->fighting)
         {
                 send_to_char("You can't construct while fighting.\n\r", ch);
@@ -3218,7 +3424,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         if( arg1[0] == '\0' )
         {
-                send_to_char( "          Blueprints         Learned      Damage\n\r", ch);
+                send_to_char( "          {WBlueprints{x  {GLearned{x       {CDamage{x         {YMetal Cost{x\n\r", ch);
                 send_to_char(bar, ch);
 
                 for (i = 0; i < BLUEPRINTS_MAX; i++)
@@ -3226,13 +3432,18 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                         if(ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]  > 0) 
                         {
-                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
-                                blueprint_list[i].blueprint_damage[1] 
+                                blueprint_list[i].blueprint_damage[1],
+                                blueprint_list[i].blueprint_cost[0],
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4]
                                 );
-                                send_to_char(buf, ch);
+                                send_to_char(buf, ch); 
                         }
                         
                 }
@@ -3259,11 +3470,16 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 {
                         if( ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)] > 0)
                         {
-                                sprintf(buf, "{W%20s{x {G%10d{x%% {c%10d{x {C%5d{x\n\r", 
+                                 sprintf(buf, "{W%20s{x {G%7d{x%% {c%6d{x {C%6d{x {w%6d{x {y%3d{x {Y%3d{x {W%3d{x {R%3d{x\n\r", 
                                 blueprint_list[i].blueprint_name,
                                 ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)],
                                 blueprint_list[i].blueprint_damage[0],
-                                blueprint_list[i].blueprint_damage[1] 
+                                blueprint_list[i].blueprint_damage[1],
+                                blueprint_list[i].blueprint_cost[0],
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4]
                                 );
                                 send_to_char(buf, ch);
                         }
@@ -3296,6 +3512,23 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return; 
         }
 
+        found = FALSE;
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("You will need to find an Anvil.\n\r", ch);
+                return;
+        }
+
+        /* go through a loop if your adding a chain */
         if  ( !strcmp( blueprint_list[i].blueprint_name, "weaponchain") 
                 ||  !strcmp(  blueprint_list[i].blueprint_name, "shieldchain") )
         {
@@ -3321,6 +3554,33 @@ void do_construct( CHAR_DATA *ch, char *arg )
                         send_to_char("You cannot add a chain to that.\n\r", ch);
                         return;
                 }
+
+                if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && number_percent() > ch->pcdata->learned[gsn_weaponchain]) )
+                {
+                        send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                        send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE); 
+                        return;
+                }
+                if ((!strcmp(blueprint_list[i].blueprint_name, "shieldchain") && number_percent() > ch->pcdata->learned[gsn_shieldchain]) )
+                {
+                        send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                        send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                        act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE); 
+                        return;
+                }
+
+
                 if (blueprint_list[i].blueprint_ego)
                 {               
                         SET_BIT(obj->extra_flags, ITEM_EGO);
@@ -3331,14 +3591,32 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
                         sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
                         act(buf, ch, NULL, NULL, TO_ROOM);
+                        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                                blueprint_list[i].blueprint_cost[1],
+                                blueprint_list[i].blueprint_cost[2],
+                                blueprint_list[i].blueprint_cost[3],
+                                blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
                 }
                 set_obj_owner(obj, ch->name);
                 return;
         }
+
+        if ( number_percent() > ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        {
+                send_to_char("You heat the forge, and ready your materials.\n\r", ch);
+                send_to_char("You fumble.. your materials slip into the forge and are lost to the infernal heat.\n\r", ch);
+                act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
+                smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+                        blueprint_list[i].blueprint_cost[1],
+                        blueprint_list[i].blueprint_cost[2],
+                        blueprint_list[i].blueprint_cost[3],
+                        blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE); 
+                return;
+        }
         
-        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), 0 );
-        obj_to_room( creation, ch->in_room );
-        if (blueprint_list[i].blueprint_ego)
+        creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level );
+        obj_to_char( creation, ch );
+        if (blueprint_list[i].blueprint_ego >= 1 )
         {               
                 SET_BIT(creation->extra_flags, ITEM_EGO);
                 SET_BIT(creation->ego_flags, blueprint_list[i].blueprint_ego);
@@ -3354,6 +3632,11 @@ void do_construct( CHAR_DATA *ch, char *arg )
 
         sprintf(buf, "$n constructs {W%s{x.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_ROOM);
+        smelted_to_char( blueprint_list[i].blueprint_cost[0], 
+        blueprint_list[i].blueprint_cost[1],
+        blueprint_list[i].blueprint_cost[2],
+        blueprint_list[i].blueprint_cost[3],
+        blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);  
 
         return;
         
@@ -3490,12 +3773,14 @@ void do_empower (CHAR_DATA *ch, char *argument)
 void do_imbue (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
+        OBJ_DATA *forge;
         char            arg[MAX_INPUT_LENGTH];
         char            modifier;
         int             random_buff;
         int             random_buff2;
         int             random_buff3;
         AFFECT_DATA     *paf;
+        bool found;
  
         random_buff = -1;
         random_buff2 = -1;
@@ -3513,13 +3798,20 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-/* disabled while testing
-        if (!IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
+        for (forge = ch->in_room->contents; forge; forge = forge->next_content)
         {
-                send_to_char("You need ot find a forge?\n\r", ch);
+                if (forge->item_type == ITEM_FORGE)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no forge here!\n\r", ch);
                 return;
         }
-*/
 
         argument = one_argument(argument, arg);
  
@@ -3629,16 +3921,12 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 void do_counterbalance (CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
+        OBJ_DATA *anvil;
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
-        bool in_c_room;
-        in_c_room = FALSE;
-
-        if (IS_SET( ch->in_room->room_flags, ROOM_CRAFT ))
-        {
-             in_c_room = TRUE;
-        }
-
+        bool found;
+        char            buf[MAX_STRING_LENGTH];
+    
         if ( IS_NPC( ch ) )
                 return;
 
@@ -3659,6 +3947,23 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
         if (ch->fighting)
         {
                 send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        found = FALSE;
+
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no anvil here!\n\r", ch);
                 return;
         }
 
@@ -3686,18 +3991,20 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
+  /* always suceed - but percentage based on skill      if (number_percent() > ch->pcdata->learned[gsn_counterbalance])
         {
                 send_to_char("You slip while balancing your weapon!!\n\r", ch);
                 act ("$n cuts $mself while balancing $m weapon!", ch, NULL, NULL, TO_ROOM);
                 return;
         }
+*/
 
-        if (in_c_room)
-                send_to_char("{CThe use of specialised tools improves the quality of your smithing!\n\r{x", ch);
-
-        act ("You expertly balance $p!",
-             ch, obj, NULL, TO_CHAR);
+        sprintf( buf, "You counter balance %s.\n\r", obj->short_descr );
+        send_to_char( buf, ch );
+        sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
+        send_to_char( buf, ch );
+        
+        
         act ("$n expertly balances $p!",
              ch, obj, NULL, TO_ROOM);
 

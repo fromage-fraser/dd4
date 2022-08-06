@@ -165,7 +165,8 @@ bool can_craft( CHAR_DATA *ch )
 {
         if ( ( ch->pcdata->learned[gsn_forge]
         ||     ch->pcdata->learned[gsn_poison_weapon]
-        ||     ch->pcdata->learned[gsn_sharpen] )
+        ||     ch->pcdata->learned[gsn_sharpen]
+        ||     ch->class == CLASS_SMITHY )
         && ( !IS_NPC( ch ) ) )
         {
                 return TRUE;
@@ -363,6 +364,22 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 ch->saving_throw += mod;
                 break;
 
+            case APPLY_STRENGTHEN:
+                af.type = skill_lookup( "strengthen");
+                if ( fAdd )
+                {
+                        ch->damage_mitigation += mod;
+                        send_to_char( "Your armour provides additional damage mitigation.\n\r", ch );
+                        break;
+                }
+                else
+                {
+                        ch->damage_mitigation += mod;  
+                        send_to_char( "Your damage mitigation reduces somewhat.\n\r", ch );    
+                        break;
+                }
+
+
             case APPLY_SANCTUARY:
                 af.type = skill_lookup( "sanctuary" );
                 if( fAdd )
@@ -542,6 +559,19 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         affect_strip( ch, af.type );
                         send_to_char( "You feel less protected.\n\r", ch );
+                        break;
+                }
+
+            case APPLY_BALANCE:
+                af.type = skill_lookup( "counterbalance" );
+                                if( fAdd )
+                {
+                        send_to_char( "The perfectly weighted weapon fills you with confidence.\n\r", ch );
+                        break;
+                }
+                else
+                {
+                        send_to_char( "You feel less prepared for battle.\n\r", ch );
                         break;
                 }
 
@@ -1129,11 +1159,11 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         {
                 int count;
                 count=0;
-
+                send_to_char ( "You wear a part of a set.\n\r", ch);
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {       
                         count++;
-                        
+                     /*   bug( "EQUIP_CHAR DEBUG: total count %d.", count ); */
                         if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         { 
                                 affect_modify( ch, paf, TRUE, obj );
@@ -2038,7 +2068,7 @@ char *objset_type( int vnum)
         if (bonus4 > 0)
                 return "<93>Epic<0>";
         if (bonus3 > 0)
-                return "<32>Rare<0>";
+                return "<39>Rare<0>";
         if (bonus2 > 0)
                 return "<34>Uncommon<0>";
                 
@@ -2058,14 +2088,13 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         {
                 if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
                 { 
-                if ( (pObjSetIndex->vnum != pobjsetworn->vnum))
-                        return FALSE;
-
-                if ( (objworn->wear_loc != WEAR_NONE)  )/*count worn items of set */
+                
+                if ( (objworn->wear_loc != WEAR_NONE) && (pObjSetIndex->vnum == pobjsetworn->vnum) )/*count worn items of set */
                         worn++;
+                   /*     bug( "I find worn %d.", worn ); */
                 }               
         }
-        bug( "OBJSET DEBUG: Total worn items %d.", worn );
+        /* bug( "OBJSET DEBUG: Total worn items %d.", worn ); */
 
         if ( worn == 0 )
                 return FALSE;
@@ -2635,6 +2664,7 @@ char *affect_loc_name( int location )
             case APPLY_RESIST_ACID:             return "acid resistance";
             case APPLY_BREATHE_WATER:           return "breathe water";
             case APPLY_BALANCE:                 return "attack speed";
+            case APPLY_STRENGTHEN:              return "damage mitigation";
         }
 
         bug( "Affect_location_name: unknown location %d.", location );

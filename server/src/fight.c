@@ -380,6 +380,22 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (is_affected(ch, gsn_haste))
                 one_hit(ch, victim, dt);
 
+        /* for counterbalance */
+
+        if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 )
+        {
+                OBJ_DATA *wield; 
+                AFFECT_DATA *paf; 
+                wield = get_eq_char(ch, WEAR_WIELD); 
+                for ( paf = wield->affected; paf; paf = paf->next )
+                {
+                        if ( paf->location == APPLY_BALANCE )
+                        {
+                                if (number_percent() < paf->modifier)
+                                        one_hit(ch, victim, dt);
+                        }
+                } 
+        }
         /*
          * Multiple attacks for shifter forms
          */
@@ -1010,6 +1026,12 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
+        /* this is to support strengthen, but could b aplied for aonther thigs - Brutus */
+                if (!IS_NPC(victim))
+                {
+                        dam *=  (100 - victim->damage_mitigation);
+                        dam /= 100;
+                }
                 if (IS_AFFECTED(victim, AFF_PROTECT))
                 {
                         if (MOD(ch->alignment - victim->alignment) > 750)
@@ -2927,6 +2949,19 @@ void disarm (CHAR_DATA *ch, CHAR_DATA *victim)
                 {
                         act ("$N holds the weapon tight!", ch, NULL, victim, TO_CHAR);
                         act ("$n attempts to disarm you but you grip your weapon tight!",
+                             ch, NULL, victim, TO_VICT);
+                        return;
+                }
+        }
+
+        if (!IS_NPC(victim) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+        {
+                chance = (IS_NPC(victim) ? victim->level : victim->pcdata->learned[gsn_weaponchain]);
+
+                if (number_percent() < chance)
+                {
+                        act ("$N holds the weapon tight!", ch, NULL, victim, TO_CHAR);
+                        act ("$n attempts to disarm you but your weaponchain snaps your weapon back to your hand!",
                              ch, NULL, victim, TO_VICT);
                         return;
                 }
@@ -6196,7 +6231,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
         {
 
                 WAIT_STATE(ch, PULSE_VIOLENCE);
-                sprintf (buf, "You hurl your {W%s{x at your opponent.\n\r", obj->name);
+                sprintf (buf, "You hurl {W%s{x at %s.\n\r", obj->short_descr, victim->short_descr);
                 send_to_char(buf, ch);
 
                 if ((!IS_AWAKE(victim) || !IS_NPC (ch))
@@ -6210,13 +6245,13 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                         if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                 return;
                 }
-        }
-        else
-        {
-                
-                act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
-                        ch, NULL, victim, TO_CHAR);
-                damage (ch, victim, 0, gsn_hurl, FALSE);
+                else
+                {
+                        
+                        act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
+                                ch, NULL, victim, TO_CHAR);
+                        damage (ch, victim, 0, gsn_hurl, FALSE);
+                }
         }
 }
 

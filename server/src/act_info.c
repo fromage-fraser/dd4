@@ -121,7 +121,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         {
                  if ( (objset_type(pObjSetIndex->vnum)) == ("<34>Uncommon<0>")) 
                         strcat( buf, "<34>[SET]<0> ");
-                if ( (objset_type(pObjSetIndex->vnum)) == ("<32>Rare<0>") ) 
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<39>Rare<0>") ) 
                         strcat( buf, "<32>[SET]<0> ");
                 if ( (objset_type(pObjSetIndex->vnum)) == ("<93>Epic<0>") ) 
                         strcat( buf, "<93>[SET]<0> ");
@@ -169,13 +169,16 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
                 strcat( buf, "<200>(<201>P<200>o<199>i<198>s<197>o<198>n<199>e<200>d<201>)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
-                strcat( buf, "<202>Searing)<0> " );
+                strcat( buf, "<202>(Searing)<0> " );
         
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                 strcat( buf, "<15>(Imbued)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
                 strcat( buf, "{W(Chained){x " );
+        
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
+                strcat( buf, "<155>(Balanced)<0> " );
         
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "<195>(Sharp)<0> " );
@@ -1252,7 +1255,7 @@ void do_score (CHAR_DATA *ch, char *argument)
 
         if( ch->class == CLASS_SMITHY )
         {
-        sprintf(buf, "Raw Materials:  Steel: {w%d{x  Titanium: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
+        sprintf(buf, "Materials:  Steel: {w%d{x  Titanium: {y%d{x  Adamantite: {Y%d{x  Electrum: {W%d{x  starmetal: {R%d{x\n\r",
                 ch->smelted_steel, ch->smelted_titanium, ch->smelted_adamantite, ch->smelted_electrum, ch->smelted_starmetal);
         strcat(buf1, buf);
         }
@@ -1280,6 +1283,12 @@ void do_score (CHAR_DATA *ch, char *argument)
         else if ( ch->saving_throw >= -40 )
                 strcat( buf1, "have a strong magical resistance\n\r" );
         else strcat( buf1, "are a magic TANK!!\n\r" );
+
+        if( ch->class == CLASS_SMITHY )
+        {
+                sprintf( buf, "Dam Reduction: {W%d%%{x  ", ch->damage_mitigation );
+                strcat( buf1, buf );                 
+        }
 
         if( ch->level >= 20 )
         {
@@ -2676,7 +2685,7 @@ int has_groups(CHAR_DATA *ch, int sn)
 
 int has_pre_req(CHAR_DATA *ch, int sn)
 {
-#define SUB_GROUPS 25
+#define SUB_GROUPS 28
 
         int iter;
         bool found[SUB_GROUPS];
@@ -3094,7 +3103,7 @@ void show_slist (CHAR_DATA *ch, int number)
                     case CLASS_PSIONICIST: do_help(ch, "spsi"); break;
                     case CLASS_SHAPE_SHIFTER: do_help(ch, "sshape"); break;
                     case CLASS_RANGER: do_help(ch, "sranger"); break;
-                    case CLASS_SMITHY: do_help(ch, "sranger"); break;
+                    case CLASS_SMITHY: do_help(ch, "ssmithy"); break;
 
                     default: break;
                 }

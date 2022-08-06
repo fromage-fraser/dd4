@@ -3202,7 +3202,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                         strcat (buf, " Imbued");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
-                        strcat (buf, " Counterbalanced");
+                        strcat (buf, " Balanced");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
                         strcat (buf, " Battle terror");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
@@ -3210,9 +3210,10 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
                         strcat (buf, " Turret module");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                        strcat (buf, " Chain attached");
-                        
-                        
+                        strcat (buf, " Chain Attached");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
+                        strcat (buf, " Strengthened");
+                         
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
@@ -3335,7 +3336,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char( buf,ch);
                 sprintf(buf, "%s", pObjSetIndex->description );
                 send_to_char( buf,ch);
-                sprintf(buf, "Its set bonuses are:\n\r");
+                sprintf(buf, "<560>Its Set Bonuses are:<0>\n\r");
+
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
                         count++;

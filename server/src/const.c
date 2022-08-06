@@ -108,9 +108,9 @@ const struct class_type class_table [ MAX_CLASS ] =
         {
                 "Smi",  "Smithy",
                 APPLY_STR,  OBJ_VNUM_SCHOOL_SWORD,
-                2,  85, 18,  0,  10, 13,  FALSE,
+                0,  85, 18,  0,  10, 13,  FALSE,
                 "Engineer",  "Alchemist",  "Eng",  "Alc",
-                { 3, 0, -1, -2, 1 }
+                { 2, 2, 0, -2, 0 }
         }
 
 };
@@ -287,14 +287,16 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
         { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 }, "turret" },
         { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 }, "dart" },   
-        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "weaponchain" },
+        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 12, 0, 0, 0, 0 }, "weaponchain" },
         { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "shieldchain" },
         { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },   
         { "wrench of the crow",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
         { "wings of the crow",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
-        { "huntsmiths pauldrons",      "Huntsmiths pauldrons of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" },
-        { "huntsmiths spaulders",      "Huntsmiths spaulders of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" },
-        { "hunstmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 10, 1, 0, 0 }, "rare set" }
+        { "huntsmiths gloves",      "Huntsmiths gloves of the flame", OBJ_VNUM_RARE1, -1, { 0, 0 },  { 40, 10, 1, 0, 0 }, "rare set" },
+        { "huntsmiths belt",      "Huntsmiths belt of the flame", OBJ_VNUM_RARE2, -1, { 0, 0 },  { 50, 20, 2, 0, 0 }, "rare set" },
+        { "huntsmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_RARE3, -1, { 0, 0 },  { 70, 30, 5, 0, 0 }, "rare set" },
+        { "steel broadsword",      "Fierce steel broadsword", OBJ_VNUM_ST_SWORD1, -1, { 8, 18 },  { 25, 0, 0, 0, 0 }, "steel broadsword" },
+        { "titanium rapier",      "Titanium rapier of torment", OBJ_VNUM_TI_SWORD1, -1, { 14, 23 },  { 40, 15, 0, 0, 0 }, "titanium rapier" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
@@ -590,10 +592,18 @@ const struct race_struct race_table [MAX_RACE] =
 
         {
                 "Grung  ", "Grung",
-                0, -2, -1, 3, +1,
+                0, -2, -1, 3, 1,
                 20, -10, 10,
                 "Resist Toxin", "Poison",
                 CHAR_SIZE_SMALL
+        },
+
+        {
+                "Duergar", "Duergar",
+                2, 2, -2, -2, 1,
+                30, -20, -20,
+                "Infravision", "Invis",
+                CHAR_SIZE_MEDIUM
         },
 };
 
@@ -1946,6 +1956,11 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_morph,
         &gsn_group_resistance,
         &gsn_group_armoursmith,
+        &gsn_group_weaponsmith,
+        &gsn_group_turret_tech,
+        &gsn_group_mech_tech,
+        &gsn_group_alchemy, 
+        &gsn_group_inscription, 
         &gsn_group_last
         
 };
@@ -2395,59 +2410,60 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         { &gsn_group_armoursmith,                       0 },
         { &gsn_smelt,                                   0 },
-        { &gsn_strengthen,		                0 },
-        { &gsn_imbue,			                0 },
+        { &gsn_strengthen,		                0 },        
         { &gsn_empower,                                 0 },
         { &gsn_uncommon_set,	                        0 },
         { &gsn_rare_set,		                0 },
         { &gsn_epic_set,		                0 },
         { &gsn_legendary_set,	                        0 },
         { &gsn_repelling,		                0 },
+        { &gsn_steel_broadsword,                        0 },
+        { &gsn_titanium_rapier,                         0 },
 
-        {&gsn_group_weaponsmith,	                0 },
-        {&gsn_craft_weapon,		                0 },
-        {&gsn_counterbalance,		                0 },
-        {&gsn_weaponchain,		                0 },
-        {&gsn_shieldchain,		                0 },
-        {&gsn_hurl,		                        0 },
-        {&gsn_serate,		                        0 },
-        {&gsn_engrave,		                        0 },
-        {&gsn_discharge,		                0 },
+        { &gsn_group_weaponsmith,	                0 },
+        { &gsn_counterbalance,		                0 },
+        { &gsn_weaponchain,		                0 },
+        { &gsn_hurl,		                        0 },
+        { &gsn_imbue,			                0 },
+        { &gsn_shieldchain,		                0 },
+        { &gsn_craft_weapon,		                0 },
+        { &gsn_serate,		                        0 },
+        { &gsn_engrave,		                        0 },
+        { &gsn_discharge,		                0 },
 
-        {&gsn_group_turret_tech,	                0 },
-        {&gsn_trigger,			                0 },
-        {&gsn_dart,			                0 },
-        {&gsn_arrow,                                    0 },
-        {&gsn_turret,                                   0 },
-        {&gsn_launcher,			                0 },
-        {&gsn_reflector,		                0 },
-        {&gsn_arrestor,		  	                0 },
-        {&gsn_driver,			                0 },
-        {&gsn_emergency,		                0 },
+        { &gsn_group_turret_tech,	                0 },
+        { &gsn_trigger,			                0 },
+        { &gsn_dart,			                0 },
+        { &gsn_arrow,                                   0 },
+        { &gsn_turret,                                  0 },
+        { &gsn_launcher,	                        0 },
+        { &gsn_reflector,		                0 },
+        { &gsn_arrestor,		                0 },
+        { &gsn_driver,			                0 },
+        { &gsn_emergency,		                0 },
 
-        {&gsn_group_mech_tech,                          0 },
-        {&gsn_deploy,			                0 },
-        {&gsn_forager,        		                0 },
-        {&gsn_spyglass,       		                0 },
-        {&gsn_base,          		                0 },
-        {&gsn_miner,          		                0 },
+        { &gsn_group_mech_tech,                         0 },
+        { &gsn_deploy,			                0 },
+        { &gsn_forager,        		                0 },
+        { &gsn_spyglass,       		                0 },
+        { &gsn_base,          		                0 },
+        { &gsn_miner,          		                0 },
 
-        {&gsn_group_alchemy,          		        0 },
-        {&gsn_hurl,              		        0 },
-        {&gsn_fire_flask,            		        0 },
-        {&gsn_frost_flask,           		        0 },
-        {&gsn_stun_flask,              		        0 },
-        {&gsn_blind_flask,                   	        0 },
-        {&gsn_lightning_flask,           		0 },
-        {&gsn_acid_flask,                               0 },
-        {&gsn_bmf_flask,                                0 },
+        { &gsn_group_alchemy,          		        0 },
+        { &gsn_fire_flask,            		        0 },
+        { &gsn_frost_flask,           		        0 },
+        { &gsn_stun_flask,                              0 },
+        { &gsn_blind_flask,                   	        0 },
+        { &gsn_lightning_flask,           		0 },
+        { &gsn_acid_flask,                              0 },
+        { &gsn_bmf_flask,                               0 },
 
-        {&gsn_group_inscription, 	       	        0 },
-        {&gsn_inscribe,                  	        0 },
-        {&gsn_protection,                   	        0 },
-        {&gsn_enhancement,                   	        0 },
-        {&gsn_healing,                                  0 },
-        {&gsn_ward,                                     0 },
+        { &gsn_group_inscription, 	       	        0 },
+        { &gsn_inscribe,                  	        0 },
+        { &gsn_protection,                   	        0 },
+        { &gsn_enhancement,                   	        0 },
+        { &gsn_healing,                                 0 },
+        { &gsn_ward,                                    0 },
 
         {&gsn_group_last,                              0 }
 };
@@ -5922,6 +5938,55 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "legendary set", "!Legendary_set!"
         },
 
+        {
+                "weaponsmithing", &gsn_group_weaponsmith,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Weaponsmith!"
+        },
+
+        {
+                "armoursmithing", &gsn_group_armoursmith,
+                TYPE_INT, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "", "!Group Armoursmith!"
+        },
+
+        {
+                "weaponchain", &gsn_weaponchain,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "chained weapon", "!Weaponchain!"
+        },
+
+        {
+                "shieldchain", &gsn_shieldchain,
+                TYPE_STR, TAR_IGNORE, POS_DEAD,
+                spell_null, 0, 0,
+                "chained shield", "!Shieldchain!"
+        },
+
+        {
+                "strengthen", &gsn_strengthen,
+                TYPE_STR, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "strengthen", "!Strengthen!"
+        },
+
+        {
+                "steel broadsword", &gsn_steel_broadsword,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "steel broadsword", "!Steel_Broadsword!"
+        },
+
+        {
+                "titanium rapier", &gsn_titanium_rapier,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "titanium rapier", "!Titanium_rapier!"
+        },
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
@@ -5984,6 +6049,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "", "!-ranger base-!"
+        },
+
+        {
+                "smithy base", &gsn_smithy_base,
+                TYPE_NULL, TAR_IGNORE, POS_STANDING,
+                spell_null, 0, 0,
+                "", "!-smithy base-!"
         },
 
         {
@@ -6096,13 +6168,6 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "", "!-bard base-!"
-        },
-
-        {
-                "smithy base", &gsn_smithy_base,
-                TYPE_NULL, TAR_IGNORE, POS_STANDING,
-                spell_null, 0, 0,
-                "", "!-smithy base-!"
         },
 
         {

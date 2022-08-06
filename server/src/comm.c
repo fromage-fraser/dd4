@@ -1883,7 +1883,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
             case CON_WELCOME_RACE:
                 send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                 do_help(ch, "races");
-                send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
+                send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
                 d->connected = CON_GET_NEW_RACE;
                 break;
 
@@ -1893,7 +1893,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                 {
                         send_to_char("\n\r\n\r{W}bSelect a race{x\n\r\n\r", ch);
                         do_help(ch, "race");
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
                         break;
                 }
 
@@ -1923,16 +1923,17 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     case 'v': case 'V': ch->race = 22;      break;
                     case 'w': case 'W': ch->race = 23;      break;
                     case 'x': case 'X': ch->race = 24;      break;
+                    case 'y': case 'Y': ch->race = 25;      break;
 
                     default:
                         send_to_char("\n\r{Y}rInvalid race!{x\n\r"
-                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-x]{x ", ch);
+                                "{cPlease choose a race, or press ENTER to display the list of races. {C[a-y]{x ", ch);
                         return;
                 }
 
                 if (ch->race < 1 || ch->race > ( MAX_RACE - 1 ) )
                 {
-                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-x]{x ", ch);
+                        send_to_char("\n\r{cPlease choose a race for your character. {C[a-y]{x ", ch);
                         return;
                 }
 
@@ -2005,7 +2006,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                              "New characters may choose one of the following classes:\n\r\n\r",
                              ch);
 
-                for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                 {
                         sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                         send_to_char(buf, ch);
@@ -2022,7 +2023,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r",
                                      ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);
@@ -2032,7 +2033,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                 {
                         if (!str_prefix(argument, class_table[iClass].show_name))
                         {
@@ -2041,7 +2042,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                         }
                 }
 
-                if (iClass == MAX_CLASS -1 )
+                if (iClass == MAX_CLASS )
                 {
                         send_to_char("\n\r{Y}rInvalid class!{x\n\r"
                                      "{cPlease choose a class, or press ENTER to list available classes:{x ", ch);
@@ -2086,7 +2087,7 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
                     default:
                         send_to_char("\n\r\n\r{W}bSelect a class{x\n\r\n\r", ch);
 
-                        for (iClass = 0; iClass < MAX_CLASS -1 ; iClass++)
+                        for (iClass = 0; iClass < MAX_CLASS ; iClass++)
                         {
                                 sprintf(buf, "    %s\n\r", class_table[iClass].show_name);
                                 send_to_char(buf, ch);

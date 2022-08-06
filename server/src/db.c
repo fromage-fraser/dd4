@@ -584,6 +584,8 @@ int     gsn_uncommon_set;
 int     gsn_rare_set;
 int     gsn_epic_set;
 int     gsn_legendary_set;
+int     gsn_steel_broadsword;
+int     gsn_titanium_rapier;
 int     gsn_repelling;
 int     gsn_craft_weapon;
 int     gsn_counterbalance;
@@ -3182,6 +3184,7 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
             case ITEM_MITHRIL:
             case ITEM_CRAFT:
             case ITEM_SPELLCRAFT:
+            case ITEM_FORGE:
                 break;
 
             case ITEM_TREASURE:
@@ -3223,9 +3226,16 @@ OBJ_DATA *create_object (OBJ_INDEX_DATA *pObjIndex, int level)
                 break;
 
             case ITEM_WEAPON:
-                obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
-                obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
-                break;
+                /* proceed if not constructed - as it will take damage fields from blueprint table */
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
+                {
+                        break;
+                }
+                else{
+                        obj->value[1]   = number_fuzzy( number_fuzzy( 1 * level / 4 + 2 ) );
+                        obj->value[2]   = number_fuzzy( number_fuzzy( 3 * level / 4 + 6 ) );
+                        break;
+                }
 
             /*
              * Although we can't wield armourer's hammers, area resets may
