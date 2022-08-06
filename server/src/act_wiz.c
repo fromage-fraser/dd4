@@ -881,8 +881,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         char         buf  [ MAX_STRING_LENGTH ];
         char         buf1 [ MAX_STRING_LENGTH ];
         char         arg  [ MAX_INPUT_LENGTH  ];
-        int          i;
-        int          next;
+        unsigned long int          i;
+        unsigned long int          next;
 
         rch = get_char( ch );
 
@@ -940,12 +940,14 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         {
 
                 strcat( buf1, "Item flags (num): {W");
+                /*sprintf(buf, "extra flags for item are %lu\n\r", obj->extra_flags);
+                log_string(buf);*/
                 bit_explode( ch, buf, obj->extra_flags);
                 strcat( buf1, buf );
                 strcat( buf1, "{x\n\r");
                 strcat( buf1, "Item flags (txt):{R");
 
-                for (i = 1; i > 0 && i <= BIT_30; i *= 2)
+                for (i = 1; i > 0 && i <= BIT_MAX; i *= 2)
                 {
                         if (IS_SET(obj->extra_flags, i))
                         {
@@ -956,7 +958,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, "{x\n\r");
         }
 
-         sprintf( buf, "Wear bits: {W" );
+        sprintf( buf, "Wear bits: {W" );
         strcat( buf1, buf );
 
         if (obj->wear_flags)
@@ -4504,13 +4506,15 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
 void do_oset( CHAR_DATA *ch, char *argument )
 {
-        OBJ_DATA  *obj;
-        CHAR_DATA *rch;
-        char       arg1 [ MAX_INPUT_LENGTH ];
-        char       arg2 [ MAX_INPUT_LENGTH ];
-        char       arg3 [ MAX_INPUT_LENGTH ];
-        char       arg4 [ MAX_INPUT_LENGTH ];
-        int        value;
+        OBJ_DATA                *obj;
+        CHAR_DATA               *rch;
+        char                    arg1 [ MAX_INPUT_LENGTH ];
+        char                    arg2 [ MAX_INPUT_LENGTH ];
+        char                    arg3 [ MAX_INPUT_LENGTH ];
+        char                    arg4 [ MAX_INPUT_LENGTH ];
+        int                     value;
+        unsigned long int       bvalue;
+        char                    *bptr;
 
         rch = get_char( ch );
 
@@ -4543,8 +4547,8 @@ void do_oset( CHAR_DATA *ch, char *argument )
         /*
          * Snarf the value (which need not be numeric).
          */
-        value = atoi( arg3 );
-
+        value = atoi(arg3);
+        bvalue = strtoul(arg3, &bptr, 10);
         /*
          * Set something.
          */
@@ -4574,7 +4578,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "extra" ) )
         {
-                obj->extra_flags = value;
+                obj->extra_flags = bvalue;
                 return;
         }
 

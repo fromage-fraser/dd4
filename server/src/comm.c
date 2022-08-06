@@ -3645,29 +3645,59 @@ void act_move (const char *format, CHAR_DATA *ch, const void *arg1, const void *
         return;
 }
 
-void bit_explode (CHAR_DATA *ch, char* buf, unsigned long int n)
+void bit_explode (CHAR_DATA *ch, char* buf, long unsigned int n)
 {
     char tmp [MAX_STRING_LENGTH] = {0};
+    /*char buf2    [ MAX_STRING_LENGTH ];
+    char buf3    [ MAX_STRING_LENGTH ];*/
     char *sep = "";
-    unsigned long int arr[31] = {0};
+    unsigned long int arr[63] = {0};
+    unsigned long int total;
     int i = 0;
     int j;
+    int pos;
 
-    /* Doesn't accept stupid values */
-    if (n <= 0 || n > 2147483647)
-        return;
+    /*unsigned long int a[65],k;
+    
+    a[0]=1;
+
+    for(k=1;k<65;k++) 
+    {
+        a[k]= 2UL << (k - 1);
+        sprintf(buf3, "k=%lu a[k]=%lu\r\n",k, a[k]);
+        log_string(buf3);
+    }
+
+    sprintf(buf2,"bit_explode was passed: %lu", n);
+    log_string(buf2);
+
+    Doesn't accept stupid values
+    if (n <= 0 || n > 18446744073709551616)
+        return;       */ 
+
+    /*sprintf(buf2,"%lu %lu %lu %lu %lu", BIT_31, BIT_32, BIT_33, BIT_34, BIT_35);
+    log_string(buf2);*/
+                      
 
     strcpy( buf, tmp );
 
     while (n) {
-        int pos = 31 - __builtin_clz(n);
-        unsigned long int total = pow(2, pos);
+        pos = 63UL - (uint64_t)__builtin_clzl(n);
+
+        /*sprintf(buf2,"pos is: %d", pos);
+        log_string(buf2);*/
+
+        total = pow(2, pos);
 
         if (total > 0)
+        {
             arr[i] = total;
+            /*sprintf(buf3,"arr is: %lu", arr);
+            log_string(buf3);*/
+        }
 
         i++;
-        n ^= 1 << pos;
+        n ^= 1UL << pos;
     }
 
     for(j=i; j>=0; j--)

@@ -3,7 +3,7 @@ PROF    =
 DEBUG   = -g
 NOCRYPT =
 LINK    =
-O_FLAGS = -O2
+O_FLAGS = -O2 -m64
 C_FLAGS = $(O_FLAGS) -pedantic-errors -Wall \
           -Wno-trigraphs -Wno-unused-result -Wno-overlength-strings -Wno-overflow \
           $(DEBUG) $(PROF) $(NOCRYPT) -Dlinux -Dunix

@@ -3040,7 +3040,7 @@ char* race_name (int race_num)
 /*
  * Return ascii name of anti-class vector - brutus
  */
-char *extra_class_name (int extra_flags)
+char *extra_class_name (unsigned long int extra_flags)
 {
         if ( extra_flags & ITEM_ANTI_MAGE)          return "Mage";
         if ( extra_flags & ITEM_ANTI_CLERIC)        return "Cleric";
@@ -3050,6 +3050,7 @@ char *extra_class_name (int extra_flags)
         if ( extra_flags & ITEM_ANTI_BRAWLER)       return "Brawler";
         if ( extra_flags & ITEM_ANTI_SHAPE_SHIFTER) return "Shape Shifter";
         if ( extra_flags & ITEM_ANTI_RANGER)        return "Ranger";
+        if ( extra_flags & ITEM_ANTI_SMITHY)        return "Smithy";
         return "none";
 }
 
@@ -3183,7 +3184,7 @@ int extra_form_int (char *name)
 /*
  * Return ascii name of extra flags vector.
  */
-char *extra_bit_name (int extra_flags)
+char *extra_bit_name (unsigned long int extra_flags)
 {
         switch (extra_flags)
         {
@@ -3218,6 +3219,8 @@ char *extra_bit_name (int extra_flags)
             case ITEM_ANTI_BRAWLER:         return "anti_brawler";
             case ITEM_ANTI_SHAPE_SHIFTER:   return "anti_shifter";
             case ITEM_BOW:                  return "bow";
+            case ITEM_ANTI_SMITHY:          return "anti_smithy";
+            case ITEM_CURSED:               return "cursed";
 
             default: return "(unknown)";
         }

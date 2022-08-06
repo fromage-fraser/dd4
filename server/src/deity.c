@@ -3578,7 +3578,7 @@ void write_snark_database ()
                          obj->level);
                 */
 
-                fprintf (db, "%d\n%s\n%d\n%d\n%d\n",
+                fprintf (db, "%d\n%s\n%d\n%lu\n%d\n",
                          obj->pIndexData->vnum,
                          obj->short_descr,
                          obj->item_type,

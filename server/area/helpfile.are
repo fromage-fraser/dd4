@@ -6465,37 +6465,73 @@ able to wear.
 
 
 101 BITZ~
-#define BIT_0   0x00000001  /*              1  */
-#define BIT_1   0x00000002  /*              2  */
-#define BIT_2   0x00000004  /*              4  */
-#define BIT_3   0x00000008  /*              8  */
-#define BIT_4   0x00000010  /*             16  */
-#define BIT_5   0x00000020  /*             32  */
-#define BIT_6   0x00000040  /*             64  */
-#define BIT_7   0x00000080  /*            128  */
-#define BIT_8   0x00000100  /*            256  */
-#define BIT_9   0x00000200  /*            512  */
-#define BIT_10  0x00000400  /*           1024  */
-#define BIT_11  0x00000800  /*           2048  */
-#define BIT_12  0x00001000  /*           4096  */
-#define BIT_13  0x00002000  /*           8192  */
-#define BIT_14  0x00004000  /*          16384  */
-#define BIT_15  0x00008000  /*          32768  */
-#define BIT_16  0x00010000  /*          65536  */
-#define BIT_17  0x00020000  /*         131072  */
-#define BIT_18  0x00040000  /*         262144  */
-#define BIT_19  0x00080000  /*         524288  */
-#define BIT_20  0x00100000  /*        1048576  */
-#define BIT_21  0x00200000  /*        2097152  */
-#define BIT_22  0x00400000  /*        4194304  */
-#define BIT_23  0x00800000  /*        8388608  */
-#define BIT_24  0x01000000  /*       16777216  */
-#define BIT_25  0x02000000  /*       33554432  */
-#define BIT_26  0x04000000  /*       67108864  */
-#define BIT_27  0x08000000  /*      134217728  */
-#define BIT_28  0x10000000  /*      268435456  */
-#define BIT_29  0x20000000  /*      536870912  */
-#define BIT_30  0x40000000  /*     1073741824  */
+/*
+ *  Bit values.  View online with 'HELP BITZ'.  Gezhp
+ */  
+#define BIT_0    /*                    1  */
+#define BIT_1    /*                    2  */
+#define BIT_2    /*                    4  */
+#define BIT_3    /*                    8  */
+#define BIT_4    /*                   16  */
+#define BIT_5    /*                   32  */
+#define BIT_6    /*                   64  */
+#define BIT_7    /*                  128  */
+#define BIT_8    /*                  256  */
+#define BIT_9    /*                  512  */
+#define BIT_10   /*                 1024  */
+#define BIT_11   /*                 2048  */
+#define BIT_12   /*                 4096  */
+#define BIT_13   /*                 8192  */
+#define BIT_14   /*                16384  */
+#define BIT_15   /*                32768  */
+#define BIT_16   /*                65536  */
+#define BIT_17   /*               131072  */
+#define BIT_18   /*               262144  */
+#define BIT_19   /*               524288  */
+#define BIT_20   /*              1048576  */
+#define BIT_21   /*              2097152  */
+#define BIT_22   /*              4194304  */
+#define BIT_23   /*              8388608  */
+#define BIT_24   /*             16777216  */
+#define BIT_25   /*             33554432  */
+#define BIT_26   /*             67108864  */
+#define BIT_27   /*            134217728  */
+#define BIT_28   /*            268435456  */
+#define BIT_29   /*            536870912  */
+#define BIT_30   /*           1073741824  */
+#define BIT_31   /*           2147483648  */
+#define BIT_32   /*           4294967296  */
+#define BIT_33   /*           8589934592  */
+#define BIT_34   /*          17179869184  */
+#define BIT_35   /*          34359738368  */
+#define BIT_36	 /*          68719476736  */
+#define BIT_37	 /*         137438953472  */
+#define BIT_38	 /*         274877906944  */
+#define BIT_39	 /*         549755813888  */
+#define BIT_40	 /*        1099511627776  */
+#define BIT_41	 /*        2199023255552  */
+#define BIT_42	 /*        4398046511104  */
+#define BIT_43	 /*        8796093022208  */
+#define BIT_44	 /*       17592186044416  */
+#define BIT_45	 /*       35184372088832  */
+#define BIT_46	 /*       70368744177664  */
+#define BIT_47	 /*      140737488355328  */
+#define BIT_48	 /*      281474976710656  */
+#define BIT_49	 /*      562949953421312  */
+#define BIT_50	 /*     1125899906842624  */
+#define BIT_51	 /*     2251799813685248  */
+#define BIT_52	 /*     4503599627370496  */
+#define BIT_53	 /*     9007199254740992  */
+#define BIT_54	 /*    18014398509481984  */
+#define BIT_55	 /*    36028797018963968  */
+#define BIT_56	 /*    72057594037927936  */
+#define BIT_57	 /*   144115188075855872  */
+#define BIT_58	 /*   288230376151711744  */
+#define BIT_59	 /*   576460752303423488  */
+#define BIT_60	 /*  1152921504606846976  */
+#define BIT_61	 /*  2305843009213693952  */
+#define BIT_62	 /*  4611686018427387904  */
+#define BIT_63	 /*  9223372036854775808  */
 ~
 
 1 SAFE~

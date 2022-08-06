@@ -143,6 +143,7 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if ( ( ( IS_OBJ_STAT( obj, ITEM_NODROP )
               || IS_OBJ_STAT( obj, ITEM_NOREMOVE )
+              || IS_OBJ_STAT( obj, ITEM_CURSED )
               || ( obj->value[1] == 33 )         /* curse, hex, divine curse */
               || ( obj->value[1] == 304 )
               || ( obj->value[1] == 458 )

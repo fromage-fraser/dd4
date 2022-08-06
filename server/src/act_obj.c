@@ -368,6 +368,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                                 /* Fix this so it checks spell num AND name at some point -- Owl 7/3/22 */
                                 if ( ( ( IS_OBJ_STAT( obj, ITEM_NODROP )
                                         || IS_OBJ_STAT( obj, ITEM_NOREMOVE )
+                                        || IS_OBJ_STAT( obj, ITEM_CURSED )
                                         || ( obj->value[1] == 33 )
                                         || ( obj->value[1] == 304 )
                                         || ( obj->value[1] == 458 )
@@ -393,7 +394,7 @@ void do_get (CHAR_DATA *ch, char *argument)
 
                         if (!found)
                         {
-                                if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
+                               /* if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
                                         act("You see nothing in the $T.",
                                             ch, NULL, arg2, TO_CHAR);
                                 else if (arg1[3] == '\0' && IS_AFFECTED( ch, AFF_DETECT_CURSE ))
@@ -401,7 +402,16 @@ void do_get (CHAR_DATA *ch, char *argument)
                                             ch, NULL, arg2, TO_CHAR);
                                 else
                                         act("You see nothing like that in the $T.",
-                                            ch, NULL, arg2, TO_CHAR);
+                                            ch, NULL, arg2, TO_CHAR);*/
+                                if (arg1[3] == '\0' && !IS_AFFECTED( ch, AFF_DETECT_CURSE ))
+                                        act("You see nothing in $P.",
+                                            ch, NULL, container, TO_CHAR);
+                                else if (arg1[3] == '\0' && IS_AFFECTED( ch, AFF_DETECT_CURSE ))
+                                        act("You see nothing desirable in $P.",
+                                            ch, NULL, container, TO_CHAR);
+                                else
+                                        act("You see nothing like that in $P.",
+                                            ch, NULL, container, TO_CHAR);
                         }
                 }
         }
@@ -1613,6 +1623,7 @@ void wear_obj (CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
             || (ch->class == CLASS_PSIONICIST    && IS_OBJ_STAT(obj, ITEM_ANTI_PSIONIC))
             || (ch->class == CLASS_BRAWLER       && IS_OBJ_STAT(obj, ITEM_ANTI_BRAWLER))
             || (ch->class == CLASS_RANGER        && IS_OBJ_STAT(obj, ITEM_ANTI_RANGER))
+            || (ch->class == CLASS_SMITHY        && IS_OBJ_STAT(obj, ITEM_ANTI_SMITHY))
             || (ch->class == CLASS_SHAPE_SHIFTER && IS_OBJ_STAT(obj, ITEM_ANTI_SHAPE_SHIFTER)))
         {
                 act("Your class cannot use $p.",ch,obj,NULL,TO_CHAR);

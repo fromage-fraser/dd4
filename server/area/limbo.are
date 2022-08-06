@@ -370,7 +370,7 @@ A pile of coins.~
 1 0 0
 #10
 corpse~
-corpse of %s~
+the corpse of %s~
 The corpse of %s is lying here.~
 ~
 23 0 1
@@ -378,7 +378,7 @@ The corpse of %s is lying here.~
 100 0 0
 #11
 corpse~
-corpse of %s~
+the corpse of %s~
 The corpse of %s is lying here.~
 ~
 24 0 0
@@ -386,7 +386,7 @@ The corpse of %s is lying here.~
 100 0 0
 #12
 head~
-head of %s~
+the head of %s~
 The severed head of %s is lying here.~
 ~
 19 0 1
@@ -394,7 +394,7 @@ The severed head of %s is lying here.~
 5 0 0
 #13
 heart~
-heart of %s~
+the heart of %s~
 The torn-out heart of %s is lying here.~
 ~
 19 0 1
@@ -402,7 +402,7 @@ The torn-out heart of %s is lying here.~
 2 0 0
 #14
 arm~
-arm of %s~
+the arm of %s~
 The sliced-off arm of %s is lying here.~
 ~
 19 0 1
@@ -410,7 +410,7 @@ The sliced-off arm of %s is lying here.~
 5 0 0
 #15
 leg~
-leg of %s~
+the leg of %s~
 The sliced-off leg of %s is lying here.~
 ~
 19 0 1
@@ -418,7 +418,7 @@ The sliced-off leg of %s is lying here.~
 5 0 0
 #16
 turd~
-steaming turd~
+the steaming turd~
 The steaming turds of %s assail your nostrils.~
 ~
 13 0 0
@@ -1281,6 +1281,15 @@ A
 18 15
 A
 19 10
+
+#501
+test item testitem~
+test item~
+Trying to add extended BVs, this item is a test.~
+~
+5 65536|262144|16777216|17179869184|2305843009213693952 1|64
+0~ 15~ 20~ 14~
+1 10000 7500
 #0
 
 

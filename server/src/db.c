@@ -1753,6 +1753,8 @@ void load_objects( FILE *fp )
 {
         OBJ_INDEX_DATA *pObjIndex;
         char buf [MAX_STRING_LENGTH];
+        char buf2 [MAX_STRING_LENGTH];
+        /*char buf3 [MAX_STRING_LENGTH];*/
         int stat;
 
         for ( ; ; )
@@ -1798,8 +1800,14 @@ void load_objects( FILE *fp )
                 /* Action description */          fread_string( fp );
                 pObjIndex->description[0]       = UPPER( pObjIndex->description[0] );
                 pObjIndex->item_type            = fread_number( fp, &stat );
-                pObjIndex->extra_flags          = fread_number( fp, &stat );
+                pObjIndex->extra_flags          = fread_number64( fp, &stat );
 
+                if (pObjIndex->extra_flags > 4200000000)
+                {
+                        sprintf(buf2,"%s is %lu",pObjIndex->name, pObjIndex->extra_flags);
+                        log_string(buf2);
+
+                }
 
                 if (IS_SET(pObjIndex->extra_flags, ITEM_TRAP) )
                 {
@@ -3511,10 +3519,10 @@ char fread_letter( FILE *fp )
  */
 int fread_number( FILE *fp, int *status )
 {
-    int  c;
+    int c;
     bool sign;
-    int  number;
-    int  stat;
+    int number;
+    int stat;
 
     do
     {
@@ -3557,6 +3565,66 @@ int fread_number( FILE *fp, int *status )
     else if ( c != ' ' )
 	ungetc( c, fp );
 
+    return number;
+}
+
+/*
+ * Read a BIG number from a file.
+ */
+unsigned long int fread_number64( FILE *fp, int *status )
+{
+    int c;
+    bool sign;
+    /*char buf [MAX_INPUT_LENGTH]; */ 
+    unsigned long int number;
+    int stat;
+
+    do
+    {
+	c = getc( fp );
+    }
+    while ( isspace( c ) );
+
+    number = 0;
+
+    sign   = FALSE;
+    if ( c == '+' )
+    {
+	c = getc( fp );
+    }
+    else if ( c == '-' )
+    {
+	sign = TRUE;
+	c = getc( fp );
+    }
+
+    if ( !isdigit( c ) )
+    {
+        *status = 1;
+	bug( "Fread_number: bad format.", 0 );
+	bug( "   If bad object, check for missing '~' in value[] fields.", 0 );
+	return 0;
+    }
+
+    while ( isdigit(c) )
+    {
+	number = number * 10 + c - '0';
+	c      = getc( fp );
+    }
+
+    if ( sign )
+	number = 0 - number;
+
+    if ( c == '|' )
+	number += fread_number64( fp, &stat );
+    else if ( c != ' ' )
+	ungetc( c, fp );
+
+    /*if (number > BIT_31)
+    {   
+        sprintf(buf, "fread_number64 says: %lu", number);
+        log_string(buf); 
+    }*/
     return number;
 }
 

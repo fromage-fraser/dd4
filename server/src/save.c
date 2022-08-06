@@ -340,7 +340,7 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest)
         fprintf(fp, "ShortDescr   %s~\n",       obj->short_descr            );
         fprintf(fp, "Description  %s~\n",       obj->description            );
         fprintf(fp, "Vnum         %d\n",        obj->pIndexData->vnum       );
-        fprintf(fp, "ExtraFlags   %d\n",        obj->extra_flags            );
+        fprintf(fp, "ExtraFlags   %lu\n",       obj->extra_flags            );
         fprintf(fp, "WearFlags    %d\n",        obj->wear_flags             );
         fprintf(fp, "EgoFlags     %d\n",        obj->ego_flags              );
         fprintf(fp, "WearLoc      %d\n",        obj->wear_loc               );
@@ -1118,7 +1118,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp)
 
                     case 'E':
                         KEY("EgoFlags", obj->ego_flags, fread_number( fp, &stat ));
-                        KEY("ExtraFlags", obj->extra_flags, fread_number( fp, &stat ));
+                        KEY("ExtraFlags", obj->extra_flags, fread_number64( fp, &stat ));
 
                         if (!str_cmp(word, "ExtraDescr"))
                         {

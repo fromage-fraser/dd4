@@ -3003,53 +3003,65 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Rewritten by Gezhp, 2000
          */
 
-        OBJ_DATA    *obj = (OBJ_DATA *) vo;
-        AFFECT_DATA *paf;
-        int          i, j, k, list [50];
-        char         buf [MAX_STRING_LENGTH];
-        char         tmp [MAX_STRING_LENGTH];
-        OBJSET_INDEX_DATA *pObjSetIndex;
+        OBJ_DATA                *obj = (OBJ_DATA *) vo;
+        AFFECT_DATA             *paf;
+        int                     j, list [50];
+        unsigned long int       i, k;
+        char                    buf [MAX_STRING_LENGTH];
+        char                    tmp [MAX_STRING_LENGTH];
+        OBJSET_INDEX_DATA       *pObjSetIndex;
 
         const char* type [MAX_ITEM_TYPE+1] =
         {
-                "something strange",    "a light source",       "a scroll",
-                "a wand",               "a staff",              "a weapon",
-                "something strange",    "something strange",    "treasure",
-                "a piece of armour",    "a potion",             "something strange",
-                "a piece of furniture", "a piece of trash",     "something strange",
-                "a container",          "something strange",    "a drink container",
-                "a key",                "food",                 "money",
-                "something strange",    "a boat",               "a corpse",
-                "a corpse",             "a fountain",           "a pill",
-                "some climbing equipment",                      "some paint",
-                "something strange",    "an anvil",             "an auction ticket",
-                "a special clan artefact",                      "a magical portal",
-                "some poison powder",   "a lockpick",           "a musical instrument",
-                "an armourer's hammer", "some mithril",         "a whetstone",
-                "a crafting tool",      "a mgical crafting tool", "a turret module"
+                "something strange",       "a light source",             "a scroll",
+                "a wand",                  "a staff",                    "a weapon",
+                "something strange",       "something strange",          "treasure",
+                "a piece of armour",       "a potion",                   "something strange",
+                "a piece of furniture",    "a piece of trash",           "something strange",
+                "a container",             "something strange",          "a drink container",
+                "a key",                   "food",                       "money",
+                "something strange",       "a boat",                     "a corpse",
+                "a corpse",                "a fountain",                 "a pill",
+                "some climbing equipment",                               "some paint",
+                "something strange",       "an anvil",                   "an auction ticket",
+                "a special clan artefact",                               "a magical portal",
+                "some poison powder",      "a lockpick",                 "a musical instrument",
+                "an armourer's hammer",    "some mithril",               "a whetstone",
+                "a crafting tool",         "a magical crafting tool",    "a turret module"
         };
 
-        const char* extras [31] =
+        const char* extras [MAX_BITS] =
         {
-                "glows faintly",        "emits a low humming noise",
-                "?",                    "?",                    "is evil",
-                "is invisible",         "has a magical aura",   "cannot be dropped",
-                "has been blessed",     "?",                    "?",
-                "?",
-                "cannot be removed",    "?",                    "is coated in poison",
-                "?",                    "?",                    "?",
-                "?",                    "?",                    "is a vorpal weapon",
-                "?",                    "?",                    "is bloodthirsty",
-                "has been sharpened",   "has been forged",      "is a body part",
-                "can be used as a lance",                       "?",
-                "?",                    "can be used as a bow"
-        };
+                "glows faintly",           "emits a low humming noise",
+                "?",                       "?",                          "is evil",
+                "is invisible",            "has a magical aura",         "cannot be dropped",
+                "has been blessed",        "?",                          "?",
+                "?",         
+                "cannot be removed",       "?",                          "is coated in poison",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "is a vorpal weapon",
+                "?",                       "?",                          "is bloodthirsty",
+                "has been sharpened",      "has been forged",            "is a body part",
+                "can be used as a lance",                                "?",
+                "?",                       "can be used as a bow",       "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "?",
+                "?",                       "?",                          "is cursed",
+                "?",                       "?"
+        }; 
 
-        const int class_restrictions [MAX_CLASS] =
+        const long unsigned int class_restrictions [MAX_CLASS] =
         {
                 ITEM_ANTI_MAGE,         ITEM_ANTI_CLERIC,       ITEM_ANTI_THIEF,
                 ITEM_ANTI_WARRIOR,      ITEM_ANTI_PSIONIC,      ITEM_ANTI_SHAPE_SHIFTER,
-                ITEM_ANTI_BRAWLER,      ITEM_ANTI_RANGER
+                ITEM_ANTI_BRAWLER,      ITEM_ANTI_RANGER,       ITEM_ANTI_SMITHY
         };
 
         const int align_restriction_bits [3] =
@@ -3102,7 +3114,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Any extra flags
          */
         i = 0;
-        for (j = 0, k = 1; j < 31; j++, k *= 2)
+        for (j = 0, k = 1; j < MAX_BITS; j++, k *= 2)
         {
                 if ((k & obj->extra_flags) && strcmp (extras[j], "?"))
                         list[i++] = j;
@@ -3152,11 +3164,14 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Any class restrictions
          */
         i = 0;
-        for (j = 0; j < MAX_CLASS; j++)
+        for (j = 0; j < MAX_CLASS; j++) 
         {
                 if (class_restrictions[j] & obj->extra_flags)
+                {
                         list[i++] = j;
+                }
         }
+
         if (i)
         {
                 sprintf (buf, "{cIt cannot be used by those of the");
@@ -3177,11 +3192,11 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
 
         if IS_SET(obj->extra_flags, ITEM_EGO) 
         {
-                sprintf( buf, "Specialist Enhancements:");
+                sprintf( buf, "Specialist enhancements:");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
                         strcat (buf, " Bloodlust");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
-                        strcat (buf, " Soul Stealer");
+                        strcat (buf, " Soul stealer");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                         strcat (buf, " Firebrand");              
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
@@ -3189,17 +3204,16 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
                         strcat (buf, " Balanced");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BATTLE_TERROR))
-                        strcat (buf, " Battle Terror");
+                        strcat (buf, " Battle terror");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET))
-                        strcat (buf, " Engineers Turret");
+                        strcat (buf, " Engineer's turret");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE))
-                        strcat (buf, " Turret Module");
+                        strcat (buf, " Turret module");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
                         strcat (buf, " Chain Attached");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
                         strcat (buf, " Strengthened");
-                        
-                        
+                         
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
@@ -3323,6 +3337,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 sprintf(buf, "%s", pObjSetIndex->description );
                 send_to_char( buf,ch);
                 sprintf(buf, "<560>Its Set Bonuses are:<0>\n\r");
+
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
                         count++;
