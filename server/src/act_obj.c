@@ -580,6 +580,12 @@ void do_drop (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
+	{
+	      send_to_char ("A powerful enchantment prevents you from dropping anything here.\n\r", ch);
+	      return;
+	}
+
         if (is_number(arg))
         {
                 /* 'drop NNNN coins' */

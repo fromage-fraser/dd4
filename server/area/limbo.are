@@ -1382,7 +1382,7 @@ this room is a HUGE big screen tv. Sitting on the other side of this room
 is a small compact PC. Sitting next to the PC is a donut robot(tm)
 constantly making donuts.
 ~
-0 4|8|512|1024|2048|8192|16384 0
+0 4|8|512|1024|2048|8192|16384|9223372036854775808 0
 S
 #77
 Inside a bottle~

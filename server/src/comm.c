@@ -3667,10 +3667,8 @@ void bit_explode (CHAR_DATA *ch, char* buf, long unsigned int n)
         sprintf(buf3, "k=%lu a[k]=%lu\r\n",k, a[k]);
         log_string(buf3);
     }
-
     sprintf(buf2,"bit_explode was passed: %lu", n);
     log_string(buf2);
-
     Doesn't accept stupid values
     if (n <= 0 || n > 18446744073709551616)
         return;       */ 

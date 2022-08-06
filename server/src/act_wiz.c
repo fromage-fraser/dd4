@@ -649,22 +649,23 @@ void do_goto( CHAR_DATA *ch, char *argument )
 
 void do_rstat( CHAR_DATA *ch, char *argument )
 {
-        OBJ_DATA        *obj;
-        CHAR_DATA       *rch;
-        ROOM_INDEX_DATA *location;
-        char             buf  [ MAX_STRING_LENGTH ];
-        char             buf1 [ MAX_STRING_LENGTH ];
-        char             arg  [ MAX_INPUT_LENGTH  ];
-        int              door;
-        int              next;
-        int              chroom_cnt      = 1;
-        int              objroom_cnt     = 1;
+        OBJ_DATA                *obj;
+        CHAR_DATA               *rch;
+        ROOM_INDEX_DATA         *location;
+        char                    buf  [ MAX_STRING_LENGTH ];
+        char                    buf1 [ MAX_STRING_LENGTH ];
+        /*char                    buf2 [ MAX_STRING_LENGTH ];*/
+        char                    arg  [ MAX_INPUT_LENGTH  ];
+        int                     door;
+        unsigned long int       next;
+        int                     chroom_cnt      = 1;
+        int                     objroom_cnt     = 1;
 
         rch = get_char( ch );
 
         if ( !authorized( rch, gsn_rstat ) )
                 return;
-
+                
         one_argument( argument, arg );
         location = ( arg[0] == '\0' ) ? ch->in_room : find_location( ch, arg );
         if ( !location )
@@ -697,7 +698,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 location->sector_type,
                 location->light );
         strcat( buf1, buf );
-
+        
         if (location->area->area_flags)
         {
                 sprintf( buf, "Area flags (num): {W");
@@ -711,12 +712,15 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
                 strcat( buf1, buf );
 
-                for (next = 1; next <= BIT_20; next *= 2)
-                {
+                for (next = 1; next < BIT_MAX; next *= 2)
+                {      
+                        /*sprintf(buf2,"checking: %lu \r\n", next);
+                        log_string(buf2);*/
                         if (IS_SET(location->area->area_flags, next))
                         {
                                 strcat(buf1, " ");
                                 strcat(buf1, area_flag_name(next));
+                                /*log_string(buf1);*/
                         }
                 }
 
@@ -727,6 +731,8 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 strcat(buf1, "Area flags: {Rnone {x[{W0{x]\n\r");
         }
 
+        /*sprintf(buf2,"room flags: %lu \r\n", location->room_flags);
+        log_string(buf2);*/
         if (location->room_flags)
         {
                 sprintf( buf, "Room flags (num): {W");
@@ -738,14 +744,18 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
                 strcat(buf1, "Room flags (txt):{R");
 
-                for (next = 1; next <= BIT_20; next *= 2)
+                for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                 {
+                        /*sprintf(buf2,"looping: %lu \r\n", next);
+                        log_string(buf2);*/
+
                         if (IS_SET(location->room_flags, next))
                         {
                                 strcat(buf1, " ");
                                 strcat(buf1, room_flag_name(next));
                         }
                 }
+
                 strcat(buf1, "{x\n\r");
         }
         else {
@@ -808,12 +818,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
         {
                 strcat( buf1, "{xObjects:" );
         }
-/*
-        int              chroom_cnt      = 1;
-        int              chroom_max      = 100;
-        int              objroom_cnt     = 1;
-        int              objroom_max     = 100;
-        */
+
         for ( obj = location->contents; obj; obj = obj->next_content )
         {
                 objroom_cnt++;
@@ -4835,13 +4840,15 @@ void do_rename( CHAR_DATA *ch, char *argument )
 
 void do_rset( CHAR_DATA *ch, char *argument )
 {
-        CHAR_DATA       *rch;
-        CHAR_DATA       *person;
-        ROOM_INDEX_DATA *location;
-        char             arg1 [ MAX_INPUT_LENGTH ];
-        char             arg2 [ MAX_INPUT_LENGTH ];
-        char             arg3 [ MAX_INPUT_LENGTH ];
-        int              value;
+        CHAR_DATA               *rch;
+        CHAR_DATA               *person;
+        ROOM_INDEX_DATA         *location;
+        char                    arg1 [ MAX_INPUT_LENGTH ];
+        char                    arg2 [ MAX_INPUT_LENGTH ];
+        char                    arg3 [ MAX_INPUT_LENGTH ];
+        int                     value;
+        unsigned long int       bvalue;
+        char                    *bptr;
 
         rch = get_char( ch );
 
@@ -4877,6 +4884,7 @@ void do_rset( CHAR_DATA *ch, char *argument )
                 return;
         }
         value = atoi( arg3 );
+        bvalue = strtoul(arg3, &bptr, 10);
 
         for ( person = location->people; person; person = person->next_in_room )
         {
@@ -4892,7 +4900,7 @@ void do_rset( CHAR_DATA *ch, char *argument )
          */
         if ( !str_cmp( arg2, "flags" ) )
         {
-                location->room_flags    = value;
+                location->room_flags    = bvalue;
                 return;
         }
 

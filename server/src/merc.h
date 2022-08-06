@@ -2219,6 +2219,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ROOM_FREEZING                   BIT_17
 #define ROOM_BURNING                    BIT_18
 #define ROOM_NO_MOUNT                   BIT_19
+#define ROOM_NO_DROP                    BIT_63 /* Can't drop items in room, really just testing extended bitflags -- Owl 6/8/22 */
 
 
 /*
@@ -2308,6 +2309,7 @@ extern DIR_DATA directions [ MAX_DIR ];
 #define AREA_FLAG_HIDDEN        BIT_2   /* Area not seen on 'AREA' output */
 #define AREA_FLAG_SAFE          BIT_3   /* All rooms SAFE */
 #define AREA_FLAG_NO_TELEPORT   BIT_4   /* No rooms in area can be teleported into */
+#define AREA_FLAG_NO_MAGIC      BIT_40  /* Sets all rooms in area to cone_of_silence */
 
 
 /***************************************************************************
@@ -2807,27 +2809,27 @@ struct area_data
         RESET_DATA *            reset_first;
         RESET_DATA *            reset_last;
 
-        char *          author;
-        char *          name;
-        int             low_level;
-        int             high_level;
-        int             low_enforced;
-        int             high_enforced;
+        char *                  author;
+        char *                  name;
+        int                     low_level;
+        int                     high_level;
+        int                     low_enforced;
+        int                     high_enforced;
 
-        int             low_r_vnum;
-        int             hi_r_vnum;
-        int             low_o_vnum;
-        int             hi_o_vnum;
-        int             low_m_vnum;
-        int             hi_m_vnum;
+        int                     low_r_vnum;
+        int                     hi_r_vnum;
+        int                     low_o_vnum;
+        int                     hi_o_vnum;
+        int                     low_m_vnum;
+        int                     hi_m_vnum;
 
-        int             recall;
-        int             age;
-        int             nplayer;
+        int                     recall;
+        int                     age;
+        int                     nplayer;
 
-        int             container_reset_timer;  /* Poor little cpu; Gezhp */
-        int             area_flags;
-        int             exp_modifier;
+        int                     container_reset_timer;  /* Poor little cpu; Gezhp */
+        unsigned long int       area_flags;
+        int                     exp_modifier;
 };
 
 
@@ -2843,12 +2845,12 @@ struct room_index_data
         AREA_DATA *             area;
         EXIT_DATA *             exit [ 6 ];
 
-        char *  name;
-        char *  description;
-        int     vnum;
-        int     room_flags;
-        int     light;
-        int     sector_type;
+        char *                  name;
+        char *                  description;
+        int                     vnum;
+        unsigned long int       room_flags;
+        int                     light;
+        int                     sector_type;
 };
 
 
@@ -4550,8 +4552,8 @@ char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
 char *  body_form_name                  args( ( int vector ) );
-char *  room_flag_name                  args( ( int vector ) );
-char *  area_flag_name                  args( ( int vector ) );
+char *  room_flag_name                  args( ( unsigned long int vector ) );
+char *  area_flag_name                  args( ( unsigned long int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );
 char *  wear_location_name              args( ( int wearloc_num ) );
 char *  weapon_damage_type_name         args( ( int dt_num) );

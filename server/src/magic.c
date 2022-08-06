@@ -267,17 +267,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 send_to_char( "That spell doesn't exist.\n\r", ch );
                 return;
         }
-        /*
-                Below code converts an int (e.g. 'sn') to a string and logs it.
-                Which is sometimes useful.
-
-                int length = snprintf( NULL, 0, "%d", sn );
-                char* mystr = malloc( length + 1 );
-                snprintf( mystr, length + 1, "%d", sn );
-                log_string(mystr);
-
-                -- Owl 23/09/18
-        */
 
         if (!IS_NPC(ch) && !CAN_DO(ch, sn))
         {
@@ -3735,6 +3724,25 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (victim->fighting)
                 return;
+        
+        if ( is_affected( victim, gsn_curse ) )
+        {
+                affect_strip( victim, gsn_curse );
+                send_to_char( "Your curse has lifted.\n\r", victim );
+                yesno = 1;
+        }
+
+        if ( ch != victim && yesno )
+        {
+                send_to_char( "Ok.\n\r", ch );
+                check_group_bonus(ch);
+        }
+
+        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
+	{
+	      send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
+	      return;
+	}
 
         for ( iWear = 0; iWear < MAX_WEAR; iWear ++ )
         {
@@ -3766,18 +3774,6 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
         }
 
-        if ( is_affected( victim, gsn_curse ) )
-        {
-                affect_strip( victim, gsn_curse );
-                send_to_char( "Your curse has lifted.\n\r", victim );
-                yesno = 1;
-        }
-
-        if ( ch != victim && yesno )
-        {
-                send_to_char( "Ok.\n\r", ch );
-                check_group_bonus(ch);
-        }
 
 }
 

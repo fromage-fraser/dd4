@@ -1545,6 +1545,9 @@ void load_area_special (FILE *fp)
                 else if (!str_cmp(next, "no_teleport"))
                         SET_BIT(area_last->area_flags, AREA_FLAG_NO_TELEPORT);
 
+                else if (!str_cmp(next, "no_magic"))
+                        SET_BIT(area_last->area_flags, AREA_FLAG_NO_MAGIC);
+
                 else if (!str_cmp(next, "exp_mod"))
                 {
                         num = fread_number(fp, &stat);
@@ -1753,8 +1756,8 @@ void load_objects( FILE *fp )
 {
         OBJ_INDEX_DATA *pObjIndex;
         char buf [MAX_STRING_LENGTH];
-        char buf2 [MAX_STRING_LENGTH];
-        /*char buf3 [MAX_STRING_LENGTH];*/
+        /*char buf2 [MAX_STRING_LENGTH];
+        char buf3 [MAX_STRING_LENGTH];*/
         int stat;
 
         for ( ; ; )
@@ -1802,12 +1805,12 @@ void load_objects( FILE *fp )
                 pObjIndex->item_type            = fread_number( fp, &stat );
                 pObjIndex->extra_flags          = fread_number64( fp, &stat );
 
-                if (pObjIndex->extra_flags > 4200000000)
+                /*if (pObjIndex->extra_flags > 4200000000)
                 {
                         sprintf(buf2,"%s is %lu",pObjIndex->name, pObjIndex->extra_flags);
                         log_string(buf2);
 
-                }
+                }*/
 
                 if (IS_SET(pObjIndex->extra_flags, ITEM_TRAP) )
                 {
@@ -2231,7 +2234,11 @@ void load_rooms( FILE *fp )
                 pRoomIndex->name                = fread_string( fp );
                 pRoomIndex->description         = fread_string( fp );
                 /* Area number */                 fread_number( fp, &stat );   /* Unused */
-                pRoomIndex->room_flags          = fread_number( fp, &stat );
+                pRoomIndex->room_flags          = fread_number64( fp, &stat );
+                
+                if (IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_MAGIC))
+                        SET_BIT(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE);
+                
                 pRoomIndex->sector_type         = fread_number( fp, &stat );
                 pRoomIndex->light               = 0;
 
@@ -3575,7 +3582,7 @@ unsigned long int fread_number64( FILE *fp, int *status )
 {
     int c;
     bool sign;
-    /*char buf [MAX_INPUT_LENGTH]; */ 
+    /*char buf [MAX_INPUT_LENGTH];*/
     unsigned long int number;
     int stat;
 
