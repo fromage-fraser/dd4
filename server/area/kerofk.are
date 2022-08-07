@@ -852,6 +852,8 @@ to REPAIR something.
 #30259
 gorn blacksmith smithy~
 Gorn the Blacksmith~
+Gorn the Blacksmith hammers a breastplate.
+~
 Gorn is Kerofk's blacksmith. His spectacles hang low on his nose, allowing
 him to look over them as you approach. His orderly workshop provides a 
 welcoming abode for those who wish to use his tools or simply converse.
@@ -2982,7 +2984,7 @@ D3
 S
 #30273
 Blacksmiths Foundry~
-A brick Foundry houses the local Blacksmith. Tools are neatly stacked
+A brick foundry houses the local blacksmith. Tools are neatly stacked
 next to the forge and anvil, and raw matierals are heaped into piles
 across the western wall.
 ~
