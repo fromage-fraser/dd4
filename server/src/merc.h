@@ -234,7 +234,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  12
+#define BLUEPRINTS_MAX  21
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -1911,6 +1911,15 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_LEGENDARY5             102
 #define OBJ_VNUM_ST_SWORD1              27
 #define OBJ_VNUM_TI_SWORD1              28
+#define OBJ_VNUM_BF_SET1                1001
+#define OBJ_VNUM_BF_SET2                1002
+#define OBJ_VNUM_BF_SET3                1003
+#define OBJ_VNUM_BF_SET4                1004
+#define OBJ_VNUM_AS_SET1                1005
+#define OBJ_VNUM_AS_SET2                1006
+#define OBJ_VNUM_AS_SET3                1007
+#define OBJ_VNUM_AS_SET4                1008
+#define OBJ_VNUM_AS_SET5        1009
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
 
@@ -3468,8 +3477,8 @@ extern int gsn_imbue;
 extern int gsn_empower;
 extern int gsn_uncommon_set;
 extern int gsn_rare_set;
-extern int gsn_epic_set;
-extern int gsn_legendary_set;
+extern int gsn_bloodforged_set;
+extern int gsn_astral_set;
 extern int gsn_steel_broadsword;
 extern int gsn_titanium_rapier;
 extern int gsn_repelling;
