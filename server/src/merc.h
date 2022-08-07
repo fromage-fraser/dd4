@@ -72,7 +72,7 @@ typedef short int sh_int;
 
 /*
  *  Bit values.  View online with 'HELP BITZ'.  Gezhp
- */  
+ */
 #define BIT_0   0x00000001            /*                    1  */
 #define BIT_1   0x00000002            /*                    2  */
 #define BIT_2   0x00000004            /*                    4  */
@@ -229,7 +229,7 @@ struct imbue_types
         char    *name;
         char    *short_desc;
         char    apply_buff;
-        int     base_gain;       
+        int     base_gain;
 };
 
 #define MAX_IMBUE 9
@@ -289,7 +289,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * Increase the maxes if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
-#define MAX_BITS                          64    /* Maximum number of bit flags available per attribute class, 
+#define MAX_BITS                          64    /* Maximum number of bit flags available per attribute class,
                                                  * includes 'BIT_0' and assumes unsigned values only */
 #define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     19    /* that's 18 plus 'none' - Shade 8.7.22 */
@@ -1037,7 +1037,7 @@ struct color_data
 /*
  * For 8-bit colour
  */
-struct color_data_8bit 
+struct color_data_8bit
 {
         char    code [ 19 ];
         char    act_code [ 6 ];
@@ -1633,7 +1633,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define D_GREY          "\x1b[1m\x1b[30m"
 
 #define B_BLACK         "\x1b[40m"                      /* These are background color codes */
-#define B_B_BLACK       "\x1b[100m"                     
+#define B_B_BLACK       "\x1b[100m"
 #define B_RED           "\x1b[41m"
 #define B_B_RED         "\x1b[101m"
 #define B_GREEN         "\x1b[42m"
@@ -1716,7 +1716,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define MOB_VNUM_CITYGUARD              3060
 #define MOB_VNUM_VAMPIRE                3404
 #define MOB_VNUM_ULT                    3160
- 
+
 #define MOB_VNUM_AIR_ELEMENTAL          8914
 #define MOB_VNUM_EARTH_ELEMENTAL        8915
 #define MOB_VNUM_WATER_ELEMENTAL        8916
@@ -1866,7 +1866,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define COIN_SILVER                    10
 #define COIN_COPPER                     1
 
-/* 
+/*
  * Smelted MAterials - Brutus
  */
 #define SMELTED_STEEL                   1
@@ -2031,8 +2031,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_BRAWLER               BIT_28
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
 #define ITEM_BOW                        BIT_30
-#define ITEM_ANTI_SMITHY                BIT_34 
-#define ITEM_CURSED                     BIT_61  
+#define ITEM_ANTI_SMITHY                BIT_34
+#define ITEM_CURSED                     BIT_61
 
 
 /*
@@ -2099,7 +2099,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_SOUL_STEALER           BIT_1   /* Weapon: drains hits, mana and move after some successful hits */
 #define EGO_ITEM_FIREBRAND              BIT_2   /* Weapon: inflicts fire damage after some successful hits */
 #define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit; may become terrified and unable to act in combat */
-#define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */                                                 
+#define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
@@ -4588,7 +4588,7 @@ bool    rem_bonus_objset                      ( OBJSET_INDEX_DATA *pObjSetIndex,
 /* hunt.c   */
 void hunt_victim                        args( ( CHAR_DATA *ch ) );
 
-/* interp.c */        
+/* interp.c */
 void   interpret                        args( ( CHAR_DATA *ch, char *argument ) );
 bool   is_number                        args( ( char *arg ) );
 int    number_argument                  args( ( char *argument, char *arg ) );
@@ -4597,13 +4597,13 @@ char * first_arg                              ( char *argument, char *arg_first,
 bool   IS_SWITCHED                      args( ( CHAR_DATA *ch ) );
 bool   wiz_do                           args( ( CHAR_DATA *ch, char *command ) );
 
-/* magic.c */         
+/* magic.c */
 int  skill_lookup                       args( ( const char *name ) );
 bool saves_spell                        args( ( int level, CHAR_DATA *victim ) );
 void obj_cast_spell                     args( ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj ) );
 bool mob_interacts_players                    ( CHAR_DATA *mob );
 
-/* mob_commands.c */          
+/* mob_commands.c */
 char*   mprog_type_to_name              args( ( int type ) );
 
 /* gamble.c */

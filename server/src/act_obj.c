@@ -329,7 +329,7 @@ void do_get (CHAR_DATA *ch, char *argument)
                                 pd = one_argument(pd, name);
                                 pd = one_argument(pd, name);
 
-                                if (str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
+                                if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
                                 {
                                         send_to_char("You can't do that.\n\r", ch);
                                         return;
@@ -509,7 +509,7 @@ void do_put (CHAR_DATA *ch, char *argument)
                 if ( (IS_SET(container->ego_flags, EGO_ITEM_TURRET )) && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)))
                 {
                         send_to_char("You can only put modules into the turret slots.\n\r", ch);
-                        return;  
+                        return;
                 };
 
                 if (get_obj_weight(obj) + get_obj_weight(container)
@@ -962,7 +962,7 @@ void do_give (CHAR_DATA *ch, char *argument)
                 }
 
                 mprog_bribe_trigger(victim, ch, amount);
-                
+
                 return;
         }
 
@@ -1215,7 +1215,7 @@ void do_drink (CHAR_DATA *ch, char *argument)
 
                 /* Salt water has the same effect as regular water for sahuagin */
 
-                if ( ( ch->race == RACE_SAHUAGIN ) 
+                if ( ( ch->race == RACE_SAHUAGIN )
                 &&   ( liquid == 14 ) )
                         liquid = 0;
 
@@ -1437,7 +1437,7 @@ void do_eat (CHAR_DATA *ch, char *argument)
 
         pouch = get_eq_char(ch, WEAR_POUCH);
 
-        if ( ch->position == POS_FIGHTING 
+        if ( ch->position == POS_FIGHTING
         &&  !IS_NPC(ch) )
         {
                 if (!pouch)
@@ -1461,7 +1461,7 @@ void do_eat (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                if (!(obj = get_obj_carry(ch, arg)) 
+                if (!(obj = get_obj_carry(ch, arg))
                 &&  !IS_NPC(ch) )
                 {
                         if (!pouch) {
@@ -1476,11 +1476,11 @@ void do_eat (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if ( ch->position == POS_FIGHTING 
+        if ( ch->position == POS_FIGHTING
         &&   IS_NPC(ch) )
         {
                 /* Mobs can only eat pills they are holding during combat -- Owl 1/7/22 */
-                if (!(obj = get_eq_char(ch, WEAR_HOLD))) 
+                if (!(obj = get_eq_char(ch, WEAR_HOLD)))
                 {
                         send_to_char("You can only eat pills you are holding during combat!\n\r", ch);
                         return;
@@ -2665,7 +2665,7 @@ void do_smear (CHAR_DATA *ch, char *argument)
 
         pouch = get_eq_char(ch, WEAR_POUCH);
 
-        if ( ch->position == POS_FIGHTING 
+        if ( ch->position == POS_FIGHTING
         &&  !IS_NPC(ch) )
         {
                 if (!pouch)
@@ -2689,7 +2689,7 @@ void do_smear (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                if (!(obj = get_obj_carry(ch, arg)) 
+                if (!(obj = get_obj_carry(ch, arg))
                 &&  !IS_NPC(ch) )
                 {
                         if (!pouch)
@@ -2705,11 +2705,11 @@ void do_smear (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if ( ch->position == POS_FIGHTING 
+        if ( ch->position == POS_FIGHTING
         &&   IS_NPC(ch) )
         {
                 /* Mobs can only smear paints they are holding during combat -- Owl 1/7/22 */
-                if (!(obj = get_eq_char(ch, WEAR_HOLD))) 
+                if (!(obj = get_eq_char(ch, WEAR_HOLD)))
                 {
                         send_to_char("You can only smear paints you are holding during combat!\n\r", ch);
                         return;
@@ -2759,7 +2759,7 @@ void do_quaff (CHAR_DATA *ch, char *argument)
 
         if ( ch->position == POS_FIGHTING && !IS_NPC(ch))
         {
-                
+
                 if (!pouch)
                 {
                         send_to_char("You are not wearing a pouch to get a potion from!\n\r", ch);
@@ -2776,7 +2776,7 @@ void do_quaff (CHAR_DATA *ch, char *argument)
         }
         else
         {
-                if (!(obj = get_obj_carry(ch, arg)) 
+                if (!(obj = get_obj_carry(ch, arg))
                 &&  !IS_NPC(ch))
                 {
                         if (!pouch)
@@ -2792,11 +2792,11 @@ void do_quaff (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        if ( ch->position == POS_FIGHTING 
+        if ( ch->position == POS_FIGHTING
         &&   IS_NPC(ch) )
         {
                 /* Mobs can only quaff potions they are holding during combat -- Owl 1/7/22 */
-                if (!(obj = get_eq_char(ch, WEAR_HOLD))) 
+                if (!(obj = get_eq_char(ch, WEAR_HOLD)))
                 {
                         send_to_char("You can only quaff potions you are holding during combat!\n\r", ch);
                         return;
