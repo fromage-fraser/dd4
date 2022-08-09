@@ -52,9 +52,9 @@ exception that he wields a sword and wears a helmet.
 0 0
 8 8 0
 #13005
-mackurian high-priest undead zombie priest~
-A undead High-Priest~
-MacKurian the High-Priest gives a sermon here.
+mackurian high undead zombie priest~
+A undead High Priest~
+MacKurian the High Priest gives a sermon here.
 ~
 MacKurian, although clearly undead, seems to emit an aura of goodness and
 serenity. His robes are still crisp and white as if they had merely been
@@ -62,7 +62,7 @@ donned moments earlier.
 MacKurian says "Rest...Be at peace. Train or practice here if you wish. But
 do not harm any in the temple or there shall be trouble."
 ~
-2|64|512|1024 8|32|128|512|8192 750 S
+2|64|512 8|32|128|512|8192|536870912 750 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 1

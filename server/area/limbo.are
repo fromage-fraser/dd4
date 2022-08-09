@@ -332,6 +332,23 @@ It looks like a duck. It also seems to be wearing a collar.
 ~
 |
 
+#79
+hootfiend~
+Hootfiend the owl~
+A sleepy-looking owl regards you lazily.
+~
+This large horned owl has bright orange eyes and regards you with a mix of mild
+curiosity tinged with contempt.
+~
+2|2048|9223372036854775808 524288 1000 S
+105 0 0 0d0+0 0d0+0
+0 0
+0 0 1
+>speech_prog p hoot?~
+   emote hoots back at you.
+~
+|
+
 #0
 
 #OBJECTS
@@ -492,7 +509,7 @@ A finely crafted broadsword rests here.~
 ~
 5 4 1024 8193
 0~ 8~ 18~ 1~
-5 0 0 
+5 0 0
 A
 1 2
 A
@@ -596,7 +613,7 @@ A finely crafted mechanical turret is deployed, ready for action.~
 10 0 0
 E
 turret metal mechanical~
-The turret has been finely craft from Steel and Titanium. 
+The turret has been finely craft from Steel and Titanium.
 Its has 4 spring loaded legs, allowing for rapid deployment and retreival.
 The main chassis has 4 front facing modular components that contain gearing and trigger mechanisms.
 ~
@@ -1605,6 +1622,8 @@ O 1 98 100 73                   Sulfuric pool to Torment's lair
 M 1 6 2 75                      Monkeys to Grail's lair (2 now, were 3)
 
 
+M 0 79 1 78                     aHootfiend to Owl's dungeon
+
 M 0 78 1 82                     add Ducky the duck to Samxin's Reality
 E 0 62 0 3                       equip a duck collar (neck1)
 I 61 1 82 1               Samxins desk to Samxin's Reality
@@ -1633,10 +1652,10 @@ A 27 -1
 A 14 100
 #3
 uncommon crow~
-The Smithys Set of the Crow. 
+The Smithys Set of the Crow.
 Crow were the pseudo pets of the Smiths, often seen perching across the Smithys
-Forge in Winter months basking in teh heat of the Forge, and scavenging any 
-food scraps. An Ancient Forgeing process embues the essense of Crow into the 
+Forge in Winter months basking in teh heat of the Forge, and scavenging any
+food scraps. An Ancient Forgeing process embues the essense of Crow into the
 armour sets allowing it to take on properties of the black feathered denizens.
 ~
 42 43 0 0 0

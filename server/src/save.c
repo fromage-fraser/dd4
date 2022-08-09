@@ -158,7 +158,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Bank        %d\n", ch->pcdata->bank);
         fprintf(fp, "Bounty      %d\n", ch->pcdata->bounty);
         fprintf(fp, "Exp         %d\n", ch->exp);
-        fprintf(fp, "Act         %d\n", ch->act);
+        fprintf(fp, "Act         %lu\n", ch->act);
         fprintf(fp, "Status      %d\n", ch->status);
         fprintf(fp, "AffdBy      %d\n", ch->affected_by);
 
@@ -1430,7 +1430,7 @@ void load_infamy_table ()
                 {
 
                         char *word;
-                        
+
                         word = fread_string(fp); /* The executioner */
 
                         if (!str_cmp(word, "#END"))

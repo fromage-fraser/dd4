@@ -12,7 +12,7 @@ He is a very old man, dressed in an old robe; but from the glint in his
 clear blue eyes you can see that He is aware of the world, and wise to its
 traps and pitfalls.
 ~
-64|128 8|128|8192 +1000 S
+64|128 8|128|8192|536870912 +1000 S
 20 0 -5 20d20+180 1d8+12
 0 60000
 8 8 1
@@ -22,10 +22,10 @@ The Hierophant~
 The old Hierophant of the holy grove is here, gathering ivy.
 ~
 She is a very old woman, dressed in an old gown; but from the glint in her
-clear blue eyes you can see that She is aware of the world, and wise to its
+clear blue eyes you can see that she is aware of the world, and wise to its
 traps and pitfalls.
 ~
-64|128 8|128|8192 +1000 S
+64|128 8|128|8192|536870912 +1000 S
 20 0 -5 20d20+180 1d8+12
 0 60000
 8 8 2

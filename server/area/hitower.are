@@ -728,7 +728,7 @@ The master of goodness is here frowning at your intrusion.
 ~
 He looks like a self-righteous bastard.
 ~
-66 136 1000 S
+66 136|536870912 1000 S
 30 -10 -20 30d30+300 2d5+20
 0 150000
 8 8 1

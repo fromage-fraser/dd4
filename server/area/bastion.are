@@ -310,7 +310,7 @@ serenity. It is sitting gracefully on a nearby cloud, strumming a golden
 harp and singing an enchanting song. Floating above the angel's head a
 golden halo is shining in the sun and long white robes billow out around it.
 ~
-2|64 8|32|128|512|524288|8388608 1000 S
+2|64 8|32|128|512|524288|8388608|536870912 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0

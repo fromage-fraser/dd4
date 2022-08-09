@@ -119,16 +119,16 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if ( (pObjSetIndex = objects_objset(obj->pIndexData->vnum)) )
         {
-                 if ( (objset_type(pObjSetIndex->vnum)) == ("<34>Uncommon<0>")) 
+                 if ( (objset_type(pObjSetIndex->vnum)) == ("<34>Uncommon<0>"))
                         strcat( buf, "<34>[SET]<0> ");
-                if ( (objset_type(pObjSetIndex->vnum)) == ("<39>Rare<0>") ) 
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<39>Rare<0>") )
                         strcat( buf, "<32>[SET]<0> ");
-                if ( (objset_type(pObjSetIndex->vnum)) == ("<93>Epic<0>") ) 
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<93>Epic<0>") )
                         strcat( buf, "<93>[SET]<0> ");
-                if ( (objset_type(pObjSetIndex->vnum)) == ("<178>Legendary<0>") ) 
-                        strcat( buf, "<178>[SET]<0> ");        
-        }               
-        
+                if ( (objset_type(pObjSetIndex->vnum)) == ("<178>Legendary<0>") )
+                        strcat( buf, "<178>[SET]<0> ");
+        }
+
         if ( IS_OBJ_STAT( obj, ITEM_INVIS) )
                 strcat( buf, "<39>(Invis)<0> " );
 
@@ -170,16 +170,16 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                 strcat( buf, "<202>(Searing)<0> " );
-        
+
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                 strcat( buf, "<15>(Imbued)<0> " );
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
                 strcat( buf, "<159>(Chained)<0> " );
-        
+
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
                 strcat( buf, "<155>(Balanced)<0> " );
-        
+
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "<195>(Sharp)<0> " );
 
@@ -403,7 +403,8 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
             && ( is_affected(victim, gsn_prayer_weaken)
               || is_affected(victim, gsn_hex)
               || is_affected(victim, gsn_curse)
-              || IS_AFFECTED(victim, AFF_CURSE) ) )
+              || IS_AFFECTED(victim, AFF_CURSE)
+              || is_cursed(victim) ) )
                 strcat(buf, "<19>(Cursed)<0> "   );
 
         if (IS_GOOD(victim )
@@ -526,17 +527,32 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 
         strcpy(buf , PERS( victim, ch ) );
 
-        if ( percent >= 100 ) strcat( buf, " is in perfect health.\n\r"  );
-        else if ( percent >=  90 ) strcat( buf, " is slightly scratched.\n\r" );
-        else if ( percent >=  80 ) strcat( buf, " has a few bruises.\n\r"     );
-        else if ( percent >=  70 ) strcat( buf, " has some cuts.\n\r"         );
-        else if ( percent >=  60 ) strcat( buf, " has several wounds.\n\r"    );
-        else if ( percent >=  50 ) strcat( buf, " has many nasty wounds.\n\r" );
-        else if ( percent >=  40 ) strcat( buf, " is bleeding freely.\n\r"    );
-        else if ( percent >=  30 ) strcat( buf, " is covered in blood.\n\r"   );
-        else if ( percent >=  20 ) strcat( buf, " is leaking guts.\n\r"       );
-        else if ( percent >=  10 ) strcat( buf, " is almost dead.\n\r"        );
-        else                       strcat( buf, " is DYING.\n\r"              );
+        if (!IS_INORGANIC( ch ) ) {
+                if ( percent >= 100 ) strcat( buf, " is in perfect health.\n\r"  );
+                else if ( percent >=  90 ) strcat( buf, " is slightly scratched.\n\r" );
+                else if ( percent >=  80 ) strcat( buf, " has a few bruises.\n\r"     );
+                else if ( percent >=  70 ) strcat( buf, " has some cuts.\n\r"         );
+                else if ( percent >=  60 ) strcat( buf, " has several wounds.\n\r"    );
+                else if ( percent >=  50 ) strcat( buf, " has many nasty wounds.\n\r" );
+                else if ( percent >=  40 ) strcat( buf, " is bleeding freely.\n\r"    );
+                else if ( percent >=  30 ) strcat( buf, " is covered in blood.\n\r"   );
+                else if ( percent >=  20 ) strcat( buf, " is leaking guts.\n\r"       );
+                else if ( percent >=  10 ) strcat( buf, " is almost dead.\n\r"        );
+                else                       strcat( buf, " is DYING.\n\r"              );
+        }
+        else {
+                if ( percent >= 100 ) strcat( buf, " is in perfect condition.\n\r"              );
+                else if ( percent >=  90 ) strcat( buf, " is slightly damaged.\n\r"             );
+                else if ( percent >=  80 ) strcat( buf, " has a few signs of damage.\n\r"       );
+                else if ( percent >=  70 ) strcat( buf, " has noticeable damage.\n\r"           );
+                else if ( percent >=  60 ) strcat( buf, " is moderately damaged.\n\r"           );
+                else if ( percent >=  50 ) strcat( buf, " has taken a lot of damage.\n\r"       );
+                else if ( percent >=  40 ) strcat( buf, " has very significant damage.\n\r"     );
+                else if ( percent >=  30 ) strcat( buf, " is very heavily damaged.\n\r"         );
+                else if ( percent >=  20 ) strcat( buf, " is ruinously damaged.\n\r"            );
+                else if ( percent >=  10 ) strcat( buf, " is on the brink of destruction.\n\r"  );
+                else                       strcat( buf, " is beyond saving.\n\r"                );
+        }
 
         buf[0] = UPPER( buf[0] );
         send_to_char( buf, ch );
@@ -960,7 +976,7 @@ void do_examine (CHAR_DATA *ch, char *argument)
                         break;
 
                     case ITEM_ARMOR:
-                        if (obj->timer > 0 && obj->timer <= TIMER_ALERT 
+                        if (obj->timer > 0 && obj->timer <= TIMER_ALERT
                             && IS_SET(obj->extra_flags, ITEM_FORGED))
                                 send_to_char("The forged metal looks to be in poor condition.\n\r", ch);
                         break;
@@ -1287,7 +1303,7 @@ void do_score (CHAR_DATA *ch, char *argument)
         if( ch->class == CLASS_SMITHY )
         {
                 sprintf( buf, "Dam Reduction: {W%d%%{x  ", ch->damage_mitigation );
-                strcat( buf1, buf );                 
+                strcat( buf1, buf );
         }
 
         if( ch->level >= 20 )
@@ -2700,7 +2716,7 @@ int has_pre_req(CHAR_DATA *ch, int sn)
                                 return 0;
 
         /* Change the '-4' value here if you add more wolf-only skills to the gag table */
-        
+
         if (ch->sub_class == SUB_CLASS_WEREWOLF)
                 for (iter = 0; iter < MAX_VAMPIRE_GAG-4; iter++)
                         if (*vampire_gag_table[iter].skill == sn)
@@ -3601,7 +3617,7 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                 ch->colors[COLOR_ARENA]        = 13;
                 ch->colors[COLOR_SERVER]       = 6;
                 ch->colors[COLOR_NEWBIE]       = 14;
-                
+
                 send_to_char( "Channel colours reset to defaults.\n\r", ch );
                 return;
         }
@@ -3612,8 +3628,8 @@ void do_ansi( CHAR_DATA *ch, char *argument )
 
                 for ( c = 0; c < MAX_CHANNELS; c++ )
                 {
-                        if ( ( !str_cmp( channel_names[c], "DIRTALK" ) 
-                                || !str_cmp( channel_names[c], "IMMTALK" ) 
+                        if ( ( !str_cmp( channel_names[c], "DIRTALK" )
+                                || !str_cmp( channel_names[c], "IMMTALK" )
                                 || !str_cmp( channel_names[c], "SERVER" )  )
                         && !IS_IMMORTAL(ch) )
                         {
@@ -3629,7 +3645,7 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                                                 color_table_8bit[get_colour_index_by_code(ch->colors[c])].name,
                                                 color_table_8bit[0].code );
                                 }
-                                else 
+                                else
                                 {
                                         sprintf( buf, "%s%10ss will appear in %s%s\n\r",
                                                 color_table_8bit[0].code,
@@ -3640,7 +3656,7 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                         }
                         send_to_char( buf, ch );
                 }
-                
+
                 send_to_char( "\n\rTo toggle colour, type 'COLOUR'. Colour codes can be viewed with 'HELP COLOURCODES'.\n\r"
                              "See 'HELP COLOUR,' 'HELP COLOUR2,' 'HELP COLOUR3,' and 'HELP ANSI' for more information.\n\r", ch );
                 return;
@@ -3680,15 +3696,15 @@ void do_ansi( CHAR_DATA *ch, char *argument )
                 }
 
         }
-        
+
         /* c2 = atoi( arg1 ); */
 
         sprintf( buf, "Invalid color index.\n\r" );
 
         if ((c < MAX_CHANNELS) && (c >= 0) && (c2 < MAX_8BIT_COLORS) && (c2 >= 0))
         {
-                 if ( ( !str_cmp( channel_names[c], "DIRTALK" ) 
-                     || !str_cmp( channel_names[c], "IMMTALK" ) 
+                 if ( ( !str_cmp( channel_names[c], "DIRTALK" )
+                     || !str_cmp( channel_names[c], "IMMTALK" )
                      || !str_cmp( channel_names[c], "SERVER" )  )
                  && !IS_IMMORTAL(ch) )
                 {

@@ -72,7 +72,7 @@ typedef short int sh_int;
 
 /*
  *  Bit values.  View online with 'HELP BITZ'.  Gezhp
- */  
+ */
 #define BIT_0   0x00000001            /*                    1  */
 #define BIT_1   0x00000002            /*                    2  */
 #define BIT_2   0x00000004            /*                    4  */
@@ -229,7 +229,7 @@ struct imbue_types
         char    *name;
         char    *short_desc;
         char    apply_buff;
-        int     base_gain;       
+        int     base_gain;
 };
 
 #define MAX_IMBUE 9
@@ -289,7 +289,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  * Increase the maxes if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
-#define MAX_BITS                          64    /* Maximum number of bit flags available per attribute class, 
+#define MAX_BITS                          64    /* Maximum number of bit flags available per attribute class,
                                                  * includes 'BIT_0' and assumes unsigned values only */
 #define MAX_CLASS                          9
 #define MAX_SUB_CLASS                     19    /* that's 18 plus 'none' - Shade 8.7.22 */
@@ -1037,7 +1037,7 @@ struct color_data
 /*
  * For 8-bit colour
  */
-struct color_data_8bit 
+struct color_data_8bit
 {
         char    code [ 19 ];
         char    act_code [ 6 ];
@@ -1633,7 +1633,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define D_GREY          "\x1b[1m\x1b[30m"
 
 #define B_BLACK         "\x1b[40m"                      /* These are background color codes */
-#define B_B_BLACK       "\x1b[100m"                     
+#define B_B_BLACK       "\x1b[100m"
 #define B_RED           "\x1b[41m"
 #define B_B_RED         "\x1b[101m"
 #define B_GREEN         "\x1b[42m"
@@ -1716,7 +1716,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define MOB_VNUM_CITYGUARD              3060
 #define MOB_VNUM_VAMPIRE                3404
 #define MOB_VNUM_ULT                    3160
- 
+
 #define MOB_VNUM_AIR_ELEMENTAL          8914
 #define MOB_VNUM_EARTH_ELEMENTAL        8915
 #define MOB_VNUM_WATER_ELEMENTAL        8916
@@ -1745,7 +1745,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_PET                         BIT_8   /* Auto set for pets */
 #define ACT_NO_QUEST                    BIT_9   /* Cannot be selected as quest target */
 #define ACT_PRACTICE                    BIT_10  /* Can practice PC's */
-#define ACT_HEALING_FACTOR              BIT_11  /* Mob heals at accelerated rate.  Was ACT_GAMBLE. - Owl */
+#define ACT_HEALING_FACTOR              BIT_11  /* Mob heals at very accelerated rate.  Was ACT_GAMBLE. - Owl */
 #define ACT_NOCHARM                     BIT_12  /* Not charmable - Brutus */
 #define ACT_IS_HEALER                   BIT_13  /* For healer spec */
 #define ACT_IS_FAMOUS                   BIT_14  /* Award fame for kill */
@@ -1759,6 +1759,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ACT_CLAN_GUARD                  BIT_22  /* Protects from some combat skills; Gezhp */
 #define ACT_NO_SUMMON                   BIT_23  /* Mob may not be summoned; Gezhp */
 #define ACT_NO_EXPERIENCE               BIT_24  /* No exp rewarded for kill; Gezhp */
+#define ACT_UNKILLABLE                  BIT_63  /* Can't be killed. 'slay' still works.  --Owl */
 
 
 /*
@@ -1794,7 +1795,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_SWIM                        BIT_26
 #define AFF_PRAYER_PLAGUE               BIT_27
 #define AFF_NON_CORPOREAL               BIT_28  /* Mist Walk, Astral Sidestep, Fly form */
-#define AFF_DETECT_CURSE                BIT_29
+#define AFF_DETECT_CURSE                BIT_29  /* Mob will attack cursed players, see is_cursed() --Owl */
 #define AFF_DETECT_GOOD                 BIT_30	/* last */
 
 /* forms - Brutus */
@@ -1866,7 +1867,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define COIN_SILVER                    10
 #define COIN_COPPER                     1
 
-/* 
+/*
  * Smelted MAterials - Brutus
  */
 #define SMELTED_STEEL                   1
@@ -1996,6 +1997,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_SPELLCRAFT                         41 /* Increase bonus to spellcrafting that takes place in ROOM_SPELLCRAFT */
 #define ITEM_TURRET_MODULE                      42
 #define ITEM_FORGE                              43
+
 /*
  * Extra flags.
  * Used in #OBJECTS.
@@ -2007,12 +2009,12 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_EVIL                       BIT_4
 #define ITEM_INVIS                      BIT_5
 #define ITEM_MAGIC                      BIT_6
-#define ITEM_NODROP                     BIT_7
+#define ITEM_NODROP                     BIT_7   /* carrier will be attacked by mobs with DETECT_CURSE */
 #define ITEM_BLESS                      BIT_8
 #define ITEM_ANTI_GOOD                  BIT_9
 #define ITEM_ANTI_EVIL                  BIT_10
 #define ITEM_ANTI_NEUTRAL               BIT_11
-#define ITEM_NOREMOVE                   BIT_12
+#define ITEM_NOREMOVE                   BIT_12   /* carrier will be attacked by mobs with DETECT_CURSE */
 #define ITEM_INVENTORY                  BIT_13
 #define ITEM_POISONED                   BIT_14
 #define ITEM_ANTI_MAGE                  BIT_15
@@ -2031,8 +2033,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_BRAWLER               BIT_28
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
 #define ITEM_BOW                        BIT_30
-#define ITEM_ANTI_SMITHY                BIT_34 
-#define ITEM_CURSED                     BIT_61  
+#define ITEM_ANTI_SMITHY                BIT_34
+#define ITEM_CURSED                     BIT_61   /* Prevents magical travel while carried, carrier will be attacked by mobs with DETECT_CURSE */
 
 
 /*
@@ -2099,7 +2101,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_SOUL_STEALER           BIT_1   /* Weapon: drains hits, mana and move after some successful hits */
 #define EGO_ITEM_FIREBRAND              BIT_2   /* Weapon: inflicts fire damage after some successful hits */
 #define EGO_ITEM_BATTLE_TERROR          BIT_3   /* Wearer may automatically try to flee after being hit; may become terrified and unable to act in combat */
-#define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */                                                 
+#define EGO_ITEM_IMBUED                 BIT_4   /* Used for Imbue */
 #define EGO_ITEM_BALANCED               BIT_5   /* counterbalanced weapon */
 #define EGO_ITEM_TURRET                 BIT_6
 #define EGO_ITEM_TURRET_MODULE          BIT_7
@@ -2437,23 +2439,23 @@ struct  mob_index_data
         GAME_DATA *		pGame;
         SHOP_DATA *             pShop;
         MPROG_DATA *            mobprogs;
-        LEARNED_DATA *          skills;         /* used by practicers only */
+        LEARNED_DATA *          skills;         /* used by practisers only */
 
-        char *          player_name;
-        char *          short_descr;
-        char *          long_descr;
-        char *          description;
-        int             vnum;
-        int             count;
-        int             killed;
-        int             sex;
-        int             level;
-        int             act;
-        int             affected_by;
-        int             alignment;
-        int             progtypes;
-        int             body_form;
-        int             spec_fun_exp_modifier;
+        char *                  player_name;
+        char *                  short_descr;
+        char *                  long_descr;
+        char *                  description;
+        int                     vnum;
+        int                     count;
+        int                     killed;
+        int                     sex;
+        int                     level;
+        unsigned long int       act;
+        int                     affected_by;
+        int                     alignment;
+        int                     progtypes;
+        int                     body_form;
+        int                     spec_fun_exp_modifier;
 };
 
 
@@ -2481,71 +2483,71 @@ struct char_data
         PC_DATA *                       pcdata;
         MPROG_ACT_LIST *                mpact;
 
-        char *          name;
-        char *          short_descr;
-        char *          long_descr;
-        char *          description;
-        char *          prompt;
-        int             sex;
-        int             class;
-        int             sub_class;
-        int             race;
-        int             clan;
-        int             clan_level;
-        int             level;
-        int             trust;
-        bool            wizbit;
-        int             played;
-        time_t          logon;
-        time_t          save_time;
-        time_t          last_note;
-        int             timer;
-        int             wait;
-        int             hit;
-        int             max_hit;
-        int             aggro_dam;
-        int             mana;
-        int             max_mana;
-        int             move;
-        int             max_move;
-        int             rage;                           /* rage and blood */
-        int             max_rage;
-        int             plat;
-        int             gold;
-        int             silver;
-        int             copper;
-        int             coin_weight;
-        int             smelted_steel;
-        int             smelted_titanium;
-        int             smelted_adamantite;
-        int             smelted_electrum;
-        int             smelted_starmetal;
-        int             exp;
-        int             act;
-        int             status;
-        int             affected_by;
-        int             position;
-        int             carry_weight;
-        int             carry_number;
-        int             saving_throw;
-        int             alignment;
-        int             hitroll;
-        int             damroll;
-        int             armor;
-        int             wimpy;
-        int             deaf;
-        int             silent_mode;
-        int             colors [ MAX_CHANNELS ];
-        int             mpactnum;
-        bool            deleted;
-        int             form;
-        int             gag;
-        int             backstab;
-        int             edrain;
-        int             body_form;
-        int             tournament_team;        /* mobs can use this too */
-        int             exp_modifier;
-        int             damage_mitigation;
+        char *                  name;
+        char *                  short_descr;
+        char *                  long_descr;
+        char *                  description;
+        char *                  prompt;
+        int                     sex;
+        int                     class;
+        int                     sub_class;
+        int                     race;
+        int                     clan;
+        int                     clan_level;
+        int                     level;
+        int                     trust;
+        bool                    wizbit;
+        int                     played;
+        time_t                  logon;
+        time_t                  save_time;
+        time_t                  last_note;
+        int                     timer;
+        int                     wait;
+        int                     hit;
+        int                     max_hit;
+        int                     aggro_dam;
+        int                     mana;
+        int                     max_mana;
+        int                     move;
+        int                     max_move;
+        int                     rage;                           /* rage and blood */
+        int                     max_rage;
+        int                     plat;
+        int                     gold;
+        int                     silver;
+        int                     copper;
+        int                     coin_weight;
+        int                     smelted_steel;
+        int                     smelted_titanium;
+        int                     smelted_adamantite;
+        int                     smelted_electrum;
+        int                     smelted_starmetal;
+        int                     exp;
+        unsigned long int       act;
+        int                     status;
+        int                     affected_by;
+        int                     position;
+        int                     carry_weight;
+        int                     carry_number;
+        int                     saving_throw;
+        int                     alignment;
+        int                     hitroll;
+        int                     damroll;
+        int                     armor;
+        int                     wimpy;
+        int                     deaf;
+        int                     silent_mode;
+        int                     colors [ MAX_CHANNELS ];
+        int                     mpactnum;
+        bool                    deleted;
+        int                     form;
+        int                     gag;
+        int                     backstab;
+        int                     edrain;
+        int                     body_form;
+        int                     tournament_team;        /* mobs can use this too */
+        int                     exp_modifier;
+        int                     damage_mitigation;
         /*
         *  Does the variable you're about to add belong here or in 'pcdata'?
         */
@@ -4546,7 +4548,7 @@ char *  affect_loc_name                 args( ( int location ) );
 char *  affect_loc_name                 args( ( int location ) );
 char *  affect_bit_name                 args( ( int vector ) );
 char *  affect_bit_name_nice            args( ( int vector ) );
-char *  act_bit_name                    args( ( int vector ) );
+char *  act_bit_name                    args( ( unsigned long int vector ) );
 char *  pact_bit_name                   args( ( int vector ) );
 char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
@@ -4588,7 +4590,7 @@ bool    rem_bonus_objset                      ( OBJSET_INDEX_DATA *pObjSetIndex,
 /* hunt.c   */
 void hunt_victim                        args( ( CHAR_DATA *ch ) );
 
-/* interp.c */        
+/* interp.c */
 void   interpret                        args( ( CHAR_DATA *ch, char *argument ) );
 bool   is_number                        args( ( char *arg ) );
 int    number_argument                  args( ( char *argument, char *arg ) );
@@ -4597,13 +4599,13 @@ char * first_arg                              ( char *argument, char *arg_first,
 bool   IS_SWITCHED                      args( ( CHAR_DATA *ch ) );
 bool   wiz_do                           args( ( CHAR_DATA *ch, char *command ) );
 
-/* magic.c */         
+/* magic.c */
 int  skill_lookup                       args( ( const char *name ) );
 bool saves_spell                        args( ( int level, CHAR_DATA *victim ) );
 void obj_cast_spell                     args( ( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj ) );
 bool mob_interacts_players                    ( CHAR_DATA *mob );
 
-/* mob_commands.c */          
+/* mob_commands.c */
 char*   mprog_type_to_name              args( ( int type ) );
 
 /* gamble.c */
@@ -4703,6 +4705,7 @@ void strip_mount                             ( CHAR_DATA *ch );
 bool is_bladed_weapon                        ( OBJ_DATA *obj );
 bool is_blunt_weapon                         ( OBJ_DATA *obj );
 bool is_piercing_weapon                      ( OBJ_DATA *obj );
+bool is_cursed                               ( CHAR_DATA *ch );
 
 /* quest.c */
 bool mob_is_quest_target                     ( CHAR_DATA *ch );
