@@ -20,7 +20,7 @@ the earthly soul remains amongst humanity for a time, dissolving 3 days after
 burial.  If a corpse is NOT buried, however, the earthly soul can escape and
 live on as a duppy such as you see before you now: a malevolent haunting spirit.
 ~
-64 1024|32768|524288|1048576|67108864|536870912 -800 S
+64 1024|32768|524288|1048576|67108864 -800 S
 25 0 0 0d0+0 0d0+0
 320 0
 8 8 1
@@ -38,7 +38,7 @@ the earthly soul remains amongst humanity for a time, dissolving 3 days after
 burial.  If a corpse is NOT buried, however, the earthly soul can escape and
 live on as a duppy such as you see before you now; a malevolent haunting spirit.
 ~
-64 1024|32768|524288|1048576|67108864|536870912 -900 S
+64 1024|32768|524288|1048576|67108864 -900 S
 25 0 0 0d0+0 0d0+0
 320 0
 8 8 2
@@ -132,7 +132,7 @@ reflection in a silver mirror she holds in her hand.
 She stares at you directly with a complete lack of fear or concern when she
 becomes aware of you studying her, as if daring you to make a first move.
 ~
-2|64|4096 4|8|16|32|128|512|8192|8388608|67108864|536870912|1073741824 0 S
+2|64|4096 4|8|16|32|128|512|8192|8388608|67108864|1073741824 0 S
 29 0 0 0d0+0 0d0+0
 96 0
 8 8 2
@@ -148,7 +148,7 @@ from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
 being of lawful and good alignment, but that this also means they're likely to
 be extremely haughty and arrogant.  You hope she's in a forgiving mood.
 ~
-64 8|32|512|8192|4194304|67108864|1073741824 425 S
+64 8|32|512|8192|4194304|67108864|536870912|1073741824 425 S
 26 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -583,7 +583,7 @@ A
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -618,7 +618,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -653,7 +653,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -688,7 +688,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -723,7 +723,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -758,7 +758,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -793,7 +793,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -828,7 +828,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -863,7 +863,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -898,7 +898,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -933,7 +933,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1004,7 +1004,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1039,7 +1039,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1074,7 +1074,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1109,7 +1109,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1145,7 +1145,7 @@ S
 environment feels unnatural and oppressive.  It is a little more
 turbulent here than usual, but not a great deal. While it is too dark
 here to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1180,7 +1180,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1215,7 +1215,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1250,7 +1250,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1285,7 +1285,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1320,7 +1320,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1355,7 +1355,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1390,7 +1390,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1425,7 +1425,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1460,7 +1460,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~
@@ -1495,7 +1495,7 @@ S
 {bThe water pressure at this depth is overwhelming, and the entire
 environment feels unnatural and oppressive.  While it is too dark here
 to make out much above and around you, below you you see light and
-movement, and the ruined outlines of a vast undersea city.  
+movement, and the ruined outlines of a vast undersea city.
 
 You can move in any direction.{x
 ~

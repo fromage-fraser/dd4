@@ -1186,22 +1186,50 @@ bool process_output (DESCRIPTOR_DATA *d, bool fPrompt)
                                 else
                                         percent = -1;
 
-                                if (percent >= 100)
-                                        sprintf(wound,"is in excellent condition.");
-                                else if (percent >= 90)
-                                        sprintf(wound,"has a few scratches.");
-                                else if (percent >= 75)
-                                        sprintf(wound,"has some small wounds and bruises.");
-                                else if (percent >= 50)
-                                        sprintf(wound,"has quite a few wounds.");
-                                else if (percent >= 30)
-                                        sprintf(wound,"has some big nasty wounds and scratches.");
-                                else if (percent >= 15)
-                                        sprintf(wound,"looks pretty hurt.");
-                                else if (percent >= 0)
-                                        sprintf(wound,"is in awful condition.");
-                                else
-                                        sprintf(wound,"is bleeding to death!");
+                                if ( !IS_INORGANIC( victim ) )
+                                {
+                                        if (percent >= 100)
+                                                sprintf(wound,"is in excellent condition.");
+                                        else if (percent >= 90)
+                                                sprintf(wound,"has a few scratches.");
+                                        else if (percent >= 75)
+                                                sprintf(wound,"has some small wounds and bruises.");
+                                        else if (percent >= 50)
+                                                sprintf(wound,"has quite a few wounds.");
+                                        else if (percent >= 30)
+                                                sprintf(wound,"has some big nasty wounds and scratches.");
+                                        else if (percent >= 15)
+                                                sprintf(wound,"looks pretty hurt.");
+                                        else if (percent >= 0)
+                                                sprintf(wound,"is in awful condition.");
+                                        else
+                                                sprintf(wound,"is bleeding to death!");
+                                }
+                                else {
+
+                                        if ( percent >= 100 )
+                                                sprintf(wound,"is in perfect condition.");
+                                        else if ( percent >=  90 )
+                                                sprintf(wound,"is slightly damaged.");
+                                        else if ( percent >=  80 )
+                                                sprintf(wound,"has a few signs of damage.");
+                                        else if ( percent >=  70 )
+                                                sprintf(wound,"has noticeable damage.");
+                                        else if ( percent >=  60 )
+                                                sprintf(wound,"is moderately damaged.");
+                                        else if ( percent >=  50 )
+                                                sprintf(wound,"has taken a lot of damage.");
+                                        else if ( percent >=  40 )
+                                                sprintf(wound,"has very significant damage.");
+                                        else if ( percent >=  30 )
+                                                sprintf(wound,"is very heavily damaged.");
+                                        else if ( percent >=  20 )
+                                                sprintf(wound,"is ruinously damaged.");
+                                        else if ( percent >=  10 )
+                                                sprintf(wound,"is on the brink of destruction.");
+                                        else
+                                                sprintf(wound,"is beyond saving.");
+                                }
 
                                 sprintf (buf, "%s %s\n\r",
                                          capitalize_initial (PERS(victim, ch)),
@@ -2526,17 +2554,17 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 
                                         if (*point == open_token)
                                         {
-                                                
+
                                                 *point2 = *point;
                                                 *++point2 = '\0';
                                                 continue;
                                         }
-                                        
+
                                         if (isdigit(*point))
                                         {
                                                 if (cd_count < 0)
                                                         continue;
-                                                
+
                                                 cur_code[cd_count] = *point;
                                                 cd_count--;
                                                 point++;
@@ -2545,7 +2573,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                 {
                                                         if (cd_count < 0)
                                                                 continue;
-                                                        
+
                                                         cur_code[cd_count] = *point;
                                                         cd_count--;
                                                         point++;
@@ -2554,7 +2582,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                         {
                                                                 if (cd_count < 0)
                                                                         continue;
-                                                                
+
                                                                 cur_code[cd_count] = *point;
                                                                 cd_count--;
                                                                 point++;
@@ -2568,12 +2596,12 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                 cd_count = 2;
                                                 continue;
                                         }
-                                        
+
                                         if (*point == close_token)
                                         {
 
                                                 reverse_char_array(cur_code, 3);
-                                                
+
                                                 cv_int = atoi( cur_code );
 
 
@@ -2586,7 +2614,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 
                                                 while (skip-- > 0)
                                                         ++point2;
-                                                
+
                                                 continue;
                                         }
                                         else {
@@ -2647,17 +2675,17 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 
                                         if (*point == open_token)
                                         {
-                                                
+
                                                 *point2 = *point;
                                                 *++point2 = '\0';
                                                 continue;
                                         }
-                                        
+
                                         if (isdigit(*point))
                                         {
                                                 if (cd_count < 0)
                                                         continue;
-                                                
+
                                                 cur_code[cd_count] = *point;
                                                 cd_count--;
                                                 point++;
@@ -2666,7 +2694,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                 {
                                                         if (cd_count < 0)
                                                                 continue;
-                                                        
+
                                                         cur_code[cd_count] = *point;
                                                         cd_count--;
                                                         point++;
@@ -2675,7 +2703,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                         {
                                                                 if (cd_count < 0)
                                                                         continue;
-                                                                
+
                                                                 cur_code[cd_count] = *point;
                                                                 cd_count--;
                                                                 point++;
@@ -2689,7 +2717,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                 cd_count = 2;
                                                 continue;
                                         }
-                                        
+
                                         if (*point == close_token)
                                         {
                                                 reverse_char_array(cur_code, 3);
@@ -2700,7 +2728,7 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
                                                 cd_count = 2;
-                                                
+
                                                 continue;
                                         }
                                         else {
@@ -3200,7 +3228,7 @@ void act (const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
 
                 point   = buf;
                 str     = format;
-                
+
                 while (*str != '\0')
                 {
                         if (*str != '$')
@@ -3658,24 +3686,26 @@ void bit_explode (CHAR_DATA *ch, char* buf, long unsigned int n)
     int pos;
 
     /*unsigned long int a[65],k;
-    
+
     a[0]=1;
 
-    for(k=1;k<65;k++) 
+    for(k=1;k<65;k++)
     {
         a[k]= 2UL << (k - 1);
         sprintf(buf3, "k=%lu a[k]=%lu\r\n",k, a[k]);
         log_string(buf3);
     }
+
     sprintf(buf2,"bit_explode was passed: %lu", n);
     log_string(buf2);
+
     Doesn't accept stupid values
     if (n <= 0 || n > 18446744073709551616)
-        return;       */ 
+        return;       */
 
     /*sprintf(buf2,"%lu %lu %lu %lu %lu", BIT_31, BIT_32, BIT_33, BIT_34, BIT_35);
     log_string(buf2);*/
-                      
+
 
     strcpy( buf, tmp );
 
@@ -3958,14 +3988,14 @@ void assert_directory_exists(const char *path)
 
 void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
 {
-        /* 
-         * Yes this is terrible, yes it's the best I can do right now, 
-         * yes it works, yes there are 8(!) levels of nesting, yes you 
+        /*
+         * Yes this is terrible, yes it's the best I can do right now,
+         * yes it works, yes there are 8(!) levels of nesting, yes you
          * are welcome to try and make it Actually Good.
-         * 
-         * I pray I never have to revisit this unholy hellscape where 
+         *
+         * I pray I never have to revisit this unholy hellscape where
          * all good things go to die.  --Owl
-         */ 
+         */
 
         const char *point;
         /* char buf78 [MAX_STRING_LENGTH];*/
@@ -3975,7 +4005,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
         int cv_int;
         char open_token;
         char close_token;
-        
+
         /* If you change these tokens, you should change the color_table_8bit act_codes as well */
         open_token   = '<';
         close_token  = '>';
@@ -3985,7 +4015,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                 if (IS_SET(ch->act, PLR_ANSI))
                 {
                         for (point = txt ; *point ; point++)
-                        {       
+                        {
                                 if (*point == '{')
                                 {
                                         point++;
@@ -4011,17 +4041,17 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                         if (*point == open_token)
                                         {
                                                 /* An escaped open_token */
-                                                
+
                                                 *buffer = *point;
                                                 *++buffer = '\0';
                                                 continue;
                                         }
-                                        
+
                                         if (isdigit(*point))
                                         {
                                                 if (cd_count < 0)
                                                         continue;
-                                                
+
                                                 cur_code[cd_count] = *point;
                                                 cd_count--;
                                                 point++;
@@ -4030,7 +4060,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                 {
                                                         if (cd_count < 0)
                                                                 continue;
-                                                        
+
                                                         cur_code[cd_count] = *point;
                                                         cd_count--;
                                                         point++;
@@ -4039,7 +4069,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                         {
                                                                 if (cd_count < 0)
                                                                         continue;
-                                                                
+
                                                                 cur_code[cd_count] = *point;
                                                                 cd_count--;
                                                                 point++;
@@ -4054,21 +4084,21 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                 cd_count = 2;
                                                 continue;
                                         }
-                                        
+
                                         if (*point == close_token)
                                         {
-                                                /* 
+                                                /*
                                                 * If we end up here we have the color code
-                                                * and everything is sweet. 
+                                                * and everything is sweet.
                                                 */
                                                 /*sprintf(buf78, "cv_int pre-reverse: %s\r\n", cur_code);
                                                 log_string(buf78);*/
 
                                                 reverse_char_array(cur_code, 3);
-                                                
+
                                                 /*sprintf(buf78, "cur_code char reversed: %s\r\n", cur_code);
                                                 log_string(buf78);*/
-                                                
+
                                                 cv_int = atoi( cur_code );
 
                                                 /*sprintf(buf78, "cv_int to go to colour_8bit(): %d\r\n", cv_int);
@@ -4084,7 +4114,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
 
                                                 while (skip-- > 0)
                                                         ++buffer;
-                                                
+
                                                 continue;
                                         }
                                         else {
@@ -4106,9 +4136,9 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                 }
                 else
                 {
-                        /* 
-                         * If the player has ANSI disabled we need to 
-                         * run a modified version of the above nightmare 
+                        /*
+                         * If the player has ANSI disabled we need to
+                         * run a modified version of the above nightmare
                          * code to strip the tokens out of the string.
                          */
 
@@ -4134,17 +4164,17 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                         if (*point == open_token)
                                         {
                                                 /* An escaped open_token */
-                                                
+
                                                 *buffer = *point;
                                                 *++buffer = '\0';
                                                 continue;
                                         }
-                                        
+
                                         if (isdigit(*point))
                                         {
                                                 if (cd_count < 0)
                                                         continue;
-                                                
+
                                                 cur_code[cd_count] = *point;
                                                 cd_count--;
                                                 point++;
@@ -4153,7 +4183,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                 {
                                                         if (cd_count < 0)
                                                                 continue;
-                                                        
+
                                                         cur_code[cd_count] = *point;
                                                         cd_count--;
                                                         point++;
@@ -4162,7 +4192,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                         {
                                                                 if (cd_count < 0)
                                                                         continue;
-                                                                
+
                                                                 cur_code[cd_count] = *point;
                                                                 cd_count--;
                                                                 point++;
@@ -4177,16 +4207,16 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                 cd_count = 2;
                                                 continue;
                                         }
-                                        
+
                                         if (*point == close_token)
                                         {
-                                                /* 
+                                                /*
                                                 * have the color code
                                                 */
                                                 reverse_char_array(cur_code, 3);
                                                 cv_int = atoi( cur_code );
                                                 strip_colour_8bit(cv_int, ch, buffer);
-                                                
+
                                                 /*sprintf(buf78, "cvint = %d skip = %d \n\r", cv_int, skip);
                                                 log_string(buf78);*/
 
@@ -4195,7 +4225,7 @@ void colourconv_8bit (char *buffer, const char *txt , CHAR_DATA *ch)
                                                 cur_code[1] = '\0';
                                                 cur_code[2] = '\0';
                                                 cd_count = 2;
-                                                
+
                                                 continue;
                                         }
                                         else {
@@ -4234,7 +4264,7 @@ void strip_colour_8bit (int icode, CHAR_DATA *ch, char *string)
         sprintf(code, "%d", icode);
 
         p = code;
-        
+
         while(*p != '\0')
         {
                 *string = *p++;
@@ -4338,10 +4368,10 @@ int colour (char type, CHAR_DATA *ch, char *string)
                 break;
             case '*':
                  sprintf(code, "%c", 007);
-                 break; 
+                 break;
             case '/':
                 sprintf(code, "%c", 012);
-                break; 
+                break;
             case '{':
                 sprintf(code, "%c", '{');
                 break;
@@ -4442,11 +4472,11 @@ void reverse_char_array(char arr[], int n)
 int digits_in_int (int number )
 {
         int count = 0;
-        
+
         do {
                 number /= 10;
                 ++count;
-        } 
+        }
         while ( number != 0 );
 
         return count;

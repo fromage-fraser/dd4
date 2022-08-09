@@ -61,7 +61,7 @@ gloom that besets it. She busies herself healing and curing the injured who
 come here seeking her out, as well as studying herb and forest-lore. She
 smiles at your entrance, as if she had been waiting for you all day.
 ~
-2|64|512 8|32|128|512|8192|16777216 1000 S
+2|64|512 8|32|128|512|8192|16777216|536870912 1000 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -347,7 +347,7 @@ The fire burns with unrelenting fury.
 The huge bonfire towers above you, crackling and burning with an unnatural
 light. Such is the fury of its flame you feel it insanity to approach it any closer.
 ~
-2|64 2048 0 S
+2|64|9223372036854775808 2048 0 S
 200 0 0 0d0+0 0d0+0
 511 0
 8 8 0
@@ -410,7 +410,7 @@ retreated to the upper reaches of his treetop home and goes out only in
 necessity. He asks that you tell Zelda the white witch that he still thinks of
 her should your paths cross in the forest.
 ~
-2|64|512 8|32|128|512|8192 1000 S
+2|64|512 8|32|128|512|8192|536870912 1000 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1

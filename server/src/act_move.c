@@ -371,7 +371,7 @@ void move_char(CHAR_DATA *ch, int door)
 
         if ( to_room->sector_type == SECT_UNDERWATER
           && is_affected(ch, gsn_mist_walk)
-          && ( ( ch->race != RACE_SAHUAGIN ) 
+          && ( ( ch->race != RACE_SAHUAGIN )
             && ( ch->race != RACE_GRUNG ) ) )
         {
                 send_to_char("You may not dive underwater in mist form.\n\r", ch);
@@ -417,10 +417,10 @@ void move_char(CHAR_DATA *ch, int door)
 
                         found = FALSE;
 
-                        /* 
+                        /*
                          * You can move into a SWIM sector from an UNDERWATER one... rather than drown.
                          * You can also move into one from any non-water room so you get a chance to turn
-                         * your swim skill ON. 
+                         * your swim skill ON.
                          */
 
                         if ( IS_AFFECTED(ch, AFF_FLYING)
@@ -549,7 +549,7 @@ void move_char(CHAR_DATA *ch, int door)
                                 return;
                         }
 
-                        if ( to_room->sector_type == SECT_WATER_NOSWIM 
+                        if ( to_room->sector_type == SECT_WATER_NOSWIM
                         &&   !IS_AFFECTED( ch->mount, AFF_FLYING ) )
                         {
                                 found_boat = FALSE;
@@ -570,7 +570,7 @@ void move_char(CHAR_DATA *ch, int door)
                                 }
                         }
 
-                        if ( to_room->sector_type == SECT_WATER_SWIM 
+                        if ( to_room->sector_type == SECT_WATER_SWIM
                         && ( ( !IS_AFFECTED( ch->mount, AFF_FLYING ) )
                           && ( !IS_AFFECTED( ch->mount, AFF_SWIM ) ) ) )
                         {
@@ -591,7 +591,7 @@ void move_char(CHAR_DATA *ch, int door)
                                         return;
                                 }
                         }
-                        
+
                         if (to_room->sector_type == SECT_AIR
                             && !IS_AFFECTED(ch->mount, AFF_FLYING))
                         {
@@ -620,8 +620,8 @@ void move_char(CHAR_DATA *ch, int door)
                 if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||     ( to_room->sector_type == SECT_WATER_SWIM )
                 ||     ( to_room->sector_type == SECT_UNDERWATER ) )
-                && ( ( ch->race == RACE_SAHUAGIN ) 
-                  || ( ch->race == RACE_GRUNG ) 
+                && ( ( ch->race == RACE_SAHUAGIN )
+                  || ( ch->race == RACE_GRUNG )
                   || ( IS_AFFECTED(ch, AFF_SWIM) ) ) )
                 {
                         move /= 3;
@@ -699,8 +699,8 @@ void move_char(CHAR_DATA *ch, int door)
         else if ( ( ( to_room->sector_type == SECT_WATER_NOSWIM )
                 ||  ( to_room->sector_type == SECT_WATER_SWIM )
                 ||  ( to_room->sector_type == SECT_UNDERWATER ) )
-                &&  ( !IS_AFFECTED(ch, AFF_FLYING) 
-                   || ch->race == RACE_SAHUAGIN 
+                &&  ( !IS_AFFECTED(ch, AFF_FLYING)
+                   || ch->race == RACE_SAHUAGIN
                    || ch->race == RACE_GRUNG ) )
         {
                 act_move ("$n swims in.", ch, NULL, NULL, TO_ROOM);
@@ -746,7 +746,7 @@ void move_char(CHAR_DATA *ch, int door)
 
         if ( ( ( ( IS_AFFECTED( ch, AFF_SWIM ) )
         ||       ( is_affected( ch, gsn_swim ) ) )
-        &&       ( ch->form != FORM_SNAKE ) 
+        &&       ( ch->form != FORM_SNAKE )
         &&       ( ch->level <= LEVEL_HERO ) )
             && ( ch->in_room->sector_type != SECT_UNDERWATER )
             && ( ch->in_room->sector_type != SECT_WATER_SWIM )
@@ -1539,7 +1539,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
         {
             case POS_SLEEPING:
                 if ( IS_AFFECTED(ch, AFF_SLEEP)
-                && ( (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) ) 
+                && ( (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG ) )
                 && ( ch->in_room->sector_type == SECT_UNDERWATER) )
                 {
                         send_to_char("You can't wake up!\n\r", ch);
@@ -1547,7 +1547,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
                 }
 
                 if ( IS_AFFECTED( ch, AFF_SLEEP )
-                && ( ch->in_room->sector_type == SECT_UNDERWATER) 
+                && ( ch->in_room->sector_type == SECT_UNDERWATER)
                 && !is_affected( ch, gsn_breathe_water ) )
                 {
                         REMOVE_BIT(ch->affected_by, AFF_SLEEP);
@@ -1755,7 +1755,7 @@ void do_mist_walk(CHAR_DATA *ch, char *argument )
         }
 
         if ( ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ch->race != RACE_SAHUAGIN 
+        && ( ch->race != RACE_SAHUAGIN
           && ch->race != RACE_GRUNG ) )
         {
                 send_to_char("Not while you're underwater.\n\r", ch);
@@ -1884,7 +1884,7 @@ void do_meditate (CHAR_DATA *ch, char *argument)
 
         if ( (!IS_NPC(ch))
         && ch->in_room->sector_type == SECT_UNDERWATER
-        && ( ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG ) 
+        && ( ( ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG )
           && ( !is_affected(ch, gsn_breathe_water) ) ) )
         {
                 send_to_char("You can't meditate underwater if you can't breathe underwater.\n\r", ch);
@@ -2011,10 +2011,12 @@ void do_kiai (CHAR_DATA *ch, char *argument)
 
 void do_recall (CHAR_DATA *ch, char *argument)
 {
-        CHAR_DATA       *victim;
-        CHAR_DATA       *mob;
-        CHAR_DATA       *vnext;
-        ROOM_INDEX_DATA *location;
+        CHAR_DATA        *victim;
+        CHAR_DATA        *mob;
+        CHAR_DATA        *vnext;
+        ROOM_INDEX_DATA  *location;
+        OBJ_DATA         *pobj;
+        OBJ_DATA         *pobj_next;
         char             buf [ MAX_STRING_LENGTH ];
         int              place;
         int              followers_found;
@@ -2024,7 +2026,7 @@ void do_recall (CHAR_DATA *ch, char *argument)
 
         argument = one_argument(argument, arg);
         argument = one_argument(argument, arg2);
-        
+
         followers_found = 0;
 
         if (IS_NPC(ch))
@@ -2113,12 +2115,31 @@ void do_recall (CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                /* 
+                /* Check to see if the character is carrying any ITEM_CURSED items.  They
+                 * will prevent recall as well as other forms of magical travel.
+                 */
+
+                for (pobj = ch->carrying; pobj; pobj = pobj_next)
+                {
+                        pobj_next = pobj->next_content;
+
+                        if (pobj->deleted)
+                                continue;
+
+                        if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                        {
+                                sprintf(buf, "The gods will not assist carriers of cursed items.\n\r");
+                                send_to_char(buf, ch);
+                                return;
+                        }
+                }
+
+                /*
                  * Check the room for mobs where victim->master == ch.  If you find one,
                  * Send them to the room ch will recall to. Put in to make life a little
-                 * less painful for Infernalists -- Owl 24/7/22 
+                 * less painful for Infernalists -- Owl 24/7/22
                  */
-                
+
                 for(mob = ch->in_room->people; mob; mob = vnext)
                 {
                         vnext = mob->next_in_room;
@@ -2126,14 +2147,14 @@ void do_recall (CHAR_DATA *ch, char *argument)
                         if ( ( mob != ch )
                         &&   ( mob->master == ch )
                         &&   ( IS_NPC( mob ) ) )
-                        {       
+                        {
                                 followers_found++;
                                 char_from_room(mob);
                                 char_to_room(mob, location);
                                 act_move("$n appears suddenly.", mob, NULL, NULL, TO_ROOM);
                                 mob = mob->next_in_room;
                         }
-                        
+
                 }
 
                 if (tournament_status == TOURNAMENT_STATUS_RUNNING
@@ -3053,11 +3074,13 @@ void do_bash (CHAR_DATA *ch, char *argument)
 
 void do_pattern(CHAR_DATA* ch, char* argument)
 {
-        char arg [ MAX_INPUT_LENGTH ];
-        int place, i, target;
+        char            arg [ MAX_INPUT_LENGTH ];
+        int             place, i, target;
         ROOM_INDEX_DATA *location;
-        char buf[MAX_STRING_LENGTH];
-        char tmp[MAX_STRING_LENGTH];
+        OBJ_DATA        *pobj;
+        OBJ_DATA        *pobj_next;
+        char            buf[MAX_STRING_LENGTH];
+        char            tmp[MAX_STRING_LENGTH];
 
         if(IS_NPC(ch))
                 return;
@@ -3072,6 +3095,20 @@ void do_pattern(CHAR_DATA* ch, char* argument)
         {
                 send_to_char("You cannot focus your energies while fighting.\n\r", ch);
                 return;
+        }
+
+        for (pobj = ch->carrying; pobj; pobj = pobj_next)
+        {
+                pobj_next = pobj->next_content;
+
+                if (pobj->deleted)
+                        continue;
+
+                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                {
+                        send_to_char("You are carrying a cursed item that prevents magical travel.\n\r", ch);
+                        return;
+                }
         }
 
         one_argument(argument, arg);
