@@ -111,7 +111,7 @@ void violence_update (void)
                  * Ok. So ch is not fighting anyone.
                  * Is there a fight going on?
                  */
-                
+
 
                 mobfighting = FALSE;
                 grmobfighting = FALSE;
@@ -152,7 +152,7 @@ void violence_update (void)
                                 grmobfighting = TRUE;
                                 break;
                         }
-                        
+
                         /* another mob is fighting a player */
                         if (IS_NPC(ch)
                             && IS_NPC(rch)
@@ -177,17 +177,17 @@ void violence_update (void)
                         number = 0;
                         tmp = number_percent();
 
-                        /*sprintf(buf2, "vch: %s rch: %s victim: %s\r\n", 
+                        /*sprintf(buf2, "vch: %s rch: %s victim: %s\r\n",
                         vch->short_descr, rch->short_descr, victim->short_descr);*/
-                        /* sprintf(buf2, "ch: %s victim: %s\r\n", 
-                                IS_NPC(ch) ? ch->short_descr : ch->name, 
+                        /* sprintf(buf2, "ch: %s victim: %s\r\n",
+                                IS_NPC(ch) ? ch->short_descr : ch->name,
                                 victim->short_descr );
                         log_string(buf2);*/
 
                         if (grmobfighting)
                         {
                                 /*It's a mob we're grouped with fighting, join in. */
-                                if( CAN_SPEAK(ch) ) 
+                                if( CAN_SPEAK(ch) )
                                 {
                                         if (tmp < 33)
                                         {
@@ -218,7 +218,7 @@ void violence_update (void)
                                                 act( "{Y$c rears and leaps at you!{x", ch, NULL, victim, TO_VICT );
                                         }
                                 }
-                                
+
                                 multi_hit(ch, victim, TYPE_UNDEFINED);
                                 return;
                         }
@@ -380,13 +380,13 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (is_affected(ch, gsn_haste))
                 one_hit(ch, victim, dt);
 
-        /* for counterbalance */
+        /* for counterbalance - adds another attack.*/
 
         if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 )
         {
-                OBJ_DATA *wield; 
-                AFFECT_DATA *paf; 
-                wield = get_eq_char(ch, WEAR_WIELD); 
+                OBJ_DATA *wield;
+                AFFECT_DATA *paf;
+                wield = get_eq_char(ch, WEAR_WIELD);
                 for ( paf = wield->affected; paf; paf = paf->next )
                 {
                         if ( paf->location == APPLY_BALANCE )
@@ -394,7 +394,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                 if (number_percent() < paf->modifier)
                                         one_hit(ch, victim, dt);
                         }
-                } 
+                }
         }
         /*
          * Multiple attacks for shifter forms
@@ -418,6 +418,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 : ((45 + ch->pcdata->learned[gsn_second_attack] / 2)
                    * CAN_DO(ch, gsn_second_attack));
 
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
+
         if (number_percent() < chance)
         {
                 one_hit(ch, victim, dt);
@@ -435,6 +441,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 : ((35 + ch->pcdata->learned[gsn_third_attack] / 2)
                    * CAN_DO(ch, gsn_third_attack));
 
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
+
         if (number_percent() < chance)
         {
                 one_hit(ch, victim, dt);
@@ -451,6 +462,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         chance = IS_NPC(ch) ? ch->level
                 : ((25 + ch->pcdata->learned[gsn_fourth_attack] / 2)
                    * CAN_DO(ch, gsn_fourth_attack));
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
 
         if (number_percent() < chance)
         {
@@ -470,6 +486,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 return;
 
         chance = ch->level;
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
 
         if (number_percent() < chance)
                 one_hit(ch, victim, dt);
@@ -1026,7 +1047,7 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_AFFECTED(victim, AFF_SANCTUARY))
                         dam /= 2;
 
-        /* this is to support strengthen, but could b aplied for aonther thigs - Brutus */
+                /* this is to support strengthen, but could be applied for other things - Brutus */
                 if (!IS_NPC(victim))
                 {
                         dam *=  (100 - victim->damage_mitigation);
@@ -1171,6 +1192,9 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 dam_message(victim, ch, firedam, gsn_fireshield, FALSE);
                 ch->hit -= firedam;
 
+                if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
+                        ch->hit = 1;
+
                 if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->hit < 1)
                         ch->hit = 1;
         }
@@ -1304,13 +1328,13 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                           || opponent->master->sub_class == SUB_CLASS_INFERNALIST
                           || opponent->master->sub_class == SUB_CLASS_NECROMANCER
                           || opponent->master->sub_class == SUB_CLASS_KNIGHT
-                          || ( ( opponent->master->class == CLASS_SHAPE_SHIFTER ) 
+                          || ( ( opponent->master->class == CLASS_SHAPE_SHIFTER )
                             && ( opponent->master->sub_class == 0 ) )
                           || opponent->master->sub_class == SUB_CLASS_WEREWOLF ) )
                         {
                                 group_gain(opponent->master, fighter, TRUE);
                         }
-                        else 
+                        else
                         {
                                 group_gain(opponent, fighter, FALSE);
                         }
@@ -1894,6 +1918,12 @@ bool check_aura_of_fear (CHAR_DATA *ch, CHAR_DATA *victim)
 
 void update_pos (CHAR_DATA *victim)
 {
+
+        if (IS_SET(victim->act, ACT_UNKILLABLE))
+        {
+                return;
+        }
+
         if (victim->hit > 0)
         {
                 if (victim->position <= POS_STUNNED)
@@ -1973,7 +2003,7 @@ void set_fighting (CHAR_DATA *ch, CHAR_DATA *victim)
                 affect_strip(ch, gsn_meditate);
         }
 
-        /* 
+        /*
          * The case we're trying to protect below is having your summoned/charmed mob
          * that you're grouped with attack an NPC for you, which is permitted. Possibly
          * exploitable, revert if so.  --Owl 26/7/22
@@ -1981,11 +2011,11 @@ void set_fighting (CHAR_DATA *ch, CHAR_DATA *victim)
 
         if ( ch == victim->master )
         {
-                if ( ( !IS_NPC(ch) 
+                if ( ( !IS_NPC(ch)
                     && !IS_NPC(victim) )
-                ||   ( !IS_NPC(ch) 
-                     && IS_NPC(victim) ) 
-                ||   ( IS_NPC(ch) 
+                ||   ( !IS_NPC(ch)
+                     && IS_NPC(victim) )
+                ||   ( IS_NPC(ch)
                    && !IS_NPC(victim) ) )
                 {
                         stop_follower(victim);
@@ -2080,7 +2110,7 @@ void stop_fighting (CHAR_DATA *ch, bool fBoth)
                         if (is_affected(fch, gsn_coil))
                                 affect_strip(fch, gsn_coil);
 
-                        /* 
+                        /*
                          * Shade - 15.6.22 belongs here
                          */
 
@@ -2464,10 +2494,10 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                 }
         }
 
-        /* 
-         * If function called by a mob on behalf of ch and there are no npc group members in room, 
+        /*
+         * If function called by a mob on behalf of ch and there are no npc group members in room,
          * return, as this implies that the player's mobs have killed the victim mob after the player
-         * has fled.  --Owl 31/7/22 
+         * has fled.  --Owl 31/7/22
          */
 
         if (mob_called)
@@ -2545,12 +2575,12 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                         }
                 }
 
-                /* 
+                /*
                  * Shouldn't get grouping xp bonus if the number of npcs you're grouped
                  * with are >= the number of PCs in your group.
                  */
 
-                if ( members > 1 
+                if ( members > 1
                 &&   pc_members > npc_members)
                 {
                         grxp = (xp / 4) * members;
@@ -2632,11 +2662,11 @@ void group_gain (CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                         gch->rage -= UMIN(gain, gch->rage);
                 }
 
-                /* 
+                /*
                  * Shade 15.6.22
                  *
                  * This should be in stop_fighting
-                 *        affect_strip(gch, gsn_unarmed_combat); 
+                 *        affect_strip(gch, gsn_unarmed_combat);
                  * */
 
                 if (gch->pcdata->questmob == victim->pIndexData->vnum)
@@ -2828,7 +2858,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf1, "You %s $N%c",       vs, punct);
                 }
                 else {
-                       *buf1 = '\0';  
+                       *buf1 = '\0';
                 }
 
                 /*
@@ -2839,7 +2869,7 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                         sprintf(buf2, "{W$c %s {Wyou%c{x",       vp, punct);
                 else
                         sprintf(buf2, "$n %s you%c",       vp, punct);
-                
+
                 sprintf(buf3, "$n %s $N%c",        vp, punct);
                 sprintf(buf4, "You %s yourself%c", vs, punct);
                 sprintf(buf5, "$n %s $mself%c",    vp, punct);
@@ -2883,13 +2913,13 @@ void dam_message (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison
                 else
                 {
                         sprintf(buf1, "Your %s %s $N%c",  attack, vp, punct);
-                        
+
                         if (dam > 0)
                         {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
                         }
                         else
-                        {       
+                        {
                                 sprintf(buf2, "$c's %s %s you%c", attack, vp, punct);
                         }
                         sprintf(buf3, "$c's %s %s $N%c",  attack, vp, punct);
@@ -3532,13 +3562,13 @@ void do_backstab (CHAR_DATA *ch, char *argument)
                                   || ch->master->sub_class == SUB_CLASS_INFERNALIST
                                   || ch->master->sub_class == SUB_CLASS_NECROMANCER
                                   || ch->master->sub_class == SUB_CLASS_KNIGHT
-                                  || ( ( ch->master->class == CLASS_SHAPE_SHIFTER ) 
+                                  || ( ( ch->master->class == CLASS_SHAPE_SHIFTER )
                                     && ( ch->master->sub_class == 0 ) )
                                   || ch->master->sub_class == SUB_CLASS_WEREWOLF ) )
                                 {
                                         group_gain(ch->master, victim, TRUE);
                                 }
-                                else 
+                                else
                                 {
                                         group_gain(ch, victim, FALSE);
                                 }
@@ -3806,8 +3836,8 @@ void do_berserk (CHAR_DATA *ch, char *argument)
         if (is_affected(ch, gsn_berserk))
                 return;
 
-        send_to_char("Your foe's blood splatters all over!\n\r", ch);
-        send_to_char("The taste of blood begins to drive you crazy!\n\r", ch);
+        send_to_char("A red mist comes over your vision!\n\r", ch);
+        send_to_char("The thrill of combat begins to drive you crazy!\n\r", ch);
         arena_commentary("$n has gone berserk.", ch, ch);
 
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_berserk])
@@ -4173,13 +4203,13 @@ void do_rescue (CHAR_DATA *ch, char *argument)
         if ( IS_NPC(ch)
         &&  ( ch->master) )
         {
-                /* 
+                /*
                  * Ordering an NPC you're grouped with to rescue you disconnects you and often crashes the MUD.
                  * be warned if you decide you want charmed/grouped mobs to be able to rescue players you will
-                 * need to fix this issue, not just delete this check. Note the issue does not exist if the charmed 
+                 * need to fix this issue, not just delete this check. Note the issue does not exist if the charmed
                  * NPC is not grouped with you. -- Owl 24/7/22
-                 */ 
-                
+                 */
+
                 return;
         }
 
@@ -4962,8 +4992,8 @@ void do_headbutt (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
 
-        if (IS_NPC(ch) 
-        && !( ch->spec_fun == spec_lookup("spec_warrior") 
+        if (IS_NPC(ch)
+        && !( ch->spec_fun == spec_lookup("spec_warrior")
            || ch->spec_fun == spec_lookup("spec_grail")
            || ch->spec_fun == spec_lookup("spec_guard") ) )
                 return;
@@ -5975,7 +6005,7 @@ void do_swoop (CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch))
                 return;
-        
+
         if(ch->form != FORM_PHOENIX)
         {
                 send_to_char("You need to be in phoenix form to swoop.\n\r", ch);
@@ -6095,7 +6125,7 @@ void do_whirlwind (CHAR_DATA *ch, char *argument)
 
                 if (count == 0)
                 {
-                        act("$n sends blood around the room in a fury!", ch, NULL, NULL, TO_ROOM);
+                        act("$n flails around in a fury!", ch, NULL, NULL, TO_ROOM);
                         arena_commentary("$n whirlwinds.", ch, ch);
                         count = 1;
                 }
@@ -6138,10 +6168,10 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 send_to_char("You can't see anything!\n\r", ch);
                 return;
         }
-        
+
         if (arg1[0] == '\0')
         {
-                send_to_char("hurl what?\n\r", ch);    
+                send_to_char("Hurl what?\n\r", ch);
                 return;
         }
 
@@ -6159,7 +6189,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
 
         if (is_safe (ch, victim))
                 return;
-        
+
         if (! IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
         {
                 send_to_char("You're not going to throw away something thats not chained.\n\r", ch);
@@ -6199,10 +6229,10 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 {
                         act ("You hurl your shield. It slams into the side of their head.. THUNK!!",
                         ch, NULL, victim, TO_CHAR);
-                        act ("Your knowed out cold by a shield to the head.", ch, NULL, victim, TO_VICT);
-                        act ("$n hurls their shield at $N. It slams into teh side of their head.. THUNK!!",
+                        act ("You're knocked out cold by a shield to the head.", ch, NULL, victim, TO_VICT);
+                        act ("$n hurls their shield at $N. It slams into the side of their head... THUNK!",
                         ch, NULL, victim, TO_NOTVICT);
-                        arena_commentary("$n knocks out $N cold.", ch, victim);
+                        arena_commentary("$n knocks $N out cold.", ch, victim);
 
                         af.type = gsn_stun;
                         af.modifier = 0;
@@ -6222,7 +6252,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
-                        act ("You hurl your shield. It sails past their head, and returns. MISS!!",
+                        act ("It sails past their head and returns to your arm. MISS!",
                         ch, NULL, victim, TO_CHAR);
                         damage(ch, victim, 0, gsn_stun, FALSE);
                 }
@@ -6247,8 +6277,8 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
-                        
-                        act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
+
+                        act ("It sails past their head and returns to your hand. MISS!",
                                 ch, NULL, victim, TO_CHAR);
                         damage (ch, victim, 0, gsn_hurl, FALSE);
                 }
@@ -6343,15 +6373,15 @@ void do_shoot (CHAR_DATA *ch, char *argument)
 
                 num = 1;
 
-                if ( ( number_percent() < ch->pcdata->learned[gsn_second_shot] ) 
-                ||    ( ( IS_AFFECTED(victim, AFF_HOLD) ) 
+                if ( ( number_percent() < ch->pcdata->learned[gsn_second_shot] )
+                ||    ( ( IS_AFFECTED(victim, AFF_HOLD) )
                      && ( ch->pcdata->learned[gsn_second_shot]) ) )
                 {
                         num++;
                 }
 
-                if ( ( number_percent() < ch->pcdata->learned[gsn_third_shot] ) 
-                ||   ( ( IS_AFFECTED(victim, AFF_HOLD) ) 
+                if ( ( number_percent() < ch->pcdata->learned[gsn_third_shot] )
+                ||   ( ( IS_AFFECTED(victim, AFF_HOLD) )
                      && ( ch->pcdata->learned[gsn_third_shot]) ) )
                 {
                         num++;
@@ -6413,7 +6443,7 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
 
         if (!obj || !IS_OBJ_STAT(obj, ITEM_BOW))
         {
-                send_to_char("With what?!?\n\r", ch);
+                send_to_char("With what?\n\r", ch);
                 return;
         }
 
@@ -6873,22 +6903,28 @@ bool aggro_damage (CHAR_DATA *ch, CHAR_DATA *victim, int damage)
 
         if (victim->hit < 1)
         {
-                /* 
-                 * If a mob you're grouped with killsteals, and you're a fights-with-mobs class, 
-                 * you get the reward. -- Owl 26/7/22 
+                if ( IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE))
+                {
+                        victim->hit = 1;
+                        return FALSE;
+                }
+
+                /*
+                 * If a mob you're grouped with killsteals, and you're a fights-with-mobs class,
+                 * you get the reward. -- Owl 26/7/22
                  */
                 if ( ( IS_NPC(ch) && ch->master )
                 &&  ( ch->master->sub_class == SUB_CLASS_WITCH
                    || ch->master->sub_class == SUB_CLASS_INFERNALIST
                    || ch->master->sub_class == SUB_CLASS_NECROMANCER
                    || ch->master->sub_class == SUB_CLASS_KNIGHT
-                   || ( ( ch->master->class == CLASS_SHAPE_SHIFTER ) 
+                   || ( ( ch->master->class == CLASS_SHAPE_SHIFTER )
                      && ( ch->master->sub_class == 0 ) )
                    || ch->master->sub_class == SUB_CLASS_WEREWOLF) )
                 {
                         group_gain(ch->master, victim, TRUE);
                 }
-                else 
+                else
                 {
                         group_gain(ch, victim, FALSE);
                 }
@@ -6932,11 +6968,11 @@ void check_autoloot (CHAR_DATA *ch, CHAR_DATA *victim)
 
 char *get_damage_string( int damage_value, bool is_singular )
 {
-        /* 
-        * Get the damage string for the amount of damage you're doing. 
+        /*
+        * Get the damage string for the amount of damage you're doing.
         * takes damage amount and TRUE/FALSE depending on if you want
         * a singular or plural string returned.
-        * --Owl 12/7/22 
+        * --Owl 12/7/22
         */
 
         char *vs;
@@ -7073,37 +7109,37 @@ char *get_damage_string( int damage_value, bool is_singular )
                 vs = "<0><52>--=##>><558>UTTERLY DESTROY<559><52><<<<##=--<0>";
                 vp = "<0><52>--=##>><558>UTTERLY DESTROYS<559><52><<<<##=--<0>";
         }
-        else if (damage_value <= 3500)   
+        else if (damage_value <= 3500)
         {
-                vs = "<0><52>-=*<<|<556>[NULLIFY<52>]<557>|>*=-<0>"; 
-                vp = "<0><52>-=*<<|<556>[NULLIFIES<52>]<557>|>*=-<0>"; 
+                vs = "<0><52>-=*<<|<556>[NULLIFY<52>]<557>|>*=-<0>";
+                vp = "<0><52>-=*<<|<556>[NULLIFIES<52>]<557>|>*=-<0>";
         }
-        else if (damage_value <= 4000)   
+        else if (damage_value <= 4000)
         {
-                vs = "<0><52>-=**[|<<<<<556>B U T C H E R<0><52>>>|]**=-<0>"; 
-                vp = "<0><52>-=**[|<<<<<556>B U T C H E R S<0><52>>>|]**=-<0>"; 
+                vs = "<0><52>-=**[|<<<<<556>B U T C H E R<0><52>>>|]**=-<0>";
+                vp = "<0><52>-=**[|<<<<<556>B U T C H E R S<0><52>>>|]**=-<0>";
         }
-        else if (damage_value <= 4500)   
+        else if (damage_value <= 4500)
         {
-                vs = "<0><52>--=<<#[|<556><460><52>L I Q U I D A T E<0><52>|]#>=--<0>"; 
-                vp = "<0><52>--=<<#[|<556><460><52>L I Q U I D A T E S<0><52>|]#>=--<0>"; 
+                vs = "<0><52>--=<<#[|<556><460><52>L I Q U I D A T E<0><52>|]#>=--<0>";
+                vp = "<0><52>--=<<#[|<556><460><52>L I Q U I D A T E S<0><52>|]#>=--<0>";
         }
-        else if (damage_value <= 5000)   
+        else if (damage_value <= 5000)
         {
-                vs = "<0><52>-=+<<##<556><424><52>S L A U G H T E R<0><52>##>+=-<0>"; 
-                vp = "<0><52>-=+<<##<556><424><52>S L A U G H T E R S<0><52>##>+=-<0>"; 
+                vs = "<0><52>-=+<<##<556><424><52>S L A U G H T E R<0><52>##>+=-<0>";
+                vp = "<0><52>-=+<<##<556><424><52>S L A U G H T E R S<0><52>##>+=-<0>";
         }
-        else if (damage_value <= 5500)   
+        else if (damage_value <= 5500)
         {
-                vs = "<0><52>-=+*<<(|[ <556><388><196>E X T I R P A T E<0><52> ]|)>*+=-<0>"; 
-                vp = "<0><52>-=+*<<(|[ <556><388><196>E X T I R P A T E S<0><52> ]|)>*+=-<0>"; 
+                vs = "<0><52>-=+*<<(|[ <556><388><196>E X T I R P A T E<0><52> ]|)>*+=-<0>";
+                vp = "<0><52>-=+*<<(|[ <556><388><196>E X T I R P A T E S<0><52> ]|)>*+=-<0>";
         }
         else
         {
                 vs = "<0><52>-+<<<<[[ <556><352><196>P A R T I C L I Z E<0><52> ]]>>+-<0>";
                 vp = "<0><52>-+<<<<[[ <556><352><196>P A R T I C L I Z E S<0><52> ]]>>+-<0>";
         }
-       
+
         if (is_singular == TRUE)
         {
                 return vs;

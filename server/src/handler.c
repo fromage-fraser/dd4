@@ -374,8 +374,8 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 }
                 else
                 {
-                        ch->damage_mitigation += mod;  
-                        send_to_char( "Your damage mitigation reduces somewhat.\n\r", ch );    
+                        ch->damage_mitigation += mod;
+                        send_to_char( "Your damage mitigation reduces somewhat.\n\r", ch );
                         break;
                 }
 
@@ -1130,7 +1130,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         AFFECT_DATA *paf;
         OBJSET_INDEX_DATA *pObjSetIndex;
         char         buf [ MAX_STRING_LENGTH ];
- 
+
         if ( get_eq_char( ch, iWear ) )
         {
                 sprintf( buf, "Equip_char: %s already equipped at %d.",
@@ -1161,14 +1161,14 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 count=0;
                 send_to_char ( "You wear a part of a set.\n\r", ch);
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
-                {       
+                {
                         count++;
                      /*   bug( "EQUIP_CHAR DEBUG: total count %d.", count ); */
                         if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
-                        { 
+                        {
                                 affect_modify( ch, paf, TRUE, obj );
                                 /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect */
-                                send_to_char ( "You obtain a Set Bonus.\n\r", ch); 
+                                send_to_char ( "You obtain a Set Bonus.\n\r", ch);
                                 break;
                         }
                 }
@@ -1182,10 +1182,10 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 
                 for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
-                
+
                 for ( paf = obj->affected; paf; paf = paf->next )
                         affect_modify( ch, paf, TRUE, obj );
-                
+
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
@@ -1241,19 +1241,19 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                 count=0;
 
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
-                {       
+                {
                         count++;
-                        
+
                         if ( rem_bonus_objset ( pObjSetIndex, ch, obj, count) )
-                        { 
+                        {
                                 affect_modify( ch, paf, FALSE, obj );
-                                send_to_char ( "Your setbonus is removed.\n\r", ch); 
+                                send_to_char ( "Your setbonus is removed.\n\r", ch);
                                 break;
                         }
                 }
 
         }  /* End set bonus hack */
-                
+
         if( obj->wear_loc != WEAR_RANGED_WEAPON )
         {
                 ch->armor += apply_ac( obj, obj->wear_loc );
@@ -1904,22 +1904,22 @@ char  *objset_bonus( OBJSET_INDEX_DATA *pObjSetIndex, int num )
         AFFECT_DATA *paf;
         int count;
         count = 0;
-      
+
         if (  pObjSetIndex  )
         {
         for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
         {
                 count++;
                 if (count == num);
-                return "oh dear"; 
+                return "oh dear";
         }
-        
+
         }
         return NULL;
-        
+
 }
 
-/* Return how many items need to be worn to get a bonus from a 
+/* Return how many items need to be worn to get a bonus from a
 objsetvnum and position */
 int objset_bonus_num_pos( int vnum, int pos)
 {
@@ -1955,37 +1955,37 @@ int objset_bonus_num_pos( int vnum, int pos)
                 }
 
                 if ( bonus2 > 0)
-                {       
+                {
                         bonust = bonus2;
                         count++;
                         if ( (pos == count) )
                                 return bonust;
-                        
+
                 }
                 if ( (bonus3 > 0) || ( bonus3 > bonust) )
-                {       
+                {
                         bonust += bonus3;
                         count++;
                         if ( (pos == count) )
                                 return bonust;
-                        
+
                 }
                 if ( (bonus4 > 0) || ( bonus4 > bonust) )
-                {       
+                {
                         bonust += bonus4;
                         count++;
                         if ( (pos == count) )
                                 return bonust;
-                        
+
                 }
                 if ( (bonus5 > 0) || ( bonus5 > bonust) )
-                {       
+                {
                         bonust += bonus5;
                         count++;
-                        if (( pos == count )) 
+                        if (( pos == count ))
                                 return bonust;
                 }
-               
+
         }
         return 0;
 }
@@ -2023,11 +2023,11 @@ int objset_bonus_num( int vnum)
                 }
                 if ( bonus2 > 0)
                         bonust++;
-                if (bonus3 > 0) 
+                if (bonus3 > 0)
                         bonust++;
                 if (bonus4 > 0)
                         bonust++;
-                if (bonus5 > 0) 
+                if (bonus5 > 0)
                         bonust++;
                 return bonust;
         }
@@ -2071,7 +2071,7 @@ char *objset_type( int vnum)
                 return "<39>Rare<0>";
         if (bonus2 > 0)
                 return "<34>Uncommon<0>";
-                
+
         return "BUG: Log this as a fault, Lookup type of set in objset_type\n\r";
 }
 
@@ -2082,17 +2082,17 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
- 
+
         worn=0;
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
                 if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
-                { 
-                
+                {
+
                 if ( (objworn->wear_loc != WEAR_NONE) && (pObjSetIndex->vnum == pobjsetworn->vnum) )/*count worn items of set */
                         worn++;
                    /*     bug( "I find worn %d.", worn ); */
-                }               
+                }
         }
         /* bug( "OBJSET DEBUG: Total worn items %d.", worn ); */
 
@@ -2109,7 +2109,7 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
                 if ( (worn+1) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
                 {
                         bug( "OBJSET ADD TRUE: Total worm items %d", worn);
-                        return TRUE;              
+                        return TRUE;
                 }
         }
         return FALSE;
@@ -2122,18 +2122,18 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         OBJ_DATA *objworn;
         OBJSET_INDEX_DATA *pobjsetworn;
         AFFECT_DATA *paf;
- 
+
         worn=0;
         for ( objworn = ch->carrying; objworn; objworn = objworn->next_content )
         {
                 if ( (pobjsetworn =  objects_objset(objworn->pIndexData->vnum) ) )
-                { 
+                {
                 if ( (pObjSetIndex->vnum != pobjsetworn->vnum))
                         return FALSE;
 
                 if ( (objworn->wear_loc != WEAR_NONE)  )/*count worn items of set */
                         worn++;
-                }               
+                }
         }
         bug( "OBJSET DEBUG: Total worn items %d.", worn );
 
@@ -2150,10 +2150,10 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
                 if ( (worn) == ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
                 {
                         bug( "OBJSET REM TRUE: Total worm items %d", worn);
-                        return TRUE;              
+                        return TRUE;
                 }
                 if ( (worn) < ( objset_bonus_num_pos(pObjSetIndex->vnum, pos) ) )
-                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);  
+                      bug( "Bug in rem_objset_bonus, set bonus should already be removed. (worn items %d)", worn);
         }
         return FALSE;
 }
@@ -2161,7 +2161,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
 /* Returns the Object set from a objects vnum - Brutus */
 OBJSET_INDEX_DATA *objects_objset( int vnum )
 {
-       
+
         OBJSET_INDEX_DATA *pObjSetIndex;
         extern int      top_objset_index;
         int osvnum;
@@ -2547,7 +2547,7 @@ char* weapon_damage_type_name (int dt_num)
         if (dt_num == 14)       return "rake";
         if (dt_num == 15)       return "swipe";
         if (dt_num == 16)       return "sting";
-        
+
         return "(unknown)";
 }
 
@@ -2723,7 +2723,7 @@ int item_name_type( char *name )
  * Return ascii name of an affect bit vector.
  * Remember to change the function directly below too.
  */
-char *affect_bit_name (int vector)
+char *affect_bit_name (unsigned long int vector)
 {
         if ( vector & AFF_BLIND         ) return "blind";
         if ( vector & AFF_INVISIBLE     ) return "invisible";
@@ -2756,6 +2756,7 @@ char *affect_bit_name (int vector)
         if ( vector & AFF_NON_CORPOREAL ) return "non_corporeal";
         if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
+        if ( vector & AFF_SLOW          ) return "slow";
 
         return "none";
 }
@@ -2763,7 +2764,7 @@ char *affect_bit_name (int vector)
 /*
  *  Used for the 'affect' command output
  */
-char* affect_bit_name_nice (int vector)
+char* affect_bit_name_nice (unsigned long int vector)
 {
         if ( vector & AFF_BLIND         ) return "blindness";
         if ( vector & AFF_INVISIBLE     ) return "invisibility";
@@ -2779,23 +2780,24 @@ char* affect_bit_name_nice (int vector)
         if ( vector & AFF_FLAMING       ) return "fireshield";
         if ( vector & AFF_POISON        ) return "poison";
         if ( vector & AFF_PROTECT       ) return "protection";
-        if ( vector & AFF_SLEEP         ) return "sleep";
+        if ( vector & AFF_MEDITATE      ) return "meditation";
         if ( vector & AFF_SNEAK         ) return "sneak";
         if ( vector & AFF_HIDE          ) return "hide";
+        if ( vector & AFF_SLEEP         ) return "sleep";
         if ( vector & AFF_CHARM         ) return "charm";
         if ( vector & AFF_FLYING        ) return "flight";
         if ( vector & AFF_PASS_DOOR     ) return "pass door";
-        if ( vector & AFF_MEDITATE      ) return "meditation";
+        if ( vector & AFF_DETECT_TRAPS  ) return "detect traps";
+        if ( vector & AFF_BATTLE_AURA   ) return "battle aura";
+        if ( vector & AFF_DETECT_SNEAK  ) return "detect sneak";
+        if ( vector & AFF_GLOBE         ) return "globe";
+        if ( vector & AFF_DETER         ) return "deter aggression";
+        if ( vector & AFF_SWIM          ) return "swim";
+        if ( vector & AFF_PRAYER_PLAGUE ) return "plague";
+        if ( vector & AFF_NON_CORPOREAL ) return "non-corporeal form";
         if ( vector & AFF_DETECT_CURSE  ) return "detect curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect good";
-        if ( vector & AFF_GLOBE         ) return "globe";
-        if ( vector & AFF_DETECT_TRAPS  ) return "detect traps";
-        if ( vector & AFF_DETECT_SNEAK  ) return "detect sneak";
-        if ( vector & AFF_DETER         ) return "deter aggression";
-        if ( vector & AFF_BATTLE_AURA   ) return "battle aura";
-        if ( vector & AFF_SWIM          ) return "swim";
-        if ( vector & AFF_NON_CORPOREAL ) return "non-corporeal form";
-        if ( vector & AFF_PRAYER_PLAGUE ) return "plague";
+        if ( vector & AFF_SLOW          ) return "slow";
 
         return "some unknown effect";
 }
@@ -2804,7 +2806,7 @@ char* affect_bit_name_nice (int vector)
  * Return ascii name of player act bit vectors. Used by mstat. --Owl 21/3/22
  */
 
-char *pact_bit_name (int vector)
+char *pact_bit_name (unsigned long int vector)
 {
         if ( vector & PLR_IS_NPC                ) return "is_npc";
         if ( vector & PLR_BOUGHT_PET            ) return "bought_pet";
@@ -2842,7 +2844,7 @@ char *pact_bit_name (int vector)
  * Return ascii name of a mob's act bit vector. Used by mstat. --Owl 12/3/22
  */
 
-char *act_bit_name (int vector)
+char *act_bit_name (unsigned long int vector)
 {
         if ( vector & ACT_IS_NPC                ) return "is_npc";
         if ( vector & ACT_SENTINEL              ) return "sentinel";
@@ -2868,6 +2870,7 @@ char *act_bit_name (int vector)
         if ( vector & ACT_CLAN_GUARD            ) return "clan_guard";
         if ( vector & ACT_NO_SUMMON             ) return "no_summon";
         if ( vector & ACT_NO_EXPERIENCE         ) return "no_experience";
+        if ( vector & ACT_UNKILLABLE            ) return "unkillable";
 
         return "none";
 }
@@ -2876,19 +2879,22 @@ char *act_bit_name (int vector)
  * ASCII name for body_form flags, used in mstat --Owl 9/2/22
  *
  */
-char* body_form_name (int vector)
+char* body_form_name (unsigned long int vector)
 {
-        if ( vector & BODY_NO_HEAD      ) return "no_head";
-        if ( vector & BODY_NO_EYES      ) return "no_eyes";
-        if ( vector & BODY_NO_ARMS      ) return "no_arms";
-        if ( vector & BODY_NO_LEGS      ) return "no_legs";
-        if ( vector & BODY_NO_HEART     ) return "no_heart";
-        if ( vector & BODY_NO_SPEECH    ) return "no_speech";
-        if ( vector & BODY_NO_CORPSE    ) return "no_corpse";
-        if ( vector & BODY_HUGE         ) return "huge";
-        if ( vector & BODY_INORGANIC    ) return "inorganic";
+        switch (vector)
+        {
+                case BODY_NO_HEAD:          return "no_head";
+                case BODY_NO_EYES:          return "no_eyes";
+                case BODY_NO_ARMS:          return "no_arms";
+                case BODY_NO_LEGS:          return "no_legs";
+                case BODY_NO_HEART:         return "no_heart";
+                case BODY_NO_SPEECH:        return "no_speech";
+                case BODY_NO_CORPSE:        return "no_corpse";
+                case BODY_HUGE:             return "huge";
+                case BODY_INORGANIC:        return "inorganic";
 
-        return "none";
+                default: return "none";
+        }
 }
 
 /*

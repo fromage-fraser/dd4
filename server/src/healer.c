@@ -32,8 +32,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
         char buf[MAX_STRING_LENGTH];
         int i, sn;
 
-        const int NUMBER_SPELLS = 12;
-        const struct healer_spell spell_list[12] =
+        const int NUMBER_SPELLS = 13;
+        const struct healer_spell spell_list[13] =
         {
                 /*  keyword, spell name, price in gold pieces */
                 { "light",     "cure light wounds",     2     },
@@ -43,6 +43,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 { "power",     "power heal",            35    },
                 { "blindness", "cure blindness",        5     },
                 { "poison",    "cure poison",           5     },
+                { "stabilise", "stabilise",            5     },
                 { "curse",     "remove curse",          5     },
                 { "refresh",   "refresh",               1     },
                 { "bless",     "bless",                 10    },

@@ -419,11 +419,14 @@ int hit_gain( CHAR_DATA *ch )
                 gain = ch->level * 3 / 2;
 
                 if (IS_SET(ch->act, ACT_HEALING_FACTOR))
-                      gain *= 10;  
+                      gain *= 10;
 
                 if (IS_AFFECTED(ch, AFF_POISON)
                     || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                         gain /= 4;
+
+                if (IS_AFFECTED(ch, AFF_SLOW))
+                        gain /= 2;
 
                 return UMIN( gain, ch->max_hit - ch->hit );
         }
@@ -460,6 +463,9 @@ int hit_gain( CHAR_DATA *ch )
 
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+                gain /= 2;
 
         if ((ch->sub_class == SUB_CLASS_VAMPIRE && ch->rage < ch->max_rage / 10)
             || (ch->sub_class == SUB_CLASS_WEREWOLF && ch->rage > 90 ))
@@ -531,7 +537,7 @@ int hit_gain( CHAR_DATA *ch )
                         return 0;
                 }
 
-                /* 
+                /*
                  *  Anti-swim (?); Owl 14/7/22
                  *
                  *  Strip the swim skill and affect for PCs when they're not in 'wet' rooms.  Leaves
@@ -821,6 +827,9 @@ int mana_gain( CHAR_DATA *ch )
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
 
+        if (IS_AFFECTED(ch, AFF_SLOW))
+                gain /= 2;
+
         gain += gain * race_table[ch->race].mana_regen / 100;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_HEALING))
@@ -905,6 +914,9 @@ int move_gain( CHAR_DATA *ch )
 
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+                gain /= 2;
 
         gain += gain * race_table[ch->race].move_regen / 100;
 
@@ -1627,7 +1639,7 @@ void char_update( void )
                                         damage(ch, ch, number_range(ch->level * 3, ch->level * 5),
                                                TYPE_UNDEFINED, FALSE);
 
-                                        if ( ch->position == POS_SLEEPING ) 
+                                        if ( ch->position == POS_SLEEPING )
                                         {
                                                 send_to_char("You decide that drowning is no fun and try to wake yourself up.\n\r", ch);
                                                 do_wake( ch, "" );
@@ -1777,6 +1789,10 @@ void aggr_update()
         CHAR_DATA *victim;
         DESCRIPTOR_DATA *d;
         static int bloodlust_count = 0;
+        int cursed_utterance = 0;
+        int tmp;
+
+        /* char buf [MAX_STRING_LENGTH]; */
 
         for (d = descriptor_list; d; d = d->next)
         {
@@ -1817,6 +1833,7 @@ void aggr_update()
                         }
                 }
 
+
                 for (mch = ch->in_room->people; mch; mch = mch->next_in_room)
                 {
                         int count;
@@ -1851,6 +1868,25 @@ void aggr_update()
                                 mch->mpact    = NULL;
                         }
                         */
+
+                        /*
+                         * Mobs with DETECT_CURSE will aggro PCs who are cursed by a spell or who are carrying a cursed
+                         * object. Check is_cursed() to see exactly what qualifies them.  Speaking NPCs will also yell out to
+                         * explain why they are attacking if their HP is at max, which produces usually-correct behaviour.
+                         * -- Owl 9/8/22
+                         */
+
+                        if ( ( IS_AFFECTED(mch, AFF_DETECT_CURSE) && is_cursed(ch) )
+                        &&   ( mch != ch )
+                        &&   ( IS_NPC(mch) && !IS_NPC(ch) )
+                        &&   ( ch->level < LEVEL_IMMORTAL ) )
+                        {
+                                cursed_utterance = 1;
+                                /* sprintf(buf,"%s and %s and cu: %d\r\n", mch->short_descr, ch->name, cursed_utterance);
+                                log_string(buf); */
+                                goto fightloop;
+                        }
+
                         if (!IS_NPC(mch)
                             || !IS_SET(mch->act, ACT_AGGRESSIVE)
                             || !can_see(mch, ch)
@@ -1869,6 +1905,8 @@ void aggr_update()
                             || (ch->level > mch->level + 10))
                                 continue;
 
+                        fightloop:
+
                         /* If in a clan headquarters, don't attack anyone */
                         if (mch->in_room->area->low_level == -4
                             && mch->in_room->area->high_level == -4)
@@ -1879,6 +1917,7 @@ void aggr_update()
                          * Now make the aggressor fight a RANDOM pc victim in the room,
                          * giving each 'vch' an equal chance of selection.
                          */
+
 
                         count  = 0;
                         victim = NULL;
@@ -1915,6 +1954,34 @@ void aggr_update()
 
                         if (!victim)
                                 continue;
+
+                        if ( CAN_SPEAK(mch)
+                        && ( cursed_utterance == 1 )
+                        && ( mch->hit == mch->max_hit) )
+                        {
+                                cursed_utterance = 0;
+                                tmp = number_percent();
+                                if (tmp < 25)
+                                {
+                                        act( "{R$c screams 'The cursed must be DESTROYED!'{x", mch, NULL, victim, TO_NOTVICT );
+                                        act( "{R$c screams 'The cursed must be DESTROYED!'{x", mch, NULL, victim, TO_VICT );
+                                }
+                                else if (tmp < 50)
+                                {
+                                        act( "{R$c screams 'DIE, foul cursed creature!'{x", mch, NULL, victim, TO_NOTVICT );
+                                        act( "{R$c screams 'DIE, foul cursed creature!'{x", mch, NULL, victim, TO_VICT );
+                                }
+                                else if (tmp < 75)
+                                {
+                                        act( "{R$c screeches 'I must eliminate every cursed being!'{x", mch, NULL, victim, TO_NOTVICT );
+                                        act( "{R$c screeches 'I will eliminate every cursed being!'{x", mch, NULL, victim, TO_VICT );
+                                }
+                                else
+                                {
+                                        act( "{R$c yells 'Prepare for DEATH, accursed one!'{x", mch, NULL, victim, TO_NOTVICT );
+                                        act( "{R$c yells 'Prepare for DEATH, accursed one!'{x", mch, NULL, victim, TO_VICT );
+                                }
+                        }
 
                         multi_hit(mch, victim, TYPE_UNDEFINED);
                 } /* mch loop */

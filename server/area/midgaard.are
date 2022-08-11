@@ -162,7 +162,7 @@ The Healer says Type 'heal' to see what I offer.
 ~
 Although retired from adventuring, The healer has made a comeback.
 ~
-2|64|4096|8192|32768|16777216 8|128|2048|4194304|8388608|16777216 1000 S
+2|64|4096|8192|32768|16777216 8|128|8388608|16777216 1000 S
 40 -10 -20 1d1+29999 2d4+30
 0 0
 8 8 1
@@ -869,7 +869,7 @@ tinker tinkerer~
 the tinker~
 The tinker stands here.
 ~
-An cheerful older man with a rougish gleam in his eye, the Tinker has the air of an intelligent, 
+An cheerful older man with a rougish gleam in his eye, the Tinker has the air of an intelligent,
 well-travelled, and good-natured person who really knows his business.
 ~
 2|32768|262144|16777216 0 900 S
@@ -2344,14 +2344,14 @@ Supplied by Minks Cartography co.
            |     |         |   |     |      |   |         |
            +---------------+----Centre-Road-----+---------+
            |     |         |                    |         |
-           |   Edahs        |                    |         |
+           |   Edahs       |                    |         |
            |        Bungle |                    |  Casino-|
            |       Fleecem-|          Fortress  |         |
            |               |               |    |         |
     Moon---+---------------+--Moon-Gate-Road----+---------+
     Gate         |              |      |             |
-               Jenks       Graveyard  Vacant      Bobs Armory
-               Place                  Lot         and Tackle
+               Jenks       Graveyard  Foundry      Bobs Armory
+               Place                  & Smithy     and Tackle
 ~
 #3389
 philter turquoise~
@@ -3462,8 +3462,8 @@ The alley leads west.
 S
 #3046
 Eastern end of Alley~
-You are standing at the eastern end of the alley. Smoke bellows from 
-the chimneys of Midgaards' Forge is to the south, while a tinker's 
+You are standing at the eastern end of the alley. Smoke bellows 
+from the chimneys of Midgaard Forge to the south, while a tinker's
 shop lies to the east.
 ~
 0 1024 1
@@ -3541,8 +3541,9 @@ You see the river flowing west.
 S
 #3050
 Midgaard Forge~
-The room is littered with armour and weapons from the ages. The air is 
-thick with the smell of acrid smoke.
+The room is littered with armour and weapons from every age. The air is
+thick with the smell of acrid smoke and reverberates with the sound of
+metal on metal.
 ~
 0 4|8 0
 D0
@@ -5104,8 +5105,8 @@ There is a bar here.
 S
 #3222
 The Tinker's Shop~
-The Tinker's shop is crammed with all kind of materials and tools, which he uses to repair 
-the wide variety of damaged items that adventurers bring him.  You doubt there's much he 
+The Tinker's shop is crammed with all kind of materials and tools, which he uses to repair
+the wide variety of damaged items that adventurers bring him.  You doubt there's much he
 can't fix.  To the west, outside, is the eastern end of Dark Alley.
 On the wall is a small note.
 ~

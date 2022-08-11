@@ -580,10 +580,11 @@ int     gsn_smelt;
 int     gsn_strengthen;
 int     gsn_imbue;
 int     gsn_empower;
+int     gsn_steel_cache;
 int     gsn_uncommon_set;
 int     gsn_rare_set;
-int     gsn_epic_set;
-int     gsn_legendary_set;
+int     gsn_bloodforged_set;
+int     gsn_astral_set;
 int     gsn_steel_broadsword;
 int     gsn_titanium_rapier;
 int     gsn_repelling;
@@ -609,7 +610,6 @@ int     gsn_forager;
 int     gsn_spyglass;
 int     gsn_base;
 int     gsn_miner;
-int     gsn_hurl;
 int     gsn_fire_flask;
 int     gsn_frost_flask;
 int     gsn_stun_flask;
@@ -621,6 +621,8 @@ int     gsn_inscribe;
 int     gsn_enhancement;
 int     gsn_healing;
 int     gsn_ward;
+int     gsn_slow;
+int     gsn_stabilise;
 
 /*
  *  Spell groups
@@ -1665,9 +1667,9 @@ void load_mobiles( FILE *fp )
                 pMobIndex->long_descr[0]        = UPPER( pMobIndex->long_descr[0]  );
                 pMobIndex->description[0]       = UPPER( pMobIndex->description[0] );
 
-                pMobIndex->act                  = fread_number( fp, &stat ) | ACT_IS_NPC;
+                pMobIndex->act                  = fread_number64( fp, &stat ) | ACT_IS_NPC;
 
-                pMobIndex->affected_by          = fread_number( fp, &stat );
+                pMobIndex->affected_by          = fread_number64( fp, &stat );
                 REMOVE_BIT (pMobIndex->affected_by, AFF_CHARM);
 
                 pMobIndex->pShop                = NULL;
@@ -1688,7 +1690,7 @@ void load_mobiles( FILE *fp )
                 fread_letter( fp );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
 
-                pMobIndex->body_form = fread_number( fp, &stat );   /* Gezhp 99 */
+                pMobIndex->body_form = fread_number64( fp, &stat );   /* Gezhp 99 */
 
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
@@ -2086,7 +2088,7 @@ void load_resets( FILE *fp )
 void load_object_sets( FILE *fp )
 {
         OBJSET_INDEX_DATA *pObjSetIndex;
- 
+
         if ( !area_last )
         {
                 bug( "Load_Object_sets: no #AREA seen yet.", 0 );
@@ -2119,10 +2121,10 @@ void load_object_sets( FILE *fp )
                 }
 
                 fBootDb = TRUE;
-                
+
                 pObjSetIndex = alloc_perm( sizeof( *pObjSetIndex ) );
                 pObjSetIndex->vnum = vnum;
-                
+
                 pObjSetIndex->name                 = fread_string( fp );
                 pObjSetIndex->description          = fread_string( fp );
                 pObjSetIndex->objects[0]             = fread_number( fp, &stat );
@@ -2136,7 +2138,7 @@ void load_object_sets( FILE *fp )
                 pObjSetIndex->bonus_num[3]           = fread_number( fp, &stat );
                 pObjSetIndex->bonus_num[4]           = fread_number( fp, &stat );
 
-                
+
                 /*
                  * Validate parameters.
                  * We're calling the index functions for the side effect.
@@ -2235,10 +2237,10 @@ void load_rooms( FILE *fp )
                 pRoomIndex->description         = fread_string( fp );
                 /* Area number */                 fread_number( fp, &stat );   /* Unused */
                 pRoomIndex->room_flags          = fread_number64( fp, &stat );
-                
+
                 if (IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_MAGIC))
                         SET_BIT(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE);
-                
+
                 pRoomIndex->sector_type         = fread_number( fp, &stat );
                 pRoomIndex->light               = 0;
 
@@ -3337,7 +3339,7 @@ void clear_char( CHAR_DATA *ch )
         ch->colors[COLOR_SERVER]       = 6;
         ch->colors[COLOR_ARENA]        = 13;
         ch->colors[COLOR_NEWBIE]       = 14; /* --Owl 2/3/22, didn't want it same colour as 'say' */
-   
+
 }
 
 
@@ -3628,9 +3630,9 @@ unsigned long int fread_number64( FILE *fp, int *status )
 	ungetc( c, fp );
 
     /*if (number > BIT_31)
-    {   
+    {
         sprintf(buf, "fread_number64 says: %lu", number);
-        log_string(buf); 
+        log_string(buf);
     }*/
     return number;
 }

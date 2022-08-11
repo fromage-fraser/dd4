@@ -1389,7 +1389,7 @@ bool spec_grail (CHAR_DATA *ch)
                 switch( number_bits( 3 ) )
                 {
                     case 0:
-                        act("$c tells you, 'Fear me, for I am the cruelest of this realm...'",
+                        act("$c tells you, 'Fear me, for I am the cruellest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_heal( skill_lookup( "heal" ), ch->level, ch, victim );
                         return TRUE;

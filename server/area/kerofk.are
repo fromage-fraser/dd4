@@ -849,6 +849,23 @@ to REPAIR something.
 49 0 20 6d10+390 1d8+12
 0 0
 8 8 1
+#30259
+gorn blacksmith smithy~
+Gorn the Blacksmith~
+Gorn the Blacksmith hammers a breastplate.
+~
+Gorn is Kerofk's blacksmith. His spectacles hang low on his nose, allowing
+him to look over them as you approach. His orderly workshop provides a 
+welcoming abode for those who wish to use his tools or simply converse.
+~
+2|64|512|32768|16777216 8 200 S
+53 0 -40 6d10+490 4d6+4
+0 0
+8 8 1
+& 20 'teacher base'
+& 80 'weaponsmithing'
+& 80 'armoursmithing'
+
 #0
 
 
@@ -1459,6 +1476,23 @@ A
 17 -5
 A
 2 1
+#30256
+forge~
+a forge~
+A large forge dominates the room.~
+~
+43 1 0
+5~ 0~ 0~ 0~
+1000 0 0
+#30257
+anvil~
+a large anvil~
+A large anvil sits in the corner of the room, waiting to be used.~
+~
+30 1 0
+0~ 0~ 0~ 0~
+5000 5000 0
+
 #0
 
 #ROOMS
@@ -2052,9 +2086,9 @@ S
 #30227
 Moon Gate Road~
 Here's something you weren't expecting in a city this size: a
-vacant lot to your south.  Also, Moon Gate Road continues east-west.
-The air seems to crackle with energy here, but you can find no source
-for such power.
+Foundry belows smoke to the south.  Also, Moon Gate Road continues 
+east-west. The air seems to crackle with energy here, but you can 
+find no source for such power.
 ~
 0 8 1
 D1
@@ -2949,10 +2983,10 @@ D3
 0 -1 30271
 S
 #30273
-Vacant Lot~
-There's a large flattened area in the middle of this lot.  You get the
-eerie feeling that something SHOULD be here, but isn't.  How Odd!
-Moon Gate Road is to the north.
+Blacksmiths Foundry~
+A brick foundry houses the local blacksmith. Tools are neatly stacked
+next to the forge and anvil, and raw matierals are heaped into piles
+across the western wall.
 ~
 0 8 0
 D0
@@ -4593,6 +4627,9 @@ D 1 30325 3 1
 D 1 30328 0 1
 D 1 30331 0 1
 D 1 30332 0 1
+M 1 30259 1 30273        blacksmith to the foundry.
+O 1 30256 10 30273         forge to the foundry
+O 1 30257 10 30273           anvil to the foundry
 S
 
 #GAMES

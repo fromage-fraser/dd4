@@ -665,7 +665,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
         if ( !authorized( rch, gsn_rstat ) )
                 return;
-                
+
         one_argument( argument, arg );
         location = ( arg[0] == '\0' ) ? ch->in_room : find_location( ch, arg );
         if ( !location )
@@ -698,7 +698,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 location->sector_type,
                 location->light );
         strcat( buf1, buf );
-        
+
         if (location->area->area_flags)
         {
                 sprintf( buf, "Area flags (num): {W");
@@ -713,7 +713,7 @@ void do_rstat( CHAR_DATA *ch, char *argument )
                 strcat( buf1, buf );
 
                 for (next = 1; next < BIT_MAX; next *= 2)
-                {      
+                {
                         /*sprintf(buf2,"checking: %lu \r\n", next);
                         log_string(buf2);*/
                         if (IS_SET(location->area->area_flags, next))
@@ -931,8 +931,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         /* Show liquid type if drink container. -- Owl 1/7/22 */
         if (obj->item_type == 17)
         {
-                sprintf( buf, "\n\rLiquid: {G%s{x [{W%d{x]  Colour: {G%s{x", 
-                        liq_table[obj->value[2]].liq_name, 
+                sprintf( buf, "\n\rLiquid: {G%s{x [{W%d{x]  Colour: {G%s{x",
+                        liq_table[obj->value[2]].liq_name,
                         obj->value[2],
                         liq_table[obj->value[2]].liq_color);
                 strcat( buf1, buf );
@@ -1008,7 +1008,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 sprintf( buf, "In room: {R%d{x  In object: {W%s{x  \n\rCarried by: {W%s{x ({G%s{x) [{R%d{x]  \n\r",
                         !obj->in_room    ?            0 : obj->in_room->vnum,
                         !obj->in_obj     ? "{W(none){x" : obj->in_obj->short_descr,
-                        obj->carried_by->short_descr, 
+                        obj->carried_by->short_descr,
                         obj->carried_by->name,
                         obj->carried_by->pIndexData->vnum);
                 strcat( buf1, buf );
@@ -1146,10 +1146,10 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
                         strcat (buf, " firebrand");
-                
+
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                         strcat (buf, " imbued");
-        
+
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
                         strcat (buf, " counterbalanced");
 
@@ -1157,13 +1157,13 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                         strcat (buf, " battle_terror");
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
-                        strcat (buf, " chained");   
+                        strcat (buf, " chained");
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
-                        strcat (buf, " strengthened");    
+                        strcat (buf, " strengthened");
 
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
-                        strcat (buf, " constructed");      
+                        strcat (buf, " constructed");
 
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);
@@ -1187,7 +1187,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         char         buf1 [ MAX_STRING_LENGTH ];
         char         arg  [ MAX_INPUT_LENGTH  ];
         int count;
- 
+
         rch = get_char( ch );
 
         if ( !authorized( rch, gsn_osstat ) )
@@ -1222,7 +1222,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
                 obj->objects[0], obj->objects[1], obj->objects[2], obj->objects[3], obj->objects[4] );
         strcat( buf1, buf );
 
-/*         num_bonus = objset_bonus_num(obj->vnum); 
+/*         num_bonus = objset_bonus_num(obj->vnum);
         sprintf( buf, "There are %d set bonuses\n\r", objset_bonus_num(obj->vnum));
         strcat( buf1, buf );
 
@@ -1242,12 +1242,12 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         {
                 count++;
                 sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
-                        objset_bonus_num_pos(obj->vnum, count), 
-                        affect_loc_name( paf->location ), 
+                        objset_bonus_num_pos(obj->vnum, count),
+                        affect_loc_name( paf->location ),
                         paf->modifier );
                 strcat( buf1, buf );
   /*              sprintf( buf, "you need {W%d{x for set bonus %d\n\r", objset_bonus_num_pos(obj->vnum, count), count );
-                strcat( buf1, buf ); 
+                strcat( buf1, buf );
 */
         }
 
@@ -1259,7 +1259,7 @@ void do_osstat( CHAR_DATA *ch, char *argument )
         }
 */
         strcat(buf, "{x\n\r");
- 
+
         send_to_char( buf1, ch );
 
 
@@ -1267,16 +1267,16 @@ void do_osstat( CHAR_DATA *ch, char *argument )
 
 void do_mstat( CHAR_DATA *ch, char *argument )
 {
-        CHAR_DATA   *rch;
-        CHAR_DATA   *victim;
-        AFFECT_DATA *paf;
-        MPROG_DATA *mprg;
-        char         buf         [ MAX_STRING_LENGTH ];
-        char         buf1        [ MAX_STRING_LENGTH ];
-        char         spec_result [ MAX_STRING_LENGTH ];
-        char         arg         [ MAX_INPUT_LENGTH ];
-        int          next;
-        int          count;
+        CHAR_DATA               *rch;
+        CHAR_DATA               *victim;
+        AFFECT_DATA             *paf;
+        MPROG_DATA              *mprg;
+        char                    buf         [ MAX_STRING_LENGTH ];
+        char                    buf1        [ MAX_STRING_LENGTH ];
+        char                    spec_result [ MAX_STRING_LENGTH ];
+        char                    arg         [ MAX_INPUT_LENGTH ];
+        unsigned long int       next;
+        int                     count;
 
         rch = get_char( ch );
 
@@ -1438,7 +1438,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                         strcat(buf1, "Affected by (txt):{R");
 
-                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_AFFECTED(victim, next))
                                 {
@@ -1458,7 +1458,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         strcat(buf1, "{x\n\r");
                         strcat(buf1, "Act flags (txt):{R");
 
-                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_SET(victim->act, next))
                                 {
@@ -1672,7 +1672,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         strcat(buf1, "{x\n\r");
                         strcat(buf1, "Act flags (txt):{R");
 
-                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_SET(victim->act, next))
                                 {
@@ -1695,7 +1695,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                         strcat(buf1, "Affected by (txt):{R");
 
-                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_AFFECTED(victim, next))
                                 {
@@ -1718,17 +1718,19 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 if (victim->body_form)
                 {
                         strcat(buf1, "Body form (txt):{R");
-
-                        for (next = 1; next <= BIT_8; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_SET(victim->body_form, next))
                                 {
                                         strcat(buf1, " ");
                                         strcat(buf1, body_form_name(next));
+
                                 }
                         }
                         strcat(buf1, "{x\n\r");
                 }
+
+
 
                 if ((paf = victim->affected))
                 {
@@ -1775,7 +1777,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 }
 
                 if ( victim->pIndexData->progtypes )
-                {       
+                {
                         strcat(buf1, "{WMobprog:{x\n\r");
                         for ( mprg = victim->pIndexData->mobprogs; mprg != NULL;
                         mprg = mprg->next )
@@ -1788,19 +1790,21 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         }
                 }
 
-                if ( IS_SET(victim->act, ACT_PRACTICE ) )
+                if ( IS_SET(victim->act, ACT_PRACTICE )
+                &&  ( victim->pIndexData->skills ) )
                 {
                         int sn;
-                        sprintf( buf, "This mob {WTEACHES{x\n\r" );
-                        strcat( buf1, buf );   
+                        sprintf( buf, "----------------------------------\r\nCan {Wteach{x the following:\n\r----------------------------------\r\n" );
+                        strcat( buf1, buf );
                         for  ( sn = 0; sn < MAX_SKILL; sn++ )
                         {
-                              /* if (CAN_DO(victim, sn) ) */
                               if ( victim->pIndexData->skills->learned[sn] > 0 )
                               {
-                                sprintf( buf, "%3d %30s\n\r", victim->pIndexData->skills->learned[sn], skill_table[sn].name );
-                                strcat( buf1, buf );   
-                              }  
+                                        sprintf( buf, "%-30s {G%3d{x \n\r",
+                                                skill_table[sn].name,
+                                                victim->pIndexData->skills->learned[sn]);
+                                        strcat( buf1, buf );
+                              }
                         }
                 }
 
@@ -3786,14 +3790,14 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
 
 void do_mset( CHAR_DATA *ch, char *argument )
 {
-        CHAR_DATA *rch;
-        CHAR_DATA *victim;
-        char       buf  [ MAX_STRING_LENGTH ];
-        char       arg1 [ MAX_INPUT_LENGTH  ];
-        char       arg2 [ MAX_INPUT_LENGTH  ];
-        char       arg3 [ MAX_INPUT_LENGTH  ];
-        int        value;
-        int        max;
+        CHAR_DATA               *rch;
+        CHAR_DATA               *victim;
+        char                    buf  [ MAX_STRING_LENGTH ];
+        char                    arg1 [ MAX_INPUT_LENGTH  ];
+        char                    arg2 [ MAX_INPUT_LENGTH  ];
+        char                    arg3 [ MAX_INPUT_LENGTH  ];
+        unsigned long int       value;
+        int                     max;
 
         rch = get_char( ch );
 

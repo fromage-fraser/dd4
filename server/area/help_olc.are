@@ -1932,10 +1932,11 @@ points.
 0 'REMOVE CURSE'~
 Syntax: cast 'remove curse' <character>
 
-This spell removes a curse from a character.
+This spell removes curses from characters and objects.
 
-If the target character is wearing a noremove item, the item will be
-automatically expelled from the body.
+If the target character has an unremoveable or undroppable item, the item will be
+automatically expelled from their body.  Any item they are carrying that has had
+a curse placed upon it will have the curse removed from the object.
 ~
 
 0 SHIELD 'STONE SKIN'~

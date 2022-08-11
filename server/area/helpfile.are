@@ -8,8 +8,8 @@ Syntax: config +ansi
 
 To toggle colour (including 8-bit colour) on and off, simply type COLOUR.
 
-If your MUD client supports ANSI colour codes, the 'ANSI' command can be used 
-to configure standard colours for your communication channels. Type ANSI to 
+If your MUD client supports ANSI colour codes, the 'ANSI' command can be used
+to configure standard colours for your communication channels. Type ANSI to
 see the current colour state of your channels and ANSI RESET to reset them
 all back to their default values.
 
@@ -19,11 +19,11 @@ The current channels that may be colourised include:
 <14>NEWBIE<0>. Note that <12>IMMTALK<0>, <25>DIRTALK<0>, and <6>SERVER<0> are immortal-only channels.
 
 You may use the following text or numerical colour codes to colourise them:
-<11><560><556>https://tinyurl.com/dd4textcolours<0> or set your channels to text-decoration 
+<11><560><556>https://tinyurl.com/dd4textcolours<0> or set your channels to text-decoration
 effects (<556>bold<557>, <562>strikethrough<563>, <558>italics<559>, and <560>underline<561>).
 
-Type 'HELP COLOURCODES' to see the above colours and text-decoration codes, 
-but be warned it's a long list; you may want to increase your PAGELENGTH first.  
+Type 'HELP COLOURCODES' to see the above colours and text-decoration codes,
+but be warned it's a long list; you may want to increase your PAGELENGTH first.
 
 NOTE: Your prompt can be similarly colourised, see 'HELP PROMPT'.
 ~
@@ -393,10 +393,10 @@ Dragons Domain version 4.2020
     for players with a {CGuide{x flag.  We're also running a Discord server
     at {Yhttps://discord.gg/aGzmAWmXYb{x if you'd like to jump in and say hi!
 
-    {W8-bit colour is in! Type 'ansi reset' for your current characters, then 
+    {W8-bit colour is in! Type 'ansi reset' for your current characters, then
     read 'HELP COLOR3' and 'HELP ANSI'!{x
 
-    {WSMITHY class is now beta testing!!!!{x    
+    {WSMITHY class is now beta testing!!!!{x
 
     {WDUERGAR is a new playable race.{x
 
@@ -437,6 +437,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 {WAugust 2022{x
 - Smithy is in for testing
 - Duergar added as playable race
+- Spells SLOW and STABILISE are in, but not given to any classes yet.
 
 {WJuly 2022{x
 - Added 8-bit colour to MUD
@@ -532,8 +533,8 @@ to be using a 'vorpal' weapon.
 0 REPAIR~
 Syntax: repair <<target>
 
-Certain mobs marked as "tinkers" can repair items that degrade, such as 
-sharpened, forged, and poisoned items.  The higher level and more damaged 
+Certain mobs marked as "tinkers" can repair items that degrade, such as
+sharpened, forged, and poisoned items.  The higher level and more damaged
 an item is, the more it will cost to repair.
 ~
 
@@ -928,7 +929,7 @@ poison weapon
 smelt
 construct
 
-(If your looking for a FORGE or ANVIL try the 
+(If your looking for a FORGE or ANVIL try the
 Eastern end of Alley in Midgaard see HELP MIDGAARD)
 
 Current spells that benefit from spellcrafting locations:
@@ -1173,14 +1174,14 @@ Kick an opponent during battle, causing some damage.
 0 'KNIFE TOSS'~
 Syntax: KNIFE <<target>
 
-Thieves are good with small throwing knives and can toss them at enemies during combat doing 
+Thieves are good with small throwing knives and can toss them at enemies during combat doing
 some damage.
 ~
 
 0 'SMOKE BOMB'~
 Syntax: SMOKE
 
-Thieves are good at escaping from dangerous situations and can drop smoke bombs to cause enough 
+Thieves are good at escaping from dangerous situations and can drop smoke bombs to cause enough
 confusion to escape from combat.
 ~
 
@@ -1384,8 +1385,8 @@ service.
 0 'ANIMATE WEAPON'~
 Syntax: cast 'animate weapon' <<victim> (optional)
 
-If successful, this combat spell will cause your opponent to fumble and drop 
-their weapon.  It can be aimed at a particular foe if you are fighting 
+If successful, this combat spell will cause your opponent to fumble and drop
+their weapon.  It can be aimed at a particular foe if you are fighting
 multiple opponents, otherwise it will default to targeting whichever of your
 adversaries has the current focus.
 ~
@@ -1435,14 +1436,14 @@ When one character attacks another, the severity of the damage is shown in the
 verb used in the damage message.  Here are all the damage verbs listed from
 least damage to most damage:
 
-       <235>miss<0>           <245>mangle<0>          <196>ANNIHILATE<0>     <88><558>EXTERMINATE<559><0>                              
-       <236>scratch<0>        <247>maim<0>            <160><558>OBLITERATE<0>     <52><558>UTTERLY DESTROY<559>               
-       <237>graze<0>          <249>MUTILATE<0>        <160><558>RAVAGE<0>         <52><556>NULLIFY<557>                    
-       <239>hit<0>            <251>DISEMBOWEL<0>      <160><558>CRIPPLE<559><0>        <52><556>B U T C H E R<0>             
-       <240>injure<0>         <253>EVISCERATE<0>      <124><558>BRUTALISE<559><0>      <556><460><52>L I Q U I D A T E<0>                                  
-       <241>wound<0>          <255>MASSACRE<0>        <124><558>VAPOURISE<559><0>      <556><424><52>S L A U G H T E R<0>                      
-       <242>maul<0>           <196>DEMOLISH<0>        <124><558>ATOMIZE<559><0>        <556><388><196>E X T I R P A T E<0>                        
-       <243>decimate<0>       <196>DEVASTATE<0>       <88><558>ELIMINATE<559><0>      <556><352><196>P A R T I C L I Z E<0>       
+       <235>miss<0>           <245>mangle<0>          <196>ANNIHILATE<0>     <88><558>EXTERMINATE<559><0>
+       <236>scratch<0>        <247>maim<0>            <160><558>OBLITERATE<0>     <52><558>UTTERLY DESTROY<559>
+       <237>graze<0>          <249>MUTILATE<0>        <160><558>RAVAGE<0>         <52><556>NULLIFY<557>
+       <239>hit<0>            <251>DISEMBOWEL<0>      <160><558>CRIPPLE<559><0>        <52><556>B U T C H E R<0>
+       <240>injure<0>         <253>EVISCERATE<0>      <124><558>BRUTALISE<559><0>      <556><460><52>L I Q U I D A T E<0>
+       <241>wound<0>          <255>MASSACRE<0>        <124><558>VAPOURISE<559><0>      <556><424><52>S L A U G H T E R<0>
+       <242>maul<0>           <196>DEMOLISH<0>        <124><558>ATOMIZE<559><0>        <556><388><196>E X T I R P A T E<0>
+       <243>decimate<0>       <196>DEVASTATE<0>       <88><558>ELIMINATE<559><0>      <556><352><196>P A R T I C L I Z E<0>
 ~
 
 0 DEATH~
@@ -1984,9 +1985,9 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
           as safe or unsafe for pkilling in general.
 
     %1-%7 : Standard colour codes                         (see 'HELP ANSI')
-    {{x,}}x,{{R}}C, various : 'brace-style' standard colour codes 
+    {{x,}}x,{{R}}C, various : 'brace-style' standard colour codes
                                                           (see 'HELP ANSI2')
-    <<0>-<<565> : 8-bit (256-colour) colour and text decoration codes       
+    <<0>-<<565> : 8-bit (256-colour) colour and text decoration codes
                                                           (see 'HELP ANSI3')
     %B :  Displays bold text colour
     %N :  Displays normal text colour
@@ -2089,8 +2090,8 @@ Also, read the relevant section of the FAQ ('HELP FAQ').
 There are five questmasters scattered throughout the Domain.  For those
 characters level 25 and under, Suturb in the Adventurer's Guild in Midgaard
 will provide quests.  After level 25, you will need to range further afield.
-Goldmoon, near Solace, Reaver Maeril in Ota'ar Dar, the Mercenary Master 
-in Anon, and Dahij, near Kerofk all provide quests.  Note that questmasters 
+Goldmoon, near Solace, Reaver Maeril in Ota'ar Dar, the Mercenary Master
+in Anon, and Dahij, near Kerofk all provide quests.  Note that questmasters
 who are more difficult to journey to provide greater rewards for your efforts.
 ~
 
@@ -3018,6 +3019,10 @@ performance in combat and making them unable to RECALL.
 
 HEX is a far more powerful version of the curse spell.  Anyone affected
 by this awful spell will be truly doomed!
+
+Additionally, characters who are cursed by such spells or who carry cursed
+objects with them may find that some usually-peaceful mobiles become
+aggressive towards them.
 ~
 
 0 'DETECT EVIL'~
@@ -3062,6 +3067,10 @@ This spell enables the caster to detect cursed objects and creatures.
 Additionally, it will make you reluctant to remove cursed items from
 a corpse if you have AUTOLOOT on (see "help autoloot").  You will
 still be able to manually remove the items (i.e. get <<item> corpse).
+
+Mobiles affected by this spell are likely to attack players who are
+cursed, meaning players affected by 'curse' spells or who are carrying
+cursed items.
 ~
 
 0 'DETECT POISON'~
@@ -3241,9 +3250,10 @@ This spell refreshes the movement points of a character.
 0 'REMOVE CURSE'~
 Syntax: cast 'remove curse' <<target>
 
-This spell removes a curse from a character.  If the target character is
-wearing a noremove item, the item will be automatically expelled from the
-body.
+This spell removes a curse spell from a character.  If the target character
+is wearing a noremove item, the item will be automatically expelled from their
+body.  It will also remove magical curses from any cursed objects that a
+character is carrying.
 ~
 
 0 SHIELD 'STONE SKIN'~
@@ -3494,7 +3504,7 @@ Syntax: cast awe <<target>
 With this discipline, a skilled psionicist can use the power of his or her
 mind to affect the morale of an opponent.  If successful, the enemy will
 be awestruck by the psionicist, and will simply refuse to continue fighting.
-Of course, highly aggressive creatures will revert to their true nature after 
+Of course, highly aggressive creatures will revert to their true nature after
 only a brief lull in the action.
 ~
 
@@ -3746,10 +3756,10 @@ spellcasting classes.
 ~
 
 -1 GRUNG~
-Grung are poisonous frog-like amphibious humanoids who usually live in wet 
-areas such as swamps or marsh forests, but who may also be found dwelling 
-permanently underwater.  While small (about 3 feet tall), they are very 
-nimble and quite hardy for their size, making a good choice for the BRAWLER, 
+Grung are poisonous frog-like amphibious humanoids who usually live in wet
+areas such as swamps or marsh forests, but who may also be found dwelling
+permanently underwater.  While small (about 3 feet tall), they are very
+nimble and quite hardy for their size, making a good choice for the BRAWLER,
 THIEF and RANGER classes.
 ~
 
@@ -3799,11 +3809,11 @@ a good choice for all warrior classes.
 ~
 
 -1 DUERGAR~
-DUERGAR, also known as 'gray dwarves' or 'underdwarves' are a subterranean 
-subrace of dwarves. They carved out an existence in the Underdark, often near 
-volcanoes.  Their kinship to other dwarven subraces could be compared to that 
-of the drow to surface elves. DUERGAR make a solid choice for many classes, 
-save those that require great dexterity or wisdom.  They are particularly 
+DUERGAR, also known as 'gray dwarves' or 'underdwarves' are a subterranean
+subrace of dwarves. They carved out an existence in the Underdark, often near
+volcanoes.  Their kinship to other dwarven subraces could be compared to that
+of the drow to surface elves. DUERGAR make a solid choice for many classes,
+save those that require great dexterity or wisdom.  They are particularly
 well-suited to the SMITHY class and its subclasses.
 ~
 
@@ -4027,8 +4037,8 @@ Syntax: colour
 COLOUR toggles ANSI colour on and off.
 
 You may talk in colour, and colourise your title.  The format for adding
-standard 4-bit colours is as follows: the 'escape character' to specify a 
-colour is the left handed brace '{{'; following that you should add one of 
+standard 4-bit colours is as follows: the 'escape character' to specify a
+colour is the left handed brace '{{'; following that you should add one of
 these letters:
 
     {r{{r  red{x          {R{{R  bright red{x         Other characters:
@@ -4040,34 +4050,34 @@ these letters:
     {w{{w  grey{x         {W{{W  white{x
     {W{k{{k  black{x
 
-Always end your colourised text segment with a {{x to reset the color.  
+Always end your colourised text segment with a {{x to reset the color.
 The TITLE command will do this automatically.
 
-You can also set standard text background colours by using right-handed brace 
+You can also set standard text background colours by using right-handed brace
 ('}}') codes.  The following codes are available:
 
     }r}}r  red}x          }R}}R  bright red}x         Other characters:
     }g}}g  green}x        }G}}G  bright green{x
     }b}}b  blue}x         }B}}B  bright blue{x        }}}}  right brace
     }m}}m  magenta{x      }M}}M  bright magenta{x     }}x  clear (reset bgcolour)
-    }c}}c  cyan}x         }C}}C  bright cyan{x        
+    }c}}c  cyan}x         }C}}C  bright cyan{x
     }y}}y  orange{x       }Y}}Y  yellow{x
     {k}w}}w  grey{x}x         }W}}W  white{x
-    }k}}k  {wblack{x}x        }K}}K  bright black(!){x 
-    {r}d}}d  grey (bolds foreground text){x}x   
-    {r}D}}D  white (bolds foreground text){x}x   
+    }k}}k  {wblack{x}x        }K}}K  bright black(!){x
+    {r}d}}d  grey (bolds foreground text){x}x
+    {r}D}}D  white (bolds foreground text){x}x
 
-DD supports 8-bit colour (256 colours) in addition to the standard 4-bit 
-(16-colour) palette above. To learn about 8-bit colour, type 'HELP COLOUR3'.     
+DD supports 8-bit colour (256 colours) in addition to the standard 4-bit
+(16-colour) palette above. To learn about 8-bit colour, type 'HELP COLOUR3'.
 
 ColoUr was written by Lope (ant@solace.mh.se)
 ~
 
 0 COLOUR3 COLOR3 ANSI3 8BIT 8-BIT~
 
-This MUD supports 8-bit (256) terminal colours.  You will see 8-bit 
-colour used throughout the MUD's text and may use it yourself in your 
-prompt, title, speech, et cetera.  It is expected that over time it 
+This MUD supports 8-bit (256) terminal colours.  You will see 8-bit
+colour used throughout the MUD's text and may use it yourself in your
+prompt, title, speech, et cetera.  It is expected that over time it
 will be rolled out to more areas and used increasingly to enrich the
 MUD environment and gameplay.
 
@@ -4080,13 +4090,13 @@ Close your tags with {W<<0>{x to stop your colours from bleeding.
 
 Example: {W<<196>{x{RThis text will be turned bright red.{x{W<<0>{x
 
-For a list of all the colours available and their corresponding 
+For a list of all the colours available and their corresponding
 tag numbers, see the table at: {Y<560>https://tinyurl.com/dd4colours<0>{x
 or type 'HELP COLOURCODES'.
 
-The numbers for foreground colours run from 1-255; you can also colour 
-the background--just add 300 to the foreground colour number, so that 
-<558>e.g.<559> to colour the background {CBrightCyan{x (14) you would use the tag 
+The numbers for foreground colours run from 1-255; you can also colour
+the background--just add 300 to the foreground colour number, so that
+<558>e.g.<559> to colour the background {CBrightCyan{x (14) you would use the tag
 {W<<314>{x, producing <314><1>this effect<0>.
 
 The following tags are available for text decoration:
@@ -4588,10 +4598,10 @@ from a victim, and use it to add to their own strength reserves.
 0 'ABYSSAL HAND'~
 Syntax: cast 'abyssal hand' <<victim>
 
-A particularly nasty spell, the Infernalist summons an evil force from a 
-hell dimension to take hold of their victim, making escape impossible.  Those 
-who have seen this spell cast say the manifestation resembles a huge, translucent 
-black hand rising from the ground, in all likelihood a partial extraplanar 
+A particularly nasty spell, the Infernalist summons an evil force from a
+hell dimension to take hold of their victim, making escape impossible.  Those
+who have seen this spell cast say the manifestation resembles a huge, translucent
+black hand rising from the ground, in all likelihood a partial extraplanar
 manifestation by a powerful demonic entity.
 ~
 
@@ -4622,8 +4632,8 @@ the victim, causing them to become distracted and fight less effectively.
 0 'DARK RITUAL'~
 Syntax: cast 'dark ritual" <<corpse>
 
-This spell allows the Infernalist to summon infernal powers to consume a 
-corpse for sacrifice.  Their god rewards the Infernalist with renewed 
+This spell allows the Infernalist to summon infernal powers to consume a
+corpse for sacrifice.  Their god rewards the Infernalist with renewed
 vigour to pursue evil.
 ~
 
@@ -4928,12 +4938,12 @@ obvious.
 0 SWOOP~
 Syntax: swoop <<optional target>
 
-A shifter, in their phoenix form, can attempt to SWOOP at a foe during 
-battle, doing damage to them with their fiery wings.  They have a chance 
-of being fast enough to quickly circle back and SWOOP the same opponent 
-a second time.  
+A shifter, in their phoenix form, can attempt to SWOOP at a foe during
+battle, doing damage to them with their fiery wings.  They have a chance
+of being fast enough to quickly circle back and SWOOP the same opponent
+a second time.
 
-This attack may optionally be directed at a different opponent from the one 
+This attack may optionally be directed at a different opponent from the one
 with the shifter's current focus, in a group battle situation.
 ~
 
@@ -4969,8 +4979,8 @@ it will let the player concentrate on the enemy that is most dangerous.
 Syntax: suck <<target>
 
 This Vampire skill attempts to suck the blood from a victim.  A Vampire who
-is full with blood will have a stronger suck than one craving blood. 
-A successful attack will cause damage to the victim, while also increasing 
+is full with blood will have a stronger suck than one craving blood.
+A successful attack will cause damage to the victim, while also increasing
 the blood points of the Vampire.
 ~
 
@@ -5185,14 +5195,14 @@ necromancer skills respectively.
 ~
 
 -1 SSMITHY~
-{W 
+{W
 
 Smithy skills{x
 
 smelt                   shield block        STRENGTHEN
 construct               imbue               counterbalance
 weaponchain             shieldchain         hurl
-uncommon set            rare set    
+uncommon set            rare set
 ~
 
 -1 SWARRIOR~
@@ -5561,6 +5571,7 @@ Shapeshifter  .   None.
 Thief .   .   .   In an Olive Grove, a leader of Cut-throats.
 Warrior   .   .   A warrior Mage residing over the guards in Ofcol.
 Ranger    .   .   A wandering Ranger patrols a lake (archery only)
+Smithy    .   .   None.
 
 Level 20
 Seek trainers for all classes in Kerofk.
@@ -5764,6 +5775,27 @@ faster and therefore receive an extra attack per round.  Being such a
 potent spell, it uses much of the caster's reserves.
 ~
 
+0 SLOW~
+Syntax: cast slow <<target>
+
+Casting this spell causes the target to slow down, with the consequences
+that they heal more slowly, attack less frequently, and find it takes a
+lot more effort to move around.  Mobs or players affected by HASTE will
+be reset to normal speed the first time they are hit by this spell.  The
+STABILISE spell, available to purchase at healers, removes its effects.
+~
+
+0 STABILISE~
+Syntax: cast stabilise <<target>
+
+This spell will remove spells and effects from a mob or player that
+represent a magical transformation of their bodies from a normal, resting
+state; for example: HASTE, SLOW, BLINK, ECTOPLASMIC FORM, ADRENALINE CONTROL,
+etc.  It will not affect a SHAPESHIFTER's forms, as, once transformed, a
+Shapeshifter IS in their 'normal state'.
+~
+
+
 0 'UNHOLY WORD'~
 Syntax: cast 'unholy word' <<target>
 
@@ -5809,10 +5841,10 @@ Syntax: breathe (hydra form)
 Syntax: breathe <<type> (dragon form)
 
 This skill allows the shifter in HYDRA or DRAGON form to use breath weapons
-to harm an opponent.  HYDRA form will automatically BREATHE a combination of 
+to harm an opponent.  HYDRA form will automatically BREATHE a combination of
 colour spray, fireball, and acid blast depending on how skilled the SHIFTER
-is at the form, whereas SHIFTERs in DRAGON form may choose between fire, 
-lightning, frost, gas or acid by supplying those words as arguments to BREATHE. 
+is at the form, whereas SHIFTERs in DRAGON form may choose between fire,
+lightning, frost, gas or acid by supplying those words as arguments to BREATHE.
 ~
 
 0 'SUMMON LESSER DEMON' 'SUMMON DEMON'~
@@ -6270,9 +6302,9 @@ SHOOT.
 0 'SNAP SHOT' 'SNAPSHOT'~
 Syntax: snapshot
 
-During combat, if they have a bow ready, skilled Rangers can get away a 
-quick snap shot to deal extra damage to their foes. Rangers who have 
-practised ACCURACY can also increase the amount of damage inflicted by 
+During combat, if they have a bow ready, skilled Rangers can get away a
+quick snap shot to deal extra damage to their foes. Rangers who have
+practised ACCURACY can also increase the amount of damage inflicted by
 each shot they land.
 ~
 
@@ -6467,7 +6499,7 @@ able to wear.
 101 BITZ~
 /*
  *  Bit values.  View online with 'HELP BITZ'.  Gezhp
- */  
+ */
 #define BIT_0    /*                    1  */
 #define BIT_1    /*                    2  */
 #define BIT_2    /*                    4  */
@@ -6814,35 +6846,35 @@ See individual HELP entries for the above games.
 ~
 
 -1 HIGH-DICE 'HIGH DICE' HIGH DICE~
-HIGH DICE is a simple dice game. The croupier rolls 2 dice for the player, 
+HIGH DICE is a simple dice game. The croupier rolls 2 dice for the player,
 then rolls 2 dicefor himself. If the player's total is higher he wins double
-his money back, and if the player's total is equal to or lower than the 
+his money back, and if the player's total is equal to or lower than the
 croupier's the bank wins and the player loses his money.
 ~
 
 -1 SEVEN~
-SEVEN is a very simple and easy dice game. The player can choose to bet on 
+SEVEN is a very simple and easy dice game. The player can choose to bet on
 under 7, 7, or over 7.  The croupier rolls 2d6 and pays double if the player
 correctly choses under or over 7, and five times the wagered amount if the player
 choses 7 correctly.
 ~
 
 -1 UPPER-LOWER-TRIPLE 'UPPER LOWER TRIPLE' UPPER LOWER TRIPLE~
-UPPER-LOWER-TRIPLE is a simple dice game.  You place a BET with a choice 
+UPPER-LOWER-TRIPLE is a simple dice game.  You place a BET with a choice
 of upper, lower, or triple.  The dealer then rolls three dice, and their
 values are added up.  If the result is 11 or greater, it is an "Upper",
 and if the resut is 10 or less, it is a "Lower".  If, however, all three
 dice show the same numbers, it is a "Triple" and those who bet on it win
-back 36 times their wager!  Unfortunately, all other bets are off if a 
+back 36 times their wager!  Unfortunately, all other bets are off if a
 Triple is rolled.
 ~
 
 -1 DEALER CROUPIER~
 
-Each gambling game must have someone in charge, and this person is 
+Each gambling game must have someone in charge, and this person is
 traditionally known as a CROUPIER.  For card games, the term DEALER is
 more common.  The CROUPIER is in total control of the game, and can
-turn away unwelcome customers.  Keep your eyes out, though...some of 
+turn away unwelcome customers.  Keep your eyes out, though...some of
 the croupiers have been known to take advantage of unwary players.
 ~
 
@@ -6862,10 +6894,10 @@ bet, if you have enough gold.
 
 0 SMITHY~
 
-The origins of the SMITHY steam back to the beginning of time. Always in 
+The origins of the SMITHY steam back to the beginning of time. Always in
 high demand across the realm for their ability to craft superior weapons
 and armour, they have evolved to an extend that their culture is craft
-focused. The can break down armour and weapons for raw materials via their 
+focused. The can break down armour and weapons for raw materials via their
 ability to SMELT. They can IMBUE and COUNTERBALANCE weapons, and STRENGTHEN
 armour. Expert Smithys can create powerful armour sets, with extraordinary
 set bonuses.
@@ -6876,7 +6908,7 @@ set bonuses.
 Syntax: smelt <<armour> or <<weapon>
 
 Smithys can break down existing weapons and armour into their raw
-materials. They then use these materials as the basis for more 
+materials. They then use these materials as the basis for more
 powerfull weapons, armour and augments.
 
 NOTE: You will need to find a FORGE for this. see HELP CRAFTING
@@ -6886,7 +6918,7 @@ NOTE: You will need to find a FORGE for this. see HELP CRAFTING
 
 Syntax: imbue <<weapon>
 
-Smithys can add enchancements to weapons via their craft. The art of 
+Smithys can add enchancements to weapons via their craft. The art of
 imbuing a weapon can sometimes be unpredictable and often enchancements
 follow this unpredictablity.
 
@@ -6898,7 +6930,7 @@ NOTE: You will need to find a FORGE for this. see HELP CRAFTING
 Syntax: counterbalance <<weapon>
 
 To improve combat effectiveness, a skilled Smithy is able to counterbalance
-a weapon to provide the perfect weighting. The improve handling and 
+a weapon to provide the perfect weighting. The improve handling and
 weight of a weapon can often lead to additional attacks.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
@@ -6909,7 +6941,7 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 Syntax: construct weaponchain <<weapon>
 
 A Smithys weapon is firstly part of their culture, and their ability to fend
-for themselves in battle. Smithys can chain weapons to their wrist, to 
+for themselves in battle. Smithys can chain weapons to their wrist, to
 prevent them being disarmed in battle. Smithys may then HURL their weapon
 during combat, and have it return safely
 
@@ -6920,7 +6952,7 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 
 Syntax: construct shieldchain <<shield>
 
-A Smithy can chain a shield to them. This process must be done first before 
+A Smithy can chain a shield to them. This process must be done first before
 attempting to HURL your shield.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
@@ -6930,7 +6962,7 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 
 Syntax: hurl <<weapon> or <<shield> <<target>
 
-Hurling either your weapon or shield at your enemey provides a means to 
+Hurling either your weapon or shield at your enemey provides a means to
 inflict extra damage. Hurling your shield will provide an opportunity to
 knock your opponent out. It can however knock you off balance if it does not
 connect
@@ -6948,13 +6980,13 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 
 1 CONSTRUCT~
 
-Syntax: construct  
+Syntax: construct
 Syntax: construct <<blueprint>
 
 Without an argument, CONSTRUCT will show your known BLUEPRINTS.
 
 With a target this allows a Smithy to build items, for exaple
-WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build  
+WEAPONCHAIN. Expert ENGINEERS will also use CONSTRUCT to build
 TURRETS or modules for the turret.
 
 NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
@@ -6964,7 +6996,7 @@ NOTE: You will need to find an ANVIL for this. See HELP CRAFTING
 
 Syntax: strengthen <<armour>
 
-This allows the smithy to strengthen certain armour types to improve their 
+This allows the smithy to strengthen certain armour types to improve their
 mitigation of incoming damage.
 
 NOTE: You will need to find an ANVIL for this. see HELP CRAFTING
@@ -6975,9 +7007,48 @@ NOTE: You will need to find an ANVIL for this. see HELP CRAFTING
 Syntax: construct
 
 Blueprints are learned as you increase your knowledge in weaponsmithing
-or armoursmithing. Blueprints allow a SMITHY to build a number of 
-different items, and augments. Using the CONSTRUCT skill without an 
+or armoursmithing. Blueprints allow a SMITHY to build a number of
+different items, and augments. Using the CONSTRUCT skill without an
 argument will list known blueprints.
+~
+
+1 'TITANIUM REAPER' 'STEEL BOARDSWORD'~
+
+Syntax: construct steel broadsword
+Syntax: construct titanium Reaper
+Syntax: construct .....
+
+These are primarily weapons that the SMITHY can CONSTRUCT. Each require
+different amounts of raw materials, which you can determine from 
+typing construct with no arguments.
+~
+
+1 'WRENCH OF THE CROW' 'WINGS OF THE CROW' 'HUNTSMITHS'~
+
+Syntax: construct wrench of the crow
+Syntax: construct huntsmiths gloves
+Syntax: construct .....
+
+These are blueprints that produce SET PIECES. These pieces when worn 
+together provide additional bonuses. Each item require different amounts 
+of raw materials, which you can determine from typing construct with
+no arguments.
+~
+
+1 'SET PIECES'~
+
+Experiances Smithys can construct sets of armour, that when worn
+together provide additional bonuses.
+~
+
+1 'STEEL CACHE'~
+
+Syntax: construct 'steel cache'
+
+A Smithys cache can be used as portable storage for any armour or 
+weapons you may find. Its interior is filled with hooks and latches
+that allow all manner of weapons and armour to be hung or strapped
+into the cache.
 ~
 
 0 $~

@@ -460,14 +460,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 break;
         }
 
-        /*
-        if  ( !skill_table[sn].name )
-                return;
-
-        Why is this so far into the function?  Also it doesn't work.
-        --Owl 23/09/18
-        */
-
         if ( ch->mana < mana )
         {
                 send_to_char( "You don't have enough mana.\n\r", ch );
@@ -479,17 +471,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
         {
                 say_spell( ch, sn );
         }
-
-        /*
-        Below probably fixes above?  --Owl 23/09/18
-
-        Maybe? say_spell has disappeared let's see if we can get that back
-
-        if ( (strcmp( skill_table[sn].name, "ventriloquate" )) == 0 )
-        {
-                say_spell( ch, sn );
-        }
-        */
 
         WAIT_STATE( ch, skill_table[sn].beats );
 
@@ -548,6 +529,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                         chance = 50 + (ch->pcdata->learned[gsn_second_spell] / 2);
 
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                                chance /= 2;
+
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                             ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
                             || (number_percent() > chance))
@@ -580,6 +564,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                         chance = 40 + (ch->pcdata->learned[gsn_third_spell] / 2);
 
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                                chance /= 2;
+
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                             ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
                             || (number_percent() > chance))
@@ -598,6 +585,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
                             || ch->position < POS_FIGHTING)
                                 return;
 
+                        /* 4th spell  - must have succeeded in third spell to have a
+                         * chance at a fourth spell  */
+
                         if (ch->pcdata->spell_attacks < 4)
                                 return;
 
@@ -608,6 +598,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         }
 
                         chance = 30 + (ch->pcdata->learned[gsn_fourth_spell] / 2);
+
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                                chance /= 2;
 
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                                                         ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
@@ -906,12 +899,28 @@ void spell_armor (int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_astral_vortex( int sn, int level, CHAR_DATA *ch, void *vo )
 {
         CHAR_DATA *victim;
+        OBJ_DATA *pobj;
+        OBJ_DATA *pobj_next;
 
         /*
-        return;
-        Re-enabled 24/09/18.  And may God have mercy on my soul.
-        --Owl
+         * return;
+         * Re-enabled 24/09/18.  And may God have mercy on my soul.
+        * --Owl
         */
+
+        for (pobj = ch->carrying; pobj; pobj = pobj_next)
+        {
+                pobj_next = pobj->next_content;
+
+                if (pobj->deleted)
+                        continue;
+
+                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                {
+                        send_to_char("You are carrying a cursed item that prevents magical travel.\n\r", ch);
+                        return;
+                }
+        }
 
         if ( ( !( victim = get_char_world (ch, target_name ) ) )
             || ( !IS_NPC ( ch ) && ch->fighting )
@@ -1505,7 +1514,7 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
 
         heal = 4 + dice( 4, 8 ) + level;
 
-        if (heal > 75) 
+        if (heal > 75)
                 heal = 75;
 
         if( victim->hit > victim->max_hit )
@@ -1522,25 +1531,53 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
                 else
                         percent = -1;
 
-                if (percent >= 100)
-                        sprintf(wound,"is in excellent condition.");
-                else if (percent >= 90)
-                        sprintf(wound,"has a few scratches.");
-                else if (percent >= 75)
-                        sprintf(wound,"has some small wounds and bruises.");
-                else if (percent >= 50)
-                        sprintf(wound,"has quite a few wounds.");
-                else if (percent >= 30)
-                        sprintf(wound,"has some big nasty wounds and scratches.");
-                else if (percent >= 15)
-                        sprintf(wound,"looks pretty hurt.");
-                else if (percent >= 0)
-                        sprintf(wound,"is in awful condition.");
-                else
-                        sprintf(wound,"is bleeding to death.");
+                if ( !IS_INORGANIC( victim ) )
+                {
+                        if (percent >= 100)
+                                sprintf(wound,"is in excellent condition.");
+                        else if (percent >= 90)
+                                sprintf(wound,"has a few scratches.");
+                        else if (percent >= 75)
+                                sprintf(wound,"has some small wounds and bruises.");
+                        else if (percent >= 50)
+                                sprintf(wound,"has quite a few wounds.");
+                        else if (percent >= 30)
+                                sprintf(wound,"has some big nasty wounds and scratches.");
+                        else if (percent >= 15)
+                                sprintf(wound,"looks pretty hurt.");
+                        else if (percent >= 0)
+                                sprintf(wound,"is in awful condition.");
+                        else
+                                sprintf(wound,"is bleeding to death!");
+                }
+                else {
+
+                        if ( percent >= 100 )
+                                sprintf(wound,"is in perfect condition.");
+                        else if ( percent >=  90 )
+                                sprintf(wound,"is slightly damaged.");
+                        else if ( percent >=  80 )
+                                sprintf(wound,"has a few signs of damage.");
+                        else if ( percent >=  70 )
+                                sprintf(wound,"has noticeable damage.");
+                        else if ( percent >=  60 )
+                                sprintf(wound,"is moderately damaged.");
+                        else if ( percent >=  50 )
+                                sprintf(wound,"has taken a lot of damage.");
+                        else if ( percent >=  40 )
+                                sprintf(wound,"has very significant damage.");
+                        else if ( percent >=  30 )
+                                sprintf(wound,"is very heavily damaged.");
+                        else if ( percent >=  20 )
+                                sprintf(wound,"is ruinously damaged.");
+                        else if ( percent >=  10 )
+                                sprintf(wound,"is on the brink of destruction.");
+                        else
+                                sprintf(wound,"is beyond saving.");
+                }
 
                 sprintf(buf,"%s %s \n\r",
-                        IS_NPC(victim) ? victim->short_descr : victim->name,wound);
+                        IS_NPC(victim) ? victim->short_descr : victim->name, wound );
                 send_to_char( buf, ch );
         }
 
@@ -1580,23 +1617,50 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
                 else
                         percent = -1;
 
-                if (percent >= 100)
-                        sprintf(wound,"is in excellent condition.");
-                else if (percent >= 90)
-                        sprintf(wound,"has a few scratches.");
-                else if (percent >= 75)
-                        sprintf(wound,"has some small wounds and bruises.");
-                else if (percent >= 50)
-                        sprintf(wound,"has quite a few wounds.");
-                else if (percent >= 30)
-                        sprintf(wound,"has some big nasty wounds and scratches.");
-                else if (percent >= 15)
-                        sprintf(wound,"looks pretty hurt.");
-                else if (percent >= 0)
-                        sprintf(wound,"is in awful condition.");
-                else
-                        sprintf(wound,"is bleeding to death.");
+                if ( !IS_INORGANIC( victim ) )
+                {
+                        if (percent >= 100)
+                                sprintf(wound,"is in excellent condition.");
+                        else if (percent >= 90)
+                                sprintf(wound,"has a few scratches.");
+                        else if (percent >= 75)
+                                sprintf(wound,"has some small wounds and bruises.");
+                        else if (percent >= 50)
+                                sprintf(wound,"has quite a few wounds.");
+                        else if (percent >= 30)
+                                sprintf(wound,"has some big nasty wounds and scratches.");
+                        else if (percent >= 15)
+                                sprintf(wound,"looks pretty hurt.");
+                        else if (percent >= 0)
+                                sprintf(wound,"is in awful condition.");
+                        else
+                                sprintf(wound,"is bleeding to death!");
+                }
+                else {
 
+                        if ( percent >= 100 )
+                                sprintf(wound,"is in perfect condition.");
+                        else if ( percent >=  90 )
+                                sprintf(wound,"is slightly damaged.");
+                        else if ( percent >=  80 )
+                                sprintf(wound,"has a few signs of damage.");
+                        else if ( percent >=  70 )
+                                sprintf(wound,"has noticeable damage.");
+                        else if ( percent >=  60 )
+                                sprintf(wound,"is moderately damaged.");
+                        else if ( percent >=  50 )
+                                sprintf(wound,"has taken a lot of damage.");
+                        else if ( percent >=  40 )
+                                sprintf(wound,"has very significant damage.");
+                        else if ( percent >=  30 )
+                                sprintf(wound,"is very heavily damaged.");
+                        else if ( percent >=  20 )
+                                sprintf(wound,"is ruinously damaged.");
+                        else if ( percent >=  10 )
+                                sprintf(wound,"is on the brink of destruction.");
+                        else
+                                sprintf(wound,"is beyond saving.");
+                }
                 sprintf(buf,"%s %s \n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
@@ -1650,6 +1714,79 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
 }
 
+void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        /*
+         * This idea with this spell is that it removes all a player's
+         * magical body-based transformations.  Given to healers so players
+         * have a way of getting rid of 'AFF_SLOW' in particular.
+         */
+
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (is_affected(victim, gsn_haste))
+                affect_strip(victim, gsn_haste);
+        if (is_affected(victim, gsn_slow))
+                affect_strip(victim, gsn_slow);
+        if (is_affected(victim, gsn_ectoplasmic_form));
+                affect_strip(victim, gsn_ectoplasmic_form);
+        if (is_affected(victim, gsn_pass_door));
+                affect_strip(victim, gsn_pass_door);
+        if (is_affected(victim, gsn_change_sex));
+                affect_strip(victim, gsn_change_sex);
+        if (is_affected(victim, gsn_stone_skin));
+                affect_strip(victim, gsn_stone_skin);
+        if (is_affected(victim, gsn_flesh_armor));
+                affect_strip(victim, gsn_flesh_armor);
+        if (is_affected(victim, gsn_adrenaline_control));
+                affect_strip(victim, gsn_adrenaline_control);
+        if (is_affected(victim, gsn_bark_skin));
+                affect_strip(victim, gsn_bark_skin);
+
+        if (is_affected(victim, gsn_chameleon_power));
+        {
+                affect_strip(victim, gsn_chameleon_power);
+                REMOVE_BIT(victim->affected_by, AFF_HIDE);
+        }
+
+        if (is_affected(victim, gsn_invis));
+        {
+                affect_strip(victim, gsn_invis);
+                REMOVE_BIT(victim->affected_by, AFF_INVISIBLE);
+        }
+
+        if (is_affected(victim, gsn_mist_walk));
+        {
+                affect_strip(victim, gsn_mist_walk);
+                REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
+        }
+
+        if (is_affected(victim, gsn_astral_sidestep));
+        {
+                affect_strip(victim, gsn_astral_sidestep);
+                REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
+        }
+
+        /*
+         * DON'T include fly form (or any other forms). Pure shifters are
+         * already 'stabilised' in their forms
+         */
+
+        victim->pcdata->blink = FALSE;
+        REMOVE_BIT(victim->affected_by, AFF_SLOW);
+        REMOVE_BIT(victim->affected_by, AFF_PASS_DOOR);
+
+        if (ch != victim)
+        {
+                act( "You magically stabilise $N's body.", ch, NULL, victim, TO_CHAR );
+                check_group_bonus(ch);
+        }
+
+        send_to_char("Your body returns to its normal state.\n\r", victim);
+        act("$C returns to $S normal state.", ch, NULL, victim, TO_NOTVICT);
+
+}
+
 
 void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
 {
@@ -1677,23 +1814,49 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
                 else
                         percent = -1;
 
-                if (percent >= 100)
-                        sprintf(wound,"is in excellent condition.");
-                else if (percent >= 90)
-                        sprintf(wound,"has a few scratches.");
-                else if (percent >= 75)
-                        sprintf(wound,"has some small wounds and bruises.");
-                else if (percent >= 50)
-                        sprintf(wound,"has quite a few wounds.");
-                else if (percent >= 30)
-                        sprintf(wound,"has some big nasty wounds and scratches.");
-                else if (percent >= 15)
-                        sprintf(wound,"looks pretty hurt.");
-                else if (percent >= 0)
-                        sprintf(wound,"is in awful condition.");
-                else
-                        sprintf(wound,"is bleeding to death.");
-
+                if ( !IS_INORGANIC( victim ) )
+                {
+                        if (percent >= 100)
+                                sprintf(wound,"is in excellent condition.");
+                        else if (percent >= 90)
+                                sprintf(wound,"has a few scratches.");
+                        else if (percent >= 75)
+                                sprintf(wound,"has some small wounds and bruises.");
+                        else if (percent >= 50)
+                                sprintf(wound,"has quite a few wounds.");
+                        else if (percent >= 30)
+                                sprintf(wound,"has some big nasty wounds and scratches.");
+                        else if (percent >= 15)
+                                sprintf(wound,"looks pretty hurt.");
+                        else if (percent >= 0)
+                                sprintf(wound,"is in awful condition.");
+                        else
+                                sprintf(wound,"is bleeding to death!");
+                }
+                else {
+                        if ( percent >= 100 )
+                                sprintf(wound,"is in perfect condition.");
+                        else if ( percent >=  90 )
+                                sprintf(wound,"is slightly damaged.");
+                        else if ( percent >=  80 )
+                                sprintf(wound,"has a few signs of damage.");
+                        else if ( percent >=  70 )
+                                sprintf(wound,"has noticeable damage.");
+                        else if ( percent >=  60 )
+                                sprintf(wound,"is moderately damaged.");
+                        else if ( percent >=  50 )
+                                sprintf(wound,"has taken a lot of damage.");
+                        else if ( percent >=  40 )
+                                sprintf(wound,"has very significant damage.");
+                        else if ( percent >=  30 )
+                                sprintf(wound,"is very heavily damaged.");
+                        else if ( percent >=  20 )
+                                sprintf(wound,"is ruinously damaged.");
+                        else if ( percent >=  10 )
+                                sprintf(wound,"is on the brink of destruction.");
+                        else
+                                sprintf(wound,"is beyond saving.");
+                }
                 sprintf(buf,"%s %s \n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
@@ -2475,18 +2638,19 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         if ( IS_GOOD( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL);
-                act( "$p glows blue.",   ch, obj, NULL, TO_CHAR );
+                act( "<45>$p glows blue.<0>",   ch, obj, NULL, TO_CHAR );
         }
         else if ( IS_EVIL( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "$p glows red.",    ch, obj, NULL, TO_CHAR );
+
+                act( "<160>$p glows red.<0>",    ch, obj, NULL, TO_CHAR );
         }
         else
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL );
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "$p glows yellow.", ch, obj, NULL, TO_CHAR );
+                act( "<227>$p glows yellow.<0>", ch, obj, NULL, TO_CHAR );
         }
 
         SET_BIT(obj->extra_flags, ITEM_MAGIC);
@@ -2832,23 +2996,50 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
                 else
                         percent = -1;
 
-                if (percent >= 100)
-                        sprintf(wound,"is in excellent condition.");
-                else if (percent >= 90)
-                        sprintf(wound,"has a few scratches.");
-                else if (percent >= 75)
-                        sprintf(wound,"has some small wounds and bruises.");
-                else if (percent >= 50)
-                        sprintf(wound,"has quite a few wounds.");
-                else if (percent >= 30)
-                        sprintf(wound,"has some big nasty wounds and scratches.");
-                else if (percent >= 15)
-                        sprintf(wound,"looks pretty hurt.");
-                else if (percent >= 0)
-                        sprintf(wound,"is in awful condition.");
-                else
-                        sprintf(wound,"is bleeding to death.");
-
+                if ( !IS_INORGANIC( victim ) )
+                {
+                        if (percent >= 100)
+                                sprintf(wound,"is in excellent condition.");
+                        else if (percent >= 90)
+                                sprintf(wound,"has a few scratches.");
+                        else if (percent >= 75)
+                                sprintf(wound,"has some small wounds and bruises.");
+                        else if (percent >= 50)
+                                sprintf(wound,"has quite a few wounds.");
+                        else if (percent >= 30)
+                                sprintf(wound,"has some big nasty wounds and scratches.");
+                        else if (percent >= 15)
+                                sprintf(wound,"looks pretty hurt.");
+                        else if (percent >= 0)
+                                sprintf(wound,"is in awful condition.");
+                        else
+                                sprintf(wound,"is bleeding to death!");
+                }
+                else {
+                        if ( percent >= 100 )
+                                sprintf(wound,"is in perfect condition.");
+                        else if ( percent >=  90 )
+                                sprintf(wound,"is slightly damaged.");
+                        else if ( percent >=  80 )
+                                sprintf(wound,"has a few signs of damage.");
+                        else if ( percent >=  70 )
+                                sprintf(wound,"has noticeable damage.");
+                        else if ( percent >=  60 )
+                                sprintf(wound,"is moderately damaged.");
+                        else if ( percent >=  50 )
+                                sprintf(wound,"has taken a lot of damage.");
+                        else if ( percent >=  40 )
+                                sprintf(wound,"has very significant damage.");
+                        else if ( percent >=  30 )
+                                sprintf(wound,"is very heavily damaged.");
+                        else if ( percent >=  20 )
+                                sprintf(wound,"is ruinously damaged.");
+                        else if ( percent >=  10 )
+                                sprintf(wound,"is on the brink of destruction.");
+                        else
+                                sprintf(wound,"is beyond saving.");
+                }
+                
                 sprintf(buf,"%s %s \n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
@@ -2887,23 +3078,50 @@ void spell_power_heal (int sn, int level, CHAR_DATA *ch, void *vo)
                 else
                         percent = -1;
 
-                if (percent >= 100)
-                        sprintf(wound,"is in excellent condition.");
-                else if (percent >= 90)
-                        sprintf(wound,"has a few scratches.");
-                else if (percent >= 75)
-                        sprintf(wound,"has some small wounds and bruises.");
-                else if (percent >= 50)
-                        sprintf(wound,"has quite a few wounds.");
-                else if (percent >= 30)
-                        sprintf(wound,"has some big nasty wounds and scratches.");
-                else if (percent >= 15)
-                        sprintf(wound,"looks pretty hurt.");
-                else if (percent >= 0)
-                        sprintf(wound,"is in awful condition.");
-                else
-                        sprintf(wound,"is bleeding to death.");
+                if ( !IS_INORGANIC( victim ) )
+                {
+                        if (percent >= 100)
+                                sprintf(wound,"is in excellent condition.");
+                        else if (percent >= 90)
+                                sprintf(wound,"has a few scratches.");
+                        else if (percent >= 75)
+                                sprintf(wound,"has some small wounds and bruises.");
+                        else if (percent >= 50)
+                                sprintf(wound,"has quite a few wounds.");
+                        else if (percent >= 30)
+                                sprintf(wound,"has some big nasty wounds and scratches.");
+                        else if (percent >= 15)
+                                sprintf(wound,"looks pretty hurt.");
+                        else if (percent >= 0)
+                                sprintf(wound,"is in awful condition.");
+                        else
+                                sprintf(wound,"is bleeding to death!");
+                }
+                else {
 
+                        if ( percent >= 100 )
+                                sprintf(wound,"is in perfect condition.");
+                        else if ( percent >=  90 )
+                                sprintf(wound,"is slightly damaged.");
+                        else if ( percent >=  80 )
+                                sprintf(wound,"has a few signs of damage.");
+                        else if ( percent >=  70 )
+                                sprintf(wound,"has noticeable damage.");
+                        else if ( percent >=  60 )
+                                sprintf(wound,"is moderately damaged.");
+                        else if ( percent >=  50 )
+                                sprintf(wound,"has taken a lot of damage.");
+                        else if ( percent >=  40 )
+                                sprintf(wound,"has very significant damage.");
+                        else if ( percent >=  30 )
+                                sprintf(wound,"is very heavily damaged.");
+                        else if ( percent >=  20 )
+                                sprintf(wound,"is ruinously damaged.");
+                        else if ( percent >=  10 )
+                                sprintf(wound,"is on the brink of destruction.");
+                        else
+                                sprintf(wound,"is beyond saving.");
+                }
                 sprintf(buf,"%s %s \n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
@@ -3026,7 +3244,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "?",                       "?",                          "is evil",
                 "is invisible",            "has a magical aura",         "cannot be dropped",
                 "has been blessed",        "?",                          "?",
-                "?",         
+                "?",
                 "cannot be removed",       "?",                          "is coated in poison",
                 "?",                       "?",                          "?",
                 "?",                       "?",                          "is a vorpal weapon",
@@ -3045,7 +3263,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 "?",                       "?",                          "?",
                 "?",                       "?",                          "is cursed",
                 "?",                       "?"
-        }; 
+        };
 
         const long unsigned int class_restrictions [MAX_CLASS] =
         {
@@ -3154,7 +3372,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
          *  Any class restrictions
          */
         i = 0;
-        for (j = 0; j < MAX_CLASS; j++) 
+        for (j = 0; j < MAX_CLASS; j++)
         {
                 if (class_restrictions[j] & obj->extra_flags)
                 {
@@ -3180,7 +3398,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 send_paragraph_to_char (buf, ch, 4);
         }
 
-        if IS_SET(obj->extra_flags, ITEM_EGO) 
+        if IS_SET(obj->extra_flags, ITEM_EGO)
         {
                 sprintf( buf, "Specialist enhancements:");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BLOODLUST))
@@ -3188,7 +3406,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->ego_flags, EGO_ITEM_SOUL_STEALER))
                         strcat (buf, " Soul stealer");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_FIREBRAND))
-                        strcat (buf, " Firebrand");              
+                        strcat (buf, " Firebrand");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_IMBUED))
                         strcat (buf, " Imbued");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
@@ -3203,11 +3421,13 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Chain Attached");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
                         strcat (buf, " Strengthened");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                        strcat (buf, " Empowered");
                          
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
-                
+
         sprintf( buf, "It weighs {W%d{x lbs, is worth {W%d{x copper coins and is level {W%d{x.\n\r",
                 obj->weight,
                 obj->cost,
@@ -3321,7 +3541,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 count = 0;
                 sprintf (buf, "{W-=-=-=-=-=-=-=-=-=-=-=-=-=-=-={x\n\r");
                 send_to_char( buf,ch);
-                sprintf(buf, "This is part of a %s set.\n\r", 
+                sprintf(buf, "This is part of a %s set.\n\r",
                 objset_type(pObjSetIndex->vnum));
                 send_to_char( buf,ch);
                 sprintf(buf, "%s", pObjSetIndex->description );
@@ -3332,8 +3552,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         count++;
                         sprintf( buf, "Equip {W%d{x items to provide {Y%s{x by {Y%d{x\n\r",
-                        objset_bonus_num_pos(pObjSetIndex->vnum, count), 
-                        affect_loc_name( paf->location ), 
+                        objset_bonus_num_pos(pObjSetIndex->vnum, count),
+                        affect_loc_name( paf->location ),
                         paf->modifier );
                         send_to_char( buf,ch);
                 }
@@ -3421,7 +3641,7 @@ void spell_dark_ritual( int sn, int level, CHAR_DATA *ch, void *vo )
         extract_obj ( obj );
         ch->alignment = UMAX(-1000, ch->alignment - ch->level * 2);
 
-        act("You make a blood sacrifice to $D and their blessing fills you with ecstasy!\n\r",
+        act("You make a ritual sacrifice to $D and their blessing fills you with ecstasy!\n\r",
             ch, NULL, NULL, TO_CHAR);
         act("$n sacrifices a corpse to $D... a dark cloud surrounds the body and it smoulders and burns!",
             ch, NULL, NULL, TO_ROOM);
@@ -3614,7 +3834,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
             send_to_char( "You resist the poison surging through your veins.\n\r",victim );
             return;
         }
- 
+
         /*
          * Tinkered with by Gezhp:
          * Let's limit the amount of strength that poison can reduce;
@@ -3640,7 +3860,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
                         break;
                 }
         }
-        
+
         affect_join( victim, &af );
 
         if ( ch != victim )
@@ -3649,7 +3869,7 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         send_to_char( "You feel very sick.\n\r", victim );
         return;
 
-        
+
 }
 
 
@@ -3666,9 +3886,9 @@ void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_join( victim, &af );
 
         if ( ch != victim )
-                send_to_char( "You successfully paralyze your victim.\n\r", ch );
+                send_to_char( "You successfully paralyse your victim.\n\r", ch );
 
-        send_to_char( "You cannot move, you are paralyzed!\n\r", victim );
+        send_to_char( "You cannot move, you are paralysed!\n\r", victim );
 }
 
 
@@ -3724,7 +3944,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (victim->fighting)
                 return;
-        
+
         if ( is_affected( victim, gsn_curse ) )
         {
                 affect_strip( victim, gsn_curse );
@@ -3738,20 +3958,28 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 check_group_bonus(ch);
         }
 
-        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
-	{
-	      send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
-	      return;
-	}
 
         for ( iWear = 0; iWear < MAX_WEAR; iWear ++ )
         {
                 if ( !( obj = get_eq_char( victim, iWear ) ) )
                         continue;
 
+                if (IS_SET(obj->extra_flags, ITEM_CURSED))
+                {
+                        REMOVE_BIT( obj->extra_flags, ITEM_CURSED);
+                        act( "{WYou notice $p flash brightly.{x",   victim, obj, NULL, TO_CHAR );
+                        yesno = 1;
+                }
+
                 if ( (IS_SET(obj->extra_flags, ITEM_NOREMOVE))
                     || (IS_SET(obj->extra_flags, ITEM_NODROP)))
                 {
+                        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
+	                      {
+	                            send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
+	                            continue;
+	                      }
+
                         unequip_char( victim, obj );
                         obj_from_char( obj );
                         obj_to_room( obj, victim->in_room );
@@ -3764,14 +3992,28 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
         for (obj = victim->carrying; obj; obj = obj_next)
         {
                 obj_next = obj->next_content;
+
+                if (IS_SET(obj->extra_flags, ITEM_CURSED))
+                {
+                        REMOVE_BIT( obj->extra_flags, ITEM_CURSED);
+                        act( "{WYou notice $p flash brightly.{x",   victim, obj, NULL, TO_CHAR );
+                        yesno = 1;
+                }
+
                 if ( (IS_SET(obj->extra_flags, ITEM_NOREMOVE))
                     || (IS_SET(obj->extra_flags, ITEM_NODROP)))
                 {
+                        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
+	                {
+	                        send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
+	                        continue;
+	                }
                         obj_from_char(obj);
                         obj_to_room(obj, victim->in_room);
-                        act("$p is dropped.", victim, obj, NULL, TO_CHAR);
-                        act("$n drops $p.", victim, obj, NULL, TO_ROOM);
+                        act("You toss $p away.", victim, obj, NULL, TO_CHAR);
+                        act("$n tosses $p away.", victim, obj, NULL, TO_ROOM);
                 }
+
         }
 
 
@@ -3787,7 +4029,7 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_AFFECTED( victim, AFF_SANCTUARY )
         && ( ch != victim ) )
         {
-                sprintf( buf, "%s is already affected by that spell.\n\r", 
+                sprintf( buf, "%s is already affected by that spell.\n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name);
                 send_to_char( buf, ch );
                 return;
@@ -4220,8 +4462,24 @@ void spell_summon_avatar( int sn, int level, CHAR_DATA *ch, void *vo )
 
 void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        CHAR_DATA *victim = (CHAR_DATA *) vo;
+        CHAR_DATA       *victim = (CHAR_DATA *) vo;
         ROOM_INDEX_DATA *pRoomIndex;
+        OBJ_DATA        *pobj;
+        OBJ_DATA        *pobj_next;
+
+        for (pobj = ch->carrying; pobj; pobj = pobj_next)
+        {
+                pobj_next = pobj->next_content;
+
+                if (pobj->deleted)
+                        continue;
+
+                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                {
+                        send_to_char("You are carrying a cursed item that prevents magical travel.\n\r", ch);
+                        return;
+                }
+        }
 
         if (!victim->in_room
             || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
@@ -4258,7 +4516,7 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
                         && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY)
                         && !IS_SET(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE))
                                 break;
-                }     
+                }
         }
 
         send_to_char( "{cYou slowly fade out of existence.{x\n\r", victim );
@@ -4272,7 +4530,7 @@ void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
                 act_move( "$n fades out of existence.\n\r", mount, NULL, NULL, TO_ROOM );
         }
         else {
-             send_to_char( "\n\r", victim );    
+             send_to_char( "\n\r", victim );
         }
 
         stop_fighting(victim, TRUE);
@@ -6267,18 +6525,18 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_GOOD( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL);
-                act( "$p pulses blue.",   ch, obj, NULL, TO_CHAR );
+                act( "<45>$p pulses blue.<0>",   ch, obj, NULL, TO_CHAR );
         }
         else if ( IS_EVIL( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "$p pulses red.",    ch, obj, NULL, TO_CHAR );
+                act( "<160>$p pulses red.<0>",    ch, obj, NULL, TO_CHAR );
         }
         else
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL );
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "$p pulses yellow.", ch, obj, NULL, TO_CHAR );
+                act( "<227>$p pulses yellow.<0>", ch, obj, NULL, TO_CHAR );
         }
 
         SET_BIT( obj->extra_flags, ITEM_BLESS );
@@ -6814,7 +7072,7 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         OBJ_DATA    *obj = (OBJ_DATA *) vo;
 
         /* Updated this 1/7/22. Should ID most typically-not-magical items --Owl */
-        if ( obj->item_type != ITEM_ARMOR 
+        if ( obj->item_type != ITEM_ARMOR
         &&   obj->item_type != ITEM_WEAPON
         &&   obj->item_type != ITEM_LIGHT
         &&   obj->item_type != ITEM_TREASURE
@@ -6839,7 +7097,9 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         &&   obj->item_type != ITEM_ARMOURERS_HAMMER
         &&   obj->item_type != ITEM_MITHRIL
         &&   obj->item_type != ITEM_WHETSTONE
-        &&   obj->item_type != ITEM_CRAFT )
+        &&   obj->item_type != ITEM_CRAFT
+        &&   obj->item_type != ITEM_TURRET_MODULE
+        &&   obj->item_type != ITEM_FORGE )
         {
                 send_to_char ( "You can't determine this item's properties.\n\r", ch );
                 return;
@@ -7054,9 +7314,9 @@ void spell_abyssal_hand( int sn, int level, CHAR_DATA *ch, void *vo )
         act( "{RA giant hand grabs you, preventing any chance of escape!{x",  ch, NULL, victim, TO_VICT);
         act( "Dark mist forms into a hand which grabs $N, preventing $S escape.",
             ch, NULL, victim, TO_NOTVICT );
-        
+
         check_group_bonus(ch);
-        
+
         return;
 }
 
@@ -7182,6 +7442,15 @@ void spell_haste(  int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if ( is_affected( victim, gsn_slow ))
+        {
+                affect_strip(victim, gsn_slow);
+                REMOVE_BIT(victim->affected_by, AFF_SLOW);
+                act( "$c is no longer moving in slow motion.", victim, NULL, NULL, TO_ROOM);
+                send_to_char( "You start to move at your normal speed.\n\r", victim );
+                return;
+        }
+
         af.type      = sn;
         af.duration  = level / 2 + 7;
         af.modifier  = 0;
@@ -7191,6 +7460,74 @@ void spell_haste(  int sn, int level, CHAR_DATA *ch, void *vo )
 
         act ( "$n speeds up.", victim, NULL, NULL, TO_ROOM);
         send_to_char( "You feel quick.\n\r", victim );
+}
+
+void spell_slow( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    AFFECT_DATA af;
+
+    if ( is_affected( victim, sn )
+    ||   IS_AFFECTED(victim,AFF_SLOW) )
+    {
+        if (victim == ch)
+        {
+                send_to_char("You can't move any slower!\n\r",ch);
+        }
+        else {
+                act("$N can't get any slower than they are.", ch, NULL, victim, TO_CHAR);
+        }
+        return;
+    }
+
+    if (is_affected( victim, gsn_haste ))
+    {
+        if (victim != ch)
+        {
+                if ( saves_spell( level, victim ) )
+                {
+                        send_to_char("Your spell fails to slow them down.\n\r",ch);
+                        act("The spell fails to slow $n down.",victim,NULL,NULL,TO_ROOM);
+                        damage(ch, victim, number_range(1, ch->level/2), gsn_slow, FALSE);
+                }
+                else {
+                        affect_strip(victim, gsn_haste);
+                        act( "$c slows down to a normal speed.", victim, NULL, NULL, TO_ROOM );
+                        act("You start to move at your normal speed.", ch, NULL, victim, TO_VICT);
+                }
+                return;
+        }
+        else {
+                affect_strip(victim, gsn_haste);
+                send_to_char("You slow down to your normal speed.", ch);
+        }
+
+        act("$c slows down to a normal speed.",victim,NULL,NULL,TO_ROOM);
+        return;
+    }
+
+    if ( saves_spell( level, victim ) )
+    {
+        send_to_char( "The spell fails to slow you down.\n\r", victim );
+        act("The spell fails to slow $n down.",victim,NULL,NULL,TO_ROOM);
+        damage(ch, victim, number_range(1, ch->level/2), gsn_slow, FALSE);
+        return;
+    }
+
+    af.type      = sn;
+    af.duration  = level / 2 + 7;
+    af.modifier  = 0;
+    af.location  = APPLY_NONE;
+
+    af.bitvector = AFF_SLOW;
+    affect_to_char( victim, &af );
+
+    send_to_char( "You feel yourself slowing d o  w   n...\n\r", victim );
+    act("$c starts to move in slow motion.",victim,NULL,NULL,TO_ROOM);
+
+    check_group_bonus(ch);
+
+    return;
 }
 
 
