@@ -2039,7 +2039,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SHAPE_SHIFTER         BIT_29
 #define ITEM_BOW                        BIT_30
 #define ITEM_ANTI_SMITHY                BIT_34
-#define ITEM_CURSED                     BIT_61   /* Prevents magical travel while carried, carrier will be attacked by mobs with DETECT_CURSE */
+#define ITEM_CURSED                     BIT_61
 
 
 /*
