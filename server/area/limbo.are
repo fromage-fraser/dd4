@@ -485,36 +485,6 @@ A misty portal beckons you to the unknown.~
 0~ -1~ 0~ 100~
 100 10 1
 
-#27
-steel sword broadsword~
-a steel broadsword~
-A finely crafted broadsword rests here.~
-~
-5 4 1024 8193
-0~ 8~ 18~ 1~
-5 0 0 
-A
-1 2
-A
-2 2
-A
-19 2
-
-#28
-titanium rapier~
-a titanium rapier~
-A thin titanium rapier lies here.~
-~
-5 1|4 1024 8193
-0~ 14~ 23~ 1~
-5 0 0
-A
-2 2
-A
-18 5
-A
-19 6
-
 #30
 the magical barrier~
 the magical barrier~
@@ -586,96 +556,7 @@ A brass lockpick lies here.~
 E
 lockpick pick brass~
 The lockpick device is made of brass and doesn't look especially robust.~
-#40
-turret metal mechanical~
-a turret~
-A finely crafted mechanical turret is deployed, ready for action.~
-~
-15 2 1
-22~ 0~ 0~ 0~
-10 0 0
-E
-turret metal mechanical~
-The turret has been finely craft from Steel and Titanium. 
-Its has 4 spring loaded legs, allowing for rapid deployment and retreival.
-The main chassis has 4 front facing modular components that contain gearing and trigger mechanisms.
-~
-#41
-dart module~
-dart module~
-A modular dart component for an Engineers turret.~
-~
-8 0 1
-0~ 0~ 0~ 0~
-3 0 0
-#42
-Wrench Crow~
-Enchanted Wrench of the Crow~
-An expertly crafted wrench glows faintly.~
-~
-9 0 1|16384
-0~ 0~ 0~ 0~
-5 0 0
-A
-3 0
-#43
-Splayed Wings Crow~
-Splayed Wings of the Crow~
-A cloak with metallic, played fan blades rests here.~
-~
-9 0 1|1024
-0~ 0~ 0~ 0~
-5 0 0
-A
-2 0
-#44
-arrow module~
-arrow module~
-A modular arrow component for an Engineers turret.~
-~
-8 0 1
-0~ 0~ 0~ 0~
-3 0 0
-#45
-huntsmith gloves~
-Huntsmiths gloves of the flame~
-Finely crafted gloves rest here.~
-~
-9 0 1|128
-0~ 0~ 0~ 0~
-2 0 0
-A
-2 2
-A
-18 2
-#46
-belt huntsmith~
-Huntsmiths belt of the flame~
-A finely crafted belt rests here~
-~
-9 0 1|2048
-0~ 0~ 0~ 0~
-5 0 0
-A
-5 2
-A
-17 -50
-A
-19 3
-#47
-huntsmiths boots~
-Huntsmiths boots of the flame~
-A pair of finely crafed boots are here.~
-~
-9 0 1|64
-0~ 0~ 0~ 0~
-5 0 0
-A
-4 2
-A
-18 2
-A
-17 -20
+
 #50
 talons~
 talons~

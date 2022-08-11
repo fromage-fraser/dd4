@@ -1,0 +1,338 @@
+#AREA   Diku~    Limbo~
+-3 -3 2700 2799
+
+#AREA_SPECIAL
+hidden
+no_quest
+safe
+$
+
+#MOBILES
+
+#2700
+mob filler~
+The mob filler~
+Here floats a filler.
+~
+no Desc.
+~
+1|2|32|128 8 -870 S
+25 6 0 25d25+250 6d6+5
+12 0
+8 8 0
+
+#0
+
+#OBJECTS
+#2700
+steel sword broadsword~
+a steel broadsword~
+A finely crafted broadsword rests here.~
+~
+5 4 1024 8193
+0~ 8~ 18~ 1~
+5 0 0 
+A
+1 2
+A
+2 2
+A
+19 2
+
+#2701
+titanium rapier~
+a titanium rapier~
+A thin titanium rapier lies here.~
+~
+5 1|4 1024 8193
+0~ 14~ 23~ 1~
+5 0 0
+A
+2 2
+A
+18 5
+A
+19 6
+
+#2702
+turret metal mechanical~
+a turret~
+A finely crafted mechanical turret is deployed, ready for action.~
+~
+15 2 1
+22~ 0~ 0~ 0~
+10 0 0
+E
+turret metal mechanical~
+The turret has been finely craft from Steel and Titanium. 
+Its has 4 spring loaded legs, allowing for rapid deployment and retreival.
+The main chassis has 4 front facing modular components that contain gearing and trigger mechanisms.
+~
+#2703
+dart module~
+dart module~
+A modular dart component for an Engineers turret.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#2704
+Wrench Crow~
+Enchanted Wrench of the Crow~
+An expertly crafted wrench glows faintly.~
+~
+9 0 1|16384
+0~ 0~ 0~ 0~
+5 0 0
+A
+3 0
+#2705
+Splayed Wings Crow~
+Splayed Wings of the Crow~
+A cloak with metallic, played fan blades rests here.~
+~
+9 0 1|1024
+0~ 0~ 0~ 0~
+5 0 0
+A
+2 0
+#2706
+arrow module~
+arrow module~
+A modular arrow component for an Engineers turret.~
+~
+8 0 1
+0~ 0~ 0~ 0~
+3 0 0
+#2707
+huntsmith gloves~
+Huntsmiths gloves of the flame~
+Finely crafted gloves rest here.~
+~
+9 0 1|128
+0~ 0~ 0~ 0~
+2 0 0
+A
+2 2
+A
+18 2
+#2708
+belt huntsmith~
+Huntsmiths belt of the flame~
+A finely crafted belt rests here~
+~
+9 0 1|2048
+0~ 0~ 0~ 0~
+5 0 0
+A
+5 2
+A
+17 -50
+A
+19 3
+#2709
+huntsmiths boots~
+Huntsmiths boots of the flame~
+A pair of finely crafed boots are here.~
+~
+9 0 1|64
+0~ 0~ 0~ 0~
+5 0 0
+A
+4 2
+A
+18 2
+A
+17 -20
+#2710
+Bloodforge battle helm~
+Bloodforge battlehelm~
+A red tinged helm rests here.~
+~
+9 0 1|16
+9~ 1~ 6~ 11~ 
+4 0 0
+A
+2 3
+A
+3 2
+E
+Bloodforge battle helm~
+The red tinged helm generates a mild hum. Its finely engraved exterior 
+draws your eye, as does the soft leather strapping and inlays.~
+#2711
+Bloodforged swiftboots~
+Bloodforged swiftboots~
+Bloodforged swiftboots rests here.~
+~
+9 0 1|64
+6~ 0~ 0~ 0~ 
+5 0 0
+A
+2 0
+A
+18 3
+#2712
+Bloodforged spiked leggings~
+Bloodforged spiked leggings~
+A pair of blood red spiked leggings lie in a heap.~
+~
+9 0 1|32
+6~ 0~ 0~ 0~
+5 0 0
+A
+19 3
+#2713
+Bloodforged grips~
+Bloodforged grips~
+Bloodforged grips lie here.~
+~
+9 0 1|128
+5~ 0~ 0~ 0~ 
+5 0 0
+A
+18 0
+#2714
+Astral horizon shield~
+Astral horizon~
+A semi translucent shield vibrates in the corner.~
+~
+9 64 1|512
+12~ 0~ 0~ 0~ 
+5 0 0
+A
+1 2
+A
+5 2
+#2715
+Astral wrap insight~
+Astral wrap of insight~
+A wraps aura draws you to it.~
+~
+9 1 1|1024
+12~ 0~ 0~ 0~ 
+5 0 0
+A
+13 100
+#2716
+Astral Anonomly~
+Astral Anonomly of knowing~
+A point of light floats before you.~
+~
+1 1 1
+0~ 0~ -1~ 0~ 
+5 0 0
+#2717
+Astral plane travel~
+Astral plane of travel~
+A Shimmering Metallic field hovers before you.~
+~
+9 0 1|64
+4~ 0~ 0~ 0~ 
+2 0 0
+A
+14 0
+#2718
+Astral transcendance rod~
+Astral transcendance~
+A translucent metalic rod rests here.~
+~
+9 1 1|16384
+7~ 0~ 0~ 0~ 
+5 0 0
+A
+2 1
+A
+1 1
+A
+4 1
+A
+5 1
+A
+3 1
+#2719
+steel smithy cache~
+a smithys steel cache~
+A steel storage box is here.~
+~
+15 0 1
+100~ 1~ 0~ 0~ 
+5 0 0
+E
+steel storage box smithys~
+A simplistic Storage box. Inside it has hooks and latches that can be used
+to hang or contain any sort of armour piece. On top is a steel whistle.~
+
+#0
+
+
+
+#ROOMS
+#2700
+The Void~
+You are floating in nothing.
+~
+0 4|8|1024 1
+S
+
+
+#0
+
+
+#RESETS
+
+S
+
+#OBJECT_SETS
+
+#2702
+uncommon crow~
+The Smithys Set of the Crow. 
+Crow were the pseudo pets of the Smiths, often seen perching across the Smithys
+Forge in Winter months basking in teh heat of the Forge, and scavenging any 
+food scraps. An Ancient Forgeing process embues the essense of Crow into the 
+armour sets allowing it to take on properties of the black feathered denizens.
+~
+2704 2705 0 0 0
+2 2 0 0 0
+A 27 -1
+#2704
+rare huntsmith~
+<153>The huntsmith set tradditional was worn by smithys that frequented
+the battle front. Smithys were often called upon to participate in
+battle<0>.
+~
+2707 2708 2709 0 0
+2 2 3 0 0
+A 19 12
+A 18 10
+#2705
+epic bloodforged~
+<97>The bloodforged set is infamous in Smithy legend as the first set to 
+be created and worn by Brudrouk Gravelforge. The set was forged in the
+blood of a red dragon to empower it with additional properties allowing
+for many famous victories.<0>
+~
+2710 2711 2712 2713 0
+4 4 4 4 0
+A 19 20
+#2706
+legendary astral~
+<230>120 moons ago an unusual red metal was doscovered beneath Zyklors Tower.
+This metal was {RStarmetal.{x <230>Smithys started experimenting with this metal
+over the following years and found it provided un-explainable characteristics
+and properties. It would over shimmer or turn transulcent, or provide visions
+of other dimensions. It is thought that this metal might provide pathways into
+other worlds.<0>
+~
+2714 2715 2716 2717 2718
+5 5 5 5 5
+A 19 21 
+
+#0
+
+#SPECIALS
+
+S
+
+#$

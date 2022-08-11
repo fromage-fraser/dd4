@@ -380,7 +380,7 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (is_affected(ch, gsn_haste))
                 one_hit(ch, victim, dt);
 
-        /* for counterbalance */
+        /* for counterbalance - adds another attack.*/
 
         if ( !IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 )
         {

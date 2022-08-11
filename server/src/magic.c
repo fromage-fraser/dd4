@@ -3203,6 +3203,8 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Chain Attached");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
                         strcat (buf, " Strengthened");
+                if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                        strcat (buf, " Empowered");
                          
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
