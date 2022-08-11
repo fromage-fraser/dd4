@@ -3490,7 +3490,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
         found = -1;
         for (i = 0; i < BLUEPRINTS_MAX; i++)
         {
-                if (is_name(arg1, blueprint_list[i].blueprint_name))
+                if (!strcmp( arg1, blueprint_list[i].blueprint_name))
                 {
                         found = i;
                         break;
@@ -3659,9 +3659,6 @@ void do_construct( CHAR_DATA *ch, char *arg )
         }
         set_obj_owner(creation, ch->name);
 
-
-
-
         send_to_char( "You heat the forge and ready your materials.\n\r", ch );
         sprintf(buf, "Expertly you assemble your components to create {W%s{x.", blueprint_list[i].blueprint_desc);
         act(buf, ch, NULL, NULL, TO_CHAR);
@@ -3674,136 +3671,210 @@ void do_construct( CHAR_DATA *ch, char *arg )
         blueprint_list[i].blueprint_cost[3],
         blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
 
-        return;
-
+        return;        
 }
 
 void do_empower (CHAR_DATA *ch, char *argument)
 {
 
-        char     arg1 [ MAX_INPUT_LENGTH ];
-        char     arg2 [ MAX_INPUT_LENGTH ];
-        char     arg3 [ MAX_INPUT_LENGTH ];
-        char     arg4 [ MAX_INPUT_LENGTH ];
-        char     arg5 [ MAX_INPUT_LENGTH ];
-
-        OBJ_DATA *obj;
-        OBJ_DATA *obj2;
- /*       OBJ_DATA *obj3;
-        OBJ_DATA *obj4;
-        OBJ_DATA *obj5; */
-        AFFECT_DATA     *paf;
-
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-        argument = one_argument(argument, arg3);
-        argument = one_argument(argument, arg4);
-        argument = one_argument(argument, arg5);
-
-
-      if( !CAN_DO( ch, gsn_empower ) )
+        char            arg [ MAX_INPUT_LENGTH ];   
+        OBJ_DATA        *obj;
+        OBJ_DATA        *forge;
+        bool found;
+        argument = one_argument(argument, arg);
+ 
+        if( !CAN_DO( ch, gsn_empower ) )
         {
                 send_to_char( "You dont know how to do that.\n\r", ch );
                 return;
         }
 
-        if( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0'  )
+        for (forge = ch->in_room->contents; forge; forge = forge->next_content)
         {
-                        send_to_char("What set do you wish to empower?\n\r", ch);
-                        send_to_char("Options <<uncommon|rare|epic|legendary> <<armour1> <<armour2>.... etc\n", ch);
-                        send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
+                if (forge->item_type == ITEM_FORGE)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no forge here!\n\r", ch);
                 return;
         }
 
-    /*    if ( !strcmp(arg1, "uncommon") || !strcmp(arg1, "rare") || !strcmp(arg1, "epic") || !strcmp(arg1, "legendary") )
+
+         if (arg[0] == '\0')
         {
-                send_to_char("Options <uncommon|rare|epic|legendary> <armour1> <armour2>.... etc\n", ch);
-                send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
+                send_to_char("Empower what?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("Not while fighting.\n\r", ch);
+                return;
+        }
+
+        if (!check_blind(ch))
+        {
+                send_to_char("you can't see anything.\n\r", ch);
+                return;
+        }
+      
+        if (!str_cmp(arg, ch->name))
+        {
+                send_to_char("You're going to hurt yourself someday.\n\r", ch);
+                act("$n considers empowering themselves.",
+                    ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that item.\n\r", ch);
+                return;
+        }
+        
+        if (obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("That item is not a weapon.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+        {
+                send_to_char("That is already imbued.\n\r", ch);
+                return;
+        }
+  
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_EMPOWERED);
+        set_obj_owner(obj, ch->name);
+
+        act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
+        act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
+
+}
+
+void do_engrave (CHAR_DATA *ch, char *argument)
+{
+        char            buf[MAX_STRING_LENGTH];
+        OBJ_DATA *obj;
+        OBJ_DATA *anvil;
+        char arg [ MAX_INPUT_LENGTH ];
+        AFFECT_DATA *paf;
+        bool found;
+       
+        if (IS_NPC(ch))
                 return;
 
-        }
-*/
-
-        /* clunky logic for all the set bonuses I know - Brutus */
-        if ( !strcmp(arg1, "uncommon") )
+        if (!CAN_DO(ch, gsn_engrave))
         {
-                if ( ( (obj = get_obj_carry(ch, arg2) ) == NULL ) || ( (obj2 = get_obj_carry(ch, arg3) ) == NULL ) )
-                {
-                        send_to_char( "You aren't carrying that...\n\r",ch );
-                        return;
-                }
-  /*
-                switch (number_range( 1, 3 ))
-                {
-                        int modifier;
-                        modifier = -1;
-                        default :
-                        {
-                                send_to_char("This is a bug - tell the Imms - (Determine random buff in empower).\n\r", ch);
-                                return;
-                        }
-                        case 1:
-                        {
-                                modifier = gsn_fly;
-                                send_to_char ( "random buff 1\n\r", ch);
-                                break;
-                        }
-
-                        case 2:
-                        {
-                                modifier = gsn_infravision;
-                                send_to_char ( "random buff 2\n\r", ch);
-                                break;
-                        }
-
-                        case 3:
-                        {
-                                modifier = gsn_sense_traps;
-                                send_to_char ( "random buff 3\n\r", ch);
-                                break;
-                        }
-
-                }
-
-*/
-                if (!affect_free)
-                        paf = alloc_perm(sizeof(*paf));
-                else
-                {
-                        paf = affect_free;
-                        affect_free = affect_free->next;
-                }
-                paf->type           = gsn_uncommon_set;
-                paf->duration       = -1;
-                paf->location       = APPLY_FLY;
-                paf->modifier       = 0;
-                paf->bitvector      = AFF_FLYING;
-                paf->next           = obj->affected;
-                obj->affected       = paf;
-                obj2->affected      = paf;
-
-                SET_BIT(obj->extra_flags, ITEM_EGO);
-
-                SET_BIT(obj2->extra_flags, ITEM_EGO);
-
-                set_obj_owner(obj, ch->name);
-                act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
-                act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
-/*
-                sprintf(buf, "constructs {W%d{x.", obj->affected->type);
-                act(buf, ch, NULL, NULL, TO_CHAR);
-                sprintf(buf, "constructs {W%s{x.", obj->affected->bitvector);
-                act(buf, ch, NULL, NULL, TO_CHAR);
-*/
-
+                send_to_char("Huh?\n\r", ch);
+                return;
         }
+
+        one_argument(argument, arg);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("What are you trying to engrave?\n\r", ch);
+                return;
+        }
+
+        if (ch->fighting)
+        {
+                send_to_char("While you're fighting?  Nice try.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg)))
+        {
+                send_to_char("You do not have that.\n\r", ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_ARMOR)
+        {
+                send_to_char("That item is not armour.\n\r", ch);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_ENGRAVED))
+        {
+                send_to_char("That is already engraved.\n\r", ch);
+                return;
+        }
+
+        if (obj->wear_flags)
+        {
+                int next;
+                 bit_explode(ch, buf, obj->wear_flags);
+        
+                for (next = 1; next <= BIT_17; next *= 2)
+                {
+                        if (IS_SET(obj->wear_flags, next))
+                        {
+                                if ( 
+                                !str_cmp( wear_flag_name(next), "float")  
+                                || !str_cmp( wear_flag_name(next), "neck") 
+                                || !str_cmp( wear_flag_name(next), "about" ) )
+                                {
+                                        send_to_char("You cannot engrave that type of armour.\n\r", ch);
+                                        return;        
+                                }
+                        }
+                }
+        }
+
+        found = FALSE;
+
+        for (anvil = ch->in_room->contents; anvil; anvil = anvil->next_content)
+        {
+                if (anvil->item_type == ITEM_ANVIL)
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char("There is no anvil here!\n\r", ch);
+                return;
+        }
+
+        if (number_percent() > ch->pcdata->learned[gsn_engrave])
+        {
+                send_to_char("You slip while enrgaving!\n\r", ch);
+                act ("$n slips while engraving $s armour!", ch, NULL, NULL, TO_ROOM);
+                return;
+        }
+
+        act ("You skilfully engraves $P!", ch, NULL, obj, TO_CHAR);
+        act ("$n skilfully engraves $P!", ch, NULL, obj, TO_ROOM);
+
+        SET_BIT(obj->extra_flags, ITEM_EGO);
+        SET_BIT(obj->ego_flags, EGO_ITEM_ENGRAVED);
+        set_obj_owner(obj, ch->name);
+        if (!affect_free)
+                paf = alloc_perm(sizeof(*paf));
         else
         {
-                send_to_char ( "The uncommon end\n\r", ch);
-                return;
+                paf = affect_free;
+                affect_free = affect_free->next;
         }
-        send_to_char ( "The end\n\r", ch );
-        return;
+
+        paf->type           = gsn_strengthen;
+        paf->duration       = -1;
+        paf->location       = APPLY_ENGRAVED;
+        paf->modifier       = 1 + ( ch->level / 50 );
+        paf->bitvector      = 0;
+        paf->next           = obj->affected;
+        obj->affected       = paf;
+        
 }
 
 void do_imbue (CHAR_DATA *ch, char *argument)
@@ -3820,10 +3891,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         random_buff = -1;
         random_buff2 = -1;
-        random_buff3 = -1;
-
-
-
+        random_buff3 = -1;     
 
         if (IS_NPC(ch))
                 return;

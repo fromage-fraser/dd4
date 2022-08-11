@@ -234,7 +234,7 @@ struct imbue_types
 
 #define MAX_IMBUE 9
 
-#define BLUEPRINTS_MAX  12
+#define BLUEPRINTS_MAX  22
 
 /* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
 struct blueprint_type
@@ -317,9 +317,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   528     /* 528 527 2 new blueprints- Brutus Aug 2022 */
-#define MAX_PRE_REQ                 1369    /* 2 new blueprints */
-#define MAX_SPELL_GROUP             436     /* 2 new blueprints  --Brutus Aug 22 */
+#define MAX_SKILL                   531     /* 531, 530, 529 - cache, discharge and engrave- Brutus Aug 2022 */
+#define MAX_PRE_REQ                 1370    /* steel cache, 2 new blueprints */
+#define MAX_SPELL_GROUP             437     /* steel cache, 2 new blueprints  --Brutus Aug 22 */
 #define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
@@ -1893,27 +1893,30 @@ extern  WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_MUSHROOM                  20
 #define OBJ_VNUM_LIGHT_BALL                21
 #define OBJ_VNUM_SPRING                    22
-#define OBJ_VNUM_TURRET                    40
-#define OBJ_VNUM_DART                      41
-#define OBJ_VNUM_UNCOMMON1              42
-#define OBJ_VNUM_UNCOMMON2              43
-#define OBJ_VNUM_ARROW                  44
-#define OBJ_VNUM_RARE1                  45
-#define OBJ_VNUM_RARE2                  46
-#define OBJ_VNUM_RARE3                  47
-#define OBJ_VNUM_EPIC1                  48
-#define OBJ_VNUM_EPIC2                  49
-#define OBJ_VNUM_EPIC3                  65
-#define OBJ_VNUM_EPIC4                  66
-#define OBJ_VNUM_LEGENDARY1             67
-#define OBJ_VNUM_LEGENDARY2             68
-#define OBJ_VNUM_LEGENDARY3             69
-#define OBJ_VNUM_LEGENDARY4             101
-#define OBJ_VNUM_LEGENDARY5             102
-#define OBJ_VNUM_ST_SWORD1              27
-#define OBJ_VNUM_TI_SWORD1              28
 #define OBJ_VNUM_PORTAL                    26
 #define OBJ_VNUM_LIGHT_BALL_CRAFT          64
+
+/* these are for smithy blueprints (2700-2799*/
+#define OBJ_VNUM_ST_SWORD1              2700
+#define OBJ_VNUM_TI_SWORD1              2701
+#define OBJ_VNUM_TURRET                 2702
+#define OBJ_VNUM_DART                   2703
+#define OBJ_VNUM_UNCOMMON1              2704
+#define OBJ_VNUM_UNCOMMON2              2705
+#define OBJ_VNUM_ARROW                  2706
+#define OBJ_VNUM_RARE1                  2707
+#define OBJ_VNUM_RARE2                  2708
+#define OBJ_VNUM_RARE3                  2709
+#define OBJ_VNUM_BF_SET1                2710
+#define OBJ_VNUM_BF_SET2                2711
+#define OBJ_VNUM_BF_SET3                2712
+#define OBJ_VNUM_BF_SET4                2713
+#define OBJ_VNUM_AS_SET1                2714
+#define OBJ_VNUM_AS_SET2                2715
+#define OBJ_VNUM_AS_SET3                2716
+#define OBJ_VNUM_AS_SET4                2717
+#define OBJ_VNUM_AS_SET5                2718
+#define OBJ_VNUM_STEEL_CACHE            2719
 
 #define OBJ_VNUM_SCHOOL_MACE             3700
 #define OBJ_VNUM_SCHOOL_DAGGER           3701
@@ -2108,6 +2111,8 @@ extern  WANTED_DATA *wanted_list_last;
 #define EGO_ITEM_CHAINED                BIT_8
 #define EGO_ITEM_STRENGTHEN             BIT_9
 #define EGO_ITEM_CONSTRUCTED            BIT_10 /* for ny constructed weapon */
+#define EGO_ITEM_EMPOWERED              BIT_11 /*Empowered weapon */
+#define EGO_ITEM_ENGRAVED               BIT_12 /* ENGRAVED armour */
 
 /*
  * Apply types (for affects).
@@ -2160,6 +2165,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define APPLY_SET_EPIC                          44
 #define APPLY_SET_LEGENDARY                     45
 #define APPLY_STRENGTHEN                        46
+#define APPLY_ENGRAVED                          47
 
 /*
  * Values for containers (value[1]).
@@ -2659,6 +2665,7 @@ struct  pc_data
         int             pattern;
         int             soar;
         int             group_support_bonus;
+        int             meter;
 };
 
 
@@ -3470,11 +3477,12 @@ extern int gsn_imbue;
 extern int gsn_empower;
 extern int gsn_uncommon_set;
 extern int gsn_rare_set;
-extern int gsn_epic_set;
-extern int gsn_legendary_set;
+extern int gsn_bloodforged_set;
+extern int gsn_astral_set;
 extern int gsn_steel_broadsword;
 extern int gsn_titanium_rapier;
 extern int gsn_repelling;
+extern int gsn_steel_cache;
 extern int gsn_group_weaponsmith;
 extern int gsn_craft_weapon;
 extern int gsn_counterbalance;
@@ -3797,6 +3805,7 @@ DECLARE_DO_FUN( do_description                  );
 DECLARE_DO_FUN( do_dirt_kick                    );      /* New ninja skill - Brutus */
 DECLARE_DO_FUN( do_disable                      );      /* for disarming traps */
 DECLARE_DO_FUN( do_disarm                       );
+DECLARE_DO_FUN( do_discharge                    );
 DECLARE_DO_FUN( do_dive                         );      /* dragons */
 DECLARE_DO_FUN( do_disconnect                   );
 DECLARE_DO_FUN( do_donate                       );      /* Donate command */
@@ -3808,6 +3817,7 @@ DECLARE_DO_FUN( do_eat                          );
 DECLARE_DO_FUN( do_echo                         );
 DECLARE_DO_FUN( do_emote                        );
 DECLARE_DO_FUN( do_enter                        );      /* enter for portal.. - Brutus */
+DECLARE_DO_FUN( do_engrave                      );
 DECLARE_DO_FUN( do_empower                      );      /* smithy Brutus Jul 2022 */
 DECLARE_DO_FUN( do_equipment                    );
 DECLARE_DO_FUN( do_examine                      );

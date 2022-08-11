@@ -7019,6 +7019,16 @@ Experiances Smithys can construct sets of armour, that when worn
 together provide additional bonuses.
 ~
 
+1 'STEEL CACHE'~
+
+Syntax: construct 'steel cache'
+
+A Smithys cache can be used as portable storage for any armour or 
+weapons you may find. Its interior is filled with hooks and latches
+that allow all manner of weapons and armour to be hung or strapped
+into the cache.
+~
+
 0 $~
 #$
 
