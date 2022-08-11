@@ -281,7 +281,7 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
-/* Blueprint structure : name, description, blueprint_ref, blueprint_ego,  
+/* Blueprint structure : name, description, blueprint_ref, blueprint_ego,
    blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) , skill_name */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
@@ -1934,8 +1934,8 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_summoning,
         &gsn_group_mana,
         &gsn_group_divination,
-        &gsn_group_dark,
         &gsn_group_death,
+        &gsn_group_dark,
         &gsn_group_lycanthropy,
         &gsn_group_vampyre,
         &gsn_group_evocation,
@@ -2246,6 +2246,14 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_sense_traps,                             0 },
         { &gsn_know_alignment,                          0 },
 
+
+        { &gsn_group_death,                             0 },
+        { &gsn_feeblemind,                              0 },
+        { &gsn_spiritwrack,                             0 },
+        { &gsn_animate_dead,                            0 },
+        { &gsn_bladethirst,                             0 },
+        { &gsn_dark_ritual,                             0 },
+
         { &gsn_group_dark,                              0 },
         { &gsn_possession,                              0 },
         { &gsn_demon_flames,                            0 },
@@ -2256,13 +2264,6 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_summon_demon,                            0 },
         { &gsn_hells_fire,                              0 },
         { &gsn_chaos_blast,                             0 },
-
-        { &gsn_group_death,                             0 },
-        { &gsn_feeblemind,                              0 },
-        { &gsn_spiritwrack,                             0 },
-        { &gsn_animate_dead,                            0 },
-        { &gsn_bladethirst,                             0 },
-        { &gsn_dark_ritual,                             0 },
 
         { &gsn_group_lycanthropy,                       0 },
         { &gsn_resist_toxin,                            0 },
@@ -4795,14 +4796,14 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "dark magiks", &gsn_group_dark,
+                "death magiks", &gsn_group_death,
                 TYPE_INT, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
-                "", "!Group Dark!"
+                "", "!Group Death!"
         },
 
         {
-                "death magiks", &gsn_group_death,
+                "dark magiks", &gsn_group_dark,
                 TYPE_INT, TAR_IGNORE, POS_DEAD,
                 spell_null, 0, 0,
                 "", "!Group Dark!"
@@ -6155,13 +6156,13 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!-infernalist base-!"
         },
-
         {
                 "witch base", &gsn_witch_base,
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
                 spell_null, 0, 0,
                 "", "!-witch base-!"
         },
+
 
         {
                 "werewolf base", &gsn_werewolf_base,

@@ -2979,43 +2979,6 @@ bool is_cursed(CHAR_DATA *ch)
 }
 
 
-/*
- *  checks if character has cursed item on them or is
- *  afflicted by curse, hex, etc.
- */
-bool is_cursed(CHAR_DATA *ch)
-{
-        OBJ_DATA *pobj;
-        OBJ_DATA *pobj_next;
-
-        if ( is_affected( ch, gsn_curse )
-        ||   is_affected( ch, gsn_hex )
-        ||   is_affected( ch, gsn_prayer_weaken )
-        ||   IS_AFFECTED( ch, AFF_CURSE ) )
-        {
-                return TRUE;
-        }
-
-        for (pobj = ch->carrying; pobj; pobj = pobj_next)
-        {
-                pobj_next = pobj->next_content;
-
-                if (pobj->deleted)
-                        continue;
-
-                if ( ( IS_SET(pobj->extra_flags, ITEM_CURSED) )
-                ||   ( IS_SET(pobj->extra_flags, ITEM_NOREMOVE) )
-                ||   ( IS_SET(pobj->extra_flags, ITEM_NODROP) ) )
-                {
-                        return TRUE;
-                }
-        }
-
-        return FALSE;
-
-}
-
-
 int remove_songs(CHAR_DATA *ch)
 {
         AFFECT_DATA     *paf;
@@ -3715,12 +3678,12 @@ void do_construct( CHAR_DATA *ch, char *arg )
 void do_empower (CHAR_DATA *ch, char *argument)
 {
 
-        char            arg [ MAX_INPUT_LENGTH ];   
+        char            arg [ MAX_INPUT_LENGTH ];
         OBJ_DATA        *obj;
         OBJ_DATA        *forge;
         bool found;
         argument = one_argument(argument, arg);
- 
+
         if( !CAN_DO( ch, gsn_empower ) )
         {
                 send_to_char( "You dont know how to do that.\n\r", ch );
@@ -3760,7 +3723,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 send_to_char("you can't see anything.\n\r", ch);
                 return;
         }
-      
+
         if (!str_cmp(arg, ch->name))
         {
                 send_to_char("You're going to hurt yourself someday.\n\r", ch);
@@ -3774,7 +3737,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 send_to_char("You do not have that item.\n\r", ch);
                 return;
         }
-        
+
         if (obj->item_type != ITEM_WEAPON)
         {
                 send_to_char("That item is not a weapon.\n\r", ch);
@@ -3786,7 +3749,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
                 send_to_char("That is already imbued.\n\r", ch);
                 return;
         }
-  
+
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_EMPOWERED);
         set_obj_owner(obj, ch->name);
@@ -3804,7 +3767,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
         bool found;
-       
+
         if (IS_NPC(ch))
                 return;
 
@@ -3850,18 +3813,18 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         {
                 int next;
                  bit_explode(ch, buf, obj->wear_flags);
-        
+
                 for (next = 1; next <= BIT_17; next *= 2)
                 {
                         if (IS_SET(obj->wear_flags, next))
                         {
-                                if ( 
-                                !str_cmp( wear_flag_name(next), "float")  
-                                || !str_cmp( wear_flag_name(next), "neck") 
+                                if (
+                                !str_cmp( wear_flag_name(next), "float")
+                                || !str_cmp( wear_flag_name(next), "neck")
                                 || !str_cmp( wear_flag_name(next), "about" ) )
                                 {
                                         send_to_char("You cannot engrave that type of armour.\n\r", ch);
-                                        return;        
+                                        return;
                                 }
                         }
                 }
@@ -3912,7 +3875,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
-        
+
 }
 
 void do_imbue (CHAR_DATA *ch, char *argument)
@@ -3929,7 +3892,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
 
         random_buff = -1;
         random_buff2 = -1;
-        random_buff3 = -1;     
+        random_buff3 = -1;
 
         if (IS_NPC(ch))
                 return;
