@@ -628,6 +628,14 @@ void move_char(CHAR_DATA *ch, int door)
                         move = UMAX(move, 1);
                 }
 
+                /* After everything above, triple your movement cost if you're affected by AFF_SLOW */
+
+                if (IS_AFFECTED(ch, AFF_SLOW))
+                {
+                        move *= 3;
+                        move = UMAX(move, 1);
+                }
+
                 /* Don't put a wait state on or take movement points from imms -- Owl 22/2/22 */
 
                 if (ch->move < move

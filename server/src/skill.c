@@ -3711,7 +3711,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         {
                         send_to_char("What set do you wish to empower?\n\r", ch);
                         send_to_char("Options <<uncommon|rare|epic|legendary> <<armour1> <<armour2>.... etc\n", ch);
-                        send_to_char( "You can use ANY armour piece to create your set bonus\n\r", ch );
+                        send_to_char( "You can use ANY armour piece to create your set bonus.\n\r", ch );
                 return;
         }
 
@@ -4037,7 +4037,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
 
         sprintf( buf, "You counterbalance %s.\n\r", obj->short_descr );
         send_to_char( buf, ch );
-        sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
+        sprintf( buf, "It's a %d/%d weighting split.\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
         send_to_char( buf, ch );
 
 

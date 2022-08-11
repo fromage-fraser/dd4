@@ -2723,7 +2723,7 @@ int item_name_type( char *name )
  * Return ascii name of an affect bit vector.
  * Remember to change the function directly below too.
  */
-char *affect_bit_name (int vector)
+char *affect_bit_name (unsigned long int vector)
 {
         if ( vector & AFF_BLIND         ) return "blind";
         if ( vector & AFF_INVISIBLE     ) return "invisible";
@@ -2756,6 +2756,7 @@ char *affect_bit_name (int vector)
         if ( vector & AFF_NON_CORPOREAL ) return "non_corporeal";
         if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
+        if ( vector & AFF_SLOW          ) return "slow";
 
         return "none";
 }
@@ -2763,7 +2764,7 @@ char *affect_bit_name (int vector)
 /*
  *  Used for the 'affect' command output
  */
-char* affect_bit_name_nice (int vector)
+char* affect_bit_name_nice (unsigned long int vector)
 {
         if ( vector & AFF_BLIND         ) return "blindness";
         if ( vector & AFF_INVISIBLE     ) return "invisibility";
@@ -2779,23 +2780,24 @@ char* affect_bit_name_nice (int vector)
         if ( vector & AFF_FLAMING       ) return "fireshield";
         if ( vector & AFF_POISON        ) return "poison";
         if ( vector & AFF_PROTECT       ) return "protection";
-        if ( vector & AFF_SLEEP         ) return "sleep";
+        if ( vector & AFF_MEDITATE      ) return "meditation";
         if ( vector & AFF_SNEAK         ) return "sneak";
         if ( vector & AFF_HIDE          ) return "hide";
+        if ( vector & AFF_SLEEP         ) return "sleep";
         if ( vector & AFF_CHARM         ) return "charm";
         if ( vector & AFF_FLYING        ) return "flight";
         if ( vector & AFF_PASS_DOOR     ) return "pass door";
-        if ( vector & AFF_MEDITATE      ) return "meditation";
+        if ( vector & AFF_DETECT_TRAPS  ) return "detect traps";
+        if ( vector & AFF_BATTLE_AURA   ) return "battle aura";
+        if ( vector & AFF_DETECT_SNEAK  ) return "detect sneak";
+        if ( vector & AFF_GLOBE         ) return "globe";
+        if ( vector & AFF_DETER         ) return "deter aggression";
+        if ( vector & AFF_SWIM          ) return "swim";
+        if ( vector & AFF_PRAYER_PLAGUE ) return "plague";
+        if ( vector & AFF_NON_CORPOREAL ) return "non-corporeal form";
         if ( vector & AFF_DETECT_CURSE  ) return "detect curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect good";
-        if ( vector & AFF_GLOBE         ) return "globe";
-        if ( vector & AFF_DETECT_TRAPS  ) return "detect traps";
-        if ( vector & AFF_DETECT_SNEAK  ) return "detect sneak";
-        if ( vector & AFF_DETER         ) return "deter aggression";
-        if ( vector & AFF_BATTLE_AURA   ) return "battle aura";
-        if ( vector & AFF_SWIM          ) return "swim";
-        if ( vector & AFF_NON_CORPOREAL ) return "non-corporeal form";
-        if ( vector & AFF_PRAYER_PLAGUE ) return "plague";
+        if ( vector & AFF_SLOW          ) return "slow";
 
         return "some unknown effect";
 }
@@ -2877,19 +2879,22 @@ char *act_bit_name (unsigned long int vector)
  * ASCII name for body_form flags, used in mstat --Owl 9/2/22
  *
  */
-char* body_form_name (int vector)
+char* body_form_name (unsigned long int vector)
 {
-        if ( vector & BODY_NO_HEAD      ) return "no_head";
-        if ( vector & BODY_NO_EYES      ) return "no_eyes";
-        if ( vector & BODY_NO_ARMS      ) return "no_arms";
-        if ( vector & BODY_NO_LEGS      ) return "no_legs";
-        if ( vector & BODY_NO_HEART     ) return "no_heart";
-        if ( vector & BODY_NO_SPEECH    ) return "no_speech";
-        if ( vector & BODY_NO_CORPSE    ) return "no_corpse";
-        if ( vector & BODY_HUGE         ) return "huge";
-        if ( vector & BODY_INORGANIC    ) return "inorganic";
+        switch (vector)
+        {
+                case BODY_NO_HEAD:          return "no_head";
+                case BODY_NO_EYES:          return "no_eyes";
+                case BODY_NO_ARMS:          return "no_arms";
+                case BODY_NO_LEGS:          return "no_legs";
+                case BODY_NO_HEART:         return "no_heart";
+                case BODY_NO_SPEECH:        return "no_speech";
+                case BODY_NO_CORPSE:        return "no_corpse";
+                case BODY_HUGE:             return "huge";
+                case BODY_INORGANIC:        return "inorganic";
 
-        return "none";
+                default: return "none";
+        }
 }
 
 /*

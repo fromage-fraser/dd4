@@ -425,6 +425,9 @@ int hit_gain( CHAR_DATA *ch )
                     || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                         gain /= 4;
 
+                if (IS_AFFECTED(ch, AFF_SLOW))
+                        gain /= 2;
+
                 return UMIN( gain, ch->max_hit - ch->hit );
         }
 
@@ -460,6 +463,9 @@ int hit_gain( CHAR_DATA *ch )
 
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+                gain /= 2;
 
         if ((ch->sub_class == SUB_CLASS_VAMPIRE && ch->rage < ch->max_rage / 10)
             || (ch->sub_class == SUB_CLASS_WEREWOLF && ch->rage > 90 ))
@@ -821,6 +827,9 @@ int mana_gain( CHAR_DATA *ch )
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
 
+        if (IS_AFFECTED(ch, AFF_SLOW))
+                gain /= 2;
+
         gain += gain * race_table[ch->race].mana_regen / 100;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_HEALING))
@@ -905,6 +914,9 @@ int move_gain( CHAR_DATA *ch )
 
         if (IS_AFFECTED(ch, AFF_POISON) || IS_AFFECTED(ch, AFF_PRAYER_PLAGUE))
                 gain /= 4;
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+                gain /= 2;
 
         gain += gain * race_table[ch->race].move_regen / 100;
 

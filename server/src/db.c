@@ -621,6 +621,8 @@ int     gsn_inscribe;
 int     gsn_enhancement;
 int     gsn_healing;
 int     gsn_ward;
+int     gsn_slow;
+int     gsn_stabilise;
 
 /*
  *  Spell groups
@@ -1667,7 +1669,7 @@ void load_mobiles( FILE *fp )
 
                 pMobIndex->act                  = fread_number64( fp, &stat ) | ACT_IS_NPC;
 
-                pMobIndex->affected_by          = fread_number( fp, &stat );
+                pMobIndex->affected_by          = fread_number64( fp, &stat );
                 REMOVE_BIT (pMobIndex->affected_by, AFF_CHARM);
 
                 pMobIndex->pShop                = NULL;
@@ -1688,7 +1690,7 @@ void load_mobiles( FILE *fp )
                 fread_letter( fp );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */
 
-                pMobIndex->body_form = fread_number( fp, &stat );   /* Gezhp 99 */
+                pMobIndex->body_form = fread_number64( fp, &stat );   /* Gezhp 99 */
 
                 fread_number( fp, &stat );   /* Unused */
                 fread_number( fp, &stat );   /* Unused */

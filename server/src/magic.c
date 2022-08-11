@@ -460,14 +460,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
                 break;
         }
 
-        /*
-        if  ( !skill_table[sn].name )
-                return;
-
-        Why is this so far into the function?  Also it doesn't work.
-        --Owl 23/09/18
-        */
-
         if ( ch->mana < mana )
         {
                 send_to_char( "You don't have enough mana.\n\r", ch );
@@ -479,17 +471,6 @@ void do_cast( CHAR_DATA *ch, char *argument )
         {
                 say_spell( ch, sn );
         }
-
-        /*
-        Below probably fixes above?  --Owl 23/09/18
-
-        Maybe? say_spell has disappeared let's see if we can get that back
-
-        if ( (strcmp( skill_table[sn].name, "ventriloquate" )) == 0 )
-        {
-                say_spell( ch, sn );
-        }
-        */
 
         WAIT_STATE( ch, skill_table[sn].beats );
 
@@ -548,6 +529,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                         chance = 50 + (ch->pcdata->learned[gsn_second_spell] / 2);
 
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                                chance /= 2;
+
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                             ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
                             || (number_percent() > chance))
@@ -580,6 +564,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
                         chance = 40 + (ch->pcdata->learned[gsn_third_spell] / 2);
 
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                                chance /= 2;
+
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                             ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
                             || (number_percent() > chance))
@@ -598,6 +585,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
                             || ch->position < POS_FIGHTING)
                                 return;
 
+                        /* 4th spell  - must have succeeded in third spell to have a
+                         * chance at a fourth spell  */
+
                         if (ch->pcdata->spell_attacks < 4)
                                 return;
 
@@ -608,6 +598,9 @@ void do_cast( CHAR_DATA *ch, char *argument )
                         }
 
                         chance = 30 + (ch->pcdata->learned[gsn_fourth_spell] / 2);
+
+                        if (IS_AFFECTED(ch, AFF_SLOW))
+                                chance /= 2;
 
                         if ((number_percent() > (94 + ((ch->class == CLASS_CLERIC
                                                         ? get_curr_wis (ch) : get_curr_int (ch)) - 25)))
@@ -1719,6 +1712,79 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
         send_to_char("A warm feeling runs through your body.\n\r", victim);
         act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+
+}
+
+void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+        /*
+         * This idea with this spell is that it removes all a player's
+         * magical body-based transformations.  Given to healers so players
+         * have a way of getting rid of 'AFF_SLOW' in particular.
+         */
+
+        CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+        if (is_affected(victim, gsn_haste))
+                affect_strip(victim, gsn_haste);
+        if (is_affected(victim, gsn_slow))
+                affect_strip(victim, gsn_slow);
+        if (is_affected(victim, gsn_ectoplasmic_form));
+                affect_strip(victim, gsn_ectoplasmic_form);
+        if (is_affected(victim, gsn_pass_door));
+                affect_strip(victim, gsn_pass_door);
+        if (is_affected(victim, gsn_change_sex));
+                affect_strip(victim, gsn_change_sex);
+        if (is_affected(victim, gsn_stone_skin));
+                affect_strip(victim, gsn_stone_skin);
+        if (is_affected(victim, gsn_flesh_armor));
+                affect_strip(victim, gsn_flesh_armor);
+        if (is_affected(victim, gsn_adrenaline_control));
+                affect_strip(victim, gsn_adrenaline_control);
+        if (is_affected(victim, gsn_bark_skin));
+                affect_strip(victim, gsn_bark_skin);
+
+        if (is_affected(victim, gsn_chameleon_power));
+        {
+                affect_strip(victim, gsn_chameleon_power);
+                REMOVE_BIT(victim->affected_by, AFF_HIDE);
+        }
+
+        if (is_affected(victim, gsn_invis));
+        {
+                affect_strip(victim, gsn_invis);
+                REMOVE_BIT(victim->affected_by, AFF_INVISIBLE);
+        }
+
+        if (is_affected(victim, gsn_mist_walk));
+        {
+                affect_strip(victim, gsn_mist_walk);
+                REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
+        }
+
+        if (is_affected(victim, gsn_astral_sidestep));
+        {
+                affect_strip(victim, gsn_astral_sidestep);
+                REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
+        }
+
+        /*
+         * DON'T include fly form (or any other forms). Pure shifters are
+         * already 'stabilised' in their forms
+         */
+
+        victim->pcdata->blink = FALSE;
+        REMOVE_BIT(victim->affected_by, AFF_SLOW);
+        REMOVE_BIT(victim->affected_by, AFF_PASS_DOOR);
+
+        if (ch != victim)
+        {
+                act( "You magically stabilise $N's body.", ch, NULL, victim, TO_CHAR );
+                check_group_bonus(ch);
+        }
+
+        send_to_char("Your body returns to its normal state.\n\r", victim);
+        act("$C returns to $S normal state.", ch, NULL, victim, TO_NOTVICT);
 
 }
 
@@ -3819,9 +3885,9 @@ void spell_paralysis( int sn, int level, CHAR_DATA *ch, void *vo )
         affect_join( victim, &af );
 
         if ( ch != victim )
-                send_to_char( "You successfully paralyze your victim.\n\r", ch );
+                send_to_char( "You successfully paralyse your victim.\n\r", ch );
 
-        send_to_char( "You cannot move, you are paralyzed!\n\r", victim );
+        send_to_char( "You cannot move, you are paralysed!\n\r", victim );
 }
 
 
@@ -7032,7 +7098,9 @@ void spell_lore( int sn, int level, CHAR_DATA *ch, void *vo )
         &&   obj->item_type != ITEM_ARMOURERS_HAMMER
         &&   obj->item_type != ITEM_MITHRIL
         &&   obj->item_type != ITEM_WHETSTONE
-        &&   obj->item_type != ITEM_CRAFT )
+        &&   obj->item_type != ITEM_CRAFT
+        &&   obj->item_type != ITEM_TURRET_MODULE
+        &&   obj->item_type != ITEM_FORGE )
         {
                 send_to_char ( "You can't determine this item's properties.\n\r", ch );
                 return;
@@ -7375,6 +7443,15 @@ void spell_haste(  int sn, int level, CHAR_DATA *ch, void *vo )
                 return;
         }
 
+        if ( is_affected( victim, gsn_slow ))
+        {
+                affect_strip(victim, gsn_slow);
+                REMOVE_BIT(victim->affected_by, AFF_SLOW);
+                act( "$c speeds up noticeably.", victim, NULL, NULL, TO_ROOM);
+                send_to_char( "You start to move at your normal speed.\n\r", victim );
+                return;
+        }
+
         af.type      = sn;
         af.duration  = level / 2 + 7;
         af.modifier  = 0;
@@ -7384,6 +7461,74 @@ void spell_haste(  int sn, int level, CHAR_DATA *ch, void *vo )
 
         act ( "$n speeds up.", victim, NULL, NULL, TO_ROOM);
         send_to_char( "You feel quick.\n\r", victim );
+}
+
+void spell_slow( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    AFFECT_DATA af;
+
+    if ( is_affected( victim, sn )
+    ||   IS_AFFECTED(victim,AFF_SLOW) )
+    {
+        if (victim == ch)
+        {
+                send_to_char("You can't move any slower!\n\r",ch);
+        }
+        else {
+                act("$N can't get any slower than they are.", ch, NULL, victim, TO_CHAR);
+        }
+        return;
+    }
+
+    if (is_affected( victim, gsn_haste ))
+    {
+        if (victim != ch)
+        {
+                if ( saves_spell( level, victim ) )
+                {
+                        send_to_char("Your spell fails to slow them down.\n\r",ch);
+                        act("The spell fails to slow $n down.",victim,NULL,NULL,TO_ROOM);
+                        damage(ch, victim, number_range(1, ch->level/2), gsn_slow, FALSE);
+                }
+                else {
+                        affect_strip(victim, gsn_haste);
+                        act( "$c slows down noticeably.", victim, NULL, NULL, TO_ROOM );
+                        act("You start to move less quickly.", ch, NULL, victim, TO_VICT);
+                }
+                return;
+        }
+        else {
+                affect_strip(victim, gsn_haste);
+                send_to_char("You start to move less quickly.", ch);
+        }
+
+        act("$c starts to move less quickly.",victim,NULL,NULL,TO_ROOM);
+        return;
+    }
+
+    if ( saves_spell( level, victim ) )
+    {
+        send_to_char( "The spell fails to slow you down.\n\r", victim );
+        act("The spell fails to slow $n down.",victim,NULL,NULL,TO_ROOM);
+        damage(ch, victim, number_range(1, ch->level/2), gsn_slow, FALSE);
+        return;
+    }
+
+    af.type      = sn;
+    af.duration  = level / 2 + 7;
+    af.modifier  = 0;
+    af.location  = APPLY_NONE;
+
+    af.bitvector = AFF_SLOW;
+    affect_to_char( victim, &af );
+
+    send_to_char( "You feel yourself slowing d o  w   n...\n\r", victim );
+    act("$c starts to move in slow motion.",victim,NULL,NULL,TO_ROOM);
+
+    check_group_bonus(ch);
+
+    return;
 }
 
 
