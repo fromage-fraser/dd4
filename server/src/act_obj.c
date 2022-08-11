@@ -4269,6 +4269,12 @@ void do_donate (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (IS_SET(obj->extra_flags, ITEM_CURSED))
+                {
+                        send_to_char("It is oddly resistant to being donated.\n\r", ch);
+                        return;
+                }
+
                 if (obj->item_type == ITEM_WEAPON)
                 {
                         if (obj->level <= 5)
@@ -4326,6 +4332,12 @@ void do_donate (CHAR_DATA *ch, char *argument)
                                 if (IS_SET(obj->extra_flags, ITEM_NODROP))
                                 {
                                         send_to_char("You can't let go of that!\n\r", ch);
+                                        return;
+                                }
+
+                                if (IS_SET(obj->extra_flags, ITEM_CURSED))
+                                {
+                                        send_to_char("It is oddly resistant to being donated.\n\r", ch);
                                         return;
                                 }
 

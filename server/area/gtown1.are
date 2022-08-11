@@ -714,7 +714,7 @@ jar blood~
 a jar of human blood~
 A jar of human blood sits here.~
 ~
-10 2|16|512 1|16384
+10 2|16|512|2305843009213693952 1|16384
 50~ poison~ weaken~ curse~
 5 0 0
 #8822
