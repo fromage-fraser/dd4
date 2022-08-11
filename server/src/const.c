@@ -282,7 +282,7 @@ const struct HERB herb_table [ MAX_HERBS ] =
 };
 
 /* Blueprint structure : name, description, blueprint_ref, blueprint_ego,
-   blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) */
+   blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) , skill_name */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
         { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 }, "turret" },
@@ -296,7 +296,17 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
         { "huntsmiths belt",      "Huntsmiths belt of the flame", OBJ_VNUM_RARE2, -1, { 0, 0 },  { 50, 20, 2, 0, 0 }, "rare set" },
         { "huntsmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_RARE3, -1, { 0, 0 },  { 70, 30, 5, 0, 0 }, "rare set" },
         { "steel broadsword",      "Fierce steel broadsword", OBJ_VNUM_ST_SWORD1, -1, { 8, 18 },  { 25, 0, 0, 0, 0 }, "steel broadsword" },
-        { "titanium rapier",      "Titanium rapier of torment", OBJ_VNUM_TI_SWORD1, -1, { 14, 23 },  { 40, 15, 0, 0, 0 }, "titanium rapier" }
+        { "titanium rapier",      "Titanium rapier of torment",         OBJ_VNUM_TI_SWORD1, -1, { 14, 23 },  { 40, 15, 0, 0, 0 }, "titanium rapier" },
+        { "bloodforged helm",      "Bloodforge battlehelm",       OBJ_VNUM_BF_SET1, -1, { 0, 0 },  { 40, 20, 10, 5, 0 }, "bloodforged set" },
+        { "bloodforged boots",     "Bloodforged swiftboots",      OBJ_VNUM_BF_SET2, -1, { 0, 0 },  { 50, 20, 12, 7, 0 }, "bloodforged set" },
+        { "bloodforged leggings", "Bloodforged spiked leggings", OBJ_VNUM_BF_SET3, -1, { 0, 0 },  { 70, 30, 15, 9, 0 }, "bloodforged set" },
+        { "bloodforged grips",           "Bloodforged grips",           OBJ_VNUM_BF_SET4, -1, { 0, 0 },  { 80, 40, 21, 12, 0 }, "bloodforged set" },
+        { "astral horizon",      "Astral horizon of ascendance",       OBJ_VNUM_AS_SET1, -1, { 0, 0 },  { 50, 20, 2, 20, 3 }, "astral set" },
+        { "astral wrap",      "Astral wrap of insight",                 OBJ_VNUM_AS_SET2, -1, { 0, 0 },  { 70, 30, 5, 20, 5 }, "astral set" },
+        { "astral anomoly",      "Astral Anonomly of knowing",          OBJ_VNUM_AS_SET3, -1, { 0, 0 },  { 40, 10, 1, 20, 6 }, "astral set" },
+        { "astral plain",      "Astral plane of travel",                OBJ_VNUM_AS_SET4, -1, { 0, 0 },  { 50, 20, 2, 30, 8 }, "astral set" },
+        { "astral transcendance",  "Astral transcendance",              OBJ_VNUM_AS_SET5, -1, { 0, 0 },  { 70, 30, 5, 40, 10 }, "astral set" },
+        { "steel cache",     "Smithys steel cache",     OBJ_VNUM_STEEL_CACHE, -1,       { 0, 0 },       { 6, 0, 0, 0, 0 }, "steel cache" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
@@ -1852,17 +1862,6 @@ const struct liq_type liq_table [ LIQ_MAX ] =
         { "cola",                       "cherry",               {  0, 1,  5 } }   /* 15 */
 };
 
-/* Raw MAterials - name, desc, max, weight, cost, spare  - Brutus Jul 2022
-struct raw_mats_data raw_mats_table [RAW_MATS_MAX] =
-{
-        { "steel",      "A dull greyish metal",                         { 100, 1, 1, 0 } },
-        { "titanium",     "A silver metal",                              { 100, 1, 1, 0 } },
-        { "adamantite",      "A ferromagnetic ore with silver highlights",         { 100, 1, 1, 0 } },
-        { "electrum",      "A natural pale yellow alloy",               { 100, 1, 1, 0 } },
-        { "starmetal",      "A extraterrestrial mineral",               { 100, 1, 1, 0 } }
-};
-*/
-
 /*
  *  Skill pre-reqs
  */
@@ -2414,11 +2413,12 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
         { &gsn_empower,                                 0 },
         { &gsn_uncommon_set,	                        0 },
         { &gsn_rare_set,		                0 },
-        { &gsn_epic_set,		                0 },
-        { &gsn_legendary_set,	                        0 },
+        { &gsn_bloodforged_set,		                0 },
+        { &gsn_astral_set,	                        0 },
         { &gsn_repelling,		                0 },
         { &gsn_steel_broadsword,                        0 },
         { &gsn_titanium_rapier,                         0 },
+        { &gsn_steel_cache,                             0 },
 
         { &gsn_group_weaponsmith,	                0 },
         { &gsn_counterbalance,		                0 },
@@ -5925,17 +5925,17 @@ const struct skill_type skill_table [MAX_SKILL] =
         },
 
         {
-                "epic set", &gsn_epic_set,
+                "bloodforged set", &gsn_bloodforged_set,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
-                "epic set", "!Epic_set!"
+                "bloodforged set", "!Bloodforged_set!"
         },
 
         {
-                "legendary set", &gsn_legendary_set,
+                "astral set", &gsn_astral_set,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
-                "legendary set", "!Legendary_set!"
+                "astral set", "!Astral_set!"
         },
 
         {
@@ -5999,6 +5999,27 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
                 spell_stabilise, 50, 12,
                 "spell", "Your body returns to its normal state."
+        },
+
+        {
+                "engrave", &gsn_engrave,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "engrave", "!Engrave!"
+        },
+
+        {
+                "discharge", &gsn_discharge,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "discharge", "!Discharge!"
+        },
+
+        {
+                "steel cache", &gsn_steel_cache,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 0,
+                "steel cache", "!Steel_cache!"
         },
 
         /*

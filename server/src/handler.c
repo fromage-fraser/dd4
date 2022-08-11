@@ -2806,7 +2806,7 @@ char* affect_bit_name_nice (unsigned long int vector)
  * Return ascii name of player act bit vectors. Used by mstat. --Owl 21/3/22
  */
 
-char *pact_bit_name (int vector)
+char *pact_bit_name (unsigned long int vector)
 {
         if ( vector & PLR_IS_NPC                ) return "is_npc";
         if ( vector & PLR_BOUGHT_PET            ) return "bought_pet";

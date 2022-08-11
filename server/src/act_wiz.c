@@ -1795,6 +1795,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 }
 
                 if ( IS_SET(victim->act, ACT_PRACTICE )
+                &&  ( victim->pIndexData->skills )
                 &&  ( victim->pIndexData->skills ) )
                 {
                         int sn;

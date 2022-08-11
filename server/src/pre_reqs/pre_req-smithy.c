@@ -11,6 +11,7 @@
 {&gsn_shield_block,     &gsn_smithy_base,           30,     PRE_SMITHY},
 
 {&gsn_smelt,			&gsn_group_armoursmith,	    10, 	PRE_SMITHY},
+{&gsn_steel_cache,      &gsn_group_armoursmith,	    10, 	PRE_SMITHY},
 {&gsn_strengthen,		&gsn_group_armoursmith,	    20, 	PRE_SMITHY},
 {&gsn_uncommon_set,	    &gsn_group_armoursmith,	    50, 	PRE_SMITHY},
 {&gsn_rare_set,		    &gsn_group_armoursmith,	    64, 	PRE_SMITHY},
@@ -27,8 +28,8 @@
 
 
 /* 30+ skills */
-{&gsn_epic_set,		    &gsn_group_armoursmith,	    70, 	PRE_SMITHY},
-{&gsn_legendary_set,	&gsn_group_armoursmith,	    80, 	PRE_SMITHY},
+{&gsn_bloodforged_set,  &gsn_group_armoursmith,	    71, 	PRE_SMITHY},
+{&gsn_astral_set,	    &gsn_group_armoursmith,	    82, 	PRE_SMITHY},
 {&gsn_repelling,		&gsn_group_armoursmith,    	90,	    PRE_SMITHY},
 
 

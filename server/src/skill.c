@@ -2942,6 +2942,7 @@ bool has_tranquility(CHAR_DATA *ch)
         return FALSE;
 }
 
+
 /*
  *  checks if character has cursed item on them or is
  *  afflicted by curse, hex, etc.
@@ -3490,7 +3491,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
         found = -1;
         for (i = 0; i < BLUEPRINTS_MAX; i++)
         {
-                if (is_name(arg1, blueprint_list[i].blueprint_name))
+                if (!strcmp( arg1, blueprint_list[i].blueprint_name))
                 {
                         found = i;
                         break;

@@ -5571,6 +5571,7 @@ Shapeshifter  .   None.
 Thief .   .   .   In an Olive Grove, a leader of Cut-throats.
 Warrior   .   .   A warrior Mage residing over the guards in Ofcol.
 Ranger    .   .   A wandering Ranger patrols a lake (archery only)
+Smithy    .   .   None.
 
 Level 20
 Seek trainers for all classes in Kerofk.
@@ -7009,6 +7010,45 @@ Blueprints are learned as you increase your knowledge in weaponsmithing
 or armoursmithing. Blueprints allow a SMITHY to build a number of
 different items, and augments. Using the CONSTRUCT skill without an
 argument will list known blueprints.
+~
+
+1 'TITANIUM REAPER' 'STEEL BOARDSWORD'~
+
+Syntax: construct steel broadsword
+Syntax: construct titanium Reaper
+Syntax: construct .....
+
+These are primarily weapons that the SMITHY can CONSTRUCT. Each require
+different amounts of raw materials, which you can determine from 
+typing construct with no arguments.
+~
+
+1 'WRENCH OF THE CROW' 'WINGS OF THE CROW' 'HUNTSMITHS'~
+
+Syntax: construct wrench of the crow
+Syntax: construct huntsmiths gloves
+Syntax: construct .....
+
+These are blueprints that produce SET PIECES. These pieces when worn 
+together provide additional bonuses. Each item require different amounts 
+of raw materials, which you can determine from typing construct with
+no arguments.
+~
+
+1 'SET PIECES'~
+
+Experiances Smithys can construct sets of armour, that when worn
+together provide additional bonuses.
+~
+
+1 'STEEL CACHE'~
+
+Syntax: construct 'steel cache'
+
+A Smithys cache can be used as portable storage for any armour or 
+weapons you may find. Its interior is filled with hooks and latches
+that allow all manner of weapons and armour to be hung or strapped
+into the cache.
 ~
 
 0 $~
