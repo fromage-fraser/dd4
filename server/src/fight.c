@@ -1195,9 +1195,6 @@ void damage (CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
                         ch->hit = 1;
 
-                if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
-                        ch->hit = 1;
-
                 if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->hit < 1)
                         ch->hit = 1;
         }
@@ -1921,12 +1918,6 @@ bool check_aura_of_fear (CHAR_DATA *ch, CHAR_DATA *victim)
 
 void update_pos (CHAR_DATA *victim)
 {
-
-        if (IS_SET(victim->act, ACT_UNKILLABLE))
-        {
-                return;
-        }
-
 
         if (IS_SET(victim->act, ACT_UNKILLABLE))
         {

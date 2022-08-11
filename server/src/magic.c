@@ -903,11 +903,10 @@ void spell_astral_vortex( int sn, int level, CHAR_DATA *ch, void *vo )
         OBJ_DATA *pobj_next;
 
         /*
-         *  * return;
-         *  * Re-enabled 24/09/18.  And may God have mercy on my soul.
-        * * --Owl
+         * return;
+         * Re-enabled 24/09/18.  And may God have mercy on my soul.
+        * --Owl
         */
-
 
         for (pobj = ch->carrying; pobj; pobj = pobj_next)
         {
@@ -1578,9 +1577,7 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
                 }
 
                 sprintf(buf,"%s %s \n\r",
-                        IS_NPC(victim) ? victim->short_descr : victim->name,
-
-                        wound  );
+                        IS_NPC(victim) ? victim->short_descr : victim->name, wound );
                 send_to_char( buf, ch );
         }
 
@@ -2641,18 +2638,19 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         if ( IS_GOOD( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL);
-                act( "<45><45>$p glows blue.<0><0>",   ch, obj, NULL, TO_CHAR );
+                act( "<45>$p glows blue.<0>",   ch, obj, NULL, TO_CHAR );
         }
         else if ( IS_EVIL( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "<160><160>$p glows red.<0><0>",    ch, obj, NULL, TO_CHAR );
+
+                act( "<160>$p glows red.<0>",    ch, obj, NULL, TO_CHAR );
         }
         else
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL );
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "<227><227>$p glows yellow.<0><0>", ch, obj, NULL, TO_CHAR );
+                act( "<227>$p glows yellow.<0>", ch, obj, NULL, TO_CHAR );
         }
 
         SET_BIT(obj->extra_flags, ITEM_MAGIC);
@@ -3018,7 +3016,6 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
                                 sprintf(wound,"is bleeding to death!");
                 }
                 else {
-
                         if ( percent >= 100 )
                                 sprintf(wound,"is in perfect condition.");
                         else if ( percent >=  90 )
@@ -3042,7 +3039,7 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
                         else
                                 sprintf(wound,"is beyond saving.");
                 }
-
+                
                 sprintf(buf,"%s %s \n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
@@ -3424,7 +3421,9 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Chain Attached");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_STRENGTHEN))
                         strcat (buf, " Strengthened");
-
+                if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                        strcat (buf, " Empowered");
+                         
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }
@@ -3972,27 +3971,14 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                         yesno = 1;
                 }
 
-                if (IS_SET(obj->extra_flags, ITEM_CURSED))
-                {
-                        REMOVE_BIT( obj->extra_flags, ITEM_CURSED);
-                        act( "{WYou notice $p flash brightly.{x",   victim, obj, NULL, TO_CHAR );
-                        yesno = 1;
-                }
-
                 if ( (IS_SET(obj->extra_flags, ITEM_NOREMOVE))
                     || (IS_SET(obj->extra_flags, ITEM_NODROP)))
                 {
                         if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
-	                {
-	                        send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
-	                        continue;
-	                }
-
-                        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
-	                {
-	                        send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
-	                        continue;
-	                }
+	                      {
+	                            send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
+	                            continue;
+	                      }
 
                         unequip_char( victim, obj );
                         obj_from_char( obj );
@@ -4014,14 +4000,6 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                         yesno = 1;
                 }
 
-
-                if (IS_SET(obj->extra_flags, ITEM_CURSED))
-                {
-                        REMOVE_BIT( obj->extra_flags, ITEM_CURSED);
-                        act( "{WYou notice $p flash brightly.{x",   victim, obj, NULL, TO_CHAR );
-                        yesno = 1;
-                }
-
                 if ( (IS_SET(obj->extra_flags, ITEM_NOREMOVE))
                     || (IS_SET(obj->extra_flags, ITEM_NODROP)))
                 {
@@ -4030,21 +4008,11 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 	                        send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
 	                        continue;
 	                }
-
-                        if (IS_SET(victim->in_room->room_flags, ROOM_NO_DROP))
-	                {
-	                        send_to_char ("A powerful enchantment stops you attempting to remove cursed items here.\n\r", victim);
-	                        continue;
-	                }
-
                         obj_from_char(obj);
                         obj_to_room(obj, victim->in_room);
                         act("You toss $p away.", victim, obj, NULL, TO_CHAR);
                         act("$n tosses $p away.", victim, obj, NULL, TO_ROOM);
                 }
-
-
-
 
         }
 
@@ -4494,7 +4462,7 @@ void spell_summon_avatar( int sn, int level, CHAR_DATA *ch, void *vo )
 
 void spell_teleport (int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        CHAR_DATA             *victim = (CHAR_DATA *) vo;
+        CHAR_DATA       *victim = (CHAR_DATA *) vo;
         ROOM_INDEX_DATA *pRoomIndex;
         OBJ_DATA        *pobj;
         OBJ_DATA        *pobj_next;
@@ -6557,18 +6525,18 @@ void spell_bless_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
         if ( IS_GOOD( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL);
-                act( "<45><45>$p pulses blue.<0><0>",   ch, obj, NULL, TO_CHAR );
+                act( "<45>$p pulses blue.<0>",   ch, obj, NULL, TO_CHAR );
         }
         else if ( IS_EVIL( ch ) )
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "<160><160>$p pulses red.<0><0>",    ch, obj, NULL, TO_CHAR );
+                act( "<160>$p pulses red.<0>",    ch, obj, NULL, TO_CHAR );
         }
         else
         {
                 SET_BIT( obj->extra_flags, ITEM_ANTI_EVIL );
                 SET_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
-                act( "<227><227>$p pulses yellow.<0><0>", ch, obj, NULL, TO_CHAR );
+                act( "<227>$p pulses yellow.<0>", ch, obj, NULL, TO_CHAR );
         }
 
         SET_BIT( obj->extra_flags, ITEM_BLESS );

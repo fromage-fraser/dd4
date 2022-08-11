@@ -281,7 +281,7 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
-/* Blueprint structure : name, description, blueprint_ref, blueprint_ego,
+/* Blueprint structure : name, description, blueprint_ref, blueprint_ego,  
    blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) , skill_name */
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {

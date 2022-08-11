@@ -1663,10 +1663,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->rider ? victim->rider->name : "(none)");
                 strcat( buf1, buf );
 
-
-                /* sprintf(buf, "mob act is: %lu\r\n", victim->act);
-                log_string(buf); */
-
                 if (victim->act)
                 {
                         sprintf(buf, "Act flags (num): {W");
@@ -1795,7 +1791,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 }
 
                 if ( IS_SET(victim->act, ACT_PRACTICE )
-                &&  ( victim->pIndexData->skills )
                 &&  ( victim->pIndexData->skills ) )
                 {
                         int sn;

@@ -161,7 +161,6 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Act         %lu\n", ch->act);
         fprintf(fp, "Status      %d\n",  ch->status);
         fprintf(fp, "AffdBy      %lu\n", ch->affected_by);
-
         fprintf(fp, "Pos         %d\n",
                 ch->position == POS_FIGHTING ? POS_STANDING : ch->position);
 

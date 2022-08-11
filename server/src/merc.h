@@ -317,7 +317,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   533     /* 528 527 2 new blueprints- Brutus Aug 2022 */
+#define MAX_SKILL                   533     /* 531 + 2 new blueprints- Brutus Aug 2022 */
 #define MAX_PRE_REQ                 1370    /* 2 new blueprints */
 #define MAX_SPELL_GROUP             437     /* 2 new blueprints  --Brutus Aug 22 */
 #define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
@@ -2524,7 +2524,7 @@ struct char_data
         int                     gold;
         int                     silver;
         int                     copper;
-        int                     coin_weight;cd ../
+        int                     coin_weight;
         int                     smelted_steel;
         int                     smelted_titanium;
         int                     smelted_adamantite;
