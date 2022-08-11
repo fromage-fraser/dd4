@@ -1322,6 +1322,7 @@ void do_order( CHAR_DATA *ch, char *argument )
             || !str_prefix(arg2, "oclanitem" )
             || !str_prefix(arg2, "cast")
             || !str_prefix(arg2, "murder")
+            || !str_prefix(arg2, "dirt")
             || !str_prefix(arg2, "kick"))
         {
                 return;

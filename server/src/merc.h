@@ -236,7 +236,7 @@ struct imbue_types
 
 #define BLUEPRINTS_MAX  22
 
-/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref blueprint_cost steel,titanium,adamantite,elctrum,starmetal */
+/* Blueprint structure : blueprint_name, blueprint_desc, blueprint_ref, blueprint_cost steel, titanium, adamantite, electrum, starmetal */
 struct blueprint_type
 {
         char    *blueprint_name;
@@ -317,9 +317,9 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   531     /* 531, 530, 529 - cache, discharge and engrave- Brutus Aug 2022 */
-#define MAX_PRE_REQ                 1370    /* steel cache, 2 new blueprints */
-#define MAX_SPELL_GROUP             437     /* steel cache, 2 new blueprints  --Brutus Aug 22 */
+#define MAX_SKILL                   533     /* 531 + 2 new blueprints- Brutus Aug 2022 */
+#define MAX_PRE_REQ                 1370    /* 2 new blueprints */
+#define MAX_SPELL_GROUP             437     /* 2 new blueprints  --Brutus Aug 22 */
 #define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
@@ -768,6 +768,7 @@ struct descriptor_data
 /*
  *  Mobile body bits and macros.
  *  See online help for 'MOBILE BODY FORM'.  Gezhp 99
+ *  Tested and can be extended up to BIT_63 -- Owl 11/8/22
  */
 #define BODY_NO_HEAD            BIT_0
 #define BODY_NO_EYES            BIT_1
@@ -1067,13 +1068,13 @@ struct note_data
  */
 struct affect_data
 {
-        AFFECT_DATA *   next;
-        int             type;
-        int             duration;
-        int             location;
-        int             modifier;
-        int             bitvector;
-        bool            deleted;
+        AFFECT_DATA *           next;
+        int                     type;
+        int                     duration;
+        int                     location;
+        int                     modifier;
+        unsigned long int       bitvector;
+        bool                    deleted;
 };
 
 /* Set items struct */
@@ -1518,19 +1519,19 @@ bool tournament_action_illegal        ( CHAR_DATA *ch, int flag );
 
 struct bot_template
 {
-        char    *name;
-        char    *blurb;
-        int      alignment;
-        int      bot_type;
-        int      bot_flags;
-        int      speed;
-        int      sight;
-        int      affect_flags;
-        int      body_form;
-        int      sex;
-        char    *special;
-        int      opening_attack;
-        int      eq [ BOT_MAX_EQ_SLOTS ] [ 2 ];
+        char                    *name;
+        char                    *blurb;
+        int                     alignment;
+        int                     bot_type;
+        int                     bot_flags;
+        int                     speed;
+        int                     sight;
+        int                     affect_flags;
+        unsigned long int       body_form;
+        int                     sex;
+        char                    *special;
+        int                     opening_attack;
+        int                     eq [ BOT_MAX_EQ_SLOTS ] [ 2 ];
 };
 
 struct bot_status
@@ -1797,6 +1798,7 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_NON_CORPOREAL               BIT_28  /* Mist Walk, Astral Sidestep, Fly form */
 #define AFF_DETECT_CURSE                BIT_29  /* Mob will attack cursed players, see is_cursed() --Owl */
 #define AFF_DETECT_GOOD                 BIT_30	/* last */
+#define AFF_SLOW                        BIT_63
 
 /* forms - Brutus */
 #define FORM_NORMAL                     0
@@ -2457,10 +2459,10 @@ struct  mob_index_data
         int                     sex;
         int                     level;
         unsigned long int       act;
-        int                     affected_by;
+        unsigned long int       affected_by;
         int                     alignment;
         int                     progtypes;
-        int                     body_form;
+        unsigned long int       body_form;
         int                     spec_fun_exp_modifier;
 };
 
@@ -2531,7 +2533,7 @@ struct char_data
         int                     exp;
         unsigned long int       act;
         int                     status;
-        int                     affected_by;
+        unsigned long int       affected_by;
         int                     position;
         int                     carry_weight;
         int                     carry_number;
@@ -3520,6 +3522,8 @@ extern int gsn_protection;
 extern int gsn_enhancement;
 extern int gsn_healing;
 extern int gsn_ward;
+extern int gsn_slow;
+extern int gsn_stabilise;
 
 /*
  *  Deity gsns
@@ -4281,6 +4285,8 @@ DECLARE_SPELL_FUN( spell_hells_fire             );
 DECLARE_SPELL_FUN( spell_chaos_blast            );
 DECLARE_SPELL_FUN( spell_detect_curse           );
 DECLARE_SPELL_FUN( spell_imprint                );
+DECLARE_SPELL_FUN( spell_slow                   );
+DECLARE_SPELL_FUN( spell_stabilise              );
 
 
 #define MOB_VNUM_SKELETON  3404
@@ -4556,14 +4562,14 @@ char *  item_type_name                  args( ( OBJ_DATA *obj ) );
 int     item_name_type                  args( ( char *name ) );
 char *  affect_loc_name                 args( ( int location ) );
 char *  affect_loc_name                 args( ( int location ) );
-char *  affect_bit_name                 args( ( int vector ) );
-char *  affect_bit_name_nice            args( ( int vector ) );
+char *  affect_bit_name                 args( ( unsigned long int vector ) );
+char *  affect_bit_name_nice            args( ( unsigned long int vector ) );
 char *  act_bit_name                    args( ( unsigned long int vector ) );
-char *  pact_bit_name                   args( ( int vector ) );
+char *  pact_bit_name                   args( ( unsigned long int vector ) );
 char *  extra_form_name                 args( ( int form ) );
 int     extra_form_int                        ( char *name );
 char *  extra_bit_name                  args( ( unsigned long int extra_flags ) );
-char *  body_form_name                  args( ( int vector ) );
+char *  body_form_name                  args( ( unsigned long int vector ) );
 char *  room_flag_name                  args( ( unsigned long int vector ) );
 char *  area_flag_name                  args( ( unsigned long int vector ) );
 char *  wear_flag_name                  args( ( int vector ) );

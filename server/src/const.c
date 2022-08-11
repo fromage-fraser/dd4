@@ -180,7 +180,7 @@ const struct clan_items clan_item_list [ MAX_CLAN ] =
         {       "COB",  488,    489,    491,    490             }
 };
 
-const struct imbue_types imbue_list [ MAX_IMBUE ] = 
+const struct imbue_types imbue_list [ MAX_IMBUE ] =
 {
         /* name, short_desc, apply_buff, base_gain */
         { "to_damage", "More damage", APPLY_DAMROLL, 12 },
@@ -286,10 +286,10 @@ const struct HERB herb_table [ MAX_HERBS ] =
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
         { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 }, "turret" },
-        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 }, "dart" },   
+        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 }, "dart" },
         { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 12, 0, 0, 0, 0 }, "weaponchain" },
         { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "shieldchain" },
-        { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },   
+        { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },
         { "wrench of the crow",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
         { "wings of the crow",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
         { "huntsmiths gloves",      "Huntsmiths gloves of the flame", OBJ_VNUM_RARE1, -1, { 0, 0 },  { 40, 10, 1, 0, 0 }, "rare set" },
@@ -310,15 +310,15 @@ const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
-const struct set_type   set_list [MAX_SETS] = 
+const struct set_type   set_list [MAX_SETS] =
 {
-        { "Smithys Set",       "Desc for the Smithy set", { FALSE, TRUE, TRUE, FALSE}, 
-        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY}, 
+        { "Smithys Set",       "Desc for the Smithy set", { FALSE, TRUE, TRUE, FALSE},
+        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY},
         {APPLY_FLY, 0, 0, APPLY_SANCTUARY} },
 
-        { "Smithys Set",       "Desc for uncommon set", { FALSE, TRUE, TRUE, FALSE}, 
-        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY}, 
-        {APPLY_FLY, 0, 0, APPLY_SANCTUARY} }        
+        { "Smithys Set",       "Desc for uncommon set", { FALSE, TRUE, TRUE, FALSE},
+        {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY},
+        {APPLY_FLY, 0, 0, APPLY_SANCTUARY} }
 };
 
 
@@ -876,7 +876,7 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
 
         /*
          * Skills below gagged by vamps but shown by werewolves
-         * Need to edit has_pre_req() in act_info.c if the number 
+         * Need to edit has_pre_req() in act_info.c if the number
          * of wolf-only skills is changed
          */
         {       &gsn_morph                      },
@@ -888,16 +888,16 @@ struct vampire_gag vampire_gag_table [ MAX_VAMPIRE_GAG ] =
 char * const channel_names [ MAX_CHANNELS ] =
 {
         "AUCTION",
-        "CHAT", 
-        "SHOUT",  
+        "CHAT",
+        "SHOUT",
         "IMMTALK",
-        "SAY",    
-        "TELL",   
-        "CLAN",   
+        "SAY",
+        "TELL",
+        "CLAN",
         "DIRTALK",
-        "SERVER", 
-        "ARENA",  
-        "NEWBIE" 
+        "SERVER",
+        "ARENA",
+        "NEWBIE"
 };
 
 char * const color_list [MAX_COLOR_LIST] =
@@ -951,9 +951,9 @@ const struct color_data color_table [] =
 };
 
 
-/* 
-* Below adds 8-bit colour support, see 
-* http://strasis.com/documentation/limelight-xe/reference/ecma-48-sgr-codes 
+/*
+* Below adds 8-bit colour support, see
+* http://strasis.com/documentation/limelight-xe/reference/ecma-48-sgr-codes
 *
 * --Owl 18/7/22 Increase MAX_8BIT_COLORS if you add any more codes to this table
 */
@@ -1011,17 +1011,17 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;48m",       "<48>",       "SpringGreen1",          48  },
         { "\x1b[38;5;49m",       "<49>",       "MediumSpringGreen",     49  },
         { "\x1b[38;5;50m",       "<50>",       "Cyan3",                 50  },
-	{ "\x1b[38;5;51m",       "<51>",       "Cyan2",                 51  },         
+	{ "\x1b[38;5;51m",       "<51>",       "Cyan2",                 51  },
         { "\x1b[38;5;52m",       "<52>",       "DarkRed2",        	52  },
         { "\x1b[38;5;53m",       "<53>",       "DeepPink8",             53  },
         { "\x1b[38;5;54m",       "<54>",       "Purple5",        	54  },
         { "\x1b[38;5;55m",       "<55>",       "Purple4",        	55  },
-        { "\x1b[38;5;56m",       "<56>",       "Purple3",        	56  },        
+        { "\x1b[38;5;56m",       "<56>",       "Purple3",        	56  },
 	{ "\x1b[38;5;57m",       "<57>",       "BlueViolet",            57  },
         { "\x1b[38;5;58m",       "<58>",       "Orange4",        	58  },
         { "\x1b[38;5;59m",       "<59>",       "Grey29",        	59  },
         { "\x1b[38;5;60m",       "<60>",       "MediumPurple7",         60  },
-	{ "\x1b[38;5;61m",       "<61>",       "SlateBlue3",            61  },        
+	{ "\x1b[38;5;61m",       "<61>",       "SlateBlue3",            61  },
 	{ "\x1b[38;5;62m",       "<62>",       "SlateBlue2",            62  },
         { "\x1b[38;5;63m",       "<63>",       "RoyalBlue",             63  },
         { "\x1b[38;5;64m",       "<64>",       "Chartreuse6",           64  },
@@ -1031,12 +1031,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;68m",       "<68>",       "SteelBlue3",            68  },
         { "\x1b[38;5;69m",       "<69>",       "CornflowerBlue",        69  },
         { "\x1b[38;5;70m",       "<70>",       "Chartreuse5",           70  },
-        { "\x1b[38;5;71m",       "<71>",       "DarkSeaGreen8",         71  },        
+        { "\x1b[38;5;71m",       "<71>",       "DarkSeaGreen8",         71  },
 	{ "\x1b[38;5;72m",       "<72>",       "CadetBlue2",            72  },
         { "\x1b[38;5;73m",       "<73>",       "CadetBlue1",            73  },
         { "\x1b[38;5;74m",       "<74>",       "SkyBlue3",              74  },
         { "\x1b[38;5;75m",       "<75>",       "SteelBlue2",            75  },
-        { "\x1b[38;5;76m",       "<76>",       "Chartreuse4",           76  },        
+        { "\x1b[38;5;76m",       "<76>",       "Chartreuse4",           76  },
 	{ "\x1b[38;5;77m",       "<77>",       "PaleGreen4",            77  },
         { "\x1b[38;5;78m",       "<78>",       "SeaGreen4",             78  },
         { "\x1b[38;5;79m",       "<79>",       "Aquamarine3",           79  },
@@ -1046,18 +1046,18 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;83m",       "<83>",       "SeaGreen3",             83  },
         { "\x1b[38;5;84m",       "<84>",       "SeaGreen2",             84  },
         { "\x1b[38;5;85m",       "<85>",       "SeaGreen1",             85  },
-        { "\x1b[38;5;86m",       "<86>",       "Aquamarine2",           86  },        
+        { "\x1b[38;5;86m",       "<86>",       "Aquamarine2",           86  },
 	{ "\x1b[38;5;87m",       "<87>",       "DarkSlateGray2",        87  },
         { "\x1b[38;5;88m",       "<88>",       "DarkRed1",              88  },
         { "\x1b[38;5;89m",       "<89>",       "DeepPink7",             89  },
         { "\x1b[38;5;90m",       "<90>",       "DarkMagenta2",          90  },
-        { "\x1b[38;5;91m",       "<91>",       "DarkMagenta1",          91  },        
+        { "\x1b[38;5;91m",       "<91>",       "DarkMagenta1",          91  },
 	{ "\x1b[38;5;92m",       "<92>",       "DarkViolet2",           92  },
         { "\x1b[38;5;93m",       "<93>",       "Purple2",               93  },
         { "\x1b[38;5;94m",       "<94>",       "Orange3",               94  },
         { "\x1b[38;5;95m",       "<95>",       "LightPink3",            95  },
         { "\x1b[38;5;96m",       "<96>",       "Plum4",                 96  },
-        { "\x1b[38;5;97m",       "<97>",       "MediumPurple6",         97  },        
+        { "\x1b[38;5;97m",       "<97>",       "MediumPurple6",         97  },
 	{ "\x1b[38;5;98m",       "<98>",       "MediumPurple5",         98  },
         { "\x1b[38;5;99m",       "<99>",       "SlateBlue1",            99  },
         { "\x1b[38;5;100m",     "<100>",       "Yellow7",              100  },
@@ -1067,12 +1067,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;104m",     "<104>",       "MediumPurple4",        104  },
         { "\x1b[38;5;105m",     "<105>",       "LightSlateBlue",       105  },
         { "\x1b[38;5;106m",     "<106>",       "Yellow6",              106  },
-        { "\x1b[38;5;107m",     "<107>",       "DarkOliveGreen6",      107  },        
+        { "\x1b[38;5;107m",     "<107>",       "DarkOliveGreen6",      107  },
 	{ "\x1b[38;5;108m",     "<108>",       "DarkSeaGreen7",        108  },
         { "\x1b[38;5;109m",     "<109>",       "LightSkyBlue3",        109  },
         { "\x1b[38;5;110m",     "<110>",       "LightSkyBlue2",        110  },
         { "\x1b[38;5;111m",     "<111>",       "SkyBlue2",             111  },
-        { "\x1b[38;5;112m",     "<112>",       "Chartreuse2",          112  },        
+        { "\x1b[38;5;112m",     "<112>",       "Chartreuse2",          112  },
 	{ "\x1b[38;5;113m",     "<113>",       "DarkOliveGreen5",      113  },
         { "\x1b[38;5;114m",     "<114>",       "PaleGreen3",           114  },
         { "\x1b[38;5;115m",     "<115>",       "DarkSeaGreen6",        115  },
@@ -1082,18 +1082,18 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;119m",     "<119>",       "LightGreen2",          119  },
         { "\x1b[38;5;120m",     "<120>",       "LightGreen1",          120  },
         { "\x1b[38;5;121m",     "<121>",       "PaleGreen2",           121  },
-        { "\x1b[38;5;122m",     "<122>",       "Aquamarine1",          122  },        
+        { "\x1b[38;5;122m",     "<122>",       "Aquamarine1",          122  },
 	{ "\x1b[38;5;123m",     "<123>",       "DarkSlateGray1",       123  },
         { "\x1b[38;5;124m",     "<124>",       "Red4",                 124  },
         { "\x1b[38;5;125m",     "<125>",       "DeepPink6",            125  },
         { "\x1b[38;5;126m",     "<126>",       "MediumVioletRed",      126  },
-        { "\x1b[38;5;127m",     "<127>",       "Magenta7",             127  },        
+        { "\x1b[38;5;127m",     "<127>",       "Magenta7",             127  },
 	{ "\x1b[38;5;128m",     "<128>",       "DarkViolet1",          128  },
         { "\x1b[38;5;129m",     "<129>",       "Purple1",              129  },
         { "\x1b[38;5;130m",     "<130>",       "DarkOrange3",          130  },
         { "\x1b[38;5;131m",     "<131>",       "IndianRed4",           131  },
         { "\x1b[38;5;132m",     "<132>",       "HotPink5",             132  },
-        { "\x1b[38;5;133m",     "<133>",       "MediumOrchid4",        133  },        
+        { "\x1b[38;5;133m",     "<133>",       "MediumOrchid4",        133  },
 	{ "\x1b[38;5;134m",     "<134>",       "MediumOrchid3",        134  },
         { "\x1b[38;5;135m",     "<135>",       "MediumPurple3",        135  },
         { "\x1b[38;5;136m",     "<136>",       "DarkGoldenrod",        136  },
@@ -1103,12 +1103,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;140m",     "<140>",       "MediumPurple2",        140  },
         { "\x1b[38;5;141m",     "<141>",       "MediumPurple1",        141  },
         { "\x1b[38;5;142m",     "<142>",       "Gold3",                142  },
-        { "\x1b[38;5;143m",     "<143>",       "DarkKhaki",            143  },        
+        { "\x1b[38;5;143m",     "<143>",       "DarkKhaki",            143  },
 	{ "\x1b[38;5;144m",     "<144>",       "NavajoWhite2",         144  },
         { "\x1b[38;5;145m",     "<145>",       "Grey26",               145  },
         { "\x1b[38;5;146m",     "<146>",       "LightSteelBlue3",      146  },
         { "\x1b[38;5;147m",     "<147>",       "LightSteelBlue2",      147  },
-        { "\x1b[38;5;148m",     "<148>",       "Yellow5",              148  },        
+        { "\x1b[38;5;148m",     "<148>",       "Yellow5",              148  },
 	{ "\x1b[38;5;149m",     "<149>",       "DarkOliveGreen4",      149  },
         { "\x1b[38;5;150m",     "<150>",       "DarkSeaGreen5",        150  },
         { "\x1b[38;5;151m",     "<151>",       "DarkSeaGreen4",        151  },
@@ -1118,12 +1118,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;155m",     "<155>",       "DarkOliveGreen3",      155  },
         { "\x1b[38;5;156m",     "<156>",       "PaleGreen1",           156  },
         { "\x1b[38;5;157m",     "<157>",       "DarkSeaGreen3",        157  },
-        { "\x1b[38;5;158m",     "<158>",       "DarkSeaGreen2",        158  },        
+        { "\x1b[38;5;158m",     "<158>",       "DarkSeaGreen2",        158  },
 	{ "\x1b[38;5;159m",     "<159>",       "PaleTurquoise1",       159  },
         { "\x1b[38;5;160m",     "<160>",       "Red3",                 160  },
         { "\x1b[38;5;161m",     "<161>",       "DeepPink5",            161  },
         { "\x1b[38;5;162m",     "<162>",       "DeepPink4",            162  },
-        { "\x1b[38;5;163m",     "<163>",       "Magenta6",             163  },        
+        { "\x1b[38;5;163m",     "<163>",       "Magenta6",             163  },
 	{ "\x1b[38;5;164m",     "<164>",       "Magenta5",             164  },
         { "\x1b[38;5;165m",     "<165>",       "Magenta4",             165  },
         { "\x1b[38;5;166m",     "<166>",       "DarkOrange2",          166  },
@@ -1136,12 +1136,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;173m",     "<173>",       "LightSalmon2",         173  },
         { "\x1b[38;5;174m",     "<174>",       "LightPink2",           174  },
         { "\x1b[38;5;175m",     "<175>",       "Pink2",                175  },
-        { "\x1b[38;5;176m",     "<176>",       "Plum3",                176  },        
+        { "\x1b[38;5;176m",     "<176>",       "Plum3",                176  },
 	{ "\x1b[38;5;177m",     "<177>",       "Violet",               177  },
         { "\x1b[38;5;178m",     "<178>",       "Gold2",                178  },
         { "\x1b[38;5;179m",     "<179>",       "LightGoldenrod5",      179  },
         { "\x1b[38;5;180m",     "<180>",       "Tan",                  180  },
-        { "\x1b[38;5;181m",     "<181>",       "MistyRose2",           181  },        
+        { "\x1b[38;5;181m",     "<181>",       "MistyRose2",           181  },
 	{ "\x1b[38;5;182m",     "<182>",       "Thistle2",             182  },
         { "\x1b[38;5;183m",     "<183>",       "Plum2",                183  },
         { "\x1b[38;5;184m",     "<184>",       "Yellow4",              184  },
@@ -1151,18 +1151,18 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;188m",     "<188>",       "Grey25",               188  },
         { "\x1b[38;5;189m",     "<189>",       "LightSteelBlue1",      189  },
         { "\x1b[38;5;190m",     "<190>",       "Yellow3",              190  },
-        { "\x1b[38;5;191m",     "<191>",       "DarkOliveGreen2",      191  },        
+        { "\x1b[38;5;191m",     "<191>",       "DarkOliveGreen2",      191  },
 	{ "\x1b[38;5;192m",     "<192>",       "DarkOliveGreen1",      192  },
         { "\x1b[38;5;193m",     "<193>",       "DarkSeaGreen1",        193  },
         { "\x1b[38;5;194m",     "<194>",       "Honeydew",             194  },
         { "\x1b[38;5;195m",     "<195>",       "LightCyan1",           195  },
-        { "\x1b[38;5;196m",     "<196>",       "Red2",                 196  },        
+        { "\x1b[38;5;196m",     "<196>",       "Red2",                 196  },
 	{ "\x1b[38;5;197m",     "<197>",       "DeepPink3",            197  },
         { "\x1b[38;5;198m",     "<198>",       "DeepPink2",            198  },
         { "\x1b[38;5;199m",     "<199>",       "DeepPink1",            199  },
         { "\x1b[38;5;200m",     "<200>",       "Magenta3",             200  },
         { "\x1b[38;5;201m",     "<201>",       "Magenta2",             201  },
-        { "\x1b[38;5;202m",     "<202>",       "OrangeRed1",           202  },        
+        { "\x1b[38;5;202m",     "<202>",       "OrangeRed1",           202  },
 	{ "\x1b[38;5;203m",     "<203>",       "IndianRed2",           203  },
         { "\x1b[38;5;204m",     "<204>",       "IndianRed1",           204  },
         { "\x1b[38;5;205m",     "<205>",       "HotPink2",             205  },
@@ -1172,12 +1172,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;209m",     "<209>",       "Salmon",               209  },
         { "\x1b[38;5;210m",     "<210>",       "LightCoral",           210  },
         { "\x1b[38;5;211m",     "<211>",       "PaleVioletRed1",       211  },
-        { "\x1b[38;5;212m",     "<212>",       "Orchid2",              212  },        
+        { "\x1b[38;5;212m",     "<212>",       "Orchid2",              212  },
 	{ "\x1b[38;5;213m",     "<213>",       "Orchid1",              213  },
         { "\x1b[38;5;214m",     "<214>",       "Orange1",              214  },
         { "\x1b[38;5;215m",     "<215>",       "SandyBrown",           215  },
         { "\x1b[38;5;216m",     "<216>",       "LightSalmon1",         216  },
-        { "\x1b[38;5;217m",     "<217>",       "LightPink1",           217  },        
+        { "\x1b[38;5;217m",     "<217>",       "LightPink1",           217  },
 	{ "\x1b[38;5;218m",     "<218>",       "Pink1",                218  },
         { "\x1b[38;5;219m",     "<219>",       "Plum1",                219  },
         { "\x1b[38;5;220m",     "<220>",       "Gold1",                220  },
@@ -1187,12 +1187,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;224m",     "<224>",       "MistyRose1",           224  },
         { "\x1b[38;5;225m",     "<225>",       "Thistle1",             225  },
         { "\x1b[38;5;226m",     "<226>",       "Yellow2",              226  },
-        { "\x1b[38;5;227m",     "<227>",       "LightGoldenrod1",      227  },        
+        { "\x1b[38;5;227m",     "<227>",       "LightGoldenrod1",      227  },
 	{ "\x1b[38;5;228m",     "<228>",       "Khaki1",               228  },
         { "\x1b[38;5;229m",     "<229>",       "Wheat1",               229  },
         { "\x1b[38;5;230m",     "<230>",       "Cornsilk",             230  },
         { "\x1b[38;5;231m",     "<231>",       "White2",               231  },
-        { "\x1b[38;5;232m",     "<232>",       "Grey24",               232  },        
+        { "\x1b[38;5;232m",     "<232>",       "Grey24",               232  },
 	{ "\x1b[38;5;233m",     "<233>",       "Grey23",               233  },
         { "\x1b[38;5;234m",     "<234>",       "Grey22",               234  },
         { "\x1b[38;5;235m",     "<235>",       "Grey21",               235  },
@@ -1205,17 +1205,17 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[38;5;242m",     "<242>",       "Grey14",               242  },
         { "\x1b[38;5;243m",     "<243>",       "Grey13",               243  },
         { "\x1b[38;5;244m",     "<244>",       "Grey12",               244  },
-        { "\x1b[38;5;245m",     "<245>",       "Grey11",               245  },        
+        { "\x1b[38;5;245m",     "<245>",       "Grey11",               245  },
 	{ "\x1b[38;5;246m",     "<246>",       "Grey10",               246  },
         { "\x1b[38;5;247m",     "<247>",       "Grey9",                247  },
         { "\x1b[38;5;248m",     "<248>",       "Grey8",                248  },
         { "\x1b[38;5;249m",     "<249>",       "Grey7",                249  },
-        { "\x1b[38;5;250m",     "<250>",       "Grey6",                250  },        
+        { "\x1b[38;5;250m",     "<250>",       "Grey6",                250  },
 	{ "\x1b[38;5;251m",     "<251>",       "Grey5",                251  },
         { "\x1b[38;5;252m",     "<252>",       "Grey4",                252  },
         { "\x1b[38;5;253m",     "<253>",       "Grey3",                253  },
         { "\x1b[38;5;254m",     "<254>",       "Grey2",                254  },
-        { "\x1b[38;5;255m",     "<255>",       "Grey1",                255  }, 
+        { "\x1b[38;5;255m",     "<255>",       "Grey1",                255  },
         { "\x1b[48;5;1m",       "<301>",       "RedB",                 301  },
         { "\x1b[48;5;2m",       "<302>",       "GreenB",               302  },
         { "\x1b[48;5;3m",       "<303>",       "YellowB",              303  },
@@ -1266,17 +1266,17 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;48m",      "<348>",       "SpringGreen1B",        348  },
         { "\x1b[48;5;49m",      "<349>",       "MediumSpringGreenB",   349  },
         { "\x1b[48;5;50m",      "<350>",       "Cyan3B",               350  },
-	{ "\x1b[48;5;51m",      "<351>",       "Cyan2B",               351  },         
+	{ "\x1b[48;5;51m",      "<351>",       "Cyan2B",               351  },
         { "\x1b[48;5;52m",      "<352>",       "DarkRed2B",            352  },
         { "\x1b[48;5;53m",      "<353>",       "DeepPink8B",           353  },
         { "\x1b[48;5;54m",      "<354>",       "Purple5B",             354  },
         { "\x1b[48;5;55m",      "<355>",       "Purple4B",             355  },
-        { "\x1b[48;5;56m",      "<356>",       "Purple3B",             356  },        
+        { "\x1b[48;5;56m",      "<356>",       "Purple3B",             356  },
 	{ "\x1b[48;5;57m",      "<357>",       "BlueVioletB",          357  },
         { "\x1b[48;5;58m",      "<358>",       "Orange4B",             358  },
         { "\x1b[48;5;59m",      "<359>",       "Grey29B",              359  },
         { "\x1b[48;5;60m",      "<360>",       "MediumPurple7B",       360  },
-	{ "\x1b[48;5;61m",      "<361>",       "SlateBlue3B",          361  },        
+	{ "\x1b[48;5;61m",      "<361>",       "SlateBlue3B",          361  },
 	{ "\x1b[48;5;62m",      "<362>",       "SlateBlue2B",          362  },
         { "\x1b[48;5;63m",      "<363>",       "RoyalBlueB",           363  },
         { "\x1b[48;5;64m",      "<364>",       "Chartreuse6B",         364  },
@@ -1286,12 +1286,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;68m",      "<368>",       "SteelBlue3B",          368  },
         { "\x1b[48;5;69m",      "<369>",       "CornflowerBlueB",      369  },
         { "\x1b[48;5;70m",      "<370>",       "Chartreuse5B",         370  },
-        { "\x1b[48;5;71m",      "<371>",       "DarkSeaGreen8B",       371  },        
+        { "\x1b[48;5;71m",      "<371>",       "DarkSeaGreen8B",       371  },
 	{ "\x1b[48;5;72m",      "<372>",       "CadetBlue2B",          372  },
         { "\x1b[48;5;73m",      "<373>",       "CadetBlue1B",          373  },
         { "\x1b[48;5;74m",      "<374>",       "SkyBlue3B",            374  },
         { "\x1b[48;5;75m",      "<375>",       "SteelBlue2B",          375  },
-        { "\x1b[48;5;76m",      "<376>",       "Chartreuse4B",         376  },        
+        { "\x1b[48;5;76m",      "<376>",       "Chartreuse4B",         376  },
 	{ "\x1b[48;5;77m",      "<377>",       "PaleGreen4B",          377  },
         { "\x1b[48;5;78m",      "<378>",       "SeaGreen4B",           378  },
         { "\x1b[48;5;79m",      "<379>",       "Aquamarine3B",         379  },
@@ -1301,18 +1301,18 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;83m",      "<383>",       "SeaGreen3B",           383  },
         { "\x1b[48;5;84m",      "<384>",       "SeaGreen2B",           384  },
         { "\x1b[48;5;85m",      "<385>",       "SeaGreen1B",           385  },
-        { "\x1b[48;5;86m",      "<386>",       "Aquamarine2B",         386  },        
+        { "\x1b[48;5;86m",      "<386>",       "Aquamarine2B",         386  },
 	{ "\x1b[48;5;87m",      "<387>",       "DarkSlateGray2B",      387  },
         { "\x1b[48;5;88m",      "<388>",       "DarkRed1B",            388  },
         { "\x1b[48;5;89m",      "<389>",       "DeepPink7B",           389  },
         { "\x1b[48;5;90m",      "<390>",       "DarkMagenta2B",        390  },
-        { "\x1b[48;5;91m",      "<391>",       "DarkMagenta1B",        391  },        
+        { "\x1b[48;5;91m",      "<391>",       "DarkMagenta1B",        391  },
 	{ "\x1b[48;5;92m",      "<392>",       "DarkViolet2B",         392  },
         { "\x1b[48;5;93m",      "<393>",       "Purple2B",             393  },
         { "\x1b[48;5;94m",      "<394>",       "Orange3B",             394  },
         { "\x1b[48;5;95m",      "<395>",       "LightPink3B",          395  },
         { "\x1b[48;5;96m",      "<396>",       "Plum4B",               396  },
-        { "\x1b[48;5;97m",      "<397>",       "MediumPurple6B",       397  },        
+        { "\x1b[48;5;97m",      "<397>",       "MediumPurple6B",       397  },
 	{ "\x1b[48;5;98m",      "<398>",       "MediumPurple5B",       398  },
         { "\x1b[48;5;99m",      "<399>",       "SlateBlue1B",          399  },
         { "\x1b[48;5;100m",     "<400>",       "Yellow7B",             400  },
@@ -1322,12 +1322,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;104m",     "<404>",       "MediumPurple4B",       404  },
         { "\x1b[48;5;105m",     "<405>",       "LightSlateBlueB",      405  },
         { "\x1b[48;5;106m",     "<406>",       "Yellow6B",             406  },
-        { "\x1b[48;5;107m",     "<407>",       "DarkOliveGreen6B",     407  },        
+        { "\x1b[48;5;107m",     "<407>",       "DarkOliveGreen6B",     407  },
 	{ "\x1b[48;5;108m",     "<408>",       "DarkSeaGreen7B",       408  },
         { "\x1b[48;5;109m",     "<409>",       "LightSkyBlue3B",       409  },
         { "\x1b[48;5;110m",     "<410>",       "LightSkyBlue2B",       410  },
         { "\x1b[48;5;111m",     "<411>",       "SkyBlue2B",            411  },
-        { "\x1b[48;5;112m",     "<412>",       "Chartreuse2B",         412  },        
+        { "\x1b[48;5;112m",     "<412>",       "Chartreuse2B",         412  },
 	{ "\x1b[48;5;113m",     "<413>",       "DarkOliveGreen5B",     413  },
         { "\x1b[48;5;114m",     "<414>",       "PaleGreen3B",          414  },
         { "\x1b[48;5;115m",     "<415>",       "DarkSeaGreen6B",       415  },
@@ -1337,18 +1337,18 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;119m",     "<419>",       "LightGreen2B",         419  },
         { "\x1b[48;5;120m",     "<420>",       "LightGreen1B",         420  },
         { "\x1b[48;5;121m",     "<421>",       "PaleGreen2B",          421  },
-        { "\x1b[48;5;122m",     "<422>",       "Aquamarine1B",         422  },        
+        { "\x1b[48;5;122m",     "<422>",       "Aquamarine1B",         422  },
 	{ "\x1b[48;5;123m",     "<423>",       "DarkSlateGray1B",      423  },
         { "\x1b[48;5;124m",     "<424>",       "Red4B",                424  },
         { "\x1b[48;5;125m",     "<425>",       "DeepPink6B",           425  },
         { "\x1b[48;5;126m",     "<426>",       "MediumVioletRedB",     426  },
-        { "\x1b[48;5;127m",     "<427>",       "Magenta7B",            427  },        
+        { "\x1b[48;5;127m",     "<427>",       "Magenta7B",            427  },
 	{ "\x1b[48;5;128m",     "<428>",       "DarkViolet1B",         428  },
         { "\x1b[48;5;129m",     "<429>",       "Purple1B",             429  },
         { "\x1b[48;5;130m",     "<430>",       "DarkOrange3B",         430  },
         { "\x1b[48;5;131m",     "<431>",       "IndianRed4B",          431  },
         { "\x1b[48;5;132m",     "<432>",       "HotPink5B",            432  },
-        { "\x1b[48;5;133m",     "<433>",       "MediumOrchid4B",       433  },        
+        { "\x1b[48;5;133m",     "<433>",       "MediumOrchid4B",       433  },
 	{ "\x1b[48;5;134m",     "<434>",       "MediumOrchid3B",       434  },
         { "\x1b[48;5;135m",     "<435>",       "MediumPurple3B",       435  },
         { "\x1b[48;5;136m",     "<436>",       "DarkGoldenrodB",       436  },
@@ -1358,12 +1358,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;140m",     "<440>",       "MediumPurple2B",       440  },
         { "\x1b[48;5;141m",     "<441>",       "MediumPurple1B",       441  },
         { "\x1b[48;5;142m",     "<442>",       "Gold3B",               442  },
-        { "\x1b[48;5;143m",     "<443>",       "DarkKhakiB",           443  },        
+        { "\x1b[48;5;143m",     "<443>",       "DarkKhakiB",           443  },
 	{ "\x1b[48;5;144m",     "<444>",       "NavajoWhite2B",        444  },
         { "\x1b[48;5;145m",     "<445>",       "Grey26B",              445  },
         { "\x1b[48;5;146m",     "<446>",       "LightSteelBlue3B",     446  },
         { "\x1b[48;5;147m",     "<447>",       "LightSteelBlue2B",     447  },
-        { "\x1b[48;5;148m",     "<448>",       "Yellow5B",             448  },        
+        { "\x1b[48;5;148m",     "<448>",       "Yellow5B",             448  },
 	{ "\x1b[48;5;149m",     "<449>",       "DarkOliveGreen4B",     449  },
         { "\x1b[48;5;150m",     "<450>",       "DarkSeaGreen5B",       450  },
         { "\x1b[48;5;151m",     "<451>",       "DarkSeaGreen4B",       451  },
@@ -1373,12 +1373,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;155m",     "<455>",       "DarkOliveGreen3B",     455  },
         { "\x1b[48;5;156m",     "<456>",       "PaleGreen1B",          456  },
         { "\x1b[48;5;157m",     "<457>",       "DarkSeaGreen3B",       457  },
-        { "\x1b[48;5;158m",     "<458>",       "DarkSeaGreen2B",       458  },        
+        { "\x1b[48;5;158m",     "<458>",       "DarkSeaGreen2B",       458  },
 	{ "\x1b[48;5;159m",     "<459>",       "PaleTurquoise1B",      459  },
         { "\x1b[48;5;160m",     "<460>",       "Red3B",                460  },
         { "\x1b[48;5;161m",     "<461>",       "DeepPink5B",           461  },
         { "\x1b[48;5;162m",     "<462>",       "DeepPink4B",           462  },
-        { "\x1b[48;5;163m",     "<463>",       "Magenta6B",            463  },        
+        { "\x1b[48;5;163m",     "<463>",       "Magenta6B",            463  },
 	{ "\x1b[48;5;164m",     "<464>",       "Magenta5B",            464  },
         { "\x1b[48;5;165m",     "<465>",       "Magenta4B",            465  },
         { "\x1b[48;5;166m",     "<466>",       "DarkOrange2B",         466  },
@@ -1391,12 +1391,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;173m",     "<473>",       "LightSalmon2B",        473  },
         { "\x1b[48;5;174m",     "<474>",       "LightPink2B",          474  },
         { "\x1b[48;5;175m",     "<475>",       "Pink2B",               475  },
-        { "\x1b[48;5;176m",     "<476>",       "Plum3B",               476  },        
+        { "\x1b[48;5;176m",     "<476>",       "Plum3B",               476  },
 	{ "\x1b[48;5;177m",     "<477>",       "VioletB",              477  },
         { "\x1b[48;5;178m",     "<478>",       "Gold2B",               478  },
         { "\x1b[48;5;179m",     "<479>",       "LightGoldenrod5B",     479  },
         { "\x1b[48;5;180m",     "<480>",       "TanB",                 480  },
-        { "\x1b[48;5;181m",     "<481>",       "MistyRose2B",          481  },        
+        { "\x1b[48;5;181m",     "<481>",       "MistyRose2B",          481  },
 	{ "\x1b[48;5;182m",     "<482>",       "Thistle2B",            482  },
         { "\x1b[48;5;183m",     "<483>",       "Plum2B",               483  },
         { "\x1b[48;5;184m",     "<484>",       "Yellow4B",             484  },
@@ -1406,18 +1406,18 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;188m",     "<488>",       "Grey25B",              488  },
         { "\x1b[48;5;189m",     "<489>",       "LightSteelBlue1B",     489  },
         { "\x1b[48;5;190m",     "<490>",       "Yellow3B",             490  },
-        { "\x1b[48;5;191m",     "<491>",       "DarkOliveGreen2B",     491  },        
+        { "\x1b[48;5;191m",     "<491>",       "DarkOliveGreen2B",     491  },
 	{ "\x1b[48;5;192m",     "<492>",       "DarkOliveGreen1B",     492  },
         { "\x1b[48;5;193m",     "<493>",       "DarkSeaGreen1B",       493  },
         { "\x1b[48;5;194m",     "<494>",       "HoneydewB",            494  },
         { "\x1b[48;5;195m",     "<495>",       "LightCyan1B",          495  },
-        { "\x1b[48;5;196m",     "<496>",       "Red2B",                496  },        
+        { "\x1b[48;5;196m",     "<496>",       "Red2B",                496  },
 	{ "\x1b[48;5;197m",     "<497>",       "DeepPink3B",           497  },
         { "\x1b[48;5;198m",     "<498>",       "DeepPink2B",           498  },
         { "\x1b[48;5;199m",     "<499>",       "DeepPink1B",           499  },
         { "\x1b[48;5;200m",     "<500>",       "Magenta3B",            500  },
         { "\x1b[48;5;201m",     "<501>",       "Magenta2B",            501  },
-        { "\x1b[48;5;202m",     "<502>",       "OrangeRed1B",          502  },        
+        { "\x1b[48;5;202m",     "<502>",       "OrangeRed1B",          502  },
 	{ "\x1b[48;5;203m",     "<503>",       "IndianRed2B",          503  },
         { "\x1b[48;5;204m",     "<504>",       "IndianRed1B",          504  },
         { "\x1b[48;5;205m",     "<505>",       "HotPink2B",            505  },
@@ -1427,12 +1427,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;209m",     "<509>",       "SalmonB",              509  },
         { "\x1b[48;5;210m",     "<510>",       "LightCoralB",          510  },
         { "\x1b[48;5;211m",     "<511>",       "PaleVioletRed1B",      511  },
-        { "\x1b[48;5;212m",     "<512>",       "Orchid2B",             512  },        
+        { "\x1b[48;5;212m",     "<512>",       "Orchid2B",             512  },
 	{ "\x1b[48;5;213m",     "<513>",       "Orchid1B",             513  },
         { "\x1b[48;5;214m",     "<514>",       "Orange1B",             514  },
         { "\x1b[48;5;215m",     "<515>",       "SandyBrownB",          515  },
         { "\x1b[48;5;216m",     "<516>",       "LightSalmon1B",        516  },
-        { "\x1b[48;5;217m",     "<517>",       "LightPink1B",          517  },        
+        { "\x1b[48;5;217m",     "<517>",       "LightPink1B",          517  },
 	{ "\x1b[48;5;218m",     "<518>",       "Pink1B",               518  },
         { "\x1b[48;5;219m",     "<519>",       "Plum1B",               519  },
         { "\x1b[48;5;220m",     "<520>",       "Gold1B",               520  },
@@ -1442,12 +1442,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;224m",     "<524>",       "MistyRose1B",          524  },
         { "\x1b[48;5;225m",     "<525>",       "Thistle1B",            525  },
         { "\x1b[48;5;226m",     "<526>",       "Yellow2B",             526  },
-        { "\x1b[48;5;227m",     "<527>",       "LightGoldenrod1B",     527  },        
+        { "\x1b[48;5;227m",     "<527>",       "LightGoldenrod1B",     527  },
 	{ "\x1b[48;5;228m",     "<528>",       "Khaki1B",              528  },
         { "\x1b[48;5;229m",     "<529>",       "Wheat1B",              529  },
         { "\x1b[48;5;230m",     "<530>",       "CornsilkB",            530  },
         { "\x1b[48;5;231m",     "<531>",       "White2B",              531  },
-        { "\x1b[48;5;232m",     "<532>",       "Grey24B",              532  },        
+        { "\x1b[48;5;232m",     "<532>",       "Grey24B",              532  },
 	{ "\x1b[48;5;233m",     "<533>",       "Grey23B",              533  },
         { "\x1b[48;5;234m",     "<534>",       "Grey22B",              534  },
         { "\x1b[48;5;235m",     "<535>",       "Grey21B",              535  },
@@ -1460,12 +1460,12 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[48;5;242m",     "<542>",       "Grey14B",              542  },
         { "\x1b[48;5;243m",     "<543>",       "Grey13B",              543  },
         { "\x1b[48;5;244m",     "<544>",       "Grey12B",              544  },
-        { "\x1b[48;5;245m",     "<545>",       "Grey11B",              545  },        
+        { "\x1b[48;5;245m",     "<545>",       "Grey11B",              545  },
 	{ "\x1b[48;5;246m",     "<546>",       "Grey10B",              546  },
         { "\x1b[48;5;247m",     "<547>",       "Grey9B",               547  },
         { "\x1b[48;5;248m",     "<548>",       "Grey8B",               548  },
         { "\x1b[48;5;249m",     "<549>",       "Grey7B",               549  },
-        { "\x1b[48;5;250m",     "<550>",       "Grey6B",               550  },        
+        { "\x1b[48;5;250m",     "<550>",       "Grey6B",               550  },
 	{ "\x1b[48;5;251m",     "<551>",       "Grey5B",               551  },
         { "\x1b[48;5;252m",     "<552>",       "Grey4B",               552  },
         { "\x1b[48;5;253m",     "<553>",       "Grey3B",               553  },
@@ -1481,8 +1481,8 @@ const struct color_data_8bit color_table_8bit [] =
         { "\x1b[29m",           "<563>",       "StrikeThroughOff",     563  },
         { "\x1b[39m",           "<564>",       "DefaultForeground",    564  },
         { "\x1b[49m",           "<565>",       "DefaultBackground",    565  }
-}; 
- 
+};
+
 /*
  * To validate ch access to do_soar locations -- Owl 30/3/22
  * min gsn_hawk %, min gsn_soar %, min char level
@@ -1958,10 +1958,10 @@ const int *spell_groups [ MAX_GROUPS ] =
         &gsn_group_weaponsmith,
         &gsn_group_turret_tech,
         &gsn_group_mech_tech,
-        &gsn_group_alchemy, 
-        &gsn_group_inscription, 
+        &gsn_group_alchemy,
+        &gsn_group_inscription,
         &gsn_group_last
-        
+
 };
 
 
@@ -2409,7 +2409,7 @@ struct spell_group_struct spell_group_table [MAX_SPELL_GROUP] =
 
         { &gsn_group_armoursmith,                       0 },
         { &gsn_smelt,                                   0 },
-        { &gsn_strengthen,		                0 },        
+        { &gsn_strengthen,		                0 },
         { &gsn_empower,                                 0 },
         { &gsn_uncommon_set,	                        0 },
         { &gsn_rare_set,		                0 },
@@ -2482,7 +2482,7 @@ const struct skill_type skill_table [MAX_SKILL] =
          *
          * When adding new spells add them near the end, just
          * before the base skills.  Elements are accessed by
-         * index and results will be unpredictable (BUT BAD) 
+         * index and results will be unpredictable (BUT BAD)
          * if the current order gets screwed up.
          */
         {
@@ -2504,7 +2504,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
                 spell_inner_fire, 20, 12,
                 "<124>i<196>n<11>n<229>e<15>r <229>f<11>i<196>r<124>e<0>", "!Inner Fire!"
-                
+
         },
 
         {
@@ -2576,7 +2576,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_blindness, 5, 12,
                 "spell", "You can see again."
         },
-        
+
 
         {
                 "burning hands", &gsn_burning_hands,
@@ -4749,7 +4749,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "demon flames", &gsn_demon_flames,
                 TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING,
                 spell_demon_flames, 25, 12,
-                "Horde of Demons", "You feel less tormented."
+                "horde of demons", "You feel less tormented."
         },
 
         {
@@ -5902,7 +5902,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "arrow module", "!Arrow!"
         },
-        
+
         {
                 "turret", &gsn_turret,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
@@ -5930,7 +5930,7 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "bloodforged set", "!Bloodforged_set!"
         },
-        
+
         {
                 "astral set", &gsn_astral_set,
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
@@ -5985,6 +5985,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
                 "titanium rapier", "!Titanium_rapier!"
+        },
+
+        {
+                "slow", &gsn_slow,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                spell_slow, 200, 18,
+                "spell", "You feel yourself speed up."
+        },
+
+        {
+                "stabilise", &gsn_stabilise,
+                TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
+                spell_stabilise, 50, 12,
+                "spell", "Your body returns to its normal state."
         },
 
         {

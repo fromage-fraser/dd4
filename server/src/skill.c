@@ -2979,6 +2979,43 @@ bool is_cursed(CHAR_DATA *ch)
 }
 
 
+/*
+ *  checks if character has cursed item on them or is
+ *  afflicted by curse, hex, etc.
+ */
+bool is_cursed(CHAR_DATA *ch)
+{
+        OBJ_DATA *pobj;
+        OBJ_DATA *pobj_next;
+
+        if ( is_affected( ch, gsn_curse )
+        ||   is_affected( ch, gsn_hex )
+        ||   is_affected( ch, gsn_prayer_weaken )
+        ||   IS_AFFECTED( ch, AFF_CURSE ) )
+        {
+                return TRUE;
+        }
+
+        for (pobj = ch->carrying; pobj; pobj = pobj_next)
+        {
+                pobj_next = pobj->next_content;
+
+                if (pobj->deleted)
+                        continue;
+
+                if ( ( IS_SET(pobj->extra_flags, ITEM_CURSED) )
+                ||   ( IS_SET(pobj->extra_flags, ITEM_NOREMOVE) )
+                ||   ( IS_SET(pobj->extra_flags, ITEM_NODROP) ) )
+                {
+                        return TRUE;
+                }
+        }
+
+        return FALSE;
+
+}
+
+
 int remove_songs(CHAR_DATA *ch)
 {
         AFFECT_DATA     *paf;
@@ -3671,7 +3708,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
         blueprint_list[i].blueprint_cost[3],
         blueprint_list[i].blueprint_cost[4], ch, COINS_REPLACE);
 
-        return;        
+        return;
+
 }
 
 void do_empower (CHAR_DATA *ch, char *argument)
@@ -4105,7 +4143,7 @@ void do_counterbalance (CHAR_DATA *ch, char *argument)
 
         sprintf( buf, "You counterbalance %s.\n\r", obj->short_descr );
         send_to_char( buf, ch );
-        sprintf( buf, "Its, a %d/%d split in weighting..\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
+        sprintf( buf, "It's a %d/%d weighting split.\n\r", ch->pcdata->learned[gsn_counterbalance]/2, (100 - (ch->pcdata->learned[gsn_counterbalance]/2)) );
         send_to_char( buf, ch );
 
 

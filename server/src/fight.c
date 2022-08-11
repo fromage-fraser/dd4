@@ -418,6 +418,12 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 : ((45 + ch->pcdata->learned[gsn_second_attack] / 2)
                    * CAN_DO(ch, gsn_second_attack));
 
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
+
         if (number_percent() < chance)
         {
                 one_hit(ch, victim, dt);
@@ -435,6 +441,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 : ((35 + ch->pcdata->learned[gsn_third_attack] / 2)
                    * CAN_DO(ch, gsn_third_attack));
 
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
+
         if (number_percent() < chance)
         {
                 one_hit(ch, victim, dt);
@@ -451,6 +462,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         chance = IS_NPC(ch) ? ch->level
                 : ((25 + ch->pcdata->learned[gsn_fourth_attack] / 2)
                    * CAN_DO(ch, gsn_fourth_attack));
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
 
         if (number_percent() < chance)
         {
@@ -470,6 +486,11 @@ void multi_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 return;
 
         chance = ch->level;
+
+        if (IS_AFFECTED(ch, AFF_SLOW))
+        {
+                chance /= 2;
+        }
 
         if (number_percent() < chance)
                 one_hit(ch, victim, dt);
@@ -6150,7 +6171,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
 
         if (arg1[0] == '\0')
         {
-                send_to_char("hurl what?\n\r", ch);
+                send_to_char("Hurl what?\n\r", ch);
                 return;
         }
 
@@ -6208,10 +6229,10 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 {
                         act ("You hurl your shield. It slams into the side of their head.. THUNK!!",
                         ch, NULL, victim, TO_CHAR);
-                        act ("Your knowed out cold by a shield to the head.", ch, NULL, victim, TO_VICT);
-                        act ("$n hurls their shield at $N. It slams into teh side of their head.. THUNK!!",
+                        act ("You're knocked out cold by a shield to the head.", ch, NULL, victim, TO_VICT);
+                        act ("$n hurls their shield at $N. It slams into the side of their head... THUNK!",
                         ch, NULL, victim, TO_NOTVICT);
-                        arena_commentary("$n knocks out $N cold.", ch, victim);
+                        arena_commentary("$n knocks $N out cold.", ch, victim);
 
                         af.type = gsn_stun;
                         af.modifier = 0;
@@ -6231,7 +6252,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
-                        act ("You hurl your shield. It sails past their head, and returns. MISS!!",
+                        act ("It sails past their head and returns to your arm. MISS!",
                         ch, NULL, victim, TO_CHAR);
                         damage(ch, victim, 0, gsn_stun, FALSE);
                 }
@@ -6257,7 +6278,7 @@ void do_hurl (CHAR_DATA *ch, char *argument)
                 else
                 {
 
-                        act ("You hurl your weapon. It sails past their head, and returns. MISS!!",
+                        act ("It sails past their head and returns to your hand. MISS!",
                                 ch, NULL, victim, TO_CHAR);
                         damage (ch, victim, 0, gsn_hurl, FALSE);
                 }
@@ -6422,7 +6443,7 @@ void do_snap_shot (CHAR_DATA *ch, char *argument)
 
         if (!obj || !IS_OBJ_STAT(obj, ITEM_BOW))
         {
-                send_to_char("With what?!?\n\r", ch);
+                send_to_char("With what?\n\r", ch);
                 return;
         }
 

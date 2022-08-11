@@ -501,7 +501,6 @@ A misty portal beckons you to the unknown.~
 33 64 0
 0~ -1~ 0~ 100~
 100 10 1
-
 #30
 the magical barrier~
 the magical barrier~
@@ -572,8 +571,8 @@ A brass lockpick lies here.~
 1 1000 0
 E
 lockpick pick brass~
-The lockpick device is made of brass and doesn't look especially robust.~
-
+The lockpick device is made of brass and doesn't look especially robust.
+~
 #50
 talons~
 talons~

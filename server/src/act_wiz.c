@@ -1438,7 +1438,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                         strcat(buf1, "Affected by (txt):{R");
 
-                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_AFFECTED(victim, next))
                                 {
@@ -1663,10 +1663,6 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->rider ? victim->rider->name : "(none)");
                 strcat( buf1, buf );
 
-
-                /*sprintf(buf, "mob act is: %lu\r\n", victim->act);
-                log_string(buf);*/
-
                 if (victim->act)
                 {
                         sprintf(buf, "Act flags (num): {W");
@@ -1699,7 +1695,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
                         strcat(buf1, "Affected by (txt):{R");
 
-                        for (next = 1; next > 0 && next <= BIT_30; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_AFFECTED(victim, next))
                                 {
@@ -1722,17 +1718,19 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                 if (victim->body_form)
                 {
                         strcat(buf1, "Body form (txt):{R");
-
-                        for (next = 1; next <= BIT_8; next *= 2)
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
                         {
                                 if (IS_SET(victim->body_form, next))
                                 {
                                         strcat(buf1, " ");
                                         strcat(buf1, body_form_name(next));
+
                                 }
                         }
                         strcat(buf1, "{x\n\r");
                 }
+
+
 
                 if ((paf = victim->affected))
                 {
@@ -3792,14 +3790,14 @@ void do_oclanitem (CHAR_DATA *ch, char *argument)
 
 void do_mset( CHAR_DATA *ch, char *argument )
 {
-        CHAR_DATA *rch;
-        CHAR_DATA *victim;
-        char       buf  [ MAX_STRING_LENGTH ];
-        char       arg1 [ MAX_INPUT_LENGTH  ];
-        char       arg2 [ MAX_INPUT_LENGTH  ];
-        char       arg3 [ MAX_INPUT_LENGTH  ];
-        int        value;
-        int        max;
+        CHAR_DATA               *rch;
+        CHAR_DATA               *victim;
+        char                    buf  [ MAX_STRING_LENGTH ];
+        char                    arg1 [ MAX_INPUT_LENGTH  ];
+        char                    arg2 [ MAX_INPUT_LENGTH  ];
+        char                    arg3 [ MAX_INPUT_LENGTH  ];
+        unsigned long int       value;
+        int                     max;
 
         rch = get_char( ch );
 

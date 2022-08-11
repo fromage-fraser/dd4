@@ -437,6 +437,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 {WAugust 2022{x
 - Smithy is in for testing
 - Duergar added as playable race
+- Spells SLOW and STABILISE are in, but not given to any classes yet.
 
 {WJuly 2022{x
 - Added 8-bit colour to MUD
@@ -5773,6 +5774,27 @@ Casting this spell causes the target to speed up, so they can attack
 faster and therefore receive an extra attack per round.  Being such a
 potent spell, it uses much of the caster's reserves.
 ~
+
+0 SLOW~
+Syntax: cast slow <<target>
+
+Casting this spell causes the target to slow down, with the consequences
+that they heal more slowly, attack less frequently, and find it takes a
+lot more effort to move around.  Mobs or players affected by HASTE will
+be reset to normal speed the first time they are hit by this spell.  The
+STABILISE spell, available to purchase at healers, removes its effects.
+~
+
+0 STABILISE~
+Syntax: cast stabilise <<target>
+
+This spell will remove spells and effects from a mob or player that
+represent a magical transformation of their bodies from a normal, resting
+state; for example: HASTE, SLOW, BLINK, ECTOPLASMIC FORM, ADRENALINE CONTROL,
+etc.  It will not affect a SHAPESHIFTER's forms, as, once transformed, a
+Shapeshifter IS in their 'normal state'.
+~
+
 
 0 'UNHOLY WORD'~
 Syntax: cast 'unholy word' <<target>
