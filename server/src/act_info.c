@@ -648,6 +648,12 @@ void do_look( CHAR_DATA *ch, char *argument )
         char      *pdesc;
         int        door;
 
+        /* sprintf(buf2,"rand: %d %d %d %d %d %d %d %d %d %d\n------------------\n",
+        number_percent(), number_percent(), number_percent(), number_percent(),
+        number_percent(), number_percent(), number_percent(), number_percent(),
+        number_percent(), number_percent());
+        log_string(buf2); */
+
         if ( !IS_NPC( ch ) && !ch->desc )
                 return;
 

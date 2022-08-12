@@ -3578,7 +3578,7 @@ void spell_infravision( int sn, int level, CHAR_DATA *ch, void *vo )
         af.bitvector = AFF_INFRARED;
         affect_to_char(victim, &af);
 
-        send_to_char( "Your eyes glow red.\n\r", victim );
+        send_to_char( "<124>Your eyes glow red.<0>\n\r", victim );
         act( "$n's eyes glow red.\n\r", ch, NULL, NULL, TO_ROOM );
         return;
 }
