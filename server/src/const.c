@@ -6094,6 +6094,11 @@ const struct skill_type skill_table [MAX_SKILL] =
                 "", "!-smithy base-!"
         },
 
+        /*
+         * Put the base class for any new classes added just above here,
+         * and set LAST_BASE_CLASS_INDEX in merc.h to its value.
+         */
+
         {
                 "necro base", &gsn_necro_base,
                 TYPE_NULL, TAR_IGNORE, POS_STANDING,
@@ -6219,6 +6224,14 @@ const struct skill_type skill_table [MAX_SKILL] =
                 spell_null, 0, 0,
                 "", "!-alchemist base-!"
         },
+
+
+        /*
+         *  When adding base skills for new classes, put the base class base after the last base class above
+         *  (smithy base as at 12/8/22) the order is critical.  Also set LAST_BASE_CLASS_INDEX in merc.h to its
+         *  value.  Order of base skills and subclasses should follow order defined in merc.h.  See also 'help
+         *  SUBZ' online.
+         */
 
         /*
          *  The very last skill - ESSENTIAL - after the class bases

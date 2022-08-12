@@ -610,6 +610,11 @@ struct quest_recall
 #define PRE_ENGINEER       SUB_CLASS_ENGINEER          + MAX_CLASS
 #define PRE_ALCHEMIST      SUB_CLASS_ALCHEMIST         + MAX_CLASS
 
+/* Set this to the &gsn of your new base class if you add new classes.
+   Used in do_change. */
+
+#define LAST_BASE_CLASS_INDEX   gsn_smithy_base
+
 /*
  * Races
  */

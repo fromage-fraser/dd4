@@ -2710,9 +2710,9 @@ int has_pre_req(CHAR_DATA *ch, int sn)
         bool sub = FALSE;
         bool gotit = FALSE;
 
-        char buf[MAX_STRING_LENGTH];
-        sprintf(buf,"sn in: %d | %s",sn, skill_table[sn].name);
-        log_string(buf);
+        /* char buf[MAX_STRING_LENGTH]; */
+        /* sprintf(buf,"sn in: %d | %s",sn, skill_table[sn].name);
+        log_string(buf); */
 
         /* Ugly Vampire and Werewolf hacks - Anonymous */
         if (ch->sub_class == SUB_CLASS_VAMPIRE)
@@ -2740,14 +2740,14 @@ int has_pre_req(CHAR_DATA *ch, int sn)
                 if (*pre_req_table[iter].skill == sn)
                 {
                         gotit = TRUE;
-                        sprintf(buf,"skill %d has value of sn %d", *pre_req_table[iter].skill, sn);
-                        log_string(buf);
+                        /* sprintf(buf,"skill %d has value of sn %d", *pre_req_table[iter].skill, sn);
+                        log_string(buf); */
 
                         /* if a sub group found (not group 0) */
                         if (pre_req_table[iter].group)
                         {
-                                sprintf(buf,"found group %d", pre_req_table[iter].group);
-                                log_string(buf);
+                                /* sprintf(buf,"found group %d", pre_req_table[iter].group);
+                                log_string(buf); */
                                 found[pre_req_table[iter].group] = TRUE;
                                 sub = TRUE;
                         }
@@ -2767,8 +2767,8 @@ int has_pre_req(CHAR_DATA *ch, int sn)
         {
                 if (found[iter] == TRUE && ok[iter] == TRUE)
                 {
-                        sprintf(buf,"Returning true for: %d|%s",sn, skill_table[sn].name);
-                        log_string(buf);
+                        /* sprintf(buf,"Returning true for: %d|%s",sn, skill_table[sn].name);
+                        log_string(buf); */
                         return 1;
                 }
         }
@@ -2779,8 +2779,8 @@ int has_pre_req(CHAR_DATA *ch, int sn)
         }
         else
         {
-                sprintf(buf,"gotit: %d|%s",sn, skill_table[sn].name);
-                log_string(buf);
+                /* sprintf(buf,"gotit: %d|%s",sn, skill_table[sn].name);
+                log_string(buf); */
                 return gotit;
         }
 }

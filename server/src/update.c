@@ -197,7 +197,7 @@ void advance_stat (CHAR_DATA *ch)
 void advance_base (CHAR_DATA *ch)
 {
         if (ch->sub_class)
-                ch->pcdata->learned[gsn_ranger_base + ch->sub_class]++;
+                ch->pcdata->learned[LAST_BASE_CLASS_INDEX + ch->sub_class]++;
         else
                 ch->pcdata->learned[gsn_mage_base + ch->class]++;
 }
