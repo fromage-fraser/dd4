@@ -1744,6 +1744,7 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
                 {affect_strip(victim, gsn_bark_skin);}
         if (is_affected(victim, gsn_displacement))
                 {affect_strip(victim, gsn_displacement);}
+                
         if (is_affected(victim, gsn_chameleon_power))
         {
                 affect_strip(victim, gsn_chameleon_power);
