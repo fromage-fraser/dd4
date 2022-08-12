@@ -10,7 +10,7 @@ $
 0 City Anon~
 {x
  The City of Anon
-  
+
      Psionic                     Mage                        ShapeShifter
       Guild     Merc    Magic    Guild                  Pet      Guild
         |       Hire    Shop       |        Sage        Shop       |
@@ -501,6 +501,7 @@ The Psionic Guildmaster greets you telepathically.
 & 95 'dark magiks'
 & 95 'death magiks'
 & 30 'infernalist base'
+& 30 'witch base'
 & 30 'psionic base'
 & 95 'awe'
 #31027
@@ -995,7 +996,7 @@ Simeon the tinker~
 Simeon the tinker stands calmly here, ready to serve.
 ~
 Simeon is a trim, orderly-looking gentleman in his mid-60s.  He politely
-informs you that if you'd like him to repair an item simply to let him 
+informs you that if you'd like him to repair an item simply to let him
 know and he'll get to work on it straight away.
 ~
 2|64|262144|16777216 0 0 S

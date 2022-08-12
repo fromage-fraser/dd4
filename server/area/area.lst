@@ -1,7 +1,5 @@
 helpfile.are
 deity_help.are
-harpy.are
-abyss.are
 limbo.are
 foundry.are
 gremlinlair.are
@@ -13,7 +11,6 @@ immquest.are
 purgator.are
 loe.are
 som.are
-astral.are
 cob.are
 wastelands.are
 trv.are
@@ -28,6 +25,7 @@ hitower.are
 gnome.are
 wyvern.are
 haven.are
+astral.are
 catacomb.are
 hood.are
 draconia.are
@@ -43,10 +41,10 @@ grave.are
 school.are
 rats.are
 moria.are
-nirvana.are
 cathenvy.are
 circus.are
 ambushed.are
+juargan.are
 eastern.are
 drow.are
 thalos.are
@@ -58,12 +56,15 @@ arachnos.are
 dwarven.are
 daycare.are
 sewer.are
+abyss.are
 valley.are
 redferne.are
+nirvana.are
 marsh.are
 gtown1.are
 grove.are
 canyon.are
+harpy.are
 galaxy.are
 fleshmonger.are
 vampcat.are
@@ -113,7 +114,6 @@ goblins.are
 shaolin.are
 fortress.are
 golem.are
-juargan.are
 dhome.are
 vampcat3.are
 demondium.are

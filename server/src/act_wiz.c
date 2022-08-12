@@ -5437,7 +5437,7 @@ void other_prac (CHAR_DATA *ch, CHAR_DATA *victim)
                         {
                                 if (!new)
                                 {
-                                        send_to_char(" ------------------------------------------------------------------------------\n\rSkills which have pre-reqs:\n\r", ch);
+                                        send_to_char("-----------------------------------------------------------------------------\n\rSkills which have pre-reqs:\n\r", ch);
                                         new ++;
                                 }
 
@@ -5463,7 +5463,7 @@ void other_prac (CHAR_DATA *ch, CHAR_DATA *victim)
         else
                 send_to_char("\n\r\n\r", ch);
 
-        sprintf(foo, " ------------------------------------------------------------------------------\n\r         Physical Prac Penalty: %d\n\r     Intellectual Prac Penalty: %d\n\r\n\r", get_phys_penalty(victim), get_int_penalty(victim));
+        sprintf(foo, "-----------------------------------------------------------------------------\n\r         Physical Prac Penalty: %d\n\r     Intellectual Prac Penalty: %d\n\r\n\r", get_phys_penalty(victim), get_int_penalty(victim));
         send_to_char(foo, ch);
 
         return;

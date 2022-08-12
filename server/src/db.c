@@ -628,8 +628,8 @@ int     gsn_stabilise;
  *  Spell groups
  */
 int     gsn_group_evocation;
-int     gsn_group_dark;
 int     gsn_group_death;
+int     gsn_group_dark;
 int     gsn_group_lycanthropy;
 int     gsn_group_vampyre;
 int     gsn_group_breath;
@@ -677,13 +677,13 @@ int     gsn_group_advcombat;
 int     gsn_spellcraft;
 int     gsn_group_morph;
 int     gsn_group_resistance;
-int     gsn_group_last;
 int     gsn_group_weaponsmith;
 int     gsn_group_armoursmith;
 int     gsn_group_inscription;
 int     gsn_group_alchemy;
 int     gsn_group_turret_tech;
 int     gsn_group_mech_tech;
+int     gsn_group_last;
 
 
 /*
@@ -4541,9 +4541,9 @@ void show_vnums(CHAR_DATA *ch, int low, int high,  bool shownl,
                 else if ( !shownl )
                         continue;
 
-                sprintf(buf, "%-24s| Rooms: %5d-%-5d"
-                        " Objs: %5d-%-5d Mobs: %5d-%-5d%s\n\r",
-                        (pArea->name ? pArea->name : "(invalid)"),
+                sprintf(buf, "<15>%-30s<0>| <42>Rooms:<0> %5d-%-5d"
+                        " <33>Objs:<0> %5d-%-5d <228>Mobs:<0> %5d-%-5d%s\n\r",
+                        (pArea->name ? pArea->name : "<160>(invalid)<0>"),
                         pArea->low_r_vnum, pArea->hi_r_vnum,
                         pArea->low_o_vnum, pArea->hi_o_vnum,
                         pArea->low_m_vnum, pArea->hi_m_vnum,

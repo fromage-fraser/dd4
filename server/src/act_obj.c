@@ -5569,6 +5569,7 @@ bool can_use_poison_weapon(CHAR_DATA *ch)
                 return TRUE;
 
         if (ch->form == FORM_SPIDER
+            || ch->form == FORM_SNAKE
             || ch->form == FORM_SCORPION)
                 return TRUE;
 

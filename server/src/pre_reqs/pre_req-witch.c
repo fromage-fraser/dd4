@@ -44,7 +44,7 @@
 {&gsn_fireshield,               &gsn_witch_base,        30,     PRE_WITCH},
 {&gsn_fireshield,               &gsn_group_mentald,     90,     PRE_WITCH},
 
-/* **** DARK **** */
+/* **** DEATH **** */
 
 {&gsn_group_death,              &gsn_witch_base,        31,     PRE_WITCH},
 
