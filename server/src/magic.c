@@ -1725,25 +1725,25 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
         CHAR_DATA *victim = (CHAR_DATA *) vo;
 
         if (is_affected(victim, gsn_haste))
-                affect_strip(victim, gsn_haste);
+                {affect_strip(victim, gsn_haste);}
         if (is_affected(victim, gsn_slow))
-                affect_strip(victim, gsn_slow);
+                {affect_strip(victim, gsn_slow);}
         if (is_affected(victim, gsn_ectoplasmic_form));
-                affect_strip(victim, gsn_ectoplasmic_form);
+                {affect_strip(victim, gsn_ectoplasmic_form);}
         if (is_affected(victim, gsn_pass_door));
-                affect_strip(victim, gsn_pass_door);
+                {affect_strip(victim, gsn_pass_door);}
         if (is_affected(victim, gsn_change_sex));
-                affect_strip(victim, gsn_change_sex);
+                {affect_strip(victim, gsn_change_sex);}
         if (is_affected(victim, gsn_stone_skin));
-                affect_strip(victim, gsn_stone_skin);
+                {affect_strip(victim, gsn_stone_skin);}
         if (is_affected(victim, gsn_flesh_armor));
-                affect_strip(victim, gsn_flesh_armor);
+                {affect_strip(victim, gsn_flesh_armor);}
         if (is_affected(victim, gsn_adrenaline_control));
-                affect_strip(victim, gsn_adrenaline_control);
+                {affect_strip(victim, gsn_adrenaline_control);}
         if (is_affected(victim, gsn_bark_skin));
-                affect_strip(victim, gsn_bark_skin);
+                {affect_strip(victim, gsn_bark_skin);}
         if (is_affected(victim, gsn_displacement));
-                affect_strip(victim, gsn_displacement);
+                {affect_strip(victim, gsn_displacement);}
 
         if (is_affected(victim, gsn_chameleon_power));
         {
