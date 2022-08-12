@@ -613,7 +613,6 @@ struct quest_recall
 /* Set this to the &gsn of your new base class if you add new classes.
    Used in do_change and do_advance. */
 
-
 #define LAST_BASE_CLASS_INDEX   gsn_smithy_base
 
 /*
