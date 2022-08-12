@@ -1676,9 +1676,9 @@ void nanny (DESCRIPTOR_DATA *d, char *argument)
         bool       fOld;
         int        startcoinsamt;
         COIN_DATA *startcoins;
-
         DESCRIPTOR_DATA *temp;
         startcoins = (COIN_DATA *) malloc (sizeof(COIN_DATA));
+
 
         /* Delete leading spaces UNLESS character is writing a note */
         if (d->connected != CON_NOTE_TEXT)

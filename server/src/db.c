@@ -4149,10 +4149,14 @@ int number_range( int from, int to )
 int number_percent( void )
 {
         int percent;
+        MTRand r;
 
-        while ( ( percent = number_mm( ) & ( 128-1 ) ) > 99 )
+        r = seedRand(rand());
+        percent = (int)(genRand(&r) * 100);
+
+        /* while ( ( percent = number_mm( ) & ( 128-1 ) ) > 99 )
                 ;
-
+ */
         return 1 + percent;
 }
 
