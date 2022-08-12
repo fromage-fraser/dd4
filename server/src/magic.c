@@ -1730,39 +1730,39 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
                 {affect_strip(victim, gsn_slow);}
         if (is_affected(victim, gsn_ectoplasmic_form));
                 {affect_strip(victim, gsn_ectoplasmic_form);}
-        if (is_affected(victim, gsn_pass_door));
+        if (is_affected(victim, gsn_pass_door))
                 {affect_strip(victim, gsn_pass_door);}
-        if (is_affected(victim, gsn_change_sex));
+        if (is_affected(victim, gsn_change_sex))
                 {affect_strip(victim, gsn_change_sex);}
-        if (is_affected(victim, gsn_stone_skin));
+        if (is_affected(victim, gsn_stone_skin))
                 {affect_strip(victim, gsn_stone_skin);}
-        if (is_affected(victim, gsn_flesh_armor));
+        if (is_affected(victim, gsn_flesh_armor))
                 {affect_strip(victim, gsn_flesh_armor);}
         if (is_affected(victim, gsn_adrenaline_control));
                 {affect_strip(victim, gsn_adrenaline_control);}
-        if (is_affected(victim, gsn_bark_skin));
+        if (is_affected(victim, gsn_bark_skin))
                 {affect_strip(victim, gsn_bark_skin);}
-        if (is_affected(victim, gsn_displacement));
+        if (is_affected(victim, gsn_displacement))
                 {affect_strip(victim, gsn_displacement);}
-        if (is_affected(victim, gsn_chameleon_power));
+        if (is_affected(victim, gsn_chameleon_power))
         {
                 affect_strip(victim, gsn_chameleon_power);
                 REMOVE_BIT(victim->affected_by, AFF_HIDE);
         }
 
-        if (is_affected(victim, gsn_invis));
+        if (is_affected(victim, gsn_invis))
         {
                 affect_strip(victim, gsn_invis);
                 REMOVE_BIT(victim->affected_by, AFF_INVISIBLE);
         }
 
-        if (is_affected(victim, gsn_mist_walk));
+        if (is_affected(victim, gsn_mist_walk))
         {
                 affect_strip(victim, gsn_mist_walk);
                 REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
         }
 
-        if (is_affected(victim, gsn_astral_sidestep));
+        if (is_affected(victim, gsn_astral_sidestep))
         {
                 affect_strip(victim, gsn_astral_sidestep);
                 REMOVE_BIT(victim->affected_by, AFF_NON_CORPOREAL);
