@@ -2584,7 +2584,7 @@ SUB_CLASS_NINJA              5           CLASS_SHAPE_SHIFTER    5
 SUB_CLASS_BOUNTY             6           CLASS_BRAWLER          6
 SUB_CLASS_THUG               7           CLASS_RANGER           7
 SUB_CLASS_KNIGHT             8           CLASS_SMITHY           8
-SUB_CLASS_INFERNALIST           9
+SUB_CLASS_INFERNALIST        9
 SUB_CLASS_WITCH             10
 SUB_CLASS_WEREWOLF          11
 SUB_CLASS_VAMPIRE           12
@@ -7019,7 +7019,7 @@ Syntax: construct titanium Reaper
 Syntax: construct .....
 
 These are primarily weapons that the SMITHY can CONSTRUCT. Each require
-different amounts of raw materials, which you can determine from 
+different amounts of raw materials, which you can determine from
 typing construct with no arguments.
 ~
 
@@ -7029,8 +7029,8 @@ Syntax: construct wrench of the crow
 Syntax: construct huntsmiths gloves
 Syntax: construct .....
 
-These are blueprints that produce SET PIECES. These pieces when worn 
-together provide additional bonuses. Each item require different amounts 
+These are blueprints that produce SET PIECES. These pieces when worn
+together provide additional bonuses. Each item require different amounts
 of raw materials, which you can determine from typing construct with
 no arguments.
 ~
@@ -7045,7 +7045,7 @@ together provide additional bonuses.
 
 Syntax: construct 'steel cache'
 
-A Smithys cache can be used as portable storage for any armour or 
+A Smithys cache can be used as portable storage for any armour or
 weapons you may find. Its interior is filled with hooks and latches
 that allow all manner of weapons and armour to be hung or strapped
 into the cache.

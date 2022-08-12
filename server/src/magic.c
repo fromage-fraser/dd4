@@ -1742,6 +1742,8 @@ void spell_stabilise( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_strip(victim, gsn_adrenaline_control);
         if (is_affected(victim, gsn_bark_skin));
                 affect_strip(victim, gsn_bark_skin);
+        if (is_affected(victim, gsn_displacement));
+                affect_strip(victim, gsn_displacement);
 
         if (is_affected(victim, gsn_chameleon_power));
         {
@@ -3039,7 +3041,7 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
                         else
                                 sprintf(wound,"is beyond saving.");
                 }
-                
+
                 sprintf(buf,"%s %s \n\r",
                         IS_NPC(victim) ? victim->short_descr : victim->name,wound);
                 send_to_char( buf, ch );
@@ -3423,7 +3425,7 @@ void spell_identify (int sn, int level, CHAR_DATA *ch, void *vo)
                         strcat (buf, " Strengthened");
                 if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
                         strcat (buf, " Empowered");
-                         
+
                 strcat (buf, ".\n\r");
                 send_paragraph_to_char (buf, ch, 4);
         }

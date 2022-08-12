@@ -107,6 +107,8 @@ accept the quest, and it will begin."
 & 85 'dark magiks'
 & 85 'death magiks'
 & 30 'infernalist base'
+& 30 'psionic base'
+& 30 'witch base'
 #0
 
 
@@ -1025,7 +1027,7 @@ S
 #18844
 Riding a tsunami~
 Travelling at incredible speed of the surface of the sea is quite
-exhilarating, but your ride must end soon as you can see land looming 
+exhilarating, but your ride must end soon as you can see land looming
 to the east.
 The wave is starting to break and foam is lashing your face.
 ~

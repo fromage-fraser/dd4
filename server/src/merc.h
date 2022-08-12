@@ -610,6 +610,11 @@ struct quest_recall
 #define PRE_ENGINEER       SUB_CLASS_ENGINEER          + MAX_CLASS
 #define PRE_ALCHEMIST      SUB_CLASS_ALCHEMIST         + MAX_CLASS
 
+/* Set this to the &gsn of your new base class if you add new classes.
+   Used in do_change. */
+
+#define LAST_BASE_CLASS_INDEX   gsn_smithy_base
+
 /*
  * Races
  */
@@ -3141,8 +3146,8 @@ extern int gsn_heighten;
 extern int gsn_shadow_form;
 
 extern int gsn_group_evocation;
-extern int gsn_group_dark;
 extern int gsn_group_death;
+extern int gsn_group_dark;
 extern int gsn_group_lycanthropy;
 extern int gsn_group_vampyre;
 extern int gsn_group_breath;
@@ -3193,13 +3198,13 @@ extern int gsn_group_music;
 extern int gsn_group_herb_lore;
 extern int gsn_spellcraft;
 extern int gsn_group_resistance;
-extern int gsn_group_last;
 extern int gsn_group_weaponsmith;
 extern int gsn_group_armoursmith;
 extern int gsn_group_inscription;
 extern int gsn_group_alchemy;
 extern int gsn_group_turret_tech;
 extern int gsn_group_mech_tech;
+extern int gsn_group_last;
 
 extern int gsn_form_chameleon;
 extern int gsn_form_hawk;

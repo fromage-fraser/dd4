@@ -2504,6 +2504,8 @@ void do_change (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Fix grammar below, 'a' may be incorrect for some classes -- Owl*/
+
         if (arg[0] == '\0')
         {
                 sprintf(buf, "You can specialise as a %s, a %s or a %s.\n\r",
@@ -2545,8 +2547,15 @@ void do_change (CHAR_DATA *ch, char *argument)
         }
 
         /* changing class - check for teacher then change */
+        sprintf(buf, "%d", LAST_BASE_CLASS_INDEX);
+        log_string(buf);
+        sprintf(buf, "%d", ch->sub_class);
+        log_string(buf);
 
-        if (!mob->pIndexData->skills->learned[gsn_ranger_base + ch->sub_class])
+        sprintf(buf, "%d", mob->pIndexData->skills->learned[LAST_BASE_CLASS_INDEX + ch->sub_class]);
+        log_string(buf);
+
+        if (!mob->pIndexData->skills->learned[LAST_BASE_CLASS_INDEX + ch->sub_class])
         {
                 sprintf(buf, "I'm sorry %s, but I am not familiar with the ways of the %s.",
                         ch->name, full_sub_class_name(ch->sub_class));
@@ -2571,7 +2580,7 @@ void do_change (CHAR_DATA *ch, char *argument)
         }
 
         ch->pcdata->choose_subclass = TRUE;
-        ch->pcdata->learned[gsn_ranger_base + ch->sub_class ] = 30;
+        ch->pcdata->learned[LAST_BASE_CLASS_INDEX + ch->sub_class ] = 30;
 
         if (ch->sub_class == SUB_CLASS_VAMPIRE || ch->sub_class == SUB_CLASS_WEREWOLF)
         {
