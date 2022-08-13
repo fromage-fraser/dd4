@@ -45,6 +45,7 @@ int     hit_gain        args( ( CHAR_DATA *ch ) );
 int     mana_gain       args( ( CHAR_DATA *ch ) );
 int     move_gain       args( ( CHAR_DATA *ch ) );
 int     rage_gain       args( ( CHAR_DATA *ch ) );
+int     meter_gain      args( ( CHAR_DATA *ch ) );
 void    mobile_update   args( ( void ) );
 void    weather_update  args( ( void ) );
 void    char_update     args( ( void ) );
@@ -937,7 +938,20 @@ int move_gain( CHAR_DATA *ch )
         return UMIN(gain, ch->max_move - ch->move);
 }
 
-
+int meter_gain( CHAR_DATA *ch )
+{
+        int gain = -20;
+        if (IS_NPC(ch))
+                return 0;
+        
+        if (ch->pcdata->meter < 20)
+        {       
+                gain = ch->pcdata->meter;
+                return -gain;
+        }
+        else
+                return gain;
+}
 /*
  *  Update blood and rage
  */
@@ -1501,6 +1515,8 @@ void char_update( void )
                                 ch->move += move_gain(ch);
 
                         ch->rage += rage_gain(ch);
+                        if (!IS_NPC(ch))
+                                ch->pcdata->meter += meter_gain(ch);
                 }
 
                 if (ch->position == POS_STUNNED)
