@@ -1,8 +1,8 @@
 #AREA	{ 30 60} Owl  Ota'ar Dar Canals~
 
-
 #RECALL
 27347
+
 #MOBILES
 #27267
 giant starfish~
@@ -133,32 +133,6 @@ obliviously through the wtaer, paying no attention to you at all.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-#27276
-spectacled porpoise~
-a spectacled porpoise~
-<234>A spectacled porpoise frolicks about in the deep.<0>
-~
-This spectacled porpoise has a black dorsal region which is sharply delineated 
-from his white belly, and an obvious dark eye patch. He looks like he's having 
-a lot of fun just frolicking about.
-~
-64|128 8|32|512|8192 0 S
-39 0 0 0d0+0 0d0+0
-0 0
-8 8 1
-#27277
-spectacled porpoise~
-a spectacled porpoise~
-<242>A spectacled porpoise frolicks about in the deep.<0>
-~
-This spectacled porpoise has a lightish-grey dorsal region which is delineated 
-from her white belly, and an obvious dark eye patch. She looks like she's 
-having a lot of fun just frolicking about.
-~
-64|128 8|32|512|8192 0 S
-39 0 0 0d0+0 0d0+0
-0 0
-8 8 2
 #0
 
 
@@ -3974,23 +3948,13 @@ M 1 27273 1 27655			a baiji to Above Canton Canal
 M 1 27274 1 27607			a baiji to Above Bridge to Market Canton
 *
 M 1 27275 1 27264			a right whale to Canton Canal
-*
-M 1 27276 1 27662			a spectacled porpoise to Above Canton Canal
-*
-M 1 27277 1 27654			a spectacled porpoise to Above Canton Canal
 S
-
 
 #SPECIALS
 M  27269 spec_small_whale			a pilot whale
 M  27270 spec_small_whale			a pilot whale
 M  27273 spec_small_whale			a baiji
 M  27274 spec_small_whale			a baiji
-M  27276 spec_small_whale			a spectacled porpoise
-M  27277 spec_small_whale			a spectacled porpoise
-M  27271 spec_large_whale 			a minke whale
-M  27272 spec_large_whale 			a minke whale
-M  27275 spec_large_whale			a right whale
 S
 
 
