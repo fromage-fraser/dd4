@@ -4328,7 +4328,7 @@ void do_dirt_kick (CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_dirt))
         {
-                send_to_char("You dont know how to do that.\n\r", ch);
+                send_to_char("You don't know how to do that.\n\r", ch);
                 return;
         }
 
@@ -6619,6 +6619,193 @@ void do_tailwhip (CHAR_DATA *ch, char *argument)
                 return;
 
         victim->position = POS_RESTING;
+}
+
+void do_flukeslap (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        char arg [MAX_INPUT_LENGTH];
+        int chance;
+
+        if (!IS_NPC(ch))
+        {
+                send_to_char("Are you a whale? No. So, no.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char ("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        one_argument (argument, arg);
+        victim = ch->fighting;
+
+        if (arg[0] != '\0' && !(victim = get_char_room (ch, arg)))
+        {
+                send_to_char ("They aren't here.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        chance = 95;
+
+        WAIT_STATE (ch, PULSE_VIOLENCE);
+
+        if (number_percent() > chance)
+        {
+                act ("You slap your flukes at $N but miss $M.", ch, NULL, victim, TO_CHAR);
+                act ("$c slaps $s flukes at you but misses!", ch, NULL, victim, TO_VICT);
+                act ("$c slaps $s flukes at $N but misses $M.", ch, NULL, victim, TO_NOTVICT);
+                return;
+        }
+
+        act ("You slap your flukes at $N and send $M reeling!", ch, NULL, victim, TO_CHAR);
+        act ("$c slaps $s flukes at you and sends you reeling!",  ch, NULL, victim, TO_VICT);
+        act ("$c slaps $s flukes at $N and sends $M reeling!", ch, NULL, victim, TO_NOTVICT);
+        arena_commentary("$c flukeslaps $N and sends $M reeling.", ch, victim);
+
+        WAIT_STATE (victim, 3 * PULSE_VIOLENCE);
+        WAIT_STATE (ch, 3 * PULSE_VIOLENCE);
+        damage(ch, victim, number_range (30, ch->level * 2), gsn_flukeslap, FALSE);
+
+        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                return;
+
+        victim->position = POS_RESTING;
+}
+
+void do_swallow (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        char    arg [MAX_INPUT_LENGTH ];
+        int     chance;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_swallow))
+        {
+                send_to_char("You don't know how to do that.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You're not in combat.\n\r", ch);
+                return;
+        }
+
+        one_argument(argument,arg);
+
+        if (arg[0] == '\0')
+        {
+                victim = ch->fighting;
+                if (!victim)
+                {
+                        send_to_char("But you aren't in combat!\n\r",ch);
+                        return;
+                }
+        }
+
+        else if (!(victim = get_char_room(ch,arg)))
+        {
+                send_to_char("They aren't here.\n\r",ch);
+                return;
+        }
+
+        if( IS_NPC(victim) && IS_HUGE(victim) )
+        {
+                act( "You can't swallow $N, $E is much too large!", ch, NULL, victim, TO_CHAR );
+                return;
+        }
+
+        if( !IS_NPC(victim) && ( race_table[ch->race].size == 3 ) )
+        {
+                act( "You can't swallow $N, $E is much too large!", ch, NULL, victim, TO_CHAR );
+                return;
+        }
+
+        if (IS_AFFECTED(victim, AFF_SWALLOWED))
+        {
+                act ("$E has already been swallowed!",ch,NULL,victim,TO_CHAR);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("This universe does have SOME physical limitations.\n\r",ch);
+                return;
+        }
+
+        if ( victim->fighting && !is_same_group( ch,victim->fighting ) )
+        {
+                send_to_char("Kill stealing is not permitted.\n\r",ch);
+                return;
+        }
+
+        if ( IS_AFFECTED(ch,AFF_CHARM) && ch->master == victim )
+        {
+                act ("But $N is such a good friend!",ch,NULL,victim,TO_CHAR);
+                return;
+        }
+
+        if (!IS_NPC(ch))
+                chance = ch->pcdata->learned[gsn_swallow];
+        else
+                chance = 90;
+
+        chance += (ch->level - victim->level) * 2;
+
+        chance = URANGE(5, chance, 95);
+
+        if (is_safe(ch, victim))
+                return;
+
+        if (number_percent() < chance)
+        {
+                AFFECT_DATA af;
+
+                arena_commentary("$n swallows $N whole!", ch, victim);
+                /*act ("$n is swallowed whole by $N!", victim, NULL, NULL, TO_ROOM);*/
+                send_to_char("<15>You swallow your opponent whole!<0>\n\r", ch);
+                act( "<15>$c swallows $N whole!<0>", ch, NULL, victim, TO_NOTVICT );
+                /* damage(ch, victim, number_range(30,50), gsn_swallow, FALSE); */
+                send_to_char("You have been <132>SWALLOWED<0> and can't see a thing!\n\r", victim);
+
+                victim->inside = ch;
+
+                af.type      = gsn_swallow;
+                af.duration  = 0;
+
+                af.location     = APPLY_HITROLL;
+                af.modifier     = -10;
+                af.bitvector    = AFF_BLIND;
+                affect_to_char(victim,&af);
+
+                af.location     = APPLY_DAMROLL;
+                af.modifier     = -10;
+                af.bitvector    = AFF_HOLD;
+                affect_to_char(victim, &af);
+
+                af.location     = APPLY_DEX;
+                af.modifier     = -5;
+                af.bitvector    = AFF_SWALLOWED;
+                affect_to_char(victim, &af);
+
+                af.location     = APPLY_MOVE;
+                af.modifier     = -500;
+                af.bitvector    = AFF_CURSE;
+                affect_to_char(victim, &af);
+
+                check_group_bonus(ch);
+
+        }
+        else{
+                damage(ch, victim, 0, gsn_swallow, FALSE);
+                return;
+        }
+        WAIT_STATE(ch, (PULSE_VIOLENCE * 2));
 }
 
 

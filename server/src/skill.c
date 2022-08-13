@@ -3686,7 +3686,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
 
         if( !CAN_DO( ch, gsn_empower ) )
         {
-                send_to_char( "You dont know how to do that.\n\r", ch );
+                send_to_char( "You don't know how to do that.\n\r", ch );
                 return;
         }
 

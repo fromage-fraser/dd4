@@ -2307,6 +2307,14 @@ void spell_dispel_magic ( int sn, int level, CHAR_DATA *ch, void *vo )
                         return;
                 }
 
+                if (IS_AFFECTED(victim, AFF_SWALLOWED) && IS_IMMORTAL( ch ))
+                {
+                        REMOVE_BIT(victim->affected_by, AFF_SWALLOWED);
+                        send_to_char( "You break out from inside the creature.\n\r", victim );
+                        act( "$n escapes from the creature $e was inside.", victim, NULL, NULL, TO_ROOM );
+                        return;
+                }
+
                 if (IS_AFFECTED(victim, AFF_BLIND) && IS_IMMORTAL( ch ))
                 {
                         REMOVE_BIT(victim->affected_by, AFF_BLIND);
@@ -7966,6 +7974,7 @@ bool skill_cannot_be_dispelled (int sn)
             || sn == gsn_battle_aura
             || sn == gsn_berserk
             || sn == gsn_warcry
+            || sn == gsn_swallow
             || sn == gsn_swim)
                 return TRUE;
 

@@ -395,6 +395,9 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
         if (IS_AFFECTED(victim, AFF_FAERIE_FIRE))
                 strcat(buf, "<197>(Pink Aura)<0> "  );
 
+        if (IS_AFFECTED(victim, AFF_SWALLOWED))
+                strcat(buf, "<132>(Swallowed)<0> "  );
+
         if (IS_EVIL(victim )
             && (IS_AFFECTED(ch, AFF_DETECT_EVIL) || is_affected(ch, gsn_song_of_revelation)))
                 strcat(buf, "<88>(Red Aura)<0> "   );

@@ -2756,6 +2756,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_NON_CORPOREAL ) return "non_corporeal";
         if ( vector & AFF_DETECT_CURSE  ) return "detect_curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect_good";
+        if ( vector & AFF_SWALLOWED     ) return "swallowed";
         if ( vector & AFF_SLOW          ) return "slow";
 
         return "none";
@@ -2797,6 +2798,7 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_NON_CORPOREAL ) return "non-corporeal form";
         if ( vector & AFF_DETECT_CURSE  ) return "detect curse";
         if ( vector & AFF_DETECT_GOOD   ) return "detect good";
+        if ( vector & AFF_SWALLOWED     ) return "swallowed";
         if ( vector & AFF_SLOW          ) return "slow";
 
         return "some unknown effect";

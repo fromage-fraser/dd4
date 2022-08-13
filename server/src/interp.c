@@ -258,6 +258,8 @@ const struct cmd_type cmd_table [] =
         { "snapshot",           do_snap_shot,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "trigger",            do_trigger,     POS_FIGHTING,    0,  LOG_NORMAL },
         { "hurl",               do_hurl,        POS_FIGHTING,    0,  LOG_NORMAL },
+        { "flukeslap",          do_flukeslap,   POS_FIGHTING,    0,  LOG_NORMAL },
+        { "swallow",            do_swallow,     POS_FIGHTING,    0,  LOG_NORMAL },
 
         /*
          * Miscellaneous commands.
