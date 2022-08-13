@@ -3746,7 +3746,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
 
         if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
         {
-                send_to_char("That is already imbued.\n\r", ch);
+                send_to_char("That is already empowered.\n\r", ch);
                 return;
         }
 
@@ -3754,10 +3754,90 @@ void do_empower (CHAR_DATA *ch, char *argument)
         SET_BIT(obj->ego_flags, EGO_ITEM_EMPOWERED);
         set_obj_owner(obj, ch->name);
 
-        act ("You empower your bits.$p !", ch, obj, NULL, TO_CHAR);
-        act ("$n empowers his bits $p !", ch, obj, NULL, TO_ROOM);
-
+        act ("You empower $p!", ch, obj, NULL, TO_CHAR);
+        act ( "{WNOTE: $p has a power meter! The meter has been added to the prompt (see help PROMPT for %G)", ch, obj, NULL, TO_CHAR);
+        act ("$n empowers $p!", ch, obj, NULL, TO_ROOM);
+        ch->prompt = str_dup("<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x] %G> ");
 }
+
+void do_discharge (CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *victim;
+        OBJ_DATA *obj;
+        char       arg [ MAX_INPUT_LENGTH ];
+
+        if ( IS_NPC( ch ) )
+                return;
+
+        if (!CAN_DO(ch, gsn_discharge))
+        {
+                send_to_char("You do not know that.\n\r", ch);
+                return;
+        }
+
+        if (!ch->fighting)
+        {
+                send_to_char("You aren't fighting anyone.\n\r", ch);
+                return;
+        }
+
+        if (!check_blind(ch))
+                return;
+
+        one_argument(argument, arg);
+        victim = ch->fighting;
+
+        if (arg[0] != '\0')
+        {
+                if (!(victim = get_char_room(ch, arg)))
+                {
+                        send_to_char("They aren't here.\n\r", ch);
+                        return;
+                }
+        }
+
+        if (victim == ch)
+        {
+                send_to_char("You are going to hurt yourself one day.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_eq_char(ch, WEAR_WIELD)))
+        {
+                if (!IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+
+                send_to_char("You will need to empower that weapon first.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+
+        if (ch->pcdata->meter < 100)
+        {
+                send_to_char("Not at full charge yet.\n\r", ch);
+                return; 
+        }
+
+        if (number_percent() < ch->pcdata->learned[gsn_discharge])
+        {
+                arena_commentary("<531>$n's weapon unleashes a blinding light against $N.<0>", ch, victim);
+                WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+                damage(ch, victim, number_range( ch->pcdata->meter * ch->level/3, ch->pcdata->meter * ch->level/2), gsn_discharge, FALSE);
+                ch->pcdata->meter = 0;
+                if (victim->position ==POS_DEAD || ch->in_room != victim->in_room)
+                        return;
+        }
+        else
+        {
+                damage(ch, victim, 0, gsn_discharge, FALSE);
+                ch->pcdata->meter = 0;
+        }
+        return;
+}
+
 
 void do_engrave (CHAR_DATA *ch, char *argument)
 {
@@ -3868,7 +3948,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
                 affect_free = affect_free->next;
         }
 
-        paf->type           = gsn_strengthen;
+        paf->type           = gsn_engrave;
         paf->duration       = -1;
         paf->location       = APPLY_ENGRAVED;
         paf->modifier       = 1 + ( ch->level / 50 );

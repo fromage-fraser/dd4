@@ -731,6 +731,17 @@ bool one_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         dam += dam / 3;
 
                 }
+                
+                if ( wield && (IS_SET(wield->ego_flags, EGO_ITEM_EMPOWERED)) && (ch->pcdata->meter < 100) )
+                {
+                        if ( (number_percent() < ch->pcdata->learned[gsn_empower]) && (victim->level +5 >= ch->level))
+                        {
+                                ch->pcdata->meter += (number_percent() /15 );
+                                if (ch->pcdata->meter >= 100)
+                                        send_to_char("<556><352><196>You are fully E M P O W E R E D<0>\n\r",ch);
+                        }
+
+                }
 
                 if (!IS_NPC(ch)
                     && ch->pcdata->learned[gsn_enhanced_damage] > 0
