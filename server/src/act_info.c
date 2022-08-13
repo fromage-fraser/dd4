@@ -179,6 +179,9 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
         if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_BALANCED))
                 strcat( buf, "<155>(Balanced)<0> " );
+        
+        if (IS_OBJ_STAT(obj, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                strcat( buf, "<556><352><196>(EMPOWERED)<0> " );
 
         if ( IS_OBJ_STAT( obj, ITEM_SHARP ) )
                 strcat( buf, "<195>(Sharp)<0> " );
@@ -394,6 +397,9 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 
         if (IS_AFFECTED(victim, AFF_FAERIE_FIRE))
                 strcat(buf, "<197>(Pink Aura)<0> "  );
+
+        if (IS_AFFECTED(victim, AFF_SWALLOWED))
+                strcat(buf, "<132>(Swallowed)<0> "  );
 
         if (IS_EVIL(victim )
             && (IS_AFFECTED(ch, AFF_DETECT_EVIL) || is_affected(ch, gsn_song_of_revelation)))
@@ -647,6 +653,12 @@ void do_look( CHAR_DATA *ch, char *argument )
         char       arg2 [ MAX_INPUT_LENGTH  ];
         char      *pdesc;
         int        door;
+
+        /* sprintf(buf2,"rand: %d %d %d %d %d %d %d %d %d %d\n------------------\n",
+        number_percent(), number_percent(), number_percent(), number_percent(),
+        number_percent(), number_percent(), number_percent(), number_percent(),
+        number_percent(), number_percent());
+        log_string(buf2); */
 
         if ( !IS_NPC( ch ) && !ch->desc )
                 return;

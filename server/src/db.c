@@ -623,6 +623,8 @@ int     gsn_healing;
 int     gsn_ward;
 int     gsn_slow;
 int     gsn_stabilise;
+int     gsn_flukeslap;
+int     gsn_swallow;
 
 /*
  *  Spell groups
@@ -2478,7 +2480,9 @@ void load_specials( FILE *fp )
                             || pMobIndex->spec_fun == spec_lookup("spec_spectral_minion")
                             || pMobIndex->spec_fun == spec_lookup("spec_kungfu_poison")
                             || pMobIndex->spec_fun == spec_lookup("spec_guard")
-                            || pMobIndex->spec_fun == spec_lookup("spec_judge"))
+                            || pMobIndex->spec_fun == spec_lookup("spec_judge")
+                            || pMobIndex->spec_fun == spec_lookup("spec_small_whale")
+                            || pMobIndex->spec_fun == spec_lookup("spec_large_whale"))
                                 bonus = 5;
 
                         /*
@@ -3323,6 +3327,7 @@ void clear_char( CHAR_DATA *ch )
         ch->max_rage            = 100;
         ch->leader              = NULL;
         ch->master              = NULL;
+        ch->inside              = NULL; /* creature char is inside, for do_swallow & AFF_SWALLOW */
         ch->mount               = NULL;
         /* ch->mapbook          = NULL; */
         ch->deleted             = FALSE;
@@ -4149,10 +4154,14 @@ int number_range( int from, int to )
 int number_percent( void )
 {
         int percent;
+        MTRand r;
 
-        while ( ( percent = number_mm( ) & ( 128-1 ) ) > 99 )
+        r = seedRand(rand());
+        percent = (int)(genRand(&r) * 100);
+
+        /* while ( ( percent = number_mm( ) & ( 128-1 ) ) > 99 )
                 ;
-
+ */
         return 1 + percent;
 }
 

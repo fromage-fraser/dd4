@@ -258,6 +258,8 @@ const struct cmd_type cmd_table [] =
         { "snapshot",           do_snap_shot,   POS_FIGHTING,    0,  LOG_NORMAL },
         { "trigger",            do_trigger,     POS_FIGHTING,    0,  LOG_NORMAL },
         { "hurl",               do_hurl,        POS_FIGHTING,    0,  LOG_NORMAL },
+        { "flukeslap",          do_flukeslap,   POS_FIGHTING,    0,  LOG_NORMAL },
+        { "swallow",            do_swallow,     POS_FIGHTING,    0,  LOG_NORMAL },
 
         /*
          * Miscellaneous commands.
@@ -280,6 +282,7 @@ const struct cmd_type cmd_table [] =
         { "deposit",            do_deposit,        POS_RESTING,     0,  LOG_NORMAL },
         { "disable",            do_disable,        POS_STANDING,    0,  LOG_NORMAL },
         { "dismount",           do_dismount,       POS_STANDING,    0,  LOG_NORMAL },
+        { "discharge",          do_discharge,      POS_FIGHTING,    0,  LOG_NORMAL },
         { "donate",             do_donate,         POS_SLEEPING,    0,  LOG_NORMAL },
         { "dowse",              do_dowse,          POS_RESTING,     0,  LOG_NORMAL },
         { "empower",            do_empower,        POS_STANDING,    0,  LOG_NORMAL },

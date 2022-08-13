@@ -45,6 +45,7 @@ int     hit_gain        args( ( CHAR_DATA *ch ) );
 int     mana_gain       args( ( CHAR_DATA *ch ) );
 int     move_gain       args( ( CHAR_DATA *ch ) );
 int     rage_gain       args( ( CHAR_DATA *ch ) );
+int     meter_gain      args( ( CHAR_DATA *ch ) );
 void    mobile_update   args( ( void ) );
 void    weather_update  args( ( void ) );
 void    char_update     args( ( void ) );
@@ -937,7 +938,20 @@ int move_gain( CHAR_DATA *ch )
         return UMIN(gain, ch->max_move - ch->move);
 }
 
-
+int meter_gain( CHAR_DATA *ch )
+{
+        int gain = -20;
+        if (IS_NPC(ch))
+                return 0;
+        
+        if (ch->pcdata->meter < 20)
+        {       
+                gain = ch->pcdata->meter;
+                return -gain;
+        }
+        else
+                return gain;
+}
 /*
  *  Update blood and rage
  */
@@ -1127,6 +1141,23 @@ void mobile_update( void )
                                 send_to_char ("With your master gone, you go too.\n\r", ch);
                                 act ("$c shimmers and disappears from view.", ch, NULL, NULL, TO_ROOM);
                                 extract_char (ch, TRUE);
+                                continue;
+                        }
+
+                        if (IS_AFFECTED(ch, AFF_SWALLOWED)
+                            && (!ch->inside || ch->inside->in_room != ch->in_room))
+                        {
+                                sprintf(buf, "You break out from inside of %s!\n\r",
+                                        IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                                send_to_char (buf, ch);
+
+                                sprintf(buf, "$c breaks out from inside %s!",
+                                        IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                                act (buf, ch, NULL, NULL, TO_ROOM);
+
+                                REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
+                                affect_strip(ch, gsn_swallow);
+                                ch->inside = NULL;
                                 continue;
                         }
 
@@ -1501,6 +1532,8 @@ void char_update( void )
                                 ch->move += move_gain(ch);
 
                         ch->rage += rage_gain(ch);
+                        if (!IS_NPC(ch))
+                                ch->pcdata->meter += meter_gain(ch);
                 }
 
                 if (ch->position == POS_STUNNED)

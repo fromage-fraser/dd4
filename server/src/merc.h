@@ -317,10 +317,10 @@ bool    has_tranquility ( CHAR_DATA *ch );
 #define LEVEL_IMMORTAL              L_BUI
 #define LEVEL_HERO                ( LEVEL_IMMORTAL - 1 )
 
-#define MAX_SKILL                   533     /* 531 + 2 new blueprints- Brutus Aug 2022 */
+#define MAX_SKILL                   535     /* 533 + 2 for flukeslap and swallow - Owl Aug 2022 */
 #define MAX_PRE_REQ                 1370    /* 2 new blueprints */
 #define MAX_SPELL_GROUP             437     /* 2 new blueprints  --Brutus Aug 22 */
-#define MAX_GROUPS                  58       /* added smithy groups - Brutus 30 Jul 2022 */
+#define MAX_GROUPS                  58      /* added smithy groups - Brutus 30 Jul 2022 */
 #define MAX_FORM_SKILL              73      /* for form skill table */
 #define MAX_VAMPIRE_GAG             26      /* ugly vampire/werewolf hack */
 
@@ -1802,8 +1802,9 @@ extern  WANTED_DATA *wanted_list_last;
 #define AFF_PRAYER_PLAGUE               BIT_27
 #define AFF_NON_CORPOREAL               BIT_28  /* Mist Walk, Astral Sidestep, Fly form */
 #define AFF_DETECT_CURSE                BIT_29  /* Mob will attack cursed players, see is_cursed() --Owl */
-#define AFF_DETECT_GOOD                 BIT_30	/* last */
-#define AFF_SLOW                        BIT_63
+#define AFF_DETECT_GOOD                 BIT_30
+#define AFF_SWALLOWED                   BIT_31  /* Has been swallowed by a large creature */
+#define AFF_SLOW                        BIT_63  /* last */
 
 /* forms - Brutus */
 #define FORM_NORMAL                     0
@@ -2480,6 +2481,7 @@ struct char_data
         CHAR_DATA *                     next;
         CHAR_DATA *                     next_in_room;
         CHAR_DATA *                     master;
+        CHAR_DATA *                     inside;
         CHAR_DATA *                     leader;
         CHAR_DATA *                     fighting;
         CHAR_DATA *                     hunting;
@@ -3529,6 +3531,8 @@ extern int gsn_healing;
 extern int gsn_ward;
 extern int gsn_slow;
 extern int gsn_stabilise;
+extern int gsn_flukeslap;
+extern int gsn_swallow;
 
 /*
  *  Deity gsns
@@ -3914,6 +3918,8 @@ DECLARE_DO_FUN( do_soar                         );
 DECLARE_DO_FUN( do_infamy                       );       /* Shade Apr 22 */
 DECLARE_DO_FUN( do_repair                       );      /* Owl 16/6/22 */
 DECLARE_DO_FUN( do_strengthen                   );
+DECLARE_DO_FUN( do_flukeslap                    );      /* Owl 13/8/22 for 'whale' specials */
+DECLARE_DO_FUN( do_swallow                      );      /* Owl 13/8/22 for 'whale' specials */
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN( do_mpasound                     );
@@ -4730,6 +4736,24 @@ bool is_cursed                               ( CHAR_DATA *ch );
 
 /* quest.c */
 bool mob_is_quest_target                     ( CHAR_DATA *ch );
+
+/* twister.c */
+#ifndef __MTWISTER_H
+#define __MTWISTER_H
+
+#define STATE_VECTOR_LENGTH 624
+#define STATE_VECTOR_M      397 /* changes to STATE_VECTOR_LENGTH also require changes to this */
+
+typedef struct tagMTRand {
+  unsigned long mt[STATE_VECTOR_LENGTH];
+  int index;
+} MTRand;
+
+MTRand seedRand(unsigned long seed);
+unsigned long genRandLong(MTRand* rand);
+double genRand(MTRand* rand);
+
+#endif /* #ifndef __MTWISTER_H */
 
 
 #undef  CD
