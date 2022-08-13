@@ -281,7 +281,7 @@ bool    has_tranquility ( CHAR_DATA *ch );
  */
 #define MAX_KEY_HASH              1024    /* 1024 */
 #define MAX_STRING_LENGTH        32768    /* 8192  */
-#define MAX_INPUT_LENGTH           256
+#define MAX_INPUT_LENGTH          1024    /* 256 */
 
 
 /*

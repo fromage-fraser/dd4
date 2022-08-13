@@ -3,10 +3,10 @@ if rand(25)
 	whistle $n
 	say See anything you... like?
 	snicker
-else 
+else
 	if rand (25)
 		wink $n
-	else 
+	else
 		if rand(25)
 			lick
 		else
@@ -27,8 +27,8 @@ endif
 	mpecho {wTestris stomps on the floor and his long-suffering assistant, Sogesk, traipses wearily into the room.{x
 	say Today I shall demonstrate my absolutely favourite the device - the rack!
 	mpecho Sogesk regards his battered body with weary resignation.
-	say This rack consists of a rectangular wooden frame, raised from the ground, with a roller at both ends. The victim's ankles are fastened to one roller and their wrists chained to the other. 
-	say When used as a torture device in its own right, the handle and ratchet mechanism are used to gradually retract the chains, slowly increasing the strain on the victim's shoulders, hips, knees, and elbows and causing excruciating pain. 
+	say This rack consists of a rectangular wooden frame, raised from the ground, with a roller at both ends. The victim's ankles are fastened to one roller and their wrists chained to the other.
+	say When used as a torture device in its own right, the handle and ratchet mechanism are used to gradually retract the chains, slowly increasing the strain on the victim's shoulders, hips, knees, and elbows and causing excruciating pain.
 	say If muscle fibres are stretched excessively, they will lose their ability to contract, rendering them permanently useless.
 	say By means of pulleys and levers, the roller can also be rotated on its own axis, thus straining the ropes until the victim's joints are dislocated and eventually completely separate. This rack can also be rotated vertically, so the torturer can work on his victim face-to-face, as it were.
 	say On you hop, Sogesk.
@@ -222,7 +222,7 @@ endif
 	mpecho {wTestris starts to turn the key.  As he does, the shape of the segments becomes increasingly outlined on Sogesk's bulging cheeks.{x
 	mpecho {wAfter several minutes Sogesk grunts thickly, and there is a sudden explosion of flesh and blood as the strain of the pear segments exceeds the eleastic limit of his skin.{x
 	mpecho {wSogesk gurgles and sobs from his destroyed mouth as the chunky, ruined ribbons of his face float about him and clouds of dark blood fill the water about his head.{x
-	emote shivers with pleasure and stops turning the key. 
+	emote shivers with pleasure and stops turning the key.
 	say Nothing old Nirlisk can't take care of, Sogesk!  Cheer up!
 	mpecho Sogesk hangs his head, choking and sobbing miserably.
 	mpecho {wTestris takes a few deep breaths to regain his composure.{x
@@ -261,7 +261,7 @@ endif
 	say Showtime, Sogesk!
 	mpecho {wTestris starts to turn the crank.  Nothing seems to happen for a few seconds, then suddenly -{x
 	mpecho {wSogesk wails, and you hear a wet CRUNCH as his instep is punctured by the blade.{x
-	mpecho {wTestris cackles gleefully and continues to turn the crank.{x  
+	mpecho {wTestris cackles gleefully and continues to turn the crank.{x
 	mpecho {wSogesk screams at the top of his lungs as thick clouds of blood float up from the top of the boot.{x
 	mpecho {wAfter several minutes of this Sogesk passes out.{x
 	emote beams delightedly
@@ -302,7 +302,7 @@ endif
 	say This one's a ripper.  Open wide, Sogesk!
 	mpecho {wTestris retrieves the tearer from the brazier and moves towards the immobilised Sogesk.{x
 	mpecho {wSogesk screams, vainly trying to wriggle away from the glowing tongs.{x
-	mpecho {wTestris gleefully forces the tearer into Sogesk's mouth.{x  
+	mpecho {wTestris gleefully forces the tearer into Sogesk's mouth.{x
 	mpecho {wSogesk makes an awful gurgling, sizzling sound and the room quickly fills with the fishy stench of burning sahuagin.{x
 	mpecho {wAfter a few seconds Testric pulls the tearer out of Sogesk's mouth.  A still-wriggling, severed blue tongue is in its grippers.{x
 	emote smiles happily
@@ -337,7 +337,7 @@ endif
 	say You can imagine the sheer continuum of suffering that can be produced by judicious use of this simple device.  From considerable discomfort -
 	mpecho {wTestris turns the wingnut on the thumbscrew a few times...{x
 	mpecho {wSogesk yelps.{x
-	say - to a level of pain generally considered unbearable, and likely to produce enthusiastic confessions from victims and/or inspire great delight in the torturer, as might be appropriate to the purpose or purposes of the session. 
+	say - to a level of pain generally considered unbearable, and likely to produce enthusiastic confessions from victims and/or inspire great delight in the torturer, as might be appropriate to the purpose or purposes of the session.
 	mpecho {wTestris turns the wingnut on the thumbscrew several dozen times...{x
 	mpecho {wA number of bood-curdling screams issue from Sogesk, and blood starts to gush from his thumb.{x
 	emote chuckles as Sogesk's screams reach a bone-chilling crescendo before unwinding the wingnut.
@@ -354,9 +354,8 @@ endif
 ~
 >bribe_prog 1~
 wake
-emote looks at the single, miserable copper you gave him
+emote looks at the miserable quantity of coin you gave him
 say Please.
-give 1 copper $n
-say Try again.
+say Read the SIGN and try again.
 ~
 |
