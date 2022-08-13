@@ -4,8 +4,8 @@ DEBUG   = -g
 NOCRYPT =
 LINK    =
 O_FLAGS = -O2 -m64
-C_FLAGS = $(O_FLAGS) -pedantic-errors -Wall -Wformat-overflow=0 -Wstringop-overflow=0 \
-          -Wno-trigraphs -Wno-unused-result -Wno-overlength-strings -Wno-overflow -Wno-stringop-truncation \
+C_FLAGS = $(O_FLAGS) -pedantic-errors -Wall  \
+          -Wno-trigraphs -Wno-unused-result -Wno-overlength-strings -Wno-overflow  \
           $(DEBUG) $(PROF) $(NOCRYPT) -Dlinux -Dunix
 L_FLAGS = $(LINK) $(DEBUG) $(PROF) -lcrypt -lm
 
