@@ -1165,6 +1165,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
                 if (IS_SET(obj->ego_flags, EGO_ITEM_CONSTRUCTED))
                         strcat (buf, " constructed");
 
+                if (IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                        strcat (buf, " empowered");
                 strcat(buf, "{x\n\r");
                 strcat(buf1, buf);
         }

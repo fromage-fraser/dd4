@@ -1547,7 +1547,42 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                                 sprintf(buf2, " ");
                         i = buf2;
                         break;
-
+                    case 'G':
+                        if (!IS_NPC(ch))
+                        {
+                                if (ch->pcdata->meter >= 0)
+                                {
+                                        int last;
+                                        int first;
+                                        last = (ch->pcdata->meter %10 );
+                                        first = (ch->pcdata->meter);
+                                        while(first >= 10)
+                                        {
+                                                first = first / 10;
+                                        }
+                                        
+                                        if (ch->pcdata->meter == 0)
+                                                sprintf(buf2, "[  <51>0%%<0> ]");
+                                        else if (ch->pcdata->meter < 10)
+                                                sprintf(buf2, "[<154><454>-<0> <51>%d%%<0> ]", last);
+                                        else if (ch->pcdata->meter < 20)
+                                                sprintf(buf2, "[<154><454>-<0><51>%d%d%%<0> ]", first, last);
+                                        else if (ch->pcdata->meter < 40)
+                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51>%d%%<0> ]", first, last);
+                                        else if (ch->pcdata->meter < 60)
+                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51><442>%d<0><51>%%<0> ]", first, last);
+                                        else if (ch->pcdata->meter < 80)
+                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51><442>%d<436>%%<0> ]", first, last);
+                                        else if (ch->pcdata->meter < 100)
+                                                sprintf(buf2, "[<154><454>-<0><51><448>%d<0><51><442>%d<436>%%<0><124><424>-<0>]", first, last);
+                                        else if (ch->pcdata->meter >= 100)
+                                                sprintf(buf2, "[<556><309><15>100%%<0><309><9>-<0>]");
+                                }
+                        }
+                        else
+                                sprintf(buf2, " ");
+                        i = buf2;
+                        break;
                     case 'b':
                         if (!IS_NPC(ch) && ch->pcdata->blink)
                                 sprintf(buf2, "on");

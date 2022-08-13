@@ -1978,6 +1978,7 @@ PROMPT <<%*> creates a prompt where %* represents the following variables:
     %A :  Alignment numerical value  (not shown before level 10)
     %b :  Spell 'blink' status       ('on' or 'off')
     %r :  Room name
+    %G :  Empower Meter percentage   (Smithy Only)
 
     %s :  Personal safety: whether you personally are safe or unsafe
           from being pkilled at your current location.
@@ -7049,6 +7050,29 @@ A Smithys cache can be used as portable storage for any armour or
 weapons you may find. Its interior is filled with hooks and latches
 that allow all manner of weapons and armour to be hung or strapped
 into the cache.
+~
+
+1 EMPOWER~
+
+Syntax: empower <weapon>
+
+Smithys can empower weapons which enables those weapons to obtain a 
+charge when successfully hitting their opponent. When the weapon is
+fully charged they use DISCHARGE to unleash a devistating attack 
+back onto their enemies.
+
+Your weapons power decays over time when idle.
+
+Note a charge meter is enabled to your prompt when you empower a 
+sword, and added to your prompt. See HELP PROMPT to understand 
+how to customise this.
+~
+
+1 DISCHARGE~
+
+Syntax: discharge 
+Upon reaching 100% charge on a empowered weapon (See help EMPOWER)
+you are able to unleash a devistating attack on an opponent.
 ~
 
 0 $~
