@@ -83,6 +83,8 @@ DECLARE_SPEC_FUN( spec_sahuagin            );
 DECLARE_SPEC_FUN( spec_evil_evil_gezhp     );
 DECLARE_SPEC_FUN( spec_demon               );
 DECLARE_SPEC_FUN( spec_cast_electric       );
+DECLARE_SPEC_FUN( spec_small_whale         );
+DECLARE_SPEC_FUN( spec_large_whale         );
 
 
 /*
@@ -131,6 +133,9 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_evil_evil_gezhp"))      return spec_evil_evil_gezhp;
         if (!str_cmp(name, "spec_demon"))                return spec_demon;
         if (!str_cmp(name, "spec_cast_electric"))        return spec_cast_electric;
+        if (!str_cmp(name, "spec_small_whale"))          return spec_small_whale;
+        if (!str_cmp(name, "spec_large_whale"))          return spec_large_whale;
+
 
         return 0;
 
@@ -188,6 +193,8 @@ char* spec_fun_name (CHAR_DATA *ch)
         if (ch->spec_fun == spec_lookup("spec_evil_evil_gezhp"))    return "spec_evil_evil_gezhp";
         if (ch->spec_fun == spec_lookup("spec_demon"))              return "spec_demon";
         if (ch->spec_fun == spec_lookup("spec_cast_electric"))      return "spec_cast_electric";
+        if (ch->spec_fun == spec_lookup("spec_small_whale"))        return "spec_small_whale";
+        if (ch->spec_fun == spec_lookup("spec_large_whale"))        return "spec_large_whale";
     }
     else {
         return "none";
@@ -2591,4 +2598,85 @@ bool spec_cast_electric (CHAR_DATA *ch)
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
         return TRUE;
 }
+
+bool spec_small_whale( CHAR_DATA *ch )
+{
+        /* give to dolphins, humanoid-sized whales */
+        CHAR_DATA *victim;
+        int random;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        random = number_range(0,1);
+
+        switch( random )
+        {
+            case 0:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"It's slappin' time!"); }
+                do_flukeslap(ch, victim->name);
+                return TRUE;
+            case 1:
+                break;
+            default:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"It's slappin' time!"); }
+                do_flukeslap(ch, victim->name);
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
+bool spec_large_whale( CHAR_DATA *ch )
+{
+        /* A large whale big enough to swallow players */
+        CHAR_DATA *victim;
+
+        int random;
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted)
+                        continue;
+
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+
+        if (!victim)
+                return FALSE;
+
+        random = number_range(0,3);
+
+        switch( random )
+        {
+            case 0:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"It's slappin' time!"); }
+                do_flukeslap(ch, victim->name);
+                return TRUE;
+            case 1:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"Oh you DO look delicious!"); }
+                do_swallow(ch, victim->name);
+                return TRUE;
+            case 2:
+                break;
+            default:
+                if ( CAN_SPEAK(ch) ) { do_say(ch,"It's slappin' time!"); }
+                do_flukeslap(ch, victim->name);
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
+
 

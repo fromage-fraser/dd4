@@ -281,42 +281,46 @@ const struct HERB herb_table [ MAX_HERBS ] =
         }
 };
 
-/* Blueprint structure : name, description, blueprint_ref, blueprint_ego,
-   blueprint_damage, cost (steel,titanium,adamantite,elctrum,starmetal) , skill_name */
+
+/*
+ * Blueprint structure : name, description, blueprint_ref, blueprint_ego, blueprint_damage,
+ * cost (steel, titanium, adamantite, electrum, starmetal), skill_name
+ */
+
 const struct blueprint_type blueprint_list [ BLUEPRINTS_MAX ] =
 {
-        { "turret",     "a turret",     OBJ_VNUM_TURRET, EGO_ITEM_TURRET,       { 0, 0 },       { 30, 1, 0, 0, 0 }, "turret" },
-        { "dart",       "a dart module", OBJ_VNUM_DART,  EGO_ITEM_TURRET_MODULE,{ 10, 20 },     { 10, 1, 0, 0, 0 }, "dart" },
-        { "weaponchain","a weaponchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 12, 0, 0, 0, 0 }, "weaponchain" },
-        { "shieldchain","a shieldchain", -1, EGO_ITEM_CHAINED, { 0, 0 },  { 100, 10, 0, 0, 0 }, "shieldchain" },
-        { "arrow",       "a arrow module", OBJ_VNUM_ARROW,  EGO_ITEM_TURRET_MODULE,{ 25, 35 },  { 20, 10, 1, 0, 0 }, "arrow" },
-        { "wrench of the crow",      "Enchanted Wrench of the Crow", OBJ_VNUM_UNCOMMON1, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
-        { "wings of the crow",      "Splayed Wings of the Crow", OBJ_VNUM_UNCOMMON2, -1, { 0, 0 },  { 10, 1, 0, 0, 0 }, "uncommon set" },
-        { "huntsmiths gloves",      "Huntsmiths gloves of the flame", OBJ_VNUM_RARE1, -1, { 0, 0 },  { 40, 10, 1, 0, 0 }, "rare set" },
-        { "huntsmiths belt",      "Huntsmiths belt of the flame", OBJ_VNUM_RARE2, -1, { 0, 0 },  { 50, 20, 2, 0, 0 }, "rare set" },
-        { "huntsmiths boots",      "Huntsmiths boots of the flame", OBJ_VNUM_RARE3, -1, { 0, 0 },  { 70, 30, 5, 0, 0 }, "rare set" },
-        { "steel broadsword",      "Fierce steel broadsword", OBJ_VNUM_ST_SWORD1, -1, { 8, 18 },  { 25, 0, 0, 0, 0 }, "steel broadsword" },
-        { "titanium rapier",      "Titanium rapier of torment",         OBJ_VNUM_TI_SWORD1, -1, { 14, 23 },  { 40, 15, 0, 0, 0 }, "titanium rapier" },
-        { "bloodforged helm",      "Bloodforge battlehelm",       OBJ_VNUM_BF_SET1, -1, { 0, 0 },  { 40, 20, 10, 5, 0 }, "bloodforged set" },
-        { "bloodforged boots",     "Bloodforged swiftboots",      OBJ_VNUM_BF_SET2, -1, { 0, 0 },  { 50, 20, 12, 7, 0 }, "bloodforged set" },
-        { "bloodforged leggings", "Bloodforged spiked leggings", OBJ_VNUM_BF_SET3, -1, { 0, 0 },  { 70, 30, 15, 9, 0 }, "bloodforged set" },
-        { "bloodforged grips",           "Bloodforged grips",           OBJ_VNUM_BF_SET4, -1, { 0, 0 },  { 80, 40, 21, 12, 0 }, "bloodforged set" },
-        { "astral horizon",      "Astral horizon of ascendance",       OBJ_VNUM_AS_SET1, -1, { 0, 0 },  { 50, 20, 2, 20, 3 }, "astral set" },
-        { "astral wrap",      "Astral wrap of insight",                 OBJ_VNUM_AS_SET2, -1, { 0, 0 },  { 70, 30, 5, 20, 5 }, "astral set" },
-        { "astral anomoly",      "Astral Anonomly of knowing",          OBJ_VNUM_AS_SET3, -1, { 0, 0 },  { 40, 10, 1, 20, 6 }, "astral set" },
-        { "astral plain",      "Astral plane of travel",                OBJ_VNUM_AS_SET4, -1, { 0, 0 },  { 50, 20, 2, 30, 8 }, "astral set" },
-        { "astral transcendance",  "Astral transcendance",              OBJ_VNUM_AS_SET5, -1, { 0, 0 },  { 70, 30, 5, 40, 10 }, "astral set" },
-        { "steel cache",     "Smithys steel cache",     OBJ_VNUM_STEEL_CACHE, -1,       { 0, 0 },       { 6, 0, 0, 0, 0 }, "steel cache" }
+        { "turret",               "a turret",                           OBJ_VNUM_TURRET,        EGO_ITEM_TURRET,        { 0, 0 },       { 30, 1, 0, 0, 0 },     "turret" },
+        { "dart",                 "a dart module",                      OBJ_VNUM_DART,          EGO_ITEM_TURRET_MODULE, { 10, 20 },     { 10, 1, 0, 0, 0 },     "dart" },
+        { "weaponchain",          "a weaponchain",                      -1,                     EGO_ITEM_CHAINED,       { 0, 0 },       { 12, 0, 0, 0, 0 },     "weaponchain" },
+        { "shieldchain",          "a shieldchain",                      -1,                     EGO_ITEM_CHAINED,       { 0, 0 },       { 100, 10, 0, 0, 0 },   "shieldchain" },
+        { "arrow",                "an arrow module",                    OBJ_VNUM_ARROW,         EGO_ITEM_TURRET_MODULE, { 25, 35 },     { 20, 10, 1, 0, 0 },    "arrow" },
+        { "wrench of the crow",   "Enchanted Wrench of the Crow",       OBJ_VNUM_UNCOMMON1,     -1,                     { 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
+        { "wings of the crow",    "Splayed Wings of the Crow",          OBJ_VNUM_UNCOMMON2,     -1,                     { 0, 0 },       { 10, 1, 0, 0, 0 },     "uncommon set" },
+        { "huntsmith's gloves",   "Huntsmith's gloves of the flame",    OBJ_VNUM_RARE1,         -1,                     { 0, 0 },       { 40, 10, 1, 0, 0 },    "rare set" },
+        { "huntsmith's belt",     "Huntsmith's belt of the flame",      OBJ_VNUM_RARE2,         -1,                     { 0, 0 },       { 50, 20, 2, 0, 0 },    "rare set" },
+        { "huntsmith's boots",    "Huntsmith's boots of the flame",     OBJ_VNUM_RARE3,         -1,                     { 0, 0 },       { 70, 30, 5, 0, 0 },    "rare set" },
+        { "steel broadsword",     "Fierce steel broadsword",            OBJ_VNUM_ST_SWORD1,     -1,                     { 8, 18 },      { 25, 0, 0, 0, 0 },     "steel broadsword" },
+        { "titanium rapier",      "Titanium rapier of torment",         OBJ_VNUM_TI_SWORD1,     -1,                     { 14, 23 },     { 40, 15, 0, 0, 0 },    "titanium rapier" },
+        { "bloodforged helm",     "Bloodforged battlehelm",             OBJ_VNUM_BF_SET1,       -1,                     { 0, 0 },       { 40, 20, 10, 5, 0 },   "bloodforged set" },
+        { "bloodforged boots",    "Bloodforged swiftboots",             OBJ_VNUM_BF_SET2,       -1,                     { 0, 0 },       { 50, 20, 12, 7, 0 },   "bloodforged set" },
+        { "bloodforged leggings", "Bloodforged spiked leggings",        OBJ_VNUM_BF_SET3,       -1,                     { 0, 0 },       { 70, 30, 15, 9, 0 },   "bloodforged set" },
+        { "bloodforged grips",    "Bloodforged grips",                  OBJ_VNUM_BF_SET4,       -1,                     { 0, 0 },       { 80, 40, 21, 12, 0 },  "bloodforged set" },
+        { "astral horizon",       "Astral horizon of ascendance",       OBJ_VNUM_AS_SET1,       -1,                     { 0, 0 },       { 50, 20, 2, 20, 3 },   "astral set" },
+        { "astral wrap",          "Astral wrap of insight",             OBJ_VNUM_AS_SET2,       -1,                     { 0, 0 },       { 70, 30, 5, 20, 5 },   "astral set" },
+        { "astral anomaly",       "Astral anomaly of knowing",          OBJ_VNUM_AS_SET3,       -1,                     { 0, 0 },       { 40, 10, 1, 20, 6 },   "astral set" },
+        { "astral plain",         "Astral plane of travel",             OBJ_VNUM_AS_SET4,       -1,                     { 0, 0 },       { 50, 20, 2, 30, 8 },   "astral set" },
+        { "astral transcendence", "Astral transcendence",               OBJ_VNUM_AS_SET5,       -1,                     { 0, 0 },       { 70, 30, 5, 40, 10 },  "astral set" },
+        { "steel cache",          "Smithy's steel cache",               OBJ_VNUM_STEEL_CACHE,   -1,                     { 0, 0 },       { 6, 0, 0, 0, 0 },      "steel cache" }
 };
 
 /* set_name, set_desc, set_ego, set_bonus1, set_bonus2, set_bonus3 */
 const struct set_type   set_list [MAX_SETS] =
 {
-        { "Smithys Set",       "Desc for the Smithy set", { FALSE, TRUE, TRUE, FALSE},
+        { "Smithy's Set",       "Desc for the Smithy set", { FALSE, TRUE, TRUE, FALSE},
         {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY},
         {APPLY_FLY, 0, 0, APPLY_SANCTUARY} },
 
-        { "Smithys Set",       "Desc for uncommon set", { FALSE, TRUE, TRUE, FALSE},
+        { "Smithy's Set",       "Desc for uncommon set", { FALSE, TRUE, TRUE, FALSE},
         {0, &gsn_second_attack, &gsn_enhanced_hit, 0}, {AFF_FLYING, 0, 0, AFF_SANCTUARY},
         {APPLY_FLY, 0, 0, APPLY_SANCTUARY} }
 };
@@ -6021,6 +6025,20 @@ const struct skill_type skill_table [MAX_SKILL] =
                 TYPE_STR, TAR_IGNORE, POS_FIGHTING,
                 spell_null, 0, 0,
                 "steel cache", "!Steel_cache!"
+        },
+
+        {
+                "flukeslap", &gsn_flukeslap,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "flukeslap", "!Flukeslap!"
+        },
+
+        {
+                "swallow", &gsn_swallow,
+                TYPE_STR, TAR_IGNORE, POS_FIGHTING,
+                spell_null, 0, 24,
+                "<132>s<168>w<204>a<204>l<203>l<168>o<132>w<0>", "You escape from the insides of the creature."
         },
 
         /*

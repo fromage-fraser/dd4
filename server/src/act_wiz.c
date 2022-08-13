@@ -1414,13 +1414,14 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->pcdata->pagelen  );
                 strcat( buf1, buf );
 
-                sprintf( buf, "Master: {W%s{x  Leader: {W%s{x  Clan: {W%d{x ({W%s{x)\n\rFighting: {W%s{x  Mount: {W%s{x\n\r",
+                sprintf( buf, "Master: {W%s{x  Leader: {W%s{x  Clan: {W%d{x ({W%s{x)\n\rFighting: {W%s{x  Mount: {W%s{x  Inside: {W%s{x\n\r",
                         victim->master      ? victim->master->name   : "(none)",
                         victim->leader      ? victim->leader->name   : "(none)",
                         !IS_NPC( victim ) ? victim->clan : 0,
                         !IS_NPC( victim ) ? clan_table[victim->clan].who_name : "none",
                         victim->fighting ? victim->fighting->name : "(none)",
-                        victim->mount ? victim->mount->name : "(none)");
+                        victim->mount ? victim->mount->name : "(none)",
+                        victim->inside ? victim->inside->name : "(none)");
                 strcat( buf1, buf );
 
                 sprintf( buf, "Play time: {W%d seconds{x ({G%d hours{x)  Timer: {W%d{x  Status: {W%d{x\n\r",
@@ -1658,9 +1659,10 @@ void do_mstat( CHAR_DATA *ch, char *argument )
                         victim->coin_weight );
                 strcat( buf1, buf );
 
-                sprintf( buf, "Master: {W%s{x  Leader: {W%s{x\n\rFighting: {W%s{x  Rider: {W%s{x\n\r",
+                sprintf( buf, "Master: {W%s{x  Leader: {W%s{x  Inside: {W%s{x\n\rFighting: {W%s{x  Rider: {W%s{x\n\r",
                         victim->master      ? victim->master->name   : "(none)",
                         victim->leader      ? victim->leader->name   : "(none)",
+                        victim->inside      ? victim->inside->name   : "(none)",
                         victim->fighting ? victim->fighting->name : "(none)",
                         victim->rider ? victim->rider->name : "(none)");
                 strcat( buf1, buf );
